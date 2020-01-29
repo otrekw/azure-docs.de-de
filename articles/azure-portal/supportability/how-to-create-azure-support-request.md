@@ -7,14 +7,14 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 01/23/2020
 ms.author: kfollis
-ms.openlocfilehash: 35d70d37b881c610d1a38a312d79f39c351c65a5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6218a1089352ce9ee3e2d1d10f3282e64eae8c51
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898898"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547658"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Gewusst wie: Erstellen einer Azure-Supportanfrage
 
@@ -23,7 +23,8 @@ ms.locfileid: "75898898"
 Azure-Kunden können Supportanfragen im [Azure-Portal](https://portal.azure.com) erstellen und verwalten.
 
 > [!NOTE]
-> Die Azure-Portal-URL ist für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt ist. 
+> Die Azure-Portal-URL ist für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt ist.
+>
 >* Azure-Portal zur kommerziellen Verwendung: [https://portal.azure.com](https://portal.azure.com)
 >* Azure-Portal für Deutschland: [https://portal.microsoftazure.de](https://portal.microsoftazure.de).
 >* Azure-Portal für die US-Regierung: [https://portal.azure.us](https://portal.azure.us).
@@ -38,7 +39,7 @@ Basierend auf Kundenfeedback haben wir die Benutzeroberfläche für Supportanfra
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Zu **Hilfe und Support** gelangen Sie im Azure-Portal. Es steht über die globale Kopfzeile oder im Ressourcenmenü für einen Dienst zur Verfügung. Bevor Sie eine Supportanfrage einreichen können, müssen Sie über die entsprechenden Berechtigungen verfügen.
+Zu **Hilfe und Support** gelangen Sie im Azure-Portal. Die Option steht über das Menü im Azure-Portal, die globale Kopfzeile oder das Ressourcenmenü für einen Dienst zur Verfügung. Bevor Sie eine Supportanfrage einreichen können, müssen Sie über die entsprechenden Berechtigungen verfügen.
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
@@ -52,7 +53,7 @@ So starten Sie von einer beliebigen Stelle im Azure-Portal aus eine Supportanfra
 
    ![Hilfe und Support](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-2. Wählen Sie **+ Neue Supportanfrage** aus. Befolgen Sie die Anweisungen, um uns Informationen zu Ihrem Problem zu geben. Wir schlagen einige mögliche Lösungen vor, sammeln Details zum Problem und helfen Ihnen, die Supportanfrage zu übermitteln und zu verfolgen.
+2. Wählen Sie **Neue Supportanfrage** aus. Befolgen Sie die Anweisungen, um uns Informationen zu Ihrem Problem zu geben. Wir schlagen einige mögliche Lösungen vor, sammeln Details zum Problem und helfen Ihnen, die Supportanfrage zu übermitteln und zu verfolgen.
 
    ![Neue Supportanfrage](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
 
@@ -74,12 +75,12 @@ Wir führen Sie durch einige Schritte, um Informationen zu Ihrem Problem zu samm
 
 Im ersten Schritt des Prozesses für Supportanfragen werden grundlegende Informationen zu Ihrem Problem und Supportplan gesammelt.
 
-Verwenden Sie auf der Registerkarte **Grundlagen** von **Neue Supportanfrage** die Selektoren, um uns erste Informationen über das Problem mitzuteilen. Zuerst identifizieren Sie einige allgemeine Kategorien für den Problemtyp und wählen das zugehörige Abonnement aus. Das Auswählen des Diensts (z. B. „Virtueller Computer unter Windows“) und der Ressource (Name Ihres virtuellen Computers) ist der nächste Schritt, um Hilfe zu erhalten. Beschreiben Sie das Problem kurz in ihren eigenen Worten, und fahren Sie dann mit **Problemtyp auswählen** fort, um spezifischere Informationen mitzuteilen.
+Verwenden Sie auf der Registerkarte **Grundlagen** von **Neue Supportanfrage** die Selektoren, um uns erste Informationen über das Problem mitzuteilen. Zuerst identifizieren Sie einige allgemeine Kategorien für den Problemtyp und wählen das zugehörige Abonnement aus. Wählen Sie den Dienst aus, z. B. **Virtueller Computer mit Windows**. Wählen Sie die Ressource aus, z. B. den Namen Ihres virtuellen Computers. Beschreiben Sie das Problem kurz mit eigenen Worten, und fahren Sie dann mit **Problemtyp auswählen** fort, um genauere Informationen anzugeben.
 
 ![Blatt "Grundlagen"](./media/how-to-create-azure-support-request/basics2lower.png)
 
 > [!NOTE]
-> In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt (Dinge wie Abrechnung, Kontingentanpassungen und Kontenübertragungen). Für technischen Support benötigen Sie einen Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
+> In Azure wird unbegrenzter Support für die Abonnementverwaltung bereitgestellt, einschließlich Abrechnung, Kontingentanpassungen und Kontenübertragungen. Für technischen Support benötigen Sie einen Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
 >
 >
 
@@ -89,11 +90,11 @@ Nach dem Sammeln der grundlegenden Informationen zeigen wir Ihnen als Nächstes 
 
 ### <a name="details"></a>Details
 
-Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in diesem Schritt ausführliche und detaillierte Informationen bereitstellen, können wir Ihre Supportanfrage besser an den richtigen Mitarbeiter weiterleiten, und dieser kann damit beginnen, das Problem zu diagnostizieren.
+Als Nächstes sammeln wir zusätzliche Details über das Problem. Wenn Sie in diesem Schritt ausführliche und detaillierte Informationen bereitstellen, können wir Ihre Supportanfrage besser an den richtigen Mitarbeiter weiterleiten.
 
-Es empfiehlt sich, uns zu informieren, wann das Problem begonnen hat, sowie alle Schritte zu seiner Reproduktion mitzuteilen. Sie können auch eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose.
+Teilen Sie uns wenn möglich mit, wann das Problem begonnen hat und durch welche Schritte es hervorgerufen wird. Sie können eine Datei hochladen, z. B. eine Protokolldatei oder eine Ausgabe der Diagnose.
 
-Nachdem wir alle Informationen über Ihr Problem erhalten haben, können Sie auswählen, wie Sie Support erhalten möchten. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Geben Sie Ihre bevorzugte Kontaktmethode an, einen guten Zeitpunkt für die Kontaktaufnahme mit Ihnen sowie Ihre Supportsprache.
+Nachdem wir alle Informationen zum Problem erhalten haben, können Sie auswählen, wie Sie Support erhalten möchten. Wählen Sie im Abschnitt **Supportmethode** der Registerkarte **Details** den Schweregrad der Auswirkungen aus. Geben Sie Ihre bevorzugte Kontaktmethode an, einen guten Zeitpunkt für die Kontaktaufnahme mit Ihnen sowie Ihre Supportsprache.
 
 Füllen Sie als Nächstes den Abschnitt **Kontaktinformationen** aus, damit wir wissen, wie wir Sie kontaktieren können.
 
@@ -109,11 +110,11 @@ Die Details und den Status von Supportanfragen können Sie anzeigen, indem Sie z
 
 ![Alle Supportanfragen](./media/how-to-create-azure-support-request/allrequestslower.png)
 
-Auf dieser Seite können Sie Supportanfragen nach Abonnement, Erstellungsdatum (UTC) und Status filtern. Darüber hinaus können Sie Supportanfragen auf dieser Seite sortieren und suchen.
+Auf dieser Seite können Sie Supportanfragen nach **Abonnement**, **Erstellungsdatum** (UTC) und **Status** filtern. Darüber hinaus können Sie Supportanfragen auf dieser Seite sortieren und suchen.
 
 Wählen Sie eine Supportanfrage aus, um Details anzuzeigen, einschließlich Schweregrad und des geschätzten Zeitraums, den der Supporttechniker für eine Antwort benötigen wird.
 
-Wenn Sie den Schweregrad der Anfrage ändern möchten, können Sie **Beeinträchtigung des Geschäftsbetriebs** auswählen. Eine Liste der für die Zuweisung verfügbaren Schweregrade wird angezeigt.
+Wenn Sie den Schweregrad der Anfrage ändern möchten, können Sie **Beeinträchtigung des Geschäftsbetriebs** auswählen. Wählen Sie in einer Liste den Schweregrad aus, der zugewiesen werden soll.
 
 > [!NOTE]
 > Der maximale Schweregrad richtet sich nach Ihrem Supportplan. [Erfahren Sie mehr über Supportpläne](https://azure.microsoft.com/support/plans).
@@ -124,6 +125,7 @@ Weitere Informationen zu den Optionen für die Selbsthilfeunterstützung in Azur
 > [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Senden Ihres Feedbacks und Ihrer Anregungen an uns](https://feedback.azure.com/forums/266794-support-feedback)
 * Kontaktaufnahme mit uns auf [Twitter](https://twitter.com/azuresupport)
 * Hilfe erhalten von Ihren Peers in den [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure)

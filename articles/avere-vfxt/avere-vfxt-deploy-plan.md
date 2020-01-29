@@ -4,20 +4,25 @@ description: Erläutert die Planung vor der Bereitstellung von Avere vFXT für A
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: d4fc2a6b7def4b7c55faa37fbed756fbb830ff73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415437"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547539"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
 In diesem Artikel wird erläutert, wie Sie einen neuen Avere vFXT für Azure-Cluster planen, der entsprechend Ihren Anforderungen angemessen positioniert und dimensioniert ist.
 
-Bevor Sie zum Azure Marketplace wechseln oder virtuelle Computer erstellen, überlegen Sie, wie der Cluster mit anderen Elementen in Azure interagieren wird. Planen Sie, wo sich die Clusterressourcen in Ihrem privaten Netzwerk und Ihren Subnetzen befinden werden, und entscheiden Sie, wo sich Ihr Back-End-Speicher befinden soll. Stellen Sie sicher, dass die von Ihnen erstellten Clusterknoten leistungsfähig genug sind, um Ihren Workflow zu unterstützen.
+Bevor Sie zum Azure Marketplace wechseln oder VMs erstellen, beachten Sie diese Details:
+
+* Wie interagiert der Cluster mit anderen Azure-Ressourcen?
+* Wo sollten sich Clusterelemente in privaten Netzwerken und Subnetzen befinden?
+* Welche Art von Back-End-Speicher wird verwendet, und wie greift der Cluster darauf zu?
+* Wie leistungsfähig müssen Ihre Clusterknoten sein, um Ihren Workflow zu unterstützen?
 
 Weitere Informationen finden Sie im Folgenden.
 
@@ -41,12 +46,14 @@ Wenn Sie mit der Planung beginnen, kann es hilfreich sein, die Komponenten des A
 
 ![Diagramm, das den Clustercontroller und die virtuellen Clustercomputer innerhalb eines Subnetzes darstellt. Die Subnetzgrenze ist von einer VNet-Begrenzung umgeben. Innerhalb des VNets befindet sich ein Sechseck, das den Endpunkt des Speicherdiensts darstellt. Es ist mit einem gestrichelten Pfeil mit einem Blob-Speicher außerhalb des VNets verbunden.](media/avere-vfxt-components-option.png)
 
-Befolgen Sie die folgenden Richtlinien bei der Planung der Netzwerkinfrastruktur Ihres Avere vFXT-Systems:
+Gehen Sie bei der Planung der Netzwerkinfrastruktur Ihres Avere vFXT-Clusters nach den folgenden Richtlinien vor:
 
-* Erstellen Sie ein neues Abonnement für jede Avere vFXT for Azure-Bereitstellung, und verwalten Sie alle Komponenten in diesem Abonnement. Dies hat unter anderem folgende Vorteile:
+* Erstellen Sie ein neues Abonnement für jede Avere vFXT for Azure-Bereitstellung. Verwalten Sie alle Komponenten in diesem Abonnement.
+
+  Zu den Vorteilen der Verwendung eines neuen Abonnements für jede Bereitstellung gehören:
   * Einfachere Nachverfolgung der Kosten: Zeigen Sie alle Kosten aus Ressourcen, Infrastruktur und Computezyklen in einem Abonnement an, und überprüfen Sie sie.
   * Einfachere Bereinigung: Sie können das gesamte Abonnement entfernen, wenn Sie das Projekt abgeschlossen haben.
-  * Bequeme Partitionierung von Ressourcenkontingenten: Schützen Sie andere kritische Workloads vor möglicher Ressourcendrosselung, indem Sie die Avere vFXT-Clients und -Cluster in einem einzigen Abonnement isolieren. Dadurch wird ein Konflikt vermieden, wenn Sie eine große Anzahl von Clients für einen Hochleistungs-Computingworkflow nutzen.
+  * Bequeme Partitionierung von Ressourcenkontingenten: Isolieren Sie die Avere vFXT-Clients und -Cluster in einem einzigen Abonnement, um andere kritische Workloads vor möglicher Ressourcendrosselung zu schützen. Durch diese Trennung wird ein Konflikt vermieden, wenn Sie eine große Anzahl von Clients für einen Hochleistungs-Computingworkflow nutzen.
 
 * Platzieren Sie Ihre Clientcomputersysteme in der Nähe des vFXT-Clusters. Der Back-End-Speicher kann weiter entfernt sein.  
 
@@ -56,7 +63,7 @@ Befolgen Sie die folgenden Richtlinien bei der Planung der Netzwerkinfrastruktur
   * in derselben Ressourcengruppe
   * und im selben Speicherkonto befinden.
   
-  Die Vorlage für die automatische Clustererstellung erledigt dies für die meisten Situationen.
+  Die Clustererstellungsvorlage übernimmt diese Konfiguration für die meisten Situationen.
 
 * Der Cluster muss sich in einem eigenen Subnetz befinden, um IP-Adressenkonflikte mit Clients oder anderen Computeressourcen zu vermeiden.
 
@@ -69,7 +76,7 @@ Befolgen Sie die folgenden Richtlinien bei der Planung der Netzwerkinfrastruktur
   | Resource group | Ja, wenn leer. | Muss leer sein.|
   | Speicherkonto | **Ja**, wenn ein Blob-Container nach der Erstellung des Clusters verbunden wird. <br/>  **Nein**, wenn ein Blob-Container während der Erstellung des Clusters erstellt. | Vorhandener Blob-Container muss leer sein. <br/> &nbsp; |
   | Virtuelles Netzwerk | Ja | Muss einen Speicherdienst-Endpunkt umfassen, wenn ein neuer Azure Blob-Container erstellt wird. |
-  | Subnet | Ja |   |
+  | Subnet | Ja | Kann keine anderen Ressourcen enthalten |
 
 ## <a name="ip-address-requirements"></a>Anforderungen an die IP-Adresse
 
@@ -79,7 +86,7 @@ Der Avere vFXT-Cluster verwendet die folgenden IP-Adressen:
 
 * Eine IP-Adresse zur Verwaltung des Clusters. Diese Adresse kann nach Bedarf im Cluster von Knoten zu Knoten verschoben werden, damit sie immer verfügbar ist. Verwenden Sie diese Adresse, um eine Verbindung mit dem Konfigurationstool für die Avere-Systemsteuerung herzustellen.
 * Für jeden Clusterknoten:
-  * Mindestens eine clientseitige IP-Adresse. (Alle clientseitigen Adressen werden vom *vserver* des Clusters verwaltet, der sie bei Bedarf zwischen den Knoten verschieben kann.)
+  * Mindestens eine clientseitige IP-Adresse. (Alle clientseitigen Adressen werden vom *vserver* des Clusters verwaltet, der die IP-Adressen bei Bedarf zwischen den Knoten verschieben kann.)
   * Eine IP-Adresse für die Clusterkommunikation
   * Eine Instanz-IP-Adresse (dem virtuellen Computer zugeordnet)
 
@@ -102,9 +109,7 @@ Die einzelnen vFXT-Knoten sind identisch. Das bedeutet, dass Sie beim Erstellen 
 
 Der Datenträgercache pro Knoten ist konfigurierbar und kann zwischen 1000 GB und 8000 GB liegen. 4 TB pro Knoten ist die empfohlene Cachegröße für Standard_E32s_v3-Knoten.
 
-Weitere Informationen zu diesen virtuellen Computern finden Sie in der Microsoft Azure-Dokumentation:
-
-* [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Weitere Informationen zu diesen virtuellen Computern finden Sie in der Microsoft Azure-Dokumentation: [Arbeitsspeicheroptimierte Größen virtueller Computer](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>Kontokontingent
 
@@ -112,11 +117,11 @@ Stellen Sie sicher, dass Ihr Abonnement über die Kapazität verfügt, den Avere
 
 ## <a name="back-end-data-storage"></a>Back-End-Datenspeicher
 
-Back-End-Speichersysteme stellen sowohl Dateien im Cache des Clusters bereit, erhalten aber auch geänderte Daten aus dem Cache. Entscheiden Sie, ob Ihr Arbeitssatz langfristig in einem neuen Blobcontainer oder in einem vorhandenen Cloud- oder Hardwarespeichersystem gespeichert wird. Diese Back-End-Speichersysteme werden als *Kernspeichereinheiten* bezeichnet.
+Back-End-Speichersysteme stellen sowohl Dateien im Cache des Clusters bereit, erhalten aber auch geänderte Daten aus dem Cache. Entscheiden Sie, ob Ihr Arbeitssatz langfristig in einem neuen Blobcontainer oder in einem vorhandenen Speichersystem (Cloud oder Hardware) gespeichert wird. Diese Back-End-Speichersysteme werden als *Kernspeichereinheiten* bezeichnet.
 
 ### <a name="hardware-core-filers"></a>Hardware-Kernspeichereinheiten
 
-Fügen Sie dem vFXT-Cluster Hardwarespeichersysteme hinzu, nachdem Sie den Cluster erstellt haben. Sie können jedes vorhandene lokale Hardwaresystem verwenden, einschließlich lokaler Systeme, sofern das Speichersystem aus dem Subnetz des Clusters erreichbar ist.
+Fügen Sie dem vFXT-Cluster Hardwarespeichersysteme hinzu, nachdem Sie den Cluster erstellt haben. Sie können viele verbreitete Hardwaresysteme verwenden, einschließlich lokaler Systeme, sofern das Speichersystem vom Subnetz des Clusters aus erreichbar ist.
 
 Ausführliche Anweisungen zum Hinzufügen eines vorhandenen Speichersystems zum Avere vFXT-Cluster finden Sie unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md).
 
@@ -142,7 +147,7 @@ Folgende Zugriffsoptionen sind verfügbar:
   > [!TIP]
   > Wenn Sie eine öffentliche IP-Adresse für den Clustercontroller festlegen, können Sie ihn als Jump Host verwenden. Weitere Informationen finden Sie unter [Clustercontroller als Jump Host](#cluster-controller-as-jump-host).
 
-* Virtuelles privates Netzwerk (VPN): Konfigurieren Sie ein Point-to-Site- oder Site-to-Site-VPN mit Ihrem privaten Netzwerk.
+* Virtuelles privates Netzwerk (VPN): Konfigurieren Sie ein Point-to-Site- oder Site-to-Site-VPN zwischen Ihrem privaten Netzwerk in Azure und Unternehmensnetzwerken.
 
 * Azure ExpressRoute: Konfigurieren Sie eine private Verbindung über einen ExpressRoute-Partner.
 
@@ -156,20 +161,20 @@ Zur Erhöhung der Sicherheit für einen Controller mit einer öffentlichen IP-Ad
 
 Beim Erstellen des Clusters können Sie auswählen, ob Sie eine öffentliche IP-Adresse für den Clustercontroller erstellen möchten.
 
-* Wenn Sie ein **neues virtuelles Netzwerk** oder ein **neues Subnetz** erstellen, wird dem Clustercontroller eine **öffentliche IP-Adresse** zugewiesen.
+* Wenn Sie ein **neues virtuelles Netzwerk** oder ein **neues Subnetz** erstellen, wird dem Clustercontroller eine **öffentliche** IP-Adresse zugewiesen.
 * Wenn Sie ein vorhandenes virtuelles Netzwerk und Subnetz auswählen, verfügt der Clustercontroller nur über **private** IP-Adressen.
 
 ## <a name="vm-access-roles"></a>Rollen für den Zugriff auf virtuelle Computer
 
 Azure verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC), um die virtuellen Clustercomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Für den Clustercontroller ist beispielsweise die Autorisierung zum Erstellen und Konfigurieren der Clusterknoten-VMs erforderlich. Die Clusterknoten müssen anderen Clusterknoten IP-Adressen zuweisen oder neu zuweisen können.
 
-Für die virtuellen Avere vFXT for Azure-Computer werden zwei integrierte Azure-Rollen verwendet:
+Für die virtuellen Avere vFXT-Computer werden zwei integrierte Azure-Rollen verwendet:
 
 * Der Clustercontroller verwendet die integrierte Rolle [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor).
 * Clusterknoten verwenden die integrierte Rolle [Avere-Bediener](../role-based-access-control/built-in-roles.md#avere-operator).
 
 Wenn Sie die Zugriffsrollen für Avere vFXT-Komponenten anpassen möchten, müssen Sie eine eigene Rolle definieren und diese dann den virtuellen Computern bei der Erstellung zuweisen. Sie können nicht die Bereitstellungsvorlage im Azure Marketplace verwenden. Sie können sich an den Microsoft-Kundendienst und -Support wenden, indem Sie wie unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschrieben ein Supportticket im Azure-Portal erstellen.
 
-## <a name="next-step-understand-the-deployment-process"></a>Nächster Schritt: Verstehen des Bereitstellungsprozesses
+## <a name="next-steps"></a>Nächste Schritte
 
-[Übersicht über die Bereitstellung](avere-vfxt-deploy-overview.md) bietet eine umfassende Übersicht über alle Schritte, die erforderlich sind, um ein Avere vFXT für Azure-System zu erstellen und es für die Bereitstellung von Daten vorzubereiten.
+Die [Übersicht über die Bereitstellung](avere-vfxt-deploy-overview.md) bietet eine umfassende Übersicht über alle erforderlichen Schritte, um ein Avere vFXT for Azure-System zu erstellen und es für die Bereitstellung von Daten vorzubereiten.

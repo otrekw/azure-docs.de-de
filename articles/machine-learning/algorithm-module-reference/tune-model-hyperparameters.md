@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428405"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548372"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -81,11 +81,11 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 
 Nach Abschluss des Trainings:
 
-+ Um einen Satz von Genauigkeitsmetriken für das beste Modell anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Sweep results** aus, und wählen Sie dann **Visualize** aus.
++ Um einen Satz von Genauigkeitsmetriken für das beste Modell anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.
 
     Die Ausgabe enthält alle Genauigkeitsmetriken, die für den Modelltyp zutreffen. Aber anhand der Metrik, die Sie für die Einstufung ausgewählt haben, wird bestimmt, welches Modell als das „beste“ angesehen wird.
 
-+ Falls das Modell für Bewertungen in anderen Pipelines verwendet werden soll, ohne den Optimierungsprozess wiederholen zu müssen, klicken Sie mit der rechten Maustaste auf die Modellausgabe und wählen **Save as Trained Model** (Als trainiertes Modell speichern) aus. 
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
 
 ## <a name="technical-notes"></a>Technische Hinweise

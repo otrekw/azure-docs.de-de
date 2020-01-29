@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608736"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548899"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -31,9 +31,12 @@ Dank der Azure AD-Berechtigungsverwaltung ist es möglich, mit Personen außerh
 
 Eine verbundene Organisation ist ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, mit der eine Beziehung besteht.
 
-Angenommen, Sie arbeiten bei der Woodgrove Bank und möchten mit zwei externen Organisationen zusammenarbeiten: dem Graphic Design Institute und Contoso. Ihr Kontakt am Graphic Design Institute hat Ihnen mitgeteilt, dass im Institut Azure AD verwendet wird und die Namen der Graphic Design Institute-Benutzer auf `graphicdesigninstitute.com` enden. Von Ihrem Ansprechpartner bei Contoso wurden Sie darüber informiert, dass Azure AD noch nicht eingesetzt wird, die Contoso-Benutzer aber über einen Benutzerprinzipalnamen verfügen, der auf `contoso.com` endet.
+Angenommen, Sie arbeiten bei der Woodgrove Bank und möchten mit zwei externen Organisationen zusammenarbeiten. Diese beiden Organisationen verfügen über unterschiedliche Konfigurationen:
 
-Sie können zwei verbundene Organisationen konfigurieren – eine für das Graphic Design Institute mit der Domäne `graphicdesigninstitute.com` und eine für Contoso mit der Domäne `contoso.com`. Wenn Sie diese beiden verbundenen Unternehmen anschließend zu einer Richtlinie hinzufügen, können Benutzer beider Organisationen, deren Benutzername mit der Richtlinie konform ist, Zugriffspakete anfordern. Am Graphic Design Institute wird darüber hinaus Azure AD eingesetzt. Wenn das Institut also Unterdomänen wie z. B. `graphicdesigninstitute.example` verwendet, können Benutzer mit diesem Benutzerprinzipalnamen über dieselbe Richtlinie ebenfalls Zugriffspakete anfordern.
+- Graphic Design Institute verwendet Azure AD, und die Benutzer haben einen Benutzerprinzipalnamen, der mit `graphicdesigninstitute.com` endet.
+- Contoso verwendet Azure AD noch nicht. Contoso-Benutzer haben ein Benutzerprinzipalnamen, der mit `contoso.com` endet.
+
+In diesem Fall können Sie zwei verbundene Organisationen konfigurieren. Sie würden eine verbundene Organisation für Graphic Design Institute und eine für Contoso erstellen. Wenn Sie diese beiden verbundenen Unternehmen anschließend zu einer Richtlinie hinzufügen, können Benutzer beider Organisationen, deren Benutzerprinzipalname mit der Richtlinie konform ist, Zugriffspakete anfordern. Benutzer mit einem Benutzerprinzipalnamen der Domäne graphicdesigninstitute.com würden der verbundenen Organisation von Graphic Design Institute entsprechen und könnten Anforderungen übermitteln, während Benutzer mit einem Benutzerprinzipalnamen der Domäne contoso.com der verbundenen Organisation von Contoso zugeordnet wären und ebenfalls Pakete anfordern dürften. Da Grafik Design Institute Azure AD verwendet, können außerdem alle Benutzer mit einem Prinzipalnamen, der einer [verifizierten](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) Domäne entspricht, die zu ihrem Mandanten hinzugefügt wurde (z. B. graphicdesigninstitute.example), über dieselbe Richtlinie Zugriffspakete anfordern.
 
 ![Beispiel für eine verbundene Organisation](./media/entitlement-management-organization/connected-organization-example.png)
 

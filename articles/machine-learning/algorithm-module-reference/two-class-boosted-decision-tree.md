@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c51ff1e653ac3fbbf6042cb6fb631b05ef94041
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490167"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548355"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Modul „Two-Class Boosted Decision Tree“
 
@@ -41,38 +41,37 @@ Diese Art von Modell kann mithilfe von [Train Model](././train-model.md) (Modell
   
 3.  Geben Sie unter **Maximum number of leaves per tree** (Maximale Anzahl von Blättern pro Struktur) die maximale Anzahl von Endknoten (Blätter) an, die in einer Struktur erstellt werden können.
   
-     Eine Erhöhung dieses Werts führt zu einer potenziell größeren Struktur und zu einer höheren Präzision, kann aber auch eine Überanpassung und eine längere Trainingsdauer zur Folge haben.
+     Eine Erhöhung dieses Werts führt zu einem potenziell größeren Baum und zu einer höheren Genauigkeit, kann aber auch eine Überanpassung und eine längere Trainingsdauer zur Folge haben.
   
 4.  Geben Sie unter **Minimum number of samples per leaf node** (Minimale Anzahl von Stichproben pro Blattknoten) die Anzahl von Fällen an, die zum Erstellen eines Endknotens (Blatt) in einer Struktur erforderlich sind.  
   
-     Wenn Sie diesen Wert erhöhen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln. Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
+     Wenn Sie diesen Wert heraufsetzen, erhöht sich der Schwellenwert für die Erstellung neuer Regeln. Bei Verwendung des Standardwerts „1“ reicht für die Erstellung einer neuen Regel beispielsweise bereits ein einzelner Fall aus. Wenn Sie den Wert auf „5“ erhöhen, müssen die Trainingsdaten mindestens fünf Fälle enthalten, die die gleichen Bedingungen erfüllen.
   
 5.  Geben Sie unter **Learning rate** (Lernrate) eine Zahl zwischen 0 und 1 ein, um die Schrittgröße beim Lernen zu definieren.  
   
      Die Lernrate bestimmt, wie schnell bzw. langsam sich das Lernmodell der optimalen Lösung annähert. Ist die Schrittgröße zu groß, wird die optimale Lösung unter Umständen verfehlt. Ist die Schrittgröße zu klein, dauert die Annäherung an die beste Lösung länger.
   
-6.  Geben Sie unter **Number of trees constructed** (Anzahl erstellter Strukturen) die Gesamtzahl von Entscheidungsstrukturen an, die im Ensemble erstellt werden sollen. Mit einer höheren Anzahl von Entscheidungsstrukturen erzielen Sie unter Umständen eine bessere Abdeckung, allerdings verlängert sich dadurch die Trainingsdauer.
+6.  Geben Sie unter **Number of trees constructed** (Anzahl erstellter Strukturen) die Gesamtzahl von Entscheidungsstrukturen an, die im Ensemble erstellt werden sollen. Mit einer höheren Anzahl von Entscheidungsbäumen erzielen Sie unter Umständen eine bessere Abdeckung, allerdings verlängert sich dadurch die Trainingsdauer.
   
-     Dieser Wert steuert auch die Anzahl von Strukturen, die bei der Visualisierung des trainierten Modells angezeigt werden. Wenn Sie eine einzelne Struktur anzeigen oder ausgeben möchten, legen Sie den Wert auf „1“ fest. In diesem Fall wird allerdings auch nur eine einzelne Struktur (die Struktur mit dem anfänglichen Parametersatz) generiert, und es finden keine weiteren Iterationen statt.
+     Dieser Wert steuert auch die Anzahl von Bäumen, die bei der Visualisierung des trainierten Modells angezeigt werden. Wenn Sie eine einzelne Struktur anzeigen oder ausgeben möchten, legen Sie den Wert auf „1“ fest. In diesem Fall wird allerdings auch nur eine einzelne Struktur (die Struktur mit dem anfänglichen Parametersatz) generiert, und es finden keine weiteren Iterationen statt.
   
-7.  Geben Sie unter **Random number seed** (Zufällig gewählter Startwert) eine nicht negative ganze Zahl ein, die als zufälliger Startwert verwendet werden soll. Die Angabe eines Startwerts sorgt für Reproduzierbarkeit in verschiedenen Ausführungen mit den gleichen Daten und Parametern.  
+7.  Geben Sie unter **Random number seed** (Zufällig gewählter Startwert) eine nicht negative ganze Zahl ein, die als zufälliger Startwert verwendet werden soll. Die Angabe eines Startwerts gewährleistet Reproduzierbarkeit in verschiedenen Ausführungen, die auf den gleichen Daten und Parametern basieren.  
   
      Der zufällig gewählte Startwert ist standardmäßig auf „0“ festgelegt, was bedeutet, dass der ursprüngliche Startwert von der Systemuhr abgerufen wird.  Bei nachfolgenden Ausführungen wird ein zufällig gewählter Startwert verwendet, was zu abweichenden Ergebnissen führen kann.
   
 
-9. Trainieren Sie das Modell.
+9. Trainieren des Modells.
   
     + Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie ein mit Tags versehenes Dataset und das Modul [Train Model](./train-model.md) (Modell trainieren) verbinden.  
-  
    
 ## <a name="results"></a>Ergebnisse
 
-Klicken Sie nach Abschluss des Modelltrainings mit der rechten Maustaste auf die Ausgabe von [Train Model](./train-model.md) (Modell trainieren), um die Ergebnisse anzuzeigen:
+Nach Abschluss des Trainings:
 
-+ Wenn Sie die Struktur anzeigen möchten, die in der jeweiligen Iteration erstellt wurde, wählen Sie **Visualisieren** aus. 
-+ Wenn Sie Detailinformationen zu den Teilen und die Regeln für die einzelnen Knoten anzeigen möchten, klicken Sie auf die einzelnen Strukturen.
++ Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
++ Um das Modell zur Bewertung zu verwenden, fügen Sie einer Pipeline das Modul **Score Model** hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

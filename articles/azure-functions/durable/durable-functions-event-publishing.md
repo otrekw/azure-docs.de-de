@@ -3,12 +3,12 @@ title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 768af2e89d6523f50bd9fcc3d13cc84b711cc6f0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613124"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547471"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
@@ -277,7 +277,7 @@ In der folgenden Liste wird das Schema für Lebenszyklusereignisse erläutert:
 
 ## <a name="how-to-test-locally"></a>Lokales Testen
 
-Verwenden Sie [Ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok) zum lokalen Testen.
+Informationen zum lokalen Testen finden Sie unter [Lokales Debuggen von Azure-Funktionen mit Event Grid-Trigger](../functions-debug-event-grid-trigger-local.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

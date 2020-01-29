@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991433"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543884"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -66,15 +66,15 @@ Gehen Sie wie folgt vor, um ein Azure Security Center für IoT-Sicherheitsmodul 
     >[!Note] 
     >Wenn Sie **Im gewünschten Umfang bereitstellen** ausgewählt haben, fügen Sie den Gerätenamen und die Details hinzu, bevor Sie in den folgenden Schritten mit der Registerkarte **Module hinzufügen** fortfahren.     
 
-Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT müssen drei Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben. 
+Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT aus. 
 
-#### <a name="step-1-add-modules"></a>Schritt 1: Hinzufügen von Modulen
+#### <a name="step-1-modules"></a>Schritt 1: Module
 
-1. Klicken Sie auf der Registerkarte **Module hinzufügen** im Bereich **Bereitstellungsmodule** auf die Option **Konfigurieren** für **AzureSecurityCenterforIoT**. 
-   
-1. Ändern Sie den **Namen** in **azureiotsecurity**.
-1. Ändern Sie den **Image-URI** in **mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0**.
-1. Überprüfen Sie, ob für **Optionen für Containererstellung** der folgende Wert festgelegt ist:      
+1. Wählen Sie das Modul **AzureSecurityCenterforIoT** aus.
+1. Ändern Sie auf der Registerkarte **Moduleinstellungen** den **Namen** in **azureiotsecurity**.
+1. Fügen Sie auf der Registerkarte **Umgebungsvariablen** bei Bedarf eine Variable hinzu (z. B. auf Debugebene).
+1. Fügen Sie auf der Registerkarte **Optionen für Containererstellung** die folgende Konfiguration hinzu:
+
     ``` json
     {
         "NetworkingConfig": {
@@ -92,24 +92,20 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
         }
     }    
     ```
-1. Vergewissern Sie sich, dass **Gewünschte Eigenschaften für Modulzwilling festlegen** aktiviert ist, und ändern Sie das Konfigurationsobjekt wie folgt:
+    
+1. Fügen Sie auf der Registerkarte **Einstellungen für Modulzwilling** die folgende Konfiguration hinzu:
       
     ``` json
-    { 
-       "properties.desired":{ 
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
-
-          }
-       }
-    }
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Klicken Sie auf **Speichern**.
-1. Scrollen Sie zum unteren Rand der Registerkarte, und wählen Sie **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** aus. 
-   
-1. Ändern Sie das **Image** unter **Edge Hub** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. Wählen Sie **Update** aus.
 
-1. Stellen Sie sicher, dass **Erstellungsoptionen** wie folgt festgelegt ist: 
+#### <a name="step-2-runtime-settings"></a>Schritt 2: Runtimeeinstellungen
+
+1. Wählen Sie **Runtimeeinstellungen** aus.
+1. Ändern Sie unter **Edge Hub** das **Image** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. Vergewissern Sie sich, dass **Erstellungsoptionen** auf die folgende Konfiguration festgelegt ist: 
          
     ``` json
     { 
@@ -134,25 +130,30 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
        }
     }
     ```
-1. Klicken Sie auf **Speichern**.
+    
+1. Wählen Sie **Speichern** aus.
    
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
-#### <a name="step-2-specify-routes"></a>Schritt 2: Angeben von Routen 
+#### <a name="step-3-specify-routes"></a>Schritt 3: Angeben von Routen 
 
-1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** gemäß den folgenden Beispielen an **$upstream** weitergeleitet werden. Klicken Sie erst dann auf **Weiter**. 
+1. Stellen Sie auf der Registerkarte **Routen angeben** sicher, dass Sie über eine Route verfügen (explizit oder implizit), mit der Nachrichten vom Modul **azureiotsecurity** entsprechend den folgenden Beispielen an **$upstream** weitergeleitet werden. Wählen Sie erst, wenn die Route vorhanden ist, **Weiter**aus.
 
-~~~Default implicit route
-"route": "FROM /messages/* INTO $upstream" 
-~~~
+   Beispielrouten:
 
-~~~Explicit route
-"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-~~~
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream" 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>Schritt 3: Überprüfen der Bereitstellung
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+    ~~~
 
-- Überprüfen Sie auf der Registerkarte **Bereitstellung überprüfen** die Bereitstellungsinformationen, und wählen Sie dann **Senden** aus, um die Bereitstellung abzuschließen.
+1. Wählen Sie **Weiter** aus.
+
+#### <a name="step-4-review-deployment"></a>Schritt 4: Überprüfen der Bereitstellung
+
+- Überprüfen Sie auf der Registerkarte **Bereitstellung überprüfen** die Bereitstellungsinformationen, und wählen Sie dann **Erstellen** aus, um die Bereitstellung abzuschließen.
 
 ## <a name="diagnostic-steps"></a>Schritte zum Diagnostizieren von Problemen
 
@@ -166,7 +167,7 @@ Falls ein Problem auftritt, sind Containerprotokolle die beste Möglichkeit, um 
    
 1. Stellen Sie sicher, dass die folgenden Container ausgeführt werden:
    
-   | NAME | IMAGE |
+   | Name | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

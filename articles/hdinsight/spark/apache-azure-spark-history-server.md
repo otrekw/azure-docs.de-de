@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552728"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548933"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Verwenden der erweiterten Features des Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen
 
@@ -97,7 +97,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie dann im Toolmenü auf **Daten**
    ![Wärmebild auf der Seite „Spark Application & Job Graph“ (Spark-Anwendung und Auftragsgraph)](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |BESCHREIBUNG |
+    |Color |Beschreibung |
     |---|---|
     |Grün|die abgeschlossen wurden.|
     |Orange|Die Aufgabe ist fehlgeschlagen. Dies wirkt sich jedoch nicht auf das Endergebnis des Auftrags aus. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später erfolgreich durchgeführt werden können.|

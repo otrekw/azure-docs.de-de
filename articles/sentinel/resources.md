@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771290"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547998"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
@@ -46,13 +46,13 @@ Die folgenden unterstützten Vorgänge können überwacht werden.
 |Gespeicherte Suche löschen    |Microsoft.OperationalInsights/workspaces/savedSearches|
 |Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
 |Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
-|Antwortaktionen für Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
-|Antwortaktionen für Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
+|Antwortaktionen für Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules/actions|
+|Antwortaktionen für Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules/actions|
 |Lesezeichen aktualisieren   |Microsoft.SecurityInsights/bookmarks|
 |Lesezeichen löschen   |Microsoft.SecurityInsights/bookmarks|
 |Fälle aktualisieren   |Microsoft.SecurityInsights/Cases|
-|Untersuchung von Fällen aktualisieren  |Microsoft.SecurityInsights/Cases|
-|Kommentare zu Fällen erstellen   |Microsoft.SecurityInsights/Cases|
+|Untersuchung von Fällen aktualisieren  |Microsoft.SecurityInsights/Cases/investigations|
+|Kommentare zu Fällen erstellen   |Microsoft.SecurityInsights/Cases/comments|
 |Datenconnectors aktualisieren |Microsoft.SecurityInsights/dataConnectors|
 |Datenconnectors löschen |Microsoft.SecurityInsights/dataConnectors|
 |Einstellungen aktualisieren    |Microsoft.SecurityInsights/settings|

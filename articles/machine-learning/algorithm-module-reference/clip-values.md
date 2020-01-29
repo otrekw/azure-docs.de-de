@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428588"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546825"
 ---
 # <a name="clip-values"></a>Beschneiden von Werten
 
@@ -86,7 +86,7 @@ Wenn Sie auf einige Spalten Beschneidungsmethoden oder andere Kriterien anwenden
   
 1.  Ausführen der Pipeline.  
   
-    Klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls **Clip Values**, und wählen Sie **Visualisieren** aus, um die Werte zu überprüfen und sicherzustellen, dass der Beschneidungsvorgang Ihren Erwartungen entspricht.  
+    Klicken Sie mit der rechten Maustaste auf das Modul **Clip Values**, und wählen Sie **Visualisieren** aus, oder wählen Sie das Modul aus, und wechseln Sie im rechten Bereich zur Registerkarte **Ausgaben**. Klicken Sie auf das Histogrammsymbol in den **Portausgaben**, um die Werte zu überprüfen und sicherzustellen, dass der Clippingvorgang Ihren Erwartungen entspricht.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Beispiele für das Beschneiden mithilfe von Perzentilen
 

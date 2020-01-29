@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428560"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546706"
 ---
 # <a name="cross-validate-model"></a>Durchführen einer Kreuzvalidierung für ein Modell
 
@@ -76,7 +76,7 @@ In diesem Szenario verwenden Sie „Cross Validate Model“, um das Modell zu tr
 
 7. Eine Beschreibung der Berichte finden Sie im Abschnitt [Ergebnisse](#results).
 
-    Um eine Kopie des Modells zur späteren Wiederverwendung zu erhalten, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls, das den Algorithmus enthält (z. B. **Two Class Bayes Point Machine**). Wählen Sie anschließend die Option **Save as Trained Model** (Als trainiertes Modell speichern) aus.
+    Um eine Kopie des Modells zur späteren Wiederverwendung zu erhalten, wechseln Sie im rechten Bereich des Moduls, das den Algorithmus enthält (z. B. **Two Class Bayes Point Machine**), zur Registerkarte **Ausgaben**. Wählen Sie dann das Symbol **Register dataset** (Dataset registrieren) aus, um eine Kopie des trainierten Modells in der Modulstruktur zu speichern.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -86,9 +86,9 @@ Nach Abschluss aller Iterationen werden von „Cross Validate Model“ Bewertung
 
 Die erste Ausgabe des Moduls stellt die Quelldaten für jede Zeile zusammen mit einigen vorhergesagten Werten und den zugehörigen Wahrscheinlichkeiten bereit. 
 
-Klicken Sie zum Anzeigen dieser Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie **Scored results** (Bewertete Ergebnisse) und dann **Visualize** (Visualisieren) aus.
+Klicken Sie zum Anzeigen der Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie **Visualize Scored results** (Bewertete Ergebnisse visualisieren) aus.
 
-| Neuer Spaltenname      | BESCHREIBUNG                              |
+| Neuer Spaltenname      | Beschreibung                              |
 | -------------------- | ---------------------------------------- |
 | Scored Labels (Bewertete Bezeichnungen)        | Diese Spalte wird am Ende des Datasets hinzugefügt. Sie enthält den vorhergesagten Wert für jede Zeile. |
 | Scored Probabilities (Bewertete Wahrscheinlichkeiten) | Diese Spalte wird am Ende des Datasets hinzugefügt. Sie gibt die geschätzte Wahrscheinlichkeit des Werts in **Scored Labels** (Bewertete Bezeichnungen) an. |
@@ -100,10 +100,10 @@ Der zweite Bericht wird nach Folds gruppiert. Denken Sie daran, dass „Cross Va
 
 In diesem Bericht werden die Folds nach Indexwert in aufsteigender Reihenfolge aufgelistet.  Wenn Sie nach einer anderen Spalte sortieren möchten, können Sie die Ergebnisse als Dataset speichern.
 
-Klicken Sie zum Anzeigen dieser Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie die Option **Evaluation results by fold** (Auswertungsergebnisse nach Fold) und dann **Visualize** (Visualisieren) aus.
+Klicken Sie zum Anzeigen der Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie **Visualize Evaluation results by fold** (Auswertungsergebnisse nach Fold anzeigen) aus.
 
 
-|Spaltenname| BESCHREIBUNG|
+|Spaltenname| Beschreibung|
 |----|----|
 |Fold number (Foldnummer)| Ein Bezeichner für jeden Fold. Wenn Sie fünf Folds erstellt haben, sind fünf Teilmengen mit Daten vorhanden (nummeriert von 0 bis 4).
 |Number of examples in fold (Anzahl von Beispielen im Fold)|Die Anzahl der jedem Fold zugewiesenen Zeilen. Diese sollten ungefähr gleich sein. |

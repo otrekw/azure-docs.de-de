@@ -1,6 +1,6 @@
 ---
 title: 'Azure Relay: Migrieren zur Shared Access Signature-Authentifizierung'
-description: Migrieren von Anwendungen vom Access Control Service zu SAS
+description: Erfahren Sie, wie Sie Azure Relay-Anwendung von der Verwendung von Azure Active Directory-Access Control Service zur SAS-Autorisierung migrieren.
 services: service-bus-relay
 documentationcenter: ''
 author: clemensv
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 8aec2483f39f698a62be60f6da6018f8981df423
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 59b9e734526c56016e2ddf59c2afb5b8f7b4ad09
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355033"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514900"
 ---
 # <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay: Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
 

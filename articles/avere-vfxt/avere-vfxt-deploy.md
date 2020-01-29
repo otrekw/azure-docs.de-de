@@ -4,34 +4,34 @@ description: Schritte zum Bereitstellen des Avere vFXT-Clusters in Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415456"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547522"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
-Dieses Verfahren führt Sie durch die Verwendung des Bereitstellungsassistenten aus dem Azure Marketplace. Der Assistent stellt den Cluster automatisch mit einer Azure Resource Manager-Vorlage bereit. Nachdem Sie die Parameter in das Formular eingegeben und auf **Erstellen** geklickt haben, führt Azure diese Schritte automatisch aus:
+Dieses Verfahren führt Sie durch die Verwendung des Bereitstellungsassistenten aus dem Azure Marketplace. Der Assistent stellt den Cluster automatisch mit einer Azure Resource Manager-Vorlage bereit. Nachdem Sie die Parameter im Formular eingegeben und auf **Erstellen** geklickt haben, führt Azure diese Schritte automatisch aus:
 
 * Erstellen des Clustercontrollers, der eine einfache VM ist, die die Software enthält, die für die Bereitstellung und Verwaltung des Clusters erforderlich ist.
 * Einrichten der Ressourcengruppe und der virtuellen Netzwerkinfrastruktur, einschließlich der Erstellung der neuen Elemente.
 * Erstellen der Clusterknoten-VMs, und ihre Konfiguration als Avere-Cluster.
 * Erstellen eines neuen Azure Blob-Containers, und seine Konfiguration als Cluster-Kernspeichereinheit, falls erforderlich.
 
-Nachdem Sie die Anweisungen in diesem Dokument befolgt haben, verfügen Sie über ein virtuelles Netzwerk, ein Subnetz, einen Controller und einen vFXT-Cluster, wie in der folgenden Abbildung dargestellt. Diese zeigt die optionalen Azure Blob-Kernspeichereinheit, die einen neuen Blob-Speichercontainer enthält, der in einem nicht dargestellten Speicherkonto enthalten ist, und einen Dienstendpunkt für Microsoft Storage innerhalb des Subnetzes.
+Nachdem Sie die Anweisungen in diesem Dokument befolgt haben, verfügen Sie über ein virtuelles Netzwerk, ein Subnetz, einen Clustercontroller und einen vFXT-Cluster, wie im folgenden Diagramm dargestellt. Diese zeigt die optionalen Azure Blob-Kernspeichereinheit, die einen neuen Blob-Speichercontainer enthält, der in einem nicht dargestellten Speicherkonto enthalten ist, und einen Dienstendpunkt für Microsoft Storage innerhalb des Subnetzes.
 
 ![Screenshot: Abbildung mit drei konzentrischen Rechtecken mit Avere-Clusterkomponenten. Das äußere Rechteck trägt die Bezeichnung „Ressourcengruppe“ und enthält ein Sechseck mit der Bezeichnung „Blob-Speicher (optional)“. Das mittlere Rechteck trägt die Bezeichnung „Virtuelles Netzwerk: 10.0.0.0/16“ und enthält selbst keine spezifischen Komponenten. Das innerste Rechteck trägt die Bezeichnung „Subnetz:10.0.0.0/24“ und enthält eine VM mit der Bezeichnung „Clustercontroller“, einen Stapel aus drei VMs mit der Bezeichnung „vFXT-Knoten (vFXT-Cluster)“, und ein Sechseck mit der Bezeichnung „Dienstendpunkt“. Ein Pfeil verbindet den Dienstendpunkt, der sich innerhalb des Subnetzes befindet, mit dem Blob-Speicher, der sich in der Ressourcengruppe außerhalb des Subnetzes und außerhalb von „vnet“ befindet. Der Pfeil überschneidet dabei jeweils die rechte Seite der Rechtecke für das Subnetz und das virtuellen Netzwerk.](media/avere-vfxt-deployment.png)
 
 Vergewissern Sie sich vor der Verwendung der Erstellungsvorlage, dass diese Voraussetzungen erfüllt sind:  
 
-1. [Neues Abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Berechtigungen des Abonnementbesitzers](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Storage-Dienstendpunkt (bei Bedarf)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – Wird für Bereitstellungen benötigt, bei der ein vorhandenes virtuelles Netzwerk verwendet und ein Blob-Speicher erstellt wird.
+* [Neues Abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Berechtigungen des Abonnementbesitzers](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Storage-Dienstendpunkt (bei Bedarf):](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) für Bereitstellungen benötigt, bei denen ein vorhandenes virtuelles Netzwerk verwendet und ein Blobspeicher erstellt wird.
 
 Weitere Informationen zu den Schritten und der Planung der Clusterbereitstellung finden Sie unter [Planen Ihres Avere vFXT-Systems](avere-vfxt-deploy-plan.md) und [Übersicht über die Bereitstellung](avere-vfxt-deploy-overview.md).
 
@@ -41,7 +41,7 @@ Rufen sie die Erstellungsvorlage im Azure-Portal auf, indem Sie nach Avere suche
 
 ![Browserfenster mit dem Azure-Portal mit Breadcrumbs „Neu > Marketplace > Alles“. Auf der Seite „Alles“ enthält das Suchfeld den Begriff „avere“ und das zweite Ergebnis, „Avere vFXT für Azure ARM-Vorlage“, ist rot hervorgehoben.](media/avere-vfxt-template-choose.png)
 
-Nachdem Sie die Details auf der Seite „Avere vFXT für Azure ARM-Vorlage“ gelesen haben, klicken Sie auf **Erstellen**, um zu beginnen.
+Nachdem Sie die Details auf der Seite „Avere vFXT for Azure-ARM-Vorlage“ gelesen haben, klicken Sie auf die zugehörige Schaltfläche **Erstellen**, um zu beginnen.
 
 ![Azure Marketplace mit der Anzeige der ersten Seite der Bereitstellungvorlage](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ So finden Sie die Informationen:
 
 1. Klicken Sie auf der linken Seite auf **Bereitstellungen** und dann auf **microsoft-avere.vfxt-template**.
 
-   ![Portalseite „Ressourcengruppe“ mit auf der linken Seite ausgewählten Bereitstellungen und der Anzeige von „microsoft-avere.vfxt-template“ in einer Tabelle unter dem Bereitstellungsnamen](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![Portalseite „Ressourcengruppe“ mit auf der linken Seite ausgewählten Bereitstellungen und der Anzeige von „microsoft-avere.vfxt-template“ in einer Tabelle unter dem Bereitstellungsnamen](media/avere-vfxt-outputs-deployments.png)
 
 1. Klicken Sie auf der linken Seite auf **Ausgaben**. Kopieren Sie die Werte in die einzelnen Felder.
 
-   ![Ausgabeseite mit der Anzeige von Werten für SSHSTRING, RESOURCE_GROUP, LOCATION, NETWORK_RESOURCE_GROUP, NETWORK, SUBNET, SUBNET_ID, VSERVER_IPs und MGMT_IP in Feldern rechts neben den Bezeichnungen](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![Ausgabeseite mit der Anzeige von Werten für SSHSTRING, RESOURCE_GROUP, LOCATION, NETWORK_RESOURCE_GROUP, NETWORK, SUBNET, SUBNET_ID, VSERVER_IPs und MGMT_IP in Feldern rechts neben den Bezeichnungen](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

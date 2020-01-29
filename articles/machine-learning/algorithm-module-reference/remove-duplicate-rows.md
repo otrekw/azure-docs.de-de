@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497693"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548389"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 
@@ -24,7 +24,7 @@ Mit diesem Modul können Sie potenzielle Duplikate aus einem Dataset entfernen.
 
 Angenommen beispielsweise, Ihre Daten sehen wie die folgenden aus und stellen mehrere Datensätze für Patienten dar. 
 
-| Patienten-ID | Initials| Geschlecht|Alter|Aufgenommen|
+| Patienten-ID | Initials| Geschlecht|Age|Aufgenommen|
 |----|----|----|----|----|
 |1|W.M.| M| 53| Jan|
 |2| W.J.M.| M| 53| Jan|
@@ -71,11 +71,11 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
 
 5. Ausführen der Pipeline.
 
-6. Um die Ergebnisse zu überprüfen, klicken Sie mit der rechten Maustaste auf das Modul, wählen Sie **Results dataset** (Ergebnisdataset) aus, und klicken Sie auf **Visualize** (Visualisieren). 
+6. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus. 
 
 > [!TIP]
 > Wenn die Ergebnisse schwer zu verstehen sind oder wenn Sie einige Spalten nicht berücksichtigen möchten, können Sie Spalten mithilfe des Moduls [Select Columns in Dataset](./select-columns-in-dataset.md) (Spalten im Dataset auswählen) entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

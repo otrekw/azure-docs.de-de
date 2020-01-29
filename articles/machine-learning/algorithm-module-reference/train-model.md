@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490368"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548406"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -68,13 +68,12 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
 
 Nachdem das Modell trainiert wurde:
 
-+ Um Modellparameter und Featuregewichtungen anzuzeigen, klicken Sie mit der rechten Maustaste auf die Ausgabe, und wählen Sie **Visualize** (Visualisieren) aus.
-+ Um das Modell in weiteren Pipelines zu verwenden, klicken Sie mit der rechten Maustaste auf das Modell, und wählen Sie **Modell speichern** aus. Geben Sie einen Namen für das Modell ein. 
 
-    Dadurch wird das Modell als Momentaufnahme gespeichert, die durch wiederholtes Ausführen der Pipeline nicht aktualisiert wird.
++ Um das Modell in anderen Pipelines zu verwenden, wählen Sie es aus, und wählen Sie im rechten Bereich unter der Registerkarte **Ausgaben** das Symbol **Register dataset** (Dataset registrieren) aus. Sie können in der Modulpalette unter **Datasets** auf gespeicherte Modelle zugreifen.
+
 + Um das Modell zur Vorhersage neuer Werte zu verwenden, verbinden Sie es mit dem Modul [Score Model](./score-model.md) (Modell bewerten) sowie mit neuen Eingabedaten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

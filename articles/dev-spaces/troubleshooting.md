@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Beheben und Lösen häufiger Probleme beim Aktivieren und Verwenden von Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: b35f7310286546b0ff051f3a61404e96286c78cb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 3a2eb98af2c73b5a920f3e3bcedb7ab18e9f0430
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156606"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548848"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problembehandlung für Azure Dev Spaces
 
@@ -252,7 +252,7 @@ Failed to build container image.
 Service cannot be started.
 ```
 
-Dieser Fehler tritt auf, da auf AKS-Knoten eine ältere Version von Docker ausgeführt wird, die mehrstufige Builds nicht unterstützt. Um mehrstufige Builds zu vermeiden, müssen Sie Ihre Dockerfile-Datei neu schreiben.
+Dieser Fehler tritt auf, da Azure Dev Spaces derzeit keine mehrstufigen Builds unterstützt. Um mehrstufige Builds zu vermeiden, müssen Sie Ihre Dockerfile-Datei neu schreiben.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Der Netzwerkdatenverkehr wird beim Verbinden Ihres Entwicklungscomputers nicht an Ihren AKS-Cluster weitergeleitet.
 
@@ -475,3 +475,12 @@ Um Azure Dev Spaces in einem AKS-Cluster zu aktivieren, für den der ausgehende 
 | gcr.io | HTTP:443 | Pullen von Helm-/Tiller-Images|
 | storage.googleapis.com | HTTP:443 | Pullen von Helm-/Tiller-Images|
 | azds-<guid>.<location>.azds.io | HTTPS: 443 | Kommunizieren mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter „%USERPROFILE%\.azds\settings.json“.|
+
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Fehler „Cluster \<Cluster\> konnte im Abonnement \<Abonnement-ID\> nicht gefunden werden.“
+
+Dieser Fehler wird möglicherweise angezeigt, wenn Ihre kubeconfig-Datei auf einen anderen Cluster oder ein anderes Abonnement abzielt, als Sie mit den clientseitigen Tools von Azure Dev Spaces verwenden möchten. Die clientseitigen Tools von Azure Dev Spaces replizieren das Verhalten von *kubectl*, bei dem über [kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)-Dateien der Cluster ausgewählt und mit ihm kommuniziert wird.
+
+So beheben Sie dieses Problem:
+
+* Verwenden Sie `az aks use-dev-spaces -g <resource group name> -n <cluster name>`, um den aktuellen Kontext zu aktualisieren. Dieser Befehl aktiviert auch Azure Dev Spaces in Ihrem AKS-Cluster, falls dies noch nicht geschehen ist. Alternativ können Sie `kubectl config use-context <cluster name>` verwenden, um den aktuellen Kontext zu aktualisieren.
+* Verwenden Sie `az account show`, um das aktuelle Azure-Abonnement anzuzeigen, das Sie als Ziel verwenden, und zu bestätigen, dass es sich um das richtige handelt. Sie können das als Ziel verwendete Abonnement mit `az account set` ändern.

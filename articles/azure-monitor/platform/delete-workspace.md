@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944422"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547250"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -57,6 +57,29 @@ Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsof
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Dauerhaftes Löschen eines Arbeitsbereichs
+Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise nicht geeignet, in denen Sie eine Bereitstellung mit denselben Einstellungen und demselben Arbeitsbereichsnamen wiederholen müssen (z.B. bei Entwicklung und Test). In solchen Fällen können Sie den Arbeitsbereich dauerhaft löschen und den Zeitraum des vorläufigen Löschens außer Kraft setzen. Beim dauerhaften Löschvorgang für den Arbeitsbereich wird der Arbeitsbereichsname freigegeben, und Sie können einen neuen Arbeitsbereich mit demselben Namen erstellen.
+
+
+> [!IMPORTANT]
+> Seien Sie beim dauerhaften Löschen des Arbeitsbereichs sehr vorsichtig, da der Vorgang nicht rückgängig gemacht werden kann und der Arbeitsbereich und seine Daten nicht wiederhergestellt werden können.
+
+Das dauerhafte Löschen eines Arbeitsbereichs kann derzeit über die REST-API vorgenommen werden.
+
+> [!NOTE]
+> Jede API-Anforderung muss ein Bearer-Autorisierungstoken im Anforderungsheader enthalten.
+>
+> Sie können das Token mit folgenden Aktionen abrufen:
+> - [App-Registrierungen](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - Navigieren Sie im Browser über die Entwicklerkonsole (F12) zum Azure-Portal. Suchen Sie in einer der **batch?** -Instanzen nach der Authentifizierungszeichenfolge unter **Anforderungsheader**. Diese entspricht dem Muster *authorization: Bearer <token>* . Kopieren Sie die Zeichenfolge, und fügen Sie sie Ihrem API-Aufruf hinzu, wie es in den Beispielen gezeigt wird.
+> - Navigieren Sie zur Azure-REST-Dokumentationswebsite. Wählen Sie für eine beliebige API die Option **Ausprobieren** aus, kopieren Sie das Bearertoken, und fügen Sie es Ihrem API-Aufruf hinzu.
+Verwenden Sie zum dauerhaften Löschen Ihres Arbeitsbereichs den REST-API-Aufruf [Workspaces - Delete]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) mit einem Erzwingungstag:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
 

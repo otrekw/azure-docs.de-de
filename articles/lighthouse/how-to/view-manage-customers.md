@@ -1,14 +1,14 @@
 ---
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 description: Als Dienstanbieter, der die delegierte Azure-Ressourcenverwaltung verwendet, können Sie alle Ihre delegierten Kundenressourcen und -abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456835"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543425"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 
@@ -40,13 +40,20 @@ Folgende Informationen können Sie auf dieser Seite anzeigen:
 - Um weitere Details zu einem Angebot und seinen Delegierungen anzuzeigen, wählen Sie den Angebotsnamen aus.
 - Um weitere Details zu Rollenzuweisungen für delegierte Abonnements oder Ressourcengruppen anzuzeigen, wählen Sie den Eintrag in der Spalte **Delegierungen** aus.
 
-## <a name="view-delegations"></a>Anzeigen von Delegierungen
+## <a name="view-and-manage-delegations"></a>Anzeigen und Verwalten von Delegierungen
 
 Delegierungen zeigen das Abonnement/die Ressourcengruppe an, das/die delegiert wurde, zusammen mit den Benutzern und Berechtigungen, die Zugriff darauf haben. Um diese Informationen anzuzeigen, wählen Sie im linken Bereich der Seite **Meine Kunden** die Option **Delegierungen** aus.
 
 Mithilfe von Filtern am oberen Rand der Seite können Sie Ihre Zugriffszuweisungsinformationen sortieren und gruppieren oder nach bestimmten Kunden, Angeboten oder Schlüsselwörtern filtern.
 
+### <a name="view-role-assignments"></a>Anzeigen von Rollenzuweisungen
+
 Die den einzelnen Delegierungen zugeordneten Benutzer und Berechtigungen werden in der Spalte **Rollenzuweisungen** angezeigt. Sie können jeden Eintrag auswählen, um die vollständige Liste der Benutzer, Gruppen und Dienstprinzipale anzuzeigen, denen der Zugriff auf das Abonnement oder die Ressourcengruppe gewährt wurde. Von dort aus können Sie einen bestimmten Benutzer, eine bestimmte Gruppe oder einen bestimmten Dienstprinzipalnamen auswählen, um weitere Details zu erhalten.
+
+### <a name="remove-delegations"></a>Entfernen von Delegierungen
+
+Wenn Sie beim Onboarding eines Kunden für die delegierte Azure-Ressourcenverwaltung Benutzer mit der Rolle [Löschen von Zuweisungen für Registrierungen bei verwalteten Diensten](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) eingeschlossen haben, können diese Benutzer eine Delegierung entfernen, indem sie das Papierkorbsymbol in der Zeile für diese Delegierung auswählen. In diesem Fall können keine Benutzer im Mandanten des Dienstanbieters auf die zuvor delegierten Ressourcen zugreifen.
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Arbeiten im Kontext eines delegierten Abonnements
 

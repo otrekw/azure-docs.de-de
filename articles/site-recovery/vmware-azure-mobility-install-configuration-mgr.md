@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613906"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514810"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatisieren der Mobility Service-Installation
 
@@ -19,8 +19,8 @@ In diesem Artikel wird beschrieben, wie Sie Installation und Updates für den Mo
 Wenn Sie Site Recovery für die Notfallwiederherstellung von lokalen VMware-VMs und physischen Servern in Azure bereitstellen, wird der Mobility Service-Agent auf jedem Computer installiert, den Sie replizieren möchten. Der Mobility Service erfasst Datenschreibvorgänge auf dem Computer und leitet sie zur Replikation an den Site Recovery-Prozessserver weiter. Es gibt mehrere Möglichkeiten, den Mobility Service bereitzustellen:
 
 - **Pushinstallation**: Der Mobility Service-Agent wird von Site Recovery installiert, wenn Sie die Replikation für einen Computer im Azure-Portal aktivieren.
-- **Manuelle Installation**: Der Mobility Service wird manuell auf den einzelnen Computern installiert. Weitere Informationen zur Pushinstallation und manuellen Installation finden Sie [hier](vmware-physical-mobility-service-overview.md).
-- **Automatisierte Bereitstellung**: Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie System Center Configuration Manager oder Tools von Drittanbietern wie Intigua JetPatch.
+- **Manuelle Installation**: Der Mobility Service wird manuell auf den einzelnen Computern installiert. Weitere Informationen zur Pushinstallation und manuellen Installation finden Sie [hier](/vmware-physical-mobility-service-overview.md).
+- **Automatisierte Bereitstellung**: Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie Microsoft Endpoint Configuration Manager oder Tools von Drittanbietern wie Intigua JetPatch.
 
 Die automatisierte Installation und Aktualisierung kommen in folgenden Fällen als Lösung infrage:
 

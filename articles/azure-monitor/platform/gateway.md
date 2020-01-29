@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830138"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547301"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -60,7 +60,7 @@ Die folgende Abbildung zeigt den Datenfluss von einer Operations Manager-Verwalt
 Computer, die das Log Analytics-Gateway ausführen, müssen über die folgende Konfiguration verfügen:
 
 * Windows 10, Windows 8.1 oder Windows 7
-* Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 oder Windows Server 2008
+* Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 oder Windows Server 2008
 * Microsoft .NET Framework 4.5
 * Vierkernprozessor und 8 GB Arbeitsspeicher (Mindestanforderung) 
 * [Log Analytics-Agent für Windows](agent-windows.md), konfiguriert für die Kommunikation mit demselben Arbeitsbereich wie die Agents, die über das Gateway kommunizieren.

@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfaf3cc9b113ff10766f7a17bd7bf09ffa619a8e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227414"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548865"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -148,7 +148,7 @@ Da es sich hierbei um eine vordefinierte Regel handelt, erhalten Sie eine Warnun
 
 Eine Synchronisierungsregel verfügt über vier Konfigurationsabschnitte: Beschreibung, Bereichsfilter, Verknüpfungsregeln und Transformationen.
 
-#### <a name="description"></a>BESCHREIBUNG
+#### <a name="description"></a>Beschreibung
 Der erste Bereich bietet grundlegende Informationen wie Name und Beschreibung.
 
 ![Registerkarte „Beschreibung“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -173,7 +173,7 @@ Der dritte Bereich wird für die Konfiguration verwendet, wie sich Objekte im Co
 
 ![Registerkarte „Verknüpfungsregeln“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-Der Inhalt der Verknüpfungsregeln hängt von der entsprechenden Option ab, die im Installations-Assistenten ausgewählt ist. Für eine Regel für eingehenden Datenverkehr beginnt die Auswertung mit einem Objekt im Quellconnectorbereich, und jede Gruppe in den Verknüpfungsregeln wird nacheinander ausgewertet. Wenn die Auswertung eines Quellobjekts mit einer der Verknüpfungsregeln ergibt, dass es genau mit einem Objekt im Metaverse übereinstimmt, werden die Objekte verknüpft. Wenn alle Regeln ausgewertet wurden und es keine Übereinstimmung gibt, wird der Verknüpfungstyp auf der Beschreibungsseite verwendet. Falls für diese Konfiguration **Provision**festgelegt ist, wird im Ziel (dem Metaverse) ein neues Objekt erstellt. Die Bereitstellung eines neuen Objekts im Metaverse wird auch als das **Projizieren** eines Objekts für den Metaverse bezeichnet.
+Der Inhalt der Verknüpfungsregeln hängt von der entsprechenden Option ab, die im Installations-Assistenten ausgewählt ist. Für eine Regel für eingehenden Datenverkehr beginnt die Auswertung mit einem Objekt im Quellconnectorbereich, und jede Gruppe in den Verknüpfungsregeln wird nacheinander ausgewertet. Wenn die Auswertung eines Quellobjekts mit einer der Verknüpfungsregeln ergibt, dass es genau mit einem Objekt im Metaverse übereinstimmt, werden die Objekte verknüpft. Wenn alle Regeln ausgewertet wurden und es keine Übereinstimmung gibt, wird der Verknüpfungstyp auf der Beschreibungsseite verwendet. Wenn diese Konfiguration auf **Bereitstellung** festgelegt ist, wird im Ziel ein neues Objekt erstellt, das Metaverse, wenn mindestens ein Attribut in den Joinkriterien vorhanden ist (einen Wert hat). Die Bereitstellung eines neuen Objekts im Metaverse wird auch als das **Projizieren** eines Objekts für den Metaverse bezeichnet.
 
 Die Verknüpfungsregeln werden nur einmal ausgewertet. Wenn ein Connectorbereichsobjekt und ein Metaverse-Objekt verknüpft werden, bleiben sie verknüpft, solange der Gültigkeitsbereich der Synchronisierungsregel weiterhin gegeben ist.
 
@@ -220,7 +220,7 @@ Die Rangfolge für Synchronisierungsregeln wird vom Installations-Assistenten in
 ### <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 Jetzt wissen wir genug über Synchronisierungsregeln, um die Funktionsweise der Konfiguration mit verschiedenen Synchronisierungsregeln zu verstehen. Wenn Sie einen Benutzer und die Attribute betrachten, die zum Metaverse beigetragen werden, werden die Regeln in der folgenden Reihenfolge angewendet:
 
-| NAME | Comment |
+| Name | Comment |
 |:--- |:--- |
 | Ein von AD – Benutzerverknüpfung |Regel für die Verknüpfung von Connectorbereichobjekten mit Metaverse. |
 | Ein von AD – Benutzer AccountEnabled |Erforderliche Attribute für eine Anmeldung bei Azure AD und Office 365. Diese Attribute sollen aus dem aktivierten Konto kommen. |

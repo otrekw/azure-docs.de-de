@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982459"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543306"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Trainieren mit Datasets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Azure Machine Learning-Datasets bieten eine nahtlose Integration in Azure Machin
 
 Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutzen:
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
@@ -83,7 +83,7 @@ Dieser Code erstellt ein generisches Estimator-Objekt (`est`) das Folgendes fest
 
 * Ein Skriptverzeichnis für Ihre Skripts. Alle Dateien in dieses Verzeichnis werden zur Ausführung in die Clusterknoten hochgeladen.
 * Das Trainingsskript *train_titanic.py*
-* Das Eingabedataset für das Training: `titanic`
+* Das Eingabedataset für das Training: `titanic` `as_named_input()` ist erforderlich, damit der zugewiesene Name in Ihrem Trainingsskript auf das Eingabedataset verweisen kann. 
 * Das Computeziel für das Experiment
 * Die Umgebungsdefinition für das Experiment
 
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Wenn Sie Ihre Datendateien auf dem Computeziel für das Training verfügbar machen möchten, nutzen Sie [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py), um Dateien einzubinden oder herunterzuladen, auf die damit verwiesen wird.
 
 ### <a name="mount-vs-download"></a>Einbinden im Vergleich mit Download
-Wenn Sie ein Dataset einbinden, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. Wenn Ihr Datenvolumen die Größe des Computedatenträgers überschreitet oder wenn Sie nur einen Teil des Datasets in Ihr Skript laden, wird die Einbindung empfohlen. Der Grund ist, dass beim Herunterladen eines Datasets, das größer ist als der Datenträger, ein Fehler auftritt, und beim Einbinden nur der Teil des Datasets geladen wird, der von Ihrem Skript zum Zeitpunkt der Verarbeitung verwendet wird. Beim Herunterladen eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden.
+Wenn Sie ein Dataset einbinden, fügen Sie die Datei, auf die das Dataset verweist, an ein Verzeichnis (Bereitstellungspunkt) an und stellen sie auf dem Computeziel zur Verfügung. Einbinden wird für Linux-basierte Computeressourcen unterstützt, einschließlich Azure Machine Learning Compute, virtuelle Computer und HDInsight. Wenn Ihr Datenvolumen die Größe des Computedatenträgers überschreitet oder wenn Sie nur einen Teil des Datasets in Ihr Skript laden, wird die Einbindung empfohlen. Der Grund ist, dass beim Herunterladen eines Datasets, das größer ist als der Datenträger, ein Fehler auftritt, und beim Einbinden nur der Teil des Datasets geladen wird, der von Ihrem Skript zum Zeitpunkt der Verarbeitung verwendet wird. 
 
+Beim Herunterladen eines Datasets werden alle Dateien, auf die das Dataset verweist, auf das Computeziel heruntergeladen. Herunterladen wird für alle Computetypen unterstützt. Wenn Ihr Skript alle Dateien verarbeitet, auf die das Dataset verweist, und Ihr Computedatenträger über Platz für das vollständige Dataset verfügt, wird Herunterladen empfohlen, um den Mehraufwand das Streamen von Daten von Speicherdiensten zu vermeiden.
+
+Das Einbinden oder Herunterladen von Dateien beliebiger Formate aus Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL-Datenbank und Azure Database for PostgreSQL wird für Datasets beliebiger Formate unterstützt. 
 
 ### <a name="create-a-filedataset"></a>Erstellen eines FileDataset-Elements
 
@@ -126,7 +129,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>Konfigurieren des Estimators
 
-Anstatt das Dataset über den `inputs`-Parameter im Estimator zu übergeben, können Sie das Dataset auch über `script_params` übergeben und den Datenpfad (Bereitstellungspunkt) im Trainingsskript über Argumente abrufen. Auf diese Weise können Sie auf Ihre Daten zugreifen und ein vorhandenes Trainingsskript verwenden.
+Neben dem Übergeben des Datasets über den `inputs`-Parameter im Estimator können Sie das Dataset auch über `script_params` übergeben und den Datenpfad (Bereitstellungspunkt) im Trainingsskript über Argumente abrufen. Auf diese Weise können Sie das Trainingsskript unabhängig von azureml-sdk halten. Anders ausgedrückt: Sie können dasselbe Trainingsskript für lokales Debugging und Remotetraining auf jeder Cloudplattform verwenden.
 
 Ein [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)-Estimatorobjekt wird verwendet, um die Scikit-learn-Experimente zu übermitteln. Weitere Informationen zum Training mit der [SKlearn-Schätzung](how-to-train-scikit-learn.md).
 

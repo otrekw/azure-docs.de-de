@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278210"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544785"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Vorschau: Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
-Das Erstellen einer Skalierungsgruppe, die Spot-VMs nutzt, entspricht den Ausführungen im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md). Fügen Sie dem Ressourcentyp *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* in Ihrer Vorlage die Eigenschaft „Priority“ hinzu, und geben Sie *Spot* als Wert an. Achten Sie darauf, dass Sie die API-Version *2019-03-01* oder höher verwenden. 
+Das Erstellen einer Skalierungsgruppe, die Spot-VMs nutzt, entspricht den Ausführungen im Artikel „Erste Schritte“ für [Linux](quick-create-template-linux.md) oder [Windows](quick-create-template-windows.md). 
 
-Um die Entfernungsrichtlinie auf Löschen festzulegen, fügen Sie den Parameter „evictionPolicy“ hinzu, und setzen Sie ihn auf *delete*.
-
-Im folgenden Beispiel wird eine Linux-Spot-Skalierungsgruppe mit der Bezeichnung *myScaleSet* in der Region *USA, Westen-Mitte* erstellt, bei der die VMs in der Skalierungsgruppe beim Entfernen *gelöscht* werden:
+Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereitstellungen. Fügen Sie dem Abschnitt `"virtualMachineProfile":` in Ihrer Vorlage die Eigenschaften `priority`, `evictionPolicy` und `billingProfile` hinzu: 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-Parameter in `Delete`.
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 **F:** Ist eine Spot-Instanz nach der Erstellung identisch mit einer Standardinstanz?

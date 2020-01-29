@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814938"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543918"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -98,9 +98,16 @@ Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standard
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
 
-Führen Sie den folgenden Befehl mit dem MSOnline PowerShell-Modul aus, um das EnforceCloudPasswordPolicyForPasswordSyncedUsers-Feature zu aktivieren:
-
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
+Führen Sie den folgenden Befehl mit dem MSOnline PowerShell-Modul aus, um das EnforceCloudPasswordPolicyForPasswordSyncedUsers-Feature wie nachstehend gezeigt zu aktivieren. Geben Sie „Yes“ für den Parameter „Enable“ ein, wie unten dargestellt:
+```
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
+`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
+`Supply values for the following parameters:`
+`Enable: yes`
+`Confirm`
+`Continue with this operation?`
+`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+```
 
 Nach der Aktivierung des Features wechselt Azure AD nicht zu jedem synchronisierten Benutzer, um den `DisablePasswordExpiration`-Wert aus dem „PasswordPolicies“-Attribut zu entfernen. Stattdessen wird der Wert während der nächsten Kennwortsynchronisierung für jeden Benutzer auf `None` festgelegt, wenn das Kennwort beim nächsten Mal in der lokalen AD-Instanz geändert wird.  
 
@@ -117,7 +124,7 @@ Nachteil: Wenn synchronisierte Konten vorhanden sind, die in Azure AD nicht abla
 > [!NOTE]
 > Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingung der Änderung des Kennworts bei der nächsten Anmeldung
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingen der Kennwortzurücksetzung bei der nächsten Anmeldung
 
 Normalerweise wird ein Benutzer gezwungen, sein Kennwort bei der ersten Anmeldung zu ändern, insbesondere nachdem das Administratorkennwort zurückgesetzt wurde.  Dies wird häufig als Festlegen eines „temporären“ Kennworts bezeichnet und durch Aktivieren des Flags „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ für ein Benutzerobjekt in Active Directory (AD) vollzogen.
   

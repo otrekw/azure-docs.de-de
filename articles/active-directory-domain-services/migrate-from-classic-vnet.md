@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893058"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544156"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Vorschauversion: Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager
 
-Für Azure Active Directory Domain Services (AD DS) wird für Kunden, die derzeit das klassische VNET-Modell nutzen, eine einmalige Umstellung auf das Resource Manager-basierte VNET-Modell unterstützt.
+Für Azure Active Directory Domain Services (AD DS) wird für Kunden, die derzeit das klassische VNET-Modell nutzen, eine einmalige Umstellung auf das Resource Manager-basierte VNET-Modell unterstützt. Von Azure AD DS verwaltete Domänen, die das Resource Manager-Bereitstellungsmodell verwenden, bieten zusätzliche Features wie eine differenzierte Kennwortrichtlinie, Überwachungsprotokolle und einen Kontosperrschutz.
 
-In diesem Artikel werden die Vorteile und Aspekte der Migration und anschließend die erforderlichen Schritte für eine erfolgreiche Migration zu einer vorhandenen Azure AD DS-Instanz beschrieben. Diese Funktion steht derzeit als Vorschau zur Verfügung.
+In diesem Artikel werden die Vorteile und Aspekte der Migration und anschließend die erforderlichen Schritte für eine erfolgreiche Migration zu einer vorhandenen Azure AD DS-Instanz beschrieben. Diese Migrationsfunktion steht derzeit als Vorschauversion zur Verfügung.
 
 ## <a name="overview-of-the-migration-process"></a>Übersicht über den Migrationsprozess
 
@@ -106,7 +106,7 @@ Während der Vorbereitung und anschließenden Migration einer verwalteten Azure 
 
 ### <a name="ip-addresses"></a>IP-Adressen
 
-Die Domänencontroller-IP-Adressen für eine verwaltete Azure AD DS-Domäne ändern sich nach der Migration. Dies gilt auch für die öffentliche IP-Adresse des Secure LDAP-Endpunkts. Die neuen IP-Adressen liegen innerhalb des Adressbereichs für das neue Subnetz im virtuellen Resource Manager-Netzwerk.
+Die Domänencontroller-IP-Adressen für eine verwaltete Azure AD DS-Domäne ändern sich nach der Migration. Diese Änderung gilt auch für die öffentliche IP-Adresse des Secure LDAP-Endpunkts. Die neuen IP-Adressen liegen innerhalb des Adressbereichs für das neue Subnetz im virtuellen Resource Manager-Netzwerk.
 
 Bei einem Rollback können sich die IP-Adressen nach dem Rollbackvorgang ändern.
 
@@ -122,13 +122,13 @@ Verwaltete Azure AD DS-Domänen, die in klassischen virtuellen Netzwerken ausge
 
 Standardmäßig führen fünf Versuche mit fehlerhaften Kennwörtern innerhalb von zwei Minuten zu einer Kontosperrung von 30 Minuten.
 
-Für ein gesperrtes Konto ist die Anmeldung nicht möglich. Dies kann zu einer Störung bei der Verwaltung der verwalteten Azure AD DS-Domäne oder der mit dem Konto verwalteten Anwendungen führen. Nachdem eine verwaltete Azure AD DS-Domäne migriert wurde, kann es für Konten zu einer gefühlten dauerhaften Sperrung aufgrund von wiederholten fehlerhaften Anmeldeversuchen kommen. Zwei gängige Szenarien nach der Migration sind:
+Über ein gesperrtes Konto ist keine Anmeldung möglich. Dies kann zu einer Störung bei der Verwaltung der verwalteten Azure AD DS-Domäne oder der mit dem Konto verwalteten Anwendungen führen. Nachdem eine verwaltete Azure AD DS-Domäne migriert wurde, kann es für Konten zu einer gefühlten dauerhaften Sperrung aufgrund von wiederholten fehlerhaften Anmeldeversuchen kommen. Zwei gängige Szenarien nach der Migration sind:
 
 * Ein Dienstkonto, für das ein abgelaufenes Kennwort verwendet wird.
     * Das Dienstkonto versucht wiederholt, sich mit einem abgelaufenen Kennwort anzumelden, sodass das Konto gesperrt wird. Greifen Sie zum Beheben dieses Problems auf die Anwendung oder VM zu, für die die Anmeldeinformationen abgelaufen sind, und aktualisieren Sie das Kennwort.
 * Eine schädliche Entität versucht, Brute-Force-Angriffe durchzuführen, um sich an Konten anzumelden.
     * Wenn VMs für den Zugriff über das Internet verfügbar gemacht werden, probieren Angreifer bei Anmeldeversuchen oft häufig verwendete Kombinationen aus Benutzername und Kennwort aus. Diese wiederholten Anmeldeversuche, die nicht erfolgreich sind, können zur Sperrung des Kontos führen. Wir raten Ihnen davon ab, Administratorkonten mit generischen Namen zu verwenden (z. B. *admin* oder *administrator*), um für diese Konten die Gefahr einer Sperrung zu verringern.
-    * Reduzieren Sie die Anzahl von VMs, die für den Zugriff über das Internet verfügbar gemacht werden. Sie können [Azure Bastion (derzeit in der Vorschauphase)][azure-bastion] verwenden, um über das Azure-Portal eine sichere Verbindung mit VMs herzustellen.
+    * Reduzieren Sie die Anzahl von VMs, die für den Zugriff über das Internet verfügbar gemacht werden. Sie können [Azure Bastion][azure-bastion] verwenden, um über das Azure-Portal eine sichere Verbindung mit VMs herzustellen.
 
 Falls Sie vermuten, dass einige Konten nach der Migration unter Umständen gesperrt sind, helfen Ihnen die abschließenden Migrationsschritte weiter. Darin wird beschrieben, wie Sie die Überprüfung aktivieren oder die Einstellungen für differenzierte Kennwortrichtlinien ändern.
 
@@ -164,11 +164,11 @@ Die Migration zum Resource Manager-Bereitstellungsmodell und virtuellen Netzwerk
 
 ## <a name="update-and-verify-virtual-network-settings"></a>Aktualisieren und Überprüfen der Einstellungen des virtuellen Netzwerks
 
-Führen Sie die folgenden vorbereitenden Prüfungen und Aktualisierungen durch, bevor Sie mit der Migration beginnen. Sie können diese Schritte jederzeit vor der Migration ausführen. Diese wirken sich nicht negativ auf den Betrieb der verwalteten Azure AD DS-Domäne aus.
+Führen Sie die folgenden vorbereitenden Prüfungen und Aktualisierungen durch, bevor Sie mit dem Migrationsprozess beginnen. Sie können diese Schritte jederzeit vor der Migration ausführen. Diese wirken sich nicht negativ auf den Betrieb der verwalteten Azure AD DS-Domäne aus.
 
 1. Aktualisieren Sie Ihre lokale Azure PowerShell-Umgebung auf die neueste Version. Zum Durchführen der Migrationsschritte benötigen Sie mindestens Version *2.3.2*.
 
-    Informationen zur Überprüfung und Aktualisierung finden Sie unter [Übersicht über Azure PowerShell][azure-powershell].
+    Informationen zur Überprüfung und Aktualisierung Ihrer PowerShell-Version finden Sie unter [Übersicht über Azure PowerShell][azure-powershell].
 
 1. Erstellen Sie ein virtuelles Resource Manager-Netzwerk, oder wählen Sie ein vorhandenes aus.
 
@@ -210,7 +210,8 @@ Führen Sie die folgenden Schritte aus, um die verwaltete Azure AD DS-Domäne f
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ Der zweite Domänencontroller sollte ein bis zwei Stunden nach Abschluss des Cmd
 
 Nach dem erfolgreichen Abschluss des Migrationsprozesses können Sie optionale Konfigurationsschritte ausführen, z. B. das Aktivieren von Überwachungsprotokollen oder E-Mail-Benachrichtigungen oder das Aktualisieren der differenzierten Kennwortrichtlinie.
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Abonnieren von Überwachungsprotokollen mit Azure Monitor
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Abonnieren von Überwachungsprotokollen mit Azure Monitor
 
 Von Azure AD DS werden Überwachungsprotokolle verfügbar gemacht, um als Hilfe bei der Problembehandlung und Anzeige von Ereignissen auf den Domänencontrollern zu dienen. Weitere Informationen finden Sie im Artikel zum [Aktivieren und Verwenden von Überwachungsprotokollen][security-audits].
 
 Sie können Vorlagen verwenden, um wichtige Informationen zu überwachen, die in den Protokollen verfügbar gemacht werden. Mit der Arbeitsmappenvorlage für Überwachungsprotokolle können mögliche Kontosperrungen in der verwalteten Azure AD DS-Domäne überwacht werden.
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen für Azure AD Domain Services
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurieren von E-Mail-Benachrichtigungen für Azure AD Domain Services
 
 Aktualisieren Sie die Einstellungen für E-Mail-Benachrichtigungen im Azure-Portal, um benachrichtigt zu werden, wenn in der verwalteten Azure AD DS-Domäne ein Problem erkannt wird. Weitere Informationen finden Sie unter [Konfigurieren von Benachrichtigungseinstellungen][notifications].
 
-#### <a name="update-fine-grained-password-policy"></a>Aktualisieren der differenzierten Kennwortrichtlinie
+### <a name="update-fine-grained-password-policy"></a>Aktualisieren der differenzierten Kennwortrichtlinie
 
 Bei Bedarf können Sie die differenzierte Kennwortrichtlinie aktualisieren, damit sie weniger restriktiv als in der Standardkonfiguration ist. Sie können anhand der Überwachungsprotokolle ermitteln, ob eine weniger restriktive Einstellung sinnvoll ist, und die Richtlinie dann je nach Bedarf konfigurieren. Führen Sie die folgenden allgemeinen Schritte aus, um die Richtlinieneinstellungen für Konten zu überprüfen und zu aktualisieren, die nach der Migration wiederholt gesperrt werden:
 
 1. [Konfigurieren Sie die Kennwortrichtlinie][password-policy] so, dass für die verwaltete AD DS-Domäne weniger Einschränkungen gelten, und sehen Sie sich die Ereignisse in den Überwachungsprotokollen an.
 1. Wenn für Dienstkonten abgelaufene Kennwörter gemäß Identifizierung in den Überwachungsprotokollen verwendet werden, sollten Sie diese Konten aktualisieren und das richtige Kennwort angeben.
-1. Wenn die VM für den Zugriff über das Internet verfügbar gemacht wird, sollten Sie überprüfen, ob für generische Kontonamen wie *Administrator*, *Benutzer* oder *Gast* eine hohe Zahl von Anmeldeversuchen zu verzeichnen ist. Aktualisieren Sie diese VMs nach Möglichkeit so, dass weniger Konten mit generischen Namen verwendet werden.
+1. Wenn die VM für den Zugriff über das Internet verfügbar gemacht wird, sollten Sie überprüfen, ob für generische Kontonamen wie *Administrator*, *Benutzer* oder *Gast* eine hohe Anzahl von Anmeldeversuchen zu verzeichnen ist. Aktualisieren Sie diese VMs nach Möglichkeit so, dass weniger Konten mit generischen Namen verwendet werden.
 1. Verwenden Sie auf der VM eine Netzwerkablaufverfolgung, um die Quelle der Angriffe zu ermitteln, und blockieren Sie diese IP-Adressen für Anmeldeversuche.
 1. Falls es nur zu geringfügigen Problemen mit Sperrungen kommt, sollten Sie die differenzierte Kennwortrichtlinie so aktualisieren, dass sie so restriktiv wie nötig ist.
 
-#### <a name="creating-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
+### <a name="creating-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
 Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu schützen, die für die verwaltete Domäne erforderlich sind, und den gesamten anderen Datenverkehr in eingehender Richtung zu blockieren. Diese Netzwerksicherheitsgruppe fungiert als zusätzliche Schutzschicht zum Sperren des Zugriffs auf die verwaltete Domäne und wird nicht automatisch erstellt. Sehen Sie sich die folgenden Schritte an, mit denen die Netzwerksicherheitsgruppe erstellt und die erforderlichen Ports geöffnet werden:
 
@@ -301,6 +302,8 @@ Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu
 1. Fügen Sie der Netzwerksicherheitsgruppe bei Verwendung von Secure LDAP eine Regel hinzu, um Datenverkehr in eingehender Richtung für *TCP*-Port *636* zuzulassen. Weitere Informationen finden Sie unter [Konfigurieren von Secure LDAP][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Rollback und Wiederherstellung nach der Migration
+
+Bis zu einem bestimmten Zeitpunkt des Migrationsprozesses können Sie ein Rollback oder eine Wiederherstellung der verwalteten Azure AD DS-Domäne ausführen.
 
 ### <a name="roll-back"></a>Rollback
 

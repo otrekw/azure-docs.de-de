@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8db1d782b6f92637ad929ba863a8d24c81280577
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497926"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548423"
 ---
 # <a name="enter-data-manually-module"></a>Modul „Enter Data Manually“ (Manuelles Eingeben von Daten)
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer (Vorschauversion) beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mithilfe dieses Moduls können Sie ein kleines Dataset durch Eingabe von Werten erstellen. Das Dataset kann mehrere Spalten enthalten.
   
@@ -97,9 +97,9 @@ Dieses Modul kann in folgenden Szenarien hilfreich sein:
   
      Wenn Sie Zeilen mit fehlenden Werten erstellen, können Sie diese später jederzeit wieder herausfiltern.  
   
-5.  Klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Run selected** (Ausgewählte ausführen), um die Daten zu analysieren und als Dataset in Ihren Arbeitsbereich zu laden.  
+5.  Verbinden Sie den Ausgabeport mit anderen Modulen, und führen Sie die Pipeline aus.  
   
-     Um eine Vorschau des Datasets anzuzeigen, klicken Sie auf den Ausgabeport, und wählen Sie **Visualize** (Visualisieren).  
+     Um das Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus.  
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

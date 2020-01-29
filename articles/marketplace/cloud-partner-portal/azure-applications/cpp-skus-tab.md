@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826175"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543153"
 ---
 # <a name="azure-application-skus-tab"></a>Registerkarte „SKUs“ für Azure-Anwendungen
 
@@ -44,13 +44,13 @@ In der nächsten Bildschirmaufnahme ist das „SKU-Details“-Formular für eine
 
 Geben Sie die folgenden SKU-Werte an.  Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
 
-|    Feld         |       BESCHREIBUNG                                                            |
+|    Feld         |       Beschreibung                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Ein Titel für die SKU. Dieser Titel wird im Katalog für dieses Element angezeigt.   |
 | **Zusammenfassung\***    | Eine kurze Beschreibung der SKU. (Die maximale Länge beträgt 100 Zeichen.)  |
 | **Beschreibung\*** | Eine detaillierte Beschreibung der SKU. Einfaches HTML wird unterstützt.                 | 
 | **SKU-Typ\***   | Typ der Azure-Anwendungslösung, wählen Sie ***Lösungsvorlage** für dieses Szenario aus. |
-| **Cloudverfügbarkeit\*** | Der Standort der SKU. Der Standardwert ist **Azure, öffentlich**.  <b/>   **Öffentliches Azure**: Die App wird für Kunden in allen öffentlichen Azure-Regionen bereitgestellt, die über Marketplace-Integration verfügen.  <b/>   **Azure Government Cloud**: Die App wird in der Azure Government Cloud bereitgestellt. Den Herausgebern wird von Microsoft empfohlen, vor der Veröffentlichung in [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) zu testen und zu überprüfen, ob ihre Lösung in dieser Umgebung erwartungsgemäß funktioniert. Fordern Sie zum Bereitstellen und Testen ein [Testkonto](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/) an.  |
+| **Cloudverfügbarkeit\*** | Der Standort der SKU. Der Standardwert ist **Azure, öffentlich**.  <b/>   **Öffentliches Azure:** Die App wird für Kunden in allen öffentlichen Azure-Regionen bereitgestellt, die über Marketplace-Integration verfügen.  <b/>   **Azure Government-Cloud:** Die App wird in der Azure Government-Cloud bereitgestellt. Den Herausgebern wird von Microsoft empfohlen, vor der Veröffentlichung in [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) zu testen und zu überprüfen, ob ihre Lösung in dieser Umgebung erwartungsgemäß funktioniert. Fordern Sie zum Bereitstellen und Testen ein [Testkonto](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/) an.  |
 | **Ist dies eine private SKU?\*** | Wählen Sie **Ja** aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist. |
 |   |   |
 
@@ -66,15 +66,15 @@ In der nächsten Bildschirmaufnahme ist das „SKU-Details“-Formular für eine
 
 Konfigurieren Sie die folgenden SKU-Einstellungen. Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
 
-|    Feld         |       BESCHREIBUNG                                                            |
+|    Feld         |       Beschreibung                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Ein Titel für die SKU. Dieser Titel wird im Katalog für dieses Element angezeigt.   |
 | **Zusammenfassung\***    | Eine kurze Beschreibung der SKU. (Die maximale Länge beträgt 100 Zeichen.)  |
 | **Beschreibung\*** | Eine detaillierte Beschreibung der SKU. Einfaches HTML wird unterstützt.                 | 
 | **SKU-Typ\***   | Typ der Azure-Anwendungslösung, wählen Sie ***Verwaltete Anwendung** für dieses Szenario aus. 
-| **Cloudverfügbarkeit\*** | Der Standort der SKU. Der Standardwert ist **Azure, öffentlich**.  <b/>   **Öffentliches Azure**: Die App wird für Kunden in allen öffentlichen Azure-Regionen bereitgestellt, die über Marketplace-Integration verfügen.  <b/>   **Azure Government Cloud**: Die App wird in der Azure Government Cloud bereitgestellt. Den Herausgebern wird von Microsoft empfohlen, vor der Veröffentlichung in [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) zu testen und zu überprüfen, ob ihre Lösung in dieser Umgebung erwartungsgemäß funktioniert. Fordern Sie zum Bereitstellen und Testen ein [Testkonto](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/) an.   Microsoft Azure Government ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene UND für Partner, die Dienste für diese Entitäten erbringen können. |
+| **Cloudverfügbarkeit\*** | Der Standort der SKU. Der Standardwert ist **Azure, öffentlich**.  <b/>   **Öffentliches Azure:** Die App wird für Kunden in allen öffentlichen Azure-Regionen bereitgestellt, die über Marketplace-Integration verfügen.  <b/>   **Azure Government-Cloud:** Die App wird in der Azure Government-Cloud bereitgestellt. Den Herausgebern wird von Microsoft empfohlen, vor der Veröffentlichung in [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners) zu testen und zu überprüfen, ob ihre Lösung in dieser Umgebung erwartungsgemäß funktioniert. Fordern Sie zum Bereitstellen und Testen ein [Testkonto](https://azure.microsoft.com/offers/ms-azr-usgov-0044p/) an.   Microsoft Azure Government ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene UND für Partner, die Dienste für diese Entitäten erbringen können. |
 | **Ist dies eine private SKU?\*** | Wählen Sie **Ja** aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist. |
-| **Verfügbarkeit nach Land/Region\*** | Verwenden Sie **Regionen auswählen**, um die Liste der verfügbaren Länder/Regionen anzuzeigen. Aktivieren Sie jedes gewünschte Land/Region, und wählen Sie dann **OK** aus, um Ihre Auswahl zu speichern.  <b/>   ![Liste der Verfügbarkeit nach Land/Region](./media/azure-app-select-country-region.png)  |
+| **Verfügbarkeit nach Land/Region\*** | Verwenden Sie **Regionen auswählen**, um die Liste der verfügbaren Länder/Regionen anzuzeigen. Aktivieren Sie jedes gewünschte Land/Region, und wählen Sie dann **OK** aus, um Ihre Auswahl zu speichern.  <b/>   ![Liste der Verfügbarkeit nach Land und Region](./media/azure-app-select-country-region.png)  |
 | **Alte Preise\*** | Preis für die SKU in USD pro Monat. Die Preise werden in Landeswährung festgelegt, wobei die bei der Konfiguration aktuellen Wechselkurse verwendet werden. Überprüfen Sie diese Einstellungen, da diese letztendlich in Ihrer Verantwortung liegen. Um die Preise der jeweiligen Länder/Regionen einzeln festzulegen oder anzuzeigen, exportieren Sie die Preiskalkulationstabelle, und importieren Sie sie mit den benutzerdefinierten Preisen.  Sie müssen Ihre Preisänderungen speichern, damit die Preisdaten exportiert/importiert werden können.  |
 | **Vereinfachte Währungspreise\*** | Preis für die SKU in USD pro Monat. Dieser Wert muss mit dem für „Alte Preise“ identisch sein. Weitere Informationen finden Sie unter [Vereinfachte Währungspreise](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer). |
 |  |  |
@@ -82,17 +82,19 @@ Konfigurieren Sie die folgenden SKU-Einstellungen. Die mit einem Sternchen geken
 
 ### <a name="package-details-for-solution-template"></a>„Paketdetails“ für eine Lösungsvorlage
 
-   ![Paketdetails für eine Lösungsvorlage](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Paketdetails für eine Lösungsvorlage](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Geben Sie die folgenden Werte für die **Paketdetails** an.  Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
 
 - **Version\*** : Die Version des Pakets, das Sie hochladen. Versionstags müssen im Format „X.Y.Z“ angegeben werden. „X“, „Y“ und „Z“ sind dabei ganze Zahlen.
 - **Paketdatei (.zip)\*** : Dieses Paket enthält die folgenden Dateien, die in einer ZIP-Datei gespeichert sind.
-  - MainTemplate.json: Die Vorlagendatei für die Bereitstellung, die zum Bereitstellen der Lösung/Anwendung und zum Erstellen der darin definierten Ressourcen für die Lösung verwendet wird. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
-  - createUIDefinition.json: Diese Datei wird vom Azure-Portal verwendet, um die Benutzeroberfläche für die Bereitstellung dieser Lösung/Anwendung zu generieren. Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - **mainTemplate.json:\*** die Vorlagendatei für die Bereitstellung, die zum Bereitstellen der Lösung/Anwendung und zum Erstellen der darin definierten Ressourcen für die Lösung verwendet wird. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template).
+  - **createUIDefinition.json:\*** Diese Datei wird vom Azure-Portal verwendet, um die Benutzeroberfläche für die Bereitstellung dieser Lösung/Anwendung zu generieren. Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - Skripts (falls erforderlich): zusätzliche Skripts, die möglicherweise beim Ausführen der Vorlage erforderlich sind, z. B. `Microsoft.Compute/virtualMachines/extensions`.
+  - Geschachtelte Vorlagen (falls erforderlich): ggf. zusätzliche geschachtelte Vorlagen.
 
-  >[!IMPORTANT] 
-  >Dieses Paket sollte alle geschachtelten Vorlagen oder Skripts enthalten, die erforderlich sind, um diese Anwendung erfolgreich bereitzustellen. Die Dateien „MainTemplate.json“ und „createUiDefinition.json“ müssen im Stammverzeichnis enthalten sein.
+  > [!IMPORTANT] 
+  > Dieses Paket sollte alle geschachtelten Vorlagen oder Skripts enthalten, die erforderlich sind, um diese Anwendung erfolgreich bereitzustellen. Die Dateien „mainTemplate.json“ und „createUIDefinition.json“ müssen im Stammverzeichnis enthalten sein. Weitere Informationen zu Bereitstellungsartefakten finden Sie unter [Azure Resource Manager Templates – Best Practices Guide](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts) (Azure Resource Manager-Vorlagen – Leitfaden zu bewährten Methoden).
 
 
 ### <a name="package-details-for-managed-application"></a>„Paketdetails“ für eine „Verwaltete Anwendung“
@@ -103,7 +105,7 @@ Geben Sie die folgenden Paketdetails an.  Die mit einem Sternchen gekennzeichnet
 
 - **Version\*** : Die Version des Pakets, das Sie hochladen. Versionstags müssen im Format „X.Y.Z“ angegeben werden. „X“, „Y“ und „Z“ sind dabei ganze Zahlen.
 - **Paketdatei (.zip)\*** : Dieses Paket enthält die folgenden Dateien, die in einer ZIP-Datei gespeichert sind.
-  - applianceMainTemplate.json: Die Bereitstellungsvorlagendatei, die zum Bereitstellen der Lösung/Anwendung und zum Erstellen der definierten Ressourcen verwendet wird. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
+  - applianceMainTemplate.json: Die Bereitstellungsvorlagendatei, die zum Bereitstellen der Lösung/Anwendung und zum Erstellen der definierten Ressourcen verwendet wird. Weitere Informationen finden Sie unter [Quickstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
   - appliancecreateUIDefinition.json: Diese Datei wird vom Azure-Portal verwendet, um die Benutzeroberfläche für die Bereitstellung dieser Lösung/Anwendung zu generieren. Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
   - mainTemplate.json: Dies ist die Vorlagendatei, die nur die Microsoft.Solution/appliances-Ressource enthält. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
 Beachten Sie die folgenden Schlüsseleigenschaften dieser Ressource:
