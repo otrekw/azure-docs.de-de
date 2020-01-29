@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 7b23da81143a4ae66d9f25cd953c4a3952f27455
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678362"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277677"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
-Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
+Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer Anwendung aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst Sie die Dauer von Abhängigkeitsaufrufen, gibt an, ob sie durchgeführt werden können, und stellt zusätzliche Informationen wie den Namen der Abhängigkeit etc. bereit. Sie können bestimmte Abhängigkeitsaufrufe untersuchen und sie mit Anforderungen und Ausnahmen in Zusammenhang setzen.
 
 ## <a name="automatically-tracked-dependencies"></a>Automatisch nachverfolgte Abhängigkeiten
 
@@ -189,10 +189,10 @@ Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) v
 * Bei fehlerhaften Abhängigkeitsaufrufen wird das Feld „success“ auf FALSE festgelegt. `DependencyTrackingTelemetryModule` gibt keine Auskunft über `ExceptionTelemetry`. Das vollständige Datenmodell für Abhängigkeiten wird [hier](data-model-dependency-telemetry.md) beschrieben.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
-Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Issues im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
+Wie jedes Application Insights-SDK ist auch das Modul zur Abhängigkeitserfassung ein Open Source-Modul. Lesen Sie den Code, tragen Sie zum Code bei, oder melden Sie Probleme im [offiziellen GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-dotnet-server).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md)
 * [Daten zu Seiten und Benutzern](../../azure-monitor/app/javascript.md)
-* [Availability](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)

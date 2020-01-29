@@ -1,5 +1,5 @@
 ---
-title: Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist | Microsoft-Dokumentation
+title: Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 description: In diesem Artikel werden Azure-Clouds und -Regionen behandelt, in denen Azure Media Services v3 verfügbar ist.
 services: media-services
 documentationcenter: ''
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409284"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310565"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -24,7 +24,7 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 
 ## <a name="feature-availability-in-azure-clouds"></a>Featureverfügbarkeit in Azure-Clouds
 
-| Feature|Globale Azure-Regionen | Azure Government|Azure Deutschland|Azure China 21Vianet|
+| Funktion|Globale Azure-Regionen | Azure Government|Azure Deutschland|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
@@ -69,7 +69,7 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 |Endpunkte ||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.azure.com/` |
-| Authentication | `https://login.microsoftonline.com/` | 
+| Authentifizierung | `https://login.microsoftonline.com/` | 
 | Zielgruppe | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
@@ -77,7 +77,7 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 |Endpunkte||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
-| Authentication | `https://login.microsoftonline.us/` | 
+| Authentifizierung | `https://login.microsoftonline.us/` | 
 | Zielgruppe | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Deutschland
@@ -85,7 +85,7 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 | Endpunkte ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
-| Authentication | `https://login.microsoftonline.de/` |
+| Authentifizierung | `https://login.microsoftonline.de/` |
 | Zielgruppe | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
@@ -93,7 +93,7 @@ Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten
 |Endpunkte||
 | --- | --- | 
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
-| Authentication | `https://login.chinacloudapi.cn/` |
+| Authentifizierung | `https://login.chinacloudapi.cn/` |
 | Zielgruppe |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="see-also"></a>Weitere Informationen

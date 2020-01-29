@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036451"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291888"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -30,7 +30,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Elemente 
 
 * **Azure-Abonnement**: Falls Sie noch nicht über ein Konto verfügen, können Sie in wenigen Minuten eines erstellen. MSDN-Abonnenten finden weitere Informationen unter [Monatliche Azure-Gutschrift für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Alle anderen Benutzer können sich unter [Erstellen eines kostenlosen Testkontos](https://azure.microsoft.com/pricing/free-trial/)informieren.  
 * **Azure CLI**: Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli) installiert haben und mit [az login](/cli/azure/reference-index) in Ihrem Azure-Konto angemeldet sind.
-* **In einer VHD-Datei installiertes OpenBSD-Betriebssystem:** Auf einer virtuellen Festplatte muss ein unterstütztes OpenBSD-Betriebssystem ([amd64, Version 6.2](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) installiert sein. Zum Erstellen von VHD-Dateien stehen mehrere verschiedene Tools bereit. Sie können beispielsweise eine Virtualisierungslösung wie Hyper-V verwenden, um die VHD-Datei zu erstellen und das Betriebssystem zu installieren. Eine Anleitung zum Installieren und Verwenden von Hyper-V finden Sie unter [Installieren von Hyper-V und Erstellen eines virtuellen Computers](https://technet.microsoft.com/library/hh846766.aspx).
+* **In einer VHD-Datei installiertes OpenBSD-Betriebssystem:** Auf einer virtuellen Festplatte muss ein unterstütztes OpenBSD-Betriebssystem ([amd64 Version 6.6](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) installiert sein. Zum Erstellen von VHD-Dateien stehen mehrere verschiedene Tools bereit. Sie können beispielsweise eine Virtualisierungslösung wie Hyper-V verwenden, um die VHD-Datei zu erstellen und das Betriebssystem zu installieren. Eine Anleitung zum Installieren und Verwenden von Hyper-V finden Sie unter [Installieren von Hyper-V und Erstellen eines virtuellen Computers](https://technet.microsoft.com/library/hh846766.aspx).
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>Vorbereiten des OpenBSD-Images für Azure

@@ -1,26 +1,20 @@
 ---
 title: Application Gateway-Integration in Azure Security Center | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen darüber, wie Application Gateway in Azure Security Center integriert werden kann.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: ''
+ms.author: victorh
 ms.assetid: e5ea5cf9-3b41-4b85-a12c-e758bff7f3ec
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
+ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
-ms.author: victorh
-ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5ecd2334ca80f5561c0611239b5bb00d222112a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122288"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277189"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Übersicht über die Integration von Application Gateway in Azure Security Center
 
@@ -50,7 +44,7 @@ Wenn Sie nicht über ein vorhandenes Anwendungsgateway verfügen oder ein neues 
 
 Wenn Sie über ein vorhandenes Gateway verfügen, können Sie dieses unter **Vorhandene Lösung verwenden** auswählen.
 
-![Seite zum Hinzufügen einer Web Application Firewall][4]
+![Seite für das Hinzufügen einer Web Application Firewall][4]
 
 Beim Hinzufügen einer Webanwendung zu einem Anwendungsgateway über Security Center wird diese Ressource nicht als Mitglied des Back-End-Pools hinzugefügt. Dies muss direkt in der Anwendungsgatewayressource erfolgen.
 
@@ -68,7 +62,7 @@ Klicken Sie auf **App verknüpfen**, um die Seite **Anwendungen verknüpfen** zu
 
 Sicherheitscenter verfolgt die Anwendungen, die zu einem Anwendungsgateway hinzugefügt werden, als geschützte Ressourcen.  Es überwacht die Integrität dieser Ressource und stellt sicher, dass sie durch ein Anwendungsgateway geschützt ist. Der nächste Schritt besteht darin, die private IP-Adresse, öffentliche IP-Adresse oder NIC Ihres virtuellen Computers zum Back-End-Pool des Anwendungsgateways hinzuzufügen. Solange dies nicht erledigt ist, wird die zusätzliche Empfehlung **Anwendungsschutz abschließen** angezeigt.
 
-![Seite zum Hinzufügen einer Web Application Firewall][5]
+![Seite für das Hinzufügen einer Web Application Firewall][5]
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
@@ -76,7 +70,7 @@ Navigieren Sie in Security Center zu **ERKENNUNG** > **Sicherheitswarnungen**.  
 
 ![Sicherheitswarnungen][8]
 
-Wenn Sie auf eine Regel klicken, wird eine Warnungsliste für diese spezifische WAF-Regel angezeigt. Jede Warnung enthält zusätzliche Details zu dem erkannten Problem. Die Details enthalten einen Link zum Anwendungsgateway.
+Wenn Sie eine Regel auswählen, wird eine Liste der Warnungen für diese spezifische WAF-Regel angezeigt. Jede Warnung enthält zusätzliche Details zu dem erkannten Problem. Die Details enthalten einen Link zum Anwendungsgateway.
  
 ![Warnungsdetails][9]
 

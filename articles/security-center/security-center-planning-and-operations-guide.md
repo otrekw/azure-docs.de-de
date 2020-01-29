@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462455"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281001"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -239,7 +239,7 @@ Diese Seite enthält Details zur Angriffszeit, den Hostnamen der Quelle, den vir
 
 Auf dieser Seite können Sie auch eine [Untersuchung](https://docs.microsoft.com/azure/security-center/security-center-investigation) starten, um den Angriffsverlauf nachzuvollziehen und zu ermitteln, wie der Angriff durchgeführt wurde, welche Systeme möglicherweise betroffen sind und welche Anmeldeinformationen verwendet wurden. Außerdem können Sie sich eine grafische Darstellung der gesamten Angriffskette ansehen.
 
-Nach Ermittlung des betroffenen Systems können Sie zuvor erstellte [Sicherheitsplaybooks](https://docs.microsoft.com/azure/security-center/security-center-playbooks) ausführen. Das Sicherheitsplaybook ist eine Sammlung von Prozeduren, die über Security Center ausgeführt werden können, wenn ein bestimmtes Playbook durch eine ausgewählte Warnung ausgelöst wird.
+Nach Ermittlung des betroffenen Systems können Sie eine zuvor erstellte [Workflowautomatisierung](workflow-automation.md) ausführen. Dabei handelt es sich um eine Sammlung von Prozeduren, die aus Security Center ausgeführt werden können, sobald sie durch eine Warnung ausgelöst wurden.
 
 Das Video [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) (Nutzen von Azure Security Center und Microsoft Operations Management Suite für eine Reaktion auf Vorfälle) enthält Demos, mit denen verdeutlicht wird, wie Sie Security Center in den einzelnen Phasen nutzen können.
 

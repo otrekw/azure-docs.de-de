@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Virtual Array – Übersicht | Microsoft-Dokumentation
+title: Microsoft Azure StorSimple Virtual Array – Übersicht
 description: Enthält eine Beschreibung von StorSimple Virtual Array. Hierbei handelt es sich um eine integrierte Speicherlösung, mit der Speicheraufgaben zwischen einem lokalen virtuellen Array und dem Microsoft Azure-Cloudspeicher verwaltet werden.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516708"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273870"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -39,7 +32,7 @@ Das virtuelle Array unterstützt das iSCSI- oder Server Message Block-Protokoll 
 
 In der folgenden Tabelle sind die wichtigen Features von StorSimple Virtual Array zusammengefasst.
 
-| Feature | StorSimple Virtual Array |
+| Funktion | StorSimple Virtual Array |
 | --- | --- |
 | Installationsanforderungen |Verwendung der Virtualisierungsinfrastruktur (Hyper-V oder VMware) |
 | Verfügbarkeit |Einzelner Knoten |
@@ -64,7 +57,7 @@ StorSimple verbindet Benutzer und Server in wenigen Minuten mit Azure-Speicher �
 
 In der folgenden Tabelle sind einige wichtige Vorteile der StorSimple Virtual Array-Lösung aufgeführt.
 
-| Feature | Vorteil |
+| Funktion | Vorteil |
 | --- | --- |
 | Transparente Integration |Das virtuelle Array unterstützt das iSCSI- oder SMB-Protokoll. Die Datenverschiebung zwischen der lokalen und der Cloudebene erfolgt nahtlos und transparent für den Benutzer. |
 | Reduzierte Speicherkosten |Mit StorSimple stellen Sie ausreichend lokalen Speicher bereit, um die aktuellen Anforderungen für sehr häufig verwendete heiße Daten zu erfüllen. Wenn die Speicheranforderungen steigen, ordnet StorSimple kalte Daten im kostengünstigen Cloudspeicher an. Die Daten werden vor dem Senden an die Cloud dedupliziert und komprimiert, um die Speicheranforderungen und -kosten noch weiter zu reduzieren. |
@@ -76,7 +69,7 @@ In der folgenden Tabelle sind einige wichtige Vorteile der StorSimple Virtual Ar
 
 In der folgenden Tabelle finden Sie eine Übersicht über unterstützte StorSimple-Workloads.
 
-|Szenario     |Workload     |Unterstützt      |Einschränkungen               | Anwendbare Versionen|
+|Szenario     |Workload     |Unterstützt      |Beschränkungen               | Anwendbare Versionen|
 |-------------|-------------|---------------|---------------------------|--------------------|
 |Remotebüro/Zweigniederlassung (ROBO)  |Dateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
 |Cloudarchivierung  |Archivdateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |

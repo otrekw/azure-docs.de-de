@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848424"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155212"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 
@@ -43,7 +43,7 @@ Zum Schützen Ihrer Cloudressource richten Sie eine Anspruchsregel ein, damit Ac
 6. Benennen Sie die Regel. 
 7. Wählen Sie **Authentifizierungsmethodenreferenzen** als eingehenden Anspruchstyp aus.
 8. Wählen Sie **Durchlauf aller Anspruchswerte**.
-    ![Assistent zum Hinzufügen von Transformationsanspruchsregeln ](./media/howto-mfa-adfs/configurewizard.png)
+    ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/configurewizard.png)
 9. Klicken Sie auf **Fertig stellen**. Schließen Sie die AD FS-Verwaltungskonsole.
 
 ## <a name="trusted-ips-for-federated-users"></a>Vertrauenswürdige IPs für Partnerbenutzer
@@ -64,7 +64,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
    ![Hinzufügen einer Anspruchsregel](./media/howto-mfa-adfs/trustedip2.png)
 5. Wählen Sie im Assistenten zum Hinzufügen von Transformationsanspruchsregeln im Dropdownmenü die Option **Passthrough oder eingehenden Anspruch filtern**, und klicken Sie auf **Weiter**.
    ![Assistenten zum Hinzufügen von Transformationsanspruchsregeln hinzufügen](./media/howto-mfa-adfs/trustedip3.png)
-6. Geben Sie der Regel im Feld neben „Anspruchsregelname“ einen Namen. Beispiel:  InsideCorpNet.
+6. Geben Sie der Regel im Feld neben „Anspruchsregelname“ einen Namen. Beispiel: InsideCorpNet.
 7. Wählen Sie in der Dropdownliste neben „Eingehender Anspruchstyp“ die Option **Innerhalb des Unternehmensnetzwerks**.
    ![Hinzufügen eines Anspruchs vom Typ „Innerhalb des Unternehmensnetzwerks“](./media/howto-mfa-adfs/trustedip4.png)
 8. Klicken Sie auf **Fertig stellen**.
@@ -86,7 +86,7 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
 Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfigurieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte**.
+2. Wählen Sie die Optionen **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff** > **Benannte Standorte** aus.
 3. Wählen Sie auf dem Blatt **Bedingter Zugriff – Benannte Orte** die Option **Durch MFA bestätigte IPs konfigurieren** aus.
 
    ![Bedingter Azure AD-Zugriff – Benannte Orte – Durch MFA bestätigte IPs konfigurieren](./media/howto-mfa-adfs/trustedip6.png)

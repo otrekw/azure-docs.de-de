@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646845"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314792"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -47,7 +47,7 @@ Sie sollten für jede Event Hub-Eingabe in Stream Analytics eine eigene Consumer
 
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **Neue Eingabe** erläutert, um Dateneingaben aus einem Event Hub zu streamen:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **Eingabealias** |Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
 | **Abonnement** | Wählen Sie das Abonnement, in dem die Event Hub-Ressource vorhanden ist. | 
@@ -55,13 +55,14 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Event Hub-Name** | Der Name des Event Hubs, der als Eingabe verwendet wird. |
 | **Event Hub-Richtlinienname** | Die SAS-Richtlinie, die Zugriff auf den Event Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen.|
 | **Event Hub-Consumergruppe** (empfohlen) | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine eigene Consumergruppe zu verwenden. Diese Zeichenfolge identifiziert die Consumergruppe, die zum Erfassen von Daten aus dem Event Hub verwendet werden soll. Wenn keine Consumergruppe angegeben wird, verwendet der Stream Analytics-Auftrag die $Default-Consumergruppe.  |
+| **Partitionsschlüssel** | Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hinzufügen. Partitionsschlüssel sind optional und werden verwendet, um die Leistung einer Abfrage zu verbessern, wenn diese eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. |
 | **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
 Wenn Ihre Daten aus einer Event Hub-Datenstromeingabe stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **EventProcessedUtcTime** |Das Datum und die Uhrzeit der Verarbeitung des Ereignisses durch Stream Analytics. |
 | **EventEnqueuedUtcTime** |Das Datum und die Uhrzeit des Ereignisempfangs durch die Event Hubs. |
@@ -95,7 +96,7 @@ Sie sollten für jede IoT Hub-Eingabe in Stream Analytics eine eigene Consumergr
 
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **Neue Eingabe** erläutert, wenn Sie IoT Hub als Datenstromeingabe konfigurieren.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **Eingabealias** | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen.|
 | **Abonnement** | Wählen Sie das Abonnement, in dem die IoT Hub-Ressource vorhanden ist. | 
@@ -104,6 +105,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Name der SAS-Richtlinie** | Die SAS-Richtlinie, die Zugriff auf IoT Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
 | **Schlüssel für SAS-Richtlinie** | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf IoT Hub verwendet wird.  Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der IoT Hub-Einstellungen. |
 | **Consumergruppe** | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine andere Consumergruppe zu verwenden. Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Stream Analytics verwendet die $Default-Consumergruppe, sofern nicht anders angegeben.  |
+| **Partitionsschlüssel** | Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hinzufügen. Partitionsschlüssel sind optional und werden verwendet, um die Leistung einer Abfrage zu verbessern, wenn diese eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. |
 | **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | **Typ der Ereigniskomprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
@@ -111,7 +113,7 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 
 Wenn Ihre gestreamten Daten aus IoT Hub stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **EventProcessedUtcTime** | Das Datum und die Uhrzeit der Verarbeitung des Ereignisses. |
 | **EventEnqueuedUtcTime** | Das Datum und die Uhrzeit des Ereignisempfangs durch den IoT Hub. |
@@ -147,7 +149,7 @@ Das gleichzeitige Hochladen einer sehr großen Anzahl von Blobs kann dazu führe
 
 In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **Neue Eingabe** erläutert, wenn Sie Blob Storage als Datenstromeingabe konfigurieren.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **Eingabealias** | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
 | **Abonnement** | Wählen Sie das Abonnement, in dem die IoT Hub-Ressource vorhanden ist. | 
@@ -157,13 +159,14 @@ In der folgenden Tabelle wird jede Eigenschaft im Azure-Portal auf der Seite **N
 | **Pfadmuster** (optional) | Der Dateipfad, der verwendet wird, um die Blobs im angegebenen Container zu suchen. Wenn Sie Blobs aus dem Containerstamm lesen möchten, legen Sie kein Pfadmuster fest. In dem Pfad können Sie mindestens eine Instanz der folgenden drei Variablen angeben: `{date}`, `{time}` oder `{partition}`.<br/><br/>Beispiel 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Beispiel 2: `cluster1/logs/{date}`<br/><br/>Das Zeichen `*` ist kein zulässiger Wert für das Pfadpräfix. Es sind nur gültige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-Zeichen</a> zulässig. Schließen Sie keine Containernamen oder Dateinamen ein. |
 | **Datumsformat** (optional) | Wenn Sie die Datumsvariable im Pfad verwenden, wird das Datumsformat, in dem die Dateien organisiert sind, verwendet. Beispiel: `YYYY/MM/DD` |
 | **Zeitformat** (optional) |  Wenn Sie die Zeitvariable im Pfad verwenden, wird das Zeitformat, in dem die Dateien organisiert sind, verwendet. Der einzige derzeit unterstützte Wert ist `HH` für Stunden. |
+| **Partitionsschlüssel** | Wenn Ihre Eingabe durch eine Eigenschaft partitioniert wird, können Sie den Namen dieser Eigenschaft hinzufügen. Partitionsschlüssel sind optional und werden verwendet, um die Leistung einer Abfrage zu verbessern, wenn diese eine PARTITION BY- oder GROUP BY-Klausel für diese Eigenschaft enthält. |
 | **Ereignisserialisierungsformat** | Das Serialisierungsformat (JSON, CSV, Avro, oder [Sonstige (Protobuf, XML, Proprietär...)](custom-deserializer.md)) des eingehenden Datenstroms.  Stellen Sie sicher, dass das JSON-Format der Spezifikation entspricht und Dezimalzahlen keine führende 0 enthalten. |
 | **Codieren** | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | **Komprimierung** | Der Komprimierungstyp, der zum Lesen des eingehenden Datenstroms verwendet wird, z.B. „Keine“, „GZip“ oder „Deflate“. |
 
 Wenn Ihre Daten aus einer Blob Storage-Quelle stammen, haben Sie Zugriff auf folgende Metadatenfelder in Ihrer Stream Analytics-Abfrage:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | **BlobName** |Der Name des Eingabe-Blobs, aus dem das Ereignis stammt. |
 | **EventProcessedUtcTime** |Das Datum und die Uhrzeit der Verarbeitung des Ereignisses durch Stream Analytics. |

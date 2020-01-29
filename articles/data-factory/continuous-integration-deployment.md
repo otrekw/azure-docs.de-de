@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2e14b1bcc991a009ed9b3267477933706e1ec474
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977522"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289950"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -82,7 +82,7 @@ Im Folgenden finden Sie eine Anleitung zum Einrichten eines Azure Pipelines-Rele
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 
--   Ein Azure-Abonnement, das mit Visual Studio Team Foundation Server oder Azure Repos verknüpft ist und für das der [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm) verwendet wird
+-   Ein Azure-Abonnement, das mit Visual Studio Team Foundation Server oder Azure Repos verknüpft ist und für das der [Azure Resource Manager-Dienstendpunkt](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager) verwendet wird
 
 -   Eine Data Factory-Instanz mit konfigurierter Azure Repos Git-Integration
 
@@ -330,7 +330,7 @@ Im Git-Modus können Sie die Standardeigenschaften in Ihrer Resource Manager-Vor
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
 
-In diesen Fällen können Sie die standardmäßige Parametrisierungsvorlage wie folgt außer Kraft setzen: Erstellen Sie im Stammordner des Repositorys eine Datei mit dem Namen „arm-template-parameters-definition.json“. Sie müssen exakt diesen Dateinamen verwenden. Data Factory liest diese Datei aus dem Branch aus, in dem Sie sich im Azure Data Factory-Portal gerade befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
+In diesen Fällen können Sie die Standardparametrisierungsvorlage wie folgt außer Kraft setzen: Erstellen Sie in dem als Stammordner für die Data Factory-Git-Integration angegebenen Ordner eine Datei mit dem Namen „arm-template-parameters-definition.json“. Sie müssen exakt diesen Dateinamen verwenden. Data Factory liest diese Datei aus dem Branch aus, in dem Sie sich im Azure Data Factory-Portal gerade befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntax einer benutzerdefinierten Parameterdatei
 

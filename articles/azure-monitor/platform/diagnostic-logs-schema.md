@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750943"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120144"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Ressourcenprotokolle
 
@@ -86,6 +86,9 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Gateways für virtuelle Netzwerke | Schema nicht verfügbar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
+
+Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Dies ist eine Liste aller Kategorien, die in irgendeiner Form verfügbar sind.  Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../sql-database/sql-database-metrics-diag-logging.md). 
+
 |Ressourcentyp|Category|Anzeigename der Kategorie|
 |---|---|---|
 |Microsoft.AAD/domainServices|SystemSecurity|SystemSecurity|

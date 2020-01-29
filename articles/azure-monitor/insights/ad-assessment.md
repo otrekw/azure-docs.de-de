@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406132"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167846"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -166,6 +166,17 @@ Nach Ausführung der nächsten geplanten Integritätsüberprüfung (standardmä�
 2. Wenn Sie sich später dazu entscheiden, die ignorierten Empfehlungen anzuzeigen, entfernen Sie alle IgnoreRecommendations.txt-Dateien, oder entfernen Sie einzelne RecommendationIDs aus den Dateien.
 
 ## <a name="ad-health-check-solutions-faq"></a>AD-Integritätsüberprüfung-Lösungen – häufig gestellte Fragen
+
+*Welche Überprüfungen werden von der AD-Bewertungslösung durchgeführt?*
+
+* Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:
+
+```Kusto
+ADAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Die Ergebnisse können dann zur weiteren Prüfung in Excel exportiert werden.
 
 *Wie oft wird eine Integritätsüberprüfung ausgeführt?*
 

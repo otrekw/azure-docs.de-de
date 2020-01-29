@@ -1,5 +1,5 @@
 ---
-title: Erkennen von Gesichtern auf einem Bild – Gesichtserkennungs-API
+title: 'Erkennen von Gesichtern auf einem Bild: Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
 description: In diesem Leitfaden wird gezeigt, wie mithilfe der Gesichtserkennung aus einem bestimmten Bild Attribute wie Geschlecht, Alter oder Körperhaltung extrahiert werden können.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744281"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169873"
 ---
 # <a name="get-face-detection-data"></a>Abrufen von Gesichtserkennungsdaten
 
-In diesem Leitfaden wird gezeigt, wie mithilfe der Gesichtserkennung aus einem bestimmten Bild Attribute wie Geschlecht, Alter oder Körperhaltung extrahiert werden können. Die Codeausschnitte in diesem Leitfaden wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennungs-API von Azure Cognitive Services geschrieben. Die gleiche Funktionalität ist auch über die [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) verfügbar.
+In diesem Leitfaden wird gezeigt, wie mithilfe der Gesichtserkennung aus einem bestimmten Bild Attribute wie Geschlecht, Alter oder Körperhaltung extrahiert werden können. Die Codeausschnitte in diesem Leitfaden wurden in C# unter Verwendung der Clientbibliothek für die Gesichtserkennung von Azure Cognitive Services geschrieben. Die gleiche Funktionalität ist auch über die [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) verfügbar.
 
 In diesem Leitfaden wird Folgendes veranschaulicht:
 
@@ -27,7 +27,7 @@ In diesem Leitfaden wird Folgendes veranschaulicht:
 - Abrufen der Position verschiedener Gesichtsmerkmale, z. B. Pupillen, Nase und Mund, auf einem Bild
 - Schätzen des Geschlechts, des Alters, der Stimmung und anderer Attribute des erkannten Gesichts
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 Für diesen Leitfaden wird davon ausgegangen, dass Sie bereits ein [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)-Objekt namens `faceClient` mit einem Gesichtserkennungsabonnementschlüssel und einer Gesichtserkennungs-Endpunkt-URL erstellt haben. Hiervon ausgehend können Sie das Gesichtserkennungsfeature verwenden, indem Sie entweder – wie in diesem Leitfaden – [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) oder [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) aufrufen. Anweisungen zum Einrichten dieses Feature finden Sie in den folgenden Schnellstarts.
 

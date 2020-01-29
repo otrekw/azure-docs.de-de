@@ -1,5 +1,5 @@
 ---
-title: Löschen und Exportieren personenbezogener Daten aus Azure DevTest Labs | Microsoft-Dokumentation
+title: Löschen und Exportieren personenbezogener Daten aus Azure DevTest Labs
 description: Erfahren Sie, wie Sie personenbezogene Daten aus dem Azure DevTest Labs-Dienst löschen und exportieren, um Ihren Verpflichtungen im Rahmen der allgemeinen Datenschutz-Grundverordnung (DSGVO) nachzukommen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371168"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169697"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Exportieren oder Löschen personenbezogener Daten aus Azure DevTest Labs
 Dieser Artikel enthält Schritte zum Löschen und Exportieren personenbezogener Daten aus dem Azure DevTest Labs-Dienst. 
@@ -160,7 +160,7 @@ Wir betrachten die exportierten Daten nun genauer. Wie bereits erwähnt, liegen 
 
 Die Datei **virtualmachines.csv** enthält die folgenden Datenspalten:
 
-| Spaltenname | BESCHREIBUNG |
+| Spaltenname | Beschreibung |
 | ----------- | ----------- | 
 | SubscriptionId | Der Abonnementbezeichner, in dem das Lab vorhanden ist. |
 | LabUId | Eindeutiger GUID-Bezeichner für das Lab. |
@@ -169,7 +169,7 @@ Die Datei **virtualmachines.csv** enthält die folgenden Datenspalten:
 | ResourceGroupName | Name der Ressourcengruppe, die die VM enthält. | 
 | resourceId | Vollqualifizierte Ressourcen-ID für die VM. |
 | ResourceUId | GUID für die VM |
-| NAME | Name des virtuellen Computers. |
+| Name | Name des virtuellen Computers. |
 | CreatedTime | Angabe des Zeitpunkts, zu dem die VM erstellt wurde, in Datum und Uhrzeit. |
 | DeletedDate | Angabe des Zeitpunkts, zu dem die VM erstellt wurde, in Datum und Uhrzeit. Wenn keine Angabe vorhanden ist, wurde die Löschung noch nicht durchgeführt. |
 | ResourceOwner | Besitzer der VM. Wenn keine Angabe vorhanden ist, handelt es sich entweder um eine abrufbare VM, oder sie wird von einem Dienstprinzipal erstellt. |
@@ -188,7 +188,7 @@ Die Datei **virtualmachines.csv** enthält die folgenden Datenspalten:
 
 Die in **disks.csv** enthaltenen Datenspalten sind unten aufgeführt:
 
-| Spaltenname | BESCHREIBUNG | 
+| Spaltenname | Beschreibung | 
 | ----------- | ----------- | 
 | SubscriptionId | ID des Abonnements, das das Lab enthält. |
 | LabUId | GUID für das Lab |
@@ -197,7 +197,7 @@ Die in **disks.csv** enthaltenen Datenspalten sind unten aufgeführt:
 | ResourceGroupName | Name der Ressourcengruppe, die das Lab enthält. | 
 | resourceId | Vollqualifizierte Ressourcen-ID für die VM. |
 | ResourceUId | GUID für die VM |
- |NAME | Der Name des angefügten Datenträgers. |
+ |Name | Der Name des angefügten Datenträgers. |
 | CreatedTime |Das Datum und die Uhrzeit der Datenträgererstellung. |
 | DeletedDate | Das Datum und die Uhrzeit der Datenträgerlöschung. |
 | ResourceStatus | Status der Ressource. „Active“, wenn die Ressource vorhanden ist. „Inactive“, wenn sie gelöscht wurde. |
@@ -213,7 +213,7 @@ Die in **disks.csv** enthaltenen Datenspalten sind unten aufgeführt:
 Die exportierten Daten können mithilfe von Tools wie SQL Server, Power BI usw. manipuliert und visualisiert werden. Diese Funktion ist besonders nützlich, wenn Sie die Nutzung Ihres Labs an ihr Verwaltungsteam melden möchten, das möglicherweise nicht dasselbe Azure-Abonnement verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
+Weitere Informationen finden Sie in folgenden Artikeln: 
 
 - [Festlegen von Richtlinien für ein Lab](devtest-lab-get-started-with-lab-policies.md)
 - [Häufig gestellte Fragen](devtest-lab-faq.md)

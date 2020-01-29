@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0b22997c9b8fc95c89503f06a99e29653c8aead
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233217"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293282"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Verwalten von mit Ihrem Geschäfts-, Schul- oder Unikonto verbundenen Geräten auf der Seite „Geräte“
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Verwalten von verbundenen Geräten auf der Seite „Geräte“
 
-Im Portal **Mein Konto** haben Sie auf der Seite **Geräte** folgende Möglichkeiten:
+Auf der Seite **Geräte** im Portal **Mein Konto** können Sie die mit Ihrem Geschäfts-, Schul- oder Unikonto verbundene Geräte verwalten. Sie können auf der Seite **Geräte** folgende Aktionen ausführen:
 
 - Anzeigen von mit Ihrem Geschäfts-, Schul- oder Unikonto verbundenen Geräten
 
 - Deaktivieren aller Geräte, die Sie nicht mehr besitzen, verloren haben oder die gestohlen wurden.
 
+>[!Important]
+>Dieser Artikel richtet sich an Benutzer, die versuchen, die Geräteinformationen von mit einem Geschäfts-, Schul- oder Unikonto verbundenen Geräten zu aktualisieren. Wenn Sie ein Administrator sind und Informationen zur Geräteverwaltung für Ihre Mitarbeiter und andere Verwendungszwecke suchen, finden Sie in der [Dokumentation zu Geräteidentitäten](https://docs.microsoft.com/azure/active-directory/devices/index) weitere Informationen.
+
 ## <a name="view-your-connected-devices"></a>Anzeigen Ihrer verbundenen Geräte
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und wechseln Sie zur Seite https://myprofile.microsoft.com/.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und navigieren Sie zur Seite **Mein Konto** (https://myprofile.microsoft.com/).
 
 2. Wählen Sie im Navigationsbereich auf der linken Seite **Geräte** aus, oder klicken Sie auf den Link **Geräte verwalten** im Block **Geräte**.
 
@@ -70,6 +73,16 @@ Nach der Anzeige der verbundenen Geräte können Sie folgende Aktionen ausführe
 
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
-- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
+- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md).
 
 - Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.
+
+## <a name="related-office-content"></a>Zugehöriger Inhalt in Office
+
+- [Anmelden zum Verwalten Ihres Office-Produkts](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Wechseln zur Office-Seite **Mein Konto**](https://portal.office.com/account/)
+
+- [Wechseln zur Office-Seite **Meine Installationen**](https://portal.office.com/account/#installs)
+
+- [Wechseln zur Office-Seite **Abonnements**](https://portal.office.com/account/#subscriptions)

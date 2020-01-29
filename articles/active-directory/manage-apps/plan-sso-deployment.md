@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 733b0d7650d68bddae60cf524947590c2b689968
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779377"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512826"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>Planen einer Bereitstellung für einmaliges Anmelden
 
@@ -62,7 +62,7 @@ Es gibt zwei grundlegende Möglichkeiten, wie Sie Ihre Benutzer für einmaliges 
 Die Verwendung von Azure AD für kennwortbasiertes SSO erfordert die Bereitstellung einer Browsererweiterung, die die Anmeldeinformationen sicher abruft und die Anmeldeformulare ausfüllt. Definieren Sie einen Mechanismus zum entsprechenden Bereitstellen der Erweiterung mit [unterstützten Browsern](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction). Beispiele für Optionen:
 
 - [Gruppenrichtlinie für Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [System Center Configuration Manager (SCCM) für Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+- [Configuration Manager für Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [Benutzergesteuerter Download und Konfiguration für Chrome, Firefox, Microsoft Edge oder Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 Weitere Informationen finden Sie unter [Konfigurieren von einmaligem Anmelden mit Kennwort](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery).

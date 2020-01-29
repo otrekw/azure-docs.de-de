@@ -13,15 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 0a39fd1870ae803f2cf694e01c67d125fc96cac9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200976"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156657"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
+> [!NOTE]
+> Es ist ein erweiterter Secure Score als Vorschauversion verfügbar. Der erweiterte Secure Score wird den vorhandenen Secure Score ersetzen, beide stehen aber für eine gewisse Zeit gemeinsam zur Verfügung, um den Übergang zu vereinfachen.
+>
+> Ausführliche Informationen zu den Vorteilen des erweiterten Secure Score finden Sie [hier](secure-score-security-controls.md).
+>
+> Um an der Vorschau teilzunehmen, öffnen Sie das Azure-Portal, starten Sie Azure Security Center, und wählen Sie Secure Score aus. Dort sehen Sie ein Banner am oberen Rand der Seite, in dem der neue Secure Score angeboten wird. Alternativ können Sie [hier](https://aka.ms/ascnewscore) klicken.
 
 Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Der Azure Secure Score überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Secure Score ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
 
@@ -34,13 +40,12 @@ Security Center bietet Ihnen auch einen **Secure Score-Gesamtwert**.
 
 Beim **Secure Score-Gesamtwert** handelt es sich um eine Ansammlung aller Ihrer Empfehlungen. Sie können den Secure Score-Gesamtwert je nach Auswahl für alle Abonnements oder Verwaltungsgruppen anzeigen. Die Bewertung variiert je nach ausgewähltem Abonnement und aktiven Empfehlungen für diese Abonnements.
 
- 
 Um zu überprüfen, welche Empfehlungen die größte Auswirkung auf den Secure Score haben, können Sie die drei Empfehlungen mit den größten Auswirkungen im Security Center-Dashboard anzeigen, oder Sie können die Empfehlungen auf dem Listenblatt mithilfe der Spalte **Secure Score-Auswirkung** sortieren.
-
 
 So zeigen Sie den Secure Score-Gesamtwert an:
 
 1. Klicken Sie auf dem Azure-Dashboard auf **Security Center** und dann auf **Sicherheitsbewertung**.
+
 2. Oben sehen Sie Hervorhebungen der Sicherheitsbewertung:
    - **Gesamte Sicherheitsbewertung** stellt die Bewertung nach Richtlinien und ausgewähltem Abonnement dar.
    - **Sicherheitsbewertung nach Kategorie** zeigt Ihnen, welche Ressourcen, die meiste Aufmerksamkeit benötigen.

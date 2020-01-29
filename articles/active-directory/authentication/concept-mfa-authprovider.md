@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ac23bbb0465be2f15e0a35bb4fd7c331e83988
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 43a620d32fcfa7970dbdb5bee9740cc8f8b33e50
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848713"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155128"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Erste Schritte mit einem Azure Multi-Factor Authentication-Anbieter
 
@@ -48,11 +48,11 @@ Falls Ihr MFA-Anbieter nicht mit einem Azure AD-Mandanten verknüpft ist oder Si
 > [!CAUTION]
 > Beim Löschen eines Authentifizierungsanbieters wird keine Bestätigung angezeigt. **Löschen** ist ein endgültiger Prozess.
 
-Authentifizierungsanbieter finden Sie hier: **Azure-Portal** > **Azure Active Directory** > **MFA** > **Anbieter**. Klicken Sie auf einen aufgeführten Anbieter, um die zugehörigen Details und Konfigurationen anzuzeigen.
+Authentifizierungsanbieter finden Sie hier: **Azure-Portal** > **Azure Active Directory** > **Sicherheit** > **MFA** > **Anbieter**. Klicken Sie auf einen aufgeführten Anbieter, um die zugehörigen Details und Konfigurationen anzuzeigen.
 
 Überprüfen Sie vor dem Entfernen eines Authentifizierungsanbieters zunächst alle benutzerdefinierten Einstellungen, die ggf. für Ihren Anbieter konfiguriert wurden. Überlegen Sie sich, welche Einstellungen von Ihrem Anbieter zu allgemeinen MFA-Einstellungen migriert werden müssen, und migrieren Sie sie. 
 
-Mit Anbietern verknüpfte MFA-Server müssen unter Verwendung der Anmeldeinformationen reaktiviert werden, die unter **Azure-Portal** > **Azure Active Directory** > **MFA** > **Servereinstellungen** generiert wurden. Vor der Reaktivierung müssen auf Azure MFA-Servern in Ihrer Umgebung folgende Dateien aus dem Verzeichnis `\Program Files\Multi-Factor Authentication Server\Data\` gelöscht werden:
+Mit Anbietern verknüpfte MFA-Server müssen unter Verwendung der Anmeldeinformationen reaktiviert werden, die unter **Azure-Portal** > **Azure Active Directory** > **Sicherheit** > **MFA** > **Servereinstellungen** generiert wurden. Vor der Reaktivierung müssen auf Azure MFA-Servern in Ihrer Umgebung folgende Dateien aus dem Verzeichnis `\Program Files\Multi-Factor Authentication Server\Data\` gelöscht werden:
 
 - caCert
 - cert
@@ -64,7 +64,7 @@ Mit Anbietern verknüpfte MFA-Server müssen unter Verwendung der Anmeldeinforma
 
 ![Löschen eines Authentifizierungsanbieters über das Azure-Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Wenn Sie sich vergewissert haben, dass alle Einstellungen migriert wurden, können Sie unter **Azure-Portal** > **Azure Active Directory** > **MFA** > **Anbieter** die Auslassungspunkte **...** und anschließend **Löschen** auswählen.
+Wenn Sie sich vergewissert haben, dass alle Einstellungen migriert wurden, können Sie unter **Azure-Portal** > **Azure Active Directory** > **Sicherheit** > **MFA** > **Anbieter** die Auslassungspunkte **...** und anschließend **Löschen** auswählen.
 
 > [!WARNING]
 > Beim Löschen eines Authentifizierungsanbieters werden alle diesem Anbieter zugeordneten Berichtsinformationen gelöscht. Es empfiehlt sich gegebenenfalls, Aktivitätsberichte vor dem Löschen des Anbieters zu speichern.

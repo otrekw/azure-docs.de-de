@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402597"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168177"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuo
 * Den auf dem Windows-Computer oder Linux-Server installierten Dependency-Agent.
 
 >[!NOTE]
->Wenn Sie Dienstzuordnung bereits bereitgestellt haben, können Sie jetzt auch Ihre Zuordnungen in Azure Monitor für VMs anzeigen, der zusätzliche Funktionen für die Überwachung von VM-Status und -Leistung enthält. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Dienstzuordnungslösung und dem Zuordnungsfeature von Azure Monitor für VMs finden Sie unter [Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor für VMs von der Dienstzuordnung?](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map) in den häufig gestellten Fragen zu Azure Monitor für VMs.
+>Wenn Sie Dienstzuordnung bereits bereitgestellt haben, können Sie jetzt auch Ihre Zuordnungen in Azure Monitor für VMs anzeigen, der zusätzliche Funktionen für die Überwachung von VM-Status und -Leistung enthält. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor für VMs](../../azure-monitor/insights/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Dienstzuordnungslösung und dem Zuordnungsfeature von Azure Monitor für VMs finden Sie unter [Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor für VMs von der Dienstzuordnung?](../faq.md#azure-monitor-for-vms-preview) in den häufig gestellten Fragen zu Azure Monitor für VMs.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -155,7 +155,7 @@ Klicken Sie auf die Auslassungszeichen neben dem Gruppennamen in der Gruppenlist
 
 Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsserver, Datenbank usw. Service Map versieht Prozess- und Computerfelder mit Rollensymbolen, damit die Rolle eines Prozesses oder Servers auf einen Blick erkannt werden kann.
 
-| Rollensymbol | BESCHREIBUNG |
+| Rollensymbol | Beschreibung |
 |:--|:--|
 | ![Webserver](media/service-map/role-web-server.png) | Webserver |
 | ![App-Server](media/service-map/role-application-server.png) | Anwendungsserver |
@@ -321,13 +321,13 @@ Da für einen angegebenen Prozess und Computer in einem angegebenen Zeitraum mö
 
 ### <a name="connections"></a>Verbindungen
 
-Verbindungsmetriken werden in eine neue Tabelle in Log Analytics geschrieben – VMConnection. Diese Tabelle enthält Informationen zu den Verbindungen für einen Computer (eingehend und ausgehend). Verbindungsmetriken werden ebenfalls mit APIs verfügbar gemacht, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen.  TCP-Verbindungen, die durch Ausführen von *accept* auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch Ausführen von *connect* auf einer bestimmten IP- und Portkombination hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
+Verbindungsmetriken werden in eine neue Tabelle in Log Analytics geschrieben – VMConnection. Diese Tabelle enthält Informationen zu den Verbindungen für einen Computer (eingehend und ausgehend). Verbindungsmetriken werden ebenfalls mit APIs verfügbar gemacht, die die Möglichkeit zum Abrufen einer bestimmten Metrik während eines Zeitfensters bereitstellen.  TCP-Verbindungen, die durch Akzeptieren auf einem lauschenden Socket hergestellt werden, sind eingehend, während solche, die durch Herstellen einer Verbindung mit einer bestimmten IP-Adresse und einem Port hergestellt werden, ausgehend sind. Die Richtung einer Verbindung wird durch die Direction-Eigenschaft dargestellt, die auf entweder **inbound** oder **outbound** festgelegt werden kann. 
 
 Die in diesen Tabellen dargestellten Daten wurden aus Daten generiert, die vom Dependency-Agent gemeldet wurden. Jeder Datensatz stellt eine Beobachtung über ein Zeitintervall von einer Minute dar. Die TimeGenerated-Eigenschaft gibt den Anfang des Zeitintervalls an. Jeder Datensatz enthält Informationen zum Identifizieren der jeweiligen Entität – d.h. Verbindung oder Port – sowie der dieser Entität zugeordneten Metriken. Derzeit werden nur Netzwerkaktivitäten gemeldet, die über TCP-over-IPv4 anfallen.
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `Direction` |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
 | `Machine` |Der vollqualifizierte Domänenname des Computers |
@@ -339,18 +339,18 @@ Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze
 
 Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über die Anzahl der gruppierten physischen Verbindungen in den folgenden Eigenschaften des Datensatzes bereitgestellt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `LinksEstablished` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums eingerichtet wurden |
 | `LinksTerminated` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums beendet wurden |
 | `LinksFailed` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
 | `LinksLive` |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>Metriken
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `BytesSent` |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
 | `BytesReceived` |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
@@ -378,7 +378,7 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 
 *VMConnection* enthält außerdem in den folgenden Eigenschaften des Datensatzes Geolocationinformationen für das Remoteende jeder Verbindung: 
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `RemoteCountry` |Der Name des Landes oder der Region, in dem bzw. der „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
 | `RemoteLatitude` |Der Breitengrad der Geolocation.  Beispielsweise *47,68* |
@@ -388,7 +388,7 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 
 Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlung von IPs überprüft, die für schädliche Aktivitäten bekannt sind. Wenn die RemoteIp als bösartig identifiziert wurde, werden die folgenden Eigenschaften des Datensatzes aufgefüllt (sie sind leer, wenn die IP nicht als schädlich angesehen wird):
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `MaliciousIp` |Die RemoteIp-Adresse |
 | `IndicatorThreadType` |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
@@ -406,7 +406,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -432,7 +432,7 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -572,7 +572,7 @@ Es kann hilfreich sein, zuerst die [neuesten Laufzeitbibliotheken](https://suppo
 
 Die folgende Tabelle enthält Codenummern und Lösungsvorschläge.
 
-| Code | BESCHREIBUNG | Lösung |
+| Code | Beschreibung | Lösung |
 |:--|:--|:--|
 | 0x17 | Für das Bibliothekinstallationsprogramm ist ein Windows-Update erforderlich, das noch nicht installiert wurde. | Suchen Sie im letzten Protokoll des Bibliothekinstallationsprogramms.<br><br>Wenn einem Verweis auf `Windows8.1-KB2999226-x64.msu` die Zeile `Error 0x80240017: Failed to execute MSU package,` folgt, wurden nicht alle Voraussetzungen für die Installation von KB2999226 erfüllt. Befolgen Sie die Anweisungen im Abschnitt mit den Voraussetzungen im Artikel [Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226). Möglicherweise müssen Sie Windows Update ausführen und mehrere Neustarts durchführen müssen, um die Voraussetzungen zu installieren.<br><br>Führen Sie das Installationsprogramm für den Microsoft Dependency-Agent erneut aus. |
 

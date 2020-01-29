@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a3280e11d40a361c5a3305d71e58661b37b8bd1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563427"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510531"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
@@ -43,9 +43,9 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 1. Wählen Sie im Abschnitt **IoT Edge-Module** der Seite die Option **Hinzufügen** aus.
 1. Sehen Sie sich die Modultypen im Dropdownmenü an:
 
-   * **IoT Edge-Modul** – Geben Sie den Modulnamen und den URI des Containerimages an. Beispielsweise lautet der Image-URI für das Beispielmodul „SimulatedTemperatureSensor“ `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Wenn das Modulimage in einer privaten Containerregistrierung gespeichert ist, fügen Sie die Anmeldeinformationen auf dieser Seite hinzu, um auf das Image zugreifen zu können. 
+   * **IoT Edge-Modul** – Geben Sie den Modulnamen und den URI des Containerimages an. Beispielsweise lautet der Image-URI für das Beispielmodul „SimulatedTemperatureSensor“ `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Wenn das Modulimage in einer privaten Containerregistrierung gespeichert ist, fügen Sie die Anmeldeinformationen auf dieser Seite hinzu, um auf das Image zugreifen zu können.
    * **Marketplace-Modul** – Module, die im Azure Marketplace gehostet werden. Weil einige Marketplace-Module eine zusätzliche Konfiguration erfordern, überprüfen Sie die Moduldetails in der Liste [Azure Marketplace IoT-Edge-Module](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules).
-   * **Azure Stream Analytics-Modul** – Module, die aus einer Azure Stream Analytics-Workload generiert wurden. 
+   * **Azure Stream Analytics-Modul** – Module, die aus einer Azure Stream Analytics-Workload generiert wurden.
 
 1. Nachdem Sie ein Modul hinzugefügt haben, wählen Sie dessen Namen aus der Liste aus, um die Moduleinstellungen zu öffnen. Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
 1. Wiederholen Sie bei Bedarf die Schritte 5 bis 8, um Ihrer Bereitstellung weitere Module hinzuzufügen.
@@ -53,7 +53,7 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 
 ### <a name="specify-routes"></a>Angeben von Routen
 
-Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden sollen. Nachrichten werden mit Name-Wert-Paaren erstellt. Standardmäßig wird eine Route mit **route** bezeichnet und als „**FROM /messages/* INTO $upstream**“ definiert. Dies bedeutet, dass alle von beliebigen Modulen ausgegebenen Nachrichten an Ihren IoT Hub gesendet werden.  
+Auf der Registerkarte **Routen** definieren Sie, wie Nachrichten zwischen Modulen und dem IoT Hub übergeben werden sollen. Nachrichten werden mit Name-Wert-Paaren erstellt. Standardmäßig wird eine Route mit **route** bezeichnet und als **FROM /messages/\* INTO $upstream** definiert. Dies bedeutet, dass alle von sämtlichen Modulen ausgegebenen Nachrichten an Ihren IoT-Hub gesendet werden.  
 
 Fügen Sie die Routen mit Informationen aus [Routen deklarieren](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie sie damit. Wählen Sie dann **Weiter: Überprüfen + erstellen** aus, um mit dem nächsten Schritt des Assistenten fortzufahren.
 

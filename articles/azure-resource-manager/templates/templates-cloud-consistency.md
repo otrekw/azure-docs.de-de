@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476152"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290647"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz
 
@@ -22,7 +22,7 @@ Ein wichtiger Vorteil von Azure ist Konsistenz. Von Investitionen in die Entwick
 Microsoft bietet an vielen Standorten intelligente, betriebsbereite Clouddienste, so z.B.:
 
 * Die globale Azure-Plattform, die von einem wachsenden Netzwerk mit von Microsoft verwalteten Rechenzentren in Regionen auf der ganzen Welt unterstützt wird.
-* Isolierte Sovereign Clouds wie Azure Deutschland, Azure Government und Azure China (von 21Vianet betriebenes Azure). Sovereign Clouds bieten eine konsistente Plattform, die die meisten der überaus nützlichen Funktionen bietet, auf die Kunden der globalen Azure-Cloud Zugriff haben.
+* Isolierte Sovereign Clouds wie Azure Deutschland, Azure Government und Azure China 21Vianet. Sovereign Clouds bieten eine konsistente Plattform, die die meisten der überaus nützlichen Funktionen bietet, auf die Kunden der globalen Azure-Cloud Zugriff haben.
 * Azure Stack, eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste über das Rechenzentrum Ihrer Organisation bereitstellen können. Unternehmen können Azure Stack in ihren eigenen Rechenzentren einrichten oder Azure-Dienste von Dienstanbietern nutzen, die Azure Stack in ihren Rechenzentren betreiben (was mitunter als gehostete Regionen bezeichnet wird).
 
 Im Zentrum all dieser Clouds bietet Azure Resource Manager eine API, die eine Vielzahl von Benutzeroberflächen für die Kommunikation mit der Azure-Plattform ermöglicht. Diese API bietet Ihnen leistungsstarke Infrastruktur-als-Code-Funktionen. Jede Art von Ressource, die auf der Azure-Cloudplattform verfügbar ist, kann mit Azure Resource Manager bereitgestellt und konfiguriert werden. Mithilfe einer einzigen Vorlage können Sie Ihre komplette Anwendung in einen betriebsbereiten Endzustand bringen und konfigurieren.
@@ -47,15 +47,15 @@ Eine Einführung in Azure Resource Manager-Vorlagen finden Sie unter [Vorlagenbe
 
 Die Syntax einer Resource Manager-Vorlage basiert auf JSON. Vorlagen verwenden eine Obermenge von JSON, wobei die Syntax mit Ausdrücken und Funktionen erweitert wird. Der Prozessor für Vorlagensprachen wird häufig aktualisiert, um zusätzliche Vorlagenfunktionen zu unterstützen. Unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md) finden Sie eine detaillierte Erläuterung der verfügbaren Vorlagenfunktionen.
 
-Neue Vorlagenfunktionen, die in Azure Resource Manager eingeführt wurden, sind nicht sofort in Sovereign Clouds oder Azure Stack verfügbar. Für eine erfolgreiche Bereitstellung einer Vorlage müssen alle Funktionen, auf die in der Vorlage verwiesen wird, in der Zielcloud verfügbar sein. 
+Neue Vorlagenfunktionen, die in Azure Resource Manager eingeführt wurden, sind nicht sofort in Sovereign Clouds oder Azure Stack verfügbar. Für eine erfolgreiche Bereitstellung einer Vorlage müssen alle Funktionen, auf die in der Vorlage verwiesen wird, in der Zielcloud verfügbar sein.
 
-Azure Resource Manager-Funktionen werden immer zuerst in der globalen Azure-Cloud eingeführt. Mit dem folgenden PowerShell-Skript können Sie überprüfen, ob neu eingeführte Vorlagenfunktionen auch in Azure Stack verfügbar sind: 
+Azure Resource Manager-Funktionen werden immer zuerst in der globalen Azure-Cloud eingeführt. Mit dem folgenden PowerShell-Skript können Sie überprüfen, ob neu eingeführte Vorlagenfunktionen auch in Azure Stack verfügbar sind:
 
 1. Erstellen Sie einen Klon des GitHub-Repositorys: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
 
 1. Sobald Sie über einen lokalen Klon des Repositorys verfügen, stellen Sie am Ziel mit PowerShell eine Verbindung mit Azure Resource Manager her.
 
-1. Importieren Sie das Modul „psm1“, und führen Sie das Cmdlet „Test-AzureRmureRmTemplateFunctions“ aus:
+1. Importieren Sie das Modul „psm1“, und führen Sie das Cmdlet „Test-AzureRmTemplateFunctions“ aus:
 
    ```powershell
    # Import the module
@@ -69,7 +69,7 @@ Das Skript stellt mehrere, minimierte Vorlagen bereit, die jeweils nur eindeutig
 
 ## <a name="working-with-linked-artifacts"></a>Arbeiten mit verknüpften Artefakten
 
-Eine Vorlage kann Verweise auf verknüpfte Artefakte und eine Bereitstellungsressource enthalten, die auf eine andere Vorlage verweist. Die verknüpften Vorlagen (auch geschachtelte Vorlagen genannt) werden vom Ressourcen-Manager zur Laufzeit abgerufen. Eine Vorlage kann auch Verweise auf Artefakte für VM-Erweiterungen enthalten. Diese Artefakte werden von der innerhalb der VM ausgeführten VM-Erweiterung zur Konfiguration der VM-Erweiterung während der Vorlagenbereitstellung abgerufen. 
+Eine Vorlage kann Verweise auf verknüpfte Artefakte und eine Bereitstellungsressource enthalten, die auf eine andere Vorlage verweist. Die verknüpften Vorlagen (auch geschachtelte Vorlagen genannt) werden vom Ressourcen-Manager zur Laufzeit abgerufen. Eine Vorlage kann auch Verweise auf Artefakte für VM-Erweiterungen enthalten. Diese Artefakte werden von der innerhalb der VM ausgeführten VM-Erweiterung zur Konfiguration der VM-Erweiterung während der Vorlagenbereitstellung abgerufen.
 
 In den folgenden Abschnitten werden Aspekte zur cloudübergreifenden Konsistenz bei der Entwicklung von Vorlagen mit Artefakten erörtert, die für die Hauptbereitstellungsvorlage extern sind.
 
@@ -82,9 +82,9 @@ Der folgende Code zeigt, wie der „templateLink“-Parameter auf eine geschacht
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Azure Resource Manager wertet die Hauptvorlage zur Laufzeit aus, ruft jede gesch
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>Verknüpfte Vorlagen cloudübergreifend zugänglich machen
 
-Überlegen Sie, wo und wie Sie die von Ihnen verwendeten verknüpften Vorlagen speichern. Zur Laufzeit ruft Azure Resource Manager alle verknüpften Vorlagen ab und benötigt daher direkten Zugriff auf diese. Gängige Praxis ist die Verwendung von GitHub zum Speichern der geschachtelten Vorlagen. Ein GitHub-Repository kann Dateien enthalten, die über eine URL öffentlich zugänglich sind. Obwohl diese Vorgehensweise für die öffentliche Cloud und Sovereign Clouds gut funktioniert, kann sich eine Azure Stack-Umgebung in einem Unternehmensnetzwerk oder an einem vom Netzwerk getrennten entfernten Standort ohne ausgehenden Internetzugang befinden. In diesen Fällen kann Azure Resource Manager die geschachtelten Vorlagen nicht abrufen. 
+Überlegen Sie, wo und wie Sie die von Ihnen verwendeten verknüpften Vorlagen speichern. Zur Laufzeit ruft Azure Resource Manager alle verknüpften Vorlagen ab und benötigt daher direkten Zugriff auf diese. Gängige Praxis ist die Verwendung von GitHub zum Speichern der geschachtelten Vorlagen. Ein GitHub-Repository kann Dateien enthalten, die über eine URL öffentlich zugänglich sind. Obwohl diese Vorgehensweise für die öffentliche Cloud und Sovereign Clouds gut funktioniert, kann sich eine Azure Stack-Umgebung in einem Unternehmensnetzwerk oder an einem vom Netzwerk getrennten entfernten Standort ohne ausgehenden Internetzugang befinden. In diesen Fällen kann Azure Resource Manager die geschachtelten Vorlagen nicht abrufen.
 
-Eine bessere Vorgehensweise für cloudübergreifende Bereitstellungen ist es, Ihre verknüpften Vorlagen an einem Speicherort abzulegen, der für die Zielcloud zugänglich ist. Im Idealfall werden alle Bereitstellungsartefakte mithilfe einer CI/CD-Pipeline (Continuous Integration/Continuous Development) verwaltet und bereitgestellt. Alternativ können Sie geschachtelte Vorlagen in einem Blog Storage-Container ablegen, aus dem Azure Resource Manager sie abrufen kann. 
+Eine bessere Vorgehensweise für cloudübergreifende Bereitstellungen ist es, Ihre verknüpften Vorlagen an einem Speicherort abzulegen, der für die Zielcloud zugänglich ist. Im Idealfall werden alle Bereitstellungsartefakte mithilfe einer CI/CD-Pipeline (Continuous Integration/Continuous Development) verwaltet und bereitgestellt. Alternativ können Sie geschachtelte Vorlagen in einem Blog Storage-Container ablegen, aus dem Azure Resource Manager sie abrufen kann.
 
 Da Blob Storage für jede Cloud einen anderen Endpunkt und vollqualifizierten Domänennamen (FQDN) verwendet, konfigurieren Sie die Vorlage mit dem Speicherort der verknüpften Vorlagen mit zwei Parametern. Parameter können Benutzereingaben zum Zeitpunkt der Bereitstellung akzeptieren. Vorlagen werden in der Regel von mehreren Personen erstellt und gemeinsam genutzt. Daher ist es empfehlenswert, einen Standardnamen für diese Parameter zu verwenden. Benennungskonventionen tragen dazu bei, dass Vorlagen in Regionen, Clouds und von Autoren besser wiederverwendet werden können.
 
@@ -132,9 +132,9 @@ In der gesamten Vorlage werden Links generiert, indem der Basis-URI (aus dem `_a
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Bei diesem Ansatz wird der Standardwert für den Parameter `_artifactsLocation` 
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Verwenden von „_artifactsLocation“ anstelle hartcodierter Links
 
-Neben der Verwendung für geschachtelte Vorlagen wird die URL im Parameter `_artifactsLocation` als Basis für alle zugehörigen Artefakte einer Bereitstellungsvorlage verwendet. Einige VM-Erweiterungen enthalten einen Link zu einem Skript, das außerhalb der Vorlage gespeichert wird. Für diese Erweiterungen sollten Sie die Links nicht hartcodieren. Die Erweiterungen „CustomScriptExtension“ und „PowerShell DSC“ können wie gezeigt mit einem externen Skript auf GitHub verknüpft sein: 
+Neben der Verwendung für geschachtelte Vorlagen wird die URL im Parameter `_artifactsLocation` als Basis für alle zugehörigen Artefakte einer Bereitstellungsvorlage verwendet. Einige VM-Erweiterungen enthalten einen Link zu einem Skript, das außerhalb der Vorlage gespeichert wird. Für diese Erweiterungen sollten Sie die Links nicht hartcodieren. Die Erweiterungen „CustomScriptExtension“ und „PowerShell DSC“ können wie gezeigt mit einem externen Skript auf GitHub verknüpft sein:
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Wohl wissend, dass sich Azure-Regionen und -Clouds in puncto verfügbarer Dienst
 
 Eine Vorlage dient zum Bereitstellen und Konfigurieren von Ressourcen. Ein Ressourcentyp wird von einem Ressourcenanbieter bereitgestellt. Beispielsweise bietet der Computeressourcenanbieter (Microsoft.Compute) mehrere Ressourcentypen wie „virtualMachines“ und „availabilitySets“. Jeder Ressourcenanbieter stellt Azure Resource Manager eine API zur Verfügung, die durch einen gemeinsamen Vertrag definiert ist und allen Ressourcenanbietern eine konsistente, vereinheitlichte Erstellungsumgebung ermöglicht. Allerdings ist ein Ressourcenanbieter, der in der globalen Azure-Cloud verfügbar ist, möglicherweise nicht in einer Sovereign Cloud oder Azure Stack-Region verfügbar.
 
-![Ressourcenanbieter](./media/templates-cloud-consistency/resource-providers.png) 
+![Ressourcenanbieter](./media/templates-cloud-consistency/resource-providers.png)
 
 Um die Ressourcenanbieter zu überprüfen, die in einer bestimmten Cloud verfügbar sind, führen Sie das folgende Skript an der Azure-Befehlszeilenschnittstelle ([CLI](/cli/azure/install-azure-cli)) aus:
 
@@ -253,7 +253,7 @@ Eine Vorlage wird immer in einer Ressourcengruppe bereitgestellt, die sich in ei
 
 Auch wenn Sie die Regionsnamen bei der Angabe der Ressourceneigenschaften in einer Vorlage hartcodieren könnten, garantiert dieser Ansatz nicht, dass die Vorlage in anderen Azure Stack-Umgebungen eingesetzt werden kann, da der Regionsname dort höchstwahrscheinlich nicht vorhanden ist.
 
-Um verschiedene Regionen zu berücksichtigen, fügen Sie der Vorlage den Eingabeparameter „location“ mit einem Standardwert hinzu. Der Standardwert wird verwendet, wenn bei der Bereitstellung kein Wert angegeben wird. 
+Um verschiedene Regionen zu berücksichtigen, fügen Sie der Vorlage den Eingabeparameter „location“ mit einem Standardwert hinzu. Der Standardwert wird verwendet, wenn bei der Bereitstellung kein Wert angegeben wird.
 
 Die Vorlagenfunktion `[resourceGroup()]` gibt ein Objekt zurück, das die folgenden Schlüssel-Wert-Paare enthält:
 
@@ -284,9 +284,9 @@ Durch Verweisen auf den Speicherortschlüssel des Objekts im „defaultValue“ 
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Aus diesem Grund wurde im Ressourcen-Manager das Konzept der API-Profile in Vorl
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ Eine API-Profilversion fungiert als Alias für eine einzelne API-Version pro Res
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ Das API-Profil ist kein Pflichtelement einer Vorlage. Selbst wenn Sie das Elemen
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ Das API-Profil ist kein Pflichtelement einer Vorlage. Selbst wenn Sie das Elemen
 
 ## <a name="check-endpoint-references"></a>Überprüfen von Endpunktverweisen
 
-Ressourcen können Verweise auf andere Dienste auf der Plattform aufweisen. Beispielsweise kann einer öffentlichen IP-Adresse ein öffentlicher DNS-Name zugewiesen sein. Die öffentliche Cloud, Sovereign Clouds und Azure Stack-Lösungen verfügen über eigene unterschiedliche Namespaces für Endpunkte. In den meisten Fällen erfordert eine Ressource als Eingabe in der Vorlage nur ein Präfix. Azure Resource Manager fügt zur Laufzeit den Endpunktwert daran an. Einige Endpunktwerte müssen explizit in der Vorlage angegeben werden. 
+Ressourcen können Verweise auf andere Dienste auf der Plattform aufweisen. Beispielsweise kann einer öffentlichen IP-Adresse ein öffentlicher DNS-Name zugewiesen sein. Die öffentliche Cloud, Sovereign Clouds und Azure Stack-Lösungen verfügen über eigene unterschiedliche Namespaces für Endpunkte. In den meisten Fällen erfordert eine Ressource als Eingabe in der Vorlage nur ein Präfix. Azure Resource Manager fügt zur Laufzeit den Endpunktwert daran an. Einige Endpunktwerte müssen explizit in der Vorlage angegeben werden.
 
 > [!NOTE]
 > Um Vorlagen für cloudübergreifende Konsistenz zu entwickeln, sollten Sie Namespaces für Endpunkte nicht hartcodieren.
@@ -444,7 +444,7 @@ Namespaces für Endpunkte können auch in der Ausgabe einer Vorlage als Informat
 Vermeiden Sie grundsätzlich hartcodierte Endpunkte in einer Vorlage. Es empfiehlt sich, die Referenzvorlagenfunktion zu verwenden, um die Endpunkte dynamisch abzurufen. Der Endpunkt, der am häufigsten hartcodiert wird, ist beispielsweise der Namespace von Endpunkten für Speicherkonten. Jedes Speicherkonto hat einen eindeutigen FQDN, der durch Verkettung des Namens des Speicherkontos mit dem Namespace des Endpunkts gebildet wird. Ein Blob Storage-Konto namens „mystorageaccount1“ führt je nach Cloud zu unterschiedlichen FQDNs:
 
 * **mystorageaccount1.blob.core.windows.net** bei Erstellung in der globalen Azure-Cloud.
-* **mystorageaccount1.blob.core.chinacloudapi.cn** bei Erstellung in der Cloud von Azure China.
+* **mystorageaccount1.blob.core.chinacloudapi.cn** bei Erstellung in der Cloud Azure China 21Vianet.
 
 Die folgende Referenzvorlagenfunktion ruft den Namespace des Endpunkts vom Speicherressourcenanbieter ab:
 
@@ -456,7 +456,7 @@ Indem Sie den hartcodierten Wert des Endpunkts des Speicherkontos durch die Vorl
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Verweisen auf vorhandene Ressourcen über die eindeutige ID
 
-Sie können auch auf eine vorhandene Ressource aus derselben oder einer anderen Ressourcengruppe und innerhalb desselben Abonnements oder eines anderen Abonnements innerhalb desselben Mandanten in derselben Cloud verweisen. Um die Ressourceneigenschaften abzurufen, müssen Sie die eindeutige ID für die Ressource selbst verwenden. Die Vorlagenfunktion `resourceId` ruft die eindeutige ID einer Ressource wie SQL Server wie im folgenden Code gezeigt ab: 
+Sie können auch auf eine vorhandene Ressource aus derselben oder einer anderen Ressourcengruppe und innerhalb desselben Abonnements oder eines anderen Abonnements innerhalb desselben Mandanten in derselben Cloud verweisen. Um die Ressourceneigenschaften abzurufen, müssen Sie die eindeutige ID für die Ressource selbst verwenden. Die Vorlagenfunktion `resourceId` ruft die eindeutige ID einer Ressource wie SQL Server wie im folgenden Code gezeigt ab:
 
 ```json
 "outputs": {
@@ -602,8 +602,8 @@ Da VM-Erweiterungen Erstanbieterressourcen von Ressourcen-Manager sind, haben si
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Jede spezifische Erweiterung erhält eine eigene Version. Diese Version wird in 
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Jede spezifische Erweiterung erhält eine eigene Version. Diese Version wird in 
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 Um eine Liste der verfügbaren Versionen für eine bestimmte VM-Erweiterung abzurufen, verwenden Sie das Cmdlet [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage). Das folgende Beispiel ruft die verfügbaren Versionen für die VM-Erweiterung „PowerShell DSC“ (Desired State Configuration) von **myLocation** ab:
@@ -655,12 +655,12 @@ Beim Erstellen einer Vorlage ist es eine Herausforderung, alle damit verbundenen
 
 Die folgende Abbildung zeigt ein typisches Beispiel eines Entwicklungsprozesses eines Teams mit einer integrierten Entwicklungsumgebung (IDE). In verschiedenen Phasen auf der Zeitachse erfolgen verschiedene Arten von Tests. Hier arbeiten zwei Entwickler an der gleichen Lösung, aber dieses Szenario gilt gleichermaßen für einen einzelnen Entwickler oder ein großes Team. Jeder Entwickler erstellt in der Regel eine lokale Kopie eines zentralen Repositorys, sodass jeder an der lokalen Kopie arbeiten kann, ohne die anderen zu beeinträchtigen, die möglicherweise an denselben Dateien arbeiten.
 
-![Workflow](./media/templates-cloud-consistency/workflow.png) 
+![Workflow](./media/templates-cloud-consistency/workflow.png)
 
 Befolgen Sie die folgenden Tipps für Tests und Automatisierung:
 
 * Verwenden Sie Testtools. Beispielsweise bieten Visual Studio Code und Visual Studio IntelliSense und andere Funktionen, die Ihnen bei der Validierung Ihrer Vorlagen helfen können.
-* Um die Codequalität während der Entwicklung in der lokalen IDE zu verbessern, führen Sie statische Codeanalysen mit Komponenten- und Integrationstests durch. 
+* Um die Codequalität während der Entwicklung in der lokalen IDE zu verbessern, führen Sie statische Codeanalysen mit Komponenten- und Integrationstests durch.
 * Für eine noch bessere Erfahrung während der ersten Entwicklungsphase sollten Komponenten- und Integrationstests nur eine Warnung ausgeben, wenn ein Problem gefunden wird, und mit den Tests fortfahren. Auf diese Weise können Sie die zu behandelnden Probleme identifizieren und die Reihenfolge der Änderungen priorisieren, was auch als testgesteuerte Bereitstellung (Test-Driven Deployment, TDD) bezeichnet wird.
 * Denken Sie daran, dass einige Tests auch ohne Verbindung mit Azure Resource Manager erfolgen können. Andere, wie z.B. das Testen von Vorlagen, benötigen den Ressourcen-Manager, um bestimmte Aktionen auszuführen, die offline nicht möglich sind.
 * Das Testen einer Bereitstellungsvorlage für die Validierungs-API ist nicht gleichbedeutend mit einer tatsächlichen Bereitstellung. Auch wenn Sie eine Vorlage aus einer lokalen Datei bereitstellen, werden alle Verweise auf geschachtelte Vorlagen in der Vorlage direkt vom Ressourcen-Manager abgerufen. Artefakte, auf die von VM-Erweiterungen verwiesen wird, werden vom VM-Agent abgerufen, der in der bereitgestellten VM ausgeführt wird.

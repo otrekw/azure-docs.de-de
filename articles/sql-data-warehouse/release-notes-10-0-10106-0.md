@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 11/12/2019
+ms.date: 1/14/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092233"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122456"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -31,6 +31,13 @@ Beispielausgabe:
 ![SQL Data Warehouse-Version](./media/release-notes/t47-1-version.png)
 
 Verwenden Sie die identifizierte Version, um zu bestätigen, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde.
+
+## <a name="january-2020"></a>Januar 2020
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Metriken im Workloadverwaltungsportal (Vorschauversion)**|Seit der Veröffentlichung der [Workloadisolation](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) als Vorschauversion im letzten Oktober können Benutzer ihre eigenen [Arbeitsauslastungsgruppen](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) erstellen, um die Systemressourcen effizient zu verwalten und die Einhaltung von geschäftlichen SLAs sicherzustellen.  Im Rahmen der allgemeinen Verbesserungen an der [Workloadverwaltung](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) für Azure Synapse Analytics sind nun neue [Metriken zur Überwachung der Workloadverwaltung](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) verfügbar.</br> </br> Das Überwachen Ihrer Workloads bietet nun mehr Erkenntnisse durch die folgenden Metriken: </br> - Effektives Ressourcenlimit (Prozent)  </br> - Effektive Mindestanzahl von Ressourcen (Prozent) </br> - Aktive Abfragen von Arbeitsauslastungsgruppen </br> - Zuordnung von Arbeitsauslastungsgruppen nach maximalem Ressourcenprozentsatz </br> - Zuordnung von Arbeitsauslastungsgruppen nach Systemprozentsatz </br> - Abfragetimeouts für Arbeitsauslastungsgruppen </br> - In der Warteschlange befindliche Abfragen der Arbeitsauslastungsgruppe </br></br> Verwenden Sie diese Metriken, um [Engpässe bei Arbeitsauslastungsgruppen](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) zu ermitteln oder Arbeitsauslastungsgruppen zu identifizieren, die mit einer [unterausgelasteten Workloadisolation](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation) konfiguriert wurde.  Diese Metriken können im Azure-Portal verwendet werden. Dort können Sie auch eine Aufteilung nach Arbeitsauslastungsgruppen durchführen.  Filtern Sie Ihre bevorzugten Graphen, und heften Sie diese an ein Dashboard an, um schnell auf Erkenntnisse Zugriff zu erhalten.|
+|**Überwachungsmetriken im Portal**| Die folgenden Metriken wurden dem Portal zum Überwachen der allgemeinen Abfrageaktivität hinzugefügt: </br> - Aktive Abfragen </br> - Abfragen in Warteschlange </br> </br>Diese Metriken werden zusammen mit den vorhandenen Metriken in der [Dokumentation zur Überwachung der Ressourcenverwendung und der Abfrageaktivität](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity) beschrieben.|
 
 ## <a name="october-2019"></a>Oktober 2019
 
@@ -66,7 +73,7 @@ Verwenden Sie die identifizierte Version, um zu bestätigen, welches Release auf
 |**Zwischenspeichern von Resultsets (Preview)**|Es wurden DBCC-Befehle zum Verwalten des zuvor angekündigten Resultsetcache hinzugefügt. Weitere Informationen finden Sie unter </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> Siehe auch die neue Spalte „result_set_cache“ in [dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest), in der angezeigt wird, ob der Resultsetcache von einer ausgeführten Abfrage verwendet wurde.|
 |**Sortierter gruppierter Columnstore-Index (Vorschau)**|[sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) wurde die neue Spalte „column_store_order_ordinal“ hinzugefügt, um die Reihenfolge der Spalten in einem sortierten gruppierten Columnstore-Index anzugeben.|
 
-## <a name="may-2019"></a>Mai 2019
+## <a name="may-2019"></a>Mai 2019
 
 | Verbesserungen beim Dienst | Details |
 | --- | --- |

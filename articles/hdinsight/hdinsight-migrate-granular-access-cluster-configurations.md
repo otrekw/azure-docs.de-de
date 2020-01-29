@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498211"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310831"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrieren zu präzisem rollenbasiertem Zugriff für Clusterkonfigurationen
 
@@ -31,9 +31,9 @@ Wir führen außerdem eine neue Rolle ein ([HDInsight-Clusteroperator](https://d
 | Leser                                | - Lesezugriff, einschließlich Geheimnisse                                                                   | - Lesezugriff, **mit Ausnahme von** Geheimnissen |           |   |   |
 | HDInsight-Clusteroperator<br>(Neue Rolle) | –                                                                                              | - Lese-/Schreibzugriff, einschließlich Geheimnisse         |   |   |
 | Mitwirkender                           | - Lese-/Schreibzugriff, einschließlich Geheimnisse<br>- Erstellen und Verwalten aller Arten von Azure-Ressourcen     | Keine Änderung |
-| Owner (Besitzer)                                 | - Lese-/Schreibzugriff, einschließlich Geheimnisse<br>- Vollzugriff auf alle Ressourcen<br>- Delegieren des Zugriffs an andere Personen | Keine Änderung |
+| Besitzer                                 | - Lese-/Schreibzugriff, einschließlich Geheimnisse<br>- Vollzugriff auf alle Ressourcen<br>- Delegieren des Zugriffs an andere Personen | Keine Änderung |
 
-Informationen zum Hinzufügen der HDInsight-Clusteroperatorrolle zu einem Benutzer, um ihm/ihr Lese-/Schreibzugriff auf Clustergeheimnisse zu geben, finden Sie im Abschnitt unten, [Hinzufügen der HDInsight-Clusteroperator-Rollenzuweisung zu einem Benutzer](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
+Informationen dazu, wie Sie einem Benutzer die HDInsight-Clusteroperatorrolle hinzufügen, um ihm Lese-/Schreibzugriff auf Clustergeheimnisse zu geben, finden Sie im nachfolgenden Abschnitt [Hinzufügen der HDInsight-Clusteroperator-Rollenzuweisung zu einem Benutzer](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 
 ## <a name="am-i-affected-by-these-changes"></a>Bin ich von diesen Änderungen betroffen?
 
@@ -132,9 +132,7 @@ Aktualisieren Sie auf [Version 1.0.0](https://pypi.org/project/azure-mgmt-hdinsi
 Aktualisieren Sie auf [Version 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) oder höher des HDInsight SDK für Java. Möglicherweise sind minimale Codeänderungen erforderlich, wenn Sie eine von diesen Änderungen betroffene Methode verwenden:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) gibt **keine sensitiven Parameter** wie Speicherschlüssel (Kernwebsite) oder HTTP-Anmeldeinformationen (Gateway) mehr zurück.
-    - Um alle Konfigurationen einschließlich der sensiblen Parameter zurückzugeben, verwenden Sie zukünftig [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable).  Beachten Sie, dass Benutzer mit der Rolle „Leser“ nicht imstande sind, diese Rolle zu verwenden. Dadurch ist eine differenzierte Kontrolle der Benutzer möglich, die auf sensible Informationen für einen Cluster zugreifen können. 
-    - Um lediglich HTTP-Gatewayanmeldeinformationen abzurufen, verwenden Sie [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable).
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) ist mittlerweile veraltet und wurde durch [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable) ersetzt.
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) gilt jetzt als veraltet.
 
 ### <a name="sdk-for-go"></a>SDK für Go
 

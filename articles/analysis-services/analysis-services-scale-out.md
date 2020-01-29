@@ -4,15 +4,15 @@ description: Replizieren Sie Azure Analysis Services-Server mittels horizontalem
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572589"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310185"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -20,7 +20,7 @@ Durch die horizontale Skalierung können Clientabfragen auf mehrere *Abfragerepl
 
 Horizontales Hochskalieren ist für Server im Standardtarif verfügbar. Jedes Abfragereplikat wird mit dem gleichen Tarif abgerechnet wie Ihr Server. Alle Abfragereplikate werden in der gleichen Region wie Ihr Server erstellt. Die Anzahl der von Ihnen konfigurierbaren Abfragereplikate ist durch die Region, in der sich Ihr Server befindet, eingeschränkt. Weitere Informationen finden Sie unter [Verfügbarkeit nach Region](analysis-services-overview.md#availability-by-region). Durch horizontales Hochskalieren erhöht sich nicht die Menge an verfügbarem Arbeitsspeicher für Ihren Server. Zur Erhöhung des Arbeitsspeichers müssen Sie Ihren Plan upgraden. 
 
-## <a name="why-scale-out"></a>Horizontale Skalierung
+## <a name="why-scale-out"></a>Gründe für die horizontale Skalierung
 
 In einer typischen Serverbereitstellung fungiert ein einzelner Server sowohl als Verarbeitungs- als auch als Abfrageserver. Wenn die Anzahl von Clientabfragen für Modelle auf dem Server die QPUs (Query Processing Units) für den Tarif Ihres Servers übersteigt oder die Modellverarbeitung mit einem hohen Aufkommen von Abfrageworkloads zusammenfällt, kann sich dies negativ auf die Leistung auswirken. 
 
@@ -30,13 +30,13 @@ Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten i
 
 Beim horizontalen Skalieren kann es bis zu fünf Minuten dauern, bis neue Abfragereplikate in den Abfragepool aufgenommen werden. Wenn alle neuen Abfragereplikate einsatzbereit sind, kommen für neue Clientverbindungen Ressourcen im Abfragepool für den Lastenausgleich zum Einsatz. Bestehende Clientverbindungen werden nicht geändert; die Verbindung mit der bisherigen Ressource bleibt bestehen. Beim horizontalen Herunterskalieren werden alle bestehenden Clientverbindungen mit einer Abfragepoolressource, die aus dem Abfragepool entfernt wird, beendet. Clients können die Verbindung mit verbleibenden Poolressourcen wiederherstellen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Beim ersten Konfigurieren der horizontalen Skalierung werden Modelldatenbanken auf Ihrem primären Server *automatisch* mit neuen Replikaten in einem neuen Abfragepool synchronisiert. Die automatische Synchronisierung erfolgt nur einmal. Bei der automatischen Synchronisierung werden die Datendateien des (im Ruhezustand im Blobspeicher verschlüsselten) primären Servers an einen zweiten Speicherort kopiert, der ebenfalls im Ruhezustand im Blobspeicher verschlüsselt ist. Replikate im Abfragepool werden dann mit Daten aus dem zweiten Datensatz *aufgefüllt*. 
 
 Eine automatische Synchronisierung erfolgt nur, wenn Sie erstmals eine horizontale Skalierung ausführen. Sie können jedoch auch eine manuelle Synchronisierung durchführen. Durch die Synchronisierung wird sichergestellt, dass die Daten auf Replikaten im Abfragepool mit den Daten im primären Server übereinstimmen. Beim Verarbeiten von (aktualisierten) Modellen auf dem primären Server ist *nach* dem Abschluss der Verarbeitungsvorgänge eine Synchronisierung erforderlich. Bei dieser Synchronisierung werden aktualisierte Daten aus den Dateien des primären Servers im Blobspeicher in den zweiten Datensatz kopiert. Replikate im Abfragepool werden dann mit aktualisierten Daten aus dem zweiten Datensatz im Blobspeicher aufgefüllt. 
 
-Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beispielsweise die Anzahl von Replikaten im Abfragepool von zwei auf fünf erhöhen, werden die neuen Replikate mit Daten aus dem Datensatz im Blobspeicher aktualisiert. Hier erfolgt keine Synchronisierung. Wenn Sie nach dem Hochskalieren eine Synchronisierung durchführen, werden die neuen Replikaten im Abfragepool zweimal aufgefüllt – ein redundanter Vorgang. Bedenken Sie Folgendes, wenn Sie eine nachfolgende horizontale Skalierung durchführen:
+Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beispielsweise die Anzahl von Replikaten im Abfragepool von zwei auf fünf erhöhen, werden die neuen Replikate mit Daten aus dem Datensatz im Blobspeicher aktualisiert. Hier erfolgt keine Synchronisierung. Wenn Sie nach dem horizontalen Skalieren eine Synchronisierung durchführen, werden die neuen Replikaten im Abfragepool zweimal aufgefüllt – ein redundanter Vorgang. Bedenken Sie Folgendes, wenn Sie eine nachfolgende horizontale Skalierung durchführen:
 
 * Führen Sie *vor der horizontalen Skalierung* eine Synchronisierung durch, um redundante Vorgänge mit zusätzlichen Replikaten zu vermeiden. Ein gleichzeitiges Ausführen von Synchronisierung und horizontaler Skalierung ist nicht zulässig.
 
@@ -48,6 +48,26 @@ Wenn Sie einen nachfolgenden horizontalen Skalierungsvorgang ausführen und beis
 
 * Wenn Sie eine Datenbank auf dem primären Server umbenennen, ist ein zusätzlicher Schritt erforderlich, um sicherzustellen, dass die Datenbank ordnungsgemäß mit Replikaten synchronisiert wird. Nach dem Umbenennen führen Sie eine Synchronisierung mit dem Befehl [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei dieser Synchronisierung werden die Datenbank und die Dateien mit dem alten Namen aus Replikate entfernt. Führen Sie eine weitere Synchronisierung durch. Dabei legen Sie den Parameter `-Database` mit dem alten Datenbanknamen fest. Bei der zweiten Synchronisierung wird die neu benannte Datenbank in den zweiten Datensatz kopiert und alle Replikate aufgefüllt. Diese Synchronisierungen können nicht mithilfe des Befehls „Modell synchronisieren“ im Portal ausgeführt werden.
 
+### <a name="synchronization-mode"></a>Synchronisierungsmodus
+
+Standardmäßig werden Abfragereplikate vollständig und nicht inkrementell reaktiviert. Die Reaktivierung erfolgt in Phasen. Es werden jeweils zwei gleichzeitig getrennt und angefügt (sofern mindestens drei Replikate vorhanden sind), um sicherzustellen, dass jederzeit mindestens ein Replikat für Abfragen online ist. In einigen Fällen müssen Clients möglicherweise während der Ausführung dieses Prozesses erneut eine Verbindung mit einem der Onlinereplikate herstellen. Mithilfe der Einstellung **ReplicaSyncMode** (in der Vorschauphase) können Sie nun angeben, dass die Synchronisierung der Abfragereplikate parallel erfolgen soll. Die parallele Synchronisierung bietet folgende Vorteile: 
+
+- Deutliche Verringerung der Synchronisierungszeit 
+- Daten in unterschiedlichen Replikaten sind während des Synchronisationsvorgang eher konsistent. 
+- Da Datenbanken während des Synchronisationsvorgangs auf allen Replikaten online bleiben, müssen die Clients keine neue Verbindung herstellen. 
+- Der arbeitsspeicherinterne Cache wird inkrementell nur mit den geänderten Daten aktualisiert. Dies kann schneller erfolgen als eine vollständige Reaktivierung des Modells. 
+
+#### <a name="setting-replicasyncmode"></a>Einstellung „ReplicaSyncMode“
+
+Verwenden Sie SSMS, um ReplicaSyncMode in den erweiterten Eigenschaften festzulegen. Mögliche Werte: 
+
+- `1` (Standard): Vollständige Reaktivierung der Replikatdatenbank in Phasen (inkrementell) 
+- `2`: Parallele Optimierung der Synchronisierung. 
+
+![Einstellung „RelicaSyncMode“](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+
+Wenn Sie **ReplicaSyncMode = 2** festlegen, kann je nachdem, wie viel Cache aktualisiert werden muss, zusätzlicher Arbeitsspeicher von den Abfragereplikaten genutzt werden. Damit die Datenbank online und für Abfragen verfügbar bleibt, kann der Vorgang abhängig davon, wie viele Daten geändert wurden, bis zur *doppelten Speichermenge* auf dem Replikat erfordern, da sowohl alte als auch neue Segmente gleichzeitig im Arbeitsspeicher beibehalten werden. Replikatknoten verfügen über die gleiche Speicherzuordnung wie der primäre Knoten, und es ist in der Regel für Aktualisierungsvorgänge zusätzlicher Arbeitsspeicher auf dem primären Knoten verfügbar. Daher ist es unwahrscheinlich, dass für die Replikate nicht genügend Arbeitsspeicher verfügbar ist. Außerdem besteht das gängigste Szenario darin, dass die Datenbank inkrementell auf dem primären Knoten aktualisiert wird, sodass die Anforderung der doppelten Speichermenge nur selten auftreten sollte. Wenn bei der Synchronisierung ein Fehler durch nicht genügend Arbeitsspeicher auftritt, wird der Vorgang mit dem Standardverfahren (Anfügen/Trennen von jeweils zwei Replikaten) erneut versucht. 
+
 ### <a name="separate-processing-from-query-pool"></a>Getrennte Verarbeitung vom Abfragepool
 
 Zur Optimierung der Leistung bei Verarbeitungs- und Abfragevorgängen können Sie optional Ihren Verarbeitungsserver vom Abfragepool trennen. Nach der Trennung werden neue Clientverbindungen nur den Abfragereplikaten im Abfragepool zugewiesen. Wenn Verarbeitungsvorgänge nur eine kurze Zeit dauern, können Sie Ihren Verarbeitungsserver auch nur für den Zeitraum vom Abfragepool trennen, der zur Durchführung der Verarbeitungs- und Synchronisierungsvorgänge erforderlich ist, und ihn dann wieder in den Abfragepool aufnehmen. Der Vorgang zum Trennen des Verarbeitungsservers vom Abfragepool oder zum erneuten Hinzufügen kann bis zu fünf Minuten dauern.
@@ -56,7 +76,7 @@ Zur Optimierung der Leistung bei Verarbeitungs- und Abfragevorgängen können Si
 
 Überwachen Sie Ihren Server im Azure-Portal mithilfe von Metriken, um zu ermitteln, ob horizontales Hochskalieren für Ihren Server erforderlich ist. Wenn regelmäßig die QPU-Obergrenze erreicht wird, übersteigt die Anzahl von Abfragen für Ihre Modelle das QPU-Limit für Ihren Tarif. Die Metrik „Warteschlangenlänge für Abfragepoolaufträge“ erhöht sich auch, wenn die Anzahl von Abfragen in der Warteschlange des Abfragethreadpools die verfügbaren QPUs übersteigt. 
 
-Eine weitere gute Metrik zum Überwachen ist die durchschnittliche QPU nach ServerResourceType. Mit dieser Metrik wird die durchschnittliche QPU für den primären Server mit der des Abfragepools verglichen. 
+Eine weitere gute Metrik zum Überwachen ist die durchschnittliche QPU nach ServerResourceType. Mit dieser Metrik wird die durchschnittliche QPU für den primären Server mit dem Abfragepool verglichen. 
 
 ![Abfragen von Metriken für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
@@ -107,7 +127,7 @@ Verwenden Sie die **sync**-Operation.
 Rückgabestatuscodes:
 
 
-|Code  |BESCHREIBUNG  |
+|Code  |Beschreibung  |
 |---------|---------|
 |-1     |  Ungültig       |
 |0     | Replikation wird ausgeführt        |

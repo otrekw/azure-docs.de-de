@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176066"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512850"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
 
@@ -81,10 +81,10 @@ Bevor Sie mit diesem Projekt beginnen, müssen folgende erforderliche Schritte a
 
 In der folgenden Tabelle sind die wichtigsten Anwendungsfälle für eine Bereitstellung des Zugriffsbereichs aufgeführt:
 
-| Bereich| BESCHREIBUNG |
+| Bereich| Beschreibung |
 | - | - |
-| Access| Das Portal des Zugriffsbereichs ist von firmeneigenen und privaten Geräten im Unternehmensnetzwerk aus zugänglich. |
-|Access | Das Portal des Zugriffsbereichs ist von firmeneigenen Geräten von außerhalb des Unternehmensnetzwerks aus zugänglich. |
+| Zugriff| Das Portal des Zugriffsbereichs ist von firmeneigenen und privaten Geräten im Unternehmensnetzwerk aus zugänglich. |
+|Zugriff | Das Portal des Zugriffsbereichs ist von firmeneigenen Geräten von außerhalb des Unternehmensnetzwerks aus zugänglich. |
 | Überwachung| Die Nutzungsdaten werden mindestens alle 29 Tage in die Unternehmenssysteme heruntergeladen. |
 | Governance| Der Lebenszyklus der Benutzerzuweisungen zu Anwendungen und Gruppen, die mit Azure AD verbunden sind, wird definiert und überwacht. |
 | Sicherheit| Der Zugriff auf Ressourcen wird über die Zuweisung von Benutzern und Gruppen gesteuert. Nur autorisierte Benutzer können den Ressourcenzugriff verwalten. |
@@ -197,7 +197,7 @@ Wenn Sie kennwortbasierte SSO-Anwendungen integrieren müssen, sollten Sie einen
 
 * [Gruppenrichtlinie für Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [System Center Configuration Manager (SCCM) für Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager für Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 * [Benutzergesteuerter Download und Konfiguration für Chrome, Firefox, Microsoft Edge oder Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 

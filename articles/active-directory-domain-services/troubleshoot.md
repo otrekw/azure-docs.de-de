@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c2a8c8cfa2425985a22b93d4ade509320c48564
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2c6f594b16aac40abf885e0d058c7aba48d32f9c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998731"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512622"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Häufige Fehler und Schritte zur Problembehandlung für Azure Active Directory Domain Services
 
-Als zentraler Bestandteil der Identität und Authentifizierung für Anwendungen treten bei Azure Active Directory Domain Services (Azure AD DS) manchmal Probleme auf. Wenn das der Fall ist, können Sie mithilfe einiger häufiger Fehlermeldungen und zugehöriger Schritte zur Problembehandlung diese Fehler beheben. Sie können auch jederzeit [eine Azure-Supportanfrage öffnen][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
+Als zentraler Bestandteil von Identifizierung und Authentifizierung von Anwendungen treten bei Azure Active Directory Domain Services (Azure AD DS) manchmal Probleme auf. Wenn das der Fall ist, können Sie mithilfe einiger häufiger Fehlermeldungen und zugehöriger Schritte zur Problembehandlung diese Fehler beheben. Sie können auch jederzeit [eine Azure-Supportanfrage öffnen][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
 
 Dieser Artikel enthält Schritte zur Behandlung von häufig auftretenden Problemen in Azure AD DS.
 
@@ -43,7 +43,7 @@ Wenn Probleme beim Aktivieren von Azure AD DS auftreten, sehen Sie sich die folg
 
 **Lösung**
 
-Vergewissern Sie sich, dass im virtuellen Netzwerk keine AD DS-Umgebung mit dem gleichen Domänennamen vorhanden ist. Sie können beispielsweise über eine AD DS-Domäne namens *contoso.com* verfügen, die auf Azure-VMs ausgeführt wird. Wenn Sie versuchen, im virtuellen Netzwerk eine durch Azure AD DS verwaltete Domäne mit dem gleichen Domänennamen *contoso.com* zu aktivieren, tritt beim angeforderten Vorgang ein Fehler auf.
+Vergewissern Sie sich, dass im virtuellen Netzwerk keine AD DS-Umgebung mit dem gleichen Domänennamen und demselben oder einem per Peering verknüpften virtuellen Netzwerk vorhanden ist. Sie können beispielsweise über eine AD DS-Domäne namens *contoso.com* verfügen, die auf Azure-VMs ausgeführt wird. Wenn Sie versuchen, im virtuellen Netzwerk eine durch Azure AD DS verwaltete Domäne mit dem gleichen Domänennamen *contoso.com* zu aktivieren, tritt beim angeforderten Vorgang ein Fehler auf.
 
 Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen im virtuellen Netzwerk. Mit einem DNS-Lookup wird geprüft, ob eine vorhandene AD DS-Umgebung auf den angeforderten Domänennamen antwortet. Zur Behebung dieses Fehlers verwenden Sie einen anderen Namen beim Einrichten der durch Azure AD DS verwalteten Domäne, oder heben Sie die Bereitstellung der vorhandenen AD DS-Domäne auf, und versuchen Sie dann erneut, Azure AD DS zu aktivieren.
 
@@ -55,7 +55,7 @@ Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennam
 
 **Lösung**
 
-Prüfen Sie, ob sich in Ihrem Azure AD-Verzeichnis eine Anwendung namens *Azure AD Domain Services Sync* befindet. Falls diese Anwendung vorhanden ist, löschen Sie sie, und versuchen Sie dann erneut, Azure AD DS zu aktivieren. Führen Sie die folgenden Schritte aus, um nach einer vorhandenen Anwendung zu suchen und sie bei Bedarf zu löschen:
+Prüfen Sie, ob sich in Ihrem Azure AD-Verzeichnis eine Anwendung namens *Azure AD Domain Services Sync* befindet. Falls diese Anwendung vorhanden ist, löschen Sie sie, und versuchen Sie dann erneut, Azure AD DS zu aktivieren. Führen Sie die folgenden Schritte aus, um nach einer vorhandenen Anwendung zu suchen und sie bei Bedarf zu löschen:
 
 1. Wählen Sie im Azure-Portal im linken Navigationsmenü die Option **Azure Active Directory** aus.
 1. Wählen Sie **Unternehmensanwendungen**. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option *Alle Anwendungen* und dann **Anwenden** aus.
@@ -72,7 +72,7 @@ Prüfen Sie, ob sich in Ihrem Azure AD-Verzeichnis eine Anwendung namens *Azure 
 
 Prüfen Sie, ob eine Anwendung namens *AzureActiveDirectoryDomainControllerServices* mit dem Anwendungsbezeichner *d87dcbc6-a371-462e-88e3-28ad15ec4e64* in Ihrem Azure AD-Verzeichnis vorhanden ist. Falls diese Anwendung vorhanden ist, löschen Sie sie, und versuchen Sie dann erneut, Azure AD DS zu aktivieren.
 
-Verwenden Sie das folgende PowerShell-Skript, um nach einer vorhandenen Anwendungsinstanz zu suchen und diese bei Bedarf zu löschen.
+Verwenden Sie das folgende PowerShell-Skript, um nach einer vorhandenen Anwendungsinstanz zu suchen und diese bei Bedarf zu löschen:
 
 ```powershell
 $InformationPreference = "Continue"
@@ -135,7 +135,7 @@ Falls sich mindestens ein Benutzer innerhalb Ihres Azure AD-Mandanten nicht bei 
 * **Kennwortsynchronisierung**: Stellen Sie sicher, dass Sie die Kennwortsynchronisierung für [reine Cloudbenutzer][cloud-only-passwords] oder für [Hybridumgebungen mit Azure AD Connect][hybrid-phs] aktiviert haben.
     * **Hybride synchronisierte Konten:** Falls die betroffenen Benutzerkonten über ein lokales Verzeichnis synchronisiert werden, überprüfen Sie Folgendes:
     
-      * Sie haben die [neueste empfohlene Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
+      * Sie haben das [neueste empfohlene Release von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) bereitgestellt bzw. das Update darauf durchgeführt.
       * Sie haben Azure AD Connect so konfiguriert, dass [eine vollständige Synchronisierung ausgeführt wird][hybrid-phs].
       * Je nach Größe Ihres Verzeichnisses kann es einige Zeit dauern, bis die Benutzerkonten und Anmeldeinformationshashes in Azure AD DS verfügbar sind. Vergewissern Sie sich, dass Sie lange genug warten, bevor Sie versuchen, sich bei der verwalteten Domäne zu authentifizieren.
       * Wenn das Problem nach Überprüfung der vorherigen Schritte weiterhin auftritt, starten Sie den *Microsoft Azure AD Sync-Dienst* neu. Öffnen Sie auf der [Verwaltungs-VM][management-vm] eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus:
@@ -169,7 +169,7 @@ Um ein Benutzerkonto vollständig aus einer durch Azure AD DS verwalteten Domän
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls weiterhin Probleme auftreten, [öffnen Sie eine Azure-Supportanfrage][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
+Falls weiterhin Probleme auftreten, [erstellen Sie eine Azure-Supportanfrage][azure-support], um weitere Hilfe bei der Problembehandlung zu erhalten.
 
 <!-- INTERNAL LINKS -->
 [cloud-only-passwords]: tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds

@@ -1,5 +1,5 @@
 ---
-title: Filtern, Sortieren und Paginieren von Media Services-Entitäten
+title: Filtern, Sortieren und Paginieren von Media Services v3-Entitäten
 titleSuffix: Azure Media Services
 description: Informationen zum Filtern, Sortieren und Paginieren von Azure Media Services-Entitäten.
 services: media-services
@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186247"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311698"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
 
@@ -45,7 +45,7 @@ Bereichsoperatoren:
 - `ge`: Testet, ob ein Feld *größer oder gleich* einem konstanten Wert ist.
 - `le`: Testet, ob ein Feld *kleiner oder gleich* einem konstanten Wert ist.
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>Filtern
 
 Verwenden Sie `$filter`, um einen OData-Filterparameter anzugeben und nur die Objekte zu suchen, die Sie interessieren.
 
@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 Die folgende Tabelle zeigt, wie Sie die Filter- und Sortieroptionen auf verschiedene Entitäten anwenden können:
 
-|Name der Entität|Eigenschaftenname|Filter|Reihenfolge|
+|Name der Entität|Eigenschaftenname|Filtern|Order|
 |---|---|---|---|
 |[Medienobjekte](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` und `desc`|
 ||properties.alternateId |`eq`||

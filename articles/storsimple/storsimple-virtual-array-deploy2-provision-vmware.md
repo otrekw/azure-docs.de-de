@@ -1,26 +1,19 @@
 ---
-title: Bereitstellen eines StorSimple Virtual Array in VMware | Microsoft-Dokumentation
+title: Bereitstellen von StorSimple Virtual Array in VMware
 description: In diesem zweiten Tutorial der Reihe zur StorSimple Virtual Array-Bereitstellung geht es um das Bereitstellen eines virtuellen Geräts in VMware.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516821"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272091"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)

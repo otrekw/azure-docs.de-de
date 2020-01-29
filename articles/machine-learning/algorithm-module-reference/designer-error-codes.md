@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 12/03/2019
-ms.openlocfilehash: d491a67a44a2cb01e4968c4d31d20dee4b75a60a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979991"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311664"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
-In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes in Azure Machine Learning Designer (Preview) beschrieben, um Ihnen bei der Problembehandlung Ihrer Machine Learning-Pipelines zu helfen.
+In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes im Azure Machine Learning-Designer beschrieben, um Ihnen bei der Problembehandlung Ihrer Pipelines für maschinelles Lernen zu helfen.
 
 Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Designer abzurufen:  
 
@@ -363,7 +363,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 
  Lesen Sie das Hilfethema zum Modul, das das Dataset als Eingabe verwenden soll, um die Anforderungen zu ermitteln.  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->erforderlich.  
 
 |Ausnahmemeldungen|
 |------------------------|
@@ -704,7 +704,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 
 |Ausnahmemeldungen|
 |------------------------|
-|Fehler beim Vorgang.|
+|Fehler bei dem Vorgang.|
 |Error while completing operation: "{failed_operation}".|
 |Error while completing operation: "{failed_operation}". Reason: "{reason}".|
 

@@ -4,15 +4,15 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045835"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276781"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -29,7 +29,10 @@ Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen
     * [JavaScript-Codeausschnitt](#snippet-based-setup)
 
 > [!IMPORTANT]
-> Sie müssen nur eine der folgenden Methoden verwenden, um Ihrer Anwendung das Application Insights JavaScript SDK hinzuzufügen. Wenn Sie das npm-basierte Setup verwenden, verwenden Sie nicht das ausschnittbasierte Setup. Das Gleiche gilt für das umgekehrte Szenario: Wenn Sie den ausschnittbasierten Ansatz verwenden, verwenden Sie nicht außerdem das npm-basierte Setup. 
+> Verwenden Sie nur eine Methode, um Ihrer Anwendung das JavaScript SDK hinzuzufügen. Wenn Sie das NPM-Setup verwenden, verwenden Sie nicht den Codeausschnitt und umgekehrt.
+
+> [!NOTE]
+> Beim NPM-Setup wird das JavaScript SDK als eine Abhängigkeit in Ihrem Projekt installiert, wodurch IntelliSense aktiviert wird, während mit dem Codeausschnitt das SDK zur Laufzeit abgerufen wird. Beide unterstützen die gleichen Funktionen. Entwickler, die weitere benutzerdefinierte Ereignisse und Konfigurationen wünschen, entscheiden sich in der Regel für das NPM-Setup, während sich Benutzer, die eine schnelle Aktivierung der standardmäßig verfügbaren Webanalyse wünschen, für den Codeausschnitt entscheiden.
 
 ### <a name="npm-based-setup"></a>npm-basiertes Setup
 
@@ -208,7 +211,7 @@ Diese Version ist mit der minimalen Anzahl von Features und Funktionen ausgestat
 
 ## <a name="examples"></a>Beispiele
 
-Ausführbare Beispiele finden Sie unter [Application Insights JavaScript SDK Samples](https://github.com/topics/applicationinsights-js-demo) (Beispiele für Application Insights JavaScript SDK).
+Ausführbare Beispiele finden Sie unter den [Beispielen für das Application Insights JavaScript SDK](https://github.com/topics/applicationinsights-js-demo).
 
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Upgrade von der alten Application Insights-Version
 
@@ -261,4 +264,3 @@ Das Application Insights JavaScript SDK ist Open Source. Wenn Sie den Quellcode 
 * [Nutzung nachverfolgen](usage-overview.md)
 * [Benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](usage-overview.md)
-

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Nutzungseinstellungen in Classroom-Labs von Azure Lab Services | Microsoft-Dokumentation
+title: Konfigurieren von Nutzungseinstellungen in Classroom-Labs von Azure Lab Services
 description: Erfahren Sie, wie Sie die Anzahl der Benutzer für das Lab konfigurieren, die Benutzer beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584137"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169220"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -172,7 +172,7 @@ Auf der Seite **Anmeldeoptionen** wählt er die Option **Mit GitHub anmelden** a
 Schließlich wird er aufgefordert, ein Microsoft-Konto zu erstellen, das mit seinem GitHub-Konto verknüpft ist. Dies geschieht automatisch, wenn der Kursteilnehmer **Weiter** auswählt.  Anschließend wird der Kursteilnehmer sofort angemeldet und mit dem Classroom-Lab verbunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen und Verwalten von Labkonten als Administrator](how-to-manage-lab-accounts.md)
 - [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)

@@ -1,25 +1,25 @@
 ---
 title: Aktualisieren eines bestehenden Commercial Marketplace-Angebots
-description: Erfahren Sie, wie Sie ein bestehendes Commercial Marketplace-Angebot aktualisieren können, einschließlich Bearbeitung, Löschung eines Entwurfs, Stornierung einer Veröffentlichungsanforderung, Einstellung des Verkaufs eines Angebots oder Plans und Synchronisierung privater Zielgruppen.
+description: Erfahren Sie, wie Sie ein bestehendes Angebot im kommerziellen Marketplace aktualisieren, also beispielsweise ein Angebot bearbeiten, einen Entwurf löschen, eine Veröffentlichungsanfrage stornieren, den Verkauf eines Angebots oder Plans einstellen und private Zielgruppen synchronisieren.
 author: ChJenk
 manager: evansma
 ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f2cb1907557c2440a5a94c0f4799eac95a8cf507
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/16/2020
+ms.openlocfilehash: feeebc9446ccb1f651d8f3968feccdf9e577501e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827857"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168994"
 ---
 # <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualisieren eines bestehenden Commercial Marketplace-Angebots
 
 Sie können Ihre vorhandenen Angebote in Partner Center im [Portal des kommerziellen Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) auf der Registerkarte **Übersicht** anzeigen.
 
-So aktualisieren Sie ein bestehendes Angebot, das derzeit in Marketplace live geschaltet ist 
+So aktualisieren Sie ein bestehendes Angebot, das derzeit im Marketplace live geschaltet ist:
 
 1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann **Live**, **Publish in progress** (Veröffentlichung in Bearbeitung), **Draft** (Entwurf), **Attention needed** (Aufmerksamkeit erforderlich) oder **Not being sold in the marketplace** (Wird nicht über Marketplace verkauft) lauten (wenn Sie zuvor entschieden haben, den Verkauf des Angebots einzustellen). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
 2. Klicken Sie auf der Übersichtskarte oder im Menü im linken Navigationsbereich für den Bereich auf **Update** (Aktualisieren), den Sie aktualisieren möchten. Sie können die folgenden Bereiche aktualisieren: **Offer setup** (Einrichtung des Angebots), **Properties** (Eigenschaften), **Offer listing** (Listung des Angebots), **Preview** (Vorschau), **Technical configuration** (Technische Konfiguration), **Plan overview** (Planübersicht) oder **Test drive** (Testversion). 
@@ -29,14 +29,14 @@ So aktualisieren Sie ein bestehendes Angebot, das derzeit in Marketplace live ge
 
 Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf einer beliebigen Seite auf **Publish** (Veröffentlichen). Die Seite **Review and publish** (Überprüfen und veröffentlichen) wird geöffnet. Auf der Seite haben Sie folgende Möglichkeiten:
 
-
 - Anzeigen des Fertigstellungsstatus für die Abschnitte des Angebots, die Sie aktualisiert haben: 
     - **Nicht veröffentlichte Änderungen**: Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
     - **Unvollständige Informationen**: Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
 - Stellen Sie dem Zertifizierungsprüfungsteam zusätzliche Informationen zur Verfügung, um sicherzustellen, dass die Prüfung reibungslos verläuft.
 - Senden Sie dazu das aktualisierte Angebot zur Veröffentlichung, indem Sie auf **Submit** (Senden) klicken.  Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots verfügbar ist, die Sie überprüfen und freigeben können.
 
-**WICHTIG:** Sie müssen die Vorschau Ihres Angebots überprüfen, sobald es verfügbar ist, und auf **Go-live** (Live schalten) klicken, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.
+> [!IMPORTANT]
+> Sie müssen die Vorschau Ihres Angebots überprüfen, sobald diese verfügbar ist, und **Live schalten** auswählen, um Ihr aktualisiertes Angebot für Ihre Zielgruppe (öffentlich oder privat) zu veröffentlichen.
 
 ## <a name="update-a-plan-within-an-existing-offer"></a>Aktualisieren eines Plans in einem bestehenden Angebot
 
@@ -45,7 +45,67 @@ So ändern Sie einen Plan innerhalb eines bestehenden Angebots, das Sie bereits 
 - Wenn die Seite **Offer overview** (Angebotübersicht) für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan, den Sie ändern möchten. Wenn in der Liste **Plan overview** (Planübersicht) nicht auf den Plan zugegriffen werden kann, wählen Sie **See all plans** (Alle Pläne anzeigen) aus.
 - Sie können für den Plan **Name**, **Pricing model** (Preismodell) oder **Availability** (Verfügbarkeit) auswählen. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung*.
 - Klicken Sie auf **Save** (Speichern), nachdem Sie alle erforderlichen Änderungen am Plannamen, an der Beschreibung, den Preisen oder der Zielgruppenverfügbarkeit vorgenommen haben. 
-- Klicken Sie auf **Publish** (Veröffentlichen), sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Die Seite **[Review and publish](#review-and-publish-an-updated-offer)** (Überprüfen und veröffentlichen) wird mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet. 
+- Klicken Sie auf **Publish** (Veröffentlichen), sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Die Seite **[Review and publish](#review-and-publish-an-updated-offer)** (Überprüfen und veröffentlichen) wird mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
+
+## <a name="compare-changes-to-marketplace-offers"></a>Vergleichen von Änderungen an Marketplace-Angeboten
+
+Mithilfe von **Vergleichen** können Sie die Änderungen, die Sie an einem [veröffentlichten](#compare-changes-to-published-offer) Angebot oder einem Angebot in der [Vorschau](#compare-changes-to-a-preview-offer) vorgenommen haben, überprüfen, bevor Sie diese live schalten.
+
+>[!NOTE]
+> Ein veröffentlichtes Angebot ist ein Angebot, das erfolgreich in der Vorschau oder im Livezustand veröffentlicht wurde.
+
+Allgemeine Informationen zur Überprüfung finden Sie nachfolgend:
+
+- Sie können **Vergleichen** jederzeit während des Bearbeitungsvorgangs verwenden.
+- Wählen Sie auf der Seite **Vergleichen** ein Feld aus, um zu dem Wert zu navigieren, den Sie ändern möchten.
+- Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus.
+- Um die Werte für alle (auch nicht aktualisierte) Felder anzuzeigen, wählen Sie den Filter **All fields** (Alle Felder) aus. Sie können Filter in diesen Feldern ändern, indem Sie **Modified fields** (Geänderte Felder) und dann einen der folgenden Filter auswählen:
+    - Mit dem Filter **Removed values** (Entfernte Werte) werden Felder angezeigt, die Sie veröffentlicht haben und jetzt vollständig entfernen.
+    - Mit dem Filter **Added values** (Hinzugefügte Werte) werden Felder angezeigt, die Sie ursprünglich nicht veröffentlicht haben und jetzt hinzufügen.
+    - Mit dem Filter **Edited values** (Bearbeitete Werte) werden Felder angezeigt, die Sie veröffentlicht haben, deren Inhalt aber jetzt aktualisiert wurde.
+
+      >[!NOTE]
+      > Wenn einer dieser Filter nicht verfügbar ist, weist dies darauf hin, dass Sie keine derartige Aktualisierung vorgenommen haben.
+
+- Wenn nur Werte angezeigt werden sollen, die nicht aktualisiert wurden, wählen Sie den Filter **Unchanged Fields** (Nicht geänderte Felder) aus. Die für die veröffentlichte und die Entwurfsversion angezeigten Feldwerte sind identisch.
+
+  ![Filter zum Vergleichen von Aktualisierungen an einem veröffentlichten Angebot oder Vorschauangebot](./media/compare-changes-marketplace.png)
+
+>[!NOTE]
+> **Vergleichen** wird von den folgenden Seiten derzeit nicht unterstützt:
+>- CSP-Reseller-Zielgruppe
+>- Technische Konfiguration der Testversion
+>- Marketplace-Auflistung der Testversion
+>- Co-Selling
+>- Zusätzliche Dateien
+
+### <a name="compare-changes-to-published-offer"></a>Vergleichen von Änderungen an einem veröffentlichten Angebot
+
+Befolgen Sie die nachstehenden Anweisungen, um Ihre Änderungen am veröffentlichten Angebot zu vergleichen:
+
+1. Wählen Sie in der Befehlsleiste auf der Seite **Vergleichen** aus. Auf der Seite **Vergleichen** werden die Version dieses Angebots mit den gespeicherten Änderungen und die Version des veröffentlichten Marketplace-Angebots nebeneinander dargestellt.
+2. Wenn Sie von einer bestimmten Seite des Angebots auf **Vergleichen** zugreifen, werden in der Standardeinstellung nur die auf dieser Seite vorgenommenen Änderungen angezeigt.
+    - Wenn Sie Änderungen auf allen Seiten vergleichen möchten, ändern Sie die Seite über **Zu vergleichende Seite auswählen**.  
+    - Wenn Sie Änderungen am Angebot über alle Seiten hinweg vergleichen möchten, wählen Sie **Alle Seiten** aus.
+
+Mit **Vergleichen** werden Ihre neuen Änderungen standardmäßig dem Marketplace-Liveangebot gegenübergestellt.
+
+Denken Sie daran, Ihr Angebot nach der Aktualisierung erneut zu veröffentlichen, damit die Änderungen wirksam werden.
+
+### <a name="compare-changes-to-a-preview-offer"></a>Vergleichen von Änderungen an einem Vorschauangebot
+
+Wenn Sie Änderungen an einer Vorschau vorgenommen haben, die nicht live geschaltet ist, können Sie neue Änderungen mit dem Marketplace-Vorschauangebot vergleichen.
+
+Befolgen Sie die nachstehenden Anweisungen, um neue Änderungen mit Ihrem Marketplace-Vorschauangebot zu vergleichen:
+
+1. Wählen Sie in der Befehlsleiste auf der Seite **Vergleichen** aus.
+2. Wählen Sie die Dropdownliste **Mit** aus, und ändern Sie die Einstellung von **Live offer** (Liveangebot) in **Preview offer** (Vorschauangebot).
+3. Auf der Seite **Vergleichen** werden die Versionen nebeneinander dargestellt, um die Änderungen anzuzeigen.
+
+>[!NOTE]
+>Wenn Ihr Angebot noch nicht online geschaltet aber in der Vorschau veröffentlicht wurde, haben Sie keine Möglichkeit, die Version mit einem Liveangebot zu vergleichen.
+
+Denken Sie daran, Ihr Angebot nach der Aktualisierung erneut zu veröffentlichen, damit die Änderungen wirksam werden.
 
 ## <a name="delete-a-draft-offer"></a>Löschen eines Angebotsentwurfs
 
@@ -63,20 +123,20 @@ Nachdem Sie bestätigt haben, dass Sie den Planentwurf löschen möchten, ist de
 
 So stornieren Sie ein Angebot mit dem Status **Publish in progress** (Veröffentlichung in Bearbeitung)
 
-- Wählen Sie den Angebotsnamen aus, um die Seite **Offer overview** (Angebotsübersicht) zu öffnen. 
+- Wählen Sie den Angebotsnamen aus, um die Seite **Offer overview** (Angebotsübersicht) zu öffnen.
 - Klicken Sie rechts oben auf der Seite auf **Cancel publish** (Veröffentlichen stornieren).
-- Bestätigen Sie, dass Sie die Veröffentlichung des Angebots stornieren möchten. 
+- Bestätigen Sie, dass Sie die Veröffentlichung des Angebots stornieren möchten.
 
 Wenn Sie das Angebot zu einem späteren Zeitpunkt veröffentlichen möchten, müssen Sie den Veröffentlichungsprozess neu starten.
 
 > [!NOTE]
-> Sie können die Veröffentlichung eines Angebots nur dann verhindern, wenn das Angebot noch nicht zum Schritt der Freigabe durch den Herausgeber gelangt ist. Nach Klicken auf **Go Live** (Live schalten) haben Sie nicht mehr die Möglichkeit, die Veröffentlichung zu stornieren.
+> Sie können die Veröffentlichung eines Angebots nur dann verhindern, wenn das Angebot noch nicht durch den Herausgeber freigegeben wurde. Nach Klicken auf **Go Live** (Live schalten) haben Sie nicht mehr die Möglichkeit, die Veröffentlichung zu stornieren.
 
 ## <a name="stop-selling-an-offer-or-plan"></a>Einstellen des Verkaufs eines Angebots oder Plans
 
 Um den Verkauf eines Angebots einzustellen, nachdem Sie es bereits veröffentlicht haben, wählen Sie auf der Seite **Offer overview** (Angebotübersicht) **Stop selling** (Verkauf einstellen) aus. Um den Verkauf eines Plans einzustellen, wählen Sie auf der Seite **Plan overview** (Planübersicht) **Stop selling** (Verkauf einstellen) aus. (Die Option zum Einstellen des Verkaufs eines Plans ist nur verfügbar, wenn das Angebot mehr als einen Plan aufweist. Sie können den Verkauf eines Plans einstellen, ohne andere Pläne in Ihrem Angebot zu beeinträchtigen.)
 
-Sobald Sie bestätigt haben, dass Sie den Verkauf des Angebots oder Plans einstellen möchten, wird es innerhalb weniger Stunden nicht mehr in Marketplace sichtbar sein und kann nicht mehr von Neukunden heruntergeladen werden. 
+Sobald Sie bestätigt haben, dass Sie den Verkauf des Angebots oder Plans einstellen möchten, wird es innerhalb weniger Stunden nicht mehr in Marketplace sichtbar sein und kann nicht mehr von Neukunden heruntergeladen werden.
 
 Kunden, die das Angebot oder den Plan zuvor erworben haben, können die Nutzung fortsetzen. Sie können das Angebot oder den Plan erneut herunterladen, erhalten aber keine Updates, wenn Sie das Angebot oder den Plan zu einem späteren Zeitpunkt aktualisieren und erneut veröffentlichen. 
 

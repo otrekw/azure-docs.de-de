@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462546"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512197"
 ---
 # <a name="azure-ad-joined-devices"></a>In Azure AD eingebundene Geräte
 
@@ -26,26 +26,26 @@ Die Einbindung in Azure AD ist für Organisationen bestimmt, die auf eine Cloud
 | --- | --- |
 | **Definition** | Bei der ausschließlichen Einbindung in Azure AD ist für die Anmeldung bei dem Gerät ein Organisationskonto erforderlich. |
 | **Hauptzielgruppe** | Geeignet für Cloud-Only- sowie Hybridorganisationen |
-|   | Anwendbar für alle Benutzer in einer Organisation |
-| **Gerätebesitz** | Organisation |
+|   | Anwendbar für alle Benutzer einer Organisation. |
+| **Gerätebesitz** | Organization |
 | **Betriebssysteme** | Alle Windows 10-Geräte |
 | **Bereitstellung** | Self-Service: Windows-Willkommensseite oder Windows-Einstellungen |
 |   | Massenregistrierung |
 |   | Windows Autopilot |
-| **Anmeldeoptionen für Geräte** | Organisationskonten mit: |
+| **Anmeldeoptionen für Gerät** | Organisationskonten mit: |
 |   | Kennwort |
 |   | Windows Hello for Business |
 |   | FIDO2.0-Sicherheitsschlüssel (Vorschauversion) |
 | **Geräteverwaltung** | Mobile Geräteverwaltung (z. B. Microsoft Intune) |
-|   | Kombinierte Verwaltung mit Microsoft Intune und System Center Configuration Manager |
-| **Wichtige Funktionen** | Einmaliges Anmelden für cloudbasierte sowie lokale Ressourcen |
+|   | Kombinierte Verwaltung mit Microsoft Intune und Microsoft Endpoint Configuration Manager |
+| **Wichtige Funktionen** | Einmaliges Anmelden sowohl für cloudbasierte als auch für lokale Ressourcen |
 |   | Bedingter Zugriff über MDM-Registrierung und MDM-Kompatibilitätsauswertung |
 |   | Self-Service-Kennwortzurücksetzung und Windows Hello-PIN-Zurücksetzung auf dem Sperrbildschirm |
 |   | Geräteübergreifendes Enterprise State Roaming |
 
 Die Anmeldung bei in Azure AD eingebundenen Geräten erfolgt über ein Azure AD-Organisationskonto. Der Zugriff auf Ressourcen in der Organisation kann basierend auf diesem Azure AD-Konto und auf [Richtlinien für den bedingten Zugriff](../conditional-access/overview.md), die auf die Geräteidentität angewandt werden, weiter eingeschränkt werden.
 
-Administratoren können in Azure AD eingebundene Geräte mithilfe von MDM-Tools (mobile Geräteverwaltung) wie Microsoft Intune oder in Szenarien für die Co-Verwaltung mithilfe von System Center Configuration Manager schützen und weiter steuern. Diese Tools bieten eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität, Softwareinstallationen und Softwareupdates. Administratoren können Organisationsanwendungen unter Verwendung von [System Center Configuration Manager und dem Microsoft Store für Unternehmen](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business) für in Azure AD eingebundene Geräte zur Verfügung stellen.
+Administratoren können in Azure AD eingebundene Geräte mithilfe von MDM-Tools (mobile Geräteverwaltung) wie Microsoft Intune oder in Szenarien für die Co-Verwaltung mithilfe von Microsoft Endpoint Configuration Manager schützen und weiter steuern. Diese Tools bieten eine Möglichkeit zur Erzwingung der von einer Organisation geforderten Konfigurationen, z. B. Verschlüsselung des Speichers, Kennwortkomplexität, Softwareinstallationen und Softwareupdates. Administratoren können Organisationsanwendungen unter Verwendung von Configuration Manager zum [Verwalten von Apps aus dem Microsoft Store für Unternehmen und Bildungseinrichtungen](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business) für in Azure AD eingebundene Geräte zur Verfügung stellen.
 
 Die Einbindung in Azure AD kann über Self-Service-Optionen wie z. B. Windows-Willkommensseite, Massenregistrierung oder[Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot) durchgeführt werden.
 
@@ -83,4 +83,4 @@ Azure AD Join kann mit einer der folgenden Methoden bereitgestellt werden:
 - [Planen der Implementierung Ihrer Azure AD-Einbindung](azureadjoin-plan.md)
 - [Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten](assign-local-admin.md)
 - [Verwalten der Geräteidentität mithilfe des Azure-Portals](device-management-azure-portal.md)
-- [Verwalten von veralteten Geräten in Azure AD](manage-stale-devices.md)
+- [Verwalten von veralteten Geräten in Azure AD](manage-stale-devices.md)

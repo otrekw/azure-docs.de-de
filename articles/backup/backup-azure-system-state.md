@@ -1,36 +1,34 @@
 ---
 title: Sichern des Windows-Systemstatus in Azure
 description: Erfahren Sie, wie Sie den Systemstatus von Windows Server und/oder Windows-Computern in Azure sichern.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: Sichern; Sicherung; Sichern von Dateien und Ordnern
-ms.service: backup
+ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: saurse
-ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "76294013"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Sichern des Windows-Systemstatus in der Ressourcen Manager-Bereitstellung
-Dieser Artikel beschreibt, wie Sie den Systemstatus von Windows Server in Azure sichern. Dies ist ein Tutorial, in dem die Grundlagen beschrieben werden.
+
+Dieser Artikel beschreibt, wie Sie den Systemstatus von Windows Server in Azure sichern. Hier werden die Grundlagen ausführlich beschrieben.
 
 Falls Sie weitere Informationen zu Azure Backup erhalten möchten, können Sie diese [Übersicht](backup-overview.md)lesen.
 
 Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, mit dem Sie auf alle Azure-Dienste zugreifen können.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
+
 Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Services-Tresor in der Region erstellen, in der die Daten gespeichert werden sollen. Außerdem müssen Sie festlegen, wie der Speicher repliziert werden soll.
 
 ### <a name="to-create-a-recovery-services-vault"></a>So erstellen Sie einen Recovery Services-Tresor
+
 1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com/) an, sofern Sie noch nicht angemeldet sind.
 2. Klicken Sie im Hubmenü auf **Alle Dienste**, geben Sie in der Ressourcenliste **Recovery Services** ein, und klicken Sie auf **Recovery Services-Tresore**.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-system-state/open-rs-vault-list.png)
 
     Wenn Recovery Services-Tresore im Abonnement vorhanden sind, werden die Tresore aufgeführt.
 3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
@@ -51,7 +49,7 @@ Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Se
     oder
     * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
 
-   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 
 7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen. Die Auswahl bestimmt die geografische Region, an die Ihre Sicherungsdaten gesendet werden.
 
@@ -64,6 +62,7 @@ Um den Systemstatus von Windows Server zu sichern, müssen Sie einen Recovery Se
     Sobald Ihr Tresor in der Liste mit den Recovery Services-Tresoren angezeigt wird, können Sie die Speicherredundanz festlegen.
 
 ### <a name="set-storage-redundancy-for-the-vault"></a>Festlegen der Speicherredundanz für den Tresor
+
 Vergewissern Sie sich beim Erstellen eines Recovery Services-Tresors, dass die Speicherredundanz wie gewünscht konfiguriert ist.
 
 1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor.
@@ -87,6 +86,7 @@ Vergewissern Sie sich beim Erstellen eines Recovery Services-Tresors, dass die S
 Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows-Systemstatus konfigurieren.
 
 ## <a name="configure-the-vault"></a>Konfigurieren des Tresors
+
 1. Klicken Sie auf dem Blatt „Recovery Services-Tresor“ (für den gerade erstellten Tresor) im Abschnitt „Erste Schritte“ auf **Backup**. Wählen Sie dann auf dem Blatt **Erste Schritte mit der Sicherung** die Option **Sicherungsziel** aus.
 
     ![Öffnen des Blatts „Backup Goal“ (Sicherungsziel)](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
@@ -99,7 +99,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 
     Sie wählen **Lokal**, da Ihr Windows Server- oder Windows-Computer ein physischer Computer ist, der sich nicht in Azure befindet.
 
-3. Wählen Sie im Menü **Was möchten Sie sichern?** die Option **Systemstatus** aus, und klicken Sie anschließend auf **OK**.
+3. Wählen Sie im Menü **Welche Daten möchten Sie sichern?** die Option **Systemstatus** aus, und klicken Sie auf **OK**.
 
     ![Konfigurieren von Dateien und Ordnern](./media/backup-azure-system-state/backup-goal-system-state.png)
 
@@ -127,7 +127,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 
     ![Herunterladen der Tresoranmeldeinformationen](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Die Anmeldeinformationen für den Tresor werden in den Ordner „Downloads“ heruntergeladen. Nach dem Herunterladen der Anmeldeinformationen für den Tresor erscheint ein Popup mit der Frage, ob Sie die Anmeldeinformationen öffnen oder speichern möchten. Klicken Sie auf **Speichern**. Wenn Sie versehentlich auf **Öffnen** klicken, brechen Sie den Vorgang zum Öffnen der Anmeldeinformationen für den Tresor ab. Sie können die Anmeldeinformationen für den Tresor nicht öffnen. Fahren Sie mit dem nächsten Schritt fort. Die Anmeldeinformationen für den Tresor befinden sich im Ordner „Downloads“.   
+    Die Anmeldeinformationen für den Tresor werden in den Ordner „Downloads“ heruntergeladen. Nach dem Herunterladen der Anmeldeinformationen für den Tresor erscheint ein Popup mit der Frage, ob Sie die Anmeldeinformationen öffnen oder speichern möchten. Klicken Sie auf **Speichern**. Wenn Sie versehentlich auf **Öffnen** klicken, brechen Sie den Vorgang zum Öffnen der Anmeldeinformationen für den Tresor ab. Sie können die Anmeldeinformationen für den Tresor nicht öffnen. Fahren Sie mit dem nächsten Schritt fort. Die Anmeldeinformationen für den Tresor befinden sich im Ordner „Downloads“.
 
     ![Herunterladen der Tresoranmeldeinformationen abgeschlossen](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -164,6 +164,7 @@ Sie haben einen Tresor erstellt und können ihn nun für das Sichern des Windows
 Der Agent wurde jetzt installiert, und Ihr Computer wurde im Tresor registriert. Sie können die Sicherung jetzt konfigurieren und planen.
 
 ## <a name="back-up-windows-server-system-state"></a>Sichern des Systemstatus von Windows Server
+
 Die erste Sicherung umfasst zwei Aufgaben:
 
 * Planen der Sicherung
@@ -206,23 +207,27 @@ Für die erste Sicherung verwenden Sie den Microsoft Azure Recovery Services-Age
 
 2. Klicken Sie im Recovery Services-Agent auf **Jetzt sichern** , um das anfängliche Seeding über das Netzwerk abzuschließen.
 
-    ![Windows Server – Jetzt sichern](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
+    ![Windows Server jetzt sichern](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
 3. Wählen Sie auf dem angezeigten Bildschirm **Sicherungselement auswählen** die Option **Systemstatus**, und klicken Sie auf **Weiter**.
 
 4. Überprüfen Sie auf der Seite „Bestätigung“ die Einstellungen, die vom Assistenten für die sofortige Sicherung zum Sichern des Computers verwendet werden. Klicken Sie dann auf **Sichern**.
 
-4. Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
-
+5. Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
+    > [!NOTE]
+    > Der MARS-Agent löst SFC/verifyonly als Teil der Vorabüberprüfungen vor jeder Systemstatussicherung aus. Dadurch wird sichergestellt, dass Dateien, die im Rahmen des Systemstatus gesichert werden, die richtigen Versionen entsprechend der Windows-Version aufweisen. Weitere Informationen zu System File Checker (SFC) finden Sie in [diesem Artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc).
+    >
 
 Nach Abschluss des ersten Backups wird der Status des Auftrags in der Backup-Konsole als **Auftrag abgeschlossen** angezeigt.
 
   ![Abgeschlossen](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>Fragen?
+
 Wenn Sie Fragen haben oder Anregungen zu gewünschten Funktionen mitteilen möchten, [senden Sie uns Ihr Feedback](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Informieren Sie sich ausführlicher über das [Sichern von Windows-Computern](backup-configure-vault.md).
 * Nachdem Sie nun Ihren Windows Server-Systemstatus gesichert haben, können Sie Ihre [Tresore und Server verwalten](backup-azure-manage-windows-server.md).
 * Informationen zum Wiederherstellen einer Sicherung finden Sie im Artikel zum [Wiederherstellen von Dateien auf einem Windows-Computer](backup-azure-restore-windows-server.md).

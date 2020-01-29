@@ -1,25 +1,17 @@
 ---
-title: Überwachen von StorSimple-Geräten der Serie 8000 | Microsoft-Dokumentation
+title: Überwachen von Geräten der StorSimple 8000-Serie
 description: Beschreibt, wie Sie den StorSimple-Geräte-Manager-Dienst verwenden, um E/A-Leistung und Kapazitätsauslastung zu überwachen.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634561"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277059"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Überwachen von StorSimple-Geräten
 

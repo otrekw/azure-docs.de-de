@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Umgebung mit einem Service Fabric-Cluster in Azure DevTest Labs | Microsoft-Dokumentation
+title: Erstellen einer Service Fabric-Clusterumgebung in Azure DevTest Labs
 description: Erfahren Sie, wie Sie eine Umgebung mit einem eigenständigen Service Fabric-Cluster erstellen und den Cluster mithilfe von Zeitplänen starten und beenden.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325256"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170336"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs
 Dieser Artikel enthält Informationen zum Erstellen einer Umgebung mit einem eigenständigen Service Fabric-Cluster in Azure DevTest Labs. 
@@ -49,7 +49,7 @@ Service Fabric-Cluster werden in DevTest Labs mithilfe von Umgebungen erstellt. 
     5. Geben Sie als **Zertifikat** Ihre Zertifikatinformationen als Base64-codierte Zeichenfolge ein. Führen Sie zum Erstellen eines Zertifikats die folgenden Schritte aus:
         1. Laden Sie die Datei **Create-ClusterCertificate.ps1** aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) herunter. Klonen Sie alternativ das Repository auf Ihrem Computer. 
         2. Starten Sie **PowerShell**. 
-        3. Führen Sie die **PS1**-Datei mit dem Befehl `.\Create-ClusterCertificate.ps1` aus. Daraufhin wird eine Textdatei im Editor mit den Informationen, die Sie zum Ausfüllen der zertifikatspezifischen Felder auf dieser Seite benötigen, geöffnet. . 
+        3. Führen Sie die **PS1**-Datei mit dem Befehl `.\Create-ClusterCertificate.ps1` aus. Daraufhin wird eine Textdatei im Editor mit den Informationen, die Sie zum Ausfüllen der zertifikatspezifischen Felder auf dieser Seite benötigen, geöffnet. erforderlich. 
     6. Geben Sie das **Kennwort für das Zertifikat** ein.
     7. Geben Sie den **Fingerabdruck** für Ihr Zertifikat an.
     8. Wählen Sie auf der Seite **Einstellungen konfigurieren** die Option **Hinzufügen** aus. 

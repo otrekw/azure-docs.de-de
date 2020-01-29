@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364049"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513654"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
-Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  
+Sie können Ihre Microsoft Endpoint Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Azure Monitor unterstützt System Center Configuration Manager Current Branch ab Version 1606.
+Azure Monitor unterstützt Configuration Manager Current Branch ab Version 1606.
 
 >[!NOTE]
->Das Feature zum Herstellen einer Verbindung zwischen Configuration Manager und einem Log Analytics-Arbeitsbereich ist optional und standardmäßig nicht aktiviert. Es muss vor der Verwendung aktiviert werden. Weitere Informationen finden Sie unter [Aktivieren optionaler Features von Updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>Das Feature zum Herstellen einer Verbindung zwischen Configuration Manager und einem Log Analytics-Arbeitsbereich ist optional und standardmäßig nicht aktiviert. Es muss vor der Verwendung aktiviert werden. Weitere Informationen finden Sie unter [Aktivieren optionaler Features von Updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Konfigurationsübersicht
 
@@ -67,7 +67,7 @@ Machen Sie sich unter [Verbinden von Windows-Computern mit Azure Monitor in Azur
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Herstellen einer Verbindung zwischen Configuration Manager und einem Log Analytics-Arbeitsbereich
 
 >[!NOTE]
-> Zum Hinzufügen einer Log Analytics-Verbindung muss für die Configuration Manager-Umgebung ein [Dienstverbindungspunkt](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point) für den Onlinemodus konfiguriert sein.
+> Zum Hinzufügen einer Log Analytics-Verbindung muss für die Configuration Manager-Umgebung ein [Dienstverbindungspunkt](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) für den Onlinemodus konfiguriert sein.
 
 > [!NOTE]
 > Sie müssen die obersten Ebene in Ihrer Hierarchie mit Azure Monitor verbinden. Wenn Sie einen eigenständigen primären Standort mit Azure Monitor verbinden und dann eine zentrale Verwaltung der Umgebung hinzufügen, müssen Sie die Verbindung innerhalb der neuen Hierarchie löschen und neu erstellen.

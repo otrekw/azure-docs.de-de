@@ -1,5 +1,5 @@
 ---
-title: Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung – Azure Media Services | Microsoft-Dokumentation
+title: Multi-DRM-Inhaltsschutzsystem – Azure Media Services v3
 description: In diesem Artikel erhalten Sie eine detaillierte Beschreibung, wie Sie ein Multi-DRM-Inhaltsschutzsystem mit Azure Media Services entwerfen.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: efc070491ca1ea84dc8ef095a2144df9d0bf1bcb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896175"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311902"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung 
 
@@ -202,10 +202,10 @@ Die Implementierung umfasst die folgenden Schritte:
 
     | **DRM-System** | **Browser** | **Ergebnis für berechtigten Benutzer** | **Ergebnis für nicht berechtigten Benutzer** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fail |
-    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fail |
-    | **FairPlay** |Safari unter macOS      |Erfolg |Fail |
-    | **AES-128** |Meisten modernen Browser  |Erfolg |Fail |
+    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fehler |
+    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fehler |
+    | **FairPlay** |Safari unter macOS      |Erfolg |Fehler |
+    | **AES-128** |Meisten modernen Browser  |Erfolg |Fehler |
 
 Informationen zum Einrichten von Azure AD für einen ASP.NET MVC-Player finden Sie unter [Integrate an Azure Media Services OWIN MVC-based app with Azure Active Directory and restrict content key delivery based on JWT claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/) (Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen).
 

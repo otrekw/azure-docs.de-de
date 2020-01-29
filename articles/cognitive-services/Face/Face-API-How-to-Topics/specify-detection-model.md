@@ -1,7 +1,7 @@
 ---
-title: Angeben eines Erkennungsmodells – Gesichtserkennungs-API
+title: 'Angeben eines Erkennungsmodells: Gesichtserkennung'
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie Sie das Gesichtserkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungs-API-Anwendung verwenden möchten.
+description: In diesem Artikel erfahren Sie, wie Sie das Gesichtserkennungsmodell auswählen, das Sie mit Ihrer Azure-Gesichtserkennungsanwendung verwenden möchten.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5b524ca6156dab7c0d1e38ad320b721f40a49ef
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306683"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169758"
 ---
 # <a name="specify-a-face-detection-model"></a>Angeben eines Gesichtserkennungsmodells
 
-In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für die Azure-Gesichtserkennungs-API angeben.
+In dieser Anleitung erfahren Sie, wie Sie ein Gesichtserkennungsmodell für den Azure-Gesichtserkennungsdienst angeben.
 
-Die Gesichtserkennungs-API nutzt Machine Learning-Modelle für Operationen mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
+Der Gesichtserkennungsdienst nutzt Machine Learning-Modelle für Vorgänge mit menschlichen Gesichter in Bildern. Wir verbessern die Genauigkeit unserer Modelle auf der Grundlage von Kundenfeedback und Forschungsergebnissen kontinuierlich, und wir stellen diese Verbesserungen als Modellaktualisierungen zur Verfügung. Entwickler können angeben, welche Version des Gesichtserkennungsmodells sie verwenden möchten. Sie können das Modell auswählen, das am besten zu ihrem Anwendungsfall passt.
 
-Im Folgenden erfahren Sie, wie Sie in bestimmten Gesichtserkennungsvorgängen das Gesichtserkennungsmodell angeben. Die Gesichtserkennungs-API verwendet die Gesichtserkennung, sobald das Bild eines Gesichts in eine andere Datenform konvertiert wird.
+Im Folgenden erfahren Sie, wie Sie in bestimmten Gesichtserkennungsvorgängen das Gesichtserkennungsmodell angeben. Der Gesichtserkennungsdienst verwendet die Gesichtserkennung, sobald das Bild eines Gesichts in eine andere Datenform konvertiert wird.
 
 Wenn Sie nicht sicher sind, ob Sie das neueste Modell verwenden sollten, gehen Sie zum Abschnitt [Auswerten unterschiedlicher Modelle](#evaluate-different-models) über, um das neue Modell zu testen und die Ergebnisse anhand Ihres aktuellen Datasets zu vergleichen.
 
@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>Hinzufügen eines Gesichts zu einem Person-Objekt mit einem angegebenen Modell
 
-Die Gesichtserkennungs-API kann Gesichtsdaten aus einem Bild extrahieren und über die API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) einem **Person**-Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
+Der Gesichtserkennungsdienst kann Gesichtsdaten aus einem Bild extrahieren und über die API [PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) einem **Person**-Objekt zuordnen. In diesem API-Aufruf können Sie das Erkennungsmodell auf die gleiche Weise wie bei [Face – Detect] angeben.
 
 Nachfolgend ist ein Codebeispiel für die .NET-Clientbibliothek aufgeführt.
 

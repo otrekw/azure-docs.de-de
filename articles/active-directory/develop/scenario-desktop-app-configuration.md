@@ -15,24 +15,24 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b1724c25ef2d85aa8f838811864104b49576a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 473f0895ca53fb78b48c828eac807feb25364378
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423892"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293129"
 ---
-# <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Desktop-App, die Web-APIs aufruft – Codekonfiguration
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktop-App, die Web-APIs aufruft: Codekonfiguration
 
 Nachdem Sie Ihre Anwendung nun erstellt haben, erfahren Sie, wie Sie den Code mit den Koordinaten der Anwendung konfigurieren.
 
-## <a name="msal-libraries"></a>MSAL-Bibliotheken
+## <a name="microsoft-authentication-libraries"></a>Microsoft-Authentifizierungsbibliotheken
 
-Folgende Microsoft-Bibliotheken unterstützen Desktopanwendungen:
+Die folgenden Microsoft-Authentifizierungsbibliotheken (MSALs) unterstützen Desktopanwendungen.
 
-  MSAL-Bibliothek | BESCHREIBUNG
+  Microsoft Authentication Library (MSAL) | Beschreibung
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen – Linux, Windows und macOS.
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützt das Erstellen einer Desktopanwendung auf mehreren Plattformen – Linux, Windows und macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen.
   ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen.
   ![iOS für MSAL](media/sample-v2-code/logo_iOS.png) <br/> iOS für MSAL | Unterstützt ausschließlich Desktopanwendungen, die unter macOS ausgeführt werden.
@@ -49,14 +49,14 @@ Sie müssen MSAL.NET `IPublicClientApplication` erstellen und bearbeiten.
 
 ### <a name="exclusively-by-code"></a>Ausschließlich durch Code
 
-Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, über die Benutzer mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet werden.
+Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, und Benutzer werden mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Wenn Sie planen, wie oben dargestellt die interaktive Authentifizierung oder Gerätecodeflow zu verwenden, sollten Sie den Modifizierer `.WithRedirectUri` verwenden:
+Wenn Sie planen, wie zuvor dargestellt, die interaktive Authentifizierung oder den Gerätecodeflow zu verwenden, sollten Sie den Modifizierer `.WithRedirectUri` verwenden.
 
 ```csharp
 IPublicClientApplication app;
@@ -65,9 +65,9 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-### <a name="using-configuration-files"></a>Verwenden von Konfigurationsdateien
+### <a name="use-configuration-files"></a>Verwenden von Konfigurationsdateien
 
-Der folgende Code instanziiert eine öffentliche Clientanwendung aus einem Konfigurationsobjekt, das programmgesteuert ausgefüllt oder von einer Konfigurationsdatei gelesen werden könnte.
+Der folgende Code instanziiert eine öffentliche Clientanwendung über ein Konfigurationsobjekt, das programmgesteuert ausgefüllt oder aus einer Konfigurationsdatei gelesen werden kann.
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -89,7 +89,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET enthält auch einen Modifizierer für ADFS 2019:
+MSAL.NET enthält außerdem einen Modifizierer für Active Directory-Verbunddienste (AD FS) 2019:
 
 ```csharp
 IPublicClientApplication app;
@@ -98,7 +98,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-Wenn Sie schließlich Token für einen Azure AD B2C-Mandanten abrufen möchten, können Sie Ihren Mandanten wie im folgenden Codeausschnitt dargestellt angeben:
+Wenn Sie schließlich Token für einen Azure Active Directory (Azure AD) B2C-Mandanten abrufen möchten, können Sie Ihren Mandanten wie im folgenden Codeausschnitt dargestellt angeben:
 
 ```csharp
 IPublicClientApplication app;
@@ -109,10 +109,10 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>Weitere Informationen
 
-So erhalten Sie weitere Informationen zur Konfiguration einer MSAL.NET-Desktopanwendung:
+So erhalten Sie weitere Informationen zur Konfiguration einer MSAL.NET-Desktopanwendung
 
 - Eine Liste aller bei `PublicClientApplicationBuilder` verfügbaren Modifizierer finden Sie in der Referenzdokumentation [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- Die Beschreibung aller bei `PublicClientApplicationOptions` verfügbar gemachten Optionen finden Sie in der Referenzdokumentation [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions).
+- Eine Beschreibung aller bei `PublicClientApplicationOptions` verfügbar gemachten Optionen finden Sie unter [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) in der Referenzdokumentation.
 
 ### <a name="complete-example-with-configuration-options"></a>Vollständiges Beispiel mit Konfigurationsoptionen
 
@@ -143,13 +143,13 @@ public class SampleConfiguration
  public PublicClientApplicationOptions PublicClientApplicationOptions { get; set; }
 
  /// <summary>
- /// Base URL for Microsoft Graph (it varies depending on whether the application is ran
- /// in Microsoft Azure public clouds or national / sovereign clouds
+ /// Base URL for Microsoft Graph (it varies depending on whether the application runs
+ /// in Microsoft Azure public clouds or national or sovereign clouds)
  /// </summary>
  public string MicrosoftGraphBaseEndpoint { get; set; }
 
  /// <summary>
- /// Reads the configuration from a json file
+ /// Reads the configuration from a JSON file
  /// </summary>
  /// <param name="path">Path to the configuration json file</param>
  /// <returns>SampleConfiguration as read from the json file</returns>
@@ -162,7 +162,7 @@ public class SampleConfiguration
                     .AddJsonFile(path);
   Configuration = builder.Build();
 
-  // Read the auth and graph endpoint config
+  // Read the auth and graph endpoint configuration
   SampleConfiguration config = new SampleConfiguration()
   {
    PublicClientApplicationOptions = new PublicClientApplicationOptions()
@@ -175,7 +175,7 @@ public class SampleConfiguration
 }
 ```
 
-Sie müssen nun einfach folgenden Code schreiben, um Ihre Anwendung zu erstellen:
+Schreiben Sie nun den folgenden Code, um Ihre Anwendung zu erstellen:
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -211,7 +211,7 @@ app = msal.PublicClientApplication(
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, über die Benutzer mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet werden.
+Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, und Benutzer werden mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet.
 
 ### <a name="quick-configuration"></a>Schnellkonfiguration
 
@@ -232,7 +232,7 @@ if let application = try? MSALPublicClientApplication(configuration: config){ /*
 
 ### <a name="more-elaborated-configuration"></a>Ausführlichere Konfiguration
 
-Sie können die Anwendungserstellung ausführlicher gestalten, indem Sie Modifizierer hinzufügen. Wenn Sie beispielsweise möchten, dass Ihre Anwendung eine mehrinstanzenfähige Anwendung in einer nationalen Cloud (in diesem Fall US Government) ist, könnten Sie Folgendes schreiben:
+Sie können die Anwendungserstellung ausführlicher gestalten, indem Sie Modifizierer hinzufügen. Wenn Ihre Anwendung beispielsweise eine mehrinstanzenfähige Anwendung in einer nationalen Cloud (in diesem Fall US Government) sein soll, könnten Sie Folgendes schreiben:
 
 Objective-C:
 

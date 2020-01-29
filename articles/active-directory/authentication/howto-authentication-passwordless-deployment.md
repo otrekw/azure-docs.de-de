@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848492"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512571"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Durchführen einer Bereitstellung der kennwortlosen Authentifizierung
 
@@ -108,7 +108,7 @@ Um die Windows 10-Anmeldung mit FIDO2-Sicherheitsschlüsseln zu aktivieren, mus
    - Die Intune-Bereitstellung ist die empfohlene Option.
 - [Aktivieren des Anmeldeinformationsanbieters mittels eines Bereitstellungspakets](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Wenn die Intune-Bereitstellung nicht möglich ist, müssen Administratoren auf jedem Computer ein Paket bereitstellen, um die Anmeldeinformationsanbieter-Funktionalität zu aktivieren. Die Paketinstallation kann mit einer der folgenden Optionen ausgeführt werden:
-      - Gruppenrichtlinie oder System Center Configuration Manager (SCCM)
+      - Gruppenrichtlinie oder Configuration Manager
       - Lokale Installation auf einem Windows 10-Computer
 
 ### <a name="register-security-keys"></a>Registrieren von Sicherheitsschlüsseln
@@ -129,12 +129,12 @@ Berücksichtigen Sie Ihre geschäftlichen Anforderungen und die Anwendungsfälle
 
 In der folgenden Tabelle werden die Anwendungsfälle erläutert, die während dieses Projekts implementiert werden müssen.
 
-| Bereich | BESCHREIBUNG |
+| Bereich | Beschreibung |
 | --- | --- |
 | **zugreifen** | Die kennwortlose Anmeldung ist von einem firmeneigenen oder persönlichen Gerät innerhalb oder außerhalb des Unternehmensnetzwerks aus verfügbar. |
 | **Überwachung** | Nutzungsdaten stehen Administratoren zur Überwachung nahezu in Echtzeit zur Verfügung. <br> Die Nutzungsdaten werden mindestens alle 29 Tage in die Unternehmenssysteme heruntergeladen, oder das SIEM-Tool (Security Information & Event Management) wird verwendet. |
 | **Governance** | Der Lebenszyklus von Benutzerzuweisungen zur entsprechenden Authentifizierungsmethode und zu zugeordneten Gruppen wird definiert und überwacht. |
-| **Sicherheit** | Der Zugriff auf die entsprechende Authentifizierungsmethode wird über Benutzer- und Gruppenzuweisungen gesteuert. <br> Nur autorisierte Benutzer können die kennwortlose Anmeldung verwenden. |
+| **Security** | Der Zugriff auf die entsprechende Authentifizierungsmethode wird über Benutzer- und Gruppenzuweisungen gesteuert. <br> Nur autorisierte Benutzer können die kennwortlose Anmeldung verwenden. |
 | **Leistung** | Die Zeitachsen für die Verteilung von Zugriffszuweisungen werden dokumentiert und überwacht. <br> Die Anmeldezeiten werden zur einfachen Nutzung gemessen. |
 | **Benutzerfreundlichkeit** | Die Benutzer kennen die mobile Kompatibilität. <br> Benutzer können die Authenticator-App für die kennwortlose Anmeldung konfigurieren. |
 | **Unterstützung** | Benutzer wissen, wie sie Unterstützung bei Problemen mit der kennwortlosen Anmeldung finden. |
@@ -217,7 +217,7 @@ Die folgende Tabelle enthält einige Beispiele für typische Berichtsszenarien.
 
 **Azure AD speichert die meisten Überwachungsdaten 30 Tage lang** und stellt die Daten über das Azure-Verwaltungsportal oder eine API zur Verfügung, damit Sie sie in Ihre Analysesysteme herunterladen können. Wenn Ihre Organisation eine längere Aufbewahrungszeit fordert, müssen die Protokolle exportiert und in einem SIEM-Tool wie etwa [Azure Sentinel](../../sentinel/connect-azure-active-directory.md), Splunk oder Sumo Logic genutzt werden. [Erfahren Sie mehr über das Anzeigen von Zugriffs- und Verwendungsberichten](../reports-monitoring/overview-reports.md).
 
-Um ihre Anmeldeinformationen zu registrieren und zu verwalten, können Benutzer zu [https://aka.ms/mysecurityinfo ](https://aka.ms/mysecurityinfo) navigieren. Dieser Link leitet Benutzer zur Benutzeroberfläche für die Verwaltung von Endbenutzer-Anmeldeinformationen, die über die kombinierte SSPR/MFA-Registrierung aktiviert wurde. Alle Registrierungen von FIDO2-Sicherheitsgeräten oder Änderungen an Authentifizierungsmethoden durch einen Benutzer werden in den Azure Active Directory-Überwachungsprotokollen protokolliert.
+Um ihre Anmeldeinformationen zu registrieren und zu verwalten, können Benutzer zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) navigieren. Dieser Link leitet Benutzer zur Benutzeroberfläche für die Verwaltung von Endbenutzer-Anmeldeinformationen, die über die kombinierte SSPR/MFA-Registrierung aktiviert wurde. Alle Registrierungen von FIDO2-Sicherheitsgeräten oder Änderungen an Authentifizierungsmethoden durch einen Benutzer werden in den Azure Active Directory-Überwachungsprotokollen protokolliert.
 
 Wenn Benutzer das Konto für einen Sicherheitsschlüssel aktivieren oder deaktivieren bzw. den zweiten Faktor für den Sicherheitsschlüssel auf ihren Windows 10-Computern zurücksetzen, wird dem Sicherheitsprotokoll unter den folgenden Ereignis-IDs ein Eintrag hinzugefügt: 4670, 5382.
 
@@ -245,7 +245,7 @@ Befolgen Sie die unten aufgeführten Schritte, die der Methode Ihrer Wahl entspr
 
 ### <a name="required-administrative-roles"></a>Erforderliche Administratorrollen
 
-| Azure AD-Rolle | BESCHREIBUNG |
+| Azure AD-Rolle | Beschreibung |
 | --- | --- |
 | Authentifizierungsadministrator | Die am wenigsten privilegierte Rolle, die Authentifizierungsmethoden implementieren und verwalten kann |
 | Benutzer | Die am wenigsten privilegierte Rolle zum Konfigurieren der Authenticator-App auf dem Gerät oder zum Registrieren eines Sicherheitsschlüsselgeräts für Web- oder Windows 10-Anmeldung. |

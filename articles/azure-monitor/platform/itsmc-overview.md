@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936207"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289134"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -58,7 +58,7 @@ Bevor Sie eine Verbindung herstellen können, müssen Sie die ITSM-Connector-Lö
 3. Wählen Sie im Abschnitt **OMS-Arbeitsbereich** den Azure Log Analytics-Arbeitsbereich aus, in dem Sie die Lösung installieren möchten.
    >[!NOTE]
    > * Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor werden OMS-Arbeitsbereiche nun als Log Analytics-Arbeitsbereiche bezeichnet.
-   > * Der ITSM-Connector kann nur in Log Analytics-Arbeitsbereichen in den folgenden Regionen installiert werden: „USA, Osten“, „Europa, Westen“, „Asien, Südosten“, „Australien, Südosten“, „USA, Westen-Mitte“, „Japan, Osten“, „Vereinigtes Königreich, Süden“, „Indien, Mitte“, „Kanada, Mitte“.
+   > * Der ITSM-Connector kann nur in Log Analytics-Arbeitsbereichen in den folgenden Regionen installiert werden: „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“, „USA, Westen-Mitte“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Japan, Osten“, „Indien, Mitte“, „Australien, Südosten“.
 
 4. Wählen Sie im Abschnitt **OMS-Arbeitsbereichseinstellungen** die Ressourcengruppe aus, in der Sie die Ressource für die Lösung erstellen möchten.
 
@@ -66,7 +66,7 @@ Bevor Sie eine Verbindung herstellen können, müssen Sie die ITSM-Connector-Lö
    >[!NOTE]
    >Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor werden OMS-Arbeitsbereiche nun als Log Analytics-Arbeitsbereiche bezeichnet.
 
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 
 Sobald die Ressource für die Lösung bereitgestellt ist, wird oben rechts im Fenster eine Benachrichtigung angezeigt.
 
@@ -175,7 +175,7 @@ Die folgenden Informationen sind Beispiele für Daten, die vom ITSMC gesammelt w
 **Arbeitselement**: **Incidents**  
 ServiceDeskWorkItemType_s="Incident"
 
-**Felder**
+**Fields**
 
 - ServiceDeskConnectionName
 - Service Desk-ID
@@ -191,7 +191,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Zugewiesen zu
 - Category
 - Titel
-- BESCHREIBUNG
+- Beschreibung
 - Erstellt am
 - Geschlossen am
 - Gelöst am
@@ -203,7 +203,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
-**Felder**
+**Fields**
 - ServiceDeskConnectionName
 - Service Desk-ID
 - Erstellt von
@@ -213,7 +213,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Titel
 - type
 - Category
-- Zustand
+- State
 - Eskalation
 - Konfliktstatus
 - Dringlichkeit
@@ -229,7 +229,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Geplantes Enddatum
 - Startdatum der Arbeit
 - Enddatum der Arbeit
-- BESCHREIBUNG
+- Beschreibung
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Ausgabedaten für einen ServiceNow-Incident
@@ -247,7 +247,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Source_s| Kontakttyp |
 | AssignedTo_s | Zugewiesen zu  |
 | Category_s | Category |
-| Title_s|  Kurzbeschreibung |
+| Title_s|  Kurze Beschreibung |
 | Description_s|  Notizen |
 | CreatedDate_t|  Geöffnet |
 | ClosedDate_t| closed|
@@ -258,11 +258,11 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 
 | Log Analytics | ServiceNow-Feld |
 |:--- |:--- |
-| ServiceDeskId_s| NUMBER |
+| ServiceDeskId_s| Number |
 | CreatedBy_s | Angefordert von |
 | ClosedBy_s | Geschlossen von |
 | AssignedTo_s | Zugewiesen zu  |
-| Title_s|  Kurzbeschreibung |
+| Title_s|  Kurze Beschreibung |
 | Type_s|  type |
 | Category_s|  Category |
 | CRState_s|  State|
@@ -276,7 +276,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   Geplantes Enddatum |
 | WorkStartDate_t  | Tatsächliches Startdatum |
 | WorkEndDate_t | Tatsächliches Enddatum|
-| Description_s | BESCHREIBUNG |
+| Description_s | Beschreibung |
 | Computer  | Konfigurationselement |
 
 

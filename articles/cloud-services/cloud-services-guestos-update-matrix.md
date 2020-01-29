@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778208"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122244"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -214,9 +214,9 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-| WA-GUEST-OS-2.94_201912-01 | 8\. Januar 2020 | Nach 2.95 |  
-| WA-GUEST-OS-2.93_201911-01 | 5\. Dezember 2019 | Nach 2.94 |  
-|~WA-GUEST-OS-2.91_201910-01~| 1\. November 2019 | 8\. Januar 2020 |  
+| WA-GUEST-OS-2.93_201912-01 | 8\. Januar 2020 | Nach 2.95 |  
+| WA-GUEST-OS-2.92_201911-01 | 5\. Dezember 2019 | Nach 2.94 |  
+|~~WA-GUEST-OS-2.91_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-2.90_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
 |~~WA-GUEST-OS-2.89_201908-01~~| 4\. August 2019 | 1\. November 2019 |  
 |~~WA-GUEST-OS-2.88_201907-01~~| 26. Juli 2019 | 7\. Oktober 2019 |

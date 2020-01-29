@@ -1,110 +1,146 @@
 ---
-title: Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer (Vorschau)
+title: Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie ein Modell trainieren und eine Batchvorhersagenpipeline mithilfe des Designers einrichten. Stellen Sie die Pipeline als parametrisierten Webdienst bereit, der über eine beliebige HTTP-Bibliothek ausgelöst werden kann.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532053"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311885"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dieser Anleitung erfahren Sie, wie Sie mit dem Designer ein Modell trainieren und eine Batchvorhersagenpipeline sowie einen Webdienst einrichten. Die Batchvorhersage ermöglicht die kontinuierliche und bedarfsgesteuerte Bewertung von trainierten Modellen für große Datasets. Sie kann optional als Webdienst konfiguriert werden, der über eine beliebige HTTP-Bibliothek ausgelöst werden kann. 
+In diesem Artikel erfahren Sie, wie Sie den Designer zum Erstellen einer Batchvorhersagepipeline verwenden können. Mithilfe der Batchvorhersage können Sie kontinuierlich große Datasets bei Bedarf mit einem Webdienst bewerten, der von jeder HTTP-Bibliothek ausgelöst werden kann.
+
+In dieser Anleitung erfahren Sie, wie Sie die folgenden Aufgaben ausführen:
+
+> [!div class="checklist"]
+> * Erstellen und Veröffentlichen einer Batchrückschlusspipeline
+> * Nutzen eines Pipelineendpunkts
+> * Verwalten von Endpunktversionen
 
 Informationen zum Einrichten von Batchbewertungsdiensten mit dem SDK finden Sie in der begleitenden [Anleitung](how-to-run-batch-predictions.md).
 
-In dieser Anleitung lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Erstellen eines einfachen ML-Experiments in einer Pipeline
-> * Erstellen einer parametrisierten Batchrückschlusspipeline
-> * Verwalten und Ausführen von Pipelines (manuell oder über einen REST-Endpunkt)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
-
-1. Erstellen Sie einen [Arbeitsbereich](tutorial-1st-experiment-sdk-setup.md).
-
-1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
-
-In dieser Anleitung wird davon ausgegangen, dass Sie mit den Grundlagen der Erstellung einer einfachen Pipeline im Designer vertraut sind. Eine Einführung in den Designer erhalten Sie im [Tutorial](tutorial-designer-automobile-price-train-score.md). 
-
-## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
-
-Zum Erstellen einer Batchrückschlusspipeline benötigen Sie zunächst ein Machine Learning-Experiment. Zum Erstellen einer Pipeline navigieren Sie in Ihrem Arbeitsbereich zur Registerkarte **Designer** und erstellen eine neue Pipeline, indem Sie die Option **Easy-to-use prebuilt modules** (Benutzerfreundliche vorgefertigte Module) auswählen.
-
-![Designerstartseite](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-Im Folgenden finden Sie ein einfaches Machine Learning-Modell zu Demonstrationszwecken. Bei den Daten handelt es sich um ein registriertes Dataset, das aus den Azure Open Datasets-Diabetesdaten erstellt wurde. Informationen zum Registrieren von Datasets aus Azure Open Datasets finden Sie im [Anleitungsabschnitt](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets). Die Daten werden in Trainings-und Validierungssätze aufgeteilt, und ein verstärkter Entscheidungsbaum wird trainiert und bewertet. Zum Erstellen einer Rückschlusspipeline muss die Pipeline mindestens einmal ausgeführt werden. Klicken Sie auf die Schaltfläche **Ausführen**, um die Pipeline auszuführen.
-
-![Erstellen eines einfachen Experiments](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+Diese Anleitung geht davon aus, dass Sie bereits über eine Trainingspipeline verfügen. Eine Einführung in den Designer finden Sie im [ersten Teil des Designer-Tutorials](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-batch-inference-pipeline"></a>Erstellen einer Batchrückschlusspipeline
 
-Nach dem Ausführen der Pipeline finden Sie neben **Ausführen** und **Veröffentlichen** eine weitere Option namens **Rückschlusspipeline erstellen** zur Verfügung. Klicken Sie auf die Dropdownliste, und wählen Sie **Batchrückschlusspipeline** aus.
+Zum Erstellen einer Rückschlusspipeline muss Ihre Trainingspipeline mindestens einmal ausgeführt werden.
 
-![Erstellen einer Batchrückschlusspipeline](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. Wechseln Sie zur Registerkarte **Designer** in Ihrem Arbeitsbereich.
 
-Das Ergebnis ist eine standardmäßige Batchrückschlusspipeline. Dies umfasst einen Knoten für die ursprüngliche Experimenteinrichtung der Pipeline, einen Knoten für Rohdaten zur Bewertung und einen Knoten zum Vergleich der Rohdaten mit der ursprünglichen Pipeline.
+1. Wählen Sie die Trainingspipeline aus, mit der das Modell trainiert, um eine Vorhersage zu treffen.
 
-![Standardmäßige Batchrückschlusspipeline](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. **Führen** Sie die Pipeline aus.
 
-Sie können weitere Knoten hinzufügen, um das Verhalten des Batchrückschlussprozesses zu ändern. In diesem Beispiel fügen Sie vor der Bewertung einen Knoten für die Stichprobenentnahme aus den Eingabedaten hinzu. Erstellen Sie einen Knoten **Partition und Beispiel**, und platzieren Sie diesen zwischen den Rohdaten- und Bewertungsknoten. Klicken Sie anschließend auf den Knoten **Partition und Beispiel**, um Zugriff auf die Einstellungen und Parameter zu erhalten.
+    ![Führen Sie die Pipeline aus.](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![Neuer Knoten](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+Nachdem die Trainingspipeline ausgeführt wurde, können Sie nun eine Batchrückschlusspipeline erstellen.
 
-Mit dem Parameter *Rate of sampling* (Stichprobenrate) wird gesteuert, von welchem Prozentsatz des ursprünglichen Datasets eine zufällige Stichprobe entnommen werden soll. Dieser Parameter muss regelmäßig angepasst werden, damit Sie ihn als Pipelineparameter verwenden können. Pipelineparameter können zur Laufzeit geändert und in einem Payload-Objekt angegeben werden, wenn die Pipeline von einem REST-Endpunkt aus erneut gestartet wird. 
+1. Wählen Sie neben **Ausführen** die neue Dropdownliste **Rückschlusspipeline erstellen** aus.
 
-Um dieses Feld als Pipelineparameter zu aktivieren, klicken Sie auf die Ellipse oberhalb des Felds, und klicken Sie dann auf **Zu Pipelineparameter hinzufügen**. 
+1. Wählen Sie **Batchrückschlusspipeline** aus.
 
-![Beispieleinstellungen](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![Erstellen einer Batchrückschlusspipeline](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+Das Ergebnis ist eine standardmäßige Batchrückschlusspipeline. 
 
-Legen Sie als nächstes einen Namen und Standardwert für den Parameter fest. Mit dem Namen wird der Parameter identifiziert und in einem REST-Aufruf angegeben.
+### <a name="add-a-pipeline-parameter"></a>Hinzufügen eines Pipelineparameters
 
-![Pipelineparameter](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+Um Vorhersagen für neue Daten zu erstellen, können Sie entweder manuell ein anderes Dataset in dieser Pipelineentwurfsansicht verbinden oder einen Parameter für Ihr Dataset erstellen. Mit Parametern können Sie das Verhalten des Batchrückschlussprozesses zur Laufzeit ändern.
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Bereitstellen der Batchrückschlusspipeline
+In diesem Abschnitt erstellen Sie einen Datasetparameter, um ein anderes Dataset anzugeben, für das Vorhersagen gemacht werden sollen.
 
-Sie können die Pipeline nun bereitstellen. Klicken Sie auf die Schaltfläche **Bereitstellen**, und öffnen Sie so die Schnittstelle zum Einrichten eines Endpunkts. Klicken Sie auf die Dropdownliste, und wählen Sie **Neuer PipelineEndpoint** aus.
+1. Wählen Sie das Datasetmodul aus.
 
-![Bereitstellen der Pipeline](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. Rechts neben der Canvas wird ein Bereich angezeigt. Wählen Sie am unteren Rand des Bereichs die Option **Als Pipelineparameter festlegen** aus.
+   
+    Geben Sie einen Namen für den Parameter ein, oder akzeptieren Sie den Standardwert.
 
-Geben Sie einen Namen und optional eine Beschreibung für den Endpunkt ein. Im unteren Bereich sehen Sie den `sample-rate`-Parameter, den Sie mit dem Standardwert 0,8 konfiguriert haben. Klicken Sie abschließend auf **Bereitstellen**.
+## <a name="publish-your-batch-inferencing-pipeline"></a>Veröffentlichen Ihrer Batchrückschlusspipeline
 
-![Einrichten des Endpunkts](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+Jetzt sind Sie bereit, die Rückschlusspipeline bereitzustellen. Dadurch wird die Pipeline bereitgestellt und anderen zur Nutzung zur Verfügung gestellt.
 
-## <a name="manage-endpoints"></a>Verwalten von Endpunkten 
+1. Wählen Sie die Schaltfläche **Veröffentlichen** aus.
 
-Wechseln Sie nach Abschluss der Bereitstellung zur Registerkarte **Endpunkte**, und klicken Sie dann auf den Namen des soeben erstellten Endpunkts.
+1. Erweitern Sie im angezeigten Dialogfeld die Dropdownliste für **PipelineEndpoint**, und wählen Sie **Neuer PipelineEndpoint** aus.
 
-![Endpunktlink](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. Geben Sie einen Endpunktnamen und eine optionale Beschreibung an.
 
-Auf diesem Bildschirm werden alle veröffentlichten Pipelines unter dem jeweiligen Endpunkt angezeigt. Klicken Sie auf die Rückschlusspipeline.
+    Unten im Dialogfeld wird der von Ihnen konfigurierte Parameter mit einem Standardwert der während des Trainings verwendeten Datensatz-ID angezeigt.
 
-![Rückschlusspipeline](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. Wählen Sie **Veröffentlichen**.
 
-Auf der Seite mit den Pipelinedetails finden Sie ausführliche Informationen zum Ausführungsverlauf und zur Verbindungszeichenfolge für die Pipeline. Klicken Sie auf die Schaltfläche **Ausführen**, um eine manuelle Ausführung der Pipeline zu erstellen.
+![Veröffentlichen einer Pipeline](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![Pipelinedetails](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-In der Ausführungseinrichtung können Sie eine Beschreibung für die Ausführung angeben und den Wert für alle Pipelineparameter ändern. Führen Sie die Rückschlusspipeline mit einer Abtastrate von 0,9 erneut aus. Klicken Sie auf **Ausführen**, um die Pipeline auszuführen.
+## <a name="consume-an-endpoint"></a>Nutzen eines Endpunkts
 
-![Ausführen der Pipeline](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+Jetzt verfügen Sie über eine veröffentlichte Pipeline mit einem Datasetparameter. Die Pipeline verwendet das trainierte Modell, das in der Trainingspipeline erstellt wurde, um das von Ihnen als Parameter bereitgestellte Dataset zu bewerten.
 
-Die Registerkarte **Nutzen** enthält den REST-Endpunkt zum erneuten Ausführen der Pipeline. Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen REST-Aufruf auszuführen. Weitere Informationen zum Einrichten der Authentifizierung für Ihren Arbeitsbereich und zum Erstellen eines parametrisierten REST-Aufrufes finden Sie im folgenden [Tutorialabschnitt](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
+### <a name="submit-a-pipeline-run"></a>Übermitteln einer Pipelineausführung 
+
+In diesem Abschnitt richten Sie eine manuelle Pipelineausführung ein und ändern den Pipelineparameter, um neue Daten zu bewerten. 
+
+1. Nachdem die Bereitstellung abgeschlossen ist, wechseln Sie zum Abschnitt **Endpunkte**.
+
+1. Wählen Sie **Pipelineendpunkte** aus.
+
+1. Wählen Sie den Namen des von Ihnen erstellten Endpunkts aus.
+
+![Endpunktlink](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. Wählen Sie **Veröffentlichte Pipelines** aus.
+
+    Auf diesem Bildschirm werden alle unter diesem Endpunkt veröffentlichten Pipelines angezeigt.
+
+1. Wählen Sie die veröffentlichte Pipeline aus.
+
+    Auf der Seite mit den Pipelinedetails finden Sie ausführliche Informationen zum Ausführungsverlauf und zur Verbindungszeichenfolge für die Pipeline. 
+    
+1. Wählen Sie **Ausführen** aus, um eine manuelle Ausführung der Pipeline zu erstellen.
+
+    ![Pipelinedetails](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. Ändern Sie den Parameter, um ein anderes Dataset zu verwenden.
+    
+1. Wählen Sie **Ausführen** aus, um die Pipeline auszuführen.
+
+### <a name="use-the-rest-endpoint"></a>Verwenden des REST-Endpunkts
+
+Informationen zur Verwendung von Pipelineendpunkten und der veröffentlichten Pipeline finden Sie im Abschnitt **Endpunkte**.
+
+Den REST-Endpunkt eines Pipelineendpunkts finden Sie im Bereich der Ausführungsübersicht. Wenn Sie den Endpunkt aufrufen, nutzen Sie seine standardmäßig veröffentlichte Pipeline.
+
+Sie können eine veröffentlichte Pipeline auch auf der Seite **Veröffentlichte Pipelines** nutzen. Wählen Sie eine veröffentlichte Pipeline aus, und suchen Sie ihren REST-Endpunkt. 
+
+![Details zum REST-Endpunkt](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+Sie benötigen einen OAuth 2.0-Authentifizierungsheader vom Typ Bearer, um einen REST-Aufruf auszuführen. Weitere Informationen zum Einrichten der Authentifizierung für Ihren Arbeitsbereich und zum Erstellen eines parametrisierten REST-Aufrufes finden Sie im folgenden [Tutorialabschnitt](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
+
+## <a name="versioning-endpoints"></a>Versionsverwaltungsendpunkte
+
+Der Designer ordnet jeder nachfolgenden Pipeline, die Sie an einem Endpunkt veröffentlichen, eine Version zu. Sie können die auszuführende Pipelineversion als Parameter in Ihrem REST-Aufruf angeben. Wenn Sie keine Versionsnummer angeben, wird der Designer die Standardpipeline verwenden.
+
+Wenn Sie eine Pipeline veröffentlichen, können Sie auswählen, dass sie zur neuen Standardpipeline für diesen Endpunkt wird.
+
+![Festlegen der Standardpipeline](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+Sie können auch eine neue Standardpipeline auf der Registerkarte **Veröffentlichte Pipelines** Ihres Endpunkts festlegen.
+
+![Festlegen der Standardpipeline](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

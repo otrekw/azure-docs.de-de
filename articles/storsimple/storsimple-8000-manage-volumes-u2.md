@@ -1,25 +1,17 @@
 ---
-title: Verwalten von StorSimple-Volumes (Update 3) | Microsoft-Dokumentation
+title: Verwalten von StorSimple-Volumes (Update 3)
 description: Erläutert, wie Sie StorSimple-Volumes hinzufügen, ändern, überwachen und löschen sowie ggf. offline schalten können.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634821"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278842"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -120,7 +112,7 @@ Sie haben beim Bereitstellen Ihres Geräts der StorSimple 8000-Serie [ein Volume
       
        Wenn Sie ein lokales Volume von 8,5 TB (maximal zulässige Größe) auf dem 8100-Gerät bereitstellen, haben Sie damit den gesamten lokalen Speicherplatz ausgeschöpft, der auf dem Gerät verfügbar ist. Ab diesem Zeitpunkt können Sie keine mehrstufigen Volumes mehr erstellen, da auf dem Gerät kein lokaler Speicherplatz zum Hosten des Arbeitssatzes mehrstufiger Volumes mehr vorhanden ist. Vorhandene mehrstufige Volumes wirken sich ebenfalls auf den verfügbaren Speicherplatz aus. Wenn Sie beispielsweise ein 8100-Gerät verwenden, auf dem bereits mehrstufige Volumes von ca. 106 TB vorhanden sind, stehen nur noch 4 TB Speicherplatz für lokale Volumes zur Verfügung.
 
-    6. Klicken Sie im Feld **Verbundene Hosts** auf den Pfeil. Wählen Sie auf dem Blatt **Verbundene Hosts** einen vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Wenn Sie einen neuen ACR auswählen, geben Sie einen **Namen** für Ihren Access Control-Datensatz ein. Geben Sie außerdem den **qualifizierten iSCSI-Namen** (IQN) Ihres Windows-Hosts ein. Wenn Sie den IQN nicht kennen, fahren Sie mit „Abrufen des IQNs eines Windows Server-Hosts“ fort. Klicken Sie auf **Create**. Ein Volume wird mit den angegebenen Einstellungen erstellt.
+    6. Klicken Sie im Feld **Verbundene Hosts** auf den Pfeil. Wählen Sie auf dem Blatt **Verbundene Hosts** einen vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Wenn Sie einen neuen ACR auswählen, geben Sie einen **Namen** für Ihren Access Control-Datensatz ein. Geben Sie außerdem den **qualifizierten iSCSI-Namen** (IQN) Ihres Windows-Hosts ein. Wenn Sie den IQN nicht kennen, fahren Sie mit „Abrufen des IQNs eines Windows Server-Hosts“ fort. Klicken Sie auf **Erstellen**. Ein Volume wird mit den angegebenen Einstellungen erstellt.
 
         ![Klicken Sie auf „Erstellen“.](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 

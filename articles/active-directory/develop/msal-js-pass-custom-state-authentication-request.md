@@ -9,19 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/29/2019
+ms.date: 01/16/2020
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4cb0f3d054f9afd0c606f80fd6fc5d553eff806
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 29418e0000f917f7184a230c04b93adeae44efef
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916314"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261193"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Übergeben eines benutzerdefinierten state-Parameters in Authentifizierungsanforderungen mithilfe von MSAL.js
+
 Der *state*-Parameter gemäß OAuth 2.0 ist in einer Authentifizierungsanforderung enthalten und wird auch in der Tokenantwort zurückgegeben, um Angriffe in Form siteübergreifender Anforderungsfälschungen zu verhindern. Die Microsoft Authentication Library für JavaScript (MSAL.js) übergibt standardmäßig einen zufällig generierten eindeutigen *state*-Parameterwert in Authentifizierungsanforderungen.
 
 Der state-Parameter kann auch verwendet werden, um vor der Umleitung Zustandsinformationen zur App zu codieren. Sie können den Zustand des Benutzers in der App, z. B. die Seite oder Ansicht, zu der er navigiert ist, als Eingabe für diesen Parameter übergeben. Die MSAL.js-Bibliothek bietet die Möglichkeit, Ihren benutzerdefinierten Zustand als state-Parameter im `Request`-Objekt zu übergeben:
@@ -40,8 +41,16 @@ export type AuthenticationParameters = {
     account?: Account;
     sid?: string;
     loginHint?: string;
+    forceRefresh?: boolean;
 };
 ```
+
+> [!Note]
+> Wenn Sie ein zwischengespeichertes Token überspringen und zum Server wechseln möchten, übergeben Sie den booleschen Wert `forceRefresh` in das AuthenticationParameters-Objekt, das zum Erstellen einer Anmelde-/Tokenanforderung verwendet wird.
+> `forceRefresh` sollte aufgrund der Leistungsauswirkungen auf Ihre Anwendung nicht standardmäßig verwendet werden.
+> Wenn Sie sich auf den Cache verlassen, erhalten Ihre Benutzer eine bessere Benutzererfahrung.
+> Das Überspringen des Caches sollte nur in Szenarien verwendet werden, in denen Sie wissen, dass die aktuell zwischengespeicherten Daten keine aktuellen Informationen enthalten.
+> Zum Beispiel muss ein Verwaltungs Tool, das einem Benutzer Rollen hinzufügt, ein neues Token mit aktualisierten Rollen abrufen.
 
 Beispiel:
 

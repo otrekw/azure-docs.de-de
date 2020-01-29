@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer VM in DevTest Labs mit Azure PowerShell | Microsoft-Dokumentation
+title: Erstellen einer VM in DevTest Labs mit Azure PowerShell
 description: Erfahren Sie, wie Sie in Azure DevTest Labs mithilfe von Azure PowerShell VMs erstellen und verwalten.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854267"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167105"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Erstellen einer VM in DevTest Labs mithilfe von Azure PowerShell
 In diesem Artikel wird das Erstellen einer VM in Azure DevTest Labs mithilfe von Azure PowerShell erläutert. Sie können PowerShell-Skripts verwenden, um die Erstellung von VMs in einem Lab in Azure DevTest Labs zu automatisieren. 
@@ -190,7 +190,7 @@ Im Folgenden wird erläutert, wie Sie die Eigenschaften eines Images mit der RES
 6. Die **Eigenschaften für das Image**, auf deren Grundlage die VM erstellt wurde, werden angezeigt. 
 
 ## <a name="set-expiration-date"></a>Festlegen des Ablaufdatums
-In Szenarien wie Schulungen, Demos und Testversionen können Sie virtuelle Computer erstellen und diese nach einer festgelegten Dauer automatisch löschen, damit keine unnötigen Kosten entstehen. Sie können das Ablaufdatum für einen virtuellen Computer beim Erstellen mithilfe von PowerShell festlegen, wie im Abschnitt mit dem [PowerShell](#powershell-script)-Beispielskript gezeigt.
+In Szenarios mit Schulungen, Demos und Testversionen sollten Sie virtuelle Computer erstellen und diese nach einer festgelegten Dauer automatisch löschen, damit keine unnötigen Kosten entstehen. Sie können das Ablaufdatum für einen virtuellen Computer beim Erstellen mithilfe von PowerShell festlegen, wie im Abschnitt mit dem [PowerShell](#powershell-script)-Beispielskript gezeigt.
 
 Hier finden Sie ein PowerShell-Beispielskript, mit dem das Ablaufdatum für alle vorhandenen virtuellen Computer in einem Lab festgelegt wird:
 

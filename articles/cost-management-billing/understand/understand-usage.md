@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986274"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290137"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -90,11 +90,11 @@ PublisherType | All | Typ des Herausgebers (Werte: **Azure**, **AWS**, **Marketp
 Menge | All | Die Anzahl der erworbenen oder genutzten Einheiten.
 ReservationId | EA, MCA | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz.
 ReservationName | EA, MCA | Der Name der erworbenen Reservierungsinstanz.
-ResourceGroup | All | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet.
+ResourceGroup | All | Name der [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), in der sich die Ressource befindet. Nicht alle Gebühren werden durch Ressourcen verursacht, die in Ressourcengruppen bereitgestellt werden. Gebühren, die keiner Ressourcengruppe zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
 ResourceId<sup>1</sup> | All | Der eindeutige Bezeichner der [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-Ressource.
 ResourceLocation | All | Standort des Rechenzentrums, in dem die Ressource ausgeführt wird. Siehe „Location“.
-Ressourcenname | EA, PAYG | Der Name der Ressource.
-ResourceType | MCA | Der Ressourceninstanztyp.
+Ressourcenname | EA, PAYG | Der Name der Ressource. Nicht alle Gebühren werden durch bereitgestellte Ressourcen verursacht. Gebühren, die keinem Ressourcentyp zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
+ResourceType | MCA | Der Ressourceninstanztyp. Nicht alle Gebühren werden durch bereitgestellte Ressourcen verursacht. Gebühren, die keinem Ressourcentyp zugeordnet sind, werden als 0 (null)/leer, **Andere** oder **Nicht zutreffend** angezeigt.
 ServiceFamily | MCA | Die Dienstfamilie, zu der der Dienst gehört.
 ServiceInfo1 | All | Dienstspezifische Metadaten.
 ServiceInfo2 | All | Ein Legacyfeld mit optionalen dienstspezifischen Metadaten.
@@ -103,7 +103,7 @@ ServicePeriodStartDate | MCA | Das Startdatum des Bewertungszeitraums, durch den
 SubscriptionId<sup>1</sup> | All | Der eindeutige Bezeichner für das Azure-Abonnement.
 SubscriptionName | All | Der Name des Azure-Abonnements.
 Tags<sup>1</sup> | All | Tags, die der Ressource zugewiesen werden. Umfasst keine Ressourcengruppen-Tags. Kann verwendet werden, um die Kosten für interne verbrauchsbasierte Kostenzuteilung zu gruppieren oder zu verteilen. Weitere Informationen finden Sie unter [Organisieren von Azure-Ressourcen mit Tags](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
-Begriff | All | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Beispiel:  Bei reservierten Instanzen werden 12 Monate als „Zeitraum“ angezeigt. Für einmalige Käufe oder wiederkehrende Käufe beträgt „Zeitraum“ 1 Monat (SaaS, Marketplace-Support). Dies gilt nicht für den Azure-Verbrauch.
+Begriff | All | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Beispiel: Bei reservierten Instanzen werden 12 Monate als „Zeitraum“ angezeigt. Für einmalige Käufe oder wiederkehrende Käufe beträgt „Zeitraum“ 1 Monat (SaaS, Marketplace-Support). Dies gilt nicht für den Azure-Verbrauch.
 UnitOfMeasure | All | Die Abrechnungsmaßeinheiten für den Dienst. Computedienste werden beispielsweise pro Stunde abgerechnet.
 UnitPrice | EA, PAYG | Der Preis pro Einheit für die Gebühren.
 

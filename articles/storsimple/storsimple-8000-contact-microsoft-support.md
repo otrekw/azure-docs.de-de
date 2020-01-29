@@ -1,25 +1,17 @@
 ---
-title: Erstellen eines Supporttickets oder Falls für die StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Erstellen eines Supporttickets oder Falls für die StorSimple 8000-Serie
 description: Hier erfahren Sie, wie Sie eine Supportanfrage erstellen und eine Supportsitzung auf Ihrem Gerät der StorSimple 8000-Serie initiieren.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612509"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277172"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
@@ -65,7 +57,7 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
 
    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
    2. Geben Sie in den „Kontaktinformationen“ Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land/die Region ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern** .
-   3. Klicken Sie auf **Create**.
+   3. Klicken Sie auf **Erstellen**.
    
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

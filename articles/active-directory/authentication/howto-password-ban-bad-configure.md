@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847914"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155055"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter
 
@@ -26,7 +26,7 @@ Viele Organisationen stellen fest, dass ihre Benutzer für ihre Kennwörter allg
 
 Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine Azure Active Directory Premium P1- oder P2-Lizenz erforderlich. Weitere Informationen zur Azure Active Directory-Lizenzierung finden Sie in auf der Seite [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory**, **Authentifizierungsmethoden** und dann zu **Kennwortschutz**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz**.
 1. Legen Sie die Option **Benutzerdefinierte Liste erzwingen** auf **Ja** fest.
 1. Fügen Sie der **benutzerdefinierten Liste gesperrter Kennwörter** Zeichenfolgen hinzu. Geben Sie eine Zeichenfolge pro Zeile ein.
    * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1.000 Ausdrücke umfassen.
@@ -44,7 +44,7 @@ Zum Konfigurieren der benutzerdefinierten Liste gesperrter Kennwörter ist eine 
 
 ![Ändern der benutzerdefinierten Liste gesperrter Kennwörter unter „Authentifizierungsmethoden“ im Azure-Portal](./media/howto-password-ban-bad/authentication-methods-password-protection.png)
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Jedes Mal, wenn ein Benutzer oder Administrator ein Azure AD-Kennwort zurücksetzt oder ändert, wird es mit den benutzerdefinierten Listen gesperrter Kennwörter abgeglichen, um zu bestätigen, dass es sich auf keiner Liste befindet. Diese Überprüfung wird bei allen mithilfe von Azure AD festgelegten oder geänderten Kennwörter durchgeführt.
 

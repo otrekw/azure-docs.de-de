@@ -1,24 +1,72 @@
 ---
 title: Versionshinweise – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie eine fortlaufende Liste der veröffentlichten Features, Verbesserungen, Fehlerbehebungen und bekannten Problemen des Spracherkennungsdiensts.
+description: Hier finden Sie eine fortlaufende Liste der veröffentlichten Features, Verbesserungen, Fehlerbehebungen und bekannten Problemen des Speech-Diensts.
 services: cognitive-services
-author: BrianMouncer
+author: oscholz
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: brianem
+ms.date: 01/15/2020
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380353"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293588"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0: Release 2020-January
+
+**Neue Features**
+
+- Mehrgerätekonversation: Verbinden Sie mehrere Geräte mit derselben sprach- oder textbasierten Konversation, und übersetzen Sie optional die zwischen ihnen gesendeten Nachrichten. Weitere Informationen finden Sie in [diesem Artikel](multi-device-conversation.md). 
+- Unterstützung für die Schlüsselworterkennung wurde für das AAR-Paket für Android und für x86- und x64-Versionen hinzugefügt. 
+- Objective-C: Methoden `SendMessage` und `SetMessageProperty` wurden dem `Connection`-Objekt hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection).
+- Die TTS-API in C++ unterstützt jetzt `std::wstring` als Texteingabe für die Synthese. Dadurch ist es nicht mehr erforderlich, den Typ wstring vor der Übergabe an das SDK in string zu konvertieren. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync). 
+- C#: [Sprach-ID](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) und [Ausgangssprachenkonfiguration](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) sind jetzt verfügbar.
+- JavaScript: Dem `Connection`-Objekt wurde eine Funktion für die Weiterleitung benutzerdefinierter Nachrichten vom Speech-Dienst als Rückruf von `receivedServiceMessage` zu hinzugefügt.
+- JavaScript: Unterstützung für `FromHost API` wurde hinzugefügt, um die Verwendung mit lokalen Containern und Sovereign Clouds zu vereinfachen Die zugehörige Dokumentation finden Sie [hier](speech-container-howto.md).
+- JavaScript: `NODE_TLS_REJECT_UNAUTHORIZED` wird nun dank eines Beitrags von [orgads](https://github.com/orgads) berücksichtigt. Ausführlichere Informationen finden Sie [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
+
+
+**Wichtige Änderungen**
+
+- `OpenSSL` wurde auf Version 1.1.1b aktualisiert und ist statisch mit der Kernbibliothek des Speech SDK für Linux verknüpft. Dies kann zu einer Unterbrechung führen, wenn `OpenSSL` für Ihren Posteingang nicht im Verzeichnis `/usr/lib/ssl` im System installiert wurde. In [unserer Dokumentation](how-to-configure-openssl-linux.md) in den Dokumenten zum Speech SDK finden Sie Möglichkeiten, wie Sie das Problem umgehen können.
+- Wir haben den in C# für `WordLevelTimingResult.Offset` zurückgegebenen Datentyp von `int` in `long` geändert, um den Zugriff auf `WordLevelTimingResults` zu ermöglichen, wenn Sprachdaten länger als 2 Minuten sind.
+- `PushAudioInputStream` und `PullAudioInputStream` senden nun WAV-Headerinformationen an den Speech-Dienst basierend auf dem `AudioStreamFormat`, das bei der Erstellung optional angegeben werden kann. Kunden müssen nun das [unterstützte Audioeingabeformat](how-to-use-audio-input-streams.md) verwenden. Alle anderen Formate führen zu weniger guten Erkennungsergebnissen oder anderen Problemen. 
+
+
+**Fehlerbehebungen**
+
+- Weitere Informationen finden Sie im obigen `OpenSSL`-Update unter „Wichtige Änderungen“. Wir haben sowohl einen zeitweiligen Absturz als auch ein Leistungsproblem (Sperrkonflikte bei hoher Auslastung) in Linux und Java korrigiert. 
+- Java: Es wurden Verbesserungen am Objektabschluss in Szenarien mit hoher Parallelität vorgenommen.
+- Das NuGet-Paket wurde umstrukturiert. Wir haben die drei Kopien von `Microsoft.CognitiveServices.Speech.core.dll` und `Microsoft.CognitiveServices.Speech.extension.kws.dll` im Ordner „lib“ entfernt, sodass das NuGet-Paket nun kleiner ist und schneller heruntergeladen werden kann. Außerdem haben wir Header hinzugefügt, die zum Kompilieren einiger nativer C++-Apps benötigt werden.
+- Die korrigierten Schnellstartbeispiele finden Sie [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp). Diese wurden ohne Anzeige der Ausnahme „Mikrofon wurde nicht gefunden“ unter Linux, macOS und Windows beendet.
+- Ein SDK-Absturz bei langen Spracherkennungsergebnissen für bestimmte Codepfade wie in [diesem Beispiel](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp) wurde korrigiert.
+- Ein Fehler bei der SDK-Bereitstellung in Azure-Web-App-Umgebungen wurde behoben, um [dieses Kundenproblem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396) zu beseitigen.
+- Ein TTS-Fehler bei der Verwendung mehrerer `<voice>`- oder `<audio>`-Tags wurde behoben, um [dieses Kundenproblems](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433) zu beseitigen. 
+- Ein TTS 401-Fehler beim Wiederherstellen des SDK nach dem Anhalten wurde behoben.
+- JavaScript: Ein zirkulärer Import von Audiodaten wurde dank eines Beitrags von [euirim](https://github.com/euirim) korrigiert. 
+- JavaScript: Unterstützung für das Festlegen von Diensteigenschaften wurde wie in 1.7 hinzugefügt.
+- JavaScript: Ein Problem wurde behoben, bei dem ein Verbindungsfehler zu kontinuierlichen erfolglosen WebSocket-Verbindungsversuchen führen konnte.
+
+
+**Beispiele**
+
+- Es wurde ein [Beispiel für die Schlüsselworterkennung für Android](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo) hinzugefügt.
+- Es wurde ein [TTS-Beispiel für das Serverszenario](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs) hinzugefügt.
+- Es wurden [Schnellstarts für die Mehrgerätekonversation in C# und C++](quickstarts/multi-device-conversation.md) hinzugefügt.
+
+
+**Weitere Änderungen**
+
+- Die Größe der SDK-Kernbibliothek unter Android wurde optimiert.
+- Das SDK ab Version 1.9.0 unterstützt sowohl `int`- als auch `string`-Typen im Feld für die Stimmensignaturversion für die Unterhaltungstranskription.
 
 ## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0: Release von November 2019
 

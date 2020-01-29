@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 156b963fc1644d1f863d8ddd1d86c15b311e18a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763384"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311069"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Sagen Sie Autopreise mit dem Azure Machine Learning-Designer mithilfe von Regression vorher.
 
-**Designer (Vorschauversion) – Beispiel 1**
+**Designer-Beispiel 1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Erfahren Sie, wie Sie über den Designer (Vorschauversion) ein Machine Learning-Regressionsmodell erstellen, ohne eine einzige Codezeile zu schreiben.
+Erfahren Sie, wie Sie über den Designer ein Regressionsmodell für maschinelles Lernen erstellen, ohne eine einzige Codezeile zu schreiben.
 
 Mit dieser Pipeline wird ein **linearer Regressor** trainiert, um den Preis eines Fahrzeugs anhand technischer Merkmale wie Marke, Modell, Leistung und Größe vorherzusagen. Weil Sie versuchen, die Frage „Wie viel?“ zu beantworten, wird dies als Regressionsproblem bezeichnet. Sie können jedoch dieselben elementaren Schritte aus diesem Beispiel anwenden, um jede Art von Problem für maschinelles Lernen zu bewältigen, sei es Regression, Klassifizierung, Clustering usw.
 

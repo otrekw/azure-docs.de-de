@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889524"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290392"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrieren zu Azure Kubernetes Service (AKS)
 
@@ -111,7 +111,7 @@ Um die Migration durchzuführen, müssen Clients auf die neuen Dienste zeigen, d
 
 Die Migration von zustandslosen Anwendung ist der einfachste Fall. Wenden Sie Ihre Ressourcendefinitionen (YAML oder Helm) auf den neuen Cluster an, und überprüfen Sie, ob alles wie erwartet funktioniert. Anschließend leiten Sie den Datenverkehr um, damit der neue Cluster aktiviert wird.
 
-### <a name="considers-for-stateful-applications"></a>Überlegungen zu zustandsbehafteten Anwendungen
+### <a name="considerations-for-stateful-applications"></a>Überlegungen zu zustandsbehafteten Anwendungen
 
 Planen Sie die Migration von zustandsbehafteten Anwendungen sorgfältig, um Datenverlust oder eine unerwartete Downtime zu vermeiden.
 
@@ -161,7 +161,7 @@ Mit einigen Open-Source-Tools können Sie verwaltete Datenträger erstellen und 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Bereitstellung Ihrer Clusterkonfiguration
 
-Es empfiehlt sich, die Verwendung Ihrer vorhandenen CI/CD-Pipeline (Continuous Integration und Continuous Deliver), um eine als funktionierend bekannten Konfiguration in AKS bereitzustellen. Mit Azure Pipelines können Sie [Ihre Anwendungen erstellen und in AKS bereitstellen](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops), Ihre vorhandenen Bereitstellungsaufgaben klonen und sicherstellen, dass `kubeconfig` auf den neuen AKS-Cluster verweist.
+Es empfiehlt sich, die Verwendung Ihrer vorhandenen CI/CD-Pipeline (Continuous Integration und Continuous Deliver), um eine als funktionierend bekannten Konfiguration in AKS bereitzustellen. Sie können Azure Pipelines verwenden, um [Ihre Anwendungen für AKS zu erstellen und bereitzustellen](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Klonen Sie Ihre vorhandenen Bereitstellungsaufgaben, und stellen Sie sicher, dass `kubeconfig` auf den neuen AKS-Cluster zeigt.
 
 Wenn dies nicht möglich ist, exportieren Sie die Ressourcendefinitionen aus Ihrem vorhandenen Kubernetes-Cluster, und wenden Sie sie anschließend auf AKS an. Sie können `kubectl` zum Exportieren von Objekten verwenden.
 

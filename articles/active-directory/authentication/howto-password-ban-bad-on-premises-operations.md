@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762857"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155043"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Verfahren des Azure AD-Kennwortschutzes
 
@@ -28,7 +28,7 @@ Befolgen Sie die Anweisungen im Artikel [Konfigurieren der Liste benutzerdefinie
 
 ## <a name="enable-password-protection"></a>Aktivieren des Kennwortschutzes
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz**.
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Authentifizierungsmethoden** > **Kennwortschutz**.
 1. Legen Sie **Kennwortschutz für Windows Server Active Directory aktivieren** auf **Ja** fest.
 1. Wie im [Bereitstellungshandbuch](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy) bereits erwähnt, wird empfohlen, den **Modus** zunächst auf **Überwachung** festzulegen.
    * Wenn Sie mit dem Feature vertraut sind, können Sie zum **Modus** **Erzwingen** wechseln.

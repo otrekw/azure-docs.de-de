@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple Data Manager Benutzeroberfläche| Microsoft Docs
+title: Microsoft Azure StorSimple Data Manager-Benutzeroberfläche
 description: Hier wird beschrieben, wie Sie die Benutzeroberfläche des StorSimple Data Manager-Diensts verwenden
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796648"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273983"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
@@ -56,7 +48,7 @@ Führen Sie die folgenden Schritte aus, um einen StorSimple Data Manager-Dienst 
     
    5. Um einen Link zu diesem Dienst auf Ihrem Dashboard zu erhalten, wählen Sie **An Dashboard anheften** aus.
     
-   6. Klicken Sie auf **Create**.
+   6. Klicken Sie auf **Erstellen**.
 
       ![Erstellen eines StorSimple Data Manager-Diensts 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

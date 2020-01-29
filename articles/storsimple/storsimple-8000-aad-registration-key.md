@@ -1,25 +1,17 @@
 ---
-title: Verwenden der neuen Authentifizierung für den StorSimple 8000-Geräte-Manager-Dienst in Azure | Microsoft-Dokumentation
+title: Verwenden der neuen Authentifizierung für den StorSimple 8000-Geräte-Manager-Dienst in Azure
 description: Hier erfahren Sie, wie Sie die AAD-basierte Authentifizierung für Ihren Dienst verwenden, einen neuen Registrierungsschlüssel generieren und eine manuelle Registrierung der Geräte durchführen.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 88badf6de5e7181763dd72c7a51262d16697bffd
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963488"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276959"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 
@@ -63,7 +55,7 @@ Ermitteln Sie bei Verwendung eines StorSimple 8000-Geräts anhand der folgenden 
 | Geräteversion| Auszuführende Aktion                                    |
 |--------------------------|------------------------|
 | Das Gerät verfügt mindestens über Update 5 und ist offline. <br> Sie erhalten eine Warnung mit dem Hinweis, dass die URL nicht in der Whitelist enthalten ist.|1. Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen. Siehe [Authentifizierungs-URLs](#url-changes-for-aad-authentication).<br>2. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys).<br>3. [Stellen Sie eine Verbindung mit der Windows PowerShell-Schnittstelle des StorSimple 8000-Geräts her](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Verwenden Sie das Cmdlet `Redo-DeviceRegistration`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
-| Das Gerät verfügt mindestens über Update 5 und ist online.| Es ist keine Aktion erforderlich.                                       |
+| Das Gerät verfügt mindestens über Update 5 und ist online.| Keine Aktion erforderlich.                                       |
 | Das Gerät verfügt über Update 4 oder eine niedrigere Version und ist offline. |1. Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen.<br>2. [Laden Sie Update 5 über den Katalogserver herunter](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Wenden Sie Update 5 über die Hotfixmethode an](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys).<br>5. [Stellen Sie eine Verbindung mit der Windows PowerShell-Schnittstelle des StorSimple 8000-Geräts her](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Verwenden Sie das Cmdlet `Redo-DeviceRegistration`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
 | Das Gerät verfügt über Update 4 oder eine niedrigere Version und ist online. |Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen.<br> Installieren Sie Update 5 über das Azure-Portal.              |
 | Setzen Sie das Gerät auf eine Version vor Update 5 zurück.      |Das Portal zeigt einen AAD-basierten Registrierungsschlüssel an, das Gerät führt jedoch ältere Software aus. Führen Sie die Schritte aus dem vorherigen Szenario aus, wenn auf dem Gerät Update 4 oder eine niedrigere Version ausgeführt wird.              |

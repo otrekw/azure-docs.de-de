@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927474"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122643"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage 
 
@@ -47,7 +47,7 @@ In der obigen Abbildung ist dargestellt, wie Sie für unterschiedliche Paralleli
 
 Bei Ausführung einer einzelnen Kopieraktivität verfügt ADF über einen integrierten Wiederholungsmechanismus, damit in den Datenspeichern oder im zugrunde liegenden Netzwerk eine bestimmte Ebene vorübergehender Fehler verarbeitet werden kann. 
 
-Beim Durchführen von binären Kopiervorgängen von S3 zu Blob Storage und von S3 zu ADLS Gen2 werden von ADF automatisch Prüfpunkte gesetzt.  Wenn bei der Ausführung einer Kopieraktivität ein Fehler oder Timeout aufgetreten ist, wird der Vorgang bei einer nachfolgenden Wiederholung (Wiederholungsanzahl > 1) ab dem letzten Fehlerpunkt fortgesetzt und nicht wieder ab dem Anfang gestartet. 
+Beim Durchführen von binären Kopiervorgängen von S3 zu Blob Storage und von S3 zu ADLS Gen2 werden von ADF automatisch Prüfpunkte gesetzt.  Wenn bei einer Ausführung der Kopieraktivität ein Fehler oder Timeout aufgetreten ist, wird die Kopie bei einer nachfolgenden Wiederholung ab dem letzten Fehlerpunkt fortgesetzt und nicht wieder vom Anfang gestartet. 
 
 ## <a name="network-security"></a>Netzwerksicherheit 
 
@@ -86,7 +86,7 @@ Migrieren von Daten über einen privaten Link:
 
 ### <a name="initial-snapshot-data-migration"></a>Migration der Daten der Anfangsmomentaufnahme 
 
-Die Datenpartition ist besonders zu empfehlen, wenn mehr als 10 TB an Daten migriert werden.  Nutzen Sie zum Partitionieren der Daten die Einstellung „Präfix“, um die Ordner und Dateien in Amazon S3 nach Name zu filtern. So kann dann mit jedem ADF-Kopierauftrag jeweils eine Partition kopiert werden.  Sie können mehrere ADF-Kopieraufträge gleichzeitig ausführen, um einen besseren Durchsatz zu erzielen. 
+Die Datenpartition ist besonders zu empfehlen, wenn mehr als 100 TB Daten migriert werden.  Nutzen Sie zum Partitionieren der Daten die Einstellung „Präfix“, um die Ordner und Dateien in Amazon S3 nach Name zu filtern. So kann dann mit jedem ADF-Kopierauftrag jeweils eine Partition kopiert werden.  Sie können mehrere ADF-Kopieraufträge gleichzeitig ausführen, um einen besseren Durchsatz zu erzielen. 
 
 Falls Kopieraufträge aufgrund eines vorübergehenden Problems mit dem Netzwerk oder dem Datenspeicher nicht erfolgreich sind, können Sie den fehlerhaften Kopierauftrag erneut ausführen, um diese spezifische Partition erneut aus AWS S3 zu laden.  Alle anderen Kopieraufträge, bei denen andere Partitionen geladen werden, werden nicht beeinträchtigt. 
 

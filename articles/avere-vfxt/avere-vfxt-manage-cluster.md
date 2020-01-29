@@ -4,24 +4,26 @@ description: Verwalten des Avere-Clusters – Hinzufügen oder Entfernen von Kno
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d963c951d2202b3f60f0dd93c440b36fabf6478d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 94db4a93025b6e3d633368d924e3e0c518d108ca
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415304"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153478"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
-Nach der Erstellung des Clusters müssen Sie möglicherweise Clusterknoten hinzufügen oder den Cluster beenden oder neu starten. Wenn Ihr Projekt abgeschlossen ist, müssen Sie zudem wissen, wie Sie den Cluster beenden und dauerhaft entfernen können.
+Im Lebenszyklus Ihres Avere vFXT for Azure-Clusters müssen Sie irgendwann möglicherweise Clusterknoten hinzufügen oder den Cluster starten oder neu starten. Wenn Ihr Projekt abgeschlossen ist, müssen Sie wissen, wie Sie den Cluster beenden und dauerhaft entfernen können.
 
-Abhängig von der Aufgabe der Clusterverwaltung müssen Sie möglicherweise die Avere-Systemsteuerung, das vfxt.py-Befehlszeilenskript zur Erstellung von Clustern oder das Azure-Portal verwenden.
+In diesem Artikel wird erläutert, wie Sie Clusterknoten hinzufügen oder entfernen und andere grundlegende Clustervorgänge ausführen. Wenn Sie die Einstellungen des Clusters ändern oder dessen Funktion überwachen müssen, verwenden Sie die [Avere-Systemsteuerung](avere-vfxt-cluster-gui.md).
+
+Abhängig von der Verwaltungsaufgabe müssen Sie möglicherweise eines von drei Tools verwenden: die Avere-Systemsteuerung, das Befehlszeilen-Verwaltungsskript „vfxt.py“ oder das Azure-Portal.
 
 Diese Tabelle bietet eine Übersicht darüber, welche Tools für die einzelnen Aufgaben verwendet werden können.
 
-| Action | Avere-Systemsteuerung | vfxt.py  | Azure-Portal |
+| Aktion | Avere-Systemsteuerung | vfxt.py  | Azure-Portal |
 | --- | --- | --- | --- |
 | Hinzufügen von Clusterknoten | nein | ja | nein |
 | Entfernen von Clusterknoten | ja | nein | nein |
@@ -38,7 +40,7 @@ Detaillierte Anweisungen für die einzelnen Tools finden Sie unten.
 
 Wenn Sie einen virtuellen Azure-Computer herunterfahren oder beenden, fallen keine Computegebühren mehr an, aber Sie müssen dennoch für den Speicher bezahlen. Wenn Sie einen vFXT-Knoten oder den gesamten vFXT-Cluster herunterfahren und nicht beabsichtigen, ihn neu zu starten, sollten Sie das Azure-Portal verwenden, um die zugehörigen virtuellen Computer zu löschen.
 
-Im Azur-Portal zeigt ein *beendeter* Knoten (der neu gestartet werden kann) den Status **Beendet** im Azur-Portal an. Ein *gelöschter* Knoten zeigt den Status **Beendet (Zuordnung aufgehoben)** an und es fallen keine Compute- oder Speicherkosten mehr an.
+Im Azure-Portal wird ein *beendeter* Knoten (der neu gestartet werden kann) mit dem Status **Beendet** angezeigt. Ein *gelöschter* Knoten weist den Status **Beendet (Zuordnung aufgehoben)** auf und verursacht keine Compute- oder Speichergebühren mehr.
 
 Bevor Sie den virtuellen Computer löschen, stellen Sie sicher, dass alle geänderten Daten aus dem Cache in den Back-End-Speicher geschrieben wurden, indem Sie die Optionen „Avere-Systemsteuerung“ oder „vfxt.py“ verwenden, um den Cluster zu beenden oder herunterzufahren.
 
@@ -50,7 +52,7 @@ Für diese Aufgaben kann die Avere-Systemsteuerung verwendet werden:
 * Einen Knoten aus dem Cluster entfernen
 * Den gesamten Cluster beenden oder neu starten
 
-Die Avere-Systemsteuerung priorisiert die Datenintegrität, daher versucht sie, alle geänderten Daten vor einem möglicherweise destruktiven Vorgang in den Back-End-Speicher zu schreiben. Dadurch ist sie eine sicherere Option als das Avery-Portal.
+Die Avere-Systemsteuerung priorisiert die Datenintegrität und versucht daher, alle geänderten Daten vor einem möglicherweise destruktiven Vorgang in den Back-End-Speicher zu schreiben. Dadurch ist sie eine sicherere Option als das Azure-Portal.
 
 Greifen Sie über einen Webbrowser auf die Avere-Systemsteuerung zu. Befolgen Sie die Anweisungen unter [Zugreifen auf den vFXT-Cluster](avere-vfxt-cluster-gui.md), wenn Sie Hilfe benötigen.
 
@@ -69,7 +71,7 @@ Weitere Informationen finden Sie unter [Cluster > FXT-Knoten](<https://azure.git
 
 Auf der Einstellungsseite **Systemwartung** finden Sie Befehle zum Neustarten von Clusterdiensten, zum Neustarten des Clusters oder zum sicheren Herunterfahren des Clusters. Weitere Informationen finden Sie unter [Verwaltung > Systemwartung](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_system_maintenance.html#gui-system-maintenance>) (in der Anleitung zu den Clustereinstellungen von Avere).
 
-Wenn ein Cluster heruntergefahren wird, veröffentlicht er zunächst Statusmeldungen auf der Registerkarte **Dashboard**. Nach einigen Augenblicken reagiert die Avere-Systemsteuerungssitzung nicht mehr, was darauf hinweist, dass der Cluster heruntergefahren ist.
+Wenn ein Cluster mit dem Herunterfahren beginnt, veröffentlicht er Statusmeldungen auf der Registerkarte **Dashboard**. Nach einigen Augenblicken enden die Meldungen, und schließlich reagiert die Avere-Systemsteuerungssitzung nicht mehr. Dies bedeutet, dass der Cluster heruntergefahren wurde.
 
 ## <a name="manage-the-cluster-with-vfxtpy"></a>Verwalten des Clusters mit vfxt.py
 
@@ -83,7 +85,7 @@ Das Skript vfxt.py kann für folgende Aufgaben der Clusterverwaltung verwendet w
 * Einen Cluster beenden oder starten  
 * Einen Cluster zerstören
 
-Wie bei der Avere-Systemsteuerung versuchen die vfxt.py-Operationen sicherzustellen, dass geänderte Daten dauerhaft im Back-End-Speicher gespeichert werden, bevor der Cluster oder Knoten heruntergefahren oder zerstört wird. Dadurch ist sie eine sicherere Option als das Avery-Portal.
+Wie bei der Avere-Systemsteuerung versuchen die vfxt.py-Operationen sicherzustellen, dass geänderte Daten dauerhaft im Back-End-Speicher gespeichert werden, bevor der Cluster oder Knoten heruntergefahren oder zerstört wird. Dadurch ist sie eine sicherere Option als das Azure-Portal.
 
 Ein vollständiges Benutzerhandbuch zu „vfxt.py“ ist auf GitHub verfügbar: [Cloud cluster management with vfxt.py (Cloudclusterverwaltung mit „vfxt.py“)](https://github.com/azure/averesdk/blob/master/docs/README.md)
 
@@ -95,7 +97,7 @@ Der Cluster muss ausgeführt werden, um diesen Befehl zu verwenden.
 
 Geben Sie die folgenden Werte an:
 
-* Name der Ressourcengruppe für den Cluster sowie für Netzwerk- und Speicherressourcen, wenn sie nicht mit dem Cluster übereinstimmen
+* Name der Ressourcengruppe für den Cluster sowie für Netzwerk- und Speicherressourcen, wenn diese sich nicht in derselben Ressourcengruppe wie der Cluster befinden
 * Clusterstandort
 * Clusternetzwerk und Subnetz
 * Zugriffsrolle für Clusterknoten (verwenden Sie die integrierte Rolle [Avere Operator](../role-based-access-control/built-in-roles.md#avere-operator))
@@ -139,7 +141,7 @@ Da der Cluster beendet wird, müssen Sie Instanzbezeichner übergeben, um die Cl
 vfxt.py --cloud-type azure --from-environment --destroy --resource-group GROUPNAME --admin-password PASSWORD --management-address ADMIN_IP --location LOCATION --azure-network NETWORK --azure-subnet SUBNET --management-address ADMIN_IP
 ```
 
-Die Option ``--quick-destroy`` kann verwendet werden, wenn Sie geänderte Daten nicht aus dem Clustercache schreiben möchten.
+Die Option ``--quick-destroy`` kann verwendet werden, wenn Sie geänderte Daten nicht aus dem Clustercache speichern möchten.
 
 Weitere Informationen finden Sie im [Benutzerhandbuch zu vfxt.py](<https://github.com/Azure/AvereSDK/blob/master/docs/README.md>).
 
@@ -195,7 +197,7 @@ Zusätzlich zum Löschen der Clusterknoten sollten Sie erwägen, die folgenden K
 * Datenträger, die Clusterknoten zugeordnet sind
 * Netzwerkschnittstellen und öffentliche IP-Adressen, die Clusterkomponenten zugeordnet sind
 * Virtuelle Netzwerke
-* Speicherkonten (**nur**, wenn sie keine wichtigen Daten enthalten)
+* Speichercontainer und Speicherkonten (**nur**, wenn sie keine wichtigen Daten enthalten)
 * Verfügbarkeitsgruppe
 
 ![Liste „aller Ressourcen“ des Azure-Portals mit den für einen Testcluster erstellten Ressourcen](media/avere-vfxt-all-resources-list.png)

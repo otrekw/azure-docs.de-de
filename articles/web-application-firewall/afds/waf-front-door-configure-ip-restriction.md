@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 6b5793408545c2a61a30b5d89bc41d35460ed3eb
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186684"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119464"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Konfigurieren einer IP-Einschränkungsregel mit einer Web Application Firewall für Azure Front Door Service
 In diesem Artikel wird erläutert, wie Sie IP-Einschränkungsregeln in Web Application Firewall (WAF) für Azure Front Door Service über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.
@@ -140,10 +140,10 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
      
 ### <a name="create-a-custom-ip-allow-rule"></a>Erstellen einer benutzerdefinierten IP-Zulassungsregel
 
-Verwenden Sie den Befehl [New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject), um eine Aktion zu definieren und eine Priorität festzulegen. Im folgenden Beispiel werden Anforderungen, die von Client-IP-Adressen stammen, die nicht mit der Liste übereinstimmen, blockiert.
+Verwenden Sie den Befehl [New-AzFrontDoorWafCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject), um eine Aktion zu definieren und eine Priorität festzulegen. Im folgenden Beispiel werden Anforderungen, die von Client-IP-Adressen stammen, die nicht mit der Liste übereinstimmen, blockiert.
 
 ```powershell
-$IPAllowRule = New-AzFrontDoorCustomRuleObject `
+$IPAllowRule = New-AzFrontDoorWafCustomRuleObject `
 -Name "IPAllowRule" `
 -RuleType MatchRule `
 -MatchCondition $IPMatchCondition `

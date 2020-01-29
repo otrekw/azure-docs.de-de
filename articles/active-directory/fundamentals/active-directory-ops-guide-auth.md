@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919340"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511891"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -31,20 +31,20 @@ In diesem Abschnitt des [Referenzleitfadens zu Azure AD-Vorgängen](active-direc
 
 Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die möglicherweise nicht Teil eines Rolloutprojekts sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu optimieren. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
 
-| Aufgabe | Owner (Besitzer) |
+| Aufgabe | Besitzer |
 | :- | :- |
-| Verwalten des Lebenszyklus für die SSO-Konfiguration (Single Sign-On, einmaliges Anmelden) in Azure AD | Team für IAM-Vorgänge (Identity & Access Management) |
+| Verwalten des Lebenszyklus für die SSO-Konfiguration (Single Sign-On, einmaliges Anmelden) in Azure AD | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Entwerfen von Richtlinien für bedingten Zugriff auf Azure AD-Anwendungen | Team für die Informationssicherheitsarchitektur |
-| Archivieren von Anmeldeaktivitäten in einem SIEM-System | Team für Informationssicherheitsvorgänge |
-| Archivieren von Risikoereignissen in einem SIEM-System | Team für Informationssicherheitsvorgänge |
-| Triage und Untersuchung von Sicherheitsberichten | Team für Informationssicherheitsvorgänge |
-| Triage und Untersuchung von Risikoereignissen | Team für Informationssicherheitsvorgänge |
-| Triage und Untersuchung von Benutzern, die von Azure AD Identity Protection für Risiko- und Sicherheitsberichte gekennzeichnet wurden | Team für Informationssicherheitsvorgänge |
+| Archivieren von Anmeldeaktivitäten in einem SIEM-System | Team für Informationssicherheitvorgänge |
+| Archivieren von Risikoereignissen in einem SIEM-System | Team für Informationssicherheitvorgänge |
+| Triage und Untersuchung von Sicherheitsberichten | Team für Informationssicherheitvorgänge |
+| Triage und Untersuchung von Risikoereignissen | Team für Informationssicherheitvorgänge |
+| Triage und Untersuchung von Benutzern, die von Azure AD Identity Protection für Risiko- und Sicherheitsberichte gekennzeichnet wurden | Team für Informationssicherheitvorgänge |
 
 > [!NOTE]
 > Für Azure AD Identity Protection ist eine Azure AD Premium P2-Lizenz erforderlich. Die richtige Lizenz für Ihre Anforderungen finden Sie im  [Vergleich allgemein verfügbarer Features von Azure AD Free und Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Beim Überprüfen Ihrer Liste werden Sie möglicherweise feststellen, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den oben genannten Empfehlungen entspricht.
+Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den obigen Empfehlungen entspricht.
 
 #### <a name="owner-recommended-reading"></a>Empfohlene Artikel für Besitzer
 
@@ -127,8 +127,8 @@ Verbundauthentifizierung mit der integrierten Windows-Authentifizierung oder der
 
 Dafür können Sie Geräteidentitäten mit einer der folgenden Methoden in Azure AD bereitstellen und verwalten:
 
-- Organisationen können [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) verwenden, um das Gerät zu verwalten und Konformitätsrichtlinien zu erzwingen, die Geräteintegrität zu überprüfen und Richtlinien für bedingten Zugriff anhand der Konformität des Geräts festzulegen. Microsoft Intune kann iOS-Geräte, Mac-Computer (per JAMF-Integration), Windows-Computer (nativ per mobile Geräteverwaltung bei Windows 10 und per Co-Verwaltung mit Microsoft Endpoint Manager/System Center Configuration Manager) und mobile Android-Geräte verwalten.
-- [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) bietet Verwaltung mit Gruppenrichtlinien, System Center Configuration Manager oder Microsoft Endpoint Manager in einer Umgebung mit in einer Active Directory-Domäne eingebundenen Computern. Organisationen können eine verwaltete Umgebung entweder über Kennworthashsynchronisierung oder Pass-Through-Authentifizierung mit nahtlosem SSO bereitstellen. Die Migration Ihrer Geräte zu Azure AD maximiert die Produktivität der Benutzer mithilfe von SSO für Ihre Cloud- und lokalen Ressourcen, während Ihnen gleichzeitig das Sichern Ihres Zugriffs auf diese Ressourcen mithilfe des  [bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)  ermöglicht wird.
+- Organisationen können [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) verwenden, um das Gerät zu verwalten und Konformitätsrichtlinien zu erzwingen, die Geräteintegrität zu überprüfen und Richtlinien für bedingten Zugriff anhand der Konformität des Geräts festzulegen. Microsoft Intune kann iOS-Geräte, Mac-Computer (per JAMF-Integration), Windows-Computer (nativ per mobile Geräteverwaltung bei Windows 10 und per Co-Verwaltung mit Microsoft Endpoint Configuration Manager) und mobile Android-Geräte verwalten.
+- [Azure AD Hybrid Join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) bietet Verwaltung mit Gruppenrichtlinien oder Microsoft Endpoint Configuration Manager in einer Umgebung mit in einer Azure Active Directory-Domäne eingebundenen Computern. Organisationen können eine verwaltete Umgebung entweder über Kennworthashsynchronisierung oder Pass-Through-Authentifizierung mit nahtlosem SSO bereitstellen. Die Migration Ihrer Geräte zu Azure AD maximiert die Produktivität der Benutzer mithilfe von SSO für Ihre Cloud- und lokalen Ressourcen, während Ihnen gleichzeitig das Sichern Ihres Zugriffs auf diese Ressourcen mithilfe des  [bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)  ermöglicht wird.
 
 Wenn Sie über in eine Domäne eingebundene Windows-Geräte, die nicht in der Cloud registriert sind, oder über in eine Domäne eingebundene Windows-Geräte verfügen, die in der Cloud registriert sind, aber keine Richtlinien für bedingten Zugriff aufweisen, sollten Sie die nicht registrierten Geräte registrieren und, in beiden Fällen, [Azure AD Hybrid Join als Kontrolle](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) in Ihren Richtlinien für bedingten Zugriff verwenden.
 
@@ -140,7 +140,7 @@ Wenn Sie Geräte mit der mobilen Geräteverwaltung oder Microsoft Intune verwalt
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Empfohlene Artikel zu Gerätezugriffsrichtlinien mit Vertrauensstellung
 
-- [How To: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [Vorgehensweise: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 - [Konfigurationen für den Identitäts- und Gerätezugriff](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello for Business
@@ -223,8 +223,8 @@ Wenn Sie bereits Azure AD Premium P2-Lizenzen besitzen, die die Verwendung von R
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Empfohlene Artikel zu risikobasierten Zugriffsrichtlinien
 
-- [How To: Konfigurieren der Anmelderisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [How To: Konfigurieren der Benutzerrisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [Vorgehensweise: Konfigurieren der Anmelderisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
+- [Vorgehensweise: Konfigurieren der Benutzerrisiko-Richtlinie](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
 
 ### <a name="client-application-access-policies"></a>Zugriffsrichtlinien für Clientanwendungen
 
@@ -377,7 +377,7 @@ Der Zugriff auf Anmeldeaktivitäten, Überwachungen und Risikoereignisse für Az
 
 Sichere Identitätsinfrastrukturen weisen 12 Aspekte auf. Die Schritte der folgenden Liste unterstützen Sie beim Ausbauen der Sicherheit und Verwalten Ihrer Anmeldeinformationen, Definieren der Authentifizierungsfunktion, Delegieren von Zuweisungen, Messen der Nutzung und Definieren von Zugriffsrichtlinien basierend auf dem Sicherheitsstatus Ihres Unternehmens.
 
-- Weisen Sie wichtigen Aufgaben Besitzer zu.
+- Zuweisen von Besitzern zu wichtigen Aufgaben
 - Implementieren Sie Lösungen zum Ermitteln schwacher oder kompromittierter Kennwörter, zum Verbessern der Verwaltung und des Schutzes von Kennwörtern und zum Erweitern der Sicherheit des Benutzerzugriffs auf Ressourcen.
 - Verwalten Sie die Identitäten von Geräten, um Ihre Ressourcen jederzeit und überall zu schützen.
 - Implementieren Sie kennwortlose Authentifizierung.

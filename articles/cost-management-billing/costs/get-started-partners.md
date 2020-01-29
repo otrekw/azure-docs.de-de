@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984554"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293911"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -120,7 +120,7 @@ Unabhängig von der Richtlinie können Partner die Kosten auch anzeigen, wenn si
 
 Partner verwenden die folgenden Informationen, um die Richtlinie zum Anzeigen von Azure-Nutzungsgebühren für ihre Kunden zu aktivieren.
 
-Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie ein Abrechnungskonto aus, und klicken Sie dann auf **Kunden**. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft.
+Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie das entsprechende Abrechnungskonto für die Microsoft Partner-Vereinbarung aus, und wählen Sie dann **Kunden** aus. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft.
 
 Wählen Sie in der Liste der Kunden den Kunden aus, dem Sie die Anzeige von Kosten erlauben möchten.
 
@@ -137,7 +137,7 @@ Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer,
 
 Wenn die Kostensichtbarkeits-Richtlinie aktiviert ist, werden für alle Dienste im Rahmen der Abonnementnutzung die durch nutzungsbasierte Gebühren anfallenden Kosten angezeigt. Die Reservierungsnutzung wird ohne Gebühren für tatsächliche und amortisierte Kosten angezeigt. Käufe und Berechtigungen werden keinem bestimmten Abonnement zugeordnet. Käufe werden also nicht im Abonnementbereich angezeigt.
 
-Öffnen Sie „Kostenverwaltung + Abrechnung“, und klicken Sie dann auf „Abrechnungskonten“, um Kosten für den Kundenmandanten anzuzeigen. Wählen Sie in der Liste der Abrechnungskonten ein Abrechnungskonto aus.
+Öffnen Sie **Kostenverwaltung + Abrechnung**, und wählen Sie das relevante Abrechnungskonto für die Microsoft Partner-Vereinbarung aus, um Kosten für den Kundenmandanten anzuzeigen.
 
 ![Auswählen eines Abrechnungskontos](./media/get-started-partners/select-billing-account.png)
 
@@ -257,15 +257,19 @@ Sie können auch nach der **PartnerEarnedCreditApplied**-Eigenschaft gruppieren 
 
 ## <a name="export-cost-data-to-azure-storage"></a>Exportieren von Kostendaten in Azure Storage
 
-Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können ihre Kosten- und Nutzungsdaten in ein Blob in Azure Storage exportieren. Das Blob muss sich in einem Abonnement im Mandant des Partners befinden, bei dem es sich nicht um ein gemeinsames Abonnement für einen Dienst oder das Abonnement eines Kunden handelt. Wenn Sie Kostendaten exportieren möchten, sollten Sie im Partnermandanten ein unabhängiges Abonnement mit nutzungsbasierter Bezahlung einrichten, um die exportierten Kostendaten zu hosten. Das Speicherkonto für die Exporte wird im Azure Storage-Blob erstellt, das im Abonnement mit nutzungsbasierter Bezahlung gehostet wird. Je nach Bereich, in dem der Partner den Export ausführt, werden die dazugehörigen Daten bei einem erneuten Export automatisch in das Speicherkonto exportiert.
+Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können ihre Kosten- und Nutzungsdaten in ein Blob in Azure Storage exportieren. Das Blob muss sich in einem Abonnement im Mandant des Partners befinden, bei dem es sich nicht um ein gemeinsames Abonnement für einen Dienst oder das Abonnement eines Kunden handelt. Wenn Sie Kostendaten exportieren möchten, sollten Sie im Partnermandanten ein unabhängiges Abonnement mit nutzungsbasierter Bezahlung einrichten, um die exportierten Kostendaten zu hosten. Das Speicherkonto für die Exporte wird im Azure Storage-Blob erstellt, das im Abonnement mit nutzungsbasierter Bezahlung gehostet wird. Je nach Bereich, in dem der Partner den Export ausführt, werden die dazugehörigen Daten in regelmäßigen Abständen automatisch in das Speicherkonto exportiert.
 
 Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung Zugriff auf das Abonnement erteilt wurde, können die Kostendaten auch in ein Azure Storage-Blob exportieren, das in einem beliebigen Abonnement im Kundenmandanten gehostet wird.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Erstellen eines Exports in einem Partnermandanten oder Kundenmandanten
 
-Melden Sie sich im Azure-Portal beim Partnermandanten oder beim Kundenmandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie einen passenden Bereich aus, z. B. Abrechnungskonto, und klicken Sie dann auf **Kostenanalyse**. Wenn die Seite geladen ist, klicken Sie auf **Export**. Wählen Sie unter „Export planen“ die Option **Alle Exporte anzeigen** aus.
+Melden Sie sich im Azure-Portal beim Partnermandanten oder beim Kundenmandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie einen passenden Bereich aus, z. B. ein Abrechnungskonto für eine Microsoft Partner-Vereinbarung, und wählen Sie dann **Kostenanalyse** aus. Wenn die Seite geladen ist, klicken Sie auf **Export**. Wählen Sie unter „Export planen“ die Option **Alle Exporte anzeigen** aus.
+
+![Auswählen von „Exportieren“ und „Alle Exporte anzeigen“](./media/get-started-partners/export01.png)
 
 Wählen Sie dann **Hinzufügen** aus, und geben Sie den Namen ein, und wählen Sie den Exporttyp aus. Wählen Sie die Registerkarte **Speicher** aus, und geben Sie die erforderlichen Informationen ein.
+
+![Hinzufügen eines neuen Exports und Auswählen der Registerkarte „Speicher“](./media/get-started-partners/export02.png)
 
 Wenn Sie einen Export im Partnermandanten erstellen, wählen Sie das Abonnement mit nutzungsbasierter Bezahlung im Partnermandanten aus. Erstellen Sie mit diesem Abonnement ein Azure Storage-Konto.
 
@@ -273,7 +277,9 @@ Wählen Sie für Benutzer, denen im Rahmen der rollenbasierten Zugriffssteuerung
 
 Überprüfen Sie die Angaben, und klicken Sie dann auf **Erstellen**, um den Export zu planen.
 
-Wählen Sie den Name des Speicherkontos aus, um die Daten in der Exportliste zu bestätigen. Wählen Sie auf der Seite „Speicherkonto“ die Option **Container** aus, und wählen Sie dann den Container aus. Navigieren Sie zum entsprechenden Ordner, und wählen Sie die CSV-Datei aus. Klicken Sie auf **Herunterladen**, damit die CSV-Datei heruntergeladen wird, und öffnen Sie sie dann. Die exportierten Daten ähneln den Kostendaten, die wiederum den Nutzungsinformationen aus dem Azure-Portal ähneln.
+Wählen Sie den Name des Speicherkontos aus, um die Daten in der Exportliste zu bestätigen. Wählen Sie auf der Seite „Speicherkonto“ die Option **Container** aus, und wählen Sie dann den Container aus. Navigieren Sie zum entsprechenden Ordner, und wählen Sie die CSV-Datei aus. Wählen Sie **Herunterladen** aus, um die CSV-Datei herunterzuladen, und öffnen Sie diese. Die exportierten Daten ähneln den Kostendaten, die wiederum den Nutzungsinformationen aus dem Azure-Portal ähneln.
+
+![Beispiel für exportierte Daten](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Cost Management-REST-APIs
 
@@ -400,7 +406,7 @@ PUT https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{bi
 #### <a name="delete-a-budget"></a>Löschen eines Budgets
 
 ```
-PUT
+DELETE
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/budgets/{budgetName}?api-version=2019-10-01
 ```
 

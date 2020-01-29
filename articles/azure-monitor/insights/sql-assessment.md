@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: e3e399e99dca453a84c4daef782027b2b1ad6da1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401029"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168894"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -196,6 +196,19 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 3. Wenn Sie sich später dazu entscheiden, die ignorierten Empfehlungen anzuzeigen, entfernen Sie alle IgnoreRecommendations.txt-Dateien, oder entfernen Sie einzelne RecommendationIDs aus den Dateien.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL-Integritätsüberprüfung-Lösung – häufig gestellte Fragen
+
+*Welche Überprüfungen werden von der SQL-Bewertungslösung durchgeführt?*
+
+* Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:
+
+```Kusto
+SQLAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Die Ergebnisse können dann zur weiteren Prüfung in Excel exportiert werden.
+
+
 *Wie oft wird eine Integritätsüberprüfung ausgeführt?*
 
 * Die Überprüfung wird alle sieben Tage ausgeführt.

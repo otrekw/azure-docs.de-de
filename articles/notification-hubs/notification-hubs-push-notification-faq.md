@@ -1,6 +1,6 @@
 ---
-title: 'Azure Notification Hubs: Häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation'
-description: Häufig gestellte Fragen zum Entwerfen/Implementieren von Lösungen in Notification Hubs
+title: 'Azure Notification Hubs: häufig gestellte Fragen (FAQs) | Microsoft-Dokumentation'
+description: Häufig gestellte Fragen zum Entwerfen und Implementieren von Lösungen in Azure Notification Hubs
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066875"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263828"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Azure Notification Hubs umfasst zwei Ressourcenebenen: Hubs und Namespaces. Ein 
 Aktuelle Preisinformationen finden Sie auf der Seite [Notification Hubs – Preise]. Die Abrechnung für Notification Hubs erfolgt auf Namespaceebene. (Die Definition des Begriffs „Namespace“ finden Sie unter „Wie ist die Ressourcenstruktur von Notification Hubs aufgebaut?“.) Für Notification Hubs stehen drei Tarife zur Verfügung:
 
 * **Free:** Dieser Einstiegstarif eignet sich sehr gut, um sich mit Pushfunktionen vertraut zu machen. Für Produktions-Apps ist er nicht zu empfehlen. Der Tarif beinhaltet 500 Geräte und eine Million Pushbenachrichtigungen pro Namespace und Monat. Eine SLA-Garantie (Service Level Agreement, Vereinbarung zum Servicelevel) ist nicht enthalten.
-* **Basic:** Dieser Tarif (oder der Standard-Tarif) wird für kleinere Produktions-Apps empfohlen. Er beinhaltet 200.000 Geräte und zehn Millionen Pushbenachrichtigungen pro Namespace und Monat als Basis.
+* **Basic**: Dieser Tarif (oder der Standard-Tarif) wird für kleinere Produktions-Apps empfohlen. Er beinhaltet 200.000 Geräte und zehn Millionen Pushbenachrichtigungen pro Namespace und Monat als Basis.
 * **Standard**: Dieser Tarif wird für mittelgroße bis große Produktions-Apps empfohlen. Er beinhaltet zehn Millionen Geräte und zehn Millionen Pushbenachrichtigungen pro Namespace und Monat als Basis. Enthält umfangreiche Telemetriedaten (zusätzliche Daten zum bereitgestellten Pushstatus).
 
 Features des Standard-Tarifs:
@@ -56,7 +56,7 @@ Bei den Notification Hubs-Tarifen „Basic“ und „Standard“ können ordnung
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Wie stufe ich meinen Hub oder meinen Namespace auf einen anderen Tarif hoch oder herab?
 
-Navigieren Sie zu **[Azure-Portal]**  > **Notification Hubs-Namespaces** oder **Notification Hubs**. Wählen Sie die Ressource aus, die Sie aktualisieren möchten, und navigieren Sie zu **Tarif**. Beachten Sie folgende Punkte:
+Navigieren Sie zu **[Azure portal]**  > **Notification Hubs-Namespaces** oder **Notification Hubs**. Wählen Sie die Ressource aus, die Sie aktualisieren möchten, und navigieren Sie zu **Tarif**. Beachten Sie folgende Punkte:
 
 * Der aktualisierte Tarif gilt für *alle* Hubs in dem Namespace, mit dem Sie arbeiten.
 * Falls die Anzahl von Geräten den Grenzwert des niedrigeren Tarifs übersteigt, zu dem Sie wechseln möchten, müssen Sie zuerst Geräte löschen.
@@ -153,7 +153,7 @@ Bei allen Verbindungen zwischen Absender, Azure Notification Hubs und PNS wird H
 
 Für den Versand vertraulicher Nutzlasten empfehlen wir die Verwendung sicherer Pushbenachrichtigungen. Der Absender übermittelt eine Pingbenachrichtigung mit einer Nachrichten-ID und ohne die vertrauliche Nutzlast an das Gerät. Wenn die App auf dem Gerät die Nutzlast empfängt, ruft sie direkt eine sichere API auf, um die Nachrichtendetails abzurufen. Eine Implementierungsanleitung für dieses Muster finden Sie im [Tutorial zu sicheren Pushbenachrichtigungen mit Notification Hubs].
 
-## <a name="operations"></a>Vorgänge
+## <a name="operations"></a>Operationen (Operations)
 
 ### <a name="what-support-is-provided-for-disaster-recovery"></a>Welche Unterstützung steht für die Notfallwiederherstellung zur Verfügung?
 
@@ -181,7 +181,7 @@ Azure Notification Hubs verschlüsselt alle ruhenden Kundendaten mit Ausnahme vo
 
 ### <a name="is-there-audit-log-capability"></a>Steht ein Überwachungsprotokoll zur Verfügung?
 
-Ja. Alle Notification Hubs-Verwaltungsvorgänge aktualisieren das Azure-Aktivitätsprotokoll, das im [Azure-Portal] zur Verfügung steht. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst jedoch keine Lesevorgänge (GET).
+Ja. Alle Notification Hubs-Verwaltungsvorgänge aktualisieren das Azure-Aktivitätsprotokoll, das im [Azure portal] zur Verfügung steht. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst jedoch keine Lesevorgänge (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 
@@ -191,7 +191,7 @@ Azure Notification Hubs bietet verschiedene Problembehandlungsfeatures – insbe
 
 ### <a name="what-telemetry-features-are-available"></a>Welche Telemetriefunktionen stehen zur Verfügung?
 
-Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Notification Hubs-Metriken].
+Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Notification Hubs-Metriken].
 
 Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
@@ -202,7 +202,7 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNs für iOS-Geräte und macOS oder FCM für Android-Geräte) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
 
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [Notification Hubs – Preise]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [REST-APIs für Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
@@ -215,6 +215,6 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 [Problembehandlung für Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs-Metriken]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Vorgehensweise: Massenhaftes Exportieren und Ändern von Registrierungen]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

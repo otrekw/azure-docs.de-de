@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278952"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156079"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode
 
@@ -25,8 +25,21 @@ Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organ
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>[!Note]
+> Wird keine Option mit Sicherheitscode angezeigt, lässt Ihre Organisation unter Umständen die Nutzung dieser Option für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+
+| Methode | Syntaxelemente |
+| ------ | -------- |
+| Authenticator-App | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Textnachrichten | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Telefonanrufe | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| Sicherheitsschlüssel | Authentifizierung mittels zweistufiger Überprüfung und Kennwortzurücksetzung. |
+| E-Mail-Konto | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
+| Sicherheitsfragen | Nur Authentifizierung mittels Kennwortzurücksetzung. Sie müssen eine andere Methode für die zweistufige Überprüfung auswählen. |
 
 ## <a name="what-is-a-security-key"></a>Was ist ein Sicherheitsschlüssel?
 
@@ -80,7 +93,7 @@ Sie müssen Ihren Sicherheitsschlüssel erstellen und dabei eine eindeutige PIN 
 
     Daraufhin kehren Sie zum Dialogfeld **Ihre neue Anmeldemethode wird eingerichtet** zurück.
 
-7. Klicken Sie auf **Weiter**.
+7. Wählen Sie **Weiter** aus.
 
 8. Kehren Sie zur Seite **Sicherheitsinformationen** zurück, geben Sie einen Namen für Ihren neuen Sicherheitsschlüssel ein, den Sie später als solchen erkennen, und wählen Sie dann **Weiter** aus.
 

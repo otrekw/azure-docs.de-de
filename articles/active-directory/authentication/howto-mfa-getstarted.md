@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848390"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155145"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -85,17 +85,17 @@ Wir empfehlen Organisationen, den bedingten Zugriff zu verwenden und ihr Netzwer
 ### <a name="configuring-a-named-location"></a>Konfigurieren eines benannten Orts
 
 1. Öffnen Sie **Azure Active Directory** im Azure-Portal.
-2. Klicken Sie auf **Bedingter Zugriff**.
-3. Klicken Sie auf **Benannte Standorte**.
-4. Klicken Sie auf **Neuer Standort**.
+2. Wählen Sie **Sicherheit**.
+3. Wählen Sie unter **Verwalten** die Option **Benannte Standorte** aus.
+4. Wählen Sie **Neuer Standort** aus.
 5. Geben Sie im Feld **Name** einen aussagekräftigen Namen an.
-6. Wählen Sie aus, ob Sie den Standort mithilfe von IP-Bereichen oder Ländern/Regionen definieren.
-   1. Bei Verwendung der IP-Bereiche
-      1. Entscheiden Sie, ob Sie den Standort als vertrauenswürdig markieren. Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern. Markieren Sie diesen Standort nur dann als vertrauenswürdig, wenn die eingegebenen IP-Bereiche bekannt sind und in Ihrer Organisation als unbedenklich eingestuft werden.
+6. Wählen Sie aus, ob Sie den Standort mithilfe von *IP-Bereichen* oder *Ländern/Regionen* definieren.
+   1. Bei Verwendung von *IP-Bereichen*
+      1. Entscheiden Sie, ob Sie den *Standort als vertrauenswürdig markieren*. Die Anmeldung von einem vertrauenswürdigen Ort aus senkt das Anmelderisiko von Benutzern. Markieren Sie diesen Standort nur dann als vertrauenswürdig, wenn die eingegebenen IP-Bereiche bekannt sind und in Ihrer Organisation als unbedenklich eingestuft werden.
       2. Angeben der IP-Bereiche
-   2. Bei Verwendung von Ländern/Regionen
+   2. Bei Verwendung von *Ländern/Regionen*
       1. Erweitern Sie das Dropdownmenü, und wählen Sie die Länder oder Regionen aus, die Sie für diesen benannten Ort definieren möchten.
-      2. Entscheiden Sie, ob Sie unbekannte Bereiche einschließen möchten. Unbekannte Bereiche sind IP-Adressen, die keinem Land/keiner Region zugeordnet werden können.
+      2. Entscheiden Sie, ob Sie *unbekannte Bereiche einschließen* möchten. Unbekannte Bereiche sind IP-Adressen, die keinem Land/keiner Region zugeordnet werden können.
 7. Klicken Sie auf **Erstellen**
 
 ## <a name="plan-authentication-methods"></a>Planen von Authentifizierungsmethoden
@@ -221,7 +221,7 @@ Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten 
 ### <a name="create-conditional-access-policy"></a>Erstellen der Richtlinie für bedingten Zugriff
 
 1. Melden Sie sich mit dem globalen Administratorkonto am [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu **Azure Active Directory**  > **Bedingter Zugriff**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
    ![Erstellen einer Richtlinie für bedingten Zugriff zum Aktivieren von MFA für die Benutzer des Azure-Portals in der Pilotgruppe](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geben Sie einen aussagekräftigen Namen für Ihre Richtlinie an.
@@ -240,7 +240,7 @@ Es ist wichtig, dass Sie verhindern, versehentlich aus Ihrem Azure AD-Mandanten 
     * Klicken Sie auf **Auswählen**.
 1. Überspringen Sie den Abschnitt **Sitzung**.
 1. Legen Sie die Umschaltfläche **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Planen der Integration mit lokalen Systemen
 
@@ -277,7 +277,7 @@ Wenn Sie eine NPS-Instanz bereitgestellt haben und sie bereits verwendet wird, l
 
 Wählen Sie aus, was geschieht, wenn Benutzer, die nicht in MFA registriert sind, versuchen, sich zu authentifizieren. Verwenden Sie die Registrierungseinstellung `REQUIRE_USER_MATCH` im Registrierungspfad `HKLM\Software\Microsoft\AzureMFA`, um das Verhalten des Features zu steuern. Diese Einstellung hat eine einzelne Konfigurationsoption.
 
-| Schlüssel | Wert | Standard |
+| Key | value | Standard |
 | --- | --- | --- |
 | `REQUIRE_USER_MATCH` | TRUE/FALSE | Nicht festgelegt (gleichwertig mit TRUE) |
 
@@ -347,7 +347,7 @@ Berichte für Azure MFA
 
 Azure Multi-Factor Authentication bietet Berichte über das Azure-Portal:
 
-| Bericht | Location | BESCHREIBUNG |
+| Bericht | Location | Beschreibung |
 | --- | --- | --- |
 | Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
 

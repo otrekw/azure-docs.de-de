@@ -1,25 +1,17 @@
 ---
-title: Bereitstellen Ihres Geräts der StorSimple 8000-Serie im Azure-Portal | Microsoft-Dokumentation
+title: Bereitstellen von Geräten der StorSimple 8000-Serie über das Azure-Portal
 description: Enthält eine Beschreibung der Schritte und bewährten Methoden für die Bereitstellung des Geräts der StorSimple-Serie 8000 mit Update 3 und höher und des StorSimple-Geräte-Manager-Diensts.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 1f44690de1f38e3d337072cc7c974887eb0e31cc
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965898"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273966"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Bereitstellen lokaler StorSimple-Geräte (Update 3 und höher)
 
@@ -42,7 +34,7 @@ Sie benötigen Administratorrechte, um die Einrichtung und Konfiguration abzusch
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 Führen Sie die folgenden erforderlichen Schritte zum Konfigurieren Ihres StorSimple-Geräts und zum Verbinden des Geräts mit dem StorSimple-Geräte-Manager-Dienst aus. Zusätzlich zu diesen erforderlichen Schritten müssen Sie während der Bereitstellung möglicherweise optionale Schritte ausführen. Die schrittweise Bereitstellungsanleitung gibt auch an, wann Sie die folgenden optionalen Schritte jeweils ausführen sollten.
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 | --- | --- |
 | **VORAUSSETZUNGEN** |Diese Schritte müssen zur Vorbereitung der Bereitstellung ausgeführt werden. |
 | [Konfigurationsprüfliste für die Bereitstellung](#deployment-configuration-checklist) |Verwenden Sie diese Prüfliste, um vor und während der Bereitstellung Informationen zu erfassen und aufzuzeichnen. |

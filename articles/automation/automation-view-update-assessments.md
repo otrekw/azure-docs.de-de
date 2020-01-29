@@ -3,14 +3,14 @@ title: Anzeigen von Updatebewertungen der Azure-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419880"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310083"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure-Updateverwaltung
 
@@ -30,11 +30,11 @@ Wählen Sie **Fehlende Updates** aus, um eine Liste der Updates anzuzeigen, die 
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 
-Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der Updateverwaltung sowie eine Definition für jede Klassifikation.
+Die folgenden Tabellen enthalten eine Liste der unterstützten Updateklassifizierungen in der Updateverwaltung sowie eine Definition für jede Klassifikation.
 
 ### <a name="windows"></a>Windows
 
-|Klassifizierung  |BESCHREIBUNG  |
+|Klassifizierung  |Beschreibung  |
 |---------|---------|
 |Kritische Updates     | Ein Update für ein bestimmtes Problem, mit dem ein entscheidender, nicht sicherheitsrelevanter Fehler behoben wird.        |
 |Sicherheitsupdates     | Ein Update für ein produktspezifisches, sicherheitsrelevantes Problem.        |
@@ -47,7 +47,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="linux-2"></a>Linux
 
-|Klassifizierung  |BESCHREIBUNG  |
+|Klassifizierung  |Beschreibung  |
 |---------|---------|
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
@@ -59,6 +59,8 @@ sudo yum -q --security check-update
 ```
 
 Aktuell steht keine unterstützte Methode zur Verfügung, mit der unter CentOS eine native Verfügbarkeit von Klassifizierungsdaten implementiert werden kann. Für Kunden, die diese Funktion möglicherweise selbst implementiert haben, wird derzeit nur Support nach bestem Wissen bereitgestellt.
+
+Sie müssen das Plug-In „yum-security“ installieren, um Updates in Version 6 von Red Hat Enterprise zu klassifizieren. Unter Red Hat Enterprise Linux 7 ist das Plug-In bereits Teil von yum selbst. Sie müssen also nichts installieren. Weitere Informationen finden Sie in [diesem Red Hat-Knowledge-Artikel](https://access.redhat.com/solutions/10021).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

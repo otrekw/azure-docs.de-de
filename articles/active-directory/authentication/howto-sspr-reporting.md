@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847217"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155006"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -53,13 +53,13 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 
 ### <a name="converged-registration-preview"></a>Zusammengeführte Registrierung (Vorschau)
 
-Wenn Sie an der öffentlichen Vorschau der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter dem Dienst **Authentifizierungsmethoden**.
+Wenn Sie an der öffentlichen Vorschau der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben, die es im Azure-Portal gibt:
 
-* **User:** Der Benutzer, der versucht hat, sich für die Kennwortzurücksetzung zu registrieren
+* **Benutzer:** Der Benutzer, der versucht hat, sich für die Kennwortzurücksetzung zu registrieren
 * **Rolle**: Die Rolle des Benutzers im Verzeichnis
 * **Datum und Uhrzeit**: Datum und Uhrzeit des Versuchs
 * **Registrierte Daten**: Die Authentifizierungsdaten, die vom Benutzer während der Registrierung für die Kennwortzurücksetzung bereitgestellt wurden
@@ -70,7 +70,7 @@ In der folgenden Tabelle sind die verschiedenen Werte beschrieben, die Sie für 
 
 | Column | Zulässige Werte und deren Bedeutung |
 | --- | --- |
-| Registrierte Daten |**Alternative E-Mail-Adresse**: Der Benutzer hat eine alternative E-Mail-Adresse oder eine Authentifizierungs-E-Mail zur Authentifizierung verwendet.<p><p>**Bürotelefon**: Der Benutzer hat eine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon**: Der Benutzer hat ein Mobiltelefon oder Authentifizierungstelefon zur Authentifizierung verwendet.<p>**Sicherheitsfragen**: Der Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der vorherigen Methoden, z.B. alternative E-Mail-Adresse und Mobiltelefon**: Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
+| Registrierte Daten |**Alternative E-Mail-Adresse**: Der Benutzer hat eine alternative E-Mail-Adresse oder eine Authentifizierungs-E-Mail zur Authentifizierung verwendet.<p><p>**Bürotelefon:** Der Benutzer hat eine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon**: Der Benutzer hat ein Mobiltelefon oder Authentifizierungstelefon zur Authentifizierung verwendet.<p>**Sicherheitsfragen**: Der Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der vorherigen Methoden, z.B. alternative E-Mail-Adresse und Mobiltelefon**: Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
 
 ## <a name="self-service-password-management-activity-types"></a>Aktivitätstypen für die Self-Service-Kennwortverwaltung
 

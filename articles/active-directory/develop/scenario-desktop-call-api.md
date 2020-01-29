@@ -15,18 +15,18 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75bb919b73791b78084e82351d7d6b7d93edc322
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36aa220b49b8b71c79e4fe6f63afedee6db76a68
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423867"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293333"
 ---
-# <a name="desktop-app-that-calls-web-apis---call-a-web-api"></a>Desktop-App, die Web-APIs aufruft – Aufrufen einer Web-API
+# <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktop-App, die Web-APIs aufruft: Aufrufen einer Web-API
 
 Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufrufen.
 
-## <a name="calling-a-web-api"></a>Aufrufen einer Web-API
+## <a name="call-a-web-api"></a>Aufrufen einer Web-API
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -66,9 +66,9 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-## <a name="calling-a-web-api-in-msal-for-ios-and-macos"></a>Aufrufen einer Web-API in MSAL für iOS und macOS
+## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Aufrufen einer Web-API in MSAL für iOS und macOS
 
-Diese Methoden zum Abrufen von Token geben ein `MSALResult`-Objekt zurück. `MSALResult` stellt eine `accessToken`-Eigenschaft bereit, die verwendet werden kann, um eine Web-API aufzurufen. Das Zugriffstoken muss dem HTTP-Autorisierungsheader hinzugefügt werden, bevor der Aufruf zum Zugriff auf die geschützte Web-API erfolgt.
+Diese Methoden zum Abrufen von Token geben ein `MSALResult`-Objekt zurück. `MSALResult` stellt die Eigenschaft `accessToken` bereit, die verwendet werden kann, um eine Web-API aufzurufen. Fügen Sie dem HTTP-Autorisierungsheader ein Zugriffstoken hinzu, bevor der Aufruf zum Zugriff auf die geschützte Web-API erfolgt.
 
 Objective-C:
 
@@ -96,9 +96,9 @@ let task = URLSession.shared.dataTask(with: urlRequest as URLRequest) { (data: D
 task.resume()
 ```
 
-## <a name="calling-several-apis---incremental-consent-and-conditional-access"></a>Aufrufen mehrerer APIs – Inkrementelle Zustimmung und bedingter Zugriff
+## <a name="call-several-apis-incremental-consent-and-conditional-access"></a>Aufrufen mehrerer APIs: Inkrementelle Zustimmung und bedingter Zugriff
 
-Wenn Sie mehrere APIs für den gleichen Benutzer aufrufen müssen, können Sie, sobald Sie ein Token für die erste API abgerufen haben, einfach `AcquireTokenSilent` aufrufen. Dadurch erhalten Sie in den meisten Fällen automatisch ein Token für die anderen APIs.
+Um nach dem Abrufen eines Tokens für die erste API mehrere APIs für denselben Benutzer aufzurufen, rufen Sie `AcquireTokenSilent` auf. In den meisten Fällen erhalten Sie ein Token für die anderen APIs automatisch.
 
 ```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
@@ -108,9 +108,9 @@ result = await app.AcquireTokenSilent("scopeApi2")
                   .ExecuteAsync();
 ```
 
-In folgenden Fällen müssen Sie aktiv werden:
+Ein Interaktion ist in folgenden Fällen erforderlich:
 
-- Der Benutzer hat der ersten API zugestimmt, muss nun aber weiteren Bereichen zustimmen (inkrementelle Zustimmung).
+- Der Benutzer hat der ersten API zugestimmt, muss nun aber weiteren Bereichen zustimmen. Diese Art von Zustimmung wird als inkrementelle Zustimmung bezeichnet.
 - Für die erste API war keine mehrstufige Authentifizierung erforderlich, für die nächste wird diese jedoch benötigt.
 
 ```csharp

@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/27/2019
+ms.date: 01/16/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1106692128f3272f59c80a8312d6ceea2500b3a7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917470"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294183"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -51,18 +51,18 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 
 ### <a name="header-claims"></a>Headeransprüche
 
-|Anspruch | Format | BESCHREIBUNG |
+|Anspruch | Format | Beschreibung |
 |-----|--------|-------------|
 |`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
-|`alg` | Zeichenfolge | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
-|`kid` | Zeichenfolge | Der Fingerabdruck des öffentlichen Schlüssels, der verwendet wird, um dieses Token zu signieren. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
-|`x5t` | Zeichenfolge | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
+|`alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |
+|`kid` | String | Der Fingerabdruck des öffentlichen Schlüssels, der verwendet wird, um dieses Token zu signieren. Wird in v1. 0- und v2. 0-`id_tokens` ausgegeben. |
+|`x5t` | String | Identisch (in Verwendung und Wert) mit `kid`. Dies ist jedoch ein Legacyanspruch, der aus Kompatibilitätsgründen nur in v1.0-`id_tokens` ausgegeben wird. |
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
 Diese Liste zeigt die Ansprüche, die (sofern nichts anderes angegeben ist) in den meisten ID-Token standardmäßig enthalten sind.  Allerdings kann Ihre App mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) zusätzliche Ansprüche im ID-Token anfordern.  Diese können vom `groups`-Anspruch bis zu Informationen zum Namen des Benutzers reichen.
 
-|Anspruch | Format | BESCHREIBUNG |
+|Anspruch | Format | Beschreibung |
 |-----|--------|-------------|
 |`aud` |  Zeichenfolge, ein App-ID-URI | Identifiziert den vorgesehenen Empfänger des Tokens. In `id_tokens` ist die Zielgruppe die Anwendungs-ID Ihrer App, die Ihrer App im Azure-Portal zugewiesen ist. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
 |`iss` |  Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das Token vom v2.0-Endpunkt ausgegeben wurde, endet der URI mit `/v2.0`.  Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App sollte ggf. den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können. |
@@ -70,21 +70,27 @@ Diese Liste zeigt die Ansprüche, die (sofern nichts anderes angegeben ist) in d
 |`idp`|Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
 |`nbf` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf.|
 |`exp` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf.  Es ist wichtig zu beachten, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (wenn beispielsweise eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
-| `c_hash`| Zeichenfolge |Der Codehash ist nur dann in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Zeichenfolge |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um die Daten für die Wiederverwendung von Token aufzuzeichnen. Sollte ignoriert werden.|
-|`preferred_username` | Zeichenfolge | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen.|
-|`email` | Zeichenfolge | Der Anspruch `email` ist standardmäßig für Gastkonten vorhanden, die über eine E-Mail-Adresse verfügen.  Ihre App kann den E-Mail-Anspruch für verwaltete Benutzer (unter demselben Mandanten wie die Ressource) über den [optionalen Anspruch](active-directory-optional-claims.md) `email` anfordern.  Auf dem v2.0-Endpunkt kann Ihre App auch den OpenID Connect-Bereich `email` anfordern. Sie müssen nicht sowohl den optionalen Anspruch als auch den Bereich abrufen, um den Anspruch zu erhalten.  Für den Anspruch „email“ werden nur adressierbare E-Mails aus den Profilinformationen des Benutzers unterstützt. |
-|`name` | Zeichenfolge | Der `name`-Anspruch gibt einen visuell lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-|`nonce`| Zeichenfolge | Die Nonce stimmt mit dem Parameter überein, der in der ursprünglichen /authorize-Anforderung an den IDP enthalten ist. Wenn diese Angaben nicht übereinstimmen, sollte Ihre Anwendung das Token ablehnen. |
+| `c_hash`| String |Der Codehash ist nur dann in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| String |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Informationen zum Ausführen dieser Überprüfung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Sollte ignoriert werden.|
+|`preferred_username` | String | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen.|
+|`email` | String | Der Anspruch `email` ist standardmäßig für Gastkonten vorhanden, die über eine E-Mail-Adresse verfügen.  Ihre App kann den E-Mail-Anspruch für verwaltete Benutzer (unter demselben Mandanten wie die Ressource) über den `email` [optionalen Anspruch](active-directory-optional-claims.md) anfordern.  Auf dem v2.0-Endpunkt kann Ihre App auch den OpenID Connect-Bereich `email` anfordern. Sie müssen nicht sowohl den optionalen Anspruch als auch den Bereich abrufen, um den Anspruch zu erhalten.  Für den Anspruch „email“ werden nur adressierbare E-Mails aus den Profilinformationen des Benutzers unterstützt. |
+|`name` | String | Der `name`-Anspruch gibt einen visuell lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
+|`nonce`| String | Die Nonce stimmt mit dem Parameter überein, der in der ursprünglichen /authorize-Anforderung an den IDP enthalten ist. Wenn diese Angaben nicht übereinstimmen, sollte Ihre Anwendung das Token ablehnen. |
 |`oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. Der `oid`-Anspruch ist eine GUID und kann nicht wiederverwendet werden. |
 |`roles`| Array von Zeichenfolgen | Die Rollen, die dem sich anmeldenden Benutzer zugewiesen wurden. |
-|`rh` | Nicht transparente Zeichenfolge |Ein interner Anspruch, der von Azure verwendet wird, um Token erneut zu überprüfen. Sollte ignoriert werden. |
+|`rh` | Nicht transparente Zeichenfolge |Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Der Antragsteller ist ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann – abhängig von den Architektur- und Datenschutzanforderungen – wünschenswert sein oder nicht. |
 |`tid` | Zeichenfolge, eine GUID | Eine GUID, die den Azure AD-Mandanten darstellt, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-|`unique_name` | Zeichenfolge | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Dieser Wert ist innerhalb eines Mandanten nicht zwingend eindeutig. Er sollte daher nur zu Anzeigezwecken verwendet werden. Wird nur in v1.0-`id_tokens` ausgegeben. |
-|`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure verwendet wird, um Token erneut zu überprüfen. Sollte ignoriert werden. |
+|`unique_name` | String | Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Dieser Wert ist immer eindeutig. Da aber E-Mails und andere Bezeichner wiederverwendet werden können, kann dieser Wert in anderen Konten erneut auftreten und sollte daher nur zu Anzeigezwecken verwendet werden. Wird nur in v1.0-`id_tokens` ausgegeben. |
+|`uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Sollte ignoriert werden. |
 |`ver` | Zeichenfolge, 1.0 oder 2.0 | Gibt die Version des ID-Tokens an. |
+
+
+> [!NOTE]
+> Die ID-Token der Version 1 (v1) und der Version 2 (v2) weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version gibt im Wesentlichen den Endpunkt der Azure AD-Plattform an, von dem sie ausgestellt wurde. Die [Azure AD OAuth-Implementierung](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) wurde im Lauf der Jahre weiterentwickelt. Aktuell gibt es zwei verschiedene OAuth-Endpunkte für Azure AD-Anwendungen. Sie können entweder einen beliebigen neuen Endpunkt (als v2 kategorisiert) oder den alten Endpunkt (als v1 bezeichnet) verwenden. Die OAuth-Endpunkte der beiden Versionen unterscheiden sich. Der v2-Endpunkt ist der neuere Endpunkt, zu dem wir alle Features des v1-Endpunkts migrieren wollen. Daher empfehlen wir neuen Entwicklern, den v2-Endpunkt zu verwenden. 
+> - Version 1: Azure Active Directory-Endpunkte: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - Version 2: Microsoft Identity Platform-Endpunkte: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Überprüfen eines ID-Tokens
 

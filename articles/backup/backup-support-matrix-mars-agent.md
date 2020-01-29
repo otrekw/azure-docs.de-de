@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893976"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281273"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -104,6 +104,8 @@ Weitere Informationen finden Sie unter [Unterstützte MABS- und DPM-Betriebssyst
 
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 
+### <a name="size-limits"></a>Größenbeschränkungen
+
 Bei Azure Backup ist die Größe einer Datei- oder Ordnerdatenquelle, die gesichert werden kann, begrenzt. Die Elemente, die von einem einzelnen Volume gesichert werden, dürfen die in der folgenden Tabelle angegebenen Größen nicht überschreiten:
 
 **Betriebssystem** | **Größenlimit**
@@ -114,20 +116,24 @@ Windows Server 2008 SP2| 1\.700 GB
 Windows 8 oder höher| 54.400 GB
 Windows 7| 1\.700 GB
 
+### <a name="other-limitations"></a>Weitere Einschränkungen
+
+- MARS unterstützt nicht den Schutz mehrerer Computer mit demselben Namen in einem einzelnen Tresor.
+
 ## <a name="supported-file-types-for-backup"></a>Unterstützte Dateitypen für die Sicherung
 
 **Typ** | **Unterstützung**
 --- | ---
 Verschlüsselt| Unterstützt.
-Komprimiert | Unterstützt.
+Compressed | Unterstützt.
 Platzsparend | Unterstützt.
 Komprimiert und geringe Dichte |Unterstützt.
-Feste Links| Nicht unterstützt. Übersprungen.
-Analysepunkt| Nicht unterstützt. Übersprungen.
-Verschlüsselt und geringe Dichte |Nicht unterstützt. Übersprungen.
-Komprimierter Stream| Nicht unterstützt. Übersprungen.
-Platzsparender Stream| Nicht unterstützt. Übersprungen.
-OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Nicht unterstützt.
+Feste Links| Wird nicht unterstützt. Übersprungen.
+Analysepunkt| Wird nicht unterstützt. Übersprungen.
+Verschlüsselt und geringe Dichte |Wird nicht unterstützt. Übersprungen.
+Komprimierter Stream| Wird nicht unterstützt. Übersprungen.
+Platzsparender Stream| Wird nicht unterstützt. Übersprungen.
+OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Wird nicht unterstützt.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 

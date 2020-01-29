@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f61d4beac5b5285b80fb05521cffc961f7f702c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72f21babd4d12e69cd346d8693e5ed4fe9117134
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356505"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513948"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung physischer Server in Azure
 
@@ -29,7 +29,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 **Konfigurationsserver** | Ein einzelner lokaler physischer Computer oder eine einzelne lokale VMware-VM wird bereitgestellt, um alle lokalen Komponenten von Site Recovery auszuführen. Die VM führt den Konfigurationsserver, Prozessserver und Masterzielserver aus. | Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
  **Prozessserver**  | Wird standardmäßig zusammen mit dem Konfigurationsserver installiert. | Fungiert als Replikationsgateway. Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage.<br/><br/> Der Prozessserver installiert auch den Mobility Service auf Servern, die Sie replizieren möchten.<br/><br/> Bei zunehmender Größe der Bereitstellung können Sie zusätzlich separate Prozessserver hinzufügen, um größere Mengen von Replikationsdatenverkehr zu bewältigen.
  **Masterzielserver** | Wird standardmäßig zusammen mit dem Konfigurationsserver installiert. | Verarbeitet die Replikationsdaten während des Failbacks von Azure.<br/><br/> Bei größeren Bereitstellungen können Sie einen zusätzlichen, separaten Masterzielserver für das Failback hinzufügen.
-**Replizierte Server** | Der Mobility Service wird auf jedem Server installiert, den Sie replizieren. | Es wird empfohlen, dass Sie die automatische Installation vom Prozessserver zulassen. Alternativ können Sie den Dienst manuell installieren oder eine automatisierte Bereitstellungsmethode wie System Center Configuration Manager verwenden.
+**Replizierte Server** | Der Mobility Service wird auf jedem Server installiert, den Sie replizieren. | Es wird empfohlen, dass Sie die automatische Installation vom Prozessserver zulassen. Alternativ können Sie den Dienst manuell installieren oder eine automatisierte Bereitstellungsmethode wie Configuration Manager verwenden.
 
 **Physisch-zu-Azure-Architektur**
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561149"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293452"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -49,6 +49,9 @@ Während der Vorschauphase dieser Funktion werden derzeit die folgenden Windows-
 - Windows Server 2019 Datacenter
 - Windows 10 1809 und höher
 
+> [!IMPORTANT]
+> Eine Remoteverbindung mit in Azure AD eingebundenen virtuellen Computern ist nur auf Windows 10-PCs zulässig, die über Azure AD oder im **selben** Verzeichnis wie der virtuelle Computer regulär oder hybrid eingebunden sind. 
+
 Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
 
 - Alle globalen Azure-Regionen
@@ -60,10 +63,10 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Re
 
 Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Windows-Computer in Azure müssen Sie sicherstellen, dass die Netzwerkkonfiguration der virtuellen Computer den ausgehenden Zugriff auf die folgenden Endpunkte über TCP-Port 443 zulässt:
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://pas.windows.net
+- https:\//enterpriseregistration.windows.net
+- https:\//login.microsoftonline.com
+- https:\//device.login.microsoftonline.com
+- https:\//pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Aktivieren der Azure AD-Anmeldung für einen virtuellen Windows-Computer in Azure
 
@@ -236,24 +239,24 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
 
    | Auszuführender Befehl | Erwartete Ausgabe |
    | --- | --- |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/instance?api-version=2017-08-01 “ | Richtige Informationen zum virtuellen Azure-Computer |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 “ | Gültige dem Azure-Abonnement zugeordnete Mandanten-ID |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 “ | Gültiges Zugriffstoken, das von Azure Active Directory für die verwaltete Identität, die dem virtuellen Computer zugewiesen ist, ausgestellt wird |
+   | curl -H Metadata:true „http://169.254.169.254/metadata/instance?api-version=2017-08-01“ | Richtige Informationen zum virtuellen Azure-Computer |
+   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/info?api-version=2018-02-01“ | Gültige dem Azure-Abonnement zugeordnete Mandanten-ID |
+   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01“ | Gültiges Zugriffstoken, das von Azure Active Directory für die verwaltete Identität, die dem virtuellen Computer zugewiesen ist, ausgestellt wird |
 
    > [!NOTE]
    > Das Zugriffstoken kann mithilfe eines Tools wie [http://calebb.net/](http://calebb.net/) decodiert werden. Vergewissern Sie sich, dass die „appid“ im Zugriffstoken mit der verwalteten Identität übereinstimmt, die dem virtuellen Computer zugewiesen ist.
 
 1. Überprüfen Sie mithilfe der Befehlszeile, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
    
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - curl https:\//login.microsoftonline.com/ -D –
+   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
 
    > [!NOTE]
    > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - curl https:\//enterpriseregistration.windows.net/ -D -
+   - curl https:\//device.login.microsoftonline.com/ -D -
+   - curl https:\//pas.windows.net/ -D -
 
 1. Der Gerätestatus kann durch Ausführen von `dsregcmd /status` angezeigt werden. Ziel ist, dass der Gerätestatus `AzureAdJoined : YES` angezeigt wird.
 
@@ -280,15 +283,15 @@ Dieser Exitcode ergibt DSREG_AUTOJOIN_DISC_FAILED, da die Erweiterung den Endpun
 
 1. Überprüfen Sie über die Befehlszeile, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
 
-   - curl https://login.microsoftonline.com/ -D –
-   - curl https://login.microsoftonline.com/`<TenantID>` / -D –
+   - curl https:\//login.microsoftonline.com/ -D –
+   - curl https:\//login.microsoftonline.com/`<TenantID>`/ -D –
    
    > [!NOTE]
    > Ersetzen Sie `<TenantID>` durch die ID des Azure AD-Mandanten, die dem Azure-Abonnement zugeordnet ist. Wenn Sie die Mandanten-ID suchen möchten, können Sie auf den Namen Ihres Kontos zeigen, um die Verzeichnis-ID oder Mandanten-ID abzurufen, oder im Azure-Portal die Optionen „Azure Active Directory“ > „Eigenschaften“ > „Verzeichnis-ID“ auswählen.
 
-   - curl https://enterpriseregistration.windows.net/ -D -
-   - curl https://device.login.microsoftonline.com/ -D -
-   - curl https://pas.windows.net/ -D -
+   - curl https:\//enterpriseregistration.windows.net/ -D -
+   - curl https:\//device.login.microsoftonline.com/ -D -
+   - curl https:\//pas.windows.net/ -D -
 
 1. Wenn bei einem der Befehle der Fehler „Der Hostname `<URL>` konnte nicht aufgelöst werden“ auftritt, führen Sie den folgenden Befehl aus, um den DNS-Server zu ermitteln, der von dem virtuellen Computer verwendet wird.
    

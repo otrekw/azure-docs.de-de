@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 1c721685e12c417116888ccc3cf8d25123761933
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fa8bc56376704b96f5ddee09db7b09e28f10a936
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978624"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281239"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL (Vorschauversion) über das Portal
 
@@ -165,7 +165,7 @@ In diesem Abschnitt erstellen Sie einen MySQL-Server und fügen diesem einen pri
     | Subnet | Wählen Sie *mySubnet* aus. |
     |**PRIVATE DNS-INTEGRATION**||
     |Integration in eine private DNS-Zone |Wählen Sie **Ja** aus. |
-    |Private DNS-Zone |Wählen Sie *(New)privatelink.database.azure.com* aus. |
+    |Private DNS-Zone |Auswählen von *(New)privatelink.mysql.database.azure.com* |
     |||
 
 1. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Seite **Überprüfen und erstellen** weitergeleitet, auf der Azure Ihre Konfiguration überprüft. 
@@ -203,14 +203,14 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 
-2. Geben Sie `nslookup  myServer.mysql.privatelink.database.azure.com` ein. 
+2. Geben Sie `nslookup  myServer.privatelink.mysql.database.azure.com` ein. 
 
     Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
     Non-authoritative answer:
-    Name:    myServer.mysql.privatelink.database.azure.com
+    Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
 
 3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
@@ -220,7 +220,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     | Setting | Value |
     | ------- | ----- |
     | Server type| Select **MySQL**.|
-    | Server name| Select *myServer.mysql.privatelink.database.azure.com* |
+    | Server name| Select *myServer.privatelink.mysql.database.azure.com* |
     | User name | Enter username as username@servername which is provided during the MySQL server creation. |
     |Password |Enter a password provided during the MySQL server creation. |
     |SSL|Select **Required**.|

@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552548"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279195"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
 
@@ -184,6 +184,7 @@ Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azu
 
 - Erfahren Sie mehr über [Advanced Data Security](sql-database-advanced-data-security.md).
 - Sie sollten in Betracht ziehen, die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten sensiblen Daten zu konfigurieren.
+- Eine YouTube-Präsentation, die die Datenermittlung und -klassifizierung umfasst, finden Sie unter [Discovering, classifying, labeling & protecting SQL data | Data Exposed](https://www.youtube.com/watch?v=itVi9bkJUNc) (Ermitteln, Klassifizieren, Bezeichnen und Schützen von SQL-Daten | Data Exposed).
 
 <!--Anchors-->
 [What is data discovery & classification]: #subheading-1

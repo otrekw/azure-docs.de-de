@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746049"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512418"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -129,7 +129,7 @@ Werten Sie bei Verwendung von Gruppenrichtlinien die MDM-Richtlinienparität mit
 
 Wenn Ihre MDM-Lösung nicht über den Azure AD-App-Katalog verfügbar ist, können Sie die Lösung gemäß der unter [Azure Active Directory-Integration von MDM](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) beschriebenen Vorgehensweise hinzufügen. 
 
-Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen finden Sie unter [Co-Verwaltung für Windows 10-Geräte](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
+Durch die Co-Verwaltung können Sie SCCM verwenden, um bestimmte Aspekte Ihrer Geräte zu verwalten, während die Richtlinien über Ihre MDM-Plattform bereitgestellt werden. Microsoft Intune ermöglicht die Co-Verwaltung mit SCCM. Weitere Informationen zur Co-Verwaltung für Windows 10-Geräte finden Sie unter [Was ist Co-Verwaltung?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Wenn Sie ein anderes MDM-Produkt als Intune verwenden, wenden Sie sich an Ihren MDM-Anbieter, um Informationen zu entsprechenden Szenarien für die Co-Verwaltung zu erhalten.
 
 **Empfehlung:** Ziehen Sie für in Azure AD eingebundene Geräte nur die mobile Geräteverwaltung (MDM) in Betracht.
 

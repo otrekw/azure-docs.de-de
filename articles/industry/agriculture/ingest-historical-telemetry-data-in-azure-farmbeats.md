@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 76d355413bc0dceb91f7cfa1a3988f48e2701d5e
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667499"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513931"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -20,7 +20,7 @@ Das Erfassen historischer Daten von IoT-Ressourcen (Internet der Dinge) wie Ger�
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für diesen Artikel muss FarmBeats installiert sein, und Sie müssen bereits historische Daten aus dem IoT gesammelt haben.
+Für diesen Artikel muss FarmBeats installiert sein, und Sie müssen bereits historische Daten von Ihren IoT-Geräten gesammelt haben.
 Sie müssen auch den Partnerzugriff aktivieren, wie in den folgenden Schritten erwähnt wird.
 
 ## <a name="enable-partner-access"></a>Aktivieren von Partnerzugriff
@@ -38,31 +38,36 @@ Führen Sie folgende Schritte durch:
 >[!NOTE]
 > Die folgenden Schritte müssen von einem Administrator ausgeführt werden.
 
-1. Laden Sie dieses [Skript](https://aka.ms/farmbeatspartnerscript) herunter, und extrahieren Sie es auf Ihrem lokalen Laufwerk. In der ZIP-Datei befinden sich zwei Dateien.
-2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und öffnen Sie Azure Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Portals verfügbar.
+1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscriptv2) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. Es wird eine Datei in der ZIP-Datei enthalten sein.
+2. Melden Sie sich bei https://portal.azure.com/ an, und wechseln Sie zu Azure Active Directory -> App-Registrierungen
 
-    ![Symbolleiste im Azure-Portal](./media/for-tutorials/navigation-bar-1.png)
+3. Klicken Sie auf die App-Registrierung, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
 
-3. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist.
+4. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
 
-    ![Einstellung „PowerShell“](./media/for-tutorials/power-shell-new-1.png)
+5. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
 
-4. Laden Sie die beiden Dateien, die Sie in Schritt 1 heruntergeladen haben, in Ihre Cloud Shell-Instanz hoch.
+    ![Symbolleiste im Azure-Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Schaltfläche „Upload“ auf der Symbolleiste](./media/for-tutorials/power-shell-two-1.png)
+6. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
 
-5. Navigieren Sie zum Uploadverzeichnis der Dateien.
+    ![Einstellung „PowerShell“ auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Die Datei wird standardmäßig in das Basisverzeichnis „/home/benutzername“ hochgeladen.
-6. Führen Sie das Skript mithilfe dieses Befehls aus:
+7. Laden Sie die Datei aus dem ersten Schritt in Ihre Cloud Shell-Instanz hoch.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Uploadschaltfläche auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Wechseln Sie in das Verzeichnis, in das die Datei hochgeladen wurde. Die Datei wird standardmäßig in das Basisverzeichnis unter dem Benutzernamen hochgeladen.
+
+9. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite „Azure Active Directory -> Übersicht“ erhalten können.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen. Die EventHub-Verbindungszeichenfolge ist in der API-Antwort in Swagger enthalten.
-
+10. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 ## <a name="create-device-or-sensor-metadata"></a>Erstellen von Geräte- oder Sensormetadaten
 
  Nachdem Sie nun über die erforderlichen Anmeldeinformationen verfügen, können Sie das Gerät und die Sensoren definieren. Dazu erstellen Sie die Metadaten durch Aufrufen von FarmBeats-APIs. Beachten Sie, dass Sie die APIs als die Client-App, die Sie im obigen Abschnitt erstellt haben, aufrufen müssen.
@@ -82,7 +87,7 @@ Führen Sie folgende Schritte durch:
 |  ProductCode                    |  Produktcode oder Modellname oder -nummer des Geräts. Beispiel: EnviroMonitor#6800.  |
 |            Ports          |     Portname und -typ (digital oder analog).
 |     Name                 |  Name zum Identifizieren der Ressource. Beispiel: Modell- oder Produktname.
-      BESCHREIBUNG     | Aussagekräftige Beschreibung des Modells
+      Beschreibung     | Aussagekräftige Beschreibung des Modells
 |    Eigenschaften          |    Zusätzliche Eigenschaften des Herstellers   |
 |    **Device**             |                      |
 |   DeviceModelId     |     ID des zugeordneten Gerätemodells  |
@@ -91,7 +96,7 @@ Führen Sie folgende Schritte durch:
 |  Location            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts   
 |ParentDeviceId       |    ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf.  |
 |    Name            | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden.|
-|     BESCHREIBUNG       |      Eine aussagekräftige Beschreibung |
+|     Beschreibung       |      Eine aussagekräftige Beschreibung |
 |     Eigenschaften    |  Zusätzliche Eigenschaften des Herstellers
 |     **SensorModel**        |          |
 |       Type (analog, digital)          |      Art des Sensors (analog oder digital)       |
@@ -103,7 +108,7 @@ Führen Sie folgende Schritte durch:
 |        SensorMeasures > Unit              | Die Einheit der Sensortelemetriedaten. Die systemdefinierten Typen sind NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, MilliMeter, CentiMeter, Meter, Inch, Feet, Mile, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Seconds, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour. Informationen zum Hinzufügen weiterer Einheiten finden Sie unter der API „/ExtendedType“.|
 |    SensorMeasures > AggregationType    |  Mögliche Werte: „none“, „average“, „maximum“, „minimum“ oder „StandardDeviation“  |
 |          Name            | Name zum Identifizieren einer Ressource. Beispiel: Modell- oder Produktname.  |
-|    BESCHREIBUNG        | Aussagekräftige Beschreibung des Modells  |
+|    Beschreibung        | Aussagekräftige Beschreibung des Modells  |
 |   Eigenschaften       |  Zusätzliche Eigenschaften des Herstellers  |
 |    **Sensor**      |          |
 | HardwareId          |   Eindeutige, vom Hersteller festgelegte ID für den Sensor |
@@ -112,7 +117,7 @@ Führen Sie folgende Schritte durch:
 |   Port > Name        |  Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist. |
 |    DeviceID  |    ID des Geräts, mit dem der Sensor verbunden ist     |
 | Name            |   Der Name zur Identifizierung der Ressource. Beispiel: Sensorname oder Produktname und Modellnummer oder Produktcode|
-|    BESCHREIBUNG      | Eine aussagekräftige Beschreibung |
+|    Beschreibung      | Eine aussagekräftige Beschreibung |
 |    Eigenschaften        |Zusätzliche Eigenschaften des Herstellers |
 
 Weitere Informationen zu Objekten finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
@@ -121,7 +126,7 @@ Weitere Informationen zu Objekten finden Sie unter [Swagger](https://aka.ms/Farm
 
 Für eine API-Anforderung kombinieren Sie die HTTP-Methode (POST), die URL des API-Diensts und den URI einer Ressource zum Abfragen, Übermitteln, Erstellen oder Löschen einer Anforderung. Dann fügen Sie mindestens einen HTTP-Anforderungsheader hinzu. Die URL des API-Diensts ist der API-Endpunkt, d. h. die Datenhub-URL (https://\<ihrdatenhub>.azurewebsites.net).  
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Der FarmBeats-Datenhub verwendet die Bearerauthentifizierung. Für diese sind folgende Anmeldeinformationen erforderlich, die Sie im vorherigen Abschnitt generiert haben:
 
@@ -326,11 +331,11 @@ Konvertieren Sie das Format der historischen Sensordaten in ein kanonisches, fü
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

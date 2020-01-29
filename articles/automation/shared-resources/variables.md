@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849427"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167990"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -28,7 +28,7 @@ Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurationen in Ihrem
 
 Da Automation-Variablen persistent gespeichert werden, bleiben sie auch dann verfügbar, wenn die Ausführung eines Runbooks oder einer DSC-Konfiguration misslingt. Durch dieses Verhalten kann ein Wert von einem Runbook festgelegt und anschließend bei der nächsten Ausführung von einem anderen oder gleichen Runbook bzw. von einer anderen oder der gleichen DSC-Konfiguration verwendet werden.
 
-Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden. Wenn Sie eine verschlüsselte Variable in „nicht verschlüsselt“ ändern möchten, müssen Sie sie löschen und unverschlüsselt neu erstellen.
+Beim Erstellen einer Variablen können Sie festlegen, dass diese verschlüsselt gespeichert wird. Verschlüsselte Variablen werden sicher in Azure Automation gespeichert. Ihr Wert kann vom Cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable), das zum Funktionsumfang des Azure PowerShell-Moduls gehört, nicht abgerufen werden. Ein verschlüsselter Wert kann ausschließlich über die Aktivität **Get-AutomationVariable** in einem Runbook oder einer DSC-Konfiguration abgerufen werden. Wenn Sie eine verschlüsselte Variable in eine unverschlüsselte ändern möchten, müssen Sie sie löschen und unverschlüsselt neu erstellen.
 
 >[!NOTE]
 >Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.
@@ -41,7 +41,7 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 
 Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen:
 
-* Zeichenfolge
+* String
 * Integer
 * Datetime
 * Boolean
@@ -51,7 +51,7 @@ Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen
 
 Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-| Cmdlets | BESCHREIBUNG |
+| Cmdlets | Beschreibung |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Ruft den Wert einer vorhandenen Variable ab.|
 |[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Erstellt eine neue Variable und legt ihren Wert fest.|
@@ -62,7 +62,7 @@ Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwa
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Variablen in einem Runbook oder DSC-Konfigurationen verwendet. Der Unterschied zwischen den Cmdlets „Get-AzureRmAutomationVariable“ und „Get-AutomationVariable“ ist oben am Anfang dieses Dokuments erläutert.
 
-| activities | BESCHREIBUNG |
+| activities | Beschreibung |
 |:---|:---|
 |Get-AutomationVariable|Ruft den Wert einer vorhandenen Variable ab.|
 |Set-AutomationVariable|Legt den Wert für eine vorhandene Variable fest.|
@@ -72,7 +72,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Variablen 
 
 Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf und Abrufen von Variablen in einem Python2-Runbook verwendet.
 
-|Python2-Funktionen|BESCHREIBUNG|
+|Python2-Funktionen|Beschreibung|
 |:---|:---|
 |automationassets.get_automation_variable|Ruft den Wert einer vorhandenen Variable ab. |
 |automationassets.set_automation_variable|Legt den Wert für eine vorhandene Variable fest. |
@@ -161,7 +161,7 @@ except AutomationAssetNotFound:
     print "variable not found"
 ```
 
-### <a name="graphical-runbook-samples"></a>Beispiel für grafische Runbooks
+### <a name="graphical-runbook-samples"></a>Beispiel für ein grafisches Runbook
 
 In einem grafischen Runbook fügen Sie **Get-AutomationVariable** oder **Set-AutomationVariable** hinzu, indem Sie im Bereich „Bibliothek“ des grafischen Editors mit der rechten Maustaste auf die Variable klicken und die gewünschte Aktivität auswählen.
 
@@ -176,4 +176,4 @@ Die folgende Abbildung zeigt Beispielaktivitäten zum Aktualisieren einer Variab
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur Verknüpfung von Aktivitäten bei der grafischen Inhaltserstellung finden Sie unter [Links bei der grafischen Erstellung](../automation-graphical-authoring-intro.md#links-and-workflow)
-- Informationen über die ersten Schritte mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](../automation-first-runbook-graphical.md)
+- Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](../automation-first-runbook-graphical.md)

@@ -17,20 +17,20 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabc96ef669f0c0c61a7bca4a16828294cf404df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 878f942bf36fef999b90274b81eaa7735afa73e5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423854"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293350"
 ---
-# <a name="desktop-app-that-calls-web-apis---app-registration"></a>Desktop-App, die Web-APIs aufruft – App-Registrierung
+# <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
 In diesem Artikel sind die Besonderheiten zur App-Registrierung bei einer Desktopanwendung aufgeführt.
 
-## <a name="supported-accounts-types"></a>Unterstützte Kontotypen
+## <a name="supported-account-types"></a>Unterstützte Kontotypen
 
-Die in der Desktopanwendung unterstützten Kontotypen sind von der gewünschten Funktion abhängig. Aufgrund dieser Beziehung sind die unterstützten Kontotypen von den Flows abhängig, die Sie verwenden möchten.
+Die in einer Desktopanwendung unterstützten Kontotypen sind von der gewünschten Funktion abhängig. Aufgrund dieser Beziehung sind die unterstützten Kontotypen von den Flows abhängig, die Sie verwenden möchten.
 
 ### <a name="audience-for-interactive-token-acquisition"></a>Zielgruppe für den interaktiven Tokenabruf
 
@@ -38,30 +38,30 @@ Wenn Ihre Desktopanwendung die interaktive Authentifizierung verwendet, können 
 
 ### <a name="audience-for-desktop-app-silent-flows"></a>Zielgruppe für automatische Desktop-App-Flüsse
 
-- Um die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwenden zu können, müssen Benutzer von Ihrer Anwendung bei Ihrem Mandanten (LOB-Entwickler) oder bei Azure Active Directory-Organisationen (ISV-Szenario) angemeldet werden. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
-- Wenn Sie den Gerätecodeflow verwenden möchten, können Sie Benutzer noch nicht mit ihren persönlichen Microsoft-Konten anmelden.
-- Wenn Sie Benutzer mit Identitäten sozialer Netzwerke anmelden, indem Sie eine B2C-Autorität und -Richtlinie übergeben, können Sie ausschließlich die interaktive Authentifizierung oder die Authentifizierung über Benutzername und Kennwort verwenden.
+- Um die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwenden zu können, muss Ihre Anwendung Benutzer bei Ihrem Mandanten anmelden, beispielsweise wenn Sie LOB-Entwickler (Line of Business) sind. In Azure Active Directory-Organisationen muss Ihre Anwendung Benutzer bei Ihrem Mandanten anmelden, wenn es sich um ein ISV-Szenario handelt. Diese Authentifizierungsflows werden für persönliche Microsoft-Konten nicht unterstützt.
+- Wenn Sie den Gerätecodeflow verwenden möchten, können Sie noch keine Benutzer mit ihren persönlichen Microsoft-Konten anmelden.
+- Wenn Sie Benutzer mit Identitäten sozialer Netzwerke anmelden, die eine B2C-Autorität und -Richtlinie übergeben, können Sie ausschließlich die interaktive Authentifizierung oder die Authentifizierung über Benutzername und Kennwort verwenden.
 
 ## <a name="redirect-uris"></a>Umleitungs-URIs
 
-Die in Desktopanwendungen zu verwendenden Umleitungs-URIs hängen von dem Flow ab, den Sie verwenden möchten.
+Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Flow ab, den Sie verwenden möchten.
 
-- Wenn Sie die **interaktive Authentifizierung** oder **Gerätecodeflow** verwenden, sollten Sie `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden. Diese Konfiguration erreichen Sie, indem Sie im Abschnitt **Authentifizierung** für Ihre Anwendung auf die entsprechende URL klicken.
+- Bei Verwendung der interaktiven Authentifizierung oder des Gerätecodeflows verwenden Sie `https://login.microsoftonline.com/common/oauth2/nativeclient`. Um diese Konfiguration zu erzielen, wählen Sie im Abschnitt **Authentifizierung** für Ihre Anwendung die entsprechende URL aus.
   
   > [!IMPORTANT]
-  > Aktuell verwendet MSAL.NET standardmäßig einen anderen Umleitungs-URI in Desktopanwendungen, die unter Windows ausgeführt werden (`urn:ietf:wg:oauth:2.0:oob`). In Zukunft möchten wir diese Standardeinstellung ändern, weshalb wir Ihnen die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient` empfehlen.
+  > Aktuell verwendet MSAL.NET standardmäßig in Desktopanwendungen, die unter Windows ausgeführt werden (`urn:ietf:wg:oauth:2.0:oob`), einen anderen Umleitungs-URI. In Zukunft möchten wir diese Standardeinstellung ändern. Daher empfehlen wir Ihnen die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient`.
 
-- Wenn Sie eine native Objective-C- oder Swift-App für macOS erstellen, sollten Sie den redirectUri basierend auf dem Bundlebezeichner Ihrer Anwendung im folgenden Format registrieren: **msauth.<ihre.app.bundle.id>://auth** (ersetzen Sie <ihre.app.bundle.id> durch den Bundlebezeichner Ihrer Anwendung).
-- Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Endpunkt von Microsoft Identity Platform v2.0 aus, und Ihre Anwendung wird nicht über einen bestimmten URI aufgerufen.
-- Damit Gerätecodeflow, integrierte Windows-Authentifizierung und Benutzername/Kennwort von einem vertraulichen Clientanwendungsflow unterschieden werden können, der ebenfalls über keine Umleitungs-URIs verfügt (der bei Daemon-Anwendungen verwendete Client-Anmeldeinformationsflow), müssen Sie ausdrücken, dass es sich bei Ihrer Anwendung um eine öffentliche Clientanwendung handelt. Um diese Konfiguration zu erreichen, wechseln Sie zum Abschnitt **Authentifizierung** für Ihre Anwendung. Wählen Sie dann im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** neben **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** die Option **Ja** aus.
+- Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: msauth.<ihre.app.paket.id>://auth. Ersetzen Sie <ihre.app.paket.id> durch die Paket-ID Ihrer Anwendung.
+- Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
+- Damit Gerätecodeflow, integrierte Windows-Authentifizierung sowie Benutzername und Kennwort von einem vertraulichen Clientanwendungsflow unterschieden werden können, der ebenfalls über keine Umleitungs-URIs verfügt (der bei Daemon-Anwendungen verwendete Client-Anmeldeinformationsflow), müssen Sie ausdrücken, dass es sich bei Ihrer Anwendung um eine öffentliche Clientanwendung handelt. Um diese Konfiguration zu erreichen, wechseln Sie zum Abschnitt **Authentifizierung** für Ihre Anwendung. Wählen Sie im Unterabschnitt **Erweiterte Einstellungen** im Abschnitt **Standardclienttyp** bei **Hiermit wird eine Anwendung als öffentlicher Client eingestuft** die Option **Ja** aus.
 
   ![Zulassen eines öffentlichen Clients](media/scenarios/default-client-type.png)
 
 ## <a name="api-permissions"></a>API-Berechtigungen
 
-Desktopanwendungen rufen APIs für den angemeldeten Benutzer auf. Sie müssen delegierte Berechtigungen anfordern. Sie können jedoch keine Anwendungsberechtigungen anfordern. Diese werden nur in [Daemon-Anwendungen](scenario-daemon-overview.md) verarbeitet.
+Desktopanwendungen rufen APIs für den angemeldeten Benutzer auf. Sie müssen delegierte Berechtigungen anfordern. Sie können keine Anwendungsberechtigungen anfordern, die nur in [Daemon-Anwendungen](scenario-daemon-overview.md) verarbeitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Desktop-App – App-Konfiguration](scenario-desktop-app-configuration.md)
+> [Desktop-App: App-Konfiguration](scenario-desktop-app-configuration.md)

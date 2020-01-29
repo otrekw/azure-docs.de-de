@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763163"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314724"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -168,9 +168,26 @@ Beachten Sie in allen diesen Fällen die Informationen unter [Unterstützte Date
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
 
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Error: Die integrierte Änderungsnachverfolgungs-Richtlinie kann nicht verwendet werden, da die Tabelle einen zusammengesetzten Primärschlüssel aufweist.
+
+Dies betrifft SQL-Tabellen und geschieht in der Regel, wenn der Schlüssel als zusammengesetzter Schlüssel definiert ist oder wenn in der Tabelle ein eindeutiger gruppierter Index definiert ist (d. h. wie in einem SQL-Index, nicht in einem Azure Search-Index). Der Hauptgrund ist, dass das Schlüsselattribut bei einem [eindeutigen gruppierten Index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15) geändert wird, sodass es sich um einen zusammengesetzten Primärschlüssel handelt. Stellen Sie in diesem Fall sicher, dass die SQL-Tabelle keinen eindeutigen gruppierten Index aufweist oder dass Sie das Schlüsselfeld einem Feld zuordnen, das garantiert keine doppelten Werte aufweist.
+
+
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Error: Das Dokument konnte nicht innerhalb der maximalen Laufzeit des Indexers verarbeitet werden.
 
 Dieser Fehler tritt auf, wenn der Indexer die Verarbeitung eines einzelnen Dokuments aus der Datenquelle nicht innerhalb der zulässigen Ausführungszeit beenden kann. Die [maximale Ausführungszeit](search-limits-quotas-capacity.md#indexer-limits) ist kürzer, wenn Skillsets verwendet werden. Wenn dieser Fehler auftritt und maxFailedItems auf einen anderen Wert als 0 festgelegt ist, umgeht der Indexer das Dokument bei zukünftigen Ausführungen, sodass die Indizierung fortgesetzt werden kann. Wenn kein Dokument übersprungen werden darf oder wenn dieser Fehler dauerhaft auftritt, sollten Sie die Dokumente in kleinere Dokumente aufteilen, damit ein Teilfortschritt innerhalb einer einzelnen Indexerausführung erfolgen kann.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Error: Das Dokument konnte nicht projiziert werden.
+
+Dieser Fehler tritt auf, wenn der Indexer versucht hat, [Daten in einen Wissensspeicher zu projizieren](knowledge-store-projection-overview.md) und bei diesem Versuch ein Fehler aufgetreten ist.  Dieser Fehler kann konsistent und behebbar oder ein vorübergehender Fehler der Projektionsausgabesenke sein. Um diesen zu beheben, müssen Sie möglicherweise warten und den Vorgang wiederholen.  Im Folgenden finden Sie eine Reihe bekannter Fehlerzustände und möglicher Lösungen.
+
+| `Reason` | Details/Beispiel | Lösung |
+| --- | --- | --- |
+| Das Projektionsblob `'blobUri'` im Container `'containerName'` konnte nicht aktualisiert werden. |Der angegebene Container ist nicht vorhanden. | Der Indexer überprüft, ob der angegebene Container bereits erstellt wurde, und erstellt ihn bei Bedarf. Diese Überprüfung erfolgt jedoch nur einmal pro Indexer-Ausführung. Dieser Fehler bedeutet, dass der Container nach diesem Schritt gelöscht wurde.  Um diesen Fehler zu beheben, versuchen Sie Folgendes: Nehmen Sie keine Änderungen an Ihren Speicherkontoinformationen vor, warten Sie, bis der Indexer beendet wurde, und führen Sie den Indexer dann erneut aus. |
+| Das Projektionsblob `'blobUri'` im Container `'containerName'` konnte nicht aktualisiert werden. |In die Übertragungsverbindung können keine Daten geschrieben werden: An existing connection was forcibly closed by the remote host. | Dies ist voraussichtlich ein vorübergehender Fehler bei Azure Storage, der daher durch erneutes Ausführen des Indexers behoben werden sollte. Wenn dieser Fehler konsistent auftritt, übermitteln Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), damit er weiter untersucht werden kann.  |
+| Zeile `'projectionRow'` in Tabelle `'tableName'` konnte nicht aktualisiert werden. | Der Server ist ausgelastet. | Dies ist voraussichtlich ein vorübergehender Fehler bei Azure Storage, der daher durch erneutes Ausführen des Indexers behoben werden sollte. Wenn dieser Fehler konsistent auftritt, übermitteln Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support), damit er weiter untersucht werden kann.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

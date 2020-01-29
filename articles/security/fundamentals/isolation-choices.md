@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979274"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121946"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
@@ -179,7 +179,7 @@ Die Kommunikation ist vom FC-VLAN zum Haupt-VLAN zulässig, kann aber nicht vom 
 ### <a name="logical-isolation-between-compute-and-storage"></a>Logische Isolation zwischen Compute- und Speicherbereich
 Im Rahmen des grundlegenden Designs von Microsoft Azure werden die VM-basierten Computevorgänge von den Speichervorgängen getrennt. Diese Trennung ermöglicht eine unabhängige Skalierung der Computevorgänge und Speichervorgänge, sodass die Umsetzung der Mehrinstanzenfähigkeit und Isolation vereinfacht wird.
 
-Aus diesem Grund wird Azure Storage auf separater Hardware ohne Netzwerkverbindung mit Azure Compute (außer auf logischer Ebene) ausgeführt. [Dies bedeutet](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf), dass Datenträger-Speicherplatz bei der Erstellung eines virtuellen Datenträgers nicht für die gesamte Kapazität zugeordnet wird. Stattdessen wird eine Tabelle erstellt, in der Adressen des virtuellen Datenträgers Bereichen auf dem physischen Datenträger zugeordnet werden. Diese Tabelle ist anfänglich leer. **Wenn ein Kunde zum ersten Mal Daten auf den virtuellen Datenträger schreibt, wird Speicherplatz auf dem physischen Datenträger zugeordnet, und in die Tabelle wird ein Verweis darauf eingefügt.**
+Aus diesem Grund wird Azure Storage auf separater Hardware ohne Netzwerkverbindung mit Azure Compute (außer auf logischer Ebene) ausgeführt. Dies bedeutet, dass Speicherplatz bei der Erstellung eines virtuellen Datenträgers nicht für die gesamte Kapazität zugeordnet wird. Stattdessen wird eine Tabelle erstellt, in der Adressen des virtuellen Datenträgers Bereichen auf dem physischen Datenträger zugeordnet werden. Diese Tabelle ist anfänglich leer. **Wenn ein Kunde zum ersten Mal Daten auf den virtuellen Datenträger schreibt, wird Speicherplatz auf dem physischen Datenträger zugeordnet, und in die Tabelle wird ein Verweis darauf eingefügt.**
 ### <a name="isolation-using-storage-access-control"></a>Isolation mithilfe der Storage-Zugriffssteuerung
 Für die **Zugriffssteuerung in Azure Storage** gilt ein einfaches Zugriffssteuerungsmodell. Für jedes Azure-Abonnement kann mindestens ein Speicherkonto erstellt werden. Jedes Speicherkonto verfügt über einen geheimen Schlüssel, der zum Steuern des Zugriffs auf alle Daten des Speicherkontos dient.
 
@@ -320,14 +320,6 @@ Eine Azure-Bereitstellung umfasst mehrere Stufen der Netzwerkisolation. Das folg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Network Isolation Options for Machines in Windows Azure Virtual Networks](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) (Optionen der Netzwerkisolation für Computer in virtuellen Windows Azure-Netzwerken)
+- Erfahren Sie mehr über die [Optionen der Netzwerkisolation für Computer in virtuellen Windows Azure-Netzwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Dies schließt auch das klassische Front-End- und Back-End-Szenario ein, bei dem Computer in einem bestimmten Back-End-Netzwerk oder Unternetzwerk basierend auf einer Zulassungsliste mit IP-Adressen nur für bestimmte Clients oder andere Computer das Herstellen einer Verbindung mit einem bestimmten Endpunkt zulassen.
 
-Dies schließt auch das klassische Front-End- und Back-End-Szenario ein, bei dem Computer in einem bestimmten Back-End-Netzwerk oder Unternetzwerk basierend auf einer Zulassungsliste mit IP-Adressen nur für bestimmte Clients oder andere Computer das Herstellen einer Verbindung mit einem bestimmten Endpunkt zulassen.
-
-- [Computeisolation](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure enthält viele verschiedene cloudbasierte Computing-Dienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen.
-
-- [Speicherisolation](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Bei Microsoft Azure sind auf Kunden-VMs basierende Computevorgänge von Speichervorgängen getrennt. Diese Trennung ermöglicht eine unabhängige Skalierung der Computevorgänge und Speichervorgänge, sodass die Umsetzung der Mehrinstanzenfähigkeit und Isolation vereinfacht wird. Aus diesem Grund wird Azure Storage auf separater Hardware ohne Netzwerkverbindung mit Azure Compute (außer auf logischer Ebene) ausgeführt. Alle Anforderungen werden je nach Auswahl des Kunden über HTTP oder HTTPS ausgeführt.
+- Erfahren Sie mehr über die [Isolation von virtuellen Computern in Azure](../../virtual-machines/windows/isolation.md). Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.

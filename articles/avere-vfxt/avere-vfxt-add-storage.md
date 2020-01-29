@@ -4,14 +4,14 @@ description: Hinzufügen eines Back-End-Speichersystems zu Avere vFXT für Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416497"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153988"
 ---
 # <a name="configure-storage"></a>Konfigurieren des Speichers
 
@@ -69,7 +69,7 @@ Fahren Sie anschließend mit dem [Erstellen einer Verbindung](#create-a-junction
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Cloudkernspeichereinheit in Azure Blob Storage
 
-Um den Azure-BLOB-Speicher als Back-End-Speicher Ihres vFXT-Clusters zu verwenden, benötigen Sie einen leeren Container, den Sie als Kernspeichereinheit hinzufügen können.
+Um Azure Blob Storage als Back-End-Speicher Ihres vFXT-Clusters zu verwenden, benötigen Sie einen leeren Container, den Sie als Kernspeichereinheit hinzufügen können.
 
 Das Hinzufügen von Blob-Speicher zu Ihrem Cluster erfordert folgende Aufgaben:
 

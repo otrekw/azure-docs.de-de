@@ -1,6 +1,6 @@
 ---
 title: 'Algorithmen und Module: Referenz'
-description: Erfahren Sie mehr über die Module, die in Azure Machine Learning-Designer (Vorschauversion) verfügbar sind.
+description: Erfahren Sie mehr über die Module, die im Azure Machine Learning-Designer verfügbar sind.
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c265c2386b31fd02a5aa635c343be5d3cb227722
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978657"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312174"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algorithmen und Module – Referenz für Azure Machine Learning-Designer
 
-Dieser Referenzinhalt bietet den technischen Hintergrund zu den einzelnen Machine Learning-Algorithmen und -Modulen, die in Azure Machine Learning-Designer (Vorschauversion) verfügbar sind.
+Dieser Referenzinhalt bietet den technischen Hintergrund zu den einzelnen Algorithmen und Modulen für maschinelles Lernen, die im Azure Machine Learning-Designer verfügbar sind.
 
 Jedes Modul stellt eine Codegruppe dar, die unabhängig ausgeführt werden und eine Machine Learning-Aufgabe ausführen kann, wenn die erforderlichen Eingaben erfolgen. Die Module enthalten möglicherweise bestimmte Algorithmen oder führen Aufgaben aus, die beim Machine Learning wichtig sind, z.B. Ersatz eines fehlenden Werts oder statistische Analyse.
 

@@ -1,25 +1,19 @@
 ---
-title: Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure | Microsoft Docs
+title: Benachrichtigungen zu Wartungen für VM-Skalierungsgruppen in Azure
 description: Anzeigen von Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure und Starten einer Self-Service-Wartung.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shants123
-editor: ''
 tags: azure-service-management,azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 07580c8b8ea00039b48bd1f8765735ec5a5082ee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8d8c32c2a2f3e31c1b7f4645fe61abf2d5d0e014
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746650"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275776"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 

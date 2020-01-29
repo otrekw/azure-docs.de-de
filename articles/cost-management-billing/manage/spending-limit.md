@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: ddb906aeb8d1c2b0d1f0c97fc12bd389da431646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985026"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314126"
 ---
 # <a name="azure-spending-limit"></a>Azure-Ausgabenlimit
 
@@ -34,20 +34,21 @@ Bei Erreichen des Ausgabenlimits sendet Azure entsprechende E-Mail-Benachrichtig
 
 Wenn Sie sich für ein kostenloses Azure-Konto registriert haben und das Ausgabenlimit erreichen, können Sie auf die [nutzungsbasierte Bezahlung](upgrade-azure-subscription.md) upgraden, um das Ausgabenlimit zu entfernen und Ihr Abonnement automatisch zu reaktivieren.
 
-<a id="remove"></a>
-
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>Entfernen des Ausgabenlimits im Azure-Portal
+
+<a id="remove"></a>
 
 Wenn für Ihr Abonnement eine gültige Zahlungsmethode festgelegt wurde, können Sie das Ausgabenlimit jederzeit entfernen. Bei Abonnementtypen mit Guthaben für mehrere Monate (beispielsweise Visual Studio Enterprise und Visual Studio Professional) kann das Ausgabenlimit auch zu Beginn des nächsten Abrechnungszeitraums aktiviert werden.
 
 Führen Sie die folgenden Schritte aus, um das Ausgabenlimit zu entfernen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-1. Wählen Sie ein Abonnement aus. Wenn das Ausgabenlimit des Abonnements erreicht ist, wird es deaktiviert.
-1. Wählen Sie oben auf der Seite die Option **Ausgabenlimit entfernen** aus.
-1. Wählen Sie die gewünschte Option aus.
-
-![Auswählen einer Option zum Entfernen des Ausgabenlimits](./media/spending-limit/remove-spending-limit01.png)
+1. Navigieren Sie zu **Abonnements**.
+1. Wählen Sie Ihr Abonnement aus. Beispielsweise *Visual Studio Enterprise*.
+1. Wählen Sie am oberen Rand der Seite **Verwalten** aus. Sie werden zu https://account.azure.com/ umgeleitet. Wählen Sie rechts auf der Seite **Ausgabenlimit entfernen** aus.  
+  ![Beispiel für „Ausgabenlimit entfernen“](./media/spending-limit/account-azure-com-spending-limit.png)
+1. Sie werden wieder zum Azure-Portal umgeleitet. Wählen Sie eine für Sie geeignete Option und dann eine Zahlungsmethode aus. Wählen Sie **Fertig stellen** aus.  
+  ![Auswählen einer Option zum Entfernen des Ausgabenlimits](./media/spending-limit/remove-spending-limit.png)
 
 | Option | Wirkung |
 | --- | --- |
@@ -67,7 +68,7 @@ Das Ausgabenlimit könnte verhindern, dass Sie bestimmte Drittanbieterdienste un
 Dieses Feature ist nur verfügbar, wenn das Ausgabenlimit für Abonnementtypen, die über Guthaben für mehrere Monate verfügen, ohne zeitliche Beschränkung entfernt wurde. Mithilfe dieses Features kann das Ausgabenlimit automatisch zu Beginn des nächsten Abrechnungszeitraums aktiviert werden.
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) an.
-1. Klicken Sie auf das gelbe Banner, um die Option „Ausgabenlimit“ zu ändern.
+1. Wählen Sie das gelbe Banner aus, um die Option „Ausgabenlimit“ zu ändern.
 1. Wählen Sie **Ausgabenlimit im nächsten Abrechnungszeitraum aktivieren \<Startdatum des Abrechnungszeitraum\>** .
 
 ## <a name="custom-spending-limit"></a>Benutzerdefiniertes Ausgabenlimit

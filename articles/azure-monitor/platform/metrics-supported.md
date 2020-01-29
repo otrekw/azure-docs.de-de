@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750396"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310780"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1299,7 +1299,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Gestartete Modellimplementierungen|Gestartete Modellimplementierungen|Anzahl|Gesamt|Anzahl der gestarteten Modellimplementierungen in diesem Arbeitsbereich|Szenario|
 |Erfolgreiche Modellimplementierungen|Erfolgreiche Modellimplementierungen|Anzahl|Gesamt|Anzahl der erfolgreichen Modellimplementierungen in diesem Arbeitsbereich|Szenario|
 |Model Deploy Failed (Fehler bei der Modellimplementierung)|Model Deploy Failed (Fehler bei der Modellimplementierung)|Anzahl|Gesamt|Anzahl der fehlerhaften Modellimplementierungen in diesem Arbeitsbereich|Scenario, StatusCode|
-|Knoten insgesamt|Knoten insgesamt|Anzahl|Average|Gesamtanzahl von Knoten. Diese Summe umfasst Teile von aktiven Knoten, Leerlaufknoten, nicht verwendbaren Knoten, vorab erstellten Knoten, ausscheidenden Knoten.|Scenario, ClusterName|
+|Knoten insgesamt|Knoten insgesamt|Anzahl|Average|Gesamtanzahl von Knoten. Diese Summe umfasst Teile von aktiven Knoten, Leerlaufknoten, nicht verwendbaren Knoten, vorzeitig entfernten Knoten, ausscheidenden Knoten.|Scenario, ClusterName|
 |Aktive Knoten|Aktive Knoten|Anzahl|Average|Anzahl der aktiven Knoten. Dabei handelt es sich um die Knoten, auf denen aktiv ein Auftrag ausgeführt wird.|Scenario, ClusterName|
 |Knoten im Leerlauf|Knoten im Leerlauf|Anzahl|Average|Anzahl von Knoten im Leerlauf. Knoten im Leerlauf sind die Knoten, auf denen keine Aufträge ausgeführt werden, die aber einen neuen Auftrag bei Verfügbarkeit akzeptieren können.|Scenario, ClusterName|
 |Unusable Nodes (Nicht verwendbare Knoten)|Unusable Nodes (Nicht verwendbare Knoten)|Anzahl|Average|Anzahl nicht verwendbarer Knoten. Nicht verwendbare Knoten sind aufgrund eines nicht auflösbaren Problems nicht funktionsfähig. Azure recycelt diese Knoten.|Scenario, ClusterName|

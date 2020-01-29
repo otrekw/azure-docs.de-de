@@ -1,26 +1,21 @@
 ---
-title: Vertikales Skalieren von Azure-VM-Skalierungsgruppen | Microsoft Docs
+title: Vertikales Skalieren von Azure-VM-Skalierungsgruppen
 description: Erfahren Sie, wie Sie einen virtuellen Computer als Reaktion auf die Überwachung von Warnungen mit Azure Automation vertikal skalieren.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958139"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274433"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029852"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167382"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -64,7 +64,7 @@ Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind
 ### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
 
 - Windows 8.1
-- Windows 7. Supportinformationen zu Windows 7 finden Sie unter [Der Support für Windows 7 läuft aus](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- Die Windows 7-Unterstützung wurde am 14. Januar 2020 beendet. Weitere Informationen finden Sie unter [Der Support für Windows 7 endet am 14. Januar 2020](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2. Supportinformationen zu Windows Server 2008 und Windows Server 2008 R2 finden Sie unter [Der Support für Windows Server 2008 wird eingestellt](https://www.microsoft.com/cloud-platform/windows-server-2008).

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979741"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289151"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standardeigenschaften in Azure Monitor-Protokollen
 Daten in Azure Monitor-Protokollen werden [als Gruppe von Datensätzen in einem Log Analytics-Arbeitsbereich oder einer Application Insights-Anwendung gespeichert](../log-query/logs-structure.md). Diese haben jeweils einen bestimmten Datentyp, der über eine eindeutige Menge an Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
 
 > [!NOTE]
-> Einige der Standardeigenschaften werden in der Schemaansicht oder in IntelliSense in Log Analytics nicht angezeigt und erscheinen auch nicht in Abfrageergebnissen, sofern die Eigenschaft nicht explizit in der Ausgabe angegeben wird.
+> Einige der Standardeigenschaften werden nicht in der Schemaansicht oder in IntelliSense in Log Analytics angezeigt und auch nicht in Abfrageergebnissen aufgeführt, sofern die Eigenschaft nicht explizit in der Ausgabe angegeben wird.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated und timestamp
 Die Eigenschaften **TimeGenerated** (Log Analytics-Arbeitsbereich) und **timestamp** (Application Insights-Anwendung) enthalten das Datum und die Uhrzeit der Erstellung des Datensatzes durch die Datenquelle. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](data-ingestion-time.md).

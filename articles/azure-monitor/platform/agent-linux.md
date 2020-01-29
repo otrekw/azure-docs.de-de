@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535774"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290324"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Verbinden von Linux-Computern mit Azure Monitor
 
@@ -74,9 +74,10 @@ Vor der Installation des Log Analytics-Agents für Linux benötigen Sie die Arbe
 
 Der Log Analytics-Agent für Linux wird in einem selbstextrahierenden und installierbaren Shell-Skriptpaket bereitgestellt. Dieses Paket enthält Debian- und RPM-Pakete für jede Komponente des Agents und kann direkt installiert oder zum Abrufen der einzelnen Pakete extrahiert werden. Es wird ein Paket für x64-Architekturen und eines für x86-Architekturen bereitgestellt. 
 
-Bei Azure-VMs wird empfohlen, den Agent mithilfe der [Azure Log Analytics VM-Erweiterung](../../virtual-machines/extensions/oms-linux.md) für Linux auf den Computern zu installieren. 
+> [!NOTE]
+> Bei Azure-VMs wird empfohlen, den Agent mithilfe der [Azure Log Analytics VM-Erweiterung](../../virtual-machines/extensions/oms-linux.md) für Linux auf den Computern zu installieren. 
 
-1. Übertragen Sie das entsprechende Paket (x86 oder x64) mithilfe von scp/sftp auf Ihren virtuellen oder physischen Linux-Computer.
+1. [Laden Sie das entsprechende Paket (x64 oder x86) herunter](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide), und übertragen Sie es mithilfe von scp/sftp auf Ihren virtuellen oder physischen Linux-Computer.
 
 2. Installieren Sie das Paket mit dem Argument `--install`. Wenn Sie während der Installation die Integration in einen Log Analytics-Arbeitsbereich vornehmen möchten, geben Sie die zuvor kopierten Parameter `-w <WorkspaceID>` und `-s <workspaceKey>` an.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931889"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513557"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Informationen zum Mobilitätsdienst auf virtuellen VMware-Computern und physischen Servern
 
@@ -20,7 +20,7 @@ Wenn Sie die Notfallwiederherstellung für VMware-VMs und physische Server mithi
 
 - [Pushinstallation](#push-installation): Site Recovery installiert den Mobilitäts-Agent auf dem Server, wenn der Schutz im Azure-Portal aktiviert wird.
 - Manuelle Installation: Über die [Benutzeroberfläche](#install-mobility-agent-through-ui) oder die [Eingabeaufforderung](#install-mobility-agent-through-command-prompt) können Sie den Mobilitätsdienst manuell auf jedem Computer installieren.
-- [Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mithilfe von Softwarebereitstellungstools wie System Center Configuration Manager automatisieren.
+- [Automatisierte Bereitstellung](vmware-azure-mobility-install-configuration-mgr.md): Sie können die Installation mithilfe von Softwarebereitstellungstools wie Configuration Manager automatisieren.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Virenschutz auf replizierten Computern
 
@@ -119,7 +119,7 @@ Verwendung | UnifiedAgent.exe /Role \<MS/MT> /InstallLocation \<Installationsort
 Setupprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log“.
 /Role | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
 /InstallLocation| Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an (beliebiger Ordner).
-/Platform | Obligatorisch. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
+/Platform | Mandatory. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.<br/><br/> Wenn Sie virtuelle Azure-Computer als physische Computer behandeln, geben Sie **VMware** an.
 /Silent| Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
 
 #### <a name="registration-settings"></a>Registrierungseinstellungen
@@ -128,7 +128,7 @@ Setupprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.l
 Verwendung | UnifiedAgentConfigurator.exe  /CSEndPoint \<CSIP> /PassphraseFilePath \<PassphraseFilePath>
 Agent-Konfigurationsprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log“.
 /CSEndPoint | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
-/PassphraseFilePath |  Obligatorisch. Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
+/PassphraseFilePath |  Mandatory. Speicherort der Passphrase. Verwenden Sie einen beliebiger UNC- oder lokalen Dateipfad.
 
 ### <a name="on-a-linux-machine"></a>Auf einem Linux-Computer
 
@@ -156,8 +156,8 @@ Agent-Konfigurationsprotokolle | Unter „%ProgramData%\ASRSetupLogs\ASRUnifiedA
 --- | ---
 Verwendung | ./install -d \<Installationsort> -r \<MS/MT> -v VmWare -q
 -r | Obligatorischer Installationsparameter. Gibt an, ob der Mobilitätsdienst (Mobility Service, MS) oder das Masterziel (Master Target, MT) installiert werden soll.
--d angeben, | Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an: /usr/local/ASR.
--v | Obligatorisch. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.
+-d | Dieser Parameter ist optional. Gibt den Installationspfad des Mobilitätsdiensts an: /usr/local/ASR.
+-v | Mandatory. Gibt die Plattform an, auf der Mobility Service installiert wird. **VMware** für VMware-VMs/physische VMware-Server; **Azure** für Azure-VMs.
 -q | Optional. Gibt an, ob das Installationsprogramm im unbeaufsichtigten Modus ausgeführt werden soll.
 
 #### <a name="registration-settings"></a>Registrierungseinstellungen
@@ -165,7 +165,7 @@ Verwendung | ./install -d \<Installationsort> -r \<MS/MT> -v VmWare -q
 --- | ---
 Verwendung | cd /usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh -i \<CSIP> -P \<PassphraseFilePath>
 -i | Obligatorischer Parameter. Gibt die IP-Adresse des Konfigurationsservers an. Verwenden Sie eine beliebige gültige IP-Adresse.
--P |  Obligatorisch. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
+-P |  Mandatory. Der vollständige Dateipfad der Datei, in der die Passphrase gespeichert ist. Verwenden Sie einen beliebigen gültigen Ordner.
 
 ## <a name="azure-virtual-machine-agent"></a>Azure-VM-Agent
 

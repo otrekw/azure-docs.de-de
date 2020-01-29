@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868727"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280967"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Tutorial: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
 
@@ -34,7 +34,7 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET-Runtime (ab 4.7.1) an. 
+1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an. 
 
 2. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Agents über die folgenden Ports *ausgehende* Anforderungen an Azure AD senden können:
@@ -52,7 +52,7 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 1. Melden Sie sich bei dem in die Domäne eingebundenen Server an.  Wenn Sie das Tutorial [Grundlegende AD- und Azure-Umgebung](tutorial-basic-ad-azure.md) verwenden, ist dies der Server „DC1“.
-2. Melden Sie sich mit den Anmeldeinformationen eines globalen Administrators (nur Cloud) beim Azure-Portal an.
+2. Melden Sie sich mit den Anmeldeinformationen eines rein cloudbasierten globalen Administratorkontos beim Azure-Portal an.
 3. Wählen Sie auf der linken Seite die Option **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie in der Mitte die Option **Bereitstellung verwalten (Vorschau)** aus.
 
    ![Azure-Portal](media/how-to-install/install6.png)
@@ -72,7 +72,7 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 
    ![Bildschirm „Willkommen“](media/how-to-install/install4.png)
 
-10. Sobald dieser Vorgang abgeschlossen ist, sollte der folgende Hinweis angezeigt werden: **Ihre Agent-Konfiguration wurde erfolgreich überprüft.**  Sie können auf **Beenden** klicken.</br>
+10. Sobald dieser Vorgang abgeschlossen ist, sollte der folgende Hinweis angezeigt werden: **Ihre Agent-Konfiguration wurde erfolgreich überprüft.**  Sie können dann auf **Beenden** klicken.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>
 11. Falls der erste Begrüßungsbildschirm weiterhin angezeigt wird, klicken Sie auf **Schließen**.
 
@@ -84,20 +84,20 @@ Die Agent-Überprüfung erfolgt im Azure-Portal und auf dem lokalen Server, auf 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird:
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
-![Azure-Portal](media/how-to-install/install6.png)</br>
+2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
+![Azure portal](media/how-to-install/install6.png)</br>
 
-3.  Klicken Sie im Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
+3.  Klicken Sie auf dem Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
 ![Azure AD-Bereitstellung](media/how-to-install/install7.png)</br>
  
-4. Im Bildschirm **Lokale Bereitstellungs-Agents** werden Ihre installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt und als **Aktiviert** markiert ist.
+4. Auf dem Bildschirm **On-premises provisioning agents** (Lokale Bereitstellungs-Agents) werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Aktiviert** markiert ist.
 ![Bereitstellungs-Agents](media/how-to-install/verify1.png)</br>
 
 ### <a name="on-the-local-server"></a>Auf dem lokalen Server
 Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausgeführt wird:
 
 1.  Melden Sie sich beim Server mit einem Administratorkonto an.
-2.  Öffnen Sie **Dienste**, indem Sie dorthin navigieren oder „Start/Run/Services.msc“ öffnen.
+2.  Öffnen Sie die Seite **Dienste**, indem Sie zu dieser Seite oder zu „Start/Run/Services.msc“ navigieren.
 3.  Vergewissern Sie sich, dass unter **Dienste** die Dienste **Microsoft Azure AD Connect Agent Updater** und **Microsoft Azure AD Connect-Bereitstellungs-Agent** angezeigt werden und ihr Status **Wird ausgeführt** lautet.
 ![Dienste](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -137,5 +137,5 @@ Sie haben nun erfolgreich eine Hybrididentitätsumgebung eingerichtet, die Sie z
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232792"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262485"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Aufgabenhubs in Durable Functions (Azure Functions)
 
@@ -96,9 +96,9 @@ Der Name des Aufgabenhubs wird auf den Wert der App-Einstellung `MyTaskHub` fest
 }
 ```
 
-Der folgende Code ist ein vorkompiliertes C#-Beispiel zum Schreiben einer Funktion, die eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zusammenzuarbeiten:
+Der folgende Code veranschaulicht das Schreiben einer Funktion, die eine [Orchestrierungsclientbindung](durable-functions-bindings.md#orchestration-client) verwendet, um mit einem als App-Einstellung konfigurierten Aufgabenhub zusammenzuarbeiten:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -119,9 +119,9 @@ public static async Task<HttpResponseMessage> Run(
 ```
 
 > [!NOTE]
-> Das vorherige C#-Beispiel gilt für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Das vorherige C#-Beispiel gilt für Durable Functions 2.x. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Einstellung festgelegt:
 
@@ -133,6 +133,8 @@ Die Aufgabenhubeigenschaft in der Datei `function.json` wird über eine App-Eins
     "direction": "in"
 }
 ```
+
+---
 
 Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn kein Name angegeben ist, wird ein Aufgabenhub-Standardname verwendet, wie in der folgenden Tabelle gezeigt:
 

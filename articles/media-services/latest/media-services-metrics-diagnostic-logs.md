@@ -1,5 +1,5 @@
 ---
-title: Überwachen von Metriken und Diagnoseprotokollen über Azure Monitor
+title: Media Services-Metriken und -Diagnoseprotokolle mit Azure Monitor
 titleSuffix: Azure Media Services
 description: Erfahren Sie, wie Sie Metriken und Diagnoseprotokolle von Azure Media Services über Azure Monitor überwachen können.
 services: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f075362f976e6abb26c9781c4b0cdeb7912c0862
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750803"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514033"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen über Azure Monitor
 

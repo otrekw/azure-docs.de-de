@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969593"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263420"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -20,7 +20,7 @@ In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, 
 ## <a name="insights-and-core-solutions"></a>Erkenntnisse und wichtige Lösungen
 Wichtige Erkenntnisse und Lösungen werden als Teil von Azure Monitor betrachtet und folgen den Vereinbarungen zum Support und Servicelevel für Azure. Sie werden in allen Azure-Regionen unterstützt, in denen Azure Monitor verfügbar ist.
 
-### <a name="insights"></a>Erkenntnisse
+### <a name="insights"></a>Einblicke
 
 Mit Erkenntnissen wird eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitgestellt. Dabei werden sowohl Protokolle als auch Metriken erfasst und analysiert.
 
@@ -41,7 +41,7 @@ Lösungen basieren auf Protokollabfragen und Ansichten, die für eine bestimmte 
 | Lösung | Beschreibung |
 |:---|:---|
 | [Agent-Integrität](insights/solution-agenthealth.md) | Analysieren der Integrität und Konfiguration von Log Analytics-Agents. |
-| [Warnungsverwaltung](platform/alert-management-solution.md) | Analysieren von Warnungen, die von System Center Operations Manager, Nagios oder Zabbix erfasst werden. |
+| [Benachrichtigungsverwaltung](platform/alert-management-solution.md) | Analysieren von Warnungen, die von System Center Operations Manager, Nagios oder Zabbix erfasst werden. |
 | [Dienstzuordnung](insights/service-map.md) | Automatisches Ermitteln von Anwendungskomponenten auf Windows- und Linux-Systemen und Darstellung der Kommunikation zwischen Diensten. Die gleiche Funktionalität bietet   |
 
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Active Directory B2C | Nein | Nein | Nein |  |
 |Active Directory Domain Services | Nein | Ja | Nein |  |
 |Aktivitätsprotokoll | Nein | Ja | Nein | |
-|Advanced Threat Protection | Nein | Nein | Nein |  |
+|Erweiterter Schutz vor Bedrohungen | Nein | Nein | Nein |  |
 |Advisor | Nein | Nein | Nein |  |
 |AI Builder | Nein | Nein | Nein |  |
 |Analysis Services | Ja | Ja | Nein |  |
@@ -76,7 +76,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Batch | Ja | Ja | Nein |  |
 |Batch KI | Nein | Nein | Nein |  |
 |Blockchain-Dienst | Nein | Ja | Nein |  |
-|Blueprints | Nein | Nein | Nein |  |
+|Blaupausen | Nein | Nein | Nein |  |
 |Botdienst | Nein | Nein | Nein |  |
 |Cloud Services | Ja | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
 |Cloud Shell | Nein | Nein | Nein |  |
@@ -121,30 +121,30 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Load Balancer | Ja | Ja | Nein |  |
 |Logic Apps | Ja | Ja | Nein |  |
 |Machine Learning Service | Nein | Nein | Nein |  |
-|Managed Applications  | Nein | Nein | Nein |  |
-|Maps  | Nein | Nein | Nein |  |
+|Verwaltete Anwendungen  | Nein | Nein | Nein |  |
+|Karten  | Nein | Nein | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
 |Microsoft Flow | Nein | Nein | Nein |  |
 |Microsoft Managed Desktop | Nein | Nein | Nein |  |
 |Microsoft PowerApps | Nein | Nein | Nein |  |
 |Microsoft Social Engagement | Nein | Nein | Nein |  |
 |Microsoft Stream | Ja | Ja | Nein |  |
-|Migrate | Nein | Nein | Nein |  |
+|Migrieren | Nein | Nein | Nein |  |
 |Multi-Factor Authentication | Nein | Ja | Nein |  |
 |Network Watcher | Ja | Ja | Nein |  |
 |Notification Hubs | Ja | Nein | Nein |  |
 |Open Datasets | Nein | Nein | Nein |  |
-|Policy | Nein | Nein | Nein |  |
+|Richtlinie | Nein | Nein | Nein |  |
 |Power BI | Ja | Ja | Nein |  |
 |Power BI Embedded | Nein | Nein | Nein |  |
 |Private Link | Nein | Nein | Nein |  |
 |Project Spool Communication Platform | Nein | Nein | Nein |  |
 |Red Hat OpenShift | Nein | Nein | Nein |  |
 |Redis Cache | Ja | Ja | Nein |  |
-|Resource Graph | Nein | Nein | Nein |  |
-|Resource Manager | Nein | Nein | Nein |  |
+|Ressourcendiagramm | Nein | Nein | Nein |  |
+|Ressourcen-Manager | Nein | Nein | Nein |  |
 |Retail Search – by Bing | Nein | Nein | Nein |  |
-|Search | Ja | Ja | Nein |  |
+|Suchen, | Ja | Ja | Nein |  |
 |Service Bus | Ja | Ja | Nein |  |
 |Service Fabric | Nein | Ja | Nein | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.  |
 |Signup Portal | Nein | Nein | Nein |  |
@@ -153,7 +153,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |SQL Data Warehouse | Ja | Ja | Nein |  |
 |SQL-Datenbank | Ja | Ja | Nein |  |
 |SQL Server Stretch Database | Ja | Ja | Nein |  |
-|Stack | Nein | Nein | Nein |  |
+|Stapel | Nein | Nein | Nein |  |
 |Storage | Ja | Nein | [Ja](insights/storage-insights-overview.md) |  |
 |Storage Cache | Nein | Nein | Nein |  |
 |Speichersynchronisierungsdienste | Nein | Nein | Nein |  |
@@ -181,7 +181,7 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 | [Azure Sentinel](/azure/sentinel/) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](/azure/sentinel/connect-data-sources). |
 | [Key Vault-Analysen](insights/azure-key-vault.md) | Analysieren der AuditEvent-Protokolle von Azure Key Vault. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netzwerk  | [DNS-Analyse](insights/dns-analytics.md): Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere ähnliche Daten von Ihren DNS-Servern.<br>[Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
+| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
 | [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
 | [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwalteten Instanzen. |
 | [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |
@@ -200,6 +200,7 @@ Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösun
 | [Active Directory-Bewertung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
 | [Active Directory-Replikationsstatusmonitor](insights/ad-replication-status.md) | Regelmäßige Überwachung Ihrer Active Directory-Umgebung auf Replikationsfehler. |
 | [Aktivitätsprotokollanalyse](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analysieren von Aktivitätsprotokolleinträgen mithilfe vordefinierter Protokollabfragen und Ansichten. |
+| [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
 | [Container](insights/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |
 | [Bedarfsgesteuerte Bewertungen](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Bewerten und Optimieren der Verfügbarkeit, Sicherheit und Leistung Ihrer lokalen, hybriden und cloudbasierten Umgebungen mit Microsoft-Technologie. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 9ef0f2810252b73921fc0a72f2e523262c760bab
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932654"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513699"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
@@ -22,12 +22,12 @@ Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-quer
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
 Sie können eine Computergruppe in Azure Monitor mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 |:--- |:--- |
 | Protokollabfrage |Erstellen Sie eine Protokollabfrage, die eine Liste mit Computern zurückgibt. |
 | Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollabfrage zu erstellen. |
 | Active Directory |Scannen Sie automatisch die Gruppenmitgliedschaft aller Agent-Computer, die Mitglieder einer Active Directory-Domäne sind, und erstellen Sie für die einzelnen Sicherheitsgruppen jeweils eine Gruppe in Azure Monitor. (Nur für Windows-Computer)|
-| Konfigurations-Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
+| Konfigurations-Manager | Importieren Sie Sammlungen aus Microsoft Endpoint Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
 | Windows Server Update Services |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Azure Monitor. |
 
 ### <a name="log-query"></a>Protokollabfrage
@@ -47,9 +47,9 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-P
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
-| Eigenschaft | Description |
+| Eigenschaft | Beschreibung |
 |:---|:---|
-| NAME   | Name der Abfrage, die im Portal angezeigt werden soll |
+| Name   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
 | Category       | Kategorie zum Organisieren von Abfragen im Portal |
 
@@ -75,7 +75,7 @@ Sie können Azure Monitor zum Importieren von WSUS-Gruppen über **Erweiterte Ei
 
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+### <a name="configuration-manager"></a>Konfigurations-Manager
 Wenn Sie Azure Monitor für das Importieren von Configuration Manager-Sammlungsmitgliedschaften konfigurieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. 
 
 Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Azure Monitor eine Verbindung herstellen](collect-sccm.md).  
@@ -119,12 +119,12 @@ Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Compu
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
 Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf Protokollabfragen erstellt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:--- |:--- |
 | `Type` |*ComputerGroup* |
 | `SourceSystem` |*SourceSystem* |
 | `Computer` |Der Name des Mitgliedscomputers |
-| `Group` |Der Anzeigename der Gruppe |
+| `Group` |Name der Gruppe. |
 | `GroupFullName` |Der vollständige Pfad zur Gruppe, einschließlich Quelle und Quellname |
 | `GroupSource` |Die Quelle, aus der die Gruppe zusammengestellt wurde <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
 | `GroupSourceName` |Der Name der Quelle, aus der die Gruppe zusammengestellt wurde.  Für Active Directory ist dies der Domänenname. |

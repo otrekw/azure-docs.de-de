@@ -1,25 +1,17 @@
 ---
-title: Austauschen von Akkus bei Microsoft Azure-Geräten der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Austauschen von Akkus bei Geräten der Microsoft Azure StorSimple 8000-Serie
 description: Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf dem StorSimple-Gerät.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693753"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276898"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Ersetzen des Notfallakkus auf dem StorSimple-Gerät
 
@@ -47,7 +39,7 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    
     **Abbildung 1:** Rückseite des Hauptgeräts mit PCM und Controllermodulen
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -60,14 +52,14 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    
     **Abbildung 2:** Rückseite des PCM mit Überwachungs-LEDs
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    |:--- |:--- |
    | 1 |Stromausfall (Wechselstrom) |
    | 2 |Lüfterausfall |
    | 3 |Batterieausfall |
    | 4 |PCM OK |
    | 5 |Stromausfall (Gleichstrom) |
-   | 6 |Akku fehlerfrei |
+   | 6 |Batterie betriebsbereit |
 3. Um das PCM mit dem fehlerhaften Akku zu entfernen, führen Sie die Schritte unter [Entfernen eines PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)aus.
 4. Heben Sie bei entferntem PCM das Akkumodul nach oben, und drehen Sie den Griff, wie in der folgenden Abbildung dargestellt, um den Akku zu entfernen.
    

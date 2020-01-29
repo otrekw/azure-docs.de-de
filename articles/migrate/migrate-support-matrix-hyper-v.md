@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Hyper-V-Bewertung mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 20bdbb16d2f0610f6519424141b09190eae3cc42
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028790"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154804"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -67,6 +67,19 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 **Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
 **Hyper-V-Host/-Cluster** | Eingehende Verbindungen an den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten der Hyper-V-VMs mithilfe einer CIM-Sitzung (Common Information Model)
 
+## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten
+
+Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Anforderungen und Einschränkungen für die Agent-basierte Visualisierung sind in der folgenden Tabelle zusammengefasst.
+
+
+**Anforderung** | **Details**
+--- | ---
+**Bereitstellung** | Bevor Sie die Abhängigkeitsvisualisierung bereitstellen, sollten Sie über ein Azure Migrate Projekt verfügen, dem das Tool Azure Migrate: Serverbewertung hinzugefügt wurde. Sie stellen die Abhängigkeitsvisualisierung nach dem Einrichten einer Azure Migrate-Appliance zum Ermitteln Ihrer lokalen Computer bereit.<br/><br/> Abhängigkeitsvisualisierung ist in Azure Government nicht verfügbar.
+**Dienstzuordnung** | Die Agent-basierte Abhängigkeitsvisualisierung verwendet die Lösung [Dienstzuordnung](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) in [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Zum Bereitstellen ordnen Sie einem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zu.
+**Log Analytics-Arbeitsbereich** | Der Arbeitsbereich muss sich im selben Abonnement befinden wie das Azure Migrate-Projekt.<br/><br/> Azure Migrate unterstützt die Erstellung von Arbeitsbereichen in den Regionen „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.<br/><br/>  Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
+**Gebühren** | Für die Lösung „Dienstzuordnung“ fallen in den ersten 180 Tagen (ab dem Tag der Zuordnung des Log Analytics-Arbeitsbereichs zum Azure Migrate-Projekt) keine Kosten an.<br/><br/> Nach 180 Tagen fallen die Log Analytics-Standardgebühren an.<br/><br/> Für andere Lösungen als die Dienstzuordnung im zugeordneten Log Analytics-Arbeitsbereich fallen die Log Analytics-Standardgebühren an.<br/><br/> Wenn Sie das Azure Migrate-Projekt löschen, wird der Arbeitsbereich nicht zusammen damit gelöscht. Nach dem Löschen des Projekts ist die Dienstzuordnung nicht mehr kostenlos, und für jeden Knoten werden Kosten gemäß dem kostenpflichtigen Tarif für den Log Analytics-Arbeitsbereich berechnet.
+**Agents** | Die Agent-basierte Visualisierung von Abhängigkeiten erfordert, dass auf jedem Computer, den Sie analysieren möchten, zwei Agents installiert sind.<br/><br/> - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [Dependency-Agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**Internetkonnektivität** | Wenn Computer nicht mit dem Internet verbunden sind, müssen Sie das Log Analytics-Gateway auf diesen Computern installieren.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid-Ereignisschema
-description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ereignisse bereitgestellt werden.
+description: Beschreibt die Eigenschaften und das Schema für alle Ereignisse. Ereignisse bestehen aus einer Gruppe von fünf erforderlichen Zeichenfolgeneigenschaften und einem erforderlichen Datenobjekt.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607605"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512979"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
@@ -83,14 +83,14 @@ Das für ein Azure Blob Storage-Ereignis veröffentlichte Schema sieht beispiels
 
 Alle Ereignisse weisen die gleichen Daten auf oberster Ebene auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
+| data | Objekt (object) | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
 | dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
 | metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
