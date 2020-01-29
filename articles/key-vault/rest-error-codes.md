@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982094"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293384"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault: REST-API-Fehlercodes
  
@@ -54,7 +54,7 @@ Der Authorization-Header ist das Zugriffstoken, das bei jedem Aufruf von Key Vau
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Dem Token fehlt die richtige zugeordnete Ressource. 
 
-Wenn ein Zugriffstoken vom Azure OAuth-Endpunkt angefordert wird, ist ein Parameter mit dem Namen „resource“ obligatorisch. Der Wert ist für den Tokenanbieter wichtig, da er den Gültigkeitsbereich des Tokens für die beabsichtigte Verwendung festlegt. Die Ressource für **alle* Token für den Zugriff auf einen Key Vault ist <https:\//vault.keyvault.net> (ohne nachgestellten Schrägstrich).
+Wenn ein Zugriffstoken vom Azure OAuth-Endpunkt angefordert wird, ist ein Parameter mit dem Namen „resource“ obligatorisch. Der Wert ist für den Tokenanbieter wichtig, da er den Gültigkeitsbereich des Tokens für die beabsichtigte Verwendung festlegt. Die Ressource für **alle** Token für den Zugriff auf eine Key Vault-Instanz ist *https:\//vault.keyvault.net* (ohne nachgestellten Schrägstrich).
 
 ### <a name="the-token-is-expired"></a>Das Token ist abgelaufen.
 

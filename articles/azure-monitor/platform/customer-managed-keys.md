@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971086"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120263"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Konfiguration kundenseitig verwalteter Schlüssel in Azure Monitor 
 
@@ -378,8 +378,6 @@ Wenn Sie den Schlüssel in Key Vault aktualisieren und die neuen *Schlüsselbeze
 
 - Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können Daten vor und nach der Konfiguration nahtlos abfragen.
 
-- Die CMK-Funktion ist regional. Azure Key Vault, *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in der gleichen Region befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
-
 - Sobald der Arbeitsbereich einer *Clusterressource* zugeordnet ist, kann die Zuordnung zur *Clusterressource* nicht aufgehoben werden, da die Daten mit Ihrem Schlüssel verschlüsselt werden und ohne den KEK in Azure Key Vault nicht darauf zugegriffen werden kann.
 
 - Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI und PowerShell konfiguriert werden:
@@ -391,9 +389,9 @@ Wenn Sie den Schlüssel in Key Vault aktualisieren und die neuen *Schlüsselbeze
 
 - Das Verschieben einer *Clusterressource* in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
 
-- Die Arbeitsbereichszuordnung zur *Clusterressource* schlägt fehl, wenn sich die *Clusterressource* in einem anderen Mandanten befindet.
+- Azure Key Vault, *Clusterressource* und zugehörige Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
 
--   Die Arbeitsbereichszuordnung zur *Clusterressource* schlägt fehl, wenn sie einer anderen *Clusterressource* zugeordnet ist.
+- Die Arbeitsbereichszuordnung zur *Clusterressource* schlägt fehl, wenn sie einer anderen *Clusterressource* zugeordnet ist.
 
 ## <a name="troubleshooting-and-management"></a>Problembehandlung und Verwaltung
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

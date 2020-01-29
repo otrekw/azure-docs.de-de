@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 0671843b09cd90123b856b94db2618bac617dd5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986822"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313925"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Anwendung von Reservierungsrabatten auf Azure SQL Data Warehouse
 
@@ -31,9 +31,9 @@ Für Warehouses, die eine volle Stunde nicht ausgeführt werden, wird die Reserv
 
 Die folgenden Beispiele zeigen, wie der Rabatt für die reservierte Kapazität für SQL Data Warehouse abhängig von den jeweiligen Bereitstellungen angewandt wird.
 
-- **Beispiel 1:** Sie erwerben als reservierte Kapazität 5 Einheiten mit jeweils 100 cDWU. Sie führen eine DW1500c SQL Data Warehouse-Instanz eine Stunde lang aus. In diesem Fall wird die Nutzung für 15 Einheiten mit 100-cDWU-Nutzung ausgegeben. Der Reservierungsrabatt gilt für die 5 Einheiten, die Sie verwendet haben. Die restlichen 10 Einheiten mit 100-cDWU-Nutzung, die Sie verwendet haben, werden zu Preisen der nutzungsbasierten Bezahlung abgerechnet.
+- **Beispiel 1:** Sie erwerben als reservierte Kapazität 5 Einheiten mit jeweils 100 cDWU. Sie führen eine DW1500c SQL Data Warehouse-Instanz eine Stunde lang aus. In diesem Fall wird die Nutzung für 15 Einheiten mit 100-cDWU-Nutzung ausgegeben. Der Reservierungsrabatt gilt für die 5 Einheiten, die Sie verwendet haben. Die restlichen 10 Einheiten mit 100-cDWU-Nutzung, die Sie verwendet haben, werden zu Preisen der nutzungsbasierten Bezahlung abgerechnet. Anders ausgedrückt: Eine partielle Abdeckung ist für mehrere Reservierungen möglich.
 
-- **Beispiel 2:** Sie erwerben als reservierte Kapazität 5 Einheiten mit jeweils 100 cDWU. Sie führen zwei DW100c SQL Data Warehouse-Instanzen eine Stunde lang aus. In diesem Fall werden zwei Nutzungsereignisse für 1 Einheit mit 100-cDWU-Nutzung ausgegeben. Der Rabatt der reservierten Kapazität wird auf beide Nutzungsereignisse angewandt. Die verbleibenden 3 Einheiten der reservierten Kapazität mit jeweils 100 cDWU verfallen und werden nicht auf die zukünftige Verwendung übertragen.
+- **Beispiel 2:** Sie erwerben als reservierte Kapazität 5 Einheiten mit jeweils 100 cDWU. Sie führen zwei DW100c SQL Data Warehouse-Instanzen eine Stunde lang aus. In diesem Fall werden zwei Nutzungsereignisse für 1 Einheit mit 100-cDWU-Nutzung ausgegeben. Der Rabatt der reservierten Kapazität wird auf beide Nutzungsereignisse angewandt. Die verbleibenden 3 Einheiten der reservierten Kapazität mit jeweils 100 cDWU verfallen und werden nicht auf die zukünftige Verwendung übertragen. Anders ausgedrückt: Eine einzelne Reservierung kann mehreren SQL Data Warehouse-Instanzen zugeordnet werden.
 
 - **Beispiel 3:** Sie erwerben für die reservierte Kapazität 1 Einheit mit 100 cDWU. Sie führen zwei DW100c SQL Data Warehouse-Instanzen aus. Jede Instanz wird jeweils 30 Minuten ausgeführt. In diesem Fall wird der Rabatt der reservierten Kapazität auf beide Nutzungsereignisse angewandt. Keine Nutzung wird zu Preisen der nutzungsbasierten Bezahlung abgerechnet.
 

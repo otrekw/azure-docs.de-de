@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790098"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167346"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -36,7 +36,7 @@ Sie können über Ihren Masterserver ein Lesereplikat in einer anderen Region er
 
 Sie können einen Masterserver in jeder [Azure Database for MySQL-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mysql) haben.  Ein Masterserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Masterregion verfügbar sind.
 
-[ ![Replikatregionen lesen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[ ![Lesereplikatregionen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Folgende universelle Replikatregionen werden unterstützt:
@@ -132,7 +132,7 @@ Wenn Sie die Replikation zwischen einem Masterserver und einem Lesereplikat been
 
 ### <a name="deleted-master-and-standalone-servers"></a>Gelöschte Masterserver und eigenständige Server
 
-Wenn ein Masterserver gelöscht wird, wird die Replikation an alle Lesereplikate beendet. Diese Replikate werden zu eigenständigen Servern. Der Masterserver selbst wird gelöscht.
+Wenn ein Masterserver gelöscht wird, wird die Replikation an alle Lesereplikate beendet. Diese Replikate werden automatisch zu eigenständigen Servern und können sowohl Lese- als auch Schreibvorgänge akzeptieren. Der Masterserver selbst wird gelöscht.
 
 ### <a name="user-accounts"></a>Benutzerkonten
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 890e2fb06b9194bba49b94eae4b8ea3f0bfed1d7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932182"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289117"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -47,7 +47,7 @@ Sie können diese Einstellung auf der Seite **Eigenschaften** des Arbeitsbereich
 
 ![Ändern des Arbeitsbereichzugriffsmodus](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>Verwenden von PowerShell
+### <a name="using-powershell"></a>PowerShell
 
 Verwenden Sie den folgenden Befehl, um den Zugriffssteuerungsmodus für alle Arbeitsbereiche im Abonnement zu überprüfen:
 
@@ -132,7 +132,7 @@ Mitglieder der Rolle *Log Analytics-Leser* können folgende Aktionen ausführen:
 
 Die Rolle „Log Analytics-Leser“ umfasst die folgenden Azure-Aktionen:
 
-| type    | Berechtigung | BESCHREIBUNG |
+| type    | Berechtigung | Beschreibung |
 | ------- | ---------- | ----------- |
 | Aktion | `*/read`   | Anzeigen aller Azure-Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellungen und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
 | Aktion | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Veraltet: es gibt keinen Grund, diese Berechtigung Benutzern zuzuweisen. |
@@ -160,7 +160,7 @@ Mitglieder der Rolle *Log Analytics-Mitwirkender* können folgende Aktionen ausf
 
 Die Rolle „Log Analytics-Mitwirkender“ umfasst die folgenden Azure-Aktionen:
 
-| Berechtigung | BESCHREIBUNG |
+| Berechtigung | Beschreibung |
 | ---------- | ----------- |
 | `*/read`     | Anzeigen aller Ressourcen und der Ressourcenkonfiguration, einschließlich: <br> VM-Erweiterungsstatus <br> Konfiguration von Azure-Diagnosen für Ressourcen <br> Sämtliche Eigenschaften und Einstellungen aller Ressourcen. <br> Für Arbeitsbereiche lässt dies uneingeschränkte Berechtigungen zum Lesen der Arbeitsbereichseinstellung und Durchführen von Abfragen der Daten zu. Genauere Optionen finden Sie oben. |
 | `Microsoft.Automation/automationAccounts/*` | Erstellen und Konfigurieren von Azure Automation-Konten (einschließlich Hinzufügen und Bearbeiten von Runbooks) |
@@ -187,7 +187,7 @@ Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzuneh
 
 Wenn Benutzer Protokolle aus einem Arbeitsbereich mit Zugriff im Ressourcenkontext abfragen, verfügen sie über die folgenden Berechtigungen für die Ressource:
 
-| Berechtigung | BESCHREIBUNG |
+| Berechtigung | Beschreibung |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Beispiele:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Möglichkeit, alle Protokolldaten für die Ressource anzuzeigen.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Die Möglichkeit zum Konfigurieren von Diagnoseeinstellungen, um das Einrichten von Protokollen für diese Ressource zuzulassen. |
@@ -241,13 +241,12 @@ Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weit
 
 **RBAC auf Tabellenebene** ermöglicht zusätzlich zu den anderen Berechtigungen eine präzisere Steuerung von Daten in einem Log Analytics-Arbeitsbereich. Mit diesem Steuerelement können Sie bestimmte Datentypen definieren, auf die nur eine bestimmte Gruppe von Benutzern Zugriff besitzt.
 
-Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/logs-structure.md) im Arbeitsbereich entweder zu gewähren oder zu verweigern. Diese Rollen gelten für Arbeitsbereiche mit dem [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode) für den Arbeitsbereichskontxt oder Ressourcenkontext, und zwar unabhängig vom [Zugriffsmodus](design-logs-deployment.md#access-mode) des Benutzers.
+Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](../log-query/logs-structure.md) im Arbeitsbereich zu gewähren. Diese Rollen gelten für Arbeitsbereiche mit dem [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode) für den Arbeitsbereichskontxt oder Ressourcenkontext, und zwar unabhängig vom [Zugriffsmodus](design-logs-deployment.md#access-mode) des Benutzers.
 
 Erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md) mit den folgenden Aktionen, um den Zugriff auf die Tabellenzugriffssteuerung zu definieren.
 
-* Um den Zugriff auf eine Tabelle zu gewähren, fügen Sie sie im Abschnitt **Actions** der Rollendefinition hinzu.
-* Um den Zugriff auf eine Tabelle zu verweigern, fügen Sie sie im Abschnitt **NotActions** der Rollendefinition hinzu.
-* Verwenden Sie das Zeichen „*“, um alle Tabellen anzugeben.
+* Um den Zugriff auf eine Tabelle zu gewähren, fügen Sie sie im Abschnitt **Actions** der Rollendefinition hinzu. Um den Zugriff von den zulässigen **Aktionen** auszuschließen, fügen Sie sie im Abschnitt **NotActions** hinzu.
+* Verwenden Sie „Microsoft.OperationalInsights/workspaces/query/*“, um alle Tabellen anzugeben.
 
 Um beispielsweise eine Rolle mit Zugriff auf die Tabellen _Heartbeat_ und _AzureActivity_ zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 
@@ -260,7 +259,7 @@ Um beispielsweise eine Rolle mit Zugriff auf die Tabellen _Heartbeat_ und _Azure
   ],
 ```
 
-Um eine Rolle mit Zugriff nur auf die Tabelle _SecurityBaseline_ und keine weiteren Tabellen zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
+Um eine Rolle mit ausschließlichem Zugriff auf die Tabelle _SecurityBaseline_ zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 
 ```
 "Actions":  [
@@ -268,16 +267,13 @@ Um eine Rolle mit Zugriff nur auf die Tabelle _SecurityBaseline_ und keine weite
     "Microsoft.OperationalInsights/workspaces/query/read",
     "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
 ],
-"NotActions":  [
-    "Microsoft.OperationalInsights/workspaces/query/*/read"
-],
 ```
 
 ### <a name="custom-logs"></a>Benutzerdefinierte Protokolle
 
  Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](../log-query/get-started-portal.md#understand-the-schema) aufgeführten Tabellen zu überprüfen.
 
- Sie können derzeit den Zugriff auf einzelne benutzerdefinierte Protokolle nicht gewähren oder verweigern, aber Sie können den Zugriff auf alle benutzerdefinierten Protokolle gewähren oder verweigern. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
+ Sie können derzeit den Zugriff auf einzelne benutzerdefinierte Protokolle nicht gewähren, aber Sie können den Zugriff auf alle benutzerdefinierten Protokolle gewähren. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 
 ```
 "Actions":  [

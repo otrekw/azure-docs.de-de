@@ -1,25 +1,18 @@
 ---
-title: Installieren des Microsoft Azure StorSimple 8600-Geräts | Microsoft-Dokumentation
+title: Installieren eines Microsoft Azure StorSimple 8600-Geräts
 description: Beschreibt, wie Sie das StorSimple 8600-Gerät auspacken, in ein Rack einbauen und verkabeln., bevor Sie die Software bereitstellen und konfigurieren.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965263"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277128"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8600-Geräts
 
@@ -34,7 +27,7 @@ Die folgenden Schritte bieten klare und ausführliche Anweisungen zum Auspacken 
 ### <a name="prepare-to-unpack-your-device"></a>Vorbereitungen zum Auspacken des Geräts
 Lesen Sie die folgenden Informationen, bevor Sie das Gerät auspacken.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)![Symbol „Schwergewicht“](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
 
 1. Stellen Sie aufgrund des Gewichts des Geräts sicher, dass zwei Personen verfügbar sind, wenn Sie den Vorgang manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 2. Legen Sie den Karton auf einen flachen, ebenen Untergrund.
@@ -42,19 +35,19 @@ Lesen Sie die folgenden Informationen, bevor Sie das Gerät auspacken.
 Führen Sie dann die folgenden Schritte aus, um das Gerät auszupacken.
 
 #### <a name="to-unpack-your-device"></a>So packen Sie das Gerät aus
-1. Überprüfen Sie den Karton und das Verpackungsmaterial auf Risse, Schnitte, Wasserschäden oder anderweitige offensichtliche Beschädigungen. Wenn der Karton oder die Verpackung stark beschädigt sind, öffnen Sie den Karton nicht. Wenden Sie sich an den [Microsoft Support](storsimple-8000-contact-microsoft-support.md) , um zu ermitteln, ob sich das Gerät in funktionsfähigem Zustand befindet.
+1. Überprüfen Sie den Karton und das Verpackungsmaterial auf Risse, Schnitte, Wasserschäden oder anderweitige offensichtliche Beschädigungen. Wenn der Karton oder die Verpackung stark beschädigt sind, öffnen Sie den Karton nicht. [Wenden Sie sich an den Microsoft Support](storsimple-8000-contact-microsoft-support.md) , um zu ermitteln, ob sich das Gerät in funktionsfähigem Zustand befindet.
 2. Öffnen Sie den äußeren Karton, und nehmen Sie dann die beiden Kartons mit dem primären Gehäuse und dem EBOD-Gehäuse aus diesem Karton. Nun können Sie das primäre Gehäuse und das EBOD-Gehäuse auspacken. Die folgende Abbildung zeigt eines der ausgepackten Gehäuse.
    
     ![Auspacken des Speichergeräts](./media/storsimple-8600-hardware-installation/HCSUnpackyour4Udevice.png)
    
     **Das ausgepackte Speichergerät**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Karton |
    |   2 |SAS-Kabel (in der Verpackung für Zubehör und Kabel) |
    |   3 |Untere Styroporeinlage |
-   |   4 |Gerät |
+   |   4 |Sicherungsmedium |
    |   5 |Obere Styroporeinlage |
    |   6 |Zubehörkarton |
 3. Stellen Sie nach dem Auspacken der beiden Kartons sicher, dass Folgendes vorhanden ist:
@@ -70,7 +63,7 @@ Führen Sie dann die folgenden Schritte aus, um das Gerät auszupacken.
    * Zwei Rackmontagekits (vier Seitenschienen mit Befestigungsteilen, davon jeweils zwei für das primäre Gehäuse und das EBOD-Gehäuse), ein Kit pro Karton
    * Dokumentation "Erste Schritte"
      
-     Wenn Sie eines der oben aufgeführten Teile nicht erhalten haben, wenden Sie sich an den [Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
+     Wenn Sie eines der oben aufgeführten Teile nicht erhalten haben, [wenden Sie sich an den Microsoft Support](storsimple-8000-contact-microsoft-support.md).  
 
 Im nächsten Schritt bauen Sie das Gerät in ein Rack ein.
 
@@ -92,7 +85,7 @@ Die Gehäuse werden in ein 19-Zoll-Standardrack mit Pfosten an Vorder- und Rück
 2. Stellen Sie sicher, dass am vorgesehenen Standort eine Standardstromversorgung von einer unabhängigen Quelle oder eine Rack-PDU (Power Distribution Unit) mit unterbrechungsfreier Stromversorgung (USV) vorhanden ist.
 3. Vergewissern Sie sich, dass das Rack, in das Sie die Gehäuse einbauen möchten, Platz für einen Einschub mit 4 HE (2 x 2 HE) bietet.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol für hohes Gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)![Symbol „Schwergewicht“](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **WARNUNG!**
 
  Stellen Sie aufgrund des Gewichts des Geräts sicher, dass zwei Personen verfügbar sind, wenn Sie die Einrichtung des Geräts manuell durchführen. Ein vollständig konfiguriertes Gehäuse kann bis zu 32 kg wiegen.
 
@@ -113,7 +106,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
    
     **Befestigen der Gleitschienen an den Seiten des Gehäuses**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |  1 |Rundkopfschrauben M3 x 4 |
    |  2 |Gehäusegleitschiene |
@@ -126,7 +119,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
    
     **Befestigen der Schienenbaugruppen am Rack**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Klemmschraube |
    |   2 |Vierkantloch-Schraube für vorderen Rackpfosten |
@@ -152,7 +145,7 @@ Führen Sie die folgenden Schritte aus, um das EBOD-Gehäuse unter Verwendung de
    
     **Anbringen der Flanschkappen**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   1 |Befestigungsschraube für Gehäuse |
 
@@ -205,7 +198,7 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
    
     **Rückseite des Geräts mit Datenanschlüssen**
    
-   | Bezeichnung | BESCHREIBUNG |
+   | Bezeichnung | Beschreibung |
    | --- | --- |
    |   0,1,4,5 |1-GbE-Netzwerkschnittstellen |
    |   2,3 |10-GbE-Netzwerkschnittstellen |
@@ -216,9 +209,9 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
 
 **Netzwerkverkabelung des Geräts**
 
-| Bezeichnung | BESCHREIBUNG |
+| Bezeichnung | Beschreibung |
 | --- | --- |
-| Eine Datei |LAN mit Internetzugriff |
+| Ein |LAN mit Internetzugriff |
 | B |Controller 0 |
 | C |PCM 0 |
 | D |Controller 1 |
@@ -263,7 +256,7 @@ Führen Sie die folgenden Schritte aus, um den seriellen Anschluss zu verkabeln.
 6. Stellen Sie sicher, dass die Verbindung funktioniert, indem Sie auf der Konsole die EINGABETASTE drücken. Ein Menü der seriellen Konsole sollte angezeigt werden.
 
 > [!NOTE]
-> **Lights-Out-Management:** Wenn das Gerät in einem Remoterechenzentrum oder in einem Computerraum mit beschränktem Zugriff installiert ist, stellen Sie sicher, dass die seriellen Verbindungen zu beiden Controllern immer mit einem Switch einer seriellen Konsole oder einem ähnlichen Gerät verbunden sind. Dies ermöglicht bei einer Netzwerkunterbrechung oder unerwarteten Fehlern Out-of-Band-Remotesteuerungs- und -Supportvorgänge.
+> **Lights-Out-Management:** Wenn das Gerät in einem Remoterechenzentrum oder in einem Computerraum mit beschränktem Zugriff installiert ist, stellen Sie sicher, dass die seriellen Verbindungen mit beiden Controllern immer mit einem Switch einer seriellen Konsole oder einem ähnlichen Gerät verbunden sind. Dies ermöglicht bei einer Netzwerkunterbrechung oder unerwarteten Fehlern Out-of-Band-Remotesteuerungs- und -Supportvorgänge.
 > 
 > 
 

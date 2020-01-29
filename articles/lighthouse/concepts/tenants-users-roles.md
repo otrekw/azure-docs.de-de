@@ -1,14 +1,14 @@
 ---
 title: Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 description: Erfahren Sie mehr über die Konzepte von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien.
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453572"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156334"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 
@@ -29,6 +29,9 @@ Für die delegierte Azure-Ressourcenverwaltung werden aktuell alle [integrierten
 - Die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) wird nicht unterstützt.
 - Integrierte Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions) werden nicht unterstützt.
 - Die integrierte Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) wird unterstützt, aber nur für den eingeschränkten Zweck der [Zuweisung von Rollen zu einer verwalteten Identität im Kundenmandanten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Weitere Berechtigungen, die üblicherweise über diese Rolle gewährt werden, werden nicht angewendet. Wenn Sie einen Benutzer mit dieser Rolle definieren, müssen Sie auch die integrierten Rollen angeben, die dieser Benutzer verwalteten Identitäten zuweisen kann.
+
+> [!NOTE]
+> Nachdem Azure eine passende neue integrierte Rolle hinzugefügt wurde, kann sie beim [Onboarding eines Kunden mithilfe von Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) zugewiesen werden. Es kann zu einer Verzögerung kommen, bevor die neu hinzugefügte Rolle beim [Veröffentlichen eines verwalteten Dienstangebots](../how-to/publish-managed-services-offers.md) im Cloud-Partnerportal verfügbar wird.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Best Practices für das Definieren von Benutzern und Rollen
 

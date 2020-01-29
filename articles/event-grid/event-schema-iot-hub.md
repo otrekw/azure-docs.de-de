@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid-Schema für IoT Hub | Microsoft-Dokumentation
-description: Referenzseite für das Schemaformat und die Eigenschaften von Ereignissen in IoT Hub
+description: In diesem Artikel werden die Eigenschaften und das Schema für Azure IoT Hub-Ereignisse beschrieben. Dabei werden die verfügbaren Ereignistypen, ein Beispielereignis und Ereigniseigenschaften aufgelistet.
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -8,14 +8,14 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/17/2019
+ms.date: 01/21/2020
 ms.author: kgremban
-ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076352"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513030"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
 
@@ -27,7 +27,7 @@ Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen i
 
 Azure IoT Hub gibt die folgenden Ereignistypen aus:
 
-| Ereignistypen | BESCHREIBUNG |
+| Ereignistyp | Beschreibung |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. | 
@@ -148,20 +148,20 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
 
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene: 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
 | topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
 | eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
 | eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| data | object | IoT Hub-Ereignisdaten.  |
+| data | Objekt (object) | IoT Hub-Ereignisdaten.  |
 | dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
 | metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | hubName | string | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
 | deviceId | string | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
@@ -170,15 +170,15 @@ Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber.
 
 Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | moduleId | string | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| deviceConnectionStateEventInfo | object | Ereignisinformationen zum Verbindungsstatus des Geräts
+| deviceConnectionStateEventInfo | Objekt (object) | Ereignisinformationen zum Verbindungsstatus des Geräts
 | sequenceNumber | string | Eine Zahl, die hilft, die Reihenfolge der Ereignisse „Gerät verbunden“ oder „Gerät getrennt“ anzugeben. Die letzten Ereignisse haben eine höhere Sequenznummer als frühere Ereignisse. Diese Zahl kann sich um mehr als 1 ändern, aber sie ist immer ansteigend. Weitere Informationen finden Sie unter [Verwenden der Sequenznummer](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die D2C-Nachricht im [IoT Hub-Nachrichtenformat](../iot-hub/iot-hub-devguide-messages-construct.md) und weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | body | string | Der Inhalt der Nachricht vom Gerät. |
 | properties | string | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
@@ -186,9 +186,9 @@ Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die
 
 Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
-| twin | object | Informationen zum Gerätezwilling, der Clouddarstellung der Anwendungsgeräte-Metadaten. | 
+| twin | Objekt (object) | Informationen zum Gerätezwilling, der Clouddarstellung der Anwendungsgeräte-Metadaten. | 
 | deviceID | string | Der eindeutige Bezeichner des Gerätezwillings. | 
 | etag | string | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen eines Gerätezwillings sichergestellt wird. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. |  
 | deviceEtag| string | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen einer Geräteregistrierung sichergestellt wird. Jedes deviceEtag ist pro Gerätezwilling garantiert eindeutig. |
@@ -202,8 +202,8 @@ Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthäl
 | primaryThumbprint | string | Der primäre Fingerabdruck für das x509-Zertifikat. |
 | secondaryThumbprint | string | Der sekundäre Fingerabdruck für das x509-Zertifikat. | 
 | version | integer | Ein ganzzahliger Wert, der bei jeder Aktualisierung des Gerätezwillings um 1 erhöht wird. |
-| desired | object | Ein Teil der Eigenschaften, der nur vom Anwendungs-Back-End geschrieben und vom Gerät gelesen werden kann. | 
-| reported | object | Ein Teil der Eigenschaften, der nur vom Gerät geschrieben und vom Anwendungs-Back-End gelesen werden kann. |
+| desired | Objekt (object) | Ein Teil der Eigenschaften, der nur vom Anwendungs-Back-End geschrieben und vom Gerät gelesen werden kann. | 
+| reported | Objekt (object) | Ein Teil der Eigenschaften, der nur vom Gerät geschrieben und vom Anwendungs-Back-End gelesen werden kann. |
 | lastUpdated | string | Der ISO8601-Zeitstempel der letzten Eigenschaftenaktualisierung für den Gerätezwilling. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
