@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912282"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514254"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -105,7 +105,7 @@ Unter Windows:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Überprüfen der YAML-Konfigurationsdatei, wenn der IoT Edge Security Manager nicht ausgeführt wird
 
 > [!WARNING]
-> YAML-Dateien können keine Tabstopps für Einzüge enthalten. Verwenden Sie stattdessen zwei Leerzeichen.
+> YAML-Dateien können keine Tabstopps für Einzüge enthalten. Verwenden Sie stattdessen zwei Leerzeichen. Elemente der obersten Ebene sollten keine führenden Leerzeichen enthalten.
 
 Unter Linux:
 
@@ -121,7 +121,7 @@ Unter Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Überprüfen von Containerprotokollen auf Probleme
 
-Wenn der Daemon für die IoT Edge-Sicherheit ausgeführt wird, können Sie sich die Protokolle der Container ansehen, um Probleme zu erkennen. Beginnen Sie mit den bereitgestellten Containern, und sehen Sie sich dann die Container der IoT Edge-Runtime an: „edgeAgent“ und „edgeHub“. Die IoT Edge-Agent-Protokolle bieten in der Regel Informationen zum Lebenszyklus der einzelnen Container. Die IoT Edge-Hub-Protokolle bieten Informationen zu Messaging und Routing. 
+Wenn der Daemon für die IoT Edge-Sicherheit ausgeführt wird, können Sie sich die Protokolle der Container ansehen, um Probleme zu erkennen. Beginnen Sie mit den bereitgestellten Containern, und sehen Sie sich dann die Container der IoT Edge-Runtime an: „edgeAgent“ und „edgeHub“. Die IoT Edge-Agent-Protokolle bieten in der Regel Informationen zum Lebenszyklus der einzelnen Container. Die IoT Edge-Hub-Protokolle bieten Informationen zu Messaging und Routing.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Ersetzen Sie `env: {}` durch:
    ```
 
    > [!WARNING]
-   > YAML-Dateien können keine Tabstopps für Einzüge enthalten. Verwenden Sie stattdessen zwei Leerzeichen.
+   > YAML-Dateien können keine Tabstopps für Einzüge enthalten. Verwenden Sie stattdessen zwei Leerzeichen. Elemente der obersten Ebene dürfen keine führenden Leerzeichen enthalten.
 
 Speichern Sie die Datei, und starten Sie den IoT Edge-Sicherheits-Manager neu.
 
@@ -435,6 +435,6 @@ Achten Sie darauf, dies auch für die Module *edgeAgent* und *edgeHub* festzuleg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sind Sie der Meinung, dass Sie in der IoT Edge-Plattform einen Fehler gefunden haben? [Melden Sie ein Problem](https://github.com/Azure/iotedge/issues), damit wir die Plattform weiter verbessern können. 
+Sind Sie der Meinung, dass Sie in der IoT Edge-Plattform einen Fehler gefunden haben? [Melden Sie ein Problem](https://github.com/Azure/iotedge/issues), damit wir die Plattform weiter verbessern können.
 
 Wenn Sie weitere Fragen haben, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support), um Hilfe zu erhalten.

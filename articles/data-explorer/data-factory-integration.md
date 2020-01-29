@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819142"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293622"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integration von Azure Data Explorer und Azure Data Factory
 
@@ -44,6 +44,14 @@ Eine ausführliche exemplarische Vorgehensweise für die Befehlsaktivität finde
 ### <a name="copy-in-bulk-from-a-database-template"></a>Massenkopieren aus einer Datenbankvorlage
 
 Die [Azure Data Factory-Vorlage zum Massenkopieren aus einer Datenbank in Azure Data Explorer](data-factory-template.md) ist eine vordefinierte Azure Data Factory-Pipeline. Die Vorlage wird zum Erstellen einer Vielzahl von Pipelines für eine Datenbank oder Tabelle verwendet, damit Daten schneller kopiert werden. 
+
+### <a name="mapping-data-flows"></a>Zuordnen von Datenflüssen 
+
+[Azure Data Factory-Zuordnungsdatenflüsse](/azure/data-factory/concepts-data-flow-overview) sind visuell gestaltete Datentransformationen, mit denen Datentechniker eine grafische Datentransformationslogik entwickeln können, ohne Code schreiben zu müssen. Verwenden Sie zum Erstellen eines Datenflusses und zum Erfassen von Daten in Azure Data Explorer die folgende Methode:
+
+1. Erstellen Sie den [Zuordnungsdatenfluss](/azure/data-factory/data-flow-create).
+1. [Exportieren Sie die Daten in Azure-Blob](/azure/data-factory/data-flow-sink). 
+1. Definieren Sie [Event Grid](/azure/data-explorer/ingest-data-event-grid) oder die [ADF-Kopieraktivität](/azure/data-explorer/data-factory-load-data), um die Daten in Azure Data Explorer zu erfassen.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Auswählen zwischen Kopier- und Azure Data Explorer-Befehlsaktivitäten beim Kopieren von Daten 
 

@@ -9,14 +9,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.manager: dougeby
-  ms.date: 12/18/2019
-  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
-  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 274d4f6b88923fc0c6d3cda03a4ffa73535e13b1
+  ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/15/2020
-  ms.locfileid: "75983221"
+  ms.lasthandoff: 01/28/2020
+  ms.locfileid: "76769654"
 landingContent:
 - title: Informationen zur Kostenverwaltung
   linkLists:
@@ -32,6 +31,10 @@ landingContent:
       url: understand-cost-mgt-data.md
     - text: Verstehen von und Arbeiten mit Bereichen
       url: understand-work-scopes.md
+  - linkListType: video
+    links:
+    - text: Videos zu Azure Cost Management
+      url: https://www.youtube.com/c/AzureCostManagement
 - title: Analysieren und Verwalten von Azure-Kosten
   linkLists:
   - linkListType: quickstart
@@ -58,14 +61,6 @@ landingContent:
       url: get-started-partners.md
     - text: Herstellen einer Verbindung mit Power BI Desktop
       url: /power-bi/desktop-connect-azure-cost-management
-- title: Analysieren und Verwalten von AWS-Kosten
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Einrichten und Konfigurieren der AWS-Integration
-      url: aws-integration-set-up-configure.md
-    - text: Verwalten von AWS-Kosten und -Nutzung
-      url: aws-integration-manage.md
 - title: Cost Management-APIs
   linkLists:
   - linkListType: concept
@@ -82,3 +77,19 @@ landingContent:
       url: /azure/templates/microsoft.consumption/budgets
     - text: Cost Management-REST-API-Beispiele
       url: https://github.com/Azure-Samples/Cost-Management-Samples
+- title: Neueste Features
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Monatliche Updates
+      url: https://azure.microsoft.com/blog/tag/cost-management/
+    - text: Featureupdates
+      url: https://azure.microsoft.com/updates/?product=cost-management
+- title: Analysieren und Verwalten von AWS-Kosten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten und Konfigurieren der AWS-Integration
+      url: aws-integration-set-up-configure.md
+    - text: Verwalten von AWS-Kosten und -Nutzung
+      url: aws-integration-manage.md

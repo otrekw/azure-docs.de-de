@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: Erstellen zusätzlicher Abonnements
           href: create-subscription.md
+        - name: Übertragen von CSP-Abonnements
+          href: transfer-subscriptions-subscribers-csp.md
         - name: Exportieren der Abonnementinformationen
           href: export-subscriptions.md
     - name: Verwalten von Enterprise Agreement-Abonnements

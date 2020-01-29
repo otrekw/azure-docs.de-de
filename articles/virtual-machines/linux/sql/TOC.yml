@@ -6,6 +6,10 @@
   items:
     - name: Erstellen eines virtuellen SQL-Computers – Portal
       href: provision-sql-server-linux-virtual-machine.md
+- name: Tutorials
+  items:
+    - name: "Einrichten einer Azure\_RHEL-VM-Verfügbarkeitsgruppe mit STONITH"
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860944"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122558"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Bewährte Methoden für Azure Digital Twins-Sicherheit
 
@@ -40,6 +40,7 @@ Einige der wichtigsten Methoden zum sicheren Schutz Ihrer IoT-Geräte sind:
 > * Begrenzen Sie E/A- und Gerätebandbreite, um die Leistung zu verbessern. Begrenzung der Übertragungsrate kann die Sicherheit verbessern, indem Denial-of-Service-Angriffe verhindert werden.
 > * Halten Sie die Gerätefirmware, das Betriebssystem und die Software auf dem neuesten Stand.
 > * Überprüfen Sie Ihre Best Practices für die Geräte-, Software-, Netzwerk- und Gatewaysicherheit in regelmäßigen Abständen, da diese sich im Lauf der Zeit weiterentwickeln und verbessern.
+> * Verwenden Sie vertrauenswürdige, zertifizierte und kompatible Sicherheitssysteme, Software und Geräte. Sehen Sie sich beispielsweise [die Complianceangebote](https://azure.microsoft.com/overview/trusted-cloud/compliance/) für Azure Cloud an.
 
 Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 
@@ -67,8 +68,8 @@ Azure Digital Twins verwendet [Azure Active Directory](https://docs.microsoft.co
 > * Verwenden Sie zum Authentifizieren anstelle des App-Geheimnisses ein Zertifikat, das von einer vertrauenswürdigen [Zertifizierungsstelle](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) ausgestellt wurde.
 > * Begrenzen Sie den OAuth 2.0-Zugriffsbereich für ein Token.
 > * Überprüfen Sie, wie lange ein Token gültig ist und ob ein Token gültig bleibt.
-> * Legen Sie entsprechende Zeitspannen fest, während denen Token gültig sind.
-> * Aktualisieren Sie abgelaufene Token.
+> * Legen Sie entsprechende Zeitspannen fest, während denen Token gültig sind. Aktualisieren Sie abgelaufene Token.
+> * Entfernen Sie nicht verwendete **Umleitungs-URIs** und Berechtigungen entsprechend [bewährte Methoden für die rollenbasierte Zugriffssteuerung](#role-based-access-control-best-practices).
 
 ## <a name="role-based-access-control-best-practices"></a>Rollenbasierte Zugriffssteuerung – bewährte Methoden
 

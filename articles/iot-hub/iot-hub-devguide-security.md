@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429310"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546944"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -57,7 +57,7 @@ Beispielsweise In einer normalen IoT-Lösung:
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Berechtigungen](#iot-hub-permissions).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung mit gemeinsam genutzten Zugriffsrichtlinien und Sicherheitsanmeldeinformationen für die Identitätsregistrierung verglichen wird.
 
@@ -134,7 +134,7 @@ Das Sicherheitstoken weist das folgende Format auf:
 
 Hier sind die erwarteten Werte:
 
-| value | BESCHREIBUNG |
+| value | Beschreibung |
 | --- | --- |
 | {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
 | {resourceURI} |Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Zum Beispiel, `myHub.azure-devices.net/devices/device1` |
@@ -347,7 +347,7 @@ Das Ergebnis, das Lesezugriff für alle Geräteidentitäten gewähren würde, w�
 
 ## <a name="supported-x509-certificates"></a>Unterstützte X.509-Zertifikate
 
-Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Bei der Authentifizierung mittels Zertifikatfingerabdruck wird nur überprüft, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Bei der Authentifizierung per Zertifizierungsstelle wird die Vertrauenskette überprüft. 
+Sie können ein X.509-Zertifikat verwenden, um ein Gerät bei IoT Hub zu authentifizieren. Laden Sie hierzu entweder einen Zertifikatfingerabdruck oder eine Zertifizierungsstelle (Certificate Authority, CA) in Azure IoT Hub hoch. Bei der Authentifizierung mittels Zertifikatfingerabdruck wird überprüft, ob der verwendete Fingerabdruck dem konfigurierten Fingerabdruck entspricht. Bei der Authentifizierung per Zertifizierungsstelle wird die Vertrauenskette überprüft. In beiden Fällen erfordert der TLS-Handshake, dass das Gerät über ein gültiges Zertifikat und einen privaten Schlüssel verfügt. Weitere Informationen finden Sie in der TLS-Spezifikation, z. B.: [RFC 5246 – Die Transport Layer Security (TLS)-Protokollversion 1.2](https://tools.ietf.org/html/rfc5246/).
 
 Unterstützte Zertifikate:
 
@@ -461,6 +461,8 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 * Unter [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) wird die Abfragesprache beschrieben, mit der Sie Informationen zu Gerätezwillingen und Aufträgen aus IoT Hub abrufen können.
 
 * [Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT](iot-hub-mqtt-support.md) enthält weitere Informationen zur IoT Hub-Unterstützung für das MQTT-Protokoll.
+
+* [RFC 5246 – Die Transport Layer Security (TLS)-Protokollversion 1.2](https://tools.ietf.org/html/rfc5246/) enthält weitere Informationen zur TLS-Authentifizierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895747"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260116"
 ---
 # <a name="configure-rules-preview-features"></a>Konfigurieren von Regeln (Vorschaufeatures)
 
@@ -33,7 +33,7 @@ Wählen Sie über den Abschnitt „Zielgeräte“ aus, auf welche Art von Gerät
 
 Bedingungen sind die Grundlage für das Auslösen von Regeln. Wenn Sie einer Regel mehrere Bedingungen hinzufügen, werden sie derzeit durch AND logisch verbunden. Mit anderen Worten: Alle Bedingungen müssen erfüllt sein, damit die Regel als „true“ (wahr) ausgewertet wird.  
 
-Im nachstehenden Screenshot wird mit den Bedingungen überprüft, wann die Temperatur höher als 90 und die Luftfeuchtigkeit niedriger als 10 ist. Wenn diese beiden Anweisungen wahr sind, wird die Regel als „true“ ausgewertet und löst eine Aktion aus.
+Im nachstehenden Screenshot wird mit den Bedingungen überprüft, wann die Temperatur höher als 70&deg;F und die Luftfeuchtigkeit niedriger als 10 ist. Wenn diese beiden Anweisungen wahr sind, wird die Regel als „true“ ausgewertet und löst eine Aktion aus.
 
 ![Bedingungen](media/howto-configure-rules/conditions.png)
 

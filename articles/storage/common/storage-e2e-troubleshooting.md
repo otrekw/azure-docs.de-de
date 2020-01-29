@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460390"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314758"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 
@@ -143,10 +143,10 @@ Weitere Informationen zum Hinzufügen und Anpassen von Metrikdiagrammen finden S
 
 Azure Storage schreibt Serverprotokolldaten in Blobs, während Metriken in Tabellen geschrieben werden. Protokoll-Blobs finden Sie im wohlbekannten Container `$logs` für Ihr Speicherkonto. Protokoll-Blobs werden hierarchisch nach Jahr, Monat, Tag und Stunde benannt, damit Sie problemlos auf den Zeitbereich zugreifen können, den Sie untersuchen möchten. Der Container für die Protokoll-Blobs im Konto `storagesample` für den 02.01.2015 von 8:00 bis 9:00 Uhr lautet beispielsweise `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. Die einzelnen Blobs in diesem Container werden sequenziell benannt, beginnend mit `000000.log`.
 
-Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen von Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos und `<storageaccountkey>` durch Ihren Zugriffsschlüssel:
+Sie können das AzCopy-Befehlszeilentool verwenden, um diese serverseitigen Protokolldateien an einen beliebigen Speicherort auf dem lokalen Computer herunterzuladen. Sie können z. B. den folgenden Befehl zum Herunterladen der Protokolldateien für Blobvorgänge verwenden, die am 2. Januar 2015 in den Ordner `C:\Temp\Logs\Server` stattgefunden haben. Ersetzen Sie hierbei `<storageaccountname>` durch den Namen Ihres Speicherkontos:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy steht zum Download auf der Seite [Azure-Downloads](https://azure.microsoft.com/downloads/) zur Verfügung. Details zur Verwendung von AzCopy finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](storage-use-azcopy.md).

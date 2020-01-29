@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351345"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260952"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -247,6 +247,9 @@ Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Der [Filte
 
 Mit der folgenden Beispielregel wird das Konto so gefiltert, dass Aktionen für Objekte ausgeführt werden, die sich in `container1` befinden und mit `foo` beginnen.  
 
+>[!NOTE]
+>Die Lebenszyklusverwaltung unterstützt nur den Typ „Blockblob“.  
+
 - Blob 30 Tage nach der letzten Änderung in die kalte Ebene verschieben
 - Blob 90 Tage nach der letzten Änderung in die Archivebene verschieben
 - Blob 2.555 Tage (sieben Jahre) nach der letzten Änderung löschen
@@ -297,7 +300,7 @@ Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbeding
 
 Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
 
-| Action        | Basisblob                                   | Momentaufnahme      |
+| Aktion        | Basisblob                                   | Momentaufnahme      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Unterstützt Blobs, die sich aktuell in der heißen Ebene befinden.         | Nicht unterstützt |
 | tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
@@ -308,7 +311,7 @@ Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen vo
 
 Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
 
-| Aktionsausführungsbedingung             | Wert der Bedingung                          | BESCHREIBUNG                             |
+| Aktionsausführungsbedingung             | Wert der Bedingung                          | Beschreibung                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Basisblobaktionen     |
 | daysAfterCreationGreaterThan     | Ganzzahliger Wert, der das Alter in Tagen angibt | Bedingung für Aktionen für Blobmomentaufnahmen |

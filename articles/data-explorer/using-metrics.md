@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/14/2020
-ms.openlocfilehash: 7ff504a466224594c0098bc9d80557d45e4197a6
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/19/2020
+ms.openlocfilehash: 82aa7f782dbb1842a29d55eef8983edd4afce8eb
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027891"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277418"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken
 
@@ -38,35 +38,83 @@ Im Bereich „Metriken“:
 
 ![Bereich „Metriken“](media/using-metrics/metrics-pane.png)
 
-1. Wählen Sie zum Erstellen eines Metrikdiagramms wie unten beschrieben den Namen der **Metrik** und die relevante **Aggregation** pro Metrik aus. In der Auswahl für die **Ressource** und den **Metriknamespace** ist Ihr Azure Data Explorer-Cluster bereits ausgewählt.
-
-    **Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
-    |---|---|---|---|
-    | Cacheauslastung | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Cacheressourcen, die derzeit vom Cluster genutzt werden. Cache ist die Größe der SSD, die für die Benutzeraktivität gemäß der definierten Cacherichtlinie zugeordnet wird. Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-vertical-scaling.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-horizontal-scaling.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
-    | CPU | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Computeressourcen, die derzeit von Computern im Cluster genutzt werden. Eine durchschnittliche CPU-Auslastung von 80 % ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der CPU beträgt 100 %. Dies bedeutet, dass es keine weiteren Computeressourcen zum Verarbeiten von Daten gibt. Wenn die Leistung eines Clusters nicht gut ist, sollten Sie den Maximalwert der CPU überprüfen, um zu ermitteln, ob bestimmte CPUs blockiert sind. |
-    | Verarbeitete Ereignisse (für Event Hubs) | Anzahl | Max, Min, Sum | Gesamtzahl der Ereignisse, die von Event Hubs gelesen und vom Cluster verarbeitet werden. Die Ereignisse werden danach unterteilt, ob sie vom Clustermodul abgelehnt oder akzeptiert werden. |
-    | Latenz bei der Erfassung | Sekunden | Avg, Max, Min | Latenz der erfassten Daten ab dem Empfangszeitpunkt der Daten im Cluster bis zu dem Zeitpunkt, zu dem die Daten bereit zum Abfragen sind. Der Zeitraum der Erfassungslatenz richtet sich nach dem Erfassungsszenario. |
-    | Ergebnis der Datenerfassung | Anzahl | Anzahl | Gesamtzahl von nicht erfolgreichen und erfolgreichen Erfassungsvorgängen. Verwenden Sie die Option **Teilung anwenden**, um Buckets mit Erfolgs- und Fehlerergebnissen zu erstellen und die Dimensionen zu analysieren (**Wert** > **Status**).|
-    | Datenerfassungsauslastung | Percent | Avg, Max, Min | Prozentsatz der tatsächlichen Ressourcen zum Erfassen von Daten von den gesamten Ressourcen, die in der Kapazitätsrichtlinie für die Erfassung zugeordnet sind. Die Standardrichtlinie für die Kapazität umfasst nicht mehr als 512 gleichzeitige Erfassungsvorgänge oder 75 % der Clusterressourcen, die für die Erfassung genutzt werden. Eine durchschnittliche Erfassungsauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der Erfassungsauslastung beträgt 100 %. Dies bedeutet, dass die gesamte Erfassungskapazität des Clusters genutzt wird und unter Umständen eine Erfassungswarteschlange entsteht. |
-    | Datenerfassungsvolumen (in MB) | Anzahl | Max, Min, Sum | Die Gesamtgröße der im Cluster erfassten Daten (in MB) vor der Komprimierung. |
-    | Keep-Alive | Anzahl | Avg | Dient zum Nachverfolgen der Reaktionsfähigkeit des Clusters. Für einen Cluster mit höchster Reaktionsfähigkeit wird der Wert 1 zurückgegeben, und für einen blockierten oder getrennten Cluster lautet der Wert 0. |
-    | Abfragedauer | Sekunden | Count, Avg, Min, Max, Sum | Gesamtzeit bis zum Empfangen der Abfrageergebnisse (ohne Netzwerklatenz). |
-    | Gesamtanzahl gleichzeitiger Abfragen | Anzahl | Avg, Max, Min, Sum | Die Anzahl der Abfragen, die im Cluster parallel ausgeführt werden. Diese Metrik ist eine gute Möglichkeit, um die Auslastung des Clusters einzuschätzen. |
-    | Gesamtanzahl gedrosselter Abfragen | Anzahl | Avg, Max, Min, Sum | Die Anzahl der gedrosselten (abgelehnten) Abfragen im Cluster. Die maximal zulässige Anzahl gleichzeitiger (paralleler) Abfragen wird in der Richtlinie für gleichzeitige Abfragen definiert. |
-    | Gesamtanzahl gedrosselter Befehle | Anzahl | Avg, Max, Min, Sum | Die Anzahl der gedrosselten (abgelehnten) Befehle im Cluster, da die maximal zulässige Anzahl gleichzeitiger (paralleler) Befehle erreicht wurde. |
-    | Gesamtanzahl von Erweiterungen | Anzahl | Avg, Max, Min, Sum | Gesamtanzahl der Datenerweiterungen im Cluster. Änderungen an dieser Metrik können massive Datenstrukturänderungen und eine hohe Auslastung des Clusters mit sich bringen, da das Zusammenführen von Datenerweiterungen eine CPU-intensive Aktivität ist. |
-    | | | | |
-
-    Weitere Informationen zu [unterstützten Azure Data Explorer-Clustermetriken](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
-
-2. Wählen Sie die Schaltfläche **Metrik hinzufügen**, um mehrere Metriken in demselben Diagramm anzuzeigen.
-3. Wählen Sie die Schaltfläche **+ Neues Diagramm**, um mehrere Diagramme in einer Ansicht anzuzeigen.
-4. Verwenden Sie die Zeitauswahl, um den Zeitbereich zu ändern (Standardeinstellung: Letzte 24 Stunden).
-5. Verwenden Sie [**Filter hinzufügen** und **Teilung anwenden**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) für Metriken, die über Dimensionen verfügen.
-6. Wählen Sie die Option **An Dashboard anheften**, um Ihre Diagrammkonfiguration den Dashboards hinzuzufügen, damit Sie die Anzeige erneut verwenden können.
-7. Legen Sie die Option **Neue Warnungsregel** fest, um Ihre Metriken mit den festgelegten Kriterien zu visualisieren. Die neue Warnungsregel enthält Ihre Dimensionen für Zielressource, Metrik, Teilung und Filter aus dem Diagramm. Ändern Sie diese Einstellungen im [Bereich für die Erstellung von Warnungsregeln](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+1. Wählen Sie zum Erstellen eines Metrikdiagramms den Namen der **Metrik** und die relevante **Aggregation** pro Metrik aus. In der Auswahl für die **Ressource** und den **Metriknamespace** ist Ihr Azure Data Explorer-Cluster bereits ausgewählt. Weitere Informationen zu verschiedenen Metriken finden Sie unter [unterstützte Azure Data Explorer-Metriken](#supported-azure-data-explorer-metrics).
+1. Wählen Sie die Schaltfläche **Metrik hinzufügen**, um mehrere Metriken in demselben Diagramm anzuzeigen.
+1. Wählen Sie die Schaltfläche **+ Neues Diagramm**, um mehrere Diagramme in einer Ansicht anzuzeigen.
+1. Verwenden Sie die Zeitauswahl, um den Zeitbereich zu ändern (Standardeinstellung: Letzte 24 Stunden).
+1. Verwenden Sie [**Filter hinzufügen** und **Teilung anwenden**](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) für Metriken, die über Dimensionen verfügen.
+1. Wählen Sie die Option **An Dashboard anheften**, um Ihre Diagrammkonfiguration den Dashboards hinzuzufügen, damit Sie die Anzeige erneut verwenden können.
+1. Legen Sie die Option **Neue Warnungsregel** fest, um Ihre Metriken mit den festgelegten Kriterien zu visualisieren. Die neue Warnungsregel enthält Ihre Dimensionen für Zielressource, Metrik, Teilung und Filter aus dem Diagramm. Ändern Sie diese Einstellungen im [Bereich für die Erstellung von Warnungsregeln](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
 Weitere Informationen zur Verwendung von [Metrik-Explorer](/azure/azure-monitor/platform/metrics-getting-started)
+
+## <a name="supported-azure-data-explorer-metrics"></a>Unterstützte Azure Data Explorer-Metriken
+
+Die unterstützten Azure Data Explorer-Metriken sind entsprechend ihrer Nutzung in verschiedene Kategorien unterteilt. 
+
+### <a name="cluster-health-metrics"></a>Clusterintegritätsmetriken
+
+Die Clusterintegritätsmetriken verfolgen die allgemeine Integrität des Clusters nach. Dazu gehören die Ressourcen- und Datenerfassungsauslastung sowie die Reaktionsfähigkeit.
+
+**Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+|---|---|---|---|
+| Cacheauslastung | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Cacheressourcen, die derzeit vom Cluster genutzt werden. Cache ist die Größe der SSD, die für die Benutzeraktivität gemäß der definierten Cacherichtlinie zugeordnet wird. Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-vertical-scaling.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-horizontal-scaling.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
+| CPU | Percent | Avg, Max, Min | Prozentsatz der zugewiesenen Computeressourcen, die derzeit von Computern im Cluster genutzt werden. Eine durchschnittliche CPU-Auslastung von 80 % ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der CPU beträgt 100 %. Dies bedeutet, dass es keine weiteren Computeressourcen zum Verarbeiten von Daten gibt. Wenn die Leistung eines Clusters nicht gut ist, sollten Sie den Maximalwert der CPU überprüfen, um zu ermitteln, ob bestimmte CPUs blockiert sind. |
+| Datenerfassungsauslastung | Percent | Avg, Max, Min | Prozentsatz der tatsächlichen Ressourcen zum Erfassen von Daten von den gesamten Ressourcen, die in der Kapazitätsrichtlinie für die Erfassung zugeordnet sind. Die Standardrichtlinie für die Kapazität umfasst nicht mehr als 512 gleichzeitige Erfassungsvorgänge oder 75 % der Clusterressourcen, die für die Erfassung genutzt werden. Eine durchschnittliche Erfassungsauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der Erfassungsauslastung beträgt 100 %. Dies bedeutet, dass die gesamte Erfassungskapazität des Clusters genutzt wird und unter Umständen eine Erfassungswarteschlange entsteht. |
+| Keep-Alive | Anzahl | Avg | Dient zum Nachverfolgen der Reaktionsfähigkeit des Clusters. Für einen Cluster mit höchster Reaktionsfähigkeit wird der Wert 1 zurückgegeben, und für einen blockierten oder getrennten Cluster lautet der Wert 0. |
+| Gesamtanzahl gedrosselter Befehle | Anzahl | Avg, Max, Min, Sum | Die Anzahl der gedrosselten (abgelehnten) Befehle im Cluster, da die maximal zulässige Anzahl gleichzeitiger (paralleler) Befehle erreicht wurde. |
+| Gesamtanzahl von Erweiterungen | Anzahl | Avg, Max, Min, Sum | Gesamtanzahl der Datenerweiterungen im Cluster. Änderungen an dieser Metrik können massive Datenstrukturänderungen und eine hohe Auslastung des Clusters mit sich bringen, da das Zusammenführen von Datenerweiterungen eine CPU-intensive Aktivität ist. |
+| | | | |
+
+### <a name="export-health-and-performance-metrics"></a>Exportieren von Integritäts- und Leistungsmetriken
+
+Durch das Exportieren von Integritäts- und Leistungsmetriken wird die allgemeine Integrität und Leistung von Exportvorgängen wie Verzögerung, Ergebnisse, Anzahl von Datensätzen und Auslastung nachverfolgt.
+
+**Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+|---|---|---|---|
+Fortlaufender Export – Anzahl der exportierten Datensätze    | Anzahl | SUM | Gesamtanzahl der aus dem Cluster exportierten Datensätze. |
+Maximale Verzögerung in Minuten für fortlaufenden Export |    Anzahl   | Max   | Maximaler Wert in Minuten für exportierte Datensätze.|
+Fortlaufender Export – ausstehende Anzahl | Anzahl | Max   | Maximaler Wert ausstehender Exportvorgänge.
+Fortlaufender Export – Ergebnis    | Anzahl |   Anzahl   | Gesamtanzahl fortlaufender Exportvorgänge, nach Ergebnis. Die Metrik enthält einen Namen und eine Datenbank für fortlaufenden Export. 
+Exportauslastung |    Percent | Max   | Verwendung von definiertem Steckplatz für Exportvorgänge.
+| | | | |
+
+### <a name="ingestion-health-and-performance-metrics"></a>Erfassung von Integritäts- und Leistungsmetriken
+
+Die Erfassung von Integritäts- und Leistungsmetriken verfolgt die allgemeine Integrität und Leistung von Erfassungsvorgängen wie Latenz, Ergebnisse und Volumen nach.
+
+**Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+|---|---|---|---|
+| Verarbeitete Ereignisse (für Event/IoT Hub) | Anzahl | Max, Min, Sum | Gesamtzahl der Ereignisse, die von Event Hubs gelesen und vom Cluster verarbeitet werden. Die Ereignisse werden danach unterteilt, ob sie vom Clustermodul abgelehnt oder akzeptiert werden. |
+| Latenz bei der Erfassung | Sekunden | Avg, Max, Min | Latenz der erfassten Daten ab dem Empfangszeitpunkt der Daten im Cluster bis zu dem Zeitpunkt, zu dem die Daten bereit zum Abfragen sind. Der Zeitraum der Erfassungslatenz richtet sich nach dem Erfassungsszenario. |
+| Ergebnis der Datenerfassung | Anzahl | Anzahl | Gesamtzahl von nicht erfolgreichen und erfolgreichen Erfassungsvorgängen. Verwenden Sie die Option **Teilung anwenden**, um Buckets mit Erfolgs- und Fehlerergebnissen zu erstellen und die Dimensionen zu analysieren (**Wert** > **Status**).|
+| Datenerfassungsvolumen (in MB) | Anzahl | Max, Sum | Die Gesamtgröße der im Cluster erfassten Daten (in MB) vor der Komprimierung. |
+| | | | |  
+
+### <a name="query-performance"></a>Abfrageleistung
+
+Abfrageleistungsmetriken verfolgen die Abfragedauer und Gesamtanzahl gleichzeitiger oder gedrosselter Abfragen nach.
+
+**Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+|---|---|---|---|
+| Abfragedauer | Millisekunden | Avg, Min, Max, Sum | Gesamtzeit bis zum Empfangen der Abfrageergebnisse (ohne Netzwerklatenz). |
+| Gesamtanzahl gleichzeitiger Abfragen | Anzahl | Avg, Max, Min, Sum | Die Anzahl der Abfragen, die im Cluster parallel ausgeführt werden. Diese Metrik ist eine gute Möglichkeit, um die Auslastung des Clusters einzuschätzen. |
+| Gesamtanzahl gedrosselter Abfragen | Anzahl | Avg, Max, Min, Sum | Die Anzahl der gedrosselten (abgelehnten) Abfragen im Cluster. Die maximal zulässige Anzahl gleichzeitiger (paralleler) Abfragen wird in der Richtlinie für gleichzeitige Abfragen definiert. |
+| | | | |
+
+### <a name="streaming-ingest-metrics"></a>Streamingerfassungsmetriken
+
+Streamingerfassungsmetriken verfolgen Streamingerfassungsdaten sowie Anforderungsrate, Dauer und Ergebnisse nach.
+
+**Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+|---|---|---|---|
+Datenrate der Streamingerfassung |    Anzahl   | RateRequestsPerSecond | Gesamtmenge der im Cluster erfassten Daten. |
+Dauer der Streamingerfassung   | Millisekunden  | Avg, Max, Min | Gesamtdauer aller Streamingerfassungsanforderungen. |
+Anforderungsrate der Streamingerfassung   | Anzahl | Count, Avg, Max, Min, Sum | Gesamtanzahl der Streamingerfassungsanforderungen. |
+Ergebnis der Streamingerfassung | Anzahl | Avg   | Gesamtanzahl der Streamingerfassungsanforderungen nach Ergebnistyp. |
+| | | | |
+
+Weitere Informationen zu [unterstützten Azure Data Explorer-Clustermetriken](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -8,22 +8,22 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9e4fd0203d68ef1f39d6efbb9d17d3e517969bff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a222f72e705184c5a7ba6701cfda41073c7eba57
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457276"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548746"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Grundlegendes zur Verwendung von Zertifikaten durch Azure IoT Edge
 
-IoT Edge-Zertifikate werden für die Module und Downstream-IoT-Geräte verwendet, um die Identität und Rechtmäßigkeit des Runtimemoduls des [IoT Edge-Hubs](iot-edge-runtime.md#iot-edge-hub) zu überprüfen, mit dem sie eine Verbindung herstellen. Diese Überprüfungen ermöglichen eine sichere TLS-Verbindung (Transport Layer Security) zwischen Runtime, Modulen und IoT-Geräten. Wie IoT Hub selbst erfordert IoT Edge eine sichere und verschlüsselte Verbindung zwischen IoT-Downstreamgeräten (oder Blattgeräten) und IoT Edge-Modulen. Um eine sichere TLS-Verbindung herzustellen, bietet das IoT Edge-Hubmodul eine Serverzertifikatkette zur Verbindung von Clients, damit sie seine Identität bestätigen.
+IoT Edge-Zertifikate werden von den Modulen und nachgeschalteten IoT-Geräten verwendet, um die Identität und Rechtmäßigkeit des [IoT Edge-Hub](iot-edge-runtime.md#iot-edge-hub)-Laufzeitmoduls zu überprüfen. Diese Überprüfungen ermöglichen eine sichere TLS-Verbindung (Transport Layer Security) zwischen Runtime, Modulen und IoT-Geräten. Wie IoT Hub selbst erfordert IoT Edge eine sichere und verschlüsselte Verbindung zwischen IoT-Downstreamgeräten (oder Blattgeräten) und IoT Edge-Modulen. Um eine sichere TLS-Verbindung herzustellen, bietet das IoT Edge-Hubmodul eine Serverzertifikatkette zur Verbindung von Clients, damit sie seine Identität bestätigen.
 
 In diesem Artikel wird erläutert, wie IoT Edge-Zertifikate in Produktions-, Entwicklungs- und Testszenarien funktionieren. Die Skripts sind zwar unterschiedlich (PowerShell oder Bash), aber die Konzepte sind bei Linux und Windows identisch.
 
 ## <a name="iot-edge-certificates"></a>IoT Edge-Zertifikate
 
-Hersteller sind normalerweise nicht die Endbenutzer eines IoT Edge-Geräts. Manchmal besteht die einzige Beziehung zwischen den beiden darin, dass der Endbenutzer oder Operator ein generisches Gerät vom Hersteller erwirbt. In anderen Fällen fertigt der Hersteller nach einem Vertrag ein benutzerdefiniertes Gerät für den Operator. Der Entwurf des IoT Edge-Zertifikats versucht, beide Szenarien in Betracht zu ziehen.
+Hersteller sind normalerweise nicht die Endbenutzer eines IoT Edge-Geräts. Manchmal besteht die einzige Beziehung zwischen den beiden darin, dass der Endbenutzer oder Operator ein generisches Gerät vom Hersteller erwirbt. In anderen Fällen fertigt der Hersteller unter einem Vertrag ein benutzerdefiniertes Gerät für den Operator. Der Entwurf des IoT Edge-Zertifikats versucht, beide Szenarien in Betracht zu ziehen.
 
 Die folgende Abbildung veranschaulicht die IoT Edge-Verwendung von Zertifikaten. Je nach der Anzahl der beteiligten Entitäten sind null, ein oder mehrere Zwischensignaturzertifikate zwischen dem Zertifikat der Stammzertifizierungsstelle und dem Zertifikat der Gerätezertifizierungsstelle möglich. Hier wird ein Fall gezeigt.
 
@@ -51,7 +51,7 @@ In jedem Fall verwendet der Hersteller am Ende dieser Kette ein Zertifikat der Z
 
 ### <a name="device-ca-certificate"></a>Zertifikat der Gerätezertifizierungsstelle
 
-Das Zertifikat der Gerätezertifizierungsstelle wird aus dem letzten Zertifikat der Zwischenzertifizierungsstelle im Prozess generiert und davon signiert. Dieses Zertifikat wird auf dem IoT Edge-Gerät selbst installiert, vorzugsweise an einem sicheren Speicherort wie einem Hardwaresicherheitsmodul (HSM). Darüber hinaus identifiziert ein Zertifikat der Gerätezertifizierungsstelle eindeutig ein IoT Edge-Gerät. Das Zertifikat der Gerätezertifizierungsstelle kann andere Zertifikate signieren. 
+Das Zertifikat der Gerätezertifizierungsstelle wird aus dem letzten Zertifikat der Zwischenzertifizierungsstelle im Prozess generiert und davon signiert. Dieses Zertifikat wird auf dem IoT Edge-Gerät selbst installiert, vorzugsweise an einem sicheren Speicherort wie einem Hardwaresicherheitsmodul (HSM). Darüber hinaus identifiziert ein Zertifikat der Gerätezertifizierungsstelle eindeutig ein IoT Edge-Gerät. Das Zertifikat der Gerätezertifizierungsstelle kann andere Zertifikate signieren.
 
 ### <a name="iot-edge-workload-ca"></a>IoT Edge-Workloadzertifizierungsstelle
 
@@ -59,7 +59,7 @@ Der [IoT Edge-Sicherheits-Manager](iot-edge-security-manager.md) erstellt das Ze
 
 ### <a name="iot-edge-hub-server-certificate"></a>IoT Edge-Hubserverzertifikat
 
-Das IoT Edge-Hubserverzertifikat ist das eigentliche Zertifikat, das Blattknotengeräten und Modulen während des Herstellens der von IoT Edge geforderten TLS-Verbindung zur Identitätsüberprüfung präsentiert wird. Dieses Zertifikat stellt die vollständige Kette der zu seinem Generieren verwendeten Signaturzertifikate dar – bis zum Zertifikat der Stammzertifizierungsstelle, dem das IoT-Blattgerät vertrauen muss. Beim Generieren durch den IoT Edge-Sicherheits-Manager wird als allgemeiner Name (Common Name, CN) dieses IoT Edge-Hubzertifikats die hostname-Eigenschaft in der Datei „config.yaml“ nach der Konvertierung in Kleinbuchstaben festgelegt. Dies ist eine häufige Ursache für eine Verwechslung mit IoT Edge.
+Das IoT Edge-Hubserverzertifikat ist das eigentliche Zertifikat, das Blattknotengeräten und Modulen während des Herstellens der von IoT Edge geforderten TLS-Verbindung zur Identitätsüberprüfung präsentiert wird. Dieses Zertifikat stellt die vollständige Kette der zu seinem Generieren verwendeten Signaturzertifikate dar – bis zum Zertifikat der Stammzertifizierungsstelle, dem das IoT-Blattgerät vertrauen muss. Beim Generieren durch den IoT Edge-Sicherheits-Manager wird als allgemeiner Name (Common Name, CN) dieses IoT Edge-Hubzertifikats die hostname-Eigenschaft in der Datei „config.yaml“ nach der Konvertierung in Kleinbuchstaben festgelegt. Diese Konfiguration ist eine häufige Ursache für eine Verwechslung mit IoT Edge.
 
 ## <a name="production-implications"></a>Auswirkungen auf die Produktion
 
@@ -94,9 +94,9 @@ Sie sehen die Hierarchie der Zertifikatstiefe im Screenshot dargestellt:
 | Zertifikat der Stammzertifizierungsstelle         | Zertifikat der Azure IoT Hub-Zertifizierungsstelle – nur Test                                                                           |
 |-----------------------------|-----------------------------------------------------------------------------------------------------------|
 | Zertifikat der Zwischenzertifizierungsstelle | Zertifikat der Azure IoT Hub-Zwischenzertifizierungsstelle – nur Test                                                                 |
-| Zertifikat der Gerätezertifizierungsstelle       | iotgateway.ca („iotgateway“ wurde als <Gatewayhostname> den Komfortskripts übergeben)      |
+| Zertifikat der Gerätezertifizierungsstelle       | iotgateway.ca („iotgateway“ wurde als <Gatewayhostname> den Komfortskripts übergeben)   |
 | Zertifikat der Workloadzertifizierungsstelle     | IoT Edge-Workloadzertifizierungsstelle                                                                                       |
-| IoT Edge-Hubserverzertifikat | iotedgegw.Local (entspricht dem „Hostname“ aus „config.yaml“)                                                |
+| IoT Edge-Hubserverzertifikat | iotedgegw.Local (entspricht dem „Hostname“ aus „config.yaml“)                                            |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

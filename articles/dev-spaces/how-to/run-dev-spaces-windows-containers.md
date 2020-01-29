@@ -1,20 +1,20 @@
 ---
 title: Interagieren mit Windows-Containern
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867295"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156997"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
-Sie können Azure Dev Spaces für neue und vorhandene Kubernetes-Namespaces aktivieren. Azure Dev Spaces führt Dienste aus, die in Linux-Containern ausgeführt werden, und instrumentiert diese. Diese Dienste können auch mit Anwendungen interagieren, die in Windows-Containern im selben Namespace ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Dev Spaces Dienste in einem Namespace mit vorhandenen Windows-Containern ausführen.
+Sie können Azure Dev Spaces für neue und vorhandene Kubernetes-Namespaces aktivieren. Azure Dev Spaces führt Dienste aus, die in Linux-Containern ausgeführt werden, und instrumentiert diese. Diese Dienste können auch mit Anwendungen interagieren, die in Windows-Containern im selben Namespace ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Dev Spaces Dienste in einem Namespace mit vorhandenen Windows-Containern ausführen. Derzeit ist es nicht möglich, Windows-Container mit Azure Dev Spaces zu debuggen oder anzufügen.
 
 ## <a name="set-up-your-cluster"></a>Einrichten Ihres Clusters
 
@@ -36,8 +36,9 @@ Die folgende Beispielausgabe zeigt einen Cluster mit einem Windows- und einem Li
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 Wenden Sie einen [Taint][using-taints] auf die Windows-Knoten an. Der Taint auf Ihren Windows-Knoten verhindert, dass Azure Dev Spaces die Ausführung von Linux-Containern auf Ihren Windows-Knoten plant. Mit dem folgenden Beispielbefehl wird ein Taint auf den Windows-Knoten *aksnpwin987654* aus dem vorherigen Beispiel angewendet.
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Die Beispielanwendung verwendet [Helm 2][helm-installed], um den Windows-Dienst in Ihrem Cluster auszuführen. Installieren Sie Helm in Ihrem Cluster, und erteilen Sie ihm die entsprechenden Berechtigungen:
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-Navigieren Sie zum Verzeichnis `charts`, und führen Sie den Windows-Dienst aus:
+Die Beispielanwendung verwendet [Helm][helm-installed], um den Windows-Dienst auf Ihrem Cluster auszuführen. Navigieren Sie zum Verzeichnis `charts`, und führen Sie mit Helm den Windows-Dienst aus:
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 Der oben stehende Befehl verwendet Helm, um den Windows-Dienst im Namespace *dev* auszuführen. Wenn kein Namespace mit dem Namen *dev* vorhanden ist, wird er erstellt.
@@ -122,16 +115,15 @@ spec:
 Verwenden Sie `helm list`, um die Bereitstellung für den Windows-Dienst aufzulisten:
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-Im oben stehenden Beispiel lautet der Name Ihrer Bereitstellung *gilded-jackal*. Aktualisieren Sie den Windows-Dienst mit der neuen Konfiguration unter Verwendung von `helm upgrade`:
+Im vorstehenden Beispiel lautet der Name Ihrer Bereitstellung *windows-service*. Aktualisieren Sie den Windows-Dienst mit der neuen Konfiguration unter Verwendung von `helm upgrade`:
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 Da Sie die Datei `deployment.yaml` aktualisiert haben, wird Ihr Dienst von Azure Dev Spaces nicht getestet und instrumentiert.
@@ -178,11 +170,11 @@ Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche UR
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-development-qs]
+> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

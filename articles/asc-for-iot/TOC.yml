@@ -37,6 +37,8 @@
       href: concept-security-module.md
     - name: Sicherheitswarnungen
       href: concept-security-alerts.md
+    - name: Anpassbare Sicherheitswarnungen
+      href: concept-customizable-security-alerts.md
     - name: Sicherheitsempfehlungen
       href: concept-recommendations.md
     - name: Grundwert

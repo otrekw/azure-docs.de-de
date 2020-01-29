@@ -9,7 +9,7 @@
       href: quickstart-onboard.md
     - name: Einblick in Warnungen
       href: quickstart-get-visibility.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erkennen von Bedrohungen mithilfe integrierter Analysen
       href: tutorial-detect-threats-built-in.md
@@ -27,7 +27,7 @@
       href: roles.md
     - name: Erweiterte mehrstufige Angriffserkennung
       href: fusion.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Datenquellen
       href: connect-data-sources.md
@@ -110,6 +110,8 @@
           href: connect-azure-stack.md
     - name: Mehrere Mandanten (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Einrichten von kundenseitig verwalteten Schlüsseln (CMK)
+      href: customer-managed-keys.md
     - name: Erstellen von Incidents auf der Grundlage von Warnungen
       href: create-incidents-from-alerts.md
     - name: Suche

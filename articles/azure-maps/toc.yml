@@ -9,7 +9,7 @@
   items:
     - name: Erstellen einer Web-App
       href: quick-demo-map-app.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Tutorials für das Web-SDK
       items:
@@ -73,7 +73,7 @@
       href: mobility-service-data-structure.md
     - name: Konzepte des Wetterdiensts
       href: weather-services-concepts.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
       items:
@@ -233,6 +233,8 @@
       href: /azure/templates/microsoft.maps/accounts
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Nutzungsbedingungen für Azure Maps
       href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps-Preise
@@ -268,7 +270,7 @@
         - name: IoT Solution Accelerators
           href: /azure/iot-suite
         - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+          href: /azure/iot-central/iot-support-help
     - name: Plattformdienste
       items:
         - name: IoT Hub
@@ -283,7 +285,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-Lösungen
       items:
         - name: IoT Edge
           href: /azure/iot-edge

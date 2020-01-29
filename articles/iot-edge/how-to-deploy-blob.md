@@ -7,12 +7,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
-ms.openlocfilehash: fe09fb47a75ff9d412ffab2daafaf241a43443b4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 8c2df4854f4cdb93c08e22f7dcdc23b1b69b13d6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729606"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548780"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 
@@ -37,7 +37,7 @@ Im Azure-Portal werden Sie durch das Erstellen eines Bereitstellungsmanifests un
 
 ### <a name="configure-a-deployment-manifest"></a>Konfigurieren eines Bereitstellungsmanifests
 
-Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Das Azure-Portal verfügt über einen Assistenten, der Sie durch die Erstellung eines Bereitstellungsmanifests führt, damit Sie das JSON-Dokument nicht manuell erstellen müssen. Der Vorgang besteht aus drei Schritten, die auf Registerkarten aufgeteilt sind: **Module**, **Routen** und **Überprüfen und erstellen**.
+Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module bereitgestellt werden sollen, wie Daten zwischen den Modulen übermittelt werden und welche Eigenschaften die Modulzwillinge aufweisen sollen. Das Azure-Portal enthält einen Assistenten, der Sie durch die Erstellung eines Bereitstellungsmanifests führt. Der Vorgang besteht aus drei Schritten, die auf Registerkarten aufgeteilt sind: **Module**, **Routen** und **Überprüfen und erstellen**.
 
 #### <a name="add-modules"></a>Hinzufügen von Modulen
 
@@ -57,11 +57,11 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    > [!IMPORTANT]
    > Bei Modulaufrufen für Azure IoT Edge muss die Groß-/Kleinschreibung beachtet werden, und auch für das Storage SDK werden standardmäßig Kleinbuchstaben verwendet. Der Name des Moduls im [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) lautet **AzureBlobStorageonIoTEdge**. Indem Sie den Namen aber ändern und Kleinbuchstaben verwenden, können Sie sicherstellen, dass Ihre Verbindungen mit dem Modul „Azure Blob Storage auf IoT Edge“ nicht unterbrochen werden.
 
-3. Auf der Registerkarte **Optionen für Containererstellung** fügen Sie JSON-Code ein, um Speicherkontoinformationen und einen Bereitstellungspunkt für den Speicher auf Ihrem Gerät anzugeben.
+3. Öffnen Sie die Registerkarte **Optionen für Containererstellung**.
 
    ![Einstellungen für Modulzwilling](./media/how-to-deploy-blob/addmodule-tab3.png)
 
-   Kopieren Sie den folgenden JSON-Code in das Feld, und berücksichtigen Sie dabei die Platzhalterbeschreibungen im nächsten Schritt.
+   Kopieren Sie den folgenden JSON-Code, und fügen Sie ihn in das Feld ein, um Informationen zum Speicherkonto und eine Einbindung für den Speicher auf Ihrem Gerät bereitzustellen.
   
    ```json
    {
@@ -80,13 +80,13 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    }
    ```
 
-4. Aktualisieren Sie den für **Optionen für Containererstellung** kopierten JSON-Code mit folgenden Informationen:
+4. Aktualisieren Sie den in **Optionen für Containererstellung** kopierten JSON-Code mit folgenden Informationen:
 
    - Ersetzen Sie `<your storage account name>` durch einen leicht zu merkenden Namen. Kontonamen sollten 3 bis 24 Zeichen lang sein und nur Kleinbuchstaben und Zahlen enthalten. Leerzeichen sind nicht zulässig.
 
    - Ersetzen Sie `<your storage account key>` durch einen Base64-Schlüssel mit 64 Bytes. Sie können einen Schlüssel mit Tools wie [GeneratePlus](https://generate.plus/en/base64) generieren. Mit diesen Anmeldeinformationen greifen Sie über andere Module auf Blob Storage zu.
 
-   - Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul Daten speichern soll. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
+   - Ersetzen Sie `<storage mount>` gemäß Ihrem Containerbetriebssystem. Geben Sie den Namen eines [Volumes](https://docs.docker.com/storage/volumes/) oder den absoluten Pfad zu einem vorhandenen Verzeichnis auf Ihrem IoT Edge-Gerät an, auf bzw. unter dem das Blobmodul seine Daten speichern wird. Die Speicherbereitstellung ordnet einen Ort auf Ihrem Gerät einem festen Ort im Modul zu.
 
      - Für Linux-Container lautet das Format *\<Speicherpfad oder Volume>:/blobroot*. Beispiel:
          - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:/blobroot**.
@@ -94,7 +94,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
      - Für Windows-Container lautet das Format *\<Speicherpfad oder Volume>:C:/BlobRoot*. Beispiel:
          - Verwenden einer [Volumebereitstellung](https://docs.docker.com/storage/volumes/): **my-volume:C:/blobroot**.
          - Verwenden einer [Bindungsbereitstellung](https://docs.docker.com/storage/bind-mounts/): **C:/ContainerData:C:/BlobRoot**.
-         - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
+         - Sie können Ihre SMB-Netzwerkadresse zuordnen, statt das lokale Laufwerk zu verwenden. Weitere Informationen hierzu finden Sie unter [Verwenden der SMB-Freigabe als lokalen Speicher](how-to-store-data-blob.md#using-smb-share-as-your-local-storage).
 
      > [!IMPORTANT]
      > Die zweite Hälfte des Werts für die Speicherbereitstellung verweist auf einen bestimmten Ort im Modul und darf nicht geändert werden. Die Speicherbereitstellung muss immer auf **:/blobroot** (Linux-Container) bzw. auf **:C:/BlobRoot** (Windows-Container) enden.
@@ -261,6 +261,7 @@ Bearbeiten Sie das Feld **Optionen für Containererstellung** (im Azure-Portal) 
 Wenn Sie zusätzliche Blob Storage-Module verbinden, ändern Sie den Endpunkt dahingehend, dass er auf den aktualisierten Hostport zeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informieren Sie sich ausführlicher über [Azure Blob Storage in IoT Edge](how-to-store-data-blob.md).
 
 Weitere Informationen zur Funktionsweise und Erstellung von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).

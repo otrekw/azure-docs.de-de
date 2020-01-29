@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928448"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121776"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
 
@@ -155,17 +155,19 @@ Sie können die verwaltete Identität über das Azure-Portal oder programmgesteu
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Abrufen der verwalteten Identität über das Azure-Portal
 
-Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Eigenschaften“:
+Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Eigenschaften“.
 
 - Objekt-ID der verwalteten Identität
 - Mandant der verwalteten Identität
-- **Anwendungs-ID der verwalteten Identität** > diesen Wert kopieren
+- Anwendungs-ID der verwalteten Identität
 
-![Abrufen der verwalteten Identität](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+Die Informationen zur verwalteten Identität werden auch angezeigt, wenn Sie einen verknüpften Dienst erstellen, der die Authentifizierung der verwalteten Identität unterstützt, z. B. Azure-Blob, Azure Data Lake Storage, Azure Key Vault usw.
+
+Wenn Sie eine Berechtigung erteilen, verwenden Sie die Objekt-ID oder den Data Factory-Namen (als Name der verwalteten Identität) zur Ermittlung dieser Identität.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Abrufen der verwalteten Identität mit PowerShell
 
-Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden wie folgt zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen:
+Die Prinzipal-ID und Mandanten-ID der verwalteten Identität werden folgendermaßen zurückgegeben, wenn Sie eine bestimmte Data Factory abrufen: Verwenden Sie die **PrincipalId**, um Zugriff zu gewähren:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Kopieren Sie die Prinzipal-ID, und führen Sie den unten angegebenen Azure Active Directory-Befehl mit der Prinzipal-ID als Parameter aus, um **ApplicationId** abzurufen. Diesen Wert verwenden Sie dann zum Gewähren des Zugriffs:
+Sie können die Anwendungs-ID abrufen, indem Sie die vorstehende Prinzipal-ID kopieren und dann den unten gezeigten Azure Active Directory Befehl mit der Prinzipal-ID als Parameter ausführen.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

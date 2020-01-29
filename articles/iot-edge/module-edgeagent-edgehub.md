@@ -8,36 +8,36 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731c51894126a6de75c9fc25e4e7bdb3dfa4dd03
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665796"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548610"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
-Der IoT Edge-Agent und der IoT Edge-Hub sind die beiden Module, aus denen sich die IoT Edge-Runtime zusammensetzt. Weitere Informationen dazu, welche Aufgaben von einem Modul jeweils ausgeführt werden, finden Sie unter [Grundlegendes zur Azure IoT Edge-Laufzeit und ihrer Architektur](iot-edge-runtime.md). 
+Der IoT Edge-Agent und der IoT Edge-Hub sind die beiden Module, aus denen sich die IoT Edge-Runtime zusammensetzt. Weitere Informationen zu den Zuständigkeiten der einzelnen Laufzeitmodule finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
 Dieser Artikel enthält die gewünschten Eigenschaften und gemeldeten Eigenschaften der Laufzeitmodulzwillinge. Weitere Informationen zum Bereitstellen von Modulen auf IoT Edge-Geräten finden Sie unter [Informationen zum Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](module-composition.md).
 
-Ein Modulzwilling enthält: 
+Ein Modulzwilling enthält:
 
 * **Gewünschte Eigenschaften** Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die vom Modul gelesen werden können. Das Modul kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten. Gewünschte Eigenschaften werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet.
 
-* **Gemeldete Eigenschaften** Das Modul kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können. Gemeldete Eigenschaften werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet. 
+* **Gemeldete Eigenschaften** Das Modul kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können. Gemeldete Eigenschaften werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Modulkonfigurationen oder -zuständen verwendet.
 
 ## <a name="edgeagent-desired-properties"></a>Gewünschte EdgeAgent-Eigenschaften
 
-Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird. 
+Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Agent und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
-| Schemaversion | Muss „1.0“ sein. | Ja |
+| schemaVersion | Muss „1.0“ sein. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |
 | runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | Ja |
 | runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den IoT Edge-Agent-Container. [Docker-Protokollierungsoptionen](https://docs.docker.com/engine/admin/logging/overview/) | Nein |
-| runtime.settings.registryCredentials<br>.{registryId}.username | Der Benutzername der Containerregistrierung. Für Azure Container Registry entspricht der Benutzername in der Regel dem Namen der Registrierung.<br><br> Registrierungsanmeldeinformationen werden für jedes nicht öffentliche Modulimage benötigt. | Nein |
+| runtime.settings.registryCredentials<br>.{registryId}.username | Der Benutzername der Containerregistrierung. Für Azure Container Registry entspricht der Benutzername in der Regel dem Namen der Registrierung.<br><br> Anmeldeinformation zur Registrierung sind für alle privaten Modulimages erforderlich. | Nein |
 | runtime.settings.registryCredentials<br>.{registryId}.password | Das Kennwort der Containerregistrierung. | Nein |
 | runtime.settings.registryCredentials<br>.{registryId}.address | Die Adresse der Containerregistrierung. Für Azure Container Registry lautet die Adresse in der Regel *{Registryname}.azurecr.io*. | Nein |  
 | systemModules.edgeAgent.type | Muss „Docker“ sein. | Ja |
@@ -67,14 +67,14 @@ Zu den vom IoT Edge-Agent gemeldeten Eigenschaften gehören drei Hauptinformatio
 2. Status der Module, die nach Angaben des IoT Edge-Agents derzeit auf dem Gerät ausgeführt werden
 3. Kopie der gewünschten Eigenschaften, die derzeit auf dem Gerät ausgeführt werden
 
-Mit dieser letzten Information, einer Kopie der aktuellen gewünschten Eigenschaften, können Sie feststellen, ob das Gerät die neuesten gewünschten Eigenschaften übernommen hat oder noch ein vorheriges Bereitstellungsmanifest ausführt.
+Anhand der Kopie der aktuellen gewünschten Eigenschaften können Sie feststellen, ob das Gerät die neueste Bereitstellung übernommen hat oder noch ein vorheriges Bereitstellungsmanifest ausführt.
 
 > [!NOTE]
 > Die gemeldeten Eigenschaften des IoT Edge-Agents sind hilfreich, da sie mit der [IoT Hub-Abfragesprache](../iot-hub/iot-hub-devguide-query-language.md) abgefragt werden können, um den Status der Bereitstellungen großflächig zu untersuchen. Weitere Informationen zur Verwendung der IoT Edge-Agent-Eigenschaften für den Status finden Sie unter [Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf](module-deployment-monitoring.md).
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
 | lastDesiredStatus.code | Dieser Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Agent erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `412`: Ungültige Schemaversion, `417`: Die gewünschten Eigenschaften sind leer, `500`: Fehler |
@@ -102,17 +102,17 @@ In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten I
 
 ## <a name="edgehub-desired-properties"></a>Gewünschte EdgeHub-Eigenschaften
 
-Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Hub und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird. 
+Der Modulzwilling für den IoT Edge-Hub wird als `$edgeHub` bezeichnet und koordiniert die Kommunikationsvorgänge zwischen dem auf einem Gerät ausgeführten IoT Edge-Hub und IoT Hub. Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanifest auf einem bestimmten Gerät im Zuge einer Einzelgeräte- oder einer umfassenden Bereitstellung angewendet wird.
 
-| Eigenschaft | BESCHREIBUNG | Im Bereitstellungsmanifest erforderlich |
+| Eigenschaft | Beschreibung | Im Bereitstellungsmanifest erforderlich |
 | -------- | ----------- | -------- |
-| Schemaversion | Muss „1.0“ sein. | Ja |
+| schemaVersion | Muss „1.0“ sein. | Ja |
 | routes.{routeName} | Eine Zeichenfolge, die eine IoT Edge-Hubroute darstellt. Weitere Informationen finden Sie unter [Deklarieren von Routen](module-composition.md#declare-routes). | Das `routes`-Element kann vorhanden, aber leer sein. |
 | storeAndForwardConfiguration.timeToLiveSecs | Zeit in Sekunden, für die der IoT Edge-Hub Nachrichten nach einer Trennung von Routingendpunkten aufbewahrt, beispielsweise von einem IoT Hub oder einem lokalen Modul. Der Wert kann eine beliebige positive ganze Zahl sein. | Ja |
 
 ## <a name="edgehub-reported-properties"></a>Gemeldete EdgeHub-Eigenschaften
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser Integerwert bezeichnet die letzte vom IoT Edge-Hub verarbeitete Version der gewünschten Eigenschaften. |
 | lastDesiredStatus.code | Der Statuscode bezieht sich auf die letzten gewünschten Eigenschaften, die der IoT Edge-Hub erkannt hat. Zulässige Werte: `200`: Erfolgreich, `400`: Ungültige Konfiguration, `500`: Fehler |

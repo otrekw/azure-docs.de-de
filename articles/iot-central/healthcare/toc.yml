@@ -4,7 +4,7 @@
   items:
     - name: Entwickeln von Lösungen für das Gesundheitswesen mit Azure IoT Central
       href: overview-iot-central-healthcare.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer App für die ständige Überwachung von Patienten
       href: tutorial-continuous-patient-monitoring.md
@@ -96,7 +96,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-Lösungen
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -104,6 +104,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Kundendatenanforderungen
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
     - name: Unterstützte Browser

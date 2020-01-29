@@ -4,7 +4,7 @@
   items:
     - name: Erstellen von Lösungen für die Energiebranche mit Azure IoT Central
       href: overview-iot-central-energy.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer App für die Überwachung von intelligenten Stromzählern
       href: tutorial-smart-meter-app.md
@@ -96,7 +96,7 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-Lösungen
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -104,6 +104,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Kundendatenanforderungen
       href: ../core/iot-central-customer-data-requests.md?toc=/azure/iot-central/energy/toc.json&bc=/azure/iot-central/energy/breadcrumb/toc.json
     - name: Unterstützte Browser

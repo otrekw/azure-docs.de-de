@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928719"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122609"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
@@ -31,8 +31,8 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität. Informatione
 
 Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte Anmeldeinformationen zu verweisen:
 
-1. **Rufen Sie die verwaltete Data Factory-Identität ab**, indem Sie den Wert von „Anwendungs-ID der verwalteten Identität“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Anwendungs-ID der verwalteten Identität im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen, siehe [Abrufen der verwalteten Data Factory-Identität](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Gewähren Sie der verwalteten Identität Zugriff auf Ihren Azure Key Vault**. Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser Anwendungs-ID der verwalteten Identität, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
+1. **Rufen Sie die verwaltete Data Factory-Identität ab**, indem Sie den Wert von „Objekt-ID der verwalteten Identität“ kopieren, der zusammen mit der Factory generiert wurde. Bei Verwendung der ADF-Erstellungsbenutzeroberfläche wird die Objekt-ID der verwalteten Identität im Erstellungsfenster des verknüpften Azure Key Vault-Diensts angezeigt. Sie können sie auch vom Azure-Portal aus abrufen. Informationen dazu finden Sie unter [Abrufen der verwalteten Data Factory-Identität](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Gewähren Sie der verwalteten Identität Zugriff auf Ihren Azure Key Vault**. Suchen Sie in Ihrem Schlüsseltresor unter „Zugriffsrichtlinien“ -> „Neue hinzufügen“ nach dieser verwalteten Identität, um ihr in der Dropdownliste „Berechtigungen für Geheimnis“ die **Abrufberechtigung** zu erteilen. Dies ermöglicht der angegebenen Data Factory den Zugriff auf das Geheimnis im Schlüsseltresor.
 3. **Erstellen Sie einen verknüpften Dienst, der auf Ihren Azure Key Vault-Tresor verweist.** Siehe [Mit Azure Key Vault verknüpfter Dienst](#azure-key-vault-linked-service).
 4. **Erstellen Sie einen mit einem Datenspeicher verknüpften Dienst, in dem Sie auf das entsprechende Geheimnis verweisen, das im Schlüsseltresor gespeichert ist.** Informationen finden Sie unter [Verweisen auf ein im Schlüsseltresor gespeichertes Geheimnis](#reference-secret-stored-in-key-vault).
 
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte A
 
 Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureKeyVault**. | Ja |
 | baseUrl | Geben Sie die Azure Key Vault-URL an. | Ja |
@@ -73,7 +73,7 @@ Wählen Sie die bereitgestellte Azure Key Vault-Instanz aus, in der Ihre Anmelde
 
 Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verknüpften Dienst konfigurieren, das auf ein Geheimnis im Schlüsseltresor verweist:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Felds muss auf folgenden Wert festgelegt werden: **AzureKeyVaultSecret**. | Ja |
 | secretName | Der Name des Geheimnisses in Azure Key Vault | Ja |

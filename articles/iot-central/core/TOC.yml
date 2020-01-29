@@ -11,7 +11,7 @@
   items:
     - name: Erstellen einer neuen Anwendung
       href: quick-deploy-iot-central.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Definieren eines neuen Gerätetyps
       href: tutorial-define-device-type.md
@@ -31,7 +31,7 @@
       href: concepts-connectivity.md
     - name: Was sind Anwendungsvorlagen?
       href: concepts-app-templates.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
@@ -151,7 +151,7 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-Lösungen
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -159,6 +159,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Kundendatenanforderungen
       href: iot-central-customer-data-requests.md
     - name: Unterstützte Browser

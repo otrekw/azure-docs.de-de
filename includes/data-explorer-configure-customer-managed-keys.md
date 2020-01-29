@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020953"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280599"
 ---
 Azure Data Explorer verschlüsselt alle Daten in einem Speicherkonto für ruhende Daten. Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Um zusätzliche Kontrolle über die Verschlüsselungsschlüssel zu erhalten, können Sie kundenseitig verwaltete Schlüssel für die Datenverschlüsselung bereitstellen. Kundenseitig verwaltete Schlüssel müssen in [Azure Key Vault](/azure/key-vault/key-vault-overview) gespeichert werden. Sie können eigene Schlüssel erstellen und in einer Key Vault-Instanz speichern oder eine Azure Key Vault-API verwenden, um Schlüssel zu generieren. Der Azure Data Explorer-Cluster und die Key Vault-Instanz müssen sich in der gleichen Region befinden, können aber zu verschiedenen Abonnements gehören. Eine ausführliche Erläuterung zu kundenseitig verwalteten Schlüsseln finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](/azure/storage/common/storage-service-encryption) im Abschnitt „Von Kunden verwaltete Schlüssel mit Azure Key Vault“. Der vorliegende Artikel veranschaulicht das Konfigurieren von kundenseitig verwalteten Schlüsseln.
 
-> [!Note]
-> Um kundenseitig verwaltete Schlüssel mit Azure Data Explorer zu konfigurieren, müssen Sie [zwei Eigenschaften in Key Vault festlegen](/azure/key-vault/key-vault-ovw-soft-delete): **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Diese Eigenschaften sind standardmäßig nicht aktiviert. Um diese Eigenschaften zu aktivieren, verwenden Sie entweder [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) oder die [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli). Es werden ausschließlich RSA-Schlüssel und die Schlüsselgröße 2048 unterstützt.
+Um kundenseitig verwaltete Schlüssel mit Azure Data Explorer zu konfigurieren, müssen Sie [zwei Eigenschaften in Key Vault festlegen](/azure/key-vault/key-vault-ovw-soft-delete): **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen). Diese Eigenschaften sind standardmäßig nicht aktiviert. Um diese Eigenschaften zu aktivieren, verwenden Sie entweder [PowerShell](/azure/key-vault/key-vault-soft-delete-powershell) oder die [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli). Es werden ausschließlich RSA-Schlüssel und die Schlüsselgröße 2048 unterstützt.
+
+> [!NOTE]
+> Datenverschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln wird auf [Leader- und Follower-Clustern](/azure/data-explorer/follower) nicht unterstützt. 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Zuweisen einer Identität zum Cluster
 

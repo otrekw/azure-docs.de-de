@@ -10,16 +10,20 @@ ms.author: daperlov
 author: djpmsft
 manager: anandsub
 ms.date: 10/10/2019
-ms.openlocfilehash: ef630486860def2781634926f4e9385cd030c171
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b54504cf8ca7b32bf14bd4b7e0c561ffd56d4098
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913238"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155162"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Ausführen von Azure Machine Learning-Pipelines in Azure Data Factory-Pipelines
 
 Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Data Factory-Pipelines aus. Die Machine Learning-Pipelineausführungsaktivität ermöglicht Batchvorhersageszenarien wie etwa die Ermittlung möglicher Kreditausfälle, die Ermittlung der Stimmung oder die Analyse von Kundenverhaltensmustern.
+
+Das nachstehende Video enthält eine Einführung und eine Demonstration dieses Features (Dauer 6 Minuten).
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/How-to-execute-Azure-Machine-Learning-service-pipelines-in-Azure-Data-Factory/player]
 
 ## <a name="syntax"></a>Syntax
 
@@ -44,10 +48,10 @@ Führen Sie Ihre Azure Machine Learning-Pipelines als Schritt in Ihren Azure Dat
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
+Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der Aktivität in der Pipeline | Zeichenfolge | Ja
-type | Die Art der Aktivität lautet „AzureMLExecutePipeline“. | Zeichenfolge | Ja
+name | Name der Aktivität in der Pipeline | String | Ja
+type | Die Art der Aktivität lautet „AzureMLExecutePipeline“. | String | Ja
 linkedServiceName | Mit Azure Machine Learning verknüpfter Dienst | Verweis auf den verknüpften Dienst | Ja
 mlPipelineId | ID der veröffentlichten Azure Machine Learning-Pipeline | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Ja
 experimentName | Name des Ausführungsverlaufexperiments der Machine Learning-Pipelineausführung | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein

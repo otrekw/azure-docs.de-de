@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300445"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293554"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Massenkopieren aus einer Datenbank in Azure Data Explorer mithilfe der Azure Data Factory-Vorlage 
 
 Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst. Er bietet Echtzeitanalysen großer Datenmengen, die aus vielfältigen Quellen wie Anwendungen, Websites und IoT-Geräten gestreamt werden. 
 
-Azure Data Factory ist ein vollständig verwalteter und cloudbasierter Datenintegrationsdienst. Mit diesem Dienst können Sie Ihre Azure Data Explorer-Datenbank mit Daten aus Ihrem vorhandenen System füllen. Außerdem können Sie dadurch beim Erstellen von Analyselösungen Zeit sparen. 
+Sie müssen große Datenmengen aus mehreren Tabellen laden, um Daten aus einer Datenbank in Oracle Server, Netezza, Teradata oder SQL Server in Azure Data Explorer kopieren zu können. In der Regel müssen die Daten in den einzelnen Tabellen partitioniert werden, um Zeilen mit mehreren Threads parallel aus einer einzelnen Tabelle laden zu können. In diesem Artikel wird eine Vorlage für diese Szenarios beschrieben.
 
 [Azure Data Factory-Vorlagen](/azure/data-factory/solution-templates-introduction) sind vordefinierte Data Factory-Pipelines. Mithilfe dieser Vorlagen können Sie schnell mit Data Factory beginnen und die Entwicklungszeit für Datenintegrationsprojekte reduzieren. 
 
@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 Die Codeelemente werden in der folgenden Tabelle beschrieben:
 
-|Eigenschaft  |BESCHREIBUNG  | Beispiel
+|Eigenschaft  |Beschreibung  | Beispiel
 |---------|---------| ---------|
 |PartitionId   |  Kopierauftrag | 1  |  
 |SourceQuery   |  Die Abfrage, die angibt, welche Daten während der Pipelineruntime kopiert werden | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    

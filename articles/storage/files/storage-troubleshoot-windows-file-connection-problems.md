@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968273"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544972"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -139,28 +139,30 @@ Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](https://docs.mic
 > [!Note]  
 > Die Cmdlets Get-AzStorageFileHandle und Close-AzStorageFileHandle sind im Az PowerShell-Modul, Version 2.4 oder höher, enthalten. Informationen zum Installieren des neuesten Az PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fehlermeldung „Autorisierungsfehler“ beim Navigieren zu einer Azure-Dateifreigabe im Portal
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fehler „Kein Zugriff“ beim Versuch, auf eine Azure-Dateifreigabe zuzugreifen oder sie zu löschen  
+Wenn Sie versuchen, auf eine Azure-Dateifreigabe im Portal zuzugreifen oder sie zu löschen, wird möglicherweise folgende Fehlermeldung angezeigt:
 
-Wenn Sie zu einer Azure-Dateifreigabe im Portal navigieren, erhalten Sie ggf. den folgenden Fehler:
+Kein Zugriff  
+Fehlercode: 403 
 
-Autorisierungsfehler  
-Sie haben keinen Zugriff. 
-
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Ursache 1: Ihr Benutzerkonto besitzt keinen Zugriff auf das Speicherkonto
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 1: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
-Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
+Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Ursache 2: Ihr Benutzerkonto besitzt keinen Zugriff auf das Speicherkonto
 
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
-Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
+Wenn Sie versuchen, eine Datei zu löschen, wird möglicherweise folgende Fehlermeldung angezeigt:
+
+Die angegebene Ressource ist zum Löschen durch einen SMB-Client markiert.
 
 ### <a name="cause"></a>Ursache
 Dieses Problem tritt in der Regel auf, wenn für die Datei oder das Verzeichnis ein geöffnetes Handle vorhanden ist. 

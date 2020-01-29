@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975708"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274536"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -64,11 +64,9 @@ In den meisten Fällen sollten Sie Konten vom Typ „Allgemein v2“ verwenden. 
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-Konten
 
-Ein BlockBlobStorage-Konto ist ein spezielles Speicherkonto, das Sie zum Speichern von unstrukturierten Objektdaten als Blockblobs verwenden. Sie können ein BlockBlobStorage-Konto auch zum Erstellen von Premium-Blockblobs verwenden. Dieser Speicherkontotyp unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
+Ein BlockBlobStorage-Konto ist ein spezielles Speicherkonto in der Leistungsstufe „Premium“ zum Speichern von unstrukturierten Objektdaten als Blockblobs oder Anfügeblobs. Im Vergleich zu universellen V2- und BlobStorage-Konten bieten BlockBlobStorage-Konten niedrige, einheitliche Latenzzeiten und höhere Transaktionsraten.
 
-Gegenüber universellen V2- und BlobStorage-Konten bieten BlockBlobStorage-Konten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
-
-BlockBlobStorage-Konten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“.
+BlockBlobStorage-Konten unterstützen derzeit kein Tiering zu den Zugriffsebenen „Heiß“, „Kalt“ oder „Archiv“. Diese Art von Speicherkonto unterstützt keine Seitenblobs, Tabellen oder Warteschlangen.
 
 ### <a name="filestorage-accounts"></a>FileStorage-Konten
 
@@ -85,12 +83,20 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 ## <a name="performance-tiers"></a>Leistungsstufen
 
+Je nach dem von Ihnen erstellten Speicherkontotyp können Sie zwischen den Leistungsstufen „Standard“ und „Premium“ wählen.
+
+### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
+
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
 - Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern. Weitere Informationen zu Skalierbarkeitszielen für Standardspeicherkonten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](scalability-targets-standard-account.md).
-- Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern. Microsoft empfiehlt, für virtuelle Azure-Computer verwaltete Datenträger anstelle nicht verwalteter Datenträger zu verwenden. Weitere Informationen zu Skalierbarkeitszielen für die Leistungsstufe „Premium“ finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../blobs/scalability-targets-premium-page-blobs.md).
+- Eine Premium-Leistungsstufe zum Speichern von nicht verwalteten VM-Datenträgern. Microsoft empfiehlt, für virtuelle Azure-Computer verwaltete Datenträger anstelle nicht verwalteter Datenträger zu verwenden. Weitere Informationen zu Skalierbarkeitszielen für die Leistungsstufe „Premium“ finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../blobs/scalability-targets-premium-page-blobs.md).
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage-Speicherkonten
 
 BlockBlobStorage-Konten bieten die Leistungsebene „Premium“ für das Speichern von Block- und Anfügeblobs. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blockblob-Speicherkonten mit Premium-Leistung](../blobs/scalability-targets-premium-block-blobs.md).
+
+### <a name="filestorage-storage-accounts"></a>FileStorage-Speicherkonten
 
 FileStorage-Speicherkonten bieten die Leistungsebene „Premium“ für Azure-Dateifreigaben. Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
 
@@ -102,7 +108,7 @@ Folgende Zugriffsebenen sind verfügbar:
 
 - Die Zugriffsebene **Heiß**. Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
 - Die Zugriffsebene **Kalt**. Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
-- Die Zugriffsebene **Archiv**. Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
+- Die Zugriffsebene **Archiv**. Diese Ebene steht nur für einzelne Blockblobs und Anfügeblobs zur Verfügung. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
 
 Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen diesen Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 

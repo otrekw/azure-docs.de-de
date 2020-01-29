@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 9001a7837e6106df4e052277168388064e65e7ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/16/2020
+ms.openlocfilehash: f245254c85cbf9223ab5dda60799c6b7ce72f11c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893303"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120212"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
 
@@ -270,7 +270,7 @@ Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data
 
 Weitere Informationen zur Azure Storage-Authentifizierung im Allgemeinen finden Sie unter [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md). Um verwaltete Identitäten für die Azure-Ressourcenauthentifizierung zu verwenden, gehen Sie folgendermaßen vor:
 
-1. [Rufen Sie die verwalteten Data Factory-Identitätsinformationen ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+1. [Rufen Sie die Informationen zur verwalteten Data Factory ab](data-factory-service-identity.md#retrieve-managed-identity), indem Sie den Wert von **Objekt-ID der verwalteten Identität** kopieren, der zusammen mit Ihrer Factory generiert wurde.
 
 2. Erteilen Sie der verwalteten Entität geeignete Berechtigungen in Azure Blob Storage. Weitere Informationen zu den Rollen finden Sie unter [Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC](../storage/common/storage-auth-aad-rbac.md).
 
@@ -488,7 +488,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 
 ## <a name="preserve-metadata-during-copy"></a>Beibehalten von Metadaten beim Kopieren
 
-Beim Kopieren von Dateien von Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 nach Azure Data Lake Storage Gen2/Azure Blob können Sie festlegen, dass die Dateimetadaten zusätzlich zu den Daten beibehalten werden sollen. Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md#preserve-metadata).
+Beim Kopieren von Dateien von Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 nach Azure Data Lake Storage Gen2/Azure Blob können Sie festlegen, dass die Dateimetadaten zusätzlich zu den Daten beibehalten werden sollen. Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md#preserve-metadata).
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -562,12 +562,12 @@ In der Senkentransformation können Sie in Azure Blob Storage in einen Container
 
 **Dateinamenoption:** Bestimmt, wie die Zieldateien im Zielordner benannt werden. Es gibt folgende Dateinamenoptionen:
    * **Standard:** Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standards benennt.
-   * **Muster:** Geben Sie ein Muster ein, das Ihre Ausgabedateien pro Partition auflistet. Zum Beispiel erstellt **loans[n].csv** die Dateien „loans1.csv“, „loans2.csv“ usw.
+   * **Muster:** Geben Sie ein Muster ein, das Ihre Ausgabedateien pro Partition aufführt. Zum Beispiel erstellt **loans[n].csv** die Dateien „loans1.csv“, „loans2.csv“ usw.
    * **Pro Partition:** Geben Sie einen Dateinamen pro Partition ein.
    * **Wie Daten in Spalte:** Legen Sie die Ausgabedatei auf den Wert einer Spalte fest. Der Pfad ist relativ zum Datasetcontainer und nicht zum Zielordner.
    * **Ausgabe in eine einzelne Datei:** Mit dieser Option werden die partitionierten Ausgabedateien in einer einzelnen Datei kombiniert. Der Pfad ist relativ zum Datasetordner. Bedenken Sie, dass der Zusammenführungsvorgang je nach Knotengröße zu Fehlern führen kann. Diese Option wird für große Datasets nicht empfohlen.
 
-**Alle in Anführungszeichen:** Bestimmt, ob alle Werte in Anführungszeichen eingeschlossen werden.
+**Alle in Anführungszeichen:** Bestimmt, ob alle Werte in Anführungszeichen eingeschlossen werden sollen.
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
