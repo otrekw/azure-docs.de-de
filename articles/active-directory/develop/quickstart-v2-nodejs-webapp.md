@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968016"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703336"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Schnellstart: Hinzufügen der Anmeldung mit OpenID Connect zu einer Node.js-Web-App
 
@@ -31,7 +30,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 * Installation von Node.js (hier erhältlich: http://nodejs.org/ )
 
-* [Microsoft-Konto](https://www.outlook.com) oder [Office 365-Entwicklerprogramm](/office/developer-program/office-365-developer-program)
+* Entweder ein [Microsoft-Konto](https://www.outlook.com) oder ein [Office 365-Entwicklerprogramm](/office/developer-program/office-365-developer-program).
 
 ## <a name="register-your-application"></a>Anwendung registrieren 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com/) an.
@@ -44,7 +43,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 1. Wählen Sie **Neue Registrierung** aus.
 
 1. Daraufhin wird die Seite **Anwendung registrieren** angezeigt. Geben Sie hier die Registrierungsinformationen Ihrer App ein:
-    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Namen ein. Dieser wird den Benutzern der App angezeigt. Beispiel:  MyWebApp
+    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Namen ein. Dieser wird den Benutzern der App angezeigt. Beispiel: MyWebApp
     - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
 
     Sind mehrere Umleitungs-URIs vorhanden, müssen diese nach erfolgreicher Erstellung der App auf der Registerkarte **Authentifizierung** hinzugefügt werden.

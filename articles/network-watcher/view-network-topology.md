@@ -3,23 +3,20 @@ title: Anzeigen der Topologie des virtuellen Azure-Netzwerks | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie die Ressourcen in einem virtuellen Netzwerk und die Beziehungen zwischen diesen Ressourcen anzeigen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
-ms.author: kumud
-ms.openlocfilehash: a67f1cca54c89ead9ae7fc46ef0c9fc8c5217c74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64682052"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840569"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -133,7 +130,7 @@ Alle in einer Topologie zurückgegebenen Ressourcen weisen einen der folgenden T
 
 | Beziehungstyp | Beispiel                                                                                                |
 | ---               | ---                                                                                                    |
-| Kapselung       | Ein virtuelles Netzwerk enthält ein Subnetz. Ein Subnetz enthält eine Netzwerkschnittstelle.                            |
+| Containment       | Ein virtuelles Netzwerk enthält ein Subnetz. Ein Subnetz enthält eine Netzwerkschnittstelle.                            |
 | Zugeordnet        | Eine Netzwerkschnittstelle ist einem virtuellen Computer zugeordnet. Eine öffentliche IP-Adresse ist einer Netzwerkschnittstelle zugeordnet. |
 
 ## <a name="properties"></a>Eigenschaften

@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167902"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845902"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Erstellen Ihrer ersten PowerShell-Funktion in Azure
 
@@ -67,36 +67,7 @@ Mit der Azure Functions-Projektvorlage in Visual Studio Code wird ein Projekt er
 
 Visual Studio Code erstellt das PowerShell-basierte Funktions-App-Projekt in einem neuen Arbeitsbereich. Dieses Projekt enthält die Konfigurationsdateien [host.json](functions-host-json.md) und [local.settings.json](functions-run-local.md#local-settings-file), die für alle Funktionen im Projekt gelten. Dieses [PowerShell-Projekt](functions-reference-powershell.md#folder-structure) ist mit einer in Azure ausgeführten Funktions-App identisch.
 
-## <a name="run-the-function-locally"></a>Lokales Ausführen der Funktion
-
-Azure Functions Core Tools arbeitet mit Visual Studio Code zusammen, um das lokale Ausführen und Debuggen von Azure Functions-Projekten zu ermöglichen.  
-
-1. Wenn Sie Ihre Funktion debuggen möchten, fügen Sie im Funktionscode einen Aufruf des Cmdlets [`Wait-Debugger`] vor der Stelle ein, an der Sie den Debugger anfügen möchten. Drücken Sie anschließend F5, um das Funktions-App-Projekt zu starten und den Debugger anzufügen. Die Ausgabe der Core Tools wird im Bereich **Terminal** angezeigt.
-
-1. Kopieren Sie im Bereich **Terminal** den URL-Endpunkt Ihrer über HTTP ausgelösten Funktion.
-
-    ![Lokale Azure-Ausgabe](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. Fügen Sie anschließend die Abfragezeichenfolge `?name=<yourname>` an diese URL an, und verwenden Sie `Invoke-RestMethod`, um die Anforderung auszuführen:
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    Die GET-Anforderung kann auch über einen Browser ausgeführt werden.
-
-    Wenn Sie den Endpunkt „HttpTrigger“ aufrufen, ohne einen Parameter vom Typ `name` zu übergeben (entweder als Abfrageparameter oder im Text), gibt die Funktion den Fehler „[HttpStatusCode]::BadRequest“ zurück. Wenn Sie den Code in „run.ps1“ überprüfen, sehen Sie, dass dieser Fehler beabsichtigt ist.
-
-1. Drücken Sie UMSCHALT+F5, um das Debuggen zu beenden.
-
-Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
-
-> [!NOTE]
-> Denken Sie daran, alle Aufrufe von `Wait-Debugger` zu entfernen, bevor Sie Ihre Funktionen in Azure veröffentlichen. 
->
-> Beim Erstellen einer Funktionen-App in Azure werden Sie lediglich zur Eingabe des Namens Ihrer Funktionen-App aufgefordert. Die anderen Werte werden für Sie definiert.
-> Legen Sie `azureFunctions.advancedCreation` auf `true` fest, wenn auch für alle anderen Werte Aufforderungen angezeigt werden sollen.
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
@@ -135,4 +106,4 @@ Sie haben unter Verwendung von Visual Studio Code eine PowerShell-Funktions-App 
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions-Erweiterung für Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-[Wait-Debugger]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

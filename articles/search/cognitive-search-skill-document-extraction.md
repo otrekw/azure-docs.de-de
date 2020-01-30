@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113339"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837730"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Kognitive Qualifikation „Dokumentextrahierung“
 
 > [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 Die Qualifikation **Dokumentextrahierung** extrahiert Inhalt aus einer Datei innerhalb der Anreicherungspipeline. Auf diese Weise können Sie die Vorteile des Schritts der Dokumentextrahierung nutzen, der normalerweise vor der Ausführung des Skillsets mit Dateien erfolgt, die möglicherweise durch andere Qualifikationen generiert werden.
 
@@ -33,23 +33,23 @@ Microsoft.Skills.Util.DocumentExtractionSkill
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Eingaben            | Zulässige Werte | BESCHREIBUNG |
+| Eingaben            | Zulässige Werte | Beschreibung |
 |-----------------|----------------|-------------|
 | `parsingMode`   | `default` <br/> `text` <br/> `json`  | Legen Sie diesen Parameter auf `default` fest, um die Dokumentextrahierung aus Dateien durchzuführen, die keine reinen Text- oder JSON-Dateien sind. Legen Sie diesen Parameter auf `text` fest, um die Leistung von Nur-Text-Dateien zu verbessern. Legen Sie diesen Parameter auf `json` fest, um strukturierte Inhalte aus JSON-Dateien zu extrahieren. Wenn der Parameter `parsingMode` nicht explizit definiert ist, wird er auf `default` festgelegt. |
 | `dataToExtract` | `contentAndMetadata` <br/> `allMetadata` | Legen Sie diesen Parameter auf `contentAndMetadata` fest, um aus jeder Datei alle Metadaten und Textinhalte zu extrahieren. Legen Sie diesen Parameter auf `allMetadata` fest, um nur die [Inhaltstyp-spezifischen Metadaten](search-howto-indexing-azure-blob-storage.md#ContentSpecificMetadata) zu extrahieren (z.B. Metadaten, die nur für PNG-Dateien eindeutig sind). Wenn der Parameter `dataToExtract` nicht explizit definiert ist, wird er auf `contentAndMetadata` festgelegt. |
 | `configuration` | Siehe unten. | Ein Wörterbuch mit optionalen Parametern zur Anpassung der Durchführung der Dokumentextrahierung. In der folgenden Tabelle finden Sie Beschreibungen der unterstützten Konfigurationseigenschaften. |
 
-| Konfigurationsparameter   | Zulässige Werte | BESCHREIBUNG |
+| Konfigurationsparameter   | Zulässige Werte | Beschreibung |
 |-------------------------|----------------|-------------|
 | `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Legen Sie diesen Parameter auf `none` fest, um eingebettete Bilder oder Bilddateien im Dataset zu ignorieren. Dies ist die Standardoption. <br/>Legen Sie diesen Parameter für die [Bildanalyse mithilfe von kognitiven Qualifikationen](cognitive-search-concept-image-scenarios.md) auf `generateNormalizedImages` fest, damit die Qualifikation bei der Dokumententschlüsselung ein Array von normalisierten Bildern erstellt. Für diese Aktion ist es erforderlich, `parsingMode` auf `default` und `dataToExtract` auf `contentAndMetadata` festzulegen. Ein normalisiertes Bild bezieht sich auf eine zusätzliche Verarbeitung, die zu einer einheitlichen Bildausgabe führt. Für die Ausgabe wird die Größe angepasst, und sie wird gedreht, um das einheitliche Rendern zu fördern, wenn Sie Bilder in visuelle Suchergebnisse einbinden (z.B. Fotos gleicher Größe für ein Graphsteuerelement wie in der [JFK-Demo](https://github.com/Microsoft/AzureSearch_JFK_Files)). Diese Informationen werden bei Verwendung dieser Option für jedes Bild generiert.  <br/>Wenn Sie diesen Parameter auf `generateNormalizedImagePerPage` festlegen, werden PDF-Dateien anders behandelt. Anstatt eingebettete Bilder zu extrahieren, wird jede Seite als Bild gerendert und entsprechend normalisiert.  Nicht-PDF-Dateitypen werden genauso behandelt, als ob der Parameter auf `generateNormalizedImages` festgelegt worden wäre.
-| `normalizedImageMaxWidth` | Eine ganze Zahl zwischen 50-10000 | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. | 
+| `normalizedImageMaxWidth` | Eine beliebige ganze Zahl zwischen 50-10000 | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. | 
 | `normalizedImageMaxHeight` | Eine beliebige ganze Zahl zwischen 50-10000 | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. |
 
 > [!NOTE]
 > Der Standardwert von 2.000 Pixeln für die maximale Breite und Höhe der normalisierten Bilder basiert auf der maximal unterstützten Größe der [OCR-Qualifikation](cognitive-search-skill-ocr.md) und der [Bildanalysequalifikation](cognitive-search-skill-image-analysis.md). Die [OCR-Qualifikation](cognitive-search-skill-ocr.md) unterstützt eine maximale Breite und Höhe von 4.200 für nicht englische Sprachen und 10.000 für Englisch.  Wenn Sie die maximalen Grenzwerte erhöhen, können bei größeren Images je nach Skillsetdefinition und Sprache der Dokumente Fehler bei der Verarbeitung auftreten. 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename     | BESCHREIBUNG |
+| Eingabename     | Beschreibung |
 |--------------------|-------------|
 | file_data | Die Datei, aus der Inhalt extrahiert werden soll. |
 
@@ -72,7 +72,7 @@ Dieses Dateiverweisobjekt kann auf eine von drei Arten generiert werden:
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-| Ausgabename    | BESCHREIBUNG |
+| Ausgabename    | Beschreibung |
 |--------------|-------------|
 | Inhalt | Der Textinhalt des Dokuments. |
 | normalized_images | Wenn `imageAction` auf einen anderen Wert als `none` festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Weitere Informationen zum Ausgabeformat der einzelnen Bilder finden Sie in der [Dokumentation für die Bildextraktion](cognitive-search-concept-image-scenarios.md). |

@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5438cc07670393cab69344544ea1b68c46c42bd6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276058"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844023"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure PowerShell
 
@@ -101,7 +100,7 @@ Test-AzNetworkWatcherIPFlow `
 
 Nach einigen Sekunden werden Sie im zurückgegebenen Ergebnis darüber informiert, dass der Zugriff durch eine Sicherheitsregel mit dem Namen **AllowInternetOutbound** zugelassen wird.
 
-Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit 172.31.0.100:
 
 ```azurepowershell-interactive
 Test-AzNetworkWatcherIPFlow `
@@ -178,9 +177,9 @@ Die zurückgegebene Ausgabe enthält den folgenden Text für die Regel **AllowIn
   },
 ```
 
-Sie können der Ausgabe entnehmen, dass **Internet** als **DestinationAddressPrefix** verwendet wird. Es ist jedoch nicht klar, wie sich 13.107.21.200, die Adresse, die Sie unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) getestet haben, auf **Internet** bezieht. Unter **ExpandedDestinationAddressPrefix** sind mehrere Adresspräfixe aufgelistet. Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Weil 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus werden in der von `Get-AzEffectiveNetworkSecurityGroup` zurückgegebenen Ausgabe keine Regeln mit einer höheren **Priorität** (einer niedrigeren Zahl) aufgeführt, die diese Regel außer Kraft setzen. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zur IP-Adresse verweigert.
+Sie können der Ausgabe entnehmen, dass **Internet** als **DestinationAddressPrefix** verwendet wird. Es ist jedoch nicht klar, wie sich 13.107.21.200, die Adresse, die Sie unter [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify) getestet haben, auf **Internet** bezieht. Unter **ExpandedDestinationAddressPrefix** sind mehrere Adresspräfixe aufgelistet. Eines der Präfixe in der Liste ist **12.0.0.0/6**, das den IP-Adressbereich 12.0.0.1 bis 15.255.255.254 umfasst. Da 13.107.21.200 in diesem Adressbereich liegt, lässt die Regel **AllowInternetOutBound** den ausgehenden Datenverkehr zu. Darüber hinaus werden in der von `Get-AzEffectiveNetworkSecurityGroup` zurückgegebenen Ausgabe keine Regeln mit einer höheren **Priorität** (einer niedrigeren Zahl) aufgeführt, die diese Regel außer Kraft setzen. Um die ausgehende Kommunikation mit 13.107.21.200 zu verweigern, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für die IP-Adresse verweigert.
 
-Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
+Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
 
 ```powershell
 {
@@ -206,7 +205,7 @@ Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der ausgehe
 }
 ```
 
-Die Regel listet **0.0.0.0/0** als **DestinationAddressPrefix** auf. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, weil die Adresse nicht im **DestinationAddressPrefix** einer der anderen ausgehenden Regeln in der Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` enthalten ist. Um die ausgehende Kommunikation zuzulassen, könnten Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über Port 80 zu 172.131.0.100 zulässt.
+Die Regel listet **0.0.0.0/0** als **DestinationAddressPrefix** auf. Die Regel verweigert die ausgehende Kommunikation mit 172.131.0.100, weil die Adresse nicht im **DestinationAddressPrefix** einer der anderen ausgehenden Regeln in der Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` enthalten ist. Um die ausgehende Kommunikation zuzulassen, können Sie eine Sicherheitsregel mit einer höheren Priorität hinzufügen, die ausgehenden Datenverkehr über den Port 80 für 172.131.0.100 zulässt.
 
 Beim Ausführen des Befehls `Test-AzNetworkWatcherIPFlow` zum Testen der eingehenden Kommunikation von 172.131.0.100 (im Abschnitt [Verwenden der IP-Datenflussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultInboundDenyAll** verweigert wurde. Die Regel **DefaultInboundDenyAll** entspricht der Regel **DenyAllInBound**, die in der folgenden Ausgabe des Befehls `Get-AzEffectiveNetworkSecurityGroup` aufgeführt ist:
 

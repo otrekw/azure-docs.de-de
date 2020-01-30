@@ -3,23 +3,21 @@ title: Azure-Datenverkehrsanalyse | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Datenflussprotokolle von Azure-Netzwerksicherheitsgruppen mit der Datenverkehrsanalyse analysieren.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
-ms.author: kumud
+ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 91fb4551f4651f44a1f7358951c5d4cc0ff70644
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907145"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840586"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -125,7 +123,7 @@ Ihr Konto muss Mitglied in einer der folgenden [integrierten Azure-Rollen](../ro
 
 |Bereitstellungsmodell   | Role                   |
 |---------          |---------               |
-|Ressourcen-Manager   | Owner (Besitzer)                  |
+|Ressourcen-Manager   | Besitzer                  |
 |                   | Mitwirkender            |
 |                   | Leser                 |
 |                   | Mitwirkender von virtuellem Netzwerk    |
@@ -200,7 +198,7 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 
     ![Auswählen von Speicherkonto, Log Analytics-Arbeitsbereich und Traffic Analytics-Aktivierung](./media/traffic-analytics/ta-customprocessinginterval.png)
 
-Wiederholen Sie die oben angegebenen Schritte für alle weiteren NSGs, für die Sie die Datenverkehrsanalyse aktivieren möchten. Die Daten aus den Flussprotokollen werden an den Arbeitsbereich gesendet, daher müssen Sie sicherstellen, dass die vor Ort geltenden Gesetze und Vorschriften in Ihrem Land eine Datenspeicherung in der Region, in der sich der Arbeitsbereich befindet, erlauben. Wenn Sie unterschiedliche Verarbeitungsintervalle für verschiedene NSGs festgelegt haben, werden die Daten in unterschiedlichen Intervallen erfasst. Beispiel:  Sie können ein Verarbeitungsintervall von 10 Minuten für kritische VNETs und von einer Stunde für nicht kritische VNETs aktivieren.
+Wiederholen Sie die oben angegebenen Schritte für alle weiteren NSGs, für die Sie die Datenverkehrsanalyse aktivieren möchten. Die Daten aus den Flussprotokollen werden an den Arbeitsbereich gesendet, daher müssen Sie sicherstellen, dass die vor Ort geltenden Gesetze und Vorschriften in Ihrem Land eine Datenspeicherung in der Region, in der sich der Arbeitsbereich befindet, erlauben. Wenn Sie unterschiedliche Verarbeitungsintervalle für verschiedene NSGs festgelegt haben, werden die Daten in unterschiedlichen Intervallen erfasst. Beispiel: Sie können ein Verarbeitungsintervall von 10 Minuten für kritische VNETs und von einer Stunde für nicht kritische VNETs aktivieren.
 
 Sie können Datenverkehrsanalysen auch mit dem PowerShell-Cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) in Azure PowerShell konfigurieren. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu.
 
@@ -212,7 +210,7 @@ Wählen Sie auf der linken Seite im Portal **Alle Dienste** aus, und geben Sie d
 
 Das erstmalige Anzeigen des Dashboards kann bis zu 30 Minuten dauern, da Traffic Analytics zunächst ausreichend Daten für aussagekräftige Einblicke aggregieren muss, bevor Berichte generiert werden können.
 
-## <a name="usage-scenarios"></a>Verwendungsszenarien
+## <a name="usage-scenarios"></a>Verwendungsszenarios
 
 Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traffic Analytics erhalten können, sind:
 

@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Dokumentextrahierung
           href: cognitive-search-skill-document-extraction.md
+        - name: PII-Erkennung
+          href: cognitive-search-skill-pii-detection.md
     - name: Benutzerdefinierte Qualifikationen
       items:
         - name: Benutzerdefinierte Web-API

@@ -3,9 +3,7 @@ title: Einführung in Nächster Hop in Azure Network Watcher | Microsoft Docs
 description: Dieser Artikel enthält eine Übersicht über die Network Watcher-Funktion „Nächster Hop“.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: febf7bca-e0b7-41d5-838f-a5a40ebc5aac
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: eb613455ccd6b6630d0d75b5a8458f812bb36846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 33c22b5b68b6677e8cf271dc185007316ec44500
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730206"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844057"
 ---
 # <a name="use-next-hop-to-diagnose-virtual-machine-routing-problems"></a>Diagnostizieren Sie mit „Nächster Hop“ VM-Routingprobleme.
 

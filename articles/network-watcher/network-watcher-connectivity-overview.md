@@ -3,22 +3,20 @@ title: Einführung in die Problembehandlung für Verbindungen in Azure Network W
 description: Diese Seite enthält eine Übersicht über die Network Watcher-Funktion zur Problembehandlung für Verbindungen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 9510905f67ee943b4b1dfa5a14c2753efac39da7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705817"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842868"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher
 
@@ -27,11 +25,11 @@ Das Feature zur Problembehandlung von Verbindungen von Network Watcher bietet di
 > [!IMPORTANT]
 > Für die Problembehandlung für Verbindungen muss auf dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen, die VM-Erweiterung `AzureNetworkWatcherExtension` installiert sein. Informationen zur Installation der Erweiterung finden Sie für einen virtuellen Windows-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und für einen virtuellen Linux-Computer unter [VM-Erweiterung für den Network Watcher-Agent für Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Die Erweiterung ist nicht auf dem Zielendpunkt erforderlich.
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 
 Die folgende Tabelle zeigt die Eigenschaften, die nach Ausführung der Problembehandlung für Verbindungen zurückgegeben werden:
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
 |ConnectionStatus     | Status der Konnektivitätsprüfung. Mögliche Ergebnisse sind **Erreichbar** und **Nicht erreichbar**.        |
 |AvgLatencyInMs     | Durchschnittliche Wartezeit während der Konnektivitätsprüfung in Millisekunden. (Wird nur angezeigt, wenn der Status „Erreichbar“ ist)        |
@@ -74,7 +72,7 @@ Im Folgenden finden Sie ein Beispiel für ein Problem, das auf einem Hop gefunde
 
 Die Problembehandlung für Verbindungen gibt Fehlertypen der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
 
-|Type  |BESCHREIBUNG  |
+|type  |Beschreibung  |
 |---------|---------|
 |CPU     | Hohe CPU-Auslastung.       |
 |Arbeitsspeicher     | Hohe Speicherauslastung.       |

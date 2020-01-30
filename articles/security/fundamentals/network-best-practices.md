@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 6d4d8ac1eb001f03e7615eeabdaca6967223f40b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937228"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772005"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Bewährte Methoden für die Netzwerksicherheit in Azure
 In diesem Artikel werden bewährte Methoden zur Verbesserung der Netzwerksicherheit in Azure beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
@@ -160,10 +160,10 @@ Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn
 - Zustandslose Anwendungen haben, die eingehende Anforderungen aus dem Internet akzeptieren.
 - Keine persistenten Sitzungen oder SSL-Auslagerung benötigen. Persistente Sitzungen sind eine Methode, die für den Anwendungslastenausgleich verwendet wird, um die Serveraffinität zu erreichen.
 
-**Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen externen Lastenausgleich](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
+**Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen externen Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
 
 **Szenario:** Sie benötigen einen Lastenausgleich für Verbindungen von VMs, die sich nicht im Internet befinden. In den meisten Fällen werden die Verbindungen, die für den Lastenausgleich akzeptiert werden, von Geräten in einem Azure Virtual Network initiiert, wie z.B. SQL Server-Instanzen oder interne Webserver.   
-**Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen internen Lastenausgleich](../../load-balancer/quickstart-create-basic-load-balancer-powershell.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
+**Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen internen Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
 
 **Szenario:** Sie benötigen globalen Lastenausgleich, da Sie:
 

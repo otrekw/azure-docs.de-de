@@ -159,8 +159,6 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
-    - name: 'Neustarten, Herunterfahren oder Beenden von Diensten'
-      href: boot-error-troubleshoot-windows.md
 - name: Änderung von Gerätenamen
   href: troubleshoot-device-names-problems.md
 - name: Zugriff auf die VM-Wiederherstellung
@@ -199,6 +197,8 @@
       href: troubleshoot-critical-service-failed-boot-error.md
     - name: Neustartschleife
       href: troubleshoot-reboot-loop.md
+    - name: 'Neustarten, Herunterfahren oder Beenden von Diensten'
+      href: boot-error-troubleshoot-windows.md
     - name: Bleibt bei Windows-Update hängen
       href: troubleshoot-stuck-updating-boot-error.md
 - name: Drosselungsfehler

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861658"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846142"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -156,5 +156,4 @@ Im obigen Beispiel würde die vereinfachte `data_flow`-Eigenschaft einen Namensk
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API in Time Series Insights Preview für den Datenzugriff.
-- Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#supported-json-shapes).
+Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API in Time Series Insights Preview für den Datenzugriff.

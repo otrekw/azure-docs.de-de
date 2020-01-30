@@ -8,21 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2375d8ee92d9c04c287b7fca793fcdc236e1e8f4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720037"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773535"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Einrichten von Advanced Threat Protection für Azure Key Vault (Vorschau)
 
 Advanced Threat Protection für Azure Key Vault bietet eine zusätzliche Ebene der Sicherheitsintelligenz. Dieses Tool erkennt potenziell schädliche Versuche, auf Key Vault-Konten zuzugreifen oder diese missbräuchlich zu nutzen. Mithilfe des nativen Advanced Threat Protection-Diensts in Azure Security Center können Sie Bedrohungen beheben, ohne ein Sicherheitsexperte zu sein und ohne weitere Sicherheitsüberwachungssysteme erlernen zu müssen.
 
 Wenn Security Center anomale Aktivitäten erkennt, werden Warnungen angezeigt. Außerdem wird der Administrator des Abonnements per E-Mail über die Details der verdächtigen Aktivität informiert und erhält Empfehlungen, wie er die identifizierten Bedrohungen untersuchen und beheben kann.
-
-> [!NOTE]
-> Advanced Threat Protection für Azure Key Vault ist zurzeit nur in Regionen von Nordamerika verfügbar.
 
 ## <a name="set-up-advanced-threat-protection-from-azure-security-center"></a>Einrichten von Advanced Threat Protection im Azure Security Center
 

@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/04/2020
-ms.openlocfilehash: eb73d614ca94bc1fa007a14f3705e50c74ab9e4f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922479"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844444"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST-API für den Dienst für die kognitive Azure-Suche: Version 2019-05-06-Preview
 
@@ -30,10 +30,6 @@ Dieser Artikel beschreibt die Version `api-version=2019-05-06-Preview` der Searc
 + Der [Cosmos DB-Indexer](search-howto-index-cosmosdb.md) unterstützt die MongoDB-API (Vorschauversion), die Gremlin-API (Vorschauversion) und die Cassandra-API (Vorschauversion).
 
 + Der [Azure Data Lake Storage Gen2-Indexer (Vorschauversion)](search-howto-index-azure-data-lake-storage.md) kann Inhalte und Metadaten aus Data Lake Storage Gen2 indizieren.
-
-+ Die [Dokumentextrahierung (Vorschauversion)](cognitive-search-skill-document-extraction.md) ist eine kognitive Qualifikation, die während der Indizierung verwendet wird und es Ihnen ermöglicht, den Inhalt einer Datei aus einem Skillset zu extrahieren. Bisher fand die Dokumententschlüsselung nur vor der Ausführung von Qualifikationsgruppen statt. Durch diese zusätzliche Qualifikation können Sie diesen Vorgang auch bei der Ausführung von Qualifikationsgruppen durchführen.
-
-+ Die [Textübersetzung (Vorschauversion)](cognitive-search-skill-text-translation.md) ist eine kognitive Qualifikation, die während der Indizierung zum Auswerten von Text verwendet wird und für jeden Datensatz Text zurückgibt, der in die angegebene Zielsprache übersetzt wurde.
 
 + Der [Wissensspeicher](knowledge-store-concept-intro.md) ist ein neues Ziel einer KI-basierten Anreicherungspipeline. Die physische Datenstruktur befindet sich in Azure Blob Storage und Azure Table Storage und wird erstellt und aufgefüllt, wenn Sie einen Indexer ausführen, der über ein angefügtes kognitives Skillset verfügt. Die eigentliche Definition eines Wissensspeichers wird innerhalb einer Skillsetdefinition angegeben. Innerhalb der Wissensspeicherdefinition steuern Sie die physischen Strukturen Ihrer Daten über *Projektionselemente*, die bestimmen, wie Daten dargestellt werden, ob Daten in Table Storage oder Blob Storage gespeichert werden und ob mehrere Ansichten verfügbar sind.
 

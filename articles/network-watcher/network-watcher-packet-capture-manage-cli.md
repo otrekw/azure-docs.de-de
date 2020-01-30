@@ -3,9 +3,7 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – Azure CLI | 
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe der Azure-Befehlszeilenschnittstelle verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
@@ -13,18 +11,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e6b1d77d002b8c1ed32a4e7adbdd1a46cf65668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687084"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840860"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-packet-capture-manage-cli.md)
 > - [Azure-REST-API](network-watcher-packet-capture-manage-rest.md)
@@ -45,7 +43,7 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 In diesem Artikel wird davon ausgegangen, dass Sie über die folgenden Ressourcen verfügen:
 
 - Eine Instanz von Network Watcher in der Region, in der Sie eine Paketerfassung erstellen möchten
-- Ein virtueller Computer mit aktivierter Paketerfassungserweiterung
+- Einen virtuellen Computer mit aktivierter Paketerfassungserweiterung
 
 > [!IMPORTANT]
 > Für die Paketerfassung muss ein Agent auf dem virtuellen Computer ausgeführt werden. Der Agent wird als Erweiterung installiert. Anweisungen zu VM-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer](../virtual-machines/windows/extensions-features.md).

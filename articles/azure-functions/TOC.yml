@@ -13,27 +13,26 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Erstellen von Funktionen – C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Erstellen von Funktionen – Java
-      href: functions-create-first-java-maven.md
-    - name: Erstellen von Funktionen – JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: Erstellen von Funktionen – PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: Erstellen von Funktionen – Python
-      href: functions-create-first-function-python.md
-    - name: Verbinden mit Diensten
+    - name: Erstellen einer Funktion
+      expanded: true
       items:
-        - name: 'Speicher – C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Storage – Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Speicher – JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Befehlszeile
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Herstellen einer Verbindung mit dem Speicher
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Speicher – Python
-          href: functions-add-output-binding-storage-queue-python.md
-- name: Lernprogramme
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
+- name: Tutorials
   items:
     - name: Funktionen mit Logic Apps
       href: functions-twitter-email.md
@@ -160,7 +159,7 @@
                 - name: Azure-Portal
                   href: functions-create-first-azure-function.md
                 - name: Befehlszeile
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code
@@ -256,7 +255,7 @@
           displayName: 'App Insights, Application Insights, logs, logging'
         - name: Analysieren von Protokollen
           href: functions-monitor-log-analytics.md
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Hinzufügen eines SSL-Zertifikats
           href: ../app-service/configure-ssl-certificate.md?toc=%2fazure%2fazure-functions%2ftoc.json
@@ -358,7 +357,7 @@
           href: functions-bindings-signalr-service.md
         - name: Table Storage
           href: functions-bindings-storage-table.md
-        - name: Timer
+        - name: Zeitgeber
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md

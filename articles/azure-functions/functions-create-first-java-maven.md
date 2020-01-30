@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562033"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845447"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Schnellstart: Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Maven
 
@@ -29,9 +29,8 @@ Um Funktionen mit Java zu entwickeln, muss Folgendes installiert sein:
 - [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 - [Azure-Befehlszeilenschnittstelle]
 - [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.6.666 oder höher
-- ein Azure-Abonnement
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Außerdem benötigen Sie ein aktives Azure-Abonnement. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 > [!IMPORTANT]
@@ -68,7 +67,7 @@ mvn archetype:generate ^
 
 Maven fordert Sie zur Eingabe von Werten auf, die erforderlich sind, um die Generierung des Projekts bei der Bereitstellung abzuschließen. Geben Sie die folgenden Werte ein, wenn Sie dazu aufgefordert werden:
 
-| value | BESCHREIBUNG |
+| value | Beschreibung |
 | ----- | ----------- |
 | **groupId** | Ein Wert, der Ihr Projekt projektübergreifend eindeutig identifiziert. Für den Wert müssen die [Paketbenennungsregeln](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) für Java eingehalten werden. In den Beispielen dieser Schnellstartanleitung wird `com.fabrikam.functions` verwendet. |
 | **artifactId** | Der Name des Behälters (ohne Versionsnummer). In den Beispielen dieser Schnellstartanleitung wird `fabrikam-functions` verwendet. |

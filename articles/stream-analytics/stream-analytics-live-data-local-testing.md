@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426034"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840484"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)
 
@@ -38,7 +38,6 @@ Die folgenden lokalen Testoptionen werden unterstützt:
 2. Zum Testen von Livedaten wählen Sie im Dropdownfeld die Option **Use Cloud Input** (Cloudeingabe verwenden) aus.
 
    ![Azure Stream Analytics Visual Studio mit Live-Cloudeingabe](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Legen Sie die **Startzeit** fest, um zu definieren, wann der Auftrag mit der Verarbeitung von Eingabedaten beginnt. Der Auftrag muss Eingabedaten u.U. vorab lesen, um genaue Ergebnisse sicherzustellen. Die Standardzeit ist auf 30 Minuten in der Zukunft festgelegt.
 
@@ -65,6 +64,5 @@ Die folgenden lokalen Testoptionen werden unterstützt:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Stream Analytics-Auftrags mithilfe des Azure Stream Analytics-Tools für Visual Studio](stream-analytics-quick-create-vs.md)
-* [Installieren der Azure Stream Analytics-Tools für Visual Studio](stream-analytics-tools-for-visual-studio-install.md)
 * [Lokales Testen von Stream Analytics-Abfragen mit Visual Studio](stream-analytics-vs-tools-local-run.md)
 * [Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)

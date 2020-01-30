@@ -68,7 +68,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
 
     **Name:** Geben Sie einen aussagekräftigen Namen für die Regel ein.<br>
     **Beschreibung:** Geben Sie eine aussagekräftige Beschreibung ein.<br> 
-    **Verbundenes System:** Wählen Sie den AD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
+    **Verbundenes System**: Wählen Sie den AD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
     **Objekttyp des verbundenen Systems:** Benutzer<br>
     **Metaverse-Objekttyp:** Person<br>
     **Verknüpfungstyp:** Join<br>
@@ -100,7 +100,7 @@ Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) au
 
     **Name:** Geben Sie einen aussagekräftigen Namen für die Regel ein.<br>
     **Beschreibung:** Geben Sie eine aussagekräftige Beschreibung ein.<br> 
-    **Verbundenes System:** Wählen Sie den AAD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
+    **Verbundenes System**: Wählen Sie den AAD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
     **Objekttyp des verbundenen Systems:** Benutzer<br>
     **Metaverse-Objekttyp:** Person<br>
     **Verknüpfungstyp:** JoinNoFlow<br>

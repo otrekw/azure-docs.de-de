@@ -11,7 +11,7 @@
   items:
     - name: Anzeigen des Zugriffs für einen Benutzer
       href: check-access.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 'Gewähren des Zugriffs für einen Benutzer: Portal'
       href: quickstart-assign-role-user-portal.md
@@ -32,7 +32,7 @@
       href: pim-azure-resource.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Auflisten der Rollendefinitionen
       items:
@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: Auflisten der Rollendefinitionen
           href: role-definitions-list.md
-        - name: Integrierte Rollen
-          href: built-in-roles.md
     - name: Auflisten der Rollenzuweisungen
       items:
         - name: Portal
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: Verweis
   items:
+    - name: Integrierte Rollen
+      href: built-in-roles.md
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
     - name: RBAC-Grenzwerte

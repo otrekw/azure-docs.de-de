@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465274"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717071"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -139,7 +139,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Ist der VPN-Tunnel verbunden?</li><li>Treten Konfigurationskonflikte in der Verbindung auf?</li><li>Sind die vorinstallierten Schlüssel ordnungsgemäß konfiguriert?</li><li>Ist das lokale VPN-Gerät erreichbar?</li><li>Treten Konflikte in der IPSec-/IKE-Sicherheitsrichtlinie auf?</li><li>Ist die S2S-VPN-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li><li>Ist die VNET-zu-VNET-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.network/expressroutecircuits
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist die ExpressRoute-Verbindung integer?</li></ul>|

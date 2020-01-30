@@ -4,12 +4,12 @@ ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 03/19/2019
 ms.author: marsma
-ms.openlocfilehash: 46b0e499b7928bc88114b16d75dd2d8a99dca6a8
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 2b35b49aed00a99e7c8a39ff8177387b81eec498
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310581"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834755"
 ---
 > [!NOTE]
-> In Azure Active Directory B2C sind [benutzerdefinierte Richtlinien](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md) in erster Linie für komplexe Szenarien konzipiert. Für die meisten Szenarien empfehlen wir die Verwendung von integrierten [Benutzerflows](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md).
+> In Azure Active Directory B2C sind [benutzerdefinierte Richtlinien](../articles/active-directory-b2c/custom-policy-get-started.md) in erster Linie für komplexe Szenarien konzipiert. Für die meisten Szenarien empfehlen wir die Verwendung von integrierten [Benutzerflows](../articles/active-directory-b2c/user-flow-overview.md).

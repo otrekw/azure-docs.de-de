@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123683"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840212"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
-Als Ergänzung zu [Was ist Azure Active Directory B2C?](active-directory-b2c-overview.md) bietet Ihnen dieser Artikel eine ausführlichere Einführung in den Dienst. Erläutert werden die wichtigsten Ressourcen, mit denen Sie bei diesem Dienst arbeiten, die zugehörigen Funktionen und die Möglichkeiten, die diese bieten, um eine vollständige benutzerdefinierte Identitätsverwaltung für Kunden in Ihren Anwendungen zu ermöglichen.
+Als Ergänzung zu [Was ist Azure Active Directory B2C?](overview.md) bietet Ihnen dieser Artikel eine ausführlichere Einführung in den Dienst. Erläutert werden die wichtigsten Ressourcen, mit denen Sie bei diesem Dienst arbeiten, die zugehörigen Funktionen und die Möglichkeiten, die diese bieten, um eine vollständige benutzerdefinierte Identitätsverwaltung für Kunden in Ihren Anwendungen zu ermöglichen.
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C-Mandant
 
@@ -109,7 +109,7 @@ Sie können Benutzerfloweinstellungen wie die folgenden konfigurieren, um das Ve
 
 Die häufigsten Identitätsszenarien für die meisten Mobil-, Webanwendungen und Single-Page-Anwendungen können mit Benutzerflows effizient definiert und implementiert werden. Es wird empfohlen, die integrierten Benutzerflows zu verwenden, es sei denn, Sie benötigen für komplexe User Journey-Szenarien die hohe Flexibilität von benutzerdefinierten Richtlinien.
 
-Weitere Informationen über Benutzerflows finden Sie unter [Benutzerflows in Azure Active Directory B2C](active-directory-b2c-reference-policies.md).
+Weitere Informationen über Benutzerflows finden Sie unter [Benutzerflows in Azure Active Directory B2C](user-flow-overview.md).
 
 ### <a name="custom-policy"></a>Benutzerdefinierte Richtlinie
 
@@ -130,13 +130,13 @@ Benutzerdefinierte Richtlinien werden durch mehrere Dateien im XML-Format defini
 
 Die leistungsstarke Flexibilität von benutzerdefinierten Richtlinien ist am besten geeignet, wenn Sie komplexe Identitätsszenarien erstellen müssen. Entwickler, die benutzerdefinierte Richtlinien konfigurieren, müssen die vertrauenswürdigen Beziehungen im Detail definieren, um Metadatenendpunkte und genaue Anspruchsaustauschdefinitionen einzuschließen und bei Bedarf zudem Geheimnisse, Schlüssel und Zertifikate durch die einzelnen Identitätsanbieter zu konfigurieren.
 
-Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Benutzerdefinierte Richtlinien in Azure Active Directory B2C](active-directory-b2c-overview-custom.md).
+Weitere Informationen über benutzerdefinierte Richtlinien finden Sie unter [Benutzerdefinierte Richtlinien in Azure Active Directory B2C](custom-policy-overview.md).
 
 ## <a name="protocols-and-tokens"></a>Protokolle und Token
 
-Azure AD B2C unterstützt für User Journeys das [OpenID Connect- und das OAuth 2.0-Protokolle](active-directory-b2c-reference-protocols.md). In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt.
+Azure AD B2C unterstützt für User Journeys das [OpenID Connect- und das OAuth 2.0-Protokolle](protocols-overview.md). In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt.
 
-Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (beispielsweise ein [ID-Token oder Zugriffstoken](active-directory-b2c-reference-tokens.md)). Dieses Sicherheitstoken definiert die Identität des Benutzers. Token werden von Azure AD B2C-Endpunkten wie `/token` oder `/authorize` empfangen. Mit diesen Token können Sie auf Ansprüche zugreifen, die wiederum verwendet werden können, um eine Identität zu überprüfen und den Zugriff auf sichere Ressourcen zuzulassen.
+Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (beispielsweise ein [ID-Token oder Zugriffstoken](tokens-overview.md)). Dieses Sicherheitstoken definiert die Identität des Benutzers. Token werden von Azure AD B2C-Endpunkten wie `/token` oder `/authorize` empfangen. Mit diesen Token können Sie auf Ansprüche zugreifen, die wiederum verwendet werden können, um eine Identität zu überprüfen und den Zugriff auf sichere Ressourcen zuzulassen.
 
 Bei externen Identitäten unterstützt Azure AD B2C den Verbund mit allen OAuth 1.0-, OAuth 2.0-, OpenID Connect-, SAML- und WS-Verbund-Identitätsanbietern.
 
@@ -172,7 +172,7 @@ Die Sprachanpassung in Azure AD B2C ermöglicht es Ihnen, verschiedene Sprachen 
 
 ![Drei Anmeldeseiten für die Registrierung mit Benutzeroberflächentext in verschiedenen Sprachen](media/technical-overview/localization.png)
 
-Weitere Informationen zur Funktionsweise der Lokalisierung finden Sie unter [Sprachanpassung in Azure Active Directory B2C](active-directory-b2c-reference-language-customization.md).
+Weitere Informationen zur Funktionsweise der Lokalisierung finden Sie unter [Sprachanpassung in Azure Active Directory B2C](user-flow-language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Hinzufügen Ihrer eigenen Geschäftslogik
 
@@ -195,7 +195,7 @@ Sie können einen Rest-API-Aufruf in jedem Schritt der User Journey hinzufügen,
 * Nachdem Azure AD B2C ein neues Konto im Verzeichnis erstellt hat
 * Bevor Azure AD B2C ein Zugriffstoken ausgibt
 
-Informationen zum Verwenden benutzerdefinierter Richtlinien für die RESTful-API-Integration in Azure AD B2C finden Sie unter [Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey](active-directory-b2c-custom-rest-api-netfw.md).
+Informationen zum Verwenden benutzerdefinierter Richtlinien für die RESTful-API-Integration in Azure AD B2C finden Sie unter [Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey](rest-api-claims-exchange-dotnet.md).
 
 ## <a name="protect-customer-identities"></a>Schützen von Kundenidentitäten
 
@@ -223,7 +223,7 @@ Weitere Informationen zu Azure AD-Rollen, einschließlich Unterstützung für Az
 
 Azure AD B2C Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für Ihre Benutzer einfach zu verwenden. Indem eine zweite Form der Authentifizierung verlangt wird, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung, indem verschiedene benutzerfreundliche Authentifizierungsmethoden zur Verfügung gestellt werden. Sie als Administrator können über die Konfiguration festlegen, ob Ihre Benutzer aufgefordert werden, die MFA zu verwenden.
 
-Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C](active-directory-b2c-reference-mfa.md).
+Weitere Informationen zum Aktivieren der MFA in Benutzerflows finden Sie unter [Aktivieren der Multi-Factor Authentication in Azure Active Directory B2C](custom-policy-multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Intelligente Kontosperrung
 
@@ -231,13 +231,13 @@ Um Brute-Force-Versuche zum Erraten von Kennwörtern zu verhindern, verwendet Az
 
 ![Benutzerdefinierte intelligente Sperre](media/technical-overview/smart-lockout1.png)
 
-Informationen zur Verwaltung von Kennwortschutzeinstellungen finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
+Informationen zur Verwaltung von Kennwortschutzeinstellungen finden Sie unter [Verwalten von Bedrohungen für Ressourcen und Daten in Azure Active Directory B2C](threat-management.md).
 
 ### <a name="password-complexity"></a>Kennwortkomplexität
 
 Bei der Registrierung oder dem Zurücksetzen des Kennworts müssen Ihre Benutzer ein Kennwort angeben, das die Regeln für die Komplexität erfüllt. Standardmäßig erzwingt Azure AD B2C eine Richtlinie für sichere Kennwörter. Azure AD B2C bietet auch Konfigurationsoptionen zum Angeben der Komplexitätsanforderungen an Kennwörter, die von ihren Kunden verwendet werden.
 
-Sie können die Anforderungen an die Kennwortkomplexität sowohl in [Benutzerflows](active-directory-b2c-reference-password-complexity.md) als auch in [benutzerdefinierten Richtlinien](active-directory-b2c-reference-password-complexity-custom.md) konfigurieren.
+Sie können die Anforderungen an die Kennwortkomplexität sowohl in [Benutzerflows](user-flow-password-complexity.md) als auch in [benutzerdefinierten Richtlinien](custom-policy-password-complexity.md) konfigurieren.
 
 ## <a name="auditing-and-logs"></a>Überwachung und Protokollierung
 
@@ -254,13 +254,13 @@ In einem Überwachungsprotokoll, das für Ihren Azure AD B2C-Mandanten oder für
 
 ![Überwachungsprotokoll für einzelne Benutzer im Azure-Portal](media/technical-overview/audit-log.png)
 
-Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Zugriff auf Active Directory B2C-Überwachungsprotokolle](active-directory-b2c-reference-audit-logs.md).
+Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Zugriff auf Active Directory B2C-Überwachungsprotokolle](view-audit-logs.md).
 
 ### <a name="usage-insights"></a>Nutzungsinformationen
 
 Über Azure AD B2C können Sie ermitteln, wann Benutzer sich bei Ihrer Web-App registrieren oder anmelden, wo sie sich befinden und welche Browser und Betriebssysteme sie verwenden. Durch die Integration von Azure Application Insights in Azure AD B2C mithilfe von benutzerdefinierten Richtlinien erhalten Sie Informationen über Registrierung, Anmeldung, Zurücksetzen von Kennwörtern und Profilbearbeitung. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die zukünftigen Entwicklungszyklen treffen.
 
-Weitere Informationen über die Nutzungsanalyse finden Sie unter [Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md).
+Weitere Informationen über die Nutzungsanalyse finden Sie unter [Nachverfolgen des Benutzerverhaltens in Azure Active Directory B2C mithilfe von Application Insights](analytics-with-application-insights.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

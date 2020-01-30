@@ -1,6 +1,6 @@
 ---
 title: Erste Schritte mit Azure Service Bus-Warteschlangen | Microsoft-Dokumentation
-description: Schreiben Sie eine C#-Konsolenanwendung, für die Service Bus Messaging-Warteschlangen verwendet werden.
+description: In diesem Tutorial erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 49abd1b0542b1a658517561cf1ffead402fa93a5
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 60428e3c5be4ac994f83f44c4492ebd80ee65da7
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563393"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760980"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -29,7 +29,7 @@ In diesem Tutorial erstellen Sie .NET Core-Konsolenanwendungen, um Nachrichten a
 
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
-- ein Azure-Abonnement Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+- Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
 - Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
 
   - Lesen Sie die kurze Übersicht über Service Bus-Warteschlangen.

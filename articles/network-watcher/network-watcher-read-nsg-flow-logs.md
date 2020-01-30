@@ -3,22 +3,20 @@ title: Lesen von NSG-Datenflussprotokollen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie NSG-Datenflussprotokolle analysiert werden
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.author: damendo
+ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539261"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840841"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 
@@ -33,7 +31,7 @@ NSG-Datenflussprotokolle werden in einem Speicherkonto in [Blockblobs](https://d
 
 Im folgenden Beispiel liegt ein Beispiel-Datenflussprotokoll vor, das in einem Speicherkonto gespeichert ist. Sie erfahren, wie Sie selektiv die aktuellen Ereignisse in NSG-Datenflussprotokollen lesen. In diesem Artikel verwenden Sie PowerShell. Die erörterten Konzepte sind jedoch nicht auf diese Programmiersprache beschränkt und gelten für alle Sprachen, die von den Azure Storage-APIs unterstützt werden.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von Netzwerksicherheits-Flowprotokollen finden Sie in folgendem Artikel: [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 

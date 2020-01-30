@@ -12,13 +12,12 @@ ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10225efb1dcd870f5922a6521b0bd6ec44965152
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920683"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703455"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 
@@ -57,7 +56,7 @@ Dieser Schnellstart gilt für iOS- und macOS-Apps. Einige Schritte sind nur bei 
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird, wenn sie sich anmelden oder Ihrer App zustimmen.
 >      - Überspringen Sie die weiteren Konfigurationsschritte auf dieser Seite.
->      - Wählen Sie `Register` aus.
+>      - Wählen Sie `Register`aus.
 > 1. Wählen Sie im Abschnitt **Verwalten** die Option `Authentication` > `Add Platform` > `iOS` aus.
 >      - Geben Sie die ***Bündel-ID*** für Ihre Anwendung ein. Die Paket-ID ist lediglich eine Zeichenfolge, die Ihre Anwendung eindeutig identifiziert (z. B. `com.<yourname>.identitysample.MSALMacOS`). Notieren Sie sich den verwendeten Wert.
 >      - Die iOS-Konfiguration ist auch bei macOS-Anwendungen anwendbar.

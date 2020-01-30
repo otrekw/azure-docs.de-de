@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129359"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840450"
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 
@@ -125,8 +125,8 @@ Wenn Sie Azure AD B2C verwenden, können sich Ihre Kunden mit vorhandenen Konten
 Weitere Informationen:
 
 * [Was ist Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-* [Azure Active Directory B2C – Vorschauversion: Registrieren und Anmelden von Kunden bei Ihren Anwendungen](../../active-directory-b2c/active-directory-b2c-overview.md)
-* [Azure Active Directory B2C – Vorschauversion: Anwendungsarten](../../active-directory-b2c/active-directory-b2c-apps.md)
+* [Azure Active Directory B2C – Vorschauversion: Registrieren und Anmelden von Kunden bei Ihren Anwendungen](../../active-directory-b2c/overview.md)
+* [Azure Active Directory B2C – Vorschauversion: Anwendungsarten](../../active-directory-b2c/application-types.md)
 
 ## <a name="device-registration"></a>Geräteregistrierung
 
@@ -171,7 +171,7 @@ Weitere Informationen:
 
 Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität. Das Microsoft-Tool Azure AD Connect wurde entwickelt, um Sie beim Erreichen Ihrer Hybrididentitätsziele zu unterstützen. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Er zeichnet sich durch Folgendes aus:
 
-* Synchronisierung
+* Synchronization
 * AD FS und Verbundintegration
 * Passthrough-Authentifizierung
 * Systemüberwachung

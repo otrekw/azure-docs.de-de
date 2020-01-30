@@ -3,12 +3,12 @@ title: Horizontales Herunter- oder Hochskalieren eines Service Fabric-Clusters
 description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert horizontal herunter oder hoch, indem Sie die Regeln für das automatische Skalierung für jeden Knotentyp bzw. jede VM-Skalierungsgruppe festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: ef7d4c3d3d48bed790851834d848f05060243636
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42193ee06eda3f1d8c56b4db3251763b9dc52076
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451940"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774461"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 
@@ -101,7 +101,7 @@ Die Schritte für das manuelle Korrigieren des Knotenstatus gelten nur für Knot
 Der zuletzt erstellte Knoten sollte zuerst entfernt werden, damit die Knoten des Clusters über die Upgrade- und Fehlerdomänen gleichmäßig verteilt bleiben und die gleichmäßige Nutzung sichergestellt ist. Anders ausgedrückt: Die Knoten sollten in der umgekehrten Reihenfolge ihrer Erstellung entfernt werden. Der zuletzt erstellte Knoten verfügt über den höchsten `virtual machine scale set InstanceId`-Eigenschaftswert. In den unten angegebenen Codebeispielen wird der zuletzt erstellte Knoten zurückgegeben.
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
 ```
 
 ```azurecli

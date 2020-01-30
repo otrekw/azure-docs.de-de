@@ -2,11 +2,11 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist der Lastenausgleich?
+    - name: Was versteht man unter Azure Load Balancer?
       href: load-balancer-overview.md
 - name: Schnellstart
   items:
-    - name: Erstellen einer Load Balancer Standard-Instanz
+    - name: Erstellen einer Azure Load Balancer-Instanz
       items:
         - name: Portal
           href: quickstart-load-balancer-standard-public-portal.md
@@ -16,16 +16,6 @@
           href: quickstart-create-standard-load-balancer-powershell.md
         - name: Vorlage
           href: quickstart-load-balancer-standard-public-template.md
-    - name: Erstellen eines Load Balancers im Tarif „Basic“
-      items:
-        - name: Portal
-          href: quickstart-create-basic-load-balancer-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: quickstart-create-basic-load-balancer-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-basic-load-balancer-powershell.md
-        - name: Vorlage
-          href: load-balancer-get-started-internet-arm-template.md
 - name: Tutorials
   items:
     - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
@@ -76,22 +66,6 @@
       href: load-balancer-security-controls.md
 - name: Anleitung
   items:
-    - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
-      items:
-        - name: Portal
-          href: load-balancer-get-started-internet-az-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: load-balancer-get-started-internet-az-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-internet-az-powershell.md
-    - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif
-      items:
-        - name: Portal
-          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
-        - name: Azure PowerShell
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: Aktualisieren einer öffentlichen Load Balancer-Instanz im Tarif „Basic“ auf eine öffentliche Load Balancer-Instanz im Tarif „Standard“
       href: upgrade-basic-standard.md
     - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer (CLI)

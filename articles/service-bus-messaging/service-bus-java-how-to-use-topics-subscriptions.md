@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java'
-description: 'Schnellstart: Verwenden von Service Bus-Themen und -Abonnements in Azure.'
+title: Verwenden von Azure Service Bus-Themen und -Abonnements mit Java
+description: In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein Azure Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements für dieses Thema.
 services: service-bus-messaging
 documentationcenter: java
 author: axisc
@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8a721d929ff89fd644c78296ae54cee757bf9610
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b75b5cd5e674020f41897309a3c69b9371cc768
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720001"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759294"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Java
 

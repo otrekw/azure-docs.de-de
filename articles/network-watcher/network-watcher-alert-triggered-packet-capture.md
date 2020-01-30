@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie Sie eine per Warnung ausgelöste Paketerfassung mit Azure Network Watcher erstellen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276135"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842936"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -70,7 +68,7 @@ In diesem Szenario passiert Folgendes:
 
 Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erstellen einer Paketerfassung erstellt.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Ressource erstellen** > **Compute** > **Funktions-App** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Ressource erstellen** > **Compute** > **Funktions-App** aus.
 
     ![Erstellen einer Funktions-App][1-1]
 
@@ -140,7 +138,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
 1. Klicken Sie mit der rechten Maustaste auf den Unterordner **Az.Network**, und wählen Sie **Dateien hochladen** aus. 
 
-6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **Az.Network** alle Dateien aus. Wählen Sie dann **OK**aus. 
+6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **Az.Network** alle Dateien aus. Klicken Sie anschließend auf **OK**. 
 
 7. Wiederholen Sie diese Schritte für **Az.Accounts** und **Az.Resources**.
 
@@ -150,7 +148,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
     ![PowerShell-Dateien][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Sie konfigurieren die Authentifizierung in der Funktions-App. Zum Konfigurieren der Authentifizierung müssen Sie Umgebungsvariablen konfigurieren und eine verschlüsselte Schlüsseldatei in die Funktionen-App hochladen.
 
@@ -349,7 +347,7 @@ Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine War
   |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
   |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
   |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
-  |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
+  |**Condition**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
   |**Schwellenwert**|100| Der Wert der Metrik, die die Warnung auslöst. Dieser Wert sollte auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|
   |**Zeitraum**|In den letzten fünf Minuten| Bestimmt den Zeitraum, in dem der Schwellenwert für die Metrik geprüft werden soll.|
   |**Webhook**|[Webhook-URL aus der Funktions-App]| Die Webhook-URL aus der Funktions-App, die in den vorherigen Schritten erstellt wurde.|

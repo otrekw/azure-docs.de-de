@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adbb913fc8ec6376f1c5f47708da4fd7df740ff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 32d58a5536cda5a5a446eee15401dabc0c936304
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619851"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705223"
 ---
 # <a name="set-up-an-office-phone-as-your-two-factor-verification-method"></a>Einrichten einer Bürotelefonnummer als Methode für die zweistufige Überprüfung
 
@@ -52,6 +51,6 @@ Nach der Einrichtung der Methode für die zweistufige Überprüfung können Sie 
 
 - [Verwalten von App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Der Anmeldevorgang mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-signin.md)
+- [Anmelden per zweistufiger Überprüfung](multi-factor-authentication-end-user-signin.md)
 
 - [Hilfe bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)

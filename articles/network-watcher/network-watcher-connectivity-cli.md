@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 07358d5d77e91f0b4eebffa068ff72fc83c74893
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276028"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842885"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure CLI
 
@@ -50,9 +49,9 @@ In diesem Beispiel wird die Konnektivität zu einem virtuellen Zielcomputer übe
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-resource Database0 --dest-port 80
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
-Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus` **Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
+Die folgende Antwort stammt aus dem vorherigen Beispiel.  In dieser Antwort ist der `ConnectionStatus`**Nicht erreichbar**. Wie Sie sehen, sind alle gesendeten Tests fehlgeschlagen. Bei der Konnektivität ist am virtuellen Gerät ein Fehler aufgetreten. Der Grund dafür ist eine benutzerdefinierte `NetworkSecurityRule` mit der Bezeichnung **UserRule_Port80**, deren Konfiguration eingehenden Datenverkehr über Port 80 blockiert. Diese Informationen können bei der Untersuchung von Konnektivitätsproblemen verwendet werden.
 
 ```json
 {
@@ -131,7 +130,7 @@ In diesem Beispiel wird die Konnektivität zwischen einem virtuellen Computer un
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address 13.107.21.200 --dest-port 80
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Im folgenden Beispiel wird der `connectionStatus` als **Nicht erreichbar** angezeigt. In den `hops`-Details können Sie unter `issues` sehen, dass der Datenverkehr aufgrund einer `UserDefinedRoute` blockiert war.
 
@@ -189,7 +188,7 @@ Im folgenden Beispiel wird die Konnektivität zu einer Website überprüft.
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://bing.com --dest-port 80
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 In der folgenden Antwort wird der `connectionStatus` als **Erreichbar** angezeigt. Wenn eine Verbindung erfolgreich ist, werden Latenzwerte bereitgestellt.
 
@@ -235,9 +234,9 @@ Im folgenden Beispiel wird die Konnektivität von einem virtuellen Computer mit 
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://contosoexamplesa.blob.core.windows.net/
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
-Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherigen Cmdlets. Da die Überprüfung erfolgreich ist, wird die Eigenschaft `connectionStatus` als **Erreichbar** angezeigt.  Die Details in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
+Der folgende JSON-Code ist die Beispielantwort auf die Ausführung des vorherigen Cmdlets. Da die Überprüfung erfolgreich ist, wird die Eigenschaft `connectionStatus` als **Erreichbar** angezeigt.  Die Einzelheiten in Bezug auf die Anzahl der Hops, die zum Erreichen des Speicherblobs und der Latenz benötigt werden, werden bereitgestellt.
 
 ```json
 {

@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: In diesem Artikel erfahren Sie, welche Azure RBAC-Berechtigungen (Role-Based Access Control) zum Arbeiten mit Network Watcher-Funktionen erforderlich sind.
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: kumud
-ms.openlocfilehash: 9d56865a558f027a044e990a2da697dc53e7a311
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277705"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840552"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Erforderliche RBAC-Berechtigungen (Role-Based Access Control) für die Verwendung von Network Watcher-Funktionen
 
@@ -28,7 +25,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/read                              | Network Watcher abrufen                                          |
 | Microsoft.Network/networkWatchers/write                             | Network Watcher erstellen oder aktualisieren                             |
@@ -36,14 +33,14 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | Ein Datenflussprotokoll konfigurieren                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Status für ein Datenflussprotokoll abfragen                                    |
 
 ## <a name="connection-troubleshoot"></a>Problembehandlung für Verbindungen
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | Initiieren eines Tests zur Problembehandlung für Verbindungen
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Ergebnisse von einem Test zur Problembehandlung für Verbindungen abfragen                |
@@ -51,7 +48,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="connection-monitor"></a>Verbindungsmonitor
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Verbindungsmonitor starten                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Verbindungsmonitor anhalten                                      |
@@ -62,7 +59,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="packet-capture"></a>Paketerfassung
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Status einer Paketerfassung abfragen                           |
 | Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Beenden einer Paketerfassung                                          |
@@ -72,31 +69,31 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 ## <a name="ip-flow-verify"></a>IP-Datenflussüberprüfung
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | Einen IP-Fluss überprüfen                                              |
 
 ## <a name="next-hop"></a>Nächster Hop
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | Nächsten Hop von einer VM abrufen                                     |
 
 ## <a name="network-security-group-view"></a>Netzwerksicherheitsgruppen-Ansicht
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | Sicherheitsgruppen anzeigen                                           |
 
 ## <a name="topology"></a>Topologie
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | Topologie abrufen                                                   |
 
 ## <a name="reachability-report"></a>Erreichbarkeitsbericht
 
-| Aktion                                                              | BESCHREIBUNG                                                           |
+| Aktion                                                              | Beschreibung                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Einen Azure-Erreichbarkeitsbericht abrufen                               |
 
@@ -105,7 +102,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 
 Network Watcher-Funktionen erfordern folgende Aktionen:
 
-| Aktion(en)                                                           | BESCHREIBUNG                                                    |
+| Aktion(en)                                                           | Beschreibung                                                    |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Authorization/\*/Read                                     | Wird zum Abrufen von RBAC-Rollenzuweisungen und Richtliniendefinitionen verwendet.          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | Wird zum Auflisten aller Ressourcengruppen eines Abonnements verwendet.    |

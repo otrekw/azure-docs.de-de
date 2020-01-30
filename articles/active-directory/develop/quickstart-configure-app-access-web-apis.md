@@ -12,13 +12,12 @@ ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 32691892ccae31541855f47bd8274aa28b6dc185
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963332"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704288"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 
@@ -56,7 +55,7 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren k
 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus. 
 1. Wählen Sie im linken Bereich die Option **App-Registrierungen** aus.
-1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
+1. Wählen Sie die Anwendung aus, die Sie konfigurieren möchten. Nachdem Sie die App ausgewählt haben, wird die anwendungsspezifische Seite **Übersicht** oder die Hauptseite für die Registrierung angezeigt.
 1. Führen Sie die Schritte zum Konfigurieren Ihrer Anwendung für den Zugriff auf Web-APIs aus:
     * [Hinzufügen von Umleitungs-URIs zur Anwendung](#add-redirect-uris-to-your-application)
     * [Konfigurieren von erweiterten Einstellungen für Ihre Anwendung](#configure-advanced-settings-for-your-application)
@@ -68,7 +67,7 @@ Sie müssen die folgenden Schritte ausführen, bevor Sie die App konfigurieren k
 
 Fügen Sie Ihrer Anwendung wie folgt einen Umleitungs-URI hinzu:
 
-1. Wählen Sie auf der Seite **Übersicht** der App den Abschnitt **Authentifizierung**.
+1. Navigieren Sie auf der Seite **Übersicht** der App zum Abschnitt **Authentifizierung**.
 1. Führen Sie diese Schritte aus, um einen benutzerdefinierten Umleitungs-URI für Web-Apps und öffentliche Clientanwendungen hinzuzufügen:
    1. Suchen Sie nach dem Abschnitt **Umleitungs-URI**.
    1. Wählen Sie den Typ der zu erstellenden Anwendung aus: **Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** .

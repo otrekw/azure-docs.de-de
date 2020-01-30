@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Verwenden von Azure Service Bus-Warteschlangen mit Ruby'
-description: 'Schnellstart: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure. Die Codebeispiele wurden in Ruby geschrieben.'
+title: Verwenden von Azure Service Bus-Warteschlangen mit Ruby
+description: In diesem Tutorial erfahren Sie, wie Sie Ruby-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718758"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760588"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit Ruby
 

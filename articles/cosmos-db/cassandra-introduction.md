@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: cc6b1a2516a454c843f176e947cc3a56186b0b47
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9cd3703881de1600a4b151d855fff832d041ca54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939944"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717929"
 ---
 # <a name="introduction-to-the-azure-cosmos-db-cassandra-api"></a>Einführung in die Cassandra-API für Azure Cosmos DB
 
-Mithilfe der Apache Cassandra-API kann Azure Cosmos DB als Datenspeicher für Apps verwendet werden, die für [Apache Cassandra](http://cassandra.apache.org) geschrieben wurden. Dies bedeutet, dass durch Verwendung vorhandener [Apache-Treiber](http://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), die mit CQLv4 kompatibel sind, Ihre vorhandene Cassandra-Anwendung jetzt mit der Cassandra-API für Azure Cosmos DB kommunizieren kann. In vielen Fällen können Sie durch einfaches Ändern einer Verbindungszeichenfolge von Apache Cassandra zur Cassandra-API für Azure Cosmos DB wechseln. 
+Mithilfe der Apache Cassandra-API kann Azure Cosmos DB als Datenspeicher für Apps verwendet werden, die für [Apache Cassandra](https://cassandra.apache.org) geschrieben wurden. Dies bedeutet, dass durch Verwendung vorhandener [Apache-Treiber](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), die mit CQLv4 kompatibel sind, Ihre vorhandene Cassandra-Anwendung jetzt mit der Cassandra-API für Azure Cosmos DB kommunizieren kann. In vielen Fällen können Sie durch einfaches Ändern einer Verbindungszeichenfolge von Apache Cassandra zur Cassandra-API für Azure Cosmos DB wechseln. 
 
 Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosmos DB gespeichert sind, mithilfe der Cassandra-Abfragesprache (Cassandra Query Language, CQL), Cassandra-basierten Tools (z. B. CQLSH) und bereits vertrauten Cassandra-Clienttreibern.
 

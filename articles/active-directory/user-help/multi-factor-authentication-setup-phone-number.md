@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f03e92c1bfd86d15bf582487e3e92a3713b63e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: c01a7a9c5adb050d98840938260c8486ecdeb199
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619821"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705189"
 ---
 # <a name="set-up-a-mobile-device-as-your-two-factor-verification-method"></a>Einrichten eines mobilen Geräts als Methode für die zweistufige Überprüfung
 
@@ -75,6 +74,6 @@ Nach der Einrichtung der Methode für die zweistufige Überprüfung können Sie 
 
 - [Verwalten von App-Kennwörtern](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Der Anmeldevorgang mit Azure Multi-Factor Authentication](multi-factor-authentication-end-user-signin.md)
+- [Anmelden per zweistufiger Überprüfung](multi-factor-authentication-end-user-signin.md)
 
 - [Hilfe bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)

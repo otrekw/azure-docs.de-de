@@ -5,16 +5,16 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 13746b86eed75055ceb5203afafb2d27a78ce1d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928640"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722083"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in SQL-Datenbank
 
@@ -43,51 +43,51 @@ Für die Datenbank `Database1` unter `Server1` wäre beispielsweise folgender Pf
 
 ## <a id="subheading-1"></a>Felder eines Überwachungsprotokolls
 
-| Name (Blob) | Name (Event Hubs/Log Analytics) | BESCHREIBUNG | Blobtyp | Event Hubs-/Log Analytics-Typ |
+| Name (Blob) | Name (Event Hubs/Log Analytics) | Beschreibung | Blobtyp | Event Hubs-/Log Analytics-Typ |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
-| action_id | action_id_s | ID der Aktion | varchar(4) | Zeichenfolge |
-| action_name | action_name_s | Name der Aktion | – | Zeichenfolge |
-| additional_information | additional_information_s | Zusätzliche Informationen zum Ereignis (im XML-Format gespeichert) | nvarchar(4000) | Zeichenfolge |
-| affected_rows | affected_rows_d | Anzahl der von der Abfrage betroffenen Zeilen | bigint | int |
-| application_name | application_name_s| Name der Clientanwendung | nvarchar(128) | Zeichenfolge |
-| audit_schema_version | audit_schema_version_d | Immer 1 | int | int |
-| class_type | class_type_s | Typ der überwachbaren Entität, für die die Überwachung ausgeführt wird | varchar(2) | Zeichenfolge |
-| class_type_desc | class_type_description_s | Beschreibung der überwachbaren Entität, für die die Überwachung ausgeführt wird | – | Zeichenfolge |
-| client_ip | client_ip_s | Quell-IP-Adresse der Clientanwendung | nvarchar(128) | Zeichenfolge |
+| action_id | action_id_s | ID der Aktion | varchar(4) | string |
+| action_name | action_name_s | Name der Aktion | – | string |
+| additional_information | additional_information_s | Zusätzliche Informationen zum Ereignis (im XML-Format gespeichert) | nvarchar(4000) | string |
+| affected_rows | affected_rows_d | Anzahl der von der Abfrage betroffenen Zeilen | BIGINT | INT |
+| application_name | application_name_s| Name der Clientanwendung | nvarchar(128) | string |
+| audit_schema_version | audit_schema_version_d | Immer 1 | INT | INT |
+| class_type | class_type_s | Typ der überwachbaren Entität, für die die Überwachung ausgeführt wird | varchar(2) | string |
+| class_type_desc | class_type_description_s | Beschreibung der überwachbaren Entität, für die die Überwachung ausgeführt wird | – | string |
+| client_ip | client_ip_s | Quell-IP-Adresse der Clientanwendung | nvarchar(128) | string |
 | connection_id | – | ID der Verbindung auf dem Server | GUID | – |
-| data_sensitivity_information | data_sensitivity_information_s | Informationstypen und Vertraulichkeitsbezeichnungen, die von der überwachten Abfrage zurückgegeben werden (je nach klassifizierter Spalte in der Datenbank) Weitere Informationen: [Azure SQL-Datenbank: Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md) | nvarchar(4000) | Zeichenfolge |
-| database_name | database_name_s | Datenbankkontext, in dem die Aktion durchgeführt wurde | sysname | Zeichenfolge |
-| database_principal_id | database_principal_id_d | ID des Datenbankbenutzerkontexts, in dem die Aktion durchgeführt wurde | int | int |
-| database_principal_name | database_principal_name_s | Name des Datenbankbenutzerkontexts, in dem die Aktion durchgeführt wurde | sysname | Zeichenfolge |
-| duration_milliseconds | duration_milliseconds_d | Ausführungsdauer der Abfrage in Millisekunden | bigint | int |
+| data_sensitivity_information | data_sensitivity_information_s | Informationstypen und Vertraulichkeitsbezeichnungen, die von der überwachten Abfrage zurückgegeben werden (je nach klassifizierter Spalte in der Datenbank) Weitere Informationen: [Azure SQL-Datenbank: Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md) | nvarchar(4000) | string |
+| database_name | database_name_s | Datenbankkontext, in dem die Aktion durchgeführt wurde | sysname | string |
+| database_principal_id | database_principal_id_d | ID des Datenbankbenutzerkontexts, in dem die Aktion durchgeführt wurde | INT | INT |
+| database_principal_name | database_principal_name_s | Name des Datenbankbenutzerkontexts, in dem die Aktion durchgeführt wurde | sysname | string |
+| duration_milliseconds | duration_milliseconds_d | Ausführungsdauer der Abfrage in Millisekunden | BIGINT | INT |
 | event_time | event_time_t | Datum und Uhrzeit, zu dem die überwachbare Aktion ausgelöst wurde | datetime2 | datetime |
-| host_name | – | Clienthostname | Zeichenfolge | – |
-| is_column_permission | is_column_permission_s | Flag, das angibt, ob die Berechtigung auf Benutzerebene erteilt wurde 1 = ja, 0 = nein | bit | Zeichenfolge |
-| – | is_server_level_audit_s | Flag, das angibt, ob die Überwachung auf Serverebene durchgeführt wird | – | Zeichenfolge |
-| object_ id | object_id_d | ID der Entität, für die die Überwachung durchgeführt wurde Dazu zählen Serverobjekte, Datenbanken, Datenbankobjekte und Schemaobjekte. 0, wenn die Entität den Server selbst darstellt oder die Überwachung nicht auf Objektebene durchgeführt wurde | int | int |
-| object_name | object_name_s | Name der Entität, für die die Überwachung durchgeführt wurde Dazu zählen Serverobjekte, Datenbanken, Datenbankobjekte und Schemaobjekte. 0, wenn die Entität den Server selbst darstellt oder die Überwachung nicht auf Objektebene durchgeführt wurde | sysname | Zeichenfolge |
-| permission_bitmask | permission_bitmask_s | Zeigt die gewährten, verweigerten oder widerrufenen Berechtigungen an (falls verfügbar) | varbinary(16) | Zeichenfolge |
-| response_rows | response_rows_d | Anzahl der im Resultset zurückgegebenen Zeilen | bigint | int |
-| schema_name | schema_name_s | Schemakontext, in dem die Aktion durchgeführt wurde NULL, wenn eine Überwachung außerhalb eines Schemas durchgeführt wird | sysname | Zeichenfolge |
-| – | securable_class_type_s | Sicherungsfähige Objekte, die dem überwachten class_type zugeordnet werden | – | Zeichenfolge |
+| host_name | – | Clienthostname | string | – |
+| is_column_permission | is_column_permission_s | Flag, das angibt, ob die Berechtigung auf Benutzerebene erteilt wurde 1 = ja, 0 = nein | bit | string |
+| – | is_server_level_audit_s | Flag, das angibt, ob die Überwachung auf Serverebene durchgeführt wird | – | string |
+| object_ id | object_id_d | ID der Entität, für die die Überwachung durchgeführt wurde Dazu zählen Serverobjekte, Datenbanken, Datenbankobjekte und Schemaobjekte. 0, wenn die Entität den Server selbst darstellt oder die Überwachung nicht auf Objektebene durchgeführt wurde | INT | INT |
+| object_name | object_name_s | Name der Entität, für die die Überwachung durchgeführt wurde Dazu zählen Serverobjekte, Datenbanken, Datenbankobjekte und Schemaobjekte. 0, wenn die Entität den Server selbst darstellt oder die Überwachung nicht auf Objektebene durchgeführt wurde | sysname | string |
+| permission_bitmask | permission_bitmask_s | Zeigt die gewährten, verweigerten oder widerrufenen Berechtigungen an (falls verfügbar) | varbinary(16) | string |
+| response_rows | response_rows_d | Anzahl der im Resultset zurückgegebenen Zeilen | BIGINT | INT |
+| schema_name | schema_name_s | Schemakontext, in dem die Aktion durchgeführt wurde NULL, wenn eine Überwachung außerhalb eines Schemas durchgeführt wird | sysname | string |
+| – | securable_class_type_s | Sicherungsfähige Objekte, die dem überwachten class_type zugeordnet werden | – | string |
 | sequence_group_id | sequence_group_id_g | Eindeutiger Bezeichner | varbinary | GUID |
-| sequence_number | sequence_number_d | Verfolgt die Reihenfolge der Datensätze in einem einzelnen Überwachungsdatensatz nach, der zu groß für den Schreibpuffer für Überwachungen war | int | int |
-| server_instance_name | server_instance_name_s | Name der Serverinstanz, in der die Überwachung durchgeführt wurde | sysname | Zeichenfolge |
-| server_principal_id | server_principal_id_d | ID des Anmeldekontexts, in dem die Aktion durchgeführt wurde | int | int |
-| server_principal_name | server_principal_name_s | Aktuelle Anmeldung | sysname | Zeichenfolge |
-| server_principal_sid | server_principal_sid_s | Aktuelle Anmelde-SID | varbinary | Zeichenfolge |
-| session_id | session_id_d | ID der Sitzung, in der das Ereignis aufgetreten ist | smallint | int |
-| session_server_principal_name | session_server_principal_name_s | Serverprinzipal für die Sitzung | sysname | Zeichenfolge |
-| statement | statement_s | Ausgeführte T-SQL-Anweisung (falls verfügbar) | nvarchar(4000) | Zeichenfolge |
-| succeeded | succeeded_s | Gibt an, ob die Aktion, die das Ereignis ausgelöst hat, erfolgreich war Für Ereignisse, die keine Anmelde- oder Batchereignisse sind, wird nur erfasst, ob die Berechtigungsüberprüfung erfolgreich war oder nicht. Der Vorgang wird nicht erfasst. 1 = Erfolg, 0 = Fehler | bit | Zeichenfolge |
-| target_database_principal_id | target_database_principal_id_d | Datenbankprinzipal, auf dem der GRANT-, DENY- oder REVOKE-Vorgang ausgeführt wird 0, falls nicht zutreffend | int | int |
-| target_database_principal_name | target_database_principal_name_s | Zielbenutzer der Aktion NULL, falls nicht zutreffend | Zeichenfolge | Zeichenfolge |
-| target_server_principal_id | target_server_principal_id_d | Serverprinzipal, auf dem der GRANT-, DENY- oder REVOKE-Vorgang ausgeführt wird Gibt 0 zurück, falls nicht zutreffend | int | int |
-| target_server_principal_name | target_server_principal_name_s | Zielanmeldung der Aktion NULL, falls nicht zutreffend | sysname | Zeichenfolge |
-| target_server_principal_sid | target_server_principal_sid_s | SID der Zielanmeldung NULL, falls nicht zutreffend | varbinary | Zeichenfolge |
-| transaction_id | transaction_id_d | nur SQL Server (ab 2016), 0 für Azure SQL-Datenbank | bigint | int |
-| user_defined_event_id | user_defined_event_id_d | Benutzerdefinierte Ereignis-ID, die als Argument an sp_audit_write übergeben wird NULL für Systemereignisse (Standardwert), ungleich 0 für benutzerdefinierte Ereignisse Weitere Informationen: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | smallint | int |
-| user_defined_information | user_defined_information_s | Benutzerdefinierte Informationen, die als Argument an sp_audit_write übergeben werden NULL für Systemereignisse (Standardwert), ungleich 0 für benutzerdefinierte Ereignisse Weitere Informationen: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | Zeichenfolge |
+| sequence_number | sequence_number_d | Verfolgt die Reihenfolge der Datensätze in einem einzelnen Überwachungsdatensatz nach, der zu groß für den Schreibpuffer für Überwachungen war | INT | INT |
+| server_instance_name | server_instance_name_s | Name der Serverinstanz, in der die Überwachung durchgeführt wurde | sysname | string |
+| server_principal_id | server_principal_id_d | ID des Anmeldekontexts, in dem die Aktion durchgeführt wurde | INT | INT |
+| server_principal_name | server_principal_name_s | Aktuelle Anmeldung | sysname | string |
+| server_principal_sid | server_principal_sid_s | Aktuelle Anmelde-SID | varbinary | string |
+| session_id | session_id_d | ID der Sitzung, in der das Ereignis aufgetreten ist | SMALLINT | INT |
+| session_server_principal_name | session_server_principal_name_s | Serverprinzipal für die Sitzung | sysname | string |
+| statement | statement_s | Ausgeführte T-SQL-Anweisung (falls verfügbar) | nvarchar(4000) | string |
+| succeeded | succeeded_s | Gibt an, ob die Aktion, die das Ereignis ausgelöst hat, erfolgreich war Für Ereignisse, die keine Anmelde- oder Batchereignisse sind, wird nur erfasst, ob die Berechtigungsüberprüfung erfolgreich war oder nicht. Der Vorgang wird nicht erfasst. 1 = Erfolg, 0 = Fehler | bit | string |
+| target_database_principal_id | target_database_principal_id_d | Datenbankprinzipal, auf dem der GRANT-, DENY- oder REVOKE-Vorgang ausgeführt wird 0, falls nicht zutreffend | INT | INT |
+| target_database_principal_name | target_database_principal_name_s | Zielbenutzer der Aktion NULL, falls nicht zutreffend | string | string |
+| target_server_principal_id | target_server_principal_id_d | Serverprinzipal, auf dem der GRANT-, DENY- oder REVOKE-Vorgang ausgeführt wird Gibt 0 zurück, falls nicht zutreffend | INT | INT |
+| target_server_principal_name | target_server_principal_name_s | Zielanmeldung der Aktion NULL, falls nicht zutreffend | sysname | string |
+| target_server_principal_sid | target_server_principal_sid_s | SID der Zielanmeldung NULL, falls nicht zutreffend | varbinary | string |
+| transaction_id | transaction_id_d | nur SQL Server (ab 2016), 0 für Azure SQL-Datenbank | BIGINT | INT |
+| user_defined_event_id | user_defined_event_id_d | Benutzerdefinierte Ereignis-ID, die als Argument an sp_audit_write übergeben wird NULL für Systemereignisse (Standardwert), ungleich 0 für benutzerdefinierte Ereignisse Weitere Informationen: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | SMALLINT | INT |
+| user_defined_information | user_defined_information_s | Benutzerdefinierte Informationen, die als Argument an sp_audit_write übergeben werden NULL für Systemereignisse (Standardwert), ungleich 0 für benutzerdefinierte Ereignisse Weitere Informationen: [sp_audit_write (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-audit-write-transact-sql) | nvarchar(4000) | string |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

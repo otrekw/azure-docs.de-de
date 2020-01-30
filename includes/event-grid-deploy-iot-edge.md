@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 8656bbb070e2b05a06ea22dd1634a40182b440cb
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: b453a04a170764a037eed7415eaf71e5a4d37526
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098666"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844586"
 ---
-## <a name="deploy-event-grid-iot-edge-module"></a>Bereitstellen eines IoT Edge-Moduls in Event Grid
+## <a name="deploy-event-grid-iot-edge-module"></a>Bereitstellen von Event Grid in einem IoT Edge-Modul
 
 Es gibt mehrere Möglichkeiten, wie Sie Module auf einem IoT Edge-Gerät bereitstellen können. Alle sind für Azure Event Grid in IoT Edge geeignet. In diesem Artikel werden die Schritte zum Bereitstellen von Event Grid in IoT Edge über das Azure-Portal beschrieben.
 
 >[!NOTE]
-> In diesem Tutorial stellen Sie das Event Grid-Modul ohne Persistenz bereit. Das heißt, dass alle in diesem Tutorial erstellten Themen und Abonnements beim erneuten Bereitstellen des Moduls gelöscht werden. Weitere Informationen zum Einrichten der Persistenz finden Sie in den folgenden Artikeln: [Beibehalten des Status in Linux](../articles/event-grid/edge/persist-state-linux.md) oder [Beibehalten des Status in Windows](../articles/event-grid/edge/persist-state-windows.md). Für Produktionsworkloads empfiehlt es sich, das Event Grid-Modul mit Persistenz zu installieren.
+> In diesem Tutorial stellen Sie das Event Grid-Modul ohne Persistenz bereit. Das heißt, dass alle in diesem Tutorial erstellten Themen und Abonnements beim erneuten Bereitstellen des Moduls gelöscht werden. Weitere Informationen zum Einrichten von Persistenz finden Sie in den folgenden Artikeln: [Beibehalten des Status in Linux](../articles/event-grid/edge/persist-state-linux.md) oder [Beibehalten des Status in Windows](../articles/event-grid/edge/persist-state-windows.md). Für Produktionsworkloads empfiehlt es sich, das Event Grid-Modul mit Persistenz zu installieren.
 
 >[!IMPORTANT]
 > In diesem Tutorial wird das Event Grid-Modul mit deaktivierter Clientauthentifizierung bereitgestellt, und HTTP-Abonnenten werden zugelassen. Für Produktionsworkloads empfiehlt es sich, dass Sie lediglich HTTPS-Anforderungen und Abonnenten mit aktivierter Clientauthentifizierung aktivieren. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](../articles/event-grid/edge/security-authentication.md).
@@ -41,7 +41,9 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
 1. Wählen Sie im Abschnitt **Bereitstellungsmodule** die Option **Hinzufügen** aus.
 1. Wählen Sie in der Dropdownliste mit den Modultypen den Eintrag **IoT Edge-Modul** aus.
-1. Geben Sie den Namen, das Image, die Optionen für die Containererstellung für den Container an:
+1. Geben Sie den Namen, das Image und die Optionen für die Containererstellung für den Container an:
+
+[!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Name**: eventgridmodule
    * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
@@ -50,8 +52,8 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth:clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -69,7 +71,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
  1. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
 
     > [!NOTE]
-    > Wenn Sie eine Azure-VM als Edge-Gerät verwenden, fügen Sie eine Regel für eingehende Ports hinzu, um eingehenden Datenverkehr an Port 4438 zuzulassen. Anweisungen zum Hinzufügen der Regel finden Sie unter [Öffnen von Ports für einen virtuellen Computer](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
+    > Wenn Sie eine Azure-VM als Edge-Gerät verwenden, fügen Sie eine Portregel hinzu, um eingehenden Datenverkehr an Port 4438 zuzulassen. Anweisungen zum Hinzufügen der Regel finden Sie unter [Öffnen von Ports für einen virtuellen Computer](../articles/virtual-machines/windows/nsg-quickstart-portal.md).
 
 
 ### <a name="setup-routes"></a>Einrichten von Routen
@@ -83,8 +85,8 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
 ### <a name="verify-your-deployment"></a>Überprüfen Ihrer Bereitstellung
 
-1. Nach Übermittlung der Bereitstellung wird wieder die Seite „IoT Edge“ Ihres IoT-Hubs angezeigt.
-1. Wählen Sie das **IoT Edge-Gerät** aus, das Sie für die Bereitstellung als Ziel festgelegt haben, um dessen Details zu öffnen.
+1. Nach Übermittlung der Bereitstellung kehren Sie zur Seite „IoT Edge“ Ihres IoT-Hubs zurück.
+1. Wählen Sie das **IoT Edge-Zielgerät** für die Bereitstellung aus, um dessen Details zu öffnen.
 1. Vergewissern Sie sich anhand der Gerätedetails, dass das Event Grid-Modul als **In Bereitstellung angegeben** und als **Vom Gerät gemeldet** aufgeführt ist.
 
 Unter Umständen dauert es einen Moment, bis das Modul auf dem Gerät gestartet und an IoT Hub gemeldet wurde. Aktualisieren Sie die Seite, um einen aktualisierten Status anzuzeigen.

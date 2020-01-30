@@ -17,7 +17,7 @@
       href: stream-analytics-quick-create-vs.md
     - name: 'Erstellen eines Auftrags: Visual Studio Code'
       href: quick-create-vs-code.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen/Verwalten eines Auftrags
       href: stream-analytics-manage-job.md
@@ -176,6 +176,8 @@
           href: stream-analytics-live-data-local-testing.md
         - name: Anzeigen von Aufträgen in Visual Studio
           href: stream-analytics-vs-tools.md
+        - name: Debuggen von Abfragen mithilfe des Auftragsdiagramms
+          href: debug-locally-using-job-diagram.md
         - name: Entwickeln eines Edge-Auftrags
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Einrichten von CI-/CD-Pipelines

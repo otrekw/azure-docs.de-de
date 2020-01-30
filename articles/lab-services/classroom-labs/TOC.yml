@@ -8,7 +8,7 @@
       href: classroom-labs-overview.md
     - name: Informationen zu Lab Services und DevTest Labs
       href: ../lab-services-overview.md?toc=%2fazure%2flab-services%2fclassroom-labs%2ftoc.json
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Einrichten eines Lab-Kontos
       href: tutorial-setup-lab-account.md
@@ -26,7 +26,7 @@
       items:
         - name: Verwenden von Labs für das Abhalten von Kursen
           href: classroom-labs-scenarios.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Administratorhandbuch
       href: administrator-guide.md
@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: "Python und Jupyter\_Notebook-Instanzen"
           href: class-type-jupyter-notebook.md
+        - name: Entwicklung mobiler Apps mit Android Studio
+          href: class-type-mobile-dev-android-studio.md
     - name: Erstellen und Konfigurieren von Labkonten (Labkontobesitzer)
       items:
         - name: Erstellen und Verwalten von Labkonten

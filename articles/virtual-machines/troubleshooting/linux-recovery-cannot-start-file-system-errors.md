@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432314"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842400"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Dateisystemfehlern
 
@@ -110,20 +110,20 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer mithilfe der [
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
 8. Wenn der Datenträger nicht eingebunden werden kann, führen Sie den Befehl „xfs_repair“ mit der Option „-L“ (Schreiben von Nullen in das Protokoll erzwingen) aus:
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Versuchen Sie als Nächstes, das Dateisystem einzubinden. Wenn der Datenträger erfolgreich eingebunden wurde, wird Folgendes ausgegeben:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. Starten Sie die VM neu, und überprüfen Sie, ob das Problem behoben wurde.

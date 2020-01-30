@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8a0b4ff4fc985355d8dc76f2f3fd7fb35da55ec0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275922"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845022"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
@@ -211,7 +209,7 @@ Weitere Anweisungen zum Installieren von Elasticsearch finden Sie auf der Seite 
     sudo chmod 775 /var/log/suricata/eve.json
     ```
 
-1. Führen Sie zum Starten von Logstash den folgenden Befehl aus:
+1. Führen Sie zum Starten von Logstash folgenden Befehl aus:
 
     ```
     sudo /etc/init.d/logstash start

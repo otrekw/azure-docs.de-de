@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513982"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834976"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
@@ -89,7 +89,7 @@ Dies bedeutet, dass weniger Personen Zugriff auf Ihre echten Daten haben, wodurc
 
 Zur Abwehr von Brute-Force- und wörterbuchbasierten Angriffen muss eine Richtlinie für sichere Kennwörter implementiert werden, um sicherzustellen, dass Benutzer komplexe Kennwörter erstellen (beispielsweise mit einer Mindestlänge von 12 Zeichen und einer verpflichtenden Kombination aus alphanumerischen Zeichen und Sonderzeichen).
 
-Sie können ein Identitätsframework verwenden, um Kennwortrichtlinien zu erstellen und zu erzwingen. Azure AD B2C hilft Ihnen bei der Kennwortverwaltung durch die Bereitstellung von [integrierten Richtlinien](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Self-service-Kennwortzurücksetzung](../../active-directory-b2c/active-directory-b2c-reference-sspr.md) und vielem mehr.
+Sie können ein Identitätsframework verwenden, um Kennwortrichtlinien zu erstellen und zu erzwingen. Azure AD B2C hilft Ihnen bei der Kennwortverwaltung durch die Bereitstellung von [integrierten Richtlinien](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Self-service-Kennwortzurücksetzung](../../active-directory-b2c/user-flow-self-service-password-reset.md) und vielem mehr.
 
 Vergewissern Sie sich zur Abwehr von Angriffen auf Standardkonten, dass alle Schlüssel und Kennwörter ersetzbar sind und nach der Installation von Ressourcen generiert oder ersetzt werden.
 
