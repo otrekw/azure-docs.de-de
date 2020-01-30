@@ -3,12 +3,12 @@ title: Ermitteln von Apps, Rollen und Funktionen auf lokalen Servern mit Azure M
 description: Erfahren Sie, wie Sie Apps, Rollen und Funktionen auf lokalen Servern mithilfe der Azure Migrate-Serverbewertung ermitteln.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280763"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846321"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Ermitteln von Apps, Rollen und Features eines Computers
 
@@ -25,10 +25,10 @@ App-Ermittlung mithilfe von Azure Migrate: Die Serverbewertung erfolgt ohne Agen
 ## <a name="before-you-start"></a>Vorbereitung
 
 1. Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-2. Stellen Sie sicher, dass Sie das Azure Migrate-Tool für die Serverbewertung einem Projekt [hinzugefügt](how-to-assess.md) haben.
+2. Stellen Sie sicher, dass Sie das Azure Migrate-Tool für die Serverbewertung einem Projekt hinzugefügt haben.
 4. Überprüfen Sie die [VMware-Anforderungen](migrate-support-matrix-vmware.md#vmware-requirements) zum Ermitteln und Bewerten von VMware-VMs mit der Azure Migrate-Appliance.
 5. Überprüfen Sie die [Anforderungen](migrate-appliance.md) für die Bereitstellung der Azure Migrate-Appliance.
-6. [Überprüfen Sie die Unterstützung und Anforderungen](/migrate-support-matrix-vmware.md#application-discovery) für die Anwendungsermittlung.
+6. [Überprüfen Sie die Unterstützung und Anforderungen](migrate-support-matrix-vmware.md#application-discovery) für die Anwendungsermittlung.
 
 ## <a name="prepare-for-app-discovery"></a>Vorbereiten der App-Ermittlung
 
