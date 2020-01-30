@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620452"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840059"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Die folgenden Arten von Konten sind verfügbar:
 
 ## <a name="work-account"></a>Geschäftskonto
 
-Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf Azure AD angelegt. Informationen zum Erstellen eines Geschäftskontos finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer zu Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md). Ein Geschäftskonto wird im Azure-Portal mit der Option **Neuer Benutzer** erstellt.
+Ein Geschäftskonto wird für alle Mandanten auf die gleiche Weise basierend auf Azure AD angelegt. Informationen zum Erstellen eines Geschäftskontos finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md) weiter. Ein Geschäftskonto wird im Azure-Portal mit der Option **Neuer Benutzer** erstellt.
 
 Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigurationseinstellungen berücksichtigen:
 
@@ -49,21 +49,21 @@ Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigur
 
 Befolgen Sie zum Erstellen eines neuen Geschäftskontos die folgenden Angaben:
 
-- [Azure-Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Aktualisieren eines Benutzerprofils
 
 Befolgen Sie zum Aktualisieren des Profils eines Benutzers die folgenden Angaben:
 
-- [Azure-Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Zurücksetzen eines Kennworts für einen Benutzer
 
 Befolgen Sie zum Zurücksetzen des Kennworts eines Benutzers die folgenden Angaben:
 
-- [Azure-Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Gastbenutzer
@@ -76,12 +76,12 @@ Sie können auch mit der [Microsoft Graph-API](https://docs.microsoft.com/graph/
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 
-Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Benutzeranmeldeflows](../active-directory-b2c/active-directory-b2c-reference-policies.md), mithilfe der Azure AD Graph-API oder im Azure-Portal erstellt.
+Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Benutzeranmeldeflows](user-flow-overview.md), mithilfe der Azure AD Graph-API oder im Azure-Portal erstellt.
 
-Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
 
-Sie können die Angaben im Abschnitt **Erstellen von Consumerbenutzerkonten** in [Verwenden der Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) befolgen, um ein Azure AD B2C-Consumerkonto zu erstellen. Sie können auch die Angaben im Abschnitt **Aktualisieren von Consumerbenutzerkonten** im selben Artikel befolgen, um die Eigenschaften des Kontos zu verwalten.
+Sie können die Angaben im Abschnitt **Erstellen von Consumerbenutzerkonten** in [Verwenden der Azure AD Graph-API](manage-user-accounts-graph-api.md) befolgen, um ein Azure AD B2C-Consumerkonto zu erstellen. Sie können auch die Angaben im Abschnitt **Aktualisieren von Consumerbenutzerkonten** im selben Artikel befolgen, um die Eigenschaften des Kontos zu verwalten.
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrieren von Benutzerkonten für Consumer
 
-Möglicherweise müssen Sie bestehende Benutzerkonten von Consumern von Identitätsanbietern in Azure AD B2C migrieren. Weitere Informationen finden Sie unter [Benutzermigration](active-directory-b2c-user-migration.md) oder [Migrieren von Benutzern mit Identitäten in sozialen Netzwerken](active-directory-b2c-social-migration.md).
+Möglicherweise müssen Sie bestehende Benutzerkonten von Consumern von Identitätsanbietern in Azure AD B2C migrieren. Weitere Informationen finden Sie unter [Benutzermigration](user-migration.md) oder [Migrieren von Benutzern mit Identitäten in sozialen Netzwerken](migrate-social-identities.md).

@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB-Tabellen-API – .NET SDK und Ressourcen
 description: Wichtige Informationen zur Azure Cosmos DB-Tabellen-API einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 5a5305ffd388d2573d250d93131c1fed236008b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058589"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771630"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>.NET-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 
@@ -41,11 +41,11 @@ ms.locfileid: "71058589"
 
 ### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
 
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
 ### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
 
@@ -87,7 +87,7 @@ Das Vorschaupaket [WindowsAzure.Storage-PremiumTable](https://www.nuget.org/pack
 Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst abgelehnt.
 <br/>
 
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [2.1.2](#2.1.2) |16. September 2019| |
 | [2.1.0](#2.1.0) |22. Januar 2019|01. April 2020 |
@@ -95,7 +95,7 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 | [1.1.3](#1.1.3) |17. Juli 2018|01. Dezember 2019 |
 | [1.1.1](#1.1.1) |26. März 2018|01. Dezember 2019 |
 | [1.1.0](#1.1.0) |21. Februar 2018|01. Dezember 2019 |
-| [1.0.0](#1.0.0) |15. November 2017|15. November 2019 |
+| [1.0.0](#1.0.0) |15. November 2017|15. November 2019 |
 | 0.9.0-preview |11. November 2017 |11. November 2019 |
 
 ## <a name="troubleshooting"></a>Problembehandlung

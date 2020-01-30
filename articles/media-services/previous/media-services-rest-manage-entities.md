@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1ecbca99a65d99cc3b8d842a7b61d858398a80ff
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a03bc24b689df342be40536c26149a7611fc5176
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885703"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773646"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST  
 
@@ -54,7 +54,7 @@ Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
     Content-Length: 74
@@ -71,7 +71,7 @@ Im folgenden Beispiel wird eine Liste aller MediaProcessor-Entitäten abgerufen.
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -82,7 +82,7 @@ Sie können auch eine bestimmte Entität oder alle Entitätenmengen im Zusammenh
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -91,7 +91,7 @@ Sie können auch eine bestimmte Entität oder alle Entitätenmengen im Zusammenh
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -102,7 +102,7 @@ Im folgenden Beispiel wird nur die State-Eigenschaft aller Aufträge zurückgege
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -113,7 +113,7 @@ Das folgende Beispiel gibt alle JobTemplates mit dem Namen „SampleTemplate“ 
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN> 
     Host: media.windows.net
 
@@ -132,7 +132,7 @@ Das folgende Beispiel zeigt, wie Sie **skip** und **top** zum Überspringen der 
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
 
@@ -146,7 +146,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie die Name-Eigenschaft für ei
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 21
@@ -164,7 +164,7 @@ Im folgenden Beispiel wird das Löschen eines Locator veranschaulicht, mit dem e
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Authorization: Bearer <ENCODED JWT TOKEN>
     Host: media.windows.net
     Content-Length: 0

@@ -17,13 +17,12 @@ ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964545"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700208"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow
 Mit dem OAuth 2.0-SAML-Bearerassertionsflow können Sie ein OAuth-Zugriffstoken mithilfe einer SAML-Assertion anfordern, wenn ein Client eine vorhandene Vertrauensstellung verwenden muss. Die auf die SAML-Assertion angewandte Signatur stellt die Authentifizierung der autorisierten App bereit. Eine SAML-Assertion ist ein XML-Sicherheitstoken, das von einem Identitätsanbieter ausgegeben und von einem Dienstanbieter genutzt wird. Der Dienstanbieter identifiziert basierend auf den Inhalten des Tokens den Antragsteller der Assertion für sicherheitsrelevante Zwecke.

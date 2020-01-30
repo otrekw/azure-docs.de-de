@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997070"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711651"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
 
@@ -37,14 +37,14 @@ Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von 
 1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Bereitstellungsanwendung. Wenn Sie z. B. die Zuordnung Ihrer *Anwendung für die Benutzerbereitstellung von Workday in AD* exportieren möchten, navigieren Sie zum Abschnitt „Eigenschaften“ dieser App. 
 1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet, und wird in Graph-Tester-Vorgängen verwendet.
 
-   ![Dienstprinzipal-ID der Workday-App](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Dienstprinzipal-ID der Workday-App](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
 
 1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
 
-    ![Graph-Anmeldung](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-Anmeldung](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
 
@@ -56,11 +56,11 @@ Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetze
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![GET-Auftragsabfrage](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![GET-Auftragsabfrage](media/skip-out-of-scope-deletions/skip-03.png)
 
 Kopieren Sie die Antwort in eine Textdatei. Sie sieht wie der folgende JSON-Text aus, wobei die für Ihre Bereitstellung spezifischen Werte gelb hervorgehoben sind. Fügen Sie die grün hervorgehobenen Zeilen am Ende hinzu, und aktualisieren Sie das blau hervorgehobene Kennwort für die Workday-Verbindung. 
 
-   ![GET-Auftragsantwort](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![GET-Auftragsantwort](media/skip-out-of-scope-deletions/skip-04.png)
 
 Nachfolgend sehen Sie den JSON-Block, der der Zuordnung hinzugefügt werden soll. 
 
@@ -82,22 +82,22 @@ Ersetzen Sie in der folgenden URL den Platzhalter „[servicePrincipalId]“ dur
 ```
 Kopieren Sie den aktualisierten Text aus Schritt 3 in den Anforderungstext („Request Body“), und legen Sie den Header „Content-Type“ in „Request Headers“ auf „application/json“ fest. 
 
-   ![PUT-Anforderung](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![PUT-Anforderung](media/skip-out-of-scope-deletions/skip-05.png)
 
 Klicken Sie auf „Run Query“ (Abfrage ausführen). 
 
 Als Ausgabe sollte „Success – Status Code 204“(Erfolg – Statuscode 204) angezeigt werden. 
 
-   ![PUT-Antwort](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![PUT-Antwort](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>Schritt 5: Sicherstellen, dass Benutzer außerhalb des gültigen Bereichs nicht deaktiviert werden
 
 Sie können die Ergebnisse dieses Flags im erwarteten Verhalten testen, indem Sie Ihre Bereichsregeln so aktualisieren, dass ein bestimmter Benutzer übersprungen wird. Im folgenden Beispiel wird der Mitarbeiter mit der ID 21173 (der sich zuvor im Bereich befand) durch Hinzufügen einer neuen Bereichsregel ausgeschlossen: 
 
-   ![Bereichsbeispiel](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Bereichsbeispiel](media/skip-out-of-scope-deletions/skip-07.png)
 
 Im nächsten Bereitstellungszeitraum erkennt der Azure AD-Bereitstellungsdienst, dass sich der Benutzer 21173 außerhalb des gültigen Bereichs befindet. Und wenn die „SkipOutOfScopeDeletions“-Eigenschaft aktiviert ist, wird aufgrund der Synchronisierungsregel für diesen Benutzer eine Meldung wie im folgenden Screenshot angezeigt: 
 
-   ![Bereichsbeispiel](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Bereichsbeispiel](media/skip-out-of-scope-deletions/skip-08.png)
 
 

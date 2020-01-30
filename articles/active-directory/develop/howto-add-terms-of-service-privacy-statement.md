@@ -12,13 +12,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca59120bcfadc6c75e3687be84a0e70f97fc3c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f28c33f20556825d84edda34752ac64714327526
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842803"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697335"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
@@ -40,7 +39,7 @@ In den folgenden Beispielen ist die Oberfläche für die Benutzerzustimmung darg
 
 Bevor Sie Links zu den Dokumenten mit den Nutzungsbedingungen und Datenschutzbestimmungen für Ihre App hinzufügen, sollten Sie sicherstellen, dass die URLs den folgenden Vorgaben entsprechen.
 
-| Vorgabe     | BESCHREIBUNG                           |
+| Vorgabe     | Beschreibung                           |
 |---------------|---------------------------------------|
 | Format        | Gültige URL                             |
 | Gültige Schemas | HTTP und HTTPS<br/>Empfohlen wird HTTPS |

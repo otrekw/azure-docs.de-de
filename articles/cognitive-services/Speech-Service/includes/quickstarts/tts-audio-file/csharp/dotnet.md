@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469673"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768154"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 Sie können nun Ihre App erstellen und die Sprachsynthese mit dem Spracherkennungsdienst testen.
 
-1. **Kompilieren des Codes:** Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
+1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
 2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
 3. **Starten der Synthese**: Ihr Text wird in Sprache konvertiert und in den angegebenen Audiodaten gespeichert.
 

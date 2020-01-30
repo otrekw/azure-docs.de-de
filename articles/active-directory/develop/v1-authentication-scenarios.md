@@ -16,14 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 783c840c4cfe2d8a1d2533e68d14f7b4a3993e64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833276"
 ---
 # <a name="what-is-authentication"></a>Was ist Authentifizierung?
 
@@ -121,7 +120,7 @@ Welche Ansprüche in einem Sicherheitstoken enthalten sind, hängt von der Art d
 
 Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Anspruchsarten, die von Azure AD ausgegeben werden. Weitere Informationen finden Sie finden Sie in den Themen zu den [Zugriffstoken](access-tokens.md) und [ID-Token](id-tokens.md), die von Azure AD ausgestellt werden.
 
-| Anspruch | BESCHREIBUNG |
+| Anspruch | Beschreibung |
 | --- | --- |
 | Anwendungs-ID | Die Anwendung, die das Token verwendet. |
 | Zielgruppe | Die Empfängerressource, für die das Token vorgesehen ist. |

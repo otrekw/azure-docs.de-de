@@ -14,13 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e1a466902ccb47d57e5f9590ba94bf08c76ec5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918439"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698678"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -56,7 +55,7 @@ Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Azure AD
 
 Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
 
-| NameID-Format | BESCHREIBUNG |
+| NameID-Format | Beschreibung |
 |---------------|-------------|
 | **Standard** | Azure AD verwendet das Standardquellformat. |
 | **Persistent** | Azure AD verwendet das NameID-Format „Persistent“. |
@@ -66,11 +65,11 @@ Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folg
 
 Eine vorübergehende NameID wird ebenfalls unterstützt, ist jedoch im Dropdownmenü nicht verfügbar und kann in Azure nicht konfiguriert werden. Weitere Informationen zum NameIDPolicy-Attribut finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
 Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder NameID) aus. Sie können aus folgenden Optionen auswählen:
 
-| NAME | BESCHREIBUNG |
+| Name | Beschreibung |
 |------|-------------|
 | Email | E-Mail-Adresse des Benutzers |
 | userprincipalName | Benutzerprinzipalname (User Principal Name, UPN) des Benutzers |
@@ -100,7 +99,7 @@ Sie können in Azure AD definierten Ansprüchen einen beliebigen konstanten (sta
 
 Sie können auch die Funktionen für Anspruchstransformationen verwenden.
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
 | **Join()** | Verknüpft ein Attribut mit einer überprüften Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
@@ -127,7 +126,7 @@ So wenden Sie eine Transformation auf ein Benutzerattribut an
 
 Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwenden.
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
 | **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. Bei der NameID-Anspruchstransformation beschränkt sich die Verknüpfung auf eine verifizierte Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |

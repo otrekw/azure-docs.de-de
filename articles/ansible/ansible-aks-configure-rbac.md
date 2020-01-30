@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Ansible verwenden, um die rollenbasier
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, Playbook, AKS, Container, Kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156876"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836965"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Tutorial: Konfigurieren von Rollen der rollenbasierten Zugriffssteuerung (RBAC) in Azure Kubernetes Service (AKS) mit Ansible
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Ersetzen Sie den Platzhalter `&lt;your-aad-account>` durch die [Objekt-ID](#get-the-azure-ad-object-id) Ihres Azure AD-Mandanten.
+Ersetzen Sie den Platzhalter `<your-aad-account>` durch die [Objekt-ID](#get-the-azure-ad-object-id) Ihres Azure AD-Mandanten.
 
 Speichern Sie das folgende Playbook, mit dem Ihre neue Rolle in AKS bereitgestellt wird, als `aks-kube-deploy.yml`:
 

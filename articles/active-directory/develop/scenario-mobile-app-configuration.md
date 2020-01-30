@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d7148b104c723d124a954cf858ca77ff6552f94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61d3a7b7f06ffdb7f39f80f7f3bf19e9007945d2
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423797"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702112"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobile App zum Aufrufen von Web-APIs – Codekonfiguration
 
@@ -30,7 +29,7 @@ Nachdem Sie Ihre Anwendung erstellt haben, erfahren Sie, wie Sie den Code mithil
 
 Die folgenden Microsoft-Bibliotheken unterstützen mobile Apps:
 
-  MSAL-Bibliothek | BESCHREIBUNG
+  MSAL-Bibliothek | Beschreibung
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Zum Entwickeln portabler Anwendungen. Die von MSAL.NET unterstützten Plattformen zum Erstellen einer mobilen Anwendung sind UWP, Xamarin.iOS und Xamarin.Android.
   ![MSAL.iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL.iOS | Entwickeln nativer iOS-Anwendungen mit Objective-C oder Swift

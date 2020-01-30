@@ -3,12 +3,12 @@ title: Bewertungen in Azure Migrate
 description: Erfahren Sie etwas über Bewertungen in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029101"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833327"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Informationen zu Bewertungen in Azure Migrate
 

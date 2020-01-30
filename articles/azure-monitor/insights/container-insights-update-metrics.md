@@ -3,12 +3,12 @@ title: 'Gewusst wie: Aktualisieren von Azure Monitor für Container für Metrike
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktualisieren, um die Funktion für benutzerdefinierte Metriken zu aktivieren, für die das Untersuchen und Senden von Warnungen zu aggregierten Metriken unterstützt wird.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403223"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715905"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 
@@ -20,7 +20,7 @@ Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metr
 
 Im Rahmen dieses Features werden die folgenden Metriken aktiviert:
 
-| Metriknamespace | Metrik | BESCHREIBUNG |
+| Metriknamespace | Metrik | Beschreibung |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dies sind Metriken vom Typ *node* (Knoten), die *host* als Dimension enthalten. Außerdem enthalten sie den<br> Namen des Knotens als Wert für die Dimension *host*. |
 | insights.container/pods | podCount | Dies sind Metriken vom Typ *pod*. Sie enthalten Folgendes als Dimension: ControllerName, Kubernetes-Namespace, Name, Phase. |
@@ -529,7 +529,7 @@ Führen Sie die folgenden Schritte aus, um mit Azure PowerShell einen bestimmten
     }
 
     #
-    #   Check AKS cluster existance and access check
+    #   Check AKS cluster existence and access check
     #
     Write-Host("Checking aks cluster exists...")
     $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $clusterName  -ErrorVariable notPresent -ErrorAction SilentlyContinue

@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045647"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719890"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Tutorial: Konfigurieren der Transaktionsreplikation zwischen zwei verwalteten Instanzen und SQL Server
 
@@ -385,7 +385,7 @@ Lösungsvorschläge:
 
 Beim Hinzufügen eines neuen Abonnements mit dem Assistenten **Neues Abonnement** stellen Sie auf der Seite **Veröffentlichung** kann es vorkommen, dass keine Datenbanken und Veröffentlichungen als verfügbare Optionen aufgeführt sind. Unter Umständen wird die folgende Fehlermeldung angezeigt:
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 Möglicherweise stimmt diese Fehlermeldung, und für den Verleger, mit dem Sie die Verbindung hergestellt haben, sind wirklich keine Veröffentlichungen verfügbar. Es kann auch sein, dass sie nicht über ausreichende Berechtigungen verfügen. Dieser Fehler kann ggf. aber auch verursacht werden, weil eine ältere Version von SQL Server Management Studio verwendet wird. Versuchen Sie, ein Upgrade auf SQL Server Management Studio 18.0 oder höher durchzuführen, um diese Grundursache auszuschließen. 
 

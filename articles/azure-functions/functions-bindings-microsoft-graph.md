@@ -2,15 +2,15 @@
 title: Microsoft Graph-Bindungen für Azure Functions
 description: Erfahren Sie, wie Microsoft Graph-Trigger und -Bindungen in Azure Functions verwendet werden.
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 770187693e5bac6e059dfd20455099fcc695b74b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121198"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715032"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 

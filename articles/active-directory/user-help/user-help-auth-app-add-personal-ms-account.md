@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8945f7a49f4c04b3265cb79c88c9acb287c50d10
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278902"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704747"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen persönlicher Microsoft-Konten zur Microsoft Authenticator-App
 
@@ -28,7 +27,7 @@ Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox 
 - **Anmeldung ohne Kennwort** Geben Sie den Benutzernamen Ihres persönlichen Microsoft-Kontos auf dem Gerät ein, bei dem Sie sich anmelden möchten. Verwenden Sie dann Ihr mobiles Gerät, um Ihre Identität per Fingerabdruck, Gesichtserkennung oder PIN zu bestätigen. Bei dieser Methode müssen Sie kein Kennwort eingeben.
 
 >[!Important]
->Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Falls dies noch nicht geschehen ist, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
+>Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
 
 ## <a name="add-your-personal-microsoft-account"></a>Hinzufügen Ihres persönlichen Microsoft-Kontos
 

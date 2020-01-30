@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe845fca4a50828cabbf6c360cb9bc65dd20ae7b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f15006f9c7f2778c986d1977123e1a396c4317f3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423532"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701602"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -31,7 +30,7 @@ Erfahren Sie, wie Sie den Code für Ihre Web-App zur Benutzeranmeldung konfiguri
 <!-- This section can be in an include for Web App and Web APIs -->
 Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API) verwendet:
 
-| Plattform | Bibliothek | BESCHREIBUNG |
+| Plattform | Bibliothek | Beschreibung |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Modellerweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Web-App können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenvalidierung steuern (insbesondere in einigen Partnerszenarien). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Unterstützung für Java-Webanwendungen |

@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 2d2cb113261495b0217d056cf62019b79be7fa27
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8964f710ca4dfdf4710458f857c3a930fd755654
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767856"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711501"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 
 In der Vergangenheit haben sich IT-Mitarbeiter zum Erstellen, Aktualisieren und Löschen von Mitarbeitern auf manuelle Methoden verlassen. Zum Synchronisieren von Mitarbeiterdaten wurden Methoden wie das Hochladen von CSV-Dateien oder benutzerdefinierte Skripts verwendet. Diese Bereitstellungsprozesse sind fehleranfällig, unsicher und schwer zu verwalten.
 
-Zum Verwalten der Identitätszyklen von Mitarbeitern, Anbietern oder vorübergehend Beschäftigten bietet der [Azure Active Directory (Azure AD)-Benutzerbereitstellungsdienst](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) die Integration mit cloudbasierten Anwendungen für das Personalwesen (Human Resources, HR). Als Beispiele sind hier Workday oder SuccessFactors zu nennen.
+Zum Verwalten der Identitätszyklen von Mitarbeitern, Anbietern oder vorübergehend Beschäftigten bietet der [Azure Active Directory (Azure AD)-Benutzerbereitstellungsdienst](user-provisioning.md) die Integration mit cloudbasierten Anwendungen für das Personalwesen (Human Resources, HR). Als Beispiele sind hier Workday oder SuccessFactors zu nennen.
 
 Azure AD nutzt diese Integration, um die folgenden Workflows für HR-Cloudanwendungen (Apps) zu ermöglichen:
 
@@ -86,7 +86,7 @@ Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 ode
 - Eine Test- und Produktionsinstanz der HR-Cloud-App
 - Administratorberechtigungen in der HR-Cloud-App zum Erstellen eines Systemintegrationsbenutzers für Testzwecke und Vornehmen von Änderungen zum Testen von Mitarbeiterdaten
 - Ein Server mit mindestens Windows Server 2012 und .NET 4.7.1 Runtime zum Hosten des [Bereitstellungs-Agents von Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=847801) für die Benutzerbereitstellung in Azure Active Directory
-- [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect) für die Synchronisierung von Benutzern zwischen Azure Active Directory und Azure AD
+- [Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) für die Synchronisierung von Benutzern zwischen Azure Active Directory und Azure AD
 
 ### <a name="training-resources"></a>Schulungsressourcen
 
@@ -94,10 +94,10 @@ Sie benötigen zudem eine gültige Abonnementlizenz für Azure AD Premium P1 ode
 |:-|:-|
 | Videos | [Was ist die Benutzerbereitstellung in Azure Active Directory?](https://youtu.be/_ZjARPpI6NI) |
 | | [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) |
-| Tutorials | [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) |
-| | [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| Häufig gestellte Fragen | [Automatisierte Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [Bereitstellung aus Workday in Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
+| Tutorials | [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure AD](../saas-apps/tutorial-list.md) |
+| | [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| Häufig gestellte Fragen | [Automatisierte Benutzerbereitstellung](user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
+| | [Bereitstellung aus Workday in Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>Lösungsarchitektur
 
@@ -106,7 +106,7 @@ Im folgenden Beispiel wird die Lösungsarchitektur der End-to-End-Benutzerbereit
 - **Autoritativer HR-Datenflow aus der HR-Cloud-App zu Azure Active Directory.** In diesem Flow wird das HR-Ereignis (Prozess für Einstellungen/Wechsel/Kündigungen) im Mandanten der HR-Cloud-App eingeleitet. Der Azure AD-Bereitstellungsdienst und der Azure AD Connect-Bereitstellungs-Agent stellen die Benutzerdaten aus dem HR-Cloud-App-Mandanten in Azure Active Directory bereit. Abhängig vom Ereignis kann dies dann in Azure Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
 - **Synchronisieren mit Azure AD und Rückschreiben von E-Mail-Adresse und Benutzername aus dem lokalen Azure Active Directory in die HR-Cloud-App.** Nach dem Aktualisieren der Konten in Azure Active Directory werden sie über Azure AD Connect mit Azure AD synchronisiert. E-Mail-Adressen und Benutzernamenattribute können an den Mandanten der HR-Cloud-App rückgeschrieben werden.
 
-![Workflowdiagramm](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
+![Workflowdiagramm](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img1.png)
 
 #### <a name="description-of-workflow"></a>Beschreibung des Workflows
 
@@ -116,7 +116,7 @@ Die wichtigsten Schritte gehen aus dem folgenden Diagramm hervor:  
 2. Der **Azure AD-Bereitstellungsdienst** führt die geplanten Zyklen vom Mandanten der HR-Cloud-App aus und erkennt Änderungen, die zur Synchronisierung mit Azure Active Directory verarbeitet werden müssen.
 3. Der **Azure AD-Bereitstellungsdienst** ruft den Azure AD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, welche die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das Azure Active Directory-Konto enthält.
 4. Der **Azure AD Connect-Bereitstellungs-Agent** verwendet ein Dienstkonto zum Verwalten der Azure Active Directory-Kontodaten.
-5. **Azure AD Connect** führt eine Delta[synchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis) aus, um per Pullvorgang Updates in Azure Active Directory abzurufen.
+5. **Azure AD Connect** führt eine Delta[synchronisierung](../hybrid/how-to-connect-sync-whatis.md) aus, um per Pullvorgang Updates in Azure Active Directory abzurufen.
 6. Die **Azure Active Directory**-Updates werden mit Azure AD synchronisiert.
 7. Der **Azure AD-Bereitstellungsdienst** schreibt E-Mail-Attribut und Benutzernamen aus Azure AD in den Mandanten der HR-Cloud-App zurück.
 
@@ -138,7 +138,7 @@ Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Tei
 
 Die Integration von HR-Geschäftsprozessen und Identitätsworkflows aus der HR-Cloud-App in Zielsysteme erfordert ein erhebliches Maß an Datenüberprüfung, Datentransformation, Datenbereinigung und End-to-End-Tests, bevor Sie die Lösung in der Produktionsumgebung bereitstellen können.
 
-Führen Sie die anfängliche Konfiguration in einer [Pilotumgebung](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) aus, bevor sie für alle Benutzer in der Produktionsumgebung skaliert wird.
+Führen Sie die anfängliche Konfiguration in einer [Pilotumgebung](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) aus, bevor sie für alle Benutzer in der Produktionsumgebung skaliert wird.
 
 ## <a name="select-cloud-hr-provisioning-connector-apps"></a>Auswählen von HR-Cloudbereitstellungsconnector-Apps
 
@@ -150,13 +150,13 @@ Um Azure AD-Bereitstellungsworkflows zwischen der HR-Cloud-App und Azure Active 
 
 In der folgenden Abbildung sind z. B. die Workday-Connector-Apps aufgelistet, die im Azure AD-App-Katalog verfügbar sind.
 
-![Azure Active Directory-Portal – App-Katalog](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
+![Azure Active Directory-Portal – App-Katalog](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img2.png)
 
 ### <a name="decision-flow-chart"></a>Flussdiagramm zum Entscheidungsprozess
 
 Verwenden Sie das folgende Flussdiagramm für den Entscheidungsprozess, um zu ermitteln, welche HR-Cloudbereitstellungs-Apps für Ihr Szenario relevant sind.
 
-![Flussdiagramm zum Entscheidungsprozess](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
+![Flussdiagramm zum Entscheidungsprozess](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img3.png)
 
 ## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>Entwerfen der Bereitstellungstopologie des Azure AD Connect-Bereitstellungs-Agents
 
@@ -184,7 +184,7 @@ Folgende Produktionskonfigurationen werden empfohlen:
 |Anzahl der zu konfigurierenden Bereitstellungsconnector-Apps|Eine App pro untergeordneter Domäne|
 |Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows 2012 R2 oder höher mit „Sichtverbindung“ zur Geolocation von Azure Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
 
-![Flow zu lokalen Agents](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
+![Flow zu lokalen Agents](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img4.png)
 
 ### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>Einzelner HR-Cloud-App-Mandant -> ausgerichtet auf mehrere untergeordnete Domänen in einer nicht zusammenhängenden Azure Active Directory-Gesamtstruktur
 
@@ -198,13 +198,13 @@ Folgende Produktionskonfigurationen werden empfohlen:
 |Anzahl der zu konfigurierenden Bereitstellungsconnector-Apps|Eine App pro untergeordneter Domäne|
 |Serverhost für Azure AD Connect-Bereitstellungs-Agent|Windows 2012 R2 oder höher mit „Sichtverbindung“ zur Geolocation von Azure Active Directory-Domänencontrollern</br>Koexistenz mit dem Azure AD Connect-Dienst ist möglich|
 
-![Einzelner HR-Cloud-App-Mandant, nicht zusammenhängende Azure Active Directory-Gesamtstruktur](./media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
+![Einzelner HR-Cloud-App-Mandant, nicht zusammenhängende Azure Active Directory-Gesamtstruktur](media/plan-cloudhr-provisioning/plan-cloudhr-provisioning-img5.png)
 
 ### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Anforderungen des Azure AD Connect-Bereitstellungs-Agents
 
 Die Lösung für die Benutzerbereitstellung von der HR-Cloud-App in Azure Active Directory erfordert das Bereitstellen von mindestens einem Azure AD Connect-Bereitstellungs-Agent auf Servern unter Windows 2012 R2 oder höher. Die Server müssen über mindestens 4 GB RAM und .NET 4.7.1 Runtime verfügen. Stellen Sie sicher, dass der Hostserver Netzwerkzugriff auf die Azure Active Directory-Zieldomäne hat.
 
-Um die lokale Umgebung vorzubereiten, registriert der Konfigurationsassistent des Azure AD Connect-Bereitstellungs-Agents den Agent bei Ihrem Azure AD-Mandanten, [öffnet Ports](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#open-ports), [gestattet den Zugriff auf URLs](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#allow-access-to-urls) und unterstützt die [HTTPS-Proxy-Konfiguration für den ausgehenden Datenverkehr](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+Um die lokale Umgebung vorzubereiten, registriert der Konfigurationsassistent des Azure AD Connect-Bereitstellungs-Agents den Agent bei Ihrem Azure AD-Mandanten, [öffnet Ports](application-proxy-add-on-premises-application.md#open-ports), [gestattet den Zugriff auf URLs](application-proxy-add-on-premises-application.md#allow-access-to-urls) und unterstützt die [HTTPS-Proxy-Konfiguration für den ausgehenden Datenverkehr](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
 
 Der Bereitstellungs-Agent verwendet ein Dienstkonto für die Kommunikation mit den Azure Active Directory-Domänen. Erstellen Sie vor der Installation des Agents in „Azure Active Directory-Benutzer und -Computer“ ein Dienstkonto, das folgende Anforderungen erfüllt:
 
@@ -221,7 +221,7 @@ Wenn Sie die Bereitstellung von der HR-Cloud-App in Azure Active Directory oder 
 
 ### <a name="define-scoping-filters"></a>Definieren von Bereichsfiltern
 
-Verwenden Sie [Bereichsfilter](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters), um die attributbasierten Regeln zu definieren, die bestimmen, welche Benutzer von der HR-Cloud-App in Azure Active Directory oder Azure AD bereitgestellt werden sollen.
+Verwenden Sie [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md), um die attributbasierten Regeln zu definieren, die bestimmen, welche Benutzer von der HR-Cloud-App in Azure Active Directory oder Azure AD bereitgestellt werden sollen.
 
 Wenn Sie den Einstellungsprozess starten, erfassen Sie die folgenden Anforderungen:
 
@@ -233,7 +233,7 @@ Abhängig von Ihren Anforderungen können Sie bei der Konfiguration der Attribut
 
 ### <a name="determine-matching-attributes"></a>Festlegen von übereinstimmenden Attributen
 
-Mit der Bereitstellung erhalten Sie die Möglichkeit, bestehende Konten zwischen Quell- und Zielsystem abzugleichen. Wenn Sie die HR-Cloud-App in den Azure AD-Bereitstellungsdienst integrieren, können Sie die [Attributzuordnung konfigurieren](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal#mappings) und bestimmen, welche Benutzerdaten von der HR-Cloud-App in Azure Active Directory oder Azure AD fließen sollen.
+Mit der Bereitstellung erhalten Sie die Möglichkeit, bestehende Konten zwischen Quell- und Zielsystem abzugleichen. Wenn Sie die HR-Cloud-App in den Azure AD-Bereitstellungsdienst integrieren, können Sie die [Attributzuordnung konfigurieren](configure-automatic-user-provisioning-portal.md#mappings) und bestimmen, welche Benutzerdaten von der HR-Cloud-App in Azure Active Directory oder Azure AD fließen sollen.
 
 Wenn Sie den Einstellungsprozess starten, erfassen Sie die folgenden Anforderungen:
 
@@ -243,13 +243,13 @@ Wenn Sie den Einstellungsprozess starten, erfassen Sie die folgenden Anforderung
 - Wie gehen Sie in Hinblick auf den Identitätslebenszyklus mit der Umwandlung von einem Mitarbeiter zu einem vorübergehend Beschäftigten bzw. umgekehrt um?
 - Behalten umgewandelte Benutzer ihre alten Azure Active Directory-Konten oder erhalten sie neue?
 
-Je nach Anforderungen unterstützt Azure AD durch die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings) die direkte Attributzuordnung (Attribut-Attribut). Mithilfe dieser Flexibilität können Sie genau steuern, was im Attribut der Ziel-App eingetragen wird. Mit der [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) und Graph Explorer können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
+Je nach Anforderungen unterstützt Azure AD durch die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md) die direkte Attributzuordnung (Attribut-Attribut). Mithilfe dieser Flexibilität können Sie genau steuern, was im Attribut der Ziel-App eingetragen wird. Mit der [Microsoft Graph-API](export-import-provisioning-configuration.md) und Graph Explorer können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
 
 Standardmäßig wird das Attribut in der HR-Cloud-App, das die eindeutige Mitarbeiter-ID darstellt, als übereinstimmendes Attribut verwendet, *das dem eindeutigen Attribut in Azure Active Directory zugeordnet wird*. Im Szenario mit der Workday-App wird z. B. das **Workday**-Attribut **WorkerID** dem Azure Active Directory-Attribut **employeeID** zugeordnet.
 
 Sie können mehrere übereinstimmende Attribute festlegen und geeignete Prioritäten zuweisen. Sie werden nach der Rangfolge für den Abgleich ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
-Sie können auch die [Standardattributzuordnungen anpassen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes#understanding-attribute-mapping-types) und z. B. vorhandene Attributzuordnungen ändern oder löschen. Sie können auch je nach geschäftlichem Bedarf neue Attributzuordnungen erstellen. Weitere Informationen finden Sie im Tutorial zur HR-Cloud-App (z. B. [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
+Sie können auch die [Standardattributzuordnungen anpassen](customize-application-attributes.md#understanding-attribute-mapping-types) und z. B. vorhandene Attributzuordnungen ändern oder löschen. Sie können auch je nach geschäftlichem Bedarf neue Attributzuordnungen erstellen. Weitere Informationen finden Sie im Tutorial zur HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
 
 ### <a name="determine-user-account-status"></a>Bestimmen des Benutzerkontostatus
 
@@ -268,7 +268,7 @@ Erfassen Sie die folgenden Anforderungen, wenn Sie den Prozess für Einstellunge
 | | Wie wirken sich Umwandlungen von Mitarbeitern und vorübergehend Beschäftigten auf bestehende Azure Active Directory-Konten aus? |
 | | Wie verarbeiten Sie den Vorgang „Widerruf“ in Azure Active Directory? Widerrufvorgänge müssen verarbeitet werden, wenn im Rahmen des Einstellungsprozesses in Azure Active Directory vordatierte Einstellungen erstellt werden. |
 
-Abhängig von Ihren Anforderungen können Sie die Zuordnungslogik mithilfe von [Azure AD-Ausdrücken](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) so anpassen, dass das Azure Active Directory-Konto basierend auf einer Kombination von Datenpunkten aktiviert oder deaktiviert wird.
+Abhängig von Ihren Anforderungen können Sie die Zuordnungslogik mithilfe von [Azure AD-Ausdrücken](functions-for-customizing-application-data.md) so anpassen, dass das Azure Active Directory-Konto basierend auf einer Kombination von Datenpunkten aktiviert oder deaktiviert wird.
 
 ### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>Zuordnen von HR-Cloud-App- zu Azure Active Directory-Benutzerattributen
 
@@ -286,13 +286,13 @@ Erfassen Sie die folgenden Anforderungen, wenn Sie den Prozess für Einstellunge
 | | Welche Stichtage werden für die Verarbeitung der Benutzerkündigung berücksichtigt? |
 | | Wie wirken sich Umwandlungen von Mitarbeitern und vorübergehend Beschäftigten auf bestehende Azure Active Directory-Konten aus? |
 
-Je nach Ihren Anforderungen können Sie die Zuordnungen an Ihre Integrationsziele anpassen. Weitere Informationen finden Sie im Tutorial zur jeweiligen HR-Cloud-App (z. B. [Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
+Je nach Ihren Anforderungen können Sie die Zuordnungen an Ihre Integrationsziele anpassen. Weitere Informationen finden Sie im Tutorial zur jeweiligen HR-Cloud-App (z. B. [Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)) in der Liste mit den benutzerdefinierten Attributen für die Zuordnung.
 
 ### <a name="generate-a-unique-attribute-value"></a>Generieren von eindeutigen Attributwerten
 
 Wenn Sie den Einstellungsprozess starten und Attribute wie „CN“, „samAccountName“ und „UPN“ festlegen, die eindeutige Einschränkungen aufweisen, müssen Sie möglicherweise eindeutige Attributwerte generieren.
 
-Die Azure AD-Funktion [SelectUniqueValues](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#selectuniquevalue) wertet jede Regel aus. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit im Zielsystem sicherzustellen. Ein Beispiel finden Sie unter [Generieren eines eindeutigen Werts für das Attribut „userPrincipalName (UPN)“](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#generate-unique-value-for-userprincipalname-upn-attribute).
+Die Azure AD-Funktion [SelectUniqueValues](functions-for-customizing-application-data.md#selectuniquevalue) wertet jede Regel aus. Anschließend wird der Wert überprüft, der generiert wurde, um die Eindeutigkeit im Zielsystem sicherzustellen. Ein Beispiel finden Sie unter [Generieren eines eindeutigen Werts für das Attribut „userPrincipalName (UPN)“](functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute).
 
 > [!NOTE]
 > Diese Funktion wird derzeit nur für die Benutzerbereitstellung von Workday in Azure Active Directory unterstützt. Sie kann nicht für andere Bereitstellungs-Apps verwendet werden.
@@ -301,7 +301,7 @@ Die Azure AD-Funktion [SelectUniqueValues](https://docs.microsoft.com/azure/acti
 
 Häufig müssen Azure Active Directory-Benutzerkonten auf Basis von Geschäftseinheiten, Standorten und Abteilungen in Container platziert werden. Wenn Sie einen Wechselprozess initiieren und damit eine Änderung der Aufsichtsorganisation verbunden ist, müssen Sie den Benutzer möglicherweise in Azure Active Directory von einer Organisationseinheit in eine andere verschieben.
 
-Verwenden Sie die Funktion [Switch()](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data#switch), um die Geschäftslogik für die Zuordnung der Organisationseinheit zu konfigurieren und sie dem Azure Active Directory-Attribut **parentDistinguishedName** zuzuordnen.
+Verwenden Sie die Funktion [Switch()](functions-for-customizing-application-data.md#switch), um die Geschäftslogik für die Zuordnung der Organisationseinheit zu konfigurieren und sie dem Azure Active Directory-Attribut **parentDistinguishedName** zuzuordnen.
 
 Wenn Sie z. B. Benutzer in der Organisationseinheit auf der Grundlage des Personalabteilungsattributs **Municipality** (Gemeinde) erstellen möchten, können Sie den folgenden Ausdruck verwenden:
 
@@ -313,20 +313,20 @@ Wenn der Wert für „Municipality“ Dallas, Austin, Seattle oder London entspr
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>Planen Sie die Zustellung von Kennwörtern für neue Benutzerkonten.
 
-Wenn Sie den Einstellungsprozess starten, müssen Sie ein temporäres Kennwort für neue Benutzerkonten festlegen und zustellen. Mit der Benutzerbereitstellung von der HR-Cloud-App in Azure AD können Sie am ersten Tag für den Benutzer die SSPR-Funktion ([Self-Service-Kennwortzurücksetzung](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)) von Azure AD einführen.
+Wenn Sie den Einstellungsprozess starten, müssen Sie ein temporäres Kennwort für neue Benutzerkonten festlegen und zustellen. Mit der Benutzerbereitstellung von der HR-Cloud-App in Azure AD können Sie am ersten Tag für den Benutzer die SSPR-Funktion ([Self-Service-Kennwortzurücksetzung](../authentication/quickstart-sspr.md)) von Azure AD einführen.
 
 SSPR ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen ihrer Kennwörter oder das Entsperren ihrer Konten zu ermöglichen. Sie können das Attribut **Mobiltelefonnummer** von der HR-Cloud-App in Azure Active Directory bereitstellen und mit Azure AD synchronisieren. Sobald Azure AD das Attribut **Mobiltelefonnummer** enthält, können Sie SSPR für das Benutzerkonto aktivieren. Am ersten Tag kann der neue Benutzer dann die registrierte und überprüfte Mobiltelefonnummer zur Authentifizierung verwenden.
 
 ## <a name="plan-for-initial-cycle"></a>Planen des erster Zyklus
 
-Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts führt dieser einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) für die HR-Cloud-App durch, um eine Momentaufnahme aller Benutzerobjekte in der HR-Cloud-App zu erstellen. Die für die ersten Zyklen erforderliche Zeit ist direkt davon abhängig, wie viele Benutzer im Quellsystem vorhanden sind. Der erste Zyklus für einige HR-Cloud-Apps mit über 100.000 Benutzern kann sehr lange dauern.
+Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts führt dieser einen [ersten Zyklus](how-provisioning-works.md#initial-cycle) für die HR-Cloud-App durch, um eine Momentaufnahme aller Benutzerobjekte in der HR-Cloud-App zu erstellen. Die für die ersten Zyklen erforderliche Zeit ist direkt davon abhängig, wie viele Benutzer im Quellsystem vorhanden sind. Der erste Zyklus für einige HR-Cloud-Apps mit über 100.000 Benutzern kann sehr lange dauern.
 
 Führen Sie **bei großen HR-Cloud-App-Mandanten (über 30.000 Benutzer)** den ersten Zyklus schrittweise aus. Starten Sie die inkrementellen Updates erst dann, wenn Sie überprüft haben, ob in Azure Active Directory die richtigen Attribute für verschiedene Benutzerbereitstellungsszenarien festgelegt sind. Halten Sie die folgende Reihenfolge ein.
 
 1. Führen Sie den ersten Zyklus nur für eine begrenzte Anzahl von Benutzern durch, indem Sie den [Bereichsfilter](#plan-scoping-filters-and-attribute-mapping) festlegen.
 2. Überprüfen Sie die Azure Active Directory-Kontobereitstellung und die für die Benutzer festgelegten Attributwerte, die für die erste Ausführung ausgewählt wurden. Wenn das Ergebnis Ihren Erwartungen entspricht, erweitern Sie den Bereichsfilter, um schrittweise weitere Benutzer einzubeziehen, und überprüfen Sie dann die Ergebnisse für die zweite Ausführung.
 
-Wenn Sie mit den Ergebnissen des ersten Zyklus für Testbenutzer zufrieden sind, starten Sie die [inkrementellen Updates](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles).
+Wenn Sie mit den Ergebnissen des ersten Zyklus für Testbenutzer zufrieden sind, starten Sie die [inkrementellen Updates](how-provisioning-works.md#incremental-cycles).
 
 ## <a name="plan-testing-and-security"></a>Planen von Tests und der Sicherheit
 
@@ -366,7 +366,7 @@ Es kann passieren, dass die Implementierung der HR-Cloud-App-Benutzerbereitstell
 
 Wählen Sie die HR-Cloud-App aus, die Ihren Lösungsanforderungen entspricht.
 
-**Workday**: Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in Workday vornehmen.
+**Workday**: Informationen zum Importieren von Workerprofilen von Workday in Azure Active Directory and Azure AD finden Sie im [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment). Optional können Sie eine Rückschreibung von E-Mail-Adresse und Benutzername in Workday vornehmen.
 
 ## <a name="manage-your-configuration"></a>Verwalten Ihrer Konfiguration
 
@@ -374,21 +374,21 @@ Azure AD kann anhand von Überwachungsprotokollen und Berichten zusätzliche Ein
 
 ### <a name="gain-insights-from-reports-and-logs"></a>Gewinnen von Erkenntnissen aus Berichten und Protokollen
 
-Nach einem erfolgreichen [Startzyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle) führt der Azure AD-Bereitstellungsdienst so lange aufeinanderfolgende inkrementelle Updates in den Intervallen aus, die in den Tutorials für die einzelnen Apps beschrieben sind, bis eines der folgenden Ereignisse eintritt:
+Nach einem erfolgreichen [Startzyklus](how-provisioning-works.md#initial-cycle) führt der Azure AD-Bereitstellungsdienst so lange aufeinanderfolgende inkrementelle Updates in den Intervallen aus, die in den Tutorials für die einzelnen Apps beschrieben sind, bis eines der folgenden Ereignisse eintritt:
 
 - Der Dienst wird manuell beendet. Über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)-Befehls wird ein neuer Startzyklus ausgelöst.
 - Aufgrund einer Änderung bei den Attributzuordnungen oder Bereichsfiltern wird ein neuer Startzyklus ausgelöst.
 - Aufgrund einer hohen Fehlerquote wird der Bereitstellungsprozess unter Quarantäne gestellt. Er bleibt mehr als vier Wochen in Quarantäne und wird dann automatisch deaktiviert.
 
-Informationen zum Überprüfen dieser Ereignisse und aller anderen vom Bereitstellungsdienst ausgeführten Aktivitäten finden Sie unter [Erfahren Sie, wie Sie Protokolle überprüfen und Bereitstellungsaktivitätsberichte abrufen](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Informationen zum Überprüfen dieser Ereignisse und aller anderen vom Bereitstellungsdienst ausgeführten Aktivitäten finden Sie unter [Erfahren Sie, wie Sie Protokolle überprüfen und Bereitstellungsaktivitätsberichte abrufen](check-status-user-account-provisioning.md).
 
 #### <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
 Alle vom Bereitstellungsdienst ausgeführten Aktivitäten werden in den Azure AD-Überwachungsprotokollen erfasst. Sie können Azure AD-Überwachungsprotokolle zur weiteren Analyse an Azure Monitor-Protokolle weiterleiten. Mit Azure Monitor-Protokollen (auch als Log Analytics-Arbeitsbereich bezeichnet) können Sie Daten abfragen und nach Ereignisse suchen, Trends analysieren und datenquellenübergreifende Korrelationen vornehmen. Sehen Sie sich dieses [Video](https://youtu.be/MP5IaCTwkQg) an, um die Vorteile der Verwendung von Azure Monitor-Protokollen für Azure AD-Protokolle in praktischen Benutzerszenarien kennenzulernen.
 
-Installieren Sie die [Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-install-use-log-analytics-views), um Zugriff auf [vordefinierte Berichte](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) zu Bereitstellungsereignissen in Ihrer Umgebung zu erhalten.
+Installieren Sie die [Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle](../reports-monitoring/howto-install-use-log-analytics-views.md), um Zugriff auf [vordefinierte Berichte](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views) zu Bereitstellungsereignissen in Ihrer Umgebung zu erhalten.
 
-Weitere Informationen finden Sie unter [Analysieren der Azure AD-Aktivitätsprotokolle mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics).
+Weitere Informationen finden Sie unter [Analysieren der Azure AD-Aktivitätsprotokolle mit Azure Monitor-Protokollen](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 
 ### <a name="manage-personal-data"></a>Verwalten persönlicher Daten
 
@@ -400,21 +400,21 @@ Der Azure AD-Bereitstellungsdienst generiert weder Berichte noch Analysen und bi
 
 In den folgenden Artikeln finden Sie Informationen zum Beheben von Problemen, die bei der Bereitstellung auftreten können:
 
-- [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
-- [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
-- [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
-- [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
-- [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
-- [Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
-- [Einrichten der Windows-Ereignisanzeige für die Problembehandlung bei Agents](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-windows-event-viewer-for-agent-troubleshooting)
-- [Einrichten von Azure-Portal-Überwachungsprotokollen für die Problembehandlung bei einem Dienst](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
-- [Grundlegendes zu Protokollen für Erstellungsvorgänge für ein AD-Benutzerkonto](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-ad-user-account-create-operations)
-- [Grundlegendes zu Protokollen für Aktualisierungsvorgänge für Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-manager-update-operations)
-- [Beheben von häufig auftretenden Fehlern](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#resolving-commonly-encountered-errors)
+- [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](application-provisioning-config-problem.md)
+- [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](user-provisioning-sync-attributes-for-mapping.md)
+- [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](application-provisioning-when-will-provisioning-finish.md)
+- [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](application-provisioning-config-problem-storage-limit.md) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
+- [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-no-users-provisioned.md)
+- [Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Einrichten der Windows-Ereignisanzeige für die Problembehandlung bei Agents](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
+- [Einrichten von Azure-Portal-Überwachungsprotokollen für die Problembehandlung bei einem Dienst](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
+- [Grundlegendes zu Protokollen für Erstellungsvorgänge für ein AD-Benutzerkonto](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
+- [Grundlegendes zu Protokollen für Aktualisierungsvorgänge für Manager](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [Beheben von häufig auftretenden Fehlern](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- [Schreiben von Ausdrücken für Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+- [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
 - [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
-- [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
-- [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history).
+- [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md)
+- [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen](provisioning-agent-release-version-history.md).

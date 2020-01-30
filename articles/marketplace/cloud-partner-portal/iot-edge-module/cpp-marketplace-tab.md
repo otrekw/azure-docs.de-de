@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814601"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721624"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Registerkarte „Marketplace“ für ein IoT Edge-Modul
 
@@ -129,7 +129,7 @@ Für ein Herologo gelten folgende Richtlinien:
 *  Vermeiden Sie beim Entwerfen des Logos möglichst die Verwendung von Text. Der Name des Herausgebers, der Plantitel, die ausführliche Angebotszusammenfassung und die Erstellen-Schaltfläche werden programmgesteuert in das Logo eingebettet, wenn das Angebot live geschaltet wird. 
 * Fügen Sie auf der rechten Seite des Herologos einen leeren rechteckigen Bereich ein. Dieser leere Bereich hat eine Größe von 415 x 100 Pixel und ist 370 Pixel vom linken Rand entfernt.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)

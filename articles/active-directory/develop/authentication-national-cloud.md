@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14b97677f5aa9624ba70696114ac34fcd9f46182
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20a053369149dc29d6485c49bb091a75bb9fb591
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918031"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698015"
 ---
 # <a name="national-clouds"></a>Nationale Clouds
 
@@ -64,7 +63,7 @@ Anforderungen an die Autorisierungs- oder Tokenendpunkte von Azure AD können mi
   - Der allgemeine Autorisierungsendpunkt ist `https://login.microsoftonline.de/common/oauth2/authorize`.
   - Der allgemeine Tokenendpunkt ist `https://login.microsoftonline.de/common/oauth2/token`.
 
-Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. Ein Beispiel ist `https://login.microsoftonline.de/contoso.com`.
+Ersetzen Sie bei Anwendungen mit einem Mandanten in den oben genannten URLs „common“ durch die ID oder den Namen Ihres Mandanten. z. B. `https://login.microsoftonline.de/contoso.com`.
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph-API
 

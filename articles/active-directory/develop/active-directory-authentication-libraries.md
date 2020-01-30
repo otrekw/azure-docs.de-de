@@ -12,14 +12,13 @@ ms.workload: identity
 ms.date: 12/01/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c391120ccf9fafd4ca51489d7849e838d77a1dbf
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.custom: aaddev
+ms.openlocfilehash: d4ff6fff807d52208cf3e99a97a2d6b7340c081d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845500"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834262"
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory-Authentifizierungsbibliotheken
 
@@ -78,7 +77,7 @@ In diesem Szenario verwendet ein Entwickler eine Anwendung, die auf einem Server
 
 In diesem Szenario verwendet ein Entwickler eine Webanwendung, die auf einem Server ausgeführt wird und auf eine Remoteressource (z.B. eine Web-API) zugreifen muss. Die Web-API lässt keine anonymen Aufrufe zu und muss daher im Auftrag eines authentifizierten Benutzers von einem autorisierten Dienst aufgerufen werden. Die Web-API ist so vorkonfiguriert, dass sie von einem bestimmten Azure AD-Mandanten ausgestellte Zugriffstoken vertraut, während Azure AD dafür vorkonfiguriert ist, dass Zugriffstokens für diese Ressource in einem Dienst mit Clientanmeldeinformationen ausgestellt werden. Sobald der Benutzer in der Webanwendung authentifiziert ist, kann die Anwendung einen Autorisierungscode für den Benutzer aus Azure AD abrufen. Die Webanwendung kann dann ADAL verwenden, um im Auftrag eines Benutzers ein Zugriffstoken und ein Aktualisierungstoken abzurufen, wobei der Autorisierungscode und die Clientanmeldeinformationen verwendet werden, die der Anwendung aus Azure AD zugeordnet sind. Sobald die Webanwendung im Besitz des Zugriffstokens ist, kann sie bis zum Ablauf des Tokens die Web-API aufrufen. Nach Ablauf des Tokens kann die Webanwendung über ADAL mit dem zuvor empfangenen Aktualisierungstoken ein neues Zugriffstoken abrufen. Ein Codebeispiel, das dieses Szenario veranschaulicht, finden Sie unter [Native client to Web API to Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof) (Nativer Clientaufruf zwischen Web-APIs).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [Entwicklerhandbuch zu Azure Active Directory](v1-overview.md)
 - [Authentifizierungsszenarien für Azure Active Directory](v1-authentication-scenarios.md)

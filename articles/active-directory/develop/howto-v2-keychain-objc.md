@@ -13,13 +13,12 @@ ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 52eb4eb5958357a90c1db773f45c9928e4652755
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917504"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696876"
 ---
 # <a name="configure-keychain"></a>Konfigurieren einer Keychain
 
@@ -105,7 +104,7 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 Der Fehler-34018 deutet in der Regel darauf hin, dass die Keychain nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass die in MSAL konfigurierte und die in den Berechtigungen konfigurierte Keychain-Zugriffsgruppe übereinstimmen.
 
-## <a name="ensure-your-application-is-properly-signed"></a>Ordnungsgemäß signierte Anwendungen
+## <a name="ensure-your-application-is-properly-signed"></a>Stellen Sie sicher, dass Ihre Anwendung ordnungsgemäß signiert ist.
 
 Unter macOS können Anwendungen auch dann ausgeführt werden, wenn sie nicht von Entwicklern signiert wurden. Während die meisten MSAL-Funktionen trotzdem ausgeführt werden, ist für das einmalige Anmelden über den Keychainzugriff erforderlich, dass die Anwendung signiert ist. Wenn Sie mehrere Eingabeaufforderungen für die Keychain erhalten, stellen Sie sicher, dass die Signatur Ihrer Anwendung gültig ist.
 

@@ -9,34 +9,33 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 420db19a5ddcddfe37fa1a922e792fc0c8bc5b66
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912298"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772999"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
-Verwenden Sie Azure Notebooks, um ein Modul für maschinelles Lernen zu entwickeln und es auf einem Linux-Gerät bereitzustellen, das Azure IoT Edge ausführt. 
-
+Verwenden Sie Azure Notebooks, um ein Modul für maschinelles Lernen zu entwickeln und es auf einem Linux-Gerät bereitzustellen, das Azure IoT Edge ausführt.
 Mithilfe von IoT Edge-Modulen können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie ein Azure Machine Learning-Modul bereitstellen, das anhand der Temperaturdaten eines simulierten Computers den Ausfall eines Geräts vorhersagt. Weitere Informationen zu Azure Machine Learning in IoT Edge finden Sie in der [Azure Machine Learning-Dokumentation](../machine-learning/how-to-deploy-and-where.md).
+
+>[!NOTE]
+>Azure Machine Learning-Module in Azure IoT Edge sind als Public Preview verfügbar.
 
 Das Azure Machine Learning-Modul, das Sie in diesem Tutorial erstellen, liest die von Ihrem Gerät generierten Umgebungsdaten und kennzeichnet die Nachrichten ggf. als anomal.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Azure Machine Learning-Moduls
 > * Pushen eines Modulcontainers in eine Azure Container Registry
 > * Bereitstellen eines Azure Machine Learning-Moduls auf Ihrem IoT Edge-Gerät
 > * Anzeigen generierter Daten
 
->[!NOTE]
->Azure Machine Learning-Module in Azure IoT Edge sind als Public Preview verfügbar.
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,21 +49,19 @@ Cloudressourcen:
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein Azure Machine Learning-Arbeitsbereich. Befolgen Sie die Anweisungen unter [Verwenden des Azure-Portals zum Ausführen der ersten Schritte mit Azure Machine Learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md), um einen zu erstellen und zu erfahren, wie Sie ihn verwenden.
-   * Notieren Sie sich den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID. Diese Werte sind in der Übersicht über den Arbeitsbereich im Azure-Portal verfügbar. Diese Werte verwenden Sie später im Tutorial zum Verbinden eines Azure-Notebooks mit Ihren Arbeitsbereichsressourcen. 
-
+  * Notieren Sie sich den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID. Diese Werte sind in der Übersicht über den Arbeitsbereich im Azure-Portal verfügbar. Diese Werte verwenden Sie später im Tutorial zum Verbinden eines Azure-Notebooks mit Ihren Arbeitsbereichsressourcen.
 
 ## <a name="create-and-deploy-azure-machine-learning-module"></a>Erstellen und Bereitstellen eines Azure Machine Learning-Moduls
 
 In diesem Abschnitt konvertieren Sie die trainierten Machine Learning-Modelldateien und laden sie in einen Azure Machine Learning-Container herunter. Alle erforderlichen Komponenten für das Docker-Image finden Sie im [Git-Repository mit dem KI-Toolkit für Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial). Führen Sie die folgenden Schritte zum Hochladen dieses Repositorys in Microsoft Azure Notebooks aus, um den Container zu erstellen und in Azure Container Registry zu pushen.
 
-
 1. Navigieren Sie zu Ihren Azure Notebooks-Projekten. Dorthin können Sie über Ihren Azure Machine Learning-Arbeitsbereich im [Azure-Portal](https://portal.azure.com) oder durch Anmelden bei [Microsoft Azure Notebooks](https://notebooks.azure.com/home/projects) mit Ihrem Azure-Konto navigieren.
 
 2. Wählen Sie **Upload GitHub Repo** (GitHub-Repository hochladen) aus.
 
-3. Geben Sie den folgenden GitHub-Repositorynamen an: `Azure/ai-toolkit-iot-edge`. Deaktivieren Sie das Kontrollkästchen **Öffentlich**, wenn das Projekt privat bleiben soll. Wählen Sie **Importieren** aus. 
+3. Geben Sie den folgenden GitHub-Repositorynamen an: `Azure/ai-toolkit-iot-edge`. Deaktivieren Sie das Kontrollkästchen **Öffentlich**, wenn das Projekt privat bleiben soll. Wählen Sie **Importieren** aus.
 
-4. Navigieren Sie nach Abschluss des Imports zu dem neuen Projekt **ai-toolkit-iot-edge**, und öffnen Sie den Ordner **IoT Edge anomaly detection tutorial**. 
+4. Navigieren Sie nach Abschluss des Imports zu dem neuen Projekt **ai-toolkit-iot-edge**, und öffnen Sie den Ordner **IoT Edge anomaly detection tutorial**.
 
 5. Vergewissern Sie sich, dass Ihr Projekt ausgeführt wird. Wenn dies nicht der Fall ist, wählen Sie **Run on Free Compute** (Mit kostenlosem Compute ausführen) aus.
 
@@ -72,7 +69,7 @@ In diesem Abschnitt konvertieren Sie die trainierten Machine Learning-Modelldat
 
 6. Öffnen Sie die Datei **aml_config/config.json**.
 
-7. Bearbeiten Sie die Konfigurationsdatei, und geben Sie die Werte für die Azure-Abonnement-ID, eine Ressourcengruppe in Ihrem Abonnement und den Namen Ihres Azure Machine Learning-Arbeitsbereichs an. Alle diese Werte finden Sie im Abschnitt **Übersicht** für Ihren Arbeitsbereich in Azure. 
+7. Bearbeiten Sie die Konfigurationsdatei, und geben Sie die Werte für die Azure-Abonnement-ID, eine Ressourcengruppe in Ihrem Abonnement und den Namen Ihres Azure Machine Learning-Arbeitsbereichs an. Alle diese Werte finden Sie im Abschnitt **Übersicht** für Ihren Arbeitsbereich in Azure.
 
 8. Speichern Sie die Konfigurationsdatei.
 
@@ -85,31 +82,31 @@ In diesem Abschnitt konvertieren Sie die trainierten Machine Learning-Modelldat
 12. Führen Sie die Zellen im Notebook aus, indem Sie sie auswählen und dann **Ausführen** auswählen oder `Shift + Enter` drücken.
 
     >[!TIP]
-    >Einige der Zellen im Tutorial-Notebook zur Anomalieerkennung sind optional, da sie Ressourcen erstellen, über die einige Benutzer möglicherweise noch nicht verfügen, z. B. einen IoT Hub. Wenn Sie die Informationen zu Ihren vorhandenen Ressourcen in der ersten Zelle einfügen, werden beim Ausführen der Zellen, über die neue Ressourcen erstellt werden, Fehler angezeigt, da Ressourcen in Azure nicht dupliziert werden. Dies stellt kein Problem dar. Sie können die Fehler ignorieren oder diese optionalen Abschnitte ganz überspringen. 
+    >Einige der Zellen im Tutorial-Notebook zur Anomalieerkennung sind optional, da sie Ressourcen erstellen, über die einige Benutzer möglicherweise noch nicht verfügen, z. B. einen IoT Hub. Wenn Sie die Informationen zu Ihren vorhandenen Ressourcen in der ersten Zelle einfügen, werden beim Ausführen der Zellen, über die neue Ressourcen erstellt werden, Fehler angezeigt, da Ressourcen in Azure nicht dupliziert werden. Dies stellt kein Problem dar. Sie können die Fehler ignorieren oder diese optionalen Abschnitte ganz überspringen.
 
-Nach Abschluss aller Schritte im Notebook haben Sie ein Modell zur Anomalieerkennung trainiert, es als Docker-Containerimage erstellt und dieses Image mithilfe von Push an Azure Container Registry übertragen. Zudem haben Sie das Modell getestet und es schließlich für Ihr IoT Edge-Gerät bereitgestellt. 
+Nach Abschluss aller Schritte im Notebook haben Sie ein Modell zur Anomalieerkennung trainiert, es als Docker-Containerimage erstellt und dieses Image mithilfe von Push an Azure Container Registry übertragen. Zudem haben Sie das Modell getestet und es schließlich für Ihr IoT Edge-Gerät bereitgestellt.
 
 ## <a name="view-container-repository"></a>Anzeigen des Containerrepositorys
 
-Überprüfen Sie, ob Ihr Containerimage erfolgreich erstellt und in der Azure Container Registry-Instanz gespeichert wurde, die Ihrer Umgebung für maschinelles Lernen zugeordnet ist. Mit dem Notebook, das Sie im vorherigen Abschnitt verwendet haben, wurden automatisch das Containerimage und die Registrierungsanmeldeinformationen für Ihr IoT Edge-Gerät angegeben. Sie sollten jedoch wissen, wo diese Angaben gespeichert sind, sodass Sie die Informationen später finden können. 
+Überprüfen Sie, ob Ihr Containerimage erfolgreich erstellt und in der Azure Container Registry-Instanz gespeichert wurde, die Ihrer Umgebung für maschinelles Lernen zugeordnet ist. Mit dem Notebook, das Sie im vorherigen Abschnitt verwendet haben, wurden automatisch das Containerimage und die Registrierungsanmeldeinformationen für Ihr IoT Edge-Gerät angegeben. Sie sollten jedoch wissen, wo diese Angaben gespeichert sind, sodass Sie die Informationen später finden können.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Machine Learning Service-Arbeitsbereich. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Machine Learning Service-Arbeitsbereich.
 
-2. Im Abschnitt **Übersicht** sind die Informationen zum Arbeitsbereich und die zugehörigen Ressourcen aufgeführt. Wählen Sie unter **Registrierung** den Wert aus, der als Arbeitsbereichsnamen dienen soll, gefolgt von Zufallszahlen. 
+2. Im Abschnitt **Übersicht** sind die Informationen zum Arbeitsbereich und die zugehörigen Ressourcen aufgeführt. Wählen Sie unter **Registrierung** den Wert aus, der als Arbeitsbereichsnamen dienen soll, gefolgt von Zufallszahlen.
 
-3. Wählen Sie in der Containerregistrierung die Option **Repositorys** aus. Es sollte das Repository **tempanomalydetection** angezeigt werden, das mit dem im vorherigen Abschnitt ausgeführten Notebook erstellt wurde. 
+3. Wählen Sie in der Containerregistrierung die Option **Repositorys** aus. Es sollte das Repository **tempanomalydetection** angezeigt werden, das mit dem im vorherigen Abschnitt ausgeführten Notebook erstellt wurde.
 
-4. Wählen Sie **tempanomalydetection** aus. Das Repository sollte ein Tag enthalten: **1**. 
+4. Wählen Sie **tempanomalydetection** aus. Das Repository sollte ein Tag enthalten: **1**.
 
-   Sie kennen nun den Registrierungsnamen, den Repositorynamen und das Tag und damit den vollständigen Imagepfad des Containers. Imagepfade sehen wie folgt aus: **\<Registrierungsname\>.azurecr.io/tempanomalydetection:1**. Über den Imagepfad können Sie den Container auf IoT Edge-Geräten bereitstellen. 
+   Sie kennen nun den Registrierungsnamen, den Repositorynamen und das Tag und damit den vollständigen Imagepfad des Containers. Imagepfade sehen wie folgt aus: **\<Registrierungsname\>.azurecr.io/tempanomalydetection:1**. Über den Imagepfad können Sie den Container auf IoT Edge-Geräten bereitstellen.
 
 5. Wählen Sie in der Containerregistrierung die Option **Zugriffsschlüssel** aus. Daraufhin sollten Zugriffsanmeldeinformationen, einschließlich **Anmeldeserver** sowie **Benutzername** und **Kennwort** für einen Administratorbenutzer angezeigt werden.
 
-   Diese Anmeldeinformationen können im Bereitstellungsmanifest eingefügt werden, sodass das IoT Edge-Gerät Zugriff zum Abrufen von Containerimages aus der Registrierung erhält. 
+   Diese Anmeldeinformationen können im Bereitstellungsmanifest eingefügt werden, sodass das IoT Edge-Gerät Zugriff zum Abrufen von Containerimages aus der Registrierung erhält.
 
-Damit wissen Sie, wo das Machine Learning-Containerimage gespeichert ist. Der nächste Abschnitt führt Sie schrittweise durch das Anzeigen des als Modul auf Ihrem IoT Edge-Gerät ausgeführten Containers. 
+Damit wissen Sie, wo das Machine Learning-Containerimage gespeichert ist. Der nächste Abschnitt führt Sie schrittweise durch das Anzeigen des als Modul auf Ihrem IoT Edge-Gerät ausgeführten Containers.
 
-## <a name="view-generated-data"></a>Anzeigen generierter Daten
+## <a name="view-the-generated-data"></a>Anzeigen der generierten Daten
 
 Sie können Nachrichten anzeigen, die von den einzelnen IoT Edge-Modulen generiert werden, und Sie können Nachrichten anzeigen, die an Ihre IoT Hub-Instanz übermittelt werden.
 

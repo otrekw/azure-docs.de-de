@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fb6153c2dc5794fce0e74d1981e98ad1f37fc1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e578b545a48468de347db0e0abc69dd0d3906606
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156096"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704849"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Einrichten von Sicherheitsfragen als Überprüfungsmethode
 
@@ -30,7 +29,7 @@ Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hi
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
 
-Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch für die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
+Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
 
 | Methode | Syntaxelemente |
 | ------ | -------- |

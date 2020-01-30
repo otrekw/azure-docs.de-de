@@ -17,20 +17,19 @@ ms.date: 04/06/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21f1da8738946078cb625c76e11ce1bfd62d97ac
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8bfe668dc2eb4e0e00de34231f4c232f5240a82d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927154"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700752"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
 
 Der Microsoft Identity Platform (v2.0)-Endpunkt unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Microsoft Identity Platform erstellen können. Die Informationen dienen Ihrem Verständnis allgemeiner Szenarien, bevor Sie [beginnen, mit Code zuarbeiten](v2-overview.md#getting-started).
 
 > [!NOTE]
-> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Azure Active Directory-Szenarien und -Features (Azure AD). Um festzustellen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten, informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md).
+> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Azure Active Directory-Szenarien und -Features (Azure AD). Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
 ## <a name="the-basics"></a>Grundlagen
 

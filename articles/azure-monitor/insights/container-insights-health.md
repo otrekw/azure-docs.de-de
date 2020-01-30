@@ -3,12 +3,12 @@ title: Überwachen der Integrität von Kubernetes-Clustern mit Azure Monitor fü
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Integrität Ihrer AKS- und Nicht-AKS-Cluster anzeigen und analysieren können.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405100"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843989"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Verstehen der Integrität von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -23,7 +23,7 @@ Weitere Informationen zum Aktivieren von Azure Monitor für Container finden Sie
 >[!NOTE]
 >Vergewissern Sie sich zur Unterstützung der AKS-Engine-Cluster, dass sie Folgendes erfüllen:
 >- Es werden die neuesten Versionen des [HTML-Clients](https://helm.sh/docs/using_helm/) verwendet.
->- Die Version des containerisierten Agents ist *microsoft/oms:ciprod11012019*. Informationen zum Upgraden des Agents finden Sie unter [Upgraden des Agents im Kubernetes-Cluster](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>- Die Version des containerisierten Agents ist *microsoft/oms:ciprod11012019*. Informationen zum Upgraden des Agents finden Sie unter [Upgraden des Agents im Kubernetes-Cluster](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
 >
 
 ## <a name="overview"></a>Übersicht

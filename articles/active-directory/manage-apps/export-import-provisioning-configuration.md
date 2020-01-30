@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3e92ee5ffd97174331703b703e811bd1ce5f43
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 609031bfad23a14a954a09a447e363e89a9d29d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70815861"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711749"
 ---
 # <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Graph-API
 
@@ -31,14 +31,14 @@ Mit Microsoft Graph-API und Graph-Tester können Sie die Attributzuordnungen und
 1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Bereitstellungsanwendung. Wenn Sie z. B. die Zuordnung Ihrer *Anwendung für die Benutzerbereitstellung von Workday in AD* exportieren möchten, navigieren Sie zum Abschnitt „Eigenschaften“ dieser App. 
 1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet, und wird in Graph-Tester-Vorgängen verwendet.
 
-   ![Dienstprinzipal-ID der Workday-App](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Dienstprinzipal-ID der Workday-App](media/export-import-provisioning-mappings/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
 
 1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
 
-    ![Graph-Anmeldung](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-Anmeldung](media/export-import-provisioning-mappings/wd_export_02.png)
 
 1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
 
@@ -52,7 +52,7 @@ Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetze
 
 Sie erhalten eine Antwort, wie unten dargestellt. Kopieren Sie das „id attribut“ aus der Antwort. Dieser Wert ist die **ProvisioningJobId** und wird zum Abrufen der zugrundeliegenden Schemametadaten verwendet.
 
-   [![ID des Bereitstellungsauftrags](./media/export-import-provisioning-mappings/wd_export_03.png)](./media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
+   [![ID des Bereitstellungsauftrags](media/export-import-provisioning-mappings/wd_export_03.png)](media/export-import-provisioning-mappings/wd_export_03.png#lightbox)
 
 ## <a name="step-4-download-the-provisioning-schema"></a>Schritt 4: Herunterladen des Bereitstellungsschemas
 
@@ -77,10 +77,10 @@ Konfigurieren Sie im Microsoft Graph-Tester die folgende PUT-Abfrage durch und e
 
 Kopieren Sie auf der Registerkarte „Anforderungstext“ den Inhalt der JSON-Schemadatei.
 
-   [![Anforderungstext](./media/export-import-provisioning-mappings/wd_export_04.png)](./media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
+   [![Anforderungstext](media/export-import-provisioning-mappings/wd_export_04.png)](media/export-import-provisioning-mappings/wd_export_04.png#lightbox)
 
 Fügen Sie auf der Registerkarte „Anforderungsheader“ das Content-Type-Header-Attribut mit dem Wert „application/json“ ein.
 
-   [![Anforderungsheader](./media/export-import-provisioning-mappings/wd_export_05.png)](./media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
+   [![Anforderungsheader](media/export-import-provisioning-mappings/wd_export_05.png)](media/export-import-provisioning-mappings/wd_export_05.png#lightbox)
 
 Klicken Sie auf die Schaltfläche „Abfrage ausführen“, um das neue Schema zu importieren.

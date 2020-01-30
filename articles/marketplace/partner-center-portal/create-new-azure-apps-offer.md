@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046041"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760891"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -156,19 +156,9 @@ Auf der **Eigenschaftenseite** können Sie die Kategorien und Branchen, die zum 
 
 Wählen Sie mindestens eine und höchstens drei Kategorien aus, die zum Platzieren Ihres Angebots in den entsprechenden Marketplace-Suchbereichen verwendet werden. Vergessen Sie nicht, in der Angebotsbeschreibung anzugeben, wie Ihr Angebot diesen Kategorien entspricht. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Standardnutzungsbedingungen von Marketplace
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern.
-
-Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Sie Ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen.
-
-Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aktivieren Sie das Kontrollkästchen **Standardvertrag verwenden?** , um den Standardvertrag zu verwenden.
-
-#### <a name="terms-of-use"></a>Nutzungsbedingungen
-
-Wenn Sie das Kontrollkästchen **Standardvertrag verwenden?** nicht aktivieren, müssen Sie Ihre eigenen rechtlichen Bedingungen im Feld **Nutzungsbedingungen** angeben. Geben Sie bis zu 10.000 Textzeichen oder, wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, eine URL ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Angebotsliste
 

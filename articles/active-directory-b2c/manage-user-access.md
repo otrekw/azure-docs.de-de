@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367109"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840433"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 5. Wenn entweder die minderjährige oder die erwachsene Person die Zustimmung widerruft, kann die Azure AD-Graph-API verwendet werden, um **consentProvidedForMinor** in **denied** zu ändern. Alternativ hierzu kann für die Anwendung auch die Entscheidung getroffen werden, eine minderjährige Person zu löschen, für die die Zustimmung widerrufen wurde. Optional ist es möglich, den Benutzerflow so anzupassen, dass die authentifizierte minderjährige Person (oder ein Elternteil, der das Konto der minderjährigen Person verwendet) die Zustimmung widerrufen kann. Azure AD B2C zeichnet **consentProvidedForMinor** als **denied** auf.
 
-Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](active-directory-b2c-reference-custom-attr.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](user-flow-custom-attributes.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Erfassen des Geburtsdatums und von Daten zu Land/Region von Benutzern
 

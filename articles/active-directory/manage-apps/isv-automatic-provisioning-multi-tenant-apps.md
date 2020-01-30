@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232313"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711460"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Aktivieren der automatischen Benutzerbereitstellung für Ihre mehrinstanzenfähige Anwendung
 
@@ -56,7 +56,7 @@ Die Benutzerbereitstellung ist erforderlich für Anwendungen, in denen vor der e
 
 Azure AD umfasst mehrere Integrationspfade zum Aktivieren der automatischen Benutzerbereitstellung für Ihre Anwendung.
 
-* Der [Azure AD-Bereitstellungsdienst](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) verwaltet das Bereitstellen und Aufheben der Bereitstellung von Benutzern aus Azure AD in Ihrer Anwendung (ausgehende Bereitstellung) und aus Ihrer Anwendung in Azure AD (eingehende Bereitstellung). Der Dienst stellt eine Verbindung mit den in der Anwendung angegebenen Endpunkten der SCIM-Benutzerverwaltungs-API (System for Cross-domain Identity Management) her.
+* Der [Azure AD-Bereitstellungsdienst](user-provisioning.md) verwaltet das Bereitstellen und Aufheben der Bereitstellung von Benutzern aus Azure AD in Ihrer Anwendung (ausgehende Bereitstellung) und aus Ihrer Anwendung in Azure AD (eingehende Bereitstellung). Der Dienst stellt eine Verbindung mit den in der Anwendung angegebenen Endpunkten der SCIM-Benutzerverwaltungs-API (System for Cross-domain Identity Management) her.
 
 * Wenn Sie [Microsoft Graph](https://docs.microsoft.com/graph/) verwenden, verwaltet Ihre Anwendung die eingehende und ausgehende Bereitstellung von Benutzern und Gruppen aus Azure AD in Ihrer Anwendung durch Abfragen der Microsoft Graph-API.
 
@@ -87,9 +87,9 @@ Weitere Informationen zur Verwendung von SCIM im Azure AD-Bereitstellungsdienst
 
 * [Bereitstellen mit SCIM: erste Schritte](https://aka.ms/SCIMOverview)
 
-* [Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)](use-scim-to-provision-users-and-groups.md)
 
-* [Verstehen der Azure AD-SCIM-Implementierung](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Verstehen der Azure AD-SCIM-Implementierung](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Microsoft Graph für die Bereitstellung
 
@@ -115,7 +115,7 @@ SAML JIT verwendet die Informationen zu Ansprüchen im SAML-Token, um Benutzerin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aktivieren des einmaligen Anmeldens für Ihre Anwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Aktivieren des einmaligen Anmeldens für Ihre Anwendung](isv-sso-content.md)
 
 * [Übermitteln Sie Ihre Liste der Anwendungen](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx), und erstellen Sie gemeinsam mit Microsoft eine Dokumentation auf der Microsoft-Website.
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 66c69552157df957e572a3af092131a3b7e560d5
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871687"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774980"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST
 
@@ -28,7 +28,7 @@ ms.locfileid: "67871687"
 
 Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können Sie auf zwei Arten authentifizieren:
 
-- Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung soll den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
 - Die **Dienstprinzipalauthentifizierung** dient der Authentifizierung eines Diensts. Anwendungen, für die diese Authentifizierungsmethode normalerweise verwendet wird, sind Apps, die Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge wie Web-Apps, Funktions-Apps, Logik-Apps, APIs oder Microservices ausführen.
 
     In diesem Tutorial wird gezeigt, wie Sie die Azure AD-**Dienstprinzipal**authentifizierung für den Zugriff auf die AMS-API mit REST verwenden. 
@@ -62,7 +62,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkte erfassen.
 
-|Einstellung|Beispiel|BESCHREIBUNG|
+|Einstellung|Beispiel|Beschreibung|
 |---|-------|-----|
 |Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service, Sicherheitstokendienst) für Azure AD wird unter Verwendung des folgenden Formats erstellt: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
 |REST-API-Endpunkt|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
@@ -180,7 +180,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Ass
 5. Klicken Sie im rechten Bereich des Postman-Fensters auf **Bulk Edit** (Massenbearbeitung).
 6. Fügen Sie folgenden Header ein:
 
-        x-ms-version:2.15
+        x-ms-version:2.19
         Accept:application/json
         Content-Type:application/json
         DataServiceVersion:3.0

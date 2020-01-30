@@ -13,13 +13,12 @@ ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cba213824cba86b4ea54e852b7e2f1ede83abfea
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916144"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695805"
 ---
 # <a name="logging-in-msal-applications"></a>Protokollierung in MSAL-Anwendungen
 
@@ -29,7 +28,7 @@ Mit Microsoft Authentication Library-Apps (MSAL-Apps) werden Protokollmeldungen 
 
 MSAL bietet mehrere Grade für Protokollierungsdetails:
 
-- Fehler Gibt an, dass ein Problem aufgetreten ist und ein Fehler generiert wurde. Verwenden Sie diesen Grad zum Debuggen und Identifizieren von Problemen.
+- Error: Gibt an, dass ein Problem aufgetreten ist und ein Fehler generiert wurde. Verwenden Sie diesen Grad zum Debuggen und Identifizieren von Problemen.
 - Warnung: Es muss nicht unbedingt zu einem Fehler oder Ausfall gekommen sein. Dieser Grad ist für das Diagnostizieren und Ermitteln von Problemen vorgesehen.
 - Info: MSAL protokolliert Ereignisse, die für Informationszwecke und nicht unbedingt für das Debuggen vorgesehen sind.
 - Verbose: Standard. Msal protokolliert die vollständigen Details des Bibliotheksverhaltens.
@@ -211,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, wenn Sie die Protokollierung mit MSAL für iOS und macOS ausführen:
 
-|Level  |BESCHREIBUNG |
+|Ebene  |Beschreibung |
 |---------|---------|
 | `MSALLogLevelNothing`| Deaktivieren der gesamten Protokollierung |
 | `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |
@@ -288,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, wenn Sie die Protokollierung mit MSAL für iOS und macOS ausführen:
 
-|Level  |BESCHREIBUNG |
+|Ebene  |Beschreibung |
 |---------|---------|
 | `MSALLogLevelNothing`| Deaktivieren der gesamten Protokollierung |
 | `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |

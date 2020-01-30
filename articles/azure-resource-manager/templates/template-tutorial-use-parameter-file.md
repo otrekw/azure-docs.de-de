@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75470835"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773147"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Ihre Vorlage verfügt über zahlreiche Parameter, die Sie während der Bereitstellung angeben können. Am Ende des vorherigen Tutorials sah Ihre Vorlage wie folgt aus:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 Diese Vorlage funktioniert gut, jetzt möchten Sie jedoch problemlos die Parameter verwalten, die Sie für die Vorlage übergeben.
 
@@ -36,13 +36,13 @@ Parameterdateien sind JSON-Dateien mit einer Struktur, die ihrer Vorlage ähnelt
 
 Erstellen Sie in VS Code eine neue Datei mit folgendem Inhalt. Speichern Sie die Datei mit dem Namen **azuredeploy.parameters.dev.json**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Diese Datei ist Ihre Parameterdatei für die Entwicklungsumgebung. Beachten Sie, dass „Standard_LRS“ als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **dev** benannt werden, und das **Environment**-Tag auf **Dev** festgelegt wird.
 
 Erstellen Sie erneut eine neue Datei mit dem folgenden Inhalt. Speichern Sie die Datei mit dem Namen **azuredeploy.parameters.prod.json**.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 Diese Datei ist Ihre Parameterdatei für die Produktionsumgebung. Beachten Sie, dass „Standard_GRS“ als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **contoso** benannt werden, und das **Environment**-Tag auf **Production** festgelegt wird. In einer realen Produktionsumgebung würden Sie auch einen App-Dienst mit einer anderen SKU als „Free“ verwenden, für dieses Tutorial verwenden wir diese SKU aber weiterhin.
 

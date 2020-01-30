@@ -1,19 +1,19 @@
 ---
 title: Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 description: Erfahren Sie, wie Sie Azure-Metrikwarnungen an andere, Azure-fremde Systeme umleiten.
-author: snehithm
+author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 88de4464e5b95b49e76e5d9c4f7dc0d6732076e1
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: fd4bf2d404a7152da04e72d323f463c18167f5bf
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286156"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705512"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. 
@@ -69,7 +69,7 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 ```
 
 
-| Feld | Mandatory | Feste Gruppe von Werten | Notizen |
+| Feld | Obligatorisch. | Feste Gruppe von Werten | Notizen |
 |:--- |:--- |:--- |:--- |
 | status |J |Activated, Resolved |Der Status der Warnung auf der Grundlage der festgelegten Bedingungen. |
 | context |J | |Der Warnungskontext. |
@@ -85,7 +85,7 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 | threshold |Für Metrikwarnungen | |Der Schwellenwert, bei dem die Warnung aktiviert wird. |
 | windowSize |Für Metrikwarnungen | |Der Zeitraum, in dem die Aktivität der Warnung basierend auf dem Schwellenwert überwacht wird. Der Wert muss zwischen fünf Minuten und einem Tag liegen. Der Wert muss im Format der Zeitspanne nach ISO 8601 angegeben werden. |
 | timeAggregation |Für Metrikwarnungen |Average, Last, Maximum, Minimum, None, Total |Legt fest, wie die erfassten Daten im Zeitverlauf kombiniert werden sollen. Der Standardwert ist "Average". Siehe [Zulässige Werte](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operator |Für Metrikwarnungen | |Der Operator, der verwendet wird, um die aktuellen Metrikdaten mit dem festgelegten Schwellenwert zu vergleichen. |
+| Operator |Für Metrikwarnungen | |Der Operator, der verwendet wird, um die aktuellen Metrikdaten mit dem festgelegten Schwellenwert zu vergleichen. |
 | subscriptionId |J | |Die Azure-Abonnement-ID. |
 | resourceGroupName |J | |Der Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceName |J | |Der Ressourcenname der betroffenen Ressource. |

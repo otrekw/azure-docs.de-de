@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231820"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705087"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Anzeigen, wie Ihre Organisation Ihre datenschutzrelevanten Daten verwendet
 
@@ -41,12 +40,12 @@ Im Portal **Mein Konto** können Sie auf der Seite **Datenschutz** anzeigen, wie
 
 Nach dem Anzeigen der Informationen zur Nutzung Ihrer Daten innerhalb der Organisation haben Sie folgende Möglichkeiten:
 
-- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md)
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
 
-- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md)
+- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
-- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
+- Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md).
 
 - Sie können auch Ihre Kontakteinstellungen und Datenschutzinformationen für Microsoft Office im [Office-Portal auf der Seite „Sicherheit und Datenschutz“](https://portal.office.com/account/#security) anzeigen.

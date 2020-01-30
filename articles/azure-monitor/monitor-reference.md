@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263420"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765723"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -42,7 +42,7 @@ Lösungen basieren auf Protokollabfragen und Ansichten, die für eine bestimmte 
 |:---|:---|
 | [Agent-Integrität](insights/solution-agenthealth.md) | Analysieren der Integrität und Konfiguration von Log Analytics-Agents. |
 | [Benachrichtigungsverwaltung](platform/alert-management-solution.md) | Analysieren von Warnungen, die von System Center Operations Manager, Nagios oder Zabbix erfasst werden. |
-| [Dienstzuordnung](insights/service-map.md) | Automatisches Ermitteln von Anwendungskomponenten auf Windows- und Linux-Systemen und Darstellung der Kommunikation zwischen Diensten. Die gleiche Funktionalität bietet   |
+| [Dienstzuordnung](insights/service-map.md) | Automatisches Ermitteln von Anwendungskomponenten auf Windows- und Linux-Systemen und Darstellung der Kommunikation zwischen Diensten. |
 
 
 

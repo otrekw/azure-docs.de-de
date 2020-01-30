@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c75eae72b94c807897d74e365ec9f4ef74c83dd9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6147dc64833f44f24afe14cd1da34432a3735519
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063666"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840229"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
-Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstellungen auf [Basis eines Benutzerflows](active-directory-b2c-reference-policies.md):
+Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstellungen auf [Basis eines Benutzerflows](user-flow-overview.md):
 
 - Lebensdauer von Webanwendungssitzungen, die von Azure AD B2C verwaltet werden.
 - SSO-Verhalten über verschiedene Apps und Benutzerflows in Ihrem Azure AD B2C-Mandanten hinweg.
 
 Diese Einstellungen sind für Benutzerflows zur Kennwortzurücksetzung nicht verfügbar.
 
-Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](active-directory-b2c-reference-oidc.md) zum Aktivieren der sicheren Anmeldung bei Webanwendungen. Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen verwenden:
+Azure AD B2C unterstützt das [OpenID Connect-Authentifizierungsprotokoll](openid-connect.md) zum Aktivieren der sicheren Anmeldung bei Webanwendungen. Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen verwenden:
 
 ## <a name="session-behavior-properties"></a>Eigenschaften des Sitzungsverhaltens
 

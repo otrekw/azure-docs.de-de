@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732449"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711598"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -25,7 +25,7 @@ Viele Organisationen nutzen Software-as-a-Service-Anwendungen (SaaS-Anwendungen)
 
 Die automatische Benutzerbereitstellung von Azure Active Directory (Azure AD) vereinfacht diesen Prozess durch die sichere Automatisierung der Erstellung, Verwaltung und Entfernung von Benutzeridentitäten in SaaS-Anwendungen auf der Grundlage von Geschäftsregeln. Durch diese Automatisierung können Sie Ihre Identitätsverwaltungssysteme sowohl in reinen Cloudumgebungen als auch in Hybridumgebungen effektiv skalieren, wenn Sie die jeweilige Abhängigkeit von cloudbasierten Lösungen erweitern.
 
-Lesen Sie [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning), um die Funktionalität besser zu verstehen.
+Lesen Sie [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md), um die Funktionalität besser zu verstehen.
 
 ## <a name="learn"></a>Lernen
 
@@ -59,7 +59,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 * Einmaliges Anmelden (Single Sign-On, SSO) – Die Möglichkeit eines Benutzers, sich einmal anzumelden und auf alle SSO-fähigen Anwendungen zuzugreifen. Im Kontext der Benutzerbereitstellung ist das einmalige Anmelden das Ergebnis von Benutzern, die über ein einzelnes Konto für den Zugriff auf alle Systeme verfügen, die die automatische Benutzerbereitstellung verwenden.
 
-* Quellsystem – Das Repository von Benutzern, aus dem die Azure AD-Instanz bereitstellt. Azure AD ist das Quellsystem für die meisten vorintegrierten Bereitstellungsconnectors. Es gibt jedoch einige Ausnahmen für Cloudanwendungen wie SAP, Workday und AWS. Informationen hierzu finden Sie beispielsweise unter [Benutzerbereitstellung aus Workday in AD](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+* Quellsystem – Das Repository von Benutzern, aus dem die Azure AD-Instanz bereitstellt. Azure AD ist das Quellsystem für die meisten vorintegrierten Bereitstellungsconnectors. Es gibt jedoch einige Ausnahmen für Cloudanwendungen wie SAP, Workday und AWS. Informationen hierzu finden Sie beispielsweise unter [Benutzerbereitstellung aus Workday in AD](../saas-apps/workday-inbound-tutorial.md).
 
 * Zielsystem – Das Repository von Benutzern, in das die Azure AD-Instanz bereitstellt. Das Zielsystem ist in der Regel eine SaaS-Anwendung wie ServiceNow, Zscaler oder Slack. Bei dem Zielsystem kann es sich auch um ein lokales System wie AD handeln.
 
@@ -73,8 +73,8 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 | Videos| [Was ist die Benutzerbereitstellung in Azure Active Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) <br> [Integrieren von Salesforce mit Azure AD: Automatisieren der Benutzerbereitstellung](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinekurse| SkillUp Online:  [Verwalten von Identitäten](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Erfahren Sie, wie Sie Azure AD in viele SaaS-Anwendungen integrieren und den Benutzerzugriff auf diese Anwendungen schützen. |
 | Bücher| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0) (Moderne Authentifizierung mit Azure Active Directory für Webanwendungen (Entwicklerreferenz), 1. Auflage).  <br> ‎Dies ist ein autoritativer, ausführlicher Leitfaden für die Entwicklung von Active Directory-Authentifizierungslösungen für diese neuen Umgebungen. |
-| Tutorials| Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
-| Häufig gestellte Fragen| [Häufig gestellte Fragen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) zur automatisierten Benutzerbereitstellung |
+| Tutorials| Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md). |
+| Häufig gestellte Fragen| [Häufig gestellte Fragen](user-provisioning.md) zur automatisierten Benutzerbereitstellung |
 
 ### <a name="solution-architectures"></a>Lösungsarchitekturen
 
@@ -92,9 +92,9 @@ In diesem Beispiel werden Benutzer und/oder Gruppen in einer mit einem lokalen V
 
 1. Der **Azure AD Connect-Agent** führt geplante Synchronisierungen von Identitäten (Benutzer und Gruppen) aus der lokalen AD-Instanz mit Azure AD aus.
 
-1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
+1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](user-provisioning.md) für das Quellsystem und das Zielsystem. 
 
-1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus geändert wurden, und überträgt Änderungen mithilfe von Push in [inkrementellen Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus geändert wurden, und überträgt Änderungen mithilfe von Push in [inkrementellen Zyklen](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatische Benutzerbereitstellung für reine Cloudunternehmen
 
@@ -106,9 +106,9 @@ In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-
 
 1. Benutzer/Gruppen werden in Azure AD erstellt.
 
-1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
+1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](user-provisioning.md) für das Quellsystem und das Zielsystem. 
 
-1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus aktualisiert wurden, und führt [inkrementelle Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) aus.
+1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus aktualisiert wurden, und führt [inkrementelle Zyklen](user-provisioning.md) aus.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatische Benutzerbereitstellung für HR-Cloudanwendungen 
 
@@ -138,7 +138,7 @@ Kommunikation ist ein kritischer Faktor für den Erfolg jedes neuen Diensts. Kom
 
 ### <a name="plan-a-pilot"></a>Planen eines Pilotprojekts
 
-Es wird empfohlen, die Erstkonfiguration der automatischen Benutzerbereitstellung in einer Testumgebung mit einer kleinen Teilmenge von Benutzern vorzunehmen, bevor die Skalierung auf alle Benutzer in der Produktionsumgebung erfolgt. Siehe hierzu [Bewährte Methoden](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) für das Ausführen eines Politprojekts.
+Es wird empfohlen, die Erstkonfiguration der automatischen Benutzerbereitstellung in einer Testumgebung mit einer kleinen Teilmenge von Benutzern vorzunehmen, bevor die Skalierung auf alle Benutzer in der Produktionsumgebung erfolgt. Siehe hierzu [Bewährte Methoden](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) für das Ausführen eines Politprojekts.
 
 #### <a name="best-practices-for-a-pilot"></a>Bewährte Methoden für einen Pilotversuch  
 
@@ -146,29 +146,29 @@ Bei einem Pilotversuch können Sie eine Funktion mit einer kleinen Gruppe testen
 
 Zielen Sie in der ersten Phase auf IT und Benutzerfreundlichkeit ab, und wählen Sie zum Testen andere geeignete Benutzer aus, die Feedback bereitstellen können. Verwenden Sie dieses Feedback, um die Informationen und Anweisungen weiterzuentwickeln, die Sie an Ihre Benutzer senden, und Erkenntnisse über die Art von Problemen zu gewinnen, mit denen Ihre Supportmitarbeiter möglicherweise konfrontiert sind.
 
-Erweitern Sie das Rollout auf größere Benutzergruppen, indem Sie die Zielgruppe(n) ausweiten. Dies kann über eine [dynamische Gruppenmitgliedschaft](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
+Erweitern Sie das Rollout auf größere Benutzergruppen, indem Sie die Zielgruppe(n) ausweiten. Dies kann über eine [dynamische Gruppenmitgliedschaft](../users-groups-roles/groups-dynamic-membership.md) oder durch manuelles Hinzufügen von Benutzern zu den Zielgruppen erfolgen.
 
 ## <a name="plan-application-connections-and-administration"></a>Planen der Anwendungsverbindungen und -verwaltung
 
-Verwenden Sie das Azure AD-Portal, um alle die Bereitstellung unterstützenden Anwendungen anzuzeigen und zu verwalten. Weitere Informationen finden Sie unter [Suchen Ihrer Apps im Portal](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal).
+Verwenden Sie das Azure AD-Portal, um alle die Bereitstellung unterstützenden Anwendungen anzuzeigen und zu verwalten. Weitere Informationen finden Sie unter [Suchen Ihrer Apps im Portal](configure-automatic-user-provisioning-portal.md).
 
 ### <a name="determine-the-type-of-connector-to-use"></a>Ermitteln des zu verwendenden Connectortyps
 
-Die tatsächlichen Schritte, die zum Aktivieren und Konfigurieren der automatischen Bereitstellung erforderlich sind, variieren je nach Anwendung. Wenn die Anwendung, die Sie automatisch bereitstellen möchten, im [Azure AD-Katalog für Saas-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) aufgeführt ist, sollten Sie das [Tutorial zur Integration der entsprechenden Anwendung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) auswählen, um den bereits integrierten Benutzerbereitstellungsconnector zu konfigurieren.
+Die tatsächlichen Schritte, die zum Aktivieren und Konfigurieren der automatischen Bereitstellung erforderlich sind, variieren je nach Anwendung. Wenn die Anwendung, die Sie automatisch bereitstellen möchten, im [Azure AD-Katalog für Saas-Apps](../saas-apps/tutorial-list.md) aufgeführt ist, sollten Sie das [Tutorial zur Integration der entsprechenden Anwendung](../saas-apps/tutorial-list.md) auswählen, um den bereits integrierten Benutzerbereitstellungsconnector zu konfigurieren.
 
 Führen Sie andernfalls die folgenden Schritte aus:
 
-1. [Erstellen Sie eine Anforderung](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) für einen bereits integrierten Benutzerbereitstellungsconnector. Unser Team arbeitet mit Ihnen und dem Anwendungsentwickler zusammen, um Ihre Anwendung in unsere Plattform zu integrieren, wenn sie SCIM unterstützt.
+1. [Erstellen Sie eine Anforderung](../develop/howto-app-gallery-listing.md) für einen bereits integrierten Benutzerbereitstellungsconnector. Unser Team arbeitet mit Ihnen und dem Anwendungsentwickler zusammen, um Ihre Anwendung in unsere Plattform zu integrieren, wenn sie SCIM unterstützt.
 
-1. Verwenden Sie die allgemeine [BYOA SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning)-Benutzerbereitstellungsunterstützung für die App. Dies ist eine Voraussetzung für Azure AD, um Benutzer für die App ohne einen bereits integrierten Bereitstellungsconnector bereitstellen zu können.
+1. Verwenden Sie die allgemeine [BYOA SCIM](use-scim-to-provision-users-and-groups.md)-Benutzerbereitstellungsunterstützung für die App. Dies ist eine Voraussetzung für Azure AD, um Benutzer für die App ohne einen bereits integrierten Bereitstellungsconnector bereitstellen zu können.
 
-1. Wenn die Anwendung den BYOA SCIM-Connector verwenden kann, lesen Sie die Informationen im [Tutorial zur BYOA SCIM-Integration](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning), um den BYOA SCIM-Connector für die Anwendung zu konfigurieren.
+1. Wenn die Anwendung den BYOA SCIM-Connector verwenden kann, lesen Sie die Informationen im [Tutorial zur BYOA SCIM-Integration](use-scim-to-provision-users-and-groups.md), um den BYOA SCIM-Connector für die Anwendung zu konfigurieren.
 
-Weitere Informationen finden Sie unter [Welche Anwendungen und Systeme kann ich mit der automatischen Benutzerbereitstellung von Azure AD verwenden?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)
+Weitere Informationen finden Sie unter [Welche Anwendungen und Systeme kann ich mit der automatischen Benutzerbereitstellung von Azure AD verwenden?](user-provisioning.md)
 
 ### <a name="collect-information-to-authorize-application-access"></a>Erfassen von Informationen zum Autorisieren des Anwendungszugriffs
 
-Das Einrichten der automatischen Benutzerbereitstellung erfolgt pro Anwendung. Für jede Anwendung müssen Sie [Administratoranmeldeinformationen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) angeben, um eine Verbindung mit dem Endpunkt der Benutzerverwaltung des Zielsystems herstellen zu können.
+Das Einrichten der automatischen Benutzerbereitstellung erfolgt pro Anwendung. Für jede Anwendung müssen Sie [Administratoranmeldeinformationen](configure-automatic-user-provisioning-portal.md) angeben, um eine Verbindung mit dem Endpunkt der Benutzerverwaltung des Zielsystems herstellen zu können.
 
 In der folgenden Abbildung ist eine Version der erforderlichen Administratoranmeldeinformationen dargestellt:
 
@@ -198,17 +198,17 @@ Dokumentieren Sie für jede Anwendung die folgenden Informationen:
 
 Vor dem Implementieren der automatischen Benutzerbereitstellung müssen Sie die Benutzer und Gruppen festlegen, die für Ihre Anwendung bereitgestellt werden sollen.
 
-* Verwenden Sie [Bereichsfilter](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters), um attributbasierte Regeln zu definieren, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
+* Verwenden Sie [Bereichsfilter](define-conditional-rules-for-provisioning-user-accounts.md), um attributbasierte Regeln zu definieren, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
 
-* Verwenden Sie dann nach Bedarf [Benutzer- und Gruppenzuweisungen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) für eine zusätzliche Filterung.
+* Verwenden Sie dann nach Bedarf [Benutzer- und Gruppenzuweisungen](assign-user-or-group-access-portal.md) für eine zusätzliche Filterung.
 
 ### <a name="define-user-and-group-attribute-mapping"></a>Definieren von Benutzer- und Gruppenattributzuordnungen
 
-Zum Implementieren der automatischen Benutzerbereitstellung müssen Sie die für die Anwendung erforderlichen Benutzer- und Gruppenattribute definieren. Es ist eine vorkonfigurierte Sammlung von Attributen und [Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Anwendungen verfügbar. Nicht alle Saas-Apps unterstützen Gruppenattribute.
+Zum Implementieren der automatischen Benutzerbereitstellung müssen Sie die für die Anwendung erforderlichen Benutzer- und Gruppenattribute definieren. Es ist eine vorkonfigurierte Sammlung von Attributen und [Attributzuordnungen](configure-automatic-user-provisioning-portal.md) zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Anwendungen verfügbar. Nicht alle Saas-Apps unterstützen Gruppenattribute.
 
-Azure AD unterstützt durch die direkte Zuordnung von Attribut zu Attribut, die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Durch diese Flexibilität können Sie genau steuern, was im Attribut des Zielsystems aufgefüllt wird. Mit der [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) und dem Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
+Azure AD unterstützt durch die direkte Zuordnung von Attribut zu Attribut, die Bereitstellung konstanter Werte oder das [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md). Durch diese Flexibilität können Sie genau steuern, was im Attribut des Zielsystems aufgefüllt wird. Mit der [Microsoft Graph-API](export-import-provisioning-configuration.md) und dem Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren.
 
-Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>Besondere Aspekte bei der Benutzerbereitstellung
 
@@ -216,9 +216,9 @@ Berücksichtigen Sie Folgendes, um Probleme nach der Bereitstellung zu minimiere
 
 * Stellen Sie sicher, dass die Attribute, mit denen Benutzer-/Gruppenobjekte zwischen Quell- und Zielanwendungen zugeordnet werden, resilient sind. Bei Änderungen der Attribute (beispielsweise wenn ein Benutzer in einen anderen Bereich des Unternehmens wechselt) sollten Benutzer/Gruppen nicht falsch bereitgestellt werden.
 
-* Für Anwendungen gelten möglicherweise bestimmte Einschränkungen und/oder Anforderungen, die eingehalten/erfüllt werden müssen, damit die Benutzerbereitstellung ordnungsgemäß funktioniert. In Slack werden beispielsweise Werte für bestimmte Attribute abgeschnitten. Entsprechende Informationen finden Sie in den [Tutorials zur automatischen Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) für die einzelnen Anwendungen.
+* Für Anwendungen gelten möglicherweise bestimmte Einschränkungen und/oder Anforderungen, die eingehalten/erfüllt werden müssen, damit die Benutzerbereitstellung ordnungsgemäß funktioniert. In Slack werden beispielsweise Werte für bestimmte Attribute abgeschnitten. Entsprechende Informationen finden Sie in den [Tutorials zur automatischen Benutzerbereitstellung](../saas-apps/tutorial-list.md) für die einzelnen Anwendungen.
 
-* Stellen Sie Schemakonsistenz zwischen den Quell- und Zielsystemen sicher. Zu häufigen Problemen zählen z. B. nicht übereinstimmende Attribute wie UPN oder E-Mail. In Azure AD wird der UPN beispielsweise im Format *john_smith@contoso.com* und in der App im Format *jsmith@contoso.com* festgelegt. Weitere Informationen finden Sie unter [Referenz zum Benutzer- und Gruppenschema](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups).
+* Stellen Sie Schemakonsistenz zwischen den Quell- und Zielsystemen sicher. Zu häufigen Problemen zählen z. B. nicht übereinstimmende Attribute wie UPN oder E-Mail. In Azure AD wird der UPN beispielsweise im Format *john_smith@contoso.com* und in der App im Format *jsmith@contoso.com* festgelegt. Weitere Informationen finden Sie unter [Referenz zum Benutzer- und Gruppenschema](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>Planen von Tests und der Sicherheit
 
@@ -233,7 +233,7 @@ Nachdem Sie die automatische Benutzerbereitstellung für die Anwendung konfiguri
 | Ein Benutzer wird einer dem Zielsystem zugewiesenen Gruppe hinzugefügt. | Das Benutzerobjekt wird im Zielsystem bereitgestellt. <br>Der Benutzer kann sich beim Zielsystem anmelden und die gewünschten Aktionen ausführen. |
 | Ein Benutzer wird aus einer dem Zielsystem zugewiesenen Gruppe entfernt. | Die Bereitstellung des Benutzerobjekts wird im Zielsystem aufgehoben.<br>Der Benutzer kann sich nicht beim Zielsystem anmelden. |
 | Die Benutzerinformationen werden in Azure AD mittels einer beliebigen Methode aktualisiert. | Aktualisierte Benutzerattribute werden im Zielsystem nach einem inkrementellen Zyklus reflektiert. |
-| Ein Benutzer befindet sich außerhalb des gültigen Bereichs. | Das Benutzerobjekt wird deaktiviert oder gelöscht. <br>Hinweis: Dieses Verhalten wird bei der [Workday-Bereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions) außer Kraft gesetzt. |
+| Ein Benutzer befindet sich außerhalb des gültigen Bereichs. | Das Benutzerobjekt wird deaktiviert oder gelöscht. <br>Hinweis: Dieses Verhalten wird bei der [Workday-Bereitstellung](skip-out-of-scope-deletions.md) außer Kraft gesetzt. |
 
 ### <a name="plan-security"></a>Planen der Sicherheit
 
@@ -243,7 +243,7 @@ Es ist üblich, dass im Rahmen einer Bereitstellung eine Sicherheitsüberprüfun
 
 Wenn die Implementierung der automatischen Benutzerbereitstellung in der Produktionsumgebung nicht wie gewünscht funktioniert, können Sie die folgenden Rollbackschritte ausführen, um einen früheren bekannten fehlerfreien Zustand wiederherzustellen:
 
-1. Überprüfen Sie den [Zusammenfassungsbericht für die Bereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) und die [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting), um zu ermitteln, welche fehlerhaften Vorgänge für die betroffenen Benutzer und/oder Gruppen aufgetreten sind.
+1. Überprüfen Sie den [Zusammenfassungsbericht für die Bereitstellung](check-status-user-account-provisioning.md) und die [Bereitstellungsprotokolle](check-status-user-account-provisioning.md#provisioning-logs-preview), um zu ermitteln, welche fehlerhaften Vorgänge für die betroffenen Benutzer und/oder Gruppen aufgetreten sind.
 
 1. Ermitteln Sie anhand der Bereitstellungsüberwachungsprotokolle den letzten bekannten fehlerfreien Status der betroffenen Benutzer und/oder Gruppen. Überprüfen Sie auch die Quellsysteme (Azure AD oder AD).
 
@@ -257,13 +257,13 @@ Wählen Sie die auszuführenden Schritte gemäß den Anforderungen Ihrer Lösung
 
 Bei der ersten Ausführung des Azure AD-Bereitstellungsdiensts wird beim ersten Zyklus für das Quellsystem und die Zielsysteme eine Momentaufnahme aller Benutzerobjekte für jedes Zielsystem erstellt.
 
-Wenn Sie die automatische Bereitstellung für eine Anwendung aktivieren, kann der erste Zyklus 20 Minuten bis mehrere Stunden dauern. Die Dauer hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. Weitere Informationen finden Sie unter [Verbessern der Bereitstellungsleistung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish).
+Wenn Sie die automatische Bereitstellung für eine Anwendung aktivieren, kann der erste Zyklus 20 Minuten bis mehrere Stunden dauern. Die Dauer hängt von der Größe des Azure AD-Verzeichnisses und der Anzahl der Benutzer im Bereitstellungsbereich ab. Weitere Informationen finden Sie unter [Verbessern der Bereitstellungsleistung](application-provisioning-when-will-provisioning-finish.md).
 
 Der Bereitstellungsdienst speichert den Status beider Systeme nach dem ersten Zyklus, sodass die Leistung der nachfolgenden inkrementellen Zyklen verbessert wird.
 
 ### <a name="configure-automatic-user-provisioning"></a>Konfigurieren der automatischen Benutzerbereitstellung
 
-Verwenden Sie das [Azure-Portal](https://portal.azure.com/), um die automatische Benutzerkontobereitstellung und das Aufheben der Bereitstellung für Anwendungen zu verwalten, die dies unterstützen. Führen Sie die unter [Wie richte ich die automatische Bereitstellung für eine Anwendung ein?](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) aufgeführten Schritte aus.
+Verwenden Sie das [Azure-Portal](https://portal.azure.com/), um die automatische Benutzerkontobereitstellung und das Aufheben der Bereitstellung für Anwendungen zu verwalten, die dies unterstützen. Führen Sie die unter [Wie richte ich die automatische Bereitstellung für eine Anwendung ein?](user-provisioning.md) aufgeführten Schritte aus.
 
 Der Benutzerbereitstellungsdienst von Azure AD kann auch über die [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) konfiguriert und verwaltet werden.
 
@@ -273,7 +273,7 @@ Nach der Bereitstellung müssen Sie die Lösung verwalten.
 
 ### <a name="monitor-user-provisioning-operation-health"></a>Überwachen der Integrität des Benutzerbereitstellungsvorgangs
 
-Nach einem erfolgreichen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) führt der Azure AD-Bereitstellungsdienst so lange inkrementelle Aktualisierungen in jeweils anwendungspezifischen Intervallen aus, bis eines der folgenden Ereignisse eintritt:
+Nach einem erfolgreichen [ersten Zyklus](user-provisioning.md) führt der Azure AD-Bereitstellungsdienst so lange inkrementelle Aktualisierungen in jeweils anwendungspezifischen Intervallen aus, bis eines der folgenden Ereignisse eintritt:
 
 * Der Dienst wird manuell beendet, und es wird über das [Azure-Portal](https://portal.azure.com/) oder mithilfe des entsprechenden [Microsoft Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)-Befehls ein neuer erster Zyklus ausgelöst.
 
@@ -281,15 +281,15 @@ Nach einem erfolgreichen [ersten Zyklus](https://docs.microsoft.com/azure/active
 
 * Der Bereitstellungsprozess wird aufgrund einer hohen Fehlerrate unter Quarantäne gestellt und bleibt mehr als vier Wochen lang in Quarantäne, bevor er automatisch deaktiviert wird.
 
-Wenn Sie diese Ereignisse und alle anderen vom Bereitstellungsdienst ausgeführten Aktivitäten überprüfen möchten, ziehen Sie die Azure AD-[Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context) zurate.
+Wenn Sie diese Ereignisse und alle anderen vom Bereitstellungsdienst ausgeführten Aktivitäten überprüfen möchten, ziehen Sie die Azure AD-[Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) zurate.
 
-Wenn Sie verstehen möchten, wie lange die Bereitstellungszyklen dauern, und den Fortschritt des Bereitstellungsauftrags überwachen möchten, können Sie [den Status der Benutzerbereitstellung überprüfen](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).
+Wenn Sie verstehen möchten, wie lange die Bereitstellungszyklen dauern, und den Fortschritt des Bereitstellungsauftrags überwachen möchten, können Sie [den Status der Benutzerbereitstellung überprüfen](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 ### <a name="gain-insights-from-reports"></a>Gewinnen von Erkenntnissen aus Berichten
 
-Azure AD kann durch Überwachungsprotokolle und Berichte [zusätzliche Einblicke](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) in die Nutzung der Benutzerbereitstellung und in die Betriebsintegrität Ihrer Organisation bieten.
+Azure AD kann durch Überwachungsprotokolle und Berichte [zusätzliche Einblicke](application-provisioning-when-will-provisioning-finish-specific-user.md) in die Nutzung der Benutzerbereitstellung und in die Betriebsintegrität Ihrer Organisation bieten.
 
-Administratoren sollten den Zusammenfassungsbericht für die Bereitstellung überprüfen, um die Betriebsintegrität des Bereitstellungsauftrags zu überwachen. Alle vom Bereitstellungsdienst ausgeführten Aktivitäten werden in den Azure AD-Überwachungsprotokollen erfasst. Siehe [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning).
+Administratoren sollten den Zusammenfassungsbericht für die Bereitstellung überprüfen, um die Betriebsintegrität des Bereitstellungsauftrags zu überwachen. Alle vom Bereitstellungsdienst ausgeführten Aktivitäten werden in den Azure AD-Überwachungsprotokollen erfasst. Siehe [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).
 
 Wir empfehlen Ihnen, den Besitz dieser Berichte zu übernehmen und die Berichte in regelmäßigen Abständen gemäß den Anforderungen Ihrer Organisation zu verwenden. In Azure AD werden die meisten Überwachungsdaten 30 Tage lang beibehalten.
 
@@ -297,27 +297,27 @@ Wir empfehlen Ihnen, den Besitz dieser Berichte zu übernehmen und die Berichte 
 
 Unter den folgenden Links finden Sie Informationen zum Beheben von Problemen, die bei der Bereitstellung auftreten können:
 
-* [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung](application-provisioning-config-problem.md)
 
-* [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Die Benutzerbereitstellung für eine Azure AD-Kataloganwendung dauert Stunden oder länger](application-provisioning-when-will-provisioning-finish.md)
 
-* [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
+* [Problem saving administrator credentials while configuring user provisioning to an Azure Active Directory Gallery application](application-provisioning-config-problem-storage-limit.md) (Probleme beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog)
 
-* [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [Der falsche Satz von Benutzern wird für eine Azure AD-Kataloganwendung bereitgestellt](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>Hilfreiche Dokumentation
 
-* [Schreiben von Ausdrücken für Attributzuordnungen](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
 
 * [Azure AD synchronization API overview](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) (Azure AD-Synchronisierung – API-Übersicht)
 
-* [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history).
+* [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen](provisioning-agent-release-version-history.md).
 
 #### <a name="resources"></a>Ressourcen
 
@@ -328,8 +328,8 @@ Unter den folgenden Links finden Sie Informationen zum Beheben von Problemen, di
 * [Stack Overflow: Azure AD-Forum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Konfigurieren der automatischen Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [Konfigurieren der automatischen Benutzerbereitstellung](configure-automatic-user-provisioning-portal.md)
 
-* [Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Graph-API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Graph-API](export-import-provisioning-configuration.md)
 
-* [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](functions-for-customizing-application-data.md)

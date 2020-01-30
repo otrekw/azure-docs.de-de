@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100713"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841711"
 ---
 # <a name="delivery-and-retry"></a>Übermittlung und Wiederholung
 
@@ -27,14 +27,14 @@ Event Grid bietet permanente Übermittlung. Es versucht, für jedes übereinstim
 
 Event Grid wartet nach der Zustellung einer Nachricht bis zu 60 Sekunden auf eine Antwort. Wenn der Endpunkt des Abonnenten die Antwort nicht bestätigt (ACK), wird die Nachricht in eine der Backoff-Warteschlangen für nachfolgende Wiederholungen eingereiht.
 
-Es gibt zwei vorkonfigurierte Backoff-Warteschlangen, die den Zeitplan bestimmen, nach dem ein Wiederholungsversuch durchgeführt wird. Diese sind:
+Es gibt zwei vorkonfigurierte Backoff-Warteschlangen, die den Zeitplan bestimmen, nach dem ein Wiederholungsversuch durchgeführt wird. Sie lauten wie folgt:
 
-| Schedule | BESCHREIBUNG |
+| Zeitplan | Beschreibung |
 | ---------| ------------ |
-| 1 Minute | Für Nachrichten, die hier aufgenommen werden, wird jede Minute ein Wiederholungsversuch unternommen.
+| 1 Minute | Für Nachrichten, die hier aufgenommen werden, wird jede Minute ein Wiederholungsversuch unternommen.
 | 10 Minuten | Für Nachrichten, die hier aufgenommen werden, wird alle 10 Minuten ein Wiederholungsversuch unternommen.
 
-### <a name="how-it-works"></a>So funktioniert's
+### <a name="how-it-works"></a>Funktionsweise
 
 1. Die Nachricht geht beim Event Grid-Modul ein. Es wird versucht, sie sofort zu übermitteln.
 1. Wenn die Übermittlung fehlschlägt, wird die Nachricht in die 1-Minute-Warteschlange eingereiht und nach einer Minute erneut versucht.
@@ -43,7 +43,7 @@ Es gibt zwei vorkonfigurierte Backoff-Warteschlangen, die den Zeitplan bestimmen
 
 ## <a name="retry-policy-limits"></a>Wiederholungsrichtlinienlimits
 
-Es gibt zwei Konfigurationen, die die Wiederholungsrichtlinien regeln. Diese sind:
+Es gibt zwei Konfigurationen, die die Wiederholungsrichtlinien regeln. Sie lauten wie folgt:
 
 * Maximale Anzahl von Versuchen
 * Gültigkeitsdauer des Ereignisses (TTL)
@@ -52,12 +52,12 @@ Ein Ereignis wird gelöscht, wenn eins dieser Limits der Wiederholungsrichtlinie
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Konfigurieren von Standardwerten für alle Abonnenten
 
-Es gibt zwei Eigenschaften, `brokers:defaultMaxDeliveryAttempts` und `broker:defaultEventTimeToLiveInSeconds`, die als Teil der Event Grid-Bereitstellung konfiguriert werden können, die die Standardeinstellungen für Wiederholungsrichtlinien für alle Abonnenten kontrolliert.
+Es gibt zwei Eigenschaften, `brokers__defaultMaxDeliveryAttempts` und `broker__defaultEventTimeToLiveInSeconds`, die als Teil der Event Grid-Bereitstellung konfiguriert werden können, die die Standardeinstellungen für Wiederholungsrichtlinien für alle Abonnenten kontrolliert.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Die maximale Anzahl der Versuche zur Übermittlung eines Ereignisses. Standardwert: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Ereignisgültigkeitsdauer (Time-to-Live, TTL) in Sekunden, nach der ein Ereignis gelöscht wird, wenn es nicht übermittelt wird. Standardwert: **7200** Sekunden
+| `broker__defaultMaxDeliveryAttempts` | Die maximale Anzahl der Versuche zur Übermittlung eines Ereignisses. Standardwert: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Ereignisgültigkeitsdauer (Time-to-Live, TTL) in Sekunden, nach der ein Ereignis gelöscht wird, wenn es nicht übermittelt wird. Standardwert: **7200** Sekunden
 
 ## <a name="configuring-defaults-per-subscriber"></a>Konfigurieren von Standardwerten pro Abonnent
 
@@ -71,8 +71,8 @@ Im folgenden Beispiel wird die Wiederholungsrichtlinie im Event Grid-Modul auf �
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

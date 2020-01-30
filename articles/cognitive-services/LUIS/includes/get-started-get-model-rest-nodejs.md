@@ -8,19 +8,19 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: cc8f01d5608b36521185695cd5f7be531ba7aeaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a262db04e51015edb760a8b04952dfa24b2ad63a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505859"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748847"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Startschlüssel.
 * Importieren Sie die App [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) aus dem GitHub-Repository „cognitive-services-language-understanding“.
 * Die LUIS-Anwendungs-ID für die importierte TravelAgent-App. Die Anwendungs-ID wird auf dem Anwendungsdashboard angezeigt.
-* Die Versions-ID in der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
+* Die Versions-ID der Anwendung, die die Äußerungen empfängt. Die Standard-ID lautet „0.1“.
 * Programmiersprache [Node.js](https://nodejs.org/) 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
@@ -89,8 +89,8 @@ Verwenden Sie Go, um der Anwendung eine [API](https://aka.ms/luis-apim-v3-author
             body: utterances
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     const train = async (verb) => {
     
@@ -104,8 +104,8 @@ Verwenden Sie Go, um der Anwendung eine [API](https://aka.ms/luis-apim-v3-author
             body: null // The body can be empty for a training request
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     
     // MAIN
@@ -129,7 +129,7 @@ Verwenden Sie Go, um der Anwendung eine [API](https://aka.ms/luis-apim-v3-author
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, wenn Sie mit dieser Schnellstartanleitung fertig sind. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

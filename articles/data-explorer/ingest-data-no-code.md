@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995931"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836558"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Tutorial: Erfassen und Abfragen von Überwachungsdaten in Azure Data Explorer 
 
@@ -330,7 +330,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 2. Fügen Sie die [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) der Zieltabelle hinzu. Mit dieser Richtlinie wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *DiagnosticRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *DiagnosticMetrics* erfasst:
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnoseprotokolle](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 2. Fügen Sie die [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) der Zieltabelle hinzu. Mit dieser Richtlinie wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *DiagnosticRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *DiagnosticLogs* erfasst:
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[Aktivitätsprotokolle](#tab/activity-logs)
@@ -376,7 +376,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der T
 2. Fügen Sie die [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) der Zieltabelle hinzu. Mit dieser Richtlinie wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *ActivityLogsRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *ActivityLogs* erfasst:
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -521,7 +521,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnosemetriken und -protokolle
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | **Tabelle** | *DiagnosticRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Table** | *DiagnosticRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
     | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
     | **Spaltenzuordnung** | *DiagnosticRawRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *DiagnosticRawRecords* zugeordnet werden.|
     | | |
@@ -548,7 +548,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnosemetriken und -protokolle
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | **Tabelle** | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Table** | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
     | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
     | **Spaltenzuordnung** | *ActivityLogsRawRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *ActivityLogsRawRecords* zugeordnet werden.|
     | | |

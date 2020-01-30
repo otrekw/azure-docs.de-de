@@ -3,12 +3,12 @@ title: Sichern von Azure-Dateifreigaben mit Azure CLI
 description: Hier erfahren Sie, wie Sie Azure-Dateifreigaben mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294872"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844040"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
 
@@ -104,7 +104,7 @@ Wenn Sie eine bedarfsgesteuerte Sicherung für die Dateifreigabe auslösen möch
 
 Sie müssen die folgenden Parameter angeben, um eine bedarfsgesteuerte Sicherung zu starten:
 
-* **--container-name** ist der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
+* **--container-name** ist der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
 * **--item-name** ist der Name der Dateifreigabe, für die Sie eine bedarfsgesteuerte Sicherung auslösen möchten. Um den **Namen** oder den **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
 * **--retain-until** gibt das Datum an, bis wann Sie der Wiederherstellungspunkt aufbewahrt werden soll. Der Wert muss im UTC-Zeitformat (TT-MM-JJJJ) festgelegt werden.
 

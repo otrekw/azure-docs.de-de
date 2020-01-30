@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471525"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765505"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Variablen zur Azure Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 Die Verwendung des Parameters für den Speicherkontonamen ist schwierig, da Sie einen eindeutigen Namen angeben müssen. Wenn Sie die vorherigen Tutorials in dieser Reihe durchgeführt haben, sind Sie es wahrscheinlich leid, einen eindeutigen Namen erraten zu müssen. Um dieses Problem zu lösen, fügen Sie eine Variable hinzu, die einen eindeutigen Namen für das Speicherkonto erstellt.
 
@@ -34,7 +34,7 @@ Die Verwendung des Parameters für den Speicherkontonamen ist schwierig, da Sie 
 
 Im folgenden Beispiel sind die Änderungen hervorgehoben, die Sie vornehmen, um Ihrer Vorlage eine Variable hinzuzufügen, die einen eindeutigen Speicherkontonamen erstellt. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 Beachten Sie, dass die Datei eine Variable namens **uniqueStorageName** enthält. Diese Variable verwendet vier Funktionen, um einen Zeichenfolgenwert zu erstellen.
 

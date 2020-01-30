@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447616"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844261"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -155,9 +155,8 @@ Bereinigen Sie die QnA Maker- und Bot Framework-Ressourcen im Azure-Portal.
 
 Weitere Informationen finden Sie unter:
 
-* [Markdownformat in Antworten](../concepts/data-sources-supported.md)
-* [Testen Ihres Markdowncodes](../concepts/data-sources-supported.md#testing-your-markdown)
-* [Datenquellen](../Concepts/data-sources-supported.md) für QnA Maker-Inhalt
+* [Markdownformat in Antworten](../reference-markdown-format.md)
+* [Datenquellen](../concepts/knowledge-base.md) für QnA Maker-Inhalt
 * [Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v4](../tutorials/create-qna-bot.md)
 
 > [!div class="nextstepaction"]

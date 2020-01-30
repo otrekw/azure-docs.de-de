@@ -17,12 +17,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87818066a656aa4bcd6f45f1835ca1512a674a9e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443435"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712306"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 
@@ -40,19 +40,19 @@ Wenn Sie die Unterstützung für die automatische Bereitstellung für eine besti
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Konfigurieren einer Anwendung für die automatische Bereitstellung
 
-*Automatisch* bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Weitere Informationen zum Azure AD-Bereitstellungsdienst und dessen Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automatisch* bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Weitere Informationen zum Azure AD-Bereitstellungsdienst und dessen Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
 
-Weitere Informationen zum Bereitstellen einer Anwendung für bestimmte Benutzer und Gruppen finden Sie unter [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Weitere Informationen zum Bereitstellen einer Anwendung für bestimmte Benutzer und Gruppen finden Sie unter [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](configure-automatic-user-provisioning-portal.md).
 
 Die tatsächlichen Schritte, die zum Aktivieren und Konfigurieren der automatischen Bereitstellung erforderlich sind, variieren je nach Anwendung.
 
 > [!NOTE]
-> Sie sollten damit beginnen, das Setuptutorial zur Einrichtung der Bereitstellung für Ihre Anwendung zu finden und die Schritte zum Konfigurieren der App und von Azure AD befolgen, um die Bereitstellungsverbindung zu erstellen. 
+> Sie sollten damit beginnen, das Setuptutorial zur Einrichtung der Bereitstellung für Ihre Anwendung zu finden und die Schritte zum Konfigurieren der App und von Azure AD befolgen, um die Bereitstellungsverbindung zu erstellen.
 
-App-Tutorials finden Sie unter [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+App-Tutorials finden Sie unter [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md).
 
 Beim Einrichten der Bereitstellung sollte unbedingt beachtet werden, dass die Attributzuordnungen und Workflows überprüft und konfiguriert werden, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) von Azure AD zur Anwendung gelangen. Dazu zählt das Festlegen der „übereinstimmenden Eigenschaft“, mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden. Weitere Informationen zu Attributzuordnungen finden Sie unter dem Link in *Nächste Schritte*.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
+[Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md)
 

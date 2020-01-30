@@ -13,13 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8940ca6887e5c37659dd5b8d5a24ba7a2f4b889
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921922"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834194"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -177,12 +176,12 @@ Zur Umgehung dieses Problems sollten Sie das [Zwischenspeichern nach Richtlinie]
 Alternativ können Sie den `tid`-Anspruch verwenden, wenn Sie die [benutzerdefinierten B2C-Richtlinien](https://aka.ms/ief) verwenden, da er die Möglichkeit bietet, zusätzliche Ansprüche an die Anwendung zurückzugeben. Erfahren Sie mehr über die [Transformation von Ansprüchen](/azure/active-directory-b2c/claims-transformation-technical-profile).
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>Problemumgehung für „Fehlt in der Tokenantwort“
-Eine Möglichkeit ist es, den „Name“-Anspruch als bevorzugten Benutzernamen zu verwenden. Die Vorgehensweise wird in diesem [B2C-Dokument](../../active-directory-b2c/active-directory-b2c-reference-policies.md) wie folgt beschrieben: „Wählen Sie in der Spalte mit den zurückgegebenen Ansprüchen diejenigen aus, die nach einer erfolgreichen Profilbearbeitung in den Autorisierungstoken an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. den Anzeigenamen oder die Postleitzahl aus.“
+Eine Möglichkeit ist es, den „Name“-Anspruch als bevorzugten Benutzernamen zu verwenden. Die Vorgehensweise wird in diesem [B2C-Dokument](../../active-directory-b2c/user-flow-overview.md) wie folgt beschrieben: „Wählen Sie in der Spalte mit den zurückgegebenen Ansprüchen diejenigen aus, die nach einer erfolgreichen Profilbearbeitung in den Autorisierungstoken an die Anwendung zurückgegeben werden sollen. Wählen Sie z. B. den Anzeigenamen oder die Postleitzahl aus.“
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
 Weitere Informationen zum interaktiven Abrufen von Token mit MSAL.NET für Azure AD B2C-Anwendungen finden Sie im folgenden Beispiel.
 
-| Beispiel | Plattform | BESCHREIBUNG|
+| Beispiel | Plattform | Beschreibung|
 |------ | -------- | -----------|
 |[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Eine einfache Xamarin.Forms-App, die das Verwenden von MSAL.NET zum Authentifizieren von Benutzern über Azure AD B2C und den Zugriff auf eine Web-API mit den daraus resultierenden Token veranschaulicht.|

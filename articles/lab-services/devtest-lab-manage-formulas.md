@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Formeln in Azure DevTest Labs zum Erstellen virtueller Computer | Microsoft Docs
-description: Erfahren Sie, wie Sie Azure DevTest Labs-Formeln aktualisieren und entfernen.
+description: Dieser Artikel veranschaulicht, wie Sie eine Formel anhand einer Basis (benutzerdefiniertes Image, Marketplace-Image oder eine andere Formel) oder aus einem vorhandenen virtuellen Computer erstellen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a668c1f7cf401c109c1041232d7f28dd2accd750
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60562530"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760401"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 

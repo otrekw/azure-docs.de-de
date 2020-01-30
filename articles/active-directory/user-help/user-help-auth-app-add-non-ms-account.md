@@ -11,17 +11,16 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278875"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704764"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen von Nicht-Microsoft-Konten zur Microsoft Authenticator-App
 
-Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, welche die zweistufige Überprüfung verwendet, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
+Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, für die die zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
 
 >[!Important]
 >Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.

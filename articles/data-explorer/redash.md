@@ -7,16 +7,16 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8bb8711bc4a6134ec740a55d9f5d5794b2de77ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0380689ae6ca81e3f31a07f1e205c7773fdea8c6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587179"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773954"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-redash"></a>Visualisieren von Daten aus Azure Data Explorer in Redash
 
-Über [Redash](https://www.redash.io/) können Sie Ihre Datenquellen verknüpfen und abfragen, Dashboards zum Visualisieren von Daten erstellen und diese für Kollegen freigeben. In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Redash einrichten und dann Daten visualisieren.
+Über [Redash](https://redash.io/) können Sie Ihre Datenquellen verknüpfen und abfragen, Dashboards zum Visualisieren von Daten erstellen und diese für Kollegen freigeben. In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Redash einrichten und dann Daten visualisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

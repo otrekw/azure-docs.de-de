@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Az
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Application Gateway als Eingangscontroller veranschaulicht wird
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867401"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772872"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Azure Kubernetes Service
 
@@ -51,7 +51,7 @@ Der erste Schritt ist das Erstellen des Verzeichnisses, das Ihre Terraform-Konfi
     cd clouddrive
     ```
 
-1. Erstellen Sie ein Verzeichnis namens `terraform-aks-k8s`.
+1. Erstellen Sie ein Verzeichnis namens `terraform-aks-appgw-ingress`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -543,7 +543,7 @@ Terraform verfolgt den Status lokal über die Datei `terraform.tfstate`. Dieses 
 
     ![Menü des Speicherkontos](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Notieren Sie sich den Schlüsselwert von **Schlüssel1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
+1. Notieren Sie sich den **Schlüsselwert** von **Schlüssel1**. (Wenn Sie das Symbol auf der rechten Seite des Schlüssels auswählen, wird der Wert in die Zwischenablage kopiert.)
 
     ![Speicherkonto-Zugriffsschlüssel](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
@@ -731,8 +731,8 @@ Der Code in diesem Abschnitt verwendet [Helm](/azure/aks/kubernetes-helm), den K
     - `armAuth.secretJSON`: Nur erforderlich, wenn der Typ des Dienstprinzipalgeheimnisses ausgewählt wird (beim Festlegen von `armAuth.type` auf `servicePrincipal`)
 
     Wichtige Hinweise:
-    - Der Wert `identityResourceID` wird im Terraform-Skript erstellt und kann abgerufen werden, indem Sie `echo "$(terraform output identity_client_id)"` ausführen.
-    - Der Wert `identityClientID` wird im Terraform-Skript erstellt und kann abgerufen werden, indem Sie `echo "$(terraform output identity_resource_id)"` ausführen.
+    - Der Wert `identityResourceID` wird im Terraform-Skript erstellt und kann abgerufen werden, indem Sie `echo "$(terraform output identity_resource_id)"` ausführen.
+    - Der Wert `identityClientID` wird im Terraform-Skript erstellt und kann abgerufen werden, indem Sie `echo "$(terraform output identity_client_id)"` ausführen.
     - Der Wert `<resource-group>` ist die Ressourcengruppe Ihrer Application Gateway-Instanz.
     - Der Wert `<identity-name>` ist der Name der erstellten Identität.
     - Alle Identitäten eines bestimmten Abonnements werden unter Verwendung von `az identity list` aufgelistet.

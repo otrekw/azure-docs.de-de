@@ -17,13 +17,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64823dbe2595d7896b9339745f6c8642a32f74e9
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f15bd1fa95cbbd998d23ac6d946db4ecd93b1e65
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638696"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703030"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -48,7 +47,7 @@ Konfigurieren Sie das Anwendungsmanifest wie folgt:
 > [!NOTE]
 > Wird nach der **Beschreibung** nicht die Spalte **Beispielwert** angezeigt, maximieren Sie das Browserfenster, und scrollen oder wischen Sie, bis die Spalte **Beispielwert** angezeigt wird.
 
-| Key  | Werttyp | BESCHREIBUNG  | Beispielwert |
+| Key  | Werttyp | Beschreibung  | Beispielwert |
 |---------|---------|---------|---------|
 | `accessTokenAcceptedVersion` | Nullable Int32 | Gibt die Zugriffstokenversion an, die von der Ressource erwartet wird. Dieser Parameter ändert die Version und das Format des erzeugten JWT unabhängig vom Endpunkt oder Client, der zum Anfordern des Zugriffstokens verwendet wird.<br/><br/>Der verwendete Endpunkt, v1.0 oder v2.0, wird vom Client ausgewählt und wirkt sich nur auf die Version der ID-Token aus. Ressourcen müssen `accesstokenAcceptedVersion` explizit konfigurieren, um das unterstützte Zugriffstokenformat anzugeben.<br/><br/>Mögliche Werte für `accesstokenAcceptedVersion` sind 1, 2 oder null. Wenn der Wert null (0) ist, ist dieser Parameter standardmäßig 1. Dies entspricht dem v1.0-Endpunkt. <br/><br/>Wenn `signInAudience` ist `AzureADandPersonalMicrosoftAccount`, muss der Wert `2` sein  | `2` |
 | `addIns` | Collection | Definiert ein benutzerdefiniertes Verhalten, mit dem eine App in bestimmten Kontexten von einem Verbraucherdienst aufgerufen werden kann. Beispielsweise kann für Anwendungen, die Dateidatenströme rendern können, die addIns-Eigenschaft für die Funktionalität „FileHandler“ festgelegt werden. Dieser Parameter ermöglicht Diensten wie Office 365, die Anwendung im Kontext eines Dokuments aufzurufen, an dem der Benutzer arbeitet. | <code>{<br>&nbsp;&nbsp;&nbsp;"id":"968A844F-7A47-430C-9163-07AE7C31D407"<br>&nbsp;&nbsp;&nbsp;"type": "FileHandler",<br>&nbsp;&nbsp;&nbsp;"properties": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{"key": "version", "value": "2" }<br>&nbsp;&nbsp;&nbsp;]<br>}</code>|

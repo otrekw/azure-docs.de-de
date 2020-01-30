@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b935ad2491ca486a3bc6878f0332e5390600b1bc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919323"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700684"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
@@ -69,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, bei dem Sie den Benutzer anmelden möchten. Kann als GUID oder als Anzeigename bereitgestellt werden. Dieser Parameter kann nicht auf `common` oder `consumers`, sondern nur auf `organizations` festgelegt werden. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. | 
@@ -95,11 +94,11 @@ Das folgende Beispiel stellt eine erfolgreiche Tokenantwort dar:
 }
 ```
 
-| Parameter | Format | BESCHREIBUNG |
+| Parameter | Format | Beschreibung |
 | --------- | ------ | ----------- |
-| `token_type` | Zeichenfolge | Immer auf `Bearer` festgelegt. |
+| `token_type` | String | Immer auf `Bearer` festgelegt. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, führt dieser Parameter die Bereiche auf, für die das Zugriffstoken gültig ist. |
-| `expires_in`| int | Die Anzahl von Sekunden, die das enthaltene Zugriffstoken gültig ist. |
+| `expires_in`| INT | Die Anzahl von Sekunden, die das enthaltene Zugriffstoken gültig ist. |
 | `access_token`| Nicht transparente Zeichenfolge | Ausgestellt für die [Bereiche](v2-permissions-and-consent.md), die angefordert wurden. |
 | `id_token` | JWT | Ausgestellt, wenn der ursprüngliche `scope`-Parameter den `openid`-Bereich enthalten hat. |
 | `refresh_token` | Nicht transparente Zeichenfolge | Ausgestellt, wenn der ursprüngliche `scope`-Parameter `offline_access` enthalten hat. |
@@ -110,7 +109,7 @@ Sie können mit Aktualisierungstoken neue Zugriffstoken und Aktualisierungstoken
 
 Wenn der Benutzer nicht den richtigen Benutzernamen bzw. das richtige Kennwort angegeben hat oder der Client nicht über die erforderliche Berechtigung verfügt, schlägt die Authentifizierung fehl.
 
-| Error | BESCHREIBUNG | Clientaktion |
+| Fehler | Beschreibung | Clientaktion |
 |------ | ----------- | -------------|
 | `invalid_grant` | Fehler bei der Authentifizierung | Die Anmeldeinformationen waren falsch oder dem Client fehlt die Berechtigung für die angeforderten Bereiche. Wenn die Bereiche nicht gewährt werden, wird ein Fehler vom Typ `consent_required` zurückgegeben. In diesem Fall sollte der Client den Benutzer über eine Webansicht oder einen Browser zu einer interaktiven Eingabeaufforderung weiterleiten. |
 | `invalid_request` | Anforderung war nicht ordnungsgemäß konstruiert | Der Gewährungstyp wird in den Authentifizierungskontexten `/common` oder `/consumers` nicht unterstützt.  Verwenden Sie stattdessen `/organizations` oder eine Mandanten-ID. |

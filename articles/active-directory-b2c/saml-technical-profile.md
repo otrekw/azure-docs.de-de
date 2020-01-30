@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74666b1dc2ba4fac25aff0a56a52d048d746d465
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a0a6581e0eed74725a7186e528618da5d8a4f890
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950934"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840246"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen SAML-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](active-directory-b2c-custom-setup-adfs2016-idp.md) oder [Salesforce](active-directory-b2c-setup-sf-app-custom.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](identity-provider-adfs2016-custom.md) oder [Salesforce](identity-provider-salesforce-custom.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
 
 ## <a name="metadata-exchange"></a>Metadatenaustausch
 
@@ -121,7 +121,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ## <a name="metadata"></a>Metadaten
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | PartnerEntity | Ja | URL zu den Metadaten des SAML-Identitätsanbieters. Kopieren Sie die Metadaten des Identitätsanbieters, und fügen Sie diese in das CDATA-Element `<![CDATA[Your IDP metadata]]>` ein. |
 | WantsSignedRequests | Nein | Gibt an, ob das technische Profil verlangt, dass alle ausgehenden Authentifizierungsanforderungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, muss der kryptografische **SamlMessageSigning**-Schlüssel angegeben sein, und alle ausgehenden Authentifizierungsanforderungen werden signiert. Wenn der Wert auf `false` festgelegt ist, werden die Parameter **SigAlg** und **Signature** (Abfragezeichenfolgen- oder POST-Paramater) in der Anforderung ausgelassen. Diese Metadaten steuern auch das Metadatenattribut **AuthnRequestsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Azure AD B2C signiert die Anforderung nicht, wenn der Wert von **WantsSignedRequests** in den Metadaten des technischen Profils auf `false` und in den Metadaten des Identitätsanbieters **WantAuthnRequestsSigned** auf `false` festgelegt ist oder nicht angegeben wurde. |
@@ -130,7 +130,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ResponsesSigned | Nein | Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die SAML-Antwort nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Wenn der Wert auf `true` festgelegt ist, wird die vom Identitätsanbieter an Azure AD B2C gesendete SAML-Antwort signiert und muss überprüft werden. Wenn Sie die Validierung der SAML-Antwort deaktivieren, sollten Sie auch die Validierung der Assertionssignatur deaktivieren (weitere Informationen finden Sie unter **WantsSignedAssertions**). |
 | WantsEncryptedAssertions | Nein | Gibt an, ob das technische Profil verlangt, dass alle eingehenden Assertionsanweisungen verschlüsselt werden. Mögliche Werte: `true` oder `false`. Standardwert: `false`. Wenn der Wert auf `true` festgelegt ist, müssen die vom Identitätsanbieter an Azure AD B2C gesendeten Assertionsanweisungen signiert, und der kryptografische **SamlAssertionDecryption**-Schlüssel muss angegeben werden. Wenn der Wert auf `true` festgelegt ist, umfassen die Metadaten des technischen Azure AD B2C-Profils den **Verschlüsselungsbereich**. Der Identitätsanbieter liest die Metadaten und verschlüsselt die SAML-Antwortassertion mit dem öffentlichen Schlüssel, der in den Metadaten des technischen Azure AD B2C-Profils enthalten ist. Wenn Sie die Assertionsverschlüssung aktivieren, müssen Sie möglicherweise gleichzeitig auch die Validierung der Antwortsignatur deaktivieren (weitere Informationen finden Sie unter **ResponsesSigned**). |
 | IdpInitiatedProfileEnabled | Nein | Gibt an, ob ein Profil für die einmalige Anmeldung aktiviert ist, das vom Profil des SAML-Identitätsanbieter initiiert wurde. Mögliche Werte: `true` oder `false`. Der Standardwert lautet `false`. In dem von Identitätsanbieter initiierten Flow wird der Benutzer extern authentifiziert, und eine nicht angeforderte Antwort wird an Azure AD B2C gesendet, woraufhin das Token verwendet, die Orchestrierungsschritte ausgeführt und anschließend eine Antwort an die anspruchsbasierte Anwendung gesendet wird. |
-| NameIdPolicyFormat | Nein | Gibt Einschränkungen für die Namens-ID an, die zum Darstellen des angeforderten Antragstellers verwendet werden. Wenn keine Angabe erfolgt, kann ein beliebiger ID-Typ, der vom Identitätsanbieter für den angeforderten Antragsteller unterstützt wird, verwendet werden. Beispiel: `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** kann mit **NameIdPolicyAllowCreate** verwendet werden. Suchen Sie in der Dokumentation Ihres Identitätsanbieters nach Anweisungen dazu, welche Richtlinien für Namens-IDs unterstützt werden. |
+| NameIdPolicyFormat | Nein | Gibt Einschränkungen für die Namens-ID an, die zum Darstellen des angeforderten Antragstellers verwendet werden. Wenn keine Angabe erfolgt, kann ein beliebiger ID-Typ, der vom Identitätsanbieter für den angeforderten Antragsteller unterstützt wird, verwendet werden. z. B. `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`. **NameIdPolicyFormat** kann mit **NameIdPolicyAllowCreate** verwendet werden. Suchen Sie in der Dokumentation Ihres Identitätsanbieters nach Anweisungen dazu, welche Richtlinien für Namens-IDs unterstützt werden. |
 | NameIdPolicyAllowCreate | Nein | Bei Verwendung von **NameIdPolicyFormat** können Sie auch die `AllowCreate`-Eigenschaft von **NameIDPolicy** angeben. Der Wert dieser Metadaten ist `true` oder `false` und gibt an, ob der Identitätsanbieter während des Anmeldeflows ein neues Konto erstellen darf. Weitere Informationen und Anleitungen dazu finden Sie in der Dokumentation zu Ihrem Identitätsanbieter. |
 | AuthenticationRequestExtensions | Nein | Optionale Erweiterungselemente zur Protokollnachricht, die zwischen Azure AD BC und dem betreffenden Identitätsanbieter vereinbart wurden. Die Erweiterung wird im XML-Format angezeigt. Sie fügen die XML-Daten im CDATA-Element `<![CDATA[Your IDP metadata]]>` hinzu. Sehen Sie in der Dokumentation Ihres Identitätsanbieters nach, ob das Erweiterungselement unterstützt wird. |
 | IncludeAuthnContextClassReferences | Nein | Gibt einen oder mehrere URI-Verweise an, die Kontextklassen für die Authentifizierung angeben. Damit sich ein Benutzer beispielsweise nur mit Benutzername und Kennwort anmelden kann, legen Sie den Wert auf `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` fest. Wenn Sie die Anmeldung mit Benutzername und Kennwort über eine geschützte Sitzung (SSL/TLS) erlauben möchten, geben Sie `PasswordProtectedTransport` an. Suchen Sie in der Dokumentation Ihres Identitätsanbieters nach Anweisungen dazu, welche **AuthnContextClassRef**-URIs unterstützt werden. Geben Sie mehrere URIs als eine durch Kommas getrennte Liste an. |
@@ -140,7 +140,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 Das **CryptographicKeys**-Element enthält die folgenden Attribute:
 
-| Attribut |Erforderlich | BESCHREIBUNG |
+| attribute |Erforderlich | Beschreibung |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Nachrichten. Azure AD B2C verwendet diesen Schlüssel, um die Anforderungen zu signieren und an den Identitätsanbieter zu senden. |
 | SamlAssertionDecryption |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Entschlüsseln der SAML-Nachrichten. Das Zertifikat sollte vom Identitätsanbieter bereitgestellt werden. Azure AD B2C verwendet das Zertifikat, um die vom Identitätsanbieter gesendeten Daten zu senden. |
@@ -150,5 +150,5 @@ Das **CryptographicKeys**-Element enthält die folgenden Attribute:
 
 Beispiele für die Arbeit mit SAML-Identitätsanbietern in Azure AD B2C finden Sie in den folgenden Artikeln:
 
-- [Add ADFS as a SAML identity provider using custom policies (Hinzufügen von ADFS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien)](active-directory-b2c-custom-setup-adfs2016-idp.md)
-- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](active-directory-b2c-setup-sf-app-custom.md)
+- [Add ADFS as a SAML identity provider using custom policies (Hinzufügen von ADFS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien)](identity-provider-adfs2016-custom.md)
+- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](identity-provider-salesforce-custom.md)

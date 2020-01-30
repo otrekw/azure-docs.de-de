@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043529"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836659"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -41,11 +41,11 @@ Zusammenfassung der beiden nicht exklusiven Kernszenarien mit SAML:
 | Szenario | Azure AD B2C-Rolle | Vorgehensweise |
 | -------- | ----------------- | ------- |
 | Meine Anwendung erwartet eine SAML-Assertion, um eine Authentifizierung abzuschließen. | **Azure AD B2C fungiert als Identitätsanbieter (IdP)**<br />Azure AD B2C fungiert als SAML-IdP für die Anwendungen. | Dieser Artikel |
-| Meine Benutzer benötigen einmaliges Anmelden (SSO) mit einem SAML-kompatiblen Identitätsanbieter wie ADFS, Salesforce oder Shibboleth.  | **Azure AD B2C fungiert als Dienstanbieter (SP)**<br />Azure AD B2C fungiert als Dienstanbieter, wenn eine Verbindung mit dem SAML-Identitätsanbieter hergestellt wird. Es handelt sich um einen Verbundproxy zwischen Ihrer Anwendung und dem SAML-Identitätsanbieter.  | <ul><li>[Einrichten der Anmeldung mit ADFS als SAML-IdP mithilfe benutzerdefinierter Richtlinien](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[Einrichten der Anmeldung mit einem Salesforce SAML-Anbieter mithilfe benutzerdefinierter Richtlinien](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| Meine Benutzer benötigen einmaliges Anmelden (SSO) mit einem SAML-kompatiblen Identitätsanbieter wie ADFS, Salesforce oder Shibboleth.  | **Azure AD B2C fungiert als Dienstanbieter (SP)**<br />Azure AD B2C fungiert als Dienstanbieter, wenn eine Verbindung mit dem SAML-Identitätsanbieter hergestellt wird. Es handelt sich um einen Verbundproxy zwischen Ihrer Anwendung und dem SAML-Identitätsanbieter.  | <ul><li>[Einrichten der Anmeldung mit ADFS als SAML-IdP mithilfe benutzerdefinierter Richtlinien](identity-provider-adfs2016-custom.md)</li><li>[Einrichten der Anmeldung mit einem Salesforce SAML-Anbieter mithilfe benutzerdefinierter Richtlinien](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](active-directory-b2c-get-started-custom.md) aus. Sie benötigen die benutzerdefinierte Richtlinie *SocialAndLocalAccounts* aus dem Starter Pack für benutzerdefinierte Richtlinien, die in diesem Artikel erläutert wird.
+* Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](custom-policy-get-started.md) aus. Sie benötigen die benutzerdefinierte Richtlinie *SocialAndLocalAccounts* aus dem Starter Pack für benutzerdefinierte Richtlinien, die in diesem Artikel erläutert wird.
 * Grundlegende Kenntnisse des SAML-Protokolls (Security Assertion Markup Language).
 * Eine als SAML-Dienstanbieter (SP) konfigurierte Webanwendung. Für dieses Tutorial können Sie eine [SAML-Testanwendung][samltest] verwenden, die wir bereitstellen.
 

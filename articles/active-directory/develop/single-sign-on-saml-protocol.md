@@ -17,13 +17,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834809"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701398"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -47,7 +46,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 </samlp:AuthnRequest>
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | id | Erforderlich | Azure AD verwendet dieses Attribut, um das `InResponseTo` -Attribut der zurückgegebenen Antwort aufzufüllen. Die ID darf nicht mit einer Zahl beginnen, weshalb dem GUID-String häufig eine Zeichenfolge wie etwa „id“ vorangestellt wird. `id6c1c178c166d486687be4aaf5e482730` ist beispielsweise eine gültige ID. |
 | Version | Erforderlich | Dieser Parameter sollte auf **2.0** festgelegt werden. |
@@ -103,7 +102,7 @@ Schließen Sie in `AuthnRequest`-Elementen kein `Signature`-Element ein, da Azur
 ### <a name="subject"></a>Subject
 Azure AD ignoriert das `Subject`-Element von `AuthnRequest`-Elementen.
 
-## <a name="response"></a>response
+## <a name="response"></a>Antwort
 Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD eine Antwort an den Clouddienst. Eine Antwort auf einen erfolgreichen Anmeldeversuch sieht wie im folgenden Beispiel aus:
 
 ```
@@ -149,7 +148,7 @@ Wenn eine angeforderte Anmeldung erfolgreich abgeschlossen wird, sendet Azure AD
 </samlp:Response>
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Das `Response` -Element enthält das Ergebnis der Autorisierungsanforderung. Azure AD legt die Werte `ID`, `Version` und `IssueInstant` im `Response`-Element fest. Außerdem legt es die folgenden Attribute fest:
 
@@ -226,7 +225,7 @@ Das `Method`-Attribut des `SubjectConfirmation`-Elements ist immer auf `urn:oasi
 </Subject>
 ```
 
-#### <a name="conditions"></a>Conditions (Bedingungen)
+#### <a name="conditions"></a>Bedingungen
 
 Dieses Element legt die Bedingungen fest, die die akzeptable Verwendung von SAML-Assertions definieren.
 

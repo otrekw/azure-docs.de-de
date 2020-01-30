@@ -10,13 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfc13c1057f74fb1eb5a41210ffaf166e69bb06e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7e289b83daa9c30703d94a7f4c0ff459f96256c0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920326"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702520"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Umleitungs-URI/Antwort-URL: Einschränkungen
 
@@ -26,7 +25,7 @@ Ein Umleitungs-URI oder eine Antwort-URL definiert den Ort, an den der Autorisie
 
 Die folgende Tabelle zeigt die maximale Anzahl von Umleitungs-URIs, die Sie beim Registrieren Ihrer App hinzufügen können.
 
-| Angemeldete Konten | Maximale Anzahl von Umleitungs-URIs | BESCHREIBUNG |
+| Angemeldete Konten | Maximale Anzahl von Umleitungs-URIs | Beschreibung |
 |--------------------------|---------------------------------|-------------|
 | Geschäfts-, Schul- oder Unikonten von Microsoft in einem beliebigen Azure Active Directory (Azure AD)-Mandanten eines Unternehmens | 256 | Das Feld `signInAudience` im Anwendungsmanifest ist entweder auf *AzureADMyOrg* oder *AzureADMultipleOrgs* eingestellt |
 | Persönliche Konten sowie Geschäfts-, Schul- und Unikonten von Microsoft | 100 | Das Feld `signInAudience` im Anwendungsmanifest ist auf *AzureADandPersonalMicrosoftAccount* eingestellt |

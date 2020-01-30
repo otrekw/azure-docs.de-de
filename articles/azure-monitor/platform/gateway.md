@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547301"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773286"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -204,13 +204,13 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Weitere Informationen zum Entwerfen und Bereitstellen von Azure Load Balancer finden Sie unter [Was ist Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Um einen grundlegenden Lastausgleich bereitzustellen, folgen Sie den in diesem [Schnellstart](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) beschriebenen Schritten mit Ausnahme der im Abschnitt **Erstellen des Back-End-Servers** beschriebenen Schritte.   
+Weitere Informationen zum Entwerfen und Bereitstellen von Azure Load Balancer finden Sie unter [Was ist Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Um einen grundlegenden Lastausgleich bereitzustellen, folgen Sie den in diesem [Schnellstart](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) beschriebenen Schritten mit Ausnahme der im Abschnitt **Erstellen des Back-End-Servers** beschriebenen Schritte.   
 
 > [!NOTE]
 > Die Konfiguration von Azure Load Balancer mit der **SKU „Basic“** erfordert, dass virtuelle Azure-Computer zu einer Verfügbarkeitsgruppe gehören. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](../../virtual-machines/windows/manage-availability.md). Wenn Sie vorhandene virtuelle Computer einer Verfügbarkeitsgruppe hinzufügen möchten, finden Sie weitere Informationen unter [Festlegen einer Azure Resource Manager-VM-Verfügbarkeitsgruppe](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
 > 
 
-Nachdem der Lastausgleich erstellt wurde, muss ein Back-End-Pool erstellt werden, der den Datenverkehr auf mindestens einen Gatewayserver verteilt. Führen Sie die im Abschnitt [Erstellen von Ressourcen für den Lastenausgleich](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer) im Schnellstartartikel beschriebenen Schritte aus.  
+Nachdem der Lastausgleich erstellt wurde, muss ein Back-End-Pool erstellt werden, der den Datenverkehr auf mindestens einen Gatewayserver verteilt. Führen Sie die im Abschnitt [Erstellen von Ressourcen für den Lastenausgleich](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) im Schnellstartartikel beschriebenen Schritte aus.  
 
 >[!NOTE]
 >Der Integritätstest sollte so konfiguriert werden, dass er den TCP-Port des Gatewayservers verwendet. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Lastenausgleichsrotation durch den Integritätstest dynamisch Gatewayserver hinzugefügt oder aus der Rotation entfernt. 

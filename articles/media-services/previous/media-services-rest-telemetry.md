@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761776"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774865"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurieren von Azure Media Services-Telemetrie mit REST
 
 Dieses Thema beschreibt die allgemeinen Schritte, die Sie ergreifen können, wenn Sie die Azure Media Services-Telemetrie (AMS) mithilfe von REST-API konfigurieren. 
 
 >[!NOTE]
->Ausführliche Erläuterungen dazu, was AMS-Telemetrie ist, und wie sie verwendet wird, finden Sie im [Übersichtsthema](media-services-telemetry-overview.md).
+>Ausführliche Erläuterungen dazu, worum es sich bei AMS-Telemetrie handelt und wie sie genutzt wird, finden Sie im Thema mit der [Übersicht](media-services-telemetry-overview.md).
 
 In diesem Thema werden folgende Schritte beschrieben:
 
@@ -49,7 +49,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -77,14 +77,14 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
     
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
     HTTP/1.1 200 OK
     Cache-Control: no-cache
     Content-Length: 20
@@ -110,7 +110,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -128,7 +128,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 > [!NOTE]
 > Vergessen Sie nicht den Wert „https:\//telemetryvalidationstore.table.core.windows.net“ in Ihr Speicherkonto zu ändern.
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -152,14 +152,14 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
     Authorization: (redacted)
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
     
     HTTP/1.1 200 OK
     Cache-Control: no-cache
@@ -182,7 +182,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -201,7 +201,7 @@ In diesem Thema werden folgende Schritte beschrieben:
        ]
     }
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
     HTTP/1.1 201 Created
     Cache-Control: no-cache
@@ -225,7 +225,7 @@ In diesem Thema werden folgende Schritte beschrieben:
 ### <a name="request"></a>Anforderung
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose

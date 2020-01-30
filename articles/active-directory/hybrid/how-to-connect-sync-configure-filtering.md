@@ -16,17 +16,17 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243504"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768169"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
 
-In einigen Fällen ist es jedoch erforderlich, Änderungen an der Standardkonfiguration vorzunehmen. Hier einige Beispiele:
+In einigen Fällen ist es jedoch erforderlich, Änderungen an der Standardkonfiguration vorzunehmen. Im Folgenden finden Sie einige Beispiele:
 
 * Sie planen, die [Azure AD-Multiverzeichnistopologie](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant) zu verwenden. Sie müssen einen Filter anwenden, um zu steuern, welche Objekte mit einem bestimmten Azure AD-Verzeichnis synchronisiert werden sollen.
 * Sie führen ein Pilotprojekt für Azure oder Office 365 aus und benötigen nur eine Teilmenge der Benutzer in Azure AD. In dem kleinen Pilotprojekt müssen Sie nicht unbedingt über eine vollständige globale Adressliste verfügen, um die Funktionsweise zu demonstrieren.
@@ -140,11 +140,11 @@ Wenn Sie den Domänenfilter aktualisiert haben, müssen Sie auch die Ausführung
     * Vollständige Synchronisierung
     * Deltaimport
     * Deltasynchronisierung
-    * Export
+    * Exportieren
 3. Passen Sie für jedes Profil die **hinzugefügten** und **entfernten** Domänen an.
     1. Führen Sie für jedes der fünf Profile für alle **hinzugefügten** Domänen jeweils die folgenden Schritte aus:
         1. Wählen Sie das Ausführungsprofil aus, und klicken Sie auf **Neuer Schritt**.
-        2. Wählen Sie auf der Seite **Configure Step** (Schritt konfigurieren) im Dropdownmenü **Type** (Typ) den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie auf **Weiter**.  
+        2. Wählen Sie auf der Seite **Configure Step** (Schritt konfigurieren) im Dropdownmenü **Type** (Typ) den Schritttyp mit dem gleichen Namen wie das Profil aus, das Sie konfigurieren. Klicken Sie dann auf **Weiter**.  
         ![Connector-Ausführungsprofile 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
         3. Wählen Sie auf der Seite **Connector Configuration** (Connectorkonfiguration) im Dropdownmenü **Partition** den Namen der Domäne aus, die Sie dem Domänenfilter hinzugefügt haben.  
         ![Connector-Ausführungsprofile 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
@@ -289,7 +289,7 @@ Wenn Sie die Konfiguration per Filterung nach **Domäne** oder **Organisationsei
 
 Falls Sie die Konfiguration per Filterung nach dem **Attribut** geändert haben, müssen Sie die **vollständige Synchronisierung** durchführen.
 
-Führen Sie folgende Schritte aus:
+Führen Sie die folgenden Schritte aus:
 
 1. Starten Sie den **Synchronisierungsdienst** über das **Startmenü**.
 2. Wählen Sie **Connectors** aus. Wählen Sie in der Liste **Connectors** den Connector aus, für den Sie vorher eine Konfigurationsänderung vorgenommen haben. Wählen Sie unter **Aktionen** die Option **Ausführen** aus.  
@@ -298,10 +298,10 @@ Führen Sie folgende Schritte aus:
 
 Nach der Synchronisierung werden alle Änderungen für den Export bereitgestellt. Bevor Sie die Änderungen in Azure AD tatsächlich vornehmen, sollten Sie sicherstellen, dass alle Änderungen richtig sind.
 
-1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu `%Program Files%\Microsoft Azure AD Sync\bin`.
-2. Führen Sie `csexport "Name of Connector" %temp%\export.xml /f:x`aus.  
+1. Starten Sie eine Eingabeaufforderung, und wechseln Sie zu `%ProgramFiles%\Microsoft Azure AD Sync\bin`.
+2. Führen Sie `csexport "Name of Connector" %temp%\export.xml /f:x` aus.  
    Den Namen des Connectors finden Sie im Synchronisierungsdienst. Für Azure AD sieht der Name in etwa wie folgt aus: contoso.com – AAD.
-3. Führen Sie `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`aus.
+3. Führen Sie `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` aus.
 4. Sie verfügen jetzt im Ordner „%temp%“ über eine Datei namens „export.csv“, die in Microsoft Excel untersucht werden kann. Diese Datei enthält alle Änderungen, die exportiert werden sollen.
 5. Nehmen Sie erforderliche Änderungen an den Daten oder der Konfiguration vor, und führen Sie die oben genannten Schritte (Importieren, Synchronisieren und Überprüfen) erneut aus, bis Sie die Änderungen erhalten, die Sie exportieren möchten.
 

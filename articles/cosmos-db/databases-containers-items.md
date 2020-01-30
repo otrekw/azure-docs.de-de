@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786944"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768006"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Ein Azure Cosmos-Container wird wie in der folgenden Tabelle gezeigt in API-spez
 
 | Azure Cosmos-Entität | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Container | Container | Table | Collection | Graph | Table |
+|Azure Cosmos-Container | Container | Tabelle | Collection | Graph | Tabelle |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschaften eines Azure Cosmos-Containers
 
@@ -110,7 +110,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 
 | Cosmos-Entität | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-Element | Dokument | Zeile | Dokument | Knoten oder Edge | Item |
+|Azure Cosmos-Element | Dokument | Zeile | Dokument | Knoten oder Edge | Element |
 
 ### <a name="properties-of-an-item"></a>Eigenschaften eines Elements
 
@@ -118,11 +118,11 @@ Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigens
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar| Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein | Nein | Nein | Nein |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Elements | Ja | Nein | Nein | Nein | Nein |
 |\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
 |\_ts | Vom System generiert | Zeitstempel der letzten Aktualisierung des Elements | Ja | Nein | Nein | Nein | Nein |
 |\_self | Vom System generiert | Adressierbarer URI des Elements | Ja | Nein | Nein | Nein | Nein |
-|id | Sie können das | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. | Ja | Ja | Ja | Ja | Ja |
+|id | Sowohl als auch | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. | Ja | Ja | Ja | Ja | Ja |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (einschließlich JSON, BSON und CQL) dargestellt werden | Ja | Ja | Ja | Ja | Ja |
 
 > [!NOTE]

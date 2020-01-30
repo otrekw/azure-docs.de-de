@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 11548ba180a2dd6541240431d670812448c502b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981587"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705342"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Python
 
@@ -29,7 +29,7 @@ In diesem Tutorial wird beschrieben, wie Sie Python-Anwendungen erstellen, die E
 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
-- ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 - Einen aktiven Event Hubs-Namespace und Event Hub, erstellt durch Befolgen der Anweisungen unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md). Notieren Sie sich die Namen des Namespace und Event Hub, weil sie später in dieser exemplarischen Vorgehensweise verwendet werden.
 - Den Namen des freigegebenen Zugriffsschlüssels und den Wert des Primärschlüssels für Ihren Event Hubs-Namespace. Rufen Sie den Namen und den Wert des Zugriffsschlüssels ab, indem Sie die Anweisungen unter [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal) befolgen. Der Standardname des Zugriffsschlüssels lautet **RootManageSharedAccessKey**. Kopieren Sie den Namen des Zugriffsschlüssels und den Wert des Primärschlüssels, um beide Angaben später in dieser exemplarischen Vorgehensweise zu verwenden.
 - Python 2.7 und 3.5 oder höher mit installiertem und aktualisiertem `pip`.
@@ -42,7 +42,7 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
     Installieren Sie dieses Paket, um die Ereignisse mithilfe von Azure Blob Storage als Prüfpunktspeicher zu empfangen.
 
     ```cmd
-    pip install azure-eventhub-checkpointstoreblobaio
+    pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>Senden von Ereignisse

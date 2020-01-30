@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949873"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836047"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
-Anspruchskonfliktlöser in [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) von Azure Active Directory B2C (Azure AD B2C) bieten Kontextinformationen über eine Autorisierungsanforderung, z. B. den Namen der Richtlinie, die Korrelations-ID der Anforderung, die Sprache der Benutzeroberfläche und mehr.
+Anspruchskonfliktlöser in [benutzerdefinierten Richtlinien](custom-policy-overview.md) von Azure Active Directory B2C (Azure AD B2C) bieten Kontextinformationen über eine Autorisierungsanforderung, z. B. den Namen der Richtlinie, die Korrelations-ID der Anforderung, die Sprache der Benutzeroberfläche und mehr.
 
 Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden, definieren Sie eine Zeichenfolge **ClaimType**unter dem [ClaimsSchema](claimsschema.md)-Element, und dann Sie legen Sie den **DefaultValue** auf den Anspruchskonfliktlöser in dem Ein- oder Ausgabeanspruchselement fest. Azure AD B2C liest den Wert des Anspruchskonfliktlösers und verwendet den Wert in dem technischen Profil.
 
@@ -46,16 +46,16 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="culture"></a>Kultur
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | Der aus zwei Buchstaben bestehende ISO-Code für die Sprache. | en |
 | {Culture:LCID}   | Die LCID des Sprachcodes. | 1033 |
 | {Culture:RegionName} | Der aus zwei Buchstaben bestehende ISO-Code für die Region. | US |
-| {Culture:RFC5646} | Der Sprachcode RFC5646. | en-US |
+| {Culture:RFC5646} | Der Sprachcode RFC5646. | de-DE |
 
 ### <a name="policy"></a>Richtlinie
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | Der Name der Richtlinie für die vertrauende Seite. | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | Die Mandanten-ID der Richtlinie für die vertrauende Seite. | Ihr-Mandan.onmicrosoft.com |
@@ -64,7 +64,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |Der Abfragezeichenfolgen-Parameter `acr_values`. | – |
 | {OIDC:ClientId} |Der Abfragezeichenfolgen-Parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
@@ -72,13 +72,13 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {OIDC:LoginHint} |  Der Abfragezeichenfolgen-Parameter `login_hint`. | someone@contoso.com |
 | {OIDC:MaxAge} | Das `max_age`. | – |
 | {OIDC:Nonce} |Der Abfragezeichenfolgen-Parameter `Nonce`. | defaultNonce |
-| {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | Anmeldung |
+| {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | login |
 | {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
 | {OIDC:scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
 
 ### <a name="context"></a>Kontext
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | Die Version des Frameworks für die Identitätsfunktion (Buildnummer).  | 1.0.507.0 |
 | {Context:CorrelationId} | Die Korrelations-ID.  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung eingeschlossen wird, kann einem Anspruch in der User Journey zugeordnet werden. Beispielsweise kann die Anforderung von der Anwendung einen Abfragezeichenfolgen-Parameter mit einem der Namen `app_session` oder `loyalty_number` oder eine beliebige benutzerdefinierte Abfragezeichenfolge enthalten.
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | Ein Abfragezeichenfolgen-Parameter. | hawaii |
 | {OAUTH-KV:app_session} | Ein Abfragezeichenfolgen-Parameter. | A3C5R |
@@ -100,7 +100,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 
 ### <a name="oauth2"></a>OAuth2
 
-| Anspruch | BESCHREIBUNG | Beispiel |
+| Anspruch | Beschreibung | Beispiel |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Zugriffstoken | – |
 
@@ -137,7 +137,7 @@ Bei der Verwendung von Anspruchskonfliktlösern können Sie den Anmeldenamen auf
 
 ### <a name="dynamic-ui-customization"></a>Dynamische Benutzeroberflächenanpassung
 
-Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, sodass Sie den Seiteninhalt dynamisch rendern können. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
+Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, sodass Sie den Seiteninhalt dynamisch rendern können. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
 
 Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `hawaii`, einem **language**-Code (Sprache) von `en-US` und **app**, das die Client-ID darstellt, übergeben:
 
@@ -159,7 +159,7 @@ Als Resultat sendet Azure AD B2C die oben genannten Parameter an die HTML-Inhalt
 
 ### <a name="application-insights-technical-profile"></a>Technisches Profil „Application Insights“
 
-Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblicke in Benutzerverhalten gewinnen. Im technischen Profil „Application Insights“ senden Sie Eingabeansprüche, die in Azure Application Insights persistent gespeichert werden. Weitere Informationen finden Sie unter [Nachverfolgen des Benutzerverhaltens in Azure AD B2C-Journeys mithilfe von Application Insights](active-directory-b2c-custom-guide-eventlogger-appins.md). Im folgende Beispiel wird die Richtlinien-ID, die Korrelations-ID, die Sprache und die Client-ID an Azure Application Insights gesendet.
+Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblicke in Benutzerverhalten gewinnen. Im technischen Profil „Application Insights“ senden Sie Eingabeansprüche, die in Azure Application Insights persistent gespeichert werden. Weitere Informationen finden Sie unter [Nachverfolgen des Benutzerverhaltens in Azure AD B2C-Journeys mithilfe von Application Insights](analytics-with-application-insights.md). Im folgende Beispiel wird die Richtlinien-ID, die Korrelations-ID, die Sprache und die Client-ID an Azure Application Insights gesendet.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

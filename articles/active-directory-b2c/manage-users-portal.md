@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73962029"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840416"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>Verwenden des Azure-Portals zum Erstellen und Löschen von Consumerbenutzern in Azure AD B2C
 
@@ -61,4 +61,4 @@ Ausführliche Informationen zum Wiederherstellen eines Benutzers innerhalb der e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu Szenarien der automatisierten Benutzerverwaltung, z. B. zum Migrieren von Benutzern von einem anderen Identitätsanbieter zu Ihrem Azure AD B2C-Verzeichnis, finden Sie unter [Azure AD B2C: Benutzermigration](active-directory-b2c-user-migration.md).
+Informationen zu Szenarien der automatisierten Benutzerverwaltung, z. B. zum Migrieren von Benutzern von einem anderen Identitätsanbieter zu Ihrem Azure AD B2C-Verzeichnis, finden Sie unter [Azure AD B2C: Benutzermigration](user-migration.md).

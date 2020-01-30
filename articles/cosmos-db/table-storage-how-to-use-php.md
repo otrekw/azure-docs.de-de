@@ -1,19 +1,19 @@
 ---
 title: Verwenden des Azure Table Storage-Diensts oder der Azure Cosmos DB-Tabellen-API mit PHP
 description: Speichern Sie mit Azure Table Storage oder der Azure Cosmos DB-Tabellen-API strukturierte Daten in der Cloud.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: 1dbf5b02c99c8baca7c0b4f918cb392ddaf37c96
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444781"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771058"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Verwenden des Azure Table Storage-Diensts oder der Azure Cosmos DB-Tabellen-API über PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]

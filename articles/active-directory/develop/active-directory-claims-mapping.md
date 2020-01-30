@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531070"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699069"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -45,7 +44,7 @@ Eine Anspruchszuordnungsrichtlinie ist eine Art von **Richtlinienobjekt**, das d
 
 Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in Token verwendet werden.
 
-| Satz von Ansprüchen | BESCHREIBUNG |
+| Satz von Ansprüchen | Beschreibung |
 |---|---|
 | Hauptsatz von Ansprüchen | Sind in jedem Token unabhängig von der Richtlinie vorhanden. Diese Ansprüche sind zudem als eingeschränkt anzusehen und können nicht geändert werden. |
 | Grundlegender Anspruchssatz | Enthält die Ansprüche, die standardmäßig für Token ausgegeben werden (zusätzlich zum Hauptanspruchssatz). Sie können grundlegende Ansprüche mit den Richtlinien für die Anspruchszuordnung weglassen oder ändern. |
@@ -285,7 +284,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-| `Source` | id | BESCHREIBUNG |
+| `Source` | id | Beschreibung |
 |-----|-----|-----|
 | Benutzer | surname | Familienname |
 | Benutzer | givenname | Vorname |
@@ -359,7 +358,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformationsmethoden und erwartete Ein- und Ausgaben
 
-|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
+|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|Beschreibung|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
@@ -385,7 +384,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
 
-|`Source`|id|BESCHREIBUNG|
+|`Source`|id|Beschreibung|
 |-----|-----|-----|
 | Benutzer | mail|E-Mail-Adresse|
 | Benutzer | userprincipalname|Benutzerprinzipalname|

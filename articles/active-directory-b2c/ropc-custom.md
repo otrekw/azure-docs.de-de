@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951063"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840263"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -38,7 +38,7 @@ Folgende Flows werden nicht unterstützt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
+Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) beschriebenen Schritte aus.
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung
 
@@ -261,7 +261,7 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 - Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Schlüssel | Wert |
+| Key | value |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -306,7 +306,7 @@ Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die I
 - Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
-| Schlüssel | Wert |
+| Key | value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -342,4 +342,4 @@ Azure AD B2C entspricht den OAuth 2.0-Standards für Kennwortanmeldeinformatione
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sehen Sie sich im [Starterpaket für benutzerdefinierte Azure Active Directory B2C-Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc) ein vollständiges Beispiel für dieses Szenario an.
-- Weitere Informationen zu den von Azure Active Directory B2C verwendeten Token finden Sie in der [Tokenreferenz](active-directory-b2c-reference-tokens.md).
+- Weitere Informationen zu den von Azure Active Directory B2C verwendeten Token finden Sie in der [Tokenreferenz](tokens-overview.md).

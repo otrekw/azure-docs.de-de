@@ -14,13 +14,12 @@ ms.date: 04/13/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf436881a74cffd0053718413ce83a148fa019d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 19085346fb5797245c9f71911f8178df0a1b742a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918201"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698423"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory
 
@@ -84,7 +83,7 @@ Das folgende Diagramm veranschaulicht die Beziehung zwischen einem Anwendungsobj
 
 Dieses Beispielszenario:
 
-| Schritt | BESCHREIBUNG |
+| Schritt | Beschreibung |
 |------|-------------|
 | 1    | Schritt 1 ist der Prozess zur Erstellung der Anwendungs- und Dienstprinzipalobjekte im Home-Mandanten der Anwendung. |
 | 2    | Nachdem die Administratoren von Contoso und Fabrikam die Zustimmung erteilt haben, wird im Azure AD-Mandanten des Unternehmens ein Dienstprinzipalobjekt erstellt und mit den Berechtigungen versehen, die vom Administrator gewährt wurden. Beachten Sie auch, dass die HR App so konfiguriert bzw. entworfen werden kann, dass die Zustimmung für die individuelle Nutzung durch die Benutzer erteilt wird. |

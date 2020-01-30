@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940907"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711864"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -39,17 +39,17 @@ Führen Sie diese Schritte aus, um auf die Funktion **Zuordnungen** für die Ben
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
 1. Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
 
-   ![Verwenden von Zuordnungen zum Anzeigen und Bearbeiten von Benutzerattributen](./media/customize-application-attributes/21.png)
+   ![Verwenden von Zuordnungen zum Anzeigen und Bearbeiten von Benutzerattributen](media/customize-application-attributes/21.png)
 
 1. Wählen Sie eine **Zuordnungskonfiguration** aus, um den zugehörigen Bildschirm **Attributzuordnung** zu öffnen. Einige Attributzuordnungen sind erforderlich, damit eine SaaS-Anwendung ordnungsgemäß funktioniert. Für die erforderlichen Attribute ist das Feature **Löschen** nicht verfügbar.
 
-   ![Verwenden von „Attributzuordnung“ zum Konfigurieren von Attributzuordnungen für Apps](./media/customize-application-attributes/22.png)
+   ![Verwenden von „Attributzuordnung“ zum Konfigurieren von Attributzuordnungen für Apps](media/customize-application-attributes/22.png)
 
    In diesem Screenshot können Sie sehen, dass das Attribut **Benutzername** eines verwalteten Objekts in Salesforce mit dem Wert **userPrincipalName** des verknüpften Azure Active Directory-Objekts aufgefüllt wird.
 
 1. Wählen Sie eine vorhandene **Attributzuordnung** aus, um den Bildschirm **Attribut bearbeiten** zu öffnen. Hier können Sie die Benutzerattribute bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden.
 
-   ![Verwenden von „Attribut bearbeiten“ zum Bearbeiten von Benutzerattributen](./media/customize-application-attributes/23.png)
+   ![Verwenden von „Attribut bearbeiten“ zum Bearbeiten von Benutzerattributen](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>Grundlegendes zu Attributzuordnungstypen
 
@@ -71,7 +71,7 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
 
 - **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Azure Active Directory).
 - **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
-- **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt. Wenn Sie z. B. alle vorhandenen Benutzer im Zielsystem mit einer bestimmten Position (die im Quellsystem den Wert NULL hat) bereitstellen möchten, können Sie den folgenden [Ausdruck](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)verwenden: Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]). Stellen Sie sicher, dass Sie „Default Value“ durch den Wert ersetzen, den Sie beim Wert NULL im Quellsystem bereitstellen möchten. 
+- **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt. Wenn Sie z. B. alle vorhandenen Benutzer im Zielsystem mit einer bestimmten Position (die im Quellsystem den Wert NULL hat) bereitstellen möchten, können Sie den folgenden [Ausdruck](functions-for-customizing-application-data.md)verwenden: Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]). Stellen Sie sicher, dass Sie „Default Value“ durch den Wert ersetzen, den Sie beim Wert NULL im Quellsystem bereitstellen möchten. 
 - **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
 - **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 - **Diese Zuordnung anwenden**
@@ -92,7 +92,7 @@ Der Azure AD-Bereitstellungsdienst kann sowohl in „Greenfield“-Szenarien (B
 
 Einige ausgewählte Anwendungen (z. B. ServiceNow, Box und G Suite) bieten die Möglichkeit, neben Benutzerobjekten auch Gruppenobjekte bereitzustellen. Gruppenobjekte können zusätzlich zu den Gruppenmitgliedern Gruppeneigenschaften wie Anzeigenamen und E-Mail-Aliase enthalten.
 
-![Im Beispiel wird ServiceNow mit bereitgestellten Gruppen- und Benutzerobjekten gezeigt.](./media/customize-application-attributes/24.png)
+![Im Beispiel wird ServiceNow mit bereitgestellten Gruppen- und Benutzerobjekten gezeigt.](media/customize-application-attributes/24.png)
 
 Die Gruppenbereitstellung kann optional aktiviert oder deaktiviert werden, indem Sie die Gruppenzuordnung unter **Zuordnungen** auswählen und die Einstellung **Aktiviert** auf dem Bildschirm **Attributzuordnung** auf die gewünschte Option festlegen.
 
@@ -193,13 +193,13 @@ Benutzerdefinierte Attribute können keine referenziellen Attribute oder Attribu
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Bereitstellen einer Rolle für eine SCIM-App
 Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen Benutzer bereitzustellen. Beachten Sie, dass die folgende Beschreibung speziell für benutzerdefinierte SCIM-Anwendungen gilt. Verwenden Sie bei Kataloganwendungen wie Salesforce und ServiceNow die vordefinierten Rollenzuordnungen. In der folgenden Auflistung wird beschrieben, wie Sie das Attribut „AppRoleAssignments“ in das von Ihrer Anwendung erwartete Format umwandeln.
 
-- Das Zuordnen des Attributs „appRoleAssignment“ in Azure AD zu einer Rolle in Ihrer Anwendung setzt voraus, dass Sie das Attribut mithilfe eines [Ausdrucks](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data) umwandeln. Das Attribut „appRoleAssignment“ sollte einem Rollenattribut **nicht direkt** und ohne Verwendung eines Ausdrucks für die Analyse der Rollendetails zugeordnet werden. 
+- Das Zuordnen des Attributs „appRoleAssignment“ in Azure AD zu einer Rolle in Ihrer Anwendung setzt voraus, dass Sie das Attribut mithilfe eines [Ausdrucks](functions-for-customizing-application-data.md) umwandeln. Das Attribut „appRoleAssignment“ sollte einem Rollenattribut **nicht direkt** und ohne Verwendung eines Ausdrucks für die Analyse der Rollendetails zugeordnet werden. 
 
 - **SingleAppRoleAssignment** 
   - **Einsatzgebiete:** Verwenden Sie den Ausdruck „SingleAppRoleAssignment“, um eine einzelne Rolle für einen Benutzer bereitzustellen und die primäre Rolle anzugeben. 
   - **Vorgehensweise zur Konfiguration:** Navigieren Sie anhand der oben beschriebenen Schritte zur Seite mit den Attributzuordnungen, und verwenden Sie für die Zuordnung zum Rollenattribut den Ausdruck „SingleAppRoleAssignment“. Zur Auswahl stehen drei Rollenattribute: „roles[primary eq „True“].display“, „roles[primary eq „True“].type“ und „roles[primary eq „True“].value“. Sie können ein beliebiges Rollenattribut oder alle Attribute in Ihre Zuordnungen einbeziehen. Wenn Sie mehr als ein Attribut einbeziehen möchten, fügen Sie einfach eine neue Zuordnung hinzu und schließen das Attribut als Zielattribut ein.  
   
-  ![„SingleAppRoleAssignment“ hinzufügen](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![„SingleAppRoleAssignment“ hinzufügen](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **Zu beachtende Aspekte**
     - Stellen Sie sicher, dass einem Benutzer nicht mehrere Rollen zugeordnet sind. Wir können nicht garantieren, welche Rolle bereitgestellt wird.
     
@@ -231,11 +231,11 @@ Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen
   - **Einsatzgebiete:** Verwenden Sie den Ausdruck „AppRoleAssignmentsComplex“, um mehrere Rollen für einen Benutzer bereitzustellen. 
   - **Vorgehensweise zur Konfiguration:** Bearbeiten Sie die Liste der unterstützten Attribute, wie oben beschrieben, um ein neues Attribut für Rollen einzubeziehen: 
   
-    ![Hinzufügen von Rollen](./media/customize-application-attributes/add-roles.png)<br>
+    ![Hinzufügen von Rollen](media/customize-application-attributes/add-roles.png)<br>
 
     Verwenden Sie dann den Ausdruck „AppRoleAssignmentsComplex“, um das benutzerdefinierte Rollenattribut zuzuordnen, wie in der folgenden Abbildung gezeigt:
 
-    ![„AppRoleAssignmentsComplex“ hinzufügen](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![„AppRoleAssignmentsComplex“ hinzufügen](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **Zu beachtende Aspekte**
     - Alle Rollen werden mit „primary = false“ bereitgestellt.
     - Die POST-Anforderung enthält den Rollentyp. Die PATCH-Anforderung enthält keinen Typ. Wir arbeiten daran, den Typ sowohl in POST- als auch in PATCH-Anforderungen zu senden.

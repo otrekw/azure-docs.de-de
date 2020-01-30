@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cc492b29fd6bc4a820543740e9d1962fc74f2cfc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425500"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840144"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
-Ihre Anwendungen enthalten möglicherweise [Benutzerflows](active-directory-b2c-reference-policies.md), mit denen Benutzer sich registrieren und anmelden oder ihr Profil verwalten können. Sie können mehrere Benutzerflows verschiedener Typen in Ihrem Azure Active Directory (Azure AD) B2C-Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden.
+Ihre Anwendungen enthalten möglicherweise [Benutzerflows](user-flow-overview.md), mit denen Benutzer sich registrieren und anmelden oder ihr Profil verwalten können. Sie können mehrere Benutzerflows verschiedener Typen in Ihrem Azure Active Directory (Azure AD) B2C-Mandanten erstellen und bei Bedarf in Ihren Anwendungen verwenden. Benutzerflows können anwendungsübergreifend wiederverwendet werden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 

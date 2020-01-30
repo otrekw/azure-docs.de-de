@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f49e93d6dd405e849dec3806c979b1ea2fc1d37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 367f6253f228e963edb7b178f8b25da259a5e2c7
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423272"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700565"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -64,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Klicken Sie auf den Link unten, um diese Anforderung auszuführen. Nach der Anmeldung sollte der Browser mit einem `code` in der Adressleiste zu `https://localhost/myapp/` umgeleitet werden.
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| Parameter    | Erforderlich/optional | BESCHREIBUNG |
+| Parameter    | Erforderlich/optional | Beschreibung |
 |--------------|-------------|--------------|
 | `tenant`    | required    | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id`   | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde.  |
@@ -93,7 +92,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| Parameter | BESCHREIBUNG  |
+| Parameter | Beschreibung  |
 |-----------|--------------|
 | `code` | Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. Autorisierungscodes sind kurzlebig und laufen in der Regel nach etwa zehn Minuten ab. |
 | `state` | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
@@ -108,7 +107,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| Parameter | BESCHREIBUNG  |
+| Parameter | Beschreibung  |
 |----------|------------------|
 | `error`  | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -117,7 +116,7 @@ error=access_denied
 
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
-| Fehlercode  | BESCHREIBUNG    | Clientaktion   |
+| Fehlercode  | Beschreibung    | Clientaktion   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstest entdeckt wird. |
 | `unauthorized_client` | Die Clientanwendung darf keinen Autorisierungscode anfordern. | Dieser Fehler tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
@@ -151,7 +150,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `code` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-| Parameter  | Erforderlich/optional | BESCHREIBUNG     |
+| Parameter  | Erforderlich/optional | Beschreibung     |
 |------------|-------------------|----------------|
 | `tenant`   | required   | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).  |
 | `client_id` | required  | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -177,7 +176,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter     | BESCHREIBUNG   |
+| Parameter     | Beschreibung   |
 |---------------|------------------------------|
 | `access_token`  | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen verwenden, wie z.B. eine Web-API.  |
 | `token_type`    | Gibt den Wert des Tokentyps an. Der Bearertyp ist der einzige Typ, den Azure AD unterstützt. |
@@ -203,7 +202,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter         | BESCHREIBUNG    |
+| Parameter         | Beschreibung    |
 |-------------------|----------------|
 | `error`       | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -214,7 +213,7 @@ Fehlerantworten sehen wie folgt aus:
 
 ### <a name="error-codes-for-token-endpoint-errors"></a>Fehlercodes für Token-Endpunktfehler
 
-| Fehlercode         | BESCHREIBUNG        | Clientaktion    |
+| Fehlercode         | Beschreibung        | Clientaktion    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut.   |
 | `invalid_grant`    | Der Autorisierungscode oder PKCE-Codeprüfer ist ungültig oder abgelaufen. | Versuchen Sie, eine neue Anforderung für den `/authorize`-Endpunkt zu senden, und stellen Sie sicher, dass der „code_verifier“-Parameter korrekt war.  |
@@ -264,7 +263,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `refresh_token` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
-| Parameter     |                | BESCHREIBUNG        |
+| Parameter     |                | Beschreibung        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -287,7 +286,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| Parameter     | BESCHREIBUNG         |
+| Parameter     | Beschreibung         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen verwenden, wie z.B. eine Web-API. |
 | `token_type`    | Gibt den Wert des Tokentyps an. Der Bearertyp ist der einzige Typ, den Azure AD unterstützt. |
@@ -311,7 +310,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter         | BESCHREIBUNG                                                                                        |
+| Parameter         | Beschreibung                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können.           |

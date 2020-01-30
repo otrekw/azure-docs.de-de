@@ -14,13 +14,12 @@ ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918388"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699018"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -390,7 +389,7 @@ Erstellt eine neue Richtlinie.
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -407,7 +406,7 @@ Ruft alle Azure AD-Richtlinien oder eine angegebene Richtlinie ab.
 Get-AzureADPolicy
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [Optional] |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -420,7 +419,7 @@ Ruft alle Apps und Dienstprinzipale ab, die mit einer Richtlinie verknüpft sind
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -433,7 +432,7 @@ Aktualisiert eine vorhandene Richtlinie.
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -451,7 +450,7 @@ Löscht die angegebene Richtlinie.
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. | `-Id <ObjectId of Policy>` |
 
@@ -467,7 +466,7 @@ Verknüpft die angegebene Richtlinie mit einer Anwendung.
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -481,7 +480,7 @@ Ruft die Richtlinie ab, die einer Anwendung zugewiesen ist.
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -494,7 +493,7 @@ Entfernt eine Richtlinie aus einer Anwendung.
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |
@@ -511,7 +510,7 @@ Verknüpft die angegebene Richtlinie mit einem Dienstprinzipal.
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -525,7 +524,7 @@ Ruft alle Richtlinien ab, die mit dem angegebenen Dienstprinzipal verknüpft sin
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -538,7 +537,7 @@ Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal.
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | BESCHREIBUNG | Beispiel |
+| Parameter | Beschreibung | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |

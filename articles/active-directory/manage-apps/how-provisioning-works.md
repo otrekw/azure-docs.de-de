@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719969"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711539"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -29,13 +29,13 @@ Die automatische Bereitstellung bezieht sich auf das Erstellen von Benutzerident
 Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere Systeme bereit, indem er eine Verbindung mit einem Endpunkt der SCIM 2.0-Benutzerverwaltungs-API herstellt, der vom Anwendungsanbieter zur Verfügung gestellt wird. Dieser SCIM-Endpunkt (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) ermöglicht Azure AD das programmgesteuerte Erstellen, Aktualisieren und Entfernen von Benutzern. Bei bestimmten Anwendungen kann der Bereitstellungsdienst auch zusätzliche identitätsbezogene Objekte wie Gruppen und Rollen erstellen, aktualisieren und entfernen. Der für die Bereitstellung zwischen Azure AD und der Anwendung verwendete Kanal wird mit HTTPS-SSL-Verschlüsselung verschlüsselt.
 
 
-![Azure AD-Bereitstellungsdienst](./media/user-provisioning/provisioning0.PNG)
+![Azure AD-Bereitstellungsdienst](media/how-provisioning-works/provisioning0.PNG)
 *Abbildung 1: Der Azure AD-Bereitstellungsdienst*
 
-![Workflow der ausgehenden Benutzerbereitstellung](./media/user-provisioning/provisioning1.PNG)
+![Workflow der ausgehenden Benutzerbereitstellung](media/how-provisioning-works/provisioning1.PNG)
 *Abbildung 2: Workflow für die ausgehende Benutzerbereitstellung von Azure AD in beliebten SaaS-Anwendungen*
 
-![Workflow der eingehenden Benutzerbereitstellung](./media/user-provisioning/provisioning2.PNG)
+![Workflow der eingehenden Benutzerbereitstellung](media/how-provisioning-works/provisioning2.PNG)
 *Abbildung 3: Workflow für die eingehende Benutzerbereitstellung aus beliebten Personalverwaltungsanwendungen (Human Capital Management, HCM) in Azure Active Directory und Windows Server Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Bereitstellung mit SCIM 2.0
@@ -73,11 +73,11 @@ Bei der Ausgangsbereitstellung von Azure AD für eine SaaS-Anwendung stellt die 
 
   * Dynamische Gruppen können die Leistung der End-to-End-Bereitstellung von Azure AD in SaaS-Anwendungen beeinträchtigen.
 
-  * Wie schnell ein Benutzer in einer dynamischen Gruppe bereitgestellt oder die Bereitstellung in einer SaaS-Anwendung aufgehoben wird, hängt davon ab, wie schnell die dynamische Gruppe Änderungen an der Mitgliedschaft auswerten kann. Informationen dazu, wie Sie den Verarbeitungsstatus einer dynamischen Gruppe überprüfen, finden Sie unter [Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
+  * Wie schnell ein Benutzer in einer dynamischen Gruppe bereitgestellt oder die Bereitstellung in einer SaaS-Anwendung aufgehoben wird, hängt davon ab, wie schnell die dynamische Gruppe Änderungen an der Mitgliedschaft auswerten kann. Informationen dazu, wie Sie den Verarbeitungsstatus einer dynamischen Gruppe überprüfen, finden Sie unter [Überprüfen des Verarbeitungsstatus für eine Mitgliedschaftsregel](../users-groups-roles/groups-create-rule.md).
 
   * Wenn ein Benutzer die Mitgliedschaft der dynamischen Gruppe verliert, wird dies als Bereitstellungsaufhebungsereignis betrachtet. Berücksichtigen Sie dieses Szenario beim Erstellen von Regeln für dynamische Gruppen.
 
-* **Verschachtelte Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in verschachtelten Gruppen lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) auf andere Weise.
+* **Verschachtelte Gruppen.** Der Azure AD-Benutzerbereitstellungsdienst kann Benutzer in verschachtelten Gruppen lesen oder bereitstellen. Der Dienst kann nur Benutzer lesen und bereitstellen, die direkte Mitglieder einer explizit zugewiesenen Gruppe sind. Diese Einschränkung von „gruppenbasierten Zuweisungen zu Anwendungen“ wirkt sich auch auf das einmalige Anmelden aus (siehe [Verwenden einer Gruppe zum Verwalten des Zugriffs auf SaaS-Anwendungen](../users-groups-roles/groups-saasapps.md)). Weisen Sie stattdessen die Gruppen mit den Benutzern, die bereitgestellt werden müssen, direkt zu, oder [definieren Sie den entsprechenden Bereich](define-conditional-rules-for-provisioning-user-accounts.md) auf andere Weise.
 
 ### <a name="attribute-based-scoping"></a>Attributbasierte Bereichsdefinition 
 
@@ -85,7 +85,7 @@ Sie können Bereichsdefinitionsfilter verwenden, um attributbasierte Regeln zu d
 
 ### <a name="b2b-guest-users"></a>B2B-Benutzer/Gastbenutzer
 
-Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Der Azure AD-Benutzerbereitstellungsdienst kann zum Bereitstellen von B2B-Benutzern (oder Gastbenutzern) in Azure AD für SaaS-Anwendungen verwendet werden. Damit B2B-Benutzer sich bei der SaaS-Anwendung mithilfe von Azure AD anmelden können, muss die Funktion „SAML-basiertes einmaliges Anmelden“ der SaaS-Anwendung jedoch auf bestimmte Weise konfiguriert sein. Weitere Informationen zum Konfigurieren von SaaS-Anwendungen, sodass sie Anmeldungen von B2B-Benutzern unterstützen, finden Sie unter [Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Startzyklus und Inkrementell
 
@@ -160,7 +160,7 @@ Wenn die meisten oder alle Aufrufe an das Zielsystem aufgrund eines Fehlers (z. 
 
 In der Quarantäne wird die Häufigkeit der inkrementellen Zyklen allmählich auf einmal pro Tag verringert.
 
-Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus wird gestartet. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert. Weitere Informationen zum Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+Die Quarantäne für den Bereitstellungsauftrag wird aufgehoben, nachdem alle relevanten Fehler behoben wurden, und der nächste Synchronisierungszyklus wird gestartet. Falls der Bereitstellungsauftrag länger als vier Wochen in Quarantäne verbleibt, wird er deaktiviert. Weitere Informationen zum Quarantänestatus finden Sie [hier](application-provisioning-quarantine-status.md).
 
 ### <a name="how-long-provisioning-takes"></a>Dauer der Bereitstellung
 
@@ -184,7 +184,7 @@ Ein Benutzer wird vom Azure AD-Bereitstellungsdienst aus einer Anwendung vorläu
 
 Wenn eines der obigen vier Ereignisse auftritt und die Zielanwendung vorläufiges Löschen nicht unterstützt, sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der App zu löschen. 
 
-30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit [einen Benutzer manuell dauerhaft löschen]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), wodurch eine Löschanforderung an die Anwendung gesendet wird.
+30 Tage nach dem Löschen eines Benutzers in Azure AD wird der Benutzer dauerhaft aus dem Mandanten gelöscht. Dann sendet der Bereitstellungsdienst eine DELETE-Anforderung, um den Benutzer dauerhaft aus der Anwendung zu löschen. Während des Zeitfensters von 30 Tagen können Sie jederzeit [einen Benutzer manuell dauerhaft löschen](../fundamentals/active-directory-users-restore.md), wodurch eine Löschanforderung an die Anwendung gesendet wird.
 
 Wenn Ihre Attributzuordnungen das Attribut „IsSoftDeleted“ enthalten, wird es verwendet, um den Status des Benutzers zu bestimmen und festzulegen, ob eine Aktualisierungsanforderung mit „active = false“ gesendet werden soll, um den Benutzer vorläufig zu löschen. 
 

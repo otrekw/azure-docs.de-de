@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer'
 titleSuffix: Azure Machine Learning
-description: In diesem Tutorial erfahren Sie, wie Sie im Azure Machine Learning-Designer eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells unter Verwendung von Drag & Drop-Modulen.
+description: In diesem Tutorial wird veranschaulicht, wie Sie im Azure Machine Learning-Designer (Vorschauversion) eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells unter Verwendung von Drag & Drop-Modulen.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314996"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719788"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Sie können das im [ersten Teil des Tutorials](tutorial-designer-automobile-price-train-score.md) entwickelte Vorhersagemodell bereitstellen, damit es auch von anderen verwendet werden kann. Im ersten Teil haben Sie Ihr Modell trainiert. Jetzt ist es an der Zeit, neue Vorhersagen basierend auf Benutzereingaben zu generieren. In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
@@ -55,10 +55,6 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
     >
 
 1. Wählen Sie **Ausführen** aus, und verwenden Sie das gleiche Computeziel und Experiment wie im ersten Teil.
-
-1. Wählen Sie das Modul **Score Model** (Modell bewerten) aus.
-
-1. Wählen Sie im Eigenschaftenbereich **Ausgaben** > **Visualisieren** aus, um sich zu vergewissern, dass das Modell weiterhin funktioniert. Daraufhin werden die ursprünglichen Daten zusammen mit dem prognostizierten Preis („Scored Labels“) angezeigt.
 
 1. Klicken Sie auf **Bereitstellen**.
 

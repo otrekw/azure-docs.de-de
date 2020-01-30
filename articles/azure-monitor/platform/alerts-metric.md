@@ -1,18 +1,18 @@
 ---
 title: Erstellen, Anzeigen und Verwalten von Metrikwarnungen in Azure Monitor
 description: Erfahren Sie, wie Sie mit dem Azure-Portal oder der CLI Metrikwarnungsregeln erstellen, anzeigen und verwalten können.
-author: snehithm
+author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 117b65265c853194e93a97fe5e2b2dcc6e9f5bc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712985"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705529"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -41,7 +41,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 7. Optimieren Sie die Metrik optional durch Anpassen von **Zeitraum** und **Aggregation**. Wenn die Metrik über Dimensionen verfügt, wird die Tabelle **Dimensionen** angezeigt. Wählen Sie mindestens einen Wert pro Dimension aus. Der Metrikwarnung wird ausgeführt, um die Bedingung für alle ausgewählten Wertekombinationen auszuwerten. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](alerts-metric-overview.md). Sie können für jede der Dimensionen auch **\* auswählen** verwenden. Mithilfe von **\* auswählen** wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
 
-8. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter: **Bedingungstyp**, **Häufigkeit**, **Operator** und **Schwellenwert** oder **Empfindlichkeit**. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll. [Erfahren Sie mehr über den Bedingungstyp „Dynamische Schwellenwerte“ und Empfindlichkeitsoptionen](alerts-dynamic-thresholds.md).
+8. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter: **Bedingungstyp**, **Häufigkeit**, **Operator** und **Schwellenwert** oder **Empfindlichkeit**. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll. [Erfahren Sie mehr über den Bedingungstyp „Dynamische Schwellenwerte“ und Empfindlichkeitsoptionen.](alerts-dynamic-thresholds.md)
 
 9. Wenn Sie einen statischen Schwellenwert verwenden, kann das Metrikdiagramm Ihnen das Bestimmen eines sinnvollen Schwellenwerts erleichtern. Wenn Sie dynamische Schwellenwerte verwenden, zeigt das Metrikdiagramm die berechneten Schwellenwerte basierend auf aktuellen Daten an.
 

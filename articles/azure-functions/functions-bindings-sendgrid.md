@@ -2,15 +2,15 @@
 title: SendGrid-Bindungen in Azure Functions
 description: Referenz für SendGrid-Bindungen in Azure Functions
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922353"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710987"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 

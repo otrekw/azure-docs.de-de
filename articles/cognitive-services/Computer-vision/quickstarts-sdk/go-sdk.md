@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4ac76f83ad4bedb420c52606598095c66747f2d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382308"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765296"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Schnellstart: Clientbibliothek für maschinelles Sehen für Go
 
@@ -99,7 +99,7 @@ Beginnen Sie nun damit, Code für verschiedene Vorgänge für maschinelles Sehen
 
 Die folgenden Klassen und Schnittstellen behandeln einige der Hauptfeatures des Computer Vision Go SDK:
 
-|Name|BESCHREIBUNG|
+|Name|Beschreibung|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Diese Klasse wird für alle Funktionen für maschinelles Sehen benötigt, also beispielsweise für die Bildanalyse und das Lesen von Text. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Dieser Typ enthält die Ergebnisse eines Funktionsaufrufs vom Typ **AnalyzeImage**. Für die einzelnen kategoriespezifischen Funktionen stehen ähnliche Typen zur Verfügung.|
@@ -263,5 +263,5 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 > [!div class="nextstepaction"]
 > [Referenz zur Maschinelles Sehen-API (Go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
-* [Was ist die Maschinelles Sehen-API?](../Home.md)
+* [Worum handelt es sich bei maschinellem Sehen?](../Home.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go).

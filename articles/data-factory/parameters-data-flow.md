@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746138"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760214"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrisieren von Zuordnungsdatenflüssen
 
@@ -23,9 +23,6 @@ Zuordnungsdatenflüsse in Azure Data Factory unterstützen die Verwendung von Pa
 * Verwenden einer der beiden Ausdruckssprachen, um einen statischen Literalwert festzulegen
 
 Nutzen Sie diese Funktion, um Ihre Datenflüsse universell einsetzbar, flexibel und wiederverwendbar zu gestalten. Mit diesen Parametern können Sie Datenflusseinstellungen und -ausdrücke parametrisieren.
-
-> [!NOTE]
-> Um Ausdrücke der Pipeline-Ablaufsteuerung zu verwenden, muss der Datenflussparameter vom Zeichenfolgentyp sein.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Erstellen von Parametern in einem Zuordnungsdatenfluss
 

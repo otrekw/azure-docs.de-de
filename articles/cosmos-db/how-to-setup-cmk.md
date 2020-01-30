@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: c77e89c509f10155ddc27e92f09465959b629f67
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7a77a54dc59ec427bf6abdf8fc1d410533b5be44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979200"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771902"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
 > [!NOTE]
-> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an [cosmosdbpm@microsoft.com](mailto:cosmosdbpm@microsoft.com).
+> Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com).
 
 Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos verschlüsselt. Azure Cosmos DB bietet zwei Optionen zum Verwalten der zum Verschlüsseln ruhender Daten verwendeten Schlüssel:
 

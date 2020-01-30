@@ -17,13 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1035d5cd7c992bea74180b482bb8e3c2c9e0f461
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423256"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700514"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Flow für die Geräteautorisierungsgenehmigung
 
@@ -61,7 +60,7 @@ scope=user.read%20openid%20profile
 
 ```
 
-| Parameter | Bedingung | BESCHREIBUNG |
+| Parameter | Bedingung | Beschreibung |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Kann "/common", „/consumers“ oder „/organizations“ sein.  Dies kann auch der Verzeichnismandant sein, von dem Sie die Berechtigung im GUID- oder Anzeigenamensformat anfordern möchten.  |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -71,7 +70,7 @@ scope=user.read%20openid%20profile
 
 Eine erfolgreicher Antwort besteht aus einem JSON-Objekt, das die erforderlichen Informationen enthält, mit denen sich der Benutzer anmelden kann.  
 
-| Parameter | Format | BESCHREIBUNG |
+| Parameter | Format | Beschreibung |
 | ---              | --- | --- |
 |`device_code`     | String | Eine lange Zeichenfolge, die zum Verifizieren der Sitzung zwischen dem Client und dem Autorisierungsserver verwendet wird. Der Client fordert über diesen Parameter das Zugriffstoken vom Autorisierungsserver an. |
 |`user_code`       | String | Eine kurze, für den Benutzer angezeigte Zeichenfolge, mit der die Sitzung auf einem sekundären Gerät identifiziert wird.|
@@ -100,7 +99,7 @@ client_id: 6731de76-14a6-49ae-97bc-6eba6914391e
 device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 ```
 
-| Parameter | Erforderlich | BESCHREIBUNG|
+| Parameter | Erforderlich | Beschreibung|
 | -------- | -------- | ---------- |
 | `tenant`  | Erforderlich | Derselbe Mandant oder Mandantenalias, der in der ursprünglichen Anforderung verwendet wurde. | 
 | `grant_type` | Erforderlich | Muss gleich `urn:ietf:params:oauth:grant-type:device_code` sein.|
@@ -111,7 +110,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 Da der Gerätecodeflow ein Abrufprotokoll ist, muss der Client davon ausgehen, Fehler zu erhalten, bevor der Benutzer die Authentifizierung abgeschlossen hat.  
 
-| Fehler | BESCHREIBUNG | Clientaktion |
+| Fehler | Beschreibung | Clientaktion |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Der Benutzer hat die Authentifizierung nicht abgeschlossen, den Flow aber nicht abgebrochen. | Wiederholen Sie die Anforderung nach mindestens `interval` Sekunden. |
 | `authorization_declined` | Der Endbenutzer hat die Autorisierungsanforderung verweigert.| Beenden Sie das Abrufen, und kehren Sie in einen nicht authentifizierten Zustand zurück.  |
@@ -133,7 +132,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Format | BESCHREIBUNG |
+| Parameter | Format | Beschreibung |
 | --------- | ------ | ----------- |
 | `token_type` | String| Immer „Bearer. |
 | `scope` | Durch Leerzeichen getrennte Zeichenfolgen | Wenn ein Zugriffstoken zurückgegeben wurde, werden hierdurch die Bereiche aufgeführt, für die das Zugriffstoken gültig ist. |

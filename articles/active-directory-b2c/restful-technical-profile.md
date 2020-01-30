@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263369"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840280"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -260,7 +260,7 @@ public class ResponseContent
 
 In den folgenden Artikeln finden Sie Beispiele für die Verwendung eines technischen RESTful-Profils:
 
-- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-custom-rest-api-netfw.md)
-- [Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [Schützen Ihres RESTful-Diensts mit Clientzertifikaten](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](active-directory-b2c-rest-api-validation-custom.md)
+- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](rest-api-claims-exchange-dotnet.md)
+- [Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung](secure-rest-api-dotnet-basic-auth.md)
+- [Schützen Ihres RESTful-Diensts mit Clientzertifikaten](secure-rest-api-dotnet-certificate-auth.md)
+- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](custom-policy-rest-api-claims-validation.md)

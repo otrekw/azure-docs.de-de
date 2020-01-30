@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950951"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840161"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 
-Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](active-directory-b2c-reference-policies.md) hinzufügen.
+Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Sie können die von Azure Active Directory B2C (Azure AD B2C) unterstützten Identitätsanbieter über das Azure-Portal Ihren [Benutzerflows](user-flow-overview.md) hinzufügen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -29,7 +29,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Hinzufügen der Identitätsanbieter zu Ihrem Mandanten
 > * Hinzufügen der Identitätsanbieter zu Ihrem Benutzerflow
 
-In der Regel verwenden Sie nur einen Identitätsanbieter in Ihren Anwendungen, Sie haben aber die Möglichkeit, weitere hinzuzufügen. In diesem Tutorial erfahren Sie, wie Sie Ihrer Anwendung Azure AD und Facebook als Identitätsanbieter hinzufügen. Das Hinzufügen dieser beiden Identitätsanbieter zu Ihrer Anwendung ist optional. Sie können auch andere Identitätsanbieter wie etwa [Amazon](active-directory-b2c-setup-amzn-app.md), [GitHub](active-directory-b2c-setup-github-app.md), [Google](active-directory-b2c-setup-goog-app.md), [LinkedIn](active-directory-b2c-setup-li-app.md), [Microsoft](active-directory-b2c-setup-msa-app.md) oder [Twitter](active-directory-b2c-setup-twitter-app.md) hinzufügen.
+In der Regel verwenden Sie nur einen Identitätsanbieter in Ihren Anwendungen, Sie haben aber die Möglichkeit, weitere hinzuzufügen. In diesem Tutorial erfahren Sie, wie Sie Ihrer Anwendung Azure AD und Facebook als Identitätsanbieter hinzufügen. Das Hinzufügen dieser beiden Identitätsanbieter zu Ihrer Anwendung ist optional. Sie können auch andere Identitätsanbieter wie etwa [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md) oder [Twitter](identity-provider-twitter.md) hinzufügen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -79,7 +79,7 @@ Um ein Facebook-Konto als Identitätsanbieter in Azure AD B2C verwenden zu könn
 1. Wählen Sie **Settings** > **Basic** (Einstellungen > Allgemeines) aus.
 1. Wählen Sie eine **Kategorie**, z.B. `Business and Pages`. Dieser Wert ist für Facebook erforderlich, wird aber von Azure AD B2C nicht verwendet.
 1. Wählen Sie unten auf der Seite die Option **Add Platform** (Plattform hinzufügen) und dann **Website** aus.
-1. Geben Sie für **Website-URL** `https://your-tenant-name.b2clogin.com/` ein, und ersetzen Sie `your-tenant-name` durch Ihren Mandantennnamen.
+1. Geben Sie für **Website-URL**`https://your-tenant-name.b2clogin.com/` ein, und ersetzen Sie `your-tenant-name` durch Ihren Mandantennnamen.
 1. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com/`. Die Datenschutzrichtlinien-URL ist eine von Ihnen verwaltete Seite mit Datenschutzinformationen für Ihre Anwendung.
 1. Klicken Sie auf **Save changes** (Änderungen speichern).
 1. Notieren Sie sich im oberen Bereich der Seite den Wert von **App ID** (App-ID).

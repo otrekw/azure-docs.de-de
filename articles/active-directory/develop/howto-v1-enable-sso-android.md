@@ -15,13 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4d247c569cdc0beff499cee191b95711a603e42
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b2dfcd1711be107fd161d38e5c9df660d35d8332
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917555"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696927"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO auf Android mit ADAL
 
@@ -40,7 +39,7 @@ In dieser Anleitung wird davon ausgegangen, dass Sie mit folgenden Schritten ver
 - Bereitstellen Ihrer App mit dem Legacyportal für Azure Active Directory (Azure AD). Weitere Informationen finden Sie unter [Registrieren einer App](quickstart-register-app.md).
 - Integrieren Ihrer Anwendung mit dem [Azure AD Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)
 
-## <a name="single-sign-on-concepts"></a>Konzepte des einmaligen Anmeldens
+## <a name="single-sign-on-concepts"></a>Konzepte für einmaliges Anmelden
 
 ### <a name="identity-brokers"></a>Identitätsbroker
 

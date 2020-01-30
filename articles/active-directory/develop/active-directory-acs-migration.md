@@ -13,13 +13,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 174a80b99f65393f5c5bbe35b30e7ac5b54a359e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74845551"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699460"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -147,7 +146,7 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 
 Kunden von SharePoint 2013, 2016 und SharePoint Online haben ACS lange zu Authentifizierungszwecken in Cloud-, lokalen und hybriden Szenarios verwendet. Einige SharePoint-Funktionen und -Anwendungsfälle sind von der ACS-Deaktivierung betroffen, andere nicht. In der folgenden Tabelle sind Anleitungen zur Migration für einige der am häufigsten verwendeten SharePoint-Features zusammengefasst, die ACS nutzen:
 
-| Feature | Anleitungen |
+| Funktion | Anleitungen |
 | ------- | -------- |
 | Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe der lokalen SharePoint-App aus dem Azure AD-App-Katalog direkt mit Azure AD verbinden](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Lokale App-Authentifizierung und Server-zu-Server-Authentifizierung in SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
@@ -208,7 +207,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Nicht unterstützt |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Unterstützt |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergeben von Ansprüchen von Verbundidentitätsanbietern nicht möglich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche nicht möglich<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten<br />- Ausstellen von Ausgabeansprüchen basierend auf den Eigenschaften von mit Azure AD synchronisierten Benutzern |
-| **Automatisierung** | | |
+| **Automation** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über Microsoft Graph- und Azure AD Graph-API |
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
@@ -259,7 +258,7 @@ Die folgende Tabelle vergleicht die für Webanwendungen relevanten Funktionen vo
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Vollständig anpassbare Benutzeroberfläche über benutzerdefiniertes CSS |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Benutzerdefinierte Signaturschlüssel, keine Zertifikate, unterstützt über benutzerdefinierte Richtlinien |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergabe von Ansprüchen von Identitätsanbietern möglich; für einige Ansprüche sind benutzerdefinierte Richtlinien erforderlich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche über benutzerdefinierte Richtlinien<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten über benutzerdefinierte Richtlinien |
-| **Automatisierung** | | |
+| **Automation** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst |- Erstellung von Benutzern zulässig über Azure AD Graph-API.<br />- B2C-Mandanten, -Anwendungen oder -Richtlinien können nicht programmgesteuert erstellt werden. |
 
 Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, lesen Sie zunächst die Informationen in den folgenden Ressourcen:

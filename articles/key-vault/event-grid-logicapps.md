@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133997"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845843"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen
 
@@ -26,7 +26,7 @@ Eine Übersicht über die Integration von Azure Key Vault/Azure Event Grid finde
 
 - Ein E-Mail-Konto von einem beliebigen von Azure Logic Apps unterstützten E-Mail-Anbieter (z. B. Office 365 Outlook). Mit diesem E-Mail-Konto werden die Ereignisbenachrichtigungen gesendet. Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der [Übersicht über Connectors](/connectors).
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-- Ein Schlüsseltresor in Ihrem Azure-Abonnement. Sie können schnell einen neuen Schlüsseltresor erstellen. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md).
+- Ein Schlüsseltresor in Ihrem Azure-Abonnement. Sie können ganz schnell einen neuen Schlüsseltresor erstellen. Eine entsprechende Anleitung finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md).
 
 ## <a name="create-a-logic-app-via-event-grid"></a>Erstellen einer Logik-App per Event Grid
 
@@ -34,7 +34,6 @@ Erstellen Sie zunächst mit dem Event Grid-Handler eine Logik-App, und abonniere
 
 Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
-1. Verwenden Sie den folgenden Link, um das Azure-Portal zu öffnen: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. Navigieren Sie im Azure-Portal zu Ihrer Key Vault-Instanz, wählen Sie **Ereignisse > Erste Schritte** aus, und klicken Sie auf **Logik-Apps**.
 
     

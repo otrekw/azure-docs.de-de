@@ -3,8 +3,7 @@ title: 'Tutorial: Überwachen der Netzwerkkommunikation über das Azure-Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie die Netzwerkkommunikation zwischen zwei virtuellen Computern mit der Verbindungsmonitorfunktion von Azure Network Watcher überwachen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to monitor communication between a VM and another VM. If the communication fails, I need to know why, so that I can resolve the problem.
@@ -14,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: acdaf2318c3082db876ed9c69b704d3d00cd4c90
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419699"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834653"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -49,9 +48,9 @@ Erstellen Sie zwei virtuelle Computer.
 2. Wählen Sie **Compute** und dann ein Betriebssystem aus. In diesem Tutorial wird **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myVm1|
+    |Name|myVm1|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
@@ -71,10 +70,10 @@ Erstellen Sie zwei virtuelle Computer.
 
 Führen Sie die Schritte in [Erstellen des ersten virtuellen Computers](#create-the-first-vm) erneut mit folgenden Änderungen aus:
 
-|Schritt|Einstellung|Wert|
+|Schritt|Einstellung|value|
 |---|---|---|
 | 1 | Auswählen einer **Ubuntu Server**-Version |                                                                         |
-| 3 | NAME                                  | myVm2                                                                   |
+| 3 | Name                                  | myVm2                                                                   |
 | 3 | Authentifizierungsart                   | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
 | 3 | Resource group                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
 | 6 | Erweiterungen                            | **Network Watcher-Agent für Linux**                                             |
@@ -91,9 +90,9 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
 4. Wählen Sie **+ Hinzufügen**.
 5. Geben Sie die Informationen zu der Verbindung, die Sie überwachen möchten, ein, oder wählen Sie sie aus, und wählen Sie dann **Hinzufügen** aus. Im dem Beispiel, das im folgenden Bild dargestellt wird, wird die Verbindung zwischen den virtuellen Computern *myVm1* und *myVm2* über Port 22 überwacht:
 
-    | Einstellung                  | Wert               |
+    | Einstellung                  | value               |
     | ---------                | ---------           |
-    | NAME                     | myVm1-myVm2(22)     |
+    | Name                     | myVm1-myVm2(22)     |
     | `Source`                   |                     |
     | Virtueller Computer          | myVm1               |
     | Destination              |                     |
@@ -115,7 +114,7 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
 
     Beachten Sie die folgenden Informationen:
 
-    | Item                     | Wert                      | Details                                                     |
+    | Element                     | value                      | Details                                                     |
     | ---------                | ---------                  |--------                                                     |
     | Status                   | Erreichbar                  | Informiert Sie darüber, ob der Endpunkt erreichbar ist.|
     | DURCHSCHN. ROUNDTRIPZEIT          | Informiert Sie über die Roundtripzeit zum Herstellen der Verbindung, in Millisekunden. Der Verbindungsmonitor prüft die Verbindung alle 60 Sekunden, sodass Sie die Latenz im Laufe der Zeit überwachen können.                                         |
@@ -147,12 +146,12 @@ Standardmäßig ermöglicht Azure die Kommunikation über alle Ports zwischen vi
 
 4. Die Standardregel, die Kommunikation zwischen allen VMs in einem virtuellen Netzwerk zulässt, ist die Regel mit dem Namen **AllowVnetInBound**. Erstellen Sie eine Regel mit einer höheren Priorität (niedrigere Zahl) als die Regel **AllowVnetInBound**, die eingehende Kommunikation über Port 22 verweigert. Wählen Sie die folgenden Informationen aus, bzw. geben Sie sie ein, übernehmen Sie die verbleibenden Standardeinstellungen, und wählen Sie dann **Hinzufügen** aus:
 
-    | Einstellung                 | Wert          |
+    | Einstellung                 | value          |
     | ---                     | ---            |
     | Zielportbereiche | 22             |
     | Aktion                  | Verweigern           |
     | Priority                | 100            |
-    | NAME                    | DenySshInbound |
+    | Name                    | DenySshInbound |
 
 5. Da der Verbindungsmonitor in Intervallen von 60 Sekunden prüft, warten Sie einige Minuten, und wählen Sie auf der linken Seite des Portals **Network Watcher**, dann **Verbindungsmonitor** und schließlich erneut den Monitor **myVm1-myVm2(22)** aus. Die Ergebnisse unterscheiden sich nun, wie in der folgenden Abbildung gezeigt:
 

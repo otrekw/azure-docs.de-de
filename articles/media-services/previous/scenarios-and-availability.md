@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978167"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843938"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Szenarien und datencenterübergreifende Verfügbarkeit von Media Services-Features
 
@@ -37,7 +37,7 @@ Dieses Thema enthält allgemeine Szenarien für die Übermittlung von Inhalten (
 
 Um mit Azure Media Services loszulegen, sollten Sie Folgendes haben:
 
-* Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Weitere Informationen finden Sie unter [Kostenloses Azure-Testkonto](https://azure.microsoft.com).
+* Ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com).
 * Ein Azure Media Services-Konto. Weitere Informationen finden Sie unter [Erstellen von Konten](media-services-portal-create-account.md).
 * Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
@@ -177,10 +177,10 @@ Media Services-Kunden haben die Wahl zwischen einem **Standard**-Streamingendpun
 
 #### <a name="availability"></a>Verfügbarkeit
 
-|NAME|Status|Datencenter
+|Name|Status|Rechenzentren
 |---|---|---|
-|Standard|Allgemein verfügbar|Alle|
-|Premium|Allgemein verfügbar|Alle|
+|Standard|Allgemein verfügbar|All|
+|Premium|Allgemein verfügbar|All|
 
 ### <a name="live-encoding"></a>Live Encoding
 
@@ -196,7 +196,7 @@ AMS bietet zwei On-Demand-Encoder: **Media Encoder Standard** und **Media Encode
 
 |Medienprozessorname|Status|Rechenzentren
 |---|---|---|
-|Media Encoder Standard|Allgemein verfügbar|Alle|
+|Media Encoder Standard|Allgemein verfügbar|All|
 |Media Encoder Premium Workflow|Allgemein verfügbar|Alle mit Ausnahme von China|
 
 ### <a name="analytics-media-processors"></a>Analytics-Medienprozessoren
@@ -207,13 +207,12 @@ Media Analytics ist eine Sammlung aus Sprach- und Bildanalysekomponenten, mit de
 
 |Medienprozessorname|Status|Rechenzentren
 |---|---|---|
-|Azure Media Face Detector|Vorschau|Alle|
-|Azure Media Indexer|Allgemein verfügbar|Alle|
-|Azure Media Motion Detector|Vorschau|Alle|
-|Azure Media OCR|Vorschau|Alle|
-|Azure Media Redactor|Vorschau|Alle|
-|Azure Media Video Thumbnails|Vorschau|Alle|
-|Azure Media Indexer 2|Vorschau|Alle mit Ausnahme der Regionen für China und die US-Regierung|
+|Azure Media Face Detector|Vorschau|All|
+|Azure Media Indexer|Allgemein verfügbar|All|
+|Azure Media Motion Detector|Vorschau|All|
+|Azure Media OCR|Vorschau|All|
+|Azure Media Redactor|Allgemein verfügbar|All|
+|Azure Media Video Thumbnails|Vorschau|All|
 
 ### <a name="protection"></a>Schutz
 
@@ -223,10 +222,10 @@ Microsoft Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zei
 
 |Verschlüsselung|Status|Rechenzentren|
 |---|---|---| 
-|Storage|Allgemein verfügbar|Alle|
-|AES-128-Schlüssel|Allgemein verfügbar|Alle|
-|FairPlay|Allgemein verfügbar|Alle|
-|PlayReady|Allgemein verfügbar|Alle|
+|Storage|Allgemein verfügbar|All|
+|AES-128-Schlüssel|Allgemein verfügbar|All|
+|FairPlay|Allgemein verfügbar|All|
+|PlayReady|Allgemein verfügbar|All|
 |Widevine|Allgemein verfügbar|Alle außer Deutschland, US-Regierung und China.
 
 ### <a name="reserved-units-rus"></a>Reservierte Einheiten (RUs)
@@ -249,7 +248,7 @@ Weitere Informationen finden Sie im [Abschnitt zur Skalierung](#scaling).
 
 |Name des RU-Typs|Status|Rechenzentren
 |---|---|---|
-|S1|Allgemein verfügbar|Alle|
+|S1|Allgemein verfügbar|All|
 |S2|Allgemein verfügbar|Alle außer „Brasilien, Süden“ und „Indien, Westen“|
 |S3|Allgemein verfügbar|Alle außer „Indien, Westen“|
 

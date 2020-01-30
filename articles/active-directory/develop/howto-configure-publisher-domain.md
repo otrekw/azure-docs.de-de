@@ -13,13 +13,12 @@ ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2739f5db8c50449e3481ccdfb495b30edba54ce1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68040c8ee22454c300296493b6c840eabbca98aa
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966978"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697131"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
@@ -35,7 +34,7 @@ In der folgenden Tabelle ist das Standardverhalten des Werts der Herausgeberdom�
 
 | Überprüfte Domänen im Mandanten | Standardwert der Herausgeberdomäne |
 |-------------------------|----------------------------|
-| null | null |
+| NULL | NULL |
 | *.onmicrosoft.com | *.onmicrosoft.com |
 | - *.onmicrosoft.com<br/>- domain1.com<br/>- domain2.com (primär) | domain2.com |
 

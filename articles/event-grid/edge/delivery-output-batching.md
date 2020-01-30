@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991823"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841746"
 ---
 # <a name="output-batching"></a>Ausgabebatches
 
@@ -77,16 +77,16 @@ Das Verhalten der Batchverarbeitung von Event Grid kann für einzelne Abonnenten
 
 Die folgenden zur Bereitstellung festgelegten Einstellungen steuern den zulässigen Höchstwert beim Erstellen eines Ereignisabonnements.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | Der zulässige Höchstwert für den Knopf `PreferredBatchSizeInKilobytes`. Standardwert: `1033`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | Der zulässige Höchstwert für den Knopf `MaxEventsPerBatch`. Standardwert: `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Der zulässige Höchstwert für den Knopf `PreferredBatchSizeInKilobytes`. Standardwert: `1033`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Der zulässige Höchstwert für den Knopf `MaxEventsPerBatch`. Standardwert: `50`.
 
 ## <a name="configuring-runtime-default-values"></a>Konfigurieren von Runtime-Standardwerten
 
 Die folgenden zur Bereitstellung festgelegten Einstellungen steuern den Runtime-Standardwert jedes Knopfs, wenn dieser nicht im Ereignisabonnement angegeben ist. Für einen erneuten Durchlauf muss mindestens ein Knopf im Ereignisabonnement so festgelegt werden, dass das Batchverarbeitungsverhalten aktiviert ist.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | Maximale Größe der Übermittlungsanforderung, wenn nur `MaxEventsPerBatch` angegeben ist. Standardwert: `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | Maximale Anzahl der einem Batch hinzugefügten Ereignisse, wenn nur `MaxBatchSizeInBytes` angegeben ist. Standardwert: `10`.
+| `broker__defaultMaxBatchSizeInBytes` | Maximale Größe der Übermittlungsanforderung, wenn nur `MaxEventsPerBatch` angegeben ist. Standardwert: `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | Maximale Anzahl der einem Batch hinzuzufügenden Ereignisse, wenn nur `MaxBatchSizeInBytes` angegeben ist. Standardwert: `10`.

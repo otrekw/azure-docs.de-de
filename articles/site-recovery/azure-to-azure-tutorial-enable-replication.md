@@ -2,14 +2,15 @@
 title: Einrichten der Azure-VM-Notfallwiederherstellung mit Azure Site Recovery
 description: Erfahren Sie, wie Sie die Notfallwiederherstellung für Azure-VMs in eine andere Region mit dem Dienst „Azure Site Recovery“ durchführen.
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 1/24/2020
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7d78064285057f6abd91c3ca95e01ec86f1a1a39
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 979b390f65363b43f33ce2f09d26844c3cc1a2e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169335"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759788"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -75,17 +76,6 @@ Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten F
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
 Wenn Sie eine Netzwerksicherheitsgruppe (NSG) verwenden, erstellen Sie auf Diensttags basierende NSG-Regeln für den Zugriff auf Azure Storage, Azure Active Directory, den Site Recovery-Dienst und die Site Recovery-Überwachung. [Weitere Informationen](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)
-
-> [!NOTE]
-> Es wird empfohlen, für den ausgehenden Zugriff immer NSG-Regeln mit Diensttags zu konfigurieren.
-
-Wenn Sie die ausgehende Konnektivität mithilfe von IP-Adressen steuern möchten, lassen Sie die folgenden Adressen für IP-basierte Firewalls, Proxys oder NSG-Regeln zu:
-
-- [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653)
-- [IP-Bereiche für Azure-Rechenzentren in Deutschland](https://www.microsoft.com/download/details.aspx?id=54770)
-- [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/download/details.aspx?id=42064)
-- [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
-- [IP-Adressen des Site Recovery-Dienstendpunkts](https://aka.ms/site-recovery-public-ips)
 
 ## <a name="verify-azure-vm-certificates"></a>Überprüfen der Azure-VM-Zertifikate
 

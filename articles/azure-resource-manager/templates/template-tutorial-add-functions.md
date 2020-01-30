@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471805"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773224"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Vorlagenfunktionen zu Ihrer Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 Der Standort des Speicherkontos ist auf **USA, Osten** hartcodiert. Möglicherweise müssen Sie das Speicherkonto jedoch in anderen Regionen bereitstellen. Auch hier erweist sich die mangelnde Flexibilität Ihrer Vorlage als Problem. Sie könnten einen Parameter für den Standort hinzufügen, es wäre aber von Vorteil, wenn sein Standardwert nicht nur ein hartcodierter Wert wäre.
 
@@ -40,7 +40,7 @@ Das folgende Beispiel zeigt die Änderungen, die Sie vornehmen, um einen Paramet
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 

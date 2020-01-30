@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514299"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846211"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -99,6 +99,6 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
 * [Was ist vertiefendes Lernen?](concepts-reinforcement-learning.md)
 * [Erfahren Sie mehr über Features und Aktionen für die Rangfolgeanforderung.](concepts-features.md)
 * [Erfahren Sie mehr über das Festlegen der Bewertung für die Relevanzanforderung.](concept-rewards.md)
-* [Schnellstarts]()
-* [Tutorial]()
+* [Schnellstarts](sdk-learning-loop.md)
+* [Tutorial](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Verwenden der interaktiven Demo](https://personalizationdemo.azurewebsites.net/)

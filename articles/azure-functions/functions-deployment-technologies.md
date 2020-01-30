@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921021"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714811"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -117,7 +117,7 @@ Sie können ein Linux-Containerimage bereitstellen, das Ihre Funktions-App enth�
 >__Verwendung:__ Erstellen Sie eine Linux-Funktions-App im Plan „Premium“ oder „Dediziert“, und geben Sie das gewünschte Containerimage für die Ausführung an. Hierzu stehen zwei Möglichkeiten zur Verfügung:
 >
 >* Erstellen Sie eine Linux-Funktions-App unter einem Azure App Service-Plan über das Azure-Portal. Wählen Sie für **Veröffentlichen** das **Docker-Image** aus, und konfigurieren Sie dann den Container. Geben Sie den Speicherort ein, an dem das Image gehostet wird.
->* Erstellen Sie eine Linux-Funktions-App unter einem App Service-Plan mithilfe der Azure CLI. Eine entsprechende Anleitung finden Sie unter [Erstellen einer Funktion unter Linux mithilfe eines benutzerdefinierten Images](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Erstellen Sie eine Linux-Funktions-App unter einem App Service-Plan mithilfe der Azure CLI. Eine entsprechende Anleitung finden Sie unter [Erstellen einer Funktion unter Linux mithilfe eines benutzerdefinierten Images](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Verwenden Sie für die Bereitstellung einer vorhandenen App mit einem benutzerdefinierten Container den Befehl [`func deploy`](functions-run-local.md#publish) der [Azure Functions Core Tools](functions-run-local.md).
 

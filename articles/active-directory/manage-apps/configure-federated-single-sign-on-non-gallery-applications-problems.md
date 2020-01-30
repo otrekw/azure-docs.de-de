@@ -15,17 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ROBOTS: NOINDEX
-ms.openlocfilehash: 99c5e4d99f45e2a642a46f7dc070fb7512ff4d73
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e7894bfada4d363e89f526280e2925b4f4c6180a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422556"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711881"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
 
-Wenn beim Konfigurieren einer Anwendung ein Problem auftritt: Vergewissern Sie sich, dass Sie alle im Artikel [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery) beschriebenen Schritte ausgeführt haben.
+Wenn beim Konfigurieren einer Anwendung ein Problem auftritt: Vergewissern Sie sich, dass Sie alle im Artikel [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](configure-federated-single-sign-on-non-gallery-applications.md) beschriebenen Schritte ausgeführt haben.
 
 ## <a name="cant-add-another-instance-of-the-application"></a>Es kann keine weitere Instanz der Anwendung hinzugefügt werden.
 
@@ -41,7 +40,7 @@ Wenn die Anwendung keine der oben genannten Voraussetzungen unterstützt, könne
 
 Sie können das Format für EntityID (Benutzer-ID), das von Azure AD nach der Benutzerauthentifizierung in der Antwort an die Anwendung gesendet wird, nicht auswählen.
 
-Azure AD wählt das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des von der Anwendung in der SAML-Authentifizierungsanforderung angeforderten Formats aus. Weitere Informationen finden Sie im Artikel [SAML-Protokoll für einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) im Abschnitt zu NameIDPolicy.
+Azure AD wählt das Format für das NameID-Attribut (Benutzer-ID) auf Grundlage des ausgewählten Werts oder des von der Anwendung in der SAML-Authentifizierungsanforderung angeforderten Formats aus. Weitere Informationen finden Sie im Artikel [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md#authnrequest) im Abschnitt zu NameIDPolicy.
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Wo erhalte ich die Metadaten für die Anwendung oder das Zertifikat aus Azure AD?
 
@@ -69,7 +68,7 @@ Azure AD stellt keine URL zum Abrufen der Metadaten bereit. Die Metadaten könne
 
 ## <a name="dont-know-how-to-customize-saml-claims-sent-to-an-application"></a>Sie wissen nicht, wie man SAML-Ansprüche anpasst, die an eine Anwendung gesendet werden
 
-Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwendung gesendet werden, finden Sie unter [Zuordnen von Benutzeransprüchen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping).
+Weitere Informationen zum Anpassen der SAML-Attributansprüche, die an Ihre Anwendung gesendet werden, finden Sie unter [Zuordnen von Benutzeransprüchen in Azure Active Directory](../develop/active-directory-claims-mapping.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwalten von Anwendungen mit Azure Active Directory](what-is-application-management.md)

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ed5e5c63bed90136e498491a6735cbaa127cf1f9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689686"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773184"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Tutorial: Hinzufügen von Tags in Ihrer Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Ihre bisherige Vorlage hat ein Speicherkonto, einen App Service-Plan und eine Web-App bereitgestellt.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json":::
 
 Nach der Bereitstellung dieser Ressourcen müssen Sie möglicherweise die Kosten nachverfolgen und nach Ressourcen suchen, die zu einer Kategorie gehören. Um dies zu ermöglichen, können Sie Tags hinzufügen.
 
@@ -36,7 +36,7 @@ Sie taggen Ressourcen, um Werte hinzuzufügen, die Aufschluss über ihre Verwend
 
 Im folgenden Beispiel sind die Änderungen hervorgehoben, die Sie an der Vorlage vornehmen. Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,86,103)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json" range="1-118" highlight="46-52,64,78,102":::
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 

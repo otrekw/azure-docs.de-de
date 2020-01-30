@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4076e379755518421ef79eca542ebdc99294a11
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231807"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704884"
 ---
 # <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
@@ -52,7 +51,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **App-Kennwort** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -83,6 +82,6 @@ Wenn Sie eine App, die ein App-Kennwort erfordert, nicht mehr benötigen, könne
 
 2. Klicken Sie im Bestätigungsfeld auf **Ja**, um das **App-Kennwort** zu löschen. Nachdem das App-Kennwort gelöscht wurde, wird es aus den Sicherheitsinformationen entfernt und auf der Seite **Sicherheitsinformationen** nicht mehr angezeigt.
 
-## <a name="for-more-information"></a>Weitere Informationen
+## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 
 - Weitere Informationen zur Seite **Sicherheitsinformationen** und deren Einrichtung finden Sie unter [Übersicht über die Sicherheitsinformation](user-help-security-info-overview.md).

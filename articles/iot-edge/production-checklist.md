@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 58959310a0daec3835585f64c53f2b8853eb553e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548593"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772309"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -39,7 +39,7 @@ Auf jedem IoT Edge-Gerät in der Produktion muss ein Zertifikat der Zertifizieru
 
 Weitere Informationen zur Rolle des Zertifizierungsstellenzertifikat des Geräts finden Sie unter [Verwenden von Zertifikaten durch Azure IoT Edge](iot-edge-certs.md).
 
-Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese in der Datei „config.yaml“ erfahren Sie unter [Installieren von Produktionszertifikaten auf einem IoT Edge-Gerät](how-to-create-transparent-gateway.md).
+Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese in der Datei „config.yaml“ erfahren Sie unter [Installieren von Produktionszertifikaten auf einem IoT Edge-Gerät](how-to-install-production-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Erstellen eines Geräteverwaltungsplans
 

@@ -13,13 +13,12 @@ ms.date: 11/07/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3060f79f85db6504c38ba4fc6b7d3df97f0edb55
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9a9dda1bba4d587881d32d937fa0e20b68a5b383
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963561"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696566"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Abrufen und Zwischenspeichern von Token mithilfe der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
 
@@ -27,7 +26,7 @@ ms.locfileid: "74963561"
 
 Nachdem ein Token abgerufen wurde, wird es von MSAL zwischengespeichert.  Der Anwendungscode sollte zunächst versuchen, ein Token automatisch (aus dem Cache) abzurufen, bevor andere Methoden angewendet werden.
 
-Sie können den Inhalt des Tokencaches auch löschen, indem Sie die Konten aus dem Cache entfernen. Das Sitzungscookie, das sich im Browser befindet, wird dabei jedoch nicht entfernt.
+Sie können den Inhalt des Tokencaches auch löschen, indem Sie die Konten aus dem Cache entfernen. Die Sitzungscookies, die sich im Browser befinden, werden jedoch nicht entfernt.
 
 ## <a name="scopes-when-acquiring-tokens"></a>Geltungsbereiche beim Abrufen von Token
 
@@ -93,7 +92,7 @@ Die Vorgehensweise bei öffentlichen Clientanwendungen (Desktopanwendung oder mo
 ### <a name="confidential-client-applications"></a>Vertrauliche Clientanwendungen
 
 Die Vorgehensweise bei vertraulichen Clientanwendungen (Web-App, Web-API oder Daemon-Anwendung wie ein Windows-Dienst):
-- Token werden über den [Flow für Clientanmeldeinformationen](msal-authentication-flows.md#client-credentials) **für die Anwendung selbst** und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten. 
+- Token werden über den [Flow für Clientanmeldeinformationen](msal-authentication-flows.md#client-credentials)**für die Anwendung selbst** und nicht für einen Benutzer angefordert. Diese Methode kann für Synchronisierungstools oder für Tools verwendet werden, die Benutzervorgänge allgemein und nicht für einen bestimmten Benutzer verarbeiten. 
 - Der [OBO-Flow (On Behalf Of)](msal-authentication-flows.md#on-behalf-of) wird für den Aufruf einer Web-API verwendet, die eine API im Namen des Benutzers aufruft. Die Anwendung wird anhand von Clientanmeldeinformationen identifiziert, um ein Token basierend auf einer Benutzerassertion (SAML oder ein JWT-Token) abzurufen. Dieser Flow wird von Anwendungen verwendet, die für Dienst-zu-Dienst-Aufrufe auf Ressourcen eines bestimmten Benutzers zugreifen müssen.
 - Token werden in Web-Apps über den [Flow für Autorisierungscode](msal-authentication-flows.md#authorization-code) abgerufen, nachdem sich der Benutzer über die URL für Autorisierungsanforderungen angemeldet hat. OpenID Connect-Anwendungen verwenden in der Regel diesen Mechanismus, der die Benutzeranmeldung über Open ID Connect sowie den Zugriff auf Web-APIs im Namen des Benutzers zulässt.
 
@@ -101,7 +100,7 @@ Die Vorgehensweise bei vertraulichen Clientanwendungen (Web-App, Web-API oder Da
 
 Wenn Ihr Client ein Zugriffstoken anfordert, gibt Azure AD auch ein Authentifizierungsergebnis zurück, das einige Metadaten zum Zugriffstoken enthält. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Die Daten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.  Folgende Informationen werden im Authentifizierungsergebnis verfügbar gemacht:
 
-- Das [Zugriffstoken](access-tokens.md), über das die Web-API auf Ressourcen zugreifen kann. Dies ist eine Zeichenfolge (meistens ein base64-codiertes JWT). Dem Client sollten jedoch niemals Einblicke in das Zugriffstoken gewährt werden. Das Format ist nicht zwingend stabil und kann für die Ressource verschlüsselt werden. Programmcode, der von Zugriffstokeninhalt auf dem Client abhängt, ist eine der häufigsten Ursachen für Fehler und Brüche in der Clientlogik.
+- Das [Zugriffstoken](access-tokens.md), über das die Web-API auf Ressourcen zugreifen kann. Dies ist eine Zeichenfolge (meistens ein base64-codiertes JWT). Dem Client sollten jedoch niemals Einblicke in das Zugriffstoken gewährt werden. Die Stabilität des Formats ist nicht garantiert, und das Format kann für die Ressource verschlüsselt werden. Programmcode, der vom Inhalt von Zugriffstoken auf dem Client abhängig ist, ist eine der häufigsten Ursachen für Fehler und Brüche in der Clientlogik.
 - Das [ID-Token](id-tokens.md) für den Benutzer (ein JWT)
 - Das Ablaufdatum des Tokens, das das Datum/die Uhrzeit für den Ablauf des Tokens enthält.
 - Die Mandanten-ID enthält den Mandanten, in dem der Benutzer gefunden wurde. Bei Gastbenutzern (Azure AD-B2B-Szenarien) entspricht die Mandanten-ID dem Gastmandanten und nicht dem eindeutigen Mandanten. Wenn das Token im Namen eines Benutzers gesendet wird, enthält das Authentifizierungsergebnis auch Informationen über diesen Benutzer. Bei Flows für vertrauliche Clients, in denen Token ohne Benutzer (für die Anwendung) angefordert werden, wird für diese Benutzerinformationen NULL zurückgegeben.

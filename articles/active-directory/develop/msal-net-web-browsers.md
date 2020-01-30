@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44698bc88b87aa76dd55ab5d632ad7276a49aea5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b0ac05e54619af0b1dd4a68918a89681f845bd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424167"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695074"
 ---
 # <a name="using-web-browsers-msalnet"></a>Verwenden von Webbrowsern (MSAL.NET)
 
@@ -212,7 +211,7 @@ Angenommen, Sie möchten für Apps, die im Browser ausgeführt werden, SSO über
 
 Abhängig von dem durch diese Methode zurückgegebenen Wert und Ihren Anforderungen können Sie eine Entscheidung treffen:
 
-- Sie können eine benutzerdefinierte Fehlermeldung an den Benutzer zurückgeben. Beispiel:  "Installieren Sie Chrome, um die Authentifizierung fortzusetzen" – ODER –
+- Sie können eine benutzerdefinierte Fehlermeldung an den Benutzer zurückgeben. Beispiel: "Installieren Sie Chrome, um die Authentifizierung fortzusetzen" – ODER –
 - Sie können auf die Option für eingebettete Webansichten zurückgreifen und die Benutzeroberfläche als eingebettete Webansicht starten.
 
 Im folgenden Code ist die Option für eingebettete Webansichten dargestellt:

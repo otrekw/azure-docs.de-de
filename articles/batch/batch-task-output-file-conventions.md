@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026215"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842732"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -46,7 +46,7 @@ Wenn Ihr Szenario sich von den oben aufgeführten unterscheidet, müssen Sie mö
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Was ist der Batch-Dateikonventionenstandard?
 
-Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) bietet ein Benennungsschema für die Zielcontainer und Blob-Pfade, in dem die Ausgabedateien geschrieben werden. In Azure Storage gespeicherte Dateien, die dem Dateikonventionenstandard entsprechen, stehen automatisch für die Anzeige im Azure-Portal zur Verfügung. Das Portal erkennt die Benennungskonvention und kann daher Dateien anzeigen, die dieser entsprechen.
+Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files) bietet ein Benennungsschema für die Zielcontainer und Blob-Pfade, in dem die Ausgabedateien geschrieben werden. In Azure Storage gespeicherte Dateien, die dem Dateikonventionenstandard entsprechen, stehen automatisch für die Anzeige im Azure-Portal zur Verfügung. Das Portal erkennt die Benennungskonvention und kann daher Dateien anzeigen, die dieser entsprechen.
 
 Die Dateikonventionenbibliothek für .NET benennt Ihre Speichercontainer und Taskausgabedateien automatisch entsprechend des Dateikonventionenstandards. Die Dateikonventionenbibliothek bietet ebenfalls Methoden zum Abfragen von Ausgabedateien in Azure Storage nach Auftrags-ID, Task-ID oder Zweck.
 
@@ -228,15 +228,15 @@ Der [Quellcode][github_file_conventions] für die Dateikonventionenbibliothek is
 - Unter [Beibehalten von Taskdateien mithilfe der Batch-Dienst-API in Azure Storage](batch-task-output-files.md) erfahren Sie, wie Sie die Batch-Dienst-API zum Beibehalten von Ausgabedaten verwenden.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
-[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files
+[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
 [net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
 [net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx

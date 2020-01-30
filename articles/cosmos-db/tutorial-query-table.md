@@ -1,19 +1,19 @@
 ---
 title: Wie werden Abfragen von Tabellendaten in Azure Cosmos DB durchgeführt?
 description: Hier erfahren Sie, wie Sie Daten, die im Tabellen-API-Konto für Azure Cosmos DB gespeichert sind, mithilfe von OData-Filtern und LINQ-Abfragen abfragen.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869917"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76770484"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API
 
@@ -84,18 +84,9 @@ Weitere Informationen zum Erstellen von Filterausdrücken für verschiedene Date
 Sie können auch Abfragen mit LINQ durchführen, wobei die Übersetzung in die entsprechenden OData-Abfrageausdrücke erfolgt. Dies ist ein Beispiel für das Erstellen von Abfragen mit dem .NET SDK.
 
 ```csharp
-CloudTableClient tableClient = account.CreateCloudTableClient();
-CloudTable table = tableClient.GetTableReference("People");
-
-TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
-    .Where(
-        TableQuery.CombineFilters(
-            TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Smith"),
-            TableOperators.And,
-            TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal,"Ben@contoso.com")
-    ));
-
-await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
+IQueryable<CustomerEntity> linqQuery = table.CreateQuery<CustomerEntity>()
+            .Where(x => x.PartitionKey == "4")
+            .Select(x => new CustomerEntity() { PartitionKey = x.PartitionKey, RowKey = x.RowKey, Email = x.Email });
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

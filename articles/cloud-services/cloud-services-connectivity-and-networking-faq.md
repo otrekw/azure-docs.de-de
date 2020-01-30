@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386747"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845368"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -101,8 +101,8 @@ Da diese Hostheaderbindung über die CSDEF-Datei erzwungen wird, ist kann nur ü
 
 Damit die öffentliche IP-Adresse des Clouddiensts (auch bekannt als VIP-Adresse) sich nie ändert, sodass sie üblicherweise in der Zulassungsliste bestimmter Clients enthalten sein kann, sollten Sie ihr eine reservierte IP-Adresse zuordnen. Andernfalls wird die Zuordnung der von Azure bereitgestellten virtuellen IP-Adresse zu Ihrem Abonnement aufgehoben, wenn Sie die Bereitstellung löschen. Für einen erfolgreichen VIP-Swapvorgang benötigen Sie einzelne reservierte IP-Adressen für Produktions- und Stagingslots. Ohne sie tritt beim Swapvorgang ein Fehler auf. Wie Sie eine IP-Adresse reservieren und Ihren Clouddiensten zuordnen, erfahren Sie in diesen Artikeln:
 
-- [Reservieren der IP-Adresse eines vorhandenen Clouddiensts](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Reservieren der IP-Adresse eines vorhandenen Clouddiensts](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Zuordnen einer reservierten IP zu einem Clouddienst mit einer Dienstkonfigurationsdatei](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 Wenn Sie über mehrere Instanzen für Ihre Rollen verfügen, dürfte die RIP-Zuordnung zu Ihrem Clouddienst keine Ausfallzeit verursachen. Alternativ können Sie den IP-Adressbereich Ihres Azure-Rechenzentrums der Zulassungsliste hinzufügen. Sie finden alle Azure-IP-Adressbereiche im [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 

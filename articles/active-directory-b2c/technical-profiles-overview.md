@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951036"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840195"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -38,7 +38,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [RESTful-Anbieter](restful-technical-profile.md) – Aufrufen von REST-API-Diensten, z. B. Überprüfung von Benutzereingaben, Ergänzung von Benutzerdaten oder Integration von Branchenanwendungen
 - [SAML2](saml-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
-- [Sitzungsverwaltung](active-directory-b2c-reference-sso-custom.md) – Verarbeiten verschiedener Typen von Sitzungen.
+- [Sitzungsverwaltung](custom-policy-reference-sso.md) – Verarbeiten verschiedener Typen von Sitzungen.
 - **Application Insights**
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile
@@ -57,7 +57,7 @@ Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie sen
 4. **ValidationTechnicalProfiles** – Für ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) können Sie eine Eingabe für ein [technisches Validierungsprofil](validation-technical-profile.md) aufrufen. Das technische Validierungsprofil überprüft die vom Benutzer profilierten Daten und gibt eine Fehlermeldung oder „OK“ mit oder ohne Ausgabeansprüche zurück. Beispiel: Bevor Azure AD B2C ein neues Konto erstellt, wird überprüft, ob der Benutzer bereits in den Verzeichnisdiensten vorhanden ist. Sie können ein technisches REST-API-Profil aufrufen, um Ihre eigene Geschäftslogik hinzuzufügen.<p>Der Umfang der Ausgabeansprüche eines technischen Validierungsprofils ist auf das technische Profil, das das technische Validierungsprofil aufruft, und andere technische Validierungsprofile unter demselben technischen Profil beschränkt. Wenn Sie die Ausgabeansprüche im nächsten Orchestrierungsschritt verwenden möchten, müssen Sie die Ausgabeansprüche zu dem technischen Profil hinzufügen, das das technische Validierungsprofil aufruft.
 5. **OutputClaims**: Ansprüche werden an den Anspruchsbehälter zurückgegeben. Sie können diese Ansprüche im nächsten Orchestrierungsschritt bzw. Transformationen von Ausgabeansprüchen verwenden.
 6. **OutputClaimsTransformations** – Die Eingabeansprüche jeder [Ausgabeanspruchstransformation](claimstransformations.md) werden dem Anspruchsbehälter entnommen. Bei den Ausgabeansprüchen des technischen Profils aus den vorherigen Schritten kann es sich um Eingabeansprüche einer Ausgabeanspruchstransformation handeln. Nach der Ausführung werden die Ausgabeansprüche wieder im Anspruchsbehälter abgelegt. Bei den Ausgabeansprüchen einer Ausgabeanspruchstransformation kann es sich auch um Eingabeansprüche einer nachfolgenden Ausgabeanspruchstransformation handeln.
-7. **Sitzungsverwaltung für einmaliges Anmelden (Single Sign-On, SSO)**  - [Die SSO-Sitzungsverwaltung](active-directory-b2c-reference-sso-custom.md) steuert die Interaktion mit einem Benutzer, nachdem der Benutzer bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird, oder ob lokale Kontodetails erneut eingegeben werden müssen.
+7. **Sitzungsverwaltung für einmaliges Anmelden (Single Sign-On, SSO)**  - [Die SSO-Sitzungsverwaltung](custom-policy-reference-sso.md) steuert die Interaktion mit einem Benutzer, nachdem der Benutzer bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird, oder ob lokale Kontodetails erneut eingegeben werden müssen.
 
 Ein technisches Profil kann von einem anderen technischen Profil erben, um Einstellungen zu ändern oder neue Funktionalität hinzuzufügen.  Das Element **IncludeTechnicalProfile** ist ein Verweis auf das technische Basisprofil, von dem ein technisches Profil abgeleitet wird.
 

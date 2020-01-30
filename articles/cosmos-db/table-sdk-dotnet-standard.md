@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB-Tabellen-API: .NET Standard SDK und Ressourcen'
 description: Enthält Informationen zur Azure Cosmos DB-Tabellen-API und zum .NET Standard SDK, z.B. Veröffentlichungstermine, Deaktivierungstermine und Änderungen an den einzelnen Versionen.
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996214"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771587"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>.NET Standard-API für Azure Cosmos DB-Tabellen: Download und Versionshinweise
 > [!div class="op_single_selector"]
@@ -46,18 +46,18 @@ Die Serie 1.0.0 übernimmt die Abhängigkeit von [Microsoft.Azure.DocumentDB.Co
 * Einführung einer neuen Konfiguration unter TableClientConfiguration, um Rest Executor für die Kommunikation mit der Cosmos DB-Tabellen-API zu verwenden
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
 ### <a name="a-name104104"></a><a name="1.0.4"/>1.0.4
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 * Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
 
 ### <a name="a-name104-preview104-preview"></a><a name="1.0.4-preview"/>1.0.4-preview
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 * Bereitstellung der HttpClientTimeout-Option für „RestExecutorConfiguration“
 
 ### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * Release zur allgemeinen Verfügbarkeit
@@ -88,14 +88,14 @@ Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher b
 Die plattformübergreifende .NET Standard-Bibiliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) ersetzt die .NET Framework-Bibliothek [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table).
 
 ### <a name="200-series"></a>Serie 2.0.0
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [2.0.0-preview](#2.0.0-preview) |22. August 2019 |--- |
 
 ### <a name="100-series"></a>Serie 1.0.0
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [1.0.5](#1.0.5) |13. September 2019 |--- |
+| [1.0.5](#1.0.5) |13. September 2019 |--- |
 | [1.0.5-preview](#1.0.5-preview) |20. August 2019 |--- |
 | [1.0.4](#1.0.4) |12. August 2019 |--- |
 | [1.0.4-preview](#1.0.4-preview) |26. Juli 2019 |--- |

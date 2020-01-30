@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999100"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713073"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,13 +42,13 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | DisplayName | 0:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
 | DataType | 0:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“, „stringCollection“, „alternativeSecurityIdCollection“ können verwendet werden. |
@@ -63,13 +63,13 @@ PredicateValidationReference| 0:1 | Ein Verweis auf ein **PredicateValidationsIn
 
 Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Protocol | 0:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | Der zu verwendende Anspruchstypname. |
@@ -104,7 +104,7 @@ Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` ans
 
 Das **Mask**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Anspruchsmaske. Mögliche Werte: `Simple` oder `Regex`. Der Wert `Simple` gibt an, dass auf den vorderen Teil eines Zeichenfolgenanspruchs eine einfache Textmaske angewandt wird. Der Wert `Regex` gibt an, dass ein regulärer Ausdruck auf den Zeichenfolgenausdruck als Ganzes angewandt wird.  Wenn der Wert `Regex` angegeben wird, muss mit dem zu verwendenden regulären Ausdruck auch ein optionales Attribut definiert werden. |
 | `Regex` | Nein | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
@@ -144,13 +144,13 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
 Das **Restriction**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Enumeration | 1:n | Die verfügbaren Optionen auf der Benutzeroberfläche, über die ein Benutzer einen Anspruch, z.B. einen Wert in einer Dropdownliste, auswählen kann. |
 | Muster | 1:1 | Der zu verwendende reguläre Ausdruck. |
@@ -159,10 +159,10 @@ Das **Restriction**-Element enthält die folgenden Elemente:
 
 Das **Enumeration**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
-|Wert | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
+|value | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
 | SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
 
 Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardwert `New York` konfiguriert:
@@ -188,7 +188,7 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
 
 Das **Pattern**-Element kann die folgenden Attribute enthalten:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
 | HelpText | Nein | Das Muster oder der reguläre Ausdruck für diesen Anspruch. |
@@ -368,7 +368,7 @@ Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds ve
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>

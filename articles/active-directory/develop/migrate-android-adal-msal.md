@@ -13,13 +13,12 @@ ms.date: 09/6/2019
 ms.author: twhitney
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0653eef585dd81d2e03585bf45b45ee9df9de292
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0c7b059fd8d9b34ad6d1e565431d39ffc706cb45
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917250"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696706"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Leitfaden für die Migration von ADAL zu MSAL für Android
 
@@ -241,7 +240,7 @@ In MSAL gibt es eine Hierarchie von Ausnahmen, und jede verfügt über einen eig
 
 Liste der MSAL-Ausnahmen
 
-|Ausnahme  | BESCHREIBUNG  |
+|Ausnahme  | Beschreibung  |
 |---------|---------|
 | `MsalException`     | Standardausnahme des Typs „Checked Exception“, die von MSAL auslöst wird.  |
 | `MsalClientException`     | Wird bei einem clientseitigen Fehler ausgelöst. |

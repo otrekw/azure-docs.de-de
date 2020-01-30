@@ -16,13 +16,12 @@ ms.date: 12/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72486b1a67218d78afec9bf798f69b0484795fb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 77ec206b12772329351ba6df9846c1f1dfa0d2fe
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423301"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700871"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -58,7 +57,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &state=12345
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | tenant |required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner (also etwa `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder für mandantenunabhängige Token `common`). |
 | client_id |required |Die Anwendungs-ID, die Ihrer App zugewiesen wird, wenn Sie sie bei Azure AD registrieren. Diese finden Sie im Azure-Portal. Klicken Sie auf der Randleiste mit den Diensten auf **Azure Active Directory** und auf **App-Registrierungen**. Wählen Sie dann die Anwendung. |
@@ -89,7 +88,7 @@ GET  HTTP/1.1 302 Found
 Location: http://localhost:12345/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrqqf_ZT_p5uEAEJJ_nZ3UmphWygRNy2C3jJ239gV_DBnZ2syeg95Ki-374WHUP-i3yIhv5i-7KU2CEoPXwURQp6IVYMw-DjAOzn7C3JCu5wpngXmbZKtJdWmiBzHpcO2aICJPu1KvJrDLDP20chJBXzVYJtkfjviLNNW7l7Y3ydcHDsBRKZc3GuMQanmcghXPyoDg41g8XbwPudVh7uCmUponBQpIhbuffFP_tbV8SNzsPoFz9CLpBCZagJVXeqWoYMPe2dSsPiLO9Alf_YIe5zpi-zY4C3aLw5g9at35eZTfNd0gBRpR5ojkMIcZZ6IgAA&session_state=7B29111D-C220-4263-99AB-6F6E135D75EF&state=D79E5777-702E-4260-9A62-37F75FF22CCE
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | admin_consent |Der Wert ist „true“, wenn ein Administrator einer Aufforderung zu einer Zustimmungsanforderung zugestimmt hat. |
 | code |Der Autorisierungscode, den die App angefordert hat. Die Anwendung kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. |
@@ -105,7 +104,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). In der folgenden Tabelle finden Sie die Fehlercodes, die von Azure AD ausgegeben werden. |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
@@ -114,7 +113,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Fehlercodes beim Autorisierungsendpunktfehler
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
-| Fehlercode | BESCHREIBUNG | Clientaktion |
+| Fehlercode | Beschreibung | Clientaktion |
 | --- | --- | --- |
 | invalid_request |Protokollfehler, z.B. ein fehlender erforderlicher Parameter. |Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstests festgestellt wird. |
 | unauthorized_client |Die Clientanwendung darf keinen Autorisierungscode anfordern. |Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
@@ -143,7 +142,7 @@ grant_type=authorization_code
 //NOTE: client_secret only required for web apps
 ```
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | tenant |required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner (also etwa `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder für mandantenunabhängige Token `common`). |
 | client_id |required |Die Anwendungs-Id, die Ihrer App zugewiesen wird, wenn Sie sie mit Azure AD registrieren. Diese finden Sie im Azure-Portal. Die Anwendungs-ID wird in den Einstellungen der App-Registrierung angezeigt. |
@@ -177,7 +176,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | access_token |Das angeforderte Zugriffstoken.  Dies ist eine nicht transparente Zeichenfolge. Sie richtet sich danach, was von der Ressource erwartet wird, und sie ist nicht für den Client bestimmt. Die App kann dieses Token zur Authentifizierung auf geschützten Ressourcen verwenden, wie z. B. eine Web-API. |
 | token_type |Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
@@ -208,7 +207,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
   "correlation_id": "a8125194-2dc8-4078-90ba-7b6592a7f231"
 }
 ```
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -220,7 +219,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 #### <a name="http-status-codes"></a>HTTP-Statuscodes
 Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-Endpunkt zurückgegeben werden. In einigen Fällen ist der Fehlercode ausreichend, um die Antwort zu beschreiben. Wenn jedoch Fehler auftreten, müssen Sie die zugehörigen JSON-Dokumente analysieren und den Fehlercode überprüfen.
 
-| HTTP-Code | BESCHREIBUNG |
+| HTTP-Code | Beschreibung |
 | --- | --- |
 | 400 |Standard-HTTP-Code. Wird in den meisten Fällen verwendet und wird in der Regel aufgrund einer fehlerhaften Anforderung ausgegeben. Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
 | 401 |Die Authentifizierung ist fehlgeschlagen. Tritt beispielsweise auf, wenn die Anforderung den Parameter „client_secret“ nicht enthält. |
@@ -228,7 +227,7 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | 500 |Ein interner Fehler ist beim Dienst aufgetreten. Wiederholen Sie die Anforderung. |
 
 #### <a name="error-codes-for-token-endpoint-errors"></a>Fehlercodes für Token-Endpunktfehler
-| Fehlercode | BESCHREIBUNG | Clientaktion |
+| Fehlercode | Beschreibung | Clientaktion |
 | --- | --- | --- |
 | invalid_request |Protokollfehler, z.B. ein fehlender erforderlicher Parameter. |Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
 | invalid_grant |Der Autorisierungscode ist ungültig oder abgelaufen. |Versuchen Sie, eine neue Anforderung an den `/authorize`-Endpunkt zu senden. |
@@ -260,7 +259,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 ```
 
 #### <a name="error-parameters"></a>Fehlerparameter
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
 | error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). |
@@ -270,7 +269,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="bearer-scheme-error-codes"></a>Bearerschema-Fehlercodes
 Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die in der Antwort den WWW-Authenticate-Header und das Bearer-Schema verwenden.
 
-| HTTP-Statuscode | Fehlercode | BESCHREIBUNG | Clientaktion |
+| HTTP-Statuscode | Fehlercode | Beschreibung | Clientaktion |
 | --- | --- | --- | --- |
 | 400 |invalid_request |Die Anforderung ist nicht richtig formatiert. Möglicherweise fehlt ein Parameter, oder der gleiche Parameter wird zweimal verwendet. |Beheben Sie den Fehler, und wiederholen Sie die Anforderung. Diese Art von Fehler sollte nur während der Entwicklung auftreten und bei den ersten Tests erkannt werden. |
 | 401 |invalid_token |Das Zugriffstoken ist nicht vorhanden, ungültig oder wurde widerrufen. Der Wert des Parameters „error_description“ enthält weitere Details. |Fordern Sie ein neues Token vom Autorisierungsserver an. Wenn das neue Token fehlschlägt, ist ein unerwarteter Fehler aufgetreten. Sendet eine Fehlermeldung an den Benutzer. Eine Wiederholung erfolgt nach einer beliebigen Zeitspanne. |
@@ -314,7 +313,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
   "refresh_token": "AwABAAAAv YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfcUl4VBbiSHZyd1NVZG5QTIOcbObu3qnLutbpadZGAxqjIbMkQ2bQS09fTrjMBtDE3D6kSMIodpCecoANon9b0LATkpitimVCrl PM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4rTfgV29ghDOHRc2B-C_hHeJaJICqjZ3mY2b_YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfmVCrl-NyfN3oyG4ZCWu18M9-vEou4Sq-1oMDzExgAf61noxzkNiaTecM-Ve5cq6wHqYQjfV9DOz4lbceuYCAA"
 }
 ```
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | token_type |Der Tokentyp. Der einzige derzeit unterstützte Wert ist **bearer**. |
 | expires_in |Die verbleibende Gültigkeitsdauer des Tokens in Sekunden. Ein typischer Wert wäre etwa 3600 (eine Stunde). |
@@ -340,7 +339,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |

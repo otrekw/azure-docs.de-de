@@ -13,13 +13,12 @@ ms.date: 01/07/2017
 ms.author: ryanwi
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0da348d87d1dedbdc1f97d3a4d0a1a001871a1d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 74ce45067dbe2d89d7bb7e267bffa6bbb02defa3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843783"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697879"
 ---
 # <a name="federation-metadata"></a>Verbundmetadaten
 Azure Active Directory (Azure AD) veröffentlicht ein Verbundmetadaten-Dokument für Dienste, das die von Azure AD ausgestellten Sicherheitstokens akzeptiert. Das Format des Verbundmetadaten-Dokuments wird in der [Webdiensteverbund-Sprache (WS-Verbund), Version 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), beschrieben – einer Erweiterung der [Metadaten für die OASIS Security Assertion Markup Language (SAML), Version 2.0](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).

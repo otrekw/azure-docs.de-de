@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 111f8d45fced1ed0e9293c874d7a56c64e9fb0e4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f72b2b85fcaae4e0a21e4bbe2f3af79359ca2fa6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965414"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701908"
 ---
 # <a name="single-page-application-code-configuration"></a>Single-Page-Webanwendung: Codekonfiguration
 
@@ -30,7 +29,7 @@ Erfahren Sie, wie Sie den Code für Ihre Single-Page-Webanwendung (SPA) konfigur
 
 Die Microsoft Identity Platform stellt die folgenden Microsoft-Authentifizierungsbibliotheken (Microsoft Authentication Library, MSAL) zur Unterstützung des impliziten Flows mithilfe von empfohlenen branchenüblichen Sicherheitsmethoden bereit:  
 
-| MSAL-Bibliothek | BESCHREIBUNG |
+| MSAL-Bibliothek | Beschreibung |
 |--------------|--------------|
 | ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | Einfache JavaScript-Bibliothek zur Verwendung in einer beliebigen clientseitigen Web-App, die über JavaScript- oder SPA-Frameworks wie Angular, Vue.js und React.js erstellt wurde. |
 | ![MSAL Angular](media/sample-v2-code/logo_angular.png) <br/> [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | Wrapper der MSAL.js-Kernbibliothek für eine einfachere Verwendung in Single-Page-Webanwendungen, die über das Angular-Framework erstellt wurden. Diese Bibliothek ist als Vorschauversion verfügbar und weist [bekannte Probleme](https://github.com/AzureAD/microsoft-authentication-library-for-js/issues?q=is%3Aopen+is%3Aissue+label%3Aangular) mit bestimmten Angular-Versionen und Browsern auf. |

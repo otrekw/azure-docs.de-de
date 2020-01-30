@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5d2f702b49e1e7aeb2ab33008556e91264b39427
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293979"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705410"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -98,11 +98,6 @@ Die Sicherungsrichtlinie von Azure Virtual Machine unterstützt eine Mindestaufb
 Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.
 
 Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
-
-Diese Lösung ist in den folgenden Szenarien besonders nützlich:
-  
-1. Sie verfügen über kritische Daten, die auf nur eine m Datenträger gesichert werden sollen, und Sie möchten die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern. Dadurch werden die Kosten für den Sicherungsspeicher minimiert.  
-2. Sie verfügen über andere Sicherungslösungen für einen Teil ihrer VM-Daten. Sie sichern beispielsweise Ihre Datenbanken oder Daten mit einer anderen Workloadsicherungslösung und möchten für die übrigen Datenträger und Daten eine Sicherung auf Azure VM-Ebene verwenden, um ein effizientes und robustes System mit den besten verfügbaren Funktionen zu erstellen.
 
 Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
 

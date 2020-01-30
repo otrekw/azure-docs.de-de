@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548049"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844733"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Verwenden des CloudEvents 1.0-Schemas mit Event Grid
 
@@ -73,7 +73,6 @@ Sie können Event Grid für die Eingabe und Ausgabe von Ereignissen im CloudEven
 |--------------------|---------------------
 | CloudEvents-Format | CloudEvents-Format
 | Event Grid-Format  | CloudEvents-Format
-| CloudEvents-Format | Event Grid-Format
 | Event Grid-Format  | Event Grid-Format
 
 Für alle Ereignisschemas setzt Event Grid beim Veröffentlichen in einem Event Grid-Thema und Erstellen eines Ereignisabonnements eine Überprüfung voraus. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-Die aktuelle Version von CloudEvents unterstützt nicht die Batchverarbeitung von Ereignissen. Um Ereignisse mit einem CloudEvent-Schema in einem Thema zu veröffentlichen, veröffentlichen Sie jedes Ereignis einzeln.
 
 ### <a name="output-schema"></a>Ausgabeschema
 

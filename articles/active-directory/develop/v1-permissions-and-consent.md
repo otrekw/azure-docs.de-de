@@ -17,13 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a467593d16c54e73d58f9cb2b67a4fa31eb0179e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c13f4cabfbd996c1d811a8a3e35e69893c51154f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73042325"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700922"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
@@ -61,7 +60,7 @@ Berechtigungen in Azure AD weisen eine Reihe von Eigenschaften auf, mit deren Hi
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| Eigenschaftenname | BESCHREIBUNG | Beispiel |
+| Eigenschaftenname | Beschreibung | Beispiel |
 | --- | --- | --- |
 | `ID` | Ein GUID-Wert, mit dem diese Berechtigung eindeutig identifiziert wird. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
 | `IsEnabled` | Gibt an, ob diese Berechtigung für die Nutzung verfügbar ist. | true |

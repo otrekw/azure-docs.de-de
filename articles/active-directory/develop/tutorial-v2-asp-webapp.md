@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423472"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701329"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -42,7 +41,7 @@ Die erstellte Beispielanwendung basiert auf dem Szenario, in dem Sie den Browser
 
 In dieser Anleitung werden die folgenden Bibliotheken verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Middleware, die einer Anwendung das Verwenden von OpenIDConnect für die Authentifizierung ermöglicht|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, die einer Anwendung das Beibehalten der Benutzersitzung mithilfe von Cookies ermöglicht|
@@ -426,7 +425,7 @@ Um die Benutzeransprüche anzuzeigen, wählen Sie den Link zum Navigieren zur Co
 
 Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit den grundlegenden Eigenschaften des Benutzers sehen:
 
-|Eigenschaft |value |BESCHREIBUNG |
+|Eigenschaft |value |Beschreibung |
 |---|---|---|
 |**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
 |**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername|

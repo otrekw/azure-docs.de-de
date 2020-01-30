@@ -15,13 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ded0ba36a8eef7adb1be5b5f07408b9f79359f44
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965635"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702673"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrierungsfelder im Azure-Portal für benutzerdefiniert entwickelte Apps
 
@@ -39,9 +38,9 @@ Dieser Artikel enthält eine kurze Beschreibung aller verfügbaren Felder im Anw
 
 ## <a name="fields-in-the-application-registration-form"></a>Felder im Registrierungsformular für Anwendungen
 
-| Feld            | BESCHREIBUNG                                                                              |
+| Feld            | Beschreibung                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| NAME             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
+| Name             | Der Namen der Anwendung. Dieser sollte mindestens vier Zeichen umfassen.                |
 | Unterstützte Kontotypen| Wählen Sie die Konten aus, die Ihre Anwendung unterstützen soll: „Nur Konten in diesem Organisationsverzeichnis“, „Konten in einem beliebigen Organisationsverzeichnis“ oder „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“.  |
 | Umleitungs-URI (optional) | Wählen Sie die Art der App aus, die Sie erstellen (**Web** oder **Öffentlicher Client (Mobilgerät und Desktop)** ), und geben Sie dann den Umleitungs-URI (oder die Antwort-URL) für Ihre Anwendung ein. Geben Sie für Webanwendungen die Basis-URL Ihrer App an. http://localhost:31544 kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. Geben Sie für öffentliche Clientanwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein (z. B. „myapp://auth“). Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in unseren [Schnellstartanleitungen](https://docs.microsoft.com/azure/active-directory/develop).|
 
@@ -49,21 +48,21 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 
 ### <a name="overview"></a>Übersicht
 
-| Feld           | BESCHREIBUNG        |
+| Feld           | Beschreibung        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Anwendungs-ID  | Wenn Sie eine Anwendung registrieren, weist Azure AD Ihrer Anwendung eine Anwendungs-ID zu. Die Anwendungs-ID kann verwendet werden, um Ihre Anwendung in Authentifizierungsanforderungen bei Azure AD eindeutig zu identifizieren und um auf Ressourcen wie die Graph-API zuzugreifen.                                                          |
 | App-ID-URI      | Hierbei sollte es sich um einen eindeutigen URI handeln, üblicherweise in der Form **https://&lt;Mandantenname\_&gt;/&lt;Anwendungsname\_&gt;.** Dieser URI wird während der Autorisierungsgewährung als eindeutiger Bezeichner verwendet, um die Ressource anzugeben, für die das Token ausgestellt werden soll. Er wird auch zum „aud“-Anspruch im ausgestellten Zugriffstoken. |
 
 ### <a name="branding"></a>Branding
 
-| Feld           | BESCHREIBUNG        |
+| Feld           | Beschreibung        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Neues Logo hochladen | Mit diesem Verfahren können Sie ein Logo für Ihre Anwendung hochladen. Das Logo muss im Format BMP, JPG oder PNG vorliegen, und die Datei sollte kleiner als 100 KB sein. Die Bildmaße sollten 215 × 215 Pixel betragen, die Bildmitte sollte 94 × 94 Pixel groß sein.|
 | URL der Startseite   | Dies ist die Anmelde-URL, die während der Registrierung der Anwendung angegeben wurde.|
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
-| Feld           | BESCHREIBUNG        |
+| Feld           | Beschreibung        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Abmelde-URL      | Dies ist die Abmelde-URL für das einmalige Abmelden. Azure AD sendet eine Abmeldeanforderung an diese URL, wenn ein Benutzer seine Azure AD-Sitzung über eine beliebige andere registrierte Anwendung löscht.|
 | Unterstützte Kontotypen  | Diese Option gibt an, ob die Anwendung von mehreren Mandanten verwendet werden kann. Dies bedeutet in der Regel, dass externe Organisationen Ihre Anwendung nutzen können, indem sie die Anwendung in ihrem Mandanten registrieren und ihr Zugriff auf die Organisationsdaten gewähren.|
@@ -71,7 +70,7 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 
 ### <a name="certificates-and-secrets"></a>Zertifikate und Geheimnisse
 
-| Feld           | BESCHREIBUNG        |
+| Feld           | Beschreibung        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Geheime Clientschlüssel            | Sie können geheime Clientschlüssel oder Schlüssel erstellen, um programmgesteuert und ohne Benutzerinteraktion auf Web-APIs zuzugreifen, die von Azure AD geschützt werden. Geben Sie auf der Seite **Neuer geheimer Clientschlüssel** eine Beschreibung des Schlüssels sowie das Ablaufdatum ein, und speichern Sie die Informationen, um den Schlüssel zu generieren. Stellen Sie sicher, dass Sie den Schlüssel an sicherer Stelle speichern, da Sie später nicht mehr darauf zugreifen können.             |
 

@@ -13,13 +13,12 @@ ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3d73e803a31867bedbd0ff069b8c9321257b78cb
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424242"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695567"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
 
@@ -51,7 +50,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Von Azure AD werden folgende Ansprüche erwartet:
 
-Anspruchstyp | value | BESCHREIBUNG
+Anspruchstyp | value | Beschreibung
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
 exp | Thu Jun 27 2019 15:04:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519 Abschnitt 4.1.4]

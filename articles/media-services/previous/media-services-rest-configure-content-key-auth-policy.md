@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 2c6986409f4cd9ad7e5799a55c4c301e51d5e879
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8942ad8bdc4f9fc37a88d09871c983f63cd8c1b9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968169"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773692"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "74968169"
 ## <a name="overview"></a>Übersicht
  Mit Azure Media Services können Sie Inhalte (dynamisch) verschlüsselt übermitteln, und zwar mit AES (Advanced Encryption Standard) unter Verwendung eines 128-Bit-Verschlüsselungsschlüssels und PlayReady- oder Widevine-DRM (Digital Rights Management). Media Services umfasst auch einen Dienst für die Übermittlung von Schlüsseln und PlayReady/Widevine-Lizenzen an autorisierte Clients.
 
-Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen Sie dem Medienobjekt einen Verschlüsselungsschlüssel (CommonEncryption oder EnvelopeEncryption) zuordnen. Weitere Informationen finden Sie unter [Erstellen von Inhaltsschlüsseln mit REST](media-services-rest-create-contentkey.md). Außerdem müssen Sie die Autorisierungsrichtlinien für den Schlüssel konfigurieren (wie in diesem Artikel beschrieben).
+Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen Sie dem Medienobjekt einen Verschlüsselungsschlüssel (CommonEncryption oder EnvelopeEncryption) zuordnen. Weitere Informationen finden Sie unter [Erstellen von Inhaltsschlüsseln mit REST](media-services-rest-create-contentkey.md). Außerdem müssen Sie Autorisierungsrichtlinien für den Schlüssel konfigurieren (wie in diesem Artikel beschrieben).
 
 Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt mit AES- oder PlayReady-Verschlüsselung dynamisch zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
@@ -39,7 +39,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [JWT-Tokenauthentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
-### <a name="some-considerations-apply"></a>Folgende Überlegungen sollten berücksichtigt werden:
+### <a name="some-considerations-apply"></a>Zu berücksichtigende Aspekte
 * Um dynamische Paketerstellung und dynamische Verschlüsselung nutzen zu können, stellen Sie sicher, dass der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, den Status „Wird ausgeführt“ aufweist.
 * Ihr Medienobjekt muss einen Satz von MP4-Dateien bzw. Smooth Streaming-Dateien mit adaptiver Bitrate enthalten. Weitere Informationen finden Sie unter [Codieren von Medienobjekten](media-services-encode-asset.md).
 * Zum Hochladen und Codieren Ihrer Medienobjekte verwenden Sie die Option „AssetCreationOptions.StorageEncrypted“.
@@ -47,7 +47,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * „ContentKeyAuthorizationPolicy“ und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst 15 Minuten lang zwischengespeichert. Sie können eine „ContentKeyAuthorizationPolicy“ erstellen und angeben, dass eine Tokeneinschränkung verwendet werden soll. Dann können Sie die Richtlinie testen und hinsichtlich der Open-Einschränkung aktualisieren. Dieser Vorgang dauert ungefähr 15 Minuten, bevor die Richtlinie zur offenen Version der Richtlinie wechselt.
 * Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie alle vorhandenen Locators löschen und einen neuen Locator erstellen.
 * Progressive Downloads können derzeit nicht verschlüsselt werden.
-* Ein Media Services-Streamingendpunkt legt den Wert des CORS-Headers „Access-Control-Allow-Origin“ in der Preflightantwort als Platzhalter „\*“ fest. Dieser Wert funktioniert mit den meisten Playern gut, einschließlich Azure Media Player, Roku und JWPlayer sowie weitere. Einige Player, die dash.js nutzen, funktionieren jedoch nicht, da „XMLHttpRequest“ in ihrer dash.js mit dem Anmeldeinformationsmodus auf „include“ gesetzt ist und der Platzhalter „\*“ als Wert von „Access-Control-Allow-Origin“ nicht zugelassen wird. Als Problemumgehung für diese Einschränkung in dash.js kann Media Services, wenn Sie Ihren Client von einer einzigen Domäne aus hosten, diese Domäne im Preflightantwortheader angeben. Wenn Sie Hilfe benötigen, öffnen Sie ein Supportticket über das Azure-Portal.
+* Ein Media Services-Streamingendpunkt legt den Wert des CORS-Headers „Access-Control-Allow-Origin“ in der Preflightantwort als Platzhalter „\*“ fest. Dieser Wert funktioniert mit den meisten Playern gut, z.B Azure Media Player, Roku und JWPlayer sowie weitere. Einige Player, die dash.js nutzen, funktionieren jedoch nicht, da „XMLHttpRequest“ in ihrer dash.js mit dem Anmeldeinformationsmodus auf „include“ gesetzt ist und der Platzhalter „\*“ als Wert von „Access-Control-Allow-Origin“ nicht zugelassen wird. Als Problemumgehung für diese Einschränkung in dash.js kann Media Services, wenn Sie Ihren Client von einer einzigen Domäne aus hosten, diese Domäne im Preflightantwortheader angeben. Wenn Sie Hilfe benötigen, öffnen Sie ein Supportticket im Azure-Portal.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamische AES-128-Verschlüsselung
 > [!NOTE]
@@ -73,7 +73,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d732dbfa-54fc-474c-99d6-9b46a006f389
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 36
@@ -109,7 +109,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: d225e357-e60e-4f42-add8-9d93aba1409a
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 168
@@ -145,7 +145,7 @@ Anforderung:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9847f705-f2ca-4e95-a478-8f823dbbaa29
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 154
@@ -166,7 +166,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: e613efff-cb6a-41b4-984a-f4f8fb6e76a4
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 78
@@ -248,7 +248,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 2643d836-bfe7-438e-9ba2-bc6ff28e4a53
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1079
@@ -300,7 +300,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 9e7fa407-f84e-43aa-8f05-9790b46e279b
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 58
@@ -337,7 +337,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: f160ad25-b457-4bc6-8197-315604c5e585
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 593
@@ -385,7 +385,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: ab079b0e-2ba9-4cf1-b549-a97bfa6cd2d3
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1525

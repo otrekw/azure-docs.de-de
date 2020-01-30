@@ -13,13 +13,12 @@ ms.date: 04/24/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c916ac98774600c16eb26ed43b8ae4b273137865
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424147"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695006"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Besondere Überlegungen zu Xamarin.Android mit MSAL.NET
 In diesem Artikel erfahren Sie mehr über die besonderen Überlegungen zur Verwendung von Xamarin.Android mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
@@ -142,6 +141,6 @@ Dies liegt eventuell daran, dass Visual Studio die Datei „Android.csproj*“ n
 
 Detailliertere Informationen und Beispiele finden Sie im Abschnitt [Android Specific Considerations (Besondere Überlegungen zu Android)](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations) der Datei „readme.md“ des folgenden Beispiels:
 
-| Beispiel | Plattform | BESCHREIBUNG |
+| Beispiel | Plattform | Beschreibung |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Eine einfache Xamarin Forms-App, die die Verwendung der MSAL zum Authentifizieren von MSA und Azure AD über den AAD v2.0-Endpunkt und den Zugriff auf Microsoft Graph mit dem resultierenden Token veranschaulicht. <br>![Topologie](media/msal-net-xamarin-android-considerations/topology.png) |

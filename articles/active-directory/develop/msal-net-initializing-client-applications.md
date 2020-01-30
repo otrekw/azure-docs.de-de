@@ -13,13 +13,12 @@ ms.date: 04/12/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15c0db66fd357ba150af1901a6b50a645fd1ca88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31af3691e9f55eb4263b5976c2dc82c029cbc3a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915865"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695550"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.NET
 Dieser Artikel beschreibt die Initialisierung öffentlicher und vertraulicher Clientanwendungen mithilfe der Microsoft Authentication Library für .NET (MSAL.NET).  Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
@@ -27,20 +26,20 @@ Dieser Artikel beschreibt die Initialisierung öffentlicher und vertraulicher Cl
 Bei MSAL.NET 3.x besteht die empfohlene Methode zum Instanziieren einer Anwendung darin, die Anwendungsersteller zu verwenden: `PublicClientApplicationBuilder` und `ConfidentialClientApplicationBuilder`. Sie bieten einen leistungsstarken Mechanismus zum Konfigurieren der Anwendung über den Code oder über eine Konfigurationsdatei oder auch durch die Kombination beider Ansätze.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie eine Anwendung initialisieren, müssen Sie sie zunächst [registrieren](quickstart-register-app.md), damit Ihre App in Microsoft Identity Platform integriert werden kann.  Nach der Registrierung benötigen Sie möglicherweise die folgenden Informationen (die Sie im Azure-Portal finden):
+Bevor Sie eine Anwendung initialisieren, müssen Sie sie zunächst [registrieren](quickstart-register-app.md), damit Ihre App in Microsoft Identity Platform integriert werden kann.  Nach der Registrierung benötigen Sie unter Umständen die folgenden Informationen (die Sie im Azure-Portal finden können):
 
 - Die Client-ID (eine Zeichenfolge, die eine GUID darstellt)
 - Die URL des Identitätsanbieters (Namensgeber der Instanz) und die Anmeldezielgruppe für Ihre Anwendung. Diese beiden Parameter werden zusammen als Autorität bezeichnet.
 - Die Mandanten-ID, wenn Sie eine Geschäftsanwendung ausschließlich für Ihre Organisation schreiben (auch als Einzelmandantenanwendung bezeichnet).
 - Den geheimen Anwendungsschlüssel (geheime Clientzeichenfolge) oder das Zertifikat (vom Typ „X509Certificate2“), wenn es sich um eine vertrauliche Client-App handelt.
-- Für Web-Apps und manchmal für öffentliche Client-Apps (vor allem, wenn für die App ein Broker verwendet werden muss) müssen Sie auch den redirectUri festlegen, unter dem der Identitätsanbieter Ihrer Anwendung die Sicherheitstoken sendet.
+- Für Web-Apps und gelegentlich auch für öffentliche Clientanwendungen (insbesondere, wenn Ihre App einen Broker verwenden muss) müssen Sie auch den Umleitungs-URI festlegen, mit dem der Identitätsanbieter Ihrer Anwendung die Sicherheitstoken sendet.
 
 ## <a name="ways-to-initialize-applications"></a>Möglichkeiten zum Initialisieren von Anwendungen
 Es gibt viele verschiedene Möglichkeiten zum Instanziieren von Clientanwendungen.
 
 ### <a name="initializing-a-public-client-application-from-code"></a>Initialisieren einer öffentlichen Clientanwendung über den Code
 
-Der folgende Code instanziiert eine öffentliche Clientanwendung, die Benutzer mit ihrem Geschäfts-, Schul- oder Unikonto oder ihrem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud anmeldet.
+Der folgende Code instanziiert eine öffentliche Clientanwendung, die Benutzer mit ihrem Geschäfts-, Schul- oder Unikonto oder ihrem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud anmeldet.
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
@@ -97,7 +96,7 @@ In den Codeausschnitten, in denen Anwendungsersteller verwendet werden, kann ein
 
 Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen vertraulichen Clientanwendungsersteller festlegen:
 
-|Modifizierer | BESCHREIBUNG|
+|Modifizierer | Beschreibung|
 |--------- | --------- |
 |`.WithAuthority()` 7 Außerkraftsetzungen | Legt die Standardautorität der Anwendung auf eine Azure AD-Autorität fest, mit der Möglichkeit zur Auswahl der Azure-Cloud, der Zielgruppe, des Mandanten (Mandanten-ID oder Domänenname) oder mit direkter Angabe des Autoritäts-URI.|
 |`.WithAdfsAuthority(string)` | Legt die Standardautorität der Anwendung auf eine AD FS-Autorität fest.|
@@ -116,7 +115,7 @@ Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen
 
 Folgende Modifizierer können Sie für einen öffentlichen Clientanwendungsersteller in Xamarin.iOS festlegen:
 
-|Modifizierer | BESCHREIBUNG|
+|Modifizierer | Beschreibung|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Nur Xamarin.iOS**: Legt die Sicherheitsgruppe der iOS-Keychain (für die Cachepersistenz) fest.|
 
@@ -124,7 +123,7 @@ Folgende Modifizierer können Sie für einen öffentlichen Clientanwendungserste
 
 Folgende Modifizierer können Sie für einen vertraulichen Clientanwendungsersteller festlegen:
 
-|Modifizierer | BESCHREIBUNG|
+|Modifizierer | Beschreibung|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Legt das Zertifikat fest, das die Anwendung bei Azure AD identifiziert.|
 |`.WithClientSecret(string clientSecret)` | Legt das Clientgeheimnis (App-Kennwort) fest, das die Anwendung bei Azure AD identifiziert.|

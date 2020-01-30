@@ -12,13 +12,12 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233173"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705002"
 ---
 # <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>Suchen und Verwenden der cloudbasierten Apps Ihrer Organisation im Portal „Meine Apps“
 
@@ -72,7 +71,7 @@ Sie können wählen, wie viele Anwendungen im Abschnitt **Zuletzt verwendet** an
 
 1. Klicken Sie auf das neue Symbol **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** ![Symbol der Erweiterung](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts neben der **Adressleiste** und dann auf **Anmelden, um zu beginnen**.
 
-2. Klicken Sie mit der rechten Maustaste auf das Symbol **Einstellungen** ![Einstellungssymbol](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) und dann auf **Einstellungen**.
+2. Klicken Sie mit der rechten Maustaste auf das Symbol **Einstellungen**![Einstellungssymbol](media/my-apps-portal/my-apps-portal-extension-settings-icon.png) und dann auf **Einstellungen**.
 
 3. Wählen Sie im Feld **Einstellungen** die Anzahl der zuletzt verwendeten Anwendungen, die Sie im Portal anzeigen möchten, und ob die internen URLs Ihrer Organisation umgeleitet werden dürfen, damit Sie sie remote verwenden können.
 
@@ -90,7 +89,7 @@ Wenn Sie die Berechtigung für den Zugriff und die Nutzung der cloudbasierten Ap
 
 2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
-    Die Seite **Apps** wird mit allen Cloud-Apps im Besitz Ihrer Organisation angezeigt, die Ihnen zur Verfügung stehen.
+    Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
 3. Wählen Sie auf der Seite **Apps** die Anwendung aus, mit deren Nutzung Sie beginnen möchten.
 
@@ -104,7 +103,7 @@ Sie können die Apps Ihrer Organisation über einen Intune Managed Browser auf I
 
 2. Öffnen Sie die App „Intune Managed Browser“, und wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
-    Die Seite **Apps** wird mit allen Cloud-Apps im Besitz Ihrer Organisation angezeigt, die Ihnen zur Verfügung stehen.
+    Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
 3. Wählen Sie auf der Seite **Apps** die Anwendung aus, mit deren Nutzung Sie beginnen möchten.
 
@@ -118,7 +117,7 @@ Sie können das Portal **Meine Apps** auf einem iPhone- oder iPad-Gerät mit iOS
 
 2. Wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
-    Die Seite **Apps** wird mit allen Cloud-Apps im Besitz Ihrer Organisation angezeigt, die Ihnen zur Verfügung stehen.
+    Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
 3. Wählen Sie auf der Seite **Apps** die Anwendung aus, mit deren Nutzung Sie beginnen möchten.
 
@@ -132,7 +131,7 @@ Sie können auf einem Android-Gerät das Portal **Meine Apps** anzeigen und verw
 
 2. Wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
 
-    Die Seite **Apps** wird mit allen Cloud-Apps im Besitz Ihrer Organisation angezeigt, die Ihnen zur Verfügung stehen.
+    Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
 3. Wählen Sie auf der Seite **Apps** die Anwendung aus, mit deren Nutzung Sie beginnen möchten.
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447673"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843038"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Schnellstart: Hinzufügen von Fragen und Antworten im QnA Maker-Portal
 
@@ -86,7 +86,7 @@ Fügen Sie in diesem Verfahren weitere Fragen hinzu.
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Hinzufügen von Metadaten zum Filtern der Antworten
 
-Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Clientanwendung gefilterte Antworten anfordern. Dieser Filter wird angewendet, bevor [die erste und zweite Rangfolge](../concepts/knowledge-base.md#ranker-process) angewendet wird.
+Durch das Hinzufügen von Metadaten zu einem Frage-Antwort-Satz kann Ihre Clientanwendung gefilterte Antworten anfordern. Dieser Filter wird angewendet, bevor [die erste und zweite Rangfolge](../concepts/query-knowledge-base.md#ranker-process) angewendet wird.
 
 1. Fügen Sie den zweiten Frage-Antwort-Satz ohne Metadaten aus der [ersten Tabelle in dieser Schnellstartanleitung](#qna-table) hinzu, und fahren Sie dann mit den folgenden Schritten fort:
 

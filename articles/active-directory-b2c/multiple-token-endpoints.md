@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840399"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrieren einer OWIN-basierten Web-API zu b2clogin.com
 
@@ -33,7 +33,7 @@ Die folgenden Abschnitte enthalten ein Beispiel für das Aktivieren mehrerer Aus
 
 Sie benötigen die folgenden Azure AD B2C-Ressourcen, bevor Sie mit den Schritten dieses Artikels fortfahren können:
 
-* In Ihrem Mandanten erstellte [Benutzerflows](tutorial-create-user-flows.md) oder [benutzerdefinierte Richtlinien](active-directory-b2c-get-started-custom.md)
+* In Ihrem Mandanten erstellte [Benutzerflows](tutorial-create-user-flows.md) oder [benutzerdefinierte Richtlinien](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>Abrufen von Tokenausstellerendpunkten
 
@@ -147,7 +147,7 @@ Werden die Endpunktzeichenfolgen während der Ausführung der Web-App erstellt, 
 
 In diesem Artikel wurde eine Methode zum Konfigurieren einer Web-API vorgestellt, die die Microsoft OWIN-Middleware (Katana) implementiert, um Token von mehreren Ausstellerendpunkten zu akzeptieren. Wie Sie vielleicht bemerkt haben, enthalten die Dateien *Web.Config* der Projekte „TaskService“ und „TaskWebApp“ verschiedene andere Zeichenfolgen, die geändert werden müssen, wenn Sie diese Projekte für Ihren eigenen Mandanten erstellen und ausführen möchten. Sie können diese Projekte gerne anpassen, wenn Sie sie in Aktion sehen möchten, eine ausführliche Anleitung ist jedoch nicht Gegenstand dieses Artikels.
 
-Weitere Informationen zu den verschiedenen Arten von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, finden Sie in der [Übersicht über Token in Azure Active Directory B2C](active-directory-b2c-reference-tokens.md).
+Weitere Informationen zu den verschiedenen Arten von Sicherheitstoken, die von Azure AD B2C ausgegeben werden, finden Sie in der [Übersicht über Token in Azure Active Directory B2C](tokens-overview.md).
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

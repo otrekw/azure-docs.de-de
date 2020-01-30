@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471685"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773207"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Parametern zu Ihrer Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung 
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 Möglicherweise haben Sie bemerkt, dass es bei dieser Vorlage ein Problem gibt. Der Name des Speicherkontos ist hartcodiert. Sie können mit dieser Vorlage immer nur das gleiche Speicherkonto bereitstellen. Um ein Speicherkonto mit einem anderen Namen bereitzustellen, müssten Sie eine neue Vorlage erstellen, was natürlich nicht praktisch ist, wenn Sie Ihre Bereitstellungen automatisieren möchten.
 
@@ -36,7 +36,7 @@ Damit Ihre Vorlage wiederverwendet werden kann, fügen Sie einen Parameter hinzu
 
 Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt der Datei.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
@@ -80,7 +80,7 @@ Mit Parametern können Sie die Bereitstellung anpassen, indem Sie Werte angeben,
 
 Mit der vorherigen Vorlage wurde immer ein Standard_LRS-Speicherkonto bereitgestellt. Möglicherweise möchten Sie in der Lage sein, je nach Umgebung flexibel verschiedene SKUs bereitzustellen. Das folgende Beispiel zeigt die Änderungen, die Sie zum Hinzufügen eines Parameters für die SKU vornehmen. Kopieren Sie die gesamte Datei, und überschreiben Sie damit Ihre Vorlage.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 Der Parameter **storageSKU** hat einen Standardwert. Dieser Wert wird verwendet, wenn während der Bereitstellung kein Wert angegeben wird. Außerdem verfügt er über eine Liste zulässiger Werte. Diese entsprechen den Werten, die zum Erstellen eines Speicherkontos erforderlich sind, und verhindern, dass Benutzer Ihrer Vorlage SKUs übergeben, die nicht funktionieren.
 

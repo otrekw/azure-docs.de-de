@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a62026ecec2317173361f166adcc3a7981f6d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423334"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701177"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -44,7 +43,7 @@ In diesem Leitfaden wird eine UWP-Beispielanwendung erstellt, mit der die Micros
 
 In dieser Anleitung wird das folgende NuGet-Paket verwendet:
 
-|Bibliothek|BESCHREIBUNG|
+|Bibliothek|Beschreibung|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL)|
 
@@ -400,7 +399,7 @@ Es werden Benutzerprofilinformationen angezeigt, die vom Microsoft Graph-API-Auf
 
 Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, werden im Feld **Tokeninformationen** angezeigt:
 
-|Eigenschaft  |Format  |BESCHREIBUNG |
+|Eigenschaft  |Format  |Beschreibung |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |`Token Expires` |`DateTime` |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|

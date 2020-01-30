@@ -1,17 +1,17 @@
 ---
 title: Kontingente im Azure Cosmos DB-Dienst
 description: Kontingente und Standardbeschränkungen für unterschiedliche Ressourcen im Azure Cosmos DB-Dienst.
-author: arramac
-ms.author: arramac
+author: abhijitpai
+ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887613"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759771"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 

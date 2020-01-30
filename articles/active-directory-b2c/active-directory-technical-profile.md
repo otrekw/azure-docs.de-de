@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e27288f95f07c481ab98a112ed9f02a34046600a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949557"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835792"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -253,15 +253,15 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 ```
 ## <a name="metadata"></a>Metadaten
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. |
 | UserMessageIfClaimsPrincipalDoesNotExist | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nein | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.|
 | UserMessageIfClaimsPrincipalAlreadyExists | Nein | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalAlreadyExists-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt bereits vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.|
-| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
-| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](active-directory-b2c-create-custom-attributes-profile-edit-custom.md). |
+| ApplicationObjectId | Nein | Die Anwendungsobjekt-ID für vorhandene Attribute. Wert: ObjectId einer Anwendung. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
+| ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
 
 
 

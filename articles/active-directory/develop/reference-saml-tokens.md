@@ -17,13 +17,12 @@ ms.date: 06/22/2018
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4acac79d79b584dac93d63f6d478627f7e953f81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 01ea64a56d43976d319618350e68e03bba775e8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965755"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76702894"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD-SAML-Tokenreferenz
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Auth
 ## <a name="claims-in-saml-tokens"></a>Ansprüche in SAML-Token
 
 > [!div class="mx-codeBreakAll"]
-> | NAME | Entsprechender JWT-Anspruch | BESCHREIBUNG | Beispiel |
+> | Name | Entsprechender JWT-Anspruch | Beschreibung | Beispiel |
 > | --- | --- | --- | ------------|
 > |Zielgruppe | `aud` |Der vorgesehene Empfänger des Tokens. Die Anwendung, die das Token empfängt, muss prüfen, ob der "Audience"-Wert ordnungsgemäß ist, und alle Token ablehnen, die für eine andere Zielgruppe vorgesehen sind. | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | Authentifizierungszeitpunkt | |Erfasst Datum und Uhrzeit der Authentifizierung. | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -44,9 +43,9 @@ Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Auth
 > |IssuedAt (Ausgestellt um) | `iat` |Speichert die Uhrzeit, zu der das Token ausgestellt wurde. Er wird häufig verwendet, um die Aktualität von Token zu messen. | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |Issuer (Aussteller) | `iss` |Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Bei den Token, die Azure AD zurückgibt, ist der Aussteller "sts.windows.net". Die GUID im "Issuer"-Anspruch ist die Mandanten-ID des Azure AD-Verzeichnisses. Die Mandanten-ID ist ein unveränderlicher und zuverlässiger Bezeichner des Verzeichnisses. | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |Last Name (Nachname) | `family_name` |Gibt den Nachnamen des Benutzers entsprechend der Definition im Azure AD-Benutzerobjekt an. | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |NAME | `unique_name` |Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist, weshalb er nur zu Anzeigezwecken dient. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
-> |Object ID (Objekt-ID) | `oid` |Enthält einen eindeutigen Bezeichner eines Objekts in Azure AD. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Verwenden Sie die Objekt-ID zum Identifizieren eines Objekts in Abfragen von Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
-> |Roles | `roles` |Stellt alle Anwendungsrollen dar, die dem Antragsteller direkt und indirekt über eine Gruppenmitgliedschaft zugewiesen wurden und zum Erzwingen der rollenbasierten Zugriffssteuerung verwendet werden können. Anwendungsrollen werden über die `appRoles` -Eigenschaft des Anwendungsmanifests anwendungsspezifisch definiert. Die `value` -Eigenschaft der einzelnen Anwendungsrollen ist der Wert, der im Roles-Anspruch enthalten ist. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
+> |Name | `unique_name` |Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist, weshalb er nur zu Anzeigezwecken dient. | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |ObjectID | `oid` |Enthält einen eindeutigen Bezeichner eines Objekts in Azure AD. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Verwenden Sie die Objekt-ID zum Identifizieren eines Objekts in Abfragen von Azure AD. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
+> |Rollen | `roles` |Stellt alle Anwendungsrollen dar, die dem Antragsteller direkt und indirekt über eine Gruppenmitgliedschaft zugewiesen wurden und zum Erzwingen der rollenbasierten Zugriffssteuerung verwendet werden können. Anwendungsrollen werden über die `appRoles` -Eigenschaft des Anwendungsmanifests anwendungsspezifisch definiert. Die `value` -Eigenschaft der einzelnen Anwendungsrollen ist der Wert, der im Roles-Anspruch enthalten ist. | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
 > |Subject | `sub` |Identifiziert den Prinzipal, für den das Token Informationen bestätigt (beispielsweise der Benutzer einer Anwendung). Dieser Wert ist unveränderlich und kann nicht neu zugewiesen oder wiederverwendet werden. Daher kann er für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. <br> `SubjectConfirmation` ist kein Anspruch. Mit dem Element wird beschrieben, wie der Antragsteller des Tokens verifiziert wird. `Bearer` gibt an, dass der Antragsteller durch den Besitz des Tokens bestätigt wird. | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |Mandanten-ID | `tid` |Ein unveränderlicher, nicht wieder verwendbarer Bezeichner, der den Verzeichnismandanten identifiziert, welcher das Token ausgestellt hat. Sie können diesen Wert verwenden, um auf mandantenspezifische Verzeichnisressourcen in einer mehrinstanzenfähigen Anwendung zugreifen. Sie können z.B. diesen Wert verwenden, um den Mandanten in einem Aufruf der Graph-API zu identifizieren. | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |Tokengültigkeitsdauer | `nbf`, `exp` |Das Zeitintervall, für das ein Token gültig ist. Der Dienst, der das Token überprüft, muss bestätigen, dass das aktuelle Datum innerhalb der Gültigkeitsdauer des Tokens liegt. Andernfalls wird das Token abgelehnt. Der Dienst kann einen Puffer von bis zu fünf Minuten über die Tokengültigkeitsdauer hinaus zulassen, um Differenzen bei der Istzeit (d. h. den zeitlichen Versatz) zwischen Azure AD und dem Dienst zu berücksichtigen. | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|

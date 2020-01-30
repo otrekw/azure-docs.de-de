@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83f8051fa31b6431d4a8515e2c0912cc1872a402
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: d6b18596082df6f1cfbe2a47627712b8b69cb355
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064386"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836608"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
-In diesem Artikel erfahren Sie, wie Sie die [Lebensdauer und Kompatibilität eines Tokens](active-directory-b2c-reference-tokens.md) in Azure Active Directory B2C (Azure AD B2C) konfigurieren.
+In diesem Artikel erfahren Sie, wie Sie die [Lebensdauer und Kompatibilität eines Tokens](tokens-overview.md) in Azure Active Directory B2C (Azure AD B2C) konfigurieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,7 +54,7 @@ Sie können die Lebensdauer des Tokens für den beliebigen Benutzerflow konfigur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Verwenden von Zugriffstoken](active-directory-b2c-access-tokens.md).
+Weitere Informationen zum [Verwenden von Zugriffstoken](access-tokens.md).
 
 
 

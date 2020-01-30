@@ -5,14 +5,14 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/22/2020
 ms.author: jaredro
-ms.openlocfilehash: ba7bddb2f11732f7de5f1dfa68b66be1204722cc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c5cb8366465d5983823184c87eb54fad6aaffbd0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083483"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705920"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurieren von ExpressRoute Direct
 

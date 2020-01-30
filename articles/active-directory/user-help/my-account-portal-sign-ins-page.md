@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2d31519c1c7e09c4eb8db64e2c37b8412fee9ab5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279037"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705104"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldedaten“ (Vorschauversion)
 
@@ -67,10 +66,10 @@ Sie können Ihre letzten Anmeldeaktivitäten anhand der verfügbaren Information
 
 Nach dem Anzeigen der letzten Anmeldeaktivität haben Sie folgende Möglichkeiten:
 
-- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md)
+- Anzeigen oder Verwalten der [Sicherheitsinformationen](user-help-security-info-overview.md).
 
-- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md)
+- Anzeigen oder Verwalten Ihrer verbundenen [Geräte](my-account-portal-devices-page.md).
 
 - Anzeigen oder Verwalten Ihrer [Organisationen](my-account-portal-organizations-page.md)
 
-- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation
+- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.

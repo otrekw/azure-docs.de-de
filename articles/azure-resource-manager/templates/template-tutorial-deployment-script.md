@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/09/2020
+ms.date: 01/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2a2ac42f546895a1135651bd5ef1266776f02ad1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548984"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756091"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats (Vorschau)
 
@@ -197,9 +197,9 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
       "kind": "AzurePowerShell",
       "properties": {
         "forceUpdateTag": "[parameters('utcValue')]",
-        "azPowerShellVersion": "2.8",
+        "azPowerShellVersion": "3.0",
         "timeout": "PT30M",
-        "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an arguement string, double quotes must be escaped
+        "arguments": "[format(' -vaultName {0} -certificateName {1} -subjectName {2}', parameters('keyVaultName'), parameters('certificateName'), parameters('subjectName'))]", // can pass an argument string, double quotes must be escaped
         "scriptContent": "
           param(
             [string] [Parameter(Mandatory=$true)] $vaultName,
@@ -263,7 +263,7 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
     * **forceUpdateTag**: Ermitteln Sie, ob das Bereitstellungsskript auch dann ausgeführt werden sollte, wenn sich die Skriptquelle nicht geändert hat. Kann der aktuelle Zeitstempel oder eine GUID sein. Weitere Informationen finden Sie unter [Mehrmaliges Ausführen des Skripts](./deployment-script-template.md#run-script-more-than-once).
     * **azPowerShellVersion**: Gibt die zu verwendende Version des Azure PowerShell-Moduls an. Derzeit werden für das Bereitstellungsskript die Versionen 2.7.0, 2.8.0 und 3.0.0 unterstützt.
     * **timeout**: Geben Sie die maximal zulässige Ausführungsdauer für das Skript im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601) an. Der Standardwert ist **P1D**.
-    * **arguments**: Geben Sie die Parameterwerte an. Die Werte werden hierbei jeweils durch Leerzeichen voneinander getrennt.
+    * **arguments**: Geben Sie die Parameterwerte an. Die Werte werden durch Leerzeichen voneinander getrennt.
     * **scriptContent**: Geben Sie den Skriptinhalt an. Verwenden Sie stattdessen **primaryScriptURI**, wenn Sie ein externes Skript ausführen möchten. Weitere Informationen finden Sie unter [Verwenden externer Skripts](./deployment-script-template.md#use-external-scripts).
         Das Deklarieren von **$DeploymentScriptOutputs** ist nur erforderlich, wenn das Skript auf einem lokalen Computer getestet wird. Durch das Deklarieren der Variablen kann das Skript auf einem lokalen Computer und einer deploymentScript-Ressource ausgeführt werden, ohne dass Änderungen vorgenommen werden müssen. Der Wert, der „$DeploymentScriptOutputs“ zugewiesen ist, ist als Ausgabe in den Bereitstellungen verfügbar. Weitere Informationen finden Sie unter [Verwenden der Ausgaben von Bereitstellungsskripts](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanupPreference**: Geben Sie an, wann die Bereitstellungsskriptressourcen gelöscht werden sollen.  Der Standardwert ist **Immer**. Dies bedeutet, dass die Bereitstellungsskriptressourcen unabhängig vom Beendigungszustand (Erfolg, Fehler, Abbruch) gelöscht werden. In diesem Tutorial wird **OnSuccess** verwendet, damit Sie die Möglichkeit haben, die Ergebnisse der Skriptausführung anzuzeigen.

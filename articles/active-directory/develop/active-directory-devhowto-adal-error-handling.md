@@ -11,13 +11,12 @@ ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/27/2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4e0f434831f624dbd8c9c1302aab6816cd3d148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2801ccc69f15aa275e58e433984ddb4f7c18b66
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966162"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699035"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -49,7 +48,7 @@ Es gibt eine Reihe von Fehlern, die vom Betriebssystem generiert werden und die 
 
 Grundsätzlich gibt es zwei Fälle von AcquireTokenSilent-Fehlern:
 
-| Fall | BESCHREIBUNG |
+| Fall | Beschreibung |
 |------|-------------|
 | **Fall 1**: Fehler ist mit einer interaktiven Anmeldung auflösbar | Bei Fehlern, die durch das Fehlen gültiger Token verursacht werden, ist eine interaktive Anforderung erforderlich. Insbesondere für die Cachesuche und ein ungültiges/abgelaufenes Aktualisierungstoken ist ein AcquireToken-Aufruf erforderlich.<br><br>In diesen Fällen muss der Endbenutzer aufgefordert werden, sich anzumelden. Die Anwendung kann wählen, ob sie eine interaktive Anforderung sofort, nach der Interaktion mit dem Endbenutzer (z.B. durch Drücken einer Anmeldeschaltfläche) oder später ausführen möchte. Die Auswahl hängt vom gewünschten Verhalten der Anwendung ab.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren.|
 | **Fall 2**: Fehler ist nicht mit einer interaktiven Anmeldung auflösbar | Bei Netzwerk- und vorübergehenden/temporären Fehlern oder anderen Fehlern löst die Ausführung einer interaktiven AcquireToken-Anforderung das Problem nicht. Unnötige interaktive Anmeldeaufforderungen können Endbenutzer auch stören. ADAL versucht automatisch einen einzigen Wiederholungsversuch für die meisten Fehler bei AcquireTokenSilent-Fehlern.<br><br>Die Clientanwendung kann auch zu einem späteren Zeitpunkt einen Wiederholungsversuch ausführen, doch hängen Zeitpunkt und Ausführung vom Anwendungsverhalten und der gewünschten Endbenutzererfahrung ab. Beispielsweise kann die Anwendung nach einigen Minuten oder als Reaktion auf eine Aktion des Endbenutzers einen Wiederholungsversuch von AcquireTokenSilent ausführen. Ein sofortiger Wiederholungsversuch führt dazu, dass die Anwendung gedrosselt wird und sollte nicht unternommen werden.<br><br>Ein nachfolgender Wiederholungsversuch, der mit dem gleichen Fehler fehlschlägt, bedeutet nicht, dass der Client eine interaktive Anforderung mit AcquireToken ausführen sollte, da dies den Fehler nicht behebt.<br><br>Weitere Informationen finden Sie im Code im folgenden Abschnitt für diesen speziellen Fall und die Fehler, die ihn diagnostizieren. |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475048"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840331"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -30,7 +30,7 @@ Befolgen Sie die Schritte in diesem Artikel, um Ihren Kunden mithilfe benutzerde
 
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md)
 * In Ihrem Mandanten [registrierte Webanwendung](tutorial-register-applications.md)
-* [Benutzerdefinierte Richtlinien](active-directory-b2c-get-started-custom.md), die in Ihren Mandanten hochgeladen wurden
+* [Benutzerdefinierte Richtlinien](custom-policy-get-started.md), die in Ihren Mandanten hochgeladen wurden
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Abrufen des Starter Packs für die Registrierung und Anmeldung
 
@@ -44,7 +44,7 @@ In den folgenden Schritten wird davon ausgegangen, dass Sie die [Voraussetzungen
 
 1. Ersetzen Sie in jeder Datei die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten. Wenn der Name des B2C-Mandanten z.B. *contosob2c* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` zu `contosob2c.onmicrosoft.com`.
 
-1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/` **`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework*.
+1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/` **`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Hochladen der Richtliniendateien
 

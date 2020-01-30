@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406532"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845641"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -38,9 +38,9 @@ Hierfür gibt es zwei Ansätze: Verwenden der standardmäßigen Überwachung und
 
 ### <a name="data-collection-when-using-sampling"></a>Datensammlung unter Verwendung der Stichprobenerstellung
 
-Bei der [adaptiven Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications) des ASP.NET SDK wird die Datenmenge automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate für die standardmäßige Application Insights-Überwachung nicht überschreitet. Wenn die Anwendung wenig Telemetriedaten erzeugt (z.B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter dem konfigurierten Wert für Ereignisse pro Sekunde liegt. Bei einer Anwendung mit hohem Datenvolumen und dem Standardschwellenwert von fünf Ereignissen pro Sekunde, beschränkt die adaptive Stichprobenerstellung die Anzahl der täglichen Ereignisse auf 432.000. Bei einer typischen durchschnittlichen Ereignisgröße von 1 KB entspricht dies 13,4 GB an Telemetriedaten pro 31-Tage-Monat pro Knoten, auf dem Ihre Anwendung gehostet wird (da die Stichprobenerstellung lokal auf jedem Knoten erfolgt). 
+Bei der [adaptiven Stichprobenerstellung](sampling.md#adaptive-sampling) des ASP.NET SDK wird die Datenmenge automatisch angepasst, damit sie eine festgelegte maximale Datenverkehrsrate für die standardmäßige Application Insights-Überwachung nicht überschreitet. Wenn die Anwendung wenig Telemetriedaten erzeugt (z.B. beim Debuggen oder aufgrund geringer Nutzung), werden keine Elemente vom Prozessor für Stichprobenentnahmen gelöscht, solange die Datenmenge unter dem konfigurierten Wert für Ereignisse pro Sekunde liegt. Bei einer Anwendung mit hohem Datenvolumen und dem Standardschwellenwert von fünf Ereignissen pro Sekunde, beschränkt die adaptive Stichprobenerstellung die Anzahl der täglichen Ereignisse auf 432.000. Bei einer typischen durchschnittlichen Ereignisgröße von 1 KB entspricht dies 13,4 GB an Telemetriedaten pro 31-Tage-Monat pro Knoten, auf dem Ihre Anwendung gehostet wird (da die Stichprobenerstellung lokal auf jedem Knoten erfolgt). 
 
-Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
+Bei SDKs, die keine adaptive Stichprobenerstellung unterstützen, können Sie die [Erfassungs-Stichprobenerstellung](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling) verwenden, bei der Stichproben erstellt werden, wenn die Daten von Application Insights basierend auf einem Prozentsatz aufzubewahrender Daten empfangen werden, oder Sie können die [Stichprobenerstellung mit festem Prozentsatz für ASP.NET-, ASP.NET Core- und Java-Websites](sampling.md#fixed-rate-sampling) verwenden, um den von Ihrem Webserver und Webbrowsern gesendeten Datenverkehr zu reduzieren
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Erfahrungen ähnlicher Kunden bei der Datensammlung
 

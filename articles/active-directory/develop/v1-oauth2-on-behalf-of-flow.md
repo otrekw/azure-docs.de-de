@@ -17,13 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22abde182437bfeb4a42e5c9a0d8e41a4643f8f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9c02611ea6f083a6ce8f95844e52429fc1152f90
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964445"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701007"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -109,7 +108,7 @@ Die Clientanwendung wird durch ein gemeinsames Geheimnis oder durch ein Zertifik
 
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JSON Web Token (JWT) verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken. |
@@ -143,7 +142,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
@@ -181,7 +180,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Der durch das Token gewährte Zugriffsbereich. |
@@ -253,7 +252,7 @@ Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, d
 
 Eine Dienst-zu-Dienst-Anforderung für eine SAML-Assertion weist die folgenden Parameter auf:
 
-| Parameter |  | BESCHREIBUNG |
+| Parameter |  | Beschreibung |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit einem JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Zugriffstoken.|
@@ -272,7 +271,7 @@ Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 
 ### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 | --- | --- |
 | token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |Der durch das Token gewährte Zugriffsbereich. |

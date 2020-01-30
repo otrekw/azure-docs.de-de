@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In diesem Tutorial erfahren Sie, wie Sie ein Kommunikationsproblem zwischen einem virtuellen Azure-Netzwerk und einem mit diesem über ein Gateway für virtuelle Azure-Netzwerke verbundenen lokalen oder anderen virtuellen Netzwerk mit der VPN-Diagnosefunktion von Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419737"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834682"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal
 
@@ -53,7 +51,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 Wenn Sie bereits eine Network Watcher-Instanz in der Region „USA, Osten“ aktiviert haben, fahren Sie mit [Diagnostizieren eines Gateways](#diagnose-a-gateway) fort.
 
-1. Wählen Sie im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
+1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
 
     ![Aktivieren von Network Watcher](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)

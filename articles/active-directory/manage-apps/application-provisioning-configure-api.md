@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275717"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712221"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 
-Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einzelne Apps einzeln zu konfigurieren. Wenn Sie jedoch mehrere – oder sogar Hunderte – Instanzen einer Anwendung erstellen, kann es einfacher sein, die App-Erstellung und-Konfiguration mit Microsoft Graph-APIs zu automatisieren. In diesem Artikel wird beschrieben, wie Sie die Bereitstellungskonfiguration über APIs automatisieren. Dieses Verfahren wird häufig für Anwendungen wie [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso) verwendet.
+Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einzelne Apps einzeln zu konfigurieren. Wenn Sie jedoch mehrere – oder sogar Hunderte – Instanzen einer Anwendung erstellen, kann es einfacher sein, die App-Erstellung und-Konfiguration mit Microsoft Graph-APIs zu automatisieren. In diesem Artikel wird beschrieben, wie Sie die Bereitstellungskonfiguration über APIs automatisieren. Dieses Verfahren wird häufig für Anwendungen wie [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso) verwendet.
 
 **Übersicht über die Schritte zum Automatisieren der Bereitstellungskonfiguration mithilfe von Microsoft Graph-APIs**
 
@@ -48,7 +48,7 @@ Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einze
 1. Öffnen Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 1. Wählen Sie die Schaltfläche „Mit Microsoft anmelden“ aus, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
 
-    ![Graph-Anmeldung](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Graph-Anmeldung](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. Nach der erfolgreichen Anmeldung werden im linken Bereich die Details des Benutzerkontos angezeigt.
 

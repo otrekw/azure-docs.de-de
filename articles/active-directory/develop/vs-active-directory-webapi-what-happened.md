@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0cf375902281817ecc002f8fb76be32eed149d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9858fdb7da80fe03498392ea93bf3c83b8a7e4dd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966315"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699868"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -100,13 +99,13 @@ Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual St
 
 ## <a name="code-changes-and-additions"></a>Änderungen und Ergänzungen des Codes
 
-- Das Attribut `[Authorize]` wird `Controllers/ValueController.cs` und allen anderen vorhandenen Controllern hinzugefügt.
+- Das Attribut `[Authorize]` wurde `Controllers/ValueController.cs` und allen anderen vorhandenen Controllern hinzugefügt.
 
 - Ein Authentifizierungsstartklasse `App_Start/Startup.Auth.cs`, die Startlogik für die Azure AD-Authentifizierung enthält, wird hinzugefügt oder entsprechend geändert. Wenn Sie die Option **Verzeichnisdaten lesen** ausgewählt haben, enthält diese Datei auch Code, mit dem ein OAuth-Code empfangen und gegen ein Zugriffstoken ausgetauscht wird.
 
 - (Nur Visual Studio 2015 mit ASP.NET 4-App) `App_Start/IdentityConfig.cs` wird entfernt, und `Controllers/AccountController.cs`, `Models/IdentityModel.cs` und `Providers/ApplicationAuthProvider.cs` werden hinzugefügt.
 
-- Eine Datei `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) oder `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) wird hinzugefügt. Diese Datei enthält Informationen, mit denen Visual Studio die Hinzufügung des verbundenen Diensts nachverfolgt.
+- Die Datei `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) oder `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) wurde hinzugefügt. Diese Datei enthält Informationen, mit denen Visual Studio die Hinzufügung des verbundenen Diensts nachverfolgt.
 
 ### <a name="file-backup-visual-studio-2015"></a>Dateisicherung (Visual Studio 2015)
 

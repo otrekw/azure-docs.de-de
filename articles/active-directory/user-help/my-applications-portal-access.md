@@ -12,13 +12,12 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed450f67b152bef4eb68ac8252b586b62992aa0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dee6973a638a2cabc0ccc2138ed9db8b798f4d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820393"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705121"
 ---
 # <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Zugreifen auf und Starten von Apps über das Portal „Meine Apps“ (Vorschau)
 
@@ -99,17 +98,17 @@ Im Portal **Meine Apps** können Sie alle der verfügbaren cloudbasierten Apps s
 
 Im Portal **Meine Apps** haben Sie folgende Möglichkeiten:
 
-- Organisieren Ihrer Apps in den verschiedenen Kategorien, die von Ihrer Organisation erstellt und bereitgestellt wurden. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Arbeitsbereichen im Portal „Meine Apps“ (Vorschau)](my-applications-portal-workspaces.md).
+- Organisieren Ihrer Apps in den verschiedenen Kategorien, die von Ihrer Organisation erstellt und bereitgestellt werden. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Arbeitsbereichen im Portal „Meine Apps“ (Vorschauversion)](my-applications-portal-workspaces.md).
 
-- Überprüfen, Aktualisieren oder Widerrufen von Berechtigungen für Anwendungen. Weitere Informationen finden Sie unter [Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“ (Vorschau)](my-applications-portal-permissions-saved-accounts.md).
+- Überprüfen, Aktualisieren oder Widerrufen von Berechtigungen für Anwendungen. Weitere Informationen finden Sie unter [Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“ (Vorschauversion)](my-applications-portal-permissions-saved-accounts.md).
 
 >[!Note]
->Wenn keine verfügbaren Arbeitsbereiche oder Kategorien angezeigt werden, hat Ihr Administrator entweder keine eingerichtet oder diese nicht für Sie freigegeben. Wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung oder die Berechtigungen zum Anzeigen der freigegebenen Arbeitsbereiche zu erhalten.
+>Wenn keine verfügbaren Arbeitsbereiche oder Kategorien angezeigt werden, hat Ihr Administrator keine eingerichtet oder diese nicht für Sie freigegeben. Wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung oder die Berechtigungen zum Anzeigen der freigegebenen Arbeitsbereiche zu erhalten.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Mein Profil** (Vorschau) angezeigt werden.
+- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Meine Apps** (Vorschauversion) angezeigt werden
 
-- [Verwalten Ihrer Organisationen](my-account-portal-organizations-page.md). Anweisungen zum Anzeigen und Verwalten Ihrer organisationsbezogenen Daten auf der Seite **Organisationen** im Portal **Mein Profil**.
+- [Verwalten Ihrer Organisationen](my-account-portal-organizations-page.md). Anweisungen zum Anzeigen und Verwalten gruppenbezogener Informationen auf der Seite **Organisationen** im Portal **Meine Apps**
 
-- [Verwalten Ihrer verbundenen Geräte](my-account-portal-devices-page.md). Anweisungen zum Verwalten der Geräte, mit denen Sie unter Verwendung Ihres Geschäfts-, Schul- oder Unikontos verbunden sind, auf der Seite **Geräte** im Portal **Mein Profil**.
+- [Verwalten Ihrer verbundenen Geräte](my-account-portal-devices-page.md). Anweisungen zum Verwalten der Geräte, mit denen Sie über Ihr Geschäfts-, Schul- oder Unikonto verbunden sind, auf der Seite **Geräte** im Portal **Mein Profil**

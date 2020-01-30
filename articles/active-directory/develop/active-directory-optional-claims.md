@@ -12,13 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f221ed773677c28094d2e5eaecc10a191e84addb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638968"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76698763"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
@@ -50,7 +49,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 
 **Tabelle 2: Gruppe optionaler Ansprüche in v1.0 und v2.0**
 
-| Name                       |  BESCHREIBUNG   | Tokentyp | Benutzertyp | Notizen  |
+| Name                       |  Beschreibung   | Tokentyp | Benutzertyp | Notizen  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
 | `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
@@ -79,7 +78,7 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 
 **Tabelle 3: Nur in v2.0 enthaltene optionale Ansprüche**
 
-| JWT-Anspruch     | Name                            | BESCHREIBUNG                                | Notizen |
+| JWT-Anspruch     | Name                            | Beschreibung                                | Notizen |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP-Adresse                      | Die IP-Adresse, von der aus sich der Client angemeldet hat.   |       |
 | `onprem_sid`  | Lokale Sicherheits-ID |                                             |       |
@@ -97,7 +96,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 
 **Tabelle 4: Werte zum Konfigurieren optionaler Ansprüche**
 
-| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | BESCHREIBUNG |
+| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | Beschreibung |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |             
@@ -187,7 +186,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name        | type                       | BESCHREIBUNG                                           |
+| Name        | type                       | Beschreibung                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -200,7 +199,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| Name                 | type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
+| Name                 | type                    | Beschreibung                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |
