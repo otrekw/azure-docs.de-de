@@ -1,89 +1,90 @@
 ---
-title: Spot-VM-Kontingent | Microsoft-Dokumentation
-description: Erhöhen der Kontingentgrenzwerte durch Anfordern von Spot-Kontingenten
+title: Spot-VM-Kontingent – Azure
+description: Erhöhen Sie die Kontingentgrenzwerte für Spot-VMs, die ein Modell der Azure-Nutzung bereitstellen, das zu niedrigeren Kosten führt, weil Azure bei Bedarf VMs entfernen kann.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 11/19/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9567df95e4e66d9c6b82b29cb9bba9adaf39349d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3e6dddfc458f390f5648e23a8a2af8d714de4bf2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898862"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842775"
 ---
 # <a name="spot-quota-increase-limits-for-all-vm-series"></a>Spot-Kontingent: Erhöhen der Grenzwerte für alle VM-Serien
 
-Spot-VMs bieten ein anderes Modell der Azure-Nutzung. Sie können zu niedrigeren Kosten führen. Dafür entfernt Azure jedoch nach Bedarf VMs für Bereitstellungen mit nutzungsbasierter Bezahlung oder reservierten VM-Instanzen. Weitere Informationen zu Spot-VMs finden Sie unter [Azure Spot-VMs für Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
+Spot-VMs bieten ein anderes Modell der Azure-Nutzung. Sie können zu niedrigeren Kosten führen. Dafür entfernt Azure jedoch nach Bedarf virtuelle Computer für Bereitstellungen mit nutzungsbasierter Bezahlung oder reservierten VM-Instanzen. Weitere Informationen zu Spot-VMs finden Sie unter [Azure Spot-VMs für Virtual Machine Scale Sets](../../virtual-machine-scale-sets/use-spot.md).
 
 Azure Resource Manager unterstützt zwei Arten von vCPU-Kontingenten für virtuelle Computer:
+
 * *VMs mit nutzungsbasierter Bezahlung* und *reservierte VM-Instanzen* verwenden *vCPU-Standardkontingente*.
-* *Spot-VMs* unterliegen einem *Spot-vCPU-Kontingent*. 
+* *Spot-VMs* unterliegen einem *Spot-vCPU-Kontingent*.
 
-Beim *Spot-Kontingenttyp* werden vCPU-Kontingente von Resource Manager für alle verfügbaren VM-Serien als ein einzelner regionaler Grenzwert erzwungen.
+Beim Spot-Kontingenttyp werden vCPU-Kontingente von Resource Manager für alle verfügbaren VM-Serien als ein einzelner regionaler Grenzwert erzwungen.
 
-Wenn Sie eine neue Spot-VM bereitstellen, darf die gesamte neue und vorhandene vCPU-Nutzung für alle Spot-VM-Instanzen die genehmigte Spot-vCPU-Kontingentgrenze nicht überschreiten. Wenn das Spot-Kontingent überschritten wird, ist die Bereitstellung der Spot-VM unzulässig. 
+Wenn Sie eine neue Spot-VM bereitstellen, darf die gesamte neue und vorhandene vCPU-Nutzung für alle Spot-VM-Instanzen die genehmigte Spot-vCPU-Kontingentgrenze nicht überschreiten. Wenn das Spot-Kontingent überschritten wird, ist die Bereitstellung der Spot-VM unzulässig.
 
-In diesem Artikel wird erläutert, wie Sie mithilfe des Azure-Portals eine Erhöhung des vCPU-Kontingentgrenzwerts anfordern. 
+In diesem Artikel wird erläutert, wie Sie mithilfe des Azure-Portals eine Erhöhung des vCPU-Kontingentgrenzwerts anfordern.
 
-Weitere Informationen zu vCPU-Standardkontingenten finden Sie unter [vCPU-Kontingente für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) und [Einschränkungen für Azure-Abonnements und Dienste](https://aka.ms/quotalimits). 
+Weitere Informationen zu vCPU-Standardkontingenten finden Sie unter [vCPU-Kontingente für virtuelle Computer](../../virtual-machines/windows/quotas.md) und [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und Dienste](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-Weitere Informationen zum Erhöhen des vCPU-Grenzwerts nach Region finden Sie unter [Standardkontingent: Erhöhung des regionalen vCPU-Grenzwerts](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
+Weitere Informationen zum Erhöhen des vCPU-Grenzwerts nach Region finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach Region](regional-quota-requests.md).
 
-## <a name="request-a-quota-limit-increase-from-the-help--support-pane"></a>Anfordern einer Erhöhung des Kontingentgrenzwerts über den Bereich „Hilfe und Support“ 
+## <a name="request-a-quota-limit-increase-from-help--support"></a>Anfordern einer Erhöhung des Kontingentgrenzwerts über „Hilfe und Support“
 
-Gehen Sie folgendermaßen vor, um eine Erhöhung des Spot-Kontingentgrenzwerts für alle VM-Serien über den Bereich **Hilfe und Support** anzufordern:
+So fordern Sie eine Erhöhung des Spotkontingentgrenzwerts für alle VM-Serien über **Hilfe und Support** an:
 
 > [!NOTE]
-> Sie können auch eine Erhöhung der Kontingentgrenzwerte für mehrere Regionen über eine einzige Supportanfrage anfordern. Einzelheiten dazu finden Sie in Schritt 8. 
+> Sie können auch eine Erhöhung der Kontingentgrenzwerte für mehrere Regionen über eine einzige Supportanfrage anfordern. Einzelheiten dazu finden Sie in Schritt 8.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich die Option **Hilfe und Support** aus.
+1. Wählen Sie auf dem Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
 
-   ![Der Link „Hilfe und Support“](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-1. Wählen Sie im Bereich **Hilfe und Support** die Option **Neue Supportanfrage** aus. 
+   ![Der Link „Hilfe und Support“](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-    ![Neue Supportanfrage](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. Wählen Sie unter **Hilfe und Support** die Option **Neue Supportanfrage** aus.
 
-1. Wählen Sie in der Dropdownliste **Problemtyp** die Option **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+    ![Neue Supportanfrage erstellen](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![Die Dropdownliste „Problemtyp“](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
-1. Wählen Sie in der Dropdownliste **Abonnement** das Abonnement aus, dessen Kontingent erhöht werden soll.
+   ![Problemtyp auswählen](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-   ![Die Dropdownliste „Abonnement“](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-1. Wählen Sie in der Dropdownliste **Kontingenttyp** die Option **Erhöhung der Grenzwerte für Compute-/VM-Abonnements (Kerne/vCPUs)** aus. 
+1. Wählen Sie für **Abonnement** das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
 
-   ![Die Dropdownliste „Kontingenttyp“](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![Abonnement für ein höheres Kontingent auswählen](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. Wählen Sie die Registerkarte **Details** aus, und klicken Sie dann unter **Problemdetails** auf **Details angeben**, und geben Sie dann zusätzliche Informationen ein, um Ihre Anforderung zu verarbeiten.
+1. Wählen Sie für **Kontingenttyp** die Option **Abonnementlimit für Compute/VM (Kerne/vCPUs) erhöhen** aus.
 
-   ![Der Link „Details angeben“](./media/resource-manager-core-quotas-request/provide-details.png)
-   
-1. Gehen Sie im Bereich **Kontingentdetails** oben rechts folgendermaßen vor:
+   ![Kontingenttyp auswählen](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-   ![Der Bereich „Kontingentdetails“](./media/resource-manager-core-quotas-request/3-7.png)
+1. Klicken Sie auf **Weiter: Lösungen**, um **PROBLEMDETAILS** zu öffnen. Wählen Sie **Problemdetails** aus, um zusätzliche Informationen einzugeben.
 
-   a. Wählen Sie in der Dropdownliste **Bereitstellungsmodell** das entsprechende Modell aus.
+   ![Der Link „Details angeben“](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-   b. Wählen Sie in der Dropdownliste **Standorte** einen Standort aus. Geben Sie für den ausgewählten Standort unter **Typen** im Feld **Typ auswählen** die Angabe **Spot** ein. 
-   
-   ![Die Detailregisterkarte „Neue Supportanfrage“](./media/resource-manager-core-quotas-request/3-8.png)
+1. Führen Sie unter **Kontingentdetails** folgende Schritte aus:
 
-    Sie können sowohl Standardkontingenttypen als auch Spot-Kontingenttypen über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl unter **Typen** verwenden. 
-    
-    Weitere Informationen finden Sie unter [Standardkontingent: Erhöhen des vCPU-Grenzwerts pro VM-Serie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+   1. Wählen Sie für **Bereitstellungsmodell** das entsprechende Modell und für **Standorte** einen Standort aus.
 
-   c. Geben Sie den neuen gewünschten Kontingentgrenzwert für dieses Abonnement ein. 
- 
-   ![Das Textfeld „Neuer vCPU-Grenzwert“](./media/resource-manager-core-quotas-request/3-9.png)
+      ![Zusätzliche Kontingentdetails angeben](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
-1. Um eine Kontingenterhöhung für mehrere Standorte anzufordern, wählen Sie einen weiteren Standort in der Dropdownliste aus, und wählen Sie dann einen geeigneten VM-Typ aus. Sie können dann einen Grenzwert eingeben, der für den zusätzlichen Standort gilt.
+   1. Wählen Sie für den ausgewählten Standort unter **Typen** im Feld **Typ auswählen** die Option **Spot** aus.
 
-   ![Zusätzliche Standorte im Bereich „Kontingentdetails“](./media/resource-manager-core-quotas-request/3-10.png)
+      ![Spottyp auswählen](./media/resource-manager-core-quotas-request/select-spot-type.png)
+
+       Sie können sowohl Standardkontingenttypen als auch Spot-Kontingenttypen über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl unter **Typen** verwenden.
+
+       Weitere Informationen finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](per-vm-quota-requests.md) beschrieben.
+
+   1. Geben Sie den neuen gewünschten Kontingentgrenzwert für dieses Abonnement ein.
+
+      ![Ein neues Kontingent für Spot-VM auswählen](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
+
+1. Um eine Kontingenterhöhung für mehrere Standorte anzufordern, wählen Sie unter **Standorte** einen weiteren Standort und dann einen geeigneten VM-Typ aus. Sie können dann einen Grenzwert eingeben, der für den zusätzlichen Standort gilt.
+
+   ![Zusätzliche Standorte im Bereich „Kontingentdetails“ angeben](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
 
 1. Wählen Sie **Speichern und fortfahren** aus, um die Erstellung der Supportanfrage fortzusetzen.
 
@@ -92,50 +93,46 @@ Gehen Sie folgendermaßen vor, um eine Erhöhung des Spot-Kontingentgrenzwerts f
 Gehen Sie folgendermaßen vor, um eine Erhöhung des Spot-Kontingentgrenzwerts für alle VM-Serien über den Bereich **Abonnements** anzufordern:
 
 > [!NOTE]
-> Sie können auch eine Erhöhung der Kontingentgrenzwerte für mehrere Regionen über eine einzige Supportanfrage anfordern. Einzelheiten dazu finden Sie in Schritt 7. 
+> Sie können auch eine Erhöhung der Kontingentgrenzwerte für mehrere Regionen über eine einzige Supportanfrage anfordern. Einzelheiten dazu finden Sie in Schritt 7.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Bereich die Option **Abonnements** aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem Eintrag **Abonnements**, und wählen Sie ihn aus.
 
-   ![Der Link „Abonnements“](./media/resource-manager-core-quotas-request/subscriptions.png)
+   ![Suche nach Abonnements im Azure-Portal](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
 
 1. Wählen Sie das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
 
-   ![Der Bereich „Abonnements“](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Abonnements zur Auswahl für Änderungen](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
 
-1. Wählen Sie im linken Bereich der Seite **\<Abonnementname>** die Option **Nutzung und Kontingente** aus.
+1. Wählen Sie im linken Bereich **Nutzung + Kontingente** aus.
 
-   ![Der Link „Nutzung und Kontingente“](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+   ![Der Link „Nutzung und Kontingente“](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
 
 1. Wählen Sie oben rechts **Erhöhung anfordern** aus.
 
-   ![Anfordern einer Erhöhung](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Auswählen, um das Kontingent zu erhöhen](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. Wählen Sie in der Dropdownliste **Kontingenttyp** die Option **Erhöhung der Grenzwerte für Compute-/VM-Abonnements (Kerne/vCPUs)** aus.
+1. Wählen Sie für **Kontingenttyp** die Option **Abonnementlimit für Compute/VM (Kerne/vCPUs) erhöhen** aus.
 
-   ![Die Dropdownliste „Kontingenttyp“](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![Kontingenttyp auswählen](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. Gehen Sie im Bereich **Kontingentdetails** oben rechts folgendermaßen vor:
+1. Klicken Sie auf **Weiter: Lösungen**, um **PROBLEMDETAILS** zu öffnen. Wählen Sie **Problemdetails** aus, um zusätzliche Informationen einzugeben. Geben Sie in **Kontingentdetails** folgende Informationen ein:
 
-   ![Der Bereich „Kontingentdetails“](./media/resource-manager-core-quotas-request/3-2-6.png)
- 
-   a. Wählen Sie in der Dropdownliste **Bereitstellungsmodell** das entsprechende Modell aus.
+   1. Wählen Sie für **Bereitstellungsmodell** das entsprechende Modell und für **Standorte** einen Standort aus.
 
-   b. Wählen Sie in der Dropdownliste **Standorte** einen Standort aus. 
-   
-   c. Geben Sie für den ausgewählten Standort unter **Typen** im Feld **Typ auswählen** die Angabe **Spot** ein.
+      ![Kontingentdetails angeben](./media/resource-manager-core-quotas-request/quota-details-deployment-locations.png)
 
-   ![Der Bereich „Kontingentdetails“](./media/resource-manager-core-quotas-request/3-2-7.png)
+   1. Wählen Sie für den ausgewählten Standort unter **Typen** im Feld **Typ auswählen** die Option **Spot** aus.
 
-   Weitere Informationen finden Sie unter [Standardkontingent: Erhöhen des vCPU-Grenzwerts pro VM-Serie](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+      ![Spottyp auswählen](./media/resource-manager-core-quotas-request/select-spot-type.png)
 
-   d. Geben Sie den neuen gewünschten Kontingentgrenzwert für dieses Abonnement ein.
+      Weitere Informationen finden Sie unter [Standardkontingent: Erhöhen der Grenzwerte nach VM-Serie](per-vm-quota-requests.md) beschrieben.
 
-   ![Das Textfeld „Neuer vCPU-Grenzwert“](./media/resource-manager-core-quotas-request/3-2-8.png)
- 
-1. Um eine Kontingenterhöhung für mehrere Standorte anzufordern, wählen Sie einen weiteren Standort in der Dropdownliste aus, und wählen Sie dann einen geeigneten VM-Typ aus. Sie können dann einen Grenzwert eingeben, der für den zusätzlichen Standort gilt.
+   1. Geben Sie den neuen gewünschten Kontingentgrenzwert für dieses Abonnement ein.
 
-   ![Zusätzliche Standorte im Bereich „Kontingentdetails“](./media/resource-manager-core-quotas-request/3-2-9.png)
- 
+      ![Einen neuen Wert für den vCPU-Grenzwert eingeben](./media/resource-manager-core-quotas-request/spot-set-new-quota.png)
+
+1. Um eine Kontingenterhöhung für mehrere Standorte anzufordern, wählen Sie unter **Standorte** einen weiteren Standort und dann einen geeigneten VM-Typ aus. Sie können dann einen Grenzwert eingeben, der für den zusätzlichen Standort gilt.
+
+   ![Zusätzliche Standorte im Bereich „Kontingentdetails“ auswählen](./media/resource-manager-core-quotas-request/quota-details-multiple-locations.png)
+
 1. Wählen Sie **Speichern und fortfahren** aus, um die Erstellung der Supportanfrage fortzusetzen.
-
-

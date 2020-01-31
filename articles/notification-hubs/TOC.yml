@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: 'Konfigurieren von Notification Hubs: Azure-Portal'
       href: configure-notification-hub-portal-pns-settings.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Android
       items:
@@ -79,6 +79,8 @@
       href: samples-powershell.md
 - name: Konzepte
   items:
+    - name: Transport Layer Security (TLS)
+      href: notification-hubs-tls12.md
     - name: Anleitung für eine unternehmensbezogene Pusharchitektur
       href: notification-hubs-enterprise-push-notification-architecture.md
     - name: Geräteregistrierungen

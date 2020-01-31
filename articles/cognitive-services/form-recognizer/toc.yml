@@ -17,47 +17,31 @@
       items:
         - name: Trainieren und Verwenden eines benutzerdefinierten Modells ohne Bezeichnungen
           items:
-            - name: v2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract.md
-                - name: Python
-                  href: quickstarts/python-train-extract.md
-            - name: v1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-train-extract-v1.md
-                - name: Python
-                  href: quickstarts/python-train-extract-v1.md
+            - name: cURL
+              href: quickstarts/curl-train-extract.md
+            - name: Python
+              href: quickstarts/python-train-extract.md
         - name: Trainieren und Verwenden eines benutzerdefinierten Modells mit Bezeichnungen
           items:
             - name: Python
               href: quickstarts/python-labeled-data.md
         - name: Verwenden eines vordefinierten Belegmodells
           items:
-            - name: v2.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts.md
-                - name: Python
-                  href: quickstarts/python-receipts.md
-            - name: v1.0
-              items:
-                - name: cURL
-                  href: quickstarts/curl-receipts-v1.md
-                - name: Python
-                  href: quickstarts/python-receipts-v1.md
+            - name: cURL
+              href: quickstarts/curl-receipts.md
+            - name: Python
+              href: quickstarts/python-receipts.md
         - name: Abrufen von Textlayoutinformationen
           items:
             - name: Python
               href: quickstarts/python-layout.md
     - name: Verwenden des .NET SDK
       href: quickstarts/dotnet-sdk.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden der Formularerkennung mit Logic Apps
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erstellen eines Trainingsdatasets
       href: build-training-data-set.md

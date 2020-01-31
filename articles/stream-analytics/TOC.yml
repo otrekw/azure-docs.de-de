@@ -65,6 +65,7 @@
       items:
         - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: Verbessern der Abfrageleistung
           href: stream-analytics-parallelization.md
         - name: Neupartitionieren Ihrer Eingabe
