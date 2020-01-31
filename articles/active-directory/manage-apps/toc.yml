@@ -151,8 +151,8 @@
               href: methods-for-assigning-users-and-groups.md
             - name: Zuweisen eines Benutzers zu einer App
               href: assign-user-or-group-access-portal.md
-            - name: Erstellen von Arbeitsbereichen unter „Meine Apps“ (Vorschau)
-              href: access-panel-workspaces.md
+            - name: Erstellen von Auflistungen in „Meine Apps“
+              href: access-panel-collections.md
             - name: Verwenden des Self-Service-App-Zugriffs
               href: access-panel-manage-self-service-access.md
             - name: Methoden zum Entfernen des Benutzerzugriffs auf eine App

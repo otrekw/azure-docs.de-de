@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934480"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720710"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
 
@@ -125,6 +125,16 @@ Um den Zugriff für einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine
     ![Rollenzuweisungen für eine systemseitig zugewiesene verwaltete Identität](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. Um das Abonnement zu ändern, klicken Sie auf die Liste **Abonnements**.
+
+## <a name="list-number-of-role-assignments"></a>Auflisten der Anzahl von Rollenzuweisungen
+
+Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Damit Sie diese Grenzwerte nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die aktuelle Anzahl der Rollenzuweisungen aufgeführt ist.
+
+![Zugriffssteuerung: Diagramm „Anzahl der Rollenzuweisungen“](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+Wenn Sie sich der maximalen Anzahl nähern und versuchen, weitere Rollenzuweisungen hinzuzufügen, wird im Bereich **Rollenzuweisung hinzufügen** eine Warnung angezeigt. Sie können die Anzahl von Rollenzuweisungen verringern, indem Sie Rollenzuweisungen löschen, die nicht mehr benötigt werden, oder indem Sie Rollen, anstelle von einzelnen Benutzern, Gruppen zuweisen.
+
+![Zugriffssteuerung: Warnung „Rollenzuweisung hinzufügen“](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

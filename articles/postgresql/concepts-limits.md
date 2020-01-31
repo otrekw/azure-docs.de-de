@@ -5,32 +5,32 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768536"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836455"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
 
 
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
-Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
+Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und virtuellen Kernen, wie unten gezeigt. Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. 
 
 |**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** | **Max. Benutzerverbindungen** |
 |---|---|---|---|
 |Basic| 1| 55 | 50|
 |Basic| 2| 105 | 100|
-|Allgemeiner Zweck| 2| 150| 145|
-|Allgemeiner Zweck| 4| 250| 245|
-|Allgemeiner Zweck| 8| 480| 475|
-|Allgemeiner Zweck| 16| 950| 945|
-|Allgemeiner Zweck| 32| 1500| 1495|
-|Allgemeiner Zweck| 64| 1\.900| 1895|
+|Universell| 2| 150| 145|
+|Universell| 4| 250| 245|
+|Universell| 8| 480| 475|
+|Universell| 16| 950| 945|
+|Universell| 32| 1500| 1495|
+|Universell| 64| 1\.900| 1895|
 |Arbeitsspeicheroptimiert| 2| 300| 295|
 |Arbeitsspeicheroptimiert| 4| 500| 495|
 |Arbeitsspeicheroptimiert| 8| 960| 955|
@@ -40,7 +40,10 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
 
-Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. 
+> [!IMPORTANT]
+> Für eine optimale Erfahrung empfehlen wir, dass Sie einen Verbindungspooler wie pgBouncer verwenden, um Verbindungen effizient zu verwalten.
+
+Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspeicher belegen. Außerdem nimmt das Erstellen neuer Verbindungen Zeit in Anspruch. Die meisten Anwendungen fordern viele kurzlebige Verbindungen an, was diese Situation erschwert. Das Ergebnis sind weniger Ressourcen, die für ihre tatsächliche Workload verfügbar sind, was zu verringerter Leistung führt. Ein Verbindungspooler, der Verbindungen im Leerlauf reduziert und vorhandene Verbindungen wiederverwendet, hilft dabei, dies zu vermeiden. Weitere Informationen finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
 
 ## <a name="functional-limitations"></a>Funktionale Beschränkungen
 ### <a name="scale-operations"></a>Skalierungsvorgänge

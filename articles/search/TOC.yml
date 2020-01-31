@@ -64,15 +64,15 @@
 - name: Beispiele
   items:
     - name: 'Beispiele für C#'
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=csharp'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=csharp'
     - name: Beispiele für Java
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=java'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=java'
     - name: JavaScript-Beispiele
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=javascript'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=javascript'
     - name: Python-Beispiele
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=python'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST-Beispiele
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure-search&languages=rest'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
 - name: Training
   items:
     - name: Einführung (Microsoft Learn)
@@ -131,6 +131,8 @@
       items:
         - name: API-Versionen
           href: search-api-versions.md
+        - name: Liste der Previewfunktionen
+          href: search-api-preview.md
         - name: Entwickeln in .NET
           href: search-howto-dotnet-sdk.md
         - name: Aktualisieren des SDK
@@ -149,7 +151,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: Upgraden der REST-API
           href: search-api-migration.md
-    - name: Erstellen von Indizes
+    - name: Erstellen eines Index
       items:
         - name: Erstellen eines einfachen Index
           href: search-what-is-an-index.md
@@ -181,7 +183,7 @@
           href: search-howto-complex-data-types.md
         - name: Modellieren von relationalen Daten
           href: index-sql-relational-data.md
-    - name: Importieren (Indizierung)
+    - name: Indizierung (Import)
       items:
         - name: Übersicht über den Datenimport
           href: search-what-is-data-import.md
@@ -193,43 +195,45 @@
           href: search-howto-large-index.md
         - name: Verarbeiten gleichzeitiger Aktualisierungen
           href: search-howto-concurrency.md
-    - name: Indizieren von Azure-Blobdaten
+    - name: Verwenden eines Indexers
       items:
-        - name: Verwenden von KI mit Blobdaten
-          href: search-blob-ai-integration.md
-        - name: Hinzufügen der Volltextsuche
-          href: search-blob-storage-integration.md
-        - name: Einrichten eines Blobindexers
-          href: search-howto-indexing-azure-blob-storage.md
-        - name: Einrichten eines Azure Data Lake Storage Gen2-Indexers
-          href: search-howto-index-azure-data-lake-storage.md
-        - name: 'Indizieren von 1:n-Blobs'
-          href: search-howto-index-one-to-many-blobs.md
-        - name: Indizieren von CSV-Blobs
-          href: search-howto-index-csv-blobs.md
-        - name: Indizieren von JSON-Blobs
-          href: search-howto-index-json-blobs.md
-    - name: Indizieren mit Indexern
-      items:
-        - name: Übersicht über Indexer
+        - name: Konfigurieren von Indexern
           href: search-indexer-overview.md
-        - name: Azure Table Storage-Indexer
-          href: search-howto-indexing-azure-tables.md
-        - name: Azure SQL DB-Indexer
-          href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-        - name: Azure Cosmos DB-Indexer
-          href: search-howto-index-cosmosdb.md
-        - name: Zeitplanindexer
-          href: search-howto-schedule-indexers.md
         - name: Zuordnen von Feldern
           href: search-indexer-field-mappings.md
-        - name: Herstellen einer Verbindung mit einer verwalteten SQL-Instanz
-          href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
-        - name: Herstellen einer Verbindung mit virtuellen SQL Server-Computern
-          href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Überwachen von Indexern
           href: search-howto-monitor-indexers.md
-    - name: Anreichern mit KI
+        - name: Zeitplanindexer
+          href: search-howto-schedule-indexers.md
+        - name: Datenquellen
+          items:
+            - name: Azure-Blobs
+              items:
+                - name: Durchsuchen von Blobs
+                  href: search-blob-storage-integration.md
+                - name: Grundlegendes zu Blobs mit KI
+                  href: search-blob-ai-integration.md
+                - name: Konfigurieren eines Blobindexers
+                  href: search-howto-indexing-azure-blob-storage.md
+                - name: 'Indizieren von 1:n-Blobs'
+                  href: search-howto-index-one-to-many-blobs.md
+                - name: Indizieren von CSV-Blobs
+                  href: search-howto-index-csv-blobs.md
+                - name: Indizieren von JSON-Blobs
+                  href: search-howto-index-json-blobs.md
+            - name: Azure Cosmos DB
+              href: search-howto-index-cosmosdb.md
+            - name: Azure Data Lake Storage Gen2
+              href: search-howto-index-azure-data-lake-storage.md
+            - name: "Azure\_SQL-Datenbank"
+              href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+            - name: Azure Table Storage
+              href: search-howto-indexing-azure-tables.md
+            - name: Verwaltete SQL-Instanzen
+              href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
+            - name: SQL Server-VMs
+              href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
+    - name: KI-Anreicherung
       items:
         - name: Anfügen einer Cognitive Services-Ressource
           href: cognitive-search-attach-cognitive-services.md
@@ -326,27 +330,31 @@
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
-      href: 'https://docs.microsoft.com/cli/azure/search?view=azure-cli-latest'
+      href: /cli/azure/search?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/az.search
-    - name: .NET
-      href: /dotnet/api/?term=microsoft.azure.search
-    - name: .NET (Verwaltung)
-      href: /dotnet/api/?term=microsoft.azure.management.search
-    - name: Python (Verwaltung)
-      href: /python/api/?view=azure-python&term=search
-    - name: REST
-      href: /rest/api/searchservice
-    - name: REST (Verwaltung)
-      href: /rest/api/searchmanagement
-    - name: REST (Vorschauversion)
-      items:
-        - name: API-Version 2019-05-06-Preview
-          href: search-api-preview.md
-        - name: API zum Zurücksetzen von Qualifikationen
-          href: preview-api-resetskills.md
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.search/searchservices
+    - name: .NET
+      items:
+        - name: microsoft.azure.search
+          href: /dotnet/api/overview/azure/search?view=azure-dotnet
+        - name: microsoft.azure.management.search
+          href: /dotnet/api/overview/azure/search/management?view=azure-dotnet
+    - name: REST
+      items:
+        - name: Search 2019-05-06
+          href: /rest/api/searchservice
+        - name: Qualifikationen zurücksetzen (api-version=2019-05-06-Preview)
+          href: preview-api-resetskills.md
+        - name: Management 2015-08-15
+          href: /rest/api/searchmanagement
+        - name: Management 2019-10-01-Preview
+          href: /rest/api/searchmanagement/index-2019-10-01-preview
+    - name: Python
+      items:
+        - name: Verwaltungs-API
+          href: /python/api/overview/azure/search?view=azure-python
     - name: OData-Sprachreferenz
       items:
         - name: Übersicht
@@ -373,44 +381,47 @@
           href: search-query-odata-search-score-function.md
         - name: Grammatik der OData-Sprache
           href: search-query-odata-syntax-reference.md
-    - name: Referenz zu kognitiven Qualifikationen
-      href: cognitive-search-predefined-skills.md
+    - name: Referenz zu Skills
       items:
-        - name: Schlüsselwortextraktion
-          href: cognitive-search-skill-keyphrases.md
-        - name: Spracherkennung
-          href: cognitive-search-skill-language-detection.md
-        - name: Entitätserkennung
-          href: cognitive-search-skill-entity-recognition.md
-        - name: Textzusammenführung
-          href: cognitive-search-skill-textmerger.md
-        - name: Textaufteilung
-          href: cognitive-search-skill-textsplit.md
-        - name: Stimmung
-          href: cognitive-search-skill-sentiment.md
-        - name: Textübersetzung
-          href: cognitive-search-skill-text-translation.md
-        - name: Bildanalyse
-          href: cognitive-search-skill-image-analysis.md
-        - name: OCR
-          href: cognitive-search-skill-ocr.md
-        - name: Shaper
-          href: cognitive-search-skill-shaper.md
-        - name: Bedingt
-          href: cognitive-search-skill-conditional.md
-        - name: Dokumentextrahierung
-          href: cognitive-search-skill-document-extraction.md
-        - name: PII-Erkennung
-          href: cognitive-search-skill-pii-detection.md
-    - name: Benutzerdefinierte Qualifikationen
-      items:
-        - name: Benutzerdefinierte Web-API
-          href: cognitive-search-custom-skill-web-api.md
-    - name: Veraltete Fähigkeiten
-      href: cognitive-search-skill-deprecated.md
-      items:
-        - name: Erkennung benannter Entitäten
-          href: cognitive-search-skill-named-entity-recognition.md
+        - name: Integrierte Skills
+          items:
+            - name: Übersicht
+              href: cognitive-search-predefined-skills.md
+            - name: Bedingt
+              href: cognitive-search-skill-conditional.md
+            - name: Dokumentextrahierung
+              href: cognitive-search-skill-document-extraction.md
+            - name: Entitätserkennung
+              href: cognitive-search-skill-entity-recognition.md
+            - name: Bildanalyse
+              href: cognitive-search-skill-image-analysis.md
+            - name: Schlüsselwortextraktion
+              href: cognitive-search-skill-keyphrases.md
+            - name: Spracherkennung
+              href: cognitive-search-skill-language-detection.md
+            - name: OCR
+              href: cognitive-search-skill-ocr.md
+            - name: PII-Erkennung
+              href: cognitive-search-skill-pii-detection.md
+            - name: Stimmung
+              href: cognitive-search-skill-sentiment.md
+            - name: Shaper
+              href: cognitive-search-skill-shaper.md
+            - name: Textzusammenführung
+              href: cognitive-search-skill-textmerger.md
+            - name: Textaufteilung
+              href: cognitive-search-skill-textsplit.md
+            - name: Textübersetzung
+              href: cognitive-search-skill-text-translation.md
+        - name: Benutzerdefinierte Qualifikationen
+          items:
+            - name: Benutzerdefinierte Web-API
+              href: cognitive-search-custom-skill-web-api.md
+        - name: Veraltete Skills
+          href: cognitive-search-skill-deprecated.md
+          items:
+            - name: Erkennung benannter Entitäten
+              href: cognitive-search-skill-named-entity-recognition.md
 - name: Ressourcen
   items:
     - name: Azure-Communitysupport

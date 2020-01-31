@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979336"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720655"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -99,29 +99,11 @@ Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter 
 
 Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern. Wenn Sie sich für ein Azure-Abonnement registrieren, ist der Dienstadministrator standardmäßig mit dem Kontoadministrator identisch. Der Benutzer mit der Rolle „Kontoadministrator“ kann nicht auf das Azure-Portal zugreifen. Der Benutzer mit der Rolle „Dienstadministrator“ hat Vollzugriff auf das Azure-Portal. Wenn Kontoadministrator und Dienstadministrator identisch sind und Sie den Dienstadministrator in einen anderen Benutzer ändern, verliert der Kontoadministrator den Zugriff auf das Azure-Portal. Der Kontoadministrator kann aber immer das Kontocenter verwenden, um den Dienstadministrator wieder auf sich selbst festzulegen.
 
-Es gibt zwei Möglichkeiten zum Ändern des Dienstadministrators. Sie können diese Änderung im **Azure-Portal** oder **Kontocenter** vornehmen.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die Einschränkungen beim Ändern von Dienstadministratoren überprüfen.
-
-1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
-
-1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
-
-1. Klicken Sie auf **Eigenschaften**.
-
-    ![Screenshot des Kontoadministrators](./media/classic-administrators/account-admin.png)
-
-1. Klicken Sie oben auf **Dienstadministrator** um den Bereich „Dienstadministrator“ zu öffnen.
-
-    Wenn die Schaltfläche „Dienstadministrator“ deaktiviert ist, fehlen Ihnen Berechtigungen. Nur der Benutzer mit der Rolle „Kontoadministrator“ kann den Dienstadministrator ändern.
-
-1. Wählen Sie einen neuen Dienstadministrator aus, und klicken Sie dann auf **Speichern**.
+Befolgen Sie diese Schritte, um den Dienstadministrator im **Kontocenter** zu ändern.
 
 ### <a name="account-center"></a>Kontocenter
 
-1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die Einschränkungen beim Ändern von Dienstadministratoren überprüfen.
+1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die [Einschränkungen beim Ändern des Dienstadministrators](#limitations-for-changing-the-service-administrator) überprüfen.
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
 

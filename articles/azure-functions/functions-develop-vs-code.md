@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547420"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845405"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -65,11 +65,13 @@ Mithilfe der Functions-Erweiterung können Sie zugleich mit Ihrer ersten Funktio
 
 1. Wählen Sie den Ordner für Ihr Funktions-App-Projekt und dann **wählen Sie eine Sprache für Ihr Funktions-App-Projekt** aus.
 
+1. Wenn Sie die Core Tools noch nicht installiert haben, werden Sie aufgefordert, **eine Version der zu installierenden Core Tools auszuwählen**. Wählen Sie Version 2.x oder höher aus. 
+
 1. Wählen Sie die Funktionsvorlage **HTTP-Trigger** aus. Sie können sich aber auch alternativ für **Vorerst überspringen** entscheiden, um ein Projekt ohne eine Funktion zu erstellen. Sie können später jederzeit [Ihrem Projekt eine Funktion hinzufügen](#add-a-function-to-your-project).
 
     ![Auswählen der Vorlage für den HTTP-Trigger](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Geben Sie **HTTPTrigger** als Funktionsnamen ein und drücken Sie die EINGABETASTE, und wählen Sie dann die Autorisierung **Funktion** aus. Für diese Autorisierungsebene müssen Sie beim Aufrufen des Funktionsendpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys) angeben.
+1. Geben Sie **HttpExample** als Funktionsnamen ein und drücken Sie die EINGABETASTE, und wählen Sie dann die Autorisierung **Funktion** aus. Für diese Autorisierungsebene müssen Sie beim Aufrufen des Funktionsendpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys) angeben.
 
     ![Auswählen von Funktionsautorisierung](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindu
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>Veröffentlichen in Azure
 

@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der VMware-Bewertung in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154685"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846174"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -52,7 +52,7 @@ Neben der Ermittlung von Computern können mithilfe von „Azure Migrate: Server
 --- | ---
 **vCenter Server** | Computer, die ermittelt und bewertet werden sollen, müssen mit vCenter Server Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden.
 **Berechtigungen (Bewertung)** | Schreibgeschütztes vCenter Server-Konto
-**Berechtigungen (App-Ermittlung)** | vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“
+**Berechtigungen (App-Ermittlung)** | vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für **„Virtuelle Computer“ > „Gastvorgänge“** .
 **Berechtigungen (Visualisierung von Abhängigkeiten)** | vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für **Virtuelle Computer** > **Gastvorgänge**
 
 
@@ -67,8 +67,9 @@ In Azure Migrate erfolgt die Ermittlung und Bewertung über die [Azure Migrate-A
 
 **Device** | **Connection**
 --- | ---
-Appliance | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
+Appliance | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ```https://<appliance-ip-or-name>:44368``` auf die Applianceverwaltungs-App zugreifen zu können. <br/><br/>Ausgehende Verbindungen an Port 443 (HTTPS), 5671 und 5672 (AMQP), um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden.
 vCenter-Server | Eingehende Verbindungen an TCP-Port 443, damit die Appliance Konfigurations- und Leistungsmetadaten für Bewertungen sammeln kann <br/><br/> Die Appliance stellt standardmäßig über Port 443 eine Verbindung mit vCenter her. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie den Port beim Einrichten der Ermittlung ändern.
+ESXi-Hosts | **Nur erforderlich für die [Anwendungsermittlung](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#application-discovery) und [Visualisierung von Abhängigkeiten ohne Agent](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-dependency-visualization)** . <br/><br/> Die Appliance stellt eine Verbindung mit ESXi-Hosts am TCP-Port 443 her, um Anwendungen zu ermitteln und Abhängigkeitsvisualisierungen ohne Agent auf den VMs auszuführen, die auf den Hosts ausgeführt werden.
 
 ## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten
 

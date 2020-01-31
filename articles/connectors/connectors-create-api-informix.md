@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665836"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757967"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Verwalten von IBM Informix-Datenbankressourcen mithilfe von Azure Logic Apps
 
@@ -27,7 +27,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Für lokale Datenbanken [laden Sie das lokale Datengateway herunter, und installieren Sie es](../logic-apps/logic-apps-gateway-install.md) auf einem lokalen Computer, und [erstellen Sie dann eine Azure-Datengatewayressource im Azure-Portal](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -58,7 +58,7 @@ In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App z
 
 1. Geben Sie die Informationen für Ihrem ausgewählte Aktion ein:
 
-   | Action | BESCHREIBUNG | Eigenschaften und Beschreibungen |
+   | Aktion | Beschreibung | Eigenschaften und Beschreibungen |
    |--------|-------------|-----------------------------|
    | **Tabellen abrufen** | Auflisten von Datenbanktabellen durch Ausführen einer Informix-CALL-Anweisung. | Keine |
    | **Zeilen abrufen** | Abrufen aller Zeilen aus der angegebenen Tabelle durch Ausführen einer Informix-`SELECT *`-Anweisung. | **Tabellenname**: Der Name der gewünschten Informix-Tabelle. <p><p>Um dieser Aktion weitere Eigenschaften hinzuzufügen, wählen Sie diese aus der Liste **Neuen Parameter hinzufügen** aus. Weitere Informationen finden Sie im [Referenzthema des Connectors](/connectors/informix/). |
@@ -78,12 +78,12 @@ In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App z
 
 1. Geben Sie diese Verbindungsinformationen an, und wählen Sie dann **Erstellen** aus.
 
-   | Eigenschaft | JSON-Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
+   | Eigenschaft | JSON-Eigenschaft | Erforderlich | Beispielwert | Beschreibung |
    |----------|---------------|----------|---------------|-------------|
    | Verbindungsname | `name` | Ja | `informix-demo-connection` | Der für die Verbindung mit Ihrer Informix-Datenbank zu verwendende Name. |
    | Server | `server` | Ja | - Cloud: `informixdemo.cloudapp.net:9089` <br>- Lokal: `informixdemo:9089` | Die TCP/IP-Adresse oder der Alias, im IPv4- oder IPv6-Format, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
    | Datenbank | `database` | Ja | `nwind` | Der Name der relationalen DRDA-Datenbank (RDBNAM) oder der Name der Informix-Datenbank (dbname). Informix akzeptiert eine 128-Byte-Zeichenfolge. |
-   | Authentication | `authentication` | Nur lokal | **Standard** oder **Windows** (Kerberos). | Der Authentifizierungstyp, der für Ihre Informix-Datenbank erforderlich ist. Diese Eigenschaft wird nur angezeigt, wenn Sie **Über lokales Datengateway verbinden** auswählen. |
+   | Authentifizierung | `authentication` | Nur lokal | **Standard** oder **Windows** (Kerberos). | Der Authentifizierungstyp, der für Ihre Informix-Datenbank erforderlich ist. Diese Eigenschaft wird nur angezeigt, wenn Sie **Über lokales Datengateway verbinden** auswählen. |
    | Username | `username` | Nein | <*database-user-name*> | Ein Benutzername für die Datenbank. |
    | Kennwort | `password` | Nein | <*database-password*> | Ein Kennwort für die Datenbank. |
    | Gateway | `gateway` | Nur lokal | - <*Azure-subscription*> <br>- <*Azure-on-premises-data-gateway-resource*> | Der Name des Azure-Abonnements und der Azure-Ressource für das lokale Datengateway, das Sie im Azure-Portal erstellt haben. Die Eigenschaft **Gateway** und die Untereigenschaften werden nur angezeigt, wenn Sie **Über lokales Datengateway verbinden** auswählen. |

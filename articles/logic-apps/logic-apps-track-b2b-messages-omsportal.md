@@ -3,17 +3,15 @@ title: Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 description: Nachverfolgen der B2B-Kommunikation für Integrationskonten und Azure Logic Apps mit Azure Log Analytics
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792937"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773715"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 
@@ -145,7 +143,7 @@ Für jeden Nachrichtentyp sind hier die Eigenschaftsbeschreibungen und Namensfor
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen AS2-Nachrichten aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine AS2-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine AS2-Vereinbarung |
@@ -154,7 +152,7 @@ Hier sind die Eigenschaftsbeschreibungen für die einzelnen AS2-Nachrichten aufg
 | Ack | MDN-Nachrichtenstatus <br>Akzeptiert = Positive MDN wurde empfangen oder gesendet. <br>Ausstehend = Es wird auf das Empfangen oder Senden einer MDN gewartet. <br>Abgelehnt = Eine negative MDN wurde empfangen oder gesendet. <br>Nicht erforderlich = Eine MDN wurde in der Vereinbarung nicht eingerichtet. |
 | Direction | Richtung der AS2-Nachricht |
 | Korrelations-ID | ID, die alle Trigger und Aktionen in einer Logik-App korreliert |
-| Nachrichten-ID | AS2-Nachrichten-ID aus den AS2-Nachrichtenheadern |
+| Meldungs-ID | AS2-Nachrichten-ID aus den AS2-Nachrichtenheadern |
 | Timestamp | Der Zeitpunkt, zu dem die AS2-Aktion die Nachricht verarbeitet hat |
 |          |             |
 
@@ -176,13 +174,13 @@ Hier sind die Namensformate für die einzelnen heruntergeladenen AS2-Nachrichten
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen X12-Nachrichten aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine X12-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine X12-Vereinbarung |
 | Logik-App | Die Logik-App, in der die X12-Aktionen eingerichtet wurden |
 | Status | X12-Nachrichtenstatus <br>Erfolg = Eine gültige X12-Nachricht wurde empfangen oder gesendet. Keine Funktionsbestätigung wird eingerichtet. <br>Erfolg = Eine gültige X12-Nachricht wurde empfangen oder gesendet. Eine Funktionsbestätigung wird eingerichtet und empfangen, oder eine Funktionsbestätigung wird gesendet. <br>Fehler = Eine ungültige X12-Nachricht wurde empfangen oder gesendet. <br>Ausstehend = Eine gültige X12-Nachricht wurde empfangen oder gesendet. Eine Funktionsbestätigung wird eingerichtet, und eine Funktionsbestätigung wird erwartet. |
-| Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet. <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet. <br>Ausstehend = Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen. <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden <br>Nicht erforderlich = Funktionsbestätigung wurde nicht eingerichtet. |
+| Ack | Status der Funktionsbestätigung (997) <br>Akzeptiert = Positive Funktionsbestätigung empfangen oder gesendet. <br>Abgelehnt = Negative Funktionsbestätigung empfangen oder gesendet. <br>Ausstehend = Funktionsbestätigung wird erwartet, wurde aber noch nicht empfangen. <br>Ausstehend = Funktionsbestätigung wurde generiert, konnte aber nicht an Partner gesendet werden. <br>Nicht erforderlich = Funktionsbestätigung wurde nicht eingerichtet. |
 | Direction | Richtung der X12-Nachricht |
 | Korrelations-ID | ID, die alle Trigger und Aktionen in einer Logik-App korreliert |
 | Msg type | EDI-X12-Nachrichtentyp |
@@ -209,7 +207,7 @@ Hier sind die Namensformate für die einzelnen heruntergeladenen X12-Nachrichten
 
 Hier sind die Eigenschaftsbeschreibungen für die einzelnen EDIFACT-Nachrichten aufgeführt.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | Sender | Der unter **Empfangseinstellungen** angegebene Gastpartner oder der unter **Sendeeinstellungen** angegebene Hostpartner für eine EDIFACT-Vereinbarung |
 | Receiver | Der unter **Empfangseinstellungen** angegebene Hostpartner oder der unter **Sendeeinstellungen** angegebene Gastpartner für eine EDIFACT-Vereinbarung |

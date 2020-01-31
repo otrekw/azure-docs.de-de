@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884144"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769243"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -41,10 +41,10 @@ Die folgenden Beschreibungen entsprechen den in Grün nummerierten Schritten im 
 Die folgenden Beschreibungen entsprechen den in Grün nummerierten Schritten im vorigen Diagramm.
 
 1. Im obigen Diagramm wird von Ihrer Anwendung ein Zertifikat erstellt, das intern mit der Erstellung eines Schlüssels in Ihrem Schlüsselspeicher beginnt.
-2. Key Vault sendet eine SSL-Zertifikatanforderung an die Zertifizierungsstelle.
+2. Key Vault sendet eine TSL-/SSL-Zertifikatanforderung an die Zertifizierungsstelle.
 3. Ihre Anwendung fragt in einem Schleifen- und Warteprozess Ihren Key Vault für die Zertifikatsvervollständigung ab. Die Zertifikatserstellung ist abgeschlossen, sobald Key Vault die Antwort der Zertifizierungsstelle mit dem x509-Zertifikat erhält.
-4. Die Zertifizierungsstelle antwortet auf die SSL-Zertifikatanforderung von Key Vault mit einem x509-SSL-Zertifikat.
-5. Die Erstellung Ihres neuen Zertifikats wird mit der Zusammenführung des x509-Zertifikats für die Zertifizierungsstelle abgeschlossen.
+4. Die Zertifizierungsstelle antwortet auf die TSL-/SSL-Zertifikatanforderung von Key Vault mit einem TSL-/SSL-X.509-Zertifikat.
+5. Die Erstellung Ihres neuen Zertifikats wird mit der Zusammenführung des TLS/SSL-X.509-Zertifikats für die Zertifizierungsstelle abgeschlossen.
 
 ## <a name="asynchronous-process"></a>Asynchroner Prozess
 Die Erstellung von KV-Zertifikaten ist ein asynchroner Prozess. Bei diesem Vorgang wird eine KV-Zertifikatanforderung erstellt, woraufhin ein HTTP-Statuscode von 202 (Akzeptiert) zurückgegeben wird. Der Status der Anforderung kann durch Abfragen des ausstehenden Objekts verfolgt werden, das durch diesen Vorgang erstellt wurde. Der vollständige URI des ausstehenden Objekts wird im LOCATION-Header zurückgegeben.  
@@ -90,6 +90,6 @@ Beachten Sie, dass bei einer Bestellung beim Zertifikataussteller die x509-Zerti
 
  Autorisierung: Benötigt die Berechtigung für Zertifikate bzw. die Erstellung.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
  - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)
  - [Überwachen und Verwalten der Zertifikaterstellung](create-certificate-scenarios.md)

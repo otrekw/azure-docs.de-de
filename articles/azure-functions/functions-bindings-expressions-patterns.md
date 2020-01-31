@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769522"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766254"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions-Muster für Bindungsausdrücke
 
@@ -131,7 +131,19 @@ public static void Run(
 
 ```
 
-Sie können auch Ausdrücke für Teile des Dateinamens erstellen, z.B. die Erweiterung. Weitere Informationen zum Verwenden von Ausdrücken und Mustern in der Blob-Pfadzeichenfolge finden Sie im Artikel zu [Azure Blob Storage-Bindungen](functions-bindings-storage-blob.md).
+Sie können auch Ausdrücke für Teile des Dateinamens erstellen. Im folgenden Beispiel wird die Funktion nur für Dateinamen ausgelöst, die einem Muster entsprechen: `anyname-anyfile.csv`
+
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+Weitere Informationen zum Verwenden von Ausdrücken und Mustern in der Blob-Pfadzeichenfolge finden Sie im Artikel zu [Azure Blob Storage-Bindungen](functions-bindings-storage-blob.md).
 
 ## <a name="trigger-metadata"></a>Metadaten für Trigger
 

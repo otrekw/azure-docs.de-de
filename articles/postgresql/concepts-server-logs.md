@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 87f79f0ed21ec1f6a550c47f9f60d18511883300
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768213"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844937"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 Azure Database for PostgreSQL ermöglicht es Ihnen, die Standardprotokolle von Postgres zu konfigurieren und darauf zuzugreifen. Die Protokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Beispiele für Protokollierungsinformationen, für die die Konfiguration und der Zugriff möglich sind, sind Fehler, Abfrageinformationen, Autovacuum-Datensätze, Verbindungen und Prüfpunkte. (Der Zugriff auf Transaktionsprotokolle ist nicht verfügbar.)
@@ -69,7 +69,7 @@ Informationen zum Aktivieren der Diagnoseprotokolle per PowerShell, CLI oder RES
 
 ### <a name="access-diagnostic-logs"></a>Zugreifen auf Diagnoseprotokolle
 
-Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Für Azure Storage ist das Schema im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md) beschrieben. Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Die Art und Weise, wie Sie auf die Protokolle zugreifen, hängt vom gewählten Endpunkt ab. Informationen zu Azure Storage finden Sie im Artikel [Protokollspeicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md). Informationen zu Event Hubs finden Sie im Artikel zum [Streamen von Azure-Protokollen](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
 Bei Azure Monitor-Protokollen werden die Protokolle an den von Ihnen ausgewählten Arbeitsbereich gesendet. Für die Postgres-Protokolle wird der Sammlungsmodus **AzureDiagnostics** verwendet, damit sie über die Tabelle „AzureDiagnostics“ abgefragt werden können. Die Felder der Tabelle sind unten beschrieben. Weitere Informationen zu Abfragen und Warnungen finden Sie in der Übersicht über [Abfragen für Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 
@@ -78,7 +78,7 @@ Hier sind Abfragen angegeben, die Sie als Einstieg ausprobieren können. Sie kö
 Suchen nach allen Postgres-Protokollen des letzten Tags für einen bestimmten Server
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 
@@ -107,7 +107,7 @@ In der folgenden Tabelle sind die Felder für den Typ **PostgreSQLLogs** beschri
 | resourceId | Ressourcen-URI |
 | Resource | Name des Servers |
 | Category | `PostgreSQLLogs` |
-| OperationName | `LogEvent` |
+| Vorgangsname | `LogEvent` |
 | errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
 | `Message` | Primäre Protokollmeldung | 
 | Domain | Serverversion, Beispiel: postgres-10 |

@@ -7,7 +7,7 @@
     - name: Was ist die Azure AD Connect-Cloudbereitstellung?
       href: what-is-cloud-provisioning.md
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: "Integrieren einer einzelnen AD-Gesamtstruktur in einen einzelnen Azure\_AD-Mandanten"
@@ -34,6 +34,8 @@
           href: how-to-install.md
         - name: Konfiguration der Cloudbereitstellung
           href: how-to-configure.md
+        - name: Verwenden des einmaligen Anmeldens
+          href: how-to-sso.md
     - name: Planen und Entwerfen
       items:
         - name: Topologien und Szenarien für die Azure AD Connect-Cloudbereitstellung

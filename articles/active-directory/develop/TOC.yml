@@ -753,3 +753,5 @@
       href: developer-support-help-options.md
     - name: Verwaltete Identitäten für Azure-Ressourcen
       href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+    - name: Videos zu Microsoft Identity Platform
+      href: identity-videos.md

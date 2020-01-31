@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: fb0803987428ced688e83a37fae36c61b63a28a8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/23/2020
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770117"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774801"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
@@ -37,6 +37,11 @@ Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLIC
    az postgres server configuration set --resource-group myresourcegroup --server-name mydemoserver --name azure.replication_support --value REPLICA
    ```
 
+> [!NOTE]
+> Wenn Sie bei dem Versuch, „azure.replication_support“ über die Azure CLI festzulegen, die Fehlermeldung „Ungültiger Wert angegeben“ erhalten, ist es wahrscheinlich, dass auf Ihrem Server „REPLICA“ bereits standardmäßig festgelegt ist. Ein Fehler verhindert, dass diese Einstellung auf neueren Servern, auf denen „REPLICA“ der interne Standardwert ist, ordnungsgemäß wiedergegeben wird. <br><br>
+> Sie können die Schritte zum Vorbereiten des Masters überspringen und zum Erstellen des Replikats wechseln. <br><br>
+> Wenn Sie bestätigen möchten, dass sich Ihr Server in dieser Kategorie befindet, besuchen Sie die Replikationsseite des Servers im Azure-Portal. „Replikation deaktivieren“ ist dann abgeblendet, und „Replikat hinzufügen“ ist auf der Symbolleiste aktiviert.
+
 2. Starten Sie den Server neu, um die Änderung zu übernehmen.
 
    ```azurecli-interactive
@@ -47,7 +52,7 @@ Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLIC
 
 Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) erfordert die folgenden Parameter:
 
-| Einstellung | Beispielwert | BESCHREIBUNG  |
+| Einstellung | Beispielwert | Beschreibung  |
 | --- | --- | --- |
 | resource-group | myresourcegroup |  Die Ressourcengruppe, in der der Replikatserver erstellt wird.  |
 | name | mydemoserver-replica | Der Name des neuen Replikatservers, der erstellt wird. |
