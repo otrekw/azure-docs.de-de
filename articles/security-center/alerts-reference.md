@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3b4b9f782d3306777e853a22ed24fac803da4fb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514764"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835255"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -234,7 +234,7 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 ||||
 
 
-## <a name="alerts-akscluster"></a>Warnungen auf AKS-Clusterebene
+## <a name="alerts-akscluster"></a>Warnungen für Container: Azure Kubernetes Service-Clusters
 
 [Weitere Details und Hinweise](security-center-alerts-compute.md#azure-containers-)
 
@@ -249,7 +249,7 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 |**PREVIEW - Container with a sensitive volume mount detected** (VORSCHAU: Container mit sensiblem Volume erkannt)|Bei der Analyse des Kubernetes-Überwachungsprotokolls wurde ein neuer Container mit einer Bereitstellung eines sensiblen Volumes erkannt. Das erkannte Volume verfügt über den Typ „hostPath“, mit dem eine sensible Datei bzw. ein Ordner vom Knoten aus in den Container eingebunden wird. Wenn der Container kompromittiert wird, kann der Angreifer diese Einbindung verwenden, um Zugriff auf den Knoten zu erlangen.|PrivilegeEscalation|
 ||||
 
-## <a name="alerts-containerhost"></a>Warnungen auf Containerhostebene
+## <a name="alerts-containerhost"></a>Warnungen für Container: Hostebene
 
 [Weitere Details und Hinweise](security-center-alerts-compute.md#azure-containers-)
 
@@ -304,7 +304,7 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 ||||
 
 
-## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+## <a name="alerts-azurecosmos"></a>Warnungen für Azure Cosmos DB (Vorschau)
 
 [Weitere Details und Hinweise](security-center-alerts-data-services.md#azure-cosmos-db)
 

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 682bf26c1485bd9e2ae288a6947e9ad573463069
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708515"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705461"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -90,7 +90,8 @@ Dieser Prozess hat Auswirkungen auf den Preis, da er auf der Speicherebene erfol
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
 >- Die bereichsübergreifende Wiederherstellung (Cross Region Restore, CRR) steht aktuell nur in der Region „USA, Westen-Mitte“ (WCUS) zur Verfügung.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
->- Verwenden Sie *"featureName": "CrossRegionRestore"* , um das Onboarding Ihres Abonnements für dieses Feature durchzuführen.
+>- Verwenden Sie den folgenden Befehl, um das Onboarding Ihres Abonnements für diese Funktion durchzuführen:<br>
+>  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
 >- Wenn das Onboarding für dieses Feature im Rahmen der eingeschränkten Public Preview-Phase erfolgt, enthält die Bestätigungs-E-Mail Details zur Preisrichtlinie.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
 >- Momentan wird CRR nur für virtuelle Azure-Computer mit dem Sicherungsverwaltungstyp „ARM“ unterstützt. (Klassische virtuelle Azure-Computer werden nicht unterstützt.)  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.

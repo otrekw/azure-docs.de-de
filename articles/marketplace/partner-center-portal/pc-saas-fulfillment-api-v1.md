@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816566"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715390"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS Fulfillment APIs Version 1 (veraltet)
 
@@ -61,7 +61,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 |  |  |
 
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
@@ -86,10 +86,10 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 
 | **Parametername** | **Datentyp** | **Beschreibung**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Zeichenfolge        | ID des SaaS-Abonnements.          |
-| subscriptionName| Zeichenfolge| Name des SaaS-Abonnements, das vom Benutzer beim Abonnieren des SaaS-Diensts in Azure festgelegt wurde.|
-| OfferId            | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat. |
-| planId             | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.  |
+| id                 | String        | ID des SaaS-Abonnements.          |
+| subscriptionName| String| Name des SaaS-Abonnements, das vom Benutzer beim Abonnieren des SaaS-Diensts in Azure festgelegt wurde.|
+| OfferId            | String        | Angebots-ID, die der Benutzer abonniert hat. |
+| planId             | String        | Tarif-ID, die der Benutzer abonniert hat.  |
 |  |  |  |
 
 
@@ -130,7 +130,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 |  **Headerschlüssel**        | **Erforderlich** |  **Beschreibung**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
@@ -195,7 +195,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**          | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
@@ -259,7 +259,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
@@ -309,7 +309,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
@@ -332,9 +332,9 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 | **Parametername** | **Datentyp** | **Beschreibung**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Zeichenfolge        | ID des Vorgangs.                                                                      |
+| id                 | String        | ID des Vorgangs.                                                                      |
 | status             | Enum          | Vorgangsstatus, einer der folgenden Werte: `In Progress`, `Succeeded`, oder `Failed`.          |
-| resourceLocation   | Zeichenfolge        | Link zum erstellten oder geänderten Abonnement. Hilft dem Client beim Abrufen des aktualisierten Status nach dem Vorgang. Dieser Wert wird für `Unsubscribe`-Vorgänge nicht festgelegt. |
+| resourceLocation   | String        | Link zum erstellten oder geänderten Abonnement. Hilft dem Client beim Abrufen des aktualisierten Status nach dem Vorgang. Dieser Wert wird für `Unsubscribe`-Vorgänge nicht festgelegt. |
 | created            | Datetime      | Erstellungszeitpunkt (UTC) des Vorgangs.                                                           |
 | lastModified       | Datetime      | Letzte Aktualisierung des Vorgangs in UTC.                                                      |
 |  |  |  |
@@ -377,7 +377,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
@@ -402,10 +402,10 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 | **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure.    |
-| offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat.         |
-| planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
-| saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
+| id                     | String        | ID der SaaS-Abonnementsressource in Azure.    |
+| offerId                | String        | Angebots-ID, die der Benutzer abonniert hat.         |
+| planId                 | String        | Tarif-ID, die der Benutzer abonniert hat.          |
+| saasSubscriptionName   | String        | Name des SaaS-Abonnements.                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
 | created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
 | lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
@@ -449,7 +449,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
-*Header*
+*Headers*
 
 | **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
@@ -474,10 +474,10 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 
 | **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure    |
-| offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat         |
-| planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat          |
-| saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements                |
+| id                     | String        | ID der SaaS-Abonnementsressource in Azure    |
+| offerId                | String        | Angebots-ID, die der Benutzer abonniert hat         |
+| planId                 | String        | Tarif-ID, die der Benutzer abonniert hat          |
+| saasSubscriptionName   | String        | Name des SaaS-Abonnements                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
 | created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC |
 | lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC |
@@ -524,14 +524,14 @@ Ein SaaS-Webhook wird verwendet, um Änderungen proaktiv an den SaaS-Dienst zu m
 
 | **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Zeichenfolge       | Eindeutige ID für den ausgelösten Vorgang.                |
-| activityId   | Zeichenfolge        | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet.               |
-| subscriptionId                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure.    |
-| offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.        |
-| publisherId                | Zeichenfolge        | Herausgeber-ID des SaaS-Angebots         |
-| planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.          |
-| action                 | Zeichenfolge        | Die Aktion, die diese Benachrichtigung auslöst. Mögliche Werte: Activate, Delete, Suspend, Reinstate, Update          |
-| timeStamp                 | Zeichenfolge        | Zeitstempelwert in UTC, als diese Benachrichtigung ausgelöst wurde.          |
+| id  | String       | Eindeutige ID für den ausgelösten Vorgang.                |
+| activityId   | String        | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet.               |
+| subscriptionId                     | String        | ID der SaaS-Abonnementsressource in Azure.    |
+| offerId                | String        | Angebots-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.        |
+| publisherId                | String        | Herausgeber-ID des SaaS-Angebots         |
+| planId                 | String        | Tarif-ID, die der Benutzer abonniert hat. Nur mit der Aktion „Update“ bereitgestellt.          |
+| action                 | String        | Die Aktion, die diese Benachrichtigung auslöst. Mögliche Werte: Activate, Delete, Suspend, Reinstate, Update          |
+| timeStamp                 | String        | Zeitstempelwert in UTC, als diese Benachrichtigung ausgelöst wurde.          |
 |  |  |  |
 
 

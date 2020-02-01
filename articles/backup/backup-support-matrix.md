@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708479"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705376"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -33,7 +33,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Datenquelle im Tresorspeicher** | Maximal 54.400 GB. Für Azure-VM-Sicherungen gilt kein Grenzwert.
 **Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
-**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
+**Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault). Das Verschieben von Tresoren über Regionen hinweg wird jedoch nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
 

@@ -3,12 +3,12 @@ title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ef5571e6a059eedeba169765785bb0f840c8f256
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689188"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710868"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -405,7 +405,7 @@ PolicyState     : Valid
 
 In diesem Abschnitt wird der PowerShell-Befehl zum Einrichten des Systemstatus im MABS-Agent beschrieben.
 
-### <a name="schedule"></a>Schedule
+### <a name="schedule"></a>Zeitplan
 
 ```powershell
 $sched = New-OBSchedule -DaysOfWeek Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday -TimesOfDay 2:00
@@ -629,7 +629,7 @@ Das `$Rps`-Objekt ist ein Array von Sicherungspunkten. Das erste Element ist der
 
 ### <a name="specifying-an-item-to-restore"></a>Angeben eines wiederherzustellenden Elements
 
-Geben Sie den Dateinamen relativ zum Stammvolumen an, um eine bestimmte Datei wiederherzustellen. Führen Sie beispielsweise den folgenden Befehl aus, um C:\Test\Cat.job abzurufen. 
+Geben Sie den Dateinamen relativ zum Stammvolumen an, um eine bestimmte Datei wiederherzustellen. Führen Sie beispielsweise den folgenden Befehl aus, um „C:\Test\Cat.job“ abzurufen. 
 
 ```powershell
 $Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE

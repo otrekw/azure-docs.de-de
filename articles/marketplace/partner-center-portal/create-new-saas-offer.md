@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.date: 01/22/2020
+ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045532"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705818"
 ---
 # <a name="create-a-new-saas-offer"></a>Erstellen eines neuen SaaS-Angebots
 
@@ -111,7 +111,7 @@ Erstellen Sie eine Marketplace-Liste, um mit Microsoft für Ihr Geschäft zu wer
 - **Wie sollen potenzielle Kunden mit diesem Angebot interagieren?**
 
 ##### <a name="get-it-now-free"></a>Jetzt abrufen (kostenlos)
-Listen Sie Ihr Angebot für Kunden als kostenlos, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden auf Ihre App zugreifen können.  Beispiel: `https://contoso.com/saas-app`
+Listen Sie Ihr kostenloses Angebot für Kunden, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden per [1-Klick-Authentifizierung über Azure Active Directory](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können.  Beispiel: `https://contoso.com/saas-app`
 
 ##### <a name="free-trial-listing"></a>Kostenlose Testversion (Listing)
 Listen Sie Ihr Angebot für Kunden mit einem Link zu einer kostenlosen Testversion, indem Sie eine gültige URL (beginnend mit *http* oder *https*) angeben, mit der die Kunden [per 1-Klick-Authentifizierung über Azure Active Directory](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials) eine Testversion erhalten können.  Beispiel: `https://contoso.com/trial/saas-app`. Kostenlose Testversionen in der Angebotsliste werden von Ihrem Dienst erstellt, verwaltet und konfiguriert und weisen keine von Microsoft verwalteten Abonnements auf.
@@ -257,9 +257,9 @@ Um Ihre **Angebotsbeschreibung** ansprechender zu gestalten, formatieren Sie die
 
 ![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
 
-Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
+Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
 
-- Um das Format der Inhalte zu ändern, heben Sie den zu formatierenden Text hervor und wählen ein Textformat aus, wie unten dargestellt:
+- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text und wählen ein Textformat aus, wie unten dargestellt:
 
      ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
 

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0eafd090366623919891ff0b03dd85a0d3dbcf88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 61bc77e7ac7671cd439eedea25eac11c91457aa9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263573"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838716"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-Partner und Peeringstandorte
 
@@ -119,7 +119,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Unterstützt |Unterstützt |Amsterdam, Chicago, Dallas, London, Newport (Wales), Sao Paulo, Seattle, Silicon Valley, Singapur, Washington DC |
 | **LG CNS** |Unterstützt |Unterstützt |Busan, Seoul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Hongkong SAR, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Tokyo, Toronto, Washington DC, Zürich |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genf, Hongkong SAR, Las Vegas, London, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Sydney, Tokyo, Toronto, Washington DC, Zürich |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Unterstützt |Unterstützt |London |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Unterstützt |Unterstützt |Dallas, Los Angeles, Miami, Sao Paulo, Washington, D.C. |
 | **[Daten der nächsten Generation](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Unterstützt |Unterstützt |Newport(Wales) |
@@ -163,7 +163,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 
 ### <a name="national-cloud-environment"></a>Nationale Cloudumgebungen
 
-Nationale Azure-Clouds sind voneinander und vom globalen Azure Commercial isoliert. ExpressRoute für eine Azure-Cloud kann keine Verbindung mit den Azure-Regionen in den anderen Clouds herstellen. 
+Nationale Azure-Clouds sind voneinander und vom globalen Azure Commercial isoliert.Nationale Azure-Clouds sind voneinander und vom globalen Azure Commercial isoliert. ExpressRoute für eine Azure-Cloud kann keine Verbindung mit den Azure-Regionen in den anderen Clouds herstellen. 
 
 ### <a name="us-government-cloud"></a>US-Government Cloud
 
@@ -181,6 +181,7 @@ Nationale Azure-Clouds sind voneinander und vom globalen Azure Commercial isolie
 | **Service Provider** | **Microsoft Azure** | **Office 365** | **Speicherorte** |
 | --- | --- | --- | --- |
 | **China Telecom** |Unterstützt |Nicht unterstützt |Peking (Beijing), Peking2 (Beijing2), Shanghai, Shanghai2 |
+| **China Unicom** | Unterstützt | Nicht unterstützt | Peking2 |
 | **[GDS](http://www.gds-services.com/en/about_2.html)** |Unterstützt |Nicht unterstützt |Peking2, Shanghai2 |
 
 Weitere Informationen finden Sie unter [ExpressRoute in China](http://www.windowsazure.cn/home/features/expressroute/).

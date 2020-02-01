@@ -3,12 +3,12 @@ title: Sichern einer Azure-VM über die VM-Einstellungen
 description: In diesem Artikel erfahren Sie, wie Sie entweder einen einzelnen virtuellen Azure-Computer oder mehrere virtuelle Azure-Computer mit dem Azure Backup-Dienst sichern können.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: bd75bdfb3fe9939c576fe289f6be38ebe875e020
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294064"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705444"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -79,16 +79,11 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 Befolgen Sie die Anweisungen in diesem Artikel, um die Sicherung für Azure-VMs zu aktivieren, indem Sie einen Azure Backup Recovery Services-Tresor einrichten und die Sicherung im Tresor aktivieren.
 
 >[!NOTE]
-> Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.
+> **Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.**
 >
 >Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
 >
-> Diese Lösung ist in den folgenden Szenarien besonders nützlich:
->  
->1. Sie verfügen über kritische Daten, die auf nur eine m Datenträger gesichert werden sollen, und Sie möchten die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern. Dadurch werden die Kosten für den Sicherungsspeicher minimiert.  
->2. Sie verfügen über andere Sicherungslösungen für einen Teil ihrer VM-Daten. Sie sichern beispielsweise Ihre Datenbanken oder Daten mit einer anderen Workloadsicherungslösung und möchten für die übrigen Datenträger und Daten eine Sicherung auf Azure VM-Ebene verwenden, um ein effizientes und robustes System mit den besten verfügbaren Funktionen zu erstellen.
->
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
+>**Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

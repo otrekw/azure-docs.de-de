@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513931"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715523"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -72,7 +72,7 @@ Führen Sie folgende Schritte durch:
 
  Nachdem Sie nun über die erforderlichen Anmeldeinformationen verfügen, können Sie das Gerät und die Sensoren definieren. Dazu erstellen Sie die Metadaten durch Aufrufen von FarmBeats-APIs. Beachten Sie, dass Sie die APIs als die Client-App, die Sie im obigen Abschnitt erstellt haben, aufrufen müssen.
 
- Der FarmBeats-Datenhub bietet folgende APIs für die Erstellung und Verwaltung von Geräte- oder Sensormetadaten:
+ Der FarmBeats-Datenhub bietet folgende APIs für die Erstellung und Verwaltung von Geräte- oder Sensormetadaten: Beachten Sie, dass Sie als Partner nur über Zugriff zum Lesen, Erstellen und Aktualisieren der Metadaten verfügen. **Das Löschen durch einen Partner ist nicht zulässig.**
 
 - /**DeviceModel:** DeviceModel entspricht den Metadaten des Geräts, beispielsweise dem Hersteller und dem Gerätetyp, bei dem es sich um ein Gateway oder einen Knoten handeln kann.
 - /**Device:** „Gerät“ (Device) entspricht einem physischen Gerät, das in dem landwirtschaftlichen Betrieb vorhanden ist.
@@ -381,6 +381,41 @@ Hier finden Sie ein Beispiel für eine Telemetrienachricht:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Sie können keine Telemetriedaten anzeigen, nachdem Sie historische/Streamingdaten von Ihren Sensoren erfasst haben.
+
+**Symptom**: Geräte oder Sensoren werden bereitgestellt, und Sie haben die Geräte/Sensoren in FarmBeats erstellt und Telemetrie erfasst und an EventHub gesendet, aber Sie können keine Telemetriedaten in FarmBeats abrufen oder anzeigen.
+
+**Korrekturmaßnahme**:
+
+1. Stellen Sie sicher, dass Sie die Partnerregistrierung korrekt durchgeführt haben. Um dies zu überprüfen, wechseln Sie zu Ihrem Datenhub-Swagger, navigieren zur Partner-API, führen ein „Get“ aus und sehen nach, ob der Partner registriert ist. Falls nicht, befolgen Sie die [hier beschriebenen Schritte](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats), um den Partner hinzuzufügen.
+2. Stellen Sie sicher, dass Sie die Metadaten (DeviceModel, Device, SensorModel, Sensor) unter Verwendung der Partnerclient-Anmeldeinformationen erstellt haben.
+3. Stellen Sie sicher, dass Sie das richtige Telemetriemeldungsformat verwendet haben (wie unten angegeben):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

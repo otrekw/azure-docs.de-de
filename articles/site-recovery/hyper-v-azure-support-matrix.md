@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: bfa3f592ca799b71bef7c7f9409864026f6c8d6a
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863892"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774423"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
@@ -33,7 +33,7 @@ Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung 
 **Server** | **Anforderungen** | **Details**
 --- | --- | ---
 Hyper-V (Ausführung ohne Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (einschließlich Server Core-Installation), Windows Server 2012 R2 mit den neuesten Updates | Wenn Sie Windows Server 2012 R2 mit SCVMM 2012 R2 mit Azure Site Recovery bzw. nur SCVMM 2012 R2 mit Azure Site Recovery konfiguriert haben und nun ein Upgrade des Betriebssystems durchführen möchten, befolgen Sie die Anweisungen in der [Dokumentation](upgrade-2012R2-to-2016.md). 
-Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2019-Hosts in Virtual Machine Manager 2019 verwaltet werden. Ebenso sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/>
+Hyper-V (Ausführung mit Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Wenn Virtual Machine Manager verwendet wird, sollten Windows Server 2019-Hosts in Virtual Machine Manager 2019 verwaltet werden. Ebenso sollten Windows Server 2016-Hosts in Virtual Machine Manager 2016 verwaltet werden.<br/><br/> Hinweis: Ein Failback auf einen alternativen Standort wird für Windows Server 2019-Hosts nicht unterstützt.
 
 
 ## <a name="replicated-vms"></a>Replizierte VMs
@@ -132,7 +132,7 @@ Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Verschlüsselung ruhender Daten (CMK) <br></br> (Nur für Failover auf verwalteten Datenträgern)| Ja (über PowerShell ab Az-Modulversion 3.3.0) | Ja (über PowerShell ab Az-Modulversion 3.3.0)
 Storage Premium | Ja | Ja
-Import-/Exportdienst | Nein | Nein
+Import/Export-Dienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache
 Speicherkonto ändern | Nein. Das betreffende Azure-Zielspeicherkonto kann nach Aktivieren der Replikation nicht geändert werden. Zum Ändern muss die Notfallwiederherstellung deaktiviert und anschließend erneut aktiviert werden. | Nein
 

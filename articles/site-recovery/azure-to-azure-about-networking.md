@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/8/2020
+ms.date: 1/23/2020
 ms.author: sutalasi
-ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754498"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759822"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -50,76 +50,20 @@ Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Fir
 --- | ---
 *.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie den Zugriff auf die spezifischen Speicherkonten-URLs (z. B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ zulassen.
 login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs.
-*.hypervrecoverymanager.windowsazure.com | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen. Sie können die entsprechende Site Recovery-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
-*.servicebus.windows.net | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können. Sie können die entsprechende Site Recovery-Überwachungs-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
+*.hypervrecoverymanager.windowsazure.com | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen.
+*.servicebus.windows.net | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
-Wenn Sie einen IP-basierten Firewallproxy oder NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen die folgenden IP-Adressbereiche zugelassen werden.
+Wenn Sie eine NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
 
 - Alle IP-Adressbereiche, die den Speicherkonten am Quellstandort entsprechen.
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
 - Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
-    - Wenn in Azure Active Directory (AAD) später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
 - Erstellen Sie eine auf dem EventsHub-Diensttag basierende NSG-Regel für die Zielregion, die den Zugriff auf Site Recovery-Überwachung ermöglicht.
 - Erstellen Sie eine auf dem Azure Site Recovery-Diensttag basierende NSG-Regel, um den Zugriff auf den Site Recovery-Dienst in einer beliebigen Region zuzulassen.
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
-
-
-Wenn Sie Site Recovery-IP-Adressbereiche verwenden möchten (nicht empfohlen), finden Sie weitere Informationen in der folgenden Tabelle:
-
-   **Ziel** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
-   --- | --- | ---
-   Asien, Osten | 52.175.17.132 | 13.94.47.61
-   Asien, Südosten | 52.187.58.193 | 13.76.179.223
-   Indien, Mitte | 52.172.187.37 | 104.211.98.185
-   Indien (Süden) | 52.172.46.220 | 104.211.224.190
-   USA Nord Mitte | 23.96.195.247 | 168.62.249.226
-   Nordeuropa | 40.69.212.238 | 52.169.18.8
-   Europa, Westen | 52.166.13.64 | 40.68.93.145
-   East US | 13.82.88.226 | 104.45.147.24
-   USA (Westen) | 40.83.179.48 | 104.40.26.199
-   USA Süd Mitte | 13.84.148.14 | 104.210.146.250
-   USA (Mitte) | 40.69.144.231 | 52.165.34.144
-   USA (Ost) 2 | 52.184.158.163 | 40.79.44.59
-   Japan, Osten | 52.185.150.140 | 138.91.1.105
-   Japan, Westen | 52.175.146.69 | 138.91.17.38
-   Brasilien Süd | 191.234.185.172 | 23.97.97.36
-   Australien (Osten) | 104.210.113.114 | 191.239.64.144
-   Australien, Südosten | 13.70.159.158 | 191.239.160.45
-   Kanada, Mitte | 52.228.36.192 | 40.85.226.62
-   Kanada, Osten | 52.229.125.98 | 40.86.225.142
-   USA, Westen-Mitte | 52.161.20.168 | 13.78.149.209
-   USA, Westen 2 | 52.183.45.166 | 13.66.228.204
-   UK, Westen | 51.141.3.203 | 51.141.14.113
-   UK, Süden | 51.140.43.158 | 51.140.189.52
-   Vereinigtes Königreich, Süden 2 | 13.87.37.4| 13.87.34.139
-   Vereinigtes Königreich, Norden | 51.142.209.167 | 13.87.102.68
-   Korea, Mitte | 52.231.28.253 | 52.231.32.85
-   Korea, Süden | 52.231.198.185 | 52.231.200.144
-   Frankreich, Mitte | 52.143.138.106 | 52.143.136.55
-   Frankreich, Süden | 52.136.139.227 |52.136.136.62
-   Australien, Mitte| 20.36.34.70 | 20.36.46.142
-   Australien, Mitte 2| 20.36.69.62 | 20.36.74.130
-   Südafrika, Westen | 102.133.72.51 | 102.133.26.128
-   Südafrika, Norden | 102.133.160.44 | 102.133.154.128
-   US Government, Virginia | 52.227.178.114 | 23.97.0.197
-   US Gov Iowa | 13.72.184.23 | 23.97.16.186
-   US Gov Arizona | 52.244.205.45 | 52.244.48.85
-   US Gov Texas | 52.238.119.218 | 52.238.116.60
-   US DoD, Osten | 52.181.164.103 | 52.181.162.129
-   US DoD, Mitte | 52.182.95.237 | 52.182.90.133
-   China, Norden | 40.125.202.254 | 42.159.4.151
-   China, Norden 2 | 40.73.35.193 | 40.73.33.230
-   China, Osten | 42.159.205.45 | 42.159.132.40
-   China, Osten 2 | 40.73.118.52| 40.73.100.125
-   Deutschland, Norden| 51.116.208.58| 51.116.58.128
-   Deutschland, Westen-Mitte | 51.116.156.176 | 51.116.154.192
-   Schweiz, Westen | 51.107.231.223| 51.107.154.128
-   Schweiz, Norden | 51.107.68.31| 51.107.58.128
-   Norwegen, Osten | 51.120.100.64| 51.120.98.128
-   Norwegen, Westen | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
 

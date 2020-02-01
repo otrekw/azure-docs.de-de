@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513733"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715581"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -37,9 +37,7 @@ Nachdem Sie das Streamen von Sensordaten gestartet haben, können Sie mit dem Ab
  - Geheimer Clientschlüssel
  - EventHub-Verbindungszeichenfolge
 
-Die obigen Informationen erhalten Sie von Ihrem Systemintegrator. Wenden Sie sich an Ihren Systemintegrator, falls Sie Probleme beim Aktivieren der Geräteintegrationen haben.
-
-Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie dieses Skript über Azure Cloud Shell ausführen. Führen Sie folgende Schritte durch:
+Sie können die oben beschriebenen Informationen mit den folgenden Schritten generieren: (Beachten Sie, dass diese Schritte auf Azure durchgeführt werden müssen, daher benötigen Sie Zugriff auf das Azure-Abonnement, in dem FarmBeats bereitgestellt wird)
 
 1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscriptv2) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. Es wird eine Datei in der ZIP-Datei enthalten sein.
 2. Melden Sie sich bei https://portal.azure.com/ an, und wechseln Sie zu Azure Active Directory -> App-Registrierungen
@@ -74,13 +72,16 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 
-Navigieren Sie zum Portal des Gerätepartners, um unter Verwendung der Anmeldeinformationen, die Sie im vorherigen Abschnitt generiert haben, eine Verknüpfung mit FarmBeats einzurichten:
-
+Nun haben Sie die folgenden Informationen aus dem vorherigen Abschnitt generiert.
  - API-Endpunkt
  - EventHub-Verbindungszeichenfolge
  - Client-ID
  - Geheimer Clientschlüssel
  - Mandanten-ID
+ 
+Diese müssen Sie Ihrem Gerätepartner für die Verknüpfung von FarmBeats zur Verfügung stellen. Rufen Sie das Gerätepartnerportal auf, um diesen Schritt auszuführen. Wenn Sie beispielsweise Geräte von Davis Instruments verwenden, navigieren Sie auf die folgende Seite:
+
+[Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
 
  Die erfolgreiche Integration wird vom Geräteanbieter bestätigt. Nach Erhalt der Bestätigung können Sie in Azure FarmBeats alle Geräte und Sensoren anzeigen.
 

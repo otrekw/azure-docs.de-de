@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75649558"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715668"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Verwaltete Azure-Anwendungen mit Benachrichtigungen
 
@@ -176,7 +176,7 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 
 ```
 
-Parameter | BESCHREIBUNG
+Parameter | Beschreibung
 ---|---
 eventType | Der Typ des Ereignisses, das die Benachrichtigung ausgelöst hat (Beispiele: PUT, PATCH, DELETE.)
 applicationId | Der vollqualifizierte Ressourcenbezeichner der verwalteten Anwendung, für die die Benachrichtigung ausgelöst wurde.
@@ -189,7 +189,7 @@ billingDetails | *Wird nur für verwaltete Azure Marketplace-Anwendungen angegeb
 
 ## <a name="endpoint-authentication"></a>Endpunktauthentifizierung
 So sichern Sie den Webhookendpunkt und stellen die Echtheit der Benachrichtigung sicher:
-1. Geben Sie im Webhook-URI einen Abfrageparameter an, z. B. https://your-endpoint.com?sig=Guid. Überprüfen Sie bei jeder Benachrichtigung, ob der Abfrageparameter `sig` den erwarteten Wert `Guid` aufweist.
+1. Geben Sie im Webhook-URI einen Abfrageparameter an, z. B. https\://your-endpoint.com?sig=Guid. Überprüfen Sie bei jeder Benachrichtigung, ob der Abfrageparameter `sig` den erwarteten Wert `Guid` aufweist.
 2. Geben Sie für die Instanz der verwalteten Anwendung ein GET mit der applicationId aus. Überprüfen Sie, ob der „provisioningState“ dem „provisioningState“ der Benachrichtigung entspricht, um die Konsistenz sicherzustellen.
 
 ## <a name="notification-retries"></a>Benachrichtigungswiederholungen

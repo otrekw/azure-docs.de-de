@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6ee6b6f325ba58ecaa3c3acb5d5ded173262bafb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979694"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715433"
 ---
 # <a name="payout-reporting"></a>Zahlungsberichte
 
@@ -46,7 +46,7 @@ Wenn Sie Angebote über Azure Marketplace verkaufen, werden in der **Zahlungsüb
 
 | | Cloudpartnerportal | Partner Center |
 |---------|---------|---------|
-| Links | https://cloudpartner.azure.com/ | https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory und https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| Links | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory) und [https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
 | Navigation | In Insights Payout bereitgestellte Auszahlungsberichte | In Partner Center bereitgestellte Auszahlungsberichte – Auszahlungssymbol |
 | `Scope` | <ul> <li>Angezeigt wird die Transaktion pro Position, und zwar für „Inkasso in Bearbeitung“, „Eingezogen“ und „Bezahlt“. </li> <li>Bericht: Enthält nach dem Erstellen der Bestellung alle Positionen (einschließlich „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“) sowie den Inkassostatus und die Positionen, die sich noch nicht für eine Bezahlung qualifiziert haben. </li> </ul> | <ul> <li>Zeigt die Positionen an, sobald sie als qualifizierte Einnahmen betrachtet werden.</li> <li>Die Kundenzahlung geht zuerst an Microsoft. Anschließend können die ISVs dann sehen, wie der Auszahlungsbericht gestartet wird.</li> <li>Im Auszahlungsbericht werden „Inkasso in Bearbeitung“ und „Abrechnung in Bearbeitung“ nicht angezeigt.  </li> </ul>  |
 | Transaktion nicht bereit für Auszahlung | Abrechnung in Bearbeitung | Nächste voraussichtliche Zahlung: Die Auszahlung befindet sich im Status „Nicht verarbeitet“.  |

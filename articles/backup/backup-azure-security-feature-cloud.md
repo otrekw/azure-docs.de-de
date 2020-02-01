@@ -3,22 +3,34 @@ title: Sicherheitsfeatures für den Schutz von Cloudworkloads
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028206"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705495"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
-Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe verfügt Azure Backup jetzt über Sicherheitsfeatures für den Schutz von Sicherungsdaten auch nach dem Löschen. Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur die Sicherung einer VM löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für diese zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an. Azure verschlüsselt zudem alle gesicherten ruhenden Daten mithilfe der [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), um diese Daten noch besser zu schützen.
+Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe verfügt Azure Backup jetzt über Sicherheitsfeatures für den Schutz von Sicherungsdaten auch nach dem Löschen.
+
+Eines dieser Features ist das vorläufige Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur die Sicherung einer VM löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Kunden keine Kosten an. Azure verschlüsselt zudem alle gesicherten ruhenden Daten mithilfe der [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), um diese Daten noch besser zu schützen.
+
+Der Schutz durch das vorläufige Löschen für virtuelle Azure-Computer ist generell verfügbar.
+
+>[!NOTE]
+>Das vorläufige Löschen für SQL Server in Azure-VM und das vorläufige Löschen für SAP HANA in Azure-VM-Workloads ist jetzt in der Vorschau verfügbar.<br>
+>Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
+
+## <a name="soft-delete"></a>Vorläufiges Löschen
+
+### <a name="soft-delete-for-vms"></a>Vorläufiges Löschen für VMs
+
+Vorläufiges Löschen für VMs schützt die Sicherungen Ihrer VMs vor unbeabsichtigtem Löschen. Selbst nachdem die Sicherungen gelöscht wurden, bleiben sie für weitere 14 Tage im Zustand „vorläufig gelöscht“ erhalten.
 
 > [!NOTE]
 > Mit dem vorläufigen Löschen werden nur gelöschte Sicherungsdaten geschützt. Wenn eine VM ohne Sicherung gelöscht wird, bewirkt das Feature „Vorläufiges Löschen“ nicht, dass die Daten erhalten bleiben. Alle Ressourcen sollten per Azure Backup geschützt werden, um die vollständige Resilienz sicherzustellen.
 >
-
-## <a name="soft-delete"></a>Vorläufiges Löschen
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 

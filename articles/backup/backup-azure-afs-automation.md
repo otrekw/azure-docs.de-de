@@ -1,18 +1,18 @@
 ---
-title: Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
-description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell sichern und wiederherstellen.
+title: Sichern von Azure Files mit PowerShell
+description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell sichern.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294047"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773100"
 ---
-# <a name="back-up-and-restore-azure-files-with-powershell"></a>Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
+# <a name="back-up-azure-files-with-powershell"></a>Sichern von Azure Files mit PowerShell
 
-In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell und einem Recovery Services-Tresor von [Azure Backup](backup-overview.md) eine Azure Files-Dateifreigabe sichern und wiederherstellen.
+In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell und einem Recovery Services-Tresor von [Azure Backup](backup-overview.md) eine Azure Files-Dateifreigabe sichern.
 
 In diesem Artikel wird Folgendes erläutert:
 
@@ -22,8 +22,6 @@ In diesem Artikel wird Folgendes erläutert:
 > * Erstellen Sie einen Recovery Services-Tresor.
 > * Konfigurieren der Sicherung für eine Azure-Dateifreigabe
 > * Ausführen eines Sicherungsauftrags
-> * Wiederherstellen einer gesicherten Azure-Dateifreigabe oder einer einzelnen Freigabedatei
-> * Überwachen von Sicherungs- und Wiederherstellungsaufträgen
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -274,148 +272,6 @@ Momentaufnahmen von Azure-Dateifreigaben werden beim Erstellen von Sicherungen v
 Durch Verwendung von bedarfsgesteuerten Sicherungen können Ihre Momentaufnahmen 10 Jahre lang aufbewahrt werden. Sie können Scheduler verwenden, um bedarfsgesteuerte PowerShell-Skripts mit ausgewählter Aufbewahrung auszuführen und so Momentaufnahmen in regelmäßigen Abständen (wöchentlich, monatlich oder jährlich) zu erstellen. Informationen zum Erstellen regelmäßiger Momentaufnahmen unter Verwendung von Azure Backup finden Sie unter den [Einschränkungen von bedarfsgesteuerten Sicherungen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share).
 
 Ein Beispielskript finden Sie auf GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>). Mit diesem Skript können Sie unter Verwendung eines Azure Automation-Runbooks Sicherungen regelmäßig planen und sogar bis zu 10 Jahre aufbewahren.
-
-### <a name="modify-the-protection-policy"></a>Ändern der Schutzrichtlinie
-
-Verwenden Sie [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0), um die Sicherungsrichtlinie für die Azure-Dateifreigabe anzupassen. Geben Sie das relevante Sicherungselement und die neue Sicherungsrichtlinie an.
-
-Im folgenden Beispiel wird die Schutzrichtlinie von **testAzureFS** von **dailyafs** in **monthlyafs** geändert.
-
-```powershell
-$monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
-$afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType AzureFiles -Name "testAzureFS"
-Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
-```
-
-## <a name="restore-azure-file-shares-and-files"></a>Wiederherstellen von Azure-Dateifreigaben und -Dateien
-
-Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
-
-### <a name="fetch-recovery-points"></a>Abrufen von Wiederherstellungspunkten
-
-Verwenden Sie [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0), um alle Wiederherstellungspunkte für das gesicherte Element aufzulisten.
-
-Für das unten aufgeführte Skript gilt Folgendes:
-
-* Die Variable **$rp** ist ein Array von Wiederherstellungspunkten für das ausgewählte Sicherungselement der letzten sieben Tage.
-* Das Array wird in umgekehrter Reihenfolge sortiert. Der letzte Wiederherstellungspunkt liegt bei Index **0**.
-* Verwenden Sie die standardmäßige PowerShell-Arrayindizierung zum Auswählen des Wiederherstellungspunkts.
-* Im Beispiel wählt **$rp[0]** den letzten Wiederherstellungspunkt aus.
-
-```powershell
-$startDate = (Get-Date).AddDays(-7)
-$endDate = Get-Date
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-
-$rp[0] | fl
-```
-
-Die Ausgabe sieht in etwa wie folgt aus:
-
-```powershell
-FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
-                       00Z
-RecoveryPointType    : FileSystemConsistent
-RecoveryPointTime    : 11/20/2018 12:31:05 AM
-RecoveryPointId      : 86593702401459
-ItemName             : testAzureFS
-Id                   : /Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Micros                      oft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;teststorageRG;testStorageAcct/protectedItems/AzureFileShare;testAzureFS/recoveryPoints/86593702401462
-WorkloadType         : AzureFiles
-ContainerName        : storage;teststorageRG;testStorageAcct
-ContainerType        : AzureStorage
-BackupManagementType : AzureStorage
-```
-
-Nachdem der entsprechende Wiederherstellungspunkt ausgewählt wurde, stellen Sie die Dateifreigabe oder Datei am ursprünglichen oder an einem alternativen Speicherort wieder her.
-
-### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Wiederherstellen einer Azure-Dateifreigabe an einem alternativen Speicherort
-
-Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort festzulegen:
-
-* **TargetStorageAccountName**: Das Speicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird. Das Zielspeicherkonto muss sich am gleichen Speicherort wie der Tresor befinden.
-* **TargetFileShareName**: Die Dateifreigaben in dem Zielspeicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird.
-* **TargetFolder**: Der Ordner unter der Dateifreigabe, in dem die Daten wiederhergestellt werden. Wenn der gesicherte Inhalt in einem Stammordner wiederhergestellt werden soll, geben Sie die Werte für den Zielordner als eine leere Zeichenfolge ein.
-* **ResolveConflict**: Die Anweisung bei einem Konflikt mit den wiederhergestellten Daten. Für diesen Parameter kann **Overwrite** oder **Skip** angegeben werden.
-
-Führen Sie das Cmdlet mit den Parametern wie folgt aus:
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-```
-
-Der Befehl gibt einen Auftrag mit einer ID zur Nachverfolgung zurück, wie im folgenden Beispiel gezeigt wird.
-
-```powershell
-WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   -----
-testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-```
-
-### <a name="restore-an-azure-file-to-an-alternate-location"></a>Wiederherstellen einer Azure-Datei an einem alternativen Speicherort
-
-Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort und die wiederherzustellende Datei eindeutig festzulegen:
-
-* **TargetStorageAccountName**: Das Speicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird. Das Zielspeicherkonto muss sich am gleichen Speicherort wie der Tresor befinden.
-* **TargetFileShareName**: Die Dateifreigaben in dem Zielspeicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird.
-* **TargetFolder**: Der Ordner unter der Dateifreigabe, in dem die Daten wiederhergestellt werden. Wenn der gesicherte Inhalt in einem Stammordner wiederhergestellt werden soll, geben Sie die Werte für den Zielordner als eine leere Zeichenfolge ein.
-* **SourceFilePath**: Der absolute Pfad der (in der Dateifreigabe wiederherzustellenden) Datei als Zeichenfolge. Dieser Pfad ist derselbe Pfad, der im PowerShell-Cmdlet **Get-AzStorageFile** verwendet wird.
-* **SourceFileType**: Gibt an, ob ein Verzeichnis oder eine Datei ausgewählt wurde. Für diesen Parameter kann **Directory** oder **File** angegeben werden.
-* **ResolveConflict**: Die Anweisung bei einem Konflikt mit den wiederhergestellten Daten. Für diesen Parameter kann **Overwrite** oder **Skip** angegeben werden.
-
-Die zusätzlichen Parameter („SourceFilePath“ und „SourceFileType“) beziehen sich nur auf die Datei, die Sie wiederherstellen möchten.
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-Der Befehl gibt einen Auftrag mit einer ID zur Nachverfolgung zurück, wie im vorherigen Abschnitt gezeigt wurde.
-
-### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Wiederherstellen von Azure-Dateifreigaben und -Dateien am ursprünglichen Speicherort
-
-Wenn Sie an einem ursprünglichen Speicherort eine Wiederherstellung vornehmen, müssen Sie nicht alle Zielparameter und zielbezogenen Parameter angeben. Nur **ResolveConflict** muss angegeben werden.
-
-#### <a name="overwrite-an-azure-file-share"></a>Überschreiben einer Azure-Dateifreigabe
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
-```
-
-#### <a name="overwrite-an-azure-file"></a>Überschreiben einer Azure-Datei
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-## <a name="track-backup-and-restore-jobs"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen
-
-Bei bedarfsgesteuerten Sicherungs- und Wiederherstellungsvorgängen wird ein Auftrag zusammen mit einer ID wie [oben](#trigger-an-on-demand-backup) gezeigt zurückgegeben. Verwenden Sie das Cmdlet [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0), um den Fortschritt des Auftrags nachzuverfolgen und Details abzurufen.
-
-```powershell
-$job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
-
- $job | fl
-
-
-IsCancellable        : False
-IsRetriable          : False
-ErrorDetails         : {Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureFileShareJobErrorInfo}
-ActivityId           : 00000000-5b71-4d73-9465-8a4a91f13a36
-JobId                : 00000000-6c46-496e-980a-3740ccb2ad75
-Operation            : Restore
-Status               : Failed
-WorkloadName         : testAFS
-StartTime            : 12/10/2018 9:56:38 AM
-EndTime              : 12/10/2018 11:03:03 AM
-Duration             : 01:06:24.4660027
-BackupManagementType : AzureStorage
-
-$job.ErrorDetails
-
- ErrorCode ErrorMessage                                          Recommendations
- --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
