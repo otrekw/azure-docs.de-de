@@ -423,6 +423,8 @@
           href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Hochverfügbarkeit
           href: manage-availability.md
+        - name: Ändern der Verfügbarkeitsgruppe
+          href: ../windows/change-availability-set.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Erstellen einer Näherungsplatzierungsgruppe
           items:
             - name: Befehlszeilenschnittstelle (CLI)
