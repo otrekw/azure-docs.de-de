@@ -1,22 +1,22 @@
 ---
 title: Häufig gestellte Fragen (FAQ) zu Azure Service Bus | Microsoft-Dokumentation
-description: Enthält Antworten auf einige häufig gestellte Fragen zu Azure Service Bus.
+description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen (FAQ) zu Azure Service Bus.
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352870"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760248"
 ---
-# <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Service Bus
 
 In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 

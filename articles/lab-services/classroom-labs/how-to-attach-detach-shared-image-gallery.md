@@ -1,6 +1,6 @@
 ---
 title: Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Katalog mit freigegebenen Images einem Lab in Azure Lab Services anfügen.
+description: In diesem Artikel wird beschrieben, wie Sie einen freigegebenen Imagekatalog an ein Classroom-Lab in Azure Lab Services anfügen.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4f3f435110f0cba5ea2370f2900d4e7031904067
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 98a21e9fa846d5a91ed1242701484afaa641cddc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890331"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718045"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Lehrer/Labadministratoren können ein Vorlagen-VM-Image in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) in Azure speichern, damit es von anderen Benutzern wiederverwendet werden kann. Als Erstes fügt der Labadministrator einen vorhandenen Katalog mit freigegebenen Images an das Labkonto an. Nachdem der Katalog mit freigegebenen Images angefügt wurde, können in Labs, die unter dem Labkonto erstellt wurden, Images in dem Katalog mit freigegebenen Images gespeichert werden. Andere Lehrkräfte können dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Klassen zu erstellen. 
@@ -37,7 +37,7 @@ Wenn Sie ein Labkonto erstellen, können Sie dem Labkonto einen Katalog mit frei
 ## <a name="configure-after-the-lab-account-is-created"></a>Konfigurieren nach Erstellen des Labkontos
 Nachdem das Labkonto erstellt ist, können Sie die folgenden Aufgaben ausführen:
 
-- Erstellen und Anfügen eines Katalog mit freigegebenen Images
+- Erstellen und Anfügen eines Katalogs mit freigegebenen Images
 - Anfügen eines Katalogs mit freigegebenen Images an ein Labkonto
 - Trennen eines Katalogs mit freigegebenen Images von einem Labkonto
 

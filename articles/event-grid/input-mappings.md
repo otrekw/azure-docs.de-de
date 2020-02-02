@@ -1,19 +1,19 @@
 ---
 title: Zuordnen benutzerdefinierter Felder zum Azure Event Grid-Schema
-description: Dieser Artikel beschreibt, wie Sie ein benutzerdefiniertes Schema in das Azure Event Grid-Schema konvertieren.
+description: In diesem Artikel wird beschrieben, wie Sie Ihr benutzerdefiniertes Schema in das Azure Event Grid-Schema konvertieren, wenn die Ereignisdaten nicht dem Event Grid-Schema entsprechen.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a0e054be3ab7d4818ac323eb5fb93968f57eca4f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565496"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721658"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Zuordnen benutzerdefinierter Felder zum Event Grid-Schema
 

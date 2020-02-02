@@ -7,24 +7,24 @@ ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: b6347765f8d2e21c352834dc8d28b65c28f99758
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 36016e462e3f4906c4dfe8c58501c82fd554f3bd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671444"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720587"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Erstellen eines Images und Verwenden einer benutzerseitig zugewiesenen verwalteten Identität zum Zugreifen auf Dateien in Azure Storage 
 
 Azure Image Builder unterstützt standardmäßig die Verwendung von Skripts und das Kopieren von Dateien aus mehreren Quellen wie z. B. GitHub und Azure Storage. Azure Image Builder muss extern auf diese zugreifen können, um sie verwenden zu können. Sie können jedoch Azure Storage-Blobs mit SAS-Token schützen.
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen, oder mithilfe von SAS-Token.
+In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen oder SAS-Token einzurichten.
 
 Im unten verwendeten Beispiel erstellen Sie zwei Ressourcengruppen. Eine wird für das benutzerdefinierte Image verwendet, und die andere hostet das Azure-Speicherkonto, das eine Skriptdatei enthält. Dadurch wird ein realitätsnahes Szenario simuliert, bei dem Sie Artefakte oder Imagedateien außerhalb von Azure Image Builder in unterschiedlichen Speicherkonten erstellt haben. Sie erstellen eine benutzerseitig zugewiesene Identität, der Sie dann Leseberechtigungen für die Skriptdatei gewähren, ohne die Datei öffentlich verfügbar zu machen. Anschließend verwenden Sie die Shellanpassung, um das Skript aus dem Speicherkonto herunterzuladen und auszuführen.
 
 
 > [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
+> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="register-the-features"></a>Registrieren des Features
@@ -185,7 +185,7 @@ az resource invoke-action \
      --action Run 
 ```
 
-Warten Sie, bis der Buildvorgang abgeschlossen wird. Der Vorgang kann bis zu 15 Minuten dauern.
+Warten Sie, bis der Buildvorgang abgeschlossen wird. Der Vorgang kann bis zu 15 Minuten dauern.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -207,7 +207,7 @@ Starten Sie eine SSH-Sitzung, nachdem Sie die VM erstellt haben.
 ssh aibuser@<publicIp>
 ```
 
-Dann sollten Sie sehen, dass das Image angepasst wurde. Es wird eine Nachricht des Tages ausgegeben, sobald die SSH-Verbindung hergestellt wurde.
+Sie sollten sehen, dass das Image angepasst wurde. Es wird eine „Nachricht des Tages“ ausgegeben, sobald die SSH-Verbindung hergestellt wurde.
 
 ```console
 
@@ -218,7 +218,7 @@ Dann sollten Sie sehen, dass das Image angepasst wurde. Es wird eine Nachricht d
 *******************************************************
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie fertig sind, können Sie die Ressourcen löschen, wenn Sie sie nicht mehr brauchen.
 

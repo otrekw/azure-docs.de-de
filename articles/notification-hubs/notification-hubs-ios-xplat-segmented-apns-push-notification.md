@@ -16,12 +16,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228170"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774890"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
 
@@ -247,7 +247,7 @@ Die App kann jetzt verschiedene Kategorien im lokalen Speicher des Geräts speic
 
 ## <a name="optional-send-tagged-notifications"></a>(Optional) Senden von Benachrichtigungen mit Tags
 
-Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure-Portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
+Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden.
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -337,7 +337,7 @@ Normalerweise würden die Benachrichtigungen von einem Back-End-Dienst gesendet 
 
 3. Erstellen Sie das Projekt neu, und stellen Sie sicher, dass keine Buildfehler vorliegen.
 
-## <a name="run-the-app-and-generate-notifications"></a>Ausführen der Anwendung und Erzeugen von Benachrichtigungen
+## <a name="run-the-app-and-generate-notifications"></a>Ausführen der App und Erzeugen von Benachrichtigungen
 
 1. Klicken Sie auf die Schaltfläche Ausführen, um das Projekt zu erstellen und die App zu starten. Wählen Sie einige Optionen zum Abonnieren aktueller Nachrichten aus, und klicken Sie dann auf die Schaltfläche **Subscribe** . Es sollte in einem Dialogfeld angegeben werden, dass die Benachrichtigungen abonniert wurden.
 
@@ -371,4 +371,4 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an bestimmte iOS-Gerät
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

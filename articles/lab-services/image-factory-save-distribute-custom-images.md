@@ -1,6 +1,6 @@
 ---
 title: Speichern und Verteilen von Images in Azure DevTest Labs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine benutzerdefinierte Image Factory in Azure DevTest Labs erstellen.
+description: In diesem Artikel werden die Schritte erläutert, mit denen Sie benutzerdefinierte Images bereits erstellter virtueller Computer (VMs) in Azure DevTest Labs speichern können.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e5bc8e5041bfe6d95e3ff1a93bb3338ccead5bb4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622622"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759430"
 ---
 # <a name="save-custom-images-and-distribute-to-multiple-labs"></a>Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs
-In diesem Artikel lernen Sie die Schritte kennen, mit denen Sie benutzerdefinierte Images bereits erstellter virtueller Computer (VMs) speichern können. Ferner wird erläutert, wie diese benutzerdefinierten Images an andere DevTest Labs in der Organisation verteilt werden können.
+In diesem Artikel werden die Schritte erläutert, mit denen Sie benutzerdefinierte Images bereits erstellter virtueller Computer (VMs) speichern können. Ferner wird erläutert, wie diese benutzerdefinierten Images an andere DevTest Labs in der Organisation verteilt werden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgende Elemente sollten bereits vorhanden sein:
@@ -91,7 +91,7 @@ Die Parameter lauten: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$
 
 Diese Aufgabe überträgt alle benutzerdefinierten Images, die in der Image Factory vorhanden sind, mithilfe von Push an alle in der Datei Labs.json definierten Labs.
 
-## <a name="queue-the-build"></a>Hinzufügen des Builds zur Warteschlange
+## <a name="queue-the-build"></a>Einstellen des Builds in die Warteschlange
 Sobald die Buildaufgabe für die Verteilung abgeschlossen ist, stellen Sie einen neuen Build in die Warteschlange, um sicherzustellen, dass alles funktioniert. Sobald der Build erfolgreich abgeschlossen wurde, werden die neuen benutzerdefinierten Images in dem Ziel-Lab angezeigt, das in der Labs.json-Konfigurationsdatei eingegeben wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte

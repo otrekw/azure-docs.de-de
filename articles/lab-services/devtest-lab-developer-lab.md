@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure DevTest Labs durch Entwickler | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Verwendung von Azure DevTest Labs für Entwicklerszenarien.
+description: Erfahren Sie mehr über Azure DevTest Labs-Features, die zum Erfüllen von Entwickleranforderungen verwendet werden können, und lernen Sie die ausführlichen Schritte kennen, die ausführt werden müssen, um ein Lab einzurichten.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 5a293946e4672e7737f912f42511ad0907ba4a81
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae44696f62a085bf1e798f0915e2bd1e27c3a78f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293950"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760146"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>Verwenden von Azure DevTest Labs durch Entwickler
 Azure DevTest Labs kann zum Implementieren vieler wichtiger Szenarien verwendet werden. Eines der primären Szenarien stellt aber die Verwendung von DevTest Labs zum Hosten von Entwicklungscomputern für Entwickler dar. In diesem Szenario bietet DevTest Labs folgende Vorteile:
@@ -97,7 +97,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Definieren von Labrichtlinien.](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
+   | [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
    | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Entwicklung abgeschlossen ist.|
 
 1. **Hinzufügen eines virtuellen Netzwerks zu einem virtuellen Computer** 
@@ -124,7 +124,7 @@ In diesem Artikel erfahren Sie mehr über verschiedene Azure DevTest Labs-Featur
    | [Hinzufügen von Entwicklern zum Lab mithilfe eines PowerShell-Skripts](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Automatisieren Sie mithilfe von PowerShell das Hinzufügen von Entwicklern zu Ihrem Lab. |
    | [Abrufen eines Links zum Lab](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab) |Erfahren Sie, wie Entwickler über einen Link direkt auf ein Lab zugreifen können.|
 
-7. **Automatisieren der Lab-Erstellung für mehrere Teams** 
+7. **Automatisieren der Lab-Erstellung für weitere Teams** 
    
     Sie können die Lab-Erstellung, einschließlich der benutzerdefinierten Einstellungen, automatisieren, indem Sie eine Resource Manager-Vorlage erstellen und diese mehrfach zum Erstellen identischer Labs verwenden. 
    

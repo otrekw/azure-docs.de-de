@@ -1,21 +1,20 @@
 ---
 title: Azure Service Bus-Metriken in Azure Monitor | Microsoft-Dokumentation
-description: Überwachen von Service Bus-Entitäten mit Azure Monitor
+description: In diesem Artikel wird erläutert, wie Sie mit Azure Monitor Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) überwachen können.
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
-manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 6d25bdf6ff8e790466f3a28e3b6043e347d74198
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261854"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773547"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
@@ -61,13 +60,13 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
-| Eingehende Anforderungen| Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Erfolgreiche Anforderungen|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Serverfehler|Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Benutzerfehler (siehe folgender Unterabschnitt)|Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Gedrosselte Anforderungen|Die Anzahl der Anforderungen, die aufgrund eines überschrittenen Verbrauchs gedrosselt wurden<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+| Eingehende Anforderungen| Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Erfolgreiche Anforderungen|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Serverfehler|Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Benutzerfehler (siehe folgender Unterabschnitt)|Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Gedrosselte Anforderungen|Die Anzahl der Anforderungen, die aufgrund eines überschrittenen Verbrauchs gedrosselt wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
 ### <a name="user-errors"></a>Benutzerfehler
 
@@ -79,27 +78,27 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 ## <a name="message-metrics"></a>Nachrichtenmetriken
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
-|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-| Meldungen| Anzahl von Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Dimension: EntityName |
-| ActiveMessages| Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/> Dimension: EntityName |
-| Unzustellbare Nachrichten| Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt <br/>Dimension: EntityName |
-| Geplante Nachrichten| Anzahl von geplanten Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Count <br/> Aggregationstyp: Durchschnitt  <br/> Dimension: EntityName |
+|Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+| Meldungen| Anzahl von Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: EntityName |
+| ActiveMessages| Anzahl von aktiven Nachrichten in einer Warteschlange/einem Thema <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/> Dimension: EntityName |
+| Unzustellbare Nachrichten| Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/>Dimension: EntityName |
+| Geplante Nachrichten| Anzahl von geplanten Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average  <br/> Dimension: EntityName |
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
-|ActiveConnections|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Count <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveConnections|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
 ## <a name="resource-usage-metrics"></a>Metriken zur Ressourcennutzung
 
 > [!NOTE] 
 > Die folgenden Metriken sind nur mit dem **Premium**-Tarif verfügbar. 
 
-| Metrikname | BESCHREIBUNG |
+| Metrikname | Beschreibung |
 | ------------------- | ----------------- |
 |CPU-Auslastung pro Namespace|Der Prozentsatz der CPU-Auslastung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
 |Auslastung der Arbeitsspeichergröße pro Namespace|Der Prozentsatz der Arbeitsspeichernutzung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
@@ -108,7 +107,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monitor. Das Hinzufügen von Dimensionen zu Ihren Metriken ist optional. Wenn Sie keine Dimensionen hinzufügen, werden Metriken auf Namespaceebene angegeben. 
 
-|Dimensionsname|BESCHREIBUNG|
+|Dimensionsname|Beschreibung|
 | ------------------- | ----------------- |
 |EntityName| Service Bus unterstützt Messagingentitäten unter dem Namespace.|
 
@@ -126,7 +125,7 @@ Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monit
         ![Auswählen eines Namespace](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. Wählen Sie **Kriterien hinzufügen** aus, und führen Sie auf der Seite **Signallogik konfigurieren** die folgenden Aktionen aus:
     1. Wählen Sie für **Signaltyp** die Option **Metriken** aus. 
-    2. Wählen Sie ein Signal aus. Beispiel:  **Dienstfehler**. 
+    2. Wählen Sie ein Signal aus. Beispiel: **Dienstfehler**. 
 
         ![Auswählen von Serverfehlern](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
     1. Wählen Sie unter **Bedingung** die Option **Größer als** aus.

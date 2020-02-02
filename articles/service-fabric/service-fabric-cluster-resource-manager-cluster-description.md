@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452120"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774476"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Beschreiben eines Service Fabric-Clusters in Azure mithilfe des Clusterressourcen-Managers
 Der Clusterressourcen-Manager ist ein Feature von Azure Service Fabric, das verschiedene Methoden zum Beschreiben eines Clusters bereitstellt:
@@ -472,7 +472,7 @@ Zunächst ist sicherstellen, dass die Computer nicht überlastet werden. Das hei
 
 Zusätzlich sind Lastenausgleiche und Optimierungen erforderlich. Diese sind unverzichtbar, damit Dienste effizient ausgeführt werden. Kosteneffiziente oder leistungsabhängige Dienstangebote lassen nicht zu, dass einige Knoten stark und andere nur gering ausgelastet werden. Stark ausgelastete Knoten führen zu Ressourcenkonflikten und schlechter Leistung. Knoten mit geringer Auslastung führen zur Verschwendung von Ressourcen und zu höheren Kosten. 
 
-Service Fabric stellt Ressourcen als *Metriken* dar. Bei Metriken handelt es sich um alle logischen oder physischen Ressourcen, die Sie für Service Fabric beschreiben möchten. Beispiele für Metriken sind „WorkQueueDepth“ oder „MemoryInMb“. Informationen zu den physischen Ressourcen, die von Service Fabric auf Knoten verwaltet werden können, finden Sie unter [Ressourcenkontrolle](service-fabric-resource-governance.md). Informationen zum Konfigurieren von benutzerdefinierten Metriken und zu deren Verwendung erhalten Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
+Service Fabric stellt Ressourcen als *Metriken* dar. Bei Metriken handelt es sich um alle logischen oder physischen Ressourcen, die Sie für Service Fabric beschreiben möchten. Beispiele für Metriken sind „WorkQueueDepth“ oder „MemoryInMb“. Informationen zu den physischen Ressourcen, die von Service Fabric auf Knoten verwaltet werden können, finden Sie unter [Ressourcenkontrolle](service-fabric-resource-governance.md). Informationen zu den Standardmetriken, die vom Clusterressourcen-Manager verwendet werden, sowie zum Konfigurieren von benutzerdefinierten Metriken finden Sie in [diesem Artikel](service-fabric-cluster-resource-manager-metrics.md).
 
 Metriken unterscheiden sich von Platzierungseinschränkungen und Knoteneigenschaften. Knoteneigenschaften sind statische Deskriptoren der Knoten. Metriken beschreiben die Ressourcen, über die Knoten verfügen und die von Diensten genutzt werden, wenn sie auf einem Knoten ausgeführt werden. Eine Knoteneigenschaft ist beispielsweise **HasSSD**. Diese kann auf „true“ oder „false“ festgelegt werden. Die Menge des verfügbaren Speicherplatzes auf dieser SSD und der von Diensten verwendete Speicher kann eine Metrik wie „DriveSpaceInMb“ sein. 
 

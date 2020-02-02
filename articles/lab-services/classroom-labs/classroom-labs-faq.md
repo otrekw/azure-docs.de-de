@@ -1,6 +1,6 @@
 ---
 title: Classroom-Labs in Azure Lab Services – Häufig gestellte Fragen | Microsoft-Dokumentation
-description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Classroom-Labs in Azure Lab Services.
+description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Classroom-Labs in Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3bc58e9545f38508a9e08e9ae1aa9cf8713cc520
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264745"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718017"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Classroom-Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)
 Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Classroom-Labs in Azure Lab Services. 

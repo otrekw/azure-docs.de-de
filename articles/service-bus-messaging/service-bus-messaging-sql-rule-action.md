@@ -1,6 +1,6 @@
 ---
-title: SQLRuleAction-Syntaxreferenz in Azure | Microsoft-Dokumentation
-description: Details zur SQLRuleAction-Grammatik.
+title: SQLRuleAction-Syntaxreferenz in Azure Service Bus
+description: Dieser Artikel enthält eine Referenz für die SQLRuleAction-Syntax. Die Aktionen werden in auf der SQL-Sprache basierender Syntax geschrieben, die für eine im Broker gespeicherte Nachricht ausgeführt wird.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0f9365b72da1cec81eed82756097d32b1d72ca71
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60307477"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759627"
 ---
-# <a name="sqlruleaction-syntax"></a>SQLRuleAction-Syntax
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>SQLRuleAction-Syntaxreferenz für Azure Service Bus
 
 *SqlRuleAction* ist eine Instanz der [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)-Klasse und stellt eine Reihe von Aktionen dar, die in einer auf einer SQL-Sprache basierenden Syntax geschrieben wurden, die gegen [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ausgeführt wird.   
   
@@ -65,13 +65,13 @@ Dieser Artikel enthält Details zur SQLRuleAction-Grammatik.
   
 ## <a name="arguments"></a>Argumente  
   
--   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` oder `user`. Der Wert `sys` gibt die Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschaftenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
+-   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt die Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschaftenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
-### <a name="remarks"></a>Anmerkungen  
+### <a name="remarks"></a>Bemerkungen  
 
 Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst einen Fehler aus, während der Versuch, auf eine nicht existierende Benutzereigenschaft zuzugreifen, keinen Fehler auslöst. Stattdessen wird eine nicht vorhandene Benutzereigenschaft intern als unbekannter Wert ausgewertet. Ein unbekannter Wert wird während der Operatorauswertung speziell behandelt.  
   
-## <a name="propertyname"></a>property_name  
+## <a name="property_name"></a>property_name  
   
 ```  
 <property_name> ::=  
@@ -119,22 +119,22 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
       <expression>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
  `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
--   `%`:  Eine beliebige Zeichenfolge von null oder mehr Zeichen.  
+-   `%`:  Eine Zeichenfolge aus null oder mehr Zeichen  
   
 -   `_`: Ein einzelnes Zeichen.  
   
-## <a name="escapechar"></a>escape_char  
+## <a name="escape_char"></a>escape_char  
   
 ```  
 <escape_char> ::=  
       <expression>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
  `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -176,24 +176,24 @@ Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst ei
     0.5E-2  
     ```  
   
-## <a name="booleanconstant"></a>boolean_constant  
+## <a name="boolean_constant"></a>boolean_constant  
   
 ```  
 <boolean_constant> :=  
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
 Boolesche Konstanten werden durch die Schlüsselwörter `TRUE` oder `FALSE` dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
-## <a name="stringconstant"></a>string_constant  
+## <a name="string_constant"></a>string_constant  
   
 ```  
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Anmerkungen
+### <a name="remarks"></a>Bemerkungen
   
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -205,7 +205,7 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Anmerkungen  
+### <a name="remarks"></a>Bemerkungen  
 
 Die Funktion `newid()` gibt ein **System.Guid** zurück, das von der Methode `System.Guid.NewGuid()` generiert wird.  
   

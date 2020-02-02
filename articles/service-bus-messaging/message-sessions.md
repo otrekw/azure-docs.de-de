@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
-description: Informationen zum Verarbeiten von Sequenzen von Azure Service Bus-Nachrichten mithilfe von Sitzungen.
+description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0338663046c21adad358e8fddec12a3cc8151c79
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091813"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759328"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 

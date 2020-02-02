@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus – End-to-End-Ablaufverfolgung und Diagnose | Microsoft Docs
-description: Übersicht über die Diagnose und die End-to-End-Ablaufverfolgung für den Service Bus-Client
+description: Übersicht über Service Bus-Clientdiagnose und End-to-End-Ablaufverfolgung (Client durch alle Dienste, die an der Verarbeitung beteiligt sind).
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a184e76faa89199d3e13ece3e17f94f73d995a12
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311002"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760265"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -28,12 +28,12 @@ Ein Teil des Problems besteht darin, die logischen Arbeitsschritte nachzuverfolg
 Wenn ein Producer eine Nachricht über eine Warteschlange sendet, geschieht dies in der Regel im Rahmen eines anderen logischen Vorgangs, der von einem anderen Client oder Dienst initiiert wird. Derselbe Vorgang wird vom Consumer fortgesetzt, sobald dieser eine Nachricht empfängt. Meistens gibt sowohl der Producer als auch der Consumer (sowie andere an der Verarbeitung beteiligten Dienste) Telemetrieereignisse aus, die zur Nachverfolgung des Vorgangsflusses und des Ergebnisses herangezogen werden. Um diese Ereignisse zu korrelieren und den Vorgang bis zum Ende zu verfolgen, muss jeder Dienst, der Telemetriedaten meldet, die einzelnen Ereignisse mit einem Ablaufverfolgungskontext kennzeichnen.
 
 Microsoft Azure Service Bus-Messaging verfügt über definierte Nutzlasteigenschaften, die sowohl von Producern als auch von Consumern zur Übergabe dieser Ablaufverfolgungskontexte verwendet werden müssen.
-Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
+Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Eigenschaftenname        | BESCHREIBUNG                                                 |
+| Eigenschaftenname        | Beschreibung                                                 |
 |----------------------|-------------------------------------------------------------|
-|  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
-|  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
+|  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
+|  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
 
 ## <a name="service-bus-net-client-auto-tracing"></a>Automatische Ablaufverfolgung im Service Bus-Client für .NET
 

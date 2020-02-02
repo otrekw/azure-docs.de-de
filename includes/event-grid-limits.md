@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: ee80c04a6365c2cf337c4033a90df8d2993c299d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887778"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845971"
 ---
 Die folgenden Grenzwerte gelten für Systemthemen und benutzerdefinierte Themen von Azure Event Grid, *nicht* für Ereignisdomänen.
 
@@ -23,7 +23,7 @@ Die folgenden Grenzwerte gelten für Systemthemen und benutzerdefinierte Themen 
 | Ereignisabonnements pro Thema | 500 |
 | Veröffentlichungsrate für ein benutzerdefiniertes Thema (eingehend) | 5\.000 Ereignisse pro Sekunde pro Thema |
 | Veröffentlichungsanforderungen | 250 pro Sekunde |
-| Ereignisgröße | Unterstützung für 64 KB in der allgemeinen Verfügbarkeit (GA). Die Unterstützung für 1 MB befindet sich derzeit in der Vorschauphase. |
+| Ereignisgröße | 1 MB (in Chargen von mehreren 64-KB-Ereignissen) |
 
 Die folgenden Grenzwerte gelten ausschließlich für Ereignisdomänen.
 

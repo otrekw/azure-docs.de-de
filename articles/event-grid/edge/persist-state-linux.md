@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100332"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844631"
 ---
 # <a name="persist-state-in-linux"></a>Beibehalten des Zustands in Linux
 
-Themen und Abonnements, die im Event Grid-Modul erstellt wurden, werden standardmäßig im Containerdateisystem gespeichert. Ohne Persistenz gehen beim erneuten Bereitstellen des Moduls alle erstellten Metadaten verloren. Derzeit werden nur Metadaten persistent gespeichert. Ereignisse werden speicherintern gespeichert. Wenn das Event Grid-Modul erneut bereitgestellt oder neu gestartet wird, gehen alle nicht übermittelten Ereignisse verloren.
+Themen und Abonnements, die im Event Grid-Modul erstellt wurden, werden standardmäßig im Containerdateisystem gespeichert. Ohne Persistenz gehen beim erneuten Bereitstellen des Moduls alle erstellten Metadaten verloren. Um die Daten für mehrere Bereitstellungen und über Neustarts hinweg beizubehalten, müssen Sie die Daten außerhalb des Containerdateisystems persistent speichern.
+
+Standardmäßig werden nur Metadaten persistent gespeichert, und Ereignisse werden weiterhin im Arbeitsspeicher gespeichert, um die Leistung zu steigern. Befolgen Sie den Abschnitt zum persistenten Speichern von Ereignissen, um auch Ereignispersistenz zu aktivieren.
 
 In diesem Artikel werden die Schritte beschrieben, die zum Bereitstellen des Event Grid-Moduls mit Persistenz in Linux-Bereitstellungen erforderlich sind.
 
@@ -61,7 +63,8 @@ Die folgende Konfiguration führt z. B. zur Erstellung des Volumes **egmetadataD
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ Die folgende Konfiguration führt z. B. zur Erstellung des Volumes **egmetadataD
 }
 ```
 
-Alternativ können Sie ein Docker-Volume mithilfe von Docker-Clientbefehlen erstellen. 
+Anstatt ein Volume einzubinden, können Sie auch ein Verzeichnis auf dem Hostsystem erstellen und dieses Verzeichnis einbinden.
 
 ## <a name="persistence-via-host-directory-mount"></a>Persistenz über Einbindung des Hostverzeichnisses
 
@@ -138,7 +141,8 @@ Anstelle eines Docker-Volumes haben Sie auch die Möglichkeit, einen Hostordner 
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ Anstelle eines Docker-Volumes haben Sie auch die Möglichkeit, einen Hostordner 
 
     >[!IMPORTANT]
     >Ändern Sie nicht den zweiten Teil des Bindungswerts. Er verweist auf eine bestimmte Adresse innerhalb des Moduls. Für das Event Grid-Modul unter Linux muss dies **/app/metadata** sein.
+
+
+## <a name="persist-events"></a>Persistentes Speichern von Ereignissen
+
+Um Ereignispersistenz zu aktivieren, müssen Sie zunächst Metadatenpersistenz über Volumeeinbindung oder Hostverzeichniseinbindung aktivieren.
+
+Wichtige Punkte beim persistenten Speichern von Ereignissen:
+
+* Das persistente Speichern von Ereignissen wird pro Ereignisabonnement aktiviert und kann wahlweise verwendet werden, sobald ein Volume oder Verzeichnis eingebunden wurde.
+* Ereignispersistenz wird zum Erstellungszeitpunkt für ein Ereignisabonnement konfiguriert und kann nicht geändert werden, nachdem das Ereignisabonnement erstellt wurde. Zum Umschalten von Ereignispersistenz müssen Sie das Ereignisabonnement löschen und dann neu erstellen.
+* Das persistente Speichern von Ereignissen ist fast immer langsamer als Vorgänge im Arbeitsspeicher, aber der Geschwindigkeitsunterschied hängt stark von den Merkmalen des Laufwerks ab. Der Kompromiss zwischen Geschwindigkeit und Zuverlässigkeit ist allen Messagingsystemen inhärent, wird jedoch im Allgemeinen nur bei großer Skalierung bemerkt.
+
+Legen Sie `persistencePolicy` auf `true` fest, um Ereignispersistenz für ein Ereignisabonnement zu aktivieren:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

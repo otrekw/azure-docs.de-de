@@ -1,6 +1,6 @@
 ---
-title: Einsehen von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
-description: Einsehen von Azure Service Bus-Nachrichten
+title: 'Azure Service Bus: Durchsuchen von Nachrichten'
+description: Durch das Durchsuchen und Einsehen von Service Bus-Nachrichten kann ein Azure Service Bus-Client alle Nachrichten aufzählen, die sich in einer Warteschlange oder in einem Abonnement befinden.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 425cf262b80e83a4d06074a567a2921eee12f9c2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402750"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756395"
 ---
 # <a name="message-browsing"></a>Einsehen von Nachrichten
 

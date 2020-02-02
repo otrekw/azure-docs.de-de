@@ -1,6 +1,6 @@
 ---
-title: Ablauf von Azure Service Bus-Nachrichten | Microsoft-Dokumentation
-description: Ablauf und Gültigkeitsdauer von Azure Service Bus-Nachrichten
+title: 'Azure Service Bus: Ablauf von Nachrichten'
+description: In diesem Artikel werden der Ablauf und die Gültigkeitsdauer von Azure Service Bus-Nachrichten behandelt. Nach einer solchen Frist wird die Nachricht nicht mehr zugestellt.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 109ecc671b43365c433a626ff8d9fe55a5a626b5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310293"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756333"
 ---
 # <a name="message-expiration-time-to-live"></a>Nachrichtenablauf (Gültigkeitsdauer)
 

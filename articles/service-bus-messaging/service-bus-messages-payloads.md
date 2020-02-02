@@ -1,6 +1,6 @@
 ---
 title: Azure Service Bus-Nachrichten, -Nutzlasten und -Serialisierung | Microsoft-Dokumentation
-description: Übersicht über Nutzlasten von Service Bus-Nachrichten
+description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Nachrichten, Nutzlasten, Nachrichtenrouting und Serialisierung.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 26256fe968eff5f7570885278620fded5673b5a0
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 11e56ae2483a254fb00e3593da7841f3f3d844f3
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249965"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759396"
 ---
 # <a name="messages-payloads-and-serialization"></a>Nachrichten, Nutzlasten und Serialisierung
 
@@ -32,7 +32,7 @@ Die vordefinierten Brokereigenschaften sind in der folgenden Tabelle aufgeführt
  
 Die entsprechenden Namen auf AMQP-Protokollebene sind in Klammern aufgelistet. 
 
-| Eigenschaftenname                         | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| Eigenschaftenname                         | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (Inhaltstyp)           | Beschreibt optional die Nutzlast der Nachricht mit einem Deskriptor im Format RFC2045, Abschnitt 5. Beispiel: `application/json`.                                                                                                                                                                                                                                                                                             |
 |  [CorrelationId](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (Korrelations-ID)       | Ermöglicht einer Anwendung, einen Kontext für die Nachricht zum Zweck der Korrelation anzugeben, z.B. die **MessageId** einer Nachricht, auf die geantwortet wird.                                                                                                                                                                                                                                                                  |

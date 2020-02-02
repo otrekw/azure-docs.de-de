@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Azure DevTest Labs zu Schulungszwecken | Microsoft Docs
-description: Erfahren Sie mehr zur Verwendung von Azure DevTest Labs für Schulungsszenarien.
+description: Dieser Artikel enthält ausführliche Schritte, die Sie befolgen können, um ein Lab für das Training in Azure DevTest Labs einzurichten.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0a7ce1640636c6fba246584d098043a91990b9a0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622836"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759976"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Verwenden von Azure DevTest Labs zu Schulungszwecken
 Azure DevTest Labs kann außer zum Entwickeln und Testen auch zum Implementieren zahlreicher gängiger Szenarien verwendet werden. Eines dieser Szenarien ist das Einrichten eines Labs zu Schulungszwecken. Mit Azure DevTest Labs können Sie ein Lab erstellen, in dem Sie benutzerdefinierte Vorlagen bereitstellen, mit denen jeder Lab-Benutzer identische und isolierte Umgebungen zu Schulungszwecken erstellen kann. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. Schließlich können Sie das Lab problemlos für Benutzer freigeben, die dann mit einem Klick darauf zugreifen können.
@@ -77,7 +77,7 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Definieren von Labrichtlinien.](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
+   | [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
    | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Schulung abgeschlossen ist. |
 5. **Freigeben des Labs für alle Benutzer**
    

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a31894719863b16cc92f7e5bf4d7c85944c8850e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806972"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721301"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -67,16 +67,16 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 01.07.2019 | date |
-| publisher | Microsoft.Azure.KeyVault | Zeichenfolge |
-| type | KeyVaultForLinux | Zeichenfolge |
-| typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | Zeichenfolge |
-| certificateStoreName | MY | Zeichenfolge |
+| publisher | Microsoft.Azure.KeyVault | string |
+| type | KeyVaultForLinux | string |
+| typeHandlerVersion | 1.0 | INT |
+| pollingIntervalInS | 3600 | string |
+| certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | Zeichenfolge |
+| certificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
 

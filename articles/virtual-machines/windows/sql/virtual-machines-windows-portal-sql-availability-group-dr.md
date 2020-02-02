@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037553"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772664"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurieren einer Verfügbarkeitsgruppe auf virtuellen Azure SQL Server-Computern in verschiedenen Regionen
 
@@ -93,9 +93,26 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
 1. [Fügen Sie die neue SQL Server-Instanz dem Windows Server-Failovercluster hinzu.](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode)
 
-1. Erstellen Sie eine IP-Adressressource für den Cluster.
+1. Fügen Sie dem Cluster eine IP-Adressressource hinzu.
 
-   Die IP-Adressressource kann im Failovercluster-Manager erstellt werden. Klicken Sie mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und klicken Sie anschließend auf **Ressource hinzufügen** > **Weitere Ressourcen** > **IP-Adresse**.
+   Die IP-Adressressource kann im Failovercluster-Manager erstellt werden. Wählen Sie den Namen des Clusters aus, klicken Sie mit der rechten Maustaste unter **Hauptressourcen des Clusters** auf den Clusternamen, und wählen Sie dann **Eigenschaften** aus: 
+
+   ![Clustereigenschaften](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   Wählen Sie im Dialogfeld **Eigenschaften** die Option **Hinzufügen** unter **IP-Adresse** aus, und fügen Sie dann die IP-Adresse des Clusternamens aus der Remotenetzwerkregion hinzu. Klicken Sie im Dialogfeld **IP-Adresse** auf **OK**, und wählen Sie dann im Dialogfeld **Clustereigenschaften** erneut **OK** aus, um die neue IP-Adresse zu speichern. 
+
+   ![Hinzufügen der IP-Adresse des Clusters](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. Fügen Sie die IP-Adresse als Abhängigkeit für den Namen des Kernclusters hinzu.
+
+   Öffnen Sie die Clustereigenschaften erneut, und wählen Sie die Registerkarte **Abhängigkeiten** aus. Konfigurieren Sie eine OR-Abhängigkeit für die beiden IP-Adressen: 
+
+   ![Clustereigenschaften](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Fügen Sie der Verfügbarkeitsgruppenrolle im Cluster eine IP-Adressressource hinzu. 
+
+   Klicken Sie in Failovercluster-Manager mit der rechten Maustaste auf die Verfügbarkeitsgruppenrolle, und wählen Sie **Ressource hinzufügen**, **Weitere Ressourcen** und dann **IP-Adresse** aus.
 
    ![Erstellen der IP-Adresse](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
    - Verwenden Sie das Netzwerk aus dem Remoterechenzentrum.
    - Weisen Sie die IP-Adresse aus der neuen Azure Load Balancer-Instanz zu. 
-
-1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](https://msdn.microsoft.com/library/ff878259.aspx).)
-
-1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)
-
-   Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
-
-1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](https://msdn.microsoft.com/library/hh213239.aspx)
-
-   Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
 
 1. Fügen Sie die IP-Adressressource als Abhängigkeit für den Cluster des Listener-Clientzugriffspunkts (Netzwerkname) hinzu.
 
@@ -138,6 +145,17 @@ Führen Sie das PowerShell-Skript mit dem Clusternetzwerknamen, der IP-Adresse u
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
+1. Aktivieren Sie in der neuen SQL Server-Instanz mithilfe des SQL Server-Konfigurations-Managers die AlwaysOn-Verfügbarkeitsgruppen. (Informationen hierzu finden Sie [hier](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).)
+
+1. [Öffnen Sie Firewallports in der neuen SQL Server-Instanz.](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)
+
+   Welche Portnummern geöffnet werden müssen, hängt von Ihrer Umgebung ab. Öffnen Sie Ports für den Spiegelungsendpunkt und den Integritätstest der Azure Load Balancer-Instanz.
+
+
+1. [Fügen Sie der Verfügbarkeitsgruppe in der neuen SQL Server-Instanz ein Replikat hinzu.](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio)
+
+   Konfigurieren Sie ein Replikat in einer Azure-Remoteregion für die asynchrone Replikation mit manuellem Failover.  
+
 ## <a name="set-connection-for-multiple-subnets"></a>Festlegen der Verbindung für mehrere Subnetze
 
 Das Replikat im Remoterechenzentrum ist Teil der Verfügbarkeitsgruppe, befindet sich aber in einem anderen Subnetz. Wenn dieses Replikat zum primären Replikat wird, treten unter Umständen Verbindungstimeouts für Anwendungen auf. Dieses Verhalten entspricht dem Verhalten einer lokalen Verfügbarkeitsgruppe in einer Bereitstellung mit mehreren Subnetzen. Aktualisieren Sie entweder die Clientverbindung, oder konfigurieren Sie den Namensauflösungs-Cache für die Clusternetzwerknamen-Ressource, um Verbindungen von Clientanwendungen zu ermöglichen.
@@ -148,7 +166,7 @@ Falls Sie die Verbindungszeichenfolgen nicht ändern können, können Sie den Na
 
 ## <a name="fail-over-to-remote-region"></a>Durchführen eines Failovers auf die Remoteregion
 
-Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die Verbindung zwischen Listener und Remoteregion zu testen. Bei einem asynchronen Replikat können beim Failover Daten verloren gehen. Konfigurieren Sie den Verfügbarkeitsmodus als synchron und den Failovermodus als automatisch, um Datenverluste beim Failover zu vermeiden. Führen Sie die folgenden Schritte aus:
+Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die Verbindung zwischen Listener und Remoteregion zu testen. Bei einem asynchronen Replikat können beim Failover Daten verloren gehen. Konfigurieren Sie den Verfügbarkeitsmodus als synchron und den Failovermodus als automatisch, um Datenverluste beim Failover zu vermeiden. Führen Sie die folgenden Schritte durch:
 
 1. Stellen Sie im **Objekt-Explorer** eine Verbindung mit der Instanz von SQL Server her, die als Host für das primäre Replikat fungiert.
 1. Klicken Sie unter **AlwaysOn-Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppen** mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und klicken Sie anschließend auf **Eigenschaften**.
@@ -166,9 +184,9 @@ Verschieben Sie das primäre Replikat nach dem Testen der Verbindung wieder in I
 
 | Location | Serverinstanz | Role | Verfügbarkeitsmodus | Failovermodus
 | ----- | ----- | ----- | ----- | -----
-| Primäres Rechenzentrum | SQL-1 | Primär | Synchron | Automatisch
-| Primäres Rechenzentrum | SQL-2 | Sekundär | Synchron | Automatisch
-| Sekundäres Rechenzentrum oder Remoterechenzentrum | SQL-3 | Sekundär | Asynchron | Manuell
+| Primäres Rechenzentrum | SQL-1 | Primär | Synchron | Automatic
+| Primäres Rechenzentrum | SQL-2 | Secondary | Synchron | Automatic
+| Sekundäres Rechenzentrum oder Remoterechenzentrum | SQL-3 | Secondary | Asynchron | Manuell
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>Weitere Informationen zu geplanten und erzwungenen manuellen Failovern

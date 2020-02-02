@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374079"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835163"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -82,15 +82,6 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
    Dazu stehen drei Methoden zur Auswahl. Wenn Sie ein EA-Kunde (Enterprise Agreement) sind, können Sie eines der [VM-Images, die Lizenzen unterstützen](virtual-machines-windows-sql-server-iaas-overview.md#BYOL), bereitstellen. Dies wird auch als Bring-Your-Own-License (BYOL) bezeichnet. Wenn Sie über [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default) verfügen, können Sie den [Azure-Hybridvorteil](virtual-machines-windows-sql-ahb.md) für ein vorhandenes Image mit nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYG) aktivieren. Sie können auch die SQL Server-Installationsmedien auf eine Windows Server-VM kopieren und dann SQL Server auf dem virtuellen Computer installieren. Registrieren Sie Ihre SQL Server-VM unbedingt beim [Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md), um Features wie Portalverwaltung, automatisierte Sicherung und automatisiertes Patchen nutzen zu können. 
 
-1. **Muss ich Lizenzgebühren für SQL Server auf einem virtuellen Azure-Computer bezahlen, wenn dieser nur für Standby/Failover verwendet wird?**
-
-   Um eine kostenlose passive Lizenz für eine sekundäre Standbyverfügbarkeitsgruppe oder eine Failoverclusterinstanz zu erhalten, müssen Sie sämtliche der folgenden Kriterien erfüllen, die in den [Ressourcen zur Lizenzierung](https://www.microsoft.com/licensing/product-licensing/products) beschrieben werden:
-
-   1. Sie verfügen über [Lizenzmobilität](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) durch [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
-   1. Die passive SQL Server-Instanz leistet keine Bereitstellung von SQL Server-Daten an Clients oder Ausführung aktiver SQL Server-Workloads. Sie wird nur für die Synchronisierung mit dem primären Server verwendet und verwaltet andernfalls die passive Datenbank in einem betriebsbereiten Standbyzustand. Wenn sie Daten bereitstellt, z. B. Berichte für Clients, die aktive SQL Server-Workloads ausführen, oder andere Arbeit ausführt, als in den Nutzungsbedingungen angegeben, muss es sich um eine bezahlte lizenzierte SQL Server-Instanz handeln. Die folgende Aktivität ist auf der sekundären Instanz zulässig: Datenbankkonsistenzprüfungen oder CHECKDB, vollständige Sicherungen, Transaktionsprotokollsicherungen und Überwachen von Ressourcennutzungsdaten. Sie können auch alle 90 Tage die primäre Instanz und entsprechende Notfallwiederherstellungsinstanz für kurze Zeiträume von Notfallwiederherstellungstests gleichzeitig ausführen. 
-   1. Die aktive SQL Server-Lizenz wird von Software Assurance abgedeckt und lässt **eine** passive sekundäre SQL Server-Instanz mit maximal der gleichen Computegröße wie der lizenzierte aktive Server zu. 
-   1. Die sekundäre SQL Server-VM verwendet die Lizenz zur [Notfallwiederherstellung](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) im Azure-Portal.
-
 1. **Kann ich einen virtuellen Computer so ändern, dass meine eigene SQL Server-Lizenz verwendet wird, wenn er mithilfe eines der Katalogimages mit nutzungsbasierter Bezahlung erstellt wurde?**
 
    Ja. Sie können ein Image mit nutzungsbasierter Bezahlung (Pay-As-You-Go, PAYG) problemlos auf Bring-Your-Own-License (BYOL) umstellen, indem Sie den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) aktivieren.  Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für eine SQL Server-VM](virtual-machines-windows-sql-ahb.md). Zurzeit ist diese Funktion nur für Public Cloud-Kunden verfügbar.
@@ -98,6 +89,10 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Sind für den Wechsel des Lizenzierungsmodells Ausfallzeiten für SQL Server erforderlich?**
 
    Nein. Das [Ändern das Lizenzierungsmodells](virtual-machines-windows-sql-ahb.md) erfordert keine Ausfallzeiten für SQL Server, da die Änderung sofort wirksam werden und kein Neustart des virtuellen Computers erforderlich ist. Um jedoch Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter zu registrieren, ist die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) eine Voraussetzung, und durch die Installation der SQL-IaaS-Erweiterung im _Vollmodus_ wird der SQL Server-Dienst neu gestartet. Wenn die SQL-IaaS-Erweiterung installiert werden muss, installieren Sie sie entweder im _Lightweight_-Modus für eingeschränkte Funktionalität, oder installieren Sie sie während eines Wartungsfensters im _Vollmodus_. Die im _Lightweight_-Modus installierte SQL-IaaS-Erweiterung kann jederzeit auf den _Vollmodus_ umgestellt werden. Dazu ist jedoch ein Neustart des SQL Server-Diensts erforderlich. 
+   
+1. **Ist es möglich, das Lizenzierungsmodell auf einem virtuellen SQL Server-Computer zu wechseln, der mit dem klassischem Modell bereitgestellt wird?**
+
+   Nein. Eine Änderung des Lizenzierungsmodells wird auf einer klassischen VM nicht unterstützt. Sie können Ihre VM zum Azure Resource Manager-Modell migrieren und beim SQL Server-VM-Ressourcenanbieter registrieren. Nach der Registrierung beim SQL Server-VM-Ressourcenanbieter kann das Lizenzierungsmodell für den virtuellen Computer geändert werden.
 
 1. **Kann ich über das Azure-Portal mehrere Instanzen auf derselben VM verwalten?**
 
@@ -106,6 +101,32 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Können CSP-Abonnements den Azure-Hybridvorteil aktivieren?**
 
    Ja, der Azure-Hybridvorteil ist für CSP-Abonnements verfügbar. CSP-Kunden sollten zunächst ein Image mit nutzungsbasierter Bezahlung bereitstellen und dann [das Lizenzierungsmodell ändern](virtual-machines-windows-sql-ahb.md) in BYOL (Bring-Your-Own-License).
+   
+ 
+1. **Muss ich Lizenzgebühren für SQL Server auf einem virtuellen Azure-Computer bezahlen, wenn dieser nur für Standby/Failover verwendet wird?**
+
+   Um eine kostenlose passive Lizenz für eine sekundäre Standbyverfügbarkeitsgruppe oder eine Failoverclusterinstanz zu erhalten, müssen Sie sämtliche der folgenden Kriterien erfüllen, die in den [Ressourcen zur Lizenzierung](https://www.microsoft.com/licensing/product-licensing/products) beschrieben werden:
+
+   1. Sie verfügen über [Lizenzmobilität](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) durch [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3). 
+   1. Die passive SQL Server-Instanz leistet keine Bereitstellung von SQL Server-Daten an Clients oder Ausführung aktiver SQL Server-Workloads. Sie wird nur für die Synchronisierung mit dem primären Server verwendet und verwaltet andernfalls die passive Datenbank in einem betriebsbereiten Standbyzustand. Wenn sie Daten bereitstellt, z. B. Berichte für Clients, die aktive SQL Server-Workloads ausführen, oder andere Arbeit ausführt, als in den Nutzungsbedingungen angegeben, muss es sich um eine bezahlte lizenzierte SQL Server-Instanz handeln. Die folgende Aktivität ist auf der sekundären Instanz zulässig: Datenbankkonsistenzprüfungen oder CHECKDB, vollständige Sicherungen, Transaktionsprotokollsicherungen und Überwachen von Ressourcennutzungsdaten. Sie können auch alle 90 Tage die primäre Instanz und entsprechende Notfallwiederherstellungsinstanz für kurze Zeiträume von Notfallwiederherstellungstests gleichzeitig ausführen. 
+   1. Die aktive SQL Server-Lizenz wird von Software Assurance abgedeckt und lässt **eine** passive sekundäre SQL Server-Instanz mit maximal der gleichen Computegröße wie der lizenzierte aktive Server zu. 
+   1. Die sekundäre SQL Server-VM verwendet die Lizenz zur [Notfallwiederherstellung](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) im Azure-Portal.
+   
+1. **Was wird als passive Instanz angesehen?**
+
+   Die passive SQL Server-Instanz leistet keine Bereitstellung von SQL Server-Daten an Clients oder Ausführung aktiver SQL Server-Workloads. Sie wird nur für die Synchronisierung mit dem primären Server verwendet und verwaltet andernfalls die passive Datenbank in einem betriebsbereiten Standbyzustand. Wenn sie Daten bereitstellt, z. B. Berichte für Clients, die aktive SQL Server-Workloads ausführen, oder andere Arbeit ausführt, als in den Nutzungsbedingungen angegeben, muss es sich um eine bezahlte lizenzierte SQL Server-Instanz handeln. Die folgende Aktivität ist auf der sekundären Instanz zulässig: Datenbankkonsistenzprüfungen oder CHECKDB, vollständige Sicherungen, Transaktionsprotokollsicherungen und Überwachen von Ressourcennutzungsdaten. Sie können auch alle 90 Tage die primäre Instanz und entsprechende Notfallwiederherstellungsinstanz für kurze Zeiträume von Notfallwiederherstellungstests gleichzeitig ausführen.
+   
+
+1. **Welche Szenarien können den Notfallwiederherstellungsvorteil (Disaster Recovery, DR) nutzen?**
+
+   Der [Lizenzierungsleitfaden](https://aka.ms/sql2019licenseguide) stellt Szenarien vor, in denen der Notfallwiederherstellungsvorteil genutzt werden kann. Weitere Informationen finden Sie in den Produktbestimmungen, oder bitten Sie Ihre Lizenzierungskontakte oder Ihren Konto-Manager um weitere Informationen.
+
+1. **Welche Abonnements unterstützen den Notfallwiederherstellungsvorteil?**
+
+   Umfassende Programme, die mit Software Assurance äquivalente Abonnementrechte als einen festen Vorteil bieten, unterstützen den DR-Vorteil. Dies schließt Open Value (OV), Open Value Subscription (OVS), Enterprise Agreement (EA), Enterprise Subscription Agreement (EAS) und Server and Cloud Enrollment (SCE) ein, ist aber nicht auf diese Programme beschränkt. Weitere Informationen finden Sie in den [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products), oder bitten Sie Ihre Lizenzierungskontakte oder Ihren Konto-Manager um weitere Informationen. 
+
+   
+ ## <a name="resource-provider"></a>Ressourcenanbieter
 
 1. **Fallen für das Registrieren meines virtuellen Computers beim neuen SQL Server-VM-Ressourcenanbieter zusätzliche Kosten an?**
 
@@ -127,9 +148,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
     Ja. Wenn Sie SQL Server über eigene Medien bereitgestellt und die SQL-IaaS-Erweiterung installiert haben, können Sie die SQL Server-VM beim Ressourcenanbieter registrieren, um in den Genuss der von der SQL-IaaS-Erweiterung gebotenen Vorteile bei der Verwaltung zu kommen. Sie können eine selbst bereitgestellte SQL Server-VM jedoch nicht auf die nutzungsbasierte Bezahlung umstellen.
 
-1. **Ist es möglich, das Lizenzierungsmodell auf einem virtuellen SQL Server-Computer zu wechseln, der mit dem klassischem Modell bereitgestellt wird?**
 
-   Nein. Eine Änderung des Lizenzierungsmodells wird auf einer klassischen VM nicht unterstützt. Sie können Ihre VM zum Azure Resource Manager-Modell migrieren und beim SQL Server-VM-Ressourcenanbieter registrieren. Nach der Registrierung beim SQL Server-VM-Ressourcenanbieter kann das Lizenzierungsmodell für den virtuellen Computer geändert werden. 
    
 
 
@@ -183,7 +202,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Werden SQL Server-Failoverclusterinstanzen (FCI) auf Azure-VMs unterstützt?**
 
-   Ja. Sie können [einen Windows-Failovercluster unter Windows Server 2016](virtual-machines-windows-portal-sql-create-failover-cluster.md) erstellen und für die Speicherung des Clusters das Feature „Direkte Speicherplätze“ (S2D) verwenden. Alternativ können Sie, wie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) beschrieben, Cluster- oder Speicherlösungen von Drittanbietern nutzen.
+   Ja. Sie können eine Failoverclusterinstanz mithilfe von [Premium-Dateifreigaben (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) oder [Storage Spaces Direct (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) für das Speichersubsystem installieren. Premium-Dateifreigaben bieten IOPS und Durchsatzkapazitäten, die den Anforderungen vieler Workloads gerecht werden. Für E/A-intensive Workloads sollten Sie Storage Spaces Direct basierend auf verwalteten Premium-Datenträgern oder Ultra Disks in Erwägung ziehen. Alternativ können Sie, wie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions) beschrieben, Cluster- oder Speicherlösungen von Drittanbietern nutzen.
 
    > [!IMPORTANT]
    > Derzeit wird die _vollständige_ [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht für SQL Server-Failoverclusterinstanzen (FCI) in Azure unterstützt. Es wird empfohlen, die Erweiterung für den Modus _Vollständig_ von virtuellen Computern in den FCI zu deinstallieren und die Erweiterung stattdessen im _Lightweight_-Modus zu installieren. Diese Erweiterung unterstützt Features wie automatisierte Sicherung und automatisiertes Patchen sowie einige Portalfeatures für SQL Server. Diese Features sind nach der Deinstallation des _vollständigen_ Agents nicht mehr für SQL Server-VMs einsetzbar.

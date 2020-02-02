@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Classroom-Labs für Schulungen – Azure Lab Services | Microsoft-Dokumentation
-description: Erfahren Sie mehr zur Verwendung von Azure DevTest Labs für Schulungsszenarien.
+title: Verwenden von Classroom-Labs für Schulungen – Azure Lab Services
+description: In diesem Artikel wird beschrieben, wie Sie Azure DevTest Labs zum Erstellen von Labs in Azure für Schulungsszenarien verwenden.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695276"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717980"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>Verwenden von Classroom-Labs für Schulungen
 Sie können Labs für Schulungen einrichten. Mit Classroom-Labs von Azure Lab Services können Sie ein Lab für Ihre Schulung erstellen, bei der jeder Benutzer eine identische und isolierte Schulungsumgebung verwendet. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. 

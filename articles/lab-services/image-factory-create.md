@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Image Factory in Azure DevTest Labs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine benutzerdefinierte Image Factory unter Verwendung von Beispielskripts aus dem Git-Repository einrichten.
+description: In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem Git-Repository (Azure DevTest Labs) verwenden.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 7779914d9681d0f80cab9568da6a20b15e3a2eb1
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 2c5a44a9505d4a312be521cdc3219c5e4ce95a42
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560021"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759447"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
 In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory) verwenden.
@@ -27,7 +27,7 @@ Eine Image Factory ist eine Konfiguration-als-Code-Lösung, die Images automatis
 
 Um einen Entwickler-Desktop in DevTest Labs schneller in einen betriebsbereiten Zustand zu versetzen, ist die Verwendung benutzerdefinierter Images entscheidend. Der Nachteil von benutzerdefinierten Images ist der, dass zusätzliche Daten im Lab verwaltet werden müssen. Testversionen von Produkten laufen beispielsweise im Laufe der Zeit ab oder neu veröffentlichte Sicherheitsupdates werden nicht angewendet, weshalb es nötig ist, das benutzerdefinierte Image in regelmäßigen Abständen zu aktualisieren. Mit einer Image Factory verfügen Sie über eine Definition des in die Quellcodeverwaltung eingecheckten Images und über einen automatisierten Prozess zum Erstellen benutzerdefinierter Images mithilfe dieser Definition.
 
-Mit dieser Lösung wird das Erstellen virtueller Computer aus benutzerdefinierten Images beschleunigt, während zusätzliche Kosten für die laufende Wartung wegfallen. Mit dieser Lösung können Sie automatisch benutzerdefinierte Images erstellen, diese an andere DevTest Labs verteilen und die alten Images außer Betrieb nehmen. Im folgenden Video erfahren Sie mehr über die Image Factory und deren Implementierung mit DevTest Labs.  Alle Azure Powershell-Skripts stehen kostenlos hier zur Verfügung: [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory).
+Mit dieser Lösung wird das Erstellen virtueller Computer aus benutzerdefinierten Images beschleunigt, während zusätzliche Kosten für die laufende Wartung entfallen. Mit dieser Lösung können Sie automatisch benutzerdefinierte Images erstellen, diese an andere DevTest Labs verteilen und die alten Images außer Betrieb nehmen. Im folgenden Video erfahren Sie mehr über die Image Factory und deren Implementierung mit DevTest Labs.  Alle Azure Powershell-Skripts stehen kostenlos hier zur Verfügung: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory).
 
 <br/>
 
@@ -58,4 +58,4 @@ Für ein komplexeres Szenario gibt es eine alternative Implementierung mit einem
 - PowerShell-Skripts müssen wiederverwendbar sein, damit bei Bedarf zusätzliche Factorys eingerichtet werden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Fahren Sie mit dem nächsten Artikel in diesem Abschnitt fort: [Run an image factory from Azure DevOps (Ausführen einer Image Factory aus Azure DevOps)](image-factory-set-up-devops-lab.md)
+Fahren Sie mit dem nächsten Artikel in diesem Abschnitt fort: [Ausführen einer Image Factory in Azure DevOps](image-factory-set-up-devops-lab.md)

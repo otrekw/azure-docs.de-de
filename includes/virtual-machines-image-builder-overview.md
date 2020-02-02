@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795817"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748939"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -45,8 +45,10 @@ Der Azure Image Builder-Dienst wird in folgenden Regionen als Vorschauversion ve
 AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6
-- CentOS 7.6
+- RHEL 7.6, 7.7
+- CentOS 7.6, 7.7
+- SLES 12 SP4
+- SLES 15, SLES 15 SP1
 - Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
 - Windows 2016
 - Windows 2019
@@ -58,7 +60,7 @@ AIB-Datei unterstützt RHEL ISO als Quelle für:
 
 RHEL 7.6 ISOs werden nicht unterstützt, sondern getestet.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 
 ![Schematische Darstellung von Azure Image Builder](./media/virtual-machines-image-builder-overview/image-builder.png)
@@ -91,6 +93,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
+
+Sie können den Zugriff mit PowerShell zuweisen:
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
 
 Wenn das Dienstkonto nicht gefunden wird, kann dies bedeuten, dass das Abonnement, in dem Sie die Rollenzuweisung hinzufügen, noch nicht für den Ressourcenanbieter registriert ist.
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543034"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775264"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory** und **AzureFrontDoor.Frontend** auf. Fügen Sie auch die folgenden IP-Adressen in die Whitelist ein (diese Abhängigkeit wird bald entfernt): 13.107.6.181 und 13.107.9.181. | Ausgehend | Nein | Nein |
 | **AzureIoTHub** | Azure IoT Hub. | Ausgehend | Nein | Nein |
 | **AzureKeyVault** | Azure Key Vault:<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. | Ausgehend | Ja | Ja |
-| **AzureLoadBalancer** | Das Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure dient. Sie können diese Regel außer Kraft setzen, wenn Azure Load Balancer nicht verwendet wird. | Beide | Nein | Nein |
+| **AzureLoadBalancer** | Das Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure dient. Dies schließt keinen Datenverkehr zu ihrer Azure Load Balancer-Ressource ein. Sie können diese Regel außer Kraft setzen, wenn Azure Load Balancer nicht verwendet wird. | Beide | Nein | Nein |
 | **AzureMachineLearning** | Azure Machine Learning. | Beide | Nein | Ja |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon und benutzerdefinierte Metriken (GiG-Endpunkte).<br/><br/>*Hinweis:* Für Log Analytics weist dieses Tag eine Abhängigkeit vom **Storage**-Tag auf. | Ausgehend | Nein | Ja |
 | **AzurePlatformDNS** | Der grundlegende (standardmäßige) DNS-Dienst für die Infrastruktur.<br/><br>Sie können dieses Tag verwenden, um den standardmäßigen DNS-Dienst zu deaktivieren. Bei Verwendung dieses Tags ist Vorsicht geboten. Es wird empfohlen, die [Überlegungen zur Azure-Plattform](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) durchzulesen. Außerdem wird empfohlen, vor der Verwendung dieses Tags entsprechende Tests auszuführen. | Ausgehend | Nein | Nein |
@@ -79,11 +79,11 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **ElasticAFD** | Azure Front Door (elastisch) | Beide | Nein | Nein |
 | **EventHub** | Azure Event Hubs. | Ausgehend | Ja | Ja |
 | **GatewayManager** | Verwaltungsdatenverkehr für dedizierte Azure VPN Gateway- und Application Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
-| **GuestAndHybridManagement** | Azure Automation und Gastkonfiguration | Beide | Nein | Ja |
+| **GuestAndHybridManagement** | Azure Automation und Gastkonfiguration | Ausgehend | Nein | Ja |
 | **HDInsight** | Azure HDInsight. | Eingehend | Ja | Nein |
 | **Internet** | Der IP-Adressraum, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist.<br/><br/>Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein. | Beide | Nein | Nein |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security | Ausgehend | Nein | Nein |
-| **MicrosoftContainerRegistry** | Azure Container Registry. | Ausgehend | Ja | Ja |
+| **MicrosoftContainerRegistry** | Containerregistrierung für Microsoft-Containerimages. <br/><br/>*Hinweis:* Fügen Sie auch die folgende IP-Adresse in die Whitelist ein (diese Abhängigkeit wird bald entfernt): 204.79.197.219. | Ausgehend | Ja | Ja |
 | **ServiceBus** | Azure Service Bus-Datenverkehr, der die Dienstebene „Premium“ verwendet. | Ausgehend | Ja | Ja |
 | **ServiceFabric** | Azure Service Fabric. | Ausgehend | Nein | Nein |
 | **SQL** | Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. | Ausgehend | Ja | Ja |

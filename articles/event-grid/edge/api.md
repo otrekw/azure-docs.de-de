@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ee2b3a35b6f1817b89541a31d0bde4adf00ade2a
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 19f86b1d8233e05844201e1095c1f79324955cd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991847"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841828"
 ---
 # <a name="rest-api"></a>REST-API
 Dieser Artikel beschreibt die REST-APIs von Azure Event Grid in IoT Edge.
@@ -183,6 +183,7 @@ Beispiele in diesem Abschnitt verwenden `EndpointType=Webhook;`. Die JSON-Beispi
             "eventExpiryInMinutes": 120,
             "maxDeliveryAttempts": 50
         },
+        "persistencePolicy": "true",
         "destination":
         {
             "endpointType": "WebHook",
@@ -686,3 +687,93 @@ SasKey:
 TopicName:
 - Wenn das „Subscription.EventDeliverySchema“ auf „EventGridSchema“ festgelegt ist, wird der Wert aus diesem Feld in das Themenfeld jedes Ereignisses eingefügt, bevor es an Event Grid in der Cloud weitergeleitet wird.
 - Wenn das „Subscription.EventDeliverySchema“ auf „CustomEventSchema“ festgelegt ist, wird diese Eigenschaft ignoriert, und die benutzerdefinierte Ereignisnutzlast wird genau so weitergeleitet, wie Sie empfangen wurde.
+
+## <a name="set-up-event-hubs-as-a-destination"></a>Einrichten von Event Hubs als Ziel
+
+Legen Sie zum Veröffentlichen in einem Event Hub `endpointType` auf `eventHub` fest, und geben Sie Folgendes an:
+
+* connectionString: Die Verbindungszeichenfolge für den jeweiligen Event Hub, den Sie als Ziel verwenden, die über eine SAS-Richtlinie generiert wird.
+
+    >[!NOTE]
+    > Die Verbindungszeichenfolge muss für die Entität spezifisch sein. Die Verwendung einer Namespace-Verbindungszeichenfolge funktioniert nicht. Sie können eine entitätsspezifische Verbindungszeichenfolge generieren, indem Sie zum jeweiligen Event Hub navigieren, in dem Sie im Azure-Portal veröffentlichen möchten, und dann auf **SAS-Richtlinien** klicken, um eine neue entitätsspezifische Verbindungszeichenfolge zu generieren.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "eventHub",
+              "properties": {
+                "connectionString": "<your-event-hub-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-queues-as-a-destination"></a>Einrichten von Service Bus-Warteschlangen als Ziel
+
+Legen Sie zum Veröffentlichen in einer Service Bus-Warteschlange `endpointType` auf `serviceBusQueue` fest, und geben Sie Folgendes an:
+
+* connectionString: Die Verbindungszeichenfolge für die jeweilige Service Bus-Warteschlange, die Sie als Ziel verwenden, die über eine SAS-Richtlinie generiert wird.
+
+    >[!NOTE]
+    > Die Verbindungszeichenfolge muss für die Entität spezifisch sein. Die Verwendung einer Namespace-Verbindungszeichenfolge funktioniert nicht. Generieren Sie eine entitätsspezifische Verbindungszeichenfolge, indem Sie zu der jeweiligen Service Bus-Warteschlange navigieren, in der Sie im Azure-Portal veröffentlichen möchten. Klicken Sie dann auf **SAS-Richtlinien**, um eine neue entitätsspezifische Verbindungszeichenfolge zu generieren.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusQueue",
+              "properties": {
+                "connectionString": "<your-service-bus-queue-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-service-bus-topics-as-a-destination"></a>Einrichten von Service Bus-Themen als Ziel
+
+Legen Sie zum Veröffentlichen in einem Service Bus-Thema `endpointType` auf `serviceBusTopic` fest, und geben Sie Folgendes an:
+
+* connectionString: Die Verbindungszeichenfolge für das jeweilige Service Bus-Thema, das Sie als Ziel verwenden, die über eine SAS-Richtlinie generiert wird.
+
+    >[!NOTE]
+    > Die Verbindungszeichenfolge muss für die Entität spezifisch sein. Die Verwendung einer Namespace-Verbindungszeichenfolge funktioniert nicht. Generieren Sie eine entitätsspezifische Verbindungszeichenfolge, indem Sie zum jeweiligen Service Bus-Thema navigieren, in dem Sie im Azure-Portal veröffentlichen möchten, und klicken Sie dann auf **SAS-Richtlinien**, um eine neue entitätsspezifische Verbindungszeichenfolge zu generieren.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "serviceBusTopic",
+              "properties": {
+                "connectionString": "<your-service-bus-topic-connection-string>"
+              }
+            }
+          }
+        }
+    ```
+
+## <a name="set-up-storage-queues-as-a-destination"></a>Einrichten von Storage-Warteschlangen als Ziel
+
+Legen Sie zum Veröffentlichen in einer Storage-Warteschlange `endpointType` auf `storageQueue` fest, und geben Sie Folgendes an:
+
+* queueName: Der Name der Storage-Warteschlange, in der Sie veröffentlichen.
+* connectionString: Die Verbindungszeichenfolge für das Speicherkonto, in dem sich die Storage-Warteschlange befindet.
+
+    >[!NOTE]
+    > Im Gegensatz zu Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen ist die für Storage-Warteschlangen verwendete Verbindungszeichenfolge nicht entitätsspezifisch. Stattdessen muss dies die Verbindungszeichenfolge für das Speicherkonto sein.
+
+    ```json
+        {
+          "properties": {
+            "destination": {
+              "endpointType": "storageQueue",
+              "properties": {
+                "queueName": "<your-storage-queue-name>",
+                "connectionString": "<your-storage-account-connection-string>"
+              }
+            }
+          }
+        }
+    ```

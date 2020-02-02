@@ -1,6 +1,6 @@
 ---
 title: Neustarten eines virtuellen Computers in einem Lab in Azure DevTest Labs | Microsoft-Dokumentation
-description: Informationen zum Neustart eines virtuellen Computers in Azure DevTest Labs
+description: Dieser Artikel enthält die Schritte zum schnellen und einfachen Neustarten virtueller Computer (VMs) in Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864396"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759993"
 ---
 # <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Neustarten eines virtuellen Computers in einem Lab in Azure DevTest Labs
 Sie können einen virtuellen Computer mithilfe der Schritte in diesem Artikel schnell und problemlos neu starten. Beachten Sie Folgendes vor dem Neustart eines virtuellen Computers:
