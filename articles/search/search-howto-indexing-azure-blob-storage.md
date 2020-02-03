@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 793258b572fdcf2487d4b20fa07fb4ef5524b149
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113012"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846266"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -30,7 +30,7 @@ Der Blobindexer kann Text aus den folgenden Dokumentformaten extrahieren:
 ## <a name="setting-up-blob-indexing"></a>Einrichten der Blobindizierung
 Sie können einen Azure Blob Storage-Indexer über folgende Elemente einrichten:
 
-* [Azure-Portal](https://ms.portal.azure.com)
+* [Azure portal](https://ms.portal.azure.com)
 * [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
 * [.NET SDK](https://aka.ms/search-sdk) für die kognitive Azure-Suche
 
@@ -134,7 +134,7 @@ Je nach [Indexer-Konfiguration](#PartsOfBlobToIndex), kann der Blobindexer Metad
 * Der Textinhalt des Dokuments wird in ein Zeichenfolgefeld mit dem Namen `content` extrahiert.
 
 > [!NOTE]
-> Die kognitive Azure-Suche beschränkt die Menge des extrahierten Texts abhängig vom Tarif: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
+> Die kognitive Azure-Suche beschränkt die Menge des extrahierten Texts abhängig vom Tarif: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“, 4 Millionen Zeichen für den Tarif „Standard“, 8 Millionen Zeichen für den Tarif „Standard S2“ und 16 Millionen Zeichen für den Tarif „Standard S3“. Für gekürzte Dokumente wird eine Warnung in die Statusantwort des Indexers einbezogen.  
 
 * Falls für das Blob vom Benutzer angegebene Metadateneigenschaften vorhanden sind, werden diese „Wort für Wort“ extrahiert.
 * Standardmäßige Blob-Metadateneigenschaften werden in die folgenden Felder extrahiert:

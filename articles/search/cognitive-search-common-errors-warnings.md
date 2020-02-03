@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314724"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838546"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
 
@@ -249,7 +249,7 @@ Wenn Sie wissen, dass Ihr Dataset mehrere Sprachen enthält und Sie daher die Ei
 ```
 
 Im folgenden finden Sie einige Referenzen für die derzeit unterstützten Sprachen für jede der Qualifikationen, die diese Fehlermeldung verursachen können:
-* [Unterstützte Sprachen für die Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) und [SentimentSkill](cognitive-search-skill-sentiment.md))
+* [Unterstützte Sprachen für die Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages) (für die Qualifikationen [KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md), [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md), [SentimentSkill](cognitive-search-skill-sentiment.md) und [PIIDetectionSkill](cognitive-search-skill-pii-detection.md))
 * [Unterstützte Sprachen für den Übersetzer](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) (für die Qualifikation [Text TranslationSkill](cognitive-search-skill-text-translation.md))
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) Unterstützte Sprachen: `da, de, en, es, fi, fr, it, ko, pt`
 
@@ -303,7 +303,7 @@ Im [Table Storage-Dienst](https://azure.microsoft.com/services/storage/tables) i
 <a name="truncated-extracted-text-to-x-characters"/>
 
 ## <a name="warning-truncated-extracted-text-to-x-characters"></a>Warnung: Der extrahierte Text wurde auf x Zeichen gekürzt.
-Indexer begrenzen die pro Dokument extrahierbare Textmenge. Dieser Grenzwert ist tarifabhängig: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“ und 4 Millionen Zeichen für die Tarife „Standard“, „Standard S2“ und „Standard S3“. Abgeschnittener Text wird nicht indiziert. Zur Vermeidung dieser Warnung können Sie versuchen, Dokumente mit umfangreichem Text in mehrere kleinere Dokumente aufzuteilen. 
+Indexer begrenzen die pro Dokument extrahierbare Textmenge. Dieser Grenzwert ist tarifabhängig: 32.000 Zeichen für den Tarif „Free“, 64.000 Zeichen für den Tarif „Basic“, 4 Millionen Zeichen für den Tarif „Standard“, 8 Millionen Zeichen für den Tarif „Standard S2“ und 16 Millionen Zeichen für den Tarif „Standard S3“. Abgeschnittener Text wird nicht indiziert. Zur Vermeidung dieser Warnung können Sie versuchen, Dokumente mit umfangreichem Text in mehrere kleinere Dokumente aufzuteilen. 
 
 Weitere Informationen finden Sie unter [Indexergrenzwerte](search-limits-quotas-capacity.md#indexer-limits).
 

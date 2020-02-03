@@ -7,20 +7,25 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 31af550d4f499b4b4440a27037dc210bfdf0cb6f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 01/24/2020
+ms.openlocfilehash: c32e58a43b5409fd9f8ede536167d185270c6a22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793449"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721573"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 Dieser Artikel enthält Anleitungen dazu, wie Standardelemente einer Seite mit Suchergebnissen implementiert werden, z.B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation. Seitenbezogene Optionen, die Daten oder Informationen zu den Suchergebnissen beitragen, werden über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)-Anforderungen angegeben, die an den Dienst der kognitiven Azure-Suche gesendet werden. 
 
 In der REST-API enthalten Anforderungen einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist. Im .NET-SDK ist die entsprechende API die [DocumentSearchResult-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1).
 
-Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Demo-App „New York City Jobs“](https://azjobsdemo.azurewebsites.net/) und [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Um schnell eine Suchseite für den Client zu generieren, probieren Sie die folgenden Optionen aus:
+
++ Verwenden Sie den [Anwendungsgenerator](search-create-app-portal.md) im Portal, um eine HTML-Seite mit einer Suchleiste, einer Facettennavigation und einem Ergebnisbereich zu erstellen.
++ Befolgen Sie das Tutorial [Erstellen der ersten App in C#](tutorial-csharp-create-first-app.md), um einen funktionalen Client zu erstellen.
+
+Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Jobs in New York City (Demo-App)](https://azjobsdemo.azurewebsites.net/), [JavaScript-Beispielcode mit einer Livedemo-Website](https://github.com/liamca/azure-search-javascript-samples) und [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
 > Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Informationen zur Anforderungssyntax finden Sie unter [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice).
@@ -88,6 +93,22 @@ Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe
 > Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Suchindex](index-add-scoring-profiles.md).
 >
 
+## <a name="hit-highlighting"></a>Treffermarkierung
+
+Sie können die Formatierung auf übereinstimmende Begriffe in den Suchergebnissen anwenden, um die Übereinstimmung leichter zu erkennen. Anweisungen zur Treffermarkierung werden in der [Abfrageanforderung](https://docs.microsoft.com/rest/api/searchservice/search-documents) bereitgestellt. 
+
+Die Formatierung wird auf Abfragen kompletter Begriffe angewendet. Abfragen für Teilbegriffe, wie z. B. Fuzzysuche oder Platzhaltersuche, die zu einer Erweiterung der Abfrage im Modul führen, können keine Treffermarkierung verwenden.
+
+```http
+POST /indexes/hotels/docs/search?api-version=2019-05-06 
+    {  
+      "search": "something",  
+      "highlight": "Description"  
+    }
+```
+
+
+
 ## <a name="faceted-navigation"></a>Facettennavigation
 
 Ergebnisseiten bieten üblicherweise eine Suchnavigation, die sich häufig am seitlichen oder oberen Rand der Seite befindet. In der kognitiven Azure-Suche ermöglicht die Facettennavigation eine selbstgesteuerte Suche, die auf vordefinierten Filtern basiert. Weitere Informationen finden Sie unter [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md).
@@ -102,7 +123,7 @@ Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird m
 
 Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durchsuchen (API der kognitiven Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 - [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice)
 - [Indexvorgänge](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
