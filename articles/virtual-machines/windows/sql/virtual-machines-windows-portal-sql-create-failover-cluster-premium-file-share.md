@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965338"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772595"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -77,13 +77,15 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
 
 - Ein Microsoft Azure-Abonnement
 - Eine Windows-Domäne auf virtuellen Azure-Computern
-- Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
+- Ein Domänenbenutzerkonto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory.
+- Ein Domänenbenutzerkonto zum Ausführen des SQL Server-Diensts, mit dem Sie sich beim virtuellen Computer beim Einbinden der Dateifreigabe anmelden können.  
 - Ein virtuelles Azure-Netzwerk und ein Subnetz mit einem ausreichend großen IP-Adressraum für die folgenden Komponenten:
    - Zwei virtuelle Computer
    - Die IP-Adresse des Failoverclusters
    - Eine IP-Adresse für jede FCI
 - DNS-Konfiguration im Azure-Netzwerk mit Verweis auf die Domänencontroller
-- Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-premium-fileshare.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien.
+- Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-premium-fileshare.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien, die als Clusterlaufwerk verwendet werden kann.
+- Wenn Sie unter Windows Server 2012 R2 oder früher arbeiten, benötigen Sie eine weitere Dateifreigabe, die als Dateifreigabezeuge verwendet wird, da Cloudzeugen für Windows 2016 oder höher unterstützt werden. Sie können eine andere Azure-Dateifreigabe oder eine Dateifreigabe auf einem separaten virtuellen Computer verwenden. Wenn Sie eine andere Azure-Dateifreigabe verwenden möchten, können Sie diese mit dem gleichen Prozess wie für die Premium-Dateifreigabe einbinden, die für das Clusterlaufwerk verwendet wird. 
 
 Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Failoverclusters beginnen. Der erste Schritt ist die Erstellung der virtuellen Computer.
 
@@ -180,7 +182,8 @@ Nachdem Sie die virtuellen Computer erstellt und konfiguriert haben, können Sie
 1. Wiederholen Sie diese Schritte auf jeder SQL Server-VM, die zum Cluster gehört.
 
   > [!IMPORTANT]
-  > Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Standard- oder Premium-Dateifreigabe verwenden.
+  > - Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Standard- oder Premium-Dateifreigabe verwenden.
+  > - Wenn Sie unter Windows 2012 R2 oder früher arbeiten, führen Sie die gleichen Schritte aus, um die Dateifreigabe einzubinden, die Sie als Dateifreigabezeugen verwenden. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Schritt 3: Konfigurieren des Failoverclusters mit der Dateifreigabe
 
@@ -189,7 +192,7 @@ Im nächsten Schritt konfigurieren Sie den Failovercluster. In diesem Schritt f�
 1. Hinzufügen des Features „Windows Server-Failoverclustering“.
 1. Überprüfen des Clusters.
 1. Erstellen des Failoverclusters.
-1. Erstellen des Cloudzeugen.
+1. Erstellen Sie den Cloudzeugen (für Windows Server 2016 oder höher) oder den Dateifreigabezeugen (für Windows Server 2012 R2 oder früher).
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Hinzufügen von Windows Server-Failoverclustering
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Erstellen eines Cloudzeugen
+### <a name="create-a-cloud-witness-win-2016-"></a>Erstellen eines Cloudzeugen (Windows 2016 oder höher)
 
-Ein Cloudzeuge ist eine neue Art von Clusterquorumzeuge, der in einem Azure Storage Blob gespeichert wird. Es ist dann nicht erforderlich, eine separate VM als Host für eine Zeugenfreigabe zu verwenden.
+Wenn Sie Windows Server 2016 und höher verwenden, müssen Sie einen Cloudzeugen erstellen. Ein Cloudzeuge ist eine neue Art von Clusterquorumzeuge, der in einem Azure Storage Blob gespeichert wird. Es ist dann nicht erforderlich, eine separate VM als Host für eine Zeugenfreigabe oder eine separate Dateifreigabe zu verwenden.
 
 1. [Erstellen Sie einen Cloudzeugen für den Failovercluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ Ein Cloudzeuge ist eine neue Art von Clusterquorumzeuge, der in einem Azure Stor
 
 1. Speichern Sie die Zugriffsschlüssel und die Container-URL.
 
-1. Konfigurieren Sie den Failovercluster-Quorumzeugen. Informationen hierzu finden Sie unter [Konfigurieren des Cloudzeugen als Quorumzeugen für Ihren Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Konfigurieren des Quorums 
+
+Konfigurieren Sie den Cluster für Windows Server 2016 oder höher für die Verwendung des soeben erstellten Cloudzeugen. Führen Sie alle Schritte aus, die unter [Konfigurieren des Cloudzeugen als Quorumzeugen für Ihren Cluster](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) beschrieben werden.
+
+Führen Sie für Windows Server 2012 R2 oder früher die gleichen Schritte unter [Konfigurieren eines Quorumzeugen in der Benutzeroberfläche](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) aus, wählen Sie jedoch auf der Seite **Quorumzeugen auswählen** die Option **Dateifreigabezeugen konfigurieren** aus. Geben Sie die Dateifreigabe an, die Sie als Dateifreigabezeugen zugeordnet haben, und zwar unabhängig davon, ob es sich um eine Dateifreigabe handelt, die Sie auf einem separaten virtuellen Computer konfiguriert oder aus Azure eingebunden haben. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>Schritt 4: Testen des Failovers des Clusters
@@ -296,7 +303,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 1. Wählen Sie **Neue SQL Server-Failoverclusterinstallation** aus. Befolgen Sie im Assistenten die Anleitung zum Installieren der SQL Server-FCI.
 
-   Die FCI-Datenverzeichnisse müssen sich auf der Premium-Dateifreigabe befinden. Geben Sie den vollständigen Pfad der Freigabe im folgenden Format ein: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Eine Warnung wird angezeigt, die Sie darüber informiert, dass Sie einen Dateiserver als Datenverzeichnis angegeben haben. Diese Warnung ist erwartungsgemäß. Vergewissern Sie sich, dass das Konto, mit dem Sie die Dateifreigabe angelegt haben, das Konto ist, das der SQL Server-Dienst verwendet, um mögliche Ausfälle zu vermeiden.
+   Die FCI-Datenverzeichnisse müssen sich auf der Premium-Dateifreigabe befinden. Geben Sie den vollständigen Pfad der Freigabe im folgenden Format ein: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Eine Warnung wird angezeigt, die Sie darüber informiert, dass Sie einen Dateiserver als Datenverzeichnis angegeben haben. Diese Warnung ist erwartungsgemäß. Vergewissern Sie sich, dass das Benutzerkonto, über das Sie beim persistenten Speichern der Dateifreigabe eine RDP-Verbindung mit der VM hergestellt haben, das gleiche Konto ist, das der SQL Server-Dienst verwendet, um mögliche Fehler zu vermeiden.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Verwenden der Dateifreigabe als SQL-Datenverzeichnisse":::
 

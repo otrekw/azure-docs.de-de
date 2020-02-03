@@ -3,21 +3,21 @@ title: Einrichten der SAP HANA-Systemreplikation auf virtuellen Azure-Computern 
 description: Richten Sie die Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs) ein.
 services: virtual-machines-linux
 documentationcenter: ''
-author: MSSedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: 62bb00c05359682503d2e99ef282f2523871147d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/28/2020
+ms.author: radeltch
+ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721544"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837033"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
 
@@ -116,7 +116,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 1. Erstellen Sie ein virtuelles Netzwerk.
 1. Erstellen Sie eine Verfügbarkeitsgruppe.  
    Richten Sie die maximale Updatedomäne ein.
-1. Erstellen Sie einen Lastenausgleich (intern). Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) zu verwenden.
+1. Erstellen Sie einen Lastenausgleich (intern). Sie sollten [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) verwenden.
    * Wählen Sie das virtuelle Netzwerk aus, das Sie in Schritt 2 erstellt haben.
 1. Erstellen Sie den virtuellen Computer 1.  
    Verwenden Sie Red Hat Enterprise Linux 7.4 oder höher für SAP HANA. Dieses Beispiel verwendet das Image für Red Hat Enterprise Linux 7.4 für SAP HANA <https://portal.azure.com/#create/RedHat.RedHatEnterpriseLinux75forSAP-ARM>. Wählen Sie die in Schritt 3 erstellte Verfügbarkeitsgruppe aus.
@@ -138,7 +138,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
       1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **hana-backend**).
       1. Wählen Sie **Virtuellen Computer hinzufügen** aus.
       1. Wählen Sie **Virtueller Computer** aus.
-      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters und deren IP-Adressen aus.
+      1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters und deren IP-Adressen aus.
       1. Wählen Sie **Hinzufügen**.
 
    1. Erstellen Sie als Nächstes einen Integritätstest:
@@ -151,7 +151,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
    1. Erstellen Sie als Nächstes die Lastenausgleichsregeln:
    
       1. Öffnen Sie den Lastenausgleich, und wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
-      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
+      1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **hana-lb**).
       1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **hana-frontend**, **hana-backend** und **hana-hp**).
       1. Wählen Sie **HA-Ports** aus.
       1. Erhöhen Sie die **Leerlaufzeitüberschreitung** auf 30 Minuten.
@@ -159,9 +159,9 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
       1. Klicken Sie auf **OK**.
 
    > [!Note]
-   > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen (keine öffentliche IP-Adresse) Azure Load Balancer Standard-Instanz platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
+   > Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
 
-1. Wenn Ihr Szenario die Verwendung von Load Balancer Basic vorschreibt, führen Sie alternativ die folgenden Konfigurationsschritte aus:
+1. Wenn Ihr Szenario die Verwendung von Load Balancer Basic vorschreibt, führen Sie stattdessen die folgenden Konfigurationsschritte aus:
    1. Konfigurieren Sie den Lastenausgleich. Erstellen Sie zunächst einen Front-End-IP-Pool:
 
       1. Öffnen Sie den Lastenausgleich, und wählen Sie den **Front-End-IP-Pool** und dann **Hinzufügen** aus.
@@ -560,14 +560,21 @@ Erstellen Sie dann die HANA-Topologie. Führen Sie die folgenden Befehle auf ein
 <pre><code>sudo pcs property set maintenance-mode=true
 
 # Replace the bold string with your instance number and HANA system ID
-sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> --clone clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHanaTopology_<b>HN1</b>_<b>03</b> SAPHanaTopology SID=<b>HN1</b> InstanceNumber=<b>03</b> \
+op start timeout=600 op stop timeout=300 op monitor interval=10 timeout=600 \
+--clone clone-max=2 clone-node-max=1 interleave=true
 </code></pre>
 
 Erstellen Sie als Nächstes die HANA-Ressourcen:
 
 <pre><code># Replace the bold string with your instance number, HANA system ID, and the front-end IP address of the Azure load balancer.
 
-sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false master notify=true clone-max=2 clone-node-max=1 interleave=true
+sudo pcs resource create SAPHana_<b>HN1</b>_<b>03</b> SAPHana SID=<b>HN1</b> InstanceNumber=<b>03</b> PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200 AUTOMATED_REGISTER=false \
+op start timeout=3600 op stop timeout=3600 \
+op monitor interval=61 role="Slave" timeout=700 \
+op monitor interval=59 role="Master" timeout=700 \
+op promote timeout=3600 op demote timeout=3600 \
+master notify=true clone-max=2 clone-node-max=1 interleave=true
 
 sudo pcs resource create vip_<b>HN1</b>_<b>03</b> IPaddr2 ip="<b>10.0.0.13</b>"
 
@@ -583,6 +590,9 @@ sudo pcs property set maintenance-mode=false
 </code></pre>
 
 Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Es ist nicht wichtig, auf welchem Knoten die Ressourcen ausgeführt werden.
+
+> [!NOTE]
+> Die Timeouts in der oben beschriebenen Konfiguration sind nur Beispiele und müssen möglicherweise an das spezifische HANA-Setup angepasst werden. Beispielsweise müssen Sie ggf. das Starttimeout erhöhen, wenn es länger dauert, bis die SAP HANA-Datenbank gestartet wird.  
 
 <pre><code>sudo pcs status
 
