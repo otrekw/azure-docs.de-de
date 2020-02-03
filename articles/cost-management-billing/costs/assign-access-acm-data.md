@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8cb803c78b8bb5acd7880f79a19b5e3f0a978bd8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984742"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76773971"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Zuweisen des Zugriffs auf Daten in Cost Management
 
@@ -48,13 +48,6 @@ Zum Anzeigen von Kostendaten für Azure EA-Abonnements muss ein Benutzer mindest
 
 <sup>2</sup> Das Registrierungskonto wird auch als Kontobesitzer bezeichnet.
 
-Das folgende Diagramm veranschaulicht die Beziehung zwischen Cost Management-Bereichen mit Rollen und EA-Portal-Einstellungen.
-
-![Das Diagramm zeigt die Beziehung zwischen Cost Management-Bereichen mit Rollen und EA-Portal-Einstellungen.](./media/assign-access-acm-data/scope-access-relationship-diagram.png)
-
-Wenn im EA-Portal die Option **Abteilungsadministratoren können Gebühren anzeigen** deaktiviert ist, erhalten Sie beim Versuch, die Kosten für Abteilungen und Konten anzuzeigen, eine Meldung, die besagt, dass *Kosten für Ihre Organisation deaktiviert sind*.
-
-Und wenn im EA-Portal die Option **Kontobesitzer können Gebühren anzeigen** deaktiviert ist, erhalten Sie beim Versuch, die Kosten für Registrierungskonten, Verwaltungsgruppen, Abonnements und Ressourcengruppen anzuzeigen, ebenfalls die Meldung, die besagt, dass *Kosten für Ihre Organisation deaktiviert sind*.
 
 ## <a name="other-azure-account-scopes"></a>Andere Azure-Kontobereiche
 

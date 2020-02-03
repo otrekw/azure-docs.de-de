@@ -11,10 +11,10 @@ ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
 ms.openlocfilehash: 756e2f275a92a31a99604aaf7ef880bfdce8149b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984586"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
@@ -25,7 +25,7 @@ Benutzer von Azure Cost Management wünschen sich häufig Antworten auf Fragen, 
 
 Die Kostenanzeige nach Azure-Dienst kann Ihnen helfen, die Teile Ihrer Infrastruktur besser zu verstehen, die die höchsten Kosten verursachen. Beispielsweise können die VM-Computekosten niedrig sein. Doch können aufgrund der Informationsmenge, die von den virtuellen Computern ausgegeben wird, erhebliche Netzwerkkosten entstehen. Es ist von entscheidender Bedeutung, die primären Kostenverursacher bei Ihren Azure-Diensten zu kennen, damit Sie bei Bedarf die Dienstnutzung anpassen können.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie **Kosten nach Dienst** aus, und gruppieren Sie dann nach **Dienstebene**.
 1. Ändern Sie die Ansicht in **Tabelle**.
 
@@ -35,7 +35,7 @@ Die Kostenanzeige nach Azure-Dienst kann Ihnen helfen, die Teile Ihrer Infrastru
 
 Ihre Dienste werden mit Azure-Ressourcen erstellt. Die Überprüfung der Kosten nach Ressourcen kann Ihnen helfen, schnell die Hauptkostenverursacher zu identifizieren. Wenn ein Dienst Ressourcen nutzt, die zu teuer sind, sollten Sie in Erwägung ziehen, zur Kostensenkung Änderungen vorzunehmen.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie **Kosten nach Ressource** aus.
 1. Ändern Sie die Ansicht in **Tabelle**.
 
@@ -45,7 +45,7 @@ Ihre Dienste werden mit Azure-Ressourcen erstellt. Die Überprüfung der Kosten 
 
 Mithilfe von Dimensionen können Sie Ihre Kosten anhand verschiedener Metadatenwerte organisieren, die in ihren Gebühren angezeigt werden. Beispielsweise könnten Sie Ihre Kosten nach Standort gruppieren.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie den Filter **Gruppieren nach** aus.  
     ![Auswählen einer Gruppe nach Position](./media/cost-analysis-common-uses/group-by.png)
 1. Optional können Sie die Ansicht zur späteren Verwendung speichern.
@@ -56,7 +56,7 @@ Mithilfe von Dimensionen können Sie Ihre Kosten anhand verschiedener Metadatenw
 
 Durch die Betrachtung der täglichen und monatlichen Kosten können Sie besser verstehen, ob es eine Woche oder ein Jahr gibt, in der bzw. dem Ihre Kosten höher liegen. Verursacht ein eventuell höherer Datenverkehr von Kunden an Feiertagen einen entsprechenden Anstieg ihrer Azure-Kosten? Ist der Freitag ein kostenträchtigerer Tag als Montag?
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Legen Sie die **Granularität** auf **Monatlich** oder **Täglich** fest.
 
 ![Anzeigen der Kosten pro Tag](./media/cost-analysis-common-uses/daily-granularity.png)
@@ -67,7 +67,7 @@ Viele Azure-Benutzer wenden Tags auf Ihre Ressourcen an, z.B. für eine Kostenst
 
 Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* das Tag auf die Ressource angewendet wurde. Tags werden nicht rückwirkend für die Kostenkalkulation angewendet.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie **Gruppieren nach** für das Tag aus.
 
 ![Anzeigen der Kosten für ein bestimmtes Tag](./media/cost-analysis-common-uses/tag.png)
@@ -76,7 +76,7 @@ Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* da
 
 Die Berichtsdatei mit den Nutzungsdetails im CSV-Format enthält eine Aufschlüsselung aller Gebühren, die für eine Rechnung anfallen. Sie können den Bericht mit Ihrer Rechnung vergleichen, die dadurch besser verständlich wird. Jede in Rechnung gestellte Gebühr entspricht den im Nutzungsbericht aufgeschlüsselten Kosten.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Nutzung und Gebühren** für ein Abrechnungskonto oder Abonnement. Beispiel:  **Kostenverwaltung + Abrechnungs** > **Abrechnung** > **Nutzung + Gebühren**.
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Nutzung und Gebühren** für ein Abrechnungskonto oder Abonnement. Beispiel: **Kostenverwaltung + Abrechnungs** > **Abrechnung** > **Nutzung + Gebühren**.
 1. Markieren Sie die Position, die Sie herunterladen möchten, und klicken Sie dann auf das Symbol zum Herunterladen.  
     ![Herunterladen von Nutzungsdaten und Gebühren](./media/cost-analysis-common-uses/download1.png)
 1.  Wählen Sie die herunterzuladende Nutzungsdatei aus.  
@@ -96,7 +96,7 @@ Durch die Registrierung Ihres Enterprise Agreements (EA) entstehen Kosten für I
 
 Verwenden Sie eine grafische Ansicht der monatlichen Kosten für Ihre Registrierung, um die Kostentrends und die in Rechnung gestellten Beträge für einen bestimmten Zeitraum zu verstehen.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie Ihre Registrierung aus, und legen Sie die Laufzeit der Registrierung fest.
 1. Legen Sie die Granularität auf „Monatlich“ und dann die Ansicht auf **Säule (gestapelt)** fest.
 
@@ -108,7 +108,7 @@ Zugunsten einer detaillierteren Analyse können Sie Ihre Daten gruppieren und fi
 
 Zeigen Sie die im Laufe der Zeit angefallenen Gebühren als kumulierten Nettobetrag an, um die Gesamtausgaben für Ihre Organisation für einen bestimmten Zeitraum zu verstehen.
 
-1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie Ihre Registrierung aus, und zeigen Sie dann die aktuellen kumulierten Kosten an.
 
 ![Kumulierte Kosten der Registrierung](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)

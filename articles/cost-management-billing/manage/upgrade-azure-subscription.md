@@ -14,10 +14,10 @@ ms.date: 10/01/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e1e99313454c8352b96b8f11ec35f482521f7b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75984974"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Durchführen eines Upgrades für Ihr kostenloses Azure-Konto oder Ihr Azure for Students Starter-Konto
@@ -30,7 +30,7 @@ Wenn Sie sich für ein [Azure for Students Starter-Konto](https://azure.microsof
 
 ## <a name="upgrade-your-azure-free-account"></a>Upgraden Ihres kostenlosen Azure-Kontos
 
-Wenn Sie ein Upgrade für Ihr kostenloses Azure-Konto durchführen, wird das verbleibende Guthaben für die vollen 30 Tage nach der Registrierung beibehalten. Beispiel:  Wenn Sie sich am 1. November registriert und am 5. November ein Upgrade durchgeführt haben, ist das nicht genutzte Guthaben bis zum 30. November verfügbar. Sie haben auch Zugang zu kostenlosen Diensten für die Dauer von 12 Monaten nach dem Upgrade.
+Wenn Sie ein Upgrade für Ihr kostenloses Azure-Konto durchführen, wird das verbleibende Guthaben für die vollen 30 Tage nach der Registrierung beibehalten. Beispiel: Wenn Sie sich am 1. November registriert und am 5. November ein Upgrade durchgeführt haben, ist das nicht genutzte Guthaben bis zum 30. November verfügbar. Sie haben auch Zugang zu kostenlosen Diensten für die Dauer von 12 Monaten nach dem Upgrade.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 1. Suchen Sie nach **Abonnements**.
