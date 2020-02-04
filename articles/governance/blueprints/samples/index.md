@@ -1,14 +1,14 @@
 ---
-title: Index mit Blaupausenbeispielen
+title: Index der Blaupausenbeispiele
 description: Index der Beispiele für Compliance und Standards für die Bereitstellung von Umgebungen, Richtlinien und Cloud Adoption Framework-Grundlagen mit Azure Blueprints.
-ms.date: 12/05/2019
+ms.date: 01/10/2020
 ms.topic: sample
-ms.openlocfilehash: a0be956037f6b1ee5229ecde7b1491f552113866
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa5f02af6a0e59359d6bc3c2d24515fea535a0fa
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436562"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938309"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints-Beispiele
 
@@ -21,6 +21,7 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 | [Canada Federal PBMM](./canada-federal-pbmm/index.md) | Enthält Leitlinien für die Einhaltung von PBMM (Canada Federal Protected B, Medium Integrity, Medium Availability). |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung der Empfehlungen von CIS Microsoft Azure Foundations Benchmark helfen. |
 | [FedRAMP Moderate](./fedramp-m/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP Moderate“ helfen. |
+| [FedRAMP High](./fedramp-h/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von „FedRAMP High“ helfen. |
 | [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | Hier finden Sie eine Reihe von Richtlinien, die Ihnen bei der Einhaltung von HIPAA HITRUST helfen. |
 | [IRS 1075](./irs-1075/index.md) | Enthält Leitlinien für die Einhaltung von ISO 1075.|
 | [ISO 27001](./iso27001/index.md) | Enthält Leitlinien für die Einhaltung von ISO 27001. |
@@ -37,12 +38,12 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Blueprints enthalte
 
 ![Strategie für Blaupausenbeispiele](../media/blueprint-samples-strategy.png)
 
-Bei der CAF-Basisblaupause und der CAF-Blaupause für die Migrationslandezone wird davon ausgegangen, dass der Kunde ein neues, bereits vorhandenes Einzelabonnement für die Migration lokaler Ressourcen/Workloads zu Azure vorbereitet.
-(Regionen A und B in der obigen Abbildung.)  
+Bei der CAF-Basisblaupause und der CAF-Blaupause für die Migrationslandezone wird davon ausgegangen, dass der Kunde ein vorhandenes, sauberes Einzelabonnement für die Migration lokaler Ressourcen und Workloads zu Azure vorbereitet.
+(Regionen A und B in der Abbildung)  
 
 Es besteht die Möglichkeit, die Beispielblaupausen zu durchlaufen und bei den Anpassungen, die ein Kunde anwendet, nach Mustern zu suchen. Darüber hinaus besteht die Möglichkeit, branchenspezifische Blaupausen (etwa für Finanzdienstleistungen und E-Commerce; oberer Bereich der Region B) proaktiv zu berücksichtigen. Analog dazu planen wir die Erstellung von Blaupausen für komplexe Architekturaspekte wie mehrere Abonnements, Hochverfügbarkeit, regionsübergreifende Ressourcen und Kunden, die Kontrollen für bereits vorhandene Abonnements und Ressourcen implementieren (Regionen C und D).
 
-Es gibt Beispielblaupausen für Kundenszenarien mit hohen Complianceanforderungen und hochkomplexer Architektur (Region E in der obigen Abbildung). Die obige Region F ist für Kunden und Partner vorgesehen, die die Beispielblaupausen nutzen und an ihre individuellen Anforderungen anpassen.
+Es gibt Beispielblaupausen für Kundenszenarien mit hohen Complianceanforderungen und hochkomplexer Architektur (Region E in der Abbildung). Region F in der Abbildung ist für Kunden und Partner vorgesehen, die die Beispielblaupausen nutzen und an ihre individuellen Anforderungen anpassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

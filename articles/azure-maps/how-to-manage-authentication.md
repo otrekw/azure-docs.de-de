@@ -3,25 +3,25 @@ title: Verwalten der Authentifizierung | Microsoft Azure Maps
 description: Sie können über das Azure-Portal die Authentifizierung in Microsoft Azure Maps verwalten.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1a38c970f3c9fa5b90032f5816f8e541b305531c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 1f7f128898089292a8ccd92686af5d68fe328f3c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911548"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766056"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Verwalten der Authentifizierung in Azure Maps
 
-Nachdem Sie ein Azure Maps-Konto erstellt haben, werden eine Client-ID und Schlüssel erstellt, um entweder die Authentifizierung über Azure Active Directory (Azure AD) oder Shared Key zu unterstützen.
+Nachdem Sie ein Azure Maps-Konto erstellt haben, werden eine Client-ID und Schlüssel erstellt, um die Authentifizierung über Azure Active Directory (Azure AD) und Shared Key zu unterstützen.
 
 ## <a name="view-authentication-details"></a>Anzeigen von Authentifizierungsdetails
 
-Nach dem Erstellen des Azure Maps-Kontos werden der primäre und sekundäre Schlüssel generiert. Es wird empfohlen, den Primärschlüssel als Abonnementschlüssel zu verwenden, wenn Sie Azure Maps über die [Authentifizierung mit gemeinsam verwendetem Schlüssel](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication) aufrufen. Der sekundäre Schlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden. Weitere Informationen finden Sie unter [Authentifizierung mit Azure Maps](https://aka.ms/amauth).
+Nach dem Erstellen des Azure Maps-Kontos werden der primäre und sekundäre Schlüssel generiert. Verwenden Sie den primären Schlüssel als Abonnementschlüssel (manchmal werden diese Namen austauschbar verwendet). Der sekundäre Schlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden. In jedem Fall ist ein Schlüssel erforderlich, um Azure Maps aufzurufen. Dieser Prozess wird als [Authentifizierung mit gemeinsam verwendetem Schlüssel](https://docs.microsoft.com/azure/azure-maps/azure-maps-authentication#shared-key-authentication) bezeichnet. Weitere Informationen zur Authentifizierung mit gemeinsam verwendetem Schlüssel und zur Azure AD-Authentifizierung finden Sie unter [Authentifizierung bei Azure Maps](https://aka.ms/amauth).
 
 Sie können Ihre Authentifizierungsdetails für das Azure-Portal anzeigen. Wechseln Sie zu Ihrem Konto, und klicken Sie im Menü **Einstellungen** auf **Authentifizierung**.
 
@@ -32,40 +32,40 @@ Sie können Ihre Authentifizierungsdetails für das Azure-Portal anzeigen. Wechs
 
 Nachdem Sie ein Azure Maps-Konto erstellt haben, müssen Sie eine Verknüpfung zwischen Ihrem Azure AD-Mandanten und der Azure Maps-Ressource erstellen.
 
-1. Öffnen Sie das Azure AD-Blatt, und erstellen Sie eine App-Registrierung. Geben Sie einen Namen für die Registrierung ein. Geben Sie im Feld **Anmelde-URL** die URL für die Homepage der Web-App/API ein (z. B. https:\//localhost/). Wenn Sie bereits über eine registrierte App verfügen, fahren Sie mit Schritt 2 fort.
+1. Wählen Sie **Azure Active Directory** im Menü des Portals aus. Geben Sie einen Namen für die Registrierung ein. Klicken Sie auf **App-Registrierungen** und dann auf **Neue Registrierung**. Geben Sie im Feld **Umleitungs-URI** die Startseite der Web-App an. Beispiel: https://localhost/. Wenn Sie bereits über eine registrierte App verfügen, fahren Sie mit Schritt 2 fort.
 
     ![App-Registrierung](./media/how-to-manage-authentication/app-registration.png)
 
     ![App-Registrierungsdetails](./media/how-to-manage-authentication/app-create.png)
 
-2. Navigieren Sie unter **App-Registrierungen** zur Anwendung, und klicken Sie auf **Einstellungen**, um Azure Maps die delegierten API-Berechtigungen zuzuweisen.  Wählen Sie **Erforderliche Berechtigungen** aus, und klicken Sie dann auf **Hinzufügen**. Suchen Sie unter **API auswählen** nach **Azure Maps**, wählen Sie die Option aus, und klicken Sie dann auf **Auswählen**.
+2. Navigieren Sie unter **App-Registrierungen** zur Anwendung, und wählen Sie **API-Berechtigungen** aus, um Azure Maps die delegierten API-Berechtigungen zuzuweisen. Wählen Sie **Berechtigung hinzufügen** aus. Suchen Sie **Azure Maps** unter **API auswählen**, und wählen Sie die Option aus.
 
     ![App-API-Berechtigungen](./media/how-to-manage-authentication/app-permissions.png)
 
-3. Wählen Sie unter **Berechtigungen auswählen** die Berechtigung **Access Azure Maps** (Auf Azure Maps zugreifen) aus, und klicken Sie dann auf **Auswählen**.
+3. Aktivieren Sie unter **Berechtigungen auswählen** das Kontrollkästchen für **Benutzeridentitätswechsel**, und klicken Sie dann unten auf die Schaltfläche **Auswählen**.
 
     ![Auswählen von App-API-Berechtigungen](./media/how-to-manage-authentication/select-app-permissions.png)
 
 4. Führen Sie je nach Ihrer Authentifizierungsmethode Schritt a oder b aus.
 
-    1. Wenn Ihre Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK nutzt, aktivieren Sie `oauthEnableImplicitFlow`, indem Sie die Option im Abschnitt „Manifest“ der Detailseite Ihrer App-Registrierung auf TRUE festlegen.
+    1. Wenn Ihre Anwendung die Benutzertokenauthentifizierung mit dem Azure Maps Web SDK nutzt, aktivieren Sie `oauth2AllowImplicitFlow`, indem Sie die Option im Abschnitt „Manifest“ Ihrer App-Registrierung auf „true“ festlegen.
     
        ![App-Manifest](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Wenn Ihre Anwendung Server/Anwendung-Authentifizierung verwendet, wechseln Sie innerhalb der App-Registrierung zum Blatt **Schlüssel**, und erstellen Sie entweder ein Kennwort, oder laden Sie ein öffentliches Schlüsselzertifikat in die App-Registrierung hoch. Wenn Sie ein Kennwort erstellen, nachdem Sie auf **Speichern** geklickt haben, kopieren Sie das Kennwort zur späteren Verwendung und bewahren Sie es sicher auf. Dieses Kennwort benötigen Sie zum Abrufen von Token von Azure AD.
+    2. Wenn Ihre Anwendung Server/Anwendung-Authentifizierung verwendet, wechseln Sie innerhalb der App-Registrierung zum Blatt **Zertifikate und Geheimnisse**, und erstellen Sie entweder ein Kennwort, oder laden Sie ein öffentliches Schlüsselzertifikat in die App-Registrierung hoch. Wenn Sie ein Kennwort erstellen, speichern Sie es zur späteren Verwendung sicher. Dieses Kennwort benötigen Sie zum Abrufen von Token von Azure AD.
 
        ![App-Schlüssel](./media/how-to-manage-authentication/app-keys.png)
 
 
-## <a name="grant-rbac-to-azure-maps"></a>Gewähren von RBAC in Azure Maps
+## <a name="grant-role-based-access-control-rbac-to-azure-maps"></a>Gewähren der rollenbasierten Zugriffssteuerung (RBAC) in Azure Maps
 
-Nachdem Sie ein Azure Maps-Konto mit Ihrem Azure AD-Mandanten verknüpft haben, können Sie die Zugriffssteuerung gewähren, indem Sie einem Benutzer, einer Gruppe oder einer Anwendung die Rollen für die Azure Maps-Zugriffssteuerung zuweisen.
+Nachdem Sie Ihrem Azure AD-Mandanten ein Azure Maps-Konto zugeordnet haben, können Sie die Zugriffssteuerung gewähren. Sie gewähren Zugriffssteuerung, indem Sie einen Benutzer, eine Gruppe oder eine Anwendung zu einer oder mehreren Azure Maps-Zugriffssteuerungsrollen zuweisen.
 
-1. Wechseln Sie zur **Zugriffssteuerung (IAM)** , klicken Sie auf **Rollenzuweisungen**, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
+1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)** und dann **Rollenzuweisung** aus.
 
     ![Gewähren von RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** unter **Rolle** die Rolle **Azure Maps Date Reader (Preview)** aus. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. Wählen Sie unter **Auswählen** den Benutzer oder die Anwendung aus. Wählen Sie **Speichern** aus.
+2. Wählen Sie im Fenster **Rollenzuweisung** unter **Rolle** die Rolle **Azure Maps Date Reader (Preview)** aus. Wählen Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus. Wählen Sie den Benutzer oder die Anwendung aus. Wählen Sie **Speichern** aus.
 
     ![Rollenzuweisung hinzufügen](./media/how-to-manage-authentication/add-role-assignment.png)
 

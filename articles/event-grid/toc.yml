@@ -138,6 +138,8 @@
       href: custom-disaster-recovery.md
     - name: Beheben von Fehlern
       href: troubleshoot-errors.md
+    - name: Aktivieren von Diagnoseprotokollen für ein Thema
+      href: enable-diagnostic-logs-topic.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

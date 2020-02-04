@@ -142,6 +142,8 @@
           href: how-to-manage-workspace.md
         - name: Mithilfe der Azure-Befehlszeilenschnittstelle
           href: how-to-manage-workspace-cli.md
+        - name: Verwenden von REST
+          href: how-to-manage-rest.md
         - name: Verwenden von Resource Manager-Vorlagen
           displayName: arm
           href: how-to-create-workspace-template.md
@@ -194,6 +196,9 @@
         - name: Erstellen von Datasets mit Bezeichnungen
           displayName: 'data, labels, torchvision'
           href: how-to-use-labeled-dataset.md
+        - name: DevOps für Datenerfassung
+          displayName: 'data, ingestion, devops'
+          href: how-to-cicd-data-ingestion.md
     - name: Trainieren von Modellen
       items:
         - name: Verwenden des Designers

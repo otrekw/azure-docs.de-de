@@ -3,24 +3,24 @@ title: Zoomfaktoren und Kachelraster | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über Zoomfaktoren und Kachelraster in Microsoft Azure Maps.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910773"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765837"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 
-Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion (EPSG: 3857). Eine Projektion ist ein mathematisches Modell, mit dem ein kugelförmiger Globus in eine flache Karte transformiert wird. Die sphärische Mercator-Projektion streckt die Karte an den Polen, um eine quadratische Karte zu erzeugen. Das verzerrt den Maßstab und die Fläche der Karte erheblich, hat aber zwei wichtige Vorteile, die diese Verzerrung überwiegen:
+Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion (EPSG: 3857). Eine Projektion ist ein mathematisches Modell, mit dem ein kugelförmiger Globus in eine flache Karte transformiert wird. Die sphärische Mercator-Projektion streckt die Karte an den Polen, um eine quadratische Karte zu erzeugen. Diese Projektion verzerrt den Maßstab und die Fläche der Karte erheblich, hat aber zwei wichtige Vorteile, die diese Verzerrung überwiegen:
 
-- Es ist eine winkelgetreue Projektion, sodass die Form relativ kleiner Objekte erhalten bleibt. Dies ist besonders bei der Anzeige von Luftaufnahmen wichtig, weil die Form von Gebäuden nicht verzerrt werden soll. Quadratische Gebäude sollten als Quadrate und nicht als Rechtecke angezeigt werden.
-- Es handelt sich um eine Form der Zylinderprojektion, was bedeutet, dass Norden und Süden immer genau oben bzw. unten sind, und Westen und Osten immer genau links bzw. rechts. 
+- Es ist eine winkelgetreue Projektion, sodass die Form relativ kleiner Objekte erhalten bleibt. Das Beibehalten der Form von kleinen Objekten ist beim Anzeigen von Luftaufnahmen besonders wichtig. Beispielsweise möchten wir vermeiden, dass die Form von Gebäuden verzerrt wird. Quadratische Gebäude sollten als Quadrate und nicht als Rechtecke angezeigt werden.
+- Es handelt sich um eine Zylinderprojektion. Norden und Süden sind immer oben und unten, und Westen und Osten sind immer links und rechts. 
 
 Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die Karte in vier quadratische Kacheln aufgeteilt. Die Azure Maps SDKs verwenden Kacheln mit einer Größe von 512 × 512 Pixeln für Straßenkarten und kleinere Kacheln mit 256 × 256 Pixeln für Satellitenbilder. Azure Maps enthält Raster- und Vektorkacheln für 23 Zoomfaktoren (nummeriert von 0 bis 22). Die ganze Welt würde bei Zoomfaktor 0 auf einer einzigen Kachel passen:
 
@@ -70,7 +70,7 @@ In der folgenden Tabelle finden Sie die vollständige Liste der Zoomfaktorwerte 
 
 ## <a name="pixel-coordinates"></a>Pixelkoordinaten
 
-Wenn wir die Projektion und den Maßstab für jeden Zoomfaktor ausgewählt haben, können wir geografische Koordinaten in Pixelkoordinaten konvertieren. Die vollständige Pixelhöhe und -breite eines Kartenbilds der Welt für einen bestimmten Zoomfaktor kann folgendermaßen berechnet werden:
+Wenn wir die Projektion und den Maßstab für jeden Zoomfaktor ausgewählt haben, können wir geografische Koordinaten in Pixelkoordinaten konvertieren. Die vollständige Pixelhöhe und -breite eines Kartenbilds der Welt für einen bestimmten Zoomfaktor wird folgendermaßen berechnet:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Da die Werte für die Höhe und Breite der Karte für jeden Zoomfaktor unterschi
 
 <center>
 
-![Karte mit Pixeldimensionen](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Karte mit Pixeldimensionen](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-Wenn Breiten- und Längengrad sowie die Detailstufe angegeben sind, können die XY-Pixelkoordinaten wie folgt berechnet werden:
+</center>
+
+Wenn Breiten- und Längengrad sowie die Detailstufe angegeben sind, wird die XY-Pixelkoordinaten wie folgt berechnet:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Bei den Werten für Breitengrad und Längengrad wird davon ausgegangen, dass diese sich im Bezugssystem WGS 84 befinden. Auch wenn Azure Maps eine sphärische Projektion verwendet, ist es wichtig, alle geografischen Koordinaten in ein gemeinsames Bezugssystem zu konvertieren. Dafür wurde WGS 84 ausgewählt. Der Wert für den Längengrad reicht von -180 bis +180 Grad, und der Wert für den Breitengrad muss auf einen Bereich von -85.05112878 bis 85.05112878 beschnitten werden. Dadurch wird eine Singularität an den Polen verhindert, und die projizierte Karte ist quadratisch.
+Bei den Werten für Breitengrad und Längengrad wird davon ausgegangen, dass diese sich im Bezugssystem WGS 84 befinden. Auch wenn Azure Maps eine sphärische Projektion verwendet, ist es wichtig, alle geografischen Koordinaten in ein gemeinsames Bezugssystem zu konvertieren. Dafür wurde WGS 84 ausgewählt. Der Wert für den Längengrad reicht von -180 Grad bis +180 Grad, und der Wert für den Breitengrad muss auf einen Bereich von -85.05112878 bis 85.05112878 beschnitten werden. Durch die Einhaltung dieser Werte wird eine Singularität an den Polen vermieden, und es wird sichergestellt, dass die projizierte Karte eine quadratische Form hat.
 
 ## <a name="tile-coordinates"></a>Kachelkoordinaten
 
-Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die gerenderte Karte in Kacheln aufgeteilt. Da die Anzahl von Pixeln für jeden Zoomfaktor unterschiedlich ist, gilt dies auch für die Anzahl von Kacheln:
+Um die Leistung beim Abrufen und Anzeigen von Karten zu optimieren, wird die gerenderte Karte in Kacheln aufgeteilt. Die Anzahl von Pixeln und Kacheln ist für jeden Zoomfaktor unterschiedlich:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Kacheln werden durch den Zoomfaktor und die x- und y-Koordinaten entsprechend der Kachelposition im Raster für diesen Zoomfaktor angegeben.
+Kacheln werden durch den Zoomfaktor angegeben. Die x- und y-Koordinaten entsprechend der Kachelposition im Raster für diesen Zoomfaktor.
 
-Denken Sie bei der Ermittlung des zu verwendenden Zoomfaktors daran, dass jeder Standort eine feste Position auf der Kachel darstellt. Dies bedeutet, dass die Anzahl der Kacheln, die für die Darstellung einer bestimmten Fläche des Gebiets erforderlich ist, von der jeweiligen Platzierung des Zoomrasters auf der Welt abhängig ist. Wenn zwei Punkte z.B. 900 Meter auseinander liegen, sind *möglicherweise* nur drei Kacheln notwendig, um eine Route zwischen diesen im Zoomfaktor 17 anzuzeigen. Wenn sich der westliche Punkt allerdings rechts von der Kachel und der östliche Punkt links von der Kachel befindet, sind möglicherweise vier Kacheln erforderlich:
+Denken Sie bei der Ermittlung des zu verwendenden Zoomfaktors daran, dass jeder Standort eine feste Position auf der Kachel darstellt. Folglich ist die Anzahl der Kacheln, die für die Darstellung einer bestimmten Fläche des Gebiets erforderlich ist, von der jeweiligen Platzierung des Zoomrasters auf der Weltkarte abhängig. Wenn zwei Punkte z.B. 900 Meter auseinander liegen, sind *möglicherweise* nur drei Kacheln notwendig, um eine Route zwischen diesen im Zoomfaktor 17 anzuzeigen. Wenn sich der westliche Punkt allerdings rechts von der Kachel und der östliche Punkt links von der Kachel befindet, sind möglicherweise vier Kacheln erforderlich:
 
 <center>
 

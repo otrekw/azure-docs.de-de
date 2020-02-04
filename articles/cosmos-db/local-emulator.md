@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309981"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760571"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -181,7 +181,7 @@ Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/E
 
 Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableGremlinEndpoint“. Alternativ können Sie auch die Umgebungsvariable `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` festlegen.
 
-* [Installieren Sie apache-tinkerpop-gremlin-console-3.3.4](https://tinkerpop.apache.org/downloads.html).
+* [Installieren Sie „apache-tinkerpop-gremlin-console-3.3.4“.](https://archive.apache.org/dist/tinkerpop/3.3.4)
 
 * Erstellen Sie im Data Explorer des Emulators eine Datenbank „db1“ und eine Sammlung „coll1“; wählen Sie für den Partitionsschlüssel „/name“.
 

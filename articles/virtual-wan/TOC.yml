@@ -4,7 +4,7 @@
   items:
     - name: Über Virtual WAN
       href: virtual-wan-about.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Herstellen einer Standort-zu-Standort-Verbindung
       href: virtual-wan-site-to-site-portal.md
@@ -24,7 +24,7 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Globale Übertragungsnetzwerkarchitektur
           href: virtual-wan-global-transit-network-architecture.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
       href: connect-virtual-network-gateway-vwan.md
@@ -47,6 +47,7 @@
     - name: Konfigurieren der Azure AD-Authentifizierung für mehrere Anwendungen für Benutzer-VPN (Vorschau)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurieren der Automatisierung (Virtual WAN-Partner)
+    - name: Herunterladen von globalen und hub-basierten VPN-Profilen
       href: virtual-wan-configure-automation-providers.md
     - name: Konfigurieren des Routings
       items:

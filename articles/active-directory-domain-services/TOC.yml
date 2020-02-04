@@ -79,6 +79,8 @@
           href: delete-aadds.md
         - name: Migrieren von einer klassischen Bereitstellung (Vorschau)
           href: migrate-from-classic-vnet.md
+        - name: Ändern der SKU
+          href: change-sku.md
     - name: Sichern von Azure AD DS
       items:
         - name: Schützen Ihrer verwalteten Domäne
