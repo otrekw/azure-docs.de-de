@@ -67,21 +67,11 @@
     - name: Verwenden mit einem Bot
       items:
         - name: 'Mit C#'
-          items:
-            - name: 1. Erstellen eines Basisbots
-              href: luis-csharp-tutorial-bf-v4.md
-              displayName: 'bot framework, framework, sdk, abs'
-            - name: 2. Hinzufügen von Telemetrie zu Application Insights
-              href: luis-tutorial-bot-csharp-appinsights.md
-              displayName: 'Application insight, kusto'
+          href: luis-csharp-tutorial-bf-v4.md
+          displayName: 'bot framework, framework, sdk, abs'
         - name: Mit Node.js
-          items:
-            - name: 1. Erstellen eines Basisbots
-              displayName: 'bot framework, framework, sdk, abs'
-              href: luis-nodejs-tutorial-bf-v4.md
-            - name: 2. Hinzufügen von Telemetrie zu Application Insights
-              displayName: 'Application insight, kusto'
-              href: luis-tutorial-bot-nodejs-appinsights.md
+          displayName: 'bot framework, framework, sdk, abs'
+          href: luis-nodejs-tutorial-bf-v4.md
 - name: Konzepte
   items:
     - name: Lebenszyklus der Entwicklung

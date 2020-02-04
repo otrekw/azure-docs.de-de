@@ -47,8 +47,9 @@
     - name: Konfigurieren der Azure AD-Authentifizierung für mehrere Anwendungen für Benutzer-VPN (Vorschau)
       href: openvpn-azure-ad-tenant-multi-app.md
     - name: Konfigurieren der Automatisierung (Virtual WAN-Partner)
-    - name: Herunterladen von globalen und hub-basierten VPN-Profilen
       href: virtual-wan-configure-automation-providers.md
+    - name: Herunterladen von globalen und hub-basierten VPN-Profilen
+      href: global-hub-profile.md
     - name: Konfigurieren des Routings
       items:
         - name: Weiterleiten von Datenverkehr von einem virtuellen Hub an ein virtuelles Netzwerkgerät

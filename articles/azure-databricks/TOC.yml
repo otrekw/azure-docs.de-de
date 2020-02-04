@@ -1150,6 +1150,9 @@
             - name: Analysieren von Leistungsproblemen der Benutzeroberfläche
               href: /azure/databricks/kb/cloud/har-log-analysis
               maintainContext: true
+            - name: Aufträge im Arbeitsbereich bleiben hängen.
+              href: /azure/databricks/kb/cloud/azure-vnet-jobs-not-progressing
+              maintainContext: true
         - name: Cluster
           items:
             - name: Berechnen der Anzahl von Kernen in einem Cluster
@@ -1248,6 +1251,9 @@
               maintainContext: true
             - name: Lesen von Dateien in WASB nicht möglich
               href: /azure/databricks/kb/data-sources/wasb-check-blob-types
+              maintainContext: true
+            - name: Optimieren der Leseleistung von JDBC-Datenquellen
+              href: /azure/databricks/kb/data-sources/jdbc-optimize-read
               maintainContext: true
         - name: DBFS
           items:

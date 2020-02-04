@@ -14,10 +14,8 @@
   items:
     - name: Clientbibliothek
       items:
-        - name: Textanalyse mit v3.0-preview
+        - name: Analysieren von Text mit der Clientbibliothek
           href: quickstarts/text-analytics-sdk.md
-        - name: Textanalyse mit v2
-          href: quickstarts/text-analytics-sdk-v2.md
     - name: REST-API
       items:
         - name: Verwenden von Java
