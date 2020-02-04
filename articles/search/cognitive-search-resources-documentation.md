@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466716"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837789"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Dokumentationressourcen für die KI-Anreicherung in Azure Cognitive Search
 
@@ -24,7 +24,7 @@ Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
 ## <a name="getting-started"></a>Erste Schritte
 + [Einführung in die KI in Azure Cognitive Search](cognitive-search-concept-intro.md)
 + [Schnellstart: Erstellen eines kognitiven Skillsets im Azure-Portal](cognitive-search-quickstart-blob.md)
-+ [Tutorial: Angereicherte Indizierung mit KI](cognitive-search-tutorial-blob.md)
++ [Tutorial: Angereicherte Indizierung mit künstlicher Intelligenz (KI)](cognitive-search-tutorial-blob.md)
 + [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>Leitfäden zur Vorgehensweise
@@ -43,6 +43,7 @@ Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
   + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)
@@ -64,6 +65,6 @@ Die folgenden Artikel sind die vollständige Dokumentation zur KI-Anreicherung.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Azure Cognitive Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Indexer in Azure Cognitive Search](search-indexer-overview.md)
++ [REST-API für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/)
++ [Indexer in der kognitiven Azure-Suche](search-indexer-overview.md)
 + [Was ist Azure Cognitive Search?](search-what-is-azure-search.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Abfragen von Daten aus einer Azure SQL-Datenbank mithilfe von Node.js'
+title: Abfragen einer Datenbank mithilfe von Node.js
 description: Hier erfahren Sie, wie Sie unter Verwendung von Node.js ein Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und sie mithilfe von T-SQL-Anweisungen abfragt.
 services: sql-database
 ms.service: sql-database
@@ -11,45 +11,46 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: 064baf0215a2eaf7b90b78716b87606990b8fd21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279261"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768605"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Node.js
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Node.js](https://nodejs.org) eine Verbindung mit einer Azure SQL-Datenbank herstellen. Sie können dann T-SQL-Anweisungen zum Abfragen von Daten verwenden.
+In dieser Schnellstartanleitung stellen Sie mithilfe von Node.js eine Verbindung mit einer Azure SQL-Datenbank her und fragen Daten mithilfe von T-SQL-Anweisungen ab.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erforderlichen Komponenten vorhanden sind:
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md)
+- [Node.js](https://nodejs.org)-bezogene Software
 
-- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  || Einzeldatenbank | Verwaltete Instanz |
-  |:--- |:--- |:---|
-  | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
-  |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
-  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
-  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
+  Installieren Sie Homebrew und Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter macOS](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
 
-  > [!IMPORTANT]
-  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
 
+  Installieren Sie Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
 
-- Node.js-Software für Ihr Betriebssystem:
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
-  - **MacOS:** Installieren Sie Homebrew und Node.js und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/mac/).
-  
-  - **Ubuntu:** Installieren Sie Node.js und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/).
-  
-  - **Windows:** Installieren Sie Chocolatey und Node.js und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+  Installieren Sie Chocolatey und Node.js sowie den ODBC-Treiber und SQLCMD mithilfe der Schritte **1.2** und **1.3** des Artikels [Erstellen von Node.js-Apps mit SQL Server unter Windows](https://www.microsoft.com/sql-server/developer-get-started/node/windows/).
+
+  ---
+
+> [!IMPORTANT]
+> Die Skripts in diesem Artikel wurden für die Datenbank **Adventure Works** geschrieben.
+
+> [!NOTE]
+> Optional kann eine verwaltete Azure SQL-Instanz verwendet werden.
+>
+> Verwenden Sie zum Erstellen und Konfigurieren das [Azure-Portal](sql-database-managed-instance-get-started.md), [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) oder die [Befehlszeilenschnittstelle](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44), und richten Sie anschließend die Konnektivität ([lokal](sql-database-managed-instance-configure-p2s.md) oder [VM](sql-database-managed-instance-configure-vm.md)) ein.
+>
+> Informationen zum Laden von Daten finden Sie unter [Schnellstart: Importieren einer BACPAC-Datei in eine Datenbank in Azure SQL-Datenbank](sql-database-import.md) (mit der Datei für [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)) bzw. unter [Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 

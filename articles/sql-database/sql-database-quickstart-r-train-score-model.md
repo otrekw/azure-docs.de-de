@@ -13,33 +13,33 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: c1719064de53b79a127146d0ab034f461657cc64
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a54d418f668d8c7292c8332c1b14c4df45e59308
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64714894"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768462"
 ---
-# <a name="create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Erstellen und Trainieren eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
+# <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Schnellstart: Erstellen und Trainieren eines Vorhersagemodells in R mit Machine Learning Services (Vorschauversion) für Azure SQL-Datenbank
 
-In dieser Schnellstartanleitung erstellen und trainieren Sie ein Vorhersagemodell mithilfe von R, speichern das Modell in einer Tabelle in Ihrer SQL-Datenbank-Instanz und verwenden es zum Vorhersagen von Werten aufgrund neuer Daten mit der Public Preview von [Machine Learning Services (mit R) in Azure SQL-Datenbank](sql-database-machine-learning-services-overview.md). 
-
-In diesem Schnellstart verwenden Sie ein einfaches Regressionsmodell, mit dem der Anhalteweg eines PKW anhand der Geschwindigkeit vorhergesagt wird. Sie nutzen das in R vorhandene Dataset **cars**, weil es klein und leicht verständlich ist.
-
-> [!TIP]
-> In der R-Runtime sind viele kleine und große Datasets enthalten. Geben Sie zum Abrufen einer Liste mit Datasets, die mit R installiert werden, an einer R-Eingabeaufforderung `library(help="datasets")` ein.
+In dieser Schnellstartanleitung erstellen und trainieren Sie ein Vorhersagemodell mithilfe von R, speichern das Modell in einer Tabelle in Ihrer Datenbank und verwenden es dann zum Vorhersagen von Werten auf der Grundlage neuer Daten unter Verwendung von Machine Learning Services (mit R) in Azure SQL-Datenbank.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md) mit einer [Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) mit aktiviertem R. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine Azure SQL-Datenbank-Instanz mit Machine Learning Services (mit R) aktivieren. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
+> [!NOTE]
+> Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank.
 
-- Vergewissern Sie sich, dass die aktuelle Version von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) installiert ist. In dieser Schnellstartanleitung verwenden Sie SSMS, obwohl Sie auch mithilfe anderer Datenbankverwaltungen oder Abfragetools R-Skripts ausführen können.
+In diesem Beispiel wird ein einfaches Regressionsmodell verwendet, um unter Verwendung des in R enthaltenen Datasets **cars** den Anhalteweg eines Fahrzeugs anhand der Geschwindigkeit vorherzusagen.
 
-- Diese Schnellstartanleitung setzt voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Informationen zur Vorgehensweise finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md).
+> [!TIP]
+> Die R-Runtime enthält zahlreiche Datasets. Geben Sie an der R-Eingabeaufforderung `library(help="datasets")` ein, um eine Liste der installierten Datasets zu erhalten.
 
 ## <a name="create-and-train-a-predictive-model"></a>Erstellen und Trainieren eines Vorhersagemodells
 
@@ -50,7 +50,7 @@ Die Anforderungen eines linearen Modells sind einfach:
 - Stellen Sie die Eingabedaten für die Verwendung beim Trainieren des Modells bereit.
 
 > [!TIP]
-> Falls Sie eine Auffrischung zu linearen Modellen benötigen, nutzen Sie das folgende Tutorial, in dem das Anpassen eines Modells mit rxLinMod beschrieben wird: [Fitting Linear Models](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen).
+> Mit dem folgenden Tutorial, in dem der Prozess zum Anpassen eines Modells mithilfe von rxLinMod beschrieben wird, können Sie Ihr Wissen über lineare Modelle auffrischen: [Fitting Linear Models](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen).
 
 In den folgenden Schritten richten Sie die Trainingsdaten ein, erstellen ein Regressionsmodell, trainieren es mithilfe von Trainingsdaten und speichern dann das Modell in einer SQL-Tabelle.
 
@@ -173,9 +173,9 @@ VALUES (
 
 ![Trainiertes Modell mit zusätzlicher Ausgabe](./media/sql-database-quickstart-r-train-score-model/r-train-model-with-additional-output.png)
 
-## <a name="score-new-data-using-the-trained-model"></a>Bewerten von neuen Daten mit dem trainierten Modell
+## <a name="score-new-data-using-the-trained-model"></a>Bewerten neuer Daten mithilfe des trainierten Modells
 
-*Bewertung* ist ein Begriff, der im Data Science-Bereich verwendet wird, um das Generieren von Vorhersagen, Wahrscheinlichkeiten oder anderen Werten basierend auf neuen Daten zu bezeichnen, die in ein trainiertes Modell einfließen. Sie verwenden das Modell, das Sie im vorherigen Abschnitt erstellt haben, um Vorhersagen für neue Daten zu bewerten.
+Der Begriff *Bewertung* bezieht sich bei Data Science auf die Erstellung von Vorhersagen, Wahrscheinlichkeiten oder anderen Werten, die auf neuen Daten basieren, die einem trainierten Modell zugeführt werden. Sie verwenden das Modell, das Sie im vorherigen Abschnitt erstellt haben, um Vorhersagen für neue Daten zu bewerten.
 
 Haben Sie bemerkt, dass die ursprünglichen Trainingsdaten nur bis 25 Meilen pro Stunde reichen? Der Grund ist, dass diese Originaldaten auf einem Experiment aus dem Jahr 1920 basieren! Sie fragen sich vielleicht, wie lange es dauert, bis ein PKW aus den Zwanziger Jahren zum Stehen kommt, wenn er mit einer Geschwindigkeit von 60 oder sogar 100 Meilen pro Stunde fahren würde. Um diese Frage zu beantworten, können Sie einige neue Geschwindigkeitswerte in Ihrem Modell angeben.
 
@@ -244,7 +244,7 @@ Haben Sie bemerkt, dass die ursprünglichen Trainingsdaten nur bis 25 Meilen pro
 > [!NOTE]
 > In diesem Beispielskript wird die Funktion `str` während der Testphase hinzugefügt, um das Schema der Daten zu überprüfen, die von R zurückgegeben werden. Sie können die Anweisung dann später entfernen.
 >
-> Die im R-Skript genutzten Spaltennamen werden nicht unbedingt an die Ausgabe der gespeicherten Prozedur übergeben. Hier definiert die WITH RESULTS-Klausel einige neue Spaltennamen.
+> Die im R-Skript verwendeten Spaltennamen werden nicht zwangsläufig an die Ausgabe der gespeicherten Prozedur übergeben. Hier definiert die WITH RESULTS-Klausel einige neue Spaltennamen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

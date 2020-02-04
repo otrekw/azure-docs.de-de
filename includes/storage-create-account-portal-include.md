@@ -8,27 +8,27 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d34f18b688be2afd7febf1f948b3093696ee9118
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451672"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759846"
 ---
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
 1. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus. Geben Sie in der Liste mit den Ressourcen **Speicherkonten** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Speicherkonten**.
-1. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
-1. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
-1. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe an, wie in der folgenden Abbildung dargestellt.
+2. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
+3. Wählen Sie das Abonnement aus, in dem das Speicherkonto erstellt werden soll.
+4. Wählen Sie unter dem Feld **Ressourcengruppe** die Option **Neu erstellen**. Geben Sie einen Namen für die neue Ressourcengruppe an, wie in der folgenden Abbildung dargestellt.
 
     ![Screenshot: Erstellen einer Ressourcengruppe im Portal](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
 
-1. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
-1. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
-1. Behalten Sie die Standardwerte für diese Felder bei:
+5. Geben Sie als Nächstes einen Namen für Ihr Speicherkonto ein. Der gewählte Name muss innerhalb von Azure eindeutig sein. Der Name muss ebenfalls zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.
+6. Wählen Sie einen Standort für Ihr Speicherkonto aus, oder verwenden Sie den Standardstandort.
+7. Behalten Sie die Standardwerte für diese Felder bei:
 
-   |Feld  |Wert  |
+   |Feld  |value  |
    |---------|---------|
    |Bereitstellungsmodell     |Ressourcen-Manager         |
    |Leistung     |Standard         |
@@ -36,7 +36,8 @@ Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ �
    |Replikation     |Georedundanter Speicher mit Lesezugriff (RA-GRS)         |
    |Zugriffsebene     |Heiß         |
 
-1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
-1. Klicken Sie auf **Erstellen**.
+8. Wenn Sie [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, wählen Sie die Registerkarte **Erweitert** aus, und legen Sie **Hierarchischer Namespace** auf **Aktiviert** fest.
+9. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
+10. Klicken Sie auf **Erstellen**.
 
 Weitere Informationen zu den Arten von Speicherkonten und anderen Speicherkontoeinstellungen finden Sie unter [Übersicht über Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-account-overview). Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

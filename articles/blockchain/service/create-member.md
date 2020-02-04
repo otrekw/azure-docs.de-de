@@ -1,15 +1,15 @@
 ---
 title: 'Erstellen eines Azure Blockchain Service-Mitglieds: Azure-Portal'
 description: Erstellen Sie mithilfe des Azure-Portals ein Azure Blockchain Service-Mitglied für ein Blockchainkonsortium.
-ms.date: 11/18/2019
+ms.date: 01/23/2020
 ms.topic: quickstart
 ms.reviewer: janders
-ms.openlocfilehash: 90f859e4d2e2621afad9cab11d66e81018bd3147
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03cd4be1228fcf6a501203e6efb40a8b45c30d0c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455782"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760775"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Schnellstart: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
 
@@ -19,7 +19,7 @@ In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals ein neues
 
 ## <a name="create-a-blockchain-member"></a>Erstellen eines Blockchainmitglieds
 
-Erstellen Sie ein Blockchainmitglied, das das Quorum-Ledgerprotokoll in einem neuen oder vorhandenen Konsortium ausführt.
+Ein Azure Blockchain Service-Mitglied ist ein Blockchainknoten in einem privaten Konsortium-Blockchainnetzwerk. Wenn Sie ein Mitglied bereitstellen, können Sie ein Konsortiumsnetzwerk erstellen oder einem Konsortiumsnetzwerk beitreten. Für ein Konsortiumsnetzwerk wird mindestens ein Mitglied benötigt. Die Anzahl der von den Teilnehmern benötigten Blockchainmitglieder hängt von Ihrem Szenario ab. Die Konsortiumsteilnehmer können über eines oder mehrere Blockchainmitglieder verfügen oder Mitglieder gemeinsam mit anderen Teilnehmern nutzen. Weitere Informationen zu Konsortien finden Sie unter [Azure Blockchain Service-Konsortium](consortium.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
@@ -27,16 +27,15 @@ Erstellen Sie ein Blockchainmitglied, das das Quorum-Ledgerprotokoll in einem ne
 
     ![Erstellen des Dienstes](./media/create-member/create-member.png)
 
-    Einstellung | BESCHREIBUNG
+    Einstellung | Beschreibung
     --------|------------
     Subscription | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
     Resource group | Erstellen Sie einen neuen Ressourcengruppennamen, oder wählen Sie einen bereits vorhandenen Namen aus Ihrem Abonnement aus.
     Region | Wählen Sie zum Erstellen eines Mitglieds eine Region aus. Alle Mitglieder des Konsortiums müssen sich am gleichen Standort befinden.
     Protocol | Derzeit unterstützt die Vorschauversion von Azure Blockchain Service das Quorum-Protokoll.
-    Konsortium | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, wählen Sie das Konsortium aus, dem Sie beitreten.
-    NAME | Wählen Sie einen eindeutigen Namen für das Azure Blockchain-Mitglied aus. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
+    Konsortium | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, wählen Sie das Konsortium aus, dem Sie beitreten. Weitere Informationen zu Konsortien finden Sie unter [Azure Blockchain Service-Konsortium](consortium.md).
+    Name | Wählen Sie einen eindeutigen Namen für das Azure Blockchain-Mitglied aus. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
     Mitgliedskontokennwort | Das Mitgliedskontokennwort wird zum Verschlüsseln des privaten Schlüssels für das Ethereum-Konto verwendet, das für Ihr Mitglied erstellt wird. Sie verwenden das Mitgliedskonto und das Mitgliedskontokennwort für die Verwaltung des Konsortiums.
-    BESCHREIBUNG | Beschreibung des Konsortiums.
     Preise | Die Knotenkonfiguration und Kosten für Ihren neuen Dienst. Wählen Sie den Link **Ändern** aus, um zwischen den Ebenen **Standard** und **Basic** zu wählen.
     Knotenkennwort | Das Kennwort für den Standardtransaktionsknoten des Mitglieds. Verwenden Sie das Kennwort für die Standardauthentifizierung, wenn Sie eine Verbindung mit dem öffentlichen Endpunkt des Standardtransaktionsknotens des Blockchainmitglieds herstellen.
 
@@ -59,7 +58,7 @@ So löschen Sie die Ressourcengruppe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein Azure Blockchain Service-Mitglied und ein neues Konsortium bereitgestellt. In der nächsten Schnellstartanleitung erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum zum Anfügen an ein Konsortium in Azure Blockchain Service verwenden.
+In dieser Schnellstartanleitung haben Sie ein Azure Blockchain Service-Mitglied und ein neues Konsortium bereitgestellt. In der nächsten Schnellstartanleitung erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum zum Anfügen an ein Azure Blockchain Service-Mitglied verwenden.
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit Azure Blockchain Service mithilfe von Visual Studio Code](connect-vscode.md)

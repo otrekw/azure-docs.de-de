@@ -1,5 +1,5 @@
 ---
-title: Verwenden von R mit Machine Learning Services für Abfragen
+title: Abfragen einer Datenbank mithilfe von R und Machine Learning Services (Vorschau)
 titleSuffix: Azure SQL Database Machine Learning Services (preview)
 description: In diesem Artikel erfahren Sie, wie Sie ein R-Skript mit Machine Learning Services in Azure SQL-Datenbank verwenden, um eine Verbindung mit einer Azure SQL-Datenbank-Instanz herzustellen und sie mithilfe von Transact-SQL-Anweisungen abzufragen.
 services: sql-database
@@ -13,58 +13,33 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: a54b538247f81ea3bb0ea70a2af374158bd9e2ff
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826968"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768508"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Schnellstart: Verwenden von R mit Machine Learning Services zum Abfragen von Azure SQL-Datenbank (Vorschauversion)
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung von [R](https://www.r-project.org/) mit Machine Learning Services eine Verbindung mit einer Azure SQL-Datenbank-Instanz herstellen und mithilfe von Transact-SQL-Anweisungen Daten abfragen. Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Weitere Informationen finden Sie unter [Machine Learning Services mit R in Azure SQL-Datenbank (Vorschauversion)](sql-database-machine-learning-services-overview.md).
+In dieser Schnellstartanleitung verwenden Sie R mit Machine Learning Services, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen und mithilfe von T-SQL-Anweisungen Daten abzufragen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diese Schnellstartanleitung benötigen Sie Folgendes:
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) mit aktiviertem R. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+> [!IMPORTANT]
+> Die Skripts in diesem Artikel wurden für die Datenbank **Adventure Works** geschrieben.
 
-<!-- Managed instance is not supported during the preview
-  || Single database | Managed instance |
-  |:--- |:--- |:---|
-  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Configure | [Server-level IP firewall rule](sql-database-server-level-firewall-rule.md) | [Connectivity from a VM](sql-database-managed-instance-configure-vm.md) |
-  ||| [Connectivity from on-site](sql-database-managed-instance-configure-p2s.md) |
-  | Load data | Adventure Works loaded per quickstart | [Restore Wide World Importers](sql-database-managed-instance-get-started-restore.md) |
-  ||| Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) |
-  |||
--->
+> [!NOTE]
+> Während der Public Preview-Phase übernimmt Microsoft das Onboarding für Sie und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Die Bereitstellungsoption für verwaltete Instanzen wird momentan jedoch nicht unterstützt.
 
-  || Einzeldatenbank |
-  |:--- |:--- |
-  | Erstellen| [Portal](sql-database-single-database-get-started.md) |
-  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) |
-  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md) |
-  | Laden von Daten | Laden von Adventure Works gemäß Schnellstartanleitung |
-  |||
-
-  > [!NOTE]
-  > Während der Vorschau der Azure SQL-Datenbank-Machine Learning Services mit R wird die Bereitstellungsoption für verwaltete Instanzen nicht unterstützt.
-
-<!-- Managed instance is not supported during the preview
-  > [!IMPORTANT]
-  > The scripts in this article are written to use the Adventure Works database. With a managed instance, you must either import the Adventure Works database into an instance database or modify the scripts in this article to use the Wide World Importers database.
--->
-
-- Machine Learning Services (mit R) aktiviert. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
-
-- Das aktuelle [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS). In dieser Schnellstartanleitung verwenden Sie SSMS, obwohl Sie auch mithilfe anderer Datenbankverwaltungen oder Abfragetools R-Skripts ausführen können.
+Machine Learning Services mit R ist ein Feature von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Weitere Informationen zum R-Projekt finden Sie [hier](https://www.r-project.org/).
 
 ## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
@@ -84,7 +59,7 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
 
 1. Übergeben Sie das vollständige R-Skript an die gespeicherte Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-   Das Skript wird über das `@script`-Argument übergeben. Das `@script`-Argument darf nur gültigen R-Code enthalten.
+   Das Skript wird durch das `@script`-Argument übergeben. Das `@script`-Argument darf nur aus zulässigem R-Code bestehen.
    
    >[!IMPORTANT]
    >Der Code in diesem Beispiel verwendet die AdventureWorksLT-Beispieldaten, die Sie beim Erstellen Ihrer Datenbank als Datenquelle auswählen können. Wenn Ihre Datenbank unterschiedliche Daten aufweist, verwenden Sie Tabellen aus Ihrer eigenen Datenbank in der SELECT-Abfrage. 
@@ -97,7 +72,7 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
     ```
 
    > [!NOTE]
-   > Falls Sie Fehler erhalten, kann dies daran liegen, dass die öffentliche Vorschauversion von Machine Learning Services (mit R) für Ihre SQL-Datenbank nicht aktiviert ist. Weitere Informationen finden Sie oben unter [Voraussetzungen](#prerequisites).
+   > Falls Sie Fehler erhalten, kann dies daran liegen, dass die öffentliche Vorschauversion von Machine Learning Services (mit R) für Ihre SQL-Datenbank nicht aktiviert ist. Weitere Informationen zu den [Voraussetzungen](#prerequisites) finden Sie oben.
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 

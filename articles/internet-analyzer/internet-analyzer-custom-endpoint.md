@@ -7,19 +7,19 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 44d570746a54154a2f8d3c7a200c761a59b7422b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488106"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713084"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Messen von benutzerdefinierten Endpunkten für die Evaluierung in Internet Analyzer-Tests 
 
 In diesem Artikel wird veranschaulicht, wie Sie einen benutzerdefinierten Endpunkt einrichten, der im Rahmen Ihrer Internet Analyzer-Tests gemessen werden soll. Benutzerdefinierte Endpunkte helfen bei der Evaluierung von lokalen Workloads, Workloads, die von anderen Cloudanbietern ausgeführt werden, und benutzerdefinierten Azure-Konfigurationen.  Der Vergleich von zwei benutzerdefinierten Endpunkten in einem Test ist möglich, wenn es sich bei einem Endpunkt um eine Azure-Ressource handelt. Weitere Informationen zu Internet Analyzer finden Sie in der [Übersicht](internet-analyzer-overview.md). 
 
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
 ## <a name="before-you-begin"></a>Voraussetzungen

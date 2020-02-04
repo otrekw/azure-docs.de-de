@@ -4,16 +4,16 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177788"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694490"
 ---
 ## <a name="set-up-authentication"></a>Einrichten der Authentifizierung
 
-Um auf den Dienst zugreifen zu können, müssen Sie einen Kontoschlüssel, ein Zugriffstoken oder ein Azure Active Directory-Authentifizierungstoken angeben.
+Um auf den Dienst zugreifen zu können, müssen Sie einen Kontoschlüssel, ein Zugriffstoken oder ein Azure Active Directory-Authentifizierungstoken angeben. Weitere Informationen hierzu finden Sie auf der [Konzeptseite für die Authentifizierung](/azure/spatial-anchors/concepts/authentication).
 
 ### <a name="account-keys"></a>Kontoschlüssel
 

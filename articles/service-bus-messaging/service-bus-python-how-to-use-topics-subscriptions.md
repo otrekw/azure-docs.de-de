@@ -1,10 +1,9 @@
 ---
 title: 'Schnellstart: Verwenden von Azure Service Bus-Themen und -Abonnements mit Python'
-description: Erfahren Sie mehr über die Verwendung von Azure Service Bus-Themen und -Abonnements über Python.
+description: In diesem Artikel erfahren Sie, wie Sie ein Azure Service Bus-Thema und -Abonnement erstellen und Nachrichten an ein Thema senden sowie Nachrichten von einem Abonnement empfangen.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748490"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774540"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Schnellstart: Verwenden von Service Bus-Themen und -Abonnements mit Python
 
@@ -166,7 +165,7 @@ Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen 
 
 Außerdem gibt es ein Timeout für Nachrichten, die innerhalb des Abonnements gesperrt sind. Wenn eine Anwendung eine Nachricht nicht verarbeiten kann, bevor das Timeout der Sperre abläuft (z.B. wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, sodass sie erneut empfangen werden kann.
 
-Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `complete` abstürzt, wird die Nachricht der Anwendung erneut zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At-Least-Once Processing* (mindestens einmalige Verarbeitung) bezeichnet. Jede Nachricht wird mindestens ein Mal verarbeitet, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn Ihr Szenario keine doppelte Verarbeitung tolerieren kann, können Sie die Eigenschaft **MessageId** der Nachricht verwenden, die über die Zustellversuche hinweg konstant bleibt, um die doppelte Zustellung von Nachrichten zu verarbeiten. 
+Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `complete` abstürzt, wird die Nachricht der Anwendung erneut zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At-Least-Once Processing* (Mindestens einmalige Verarbeitung) bezeichnet. Jede Nachricht wird mindestens ein Mal verarbeitet, wobei eine Nachricht in bestimmten Situationen unter Umständen erneut zugestellt wird. Wenn Ihr Szenario keine doppelte Verarbeitung tolerieren kann, können Sie die Eigenschaft **MessageId** der Nachricht verwenden, die über die Zustellversuche hinweg konstant bleibt, um die doppelte Zustellung von Nachrichten zu verarbeiten. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Löschen von Themen und Abonnements
 

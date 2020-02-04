@@ -1,6 +1,6 @@
 ---
 title: Einrichten eines Classroom-Labs in Azure Lab Services | Microsoft-Dokumentation
-description: In diesem Tutorial richten Sie ein Lab für die Verwendung in einem Classroom ein.
+description: In diesem Tutorial richten Sie unter Verwendung von Azure Lab Services ein Classroom-Lab mit virtuellen Computern für Kursteilnehmer ein.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: a5f8c8c00a9f63558043167c5cf8269f9e139d54
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584977"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719176"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -40,7 +40,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
-1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Beachten Sie den Hinweis, dass Internet Explorer 11 noch nicht unterstützt wird. 
+1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Beachten Sie den Hinweis, dass Internet Explorer 11 noch nicht unterstützt wird. 
 2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 3. Wählen Sie **Neues Lab** aus. 
     
@@ -70,7 +70,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
     1. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     1. **Beenden** Sie den virtuellen Computer.  
     1. Geben Sie eine **Beschreibung** für die Vorlage ein.
-10. Wählen Sie auf der Seite **Vorlage** in der Symbolleiste die Option **Veröffentlichen** aus. 
+10. Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option **Veröffentlichen** aus. 
 
     ![Schaltfläche „Vorlage veröffentlichen“](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
@@ -156,7 +156,7 @@ Erstellen Sie ein geplantes Ereignis für das Lab, damit VMs im Lab zu bestimmte
     ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Der Status der **Einladung** wird in der Liste **Benutzer** angezeigt. Der Status sollte sich in **Wird gesendet** und dann in **Gesendet am &lt;Datum&gt;** ändern. 
 
-    Weitere Informationen zum Hinzufügen von Teilnehmern zu einer Klasse sowie zum Verwalten der Verwendung des Labs finden Sie unter [Hinzufügen und Verwalten von Labbenutzern](how-to-configure-student-usage.md).
+    Weitere Informationen zum Hinzufügen von Kursteilnehmern zu einer Klasse sowie zum Verwalten der Verwendung des Labs finden Sie unter [Hinzufügen und Verwalten von Labbenutzern](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie ein Classroom-Lab erstellt und konfiguriert. Um zu erfahren, wie ein Teilnehmer auf einen virtuellen Computer im Labor über den Registrierungslink zugreifen kann, fahren Sie mit nächsten Tutorial fort:

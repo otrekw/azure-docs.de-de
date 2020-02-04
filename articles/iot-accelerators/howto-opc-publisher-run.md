@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824136"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712906"
 ---
 # <a name="run-opc-publisher"></a>Ausführen von OPC Publisher
 
@@ -532,7 +532,7 @@ Der Arbeitsspeicher und die Leistung sind voneinander abhängig und basieren jew
 - IoT Hub-Nachrichtengröße (Standardwert `1`): `--ms`
 - Überwachte Kapazität der Elementwarteschlange: `--mq`
 
-Mit dem Parameter `--mq` wird die obere Grenze der Kapazität der internen Warteschlange gesteuert, in der alle Benachrichtigungen zu Änderungen des OPC-Knotenwerts gepuffert werden. Falls OPC Publisher Nachrichten nicht schnell genug an IoT Hub senden kann, werden die Benachrichtigungen in dieser Warteschlange gepuffert. Mit dem Parameter wird die Anzahl von Benachrichtigungen festgelegt, die gepuffert werden können. Falls Sie beobachten, dass die Anzahl von Elementen in dieser Warteschlange bei Ihren Testläufen ansteigt, sollten Sie wie folgt vorgehen, um den Verlust von Nachrichten zu vermeiden:
+Mit dem Parameter `--mq` wird die obere Grenze der Kapazität der internen Warteschlange gesteuert, in der alle Benachrichtigungen zu Änderungen des OPC-Knotenwerts gepuffert werden. Falls OPC Publisher Nachrichten nicht schnell genug an IoT Hub senden kann, werden die Benachrichtigungen in dieser Warteschlange gepuffert. Mit dem Parameter wird die Anzahl von Benachrichtigungen festgelegt, die gepuffert werden können. Sollte bei Ihren Testläufen die Anzahl von Elementen in dieser Warteschlange zunehmen, gehen Sie wie folgt vor, um den Verlust von Nachrichten zu vermeiden:
 
 - Reduzieren des IoT Hub-Sendeintervalls
 - Erhöhen der IoT Hub-Nachrichtengröße
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-In der Standardkonfiguration werden alle zehn Sekunden Daten an IoT Hub gesendet – oder wenn 256 KB an Daten für die Erfassung durch IoT Hub verfügbar sind. Durch diese Konfiguration ergibt sich eine zusätzliche Latenz von ca. zehn Sekunden, aber aufgrund der hohen Nachrichtengröße besteht die geringste Wahrscheinlichkeit für Datenverlust. In der Diagnoseausgabe ist zu sehen, dass es nicht zum Verlust von OPC-Knotenupdates gekommen ist: `monitored item notifications enqueue failure: 0`.
+In der Standardkonfiguration werden alle zehn Sekunden Daten an IoT Hub gesendet – oder wenn 256 KB an Daten für die Erfassung durch IoT Hub verfügbar sind. Diese Konfiguration führt zwar zu einer moderaten zusätzlichen Wartezeit von etwa zehn Sekunden, aufgrund der hohen Nachrichtengröße ist die Wahrscheinlichkeit von Datenverlusten jedoch am geringsten. In der Diagnoseausgabe ist zu sehen, dass es nicht zum Verlust von OPC-Knotenupdates gekommen ist: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Konstantes Sendeintervall (--si 1 --ms 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Bei dieser Konfiguration werden so viele OPC-Knotenwertupdates wie möglich zu einem Batch zusammengefasst. Die maximale IoT Hub-Nachrichtengröße beträgt 256 KB. Dies ist die in diesem Fall konfigurierte Größe. Es wird kein Sendeintervall angefordert. Dies bedeutet, dass die Latenz durch die Datenmenge bestimmt wird, die von IoT Hub erfasst wird. Diese Konfiguration verfügt über die geringste Wahrscheinlichkeit für den Verlust von OPC-Knotenwerten und ist für die Veröffentlichung einer hohen Zahl von Knoten geeignet. Stellen Sie bei Verwendung dieser Konfiguration sicher, dass für Ihr Szenario keine Bedingungen gelten, die zu hoher Latenz führen, wenn die Nachrichtengröße von 256 KB nicht erreicht wird.
+Bei dieser Konfiguration werden so viele OPC-Knotenwertupdates wie möglich zu einem Batch zusammengefasst. Die maximale IoT Hub-Nachrichtengröße beträgt 256 KB. Dies ist die in diesem Fall konfigurierte Größe. Es wird kein Sendeintervall angefordert. Dies bedeutet, dass die Latenz durch die Datenmenge bestimmt wird, die von IoT Hub erfasst wird. Diese Konfiguration verfügt über die geringste Wahrscheinlichkeit für den Verlust von OPC-Knotenwerten und ist für die Veröffentlichung einer hohen Anzahl von Knoten geeignet. Stellen Sie bei Verwendung dieser Konfiguration sicher, dass für Ihr Szenario keine Bedingungen gelten, die zu hoher Latenz führen, wenn die Nachrichtengröße von 256 KB nicht erreicht wird.
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448068"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772498"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -74,6 +74,9 @@ Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUI
 1. Führen Sie die gleichen Schritte aus, um Ihrer App den Erstellungsschlüssel hinzuzufügen.
 
 1. Suchen Sie die neue Zeile in der Tabelle für die neue Vorhersageressource, und kopieren Sie die Endpunkt-URL. Sie ist ordnungsgemäß aufgebaut, um eine `HTTP GET`-Anforderung an den LUIS-API-Endpunkt zum Abrufen einer Vorhersage zu senden.
+
+> [!TIP]
+> Wenn Sie Ihre LUIS-App mithilfe von aktivem Lernen verbessern möchten, wählen Sie **Abfrageparameter ändern** und anschließend **Protokolle speichern** aus. Dadurch wird der Beispiel-URL der Abfragezeichenfolgenparameter `log=true` hinzugefügt. Kopieren und verwenden Sie die geänderte Beispielabfrage-URL, wenn Sie Vorhersageabfragen an den Runtimeendpunkt richten.
 
 ## <a name="train-the-app"></a>Trainieren der App
 

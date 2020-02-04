@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/15/2020
+ms.date: 01/28/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1507eb4eba88fbf1ef50645390eaa9f17804359a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b19d8f26795dadb14f00aadd86ba99ae664b1a76
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293231"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764948"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -113,6 +113,7 @@ Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktioniere
 |SNAT für eingehende Verbindungen|Zusätzlich zu DNAT werden Verbindungen über die öffentliche IP-Adresse der Firewall (eingehend) per SNAT in eine der privaten öffentlichen IP-Adressen übersetzt. Diese Anforderung gilt derzeit (auch für Aktiv/Aktiv-NVAs), um symmetrisches Routing sicherzustellen.|Um die ursprüngliche Quelle für HTTP/S beizubehalten, können Sie [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For)-Header verwenden. Verwenden Sie beispielsweise einen Dienst wie [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) oder [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) vor der Firewall. Sie können auch WAF als Teil von Azure Front Door verwenden und mit der Firewall verketten.
 |SQL-FQDN-Filterung wird nur im Proxymodus unterstützt (Port 1433)|Für Azure SQL-Datenbank, Azure SQL Data Warehouse und verwaltete SQL-Datenbank-Instanzen gilt:<br><br>Während der Vorschau wird die SQL-FQDN-Filterung nur im Proxymodus unterstützt (Port 1433).<br><br>Für Azure SQL-IaaS gilt:<br><br>Wenn Sie keine Standardports verwenden, können Sie diese Ports in den Anwendungsregeln angeben.|Für SQL im Umleitungsmodus – die Standardeinstellung beim Herstellen von Verbindungen aus Azure heraus – können Sie den Zugriff stattdessen mit dem SQL-Diensttag in den Azure Firewall-Netzwerkregeln filtern.
 |Ausgehender Datenverkehr an TCP-Port 25 ist nicht zulässig.| Ausgehende SMTP-Verbindungen, die den TCP-Port 25 verwenden, werden blockiert. Der Port 25 wird in erster Linie für die E-Mail-Zustellung ohne Authentifizierung verwendet. Dies ist das standardmäßige Plattformverhalten für virtuelle Computer. Weitere Informationen finden Sie unter [Behandeln von Problemen mit ausgehenden SMTP-Verbindungen in Azure](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). Anders als bei virtuellen Computern kann diese Funktion für Azure Firewall derzeit nicht aktiviert werden.|Verwenden Sie die empfohlene Methode für den E-Mail-Versand, die im Artikel zur SMTP-Problembehandlung dokumentiert ist. Alternativ können Sie den virtuellen Computer, der ausgehenden SMTP-Zugriff benötigt, von Ihrer Standardroute zur Firewall ausschließen und stattdessen direkten ausgehenden Internetzugriff konfigurieren.
+|Aktives FTP wird nicht unterstützt.|Zum Schutz vor FTP-Bounce-Angriffen ist aktives FTP in Azure Firewall deaktiviert.|Sie können stattdessen passives FTP verwenden. Die TCP-Ports 20 und 21 müssen weiterhin explizit in der Firewall geöffnet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

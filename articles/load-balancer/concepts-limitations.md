@@ -9,17 +9,16 @@ ms.service: load-balancer
 Customer intent: As an IT administrator, I want to learn more about the Azure Load Balancer components and limitations and how it will affect my environment.
 ms.devlang: na
 ms.topic: overview
-ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/14/2019
+ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263539"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757798"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Komponenten und Einschränkungen von Load Balancer
 Azure Load Balancer enthält mehrere wichtige Komponenten für den Betrieb.  Diese Komponenten können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder über Azure PowerShell konfiguriert werden.  
@@ -58,7 +57,7 @@ Von Load Balancer Basic-Instanzen werden keine Ausgangsregeln unterstützt.
 
 Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anwendungen bereit:
 
-* **Lastenausgleichsalgorithmus:** Mit Azure Load Balancer können Sie eine Lastenausgleichsregel erstellen, nach der Datenverkehr, der beim Front-End eintrifft, auf Back-End-Poolinstanzen verteilt wird. Load Balancer verwendet einen Hashalgorithmus für die Verteilung von eingehenden Datenflüssen und schreibt die Header von Datenflüssen an Back-End-Poolinstanzen um. Wenn der Integritätstest einen fehlerfreien Back-End-Endpunkt angibt, ist ein Server verfügbar, der neue Flows empfangen kann.
+* **Lastenausgleichsalgorithmus:** Mit Azure Load Balancer können Sie eine Lastenausgleichsregel erstellen, nach der Datenverkehr, der beim Front-End eintrifft, auf Back-End-Poolinstanzen verteilt wird. Load Balancer verwendet einen Hashalgorithmus für die Verteilung von eingehenden Datenflüssen (anstelle von Bytes) und schreibt die Header von Datenflüssen an Back-End-Poolinstanzen um. Wenn der Integritätstest einen fehlerfreien Back-End-Endpunkt angibt, ist ein Server verfügbar, der neue Flows empfangen kann.
 Standardmäßig wird für Load Balancer ein 5-Tupel-Hash verwendet. 
 
    Der Hash umfasst Folgendes: 

@@ -4,25 +4,21 @@ description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal durch Peer
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b32f3762f2546a4d4956bf38c914173657e9d3da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3966615d28630fdd2ab799f478ef7edaa3377e1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499874"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775296"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal
 
@@ -44,26 +40,28 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-virtual-networks"></a>Erstellen virtueller Netzwerke
 
-1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
-3. Geben Sie auf der Seite **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, und übernehmen Sie die Standardwerte für die übrigen Einstellungen:
+3. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, und übernehmen Sie die Standardwerte für die übrigen Einstellungen:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
     |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
     |Region| Wählen Sie **USA, Osten** aus.|
-    |NAME|myVirtualNetwork1|
+    |Name|myVirtualNetwork1|
 
-4. Geben Sie auf der Seite **IP-Adressen** im Feld **Adressbereich** die Adresse „10.0.0.0/16“ ein. Klicken Sie unten auf die Schaltfläche **Subnetz hinzufügen**, und geben Sie „Subnet1“ für **Subnetzname** und „10.0.0.0/24“ für **Subnetzadressbereich** ein.
+4. Geben Sie auf der Registerkarte **IP-Adressen** im Feld **Adressbereich** die Adresse „10.0.0.0/16“ ein. Klicken Sie unten auf die Schaltfläche **Subnetz hinzufügen**, und geben Sie *Subnet1* für **Subnetzname** und „10.0.0.0/24“ für **Subnetzadressbereich** ein.
+5. Wählen Sie **Überprüfen + erstellen** und anschließend **Erstellen** aus.
    
-5. Führen Sie erneut die Schritte 1 bis 3 mit Ausnahme der folgenden Änderungen durch:
+5. Führen Sie die Schritte 1 bis 5 mit den folgenden Änderungen erneut aus:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myVirtualNetwork2|
+    |Name|myVirtualNetwork2|
     |Adressraum|10.1.0.0/16|
     |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
+    |Subnetzname | Subnet2|
     |Subnetzadressbereich|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>Einrichten eines Peerings von virtuellen Netzwerken
@@ -75,7 +73,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**.
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Name des Peerings von myVirtualNetwork1 zum virtuellen Remotenetzwerk|myVirtualNetwork1-myVirtualNetwork2: Beim Laden der ersten Seite wird hier der Text „remote virtual network“ (virtuelles Remotenetzwerk) angezeigt. Wenn Sie das virtuelle Remotenetzwerk ausgewählt haben, wird der Text „remote virtual network“ durch den Namen des virtuellen Remotenetzwerks ersetzt.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
@@ -96,14 +94,14 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
 
 ### <a name="create-the-first-vm"></a>Erstellen des ersten virtuellen Computers
 
-1. Wählen Sie im Azure-Portalmenü oder auf der **Startseite** die Option **Ressource erstellen** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. Sie können ein anderes Betriebssystem auswählen, bei den übrigen Schritten wird jedoch davon ausgegangen, dass Sie **Windows Server 2016 Datacenter** ausgewählt haben. 
 3. Geben Sie die folgenden Informationen für **Grundlagen** ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Resource group| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
-    |NAME|myVm1|
+    |Name|myVm1|
     |Location| Wählen Sie **USA, Osten** aus.|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
@@ -111,13 +109,10 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
 4. Wählen Sie eine VM-Größe für die Option **Größe** aus.
 5. Wählen Sie unter **Netzwerk** die folgenden Werte aus:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Virtuelles Netzwerk| myVirtualNetwork1: Falls dieses Element noch nicht ausgewählt ist, wählen Sie die Option **Virtuelles Netzwerk** und dann **myVirtualNetwork1** aus.|
     |Subnet| Subnet1: Falls dieses Element noch nicht ausgewählt ist, wählen Sie die Option **Subnetz** und dann **Subnet1** aus.|
-    
-
-    ![Einstellungen des virtuellen Computers](./media/tutorial-connect-virtual-networks-portal/virtual-machine-settings.png)
    
 6. Wählen Sie **Netzwerk** aus. Wählen Sie **Ausgewählte Ports zulassen** für die Option **Öffentliche Eingangsports** aus. Wählen Sie **RDP**  für die Option **Eingangsports auswählen** aus. 
 
@@ -127,9 +122,9 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
 
 Führen Sie die Schritte 1 bis 6 mit den folgenden Änderungen erneut aus:
 
-|Einstellung|Wert|
+|Einstellung|value|
 |---|---|
-|NAME | myVm2|
+|Name | myVm2|
 |Virtuelles Netzwerk | myVirtualNetwork2|
 
 Die Erstellung der VMs kann einige Minuten dauern. Fahren Sie mit den restlichen Schritten erst fort, nachdem beide VMs erstellt wurden.

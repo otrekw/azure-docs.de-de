@@ -13,32 +13,34 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: a47e7a81ba486056841bdc0fe65cfd10f1b2c412
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123191"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768492"
 ---
-# <a name="create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)
+# <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Schnellstart: Erstellen und Ausführen einfacher R-Skripts in Machine Learning Services von Azure SQL-Datenbank (Vorschauversion)
 
-Wenn Sie diese Schnellstartanleitung befolgen, erstellen Sie einen Satz von einfachen R-Skripts mithilfe der Public Preview von [Machine Learning Services (mit R) in Azure SQL-Datenbank](sql-database-machine-learning-services-overview.md) und führen ihn aus. Sie erfahren, wie Sie ein wohlgeformtes R-Skript mit der gespeicherten Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) umschließen und das Skript in einer SQL­-Datenbank-Instanz ausführen.
+In dieser Schnellstartanleitung verwenden Sie Machine Learning Services (mit R) in Azure SQL-Datenbank, um einige R-Skripts zu erstellen und auszuführen.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Eine [Azure SQL-Datenbank](sql-database-single-database-get-started.md) mit einer [Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md).
+- [Machine Learning Services](sql-database-machine-learning-services-overview.md) mit aktiviertem R. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
+- [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
-- Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine Azure SQL-Datenbank-Instanz mit Machine Learning Services (mit R) aktivieren. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
+> [!NOTE]
+> Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank.
 
-- Vergewissern Sie sich, dass die aktuelle Version von [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) installiert ist. In dieser Schnellstartanleitung verwenden Sie SSMS, obwohl Sie auch mithilfe anderer Datenbankverwaltungen oder Abfragetools R-Skripts ausführen können.
-
-- Diese Schnellstartanleitung setzt voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Informationen zur Vorgehensweise finden Sie unter [Erstellen einer Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md).
+In diesem Beispiel wird die gespeicherte Prozedur [sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) verwendet, um ein wohlgeformtes R-Skript zu umschließen.
 
 ## <a name="run-a-simple-script"></a>Ausführen eines einfachen Skripts
 
-Um ein R-Skript auszuführen, übergeben Sie es als Argument der gespeicherten Systemprozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
+Sie können ein R-Skript ausführen, indem Sie es als Argument an die gespeicherte Systemprozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) übergeben.
 
 In den folgenden Schritten führen Sie dieses R-Beispielskript in Ihrer SQL-Datenbank-Instanz aus:
 
@@ -56,7 +58,7 @@ print(c(c, d))
 
 1. Übergeben Sie das vollständige R-Skript an die gespeicherte Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-   Das Skript wird über das `@script`-Argument übergeben. Das `@script`-Argument darf nur gültigen R-Code enthalten.
+   Das Skript wird durch das `@script`-Argument übergeben. Das `@script`-Argument darf nur aus zulässigem R-Code bestehen.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -75,9 +77,9 @@ print(c(c, d))
    > Wenn Sie Administrator sind, können Sie externen Code automatisch ausführen. Sie können mit dem folgenden Befehl anderen Benutzern eine Berechtigung erteilen:
    <br>**GRANT EXECUTE ANY EXTERNAL SCRIPT TO** *\<Benutzername\>* .
 
-2. Das richtige Ergebnis wird berechnet, und die R-Funktion `print` gibt das Ergebnis im **Meldungen**-Fenster zurück.
+2. Das korrekte Ergebnis wird berechnet, und die R-Funktion `print` gibt das Ergebnis im **Meldungsfenster** zurück.
 
-   Das sollte in etwa so aussehen.
+   Die Ausgabe könnte beispielsweise wie folgt aussehen:
 
     **Ergebnisse**
 
@@ -88,7 +90,7 @@ print(c(c, d))
 
 ## <a name="run-a-hello-world-script"></a>Ausführen eines „Hello World“-Skripts
 
-Dieses typische Beispielskript gibt einfach nur die Zeichenfolge „Hello World“ aus. Führen Sie den folgenden Befehl aus:
+In einem typischen Beispielskript wird nur die Zeichenfolge „Hallo Welt“ (oder „Hello World“) ausgegeben. Führen Sie den folgenden Befehl aus.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -102,14 +104,14 @@ Zu den Eingaben, die der gespeicherten Prozedur übergeben werden, zählen:
 
 | | |
 |-|-|
-| @language | -Parameter zur Definition der aufzurufenden Spracherweiterung, in diesem Fall R. |
-| @script | -Parameter zur Definition der Befehle, die an die R-Runtime übergeben werden. Ihr gesamtes R-Skript muss als Unicode-Text in dieses Argument eingeschlossen werden. Sie könnten den Text auch einer Variablen des Typs **nvarchar** hinzufügen und die Variable anschließend aufrufen. |
-| @input_data_1 | sind von der Abfrage zurückgegebene Daten, die an die R-Runtime übergeben werden, von der die Daten als Datenrahmen an SQL Server zurückgegeben werden. |
-|WITH RESULT SETS | -Klausel zur Definition des Schemas der für SQL Server zurückgegebenen Datentabelle, wobei „Hello World“ als Name der Spalte und **int** für den Datentyp hinzugefügt wird. |
+| @language | definiert die aufzurufende Spracherweiterung (hier R) |
+| @script | definiert die Befehle, die an die R-Runtime übergeben werden Ihr gesamtes R-Skript muss als Unicode-Text in dieses Argument eingeschlossen werden. Sie können den Text auch einer Variablen des Typs **nvarchar** hinzufügen und die Variable anschließend aufrufen. |
+| @input_data_1 | Die von der Abfrage zurückgegebenen Daten werden an die R-Runtime übergeben, die die Daten als Datenrahmen an SQL Server zurückgibt. |
+|WITH RESULT SETS | Mit dieser Klausel wird das Schema der zurückgegebenen Datentabelle für SQL Server definiert und „Hello World“ als Spaltenname und **int** als Datentyp festgelegt. |
 
-Der Befehl gibt den folgenden Text aus:
+Der Befehl gibt folgenden Text aus:
 
-| Hallo Welt |
+| Hello World |
 |-------------|
 | 1 |
 
@@ -146,7 +148,7 @@ Hier verwenden wir die Standardvariablen für die Ein- und Ausgabe von [sp_execu
 
     ![Inhalt der RTestData-Tabelle](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
-1. Führen Sie das folgende R-Skript aus. Es ruft die Daten aus der Tabelle mit der `SELECT`-Anweisung ab, übergibt sie über die R-Runtime und gibt die Daten als Datenrahmen zurück. Mit der `WITH RESULT SETS`-Klausel wird das Schema der für SQL-Datenbank zurückgegebenen Datentabelle definiert und der Spaltenname *NewColName* hinzugefügt.
+1. Führen Sie folgendes R-Skript aus: Es ruft die Daten mithilfe der `SELECT`-Anweisung aus der Tabelle ab, übergibt sie über die R-Runtime und gibt sie anschließend als Datenrahmen zurück. Mit der `WITH RESULT SETS`-Klausel wird das Schema der für SQL-Datenbank zurückgegebenen Datentabelle definiert und der Spaltenname *NewColName* hinzugefügt.
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -157,9 +159,9 @@ Hier verwenden wir die Standardvariablen für die Ein- und Ausgabe von [sp_execu
 
     **Ergebnisse**
 
-    ![Ausgabe des R-Skripts, mit dem Daten aus einer Tabelle zurückgegeben werden](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
+    ![Ausgabe des R-Skripts, das Daten aus einer Tabelle zurückgibt](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
-1. Wir ändern jetzt den Namen der Eingabe- und Ausgabevariablen. Die Namen der Standardvariablen für Ein- und Ausgabe lauten **InputDataSet** und **OutputDataSet**. Dieses Skript ändert die Namen in **SQL_in** und **SQL_out**:
+1. Ändern Sie nun die Namen der Eingabe- und Ausgabevariablen. Standardmäßig werden die Eingabe- und Ausgabevariablen **InputDataSet** und **OutputDataSet** verwendet. In diesem Skript werden die Namen in **SQL_in** und **SQL_out** geändert:
 
     ```sql
     EXECUTE sp_execute_external_script @language = N'R'
@@ -170,12 +172,12 @@ Hier verwenden wir die Standardvariablen für die Ein- und Ausgabe von [sp_execu
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    Beachten Sie, dass R zwischen Groß- und Kleinschreibung unterscheidet. Die im R-Skript verwendeten Ein- und Ausgabevariablen (**SQL_out**, **SQL_in**) müssen unter Berücksichtigung von Groß-/Kleinschreibung den mit `@input_data_1_name` und `@output_data_1_name` definierten Werten entsprechen.
+    Beachten Sie, dass R Groß- und Kleinschreibung beachtet. Die im R-Skript verwendeten Ein- und Ausgabevariablen (**SQL_out**, **SQL_in**) müssen unter Berücksichtigung von Groß-/Kleinschreibung den mit `@input_data_1_name` und `@output_data_1_name` definierten Werten entsprechen.
 
    > [!TIP]
    > Nur ein Eingabedataset kann als Parameter übergeben werden, und Sie können nur ein Dataset zurückgeben. Sie können aber andere Datasets in Ihrem R-Code aufrufen und zusätzlich zum Dataset Ausgaben anderer Typen zurückgeben. Außerdem können Sie auch allen Parametern das Schlüsselwort OUTPUT hinzufügen, damit es zusammen mit den Ergebnissen zurückgegeben wird.
 
-1. Sie können auch Werte generieren, indem Sie das R-Skript einfach ohne Eingabedaten verwenden (`@input_data_1` wird leer gelassen).
+1. Sie können über das R-Skript auch Werte ohne Eingabedaten generieren, indem kein Wert für `@input_data_1` festgelegt wird.
 
    Das folgende Skript gibt den Text „hello“ und „world“ aus.
 
@@ -203,7 +205,7 @@ EXECUTE sp_execute_external_script @language = N'R'
 GO
 ```
 
-Mit der R-Funktion `print` wird die Version im Bereich mit den **Meldungen** zurückgegeben. In der Beispielausgabe unten sehen Sie, dass für SQL-Datenbank in diesem Fall die R-Version 3.4.4 installiert ist.
+Die R-Funktion `print` gibt die Version im **Meldungsfenster** zurück. In der Beispielausgabe unten sehen Sie, dass für SQL-Datenbank in diesem Fall die R-Version 3.4.4 installiert ist.
 
 **Ergebnisse**
 
@@ -226,11 +228,11 @@ version.string R version 3.4.4 (2018-03-15)
 nickname       Someone to Lean On
 ```
 
-## <a name="list-r-packages"></a>Liste mit R-Paketen
+## <a name="list-r-packages"></a>Auflisten von R-Paketen
 
 Microsoft stellt verschiedene R-Pakete bereit, die mit Machine Learning Services in Ihrer SQL-Datenbank vorinstalliert werden.
 
-Um eine Liste mit den Informationen anzuzeigen, welche R-Pakete installiert sind, einschließlich Version, Abhängigkeiten, Lizenz und Bibliothekspfad, führen Sie das folgende Skript aus.
+Führen Sie folgendes Skript aus, um eine Liste der installierten R-Pakete (einschließlich Version, Abhängigkeiten, Lizenz und Bibliothekspfad) anzuzeigen:
 
 ```SQL
 EXEC sp_execute_external_script @language = N'R'
@@ -245,7 +247,7 @@ WITH result sets((
             ));
 ```
 
-Die Ausgabe stammt aus `installed.packages()` in R und wird als Resultset zurückgegeben.
+Die Ausgabe stammt von `installed.packages()` in R und wird als Resultset zurückgegeben.
 
 **Ergebnisse**
 

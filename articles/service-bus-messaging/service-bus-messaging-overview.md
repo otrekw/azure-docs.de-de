@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure Service Bus-Messaging | Microsoft-Dokumentation
-description: Beschreibung von Service Bus-Messaging
+description: Dieser Artikel enthält eine allgemeine Übersicht über Azure Service Bus (ein vollständig verwalteter Nachrichtenbroker für die Unternehmensintegration).
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561594"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759379"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 
@@ -77,7 +77,7 @@ Sie können Nachrichten zur verzögerten Verarbeitung an eine Warteschlange oder
 
 Ein Warteschlangen- oder Abonnementclient kann das Abrufen einer Nachricht auf einen späteren Zeitpunkt verschieben. Diese Verzögerung kann durch besondere Umstände in der Anwendung bedingt sein. Die Nachricht bleibt in der Warteschlange oder im Abonnement, wird jedoch zurückgestellt. Weitere Informationen finden Sie unter [Nachrichtenverzögerung](message-deferral.md).
 
-### <a name="batching"></a>Batchverarbeitung
+### <a name="batching"></a>Batching
 
 Durch die clientseitige Batchverarbeitung kann ein Warteschlangen- oder Themenclient das Senden einer Nachricht für einen bestimmten Zeitraum verzögern. Wenn der Client während dieses Zeitraums weitere Nachrichten sendet, werden die Nachrichten in einem einzigen Batch übertragen. Weitere Informationen finden Sie unter [Clientseitige Batchverarbeitung](service-bus-performance-improvements.md#client-side-batching).
 

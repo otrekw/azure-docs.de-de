@@ -1,29 +1,29 @@
 ---
-title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz – Azure PowerShell'
+title: 'Schnellstart: Erstellen einer Load Balancer-Instanz – Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Load Balancer Standard-Instanz erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Load Balancer-Instanz mithilfe von Azure PowerShell erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045669"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846516"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Schnellstart: Erstellen einer Load Balancer-Instanz mithilfe von Azure PowerShell
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Load Balancer Standard-Instanz erstellen. Zum Testen des Lastenausgleichs stellen Sie drei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch. Weitere Informationen zu Load Balancer Standard finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md).
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird in der Ressourcengruppe *myResourceGroupSLB* eine öffentliche IP-Adresse mit dem Namen *myPublicIP* erstellt:
+Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird in der Ressourcengruppe *myResourceGroupSLB* eine zonenredundante öffentliche IP-Adresse mit dem Namen *myPublicIP* erstellt:
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Erstellen einer Load Balancer Standard-Instanz
+Verwenden Sie Folgendes, um in Zone 1 eine zonale öffentliche IP-Adresse zu erstellen:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Verwenden Sie ```-SKU Basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.
+
+## <a name="create-load-balancer"></a>Erstellen oder Aktualisieren eines Lastenausgleichs
 
 In diesem Abschnitt konfigurieren Sie die Front-End-IP-Adresse und den Back-End-Adresspool für den Lastenausgleich und erstellen anschließend die Load Balancer Standard-Instanz.
 
-### <a name="create-front-end-ip"></a>Erstellen der Front-End-IP-Adresse
+### <a name="create-frontend-ip"></a>Erstellen der Front-End-IP-Adresse
 
 Erstellen Sie mit [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) eine Front-End-IP-Adresse. Im folgenden Beispiel wird eine Front-End-IP-Konfiguration namens *myFrontEnd* erstellt und die Adresse *myPublicIP* angefügt:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Verwenden Sie ```-SKU Basic```, um eine Load Balancer Basic-Instanz zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.
+
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 Bevor Sie einige VMs bereitstellen und Ihren Load Balancer testen können, müssen Sie unterstützende Netzwerkressourcen erstellen: ein virtuelles Netzwerk und virtuelle NICs. 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Verwenden Sie ```-SKU Basic```, um öffentliche IP-Adressen vom Typ „Basic“ zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.
+
 ### <a name="create-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Standard-Tarif erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den [Tutorials zu Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)
+Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).

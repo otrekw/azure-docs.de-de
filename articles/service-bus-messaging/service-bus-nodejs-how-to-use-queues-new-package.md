@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Verwenden von azure/service-bus-Warteschlangen in Node.js'
-description: 'Schnellstart: Erfahren Sie mehr über die Verwendung von Service Bus-Warteschlangen in Azure aus einer Node.js-App unter Verwendung des „azure/service-bus“-Pakets.'
+title: Verwenden von azure/service-bus-Warteschlangen in Node.js
+description: Hier erfahren Sie, wie Sie ein Node.js-Programm schreiben, um mithilfe des neuen Pakets @azure/service-bus Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721686"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774576"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Schnellstart: Verwenden von Service Bus-Warteschlangen mit Node.js und dem Paket „azure/service-bus“
 > [!div class="op_multi_selector" title1="Programmiersprache" title2="Node.js-Paket"]
@@ -33,7 +33,7 @@ In diesem Tutorial erfahren Sie, wie Sie ein Node.js-Programm schreiben, um Nach
 
 > [!NOTE]
 > - Dieses Tutorial funktioniert für die Beispiele, die Sie mit [Node.js](https://nodejs.org/) kopieren und ausführen können. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen einer Node.js-Web-App in Azure](../app-service/app-service-web-get-started-nodejs.md) und [Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst](../cloud-services/cloud-services-nodejs-develop-deploy-app.md).
-> - Das neue [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-Paket unterstützt die Erstellung von Warteschlangen noch nicht. Wenn Sie Warteschlangen programmgesteuert erstellen möchten, verwenden Sie das [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus)-Paket.
+> - Das neue [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus)-Paket unterstützt die Erstellung von Warteschlangen noch nicht. Wenn Sie sie programmgesteuert erstellen möchten, verwenden Sie das Paket [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus).
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Verwenden des Node-Paket-Managers (NPM) zum Installieren des Pakets
 Öffnen Sie eine Eingabeaufforderung, die `npm` im Pfad enthält, ändern Sie das Verzeichnis in den Ordner, in dem die Beispiele gespeichert werden sollen, und führen Sie dann den folgenden Befehl aus, um das npm-Paket für Service Bus zu installieren.
@@ -129,13 +129,13 @@ Die Interaktion mit einer Service Bus-Warteschlange beginnt damit, die [ServiceB
 
 Glückwunsch! Sie haben soeben Nachrichten aus einer Service Bus-Warteschlange erhalten.
 
-Die [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-)-Methode verwendet `ReceiveMode`, was eine Enumeration mit den Werten [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) und [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) ist. Denken Sie daran, [Ihre Nachrichten abzugleichen](message-transfers-locks-settlement.md#settling-receive-operations), wenn Sie den `PeekLock`-Modus verwenden, indem Sie eine `complete()`-, `abandon()`-, `defer()`- oder `deadletter()`-Methode für die Nachricht verwenden.
+Die [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/queueclient#createreceiver-receivemode-)-Methode verwendet `ReceiveMode` (eine Enumeration mit den Werten [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) und [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)). Denken Sie daran, [Ihre Nachrichten abzugleichen](message-transfers-locks-settlement.md#settling-receive-operations), wenn Sie den `PeekLock`-Modus verwenden, indem Sie die Methode `complete()`, `abandon()`, `defer()` oder `deadletter()` für die Nachricht verwenden.
 
 > [!NOTE]
 > Sie können Service Bus-Ressourcen mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) verwalten. Mit dem Service Bus-Explorer können Benutzer eine Verbindung mit einem Service Bus-Namespace herstellen und Messagingentitäten auf einfache Weise verwalten. Das Tool stellt erweiterte Features wie Import-/Exportfunktionen oder Testmöglichkeiten für Themen, Warteschlangen, Abonnements, Relaydienste, Notification Hubs und Event Hubs zur Verfügung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in den folgenden Ressourcen:
+Weitere Informationen finden Sie in den folgenden Ressourcen.
 - [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 - Weitere [Node.js-Beispiele für Service Bus auf GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js Developer Center (in englischer Sprache)](https://azure.microsoft.com/develop/nodejs/)

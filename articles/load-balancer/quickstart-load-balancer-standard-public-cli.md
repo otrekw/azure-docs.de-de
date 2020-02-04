@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines öffentlichen Lastenausgleichs im Standard-Tarif: Azure CLI'
+title: 'Schnellstart: Erstellen einer öffentlichen Load Balancer-Instanz – Azure-Befehlszeilenschnittstelle'
 titleSuffix: Azure Load Balancer
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie über die Azure-Befehlszeilenschnittstelle einen öffentlichen Lastenausgleich erstellen.
 services: load-balancer
@@ -7,7 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: twooley
 tags: azure-resource-manager
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: a8bcdd88-f94c-4537-8143-c710eaa86818
 ms.service: load-balancer
 ms.devlang: na
@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 30f2fa7537ed481c25940a2ed67c99c58a7a80ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214792"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837227"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer mit der Azure CLI
 
-In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Load Balancer im Tarif „Standard“ erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Ubuntu Server bereit und führen für eine Web-App zwischen den beiden VMs einen Lastenausgleich durch.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie eine öffentliche Load Balancer-Instanz erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Ubuntu Server bereit und führen für eine Web-App zwischen den beiden VMs einen Lastenausgleich durch.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -44,15 +44,23 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupS
     --location eastus
 ```
 
-## <a name="create-a-public-standard-ip-address"></a>Erstellen einer öffentlichen Standard-IP-Adresse
+## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Ein Load Balancer im Standard-Tarif unterstützt nur öffentliche Standard-IP-Adressen. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) zum Erstellen einer öffentlichen Standard-IP-Adresse mit dem Namen *myPublicIP* in *myResourceGroupSLB*.
+Um über das Internet auf Ihre Web-App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Lastenausgleich. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip), um in *myResourceGroupSLB* eine zonenredundante öffentliche Standard-IP-Adresse namens *myPublicIP* zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard
 ```
 
-## <a name="create-azure-load-balancer"></a>Erstellen eines Azure Load Balancers
+Verwenden Sie Folgendes, um in Zone 1 eine zonale öffentliche IP-Adresse zu erstellen:
+
+```azurecli-interactive
+  az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
+```
+
+ Verwenden Sie ```--sku basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Von „Basic“ werden keine Verfügbarkeitszonen unterstützt. Microsoft empfiehlt für Produktionsworkloads die Standard-SKU.
+
+## <a name="create-azure-load-balancer"></a>Erstellen einer Azure Load Balancer-Instanz
 
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
   - Front-End-IP-Pool, der den eingehenden Netzwerkdatenverkehr für den Load Balancer empfängt
@@ -62,7 +70,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
 
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) einen öffentlichen Azure Load Balancer mit dem Namen **myLoadBalancer**, der den Front-End-Pool **myFrontEnd** und den Back-End-Pool **myBackEndPool** enthält (mit Zuordnung zur öffentlichen IP-Adresse **myPublicIP**, die Sie im vorherigen Schritt erstellt haben).
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) einen öffentlichen Azure Load Balancer mit dem Namen **myLoadBalancer**, der den Front-End-Pool **myFrontEnd** und den Back-End-Pool **myBackEndPool** enthält (mit Zuordnung zur öffentlichen IP-Adresse **myPublicIP**, die Sie im vorherigen Schritt erstellt haben). Verwenden Sie ```--sku basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Standard-SKU.
 
 ```azurecli-interactive
   az network lb create \
@@ -182,20 +190,11 @@ Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-
 
 ```
 
-
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Server für den Lastenausgleich verwendet werden. Außerdem installieren Sie NGINX auf den virtuellen Computern, um zu überprüfen, ob der Load Balancer erfolgreich erstellt wurde.
+In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Server für den Lastenausgleich verwendet werden. Außerdem installieren Sie NGINX auf den virtuellen Computern, um zu überprüfen, ob der Lastenausgleich erfolgreich erstellt wurde.
 
-### <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
-
-Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic) eine Verfügbarkeitsgruppe.
-
- ```azurecli-interactive
-  az vm availability-set create \
-    --resource-group myResourceGroupSLB \
-    --name myAvailabilitySet
-```
+Wenn Sie eine Load Balancer Basic-Instanz mit einer öffentlichen IP-Adresse vom Typ „Basic“ erstellen, müssen Sie mithilfe von [az vm availabilityset create](/cli/azure/network/nic) eine Verfügbarkeitsgruppe erstellen, der Sie Ihre virtuellen Computer hinzufügen können. Bei Load Balancer Standard-Instanzen ist dieser zusätzliche Schritt nicht erforderlich. Microsoft empfiehlt die Verwendung von „Standard“.
 
 ### <a name="create-three-virtual-machines"></a>Erstellen Sie drei virtuelle Computer.
 
@@ -300,9 +299,7 @@ Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie d
 ```azurecli-interactive 
   az group delete --name myResourceGroupSLB
 ```
-## <a name="next-step"></a>Nächster Schritt
-In dieser Schnellstartanleitung haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+## <a name="next-steps"></a>Nächste Schritte
+In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den [Tutorials zu Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-
+Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281154"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774126"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281154"
 
 > [!NOTE]
 > * In dieser Schnellstartanleitung wird die Version `3.0-preview` der Textanalyse-Clientbibliothek verwendet. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>
 > * Im Code dieses Artikels wird der Einfachheit halber ein ungeschützter Anmeldeinformationsspeicher verwendet. In Produktionsszenarien empfiehlt es sich aus Leistungs- und Skalierbarkeitsgründen, Zeichenfolgen in Batches zu senden. Dazu muss beispielsweise `SentimentBatchAsync()` anstelle von `Sentiment()`aufgerufen werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -36,6 +37,9 @@ ms.locfileid: "76281154"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Erstellen einer neuen Node.js-Anwendung
+
+> [!NOTE]
+> Diese Version der Textanalyse-Clientbibliothek können Sie auch [in Ihrem Browser](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md) ausführen.
 
 Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neues Verzeichnis für Ihre App, und rufen Sie es auf. 
 
@@ -135,7 +139,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 ID: 0
@@ -179,7 +183,7 @@ languageDetection(textAnalyticsClient);
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 ID: 0
@@ -217,7 +221,7 @@ entityRecognition(textAnalyticsClient);
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -269,7 +273,7 @@ entityPiiRecognition(textAnalyticsClient);
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -306,7 +310,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 Document ID: 0
@@ -364,7 +368,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 Führen Sie in Ihrem Konsolenfenster Ihren Code mit `node index.js` aus.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 ```console
 ID: 0

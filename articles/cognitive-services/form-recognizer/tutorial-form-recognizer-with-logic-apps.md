@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981259"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773082"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Tutorial: Verwenden der Formularerkennung mit Azure Logic Apps zum Analysieren von Rechnungen
 
-In diesem Tutorial erstellen Sie einen Workflow in Azure Logic Apps, für den die Formularerkennung genutzt wird. Hierbei handelt es sich um einen Dienst, der Teil der Azure Cognitive Services-Suite ist und zum Extrahieren von Daten aus Rechnungen verwendet wird. Sie verwenden die Formularerkennung, um zunächst ein Modell mit einem Beispieldataset zu trainieren und es anschließend mit einem anderen Dataset zu testen. Die in diesem Tutorial verwendeten Beispieldaten werden in Azure Storage-Blobcontainern gespeichert.
+In diesem Tutorial erstellen Sie einen Workflow in Azure Logic Apps, für den die Formularerkennung genutzt wird. Hierbei handelt es sich um einen Dienst, der Teil der Azure Cognitive Services-Suite ist und zum Extrahieren von Daten aus Rechnungen verwendet wird. Zuerst trainieren Sie ein Formularerkennungsmodell mit einem Beispieldataset und testen es dann mit einem anderen Dataset.
 
 Hier ist angegeben, was in diesem Tutorial vermittelt wird:
 
@@ -41,12 +41,12 @@ Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verf�
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Verstehen der zu analysierenden Rechnung
 
-Das Beispieldataset, das wir zum Trainieren und Testen des Modells verwenden, ist auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) als ZIP-Datei verfügbar. Laden Sie die ZIP-Datei herunter, und extrahieren Sie sie. Öffnen Sie im Ordner **/Train** eine Rechnungsdatei im PDF-Format. Beachten Sie, dass sie eine Tabelle mit Rechnungsnummer, Rechnungsdatum usw. enthält. 
+Das Beispieldataset zum Trainieren und Testen des Modells steht auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) als ZIP-Datei zur Verfügung. Laden Sie die ZIP-Datei herunter, und extrahieren Sie sie. Öffnen Sie im Ordner **/Train** eine Rechnungsdatei im PDF-Format. Wie Sie sehen, enthält sie eine Tabelle mit Rechnungsnummer, Rechnungsdatum und ähnlichen Informationen. 
 
 > [!div class="mx-imgBorder"]
 > ![Beispielrechnung](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-In diesem Tutorial wird beschrieben, wie Sie die Informationen aus diesen Tabellen im JSON-Format extrahieren, indem Sie einen per Azure Logic Apps und Formularerkennung erstellten Workflow verwenden.
+In diesem Tutorial erfahren Sie, wie Sie die Informationen aus Tabellen wie diesen mithilfe eines Azure Logic Apps-Workflows in das JSON-Format extrahieren.
 
 ## <a name="create-an-azure-storage-blob-container"></a>Erstellen eines Azure Storage-Blobcontainers
 
@@ -62,7 +62,7 @@ Sie verwenden diesen Container, um Beispieldaten hochzuladen, die zum Trainieren
 
 Laden Sie die Beispieldaten herunter, die auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) verfügbar sind. Extrahieren Sie die Daten in einen lokalen Ordner, und laden Sie den Inhalt des Ordners **/Train** in den oben erstellten Container **formrecocontainer** hoch. Befolgen Sie die Anleitung zum [Hochladen eines Blockblobs](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob), um Daten in einen Container hochzuladen.
 
-Kopieren Sie die URL des Containers. Sie benötigen sie später im Tutorial. Wenn Sie das Speicherkonto und den Container mit den gleichen Namen wie in diesem Tutorial erstellt haben, lautet die URL „*https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* “.
+Kopieren Sie die URL des Containers. Diese URL wird später im Tutorial benötigt. Wenn Sie das Speicherkonto und den Container mit den gleichen Namen wie in diesem Tutorial erstellt haben, lautet die URL „*https:\//formrecostorage.blob.core.windows.net/formrecocontainer/* “.
 
 ## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
 
@@ -75,7 +75,7 @@ Sie können Azure Logic Apps verwenden, um Aufgaben und Workflows zu automatisie
 * Konfigurieren der Logik-App für die Verwendung des Formularerkennungsvorgangs zum Trainieren des Modells (**Train Model**) mit den Beispieldaten, die Sie in den Azure-Blobspeicher hochgeladen haben
 * Konfigurieren der Logik-App für die Verwendung des Formularerkennungsvorgangs zum Analysieren eines Formulars (**Analyze Form**) mit dem bereits trainierten Modell. Mit dieser Komponente wird die von Ihnen bereitgestellte Rechnung für diese Logik-App basierend auf dem zuvor trainierten Modell analysiert.
 
-Fangen wir an! Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow einzurichten.
+Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow einzurichten.
 
 1. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
 
@@ -99,7 +99,7 @@ Fangen wir an! Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>Konfigurieren der Logik-App für die Auslösung des Workflows bei Empfang einer E-Mail
 
-In diesem Tutorial wird der Workflow ausgelöst, wenn eine E-Mail mit einer angefügten Rechnung empfangen wird. Für dieses Tutorial wählen wir Office 365 als E-Mail-Dienst, aber Sie können auch einen anderen E-Mail-Anbieter nutzen.
+In diesem Tutorial wird der Workflow ausgelöst, wenn eine E-Mail mit einer angefügten Rechnung empfangen wird. In diesem Tutorial wird Office 365 als E-Mail-Dienst verwendet. Sie können aber auch einen anderen E-Mail-Anbieter verwenden.
 
 1. Wählen Sie aus den Registerkarten die Option „Alle“, **Office 365 Outlook** und dann unter **Trigger** die Option **Wenn eine neue E-Mail empfangen wird** aus.
 
@@ -149,14 +149,14 @@ In diesem Abschnitt fügen Sie dem Workflow den Vorgang zum Analysieren des Form
     > [!div class="mx-imgBorder"]
     > ![Analysieren eines Formularerkennungsmodells](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. Gehen Sie im Dialogfeld **Analyze Form** (Formular analysieren) wie folgt vor:
+1. Führen Sie im Dialogfeld **Analyze Form** (Formular analysieren) die folgenden Schritte aus:
 
     1. Klicken Sie in das Textfeld **Modell-D**, und wählen Sie im angezeigten Dialogfeld auf der Registerkarte **Dynamischer Inhalt** die Option **modelId** aus. Hierdurch geben Sie für die Datenflussanwendung die Modell-ID des Modells an, das Sie im letzten Abschnitt trainiert haben.
 
         > [!div class="mx-imgBorder"]
         > ![Verwenden der Modell-ID für die Formularerkennung](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. Klicken Sie in das Textfeld **Dokument**, und wählen Sie im angezeigten Dialogfeld auf der Registerkarte **Dynamischer Inhalt** die Option **Anlageninhalt** aus. Hierdurch konfigurieren Sie den Ablauf so, dass der Workflow von der Beispielrechnungsdatei ausgelöst wird, die an die E-Mail angefügt ist.
+    2. Klicken Sie in das Textfeld **Dokument**, und wählen Sie im angezeigten Dialogfeld auf der Registerkarte **Dynamischer Inhalt** die Option **Anlageninhalt** aus. Durch die resultierende Konfiguration des Flows wird die Beispielrechnungsdatei verwendet, die an die E-Mail angefügt ist, durch die der Workflow ausgelöst wird.
 
         > [!div class="mx-imgBorder"]
         > ![Verwenden der E-Mail-Anlage zum Analysieren von Rechnungen](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ In diesem Abschnitt fügen Sie dem Workflow den Vorgang zum Analysieren des Form
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>Extrahieren der Tabelleninformationen aus der Rechnung
 
-In diesem Abschnitt konfigurieren wir die Logik-App so, dass die Informationen aus der Tabelle in den Rechnungen extrahiert werden.
+In diesem Abschnitt wird die Logik-App so konfiguriert, dass die Informationen aus der Tabelle in den Rechnungen extrahiert werden.
 
 1. Wählen Sie die Option **Aktion hinzufügen** aus, und suchen Sie unter **Aktion auswählen** nach **Verfassen**. Wählen Sie aus den verfügbaren Aktionen dann erneut die Option **Verfassen** aus.
     ![Extrahieren von Tabelleninformationen aus der Rechnung](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ In diesem Abschnitt konfigurieren wir die Logik-App so, dass die Informationen a
 
 ## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
 
-Verwenden Sie zum Testen der Logik-App die Beispielrechnungen im Ordner **/Test** des Beispieldatasets, das Sie von [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) heruntergeladen haben. Führen Sie die folgenden Schritte aus:
+Verwenden Sie zum Testen der Logik-App die Beispielrechnungen im Ordner **/Test** des Beispieldatasets, das Sie von [GitHub](https://go.microsoft.com/fwlink/?linkid=2090451) heruntergeladen haben. Folgen Sie diesen Schritten:
 
 1. Wählen Sie im Designer für Azure-Logik-Apps für Ihre App oben in der Symbolleiste die Option **Ausführen** aus. Der Workflow ist jetzt aktiv und wartet auf den Eingang einer E-Mail mit der angefügten Rechnung.
 1. Senden Sie eine E-Mail mit angefügter Beispielrechnung an die E-Mail-Adresse, die Sie beim Erstellen der Logik-App angegeben haben. Stellen Sie sicher, dass die E-Mail in den Ordner eingefügt wird, den Sie beim Konfigurieren der Logik-App angegeben haben.

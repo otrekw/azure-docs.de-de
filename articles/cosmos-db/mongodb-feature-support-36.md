@@ -4,29 +4,29 @@ description: Hier finden Sie Informationen zu unterstützten Features und zur Sy
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a32affab45ab99a89113644bb08c4f2b57d69018
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441633"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721012"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der API für MongoDB von Azure Cosmos DB über einen der Open-Source-MongoDB-Client[treiber](https://docs.mongodb.org/ecosystem/drivers) kommunizieren. Die API für MongoDB von Azure Cosmos DB ermöglicht die Verwendung vorhandener Clienttreiber durch Nutzung des [Wire Protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) von MongoDB.
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der API für MongoDB von Azure Cosmos DB über einen der Open-Source-MongoDB-Clienttreiber kommunizieren. (Diese Treiber finden Sie [hier](https://docs.mongodb.org/ecosystem/drivers)). Die API für MongoDB von Azure Cosmos DB ermöglicht die Verwendung vorhandener Clienttreiber durch Nutzung des [Wire Protocol](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol) von MongoDB.
 
 Mit der API für MongoDB von Azure Cosmos DB können Sie die Vorteile der vertrauten MongoDB mit allen Unternehmensfunktionen von Cosmos DB kombinieren. Hierzu zählen unter anderem [globale Verteilung](distribute-data-globally.md), [automatisches Sharding](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, automatische Indizierung der einzelnen Felder, Verschlüsselung ruhender Daten sowie Sicherungen.
 
 ## <a name="protocol-support"></a>Protokollunterstützung
 
-Die API für MongoDB von Azure Cosmos DB ist bei neuen Konten standardmäßig mit der MongoDB-Serverversion **3.6** kompatibel. Die unterstützten Operatoren und alle Einschränkungen oder Ausnahmen sind unten aufgeführt. Alle Clienttreiber, die diese Protokolle verstehen, sollten auch mit der API für MongoDB von Azure Cosmos DB eine Verbindung herstellen können.
+Die API für MongoDB von Azure Cosmos DB ist bei neuen Konten standardmäßig mit der MongoDB-Serverversion **3.6** kompatibel. Die unterstützten Operatoren und alle Einschränkungen oder Ausnahmen sind unten aufgeführt. Alle Clienttreiber, die diese Protokolle verstehen, sollten auch mit der API für MongoDB von Azure Cosmos DB eine Verbindung herstellen können. Beachten Sie bei Verwendung von Konten mit der MongoDB-API von Azure Cosmos DB, dass der Endpunkt bei der Kontoversion 3.6 das Format `*.mongo.cosmos.azure.com` hat, während der Endpunkt bei der Kontoversion 3.2 das Format `*.documents.azure.com` hat.
 
 ## <a name="query-language-support"></a>Unterstützung der Abfragesprache
 
-Die API für MongoDB von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Im Folgenden finden Sie die detaillierte Aufstellung der aktuell unterstützten Vorgänge, Operatoren, Phasen, Befehle und Optionen.
+Die API für MongoDB von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Im Anschluss finden Sie eine detaillierte Aufstellung der aktuell unterstützten Vorgänge, Operatoren, Phasen, Befehle und Optionen:
 
 ## <a name="database-commands"></a>Datenbankbefehle
 
@@ -34,43 +34,77 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 ### <a name="query-and-write-operation-commands"></a>Befehle für Abfrage- und Schreibvorgänge
 
-- delete
-- Suchen
-- findAndModify
-- getLastError
-- getMore
-- insert
-- aktualisieren
+|Get-Help  |Unterstützt |
+|---------|---------|
+|delete | Ja |
+|Suchen | Ja     |
+|findAndModify | Ja  |
+|getLastError|   Ja |
+|getMore  |  Ja  |
+|getPrevError | Nein  |
+|insert  |   Ja  |
+|parallelCollectionScan  | Ja   |
+|resetError |   Nein  |
+|aktualisieren  |   Ja  |
+|[Ändern von Datenströmen](mongodb-change-streams.md)  |  Ja  |
+|GridFS |   Ja  |
 
 ### <a name="authentication-commands"></a>Authentifizierungsbefehle
 
-- logout
-- authenticate
-- getnonce
+|Get-Help  |Unterstützt |
+|---------|---------|
+|authenticate    |   Ja      |
+|logout    |      Ja   |
+|getnonce   |    Ja     |
+
 
 ### <a name="administration-commands"></a>Verwaltungsbefehle
 
-- dropDatabase
-- listDatabases
-- listCollections
-- drop
-- create
-- filemd5
-- createIndexes
-- listIndexes
-- dropIndexes
-- connectionStatus
-- reIndex
-- killCursors
+|Get-Help  |Unterstützt |
+|---------|---------|
+|Sammlungen mit Obergrenze   |   Nein      |
+|cloneCollectionAsCapped     |   Nein      |
+|collMod     |   Nein      |
+|collMod: expireAfterSeconds   |   Nein      |
+|convertToCapped   |  Nein       |
+|copydb     |  Nein       |
+|create   |    Ja     |
+|createIndexes     |  Ja       |
+|currentOp     |  Ja       |
+|drop     |   Ja      |
+|dropDatabase     |  Ja       |
+|dropIndexes     |   Ja      |
+|filemd5    |   Ja      |
+|killCursors    |  Ja       |
+|killOp     |   Nein      |
+|listCollections     |  Ja       |
+|listDatabases     |  Ja       |
+|listIndexes     |  Ja       |
+|reIndex     |    Ja     |
+|renameCollection     |    Nein     |
+|connectionStatus    |     Nein    |
 
 ### <a name="diagnostics-commands"></a>Diagnosebefehle
 
-- buildInfo
-- collStats
-- dbStats
-- hostInfo
-- listDatabases
-- whatsmyuri
+|Get-Help  |Unterstützt |
+|---------|---------|
+|buildInfo       |   Ja      |
+|collStats    |  Ja       |
+|connPoolStats     |  Nein       |
+|connectionStatus     |  Nein       |
+|dataSize     |   Nein      |
+|dbHash    |    Nein     |
+|dbStats     |   Ja      |
+|explain     | Nein        |
+|explain: executionStats     |     Nein    |
+|Features     |    Nein     |
+|hostInfo     |   Nein      |
+|listDatabases       |   Ja      |
+|listCommands     |  Nein       |
+|profiler     |  Nein       |
+|serverStatus     |  Nein       |
+|top     |    Nein     |
+|whatsmyuri     |   Ja      |
 
 <a name="aggregation-pipeline"/>
 
@@ -78,252 +112,433 @@ Die API für MongoDB von Azure Cosmos DB unterstützt die folgenden Datenbankbef
 
 ### <a name="aggregation-commands"></a>Aggregationsbefehle
 
-- aggregate
-- count
-- distinct
+|Get-Help  |Unterstützt |
+|---------|---------|
+|aggregate |   Ja  |
+|count     |   Ja  |
+|distinct  | Ja |
+|mapReduce | Nein |
 
 ### <a name="aggregation-stages"></a>Aggregationsphasen
 
-- $project
-- $match
-- $limit
-- $skip
-- $unwind
-- $group
-- $sample
-- $sort
-- $lookup
-- $out
-- $count
-- $addFields
-- $redact
-- $replaceRoot
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$collStats |Nein|
+|$project   |Ja|
+|$match |Ja|
+|$redact|   Ja|
+|$limit |Ja|
+|$skip  |Ja|
+|$unwind|   Ja|
+|$group |   Ja|
+|$sample|       Ja|
+|$sort  |Ja|
+|$geoNear|  Nein|
+|$lookup    |   Ja|
+|$out       |Ja|
+|$indexStats|       Nein|
+|$facet |Nein|
+|$bucket|   Nein|
+|$bucketAuto|   Nein|
+|$sortByCount|  Ja|
+|$addFields |Ja|
+|$replaceRoot|  Ja|
+|$count |Ja|
+|$currentOp|    Nein|
+|$listLocalSessions |Nein|
+|$listSessions  |Nein|
+|$graphLookup   |Nein|
 
-### <a name="aggregation-expressions"></a>Aggregationsausdrücke
+### <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
-#### <a name="boolean-expressions"></a>Boolesche Ausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$and| Ja|
+|$or|Ja|
+|$not|Ja|
 
-- $and
-- $or
-- $not
+### <a name="set-expressions"></a>Set-Ausdrücke
 
-#### <a name="set-expressions"></a>Set-Ausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $setEquals | Ja|
+|$setIntersection|Ja|
+| $setUnion|Ja|
+| $setDifference|Ja|
+| $setIsSubset|Ja|
+| $anyElementTrue|Ja|
+| $allElementsTrue|Ja|
 
-- $setEquals
-- $setIntersection
-- $setUnion
-- $setDifference
-- $setIsSubset
-- $anyElementTrue
-- $allElementsTrue
+### <a name="comparison-expressions"></a>Vergleichsausdrücke
 
-#### <a name="comparison-expressions"></a>Vergleichsausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$cmp     |  Ja       |
+|$eq|   Ja| 
+|$gt |  Ja| 
+|$gte|  Ja| 
+|$lt    |Ja|
+|$lte|  Ja| 
+|$ne    |   Ja| 
+|$in    |   Ja| 
+|$nin   |   Ja| 
 
-- $cmp
-- $eq
-- $gt
-- $gte
-- $lt
-- $lte
-- $ne
+### <a name="arithmetic-expressions"></a>Arithmetische Ausdrücke
 
-#### <a name="arithmetic-expressions"></a>Arithmetische Ausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$abs |  Ja       |
+| $add |  Ja       |
+| $ceil |  Ja       |
+| $divide |  Ja       |
+| $exp |  Ja       |
+| $floor |  Ja       |
+| $ln |  Ja       |
+| $log |  Ja       |
+| $log10 |  Ja       |
+| $mod |  Ja       |
+| $multiply |  Ja       |
+| $pow |  Ja       |
+| $sqrt |  Ja       |
+| $subtract |  Ja       |
+| $trunc |  Ja       |
 
-- $abs
-- $add
-- $ceil
-- $divide
-- $exp
-- $floor
-- $ln
-- $log
-- $log10
-- $mod
-- $multiply
-- $pow
-- $sqrt
-- $subtract
-- $trunc
+### <a name="string-expressions"></a>Zeichenfolgenausdrücke
 
-#### <a name="string-expressions"></a>Zeichenfolgenausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$concat |  Ja       |
+| $indexOfBytes|  Ja       |
+| $indexOfCP|  Ja       |
+| $split|  Ja       |
+| $strLenBytes|  Ja       |
+| $strLenCP|  Ja       |
+| $strcasecmp|  Ja       |
+| $substr|  Ja       |
+| $substrBytes|  Ja       |
+| $substrCP|  Ja       |
+| $toLower|  Ja       |
+| $toUpper|  Ja       |
 
-- $concat
-- $indexOfBytes
-- $indexOfCP
-- $split
-- $strLenBytes
-- $strLenCP
-- $strcasecmp
-- $substr
-- $substrBytes
-- $substrCP
-- $toLower
-- $toUpper
+### <a name="text-search-operator"></a>Operator für die Textsuche
 
-#### <a name="array-expressions"></a>Arrayausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $meta | Nein|
 
-- $arrayElemAt
-- $concatArrays
-- $filter
-- $indexOfArray
-- $isArray
-- $range
-- $reverseArray
-- $size
-- $slice
-- $in
+### <a name="array-expressions"></a>Arrayausdrücke
 
-#### <a name="date-expressions"></a>Datumsausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$arrayElemAt   |   Ja|
+|$arrayToObject|    Ja|
+|$concatArrays  |   Ja|
+|$filter    |   Ja|
+|$indexOfArray  |Ja|
+|$isArray   |   Ja|
+|$objectToArray |Ja|
+|$range |Ja|
+|$reverseArray  |   Ja|
+|$reduce|   Ja|
+|$size  |   Ja|
+|$slice |   Ja|
+|$zip   |   Ja|
+|$in    |   Ja|
 
-- $dayOfYear
-- $dayOfMonth
-- $dayOfWeek
-- $year
-- $month
-- $week
-- $hour
-- $minute
-- $second
-- $millisecond
-- $isoDayOfWeek
-- $isoWeek
+### <a name="variable-operators"></a>Variablenoperatoren
 
-#### <a name="conditional-expressions"></a>Bedingte Ausdrücke
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$map   |Nein|
+|$let   |Ja|
 
-- $cond
-- $ifNull
+### <a name="system-variables"></a>Systemvariablen
 
-## <a name="aggregation-accumulators"></a>Aggregationsakkumulatoren
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$$CURRENT| Ja|
+|$$DESCEND|     Ja|
+|$$KEEP     |Ja|
+|$$PRUNE    |   Ja|
+|$$REMOVE   |Ja|
+|$$ROOT     |Ja|
 
-Cosmos DB unterstützt alle Akkumulatoren der MongoDB-Version 3.6, mit Ausnahme der folgenden:
+### <a name="literal-operator"></a>Literaloperator
 
-- $stdDevPop
-- $stdDevSamp
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$literal   |Ja|
+
+### <a name="date-expressions"></a>Datumsausdrücke
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$dayOfYear |Ja    |
+|$dayOfMonth|   Ja |
+|$dayOfWeek |Ja    |
+|$year  |Ja    |
+|$month |Ja|   
+|$week  |Ja    |
+|$hour  |Ja    |
+|$minute|   Ja|    
+|$second    |Ja    |
+|$millisecond|  Ja|    
+|$dateToString  |Ja    |
+|$isoDayOfWeek  |Ja    |
+|$isoWeek   |Ja    |
+|$dateFromParts|    Nein| 
+|$dateToParts   |Nein |
+|$dateFromString|   Nein|
+|$isoWeekYear   |Ja    |
+
+### <a name="conditional-expressions"></a>Bedingte Ausdrücke
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $cond| Ja|
+| $ifNull| Ja|
+| $switch |Ja|
+
+### <a name="data-type-operator"></a>Datentypoperator
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $type| Ja|
+
+### <a name="accumulator-expressions"></a>Akkumulatorausdrücke
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$sum   |Ja    |
+|$avg   |Ja    |
+|$first|    Ja|
+|$last  |Ja    |
+|$max   |Ja    |
+|$min   |Ja    |
+|$push| Ja|
+|$addToSet| Ja|
+|$stdDevPop|    Nein  |
+|$stdDevSamp|   Nein|
+
+### <a name="merge-operator"></a>Zusammenführungsoperator
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $mergeObjects | Ja|
+
+## <a name="data-types"></a>Datentypen
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|Double |Ja    |
+|String |Ja    |
+|Object |Ja    |
+|Array  |Ja    |
+|Binary Data    |Ja|   
+|ObjectID   |Ja    |
+|Boolean    |Ja    |
+|Date   |Ja    |
+|Null   |Ja    |
+|32-Bit-Ganzzahl (int)   |Ja    |
+|Timestamp  |Ja    |
+|64-Bit-Ganzzahl (long)  |Ja    |
+|MinKey |Ja    |
+|MaxKey |Ja    |
+|Decimal128 |Ja|   
+|Regular Expression |Ja|
+|JavaScript |Ja|
+|JavaScript (mit Gültigkeitsbereich)|   Ja |
+|Nicht definiert  |Ja    |
+
+## <a name="indexes-and-index-properties"></a>Indizes und Indexeigenschaften
+
+### <a name="indexes"></a>Indizes
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|Einzelfeldindex |Ja    |
+|Verbundindex |Ja    |
+|Index mit mehreren Schlüsseln |Ja    |
+|Textindex |Nein|
+|2dsphere   |Ja    |
+|2D-Index   |Nein |
+|Hashindex   | Ja|
+
+### <a name="index-properties"></a>Indexeigenschaften
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|TTL|   Ja |
+|Eindeutig |Ja|
+|Teilweise|   Nein|
+|Keine Beachtung von Groß-/Kleinschreibung   |Nein|
+|Platzsparend |Nein |
+|Hintergrund|    Ja |
 
 ## <a name="operators"></a>Operatoren
 
-Folgende Operatoren werden mit den entsprechenden Verwendungsbeispielen unterstützt. Berücksichtigen Sie dieses in den folgenden Abfragen verwendete Beispieldokument:
+### <a name="logical-operators"></a>Logische Operatoren
 
-```json
-{
-  "Volcano Name": "Rainier",
-  "Country": "United States",
-  "Region": "US-Washington",
-  "Location": {
-    "type": "Point",
-    "coordinates": [
-      -121.758,
-      46.87
-    ]
-  },
-  "Elevation": 4392,
-  "Type": "Stratovolcano",
-  "Status": "Dendrochronology",
-  "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-}
-```
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$or    |   Ja|
+|$and   |   Ja|
+|$not   |   Ja|
+|$nor   |   Ja| 
 
-Operator | Beispiel |
---- | --- |
-$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
-$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
-$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
-$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
-$lte | `{ "Elevation": { $lte: 5000 } }` | | -
-$ne | `{ "Elevation": { $ne: 1 } }` |  | -
-$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
-$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
-$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
-$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
-$exists | `{ "Status": { $exists: true } }`|  | -
-$type | `{ "Status": { $type: "string" } }`|  | -
-$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
-$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
+### <a name="element-operators"></a>Elementoperatoren
 
-### <a name="notes"></a>Notizen
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$exists|   Ja|
+|$type  |   Ja|
 
-In $regex-Abfragen lassen linksverankerte Ausdrücke die Indexsuche zu. Die Verwendung des „i“-Modifizierers (keine Berücksichtigung der Groß-/Kleinschreibung) und des „m“-Modifizierers (mehrere Zeilen) führt jedoch zur Sammlungsüberprüfung in allen Ausdrücken.
-Wenn „$“ oder „|“ eingeschlossen werden muss, empfiehlt es sich, zwei (oder mehr) RegEx-Abfragen zu erstellen.
-Die folgende ursprüngliche Abfrage ```find({x:{$regex: /^abc$/})``` muss beispielsweise wie folgt geändert werden: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Der erste Teil verwendet den Index zum Einschränken der Suche auf die Dokumente, die mit „^abc“ beginnen, und der zweite Teil stimmt die exakten Einträge ab.
-Der Strichoperator „|“ dient als „oder“-Funktion: Die Abfrage ```find({x:{$regex: /^abc|^def/})``` stimmt die Dokumente ab, in denen das Feld „x“ Werte enthält, die mit „abc“ oder „def“ beginnen. Zur Nutzung des Index wird empfohlen, die Abfrage in zwei unterschiedliche Abfragen zu unterteilen, die durch den „$or“-Operator verbunden sind: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+### <a name="evaluation-query-operators"></a>Abfrageoperatoren für die Auswertung
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$expr  |   Nein|
+|$jsonSchema    |   Nein|
+|$mod   |   Ja|
+|$regex |   Ja|
+|$text  | Nein (Nicht unterstützt. Verwenden Sie stattdessen „$regex“.)| 
+|$where |Nein| 
+
+In $regex-Abfragen ermöglichen linksverankerte Ausdrücke eine Indexsuche. Die Verwendung des „i“-Modifizierers (keine Berücksichtigung der Groß-/Kleinschreibung) und des „m“-Modifizierers (mehrere Zeilen) führt jedoch zur Sammlungsüberprüfung in allen Ausdrücken.
+
+Wenn „$“ oder „|“ eingeschlossen werden muss, empfiehlt es sich, zwei (oder mehr) RegEx-Abfragen zu erstellen. Die folgende ursprüngliche Abfrage ```find({x:{$regex: /^abc$/})``` muss beispielsweise wie folgt geändert werden:
+
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
+
+Der erste Teil verwendet den Index zum Einschränken der Suche auf die Dokumente, die mit „^abc“ beginnen, und der zweite Teil stimmt die exakten Einträge ab. Der Strichoperator „|“ dient als „oder“-Funktion: Die Abfrage ```find({x:{$regex: /^abc|^def/})``` stimmt die Dokumente ab, in denen das Feld „x“ Werte enthält, die mit „abc“ oder „def“ beginnen. Zur Nutzung des Index wird empfohlen, die Abfrage in zwei unterschiedliche Abfragen zu unterteilen, die durch den „$or“-Operator verbunden sind: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+
+### <a name="array-operators"></a>Arrayoperatoren
+
+|Get-Help  |Unterstützt | 
+|---------|---------|
+| $all | Ja| 
+| $elemMatch | Ja| 
+| $size | Ja | 
+
+### <a name="comment-operator"></a>Kommentaroperator
+
+|Get-Help  |Unterstützt | 
+|---------|---------|
+$comment |Ja| 
+
+### <a name="projection-operators"></a>Projektionsoperatoren
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$elemMatch |Ja|
+|$meta| Nein|
+|$slice | Ja|
 
 ### <a name="update-operators"></a>Aktualisierungsoperatoren
 
 #### <a name="field-update-operators"></a>Operatoren für die Feldaktualisierung
 
-- $inc
-- $mul
-- $rename
-- $setOnInsert
-- $set
-- $unset
-- $min
-- $max
-- $currentDate
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$inc   |   Ja|
+|$mul   |   Ja|
+|$rename    |   Ja|
+|$setOnInsert|  Ja|
+|$set   |Ja|
+|$unset| Ja|
+|$min   |Ja|
+|$max   |Ja|
+|$currentDate   | Ja|
 
 #### <a name="array-update-operators"></a>Operatoren für die Arrayaktualisierung
 
-- $addToSet
-- $pop
-- $pullAll
-- $pull
-- $pushAll
-- $push
-- $each
-- $slice
-- $sort
-- $position
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$  |Ja|
+|$[]|   Ja|
+|$[<identifier>]|   Ja|
+|$addToSet  |Ja|
+|$pop   |Ja|
+|$pullAll|  Ja|
+|$pull  |Ja|
+|$push  |Ja|
+|$pushAll| Ja|
+
+
+#### <a name="update-modifiers"></a>Aktualisierungsmodifizierer
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|$each  |   Ja|
+|$slice |Ja|
+|$sort  |Ja|
+|$position  |Ja|
 
 #### <a name="bitwise-update-operator"></a>Bitweiser Updateoperator
 
-- $bit
+|Get-Help  |Unterstützt |
+|---------|---------|
+| $bit  |   Ja|    
+|$bitsAllSet    |   Nein|
+|$bitsAnySet    |   Nein|
+|$bitsAllClear  |Nein|
+|$bitsAnyClear  |Nein|
 
 ### <a name="geospatial-operators"></a>Räumliche Operatoren
 
-Operator | Beispiel | |
---- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Ja |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Ja |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Ja |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Ja |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Ja |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Ja |
+Operator | Unterstützt| 
+--- | --- |
+$geoWithin | Ja |
+$geoIntersects | Ja | 
+$near |  Ja |
+$nearSphere |  Ja |
+$geometry |  Ja |
+$minDistance | Ja |
+$maxDistance | Ja |
+$center | Ja |
+$centerSphere | Ja |
+$box | Ja |
+$polygon |  Ja |
+
+## <a name="cursor-methods"></a>Cursormethoden
+
+|Get-Help  |Unterstützt |
+|---------|---------|
+|cursor.batchSize() |   Ja|
+|cursor.close() |Ja|
+|cursor.isClosed()|     Ja|
+|cursor.collation()|    Nein|
+|cursor.comment()   |Ja|
+|cursor.count() |Ja|
+|cursor.explain()|  Nein|
+|cursor.forEach()   |Ja|
+|cursor.hasNext()   |Ja|
+|cursor.hint()  |Ja|
+|cursor.isExhausted()|  Ja|
+|cursor.itcount()   |Ja|
+|cursor.limit() |Ja|
+|cursor.map()   |Ja|
+|cursor.maxScan()   |Ja|
+|cursor.maxTimeMS()|    Ja|
+|cursor.max()   |Ja|
+|cursor.min()   |Ja|
+|cursor.next()| Ja|
+|cursor.noCursorTimeout()   |Nein|
+|cursor.objsLeftInBatch()   |Ja|
+|cursor.pretty()|   Ja|
+|cursor.readConcern()|  Ja|
+|cursor.readPref()      |Ja|
+|cursor.returnKey() |Nein|
+|cursor.showRecordId()| Nein|
+|cursor.size()  |Ja|
+|cursor.skip()  |Ja|
+|cursor.sort()  |   Ja|
+|cursor.tailable()| Nein|
+|cursor.toArray()   |Ja|
 
 ## <a name="sort-operations"></a>Sortiervorgänge
 
 Bei Verwendung des `findOneAndUpdate`-Vorgangs werden Sortiervorgänge für ein einzelnes Feld unterstützt, Sortiervorgänge für mehrere Felder jedoch nicht.
-
-## <a name="additional-operators"></a>Zusätzliche Operatoren
-
-Operator | Beispiel | Notizen
---- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` |
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Wird nicht unterstützt. Verwenden Sie stattdessen „$regex“.
-
-## <a name="unsupported-operators"></a>Nicht unterstützte Operatoren
-
-Die Operatoren ```$where``` und ```$eval``` werden von Azure Cosmos DB nicht unterstützt.
-
-### <a name="methods"></a>Methoden
-
-Folgende Methoden werden unterstützt:
-
-#### <a name="cursor-methods"></a>Cursormethoden
-
-Methode | Beispiel | Notizen
---- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumente ohne Sortierschlüssel werden nicht zurückgegeben.
 
 ## <a name="unique-indexes"></a>Eindeutige Indizes
 
@@ -335,7 +550,7 @@ Cosmos DB unterstützt eine Gültigkeitsdauer (Time-to-live, TTL) basierend auf 
 
 ## <a name="user-and-role-management"></a>Benutzer- und Rollenverwaltung
 
-Cosmos DB unterstützt noch keine Benutzer und Rollen. Cosmos DB unterstützt jedoch die rollenbasierte Zugriffssteuerung (RBAC) sowie Lese-/Schreibkennwörter/-schlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) (Seite „Verbindungszeichenfolge“) abgerufen werden können.
+Cosmos DB unterstützt noch keine Benutzer und Rollen. Cosmos DB unterstützt jedoch die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) sowie Lese-/Schreibkennwörter/-schlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) (Seite „Verbindungszeichenfolge“) abgerufen werden können.
 
 ## <a name="replication"></a>Replikation
 

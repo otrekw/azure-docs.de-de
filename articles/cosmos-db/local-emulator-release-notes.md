@@ -3,15 +3,15 @@ title: 'Azure Cosmos-Emulator: Download und Versionshinweise'
 description: Hier finden Sie Hinweise zu verschiedenen Versionen des Azure Cosmos-Emulators sowie Downloadinformationen.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445307"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719686"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos-Emulator: Versionshinweise und Informationen zum Download
 
@@ -25,6 +25,10 @@ Dieser Artikel zeigt die Versionshinweise zum Azure Cosmos-Emulator mit einer Li
 |**Erste Schritte**|[Lokale Entwicklung mit dem Azure Cosmos-Emulator](local-emulator.md)|
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="290"></a>2.9.0
+
+- In diesem Release werden die Option zum Festlegen der Konsistenz auf ein konsistentes Präfix sowie die Option zum Erhöhen der Obergrenze für Benutzer und Berechtigungen hinzugefügt.
 
 ### <a name="272"></a>2.7.2
 

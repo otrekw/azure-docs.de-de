@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 1a9801fc0d8a2a013fa737c9d53138dc7d52b398
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768458"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845928"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -61,6 +61,7 @@ Das von App Service verwaltete kostenlose Zertifikat ist eine vorgefertigte Lös
 - Platzhalterzertifikate werden nicht unterstützt.
 - Es unterstützt keine „nackten“ Domänen.
 - Es kann nicht exportiert werden.
+- DNS-A-Einträge werden nicht unterstützt.
 
 > [!NOTE]
 > Das kostenlose Zertifikat wird von DigiCert ausgestellt. Bei einigen Domänen der obersten Ebene müssen Sie DigiCert explizit als Zertifikataussteller zulassen, indem Sie einen [CAA-Domäneneintrag](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization) (Certification Authority Authorization) mit dem folgenden Wert erstellen: `0 issue digicert.com`.
@@ -139,7 +140,7 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |
 
-Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Die Option **Schritt 1: Speichern** sollte ein grünes Häkchen für eine erfolgreiche Ausführung anzeigen. Lassen Sie die Seite für den nächsten Schritt geöffnet.
+Wenn Sie den Tresor ausgewählt haben, schließen Sie die Seite **Key Vault-Repository**. Für die Option **Schritt 1: Speichern** sollte ein grünes Häkchen (erfolgreiche Ausführung) angezeigt werden. Lassen Sie die Seite für den nächsten Schritt geöffnet.
 
 ### <a name="verify-domain-ownership"></a>Überprüfen des Domänenbesitzes
 

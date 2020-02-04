@@ -1,12 +1,12 @@
 ---
-title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz – Azure-Portal'
+title: 'Schnellstart: Erstellen einer öffentlichen Load Balancer-Instanz – Azure-Portal'
 titleSuffix: Azure Load Balancer
-description: In diesem Schnellstart wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer Standard-Instanz erstellen.
+description: In diesem Schnellstart wird gezeigt, wie Sie über das Azure-Portal eine Load Balancer-Instanz erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771460"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843870"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer über das Azure-Portal
 
-Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer für den Lastenausgleich virtueller Computer (Virtual Machines, VMs) zu erstellen. In dieser Schnellstartanleitung erfahren Sie, wie Sie für den Lastenausgleich virtueller Computer einen Load Balancer im Tarif „Standard“ verwenden.
+Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer für den Lastenausgleich virtueller Computer (Virtual Machines, VMs) zu erstellen. In dieser Schnellstartanleitung erfahren Sie, wie Sie für den Lastenausgleich virtueller Computer eine öffentliche Load Balancer-Instanz verwenden.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
 
@@ -32,9 +32,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
+## <a name="create-a-load-balancer"></a>Einrichten einer Load Balancer-Instanz
 
-In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer. Sie können eine öffentliche oder eine interne Load Balancer Standard-Instanz erstellen. Load Balancer Standard unterstützt nur eine öffentliche IP-Adresse vom Typ „Standard“. Öffentliche IP-Adressen vom Typ „Basic“ werden nicht unterstützt. Wenn Sie eine öffentliche Load Balancer Standard-Instanz erstellen, müssen Sie für diesen auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
+In diesem Abschnitt erstellen Sie eine Load Balancer-Instanz für den Lastenausgleich virtueller Computer. Sie können eine öffentliche oder eine interne Load Balancer-Instanz erstellen. Wenn Sie eine öffentliche Load Balancer-Instanz erstellen, müssen Sie für diesen auch eine neue öffentliche IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*.
 
 1. Wählens Sie links oben auf dem Bildschirm die Optionen **Ressource erstellen** > **Netzwerk** > **Lastenausgleich** aus.
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
@@ -46,10 +46,11 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
     | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Standard** aus.                          |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | SKU           | Wählen Sie **Standard** oder **Basic** aus. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.  |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus. |
     | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
-    |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
+    | Verfügbarkeitszone | Geben Sie *Zonenredundant* ein, um eine resiliente Load Balancer-Instanz zu erstellen. Wählen Sie zum Erstellen einer zonalen Load Balancer-Instanz eine bestimmte Zone aus 1, 2 oder 3 aus. |
+
 3. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
 
     ![Einrichten eines Load Balancers im Tarif „Standard“](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ In diesem Abschnitt erstellen Sie eine Load Balancer Standard-Instanz für den L
 
 In diesem Abschnitt konfigurieren Sie Load Balancer-Einstellungen für einen Back-End-Adresspool und einen Integritätstest. Außerdem legen Sie eine Lastenausgleichsregel fest.
 
-### <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
+### <a name="create-a-backend-pool"></a>Erstellen eines Back-End-Pools
 
 Ein Back-End-Adresspool enthält die IP-Adressen der virtuellen NICs, die mit dem Load Balancer verbunden sind, um Datenverkehr an die virtuellen Computer verteilen zu können. Erstellen Sie den Back-End-Adresspool *myBackendPool*, um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
 
@@ -122,7 +123,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle C
 1. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adressen im Back-End-Pool. In diesem Abschnitt werden drei virtuelle Computer (*myVM1*, *myVM2* und *myVM3*) mit einer öffentlichen Standard-IP-Adresse in drei verschiedenen Zonen (*Zone 1*, *Zone 2* und *Zone 3*) erstellt, die später dem Back-End-Pool der zuvor erstellten Load Balancer Standard-Instanz hinzugefügt werden.
+Die SKUs für öffentliche IP-Adressen und die Load Balancer-SKUs müssen übereinstimmen. Verwenden Sie für Load Balancer Standard virtuelle Computer mit Standard-IP-Adressen im Back-End-Pool. In diesem Abschnitt werden drei virtuelle Computer (*myVM1*, *myVM2* und *myVM3*) mit einer öffentlichen Standard-IP-Adresse in drei verschiedenen Zonen (*Zone 1*, *Zone 2* und *Zone 3*) erstellt, die später dem Back-End-Pool der zuvor erstellten Load Balancer-Instanz hinzugefügt werden. Wenn Sie „Basic“ ausgewählt haben, verwenden Sie virtuelle Computer mit IP-Adressen vom Typ „Basic“.
 
 1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2019 Datacenter**. 
    
@@ -138,7 +139,7 @@ Load Balancer Standard unterstützt nur virtuelle Computer mit Standard-IP-Adres
 1. Stellen Sie auf der Registerkarte **Netzwerk** sicher, dass Folgendes ausgewählt ist:
    - **Virtuelles Netzwerk:** *myVnet*
    - **Subnetz:** *myBackendSubnet*
-   - **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen** und anschließend im Fenster **Öffentliche IP-Adresse erstellen** unter **SKU** die Option **Standard** und unter **Verfügbarkeitszone** die Option **Zonenredundant** und dann **OK** aus.
+   - **Öffentliche IP-Adresse:** Wählen Sie **Neu erstellen** und anschließend im Fenster **Öffentliche IP-Adresse erstellen** unter **SKU** die Option **Standard** und unter **Verfügbarkeitszone** die Option **Zonenredundant** und dann **OK** aus. Wenn Sie eine Load Balancer-Instanz vom Typ „Basic“ erstellt haben, wählen Sie „Basic“ aus. Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
    - Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. 
        1. Wählen Sie im Feld **Netzwerksicherheitsgruppe konfigurieren** die Option **Neu erstellen**. 
        1. Geben Sie *myNetworkSecurityGroup* ein, und wählen Sie **OK** aus.
@@ -167,15 +168,20 @@ In diesem Abschnitt erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eing
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myNetworkSecurityGroup** (in der Ressourcengruppe **myResourceGroupSLB**) aus.
 2. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln** und dann **Hinzufügen**.
 3. Geben Sie für die Eingangssicherheitsregel *myHTTPRule* folgende Werte ein, um eine eingehende HTTP-Verbindung über den Port 80 zuzulassen:
-    - *Service Tag* für **Quelle**
-    - *Internet* für **Quelldiensttag**
-    - *80* für **Zielportbereiche**
-    - *TCP* für **Protokoll**
-    - *Zulassen* für **Aktion**
-    - *100* für **Priorität**
-    - *myHTTPRule* als Name
-    - *Allow HTTP* als Beschreibung
+    - **Quelle**: *Diensttag*
+    -  **Quelldiensttag**: *Internet*
+    - **Zielportbereiche**: *80*
+    - **Protokoll:** *TCP*
+    - **Aktion:** *Zulassen*
+    - **Priorität:** *100*
+    - **Name**: *myHTTPRule* 
+    - **Beschreibung**: *HTTP zulassen* 
 4. Wählen Sie **Hinzufügen**.
+5. Wiederholen Sie ggf. die Schritte für die RDP-Eingangsregel mit den folgenden abweichenden Werten:
+   - **Zielportbereiche**: Geben Sie *3389* ein.
+   - **Priorität:** Geben Sie *200* ein. 
+   - **Name**: Geben Sie *MyRDPRule* ein. 
+   - **Beschreibung**: Geben Sie *Allow RDP* ein. 
  
 ### <a name="install-iis"></a>Installieren von IIS
 
@@ -214,7 +220,6 @@ Löschen Sie die Ressourcengruppe, den Load Balancer und alle zugehörigen Resso
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den [Tutorials zu Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+Erfahren Sie mehr über [Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).

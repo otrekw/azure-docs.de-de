@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/21/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514271"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772785"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -99,13 +99,15 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |kms.core.windows.net|TCP-Port 1688|Windows 10-Aktivierung|
 
 >[!IMPORTANT]
->Das Aufrufen dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen, und sie schließen keine URLs zu anderen Diensten wie Azure AD ein.
+>Das Aufrufen dieser URLs ist für die zuverlässige Bereitstellung von Windows Virtual Desktop von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs entsprechen lediglich Windows Virtual Desktop-Websites und -Ressourcen und beinhalten keine URLs für andere Dienste wie etwa Azure Active Directory.
 
 >[!NOTE]
+>Windows Virtual Desktop verfügt derzeit über keine Liste mit IP-Adressbereichen, die Sie in die Whitelist aufnehmen können, um Netzwerkdatenverkehr zuzulassen. Momentan wird nur das Hinzufügen spezifischer URLs zur Whitelist unterstützt.
+>
 >Sie müssen das Platzhalterzeichen (*) für URLs für Dienstdatenverkehr verwenden. Wenn Sie kein Platzhalterzeichen (*) für Agent-Datenverkehr verwenden möchten, ermitteln Sie wie folgt die URLs ohne Platzhalter:
 >
 >1. Registrieren Sie Ihre virtuellen Computer für den Windows Virtual Desktop-Hostpool.
->2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie zu **Windows** > **Anwendungsprotokolle**, und suchen Sie nach der Ereignis-ID 3702.
+>2. Öffnen Sie die **Ereignisanzeige**, navigieren Sie zu **Windows-Protokolle** > **Anwendung** > **WVD-Agent**, und suchen Sie nach der Ereignis-ID 3702.
 >3. Nehmen Sie die URLs, die Sie unter der Ereignis-ID 3702 finden, in eine Whitelist auf. Die URLs unter der Ereignis-ID 3702 sind regionsspezifisch. Sie müssen den Whitelistprozess mit den relevanten URLs für jede Region wiederholen, in der Sie Ihre virtuellen Computer bereitstellen möchten.
 
 Windows Virtual Desktop umfasst die Windows-Desktops und -Apps, die Sie für Benutzer bereitstellen, sowie die Verwaltungslösung. Letztere wird von Microsoft in Azure gehostet. Desktops und Apps können auf virtuellen Computern (VMs) in einer beliebigen Azure-Region bereitgestellt werden. Die Verwaltungslösung und Daten für diese virtuellen Computer befinden sich dagegen in den Vereinigten Staaten. Dies kann zu Datenübertragungen in die USA führen.
@@ -137,7 +139,7 @@ Windows Virtual Desktop unterstützt die folgenden Images von x64-Betriebssystem
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop unterstützt keine Betriebssystemimages mit x86 (32 Bit), Windows 10 Enterprise N oder Windows 10 Enterprise KN.
+Windows Virtual Desktop unterstützt keine Betriebssystemimages mit x86 (32 Bit), Windows 10 Enterprise N oder Windows 10 Enterprise KN. Aufgrund einer Sektorgrößenbeschränkung unterstützt Windows 7 auch keine VHD- oder VHDX-basierten Profillösungen, die in einer verwalteten Azure Storage-Instanz gehostet werden.
 
 Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab, welches Betriebssystem und welche Version gewählt werden; siehe dazu die folgende Tabelle: 
 

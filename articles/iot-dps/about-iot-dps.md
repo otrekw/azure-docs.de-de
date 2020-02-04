@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: b28e09b2d304dc392442d98fe39654bab2c8d09c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645054"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772941"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können.
@@ -80,7 +80,7 @@ Der Device Provisioning-Dienst hat viele Features, die ihn zur idealen Lösung z
 * Eine **Registrierungsliste** mit der vollständigen Aufzeichnung von Geräten/Gerätegruppen, die sich zu einem beliebigen Zeitpunkt registrieren könnten. Die Registrierungsliste enthält Informationen zu der gewünschten Konfiguration des Geräts, sobald es registriert ist, und sie kann jederzeit aktualisiert werden.
 * **Mehrere Zuordnungsrichtlinien**, um zu steuern, wie Device Provisioning Service zur Unterstützung Ihrer Szenarien Geräte IoT-Hubs zuweist: Niedrigste Latenz, gleichmäßig gewichtete Verteilung (Standard) und statische Konfiguration über die Registrierungsliste. Beachten Sie, dass die Latenz mithilfe der gleichen Methode wie bei [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance) ermittelt wird.
 * **Überwachungs- und Diagnoseprotokolle**, um sicherzustellen, dass alles ordnungsgemäß funktioniert
-* **Unterstützung für mehrere Hubs**, sodass der Device Provisioning-Dienst Geräte mehreren IoT Hubs zuweisen kann. Der Device Provisioning-Dienst kann mehrere Azure-Abonnements übergreifend mit Hubs kommunizieren.
+* **Unterstützung mehrerer Hubs**, sodass der Device Provisioning-Dienst Geräte zur Laufzeit spät an einen IoT-Hub binden kann. Der Device Provisioning-Dienst kann mehrere Azure-Abonnements übergreifend mit Hubs kommunizieren.
 * **Regionsübergreifende Unterstützung**, sodass der Device Provisioning-Dienst Geräte IoT Hubs in anderen Regionen zuweisen kann
 
 Weitere Informationen zu den Konzepten und Features in Verbindung mit der Gerätebereitstellung finden Sie unter [IoT Hub Device Provisioning Service device concepts](concepts-device.md) (IoT Hub Device Provisioning-Dienst: Gerätekonzepte), [IoT Hub Device Provisioning Service concepts](concepts-service.md) (IoT Hub Device Provisioning-Dienst: Konzepte) und [IoT Hub Device Provisioning Service security concepts](concepts-security.md) (IoT Hub Device Provisioning-Dienst: Sicherheitskonzepte).

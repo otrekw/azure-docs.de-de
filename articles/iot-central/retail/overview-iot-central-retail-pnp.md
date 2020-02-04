@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895856"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773047"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
 
@@ -30,7 +30,7 @@ In den folgenden Abschnitten werden die Funktionen dieser Anwendungsvorlagen bes
 
 ## <a name="connected-logistics"></a>Vernetzte Logistik
 
-Für die weltweiten Ausgaben im Bereich Logistik wird für 2020 eine Summe von 10,6 Billionen US-Dollar erwartet. Der Großteil dieser Ausgaben entfällt auf den Warentransport, und Transportdienstleister stehen unter enormem Wettbewerbsdruck.
+Bei den weltweiten Ausgaben im Bereich Logistik wird für 2020 eine Summe von 10,6 Billionen US-Dollar erwartet. Der Großteil dieser Ausgaben entfällt auf den Warentransport, und Transportdienstleister stehen unter enormem Wettbewerbsdruck.
 
 Mithilfe von IoT-Sensoren können Umgebungsbedingungen wie Temperatur, Luftfeuchtigkeit, Neigung, Erschütterung, Licht und Standort einer Sendung erfasst und überwacht werden. Von IoT-Sensoren und -Geräten gesammelte Telemetriedaten können mit anderen Datenquellen wie etwa Wetter- und Verkehrsinformationen in cloudbasierten Business Intelligence-Systemen kombiniert werden.
 

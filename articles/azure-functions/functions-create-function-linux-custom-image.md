@@ -1,376 +1,956 @@
 ---
 title: Erstellen von Azure-Funktionen unter Linux mit einem benutzerdefinierten Image
 description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem benutzerdefinierten Linux-Image ausgeführt werden.
-ms.date: 09/27/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: e70edac09c8b2d61c148c9ba0fd04ec231e9a965
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+zone_pivot_groups: programming-languages-set-functions01
+ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846488"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
+# <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
-Mit Azure Functions können Sie Funktionen unter Linux in einem eigenen benutzerdefinierten Container hosten. Das [Hosten in einem Azure App Service-Standardcontainer](functions-create-first-azure-function-azure-cli-linux.md) ist ebenfalls möglich. Für diese Funktion wird die [Functions-Runtime 2.x](functions-versions.md) benötigt.
+In diesem Tutorial erstellen Sie Python-Code für Azure Functions als benutzerdefinierten Docker-Container mit einem Linux-Basisimage und stellen ihn anschließend bereit. Normalerweise verwenden Sie ein benutzerdefiniertes Image, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder über eine bestimmte Abhängigkeit oder Konfiguration verfügen, die über das integrierte Image nicht bereitgestellt wird.
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Funktionen als benutzerdefiniertes Docker-Image in Azure bereitstellen. Dieses Muster ist hilfreich, wenn Sie das integrierte Containerimage anpassen müssen. Sie sollten ein benutzerdefiniertes Image verwenden, wenn Sie für Ihre Funktionen eine bestimmte Sprachversion benötigen oder eine bestimmte Abhängigkeit oder Konfiguration erforderlich ist, die nicht mit dem integrierten Image bereitgestellt wird. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base). 
-
-Dieses Tutorial führt Sie durch die Schritte zum Erstellen einer Funktion in einem benutzerdefinierten Linux-Image unter Verwendung von Azure Functions Core Tools. Sie veröffentlichen dieses Image in einer Funktions-App in Azure, die über die Azure-Befehlszeilenschnittstelle erstellt wurde. Später aktualisieren Sie Ihre Funktion, um eine Verbindung mit Azure Queue Storage herzustellen.
+Sie können auch einen Azure App Service-Standardcontainer verwenden. Dies ist unter [Schnellstart: Erstellen Ihrer ersten unter Linux gehosteten Funktion unter Verwendung von Befehlszeilentools](functions-create-first-azure-function-azure-cli-linux.md) beschrieben. Unterstützte Basisimages für Azure Functions finden Sie im [Azure Functions-Repository für Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer Funktions-App und einer Dockerfile-Datei mithilfe von Core Tools.
+> * Erstellen einer Funktions-App und Dockerfile mit den Azure Functions Core Tools.
 > * Erstellen eines benutzerdefinierten Images mit Docker.
 > * Veröffentlichen eines benutzerdefinierten Images in einer Containerregistrierung.
-> * Erstellen eines Azure-Speicherkontos.
-> * Erstellen Sie einen Premium-Hostingplan.
+> * Erstellen von unterstützenden Ressourcen in Azure für die Funktions-App.
 > * Bereitstellen einer Funktions-App über Docker Hub.
 > * Hinzufügen von Anwendungseinstellungen für die Funktions-App.
 > * Aktivieren Sie Continuous Deployment.
 > * Aktivieren Sie SSH-Verbindungen mit dem Container.
 > * Fügen Sie eine Queue Storage-Ausgabebindung hinzu. 
 
-Die folgenden Schritte werden für Mac-, Windows- oder Linux-Computer unterstützt. 
+Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows, Mac OS oder Linux ausgeführt wird. Für das Durcharbeiten des Tutorials fallen unter Ihrem Azure-Konto Kosten in Höhe von wenigen US-Dollar an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vor dem Ausführen dieses Beispiels benötigen Sie Folgendes:
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure Functions Core Tools](./functions-run-local.md#v2), Version 2.7.1846 oder höher
+- [Azure CLI](/cli/azure/install-azure-cli), Version 2.0.77 oder höher
+- [Azure Functions 2.x-Runtime](functions-versions.md)
+- Folgende Language Runtime-Komponenten:
+    ::: zone pivot="programming-language-csharp"
+    - [.NET Core 2.2.x oder höher](https://dotnet.microsoft.com/download)
+    ::: zone-end
+    ::: zone pivot="programming-language-javascript"
+    - [Node.js](https://nodejs.org/en/download/)
+    ::: zone-end
+    ::: zone pivot="programming-language-powershell"
+    - [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
+    ::: zone-end
+    ::: zone pivot="programming-language-python"
+    - [Python 3.6 (64 Bit)](https://www.python.org/downloads/release/python-3610/) oder [Python 3.7 (64 Bit)](https://www.python.org/downloads/release/python-376/)
+    ::: zone-end
+    ::: zone pivot="programming-language-typescript"
+    - [Node.js](https://nodejs.org/en/download/)
+    - [TypeScript](http://www.typescriptlang.org/#download-links)
+    ::: zone-end
+- [Docker](https://docs.docker.com/install/)
+- [Docker-ID](https://hub.docker.com/signup)
 
-* Installieren Sie [Azure Core Tools-Version 2.x](functions-run-local.md#v2).
+### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
-* Installieren Sie die [Azure CLI]( /cli/azure/install-azure-cli). Für diesen Artikel ist die Azure CLI-Version 2.0 oder höher erforderlich. Führen Sie `az --version` aus, um herauszufinden, welche Version Sie haben.  
-Sie können ebenso [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.
+1. Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 2.7.1846 der Azure Functions Core Tools verwendet wird.
+1. Führen Sie `az --version` aus, um zu überprüfen, ob die Azure CLI-Version 2.0.76 oder höher verwendet wird.
+1. Führen Sie `az login` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
+1. Führen Sie `docker login` aus, um sich bei Docker anzumelden. Für diesen Befehl tritt ein Fehler auf, wenn Docker nicht ausgeführt wird. Gehen Sie in diesem Fall so vor, dass Sie Docker starten und versuchen, den Befehl erneut auszuführen.
 
-* Ein aktives Azure-Abonnement.
+## <a name="create-and-test-the-local-functions-project"></a>Erstellen und Testen des lokalen Funktionsprojekts
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+1. Erstellen Sie für dieses Tutorial in einem Terminal oder an einer Eingabeaufforderung einen Ordner an einem geeigneten Speicherort, und navigieren Sie dann zu diesem Ordner.
 
-[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+1. Befolgen Sie die Anleitung unter [Erstellen und Aktivieren einer virtuellen Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment), um eine virtuelle Umgebung für dieses Tutorial zu erstellen.
 
-## <a name="create-the-local-project"></a>Erstellen des lokalen Projekts
+1. Führen Sie den folgenden Befehl für die gewählte Sprache aus, um ein Funktions-App-Projekt in einem Ordner mit dem Namen `LocalFunctionsProject` zu erstellen. Mit der Option `--docker` wird eine `Dockerfile` für das Projekt generiert. Hiermit wird ein geeigneter benutzerdefinierter Container zur Verwendung mit Azure Functions und der ausgewählten Runtime definiert.
 
-Führen Sie den folgenden Befehl zum Erstellen eines Funktions-App-Projekts im `MyFunctionProj`-Ordner des aktuellen lokalen Verzeichnisses über die Befehlszeile aus. Für ein Python-Projekt muss eine [virtuelle Umgebung](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) verwendet werden.
+    ::: zone pivot="programming-language-csharp"
+    ```
+    func init LocalFunctionsProject --worker-runtime dotnet --docker
+    ```
+    ::: zone-end
 
-```bash
-func init MyFunctionProj --docker
-```
+    ::: zone pivot="programming-language-javascript"
+    ```
+    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+    ```
+    ::: zone-end
 
-Wenn Sie die Option `--docker` einschließen, wird eine Dockerfile-Datei für das Projekt generiert. Diese Datei dient zum Erstellen eines benutzerdefinierten Containers für die Projektausführung. Welches Basisimage verwendet wird, hängt von der gewählten Worker-Runtimesprache ab.  
+    ::: zone pivot="programming-language-powershell"
+    ```
+    func init LocalFunctionsProject --worker-runtime powershell --docker
+    ```
+    ::: zone-end
 
-Wählen Sie bei entsprechender Aufforderung eine der folgenden Worker-Runtimesprachen aus:
+    ::: zone pivot="programming-language-python"
+    ```
+    func init LocalFunctionsProject --worker-runtime python --docker
+    ```
+    ::: zone-end
 
-* `dotnet`: Erstellt ein .NET Core-Klassenbibliotheksprojekt (.csproj).
-* `node`: Erstellt ein JavaScript-Projekt.
-* `python`: Erstellt ein Python-Projekt.  
+    ::: zone pivot="programming-language-typescript"
+    ```
+    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+    ```
+    ::: zone-end
+    
+1. Navigieren Sie zum Projektordner:
 
-Verwenden Sie den folgenden Befehl, um zu dem neuen Projektordner `MyFunctionProj` zu navigieren.
+    ```
+    cd LocalFunctionsProject
+    ```
+    
+1. Fügen Sie dem Projekt eine Funktion hinzu, indem Sie den unten angegebenen Befehl verwenden. Hierbei ist das `--name`-Argument der eindeutige Name Ihrer Funktion, und mit dem `--template`-Argument wird der Trigger der Funktion angegeben. Mit `func new` wird ein Unterordner passend zum Funktionsnamen erstellt. Er enthält eine geeignete Codedatei für die gewählte Sprache des Projekts und eine Konfigurationsdatei mit dem Namen *function.json*.
 
-```bash
-cd MyFunctionProj
-```
+    ```
+    func new --name HttpExample --template "HTTP trigger"
+    ```
 
-[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
+1. Starten Sie zum lokalen Testen der Funktion den lokalen Azure Functions-Runtimehost im Ordner *LocalFunctionsProject*:
+   
+    ::: zone pivot="programming-language-csharp"
+    ```
+    func start --build
+    ```
+    ::: zone-end
 
-[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
+    ::: zone pivot="programming-language-javascript"
+    ```
+    func start
+    ```
+    ::: zone-end
 
-## <a name="build-from-the-docker-file"></a>Erstellen aus der Docker-Datei
+    ::: zone pivot="programming-language-powershell"
+    ```
+    func start
+    ```
+    ::: zone-end
 
-Sehen Sie sich die _Dockerfile-Datei_ im Stammordner des Projekts an. Diese Datei beschreibt die Umgebung, die zur Ausführung der Funktions-App erforderlich ist. Bei dem folgenden Beispiel handelt es sich um eine Dockerfile-Datei, die einen Container zum Ausführen einer Funktions-App in der JavaScript-Workerruntime (Node.js) erstellt: 
+    ::: zone pivot="programming-language-python"
+    ```
+    func start
+    ```
+    ::: zone-end    
 
-```Dockerfile
-FROM mcr.microsoft.com/azure-functions/node:2.0
+    ::: zone pivot="programming-language-typescript"
+    ```
+    npm install
+    ```
 
-ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-COPY . /home/site/wwwroot
-```
+    ```
+    npm start
+    ```
+    ::: zone-end
 
-> [!NOTE]
-> Die vollständige Liste mit den unterstützten Basisimages für Azure Functions finden Sie auf der [Seite mit Azure Functions-Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
+1. Navigieren Sie zu `http://localhost:7071/api/HttpExample?name=Functions`, nachdem in der Ausgabe der `HttpExample`-Endpunkt angezeigt wird. Im Browser sollte eine Meldung wie „Hello, Functions“ angezeigt werden (kann je nach gewählter Programmiersprache leicht variieren).
 
-### <a name="run-the-build-command"></a>Führen Sie den Befehl `build` aus.
+1. Verwenden Sie **STRG**-**C**, um den Host zu beenden.
 
-Führen Sie im Stammordner den Befehl [docker build`v1.0.0` aus, und geben Sie einen Namen (](https://docs.docker.com/engine/reference/commandline/build/)) und ein Tag (`mydockerimage`) an. Ersetzen Sie `<docker-id>` durch Ihre Docker Hub-Konto-ID. Dieser Befehl erstellt das Docker-Image für den Container.
+## <a name="build-the-container-image-and-test-locally"></a>Erstellen und lokales Testen des Containerimages
 
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
-```
+1. (Optional) Untersuchen Sie die „Dockerfile“ im Ordner *LocalFunctionsProj*. In der Dockerfile wird die Umgebung beschrieben, die zum Ausführen der Funktions-App unter Linux benötigt wird: 
 
-Nachdem der Befehl abgeschlossen wurde, können Sie den neuen Container lokal ausführen.
+    ::: zone pivot="programming-language-csharp"
+    ```Dockerfile
+    FROM microsoft/dotnet:2.2-sdk AS installer-env
 
-### <a name="run-the-image-locally"></a>Lokales Ausführen des Images
-Vergewissern Sie sich, dass das von Ihnen erstellte Image funktioniert, indem Sie das Docker-Image in einem lokalen Container ausführen. Rufen Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) auf, und übergeben Sie ihm Namen und Tag des Images. Stellen Sie sicher, dass Sie auch die Ports mit dem `-p`-Argument angeben.
+    COPY . /src/dotnet-function-app
+    RUN cd /src/dotnet-function-app && \
+        mkdir -p /home/site/wwwroot && \
+        dotnet publish *.csproj --output /home/site/wwwroot
+    
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
+    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+    ```
+    ::: zone-end
 
-```bash
-docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
-```
+    ::: zone pivot="programming-language-javascript"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/node:2.0
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot
+    
+    RUN cd /home/site/wwwroot && \
+    npm install    
+    ```
+    ::: zone-end
 
-Wenn das benutzerdefinierte Image in einem lokalen Docker-Container ausgeführt wird, überprüfen Sie, ob die Funktions-App und der Container korrekt funktionieren, indem Sie zu <http://localhost:8080> navigieren.
+    ::: zone pivot="programming-language-powershell"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/powershell:2.0
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot    
+    ```
+    ::: zone-end
 
-![Führen Sie die Funktions-App lokal aus.](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
+    ::: zone pivot="programming-language-python"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
+    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY requirements.txt /
+    RUN pip install -r /requirements.txt
+    
+    COPY . /home/site/wwwroot    
+    ```
+    ::: zone-end
 
-> [!NOTE]
-> Wenn Sie nun versuchen, Ihre spezielle HTTP-Funktion aufzurufen, wird der Fehler „HTTP 401“ zurückgegeben. Das liegt daran, dass die Funktion im lokalen Container genau wie in Azure ausgeführt wird, was bedeutet, dass der Funktionsschlüssel erforderlich ist. Da der Container noch nicht in einer Funktions-App veröffentlicht wurde, ist kein Funktionsschlüssel verfügbar. Die Funktionsschlüssel werden Ihnen später angezeigt, wenn Sie Ihren Container mit Core Tools veröffentlichen. Wenn Sie die im lokalen Container ausgeführte Funktion testen möchten, können Sie den [Autorisierungsschlüssel](functions-bindings-http-webhook.md#authorization-keys) in `anonymous` ändern. 
+    ::: zone pivot="programming-language-typescript"
+    ```Dockerfile
+    # To enable ssh & remote debugging on app service change the base image to the one below
+    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    FROM mcr.microsoft.com/azure-functions/node:2.0
+    
+    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+    
+    COPY . /home/site/wwwroot
+    
+    RUN cd /home/site/wwwroot && \
+    npm install    
+    ```
+    ::: zone-end
 
-Nachdem Sie die Funktions-App im Container überprüft haben, beenden Sie die Ausführung. Jetzt können Sie das benutzerdefinierte Image per Push zu Ihrem Docker Hub-Konto übertragen.
+    > [!NOTE]
+    > Die vollständige Liste mit den unterstützten Basisimages für Azure Functions finden Sie auf der [Seite mit Azure Functions-Basisimages](https://hub.docker.com/_/microsoft-azure-functions-base).
+    
+1. Führen Sie im Ordner *LocalFunctionsProject* den Befehl [docker build](https://docs.docker.com/engine/reference/commandline/build/) aus, und geben Sie den Namen `azurefunctionsimage` und als Tag `v1.0.0` an. Ersetzen Sie `<docker_id>` durch Ihre Docker Hub-Konto-ID. Dieser Befehl erstellt das Docker-Image für den Container.
 
-## <a name="push-to-docker-hub"></a>An Docker Hub pushen
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
+    ```
+    
+    Nachdem der Befehl abgeschlossen wurde, können Sie den neuen Container lokal ausführen.
+    
+1. Führen Sie das Image zum Testen des Builds in einem lokalen Container aus, indem Sie den Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) verwenden und erneut `<docker_id>` durch Ihre Docker-ID ersetzen und das Portargument `-p 8080:80` hinzufügen:
 
-Eine Registrierung ist eine Anwendung, die Images hostet und Image- sowie Containerdienste bereitstellt. Wenn Sie Ihr Image freigeben möchten, müssen Sie es an eine Registrierung pushen. Docker Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten.
+    ```
+    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+1. Wenn das Image in einem lokalen Container ausgeführt wird, können Sie in einem Browser auf `http://localhost:8080` zugreifen, damit das unten angegebene Platzhalterbild angezeigt wird. Das Bild wird hier angezeigt, weil Ihre Funktion im lokalen Container so ausgeführt wird, wie dies auch in Azure der Fall wäre. Dies bedeutet, dass sie durch einen Zugriffsschlüssel geschützt ist, der in *function.json* mit der `"authLevel": "function"`-Eigenschaft definiert wird. Da der Container aber noch nicht in einer Funktions-App in Azure veröffentlicht wurde, ist der Schlüssel noch nicht verfügbar. Gehen Sie wie folgt vor, wenn Sie einen lokalen Test durchführen möchten: Beenden Sie Docker, ändern Sie die Autorisierungseigenschaft in `"authLevel": "anonymous"`, erstellen Sie das Image neu, und starten Sie Docker anschließend wieder. Setzen Sie dann `"authLevel": "function"` in *function.json* zurück. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](functions-bindings-http-webhook.md#authorization-keys).
 
-Bevor Sie ein Image mithilfe von Push übertragen können, müssen Sie sich mit dem Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) in Docker Hub anmelden. Ersetzen Sie `<docker-id>` durch den Namen Ihres Kontos, und geben Sie Ihr Kennwort in der Konsole an der Eingabeaufforderung ein. Weitere Kennwortoptionen für Docker Hub finden Sie in der [Dokumentation zum Docker Login-Befehl](https://docs.docker.com/engine/reference/commandline/login/) (in englischer Sprache).
+    ![Platzhalterbild mit dem Hinweis, dass der Container lokal ausgeführt wird](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-```bash
-docker login --username <docker-id>
-```
+1. Nachdem Sie die Funktions-App im Container überprüft haben, beenden Sie Docker mit **STRG**+**C**.
 
-Die Meldung „login succeeded“ bestätigt Ihre erfolgreiche Anmeldung. Nach der Anmeldung können Sie das Image mit dem [docker push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl per Push an Docker-Hub übertragen.
+## <a name="push-the-image-to-docker-hub"></a>Übertragen des Images per Pushvorgang auf Docker Hub
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.0
-```
+Docker Hub ist eine Containerregistrierung, mit der Images gehostet und Image- und Containerdienste bereitgestellt werden. Um Ihr Image freizugeben (umfasst auch die Bereitstellung in Azure), müssen Sie es per Pushvorgang in eine Registrierung übertragen.
 
-Nach der erfolgreichen Push-Übertragung können Sie das Image als Bereitstellungsquelle für eine neue Funktions-App in Azure verwenden.
+1. Wenn Sie sich noch nicht bei Docker angemeldet haben, können Sie dies durchführen, indem Sie den Befehl [docker login](https://docs.docker.com/engine/reference/commandline/login/) verwenden und `<docker_id>` durch Ihre Docker-ID ersetzen. Mit diesem Befehl werden Sie zum Eingeben Ihres Benutzernamens und Kennworts aufgefordert. Mit einer Meldung der Art „Anmeldung erfolgreich“ wird bestätigt, dass die Anmeldung erfolgreich war.
 
-[!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
+    ```
+    docker login
+    ```
+    
+1. Übertragen Sie das Image nach dem Anmelden per Pushvorgang an Docker Hub, indem Sie den Befehl [docker push](https://docs.docker.com/engine/reference/commandline/push/) verwenden und `<docker_id>` wieder durch Ihre Docker-ID ersetzen.
 
-[!INCLUDE [functions-create-storage-account](../../includes/functions-create-storage-account.md)]
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.0
+    ```
 
-## <a name="create-a-premium-plan"></a>Erstellen eines Premium-Plans
+1. Je nach Netzwerkgeschwindigkeit kann der erste Pushvorgang für das Image einige Minuten dauern (das Pushen der nachfolgenden Änderungen geht deutlich schneller). Während Sie warten, können Sie mit dem nächsten Abschnitt fortfahren und Azure-Ressourcen in einem anderen Terminal erstellen.
 
-Linux-Hosting für benutzerdefinierte Functions-Container werden von [dedizierten (App Service-)Plänen](functions-scale.md#app-service-plan) und [Premium-Plänen](functions-premium-plan.md#features) unterstützt. Dieses Tutorial verwendet einen Premium-Plan, der nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md).
+## <a name="create-supporting-azure-resources-for-your-function"></a>Erstellen von unterstützenden Azure-Ressourcen für Ihre Funktion
 
-Das folgende Beispiel erstellt einen Premium-Plan namens `myPremiumPlan` in der Preisstufe **Elastic Premium 1** (`--sku EP1`), in der Region „USA, Westen“ (`-location WestUS`) und in einem Linux-Container (`--is-linux`).
+Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erstellen:
 
-```azurecli-interactive
-az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
---location WestUS --number-of-workers 1 --sku EP1 --is-linux
-```
+- Eine Ressourcengruppe als logischen Container für verwandte Ressourcen.
+- Ein Azure Storage-Konto, unter dem Status- und andere Informationen zu Ihren Projekten verwaltet werden.
+- Eine Azure-Funktions-App, die als Umgebung zum Ausführen Ihres Funktionscodes dient. Eine Funktions-App ist Ihrem lokalen Funktionsprojekt zugeordnet und ermöglicht Ihnen das Gruppieren von Funktionen als logische Einheit, um die Verwaltung, Bereitstellung und Freigabe von Ressourcen zu vereinfachen.
 
-## <a name="create-an-app-from-the-image"></a>App aus dem Image erstellen
+Sie verwenden Azure CLI-Befehle, um diese Elemente zu erstellen. Für jeden Befehl wird nach Abschluss der Ausführung eine JSON-Ausgabe bereitgestellt.
 
-Die Funktions-App verwaltet die Ausführung Ihrer Funktionen in Ihrem Hostingplan. Erstellen Sie mit dem Befehl [az functionapp create](/cli/azure/functionapp#az-functionapp-create) eine Funktions-App aus einem Docker Hub-Image.
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) bei Azure an:
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. Wie zuvor steht `<docker-id>` für den Namen Ihres Docker-Kontos.
+    ```azurecli
+    az login
+    ```
+    
+1. Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen `AzureFunctionsContainers-rg` in der Region `westeurope` erstellt. (Im Allgemeinen erstellen Sie Ihre Ressourcengruppe und die Ressourcen in einer Region in Ihrer Nähe, indem Sie über den Befehl `az account list-locations` eine verfügbare Region nutzen.)
 
-```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---plan myPremiumPlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
-```
+    ```azurecli
+    az group create --name AzureFunctionsContainers-rg --location westeurope
+    ```
+    
+    > [!NOTE]
+    > In derselben Ressourcengruppe können nicht gleichzeitig Linux- und Windows-Apps gehostet werden. Wenn Sie über eine bestehende Ressourcengruppe mit dem Namen `AzureFunctionsContainers-rg` und einer Windows-Funktions-App oder -Web-App verfügen, müssen Sie eine andere Ressourcengruppe verwenden.
+    
+1. Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create) in Ihrer Ressourcengruppe und Region ein universelles Speicherkonto. Ersetzen Sie im folgenden Beispiel `<storage_name>` durch einen global eindeutigen Namen, der für Sie geeignet ist. Namen dürfen nur 3 bis 24 Zeichen und ausschließlich Kleinbuchstaben enthalten. Mit `Standard_LRS` wird ein typisches universelles Konto angegeben.
 
-Der Parameter _deployment-container-image-name_ gibt das in Docker Hub gehostete Image an, das zum Erstellen der Funktions-App verwendet werden soll. Verwenden Sie den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show), um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Verwenden Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set), um ein anderes Image für die Bereitstellung zu verwenden.
+    ```azurecli
+    az storage account create --name <storage_name> --location westeurope --resource-group AzureFunctionsContainers-rg --sku Standard_LRS
+    ```
+    
+    Mit diesem Speicherkonto fallen für dieses Tutorial nur Kosten in Höhe von wenigen US-Cent an.
+    
+1. Verwenden Sie den Befehl, um den Premium-Plan `myPremiumPlan` für Azure Functions im Tarif **Elastic Premium 1** (`--sku EP1`), in der Region „Europa, Westen“ (`-location westeurope` oder einer geeigneten Region in Ihrer Nähe) und in einem Linux-Container (`--is-linux`) zu erstellen.
 
-## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
+    ```azurecli
+    az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
+    ```   
 
-Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Standardspeicherkonto. Beim Veröffentlichen des benutzerdefinierten Images in einem privaten Containerkonto müssen Sie diese Anwendungseinstellungen als Umgebungsvariablen in der Dockerfile-Datei festlegen, indem Sie die [ENV-Anweisung](https://docs.docker.com/engine/reference/builder/#env) oder etwas Ähnliches verwenden.
+    Linux-Hosting für benutzerdefinierte Funktionscontainer werden von [dedizierten (App Service-)Plänen](functions-scale.md#app-service-plan) und [Premium-Plänen](functions-premium-plan.md#features) unterstützt. Wir verwenden hier den Premium-Plan, der je nach Bedarf skaliert werden kann. Weitere Informationen zum Hosting finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md). Informationen zum Berechnen der Kosten finden Sie auf der Seite [Azure Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
 
-In diesem Fall ist `<storage_name>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzu.
+    Darüber hinaus wird mit dem Befehl auch eine zugeordnete Azure Application Insights-Instanz in derselben Ressourcengruppe bereitgestellt, mit der Sie Ihre Funktions-App überwachen und Protokolle anzeigen können. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md). Für die Instanz fallen erst Kosten an, wenn Sie sie aktivieren.
 
-```azurecli-interactive
-storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_name> \
---query connectionString --output tsv)
+## <a name="create-and-configure-a-function-app-on-azure-with-the-image"></a>Erstellen und Konfigurieren einer Funktions-App in Azure mit dem Image
 
-az functionapp config appsettings set --name <app_name> \
---resource-group myResourceGroup \
---settings AzureWebJobsStorage=$storageConnectionString
-```
+Mit einer Funktions-App in Azure wird die Ausführung der Funktionen Ihres Hostingplans verwaltet. In diesem Abschnitt verwenden Sie die Azure-Ressourcen aus dem vorherigen Abschnitt, um eine Funktions-App aus einem Image unter Docker Hub zu erstellen und mit einer Verbindungszeichenfolge für Azure Storage zu konfigurieren.
 
-> [!NOTE]
-> Ist Ihr Container privat, müssen Sie außerdem die folgenden Anwendungseinstellungen festlegen:  
-> - DOCKER_REGISTRY_SERVER_USERNAME  
-> - DOCKER_REGISTRY_SERVER_PASSWORD  
->
-> Sie müssen Ihre Funktions-App beenden und dann wieder starten, damit diese Werte übernommen werden.
+1. Erstellen Sie die Funktions-App mit dem Befehl [az functionapp create](/cli/azure/functionapp#az-functionapp-create). Ersetzen Sie im folgenden Beispiel `<storage_name>` durch den Namen, den Sie im vorherigen Abschnitt für das Speicherkonto verwendet haben. Ersetzen Sie außerdem `<app_name>` durch einen für Sie geeigneten global eindeutigen Namen und `<docker_id>` durch Ihre Docker-ID.
 
-## <a name="verify-your-functions"></a>Überprüfen der Funktionen
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+    Mit dem Parameter *deployment-container-image-name* wird das Image angegeben, das für die Funktions-App verwendet wird. Sie können den Befehl [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) verwenden, um Informationen zum für die Bereitstellung verwendeten Image anzuzeigen. Darüber hinaus können Sie den Befehl [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) nutzen, um ein anderes Image für die Bereitstellung zu verwenden.
 
-<!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
+1. Rufen Sie die Verbindungszeichenfolge für das von Ihnen erstellte Speicherkonto ab, indem Sie den Befehl [az storage account show-connection-string](/cli/azure/storage/account) verwenden, und weisen Sie sie einer Shellvariablen (`storageConnectionString`) zu:
 
-Die von Ihnen erstellte über HTTP ausgelöste Funktion erfordert beim Aufrufen des Endpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys). Zu diesem Zeitpunkt ist die einfachste Methode zum Abrufen Ihrer Funktions-URL, einschließlich des Schlüssels, die Verwendung des [Azure portal]. 
+    ```azurecli
+    az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
+    
+1. Add this setting to the function app by using the [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) command. In the following command, replace `<app_name>` with the name of your function app, and replace `<connection_string>` with the connection string from the previous step (a long encoded string that begins with "DefaultEndpointProtocol="):
+ 
+    ```azurecli
+    az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
+    ```
+
+1. Die Funktion kann diese Verbindungszeichenfolge jetzt verwenden, um auf das Speicherkonto zuzugreifen.
 
 > [!TIP]
-> Sie können Ihre Funktionsschlüsseln auch über die [Schlüsselverwaltungs-APIs](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) beziehen, für die Sie ein [Bearertoken zur Authentifizierung](/cli/azure/account#az-account-get-access-token) vorlegen müssen.
+> In Bash können Sie eine Shellvariable anstelle der Zwischenablage verwenden, um die Verbindungszeichenfolge zu erfassen. Verwenden Sie zunächst den folgenden Befehl, um eine Variable mit der Verbindungszeichenfolge zu erstellen:
+> 
+> ```bash
+> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+> ```
+> 
+> Verweisen Sie dann im zweiten Befehl auf die Variable:
+> 
+> ```azurecli
+> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+> ```
 
-Suchen Sie Ihre neue Funktions-App im [Azure portal], indem Sie den Namen Ihrer Funktions-App in das **Suchfeld** oben auf der Seite eingeben und die Ressource **App-Service** auswählen.
+> [!NOTE]    
+> Wenn Sie Ihr benutzerdefiniertes Image unter einem privaten Containerkonto veröffentlichen, sollten Sie stattdessen Umgebungsvariablen in der Dockerfile für die Verbindungszeichenfolge verwenden. Weitere Informationen finden Sie unter der [ENV-Anweisung](https://docs.docker.com/engine/reference/builder/#env). Sie sollten auch die Variablen `DOCKER_REGISTRY_SERVER_USERNAME` und `DOCKER_REGISTRY_SERVER_PASSWORD` festlegen. Zum Verwenden der Werte müssen Sie das Image dann neu erstellen und per Pushvorgang in die Registrierung übertragen und anschließend die Funktions-App in Azure neu starten.
 
-Wählen Sie die Funktion **MyHttpTrigger** aus, wählen Sie **</> Funktions-URL abrufen** > **Standard (Funktionsschlüssel)**  > **Kopieren** aus.
+## <a name="verify-your-functions-on-azure"></a>Überprüfen Ihrer Funktionen in Azure
 
-![Kopieren der URL der Funktion aus dem Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
+Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können Sie die Funktion über HTTP-Anforderungen aufrufen. Da die *function.json*-Definition die `"authLevel": "function"`-Eigenschaft enthält, müssen Sie zuerst den Zugriffsschlüssel (auch als „Funktionsschlüssel“ bezeichnet) beschaffen und als URL-Parameter in alle Anforderungen für den Endpunkt einfügen.
 
-In dieser URL ist der Funktionsschlüssel der Abfrageparameter `code`. 
+1. Rufen Sie die Funktions-URL mit dem Zugriffsschlüssel (Funktionsschlüssel) ab, indem Sie das Azure-Portal oder die Azure CLI mit dem Befehl `az rest` verwenden.)
 
-> [!NOTE]  
-> Da Ihre Funktions-App als Container bereitgestellt ist, können Sie im Portal keine Änderungen an Ihrem Funktionscode vornehmen. Stattdessen müssen Sie das Projekt im lokalen Container aktualisieren und erneut in Azure veröffentlichen.
+    # <a name="portaltabportal"></a>[Portal](#tab/portal)
 
-Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `&name=<yourname>` am Ende der URL hinzu, und drücken Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Daraufhin sollte die von der Funktion zurückgegebene Antwort im Browser angezeigt werden.
+    1. Melden Sie sich am Azure-Portal an, und suchen Sie nach Ihrer Funktions-App, indem Sie im Feld **Suchen** oben auf der Seite den Namen Ihrer Funktions-App eingeben. Wählen Sie in den Ergebnissen die Ressource **App Service** aus.
 
-Das folgende Beispiel zeigt die Antwort im Browser:
+    1. Wählen Sie im linken Navigationsbereich unter **Funktionen (schreibgeschützt)** den Namen Ihrer Funktion aus.
 
-![Funktionsantwort im Browser.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+    1. Wählen im Bereich mit den Details die Option **</>Funktions-URL abrufen** aus:
+    
+        ![Befehl „Funktions-URL abrufen“ im Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)   
 
-Die Anfrage-URL enthält einen Schlüssel, der standardmäßig über HTTP auf Ihre Funktion zugreifen muss. 
+    1. Wählen Sie im Popupmenü die Option **default (Function key)** (Standard (Funktionsschlüssel)) und dann **Kopieren** aus. Der Schlüssel ist die Zeichenfolge nach `?code=`.
 
-## <a name="enable-continuous-deployment"></a>Aktivieren von Continuous Deployment
+        ![Kopieren der Funktions-URL aus dem Azure-Portal](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key-popup.png)   
 
-Einer der Vorteile der Verwendung von Containern ist die Unterstützung von Continuous Deployment. Mit Functions können Sie Updates automatisch bereitstellen, wenn Ihr Container in der Registrierung aktualisiert wird. Verwenden Sie den Befehl [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config), um Continuous Deployment zu aktivieren.
+    > [!NOTE]  
+    > Da Ihre Funktions-App als Container bereitgestellt ist, können Sie im Portal keine Änderungen an Ihrem Funktionscode vornehmen. Stattdessen müssen Sie das Projekt im lokalen Image aktualisieren und wieder per Pushvorgang an die Registrierung übertragen und anschließend erneut in Azure bereitstellen. Sie können Continuous Deployment in einem späteren Abschnitt einrichten.
+    
+    # <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
-```azurecli-interactive
-az functionapp deployment container config --enable-cd \
---query CI_CD_URL --output tsv \
---name <app_name> --resource-group myResourceGroup
-```
+    1. Erstellen Sie eine URL-Zeichenfolge im folgenden Format, und ersetzen Sie `<subscription_id>`, `<resource_group>` und `<app_name>` durch die ID Ihres Azure-Abonnements, die Ressourcengruppe Ihrer Funktions-App bzw. den Namen Ihrer Funktions-App:
 
-Nach Aktivierung von Continuous Deployment gibt dieser Befehl die Webhook-URL der Bereitstellung zurück. Diese URL kann auch mithilfe des Befehls [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) zurückgegeben werden. 
+        ```
+        "/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Web/sites/<app_name>/host/default/listKeys?api-version=2018-11-01"
+        ```
 
-Kopieren Sie die Bereitstellungs-URL, navigieren Sie zu Ihrem DockerHub-Repository, wählen Sie die Registerkarte **Webhooks** aus, geben Sie unter **Webhookname** einen Namen für den Webhook ein, fügen Sie unter **Webhook-URL** Ihre URL ein, und wählen Sie anschließend das Pluszeichen ( **+** ) aus.
+        Die URL kann beispielsweise wie die folgende Adresse aussehen:
 
-![Hinzufügen des Webhooks in Ihrem DockerHub-Repository](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+        ```
+        "/subscriptions/1234aaf4-1234-abcd-a79a-245ed34eabcd/resourceGroups/AzureFunctionsContainers-rg/providers/Microsoft.Web/sites/msdocsfunctionscontainer/host/default/listKeys?api-version=2018-11-01"
+        ```
 
-Nachdem Sie den Webhook festgelegt haben, lädt die Funktions-App nach jeder Aktualisierung des verknüpften Images in DockerHub das neueste Image herunter und installiert es.
+        > [!TIP]
+        > Der Einfachheit halber können Sie die URL stattdessen einer Umgebungsvariablen zuweisen und im Befehl `az rest` verwenden.
+    
+    1. Führen Sie den folgenden `az rest`-Befehl aus (verfügbar unter Azure CLI-Version 2.0.77 und höher), indem Sie `<uri>` durch die URI-Zeichenfolge aus dem letzten Schritt ersetzen (einschließlich der Anführungszeichen):
+
+        ```azurecli
+        az rest --method post --uri <uri> --query functionKeys.default --output tsv
+        ```
+
+    1. Die Ausgabe des Befehls ist der Funktionsschlüssel. Die vollständige Funktions-URL lautet dann `https://<app_name>.azurewebsites.net/api/<function_name>?code=<key>`. Ersetzen Sie `<app_name>`, `<function_name>` und `<key>` durch Ihre jeweiligen Werte.
+    
+        > [!NOTE]
+        > Der hier abgerufene Schlüssel ist der *Hostschlüssel*, der für alle Funktionen in der Funktions-App genutzt werden kann. Mit der für das Portal angezeigten Methode wird nur der Schlüssel für die eine Funktion abgerufen.
+
+    ---
+
+1. Fügen Sie die Funktions-URL in die Adressleiste Ihres Browsers ein, und fügen Sie den Parameter `&name=Azure` am Ende dieser URL hinzu. Im Browser sollte Text wie „Hello Azure“ angezeigt werden.
+
+    ![Funktionsantwort im Browser.](./media/functions-create-function-linux-custom-image/function-app-browser-testing.png)
+
+1. Entfernen Sie zum Testen der Autorisierung den Parameter „code=“ aus der URL, und vergewissern Sie sich, dass Sie keine Antwort von der Funktion erhalten.
+
+
+## <a name="enable-continuous-deployment-to-azure"></a>Aktivieren von Continuous Deployment in Azure
+
+Sie können Azure Functions aktivieren, um Ihre Bereitstellung eines Images jeweils automatisch zu aktualisieren, wenn Sie das Bild in der Registrierung aktualisieren.
+
+1. Aktivieren Sie Continuous Deployment, indem Sie den Befehl [az functionapp deployment container config](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) verwenden und `<app_name>` durch den Namen Ihrer Funktions-App ersetzen:
+
+    ```azurecli
+    az functionapp deployment container config --enable-cd --query CI_CD_URL --output tsv --name <app_name> --resource-group AzureFunctionsContainers-rg
+    ```
+    
+    Mit diesem Befehl wird Continuous Deployment aktiviert und die Webhook-URL der Bereitstellung zurückgegeben. (Sie können diese URL später jederzeit abrufen, indem Sie den Befehl [az functionapp deployment container show-cd-url](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) verwenden.)
+
+1. Kopieren Sie die Webhook-URL der Bereitstellung in die Zwischenablage.
+
+1. Öffnen Sie [Docker Hub](https://hub.docker.com/), melden Sie sich an, und wählen Sie in der Navigationsleiste die Option **Repositories** (Repositorys) aus. Suchen Sie nach dem Image, und wählen Sie es aus. Wählen Sie die Registerkarte **Webhooks** aus, geben Sie einen **Webhooknamen** ein, fügen Sie unter **Webhook-URL** Ihre URL ein, und wählen Sie **Erstellen** aus:
+
+    ![Hinzufügen des Webhooks in Ihrem DockerHub-Repository](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+1. Nachdem der Webhook festgelegt wurde, wird Ihr Image von Azure Functions jeweils erneut bereitgestellt, wenn Sie es in Docker Hub aktualisieren.
 
 ## <a name="enable-ssh-connections"></a>Aktivieren von SSH-Verbindungen
 
-SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Client. Wenn SSH aktiviert ist, können Sie mithilfe der erweiterten App Service-Tools (Kudu) eine Verbindung mit Ihrem Container herstellen. Functions stellt ein Basisimage bereit, für das SSH bereits aktiviert ist, um das Herstellen einer Verbindung mit Ihrem Container mithilfe von SSH zu vereinfachen. 
+SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Client. Wenn SSH aktiviert ist, können Sie mithilfe der erweiterten App Service-Tools (Kudu) eine Verbindung mit Ihrem Container herstellen. Azure Functions stellt ein Basisimage bereit, für das SSH bereits aktiviert ist, um das Herstellen einer Verbindung mit Ihrem Container per SSH zu vereinfachen. Sie müssen nur Ihre Dockerfile bearbeiten und dann das Image neu erstellen und bereitstellen. Anschließend können Sie mit den Advanced Tools (Kudu) eine Verbindung mit dem Container herstellen.
 
-### <a name="change-the-base-image"></a>Ändern des Basisimages
+1. Fügen Sie in Ihrer Dockerfile die Zeichenfolge `-appservice` an das Basisimage in Ihrer `FROM`-Anweisung an:
 
-Fügen Sie in Ihrer Dockerfile die Zeichenfolge `-appservice` an das Basisimage in Ihrer `FROM`-Anweisung an, die für ein JavaScript-Projekt wie folgt aussieht.
+    ::: zone pivot="programming-language-csharp"
+    ```Dockerfile
+    FROM microsoft/dotnet:2.2-sdk-appservice AS installer-env
+    ```
+    ::: zone-end
 
-```docker
-FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-```
+    ::: zone pivot="programming-language-javascript"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    ```
+    ::: zone-end
 
-Die Unterschiede in den beiden Basisimages ermöglichen SSH-Verbindungen in Ihren Container. Diese Unterschiede werden in [diesem App Services-Tutorial](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections) ausführlich erläutert.
+    ::: zone pivot="programming-language-powershell"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
+    ```
+    ::: zone-end
 
-### <a name="rebuild-and-redeploy-the-image"></a>Neuerstellen und erneutes Bereitstellen des Images
+    ::: zone pivot="programming-language-python"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
+    ```
+    ::: zone-end
 
-Führen Sie im Stammordner den Befehl [docker build](https://docs.docker.com/engine/reference/commandline/build/) erneut aus, und ersetzen Sie `<docker-id>` wie zuvor durch die ID Ihres Docker Hub-Kontos. 
+    ::: zone pivot="programming-language-typescript"
+    ```Dockerfile
+    FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
+    ```
+    ::: zone-end
 
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.0 .
-```
+    Die Unterschiede zwischen den Basisimages sind unter [Tutorial: Erstellen eines benutzerdefinierten Images und Ausführen in App Service über eine private Registrierung](../app-service/containers/tutorial-custom-docker-image.md#enable-ssh-connections) beschrieben.
 
-Pushen Sie das aktualisierte Image zurück in Docker Hub.
+1. Erstellen Sie das Image neu, indem Sie den Befehl `docker build` verwenden und `<docker_id>` durch Ihre Docker-ID ersetzen:
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.0
-```
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
+    ```
+    
+1. Übertragen Sie das aktualisierte Image per Pushvorgang an Docker Hub. Dies sollte deutlich weniger Zeit als der erste Pushvorgang in Anspruch nehmen, da nur die aktualisierten Segmente des Images hochgeladen werden müssen.
 
-Das aktualisierte Image wird in ihrer Funktions-App erneut bereitgestellt.
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    
+1. Azure Functions stellt das Image automatisch für Ihre Funktions-App bereit. Der Prozess dauert weniger als eine Minute.
 
-### <a name="connect-to-your-container-in-azure"></a>Herstellen einer Verbindung mit Ihrem Container in Azure
+1. Öffnen Sie in einem Browser `https://<app_name>.scm.azurewebsites.net/`, indem Sie `<app_name>` durch Ihren eindeutigen Namen ersetzen. Diese URL ist der Advanced Tools-Endpunkt (Kudu) für Ihren Funktions-App-Container.
 
-Navigieren Sie im Browser zum folgenden `scm.`-Endpunkt der erweiterten Tools (Kudu) für Ihren Funktions-App-Container, und ersetzen Sie `<app_name>` dabei durch den Namen Ihrer Funktions-App.
+1. Melden Sie sich an Ihrem Azure-Konto an, und wählen Sie **SSH** aus, um eine Verbindung mit dem Container herzustellen. Die Verbindungsherstellung kann etwas dauern, falls das Containerimage von Azure noch aktualisiert wird.
 
-```
-https://<app_name>.scm.azurewebsites.net/
-```
+1. Nachdem eine Verbindung mit Ihrem Container hergestellt wurde, können Sie den Befehl `top` ausführen, um die derzeit ausgeführten Prozesse anzuzeigen. 
 
-Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie dann die Registerkarte **SSH** aus, um eine SSH-Verbindung mit Ihrem Container herzustellen.
+    ![Linux-Befehl „top“, der in einer SSH-Sitzung ausgeführt wird](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
-Nachdem die Verbindung hergestellt wurde, führen Sie den Befehl `top` aus, um die derzeit ausgeführten Prozesse anzuzeigen. 
+## <a name="write-to-an-azure-storage-queue"></a>Schreiben in eine Azure Storage-Warteschlange
 
-![Linux-Befehl „top“, der in einer SSH-Sitzung ausgeführt wird](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
-
-## <a name="write-to-queue-storage"></a>Schreiben in Queue Storage
-
-Functions ermöglicht Ihnen das Verbinden von Azure-Diensten und anderen Ressourcen mit Funktionen, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
+Mit Azure Functions können Sie Ihre Funktionen mit anderen Azure-Diensten und -Ressourcen verbinden, ohne dass Sie Ihren eigenen Integrationscode schreiben müssen. Diese *Bindungen*, die sowohl Eingabe als auch Ausgabe darstellen, werden innerhalb der Funktionsdefinition deklariert. Daten von Bindungen werden der Funktion als Parameter bereitgestellt. Ein *Trigger* ist ein spezieller Typ von Eingabebindung. Eine Funktion hat zwar nur einen Trigger, kann aber mehrere Ein- und Ausgabebindungen haben. Weitere Informationen finden Sie unter [Konzepte der Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md).
 
 In diesem Abschnitt wird gezeigt, wie Sie Ihre Funktion in eine Azure Storage-Warteschlange integrieren. Die Ausgabebindung, die Sie dieser Funktion hinzufügen, schreibt Daten aus einer HTTP-Anforderung in eine Nachricht in der Warteschlange.
 
-### <a name="download-the-function-app-settings"></a>Herunterladen der Funktions-App-Einstellungen
+## <a name="retrieve-the-azure-storage-connection-string"></a>Abrufen der Azure Storage-Verbindungszeichenfolge
 
-[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
+Zuvor haben Sie ein Azure Storage-Konto erstellt, das von der Funktions-App verwendet werden kann. Die Verbindungszeichenfolge für dieses Konto wird sicher in App-Einstellungen in Azure gespeichert. Indem Sie die Einstellung in die Datei *local.settings.json* herunterladen, können Sie diese Verbindung zum Schreiben in eine Storage-Warteschlange unter demselben Konto verwenden, wenn Sie die Funktion lokal ausführen. 
 
-### <a name="enable-extension-bundles"></a>Aktivieren von Erweiterungsbundles
+1. Führen Sie im Stammverzeichnis des Projekts den folgenden Befehl aus, indem Sie `<app_name>` durch den Namen Ihrer Funktions-App aus der vorherigen Schnellstartanleitung ersetzen. Mit diesem Befehl werden alle vorhandenen Werte in der Datei überschrieben.
 
-Da Sie eine Queue Storage-Ausgabebindung verwenden, müssen Sie vor dem Ausführen des Projekts die Storage-Bindungserweiterung installieren. 
+    ```
+    func azure functionapp fetch-app-settings <app_name>
+    ```
+    
+1. Öffnen Sie *local.settings.json*, und suchen Sie nach dem Wert mit dem Namen `AzureWebJobsStorage`. Dies ist die Verbindungszeichenfolge des Storage-Kontos. Sie verwenden den Namen `AzureWebJobsStorage` und die Verbindungszeichenfolge noch in anderen Abschnitten dieses Artikels.
 
+> [!IMPORTANT]
+> Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthält, sollten Sie diese Datei immer aus der Quellcodeverwaltung ausschließen. In der *GITIGNORE*-Datei, die für ein lokales Funktionsprojekt erstellt wird, ist die Datei standardmäßig ausgeschlossen.
 
-# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
+### <a name="add-an-output-binding-to-functionjson"></a>Hinzufügen einer Ausgabebindung zu „function.json“
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+In Azure Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ein eindeutiger `name` in der Datei *function.json* definiert werden. Ihre Datei *function.json* enthält bereits eine Eingabebindung für den Typ „httpTrigger“ und eine Ausgabebindung für die HTTP-Antwort. Ändern Sie zum Hinzufügen einer Bindung zu einer Speicherwarteschlange die Datei wie unten angegeben. Hierbei wird eine Ausgabebindung für den Typ „queue“ hinzugefügt, und die Warteschlange wird im Code als Eingabeargument mit dem Namen `msg` angezeigt. Für die Warteschlangenbindung werden auch der Name der zu verwendenden Warteschlange (hier: `outqueue`) und der Name der Einstellungen mit der Verbindungszeichenfolge (hier: `AzureWebJobStorage`) benötigt.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone pivot="programming-language-csharp"
 
-Mit Ausnahme von HTTP- und Timertriggern werden Bindungen als Erweiterungspakete implementiert. Führen Sie den folgenden [dotnet add package](/dotnet/core/tools/dotnet-add-package)-Befehl im Terminalfenster aus, um Ihrem Projekt das Storage-Erweiterungspaket hinzuzufügen.
+In einem C#-Klassenbibliotheksprojekt werden die Bindungen als Bindungsattribute der Funktionsmethode definiert. Die Datei *function.json* wird dann anhand dieser Attribute automatisch generiert.
 
-```bash
-dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+1. Führen Sie für die Warteschlangenbindung den folgenden [dotnet add package](/dotnet/core/tools/dotnet-add-package)-Befehl aus, um Ihrem Projekt das Storage-Erweiterungspaket hinzuzufügen.
+
+    ```
+    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
+    ```
+
+1. Öffnen Sie die Datei *HttpTrigger.cs*, und fügen Sie die folgende `using`-Anweisung hinzu:
+
+    ```cs
+    using Microsoft.Azure.WebJobs.Extensions.Storage;
+    ```
+    
+1. Fügen Sie der `Run`-Methodendefinition den folgenden Parameter hinzu:
+    
+    ```csharp
+    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
+    ```
+    
+    Die `Run`-Methodendefinition sollte jetzt mit dem folgenden Code übereinstimmen:
+    
+    ```csharp
+    [FunctionName("HttpTrigger")]
+    public static async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
+    ```
+
+Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nachrichten dar, die in eine Ausgabebindung geschrieben werden, wenn die Funktion abgeschlossen wird. In diesem Fall ist die Ausgabe eine Speicherwarteschlange mit dem Namen `outqueue`. Die Verbindungszeichenfolge für das Storage-Konto wird durch `StorageAccountAttribute` festgelegt. Dieses Attribut gibt die Einstellung an, die die Verbindungszeichenfolge des Storage-Kontos enthält, und kann auf Klassen-, Methoden- oder Parameterebene angewandt werden. In diesem Fall können Sie `StorageAccountAttribute` weglassen, da Sie bereits das Standardspeicherkonto verwenden.
+
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+
+Aktualisieren Sie die Datei *function.json*, damit sie wie folgt aussieht, indem Sie nach der HTTP-Bindung die Warteschlangenbindung hinzufügen:
+
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-> [!TIP]
-> Wenn Sie Visual Studio verwenden, können Sie dieses Paket auch mithilfe des NuGet-Paket-Managers hinzufügen.
+::: zone pivot="programming-language-powershell"
 
----
+Aktualisieren Sie die Datei *function.json*, damit sie wie folgt aussieht, indem Sie nach der HTTP-Bindung die Warteschlangenbindung hinzufügen:
 
-Dann können Sie dem Projekt eine Storage-Ausgabebindung hinzufügen.
-
-### <a name="add-an-output-binding"></a>Hinzufügen einer Ausgabebindung
-
-In Functions muss für jeden Typ von Bindung eine `direction`, ein `type` und ein eindeutiger `name` in der Datei „function.json“ definiert werden. Wie Sie diese Attribute definieren, hängt von der Sprache der Funktions-App ab.
-
-# <a name="javascript--pythontabnodejspython"></a>[JavaScript/Python](#tab/nodejs+python)
-
-[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
-
----
-
-### <a name="add-code-that-uses-the-output-binding"></a>Hinzufügen von Code, der die Ausgabebindung verwendet
-
-Nachdem die Bindung definiert wurde, können Sie den `name` der Bindung verwenden, um auf sie als Attribut in der Funktionssignatur zuzugreifen. Durch die Verwendung einer Ausgabebindung müssen Sie weder den Azure Storage-SDK-Code für die Authentifizierung verwenden, noch einen Warteschlangenverweis abrufen oder Daten schreiben. Die Functions-Runtime und die Warteschlangenausgabebindung übernehmen diese Aufgaben für Sie.
-
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
-
-[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
-
-# <a name="pythontabpython"></a>[Python](#tab/python)
-
-[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
-
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
-
-[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
----
-
-### <a name="update-the-hosted-container"></a>Aktualisieren des gehosteten Containers
-
-Führen Sie im Stammordner den Befehl [docker build](https://docs.docker.com/engine/reference/commandline/build/) erneut aus, und aktualisieren Sie dieses Mal die Version im Tag auf `v1.0.2`. Ersetzen Sie `<docker-id>` wie zuvor durch Ihre Docker Hub-Konto-ID. 
-
-```bash
-docker build --tag <docker-id>/mydockerimage:v1.0.2
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-Pushen Sie das aktualisierte Image zurück in das Repository.
+::: zone pivot="programming-language-python"
 
-```bash
-docker push <docker-id>/mydockerimage:v1.0.2
+Aktualisieren Sie die Datei *function.json*, damit sie wie folgt aussieht, indem Sie nach der HTTP-Bindung die Warteschlangenbindung hinzufügen:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
 ```
+::: zone-end
 
-### <a name="verify-the-updates-in-azure"></a>Überprüfen der Updates in Azure
+::: zone pivot="programming-language-typescript"
 
-Verwenden Sie im Browser dieselbe URL wie zuvor, um ihre Funktion auszulösen. Daraufhin sollte dieselbe Antwort angezeigt werden. Diesmal wird die Zeichenfolge, die Sie als `name`-Parameter übergeben, jedoch in die Speicherwarteschlange `outqueue` geschrieben.
+Aktualisieren Sie die Datei *function.json*, damit sie wie folgt aussieht, indem Sie nach der HTTP-Bindung die Warteschlangenbindung hinzufügen:
 
-[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
+```json
+{
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "msg",
+      "queueName": "outqueue",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
+::: zone-end
 
-[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
+## <a name="add-code-to-use-the-output-binding"></a>Hinzufügen von Code für die Verwendung der Ausgabebindung
 
-[!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
+Nach dem Definieren der Bindung wird ihr Name (hier: `msg`) im Funktionscode als Argument angezeigt (bzw. im `context`-Objekt bei JavaScript und TypeScript). Anschließend können Sie diese Variable verwenden, um Nachrichten in die Warteschlange zu schreiben. Sie müssen den Code für das Durchführen der Authentifizierung, das Abrufen eines Warteschlangenverweises oder das Schreiben von Daten erstellen. Diese Integrationsaufgaben werden allesamt bequem über die Azure Functions-Runtime und die Warteschlangen-Ausgabebindung verarbeitet.
+
+::: zone pivot="programming-language-csharp"
+```csharp
+[FunctionName("HttpTrigger")]
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
+    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+
+    string name = req.Query["name"];
+
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    dynamic data = JsonConvert.DeserializeObject(requestBody);
+    name = name ?? data?.name;
+
+    if (!string.IsNullOrEmpty(name))
+    {
+        // Add a message to the output collection.
+        msg.Add(string.Format("Name passed to the function: {0}", name));
+    }
+    
+    return name != null
+        ? (ActionResult)new OkObjectResult($"Hello, {name}")
+        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
+}
+```
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+```js
+module.exports = async function (context, req) {
+    context.log('JavaScript HTTP trigger function processed a request.');
+
+    if (req.query.name || (req.body && req.body.name)) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " +
+            (req.query.name || req.body.name);
+
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+```
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+if ($name) {
+    $outputMsg = "Name passed to the function: $name"
+    Push-OutputBinding -name msg -Value $outputMsg
+
+    $status = [HttpStatusCode]::OK
+    $body = "Hello $name"
+}
+else {
+    $status = [HttpStatusCode]::BadRequest
+    $body = "Please pass a name on the query string or in the request body."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = $status
+    Body = $body
+})
+```
+::: zone-end
+
+::: zone pivot="programming-language-python"
+```python
+import logging
+
+import azure.functions as func
+
+
+def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        msg.set(name)
+        return func.HttpResponse(f"Hello {name}!")
+    else:
+        return func.HttpResponse(
+            "Please pass a name on the query string or in the request body",
+            status_code=400
+        )
+```
+::: zone-end
+
+::: zone pivot="programming-language-typescript"
+```typescript
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('HTTP trigger function processed a request.');
+    const name = (req.query.name || (req.body && req.body.name));
+
+    if (name) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " +
+            (req.query.name || req.body.name);
+        
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+
+export default httpTrigger;
+```
+::: zone-end
+
+### <a name="update-the-image-in-the-registry"></a>Aktualisieren des Images in der Registrierung
+
+1. Führen Sie im Stammordner erneut `docker build` aus, und aktualisieren Sie die Version im Tag dieses Mal auf `v1.0.1`. Ersetzen Sie `<docker_id>` wie zuvor durch Ihre Docker Hub-Konto-ID:
+
+    ```
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
+    ```
+    
+1. Übertragen Sie das aktualisierte Image per `docker push` zurück in das Repository:
+
+    ```
+    docker push <docker_id>/azurefunctionsimage:v1.0.1
+    ```
+
+1. Da Sie Continuous Delivery konfiguriert haben, wird Ihre Funktions-App beim erneuten Aktualisieren des Images in der Registrierung automatisch in Azure aktualisiert.
+
+## <a name="view-the-message-in-the-azure-storage-queue"></a>Anzeigen der Nachricht in der Azure Storage-Warteschlange
+
+Verwenden Sie in einem Browser dieselbe URL wie zuvor, um Ihre Funktion aufzurufen. Im Browser sollte die gleiche Antwort wie zuvor angezeigt werden, da Sie diesen Teil des Funktionscodes nicht geändert haben. Aufgrund des hinzugefügten Codes wurde aber eine Nachricht in die Speicherwarteschlange `outqueue` geschrieben, indem der URL-Parameter `name` verwendet wurde.
+
+Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quickstart-queues-portal.md) oder im [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) anzeigen. Sie haben auch die Möglichkeit, die Warteschlange per Azure CLI anzuzeigen. Dies ist in den folgenden Schritten beschrieben:
+
+1. Öffnen Sie die Datei *local.setting.json* des Funktionsprojekts, und kopieren Sie den Wert der Verbindungszeichenfolge. Führen Sie in einem Terminal oder Befehlsfenster den folgenden Befehl aus, um eine Umgebungsvariable mit dem Namen `AZURE_STORAGE_CONNECTION_STRING` zu erstellen, und fügen Sie anstelle von `<connection_string>` Ihre spezifische Verbindungszeichenfolge ein. (Die Verwendung dieser Umgebungsvariablen bewirkt, dass Sie die Verbindungszeichenfolge nicht für jeden weiteren Befehl per `--connection-string`-Argument angeben müssen.)
+
+    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    
+    ```bash
+    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```powershell
+    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    ```cmd
+    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
+    ```
+    
+    ---
+    
+1. (Optional) Verwenden Sie den Befehl [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list), um die Storage-Warteschlangen in Ihrem Konto anzuzeigen. Die Ausgabe dieses Befehls sollte eine Warteschlange mit dem Namen `outqueue` enthalten. Sie wurde erstellt, als die Funktion ihre erste Nachricht in diese Warteschlange geschrieben hat.
+    
+    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    ```azurecli
+    az storage queue list --output tsv
+    ```
+    
+    ---
+
+1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
+
+    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    
+    ```bash
+    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
+    ```
+    
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    
+    ```powershell
+    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
+    ```
+    
+    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    
+    Da Sie die Nachrichtenauflistung dereferenzieren und die Decodierung aus Base64 durchführen müssen, sollten Sie PowerShell ausführen und den PowerShell-Befehl verwenden.
+
+    ---
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie mit Azure Functions weiterarbeiten und die in diesem Tutorial erstellten Ressourcen weiterhin nutzen möchten, können Sie sie alle beibehalten. Da Sie einen Premium-Plan für Azure Functions erstellt haben, fallen für Sie pro Tag ein oder zwei US-Dollar an laufenden Kosten an.
+
+Löschen Sie zur Vermeidung laufender Kosten die Ressourcengruppe `AzureFunctionsContainer-rg`, um alle Ressourcen dieser Gruppe zu bereinigen: 
+
+```azurecli
+az group delete --name AzureFunctionsContainer-rg
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Nachdem Sie Ihren benutzerdefinierten Container nun erfolgreich in einer Funktions-App in Azure bereitgestellt haben, sollten Sie mehr über die folgenden Themen lesen:
 
 + [Überwachen von Funktionen](functions-monitoring.md)
 + [Skalierungs- und Hostingoptionen](functions-scale.md)
 + [Kubernetes-basiertes serverloses Hosting](functions-kubernetes-keda.md)
-
-[Azure portal]: https://portal.azure.com

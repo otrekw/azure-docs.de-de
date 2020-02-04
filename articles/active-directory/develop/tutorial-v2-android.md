@@ -15,13 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4c4c9bc025e8fd506b298ed676674899e318481
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689342"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758834"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph über eine Android-Anwendung 
 
@@ -86,7 +85,7 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
 6. Klicken Sie im Abschnitt **Signaturhash** der Seite **Android-App konfigurieren** auf **Generieren eines Signaturhashs für die Entwicklung**, und kopieren Sie den KeyTool-Befehl, um ihn auf Ihrer Plattform zu verwenden.
 
    > [!Note]
-   > „KeyTool. exe“ wird als Teil des Java Development Kit (JDK) installiert. Sie müssen auch das OpenSSL-Tool installieren, um den KeyTool-Befehl auszuführen.
+   > „KeyTool. exe“ wird als Teil des Java Development Kit (JDK) installiert. Sie müssen auch das OpenSSL-Tool installieren, um den KeyTool-Befehl auszuführen. Weitere Informationen finden Sie in der [Android-Dokumentation für die Schlüsselerstellung](https://developer.android.com/studio/publish/app-signing#generate-key). 
 
 7. Geben Sie den von KeyTool generierten **Signaturhash** ein.
 8. Klicken Sie auf `Configure`, und speichern Sie die **MSAL-Konfiguration**, die auf der Seite **Android-Konfiguration** angezeigt wird, damit Sie diese später beim Konfigurieren Ihrer App eingeben können.  Klicken Sie auf **Fertig**.
@@ -156,8 +155,11 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
         jcenter()
     }  
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.identity.client:msal:1.2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
     }
     ```
     [Weitere Informationen zum Microsoft Graph SDK](https://github.com/microsoftgraph/msgraph-sdk-java/)
@@ -191,7 +193,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>Instanziieren von „PublicClientApplication“
 #### <a name="initialize-variables"></a>Initialisieren von Variablen 
 ```java
-private final static String[] SCOPES = {"User.Read"};
+private final static String[] SCOPES = {"File.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

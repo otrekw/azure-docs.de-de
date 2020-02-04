@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: bf09d8e9b2dd8cebcf3ef8414afcc8ac031f4cdf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170434"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774223"
 ---
 Verwenden Sie die LUIS-Erstellungsclientbibliothek (Language Understanding) für Python für Folgendes:
 
@@ -187,3 +187,7 @@ Führen Sie die Anwendung mit dem Befehl `python` für die Schnellstartdatei aus
 ```console
 python quickstart-file.py
 ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie mit den Vorhersagen fertig sind, bereinigen Sie die Elemente aus dieser Schnellstartanleitung, indem Sie die Datei und deren Unterverzeichnisse löschen.

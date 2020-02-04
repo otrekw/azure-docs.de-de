@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289032"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760050"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit NetSuite
 
@@ -98,8 +98,12 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > Bei den Werten in den vorangehenden URLs handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächliche Antwort-URL. Den Wert erhalten Sie vom [Supportteam für den NetSuite-Client](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    * Den Wert **<`Account ID`>** erhalten Sie im NetSuite-Konfigurationsabschnitt, wie weiter unten im Tutorial in Schritt 8 unter „NetSuite-Konfiguration“ erläutert. Dort finden Sie die exakte Domäne (in diesem Fall also beispielsweise „system.na0.netsuite.com“).
+
+        ![Einmaliges Anmelden konfigurieren](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > Bei den Werten in den vorangehenden URLs handelt es sich um Beispielwerte. Ersetzen Sie sie durch die tatsächliche Antwort-URL. Den Wert erhalten Sie vom [Supportteam für den NetSuite-Client](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Die NetSuite-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -204,7 +208,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Kopieren Sie im Bereich **Company Information** (Unternehmensinformationen) in der rechten Spalte den Wert für **Account ID** (Konto-ID).
 
-    c. Fügen Sie den Wert für **Account ID** (Konto-ID), den Sie im NetSuite-Konto kopiert haben, in das Feld **Attributwert** in Azure AD ein. 
+    c. Fügen Sie den Wert für **Account ID** (Konto-ID), den Sie im NetSuite-Konto kopiert haben, in das Feld **Attributwert** in Azure AD ein.
 
 10. Bevor Benutzer die einmalige Anmeldung in NetSuite ausführen können, müssen ihnen zunächst die entsprechenden Berechtigungen in NetSuite zugewiesen werden. Gehen Sie zum Zuweisen dieser Berechtigungen wie folgt vor:
 

@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: a106699f4e3148eba85acc913e6f97be6ce9be66
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bffba0ce5481250a696cdf4ec0aed6b59620bfe9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515091"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773827"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (.NET)
 
@@ -51,9 +51,9 @@ Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsof
 az extension add --name azure-cli-iot-ext
 ```
 
-Laden Sie das C#-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv (falls nicht bereits erfolgt).
+Laden Sie bei Bedarf unter https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-dotnet.md) absolviert haben, können Sie diesen Schritt überspringen.
 

@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276006"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844920"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
@@ -41,9 +40,9 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Wählen Sie **Compute** und anschließend **Windows Server 2016 Datacenter** oder eine Version von **Ubuntu Server**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myVm|
+    |Name|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Subscription| Wählen Sie Ihr Abonnement aus.|
@@ -62,7 +61,7 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, aktivier
 
 Wenn bereits in mindestens einer Region eine Network Watcher-Instanz aktiviert ist, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort.
 
-1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn in den Ergebnissen die Option **Network Watcher** angezeigt wird, wählen Sie sie aus.
+1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Aktivieren Sie eine Network Watcher-Instanz in der Region „USA, Osten“, da der virtuelle Computer in einem vorherigen Schritt in dieser Region bereitgestellt wurde. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
 
     ![Aktivieren von Network Watcher](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -73,11 +72,11 @@ Wenn bereits in mindestens einer Region eine Network Watcher-Instanz aktiviert i
 
 Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzwerkdatenverkehr des virtuellen Computers von Azure standardmäßig zugelassen bzw. abgelehnt. Die Azure-Standardeinstellungen können später außer Kraft gesetzt werden, um zusätzliche Arten von Datenverkehr zuzulassen oder abzulehnen.
 
-1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie unter **Alle Dienste** im Feld *Filter* die Zeichenfolge *Network Watcher* ein. Wenn in den Ergebnissen die Option **Network Watcher** angezeigt wird, wählen Sie sie aus.
+1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im *Filterfeld* für **Alle Dienste** die Zeichenfolge *Network Watcher* ein. Wenn **Network Watcher** in den Ergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Klicken Sie unter **NETZWERKDIAGNOSETOOLS** auf **IP-Fluss überprüfen**.
 3. Wählen Sie Ihr Abonnement aus, geben Sie die folgenden Werte an, und klicken Sie anschließend auf **Überprüfen**, wie in der folgenden Abbildung zu sehen:
 
-    |Einstellung            |Wert                                                                                              |
+    |Einstellung            |value                                                                                              |
     |---------          |---------                                                                                          |
     | Resource group    | Wählen Sie „myResourceGroup“ aus.                                                                            |
     | Virtueller Computer   | Wählen Sie „myVm“ aus.                                                                                       |

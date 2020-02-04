@@ -1,6 +1,6 @@
 ---
 title: Einrichten eines Lab-Kontos mit Azure Lab Services | Microsoft-Dokumentation
-description: In diesem Tutorial richten Sie ein Lab-Konto mit Azure Lab Services ein.
+description: Hier erfahren Sie, wie Sie ein Lab-Konto mit Azure Lab Services einrichten, einen Lab-Ersteller hinzufügen und Marketplace-Images für die Verwendung durch Labs im Lab-Konto angeben.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 62ccda96563a53ebc77337bb2f89cfddd4410a26
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562101"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719040"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie als Lab-Administrator ein Lab-Konto erstellen. 

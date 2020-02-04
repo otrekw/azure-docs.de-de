@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 29e1af5f23b2167a524872731490b5862a14e5c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975396"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773745"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET (SDK v3)
 
@@ -25,7 +25,7 @@ Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnis
 - Verbessern der Sicherheit und der Kontrolle über Schlüssel und Kennwörter
 - Erstellen und Importieren von Verschlüsselungsschlüsseln in wenigen Minuten
 - Verringern der Wartezeit durch Cloudskalierung und globale Redundanz
-- Vereinfachen und Automatisieren von Aufgaben für SSL-/TLS-Zertifikate
+- Vereinfachen und Automatisieren von Aufgaben für TLS-/SSL-Zertifikate
 - Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
 
 [API-Referenzdokumentation](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)

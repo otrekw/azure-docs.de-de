@@ -3,12 +3,13 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885465"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846048"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -62,7 +63,7 @@ Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie u
 
 ## <a name="policy-assignment"></a>Richtlinienzuweisung
 
-Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer [Verwaltungsgruppe](../management-groups/overview.md) bis hin zu einer Ressourcengruppe erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Dies bedeutet, dass eine auf eine Ressourcengruppe angewendete Richtlinie auch auf die Ressourcen in dieser Ressourcengruppe angewendet wird. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen.
+Eine Richtlinienzuweisung ist eine zugewiesene Richtliniendefinition, die innerhalb eines bestimmten Bereichs angewendet werden soll. Ein solcher Bereich kann sich von einer [Verwaltungsgruppe](../management-groups/overview.md) bis zu einer einzelnen Ressource erstrecken. Der Begriff *Bereich* bezieht sich auf alle Ressourcen, Ressourcengruppen, Abonnements oder Verwaltungsgruppen, denen die Richtliniendefinition zugewiesen ist. Richtlinienzuordnungen werden von allen untergeordneten Ressourcen geerbt. Dies bedeutet, dass eine auf eine Ressourcengruppe angewendete Richtlinie auch auf die Ressourcen in dieser Ressourcengruppe angewendet wird. Sie können jedoch einen Unterbereich von der Richtlinienzuordnung ausschließen.
 
 Im Abonnementbereich können Sie beispielsweise eine Richtlinie zuweisen, die die Erstellung von Netzwerkressourcen verhindert. Sie können eine Ressourcengruppe in diesem Abonnement ausschließen, die für die Netzwerkinfrastruktur vorgesehen ist. Sie gewähren Benutzern, denen Sie in Bezug auf das Erstellen von Netzwerkressourcen vertrauen, dann Zugriff auf diese Netzwerkressourcengruppe.
 
@@ -93,7 +94,7 @@ Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgend
 
 ## <a name="initiative-assignment"></a>Initiativzuweisung
 
-Bei einer Initiativzuweisung handelt es sich ähnlich wie bei einer Richtlinienzuweisung um eine Initiativdefinition, die einem bestimmten Bereich zugewiesen ist. Initiativzuweisungen reduzieren den Bedarf dafür, für jeden Bereich mehrere Initiativdefinitionen zu definieren. Ein solcher Bereich kann sich auch von einer Verwaltungsgruppe bis hin zu einer Ressourcengruppe erstrecken.
+Bei einer Initiativzuweisung handelt es sich ähnlich wie bei einer Richtlinienzuweisung um eine Initiativdefinition, die einem bestimmten Bereich zugewiesen ist. Initiativzuweisungen reduzieren den Bedarf dafür, für jeden Bereich mehrere Initiativdefinitionen zu definieren. Ein solcher Bereich kann sich auch von einer Verwaltungsgruppe bis zu einer einzelnen Ressource erstrecken.
 
 Jede Initiative kann unterschiedlichen Bereichen zugewiesen werden. Eine Initiative kann sowohl Abonnement A (**subscriptionA**) als auch Abonnement B (**subscriptionB**) zugewiesen werden.
 
@@ -106,7 +107,7 @@ Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie die Initiativdefini
 | Richtlinie | Name des Parameters |Typ des Parameters  |Hinweis |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Dieser Parameter erwartet eine Liste von Zeichenfolgen als Wert, da der Parametertyp als Array definiert wurde. |
-| policyB | allowedSingleLocation |Zeichenfolge |Dieser Parameter erwartet ein Wort als Wert, da der Parametertyp als Zeichenfolge definiert wurde. |
+| policyB | allowedSingleLocation |string |Dieser Parameter erwartet ein Wort als Wert, da der Parametertyp als Zeichenfolge definiert wurde. |
 
 In diesem Szenario haben Sie bei der Definition der Initiativparameter für **initiativeC** drei Optionen:
 

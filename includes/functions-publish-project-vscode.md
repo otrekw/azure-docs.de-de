@@ -1,47 +1,64 @@
 ---
-title: include file
-description: include file
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 01/12/2020
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: 30a6d8556a251ba76dff77e004fb864f3eaf04cf
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: f1553a5c9d55366b2764877b48d0606ff8e0b370
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279314"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842162"
 ---
 ## <a name="publish-the-project-to-azure"></a>Veröffentlichen des Projekts in Azure
 
-Visual Studio Code ermöglicht die Veröffentlichung Ihres Funktionsprojekts direkt in Azure. Bei diesem Vorgang erstellen Sie eine Funktions-App und zugehörige Ressourcen in Ihrem Azure-Abonnement. Die Funktions-App bietet einen Ausführungskontext für Ihre Funktionen. Das Projekt wird verpackt und in der neuen Funktions-App in Ihrem Azure-Abonnement bereitgestellt.
+In diesem Abschnitt erstellen Sie eine Funktions-App sowie zugehörige Ressourcen in Ihrem Azure-Abonnement und stellen anschließend Ihren Code bereit. 
 
-Standardmäßig erstellt Visual Studio Code alle Azure-Ressourcen, die für die Erstellung Ihrer Funktions-App erforderlich sind. Die Namen dieser Ressourcen basieren auf dem von Ihnen gewählten Name der Funktions-App. Wenn Sie die volle Kontrolle über die erstellten Ressourcen haben möchten, können Sie stattdessen [mit erweiterten Optionen veröffentlichen](../articles/azure-functions/functions-develop-vs-code.md#enable-publishing-with-advanced-create-options).
+1. Wählen Sie auf der Aktivitätsleiste das Azure-Symbol und anschließend im Bereich **Azure: Funktionen** die Schaltfläche **Deploy to function app...** (In Funktions-App bereitstellen...) aus.
 
-In diesem Abschnitt wird davon ausgegangen, dass Sie eine neue Funktions-App in Azure erstellen.
+    ![Veröffentlichen Ihres Projekts in Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
-> [!IMPORTANT]
-> Beim Veröffentlichen in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben.
+1. Geben Sie nach entsprechender Aufforderung Folgendes ein:
 
-1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Deploy to function app...`, und wählen Sie ihn aus.
+    ::: zone pivot="programming-language-csharp,programming-language-powershell"
 
-1. Wenn Sie nicht angemeldet sind, werden Sie aufgefordert, **sich bei Azure anzumelden**. Sie können auch ein **kostenloses Azure-Konto erstellen**. Nach der erfolgreichen Anmeldung aus dem Browser wechseln Sie zurück zu Visual Studio Code. 
+    | Aufforderung | Wert | Beschreibung |
+    | ------ | ----- | ----- |
+    | Auswählen des Abonnements | Ihr Abonnement | Wird angezeigt, wenn Sie über mehrere Abonnements verfügen. |
+    | „Select Function App in Azure“ (Wählen Sie die Funktions-App in Azure aus.) | „+ Create New Function App“ (+ Neue Funktions-App erstellen) | Beim Veröffentlichen in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben. |
+    | „Enter a globally unique name for the function app“ (Geben Sie einen global eindeutigen Namen für die Funktions-App ein.) | Eindeutiger Name | Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
+    | Auswählen eines Speicherorts für neue Ressourcen | Region | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus. | 
 
-1. Wenn Sie mehrere Abonnements besitzen, **wählen Sie ein Abonnement für die Funktions-App aus**, und wählen Sie dann **+ Neue Funktions-App erstellen** aus.
+    ::: zone-end
 
-1. Geben Sie einen global eindeutigen Namen ein, der Ihre Funktions-App identifiziert, und drücken Sie die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`.
+    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python"
 
-    Wenn Sie die EINGABETASTE drücken, werden die folgenden Azure-Ressourcen in Ihrem Abonnement erstellt:
+    | Aufforderung | Wert | Beschreibung |
+    | ------ | ----- | ----- |
+    | Auswählen des Abonnements | Ihr Abonnement | Wird angezeigt, wenn Sie über mehrere Abonnements verfügen. |
+    | „Select Function App in Azure“ (Wählen Sie die Funktions-App in Azure aus.) | „+ Create New Function App“ (+ Neue Funktions-App erstellen) | Beim Veröffentlichen in einer vorhandenen Funktions-App wird der Inhalt dieser App in Azure überschrieben. |
+    | „Enter a globally unique name for the function app“ (Geben Sie einen global eindeutigen Namen für die Funktions-App ein.) | Eindeutiger Name | Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
+    | „Select a runtime“ (Wählen Sie eine Runtime aus.) | Ihre Version | Wählen Sie die lokal ausgeführte Sprachversion aus. |
+    | Auswählen eines Speicherorts für neue Ressourcen | Region | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus. | 
 
-    * **[Ressourcengruppe](../articles/azure-resource-manager/management/overview.md)** : Enthält alle erstellten Azure-Ressourcen. Der Name basiert auf dem Namen Ihrer Funktions-App.
-    * **[Speicherkonto](../articles/storage/common/storage-account-create.md)** : Ein Standardspeicherkonto wird mit einem eindeutigen Namen erstellt, der auf dem Namen Ihrer Funktions-App basiert.
-    * **[Hostingplan](../articles/azure-functions/functions-scale.md)** : Ein Verbrauchsplan wird in der Region „USA, Westen“ erstellt, um Ihre serverlose Funktions-App zu hosten.
-    * **Funktions-App**: Ihr Projekt wird in dieser neuen Funktions-App bereitgestellt, wo es auch ausgeführt wird.
+    ::: zone-end
 
-    Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. Wählen Sie in dieser Benachrichtigungen **Ausgabe anzeigen** aus, um die Erstellungs- und Bereitstellungsergebnisse (auch für die von Ihnen erstellten Azure-Ressourcen) anzuzeigen.
+    
+1.  Nach Abschluss des Vorgangs werden in Ihrem Abonnement die folgenden Azure-Ressourcen erstellt:
 
-1. Zurück im Bereich **Azure: Funktionen** erweitern Sie die neue Funktions-App unter Ihrem Abonnement. Erweitern Sie **Funktionen**, klicken Sie mit der rechten Maustaste auf **HttpTrigger**, und wählen Sie dann **Funktions-URL kopieren** aus.
+    + **[Ressourcengruppe](../articles/azure-resource-manager/management/overview.md)** : Enthält alle erstellten Azure-Ressourcen. Der Name basiert auf dem Namen Ihrer Funktions-App.
+    + **[Speicherkonto](../articles//storage/common/storage-introduction.md#types-of-storage-accounts)** : Ein Standardspeicherkonto wird mit einem eindeutigen Namen erstellt, der auf dem Namen Ihrer Funktions-App basiert.
+    + **[Hostingplan](../articles/azure-functions/functions-scale.md)** : Ein Verbrauchsplan wird in der Region „USA, Westen“ erstellt, um Ihre serverlose Funktions-App zu hosten.
+    + **Funktions-App**: Ihr Projekt wird in dieser neuen Funktions-App bereitgestellt, wo es auch ausgeführt wird.
+    + **[Application Insights]()** : Eine mit Ihrer Funktions-App verbundene Instanz wird auf der Grundlage Ihres Funktionsnamens erstellt.
+
+    Nach der Erstellung der Funktions-App wird eine Benachrichtigung angezeigt, und das Bereitstellungspaket wird angewendet. 
+    
+1. Wählen Sie in dieser Benachrichtigungen **Ausgabe anzeigen** aus, um die Erstellungs- und Bereitstellungsergebnisse (auch für die von Ihnen erstellten Azure-Ressourcen) anzuzeigen.
+
+    ![Benachrichtigung nach Abschluss der Erstellung](media/functions-publish-project-vscode/function-create-notifications.png)
+
+1. Erweitern Sie im Bereich **Azure: Funktionen** auf der Seitenleiste die neue Funktions-App unter Ihrem Abonnement. Erweitern Sie **Funktionen**, klicken Sie mit der rechten Maustaste (Windows) bzw. klicken Sie bei gedrückter CTRL-TASTE (macOS) auf **HttpExample**, und wählen Sie **Copy function URL** (Funktions-URL kopieren) aus.
 
     ![Kopieren Sie die Funktions-URL für den neuen HTTP-Trigger.](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

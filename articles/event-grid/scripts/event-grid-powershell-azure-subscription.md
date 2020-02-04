@@ -1,6 +1,6 @@
 ---
 title: 'Azure PowerShell: Abonnieren eines Azure-Abonnements'
-description: 'Azure PowerShell- und Azure Event Grid-Skriptbeispiel: Abonnieren eines Azure-Abonnements'
+description: In diesem Artikel wird anhand eines Azure PowerShell-Beispielskripts das Abonnieren von Event Grid-Ereignissen für ein Azure-Abonnement veranschaulicht.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -9,14 +9,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8c90e39cef1420ec06b7f62ebf9982720ffebf94
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 4a6539966ff2e907c4f6f942dd0c238ee35b6836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664130"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721454"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>Abonnieren von Ereignissen für ein Azure-Abonnement mit PowerShell
 

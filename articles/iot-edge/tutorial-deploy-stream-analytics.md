@@ -7,18 +7,18 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bd1487d7922d8ea81c4b09773eed978e64cd9e8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457239"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772274"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
 Viele IoT-Lösungen verwenden Analysedienste, um Erkenntnisse zu Daten zu gewinnen, die von IoT-Geräten an die Cloud übermittelt werden. Mit Azure IoT Edge können Sie die Logik von [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) direkt auf dem Gerät bereitstellen. Die Verarbeitung von Telemetriedatenströmen im Edgebereich verringert die Menge an Uploaddaten sowie die Zeit, die benötigt wird, um auf verwertbare Erkenntnisse zu reagieren.
 
-Dank der Integration von Azure IoT Edge und Azure Stream Analytics können Sie über das Azure-Portal einen Azure Stream Analytics-Auftrag erstellen und ihn anschließend ohne zusätzlichen Code als IoT-Edge-Modul bereitstellen.  
+Azure IoT Edge und Azure Stream Analytics sind integriert, um Ihre Workloadentwicklung zu vereinfachen. Sie können im Azure-Portal einen Azure Stream Analytics-Auftrag erstellen und ihn anschließend ohne zusätzlichen Programmieraufwand als IoT Edge-Modul bereitstellen.  
 
 Azure Stream Analytics bietet eine umfassend strukturierte Abfragesyntax für die Datenanalyse in der Cloud und auf IoT Edge-Geräten. Weitere Informationen finden Sie in der [Azure Stream Analytics-Dokumentation](../stream-analytics/stream-analytics-edge.md).
 
@@ -46,7 +46,7 @@ Ein Azure IoT Edge-Gerät:
 
 Cloudressourcen:
 
-* Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“. 
+* Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Erstellen eines Azure Stream Analytics-Auftrags
 
@@ -54,20 +54,20 @@ In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, der fo
 
 * Empfangen von Daten von Ihrem IoT Edge-Gerät
 * Abfragen der Telemetriedaten nach Werten außerhalb eines festgelegten Bereichs
-* Ergreifen von Maßnahmen für das IoT Edge-Gerät auf der Grundlage der Abfrageergebnisse 
+* Ergreifen von Maßnahmen für das IoT Edge-Gerät auf der Grundlage der Abfrageergebnisse
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge-Gerät erstellen, muss er so gespeichert werden, dass er vom Gerät aufgerufen werden kann. Sie können ein vorhandenes Azure-Speicherkonto auswählen oder jetzt ein neues erstellen. 
+Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge-Gerät erstellen, muss er so gespeichert werden, dass er vom Gerät aufgerufen werden kann. Sie können ein bereits vorhandenes Azure Storage-Konto verwenden oder jetzt ein neues erstellen.
 
-1. Navigieren Sie im Azure-Portal zu **Ressource erstellen** > **Storage** > **Speicherkonto**. 
+1. Navigieren Sie im Azure-Portal zu **Ressource erstellen** > **Storage** > **Speicherkonto**.
 
 1. Geben Sie die folgenden Werte an, um Ihr Speicherkonto zu erstellen:
 
    | Feld | value |
    | ----- | ----- |
    | Subscription | Wählen Sie das gleiche Abonnement wie für Ihren IoT Hub. |
-   | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
+   | Resource group | Es empfiehlt sich, im Rahmen der IoT Edge-Schnellstartanleitungen und -Tutorials die gleiche Ressourcengruppe für alle Ihre Testressourcen zu verwenden. Beispielsweise **IoTEdgeResources**. |
    | Name | Geben Sie einen eindeutigen Namen für Ihr Speicherkonto an. |
    | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
 
@@ -88,7 +88,7 @@ Wenn Sie einen Azure Stream Analytics-Auftrag zur Ausführung auf einem IoT Edge
    | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
    | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
    | Hosting-Umgebung | Wählen Sie **Edge** aus. |
- 
+
 1. Klicken Sie auf **Erstellen**.
 
 ### <a name="configure-your-job"></a>Konfigurieren des Auftrags
@@ -105,7 +105,7 @@ Mithilfe der drei Elemente – Eingabe, Ausgabe und Abfrage – wird in diesem A
 
 1. Wählen Sie in der Dropdownliste die Option **Edge-Hub** aus.
 
-1. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
+1. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein.
 
 1. Behalten Sie in den restlichen Feldern die Standardwerte bei, und wählen Sie **Speichern**.
 
@@ -152,7 +152,7 @@ Um Ihren Stream Analytics-Auftrag auf die Bereitstellung als IoT Edge-Gerät vor
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
 
-Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen. 
+Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
 In diesem Abschnitt verwenden Sie den Assistenten zum **Festlegen von Modulen** im Azure-Portal zum Erstellen eines *Bereitstellungsmanifests*. Ein Bereitstellungsmanifest ist eine JSON-Datei mit Beschreibungen für: alle Module, die auf einem Gerät bereitgestellt werden, die Containerregistrierungen, welche die Modulimages speichern, die Verwaltung der Module und die Kommunikationsmöglichkeiten für die Module untereinander. Ihr IoT Edge-Gerät ruft das Bereitstellungsmanifest aus IoT Hub ab und verwendet die Informationen darin zur Bereitstellung und Konfiguration aller seiner zugewiesenen Module.
 

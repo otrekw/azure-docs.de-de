@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9f9e84570c7e7a4a2049c9f357d001c3316a4106
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166344"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773806"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub und Lesen der Telemetriedaten mit einer Back-End-Anwendung (.NET)
 
@@ -47,9 +47,9 @@ Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsof
 az extension add --name azure-cli-iot-ext
 ```
 
-Laden Sie das C#-Beispielprojekt von https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip herunter, und extrahieren Sie das ZIP-Archiv.
+Laden Sie unter https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip die Azure IoT-C#-Beispiele herunter, und extrahieren Sie das ZIP-Archiv.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -129,7 +129,7 @@ Die Back-End-Anwendung stellt eine Verbindung mit dem dienstseitigen Endpunkt **
 
 2. Öffnen Sie die Datei **ReadDeviceToCloudMessages.cs** in einem Text-Editor Ihrer Wahl. Aktualisieren Sie die folgenden Variablen, und speichern Sie Ihre Änderungen an der Datei.
 
-    | Variable | Wert |
+    | Variable | value |
     | -------- | ----------- |
     | `s_eventHubsCompatibleEndpoint` | Ersetzen Sie den Wert der Variablen durch den mit Event Hubs kompatiblen Endpunkt, den Sie sich zuvor notiert haben. |
     | `s_eventHubsCompatiblePath`     | Ersetzen Sie den Wert der Variablen durch den mit Event Hubs kompatiblen Pfad, den Sie sich zuvor notiert haben. |

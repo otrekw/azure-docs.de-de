@@ -9,42 +9,42 @@ ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d2c781c1ee09e4e70d119b59e6c02e0440d5bf54
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 228e50160e5c13b2d24a504b02c4bb7e3a420a46
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701850"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772907"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Tutorial: Entwickeln eines Java-IoT Edge-Moduls für Linux-Geräte
 
-Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte Io  Edge-Gerät, das Sie in der Schnellstartanleitung zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
+Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte Io  Edge-Gerät, das Sie in der Schnellstartanleitung zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines IoT Edge-Java-Moduls mithilfe von Visual Studio Code auf der Grundlage des Azure IoT Edge-Maven-Vorlagenpakets und des Azure IoT-Java-Geräte-SDK.
 > * Erstellen und Veröffentlichen eines Docker-Images in Ihrer Registrierung unter Verwendung von Visual Studio Code und Docker
 > * Bereitstellen des Moduls auf Ihrem IoT Edge-Gerät
 > * Anzeigen generierter Daten
 
-
-Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene trägt zur Verringerung der Datenmenge bei, die an die Cloud übermittelt und dort gespeichert wird. 
+Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Es leitet Nachrichten nur dann an nachgeschaltete Geräte weiter, wenn die Temperatur einen angegebenen Schwellenwert überschreitet. Diese Art der Analyse auf Edge-Ebene trägt zur Verringerung der Datenmenge bei, die an die Cloud übermittelt und dort gespeichert wird.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="solution-scope"></a>Projektmappenbereich
 
-In diesem Tutorial wird gezeigt, wie Sie ein Modul in **Java** mit **Visual Studio Code** entwickeln und auf einem **Linux-Gerät** bereitstellen. IoT Edge unterstützt keine Java-Module für Windows-Geräte. 
+In diesem Tutorial wird gezeigt, wie Sie ein Modul in **Java** mit **Visual Studio Code** entwickeln und auf einem **Linux-Gerät** bereitstellen. IoT Edge unterstützt keine Java-Module für Windows-Geräte.
 
-Informieren Sie sich anhand der nachstehenden Tabelle über Ihre Optionen zum Entwickeln und Bereitstellen von Java-Modulen: 
+Informieren Sie sich anhand der nachstehenden Tabelle über Ihre Optionen zum Entwickeln und Bereitstellen von Java-Modulen:
 
-| Java | Visual Studio Code | Visual Studio 2017/2019 | 
+| Java | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![Verwenden von VS Code für Java-Module unter Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Verwenden von VS Code für Java-Module unter Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial durchgearbeitet haben, um Ihre Entwicklungsumgebung für die Entwicklung von Linux-Containern einzurichten: [Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben: 
+Bevor Sie mit diesem Tutorial beginnen, sollten Sie das vorhergehende Tutorial durchgearbeitet haben, um Ihre Entwicklungsumgebung für die Entwicklung von Linux-Containern einzurichten: [Entwickeln von IoT Edge-Modulen für Linux-Geräte](tutorial-develop-for-linux.md). Nach Abschluss dieses Tutorials sollten Sie die folgenden Voraussetzungen eingerichtet haben:
 
 * Eine [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-Instanz in Azure im Tarif „Free“ oder „Standard“.
 * Ein [Linux-Gerät, auf dem Azure IoT Edge ausgeführt wird](quickstart-linux.md).
@@ -59,17 +59,18 @@ Um ein IoT Edge-Modul in Java zu entwickeln, installieren Sie die folgenden zus�
 * [Maven](https://maven.apache.org/)
 
 ## <a name="create-a-module-project"></a>Erstellen eines Modulprojekts
+
 Mit den folgenden Schritten wird ein IoT Edge-Modulprojekt erstellt, das auf dem Azure IoT Edge-Maven-Vorlagenpaket und dem Azure IoT Java-Geräte-SDK basiert. Sie erstellen das Projekt, indem Sie Visual Studio Code und die Azure IoT-Tools verwenden.
 
 ### <a name="create-a-new-project"></a>Erstellen eines neuen Projekts
 
-Erstellen Sie eine Java-Lösungsvorlage, die Sie mit eigenem Code anpassen können. 
+Erstellen Sie eine Java-Lösungsvorlage, die Sie mit eigenem Code anpassen können.
 
-1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen. 
+1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Befehlspalette**, um die VS Code-Befehlspalette zu öffnen.
 
-2. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge Solution** ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
+2. Geben Sie in der Befehlspalette den folgenden Befehl ein, und führen Sie ihn aus: **Azure IoT Edge: New IoT Edge Solution** (Azure IoT Edge: Neue IoT Edge-Projektmappe) ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
-   | Feld | Wert |
+   | Feld | value |
    | ----- | ----- |
    | Ordner auswählen | Wählen Sie den Speicherort auf Ihrem Entwicklungscomputer aus, an dem Visual Studio Code die Projektmappendateien erstellen soll. |
    | Provide a solution name (Projektmappennamen angeben) | Geben Sie für Ihre Projektmappe einen aussagekräftigen Namen ein, oder übernehmen Sie den Standardnamen **EdgeSolution**. |
@@ -77,28 +78,34 @@ Erstellen Sie eine Java-Lösungsvorlage, die Sie mit eigenem Code anpassen könn
    | Provide value for groupId (Wert für groupId eingeben) | Geben Sie einen Wert für die Gruppen-ID ein, oder übernehmen Sie den Standardwert **com.edgemodule**. |
    | Provide a module name (Modulname angeben) | Nennen Sie das Modul **JavaModule**. |
    | Provide Docker image repository for the module (Docker-Imagerepository für das Modul angeben) | Ein Imagerepository enthält den Namen Ihrer Containerregistrierung und den Namen Ihres Containerimages. Für das Containerimage wird der von Ihnen im vorherigen Schritt angegebene Name übernommen. Ersetzen Sie **localhost:5000** durch den Anmeldeserverwert aus Ihrer Azure-Containerregistrierung. Den Anmeldeserver können Sie im Azure-Portal auf der Übersichtsseite Ihrer Containerregistrierung ermitteln. <br><br>Das endgültige Imagerepository sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/javamodule. |
- 
-   ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-java-module/repository.png)
-   
-Wenn Sie zum ersten Mal ein Java-Modul erstellen, dauert das Herunterladen der Maven-Pakete unter Umständen mehrere Minuten. Das VS Code-Fenster lädt den Arbeitsbereich für Ihre IoT Edge-Projektmappe. Der Arbeitsbereich der Projektmappe enthält fünf Komponenten auf oberster Ebene. Der Ordner **Module** enthält den Java-Code für Ihr Modul sowie Docker-Dateien für die Erstellung Ihres Moduls als Containerimage. In der Datei **\.env** werden Ihre Anmeldeinformationen für die Containerregistrierung gespeichert. Die Datei **deployment.template.json** enthält die Informationen, die die IoT Edge-Runtime zum Bereitstellen von Modulen auf einem Gerät verwendet. Die Datei **deployment.debug.template.json** enthält die Debugversion der Module. In diesem Tutorial wird nicht der Ordner **\.vscode** oder die Datei **\.gitignore** bearbeitet. 
 
-Wenn Sie beim Erstellen Ihrer Lösung keine Containerregistrierung angegeben, aber den Standardwert „localhost:5000“ übernommen haben, besitzen Sie keine Datei vom Typ „\.env“. 
+   ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-java-module/repository.png)
+
+Wenn Sie zum ersten Mal ein Java-Modul erstellen, dauert das Herunterladen der Maven-Pakete unter Umständen mehrere Minuten. Wenn die Lösung bereit ist, wird im VS Code-Fenster der Arbeitsbereich für Ihre IoT Edge-Arbeitsmappe geladen. Der Arbeitsbereich für die Projektmappe enthält fünf übergeordnete Komponenten:
+
+* Der Ordner **modules** enthält den Java-Code für Ihr Modul sowie die Docker-Dateien für die Erstellung Ihres Moduls als Containerimage.
+* In der Datei **\.env** werden Ihre Anmeldeinformationen für die Containerregistrierung gespeichert.
+* Die Datei **deployment.template.json** enthält die Informationen, die die IoT Edge-Runtime zum Bereitstellen von Modulen auf einem Gerät verwendet.
+* Die Datei **deployment.debug.template.json** enthält die Debugversion der Module.
+* In diesem Tutorial wird nicht der Ordner **\.vscode** oder die Datei **\.gitignore** bearbeitet.
+
+Wenn Sie beim Erstellen Ihrer Lösung keine Containerregistrierung angegeben, aber den Standardwert „localhost:5000“ übernommen haben, besitzen Sie keine Datei vom Typ „\.env“.
 
 ### <a name="add-your-registry-credentials"></a>Hinzufügen von Registrierungsanmeldeinformationen
 
-Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistrierung und gibt sie an die IoT Edge-Runtime weiter. Die Runtime benötigt diese Anmeldeinformationen, um Ihre privaten Images per Pull auf das IoT Edge-Gerät zu übertragen. 
+Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistrierung und gibt sie an die IoT Edge-Runtime weiter. Die Runtime benötigt diese Anmeldeinformationen, um Ihre privaten Images per Pull auf das IoT Edge-Gerät zu übertragen.
 
-1. Öffnen Sie im VS Code-Explorer die ENV-Datei. 
-2. Aktualisieren Sie die Felder mit den Werten für **Benutzername** und **Kennwort**, die Sie aus der Azure-Containerregistrierung kopiert haben. 
-3. Speichern Sie diese Datei. 
+1. Öffnen Sie im VS Code-Explorer die ENV-Datei.
+2. Aktualisieren Sie die Felder mit den Werten für **Benutzername** und **Kennwort**, die Sie aus der Azure-Containerregistrierung kopiert haben.
+3. Speichern Sie diese Datei.
 
 ### <a name="select-your-target-architecture"></a>Auswählen Ihrer Zielarchitektur
 
-Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux ARM32v7-Geräte entwickelt werden. Sie müssen bei jeder Projektmappe auswählen, welche Architektur Sie als Ziel verwenden möchten, weil der Container für jeden Architekturtyp unterschiedlich erstellt und ausgeführt wird. Der Standardwert ist „Linux AMD64“. 
+Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux ARM32v7-Geräte entwickelt werden. Sie müssen bei jeder Projektmappe auswählen, welche Architektur Sie als Ziel verwenden möchten, weil der Container für jeden Architekturtyp unterschiedlich erstellt und ausgeführt wird. Der Standardwert ist „Linux AMD64“.
 
-1. Öffnen Sie die Befehlspalette, und suchen Sie nach **Azure IoT Edge: Set Default Target Platform for Edge Solution** (Standardzielplattform für Edge-Projektmappe festlegen), oder wählen Sie das Verknüpfungssymbol in der Seitenleiste unten im Fenster aus. 
+1. Öffnen Sie die Befehlspalette, und suchen Sie nach **Azure IoT Edge: Set Default Target Platform for Edge Solution** (Standardzielplattform für Edge-Projektmappe festlegen), oder wählen Sie das Verknüpfungssymbol in der Seitenleiste unten im Fenster aus.
 
-2. Wählen Sie in der Befehlspalette die Zielarchitektur aus der Liste mit Optionen aus. Weil in diesem Tutorial ein virtueller Ubuntu-Computer als IoT Edge-Gerät verwendet wird, behalten Sie den Standardwert **amd64** bei. 
+2. Wählen Sie in der Befehlspalette die Zielarchitektur aus der Liste mit Optionen aus. Weil in diesem Tutorial ein virtueller Ubuntu-Computer als IoT Edge-Gerät verwendet wird, behalten Sie den Standardwert **amd64** bei.
 
 ### <a name="update-the-module-with-custom-code"></a>Aktualisieren des Moduls mit benutzerdefiniertem Code
 
@@ -111,17 +118,17 @@ Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux A
     import java.util.concurrent.atomic.AtomicLong;
     import java.util.HashMap;
     import java.util.Map;
-    
+
     import javax.json.Json;
     import javax.json.JsonObject;
     import javax.json.JsonReader;
-    
+
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.Pair;
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.Property;
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.TwinPropertyCallBack;
     ```
 
-3. Fügen Sie die folgende Definition in der **App**-Klasse hinzu. Mit dieser Variablen wird ein Temperaturschwellenwert festgelegt. Die gemessene Computertemperatur wird erst an IoT Hub gemeldet, wenn sie diesen Wert übersteigt. 
+3. Fügen Sie die folgende Definition in der **App**-Klasse hinzu. Mit dieser Variablen wird ein Temperaturschwellenwert festgelegt. Die gemessene Computertemperatur wird erst an IoT Hub gemeldet, wenn sie diesen Wert übersteigt.
 
     ```java
     private static final String TEMP_THRESHOLD = "TemperatureThreshold";
@@ -136,7 +143,7 @@ Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux A
         @Override
         public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
- 
+
             String msgString = new String(msg.getBytes(), Message.DEFAULT_IOTHUB_MESSAGE_CHARSET);
             System.out.println(
                    String.format("Received message %d: %s",
@@ -171,7 +178,7 @@ Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux A
             System.out.println("IoT Hub responded to device twin operation with status " + status.name());
         }
     }
- 
+
     protected static class OnProperty implements TwinPropertyCallBack {
         @Override
         public void TwinPropertyCallBack(Property property, Object context) {
@@ -207,7 +214,7 @@ Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux A
 
 8. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe.
 
-9. Fügen Sie den Modulzwilling **JavaModule** zum Bereitstellungsmanifest hinzu. Fügen Sie am Ende des Abschnitts **moduleContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein: 
+9. Fügen Sie den Modulzwilling **JavaModule** zum Bereitstellungsmanifest hinzu. Fügen Sie am Ende des Abschnitts **moduleContent** nach dem Modulzwilling **$edgeHub** den folgenden JSON-Inhalt ein:
 
    ```json
      "JavaModule": {
@@ -223,19 +230,19 @@ Mit Visual Studio Code können derzeit Java-Module für Linux AMD64- und Linux A
 
 ## <a name="build-and-push-your-module"></a>Erstellen und Pushen Ihres Moduls
 
-Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und dem **JavaModule**-Element Code hinzugefügt, mit dem Nachrichten herausgefiltert werden, deren gemeldete Computertemperatur unter dem zulässigen Grenzwert liegt. Erstellen Sie nun die Projektmappe als Containerimage, und übertragen Sie sie per Pushvorgang an die Containerregistrierung. 
+Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und dem **JavaModule**-Element Code hinzugefügt, mit dem Nachrichten herausgefiltert werden, deren gemeldete Computertemperatur unter dem zulässigen Grenzwert liegt. Erstellen Sie nun die Projektmappe als Containerimage, und übertragen Sie sie per Pushvorgang an die Containerregistrierung.
 
 1. Öffnen Sie das in VS Code integrierte Terminal über **Ansicht** > **Terminal**.
 
 1. Melden Sie sich bei Docker an. Geben Sie dazu den nachstehenden Befehl im Terminal ein. Melden Sie sich mit dem Benutzernamen, Kennwort und Anmeldeserver aus Ihrer Azure-Containerregistrierung an. Diese Werte finden Sie im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierung.
-     
+
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
    Möglicherweise wird Ihnen in einem Sicherheitshinweis die Verwendung von `--password-stdin` empfohlen. Diese bewährte Methode wird für Produktionsszenarien empfohlen, aber sie ist nicht Gegenstand dieses Tutorials. Weitere Informationen finden Sie in der [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin)-Referenz.
 
-2. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie anschließend auf **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und übertragen).
+1. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie anschließend auf **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und übertragen).
 
    Der Befehl zum Erstellen und Übertragen per Push startet drei Vorgänge. Zuerst erstellt er in der Projektmappe einen neuen Ordner mit dem Namen **config**. Darin ist das vollständige Bereitstellungsmanifest gespeichert, das aus Informationen in der Bereitstellungsvorlage und anderen Projektmappendateien erstellt wurde. Danach führt er `docker build` zum Erstellen des Containerimages aus, das auf der entsprechenden Dockerfile-Datei für Ihre Zielarchitektur basiert. Und schließlich führt er `docker push` aus, um das Imagerepository per Push in Ihre Containerregistrierung zu übertragen.
 
@@ -253,7 +260,7 @@ Sorgen Sie dafür, dass Ihr IoT Edge-Gerät ordnungsgemäß ausgeführt wird.
 
 4. Klicken Sie auf die Schaltfläche „Aktualisieren“. Nun sollte das neue **JavaModule**-Modul zusammen mit dem **SimulatedTemperatureSensor**-Modul sowie mit **$edgeAgent** und **$edgeHub** ausgeführt werden.  
 
-## <a name="view-generated-data"></a>Anzeigen generierter Daten
+## <a name="view-the-generated-data"></a>Anzeigen der generierten Daten
 
 Sobald Sie das Bereitstellungsmanifest auf Ihr IoT Edge-Gerät angewendet haben, erfasst die IoT Edge-Runtime auf dem Gerät die neuen Bereitstellungsinformationen und verwendet sie bei der Ausführung. Alle auf dem Gerät ausgeführten Module, die nicht im Bereitstellungsmanifest enthalten sind, werden beendet. Module, die auf dem Gerät fehlen, werden gestartet.
 
@@ -261,37 +268,37 @@ Der Status Ihres IoT Edge-Geräts wird im Abschnitt **Azure IoT Hub Devices** (A
 
 1. Klicken Sie im Visual Studio Code-Explorer mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und wählen Sie **Start Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten) aus.
 
-2. Zeigen Sie die Nachrichten an, die auf Ihrem IoT-Hub eintreffen. Möglicherweise dauert es eine Weile, bis die Nachrichten eintreffen, weil das IoT Edge-Gerät erst seine neue Bereitstellung empfangen und alle Module starten muss. Danach wird bei den am Code von „JavaModule“ vorgenommenen Änderungen gewartet, bis die Maschinentemperatur 25 Grad erreicht hat, bevor Nachrichten gesendet werden. Außerdem fügt das Gerät allen Nachrichten, die diesen Temperaturschwellenwert erreichen, den Nachrichtentyp **Alert** (Warnung) hinzu. 
+2. Zeigen Sie die Nachrichten an, die auf Ihrem IoT-Hub eintreffen. Es kann eine Weile dauern, bis die Nachrichten eintreffen. Das IoT Edge-Gerät muss die neue Bereitstellung erhalten und alle Module starten. Danach wird bei den am Code von „JavaModule“ vorgenommenen Änderungen gewartet, bis die Maschinentemperatur 25 Grad erreicht hat, bevor Nachrichten gesendet werden. Außerdem fügt das Gerät allen Nachrichten, die diesen Temperaturschwellenwert erreichen, den Nachrichtentyp **Alert** (Warnung) hinzu.
 
 ## <a name="edit-the-module-twin"></a>Bearbeiten des Modulzwillings
 
 Sie haben den Modulzwilling „JavaModule“ im Bereitstellungsmanifest verwendet, um den Temperaturschwellenwert auf 25 Grad festzulegen. Mithilfe des Modulzwillings können Sie die Funktionalität ändern, ohne den Modulcode aktualisieren zu müssen.
 
-1. Erweitern Sie in Visual Studio Code die Details unter Ihrem IoT Edge-Gerät, um die derzeit ausgeführten Module anzuzeigen. 
+1. Erweitern Sie in Visual Studio Code die Details unter Ihrem IoT Edge-Gerät, um die derzeit ausgeführten Module anzuzeigen.
 
-2. Klicken Sie mit der rechten Maustaste auf **JavaModule**, und wählen Sie **Modulzwilling bearbeiten** aus. 
+2. Klicken Sie mit der rechten Maustaste auf **JavaModule**, und wählen Sie **Modulzwilling bearbeiten** aus.
 
-3. Suchen Sie **TemperatureThreshold** in den gewünschten Eigenschaften. Ändern Sie den Wert auf eine neue Temperatur, die 5 bis 10 Grad höher als die zuletzt gemeldete Temperatur ist. 
+3. Suchen Sie **TemperatureThreshold** in den gewünschten Eigenschaften. Ändern Sie den Wert auf eine neue Temperatur, die 5 bis 10 Grad höher als die zuletzt gemeldete Temperatur ist.
 
 4. Speichern Sie die Modulzwillingsdatei.
 
-5. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle im Bearbeitungsbereich für Modulzwillinge, und wählen Sie **Modulzwilling aktualisieren** aus. 
+5. Klicken Sie mit der rechten Maustaste auf eine beliebige Stelle im Bearbeitungsbereich für Modulzwillinge, und wählen Sie **Modulzwilling aktualisieren** aus.
 
-6. Überwachen Sie die eingehenden D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud). Jetzt sollten die Nachrichten so lange gestoppt werden, bis der neue Temperaturschwellenwert erreicht wird. 
+6. Überwachen Sie die eingehenden D2C-Nachrichten (Device-to-Cloud, Gerät-zu-Cloud). Jetzt sollten die Nachrichten so lange gestoppt werden, bis der neue Temperaturschwellenwert erreicht wird.
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden. Sie können auch dasselbe IoT Edge-Gerät als Testgerät weiter nutzen. 
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden. Sie können auch dasselbe IoT Edge-Gerät als Testgerät weiter nutzen.
 
-Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
+Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden.
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein IoT Edge-Modul erstellt, das Code zum Filtern von Rohdaten enthält, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie jetzt Ihre eigenen Module entwickeln möchten, können Sie mehr zum [Entwickeln Ihrer eigenen IoT Edge-Module](module-development.md) oder zum [Entwickeln von Modulen mit Visual Studio Code](how-to-vs-code-develop-module.md) erfahren. Beispiele für IoT Edge-Module, einschließlich des Moduls für simulierte Temperatur, finden Sie unter [IoT Edge-Modulbeispiele](https://github.com/Azure/iotedge/tree/master/edge-modules). 
+In diesem Tutorial haben Sie ein IoT Edge-Modul zum Filtern von Rohdaten erstellt, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie Ihre eigenen Module entwickeln möchten, können Sie sich ausführlicher mit der [Entwicklung von IoT Edge-Modulen](module-development.md) oder der [Entwicklung von Modulen mit Visual Studio Code](how-to-vs-code-develop-module.md) befassen. Unter [IoT Edge-Modulbeispiele](https://github.com/Azure/iotedge/tree/master/edge-modules) stehen Codebeispiele zur Verfügung – darunter auch das simulierte Temperaturmodul.
 
-Sie können die nächsten Tutorials durcharbeiten, um zu erfahren, wie Ihnen Azure IoT Edge bei der Bereitstellung von Azure-Clouddiensten helfen kann, um Daten auf Edge-Ebene zu verarbeiten und zu analysieren.
+In den nächsten Tutorials erfahren Sie, wie Azure IoT Edge Sie bei der Bereitstellung von Azure-Clouddiensten unterstützt, um Daten im Edgebereich zu verarbeiten und zu analysieren.
 
 > [!div class="nextstepaction"]
 > [Funktionen](tutorial-deploy-function.md)

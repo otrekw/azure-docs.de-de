@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: 555a60579c11a7ecb9b39753c5e4b35e801edeb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 531dc62cacc044187c7800dd8abcdad282c4e633
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422162"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759942"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Tutorial: Erstellen einer App mit mehreren Containern (Vorschauversion) über Web-App für Container
 
@@ -38,7 +38,7 @@ Zum Durcharbeiten dieses Tutorials benötigen Sie Erfahrung mit [Docker Compose]
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-Für dieses Tutorial verwenden Sie die Compose-Datei von [Docker](https://docs.docker.com/compose/wordpress/#define-the-project), aber Sie ändern sie, um Azure Database for MySQL, beständigen Speicher und Redis einzubinden. Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress). Unterstützte Konfigurationsoptionen finden Sie unter [Docker Compose-Optionen](configure-custom-container.md#docker-compose-options).
+In diesem Tutorial wird die Compose-Datei aus [Docker](https://docs.docker.com/compose/wordpress/#define-the-project) verwendet. Sie wird jedoch geändert, um Azure Database for MySQL, beständigen Speicher und Redis einzubinden. Die Konfigurationsdatei finden Sie in den [Beispielen für Azure](https://github.com/Azure-Samples/multicontainerwordpress). Unterstützte Konfigurationsoptionen finden Sie unter [Docker Compose-Optionen](configure-custom-container.md#docker-compose-options).
 
 [!code-yml[Main](../../../azure-app-service-multi-container/docker-compose-wordpress.yml)]
 

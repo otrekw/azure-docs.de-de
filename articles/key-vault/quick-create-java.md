@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995863"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769234"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Java
 

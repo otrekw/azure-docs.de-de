@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Labs mithilfe von Azure DevTest Labs | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung erstellen Sie ein Lab mithilfe von Azure DevTest Labs.
+description: In diesem Tutorial erstellen Sie über das Azure-Portal ein Lab in Azure DevTest Labs. Ein Lab-Administrator richtet ein Lab ein, erstellt virtuelle Computer im Lab und konfiguriert Richtlinien.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/18/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804955"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759532"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 

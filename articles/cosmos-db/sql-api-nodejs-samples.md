@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ac3d74cb76a936cc88261a2fedf16764e8ae52f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220153"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718292"
 ---
 # <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Node.js-Beispiele zum Verwalten von Daten in Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Die Datei [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/ma
 
 ## <a name="item-examples"></a>Elementbeispiele
 
-Die Datei [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) veranschaulicht, wie die CRUD-Vorgänge für das Element ausgeführt werden. Um mehr über die Azure Cosmos-Dokumente zu erfahren, lesen Sie vor dem Ausführen der folgenden Beispiele den Konzeptartikel [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md). 
+Die Datei [ItemManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts) veranschaulicht, wie die CRUD-Vorgänge für das Element ausgeführt werden. Um mehr über die Azure Cosmos-Dokumente zu erfahren, lesen Sie vor dem Ausführen der folgenden Beispiele den Konzeptartikel [Arbeiten mit Datenbanken, Containern und Elementen](databases-containers-items.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |
@@ -98,7 +98,7 @@ Die Datei [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master
 
 ## <a name="server-side-programming-examples"></a>Serverseitige Programmierbeispiele
 
-Die Datei [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) im Projekt [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) zeigt, wie die folgenden Aufgaben ausgeführt werden. Um mehr über die serverseitige Programmierung in Azure Cosmos DB zu erfahren, lesen Sie vor dem Ausführen der folgenden Beispiele den Konzeptartikel [Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen](stored-procedures-triggers-udfs.md). 
+Die Datei [index.ts](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/index.ts) im Projekt [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) zeigt, wie die folgenden Aufgaben ausgeführt werden. Um mehr über die serverseitige Programmierung in Azure Cosmos DB zu erfahren, lesen Sie vor dem Ausführen der folgenden Beispiele den Konzeptartikel [Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen](stored-procedures-triggers-udfs.md). 
 
 | Aufgabe | API-Referenz |
 | --- | --- |

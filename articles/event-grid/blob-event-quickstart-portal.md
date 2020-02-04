@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982179"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844774"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen Webendpunkt über das Azure-Portal
 
@@ -41,6 +41,9 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 1. Um Ereignisse zu abonnieren, erstellen Sie entweder ein Speicherkonto vom Typ „general-purpose v2“ oder ein Blobspeicherkonto. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 
    ![Starten von Schritten](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> Nur Speicherkonten vom Typ **StorageV2 (allgemein, Version 2)** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (allgemein, Version 1)** unterstützt die Integration in Event Grid *nicht*.
 
 ## <a name="create-a-message-endpoint"></a>Erstellen eines Nachrichtenendpunkts
 

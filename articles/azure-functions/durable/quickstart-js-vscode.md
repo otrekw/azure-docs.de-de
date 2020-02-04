@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231308"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845724"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Erstellen Ihrer ersten dauerhaften Funktion in JavaScript
 
@@ -38,7 +38,31 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>Erstellen Ihres lokalen Projekts 
+
+In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Functions-Projekt erstellt. 
+
+1. Drücken Sie in Visual Studio Code die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie in der Befehlspalette den Befehl `Azure Functions: Create new project...`, und wählen Sie ihn aus.
+
+1. Wählen Sie einen Verzeichnisspeicherort für Ihren Projektarbeitsbereich und anschließend **Auswählen** aus.
+
+    > [!NOTE]
+    > Diese Schritte sollten außerhalb eines Arbeitsbereichs ausgeführt werden. Wählen Sie in diesem Fall keinen Projektordner aus, der Teil eines Arbeitsbereichs ist.
+
+1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen für die gewünschte Sprache ein:
+
+    | Eingabeaufforderung | Wert | Beschreibung |
+    | ------ | ----- | ----------- |
+    | Auswählen einer Sprache für Ihr Funktions-App-Projekt | JavaScript | Erstellen Sie ein lokales Node.js-Functions-Projekt. |
+    | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v2 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
+    | Auswählen einer Vorlage für die erste Funktion Ihres Projekts | HTTP-Trigger | Erstellen Sie eine durch HTTP ausgelöste Funktion in der neuen Funktions-App. |
+    | Angeben eines Funktionsnamens | HTTPTrigger | Drücken Sie die EINGABETASTE, um den Standardnamen zu verwenden. |
+    | Autorisierungsstufe | Funktion | Die Autorisierungsstufe `function` erfordert die Angabe eines Zugriffsschlüssels beim Aufrufen des HTTP-Endpunkts Ihrer Funktion. Dies erschwert den Zugriff auf einen ungeschützten Endpunkt. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Auswählen, wie Sie Ihr Projekt öffnen möchten | Hinzufügen zum Arbeitsbereich | Erstellt die Funktions-App im aktuellen Arbeitsbereich. |
+
+Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem neuen Arbeitsbereich erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-run-local.md#local-settings-file). Darüber hinaus wird der Ordner „HttpExample“ mit der [Definitionsdatei „function.json“](../functions-reference-node.md#folder-structure) und der [Datei „index.js“](../functions-reference-node.md#exporting-a-function) (Node.js-Datei mit dem Funktionscode) erstellt.
+
+Und es wird die Datei „package.json“ im Stammordner erstellt.
 
 ## <a name="install-the-durable-functions-npm-package"></a>Installieren des Durable Functions-npm-Pakets
 

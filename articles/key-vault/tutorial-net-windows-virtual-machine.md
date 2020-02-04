@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003318"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845289"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in .NET
 
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Bearbeiten Sie in den folgenden beiden Schritten die Klassendatei so, dass sie den Code enthält:
+Bearbeiten Sie die Klassendatei in den drei folgenden Schritten so, dass sie den Code enthält:
 
 1. Rufen Sie ein Token vom lokalen MSI-Endpunkt auf dem virtuellen Computer ab. Dadurch wird auch ein Token von Azure AD abgerufen.
-1. Übergeben Sie das Token an Ihren Schlüsseltresor, und rufen Sie anschließend Ihr Geheimnis ab. 
+2. Übergeben Sie das Token an Ihren Schlüsseltresor, und rufen Sie anschließend Ihr Geheimnis ab. 
+3. Fügen Sie der Anforderung den Tresor- und den Geheimnisnamen hinzu.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Bearbeiten Sie in den folgenden beiden Schritten die Klassendatei so, dass sie d
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();

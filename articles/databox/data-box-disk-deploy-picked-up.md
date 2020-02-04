@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: d0acc2d92c564f89f4777ccb243c7255e47c9105
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eb9231a84295240c20e34bfad56f406317c107da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514118"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845486"
 ---
 ::: zone target="chromeless"
 
@@ -155,10 +155,28 @@ Den Support von Quantium Solution erreichen Sie bei Bedarf wie folgt (in japanis
 
    Falls Probleme auftreten, können Sie sich unter adbo@microsoft.com an Data Box Operations Asia wenden. Geben Sie in der Betreffzeile den Auftragsnamen und das aufgetretene Problem an.
 
-3. Übergeben Sie die Box an den Kurier. 
+3. Übergeben Sie die Box an den Kurier.
 
+### <a name="in-self-managedtabin-selfmanaged"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
+
+Wenn Sie Data Box Disk in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
+
+1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihre Bestellung. Durchlaufen Sie die Schritte, die angezeigt werden, wenn Sie **Abholung planen** auswählen. Es sollte ein Autorisierungscode angezeigt werden, der bei der Abgabe der Bestellung verwendet wird.
+
+2. Senden Sie eine E-Mail an das Azure Data Box Operations-Team, wenn Sie bereit sind, das Gerät zurückzusenden. Vorlage:
+
+    ```
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box Disk drop-off for order: ‘orderName’
+    Body: 
+     a. Order name
+     b. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+3. Das Azure Data Box Operations-Team organisiert in Abstimmung mit Ihnen die Lieferung an das Azure-Rechenzentrum.
 
 ::: zone target="docs"
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

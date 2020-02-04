@@ -1,28 +1,28 @@
 ---
-title: 'Schnellstart: Erstellen einer Load Balancer Standard-Instanz: Azure-Vorlage'
+title: 'Schnellstart: Erstellen einer Load Balancer-Instanz – Azure-Vorlage'
 titleSuffix: Azure Load Balancer
-description: In diesem Schnellstart wird gezeigt, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Lastenausgleich im Tarif „Standard“ erstellen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Lastenausgleich per Azure Resource Manager-Vorlage erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970630"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843853"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer mithilfe einer Azure Resource Manager-Vorlage
 
 Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer (VMs) bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage bereitstellen, die einen Lastenausgleich im Tarif „Standard“ für VMs erstellt. Bei Verwendung der Resource Manager-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
 
@@ -30,9 +30,9 @@ Die [Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-standard-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Standard“
+## <a name="create-a-load-balancer"></a>Erstellen einer Load Balancer-Instanz
 
-Ein Lastenausgleich im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die für diesen Lastenausgleich als Front-End konfiguriert ist.
+Die Load Balancer-SKU und die SKU für öffentliche IP-Adressen müssen übereinstimmen. Wenn Sie eine Load Balancer Standard-Instanz erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End für diese Load Balancer Standard-Instanz konfiguriert ist. Wenn Sie eine Load Balancer Basic-Instanz erstellen möchten, verwenden Sie [diese Vorlage](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
 
 Die in dieser Schnellstartanleitung verwendete Vorlage ist eine [Schnellstartvorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
 

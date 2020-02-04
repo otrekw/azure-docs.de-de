@@ -2,14 +2,14 @@
 title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe von Azure Migrate für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 01/01/2020
+ms.date: 01/23/2020
 ms.custom: mvc
-ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029030"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845517"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
@@ -138,7 +138,7 @@ Importieren Sie die heruntergeladene Datei, und erstellen Sie die VM.
 2. Klicken Sie unter **Importtyp auswählen** auf **Virtuellen Computer kopieren (neue eindeutige ID erstellen)** . Klicken Sie dann auf **Weiter**.
 3. Behalten Sie unter **Ziel auswählen** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
 4. Behalten Sie unter **Speicherordner** die Standardeinstellung bei. Klicken Sie auf **Weiter**.
-5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können.
+5. Geben Sie unter **Netzwerk auswählen** den virtuellen Switch an, der von der VM verwendet wird. Der Switch benötigt Internetkonnektivität, um Daten an Azure senden zu können. [Hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines) finden Sie Informationen zum Erstellen eines virtuellen Switches.
 6. Überprüfen Sie die Einstellungen unter **Zusammenfassung**. Klicken Sie auf **Fertig stellen**.
 7. Starten Sie die VM im Hyper-V-Manager unter **Virtuelle Computer**.
 

@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978099"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716316"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Tutorial: Entwerfen eines Dashboards für die Echtzeitanalyse mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -128,7 +128,7 @@ Die Abfrage fügt ca. acht Zeilen pro Sekunde ein. Die Zeilen werden auf verschi
    > Führen Sie die Abfrage zur Datengenerierung weiter aus, und öffnen Sie für die verbleibenden Befehle in diesem Tutorial eine zweite psql-Verbindung.
    >
 
-## <a name="query"></a>Abfragen
+## <a name="query"></a>Abfrage
 
 Die Hyperscale-Hostingoption ermöglicht es aus Geschwindigkeitsgründen, dass Abfragen von mehreren Knoten parallel verarbeitet werden. Beispielsweise berechnet die Datenbank Aggregate wie SUM und COUNT auf Workerknoten und kombiniert die Ergebnisse in einer endgültigen Antwort.
 
@@ -222,7 +222,7 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Servergruppe ers
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben sowohl gelernt, Daten in Rohform abzurufen als auch diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
+In diesem Tutorial haben Sie erfahren, wie Sie eine Hyperscale (Citus)-Servergruppe bereitstellen. Sie haben mithilfe von psql eine Verbindung mit ihr hergestellt, haben ein Schema erstellt und Daten verteilt. Sie haben gelernt, Daten in Rohform abzurufen und diese Daten regelmäßig zu aggregieren, die aggregierten Tabellen abzufragen und alte Daten ablaufen zu lassen.
 
 Lernen Sie als Nächstes die Konzepte von Hyperscale kennen.
 > [!div class="nextstepaction"]

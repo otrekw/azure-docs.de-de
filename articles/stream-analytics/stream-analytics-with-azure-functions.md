@@ -2,18 +2,17 @@
 title: 'Tutorial: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Functions als Ausgabesenke für Stream Analytics-Aufträge konfigurieren.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369319"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772875"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Tutorial: Ausführen von Azure Functions in Azure Stream Analytics-Aufträgen 
 
@@ -51,7 +50,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Erstellen einer Funktion in Azure Functions, die Daten in Azure Cache for Redis schreiben kann
 
-1. Lesen Sie den Abschnitt [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) in der Dokumentation zu Functions. Dort finden Sie die Schritte zum Erstellen einer Funktions-App und einer [Funktion in Azure Functions mit Auslösung per HTTP](../azure-functions/functions-create-first-azure-function.md#create-function) mithilfe der Sprache C#.  
+1. Lesen Sie den Abschnitt [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) in der Dokumentation zu Functions. In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie eine Funktions-App und eine [Funktion in Azure Functions mit Auslösung per HTTP](../azure-functions/functions-create-first-azure-function.md#create-function) in C# erstellen.  
 
 2. Navigieren Sie zu der Funktion **run.csx**. Aktualisieren Sie sie mit dem folgenden Code. Ersetzen Sie **"\<your Azure Cache for Redis connection string goes here\>"** durch die primäre Verbindungszeichenfolge von Azure Cache for Redis, die Sie im vorherigen Abschnitt abgerufen haben. 
 
@@ -149,7 +148,7 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
    |Importoption| Sie können die Funktion aus dem aktuellem Abonnement verwenden, oder Sie geben die Einstellungen manuell an, wenn sich die Funktion in einem anderen Abonnement befindet. |
    |Funktionen-App| Der Name der Funktions-App |
    |Funktion| Der Name der Funktion in Ihrer Funktions-App (Name Ihrer run.csx-Funktion)|
-   |Max Batch Size|Legt in Bytes die maximale Größe für jeden Ausgabebatch fest, der an die Funktion gesendet wird. Dieser Wert ist standardmäßig auf 262.144 Byte (256 KB) festgelegt.|
+   |Max Batch Size|Legt die maximale Größe (in Bytes) für jeden Ausgabebatch fest, der an die Funktion gesendet wird. Dieser Wert ist standardmäßig auf 262.144 Byte (256 KB) festgelegt.|
    |Max Batch Count|Gibt die maximale Anzahl von Ereignissen in jedem Batch an, die an die Funktion gesendet wird. Der Standardwert ist 100. Diese Eigenschaft ist optional.|
    |Key|Ermöglicht die Verwendung einer Funktion aus einem anderen Abonnement. Geben Sie den Schlüsselwert für den Zugriff auf die Funktion an. Diese Eigenschaft ist optional.|
 
@@ -187,13 +186,10 @@ Führen Sie das Tutorial zur [Betrugserkennung in Echtzeit](stream-analytics-rea
    Dieser Befehl sollte den Wert für den angegebenen Schlüssel ausgeben:
 
    ![Screenshot der Azure Cache for Redis-Ausgabe](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Fehlerbehandlung und Wiederholungsversuche
-Falls beim Senden von Ereignissen an Azure Functions ein Fehler auftritt, versucht Stream Analytics erneut, den Vorgang erfolgreich abzuschließen. Es gibt jedoch einige Fehler, für die keine Wiederholungsversuche ausgeführt werden:
 
- 1. HttpRequestExceptions
- 2. Anforderungsentität zu groß (HTTP-Fehlercode 413)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>Fehlerbehandlung und Wiederholungsversuche
+
+Im Falle eines Fehlers beim Senden von Ereignissen an Azure Functions werden die meisten Vorgänge von Stream Analytics wiederholt. Mit Ausnahme des HTTP-Fehlers 413 (Entität zu groß) werden alle HTTP-Ausnahmen bis zur erfolgreichen Ausführung wiederholt. Fehler vom Typ „Entität zu groß“ werden als Datenfehler gemäß der [Ausgabefehlerrichtlinie](stream-analytics-output-error-policy.md) behandelt und entweder wiederholt oder verworfen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -203,14 +199,14 @@ Die Verwendung von [HTTP-Routing](https://docs.microsoft.com/sandbox/functions-r
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag später erneut verwenden möchten, können Sie ihn beenden und bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
+Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource.  
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen einfachen Stream Analytics-Auftrag erstellt, der eine Azure-Funktion ausführt. Weitere Informationen zu Stream Analytics-Aufträgen erhalten Sie im nächsten Tutorial:
+In diesem Tutorial haben Sie einen einfachen Stream Analytics-Auftrag erstellt, der eine Azure-Funktion ausführt. Weitere Informationen zu Stream Analytics-Aufträgen erhalten Sie im nächsten Tutorial:
 
 > [!div class="nextstepaction"]
 > [Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen](stream-analytics-javascript-user-defined-functions.md)

@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708666"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712984"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continuous Integration und Continuous Deployment für Azure SQL Data Warehouse
 
@@ -47,7 +47,7 @@ Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem 
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Continuous Deployment mit der Bereitstellungsaufgabe für Azure SQL Data Warehouse (oder SQL-Datenbank)
 
-1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt. Sie können auch die [Azure SQL Data Warehouse-Bereitstellungsaufgabe](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) verwenden. 
+1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt. Sie können auch die [Azure SQL Data Warehouse-Bereitstellungsaufgabe](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) verwenden. 
 
       ![Bereitstellungsaufgabe](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Bereitstellungsaufgabe")
 
@@ -61,37 +61,7 @@ Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erkunden der [Azure SQL Data Warehouse-Architektur](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture)
-- Schnelles [Erstellen einer SQL Data Warehouse-Instanz][create a SQL Data Warehouse]
-- [Laden von Beispieldaten][load sample data]
+- Erkunden der [Azure SQL Data Warehouse-Architektur](massively-parallel-processing-mpp-architecture.md)
+- Schnelles [Erstellen einer SQL Data Warehouse-Instanz](create-data-warehouse-portal.md)
+- [Laden von Stichprobendaten](sql-data-warehouse-load-sample-databases.md)
 - Ansehen von [Videos](/azure/sql-data-warehouse/sql-data-warehouse-videos)
-
-
-
-<!--Image references-->
-
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL Data Warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[SQL Data Warehouse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Feature requests]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN forum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for SQL Data Warehouse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

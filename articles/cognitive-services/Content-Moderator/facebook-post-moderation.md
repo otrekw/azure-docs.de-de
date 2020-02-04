@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936003"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774271"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
@@ -35,7 +35,7 @@ In diesem Diagramm sind die einzelnen Komponenten dieses Szenarios dargestellt:
 ![Diagramm: Content Moderator empfängt Informationen von Facebook über „FBListener“ und sendet Informationen über „CMListener“](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> Im Jahr 2018 wurde von Facebook eine strengere Überprüfung von Facebook-Apps eingeführt. Die Schritte in diesem Tutorial können nur ausgeführt werden, wenn Ihre App vom Facebook-Überprüfungsteam überprüft und genehmigt wurde.
+> Im Jahr 2018 wurde von Facebook eine strengere Überprüfungsrichtlinie für Facebook-Apps eingeführt. Die Schritte in diesem Tutorial können nur ausgeführt werden, wenn Ihre App vom Facebook-Überprüfungsteam überprüft und genehmigt wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -87,7 +87,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
 
     1. Klicken Sie auf die Kachel **HTTP-Trigger**.
     1. Geben Sie den Namen **FBListener** ein. Das Feld **Autorisierungsstufe** sollte auf **Funktion** festgelegt sein.
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
     1. Ersetzen Sie den Inhalt von **run.csx** durch den Inhalt von **FbListener/run.csx**.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -144,7 +144,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
         2. [Postman-Umgebung](https://github.com/MicrosoftContentModerator/samples-fbPageModeration/blob/master/FB%20Page%20Access%20Token%20Environment.postman_environment.json)       
     3. Aktualisieren Sie diese Umgebungsvariablen:
     
-        | Schlüssel | Wert   | 
+        | Key | value   | 
         | -------------------- |-------------|
         | appId   | Fügen Sie hier Ihre Facebook-App-ID ein.  | 
         | appSecret | Fügen Sie hier Ihr Facebook-App-Geheimnis ein. | 

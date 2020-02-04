@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3322a9f2a7e09ee76c0fff94a2747c791ecf4804
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dfe5a9a8b5503bb078cfd633a1f29774613b42b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975379"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769210"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET (SDK v4)
 

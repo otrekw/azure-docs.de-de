@@ -5,25 +5,20 @@ description: In diesem Tutorial erfahren Sie, wie Sie unter Verwendung des Azure
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350294"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775277"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -48,19 +43,19 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="create-a-route-table"></a>Erstellen einer Routingtabelle
 
-1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Routingtabelle** aus.
-
-1. Geben Sie in **Routingtabelle erstellen** diese Informationen ein, oder wählen Sie sie aus:
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
+2. Geben Sie *Routingtabelle* in das Suchfeld ein. Wählen Sie **Routingtabelle** aus, wenn diese Option in den Suchergebnissen angezeigt wird.
+3. Wählen Sie auf der Seite **Routingtabelle** die Option **Erstellen** aus.
+4. Geben Sie in **Routingtabelle erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | value |
     | ------- | ----- |
     | Name | Geben Sie *myRouteTablePublic* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie *OK* aus. |
-    | Location | Behalten Sie den Standardwert von **USA, Osten** bei.
+    | Location | Wählen Sie **USA, Osten** aus.
     | Routenverteilung des Gateways für virtuelle Netzwerke | Behalten Sie den Standardwert von **Aktiviert** bei. |
-
-1. Klicken Sie auf **Erstellen**.
+5. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-a-route"></a>Erstellen einer Route
 
@@ -167,7 +162,7 @@ Virtuelle Netzwerkgeräte sind VMs, die bei Netzwerkfunktionen wie Routing und F
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     | Kennwort bestätigen | Geben Sie das Kennwort erneut ein. |
     | **REGELN FÜR EINGEHENDE PORTS** |  |
-    | Öffentliche Eingangsports | Übernehmen Sie den Standardwert **Keine**.
+    | Öffentliche Eingangsports | Wählen Sie **Keine**.
     | **SPAREN SIE GELD** |  |
     | Windows-Lizenz bereits vorhanden? | Übernehmen Sie den Standardwert **Nein**. |
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 16748d9948518964d47ee9543765e3cb59ae2ec4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74902078"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841079"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Such-App im Portal (Azure Cognitive Search)
 
@@ -23,7 +23,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+Es empfiehlt sich, ein Upgrade auf die [aktuelle Version von Microsoft Edge](https://www.microsoft.com/edge) oder auf die derzeit aktuelle Version des Chrome-Browsers von Google durchzuführen.
+
+[Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 [Erstellen Sie einen Index](search-create-index-portal.md) als Grundlage für Ihre Anwendung. 
 

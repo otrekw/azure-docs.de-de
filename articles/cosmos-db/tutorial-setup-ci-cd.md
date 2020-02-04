@@ -4,15 +4,15 @@ description: Tutorial zum Einrichten des Build- und Releaseworkflows in Azure De
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441049"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846543"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -47,12 +47,17 @@ Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-
 
    ![Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. 
+3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. Sie verfügen nun über eine Buildpipeline, die Sie für die Verwendung des Azure Cosmos DB-Emulator-Buildtasks einrichten können. 
 
 > [!NOTE]
 > Im Agent-Pool, der für diese CI ausgewählt werden soll, muss Docker für Windows installiert sein, es sei denn, die Installation erfolgt manuell in einer vorherigen Aufgabe als Teil der CI. Im Artikel [Von Microsoft gehostete Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) finden Sie eine Auswahl von Agent-Pools. Wir empfehlen, mit `Hosted VS2017` zu beginnen.
 
-Sie verfügen nun über eine Buildpipeline, die Sie für die Verwendung des Azure Cosmos DB-Emulator-Buildtasks einrichten können. 
+Vom Azure Cosmos DB-Emulator wird derzeit kein gehosteter VS2019-Agent-Pool unterstützt. VS2019 ist für den Emulator jedoch bereits installiert und kann verwendet werden, indem Sie den Emulator mit den folgenden PowerShell-Cmdlets starten. Sollten bei der Verwendung von VS2019 Probleme auftreten, wenden Sie sich an das [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html)-Team:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Hinzufügen des Tasks zu einer Buildpipeline
 
