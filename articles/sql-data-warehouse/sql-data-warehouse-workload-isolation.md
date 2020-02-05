@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939928"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721029"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse: Isolation mit Arbeitsauslastungsgruppen (Vorschau)
 
@@ -32,7 +32,7 @@ In den folgenden Abschnitten wird erläutert, wie Arbeitsauslastungsgruppen die 
 
 Workloadisolation bedeutet, dass Ressourcen ausschließlich für eine Arbeitsauslastungsgruppe reserviert sind.  Workloadisolation wird erreicht, indem der Parameter MIN_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert größer als 0 (null) festgelegt wird.  Bei Workloads mit kontinuierlicher Ausführung, bei denen strenge SLAs eingehalten werden müssen, wird durch Isolation sichergestellt, dass immer Ressourcen für die Arbeitsauslastungsgruppe verfügbar sind. 
 
-Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert. Wenn MIN_PERCENTAGE_RESOURCE auf 30 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 2 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 15 garantiert.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
+Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert. Beispielsweise ist für eine Arbeitsauslastungsgruppe, für die `MIN_PERCENTAGE_RESOURCE` auf 30 % und `REQUEST_MIN_RESOURCE_GRANT_PERCENT` auf 2 % festgelegt sind, eine Parallelität von 15 garantiert.  Der Grad an Parallelität ist sichergestellt, da jederzeit 15-2 % Ressourcenslots innerhalb der Arbeitsauslastungsgruppe reserviert sind (unabhängig davon, wie `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` konfiguriert ist).  Wenn `REQUEST_MAX_RESOURCE_GRANT_PERCENT` größer als `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ist und `CAP_PERCENTAGE_RESOURCE` größer als `MIN_PERCENTAGE_RESOURCE` ist, werden zusätzliche Ressourcen pro Anforderung hinzugefügt.  Sind `REQUEST_MAX_RESOURCE_GRANT_PERCENT` und `REQUEST_MIN_RESOURCE_GRANT_PERCENT` gleich und ist `CAP_PERCENTAGE_RESOURCE` größer als `MIN_PERCENTAGE_RESOURCE`, ist eine Erhöhung der Parallelität möglich.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
 
 [Garantierte Parallelität] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

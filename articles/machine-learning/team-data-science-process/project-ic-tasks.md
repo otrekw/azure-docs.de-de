@@ -2,20 +2,20 @@
 title: Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
 description: Ausführliche exemplarische Vorgehensweise zu den Aufgaben eines einzelnen Mitwirkenden an einem Data Science-Teamprojekt.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244266"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721250"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Aufgaben für einen einzelnen Mitwirkenden am Team Data Science-Prozess
 
@@ -42,7 +42,7 @@ In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Ber
 - Azure-**Dateispeicher**, der ggf. für freigegebene Ressourcen für Ihr Team oder Projekt eingerichtet wurde
 - **Berechtigungen** für das Klonen aus dem Projektrepository und das Pushen zurück in dieses 
 
-Damit Sie Repositorys klonen und Inhalte auf Ihrem lokalen Computer oder Ihrer DSVM ändern können oder um Azure-Dateispeicher auf Ihrer DSVM einzubinden, benötigen Sie Folgendes:
+Damit Sie Repositorys klonen und Inhalte auf Ihrem lokalen Computer oder Ihrer DSVM ändern können oder um Azure-Dateispeicher auf Ihrer DSVM einzubinden, müssen Sie die folgende Prüfliste beachten:
 
 - Ein Azure-Abonnement.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.

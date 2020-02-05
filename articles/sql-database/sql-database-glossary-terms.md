@@ -1,5 +1,5 @@
 ---
-title: Glossar
+title: Glossarbegriffe
 description: Glossar mit Begriffen aus Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -10,45 +10,29 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 04/26/2019
-ms.openlocfilehash: 86da4ecab387da80954c2267ddeabe32a723474c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/22/2020
+ms.openlocfilehash: 733901d38703e02ab7dbe811b0f80a1dfedf03d5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802736"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705784"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
 
 |Kontext|Begriff|Weitere Informationen|
 |:---|:---|:---|
-|Azure-Dienstname|Azure SQL-Datenbank oder SQL-Datenbank|[Der Azure SQL-Datenbank-Dienst](sql-database-technical-overview.md)|
-|Computeebene|Serverlos |[Serverlose Computeebene](sql-database-serverless.md)
-||Bereitgestellt|[Serverlose Computeebene](sql-database-serverless.md)
-|Bereitstellungsoptionen |Einzeldatenbank|[Einzeldatenbanken](sql-database-single-database.md)|
+|Azure-Dienst|Azure SQL-Datenbank oder SQL-Datenbank|[Der Azure SQL-Datenbank-Dienst](sql-database-technical-overview.md)|
+|Kaufmodell|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
+||vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md)|
+|Bereitstellungsoption |Einzeldatenbank|[Einzeldatenbanken](sql-database-single-database.md)|
 ||Pool für elastische Datenbanken|[Pool für elastische Datenbanken](sql-database-elastic-pool.md)|
 ||Verwaltete Instanz|[Verwaltete Instanz](sql-database-managed-instance.md)|
-|Serverobjekte|SQL-Datenbank-Server oder Datenbankserver|[Datenbankserver](sql-database-servers.md)|
+|Dienstebene|Basic, Standard, Premium, Universell, Hyperscale, Unternehmenskritisch|Informationen zu Dienstebenen im V-Kern-Modell finden Sie unter [Einzeldatenbank und Pool für elastische Datenbanken](sql-database-service-tiers-vcore.md#service-tiers) und [Verwaltete Instanz](sql-database-managed-instance.md#managed-instance-service-tiers). Informationen zu Dienstebenen im DTU-Modell finden Sie unter [DTU-Modell](sql-database-service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
+|Computeebene|Serverloses Computing|[Serverloses Computing](sql-database-service-tiers-vcore.md#compute-tiers):
+||Bereitgestelltes Computing|[Bereitgestelltes Computing](sql-database-service-tiers-vcore.md#compute-tiers)
+|Computegeneration|Gen5, M-Serie, Fsv2-Serie|[Hardwaregenerationen](sql-database-service-tiers-vcore.md#hardware-generations)
+|Serverentität|SQL-Datenbank-Server oder Datenbankserver|[Datenbankserver](sql-database-servers.md)|
 ||Server einer verwalteten SQL-Datenbank-Instanz, Server für verwaltete Instanz oder Instanzserver|[Verwaltete Instanz](sql-database-managed-instance.md)|
-Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
-||Einzeldatenbank|Eine mit der Bereitstellungsoption für Singletons erstellte Datenbank|
-||Pooldatenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
-||Instanzdatenbank|Eine in einer verwalteten Instanz erstellte Datenbank|
-||Basic-Datenbank|Eine in der Dienstebene „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Standard-Datenbank|Eine in der Dienstebene „Standard“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Premium-Datenbank|Eine in der Dienstebene „Premium“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Universelle Datenbank|Eine in der Dienstebene „Universell“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Hyperscaledatenbank|Eine in der Dienstebene „Hyperscale“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Unternehmenskritische Datenbank|Eine in der Dienstebene „Unternehmenskritisch“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Bereitgestellte Datenbank|Eine auf der bereitgestellten Computeebene konfigurierte Datenbank|
-|[Kaufmodelle und -ressourcen](sql-database-purchase-models.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
-||vCore-basiertes Kaufmodell|[vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md)|
-||Virtueller Kern|Ein Kern, der vom Hypervisor für das Gastbetriebssystem bereitgestellt wird.|
-||Dienstebene|Eine Dienstebene in einem Kaufmodell|
-||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb einer Dienstebene|
-||Speichermenge|Die verfügbare Speichermenge für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz|
-||Computegeneration|Die Generation des Prozessors innerhalb einer Dienstebene|
-|IP-Firewallregeln für Datenbankserver|IP-Firewallregeln|[IP-Firewallregeln](sql-database-firewall-configure.md)|
-||IP-Firewallregeln auf Serverebene|[IP-Firewallregeln auf Serverebene](sql-database-firewall-configure.md)|
-|| Firewallregeln auf Datenbankebene|[Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md)|
-||Endpunkte und Regeln virtueller Netzwerke|[Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-vnet-service-endpoint-rule-overview.md)|
+|Ressourcentyp|Virtueller Kern|Ein der Computeressource bereitgestellter CPU-Kern für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz.|
+||Computegröße und Speichermenge|Die Computegröße ist die maximale Menge an CPU, Arbeitsspeicher und anderen nicht speicherbezogenen Ressourcen, die für eine einzelne Datenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz verfügbar sind.  Die Speichermenge ist der maximal verfügbare Speicher für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz.  Informationen zu Größenanpassungsoptionen im V-Kern-Modell finden Sie unter [Einzeldatenbanken im V-Kern-Modell](sql-database-vcore-resource-limits-single-databases.md), [Pools für elastische Datenbanken im V-Kern-Modell](sql-database-vcore-resource-limits-elastic-pools.md) und [Verwaltete Instanzen](sql-database-managed-instance-resource-limits.md).  Informationen zu Größenanpassungsoptionen im DTU-Modell finden Sie unter [Einzeldatenbanken im DTU-Modell](sql-database-dtu-resource-limits-single-databases.md) und [Pools für elastische Datenbanken im DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md).

@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903069"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846201"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Verwenden von Transaktionen in SQL Data Warehouse
 Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwickeln von Lösungen
@@ -25,7 +25,7 @@ Tipps zum Implementieren von Transaktionen in Azure SQL Data Warehouse zum Entwi
 Wie zu erwarten, unterstützt SQL Data Warehouse Transaktionen als Teil der Data Warehouse-Workload. Um allerdings eine angemessene Leistung von SQL Data Warehouse sicherzustellen, wurden einige Features im Vergleich zu SQL Server eingeschränkt. In diesem Artikel werden die Unterschiede hervorgehoben und die anderen Features aufgelistet. 
 
 ## <a name="transaction-isolation-levels"></a>Transaktionsisolationsstufen
-SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist jedoch beschränkt auf READ UNCOMMITTED. Diese Stufe kann nicht geändert werden. Wenn READ UNCOMMITTED ein Problem darstellt, können Sie eine Reihe von Codemethoden implementieren, um fehlerhafte Datenlesevorgänge zu verhindern. Die am häufigsten verwendeten Methoden nutzen sowohl CTAS als auch Wechsel von Partitionstabellen (oftmals gleitendes Fenstermuster genannt), um zu verhindern, dass Benutzer Daten abrufen, die noch vorbereitet werden. Sichten, die die Daten vorab filtern, sind auch ein beliebter Ansatz.  
+SQL Data Warehouse implementiert ACID-Transaktionen. Die Isolationsstufe der Transaktionsunterstützung ist standardmäßig auf READ UNCOMMITTED (Lesen ohne Commit) festgelegt.  Sie können diese in READ COMMITTED SNAPSHOT ISOLATION (Read Committed-Momentaufnahmeisolation) ändern, indem Sie die Datenbankoption READ_COMMITTED_SNAPSHOT für eine Benutzerdatenbank aktivieren, wenn Sie mit der Masterdatenbank verbunden sind.  Nach der Aktivierung werden alle Transaktionen in dieser Datenbank unter READ COMMITTED SNAPSHOT ISOLATION ausgeführt, und die Einstellung READ UNCOMMITTED auf Sitzungsebene wird nicht berücksichtigt. Ausführliche Informationen finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).
 
 ## <a name="transaction-size"></a>Transaktionsgröße
 Eine einzelne Transaktion zur Datenänderung ist in Bezug auf die Größe beschränkt. Der Grenzwert wird pro Verteilung angewendet. Die Gesamtzuordnung kann also ermittelt werden, indem der Grenzwert mit der Verteilungsanzahl multipliziert wird. Um eine Annäherung für die maximale Zeilenanzahl in der Transaktion zu erhalten, teilen Sie die Verteilungsobergrenze durch die Gesamtgröße jeder Zeile. Bei Spalten mit variabler Länge können Sie erwägen, anstelle der maximalen Größe eine durchschnittliche Spaltenlänge zu verwenden.
@@ -61,7 +61,7 @@ Für die Tabelle unten gelten die folgenden Annahmen:
 | [DWU](sql-data-warehouse-overview-what-is.md) | Obergrenze pro Verteilung (GB) | Anzahl der Verteilungen | Max. Transaktionsgröße (GB) | Anzahl der Zeilen pro Verteilung | Max. Zeilenzahl pro Transaktion |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4\.000.000 |240.000.000 |
-| DW200 |1,5 |60 |90 |6\.000.000 |360.000.000 |
+| DW200 |1.5 |60 |90 |6\.000.000 |360.000.000 |
 | DW300 |2,25 |60 |135 |9\.000.000 |540.000.000 |
 | DW400 |3 |60 |180 |12.000.000 |720.000.000 |
 | DW500 |3,75 |60 |225 |15.000.000 |900.000.000 |

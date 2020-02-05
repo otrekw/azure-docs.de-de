@@ -3,20 +3,20 @@ title: Zugreifen auf Datasets mit der Python-Clientbibliothek – Team Data Scie
 description: Installieren und verwenden Sie die Python-Clientbibliothek und verwalten Sie Azure Machine Learning-Daten sicher aus einer lokalen Python-Umgebung.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427386"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720978"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -43,7 +43,7 @@ Es besteht eine Abhängigkeit von folgenden Paketen:
 Es empfiehlt sich, eine Python-Distribution wie z.B. [Anaconda](http://continuum.io/downloads#all) oder [Canopy](https://store.enthought.com/downloads/) zu verwenden, die aus Python, IPython stammt und mit den drei oben aufgeführten Paketen geliefert und installiert wird. Obwohl IPython nicht unbedingt erforderlich ist, ist es eine optimale Umgebung für die interaktive Bearbeitung und Visualisierung von Daten.
 
 ### <a name="installation"></a>Installation der Azure Machine Learning Python-Clientbibliothek
-Außerdem muss die Azure Machine Learning Python-Clientbibliothek zum Ausführen der Aufgaben in diesem Thema installiert sein. Es ist über [Python Package Index](https://pypi.python.org/pypi/azureml)verfügbar. Um es in Ihrer Python-Umgebung zu installieren, führen Sie den folgenden Befehl Ihrer lokalen Python-Umgebung aus:
+Installieren Sie die Azure Machine Learning Python-Clientbibliothek zum Ausführen der Aufgaben in diesem Thema. Diese Bibliothek ist über [Python Package Index](https://pypi.python.org/pypi/azureml) verfügbar. Um es in Ihrer Python-Umgebung zu installieren, führen Sie den folgenden Befehl Ihrer lokalen Python-Umgebung aus:
 
     pip install azureml
 
@@ -70,13 +70,13 @@ Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer
 
 Wenn Ihre Rolle nicht als **Besitzer**festgelegt ist, können Sie darum bitten, erneut als Besitzer eingeladen zu werden, oder den Besitzer des Arbeitsbereichs darum bitten, Ihnen den Codeausschnitt zu stellen.
 
-Um das Autorisierungstoken zu erhalten, führen Sie eine der folgenden Aktionen durch:
+Um das Autorisierungstoken zu erhalten, können Sie eine der folgenden Optionen auswählen:
 
 * Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihr Autorisierungstoken auf der Seite „Einstellungen“ ihres Arbeitsbereichs in Azure Machine Learning Studio (klassisch) zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
 
    ![Autorisierungstoken](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden. Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
+* Fordern Sie an, dass Sie höher gestuft werden, um die Rolle „Besitzer“ zu erhalten: Ein aktueller Besitzer des Arbeitsbereichs muss Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
 
 Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können sie unabhängig von ihrer Rolle mithilfe des Codeausschnitts auf den Arbeitsbereich zugreifen.
 
@@ -100,7 +100,7 @@ Nachdem ein Experiment in Machine Learning Studio (klassisch) ausgeführt wurde,
 
 Auf Zwischen-Datasets kann zugegriffen werden, solange das Datenformat mit der Python-Clientbibliothek kompatibel ist.
 
-Die folgenden Formate werden unterstützt (Konstanten hierfür sind der `azureml.DataTypeIds` Klasse):
+Die folgenden Formate werden unterstützt (Konstanten für diese Formate sind der `azureml.DataTypeIds`-Klasse):
 
 * PlainText
 * GenericCSV
@@ -124,7 +124,7 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
 2. Fügen Sie ein Modul **Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene** ein.
 3. Einfügen eines Moduls [Split][split] und Verbinden seines Eingangs mit dem Ausgang des Datasetmoduls.
 4. Einfügen eines Moduls [Convert to CSV][convert-to-csv] und Verbinden seines Eingangs mit einem Ausgang des Moduls [Split][split].
-5. Speichern Sie das Experiment, führen Sie es aus und warten Sie, bis es ausgeführt ist.
+5. Speichern Sie das Experiment, führen Sie es aus und warten Sie, bis der Auftrag abgeschlossen ist.
 6. Klicken Sie auf den Ausgangsknoten des Moduls [Convert to CSV][convert-to-csv].
 7. Wenn das Kontextmenü angezeigt wird, wählen Sie **Datenzugriffscode generieren**.
    

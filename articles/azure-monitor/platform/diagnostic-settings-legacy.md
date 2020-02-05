@@ -6,16 +6,16 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977566"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715845"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Erfassen des Azure-Aktivitätsprotokolls mit Legacyeinstellungen
-Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Bis vor Kurzem haben Sie ein Protokollprofil erstellt, um Aktivitätsprotokolleinträge an [einen Event Hub oder ein Speicherkonto](activity-log-export.md) zu senden, und einen Connector verwendet, um sie in einem [Log Analytics-Arbeitsbereich](activity-log-collect.md) zu erfassen. In diesem Artikel werden die Unterschiede zwischen den Methoden, das Arbeiten mit vorhandenen Legacyeinstellungen und das Löschen von Legacyeinstellungen in Vorbereitung auf Diagnoseeinstellungen beschrieben.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls
+Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Die Methode für das Senden von Aktivitätsprotokolleinträgen an [einen Event Hub oder ein Speicherkonto](activity-log-export.md) oder an einen [Log Analytics-Arbeitsbereich](activity-log-collect.md) wurde in die Verwendung von [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel werden die Unterschiede zwischen den Methoden und das Löschen von Legacyeinstellungen in Vorbereitung auf den Wechsel zu Diagnoseeinstellungen beschrieben.
 
 
 ## <a name="differences-between-methods"></a>Unterschiede zwischen den Methoden
@@ -39,14 +39,16 @@ Beachten Sie die folgenden Details der Aktivitätsprotokollerfassung mithilfe vo
 ### <a name="differences-in-data"></a>Unterschiede bei den Daten
 Mit Diagnoseeinstellungen werden dieselben Daten erfasst wie mit den vorherigen Methoden zur Erfassung des Aktivitätsprotokolls, jedoch derzeit mit folgenden Unterschieden:
 
-Die folgenden Eigenschaften wurden entfernt:
+Die folgenden Spalten wurden entfernt. Die Ersatzspalten haben ein anderes Format, sodass Sie ggf. Protokollabfragen ändern müssen, die diese verwenden. Im Schema werden entfernte Spalten möglicherweise weiterhin angezeigt, doch werden sie nicht mit Daten gefüllt.
 
-- ActivityStatus
-- ActivitySubstatus
-- Vorgangsname
-- ResourceProvider
+| Entfernte Spalte | Ersatzspalte |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| Vorgangsname     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-Die folgenden Eigenschaften wurden hinzugefügt:
+Die folgenden Spalten wurden hinzugefügt:
 
 - Authorization_d
 - Claims_d

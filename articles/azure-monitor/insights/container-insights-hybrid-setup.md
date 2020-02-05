@@ -2,13 +2,13 @@
 title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977738"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759891"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -39,7 +39,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     |*.blob.core.windows.net |Port 443 |  
     |*.dc.services.visualstudio.com |Port 443 |
 
-* Für den Container-Agent muss `cAdvisor port: 10255` auf allen Knoten im Cluster geöffnet werden, damit Leistungsmetriken erfasst werden können.
+* Für den Container-Agent muss `cAdvisor secure port: 10250` oder `unsecure port :10255` von Kubelet auf allen Knoten im Cluster geöffnet werden, damit Leistungsmetriken erfasst werden können. Es wird empfohlen, `secure port: 10250` in cAdvisor von Kubelet zu konfigurieren, wenn dieser noch nicht konfiguriert ist.
 
 * Für den Container-Agent müssen die folgenden Umgebungsvariablen im Container angegeben werden, damit die Kommunikation mit dem Kubernetes-API-Dienst innerhalb des Clusters zum Erfassen von Bestandsdaten möglich ist: `KUBERNETES_SERVICE_HOST` und `KUBERNETES_PORT_443_TCP_PORT`.
 
@@ -290,12 +290,12 @@ Tritt beim Aktivieren der Überwachung für Ihren Kubernetes-Hybridcluster ein F
 * Der Integritätsdienst des OMS-Agents wird ausgeführt.
 * Die ID und der Schlüssel des Log Analytics-Arbeitsbereichs, die für den Container-Agent konfiguriert wurden, entsprechen dem Arbeitsbereich, mit dem Insight konfiguriert ist.
 * Überprüfen Sie, ob alle Linux-Workerknoten über die Bezeichnung `kubernetes.io/role=agent` verfügen, um den RS-Pod zu planen. Fügen Sie sie anderenfalls hinzu.
-* Vergewissern Sie sich, dass `cAdvisor port: 10255` für alle Knoten im Cluster geöffnet ist.
+* Vergewissern Sie sich, dass `cAdvisor secure port:10250` oder `unsecure port: 10255` für alle Knoten im Cluster geöffnet ist.
 
 Verwenden Sie zum Ausführen mit Azure PowerShell die folgenden Befehle in dem Ordner mit dem Skript:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

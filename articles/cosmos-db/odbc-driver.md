@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035613"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721080"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -33,7 +33,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
 1. Laden Sie die Treiber für Ihre Umgebung herunter:
 
-    | Installer | Unterstützte Betriebssysteme| 
+    | Installationsprogramm | Unterstützte Betriebssysteme| 
     |---|---| 
     |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64) für 64-Bit-Windows| 64-Bit-Versionen von Windows 8.1 oder höher, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 und Windows Server 2008 R2.| 
     |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64) für 32-Bit unter 64-Bit-Windows| 64-Bit-Versionen von Windows 8.1 oder höher, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 und Windows Server 2003.| 
@@ -58,7 +58,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
     ![Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup)](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **Datenquellenname**: Der Anzeigename für den ODBC-DSN. Dieser Name muss für Ihr Azure Cosmos DB-Konto eindeutig sein. Vergeben Sie also einen passenden Namen, falls Sie mehrere Konten verwenden.
-    - **Beschreibung:** Eine kurze Beschreibung der Datenquelle.
+    - **Beschreibung**: Eine kurze Beschreibung der Datenquelle.
     - **Host**: Der URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über die Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
     - **Zugriffsschlüssel**: Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über die Seite mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
     ![Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)](./media/odbc-driver/odbc-cosmos-account-keys.png)
@@ -90,7 +90,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
 ## <a id="#container-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mithilfe der Containerzuordnungsmethode
 
-Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für einen Container ist jeweils nur eine bestimmte Samplingmethode zulässig. Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehreren Containern mithilfe der Methode „Containerzuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite eines Containers abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird ein Container in eine Tabelle auf der ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten in einem Container homogen sind. Falls ein Container heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zur Ermittlung der Datenstrukturen im Container. 
+Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für jeden Container ist nur eine bestimmte Samplingmethode zulässig. Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehreren Containern mithilfe der Methode „Containerzuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite eines Containers abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird ein Container in eine Tabelle auf der ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten in einem Container homogen sind. Falls ein Container heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zur Ermittlung der Datenstrukturen im Container. 
 
 1. Klicken Sie nach Abschluss der Schritte 1 bis 4 unter [Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank](#connect) im Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Schema-Editor**.
 

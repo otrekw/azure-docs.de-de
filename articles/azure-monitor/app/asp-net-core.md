@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407507"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765812"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -195,7 +195,7 @@ public void ConfigureServices(IServiceCollection services)
 
 Vollständige Liste der Einstellungen in `ApplicationInsightsServiceOptions`
 
-|Einstellung | BESCHREIBUNG | Standard
+|Einstellung | Beschreibung | Standard
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | „LiveMetrics“-Feature aktivieren/deaktivieren | true
 |EnableAdaptiveSampling | Adaptive Stichprobenerstellung aktivieren/deaktivieren | true
@@ -416,7 +416,7 @@ Im `Microsoft.AspNetCore.All` 2.0-Metapaket ist das Application Insights SDK (V
 
 Ja. Die Featureunterstützung für das SDK ist auf allen Plattformen gleich. Es gelten lediglich die folgenden Ausnahmen:
 
-* Leistungsindikatoren werden nur unter Windows unterstützt.
+* Unter Linux sammelt das SDK [EventCounters](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters), da [Leistungsindikatoren](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) nur unter Windows unterstützt werden. Die meisten Metriken sind identisch.
 * Auch wenn `ServerTelemetryChannel` standardmäßig aktiviert ist, wird über den Kanal bei der Anwendungsausführung unter Linux oder macOS nicht automatisch ein lokaler Speicherordner erstellt, um die Telemetriedaten bei Netzwerkproblemen vorübergehend zu speichern. Aufgrund dieser Einschränkung gehen Telemetriedaten verloren, wenn vorübergehende Netzwerk- oder Serverprobleme auftreten. Sie können das Problem umgehen, indem Sie einen lokalen Ordner für den Kanal konfigurieren:
 
 ```csharp

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822657"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842653"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -124,6 +124,79 @@ Wenn Sie die sekundäre Datenbank mit einer niedrigeren Computegröße erstellen
 
 Weitere Informationen zu SQL-Datenbank-Computegrößen finden Sie im Artikel über die [SQL-Datenbank-Dienstebenen](sql-database-purchase-models.md).
 
+## <a name="cross-subscription-geo-replication"></a>Abonnementübergreifende Georeplikation
+
+Zum Einrichten der aktiven Georeplikation zwischen zwei Datenbanken, die verschiedenen Abonnements angehören (unabhängig davon, ob sie sich im selben Mandanten befinden oder nicht), müssen Sie die in diesem Abschnitt beschriebene spezielle Vorgehensweise befolgen.  Diese basiert auf SQL-Befehlen und erfordert folgende Schritte: 
+
+- Erstellen einer privilegierten Anmeldung auf beiden Servern
+- Hinzufügen der IP-Adresse zur Zulassungsliste des Clients, der die Änderung auf beiden Servern durchführt (z. B. die IP-Adresse des Hosts, auf dem SQL Server Management Studio ausgeführt wird) 
+
+Der Client, der die Änderungen durchführt, benötigt Netzwerkzugriff auf den primären Server. Zwar muss die gleiche IP-Adresse des Clients der Zulassungsliste auf dem sekundären Server hinzugefügt werden, doch ist eine Netzwerkverbindung mit dem sekundären Server nicht unbedingt erforderlich. 
+
+### <a name="on-the-master-of-the-primary-server"></a>Auf dem Master des primären Servers
+
+1. Fügen Sie die IP-Adresse der Zulassungsliste des Clients hinzu, der die Änderungen durchführt (weitere Informationen finden Sie unter [Konfigurieren der Firewall](sql-database-firewall-configure.md)). 
+1. Erstellen Sie eine Anmeldung für das Einrichten der aktiven Georeplikation (und passen Sie die Anmeldeinformationen nach Bedarf an):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Erstellen Sie einen entsprechenden Benutzer, und weisen Sie ihn der Rolle „dbmanager“ zu: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Notieren Sie sich die SID der neuen Anmeldung mithilfe der folgenden Abfrage: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>In der Quelldatenbank auf dem primären Server
+
+1. Erstellen Sie einen Benutzer für dieselbe Anmeldung:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Fügen Sie den Benutzer der Rolle „db_owner“ hinzu:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>Auf dem Master des sekundären Servers 
+
+1. Fügen Sie die IP-Adresse der Zulassungsliste des Clients hinzu, der die Änderungen durchführt. Dabei muss es sich um genau die gleiche IP-Adresse des primären Servers handeln. 
+1. Erstellen Sie dieselbe Anmeldung wie auf dem primären Server, und verwenden Sie dabei denselben Benutzernamen, dasselbe Kennwort und dieselbe SID: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Erstellen Sie einen entsprechenden Benutzer, und weisen Sie ihn der Rolle „dbmanager“ zu:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>Auf dem Master des primären Servers
+
+1. Melden Sie sich mit der neuen Anmeldung beim Master des primären Servers an. 
+1. Erstellen Sie ein sekundäres Replikat der Quelldatenbank auf dem sekundären Server (passen Sie den Datenbanknamen und Servernamen nach Bedarf an):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+Nach der anfänglichen Einrichtung können die erstellten Benutzer, Anmeldungen und Firewallregeln entfernt werden. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>Synchronisieren von Anmeldeinformationen und Firewallregeln
 
 Wir empfehlen die Verwendung von [IP-Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md) für georeplizierte Datenbanken, damit diese Regeln mit der Datenbank repliziert werden können. So wird sichergestellt, dass alle sekundären Datenbanken die gleichen IP-Firewallregeln wie die primäre Datenbank besitzen. Mit diesem Ansatz müssen Kunden auf Servern, auf denen sowohl die primäre als auch die sekundäre Datenbank gehostet wird, keine Firewallregeln mehr manuell konfigurieren und verwalten. Analog dazu wird durch die Verwendung von [eigenständigen Datenbankbenutzern](sql-database-manage-logins.md) für den Datenzugriff sichergestellt, dass für primäre und sekundäre Datenbanken immer die gleichen Benutzeranmeldeinformationen gelten, damit bei einem Failover keine Unterbrechungen durch Benutzernamen- und Kennwortkonflikte auftreten. Durch Hinzufügen von [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) können Kunden den Benutzerzugriff sowohl für primäre als auch für sekundäre Datenbanken verwalten, sodass die Notwendigkeit der Verwaltung von Anmeldeinformationen in Datenbanken vollständig entfällt.
@@ -167,7 +240,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 > [!IMPORTANT]
 > Diese Transact-SQL-Befehle gelten nur für die aktive Georeplikation und nicht für Failovergruppen. Daher gelten sie auch nicht für verwaltete Instanzen, da diese nur Failovergruppen unterstützen.
 
-| Get-Help | BESCHREIBUNG |
+| Get-Help | Beschreibung |
 | --- | --- |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie das Argument ADD SECONDARY ON SERVER, um eine sekundäre Datenbank für eine vorhandene Datenbank zu erstellen und die Datenreplikation zu starten. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Verwenden Sie FAILOVER oder FORCE_FAILOVER_ALLOW_DATA_LOSS, um die sekundäre Datenbank zur primären zu erklären und zu ihr zu wechseln – damit starten Sie das Failover. |
@@ -178,13 +251,13 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Verwalten des Failovers von Einzel- und Pooldatenbanken
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>Mit PowerShell: Verwalten des Failovers von Einzel- und Pooldatenbanken
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
-| Cmdlet | BESCHREIBUNG |
+| Cmdlet | Beschreibung |
 | --- | --- |
 | [Get-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase) |Ruft mindestens eine Datenbank ab. |
 | [New-AzSqlDatabaseSecondary](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasesecondary) |Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
@@ -198,7 +271,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST-API: Verwalten des Failovers von Einzel- und Pooldatenbanken
 
-| API | BESCHREIBUNG |
+| API | Beschreibung |
 | --- | --- |
 | [Create or Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Erstellt oder aktualisiert eine primäre oder sekundäre Datenbank oder stellt diese wieder her. |
 | [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Ruft den Status während eines Erstellungsvorgangs ab. |

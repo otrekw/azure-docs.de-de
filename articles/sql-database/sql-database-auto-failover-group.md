@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732415"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768657"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -71,6 +71,13 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 - **Hinzufügen von Datenbanken im Pool für elastische Datenbanken zu Failovergruppe**
 
   Sie können mehrere oder alle Datenbanken in einem Pool für elastische Datenbanken in dieselbe Failovergruppe einfügen. Wenn sich die primäre Datenbank in einem Pool für elastische Datenbanken befindet, wird die sekundäre Datenbank automatisch im Pool für elastische Datenbanken desselben Namens (sekundärer Pool) erstellt. Sie müssen sicherstellen, dass der sekundäre Server einen Pool für elastische Datenbanken mit genau demselben Namen und ausreichend freier Kapazität zum Hosten der sekundären Datenbanken enthält, die von der Failovergruppe erstellt werden. Wenn Sie im Pool eine Datenbank hinzufügen, die bereits im sekundären Pool eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank im sekundären Pool erstellt.
+  
+- **Anfängliches Seeding** 
+
+  Beim Hinzufügen von Datenbanken, Pools für elastische Datenbanken oder verwalteten Instanzen zu einer Failovergruppe gibt es eine anfängliche Seedingphase, bevor die Datenreplikation startet. Die anfängliche Seedingphase ist der längste und aufwendigste Vorgang. Sobald das anfängliche Seeding abgeschlossen ist, werden die Daten synchronisiert, und anschließend werden nur nachfolgende Datenänderungen repliziert. Die Zeit, die für das anfängliche Seeding benötigt wird, hängt von der Größe Ihrer Daten, der Anzahl der replizierten Datenbanken und der Geschwindigkeit der Verbindung zwischen den Entitäten in der Failovergruppe ab. Unter normalen Umständen beträgt die übliche Seedinggeschwindigkeit 50 bis 500 GB pro Stunde für eine einzelne Datenbank oder einen Pool für elastische Datenbanken und 18 bis 35 GB pro Stunde für eine verwaltete Instanz. Das Seeding wird für alle Datenbanken parallel ausgeführt. Anhand der angegebenen Seedinggeschwindigkeit zusammen mit der Anzahl der Datenbanken und der Gesamtgröße der Daten können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird.
+
+  Bei verwalteten Instanzen muss zum Abschätzen der Zeit für die anfängliche Seedingphase auch die Geschwindigkeit der ExpressRoute-Verbindung zwischen den beiden Instanzen berücksichtigt werden. Wenn die Geschwindigkeit der Verbindung zwischen den beiden Instanzen langsamer als erforderlich ist, wirkt sich dies wahrscheinlich erheblich auf die Zeit für das Seeding aus. Anhand der angegebenen Seedinggeschwindigkeit, der Anzahl der Datenbanken, der Gesamtgröße der Daten und der Verbindungsgeschwindigkeit können Sie abschätzen, wie lange die anfängliche Seedingphase vor dem Starten der Datenreplikation dauern wird. Beispielsweise würde für eine einzelne Datenbank mit 100 GB die anfängliche Seedingphase zwischen 2,8 und 5,5 Stunden dauern, wenn die Verbindung eine Pushübertragung von 35 GB pro Stunde ermöglicht. Können über die Verbindung nur 10 GB pro Stunde übertragen werden, dauert das Seeding einer 100-GB-Datenbank ungefähr 10 Stunden. Wenn mehrere Datenbanken zu replizieren sind, wird das Seeding parallel ausgeführt, und in Kombination mit einer niedrigen Verbindungsgeschwindigkeit kann die anfängliche Seedingphase erheblich länger dauern, insbesondere dann, wenn das parallele Seeding von Daten aus allen Datenbanken die verfügbare Verbindungsbandbreite überschreitet. Wenn die Netzwerkbandbreite zwischen zwei Instanzen begrenzt ist und Sie einer Failovergruppe mehrere verwaltete Instanzen hinzufügen, sollten Sie der Failovergruppe mehrere verwaltete Instanzen ggf. einzeln nacheinander hinzufügen.
+
   
 - **DNS-Zone**
 
@@ -319,8 +326,8 @@ Wenn Sie [Virtual Network-Dienstendpunkte und -Regeln](sql-database-vnet-service
 Wenn Ihr Geschäftskontinuitätsplan das Durchführen eines Failovers mithilfe von Gruppen mit automatischem Failover erfordert, können Sie den Zugriff auf Ihre SQL-Datenbank mithilfe der herkömmlichen Firewallregeln einschränken. Um das automatische Failover zu unterstützen, gehen Sie folgendermaßen vor:
 
 1. [Erstellen Sie eine öffentliche IP-Adresse.](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Erstellen Sie einen öffentlichen Lastenausgleich](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer), und weisen Sie ihm die öffentliche IP-Adresse zu.
-3. [Erstellen Sie ein virtuelles Netzwerk und die VMs](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) für Ihre Front-End-Komponenten.
+2. [Erstellen Sie einen öffentlichen Lastenausgleich](../load-balancer/quickstart-load-balancer-standard-public-portal.md), und weisen Sie ihm die öffentliche IP-Adresse zu.
+3. [Erstellen Sie ein virtuelles Netzwerk und die VMs](../load-balancer/quickstart-load-balancer-standard-public-portal.md) für Ihre Front-End-Komponenten.
 4. [Erstellen Sie eine Netzwerksicherheitsgruppe](../virtual-network/security-overview.md), und konfigurieren Sie eingehende Verbindungen.
 5. Stellen Sie mithilfe des [Diensttags](../virtual-network/security-overview.md#service-tags) „Sql“ sicher, dass die ausgehenden Verbindungen für Azure SQL-Datenbank geöffnet sind.
 6. Erstellen Sie eine [SQL-Datenbank-Firewallregel](sql-database-firewall-configure.md), um eingehenden Datenverkehr von der öffentlichen IP-Adresse, die Sie in Schritt 1 erstellt haben, zuzulassen.

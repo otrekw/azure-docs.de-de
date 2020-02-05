@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/05/2019
-ms.openlocfilehash: 4833b8a1835bd5da3327c73058f170fb0a5738a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/24/2020
+ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450704"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765765"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 
@@ -20,19 +20,28 @@ Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderu
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Updates für Azure Monitor für VMs
 
-Wir planen, im Januar 2020 eine neue Version von Azure Monitor für VMs zu veröffentlichen. Kunden, die Azure Monitor für VMs nach diesem Release aktivieren, erhalten automatisch die neue Version. Bestandskunden, die Azure Monitor für VMs bereits verwenden, werden zum Upgrade aufgefordert. Diese häufig gestellten Fragen und unsere Dokumentation bieten Anleitungen zum Durchführen eines Upgrades in der erforderlichen Größenordnung, wenn Sie über große Bereitstellungen mit mehreren Arbeitsbereichen verfügen.
+Wir haben eine neue Version von Azure Monitor für VMs veröffentlicht. Kunden, die Azure Monitor für VMs aktivieren, erhalten nun die neue Version. Bestandskunden, die Azure Monitor für VMs bereits verwenden, werden zum Upgrade aufgefordert. Diese häufig gestellten Fragen und unsere Dokumentation bieten Anleitungen zum Durchführen eines Upgrades in der erforderlichen Größenordnung, wenn Sie über große Bereitstellungen mit mehreren Arbeitsbereichen verfügen.
 
-Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle `InsightsMetrics` wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. Die Leistungsansichten werden ebenfalls für die Verwendung dieser neuen Tabelle aktualisiert.
+Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
-Es erfolgt ein Wechsel zu neuen Datentypen für unsere Verbindungsdatasets. Diese Änderung erfolgt im Dezember 2019 und wird in einem Azure Update-Blogbeitrag bekannt gegeben. Daten, die derzeit in den benutzerdefinierten Protokolltabellen `ServiceMapComputer_CL` und `ServiceMapProcess_CL` gespeichert sind, werden in dedizierte Datentypen mit den Namen `VMComputer` und `VMProcess` verschoben. Durch den Wechsel zu dedizierten Datentypen erhalten sie eine höhere Priorität für die Datenerfassung, und das Tabellenschema wird für alle Kunden standardisiert.
+In den nächsten ein bis zwei Wochen werden die Leistungsansichten ebenfalls für die Verwendung dieser neuen Tabelle aktualisiert.
 
 Uns ist bewusst, dass die Aufforderung zum Upgrade für bestehende Kunden eine Unterbrechung ihres Workflows bedeutet. Deshalb haben wir uns entschieden, dies zum jetzigen Zeitpunkt in der Public Preview und nicht erst später nach der allgemeinen Verfügbarkeit durchzuführen.
 
+
 ## <a name="what-is-changing"></a>Was ändert sich?
 
-Wenn Sie derzeit den Onboardingprozess für Azure Monitor für VMs durchführen, aktivieren Sie die Dienstzuordnungslösung in dem Arbeitsbereich, den Sie zum Speichern Ihrer Überwachungsdaten ausgewählt haben, und konfigurieren dann die Leistungsindikatoren für die Daten, die wir von Ihren VMs sammeln. Wir veröffentlichen eine neue Lösung mit dem Namen **VMInsights**, die zusätzliche Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst.
+Wir haben eine neue Lösung mit dem Namen VMInsights veröffentlicht, die zusätzliche Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst. 
 
-Bei unserem aktuellen Verfahren unter Verwendung von Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich werden die Daten an die Tabelle `Perf` gesendet. Bei dieser neuen Lösung werden die Daten an die Tabelle `InsightsMetrics` gesendet, die auch von Azure Monitor für Container verwendet wird. Aufgrund dieses Tabellenschemas können wir zusätzliche Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle „Perf“ kompatibel sind.
+Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich eingerichtet, um die Daten an die Tabelle *Perf* zu senden. Bei dieser neuen Lösung werden die Daten an die Tabelle *InsightsMetrics* gesendet, die auch von Azure Monitor für Container verwendet wird. Aufgrund dieses Tabellenschemas können wir zusätzliche Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle *Perf* kompatibel sind.
+
+
+## <a name="how-do-i-upgrade"></a>Wie führe ich ein Upgrade aus?
+Jede VM, die ein Upgrade erfordert, wird auf der Registerkarte **Erste Schritte** in Azure Monitor für VMs im Azure-Portal angegeben. Sie können ein Upgrade für eine einzelne VM durchführen oder mehrere VMs für ein gemeinsames Upgrade auswählen. Verwenden Sie den folgenden Befehl um ein Upgrade mit PowerShell durchzuführen:
+
+```PowerShell
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True
+```
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Was soll ich mit den Leistungsindikatoren in meinem Arbeitsbereich machen, wenn ich die VMInsights-Lösung installiere?
 

@@ -11,18 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 8d4917bb8956185e0cb557368fbb0c64343c0ac6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422543"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845861"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
 In diesem Artikel wird beschrieben, wie die für eine Azure SQL-Datenbank-Instanz im bereitgestellten Computetarif verfügbaren Compute- und Speicherressourcen skaliert werden können. Alternativ bietet der [serverlose Computetarif](sql-database-serverless.md) automatische Computeskalierung und eine Abrechnung der genutzten Computekapazität pro Sekunde.
-
-## <a name="change-compute-size-vcores-or-dtus"></a>Ändern der Computegröße (virtuelle Kerne oder DTUs)
 
 Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen oder DTUs können Sie ein Singleton je nach tatsächlichem Bedarf im [Azure-Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/az.sql/set-azsqldatabase), in der [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) dynamisch zentral hoch- oder herunterskalieren.
 
@@ -33,7 +31,7 @@ Das folgende Video zeigt die dynamische Änderung von Dienstebene und Computegr�
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>Auswirkungen der Änderung der Dienstebene oder der Skalierung der Computegröße
+## <a name="impact"></a>Auswirkung
 
 Zum Ändern der Dienstebene oder der Computegröße müssen hauptsächlich die folgenden Schritte ausgeführt werden:
 
@@ -43,12 +41,12 @@ Zum Ändern der Dienstebene oder der Computegröße müssen hauptsächlich die f
 
 2. Umleiten der Verbindungen zur neuen Computeinstanz
 
-    Vorhandene Verbindungen zur Datenbank in der ursprünglichen Computeinstanz werden verworfen. Alle neuen Verbindungen werden mit der Datenbank in der neuen Computeinstanz hergestellt. Für einige Kombinationen von Änderungen der Dienstebene und der Computegröße werden Datenbankdateien während des Wechsels getrennt und neu angefügt.  Der Wechsel kann zu einer kurzen Dienstunterbrechung führen, in der die Datenbank in der Regel für weniger als 30 Sekunden nicht verfügbar ist. Wenn zeitintensive Transaktionen zu dem Zeitpunkt ausgeführt werden, an dem die Verbindungen getrennt werden, kann dieser Schritt mehr Zeit beanspruchen, da abgebrochene Transaktionen wiederhergestellt werden. Mit der [schnelleren Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) können die Auswirkungen abgebrochener, zeitintensiver Transaktionen reduziert werden.
+    Vorhandene Verbindungen zur Datenbank in der ursprünglichen Computeinstanz werden verworfen. Alle neuen Verbindungen werden mit der Datenbank in der neuen Computeinstanz hergestellt. Bei einigen Kombinationen von Dienstebenen- und Computegrößenänderungen werden Datenbankdateien während des Wechsels getrennt und neu angefügt.  Der Wechsel kann zu einer kurzen Dienstunterbrechung führen, in der die Datenbank in der Regel für weniger als 30 Sekunden nicht verfügbar ist. Sollten zu dem Zeitpunkt, zu dem die Verbindungen getrennt werden, zeitintensive Transaktionen ausgeführt werden, kann dieser Schritt länger dauern, da abgebrochene Transaktionen wiederhergestellt werden müssen. Mit der [schnelleren Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md) können die Auswirkungen abgebrochener, zeitintensiver Transaktionen reduziert werden.
 
 > [!IMPORTANT]
 > Während dieses Workflows gehen keine Daten verloren. Implementieren Sie unbedingt auch [Wiederholungslogik](sql-database-connectivity-issues.md) in den Anwendungen und Komponenten, die Azure SQL-Datenbank verwenden, während die Dienstebene geändert wird.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>Wartezeit beim Ändern der Dienstebene oder beim Skalieren der Computegröße
+## <a name="latency"></a>Latency 
 
 Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren der Computegröße einer Einzeldatenbank oder eines Pools für elastische Datenbanken wird wie folgt parametrisiert:
 
@@ -56,12 +54,12 @@ Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren
 |:---|:---|:---|:---|
 |**Einzeldatenbank des Tarifs „Basic“,</br> Standard (S0-S1)**|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 |**Pool für elastische Datenbanken des Tarifs „Basic“, </br>Standard (S2-S12), </br>Hyperscale, </br>Einzeldatenbank oder Pool für elastische Datenbanken des Tarifs „Universell“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Konstante Wartezeit unabhängig vom verwendeten Speicherplatz</br>&bull; &nbsp;In der Regel weniger als fünf Minuten|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
-|**Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als 1 Minute pro verwendeten GB genutztem Speicherplatz|
+|**Einzeldatenbank oder Pool für elastische Datenbanken der Tarife „Premium“ oder „Unternehmenskritisch“**|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|&bull; &nbsp;Wartezeit proportional zum verwendeten Datenbankspeicherplatz aufgrund des Kopierens von Daten</br>&bull; &nbsp;In der Regel weniger als eine Minute pro GB (verwendeter Speicherplatz)|
 
 > [!TIP]
 > Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) und [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Abbrechen von Dienstebenenänderungen oder von Vorgängen zur Computeneuskalierung
+## <a name="cancelling-changes"></a>Abbrechen von Änderungen
 
 Die Änderung einer Dienstebene oder der Vorgang zur Computeneuskalierung kann abgebrochen werden.
 
@@ -90,7 +88,7 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Weitere Überlegungen zum Ändern der Dienstebene oder Skalieren der Computegröße
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 - Wenn Sie ein Upgrade auf eine höhere Dienstebene oder Computegröße durchführen, wird die maximale Datenbankgröße nicht erhöht, sofern Sie nicht ausdrücklich eine höhere Maximalgröße angeben.
 - Für das Downgrade einer Datenbank muss die verwendete Datenbankmenge kleiner als die maximal zulässige Größe der Zieldienstebene und der Zielcomputegröße sein.
@@ -100,7 +98,7 @@ else {
 - Die Angebote des Wiederherstellungsdiensts variieren für die verschiedenen Dienstebenen. Wenn Sie ein Downgrade auf den Tarif **Basic** durchführen, verfügen Sie über einen kürzeren Aufbewahrungszeitraum von Sicherungen. Weitere Informationen finden Sie unter [Azure SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Die neuen Eigenschaften für die Datenbank werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 
-### <a name="billing-during-compute-rescaling"></a>Abrechnung während der Computeneuskalierung
+## <a name="billing"></a>Abrechnung 
 
 Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in dieser Stunde angewendete Dienstebene und Computegröße nutzt – unabhängig von der Verwendung der Datenbank und ob sie weniger als eine Stunde aktiv war. Wenn Sie beispielsweise eine Einzeldatenbank erstellen und diese fünf Minuten später löschen, wird Ihnen eine volle Datenbankstunde in Rechnung gestellt.
 
@@ -124,6 +122,10 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+
+### <a name="geo-replicated-database"></a>Georeplizierte Datenbank
+
+Zum Ändern der Datenbankgröße einer replizierten sekundären Datenbank ändern Sie die Größe der primären Datenbank. Diese Änderung wird dann auch in der sekundären Datenbank repliziert und implementiert. 
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>Einschränkungen von P11 und P15, wenn die maximale Größe 1 TB übersteigt
 

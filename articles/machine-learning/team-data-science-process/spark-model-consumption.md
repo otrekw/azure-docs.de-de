@@ -3,20 +3,20 @@ title: Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt 
 description: Laden und Bewerten von in Azure Blob Storage (WASB) gespeicherten Learning-Modellen mit Python.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253175"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718547"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 
@@ -35,7 +35,7 @@ Um das Jupyter-Notebook für Spark 1.6 für die Verwendung mit einem HDInsight S
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. Sie benötigen ein Azure-Konto und einen Spark 1.6- (oder Spark 2.0-) HDInsight-Cluster zum Durchführen dieser exemplarischen Vorgehensweise. Anweisungen zum Erfüllen dieser Anforderungen finden Sie im Thema [Übersicht über Data Science mit Spark in Azure HDInsight](spark-overview.md). Dieses Thema enthält auch eine Beschreibung der hier verwendeten NYC 2013 Taxi-Daten und eine Anleitung zum Ausführen von Code aus einem Jupyter Notebook im Spark-Cluster. 
-2. Außerdem müssen Sie die hier zu bewertenden Machine Learning-Modelle erstellen, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](spark-data-exploration-modeling.md) für Spark 1.6-Cluster oder Spark 2.0-Notebooks durcharbeiten. 
+2. Erstellen Sie die hier zu bewertenden Machine Learning-Modelle, indem Sie das Thema [Durchsuchen von Daten und Modellierung mit Spark](spark-data-exploration-modeling.md) für Spark 1.6-Cluster oder Spark 2.0-Notebooks durcharbeiten. 
 3. Die Spark 2.0-Notebooks verwenden ein zusätzliches Dataset für den Klassifizierungstask, nämlich das bekannte Dataset zur Pünktlichkeit von Flugreisestarts aus den Jahren 2011 und 2012. Eine Beschreibung der Notebooks und Links zu diesen finden Sie in der Datei [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) zu dem GitHub-Repository, das sie enthält. Der hier und in den verknüpften Notebooks zu findende Code ist darüber hinaus generisch und sollte in allen Spark-Clustern funktionieren. Wenn Sie HDInsight Spark nicht verwenden, weichen Clustereinrichtung und Verwaltungsschritte möglicherweise geringfügig von dem ab, was hier gezeigt wird. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -104,7 +104,7 @@ Legen Sie den Spark-Kontext fest, und importieren Sie die erforderlichen Bibliot
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>Vorab festgelegter Spark-Kontext und PySpark-Magics
-Der Kontext der mit Jupyter-Notebooks bereitgestellten PySpark-Kernel ist voreingestellt. Sie müssen nicht ausdrücklich den Spark- oder Hive-Kontext festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese sind standardmäßig verfügbar. Diese Kontexte sind:
+Der Kontext der mit Jupyter-Notebooks bereitgestellten PySpark-Kernel ist voreingestellt. Daher müssen Sie nicht ausdrücklich den Spark- oder Hive-Kontext festlegen, um mit der Anwendung, die Sie entwickeln, arbeiten zu können. Diese Kontexte sind standardmäßig verfügbar:
 
 * sc – für Spark 
 * sqlContext – für Hive
@@ -257,7 +257,7 @@ Der [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.pr
 Für die Ausführung der obigen Zelle benötigte Zeit: 5,37 Sekunden
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Erstellen von RDD-Objekten mit Featurearrays für die Eingabe in Modelle
-Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) -Objekten (robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
+Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) -Objekten (robuste verteilte Datasets) gespeichert. Die RDDs sind die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
 
 Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. 
 
@@ -397,7 +397,7 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 16,63 Sekunden
 ## <a name="score-classification-and-regression-random-forest-models"></a>Bewerten der Random Forest-Modelle für Klassifizierung und Regression
 Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten Random Forest-Modelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder in Blob Storage gespeichert werden.
 
-[Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forest können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
+[Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forest können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 
 [spark.mllib](https://spark.apache.org/mllib/) unterstützt Random Forest für binäre und Mehrklassenklassifizierung sowie für Regression mit kontinuierlichen und kategorischen Features. 
 
@@ -443,9 +443,9 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 31,07 Sekunden
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Bewerten der Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression
 Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten Gradient-Boosted-Strukturmodelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder in Blob Storage gespeichert werden. 
 
-**spark.mllib** unterstützt GBTs für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features. 
+**spark.mllib** unterstützt GBTS für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features. 
 
-[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTS können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Dieser Algorithmus kann auch in einer Mehrklassenklassifizierung verwendet werden.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

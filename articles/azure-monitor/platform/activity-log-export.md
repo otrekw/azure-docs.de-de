@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969659"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845469"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
-> [!WARNING]
-> Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> Die Methode für das Senden des Azure-Aktivitätsprotokolls an Azure Storage und Azure Event Hubs wurde in [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel wird die Legacymethode beschrieben, die gerade eingestellt wird. Einen Vergleich finden Sie in der [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](diagnostic-settings-legacy.md).
+
 
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
 
@@ -35,9 +36,10 @@ Das Archivieren des Aktivitätsprotokolls in einem Speicherkonto ist hilfreich, 
 ### <a name="storage-account"></a>Speicherkonto
 Wenn Sie Ihr Aktivitätsprotokoll archivieren, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-account-create.md), falls Sie noch keines besitzen. Um den Zugriff auf Überwachungsdaten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie auch Protokolle und Metriken in einem Speicherkonto archivieren, können Sie dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
 
-Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
-> [!NOTE]
->  Sie können derzeit keine Daten in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
+Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat. 
+
+> [!TIP]
+> Informationen zum Bereitstellen des Zugriffs auf ein Speicherkonto hinter einem geschützten virtuellen Netzwerk finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="event-hubs"></a>Event Hubs
 Wenn Sie Ihr Aktivitätsprotokoll an einen Event Hub senden, müssen Sie [einen Event Hub erstellen](../../event-hubs/event-hubs-create.md), falls Sie noch keinen besitzen. Wenn Sie bereits Aktivitätsprotokollereignisse an diesen Event Hubs-Namespace gestreamt haben, wird dieser Event Hub wiederverwendet.
@@ -72,9 +74,14 @@ Wenn Aufbewahrungsrichtlinien festgelegt werden, aber das Speichern von Protokol
 
 Erstellen oder bearbeiten Sie ein Protokollprofils im Azure-Portal mit der Option **In Event Hub exportieren**.
 
-1. Wählen Sie im Azure-Portal im Menü **Monitor** die Option **In Event Hubs exportieren** aus.
+1. Wählen Sie im Azure-Portal im Menü **Azure Monitor** die Option **Aktivitätsprotokoll** aus.
+3. Klicken Sie auf **Diagnoseeinstellungen**.
 
-    ![Schaltfläche „Exportieren“ im Portal](media/activity-log-export/portal-export.png)
+   ![Diagnoseeinstellungen](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Klicken Sie auf das lila Banner, um die Legacybenutzeroberfläche anzuzeigen.
+
+    ![Legacybenutzeroberfläche](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. Geben Sie auf dem daraufhin angezeigten Blatt die folgenden Informationen ein:
    * Regionen mit den zu exportierenden Ereignissen. Sie sollten alle Regionen auswählen, um sicherzustellen, dass Ihnen keine wichtigen Ereignisse entgehen, da das Aktivitätsprotokoll ein globales (kein regionales) Protokoll ist und daher den meisten Ereignissen keine Region zugeordnet ist.
