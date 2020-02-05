@@ -79,8 +79,6 @@
           href: face-resource-container-config.md
         - name: Verwenden von Containerinstanzen
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Verwenden des verbundenen Diensts für die Gesichtserkennung
-      href: vs-face-connected-service.md
 - name: Verweis
   items:
     - name: Gesichtserkennungs-API

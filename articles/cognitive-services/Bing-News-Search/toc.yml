@@ -36,7 +36,7 @@
           href: news-sdk-python-quickstart.md
         - name: Verwenden von Java
           href: news-sdk-java-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer Single-Page-Web-App
       href: tutorial-bing-news-search-single-page-app.md
@@ -56,10 +56,6 @@
       href: ../bing-web-search/resize-and-crop-thumbnails.md
     - name: Upgrade von v5 auf v7 der API
       href: bing-news-upgrade-guide-v5-to-v7.md
-    - name: Arbeiten mit Visual Studio
-      items:
-        - name: Verwenden des verbundenen Diensts für die Bing-News-Suche
-          href: vs-bing-news-search-connected-service.md
 - name: Konzepte
   items:
     - name: Senden von Suchabfragen
@@ -111,5 +107,5 @@
       href: language-support.md
     - name: Analyse für die Bing-News-Suche-API
       href: bing-news-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

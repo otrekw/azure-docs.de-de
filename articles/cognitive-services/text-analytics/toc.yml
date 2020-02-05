@@ -64,8 +64,6 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Verwenden von Kubernetes Service (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
-    - name: Verwenden des verbundenen Textanalysediensts
-      href: vs-text-connected-service.md
 - name: Verweis
   items:
     - name: Referenz zur Befehlszeilenschnittstelle
