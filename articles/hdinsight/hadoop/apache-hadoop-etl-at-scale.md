@@ -2,18 +2,18 @@
 title: Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL) – Azure HDInsight
 description: Erfahren Sie, wie ETL (Extrahieren, Transformieren und Laden) in HDInsight mit Apache Hadoop verwendet wird.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: ashishth
-ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: hdinsightactive
+ms.date: 01/27/2020
+ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435788"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846015"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -65,7 +65,7 @@ Azure Storage verfügt außerdem über eine WebHDFS-API-Ebene für den Blob-Spei
 
 Daten werden in der Regel mithilfe der PowerShell, des Azure Storage SDK oder mit AZCopy in Azure Storage erfasst.
 
-### <a name="azure-data-lake-storage"></a>Azure Data Lake Store
+### <a name="azure-data-lake-storage"></a>Azure Data Lake Storage
 
 Azure Data Lake Storage (ADLS) ist ein verwaltetes Repository mit Hyperskalierung für Analysedaten, das mit HDFS kompatibel ist.  ADLS verwendet ein Entwurfsparadigma, das HDFS ähnelt, und bietet unbegrenzte Skalierbarkeit hinsichtlich der Gesamtkapazität und der Größe einzelner Dateien. ADLS eignet sich besonders gut für die Arbeit mit großen Dateien, da eine große Datei auf mehreren Knoten gespeichert werden kann.  Das Partitionieren von Daten in ADLS erfolgt im Hintergrund.  Sie erhalten einen enormen Durchsatz, um Analyseaufträge mit Tausenden gleichzeitiger Executors durchführen können, die Hunderte Terabytes von Daten effizient lesen und schreiben.
 
@@ -85,13 +85,13 @@ Um Datasets in der Größenordnung von Terabytes hochzuladen, kann die Netzwerkw
 
 Azure SQL DW ist eine hervorragende Wahl, um bereinigte und vorbereitete Ergebnisse für zukünftige Analysen zu speichern.  Azure HDInsight kann verwendet werden, um diese Dienste für Azure SQL DW durchzuführen.
 
-Azure SQL Data Warehouse (SQL DW) ist ein für analytische Workloads optimierter relationaler Datenbankspeicher.  Azure SQL DW lässt sich am besten bei partitionierten Tabellen skalieren.  Tabellen können über mehrere Knoten hinweg partitioniert werden.  Azure SQL DW-Knoten werden zum Zeitpunkt der Erstellung ausgewählt.  Sie können gemäß dem Fakt skaliert werden, aber dies ist ein aktiver Prozess, der möglicherweise das Verschieben von Daten erfordert. Weitere Informationen finden Sie unter [SQL Data Warehouse – Compute](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+Azure SQL Data Warehouse (SQL DW) ist ein für analytische Workloads optimierter relationaler Datenbankspeicher.  Azure SQL DW lässt sich am besten bei partitionierten Tabellen skalieren.  Tabellen können über mehrere Knoten hinweg partitioniert werden.  Azure SQL DW-Knoten werden zum Zeitpunkt der Erstellung ausgewählt.  Sie können gemäß dem Fakt skaliert werden, aber dies ist ein aktiver Prozess, der möglicherweise das Verschieben von Daten erfordert. Weitere Informationen finden Sie unter [SQL Data Warehouse – Verwalten von Computeressourcen](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
 Apache HBase ist ein in Azure HDInsight verfügbarer Schlüssel-Wert-Speicher.  Apache HBase ist eine Open-Source-NoSQL-Datenbank, die auf Hadoop basiert und nach dem Vorbild von Google BigTable erstellt wurde. HBase bietet leistungsfähigen, wahlfreien Zugriff und starke Konsistenz für große Mengen unstrukturierter und teilstrukturierter Daten in einer schemalosen Datenbank, die nach Spaltenfamilien gegliedert ist.
 
-Daten werden in den Zeilen einer Tabelle gespeichert und die Daten in einer Zeile zu einer Spaltenfamilie zusammengefasst. HBase ist eine schemalose Datenbank in dem Sinne, dass weder die Spalten noch der Typ der darin gespeicherten Daten vor der Verwendung definiert werden müssen. Der Open-Source-Code lässt sich linear skalieren, sodass Petabytes von Daten auf Tausenden von Knoten verarbeitet werden können. HBase nutzt Datenredundanz, Stapelverarbeitung und andere Funktionen, die von verteilten Anwendungen im Hadoop-Ökosystem zur Verfügung gestellt werden.   
+Daten werden in den Zeilen einer Tabelle gespeichert und die Daten in einer Zeile zu einer Spaltenfamilie zusammengefasst. HBase ist eine schemalose Datenbank in dem Sinne, dass weder die Spalten noch der Typ der darin gespeicherten Daten vor der Verwendung definiert werden müssen. Der Open-Source-Code lässt sich linear skalieren, sodass Petabytes von Daten auf Tausenden von Knoten verarbeitet werden können. HBase nutzt Datenredundanz, Stapelverarbeitung und andere Funktionen, die von verteilten Anwendungen im Hadoop-Ökosystem zur Verfügung gestellt werden.
 
 HBase ist ein ausgezeichnetes Ziel für Sensor- und Protokolldaten zur zukünftigen Analyse.
 
@@ -107,7 +107,7 @@ Azure bietet drei verschiedene relationale Datenbanken als Platform-as-a-Service
 
 Diese Produkte skalieren zentral hoch, was bedeutet, dass sie durch Hinzufügen weiterer CPUs und von mehr Arbeitsspeicher skaliert werden.  Sie können sich auch entschließen, Premium-Datenträger mit den Produkten zu verwenden, um eine bessere E/A-Leistung zu erzielen.
 
-## <a name="azure-analysis-services"></a>Azure Analysis Services 
+## <a name="azure-analysis-services"></a>Azure Analysis Services
 
 Azure Analysis Services (AAS) ist eine analytische Daten-Engine, die zur Entscheidungsunterstützung und bei Geschäftsanalysen verwendet wird und die analytischen Daten für Geschäftsberichte und Clientanwendungen wie Power BI, Excel, Reporting Services-Berichte und andere Datenvisualisierungstools bereitstellt.
 
@@ -115,11 +115,11 @@ Analyse-Cubes lassen sich durch Ändern der Ebenen für jeden einzelnen Cube ska
 
 ## <a name="extract-and-load"></a>Extrahieren und Laden
 
-Sobald die Daten in Azure vorhanden sind, können Sie viele Dienste verwenden, um sie zu extrahieren und in andere Produkte zu laden.  HDInsight unterstützt Sqoop und Flume. 
+Sobald die Daten in Azure vorhanden sind, können Sie viele Dienste verwenden, um sie zu extrahieren und in andere Produkte zu laden.  HDInsight unterstützt Sqoop und Flume.
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Apache Sqoop ist ein Tool für die effiziente Datenübertragung zwischen strukturierten, halb strukturierten und unstrukturierten Datenquellen. 
+Apache Sqoop ist ein Tool für die effiziente Datenübertragung zwischen strukturierten, halb strukturierten und unstrukturierten Datenquellen.
 
 Sqoop verwendet MapReduce zum Importieren und Exportieren der Daten, um Parallelbetrieb und Fehlertoleranz bereitzustellen.
 
@@ -131,10 +131,10 @@ Apache Flume kann nicht mit Azure HDInsight verwendet werden.  Eine lokale Hadoo
 
 ## <a name="transform"></a>Transformieren
 
-Sobald Daten am ausgewählten Speicherort vorhanden sind, müssen Sie sie bereinigen, kombinieren oder für ein bestimmtes Verwendungsmuster vorbereiten.  Hive, Pig und Spark SQL sind alle eine gute Wahl für diese Art von Arbeit.  Sie werden alle unter HDInsight unterstützt. 
+Sobald Daten am ausgewählten Speicherort vorhanden sind, müssen Sie sie bereinigen, kombinieren oder für ein bestimmtes Verwendungsmuster vorbereiten.  Hive, Pig und Spark SQL sind alle eine gute Wahl für diese Art von Arbeit.  Sie werden alle unter HDInsight unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von Apache Hive als ETL-Tool](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Verwenden von Apache Hive als ETL-Tool](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Verschieben von Daten aus Azure SQL-Datenbank in eine Apache Hive-Tabelle](./apache-hadoop-use-sqoop-mac-linux.md)

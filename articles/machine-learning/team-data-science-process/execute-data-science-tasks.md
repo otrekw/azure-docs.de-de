@@ -2,24 +2,24 @@
 title: 'Ausführen von Data Science-Aufgaben: Team Data Science-Prozess'
 description: Erfahren Sie, wie ein Datenanalyst ein Data Science-Projekt auf nachverfolgbare Weise mit Versionskontrolle und Zusammenarbeit ausführen kann.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 984b03288b8dae644fc04a2cd78fb03a2e027f62
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772277"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722202"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Ausführen von Data Science-Aufgaben: Durchsuchen, Modellieren und Bereitstellen
 
-Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und Bereitstellen. In diesem Artikel wird gezeigt, wie mit den Hilfsprogrammen **IDEAR (Interactive Data Exploration, Analysis, and Reporting)** und **AMAR (Automated Modeling and Reporting)** verschiedene häufige Data Science-Aufgaben wie interaktive Datendurchsuchung, Datenanalyse, Berichterstellung und Modellbildung ausgeführt werden. Es werden auch Optionen zum Bereitstellen eines Modells in einer Produktionsumgebung mit einer Vielzahl von Toolkits und Datenplattformen vorgestellt, etwa mit den folgenden:
+Zu den typischen Data Science-Aufgaben gehören das Durchsuchen, Modellieren und Bereitstellen. In diesem Artikel wird gezeigt, wie mit den Hilfsprogrammen **IDEAR (Interactive Data Exploration, Analysis, and Reporting)** und **AMAR (Automated Modeling and Reporting)** verschiedene häufige Data Science-Aufgaben wie interaktive Datendurchsuchung, Datenanalyse, Berichterstellung und Modellbildung ausgeführt werden. Zu den Optionen für die Bereitstellung eines Modells in einer Produktionsumgebung können die folgenden gehören:
 
 - [Azure Machine Learning](../index.yml)
 - [SQL Server mit ML-Diensten](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)

@@ -4,14 +4,14 @@ description: Machen Sie sich mit Clientkonfigurationsoptionen zur Verbesserung d
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261306"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720995"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -40,7 +40,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
    * Direkter Modus
 
-     Der direkte Modus unterstützt Konnektivität über TCP- und HTTPS-Protokolle und ist der Standardkonnektivitätsmodus, wenn Sie das [Microsoft.Azure.Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md) verwenden.
+     Der direkte Modus unterstützt Konnektivität über das TCP-Protokoll und ist der Standardkonnektivitätsmodus, wenn Sie das [Microsoft.Azure.Cosmos/.Net V3 SDK](sql-api-sdk-dotnet-standard.md) verwenden.
 
      Im Gatewaysmodus verwendet Cosmos DB Port 443 und die Ports 10250, 10255 und 10256, wenn Sie die API for MongoDB von Azure Cosmos DB verwenden. Der Port 10250 wird einer MongoDB-Standardinstanz ohne Georeplikation zugeordnet, und die Ports 10255/10256 werden der MongoDB-Instanz mit Georeplikationsfunktionen zugeordnet. Wenn Sie TCP im direkten Modus verwenden, müssen Sie zusätzlich zu den Gatewayports sicherstellen, dass der Portbereich zwischen 10000 und 20000 offen ist, da Azure Cosmos DB dynamische TCP-Ports verwendet. Wenn diese Ports nicht geöffnet sind und Sie versuchen, TCP zu verwenden, wird der Fehler „503 – Dienst nicht verfügbar“ angezeigt. Die folgende Tabelle zeigt die für andere APIs verfügbaren Konnektivitätsmodi und die Benutzer der Dienstports für jede API an:
 
@@ -49,9 +49,9 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
      |Gateway  |   HTTPS    |  Alle SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
      |Direkt    |     TCP    |  .NET SDK    | Ports im Bereich 10.000-20.000 |
 
-     Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Sowohl Direct TCP als auch HTTPS nutzen SSL für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
+     Azure Cosmos DB bietet ein einfaches und offenes RESTful-Programmiermodell über HTTPS. Darüber hinaus ist ein effizientes TCP-Protokoll vorhanden, das ebenfalls über ein RESTful-Kommunikationsmodell verfügt und über das .NET-Client-SDK verfügbar ist. Das TCP-Protokoll nutzt SSL für die erste Authentifizierung und Verschlüsselung des Datenverkehrs. Die beste Leistung erzielen Sie mit dem TCP-Protokoll.
 
-     Für SDK V3 wird der Konnektivitätsmodus während der Erstellung der CosmosClient-Instanz als Teil von CosmosClientOptions konfiguriert.
+     Für SDK V3 wird der Konnektivitätsmodus während der Erstellung der CosmosClient-Instanz als Teil von CosmosClientOptions konfiguriert. Denken Sie daran, dass der direkte Modus der Standardmodus ist.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
