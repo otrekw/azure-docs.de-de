@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848305"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712522"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -221,7 +221,7 @@ Nachdem Sie MFA für einen RADIUS-Client mithilfe der NPS-Erweiterung aktiviert 
 
 Wenn es Benutzer gibt, die nicht für MFA registriert sind, können Sie bestimmen, was geschieht, wenn sie versuchen, sie zu authentifizieren. Verwenden Sie die Registrierungseinstellung *REQUIRE_USER_MATCH* im Registrierungspfad *HKLM\Software\Microsoft\AzureMFA* zum Steuern des Verhaltens des Features. Diese Einstellung hat eine einzelne Konfigurationsoption:
 
-| Schlüssel | Wert | Standard |
+| Key | value | Standard |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Nicht festgelegt (gleichwertig mit TRUE) |
 
@@ -273,7 +273,7 @@ Die Zeitstempel „Valid-From“ und „Valid-Until“ in einem vom Menschen les
 
 ---
 
-### <a name="why-cant-i-sign-in"></a>Warum kann ich mich nicht anmelden?
+### <a name="why-cannot-i-sign-in"></a>Warum kann ich mich nicht anmelden?
 
 Überprüfen Sie, ob Ihr Kennwort nicht abgelaufen ist. Die NPS-Erweiterung unterstützt nicht das Ändern von Kennwörtern im Rahmen des Anmeldeworkflows. Wenden Sie sich an das IT-Team Ihrer Organisation, um weitere Unterstützung zu erhalten.
 

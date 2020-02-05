@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4111945d11fd9b42ae8a7daba9ec993a875a5fd0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 229f49255fbc72f74f07b1e7098417d136f35c27
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423712"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775173"
 ---
 # <a name="protected-web-api---move-to-production"></a>Geschützte Web-API: Übergang in die Produktion
 
@@ -31,14 +30,12 @@ Da Sie nun wissen, wie Sie Ihre Web-API schützen, erfahren Sie hier nun, wie Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Downstream-APIs aufrufen:
+Erfahren Sie, wie Sie eine Downstream-API aufrufen.
 
 > [!div class="nextstepaction"]
-> [Scenario: Web API that calls web APIs (Szenario: Web-API, die Web-APIs aufruft)](scenario-web-api-call-api-overview.md)
+> [Szenario: Web-API ruft Downstream-APIs auf](scenario-web-api-call-api-overview.md)
 
-
-Weitere Informationen finden Sie in Tutorials und Beispielen:
-
+Weitere Informationen finden Sie in Tutorials und Beispielen.
 
 > [!div class="nextstepaction"]
 > [Aufrufen einer geschützten API mit einem Daemon](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)

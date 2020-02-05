@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8238d2b417dbe03ad0623e472f1a239940c1bc8
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: e7296c63a467b2f53550b3e609cf1146244cf933
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681377"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712129"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Überprüfen des Status der Benutzerbereitstellung
 
@@ -60,7 +60,7 @@ Die Bereitstellungsprotokolle zeichnen alle Vorgänge auf, die vom Bereitstellun
 Weitere Informationen zum Lesen der Bereitstellungsprotokolle im Azure-Portal finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Wie lange dauert die Bereitstellung von Benutzern?
-Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (normalerweise alle 40 Minuten) automatisch Benutzerkonten basierend beispielsweise auf der [Benutzer- und Gruppenzuweisung](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) in der App bereit und aktualisiert sie.
+Bei Verwendung der automatischen Benutzerbereitstellung mit einer Anwendung stellt Azure AD in regelmäßigen Zeitintervallen (normalerweise alle 40 Minuten) automatisch Benutzerkonten basierend beispielsweise auf der [Benutzer- und Gruppenzuweisung](assign-user-or-group-access-portal.md) in der App bereit und aktualisiert sie.
 
 Die für die Bereitstellung eines bestimmten Benutzers benötigte Zeit hängt hauptsächlich davon ab, ob mit dem Bereitstellungsauftrag ein Startzyklus oder ein inkrementeller Zyklus durchgeführt wird.
 
@@ -102,7 +102,7 @@ Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss eines **S
 
 - Die Anzahl und Größe der zugewiesenen Gruppen. Das Synchronisieren zugewiesener Gruppen dauert länger als das Synchronisieren von Benutzern. Sowohl die Anzahl als auch die Größe der zugewiesenen Gruppen beeinflussen die Leistung. Wenn für eine Anwendung [Zuordnungen für die Synchronisierung von Gruppenobjekten aktiviert sind](customize-application-attributes.md#editing-group-attribute-mappings), werden zusätzlich zu den Benutzern auch Gruppeneigenschaften wie Gruppennamen und Mitgliedschaften synchronisiert. Diese zusätzlichen Synchronisierungen dauern länger als die ausschließliche Synchronisierung von Benutzerobjekten.
 
-- Wenn die Leistung zu einem Problem wird und Sie versuchen, die Mehrzahl der Benutzer und Gruppen in Ihrem Mandanten bereitzustellen, verwenden Sie Bereichsfilter. Mit Bereichsfiltern können Sie die Daten, die der Bereitstellungsdienst aus Azure AD extrahiert, fein abstimmen, indem Sie Benutzer anhand bestimmter Attributwerte herausfiltern. Weitere Informationen zu Bereichsfiltern finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+- Wenn die Leistung zu einem Problem wird und Sie versuchen, die Mehrzahl der Benutzer und Gruppen in Ihrem Mandanten bereitzustellen, verwenden Sie Bereichsfilter. Mit Bereichsfiltern können Sie die Daten, die der Bereitstellungsdienst aus Azure AD extrahiert, fein abstimmen, indem Sie Benutzer anhand bestimmter Attributwerte herausfiltern. Weitere Informationen zu Bereichsfiltern finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](define-conditional-rules-for-provisioning-user-accounts.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)
+[Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md)

@@ -3,36 +3,36 @@ title: Featureauswahl im Team Data Science-Prozess
 description: Erläutert den Grund zur Featureauswahl und stellt Beispiele der Rolle im Datenaufbereitungsprozess für das maschinelle Lernen vor.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: da5da64538ceaf906388c49963c0d5115e1b5ab9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480214"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716683"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Featureauswahl im Team Data Science-Prozess (TDSP)
 In diesem Artikel werden die Gründe zur Featureauswahl erläutert und Beispiele der Rolle im Datenaufbereitungsprozess für maschinelles Lernen vorgestellt. Diese Beispiele stammen aus Azure Machine Learning Studio.
 
 Entwicklung und Auswahl von Features gehören zum Team Data Science-Prozess (TDSP), der unter [Was ist der Team Data Science-Prozess?](overview.md) beschrieben wird. Entwicklung und Auswahl von Features sind Teile des Schritts **Entwickeln von Features** des TDSP.
 
-* **Featureentwicklung:** Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
-* **Featureauswahl:** Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
+* **Featureentwicklung**: Bei diesem Prozess wird versucht, zusätzliche relevante Features aus den vorhandenen Rohfeatures in den Daten zu erstellen und die Vorhersageleistung des Lernalgorithmus zu steigern.
+* **Featureauswahl**: Dieser Prozess wählt bei dem Versuch, die Anzahl von Dimensionen des Trainingsproblems zu verringern, die wichtigste Teilmenge der ursprünglichen Datenfeatures aus.
 
 Normalerweise wird die **Featureentwicklung** zuerst ausgeführt, um zusätzliche Features zu generieren, und anschließend wird die **Featureauswahl** ausgeführt, um irrelevante, redundante oder hoch korrelierte Features zu entfernen.
 
 ## <a name="filter-features-from-your-data---feature-selection"></a>Filtern von Features aus Ihren Daten – Featureauswahl
-Die Featureauswahl ist ein Prozess, der häufig für die Entwicklung von Trainingsdatasets für die Vorhersagemodellierung, wie z. B. Klassifizierung oder Regressionsaufgaben, angewendet wird. Das Ziel ist, eine Teilmenge der Features aus dem ursprünglichen Dataset auszuwählen, die dessen Dimensionen verringert, indem sie einen minimalen Satz von Features zur Darstellung der maximalen Abweichung in den Daten verwendet. Diese Teilmenge der Features wird zum Trainieren des Modells verwendet. Die Featureauswahl dient zwei wesentlichen Zwecken.
+Die Featureauswahl kann für Klassifizierungs- oder Regressionsaufgaben verwendet werden. Das Ziel ist, eine Teilmenge der Features aus dem ursprünglichen Dataset auszuwählen, die dessen Dimensionen verringert, indem sie einen minimalen Satz von Features zur Darstellung der maximalen Abweichung in den Daten verwendet. Diese Teilmenge der Features wird zum Trainieren des Modells verwendet. Die Featureauswahl dient zwei wesentlichen Zwecken.
 
 * Zunächst steigert die Featureauswahl häufig die Klassifizierungsgenauigkeit durch Eliminieren irrelevanter, redundanter oder hochgradig korrelierter Features.
-* Zweitens sinkt die Anzahl von Features, was den Modelltrainingsvorgang effizienter gestaltet. Effizienz ist besonders wichtig für Lernmodelle, deren Training teuer ist, wie z.B. Support Vector Machines.
+* Zweitens sinkt die Anzahl von Features, was den Modelltrainingsvorgang effizienter gestaltet. Effizienz ist wichtig für Lernmodelle, deren Training teuer ist, z. B. Support Vector Machines.
 
 Obwohl die Featureauswahl die Anzahl von Features im Dataset reduzieren soll, die zum Trainieren des Modells verwendet werden, wird sie nicht als „Reduzierung der Anzahl von Dimensionen“ bezeichnet. Featureauswahlmethoden extrahieren eine Teilmenge der ursprünglichen Features in den Daten, ohne sie zu ändern.  Verfahren zur Reduktion der Anzahl von Dimensionen nutzen entwickelte Features, die die ursprünglichen Features transformieren können und sie so ändern. Beispiele für Verfahren zur Verringerung der Anzahl von Dimensionen sind zum Beispiel Principal Component Analysis, kanonische Korrelationsanalyse und Singular Value Decomposition.
 

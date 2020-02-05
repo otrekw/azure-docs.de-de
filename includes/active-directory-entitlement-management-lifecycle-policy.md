@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389381"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694297"
 ---
 ## <a name="lifecycle"></a>Lebenszyklus
 
@@ -33,7 +33,7 @@ Auf der Registerkarte **Lebenszyklus** geben Sie an, wann die Zuweisung eines Be
 
 1. Um Benutzern zu erlauben, ihre Zuweisungen zu erweitern, setzen Sie **Benutzern die Verlängerung des Zugriffs erlauben** auf **Ja**.
 
-    Wenn Verlängerungen in der Richtlinie zulässig sind, erhält der Benutzer 14 Tage und auch 1 Tag vor Ablauf seiner Zugriffspaketzuweisung eine E-Mail, die ihn auffordert, die Zuweisung verlängern zu lassen.
+    Wenn Verlängerungen in der Richtlinie zulässig sind, erhält der Benutzer 14 Tage und auch 1 Tag vor Ablauf seiner Zugriffspaketzuweisung eine E-Mail, die ihn auffordert, die Zuweisung verlängern zu lassen. Wenn der Benutzer eine Anforderung zum Erweitern des Zugriffs sendet, muss das Verlängerungsdatum vor oder nach dem Ablauf der Zuweisungen liegen, wie in der Richtlinie definiert wurde, mit der dem Benutzer Zugriff auf das Zugriffspaket gewährt wurde. Wenn die Richtlinie beispielsweise angibt, dass Zuweisungen am 30. Juni ablaufen sollen, ist die maximale Verlängerung, die ein Benutzer anfordern kann, der 30. Juni.
 
     Wenn der Zugriff eines Benutzers verlängert wird, kann er das Zugriffspaket nach dem angegebenen Verlängerungsdatum (Datum, das in der Zeitzone des Benutzers festgelegt ist, der die Richtlinie erstellt hat) nicht mehr anfordern.
 

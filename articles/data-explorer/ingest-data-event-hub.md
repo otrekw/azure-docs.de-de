@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779949"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773935"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -118,6 +118,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
     | Event Hub | *test-hub* | Der von Ihnen erstellte Event Hub. |
     | Consumergruppe | *test-group* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
     | Ereignissystemeigenschaften | Auswählen relevanter Eigenschaften | Die [Event Hub-Systemeigenschaften](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Wenn pro Ereignisnachricht mehrere Datensätze vorhanden sind, werden die Systemeigenschaften dem ersten Datensatz hinzugefügt. Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/tables#create-table) oder [aktualisieren](/azure/kusto/management/tables#alter-table-and-alter-merge-table) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. |
+    | Komprimierung | *None* | Der Komprimierungstyp der Event Hub-Nachrichtennutzlast. Unterstützte Komprimierungstypen: *None, GZip*.|
     | | |
 
     **Zieltabelle:**
@@ -128,15 +129,15 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Tabelle | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
-    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE und TXT. Unterstützte Komprimierungsoptionen: GZip |
-    | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen. Für JSON, MULTILINE JSON oder AVRO erforderlich, für andere Formate optional|
+    | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC und PARQUET. |
+    | Spaltenzuordnung | *TestMapping* | Die [Zuordnung](/azure/kusto/management/mappings), die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen. Erforderlich für JSON oder MULTILINE JSON; für andere Formate optional.|
     | | |
 
     > [!NOTE]
     > * Wählen Sie **My data includes routing info** (Meine Daten enthalten Routinginformationen) aus, um dynamisches Routing zu verwenden. Dabei enthalten Ihre Daten die erforderlichen Routinginformationen, wie in den Kommentaren der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) zu sehen. Werden sowohl statische als auch dynamische Eigenschaften festgelegt, setzen die dynamischen Eigenschaften die statischen außer Kraft. 
     > * Nur Ereignisse, die nach dem Erstellen der Datenverbindung in die Warteschlange eingereiht werden, werden erfasst.
-    > * Aktivieren Sie die GZip-Komprimierung für das statische Routing, indem Sie eine [Supportanfrage im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) öffnen. Aktivieren Sie die GZip-Komprimierung für dynamisches Routing, wie es in der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) gezeigt wird. 
-    > * Avro-Format- und Ereignissystemeigenschaften werden bei der Komprimierungsnutzlast nicht unterstützt.
+    > * Sie können den Komprimierungstyp auch über dynamische Eigenschaften festlegen, wie in der [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) gezeigt wird.
+    > * Die Formate Avro, ORC und PARQUET sowie Ereignissystemeigenschaften werden bei der GZip-Komprimierungsnutzlast nicht unterstützt.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

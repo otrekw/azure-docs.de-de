@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895180"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719091"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Erstellen hochverfügbarer Anwendungen mit zonenredundantem Speicher (Zone-Redundant Storage, ZRS)
 
@@ -34,6 +34,7 @@ Für Konten vom Typ „Allgemein v2“ ist ZRS allgemein in den folgenden Region
 - Europa, Westen
 - Frankreich, Mitte
 - Japan, Osten
+- Südafrika, Norden
 - UK, Süden
 - USA, Mitte
 - USA, Osten
@@ -88,7 +89,7 @@ Während einer Livemigration können Sie Ihr Speicherkonto weiter verwenden, wä
 Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
 
 - Auch wenn Microsoft auf Ihre Anforderung zur Livemigration sofort reagiert, gibt es keine Garantie, zu welchem Zeitpunkt eine Livemigration abgeschlossen sein wird. Wenn Ihre Daten bis zu einem bestimmten Datum zu ZRS migriert werden müssen, empfiehlt Microsoft die Durchführung einer manuellen Migration. Grundsätzlich gilt: Je mehr Daten in Ihrem Konto vorhanden sind, desto länger dauert die Migration dieser Daten. 
-- Die Livemigration wird nur für Speicherkonten unterstützt, die LRS- oder GRS-Replikation nutzen. Wenn Ihr Konto RA-GRS verwendet, müssen Sie zuerst den Replikationstyp Ihres Kontos auf LRS oder GRS ändern, bevor Sie fortfahren. Dieser Zwischenschritt entfernt vor der Migration den sekundären schreibgeschützten Endpunkt, der von RA-GRS bereitgestellt wird.
+- Die Livemigration wird nur für Speicherkonten unterstützt, die LRS-Replikation nutzen. Wenn Ihr Konto GRS oder RA-GRS verwendet, müssen Sie zuerst den Replikationstyp des Kontos auf LRS ändern, bevor Sie den Vorgang fortsetzen. Durch diesen Zwischenschritt wird der von GRS/RA-GRS bereitgestellte sekundäre Endpunkt entfernt.
 - Ihr Konto muss Daten enthalten.
 - Sie können Daten nur innerhalb der gleichen Region migrieren. Wenn Sie Ihre Daten in ein ZRS-Konto zu einer anderen Region als das Quellkonto migrieren möchten, müssen Sie eine manuelle Migration ausführen.
 - Nur Standard-Speicherkontotypen unterstützen die Livemigration. Premium-Speicherkonten müssen manuelle migriert werden.
@@ -99,14 +100,14 @@ Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
 Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) anfordern. Wählen Sie im Portal das Speicherkonto aus, das Sie in ZRS konvertieren möchten.
 1. Wählen Sie **Neue Supportanfrage** aus.
 2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an. Wählen Sie im Abschnitt **Dienst** den Eintrag **Speicherkontoverwaltung** und die Ressource aus, die Sie in ZRS konvertieren möchten. 
-3. Klicken Sie auf **Weiter**. 
+3. Wählen Sie **Weiter** aus. 
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an: 
     - **Schweregrad**: Behalten Sie den Standardwert bei.
     - **Problemtyp**: Wählen Sie **Datenmigration** aus.
-    - **Kategorie**: Wählen Sie **Zu ZRS migrieren** aus.
+    - **Kategorie:** Wählen Sie **Zu ZRS migrieren** aus.
     - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
     - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“. 
-5. Klicken Sie auf **Weiter**.
+5. Wählen Sie **Weiter** aus.
 6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
 7. Klicken Sie auf **Erstellen**.
 
@@ -130,9 +131,9 @@ Nach Abschluss der Migration ändert sich der Replikationstyp der Konten in „Z
 
 ZRS unterstützt nur Allgemein v2-Konten. Bevor Sie also eine Anforderung für eine Livemigration zu ZRS übermitteln, sollten Sie Ihre Konten auf „Allgemein v2“ upgraden. Weitere Informationen finden Sie unter [Übersicht über Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-account-overview) und [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 
-**Kann ich eine Livemigration meines georedundanten Speicherkontos mit Lesezugriff (RA-GRS) zu ZRS anfordern?**
+**Kann ich eine Livemigration meines georedundanten Speicherkontos oder meines georedundanten Speicherkontos mit Lesezugriff (GRS/RA-GRS) zu ZRS anfordern?**
 
-Bevor Sie eine Livemigration zu ZRS anfordern, sollten Sie sicherstellen, dass Ihre Anwendungen oder Workloads keinen Zugriff auf die schreibgeschützten sekundären Endpunkte mehr benötigen. Ändern Sie außerdem den Replikationstyp Ihres Speicherkontos in „Georedundanter Speicher (GRS)“. Weitere Informationen finden Sie unter [Ändern der Replikationsstrategie](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy).
+Die Livemigration wird nur für Speicherkonten unterstützt, die LRS-Replikation nutzen. Wenn Ihr Konto GRS oder RA-GRS verwendet, müssen Sie zuerst den Replikationstyp des Kontos auf LRS ändern, bevor Sie den Vorgang fortsetzen. Durch diesen Zwischenschritt wird der von GRS/RA-GRS bereitgestellte sekundäre Endpunkt entfernt. Außerdem: Bevor Sie eine Livemigration zu ZRS anfordern, sollten Sie sicherstellen, dass Ihre Anwendungen oder Workloads keinen Zugriff auf die schreibgeschützten sekundären Endpunkte mehr benötigen. Ändern Sie auch den Replikationstyp Ihres Speicherkontos in „Georedundanter Speicher (GRS)“. Weitere Informationen finden Sie unter [Ändern der Replikationsstrategie](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy).
 
 **Kann ich eine Livemigration von einem Speicherkonto zu ZRS in einer anderen Region anfordern?**
 

@@ -14,13 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888778"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834245"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -45,7 +44,7 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
 
      > [!NOTE]
-     > Für jede Anwendungsrollendefinition in diesem Manifest muss eine andere gültige GUID für die `id`-Eigenschaft angegeben sein. 
+     > Für jede Anwendungsrollendefinition in diesem Manifest muss im Kontext des Manifests eine andere gültige GUID für die `id`-Eigenschaft angegeben sein.    
      > 
      > Die `value`-Eigenschaft der einzelnen Anwendungsrollendefinition muss exakt mit den Zeichenfolgen übereinstimmen, die im Code in der Anwendung verwendet werden. Die `value`-Eigenschaft darf keine Leerzeichen enthalten. Ist dies der Fall, erhalten Sie einen Fehler, wenn Sie das Manifest speichern.
      

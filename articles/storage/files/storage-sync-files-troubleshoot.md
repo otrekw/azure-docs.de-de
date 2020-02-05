@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 527d0a602b9da1f2d4f21890e896eba9a951494b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545040"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842715"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -298,6 +298,15 @@ Beachten Sie, dass die Azure-Dateisynchronisierung Änderungen, die Sie direkt i
 Wenn im Portal die PerItemErrorCount auf dem Server oder „Dateien ohne Synchronisierung“ für eine bestimmte Synchronisierungssitzung einen größeren Wert als „0“ enthält, bedeutet dies, dass bei einigen Elementen ein Synchronisierungsfehler aufgetreten ist. Dateien und Ordner können Merkmale aufweisen, die eine Synchronisierung verhindern. Diese Merkmale können dauerhaft sein und eine explizite Aktion zum Fortsetzen der Synchronisierung erfordern, z.B. das Entfernen von nicht unterstützten Zeichen aus einem Datei- oder Ordnernamen. Sie können auch vorübergehend sein, d.h., die Synchronisierung der Datei oder des Ordners wird automatisch fortgesetzt. Beispielsweise wird die Synchronisierung von Dateien mit offenen Handles automatisch fortgesetzt, wenn die Datei geschlossen ist. Wenn die Azure-Dateisynchronisierungs-Engine ein solches Problem erkennt, wird ein Fehlerprotokoll erstellt, das für die Auflistung der Elemente, die derzeit nicht ordnungsgemäß synchronisiert werden, analysiert werden kann.
 
 Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsReport.ps1** aus (im Agent-Installationsverzeichnis des Azure-Dateisynchronisierungs-Agents), um Dateien zu identifizieren, bei denen die Synchronisierung aufgrund von offenen Handles, nicht unterstützten Zeichen oder anderen Problemen zu Fehlern führte. Das ItemPath-Feld gibt den Speicherort der Datei in Bezug auf das Stammverzeichnis für die Synchronisierung an. Eine Liste von allgemeinen Synchronisierungsfehlern mit Schritten zur Fehlerbehebung finden Sie weiter unten.
+
+> [!Note]  
+> Wenn das Skript „ FileSyncErrorsReport.ps1“ die Meldung „Es wurden keine Dateifehler gefunden“ zurückgibt oder darin keine Fehler auf Elementebene für die Synchronisierungsgruppe aufgelistet werden, ist die Ursache eine der folgenden:
+>
+>- Ursache 1: Bei der letzten abgeschlossenen Synchronisierungssitzung gab es keine Fehler auf Elementebene. Das Portal sollte bald aktualisiert werden, damit „0 Dateien ohne Synchronisierung“ angezeigt wird. 
+>   - Überprüfen Sie die [Ereignis-ID 9102](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) im Telemetrieereignisprotokoll, um zu bestätigen, dass „PerItemErrorCount“ gleich „0“ ist. 
+>
+>- Ursache 2: Das Ereignisprotokoll „ItemResults“ wurde auf dem Server aufgrund von zu vielen Fehlern auf Elementebene überschrieben, und das Protokoll enthält keine Fehler mehr für diese Synchronisierungsgruppe.
+>   - Zur Verhinderung dieses Problems vergrößern Sie das Ereignisprotokoll „ItemResults“. Das Ereignisprotokoll „ItemResults“ ist in der Ereignisanzeige unter „Applications and Services Logs\Microsoft\FileSync\Agent“ zu finden. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen
 **ItemResults-Protokoll – Synchronisierungsfehler nach Element**  
@@ -1075,7 +1084,35 @@ Wenn Tieringfehler von Dateien auf Azure Files auftreten:
        - Geben Sie an einer Eingabeaufforderung mit erhöhten Rechten `fltmc` ein. Überprüfen Sie, ob die Dateisystem-Filtertreiber „StorageSync.sys“ und „StorageSyncGuard.sys“ aufgelistet sind.
 
 > [!NOTE]
-> Eine Ereignis-ID 9003 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Tiering einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Die Betriebs- und Diagnoseereignisprotokolle sollten verwendet werden, wenn zusätzliche Informationen zum Diagnostizieren eines Problems benötigt werden.
+> Eine Ereignis-ID 9003 wird einmal pro Stunde im Telemetrieereignisprotokoll protokolliert, wenn beim Tiering einer Datei ein Fehler auftritt (pro Fehlercode wird ein Ereignis protokolliert). Informieren Sie sich im Abschnitt [Tieringfehler und deren Behebung](#tiering-errors-and-remediation), ob für den Fehlercode Schritte zur Behebung aufgeführt sind.
+
+### <a name="tiering-errors-and-remediation"></a>Tieringfehler und deren Behebung
+
+| HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
+|---------|-------------------|--------------|-------|-------------|
+| 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie gerade verwendet wird. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, wenn sie nicht mehr verwendet wird. |
+| 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie von der Synchronisierung ausgeschlossen ist. | Keine weiteren Maßnahmen erforderlich. Für Dateien in der Synchronisierungsausschlussliste kann kein Tiering durchgeführt werden. |
+| 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie auf dem Server nicht gefunden wurde. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler weiterhin auftritt, überprüfen Sie, ob die Datei auf dem Server vorhanden ist. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie in der Azure-Dateifreigabe gelöscht wurde. | Keine weiteren Maßnahmen erforderlich. Die Datei sollte bei Ausführung der nächsten Downloadsynchronisierungssitzung auf dem Server gelöscht werden. |
+| 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Bei der Datei ist aufgrund eines Netzwerkproblems ein Tieringfehler aufgetreten. | Keine weiteren Maßnahmen erforderlich. Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
+| 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Bei der Datei ist aufgrund eines Netzwerkproblems ein Tieringfehler aufgetreten. | Keine weiteren Maßnahmen erforderlich. Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
+| 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Bei der Datei ist aufgrund des Fehlers „Zugriff verweigert“ ein Tieringfehler aufgetreten. Dieser Fehler kann auftreten, wenn sich die Datei in einem schreibgeschützten DFS-R-Replikationsordner befindet. | Die Azure-Dateisynchronisierung unterstützt keine Serverendpunkte in schreibgeschützten DFS-R-Replikationsordnern. Weitere Informationen finden Sie im [Planungshandbuch](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs). |
+| 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Bei der Datei ist aufgrund eines Netzwerkproblems ein Tieringfehler aufgetreten. | Keine weiteren Maßnahmen erforderlich. Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
+| 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Bei der Datei ist ein Tieringfehler aufgetreten, weil die Dateigröße kleiner als die unterstützte Größe ist. | Wenn die Agentversion kleiner als 9.0 ist, beträgt die minimal unterstützte Dateigröße 64 KB. Wenn die Agentversion 9.0 oder höher ist, basiert die unterstützte minimale Dateigröße auf der Größe des Dateisystemclusters (doppelte Größe des Dateisystemclusters). Wenn die Größe des Dateisystemclusters z. B. 4 KB beträgt, ist die minimale Dateigröße 8 KB. |
+| 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Bei der Datei ist aufgrund eines Azure-Speicherproblems ein Tieringfehler aufgetreten. | Wenn der Fehler weiterhin auftritt, öffnen Sie eine Supportanfrage. |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie gleichzeitig rückgerufen wurde. | Keine weiteren Maßnahmen erforderlich. Das Tiering der Datei wird nach Abschluss des Rückrufs durchgeführt, wenn die Datei nicht mehr verwendet wird. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie mit der Azure-Dateifreigabe nicht synchronisiert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
+| 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Bei der Datei ist ein Tieringfehler aufgetreten, weil der Cloudtiering-Filtertreiber (storagesync.sys) nicht ausgeführt wird. | Öffnen Sie zur Behebung dieses Problems eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus: „fltmc load storagesync“. <br>Wenn das Laden des Filtertreibers „storagesync“ bei Ausführung des Befehls „fltmc“ fehlschlägt, deinstallieren Sie den Azure-Dateisynchronisierungs-Agent, starten Sie den Server neu, und installieren Sie den Agent neu. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Bei der Datei ist aufgrund von unzureichendem Speicherplatz auf dem Volume, auf dem sich der Serverendpunkt befindet, ein Tieringfehler aufgetreten. | Um dieses Problem zu beheben, geben Sie mindestens 100 MB Speicherplatz auf dem Volume frei, auf dem sich der Serverendpunkt befindet. |
+| 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie mit der Azure-Dateifreigabe nicht synchronisiert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
+| 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Bei der Datei ist ein Tieringfehler aufgetreten, weil es sich dabei um einen nicht unterstützten Analysepunkt handelt. | Wenn es sich bei der Datei um einen Analysepunkt für Datendeduplizierung handelt, führen Sie die Schritte im [Planungshandbuch](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication) aus, um den Support für Datendeduplizierung zu aktivieren. Dateien mit anderen Analysepunkten als Datendeduplizierung werden nicht unterstützt, und es kann damit kein Tiering durchgeführt werden.  |
+| 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie geändert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie mit der Azure-Dateifreigabe nicht synchronisiert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
+| 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Bei der Datei ist aufgrund eines Netzwerkproblems ein Tieringfehler aufgetreten. | Keine weiteren Maßnahmen erforderlich. Falls der Fehler weiterhin auftritt, überprüfen Sie die Netzwerkverbindung mit der Azure-Dateifreigabe. |
+| 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Bei der Datei ist ein Tieringfehler aufgetreten, weil sie geändert wurde. | Keine weiteren Maßnahmen erforderlich. Bei der Datei wird das Tiering durchgeführt, sobald sie mit der Azure-Dateifreigabe synchronisiert wurde. |
+| 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Bei der Datei ist aufgrund unzureichender Systemressourcen ein Tieringfehler aufgetreten. | Wenn der Fehler weiterhin auftritt, überprüfen Sie, welche Anwendung oder welcher Kernelmodustreiber zu viele Systemressourcen beansprucht. |
+
+
 
 ### <a name="how-to-troubleshoot-files-that-fail-to-be-recalled"></a>Beheben von Rückruffehlern bei Dateien  
 Wenn bei Dateien Rückruffehler auftreten:

@@ -3,26 +3,26 @@ title: Lebenszyklus des Team Data Science-Prozesses
 description: Der Team Data Science-Prozess (TDSP) bietet einen empfohlenen Lebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053242"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720451"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Lebenszyklus des Team Data Science-Prozesses
 
-Der Team Data Science-Prozess (TDSP) bietet einen empfohlenen Lebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können. Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden. Wenn Sie einen anderen Data Science-Lebenszyklus verwenden, z.B. [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) oder einen benutzerdefinierten Prozess Ihrer Organisation, können Sie trotzdem den aufgabenbasierten TDSP verwenden. 
+Der Team Data Science-Prozess (TDSP) bietet einen empfohlenen Lebenszyklus, mit dem Sie Ihre Data Science-Projekte strukturieren können. Der Lebenszyklus beschreibt sämtliche Schritte, denen erfolgreiche Projekte folgen. Wenn Sie einen anderen Data Science-Lebenszyklus verwenden, z.B. [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining) (Cross Industry Standard Process for Data Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) (Knowledge Discovery in Databases) oder einen benutzerdefinierten Prozess Ihrer Organisation, können Sie trotzdem den aufgabenbasierten TDSP verwenden. 
 
-Dieser Lebenszyklus wurde für Data Science-Projekte entworfen, die im Lieferumfang von intelligenten Anwendungen enthalten sein sollen. Mit diesen Anwendungen werden Modelle vom Typ „Machine Learning“ oder „Künstliche Intelligenz“ für Predictive Analytics bereitgestellt. Explorative Data Science-Projekte und Ad-hoc-Analyseprojekte können von diesem Prozess ebenfalls profitieren. Für solche Projekte sind aber möglicherweise einige der hier beschriebenen Schritte nicht erforderlich. 
+Dieser Lebenszyklus wurde für Data Science-Projekte entworfen, die im Lieferumfang von intelligenten Anwendungen enthalten sein sollen. Mit diesen Anwendungen werden Modelle vom Typ „Machine Learning“ oder „Künstliche Intelligenz“ für Predictive Analytics bereitgestellt. Explorative Data Science-Projekte und improvisierte Analyseprojekte können von diesem Prozess ebenfalls profitieren. Für solche Projekte sind aber möglicherweise einige der hier beschriebenen Schritte nicht erforderlich. 
 
 ## <a name="five-lifecycle-stages"></a>Fünf Lebenszyklusphasen
 

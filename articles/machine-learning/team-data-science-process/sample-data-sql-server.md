@@ -3,20 +3,20 @@ title: 'Datenstichproben in SQLServer in Azure: Team Data Science-Prozess'
 description: Stichproben für SQL Server-Daten in Azure unter Verwendung von SQL oder der Programmiersprache Python. die anschließend in Azure Machine Learning verschoben werden.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a544ddb6f31481750b1cd46b52d2909d71739707
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71a2ec9dc4d644fb8739db3817e2cd1d09913da7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043388"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717645"
 ---
 # <a name="heading"></a>Erstellen von Datenstichproben aus SQL Server in Azure
 
@@ -30,7 +30,7 @@ Die Python-Stichprobe verwendet die [pyodbc](https://code.google.com/p/pyodbc/)-
 > 
 
 **Warum eine Datenstichprobe entnehmen?**
-Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des [Team Data Science-Prozesses (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
+Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Die Stichprobenentnahme erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des [Team Data Science-Prozesses (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Machine Learning-Modelle zu erstellen.
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -48,7 +48,7 @@ Die beiden folgenden Beispiele zeigen, wie Sie mit `newid` in SQL Server eine St
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Sie können auch mit TABLESAMPLE eine Stichprobe der Daten erstellen. Dies ist möglicherweise besser, wenn Ihre Daten sehr umfangreich sind (vorausgesetzt, dass die Daten auf unterschiedlichen Seiten nicht korrelieren), damit die Abfrage in einem angemessenen Zeitraum abgeschlossen wird.
+Sie können auch mit TABLESAMPLE eine Stichprobe der Daten erstellen. Diese Option ist möglicherweise besser, wenn Ihre Daten sehr umfangreich sind (vorausgesetzt, dass die Daten auf unterschiedlichen Seiten nicht korrelieren), damit die Abfrage in einem angemessenen Zeitraum abgeschlossen wird.
 
     SELECT *
     FROM <table_name> 
@@ -65,13 +65,13 @@ Sie können die Beispielabfragen oben direkt im Modul [Import Data][import-data]
 ![reader sql][1]
 
 ## <a name="python"></a>Mit der Programmiersprache Python
-In diesem Abschnitt wird veranschaulicht, wie die [pyodbc-Bibliothek](https://code.google.com/p/pyodbc/) in Python für das Herstellen einer ODBC-Verbindung mit einer SQL Server-Datenbank verwendet wird. Die Datenbankverbindungszeichenfolge lautet wie folgt (ersetzen Sie "servername", "dbname", "username" und "password" durch die entsprechenden Werte Ihrer Konfiguration):
+In diesem Abschnitt wird veranschaulicht, wie die [pyodbc-Bibliothek](https://code.google.com/p/pyodbc/) in Python für das Herstellen einer ODBC-Verbindung mit einer SQL Server-Datenbank verwendet wird. Die Datenbankverbindungszeichenfolge lautet wie folgt (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch die entsprechenden Werte Ihrer Konfiguration):
 
     #Set up the SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Die [Pandas](https://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
+Die [Pandas](https://pandas.pydata.org/) -Bibliothek in Python bietet eine Vielzahl von Datenstrukturen und Datenanalysetools für die Datenbearbeitung durch Python-Programmierung. Der folgende Code liest eine Datenstichprobe von 0,1 % aus einer Tabelle in einer Azure SQL-Datenbank in ein Pandas-DataFrame:
 
     import pandas as pd
 

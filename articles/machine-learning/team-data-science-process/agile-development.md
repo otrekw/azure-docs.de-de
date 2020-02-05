@@ -2,20 +2,20 @@
 title: 'Agile Entwicklung von Data Science-Projekten: Team Data Science-Prozess'
 description: Ausführen eines Data Science-Projekts auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260683"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722100"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Agile Entwicklung von Data Science-Projekten
 
@@ -43,7 +43,7 @@ Dies sind die Definitionen für die Arbeitselementtypen:
   
 - **User Story**: User Storys sind Arbeitselemente, die für die End-to-End-Ausführung eines Features erforderlich sind. Beispiele für User Storys sind:
   - Datensammlung 
-  - Erkunden von Daten 
+  - Durchsuchen von Daten 
   - Generieren von Features
   - Erstellen von Modellen
   - Operationalisieren von Modellen 
@@ -86,7 +86,7 @@ Nachdem Sie das Projekt und das Projektcoderepository erstellt haben, können Si
    
    Sie können das Feature auch mit dem Azure Repos-Coderepository des Projekts verknüpfen, indem Sie im Abschnitt **Entwicklung** die Option **Verknüpfung hinzufügen** auswählen. 
    
-   Nachdem Sie die Bearbeitung des Features abgeschlossen haben, wählen Sie **Speichern und schließen** aus.
+   Nachdem Sie das Feature bearbeitet haben, wählen Sie **Speichern und schließen** aus.
    
    ![Bearbeiten des Features und Auswählen von „Speichern und schließen“](./media/agile-development/3a-add-link-repo.png)
 

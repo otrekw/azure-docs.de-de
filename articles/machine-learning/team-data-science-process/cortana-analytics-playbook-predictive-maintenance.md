@@ -3,20 +3,20 @@ title: 'Azure KI-Leitfaden für Predictive Maintenance-Lösungen: Team Data Scie
 description: Umfassende Beschreibung der Data Science, auf der Predictive Maintenance-Lösungen in verschiedenen vertikalen Branchen basieren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977130"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721811"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -37,13 +37,13 @@ In der ersten Hälfte dieses Leitfadens werden typische geschäftliche Probleme 
 | [Schulungsressourcen für Predictive Maintenance](#training-resources-for-predictive-maintenance) | Alle obigen Personen, die sich über die Grundlagen der Data Science-Technologie, Tools und Verfahren informieren möchten
 
 ### <a name="prerequisite-knowledge"></a>Vorkenntnisse
-In Bezug auf die BDM-Inhalte wird nicht vorausgesetzt, dass der Leser bereits über Data Science-Vorkenntnisse verfügt. In Bezug auf die TDM-Inhalte sind Grundkenntnisse in den Bereichen Statistik und Data Science hilfreich. Kenntnisse in den Bereichen Azure-Daten- und KI-Dienste, Python, R, XML und JSON sind empfehlenswert. KI-Verfahren werden in Form von Python- und R-Paketen implementiert. Lösungsvorlagen werden mithilfe von Azure-Diensten, Entwicklungstools und SDKs implementiert.
+In Bezug auf die BDM-Inhalte wird nicht vorausgesetzt, dass der Leser bereits über Data Science-Vorkenntnisse verfügt. In Bezug auf die TDM-Inhalte sind Grundkenntnisse in den Bereichen Statistik und Data Science hilfreich. Kenntnisse in den Bereichen Azure-Daten- und KI-Dienste, Python, R, XML und JSON sind empfehlenswert. KI-Verfahren werden in Form von Python- und R-Paketen implementiert. Zur Implementierung von Lösungsvorlagen werden Azure-Dienste, Entwicklungstools und SDKs verwendet.
 
 ## <a name="business-case-for-predictive-maintenance"></a>Business Case für Predictive Maintenance
 
 Für Unternehmen ist es erforderlich, dass die kritische Ausrüstung mit der bestmöglichen Effizienz und Auslastung betrieben wird, damit sich die getätigten Investitionen rentieren. Bei diesen Ressourcen kann es sich um Flugzeugtriebwerke, Turbinen, Aufzüge oder Industriekühlanlagen, für die die Kosten im Millionenbereich liegen, oder auch um Alltagsgeräte wie Fotokopierer, Kaffeemaschinen oder Wasserkühler handeln.
 - Standardmäßig nutzen die meisten Unternehmen den Ansatz der _Instandsetzung_, bei dem Teile ausgetauscht werden, wenn sie kaputtgehen. Mit der Instandsetzung wird sichergestellt, dass die Lebensdauer der Teile vollständig genutzt wird (und keine Restnutzungszeit verschenkt wird), aber für das Unternehmen fallen Stillstandszeiten, Arbeitszeit und ungeplanter Wartungsaufwand an (zu ungewöhnlichen Zeiten oder an schwer erreichbaren Standorten).
-- Die nächsthöhere Ebene für Unternehmen ist die _vorbeugende Wartung_, bei der die Lebensdauer eines Teils bestimmt wird und vor einem Ausfall eine Wartung oder ein Austausch durchgeführt wird. Durch die vorbeugende Wartung werden ungeplante und zu Katastrophen führende Ausfälle vermieden. Die hohen Kosten für geplante Stillstandszeiten, eine zu geringe Ausnutzung der Lebensdauer von Komponenten und der Aufwand an Arbeitszeit lassen sich hierdurch aber nicht beseitigen.
+- Die nächsthöhere Ebene für Unternehmen ist die _vorbeugende Wartung_, bei der die Lebensdauer eines Teils bestimmt wird und vor einem Ausfall eine Wartung oder ein Austausch durchgeführt wird. Durch die vorbeugende Wartung werden ungeplante und zu Katastrophen führende Ausfälle vermieden. Aber die hohen Kosten für die geplanten Stillstandszeiten, die zu geringe Ausnutzung der Lebensdauer von Komponenten und der Aufwand an Arbeitszeit sind nach wie vor vorhanden.
 - Das Ziel von _Predictive Maintenance_ besteht darin, eine optimale Balance zwischen der Instandsetzung und der vorbeugenden Wartung zu erzielen, indem ein _Just-in-Time_-Austausch von Komponenten ermöglicht wird. Bei diesem Ansatz werden die Komponenten nur ausgetauscht, wenn ein Ausfall kurz bevorsteht. Indem die Lebensdauer von Komponenten (im Vergleich zur vorbeugenden Wartung) verlängert wird und die Kosten für ungeplante Wartung und Arbeitszeit reduziert werden (im Vergleich zur Instandsetzung), können Unternehmen Kosteneinsparungen und Wettbewerbsvorteile erzielen.
 
 ## <a name="business-problems-in-pdm"></a>Geschäftsprobleme in Bezug auf PdM
@@ -92,7 +92,7 @@ In diesem Abschnitt geht es um Anwendungsfälle für Predictive Maintenance aus 
 |**Finanzen** |                         |
 |_Ausfälle von Geldautomaten_ sind ein häufiges Problem in der Bankbranche. Hierbei besteht das Problem darin, die Wahrscheinlichkeit zu ermitteln, mit der der Abhebevorgang von Geld am Automaten aufgrund eines Papierstaus oder eines Teilefehlers in der Ausgabeeinheit unterbrochen wird. Basierend auf der Vorhersage von Fehlern bei diesen Transaktionen können Geldautomaten proaktiv gewartet werden, um das Auftreten von Fehlern zu verhindern.| Anstatt zuzulassen, dass es während einer Transaktion zu einem Fehler im Automaten kommt, wird dieser so programmiert, dass die Transaktion aufgrund der Vorhersage verweigert wird.|
 |**Energieversorgung** |                          |
-|_Ausfall von Windturbinen_: Windturbinen sind in Ländern/Regionen, die auf eine umweltfreundliche Energieerzeugung achten, eine wichtige Energiequelle und mit hohem Investitionsaufwand verbunden. Eine Schlüsselkomponente von Windturbinen ist der Generatormotor. Wenn er ausfällt, kann die Turbine keine Energie mehr liefern. Außerdem ist die Reparatur sehr teuer.|Durch das Vorhersagen von KPIs, z.B. die mittlere Zeitspanne bis zum Ausfall (Mean Time To Failure, MTTF), können Unternehmen der Windenergiebranche Ausfälle von Turbinen verhindern und die Ausfallzeiten gering halten. Mit den Ausfallwahrscheinlichkeiten erhalten Techniker Informationen zur Überwachung von Turbinen, die voraussichtlich in Kürze ausfallen, sodass die zeitbasierte Wartung geplant werden kann. Vorhersagemodelle liefern Erkenntnisse zu verschiedenen Faktoren, die zum Ausfall beitragen. Mit diesen Informationen können Techniker die Grundursachen von Problemen besser verstehen.|
+|_Ausfall von Windturbinen_: Windturbinen sind in Ländern/Regionen, die auf eine umweltfreundliche Energieerzeugung achten, eine wichtige Energiequelle und mit hohem Investitionsaufwand verbunden. Eine wichtige Komponente in Windkraftanlagen ist der Generatormotor, dessen Ausfall die Anlage unwirksam werden lässt. Außerdem ist die Reparatur sehr teuer.|Durch das Vorhersagen von KPIs, z.B. die mittlere Zeitspanne bis zum Ausfall (Mean Time To Failure, MTTF), können Unternehmen der Windenergiebranche Ausfälle von Turbinen verhindern und die Ausfallzeiten gering halten. Mit den Ausfallwahrscheinlichkeiten erhalten Techniker Informationen zur Überwachung von Turbinen, die voraussichtlich in Kürze ausfallen, sodass die zeitbasierte Wartung geplant werden kann. Vorhersagemodelle liefern Erkenntnisse zu verschiedenen Faktoren, die zum Ausfall beitragen. Mit diesen Informationen können Techniker die Grundursachen von Problemen besser verstehen.|
 |_Ausfälle von Leistungsschutzschaltern_: Zur Versorgung von Wohnhäusern und Unternehmen mit Elektrizität müssen Stromleitungen jederzeit betriebsbereit sein, damit der Strom ankommt. Mithilfe von Leitungsschutzschaltern können Schäden an Stromleitungen bei Überlast oder schwierigen Wetterbedingungen eingeschränkt oder vermieden werden. Das Geschäftsproblem ist hierbei die Vorhersage von Ausfällen der Leistungsschutzschalter.| PdM-Lösungen tragen zur Reduzierung von Reparaturkosten bei und verlängern die Lebensdauer von Ausrüstungsteilen, z.B. Leistungsschutzschaltern. Sie verbessern die Qualität des Stromnetzwerks, indem unerwartete Fehler und Ausfälle reduziert werden.|
 |**Transport und Logistik** |    |
 |_Ausfälle von Aufzugtüren_: Große Anbieter von Aufzügen stellen einen umfassenden Service für Millionen von weltweit betriebenen Aufzügen bereit. Die Hauptanliegen der Kunden sind die Sicherheit, die Zuverlässigkeit und der unterbrechungsfreie Betrieb der Aufzüge. Diese Unternehmen verfolgen diese und verschiedene andere Attribute über Sensoren, um Instandsetzungsmaßnahmen und die vorbeugende Wartung zu unterstützen. Bei einem Aufzug ist das häufigste Kundenproblem die Fehlfunktion der Aufzugtüren. Das Geschäftsproblem besteht in diesem Fall darin, eine Knowledge Base-Vorhersageanwendung bereitzustellen, mit der die potenziellen Ursachen von Türausfällen vorhergesagt werden können.| Aufzüge stellen meist Investitionen mit einer Lebensdauer von 20 bis 30 Jahren dar. Jeder Verkaufsvorgang ist in der Regel also stark umkämpft, und die Erwartungen an den Service und Support sind hoch. Durch Predictive Maintenance können diese Unternehmen in Bezug auf die Produkt- und Serviceangebote einen Wettbewerbsvorteil gegenüber der Konkurrenz erzielen.|
@@ -233,12 +233,12 @@ Die bisher beschriebenen Schritte zur Datenaufbereitung sollten ergeben, dass di
 
 | Asset-ID | Time | \<Featurespalten> | Bezeichnung |
 | ---- | ---- | --- | --- |
-| A123 |Tag 1 | . . . | . |
-| A123 |Tag 2 | . . . | . |
-| ...  |...   | . . . | . |
-| B234 |Tag 1 | . . . | . |
-| B234 |Tag 2 | . . . | . |
-| ...  |...   | . . . | . |
+| A123 |Tag 1 | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| A123 |Tag 2 | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| ...  |...   | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| B234 |Tag 1 | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| B234 |Tag 2 | erforderlich. erforderlich. erforderlich. | erforderlich. |
+| ...  |...   | erforderlich. erforderlich. erforderlich. | erforderlich. |
 
 Der letzte Schritt der Featureentwicklung ist die **Bezeichnung** der Zielvariablen. Dieser Prozess richtet sich nach dem Modellierungsverfahren. Das Modellierungsverfahren ist wiederum vom Geschäftsproblem und von der Art der verfügbaren Daten abhängig. Der Prozess der Bezeichnung wird im nächsten Abschnitt beschrieben.
 
@@ -271,7 +271,7 @@ Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, d
 Abbildung 3. Bezeichnungen für binäre Klassifizierung
 
 Beispiele für die Bezeichnungsstrategie einiger Anwendungsfälle sind unten aufgeführt.
-- _Flugverspätungen_: Für X kann „1 Tag“ gewählt werden, um Verspätungen für die nächsten 24 Stunden vorherzusagen. Alle Flüge, die innerhalb von 24 Stunden vor einem Ausfall liegen, erhalten dann die Bezeichnung „1“.
+- _Flugverspätungen_: Für X kann ein Tag gewählt werden, um Verspätungen für die nächsten 24 Stunden vorherzusagen. Alle Flüge, die innerhalb von 24 Stunden vor einem Ausfall liegen, erhalten dann die Bezeichnung „1“.
 - _Fehler bei der Geldausgabe an Geldautomaten_: Ein Ziel kann hierbei darin bestehen, die Fehlerwahrscheinlichkeit für eine Transaktion innerhalb der nächsten Stunde zu ermitteln. In diesem Fall erhalten alle Transaktionen, die innerhalb der vergangenen Stunde vor dem Fehler liegen, die Bezeichnung „1“. Zum Vorhersagen der Fehlerwahrscheinlichkeit für die nächsten ausgegebenen N Banknoten erhalten alle Banknoten, die innerhalb der letzten N Banknoten eines Fehlers ausgegeben werden, die Bezeichnung „1“.
 - _Ausfälle von Leistungsschutzschaltern_: Das Ziel kann hierbei darin bestehen, den nächsten Ausfall des Leistungsschutzschalter-Befehls vorherzusagen. In diesem Fall wird für X ein zukünftiger Befehl gewählt.
 - _Ausfälle der Türen von Zügen_: X kann als zwei Tage ausgewählt werden.
@@ -423,7 +423,7 @@ Für PdM wird dagegen die _Batchbewertung_ verwendet. Damit sie mit der Modellsi
 
 Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsvorlagen, Tutorials und Experimenten, die in Azure implementiert sind. Diese PdM-Anwendungen können in einigen Fällen innerhalb weniger Minuten in einem Azure-Abonnement bereitgestellt werden. Sie können als Proof-of-Concept-Demos, Sandboxes zum Experimentieren mit Alternativen oder Beschleuniger für tatsächliche Produktionsimplementierungen verwendet werden. Diese Vorlagen befinden sich im [Azure KI-Katalog](https://gallery.azure.ai) oder auf [Azure GitHub](https://github.com/Azure). Die unterschiedlichen Beispiele werden im Laufe der Zeit in diese Lösungsvorlage eingebunden.
 
-| # | Titel | BESCHREIBUNG |
+| # | Titel | Beschreibung |
 |--:|:------|-------------|
 | 2 | [Azure Predictive Maintenance Solution Template](https://github.com/Azure/AI-PredictiveMaintenance) (Azure Predictive Maintenance-Lösungsvorlage) | Eine Open-Source-Lösungsvorlage zur Veranschaulichung von Azure ML-Modellierung in einer vollständigen Azure-Infrastruktur, die Szenarien für Predictive Maintenance im Kontext von IoT-Remoteüberwachung unterstützen kann. |
 | 3 | [Deep Learning for Predictive Maintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) (Deep Learning für Predictive Maintenance) | Azure Notebook mit einer Demolösung für die Verwendung von LSTM-Netzwerken (Long Short-Term Memory) – einer Klasse von wiederkehrenden neuronalen Netzwerken – für Predictive Maintenance mit einem [Blogbeitrag für dieses Beispiel](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|

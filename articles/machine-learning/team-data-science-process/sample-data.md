@@ -3,20 +3,20 @@ title: 'Datenstichproben an anderen Azure Storage-Speicherorten: Team Data Scien
 description: Datenstichproben in Azure-Blobcontainern, SQL Server- und Hive-Tabellen, um sie auf eine kleinere, aber repräsentative und überschaubare Größe zu reduzieren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: fc91aec80f74488125649cfe807757ba5ae49c9b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 22e91d50227fcb44c7b90478d76379c14161ae05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253096"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718602"
 ---
 # <a name="heading"></a>Entnehmen von Datenstichproben in Azure-Blobcontainern, SQL Server und Hive-Tabellen
 
@@ -30,5 +30,5 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 
 **Warum sollten Datenstrichproben entnommen werden?**
 
-Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Dies erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
+Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Die Verkleinerung kann das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung erleichtern. Diese Stichprobenentnahmefunktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
 

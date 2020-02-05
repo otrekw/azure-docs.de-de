@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425483"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840110"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren Sie eine Anwendung in Azure Active Directory B2C
 
-Bevor Ihre [Anwendungen](active-directory-b2c-apps.md) mit Azure Active Directory B2C (Azure AD B2C) interagieren können, müssen sie in einem von Ihnen verwalteten Mandanten registriert werden. In diesem Tutorial erfahren Sie, wie Sie eine Webanwendung mithilfe des Azure-Portals registrieren.
+Bevor Ihre [Anwendungen](application-types.md) mit Azure Active Directory B2C (Azure AD B2C) interagieren können, müssen sie in einem von Ihnen verwalteten Mandanten registriert werden. In diesem Tutorial erfahren Sie, wie Sie eine Webanwendung mithilfe des Azure-Portals registrieren.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -88,7 +88,7 @@ Aktivieren Sie nach Abschluss der Anwendungsregistrierung den Ablauf zur implizi
 
 ## <a name="create-a-client-secret"></a>Erstellen eines Clientgeheimnisses
 
-Wenn Ihre Anwendung einen Code für ein Token austauscht, müssen Sie ein Anwendungsgeheimnis erstellen.
+Wenn Ihre Anwendung einen Autorisierungscode für ein Zugriffstoken austauscht, müssen Sie ein Anwendungsgeheimnis erstellen.
 
 #### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 

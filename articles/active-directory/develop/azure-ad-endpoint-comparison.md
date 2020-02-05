@@ -12,13 +12,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a05db11f48811f5ad6163447fae1dbb4ea31842c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74843885"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712448"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -114,7 +113,7 @@ Diese Bereiche können Sie für Ihre Anwendung den Weg der minimalen Offenlegung
 Der Microsoft Identity Platform-Endpunkt gibt standardmäßig einen kleineren Satz mit Ansprüchen in seinen Token aus, um die Nutzlasten klein zu halten. Wenn Sie Anwendungen und Dienste haben, die von einem bestimmten Anspruch in einem v1.0-Token abhängig sind, der über ein Microsoft Identity Platform-Token nicht mehr standardmäßig bereitgestellt wird, sollten Sie die Funktion [optionale Ansprüche](active-directory-optional-claims.md) verwenden, um diesen Anspruch einzuschließen.
 
 > [!IMPORTANT]
-> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn in der App der v2.0-Endpunkt verwendet wird, um ein Token zum Aufrufen von Microsoft Graph abzurufen, bei dem Zugriffstoken im v1.0-Format erwartet werden, erhält die App ein Token im v1.0-Format.  
+> v1.0- und v2.0-Token können über die v1.0- und v2.0-Endpunkte ausgestellt werden. ID-Token entsprechen *immer* dem Endpunkt, über den sie angefordert werden. Zugriffstoken entsprechen *immer* dem Format, das in der Web-API erwartet wird, die der Client mit diesem Token aufruft.  Wenn also die App den v2.0-Endpunkt verwendet, um ein Token zum Aufrufen von Microsoft Graph abzurufen, und dieser Zugriffstoken im v1.0-Format erwartet, erhält die App ein Token im v1.0-Format.  
 
 ## <a name="limitations"></a>Einschränkungen
 

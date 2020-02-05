@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444521"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773851"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -129,6 +129,12 @@ Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken g
 * Batchgröße: Berechnen Sie die ungefähre Zeilengröße der Daten, und stellen Sie sicher, dass Zeilengröße × Batchgröße kleiner als 2 Millionen ist. Erhöhen Sie andernfalls die Batchgröße, um einen besseren Durchsatz zu erzielen.
 * Durchsatz: Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
 *   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
+
+## <a name="join-performance"></a>Verknüpfungsleistung
+
+Das Verwalten der Leistung von Verknüpfungen in Ihrem Datenfluss ist ein sehr gängiger Vorgang, den Sie während des Lebenszyklus Ihrer Datentransformationen ausführen. In ADF müssen Daten in Datenflüssen nicht vor Verknüpfungen sortiert werden, da diese Vorgänge in Spark als Hashjoins ausgeführt werden. Sie können jedoch mit der Optimierung der Verknüpfung „Broadcast“ von einer verbesserten Leistung profitieren. Hierdurch werden Zufallswiedergaben vermieden, indem die Inhalte von beiden Seiten Ihrer Verknüpfungsbeziehung per Push in den Spark-Knoten übertragen werden. Dies funktioniert gut bei kleineren Tabellen, die für Verweissuchvorgänge verwendet werden. Größere Tabellen, die möglicherweise nicht in den Arbeitsspeicher des Knotens passen, sind für die Broadcastoptimierung wenig geeignet.
+
+Eine andere Optimierung der Verknüpfung besteht darin, ihre Verknüpfungen so zu erstellen, dass die Spark-Tendenz zum Implementieren von Kreuzprodukten vermieden wird. Wenn Sie beispielsweise Literalwerte in Ihre Verknüpfungsbedingungen einbeziehen, kann Spark dies zuerst als eine Anforderung zur Ausführung eines vollständigen kartesischen Produkts erkennen und dann die verknüpften Werte herausfiltern. Wenn Sie aber sicherstellen, dass es auf beiden Seiten Ihrer Verknüpfungsbedingung Spaltenwerte gibt, können Sie dieses durch Spark ausgelöste kartesische Produkt vermeiden und die Leistung Ihrer Verknüpfungen und Datenflüsse verbessern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

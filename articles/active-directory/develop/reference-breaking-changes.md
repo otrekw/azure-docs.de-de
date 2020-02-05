@@ -13,17 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125415"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758749"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -41,7 +40,20 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
-September 2019: Zusätzliche Erzwingung von POST-Semantik gemäß URL-Analyseregeln: Doppelte Parameter lösen einen Fehler aus, und [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) wird ignoriert.
+Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den Änderungen, die in der Produktionsumgebung bestehen oder eingeführt werden. 
+
+## <a name="february-2020"></a>Februar 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>An jede HTTP-Umleitung vom Endpunkt der Anmeldung werden leere Fragmente angehängt. 
+
+**Gültigkeitsdatum:** 8. Februar 2020
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll:** OAuth-und OIDC-Flows, die „response_type=query“ verwenden. Dies betrifft in einigen Fällen den [Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) und den [impliziten Flow](v2-oauth2-implicit-grant-flow.md). 
+
+Wenn eine Authentifizierungsantwort von login.microsoftonline.com über die HTTP-Umleitung an eine Anwendung gesendet wird, hängt der Dienst ein leeres Fragment an die Antwort-URL an.  Dadurch wird eine Klasse von Umleitungsangriffen verhindert, indem sichergestellt wird, dass der Browser jedes vorhandene Fragment in der Authentifizierungsanforderung bereinigt.  Keine App sollte eine Abhängigkeit von diesem Verhalten aufweisen. 
+
 
 ## <a name="august-2019"></a>August 2019
 

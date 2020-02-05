@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jlian
-ms.openlocfilehash: 20a1ec4b8eb88f5914ce6b27acc8a472e58f5d29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec8a00460b4a750339f929eb6879ac6eb63cac8e
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457082"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705733"
 ---
 # <a name="understand-iot-hub-metrics"></a>Grundlegendes zu IoT Hub-Metriken
 
@@ -43,14 +43,14 @@ Metriken sind standardmäßig aktiviert. IoT Hub-Metriken können über das Azur
 
 IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität Ihres Hubs und die Gesamtzahl der verbundenen Geräte zu verschaffen. Sie können Informationen aus mehreren Metriken kombinieren, um sich ein umfassenderes Bild des Zustands des IoT Hubs zu machen. In der folgenden Tabelle werden die Metriken beschrieben, die für IoT Hubs nachverfolgt werden. Außerdem erfahren Sie, in welchem Bezug die einzelnen Metriken zum allgemeinen Status des IoT Hubs stehen.
 
-|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
+|Metrik|Metrikanzeigename|Einheit|Aggregationstyp|Beschreibung|Dimensionen|
 |---|---|---|---|---|---|
 |d2c.telemetry.Ingress.allProtocol|Telemetry message send attempts (Sendeversuche für Telemetrienachrichten)|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die an Ihren IoT Hub gesendet werden sollten|Keine|
 |d2c.telemetry.ingress.success|Telemetry messages sent (Gesendete Telemetrienachrichten)|Anzahl|Gesamt|Anzahl von Telemetrienachrichten vom Gerät an die Cloud, die erfolgreich an Ihren IoT Hub gesendet wurden|Keine|
-|c2d.commands.egress.complete.success|C2D message deliveries completed (Abgeschlossene C2D-Nachrichtenübermittlungen)|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichtenübermittlungen, die vom Gerät erfolgreich abgeschlossen wurden|Keine|
-|c2d.commands.egress.abandon.success|C2D messages abandoned (Abgebrochene C2D-Nachrichten)|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgebrochen wurden|Keine|
-|c2d.commands.egress.reject.success|C2D messages rejected (Abgelehnte C2D-Nachrichten)|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgelehnt wurden|Keine|
-|C2DMessagesExpired|C2D Messages Expired (preview) (Abgelaufene C2D-Nachrichten (Vorschau))|Anzahl|Gesamt|Anzahl von abgelaufenen Cloud-zu-Gerät-Nachrichten|Keine|
+|c2d.commands.egress.complete.success|Abgeschlossene C2D-Nachrichtenübermittlungen|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichtenübermittlungen, die vom Gerät erfolgreich abgeschlossen wurden|Keine|
+|c2d.commands.egress.abandon.success|Abgebrochene C2D-Nachrichten|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgebrochen wurden|Keine|
+|c2d.commands.egress.reject.success|Abgelehnte C2D-Nachrichten|Anzahl|Gesamt|Anzahl von Cloud-zu-Gerät-Nachrichten, die vom Gerät abgelehnt wurden|Keine|
+|C2DMessagesExpired|Abgelaufene C2D-Nachrichten (Vorschau)|Anzahl|Gesamt|Anzahl von abgelaufenen Cloud-zu-Gerät-Nachrichten|Keine|
 |devices.totalDevices|Geräte gesamt (veraltet)|Anzahl|Gesamt|Die Anzahl von Geräten, die beim IoT Hub registriert sind|Keine|
 |devices.connectedDevices.allProtocol|Verbundene Geräte (veraltet) |Anzahl|Gesamt|Die Anzahl von Geräten, die mit dem IoT Hub verbunden sind|Keine|
 |d2c.telemetry.egress.success|Routing: Übermittelte Telemetrienachrichten|Anzahl|Gesamt|Die Anzahl der erfolgreichen Nachrichtenübermittlungen an alle Endpunkte über das IoT Hub-Routing Wenn eine Nachricht an mehrere Endpunkte weitergeleitet wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins Wenn eine Nachricht mehrmals an denselben Endpunkt übermittelt wird, erhöht sich dieser Wert für jede erfolgreiche Übermittlung um eins|Keine|
@@ -115,7 +115,7 @@ IoT Hub bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität
 
 Nachdem Sie sich nun einen Überblick über IoT Hub-Metriken verschafft haben, folgen Sie dem folgenden Link, um mehr über die Verwaltung von IoT Hub zu erfahren:
 
-* [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
+* [Einrichten von Diagnoseprotokollen](iot-hub-monitor-resource-health.md)
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 

@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dcc2d6fc252f288f15e2583012798b4d0e9cee6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 709f8083e50391718d34587bd0ea1d847cc41923
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169434"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841964"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurieren des SAML-basierten einmaligen Anmeldens bei nicht im Katalog aufgeführten Anwendungen
 
@@ -26,7 +26,7 @@ Wenn Sie Ihren Azure AD-Unternehmensanwendungen [eine Katalog-App](add-gallery-a
 > [!NOTE]
 > Fügen Sie eine Katalog-App hinzu? Eine detaillierte Einrichtungsanleitung finden Sie in der [Liste mit den SaaS-App-Tutorials](../saas-apps/tutorial-list.md).
 
-Wenn Sie das einmalige Anmelden über SAML für eine nicht aus dem Katalog stammende Anwendung konfigurieren und dafür keinen Code schreiben möchten, müssen Sie über ein Abonnement oder Azure AD Premium verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Wenn Sie das einmalige Anmelden über SAML für eine nicht aus dem Katalog stammende Anwendung konfigurieren und dafür keinen Code schreiben möchten, müssen Sie über ein Abonnement zusammen mit einer Azure AD Premium-Lizenz verfügen, und die Anwendung muss SAML 2.0 unterstützen. Weitere Informationen zu Azure AD-Versionen finden Sie in der [Preisübersicht für Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, find
 
 1. Geben Sie folgende Einstellungen ein. Sie sollten die Werte vom Hersteller der Anwendung erhalten. Sie können die Werte manuell eingeben oder eine Metadatendatei hochladen, um die Werte der Felder zu extrahieren.
 
-    | Einstellung für die grundlegende SAML-Konfiguration | Vom Dienstanbieter initiiert | Vom Identitätsanbieter initiiert | BESCHREIBUNG |
+    | Einstellung für die grundlegende SAML-Konfiguration | Vom Dienstanbieter initiiert | Vom Identitätsanbieter initiiert | Beschreibung |
     |:--|:--|:--|:--|
     | **Bezeichner (Entitäts-ID)** | Für einige Apps erforderlich | Für einige Apps erforderlich | Hiermit wird die Anwendung eindeutig identifiziert. Azure AD sendet den Bezeichner als Audience-Parameter des SAML-Tokens an die Anwendung. Von der Anwendung wird erwartet, dass sie diesen Parameter überprüft. Dieser Wert ist auch als Entitäts-ID in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden. Geben Sie eine URL ein, die das folgende Muster verwendet: https://<subdomain>.contoso.com. *Sie finden diesen Wert als Element vom Typ **Issuer** (Aussteller) in der SAML-Anforderung **AuthnRequest**, die von der Anwendung gesendet wurde.* |
     | **Antwort-URL** | Erforderlich | Erforderlich | Gibt an, ob die Anwendung den Empfang des SAML-Tokens erwartet. Die Antwort-URL wird auch als „Assertionsverbraucherdienst-URL“ (Assertion Consumer Service, ACS) bezeichnet. Sie können die zusätzlichen Antwort-URL-Felder verwenden, um mehrere Antwort-URLs anzugeben. Zusätzliche Antwort-URLs werden möglicherweise für mehrere Unterdomänen benötigt. Sie können auch zu Testzwecken mehrere Antwort-URLs gleichzeitig angeben (URL des lokalen Host und öffentliche URL). |
@@ -70,11 +70,11 @@ Wenn sich ein Benutzer bei der Anwendung authentifiziert, stellt Azure AD der An
 
 2. Überprüfen Sie die Angabe unter **Wert für Namensbezeichner**. Der Standardwert lautet *user.principalname*. Mit der Benutzer-ID wird jeder Benutzer in der Anwendung eindeutig identifiziert. Beispiel: Ist die E-Mail-Adresse sowohl der Benutzername als auch der eindeutige Bezeichner, legen Sie den Wert auf *user.mail* fest.
 
-3. Um den **Wert für Namensbezeichner** zu ändern, klicken Sie für das Feld **Wert für Namensbezeichner** auf das Symbol **Bearbeiten** (Stift). Nehmen Sie bei Bedarf die entsprechenden Änderungen am Format und an der Quelle des Bezeichners vor. Ausführliche Informationen finden Sie unter [Bearbeiten der NameID](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#editing-nameid). Speichern Sie die Änderungen, wenn Sie fertig sind. 
+3. Um den **Wert für Namensbezeichner** zu ändern, klicken Sie für das Feld **Wert für Namensbezeichner** auf das Symbol **Bearbeiten** (Stift). Nehmen Sie bei Bedarf die entsprechenden Änderungen am Format und an der Quelle des Bezeichners vor. Ausführliche Informationen finden Sie unter [Bearbeiten der NameID](../develop/active-directory-saml-claims-customization.md#editing-nameid). Speichern Sie die Änderungen, wenn Sie fertig sind. 
  
 4. Wählen Sie zum Konfigurieren von Gruppenansprüchen das Symbol **Bearbeiten** für das Feld **Im Anspruch zurückgegebene Gruppen** aus. Ausführliche Informationen finden Sie unter [Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory (öffentliche Vorschau)](../hybrid/how-to-connect-fed-group-claims.md).
 
-5. Klicken Sie zum Hinzufügen eines Anspruchs oben auf der Seite auf **Neuen Anspruch hinzufügen**. Geben Sie den **Namen** ein, und wählen Sie die entsprechende Quelle. Wenn Sie die Quelle **Attribut** auswählen, müssen Sie das **Quellattribut** auswählen, das Sie verwenden möchten. Wenn Sie die Quelle **Übersetzung** auswählen, müssen Sie die gewünschte **Transformation** und **Parameter 1** auswählen. Ausführliche Informationen finden Sie unter [Hinzufügen anwendungsspezifischer Ansprüche](https://docs.microsoft.com/azure/active-directory//develop/active-directory-saml-claims-customization#adding-application-specific-claims). Speichern Sie die Änderungen, wenn Sie fertig sind. 
+5. Klicken Sie zum Hinzufügen eines Anspruchs oben auf der Seite auf **Neuen Anspruch hinzufügen**. Geben Sie den **Namen** ein, und wählen Sie die entsprechende Quelle. Wenn Sie die Quelle **Attribut** auswählen, müssen Sie das **Quellattribut** auswählen, das Sie verwenden möchten. Wenn Sie die Quelle **Übersetzung** auswählen, müssen Sie die gewünschte **Transformation** und **Parameter 1** auswählen. Ausführliche Informationen finden Sie unter [Hinzufügen anwendungsspezifischer Ansprüche](../develop/active-directory-saml-claims-customization.md#adding-application-specific-claims). Speichern Sie die Änderungen, wenn Sie fertig sind. 
 
 6. Wählen Sie **Speichern** aus. Der neue Anspruch wird in der Tabelle angezeigt.
 
@@ -120,7 +120,7 @@ In Azure AD können Sie das aktive Zertifikat im Base64- oder Raw-Format direkt 
 
 4. Wenn Sie Änderungen vorgenommen haben, klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**. 
 
-## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Schritt 4: Einrichten der Anwendung für die Verwendung von Azure AD
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Schritt 4. Einrichten der Anwendung für die Verwendung von Azure AD
 
 Im Abschnitt **\<Anwendungsname> einrichten** werden die Werte aufgeführt, die in der Anwendung konfiguriert werden müssen, damit sie Azure AD als SAML-Identitätsanbieter verwendet. Die erforderlichen Werte variieren je nach Anwendung. Einzelheiten finden Sie in der SAML-Dokumentation der Anwendung. Wechseln Sie zur Rubrik **\<Anwendungsname> einrichten**, und wählen Sie **Schrittanleitung anzeigen** aus. Die Dokumentation wird auf der Seite **Anmeldung konfigurieren** angezeigt. Auf dieser Seite finden Sie Informationen dazu, wie Sie die Werte für **Anmelde-URL**, **Azure AD-Bezeichner** und **Abmelde-URL** in der Rubrik **\<Anwendungsname> einrichten** ausfüllen.
 
@@ -141,7 +141,7 @@ Sobald Sie Ihre Anwendung für die Verwendung von Azure AD als SAML-basiertem Id
 
    ![Schritt 5: Überprüfen des einmaligen Anmeldens](media/configure-single-sign-on-non-gallery-applications/step-five-validate.png)
 
-3. Wählen Sie **Überprüfen**. Die Testoptionen werden angezeigt.
+3. Wählen Sie **Überprüfen** aus. Die Testoptionen werden angezeigt.
 
 4. Klicken Sie auf **Als aktueller Benutzer anmelden**. 
 
@@ -150,7 +150,7 @@ Sollte eine Fehlermeldung angezeigt werden, gehen Sie wie folgt vor:
 
 1. Kopieren Sie die Details, und fügen Sie sie ins Feld **Wie äußert sich der Fehler?** ein.
 
-    ![Leitfaden zur Problemlösung abrufen](media/configure-single-sign-on-portal/error-guidance.png)
+    ![Leitfaden zur Problemlösung abrufen](media/configure-single-sign-on-non-gallery-applications/error-guidance.png)
 
 2. Klicken Sie auf **Leitfaden zur Problemlösung abrufen**. Die Grundursache und Informationen zur Problemlösung werden angezeigt.  In diesem Beispiel wurde der Benutzer nicht der Anwendung zugewiesen.
 

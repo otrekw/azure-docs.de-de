@@ -1,6 +1,6 @@
 ---
-title: 'Verschieben einer Web-App, die Web-APIs aufruft, in die Produktion: Microsoft Identity Platform | Azure'
-description: Hier erfahren Sie, wie Sie eine Web-App, die Web-APIs aufruft, in die Produktion verschieben.
+title: 'Web-App, die Web-APIs aufruft: Überführen in die Produktion – Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie Sie eine Web-App, die Web-APIs aufruft, in die Produktion überführen.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,25 +14,24 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e40920b7045dad6f64b5699bc3c4c560eb399f2a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b1307df8f6dfb0457719b13c9e5cd0bf28660caa
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964955"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758943"
 ---
-# <a name="web-app-that-calls-web-apis---move-to-production"></a>Web-App, die Web-APIs aufruft (Übergang in die Produktion)
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web-App, die Web-APIs aufruft: Überführen in die Produktion
 
 Nachdem Sie nun wissen, wie Sie ein Token abrufen, um Web-APIs aufzurufen, erfahren Sie in diesem Artikel, wie Ihnen der Übergang in die Produktion gelingt.
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr, indem Sie das vollständige Tutorial zu ASP.NET Core-Web-App ausprobieren, das Sie Schritt für Schritt durch folgende Themen führt:
+Weitere Informationen finden Sie im vollständigen schrittweisen Tutorial zu ASP.NET Core-Web-Apps. Das Tutorial bietet Folgendes:
 
-- Anmelden von Benutzern mit mehreren Zielgruppen, nationalen Clouds oder mit Identitäten in sozialen Netzwerken
+- Anmelden von Benutzern bei mehreren Zielgruppen oder bei nationalen Clouds bzw. mithilfe sozialer Identitäten
 - Aufrufen von Microsoft Graph
 - Aufrufen mehrerer Microsoft-APIs
 - Behandeln der inkrementellen Zustimmung

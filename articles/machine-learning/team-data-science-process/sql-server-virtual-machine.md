@@ -3,23 +3,23 @@ title: Untersuchen von Daten auf einem virtuellen SQL Server-Computer – Team D
 description: Durchsuchen und Verarbeiten von Daten sowie Erstellen von Funktionen mit Python oder SQL auf einem virtuellen SQL Server-Computer in Azure
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053618"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718479"
 ---
 # <a name="heading"></a>Verarbeiten von Daten auf einer SQL Server-VM in Azure
-In diesem Dokument werden das Durchsuchen von Daten und das Generieren von Funktionen aus Daten auf einer SQL Server-VM in Azure beschrieben. Dies kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.
+In diesem Dokument werden das Durchsuchen von Daten und das Generieren von Funktionen aus Daten auf einer SQL Server-VM in Azure beschrieben. Dieses Ziel kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.
 
 > [!NOTE]
 > Bei den SQL-Beispielanweisungen in diesem Dokument wird davon ausgegangen, dass die Daten auf einem SQL Server gespeichert sind. Wenn dies nicht der Fall ist, finden Sie im Cloud Data Science-Prozess Anweisungen zum Verschieben der Daten zu einer SQL Server-Instanz.
@@ -66,7 +66,7 @@ In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von S
 > 
 
 ### <a name="sql-countfeature"></a>Anzahlbasierte Funktionsgenerierung
-Anhand der folgenden Beispiele werden zwei Methoden zur Generierung von Zählfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die WHERE-Klausel. Diese können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
+Anhand der folgenden Beispiele werden zwei Methoden zur Generierung von Zählfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die WHERE-Klausel. Diese Ergebnisse können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,7 +82,7 @@ Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem 
 ### <a name="sql-featurerollout"></a>Einführen von Funktionen aus einer einzelnen Spalte
 In diesem Abschnitt wird gezeigt, wie Sie eine einzelne Spalte in eine Tabelle einführen, um zusätzliche Funktionen zu generieren. Im Beispiel wird davon ausgegangen, dass die Tabelle, aus der Sie Funktionen generieren, die Spalten "latitude" und "longitude" enthält.
 
-Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: [How to measure the accuracy of latitude and longitude?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)(Gewusst wie: Messen der Genauigkeit von Längen- und Breitengraden)). Dies ist für das Verständnis hilfreich, bevor Sie die Positionsfelder verwenden:
+Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: [How to measure the accuracy of latitude and longitude?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)(Gewusst wie: Messen der Genauigkeit von Längen- und Breitengraden)). Dieser Leitfaden ist zum Verständnis hilfreich, bevor der Standort als ein oder mehrere Features einbezogen wird:
 
 * Das Vorzeichen gibt an, ob sich die Position im Norden, Süden, Osten oder Westen auf dem Globus befindet.
 * Ein Hunderterwert ungleich null gibt an, dass der Längengrad und nicht der Breitengrad verwendet wird!
@@ -95,7 +95,7 @@ Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (
 * Die fünfte Dezimalstelle ist auf etwa 1,1 m genau: Damit können Sie einzelne Strukturen voneinander unterscheiden. Eine Genauigkeit auf dieser Stufe lässt sich mit kommerziellen GPS-Geräten nur mit einer differenziellen Korrektur erreichen.
 * Die sechste Dezimalstelle bietet eine Genauigkeit von etwa 0,11 m: Damit können Sie Strukturen detailgetreu erkennen, um Landschaften zu planen oder Straßen zu bauen. Dies sollte mehr als ausreichend für die Nachverfolgung der Bewegungen von Gletschern und Flüssen sein. Erreicht wird diese Genauigkeit nur durch umfangreiche GPS-Maßnahmen, z. B. differenziell korrigiertes GPS.
 
-Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, wobei die Informationen zu Region, Standort und Stadt getrennt werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter [Find a Location by Point](https://msdn.microsoft.com/library/ff701710.aspx) (Suchen eines Standorts nach Punkt) aufrufen können, um Informationen über Region/Bezirk abzurufen.
+Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, wobei die Informationen zu Region, Standort und Stadt getrennt werden. Sie können auch einen REST-Endpunkt wie die Bing Maps-API unter [Find a Location by Point](https://msdn.microsoft.com/library/ff701710.aspx) (Suchen eines Standorts nach Punkt) aufrufen, um Informationen über Region/Bezirk abzurufen.
 
     select 
         <location_columnname>
@@ -121,7 +121,7 @@ Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefü
 ![azureml-Reader][1] 
 
 ## <a name="python"></a>Mit einer Programmiersprache wie Python
-Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md) beschrieben ist. Die Daten müssen aus der Datenbank in ein Pandas-DataFrame geladen werden, um dann weiter verarbeitet werden zu können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
+Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md) beschrieben ist. Laden Sie die Daten aus der Datenbank zur weiteren Verarbeitung in einen Pandas-Datenrahmen. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
 
 Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit „pyodbc“ eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch Ihre Daten):
 

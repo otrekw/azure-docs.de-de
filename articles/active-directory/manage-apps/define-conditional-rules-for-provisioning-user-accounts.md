@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 3401ed08a9332d4bb2735e536df33c201b28ca0e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778344"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841947"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.
@@ -52,7 +52,7 @@ Die vom Azure AD-Bereitstellungsdienst verarbeiteten Benutzer oder Gruppen werde
 
 Als Beispiel soll der folgende Bereichsfilter dienen:
 
-![Bereichsfilter](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Bereichsfilter](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 Gemäß diesem Bereichsfilter müssen Benutzer die folgenden Kriterien erfüllen, damit sie bereitgestellt werden können:
 
@@ -94,7 +94,12 @@ Bereichsfilter werden im Rahmen der Attributzuordnungen für jeden Bereitstellun
    g. **REGEX MATCH**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut mit einem Muster für reguläre Ausdrücke übereinstimmt. Beispiel: ([1-9][0-9]) ergibt eine Übereinstimmung mit einer beliebigen Zahl zwischen 10 und 99.
 
    h. **NOT REGEX MATCH**: Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut nicht mit einem Muster für reguläre Ausdrücke übereinstimmt.
- 
+   
+   i. **Greater_Than.** Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer als der Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
+   
+   j. **Greater_Than_OR_EQUALS.** Die Klausel gibt „true“ zurück, wenn das ausgewertete Attribut größer oder gleich als dem Wert ist. Der für den Bereichsfilter angegebene Wert muss eine ganze Zahl sein, und das-Attribut für den Benutzer muss ebenfalls eine ganze Zahl [0, 1, 2,...] sein. 
+
+
 >[!IMPORTANT] 
 > Die Filter „Includes“ und „IsMemberOf“ werden nicht unterstützt. Sie werden in Kürze von der Benutzeroberfläche entfernt.
 

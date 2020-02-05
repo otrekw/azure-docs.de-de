@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665881"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760095"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
-In diesem Artikel erhalten Sie Informationen darüber, welche Systeme und Komponenten (offiziell oder als Vorschauversion) von IoT Edge unterstützt werden. 
+In diesem Artikel erhalten Sie Informationen darüber, welche Systeme und Komponenten (offiziell oder als Vorschauversion) von IoT Edge unterstützt werden.
 
 Wenn bei der Verwendung von Azure IoT Edge Probleme auftreten, gibt es mehrere Möglichkeiten, um Unterstützung zu erhalten. Versuchen Sie es mit einer der folgenden Supportoptionen:
 
@@ -34,18 +34,20 @@ Azure IoT Edge-Module werden als Container implementiert, für deren Start IoT�
 <br>
 <center>
 
-![Moby als Containerruntime](./media/support/only-moby-for-production.png)
+![Die Moby-Engine als Containerruntime](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Betriebssysteme
+
 Azure IoT Edge ist für die meisten containerfähigen Betriebssysteme geeignet. Allerdings werden nicht alle diese Systeme gleich unterstützt. Betriebssysteme sind in Ebenen unterteilt, die jeweils den Grad der zu erwartenden Unterstützung angeben.
+
 * Systeme der Ebene 1 werden unterstützt. Bei Systemen der Ebene 1, Microsoft:
-    * Microsoft führt für dieses Betriebssystem automatisierte Tests durch.
-    * Microsoft stellt Installationspakete für sie bereit.
+  * Microsoft führt für dieses Betriebssystem automatisierte Tests durch.
+  * Microsoft stellt Installationspakete für sie bereit.
 * Systeme der Ebene 2 sind mit Azure IoT Edge kompatibel und relativ einfach zu verwenden. Bei Systemen der Ebene 2:
-    * Microsoft hat Ad-hoc-Tests auf den Plattformen durchgeführt oder weiß, dass ein Partner Azure IoT Edge erfolgreich auf der Plattform ausführt.
-    * Installationspakete für andere Plattformen können ggf. auch für diese Plattformen verwendet werden.
-    
+  * Microsoft hat informelle Tests auf den Plattformen durchgeführt oder weiß, dass ein Partner Azure IoT Edge auf der Plattform erfolgreich ausführt.
+  * Installationspakete für andere Plattformen können ggf. auch für diese Plattformen verwendet werden.
+
 Die Familie des Hostbetriebssystems muss mit der Familie des Gastbetriebssystems, das im Container eines Moduls verwendet wird, immer übereinstimmen. Mit anderen Worten: Sie können unter Linux nur Linux-Container und unter Windows nur Windows-Container verwenden. Bei Verwendung von Windows werden nur Container mit Prozessisolation unterstützt, keine Container mit Hyper-V-Isolation.  
 
 <br>
@@ -61,13 +63,12 @@ Die in der folgenden Tabelle aufgeführten Systeme (entweder allgemein verfügba
 | Betriebssystem | AMD64 | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspbian Stretch |  | ![Raspbian Stretch + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
-| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Öffentliche Vorschau  |
-| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Öffentliche Vorschau |
+| [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Public Preview  |
+| [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18.04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Public Preview |
 | [Windows 10 IoT Core](https://docs.microsoft.com/windows/iot-core/windows-iot-core), Build 17763 | ![Windows IoT Core + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows 10 IoT Enterprise](https://docs.microsoft.com/windows/iot-core/windows-iot-enterprise), Build 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19), Build 17763 | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server), Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
-
 
 Die oben aufgeführten Windows-Betriebssysteme stellen die Anforderungen für Geräte dar, die Windows-Container unter Windows ausführen, wobei es sich um die einzige unterstützte Konfiguration für die Produktion handelt. Die Azure IoT Edge-Installationspakete für Windows ermöglichen die Verwendung von Linux-Containern unter Windows, diese Konfiguration ist jedoch nur für Entwicklungs- und Testzwecke ausgelegt. Weitere Informationen finden Sie unter [Verwenden von IoT Edge unter Windows zum Ausführen von Linux-Containern](how-to-install-iot-edge-windows-with-linux.md).
 
@@ -90,13 +91,14 @@ Die in der folgenden Tabelle aufgeführten Systeme gelten als kompatibel mit Azu
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> Debian 10-Systeme, einschließlich Raspian Buster, verwenden eine OpenSSL-Version, die IoT Edge nicht unterstützt. Verwenden Sie den folgenden Befehl, um vor der Installation von IoT Edge eine frühere Version zu installieren: 
+<sup>1</sup> Debian 10-Systeme, einschließlich Raspian Buster, verwenden eine OpenSSL-Version, die IoT Edge nicht unterstützt. Verwenden Sie den folgenden Befehl, um vor der Installation von IoT Edge eine frühere Version zu installieren:
 
 ```bash
 sudo apt-get install libssl1.0.2
 ```
 
 ## <a name="virtual-machines"></a>Virtual Machines
+
 Azure IoT Edge kann auf virtuellen Computern ausgeführt werden. Das Verwenden eines virtuellen Computers als IoT Edge-Gerät ist eine verbreitete Vorgehensweise, wenn Kunden eine vorhandene Infrastruktur um Edgeintelligenz erweitern möchten. Die Familie des Host-VM-Betriebssystems muss mit der Familie des Gastbetriebssystems übereinstimmen, das im Container eines Moduls verwendet wird. Diese Anforderung gilt auch, wenn Azure IoT Edge direkt auf einem Gerät ausgeführt wird. Azure IoT Edge ist unabhängig von der zugrunde liegenden Virtualisierungstechnologie und funktioniert auf virtuellen Computern, die von Plattformen wie Hyper-V und vSphere unterstützt werden.
 
 <br>
@@ -106,13 +108,14 @@ Azure IoT Edge kann auf virtuellen Computern ausgeführt werden. Das Verwenden e
 </center>
 
 ## <a name="minimum-system-requirements"></a>Mindestsystemanforderungen
+
 Azure IoT Edge funktioniert einwandfrei auf Geräten, die klein wie ein Raspberry Pi3 sind, bis hin zur Größe von Serverhardware. Die Auswahl der richtigen Hardware für Ihr Szenario hängt von den Workloads ab, die Sie ausführen möchten. Die endgültige Entscheidung für ein Gerät zu treffen, kann kompliziert sein; allerdings können Sie mit der Prototyperstellung einer Lösung auf herkömmlichen Laptops oder Desktops problemlos beginnen.
 
-Das Sammeln von Erfahrungen während der Prototyperstellung wird Sie bei Ihrer endgültigen Geräteauswahl leiten. Zu den Fragen, die Sie berücksichtigen sollten, gehören: 
+Das Sammeln von Erfahrungen während der Prototyperstellung wird Sie bei Ihrer endgültigen Geräteauswahl leiten. Zu den Fragen, die Sie berücksichtigen sollten, gehören:
 
 * Wie viele Module umfasst Ihre Workload?
 * Wie viele Schichten werden von den Containern in Ihren Modulen gemeinsam genutzt?
-* In welcher Sprache werden Ihre Module geschrieben? 
+* In welcher Sprache werden Ihre Module geschrieben?
 * Wie viele Daten sollen Ihre Module verarbeiten?
 * Benötigen Ihre Module spezielle Hardware zum Beschleunigen ihrer Workloads?
 * Was sind die gewünschten Leistungsmerkmale Ihrer Lösung?

@@ -14,29 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5472b424f7d2b44b62e6e4495afaf7bdfbbc8439
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423506"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758869"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Entfernen von Konten aus dem Cache bei der globalen Abmeldung
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Web-App, die Web-APIs aufruft: Entfernen von Konten aus dem Tokencache bei der globalen Abmeldung
 
-Sie wissen bereits, wie Ihrer Web-App Anmeldedaten hinzugefügt werden. Dies lernen Sie in [Web app that signs-in users - add sign-in (Web-App, die Benutzer anmeldet – Hinzufügen von Anmeldedaten)](scenario-web-app-sign-user-sign-in.md).
+Sie haben bereits erfahren, wie Sie Ihrer Web-App eine Anmeldefunktion hinzufügen (siehe [Web-App, die Benutzer anmeldet: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)).
 
-Der Unterschied besteht hier darin, dass Sie nach der Abmeldung des Benutzers von dieser oder einer anderen Anwendung den Tokencache mit den dem Benutzer zugeordneten Tokens leeren möchten.
+Bei einer Web-App, die Web-APIs aufruft, funktioniert die Abmeldung anders. Wenn sich der Benutzer von Ihrer Anwendung (oder von einer beliebigen Anwendung) abmeldet, müssen Sie die diesem Benutzer zugeordneten Token aus dem Tokencache entfernen.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>Abfangen des Rückrufs nach der Abmeldung – Einmaliges Abmelden
+## <a name="intercept-the-callback-after-single-sign-out"></a>Abfangen des Rückrufs nach einmaliger Abmeldung
 
-Ihre Anwendung kann das „after `logout`“-Ereignis abfangen, um beispielsweise den Eintrag aus dem Tokencache zu löschen, dem das abgemeldete Konto zugeordnet ist. Die Web-App speichert Zugriffstoken für den Benutzer in einem Cache. Durch das Abfangen des „after `logout`“-Rückrufs kann Ihre Web-App den Benutzer aus dem Tokencache entfernen.
+Um den Eintrag, der mit dem abgemeldeten Konto verbunden ist, aus dem Tokencache zu löschen, kann Ihre Anwendung das „after `logout`“-Ereignis abfangen. Web-Apps speichern die Zugriffstoken für die einzelnen Benutzer in einem Tokencache. Durch das Abfangen des „after `logout`“-Rückrufs kann Ihre Web-App den Benutzer aus dem Cache entfernen.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Dieser Mechanismus wird in der `AddMsal()`-Methode von [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) veranschaulicht.
+Bei ASP.NET Core wird dieser Abfangmechanismus in der `AddMsal()`-Methode von [WebAppServiceCollectionExtensions.cs#L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) veranschaulicht.
 
-Die **Abmelde-URL**, die Sie für Ihre Anwendung registriert haben, ermöglicht Ihnen das Implementieren der einmaligen Abmeldung. Der Microsoft Identity Platform-Endpunkt `logout` ruft die für Ihre Anwendung registrierte **Abmelde-URL** auf. Dieser Aufruf erfolgt, wenn die Abmeldung von Ihrer Web-App, einer anderen Web-App oder dem Browser initiiert wurde. Weitere Informationen finden Sie unter [Einmaliges Abmelden](v2-protocols-oidc.md#single-sign-out).
+Die Abmelde-URL, die Sie zuvor für Ihre Anwendung registriert haben, ermöglicht Ihnen das Implementieren der einmaligen Abmeldung. Der `logout`-Endpunkt von Microsoft Identity Platform ruft Ihre Abmelde-URL auf. Dieser Aufruf erfolgt, wenn die Abmeldung von Ihrer Web-App, einer anderen Web-App oder dem Browser gestartet wurde. Weitere Informationen finden Sie unter [Einmaliges Abmelden](v2-protocols-oidc.md#single-sign-out).
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -49,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -62,7 +61,7 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-Der Code für „RemoveAccountAsync“ ist unter [Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) verfügbar.
+Der Code für `RemoveAccountAsync` ist unter [Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288) verfügbar.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 

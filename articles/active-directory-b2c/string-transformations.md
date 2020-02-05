@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cb3b10ca67ab283b999e4fff8e3bb79ae3b59745
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950815"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712853"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -28,11 +28,11 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von Z
 
 Zwei Ansprüche werden miteinander verglichen, und es wird eine Ausnahme ausgelöst, wenn diese gemäß dem angegebenen Vergleich inputClaim1, inputClaim2 und stringComparison nicht gleich sind.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | Zeichenfolge | Der Typ des ersten Anspruchs, der verglichen werden soll. |
-| InputClaim | inputClaim2 | Zeichenfolge | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
-| InputParameter | stringComparison | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
+| InputClaim | inputClaim1 | string | Der Typ des ersten Anspruchs, der verglichen werden soll. |
+| InputClaim | inputClaim2 | string | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
+| InputParameter | stringComparison | string | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 
 Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationStringsAreNotEqual** steuern die Fehlermeldung, die dem Benutzer anzeigt wird.
 
@@ -89,11 +89,11 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 
 Ändert die Groß-/Kleinschreibung des bereitgestellten Anspruchs je nach Operator in Groß- oder Kleinbuchstaben.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | Zeichenfolge | Der Anspruchstyp, der geändert wird. |
-| InputParameter | toCase | Zeichenfolge | Einer der folgenden Werte: `LOWER` oder `UPPER`. |
-| OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| InputClaim | inputClaim1 | string | Der Anspruchstyp, der geändert wird. |
+| InputParameter | toCase | string | Einer der folgenden Werte: `LOWER` oder `UPPER`. |
+| OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Groß- oder Kleinbuchstaben ändern.
 
@@ -124,10 +124,10 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 
 Erstellt einen Zeichenfolgen-Anspruch aus dem angegebenen Eingabeparameter in der Richtlinie.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | Zeichenfolge | Die festzulegende Zeichenfolge |
-| OutputClaim | createdClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Wert, der im Eingabeparameter angegeben ist. |
+| InputParameter | value | string | Die festzulegende Zeichenfolge |
+| OutputClaim | createdClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation ausgelöst wurde. Es handelt sich um den Wert, der im Eingabeparameter angegeben ist. |
 
 Mithilfe dieser Anspruchstransformation können Sie den Wert für den Zeichenfolgen-Anspruchstyp festlegen.
 
@@ -153,11 +153,11 @@ Mithilfe dieser Anspruchstransformation können Sie den Wert für den Zeichenfol
 
 Bestimmt, ob ein Zeichenfolgen-Anspruch einem anderen entspricht. Das Ergebnis ist ein neuer boolescher Anspruchstyp mit dem Wert `true` oder `false`.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | Zeichenfolge | Der erste Anspruchstyp, der verglichen werden soll. |
-| InputClaim | inputClaim2 | Zeichenfolge | Der zweite Anspruchstyp, der verglichen werden soll. |
-| InputParameter | operator | Zeichenfolge | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
+| InputClaim | inputClaim1 | string | Der erste Anspruchstyp, der verglichen werden soll. |
+| InputClaim | inputClaim2 | string | Der zweite Anspruchstyp, der verglichen werden soll. |
+| InputParameter | Operator | string | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
 | InputParameter | ignoreCase | boolean | Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll. |
 | OutputClaim | outputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
@@ -194,11 +194,11 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 
 Bestimmt, ob der Wert eines Anspruchs gleich dem Wert des Eingabeparameters ist.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
-| InputParameter | operator | Zeichenfolge | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
-| InputParameter | compareTo | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
+| InputClaim | inputClaim1 | string | Der Anspruchstyp, der verglichen werden soll. |
+| InputParameter | Operator | string | Mögliche Werte: `EQUAL` oder `NOT EQUAL`. |
+| InputParameter | compareTo | string | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | boolean | Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den Zeichenfolgen, die miteinander verglichen werden, ignoriert werden soll. |
 | OutputClaim | outputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
@@ -234,14 +234,14 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 
 Erstellt mithilfe des Zufallszahlengenerators eine zufällige Zeichenfolge. Wenn der Zufallszahlengenerator vom Typ `integer` ist, können optional ein Seedparameter und die maximale Anzahl angegeben werden. Mit einem optionalen Parameter im Zeichenfolgenformat kann die Ausgabe formatiert werden, und ein optionaler Parameter mit base64-Codierung gibt an, ob die Ausgabe base64-codiert ist und wie folgt lautet: randomGeneratorType [guid, integer] outputClaim (String).
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | Zeichenfolge | Gibt den zufälligen Wert an, der generiert werden soll: `GUID` (globale eindeutige ID) oder `INTEGER` (eine Ziffer). |
-| InputParameter | stringFormat | Zeichenfolge | [Optional] Formatiert den Zufallswert. |
+| InputParameter | randomGeneratorType | string | Gibt den zufälligen Wert an, der generiert werden soll: `GUID` (globale eindeutige ID) oder `INTEGER` (eine Ziffer). |
+| InputParameter | stringFormat | string | [Optional] Formatiert den Zufallswert. |
 | InputParameter | base64 | boolean | [Optional] Konvertiert den Zufallswert in base64. Wenn das Zeichenfolgenformat angewendet wird, wird der Wert nach dem Zeichenfolgenformat mit base64 codiert. |
-| InputParameter | maximumNumber | int | [Optional] Nur für `INTEGER` randomGeneratorType. Gibt die maximale Anzahl an. |
-| InputParameter | seed  | int | [Optional] Nur für `INTEGER` randomGeneratorType. Gibt den Seed für den Zufallswert an. Hinweis: Der gleiche Seed ergibt die gleiche Sequenz von Zufallszahlen. |
-| OutputClaim | outputClaim | Zeichenfolge | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Zufallswert. |
+| InputParameter | maximumNumber | INT | [Optional] Nur für `INTEGER` randomGeneratorType. Gibt die maximale Anzahl an. |
+| InputParameter | seed  | INT | [Optional] Nur für `INTEGER` randomGeneratorType. Gibt den Seed für den Zufallswert an. Hinweis: Der gleiche Seed ergibt die gleiche Sequenz von Zufallszahlen. |
+| OutputClaim | outputClaim | string | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Zufallswert. |
 
 Im folgenden Beispiel wird eine globale eindeutige ID generiert. Mithilfe dieser Anspruchstransformation wird der zufällige UPN (User Principal Name, Benutzerprinzipalname) erstellt.
 
@@ -293,11 +293,11 @@ Im folgenden Beispiel wird ein ganzzahliger Zufallswert zwischen 0 und 1.000 gen
 
 Formatiert einen Anspruch anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |Zeichenfolge |Der Anspruchstyp, der als Parameter {0} im Zeichenfolgenformat fungiert. |
-| InputParameter | stringFormat | Zeichenfolge | Das Zeichenfolgenformat, einschließlich des Parameters {0}. |
-| OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| InputClaim | inputClaim |string |Der Anspruchstyp, der als Parameter {0} im Zeichenfolgenformat fungiert. |
+| InputParameter | stringFormat | string | Das Zeichenfolgenformat, einschließlich des Parameters {0}. |
+| OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit dem Parameter {0} formatieren. Im folgenden Beispiel wird ein **userPrincipalName** erstellt. Sämtliche technische Profile sozialer Identitätsanbieter, wie z.B. `Facebook-OAUTH`, rufen den **CreateUserPrincipalName** zum Generieren eines **userPrincipalName** auf.
 
@@ -328,12 +328,12 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 
 Formatiert zwei Ansprüche anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode **String.Format** verwendet.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim |Zeichenfolge | Der Anspruchstyp, der als Parameter {0} im Zeichenfolgenformat fungiert. |
-| InputClaim | inputClaim | Zeichenfolge | Der Anspruchstyp, der als Parameter {1} im Zeichenfolgenformat fungiert. |
-| InputParameter | stringFormat | Zeichenfolge | Das Zeichenfolgenformat, einschließlich der Parameter {0} und {1}. |
-| OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| InputClaim | inputClaim |string | Der Anspruchstyp, der als Parameter {0} im Zeichenfolgenformat fungiert. |
+| InputClaim | inputClaim | string | Der Anspruchstyp, der als Parameter {1} im Zeichenfolgenformat fungiert. |
+| InputParameter | stringFormat | string | Das Zeichenfolgenformat, einschließlich der Parameter {0} und {1}. |
+| OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge mit zwei Parametern, {0} und {1}, formatieren. Im folgenden Beispiel wird ein **displayName** mit dem angegebenen Format erstellt:
 
@@ -366,10 +366,10 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 
 Suche nach einem Element aus der Sammlung **Restriction** eines Anspruchs.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | mapFromClaim | Zeichenfolge | Der Anspruch mit dem Text, nach dem in den **restrictionValueClaim**-Ansprüchen über die Sammlung **Restriction** gesucht werden soll.  |
-| OutputClaim | restrictionValueClaim | Zeichenfolge | Der Anspruch mit der Sammlung **Restriction**. Nach dem Aufrufen der Anspruchstransformation enthält der Wert dieses Anspruchs den Wert des ausgewählten Elements. |
+| InputClaim | mapFromClaim | string | Der Anspruch mit dem Text, nach dem in den **restrictionValueClaim**-Ansprüchen über die Sammlung **Restriction** gesucht werden soll.  |
+| OutputClaim | restrictionValueClaim | string | Der Anspruch mit der Sammlung **Restriction**. Nach dem Aufrufen der Anspruchstransformation enthält der Wert dieses Anspruchs den Wert des ausgewählten Elements. |
 
 Im folgenden Beispiel wird anhand des Schlüssels des Fehlers nach der Beschreibung der Fehlermeldung gesucht. Der Anspruch **responseMsg** enthält eine Sammlung von Fehlermeldungen, die dem Benutzer angezeigt oder der vertrauenden Seite gesendet werden sollen.
 
@@ -379,7 +379,7 @@ Im folgenden Beispiel wird anhand des Schlüssels des Fehlers nach der Beschreib
   <DataType>string</DataType>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
@@ -403,18 +403,18 @@ Bei der Anspruchstransformation wird nach dem Text des Elements gesucht und der 
 - Eingabeansprüche:
     - **mapFromClaim:** B2C_V1_90001
 - Ausgabeansprüche:
-    - **restrictionValueClaim:** Sie können sich nicht anmelden, da Sie nicht volljährig sind.
+    - **restrictionValueClaim:** Sie können sich nicht anmelden, weil Sie nicht volljährig sind.
 
 ## <a name="lookupvalue"></a>LookupValue
 
 Sucht in einer Liste von Werten basierend auf dem Wert eines anderen Anspruchs nach einem Anspruchswert.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputParameterId | Zeichenfolge | Der Anspruch, der den Suchwert enthält |
-| InputParameter | |Zeichenfolge | Die Sammlung von inputParameters. |
+| InputClaim | inputParameterId | string | Der Anspruch, der den Suchwert enthält |
+| InputParameter | |string | Die Sammlung von inputParameters. |
 | InputParameter | errorOnFailedLookup | boolean | Steuert, ob bei keinem übereinstimmenden Suchergebnis ein Fehler zurückgegeben wird. |
-| OutputClaim | inputParameterId | Zeichenfolge | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Wert der übereinstimmenden ID. |
+| OutputClaim | inputParameterId | string | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Wert der übereinstimmenden ID. |
 
 Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem Domänennamen gesucht. Bei der Anspruchstransformation wird in dem Bezeichner nach dem Domänennamen gesucht und der zugehörige Wert (eine Anwendungs-ID) zurückgegeben.
 
@@ -451,9 +451,9 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
 
 Bereinigt den Wert eines angegebenen Anspruchs.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | Zeichenfolge | Der Anspruch, dass der zugehörige Wert gleich NULL ist. |
+| OutputClaim | claim_to_null | string | Der Anspruch, dass der zugehörige Wert gleich NULL ist. |
 
 Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eigenschaftensammlung eines Anspruchs entfernen. Folglich wird das Sitzungscookie kleiner. Im folgenden Beispiel wird der Wert des Anspruchstyps `TermsOfService` entfernt.
 
@@ -474,10 +474,10 @@ Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eige
 
 Ruft den Domänenteil einer E-Mail-Adresse ab.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | emailAddress | Zeichenfolge | Der Anspruchstyp, der die E-Mail-Adresse enthält. |
-| OutputClaim | Domäne | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde (die Domäne). |
+| InputClaim | emailAddress | string | Der Anspruchstyp, der die E-Mail-Adresse enthält. |
+| OutputClaim | Domäne | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde (die Domäne). |
 
 Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem Symbol @ des Benutzers analysieren. Dies kann beim Entfernen personenbezogener Informationen aus Überwachungsdaten hilfreich sein. Die folgende Anspruchstransformation veranschaulicht, wie der Domänenname aus einem Anspruch vom Typ **email** analysiert wird.
 
@@ -503,15 +503,15 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 
 Überprüft, ob ein Zeichenfolgen-Anspruch und der Eingabeparameter `matchTo` gleich sind, und legt die Ausgabeansprüche mit dem Wert in den Eingabeparametern `stringMatchMsg` und `stringMatchMsgCode` fest, zusammen mit dem Ausgabeanspruch „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
-| InputParameter | matchTo | Zeichenfolge | Die Zeichenfolge, die mit `inputClaim` verglichen werden soll. |
-| InputParameter | stringComparison | Zeichenfolge | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
-| InputParameter | stringMatchMsg | Zeichenfolge | Der erste Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
-| InputParameter | stringMatchMsgCode | Zeichenfolge | Der zweite Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
-| OutputClaim | outputClaim1 | Zeichenfolge | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `stringMatchMsg`. |
-| OutputClaim | outputClaim2 | Zeichenfolge | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `stringMatchMsgCode`. |
+| InputClaim | inputClaim | string | Der Anspruchstyp, der verglichen werden soll. |
+| InputParameter | matchTo | string | Die Zeichenfolge, die mit `inputClaim` verglichen werden soll. |
+| InputParameter | stringComparison | string | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
+| InputParameter | stringMatchMsg | string | Der erste Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
+| InputParameter | stringMatchMsgCode | string | Der zweite Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
+| OutputClaim | outputClaim1 | string | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `stringMatchMsg`. |
+| OutputClaim | outputClaim2 | string | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `stringMatchMsgCode`. |
 | OutputClaim | stringCompareResultClaim | boolean | Der Ausgabeanspruchstyp „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss. |
 
 Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruch gleich einem von Ihnen angegebenen Wert ist. Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **termsOfUseConsentVersion** gleich `v1` ist. Ist dies der Fall, ändern Sie den Wert in `v2`.
@@ -552,13 +552,13 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 
 Überprüft, ob ein Zeichenfolgen-Anspruch und der Eingabeparameter `matchTo` gleich sind, und legt die Ausgabeansprüche mit dem Wert im Eingabeparameter `outputClaimIfMatched` fest, zusammen mit dem Ausgabeanspruch „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | claimToMatch | Zeichenfolge | Der Anspruchstyp, der verglichen werden soll. |
-| InputParameter | matchTo | Zeichenfolge | Die Zeichenfolge, die mit „inputClaim“ verglichen werden soll. |
-| InputParameter | stringComparison | Zeichenfolge | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
-| InputParameter | outputClaimIfMatched | Zeichenfolge | Der Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
-| OutputClaim | outputClaim | Zeichenfolge | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder NULL, wenn die Zeichenfolgen nicht übereinstimmen. |
+| InputClaim | claimToMatch | string | Der Anspruchstyp, der verglichen werden soll. |
+| InputParameter | matchTo | string | Die Zeichenfolge, die mit „inputClaim“ verglichen werden soll. |
+| InputParameter | stringComparison | string | Mögliche Werte: `Ordinal` oder `OrdinalIgnoreCase`. |
+| InputParameter | outputClaimIfMatched | string | Der Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
+| OutputClaim | outputClaim | string | Wenn Zeichenfolgen gleich sind, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder NULL, wenn die Zeichenfolgen nicht übereinstimmen. |
 | OutputClaim | stringCompareResultClaim | boolean | Der Ausgabeanspruchstyp „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss. |
 
 Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob der Wert des Anspruchs **ageGroup** gleich `Minor` ist. Ist dies der Fall, wird der Wert `B2C_V1_90001` zurückgegeben.

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933440"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765398"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Vorgehensweise: Konfigurieren von Postman für Azure Digital Twins
 
@@ -79,7 +79,6 @@ Konfigurieren Ihrer Azure Active Directory-App für die Verwendung der implizite
 
 Richten Sie Postman ein, und konfigurieren Sie das Tool so, dass ein Azure Active Directory-Token abgerufen wird. Geben Sie anschließend unter Verwendung des abgerufenen Tokens eine authentifizierte HTTP-Anforderung an Azure Digital Twins aus:
 
-1. Navigieren Sie zu [www.getpostman.com](https://www.getpostman.com/), um die App herunterzuladen.
 1. Überprüfen Sie, ob Ihre **Autorisierungs-URL** richtig ist. Sie sollte das folgende Format aufweisen:
 
     ```plaintext
@@ -88,9 +87,13 @@ Richten Sie Postman ein, und konfigurieren Sie das Tool so, dass ein Azure Activ
 
     | Name  | Ersetzen durch | Beispiel |
     |---------|---------|---------|
-    | IHR_AZURE_MANDANT | Der Name Ihres Mandanten oder Ihrer Organisation | `microsoft` |
+    | IHR_AZURE_MANDANT | Der Name Ihres Mandanten oder Ihrer Organisation. Verwenden Sie den benutzerfreundlichen Namen statt der alphanumerischen **Mandanten-ID** der Registrierung für Ihre Azure Active Directory-App. | `microsoft` |
 
-1. Wählen Sie die Registerkarte **Authorization** (Autorisierung) und anschließend **OAuth 2.0** und **Get New Access Token** (Neues Zugriffstoken abrufen) aus.
+1. Navigieren Sie zu [www.getpostman.com](https://www.getpostman.com/), um die App herunterzuladen.
+
+1. Öffnen Sie die App Postman, und klicken Sie auf „New“ > „Create new“ („Neu“ > „Neu erstellen“). Wählen Sie anschließend die Option „Request“ (Anfordern). Geben Sie einen Anforderungsnamen ein. Wählen Sie eine Sammlung oder einen Ordner zum Speichern aus, und klicken Sie auf „Speichern“. 
+
+1. Wir möchten eine GET-Anforderung erstellen. Wählen Sie die Registerkarte **Authorization** (Autorisierung) und anschließend „OAuth 2.0“ und **Get New Access Token** (Neues Zugriffstoken abrufen) aus.
 
     | Feld  | value |
     |---------|---------|

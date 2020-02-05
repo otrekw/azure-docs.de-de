@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552133"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769491"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
@@ -156,7 +156,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 | Data Flow-Annahmen: Ausführungszeit = 10 Minuten + 10 Minuten TTL | 10 \* 16 allgemeine Computekerne mit einer TTL von 10 |
 | Annahme für Überwachung der Pipeline: Nur 1 Ausführung ist aufgetreten | 2 wiederholte Überwachungsausführungsaufzeichnungen (1 für die Pipelineausführung, 1 für die Aktivitätsausführung) |
 
-**Preis für gesamtes Szenario: 0,3011 US-$**
+**Preis für gesamtes Szenario: 1,4631 US-$**
 
 - Data Factory-Vorgänge = **0,0001 US-$**
   - Lesen/Schreiben = 10\*00001 = 0,0001 US-$ [1 R/W = 0,50 US-$/50.000 = 0,00001]

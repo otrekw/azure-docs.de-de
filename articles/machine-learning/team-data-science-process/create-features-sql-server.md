@@ -3,20 +3,20 @@ title: 'Erstellen von Features in SQL Server mithilfe von SQL und Python: Team D
 description: Generieren von Features für Daten, die in einer SQL Server-VM in Azure gespeichert sind, mit SQL und Python (Teil des Team Data Science-Prozesses).
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982057"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721743"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Für diese Aufgabe können Sie SQL oder eine Programmiersprache wie Python verwenden. Beide Herangehensweisen werden hier vorgestellt.
@@ -37,9 +37,9 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 ## <a name="sql-featuregen"></a>Generieren von Funktionen mit SQL
 In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von SQL beschrieben.  
 
-1. [Anzahlbasierte Funktionsgenerierung](#sql-countfeature)
-2. [Gruppenbasierte Funktionsgenerierung](#sql-binningfeature)
-3. [Einführen von Funktionen aus einer einzelnen Spalte](#sql-featurerollout)
+* [Anzahlbasierte Funktionsgenerierung](#sql-countfeature)
+* [Gruppenbasierte Funktionsgenerierung](#sql-binningfeature)
+* [Einführen von Funktionen aus einer einzelnen Spalte](#sql-featurerollout)
 
 > [!NOTE]
 > Wenn Sie zusätzliche Funktionen generieren, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann.
@@ -47,7 +47,7 @@ In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von S
 > 
 
 ### <a name="sql-countfeature"></a>Anzahlbasierte Funktionsgenerierung
-In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die "where"-Klausel. Diese können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
+In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen demonstriert. Die erste Methode verwendet eine bedingte Summe und die zweite die "where"-Klausel. Diese neuen Features können dann mit der ursprünglichen Tabelle (über Primärschlüsselspalten) zusammengeführt werden, um die Anzahlfunktionen zusammen mit den ursprünglichen Daten verwenden zu können.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ In diesem Abschnitt werden zwei Methoden zur Generierung von Anzahlfunktionen de
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>Gruppenbasierte Funktionsgenerierung
-Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem Sie eine numerische Spalte, die stattdessen als Funktion verwendet wird, klassifizieren (mit 5 Klassifizierungen):
+Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem Sie eine numerische Spalte, die stattdessen als Funktion verwendet wird, klassifizieren (mit fünf Containern):
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (
 * Die dritte Dezimalstelle ist auf etwa 110 m genau: Sie können so große landwirtschaftliche Felder oder Industriegebiete identifizieren.
 * Die vierte Dezimalstelle ist auf etwa 11 m genau: Sie können so einzelne Grundstücke unterscheiden. Dies ist vergleichbar mit der typischen Genauigkeit eines nicht korrigierten GPS-Geräts ohne Störungen.
 * Die fünfte Dezimalstelle ist auf etwa 1,1 m genau: Damit können Sie einzelne Strukturen voneinander unterscheiden. Eine Genauigkeit auf dieser Stufe lässt sich mit kommerziellen GPS-Geräten nur mit einer differenziellen Korrektur erreichen.
-* Die sechste Dezimalstelle bietet eine Genauigkeit von etwa 0,11 m: Damit können Sie Strukturen detailgetreu erkennen, um Landschaften zu planen oder Straßen zu bauen. Dies sollte mehr als ausreichend für die Nachverfolgung der Bewegungen von Gletschern und Flüssen sein. Erreicht wird diese Genauigkeit nur durch umfangreiche GPS-Maßnahmen, z. B. differenziell korrigiertes GPS.
+* Die sechste Dezimalstelle bietet eine Genauigkeit von etwa 0,11 m: Mit dieser Stufe können Sie Strukturen detailgetreu erkennen, um Landschaften zu planen oder Straßen zu bauen. Dies sollte mehr als ausreichend für die Nachverfolgung der Bewegungen von Gletschern und Flüssen sein. Erreicht wird dieses Ziel nur durch umfangreiche GPS-Maßnahmen, z. B. differenziell korrigiertes GPS.
 
-Die Positionsinformationen können in Funktionen umgewandelt werden, indem die Informationen zu Region, Standort und Stadt herausisoliert werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter `https://msdn.microsoft.com/library/ff701710.aspx` aufrufen können, um Informationen über Region/Bezirk abzurufen.
+Die Positionsinformationen können in Funktionen umgewandelt werden, indem die Informationen zu Region, Standort und Stadt herausisoliert werden. Sie können auch einen REST-Endpunkt wie die Bing Maps-API aufrufen (Informationen über Region/Bezirk können Sie unter `https://msdn.microsoft.com/library/ff701710.aspx` abrufen).
 
     select
         <location_columnname>

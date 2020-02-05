@@ -14,11 +14,11 @@
       href: learn/quick-monitor-azure-resource.md
     - name: Überwachen virtueller Maschinen
       items:
-        - name: Sammeln – Azure-VMs
+        - name: Virtuelle Azure-Computer
           href: learn/quick-collect-azurevm.md
-        - name: Sammeln – Linux-Computer
+        - name: Linux-Computer
           href: learn/quick-collect-linux-computer.md
-        - name: Sammeln – Windows-Computer
+        - name: Windows-Computer
           href: learn/quick-collect-windows-computer.md
     - name: Überwachen von Anwendungen
       items:
@@ -439,6 +439,8 @@
               href: app/configuration-with-applicationinsights-config.md
             - name: Korrelieren von benutzerdefinierten Datenquellen
               href: app/custom-data-correlation.md
+            - name: Verbindungszeichenfolgen
+              href: app/sdk-connection-string.md
             - name: Spezielle Themen
               items:
                 - name: Eingehende Diagnose für Web-Apps und Dienste
@@ -535,23 +537,18 @@
               href: 'faq.md#agents'
             - name: Azure-Diagnoseerweiterung
               items:
-                - name: Übersicht
-                  href: platform/diagnostics-extension-overview.md
-                - name: Erfassen von Protokollen
-                  href: platform/azure-storage-iis-table.md
                 - name: Windows
+                  displayname: diagnostics extension
                   items:
-                    - name: Versionsverlauf
-                      href: platform/diagnostics-extension-schema.md
-                    - name: Schema
-                      href: platform/diagnostics-extension-schema-1dot3.md
-                    - name: Senden an Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Senden an Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Senden an Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Senden an Azure Monitor als benutzerdefinierte Metriken
+                    - name: Übersicht
+                      href: platform/diagnostics-extension-overview.md
+                    - name: Installieren und konfigurieren
+                      items:
+                        - name: PowerShell
+                          href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
+                        - name: Resource Manager-Vorlage
+                          href: ../virtual-machines/extensions/diagnostics-template.md?toc=/azure/azure-monitor/toc.json
+                    - name: Senden an Azure Monitor-Metriken
                       items:
                         - name: Virtual Machine
                           href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
@@ -561,17 +558,28 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Clouddienst
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Senden an Event Hubs
+                      href: platform/diagnostics-extension-stream-event-hubs.md
+                    - name: Senden an Protokolle
+                      href: platform/azure-storage-iis-table.md
+                    - name: Senden an Azure Storage
+                      href: platform/diagnostics-extension-to-storage.md
+                    - name: Senden an Application Insights
+                      href: platform/diagnostics-extension-to-application-insights.md
+                    - name: Versionsverlauf
+                      href: platform/diagnostics-extension-schema.md
                     - name: JSON-Zeilenformat für Ressourcenprotokolle
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Problembehandlung
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
+                  displayname: diagnostics extension
                   items:
-                    - name: Verwenden mit VMs
-                      href: ../virtual-machines/extensions/diagnostics-linux.md
-                    - name: Benutzerdefinierte Metriken mit Telegraf
+                    - name: Übersicht
+                      href: ../virtual-machines/extensions/diagnostics-linux.md?toc=/azure/azure-monitor/toc.json
+                    - name: Erfassen von Metriken mit Telegraf
                       href: platform/collect-custom-metrics-linux-telegraf.md
-            - name: Log Analytics-Agents
+            - name: Log Analytics-Agent
               items:
                 - name: Übersicht
                   href: platform/log-analytics-agent.md
@@ -589,6 +597,28 @@
                   href: platform/agent-manage.md
                 - name: Agent-Integrität
                   href: insights/solution-agenthealth.md
+                - name: Datenquellen
+                  items:
+                    - name: Übersicht
+                      href: platform/agent-data-sources.md
+                    - name: Windows-Ereignisse
+                      href: platform/data-sources-windows-events.md
+                    - name: Benutzerdefinierte JSON-Daten
+                      href: platform/data-sources-json.md
+                    - name: Collectd-Leistungsdaten
+                      href: platform/data-sources-collectd.md
+                    - name: syslog
+                      href: platform/data-sources-syslog.md
+                    - name: Leistungsindikatoren
+                      href: platform/data-sources-performance-counters.md
+                    - name: Linux-Anwendungsleistung
+                      href: platform/data-sources-linux-applications.md
+                    - name: IIS-Protokolle
+                      href: platform/data-sources-iis-logs.md
+                    - name: Benutzerdefinierte Protokolle
+                      href: platform/data-sources-custom-logs.md
+                    - name: Benutzerdefinierte Felder
+                      href: platform/custom-fields.md
             - name: Problembehandlung
               items:
                 - name: Log Analytics-Erweiterung für virtuelle Computer
@@ -600,28 +630,6 @@
                 - name: Log Analytics-Agent für Linux
                   displayname: 'troubleshoot, troubleshooting'
                   href: platform/agent-linux-troubleshoot.md
-        - name: Agent-Datenquellen
-          items:
-            - name: Übersicht
-              href: platform/agent-data-sources.md
-            - name: Windows-Ereignisse
-              href: platform/data-sources-windows-events.md
-            - name: Benutzerdefinierte JSON-Daten
-              href: platform/data-sources-json.md
-            - name: Collectd-Leistungsdaten
-              href: platform/data-sources-collectd.md
-            - name: syslog
-              href: platform/data-sources-syslog.md
-            - name: Leistungsindikatoren
-              href: platform/data-sources-performance-counters.md
-            - name: Linux-Anwendungsleistung
-              href: platform/data-sources-linux-applications.md
-            - name: IIS-Protokolle
-              href: platform/data-sources-iis-logs.md
-            - name: Benutzerdefinierte Protokolle
-              href: platform/data-sources-custom-logs.md
-            - name: Benutzerdefinierte Felder
-              href: platform/custom-fields.md
         - name: Azure Monitor für VMs
           items:
             - name: Übersicht
@@ -660,14 +668,16 @@
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: Deaktivieren der Überwachung
               href: insights/vminsights-optout.md
-        - name: Lösung „Kapazität und Leistung“
-          href: insights/capacity-performance.md
-        - name: VMware Analytics-Lösung
-          href: insights/vmware.md
-        - name: Wire Data-Lösung
-          href: insights/wire-data.md
-        - name: Dienstzuordnungslösung
-          href: insights/service-map.md
+        - name: Lösungen
+          items:
+            - name: Lösung „Kapazität und Leistung“
+              href: insights/capacity-performance.md
+            - name: VMware Analytics-Lösung
+              href: insights/vmware.md
+            - name: Wire Data-Lösung
+              href: insights/wire-data.md
+            - name: Dienstzuordnungslösung
+              href: insights/service-map.md
         - name: Computergruppen
           href: platform/computer-groups.md
     - name: Überwachen von Containern
@@ -1125,6 +1135,10 @@
   items:
     - name: Diensteinschränkungen
       href: service-limits.md
+    - name: Diagnoseerweiterung
+      items:
+        - name: Schema
+          href: platform/diagnostics-extension-schema-1dot3.md
     - name: Application Insights
       items:
         - name: Automatisches Sammeln von Abhängigkeiten

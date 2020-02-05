@@ -3,20 +3,20 @@ title: 'Bestimmen von Szenarien und Planen des Analyseprozesses: Team Data Scien
 description: Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse durch Berücksichtigen einer Reihe wichtiger Fragen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647304"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710324"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
@@ -79,7 +79,7 @@ Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen 
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Wie viele Daten werden in Azure verschoben?
 
-Extrem große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio (klassisch) im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
+Große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio (klassisch) im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Fragen zu Datenmerkmalen: Typ, Format und Größe
 

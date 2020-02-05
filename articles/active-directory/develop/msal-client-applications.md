@@ -13,13 +13,12 @@ ms.date: 04/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad2f271ae0eea2e393aad4eb972eff211655b02
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 75ea183a9968c65957bcf2a4d39966d2553db84f
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917096"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696588"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Öffentliche und vertrauliche Clientanwendungen
 Die Microsoft Authentication Library (MSAL) definiert zwei Arten von Clients: öffentliche und vertrauliche Clients. Diese beiden Clienttypen unterscheiden sich in ihrer Fähigkeit, sich auf sichere Weise bei einem Autorisierungsserver zu authentifizieren und die Vertraulichkeit ihrer Clientanmeldeinformationen zu gewährleisten. Die Azure AD-Authentifizierungsbibliothek (Azure AD Authentication Library, ADAL) dagegen funktioniert nach dem Konzept des *Authentifizierungskontexts* (hierbei handelt es sich um eine Verbindung mit Azure AD).
@@ -27,7 +26,7 @@ Die Microsoft Authentication Library (MSAL) definiert zwei Arten von Clients: ö
 - **Vertrauliche Clientanwendungen** sind Apps, die auf Servern ausgeführt werden (Web-Apps, Web-API-Apps oder sogar Dienst-/Daemonanwendungen). Sie gelten als schwer zugänglich und sind daher in der Lage, Anwendungsgeheimnisse sicher zu speichern. Vertrauliche Clients können Geheimnisse speichern, die zur Konfigurationszeit eingerichtet wurden. Jede Instanz eines Clients verfügt über eine eigene Konfiguration (einschließlich Client-ID und geheimem Clientschlüssel). Endbenutzer können diese Werte nur schwer extrahieren. Eine Web-App ist die häufigste Form eines vertraulichen Clients. Die Client-ID wird über den Webbrowser verfügbar gemacht, aber der geheime Schlüssel wird nur im Rückkanal übergeben und niemals direkt verfügbar gemacht.
 
     Vertrauliche Client-Apps: <BR>
-    ![Web-App](media/msal-client-applications/web-app.png) ![Web-API](media/msal-client-applications/web-api.png) ![Daemon/Dienst](media/msal-client-applications/daemon-service.png)
+    ![Web-App](media/msal-client-applications/web-app.png), ![Web-API](media/msal-client-applications/web-api.png), ![Daemon/Dienst](media/msal-client-applications/daemon-service.png)
 
 - **Öffentliche Clientanwendungen** sind Apps, die auf Geräten, Desktopcomputern oder in einem Webbrowser ausgeführt werden. Sie sind in Bezug auf eine sichere Speicherung von Anwendungsgeheimnissen nicht vertrauenswürdig und können daher nur im Namen eines Benutzers auf Web-APIs zugreifen. (Sie unterstützen nur öffentliche Clientflows.) Öffentliche Clients können keine zur Konfigurationszeit festgelegten Geheimnisse speichern und verfügen daher nicht über geheime Clientschlüssel.
 

@@ -16,12 +16,12 @@ ms.date: 03/12/2019
 ms.author: mimart
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5eca08e0b736937af42e58d81148636e3269df
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 589b3e51f27147f0a0432b61c22a024c202e388b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275638"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712020"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Konfigurieren des einmaligen Anmeldens bei einer Anwendungsproxyanwendung
 
@@ -37,7 +37,7 @@ Weitere Informationen zu den Methoden zur Vorauthentifizierung finden Sie unter 
 ## <a name="configuring-single-sign-on-modes-for-application-proxy-applications"></a>Konfigurieren der Modi für einmaliges Anmelden für Anwendungsproxyanwendungen
 Konfigurieren Sie den bestimmten Typ des einmaligen Anmeldens. Die Anmeldemethoden sind auf Basis des Authentifizierungstyps klassifiziert, der von der Back-End-Anwendung verwendet wird. App-Proxyanwendungen unterstützen drei Arten von Anmeldungen:
 
--   **Kennwortbasierte Anmeldung**: Die kennwortbasierte Anmeldung kann für jede Anwendung verwendet werden, in der für die Anmeldung Felder für Benutzername und Kennwort genutzt werden. Die Konfigurationsschritte finden Sie unter [Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung](configure-password-single-sign-on-gallery-applications.md).
+-   **Kennwortbasierte Anmeldung**: Die kennwortbasierte Anmeldung kann für jede Anwendung verwendet werden, in der für die Anmeldung Felder für Benutzername und Kennwort genutzt werden. Die Konfigurationsschritte finden Sie unter [Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung](configure-password-single-sign-on-non-gallery-applications.md).
 
 -   **Integrierte Windows-Authentifizierung**: Für Anwendungen, die die integrierte Windows-Authentifizierung (IWA) verwenden, wird das einmalige Anmelden durch die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) ermöglicht. Mit dieser Methode erhalten Anwendungsproxyconnectors in Active Directory die Berechtigung, die Identität von Benutzern anzunehmen und in deren Auftrag Token zu senden und zu empfangen. Informationen zur KCD-Konfiguration finden Sie der [Dokumentation zum einmaligen Anmelden mit KCD](application-proxy-configure-single-sign-on-with-kcd.md).
 
