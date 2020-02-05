@@ -284,7 +284,7 @@
         - name: Protokollieren von Metriken für Trainingsausführungen
           href: how-to-track-experiments.md
         - name: Nachverfolgen von Experimenten mit MLflow
-          displayName: 'log, monitor, metrics'
+          displayName: 'log, monitor, metrics, Databricks'
           href: how-to-use-mlflow.md
         - name: Visualisieren von Ausführungen mit TensorBoard
           displayName: 'log, monitor, metrics'

@@ -26,7 +26,7 @@
         - name: Node.js
           href: quickstart-connect-pnp-device-node.md
     - name: "Verbinden eines Geräts mit IoT\_Central"
-      href: ../iot-central/preview/tutorial-connect-pnp-device.md
+      href: ../iot-central/core/tutorial-connect-pnp-device.md
     - name: Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung
       items:
         - name: 'C#'
