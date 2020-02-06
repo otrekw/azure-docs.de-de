@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 648eb6cdb1787e1cbdf82bd8e5c8499b0dbaf02c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772274"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906292"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul
 
@@ -197,8 +197,8 @@ In diesem Tutorial stellen Sie zwei Module bereit. Das erste ist das Modul **Sim
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |
-    | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint(\"/modules/SimulatedTemperatureSensor/inputs/control\")` |
-    | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint(\"/modules/{moduleName}/inputs/temperature\")`|
+    | `alertsToReset` | `FROM /messages/modules/{moduleName}/* INTO BrokeredEndpoint("/modules/SimulatedTemperatureSensor/inputs/control")` |
+    | `telemetryToAsa` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO BrokeredEndpoint("/modules/{moduleName}/inputs/temperature")`|
 
     Die Routen, die Sie hier deklarieren, definieren den Fluss der Daten durch das IoT Edge-Gerät. Die Telemetriedaten von „SimulatedTemperatureSensor“ werden an IoT Hub und an die Eingabe **temperature** (Temperatur) gesendet, die im Stream Analytics-Auftrag konfiguriert wurde. Die Meldungen der Ausgabe **alert** (Warnung) werden an IoT Hub und an das SimulatedTemperatureSensor-Modul gesendet, um den Zurücksetzungsbefehl auszulösen.
 

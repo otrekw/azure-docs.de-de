@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „Payment Card Industry Data Security Standard v3.2.1“, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: aa641b35f1a7533a13803e7984c83df2f3268de6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9df9392430fd0496ffb5e635a6fc3e31ba708208
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546546"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905562"
 ---
 # <a name="deploy-the-pci-dss-v321-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 
@@ -91,7 +91,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
 Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartefakts:
 
-|Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
+|Artefaktname|Artefakttyp|Parametername|Beschreibung|
 |-|-|-|-|
 |\[Vorschau\]: Audit PCI v3.2.1:2018 steuert und stellt spezifische VM-Erweiterungen zur Unterstützung der Überwachungsanforderungen bereit.|Richtlinienzuweisung|Liste der Ressourcentypen | Überwachen der Diagnoseeinstellung für ausgewählte Ressourcentypen. Standardmäßig sind alle Ressourcen ausgewählt| 
 |Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Liste der zulässigen Speicherorte|Liste der Standorte im Rechenzentrum für jede dort bereitzustellende Ressource. Diese Liste kann an die gewünschten Azure-Standorte weltweit angepasst werden. Wählen Sie Standorte aus, die Sie zulassen möchten.| 

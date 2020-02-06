@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „PCI-DSS v3.2.1“
 description: Steuerungszuordnung des Blaupausenbeispiels Payment Card Industry Data Security Standard v3.2.1 zu Azure Policy und RBAC.
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 38db59a7f0b93e2c87b3c7acdfbcc2b8cbd11489
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546569"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905638"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels PCI-DSS v3.2.1
 
@@ -101,14 +101,14 @@ Diese Blaupause hilft Ihnen bei der Durchsetzung sicherer Kennwörter, indem sie
 - \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
 - \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 ## <a name="103-and-1054-audit-generation"></a>10.3 und 10.5.4 Generierung von Überwachungsdatensätzen
 
 Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokolliert werden, indem Sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, die die Einstellungen des Überwachungsprotokolls auf Azure-Ressourcen überprüfen.
 Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgeführt werden. Azure-Protokolle basieren auf synchronisierten internen Uhren, um eine zeitkorrelierte Aufzeichnung von Ereignissen über Ressourcen hinweg zu erstellen.
 
-- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
 - Bereitstellen von Überwachung auf SQL-Server-Instanzen

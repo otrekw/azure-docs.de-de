@@ -3,20 +3,20 @@ title: 'Leitfaden für Predictive Maintenance für Luft-und Raumfahrt: Team Data
 description: Eine technische Anleitung für die Lösungsvorlage mit Microsoft Cortana Intelligence zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt, in Versorgungsunternehmen und im Transportwesen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: a73308274c9aedf6a85745c17c14637e2ef3d27d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9871e1402336f5ad282c12f959d45fda85512a84
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492473"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721845"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage für Predictive Maintenance in der Luft- und Raumfahrt
 
@@ -49,7 +49,7 @@ In den folgenden Abschnitten werden die Komponenten der Lösung beschrieben.
 
 ## <a name="data-source-and-ingestion"></a>Datenquelle und Erfassung
 ### <a name="synthetic-data-source"></a>Synthetische Datenquelle
-Die für diese Vorlage verwendete Datenquelle wird mit einer Desktopanwendung generiert. Sie laden diese Anwendung nach dem erfolgreichen Bereitstellen der Vorlage herunter und führen sie aus.
+Die für diese Vorlage verwendete Datenquelle wird mit einer heruntergeladenen Desktopanwendung generiert. Sie führen diese Anwendung nach dem erfolgreichen Bereitstellen der Vorlage lokal aus.
 
 Wählen Sie zum Zugreifen auf die Anweisungen zum Herunterladen und Installieren dieser Anwendung im Lösungsvorlagendiagramm den ersten Knoten für den Datengenerator für Predictive Maintenance. Die Anweisungen befinden sich in der Eigenschaftenleiste. Diese Anwendung fügt dem [Azure Event Hub](#azure-event-hub)-Dienst Datenpunkte bzw. Ereignisse hinzu, die für den gesamten weiteren Lösungsablauf verwendet werden. Die Datenquelle ist von öffentlich zugänglichen Daten aus dem [Datenrepository der NASA](https://c3.nasa.gov/dashlink/resources/139/) (und dort konkret aus dem [Turbofan Engine Degradation Simulation Data Set](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)) abgeleitet.
 
@@ -63,7 +63,7 @@ Der [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)-Dienst n
 Verwenden Sie [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/), um nahezu in Echtzeit verfügbare Analysen zum Eingabedatenstrom über den [Azure Event Hub](#azure-event-hub)-Dienst bereitzustellen. Anschließend veröffentlichen Sie die Ergebnisse in einem [Power BI](https://powerbi.microsoft.com)-Dashboard und archivieren alle unformatierten eingehenden Ereignisse des [Azure Storage](https://azure.microsoft.com/services/storage/)-Diensts zur späteren Verarbeitung durch den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)-Dienst.
 
 ### <a name="hdinsight-custom-aggregation"></a>Benutzerdefinierte Aggregation mit HDInsight
-Führen Sie (von Azure Data Factory orchestrierte) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts mit HDInsight aus, um die vom Azure Stream Analytics-Dienst archivierten Ereignisse zu aggregieren.
+Führen Sie (von Azure Data Factory orchestrierte) [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts mit HDInsight aus, um die von der Azure Stream Analytics-Ressource archivierten Ereignisse zu aggregieren.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Diensts basierend auf den erhaltenen Daten Vorhersagen über die Restlebensdauer eines bestimmten Flugzeugtriebwerks. 
@@ -89,7 +89,7 @@ Azure Event Hub ist sehr allgemein angelegt. Daten können im CSV-Format oder im
 In diesem Dokument wird nicht beschrieben, wie Sie Daten erfassen. Es ist jedoch einfach, Ereignisse oder Daten über die Event Hub-APIs an Azure Event Hub zu senden.
 
 ### <a name="azure-stream-analytics-1"></a>Azure Stream Analytics
-Führen Sie mit dem Azure Stream Analytics-Dienst Analysen nahezu in Echtzeit durch. Die Datenströme werden gelesen, und Daten können an eine beliebige Anzahl von Quellen ausgegeben werden.
+Führen Sie mit der Azure Stream Analytics-Ressource Analysen in Quasi-Echtzeit durch. Die Datenströme werden gelesen, und Daten können an eine beliebige Anzahl von Quellen ausgegeben werden.
 
 Bei der Lösungsvorlage für vorbeugende Wartung in der Luft- und Raumfahrt besteht die Azure Stream Analytics-Abfrage aus vier Unterabfragen, die jeweils Ereignisse aus dem Azure Event Hub-Dienst nutzen und Ausgabedaten für vier verschiedene Speicherorte erzeugen. Diese Ausgabedaten bestehen aus drei Power BI-Datasets und einem Azure Storage-Speicherort.
 
@@ -148,8 +148,8 @@ Informationen zum Erstellen des Azure Machine Learning-Experiments finden Sie un
 ## <a name="monitor-progress"></a>Überwachen des Fortschritts
 Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die verschiedenen Komponenten der Lösung beginnen, im Anschluss an die von der Data Factory aufgerufenen Befehle in Aktion zu treten. Es gibt zwei Möglichkeiten zum Überwachen der Pipeline.
 
-1. Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente Blob Storage und anschließend im rechten Bereich auf „Öffnen“ klicken, gelangen Sie zum [Azure-Portal](https://portal.azure.com/). Klicken Sie dort auf „Blobs“. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **maintenancesadata**. Im nächsten Bereich befindet sich der Ordner **rawdata**. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „hour=17“ und „hour=18“. Das Vorhandensein dieser Ordner zeigt an, dass die unformatierten Daten auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten CSV-Dateien mit Größen in MB angezeigt werden.
-2. Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu drei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Portal](https://portal.azure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png), und klicken Sie darauf. Suchen Sie Ihre Datenbank **pmaintenancedb**, und klicken Sie darauf. Klicken Sie auf der nächsten Seite unten auf VERWALTEN.
+* Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente Blob Storage und anschließend im rechten Bereich auf „Öffnen“ klicken, gelangen Sie zum [Azure-Portal](https://portal.azure.com/). Klicken Sie dort auf „Blobs“. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **maintenancesadata**. Im nächsten Bereich befindet sich der Ordner **rawdata**. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „hour=17“ und „hour=18“. Das Vorhandensein dieser Ordner zeigt an, dass die unformatierten Daten auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten CSV-Dateien mit Größen in MB angezeigt werden.
+* Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu drei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Portal](https://portal.azure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png), und klicken Sie darauf. Suchen Sie Ihre Datenbank **pmaintenancedb**, und klicken Sie darauf. Klicken Sie auf der nächsten Seite unten auf VERWALTEN.
    
     ![Symbol „Verwalten“](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
@@ -162,8 +162,11 @@ Richten Sie ein Power BI-Dashboard ein, um Ihre Daten aus Azure Stream Analytics
 ### <a name="set-up-the-cold-path-dashboard"></a>Einrichten des Dashboards für kalte Daten
 Bei der Datenpipeline für kalte Daten besteht das Ziel darin, die vorhergesagte Restlebensdauer jedes Flugzeugtriebwerks abzurufen, nachdem ein Flug oder Flugzyklus abgeschlossen ist. Das Vorhersageergebnis wird alle drei Stunden aktualisiert, um Vorhersagen für die Flugzeugtriebwerke zu erhalten, die in den letzten drei Stunden einen Flug beendet haben.
 
-Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle her, denn dort werden die Vorhersageergebnisse gespeichert. Hinweis: 1) Nach dem Bereitstellen Ihrer Lösung wird alle drei Stunden eine Vorhersage in der Datenbank angezeigt.
-Die PBIX-Datei, die Teil des Downloads für den Generator ist, enthält einige Seedingdaten, sodass Sie das Power BI-Dashboard sofort erstellen können. 2) Die Voraussetzung für diesen Schritt ist das Herunterladen und Installieren der kostenlosen Software [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
+Power BI stellt eine Verbindung mit einer Azure SQL-Datenbank als Datenquelle her, denn dort werden die Vorhersageergebnisse gespeichert. 
+
+Hinweis: 
+1.    Nach dem Bereitstellen Ihrer Lösung wird alle drei Stunden eine Vorhersage in der Datenbank angezeigt. Die PBIX-Datei, die Teil des Downloads für den Generator ist, enthält einige Seedingdaten, sodass Sie das Power BI-Dashboard sofort erstellen können. 
+2.    Die Voraussetzung für diesen Schritt ist das Herunterladen und Installieren der kostenlosen Software [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
 
 In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Datenbank verbinden, die beim Bereitstellen der Lösung in Betrieb genommen wurde und die die Daten (z. B. Vorhersageergebnisse) für die Visualisierung enthält.
 
@@ -186,7 +189,7 @@ In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Dat
    * Im nächsten Ausklappfenster werden im linken Bereich zwei Optionen angezeigt: **Windows** und **Datenbank**. Klicken Sie auf **Datenbank**, und geben Sie **Benutzername** und **Kennwort** ein. (Hierbei handelt es sich um den Benutzernamen und das Kennwort, die Sie beim ersten Bereitstellen der Lösung und beim erstmaligen Erstellen einer Azure SQL-Datenbank eingegeben haben.) Aktivieren Sie unter ***Wählen Sie die Ebene aus, auf die diese Einstellungen anzuwenden sind:*** die Option für die Datenbankebene. Klicken Sie auf **Verbinden**.
    * Klicken Sie auf die zweite Tabelle **PMResult** und dann rechts im Bereich **Abfrageeinstellungen** unter **ANGEWENDETE SCHRITTE** neben **Quelle** auf ![Navigationssymbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png). Aktualisieren Sie die Server- und Datenbanknamen wie in den Schritten zuvor, und klicken Sie auf „OK“.
    * Wenn die vorherige Seite wieder angezeigt wird, schließen Sie das Fenster. Es wird eine Meldung angezeigt. Klicken Sie auf **Übernehmen**. Klicken Sie zum Schluss auf die Schaltfläche **Speichern**, um die Änderungen zu speichern. Für Ihre Power BI-Datei wurde nun eine Verbindung mit dem Server eingerichtet. Wenn Ihre Visualisierungen leer sind, stellen Sie sicher, dass Sie die Auswahl für die Visualisierungen aufheben, um alle Daten zu visualisieren. Klicken Sie dazu in der rechten oberen Ecke der Legenden auf das Radierersymbol. Klicken Sie auf die Schaltfläche zum Aktualisieren, damit neue Daten in den Visualisierungen widergespiegelt werden. Anfangs sehen Sie in den Visualisierungen nur die Seedingdaten, weil die Data Factory planmäßig alle 3 Stunden aktualisiert wird. Wenn Sie die Daten nach drei Stunden aktualisieren, sehen Sie in den Visualisierungen neue Vorhersagen.
-3. (Optional) Veröffentlichen des Dashboards für kalte Daten in [Power BI online](https://www.powerbi.com/). Beachten Sie, dass Sie für diesen Schritt ein Power BI-Konto (oder ein Office 365-Konto) benötigen.
+3. (Optional) Veröffentlichen des Dashboards für kalte Daten in [Power BI online](https://www.powerbi.com/). Für diesen Schritt benötigen Sie ein Power BI-Konto (oder ein Office 365-Konto).
    
    * Klicken Sie auf **Veröffentlichen** . Nach einigen Sekunden wird durch eine Meldung mit einem grünen Häkchen bestätigt, dass die Veröffentlichung in Power BI erfolgreich war. Klicken Sie auf den Link unter „PredictiveMaintenanceAerospace.pbix in Power BI öffnen“. Ausführliche Anweisungen finden Sie unter [Veröffentlichen aus Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
    * Klicken Sie zum Erstellen eines neuen Dashboards im linken Bereich neben dem Abschnitt **Dashboards** auf das Symbol **+** . Geben Sie für dieses neue Dashboard den Namen „Demo für vorbeugende Wartung“ ein.
@@ -227,7 +230,7 @@ In den folgenden Schritten wird erklärt, wie Sie die Datenausgabe aus den beim 
    * Klicken Sie im Bereich **Felder** auf **Verarbeitet**, sodass das Feld im Bereich **Visualisierungen** unter „Achse“ angezeigt wird.
    * Klicken Sie auf „s11“ und „s11alert\_alert“, sodass beide unter „Werte“ angezeigt werden. Klicken Sie auf den kleinen Pfeil neben **s11** und **s11\_alert**, und ändern Sie „Summe“ in „Durchschnitt“.
    * Klicken Sie oben auf **SPEICHERN**, und nennen Sie den Bericht „Flugzeugmonitor“. Der Bericht „Flugzeugmonitor“ wird links im Bereich **Navigator** im Abschnitt **Berichte** angezeigt.
-   * Klicken Sie in der oberen rechten Ecke dieses Liniendiagramms auf **Visualisierung anheften** . Möglicherweise wird ein Fenster „An das Dashboard anheften“ angezeigt, in dem Sie ein Dashboard auswählen können. Wählen Sie „Predictive Maintenance-Demo“ aus, und klicken Sie dann auf „Anheften“.
+   * Klicken Sie in der oberen rechten Ecke dieses Liniendiagramms auf **Visualisierung anheften**. Möglicherweise wird ein Fenster „An das Dashboard anheften“ angezeigt, in dem Sie ein Dashboard auswählen können. Wählen Sie „Predictive Maintenance-Demo“ aus, und klicken Sie dann auf „Anheften“.
    * Zeigen Sie mit dem Mauszeiger auf diese Kachel auf dem Dashboard, klicken Sie in der oberen rechten Ecke auf das Symbol „Bearbeiten“, und ändern Sie den Titel in „Flottenansicht von Sensor 11 im Vergleich zu Schwellenwert 48,26“ und den Untertitel in „Flottendurchschnitt im Zeitverlauf“.
 
 ## <a name="delete-your-solution"></a>Löschen der Lösung
