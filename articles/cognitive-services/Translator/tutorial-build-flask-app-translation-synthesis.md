@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978457"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984166"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
 
@@ -128,7 +128,7 @@ Wir erstellen mit `virtualenv` eine virtuelle Umgebung für unsere Flask-App. Du
    ```
 
 > [!NOTE]
-> Weitere Informationen zu „Requests“ finden Sie unter [Requests: HTTP for Humans](http://docs.python-requests.org/en/master/) (Requests: HTTP für Menschen).
+> Weitere Informationen zu „Requests“ finden Sie unter [Requests: HTTP for Humans](https://2.python-requests.org/en/master/) (Requests: HTTP für Menschen).
 
 ### <a name="install-and-configure-flask"></a>Installieren und Konfigurieren von Flask
 
@@ -151,7 +151,7 @@ Als Nächstes müssen wir Flask installieren. Flask führt die Verarbeitung des 
    export FLASK_APP=app.py
    ```
 
-   **Windows:**
+   **Windows**:
    ```
    set FLASK_APP=app.py
    ```

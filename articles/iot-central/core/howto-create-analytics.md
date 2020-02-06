@@ -1,86 +1,95 @@
 ---
-title: Analysieren Ihrer Gerätedaten in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Ihre Gerätedaten in ihrer Azure IoT Central-Anwendung mithilfe von Abfragen und Visualisierungen analysieren können.
-author: lmasieri
-ms.author: lmasieri
-ms.date: 06/09/2019
+title: Analysieren von Gerätedaten in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
+description: Analysieren Sie Gerätedaten in Ihrer Azure IoT Central-Anwendung.
+author: ankitgup
+ms.author: ankitgup
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: a467e0e6e8967cf963ad099f83de6718330aa43f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+manager: abjork
+ms.openlocfilehash: 7627421317458eb0ff9637b3497df11dacfddbff
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827978"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023853"
 ---
-# <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Gewusst wie: Analysieren von Gerätedaten durch Analysen
+# <a name="how-to-use-analytics-to-analyze-device-data"></a>Analysieren von Gerätedaten mithilfe von Analytics
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
-Azure IoT Central stellt umfassende Analysefunktionen bereit, um große Mengen an Daten von Ihren Geräten zu verarbeiten. Um mit diesem Vorgang zu beginnen, wechseln Sie im linken Bereich zu **Analyse**.
+
+
+Azure IoT Central bietet umfassende Analysefunktionen, mit denen Sie historische Trends analysieren und verschiedene Telemetriedaten von ihren Geräten korrelieren können. Um mit diesem Vorgang zu beginnen, wechseln Sie im linken Bereich zu **Analyse**.
+
+## <a name="understanding-the-analytics-ui"></a>Grundlegendes zur Analytics-Benutzeroberfläche
+Die Analytics-Benutzeroberfläche besteht aus drei Hauptkomponenten:
+- **Bereich für Datenkonfiguration:** Wählen Sie im Konfigurationsbereich zunächst die Gerätegruppe aus, für die Sie die Daten analysieren möchten. Wählen Sie als Nächstes die Telemetriedaten, die Sie analysieren möchten, und dann die Aggregationsmethode für die einzelnen Telemetriedaten aus. Mithilfe des Steuerelements **Aufteilen nach** können Sie die Daten gruppieren und dazu die Geräteeigenschaften als Dimensionen verwenden.
+
+- **Zeitsteuerelement:** Mithilfe des Zeitsteuerelements können Sie die Dauer auswählen, für die Sie die Daten analysieren möchten. Sie können eines der Enden des Schiebereglers ziehen, um den gewünschten Zeitraum auszuwählen. Das Zeitsteuerelement enthält auch den Schieberegler **Intervallgröße**, über den der Bucket oder die Intervallgröße zum Aggregieren der Daten gesteuert wird. 
+
+- **Diagrammsteuerelement:** Das Diagrammsteuerelement visualisiert die Daten als Liniendiagramm. Durch Interaktion mit der Diagrammlegende können Sie die Sichtbarkeit bestimmter Zeilen umschalten. 
+
+
+  ![Übersicht über die Analytics-Benutzeroberfläche](media/howto-create-analytics/analyticsui.png)
+
 
 ## <a name="querying-your-data"></a>Abfragen Ihrer Daten
 
-Sie müssen zunächst eine **Gerätegruppe** auswählen, einen **Filter** hinzufügen (optional) und einen **Zeitraum** auswählen, um zu starten. Wählen Sie anschließend **Ergebnisse anzeigen** aus, um mit der Visualisierung Ihrer Daten zu beginnen.
+Sie müssen zunächst eine **Gerätegruppe** und die Telemetriedaten auswählen, die Sie analysieren möchten. Wählen Sie anschließend **Analysieren** aus, um mit der Visualisierung Ihrer Daten zu beginnen.
 
-* **Gerätegruppen:** Eine [Gerätegruppe](howto-use-device-sets.md) ist eine benutzerdefinierte Gruppe Ihrer Geräte. Beispiele: „Alle Kühlschränke in Oakland“ oder „Alle Windturbinen der Version 2.0“.
+- **Gerätegruppe:** Eine [Gerätegruppe](tutorial-use-device-groups.md) ist eine benutzerdefinierte Gruppe Ihrer Geräte. Beispiele: „Alle Kühlschränke in Oakland“ oder „Alle Windturbinen der Version 2.0“.
 
-* **Filter:** Sie können Ihrer Suche optional Filter hinzufügen, um Ihre Daten zu verfeinern. Sie können bis zu 10 Filter gleichzeitig hinzufügen. Beispielsweise können Sie für „Alle Kühlschränke in Oakland“ diejenigen herausfiltern, deren Temperatur über 15 Grad angestiegen ist.
-* **Zeitraum:** Standardmäßig werden die Daten der letzten 10 Minuten abgerufen. Sie können diesen Wert in einen der vordefinierten Zeitbereiche ändern oder einen benutzerdefinierten Zeitraum auswählen.
+- **Telemetrie:** Wählen Sie die Telemetriedaten aus, die Sie analysieren und untersuchen möchten. Sie können mehrere Telemetrien zum gemeinsamen Analysieren auswählen. Die Standardaggregationsmethode für den Datentyp „Numeric“ (Numerisch) ist auf „Average“ (Durchschnitt)und für den Datentyp „String“ (Zeichenfolge) auf „Count“ (Anzahl) festgelegt. Die unterstützten Aggregationsmethoden für den Datentyp „Numeric“ sind „Average“, „Maximum“, „Minimum“, „Count“ und „Sum“ (Summe).  Die unterstützte Aggregationsmethode für den Datentyp „String“ ist „Count“.
 
-  ![Analyseabfrage](media/howto-create-analytics/analytics-query.png)
+- **Aufteilen nach:** Mithilfe des Steuerelements „Aufteilen nach“ können Sie die Daten gruppieren und dazu die Geräteeigenschaften als Dimensionen verwenden. Die Werte der Geräte- und Cloudeigenschaften werden mit den vom Gerät gesendeten Telemetriedaten verknüpft. Wenn die Cloud- oder Geräteeigenschaft aktualisiert wurde, werden die Telemetriedaten – nach verschiedenen Werten gruppiert – im Diagramm angezeigt.
 
-## <a name="visualizing-your-data"></a>Visualisieren Ihrer Daten
-
-Nachdem Sie Ihre Daten abgefragt haben, können Sie damit beginnen, sie zu visualisieren. Sie können Messungen anzeigen/ausblenden, die Art der Datenaggregation ändern und die Daten nach unterschiedlichen Geräteeigenschaften weiter unterteilen.  
-
-* **Aufteilen nach:** Durch das Aufteilen von Daten nach Geräteeigenschaften können Sie weitere Detailinformationen zu Ihren Daten anzeigen. Beispielsweise können Sie Ihre Ergebnisse nach Geräte-ID oder Standort unterteilen.
-
-* **Messungen:** Sie können in einem Arbeitsschritt bis zu 10 verschiedene Telemetrieelemente ein-/ausblenden, die von Ihren Geräten gemeldet werden. Messungen können beispielsweise Informationen wie Temperatur und Feuchtigkeit umfassen.
-
-* **Aggregation:** Daten werden standardmäßig nach dem Durchschnitt aggregiert, aber Sie können die Datenaggregation Ihren Anforderungen entsprechend ändern.
-
-   ![Visualisierung der Analysedaten – „Teilen nach“](media/howto-create-analytics/analytics-splitby.png)
+    > [!TIP]
+    > Wenn Sie Daten für jedes Gerät getrennt anzeigen möchten, wählen Sie im Steuerelement „Aufteilen nach" die Option „Geräte-ID“ aus.
 
 ## <a name="interacting-with-your-data"></a>Interaktion mit Ihren Daten
 
-Es gibt verschiedene Möglichkeiten, Ihre Abfrageergebnisse so zu ändern, dass sie Ihren Visualisierungsanforderungen entsprechen. Sie können zwischen einer Diagramm- und einer Tabellenansicht wechseln, die Anzeige vergrößern oder verkleinern, Ihr Dataset aktualisieren und die Anzeige der Zeilen ändern.
+Nachdem Sie Ihre Daten abgefragt haben, können Sie mit deren Visualisierung im Liniendiagramm beginnen. Sie können Telemetriedaten anzeigen/ausblenden, die Zeitdauer ändern und diese Daten in einem Datenraster anzeigen.
 
-* **Raster anzeigen:** Ihre Ergebnisse stehen in einem Tabellenformat zur Verfügung, damit Sie den genauen Wert für jeden Datenpunkt anzeigen können. Diese Ansicht erfüllt außerdem die Standards der Barrierefreiheit.
-* **Diagramm anzeigen**: Ihre Ergebnisse werden in einem Linienformat angezeigt, damit Sie Aufwärts- oder Abwärtstrends und Anomalien einfacher erkennen können.
+- **Editor-Bereich für Zeiten:** Standardmäßig werden die Daten vom letzten Tag abgerufen. Sie können eines der Enden des Schiebereglers ziehen, um die Zeitdauer zu ändern. Außerdem können Sie mithilfe des Kalendersteuerelements einen der vordefinierten Zeitrahmen oder einen benutzerdefinierten Zeitbereich auswählen. Das Zeitsteuerelement enthält auch den Schieberegler **Intervallgröße**, über den der Bucket oder die Intervallgröße zum Aggregieren der Daten gesteuert wird.
 
-  ![Rasteransicht für Ihre Analyse](media/howto-create-analytics/analytics-showgrid.png)
+    ![Zeit-Editor](media/howto-create-analytics/timeeditorpanel.png)
 
-Mit der Vergrößerung können Sie die Ansicht auf Ihre Daten beschränken. Wenn Sie einen bestimmten Zeitraum für Ihr Resultset genauer untersuchen möchten, können Sie den gewünschten Bereich mit dem Cursor markieren und über die verfügbaren Steuerelemente die folgenden Aktionen ausführen:
+    - **Schieberegler für den inneren Datumsbereich**: Ziehen Sie die beiden Endpunktsteuerelemente über den gewünschten Zeitraum. Dieser innere Datumsbereich wird durch den Schieberegler für den äußeren Datumsbereich begrenzt.
+    
+   
+    - **Schieberegler für den äußeren Datumsbereich**: Verwenden Sie die Endpunktsteuerelemente, um den äußeren Datumsbereich auszuwählen. Dieser steht dann für das Steuerelement für den inneren Datumsbereich zur Verfügung.
 
-* **Vergrößern:** Nachdem Sie einen Zeitraum ausgewählt haben, wird die Zoomfunktion aktiviert, und Sie können die Datenansicht vergrößern.
-* **Verkleinern:** Mit diesem Steuerelement können Sie die Vergrößerung Ihrer letzten Ansicht um eine Stufe verringern. Wenn Sie Ihre Datenansicht beispielsweise dreimal vergrößert haben, gelangen Sie mit dieser Funktion jeweils einen Schritt zurück.
-* **Zoom zurücksetzen**: Nachdem Sie verschiedene Vergrößerungen/Verkleinerungen durchgeführt haben, können Sie die Anzeige mit diesem Steuerelement auf das ursprüngliche Resultset zurücksetzen.
+    - **Schaltflächen zum Erhöhen/Verringern des Datumsbereichs**: Sie können Ihren Zeitraum erhöhen oder verringern, indem Sie eine der Schaltflächen für das gewünschte Intervall auswählen.
 
-  ![Zoomvorgänge in Ihren Daten](media/howto-create-analytics/analytics-zoom.png)
+    - **Schieberegler „Intervallgröße“** : Hiermit können Sie Intervalle innerhalb eines Zeitraums vergrößern und verkleinern. Diese Aktion bietet eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten. Sie können damit präzise, hochauflösende Ansichten Ihrer Daten anzeigen – sogar im Bereich von Millisekunden. Der Standardstartpunkt des Schiebereglers ist auf die optimale Ansicht der Daten aus Ihrer Auswahl festgelegt und bietet ein ausgewogenes Verhältnis zwischen Auflösung, Abfragegeschwindigkeit und Granularität.
+    
+    - **Datumsbereichsauswahl**: Mit diesem Websteuerelement können Sie komfortabel die gewünschten Datumsbereiche und Zeiträume auswählen. Sie können das Steuerelement auch verwenden, um zwischen verschiedenen Zeitzonen zu wechseln. Nachdem Sie die gewünschten Änderungen für Ihren aktuellen Arbeitsbereich vorgenommen haben, wählen Sie „Speichern“ aus.
 
-Sie können den Linienstil an Ihre Anforderungen anpassen. Sie haben vier Möglichkeiten:
+    > [!TIP]
+    > Die Intervallgröße wird – basierend auf dem ausgewählten Zeitraum – dynamisch bestimmt. Kleinere Zeiträume ermöglichen die Aggregation der Daten in sehr präzise Intervalle von bis zu wenigen Sekunden.
 
-* **Linie:** Eine gerade Linie zwischen den einzelnen Datenpunkten.
-* **Geglättet**: Eine geschwungene Linie zwischen den einzelnen Datenpunkten.
-* **Schritt:** Linie in Form einer Stufe zwischen den einzelnen Datenpunkten im Diagramm.
-* **Punkt:** Alle Punkte werden im Diagramm ohne Verbindungslinien gezeichnet.
 
-  ![Verfügbare Linientypen bei der Analyse](media/howto-create-analytics/analytics-linetypes.png)
+- **Diagrammlegende:** Die Diagrammlegende zeigt die ausgewählten Telemetriedaten im Diagramm. Sie können mit dem Mauszeiger auf jedes Element in der Legende zeigen, um es im Diagramm zu fokussieren. Bei Verwendung von „Aufteilen nach“ werden die Telemetriedaten nach den jeweiligen Werten der ausgewählten Dimension gruppiert. Durch Klicken auf den Gruppennamen können Sie die Sichtbarkeit der einzelnen Telemetriedaten oder der ganzen Gruppe umschalten.  
 
-Schließlich können Sie Ihre Daten auf der Y-Achse anordnen, indem Sie einen von drei Modi auswählen:
 
-* **Gestapelt:** Für jede Messung werden Diagramme als Stapel dargestellt, wobei jedes Diagramm mit einer eigenen Y-Achse versehen ist. Gestapelte Diagramme sind nützlich, wenn Sie mehrere Messungen ausgewählt haben und unterschiedliche Ansichten von diesen Messungen anzeigen möchten.
-* **Nicht gestapelt:** Für jedes Measure wird ein Diagramm anhand einer Y-Achse dargestellt, wobei sich die Werte für die Y-Achse jedoch basierend auf dem markierten Measure ändern. Nicht gestapelte Diagramme sind nützlich, wenn Sie mehrere Measures überlagern und für denselben Zeitraum Muster in diesen Measures ermitteln möchten.
-* **Gemeinsame Y-Achse**: Alle Diagramme besitzen dieselbe Y-Achse, und die Werte für die Achse ändern sich nicht. Diagramme mit gemeinsamen Y-Achsen sind hilfreich, wenn Sie ein einziges Measure untersuchen möchten und gleichzeitig die Daten nach bestimmten Kriterien aufteilen.
+- **Steuerelement „y-Achsenformat“:** Der Modus „y-Achse“ durchläuft die verfügbaren Ansichtsoptionen für die y-Achse. Dieses Steuerelement ist nur verfügbar, wenn verschiedene Telemetriedaten visualisiert werden. Sie können die y-Achse festlegen, indem Sie einen von drei Modi auswählen:
 
-  ![Anordnung der Daten auf der Y-Achse mit unterschiedlichen Visualisierungsmodi](media/howto-create-analytics/analytics-yaxis.png)
+    - **Gestapelt:** Für jede Telemetrie werden Diagramme als Stapel dargestellt, wobei jedes Diagramm eine eigene y-Achse hat. Dieser Modus wird als Standard festgelegt.
+    - **Freigegeben**: Für jede Telemetrie wird ein Diagramm auf derselben y-Achse gezeichnet.
+    - **Überlappung:** Ermöglicht das Stapeln mehrerer Zeilen auf derselben y-Achse, wobei sich die y-Achsendaten je nach ausgewählter Zeile ändern.
 
-## <a name="next-steps"></a>Nächste Schritte
+  ![Anordnung der Daten auf der Y-Achse mit unterschiedlichen Visualisierungsmodi](media/howto-create-analytics/yaxiscontrol.png)
 
-Nachdem Sie nun erfahren haben, wie benutzerdefinierte Analysen für Ihre Azure IoT Central-Anwendung erstellt werden, wird als Nächstes der folgende Schritt empfohlen:
+- **Zoomsteuerelement:** Mit Zoom können Sie einen Drillvorgang in Ihre Daten durchführen. Wenn Sie in Ihren Ergebnissen einen Zeitraum finden, auf den Sie sich konzentrieren möchten, erfassen Sie diesen Bereich mit dem Mauszeiger, und ziehen Sie ihn auf den Endpunkt Ihrer Wahl. Klicken Sie anschließend mit der rechten Maustaste auf den ausgewählten Bereich und dann auf „Zoom“.
 
-> [!div class="nextstepaction"]
-> [Eine Node.js-Anwendung vorbereiten und verbinden](howto-connect-nodejs.md)
+  ![Vergrößern der Daten](media/howto-create-analytics/zoom.png)
+
+Unter den Auslassungspunkten gibt es weitere Diagrammsteuerelemente zum Interagieren mit den Daten.
+
+- **Raster anzeigen:** Ihre Ergebnisse stehen in einem Tabellenformat zur Verfügung, damit Sie den genauen Wert für jeden Datenpunkt anzeigen können.
+
+- **Marker setzen:** Das Steuerelement „Marker setzen“ bietet eine Möglichkeit zum Verankern von bestimmten Datenpunkten im Diagramm. Das ist hilfreich, wenn Sie versuchen, Daten für mehrere Zeilen über verschiedene Zeiträume hinweg zu vergleichen.
+
+  ![Rasteransicht für Ihre Analyse](media/howto-create-analytics/additionalchartcontrols.png)

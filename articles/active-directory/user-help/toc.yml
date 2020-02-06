@@ -94,21 +94,17 @@
       href: user-help-device-remediation.md
 - name: Hilfe zum Portal „Meine Apps“
   items:
-    - name: Zugreifen auf und Verwenden des Portals „Meine Apps“
+    - name: Anmelden beim Portal „Meine Apps“ und Verwenden dieses Portals
       href: my-apps-portal-end-user-access.md
     - name: Aktualisieren Ihrer Profil- und Kontoinformationen
       href: my-apps-portal-end-user-update-profile.md
     - name: Aktualisieren Ihrer Gruppeninformationen
       href: my-apps-portal-end-user-groups.md
+    - name: Organisieren von Apps mit Sammlungen
+      href: my-applications-portal-workspaces.md
+    - name: Bearbeiten oder Widerrufen von App-Berechtigungen
+      href: my-applications-portal-permissions-saved-accounts.md
     - name: Durchführen eigener Zugriffsüberprüfungen
       href: my-apps-portal-end-user-access-reviews.md
     - name: Behandeln von Problemen
       href: my-apps-portal-end-user-troubleshoot.md
-- name: 'Meine Apps (Vorschauversion): Portalhilfe'
-  items:
-    - name: Zugreifen auf und Verwenden des Portals „Meine Apps“
-      href: my-applications-portal-access.md
-    - name: Zugreifen auf und Verwenden von Arbeitsbereichen
-      href: my-applications-portal-workspaces.md
-    - name: Bearbeiten oder Widerrufen von App-Berechtigungen
-      href: my-applications-portal-permissions-saved-accounts.md

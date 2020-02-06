@@ -3,21 +3,21 @@ title: Azure Service Fabric-CLI – sfctl compose
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle für Docker Compose-Anwendungen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 3a9fa142dd45674e4a3e88745acffef225b80a64
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1e40ca4e3c5ec8b7566646aa7ef723bd4c9e45a1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645394"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906128"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Ermöglicht es, Docker Compose Anwendungen zu erstellen, zu löschen und zu verwalten.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | create | Erstellt eine Service Fabric-Compose-Bereitstellung. |
 | list | Ruft die Liste der Compose-Bereitstellungen ab, die in dem Service Fabric-Cluster erstellt wurden. |
@@ -32,7 +32,7 @@ Erstellt eine Service Fabric-Compose-Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Der Name der Bereitstellung |
 | --file-path [erforderlich] | Pfad zur Docker Compose-Zieldatei. |
@@ -43,7 +43,7 @@ Erstellt eine Service Fabric-Compose-Bereitstellung.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -58,7 +58,7 @@ Ruft den Status zu den Compose-Bereitstellungen ab, die im Service Fabric-Cluste
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
 | --max-results | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthält die seitenweise Abfrage so viele Ergebnisse, wie in die Rückgabemeldung passen. |
@@ -66,7 +66,7 @@ Ruft den Status zu den Compose-Bereitstellungen ab, die im Service Fabric-Cluste
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -81,14 +81,14 @@ Löscht eine vorhandene Service Fabric-Compose-Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Die Identität (ID) der Bereitstellung. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -103,14 +103,14 @@ Gibt den Status der Compose-Bereitstellung zurück, die im Service Fabric-Cluste
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Die Identität (ID) der Bereitstellung. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -125,7 +125,7 @@ Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Der Name der Bereitstellung |
 | --file-path [erforderlich] | Pfad zur Docker Compose-Zieldatei. |
@@ -150,7 +150,7 @@ Startet ein Aktualisieren einer Compose-Bereitstellung im Service Fabric-Cluster
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -165,14 +165,14 @@ Rollback des Upgrades einer Service Fabric Compose-Bereitstellung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Die Identität (ID) der Bereitstellung. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -187,14 +187,14 @@ Gibt die Informationen über den Status des Upgrades für Compose-Bereitstellung
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --deployment-name [erforderlich] | Die Identität (ID) der Bereitstellung. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

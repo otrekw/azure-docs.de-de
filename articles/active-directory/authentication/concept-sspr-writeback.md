@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ddd7160a56a4529ee31c111f0e202ca235c71af
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544020"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023122"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -164,7 +164,7 @@ Kennwörter werden in folgenden Situationen *nicht* zurückgeschrieben:
    * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
 
 > [!WARNING]
-> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie Active Directory-Benutzer und -Computer oder dem Active Directory-Verwaltungscenter wird als Previewfunktion von Azure AD Connect unterstützt. Weitere Informationen finden Sie im Artikel [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon).
+> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie Active Directory-Benutzer und -Computer oder dem Active Directory-Verwaltungscenter wird als Previewfunktion von Azure AD Connect unterstützt. Weitere Informationen finden Sie im Artikel [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

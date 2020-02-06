@@ -10,12 +10,12 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bca780eb31a16d3854a2e4dfac821d5a68e9ca43
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 40a7f49cbb2d74b55ccb85dce64eea936a20801e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719346"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905513"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
@@ -126,21 +126,6 @@ Kontofailover befindet sich in der Vorschau ist für alle Kunden verfügbar, die
 - USA, Westen 2
 
 Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind derzeit nicht verfügbar.
-
-### <a name="register-for-the-preview"></a>Registrieren für die Vorschau
-
-Um sich für die Vorschau zu registrieren, führen Sie die folgenden Befehle in PowerShell aus. Stellen Sie sicher, dass Sie den Platzhalter in Klammern durch Ihre eigene Abonnement-ID ersetzen:
-
-```powershell
-Connect-AzAccount -SubscriptionId <subscription-id>
-Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
-
-Die Genehmigung für die Vorschau kann 5 – 7 Tage dauern. Um zu überprüfen, ob Ihre Registrierung genehmigt wurde, führen Sie den folgenden Befehl aus:
-
-```powershell
-Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
-```
 
 ### <a name="additional-considerations"></a>Weitere Überlegungen
 

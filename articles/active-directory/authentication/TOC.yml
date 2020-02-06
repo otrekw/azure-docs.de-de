@@ -4,16 +4,13 @@
   items:
     - name: Was ist Authentifizierung?
       href: overview-authentication.md
-- name: Schnellstart
+- name: Tutorials
+  expanded: true
   items:
-    - name: Konfigurieren der Kennwortzurücksetzung
-      href: quickstart-sspr.md
-- name: Lernprogramme
-  items:
-    - name: '1: Aktivieren von MFA für Anwendungen'
+    - name: Aktivieren der Self-Service-Kennwortzurücksetzung
+      href: tutorial-enable-sspr.md
+    - name: Aktivieren von MFA für Anwendungen
       href: tutorial-mfa-applications.md
-    - name: 2. Aktivieren eines SSPR-Pilotversuchs
-      href: tutorial-sspr-pilot.md
     - name: Aktivieren der lokalen SSPR-Integration
       href: tutorial-enable-writeback.md
     - name: Integrieren von Azure Identity Protection
@@ -63,7 +60,7 @@
           href: concept-password-ban-bad-on-premises.md
     - name: Resiliente Zugriffssteuerungen
       href: concept-resilient-controls.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Self-Service-Kennwortzurücksetzung
       items:

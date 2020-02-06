@@ -3,23 +3,23 @@ title: Anpassen der Azure IoT Central-Benutzeroberfläche | Microsoft-Dokumentat
 description: Informationen zum Anpassen des Designs und der Hilfelinks für Ihre Azure IoT Central-Anwendung
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 829ea1bcca36dfba2da3e3946b48b7249f69ee62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3afa86aae3b51ea20610dcbff5211e59fb341650
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942531"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018430"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Anpassen der Azure IoT Central-Benutzeroberfläche
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+In diesem Artikel erfahren Sie, wie Sie als Administrator die Benutzeroberfläche Ihrer Anwendung anpassen können, indem Sie benutzerdefinierte Designs anwenden und die Hilfelinks so ändern, dass sie auf die eigenen benutzerdefinierten Hilferessourcen verweisen. 
 
-In diesem Artikel erfahren Sie, wie Sie als Administrator die Benutzeroberfläche Ihrer Anwendung anpassen können, indem Sie benutzerdefinierte Designs anwenden und die Hilfelinks so ändern, dass sie auf die eigenen benutzerdefinierten Hilferessourcen verweisen.
+
 
 Der folgende Screenshot zeigt eine Seite mit dem Standarddesign:
 
@@ -41,7 +41,7 @@ Auf dieser Seite können Sie die folgenden Aspekte Ihrer Anwendung anpassen:
 
 Ein PNG-Bild von maximal 1 MB Größe mit einem transparenten Hintergrund. Dieses Logo wird links auf der Titelleiste für die IoT Central-Anwendung angezeigt.
 
-Wenn Ihr Logobild den Namen Ihrer Anwendung enthält, können Sie den Text des Anwendungsnamens ausblenden. Weitere Informationen finden Sie unter [Ändern von Anwendungsnamen und -URLs](./howto-administer.md#change-application-name-and-url).
+Wenn Ihr Logobild den Namen Ihrer Anwendung enthält, können Sie den Text des Anwendungsnamens ausblenden. Weitere Informationen finden Sie unter [Verwalten Ihrer Anwendung](howto-administer.md#change-application-name-and-url).
 
 ### <a name="browser-icon-favicon"></a>Browsersymbol (Favicon)
 
@@ -78,4 +78,4 @@ Sie können auch neue Einträge zum Hilfemenü hinzufügen und Standardeinträge
 Nachdem Sie erfahren haben, wie Sie die Benutzeroberfläche in Ihrer IoT Central-Anwendung anpassen können, sind hier einige empfohlene nächste Schritte:
 
 - [Verwalten Ihrer Anwendung](./howto-administer.md)
-- [Hinzufügen von Kacheln zu Ihrem Dashboard](./howto-add-tiles-to-your-dashboard.md)
+- [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-add-tiles-to-your-dashboard.md)

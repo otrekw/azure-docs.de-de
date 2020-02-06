@@ -5,25 +5,25 @@ description: Folgen Sie diesem Beispiel, und erstellen Sie mit dem Azure Machine
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311112"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963365"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Erstellen eines Klassifizierers und Verwenden der Featureauswahl zur Einkommensprognose mit dem Azure Machine Learning-Designer
 
-**Designer-Beispiel 3**
+**Designer (Vorschauversion) – Beispiel 3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Erfahren Sie, wie Sie über den Designer eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel wird ein **verstärkter Entscheidungsbaum mit zwei Klassen** trainiert, um das Einkommen von Erwachsenen (>=50.000 oder <=50.000) mit der Erhebung vorherzusagen.
+Erfahren Sie, wie Sie über den Designer (Vorschau) eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel wird ein **verstärkter Entscheidungsbaum mit zwei Klassen** trainiert, um das Einkommen von Erwachsenen (>=50.000 oder <=50.000) mit der Erhebung vorherzusagen.
 
 Weil die Frage „Welches Risiko?“ lautet, wird dies als Klassifikationsproblem bezeichnet. Sie können jedoch den gleichen elementaren Prozess anwenden, um jede Art von Problem für maschinelles Lernen zu bewältigen – Regression, Klassifizierung, Clustering usw.
 

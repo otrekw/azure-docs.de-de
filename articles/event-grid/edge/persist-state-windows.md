@@ -9,25 +9,27 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 485c6d4a92539a2ba67aece319c68d31649e8045
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991763"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844614"
 ---
 # <a name="persist-state-in-windows"></a>Beibehalten des Status in Windows
 
-Themen und Abonnements, die im Event Grid-Modul erstellt wurden, werden standardmäßig im Containerdateisystem gespeichert. Ohne Persistenz gehen beim erneuten Bereitstellen des Moduls alle erstellten Metadaten verloren. Um die Daten für mehrere Bereitstellungen beizubehalten, müssen Sie die Daten außerhalb des Containerdateisystems als persistent festlegen. Derzeit werden nur Metadaten persistent gespeichert. Ereignisse werden speicherintern gespeichert. Wenn das Event Grid-Modul erneut bereitgestellt oder neu gestartet wird, gehen alle nicht übermittelten Ereignisse verloren.
+Themen und Abonnements, die im Event Grid-Modul erstellt wurden, werden standardmäßig im Containerdateisystem gespeichert. Ohne Persistenz gehen beim erneuten Bereitstellen des Moduls alle erstellten Metadaten verloren. Um die Daten für mehrere Bereitstellungen und über Neustarts hinweg beizubehalten, müssen Sie sie außerhalb des Containerdateisystems persistent speichern. 
+
+Standardmäßig werden nur Metadaten persistent gespeichert, und Ereignisse werden weiterhin im Arbeitsspeicher gespeichert, um die Leistung zu steigern. Befolgen Sie den Abschnitt zum persistenten Speichern von Ereignissen, um auch Ereignispersistenz zu aktivieren.
 
 In diesem Artikel werden die Schritte beschrieben, die zum Bereitstellen des Event Grid-Moduls mit Persistenz in Windows-Bereitstellungen erforderlich sind.
 
 > [!NOTE]
 >Das Event Grid-Modul wird als Benutzer mit geringfügigen Rechten (**ContainerUser**) in Windows ausgeführt.
 
-## <a name="persistence-via-volume-mount"></a>Persistenz über Volumebereitstellung
+## <a name="persistence-via-volume-mount"></a>Persistenz über Volumeeinbindung
 
-[Docker-Volumes](https://docs.docker.com/storage/volumes/) werden verwendet, um Daten über Bereitstellungen hinweg beizubehalten. Zum Bereitstellen eines Volumes müssen Sie es mit Docker-Befehlen erstellen und Berechtigungen zuweisen, sodass Lese- und Schreibvorgänge des Containers im Volume möglich sind. Anschließend müssen Sie das Modul bereitstellen. Es gibt keine Möglichkeit, ein Volume mit den erforderlichen Berechtigungen unter Windows automatisch bereitzustellen. Es muss vor der Bereitstellung erstellt werden.
+[Docker-Volumes](https://docs.docker.com/storage/volumes/) werden verwendet, um Daten über Bereitstellungen hinweg beizubehalten. Zum Bereitstellen eines Volumes müssen Sie es mit Docker-Befehlen erstellen und Berechtigungen zuweisen, sodass Lese- und Schreibvorgänge des Containers im Volume möglich sind. Anschließend müssen Sie das Modul bereitstellen.
 
 1. Erstellen Sie ein Volume, indem Sie den folgenden Befehl ausführen:
 
@@ -82,17 +84,17 @@ In diesem Artikel werden die Schritte beschrieben, die zum Bereitstellen des Eve
     ```json
         {
               "Env": [
-                "inbound:serverAuth:tlsPolicy=strict",
-                "inbound:serverAuth:serverCert:source=IoTEdge",
-                "inbound:clientAuth:sasKeys:enabled=false",
-                "inbound:clientAuth:clientCert:enabled=true",
-                "inbound:clientAuth:clientCert:source=IoTEdge",
-                "inbound:clientAuth:clientCert:allowUnknownCA=true",
-                "outbound:clientAuth:clientCert:enabled=true",
-                "outbound:clientAuth:clientCert:source=IoTEdge",
-                "outbound:webhook:httpsOnly=true",
-                "outbound:webhook:skipServerCertValidation=false",
-                "outbound:webhook:allowUnknownCA=true"
+                "inbound__serverAuth__tlsPolicy=strict",
+                "inbound__serverAuth__serverCert__source=IoTEdge",
+                "inbound__clientAuth__sasKeys__enabled=false",
+                "inbound__clientAuth__clientCert__enabled=true",
+                "inbound__clientAuth__clientCert__source=IoTEdge",
+                "inbound__clientAuth__clientCert__allowUnknownCA=true",
+                "outbound__clientAuth__clientCert__enabled=true",
+                "outbound__clientAuth__clientCert__source=IoTEdge",
+                "outbound__webhook__httpsOnly=true",
+                "outbound__webhook__skipServerCertValidation=false",
+                "outbound__webhook__allowUnknownCA=true"
               ],
               "HostConfig": {
                 "Binds": [
@@ -118,21 +120,22 @@ In diesem Artikel werden die Schritte beschrieben, die zum Bereitstellen des Eve
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "myeventgridvol:C:\\app\\metadataDb"
+                "myeventgridvol:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -145,9 +148,9 @@ In diesem Artikel werden die Schritte beschrieben, die zum Bereitstellen des Eve
     }
     ```
 
-## <a name="persistence-via-host-directory-mount"></a>Persistenz über Bereitstellung des Hostverzeichnisses
+## <a name="persistence-via-host-directory-mount"></a>Persistenz über Einbindung des Hostverzeichnisses
 
-Sie können auch ein Verzeichnis im Hostsystem erstellen und dieses Verzeichnis bereitstellen.
+Anstatt ein Volume einzubinden, können Sie auch ein Verzeichnis auf dem Hostsystem erstellen und dieses Verzeichnis einbinden.
 
 1. Erstellen Sie ein Verzeichnis im Hostdateisystem, indem Sie den folgenden Befehl ausführen:
 
@@ -180,21 +183,22 @@ Sie können auch ein Verzeichnis im Hostsystem erstellen und dieses Verzeichnis 
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "C:\\myhostdir:C:\\app\\metadataDb"
+                "C:\\myhostdir:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -206,3 +210,30 @@ Sie können auch ein Verzeichnis im Hostsystem erstellen und dieses Verzeichnis 
          }
     }
     ```
+## <a name="persist-events"></a>Persistentes Speichern von Ereignissen
+
+Um Ereignispersistenz zu aktivieren, müssen Sie zunächst Metadatenpersistenz über Volumeeinbindung oder Hostverzeichniseinbindung aktivieren.
+
+Wichtige Punkte beim persistenten Speichern von Ereignissen:
+
+* Das persistente Speichern von Ereignissen wird pro Ereignisabonnement aktiviert und kann wahlweise verwendet werden, sobald ein Volume oder Verzeichnis eingebunden wurde.
+* Ereignispersistenz wird zum Erstellungszeitpunkt für ein Ereignisabonnement konfiguriert und kann nicht geändert werden, nachdem das Ereignisabonnement erstellt wurde. Zum Umschalten von Ereignispersistenz müssen Sie das Ereignisabonnement löschen und dann neu erstellen.
+* Das persistente Speichern von Ereignissen ist fast immer langsamer als Vorgänge im Arbeitsspeicher, aber der Geschwindigkeitsunterschied hängt stark von den Merkmalen des Laufwerks ab. Der Kompromiss zwischen Geschwindigkeit und Zuverlässigkeit ist allen Messagingsystemen inhärent, jedoch nur bei großer Skalierung auffällig.
+
+Legen Sie `persistencePolicy` auf `true` fest, um Ereignispersistenz für ein Ereignisabonnement zu aktivieren:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843547"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898437"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -324,7 +324,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>Überlegungen im Zusammenhang mit dem Ausblenden von Ein- und Ausgaben
 
-* Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion schützen, sendet Logic Apps die geschützten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion keine [nachverfolgten Eigenschaften](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) zur Überwachung hinzufügen.
+* Wenn Sie die Ein- oder Ausgaben für einen Trigger oder eine Aktion schützen, sendet Logic Apps die geschützten Daten nicht an Azure Log Analytics. Außerdem können Sie diesem Auslöser oder dieser Aktion keine [nachverfolgten Eigenschaften](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) zur Überwachung hinzufügen.
 
 * Die [Logic Apps-API zur Verarbeitung des Workflowverlaufs](https://docs.microsoft.com/rest/api/logic/) gibt keine sicheren Ausgaben zurück.
 
@@ -806,7 +806,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Automatisieren der Bereitstellung für Azure Logic Apps](logic-apps-azure-resource-manager-templates-overview.md)  
-* [Überwachen von Logik-Apps](logic-apps-monitor-your-logic-apps.md)  
-* [Diagnostizieren von Fehlern und Problemen bei Logik-Apps](logic-apps-diagnosing-failures.md)  
-* [Automatisieren der Logik-App-Bereitstellung](logic-apps-azure-resource-manager-templates-overview.md)
+* [Automatisieren der Bereitstellung für Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [Überwachen von Logik-Apps](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [Diagnostizieren von Fehlern und Problemen bei Logik-Apps](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [Automatisieren der Logik-App-Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

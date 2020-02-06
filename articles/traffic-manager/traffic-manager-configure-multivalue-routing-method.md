@@ -3,7 +3,7 @@ title: Konfigurieren des „MultiValue“-Routings für Datenverkehr – Azure T
 description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an A/AAAA-Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: allensu
-ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: daf7d09916d276130e337f7acea738228ee23707
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040370"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938780"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurieren der Routingmethode „MultiValue“ in Traffic Manager
 
@@ -41,9 +41,9 @@ Erstellen Sie ein Traffic Manager-Profil, das den Benutzerdatenverkehr weiterlei
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
     
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
-    | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **MultiValue** aus.                                       |
     | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
     | Resource group          | Wählen Sie *myResourceGroupTM1* aus. |
@@ -60,10 +60,10 @@ Fügen Sie zwei IP-Adressen als externe Endpunkte zum Traffic Manager-Profil „
 2. Klicken Sie unter **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte** und dann auf **Hinzufügen**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | type                    | Externer Endpunkt                                   |
-    | NAME           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Vollqualifizierter Domänenname (FQDN) oder IP           | Geben Sie die öffentliche IP-Adresse des Endpunkts ein, den Sie diesem Traffic Manager-Profil hinzufügen möchten.                         |
     |        |           |
 

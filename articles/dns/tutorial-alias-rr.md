@@ -3,17 +3,17 @@ title: 'Tutorial: Erstellen eines Aliaseintrags zum Verweisen auf einen Ressourc
 titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Aliaseintrag konfigurieren, um auf einen Ressourceneintrag in der Zone zu verweisen.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082891"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939245"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Tutorial: Erstellen eines Aliaseintrags, um auf einen Zonenressourceneintrag zu verweisen
 

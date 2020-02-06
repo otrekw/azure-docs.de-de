@@ -3,21 +3,21 @@ title: 'Azure Service Fabric CLI: sfctl mesh code-package-log'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste mit Befehlen zum Abrufen von Protokollen für ein angegebenes Codepaket.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 78edc9bb36b711f72300942bc9900b0fde7c51d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646142"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906049"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
 Ruft die Protokolle für den Container des angegebenen Codepakets für das angegebene Dienstreplikat ab.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | get | Ruft die Protokolle aus dem Container ab. |
 
@@ -28,7 +28,7 @@ Ruft die Protokolle für den Container des angegebenen Codepakets des Dienstrepl
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --app-name --application-name [erforderlich] | Der Namen der Anwendung. |
 | --code-package-name           [erforderlich] | Der Name des Codepakets des Diensts. |
@@ -38,7 +38,7 @@ Ruft die Protokolle für den Container des angegebenen Codepakets des Dienstrepl
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

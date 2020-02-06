@@ -1,6 +1,6 @@
 ---
 title: Asynchrones Messaging mit Service Bus | Microsoft Docs
-description: Beschreibung des asynchronen Messaging mit Azure Service Bus.
+description: Erfahren Sie, wie Azure Service Bus Asynchronität über einen Speicher- und Weiterleitungsmechanismus mit Warteschlangen, Themen und Abonnements unterstützt.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 554260f403104d815b9b63c576c7ba0a2f3cf1e1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531115"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761031"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Asynchrone Nachrichtenmuster und Hochverfügbarkeit
 

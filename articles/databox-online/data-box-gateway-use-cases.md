@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e9092fb91ad98e6147647717e11d1a64bcff580e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754179"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022680"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Anwendungsfälle für Azure Data Box Gateway
 
@@ -51,7 +51,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie über ein Data Box Gateway-Ger�
     - Wenn Sie Azure PowerShell verwenden, befolgen Sie [diese Schritte](/azure/databox/data-box-how-to-set-data-tier#use-azure-powershell-to-set-the-blob-tier) zum Verschieben der Daten in die Archivspeicherebene.
     - Wenn Sie die Azure-Lebenszyklusverwaltung verwenden, befolgen Sie diese Schritte zum Verschieben der Daten in die Archivspeicherebene.
         - [Registrieren](/azure/storage/common/storage-lifecycle-management-concepts) Sie sich für die Vorschauversion des Diensts Bloblebenszyklus-Verwaltung, damit Sie die Archivspeicherebene verwenden können.
-        - Verwenden Sie die folgende Richtlinie zum [Archivieren von Daten bei der Erfassung](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-at-ingest).
+        - Verwenden Sie die folgende Richtlinie zum [Archivieren von Daten bei der Erfassung](/azure/storage/blobs/storage-lifecycle-management-concepts#archive-data-after-ingest).
 - Nachdem die Blobs als Archiv gekennzeichnet sind, können sie vom Gateway nur noch geändert werden, indem sie in die heiße oder kalte Speicherebene verschoben werden. Befindet sich die Datei im lokalen Speicher, werden Änderungen an der lokalen Kopie (einschließlich Löschungen) nicht in die Archivspeicherebene hochgeladen.
 - Um Daten in der Archivspeicherebene lesen zu können, muss sie durch Ändern der Blobspeicherebene in heiß oder kalt aktiviert werden. Das [Aktualisieren der Freigabe](data-box-gateway-manage-shares.md#refresh-shares) auf dem Gateway aktiviert das Blob nicht.
 

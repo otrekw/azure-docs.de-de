@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 6baf878a1afac011997800b78f059e254e3f2a06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9dbb76b3c0bb6c0ff1f4fb51fbf4846b74a3a1f3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845537"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019094"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -278,6 +278,6 @@ Bei der VM-Sicherung werden Momentaufnahmenbefehle an den zugrunde liegenden Spe
 Für die VM-Sicherung mithilfe von IaaS muss auf dem Gastsystem DHCP aktiviert sein. Wenn Sie eine statische private IP-Adresse benötigen, konfigurieren Sie diese im Azure-Portal oder mithilfe von PowerShell. Stellen Sie sicher, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist.
 Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter:
 
-* [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm)
 * [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 

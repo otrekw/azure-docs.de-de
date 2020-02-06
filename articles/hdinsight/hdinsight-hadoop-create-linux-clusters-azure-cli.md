@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/24/2019
-ms.openlocfilehash: 80a13e504b7cb075692256d5c813a95c51002ab6
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/03/2020
+ms.openlocfilehash: 0921caa19ee86ddf2766642211d8204059550b02
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495127"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990690"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Erstellen von HDInsight-Clustern mit der Azure-Befehlszeilenschnittstelle
 
@@ -44,9 +44,9 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
 
 2. Legen Sie Umgebungsvariablen fest. Die Verwendung von Variablen in diesem Artikel basiert auf Bash. Für andere Umgebungen sind geringfügige Variationen erforderlich. Eine vollständige Liste der möglichen Parameter für die Erstellung von Clustern finden Sie unter [az-hdinsight-create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create).
 
-    |Parameter | BESCHREIBUNG |
+    |Parameter | Beschreibung |
     |---|---|
-    |`--size`| Die Anzahl an Workerknoten im Cluster. In diesem Artikel wird die Variable `clusterSizeInNodes` als Wert verwendet, der an `--size` übergeben wird. |
+    |`--workernode-count`| Die Anzahl an Workerknoten im Cluster. In diesem Artikel wird die Variable `clusterSizeInNodes` als Wert verwendet, der an `--workernode-count` übergeben wird. |
     |`--version`| Die HDInsight-Clusterversion. In diesem Artikel wird die Variable `clusterVersion` als Wert verwendet, der an `--version` übergeben wird. Weitere Informationen: [Unterstützte HDInsight-Versionen](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| Die Art von HDInsight-Cluster, z. B. hadoop, interactivehive, hbase, kafka, storm, spark, rserver, mlservices.  In diesem Artikel wird die Variable `clusterType` als Wert verwendet, der an `--type` übergeben wird. Weitere Informationen: [Clustertypen und Konfiguration](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
     |`--component-version`|Die Versionen verschiedener Hadoop-Komponenten durch Leerzeichen getrennt im Format „Komponente=Version“. In diesem Artikel wird die Variable `componentVersion` als Wert verwendet, der an `--component-version` übergeben wird. Weitere Informationen: [Verfügbare Apache Hadoop-Komponenten in verschiedenen Versionen von HDInsight](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
@@ -120,12 +120,12 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
@@ -172,7 +172,6 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich mithilfe der Azure-Befehlszeilen
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop-Cluster
 
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster

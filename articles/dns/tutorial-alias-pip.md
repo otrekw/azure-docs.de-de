@@ -2,17 +2,17 @@
 title: 'Tutorial: Erstellen eines Azure DNS-Aliaseintrags zum Verweisen auf eine öffentliche Azure-IP-Adresse'
 description: In diesem Tutorial wird gezeigt, wie Sie einen Azure DNS-Aliaseintrag konfigurieren, um auf eine öffentliche Azure-IP-Adresse zu verweisen.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 81dfbe5f46116d263c4a04d6178437a2c8bc1185
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d601d19a786613f674f7b941becc5e97d84e6fce
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072134"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939274"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Tutorial: Konfigurieren eines Aliaseintrags, um auf eine öffentliche Azure-IP-Adresse zu verweisen 
 
@@ -67,7 +67,7 @@ Installieren Sie IIS auf **Web-01**.
 Erstellen Sie einen Aliaseintrag, der auf die öffentliche IP-Adresse verweist.
 
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
-2. Wählen Sie **Ressourceneintragssatz** aus.
+2. Wählen Sie **Ressourceneintragssatz**.
 3. Wählen Sie im Textfeld **Name** den Namen **web01** aus.
 4. Übernehmen Sie für **Typ** die Option **A-Eintrag**.
 5. Aktivieren Sie das Kontrollkästchen **Alias Record Set** (Aliaseintragssatz).
