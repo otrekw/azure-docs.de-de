@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Containergruppen in einem neuen oder vorhande
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887955"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845173"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -32,7 +32,8 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 Es gelten bestimmte Einschränkungen, wenn Sie Containergruppen für ein virtuelles Netzwerk bereitstellen.
 
 * Um Containergruppen in einem Subnetz bereitstellen zu können, darf das Subnetz keine anderen Ressourcentypen enthalten. Entfernen Sie alle vorhandenen Ressourcen aus einem vorhandenen Subnetz, bevor Sie Containergruppen für dieses bereitstellen, oder erstellen Sie ein neues Subnetz.
-* Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wird.
+* Sie können keine [verwaltete Identität](container-instances-managed-identity.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
+* Sie können weder einen [Livetest](container-instances-liveness-probe.md) noch einen [Bereitschaftstest](container-instances-readiness-probe.md) in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wurde.
 * Aufgrund der zusätzlichen betreffenden Netzwerkressourcen erfolgt das Bereitstellen einer Containergruppe für ein virtuelles Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Wenn beim Versuch, das Netzwerkprofil zu entfernen, eine Fehlermeldung angezeigt wird, gewähren Sie der Plattform 2–3 Tage, um das Problem automatisch zu beheben, und versuchen Sie dann den Löschvorgang erneut. Wenn beim Entfernen des Netzwerkprofils immer noch Probleme haben, [öffnen Sie eine Supportanfrage](https://azure.microsoft.com/support/create-ticket/).
+> Wenn beim Versuch, das Netzwerkprofil zu entfernen, eine Fehlermeldung angezeigt wird, warten Sie drei bis vier Tage, damit die Plattform das Problem automatisch beheben kann, und wiederholen Sie anschließend den Löschvorgang. Wenn Sie ein Netzwerkprofil sofort löschen müssen, [erstellen Sie eine Supportanfrage](https://azure.microsoft.com/support/create-ticket/) mit Verweis auf den Azure Container Instances-Dienst.
 
 Für diese Funktion sind zurzeit mehrere zusätzliche Befehle notwendig, um die Netzwerkressourcen, die Sie zuvor erstellt haben, zu löschen. Wenn Sie die Beispielbefehle in den vorherigen Abschnitten dieses Artikels verwendet haben, um Ihr virtuelles Netzwerk und Subnetz zu erstellen, können Sie diese Netzwerkressourcen mit dem folgenden Skript löschen.
 

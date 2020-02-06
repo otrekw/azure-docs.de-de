@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: banders
-ms.openlocfilehash: 2fadd0b6eb0951031a9d577b2fd3a3d497076dd8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: dfee9218f1e65189117c3d37808a303cf7568cd7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985078"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76846233"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Aufgaben für Kontoadministratoren im Azure-Portal
 
@@ -29,13 +29,18 @@ Diese Aufgaben können nur vom Kontoadministrator ausgeführt werden.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigieren zu den Zahlungsmethoden Ihres Abonnements
 
-1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an. 
+
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
     
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten.
-    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+1. Wählen Sie in der Liste **Meine Abonnements** das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten. 
+   
+   ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   
+   > [!NOTE]
+   > Wenn einige Ihrer Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie das Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2. 
 
 1. Wählen Sie die Option **Zahlungsmethoden**.
 
@@ -119,10 +124,13 @@ Für Abonnements mit Verpflichtungsplänen oder mit nutzungsbasierter Bezahlung 
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Visual Studio Enterprise-Abonnement aus.
-    
-    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Visual Studio Enterprise-Abonnement aus. 
 
+   ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+
+    > [!NOTE]
+    > Wenn einige Ihrer Visual Studio-Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie ein Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
+    
 1. Klicken Sie in der Abonnementübersicht auf das orangefarbene Banner, um das Ausgabenlimit zu entfernen.
     
     ![Screenshot: Banner zum Entfernen des Ausgabenlimits](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
@@ -144,10 +152,13 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Azure in Open-Abonnement aus.
-   
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Azure in Open-Abonnement aus. 
+
     ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
+   > [!NOTE]
+   > Wenn Ihr Abonnement hier nicht angezeigt wird, liegt dies möglicherweise daran, dass Sie das zugehörige Verzeichnis zu irgendeinem Zeitpunkt geändert haben. Sie müssen das Verzeichnis dieses Abonnements in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
+    
 1. Wählen Sie **Bonitätsgeschichte** aus.
     
     ![Screenshot: Bonitätsgeschichte](./media/account-admin-tasks/aio-credit-history-blade.png)

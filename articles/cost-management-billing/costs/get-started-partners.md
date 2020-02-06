@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/16/2020
+ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: aparnag
+ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293911"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76842417"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -100,9 +100,9 @@ Partner können den Bereich verwenden, um Rechnungen abzustimmen. Außerdem verw
 
 ### <a name="customer-scope"></a>Kundenbereich
 
-Partner verwenden den Bereich, um Kosten zu verwalten, die in die Microsoft-Kundenvereinbarung eingebundenen Kunden zugeordnet sind. Mit dem Bereich können Partner die Kosten vor Steuern eines bestimmten Kunden anzeigen. Sie können auch die Kosten vor Steuern für ein bestimmtes Abonnement, eine Ressourcengruppe oder Ressource filtern.
+Partner verwenden den Bereich, um Kosten zu verwalten, die in die Microsoft-Kundenvereinbarung eingebundenen Kunden zugeordnet sind. Mit dem Bereich können Partner die Kosten vor Steuern eines bestimmten Kunden in einer Abrechnungswährung anzeigen. Sie können auch die Kosten vor Steuern für ein bestimmtes Abonnement, eine Ressourcengruppe oder Ressource filtern.
 
-Der Kundenbereich umfasst keine Kunden, die dem aktuellen CSP-Angebot unterliegen. Der Bereich umfasst nur Kunden, die über eine Microsoft-Kundenvereinbarung verfügen. Berechtigungskosten, nicht die Azure-Nutzung, für Kunden im Rahmen des aktuellen CSP-Angebots sind im Abrechnungskonto- und Abrechnungsprofilbereich verfügbar, wenn Sie den Kundenfilter anwenden.
+Der Kundenbereich umfasst keine Kunden, die dem aktuellen CSP-Angebot unterliegen. Der Bereich umfasst nur Kunden, die über eine Microsoft-Kundenvereinbarung verfügen. Berechtigungskosten, nicht die Azure-Nutzung, für Kunden im Rahmen des aktuellen CSP-Angebots sind im Abrechnungskonto- und Abrechnungsprofilbereich verfügbar, wenn Sie den Kundenfilter anwenden. In diesem Bereich erfolgt die Festlegung von Budgets in der Abrechnungswährung.
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>Partnerzugriff auf Abrechnungsbereiche in Cost Management
 
@@ -189,7 +189,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | productID | Bezeichner des Produkts, für das basierend auf Verbrauch oder Erwerb Gebühren anfallen. Hierbei handelt es sich um den aus productID und SkuID verketteten Product Key, wie im Partner Center angezeigt. | Die ID des Produkts. |
 | product | Name des Produkts, für das basierend auf Verbrauch oder Erwerb Gebühren anfallen, wie auf der Rechnung angezeigt. | Der Produktname im Katalog. |
 | serviceFamily | Zeigt die Dienstfamilie des erworbenen oder gebührenpflichtigen Produkts an. Beispiel: „Storage“ oder „Compute“. | – |
-| productOrderID | Der Bezeichner der Ressource oder des Azure-Plans, der bzw. dem das Abonnement angehört. Beispiel: „Azure-Plan“. | – |
+| productOrderID | Der Bezeichner der Ressource oder des Azure-Plans, der bzw. dem das Abonnement angehört. Beispiel: „Azure-Plan“. | CommerceSubscriptionID |
 | productOrderName | Der Name des Azure-Plans, zu dem das Abonnement gehört. Beispiel: „Azure-Plan“. | –|
 | consumedService | Der genutzte Dienst (Legacytaxonomie), wie in den Legacy-EA-Nutzungsdetails verwendet. | Der im Partner Center angezeigte Dienst. Beispiele: „Microsoft. Storage“, „Microsoft. Compute“ und „Microsoft. operationalinsights“. |
 | meterID | Der Bezeichner der Verbrauchseinheit für die gemessene Nutzung. | Die ID der verwendeten Verbrauchseinheit. |
@@ -197,7 +197,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | meterCategory | Identifiziert den Dienst der obersten Ebene für die Nutzung an. | Der Dienst der obersten Ebene für die Nutzung. |
 | meterSubCategory | Definiert den Typ oder die Unterkategorie des Azure-Diensts, der bzw. die sich auf den Tarif auswirken kann. | Der Typ des Azure-Diensts, der sich auf den Tarif auswirken kann.|
 | meterRegion | Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden. | Der regionale Standort eines Rechenzentrums für Dienste, bei denen dies zutrifft und die Spalte aufgefüllt ist. |
-| Abonnement-ID | Der eindeutige von Microsoft generierte Bezeichner für das Azure-Abonnement. | – |
+| Abonnement-ID | Der eindeutige von Microsoft generierte Bezeichner für das Azure-Abonnement. | EntitlementID |
 | subscriptionName | Der Name des Azure-Abonnements. | – |
 | Begriff | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Für reservierte Instanzen werden beispielsweise 12 Monate eines Jahreszeitraums der reservierten Instanz angezeigt. Bei einmaligen oder wiederkehrenden Käufen für SaaS, Azure Marketplace und Support zeigt der Zeitraum einen Monat an. Dies gilt nicht für die Azure-Nutzung. | – |
 | publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Der Herausgebertyp, der den Herausgeber als Erstanbieter, Drittanbieter-Handelspartner oder Drittanbieter-Agentur identifiziert. | – |

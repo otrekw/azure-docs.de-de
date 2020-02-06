@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e98fd089ce8ec1285232840a40bb42ac5b81446
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795439"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844852"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -27,7 +27,7 @@ Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA M
 ## <a name="how-to-get-the-qnamaker-service-endpoint"></a>Abrufen des QnA Maker-Dienstendpunkts
 
 Der QnA Maker-Dienstendpunkt ist beim Debuggen hilfreich, wenn Sie sich an den QnA Maker-Support oder UserVoice wenden. Der Endpunkt ist eine URL mit folgendem Format: https://your-resource-name.azurewebsites.net.
-    
+
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem QnA Maker-Dienst (Ressourcengruppe).
 
     ![QnA Maker-Ressourcengruppe im Azure-Portal](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
@@ -39,21 +39,21 @@ Der QnA Maker-Dienstendpunkt ist beim Debuggen hilfreich, wenn Sie sich an den Q
 1. Sie finden die Endpunkt-URL im Abschnitt „Übersicht“.
 
     ![QnA Maker-Endpunkt](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
-    
+
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>Verwenden Sie den Hilfebot im QnA Maker-Portal.
 
-QnA Maker stellt einen **Hilfebot** im QnA Maker-Portal bereit, um Ihnen zu helfen. Der Hilfebot ist auf jeder Webseite verfügbar. Der Bot verwendet QnA Maker, um Antworten bereitzustellen, und stellt dem Bot das [C# Bot Framework-Codeprojekt](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) zur Verfügung, sodass Sie schnell mit Ihrem eigenen Antwort-Bot loslegen können. 
+QnA Maker stellt einen **Hilfebot** im QnA Maker-Portal bereit, um Ihnen zu helfen. Der Hilfebot ist auf jeder Webseite verfügbar. Der Bot verwendet QnA Maker, um Antworten bereitzustellen, und stellt dem Bot das [C# Bot Framework-Codeprojekt](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support) zur Verfügung, sodass Sie schnell mit Ihrem eigenen Antwort-Bot loslegen können.
 
 ![![QnA Maker stellt einen **Hilfebot** im QnA Maker-Portal bereit, um Ihnen zu helfen.](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>Verwalten der Wissensdatenbank
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Ich habe versehentlich einen Teil von QnA Maker gelöscht. Was soll ich tun? 
+### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Ich habe versehentlich einen Teil von QnA Maker gelöscht. Was soll ich tun?
 
 Löschen Sie keine der Azure-Dienste, die zusammen mit der QnA Maker-Ressource erstellt wurden, wie Search oder Web-App. Diese sind erforderlich, damit QnA Maker funktioniert. Wenn Sie einen dieser Dienste löschen, funktioniert QnA Maker nicht mehr richtig.
 
-Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/Antwort-Paaren, Dateien, URLs, benutzerdefinierten Fragen und Antworten, Wissensdatenbanken oder Azure-Ressourcen. Stellen Sie sicher, dass Sie Ihre Wissensdatenbank von der Seite **Einstellungen** exportieren, bevor Sie Teile der Wissensdatenbank löschen. 
+Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/Antwort-Paaren, Dateien, URLs, benutzerdefinierten Fragen und Antworten, Wissensdatenbanken oder Azure-Ressourcen. Stellen Sie sicher, dass Sie Ihre Wissensdatenbank von der Seite **Einstellungen** exportieren, bevor Sie Teile der Wissensdatenbank löschen.
 
 ### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Warum extrahieren meine URLs/Dateien keine Frage-Antwort-Paare?
 
@@ -71,7 +71,7 @@ Sie haben noch keine QnA Maker-Dienste in Azure erstellt. Klicken Sie [hier](./H
 
 Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./How-To/collaborate-knowledge-base.md) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Kann ich eine Wissensdatenbank zur Bearbeitung für einen Mitwirkenden freigeben, der sich nicht im selben AAD-Mandanten befindet? 
+### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Kann ich eine Wissensdatenbank zur Bearbeitung für einen Mitwirkenden freigeben, der sich nicht im selben AAD-Mandanten befindet?
 
 Die Freigabe basiert auf der rollenbasierten Zugriffssteuerung in Azure. Wenn Sie _jede_ Ressource in Azure für einen anderen Benutzer freigeben können, können Sie auch QnA Maker freigeben.
 
@@ -95,7 +95,7 @@ Die Standardmeldung ist Teil der Einstellungen in Ihrem App-Dienst.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Warum wird mein SharePoint-Link nicht extrahiert?
 
-Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concepts/data-sources-supported.md#data-source-locations).
+Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concepts/knowledge-base.md#data-source-locations).
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Die Aktualisierungen, die ich an meiner Wissensdatenbank vorgenommen habe, sind beim Veröffentlichen nicht mehr vorhanden. Warum nicht?
 
@@ -103,9 +103,13 @@ Jeder Bearbeitungsvorgang, sei es eine Tabellenaktualisierung, ein Test oder ein
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Unterstützt die Wissensdatenbank komplexe Daten oder Multimedia?
 
-Die Wissensdatenbank unterstützt Markdown. Bei der automatischen Extrahierung aus URLs ist die Funktionalität zur Konvertierung von HTML zu Markdown jedoch eingeschränkt. Wenn Sie Markdown im vollen Umfang nutzen möchten, können Sie Ihre Inhalte direkt in der Tabelle bearbeiten oder eine Wissensdatenbank mit den komplexen Inhalten hochladen.
+#### <a name="multimedia-auto-extraction-for-files-and-urls"></a>Automatische Multimediaextraktion für Dateien und URLs
 
-Multimediainhalte wie Bilder und Videos werden zu diesem Zeitpunkt nicht unterstützt.
+* URLs: eingeschränkte Konvertierungsfunktionen von HTML zu Markdown
+* Dateien: nicht unterstützt
+
+#### <a name="answer-text-in-markdown"></a>Antworttext in Markdown
+Wenn die QnA-Sätze in der Wissensdatenbank hinzugefügt wurden, können Sie den Markdowntext einer Antwort bearbeiten, um Links zu Medien einzufügen, die über öffentliche URLs verfügbar sind.
 
 ### <a name="does-qna-maker-support-non-english-languages"></a>Unterstützt QnA Maker andere Sprachen als Englisch?
 
@@ -115,15 +119,15 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 
 ## <a name="manage-service"></a>Verwalten eines Diensts
 
-### <a name="when-should-i-restart-my-app-service"></a>Wann sollte ich meinen App-Dienst neu starten? 
+### <a name="when-should-i-restart-my-app-service"></a>Wann sollte ich meinen App-Dienst neu starten?
 
 Aktualisieren Sie Ihren App-Dienst, wenn sich das Symbol „Vorsicht“ neben dem Versionswert für die Wissensdatenbank in der Tabelle **Endpunktschlüssel** auf der [Seite](https://www.qnamaker.ai/UserSettings) **Benutzereinstellungen** befindet.
 
 ### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Ich habe meinen Suchdienst gelöscht. Wie kann ich dieses Problem beheben?
 
-Wenn Sie einen Azure Cognitive Search-Index löschen, ist der Vorgang endgültig, weshalb der Index nicht wiederhergestellt werden kann. 
+Wenn Sie einen Azure Cognitive Search-Index löschen, ist der Vorgang endgültig, weshalb der Index nicht wiederhergestellt werden kann.
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ich habe den Index `testkb` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben? 
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ich habe den Index `testkb` in meinem Suchdienst gelöscht. Wie kann ich dieses Problem beheben?
 
 Ihre alten Daten können nicht wiederhergestellt werden. Erstellen Sie eine neue QnA Maker-Ressource, und erstellen Sie Ihre Wissensdatenbank erneut.
 
@@ -145,18 +149,18 @@ Der Speicherplatz für Ihren App-Dienst ist möglicherweise voll. Schritte zum B
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) den App-Dienst für QnA Maker aus, und beenden Sie dann den Dienst.
 1. Wählen Sie, während Sie sich noch im App-Dienst befinden, **Entwicklungstools**, **Erweiterte Tools** und dann **Starten** aus. Dadurch wird ein neues Browserfenster geöffnet.
-1. Wählen **Debugging-Konsole** und dann **CMD** aus, um ein Befehlszeilentool zu öffnen. 
+1. Wählen **Debugging-Konsole** und dann **CMD** aus, um ein Befehlszeilentool zu öffnen.
 1. Navigieren Sie zum Verzeichnis _site/wwwroot/Data/QnAMaker/_ .
-1. Entfernen Sie jeden Ordner, dessen Name mit `rd` beginnt. 
+1. Entfernen Sie jeden Ordner, dessen Name mit `rd` beginnt.
 
     Folgende Elemente dürfen Sie **nicht löschen**:
 
     * Datei „KbIdToRankerMappings.txt
     * Datei „EndpointSettings.json“
-    * Ordner „EndpointKeys“ 
+    * Ordner „EndpointKeys“
 
 1. Starten Sie den App-Dienst.
-1. Greifen Sie auf Ihre Wissensdatenbank zu, um zu überprüfen, ob sie nun funktioniert. 
+1. Greifen Sie auf Ihre Wissensdatenbank zu, um zu überprüfen, ob sie nun funktioniert.
 
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integration in andere Dienste, einschließlich Bots
@@ -175,13 +179,13 @@ Sie benötigen die folgenden Informationen über Ihre Wissensdatenbank:
 
 * Wissensdatenbank-ID
 * Sie finden den benutzerdefinierten Unterdomänennamen des veröffentlichten Endpunkts der Wissensdatenbank, der auch als `host` bezeichnet wird, nach der Veröffentlichung auf der Seite **Einstellungen**.
-* Der Schlüssel des veröffentlichten Endpunkts der Wissensdatenbank – befindet sich nach der Veröffentlichung auf der Seite **Einstellungen**. 
+* Der Schlüssel des veröffentlichten Endpunkts der Wissensdatenbank – befindet sich nach der Veröffentlichung auf der Seite **Einstellungen**.
 
-Wechseln Sie mit diesen Informationen zum App Service Ihres Bot im Azure-Portal. Ändern Sie unter **Einstellungen -> Konfiguration -> Anwendungseinstellungen** diese Werte.  
+Wechseln Sie mit diesen Informationen zum App Service Ihres Bot im Azure-Portal. Ändern Sie unter **Einstellungen -> Konfiguration -> Anwendungseinstellungen** diese Werte.
 
-Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` gekennzeichnet. 
+Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` gekennzeichnet.
 
-### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Können zwei oder mehr Clientanwendungen eine Wissensdatenbank gemeinsam nutzen? 
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Können zwei oder mehr Clientanwendungen eine Wissensdatenbank gemeinsam nutzen?
 
 Ja, die Wissensdatenbank kann von beliebig vielen Clients abgefragt werden. Wenn die Antwort der Wissensdatenbank langsam zu sein scheint oder einen Timeout aufweist, sollten Sie eine Aktualisierung des Diensttarifs für den mit der Wissensdatenbank verbundenen App Service in Betracht ziehen.
 
@@ -194,6 +198,6 @@ Führen Sie die folgenden Schritte aus, um den QnA Maker-Dienst als Webchat-Steu
 
 ## <a name="data-storage"></a>Datenspeicher
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>Welche Daten werden gespeichert, und wo werden sie gespeichert? 
+### <a name="what-data-is-stored-and-where-is-it-stored"></a>Welche Daten werden gespeichert, und wo werden sie gespeichert?
 
-Als Sie den QnA Maker-Dienst erstellt haben, haben Sie eine Azure-Region ausgewählt. Ihre Wissensdatenbanken und Protokolldateien werden in dieser Region gespeichert. 
+Als Sie den QnA Maker-Dienst erstellt haben, haben Sie eine Azure-Region ausgewählt. Ihre Wissensdatenbanken und Protokolldateien werden in dieser Region gespeichert.

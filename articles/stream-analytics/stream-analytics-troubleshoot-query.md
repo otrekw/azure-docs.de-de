@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980275"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844417"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
@@ -21,21 +21,24 @@ In diesem Artikel werden häufige Probleme bei der Entwicklung von Stream Analyt
 
 ## <a name="query-is-not-producing-expected-output"></a>Die Abfrage erzeugt nicht die erwartete Ausgabe.
 1.  Untersuchen Sie die Fehler durch lokales Testen:
-    - Wählen Sie auf der Registerkarte **Abfrage** die Option **Test** aus. Verwenden Sie die heruntergeladenen Beispieldaten, um die [Abfrage zu testen](stream-analytics-test-query.md). Untersuchen Sie alle Fehler, und versuchen Sie, diese zu korrigieren.   
-    - Sie können Ihre Abfrage auch [direkt anhand der Live-Eingabe](stream-analytics-live-data-local-testing.md) testen, indem Sie die Stream Analytics-Tools für Visual Studio verwenden.
+    - Wählen Sie im Azure-Portal auf der Registerkarte **Abfrage** die Option **Test** aus. Verwenden Sie die heruntergeladenen Beispieldaten, um die [Abfrage zu testen](stream-analytics-test-query.md). Untersuchen Sie alle Fehler, und versuchen Sie, diese zu korrigieren.   
+    - Sie können Ihre [Abfrage auch lokal testen](stream-analytics-live-data-local-testing.md), indem Sie die Azure Stream Analytics-Tools für Visual Studio oder [Visual Studio Code](visual-studio-code-local-run-live-input.md) verwenden. 
 
-2.  Stellen Sie bei Verwendung von [**Zeitstempel nach**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) sicher, dass die Zeitstempel der Ereignisse aktueller sind als die [Startzeit des Auftrags](stream-analytics-out-of-order-and-late-events.md).
+2.  [Debuggen Sie Abfragen nach und nach lokal anhand des Auftragsdiagramms](debug-locally-using-job-diagram.md) in Azure Stream Analytics-Tools für Visual Studio. Das Auftragsdiagramm zeigt, wie Daten aus Eingabequellen (Event Hub, IoT Hub usw.) über mehrere Abfrageschritte und schließlich zu Ausgabesenken fließen. Jeder Abfrageschritt wird einem temporären Resultset zugeordnet, das im Skript mithilfe einer WITH-Anweisung definiert ist. Sie können die Daten und Metriken der einzelnen Abfrageschritte in jedem Zwischenresultset anzeigen, um die Ursache des Problems zu ermitteln.
+    ![Vorschau des Auftragsdiagrammergebnisses](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  Beseitigen Sie häufige Fallen wie Folgende:
+3.  Stellen Sie bei Verwendung von [**Zeitstempel nach**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) sicher, dass die Zeitstempel der Ereignisse aktueller sind als die [Startzeit des Auftrags](stream-analytics-out-of-order-and-late-events.md).
+
+4.  Beseitigen Sie häufige Fallen wie Folgende:
     - Eine [**WHERE**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics)-Klausel in der Abfrage hat alle Ereignisse herausgefiltert, die das Generieren von Ausgaben verhindert.
     - Der Auftrag ist aufgrund einer fehlerhaften [**CAST**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics)-Funktion nicht erfolgreich. Typumwandlungsfehler lassen sich durch die Verwendung von [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) vermeiden.
     - Warten Sie bei der Verwendung von Fensterfunktionen die gesamte Fensterdauer ab, um die Ausgabe der Abfrage zu sehen.
     - Der Zeitstempel für Ereignisse liegt vor der Startzeit des Auftrags, und daher werden Ereignisse verworfen.
 
-4.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen**, und wählen Sie [**Ereignisreihenfolge**](stream-analytics-out-of-order-and-late-events.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags.
+5.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen**, und wählen Sie [**Ereignisreihenfolge**](stream-analytics-out-of-order-and-late-events.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags. 
 
-5. Führen Sie ein Debuggen mithilfe von Überwachungs- und Diagnoseprotokollen durch:
-    - Verwenden Sie [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md), und filtern Sie diese, um Fehler festzustellen und zu debuggen.
+6. Führen Sie ein Debuggen mithilfe von Überwachungs- und Diagnoseprotokollen durch:
+    - Verwenden Sie [Überwachungsprotokolle](../azure-resource-manager/resource-group-audit.md), und filtern Sie diese, um Fehler festzustellen und zu debuggen.
     - Verwenden Sie [Auftragsdiagnoseprotokolle](stream-analytics-job-diagnostic-logs.md), um Fehler festzustellen und zu debuggen.
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Der Auftrag verbraucht zu viele Streamingeinheiten.

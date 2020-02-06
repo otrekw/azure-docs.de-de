@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: c170a6a1a731a648c16e0081e760947256df8a0e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75985370"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76843887"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
@@ -59,13 +59,13 @@ In diesem Abschnitt werden häufige Szenarien zum Organisieren von Kosten und di
 
 |Szenario  |Struktur  |
 |---------|---------|
-|Contoso ist eine kleine Organisation, die eine monatliche Rechnung benötigt, die Kosten jedoch nach ihren Abteilungen gruppiert: Marketing und Finanzen.  | Ein Abrechnungsprofil für Contoso und je ein Rechnungsabschnitt für die Abteilungen Marketing und Finanzen. |
+|Contoso ist eine kleine Organisation, die eine monatliche Rechnung benötigt, die Kosten jedoch nach ihren Abteilungen gruppiert: Marketing und Engineering.  | Ein Abrechnungsprofil für Contoso und je ein Rechnungsabschnitt für die Abteilungen Marketing und Engineering. |
 
 ![Infografik für ein einfaches Abrechnungsszenario](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Szenario  |Struktur  |
 |---------|---------|
-|Fabrikam ist ein mittelständisches Unternehmen, das separate Rechnungen für seine Abteilungen Engineering und Marketing benötigt. Für die Engineeringabteilung sollen die Kosten nach Umgebungen gruppiert werden: Produktion und Entwicklung.  | Je ein Abrechnungsprofil für die Abteilungen Marketing und Finanzen. Für die Marketingabteilung je ein Rechnungsabschnitt für die Produktions- und die Entwicklungsumgebung. |
+|Fabrikam ist ein mittelständisches Unternehmen, das separate Rechnungen für seine Abteilungen Engineering und Marketing benötigt. Für die Engineeringabteilung sollen die Kosten nach Umgebungen gruppiert werden: Produktion und Entwicklung.  | Je ein Abrechnungsprofil für die Abteilungen Marketing und Engineering. Für die Engineeringabteilung je ein Rechnungsabschnitt für die Produktions- und die Entwicklungsumgebung. |
 
 ![Infografik für ein einfaches Abrechnungsszenario](./media/mca-section-invoice/organize-billing-scenario3.png)
 

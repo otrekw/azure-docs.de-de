@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 12735a9575328e404f5723fa305448eb21ca85b2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986214"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769798"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -68,7 +68,7 @@ Klicken Sie auf **Hinzufügen**.
 
 Vergewissern Sie sich im Fenster **Budget erstellen**, dass der richtige Bereich angezeigt wird. Wählen Sie alle Filter aus, die Sie hinzufügen möchten. Mit Filtern können Sie Budgets für bestimmte Kosten erstellen, z.B. für Ressourcengruppen in einem Abonnement oder einen Dienst wie virtuelle Computer. Filter, die Sie in der Kostenanalyse verwenden können, können auch auf ein Budget angewendet werden.
 
-Nachdem Sie Ihren Bereich und die Filter identifiziert haben, geben Sie einen Budgetnamen ein. Wählen Sie dann einen Zurücksetzungszeitraum für ein Monats,- Quartals- oder Jahresbudget aus. Dieser Zurücksetzungszeitraum bestimmt das Zeitfenster, das durch das Budget analysiert wird. Die durch das Budget ausgewerteten Kosten beginnen am Anfang jedes neuen Zeitraums bei Null. Die Erstellung eines Quartalsbudgets entspricht der eines Monatsbudget. Der Unterschied besteht darin, dass der Budgetbetrag für das Quartal gleichmäßig auf die drei Monate des Quartals verteilt wird. Ein jährlicher Budgetbetrag wird gleichmäßig auf alle 12 Monate des Kalenderjahrs aufgeteilt.
+Nachdem Sie Ihren Bereich und die Filter identifiziert haben, geben Sie einen Budgetnamen ein. Wählen Sie dann einen Zurücksetzungszeitraum für ein Monats-, Quartals- oder Jahresbudget aus. Dieser Zurücksetzungszeitraum bestimmt das Zeitfenster, das durch das Budget analysiert wird. Die durch das Budget ausgewerteten Kosten beginnen am Anfang jedes neuen Zeitraums bei Null. Die Erstellung eines Quartalsbudgets entspricht der eines Monatsbudget. Der Unterschied besteht darin, dass der Budgetbetrag für das Quartal gleichmäßig auf die drei Monate des Quartals verteilt wird. Ein jährlicher Budgetbetrag wird gleichmäßig auf alle 12 Monate des Kalenderjahrs aufgeteilt.
 
 Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung, ein MSDN-Abonnement oder ein Visual Studio-Abonnement verfügen, stimmt der Abrechnungszeitraum für Ihre Rechnung möglicherweise nicht mit dem Kalendermonat überein. Bei diesen Abonnementarten und Ressourcengruppen können Sie ein Budget erstellen, das Ihrem Rechnungszeitraum oder Kalendermonaten entspricht. Zum Erstellen eines Budgets, das Ihrem Rechnungszeitraum entspricht, wählen Sie als Zurücksetzungszeitraum **Abrechnungsmonat**, **Abrechnungsquartal** oder **Abrechnungsjahr** aus. Wenn Sie ein Budget entsprechend dem Kalendermonat erstellen möchten, wählen Sie als Zurücksetzungszeitraum **Monatlich**, **Vierteljährlich** oder **Jährlich** aus.
 
@@ -87,6 +87,18 @@ Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Be
 ![Beispiel für in der Kostenanalyse angezeigtes Budget und Ausgaben](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
 Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie können jedoch auch ein Budget für eine Ressourcengruppe erstellen. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Cost Management + Abrechnung** &gt; **Abonnements** &gt; Abonnement auswählen > **Ressourcengruppen** > Ressourcengruppe auswählen > **Budgets** > und dann **Hinzufügen**, um ein Budget hinzuzufügen.
+
+## <a name="costs-in-budget-evaluations"></a>Kosten in Budgetauswertungen
+
+Die Kostenauswertungen für Budgets beinhalten jetzt reservierte Instanzen und Kaufdaten. Falls diese Gebühren für Sie relevant sind, erhalten Sie möglicherweise Warnungen, weil die Gebühren in Ihren Auswertungen berücksichtigt werden. Es ist ratsam, sich beim [Azure-Portal](https://portal.azure.com) anzumelden und sicherzustellen, dass die Budgetschwellenwerte ordnungsgemäß konfiguriert sind, um die neuen Kosten zu berücksichtigen. An den abgerechneten Azure-Gebühren hat sich nichts geändert. Budgets werden jetzt anhand eines vollständigeren Kostenumfangs bewertet. Falls diese Gebühren für Sie nicht gelten, bleibt das Budgetverhalten unverändert.
+
+Wenn Sie die neuen Kosten so filtern möchten, dass das Budget nur anhand der Azure-Verbrauchsgebühren von Erstanbietern ausgewertet wird, fügen Sie Ihrem Budget die folgenden Filter hinzu:
+
+- Herausgebertyp: Azure
+- Gebührentyp: Verwendung
+
+Die Budgetkostenauswertung basiert auf den tatsächlichen Kosten. Sie beinhaltet keine Abschreibungen. Weitere Informationen zu den für Sie in Budgets verfügbaren Filteroptionen finden Sie unter [Grundlegendes zu Gruppierungs-und Filteroptionen](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options).
+
 
 ## <a name="trigger-an-action-group"></a>Auslösen einer Aktionsgruppe
 

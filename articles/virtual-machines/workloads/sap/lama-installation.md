@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978057"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842434"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
@@ -87,7 +87,7 @@ Der Azure-Connector kann einen Dienstprinzipal für die Autorisierung bei Micros
 1. Klicken Sie auf „Neue Registrierung“.
 1. Geben Sie einen Namen ein, und klicken Sie auf „Registrieren“.
 1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Zertifikate & Geheimnisse“.
-1. Erstellen Sie ein neues Clientgeheimnis, geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie aus, wann das Geheimnis ablaufen soll, und klicken Sie auf „Speichern“.
+1. Erstellen Sie einen neuen geheimen Clientschlüssel, geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie aus, wann das Geheimnis ablaufen soll, und klicken Sie auf „Speichern“.
 1. Notieren Sie sich den Wert. Er dient als Kennwort für den Dienstprinzipal.
 1. Notieren Sie sich die Anwendungs-ID. Sie dient als Benutzername für den Dienstprinzipal.
 

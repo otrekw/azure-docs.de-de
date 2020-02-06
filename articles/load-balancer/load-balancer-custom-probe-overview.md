@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690391"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769172"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -200,7 +200,7 @@ Load Balancer ist ein Pass-Through-Dienst (TCP-Verbindungen werden nicht beendet
 
 UDP-Datagramme werden an fehlerfreie Back-End-Endpunkte übermittelt.
 
-Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachverfolgt. Wenn beim Integritätstest eines beliebigen Back-End-Endpunkts ein Fehler auftritt, können vorhandene UDP-Flows an eine andere fehlerfreie Instanz im Back-End-Pool umgeleitet werden.
+Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachverfolgt. Wenn beim Integritätstest eines beliebigen Back-End-Endpunkts ein Fehler auftritt, werden vorhandene UDP-Flows an eine andere fehlerfreie Instanz im Back-End-Pool umgeleitet.
 
 Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, werden alle vorhandenen UDP-Flows für Load Balancer Basic und Standard beendet.
 

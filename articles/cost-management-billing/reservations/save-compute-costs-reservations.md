@@ -7,16 +7,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: 2e8c477aea7a11eefa606ab9cd084ca3ed9f400f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75986782"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76841879"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
-Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei virtuellen Computern, Azure Blob Storage oder Azure Data Lake Storage Gen2, SQL-Datenbank-Computekapazität, Azure Cosmos DB-Durchsatz oder anderen Azure-Ressourcen für Pläne mit einer Laufzeit von einem Jahr oder mit einer Laufzeit von drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen Kostensenkungen von bis zu 72 Prozent im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
+Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei virtuellen Computern, Azure Blob Storage oder Azure Data Lake Storage Gen2, SQL-Datenbank-Computekapazität, Azure Disk Storage, Azure Cosmos DB-Durchsatz oder anderen Azure-Ressourcen für Pläne mit einer Laufzeit von einem Jahr oder mit einer Laufzeit von drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen Kostensenkungen von bis zu 72 Prozent im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
 
 Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen und nicht für Produkte von Drittanbietern verfügbar.
 
@@ -32,6 +32,7 @@ Servicepläne:
 
 - **Reservierte VM-Instanz**: Eine Reservierung deckt nur die Computekosten virtueller Computer ab. Eine Reservierung deckt keine zusätzlichen Kosten für Software, Netzwerke oder Speicher ab.
 - **Reservierte Azure Storage-Kapazität**: Eine Reservierung deckt die Speicherkapazität für Storage Standard-Konten für Blobspeicher oder Azure Data Lake Gen2-Speicher ab. Die Reservierung deckt keine Bandbreite oder Transaktionsraten ab.
+- **Azure Disk Storage-Reservierungen**: Eine Reservierung deckt nur SSD Premium-Datenträger der Größe P30 oder höher ab. Es werden keine anderen Datenträgertypen oder -größen abgedeckt, die kleiner als P30 sind.
 - **Reservierte Azure Cosmos DB-Kapazität**: Eine Reservierung deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab. Die Speicher- und Netzwerkkosten werden nicht abgedeckt.
 - **Reservierte virtuelle Kerne für SQL-Datenbank**: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
 - **SQL Data Warehouse**: Eine Reservierung deckt die cDWU-Nutzung ab. Sie deckt keine mit der SQL Data Warehouse-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
@@ -40,7 +41,6 @@ Servicepläne:
 - Azure Database for PostgreSQL
 - Azure Database for MariaDB
 - Azure-Daten-Explorer
-- Verwaltete SSD Premium-Datenträger
 
 
 Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungskosten mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) decken.

@@ -27,7 +27,7 @@
       href: quickstart-create-data-factory-resource-manager-template.md
     - name: Erstellen eines Datenflusses
       href: data-flow-create.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Kopieren und Erfassen von Daten
       items:
@@ -164,8 +164,6 @@
               href: concepts-data-flow-overview.md
             - name: Debugmodus
               href: concepts-data-flow-debug-mode.md
-            - name: JSON-Behandlung
-              href: concepts-data-flow-json.md
             - name: Schemaabweichung
               href: concepts-data-flow-schema-drift.md
             - name: Spaltenmuster
@@ -192,7 +190,7 @@
       href: pricing-concepts.md
     - name: Benennungsregeln
       href: naming-rules.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Autor
       items:

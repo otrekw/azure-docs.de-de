@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fc74e72c6c2fe3e2b8817e6ffb418928ede08193
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773362"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931466"
 ---
 # <a name="protected-web-api-code-configuration"></a>Geschützte Web-API: Codekonfiguration
 
@@ -47,7 +47,7 @@ Das Bearertoken, das beim Aufrufen der App im Header festgelegt wird, enthält I
 Hier ist ein C#-Codebeispiel, das zeigt, wie ein Client die API aufruft, nachdem er ein Token mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) erworben hat:
 
 ```csharp
-var scopes = new[] {$"api://.../access_as_user}";
+var scopes = new[] {$"api://.../access_as_user"};
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
 
@@ -139,7 +139,7 @@ Der obige Codeausschnitt stammt aus dem inkrementellen ASP.NET Core-Web-API-Tut
 
 Im obigen Codeausschnitt überprüft die JwtBearer-Middleware das Token auf der Grundlage des Werts von `TokenValidationParameters` (genau wie die OpenID Connect-Middleware in Web-Apps). Der Token wird bei Bedarf entschlüsselt, die Ansprüche werden extrahiert, und die Signatur wird überprüft. Die Middleware validiert dann das Token, indem sie auf diese Daten überprüft:
 
-- Zielgruppe: Das Ziel des Tokens ist die Web-API.
+- Audience: Das Ziel des Tokens ist die Web-API.
 - Antragsteller: Das Token wurde für eine App ausgestellt, die zum Aufrufen der Web-API berechtigt ist.
 - Aussteller: Das Token wurde von einem vertrauenswürdigen Sicherheitstokendienst (Security Token Service, STS) ausgestellt.
 - Ablauf: Die Tokenlebensdauer liegt innerhalb des zulässigen Bereichs.

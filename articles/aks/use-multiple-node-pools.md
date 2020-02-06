@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 6ea1bce6c14d7266b5ce49b94e39d661bfc57717
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713312"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901525"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -397,7 +397,7 @@ Weitere Informationen zur Verwendung der erweiterten geplanten Kubernetes-Featur
 In diesem Beispiel wenden Sie mit dem Befehl „--node-taints“ einen Taint auf Ihren GPU-basierten Knoten an. Geben Sie den Namen Ihres GPU-basierten Knotens aus der Ausgabe des vorherigen `kubectl get nodes` Befehls an. Der Taint wird als *Schlüssel:Wert* und dann eine Planungsoption angewendet. Das folgende Beispiel verwendet das Paar *sku=gpu* und definiert Pods, die ansonsten die Option *NoSchedule* aufweisen:
 
 ```console
-az aks nodepool --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
+az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
 ```
 
 Das folgende einfache YAML-Beispielmanifest verwendet eine Toleranz, damit der Kubernetes-Planer einen NGINX-Pod auf dem GPU-basierten Knoten ausführen kann. Ein geeigneteres, aber zeitintensiveres Beispiel für die Ausführung eines Tensorflow-Auftrags für den MNIST-Datensatz finden Sie unter [Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)][gpu-cluster].
