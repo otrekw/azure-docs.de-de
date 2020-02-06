@@ -2,20 +2,20 @@
 title: 'Gemeinsames Schreiben von Code mit Git: Team Data Science-Prozess'
 description: Erfahren Sie, wie eine gemeinschaftliche Codeentwicklung für Data Science-Projekte mithilfe von Git mit Agile-Planung umgesetzt wird.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3b57621fcec654f11c8e9a68e4568f332dbf9ac6
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0708e395eff90ff5b889c05f0fd5e7a98205c5bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195451"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721896"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
@@ -23,7 +23,7 @@ In diesem Artikel wird beschrieben, wie Sie Git als Framework für die gemeinsch
 
 ## <a name='Linkaworkitemwithagitbranch-1'></a>Verknüpfen eines Arbeitselements mit einem Azure Repos-Branch 
 
-Mit Azure DevOps können Sie eine Azure Boards User Story oder eine Arbeitsaufgabe bequem mit einem Azure Repos-Git-Repositorybranch verbinden. Sie können Ihre User Story oder Aufgabe direkt mit dem zugeordneten Code verknüpfen. 
+Mit Azure DevOps können Sie eine Azure Boards User Story oder ein Arbeitselement bequem mit einem Azure Repos-Git-Repositorybranch verbinden. Sie können Ihre User Story oder Aufgabe direkt mit dem zugeordneten Code verknüpfen. 
 
 Wählen Sie zum Verbinden eines Arbeitselements mit einer neuen Branch unter **Aktionen** das Auslassungszeichen ( **...** ) neben dem Arbeitselement aus, und scrollen Sie im Kontextmenü zu **Neuer Branch**, und wählen Sie die Option aus.  
 
@@ -49,7 +49,7 @@ git checkout <working branch name>
 
 Nach dem Wechsel zum Arbeitsbranch können Sie mit dem Entwickeln von Code- oder Dokumentationsartefakten beginnen, um das Arbeitselement fertigzustellen. Wenn Sie `git checkout master` ausführen, gelangen Sie zurück zum `master`-Branch.
 
-Eine bewährte Methode besteht darin, für jedes User Story-Arbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jede Arbeitsaufgabe basierend auf dem User Story-Branch einen Branch. Organisieren Sie die Branches in einer Hierarchie, die der Beziehung zwischen User Story und Aufgabe entspricht, wenn mehrere Personen an verschiedenen User Storys für dasselbe Projekt bzw. an verschiedenen Aufgaben für dieselbe User Story arbeiten. Sie können Konflikte verringern, indem jedes Teammitglied in einem anderen Branch oder bei gemeinsamer Branchnutzung an anderem Code oder anderen Artefakten arbeitet. 
+Eine bewährte Methode besteht darin, für jedes User Story-Arbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jedes Arbeitselement basierend auf dem User Story-Branch einen Branch. Organisieren Sie die Branches in einer Hierarchie, die der Beziehung zwischen User Story und Aufgabe entspricht, wenn mehrere Personen an verschiedenen User Storys für dasselbe Projekt bzw. an verschiedenen Aufgaben für dieselbe User Story arbeiten. Sie können Konflikte verringern, indem jedes Teammitglied in einem anderen Branch oder bei gemeinsamer Branchnutzung an anderem Code oder anderen Artefakten arbeitet. 
 
 Das folgende Diagramm zeigt die empfohlene Verzweigungsstrategie für TDSP. Unter Umständen benötigen Sie nicht so viele Verzweigungen wie hier dargestellt. Dies gilt vor allem, wenn nur eine oder zwei Personen an demselben Projekt arbeiten oder nur eine Person alle Aufgaben einer User Story bearbeitet. Die bewährte Methode besteht aber immer darin, den Entwicklungsbranch vom Masterbranch zu trennen. So kann verhindert werden, dass der Releasebranch von Entwicklungsaktivitäten unterbrochen wird. Eine vollständige Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
 
@@ -80,7 +80,7 @@ Greifen Sie auf der Hauptseite Ihres Azure DevOps-Projekts links im Navigationsb
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-Navigieren Sie auf dem Bildschirm **Neuer Pull Request** bei Bedarf zum Git-Repository und zum Branch für die Zusammenführung Ihrer Änderungen. Sie können auch andere gewünschte Informationen hinzufügen oder ändern. Fügen Sie unter **Prüfer** die Namen der Personen hinzu, die Ihre Änderungen überprüfen sollen, und wählen Sie anschließend **Erstellen**. 
+Navigieren Sie auf dem Bildschirm **Neuer Pull Request** bei Bedarf zum Git-Repository und zum Branch für die Zusammenführung Ihrer Änderungen. Sie können auch andere gewünschte Informationen hinzufügen oder ändern. Fügen Sie unter **Prüfer** die Namen der Prüfer hinzu, und wählen Sie anschließend **Erstellen** aus. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 

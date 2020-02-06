@@ -1,6 +1,6 @@
 ---
-title: Anhalten von Azure Service Bus-Messagingentitäten | Microsoft-Dokumentation
-description: Anhalten und Reaktivieren von Azure Service Bus-Messagingentitäten
+title: 'Azure Service Bus: Anhalten von Messagingentitäten'
+description: In diesem Artikel wird erläutert, wie Sie Azure Service Bus-Messagingentitäten (Warteschlangen, Themen und Abonnements) vorübergehend anhalten und reaktivieren.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: e2ffda3141462d19557af3af26c117ee505c40ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170812"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760384"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 
@@ -41,7 +41,7 @@ Das Portal ermöglicht nur das vollständige Deaktivieren von Warteschlangen. Si
 Folgende Zustände können für eine Warteschlange festgelegt werden:
 
 -   **Aktiv:** Die Warteschlange ist aktiv.
--   **Deaktiviert**: Die Warteschlange wurde angehalten.
+-   **Disabled**: Die Warteschlange wurde angehalten.
 -   **SendDisabled**: Die Warteschlange ist teilweise angehalten, der Empfang ist zulässig.
 -   **ReceiveDisabled**: Die Warteschlange ist teilweise angehalten, das Senden ist zulässig.
 

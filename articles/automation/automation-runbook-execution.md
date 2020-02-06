@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: c97e10d2785b7dc1a438c95dca9be94fcef82f94
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658116"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714843"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -71,7 +71,7 @@ else
     }
 ```
 
-### <a name="time-dependant-scripts"></a>Zeitabhängige Skripte
+### <a name="time-dependent-scripts"></a>Zeitabhängige Skripts
 
 Dem Erstellen von Runbooks sollten sorgfältige Überlegungen vorausgehen. Wie bereits erwähnt, müssen Runbooks so erstellt werden, dass sie stabil sind und vorübergehenden Fehlern standhalten können, die möglicherweise dazu führen, dass ein Runbook neu startet oder bei ihm ein Fehler auftritt. Wenn bei einem Runbook ein Fehler auftritt, wird es neu gestartet. Wenn ein Runbook innerhalb einer Zeiteinschränkung normal ausgeführt wird, sollte Logik zum Überprüfen der Ausführungszeit im Runbook implementiert werden, um sicherzustellen, dass Vorgänge wie Start, Herunterfahren oder horizontales Hochskalieren nur zu bestimmten Zeiten ausgeführt werden.
 
@@ -197,7 +197,7 @@ Runbookaufträge, die in Azure-Sandboxes ausgeführt werden, haben keinen Zugrif
 
 Die folgende Tabelle beschreibt die verschiedenen Status, die für einen Auftrag möglich sind. PowerShell unterscheidet zwei Arten von Fehlern: Fehler mit Abbruch und Fehler ohne Abbruch. Fehler mit Abbruch setzen den Runbookstatus auf **Fehler**, wenn sie auftreten. Fehler ohne Abbruch ermöglichen es dem Skript, auch nach ihrem Auftreten fortzufahren. Ein Beispiel für einen Fehler ohne Abbruch ist die Verwendung des Cmdlets `Get-ChildItem` mit einem Pfad, der nicht vorhanden ist. PowerShell erkennt, dass der Pfad nicht vorhanden ist, löst einen Fehler aus und fährt mit dem nächsten Ordner fort. Dieser Fehler würde den Runbookstatus nicht auf **Fehler** setzen und könnte als **Abgeschlossen** markiert werden. Um ein Runbook zu veranlassen, bei einem Fehler ohne Abbruch anzuhalten, können Sie `-ErrorAction Stop` für das Cmdlet verwenden.
 
-| Status | BESCHREIBUNG |
+| Status | Beschreibung |
 |:--- |:--- |
 | Abgeschlossen |Der Auftrag wurde erfolgreich abgeschlossen. |
 | Fehler |Bei [grafischen und PowerShell-Workflow-Runbooks](automation-runbook-types.md)ist die Kompilierung des Runbooks fehlgeschlagen. Bei [PowerShell-Skript-Runbooks](automation-runbook-types.md) konnte das Runbook nicht gestartet werden, oder bei dem Auftrag ist eine Ausnahme aufgetreten. |

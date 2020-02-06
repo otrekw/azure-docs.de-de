@@ -3,17 +3,17 @@ title: 'Schnellstart: Erstellen einer DNS-Zone und eines Eintrags: Azure-Portal'
 titleSuffix: Azure DNS
 description: Verwenden Sie diese Schritt-für-Schritt-Schnellstartanleitung, um zu erfahren, wie Sie eine Azure DNS-Zone und den zugehörigen Eintrag mit dem Azure-Portal erstellen.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: allensu
-ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082922"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937128"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines DNS-Eintrags mit dem Azure-Portal
 
@@ -64,12 +64,12 @@ Sie erstellen DNS-Einträge für Ihre Domäne in der DNS-Zone. Erstellen Sie ein
 1. Geben Sie auf der Seite **Datensatzgruppe hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
 
    - **Name**: Geben Sie *www* ein. Der Eintragsname ist der Hostname, den Sie in die angegebene IP-Adresse auflösen möchten.
-   - **Typ**: Wählen Sie **A** aus. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
+   - **Typ:** Wählen Sie **A** aus. A-Einträge sind am gängigsten. Es gibt aber noch weitere Eintragstypen für E-Mail-Server („MX“), IPv6-Adressen („AAAA“) usw. 
    - **TTL**: Geben Sie *1* ein. Mit der *Gültigkeitsdauer* der DNS-Anforderung wird angegeben, wie lange DNS-Server und -Clients eine Antwort zwischenspeichern können.
    - **TTL-Einheit**: Wählen Sie **Stunden** aus. Dies ist die Zeiteinheit für den **TTL**-Wert. 
    - **IP-Adresse**: Geben Sie für dieses Schnellstartbeispiel *10.10.10.10* ein. Dieser Wert ist die IP-Adresse, in die der Eintragsname aufgelöst wird. In einem echten Szenario geben Sie die öffentliche IP-Adresse für Ihren Webserver ein.
 
-Da diese Schnellstartanleitung nur für schnelle Tests bestimmt ist, ist es nicht erforderlich, die Azure DNS-Namensserver bei einer Domänennamen-Registrierungsstelle zu konfigurieren. Bei einer echten Produktionsdomäne möchten Sie erreichen, dass alle Internetbenutzer den Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer App herzustellen. Sie besuchen Ihre Domänennamen-Registrierungsstelle, um die Namenservereinträge durch die Azure DNS-Namenserver zu ersetzen. Weitere Informationen finden Sie unter [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
+Da diese Schnellstartanleitung nur für schnelle Tests bestimmt ist, ist es nicht erforderlich, die Azure DNS-Namensserver bei einer Domänennamen-Registrierungsstelle zu konfigurieren. Bei einer echten Produktionsdomäne möchten Sie erreichen, dass alle Internetbenutzer den Hostnamen auflösen können, um eine Verbindung mit Ihrem Webserver oder Ihrer App herzustellen. Sie besuchen Ihre Domänennamen-Registrierungsstelle, um die Namenservereinträge durch die Azure DNS-Namenserver zu ersetzen. Weitere Informationen finden Sie im [Tutorial: Hosten Ihrer Domäne in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain).
 
 ## <a name="test-the-name-resolution"></a>Testen der Namensauflösung
 

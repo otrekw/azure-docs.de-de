@@ -1,130 +1,62 @@
 ---
-title: 'Wissensdatenbank: QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Paaren (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: 'Importieren aus Datenquellen: QnA Maker'
+description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Sätzen (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/27/2020
+ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794898"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843352"
 ---
-# <a name="what-is-a-qna-maker-knowledge-base"></a>Was ist eine QnA Maker-Wissensdatenbank?
+# <a name="importing-from-data-sources"></a>Importieren aus Datenquellen
 
-Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Paaren (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
+Eine Wissensdatenbank besteht aus Frage-Antwort-Sätzen, die über öffentliche URLs und Dateien eingefügt werden.
 
-## <a name="key-knowledge-base-concepts"></a>Wichtige Konzepte für Wissensdatenbanken
+## <a name="data-source-locations"></a>Speicherorte von Datenquellen
 
-* **Fragen**: Eine Frage enthält Text, der eine Benutzerabfrage bestmöglich darstellt. 
-* **Antworten**: Eine Antwort ist die Reaktion, die zurückgegeben wird, wenn eine Benutzerabfrage mit der zugeordneten Frage übereinstimmt.  
-* **Metadaten**: Metadaten sind Tags in Form von Schlüssel-Wert-Paaren, die einem QnA-Paar zugeordnet sind. Metadatentags werden verwendet, um QnA-Paare zu filtern und die Datenmenge einzuschränken, für die ein Abfrageabgleich vorgenommen wird.
+Der Inhalt wird aus einer Datenquelle in eine Wissensdatenbank übertragen. Speicherorte von Datenquellen sind **öffentliche URLs oder Dateien**, die keine Authentifizierung erfordern.
 
-Eine einzelnes QnA-Element, dargestellt durch eine numerische QnA-ID, verfügt über mehrere Varianten einer Frage (alternative Fragen), die alle auf einer einzigen Antwort abgebildet werden. Außerdem können jedem dieser Paare mehrere Metadatenfelder zugeordnet sein: ein Schlüssel und ein Wert.
+[SharePoint-Dateien](../how-to/add-sharepoint-datasources.md), die durch Authentifizierung geschützt sind, stellen eine Ausnahme dar. Bei SharePoint-Ressourcen muss es sich um Dateien und nicht um Webseiten handeln. Wenn die URL mit einer Weberweiterung endet (z. B. „.ASPX“), wird sie nicht von SharePoint in QnA Maker importiert.
 
-![QnA Maker-Wissensdatenbanken](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+## <a name="chit-chat-content"></a>Geplauderinhalte
 
-## <a name="knowledge-base-content-format"></a>Inhaltsformat der Wissensdatenbank
+Geplauderinhalte von QnA werden als vollständige Inhaltsdatenquelle in verschiedenen Sprachen und Unterhaltungsformaten bereitgestellt. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben. Erfahren Sie, wie Sie Ihrer Wissensdatenbank diesen Satz von Inhalten [hinzufügen](../how-to/chit-chat-knowledge-base.md).
 
-Wenn Sie reichhaltige Inhalte in einer Wissensdatenbank erfassen, versucht QnA Maker, die Inhalte in Markdown zu konvertieren. Informationen zu Markdownformaten, die für die meisten Chatclients verständlich sind, finden Sie in [diesem Blog](https://aka.ms/qnamaker-docs-markdown-support).
+## <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
 
-Metadatenfelder bestehen aus Schlüssel-Wert-Paaren, die durch einen Doppelpunkt getrennt werden, wie z. B. „Produkt:Aktenvernichter“. Schlüssel und Wert dürfen nur aus Text bestehen. Der Metadatenschlüssel darf keine Leerzeichen enthalten. Metadaten unterstützt nur einen Wert pro Schlüssel.
+Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte `.tsv`-Datei, die Fragen und Antworten enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Sätze und beim Zuweisen zu einer bestimmten Datenquelle.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Verarbeitung einer Benutzerabfrage mit QnA Maker, um die beste Antwort auszuwählen
+| Frage  | Antwort  | `Source`| Metadaten (1 Schlüssel: 1 Wert) |
+|-----------|---------|----|---------------------|
+| Frage1 | Antwort1 | URL1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Frage2 | Antwort2 | Redaktionelle Änderung|    `Key:Value`       |
 
-Die trainierte und [veröffentlichte](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
+## <a name="structured-multi-turn-format-through-import"></a>Strukturiertes Mehrfachdurchlauf-Format durch Import
 
-![Einstufungsprozess für eine Benutzerabfrage](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+Sie können Unterhaltungen mit Mehrfachdurchläufen in einem `.tsv`-Dateiformat erstellen. Das Format bietet Ihnen die Möglichkeit, die Unterhaltungen mit Mehrfachdurchläufen zu erstellen, indem Sie vorherige Chatprotokolle analysieren (mit anderen Prozessen, nicht mithilfe von QnA Maker), und dann die `.tsv`-Datei durch Automatisierung zu erstellen. Importieren Sie die Datei, um die vorhandene Wissensdatenbank zu ersetzen.
 
-### <a name="ranker-process"></a>Einstufungsprozess
+> [!div class="mx-imgBorder"]
+> ![Konzeptionelles Modell mit drei Ebenen von Fragen mit Mehrfachdurchläufen](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-Der Prozess wird in der folgenden Tabelle erläutert:
+Die Spalte für eine `.tsv`-Datei mit Mehrfachdurchläufen, die sich speziell für Mehrfachdurchläufe eignet, ist **Eingabeaufforderungen**. Eine `.tsv`-Beispieldatei in Excel zeigt die Informationen, die zum Definieren der untergeordneten Elemente bei Mehrfachdurchläufen eingeschlossen werden müssen:
 
-|Schritt|Zweck|
-|--|--|
-|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
-|2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
-|3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
-|4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|
-|5|QnA Maker wendet die erweiterte Featurebereitstellung an, um die Richtigkeit der abgerufenen Suchergebnisse für die Benutzerabfrage zu ermitteln. |
-|6|Für das trainierte Rangfolgemodell wird die Featurebewertung aus Schritt 5 verwendet, um die Einstufung der Azure Cognitive Search-Ergebnisse vorzunehmen.|
-|7|Die neuen Ergebnisse werden in der Rangfolge an die Clientanwendung zurückgegeben.|
-|||
-
-Zu den verwendeten Funktionen gehören u. a. Semantik auf Wortebene, Wichtigkeit auf Begriffsebene in einem Korpus und Deep Learning-Semantikmodelle, um die Ähnlichkeit und Relevanz zwischen zwei Textzeichenfolgen zu ermitteln.
-
-## <a name="http-request-and-response-with-endpoint"></a>HTTP-Anforderung und -Antwort mit Endpunkt
-Beim Veröffentlichen Ihrer Wissensdatenbank erstellt der Dienst einen REST-basierten HTTP-Endpunkt, den Sie in Ihre Anwendung integrieren können, etwa in Form eines Chatbots. 
-
-### <a name="the-user-query-request-to-generate-an-answer"></a>Benutzerabfrageanforderung zum Generieren einer Antwort
-
-Eine Benutzerabfrage ist die Frage, die der Benutzer an die Wissensdatenbank richtet, z. B. `How do I add a collaborator to my app?`. Die Abfrage wird häufig in einem natürlichen Sprachformat oder in Form von Schlüsselwörtern formuliert, die die Frage darstellen, z. B. `help with collaborators`. Die Abfrage wird von einer HTTP-Anforderung in der Clientanwendung an Ihre Wissensdatenbank gesendet.
-
-```json
-{
-    "question": "qna maker and luis",
-    "top": 6,
-    "isTest": true,
-    "scoreThreshold": 20,
-    "strictFilters": [
-    {
-        "name": "category",
-        "value": "api"
-    }],
-    "userId": "sd53lsY="
-}
+```JSON
+[
+    {"displayOrder":0,"qnaId":2,"displayText":"Level 2 Question A"},
+    {"displayOrder":0,"qnaId":3,"displayText":"Level 2 - Question B"}
+]
 ```
 
-Sie steuern die Antwort, indem Sie Eigenschaften wie [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) und [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) festlegen.
+**displayOrder** ist numerisch, während **displayText** ein Text ist, der kein Markdown enthalten darf.
 
-Verwenden Sie [Unterhaltungskontext](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) mit [Mehrfachdurchlauffunktion](../how-to/multiturn-conversation.md), um die Konversation aufrechtzuerhalten und die Fragen und Antworten so zu verfeinern, dass die richtige und abschließende Antwort gefunden wird.
+> [!div class="mx-imgBorder"]
+> ![Beispiel für eine Frage für Mehrfachdurchläufe in Excel](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>Reaktion auf einen Aufruf zum Generieren einer Antwort
+## <a name="export-as-example"></a>Exportieren als Beispiel
 
-Die HTTP-Antwort ist die Antwort, die aus der Wissensdatenbank basierend auf der besten Übereinstimmung für eine bestimmte Benutzerabfrage abgerufen wird. Darin enthalten ist die eigentliche Antwort und das Vorhersageergebnis. Wenn Sie mit der Eigenschaft `top` mehr als eine Top-Antwort angefordert haben, erhalten Sie mehrere Top-Antworten jeweils mit einer Bewertung. 
-
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-### <a name="test-and-production-knowledge-base"></a>Test- und Produktionsversion der Wissensdatenbank
-Eine Wissensdatenbank ist ein Repository mit Fragen und Antworten, die über QnA Maker erstellt, verwaltet und verwendet wird. Jede QnA Maker-Ebene kann für mehrere Wissensdatenbanken verwendet werden.
-
-Eine Wissensdatenbank verfügt über zwei Statuswerte: *Testversion* und *Veröffentlicht*.
-
-Die *Testversion einer Wissensdatenbank* ist die Version, die bearbeitet, gespeichert und auf Genauigkeit und Vollständigkeit der Antworten getestet wird. Änderungen an der Testversion der Wissensdatenbank wirken sich nicht auf die Benutzer Ihrer Anwendung oder Ihres Chatbots aus. Die Testversion der Wissensdatenbank wird in der HTTP-Anforderung als `test` bezeichnet. 
-
-Die *veröffentlichte Wissensdatenbank* ist die Version, die in Ihrem Chatbot oder Ihrer Anwendung verwendet wird. Bei der Veröffentlichung einer Wissensdatenbank wird der Inhalt der Testversion in die veröffentlichte Version der Wissensdatenbank übertragen. Da es sich bei der veröffentlichten Wissensdatenbank um die Version handelt, die von der Anwendung über den Endpunkt verwendet wird, sollten Sie sicherstellen, dass der Inhalt korrekt und ausreichend getestet ist. Die veröffentlichte Wissensdatenbank wird in der HTTP-Anforderung als `prod` bezeichnet.
+Wenn Sie nicht sicher sind, wie Sie Ihren QnA-Satz in der `.tsv`-Datei darstellen, erstellen Sie den Satz im QnA Maker-Portal, speichern Sie ihn, und exportieren Sie dann die Wissensdatenbank, um ein Beispiel für die Darstellung der Gruppe zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -133,12 +65,14 @@ Die *veröffentlichte Wissensdatenbank* ist die Version, die in Ihrem Chatbot od
 
 ## <a name="see-also"></a>Weitere Informationen
 
+Verwenden Sie die [Markdownreferenz](../reference-markdown-format.md) für QnA Maker als Hilfestellung für die Formatierung Ihrer Antworten.
+
 [Übersicht über QnA Maker](../Overview/overview.md)
 
-Informationen zum Erstellen und Bearbeiten einer Wissensdatenbank finden Sie unter: 
+Informationen zum Erstellen und Bearbeiten einer Wissensdatenbank finden Sie unter:
 * [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Informationen zum Generieren einer Antwort finden Sie unter: 
+Informationen zum Generieren einer Antwort finden Sie unter:
 * [REST-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 41e93ad19e21ae81843992b1b190d1bd37585c2e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0f9489cd702eab6038689f6ac710c32427665093
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835077"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031117"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Java zum Erstellen und Verwalten von Ver
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!div class="checklist"]
-> * ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+> * Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 > * Ein Speicherkonto, für das der hierarchische Namespace aktiviert ist. Befolgen Sie [diese Anleitung](data-lake-storage-quickstart-create-account.md) für die Erstellung.
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -259,8 +259,6 @@ static public void ManageFileACLs(DataLakeFileSystemClient fileSystemClient){
 
 Erstellen Sie zunächst eine **DataLakeFileClient**-Instanz, die die herunterzuladende Datei darstellt. Verwenden Sie die Methode **DataLakeFileClient.read**, um die Datei zu lesen. Verwenden Sie eine beliebige .NET-API für die Dateiverarbeitung, um Bytes aus dem Datenstrom in einer Datei zu speichern. 
 
-Stellen Sie sicher, dass Sie den Downloadvorgang abschließen, indem Sie die Methode **DataLakeFileClient.flush** aufrufen.
-
 ```java
 static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     throws FileNotFoundException, java.io.IOException{
@@ -278,9 +276,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
     fileClient.read(targetStream);
 
     targetStream.close();
-
-    fileClient.flush(file.length());
-        
+      
 }
 
 ```

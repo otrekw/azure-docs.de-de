@@ -3,21 +3,21 @@ title: Azure Service Fabric-CLI – sfctl mesh secret
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen und Löschen von Service Fabric Mesh-Geheimnisressourcen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: f43f4fba0d7550ccb09e54f178a78d01f01cfc9d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645343"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905984"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
 Ruft die Mesh-Geheimnisressourcen ab bzw. löscht diese.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | delete | Löscht die Geheimnisressource. |
 | list | Listet alle Geheimnisressourcen auf. |
@@ -30,13 +30,13 @@ Löscht die angegebene Geheimnisressource und alle ihre benannten Werte.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name der Geheimnisressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -51,7 +51,7 @@ Ruft die Informationen zu allen Geheimnisressourcen in einer bestimmten Ressourc
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -66,13 +66,13 @@ Ruft die Informationen zur Geheimnisressource mit dem angegebenen Namen ab. Die 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name der Geheimnisressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

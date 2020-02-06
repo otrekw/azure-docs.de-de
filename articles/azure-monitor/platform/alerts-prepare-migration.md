@@ -1,18 +1,18 @@
 ---
 title: Vorbereiten der Migration von klassischen Azure Monitor-Warnungen durch Aktualisieren Ihrer Logik-Apps und Runbooks
+author: yanivlavi
 description: Erfahren Sie, wie Sie Ihre Webhooks, Logik-Apps und Runbooks zur Vorbereitung der freiwilligen Migration ändern.
-author: snehithm
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: snmuvva
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5235db5cab39be6e36bdf145d3edc7c73fe9da54
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827391"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705563"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Vorbereiten Ihrer Logik-Apps und Runbooks für die Migration von klassischen Warnungsregeln
 
@@ -45,7 +45,7 @@ Mithilfe der folgenden Tabelle können Sie die Felder für die Webhooknutzlast i
 |  |Klassische Warnungen  |Neue Metrikwarnungen |
 |---------|---------|---------|
 |Wurde die Warnung aktiviert oder behoben?    | **status**       | **data.status** |
-|Kontextinformationen zur Warnung     | **Kontextvariable**        | **data.context**        |
+|Kontextinformationen zur Warnung     | **context**        | **data.context**        |
 |Zeitstempel der Aktivierung oder Auflösung der Warnung     | **context.timestamp**       | **data.context.timestamp**        |
 | Warnungsregel-ID | **context.id** | **data.context.id** |
 | Name der Warnungsregel | **context.name** | **data.context.name** |
@@ -78,7 +78,7 @@ Wenn Sie Logik-Apps mit klassischen Warnungen verwenden, müssen Sie den Logik-A
 
 1. Verwenden Sie die Vorlage „Azure Monitor – Metrics Alert Handler“ (Azure Monitor – Metrikwarnungshandler). Diese Vorlage enthält einen Auslöser **HTTP-Anforderung**, für den das entsprechende Schema definiert ist.
 
-    ![Logik-App-Vorlage](media/alerts-migration/logic-app-template.png "Metrikwarnungsvorlage")
+    ![logic-app-template](media/alerts-migration/logic-app-template.png "Vorlage für Metrikwarnung")
 
 1. Fügen Sie eine Aktion zum Hosten Ihrer Verarbeitungslogik hinzu.
 

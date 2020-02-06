@@ -3,9 +3,7 @@ title: Paketuntersuchung mit Azure Network Watcher | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Network Watcher verwenden, um die Paketuntersuchung für Daten durchzuführen, die von einer VM gesammelt wurden.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7f3fc69bbfd881a26ceb25705852558b66c60153
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716902"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845077"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
 
@@ -41,7 +39,7 @@ In diesem Szenario führen Sie Folgendes durch:
 
 In diesem Szenario wird veranschaulicht, wie Sie die anfängliche Roundtripzeit (Round Trip Time, RTT) einer TCP-Konversation (Transmission Control Protocol) zwischen zwei Endpunkten anzeigen.
 
-Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: [https://login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip )
+Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
 
 ### <a name="step-1"></a>Schritt 1
 
@@ -53,7 +51,7 @@ Laden Sie die **CAP**-Datei aus Ihrer Paketerfassung. Sie finden diese Datei –
 
 ### <a name="step-3"></a>Schritt 3
 
-Zum Anzeigen der anfänglichen Roundtripzeit (RTT) von TCP-Konversationen betrachten wir nur die ersten beiden Pakete, die am TCP-Handshake beteiligt sind. Wir verwenden die ersten beiden Pakete im Drei-Wege-Handshake, also die Pakete [SYN] und [SYN, ACK]. Sie sind nach Flags benannt, die im TCP-Header festgelegt sind. Das letzte Handshake-Paket ([ACK]) wird in diesem Szenario nicht verwendet. Das Paket [SYN] wird vom Client gesendet. Nachdem es empfangen wurde, sendet der Server das Paket [ACK] als Bestätigung dafür, dass [SYN] vom Client empfangen wurde. Aufgrund der Tatsache, dass für die Antwort des Servers nur sehr wenig Aufwand erforderlich ist, berechnen wir den RTT-Wert wie folgt: Wir subtrahieren die Zeit bis zum Empfang des Pakets [SYN, ACK] auf dem Client von der Zeit, die für das Senden des Pakets [SYN] vom Client benötigt wurde.
+Zum Anzeigen der anfänglichen Roundtripzeit (RTT) von TCP-Konversationen betrachten wir nur die ersten beiden Pakete, die am TCP-Handshake beteiligt sind. Wir verwenden die ersten beiden Pakete im Drei-Wege-Handshake, also die Pakete [SYN] und [SYN, ACK]. Sie sind nach Flags benannt, die im TCP-Header festgelegt sind. Das letzte Handshake-Paket ([ACK]) wird in diesem Szenario nicht verwendet. Das Paket [SYN] wird vom Client gesendet. Nachdem es empfangen wurde, sendet der Server das [ACK]-Paket als Bestätigung dafür, dass [SYN] vom Client empfangen wurde. Aufgrund der Tatsache, dass für die Antwort des Servers nur sehr wenig Aufwand erforderlich ist, berechnen wir den RTT-Wert wie folgt: Wir subtrahieren die Zeit bis zum Empfang des Pakets [SYN, ACK] auf dem Client von der Zeit, die für das Senden des Pakets [SYN] vom Client benötigt wurde.
 
 Bei Verwendung von WireShark wird dieser Wert für uns berechnet.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 24114defe5e78bb7adbd006adc4ddbf8250b3188
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921013"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844971"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -21,13 +21,15 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Neuer Dienstname für Azure Search
+## <a name="new-service-name"></a>Neuer Dienstname
 
-Azure Search wurde jetzt in **kognitive Azure-Suche** umbenannt, um die erweiterte Verwendung von kognitiven Qualifikationen und KI-Verarbeitung bei wichtigen Vorgängen widerzuspiegeln. Während durch kognitive Qualifikationen neue Funktionen hinzugefügt werden, ist die Verwendung von KI ausschließlich optional. Sie können Azure Cognitive Search weiterhin ohne KI verwenden, um umfassende Lösungen für die Volltextsuche zu erstellen, die über private, heterogene, textbasierte Inhalte in einem Index ausgeführt wird, den Sie in der Cloud erstellen und verwalten. 
-
-API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vorhandenen Suchlösungen sind von der Änderung des Dienstnamens nicht betroffen.
+Azure Search wurde in **Azure Cognitive Search** umbenannt, um die erweiterte (optionale) Verwendung von kognitiven Skills und KI-Verarbeitung bei wichtigen Vorgängen widerzuspiegeln. API-Versionen, NuGet-Pakete, Namespaces und Endpunkte bleiben unverändert. Neue und bereits vorhandene Suchlösungen sind von der Änderung des Dienstnamens nicht betroffen.
 
 ## <a name="feature-announcements"></a>Featureankündigungen
+
+### <a name="february-2020"></a>Februar 2020
+
++ [PII-Erkennung](cognitive-search-skill-pii-detection.md) ist ein kognitiver Skill und wird bei der Indizierung eingesetzt. Er extrahiert personenbezogene Informationen aus einem Eingabetext und bietet verschiedene Maskierungsmöglichkeiten für diese Informationen.
 
 ### <a name="january-2020"></a>Januar 2020
 
@@ -54,7 +56,7 @@ API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vo
 
 + Die [Dokumentextrahierung (Vorschauversion)](cognitive-search-skill-document-extraction.md) ist eine kognitive Qualifikation, die während der Indizierung verwendet wird und es Ihnen ermöglicht, den Inhalt einer Datei aus einem Skillset zu extrahieren. Bisher fand die Dokumententschlüsselung nur vor der Ausführung von Qualifikationsgruppen statt. Durch diese zusätzliche Qualifikation können Sie diesen Vorgang auch bei der Ausführung von Qualifikationsgruppen durchführen.
 
-+ Die [Textübersetzung (Vorschauversion)](cognitive-search-skill-text-translation.md) ist eine kognitive Qualifikation, die während der Indizierung zum Auswerten von Text verwendet wird und für jeden Datensatz Text zurückgibt, der in die angegebene Zielsprache übersetzt wurde.
++ Die [Textübersetzung](cognitive-search-skill-text-translation.md) ist eine kognitive Qualifikation, die während der Indizierung zum Auswerten von Text verwendet wird und für jeden Datensatz Text zurückgibt, der in die angegebene Zielsprache übersetzt wurde.
 
 + [Power BI-Vorlagen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) können Ihren Visualisierungen und Analysen von angereicherten Inhalten in einem Wissensspeicher in Power BI Desktop neue Impulse verleihen. Diese Vorlage ist für Azure-Tabellenprojektionen konzipiert, die mithilfe des [Assistenten zum Importieren von Daten](knowledge-store-create-portal.md) erstellt wurden.
 

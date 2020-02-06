@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156997"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720366"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Die Beispielanwendung verwendet [Helm][helm-installed], um den Windows-Dienst auf Ihrem Cluster auszuführen. Navigieren Sie zum Verzeichnis `charts`, und führen Sie mit Helm den Windows-Dienst aus:
+Die Beispielanwendung verwendet [Helm 3][helm-installed], um den Windows-Dienst in Ihrem Cluster auszuführen. Navigieren Sie zum Verzeichnis `charts`, und führen Sie mit Helm den Windows-Dienst aus:
 
 ```console
 cd charts/

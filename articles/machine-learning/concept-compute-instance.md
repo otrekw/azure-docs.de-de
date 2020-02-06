@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974110"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769112"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -117,7 +117,7 @@ Wählen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio **Compute** au
 
 Sie können folgende Aktionen ausführen:
 
-* Erstellen einer Compute-Instanz. Geben Sie den Namen und den Azure-VM-Typ einschließlich GPUs an. Aktivieren bzw. deaktivieren Sie den SSH-Zugriff, und konfigurieren Sie optional Einstellungen für virtuelle Netzwerke. Sie können eine Instanz auch direkt anhand integrierter Notebooks, des Azure-Portals, einer Resource Manager-Vorlage oder des Azure Machine Learning SDK erstellen. Das Kontingent dedizierter Kerne pro Region, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Computecluster gemeinsam genutzt.
+* Erstellen einer Compute-Instanz. Geben Sie den Namen und den Azure-VM-Typ einschließlich GPUs an (dieser kann nach der Erstellung nicht mehr geändert werden), aktivieren bzw. deaktivieren Sie den SSH-Zugriff, und konfigurieren Sie optional Einstellungen für virtuelle Netzwerke. Sie können eine Instanz auch direkt anhand integrierter Notebooks, des Azure-Portals, einer Resource Manager-Vorlage oder des Azure Machine Learning SDK erstellen. Das Kontingent dedizierter Kerne pro Region, das für die Erstellung von Compute-Instanzen gilt, ist einheitlich und wird mit dem Kontingent für Azure Machine Learning-Computecluster gemeinsam genutzt.
 * Aktualisieren der Registerkarte „Compute-Instanzen“
 * Starten, Beenden und erneutes Starten einer Compute-Instanz
 * Löschen einer Compute-Instanz

@@ -1,6 +1,6 @@
 ---
 title: Automatisieren des Hinzufügens eines Lab-Benutzers in Azure DevTest Labs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure DevTest Labs das Hinzufügen eines Lab-Benutzers zu einem Lab automatisieren können.
+description: In diesem Artikel erfahren Sie, wie Sie das Hinzufügen eines Benutzers zu einem Lab in Azure DevTest Labs mithilfe von Azure Resource Manager-Vorlagen, PowerShell und Befehlszeilenschnittstelle automatisieren.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980050"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718138"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatisieren des Hinzufügens eines Lab-Benutzers zu einem Lab in Azure DevTest Labs
 Mit Azure DevTest Labs können Sie über das Azure-Portal schnell Self-Service-DevTest-Umgebungen erstellen. Wenn Sie jedoch über mehrere Teams und mehrere DevTest Labs-Instanzen verfügen, kann die Automatisierung des Erstellungsprozesses Zeit sparen. [Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) ermöglichen Ihnen das Erstellen von Labs, Lab-VMs, benutzerdefinierten Images, Formeln sowie das Hinzufügen von Benutzern auf automatisierte Weise. Dieser Artikel befasst sich insbesondere mit dem Hinzufügen von Benutzern zu einer DevTest Labs-Instanz.

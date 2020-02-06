@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290341"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715934"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -85,7 +85,7 @@ Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im A
 ## <a name="logs"></a>Protokolle
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Was ist der Unterschied zwischen Azure Monitor-Protokollen und Azure Data Explorer?
-Azure Data Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Monitor-Protokolle basieren auf Azure Data Explorer und verwenden die gleiche Kusto-Abfragesprache (KQL) mit einigen geringfügigen Unterschieden. Weitere Informationen finden Sie unter [Azure Monitor – Unterschiede in der Protokollabfragesprache](log-query/data-explorer-difference.md).
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Monitor-Protokolle basieren auf Azure Data Explorer und verwenden die gleiche Kusto-Abfragesprache (KQL) mit einigen geringfügigen Unterschieden. Weitere Informationen finden Sie unter [Azure Monitor – Unterschiede in der Protokollabfragesprache](log-query/data-explorer-difference.md).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
 Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](log-query/log-query-overview.md).
@@ -96,8 +96,20 @@ Alle von Azure Monitor erfassten Protokolldaten werden in einem Log Analytics-Ar
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kann ein vorhandener Log Analytics-Arbeitsbereich in ein anderes Azure-Abonnement verschoben werden?
 Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements verschieben, jedoch nicht in eine andere Region. Weitere Informationen finden Sie unter [Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe](platform/move-workspace.md).
 
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Warum werden die Schaltflächen „Abfrage-Explorer“ und „Speichern“ in Log Analytics nicht angezeigt?
 
-## <a name="alerts"></a>Warnungen
+Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](log-query/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](log-query/scope.md).
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
+Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
+Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die Arbeitsbereiche, in denen die VM-Protokolle gespeichert sind. In diesen Fällen muss Ihnen Ihr Administrator diese Berechtigungen in Azure erteilen.
+
+
+
+
+## <a name="alerts"></a>Alerts
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Was ist eine Warnung in Azure Monitor?
 Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Es gibt mehrere Arten von Warnungen:
@@ -165,14 +177,14 @@ Die Bandbreite hängt von der gesendeten Datenmenge ab. Daten werden komprimiert
 Führen Sie die Schritte unter [Erstellen einer Warnungsregel mit dem Azure-Portal](platform/alerts-metric.md) aus, um eine Benachrichtigung zu erhalten, wenn die Datensammlung beendet wird. Verwenden Sie die folgenden Einstellungen für die Warnungsregel:
 
 - **Warnungsbedingung definieren**: Geben Sie Ihren Log Analytics-Arbeitsbereich als Ressourcenziel an.
-- **Warnungskriterien** 
+- **Benachrichtigungskriterien** 
    - **Signalname**: *Benutzerdefinierte Protokollsuche*
    - **Suchabfrage**: `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`
    - **Warnungslogik**: **Basierend auf** *Anzahl von Ergebnissen*, **Bedingung** *Größer als*, **Schwellenwert** *0*
    - **Auswertung basierend auf**: **Zeitraum (in Minuten)** *30*, **Häufigkeit (in Minuten)** *10*
 - **Warnungsdetails definieren** 
    - **Name**: *Datensammlung beendet*
-   - **Schweregrad**: *Warnung*
+   - **Schweregrad**: *Warning*
 
 Geben Sie eine vorhandene oder neue [Aktionsgruppe](platform/action-groups.md) an, damit Sie benachrichtigt werden, wenn die Protokollwarnung Kriterien erfüllt, und ein Heartbeat für mehr als 15 Minuten ausbleibt.
 
@@ -180,6 +192,12 @@ Geben Sie eine vorhandene oder neue [Aktionsgruppe](platform/action-groups.md) a
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Welche Firewallanforderungen bestehen für Azure Monitor-Agents?
 Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](platform/log-analytics-agent.md#network-firewall-requirements).
 
+
+## <a name="visualizations"></a>Visualisierungen
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Warum wird der Ansicht-Designer nicht angezeigt?
+
+Der Ansicht-Designer steht im Log Analytics-Arbeitsbereich nur für Benutzer zur Verfügung, denen mindestens Berechtigungen vom Typ „Mitwirkender“ zugewiesen wurden.
 
 
 ## <a name="application-insights"></a>Application Insights

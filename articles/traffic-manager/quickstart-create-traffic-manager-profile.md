@@ -2,7 +2,7 @@
 title: 'Schnellstart: Erstellen eines Profils für hoch verfügbare Anwendungen: Azure-Portal – Azure Traffic Manager'
 description: In diesem Schnellstartartikel wird beschrieben, wie Sie ein Traffic Manager-Profil erstellen, um hoch verfügbare Webanwendungen zu entwickeln.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
-ms.author: allensu
-ms.openlocfilehash: b2163b76dc3a301359cf3474789c5b473f9e4552
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 559ed0a134bb6db78d1e89634138b4025e04152b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483674"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934764"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 
@@ -63,9 +63,9 @@ Erstellen Sie ein Traffic Manager-Profil, das Benutzerdatenverkehr basierend auf
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil**.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | --------| ----- |
-    | NAME | Geben Sie einen eindeutigen Namen für Ihr Traffic Manager-Profil ein.|
+    | Name | Geben Sie einen eindeutigen Namen für Ihr Traffic Manager-Profil ein.|
     | Routingmethode | Wählen Sie **Priorität**.|
     | Subscription | Wählen Sie das Abonnement aus, auf das das Traffic Manager-Profil angewendet werden soll. |
     | Resource group | Wählen Sie *myResourceGroupTM1* aus.|
@@ -82,10 +82,10 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 3. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** und dann **Hinzufügen**.
 4. Geben Sie die folgenden Einstellungen ein (bzw. wählen Sie sie aus):
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ------|
     | type | Wählen Sie **Azure-Endpunkt**. |
-    | NAME | Geben Sie *myPrimaryEndpoint* ein. |
+    | Name | Geben Sie *myPrimaryEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **USA, Osten**. |
     | Priority | Wählen Sie **1**. Der gesamte Datenverkehr wird an diesen Endpunkt gesendet, wenn er fehlerfrei ist. |
@@ -95,10 +95,10 @@ Fügen Sie die Website in der Region *USA, Osten* als primären Endpunkt für da
 5. Klicken Sie auf **OK**.
 6. Wiederholen Sie die Schritte 3 und 4 mit den folgenden Einstellungen, um einen Failoverendpunkt für Ihre zweite Azure-Region zu erstellen:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ------|
     | type | Wählen Sie **Azure-Endpunkt**. |
-    | NAME | Geben Sie *myFailoverEndpoint* ein. |
+    | Name | Geben Sie *myFailoverEndpoint* ein. |
     | Zielressourcentyp | Wählen Sie **App Service**. |
     | Zielressource | Wählen Sie **App Service auswählen** > **Europa, Westen**. |
     | Priority | Wählen Sie **2**. Der gesamte Datenverkehr wird an diesen Failoverendpunkt geleitet, wenn der primäre Endpunkt fehlerhaft ist. |

@@ -1,6 +1,6 @@
 ---
 title: Aufrufen einer Web-API aus einer Web-App – Microsoft Identity Platform | Azure
-description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Aufrufen einer Web-API).
+description: Hier erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Aufrufen einer geschützten Web-API).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -14,21 +14,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68d62101c9b2c8055374f8fd0fcf694441081b4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423561"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758970"
 ---
-# <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web-App, die Web-APIs aufruft – Aufrufen einer Web-API
+# <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web-App, die Web-APIs aufruft: Aufrufen einer Web-API
 
 Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufrufen.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Im folgenden Ausschnitt sehen Sie vereinfachten Code für die `HomeController`-Aktion. Mit diesem wird ein Token für den Aufruf von Microsoft Graph abgerufen. Anhand des hinzugefügten Codes wird verdeutlicht, wie Microsoft Graph als REST-API aufgerufen werden kann. Die URL zur Graph-API ist in der Datei `appsettings.json` enthalten und wird in einer Variablen mit dem Namen `webOptions` gelesen:
+Im Anschluss finden Sie einen vereinfachten Code für die Aktion von `HomeController`. Mit diesem wird ein Token für den Aufruf von Microsoft Graph abgerufen. Es wurde Code hinzugefügt, um das Aufrufen von Microsoft Graph als REST-API zu zeigen. Die URL für die Microsoft Graph-API wird in der Datei „appsettings.json“ bereitgestellt und in einer Variablen namens `webOptions` gelesen:
 
 ```JSon
 {
@@ -48,10 +47,10 @@ public async Task<IActionResult> Profile()
  string accountIdentifier = claimsPrincipal.GetMsalAccountId();
  string loginHint = claimsPrincipal.GetLoginHint();
 
- // Get the account
+ // Get the account.
  IAccount account = await application.GetAccountAsync(accountIdentifier);
 
- // Special case for guest users as the Guest iod / tenant id are not surfaced.
+ // Special case for guest users, because the guest ID / tenant ID are not surfaced.
  if (account == null)
  {
   var accounts = await application.GetAccountsAsync();
@@ -63,7 +62,7 @@ public async Task<IActionResult> Profile()
                             .ExecuteAsync();
  var accessToken = result.AccessToken;
 
- // Calls the web API (here the graph)
+ // Calls the web API (Microsoft Graph in this case).
  HttpClient httpClient = new HttpClient();
  httpClient.DefaultRequestHeaders.Authorization =
      new AuthenticationHeaderValue(Constants.BearerAuthorizationScheme,accessToken);
@@ -85,7 +84,7 @@ public async Task<IActionResult> Profile()
 > [!NOTE]
 > Sie können dasselbe Prinzip für den Aufruf jeder anderen Web-API verwenden.
 >
-> Die meisten Azure-Web-APIs stellen ein SDK bereit, das den Aufruf vereinfacht. Dies ist auch für Microsoft Graph der Fall. Im nächsten Artikel erfahren Sie, wo Sie ein Tutorial finden, das diese Aspekte veranschaulicht.
+> Die meisten Azure-Web-APIs bieten ein SDK zur Vereinfachung des API-Aufrufs. Das ist auch bei Microsoft Graph der Fall. Im nächsten Artikel erfahren Sie, wo Sie ein Tutorial zur Veranschaulichung der API-Verwendung finden.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
@@ -121,7 +120,7 @@ def graphcall():
     token = _get_token_from_cache(app_config.SCOPE)
     if not token:
         return redirect(url_for("login"))
-    graph_data = requests.get(  # Use token to call downstream service
+    graph_data = requests.get(  # Use token to call downstream service.
         app_config.ENDPOINT,
         headers={'Authorization': 'Bearer ' + token['access_token']},
         ).json()

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289611"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760849"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Wenn Sie die Standardausgangsregeln nicht verwenden möchten und den ausgehenden
 
 - Verweigern Sie ausgehende Internetverbindungen mit NSG-Regeln.
 
-- Begrenzen Sie ausgehenden Datenverkehr auf folgende Elemente:
-   - Azure Storage, mit dem __Diensttag__ von __Storage.Region_Name__ (z. B. „Storage.EastUS“)
-   - Azure Container Registry, mit dem __Diensttag__ von __AzureContainerRegistry.Region_Name__ (z. B. „AzureContainerRegistry.EastUS“)
+- Beschränken Sie für eine __Compute-Instanz__ oder einen __Computecluster__ den ausgehenden Verkehr auf die folgenden Elemente:
+   - Azure Storage mithilfe der __Dienstkennung__ von __Storage__
+   - Azure Container Registry mithilfe der __Dienstkennung__ von __AzureContainerRegistry__
    - Azure Machine Learning, mit dem __Diensttag__ von __AzureMachineLearning__
-   - Im Falle einer Computeinstanz, Azure Cloud, durch Verwendung des __Diensttags__ von __AzureResourceManager__
+   
+- Fügen Sie für eine __Compute-Instanz__ außerdem die folgenden Elemente hinzu:
+   - Azure Resource Manager mithilfe der __Dienstkennung__ von __AzureResourceManager__
+   - Azure Active Directory mithilfe der __Dienstkennung__ von __AzureActiveDirectory__
 
 Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung dargestellt:
 
@@ -206,12 +209,12 @@ Die NSG-Regelkonfiguration im Azure-Portal wird in der folgenden Abbildung darge
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Schätzungstraining
+> __Schätzungstraining__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

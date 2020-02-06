@@ -15,13 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8d9a43ac5db4cedc8b27910bb838b911f3ebc6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293146"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834126"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -414,7 +413,7 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
 
 - Für die in `PublicClientApplicationBuilder` übergebene Autorität gelten folgende Voraussetzungen:
   - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).
-  - Sie muss für ein [Geschäfts-, Schul- oder Unikonto](`https://login.microsoftonline.com/organizations/`) bestimmt sein.
+  - Sie muss für ein Geschäfts-, Schul- oder Unikonto bestimmt sein: `https://login.microsoftonline.com/organizations/`.
   - Persönliche Microsoft-Konten werden nicht unterstützt. Sie können keine Mandanten vom Typ „/common“ oder „/consumers“ verwenden.
 
 - Da die integrierte Windows-Authentifizierung einen automatischen Flow darstellt:

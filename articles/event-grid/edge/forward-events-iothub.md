@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098682"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844699"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Tutorial: Weiterleiten von Ereignissen an IoTHub
 
@@ -81,6 +81,8 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. Da
 ## <a name="create-event-subscription"></a>Erstellen eines Ereignisabonnements
 
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfangen von Ereignissen müssen sie ein Event Grid-Abonnement für das gewünschte Thema erstellen.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Erstellen Sie die Datei „subscription4.json“ mit dem unten stehenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 
@@ -210,5 +212,6 @@ In diesem Tutorial haben Sie ein Event Grid-Thema und ein Edge Hub-Abonnement er
 * Informationen zum Behandeln von Problemen bei der Verwendung von Azure Event Grid in IoT Edge finden Sie im [Leitfaden zur Problembehandlung](troubleshoot.md).
 * Verwenden Sie [Edge Hub](../../iot-edge/module-composition.md)-Routenfilter, um Ereignisse zu partitionieren.
 * Richten Sie die Persistenz des Event Grid-Moduls unter [Linux](persist-state-linux.md) oder [Windows](persist-state-windows.md) ein.
-* Sehen Sie die [Dokumentation](configure-client-auth.md) ein, um die Clientauthentifizierung zu konfigurieren.
+* Befolgen Sie die Informationen zum Konfigurieren der Clientauthentifizierung in der [Dokumentation](configure-client-auth.md).
 * Befolgen Sie die Anleitung in diesem [Tutorial](forward-events-event-grid-cloud.md), um Ereignisse an Azure Event Grid in der Cloud weiterzuleiten.
+* [Überwachen von Themen und Abonnements am Edge](monitor-topics-subscriptions.md)

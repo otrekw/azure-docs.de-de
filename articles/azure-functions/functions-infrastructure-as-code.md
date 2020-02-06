@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292942"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963953"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -41,7 +41,7 @@ Eine Azure Functions-Bereitstellung besteht in der Regel aus diesen Ressourcen:
 <a name="storage"></a>
 ### <a name="storage-account"></a>Speicherkonto
 
-Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen ein Konto für allgemeine Zwecke, das Blobs, Tabellen, Warteschlangen und Dateien unterstützt. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](functions-create-function-app-portal.md#storage-account-requirements).
+Für eine Funktions-App wird ein Azure Storage-Konto benötigt. Sie benötigen ein Konto für allgemeine Zwecke, das Blobs, Tabellen, Warteschlangen und Dateien unterstützt. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements).
 
 ```json
 {

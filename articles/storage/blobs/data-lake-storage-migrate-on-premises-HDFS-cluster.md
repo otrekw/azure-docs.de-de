@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327603"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990962"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrieren von lokalem HDFS-Speicher zu Azure Storage mit Azure Data Box
 
@@ -77,7 +77,7 @@ Führen Sie diese Schritte aus, um Daten über die REST-APIs des Blob-/Objektspe
 
     Beispiele:
 
-    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar``azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
+    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
 5. Erstellen Sie den Speichercontainer, den Sie beim Kopieren von Daten verwenden möchten. Sie müssen auch ein Zielverzeichnis als Teil dieses Befehls angeben. Dies kann zu diesem Zeitpunkt ein Dummyzielverzeichnis sein.
 
@@ -282,7 +282,7 @@ Bevor Sie Ihre Daten auf ein Data Box-Gerät verschieben, müssen Sie einige Hil
    sudo apt-get install jq
    ```
 
-3. Installieren Sie das Python-Paket [Requests](http://docs.python-requests.org/en/master/).
+3. Installieren Sie das Python-Paket [Requests](https://2.python-requests.org/en/master/).
 
    ```bash
    

@@ -1,30 +1,30 @@
 ---
-title: 'Erstellen und Bereitstellen eines Modells mit SQL Data Warehouse: Team Data Science-Prozess'
-description: Erstellen und Bereitstellen eines Machine Learning-Modell mithilfe von SQL Data Warehouse mit einem öffentlich verfügbaren Dataset.
+title: 'Erstellen und Bereitstellen eines Modells mit Azure Synapse Analytics: Team Data Science-Prozess'
+description: Erstellen Sie ein Machine Learning-Modell unter Verwendung von Azure Synapse Analytics, und stellen Sie es mit einem öffentlich verfügbaren Dataset bereit.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b32e2abcffda24fa82d3911575fe48acfc294ccc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e64b951a8bb96b25a6ef917b4cebe077d6dd6657
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973168"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718445"
 ---
-# <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
-In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
+# <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure Synapse Analytics
+In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit Azure Synapse Analytics für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt vorher, ob ein Trinkgeld für eine Fahrt bezahlt wird.  Die Modelle umfassen die Multiklassenklassifizierung (unabhängig davon, ob es ein Trinkgeld gibt oder nicht) und die Regression (die Verteilung der gezahlten Trinkgeldbeträge).
 
-Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) . Wir zeigen das Einrichten einer Data Science-Umgebung, das Laden der Daten in SQL Data Warehouse und wie entweder SQL Data Warehouse oder ein IPython Notebook zum Untersuchen der Daten und Entwickeln von Modellierungsfeatures verwendet werden. Anschließend zeigen wir das Erstellen und Bereitstellen eines Modells mit Azure Machine Learning.
+Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) . Wir zeigen das Einrichten einer Data Science-Umgebung, das Laden der Daten in Azure Synapse Analytics und wie entweder Azure Synapse Analytics oder ein IPython Notebook zum Untersuchen der Daten und Entwickeln von Modellierungsfeatures verwendet werden. Anschließend zeigen wir das Erstellen und Bereitstellen eines Modells mit Azure Machine Learning.
 
 ## <a name="dataset"></a>Das Dataset „NYC Taxi Trips“
-Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers („Hack“) und die eindeutige ID des Taxis („Medallion“). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
+Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers („Hack“) und die eindeutige ID des Taxis („Medallion“). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die Datei **trip_data.csv** enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
 
@@ -52,7 +52,7 @@ Der **eindeutige Schlüssel** für die Zusammenführung von „trip\_data“ und
 ## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
 Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Arten von Modellierungsaufgaben zu veranschaulichen:
 
-1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d.h. ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
+1. **Binäre Klassifizierung**: Vorhersagen, ob Trinkgeld für eine Fahrt bezahlt wurde. Das bedeutet: *tip\_amount* größer 0 ist ein Positivbeispiel, *tip\_amount* gleich 0 ist ein Negativbeispiel.
 2. **Multiklassenklassifizierung**: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
 
         Class 0 : tip_amount = $0
@@ -68,26 +68,26 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 **Erstellen Ihres eigenen Azure Blob Storage-Kontos**
 
 * Wenn Sie eine eigeneAzure Blob Storage-Instanz bereitstellen, wählen Sie einen geografischen Standort für Azure Blob Storage aus, der so nah wie möglich bei **USA, Süden-Mitte** liegt, wo die NYC Taxi-Daten gespeichert sind. Die Daten werden mit AzCopy aus dem öffentlichen Blobspeichercontainer in einen Container in Ihrem eigenen Speicherkonto kopiert. Je näher Ihre Azure Blob Storage-Instanz an „USA, Süden-Mitte“ liegt, desto schneller wird diese Aufgabe (Schritt 4) abgeschlossen.
-* Um Ihr eigenes Azure-Speicherkonto zu erstellen, befolgen Sie die in [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md)beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
+* Um Ihr eigenes Azure Storage-Konto zu erstellen, befolgen Sie die in [Informationen zu Azure Storage-Konten](../../storage/common/storage-create-storage-account.md)beschriebenen Schritte. Notieren Sie sich unbedingt die Werte für die folgenden Anmeldeinformationen für das Speicherkonto, da sie später in der exemplarischen Vorgehensweise benötigt werden.
 
   * **Speicherkontoname**
   * **Speicherkontoschlüssel**
   * **Containername** (in dem die Daten in Azure Blob Storage gespeichert werden sollen)
 
-**Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.**
-Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) , um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
+**Stellen Sie Ihre Azure Synapse Analytics-Instanz bereit.**
+Folgen Sie der Dokumentation unter [Erstellen und Abfragen eines Azure SQL Data Warehouse im Azure-Portal](../../sql-data-warehouse/create-data-warehouse-portal.md), um eine Azure Synapse Analytics-Instanz bereitzustellen. Vergewissern Sie sich, dass Sie sich die folgenden Anmeldeinformationen für Azure Synapse Analytics notieren, die in späteren Schritten verwendet werden.
 
 * **Servername**: \<Servername>.database.windows.net
 * **SQLDW-Name (Datenbank)**
 * **Benutzername**
 * **Kennwort**
 
-**Installieren Sie Visual Studio und SQL Server Data Tools.** Eine Anleitung hierzu finden Sie unter [Installieren von Visual Studio 2015 und/oder SSDT (SQL Server Data Tools) für SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)beschriebenen Schritte.
+**Installieren Sie Visual Studio und SQL Server Data Tools.** Anweisungen finden Sie unter [Erste Schritte mit Visual Studio 2019 für SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
-**Stellen Sie mit Visual Studio eine Verbindung mit Ihrem Azure SQL Data Warehouse her.** Eine Anleitung hierzu finden Sie unter[ Herstellen einer Verbindung mit Azure SQL Data Warehouse über Visual Studio](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
+**Stellen Sie mit Visual Studio eine Verbindung mit Azure Synapse Analytics her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
 
 > [!NOTE]
-> Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in SQL Data Warehouse erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
+> Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in Azure Synapse Analytics erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
 >
 >
 
@@ -101,7 +101,7 @@ Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../../
 
 **Erstellen Sie einen Machine Learning-Arbeitsbereich unter Ihrem Azure-Abonnement.** Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)beschriebenen Schritte.
 
-## <a name="getdata"></a>Laden der Daten in SQL Data Warehouse
+## <a name="getdata"></a>Laden der Daten Azure Synapse Analytics
 Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf GitHub bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
 
 > [!NOTE]
@@ -123,10 +123,10 @@ Führen Sie im *-DestDir*das folgende PowerShell-Skript im Administratormodus au
 
     ./SQLDW_Data_Import.ps1
 
-Bei der ersten Ausführung des PowerShell-Skripts werden Sie aufgefordert, die Informationen aus Ihrem Azure SQL Data Warehouse und Ihrem Azure Blob Storage-Konto einzugeben. Wenn das PowerShell-Skripts erstmals vollständig ausgeführt wurde, wurden die von Ihnen eingegebenen Anmeldeinformationen in eine Konfigurationsdatei „SQLDW.conf“ im aktuellen Arbeitsverzeichnis geschrieben. Bei der zukünftigen Ausführung dieser PowerShell-Skriptdatei können alle benötigten Parameter aus dieser Konfigurationsdatei gelesen werden. Wenn Sie einige Parameter ändern müssen, können Sie entweder die Parameter nach Aufforderung am Bildschirm eingeben, indem Sie diese Konfigurationsdatei löschen und die Parameterwerte wie abgefragt eingeben, oder die Parameterwerte ändern, indem Sie die Datei „SQLDW.conf“ in Ihrem *-DestDir* -Verzeichnis bearbeiten.
+Bei der ersten Ausführung des PowerShell-Skripts werden Sie aufgefordert, die Informationen aus Ihrem Azure Synapse Analytics und Ihrem Azure Blob Storage-Konto einzugeben. Wenn das PowerShell-Skripts erstmals vollständig ausgeführt wurde, wurden die von Ihnen eingegebenen Anmeldeinformationen in eine Konfigurationsdatei „SQLDW.conf“ im aktuellen Arbeitsverzeichnis geschrieben. Bei der zukünftigen Ausführung dieser PowerShell-Skriptdatei können alle benötigten Parameter aus dieser Konfigurationsdatei gelesen werden. Wenn Sie einige Parameter ändern müssen, können Sie entweder die Parameter nach Aufforderung am Bildschirm eingeben, indem Sie diese Konfigurationsdatei löschen und die Parameterwerte wie abgefragt eingeben, oder die Parameterwerte ändern, indem Sie die Datei „SQLDW.conf“ in Ihrem *-DestDir* -Verzeichnis bearbeiten.
 
 > [!NOTE]
-> Um beim direkten Lesen von Parametern aus der Datei „SQLDW.conf“ Namenskonflikte mit den Schemas zu vermeiden, die bereits in Ihrem Azure SQL Data Warehouse vorhanden sind, wird dem Schemanamen aus der Datei „SQLDW.conf“ eine dreistellige Zufallszahl als Standardschemaname für jede Ausführung hinzugefügt. Das PowerShell-Skript könnte Sie auffordern, einen Schemanamen einzugeben: Der Name kann nach Ermessen des Benutzers angegeben werden.
+> Um beim direkten Lesen von Parametern aus der Datei „SQLDW.conf“ Namenskonflikte mit den Schemas zu vermeiden, die bereits in Ihrem Azure Synapse Analytics vorhanden sind, wird dem Schemanamen aus der Datei „SQLDW.conf“ eine dreistellige Zufallszahl als Standardschemaname für jede Ausführung hinzugefügt. Das PowerShell-Skript könnte Sie auffordern, einen Schemanamen einzugeben: Der Name kann nach Ermessen des Benutzers angegeben werden.
 >
 >
 
@@ -163,7 +163,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
         $total_seconds = [math]::Round($time_span.TotalSeconds,2)
         Write-Host "AzCopy finished copying data. Please check your storage account to verify." -ForegroundColor "Yellow"
         Write-Host "This step (copying data from public blob to your storage account) takes $total_seconds seconds." -ForegroundColor "Green"
-* **Laden von Daten mithilfe von Polybase (durch Ausführen von LoadDataToSQLDW.sql) in Ihr Azure SQL Data Warehouse** aus Ihrem privaten Blob-Speicherkonto mit den folgenden Befehlen.
+* **Laden von Daten mithilfe von Polybase (durch Ausführen von LoadDataToSQLDW.sql) in Ihr Azure Synapse Analytics** aus Ihrem privaten Blob-Speicherkonto mit den folgenden Befehlen.
 
   * Erstellen eines Schemas
 
@@ -173,7 +173,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
           CREATE DATABASE SCOPED CREDENTIAL {KeyAlias}
           WITH IDENTITY = ''asbkey'' ,
           Secret = ''{StorageAccountKey}''
-  * Erstellen einer externen Datenquelle für einen Azure-Speicherblob
+  * Erstellen einer externen Datenquelle für einen Azure Storage-Blob
 
           CREATE EXTERNAL DATA SOURCE {nyctaxi_trip_storage}
           WITH
@@ -254,7 +254,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
                 REJECT_VALUE = 12
             )
 
-    - Laden von Daten aus externen Tabellen in Azure Blob Storage in SQL Data Warehouse
+    - Laden von Daten aus externen Tabellen in Azure Blob Storage in Azure Synapse Analytics
 
             CREATE TABLE {schemaname}.{nyctaxi_fare}
             WITH
@@ -310,7 +310,7 @@ Diese **PowerShell-Skriptdatei** führt folgende Aufgaben aus:
 Der geografische Standort Ihrer Speicherkonten wirkt sich auf Ladezeiten aus.
 
 > [!NOTE]
-> Je nach dem geografischen Standort Ihres privaten Blobspeicherkontos dauert der Kopiervorgang der Daten aus einem öffentlichen Blob in Ihr privates Speicherkonto ca. 15 Minuten oder auch länger, und der Vorgang zum Laden von Daten aus Ihrem Speicherkonto in Ihr Azure SQL Data Warehouse kann 20 Minuten oder länger dauern.
+> Je nach dem geografischen Standort Ihres privaten Blob-Speicherkontos dauert der Kopiervorgang der Daten aus einem öffentlichen Blob in Ihr privates Speicherkonto ca. 15 Minuten oder auch länger, und der Vorgang zum Laden von Daten aus Ihrem Speicherkonto in Ihr Azure Synapse Analytics kann 20 Minuten oder länger dauern.
 >
 >
 
@@ -326,20 +326,20 @@ Sie müssen entscheiden, was erfolgen soll, wenn Sie über doppelte Quell- und Z
 Sie können Ihre eigenen Daten verwenden. Wenn Ihre Daten auf Ihrem lokalen Computer in einer realen Anwendung gespeichert sind, können Sie AzCopy dennoch zum Hochladen lokaler Daten in Ihren privaten Azure Blob Storage verwenden. Sie müssen im AzCopy-Befehl der PowerShell-Skriptdatei nur den Speicherort von **Source**, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`, in das lokale Verzeichnis ändern, das Ihre Daten enthält.
 
 > [!TIP]
-> Wenn Ihre Daten sich bereits in Ihrer privaten Azure Blob Storage-Instanz in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure SQL Data Warehouse hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
+> Wenn Ihre Daten sich bereits in Ihrer privaten Azure Blob Storage-Instanz in einer realen Anwendung befinden, können Sie den AzCopy-Schritt im PowerShell-Skript überspringen und die Daten direkt in Azure Synapse Analytics hochladen. Dies erfordert zusätzliche Bearbeitung des Skripts, um es dem Format Ihrer Daten anzupassen.
 >
 >
 
-Dieses Powershell-Skript bindet auch die Azure SQL Data Warehouse-Informationen in die Beispieldateien zum Durchsuchen von Daten („SQLDW_Explorations.sql“, „SQLDW_Explorations.ipynb“ und „SQLDW_Explorations_Scripts.py“) ein, sodass diese drei Dateien sofort nach Abschluss des PowerShell-Skripts getestet werden können.
+Dieses PowerShell-Skript bindet auch die Azure Synapse Analytics-Informationen in die Beispieldateien zum Durchsuchen von Daten („SQLDW_Explorations.sql“, „SQLDW_Explorations.ipynb“ und „SQLDW_Explorations_Scripts.py“) ein, sodass diese drei Dateien sofort nach Abschluss des PowerShell-Skripts getestet werden können.
 
 Nach erfolgreicher Ausführung wird folgender Bildschirm angezeigt:
 
 ![Ausgabe von einer erfolgreichen Skriptausführung][20]
 
-## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure SQL Data Warehouse
-In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure SQL Data Warehouse mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) abrufen. In die Datei in GitHub sind jedoch keine Azure SQL Data Warehouse-Informationen eingebunden.
+## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure Synapse Analytics
+In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure Synapse Analytics mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) abrufen. In die Datei in GitHub sind jedoch keine Azure Synapse Analytics-Informationen eingebunden.
 
-Verbinden Sie sich mithilfe von Visual Studio unter Verwendung des Anmeldenamens und Kennworts von SQL Data Warehouse mit Ihrem Azure SQL Data Warehouse, und öffnen Sie den **SQL-Objekt-Explorer** , um zu überprüfen, ob Datenbank sowie Tabellen importiert wurden. Rufen Sie die Datei *SQLDW_Explorations.sql* ab.
+Verbinden Sie sich mithilfe von Visual Studio unter Verwendung des Anmeldenamens und Kennworts von Azure Synapse Analytics mit Ihrem Azure Synapse Analytics, und öffnen Sie den **SQL-Objekt-Explorer**, um zu überprüfen, ob Datenbank sowie Tabellen importiert wurden. Rufen Sie die Datei *SQLDW_Explorations.sql* ab.
 
 > [!NOTE]
 > Um einen Parallel Data Warehouse-Abfrage-Editor (PDW) zu öffnen, verwenden Sie den Befehl **Neue Abfrage**, während Ihr PDW im **SQL-Objekt-Explorer** ausgewählt ist. Der standardmäßige SQL-Abfrage-Editor wird von PDW nicht unterstützt.
@@ -365,7 +365,7 @@ Diese Abfragen ermöglichen eine schnelle Überprüfung der Anzahl der Zeilen un
 
 **Ausgabe:** Sie sollten 173.179.759 Zeilen und 14 Spalten erhalten.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Untersuchung: Verteilung der Fahrten nach „medallion“
+### <a name="exploration-trip-distribution-by-medallion"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“
 In diesem Beispiel werden die „medallions“ (Taxinummern) mit mehr als 100 abgeschlossenen Fahrten innerhalb eines bestimmten Zeitraums abgefragt. Die Abfrage profitiert vom Zugriff auf die partitionierte Tabelle, da sie vom Partitionsschema **pickup\_datetime** abhängig ist. Abfragen an das vollständige DataSet nutzen ebenfalls die partitionierte Tabelle und/oder den Indexscan.
 
     SELECT medallion, COUNT(*)
@@ -376,7 +376,7 @@ In diesem Beispiel werden die „medallions“ (Taxinummern) mit mehr als 100 a
 
 **Ausgabe:** Die Abfrage sollte eine Tabelle mit Zeilen zurückgeben, die 13.369 Taxinummern und die Anzahl der mit diesen 2013 erfolgten Fahrten enthalten. Die letzte Spalte enthält die Anzahl erfolgter Fahrten.
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
+### <a name="exploration-trip-distribution-by-medallion-and-hack_license"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
 In diesem Beispiel werden die Taxinummern („medallions“) und Fahrer („hack_license“) mit mehr als 100 abgeschlossenen Fahrten innerhalb eines bestimmten Zeitraums ermittelt.
 
     SELECT medallion, hack_license, COUNT(*)
@@ -401,7 +401,7 @@ In diesem Beispiel wird untersucht, ob die Felder "longitude" und/oder "latitude
 
 **Ausgabe:** Die Abfrage gibt 837.467 Fahrten mit ungültigen Feldern für „longitude“ und/oder „latitude“ zurück.
 
-### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Untersuchung: Vergleich der Verteilung von Fahrten mit bzw. ohne Trinkgeld
+### <a name="exploration-tipped-vs-not-tipped-trips-distribution"></a>Durchsuchen: Vergleich der Verteilung von Fahrten mit bzw. ohne Trinkgeld
 Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem bestimmten Zeitraum (oder im vollständigen Dataset, wenn wie hier das ganze Jahr verwendet wird). Diese Verteilung spiegelt die binäre Bezeichnerverteilung wider, die später für die Modellierung der binären Klassifizierung verwendet wird.
 
     SELECT tipped, COUNT(*) AS tip_freq FROM (
@@ -412,8 +412,8 @@ Dieses Beispiel ermittelt die Anzahl von Fahrten mit und ohne Trinkgeld in einem
 
 **Ausgabe:** Die Abfrage sollte die folgenden Werte für Trinkgeldzahlungen für 2013 zurückgeben: 90.447.622 Fälle mit Trinkgeld und 82.264.709 Fälle ohne. 90.447.622 Fälle mit Trinkgeldzahlung und 82.264.709 ohne.
 
-### <a name="exploration-tip-classrange-distribution"></a>Untersuchung: Verteilung von Trinkgeld nach Klasse/Bereich
-In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Dies ist die Verteilung der Bezeichnerklassen, die später für die Modellierung der Multiklassenklassifizierung verwendet wird.
+### <a name="exploration-tip-classrange-distribution"></a>Durchsuchen: Verteilung von Trinkgeld nach Klasse/Bereich
+In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmten Zeitraum (oder im vollständigen DataSet, wenn das ganze Jahr verwendet wird) berechnet. Diese Verteilung von Bezeichnerklassen wird später für die Modellierung der Multiklassenklassifizierung verwendet.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -437,7 +437,7 @@ In diesem Beispiel wird die Verteilung von Trinkgeldbereichen in einem bestimmte
 | 0 |82264625 |
 | 4 |85765 |
 
-### <a name="exploration-compute-and-compare-trip-distance"></a>Untersuchung: Berechnen und Vergleichen der Fahrtlängen
+### <a name="exploration-compute-and-compare-trip-distance"></a>Durchsuchen: Berechnen und Vergleichen der Fahrtlängen
 In diesem Beispiel werden die Werte von „longitude“ und „latitude“ für Start- und Zielort in SQL-Geografiepunkte konvertiert. Anschließend werden anhand dieser SQL-Geografiepunkte die Fahrtentfernung berechnet und eine zufällige Stichprobe der Ergebnisse für den Vergleich ausgegeben. Im Beispiel werden die Ergebnisse anhand der zuvor durchgeführten Bewertung der Datenqualität auf gültige Koordinaten begrenzt.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
@@ -531,7 +531,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
     AND CAST(dropoff_latitude AS float) BETWEEN -90 AND 90
     AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
-**Ausgabe:** Diese Abfrage generiert eine Tabelle (mit 2.803.538 Zeilen) mit Start- und Zielkoordinaten (in geografischen Breiten- und Längengraden) und entsprechenden direkten Entfernungen in Meilen. Dies sind die Ergebnisse für die ersten 3 Zeilen:
+**Ausgabe:** Diese Abfrage generiert eine Tabelle (mit 2.803.538 Zeilen) mit Start- und Zielkoordinaten (in geografischen Breiten- und Längengraden) und entsprechenden direkten Entfernungen in Meilen. Dies sind die Ergebnisse für die ersten drei Zeilen:
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
@@ -540,7 +540,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0,7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Vorbereiten von Daten für die Modellerstellung
-Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data][import-data] in [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbank-Instanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
+Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data][import-data] in [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbankinstanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -559,13 +559,13 @@ Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare**
 
 Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:
 
-1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein Modul [Import Data][import-data] in Azure Machine Learning einfügen oder
-2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen SQL Data Warehouse-Tabelle speichern und dann die neue Tabelle im Modul [Import Data][import-data] in Azure Machine Learning verwenden. Das PowerShell-Skript hat dies in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das „Import Data“-Modul einlesen.
+1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen oder
+2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Azure Synapse Analytics-Tabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning verwenden. Das PowerShell-Skript hat diese Aufgabe in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das „Import Data“-Modul einlesen.
 
 ## <a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
-In diesem Abschnitt werden wir Daten durchsuchen und Features generieren, und zwar sowohl mit Python als auch mit SQL-Abfragen für das zuvor erstellte SQL Server Data Warehouse. Ein IPython Notebook-Beispiel namens **SQLDW_Explorations.ipynb** und eine Python-Skriptdatei namens **SQLDW_Explorations_Scripts.py** wurden in Ihr lokales Verzeichnis heruntergeladen. Sie stehen auch auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)zur Verfügung. Diese beiden Dateien sind in Python-Skripts identisch. Für den Fall, dass Sie keinen IPython Notebook-Server verwenden, wird die Python-Skriptdatei für Sie bereitgestellt. Diese beiden Python-Beispieldateien wurden unter **Python 2.7**entworfen.
+In diesem Abschnitt werden wir Daten durchsuchen und Features generieren, und zwar sowohl mit Python als auch mit SQL-Abfragen für das zuvor erstellte Azure Synapse Analytics. Ein IPython Notebook-Beispiel namens **SQLDW_Explorations.ipynb** und eine Python-Skriptdatei namens **SQLDW_Explorations_Scripts.py** wurden in Ihr lokales Verzeichnis heruntergeladen. Sie stehen auch auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)zur Verfügung. Diese beiden Dateien sind in Python-Skripts identisch. Für den Fall, dass Sie keinen IPython Notebook-Server verwenden, wird die Python-Skriptdatei für Sie bereitgestellt. Diese beiden Python-Beispieldateien wurden unter **Python 2.7**entworfen.
 
-Die erforderlichen Azure SQL Data Warehouse-Informationen im IPython Notebook-Beispiel und die auf Ihren lokalen Computer heruntergeladene Python-Skriptdatei wurden zuvor vom PowerShell-Skript eingebunden. Sie sind ohne Änderung ausführbar.
+Die erforderlichen Azure Synapse Analytics-Informationen im IPython Notebook-Beispiel und die auf Ihren lokalen Computer heruntergeladene Python-Skriptdatei wurden zuvor vom PowerShell-Skript eingebunden. Sie sind ohne Änderung ausführbar.
 
 Wenn Sie bereits einen Azure Machine Learning-Arbeitsbereich eingerichtet haben, können Sie das IPython-Notebook-Beispiel direkt in den AzureML-IPython-Notebook-Dienst hochladen und ausführen. Im Folgenden werden die Schritte zum Hochladen in den AzureML-IPython-Notebook-Dienst aufgeführt:
 
@@ -595,7 +595,7 @@ Die empfohlene Reihenfolge beim Erstellen fortgeschrittener Analyselösungen mit
 * Einlesen eines kleinen Teils der Daten in ein DataFrame im Speicher
 * Durchführen von Visualisierungen und Suchvorgängen mit den Beispieldaten
 * Experimentieren mit der Featureentwicklung anhand der Beispieldaten
-* Verwenden von Python für das direkte Ausführen von SQL-Abfragen für das SQL Data Warehouse bei umfangreicherer Datendurchsuchung, Datenbearbeitung und Featureentwicklung
+* Verwenden von Python für das direkte Ausführen von SQL-Abfragen für das Azure Synapse Analytics bei umfangreicherer Datendurchsuchung, Datenbearbeitung und Featureentwicklung
 * Treffen von Entscheidungen zum Umfang von Stichproben für die Modellerstellung in Azure Machine Learning
 
 Es folgen einige Beispiele für das Durchsuchen von Daten, die Datenvisualisierung und die Featureentwicklung. Weitere Datensuchvorgänge finden Sie im IPython Notebook-Beispiel und in der Python-Beispielskriptdatei.
@@ -651,7 +651,7 @@ Hier ist die Verbindungszeichenfolge aufgeführt, die die Verbindung mit der Dat
 * Gesamtanzahl von Zeilen = 173.179.759
 * Gesamtanzahl von Spalten = 11
 
-### <a name="read-in-a-small-data-sample-from-the-sql-data-warehouse-database"></a>Einlesen einer kleinen Datenprobe aus der SQL Data Warehouse-Datenbank
+### <a name="read-in-a-small-data-sample-from-the-azure-synapse-analytics-database"></a>Einlesen einer kleinen Datenprobe aus der Azure Synapse Analytics-Datenbank
     t0 = time.time()
 
     query = '''
@@ -731,16 +731,16 @@ Auf ähnliche Weise können wir die Beziehung zwischen **rate\_code** und **trip
 ![Punktdiagrammausgabe der Beziehung zwischen Code und Entfernung][8]
 
 ### <a name="data-exploration-on-sampled-data-using-sql-queries-in-ipython-notebook"></a>Durchsuchen von Stichprobendaten mit SQL-Abfragen in IPython Notebook
-In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichprobendaten in der zuvor neu erstellten Tabelle. Beachten Sie, dass ähnliche Suchvorgänge anhand der ursprünglichen Tabellen ausgeführt werden können.
+In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichprobendaten in der zuvor neu erstellten Tabelle. Ähnliche Suchvorgänge können anhand der ursprünglichen Tabellen ausgeführt werden.
 
-#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Untersuchung: Melden der Anzahl von Zeilen und Spalten in der Stichprobentabelle
+#### <a name="exploration-report-number-of-rows-and-columns-in-the-sampled-table"></a>Durchsuchen: Melden der Anzahl von Zeilen und Spalten in der Stichprobentabelle
     nrows = pd.read_sql('''SELECT SUM(rows) FROM sys.partitions WHERE object_id = OBJECT_ID('<schemaname>.<nyctaxi_sample>')''', conn)
     print 'Number of rows in sample = %d' % nrows.iloc[0,0]
 
     ncols = pd.read_sql('''SELECT count(*) FROM information_schema.columns WHERE table_name = ('<nyctaxi_sample>') AND table_schema = '<schemaname>'''', conn)
     print 'Number of columns in sample = %d' % ncols.iloc[0,0]
 
-#### <a name="exploration-tippednot-tripped-distribution"></a>Untersuchung: Verteilung von Fahrten mit/ohne Trinkgeld
+#### <a name="exploration-tippednot-tripped-distribution"></a>Durchsuchen: Verteilung von Fahrten mit/ohne Trinkgeld
     query = '''
         SELECT tipped, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -749,7 +749,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     pd.read_sql(query, conn)
 
-#### <a name="exploration-tip-class-distribution"></a>Untersuchung: Trinkgeldklassenverteilung
+#### <a name="exploration-tip-class-distribution"></a>Durchsuchen: Trinkgeldklassenverteilung
     query = '''
         SELECT tip_class, count(*) AS tip_freq
         FROM <schemaname>.<nyctaxi_sample>
@@ -758,12 +758,12 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     tip_class_dist = pd.read_sql(query, conn)
 
-#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Untersuchung: Darstellen der Trinkgeldverteilung nach Klasse
+#### <a name="exploration-plot-the-tip-distribution-by-class"></a>Durchsuchen: Darstellen der Trinkgeldverteilung nach Klasse
     tip_class_dist['tip_freq'].plot(kind='bar')
 
 ![Grafik 26][26]
 
-#### <a name="exploration-daily-distribution-of-trips"></a>Untersuchung: Tägliche Verteilung der Fahrten
+#### <a name="exploration-daily-distribution-of-trips"></a>Durchsuchen: Tägliche Verteilung der Fahrten
     query = '''
         SELECT CONVERT(date, dropoff_datetime) AS date, COUNT(*) AS c
         FROM <schemaname>.<nyctaxi_sample>
@@ -781,20 +781,20 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Untersuchung: Verteilung der Fahrten nach „medallion“ und „hack_license“
+#### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Durchsuchen: Verteilung der Fahrten nach „medallion“ und „hack_license“
     query = '''select medallion, hack_license,count(*) from <schemaname>.<nyctaxi_sample> group by medallion, hack_license'''
     pd.read_sql(query,conn)
 
 
-#### <a name="exploration-trip-time-distribution"></a>Untersuchung: Verteilung der Fahrtzeit
+#### <a name="exploration-trip-time-distribution"></a>Durchsuchen: Verteilung der Fahrtzeit
     query = '''select trip_time_in_secs, count(*) from <schemaname>.<nyctaxi_sample> group by trip_time_in_secs order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-trip-distance-distribution"></a>Untersuchung: Verteilung der Fahrtentfernung
+#### <a name="exploration-trip-distance-distribution"></a>Durchsuchen: Verteilung der Fahrtentfernung
     query = '''select floor(trip_distance/5)*5 as tripbin, count(*) from <schemaname>.<nyctaxi_sample> group by floor(trip_distance/5)*5 order by count(*) desc'''
     pd.read_sql(query,conn)
 
-#### <a name="exploration-payment-type-distribution"></a>Untersuchung: Zahlungsartverteilung
+#### <a name="exploration-payment-type-distribution"></a>Durchsuchen: Zahlungsartverteilung
     query = '''select payment_type,count(*) from <schemaname>.<nyctaxi_sample> group by payment_type'''
     pd.read_sql(query,conn)
 
@@ -805,8 +805,8 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
 ## <a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
 Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine Learning](https://studio.azureml.net)fortfahren. Die Daten können jetzt für die oben beschriebenen Vorhersageprobleme verwendet werden:
 
-1. **Binäre Klassifizierung**: Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wurde.
-2. **Multiklassenklassifizierung**: Zur Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
+1. **Binäre Klassifizierung**: Vorhersage, ob Trinkgeld für eine Fahrt bezahlt wurde.
+2. **Multiklassenklassifizierung**: Vorhersage des Trinkgeldbereichs gemäß den zuvor definierten Klassen.
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.
 
 Melden Sie sich zum Starten der Modellierungsübung bei Ihrem **(klassischen) Azure Machine Learning**-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs](../studio/create-workspace.md).
@@ -822,15 +822,15 @@ Ein typisches Trainingsexperiment umfasst die folgenden Schritte:
 3. Vorverarbeiten, Transformieren und Ändern der Daten nach Bedarf
 4. Generieren von Funktionen nach Bedarf
 5. Aufteilen der Daten in DataSets für Training/Überprüfung/Tests (oder Verwenden verschiedener DataSets für alles)
-6. Auswählen eines oder mehrerer Algorithmen für das maschinelle Lernen in Abhängigkeit vom zu lösenden Lernproblem wie binäre Klassifizierung, Multiklassenklassifizierung, Regression
+6. Auswählen eines oder mehrerer Algorithmen für das maschinelle Lernen in Abhängigkeit vom zu lösenden Lernproblem Beispiel: Binäre Klassifizierung, Multiklassenklassifizierung, Regression
 7. Trainieren eines oder mehrerer Modelle mit dem Trainings-DataSet
 8. Bewerten des Validierungs-DataSets mithilfe der trainierten Modelle
 9. Evaluieren der Modelle zur Berechnung der relevanten Kennzahlen für das Lernproblem
 10. Optimieren der Modelle und Auswählen des geeignetsten Modells für die Bereitstellung
 
-Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning Studio (klassisch) entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
+Sie haben in dieser Übung bereits die Daten in Azure Synapse Analytics untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning Studio (Classic) entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
 
-1. Übertragen Sie die Daten mithilfe des Moduls [Import Data][import-data] im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) in Azure Machine Learning Studio (klassisch). Weitere Informationen finden Sie auf der Referenzseite zum Modul [Import Data][import-data].
+1. Übertragen Sie die Daten mithilfe des Moduls [Import Data][import-data] im Abschnitt **Data Input and Output** (Dateneingabe und -ausgabe) in Azure Machine Learning Studio (Classic). Weitere Informationen finden Sie auf der Referenzseite zum [Import Data][import-data]-Modul.
 
     ![Azure ML – Import Data][17]
 2. Wählen Sie **Azure SQL-Datenbank** als **Datenquelle** im **Eigenschaften**bereich aus.
@@ -839,7 +839,7 @@ Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht un
 5. Geben Sie den *SQL-Benutzernamen* unter **Server user account name** und das *Kennwort* unter **Server user account password** ein.
 7. Fügen Sie im Textbereich für die **Datenbankabfrage** die Abfrage ein, die die erforderlichen Datenbankfelder (einschließlich berechneter Felder wie die Bezeichner) extrahiert und die Daten auf die gewünschte Stichprobengröße reduziert.
 
-Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der SQL Data Warehouse-Datenbank wird in der folgenden Abbildung gezeigt. (Ersetzen Sie die Tabellennamen „nyctaxi_trip“ und „nyctaxi_fare“ durch den Schemanamen und die Tabellennamen, die Sie in Ihrer exemplarischen Vorgehensweise verwendet haben.) Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
+Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten direkt aus der Azure Synapse Analytics-Datenbank wird in der folgenden Abbildung gezeigt. (Ersetzen Sie die Tabellennamen „nyctaxi_trip“ und „nyctaxi_fare“ durch den Schemanamen und die Tabellennamen, die Sie in Ihrer exemplarischen Vorgehensweise verwendet haben.) Ähnliche Experimente können für Multiklassenklassifizierungen und Regressionsprobleme erstellt werden.
 
 ![Azure ML-Schulung][10]
 
@@ -868,7 +868,7 @@ Azure Machine Learning versucht, ein Bewertungsexperiment basierend auf den Komp
 2. Ermitteln eines logischen **Eingabeports** für das erwartete Eingabedatenschema
 3. Ermitteln eines logischen **Ausgabeport** s für das erwartete Ausgabeschema für den Webdienst
 
-Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie es und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabe-DataSet und/oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese nicht verfügbar sein werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabe-DataSets und/oder der Abfrage auf so wenige DataSets zu reduzieren, dass gerade das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns][select-columns] in Dataset in die Ausgabe einzuschließen.
+Wenn das Bewertungsexperiment erstellt wurde, überprüfen Sie die Ergebnisse und passen es bei Bedarf an. Eine typische Anpassung besteht darin, das Eingabedataset oder die Abfrage durch ausgeschlossene Bezeichnerfelder zu ersetzen, da diese Bezeichnerfelder dem Schema nicht zugeordnet werden, wenn der Dienst aufgerufen wird. Es empfiehlt sich möglicherweise auch, die Größe des Eingabedatasets und/oder der Abfrage auf so wenige Datasets zu reduzieren, dass das Eingabeschema ermittelt werden kann. Für den Ausgabeport ist es üblich, alle Eingabefelder auszuschließen und nur die **Scored Labels** und die **Scored Probabilities** mit dem Modul [Select Columns in Dataset][select-columns] in die Ausgabe einzuschließen.
 
 In der folgenden Abbildung finden Sie ein Beispiel für ein Bewertungsexperiment. Wenn Sie die Bereitstellung fertig vorbereitet haben, klicken Sie auf der unteren Aktionsleiste auf die Schaltfläche **PUBLISH WEB SERVICE** .
 
@@ -880,7 +880,7 @@ Zusammenfassend haben Sie in diesem Tutorial eine Azure Data Science-Umgebung er
 ### <a name="license-information"></a>Lizenzinformationen
 Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Notebook(s) werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei „LICENSE.txt“ im Verzeichnis mit dem Beispielcode auf GitHub.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 - [Andrés Monroy NYC Taxi Trips – Downloadseite](https://www.andresmh.com/nyctaxitrips/)
 - [„FOILing NYC’s Taxi Trip Data“ (Freigeben der Taxifahrtendaten für NYC mit FOIL) von Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
 - [NYC Taxi and Limousine Commission Research and Statistics (Forschung und Statistiken der NYC Taxi and Limousine Commission)](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

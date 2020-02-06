@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 483f13f89acd1bce0ceb8486ac252e6f844d881f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fea9cebc5199fc7c1fc5c081aa45f08044c21e44
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431741"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768208"
 ---
 # <a name="cloud-tiering-overview"></a>Übersicht über Cloudtiering
 Cloudtiering ist ein optionales Feature der Azure-Dateisynchronisierung, bei dem häufig verwendete Dateien lokal auf dem Server zwischengespeichert werden, während alle anderen Dateien gemäß Richtlinieneinstellungen in Azure Files ausgelagert werden. Beim Tiering einer Datei ersetzt der Azure-Dateisynchronisierungs-Dateisystemfilter (StorageSync.sys) die Datei lokal durch einen Zeiger oder Analysepunkt. Der Analysepunkt stellt eine URL zur Datei in Azure Files dar. Eine per Tiering ausgelagerte Datei weist sowohl das offline-Attribut als auch das in NTFS festgelegte FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS-Attribut auf, sodass Drittanwendungen Tieringdateien sicher identifizieren können.
  
-Wenn ein Benutzer eine Tieringdatei öffnet, ruft die Azure-Dateisynchronisierung nahtlos die Dateidaten aus Azure Files ab, ohne dass der Benutzer wissen muss, dass die Datei eigentlich bei Azure gespeichert ist. 
+Wenn ein Benutzer eine Tieringdatei öffnet, ruft die Azure-Dateisynchronisierung nahtlos die Dateidaten aus Azure Files ab, ohne dass der Benutzer wissen muss, dass die Datei in Azure gespeichert ist. 
  
  > [!Important]  
  > Cloudtiering wird nicht für Serverendpunkte auf den Windows-Systemvolumes unterstützt, und nur Dateien mit einer Größe von mehr als 64 KiB können in Azure Files ausgelagert werden.
@@ -61,7 +61,7 @@ Wenn Sie mehr Daten lokal speichern, fallen geringere Kosten für ausgehenden Da
 
 <a id="how-long-until-my-files-tier"></a>
 ### <a name="ive-added-a-new-server-endpoint-how-long-until-my-files-on-this-server-tier"></a>Ich habe einen neuen Serverendpunkt hinzugefügt. Wann werden meine Dateien auf diesem Server per Tiering ausgelagert?
-In Version 4.0 und höher des Azure-Dateisynchronisierungs-Agents werden in die Azure-Dateifreigabe hochgeladene Dateien bei der Ausführung der nächsten Tieringsitzung entsprechend Ihren Richtlinien ausgelagert (d. h. einmal pro Stunde). Auf älteren Agents kann es bis zu 24 Stunden dauern, bis das Tiering stattfindet.
+In Version 4.0 und höher des Azure-Dateisynchronisierungs-Agents werden in die Azure-Dateifreigabe hochgeladene Dateien bei der Ausführung der nächsten Tieringsitzung entsprechend Ihren Richtlinien ausgelagert (d. h. einmal pro Stunde). Auf älteren Agents kann es bis zu 24 Stunden dauern, bis das Tiering stattfindet.
 
 <a id="is-my-file-tiered"></a>
 ### <a name="how-can-i-tell-whether-a-file-has-been-tiered"></a>Woran erkenne ich, ob eine Datei per Tiering ausgelagert wurde?
@@ -103,11 +103,10 @@ Sie können auch PowerShell nutzen, um für eine Datei das Zurückrufen zu erzwi
     
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
-
-Wenn Sie `-Order CloudTieringPolicy` angeben, werden zuerst die zuletzt geänderten Dateien abgerufen.
-Andere optionale Parameter:
+Optionale Parameter:
+* `-Order CloudTieringPolicy` legt fest, dass zuerst die zuletzt geänderten Dateien abgerufen werden.  
 * `-ThreadCount` bestimmt, wie viele Dateien parallel abgerufen werden können.
 * `-PerFileRetryCount` bestimmt, wie oft ein Abruf einer Datei versucht wird, die derzeit blockiert ist.
 * `-PerFileRetryDelaySeconds` bestimmt die Zeit in Sekunden zwischen den Versuchen zum erneuten Abrufen und sollte immer in Kombination mit dem vorherigen Parameter verwendet werden.
@@ -127,6 +126,13 @@ Wenn das Cloudtiering-Feature aktiviert ist, wird beim Cloudtiering automatisch 
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
 ```
+
+<a id="afs-image-thumbnail"></a>
+### <a name="why-are-my-tiered-files-not-showing-thumbnails-or-previews-in-windows-explorer"></a>Warum werden für meine Tieringdateien keine Miniaturansichten oder Vorschauversionen in Windows-Explorer angezeigt?
+Für Tieringdateien sind Miniatur- und Vorschauansichten auf dem Serverendpunkt nicht sichtbar. Dieses Verhalten ist zu erwarten, da das Feature zur Zwischenspeicherung von Miniaturansichten in Windows absichtlich das Lesen von Dateien mit dem Attribut „Offline“ überspringt. Wenn Cloudtiering aktiviert ist, würde das Lesen der Tieringdateien dazu führen, dass diese heruntergeladen (abgerufen) werden.
+
+Dieses Verhalten ist nicht spezifisch für die Azure-Dateisynchronisierung. In Windows-Explorer wird für alle Dateien, für die das Attribut „Offline“ festgelegt ist, ein graues X angezeigt. Dieses „X“ wird beim Zugriff auf Dateien über SMB angezeigt. Eine ausführliche Erläuterung des Verhaltens finden Sie unter [https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105](https://blogs.msdn.microsoft.com/oldnewthing/20170503-00/?p=96105).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md)

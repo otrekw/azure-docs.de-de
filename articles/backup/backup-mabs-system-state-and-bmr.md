@@ -3,12 +3,12 @@ title: Schutz des Systemstatus und der Bare-Metal-Recovery
 description: Verwenden Sie Azure Backup Server, um Ihren Systemstatus zu sichern und Bare-Metal-Recovery-Schutz (BMR) zu bieten.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0e89b149fe8b06bdd70c72aa442f50125c5e3786
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172266"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025502"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Sichern des Systemstatus und Bare-Metal-Wiederherstellung mit Azure Backup Server
 
@@ -140,7 +140,7 @@ Richten Sie gemäß den Anweisungen unter [Bereitstellen von Schutzgruppen](http
 
 12. Wählen Sie auf der Seite **Onlineaufbewahrungsrichtlinie angeben** aus, wie die Wiederherstellungspunkte in Azure aufbewahrt werden, die aus den täglichen, wöchentlichen, monatlichen und jährlichen Sicherungen erstellt werden.
 
-13. Wählen Sie auf der Seite **Onlinereplikation wählen** aus, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md).
+13. Wählen Sie auf der Seite **Onlinereplikation wählen** aus, wie die erste vollständige Replikation der Daten erfolgt. Sie können eine Replikation über das Netzwerk wählen oder eine Offlinesicherung (sog. Offlineseeding) durchführen. Die Offlinesicherung erfolgt mithilfe der Importfunktion von Azure. Weitere Informationen finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](offline-backup-azure-data-box.md).
 
 14. Überprüfen Sie auf der Seite **Zusammenfassung** Ihre Einstellungen. Nach Auswahl von **Gruppe erstellen** erfolgt die erste Replikation der Daten. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Die Sicherung erfolgt anschließend gemäß den Schutzgruppeneinstellungen.
 

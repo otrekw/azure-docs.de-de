@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412830"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714871"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurieren von Datenpersistenz für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel wird erläutert, wie die Persistenz in einer Azure Cache for Redis-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -26,7 +26,13 @@ Azure Cache for Redis bietet Redis-Persistenz über die folgenden Modelle:
 * **RDB-Persistenz:** Wenn RDB-Persistenz (Redis-Datenbank) konfiguriert ist, speichert Azure Cache for Redisbasierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme des Azure Cache for Redis in einem binären Redis-Format dauerhaft auf dem Datenträger. Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#rdb-advantages) und [Nachteile](https://redis.io/topics/persistence#rdb-disadvantages) der RDB-Persistenz.
 * **AOF-Persistenz:** Wenn die AOF-Persistenz (Append only file, nur Datei anhängen) konfiguriert ist, speichert Azure Cache for Redis jeden Schreibvorgang in einem Protokoll, das mindestens einmal pro Sekunde in einem Azure Storage-Konto gespeichert wird. Bei einem schwerwiegenden Fehler, bei dem der primäre und der Replikatcache deaktiviert werden, wird der Cache mithilfe der gespeicherten Schreibvorgänge wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#aof-advantages) und [Nachteile](https://redis.io/topics/persistence#aof-disadvantages) der AOF-Persistenz.
 
-Persistenz wird während der Erstellung des Caches auf dem Blatt **Neuer Azure Cache for Redis** sowie für vorhandene Premium-Caches im **Ressourcenmenü** konfiguriert.
+Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben, das sich in Ihrem Besitz befindet und von Ihnen verwaltet wird. Dies kann bei der Cacheerstellung auf dem Blatt **Neuer Azure Cache for Redis** sowie für vorhandene Premium-Caches im **Ressourcenmenü** konfiguriert werden.
+
+> [!NOTE]
+> 
+> Dauerhaft gespeicherte Daten werden von Azure Storage automatisch verschlüsselt. Für die Verschlüsselung können Sie Ihre eigenen Schlüssel verwenden. Weitere Informationen finden Sie unter [Von Kunden verwaltete Schlüssel mit Azure Key Vault](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ Die Schritte im nächsten Abschnitt beschreiben, wie Sie Redis-Persistenz für I
 
 ## <a name="enable-redis-persistence"></a>Aktivieren der Redis-Persistenz
 
-Redis-Persistenz wird auf dem Blatt **Redis-Datenpersistenz** durch Auswählen von **RDB**- oder **AOF**-Persistenz aktiviert. Bei einem neuen Cache wird während der Erstellung des Caches auf dieses Blatt zugegriffen, wie im vorherigen Abschnitt beschrieben. Für vorhandene Caches erfolgt der Zugriff auf das Blatt **Redis-Datenpersistenz** über das **Ressourcenmenü** für Ihren Cache.
+Redis-Persistenz wird auf dem Blatt **Datenpersistenz** durch Auswählen der Persistenz **RDB** oder **AOF** aktiviert. Bei einem neuen Cache wird während der Erstellung des Caches auf dieses Blatt zugegriffen, wie im vorherigen Abschnitt beschrieben. Bei vorhandenen Caches erfolgt der Zugriff auf das Blatt **Datenpersistenz** über das **Ressourcenmenü** für Ihren Cache.
 
 ![Redis-Einstellungen][redis-cache-settings]
 
@@ -125,7 +131,7 @@ Für RDB- und AOF-Persistenz gilt Folgendes:
 * Wenn Sie auf eine kleinere Größe skaliert haben und dort nicht genug Platz für alle Daten aus der letzten Sicherung ist, werden beim Wiederherstellungsvorgang Schlüssel entfernt. Diese Entfernung wird in der Regel mithilfe der Entfernungsrichtlinie [allkeys-lru](https://redis.io/topics/lru-cache) vorgenommen.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kann ich die Sicherungshäufigkeit für RDB-Persistenz ändern, nachdem ich den Cache erstellt habe?
-Ja, Sie können die Sicherungshäufigkeit für die RDB-Persistenz auf dem Blatt **Redis-Datenpersistenz** ändern. Anweisungen dazu finden Sie unter „Konfigurieren von Redis-Persistenz“.
+Ja. Sie können die Sicherungshäufigkeit für die RDB-Persistenz auf dem Blatt **Datenpersistenz** ändern. Anweisungen dazu finden Sie unter „Konfigurieren von Redis-Persistenz“.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Warum verstreichen mehr als 60 Minuten zwischen den RDB-Sicherungen, wenn ich eine Sicherungshäufigkeit von 60 Minuten festgelegt habe?
 Das Intervall für die Sicherungshäufigkeit bei der RDB-Persistenz beginnt erst, nachdem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wurde. Wenn für die Sicherungshäufigkeit 60 Minuten festgelegt sind und der Sicherungsvorgang nach 15 Minuten erfolgreich beendet wird, wird der nächste Sicherungsvorgang 75 Minuten nach der Startzeit des vorherigen Sicherungsvorgangs gestartet.

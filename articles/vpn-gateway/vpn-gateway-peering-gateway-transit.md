@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 4c3d2352467a1ed8e7979acac403908303ba3bc4
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834553"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025757"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -156,4 +156,4 @@ Add-AzVirtualNetworkPeering `
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Einschränkungen und Verhalten eines Peerings virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) und [Einstellungen für ein Peering virtueller Netzwerke](../virtual-network/virtual-network-manage-peering.md#create-a-peering), bevor Sie ein Peering virtueller Netzwerker für den Produktionseinsatz erstellen.
-* Erfahren Sie, wie Sie eine [Hub-Spoke-Netzwerktopologie ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering) mit einem Peering virtueller Netzwerke und Gatewaytransit erstellen.
+* Erfahren Sie, wie Sie eine [Hub-Spoke-Netzwerktopologie ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) mit einem Peering virtueller Netzwerke und Gatewaytransit erstellen.

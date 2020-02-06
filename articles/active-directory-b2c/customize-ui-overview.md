@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949405"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841232"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -28,15 +28,15 @@ Es gibt mehrere, für unterschiedliche Szenarien geeignete Möglichkeiten, die B
 
 ### <a name="user-flows"></a>Benutzerabläufe
 
-Wenn Sie [Benutzerflows](active-directory-b2c-reference-policies.md) verwenden, können Sie das Aussehen Ihrer Benutzerflow-Seiten mithilfe von integrierten *Seitenlayoutvorlagen* oder mit eigenem HTML und CSS anpassen. Beide Methoden werden später in diesem Artikel beschrieben.
+Wenn Sie [Benutzerflows](user-flow-overview.md) verwenden, können Sie das Aussehen Ihrer Benutzerflow-Seiten mithilfe von integrierten *Seitenlayoutvorlagen* oder mit eigenem HTML und CSS anpassen. Beide Methoden werden später in diesem Artikel beschrieben.
 
 Sie konfigurieren die Anpassung der Benutzeroberfläche für Benutzerflows im [Azure-Portal](tutorial-customize-ui.md) an.
 
 ### <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
 
-Wenn Sie [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](active-directory-b2c-ui-customization-custom.md).
+Wenn Sie [benutzerdefinierte Richtlinien](custom-policy-overview.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](custom-policy-ui-customization.md).
 
-Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie benutzerdefinierte Richtlinien, [die Seiteninhalte dynamisch ändern können](active-directory-b2c-ui-customization-custom-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. Sie können z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben.
+Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie benutzerdefinierte Richtlinien, [die Seiteninhalte dynamisch ändern können](custom-policy-ui-customization-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. Sie können z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Wählen Sie anschließend eine Vorlage aus der Liste aus. Hier sind einige Beisp
 Wenn Sie eine Vorlage auswählen, wird das ausgewählte Layout auf alle Seiten in Ihrem Benutzerflow angewendet, und im Feld **Benutzerdefinierter Seiten-URI** wird der URI für jede Seite angezeigt.
 
 ## <a name="custom-html-and-css"></a>Benutzerdefiniertes HTML und CSS
+
+Wenn Sie Ihr eigenes Richtlinienlayout mit benutzerdefiniertem HTML- und CSS-Code gestalten möchten, können Sie dazu für jeden der Layoutnamen in Ihrer Richtlinie die Umschaltfläche „Benutzerdefinierten Seiteninhalt verwenden“ verwenden. Gehen Sie bei der Konfiguration des benutzerdefinierten Layouts wie folgt vor:
 
 Azure AD B2C führt den Code im Browser Ihres Kunden aus. Hierbei wird ein Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen) verfolgt.
 
@@ -146,11 +148,11 @@ In der folgenden Tabelle finden Sie die HTML-Fragmente, die Azure AD B2C im `<di
 | Registrierung über ein Konto eines sozialen Netzwerks | Kann angezeigt werden, wenn die Registrierung mit einem vorhandenen Konto bei einem sozialen Netzwerk wie Facebook oder Google als Identitätsanbieter erfolgt. Wird verwendet, wenn zusätzliche Informationen vom Kunden mithilfe eines Registrierungsformulars erfasst werden müssen. |
 | Einheitliche Registrierung oder Anmeldung | Verarbeitet sowohl die Registrierung als auch die Anmeldung von Kunden. Diese können als Identitätsanbieter soziale Netzwerke wie z. B. Facebook, Google oder lokale Konten verwenden. |
 | Multi-Factor Authentication | Kunden können während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
-| Error | Stellt dem Kunden Fehlerinformationen bereit. |
+| Fehler | Stellt dem Kunden Fehlerinformationen bereit. |
 
 ## <a name="localize-content"></a>Lokalisieren von Inhalt
 
-Sie lokalisieren Ihren HTML-Inhalt, indem Sie die [Sprachanpassung](active-directory-b2c-reference-language-customization.md) in Ihrem Azure AD B2C-Mandanten aktivieren. Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten. Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
+Sie lokalisieren Ihren HTML-Inhalt, indem Sie die [Sprachanpassung](user-flow-language-customization.md) in Ihrem Azure AD B2C-Mandanten aktivieren. Wenn Sie dieses Feature aktivieren, kann Azure AD B2C den Open ID Connect-Parameter `ui-locales` an Ihren Endpunkt weiterleiten. Ihr Inhaltsserver kann diesen Parameter verwenden, um benutzerdefinierte, sprachspezifische HTML-Seiten bereitzustellen.
 
 Inhalt kann auf Grundlage des verwendeten Gebietsschemas aus unterschiedlichen Quellen abgerufen werden. Richten Sie in Ihrem CORS-fähigen Endpunkt eine Ordnerstruktur zum Hosten von Inhalten für bestimmte Sprachen ein. Wenn Sie den Platzhalterwert `{Culture:RFC5646}` verwenden, wird der passende Inhalt abgerufen.
 
@@ -179,4 +181,4 @@ Die HTML- und CSS-Beispieldateien in den Vorlagen befinden sich im Verzeichnis [
     [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md).
 - Wenn Sie **benutzerdefinierte Richtlinien** verwenden, können Sie anhand des folgenden Artikels mit dem Anpassen der Benutzeroberfläche beginnen:
 
-    [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md).
+    [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](custom-policy-ui-customization.md).

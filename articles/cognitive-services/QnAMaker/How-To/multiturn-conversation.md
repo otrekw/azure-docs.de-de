@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872297"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843259"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -65,7 +65,7 @@ Beachten Sie beim Erstellen eines Mehrfachdurchlauf-Dokuments die folgenden Rich
 
 * Verwenden Sie Überschriften und Unterüberschriften zum Angeben der Hierarchie. Beispielsweise können Sie h1 hinzufügen, um die übergeordnete QnA zu bezeichnen, und h2, um die QnA anzugeben, die als Aufforderung verwendet werden soll. Verwenden Sie einen kleinen Überschrifts-Schriftgrad, um nachfolgende Hierarchie anzugeben. Verwenden Sie keine Auszeichnung, Farbe oder einen anderen Mechanismus zum Angeben von Struktur in Ihrem Dokument, QnA Maker kann die Mehrfachdurchlauf-Aufforderungen nicht extrahieren.
 
-* Das erste Zeichen der Überschrift muss groß geschrieben werden. 
+* Das erste Zeichen der Überschrift muss groß geschrieben werden.
 
 * Beenden Sie eine Überschrift nicht mit einem Fragezeichen, `?`.
 
@@ -113,7 +113,7 @@ Fügen Sie eine Folgeaufforderung zu einem vorhandenen Frage- und Antwortpaar hi
 1. Wählen Sie in der Zeile für **Sign out** in der Spalte **Answer** (Antwort) die Option **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
 1. Geben Sie in den Feldern des Popupfensters **Follow-up prompt** (Folgeaufforderung) die folgenden Werte ein:
 
-    |Feld|Wert|
+    |Feld|value|
     |--|--|
     |Anzeigetext|Geben Sie **Gerät ausschalten** ein. Dies ist benutzerdefinierter Text, der in der Folgeaufforderung angezeigt werden soll.|
     |Context-only (Nur Kontext)| Aktivieren Sie dieses Kontrollkästchen. Eine Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
@@ -151,7 +151,7 @@ Wenn Sie der Wissensdatenbank ein neues Frage- und Antwortpaar hinzufügen, soll
 1. Wählen Sie in der Spalte **Antwort** für diese Frage **Add follow-up prompt** (Folgeaufforderung hinzufügen) aus.
 1. Erstellen Sie unter **Follow-up prompt (PREVIEW)** (Folgeaufforderung (VORSCHAU)) eine neue Folgeaufforderung, indem Sie folgende Werte eingeben:
 
-    |Feld|Wert|
+    |Feld|value|
     |--|--|
     |Anzeigetext|*Erstellen Sie ein Windows-Konto*. Dies ist der benutzerdefinierte Text, der in der Folgeaufforderung angezeigt werden soll.|
     |Context-only (Nur Kontext)|Aktivieren Sie dieses Kontrollkästchen. Diese Antwort wird nur zurückgegeben, wenn die Frage einen Kontext angibt.|
@@ -369,7 +369,7 @@ Sie können Eingabeaufforderungen mit Mehrfachdurchläufen mithilfe der [Update-
 
 ## <a name="export-knowledge-base-for-version-control"></a>Exportieren der Wissensdatenbank für die Versionskontrolle
 
-QnA Maker [unterstützt die Versionskontrolle](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) im QnA Maker-Portal, indem es Schritte für Konversationen mit Mehrfachdurchläufen in die exportierte Datei einfügt.
+QnA Maker unterstützt die Versionskontrolle durch Einfügen von Schritten für Unterhaltungen mit Mehrfachdurchläufen in die exportierte Datei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

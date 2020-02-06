@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513812"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705546"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -189,16 +189,11 @@ Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den
 **Linux** | Führen Sie die Installation mit einem RPM- oder DEB-Paket aus dem Paketrepository der Distribution durch. Dies ist die bevorzugte Methode zum Installieren und Aktualisieren des Azure Linux-Agents. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert. Der Agent steht auf [GitHub](https://github.com/Azure/WALinuxAgent) zur Verfügung, jedoch wird die Installation über GitHub nicht empfohlen.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und aktualisieren Sie die Binärdateien.
 
 >[!NOTE]
-> Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.
+> **Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.**
 >
 >Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
 >
-> Diese Lösung ist in den folgenden Szenarien besonders nützlich:
->  
->1. Sie verfügen über kritische Daten, die auf nur eine m Datenträger gesichert werden sollen, und Sie möchten die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern. Dadurch werden die Kosten für den Sicherungsspeicher minimiert.  
->2. Sie verfügen über andere Sicherungslösungen für einen Teil ihrer VM-Daten. Sie sichern beispielsweise Ihre Datenbanken oder Daten mit einer anderen Workloadsicherungslösung und möchten für die übrigen Datenträger und Daten eine Sicherung auf Azure VM-Ebene verwenden, um ein effizientes und robustes System mit den besten verfügbaren Funktionen zu erstellen.
->
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
+>**Schreiben Sie an AskAzureBackupTeam@microsoft.com, um sich für die Vorschauversion zu registrieren.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

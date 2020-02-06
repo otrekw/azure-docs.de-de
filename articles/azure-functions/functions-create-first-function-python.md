@@ -4,18 +4,18 @@ description: Es wird beschrieben, wie Sie serverlosen Python-Code mit Azure Func
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845497"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898561"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Schnellstart: Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
 
 In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Python-Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
-Es gibt auch eine [Visual Studio Code-basierte Version](/azure/python/tutorial-vs-code-serverless-python-01) dieses Artikels.
+Es gibt auch eine [Visual Studio Code-basierte Version](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) dieses Artikels.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

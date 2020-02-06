@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979079"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904960"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Bereitstellen von Azure Resource Manager-Vorlagen für Azure Logic Apps
 
@@ -128,4 +128,4 @@ Wenn Sie zum Autorisieren von Verbindungen stattdessen einen Azure AD-[Dienstpri
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Überwachen von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [Überwachen von Logik-Apps](../logic-apps/monitor-logic-apps.md)

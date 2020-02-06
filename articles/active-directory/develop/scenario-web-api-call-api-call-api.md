@@ -14,19 +14,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 701f1f7c26731f3e9653955907f5f16d2688cdb2
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043440"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833378"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Eine Web-API, die Web-APIs aufruft: Aufrufen einer API
 
-Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufrufen. Dafür verwenden Sie den Controller Ihrer ASP.NET- oder ASP.NET Core-Web-API.
+Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufrufen. Dafür verwenden Sie den Controller Ihrer Web-API.
 
 ## <a name="controller-code"></a>Controllercode
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Der folgende Code setzt den Beispielcode fort, den Sie hier finden: [Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft eine nachgelagerte API namens *todolist* auf.
 
@@ -57,6 +58,35 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ...
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Der folgende Code setzt den Beispielcode fort, den Sie hier finden: [Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft die Downstream-API von Microsoft Graph auf.
+
+Nachdem Sie das Token abgerufen haben, können Sie es als Bearertoken zum Aufrufen der nachgelagerten API verwenden.
+
+```Java
+private String callMicrosoftGraphMeEndpoint(String accessToken){
+    RestTemplate restTemplate = new RestTemplate();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    headers.set("Authorization", "Bearer " + accessToken);
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    String result = restTemplate.exchange("https://graph.microsoft.com/v1.0/me", HttpMethod.GET,
+            entity, String.class).getBody();
+
+    return result;
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+Ein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python ist noch nicht verfügbar.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

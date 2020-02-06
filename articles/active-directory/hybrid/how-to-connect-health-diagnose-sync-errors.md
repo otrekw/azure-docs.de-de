@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: maheshu
 editor: billmath
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1fd5f9746299d72ed58a3209013822505b19b56
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67702551"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897198"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose und Behebung von Synchronisierungsfehlern aufgrund doppelter Attribute
 
@@ -109,7 +110,7 @@ Mit dieser Frage werden in Konflikt stehende eingehende Benutzer und das vorhand
 1. Das in Konflikt stehende Objekt wird neu mit Azure Active Directory synchronisiert. Vergleichen Sie die Attribute der Objekte:  
    - Anzeigename
    - Benutzerprinzipalname
-   - Object ID (Objekt-ID)
+   - ObjectID
 2. Wenn ein Vergleich in Azure AD nicht möglich ist, überprüfen Sie, ob in Active Directory Objekte mit den angegebenen **UserPrincipalNames** enthalten sind. Wenn beide vorhanden sind, antworten Sie mit **Nein**.
 
 Im folgenden Beispiel gehören die beiden Objekte zu demselben Benutzer **Joe Johnson**.

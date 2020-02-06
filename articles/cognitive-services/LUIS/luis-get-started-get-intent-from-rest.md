@@ -1,31 +1,23 @@
 ---
 title: 'Schnellstart: Abrufen der Absicht mit REST-APIs – LUIS'
-titleSuffix: Azure Cognitive Services
 description: In dieser REST-API-Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
-ms.author: diberry
+ms.date: 02/03/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3a8badb74bb8919876f3c0670d785f44fbcbb397
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 50d2161dc0fa738a70476fa3a9327d9d720e7c15
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499654"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987771"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>Schnellstart: Abrufen der Absicht mit REST-APIs
 
-In dieser Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers. Sie senden die Absicht des Benutzers als Text an den HTTP-Vorhersageendpunkt der öffentlichen App. Auf dem Endpunkt wendet LUIS das Modell der öffentlichen App an, um den Text in natürlicher Sprache im Hinblick auf seine Bedeutung zu analysieren. Dabei werden die allgemeine Absicht bestimmt und relevante Daten für die Antragstellerdomäne der App extrahiert. 
+In dieser Schnellstartanleitung bestimmen Sie mithilfe einer verfügbaren öffentlichen LUIS-App aus Konversationstext die Absicht eines Benutzers. Sie senden die Absicht des Benutzers als Text an den HTTP-Vorhersageendpunkt der öffentlichen App. Auf dem Endpunkt wendet LUIS das Modell der öffentlichen App an, um den Text in natürlicher Sprache im Hinblick auf seine Bedeutung zu analysieren. Dabei werden die allgemeine Absicht bestimmt und relevante Daten für die Antragstellerdomäne der App extrahiert.
 
 Diese Schnellstartanleitung verwendet die REST-API des Endpunkts. Weitere Informationen finden Sie in der [Dokumentation der Endpunkt-API](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78).
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](https://www.luis.ai)-Konto. 
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](https://www.luis.ai)-Konto.
 
 <a name="create-luis-subscription-key"></a>
 

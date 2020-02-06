@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672243"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715112"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -24,14 +24,14 @@ Azure App Service bietet integrierte Authentifizierungs- und Autorisierungsunter
 Eine sichere Authentifizierung und Autorisierung erfordert umfassende Sicherheitskenntnisse, u.a. zu Verbund, Verschlüsselung, Verwaltung von [JSON-Webtoken (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) und [Gewährungstypen](https://oauth.net/2/grant-types/). App Service bietet diese Hilfsprogramme, damit Sie mehr Zeit und Energie für das Bereitstellen von geschäftlichem Nutzen für Ihre Kunden aufwenden können.
 
 > [!IMPORTANT]
-> Die Nutzung von App Service für AuthN/AuthO ist nicht verpflichtend. Viele Webframeworks sind mit Sicherheitsfunktionen gebündelt und können bei Bedarf verwendet werden. Wenn Sie mehr Flexibilität benötigen, als App Service bietet, können Sie auch eigene Hilfsprogramme schreiben.  
+> Die Nutzung von App Service für AuthN/AuthO ist nicht verpflichtend. Sie können die gebündelten Sicherheitsfeatures im Webframework Ihrer Wahl verwenden oder eigene Hilfsprogramme schreiben. Beachten Sie jedoch, dass [Chrome 80 Breaking Changes an der SameSite-Implementierung für Cookies vornimmt](https://www.chromestatus.com/feature/5088147346030592), die voraussichtlich im März 2020 veröffentlicht werden, und die benutzerdefinierte Remoteauthentifizierung sowie andere Szenarien mit websiteübergreifender Cookiebereitstellung nach der Aktualisierung von Chrome-Clientbrowsern möglicherweise nicht mehr funktionieren. Die Problemumgehung ist komplex, da unterschiedliche SameSite-Verhaltensweisen für verschiedene Browser unterstützt werden müssen. 
 >
-> Wenn Sie jedoch eine der Optionen ohne App Service für die Remoteauthentifizierung nutzen, sollten Sie beachten, dass [Chrome 80 Breaking Changes an der Implementierung von SameSite für Cookies](https://www.chromestatus.com/feature/5088147346030592) vornimmt (Veröffentlichungsdatum ca. März 2020) und der Authentifizierungsmechanismus Ihrer App möglicherweise fehlerhaft wird, wenn Clientbrowser aktualisiert werden. Die ASP.NET Core-Dokumentation enthält Informationen dazu, wie Sie dies in Ihrer App behandeln: [HTTP: SameSite-Änderungen im Browser mit Auswirkungen auf die Authentifizierung](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Sie enthält hilfreiche Anleitungen zum Testen dieses Breaking Change mit den wichtigsten Browsern, unabhängig davon, ob Sie ASP.NET Core verwenden.
+> Die von App Service gehosteten ASP.NET Core-Versionen ab 2.1 wurden bereits für diesen Breaking Change gepatcht und behandeln Chrome 80 sowie ältere Browser entsprechend. Im Januar 2020 wird der gleiche Patch außerdem für ASP.NET Framework 4.7.2 in den App Service-Instanzen bereitgestellt. Weitere Informationen finden Sie unter [Azure App Service: Verarbeitung von SameSite-Cookies und Patches für .NET Framework 4.7.2](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/). Dort erfahren Sie unter anderem, wie Sie ermitteln, ob Ihre App den Patch erhalten hat.
 >
 
 Spezielle Informationen zu nativen mobilen Apps finden Sie unter [Authentifizierung und Autorisierung in Azure Mobile Apps](../app-service-mobile/app-service-mobile-auth.md).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Das Modul für Authentifizierung und Autorisierung wird in der gleichen Sandbox wie Ihr Anwendungscode ausgeführt. Wenn es aktiviert ist, wird es von allen eingehenden HTTP-Anforderungen durchlaufen, bevor diese von Ihrem Anwendungscode behandelt werden.
 
@@ -145,7 +145,7 @@ Anbieterspezifische Anleitungen:
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung][Google]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung][MSA]
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung][Twitter]
-* [Gewusst wie: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung][custom-auth]
+* [Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung][custom-auth]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md

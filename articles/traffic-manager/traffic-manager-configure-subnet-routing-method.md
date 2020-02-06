@@ -3,7 +3,7 @@ title: Konfigurieren des Routings für Subnetzdatenverkehr – Azure Traffic Man
 description: In diesem Artikel wird erläutert, wie der Traffic Manager so konfiguriert wird, dass Datenverkehr von bestimmten Subnetzen weitergeleitet wird.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.author: rohink
+ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014606"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938740"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
@@ -50,9 +50,9 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
 1. Wählen Sie im Azure-Portal links oben **Ressource erstellen** > **Compute** > **Windows Server 2016 VM** aus.
 2. Geben Sie die folgenden Informationen für **Grundlagen** ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myIISVMEastUS|
+    |Name|myIISVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Resource group| Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM1* ein.|
@@ -62,7 +62,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie die folgenden Werte unter **Einstellungen** aus, und wählen Sie anschließend **OK**:
     
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet1* für **Name** und *mySubnet* für das Subnetz ein.|
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Standard** aus, und wählen Sie in der Dropdownliste**Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
@@ -73,7 +73,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
 
 7. Führen Sie die Schritte 1 bis 6 mit den folgenden Änderungen erneut aus:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Resource group | Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM2* ein.|
     |Location|Europa, Westen|
@@ -136,9 +136,9 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
 1. Wählen Sie im Azure-Portal links oben **Ressource erstellen** > **Compute** > **Windows Server 2016 VM** aus.
 2. Geben Sie die folgenden Informationen für **Grundlagen** ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
-    |NAME|myVMEastUS|
+    |Name|myVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Resource group| Wählen Sie **Vorhandene** und dann *myResourceGroupTM1* aus.|
@@ -147,7 +147,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie die folgenden Werte unter **Einstellungen** aus, und wählen Sie anschließend **OK**:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet3* für **Name** und *mySubnet3* für das Subnetz ein.|
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Standard** aus, und wählen Sie in der Dropdownliste**Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
@@ -158,7 +158,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
 
 7. Führen Sie die Schritte 1 bis 5 mit den folgenden Änderungen erneut aus:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |---|---|
     |VM-Name | *myVMWEurope*|
     |Resource group | Wählen Sie **Vorhandene** und dann *myResourceGroupTM2* aus.|
@@ -173,9 +173,9 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
-    | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
     | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
     | Resource group          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
@@ -192,10 +192,10 @@ Fügen Sie die beiden VMs mit den IIS-Servern (*myIISVMEastUS* & *myIISVMWEurope
 2. Klicken Sie unter **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte** und dann auf **Hinzufügen**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | type                    | Azure-Endpunkt                                   |
-    | NAME           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |  Einstellungen für das Subnetzrouting    |   Fügen Sie die IP-Adresse der Test-VM *myVMEastUS* hinzu. Jede Benutzerabfrage von dieser VM wird an *myTestWebSiteEndpoint* weitergeleitet.    |

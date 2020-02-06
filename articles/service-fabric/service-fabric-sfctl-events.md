@@ -3,14 +3,14 @@ title: 'Azure Service Fabric CLI: sfctl events'
 description: Beschreibt die sfctl events-Befehle der Service Fabric-Befehlszeilenschnittstelle (Command Line Interface, CLI).
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 35dfbdb3f8b84e797d35c8d7ec1020509f7e8b57
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 635bddef1a98d6ed2b112662d8c9c44fe65e9e32
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466047"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906093"
 ---
 # <a name="sfctl-events"></a>sfctl events
 Ruft Ereignisse aus dem Ereignisspeicher ab (wenn der EventStore-Dienst bereits installiert ist).
@@ -19,7 +19,7 @@ Der EventStore-Systemdienst kann durch ein Konfigurationsupgrade auf jeden SFRP-
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | all-applications-list | Ruft alle anwendungsbezogenen Ereignisse ab. |
 | all-nodes-list | Ruft alle knotenbezogenen Ereignisse ab. |
@@ -40,7 +40,7 @@ Die Antwort ist eine Liste von ApplicationEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --start-time-utc [Erforderlich] | Die Startzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -51,7 +51,7 @@ Die Antwort ist eine Liste von ApplicationEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -66,7 +66,7 @@ Die Antwort ist eine Liste von NodeEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --start-time-utc [Erforderlich] | Die Startzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -77,7 +77,7 @@ Die Antwort ist eine Liste von NodeEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -92,7 +92,7 @@ Die Antwort ist eine Liste von PartitionEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --start-time-utc [Erforderlich] | Die Startzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -103,7 +103,7 @@ Die Antwort ist eine Liste von PartitionEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -118,7 +118,7 @@ Die Antwort ist eine Liste von ServiceEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --start-time-utc [Erforderlich] | Die Startzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -129,7 +129,7 @@ Die Antwort ist eine Liste von ServiceEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -144,7 +144,7 @@ Die Antwort ist eine Liste von ApplicationEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -156,7 +156,7 @@ Die Antwort ist eine Liste von ApplicationEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -171,7 +171,7 @@ Die Antwort ist eine Liste von ClusterEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --start-time-utc [Erforderlich] | Die Startzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
@@ -182,7 +182,7 @@ Die Antwort ist eine Liste von ClusterEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -197,7 +197,7 @@ Die Antwort ist eine Liste von NodeEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --node-name [erforderlich] | Der Name des Knotens. |
@@ -209,7 +209,7 @@ Die Antwort ist eine Liste von NodeEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -224,7 +224,7 @@ Die Antwort ist eine Liste von ReplicaEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --partition-id [erforderlich] | Die Identität (ID) der Partition. |
@@ -236,7 +236,7 @@ Die Antwort ist eine Liste von ReplicaEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -251,7 +251,7 @@ Die Antwort ist eine Liste von PartitionEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --partition-id [erforderlich] | Die Identität (ID) der Partition. |
@@ -263,7 +263,7 @@ Die Antwort ist eine Liste von PartitionEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -278,7 +278,7 @@ Die Antwort ist eine Liste von ReplicaEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --partition-id [erforderlich] | Die Identität (ID) der Partition. |
@@ -291,7 +291,7 @@ Die Antwort ist eine Liste von ReplicaEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -306,7 +306,7 @@ Die Antwort ist eine Liste von ServiceEvent-Objekten.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --end-time-utc [Erforderlich] | Die Endzeit einer Suchabfrage im ISO UTC-Format yyyy-MM-ddTHH\:mm\:ssZ. |
 | --service-id [erforderlich] | Die Identität (ID) des Diensts. Diese ID ist üblicherweise der vollständige Name des Diensts ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric\:/meineapp/app1/svc1“, weist die Dienstidentität in 6.0 und höher den Wert „meineapp\~app1\~svc1“ und in früheren Versionen den Wert „meineapp/app1/svc1“ auf. |
@@ -318,7 +318,7 @@ Die Antwort ist eine Liste von ServiceEvent-Objekten.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

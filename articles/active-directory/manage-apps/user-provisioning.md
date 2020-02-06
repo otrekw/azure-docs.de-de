@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433790"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841198"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für Anwendungen mit Azure Active Directory
 
-In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) und anderen.
+In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) und anderen.
 
 ![Diagramm mit einer Übersicht über die Bereitstellung](media/user-provisioning/provisioning-overview.png)
 
@@ -63,11 +63,11 @@ Azure AD umfasst eine vorab integrierte Unterstützung für viele beliebte SaaS-
 
    ![Salesforce-Logo](media/user-provisioning/gallery-app-logos.png)
 
-   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
+   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](../develop/howto-app-gallery-listing.md). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
 
 * **Anwendungen mit SCIM 2.0-Unterstützung**: Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte Benutzerverwaltungs-APIs implementieren, finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md).
 
-## <a name="what-is-scim"></a>Was ist SCIM?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Was ist das System für domänenübergreifendes Identitätsmanagement (SCIM)?
 
 Als Hilfe bei der Automatisierung der Bereitstellung und Bereitstellungsaufhebung werden von Apps proprietäre Benutzer- und Gruppen-APIs verfügbar gemacht. Wenn Sie schon einmal Benutzer in mehr als einer App verwaltet haben, wissen Sie aber, dass in jeder App versucht wird, die gleichen einfachen Aktionen durchzuführen (z. B. Erstellen oder Aktualisieren von Benutzern, Hinzufügen von Benutzern zu Gruppen oder Aufheben der Bereitstellung von Benutzern). Die Implementierung all dieser einfachen Aktionen unterscheidet sich aber jeweils nur leicht, indem andere Endpunktpfade, unterschiedliche Methoden zum Angeben von Benutzerinformationen und ein anderes Schema zum Darstellen der einzelnen Informationselemente genutzt werden.
 
@@ -81,7 +81,7 @@ Die im Azure AD-Katalog enthaltenen Anwendungen unterstützen einen der zwei fol
 
 * **Manuell** bedeutet, dass noch kein automatischer Azure AD-Bereitstellungsconnector für die App vorhanden ist. Benutzerkonten müssen manuell erstellt werden, beispielsweise indem Benutzer direkt zum Verwaltungsportal der App hinzugefügt werden oder indem eine Kalkulationstabelle mit Benutzerkontodetails hochgeladen wird. Die verfügbaren Mechanismen können Sie über die von der App bereitgestellte Dokumentation ermitteln, oder wenden Sie sich an den Entwickler der App.
 
-* **Automatisch** bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Sie sollten das zum Einrichten der Bereitstellung für die jeweilige Anwendung spezifische Setuptutorial befolgen. App-Tutorials finden Sie unter [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+* **Automatisch** bedeutet, dass für diese Anwendung ein Azure AD-Bereitstellungsconnector entwickelt wurde. Sie sollten das zum Einrichten der Bereitstellung für die jeweilige Anwendung spezifische Setuptutorial befolgen. App-Tutorials finden Sie unter [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md).
 
 Im Azure AD-Katalog sind Anwendungen, die die automatische Bereitstellung unterstützen, mit einem **Bereitstellungssymbol** gekennzeichnet. Wechseln Sie zur neuen Katalogvorschauoberfläche, um diese Symbole anzuzeigen. (Wählen Sie auf dem Banner oben auf der Seite **Eine Anwendung hinzufügen** den Link **Klicken Sie hier, um den neuen und verbesserten App-Katalog auszuprobieren** aus.)
 
@@ -91,7 +91,7 @@ Der von einer Anwendung unterstützte Bereitstellungsmodus wird auch auf der Reg
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Wie richte ich die automatische Bereitstellung für eine Anwendung ein?
 
-Für vorab integrierte Anwendungen, die im Katalog aufgeführt sind, ist eine Schritt-für-Schritt-Anleitung zum Einrichten der automatischen Bereitstellung verfügbar. Weitere Informationen finden Sie in der [Liste mit den Tutorials für integrierte Katalog-Apps](https://docs.microsoft.com/azure/active-directory/saas-apps/). Im folgenden Video wird veranschaulicht, wie Sie die automatische Benutzerbereitstellung für Salesforce einrichten.
+Für vorab integrierte Anwendungen, die im Katalog aufgeführt sind, ist eine Schritt-für-Schritt-Anleitung zum Einrichten der automatischen Bereitstellung verfügbar. Weitere Informationen finden Sie in der [Liste mit den Tutorials für integrierte Katalog-Apps](../saas-apps/tutorial-list.md). Im folgenden Video wird veranschaulicht, wie Sie die automatische Benutzerbereitstellung für Salesforce einrichten.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

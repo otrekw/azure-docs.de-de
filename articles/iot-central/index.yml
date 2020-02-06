@@ -10,73 +10,73 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: f43c21d483bbb43bb270a7a70c4de6be1fb90f35
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: ab2843a4076e4700b584a1e09c0c58271cf61328
+  ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73890757"
+  ms.lasthandoff: 02/05/2020
+  ms.locfileid: "77021252"
 highlightedContent:
   items:
   - title: Was ist IoT Central?
     itemType: overview
-    url: ./preview/overview-iot-central.md
+    url: ./core/overview-iot-central.md
   - title: Was sind Anwendungsvorlagen?
     itemType: concept
     url: ./core/concepts-app-templates.md
   - title: Azure IoT Central-Architektur
     itemType: architecture
-    url: ./preview/concepts-architecture.md
+    url: ./core/concepts-architecture.md
   - title: Erstellen einer neuen Anwendung
     itemType: quickstart
-    url: ./preview/quick-deploy-iot-central.md
+    url: ./core/quick-deploy-iot-central.md
   - title: Definieren eines Gerätetyps und Hinzufügen eines Geräts
     itemType: tutorial
-    url: ./preview/howto-set-up-template.md
+    url: ./core/howto-set-up-template.md
   - title: Überwachen Ihrer Geräte
     itemType: tutorial
-    url: ./preview/tutorial-create-telemetry-rules.md
+    url: ./core/tutorial-create-telemetry-rules.md
 conceptualContent:
   items:
-  - title: Herstellen einer Verbindung (Previewfunktionen)
+  - title: Herstellen einer Verbindung
     links:
-    - url: ./preview/howto-set-up-template.md
+    - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: Einrichten einer Gerätevorlage
-    - url: ./preview/tutorial-connect-pnp-device.md
+    - url: ./core/tutorial-connect-pnp-device.md
       itemType: tutorial
-      text: Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät
+      text: Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät (Vorschauversion)
     footerLink:
-      url: ./preview/index.yml
-      text: Mehr Informationen
-  - title: In Verbindung bleiben (Previewfunktionen)
+      url: ./core/index.yml
+      text: Weitere Informationen
+  - title: In Verbindung bleiben
     links:
-    - url: ./preview/tutorial-use-device-groups.md
+    - url: ./core/tutorial-use-device-groups.md
       itemType: how-to-guide
       text: Verwenden von Gerätegruppen
-    - url: ./preview/howto-manage-devices.md
+    - url: ./core/howto-manage-devices.md
       itemType: how-to-guide
       text: Verwalten von Geräten
     - url: ./core/howto-run-a-job.md
       itemType: concept
       text: 'Gewusst wie: Ausführen eines Auftrags'
-    - url: ./preview/howto-create-analytics.md
+    - url: ./core/howto-create-analytics.md
       itemType: how-to-guide
       text: Analysieren von Gerätedaten
     footerLink:
-      url: ./preview/index.yml
-      text: Mehr Informationen
-  - title: Durchführen einer Transformation (Previewfunktionen)
+      url: ./core/index.yml
+      text: Weitere Informationen
+  - title: Transformieren
     links:
-    - url: ./preview/tutorial-create-telemetry-rules.md
+    - url: ./core/tutorial-create-telemetry-rules.md
       itemType: how-to-guide
       text: Erstellen einer Telemetrieregel
-    - url: ./preview/howto-export-data.md
+    - url: ./core/howto-export-data.md
       itemType: how-to-guide
       text: Konfigurieren des fortlaufenden Datenexports
     footerLink:
-      url: ./preview/index.yml
-      text: Mehr Informationen
+      url: ./core/index.yml
+      text: Weitere Informationen
 productDirectory:
   title: Einstieg in die Erstellung mit Vorlagen für Branchenanwendungen
   summary: Sind Sie bereit für die Erstellung? Sehen Sie sich unsere Vorlagen für Branchenanwendungen an, die für Lösungsentwickler konzipiert wurden.

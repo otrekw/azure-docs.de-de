@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
-ms.openlocfilehash: 5bd7352230d4d9daaed219f654be51dc528bea8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380183"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717025"
 ---
 # <a name="create-a-custom-keyword-using-speech-studio"></a>Erstellen eines benutzerdefinierten Schlüsselworts mithilfe von Speech Studio
 
@@ -49,7 +49,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
     ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. Die Generierung des Modells kann bis zu zehn Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
+1. Die Generierung des Modells kann bis zu dreißig Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
 
     ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-download-model.png)
 

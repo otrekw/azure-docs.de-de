@@ -3,24 +3,24 @@ title: 'SQL Server-Daten in SQL Azure mit Azure Data Factory: Team Data Science-
 description: Einrichten eine ADF-Pipeline, die aus zwei Datenmigrationsaktivitäten besteht, die zusammen täglich Daten zwischen lokalen Datenbanken und in die Cloud verschieben.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64aa6c0e6e0e3bf449d44996df3223b12a69923
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982413"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722491"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 
-In diesem Artikel wird beschrieben, wie Sie Daten aus einer lokalen SQL Server-Datenbank mithilfe der Azure Data Factory (ADF) per Azure Blob Storage in eine Azure SQL-Datenbankinstanz verschieben. Bei dieser Methode handelt es sich um einen unterstützten Legacyansatz, der die Vorteile einer replizierten Stagingkopie bietet; trotzdem [schlagen wir Ihnen vor, sich auf unserer Datenmigrationsseite über die neuesten Optionen zu informieren](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1).
+In diesem Artikel wird beschrieben, wie Sie Daten aus einer lokalen SQL Server-Datenbank mithilfe von Azure Data Factory (ADF) per Azure Blob Storage in eine Azure SQL-Datenbank-Instanz verschieben. Bei dieser Methode handelt es sich um einen unterstützten Legacyansatz, der die Vorteile einer replizierten Stagingkopie nutzt. [Wir empfehlen Ihnen jedoch, sich auf unserer Datenmigrationsseite über die neuesten Optionen zu informieren.](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)
 
 Eine Tabelle, in der verschiedene Optionen für das Verschieben von Daten in eine Azure SQL-Datenbank zusammengefasst sind, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](move-sql-azure.md).
 
@@ -32,12 +32,12 @@ Mit ADF können vorhandene Datenverarbeitungsdienste zu Datenpipelines zusammeng
 Ziehen Sie ADF in Betracht:
 
 * wenn Daten fortlaufend in ein Hybridszenario migriert werden müssen, das auf lokale und Cloudressourcen zugreift
-* wenn Transaktionen mit den Daten erfolgen, Daten geändert werden müssen oder den Daten bei der Migration Geschäftslogik hinzugefügt wird.
+* wenn bei der Migration Transformationen der Daten erforderlich sind oder ihnen Geschäftslogik hinzugefügt werden muss
 
 ADF ermöglicht die Planung und Überwachung von Aufträgen mithilfe einfacher JSON-Skripts, die das Verschieben von Daten in regelmäßigen Abständen verwalten. ADF verfügt außerdem über weitere Funktionen wie Unterstützung für komplexe Vorgänge. Weitere Informationen zu ADF finden Sie in der Dokumentation zu [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="scenario"></a>Das Szenario
-Wir richten eine ADF-Pipeline ein, die zwei Aktivitäten für die Migration von Daten aufweist. Gemeinsam sorgen diese für das tägliche Verschieben von Daten zwischen einer lokalen SQL-Datenbank und einer Azure SQL-Datenbank in der Cloud. Die zwei Aktivitäten sind:
+Wir richten eine ADF-Pipeline ein, die zwei Aktivitäten für die Migration von Daten aufweist. Gemeinsam sorgen diese für das tägliche Verschieben von Daten zwischen einer lokalen SQL-Datenbank und einer Azure SQL-Datenbank-Instanz in der Cloud. Die zwei Aktivitäten sind:
 
 * Kopieren von Daten aus einer lokalen SQL Server-Datenbank in ein Azure Blob Storage-Konto
 * Kopieren von Daten aus dem Azure Blob Storage-Konto in eine Azure SQL-Datenbank-Instanz
@@ -78,7 +78,7 @@ Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für
 
 1. Lokaler SQL Server
 2. Azure Blob Storage
-3. Azure SQL-Datenbank
+3. Azure SQL-Datenbank
 
 Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 
@@ -136,7 +136,7 @@ Die Tabellendefinition für die lokale SQL Server-Instanz wird in der folgenden 
 }
 ```
 
-Die Spaltennamen sind hier nicht enthalten. Sie können eine Unterauswahl in den Spalten treffen, indem Sie sie hier aufnehmen (Details finden Sie in der [ADF-Dokumentation](../../data-factory/copy-activity-overview.md) ).
+Die Spaltennamen sind hier nicht enthalten. Sie können eine Unterauswahl in den Spalten treffen, indem Sie sie hier aufnehmen (Details finden Sie in der [ADF-Dokumentation](../../data-factory/copy-activity-overview.md)).
 
 Kopieren Sie die JSON-Definition der Tabelle in eine Datei namens *onpremtabledef.json*, und speichern Sie sie an einem bekannten Speicherort (hier wird *C:\temp\onpremtabledef.json* vorausgesetzt). Erstellen Sie die Tabelle in ADF mit dem folgenden Azure PowerShell-Cmdlet:
 
@@ -302,4 +302,4 @@ Die Parameterwerte *startdate* und *enddate* müssen durch die tatsächlichen Da
 
 Sobald die Pipeline ausgeführt wird, sollten Sie die Daten sehen können, die im für den Blob ausgewählten Container angezeigt werden – immer eine Datei pro Tag.
 
-Beachten Sie, dass wir nicht die Funktionalität von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt haben. Weitere Informationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).
+Wir haben nicht die Funktion von ADF zum inkrementellen Übertragen von Daten per Pipe genutzt. Weitere Informationen zur Vorgehensweise sowie zu weiteren von ADF bereitgestellten Funktionen finden Sie in der [ADF-Dokumentation](https://azure.microsoft.com/services/data-factory/).

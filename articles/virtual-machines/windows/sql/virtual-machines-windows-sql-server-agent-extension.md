@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6ccc04ccdaf92764da8f45af1e5dda98af822587
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3d16c1950cbae0bcc7dd858e5520eb8bfc6e496d
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690839"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030777"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-IaaS-Agent-Erweiterung
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Den Artikel zum klassischen Bereitstellungsmodell finden Sie unter [SQL Server-
 ## <a name="supported-services"></a>Unterstützte Dienste
 Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltungsaufgaben:
 
-| Verwaltungsfeature | BESCHREIBUNG |
+| Verwaltungsfeature | Beschreibung |
 | --- | --- |
 | **Automatisierte Sicherung für SQL Server** |Automatisiert die Planung von Sicherungen für alle Datenbanken entweder der Standardinstanz oder einer [ordnungsgemäß installierten](virtual-machines-windows-sql-server-iaas-faq.md#administration) benannten Instanz von SQL Server in der VM. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-backup.md). |
 | **Automatisierte Patches für SQL Server** |Mit diesem Dienst können Sie ein Wartungsfenster konfigurieren, in dem wichtige Windows-Updates für den virtuellen Computer ausgeführt werden. Auf diese Weise werden Updates für Ihre Workload während der Spitzenzeiten vermieden. Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](virtual-machines-windows-sql-automated-patching.md). |
@@ -82,10 +82,9 @@ Anforderungen für die Verwendung der SQL Server-IaaS-Agent-Erweiterung auf Ihr
 Die SQL Server-IaaS-Erweiterung wird installiert, wenn Sie Ihre SQL Server-VM beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registrieren. Falls erforderlich, können Sie den SQL Server-IaaS-Agent mit dem folgenden PowerShell-Befehl manuell installieren: 
 
   ```powershell-interactive
-    Set-AzVMExtension -ResourceGroupName "<ResourceGroupName>" `
-    -Location "<VMLocation>" -VMName "<VMName>" `
-    -Name "SqlIaasExtension" -Publisher "Microsoft.SqlServer.Management" `
-    -ExtensionType "SqlIaaSAgent" -TypeHandlerVersion "2.0";  
+    Set-AzVMSqlServerExtension -VMName "sql2017" `
+    -ResourceGroupName "LabsqlIAASagent" -Name "SQLIaasExtension" `
+    -Version "2.0" -Location "Central US";  
   ```
 
 > [!NOTE]

@@ -1,22 +1,15 @@
 ---
 title: Extrahieren von Daten – LUIS
-titleSuffix: Azure Cognitive Services
 description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Entitäten. Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
-services: cognitive-services
 author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.author: diberry
-ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.date: 01/23/2020
+ms.openlocfilehash: 1c1a744c06e5347625fb96518bd809481ee797e5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703150"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716292"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -36,7 +29,7 @@ LUIS stellt die Daten vom veröffentlichten [Endpunkt](luis-glossary.md#endpoint
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
 Die App-ID (`appID`) finden Sie auf der Seite **Einstellungen** Ihrer LUIS-App sowie in der URL (nach `/apps/`), wenn Sie diese LUIS-App bearbeiten. Der `subscription-key` ist der Endpunktschlüssel, der für Abfragen an Ihre App verwendet wird. Sie können zwar Ihren kostenlosen Erstellungs-/Startschlüssel verwenden, während Sie sich mit LUIS vertraut machen, es ist aber wichtig, dass Sie den Endpunktschlüssel in einen Schlüssel ändern, der die [erwartete LUIS-Nutzung](luis-boundaries.md#key-limits) unterstützt. Die Einheit für das `timezoneOffset` ist Minuten.
 
@@ -78,11 +71,11 @@ Die wichtigste Angabe ist der **Name der Absicht** mit der höchsten Bewertung. 
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-|Datenobjekt|Datentyp|Speicherort der Daten|Wert|
+|Datenobjekt|Datentyp|Speicherort der Daten|value|
 |--|--|--|--|
-|Absicht|Zeichenfolge|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
 
 Wenn Ihr Chatbot oder die App, die den Aufruf an LUIS durchgeführt hat, eine Entscheidung basierend auf mehreren Absichtsbewertungen trifft, geben Sie die Bewertungen aller Absichten zurück.
 
@@ -138,14 +131,14 @@ Legen Sie den QueryString-Parameter `show-all-intents=true` fest. Die Endpunktan
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
 Die Absichten werden von der höchsten zur niedrigsten Bewertung sortiert.
 
-|Datenobjekt|Datentyp|Speicherort der Daten|Wert|Punkte|
+|Datenobjekt|Datentyp|Speicherort der Daten|value|Ergebnis|
 |--|--|--|--|:--|
-|Absicht|Zeichenfolge|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Absicht|Zeichenfolge|intents[1].intent|"None"|0.0168218873|
+|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|String|intents[1].intent|"None"|0.0168218873|
 
 Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domäne, wie z.B. `Utilties` oder `Communication`, sowie die Absicht an:
 
@@ -201,13 +194,13 @@ Wenn Sie vordefinierte Domänen hinzufügen, gibt der Name der Absicht die Domä
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
-|Domain|Datenobjekt|Datentyp|Speicherort der Daten|Wert|
+|Domain|Datenobjekt|Datentyp|Speicherort der Daten|value|
 |--|--|--|--|--|
-|Versorgungsunternehmen|Absicht|Zeichenfolge|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|Kommunikation|Absicht|Zeichenfolge|intents[1].intent|<b>Communication</b>.StartOver"|
-||Absicht|Zeichenfolge|intents[2].intent|"None"|
+|Versorgungsunternehmen|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|Kommunikation|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|String|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>Daten von Entitäten
@@ -250,12 +243,11 @@ Alle Entitäten werden im Array **entities** der Antwort vom Endpunkt zurückgeg
 ```
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
 ## <a name="tokenized-entity-returned"></a>Zurückgegebene tokenisierte Entität
-Mehrere [Kulturen](luis-language-support.md#tokenization) geben das Entitätsobjekt zurück, bei dem der `entity`-Wert [tokenisiert](luis-glossary.md#token) wurde. Die von LUIS zurückgegebenen Werte für startIndex und endIndex im Entitätsobjekt entsprechen nicht dem neuen, tokenisierten Wert, sondern der ursprünglichen Abfrage, damit Sie die unformatierte Entität programmgesteuert extrahieren können. 
 
-Im Deutschen wird z.B. das Wort `das Bauernbrot` in `das bauern brot` tokenisiert. Der tokenisierte Wert `das bauern brot` wird zurückgegeben, und der ursprüngliche Wert kann mithilfe von startIndex und endIndex der ursprünglichen Abfrage programmgesteuert bestimmt werden und ergibt `das Bauernbrot`.
+Überprüfen Sie die [Tokenunterstützung](luis-language-support.md#tokenization) in LUIS.
 
 ## <a name="simple-entity-data"></a>Daten einfacher Entitäten
 
@@ -263,11 +255,11 @@ Eine [einfache Entität](reference-entity-simple.md) ist ein maschinell erlernte
 
 ## <a name="composite-entity-data"></a>Daten zusammengesetzter Entitäten
 
-Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus anderen Entitäten, z. B. vordefinierte Entitäten, einfache Entitäten, Entitäten als reguläre Ausdrücke oder Listenentitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität. 
+Eine [zusammengesetzte Entität](reference-entity-composite.md) besteht aus anderen Entitäten, z. B. vordefinierte Entitäten, einfache Entitäten, Entitäten als reguläre Ausdrücke oder Listenentitäten. Die einzelnen Entitäten bilden zusammen die gesamte Entität.
 
 ## <a name="list-entity-data"></a>Daten von Listenentitäten
 
-[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
+[Listenentitäten](reference-entity-list.md) stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben.
 
 ## <a name="prebuilt-entity-data"></a>Daten vordefinierter Entität
 [Vordefinierte](luis-concept-entity-types.md) Entitäten werden basierend auf einer Übereinstimmung mit einem regulären Ausdruck mithilfe des Open-Source-Projekts [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) ermittelt. Die vordefinierten Entitäten werden im Array „entities“ zurückgegeben. Dabei wird dem Typnamen das Präfix `builtin::` vorangestellt. Der folgende Text ist eine Beispieläußerung mit den zurückgegebenen vordefinierten Entitäten:
@@ -534,7 +526,7 @@ Mit QueryString-Parameter `verbose=true`:
 
 Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
-* * * 
+* * *
 ## <a name="regular-expression-entity-data"></a>Daten von Entitäten aus regulären Ausdrücken
 
 Eine [Entität als regulärer Ausdruck](reference-entity-regular-expression.md) extrahiert eine Entität anhand des regulären Ausdrucks, den Sie bereitstellen.
@@ -544,11 +536,11 @@ Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem N
 
 ### <a name="add-prebuilt-personname-and-geographyv2-entities"></a>Hinzufügen der vordefinierten Entitäten „PersonName“ und „GeographyV2“
 
-Die Entitäten [PersonName](luis-reference-prebuilt-person.md) und [GeographyV2](luis-reference-prebuilt-geographyV2.md) sind in einigen [Sprachkulturen](luis-reference-prebuilt-entities.md) verfügbar. 
+Die Entitäten [PersonName](luis-reference-prebuilt-person.md) und [GeographyV2](luis-reference-prebuilt-geographyV2.md) sind in einigen [Sprachkulturen](luis-reference-prebuilt-entities.md) verfügbar.
 
 ### <a name="names-of-people"></a>Namen von Personen
 
-Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine vordefinierte **[personName](luis-reference-prebuilt-person.md)** -Entität oder eine **[einfache Entität](luis-concept-entity-types.md#simple-entity)** mit [Rollen](luis-concept-roles.md) für Vor- und Nachname. 
+Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine vordefinierte **[personName](luis-reference-prebuilt-person.md)** -Entität oder eine **[einfache Entität](luis-concept-entity-types.md#simple-entity)** mit [Rollen](luis-concept-roles.md) für Vor- und Nachname.
 
 Wenn Sie die einfache Entität verwenden, geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
@@ -599,7 +591,7 @@ Der Entitätsname ist `Location` mit zwei Rollen, `Origin` und `Destination`.
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
-In V3 ist der **Rollenname** der primäre Name des Objekts. 
+In V3 ist der **Rollenname** der primäre Name des Objekts.
 
 Der Entitätsname ist `Location` mit zwei Rollen, `Origin` und `Destination`.
 
@@ -687,7 +679,7 @@ Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 ## <a name="patternany-entity-data"></a>Daten in Entitäten vom Typ „Pattern.any“
 
-[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.  
+[Pattern.any](reference-entity-pattern-any.md) ist ein Platzhalter variabler Länge, der nur in der Vorlagenäußerung eines Musters verwendet wird, um zu kennzeichnen, wo die Entität beginnt und endet.
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 Wenn die Standpunktanalyse konfiguriert wurde, enthält die JSON-Antwort von LUIS eine Standpunktanalyse. Weitere Informationen zu Standpunktanalysen finden Sie in der Dokumentation zur [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
@@ -1141,7 +1133,7 @@ Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 
 Wenn ein Wort oder ein Ausdruck mit mehreren Listenentitäten übereinstimmt, wird bei der Endpunktabfrage jede Listenentität zurückgegeben.
 
-Wenn die App bei der Abfrage `when is the best time to go to red rock?` das Wort `red` in mehreren Listenentitäten enthält, erkennt LUIS alle Entitäten und gibt als Teil der JSON-Endpunktantwort ein Array von Entitäten zurück: 
+Wenn die App bei der Abfrage `when is the best time to go to red rock?` das Wort `red` in mehreren Listenentitäten enthält, erkennt LUIS alle Entitäten und gibt als Teil der JSON-Endpunktantwort ein Array von Entitäten zurück:
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 

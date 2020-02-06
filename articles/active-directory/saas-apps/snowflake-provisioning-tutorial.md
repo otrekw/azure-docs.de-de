@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 04d9ec8cad2404466d2df649df4d5c461768b76f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 2aaf1d2b377abc0b10b0b14de03d01c7f6fae5b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693583"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767768"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -56,10 +56,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 Bevor Sie Snowflake für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie in Snowflake die SCIM-Bereitstellung aktivieren.
 
-> [!NOTE]
-> Diese Integration befindet sich in Snowflake aktuell in der privaten Vorschau. Wenn Sie dieses Feature in Ihrem Snowflake-Konto aktivieren möchten, setzen Sie sich mit Ihrem Snowflake-Vertriebsbeauftragten in Verbindung.
-
-1. Melden Sie sich bei Ihrer Snowflake-Administratorkonsole an. Geben Sie die unten angezeigte Abfrage im hervorgehobenen Arbeitsbereich ein, und klicken Sie auf **Ausführen**.
+1. Melden Sie sich bei Ihrer Snowflake-Administratorkonsole an. Geben Sie die Abfrage aus dem unten hervorgehobenen Arbeitsblatt ein, und klicken Sie auf **Ausführen**.
 
     ![Snowflake-Administratorkonsole](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -152,7 +149,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-15. Legen Sie die Benutzer und/oder Gruppen fest, die in Snowflake bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+15. Legen Sie die Benutzer und/oder Gruppen fest, die in Snowflake bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus. Sollte diese Option nicht verfügbar sein, konfigurieren Sie die erforderlichen Felder unter „Administratoranmeldeinformationen“, klicken Sie auf **Speichern**, und aktualisieren Sie die Seite. 
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 

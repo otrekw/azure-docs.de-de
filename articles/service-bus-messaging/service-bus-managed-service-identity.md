@@ -1,6 +1,6 @@
 ---
 title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
-description: Verwenden von verwalteten Identitäten für Azure-Ressourcen mit Azure Service Bus
+description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 57c52640262854037420c1679804f611394230ef
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793150"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756282"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -75,7 +75,7 @@ Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie un
 ## <a name="enable-managed-identities-on-a-vm"></a>Aktivieren von verwalteten Identitäten auf einem virtuellen Computer
 Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Service Bus-Ressourcen über Ihren virtuellen Computer verwenden können, müssen Sie zunächst verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktivieren. Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen finden Sie in diesen Artikeln:
 
-- [Azure-Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-Vorlage](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -99,12 +99,12 @@ Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus:
 
     ![Verwaltete Identität für eine Web-App](./media/service-bus-managed-service-identity/identity-web-app.png)
 
-Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrem Azure Active Directory (Azure AD) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
+Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
 Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Service Bus-Ressourcen zu.
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>So weisen Sie RBAC-Rollen mithilfe des Azure-Portals zu
-Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anweisungen zum Verwalten von Rollenzuweisungen:
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>So weisen Sie RBAC-Rollen mit dem Azure-Portal zu
+Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Portal zum betreffenden Namespace. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anleitung zum Verwalten von Rollenzuweisungen:
 
 > [!NOTE]
 > Mit den folgenden Schritten wird den Service Bus-Namespaces eine Dienstidentitätsrolle zugewiesen. Sie können die gleichen Schritte ausführen, um anderen unterstützten Bereichen (Ressourcengruppe und Abonnement) eine Rolle zuzuweisen. 

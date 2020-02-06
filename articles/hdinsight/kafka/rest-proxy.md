@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: a64d03ebe7c8bbb4cfa9c7bd63a678892250373d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475872"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031391"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys
 
@@ -45,17 +45,17 @@ Sobald die Clientanwendung über das OAuth-Token verfügt, muss dieses Token in 
 
 1. Aktivieren Sie während des Workflows zum Erstellen eines Kafka-Clusters auf der Registerkarte „Sicherheit + Netzwerkbetrieb“ die Option „Kafka-REST-Proxy aktivieren“.
 
-     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-enable.png)
+     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
 1. Klicken Sie auf **Sicherheitsgruppe auswählen**. Wählen Sie in der Liste der Sicherheitsgruppen die Sicherheitsgruppe aus, die Zugriff auf den REST-Proxy haben soll. Sie können das Suchfeld verwenden, um nach der entsprechenden Sicherheitsgruppe zu suchen. Klicken Sie unten auf die Schaltfläche **Auswählen**.
 
-     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-select-security-group.png)
+     ![Aktivieren des Kafka-REST-Proxys und Auswählen der Sicherheitsgruppe](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest2.png)
 
 1. Führen Sie die restlichen Schritte zum Erstellen Ihres Clusters aus, wie es unter [Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal](https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-get-started) beschrieben ist.
 
 1. Nachdem der Cluster erstellt wurde, wechseln Sie zu den Clustereigenschaften, um die URL für den Kafka-REST-Proxy zu erfassen.
 
-     ![Anzeigen der REST-Proxy-URL](./media/apache-kafka-rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
+     ![Anzeigen der REST-Proxy-URL](./media/rest-proxy/apache-kafka-rest-proxy-view-proxy-url.png)
 
 ## <a name="client-application-sample"></a>Beispiel für eine Clientanwendung
 

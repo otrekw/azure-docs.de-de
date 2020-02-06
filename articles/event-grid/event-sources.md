@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512945"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846379"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -132,6 +132,9 @@ Abonnieren Sie Service Bus-Ereignisse, um ohne aktiven Listener auf Nachrichten 
 ## <a name="storage"></a>Storage
 
 Abonnieren Sie Blob Storage-Ereignisse, um auf Ereignisse der Bloberstellung und -löschung zu reagieren.
+
+>[!NOTE]
+> Nur Speicherkonten vom Typ **StorageV2 (allgemein, Version 2)** und **BlobStorage** unterstützen die Ereignisintegration. **Storage (allgemein, Version 1)** unterstützt die Integration in Event Grid *nicht*.
 
 |Titel  |Beschreibung  |
 |---------|---------|

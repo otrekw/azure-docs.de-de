@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293826"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705427"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -112,14 +112,13 @@ Das neue Modell lässt das Löschen des Wiederherstellungspunkts (Tarif2) nur zu
 
 Wenn der Wiederherstellungspunkt eine Momentaufnahme aufweist und diese der letzte verfügbare Wiederherstellungspunkt ist, wird sie bis zur nächsten erfolgreichen Sicherung aufbewahrt. Dies entspricht der aktuellen entworfenen Richtlinie für die automatische Speicherbereinigung (Garbage Collection, GC). Diese gibt vor, dass immer mindestens ein aktueller Wiederherstellungspunkt vorhanden ist, für den Fall, dass alle weiteren Sicherungen aufgrund eines Problems auf dem virtuellen Computer fehlschlagen. In normalen Szenarien werden Wiederherstellungspunkte innerhalb von 24 Stunden nach ihrem Ablauf bereinigt.
 
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Ich benötige keine sofortige Wiederherstellung. Kann ich sie deaktivieren?
+
+Das Feature für die sofortige Wiederherstellung ist für alle Benutzer aktiviert und kann nicht deaktiviert werden. Die Aufbewahrungsdauer der Momentaufnahme kann auf bis zu einen Tag verkürzt werden.
+
 >[!NOTE]
-> Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.
+> **Azure Backup unterstützt jetzt die selektive Datenträgersicherung und -wiederherstellung mithilfe der Azure Virtual Machine-Sicherungslösung.**
 >
 >Heute unterstützt Azure Backup die Sicherung aller Datenträger (Betriebssystem und Daten) auf einem virtuellen Computer mithilfe der Sicherungslösung für virtuelle Computer. Mit der exclude-disk-Funktion haben Sie die Möglichkeit, einen oder eine bestimmte Auswahl der zahlreichen Datenträger auf einem virtuellen Computer zu sichern. Dies stellt eine effiziente und kostengünstige Lösung für Ihre Sicherungs- und Wiederherstellungsanforderungen dar. Jeder Wiederherstellungspunkt enthält Daten der im Sicherungsvorgang enthaltenen Datenträger. Dadurch können Sie während des Wiederherstellungsvorgangs zudem eine Teilmenge der Datenträger des angegebenen Wiederherstellungspunkts wiederherstellen. Dies gilt sowohl für die Wiederherstellung aus der Momentaufnahme als auch aus dem Tresor.
 >
-> Diese Lösung ist in den folgenden Szenarien besonders nützlich:
->  
->1. Sie verfügen über kritische Daten, die auf nur eine m Datenträger gesichert werden sollen, und Sie möchten die übrigen, an einen virtuellen Computer angeschlossenen Datenträger nicht sichern. Dadurch werden die Kosten für den Sicherungsspeicher minimiert.  
->2. Sie verfügen über andere Sicherungslösungen für einen Teil ihrer VM-Daten. Sie sichern beispielsweise Ihre Datenbanken oder Daten mit einer anderen Workloadsicherungslösung und möchten für die übrigen Datenträger und Daten eine Sicherung auf Azure VM-Ebene verwenden, um ein effizientes und robustes System mit den besten verfügbaren Funktionen zu erstellen.
->
->Um sich für die Vorschauversion zu registrieren, schreiben Sie an AskAzureBackupTeam@microsoft.com.
+>**Schreiben Sie an AskAzureBackupTeam@microsoft.com, um sich für die Vorschauversion zu registrieren.**

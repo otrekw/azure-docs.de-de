@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 30083b4f2f5f9b69368a47ecaf5505c04ccd6df9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530696"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988174"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 
@@ -21,7 +21,6 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 
 |**Partner**  |**Funktionen und Erfahrung**  |**Unterstützte Länder/Regionen**  |**Kontakt**  |
 |---------|---------|---------|---------|
-|![ImanisData][1]   | Datenmigration aus MongoDB in Azure Cosmos DB. <br/> Imanis Data ermöglicht globalen Unternehmen die schnelle und einfache Migration ihrer lokalen oder MongoDB-Clouddatenbanken in Azure Cosmos DB. Imanis Data bietet einen agentenlosen, inkrementellen Cloud-Migrationsansatz für MongoDB-Datenspeicher, der die Migration vereinfacht und Ausfallzeiten erheblich verringert.|  USA  |   [Website](https://www.cohesity.com/products/imanis-data/)      |
 |![Striim][2]    |  [Verschieben von Echtzeitdaten mit Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) aus einer Vielzahl von Datenquellen. <br/> Striim vereinfacht die Echtzeiterfassung und -verschiebung von Daten aus einer Vielzahl von lokalen Quellen, einschließlich Unternehmensdokumenten und relationalen Datenbanken, Sensoren und Protokolldateien in Azure Cosmos DB. |   USA   |  [Website](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>Systemintegratorpartner
@@ -59,7 +58,6 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 Weitere Informationen zu weiteren Partnern von Microsoft finden Sie auf der [Microsoft Partner-Website](https://partner.microsoft.com/en-US/).
 
 <!--Image references-->
-[1]: ./media/partners-migration-cosmosdb/imanisdata_logo.png
 [2]: ./media/partners-migration-cosmosdb/striim_logo.png
 [3]: ./media/partners-migration-cosmosdb/altoros_logo.png
 [4]: ./media/partners-migration-cosmosdb/attunix_logo.png

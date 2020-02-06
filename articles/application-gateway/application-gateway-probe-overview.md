@@ -5,18 +5,24 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/16/2019
+ms.date: 01/28/2020
 ms.author: victorh
-ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130682"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766829"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 
-Azure Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End-Pool und entfernt automatisch alle als fehlerhaft geltenden Ressourcen aus dem Pool. Application Gateway überwacht die fehlerhaften Instanzen weiterhin und fügt sie dem fehlerfreien Back-End-Pool hinzu, sobald sie verfügbar sind und auf Zustandsüberprüfungen reagieren. Application Gateway sendet die Integritätstests über denselben Port, der in den HTTP-Einstellungen des Back-Ends festgelegt wurde. Durch diese Konfiguration wird sichergestellt, dass derselbe Port getestet wird, den der Kunde für die Verbindung mit dem Back-End verwenden würde.
+Azure Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End-Pool und entfernt automatisch alle als fehlerhaft geltenden Ressourcen aus dem Pool. Application Gateway überwacht die fehlerhaften Instanzen weiterhin und fügt sie dem fehlerfreien Back-End-Pool hinzu, sobald sie verfügbar sind und auf Zustandsüberprüfungen reagieren. Application Gateway sendet die Integritätstests über denselben Port, der in den HTTP-Einstellungen des Back-Ends festgelegt wurde. Durch diese Konfiguration wird sichergestellt, dass derselbe Port getestet wird, den der Kunde für die Verbindung mit dem Back-End verwenden würde. 
+
+Die Quell-IP-Adresse, die Application Gateway für Integritätstests verwendet, hängt vom Back-End-Pool ab:
+ 
+- Wenn der Back-End-Pool ein öffentlicher Endpunkt ist, ist die Quelladresse die öffentliche IP-Adresse des Application Gateway-Front-Ends.
+- Wenn der Back-End-Pool ein privater Endpunkt ist, stammt die Quell-IP-Adresse aus dem privaten IP-Adressbereich des Application Gateway-Subnetzes.
+
 
 ![Beispiel für einen Application Gateway-Test][1]
 
@@ -28,7 +34,7 @@ Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüber
 
 Ein Anwendungsgateway konfiguriert automatisch eine standardmäßige Integritätsüberprüfung, wenn Sie keine benutzerdefinierte Überprüfungskonfiguration einrichten. Das Verhalten der Überwachung funktioniert durch das Erstellen einer HTTP-Anforderung an die für den Back-End-Pool konfigurierten IP-Adressen. Bei Standardüberprüfungen wird auch HTTPS für den Integritätstest der Back-Ends verwendet, wenn die HTTP-Einstellungen des Back-Ends für HTTPS konfiguriert sind.
 
-Beispiel:  Sie konfigurieren Ihr Application Gateway für die Verwendung der Back-End-Server A, B und C zum Empfang von HTTP-Netzwerkdatenverkehr an Port 80. Die standardmäßige Integritätsüberwachung testet die drei Server alle 30 Sekunden auf eine fehlerfreie HTTP-Antwort. Eine fehlerfreie HTTP-Antwort weist einen [Statuscode](https://msdn.microsoft.com/library/aa287675.aspx) zwischen 200 und 399 auf.
+Beispiel: Sie konfigurieren Ihr Application Gateway für die Verwendung der Back-End-Server A, B und C zum Empfang von HTTP-Netzwerkdatenverkehr an Port 80. Die standardmäßige Integritätsüberwachung testet die drei Server alle 30 Sekunden auf eine fehlerfreie HTTP-Antwort. Eine fehlerfreie HTTP-Antwort weist einen [Statuscode](https://msdn.microsoft.com/library/aa287675.aspx) zwischen 200 und 399 auf.
 
 Wenn die Standardüberprüfung für Server A fehlschlägt, entfernt das Application Gateway sie aus dem Back-End-Pool, und der Netzwerkdatenverkehr an diesen Server wird angehalten. Die Standardüberprüfung führt weiterhin alle 30 Sekunden eine Überprüfung für Server A aus. Wenn Server A erfolgreich auf eine Anforderung einer standardmäßigen Integritätsüberprüfung antwortet, wird er dem Back-End-Pool wieder als fehlerfrei hinzugefügt, und der Datenverkehr an den Server startet erneut.
 
@@ -39,7 +45,7 @@ Standardmäßig gilt eine HTTP(S)-Antwort mit einem Statuscode zwischen 200 und 
 Abgleichskriterien: 
 
 - **Abgleich des Statuscodes der HTTP-Antwort**: Testabgleichskriterium zum Akzeptieren der vom Benutzer angegebenen HTTP-Antwortcodes oder -Antwortcodebereiche. Einzelne kommagetrennte Antwortstatuscodes und ein Bereich von Statuscodes werden unterstützt.
-- **Abgleich des HTTP-Antworttexts**: Testabgleichskriterium, das den HTTP-Antworttext heranzieht und ihn mit einer vom Benutzer angegebenen Zeichenfolge abgleicht. Beim Abgleich wird lediglich auf das Vorhandensein der vom Benutzer angegebenen Zeichenfolge im Antworttext geachtet. Es ist kein Abgleich mit einem vollständigen regulären Ausdruck.
+- **Abgleich des HTTP-Antworttexts**: Testabgleichskriterium, das den HTTP-Antworttext heranzieht und ihn mit einer vom Benutzer angegebenen Zeichenfolge abgleicht. Beim Abgleich wird lediglich auf das Vorhandensein der vom Benutzer angegebenen Zeichenfolge im Antworttext geachtet. Es findet kein Abgleich mit einem vollständigen regulären Ausdruck statt.
 
 Abgleichskriterien können mithilfe des Cmdlets `New-AzApplicationGatewayProbeHealthResponseMatch` angegeben werden.
 
@@ -53,12 +59,12 @@ Nachdem Sie die Abgleichskriterien angegeben haben, können sie der Testkonfigur
 
 ### <a name="default-health-probe-settings"></a>Einstellungen für die standardmäßige Integritätsüberprüfung
 
-| Überprüfungseigenschaft | Wert | BESCHREIBUNG |
+| Überprüfungseigenschaft | value | Beschreibung |
 | --- | --- | --- |
 | Überprüfungs-URL |http://127.0.0.1:\<port\>/ |URL-Pfad |
 | Intervall |30 |Wartezeitraum in Sekunden, bevor der nächste Integritätstest gesendet wird.|
 | Zeitüberschreitung |30 |Gibt in Sekunden an, wie lange das Anwendungsgateway auf eine Testantwort wartet, bevor der Test als fehlerhaft gekennzeichnet wird. Wenn ein Test als fehlerfrei zurückgegeben wird, wird das entsprechende Back-End sofort als fehlerfrei gekennzeichnet.|
-| Fehlerhafter Schwellenwert |3 |Steuert an, wie viele Tests gesendet werden sollen, falls für den regulären Integritätstest ein Fehler auftritt. Diese zusätzlichen Integritätstests werden in kurzen Abständen gesendet, um die Back-End-Integrität schnell zu ermitteln und nicht auf das Testintervall zu warten. Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
+| Fehlerhafter Schwellenwert |3 |Steuert, wie viele Tests gesendet werden sollen, falls beim regulären Integritätstest ein Fehler auftritt. Diese zusätzlichen Integritätstests werden in kurzen Abständen gesendet, um die Back-End-Integrität schnell zu ermitteln und nicht auf das Testintervall zu warten. Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
 
 > [!NOTE]
 > Dieser Port stimmt mit dem Port in den HTTP-Einstellungen des Back-Ends überein.
@@ -79,9 +85,9 @@ Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle 
 
 Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefinierten Integritätstests.
 
-| Überprüfungseigenschaft | BESCHREIBUNG |
+| Überprüfungseigenschaft | Beschreibung |
 | --- | --- |
-| NAME |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
+| Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
 | Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
 | Host |Hostname zum Senden der Überprüfung Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers. |
 | `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. |
@@ -95,7 +101,7 @@ Die folgende Tabelle enthält Definitionen der Eigenschaften eines benutzerdefin
 
 ## <a name="nsg-considerations"></a>NSG-Aspekte
 
-Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, müssen die Portbereiche 65503 - 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet sein. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
+Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, müssen die Portbereiche 65503–65534 im Application Gateway-Subnetz für eingehenden Datenverkehr geöffnet sein. Diese Ports sind erforderlich, damit die Back-End-Integritäts-API verwendet werden kann.
 
 Außerdem kann die Internetkonnektivität in ausgehender Richtung nicht blockiert werden, und eingehender Datenverkehr vom AzureLoadBalancer-Tag muss zugelassen werden.
 

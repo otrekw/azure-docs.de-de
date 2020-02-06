@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Migration virtueller VMware-Com
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: fa77b9d730c28c21569064d05ca3a600dfb71071
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 79ba3f17b225357267cbd114659851614279bb7f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028695"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989364"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>Migrieren von VMware-VMs zu Azure (ohne Agent)
 
@@ -184,7 +184,7 @@ Wenn dies die erste VM ist, die Sie im Rahmen des Azure Migrate-Projekts replizi
 - **Service Bus**: Für die Azure Migrate-Servermigration wird Service Bus verwendet, um Nachrichten zur Replikationsorchestrierung an die Appliance zu senden.
 - **Gatewayspeicherkonto**: Bei der Servermigration wird das Gatewayspeicherkonto verwendet, um Statusinformationen zu den replizierten VMs zu speichern.
 - **Protokollspeicherkonto**: Die Azure Migrate-Appliance lädt Replikationsprotokolle für VMs in ein Protokollspeicherkonto hoch. Azure Migrate wendet die Replikationsinformationen auf die verwalteten Replikatdatenträger an.
-- **Schlüsseltresor**: Von der Azure Migrate-Appliance wird der Schlüsseltresor verwendet, um Verbindungszeichenfolgen für den Service Bus zu verwalten, und Zugriffsschlüssel werden für die Speicherkonten genutzt, die bei der Replikation eingesetzt werden. Sie sollten die Berechtigungen, die vom Schlüsseltresor für den Zugriff auf das Speicherkonto benötigt werden, während der Vorbereitung eingerichtet haben. [Sehen Sie sich diese Berechtigungen an](tutorial-prepare-vmware.md#assign-role-assignment-permissions).   
+- **Schlüsseltresor**: Von der Azure Migrate-Appliance wird der Schlüsseltresor verwendet, um Verbindungszeichenfolgen für den Service Bus zu verwalten, und Zugriffsschlüssel werden für die Speicherkonten genutzt, die bei der Replikation eingesetzt werden. Sie sollten die Berechtigungen, die vom Schlüsseltresor für den Zugriff auf das Speicherkonto benötigt werden, während der Vorbereitung eingerichtet haben. [Sehen Sie sich diese Berechtigungen an](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault).   
 
 
 ## <a name="track-and-monitor"></a>Nachverfolgen und Überwachen

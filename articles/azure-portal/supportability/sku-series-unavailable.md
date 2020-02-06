@@ -1,25 +1,27 @@
 ---
-title: SKU-Serien nicht verfügbar | Microsoft Docs
-description: Einige SKU-Serien sind für das ausgewählte Abonnement für diese Region nicht verfügbar.
+title: 'Region oder SKU-Serien nicht verfügbar: Azure'
+description: Einige SKU-Serien sind für das ausgewählte Abonnement für diese Region nicht verfügbar. Daher ist unter Umständen eine Supportanfrage für die Abonnementverwaltung erforderlich.
 services: Azure Supportability
 author: stevendotwang
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: e317ae1ad88cf162f1d55a06d19e7b3b0b88ce60
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b0f0762ded6804c0b0d90a19223c082f0fb8fd49
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898686"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843629"
 ---
 # <a name="region-or-sku-unavailable"></a>Region oder SKU nicht verfügbar
+
 In diesem Artikel wird beschrieben, wie Sie das Problem beheben können, dass ein Azure-Abonnement keinen Zugriff auf eine Region oder eine VM-SKU hat.
 
 ## <a name="symptoms"></a>Symptome
 
-### <a name="when-deploying-a-virtual-machine-you-receive-one-of-the-following-error-messages"></a>Wenn Sie einen virtuellen Computer bereitstellen, erhalten Sie eine der folgenden Fehlermeldungen:
+Wenn Sie einen virtuellen Computer bereitstellen, erhalten Sie eine der folgenden Fehlermeldungen:
+
 ```
 Code: SkuNotAvailable
 Message: The requested size for resource '<resource>' is currently not available in location 
@@ -37,7 +39,7 @@ Code: NotAvailableForSubscription
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-purchasing-reserved-virtual-machine-instances-you-receive-one-of-the-following-error-messages"></a>Wenn Sie reservierte VM-Instanzen erwerben, erhalten Sie eine der folgenden Fehlermeldungen:
+Wenn Sie reservierte VM-Instanzen erwerben, erhalten Sie eine der folgenden Fehlermeldungen:
 
 ```
 Message: Your subscription doesn’t support virtual machine reservation in <location>. Choose a 
@@ -48,32 +50,38 @@ different location. Supported locations are: <list of locations>
 Message: This size is currently unavailable in this location for this subscription
 ```
 
-### <a name="when-creating-a-support-request-to-increase-compute-core-quota-a-region-or-a-sku-family-is-not-available-for-selection"></a>Bei der Erstellung einer Supportanfrage zur Erhöhung des Kontingents für Computekerne steht eine Region oder eine SKU-Familie nicht zur Auswahl.
+Bei der Erstellung einer Supportanfrage zur Erhöhung des Kontingents für Computekerne steht eine Region oder eine SKU-Familie nicht zur Auswahl.
 
 ## <a name="solution"></a>Lösung
-Wir empfehlen Ihnen zunächst, eine alternative Region oder SKU auszuwählen, die Ihren Geschäftsanforderungen entspricht. Wenn Sie keine passende Region oder SKU finden können, erstellen Sie eine [Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) für die „Abonnementverwaltung“, indem Sie die folgenden Schritte ausführen:
 
+Wir empfehlen Ihnen zunächst, eine alternative Region oder SKU auszuwählen, die Ihren Geschäftsanforderungen entspricht.
 
-- Wählen Sie auf der Seite „Grundlagen“ als Problemtyp „Abonnementverwaltung“ und dann das Abonnement aus, und klicken Sie auf „Weiter“.
+Wenn Sie keine passende Region oder SKU finden können, erstellen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) für die **Abonnementverwaltung**, indem Sie die folgenden Schritte ausführen:
 
-![Blatt "Grundlagen"](./media/SKU-series-unavailable/BasicsSubMgmt.png)
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus. Klicken Sie anschließend auf **Neue Supportanfrage**.
 
+1. Wählen Sie unter **Grundlegende Einstellungen** für **Problemtyp** die Option **Abonnementverwaltung** aus.
 
--   Wählen Sie auf der Seite „Problem“ den Problemtyp „Sonstige allgemeine Fragen“ aus.
-- Im Abschnitt „Details“:
-  - Geben Sie an, ob Sie virtuelle Computer bereitstellen oder reservierte VM-Instanzen erwerben möchten.
-  - Geben Sie die Region, die SKU und die Anzahl der Instanzen virtueller Computer an, die Sie bereitstellen oder erwerben möchten.
+1. Wählen Sie ein **Abonnement** aus, und geben Sie unter **Zusammenfassung** eine kurze Beschreibung ein.
 
+   ![Registerkarte „Grundlegende Einstellungen“ unter „Neue Supportanfrage“](./media/SKU-series-unavailable/support-request-basics.png)
 
-![Problem](./media/SKU-series-unavailable/ProblemSubMgmt.png)
+1. Wählen Sie unter **Problemtyp** die Option **Problemtyp auswählen** aus.
 
--   Geben Sie Ihre Kontaktdaten ein, und klicken Sie auf „Erstellen“.
+1. Wählen Sie unter **Problemtyp auswählen** eine Option aus, beispielsweise **Auf mein Abonnement bzw. meine Ressource konnte nicht zugegriffen werden** > **My issue is not listed above** (Mein Problem ist oben nicht aufgeführt.). Wählen Sie **Speichern** aus.
 
-![Kontaktinformationen](./media/SKU-series-unavailable/ContactInformation.png)
+   ![Angeben eines Problems für die Anfrage](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
-## <a name="feedback"></a>Feedback
+1. Klicken Sie auf **Weiter: Lösungen**, um mögliche Lösungen zu untersuchen. Wählen Sie ggf. **Weiter: Details** aus, um fortzufahren.
+
+1. Geben Sie ggf. weitere Informationen sowie Ihre Kontaktinformationen ein.
+
+1. Klicken Sie auf **Überprüfen + erstellen**. Nachdem Sie Ihre Informationen überprüft haben, wählen Sie **Erstellen** aus, um die Anfrage zu erstellen.
+
+## <a name="send-us-your-suggestions"></a>Senden von Vorschlägen
+
 Wir sind stets offen für Feedback und Vorschläge. Senden Sie uns Ihre [Vorschläge](https://feedback.azure.com/forums/266794-support-feedback). Außerdem erreichen Sie uns über [Twitter](https://twitter.com/azuresupport) oder die [MSDN-Foren](https://social.msdn.microsoft.com/Forums/azure).
 
 ## <a name="learn-more"></a>Weitere Informationen
-[Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)
 
+[Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq)

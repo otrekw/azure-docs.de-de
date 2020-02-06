@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113854"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838257"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Verarbeiten und Extrahieren von Informationen aus Bildern in KI-Anreicherungsszenarien
 
@@ -29,7 +29,7 @@ Im Rahmen der Dokumentaufschlüsselung steht ein neuer Satz von Indexerkonfigura
 
 Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilder durchlaufen, erwarten normalisierte Bilder. Das Aktivieren der Imagenormalisierung für einen Indexer erfordert, dass diesem Indexer ein Skillset angefügt wird.
 
-| Konfigurationsparameter | BESCHREIBUNG |
+| Konfigurationsparameter | Beschreibung |
 |--------------------|-------------|
 | imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie die Eigenschaft auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu generieren, bei dem für PDFs in der Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
 |  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“. Der zulässige Höchstwert ist 10.000. | 
@@ -60,7 +60,7 @@ Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microso
 
 Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Jedes Bild ist ein komplexer Typ mit folgenden Elementen:
 
-| Bildelement       | BESCHREIBUNG                             |
+| Bildelement       | Beschreibung                             |
 |--------------------|-----------------------------------------|
 | data               | Base64-codierte Zeichenfolge mit dem normalisierten Bild im JPEG-Format.   |
 | width              | Breite des normalisierten Bilds (in Pixel). |
@@ -215,8 +215,8 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
 
 ## <a name="see-also"></a>Weitere Informationen
 + [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
-+ [Image Analysis cognitive skill](cognitive-search-skill-image-analysis.md) (Kognitive Qualifikation: Bildanalyse)
++ [Skill für Bildanalyse](cognitive-search-skill-image-analysis.md)
 + [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
 + [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)
-+ [How to create a skillset in an enrichment pipeline](cognitive-search-defining-skillset.md) (Erstellen einer Qualifikationsgruppe in einer Anreicherungspipeline)
-+ [How to map enriched fields to a searchable index](cognitive-search-output-field-mapping.md) (Zuordnen angereicherter Felder zu einem durchsuchbaren Index)
++ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

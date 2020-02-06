@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433294"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963654"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -74,7 +74,9 @@ Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder. Wei
 
 ### <a name="avoid-sharing-storage-accounts"></a>Vermeiden der Freigabe von Speicherkonten
 
-Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet. Verwenden Sie für jede Funktions-App ein separates Speicherkonto, um die Leistung zu maximieren. Dies ist besonders wichtig, wenn Sie über Durable Functions oder durch Event Hub ausgelöste Funktionen verfügen, die eine große Menge an Speichertransaktionen generieren. Wenn Ihre Anwendungslogik mit Azure Storage interagiert (direkt mit dem Storage SDK oder über eine der Speicherbindungen), sollten Sie ein dediziertes Speicherkonto verwenden. Wenn Sie z. B. über eine von Event Hub ausgelöste Funktion verfügen, die Daten in Blob Storage schreibt, verwenden Sie zwei Speicherkonten &mdash; eines für die Funktions-App und ein weiteres für die Blobs, die von der Funktion gespeichert werden.
+Wenn Sie eine Funktions-App erstellen, müssen Sie sie einem Speicherkonto zuordnen. Die Speicherkontoverbindung wird in der Anwendungseinstellung [AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage) verwaltet. 
+
+[!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
 

@@ -15,37 +15,36 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7afad7bdc0cd0fb957104e4963eaade96fa2d840
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88062c2134600d5b1460858c3799cfc8daa83744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423932"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775229"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
 Erfahren Sie, wie Sie den Code Ihrer Daemonanwendung konfigurieren können, die Web-APIs aufruft.
 
-## <a name="msal-libraries-supporting-daemon-apps"></a>MSAL-Bibliotheken, die Daemon-Apps unterstützen
+## <a name="msal-libraries-that-support-daemon-apps"></a>MSAL-Bibliotheken, die Daemon-Apps unterstützen
 
 Folgende Microsoft-Bibliotheken unterstützen Daemon-Apps:
 
-  MSAL-Bibliothek | BESCHREIBUNG
+  MSAL-Bibliothek | Beschreibung
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Die folgenden Plattformen werden zum Erstellen von Daemonanwendungen unterstützt: .NET Framework und .NET Core (nicht unterstützt: UWP, Xamarin.iOS und Xamarin.Android, da mit diesen Plattformen öffentliche Clientanwendungen erstellt werden).
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützung für Daemon-Anwendungen in Python
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützung für Daemon-Anwendungen in Java
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Die Plattformen .NET Framework und .NET Core werden zum Entwickeln von Daemonanwendungen unterstützt. (UWP, Xamarin.iOS und Xamarin.Android werden nicht unterstützt, da mit diesen Plattformen öffentliche Clientanwendungen erstellt werden.)
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützung für Daemonanwendungen in Python
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | Unterstützung für Daemonanwendungen in Java
 
-## <a name="configuration-of-the-authority"></a>Autoritätskonfiguration
+## <a name="configure-the-authority"></a>Konfigurieren der Autorität
 
-Da Ihre Daemonanwendungen keine delegierten Berechtigungen, sondern Anwendungsberechtigungen verwenden, darf ihr *unterstützter Kontotyp* nicht *Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)* lauten. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
+Daemonanwendungen verwenden Anwendungsberechtigungen anstelle von delegierten Berechtigungen. Daher kann ihr unterstützter Kontotyp kein Konto in einem Organisationsverzeichnis und kein persönliches Microsoft-Konto (z. B. Skype, Xbox, Outlook.com) sein. Es gibt keinen Mandantenadministrator, der der Daemonanwendung für persönliche Microsoft-Konten Einwilligung erteilen könnte. Sie müssen *accounts in my organization* (Konten in meiner Organisation) oder *accounts in any organization* (Konten in allen Organisationen) auswählen.
 
 Deshalb sollte die in der Anwendungskonfiguration angegebene Autorität über einen Mandanten verfügen (eine Mandanten-ID oder ein Domänennamen, die zu Ihrer Organisation gehören).
 
-Wenn Sie ein unabhängiger Softwarehersteller sind und ein mehrinstanzenfähiges Tool bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden auch erklären müssen, wie die Administratoreinwilligung erteilt wird. Weitere Informationen finden Sie im Abschnitt zum [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung: `organizations` ist nur zulässig, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind.
+Wenn Sie ein unabhängiger Softwarehersteller sind und ein mehrinstanzenfähiges Tool bereitstellen möchten, können Sie `organizations` verwenden. Beachten Sie jedoch, dass Sie Ihren Kunden auch erklären müssen, wie die Administratoreinwilligung erteilt wird. Weitere Einzelheiten finden Sie unter [Anfordern der Einwilligung für einen gesamten Mandanten](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). Außerdem gibt es derzeit in MSAL eine Einschränkung: `organizations` ist nur zulässig, wenn die Clientanmeldeinformationen ein Anwendungsgeheimnis (kein Zertifikat) sind.
 
-## <a name="application-configuration-and-instantiation"></a>Konfiguration und Instanziierung von Anwendungen
+## <a name="configure-and-instantiate-the-application"></a>Konfigurieren und Instanziieren der Anwendung
 
 Die Clientanmeldeinformationen in MSAL-Bibliotheken (Geheimnis oder Zertifikat) werden als Parameter der vertraulichen Clientanwendungskonstruktion übergeben.
 
@@ -56,9 +55,9 @@ Die Clientanmeldeinformationen in MSAL-Bibliotheken (Geheimnis oder Zertifikat) 
 
 Die Konfigurationsdatei definiert Folgendes:
 
-- Die Autorität oder Cloudinstanz und Mandanten-ID
-- Die Client-ID, die Sie von der Anwendungsregistrierung erhalten haben
-- Einen geheimen Clientschlüssel oder ein Zertifikat
+- Die Autorität oder die Cloudinstanz und die Mandanten-ID
+- Die Client-ID, die Sie bei der Anwendungsregistrierung erhalten haben
+- Ein geheimer Clientschlüssel oder ein Zertifikat
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -74,11 +73,11 @@ Die Konfigurationsdatei definiert Folgendes:
 }
 ```
 
-Geben Sie entweder einen geheimen Clientschlüssel oder einen Zertifikatnamen an. Beide Einstellungen sind exklusiv.
+Sie stellen entweder ein `ClientSecret` oder einen `CertificateName` bereit. Diese Einstellungen sind exklusiv.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Beim Erstellen eines vertraulichen Clients mit geheimen Clientschlüsseln sieht die Konfigurationsdatei [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) im Beispiel [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) wie folgt aus.
+Beim Erstellen eines vertraulichen Clients mit geheimen Clientschlüsseln sieht die Konfigurationsdatei [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/1-Call-MsGraph-WithSecret/parameters.json) im Beispiel für den [Python-Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) wie folgt aus:
 
 ```Json
 {
@@ -90,7 +89,7 @@ Beim Erstellen eines vertraulichen Clients mit geheimen Clientschlüsseln sieht 
 }
 ```
 
-Beim Erstellen eines vertraulichen Clients mit Zertifikaten sieht die Konfigurationsdatei [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) im Beispiel [Python Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) wie folgt aus.
+Beim Erstellen eines vertraulichen Clients mit Zertifikaten sieht die Konfigurationsdatei [parameters.json](https://github.com/Azure-Samples/ms-identity-python-daemon/blob/master/2-Call-MsGraph-WithCertificate/parameters.json) im Beispiel für den [Python-Daemon](https://github.com/Azure-Samples/ms-identity-python-daemon) wie folgt aus:
 
 ```Json
 {
@@ -105,7 +104,7 @@ Beim Erstellen eines vertraulichen Clients mit Zertifikaten sieht die Konfigurat
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Dies ist die Klasse, mit der die Beispiele in den MSAL Java-Entwicklungsbeispielen konfiguriert werden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java) ist die Klasse, mit der die MSAL Java-Entwicklungsbeispiele konfiguriert werden:
 
 ```Java
 public class TestData {
@@ -119,12 +118,11 @@ public class TestData {
 
 ---
 
-### <a name="instantiation-of-the-msal-application"></a>Instanziierung der MSAL-Anwendung
+### <a name="instantiate-the-msal-application"></a>Instanziierung der MSAL-Anwendung
 
-Zum Instanziieren der MSAL-Anwendung müssen Sie folgende Schritte ausführen:
+Zum Instanziieren der MSAL-Anwendung müssen Sie das MSAL-Paket hinzufügen, referenzieren oder importieren (abhängig von der Sprache).
 
-- Fügen Sie das MSAL-Paket (sprachabhängig) hinzu, importieren Sie es, oder verweisen Sie darauf.
-- Die Konstruktion unterscheidet sich je nach Verwendung von geheimen Clientschlüsseln oder Zertifikaten (oder als erweitertes Szenario mit signierten Assertionen).
+Die Konstruktion unterscheidet sich je nach Verwendung von geheimen Clientschlüsseln oder Zertifikaten (oder als erweitertes Szenario mit signierten Assertionen).
 
 #### <a name="reference-the-package"></a>Verweisen auf das Paket
 
@@ -158,7 +156,7 @@ import com.microsoft.aad.msal4j.IAuthenticationResult;
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-secrets"></a>Instanziieren der vertraulichen Clientanwendung mit geheimen Clientschlüsseln
+#### <a name="instantiate-the-confidential-client-application-with-a-client-secret"></a>Instanziieren der vertraulichen Clientanwendung mit einem geheimen Clientschlüssel
 
 Im Folgenden finden Sie den Code zum Instanziieren der vertraulichen Clientanwendung mit einem geheimen Clientschlüssel:
 
@@ -176,7 +174,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential=config["secret"],
@@ -198,9 +196,9 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="instantiate-the-confidential-client-application-with-client-certificate"></a>Instanziieren der vertraulichen Clientanwendung mit Clientzertifikat
+#### <a name="instantiate-the-confidential-client-application-with-a-client-certificate"></a>Instanziieren der vertraulichen Clientanwendung mit einem Clientzertifikat
 
-Im Folgenden sehen Sie den Code zum Erstellen einer Anwendung mit einem Zertifikat:
+Im Folgenden finden Sie den Code zum Erstellen einer Anwendung mit einem Zertifikat:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -217,7 +215,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},
@@ -233,8 +231,8 @@ In MSAL.Java gibt es zwei Generatoren zum Instanziieren der vertraulichen Client
 
 ```Java
 
-InputStream pkcs12Certificate = ... ; /* containing PCKS12 formatted certificate*/
-string certificatePassword = ... ;    /* contains the password to access the certificate */
+InputStream pkcs12Certificate = ... ; /* Containing PCKS12-formatted certificate*/
+string certificatePassword = ... ;    /* Contains the password to access the certificate */
 
 ConfidentialClientApplication app = ConfidentialClientApplication.builder(
         TestData.CONFIDENTIAL_CLIENT_ID,
@@ -258,7 +256,7 @@ ConfidentialClientApplication app = ConfidentialClientApplication.builder(
 
 ---
 
-#### <a name="advanced-scenario---instantiate-the-confidential-client-application-with-client-assertions"></a>Erweitertes Szenario: Instanziieren der vertraulichen Clientanwendung mit Clientassertionen
+#### <a name="advanced-scenario-instantiate-the-confidential-client-application-with-client-assertions"></a>Erweitertes Szenario: Instanziieren der vertraulichen Clientanwendung mit Clientassertionen
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -278,8 +276,8 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Bei Verwendung von `WithClientClaims` berechnet MSAL.NET eine signierte Assertion, die die von Azure AD erwarteten Ansprüche sowie zusätzliche Clientansprüche enthält, die Sie senden möchten.
-Im folgenden Codeausschnitt wird die Vorgehensweise gezeigt:
+Bei Verwendung von `WithClientClaims` erstellt MSAL.NET eine signierte Assertion, die die von Azure AD erwarteten Ansprüche sowie zusätzliche Clientansprüche enthält, die Sie senden möchten.
+Dies wird im folgenden Code veranschaulicht:
 
 ```csharp
 string ipAddress = "192.168.1.2";
@@ -295,12 +293,12 @@ Auch hierzu finden Sie ausführliche Informationen unter [Clientassertionen](msa
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-In MSAL.Python können Sie Clientansprüche mithilfe der Ansprüche bereitstellen, die mit dem privaten Schlüssel von `ConfidentialClientApplication` signiert werden.
+In MSAL Python können Sie Clientansprüche mithilfe der Ansprüche bereitstellen, die mit dem privaten Schlüssel von `ConfidentialClientApplication` signiert werden.
 
 ```Python
 config = json.load(open(sys.argv[1]))
 
-# Create a preferably long-lived app instance which maintains a token cache.
+# Create a preferably long-lived app instance that maintains a token cache.
 app = msal.ConfidentialClientApplication(
     config["client_id"], authority=config["authority"],
     client_credential={"thumbprint": config["thumbprint"], "private_key": open(config['private_key_file']).read()},

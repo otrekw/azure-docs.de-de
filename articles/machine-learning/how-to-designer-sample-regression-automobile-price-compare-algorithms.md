@@ -5,25 +5,25 @@ description: Erstellen und vergleichen Sie mehrere ML-Regressionsmodelle, um den
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 189b36c8d9a7c1d1e247bb2cb34795dc4e3595ce
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311046"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963341"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Trainieren und vergleichen Sie mehrere Regressionsmodelle, um Autopreise mit dem Azure Machine Learning-Designer vorherzusagen.
 
-**Designer-Beispiel 2**
+**Designer (Vorschauversion) – Beispiel 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Erfahren Sie, wie Sie im Designer eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel werden mehrere Regressionsmodelle trainiert und verglichen, um den Preis eines Fahrzeugs anhand seiner technischen Merkmale vorherzusagen. Wir stellen die Gründe für die Entscheidungen bereit, die in dieser Pipeline getroffen wurden, damit Sie Ihre eigenen Probleme durch maschinelles Lernen lösen können.
+Erfahren Sie, wie Sie im Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel werden mehrere Regressionsmodelle trainiert und verglichen, um den Preis eines Fahrzeugs anhand seiner technischen Merkmale vorherzusagen. Wir stellen die Gründe für die Entscheidungen bereit, die in dieser Pipeline getroffen wurden, damit Sie Ihre eigenen Probleme durch maschinelles Lernen lösen können.
 
 Wenn Sie noch keine Erfahrung mit maschinellem Lernen haben, sehen Sie sich zunächst die [Basisversion](how-to-designer-sample-regression-automobile-price-basic.md) dieser Pipeline an.
 

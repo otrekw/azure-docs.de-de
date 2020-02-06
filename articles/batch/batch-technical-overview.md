@@ -4,7 +4,7 @@ description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für u
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: gwallace
+manager: evansma
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: markscu
 ms.custom: mvc
-ms.openlocfilehash: ee61f0f550a09640469914d29bde175028b59142
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094325"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022799"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -63,7 +63,7 @@ Für Azure Batch sind auch allgemeinere workloadspezifische Funktionen verfügba
 Sie können Batch-Aufträge auch im Rahmen eines größeren Azure-Workflows zum Transformieren von Daten ausführen, der mit Tools wie [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md) verwaltet wird.
 
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 Ein häufiges Szenario für Batch ist das horizontale Hochskalieren von intrinsisch parallelen Arbeitsschritten, z.B. das Rendern von Bildern für 3D-Szenen, in einem Pool mit Computeknoten. Dieser Pool mit Computeknoten kann als Ihre „Renderfarm“ dienen, mit der für den Renderauftrag Dutzende, Hunderte oder sogar Tausende von Kernen bereitgestellt werden.
 
 Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargestellt, bei dem eine Clientanwendung oder ein gehosteter Dienst Batch zum Ausführen einer parallelen Workload verwendet.
@@ -71,7 +71,7 @@ Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargeste
 ![Exemplarische Vorgehensweise für Batch-Lösung](./media/batch-technical-overview/tech_overview_03.png)
 
 
-|Schritt  |BESCHREIBUNG  |
+|Schritt  |Beschreibung  |
 |---------|---------|
 |1.  Laden Sie die **Eingabedateien** und die **Anwendungen**, mit der diese Dateien verarbeitet werden, in Ihr Azure Storage-Konto hoch.     |Bei den Eingabedateien kann es sich um alle Daten handeln, die von Ihrer Anwendung verarbeitet werden, z.B. Daten für Finanzmodelle oder zu transcodierende Videodateien. Die Anwendungsdateien können Skripts oder Anwendungen enthalten, mit denen die Daten verarbeitet werden, z.B. einen Medien-Transcoder.|
 |2.  Erstellen Sie einen Batch-**Pool** mit Computeknoten in Ihrem Batch-Konto, einen **Auftrag** zum Ausführen der Workload im Pool und **Aufgaben** im Auftrag.     | Poolknoten sind die VMs, mit denen Ihre Aufgaben ausgeführt werden. Geben Sie Eigenschaften an, beispielsweise die Anzahl und Größe der Knoten, ein Windows- oder Linux-VM-Image und eine Anwendung, die installiert werden soll, wenn die Knoten dem Pool beitreten. Verwalten Sie die Kosten und die Größe des Pools, indem Sie [VMs mit niedriger Priorität](batch-low-pri-vms.md) verwenden oder die [automatische Skalierung](batch-automatic-scaling.md) der Anzahl von Knoten durchführen, wenn sich die Workload ändert. <br/><br/>Wenn Sie einem Auftrag Aufgaben hinzufügen, plant der Batch-Dienst die Aufgaben automatisch für die Ausführung auf den Computeknoten im Pool ein. Jede Aufgabe verwendet die Anwendung, die Sie hochgeladen haben, zum Verarbeiten der Eingabedateien. |

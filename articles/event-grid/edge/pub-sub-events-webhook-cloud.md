@@ -9,16 +9,16 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100327"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844587"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Tutorial: Veröffentlichen und Abonnieren von Ereignissen in der Cloud
 
-Dieser Artikel führt Sie durch alle Schritte, die erforderlich sind, um Ereignisse mithilfe von Event Grid in IoT Edge zu veröffentlichen und zu abonnieren.
+Dieser Artikel führt Sie durch alle Schritte, die erforderlich sind, um Ereignisse mithilfe von Event Grid in IoT Edge zu veröffentlichen und zu abonnieren. In diesem Tutorial wird eine Azure-Funktion als Ereignishandler verwendet. Weitere Zieltypen finden Sie unter [Ereignishandler und Ziele in Event Grid in Edge](event-handlers.md).
 
 Lesen Sie die grundlegenden Informationen zu Event Grid-Themen und Abonnements unter [Event Grid-Konzepte](concepts.md), bevor Sie fortfahren.
 
@@ -77,12 +77,12 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. Ei
           }
         }
     ```
-1. Führen Sie den folgenden Befehl aus, um das Thema zu erstellen. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+1. Führen Sie den folgenden Befehl aus, um das Thema zu erstellen. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
-1. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Thema erfolgreich erstellt wurde. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+1. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Thema erfolgreich erstellt wurde. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -108,6 +108,8 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. Ei
 
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfang von Ereignissen müssen die Abonnenten ein Event Grid-Abonnement für das gewünschte Thema erstellen.
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+
 1. Erstellen Sie eine Datei „subscription2.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 
     ```json
@@ -125,12 +127,12 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
 
    >[!NOTE]
    > Die **endpointType**-Eigenschaft gibt an, dass es sich bei dem Abonnenten um einen Webhook handelt.  Die **endpointUrl** gibt die URL an, an der der Abonnent auf Ereignisse lauscht. Diese URL entspricht der aus dem Azure Functions-Beispiel, das Sie zuvor eingerichtet haben.
-2. Führen Sie den folgenden Befehl aus, um das Abonnement zu erstellen. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+2. Führen Sie den folgenden Befehl aus, um das Abonnement zu erstellen. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
     ```
-3. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Abonnement erfolgreich erstellt wurde. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+3. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Abonnement erfolgreich erstellt wurde. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
@@ -203,3 +205,4 @@ In diesem Tutorial haben Sie ein Event Grid-Thema und ein Abonnement erstellt un
 * Richten Sie die Persistenz des Event Grid-Moduls unter [Linux](persist-state-linux.md) oder [Windows](persist-state-windows.md) ein.
 * Befolgen Sie die Informationen zum Konfigurieren der Clientauthentifizierung in der [Dokumentation](configure-client-auth.md).
 * Befolgen Sie die Anleitung in diesem [Tutorial](forward-events-event-grid-cloud.md), um Ereignisse an Azure Event Grid in der Cloud weiterzuleiten.
+* [Überwachen von Themen und Ereignisabonnements](monitor-topics-subscriptions.md)

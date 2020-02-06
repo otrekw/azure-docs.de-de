@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Bewertung in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Hyper-V-Bewertung mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154804"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834466"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Unterstützungsmatrix für die Hyper-V-Bewertung
 
@@ -64,7 +64,7 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 
 **Device** | **Connection**
 --- | ---
-**Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
+**Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443 (HTTPS), 5671 und 5672 (AMQP), um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden.
 **Hyper-V-Host/-Cluster** | Eingehende Verbindungen an den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten der Hyper-V-VMs mithilfe einer CIM-Sitzung (Common Information Model)
 
 ## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten

@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289525"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772032"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -131,7 +131,7 @@ Wenn dies nicht funktioniert und Sie VMware-Server erkennen:
 
 ## <a name="vm-data-not-in-portal"></a>VM-Daten nicht im Portal
 
-Wenn ermittelte VMs nicht im Portal angezeigt werden, warten Sie einige Minuten. Es dauert bis zu 30 Minuten, bis die ermittelten Daten im Portal angezeigt werden. Wenn nach 30 Minuten keine Daten vorhanden sind, versuchen Sie, die Daten wie folgt zu aktualisieren:
+Wenn ermittelte virtuelle Computer nicht im Portal angezeigt werden oder die VM-Daten veraltet sind, warten Sie einige Minuten. Es dauert bis zu 30 Minuten, bis Änderungen an den ermittelten VM-Konfigurationsdaten im Portal angezeigt werden. Es kann einige Stunden dauern, bis Änderungen an Anwendungsdaten angezeigt werden. Sollten nach dieser Zeit immer noch keine Daten vorhanden sein, versuchen Sie, die Daten wie folgt zu aktualisieren:
 
 1. Wechseln Sie zu **Server** > **Azure Migrate-Serverbewertung**, und wählen Sie **Übersicht** aus.
 2. Wählen Sie unter **Verwalten** die Option **Agent-Integritätsdiagnose** aus.
@@ -166,7 +166,8 @@ Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
 9009: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Dies kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
 9010: „Die auf dem Server installierten Anwendungen können nicht abgerufen werden“. | Das könnte ein interner Fehler sein.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
 8084: „Anwendungen können aufgrund eines VMware-Fehlers nicht ermittelt werden:  <Exception from VMware>“ | Die Azure Migrate-Appliance verwendet VMware-APIs zum Ermitteln von Anwendungen. Das Problem kann aufgrund einer Ausnahme auftreten, die von vCenter Server beim Versuch der Ermittlung von Anwendungen ausgelöst wurde. Die Fehlermeldung von VMware wird in der Fehlermeldung im Portal angezeigt. | Suchen Sie nach der Nachricht in der [VMware-Dokumentation](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), und folgen Sie den Schritten zur Behebung. Wenn Sie das Problem nicht beheben können, wenden Sie sich an den Microsoft-Support.
-
+9012: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Das Problem kann aufgrund eines internen Fehlers auftreten.  | Wenn sich das Problem nicht innerhalb von 24 Stunden von selbst löst, wenden Sie sich an den Support.
+9013: „Die auf dem Server installierten Anwendungen können nicht ermittelt werden.“ | Bei jeder Anmeldung bei dem virtuellen Computer wird ein neues temporäres Profil erstellt.  | Stellen Sie sicher, dass für den angegebenen Gastbenutzer kein temporäres Profil erstellt wird.
 
 
 

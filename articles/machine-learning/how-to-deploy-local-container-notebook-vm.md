@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763520"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843530"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Bereitstellen eines Modells auf einer Azure Machine Learning Studio-Compute-Instanz
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> Compute-Instanzen (Vorschau) sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
+> Compute-Instanzen (Vorschauversion) sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar.
 >Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.  Sie können ein Modell entweder auf einer Compute-Instanz oder einer Notebook-VM bereitstellen, indem Sie die Schritte in diesem Artikel ausführen.
 
 Erfahren Sie, wie Sie mit Azure Machine Learning ein Modell als Webdienst auf Ihrer Azure Machine Learning-Compute-Instanz bereitstellen können. Verwenden Sie Compute-Instanzen, wenn eine der folgenden Bedingungen zutrifft:

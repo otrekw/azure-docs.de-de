@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3359d99d7e20bbced8950171fa34592fd2612500
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421948"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930395"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
 
@@ -75,6 +75,8 @@ Mit Azure Automation wird der Lebenszyklus Ihrer Infrastruktur und Anwendungen v
 * **Überwachen**: Identifizieren Sie Änderungen auf Computern, die Probleme verursachen, und beheben Sie diese, oder nutzen Sie die Eskalation an Verwaltungssysteme.
 * **Schützen**: Aktivieren Sie für eine VM den Quarantänezustand, wenn eine Sicherheitswarnung ausgelöst wird. Legen Sie Anforderungen auf Gastsystemen fest.
 * **Steuern**: Richten Sie die rollenbasierte Zugriffssteuerung für Teams ein. Stellen Sie ungenutzte Ressourcen wieder her.
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="pricing-for-automation"></a>Preise für Automation
 

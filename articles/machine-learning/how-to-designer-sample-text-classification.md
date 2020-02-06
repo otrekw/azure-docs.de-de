@@ -5,25 +5,25 @@ description: Erstellen Sie eine Klassifizierung für eine logistische Regression
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311035"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963240"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Erstellen Sie mit Azure Machine Learning-Designer einen Klassifizierer zur Vorhersage der Unternehmenskategorie.
 
-**Designer-Beispiel 7**
+**Designer (Vorschauversion) – Beispiel 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dieses Beispiel veranschaulicht das Erstellen einer Textklassifizierungspipeline mit Textanalysemodulen im Azure Machine Learning-Designer.
+Dieses Beispiel veranschaulicht das Erstellen einer Textklassifizierungspipeline mit Textanalysemodulen im Azure Machine Learning-Designer (Vorschauversion).
 
 Das Ziel der Textklassifizierung besteht darin, einen Text mindestens einer vordefinierten Klasse oder Kategorie zuzuweisen. Bei dem Text kann es sich beispielsweise um ein Dokument, einen Nachrichtenartikel, eine Suchabfrage, eine E-Mail, einen Tweet, ein Supportticket, Kundenfeedback oder um die Produktrezension eines Benutzers handeln. Zu den Anwendungsbereichen der Textklassifizierung zählen unter anderem die Kategorisierung von Zeitungsartikeln und Nachrichteninhalten in Themen, die Strukturierung von Webseiten in hierarchische Kategorien, Standpunktanalysen, die Vorhersage der Benutzerabsicht auf der Grundlage von Suchabfragen, die Weiterleitung von Supporttickets sowie die Analyse von Kundenfeedback. 
 

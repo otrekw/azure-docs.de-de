@@ -2,20 +2,20 @@
 title: Aufgaben des Projektleiters im Team Data Science-Prozess
 description: Eine ausführliche exemplarische Vorgehensweise zu den Aufgaben für einen Projektleiter in einem Team Data Science-Prozessteam
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244387"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714415"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Aufgaben von Projektleitern im Team Data Science-Prozess
 
@@ -45,7 +45,7 @@ In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Ber
 - **Repositorys** für Teamvorlagen und Hilfsprogramme
 - **Berechtigungen** für Ihr Organisationskonto, damit Sie Repositorys für Ihr Projekte erstellen und bearbeiten können
 
-Damit Sie Repositorys klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer Data Science Virtual Machine (DSVM) ändern können oder um Azure-Dateispeicher einzurichten und auf Ihrer DSVM einzubinden, benötigen Sie außerdem Folgendes:
+Um Repositorys zu klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer Data Science Virtual Machine (DSVM) zu ändern oder um Azure-Dateispeicher einzurichten und auf Ihrer DSVM einzubinden, sollten Sie außerdem folgende Prüfliste durchgehen:
 
 - Ein Azure-Abonnement.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.

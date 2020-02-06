@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f8aab2c5e942944f6251eef0aaaec204ce5ad076
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 69fe4b98c26ac2f67fc777b754f3bc391e3b71b5
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668778"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023054"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Hinzufügen von Pushbenachrichtigungen zur Xamarin.Forms-App
 
@@ -201,8 +201,9 @@ Wenn das Back-End per FCM konfiguriert wurde, können Sie dem Client für die Re
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
-
+            //Unique request code to avoid PendingIntent collision.
+            var requestCode = new Random().Next();
+            var pendingIntent = PendingIntent.GetActivity(this, requestCode, intent, PendingIntentFlags.OneShot);
             var notificationBuilder = new NotificationCompat.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
                 .SetContentTitle("New Todo Item")
@@ -411,7 +412,7 @@ Sie können sich ausführlicher über Pushbenachrichtigungen informieren:
 Außerdem können Sie mit einem der folgenden Tutorials fortfahren:
 
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Hier erhalten Sie Informationen zur Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
+  Enthält Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 * [Aktivieren der Offlinesynchronisierung für Ihre App](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   Informieren Sie sich, wie Sie die Offlineunterstützung für Ihre App mit einem Mobile Apps-Back-End hinzufügen. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (also das Anzeigen, Hinzufügen oder Ändern von Daten) auch ohne bestehende Netzwerkverbindung.
 

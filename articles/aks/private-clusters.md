@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154340"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713328"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters (Preview)
 
@@ -128,14 +128,16 @@ Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müs
 
 ## <a name="dependencies"></a>Abhängigkeiten  
 * Der Private Link-Dienst wird nur von Load Balancer Standard unterstützt. Der Load Balancer Basic wird nicht unterstützt.  
+* Um einen benutzerdefinierten DNS-Server zu verwenden, stellen Sie einen AD-Server mit DNS für die Weiterleitung an die IP-Adresse 168.63.129.16 bereit
 
 ## <a name="limitations"></a>Einschränkungen 
+* Verfügbarkeitszonen werden derzeit nicht unterstützt.
 * Die [Einschränkungen für den Azure Private Link-Dienst][private-link-service] gelten für private Cluster, private Azure-Endpunkte und VNET-Dienstendpunkte, die zurzeit nicht im selben virtuellen Netzwerk unterstützt werden.
-* Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk.
-* Keine standardmäßige Unterstützung für die Azure DevOps-Integration in private Cluster.
+* Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk
+* Keine standardmäßige Unterstützung für die Azure DevOps-Integration mit privaten Clustern
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
-* Keine aktuelle Unterstützung für Azure Dev Spaces.
-* Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster.  
+* Keine aktuelle Unterstützung für Azure Dev Spaces
+* Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster
 * Das Löschen oder Ändern des privaten Endpunkts im Kundensubnetz führt dazu, dass der Cluster nicht mehr funktioniert. 
 * Azure Monitor wird für Livedaten von Containern derzeit nicht unterstützt.
 * *Das Verwenden eines eigenen DNS (BYOD)* wird derzeit nicht unterstützt.

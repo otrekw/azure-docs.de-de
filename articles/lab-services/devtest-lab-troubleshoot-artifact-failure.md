@@ -1,6 +1,6 @@
 ---
 title: Diagnostizieren von Artefaktfehlern auf einem virtuellen Azure DevTest Labs-Computer
-description: Erfahren Sie, wie Sie Probleme aufgrund von Artefaktfehlern in Azure DevTest Labs behandeln.
+description: Von DevTest Labs werden Informationen bereitgestellt, die Sie beim Diagnostizieren eines Artefaktfehlers unterstützen. In diesem Artikel erfahren Sie, wie Sie Probleme mit Artefaktfehlern behandeln.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 50cb3138b8d79c4d60c94513d931996d667d9c01
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170326"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760316"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostizieren von Artefaktfehlern im Lab 
 Nachdem Sie ein Artefakt erstellt haben, können Sie überprüfen, ob es erfolgreich war oder nicht. Artefaktprotokolle in Azure DevTest Labs bieten Informationen, die Ihnen beim Diagnostizieren eines Artefaktfehlers helfen. Zum Anzeigen der Artefaktprotokollinformationen für eine Windows-VM stehen Ihnen eine Reihe von Optionen zur Verfügung:

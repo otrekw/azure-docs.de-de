@@ -3,20 +3,20 @@ title: 'Untersuchen und Modellieren von Daten mit Spark: Team Data Science-Proze
 description: Veranschaulicht die Funktionen zum Durchsuchen und Modellieren von Daten des Spark MLlib-Toolkits in Azure.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 208f176ca942fb382ff2ed81d872602f7229b0a4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60811222"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718632"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 
@@ -29,8 +29,8 @@ Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, Ran
 
 * [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
 * [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
-* [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forests zählen zu den erfolgreichsten Machine Learning-Modellen für Klassifizierung und Regression.
-* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+* [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
+* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um eine Verlustfunktion zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
 Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen.   
 
@@ -52,9 +52,9 @@ Die Einrichtungsschritte und der Code in dieser exemplarischen Vorgehensweise be
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 Die Regressions- und Klassifizierungsaufgaben, die mit einem Spark 2.0-Cluster implementiert werden, befinden sich in separaten Notebooks, und das Klassifizierungsnotebook verwendet ein anderes Dataset:
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Diese Datei enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in denen diese Notebooks verglichen werden. 
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in der diese Notebooks verglichen werden. 
 - [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Diese Datei zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
-- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Diese Datei zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Fluglinien-Datasets zu pünktlichen Abflügen aus dem Jahr 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z.B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
+- [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Diese Datei zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Fluglinien-Datasets zu pünktlichen Abflügen aus dem Jahr 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z. B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
 
 <!-- -->
 
@@ -131,7 +131,7 @@ Der PySpark-Kernel bietet einige so genannte „Magic-Befehle“, die vordefinie
 * **%%local** gibt an, dass der Code in den nachfolgenden Zeilen lokal ausgeführt wird. Der Code muss gültiger Python-Code sein.
 * **%%sql -o \<Variablenname>** wendet eine Hive-Abfrage auf „sqlContext“ an. Wenn der Parameter „-o“ übergeben wird, wird das Ergebnis der Abfrage im Python-Kontext „%%local“ als Pandas-Dataframe beibehalten.
 
-Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen vordefinierten „Magics“ finden Sie unter [Verfügbare Kernels für Jupyter-Notebooks mit HDInsight Spark-Linux-Clustern in HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+Weitere Informationen zu Jupyter Notebook-Kernels und den vordefinierten „Magics“ finden Sie unter [Kernel für Jupyter Notebook in Apache Spark-Clustern in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
 ## <a name="data-ingestion-from-public-blob"></a>Datenerfassung über das öffentliche Blob
 Der erste Schritt im Data Science-Prozess ist das Erfassen der zu analysierenden Daten aus Quellen in der Umgebung, die Sie zum Durchsuchen und Modellieren von Daten nutzen. In dieser exemplarischen Vorgehensweise ist Spark diese Umgebung. Dieser Abschnitt enthält den Code zur Ausführung einer Reihe von Aufgaben:
@@ -212,7 +212,7 @@ Nachdem die Daten in Spark eingegeben wurden, besteht der nächste Schritt im Da
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Zeichnen eines Histogramms der Häufigkeit der Fahrgastzahlen im Taxifahrtenbeispiel
 In diesem Code und den nachfolgenden Codeausschnitten werden SQL-Magic-Befehle verwendet, um das Beispiel abzufragen, und lokale Magic-Befehle, um die Daten in einem Diagramm darzustellen.
 
-* **SQL magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für „sqlContext“. Mit dem Argument (-o VARIABLE_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
+* **SQL magic (`%%sql`)** Der HDInsight PySpark-Kernel unterstützt einfache HiveQL-Inlineabfragen für „sqlContext“. Mit dem Argument (-o VARIABLE_NAME) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Mit dieser Einstellung wird die Ausgabe im lokalen Modus verfügbar gemacht.
 * Der Befehl **`%%local` magic** wird genutzt, um Code lokal auf dem Jupyter-Server auszuführen. Dies ist der Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter -o. Mit dem Parameter -o wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl %%local die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 Die Ausgabe wird automatisch visualisiert, nachdem Sie den Code ausgeführt haben.
@@ -327,7 +327,7 @@ Dieser Abschnitt enthält den Code für die Prozeduren zum Vorbereiten von Daten
 * Erstellen eines neuen Features durch Diskretisieren von Stunden in Verkehrszeitbuckets
 * Indizieren und Codieren von kategorischen Features
 * Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
-* Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
+* Erstellen einer Zufallsunterauswahl der Daten und Aufteilen in Trainings- und Testsätze
 * Featureskalierung
 * Zwischenspeichern von Objekten im Arbeitsspeicher
 
@@ -360,7 +360,7 @@ Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indizieren und Codieren von kategorischen Features für die Eingabe in Modellierungsfunktionen
 Dieser Abschnitt beschreibt das Indizieren oder Codieren von kategorischen Features für die Eingabe in die Modellierungsfunktionen. Die Modellierungs- und Vorhersagefunktionen von MLlib erfordern, dass Features mit kategorischen Eingabedaten vor der Verwendung indiziert oder codiert werden. Je nach Modell müssen Sie auf unterschiedliche Weise indizieren oder codieren:  
 
-* **Strukturbasierte Modellierung** erfordert, dass Kategorien als numerische Werte codiert werden (z.B. kann ein Feature mit drei Kategorien möglicherweise mit 0, 1 und 2 codiert werden). Dies erfolgt über die MLlib-Funktion [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer). Diese Funktion codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit der Bezeichnungsindizes, die nach der Häufigkeit der Bezeichnungen angeordnet sind. Obwohl sie mit numerischen Werten für die Verarbeitung von Eingabe und Daten indiziert sind, können strukturbasierte Algorithmen so angegeben werden, dass sie entsprechend als Kategorien behandelt werden. 
+* **Strukturbasierte Modellierung** erfordert, dass Kategorien als numerische Werte codiert werden (z.B. kann ein Feature mit drei Kategorien möglicherweise mit 0, 1 und 2 codiert werden). Dieser Algorithmus wird durch die MLlib-Funktion [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) bereitgestellt. Diese Funktion codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit der Bezeichnungsindizes, die nach der Häufigkeit der Bezeichnungen angeordnet sind. Obwohl sie mit numerischen Werten für die Verarbeitung von Eingabe und Daten indiziert sind, können strukturbasierte Algorithmen so angegeben werden, dass sie entsprechend als Kategorien behandelt werden. 
 * **Logistische und lineare Regressionsmodelle** erfordern One-Hot-Codierung, wobei z.B. ein Feature mit drei Kategorien auf drei Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) zur One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
 
 Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
@@ -464,8 +464,8 @@ Hier ist der Code angegeben, mit dem kategorische Textfeatures für die lineare 
         return  labPt
 
 
-### <a name="create-a-random-sub-sampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
-Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben können Sie so beim Trainieren von Modellen deutlich Zeit sparen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilen in Trainings- und Testsätze
+Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können, damit Sie dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden können. Bei großen Stichproben kann die Stichprobenentnahme das Trainieren von Modellen erheblich beschleunigen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
 
     # RECORD START TIME
     timestart = datetime.datetime.now()
@@ -503,7 +503,7 @@ Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verw
 
 **AUSGABE:**
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,24 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,24 Sekunden
 
 ### <a name="feature-scaling"></a>Featureskalierung
 Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. Der Code für die Featureskalierung verwendet [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) zum Skalieren der Features auf Einheitenvarianz. Er wird von MLlib für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem beliebten Algorithmus für das Training einer Vielzahl anderer Machine Learning-Modelle, z. B. normalisierter Regressionen oder Support Vector Machines (SVM), bereitgestellt.
@@ -577,7 +577,7 @@ Die Zeit zum Trainieren und Testen von ML-Algorithmen kann durch Zwischenspeiche
 
 **AUSGABE:** 
 
-Für die Ausführung der obigen Zelle benötigte Zeit: 0,15 Sekunden
+Für die Ausführung der obigen Zelle benötigte Zeit: 0,15 Sekunden
 
 ## <a name="predict-whether-or-not-a-tip-is-paid-with-binary-classification-models"></a>Vorhersage, ob ein Trinkgeld bezahlt wird, mit Modellen zur binären Klassifizierung
 Dieser Abschnitt beschreibt die Verwendung von drei Modellen für die Aufgabe der binären Klassifizierung der Vorhersage, ob für eine Taxifahrt ein Trinkgeld bezahlt wird. Die präsentierten Modelle sind:
@@ -1080,7 +1080,7 @@ Zur Nutzung und Bewertung eines unabhängigen Datasets, das im Thema [Bewerten v
     print "BoostedTreeRegressionFileLoc = modelDir + \"" + btregressionfilename + "\"";
 
 
-**AUSGABE**
+**OUTPUT**
 
 logisticRegFileLoc = modelDir + "LogisticRegressionWithLBFGS_2016-05-0317_03_23.516568"
 
@@ -1097,7 +1097,7 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 ## <a name="whats-next"></a>Wie geht es weiter?
 Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt haben, können Sie jetzt lernen, wie diese Modelle bewertet und evaluiert werden. Das Notebook zum erweiterten Durchsuchen von Daten und Modellieren dringt tiefer in Kreuzvalidierung, Hyper-Parameter-Sweeping und Auswertung von Modellen ein. 
 
-**Nutzung von Modellen:** Informationen zum Bewerten und Auswerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
+**Nutzung von Modellen:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
 
 **Kreuzvalidierung und Hyperparameter-Sweeping**: Unter [Erweiterte Datenuntersuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 

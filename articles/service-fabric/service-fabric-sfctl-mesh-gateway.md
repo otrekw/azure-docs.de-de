@@ -3,21 +3,21 @@ title: 'Azure Service Fabric CLI: sfctl mesh gateway'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen und Löschen von Service Fabric Mesh-Gatewayressourcen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 86e63f88cf1412b54fad6f9e386a1a5052463917
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3e398ff8a1a0a28fd9d0650a7c9d18ba04817d33
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646159"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906014"
 ---
 # <a name="sfctl-mesh-gateway"></a>sfctl mesh gateway
 Ruft die Mesh-Gatewayressourcen ab bzw. löscht diese.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | delete | Löscht die Gatewayressource. |
 | list | Listet alle Gatewayressourcen auf. |
@@ -30,13 +30,13 @@ Löscht die Gatewayressource, die durch den Namen identifiziert wird.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name der Gatewayressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -51,7 +51,7 @@ Ruft die Informationen zu allen Gatewayressourcen in einer bestimmten Ressourcen
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -66,13 +66,13 @@ Ruft die Informationen zur Gatewayressource mit dem angegebenen Namen ab. Die In
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name der Gatewayressource. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

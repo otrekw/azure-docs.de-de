@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 961a5cc3d8c90007e314f40ba98693d978fe8888
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0cd7625a8e89365ccb966c0aa847e5b337f33acc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771949"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900201"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit cURL
 
 In diesem Schnellstart verwenden Sie die REST-API der Azure-Formularerkennung mit cURL, um Formulare zu trainieren und zu bewerten und um Schlüssel-Wert-Paare und Tabellen zu extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-> [!IMPORTANT]
-> In dieser Schnellstartanleitung wird die Formularerkennungs-API v2.0 verwendet. Wenn sich Ihr Abonnement nicht in der Region `West US 2` oder `West Europe` befindet, müssen Sie die v1.0-API verwenden. Befolgen Sie dann statt dieses Schnellstarts den [v1.0-Schnellstart](./curl-train-extract-v1.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

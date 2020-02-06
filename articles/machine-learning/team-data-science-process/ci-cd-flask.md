@@ -3,24 +3,24 @@ title: 'Erstellen einer CI/CD-Pipeline mit Azure Pipelines: Team Data Science-Pr
 description: Erstellen einer Continuous Integration- und Continuous Delivery-Pipeline für Anwendungen der Künstlichen Intelligenz (KI) mit Docker und Kubernetes.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260669"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721828"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Erstellen von CI/CD-Pipelines für KI-Apps mit Azure Pipelines, Docker und Kubernetes
 
-Eine Anwendung für Künstliche Intelligenz (KI) bedeutet, dass Anwendungscode in ein vortrainiertes Machine Learning-Modell (ML) eingebettet wird. Es gibt immer zwei Aufgabenschwerpunkte für eine KI-Anwendung: Data Scientists erstellen das ML-Modell, und App-Entwickler erstellen die App und stellen Sie für die Nutzung durch Endbenutzer bereit. In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für eine KI-Anwendung implementieren, die das ML-Modell in den Quellcode der APP einbettet. Im Beispielcode und Tutorial wird eine einfache Python Flask-Webanwendung verwendet, und es wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto abgerufen. Sie können auch ein AWS S3-Speicherkonto verwenden.
+Eine Anwendung für Künstliche Intelligenz (KI) bedeutet, dass Anwendungscode in ein vortrainiertes Machine Learning-Modell (ML) eingebettet wird. Es gibt immer zwei Aufgabenschwerpunkte für eine KI-Anwendung: Data Scientists erstellen das ML-Modell, und App-Entwickler erstellen die App und stellen Sie für die Nutzung durch Endbenutzer bereit. In diesem Artikel wird beschrieben, wie Sie eine CI/CD-Pipeline (Continuous Integration und Continuous Delivery) für eine KI-Anwendung implementieren, die das ML-Modell in den Quellcode der APP einbettet. Im Beispielcode und Tutorial wird eine Python Flask-Webanwendung verwendet, und es wird ein vortrainiertes Modell aus einem privaten Azure Blob Storage-Konto abgerufen. Sie können auch ein AWS S3-Speicherkonto verwenden.
 
 > [!NOTE]
 > Der folgende Prozess ist eine von mehreren Möglichkeiten für CI/CD. Es gibt Alternativen zu diesen Tools und den Voraussetzungen.
@@ -65,4 +65,4 @@ In der folgenden Abbildung und in den Schritten wird die Architektur der CI/CD-P
 - [Team Data Science-Prozess (TDSP)](/azure/machine-learning/team-data-science-process/)
 - [Azure Machine Learning (AML)](/azure/machine-learning/)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)

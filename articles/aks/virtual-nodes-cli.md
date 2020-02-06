@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 423f0866494054702330c8e51fb1ef45e74a0650
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2133d1aefe3363a2fb2af73c004e22ba0a0239ca
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845706"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901513"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
 
@@ -318,10 +318,6 @@ az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --add
 ```
 
 Entfernen Sie jetzt die virtuellen Netzwerkressourcen und die Ressourcengruppe:
-
-
-> [!NOTE]
-> Wenn beim Versuch, das Netzwerkprofil zu entfernen, eine Fehlermeldung angezeigt wird, gewähren Sie der Plattform 3–4 Tage, um das Problem automatisch zu beheben, und versuchen Sie dann den Löschvorgang erneut. Wenn Sie ein Netzwerkprofil sofort löschen müssen, [öffnen Sie eine Supportanfrage](https://azure.microsoft.com/support/create-ticket/), in der Sie auf den Azure Container Instances-Dienst verweisen.
 
 ```azurecli-interactive
 # Change the name of your resource group, cluster and network resources as needed

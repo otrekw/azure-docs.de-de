@@ -2,20 +2,20 @@
 title: 'Bereitstellen von Modellen in der Produktion: Team Data Science-Prozess'
 description: Erfahren Sie, wie Sie Modelle in der Produktion bereitstellen, damit sie eine aktive Rolle bei geschäftlichen Entscheidungen spielen können.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526769"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722236"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Bereitstellen von Modellen in der Produktion, um eine aktive Rolle bei geschäftlichen Entscheidungen zu spielen
 
@@ -39,7 +39,7 @@ Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen i
 
 ## <a name="ab-testing"></a>A/B-Tests
 
-Wenn sich mehrere Modelle in der Produktion befinden, kann es nützlich sein, [A/B-Tests](https://en.wikipedia.org/wiki/A/B_testing) zum Vergleichen der Leistung der Modelle durchzuführen. 
+Wenn sich mehrere Modelle in der Produktion befinden, kann die Modellleistung mithilfe von [A/B-Tests](https://en.wikipedia.org/wiki/A/B_testing) verglichen werden. 
  
 ## <a name="next-steps"></a>Nächste Schritte
 

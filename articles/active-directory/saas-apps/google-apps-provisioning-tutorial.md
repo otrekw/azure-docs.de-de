@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f11258457e60ea3458b0ede1fe00f042041bcb1a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720287"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841249"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -30,9 +30,9 @@ In diesem Tutorial werden die Schritte erläutert, die in G Suite und Azure Acti
 
 > [!NOTE]
 > Der G Suite-Connector wurde vor Kurzem im Oktober 2019 aktualisiert. An dem G Suite-Connector vorgenommene Änderungen umfassen Folgendes:
-- Unterstützung für zusätzliche G Suite-Benutzer- und -Gruppenattribute hinzugefügt. 
-- Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](https://developers.google.com/admin-sdk/directory)definiert ist.
-- Aktualisierte Standardattributzuordnungen.
+> - Unterstützung für zusätzliche G Suite-Benutzer- und -Gruppenattribute hinzugefügt. 
+> - Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](https://developers.google.com/admin-sdk/directory)definiert ist.
+> - Aktualisierte Standardattributzuordnungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -209,6 +209,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="common-issues"></a>Häufige Probleme
 * Autorisierungsfehler können auftreten, wenn das Konto zum Herstellen einer Verbindung kein Administratorkonto in G Suite ist. Stellen Sie sicher, dass das Konto für die Zugriffsautorisierung über Administratorberechtigungen für **alle Domänen** verfügt, in denen Benutzer bereitgestellt werden müssen. 
+* Azure AD unterstützt das Deaktivieren von Benutzern in GSuite, sodass diese nicht auf die Anwendung zugreifen können. Es werden jedoch keine Benutzer in GSuite gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

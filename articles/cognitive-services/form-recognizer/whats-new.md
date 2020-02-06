@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453317"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901886"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -24,9 +24,6 @@ Dieser Artikel beschreibt die wichtigsten Änderungen, die in den neuen Versione
 > In den Schnellstarts und Leitfäden in diesem Dokumentensatz wird immer die neueste Version der API verwendet, sofern nicht anders angegeben.
 
 ## <a name="form-recognizer-20-preview"></a>Formularerkennung 2.0 (Vorschauversion)
-
-> [!IMPORTANT]
-> Die Formularerkennung 2.0 ist derzeit für Abonnements in den Regionen `West US 2` und `West Europe` verfügbar. Wenn sich Ihr Abonnement nicht in dieser Region befindet, verwenden Sie die 1.0-API. Die Schnellstarts für das Training und die Verwendung eines benutzerdefinierten Modells sind sowohl für v1.0 als auch für v2.0 verfügbar.
 
 ### <a name="new-features"></a>Neue Funktionen
 

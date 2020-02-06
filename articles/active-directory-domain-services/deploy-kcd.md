@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705278"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772533"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in Azure Active Directory Domain Services
 
-Beim Ausführen von Anwendungen müssen diese Anwendungen möglicherweise im Kontext eines anderen Benutzers auf Ressourcen zugreifen. Active Directory Domain Services (AD DS) unterstützt einen Mechanismus namens *Kerberos-Delegierung*, die diesen Anwendungsfall ermöglicht. Die *eingeschränkte* Kerberos-Delegierung (KCD) baut auf diesem Mechanismus auf und definiert bestimmte Ressourcen, auf die im Kontext des Benutzers zugegriffen werden kann. Die verwalteten Azure AD DS-Domänen (Azure Active Directory Domain Services) sind zuverlässiger geschützt als herkömmliche lokale AD DS-Umgebungen. Verwenden Sie daher die sicherere *ressourcenbasierte* KCD.
+Beim Ausführen von Anwendungen müssen diese Anwendungen möglicherweise im Kontext eines anderen Benutzers auf Ressourcen zugreifen. Active Directory Domain Services (AD DS) unterstützt einen Mechanismus namens *Kerberos-Delegierung*, die diesen Anwendungsfall ermöglicht. Die *eingeschränkte* Kerberos-Delegierung (KCD) baut auf diesem Mechanismus auf und definiert bestimmte Ressourcen, auf die im Kontext des Benutzers zugegriffen werden kann. Verwaltete Azure AD DS-Domänen (Azure Active Directory Domain Services) sind zuverlässiger geschützt als herkömmliche lokale AD DS-Umgebungen. Verwenden Sie daher die sicherere *ressourcenbasierte* KCD.
 
 Dieser Artikel veranschaulicht die Konfiguration der ressourcenbasierten eingeschränkten Kerberos-Delegierung in einer verwalteten Azure AD DS-Domäne.
 

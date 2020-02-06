@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268250"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887668"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -79,13 +79,14 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Hinweis: Unter bestimmten Umständen kann es vorkommen, dass zwei VMs, die Teil derselben Verfügbarkeitsgruppe sind, dieselbe Fehlerdomäne gemeinsam nutzen. Dies kann bestätigt werden, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte „Fehlerdomäne“ überprüfen.
-> Dieses Verhalten kann beobachtet werden, wenn die Bereitstellung der VMs wie folgt abgelaufen ist:
+> [!NOTE]
+> Unter bestimmten Umständen können zwei VMs in derselben Verfügbarkeitsgruppe dieselbe Fehlerdomäne gemeinsam aufweisen. Dies können Sie bestätigen, indem Sie zur betreffenden Verfügbarkeitsgruppe wechseln und die Spalte **Fehlerdomäne** überprüfen.
+> Der Grund kann die folgende Abfolge beim Bereitstellen der VMs sein:
 > - 1\. VM bereitstellen
 > - 1\. VM beenden/freigeben
 > - 2\. VM bereitstellen
 > Unter diesen Umständen wird der Betriebssystemdatenträger der 2. VM möglicherweise in der Fehlerdomäne der 1. VM erstellt, sodass die 2. VM ebenfalls in derselben Fehlerdomäne landet. 
-> Um dieses Problem zu vermeiden, wird empfohlen, die VM zwischen den Bereitstellungen nicht zu beenden/freizugeben.
+> Um dieses Problem zu vermeiden, wird empfohlen, die VMs zwischen den Bereitstellungen nicht zu beenden oder ihre Zuordnung aufzuheben.
 
 Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträgern zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden.
 

@@ -3,12 +3,12 @@ title: Sichern von Windows-Computern mit dem MARS-Agent
 description: Verwenden Sie den Microsoft Recovery Services (MARS)-Agent von Azure Backup zum Sichern von Windows-Computern.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: c6e5ea1ed1ec9dd922793dfc6834238c431ddc38
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 990929cc95d1c25117873ca39415d33370456b91
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "76290868"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025536"
 ---
 # <a name="back-up-windows-machines-with-the-azure-backup-mars-agent"></a>Sichern von Windows-Computern mit dem Azure Backup-MARS-Agent
 
@@ -215,10 +215,10 @@ Erstellen Sie eine Richtlinie wie folgt:
         -   Sicherungen, die am Samstag in der letzten Woche des Monats um Mitternacht und 18 Uhr erstellt werden, werden 12 Monate lang aufbewahrt.
         -   Sicherungen, die an einem Samstag in der letzten Märzwoche erstellt wurden, werden zehn Jahre lang aufbewahrt.
 
-    ![Beispiel für die Aufbewahrung](./media/backup-configure-vault/retention-example.png)
+        ![Beispiel für die Aufbewahrung](./media/backup-configure-vault/retention-example.png)
 
 
-11. Wählen Sie in **Erstsicherungstyp auswählen**, ob Sie die Erstsicherung über das Netzwerk ausführen oder eine Offlinesicherung verwenden möchten (weitere Informationen zur Offlinesicherung finden Sie in diesem [Artikel](backup-azure-backup-import-export.md)). Um die Erstsicherung über das Netzwerk auszuführen, wählen Sie **Automatisch über das Netzwerk** aus, und klicken Sie auf **Weiter**.
+11. Wählen Sie in **Erstsicherungstyp auswählen**, ob Sie die Erstsicherung über das Netzwerk ausführen oder eine Offlinesicherung verwenden möchten (weitere Informationen zur Offlinesicherung finden Sie in diesem [Artikel](offline-backup-azure-data-box.md)). Um die Erstsicherung über das Netzwerk auszuführen, wählen Sie **Automatisch über das Netzwerk** aus, und klicken Sie auf **Weiter**.
 
     ![Erstsicherungstyp](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
 
@@ -245,7 +245,7 @@ Sie können eine erste Sicherung automatisch über das Netzwerk oder offline dur
 5. Im Rechenzentrum werden die Daten auf den Datenträgern in ein Azure-Speicherkonto kopiert.
 6. Azure Backup kopiert die Daten aus dem Speicherkonto in den Tresor, und inkrementelle Sicherungen werden geplant.
 
-[Erfahren Sie mehr](backup-azure-backup-import-export.md) über Offlineseeding.
+[Erfahren Sie mehr](offline-backup-azure-data-box.md) über Offlineseeding.
 
 ### <a name="enable-network-throttling"></a>Aktivieren der Netzwerkdrosselung
 

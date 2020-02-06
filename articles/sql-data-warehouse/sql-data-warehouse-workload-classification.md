@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685390"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768828"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse-Workloadklassifizierung
 
 In diesem Artikel wird der SQL Data Warehouse-Workloadklassifizierungsprozess beschrieben, in dem eingehenden Anforderungen eine Ressourcenklasse und eine Priorität zugewiesen wird.
 
-## <a name="classification"></a>Classification
+## <a name="classification"></a>Klassifizierung
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
@@ -36,16 +36,26 @@ Nicht alle Anweisungen sind klassifiziert, da sie keine Ressourcen oder Bedeutun
 
 ## <a name="classification-process"></a>Klassifizierungsprozess
 
-Für die Klassifizierung in SQL Data Warehouse werden aktuell mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) Benutzer einer Rolle zugewiesen, der wiederum eine entsprechende Ressourcenklasse zugewiesen ist. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Diese ermöglicht es SQL Data Warehouse-Benutzern, Anforderungen eine Priorität und eine Ressourcenklasse zuzuweisen.  
+Für die Klassifizierung in SQL Data Warehouse werden aktuell mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) Benutzer einer Rolle zugewiesen, der wiederum eine entsprechende Ressourcenklasse zugewiesen ist. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können SQL Data Warehouse-Benutzer Wichtigkeit zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden. 
 
 > [!NOTE]
 > Die Klassifizierung wird für jede Anforderung einzeln ausgewertet. Mehrere Anforderungen in einer einzelnen Sitzung können separat klassifiziert werden.
 
-## <a name="classification-precedence"></a>Rangfolge der Klassifizierung
+## <a name="classification-weighting"></a>Klassifizierungsgewichtung
 
-Während des Klassifizierungsprozesses wird anhand der Rangfolge festgelegt, welche Ressourcenklasse zugewiesen wird. Eine Klassifizierung auf Grundlage des Datenbankbenutzers hat Vorrang vor einer Klassifizierung, die auf der Rollenmitgliedschaft basiert. Wenn Sie eine Klassifizierung erstellen, die den Datenbankbenutzer UserA der Ressourcenklasse „mediumrc“ zuordnet, ordnen Sie anschließend der Datenbankrolle RoleA (von der UserA ein Mitglied ist) der Ressourcenklasse „largerc“ zu. Die Klassifizierung, die den Datenbankbenutzer der Ressourcenklasse „mediumrc“ zuordnet, hat in diesem Fall Vorrang vor der Klassifizierung, die der Datenbankrolle RoleA die Ressourcenklasse „largerc“ zugeordnet.
+Im Rahmen des Klassifizierungsprozesses wird mittels Gewichtung bestimmt, welche Arbeitsauslastungsgruppe zugewiesen wird.  Die Gewichtung funktioniert wie folgt:
 
-Wenn ein Benutzer Mitglied mehrerer Rollen ist, denen verschiedene Ressourcenklassen zugewiesen sind, oder mit mehreren Klassifizierungen übereinstimmt, wird dem Benutzer die höchste Ressourcenklasse zugewiesen.  Dies entspricht dem Verhalten für bereits vorhandene Ressourcenklassenzuweisungen.
+|Klassifizierungsparameter |Gewichtung   |
+|---------------------|---------|
+|MEMBERNAME:USER      |64       |
+|MEMBERNAME:ROLE      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+Der Parameter `membername` ist obligatorisch.  Handelt es sich bei dem angegebenen Mitgliedsnamen jedoch um einen Datenbankbenutzer und nicht um eine Datenbankrolle, ist die Gewichtung für den Benutzer höher, sodass dieser Klassifizierer ausgewählt wird.
+
+Wenn ein Benutzer Mitglied mehrerer Rollen mit verschiedenen zugewiesenen Ressourcenklassen oder Übereinstimmungen in mehreren Klassifizierern ist, wird dem Benutzer die höchste Ressourcenklasse zugewiesen.  Dies entspricht dem Verhalten für bereits vorhandene Ressourcenklassenzuweisungen.
 
 ## <a name="system-classifiers"></a>Systemklassifizierungen
 
@@ -59,7 +69,7 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 Systemklassifizierungen, die in Ihrem Auftrag erstellt werden, stellen eine einfache Möglichkeit zum Migrieren einer Workloadklassifizierung bereit. Wenn Sie Ressourcenklassen-Rollenzuordnungen mit einer Klassifizierungsrangfolge verwenden, kann dies beim Erstellen neuer priorisierter Klassifizierungen zu Fehlklassifizierungen führen.
 
-Stellen Sie sich folgendes Szenario vor:
+Nehmen Sie das folgende Szenario als Beispiel:
 
 - Ein vorhandenes Data Warehouse verfügt über den Datenbankbenutzer DBAUser, der der Ressourcenklassenrolle „largerc“ zugewiesen ist. Die Ressourcenklassenzuweisung wurde mit „sp_addrolemember“ durchgeführt.
 - Das Data Warehouse wird nun mit der Workloadverwaltung aktualisiert.

@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: f1b851aa-54d7-4cb4-8f5c-60680e2ce866
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3e6c490ee9d8b6f7f07f52e70ceb8c7c49d699b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62096118"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897025"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure AD Connect Health
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen (FAQs) zu Azure Active Directory (Azure AD) Connect Health. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -34,7 +35,7 @@ Sie können zwischen verschiedenen Azure AD-Mandanten wechseln, indem Sie in der
 
 In der folgenden Tabelle werden die Rollen und unterstützten Betriebssystemversionen aufgelistet.
 
-|Rolle| Betriebssystem/Version|
+|Role| Betriebssystem/Version|
 |--|--|
 |Active Directory-Verbunddienste (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 |Azure AD Connect | Version 1.0.9125 oder höher|
@@ -204,4 +205,4 @@ Das Agent-Zertifikat wird **6 Monate** vor seinem Ablaufdatum automatisch verlä
 * [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md)
 * [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md)
 * [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md)
-* [Azure AD Connect Health – Versionsverlauf](reference-connect-health-version-history.md)
+* [Azure AD Connect Health: Versionsverlauf](reference-connect-health-version-history.md)

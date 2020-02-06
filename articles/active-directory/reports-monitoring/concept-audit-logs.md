@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008541"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714477"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Überwachungsaktivitäten im Azure Active Directory-Portal 
 
@@ -33,9 +33,9 @@ Diese Architektur für die Berichterstellung umfasst die folgenden Komponenten:
 - **Aktivität** 
     - **Anmeldungen:** Der [Bericht „Anmeldungen“](concept-sign-ins.md) enthält Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
     - **Überwachungsprotokolle:** Ermöglichen die Nachverfolgung sämtlicher Änderungen, die von verschiedenen Features in Azure AD vorgenommen wurden. Hierzu zählen unter anderem Änderungen an Ressourcen in Azure AD, z. B. das Hinzufügen oder Entfernen von Benutzern, Apps, Gruppen, Rollen und Richtlinien.
-- **Sicherheit** 
+- **Security** 
     - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist. 
-    - **Benutzer mit Risikomarkierung:** Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
+    - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
 Dieser Artikel enthält eine Übersicht über den Überwachungsbericht.
  
@@ -89,7 +89,7 @@ Sie können die Überwachungsdaten in den folgenden Feldern filtern:
 
 Bei Verwendung des Filters **Dienst** können Sie in einer Dropdownliste die folgenden Dienste auswählen:
 
-- Alle
+- All
 - Zugriffsüberprüfungen
 - Kontobereitstellung 
 - Anwendungs-SSO
@@ -107,13 +107,13 @@ Bei Verwendung des Filters **Dienst** können Sie in einer Dropdownliste die fol
 
 Bei Verwendung des Filters **Kategorie** können Sie eine der folgenden Filteroptionen auswählen:
 
-- Alle
+- All
 - AdministrativeUnit
 - ApplicationManagement
-- Authentication
+- Authentifizierung
 - Authorization
 - Kontakt
-- Gerät
+- Sicherungsmedium
 - DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
@@ -130,8 +130,8 @@ Sie können die Liste aller Überwachungsaktivitäten mithilfe der Graph-API abr
 
 Mit dem Filter **Status** können Sie eine Filterung basierend auf dem Status eines Überprüfungsvorgangs durchführen. Folgende Statuswerte sind möglich:
 
-- Alle
-- Erfolgreich
+- All
+- Erfolg
 - Fehler
 
 Bei Verwendung des Filters **Ziel** können Sie anhand des Namens oder des Benutzerprinzipalnamens (User Principal Name, UPN) ein bestimmtes Ziel suchen. Bei dem Zielnamen und dem UPN wird die Groß- und Kleinschreibung berücksichtigt. 

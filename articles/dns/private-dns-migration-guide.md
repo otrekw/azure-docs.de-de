@@ -3,17 +3,17 @@ title: Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
 titleSuffix: Azure DNS
 description: In dieser Anleitung wird Schritt für Schritt erläutert, wie ältere private DNS-Zonen zum aktuellen Ressourcenmodell migriert werden.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
-ms.author: allensu
-ms.openlocfilehash: 3beac014ee69120df518e0358a5fdbef5818f7cf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: rohink
+ms.openlocfilehash: d29885104d6f39a17b5bdeb786cda8f56f58d987
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076730"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939349"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Migrieren von älteren Azure DNS Private Zones zum neuen Ressourcenmodell
 
@@ -102,7 +102,7 @@ Wenn Sie feststellen, dass die DNS-Abfragen nicht aufgelöst werden, warten Sie 
 
 In diesem Schritt werden die älteren DNS-Zonen entfernt. Dieser Schritt sollte nur ausgeführt werden, nachdem Sie überprüft haben, ob die DNS-Auflösung wie erwartet funktioniert. Sie werden aufgefordert, jede private DNS-Zone zu löschen. Geben Sie bei jeder Aufforderung „Y“ ein, nachdem Sie überprüft haben, ob die DNS-Auflösung für die entsprechende Zone ordnungsgemäß funktioniert.
 
-![Bereinigen](./media/private-dns-migration-guide/cleanup-migration-script.png)
+![Bereinigung](./media/private-dns-migration-guide/cleanup-migration-script.png)
 
 ## <a name="update-your-automation"></a>Aktualisieren der Automatisierung
 

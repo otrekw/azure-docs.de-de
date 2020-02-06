@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 39459267919747ed49e9fa3f05746294eaf741dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465642"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906824"
 ---
 # <a name="develop-video-player-applications"></a>Entwickeln von Videoplayeranwendungen
 ## <a name="overview"></a>Übersicht
@@ -50,7 +50,7 @@ Sie können auch die folgenden SDKs verwenden:
 * [HTML5 Player Framework-Dokumentation](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming-Plug-In für OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
-* [Entwickeln von Videoanwendungen für Xbox](https://xbox.create.msdn.com/) 
+* [Entwickeln von Videoanwendungen für Xbox](https://www.xbox.com/en-US/developers) 
 
 ## <a name="advertising"></a>Werbung
 Azure Media Services bietet Unterstützung für das Einfügen von Werbeeinblendungen mithilfe der Windows Media-Plattform: Player-Frameworks. Player-Frameworks mit Unterstützung für Werbeeinblendungen sind für Windows 8, Silverlight, Windows Phone 8 und iOS-Geräte verfügbar. Jedes Player-Framework enthält Beispielcode, der zeigt, wie eine Playeranwendung implementiert werden kann. Es gibt drei verschiedene Arten von Werbung, die Sie in Ihre Medien einfügen können:
@@ -71,7 +71,7 @@ Informationen zu Untertiteln und der Unterstützung von Werbeeinblendungen in Li
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js](media-services-embed-mpeg-dash-in-html5.md)
 
 [dash.js-Repository von GitHub (in englischer Sprache)](https://github.com/Dash-Industry-Forum/dash.js)

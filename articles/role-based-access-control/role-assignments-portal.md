@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 17a325e96e9709b60da2f23d1dc68e3300fde80c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707864"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774688"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
 
@@ -29,13 +29,13 @@ Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Acti
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie Folgendes:
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 
-## <a name="overview-of-access-control-iam"></a>Übersicht der Zugriffssteuerung (IAM)
+## <a name="access-control-iam"></a>Zugriffssteuerung (IAM)
 
-Auf dem Blatt **Zugriffssteuerung (IAM)** weisen Sie Rollen zu. Es wird auch als Identitäts- und Zugriffsverwaltung bezeichnet und erscheint an mehreren Stellen im Azure-Portal. Nachfolgend wird ein Beispiel für das Blatt „Zugriffssteuerung (IAM)“ für ein Abonnement gezeigt.
+Über das Blatt **Zugriffssteuerung (IAM)** weisen Sie Rollen zum Gewähren des Zugriffs auf Azure-Ressourcen zu. Es wird auch als Identitäts- und Zugriffsverwaltung bezeichnet und erscheint an mehreren Stellen im Azure-Portal. Nachfolgend wird ein Beispiel für das Blatt „Zugriffssteuerung (IAM)“ für ein Abonnement gezeigt.
 
 ![Blatt „Zugriffssteuerung (IAM)“ für ein Abonnement](./media/role-assignments-portal/access-control-subscription.png)
 
@@ -47,7 +47,7 @@ Um das Blatt „Zugriffssteuerung (IAM)“ am effektivsten zu verwenden, ist es 
 
 1. **Welche Rolle benötigen die Personen?**
 
-    Berechtigungen sind in Rollen zusammengefasst. Sie können in einer Liste von verschiedenen [integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden.
+    Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden.
 
 1. **Wo wird der Zugriff benötigt?**
 
@@ -55,21 +55,25 @@ Um das Blatt „Zugriffssteuerung (IAM)“ am effektivsten zu verwenden, ist es 
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-Gehen Sie wie folgt vor, um eine Rolle für verschiedene Bereiche zuzuweisen.
+Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource gewähren möchten, fügen Sie eine Rollenzuweisung hinzu. Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
 
-1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie anschließend den Bereich aus. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie dann den Bereich aus, auf den Sie Zugriff gewähren möchten. Sie können beispielsweise **Verwaltungsgruppen**, **Abonnements**, **Ressourcengruppen** oder eine Ressource auswählen.
 
-1. Klicken Sie auf die gewünschte Ressource.
+1. Klicken Sie auf die gewünschte Ressource für diesen Bereich.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für diesen Bereich anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+    ![Zugriffssteuerung (IAM) und Registerkarte „Rollenzuweisungen“](./media/role-assignments-portal/role-assignments.png)
+
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
    ![Menü „Hinzufügen“](./media/role-assignments-portal/add-menu.png)
+
+    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
    ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -81,23 +85,29 @@ Gehen Sie wie folgt vor, um eine Rolle für verschiedene Bereiche zuzuweisen.
 
    Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Bereich zugewiesen.
 
+    ![Hinzugefügte Rollenzuweisung gespeichert](./media/role-assignments-portal/add-role-assignment-save.png)
+
 ## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>Zuweisen eines Benutzers als Administrator eines Abonnements
 
 Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Sie ihm die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer Vollzugriff auf alle Ressourcen im Abonnement, einschließlich der Berechtigung, anderen Personen den Zugriff zu gewähren. Diese Schritte sind identisch mit allen anderen Rollenzuweisungen.
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
 
-1. Klicken Sie auf das Abonnement, in dem Sie eine Rollenzuweisung hinzufügen möchten.
+1. Klicken Sie auf das Abonnement, für das Sie Zugriff erteilen möchten.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für dieses Abonnement anzuzeigen.
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
+    ![Zugriffssteuerung (IAM) und Registerkarte „Rollenzuweisungen“](./media/role-assignments-portal/role-assignments.png)
+
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
    ![Menü „Hinzufügen“](./media/role-assignments-portal/add-menu.png)
+
+    Der Bereich „Rollenzuweisung hinzufügen“ wird geöffnet.
 
    ![Bereich „Rollenzuweisung hinzufügen“](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -111,7 +121,7 @@ Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weisen Si
 
 ## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
 
-In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen Sie die folgenden Schritte aus, um eine Rollenzuweisung zu entfernen.
+Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entfernen Sie eine Rollenzuweisung. Führen Sie die folgenden Schritte aus, um eine Rollenzuweisung zu entfernen.
 
 1. Öffnen Sie das Blatt **Zugriffssteuerung (IAM)** für einen Bereich, z.B. für eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressource, für das bzw. die Sie den Zugriff entfernen möchten.
 
@@ -127,7 +137,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen
 
 1. Klicken Sie in der angezeigten Meldung zum Entfernen der Rollenzuweisung auf **Ja**.
 
-    Geerbte Rollenzuweisungen können nicht entfernt werden. Wenn Sie eine geerbte Rollenzuweisung entfernen möchten, müssen Sie dies für den Bereich durchführen, in dem die Rollenzuweisung erstellt wurde. Die Spalte **Bereich** neben **(Geerbt)** enthält einen Link, mit dem Sie zum Bereich gelangen, in dem diese Rolle zugewiesen wurde. Sie können die Rollenzuweisung entfernen, indem Sie zu dem dort aufgelisteten Bereich gehen.
+    Wenn eine Meldung angezeigt wird, dass geerbte Rollenzuweisungen nicht entfernt werden können, versuchen Sie, eine Rollenzuweisung in einem untergeordneten Bereich zu entfernen. Öffnen Sie die Zugriffssteuerung (IAM) in dem Bereich, in dem die Rolle zugewiesen wurde, und versuchen Sie es noch mal. Eine Möglichkeit zum schnellen Öffnen der Zugriffssteuerung (IAM) im richtigen Bereich besteht darin, in der Spalte **Bereich** auf den Link neben **(Geerbt)** zu klicken.
 
    ![Nachricht zum Entfernen der Rollenzuweisung](./media/role-assignments-portal/remove-role-assignment-inherited.png)
 

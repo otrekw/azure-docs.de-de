@@ -3,19 +3,29 @@ title: Nachverfolgen von Änderungen mit Azure Automation
 description: Mit der Lösung für die Änderungsnachverfolgung können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung besser erkennen.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418748"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844801"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
-Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderungsnachverfolgung, damit Sie Änderungen an Ihrer Umgebung einfach erkennen können. Die Lösung verfolgt Änderungen an Windows- und Linux-Software, an Windows- und Linux-Dateien sowie an Windows-Registrierungsschlüsseln, Windows-Diensten und Linux-Daemons. Durch Ermitteln von Konfigurationsänderungen können Sie Betriebsprobleme präzise bestimmen.
+Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderungsnachverfolgung, damit Sie Änderungen an Ihrer Umgebung einfach erkennen können. Die Lösung verfolgt die folgenden Konfigurationsänderungen, um betriebliche Probleme zu ermitteln:
+
+- Windows-Software
+- Linux-Software (Pakete)
+
+    >[!NOTE]
+    >Bei der Änderungsnachverfolgung wird nur Software nachverfolgt, die mit dem Paket-Manager der Distribution verwaltet wird.
+
+- Windows- und Linux-Dateien
+- Windows-Registrierungsschlüssel
+- Windows-Dienste
+- Linux-Daemons
 
 Änderungen an installierter Software, an Windows-Diensten, an der Windows-Registrierung und an Windows-Dateien sowie an Linux-Daemons auf den überwachten Servern werden zur Verarbeitung an den Azure Monitor-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf. Mithilfe der Informationen im Change Tracking-Dashboard können Sie ganz leicht die Änderungen erkennen, die in Ihrer Serverinfrastruktur vorgenommen wurden.
 
@@ -91,9 +101,9 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 2. Wählen Sie auf der Seite **Änderungsnachverfolgung** die Option **Linux-Dateien** aus, und klicken Sie dann auf **+ Hinzufügen**, um eine neue nachzuverfolgende Datei hinzuzufügen.
 3. Geben Sie unter **Linux-Datei für Änderungsnachverfolgung hinzufügen** die Informationen zu der Datei oder dem Verzeichnis ein, die bzw. das nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, Beispiel: „/etc/*.conf“       |
@@ -114,9 +124,9 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 2. Wählen Sie auf der Seite **Änderungsnachverfolgung** die Option **Windows-Dateien** aus, und klicken Sie dann auf **+ Hinzufügen**, um eine neue nachzuverfolgende Datei hinzuzufügen.
 3. Geben Sie unter **Windows-Datei für Änderungsnachverfolgung hinzufügen** die Informationen zu der nachzuverfolgenden Datei ein, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.       |
@@ -146,12 +156,12 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 2. Wählen Sie auf der Seite **Änderungsnachverfolgung** die Option **Windows-Registrierung** aus, und klicken Sie dann auf **+ Hinzufügen**, um einen neuen nachzuverfolgenden Registrierungsschlüssel hinzuzufügen.
 3. Geben Sie unter **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename des nachzuverfolgenden Registrierungsschlüssels        |
 |Group     | Gruppenname für die logische Gruppierung von Registrierungsschlüsseln        |
-|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für den Registrierungsschlüssel Beispiel:  "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für den Registrierungsschlüssel Beispiel: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -159,6 +169,8 @@ Die Lösung für die Änderungsnachverfolgung unterstützt derzeit folgende Elem
 
 * Rekursion für die Nachverfolgung der Windows-Registrierung
 * Netzwerkdateisysteme
+* Unterschiedliche Installationsmethoden werden nicht nachverfolgt.
+* EXE-Dateien werden für Windows nicht nachverfolgt.
 
 Weitere Einschränkungen:
 
@@ -268,7 +280,7 @@ Zusätzlich zu den Details, die im Portal bereitgestellt werden, können Sie auc
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Änderungsdatensätze, die mit dieser Lösung erfasst wurden:
 
-|Abfrage  |BESCHREIBUNG  |
+|Abfrage  |Beschreibung  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Zeigt die aktuellen Bestandsdatensätze für Windows-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden.<br>Die Ergebnisse werden auf den aktuellen Datensatz für den betreffenden Softwarenamen und Computer beschränkt.      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|Zeigt die Änderungsdatensätze für entfernte Software an.|
@@ -297,7 +309,7 @@ Nachdem alle Parameter und die Logik festgelegt sind, können wir die Warnung au
 
 Die Warnung zu Änderungen an der Hostdatei ist eine gute Anwendung von Warnungen für Änderungsnachverfolgung oder Bestandsdaten, aber es gibt noch viel mehr Szenarien für die Warnung, wie zum Beispiel die Fälle, die zusammen mit ihren Beispielabfragen im folgenden Abschnitt definiert sind.
 
-|Abfrage  |BESCHREIBUNG  |
+|Abfrage  |Beschreibung  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|Nützlich für das Nachverfolgen von Änderungen an kritischen Systemdateien|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|Nützlich für das Nachverfolgen von Änderungen an wichtige Konfigurationsdateien|

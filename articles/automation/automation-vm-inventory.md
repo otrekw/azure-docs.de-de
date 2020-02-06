@@ -4,18 +4,23 @@ description: Verwalten eines virtuellen Computers mit Bestandserfassung
 services: automation
 ms.subservice: change-inventory-management
 keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419812"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844818"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
-Sie können die Bestandsnachverfolgung für einen virtuellen Azure-Computer auf der Ressourcenseite des virtuellen Computers aktivieren. Sie können die Bestandsinformationen für Software, Dateien, Linux-Daemons, Windows-Dienste und Windows-Registrierungsschlüssel auf Ihren Computern sammeln und anzeigen. Diese Methode stellt eine browserbasierte Benutzeroberfläche zum Einrichten und Konfigurieren der Bestandserfassung bereit.
+Sie können die Bestandsnachverfolgung für einen virtuellen Azure-Computer auf der Ressourcenseite des virtuellen Computers aktivieren. Sie können die folgenden Bestandsinformationen auf Ihren Computern sammeln und anzeigen:
+
+- Windows-Software (Windows-Anwendungen und Windows-Updates), -Dienste, -Dateien und -Registrierungsschlüssel
+- Linux-Software (Pakete), -Daemons und -Dateien
+
+Diese Methode stellt eine browserbasierte Benutzeroberfläche zum Einrichten und Konfigurieren der Bestandserfassung bereit.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -56,27 +61,27 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 
 ### <a name="windows-registry"></a>Windows-Registrierung
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei. Beispiel: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="windows-files"></a>Windows-Dateien
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“
 
 ### <a name="linux-files"></a>Linux-Dateien
 
-|Eigenschaft  |BESCHREIBUNG  |
+|Eigenschaft  |Beschreibung  |
 |---------|---------|
-|Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
+|Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
 |Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |

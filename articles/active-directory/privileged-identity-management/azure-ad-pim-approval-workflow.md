@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429933"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025553"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM
 
@@ -37,54 +37,6 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
     ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
 Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Rollen zu genehmigen oder abzulehnen.
-
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
-
-## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
-
-Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure AD-Rolle aussteht. Sie können diese ausstehenden Anforderungen in Privileged Identity Management anzeigen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Klicken Sie auf **Azure AD-Rollen**.
-
-1. Klicken Sie auf **Anforderungen genehmigen**.
-
-    ![Azure AD-Rollen – Anforderungen genehmigen](./media/azure-ad-pim-approval-workflow/approve-requests.png)
-
-    Es wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
-
-## <a name="approve-requests"></a>Genehmigen von Anforderungen
-
-1. Wählen Sie die Anforderungen aus, die Sie genehmigen möchten, und klicken Sie dann auf **Genehmigen**, um den Bereich „Ausgewählte Anforderungen genehmigen“ zu öffnen.
-
-    ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Genehmigen“](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
-
-1. Geben Sie im Feld **Genehmigungsgrund** einen Grund ein.
-
-    ![Bereich zum Genehmigen ausgewählter Anforderungen mit einem Genehmigungsgrund](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
-
-1. Klicken Sie auf **Approve**.
-
-    Das Statussymbol wird mit Ihrer Genehmigung aktualisiert.
-
-    ![Bereich zum Genehmigen ausgewählter Anforderungen nach Klicken auf die Schaltfläche „Genehmigen“](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
-
-## <a name="deny-requests"></a>Ablehnen von Anforderungen
-
-1. Wählen Sie die Anforderungen aus, die Sie ablehnen möchten, und klicken Sie dann auf **Ablehnen**, um den Bereich „Ausgewählte Anforderungen ablehnen“ zu öffnen.
-
-    ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Ablehnen“](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
-
-1. Geben Sie im Feld **Ablehnungsgrund** einen Grund ein.
-
-    ![Bereich zum Ablehnen ausgewählter Anforderungen mit einem Ablehnungsgrund](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
-
-1. Klicken Sie auf **Ablehnen**.
-
-    Das Statussymbol wird mit Ihrer Ablehnung aktualisiert.
 
 # <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
 
@@ -135,6 +87,54 @@ Nachfolgend finden Sie einige Informationen zu Workflowbenachrichtigungen:
 
 >[!NOTE]
 >Wenn ein Ressourcenadministrator der Meinung ist, dass ein genehmigter Benutzer nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in Privileged Identity Management entfernen. Ressourcenadministratoren werden nur über ausstehende Anforderungen benachrichtigt, wenn sie genehmigende Personen sind. Sie können aber ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie die ausstehenden Anforderungen in Privileged Identity Management anzeigen.
+
+# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+
+## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
+
+Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure AD-Rolle aussteht. Sie können diese ausstehenden Anforderungen in Privileged Identity Management anzeigen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Klicken Sie auf **Azure AD-Rollen**.
+
+1. Klicken Sie auf **Anforderungen genehmigen**.
+
+    ![Azure AD-Rollen – Anforderungen genehmigen](./media/azure-ad-pim-approval-workflow/approve-requests.png)
+
+    Es wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
+
+## <a name="approve-requests"></a>Genehmigen von Anforderungen
+
+1. Wählen Sie die Anforderungen aus, die Sie genehmigen möchten, und klicken Sie dann auf **Genehmigen**, um den Bereich „Ausgewählte Anforderungen genehmigen“ zu öffnen.
+
+    ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Genehmigen“](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
+
+1. Geben Sie im Feld **Genehmigungsgrund** einen Grund ein.
+
+    ![Bereich zum Genehmigen ausgewählter Anforderungen mit einem Genehmigungsgrund](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. Klicken Sie auf **Approve**.
+
+    Das Statussymbol wird mit Ihrer Genehmigung aktualisiert.
+
+    ![Bereich zum Genehmigen ausgewählter Anforderungen nach Klicken auf die Schaltfläche „Genehmigen“](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>Ablehnen von Anforderungen
+
+1. Wählen Sie die Anforderungen aus, die Sie ablehnen möchten, und klicken Sie dann auf **Ablehnen**, um den Bereich „Ausgewählte Anforderungen ablehnen“ zu öffnen.
+
+    ![Liste „Anforderungen genehmigen“ mit hervorgehobener Option „Ablehnen“](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. Geben Sie im Feld **Ablehnungsgrund** einen Grund ein.
+
+    ![Bereich zum Ablehnen ausgewählter Anforderungen mit einem Ablehnungsgrund](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. Klicken Sie auf **Ablehnen**.
+
+    Das Statussymbol wird mit Ihrer Ablehnung aktualisiert.
 
 ---
 

@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight Accelerated Writes für Apache HBase
 description: Bietet eine Übersicht über das Azure HDInsight Accelerated Writes-Feature, das verwaltete Premium-Datenträger zum Verbessern der Leistung des Apache HBase-Write-Ahead-Protokolls verwendet.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156929"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764580"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight Accelerated Writes für Apache HBase
 
@@ -33,13 +32,13 @@ Wenn ein **RegionServer** abstürzt oder nicht mehr verfügbar ist, bevor der Me
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Das Accelerated Writes-Feature in HDInsight für Apache HBase
 
-Das Accelerated Writes-Feature löst das Problem der höheren Schreiblatenzen, das durch Verwendung von Write-Ahead-Protokollen verursacht wird, die sich im Cloudspeicher befinden.  Das Accelerated Writes-Feature für HDInsight Apache HBase-Cluster fügt verwaltete SSD-Premium-Datenträger jedem RegionServer (Workerknoten) hinzu. Write-Ahead-Protokolle werden dann auf das in diese verwalteten Premium-Datenträger eingebundene Hadoop Distributed File System (HDFS) statt in den Cloudspeicher geschrieben.  Verwaltete Premium-Datenträger verwenden Solid State-Laufwerke (SSDs) und bieten eine ausgezeichnete E/A-Leistung mit Fehlertoleranz.  Wenn eine Speichereinheit außer Betrieb geht, wirkt sich dies im Gegensatz zu nicht verwalteten Datenträgern nicht auf andere Speichereinheiten in derselben Verfügbarkeitsgruppe aus.  Daher bieten verwaltete Datenträger geringe Schreiblatenz und eine höhere Flexibilität für Ihre Anwendungen. Weitere Informationen zu verwalteten Azure-Datenträgern finden Sie unter [Einführung in verwaltete Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md). 
+Das Accelerated Writes-Feature löst das Problem der höheren Schreiblatenzen, das durch Verwendung von Write-Ahead-Protokollen verursacht wird, die sich im Cloudspeicher befinden.  Das Accelerated Writes-Feature für HDInsight Apache HBase-Cluster fügt verwaltete SSD-Premium-Datenträger jedem RegionServer (Workerknoten) hinzu. Write-Ahead-Protokolle werden dann auf das in diese verwalteten Premium-Datenträger eingebundene Hadoop Distributed File System (HDFS) statt in den Cloudspeicher geschrieben.  Verwaltete Premium-Datenträger verwenden Solid State-Laufwerke (SSDs) und bieten eine ausgezeichnete E/A-Leistung mit Fehlertoleranz.  Wenn eine Speichereinheit ausfällt, wirkt sich das im Gegensatz zu nicht verwalteten Datenträgern nicht auf andere Speichereinheiten in derselben Verfügbarkeitsgruppe aus.  Daher bieten verwaltete Datenträger geringe Schreiblatenz und eine höhere Flexibilität für Ihre Anwendungen. Weitere Informationen zu verwalteten Azure-Datenträgern finden Sie unter [Einführung in verwaltete Azure-Datenträger](../../virtual-machines/windows/managed-disks-overview.md).
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gewusst wie: Aktivieren von Accelerated Writes für HBase in HDInsight
 
-Um einen neuen HBase-Cluster mit dem Accelerated Writes-Feature zu erstellen, führen Sie die Schritte in [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](../hdinsight-hadoop-provision-linux-clusters.md) bis zu **Schritt 3, Speicher** aus. Klicken Sie unter **Metastore-Einstellungen** auf das Kontrollkästchen neben **Beschleunigte HBase-Schreibvorgänge aktivieren**. Fahren Sie dann mit den verbleibenden Schritten zur Erstellung des Clusters fort.
+Um einen neuen HBase-Cluster mit dem Accelerated Writes-Feature zu erstellen, führen Sie die Schritte in [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](../hdinsight-hadoop-provision-linux-clusters.md) bis zu **Schritt 3, Speicher** aus. Aktivieren Sie unter **Metastore-Einstellungen** das Kontrollkästchen **Beschleunigte HBase-Schreibvorgänge aktivieren**. Fahren Sie dann mit den verbleibenden Schritten zur Erstellung des Clusters fort.
 
-![Aktivieren der Accelerated Writes-Option für HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![Aktivieren der Accelerated Writes-Option für HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 

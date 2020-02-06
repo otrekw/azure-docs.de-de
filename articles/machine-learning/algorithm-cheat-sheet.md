@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771511"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767624"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
 Mithilfe des **Cheat Sheet für Azure Machine Learning-Algorithmen** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
 Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung***, ***Empfehlungssystem***, ***Clustering***, ***Anomalieerkennung***, ***Regression*** und ***Textanalyse***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
+
+Weitere Anweisungen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Herunterladen: Spickzettel für Machine Learning-Algorithmen
 
@@ -32,7 +34,7 @@ Sie können das Cheat Sheet für Machine Learning-Algorithmen im Kleinformat her
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>Verwenden des Spickzettels für Machine Learning-Algorithmen
 
-Die Vorschläge in diesem Cheat Sheet für Algorithmen stellen nur grobe Richtlinien dar. Einige können leicht abgeändert werden und andere sogar stark überarbeitet. Sie dienen lediglich als Ausgangspunkt und Anregung. Sie sollten auch direkte Vergleiche zwischen verschiedenen Algorithmen mit Ihren Daten durchführen. Es gibt keinen Ersatz für das grundsätzliche Verständnis der einzelnen Algorithmen und des Systems, das Ihre Daten generiert hat.
+Die Vorschläge in diesem Cheat Sheet für Algorithmen stellen nur grobe Richtlinien dar. Einige können leicht abgeändert werden und andere sogar stark überarbeitet. Dieses Cheat Sheet dient lediglich als Ausgangspunkt und Anregung. Sie sollten auch direkte Vergleiche zwischen verschiedenen Algorithmen mit Ihren Daten durchführen. Es gibt keinen Ersatz für das grundsätzliche Verständnis der einzelnen Algorithmen und des Systems, das Ihre Daten generiert hat.
 
 Jeder Algorithmus für maschinelles Lernen hat seinen eigenen Stil oder induktiven Bias. Für ein bestimmtes Problem können verschiedene Algorithmen geeignet sein, aber ein Algorithmus passt möglicherweise besser als andere. Es ist jedoch nicht immer schon im Vorfeld klar, welches der am besten geeignete Algorithmus ist. In diesen Fällen werden im Cheat Sheet mehrere Algorithmen zusammen angegeben. Eine geeignete Strategie bestünde darin, einen Algorithmus zu testen und bei nicht zufriedenstellenden Ergebnissen einen anderen zu versuchen. 
 
@@ -48,17 +50,17 @@ Beim beaufsichtigten Lernen wird jeder Datenpunkt bezeichnet oder einer Kategori
 
 ### <a name="unsupervised-learning"></a>Unbeaufsichtigtes Lernen
 
-Beim unbeaufsichtigten Lernen sind Datenpunkten keine Bezeichnungen zugeordnet. Stattdessen besteht das Ziel von Algorithmen zum unbeaufsichtigten Lernen im Organisieren der Daten in einer bestimmten Form oder in der Beschreibung ihrer Struktur. Dies kann das Gruppieren in Clustern bedeuten, wie bei K-Means, oder das Suchen nach unterschiedlichen Möglichkeiten zur Darstellung komplexer Daten in einfacherer Form.
+Beim unbeaufsichtigten Lernen sind Datenpunkten keine Bezeichnungen zugeordnet. Stattdessen besteht das Ziel von Algorithmen zum unbeaufsichtigten Lernen im Organisieren der Daten in einer bestimmten Form oder in der Beschreibung ihrer Struktur. Beim unbeaufsichtigten Lernen werden Daten in Clustern gruppiert (wie bei K-Means), oder es werden andere Möglichkeiten der Darstellung komplexer Daten in einfacherer Form gesucht.
 
 ### <a name="reinforcement-learning"></a>Vertiefendes Lernen
 
-Beim vertiefenden Lernen wählt der Algorithmus eine Aktion als Reaktion auf jeden Datenpunkt aus. Diese Vorgehensweise wird häufig in der Robotik angewendet. Dabei ist der Satz der Sensorenwerte zu einem bestimmten Zeitpunkt ein Datenpunkt, und der Algorithmus muss dann die nächste Aktion des Roboters auswählen. Diese Methode eignet sich auch für Anwendungen im Zusammenhang mit dem Internet der Dinge. Der Lernalgorithmus erhält außerdem kurz danach ein Erfolgssignal, das angibt, wie gut die Entscheidung war. Auf dieser Grundlage ändert der Algorithmus die Strategie zum Erreichen des bestmöglichen Ergebnisses. 
+Beim vertiefenden Lernen wählt der Algorithmus eine Aktion als Reaktion auf jeden Datenpunkt aus. Diese Vorgehensweise wird häufig in der Robotik angewendet. Dabei ist der Satz der Sensorenwerte zu einem bestimmten Zeitpunkt ein Datenpunkt, und der Algorithmus muss dann die nächste Aktion des Roboters auswählen. Diese Methode eignet sich auch für Anwendungen im Zusammenhang mit dem Internet der Dinge. Der Lernalgorithmus erhält außerdem kurz danach ein Erfolgssignal, das angibt, wie gut die Entscheidung war. Basierend auf diesem Signal ändert der Algorithmus die Strategie zum Erreichen des bestmöglichen Ergebnisses. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](overview-what-is-azure-ml.md).
+* Weitere Anweisungen finden Sie unter [Auswählen von Algorithmen](how-to-select-algorithms.md).
 
-* In der [Referenz zu Algorithmen und Modulen](algorithm-module-reference/module-reference.md) finden Sie eine Liste mit Algorithmen und Modulen.
+* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](overview-what-is-azure-ml.md).
 
 * [Tutorial: Erstellen eines Vorhersagemodells im Azure Machine Learning-Designer](tutorial-designer-automobile-price-train-score.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 4891ec0ae87f0d7b0cd7e5d5d550f955a8fde1db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d013fc257bc03d7961a4f2d5ae52d0fde12c83bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312378"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844074"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -49,7 +49,7 @@ Sie können auf folgende Arten mit Ihrem Arbeitsbereich arbeiten:
 
 + Im Web:
     + [Azure Machine Learning-Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer](concept-designer.md): nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar
+    + [Azure Machine Learning Designer (Vorschauversion)](concept-designer.md): nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar
 + In jeder Python-Umgebung mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 + In jeder R-Umgebung mit dem [Azure Machine Learning SDK für R](https://azure.github.io/azureml-sdk-for-r/reference/index.html)
 + Über die Befehlszeile mit der [CLI-Erweiterung](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) für Azure Machine Learning
@@ -79,7 +79,7 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 | Erstellen einer Notebook-VM |   | **&check;** | |     |
 
 > [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
+> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** oder **Vereinigtes Königreich, Süden** verfügbar.
 >Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.
 
 ## <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 6ef7736a50783388b5ec0b32c698a0e747a7fd42
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0af19ec740e96cd572ffe37285d7e58ead83b25
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458432"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774858"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -42,7 +42,7 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | China, Norden 2 | 40.73.50.0     |
 | Asien, Osten | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
 | East US | 40.121.158.30, 191.238.6.43  |
-| USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.167.104.0     |
+| USA (Ost) 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1  |
 | Deutschland, Mitte | 51.4.144.100     |
 | Deutschland, Nordosten | 51.5.144.179  |
@@ -50,14 +50,14 @@ Die folgende Tabelle enthält die primären und sekundären IP-Adressen des Azur
 | Indien, Süden | 104.211.224.146  |
 | Indien, Westen | 104.211.160.80    |
 | Japan, Osten | 13.78.61.196, 191.237.240.43  |
-| Japan, Westen | 104.214.148.156, 191.238.68.11    |
+| Japan, Westen | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Korea, Mitte | 52.231.32.42   |
 | Korea, Süden | 52.231.200.86    |
 | USA Nord Mitte | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Nordeuropa | 40.113.93.91, 191.235.193.75    |
 | Südafrika, Norden  | 102.133.152.0    |
 | Südafrika, Westen | 102.133.24.0   |
-| USA Süd Mitte |13.66.62.124, 23.98.162.75   |
+| USA Süd Mitte |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
 | Südostasien | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | VAE, Mitte | 20.37.72.64  |
 | Vereinigte Arabische Emirate, Norden | 65.52.248.0    |

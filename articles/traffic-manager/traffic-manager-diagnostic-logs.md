@@ -2,7 +2,7 @@
 title: Aktivieren der Diagnoseprotokollierung in Azure Traffic Manager
 description: Es wird beschrieben, wie Sie die Diagnoseprotokollierung für Ihr Traffic Manager-Profil aktivieren und auf die Protokolldateien zugreifen, die sich bei dem Vorgang ergeben.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
-ms.author: allensu
-ms.openlocfilehash: b2ebeb41e69b7edfd43c38cc3b828069a1b3401a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 0ed2ecef86795f62aa3fe5798dcd0d07adbaf9cc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071243"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938676"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Aktivieren der Diagnoseprotokollierung in Azure Traffic Manager
 
@@ -72,8 +72,8 @@ Die folgende Tabelle enthält das Protokollschema für die Azure Traffic Manager
 |||||
 |----|----|---|---|
 |**Feldname**|**Feldtyp**|**Definition**|**Beispiel**|
-|EndpointName|string|Der Name des Traffic Manager-Endpunkts, dessen Integritätsstatus aufgezeichnet wird.|*myPrimaryEndpoint*|
-|Status|string|Der Integritätsstatus des Traffic Manager-Endpunkts, der getestet wurde. Der Status kann entweder **Up** oder **Down** lauten.|**Up**|
+|EndpointName|String|Der Name des Traffic Manager-Endpunkts, dessen Integritätsstatus aufgezeichnet wird.|*myPrimaryEndpoint*|
+|Status|String|Der Integritätsstatus des Traffic Manager-Endpunkts, der getestet wurde. Der Status kann entweder **Up** oder **Down** lauten.|**Up**|
 |||||
 
 ## <a name="next-steps"></a>Nächste Schritte

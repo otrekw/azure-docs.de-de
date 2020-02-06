@@ -3,24 +3,24 @@ title: Untersuchen von Daten auf einem virtuellen SQL Server-Computer – Team D
 description: Erfahren Sie, wie Sie mithilfe von SQL oder einer Programmiersprache wie Python Daten untersuchen, die in Azure auf einem virtuellen SQL Server-Computer gespeichert sind.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be75490e4e86956337ce38133df6095790b3a374
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ae8c7c43ecbf9bc625e1e46be3e2c71c8d57b6f7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303644"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720094"
 ---
 # <a name="explore-data-in-sql-server-virtual-machine-on-azure"></a>Durchsuchen von Daten auf einer SQL Server-VM in Azure
 
-In diesem Artikel wird beschrieben, wie Sie Daten durchsuchen, die in einer SQL Server-VM in Azure gespeichert sind. Dies kann über eine Datenanalyse mithilfe von SQL oder über die Verwendung einer Programmiersprache wie Python erreicht werden.
+In diesem Artikel wird beschrieben, wie Sie Daten durchsuchen, die in einer SQL Server-VM in Azure gespeichert sind. Verwenden Sie SQL oder Python, um die Daten zu untersuchen.
 
 Dieser Task ist ein Schritt im [Team Data Science-Prozess](overview.md).
 
@@ -41,7 +41,7 @@ Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf ei
 3. Abrufen der Anzahl von Ebenen in Kombination zweier kategorischer Spalten: 
    
     `select <column_a>, <column_b>,count(*) from <tablename> group by <column_a>, <column_b>`
-4. Abrufen der Verteilung der numerischen Spalten
+4. Abrufen der Verteilung der numerischen Spalten:
    
     `select <column_name>, count(*) from <tablename> group by <column_name>`
 
@@ -51,7 +51,7 @@ Hier finden Sie einige SQL-Beispielskripts, die zum Durchsuchen von Daten auf ei
 > 
 
 ## <a name="python"></a>Durchsuchen von SQL-Daten mit Python
-Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md)beschrieben ist. Die Daten müssen aus der Datenbank in ein Pandas-DataFrame geladen werden, um dann weiter verarbeitet werden zu können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
+Die Verwendung von Python zum Durchsuchen von Daten und zum Generieren von Funktionen mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md)beschrieben ist. Laden Sie die Daten in einen Pandas-Datenrahmen, damit sie weiterverarbeitet werden können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
 
 Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit „pyodbc“ eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch Ihre Daten):
 

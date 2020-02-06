@@ -2,25 +2,27 @@
 title: Informationen zu Wiederherstellungsplänen in Azure Site Recovery
 description: Erfahren Sie mehr über Wiederherstellungspläne in Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497893"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705852"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
 Dieser Artikel enthält eine Übersicht über die Wiederherstellungspläne in [Azure Site Recovery](site-recovery-overview.md).
 
-Ein Wiederherstellungsplan fasst Computer in Wiederherstellungsgruppen zusammen. Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstellungsprozess definieren, indem Sie kleine unabhängige Einheiten erstellen, für die Sie ein Failover ausführen können. Eine Einheit stellt normalerweise eine App in Ihrer Umgebung dar.
+Ein Wiederherstellungsplan fasst Computer zu Failoverzwecken in Wiederherstellungsgruppen zusammen. Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstellungsprozess definieren, indem Sie kleine unabhängige Einheiten erstellen, für die Sie ein Failover ausführen können. Eine Einheit stellt normalerweise eine App in Ihrer Umgebung dar.
 
 - Ein Wiederherstellungsplan definiert, wie ein Failover für Computer ausgeführt wird, und gibt die Reihenfolge an, in der sie nach dem Failover gestartet werden.
+- Wiederherstellungspläne werden für Failover auf Azure verwendet, können aber nicht für Failbacks von Azure verwendet werden.
 - Einem Wiederherstellungsplan können bis zu 100 geschützte Instanzen hinzugefügt werden.
 - Sie können einen Plan anpassen, indem Sie ihn eine Reihenfolge, Anweisungen und Aufgaben hinzufügen.
 - Nach dem Definieren eines Plans können Sie ein Failover für den Plan ausführen.
 - Auf Computer kann in mehreren Wiederherstellungsplänen verwiesen werden, wobei nachfolgende Pläne die Bereitstellung/Inbetriebnahme des Computers überspringen, wenn er zuvor über einen anderen Wiederherstellungsplan bereitgestellt wurde.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Gründe für die Verwendung eines Wiederherstellungsplans

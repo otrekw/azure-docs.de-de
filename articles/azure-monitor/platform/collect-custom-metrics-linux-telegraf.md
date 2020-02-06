@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926746"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901320"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Erfassen von benutzerdefinierten Metriken für einen virtuellen Linux-Computer mit dem InfluxData Telegraf-Agent
 
@@ -21,7 +21,7 @@ Mit Azure Monitor können Sie benutzerdefinierte Metriken über Ihre Anwendungst
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData Telegraf-Agent 
 
-[Telegraf](https://docs.influxdata.com/telegraf/v1.7/) ist ein Plug-In-gesteuerter Agent zur Erfassung von Metriken aus über 150 verschiedenen Quellen. Abhängig von den Workloads, die auf Ihrem virtuellen Computer ausgeführt werden, können Sie den Agent für die Nutzung spezieller Eingabe-Plug-Ins konfigurieren, um Metriken zu erfassen. Beispiele sind NGINX, MySQL und Apache. Über Ausgabe-Plug-Ins kann der Agent dann Schreibvorgänge an von Ihnen gewählten Zielen ausführen. Der Telegraf-Agent arbeitet direkt mit der Azure Monitor-REST-API für benutzerdefinierte Metriken zusammen. Er unterstützt ein Azure Monitor-Ausgabe-Plug-In. Über dieses Plug-In kann der Agent workloadspezifische Metriken auf Ihrem virtuellen Linux-Computer erfassen und als benutzerdefinierte Metriken an Azure Monitor übermitteln. 
+[Telegraf](https://docs.influxdata.com/telegraf/) ist ein Plug-In-gesteuerter Agent zur Erfassung von Metriken aus über 150 verschiedenen Quellen. Abhängig von den Workloads, die auf Ihrem virtuellen Computer ausgeführt werden, können Sie den Agent für die Nutzung spezieller Eingabe-Plug-Ins konfigurieren, um Metriken zu erfassen. Beispiele sind NGINX, MySQL und Apache. Über Ausgabe-Plug-Ins kann der Agent dann Schreibvorgänge an von Ihnen gewählten Zielen ausführen. Der Telegraf-Agent arbeitet direkt mit der Azure Monitor-REST-API für benutzerdefinierte Metriken zusammen. Er unterstützt ein Azure Monitor-Ausgabe-Plug-In. Über dieses Plug-In kann der Agent workloadspezifische Metriken auf Ihrem virtuellen Linux-Computer erfassen und als benutzerdefinierte Metriken an Azure Monitor übermitteln. 
 
  ![Übersicht über den Telegraf-Agent](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -39,7 +39,7 @@ Erstellen Sie einen neuen virtuellen Linux-Computer:
 1. Geben Sie einen VM-Namen an, z. B. **MyTelegrafVM**.  
 1. Behalten Sie den Datenträgertyp **SSD** bei. Geben Sie anschließend unter **Benutzername** einen Benutzernamen an (z. B. **azureuser**). 
 1. Wählen Sie als **Authentifizierungstyp** die Option **Kennwort** aus. Geben Sie ein Kennwort ein. Dieses Kennwort wird später verwendet, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. 
-1. Wählen Sie **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (z. B. **myResourceGroup**). Wählen Sie Ihren **Standort** aus. Wählen Sie dann **OK**aus. 
+1. Wählen Sie **Neue Ressourcengruppe erstellen** aus. Geben Sie einen Namen an (z. B. **myResourceGroup**). Wählen Sie Ihren **Standort** aus. Klicken Sie anschließend auf **OK**. 
 
     ![Erstellen eines virtuellen Ubuntu-Computers](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 

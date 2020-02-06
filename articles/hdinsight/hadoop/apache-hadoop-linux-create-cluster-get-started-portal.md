@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 09/25/2019
-ms.openlocfilehash: cab46c4fe2ff0bd1f86c6d98a3b37efb3547a3ce
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 35dc4938760ca83a6781d5791c746ee2f74310ab
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044583"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031584"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Hadoop-Clusters in Azure HDInsight im Azure-Portal
 
@@ -38,7 +38,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
 
 1. Geben Sie unter **Grundlagen** die folgenden Werte ein, bzw. wählen Sie sie aus:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Subscription    |  Wählen Sie Ihr Azure-Abonnement. |
     |Resource group     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
@@ -56,14 +56,14 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Hadoop-Cluster in HDInsi
 
 1. Geben Sie auf der Registerkarte **Speicher** die folgenden Werte ein:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Primärer Speichertyp|Übernehmen Sie den Standardwert **Azure Storage**.|
     |Auswahlmethode|Übernehmen Sie den Standardwert **Aus Liste auswählen**.|
     |Primäres Speicherkonto|Wählen Sie in der Dropdownliste ein vorhandenes Speicherkonto aus, oder wählen Sie **Neu erstellen** aus. Wenn Sie ein neues Konto erstellen, muss der Name zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.|
     |Container|Verwenden Sie den automatisch ausgefüllten Wert.|
 
-    ![Erste Schritte mit HDInsight Linux: Angeben von Clusterspeicherwerten](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage-blank.png "Angeben von Speicherwerten zum Erstellen eines HDInsight-Clusters")
+    ![Erste Schritte mit HDInsight Linux: Angeben von Clusterspeicherwerten](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-cluster-storage.png "Angeben von Speicherwerten zum Erstellen eines HDInsight-Clusters")
 
     Wählen Sie die Registerkarte **Überprüfen + erstellen** aus.
 

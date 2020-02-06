@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967572"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898859"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -194,7 +194,7 @@ Darf nicht verwendet werden. Diese Rolle wird automatisch dem Azure AD Connect-D
 
 ### <a name="directory-writersdirectory-writers-permissions"></a>[Verzeichnisschreibberechtigte](#directory-writers-permissions)
 
-Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
+Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](../develop/quickstart-register-app.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
 
 ### <a name="dynamics-365-administrator--crm-administratorcrm-service-administrator-permissions"></a>[Dynamics 365-Administrator/CRM-Administrator](#crm-service-administrator-permissions)
 
@@ -375,7 +375,7 @@ Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergrup
 
 ### <a name="security-operatorsecurity-operator-permissions"></a>[Sicherheitsoperator](#security-operator-permissions)
 
-Benutzer mit dieser Rolle können Warnungen verwalten und besitzen globalen schreibgeschützten Zugriff auf sicherheitsbezogene Features, einschließlich alle Informationen in Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management und Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
+Benutzer mit dieser Rolle können Warnungen verwalten und besitzen globalen schreibgeschützten Zugriff auf sicherheitsbezogene Features. Dies schließt sämtliche Informationen in Microsoft 365 Security Center, Azure Active Directory, Identity Protection, Privileged Identity Management und Office 365 Security & Compliance Center ein. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://docs.microsoft.com/office365/securitycompliance/permissions-in-the-security-and-compliance-center).
 
 Geben Sie in | Möglich
 --- | ---
@@ -1720,7 +1720,7 @@ Externer Identitätsanbieteradministrator | Externer Identitätsanbieteradminist
 Globaler Leser | Globaler Leser | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Gruppenadministrator | Gruppenadministrator | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Gasteinladender | Gasteinladender | 95e79109-95c0-4d8e-aee3-d01accf2d47b
-Helpdeskadministrator | Kennwortadministrator | 729827e3-9c14-49f7-bb1b-9608f156bbb8
+Helpdeskadministrator | Helpdesk-Administrator | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Intune-Dienstadministrator | Intune-Administrator | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Kaizala-Administrator | Kaizala-Administrator | 74ef975b-6605-40af-a5d2-b9539d836353
 Lizenzadministrator | Lizenzadministrator | 4d6ac14f-3453-41d0-bef9-a3e0c569773a

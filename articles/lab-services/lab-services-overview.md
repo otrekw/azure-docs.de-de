@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/26/2019
+ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4258bec3ceacd52f9679f48d8357be558ee0e27f
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: ef296035ee8f0c80b4ee078303639d7aedf5a91d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561628"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986630"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
 Es gibt zwei Dienste in Azure, mit denen Laborumgebungen in der Cloud eingerichtet werden können. 
@@ -36,9 +36,6 @@ Diese Dienste (Azure DevTest Labs und Azure Lab Services) unterstützen die folg
 - **Integrierte Sicherheit**. Ein Lab-Besitzer kann ein privates virtuelles Netzwerk und ein Subnetz für ein Lab einrichten und eine gemeinsame öffentliche IP-Adresse aktivieren. Lab-Benutzer können über virtuelle Netzwerke, die mit ExpressRoute oder Site-to-Site-VPNs konfiguriert sind, auf sichere Weise auf Ressourcen zugreifen. (derzeit in nur DevTest Labs verfügbar)
 - **Integration in Ihre Workflows und Tools**. Azure Lab Services ermöglicht Ihnen, die Labs in die Website- und Verwaltungssysteme Ihres Unternehmens zu integrieren. Mithilfe Ihrer CI/CD-Tools (Continuous Integration/Continuous Deployment) können Sie Umgebungen automatisch bereitstellen. (derzeit in nur DevTest Labs verfügbar)
 
-> [!NOTE]
-> Azure Lab Services unterstützt zurzeit nur virtuelle Computer, die aus Azure Marketplace-Images erstellt werden. Wenn Sie benutzerdefinierte Images verwenden oder andere PaaS-Ressourcen in einer Laborumgebung erstellen möchten, verwenden Sie DevTest Labs. Weitere Informationen finden Sie unter [Erstellen eines benutzerdefinierten Images in DevTest Labs](devtest-lab-create-custom-image-from-vm-using-portal.md) und [Erstellen von Laborumgebungen mithilfe von Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md).
-
 ## <a name="scenarios"></a>Szenarien
 
 Hier sind einige der Szenarien aufgeführt, die Azure DevTest Labs und Azure Lab Services unterstützen:
@@ -46,9 +43,9 @@ Hier sind einige der Szenarien aufgeführt, die Azure DevTest Labs und Azure Lab
 ### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Einrichtung eines Computerlabors mit anpassbarer Größe in der Cloud für Ihren Classroom  
 
 - Erstellen Sie ein verwaltetes Classroom-Lab. Sie geben dem Dienst einfach genau das an, was Sie brauchen. Daraufhin wird die Infrastruktur des Labs für Sie erstellt und verwaltet, sodass Sie sich auf das Unterrichten konzentrieren können, ohne auf die technischen Details eines Labs achten zu müssen.
-- Stellen Sie den Teilnehmern ein Lab mit virtuellen Computern zur Verfügung, die genau für ihre Anforderungen konfiguriert sind. Weisen Sie jedem Teilnehmer eine begrenzte Anzahl von Stunden für die Nutzung der VMs für die Unterrichtsarbeit zu.  
-- Verlagern Sie das physische Computerlabor Ihrer Einrichtung in die Cloud. Skalieren Sie die Anzahl der VMs automatisch nur bis zur maximalen Auslastung und Kostenschwelle, die Sie für das Lab festgelegt haben.
-- Löschen Sie das Lab mit einem einzigen Mausklick, sobald Sie fertig sind.
+- Stellen Sie den Teilnehmern ein Lab mit virtuellen Computern zur Verfügung, die exakt für ihre Anforderungen konfiguriert sind. Weisen Sie jedem Teilnehmer eine begrenzte Anzahl von Stunden für die Nutzung der VMs für die Unterrichtsarbeit zu.  
+- Verlagern Sie das physische Computerlabor Ihrer Einrichtung in die Cloud. Skalieren Sie die VM-Anzahl automatisch bis zur maximalen Auslastung und Kostenschwelle, die Sie für das Lab festgelegt haben.
+- Löschen Sie das Lab mit nur einem Mausklick, wenn Sie es nicht mehr benötigen.
 
 ### <a name="use-devtest-labs-for-development-environments"></a>Verwenden von DevTest Labs für Entwicklungsumgebungen
 
@@ -116,7 +113,7 @@ In der folgenden Tabelle werden die beiden Arten von Labs verglichen, die von Az
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
+Weitere Informationen finden Sie in folgenden Artikeln: 
 
 - [Informationen zu Classroom-Labs](./classroom-labs/classroom-labs-overview.md)
 - [Informationen zu DevTest Labs](devtest-lab-overview.md)

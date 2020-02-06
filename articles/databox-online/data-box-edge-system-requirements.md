@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 90c60d586d505ca0c9bd787c37e137f7a38ee1f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60756544"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757865"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Systemanforderungen für Azure Data Box Edge
 
@@ -123,10 +123,10 @@ Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgen
 - Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Data Box Edge-Ressource und dann zu **Überwachung > Metriken**. Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent**, um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
 - Die über die PowerShell-Schnittstelle des Geräts verfügbaren Überwachungsbefehle wie:
 
-    - `dkr`: Statistiken zum Abrufen eines Livestreams der Ressourcennutzungsstatistiken für Container. Der Befehl unterstützt Metriken zu CPU, Arbeitsspeicherauslastung, Arbeitsspeicherlimit und Netzwerk-E/A.
-    - `dkr system df`: zum Abrufen von Informationen bezüglich des belegten Speicherplatzes. 
-    - `dkr image [prune]`: zum Löschen nicht verwendeter Images und Freigeben von Speicherplatz.
-    - `dkr ps --size`: zum Anzeigen der ungefähren Größe eines aktiven Containers. 
+    - `dkrdbe stats`: zum Abrufen eines Livestreams der Ressourcennutzungsstatistiken für Container. Der Befehl unterstützt Metriken zu CPU, Arbeitsspeicherauslastung, Arbeitsspeicherlimit und Netzwerk-E/A.
+    - `dkrdbe system df`: zum Abrufen von Informationen bezüglich des belegten Speicherplatzes. 
+    - `dkrdbe image prune`: zum Löschen nicht verwendeter Images und Freigeben von Speicherplatz.
+    - `dkrdbe ps --size`: zum Anzeigen der ungefähren Größe eines aktiven Containers. 
 
     Weitere Informationen zu den verfügbaren Befehlen finden Sie unter [Überwachung und Problembehandlung von Computemodulen](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
 

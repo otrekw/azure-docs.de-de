@@ -3,18 +3,18 @@ title: Außerkraftsetzung für Azure Traffic Manager-Subnetz mithilfe von Azure 
 description: Dieser Artikel wird Ihnen helfen zu verstehen, wie die Außerkraftsetzung des Traffic Manager-Subnetzes verwendet wird, um die Routingmethode eines Traffic Manager-Profils außer Kraft zu setzen, um den Datenverkehr mithilfe von Azure PowerShell basierend auf der Endbenutzer-IP-Adresse über vordefinierte IP-Bereiche auf Endpunktzuordnungen zu leiten.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.topic: article
 ms.service: traffic-manager
 ms.date: 09/18/2019
-ms.author: allensu
-ms.openlocfilehash: 93362c0e1b359583e30886172f8ccb155c5ffaf4
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.author: rohink
+ms.openlocfilehash: 323093ec78a9486d19496b0ee90e37cb42eea341
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348897"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938425"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Außerkraftsetzung für Traffic Manager-Subnetz mithilfe von Azure PowerShell
 

@@ -1,108 +1,108 @@
 ---
-title: Klassisches Azure-Bereitstellungsmodell | Microsoft-Dokumentation
-description: Klassisches Azure-Bereitstellungsmodell
+title: Klassisches Azure-Bereitstellungsmodell
+description: Das klassische Bereitstellungsmodell, das nun durch das Resource Manager-Modell abgelöst wurde, erzwingt eine globale vCPU-Kontingentgrenze für virtuelle Computer und VM-Skalierungsgruppen.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898786"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835600"
 ---
 # <a name="classic-deployment-model"></a>Klassisches Bereitstellungsmodell
 
-Das klassische Bereitstellungsmodell ist das Azure-Bereitstellungsmodell der älteren Generation. Es setzt einen globalen Kontingentgrenzwert für vCPUs für virtuelle Computer und Skalierungsgruppen für virtuelle Computer durch. Das klassische Bereitstellungsmodell wird nicht mehr empfohlen, das Resource Manager-Modell ist heute vorzuziehen. 
+Das klassische Bereitstellungsmodell ist das Azure-Bereitstellungsmodell der älteren Generation. Es setzt einen globalen Kontingentgrenzwert für vCPUs für virtuelle Computer und Skalierungsgruppen für virtuelle Computer durch. Das klassische Bereitstellungsmodell wird nicht mehr empfohlen, das Resource Manager-Modell ist heute vorzuziehen.
 
-Weitere Informationen über diese beiden Bereitstellungsmodelle und die Vorteile des Resource Managers finden Sie auf der Seite zu [Resource Manager und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md).
- 
-Sobald ein Abonnement erstellt wird, wird diesem das Standardkontingent für vCPUs zugewiesen. Bei jeder Bereitstellung einer neuen VM über das klassische Bereitstellungsmodell wird die neue und bereits vorhandene vCPU-Nutzung für alle Regionen addiert. Dabei darf das für das klassische Bereitstellungsmodell zur Verfügung stehende vCPU-Kontingent nicht überschritten werden.
- 
-Weitere Informationen zu den Kontingenten erhalten Sie auf der Seite zu [Azure-Abonnements und Diensteinschränkungen](https://aka.ms/quotalimits).
+Weitere Informationen zu diesen beiden Bereitstellungsmodellen und den Vorteilen von Resource Manager finden Sie unter [Resource Manager- und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md).
 
-Über das Blatt „Hilfe und Support“ oder über das Blatt „Usages + Quota“ (Nutzung und Kontingente) können Sie im Portal eine Erhöhung der Kontigentgrenzwerte für vCPUs für das klassische Bereitstellungsmodell beantragen.
+Sobald ein Abonnement erstellt wird, wird diesem das Standardkontingent für vCPUs zugewiesen. Bei jeder Bereitstellung eines neuen virtuellen Computers über das klassische Bereitstellungsmodell wird die neue und bereits vorhandene vCPU-Nutzung für alle Regionen addiert. Dabei darf das für das klassische Bereitstellungsmodell zur Verfügung stehende vCPU-Kontingent nicht überschritten werden.
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Anfordern einer vCPU-Kontingenterhöhung pro VM-Serie auf Abonnementebene mithilfe des Blatts **Hilfe und Support**
+Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Hilfe und Support“ eine Supportanfrage zu erstellen. 
+Sie können eine Erhöhung der vCPU-Kontingentgrenze für das klassische Bereitstellungsmodell anfordern. Verwenden Sie **Hilfe und Support** oder **Nutzung + Kontingente** im Azure-Portal.
 
-1. Wählen Sie unter https://portal.azure.com die Option **Hilfe und Support** aus.
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>Anfordern einer Erhöhung des vCPU-Kontingents pro VM-Serie auf Abonnementebene mithilfe von „Hilfe und Support“
 
-   ![Hilfe und Support](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Wählen Sie **Neue Supportanfrage** aus. 
+Führen Sie unten stehenden Anleitungen aus, um eine Supportanfrage zu erstellen, indem Sie **Hilfe und Support** im Azure-Portal verwenden.
 
-      ![Neue Supportanfrage](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. Wählen Sie auf dem Menü des [Azure-Portals](https://portal.azure.com) die Option **Hilfe und Support** aus.
 
-3. Wählen Sie in der Dropdownliste „Problemtyp“ die Option **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+   ![Auswählen von „Hilfe und Support“ im Azure-Portal](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![Dropdownliste „Problemtyp“](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Wählen Sie **Neue Supportanfrage** aus.
 
-4. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
+   ![Erstellen einer neuen Supportanfrage im Azure-Portal](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![Auswählen des Abonnements (neue Supportanfrage)](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Wählen Sie in der Dropdownliste **Kontingenttyp** die Option **Compute-VM (cores/vCPUs) subscription limit increases** (Erhöhung der Grenzwerte für Compute-/VM-Abonnements (Kerne/vCPUs)) aus. 
+1. Wählen Sie als **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+
+   ![Auswählen von Kontingenten als Problemtyp](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. Wählen Sie das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
+
+   ![Auswählen des Abonnements, für das ein Kontingent erhöht werden soll](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. Wählen Sie für **Kontingenttyp** die Option **Abonnementlimit für Compute/VM (Kerne/vCPUs) erhöhen** aus.
+
+   ![Auswählen des Kontingenttyps für die Erhöhung](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. Klicken Sie auf **Weiter: Lösungen**, um **PROBLEMDETAILS** zu öffnen. Wählen Sie **Problemdetails** aus, um zusätzliche Informationen anzugeben.
+
+   ![Angeben von Details zur Unterstützung Ihrer Anforderung](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. Wählen Sie unter **Kontingentdetails** die Option **Klassisch** und einen **Standort** aus.
+
+   ![Hinzufügen von Details einschließlich Bereitstellungsmodell und Standort](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. Wählen Sie für **SKU-Familie** mindestens eine SKU-Familie aus, die vergrößert werden soll.
+
+   ![Angeben der zu erhöhenden SKU-Familie](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Um eine Zeile zu entfernen, deaktivieren Sie die SKU unter **SKU-Familie**, oder wählen Sie das Symbol „X“ zum Verwerfen aus. Nachdem Sie ein Kontingent für jede SKU-Familie eingegeben haben, wählen Sie **Speichern und fortfahren** in **Kontingentdetails** aus, um mit der Supportanfrage fortzufahren.
+
+   ![Anfordern neuer Grenzwerte](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>Anfordern einer vCPU-Kontingenterhöhung pro VM-Serie auf Abonnementebene mithilfe von „Nutzung + Kontingente“
+
+Führen Sie die unten stehenden Anleitungen aus, um eine Supportanfrage über **Nutzung + Kontingente** im Azure-Portal zu erstellen.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach dem Eintrag **Abonnements**, und wählen Sie ihn aus.
+
+   ![Im Azure-Portal zu Abonnements navigieren](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. Wählen Sie das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
+
+   ![Auswählen des zu ändernden Abonnements](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. Wählen Sie **Nutzung + Kontingente** aus.
+
+   ![Auswählen von Nutzung und Kontingenten für ein Abonnement](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
+
+   ![Auswählen, um das Kontingent zu erhöhen](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. Wählen Sie als **Kontingenttyp** die Option **Compute-VM (cores/vCPUs) subscription limit increases** (Erhöhung der Grenzwerte für Compute-/VM-Abonnements (Kerne/vCPUs)) aus.
 
    ![Auswählen des Kontingenttyps](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. Klicken Sie unter **Problemdetails** auf **Details angeben**, und geben Sie weitere Informationen an, die bei der Verarbeitung Ihrer Anfrage hilfreich sein können.
+1. Klicken Sie auf **Weiter: Lösungen**, um **PROBLEMDETAILS** zu öffnen. Wählen Sie **Problemdetails** aus, um zusätzliche Informationen anzugeben.
 
-   ![Angeben von Details](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Angeben von Details für Ihre Anforderung](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. Wählen Sie im Panel **Kontingentdetails** die Option „Klassisch“ und einen Standort aus.
+1. Wählen Sie unter **Kontingentdetails** die Option **Klassisch** und einen **Standort** aus.
 
-   ![Kontingentdetails (Bereitstellungsmodell)](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![Auswählen von Kontingentdetails einschließlich Bereitstellungsmodell und Standort](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Wählen Sie die **SKU-Familien** aus, für die eine Erhöhung erforderlich ist. 
+1. Wählen Sie mindestens eine SKU-Familie für die Erhöhung aus.
 
-   ![SKU-Familie](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![Auswählen einer SKU-Familie für die Erhöhung](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Wenn Sie eine Zeile entfernen möchten, deaktivieren Sie die SKU über die Dropdownliste für die SKU-Familie, oder klicken Sie auf das X-Symbol. Nachdem Sie die gewünschten Kontingente für die einzelnen SKU-Familien eingegeben haben, klicken Sie im Bereich mit den Kontingentdetails auf **Speichern und fortfahren**, um die Erstellung der Supportanfrage fortzusetzen.
+1. Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Um eine Zeile zu entfernen, deaktivieren Sie die SKU unter **SKU-Familie**, oder wählen Sie das Symbol „X“ zum Verwerfen aus. Nachdem Sie ein Kontingent für jede SKU-Familie eingegeben haben, wählen Sie **Speichern und fortfahren** in **Kontingentdetails** aus, um mit der Supportanfrage fortzufahren.
 
-   ![Neue Grenzwerte](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Anfordern einer vCPU-Kontingenterhöhung pro VM-Serie auf Abonnementebene mithilfe des Blatts **Nutzung + Kontingente**
-
-Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Nutzung + Kontingente“ eine Supportanfrage zu erstellen. 
-
-1. Klicken Sie unter https://portal.azure.com auf **Abonnements**.
-
-   ![Abonnements](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
-
-   ![Auswählen des Abonnements](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. Wählen Sie **Nutzung + Kontingente** aus.
-
-   ![Auswählen von „Nutzung + Kontingente“](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
-
-   ![Anfordern einer Erhöhung](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Wählen Sie als Kontingenttyp die Option **Compute-VM (cores/vCPUs) subscription limit increases** (Erhöhung der Grenzwerte für Compute-/VM-Abonnements (Kerne/vCPUs)) aus. 
-
-   ![Ausfüllen des Formulars](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. Klicken Sie unter **Problemdetails** auf **Details angeben**, und geben Sie weitere Informationen an, die bei der Verarbeitung Ihrer Anfrage hilfreich sein können.
-
-   ![Angeben von Details](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. Wählen Sie im Panel **Kontingentdetails** die Option „Klassisch“ und einen Standort aus.
-
-   ![Kontingentdetails (Bereitstellungsmodell)](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. Wählen Sie die **SKU-Familien** aus, für die eine Erhöhung erforderlich ist. 
-
-   ![SKU-Familie](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. Geben Sie die gewünschten Grenzwerte für das Abonnement ein. Wenn Sie eine Zeile entfernen möchten, deaktivieren Sie die SKU über die Dropdownliste für die SKU-Familie, oder klicken Sie auf das X-Symbol. Nachdem Sie die gewünschten Kontingente für die einzelnen SKU-Familien eingegeben haben, klicken Sie im Bereich mit den Kontingentdetails auf **Speichern und fortfahren**, um die Erstellung der Supportanfrage fortzusetzen.
-
-   ![Neue Grenzwerte](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![Eingeben des neuen Kontingents](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

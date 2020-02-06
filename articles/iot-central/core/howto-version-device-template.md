@@ -1,58 +1,72 @@
 ---
-title: Versionsverwaltung von Gerätevorlagen für Azure IoT Central-Apps | Microsoft-Dokumentation
+title: Grundlegendes zur Versionsverwaltung von Gerätevorlagen für Ihre Azure IoT Central-Apps | Microsoft-Dokumentation
 description: Durchlaufen Sie Ihre Gerätevorlagen, indem Sie neue Versionen erstellen, ohne Ihre gerade angeschlossenen Geräte zu beeinträchtigen.
-author: sandeeppujar
-ms.author: sandeepu
-ms.date: 07/08/2019
+author: sarahhubbard
+ms.author: sahubbar
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: feaa8abcb6635573b3680b77befa5ccb462ec73a
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 530208ed82c95187fac2173aa763ef5507f56b0b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930124"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018209"
 ---
 # <a name="create-a-new-device-template-version"></a>Erstellen einer neuen Gerätevorlagenversion
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Azure IoT Central ermöglicht die schnelle Entwicklung von IoT-Anwendungen. Sie können schnell Ihre Entwürfe für Gerätevorlagen durchlaufen, indem Sie Messungen, Einstellungen oder Eigenschaften hinzufügen, bearbeiten oder löschen. Einige dieser Änderungen können für die aktuell angeschlossenen Geräte störend sein. Azure IoT Central erkennt diese Änderungen und bietet eine Möglichkeit, diese Updates sicher auf den Geräten bereitzustellen.
 
-Eine Gerätevorlage weist bei Ihrer Erstellung eine Versionsnummer auf. Standardmäßig lautet die Versionsnummer 1.0.0. Wenn Sie eine Gerätevorlage bearbeiten und diese Änderung Auswirkungen auf angeschlossene Geräte haben könnte, fordert Azure IoT Central Sie auf, eine neue Gerätevorlagenversion zu erstellen.
+Azure IoT Central ermöglicht die schnelle Entwicklung von IoT-Anwendungen. Sie können Ihre Entwürfe für Gerätevorlagen schnell durchlaufen, indem Sie Gerätefunktionen, Ansichten und Anpassungen hinzufügen, bearbeiten oder löschen. Nachdem Sie Ihre Gerätevorlage veröffentlicht haben, wird das Gerätefunktionsmodell als **Veröffentlicht** angezeigt, und neben dem Modell befinden sich Sperrsymbole. Um Änderungen am Gerätefunktionsmodell vorzunehmen, müssen Sie eine neue Version der Gerätevorlage erstellen. Cloudeigenschaften, Anpassungen und Ansichten dagegen können jederzeit bearbeitet werden, ohne dass eine neue Version der Gerätevorlage erstellt werden muss. Sobald Sie Ihre Änderungen gespeichert haben, können Sie die Gerätevorlage veröffentlichen, um dem Operator die neuesten Änderungen zur Ansicht im Geräte-Explorer zur Verfügung zu stellen.
 
 > [!NOTE]
-> Weitere Informationen zum Erstellen einer Gerätevorlage finden Sie unter [Einrichten einer Gerätevorlage](howto-set-up-template.md).
+> Weitere Informationen zum Erstellen einer Gerätevorlage finden Sie unter [Einrichten und Verwalten einer Gerätevorlage](howto-set-up-template.md).
 
-## <a name="changes-that-prompt-a-version-change"></a>Änderungen mit Aufforderung zu einem Versionswechsel
+## <a name="add-customizations-to-the-device-template-without-versioning"></a>Hinzufügen von Anpassungen zur Gerätevorlage ohne Versionsverwaltung
 
-Im Allgemeinen führen Änderungen an den Einstellungen oder Eigenschaften Ihrer Gerätevorlage zu einem Versionswechsel.
+Bestimmte Elemente Ihrer Gerätefunktionen können bearbeitet werden, ohne dass Sie eine neue Version Ihrer Gerätevorlage und Schnittstellen erstellen müssen. Hierzu gehören beispielsweise folgende Felder: Anzeigename, Semantiktyp, Mindest- und Höchstwerte, Dezimalstellen, Farbe, Einheit, Anzeigeeinheit, Kommentar und Beschreibung. So fügen Sie diese Anpassungen hinzu:
+
+1. Wechseln Sie zur Seite **Gerätevorlagen**.
+1. Wählen Sie das Gerät aus, das Sie anpassen möchten.
+1. Wählen Sie die Registerkarte **Anpassen** aus.
+1. Hier werden alle Funktionen aufgeführt, die in Ihrem Gerätefunktionsmodell definiert sind. Alle Felder, die Sie hier bearbeiten können, können gespeichert und für Ihre gesamte Anwendung verwendet werden, ohne dass Sie eine neue Version Ihrer Gerätevorlage erstellen müssen. Wenn Sie schreibgeschützte Felder bearbeiten möchten, müssen Sie eine neue Version der Gerätevorlage erstellen, um diese Felder ändern zu können. Wählen Sie ein Feld aus, das Sie bearbeiten möchten, und geben Sie neue Werte ein.
+1. Klicken Sie auf **Speichern**. Jetzt überschreiben diese Werte alle Werte, die ursprünglich in Ihrer Gerätevorlage gespeichert waren, und werden in der gesamten Anwendung verwendet.
+
+## <a name="versioning-a-device-template"></a>Versionsverwaltung für eine Gerätevorlage
+
+Wenn Sie eine neue Version Ihrer Gerätevorlage erstellen, wird eine Entwurfsversion der Vorlage erstellt, in der das Gerätefunktionsmodell bearbeitet werden kann. Alle veröffentlichten Schnittstellen bleiben veröffentlicht, bis für sie eine individuelle Version erstellt wurde. Um eine veröffentlichte Schnittstelle zu ändern, müssen Sie zuerst eine neue Version der Gerätevorlage erstellen.
+
+Für die Gerätevorlage sollte nur dann eine neue Version erstellt werden, wenn Sie einen Teil des Gerätefunktionsmodells bearbeiten möchten, das Sie im Abschnitt für Anpassungen in der Gerätevorlage nicht bearbeiten können. 
+
+So erstellen Sie eine neue Version einer Gerätevorlage:
+
+1. Wechseln Sie zur Seite **Gerätevorlagen**.
+1. Wählen Sie die Gerätevorlage aus, für die Sie eine neue Version erstellen möchten.
+1. Klicken Sie oben auf der Seite auf die Schaltfläche **Version**, und geben Sie der Vorlage einen neuen Namen. Es wird ein neuer Name vorgeschlagen, den Sie ändern können.
+1. Klicken Sie auf **Erstellen**.
+1. Jetzt befindet sich Ihre Gerätevorlage im Entwurfsmodus. Sie werden feststellen, dass die Schnittstellen noch gesperrt sind. Zur Bearbeitung müssen Sie für jede einzelne Schnittstelle eine neue Version erstellen. 
+
+### <a name="versioning-an-interface"></a>Versionsverwaltung für eine Schnittstelle
+
+Indem Sie eine neue Version für eine Schnittstelle erstellen, können Sie Funktionen in dieser bereits erstellten Schnittstelle hinzufügen, aktualisieren und entfernen. 
+
+So erstellen Sie eine neue Version einer Schnittstelle:
+
+1. Wechseln Sie zur Seite **Gerätevorlagen**.
+1. Wählen Sie Ihre Gerätevorlage aus, die sich im Entwurfsmodus befindet.
+1. Wählen Sie die zu bearbeitende Schnittstelle aus, die sich im veröffentlichten Modus befindet.
+1. Klicken Sie oben auf der Seite der Schnittstelle auf die Schaltfläche **Version**. 
+1. Klicken Sie auf **Erstellen**.
+1. Jetzt befindet sich Ihre Schnittstelle im Entwurfsmodus. Sie können in dieser Schnittstelle Funktionen hinzufügen oder bearbeiten, ohne vorhandene Anpassungen und Ansichten zu beeinträchtigen. 
 
 > [!NOTE]
-> Beim Ändern einer Gerätevorlage werden Sie jedoch nicht zum Erstellen einer neuen Version aufgefordert, wenn keine Geräte verbunden sind oder höchstens ein Gerät verbunden ist.
+> Für von Azure IoT veröffentlichte Standardschnittstellen können keine Versionen erstellt werden, und eine Bearbeitung dieser Schnittstellen ist nicht möglich. Diese Standardschnittstellen werden für die Gerätezertifizierung verwendet.
 
-Die folgende Liste beschreibt die Benutzeraktionen, die eine neue Version erforderlich machen könnten:
+> [!NOTE]
+> Sobald eine Schnittstelle veröffentlicht wurde, können Sie die Funktionen dieser Schnittstelle auch im Entwurfsmodus nicht löschen. Funktionen können im Entwurfsmodus nur bearbeitet oder hinzugefügt werden.
 
-* Eigenschaften (erforderlich)
-    * Hinzufügen oder Löschen einer erforderlichen Eigenschaft
-    * Ändern des Feldnamens einer Eigenschaft, wobei der Feldname von Ihren Geräten zum Senden von Nachrichten verwendet wird.
-*  Eigenschaften (optional)
-    * Löschen einer optionalen Eigenschaft
-    * Ändern des Feldnamens einer Eigenschaft, wobei der Feldname von Ihren Geräten zum Senden von Nachrichten verwendet wird.
-    * Ändern einer optionalen Eigenschaft in eine erforderliche Eigenschaft
-*  Einstellungen
-    * Hinzufügen oder Löschen einer Einstellung
-    * Ändern des Feldnamens einer Einstellung, wobei der Feldname von Ihren Geräten zum Senden und Empfangen von Nachrichten verwendet wird.
-
-## <a name="what-happens-on-version-change"></a>Was geschieht bei einer Versionsänderung?
-
-Was passiert mit Regeln und Gerätedashboards bei einem Versionswechsel?
-
-**Regeln** für die vorherige Version der Gerätevorlage funktionieren weiterhin unverändert. Regeln werden nicht automatisch zur neuen Gerätevorlagenversion migriert. Sie können Regeln für die neue Vorlagenversion wie gewohnt erstellen. Weitere Informationen finden Sie im Gewusst-wie-Artikel [Erstellen einer Telemetrieregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung](howto-create-telemetry-rules.md).
-
-**Gerätedashboards** können mehrere Typen von Kacheln enthalten. In einigen der Kacheln können Einstellungen und Eigenschaften vorhanden sein. Wird eine in einer Kachel verwendete Eigenschaft oder Einstellung entfernt, ist die Kachel vollständig oder teilweise fehlerhaft. Sie können zur Kachel wechseln und das Problem beheben, indem Sie die Kachel entfernen oder den Inhalt der Kachel aktualisieren.
 
 ## <a name="migrate-a-device-across-device-template-versions"></a>Migrieren eines Geräts zwischen Gerätevorlageversionen
 
@@ -60,8 +74,8 @@ Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit
 
 1. Wechseln Sie zur **Device Explorer**-Seite.
 1. Wählen Sie das Gerät aus, das Sie zu einer anderen Version migrieren möchten.
-1. Wählen Sie **Gerät migrieren**.
-1. Wählen Sie die Versionsnummer aus, zu der Sie das Gerät migrieren möchten, und wählen Sie **Migrieren**.
+1. Wählen Sie **Migrieren** aus.
+1. Wählen Sie die Gerätevorlage mit der Versionsnummer aus, zu der Sie das Gerät migrieren möchten, und klicken Sie auf **Migrieren**.
 
 ![Migrieren eines Geräts](media/howto-version-device-template/pick-version.png)
 
@@ -70,4 +84,4 @@ Es lassen sich mehrere Versionen der Gerätevorlage erstellen. Im Laufe der Zeit
 Nachdem Sie nun erfahren haben, wie Gerätevorlageversionen in Ihrer Azure IoT Central-Anwendung verwendet werden, wird als Nächstes der folgende Schritt empfohlen:
 
 > [!div class="nextstepaction"]
-> [Erstellen von Telemetrieregeln](howto-create-telemetry-rules.md)
+> [Erstellen von Telemetrieregeln](tutorial-create-telemetry-rules.md)

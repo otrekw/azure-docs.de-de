@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775264"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903004"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
@@ -43,7 +43,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ApiManagement** | Verwaltungsdatenverkehr für dedizierte Azure API Management-Bereitstellungen. | Beide | Nein | Ja |
-| **ApplicationInsightsAvailability** | Verfügbarkeit von Application Insights | Beide | Nein | Nein |
+| **ApplicationInsightsAvailability** | Verfügbarkeit von Application Insights | Eingehend | Nein | Nein |
 | **AppService**    | Azure App Service Dieses Tag wird für ausgehende Sicherheitsregeln zu Web-App-Front-Ends empfohlen. | Ausgehend | Ja | Ja |
 | **AppServiceManagement** | Verwaltungsdatenverkehr für dedizierte Bereitstellungen der App Service-Umgebung. | Beide | Nein | Ja |
 | **AzureActiveDirectory** | Azure Active Directory | Ausgehend | Nein | Ja |

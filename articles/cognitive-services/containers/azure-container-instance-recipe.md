@@ -8,22 +8,22 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: 288894705e1108d6dd511b60cd2bc3bcee4c6d41
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78f35042678aa7c30cebf73796df3e5d564b4502
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704351"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716999"
 ---
 # <a name="deploy-and-run-container-on-azure-container-instance"></a>Bereitstellen und Ausführen eines Containers unter Azure Container Instances
 
-Führen Sie die folgenden Schritte aus, um Azure Cognitive Services-Anwendungen problemlos in der Cloud zu skalieren, indem Sie [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) verwenden. So können Sie sich auf die Erstellung von Anwendungen konzentrieren und müssen sich nicht um die Verwaltung der Infrastruktur kümmern.
+Führen Sie die folgenden Schritte aus, um Azure Cognitive Services-Anwendungen problemlos in der Cloud zu skalieren, indem Sie [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/) verwenden. Mithilfe von Containern können Sie sich auf die Erstellung von Anwendungen konzentrieren und müssen sich nicht um die Verwaltung der Infrastruktur kümmern. Weitere Informationen zur Verwendung von Containern finden Sie unter [Features und Vorteile](../cognitive-services-container-support.md#features-and-benefits).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Diese Lösung funktioniert für alle Cognitive Services-Container. Die Cognitive Services-Ressource muss im Azure-Portal erstellt werden, bevor dieses Rezept verwendet wird. Jede Cognitive Services-Instanz, die Container unterstützt, verfügt über ein Dokument mit einer Installationsanleitung, indem speziell die Installation und Konfiguration des Diensts für einen Container beschrieben wird. Da für einige Dienste eine Datei oder eine Gruppe von Dateien als Eingabe für den Container benötigt wird, sollten Sie unbedingt mit dem Container vertraut sein und diesen bereits erfolgreich verwendet haben, bevor Sie diese Lösung einsetzen.
+Diese Lösung funktioniert für alle Cognitive Services-Container. Die Cognitive Services-Ressource muss im Azure-Portal erstellt werden, bevor diese Lösung verwendet wird. Jede Cognitive Services-Instanz, die Container unterstützt, verfügt über ein Dokument mit einer Installationsanleitung, indem speziell die Installation und Konfiguration des Diensts für einen Container beschrieben wird. Da für einige Dienste eine Datei oder eine Gruppe von Dateien als Eingabe für den Container benötigt wird, sollten Sie unbedingt mit dem Container vertraut sein und diesen bereits erfolgreich verwendet haben, bevor Sie diese Lösung einsetzen.
 
 * Eine Cognitive Services-Ressource, die im Azure-Portal erstellt wurde.
 * Cognitive Services-**Endpunkt-URL**: Lesen Sie die entsprechende Installationsanleitung Ihres Diensts für den Container, um über das Azure-Portal zu ermitteln, wo sich die Endpunkt-URL befindet, und wie ein korrektes Beispiel für die URL aussieht. Das genaue Format kann sich von Dienst zu Dienst unterscheiden.
@@ -31,7 +31,7 @@ Diese Lösung funktioniert für alle Cognitive Services-Container. Die Cognitive
 * Ein einzelner Cognitive Services-Container auf Ihrem lokalen Host (Ihrem Computer). Stellen Sie sicher, dass Folgendes möglich ist:
   * Rufen Sie das Image mit einem `docker pull`-Befehl ab.
   * Führen Sie den lokalen Container erfolgreich mit allen erforderlichen Konfigurationseinstellungen aus, indem Sie einen `docker run`-Befehl verwenden.
-  * Rufen Sie den Endpunkt des Containers auf, um eine 2xx-Antwort und eine JSON-Antwort zu erhalten.
+  * Rufen Sie den Endpunkt des Containers auf, um eine HTTP 2xx-Antwort und eine JSON-Antwort zu erhalten.
 
 Sie müssen alle Variablen in spitzen Klammern (`<>`) durch Ihre eigenen Werte ersetzen. Hierbei müssen auch die spitzen Klammern ersetzt werden.
 

@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Security Center für IoT? | Microsoft-Dokumentation
-description: Erfahren Sie mehr über Azure Security Center für IoT-Features und -Dienste und außerdem, wie Azure Security Center für IoT umfassende IoT-Sicherheit für alle Ihre IoT-Ressourcen bietet.
+description: Erfahren Sie mehr über Features und Dienste von Azure Security Center für IoT, und erhalten Sie Informationen zur umfassenden IoT-Sicherheit durch Azure Security Center für IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1b428af1f1c01a3b1b1429f51d76ebfdeb4c1cc6
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664963"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766520"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Einführung in Azure Security Center für IoT
 
@@ -52,7 +52,7 @@ Verwenden Sie erweiterte Analysefunktionen und Microsoft Intelligent Security Gr
 
 In dieser Übersicht haben Sie mehr über die Features und Dienste von Azure Security Center für IoT erfahren. Weitere Informationen zur Architektur von Azure Security Center für IoT, zu den Voraussetzungen und den ersten Schritten finden Sie in folgenden Artikeln:
 
-- [Architecture](architecture.md)
+- [Aufbau](architecture.md)
 - [ASC für IoT-Voraussetzungen](service-prerequisites.md)
 - [Erste Schritte](getting-started.md)
 - [Schnellstart: Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)

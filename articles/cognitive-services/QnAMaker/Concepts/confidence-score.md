@@ -1,29 +1,29 @@
 ---
 title: 'Zuverlässigkeitsbewertung: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Die Zuverlässigkeitsbewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist.
+description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d901a803311805825c22503af6098e805a67e8f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229118"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843451"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
-Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
+# <a name="the-confidence-score-of-an-answer"></a>Die Zuverlässigkeitsbewertung einer Antwort
+Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist.
 
 Die Zuverlässigkeitsbewertung ist eine Zahl zwischen 0 und 100. Eine Bewertung von 100 ist wahrscheinlich eine genaue Übereinstimmung, während eine Bewertung von 0 bedeutet, dass keine passende Antwort gefunden wurde. Je höher die Bewertung, desto größer die Zuverlässigkeit der Antwort. Für eine bestimmte Abfrage können mehrere Antworten zurückgegeben werden. In diesem Fall werden die Antworten in der Reihenfolge abnehmender Zuverlässigkeitsbewertungen zurückgegeben.
 
-Im folgenden Beispiel sehen Sie eine Fragen-und-Antworten-Entität mit 2 Fragen. 
+Im folgenden Beispiel sehen Sie eine Fragen-und-Antworten-Entität mit 2 Fragen.
 
 
 ![Fragen-und-Antworten-Beispielpaar](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
@@ -57,9 +57,9 @@ Bei der Auswahl Ihres Schwellenwerts sollten Sie die Ausgewogenheit zwischen Gen
 > [!NOTE]
 > Neuere Versionen von QnA Maker beinhalten Verbesserungen der Bewertungslogik und wirken sich möglicherweise auf Ihren Schwellenwert aus. Achten Sie bei jeder Aktualisierung des Diensts darauf, den Schwellenwert ggf. zu testen und anzupassen. Sie können die Version Ihres QnA-Diensts [hier](https://www.qnamaker.ai/UserSettings) überprüfen, und [hier](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) erfahren Sie, wie Sie die neuesten Updates erhalten.
 
-## <a name="set-threshold"></a>Festlegen des Schwellenwerts 
+## <a name="set-threshold"></a>Festlegen des Schwellenwerts
 
-Sie legen den Schwellenwert als eine Eigenschaft im [JSON-Code der GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) fest. Das bedeutet, dass Sie ihn für jeden Aufruf von GenerateAnswer festlegen müssen. 
+Sie legen den Schwellenwert als eine Eigenschaft im [JSON-Code der GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) fest. Das bedeutet, dass Sie ihn für jeden Aufruf von GenerateAnswer festlegen müssen.
 
 Im Bot Framework legen Sie die Bewertung als Teil des options-Objekts mit [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) oder [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs) fest.
 
@@ -72,40 +72,23 @@ Wenn mehrere Antworten eine ähnliche Zuverlässigkeitsbewertung aufweisen, ist 
 
 
 ## <a name="confidence-score-differences-between-test-and-production"></a>Unterschiede bei der Zuverlässigkeitsbewertung zwischen Test und Produktion
-Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Cognitive Search-Indizes befinden. 
+Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Cognitive Search-Indizes befinden.
 
 Der Testindex enthält alle QnA-Paare Ihrer Wissensdatenbanken. Wenn Sie den Testindex abfragen, gilt die Abfrage für den gesamten Index, und die Ergebnisse sind auf die Partition für diese spezifische Wissensdatenbank beschränkt. Wenn die Ergebnisse der Testabfrage negative Auswirkungen auf die Fähigkeit zum Überprüfen der Wissensdatenbank haben, können Sie Folgendes tun:
 * Organisieren Sie Ihre Wissensdatenbank wie folgt:
-    * 1 Ressource beschränkt auf 1 KB: Beschränken Sie Ihre einzelne QnA-Ressource (und den resultierenden Azure Cognitive Search-Testindex) auf eine einzelne Wissensdatenbank. 
+    * 1 Ressource beschränkt auf 1 KB: Beschränken Sie Ihre einzelne QnA-Ressource (und den resultierenden Azure Cognitive Search-Testindex) auf eine einzelne Wissensdatenbank.
     * 2 Ressourcen – 1 für Tests, 1 für die Produktion: Nutzen Sie zwei QnA Maker-Ressourcen, eine für Tests (mit eigenen Test- und Produktionsindizes) und eine für das Produkt (ebenfalls mit eigenen Test- und Produktionsindizes).
 * Verwenden Sie immer dieselben Parameter, z. B. **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** , wenn Sie Ihre Test- und Produktionswissensdatenbank abfragen.
 
 Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
 
-Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Cognitive Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
+Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Cognitive Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein.
 
 
 ## <a name="no-match-found"></a>Keine Übereinstimmung gefunden
-Wenn das Rangfolgemodul keine gute Übereinstimmung findet, wird die Zuverlässigkeitsbewertung „0,0“ oder „Keine“ zurückgegeben, und die Standardantwort lautet „Keine gute Übereinstimmung in der KB gefunden“. Sie können diese [Standardantwort](#change-default-answer) im Bot- oder Anwendungscode, der den Endpunkt aufruft, überschreiben. Alternativ können Sie die überschriebene Antwort auch in Azure festlegen, wodurch die Standardeinstellung für alle in einem bestimmten QnA Maker-Dienst bereitgestellten Wissensdatenbanken geändert wird.
-
-## <a name="change-default-answer"></a>Ändern der Standardantwort
-
-1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und navigieren Sie zu der Ressourcengruppe, die den von Ihnen erstellten QnA Maker-Dienst darstellt.
-
-2. Klicken Sie zum Öffnen auf den **App Service**.
-
-    ![Zugreifen auf den App-Dienst für QnA Maker im Azure-Portal](../media/qnamaker-concepts-confidencescore/set-default-response.png)
-
-3. Klicken Sie auf **Anwendungseinstellungen**, und ändern Sie den Inhalt des Felds **DefaultAnswer** in die gewünschte Standardantwort. Klicken Sie auf **Speichern**.
-
-    ![Auswählen der Anwendungseinstellungen und Bearbeiten der Standardantwort für QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
-
-4. Starten Sie Ihren App-Dienst neu.
-
-    ![Starten Sie QnA Maker App Service nach dem Ändern der Standardantwort neu.](../media/qnamaker-faq/qnamaker-appservice-restart.png)
-
+Wenn das Rangfolgemodul keine gute Übereinstimmung findet, wird die Zuverlässigkeitsbewertung „0,0“ oder „Keine“ zurückgegeben, und die Standardantwort lautet „Keine gute Übereinstimmung in der KB gefunden“. Sie können diese [Standardantwort](../How-To/metadata-generateanswer-usage.md) im Bot- oder Anwendungscode, der den Endpunkt aufruft, überschreiben. Alternativ können Sie die überschriebene Antwort auch in Azure festlegen, wodurch die Standardeinstellung für alle in einem bestimmten QnA Maker-Dienst bereitgestellten Wissensdatenbanken geändert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Unterstützte Datenquellen](./data-sources-supported.md)
+> [bewährten Methoden](./best-practices.md)
 

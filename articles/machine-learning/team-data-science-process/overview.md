@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665068"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721386"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 
@@ -36,11 +36,11 @@ Der TDSP umfasst die folgenden Hauptkomponenten:
 
 ## <a name="data-science-lifecycle"></a>Data Science-Lebenszyklus
 
-Der Team Data Science-Prozess (TDSP) umfasst einen Lebenszyklus zum Strukturieren der Entwicklung Ihrer Data Science-Projekte. Im Lebenszyklus sind die gesamten Schritte aufgeführt, die bei Projekten bei der Ausführung normalerweise durchlaufen werden.
+Der Team Data Science-Prozess (TDSP) umfasst einen Lebenszyklus zum Strukturieren der Entwicklung Ihrer Data Science-Projekte. Der Lebenszyklus beschreibt sämtliche Schritte für erfolgreiche Projekte.
 
-Wenn Sie einen anderen Data Science-Lebenszyklus verwenden, z.B. [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) oder einen eigenen benutzerdefinierten Prozess Ihrer Organisation, können Sie den aufgabenbasierten TDSP trotzdem im Kontext dieser Entwicklungslebenszyklen verwenden. Auf allgemeiner Ebene haben diese verschiedenen Methodiken viel gemeinsam. 
+Wenn Sie einen anderen Data Science-Lebenszyklus verwenden (beispielsweise [CRISP-DM](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), [KDD](https://wikipedia.org/wiki/Data_mining#Process) oder einen eigenen benutzerdefinierten Prozess Ihrer Organisation), können Sie den aufgabenbasierten TDSP auch im Kontext dieser Entwicklungslebenszyklen verwenden. Auf allgemeiner Ebene haben diese verschiedenen Methodiken viel gemeinsam. 
 
-Dieser Lebenszyklus wurde für Data Science-Projekte entworfen, die im Lieferumfang von intelligenten Anwendungen enthalten sind. Mit diesen Anwendungen werden Modelle vom Typ „Machine Learning“ oder „Künstliche Intelligenz“ für Predictive Analytics bereitgestellt. Explorative Data Science-Projekte oder Ad-hoc-Analyseprojekte können von diesem Prozess ebenfalls profitieren. Aber in diesen Fällen sind einige der beschriebenen Schritte unter Umständen nicht erforderlich.    
+Dieser Lebenszyklus wurde für Data Science-Projekte entworfen, die im Lieferumfang von intelligenten Anwendungen enthalten sind. Mit diesen Anwendungen werden Modelle vom Typ „Machine Learning“ oder „Künstliche Intelligenz“ für Predictive Analytics bereitgestellt. Explorative Data Science-Projekte oder improvisierte Analyseprojekte können von diesem Prozess ebenfalls profitieren. Aber in diesen Fällen sind einige der beschriebenen Schritte unter Umständen nicht erforderlich.    
 
 Der Lebenszyklus beschreibt die wichtigsten Phasen, die Projekte typischerweise, oft iterativ, durchlaufen:
 
@@ -90,7 +90,7 @@ Der TDSP umfasst Empfehlungen zum Verwalten der freigegebenen Analyse- und Speic
 - Big Data-Cluster (Hadoop oder Spark) 
 - Machine Learning-Dienst 
 
-Die Analyse- und Speicherinfrastruktur kann in der Cloud oder lokal konfiguriert werden. In dieser Infrastruktur werden Roh-DataSets und verarbeitete DataSets gespeichert. Diese Infrastruktur ermöglicht reproduzierbare Analysen. Sie verhindert außerdem die Duplizierung, die zu Inkonsistenzen und unnötigen Infrastrukturkosten führen kann. Tools werden bereitgestellt, um freigegebene Ressourcen bereitzustellen und nachzuverfolgen sowie jedem Teammitglied zu ermöglichen, eine sichere Verbindung mit diesen Ressourcen herzustellen. Es empfiehlt sich außerdem, dass Projektmitglieder eine einheitliche Computeumgebung erstellen. Verschiedene Teammitglieder können dann Experimente replizieren und überprüfen.
+Die Analyse- und Speicherinfrastruktur, in der unverarbeitete und verarbeitete Datasets gespeichert werden, kann sich in der Cloud oder in der lokalen Umgebung befinden. Diese Infrastruktur ermöglicht reproduzierbare Analysen. Sie verhindert außerdem die Duplizierung, die zu Inkonsistenzen und unnötigen Infrastrukturkosten führen kann. Tools werden bereitgestellt, um freigegebene Ressourcen bereitzustellen und nachzuverfolgen sowie jedem Teammitglied zu ermöglichen, eine sichere Verbindung mit diesen Ressourcen herzustellen. Es empfiehlt sich außerdem, dass Projektmitglieder eine einheitliche Computeumgebung erstellen. Verschiedene Teammitglieder können dann Experimente replizieren und überprüfen.
 
 Es folgt ein Beispiel für ein Team, das an mehreren Projekten arbeitet und verschiedene freigegebene Analyseinfrastrukturkomponenten in der Cloud nutzt.
 

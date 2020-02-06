@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,18 +16,18 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562333"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897039"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.  
 
 > [!NOTE]
-> Connect Health-Agents werden automatisch aktualisiert, wenn die neue Version veröffentlicht wird. Stellen Sie im Azure-Portal sicher, dass die Einstellungen für die automatische Aktualisierung aktiviert sind. 
+> Connect Health-Agents werden automatisch aktualisiert, wenn die neue Version veröffentlicht wird. Stellen Sie im Azure-Portal sicher, dass die Einstellungen für die automatische Aktualisierung aktiviert sind.
 >
 
 Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-Installation integriert. Weitere Informationen zum Releaseverlauf von Azure AD Connect finden Sie [hier](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history). Featurefeedback können Sie über den [Benutzerfeedbackkanal für Connect Health](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) abgeben.
@@ -41,13 +42,13 @@ Azure AD Connect Health für die Synchronisierung ist in die Azure AD Connect-In
    1. Hinzufügen des TestWindowsTransport-Tests und Entfernen von WsTrust-Endpunktprüfungen im CheckOffice365Endpoints-Test
    2. Protokollieren von Betriebssystem- und .NET-Informationen
    3. Die Uploadgröße für die RP-Konfigurationsmeldung wurde auf 1 MB erhöht.
-   4. Fehlerbehebungen
+   4. Behebung von Programmfehlern
    
 * Azure AD Connect Health-Agent für AD DS (Version 3.1.56.0) 
    1. Protokollieren von Betriebssystem- und .NET-Informationen 
-   2. Fehlerbehebungen
+   2. Behebung von Programmfehlern
 
-## <a name="may-2019"></a>Mai 2019
+## <a name="may-2019"></a>Mai 2019
 **Agent-Aktualisierung:** 
 * Azure AD Connect Health-Agent für AD FS (Version 3.1.51.0) 
    1. Fehlerbehebung, um zwischen mehreren Anmeldungen zu unterscheiden, die die gleiche Clientanforderungs-ID verwenden

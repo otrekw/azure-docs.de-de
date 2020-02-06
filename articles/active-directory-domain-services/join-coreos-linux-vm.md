@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/14/2019
+ms.date: 01/23/2020
 ms.author: iainfou
-ms.openlocfilehash: 4cdc2fff05270a296d9c4c9151f73cadeb2a1cfc
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ddf6c9238cabedfbdeeb8056864072edc543c342
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754394"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712617"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Einbinden eines virtuellen CoreOS-Computers in eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
@@ -42,7 +42,7 @@ Wenn Sie über eine vorhandene CoreOS Linux-VM in Azure verfügen, stellen Sie �
 
 Wenn Sie eine CoreOS Linux-VM erstellen müssen oder eine Test-VM zur Verwendung mit diesem Artikel erstellen möchten, können Sie eine der folgenden Methoden verwenden:
 
-* [Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 Aktualisieren Sie in der Datei *hosts* die Adresse *localhost*. Siehe folgendes Beispiel:
 
-* *contoso.com* steht für den DNS-Domänennamen Ihrer durch Azure AD DS verwalteten Domäne.
+* *aadds.contoso.com* steht für den DNS-Domänennamen Ihrer durch Azure AD DS verwalteten Domäne.
 * *coreos* ist der Hostname Ihrer CoreOS-VM, die Sie in die verwaltete Domäne einbinden.
 
 Aktualisieren Sie diese Namen mit Ihren eigenen Werten:
 
 ```console
-127.0.0.1 coreos coreos.contoso.com
+127.0.0.1 coreos coreos.aadds.contoso.com
 ```
 
 Anschließend speichern und beenden Sie die Datei *hosts* mit dem Befehl `:wq` im Editor.
@@ -85,7 +85,7 @@ sudo vi /etc/sssd/sssd.conf
 Geben Sie für die folgenden Parameter den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne an:
 
 * *domains* in Großbuchstaben
-* *[domain/CONTOSO]* mit CONTOSO in Großbuchstaben
+* *[Domäne/AADDS]* (AADDS vollständig in Großbuchstaben)
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
@@ -95,15 +95,15 @@ Geben Sie für die folgenden Parameter den Namen Ihrer eigenen durch Azure AD DS
 [sssd]
 config_file_version = 2
 services = nss, pam
-domains = CONTOSO.COM
+domains = AADDS.CONTOSO.COM
 
-[domain/CONTOSO.COM]
+[domain/AADDS.CONTOSO.COM]
 id_provider = ad
 auth_provider = ad
 chpass_provider = ad
 
-ldap_uri = ldap://contoso.com
-ldap_search_base = dc=contoso,dc=com
+ldap_uri = ldap://aadds.contoso.com
+ldap_search_base = dc=aadds.contoso,dc=com
 ldap_schema = rfc2307bis
 ldap_sasl_mech = GSSAPI
 ldap_user_object_class = user
@@ -114,32 +114,32 @@ ldap_account_expire_policy = ad
 ldap_force_upper_case_realm = true
 fallback_homedir = /home/%d/%u
 
-krb5_server = contoso.com
-krb5_realm = CONTOSO.COM
+krb5_server = aadds.contoso.com
+krb5_realm = AADDS.CONTOSO.COM
 ```
 
 ## <a name="join-the-vm-to-the-managed-domain"></a>Einbinden der VM in die verwaltete Domäne
 
 Nachdem Sie die SSSD-Konfigurationsdatei aktualisiert haben, binden Sie nun den virtuellen Computer in die verwaltete Domäne ein.
 
-1. Verwenden Sie zunächst den Befehl `adcli info`, um zu überprüfen, ob Sie Informationen über die durch Azure AD DS verwaltete Domäne anzeigen können. Im folgenden Beispiel werden Informationen für die Domäne *CONTOSO.COM* abgerufen. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
+1. Verwenden Sie zunächst den Befehl `adcli info`, um zu überprüfen, ob Sie Informationen über die durch Azure AD DS verwaltete Domäne anzeigen können. Im folgenden Beispiel werden Informationen für die Domäne *AADDS.CONTOSO.COM* abgerufen. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
 
     ```console
-    sudo adcli info CONTOSO.COM
+    sudo adcli info AADDS.CONTOSO.COM
     ```
 
    Wenn mit dem Befehl `adcli info` Ihre durch Azure AD DS verwaltete Domäne nicht gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
-    * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
+    * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping aadds.contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
     * Überprüfen Sie, ob die VM in demselben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die durch Azure AD DS verwaltete Domäne verfügbar ist.
     * Stellen Sie sicher, dass die DNS-Servereinstellungen für das virtuelle Netzwerk so aktualisiert wurden, dass auf die Domänencontroller der durch Azure AD DS verwalteten Domäne verwiesen wird.
 
 1. Binden Sie jetzt die VM mit dem Befehl `adcli join` in die durch Azure AD DS verwaltete Domäne ein. Geben Sie einen Benutzer an, der zur Gruppe *AAD DC-Administratoren* gehört. Bei Bedarf [fügen Sie ein Benutzerkonto zu einer Gruppe in Azure AD hinzu](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Auch hier muss der Name der durch Azure AD DS verwalteten Domäne in Großbuchstaben eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@contoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie das eigene Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
+    Auch hier muss der Name der durch Azure AD DS verwalteten Domäne in Großbuchstaben eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@aadds.contoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie das eigene Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist.
 
     ```console
-    sudo adcli join -D CONTOSO.COM -U contosoadmin@CONTOSO.COM -K /etc/krb5.keytab -H coreos.contoso.com -N coreos
+    sudo adcli join -D AADDS.CONTOSO.COM -U contosoadmin@AADDS.CONTOSO.COM -K /etc/krb5.keytab -H coreos.aadds.contoso.com -N coreos
     ```
 
     Der Befehl `adcli join` gibt keine Informationen zurück, wenn die VM erfolgreich in die durch Azure AD DS verwaltete Domäne eingebunden wurde.
@@ -154,10 +154,10 @@ Nachdem Sie die SSSD-Konfigurationsdatei aktualisiert haben, binden Sie nun den 
 
 Um zu überprüfen, ob die VM erfolgreich in die durch Azure AD DS verwaltete Domäne eingebunden wurde, starten Sie eine neue SSH-Verbindung mithilfe eines Domänenbenutzerkontos. Vergewissern Sie sich, dass ein Basisverzeichnis erstellt wurde und die Gruppenmitgliedschaft aus der Domäne angewendet wird.
 
-1. Erstellen Sie eine neue SSH-Verbindung über die Konsole. Verwenden Sie ein Domänenkonto, das der verwalteten Domäne angehört, mithilfe des Befehls `ssh -l` (z.B. `contosoadmin@contoso.com`), und geben Sie dann die Adresse Ihrer VM ein (z.B. *coreos.contoso.com*). Bei Verwendung von Azure Cloud Shell verwenden Sie die öffentliche IP-Adresse der VM anstelle des internen DNS-Namens.
+1. Erstellen Sie eine neue SSH-Verbindung über die Konsole. Verwenden Sie ein Domänenkonto, das der verwalteten Domäne angehört, mithilfe des Befehls `ssh -l` (z. B. `contosoadmin@aadds.contoso.com`), und geben Sie dann die Adresse Ihrer VM ein (z. B. *coreos.aadds.contoso.com*). Bei Verwendung von Azure Cloud Shell verwenden Sie die öffentliche IP-Adresse der VM anstelle des internen DNS-Namens.
 
     ```console
-    ssh -l contosoadmin@CONTOSO.com coreos.contoso.com
+    ssh -l contosoadmin@AADDS.CONTOSO.com coreos.aadds.contoso.com
     ```
 
 1. Überprüfen Sie nun, ob die Gruppenmitgliedschaften ordnungsgemäß aufgelöst werden:

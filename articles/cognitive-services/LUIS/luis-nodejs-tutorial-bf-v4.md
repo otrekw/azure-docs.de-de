@@ -1,28 +1,18 @@
 ---
 title: 'Tutorial: Language Understanding-Bot Node.js v4'
-titleSuffix: Azure Cognitive Services
 description: Erstellen Sie in diesem Tutorial mithilfe von Node.js einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot implementiert mithilfe der Human Resources-App schnell eine Bot-Lösung. Der Bot wird mit Bot Framework, Version 4, und dem Azure Web-App-Bot erstellt.
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
-ms.author: diberry
-ms.openlocfilehash: 754d9d74a5d2c74a873145eaaddaaced29aa2ca8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 3ce12176957412a5599ced8b043f553969194efb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447995"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987838"
 ---
-# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in Node.js 
+# <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Tutorial: Verwenden eines Web-App-Bots mit aktiviertem Language Understanding in Node.js
 
 Erstellen Sie mithilfe von Node.js einen in Language Understanding (LUIS) integrierten Chatbot. Der Bot wird mit der [Web-App-Bot](https://docs.microsoft.com/azure/bot-service/)-Ressource von Azure und [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) V4 erstellt.
-
-[!INCLUDE [Waiting for Bot refresh](./includes/wait-bot-upgrade.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -67,16 +57,17 @@ Erstellen Sie mithilfe von Node.js einen in Language Understanding (LUIS) integr
     |SDK-Version|Bot-Framework-Version|**SDK v4**|
     |SDK-Sprache|Programmiersprache des Bots|**Node.js**|
     |Bot|Bottyp|**Basisbot**|
-    
+
 1. Klicken Sie auf **Erstellen**. Dadurch wird der Botdienst erstellt und in Azure bereitgestellt. Im Rahmen dieses Vorgangs wird eine LUIS-App mit dem Namen `luis-nodejs-bot-XXXX` erstellt. Dieser Name basiert auf dem Namen der Azure Bot Service-App.
 
-    [![Erstellen des Web-App-Bots](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![Erstellen des Web-App-Bots](./media/bfv4-nodejs/create-web-app-service.png)](./media/bfv4-nodejs/create-web-app-service.png#lightbox)
 
     Warten Sie, bis der Botdienst erstellt wurde, bevor Sie fortfahren.
 
 ## <a name="the-bot-has-a-language-understanding-model"></a>Der Bot beinhaltet ein Language Understanding-Modell
 
-Bei der Erstellung des Botdiensts wird auch eine neue LUIS-App mit Absichten und Beispieläußerungen erstellt. Der Bot stellt die Zuordnung der Absichten zur neuen LUIS-App für die folgenden Absichten bereit: 
+Bei der Erstellung des Botdiensts wird auch eine neue LUIS-App mit Absichten und Beispieläußerungen erstellt. Der Bot stellt die Zuordnung der Absichten zur neuen LUIS-App für die folgenden Absichten bereit:
 
 |LUIS-Absichten für Basisbots|Beispieläußerung|
 |--|--|
@@ -87,31 +78,31 @@ Bei der Erstellung des Botdiensts wird auch eine neue LUIS-App mit Absichten und
 
 ## <a name="test-the-bot-in-web-chat"></a>Testen des Bots im Webchat
 
-1. Wählen Sie im Azure-Portal für den neuen Bot die Option **Test in Web Chat** (Test im Webchat) aus. 
-1. Geben Sie im Textfeld **Nachricht eingeben** den Text `Book a flight from Seattle to Berlin tomorrow` ein. Der Bot antwortet mit der Bestätigung, ob ein Flug gebucht werden soll. 
+1. Wählen Sie im Azure-Portal für den neuen Bot die Option **Test in Web Chat** (Test im Webchat) aus.
+1. Geben Sie im Textfeld **Nachricht eingeben** den Text `Book a flight from Seattle to Berlin tomorrow` ein. Der Bot antwortet mit der Bestätigung, ob ein Flug gebucht werden soll.
 
     ![Screenshot des Azure-Portals, Eingeben des Texts „hello“](./media/bfv4-nodejs/ask-bot-question-in-portal-test-in-web-chat.png)
 
-    Über die Testfunktionen können Sie Ihren Bot schnell testen. Laden Sie für umfangreichere Tests, einschließlich Debuggen, den Botcode herunter, und verwenden Sie Visual Studio. 
+    Über die Testfunktionen können Sie Ihren Bot schnell testen. Laden Sie für umfangreichere Tests, einschließlich Debuggen, den Botcode herunter, und verwenden Sie Visual Studio.
 
 ## <a name="download-the-web-app-bot-source-code"></a>Herunterladen des Quellcodes für den Web-App-Bot
-Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und verwenden Sie ihn auf Ihrem lokalen Computer. 
+Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und verwenden Sie ihn auf Ihrem lokalen Computer.
 
-1. Wählen Sie im Azure-Portal im Abschnitt **Bot Management** (Botverwaltung) **Erstellen** aus. 
+1. Wählen Sie im Azure-Portal im Abschnitt **Bot Management** (Botverwaltung) **Erstellen** aus.
 
-1. Wählen Sie **Bot-Quellcode herunterladen** aus. 
+1. Wählen Sie **Bot-Quellcode herunterladen** aus.
 
     [![Herunterladen des Web-App-Bot-Quellcodes für den Basisbot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Wenn im Popupdialogfeld die Frage **Include app settings in the downloaded zip file?** (App-Einstellungen in die heruntergeladene ZIP-Datei einfügen?) angezeigt wird, wählen Sie **Ja** aus. Dadurch werden die LUIS-Einstellungen bereitgestellt. 
+1. Wenn im Popupdialogfeld die Frage **Include app settings in the downloaded zip file?** (App-Einstellungen in die heruntergeladene ZIP-Datei einfügen?) angezeigt wird, wählen Sie **Ja** aus. Dadurch werden die LUIS-Einstellungen bereitgestellt.
 
-1. Wenn der Quellcode gezippt ist, wird in einer Meldung ein Link zum Herunterladen des Codes zur Verfügung gestellt. Wählen Sie den Link aus. 
+1. Wenn der Quellcode gezippt ist, wird in einer Meldung ein Link zum Herunterladen des Codes zur Verfügung gestellt. Wählen Sie den Link aus.
 
-1. Speichern Sie die ZIP-Datei auf Ihrem lokalen Computer, und extrahieren Sie die Dateien. Öffnen Sie das Projekt in Visual Studio. 
+1. Speichern Sie die ZIP-Datei auf Ihrem lokalen Computer, und extrahieren Sie die Dateien. Öffnen Sie das Projekt in Visual Studio.
 
 ## <a name="review-code-to-send-utterance-to-luis-and-get-response"></a>Überprüfen des Codes zum Senden einer Äußerung an LUIS und Erhalten einer Antwort
 
-1. Öffnen Sie zum Senden der Benutzeräußerung an den LUIS-Vorhersageendpunkt **dialogs > flightBookingRecognizer.js**. Das ist die Stelle, an der in den Bot eingegebene Benutzeräußerungen an LUIS gesendet werden. Die Antwort von LUIS wird über die Methode **executeLuisQuery** zurückgegeben.  
+1. Öffnen Sie zum Senden der Benutzeräußerung an den LUIS-Vorhersageendpunkt **dialogs > flightBookingRecognizer.js**. Das ist die Stelle, an der in den Bot eingegebene Benutzeräußerungen an LUIS gesendet werden. Die Antwort von LUIS wird über die Methode **executeLuisQuery** zurückgegeben.
 
     ````javascript
     class FlightBookingRecognizer {
@@ -135,64 +126,72 @@ Um den Code des Web-App-Bots zu entwickeln, laden Sie den Code herunter, und ver
 
 
     ````javascript
-    class MainDialog extends ComponentDialog {
+    // Copyright (c) Microsoft Corporation. All rights reserved.
+    // Licensed under the MIT License.
 
-        constructor(luisRecognizer, bookingDialog) {
-            ...
-            this.luisRecognizer = luisRecognizer;
-            ...
+    const { LuisRecognizer } = require('botbuilder-ai');
+
+    class FlightBookingRecognizer {
+        constructor(config) {
+            const luisIsConfigured = config && config.applicationId && config.endpointKey && config.endpoint;
+            if (luisIsConfigured) {
+                this.recognizer = new LuisRecognizer(config, {}, true);
+            }
         }
 
-
-        ...
+        get isConfigured() {
+            return (this.recognizer !== undefined);
+        }
 
         /**
-         * Second step in the waterfall.  This will use LUIS to attempt to extract the origin, destination and travel dates.
-         * Then, it hands off to the bookingDialog child dialog to collect any remaining details.
+         * Returns an object with preformatted LUIS results for the bot's dialogs to consume.
+         * @param {TurnContext} context
          */
-        async actStep(stepContext) {
-
-            ...
-
-            const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
-
-            switch (LuisRecognizer.topIntent(luisResult)) {
-                    case 'BookFlight':
-                        // Extract the values for the composite entities from the LUIS result.
-                        const fromEntities = this.luisRecognizer.getFromEntities(luisResult);
-                        const toEntities = this.luisRecognizer.getToEntities(luisResult);
-            
-                        // Show a warning for Origin and Destination if we can't resolve them.
-                        await this.showWarningForUnsupportedCities(stepContext.context, fromEntities, toEntities);
-            
-                        // Initialize BookingDetails with any entities we may have found in the response.
-                        bookingDetails.destination = toEntities.airport;
-                        bookingDetails.origin = fromEntities.airport;
-                        bookingDetails.travelDate = this.luisRecognizer.getTravelDate(luisResult);
-                        console.log('LUIS extracted these booking details:', JSON.stringify(bookingDetails));
-            
-                        // Run the BookingDialog passing in whatever details we have from the LUIS call, it will fill out the remainder.
-                        return await stepContext.beginDialog('bookingDialog', bookingDetails);
-            
-                    case 'GetWeather':
-                        // We haven't implemented the GetWeatherDialog so we just display a TODO message.
-                        const getWeatherMessageText = 'TODO: get weather flow here';
-                        await stepContext.context.sendActivity(getWeatherMessageText, getWeatherMessageText, InputHints.IgnoringInput);
-                        break;
-            
-                    default:
-                        // Catch all for unhandled intents
-                        const didntUnderstandMessageText = `Sorry, I didn't get that. Please try asking in a different way (intent was ${ LuisRecognizer.topIntent(luisResult) })`;
-                        await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                    }
-            
-                    return await stepContext.next();
-
+        async executeLuisQuery(context) {
+            return await this.recognizer.recognize(context);
         }
 
-        ...
+        getFromEntities(result) {
+            let fromValue, fromAirportValue;
+            if (result.entities.$instance.From) {
+                fromValue = result.entities.$instance.From[0].text;
+            }
+            if (fromValue && result.entities.From[0].Airport) {
+                fromAirportValue = result.entities.From[0].Airport[0][0];
+            }
 
+            return { from: fromValue, airport: fromAirportValue };
+        }
+
+        getToEntities(result) {
+            let toValue, toAirportValue;
+            if (result.entities.$instance.To) {
+                toValue = result.entities.$instance.To[0].text;
+            }
+            if (toValue && result.entities.To[0].Airport) {
+                toAirportValue = result.entities.To[0].Airport[0][0];
+            }
+
+            return { to: toValue, airport: toAirportValue };
+        }
+
+        /**
+         * This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop the Time part.
+         * TIMEX is a format that represents DateTime expressions that include some ambiguity. e.g. missing a Year.
+         */
+        getTravelDate(result) {
+            const datetimeEntity = result.entities.datetime;
+            if (!datetimeEntity || !datetimeEntity[0]) return undefined;
+
+            const timex = datetimeEntity[0].timex;
+            if (!timex || !timex[0]) return undefined;
+
+            const datetime = timex[0].split('T')[0];
+            return datetime;
+        }
     }
+
+    module.exports.FlightBookingRecognizer = FlightBookingRecognizer;
     ````
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
@@ -208,7 +207,7 @@ Stellen einer Frage zur Absicht „Flugbuchung“ im Bot
 
     [![Antwort des Basisbots im Emulator](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png)](./media/bfv4-nodejs/ask-bot-emulator-a-question-and-get-response.png#lightbox)
 
-1. Wählen Sie **Ja** aus. Der Bot antwortet mit einer Zusammenfassung seiner Aktionen. 
+1. Wählen Sie **Ja** aus. Der Bot antwortet mit einer Zusammenfassung seiner Aktionen.
 1. Wählen Sie im Protokoll des Bot-Emulators die Zeile mit `Luis Trace` aus. Dadurch wird die JSON-Antwort von LUIS für die Absicht und die Entitäten der Äußerung angezeigt.
 
     [![Antwort des Basisbots im Emulator](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png)](./media/bfv4-nodejs/ask-luis-book-flight-question-get-json-response-in-bot-emulator.png#lightbox)
@@ -218,7 +217,7 @@ Stellen einer Frage zur Absicht „Flugbuchung“ im Bot
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich weitere [Beispiele](https://github.com/microsoft/botframework-solutions) mit Konversationsbots an. 
+Sehen Sie sich weitere [Beispiele](https://github.com/microsoft/botframework-solutions) mit Konversationsbots an.
 
 > [!div class="nextstepaction"]
 > [Erstellen einer Language Understanding-App mit einer benutzerdefinierten Motivdomäne](luis-quickstart-intents-only.md)

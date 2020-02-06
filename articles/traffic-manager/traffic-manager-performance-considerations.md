@@ -3,24 +3,24 @@ title: Leistungsüberlegungen zu Azure Traffic Manager | Microsoft Docs
 description: Grundlegendes zur Leistung von Traffic Manager und Testen der Leistung auf Websites bei Verwendung von Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
-ms.author: allensu
-ms.openlocfilehash: 315165677bd3186bb3bdc87ed688c426776569fc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 84367a00643c48e7fe2fb7f907bab64589193b2e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071053"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938539"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Leistungsüberlegungen zu Traffic Manager
 
-Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffic Manager erläutert. Stellen Sie sich folgendes Szenario vor:
+Auf dieser Seite werden Überlegungen zur Leistung bei der Verwendung von Traffic Manager erläutert. Nehmen Sie das folgende Szenario als Beispiel:
 
 Sie verfügen über Instanzen Ihrer Website in den Regionen USA, Westen und Ostasien. Bei einer der Instanzen ist die Integritätsprüfung für den Traffic Manager-Test fehlgeschlagen. Anwendungsdatenverkehr wird an die fehlerfreie Region geleitet. Dieser Failover wird erwartet, aber die Leistung kann aufgrund der Latenz ein Problem darstellen, nachdem der Datenverkehr jetzt zu einer weiter entfernten Region geleitet wird.
 

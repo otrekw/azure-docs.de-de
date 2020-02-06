@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: a4a97ebd0e44bfd3b0ee167a2f3a7da435ac5087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f56a724174b81966642b2870360014597436eade
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510335"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76981088"
 ---
 # <a name="session-monitoring-and-management-for-azure-bastion"></a>Überwachen und Verwalten von Azure Bastion-Sitzungen
 
@@ -46,7 +46,7 @@ Sie können eine Reihe von Sitzungen auswählen und deren Trennung erzwingen. Di
    ![Sitzungen auflisten](./media/session-monitoring/list.png)
 3. Wählen Sie eine bestimmte Remotesitzung, anschließend die Auslassungspunkte auf der rechten Seite der Sitzungszeile und zuletzt **Löschen** aus.
 
-   ![Löschen](./media/session-monitoring/delete.png)
+   ![delete](./media/session-monitoring/delete.png)
 4. Wenn Sie „Löschen“ auswählen, wird die Remotesitzung getrennt, und der Benutzer erhält in der Remotesitzung eine Meldung, dass seine Verbindung getrennt wurde.
 
    ![Trennen](./media/session-monitoring/disconnect.png)

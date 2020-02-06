@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100651"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844716"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Tutorial: Weiterleiten von Ereignissen an die Event Grid-Cloud
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die Schritte erläutert, die erforderlich sind, um Edge
 * Reagieren auf Edge-Ereignisse in der Cloud.
 * Weiterleiten von Ereignissen an Event Grid in der Cloud und Verwenden von Azure Event Hubs oder Azure Storage-Warteschlangen, um Ereignisse vor der Verarbeitung in der Cloud zu puffern.
 
-Zur Durchführung dieses Tutorials müssen Sie mit den Event Grid-Konzepten in [Edge](concepts.md) und [Azure](../concepts.md) vertraut sein.
+ Zur Durchführung dieses Tutorials müssen Sie mit den Event Grid-Konzepten in [Edge](concepts.md) und [Azure](../concepts.md) vertraut sein. Weitere Zieltypen finden Sie unter [Ereignishandler und Ziele in Event Grid in Edge](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
@@ -83,6 +83,7 @@ Wenn Sie z. B. ein Thema namens `testegcloudtopic` in der Region „USA, Westen�
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Erstellen eines Event Grid-Abonnements auf dem Edge
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Erstellen Sie eine Datei „subscription3.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 
@@ -201,3 +202,4 @@ In diesem Tutorial haben Sie ein Ereignis auf dem Edge veröffentlicht und an Ev
 * Informationen zum Behandeln von Problemen bei der Verwendung von Azure Event Grid in IoT Edge finden Sie im [Leitfaden zur Problembehandlung](troubleshoot.md).
 * Arbeiten Sie dieses [Tutorial](forward-events-iothub.md) durch, um Ereignisse an IoTHub weiterzuleiten.
 * Arbeiten Sie dieses [Tutorial](pub-sub-events-webhook-cloud.md) durch, um Ereignisse an Webhook in der Cloud weiterzuleiten.
+* [Überwachen von Themen und Ereignisabonnements](monitor-topics-subscriptions.md)

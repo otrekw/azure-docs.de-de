@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/27/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1cb5af13bdd309c762337e64ecde8538afc756b0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b1978e45a7554358ddd948879143411f89e4c1b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794839"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843404"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Lebenszyklus einer Wissensdatenbank in QnA Maker
-QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
+QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.
 
 ![Erstellungszyklus](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
@@ -28,14 +28,14 @@ Der Endpunkt der QnA Maker-Knowledge Base (KB) stellt die am besten übereinstim
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testen und Aktualisieren der Knowledge Base
 
-Die Knowledge Base ist bereit für das Testen, nachdem sie mit manuell bearbeiteten oder automatisch extrahierten Inhalten aufgefüllt wurde. Interaktive Tests können im QnA Maker-Portal über den Bereich **Testen** ausgeführt werden, indem häufige Benutzerabfragen eingegeben werden und dann überprüft wird, ob die zurückgegebenen Antworten richtig sind und eine ausreichende Zuverlässigkeitsbewertung aufweisen. 
+Die Knowledge Base ist bereit für das Testen, nachdem sie mit manuell bearbeiteten oder automatisch extrahierten Inhalten aufgefüllt wurde. Interaktive Tests können im QnA Maker-Portal über den Bereich **Testen** ausgeführt werden, indem häufige Benutzerabfragen eingegeben werden und dann überprüft wird, ob die zurückgegebenen Antworten richtig sind und eine ausreichende Zuverlässigkeitsbewertung aufweisen.
 
-* **Optimieren niedriger Zuverlässigkeitsbewertungen**: Fügen Sie alternative Fragen hinzu. 
-* **Wenn eine Abfrage fälschlicherweise die [Standardantwort zurückgibt](confidence-score.md#change-default-answer)** : Fügen Sie neue Antworten auf die richtige Frage hinzu. 
+* **Optimieren niedriger Zuverlässigkeitsbewertungen**: Fügen Sie alternative Fragen hinzu.
+* **Wenn eine Abfrage fälschlicherweise die [Standardantwort zurückgibt](../How-to/change-default-answer.md)** : Fügen Sie neue Antworten auf die richtige Frage hinzu.
 
 Diese nahe Abfolge von Tests und Updates wird so lange fortgesetzt, bis Sie mit den Ergebnissen zufrieden sind. Erfahren Sie mehr über das [Testen Ihrer Knowledge Base](../How-To/test-knowledge-base.md).
 
-Verwenden Sie für große Wissensdatenbanken automatisierte Tests mit der [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) und der Texteigenschaft `isTest`, die die `test`-Wissensdatenbank anstelle der veröffentlichten Wissensdatenbank abfragt. 
+Verwenden Sie für große Wissensdatenbanken automatisierte Tests mit der [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) und der `isTest`-Texteigenschaft, die die `test`-Wissensdatenbank anstelle der veröffentlichten Wissensdatenbank abfragt.
 
 ```json
 {
@@ -62,13 +62,27 @@ Sie können verschiedene Analysen Ihrer Dienstnutzung abrufen. Erfahren Sie mehr
 
 Je nach den Ergebnissen Ihrer Analysen können Sie entsprechende [Änderungen an Ihrer Knowledge Base](../How-To/edit-knowledge-base.md) vornehmen.
 
-## <a name="version-control-of-a-knowledge-base"></a>Versionskontrolle für eine Wissensdatenbank
+## <a name="version-control-for-data-in-your-knowledge-base"></a>Versionskontrolle für Daten in Ihrer Wissensdatenbank
 
-Die Versionskontrolle wird nicht von QnA Maker bereitgestellt. Sie müssen Ihre Wissensdatenbank über die Seite **Einstellungen** exportieren und Ihre eigenen Methoden und Tools verwenden.
+Die Versionskontrolle für Daten wird über die Import/Export-Funktion auf der Seite **Einstellungen** im QnA Maker-Portal bereitgestellt.
 
-Das Exportieren der Wissensdatenbank in das TSV- oder XLS-Format wird auf der Seite **Einstellungen** abgeschlossen. 
+Sie können eine Wissensdatenbank sichern, indem Sie die Wissensdatenbank exportieren, entweder im `.tsv`- oder im `.xls`-Format. Schließen Sie diese Datei nach dem Exportieren in die reguläre Überprüfung Ihrer Quellcodeverwaltung ein.
 
-Wenn Sie zu einer bestimmten Version zurückkehren müssen, müssen Sie diese Datei aus Ihrem lokalen System importieren. Importieren Sie auf der Seite **Einstellungen** die TSV- oder XLS-Datei. Dadurch werden Fragen und Antworten, die sich derzeit in der Wissensdatenbank befinden, durch den Inhalt der importierten Datei ersetzt.   
+Wenn Sie zu einer bestimmten Version zurückkehren müssen, müssen Sie diese Datei aus Ihrem lokalen System importieren. Eine exportierte Wissensdatenbank **darf nur** über den Import auf der Seite **Einstellungen** verwendet werden. Sie kann nicht als Datei- oder URL-Dokumentdatenquelle verwendet werden. Dadurch werden Fragen und Antworten, die sich derzeit in der Wissensdatenbank befinden, durch den Inhalt der importierten Datei ersetzt.
+
+## <a name="test-and-production-knowledge-base"></a>Test- und Produktionsversion der Wissensdatenbank
+Eine Wissensdatenbank ist das Repository der mithilfe von QnA Maker erstellten, verwalteten und verwendeten Frage-Antwort-Sätze. Jede QnA Maker-Ressource kann mehrere Wissensdatenbanken enthalten.
+
+Eine Wissensdatenbank verfügt über zwei Statuswerte: *Testversion* und *Veröffentlicht*.
+
+### <a name="test-knowledge-base"></a>Testversion der Wissensdatenbank
+
+Die *Testversion einer Wissensdatenbank* ist die Version, die aktuell bearbeitet, gespeichert und auf Genauigkeit und Vollständigkeit der Antworten getestet wird. Änderungen an der Testversion der Wissensdatenbank wirken sich nicht auf die Benutzer Ihrer Anwendung oder Ihres Chatbots aus. Die Testversion der Wissensdatenbank wird in der HTTP-Anforderung als `test` bezeichnet. Die `test`-Wissensdatenbank steht im interaktiven **Test**-Bereich im QnA Maker-Portal zur Verfügung.
+
+### <a name="production-knowledge-base"></a>Produktionsversion der Wissensdatenbank
+
+Die *veröffentlichte Wissensdatenbank* ist die Version, die in Ihrem Chatbot oder Ihrer Anwendung verwendet wird. Bei der Veröffentlichung einer Wissensdatenbank wird der Inhalt der Testversion in die veröffentlichte Version der Wissensdatenbank übertragen. Da es sich bei der veröffentlichten Wissensdatenbank um die Version handelt, die von der Anwendung über den Endpunkt verwendet wird, sollten Sie sicherstellen, dass der Inhalt korrekt und ausreichend getestet ist. Die veröffentlichte Wissensdatenbank wird in der HTTP-Anforderung als `prod` bezeichnet.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

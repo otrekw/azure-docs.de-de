@@ -15,41 +15,40 @@ ms.workload: identity
 ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 156917a011be2909ecca8ca14c98feb360f7831a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 922a484d111746e5073c08a64d7c92e2b6b4a7c4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423913"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773399"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Daemon-App, die Web-APIs aufruft – App-Registrierung
 
-In diesem Artikel finden Sie alle wichtigen Informationen zur Registrierung einer Daemon-Anwendung.
+In diesem Artikel finden Sie alle wichtigen Informationen zur Registrierung einer Daemon-App.
 
 ## <a name="supported-account-types"></a>Unterstützte Kontotypen
 
-Da Daemon-Anwendungen nur in Azure AD-Mandanten sinnvoll sind, müssen Sie beim Erstellen der Anwendung eine der folgenden Optionen auswählen:
+Daemonanwendungen können nur in Azure AD-Mandanten sinnvoll eingesetzt werden. Wenn Sie die Anwendung erstellen, müssen Sie daher eine der folgenden Optionen auswählen:
 
-- **Nur Konten in diesem Organisationsverzeichnis**. Diese Option wird am häufigsten ausgewählt, da Daemon-Anwendungen in der Regel von branchenspezifischen Entwicklern geschrieben werden.
+- **Nur Konten in diesem Organisationsverzeichnis**. Diese Option wird am häufigsten ausgewählt, da Daemonanwendungen in der Regel von branchenspezifischen Entwicklern geschrieben werden.
 - **Konten in einem beliebigen Organisationsverzeichnis**. Wählen Sie diese Option aus, wenn Sie ein unabhängiger Softwarehersteller sind, der ein Hilfsprogramm für seine Kunden bereitstellt. Sie benötigen hierfür die Genehmigung der Mandantenadministratoren des Kunden.
 
 ## <a name="authentication---no-reply-uri-needed"></a>Authentifizierung – kein Antwort-URI erforderlich
 
-Wenn Ihre vertrauliche Clientanwendung **nur** den Clientanmeldeinformationsfluss verwendet, muss die Antwort-URL nicht registriert werden. Sie wird weder für die Konfiguration noch für die Erstellung der Anwendung verwendet. Der Fluss mit Clientanmeldeinformationen verwendet diese nicht.
+Wenn Ihre vertrauliche Clientanwendung *nur* den Clientanmeldeinformations-Flow verwendet, muss der Antwort-URI nicht registriert werden. Er wird weder für die Konfiguration noch für die Erstellung der Anwendung verwendet. Der Fluss mit Clientanmeldeinformationen verwendet diese nicht.
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API-Berechtigungen: App-Berechtigungen und Administratoreinwilligung
 
-Eine Daemon-Anwendung kann nur Anwendungsberechtigungen (keine delegierten Berechtigungen) für APIs anfordern. Auf der Seite **API Permission** (API-Berechtigung) der Anwendungsregistrierung klicken Sie auf **Berechtigung hinzufügen** und wählen die API-Familie aus. Anschließend klicken Sie auf **Anwendungsberechtigungen** und wählen Ihre Berechtigungen aus.
+Eine Daemonanwendung kann nur Anwendungsberechtigungen (keine delegierten Berechtigungen) für APIs anfordern. Wählen Sie auf der Seite **API-Berechtigungen** der Anwendungsregistrierung **Berechtigung hinzufügen** und dann die API-Familie aus. Wählen Sie anschließend **Anwendungsberechtigungen** und dann Ihre Berechtigungen aus.
 
 ![App-Berechtigungen und Administratoreinwilligung](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> Die Web-API, die Sie aufrufen möchten, muss **Anwendungsberechtigungen (App-Rollen)** und keine delegierten Berechtigungen definieren. Weitere Informationen zum Bereitstellen einer solchen API finden Sie unter [Geschützte Web-API: App-Registrierung – wenn Ihre Web-API von einer Daemon-App aufgerufen wird](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)
+> Die Web-API, die Sie aufrufen möchten, muss *Anwendungsberechtigungen (App-Rollen)* definieren – keine delegierten Berechtigungen. Weitere Informationen zum Bereitstellen einer solchen API finden Sie unter [Geschützte Web-API: App-Registrierung: Aufrufen der Web-API durch Daemon-Apps](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app).
 
-Bei Daemon-Anwendungen ist vorab eine Einwilligung des Mandantenadministrators in den Aufruf der Web-API durch die Anwendung erforderlich. Diese Einwilligung wird ebenfalls auf der Seite **API Permission** (API-Berechtigung) durch einen Administrator angegeben. Dieser wählt dazu **Grant admin consent to *our organization*** (Administratoreinwilligung für unser Unternehmen erteilen) aus.
+Bei Daemonanwendungen ist vorab eine Einwilligung des Mandantenadministrators für den Aufruf der Web-API durch die Anwendung erforderlich. Diese Einwilligung wird ebenfalls auf der Seite **API-Berechtigungen** durch einen Mandantenadministrator angegeben. Dieser wählt dazu **Administratoreinwilligung erteilen *für unsere Organisation*** aus.
 
-Wenn Sie ein unabhängiger Softwarehersteller sind, der eine mehrinstanzenfähige Anwendung erstellt, interessiert Sie vermutlich der Abschnitt [Deployment - case of multi-tenant daemon apps (Bereitstellung: mehrinstanzenfähige Daemon-Apps)](scenario-daemon-production.md#deployment---case-of-multi-tenant-daemon-apps).
+Wenn Sie ein unabhängiger Softwarehersteller sind, der eine mehrinstanzenfähige Anwendung erstellt, lesen Sie den Abschnitt zur [Bereitstellung bei mehrinstanzenfähigen Daemon-Apps](scenario-daemon-production.md#deployment---multitenant-daemon-apps).
 
 [!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-registration-client-secrets.md)]
 

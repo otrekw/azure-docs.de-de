@@ -3,12 +3,12 @@ title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden Sie den copy-Vorgang und Arrays in einer Azure-Ressourcen-Manager-Vorlage, um sie beim Bereitstellen von Ressourcen mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121980"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836928"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteration von Ressourcen, Eigenschaften oder Variablen in Azure Resource Manager-Vorlagen
 
@@ -205,6 +205,10 @@ Im folgenden Beispiel wird veranschaulicht, wie `copy` auf die dataDisks-Eigensc
 
 Beachten Sie Folgendes: Bei Verwendung von `copyIndex` in einer Eigenschaften-Iteration müssen Sie den Namen der Iteration angeben. Bei Verwendung mit einer Ressourcen-Iteration muss der Name nicht angegeben werden.
 
+> [!NOTE]
+> Von der Eigenschafteniteration wird auch ein Offsetargument unterstützt. Der Offset muss nach dem Namen der Iteration angegeben werden. Beispiel: copyIndex('dataDisks', 1).
+>
+
 Ressourcen-Manager erweitert das `copy`-Array während der Bereitstellung. Der Name des Arrays wird zum Namen der Eigenschaft. Die Eingabewerte werden zu den Eigenschaften des Objekts. Die bereitgestellte Vorlage sieht wie folgt aus:
 
 ```json
@@ -299,6 +303,10 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 ## <a name="variable-iteration"></a>Variableniteration
 
 Um mehrere Instanzen einer Variable zu erstellen, verwenden Sie die `copy`-Eigenschaft im Abschnitt „variables“. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird. Sie können die `copy`-Eigenschaft innerhalb einer Variablen oder auf der obersten Ebene des Abschnitts „variables“ verwenden. Bei Verwendung von `copyIndex` in einer Variableniteration müssen Sie den Namen der Iteration angeben.
+
+> [!NOTE]
+> Von der Variableniteration wird auch ein Offsetargument unterstützt. Der Offset muss nach dem Namen der Iteration angegeben werden. Beispiel: copyIndex('diskNames', 1).
+>
 
 Ein einfaches Beispiel für das Erstellen eines Arrays von Zeichenfolgenwerten finden Sie in diesem Artikel zum [Kopieren der Arrayvorlage](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 

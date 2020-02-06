@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777817"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766800"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -22,36 +22,51 @@ Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die L
 
 ### <a name="timing-metrics"></a>Zeitmetriken
 
-Die folgenden Metriken bezüglich der zeitlichen Steuerung der Anforderung und der Antwort sind verfügbar. Durch Analysieren dieser Metriken für einen bestimmten Listener können Sie feststellen, ob die Verlangsamung der Anwendung auf das WAN, Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder der Back-End-Anwendungsleistung zurückzuführen ist.
+Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich auf die Anforderung und die Antwort beziehen und die alle in Millisekunden gemessen werden. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
 > Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener*, und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
 
-- **Client-RTT**
+- **Verbindungszeit für das Back-End**
 
-  Durchschnittliche Roundtripzeit zwischen Clients und Application Gateway. Diese Metrik gibt an, wie lange es dauert, Verbindungen herzustellen und Bestätigungen zurückzugeben. 
+  Zeitaufwand für das Herstellen einer Verbindung mit der Back-End-Anwendung. 
 
-- **Application Gateway-Gesamtzeit**
-
-  Durchschnittliche Zeit, bis eine Anforderung verarbeitet und die zugehörige Antwort gesendet wurde. Dies wird berechnet als durchschnittliches Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Beachten Sie, dass dies in der Regel die Application Gateway-Verarbeitungszeit, die Zeit für das Durchlaufen des Netzwerks durch die Anforderungs- und Antwortpakete und die Zeit bis zur Antwort des Back-End-Servers einschließt.
-  
-Wenn nach dem Filtern nach Listener die *Client-RTT* erheblich höher als die *Application Gateway-Gesamtzeit* ist, kann hieraus geschlossen werden, dass die vom Client beobachtete Latenz an der Netzwerkverbindung zwischen dem Client und Application Gateway liegt. Wenn beide Wartezeiten vergleichbar sind, könnte die hohe Wartezeit auf Folgendes zurückzuführen sein: Application Gateway, das Netzwerk zwischen Application Gateway und der Back-End-Anwendung oder die Back-End-Anwendungsleistung.
+  Dies umfasst auch die Netzwerklatenz sowie die Zeit, die der TCP-Stapel des Back-End-Servers zum Aufbauen neuer Verbindungen benötigt. Im Fall von SSL umfasst dies auch die mit dem Handshake verbrachte Zeit. 
 
 - **Antwortzeit für erstes Byte des Back-Ends**
 
-  Das Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des ersten Bytes des Antwortheaders und somit eine Abschätzung der Verarbeitungszeit des Back-End-Servers
+  Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antwortheaders. 
+
+  Dies entspricht ungefähr der Summe aus der *Back-End-Verbindungszeit*, der von der Anforderung zum Erreichen des Back-Ends von Application Gateway benötigten Zeit, der Zeit, die die Back-End-Anwendung für die Antwort benötigt (Zeit für die Generierung der Inhalte durch den Server, ggf. Abrufen von Datenbankabfragen), und der Zeit, bis das erste Byte der Antwort von Application Gateway vom Back-End erreicht.
 
 - **Antwortzeit für letztes Byte des Back-Ends**
 
-  Das Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antworttexts
-  
-Wenn die *Application Gateway-Gesamtzeit* viel höher als die *Antwortzeit des letzten Back-End-Bytes* für einen bestimmten Listener ist, kann daraus abgeleitet werden, dass die hohe Latenz am Application Gateway liegen könnte. Wenn die beiden Metriken hingegen vergleichbar sind, kann das Problem entweder auf dem Netzwerk zwischen dem Application Gateway und der Back-End-Anwendung oder auf der Leistung der Back-End-Anwendung beruhen.
+  Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antworttexts. 
 
-- **Verbindungszeit für das Back-End**
+  Dies entspricht der Summe aus der *Back-End-Antwortzeit für das erste Byte* und der Datenübertragungszeit. (Diese Zahl variiert in Abhängigkeit von der Größe der angeforderten Objekte und der Latenz des Servernetzwerks teilweise erheblich.)
 
-  Zeitaufwand für das Herstellen einer Verbindung mit einer Back-End-Anwendung. Im Fall von SSL umfasst dies die mit dem Handshake verbrachte Zeit. Beachten Sie, dass sich diese Metrik von den anderen Latenzmetriken unterscheidet, da diese nur die Verbindungszeit misst und deshalb nicht direkt mit den anderen Wartezeiten hinsichtlich des Betrags verglichen werden sollte. Wenn Sie jedoch das Muster der *Back-End-Verbindungszeit* mit dem Muster der anderen Wartezeiten vergleichen, kann dies darauf hindeuten, ob eine Erhöhung anderer Wartezeiten aufgrund einer Variation im Netzwerk zwischen dem Application Gatway und der Back-End-Anwendung abgeleitet werden könnte. 
-  
+- **Application Gateway-Gesamtzeit**
+
+  Durchschnittliche Zeit, bis eine Anforderung empfangen, verarbeitet und die zugehörige Antwort gesendet wurde. 
+
+  Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der Antwort an den Client gesendet wurde. Dies schließt die Verarbeitungszeit durch Application Gateway, die *Antwortzeit bis zum letzten Byte vom Back-End*, die Zeit, die Application Gateway zum Senden der Antwort benötigt, sowie die *Client-RTT* ein.
+
+- **Client-RTT**
+
+  Durchschnittliche Roundtripzeit zwischen Clients und Application Gateway.
+
+
+
+Mithilfe dieser Metriken können Sie ermitteln, ob die beobachtete Verlangsamung auf das Clientnetzwerk, die Leistung von Application Gateway, das Back-End-Netzwerk und die TCP-Stapelauslastung des Back-End-Servers, die Leistung der Back-End-Anwendung oder eine große Datei zurückzuführen ist.
+
+Wenn z. B. eine Spitze im Trend der *Back-End-Antwortzeit für das erste Byte* auftritt, aber der Trend der *Back-End-Verbindungszeit* stabil ist, können Sie daraus ableiten, dass es Latenzen zwischen Application Gateway und dem Back-End gibt und dass die Zeit zum Herstellen der Verbindung gleichbleibend ist. Damit wissen Sie, dass die Spitze durch einen Anstieg der Antwortzeit der Back-End-Anwendung verursacht wird. Wenn andererseits die Spitze bei der *Back-End-Antwortzeit für das erste Byte* mit einer entsprechenden Spitze bei der *Back-End-Verbindungszeit* zusammenhängt, können Sie daraus schließen, dass entweder das Netzwerk zwischen Application Gateway und dem Back-End-Server oder der TCP-Stapel des Back-End-Servers ausgelastet ist. 
+
+Wenn Sie eine Spitze bei der *Back-End-Antwortzeit für das erste Byte* feststellen, aber die *Back-End-Antwortzeit für das erste Byte* gleichbleibend ist, kann die Spitze darauf zurückgeführt werden, dass eine größere Datei angefordert wird.
+
+Entsprechend kann eine Spitze bei der *Application Gateway-Gesamtzeit* bei gleichbleibender *Back-End-Antwortzeit für das letzte Byte* ein Zeichen entweder für einen Leistungsengpass bei Application Gateway oder einen Engpass im Netzwerk zwischen Client und Application Gateway sein. Wenn außerdem die *Client-RTT* eine entsprechende Spitze aufweist, deutet dies darauf hin, dass das Problem auf das Netzwerk zwischen Client und Application Gateway zurückzuführen ist.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway-Metriken
 
@@ -112,11 +127,11 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Anzahl von fehlerfreien Hosts**
 
-  Die Anzahl der Back-Ends, die im Integritätstest als fehlerfrei ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
+  Die Anzahl der Back-Ends, die im Integritätstest als fehlerfrei ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um die Anzahl fehlerfreier Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
 - **Anzahl von fehlerhaften Hosts**
 
-  Die Anzahl der Back-Ends, die im Integritätstest als fehlerhaft ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
+  Die Anzahl der Back-Ends, die im Integritätstest als fehlerhaft ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um die Anzahl fehlerhafter Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Von der Application Gateway V1-SKU unterstützte Metriken
 
@@ -158,11 +173,11 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Anzahl von fehlerfreien Hosts**
 
-  Die Anzahl der Back-Ends, die im Integritätstest als fehlerfrei ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
+  Die Anzahl der Back-Ends, die im Integritätstest als fehlerfrei ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um die Anzahl fehlerfreier Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
 - **Anzahl von fehlerhaften Hosts**
 
-  Die Anzahl der Back-Ends, die im Integritätstest als fehlerhaft ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
+  Die Anzahl der Back-Ends, die im Integritätstest als fehlerhaft ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um die Anzahl fehlerhafter Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
 ## <a name="metrics-visualization"></a>Metrikvisualisierung
 

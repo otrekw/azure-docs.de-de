@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: 59bb866d7a339608555f0bb802e1716eba5d3255
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 2/1/2020
+ms.openlocfilehash: aaff56ba1de69485d1c3b93bc7ed95ce1a3cbd88
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431561"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983548"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics – Vorschaufeatures
 
@@ -52,11 +52,6 @@ Sie können Ihre Abfragen mit Livedaten auf dem lokalen Computer testen, bevor S
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Visual Studio Code für Azure Stream Analytics
 
 Azure Stream Analytics-Aufträge können in Visual Studio Code erstellt werden. Siehe [Visual Studio Code-Schnellstart](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code).
-
-
-### <a name="anomaly-detection"></a>Erkennung von Anomalien
-
-Azure Stream Analytics stellt neue Machine Learning-Modelle vor, die neben der bidirektionalen, langsam positiven und langsam negativen Trenderkennung auch die Erkennung von *Spikes* und *Dips* unterstützen. Weitere Informationen finden Sie auf der Seite [Anomalieerkennung in Azure Stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 
 ### <a name="integration-with-azure-machine-learning"></a>Integration mit Azure Machine Learning

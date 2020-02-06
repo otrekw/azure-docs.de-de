@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894017"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720400"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten mit Azure Machine Learning-Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "75894017"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Ein Azure Machine Learning-Arbeitsbereich mit dem Typ **Enterprise Edition**. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).  Informationen zum Upgraden eines vorhandenen Arbeitsbereichs auf Enterprise Edition finden Sie unter [Upgrade auf Enterprise Edition](how-to-manage-workspace.md#upgrade).
 
@@ -153,9 +153,15 @@ Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleic
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Optionen für erweiterte Vorverarbeitung
+## <a name="advanced-featurization-options"></a>Erweiterte Optionen bei der Featurebereitstellung
 
-Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `Preprocess` aktivieren. Dies bedeutet, dass im Rahmen der Vorverarbeitung die folgenden Schritte für Datenschutzmaßnahmen und Featurisierung automatisch durchgeführt werden.
+Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `feauturization` aktivieren. 
+
+|Konfiguration der Featurebereitstellung | Beschreibung |
+| ------------- | ------------- |
+|"featurization" = 'FeaturizationConfig'| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"featurization" = 'off'| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|
+|"featurization" = 'auto'| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden Schritte für Datenschutzmaßnahmen und Featurebereitstellung automatisch durchgeführt werden.|
 
 |Vorverarbeitungsschritte&nbsp;| Beschreibung |
 | ------------- | ------------- |

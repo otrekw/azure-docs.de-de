@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732585"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771571"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>OFFSET LIMIT-Klausel in Azure Cosmos DB
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Bemerkungen
   
-  In der OFFSET LIMIT-Klausel müssen sowohl für OFFSET als auch für LIMIT Werte angegeben werden. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück. Diese Klausel wird jetzt für Abfragen in einer einzelnen Partition sowie für partitionsübergreifende Abfragen unterstützt.
+  Die `OFFSET`-Anzahl und die `LIMIT`-Anzahl sind in der `OFFSET LIMIT`-Klausel erforderlich. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück.
+
+  Die RU-Gebühr für eine Abfrage mit `OFFSET LIMIT` steigt mit zunehmender Anzahl der versetzten Begriffe. Für Abfragen mit mehreren Ergebnisseiten empfiehlt es sich in der Regel, Fortsetzungstoken zu verwenden. Fortsetzungstoken sind „Lesezeichen“ für die Stelle, an der die Abfrage später fortgesetzt werden kann. Wenn Sie `OFFSET LIMIT` verwenden, gibt es kein „Lesezeichen“. Wenn Sie die nächste Seite der Abfrage zurückgeben möchten, müssen Sie vom Anfang beginnen.
+  
+  Sie sollten `OFFSET LIMIT` in Fällen verwenden, in denen Sie Dokumente vollständig überspringen und Clientressourcen speichern möchten. Sie sollten `OFFSET LIMIT` z. B. verwenden, wenn Sie alles bis zum 1.000. Ergebnis der Abfrage überspringen und die Ergebnisse 1 bis 999 nicht anzeigen möchten. Auf dem Back-End lädt `OFFSET LIMIT` immer noch jedes Dokument, einschließlich der übersprungenen Dokumente. Der Leistungsvorteil ergibt sich aus der Einsparung von Clientressourcen, indem die Verarbeitung von nicht benötigten Dokumenten vermieden wird.
 
 ## <a name="examples"></a>Beispiele
 

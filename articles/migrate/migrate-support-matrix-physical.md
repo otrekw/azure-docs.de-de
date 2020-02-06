@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Bewertung physischer Server mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154787"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846573"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -55,8 +55,8 @@ Die folgende Tabelle fasst die Portanforderungen für die Bewertung zusammen.
 
 **Device** | **Connection**
 --- | ---
-**Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
-**Physische Server** | **Windows:** Eingehende Verbindungen auf den Ports 443, den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/> **Linux:**  Eingehende Verbindungen auf dem Port 22 (UDP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
+**Appliance** | Eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL ``` https://<appliance-ip-or-name>:44368 ``` auf die Applianceverwaltungs-App zugreifen zu können.<br/> Ausgehende Verbindungen an den Ports 443 (HTTPS), 5671 und 5672 (AMQP) zum Senden von Ermittlungs- und Leistungsmetadaten an Azure Migrate.
+**Physische Server** | **Windows:** Eingehende Verbindungen an den WinRM-Ports 5985 (HTTP) und 5986 (HTTPS) zum Abrufen von Konfigurations- und Leistungsmetadaten von Windows-Servern. <br/> **Linux:**  Eingehende Verbindungen auf dem Port 22 (UDP) zum Abrufen von Konfigurations- und Leistungsmetadaten von Linux-Servern. |
 
 ## <a name="agent-based-dependency-visualization"></a>Agent-basierte Visualisierung von Abhängigkeiten
 

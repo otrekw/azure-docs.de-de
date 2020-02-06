@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 27cd2e58eabcd96414391cac1a517ea242a65c21
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3cf88b4d3c4c74493235d2997db4d464bb055b81
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809810"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023751"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -36,8 +36,6 @@ Wenn Sie Microsoft Enterprise Services verwenden, generiert Microsoft einige Inf
 Die Fähigkeit zum Löschen von Benutzerdaten wird nur über die Verwaltungsseite von IoT Central bereitgestellt. Anwendungsadministratoren können den zu löschenden Benutzer und in der oberen rechten Ecke der Anwendung **Löschen** auswählen, um den Datensatz zu löschen. Anwendungsadministratoren können auch einzelne Konten entfernen, die nicht mehr der fraglichen Anwendung zugeordnet sind.
 
 Nachdem ein Benutzer gelöscht wurde, werden ihm keine weiteren Warnungen mehr per E-Mail gesendet. Seine E-Mail-Adresse muss jedoch einzeln aus jeder konfigurierten Warnung entfernt werden.
-
-Weitere Informationen finden Sie unter [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central](tutorial-configure-rules.md).
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 

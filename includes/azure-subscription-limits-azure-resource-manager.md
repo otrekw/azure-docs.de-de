@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d94937a738034904413eac8b256121f14221d1ac
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021101"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845958"
 ---
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
@@ -21,16 +21,17 @@ ms.locfileid: "76021101"
 | Gesamte Kerne pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
 | Azure Spot-VM: Kerne gesamt pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
 | VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> pro Region | Wenden Sie sich an den Support. |
-| [Co-Admins](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) pro Abonnement |Unbegrenzt. |Unbegrenzt. |
 | [Speicherkonten](../articles/storage/common/storage-account-create.md) pro Region und Abonnement |250 |250 |
-| [Ressourcengruppen](../articles/azure-resource-manager/management/overview.md) pro Abonnement |980 |980 |
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2\.000 pro Region |2\.000 pro Region |
+| [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
+| [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
+| [Ressourcengruppen](../articles/azure-resource-manager/management/overview.md) pro Abonnement |980 |980 |
 | Anforderungsgröße für Azure Resource Manager-API |4\.194.304 Byte |4\.194.304 Byte |
 | Tags pro Abonnement<sup>2</sup> |Unbegrenzt. |Unbegrenzt. |
 | Eindeutige Tag-Berechnungen pro Abonnement<sup>2</sup> | 10.000 | 10.000 |
-| [Clouddienste](../articles/cloud-services/cloud-services-choose-me.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
-| [Affinitätsgruppen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) pro Abonnement |Nicht zutreffend<sup>3</sup> |Nicht zutreffend<sup>3</sup> |
 | [Bereitstellungen auf Abonnementebene](../articles/azure-resource-manager/templates/deploy-to-subscription.md) pro Standort | 800<sup>4</sup> | 800 |
+| Abonnements pro Azure Active Directory-Mandant | Unbegrenzt. | Unbegrenzt. |
+| [Co-Admins](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) pro Abonnement |Unbegrenzt. |Unbegrenzt. |
 
 <sup>1</sup>Standardgrenzwerte variieren nach angebotenem Kategorietyp, z.B. kostenlose Testversion, nutzungsbasierte Bezahlung, und nach Serie, wie z.B. Dv2, F und G. Der Standard für Enterprise Agreement-Abonnements ist z.B. 350.
 

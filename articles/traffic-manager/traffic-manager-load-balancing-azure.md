@@ -3,7 +3,7 @@ title: Verwenden von Lastenausgleichsdiensten in Azure | Microsoft-Dokumentation
 description: 'In diesem Tutorial erfahren Sie, wie Sie ein Szenario mithilfe des Lastenausgleichportfolios von Azure erstellen: Traffic Manager, Application Gateway und Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: allensu
-ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227789"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939223"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -142,7 +142,7 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 
 3. Erstellen Sie einen Endpunkt durch Eingabe der folgenden Informationen:
 
-   * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
+   * **Typ:** Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
    * **Name**: Geben Sie den Namen des Endpunkts ein.
    * **Zielressourcentyp:** Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie dann unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
 

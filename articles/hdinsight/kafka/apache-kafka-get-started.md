@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/01/2019
-ms.openlocfilehash: e253d168fadd5aff46e70ba00a4021415c0ea6f7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 76360ec8de645d926daec0db878906c73d0da948
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242042"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030013"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal
 
@@ -43,7 +43,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
 1. Geben Sie unter **Grundlagen** die folgenden Werte ein, bzw. wählen Sie sie aus:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Subscription    |  Wählen Sie Ihr Azure-Abonnement. |
     |Resource group     | Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.  Bei einer Ressourcengruppe handelt es sich um einen Container mit Azure-Komponenten.  In diesem Fall enthält die Ressourcengruppe den HDInsight-Cluster und das abhängige Azure Storage-Konto. |
@@ -65,14 +65,14 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
 1. Geben Sie auf der Registerkarte **Speicher** die folgenden Werte ein:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Primärer Speichertyp|Übernehmen Sie den Standardwert **Azure Storage**.|
     |Auswahlmethode|Übernehmen Sie den Standardwert **Aus Liste auswählen**.|
     |Primäres Speicherkonto|Wählen Sie in der Dropdownliste ein vorhandenes Speicherkonto aus, oder wählen Sie **Neu erstellen** aus. Wenn Sie ein neues Konto erstellen, muss der Name zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten.|
     |Container|Verwenden Sie den automatisch ausgefüllten Wert.|
 
-    ![HDInsight Linux: Erste Schritte beim Angeben von Clusterspeicherwerten](./media/apache-kafka-get-started/azure-portal-cluster-storage-blank.png "Angeben von Speicherwerten zum Erstellen eines HDInsight-Clusters")
+    ![Erste Schritte mit HDInsight Linux: Angeben von Clusterspeicherwerten](./media/apache-kafka-get-started/azure-portal-cluster-storage.png "Angeben von Speicherwerten zum Erstellen eines HDInsight-Clusters")
 
     Wählen Sie die Registerkarte **Sicherheit + Netzwerkbetrieb** aus.
 
@@ -80,7 +80,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
    Wenn Sie Ihren Cluster mit einem virtuellen Netzwerk verbinden möchten, wählen Sie ein virtuelles Netzwerk aus der Dropdownliste **Virtuelles Netzwerk** aus.
 
-   ![Hinzufügen des Clusters zu einem virtuellen Netzwerk](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vn.png)
+   ![Hinzufügen des Clusters zu einem virtuellen Netzwerk](./media/apache-kafka-get-started/azure-portal-cluster-security-networking-kafka-vnet.png)
 
     Wählen Sie die Registerkarte **Konfiguration + Preise** aus.
 
@@ -98,7 +98,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
 
     Das Erstellen des Clusters kann bis zu 20 Minuten dauern.
 
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 
 1. Verwenden Sie zum Herstellen einer Verbindung mit dem primären Hauptknoten des Apache Kafka-Clusters den folgenden Befehl. Ersetzen Sie `sshuser` durch den SSH-Benutzernamen. Ersetzen Sie `mykafka` durch den Namen Ihres Apache Kafka-Clusters.
 

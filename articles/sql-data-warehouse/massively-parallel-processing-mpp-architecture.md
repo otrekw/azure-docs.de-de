@@ -10,21 +10,21 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ea9629c63fcab97ba8ba83cd88592c37ae41818a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646403"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720315"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (ehemals SQL DW)-Architektur 
 
-Azure Synapse ist ein grenzenloser Analysedienst, der Data Warehousing für Unternehmen mit Big Data-Analysen kombiniert. Er ermöglicht Ihnen flexible Datenabfragen nach Ihren Vorstellungen unter Verwendung von serverlosen On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang. Azure Synapse kombiniert diese beiden Welten in einer vereinheitlichten Oberfläche zur Erfassung, Vorbereitung, Verwaltung und Verarbeitung von Daten für sofortige BI- und Machine Learning-Anforderungen.
+Azure Synapse ist ein unbegrenzter Analysedienst, der Data Warehousing für Unternehmen mit Big Data-Analysen vereint. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen, indem serverlose On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang verwendet werden. Azure Synapse kombiniert diese beiden Welten in einer vereinheitlichten Oberfläche zur Erfassung, Vorbereitung, Verwaltung und Verarbeitung von Daten für sofortige BI- und Machine Learning-Anforderungen.
 
  Azure Synapse besteht aus vier Komponenten:
 - SQL-Analyse: Vollständige T-SQL-basierte Analyse 
     - SQL-Pool (Bezahlung pro bereitgestellter DWU) – Allgemein verfügbar
-    - SQL On-Demand (Bezahlung pro verarbeitetem TB) – (Vorschau)
+    - SQL On-Demand (Bezahlung pro verarbeitetem TB) – Vorschau
 - Spark: Fest integriertes Apache Spark (Vorschau) 
 - Datenintegration: Hybrid-Datenintegration (Vorschau)
 - Studio: einheitliche Benutzeroberfläche.  (Vorschau)
@@ -33,11 +33,11 @@ Azure Synapse ist ein grenzenloser Analysedienst, der Data Warehousing für Unte
 
 ## <a name="sql-analytics-mpp-architecture-components"></a>Komponenten der MPP-Architektur für SQL-Analyse
 
-[SQL-Analyse](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) nutzt eine horizontal hochskalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. Compute- und Speicherressourcen sind getrennt, sodass Sie Computedaten unabhängig von den Daten in Ihrem System skalieren können.
+[SQL-Analyse](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) nutzt eine horizontal skalierte Architektur zur Verteilung der Berechnungsverarbeitung von Daten auf mehrere Knoten. Die Skalierungseinheit ist eine Abstraktion der Computeleistung, die als [Data Warehouse-Einheit](what-is-a-data-warehouse-unit-dwu-cdwu.md) bezeichnet wird. Compute- und Speicherressourcen sind getrennt, sodass Sie Compute unabhängig von den Daten in Ihrem System skalieren können.
 
 ![Architektur von SQL-Analyse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL-Analyse verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der der einzige Einstiegspunkt für SQL-Analyse ist. Der Steuerknoten führt die MPP-Engine aus, das Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden. 
+SQL-Analyse verwendet eine knotenbasierte Architektur. Anwendungen stellen eine Verbindung her und geben T-SQL-Befehle an einen Steuerknoten aus, der der einzige Einstiegspunkt für SQL-Analyse ist. Der Steuerknoten führt die MPP-Engine aus, die Abfragen für die Parallelverarbeitung optimiert und dann Vorgänge an Serverknoten übergibt, sodass die Vorgänge parallel ausgeführt werden. 
 
 Auf den Serverknoten werden alle Benutzerdaten in Azure Storage gespeichert und die parallelen Abfragen ausgeführt. Der Datenverschiebungsdienst (Data Movement Service, DMS) ist ein interner Dienst auf Systemebene, der Daten nach Bedarf zwischen den Knoten verschiebt, sodass Abfragen parallel ausgeführt und genaue Ergebnisse zurückgegeben werden. 
 
@@ -48,12 +48,12 @@ Mit entkoppelten Speicher- und Computeressourcen können Sie bei der Verwendung 
 * Anhalten der Computekapazität ohne Beeinträchtigung der Daten (und nur Bezahlung für den Speicher)
 * Fortsetzen der Computekapazität während der Betriebszeiten
 
-### <a name="azure-storage"></a>Azure-Speicher
+### <a name="azure-storage"></a>Azure Storage
 
-SQL-Analyse nutzt Azure Storage, um Ihre Benutzerdaten zu schützen.  Da Ihre Daten von Azure Storage gespeichert und verwaltet werden, werden die Kosten für Ihre Speichernutzung getrennt berechnet. Die Daten selbst werden zur Optimierung der Systemleistung in **Verteilungen** horizontal partitioniert. Beim Definieren der Tabelle können Sie das Shardingmuster zum Verteilen der Daten auswählen. Folgende Shardingmuster werden unterstützt:
+SQL-Analyse nutzt Azure Storage, um Ihre Benutzerdaten zu schützen.  Da Ihre Daten von Azure Storage gespeichert und verwaltet werden, werden die Kosten für Ihre Speichernutzung getrennt berechnet. Die Daten werden zur Optimierung der Systemleistung in **Verteilungen** horizontal partitioniert. Beim Definieren der Tabelle können Sie das Shardingmuster zum Verteilen der Daten auswählen. Folgende Shardingmuster werden unterstützt:
 
 * Hash
-* Round-Robin
+* Roundrobin
 * Replikat
 
 ### <a name="control-node"></a>Steuerknoten
@@ -106,42 +106,14 @@ Das nachstehende Diagramm zeigt eine replizierte Tabelle, die bei der ersten Ver
 ![Replizierte Tabelle](media/sql-data-warehouse-distributed-data/replicated-table.png "Replizierte Tabelle") 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich mit den Grundlagen von Azure Synapse vertraut gemacht haben, informieren Sie sich nun darüber, wie Sie innerhalb kurzer Zeit [einen SQL-Pool erstellen][create a SQL pool] und [Beispieldaten laden][load sample data] können. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar][Azure glossary] sehr nützlich. Oder sehen Sie sich einige der folgenden weiteren Azure Synapse-Ressourcen an:  
+Nachdem Sie sich mit den Grundlagen von Azure Synapse vertraut gemacht haben, informieren Sie sich nun darüber, wie Sie innerhalb kurzer Zeit [einen SQL-Pool erstellen](./sql-data-warehouse-get-started-provision.md) und [Beispieldaten laden](./sql-data-warehouse-load-sample-databases.md) können. Falls Sie mit Azure noch nicht vertraut sind und auf neue Terminologie stoßen, ist das [Azure-Glossar](../azure-glossary-cloud-terminology.md) sehr nützlich. Oder sehen Sie sich einige der folgenden weiteren Azure Synapse-Ressourcen an:  
 
-* [Kundenerfolgsgeschichten]
-* [Blogs]
-* [Funktionsanfragen]
-* [Videos]
-* [Customer Advisory Team-Blogs]
-* [Erstellen eines Supporttickets]
-* [MSDN-Forum]
-* [Stack Overflow-Forum]
-* [Twitter]
+* [Kundenerfolgsgeschichten](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+* [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Videos](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [Erstellen eines Supporttickets](./sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Twitter](https://twitter.com/hashtag/SQLDW)
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Erstellen eines Supporttickets]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Kundenerfolgsgeschichten]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Blogs]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Customer Advisory Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-Forum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-Forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

@@ -2,18 +2,18 @@
 title: 'Tutorial: Weiterleiten von Datenverkehr an gewichtete Endpunkte – Azure Traffic Manager'
 description: In diesem Tutorialartikel erfahren Sie, wie Sie Datenverkehr mithilfe von Traffic Manager an gewichtete Endpunkte weiterleiten.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
-ms.author: allensu
-ms.openlocfilehash: 45ece08599722e04c4e6799fa5c3589cba1fca42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: rohink
+ms.openlocfilehash: a4738b2e36786cd627f53af3e36bd8f1e3fbc375
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037914"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939478"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager
 
@@ -137,9 +137,9 @@ Erstellen Sie ein Traffic Manager-Profil auf der Grundlage der Routingmethode **
 1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen** aus.
 2. Geben Sie unter **Traffic Manager-Profil erstellen** die folgenden Informationen ein, bzw. wählen Sie sie aus. Behalten Sie bei den anderen Einstellungen die Standardwerte bei, und wählen Sie anschließend **Erstellen** aus.
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
-    | NAME                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Geben Sie einen Namen ein, der innerhalb der Zone „trafficmanager.net“ eindeutig ist. Dadurch ergibt sich der DNS-Name „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **Gewichtet** aus.                                       |
     | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
     | Resource group          | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroupTM1** aus. |
@@ -155,10 +155,10 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server („my
 2. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte** > **Hinzufügen** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus. Behalten Sie bei den anderen Einstellungen die Standardwerte bei, und wählen Sie anschließend **OK** aus.
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | type                    | Geben Sie den Azure-Endpunkt ein.                                   |
-    | NAME           | Geben Sie **myEastUSEndpoint** ein.                                        |
+    | Name           | Geben Sie **myEastUSEndpoint** ein.                                        |
     | Zielressourcentyp           | Wählen Sie **Öffentliche IP-Adresse**.                          |
     | Zielressource          | Wählen Sie eine öffentliche IP-Adresse aus, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen **myIISVMEastUS-ip** aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |  Weight      | Geben Sie **100** ein.        |

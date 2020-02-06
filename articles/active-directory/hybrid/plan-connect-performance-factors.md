@@ -6,18 +6,19 @@ author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295370"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897057"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Faktoren, die die Leistung von Azure AD Connect beeinflussen
 
@@ -95,7 +96,7 @@ Die folgenden Vorgänge sind in einem vollständigen Synchronisierungszyklus ent
 > [!NOTE]
 > Eine sorgfältige Planung ist erforderlich, wenn Sie Massenupdates für viele Objekte in Ihrer Active Directory-Instanz oder Azure AD ausführen. Massenupdates führen aufgrund zahlreicher Objektänderungen dazu, dass die Deltasynchronisierung mehr Zeit beim Import in Anspruch nimmt. Lange andauernde Importe sind auch dann möglich, wenn das Massenupdate keine Auswirkungen auf den Synchronisierungsprozess hat. Wenn Sie beispielsweise vielen Benutzern Lizenzen in Azure AD zuweisen, führt dies zu einem langen Importzyklus in Azure AD, jedoch nicht zu Attributänderungen in Active Directory.
 
-### <a name="synchronization"></a>Synchronisierung
+### <a name="synchronization"></a>Synchronization
 
 Die Laufzeit des Synchronisierungsprozesses weist folgende Leistungsmerkmale auf:
 

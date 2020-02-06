@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 437b87a3d684d7751adc89ba77b20ea86b3455e4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805993"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717328"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
@@ -38,7 +38,7 @@ Jedes hochgeladene Dataset muss den Anforderungen für den ausgewählten Datenty
 > Benutzer mit einem kostenlosen Abonnement (F0) können zwei Datasets gleichzeitig hochladen. Benutzer mit einem Standard-Abonnement (S0) können fünf Datasets gleichzeitig hochladen. Wenn Sie das Limit erreicht wurde, warten Sie, bis der Importvorgang mindestens eines Datasets beendet wurde. Versuchen Sie es anschließend noch mal.
 
 > [!NOTE]
-> Benutzer mit einem kostenlosen Abonnement (F0) können pro Abonnement maximal zehn Datasets (ZIP-Dateien) importieren. Benutzer mit einem Standard-Abonnement (S0) können maximal 500 ZIP-Dateien importieren.
+> Benutzer des kostenlosen Abonnements (F0) können maximal 10 ZIP-Dateien pro Abonnement als Datasets importieren. Bei Benutzern des Standardabonnements (S0) beträgt die Höchstzahl 500.
 
 Datasets werden nach dem Klicken auf „Hochladen“ automatisch überprüft. Bei der Datenüberprüfung werden Format, Größe und Samplingrate der Audiodateien geprüft. Sollten Fehler vorliegen, beheben Sie sie, und übermitteln Sie die Daten erneut. Nach erfolgreicher Initiierung des Datenimports wird in der Datentabelle ein Eintrag für das soeben hochgeladene Dataset angezeigt.
 
@@ -47,7 +47,7 @@ In der folgenden Tabelle werden die Verarbeitungsstatus der importierten Dataset
 | State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Dataset wurde empfangen und wird verarbeitet. |
-| Succeeded | Ihr Dataset wurde überprüft und kann nun zur Erstellung eines Stimmmodells verwendet werden. |
+| Erfolgreich | Ihr Dataset wurde überprüft und kann nun zur Erstellung eines Stimmmodells verwendet werden. |
 | Fehler | Beim Verarbeiten Ihres Datasets ist ein Fehler aufgetreten. Dies kann verschiedene Ursachen haben (beispielsweise Dateifehler oder Probleme mit den Daten oder dem Netzwerk). |
 
 Nach Abschluss der Überprüfung wird in der Spalte **Utterances** (Äußerungen) die Gesamtanzahl übereinstimmender Äußerungen für alle Datasets angezeigt. Sollte für den gewählten Audiotyp eine Segmentierung langer Audiodateien erforderlich sein, enthält diese Spalte nur die Äußerungen, die für Sie segmentiert wurden (entweder auf der Grundlage Ihrer Transkripte oder über den Sprachtranskriptionsdienst). Sie können das überprüfte Dataset herunterladen, um die Detailergebnisse der erfolgreich importierten Äußerungen sowie die dazugehörigen Transkripte anzuzeigen. Hinweis: Die Datenverarbeitung für die Segmentierung langer Audiodateien kann über eine Stunde dauern.
@@ -89,7 +89,7 @@ Der angezeigte Status gibt Aufschluss über die Konvertierung Ihres Datasets in 
 | State | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Stimmmodell wird erstellt. |
-| Succeeded | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
+| Erfolgreich | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
 | Fehler | Beim Trainieren Ihres Stimmmodells ist ein Fehler aufgetreten. Dies kann verschiedene Ursachen haben (beispielsweise ein unvorhergesehenes Datenproblem oder ein Netzwerkproblem). |
 
 Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der Regel liegt diese zwischen 30 Minuten bei mehreren Hundert Äußerungen und maximal 40 Stunden im Fall von 20.000 Äußerungen. Nach erfolgreichem Abschluss Ihres Modelltrainings können Sie das Modell testen.
@@ -117,7 +117,7 @@ Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereits
     > [!NOTE]
     > Die Textsprache muss mit der Sprache des Voicefonts übereinstimmen. Nur erfolgreich trainierte Modelle können getestet werden. In diesem Schritt wird ausschließlich Nur-Text unterstützt.
 
-5.  Klicken Sie auf **Create**.
+5.  Klicken Sie auf **Erstellen**.
 
 Nach Übermittlung Ihrer Testanforderung wird wieder die Testseite angezeigt. In der Tabelle befindet sich nun ein Eintrag für die neue Anforderung und die Statusspalte. Die Sprachsynthese kann einige Minuten in Anspruch nehmen. Wenn in der Statusspalte **Erfolgreich** angezeigt wird, können Sie das Audio wiedergeben oder die Texteingabe (TXT-Datei) und die Audioausgabe (WAV-Datei) herunterladen und die Qualität der WAV-Datei genauer überprüfen.
 
@@ -145,6 +145,6 @@ Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Stan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme](record-custom-voice-samples.md)
+* [Aufzeichnen Aufnehmen Ihrer Sprachbeispiele](record-custom-voice-samples.md)
 * [Text-to-Speech-REST-API](rest-text-to-speech.md)
 * [API für lange Audioinhalte](long-audio-api.md)

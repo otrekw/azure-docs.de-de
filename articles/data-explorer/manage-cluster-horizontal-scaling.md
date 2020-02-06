@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942238"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833293"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
@@ -58,9 +58,10 @@ Die optimierte automatische Skalierung beginnt mit der Arbeit. Ihre Aktionen sin
 Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er horizontal hochskaliert, damit die optimale Leistung erhalten bleibt. Das horizontale Hochskalieren tritt in folgenden Situationen auf:
 * Die Anzahl der Clusterinstanzen liegt unter der maximalen Anzahl von Instanzen, die vom Benutzer definiert wurden.
 * Die Cacheauslastung ist länger als eine Stunde sehr hoch.
+* Die CPU-Auslastung ist für mehr als eine Stunde hoch.
 
 > [!NOTE]
-> Die Logik für das horizontale Hochskalieren berücksichtigt derzeit nicht die Erfassungsauslastung und die CPU-Metriken. Wenn diese Metriken für Ihren Anwendungsfall wichtig sind, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
+> Die Logik für das Erweitern berücksichtigt derzeit nicht die Metrik zur Erfassungsauslastung. Wenn diese Metrik für Ihren Anwendungsfall wichtig ist, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
 
 **Horizontales Herunterskalieren**
 

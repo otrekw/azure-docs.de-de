@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215835"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030959"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 
@@ -29,11 +29,11 @@ In einem HDInsight-Cluster, dem mehr Worker-Knoten zur Verfügung stehen, könne
 
 * Bei der Bereitstellung eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
   
-    ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
+    ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * Nach dem Erstellen können Sie auch die Anzahl der Workerknoten zum weiteren horizontalen Hochskalieren eines Clusters bearbeiten, ohne die Erstellung zu wiederholen:
 
-    ![Skalieren von Clustergrößen in Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Skalieren von Clustergrößen in Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 Weitere Informationen zum Skalieren von HDInsight finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
@@ -195,7 +195,7 @@ Es gibt noch weitere Optimierungsmethoden, die durchaus erwägenswert sind, zum 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Verwenden von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md)
 * [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)

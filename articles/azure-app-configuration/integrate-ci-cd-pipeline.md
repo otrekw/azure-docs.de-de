@@ -4,21 +4,21 @@ titleSuffix: Azure App Configuration
 description: In diesem Tutorial erfahren Sie, wie Sie eine Konfigurationsdatei unter Verwendung von Daten in Azure App Configuration während Continuous Integration und Continuous Delivery generieren.
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: balans
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 02/24/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f8adfee1e707181e78f4e845f61477b08af935e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cd40b52c20a3cafdbbeef093b574d44b9163c7b2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433635"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899378"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrieren in eine CI/CD-Pipeline
 

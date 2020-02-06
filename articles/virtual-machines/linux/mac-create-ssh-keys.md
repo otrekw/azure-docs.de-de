@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2da8264b7a1d0ad2ec485f106457cef18f233261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930006"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843904"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Kurzanleitung: Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure
 
@@ -70,13 +70,16 @@ Ein typischer Wert eines öffentlicher Schlüssels sieht aus wie in diesem Beisp
 ssh-rsa AAAAB3NzaC1yc2EAABADAQABAAACAQC1/KanayNr+Q7ogR5mKnGpKWRBQU7F3Jjhn7utdf7Z2iUFykaYx+MInSnT3XdnBRS8KhC0IP8ptbngIaNOWd6zM8hB6UrcRTlTpwk/SuGMw1Vb40xlEFphBkVEUgBolOoANIEXriAMvlDMZsgvnMFiQ12tD/u14cxy1WNEMAftey/vX3Fgp2vEq4zHXEliY/sFZLJUJzcRUI0MOfHXAuCjg/qyqqbIuTDFyfg8k0JTtyGFEMQhbXKcuP2yGx1uw0ice62LRzr8w0mszftXyMik1PnshRXbmE2xgINYg5xo/ra3mq2imwtOKJpfdtFoMiKhJmSNHBSkK7vFTeYgg0v2cQ2+vL38lcIFX4Oh+QCzvNF/AXoDVlQtVtSqfQxRVG79Zqio5p12gHFktlfV7reCBvVIhyxc2LlYUkrq4DHzkxNY5c9OGSHXSle9YsO3F1J5ip18f6gPq4xFmo6dVoJodZm9N0YMKCkZ4k1qJDESsJBk2ujDPmQQeMjJX3FnDXYYB182ZCGQzXfzlPDC29cWVgDZEXNHuYrOLmJTmYtLZ4WkdUhLLlt5XsdoKWqlWpbegyYtGZgeZNRtOOdN6ybOPJqmYFd2qRtb4sYPniGJDOGhx4VodXAjT09omhQJpE6wlZbRWDvKC55R2d/CSPHJscEiuudb+1SG2uA/oik/WQ== username@domainname
 ```
 
-Stellen Sie sicher, dass Sie keine nachstehenden Leerzeichen kopieren, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel für die Verwendung im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Um einen öffentlichen Schlüssel in macOS zu kopieren, können Sie die öffentliche Schlüsseldatei per Pipe an **pbcopy** übergeben. Ähnlich wie unter Linux, können Sie die öffentliche Schlüsseldatei per Pipe an Programme wie **xclip** übergeben.
+Stellen Sie sicher, dass Sie keine nachstehenden Leerzeichen kopieren, wenn Sie den Inhalt der Datei mit dem öffentlichen Schlüssel für die Verwendung im Azure-Portal oder in einer Resource Manager-Vorlage kopieren und einfügen. Um einen öffentlichen Schlüssel in macOS zu kopieren, können Sie die Datei des öffentlichen Schlüssels per Pipe an `pbcopy` übergeben. Unter Linux können Sie auf ähnliche Weise die Datei des öffentlichen Schlüssels per Pipe an Programme wie `xclip` übergeben.
 
 Der öffentliche Schlüssel, den Sie in Ihrer Linux-VM in Azure ablegen, wird standardmäßig in „~/.ssh/id_rsa.pub“ gespeichert, sofern Sie den Speicherort nicht bei der Erstellung der Schlüsselpaars geändert haben. Um die [Azure CLI 2.0](/cli/azure) zum Erstellen Ihres virtuellen Computers mit einem vorhandenen öffentlichen Schlüssel zu verwenden, geben Sie den Wert und optional den Speicherort dieses öffentlichen Schlüssels mithilfe des Befehls [az vm create](/cli/azure/vm#az-vm-create) mit der Option `--ssh-key-value` an. Ersetzen Sie im folgenden Befehl *VMname*, *RGname* und *keyFile* durch Ihre eigenen Werte:
 
 ```azurecli
-az vm create --name VMname --resource-group RGname --ssh-key-value @keyFile
+az vm create --name VMname --resource-group RGname --ssh-key-values mysshkey.pub
 ```
+
+Wenn Sie mehrere SSH-Schlüssel mit dem virtuellen Computer verwenden möchten, können Sie diese in eine durch Leerzeichen getrennte Liste eingeben, z. B. `--ssh-key-values sshkey-desktop.pub sshkey-laptop.pub`.
+
 
 ## <a name="ssh-into-your-vm"></a>Herstellen einer SSH-Verbindung mit Ihrem virtuellen Computer
 

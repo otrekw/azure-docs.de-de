@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5c50186692438be5d0922cd329c28e665310e5c2
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225374"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023530"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurieren des Verteilungsmodus für Azure Load Balancer
 
@@ -181,7 +181,7 @@ Verwenden Sie das klassische Azure-Bereitstellungsmodell, um eine vorhandene Ber
 
 Legen Sie gemäß der vorherigen Beschreibung für den Wert des `LoadBalancerDistribution`-Elements „sourceIP“ für die Zwei-Tupel-Affinität oder „sourceIPProtocol“ für die Drei-Tupel-Affinität fest, oder geben Sie keinen Wert (keine Affinität) an (Fünf-Tupel-Affinität).
 
-#### <a name="response"></a>response
+#### <a name="response"></a>Antwort
 
     HTTP/1.1 202 Accepted
     Cache-Control: no-cache
@@ -194,5 +194,5 @@ Legen Sie gemäß der vorherigen Beschreibung für den Wert des `LoadBalancerDis
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Interner Azure Load Balancer (Übersicht)](load-balancer-internal-overview.md)
-* [Erste Schritte zum Konfigurieren eines Lastenausgleichs mit Internetzugriff](load-balancer-get-started-internet-arm-ps.md)
+* [Erste Schritte zum Konfigurieren eines Lastenausgleichs mit Internetzugriff](quickstart-create-standard-load-balancer-powershell.md)
 * [Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

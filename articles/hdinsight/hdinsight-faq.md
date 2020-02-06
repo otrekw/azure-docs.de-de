@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830376"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720349"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -231,9 +231,9 @@ Für Szenarien, die eine zeitliche Kontrolle erfordern, können Sie die folgende
 Weitere Informationen zum Einrichten und Ausführen eines Cron-Auftrags finden Sie im Thema zum [Einrichten eines Cron-Auftrags](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job).
 
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Weshalb ist LLAP in Spark-ESP-Clustern verfügbar?
-LLAP ist in Spark-ESP-Clustern aus Sicherheitsgründen (d. h. Apache Ranger) und nicht aus Leistungsgründen aktiviert. Sie sollten virtuelle Computer mit einer größeren Knoten verwenden, um die Ressourcenverwendung von LLAP zu berücksichtigen (z. B. mindestens D13V2). 
+LLAP ist in Spark-ESP-Clustern aus Sicherheitsgründen (d. h. Apache Ranger) und nicht aus Leistungsgründen aktiviert. Sie sollten virtuelle Computer mit größeren Knoten verwenden, um die Ressourcennutzung von LLAP zu berücksichtigen (z. B. mindestens D13V2). 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Wie kann ich nach dem Erstellen eines ESP-Clusters zusätzliche AAD-Gruppen hinzufügen?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Wie kann ich nach dem Erstellen eines ESP-Clusters zusätzliche AAD-Gruppen hinzufügen?
 Es gibt zwei Möglichkeiten, dies zu erreichen: 1. Sie können den Cluster neu erstellen und die zusätzliche Gruppe bei der Clustererstellung hinzufügen. Wenn Sie die bereichsbezogene Synchronisierung in AAD DS verwenden, stellen Sie sicher, dass Gruppe B in der bereichsbezogenen Synchronisierung enthalten ist.
 2\. Fügen Sie die Gruppe als geschachtelte Untergruppe der vorherigen Gruppe hinzu, die zum Erstellen des ESP-Clusters verwendet wurde. Wenn Sie beispielsweise einen ESP-Cluster mit der Gruppe `A` erstellt haben, können Sie zu einem späteren Zeitpunkt die Gruppe `B` als geschachtelte Untergruppe von `A` hinzufügen. Nach ungefähr einer Stunde wird diese synchronisiert und ist im Cluster automatisch verfügbar. 
 

@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: c424b905f44d6fd3a80a08ef925df4d0a06dd7d8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37347e6febdfc3500c218238606fc96463da631c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705376"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76936247"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -19,6 +19,8 @@ Andere Support-Matrizen sind verfügbar:
 - Unterstützungsmatrix für die [Sicherung virtueller Azure-Computer](backup-support-matrix-iaas.md)
 - Unterstützungsmatrix für die Sicherung mit [System Center Data Protection Manager (DPM)/Microsoft Azure Backup Server (MABS)](backup-support-matrix-mabs-dpm.md)
 - Unterstützungsmatrix für die Sicherung mit dem [Microsoft Azure Recovery Services (MARS)-Agent](backup-support-matrix-mars-agent.md)
+
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="vault-support"></a>Unterstützung für Tresore
 

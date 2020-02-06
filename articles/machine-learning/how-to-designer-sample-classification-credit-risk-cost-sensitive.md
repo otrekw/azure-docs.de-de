@@ -5,25 +5,25 @@ description: Erstellen Sie einen Klassifizierer, und verwenden Sie benutzerdefin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ed8ee9b1c711ee0056377154379b8df56e0785df
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311086"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964599"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Erstellen eines Klassifizierers und Verwenden von Python-Skripts zum Vorhersagen von Kreditrisiken mithilfe des Azure Machine Learning-Designers
 
-**Designer-Beispiel 4**
+**Designer-Beispiel 4(Vorschauversion)**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In diesem Artikel wird gezeigt, wie über den Designer eine komplexe Pipeline für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Logik mit Python-Skripts implementiert wird und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
+In diesem Artikel wird gezeigt, wie über den Designer (Vorschauversion) eine komplexe Pipeline für maschinelles Lernen erstellt werden kann. Sie erfahren, wie benutzerdefinierte Logik mit Python-Skripts implementiert wird und mehrere Modelle verglichen werden, um die beste Option auszuwählen.
 
 In diesem Beispiel wird eine Klassifizierung trainiert, um das Kreditrisiko anhand von Kreditantragsinformationen wie Kreditgeschichte, Alter und Anzahl der Kreditkarten vorherzusagen. Sie können die Konzepte in diesem Artikel aber auch anwenden, um Ihre eigenen Probleme durch maschinelles Lernen zu lösen.
 

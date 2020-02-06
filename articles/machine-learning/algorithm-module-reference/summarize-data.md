@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546485"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841266"
 ---
 # <a name="summarize-data"></a>Zusammenfassen von Daten
 
@@ -70,6 +70,20 @@ Der Bericht aus dem Modul kann die folgenden statistischen Werte enthalten.
 |**P5**|5-%-Perzentil|
 |**P95**|95-%-Perzentil|
 |**P99.5**|99,5-%-Perzentil |
+
+## <a name="technical-notes"></a>Technische Hinweise
+
+- Bei nicht numerischen Spalten werden nur die Werte für „Count“, „Unique value count“ und „Missing value count“ berechnet. Bei anderen statistischen Daten wird ein NULL-Wert zurückgegeben.
+
+- Spalten mit booleschen Werten werden anhand der folgenden Regeln verarbeitet:
+
+    - Bei der Berechnung von „Min“ wird ein logisches AND angewandt.
+    
+    - Bei der Berechnung von „Max“ wird ein logisches OR angewandt.
+    
+    - Bei der Berechnung von „Range“ überprüft das Modul zuerst, ob die Anzahl der eindeutigen Werte in der Spalte dem Wert „2“ entspricht.
+    
+    - Beim Berechnen statistischer Daten, die eine Gleitkommaberechnung erfordern, werden Werte mit TRUE als „1,0“ und Werte mit FALSE als „0,0“ behandelt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

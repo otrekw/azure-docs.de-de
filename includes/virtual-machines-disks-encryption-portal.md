@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973448"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909119"
 ---
 ### <a name="portal"></a>Portal
 
@@ -77,6 +77,7 @@ Es sollten zwei Benachrichtigungen angezeigt werden. Auf diese Weise können Sie
 Nachdem Sie nun Ihren Schlüsseltresor und den Datenträgerverschlüsselungssatz erstellt und eingerichtet haben, können Sie eine VM mit der Verschlüsselung bereitstellen.
 Das Verfahren zur VM-Bereitstellung ähnelt dem Standardbereitstellungsverfahren. Die einzigen Unterschiede bestehen darin, dass Sie den virtuellen Computer in derselben Region wie Ihre anderen Ressourcen bereitstellen müssen und einen vom Kunden verwalteten Schlüssel verwenden.
 
+1. Öffnen Sie den [Link für Datenträgerverschlüsselungssätze](https://aka.ms/diskencryptionsets).
 1. Suchen Sie nach **Virtuelle Computer**, und wählen Sie **+ Hinzufügen** aus, um eine VM zu erstellen.
 1. Wählen Sie auf der Registerkarte **Standard** dieselbe Region aus, in der sich Ihr Datenträgerverschlüsselungssatz und Ihre Azure Key Vault-Instanz befinden.
 1. Geben Sie die anderen Werte auf der Registerkarte **Standard** nach Wunsch ein.
@@ -96,6 +97,7 @@ Sie müssen den folgenden Link verwenden, um die Datenträgerverschlüsselung f�
 > [!CAUTION]
 > Zum Aktivieren der Datenträgerverschlüsselung auf Datenträgern, die an eine VM angefügt sind, müssen Sie die VM beenden.
 
+1. Öffnen Sie den [Link für Datenträgerverschlüsselungssätze](https://aka.ms/diskencryptionsets).
 1. Navigieren Sie zu einer VM, die sich in derselben Region befindet wie einer Ihrer Datenträgerverschlüsselungssätze.
 1. Öffnen Sie die VM, und wählen Sie **Beenden** aus.
 

@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327387"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764400"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
 Eine verwaltete Identität ist eine in Azure Active Directory (Azure AD) registrierte Identität, deren Anmeldeinformationen von Azure verwaltet werden. Mit verwalteten Identitäten müssen Sie keine Dienstprinzipale in Azure AD registrieren und keine Anmeldeinformationen wie z. B. Zertifikate verwalten.
 
-Verwaltete Identitäten können in Azure HDInsight verwendet werden, um Ihren Clustern den Zugriff auf Azure AD Domain Services, Azure Key Vault oder Dateien in Azure Data Lake Storage Gen2 zu ermöglichen.
+Verwaltete Identitäten werden in Azure HDInsight bei Bedarf zum Zugreifen auf Azure AD Domain Services oder auf Dateien in Azure Data Lake Storage Gen2 verwendet.
 
 Es gibt zwei Arten von verwalteten Identitäten: benutzerseitig und systemseitig zugewiesene Identitäten. Azure HDInsight verwendet benutzerseitig zugewiesene verwaltete Identitäten. Eine benutzerseitig zugewiesene verwaltete Identität wird als eigenständige Azure-Ressource erstellt, die Sie dann einer oder mehreren Azure-Dienstinstanzen zuweisen können. Im Gegensatz dazu wird eine systemseitig zugewiesene verwaltete Identität in Azure AD erstellt und dann direkt und automatisch für eine bestimmte Azure-Dienstinstanz aktiviert. Die Lebensdauer dieser systemseitig zugewiesenen verwalteten Identität ist dann an die Lebensdauer der Dienstinstanz gebunden, für die sie aktiviert wurde.
 
@@ -31,7 +31,7 @@ In Azure HDInsight werden verwaltete Identitäten auf jedem Knoten des Clusters 
 
 Verwaltete Identitäten können mit einer der folgenden Methoden erstellt werden:
 
-* [Azure-Portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
+* [Azure portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
 * [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)

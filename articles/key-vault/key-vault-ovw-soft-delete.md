@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 89b7dc639a3140f17a62087c5ba0d05fb6df4d7f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883135"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845810"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -36,13 +36,21 @@ Azure-Schlüsseltresore sind nachverfolgte Ressourcen, die von Azure Resource Ma
 
 Bei diesem Feature ist der DELETE-Vorgang für einen Schlüsseltresor oder ein Key Vault-Objekt eine vorläufige Löschung, bei der die Ressourcen während einer bestimmten Aufbewahrungsdauer (90 Tage) effektiv gespeichert werden, das Objekt aber scheinbar gelöscht wird. Der Dienst bietet darüber hinaus einen Mechanismus zur Wiederherstellung des gelöschten Objekts, bei dem der Löschvorgang im Wesentlichen rückgängig gemacht wird. 
 
-Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Version **nicht standardmäßig aktiviert**. Es kann über die [Befehlszeilenschnittstelle](key-vault-soft-delete-cli.md) oder [PowerShell](key-vault-soft-delete-powershell.md) aktiviert werden.
+Vorläufiges Löschen ist jetzt für neu erstellte Schlüsseltresore standardmäßig aktiviert. Es kann über die [Azure-Befehlszeilenschnittstelle](key-vault-soft-delete-cli.md) oder mithilfe von [Azure PowerShell](key-vault-soft-delete-powershell.md) deaktiviert werden.
+
+Der Standardaufbewahrungszeitraum beträgt 90 Tage. Über das Azure-Portal kann das Intervall der Aufbewahrungsrichtlinie jedoch auf einen Wert zwischen sieben und 90 Tagen festgelegt werden. Die Aufbewahrungsrichtlinie des Bereinigungsschutzes verwendet das gleiche Intervall. 
+
+Wenn vorläufiges Löschen einmal für einen Schlüsseltresor festgelegt wurde, kann es nicht mehr deaktiviert werden, und das Intervall für die Aufbewahrungsrichtlinie kann nicht mehr geändert werden. 
+
+Der Name eines vorläufig gelöschten Schlüsseltresors kann erst nach Ablauf des Aufbewahrungszeitraums erneut verwendet werden. 
 
 ### <a name="purge-protection"></a>Bereinigungsschutz 
 
-Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Diese Tresore und Objekte können weiterhin wiederhergestellt werden, sodass die Kunden sicher sein können, dass die Aufbewahrungsrichtlinie eingehalten wird. 
-
 Der Bereinigungsschutz ist ein optionales Key Vault-Verhalten und ist standardmäßig **nicht aktiviert**. Es kann über die [Befehlszeilenschnittstelle](key-vault-soft-delete-cli.md#enabling-purge-protection) oder [PowerShell](key-vault-soft-delete-powershell.md#enabling-purge-protection) aktiviert werden.
+
+Bei aktiviertem Bereinigungsschutz kann ein Tresor oder ein Objekt im gelöschten Zustand erst nach Ablauf der Aufbewahrungsdauer endgültig gelöscht werden. Vorläufig gelöschte Tresore und Objekte können unter Einhaltung der Aufbewahrungsrichtlinie weiterhin wiederhergestellt werden. 
+
+Der Standardaufbewahrungszeitraum beträgt 90 Tage. Über das Azure-Portal kann das Intervall der Aufbewahrungsrichtlinie jedoch auf einen Wert zwischen sieben und 90 Tagen festgelegt werden. Nachdem das Intervall für die Aufbewahrungsrichtlinie festgelegt und gespeichert wurde, kann es für diesen Tresor nicht mehr geändert werden. 
 
 ### <a name="permitted-purge"></a>Zulässige Löschung
 
@@ -87,5 +95,5 @@ Im Allgemeinen gilt: Wenn sich ein Objekt (ein Schlüsseltresor oder ein Schlüs
 Die folgenden zwei Handbücher stellen die primären Verwendungsszenarien für vorläufiges Löschen vor.
 
 - [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](key-vault-soft-delete-powershell.md) 
-- [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](key-vault-soft-delete-cli.md)
+- [Verwenden des vorläufigen Löschens in Key Vault mit CLI](key-vault-soft-delete-cli.md)
 

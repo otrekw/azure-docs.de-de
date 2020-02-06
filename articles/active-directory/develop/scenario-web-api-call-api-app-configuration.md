@@ -15,19 +15,20 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e54e26bba1618a3b5835480ed1b1fe698bc8db4
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043418"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834092"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web-API, die Web-APIs aufruft: Codekonfiguration
 
 Nachdem Sie Ihre Web-API registriert haben, können Sie den Code für die Anwendung konfigurieren.
 
 Der Code, den Sie zum Konfigurieren der Web-API verwenden, sodass diese Downstream-Web-APIs aufruft, baut auf dem zum Schutz einer Web-API verwendeten Code auf. Weitere Informationen finden Sie unter [Geschützte Web-API: App-Konfiguration](scenario-protected-web-api-app-configuration.md).
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Von OnTokenValidated abonnierter Code
 
@@ -48,7 +49,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
     services.AddTokenAcquisition();
     services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
     {
-        // When an access token for our own web API is validated, we add it 
+        // When an access token for our own web API is validated, we add it
         // to the MSAL.NET cache so that it can be used from the controllers.
         options.Events = new JwtBearerEvents();
 
@@ -56,7 +57,7 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
         {
             context.Success();
 
-            // Adds the token to the cache and handles the incremental consent 
+            // Adds the token to the cache and handles the incremental consent
             // and claim challenges
             AddAccountToCacheFromJwt(context, scopes);
             await Task.FromResult(0);
@@ -143,6 +144,82 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Der On-Behalf-Of-Fluss (OBO) wird verwendet, um ein Token zum Aufrufen der Downstream-Web-API abzurufen. In diesem Flow empfängt Ihre Web-API ein Bearertoken mit den vom Benutzer delegierten Berechtigungen von der Clientanwendung und tauscht dieses Token dann mit einem anderen Zugriffstoken aus, um die Downstream-Web-API aufzurufen.
+
+Der folgende Code verwendet den `SecurityContextHolder` des Spring Security-Frameworks in der Web-API, um das überprüfte Bearertoken abzurufen. Anschließend wird mithilfe der MSAL-Java-Bibliothek ein Token für die Downstream-API über einen `acquireToken`-Aufruf mit `OnBehalfOfParameters` abgerufen. MSAL speichert das Token zwischen, damit für nachfolgende Aufrufe der API `acquireTokenSilently` verwendet werden kann, um das zwischengespeicherte Token abzurufen.
+
+```Java
+@Component
+class MsalAuthHelper {
+
+    @Value("${security.oauth2.client.authority}")
+    private String authority;
+
+    @Value("${security.oauth2.client.client-id}")
+    private String clientId;
+
+    @Value("${security.oauth2.client.client-secret}")
+    private String secret;
+
+    @Autowired
+    CacheManager cacheManager;
+
+    private String getAuthToken(){
+        String res = null;
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+            res = ((OAuth2AuthenticationDetails) authentication.getDetails()).getTokenValue();
+        }
+        return res;
+    }
+
+    String getOboToken(String scope) throws MalformedURLException {
+        String authToken = getAuthToken();
+
+        ConfidentialClientApplication application =
+                ConfidentialClientApplication.builder(clientId, ClientCredentialFactory.create(secret))
+                        .authority(authority).build();
+
+        String cacheKey = Hashing.sha256()
+                .hashString(authToken, StandardCharsets.UTF_8).toString();
+
+        String cachedTokens = cacheManager.getCache("tokens").get(cacheKey, String.class);
+        if(cachedTokens != null){
+            application.tokenCache().deserialize(cachedTokens);
+        }
+
+        IAuthenticationResult auth;
+        SilentParameters silentParameters =
+                SilentParameters.builder(Collections.singleton(scope))
+                        .build();
+        auth = application.acquireTokenSilently(silentParameters).join();
+
+        if (auth == null){
+            OnBehalfOfParameters parameters =
+                    OnBehalfOfParameters.builder(Collections.singleton(scope),
+                            new UserAssertion(authToken))
+                            .build();
+
+            auth = application.acquireToken(parameters).join();
+        }
+
+        cacheManager.getCache("tokens").put(cacheKey, application.tokenCache().serialize());
+
+        return auth.accessToken();
+    }
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Der On-Behalf-Of-Fluss (OBO) wird verwendet, um ein Token zum Aufrufen der Downstream-Web-API abzurufen. In diesem Flow empfängt Ihre Web-API ein Bearertoken mit den vom Benutzer delegierten Berechtigungen von der Clientanwendung und tauscht dieses Token dann mit einem anderen Zugriffstoken aus, um die Downstream-Web-API aufzurufen.
+
+Eine Python-Web-API muss eine Middleware verwenden, um das vom Client empfangene Bearertoken zu überprüfen. Die Web-API kann dann das Zugriffstoken für die Downstream-API mithilfe der MSAL-Python-Bibliothek über einen Aufruf der [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)-Methode abrufen. Ein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python ist noch nicht verfügbar.
+
+---
 
 Ein Beispiel für die Implementierung des OBO-Flusses finden Sie auch unter [Node.js und Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61).
 

@@ -2,34 +2,35 @@
 title: 'Plattformen und Tools für Data Science-Projekte: Team Data Science-Prozess'
 description: Hier finden Sie eine Liste mit verfügbaren Daten- und Analyseressourcen für Unternehmen, die den Team Data Science-Prozess als Standard einführen möchten, sowie weitere Informationen zu den Ressourcen.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978508"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718887"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
-Microsoft bietet ein umfassendes Spektrum an Daten- und Analysediensten/-ressourcen für cloudbasierte und lokale Plattformen. Durch deren Bereitstellung können Sie die Effizienz und Skalierbarkeit Ihrer Data Science-Projekte verbessern. Der [Team Data Science-Prozess](overview.md) (TDSP) ist ein Leitfaden für Teams, die Data Science-Projekte gemeinschaftlich, auf nachvollziehbare Weise und mit Versionskontrolle implementieren möchten.  Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und deren Aufgaben in einem Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
+Microsoft bietet ein umfassendes Spektrum an Analyseressourcen sowohl für Cloud- als auch für lokale Plattformen. Durch deren Bereitstellung können Sie die Effizienz und Skalierbarkeit Ihrer Data Science-Projekte verbessern. Der [Team Data Science-Prozess](overview.md) (TDSP) ist ein Leitfaden für Teams, die Data Science-Projekte gemeinschaftlich, auf nachvollziehbare Weise und mit Versionskontrolle implementieren möchten.  Unter [Rollen und Aufgaben im Team Data Science-Prozess](roles-tasks.md) finden Sie eine Übersicht über die wichtigsten Mitarbeiterrollen und zugeordneten Aufgaben für ein Data Science-Team, das eine Vereinheitlichung gemäß diesem Prozess anstrebt.
 
-Für Data Science-Teams stehen unter anderem folgende Daten- und Analysedienste zur Verfügung:
+Für Data Science-Teams, die den TDSP nutzen, stehen unter anderem folgende Analyseressourcen zur Verfügung:
 
 - Data Science-VMs (Windows und Linux CentOS)
 - HDInsight Spark-Cluster
-- SQL Data Warehouse
+- Synapse Analytics
 - Azure Data Lake
 - HDInsight Hive-Cluster
 - Azure File Storage
-- SQL Server 2016 R Services
+- SQL Server 2019 R- und Python-Dienste
+- Azure Databricks
 
 Dieses Dokument enthält eine kurze Beschreibung der Ressourcen sowie Links zu den Tutorials und exemplarischen Vorgehensweisen, die TDSP-Teams veröffentlicht haben. Dort erhalten Sie detaillierte Informationen zur Verwendung, und Sie erfahren, wie Sie damit intelligente Anwendungen erstellen. Weitere Informationen zu den Ressourcen finden Sie auf der jeweiligen Produktseite. 
 
@@ -48,7 +49,7 @@ Es enthält auch **Machine Learning- und KI-Tools** wie xgboost, mxnet und Vowpa
 
 Die Data Science-VM ist derzeit für die Betriebssysteme **Windows** und **Linux CentOS** verfügbar. Wählen Sie die Größe Ihrer Data Science-VM (Anzahl von CPU-Kernen und Größe des Arbeitsspeichers) abhängig von den Anforderungen der Data Science-Projekte aus, die Sie damit ausführen möchten. 
 
-Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Data Science Virtual Machine - Windows 2012](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) (Data Science-VM – Windows 2012). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) (Data Science-VM für Linux (CentOS)).
+Weitere Informationen zur Windows-Edition der Data Science-VM finden Sie im Azure Marketplace unter [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows). Die Linux-Edition der Data Science-VM finden Sie unter [Data Science Virtual Machine for Linux (CentOS)](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) (Data Science-VM für Linux (CentOS)).
 
 Informationen zur effizienten Ausführung einiger gängiger Data Science-Aufgaben auf der Data Science-VM finden Sie unter [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](../data-science-virtual-machine/vm-do-ten-things.md).
 
@@ -94,7 +95,7 @@ Beim Azure File Storage-Dienst werden Dateifreigaben in der Cloud unter Verwendu
 Besonders nützlich für Data Science-Projekte ist die Möglichkeit, einen Azure-Dateispeicher für den Austausch von Projektdaten mit den Mitgliedern des Projektteams zu erstellen. Dadurch hat jedes Mitglied Zugriff auf die gleiche Kopie der Daten im Azure-Dateispeicher. Über diesen Dateispeicher können auch Featuregruppen geteilt werden, die im Zuge der Projektdurchführung generiert werden. Wenn es sich bei dem Projekt um einen Kundenauftrag handelt, können Ihre Kunden einen Azure-Dateispeicher unter ihrem eigenen Azure-Abonnement erstellen, um die Projektdaten und -features mit Ihnen zu teilen. Dadurch hat der Kunde die volle Kontrolle über die Datenressourcen des Projekts. Weitere Informationen zu Azure File Storage finden Sie unter [Entwickeln für Azure Files mit .NET](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) sowie unter [Verwenden von Azure Files mit Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R Services
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R- und Python-Dienste
 
 R Services (datenbankintern) bietet eine Plattform zum Entwickeln und Bereitstellen von intelligenten Anwendungen zur Gewinnung neuer Erkenntnisse. Sie können die umfangreiche und leistungsfähige R-Sprache (einschließlich der vielen Pakete aus der R-Community) zum Erstellen von Modellen und Generieren von Vorhersagen auf der Grundlage Ihrer SQL Server-Daten nutzen. Da R Services (datenbankintern) die R-Sprache in SQL Server integriert, besteht eine enge Verbindung zwischen Analysen und Daten. Dadurch lassen sich die Kosten und Sicherheitsrisiken vermeiden, die mit dem Verschieben von Daten einhergehen.
 
@@ -143,7 +144,7 @@ Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, mü
 
    ![Klicken Sie auf „Öffentliche SSH-Schlüssel“ und anschließend auf „+ Hinzufügen“.](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Fügen Sie den zuvor kopierten SSH-Schlüssel in das Textfeld ein, und speichern Sie ihn.
+1. Fügen Sie den kopierten SSH-Schlüssel in das Textfeld ein, und speichern Sie ihn.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

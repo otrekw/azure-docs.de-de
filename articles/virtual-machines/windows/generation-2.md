@@ -3,7 +3,7 @@ title: Azure-Support für VMs der Generation 2
 description: 'Übersicht: Azure-Support für VMs der Generation 2'
 services: virtual-machines-windows
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: 6f03826bf0b82150fa89ad6e17cbcb76f98bb835
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790039"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837346"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -30,7 +30,7 @@ VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht
 
 ## <a name="generation-2-vm-sizes"></a>VM-Größen der Generation 2
 
-VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
+VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt (Ausnahme: VMs der Mv2-Serie). Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
 
 * [B-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -76,7 +76,7 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 
 ### <a name="generation-1-vs-generation-2-features"></a>Features der Generationen 1 und 2 im Vergleich
 
-| Feature | Generation 1 | Generation 2 |
+| Funktion | Generation 1 | Generation 2 |
 |---------|--------------|--------------|
 | Start             | PCAT                      | UEFI                               |
 | Datenträgercontroller | IDE                       | SCSI                               |
@@ -123,6 +123,12 @@ Verwenden Sie beispielsweise das folgende PowerShell-Cmdlet, um eine Liste der S
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Alternativ können Sie über die Azure-Befehlszeilenschnittstelle alle verfügbaren Images der Generation 2 anzeigen (aufgeschlüsselt nach **Herausgeber**).
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Wenn Sie einen virtuellen Computer mit Windows Server 2012 als Betriebssystem erstellen, wählen Sie entweder die VM-SKU der Generation 1 (BIOS) oder der Generation 2 (UEFI) aus, die wie folgt aussieht:
@@ -192,6 +198,6 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [virtuelle Computer der Generation 2 in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Erfahren Sie mehr über [virtuelle Computer der Generation 2 in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 * Erfahren Sie, wie Sie [eine VHD vorbereiten](prepare-for-upload-vhd-image.md), damit diese aus den lokalen Systemen in Azure hochgeladen werden kann.

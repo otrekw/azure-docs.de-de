@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 14b902014305899260ba7d7d9eb0f13afaf64733
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d5dd1c1271c2b7100b40f6cd0f6410b3c151adc0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774149"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900216"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der REST-API mit Python
 
 In diesem Schnellstart verwenden Sie die REST-API der Azure-Formularerkennung mit Python, um Formulare zu trainieren und zu bewerten und um Schlüssel-Wert-Paare und Tabellen zu extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-> [!IMPORTANT]
-> In dieser Schnellstartanleitung wird die Formularerkennungs-API v2.0 verwendet. Wenn sich Ihr Abonnement nicht in der Region `West US 2` oder `West Europe` befindet, müssen Sie die v1.0-API verwenden. Befolgen Sie dann statt dieses Schnellstarts den [v1.0-Schnellstart](./python-train-extract-v1.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

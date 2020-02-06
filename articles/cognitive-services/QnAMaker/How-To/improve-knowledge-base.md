@@ -8,27 +8,27 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: add4bbead880fb9b74d342abc1d4b3c0e9475fad
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721180"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901707"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
-Durch aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden. Sie überprüfen diese Vorschläge, indem Sie sie entweder zu vorhandenen Fragen hinzufügen oder ablehnen. 
+Durch aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden. Sie überprüfen diese Vorschläge, indem Sie sie entweder zu vorhandenen Fragen hinzufügen oder ablehnen.
 
 Ihre Wissensdatenbank wird nicht automatisch geändert. Damit Änderungen wirksam werden, müssen Sie die Vorschläge akzeptieren. Mit diesen Vorschlägen werden Fragen hinzugefügt, vorhandene Fragen werden aber weder geändert noch entfernt.
 
 ## <a name="what-is-active-learning"></a>Was ist aktives Lernen?
 
 QnA Maker erlernt neue Fragevarianten über implizites und explizites Feedback.
- 
+
 * [Implizites Feedback:](#how-qna-makers-implicit-feedback-works) Die Bewertung erkennt, wenn für eine Benutzerfrage mehrere Antworten vorliegen, deren Bewertungen sehr nah beieinander liegen, und betrachtet dies als Feedback. Hierzu müssen keinerlei Aktionen ausgeführt werden.
-* [Explizites Feedback:](#how-you-give-explicit-feedback-with-the-train-api) Wenn von der Wissensdatenbank mehrere Antworten zurückgegeben werden, deren Bewertungen sich kaum unterscheiden, fordert die Clientanwendung den Benutzer auf, die richtige Frage auszuwählen. Das explizite Feedback des Benutzers wird mit der [Trainings-API](#train-api) an QnA Maker gesendet. 
+* [Explizites Feedback:](#how-you-give-explicit-feedback-with-the-train-api) Wenn von der Wissensdatenbank mehrere Antworten zurückgegeben werden, deren Bewertungen sich kaum unterscheiden, fordert die Clientanwendung den Benutzer auf, die richtige Frage auszuwählen. Das explizite Feedback des Benutzers wird mit der [Trainings-API](#train-api) an QnA Maker gesendet.
 
 Mit beiden Methoden werden ähnliche (gruppierte) Abfragen für die Bewertung bereitgestellt.
 
@@ -44,19 +44,19 @@ Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, müssen Sie diese überp
 
 Beim impliziten Feedback von QnA Maker wird ein Algorithmus verwendet, um die Nähe von Bewertungen zu ermitteln und anschließend Vorschläge für aktives Lernen bereitzustellen. Der Algorithmus zur Bestimmung der Nähe ist keine einfache Berechnung. Die Bereiche im folgenden Beispiel sind keine statischen Werte, sondern dienen lediglich als Orientierungshilfe, um die Auswirkungen des Algorithmus nachvollziehen zu können.
 
-Wenn die Bewertung einer Frage eine hohe Zuverlässigkeit aufweist, wie z.B. 80%, ist die Bandbreite der für das aktive Lernen in Betracht gezogenen Bewertungen mit etwa 10% recht groß. Wenn der Zuverlässigkeitswert einer Bewertung sinkt, z.B. auf 40%, nimmt auch die Bandbreite der Bewertungen ab und liegt nur etwa innerhalb von 4%. 
+Wenn die Bewertung einer Frage eine hohe Zuverlässigkeit aufweist, wie z.B. 80%, ist die Bandbreite der für das aktive Lernen in Betracht gezogenen Bewertungen mit etwa 10% recht groß. Wenn der Zuverlässigkeitswert einer Bewertung sinkt, z.B. auf 40%, nimmt auch die Bandbreite der Bewertungen ab und liegt nur etwa innerhalb von 4%.
 
 ## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Abgeben von explizitem Feedback mit der Trainings-API
 
 Es ist wichtig, dass QnA Maker explizites Feedback dazu erhält, welche der Antworten die beste Antwort war. Wie die beste Antwort bestimmt wird, liegt bei Ihnen. Mögliche Optionen sind beispielsweise:
 
 * Benutzerfeedback (Auswählen einer der Antworten)
-* Geschäftslogik (etwa Bestimmung eines akzeptablen Bewertungsbereichs)  
+* Geschäftslogik (etwa Bestimmung eines akzeptablen Bewertungsbereichs)
 * Kombination aus Benutzerfeedback und Geschäftslogik
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgraden Ihrer Laufzeitversion, um aktives Lernen zu nutzen
 
-Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates), um dieses Feature zu nutzen. 
+Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates), um dieses Feature zu nutzen.
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Aktivieren des aktiven Lernens, um Vorschläge zu erhalten
 
@@ -64,17 +64,18 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 1. Wählen Sie **Veröffentlichen** aus, um die Wissensdatenbank zu veröffentlichen. Aktive Lernabfragen werden nur vom Vorhersageendpunkt der GenerateAnswer-API erfasst. Die Abfragen im Bereich „Test“ im QnA Maker-Portal besitzen keine Auswirkungen auf das aktive Lernen.
 
-1. Wenn Sie aktives Lernen im QnA Maker-Portal aktivieren möchten, wählen Sie in der rechten oberen Ecke Ihren **Namen** aus, und navigieren Sie zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
+1. Wenn Sie aktives Lernen im QnA Maker-Portal aktivieren möchten, wählen Sie in der rechten oberen Ecke Ihren **Namen** aus, und navigieren Sie zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).
 
     ![Aktivieren Sie auf der Seite „Diensteinstellungen“ Alternativen für die vom Feature für aktives Lernen vorgeschlagenen Fragen. Wählen Sie im Menü rechts oben Ihren Benutzernamen und anschließend „Diensteinstellungen“ aus.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Suchen Sie nach dem QnA Maker-Dienst, und aktivieren Sie die Option **Active Learning**. 
+1. Suchen Sie nach dem QnA Maker-Dienst, und aktivieren Sie die Option **Active Learning**.
 
-    [![Aktivieren Sie auf der Seite „Diensteinstellungen“ das Feature für aktives Lernen. Wenn Sie das Feature nicht aktivieren können, müssen Sie möglicherweise ein Upgrade des Diensts ausführen.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![Aktivieren Sie auf der Seite „Diensteinstellungen“ das Feature für aktives Lernen. Wenn Sie das Feature nicht aktivieren können, müssen Sie möglicherweise ein Upgrade des Diensts ausführen.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
     > [!Note]
-    > Die genaue Version auf der vorherigen Abbildung ist nur als Beispiel dargestellt. Ihre Version kann abweichen. 
+    > Die genaue Version auf der vorherigen Abbildung ist nur als Beispiel dargestellt. Ihre Version kann abweichen.
 
     Nachdem Sie **Aktives Lernen** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
 
@@ -82,7 +83,7 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
 
 Aktives Lernen ändert die Wissensdatenbank oder den Suchdienst, nachdem Sie den Vorschlag bestätigt und dann gespeichert und trainiert haben. Wenn Sie den Vorschlag bestätigen, wird er als alternative Frage hinzugefügt.
 
-1. Um die vorgeschlagenen Fragen anzuzeigen, wählen Sie auf der Seite **Bearbeiten** der Wissensdatenbank **Optionen anzeigen** und danach **Show active learning suggestions** (Vorschläge für aktives Lernen anzeigen) aus. 
+1. Um die vorgeschlagenen Fragen anzuzeigen, wählen Sie auf der Seite **Bearbeiten** der Wissensdatenbank **Optionen anzeigen** und danach **Show active learning suggestions** (Vorschläge für aktives Lernen anzeigen) aus.
 
     [![Wählen Sie im Bereich „Bearbeiten“ des Portals „Vorschläge anzeigen“ aus, um die Alternativen für neue Fragen des Features für aktives Lernen anzuzeigen.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
@@ -90,7 +91,7 @@ Aktives Lernen ändert die Wissensdatenbank oder den Suchdienst, nachdem Sie den
 
     [![Verwenden Sie den Umschalter „Nach Vorschlägen filtern“, um nur die vom Feature für aktives Lernen vorgeschlagenen Alternativen für Fragen anzuzeigen.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Bei den einzelnen QnA-Paaren stehen für die vorgeschlagenen neuen Fragealternativen jeweils ein Häkchen (`✔`) zum Akzeptieren der Frage und ein Kreuz (`x`) zum Ablehnen der Vorschläge zur Verfügung. Aktivieren Sie das Häkchen, um die Frage hinzuzufügen. 
+1. Bei den einzelnen QnA-Paaren stehen für die vorgeschlagenen neuen Fragealternativen jeweils ein Häkchen (`✔`) zum Akzeptieren der Frage und ein Kreuz (`x`) zum Ablehnen der Vorschläge zur Verfügung. Aktivieren Sie das Häkchen, um die Frage hinzuzufügen.
 
     [![Sie können die vorgeschlagenen die vom Feature für aktives Lernen vorgeschlagenen Alternativen für Fragen auswählen oder ablehnen, indem Sie auf das grüne Häkchen oder das rote Löschsymbol klicken.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -118,7 +119,7 @@ Von einem Bot oder einer anderen Clientanwendung muss zur Verwendung des aktiven
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>Verwenden der Eigenschaft „top“ in der GenerateAnswer-Anforderung, um mehrere passende Antworten abzurufen
 
-Wenn Sie eine Frage zur Beantwortung an QnA Maker senden, legt die Eigenschaft `top` im JSON-Text die Anzahl der zurückzugebenden Antworten fest. 
+Wenn Sie eine Frage zur Beantwortung an QnA Maker senden, legt die Eigenschaft `top` im JSON-Text die Anzahl der zurückzugebenden Antworten fest.
 
 ```json
 {
@@ -130,7 +131,7 @@ Wenn Sie eine Frage zur Beantwortung an QnA Maker senden, legt die Eigenschaft 
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>Verwenden der Eigenschaft „score“ in Kombination mit Geschäftslogik, um eine Liste mit Antworten abzurufen, die dem Benutzer angezeigt werden kann
 
-Wenn die Clientanwendung (beispielsweise ein Chatbot) die Antwort empfängt, werden die drei relevantesten Fragen zurückgegeben. Verwenden Sie die Eigenschaft `score`, um die Nähe zwischen den Bewertungen zu analysieren. Dieser Nähebereich wird durch Ihre eigene Geschäftslogik bestimmt. 
+Wenn die Clientanwendung (beispielsweise ein Chatbot) die Antwort empfängt, werden die drei relevantesten Fragen zurückgegeben. Verwenden Sie die Eigenschaft `score`, um die Nähe zwischen den Bewertungen zu analysieren. Dieser Nähebereich wird durch Ihre eigene Geschäftslogik bestimmt.
 
 ```json
 {
@@ -171,9 +172,9 @@ Wenn die Clientanwendung (beispielsweise ein Chatbot) die Antwort empfängt, wer
 
 ## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>Nachverfolgung durch die Clientanwendung bei Fragen mit ähnlicher Bewertung
 
-Ihre Clientanwendung zeigt die Fragen an und gibt dem Benutzer die Möglichkeit, _die am besten geeignete Frage_ auszuwählen. 
+Ihre Clientanwendung zeigt die Fragen an und gibt dem Benutzer die Möglichkeit, _die am besten geeignete Frage_ auszuwählen.
 
-Sobald der Benutzer eine der vorhandenen Fragen ausgewählt hat, sendet die Clientanwendung die Auswahl des Benutzers als Feedback mithilfe der Trainings-API von QnA Maker. Dieses Feedback vervollständigt die Feedbackschleifen des Features für aktives Lernen. 
+Sobald der Benutzer eine der vorhandenen Fragen ausgewählt hat, sendet die Clientanwendung die Auswahl des Benutzers als Feedback mithilfe der Trainings-API von QnA Maker. Dieses Feedback vervollständigt die Feedbackschleifen des Features für aktives Lernen.
 
 ## <a name="train-api"></a>Trainings-API
 
@@ -186,12 +187,12 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-Anforderungseigenschaft|NAME|type|Zweck|
+|HTTP-Anforderungseigenschaft|Name|type|Zweck|
 |--|--|--|--|
-|URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
-|Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|Zeichenfolge|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|
-|Header|Content-Type|Zeichenfolge|Medientyp des an die API gesendeten Texts Der Standardwert ist: `application/json`|
-|Header|Authorization|Zeichenfolge|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|URL-Routenparameter|Wissensdatenbank-ID|string|GUID der Knowledge Base|
+|Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|string|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|
+|Header|Content-Type|string|Medientyp des an die API gesendeten Texts Der Standardwert ist: `application/json`|
+|Header|Authorization|string|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Posttext|JSON-Objekt|JSON|Das Feedback zum Training|
 
 Der JSON-Text verfügt über mehrere Einstellungen:
@@ -199,8 +200,8 @@ Der JSON-Text verfügt über mehrere Einstellungen:
 |JSON-Texteigenschaft|type|Zweck|
 |--|--|--|--|
 |`feedbackRecords`|array|Liste des Feedbacks|
-|`userId`|Zeichenfolge|Die Benutzer-ID der Person, die die vorgeschlagenen Fragen akzeptiert. Das Format der Benutzer-ID bleibt Ihnen überlassen. Beispielsweise kann eine E-Mail-Adresse eine in Ihrer Architektur gültige Benutzer-ID sein. Optional.|
-|`userQuestion`|Zeichenfolge|Exakter Text der Benutzerabfrage. Erforderlich.|
+|`userId`|string|Die Benutzer-ID der Person, die die vorgeschlagenen Fragen akzeptiert. Das Format der Benutzer-ID bleibt Ihnen überlassen. Beispielsweise kann eine E-Mail-Adresse eine in Ihrer Architektur gültige Benutzer-ID sein. Optional.|
+|`userQuestion`|string|Exakter Text der Benutzerabfrage. Erforderlich.|
 |`qnaID`|number|Die ID der Frage in der [GenerateAnswer-Antwort](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Ein JSON-Beispieltext sieht folgendermaßen aus:
@@ -217,11 +218,11 @@ Ein JSON-Beispieltext sieht folgendermaßen aus:
 }
 ```
 
-Eine erfolgreiche Antwort gibt den Status 204 und einen JSON-Antworttext zurück. 
+Eine erfolgreiche Antwort gibt den Status 204 und einen JSON-Antworttext zurück.
 
 ### <a name="batch-many-feedback-records-into-a-single-call"></a>Zusammenfassen zahlreicher Feedbackdatensätze in einem einzelnen Aufruf
 
-Sie können die Daten in der clientseitigen Anwendung (etwa in einem Bot) speichern und dann mithilfe des Arrays `feedbackRecords` zahlreiche Datensätze in einem einzelnen JSON-Text senden. 
+Sie können die Daten in der clientseitigen Anwendung (etwa in einem Bot) speichern und dann mithilfe des Arrays `feedbackRecords` zahlreiche Datensätze in einem einzelnen JSON-Text senden.
 
 Ein JSON-Beispieltext sieht folgendermaßen aus:
 
@@ -258,7 +259,7 @@ Ihr Bot Framework-Code muss die Trainings-API aufrufen, wenn die Abfrage des Be
 * Bestimmen, ob die Abfrage für aktives Lernen verwendet werden soll
 * Zurücksenden der Abfrage an die Trainings-API für aktives Lernen von QnA Maker
 
-Im [Azure-Botbeispiel](https://aka.ms/activelearningsamplebot) wurden beide Aktivitäten programmiert. 
+Im [Azure-Botbeispiel](https://aka.ms/activelearningsamplebot) wurden beide Aktivitäten programmiert.
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>C#-Beispielcode für die Trainings-API mit Bot Framework 4.x
 
@@ -323,7 +324,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Node.js-Beispielcode für die Trainings-API mit Bot Framework 4.x 
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Node.js-Beispielcode für die Trainings-API mit Bot Framework 4.x
 
 Der folgende Code veranschaulicht das Zurücksenden von Informationen an QnA Maker mithilfe der Trainings-API. Das [vollständige Codebeispiel](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) finden Sie auf GitHub.
 
@@ -353,7 +354,7 @@ async callTrain(stepContext){
 
             // Call Active Learning Train API
             this.activeLearningHelper.callTrain(this.qnaMaker.endpoint.host, feedbackRecords, this.qnaMaker.endpoint.knowledgeBaseId, this.qnaMaker.endpoint.endpointKey);
-            
+
             return await stepContext.next(qnaResults);
         }
         else{
@@ -368,7 +369,7 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Aktives Lernen wird in der exportierten Wissensdatenbank gespeichert.
 
-Wenn aktives Lernen für Ihre App aktiviert ist Sie die App exportieren, enthält die Spalte `SuggestedQuestions` in der TSV-Datei die Daten für aktives Lernen. 
+Wenn aktives Lernen für Ihre App aktiviert ist Sie die App exportieren, enthält die Spalte `SuggestedQuestions` in der TSV-Datei die Daten für aktives Lernen.
 
 Die Spalte `SuggestedQuestions` ist ein JSON-Objekt mit Informationen zu implizitem (`autosuggested`) und explizitem (`usersuggested`) Feedback. Ein Beispiel für dieses JSON-Objekt für eine einzelne, vom Benutzer übermittelte Bitte um `help` ist:
 
@@ -394,7 +395,7 @@ Sie können auch die API zum Herunterladen von Änderungen verwenden, um diese �
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
-Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Informationen und empfiehlt Vorschläge für Ihre Wissensdatenbank. 
+Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Informationen und empfiehlt Vorschläge für Ihre Wissensdatenbank.
 
 
 
@@ -403,6 +404,6 @@ Wenn Sie diese App erneut importieren, erfasst das aktive Lernen weiterhin Infor
 Bewährte Methoden bei der Verwendung des Features für aktives Lernen finden Sie unter [Best Practices](../Concepts/best-practices.md#active-learning).
 
 ## <a name="next-steps"></a>Nächste Schritte
- 
+
 > [!div class="nextstepaction"]
 > [Verwenden von Metadaten mit der GenerateAnswer-API](metadata-generateanswer-usage.md)

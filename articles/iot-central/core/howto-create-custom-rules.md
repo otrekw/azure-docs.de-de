@@ -3,20 +3,22 @@ title: Erweitern von Azure IoT Central mit benutzerdefinierten Regeln und Benach
 description: Als Lösungsentwickler möchten Sie eine IoT Central-Anwendung konfigurieren, die E-Mail-Benachrichtigungen sendet, wenn ein Gerät keine Telemetriedaten mehr übermittelt. Bei dieser Lösung werden Azure Stream Analytics, Azure Functions und SendGrid verwendet.
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 98b5cc707ca8b5ebd1ee88f02082fd3f10fa73dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434998"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022442"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
+
+
 
 Diese Schrittanleitung veranschaulicht, wie Sie als Lösungsentwickler Ihre IoT Central-Anwendung um benutzerdefinierte Regeln und Benachrichtigungen erweitern können. Das Beispiel zeigt, wie eine Benachrichtigung an einen Bediener gesendet wird, wenn ein Gerät keine Telemetriedaten mehr sendet. Die Lösung verwendet eine [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/)-Abfrage, um zu erkennen, wenn ein Gerät das Senden von Telemetriedaten einstellt. Der Stream Analytics-Auftrag verwendet [Azure Functions](https://docs.microsoft.com/azure/azure-functions/), um mithilfe von [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/) Benachrichtigungs-E-Mails zu senden.
 
@@ -40,15 +42,17 @@ Erstellen Sie über die Website des [Azure IoT Central-Anwendungs-Managers](http
 
 | Einstellung | value |
 | ------- | ----- |
-| Zahlungsplan | Nutzungsbasierte Bezahlung |
-| Anwendungsvorlage | Legacyanwendung |
+| Tarif | Standard |
+| Anwendungsvorlage | In-Store-Analyse – Bedingungsüberwachung |
 | Anwendungsname | Standardwert übernehmen oder eigenen Namen angeben |
 | URL | Standardwert übernehmen oder eigenes eindeutiges URL-Präfix angeben |
 | Verzeichnis | Ihr Azure Active Directory-Mandant |
 | Azure-Abonnement | Ihr Azure-Abonnement |
-| Region | USA |
+| Region | Ihre nächstgelegene Region |
 
 Bei den Beispielen und Screenshots in diesem Artikel wird die Region **USA** verwendet. Wählen Sie einen Standort in Ihrer Nähe, und stellen Sie sicher, dass Sie alle Ressourcen in derselben Region erstellen.
+
+Diese Anwendungsvorlage enthält zwei simulierte Thermostatgeräte, die Telemetriedaten senden.
 
 ### <a name="resource-group"></a>Resource group
 
@@ -237,7 +241,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Gerät mehr als 120 Sekunden lang keine Telemetriedaten sendet. Die Abfrage verwendet die Telemetriedaten aus dem Event Hub als Eingabe. Der Auftrag sendet die Abfrageergebnisse an die Funktions-App. In diesem Abschnitt konfigurieren Sie den Stream Analytics-Auftrag:
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Auftragstopologie** den Eintrag **Eingaben** aus, klicken Sie auf **+ Datenstromeingabe hinzufügen**, und wählen Sie dann **Event Hub** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem Stream Analytics-Auftrag. Wählen Sie unter **Auftragstopologie** den Eintrag **Eingaben**, anschließend **+ Datenstromeingabe hinzufügen** und dann **Event Hub** aus.
 1. Verwenden Sie die Informationen in der folgenden Tabelle, um die Eingabe mithilfe des zuvor erstellten Event Hubs zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
     | Einstellung | value |
@@ -307,13 +311,13 @@ Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Ge
 
 Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral) zu der IoT Central-Anwendung, die Sie aus der Contoso-Vorlage erstellt haben. In diesem Abschnitt konfigurieren Sie die Anwendung so, dass die Telemetriedaten aus den simulierten Geräten an Ihren Event Hub gestreamt werden. So konfigurieren Sie den Export:
 
-1. Navigieren Sie zur Seite **Kontinuierlicher Datenexport**, klicken Sie auf **+ Neu**, und wählen Sie **Azure Event Hubs** aus.
+1. Navigieren Sie zur Seite **Datenexport**, wählen Sie **+ Neu** und dann **Azure Event Hubs** aus.
 1. Verwenden Sie die folgenden Einstellungen, um den Export zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
     | Einstellung | value |
     | ------- | ----- |
     | Anzeigename | Exportieren nach Event Hubs |
-    | Enabled | Andererseits |
+    | Aktiviert | Andererseits |
     | Event Hubs-Namespace | Der Name Ihres Event Hubs-Namespace |
     | Event Hub | centralexport |
     | Messungen | Andererseits |
@@ -328,15 +332,15 @@ Warten Sie, bis der Exportstatus **Wird ausgeführt** lautet, bevor Sie fortfahr
 
 Um die Lösung zu testen, können Sie den kontinuierlichen Datenexport aus IoT Central deaktivieren, um angehaltene Geräte zu simulieren:
 
-1. Navigieren Sie in Ihrer IoT Central-Anwendung zur Seite **Kontinuierlicher Datenexport**, und wählen Sie die Exportkonfiguration **In Event Hubs exportieren** aus.
+1. Navigieren Sie in Ihrer IoT Central-Anwendung zur Seite **Datenexport**, und wählen Sie die Exportkonfiguration **In Event Hubs exportieren** aus.
 1. Legen Sie **Aktiviert** auf **Aus** fest, und klicken Sie auf **Speichern**.
 1. Nach Ablauf von mindestens zwei Minuten erhält die als **Empfänger** angegebene E-Mail-Adresse mindestens eine E-Mail, deren Inhalt dem folgenden Beispiel ähnelt:
 
     ```txt
     The following device(s) have stopped sending telemetry:
 
-    Device ID   Time
-    7b169aee-c843-4d41-9f25-7a02671ee659    2019-05-09T14:28:59.954Z
+    Device ID         Time
+    Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
 ## <a name="tidy-up"></a>Aufräumen

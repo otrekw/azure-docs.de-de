@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973376"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719074"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
@@ -32,6 +32,7 @@ GZRS und RA-GZRS sind derzeit in den folgenden Regionen als Vorschau verfügbar:
 - Asien, Südosten
 - Europa, Norden
 - Europa, Westen
+- Japan, Osten
 - UK, Süden
 - USA, Osten
 - USA (Ost 2)
@@ -129,6 +130,7 @@ Nach Abschluss der Migration wird die Replikationseinstellung des Speicherkontos
 Beachten Sie die folgenden Einschränkungen bei Livemigrationen:
 
 - Auch wenn Microsoft auf Ihre Anforderung zur Livemigration sofort reagiert, gibt es keine Garantie, zu welchem Zeitpunkt eine Livemigration abgeschlossen sein wird. Wenn Ihre Daten bis zu einem bestimmten Datum zu GZRS oder RA-GZRS migriert werden müssen, empfiehlt Microsoft stattdessen die Durchführung einer manuellen Migration. Grundsätzlich gilt: Je mehr Daten in Ihrem Konto vorhanden sind, desto länger dauert die Migration dieser Daten.
+- Die Livemigration wird nur für Speicherkonten mit GRS- oder RA-GRS-Replikation unterstützt. Falls Ihr Konto LRS verwendet, müssen Sie zuerst den Replikationstyp des Kontos in GRS oder RA-GRS ändern, bevor Sie den Vorgang fortsetzen. Durch diesen Zwischenschritt wird der von GRS/RA-GRS bereitgestellte sekundäre Endpunkt hinzugefügt.
 - Ihr Konto muss Daten enthalten.
 - Sie können Daten nur innerhalb der gleichen Region migrieren.
 - Nur Standard-Speicherkontotypen unterstützen die Livemigration. Premium-Speicherkonten müssen manuelle migriert werden.

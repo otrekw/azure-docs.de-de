@@ -7,12 +7,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 58dd53d9380448f177da48659b4f48c261bcfc14
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745442"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934480"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -26,14 +26,16 @@ Im Folgenden sind einige Beispiele für die Möglichkeiten von Azure Monitor auf
 - Unterstützen Sie Operations im großen Maßstab mit [intelligenten Warnungen](platform/alerts-smartgroups-overview.md) und [automatisierten Aktionen](platform/alerts-action-rules.md).
 - Erstellen Sie Visualisierungen mit Azure-[Dashboards](learn/tutorial-logs-dashboards.md) und [Arbeitsmappen](app/usage-workbooks.md).
 
-## <a name="overview"></a>Übersicht
-Das folgende Diagramm zeigt eine allgemeine Übersicht von Azure Monitor. In der Mitte des Diagramms finden Sie die Datenspeicher für Metriken und Protokolle, die beiden grundlegenden Datenarten, mit denen Azure Monitor arbeitet. Auf der linken Seite befinden sich die [Quellen für Überwachungsdaten](platform/data-sources.md), die diese [Datenspeicher](platform/data-platform.md) ausfüllen. Auf der rechten Seite finden Sie die verschiedenen Funktionen, die Azure Monitor mit diesen gesammelten Daten ausführt, wie etwa Analyse, Ausgeben von Warnungen und Streamen auf externe Systeme.
+[!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 
+## <a name="overview"></a>Übersicht
+
+Das folgende Diagramm zeigt eine allgemeine Übersicht von Azure Monitor. In der Mitte des Diagramms finden Sie die Datenspeicher für Metriken und Protokolle, die beiden grundlegenden Datenarten, mit denen Azure Monitor arbeitet. Auf der linken Seite befinden sich die [Quellen für Überwachungsdaten](platform/data-sources.md), die diese [Datenspeicher](platform/data-platform.md) ausfüllen. Auf der rechten Seite finden Sie die verschiedenen Funktionen, die Azure Monitor mit diesen gesammelten Daten ausführt, wie etwa Analyse, Ausgeben von Warnungen und Streamen auf externe Systeme.
 
 ![Azure Monitor – Übersicht](media/overview/overview.png)
 
-
 ## <a name="monitoring-data-platform"></a>Überwachungsdaten-Plattform
+
 Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an, [Metriken und Protokolle](platform/data-platform.md). [Metriken](platform/data-platform-metrics.md) sind numerische Werte, die einen Aspekt eines Systems zu einem bestimmten Zeitpunkt beschreiben. Sie sind einfach strukturiert und in der Lage, Szenarien nahezu in Echtzeit zu unterstützen. [Protokolle](platform/data-platform-logs.md) enthalten verschiedene Arten von Daten, die in Datensätzen mit unterschiedlichen Eigenschaften für jeden Typ organisiert sind. Telemetriedaten wie etwa Ereignisse und Ablaufverfolgungen werden als Protokolle zusätzlich zu Leistungsdaten gespeichert, die alle zur Analyse kombiniert werden können.
 
 Für viele Azure-Ressourcen können die von Azure Monitor gesammelten Daten direkt auf ihrer Übersichtsseite im Azure-Portal angezeigt werden. Werfen Sie beispielsweise einen Blick auf eine beliebige VM, dann sehen Sie eine Reihe von Diagrammen, die Leistungsmetriken darstellen. Klicken Sie auf eines dieser Diagramme, um die Daten im Azure-Portal im [Metrik-Explorer](platform/metrics-charts.md) anzuzeigen. Hier können Sie die Werte mehrerer Metriken im zeitlichen Verlauf als Diagramm darstellen.  Sie können die Diagramme interaktiv nutzen oder an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen.
@@ -47,6 +49,7 @@ Azure Monitor verwendet eine Version der von Azure Data Explorer verwendeten [Ab
 ![Protokolle](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Welche Daten sammelt Azure Monitor?
+
 Azure Monitor kann Daten aus vielen verschiedenen Quellen sammeln. Sie können sich das Überwachen von Daten für Ihre Anwendungen in Ebenen vorstellen, die von Ihrer Anwendung über Betriebssystem und Dienste, auf denen sie aufbaut, bis zur Plattform selbst hinunterreichen. Azure Monitor sammelt Daten aus jeder der folgenden Schichten:
 
 - **Überwachungsdaten zu Anwendungen**: Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, unabhängig von seiner Plattform.
@@ -62,9 +65,8 @@ Erweitern Sie die erfassten Daten in den eigentlichen Betrieb hinein, indem Sie 
 Aktivieren Sie die Überwachung für Ihre [App Services-Anwendung](app/azure-web-apps.md) oder Ihre [Anwendung auf einer VM oder VM-Skalierungsgruppe](app/azure-vm-vmss-apps.md), um Application Insights das Sammeln von detaillierten Informationen über Ihre Anwendung zu ermöglichen, einschließlich der Anzahl der Seitenaufrufe, Anwendungsanforderungen und Ausnahmen. Überprüfen Sie darüber hinaus die Verfügbarkeit Ihrer Anwendung, indem Sie einen [Verfügbarkeitstest](app/monitor-web-app-availability.md) konfigurieren, um Benutzerdatenverkehr zu simulieren.
 
 ### <a name="custom-sources"></a>Benutzerdefinierte Quellen
+
 Azure Monitor kann mithilfe der [Datensammler-API](platform/data-collector-api.md) Protokolldaten von jedem REST-Client erfassen. Dies erlaubt Ihnen das Erstellen von benutzerdefinierten Überwachungsszenarien und das Ausweiten der Überwachung auf Ressourcen, die Telemetriedaten nicht durch andere Quellen verfügbar machen.
-
-
 
 ## <a name="insights"></a>Einblicke
 Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Azure Monitor enthält eine Reihe von Features und Tools, die wertvolle Einblicke in Ihre Anwendungen und weitere Ressourcen bieten, von denen sie abhängen. [Überwachungslösungen](insights/solutions.md) und -features wie [Application Insights](app/app-insights-overview.md) und [Azure Monitor für Container](insights/container-insights-overview.md) ermöglichen umfassende Einblicke in verschiedene Aspekte Ihrer Anwendung und bestimmter Azure-Dienste. 

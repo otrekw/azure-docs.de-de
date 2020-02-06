@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75865939"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841096"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Konfigurieren einer Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) für die Verknüpfung mit einem virtuellen Netzwerk
 
@@ -44,7 +44,7 @@ Dazu müssen folgende Schritte ausgeführt werden:
     
         Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressourcengruppe erstellen wie das virtuelle Netzwerk. Diese Ressourcen umfassen Folgendes:
         - Einen Azure-Lastenausgleich mit dem Namen *\<Guid>-azurebatch-cloudserviceloadbalancer*
-        - Eine Netzwerksicherheitsgruppe mit dem Namen \<Guid>-azurebatch-cloudservicenetworksecuritygroup
+        - Eine Netzwerksicherheitsgruppe mit dem Namen „*\<GUID>-azurebatch-cloudservicenetworksecuritygroup“
         - Eine öffentliche Azure-IP-Adresse mit dem Namen „-azurebatch-cloudservicepublicip“
     
         Diese Ressourcen werden beim Start Ihrer Azure-SSIS IR erstellt. Sie werden gelöscht, wenn die Azure-SSIS IR beendet wird. Damit Ihre Azure-SSIS IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden.
@@ -57,7 +57,7 @@ Dazu müssen folgende Schritte ausgeführt werden:
 
 - Die nachstehenden Szenarien einer **Netzwerkkonfiguration** werden in diesem Tutorial nicht behandelt:
     - Sie verwenden Ihre eigenen öffentlichen IP-Adressen für die Azure-SSIS IR.
-    - Sie verwenden Ihren eigenen DNS-Server (Domain Name System).
+    - Sie verwenden einen eigenen DNS-Server (Domain Name System).
     - Sie verwenden eine Netzwerksicherheitsgruppe (NSG) im Subnetz.
     - Sie verwenden Azure ExpressRoute oder eine benutzerdefinierte Route (User-Defined Route, UDR).
     - Sie verwenden eine benutzerdefinierte Azure-SSIS IR.

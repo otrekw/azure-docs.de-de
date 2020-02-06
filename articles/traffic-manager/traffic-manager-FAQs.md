@@ -3,20 +3,20 @@ title: Azure Traffic Manager – häufig gestellte Fragen (FAQ)
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Traffic Manager
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
-ms.author: allensu
-ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.author: rohink
+ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045311"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938816"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 

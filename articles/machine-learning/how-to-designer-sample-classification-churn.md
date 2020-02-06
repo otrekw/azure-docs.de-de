@@ -5,25 +5,25 @@ description: Befolgen Sie dieses Klassifizierungsbeispiel, um Kundenabwanderung 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 701bf186080ef627ef4621e959b281fd58aa4132
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311115"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963362"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Verwenden von Boosted Decision Tree zum Vorhersagen von Kundenabwanderung mit Azure Machine Learning-Designer
 
-**Designer-Beispiel 5**
+**Designer (Vorschauversion) – Beispiel 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Hier erfahren Sie, wie Sie im Designer eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben.
+Hier erfahren Sie, wie Sie im Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben.
 
 In dieser Pipeline werden zwei Klassifizierer des Typs **Verstärkte Entscheidungsstruktur mit zwei Klassen** trainiert, um allgemeine Aufgaben für CRM-Systeme (Customer Relationship Management) vorherzusagen: Kundenabwanderung. Die Datenwerte und Bezeichnungen sind über mehrere Datenquellen verteilt und verschlüsselt, um Kundeninformationen zu anonymisieren. Trotzdem kann der Designer weiterhin verwendet werden, um Datasets zu kombinieren und ein Modell mit den unkenntlich gemachten Werten zu trainieren.
 

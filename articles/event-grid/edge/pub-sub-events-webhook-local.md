@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098635"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844541"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Tutorial: Lokales Veröffentlichen und Abonnieren von Ereignissen
 
@@ -29,12 +29,12 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 * Ein **Azure-Abonnement**: Falls Sie noch kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free). 
 * **Azure IoT Hub- und IoT Edge-Gerät**: Befolgen Sie die Schritte im Schnellstart für [Linux](../../iot-edge/quickstart-linux.md)- oder [Windows-Geräte](../../iot-edge/quickstart.md), sofern nicht bereits geschehen.
 
-## <a name="deploy-event-grid-iot-edge-module"></a>Bereitstellen eines IoT Edge-Moduls in Event Grid
+## <a name="deploy-event-grid-iot-edge-module"></a>Bereitstellen von Event Grid in einem IoT Edge-Modul
 
 Es gibt mehrere Möglichkeiten, wie Sie Module auf einem IoT Edge-Gerät bereitstellen können. Alle sind für Azure Event Grid in IoT Edge geeignet. In diesem Artikel werden die Schritte zum Bereitstellen von Event Grid in IoT Edge über das Azure-Portal beschrieben.
 
 >[!NOTE]
-> In diesem Tutorial stellen Sie das Event Grid-Modul ohne Persistenz bereit. Dies bedeutet, dass alle in diesem Tutorial erstellten Themen und Abonnements beim erneuten Bereitstellen des Moduls gelöscht werden. Weitere Informationen zum Einrichten von Persistenz finden Sie in den folgenden Artikeln: [Beibehalten des Status in Linux](persist-state-linux.md) oder [Beibehalten des Status in Windows](persist-state-windows.md). Für Produktionsworkloads empfiehlt es sich, das Event Grid-Modul mit Persistenz zu installieren.
+> In diesem Tutorial stellen Sie das Event Grid-Modul ohne Persistenz bereit. Das heißt, dass alle in diesem Tutorial erstellten Themen und Abonnements beim erneuten Bereitstellen des Moduls gelöscht werden. Weitere Informationen zum Einrichten von Persistenz finden Sie in den folgenden Artikeln: [Beibehalten des Status in Linux](persist-state-linux.md) oder [Beibehalten des Status in Windows](persist-state-windows.md). Für Produktionsworkloads empfiehlt es sich, das Event Grid-Modul mit Persistenz zu installieren.
 
 
 ### <a name="select-your-iot-edge-device"></a>Auswählen Ihres IoT Edge-Geräts
@@ -59,11 +59,13 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
    * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Optionen für Containererstellung**:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -87,7 +89,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
 
 ## <a name="deploy-azure-function-iot-edge-module"></a>Bereitstellen des Azure Functions-IoT Edge-Moduls
 
-In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitstellen, das als Event Grid-Mitwirkender fungiert und an das Ereignisse übermittelt werden können.
+In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitstellen, das als Event Grid-Abonnent fungiert, an den Ereignisse übermittelt werden können.
 
 >[!IMPORTANT]
 >In diesem Abschnitt stellen Sie als Beispiel ein Azure Functions-basiertes Abonnementmodul bereit. Es kann sich natürlich um ein beliebiges benutzerdefiniertes IoT-Modul handeln, das auf HTTP POST-Anforderungen lauschen kann.
@@ -118,11 +120,11 @@ In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitst
        ```
 
 1. Klicken Sie unten auf der Seite auf **Speichern**.
-1. Klicken Sie auf **Weiter**, um mit dem Abschnitt für Routen fortzufahren.
+1. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
 
  ### <a name="setup-routes"></a>Einrichten von Routen
 
-Behalten Sie die Standardrouten bei, und klicken Sie auf **Weiter**, um mit dem Abschnitt für die Überprüfung fortzufahren.
+Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Abschnitt für die Überprüfung fortzufahren.
 
 ### <a name="submit-the-deployment-request"></a>Übermitteln der Bereitstellungsanforderung
 
@@ -153,7 +155,7 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. In
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
     ```
 
-1. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Thema erfolgreich erstellt wurde. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+1. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Thema erfolgreich erstellt wurde. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -179,6 +181,8 @@ Als Herausgeber eines Ereignisses müssen Sie ein Event Grid-Thema erstellen. In
 
 Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfang von Ereignissen müssen Sie ein Event Grid-Abonnement für das gewünschte Thema erstellen.
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
+
 1. Erstellen Sie eine Datei „subscription.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 
     ```json
@@ -201,7 +205,7 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
     ```
-3. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Abonnement erfolgreich erstellt wurde. Es sollte der HTTP-Statuscode „200 OK“ zurückgegeben werden.
+3. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Abonnement erfolgreich erstellt wurde. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -307,4 +311,5 @@ In diesem Tutorial haben Sie ein Event Grid-Thema und ein Abonnement erstellt un
 - Befolgen Sie die Informationen zum Konfigurieren der Clientauthentifizierung in der [Dokumentation](configure-client-auth.md).
 - Arbeiten Sie dieses [Tutorial](pub-sub-events-webhook-cloud.md) durch, um Ereignisse an Azure Functions in der Cloud weiterzuleiten.
 - Erfahren Sie mehr über das [Reagieren auf Blob Storage-Ereignisse in IoT Edge](react-blob-storage-events-locally.md).
+- [Überwachen von Themen und Abonnements am Edge](monitor-topics-subscriptions.md)
 

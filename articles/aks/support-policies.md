@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707217"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767368"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Unterstützungsrichtlinien für Azure Kubernetes Service
 
@@ -42,6 +42,8 @@ Die Dienste sind in dem Sinne *verwaltet*, dass Microsoft und das AKS-Team die D
 
 > [!NOTE]
 > AKS-Workerknoten werden im Azure Portal als reguläre Azure IaaS-Ressourcen angezeigt. Diese virtuellen Computer werden jedoch in einer benutzerdefinierten Azure-Ressourcengruppe bereitgestellt (mit dem Präfix MC\\\*). AKS-Workerknoten können geändert werden. Sie können z. B. mit Secure Shell (SSH) AKS-Workerknoten wie normale virtuelle Computer ändern (Sie können jedoch nicht das Basisimage des Betriebssystems ändern und Änderungen bleiben möglicherweise bei Updates oder Neustarts nicht erhalten), und Sie können andere Azure-Ressourcen an AKS-Workerknoten anfügen. Aber wenn Sie Änderungen bei der *Out-of-Band-Verwaltung und -Anpassung* vornehmen, kann der AKS-Cluster möglicherweise nicht mehr unterstützt werden. Vermeiden Sie Änderungen bei Workerknoten, es sei denn, Sie werden vom Microsoft-Support zum Vornehmen von Änderungen angewiesen.
+
+Wenn nicht unterstützte Vorgänge wie oben definiert ausgeführt werden, z. B. Aufhebung der Out-of-Band-Zuweisung aller Agent-Knoten, wird der Cluster nicht mehr unterstützt. AKS behält sich vor, Steuerungsebenen zu archivieren, die außerhalb der Supportrichtlinien für verlängerte Zeiträume ab 30 Tagen konfiguriert wurden. AKS verwaltet Sicherungen von etcd-Metadaten der Cluster und kann den Cluster jederzeit neu zuweisen. Diese erneute Zuweisung kann mit jedem PUT-Vorgang initiiert werden, der den Cluster wieder unterstützungsfähig macht, z. B. durch ein Upgrade oder eine Skalierung auf aktive Agent-Knoten.
 
 ## <a name="shared-responsibility"></a>Gemeinsame Verantwortung
 

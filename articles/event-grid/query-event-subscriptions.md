@@ -1,19 +1,18 @@
 ---
 title: Abfragen von Azure Event Grid-Abonnements
-description: Hier wird beschrieben, wie Sie Azure Event Grid-Abonnements auflisten.
+description: In diesem Artikel erfahren Sie, wie Sie Event Grid-Abonnements in Ihrem Azure-Abonnement auflisten. Die anzugebenden Parameter sind abhängig von der Art des Abonnements.
 services: event-grid
 author: spelluru
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/04/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 08fa9ada97c652ca609a499da1c8e87f7e4487db
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 2da4ba5946f16092c1d0918aec8dc3109b5fd4a8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786623"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721539"
 ---
 # <a name="query-event-grid-subscriptions"></a>Abfragen von Event Grid-Abonnements 
 

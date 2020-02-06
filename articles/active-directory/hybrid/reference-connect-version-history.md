@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ba7ba4be103beb494c31a844d1871c22c25b8c6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422355"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756299"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -84,6 +84,8 @@ Mit dieser Version wird ein Fehler behoben, bei dem auf einigen Servern, die von
 ### <a name="fixed-issues"></a>Behobene Probleme
 
 In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Kennwortrückschreiben nach Abschluss des Upgrades auf Servern, die automatisch auf Version 1.4.18.0 aktualisiert wurden, nicht neu aktiviert. Dieses automatische Upgrade behebt das Problem und aktiviert die Self-Service-Kennwortzurücksetzung und das Kennwortrückschreiben.
+
+Wir haben einen Synchronisierungsfehler im Komprimierungstool behoben, durch den Ersatzzeichen nicht ordnungsgemäß verarbeitet wurden.
 
 ## <a name="14180"></a>1.4.18.0
 

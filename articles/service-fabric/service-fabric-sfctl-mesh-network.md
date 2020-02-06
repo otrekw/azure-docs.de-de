@@ -3,21 +3,21 @@ title: 'Azure Service Fabric-Befehlszeilenschnittstelle: sfctl mesh network'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Abrufen und Löschen von Service Fabric Mesh-Netzwerkressourcen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 2d9d86d41dc031cca2730011c2322e9feb30c827
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 9aa0b6795508cb94200c486df092b867c1086316
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646125"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905994"
 ---
 # <a name="sfctl-mesh-network"></a>sfctl mesh network
 Ruft die Mesh-Netzwerkressourcen ab bzw. löscht diese.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | delete | Löscht die Netzwerkressource. |
 | list | Listet alle Netzwerkressourcen auf. |
@@ -30,13 +30,13 @@ Löscht die Netzwerkressource, die durch den Namen identifiziert wird.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name des Netzwerks. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -51,7 +51,7 @@ Ruft die Informationen zu allen Netzwerkressourcen in einer bestimmten Ressource
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -66,13 +66,13 @@ Ruft die Informationen zur Netzwerkressource mit dem angegebenen Namen ab. Die I
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name -n [Erforderlich] | Der Name des Netzwerks. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

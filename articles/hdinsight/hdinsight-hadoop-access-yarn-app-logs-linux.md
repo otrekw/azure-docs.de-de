@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: 437a0c95ea4b48baa74bf6a577dc06429833bc31
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.custom: hdinsightactive
+ms.date: 01/23/2020
+ms.openlocfilehash: 2a7d71c6d751d4a48ec93f020e657a4d43114cfc
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644578"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764380"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 
@@ -27,7 +27,7 @@ Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer
 
 Zur Skalierung Ihres Clusters für einen höheren Verarbeitungsdurchsatz können Sie die [Autoskalierung](hdinsight-autoscale-clusters.md) oder das [manuelle Skalieren Ihrer Cluster mit einigen verschiedenen Sprachen](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters) verwenden.
 
-## <a name="YARNTimelineServer"></a>YARN Timeline Server
+## <a name="yarn-timeline-server"></a>YARN Timeline Server
 
 Der [Apache Hadoop YARN Timeline Server](https://hadoop.apache.org/docs/r2.7.3/hadoop-yarn/hadoop-yarn-site/TimelineServer.html) bietet allgemeine Informationen zu abgeschlossenen Anwendungen.
 
@@ -38,7 +38,7 @@ YARN Timeline Server umfasst die folgenden Arten von Daten:
 * Informationen zu den erfolgten Versuchen, die Anwendung abzuschließen
 * Die bei Anwendungsversuchen verwendeten Container
 
-## <a name="YARNAppsAndLogs"></a>YARN-Anwendungen und -Protokolle
+## <a name="yarn-applications-and-logs"></a>YARN-Anwendungen und -Protokolle
 
 YARN unterstützt mehrere Programmierungsmodelle (u. a.[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. YARN verwendet einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
 
@@ -46,28 +46,115 @@ Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer
 
 Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheben von Problemen bei Hadoop-Anwendungen besonders wichtig. YARN bietet mit seinem Feature [Log Aggregation](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/) ein nützliches Gerüst für das Sammeln, Zusammenführen und Speichern von Anwendungsprotokollen. Durch die Protokollaggregationsfunktion wird der Zugriff auf Anwendungsprotokolle deterministischer. Sie aggregiert Protokolle in allen Containern auf einem Workerknoten und speichert sie als eine aggregierte Protokolldatei pro Workerknoten. Das Protokoll wird, nachdem eine Anwendung beendet wurde, im Standarddateisystem gespeichert. Ihre Anwendung mag Hunderte oder Tausende von Containern verwenden, doch Protokolle für alle auf einem einzelnen Workerknoten vorhandenen Container werden immer zu einer zentralen Datei zusammengeführt. Daher wird nur ein Protokoll pro Workerknoten von Ihrer Anwendung genutzt. Die Protokollaggregation ist für HDInsight-Cluster ab Version 3.0 standardmäßig aktiviert. Aggregierte Protokolle befinden sich im Standardspeicher für den Cluster. Der folgende Pfad ist der HDFS-Pfad für die Protokolle:
 
-    /app-logs/<user>/logs/<applicationId>
+```
+/app-logs/<user>/logs/<applicationId>
+```
 
 `user` steht hier für den Namen des Benutzers, der die Anwendung gestartet hat. `applicationId` ist der eindeutige Bezeichner, der einer Anwendung durch den YARN-RM zugewiesen wird.
 
 Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf)-[Binärformat](https://issues.apache.org/jira/browse/HADOOP-3315) mit Indizierung nach Container geschrieben werden. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
 
+## <a name="yarn-logs-in-an-esp-cluster"></a>Yarn-Protokolle in einem ESP-Cluster
+
+Der benutzerdefinierten `mapred-site` in Ambari müssen zwei Konfigurationen hinzugefügt werden.
+
+1. Navigieren Sie in einem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
+
+1. Navigieren Sie über die Ambari-Benutzeroberfläche zu **MapReduce2** > **Configs** > **Advanced** > **Custom mapred-site** (MapReduce2 > Konfigurationen > Erweitert > Benutzerdefinierte mapred-Website).
+
+1. Fügen Sie *eine* der folgenden Gruppen von Eigenschaften hinzu:
+
+    **Gruppe 1**
+
+    ```
+    mapred.acls.enabled=true
+    mapreduce.job.acl-view-job=*
+    ```
+
+    **Gruppe 2**
+
+    ```
+    mapreduce.job.acl-view-job=<user1>,<user2>,<user3>
+    ```
+
+1. Speichern Sie die Änderungen, und starten Sie alle betroffenen Dienste neu.
+
 ## <a name="yarn-cli-tools"></a>YARN-CLI-Tools
 
-Zur Verwendung der YARN CLI-Tools müssen Sie zuerst über SSH eine Verbindung mit dem HDInsight-Cluster herstellen. Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Verwenden Sie einen [ssh-Befehl](./hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
-Sie können diese Protokolle im Nur-Text-Format anzeigen, indem Sie einen der folgenden Befehle ausführen:
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
+1. Listen Sie alle Anwendungs-IDs der aktuell ausgeführten Yarn-Anwendungen mit dem folgenden Befehl auf:
+
+    ```bash
+    yarn top
+    ```
+
+    Notieren Sie sich in der Spalte `APPLICATIONID` die ID der Anwendung, deren Protokolle heruntergeladen werden sollen.
+
+    ```output
+    YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
+    NodeManager(s): 4 total, 4 active, 0 unhealthy, 0 decommissioned, 0 lost, 0 rebooted
+    Queue(s) Applications: 2 running, 10 submitted, 0 pending, 8 completed, 0 killed, 0 failed
+    Queue(s) Mem(GB): 97 available, 3 allocated, 0 pending, 0 reserved
+    Queue(s) VCores: 58 available, 2 allocated, 0 pending, 0 reserved
+    Queue(s) Containers: 2 allocated, 0 pending, 0 reserved
+    
+                      APPLICATIONID USER             TYPE      QUEUE   #CONT  #RCONT  VCORES RVCORES     MEM    RMEM  VCORESECS    MEMSECS %PROGR       TIME NAME
+     application_1490377567345_0007 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628407    2442611  10.00   18:20:20 Thrift JDBC/ODBC Server
+     application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
+    ```
+
+1. Sie können diese Protokolle im Nur-Text-Format anzeigen, indem Sie einen der folgenden Befehle ausführen:
+
+    ```bash
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
     yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+    ```
 
-Geben Sie beim Ausführen dieser Befehle die &lt;AnwendungsID>, den &lt;Benutzer,-der-die-Anwendung-gestartet-hat>, die &lt;ContainerID> und die &lt;Workerknotenadresse> an.
+    Geben Sie beim Ausführen dieser Befehle die &lt;AnwendungsID>, den &lt;Benutzer,-der-die-Anwendung-gestartet-hat>, die &lt;ContainerID> und die &lt;Workerknotenadresse> an.
+
+### <a name="other-sample-commands"></a>Weitere Beispielbefehle
+
+1. Laden Sie Yarn-Containerprotokolle für alle Anwendungsmaster mit dem nachstehenden Befehl herunter. Dadurch wird die Protokolldatei mit dem Namen `amlogs.txt` im Textformat erstellt.
+
+    ```bash
+    yarn logs -applicationId <application_id> -am ALL > amlogs.txt
+    ```
+
+1. Laden Sie Yarn-Containerprotokolle nur für den neuesten Anwendungsmaster mit folgendem Befehl herunter:
+
+    ```bash
+    yarn logs -applicationId <application_id> -am -1 > latestamlogs.txt
+    ```
+
+1. Laden Sie YARN-Containerprotokolle für die ersten beiden Anwendungsmaster mit folgendem Befehl herunter:
+
+    ```bash
+    yarn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt
+    ```
+
+1. Laden Sie alle Yarn-Containerprotokolle mit dem folgenden Befehl herunter:
+
+    ```bash
+    yarn logs -applicationId <application_id> > logs.txt
+    ```
+
+1. Laden Sie ein Yarn-Containerprotokoll für einen bestimmten Container mit folgendem Befehl herunter:
+
+    ```bash
+    yarn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt
+    ```
 
 ## <a name="yarn-resourcemanager-ui"></a>YARN-ResourceManager-Benutzeroberfläche
 
 Die YARN-ResourceManager-Benutzeroberfläche wird im Cluster-Hauptknoten ausgeführt. Der Zugriff erfolgt über die Ambari-Webbenutzeroberfläche. Führen Sie die folgenden Schritte aus, um die YARN-Protokolle anzeigen:
 
 1. Navigieren Sie in Ihrem Webbrowser zu `https://CLUSTERNAME.azurehdinsight.net`. Ersetzen Sie CLUSTERNAME durch den Namen Ihres HDInsight-Clusters.
+
 2. Wählen Sie aus der Liste der Dienste auf der linken Seite den Dienst **YARN**aus.
 
     ![Ausgewählter Apache Ambari Yarn-Dienst](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

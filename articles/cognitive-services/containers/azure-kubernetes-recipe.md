@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: e33aa98939eeb5b5394f1f5cc05e28ae8f6ae4f2
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5c8b3ed329c03bd08b2a0b3e26ada7a4e36ceb49
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515237"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716877"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Spracherkennungscontainers der Textanalyse in Azure Kubernetes Service
 
@@ -36,7 +36,7 @@ Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt we
 
 ## <a name="running-the-sample"></a>Ausführen des Beispiels
 
-Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Beide Images müssen per Push in Ihre eigene Azure Container Registry übertragen werden. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an.
+Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Wir übertragen beide Images per Push in die Azure Container Registry. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an.
 
 ![Konzeptidee zum Ausführen von Beispielcontainern](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -408,7 +408,7 @@ az group delete --name cogserv-container-rg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Cognitive Services-Container](../cognitive-services-container-support.md)
+> [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md)
 
 <!--
 kubectl get secrets

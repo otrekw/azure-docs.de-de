@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7f8d3bb6452ee3260e5a89feb37c374418fc6943
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c83bfc4a3ec8d1163669f28dfde64c63e7c6ff89
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312157"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775066"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um Ergebnisse, Zwischendaten und Arbeitsdaten aus Ihren Pipelines in Cloudspeicherzielen außerhalb von Azure Machine Learning zu speichern. 
 
@@ -29,7 +29,7 @@ Dieses Modul unterstützt das Exportieren von Daten in folgende Clouddatendienst
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../how-to-access-data.md).
+Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Gewusst wie: Konfigurieren von „Export Data“
 
@@ -39,7 +39,7 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher
 
 1. Wählen Sie **Export Data** aus, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
-1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Informationen, wie Sie dazu vorgehen, finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
+1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Wie dies funktioniert, erfahren Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
 
 1. Geben Sie den Pfad im Datenspeicher an, in den die Daten geschrieben werden sollen. 
 

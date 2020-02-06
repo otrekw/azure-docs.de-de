@@ -3,20 +3,20 @@ title: Data Science unter Verwendung von Scala und Spark in Azure – Team Data 
 description: Die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b22d461d327e595908ea8cc18dd0d507fdc83ecd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907711"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716764"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
 Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
@@ -259,8 +259,8 @@ Nachdem Sie die Daten in Spark eingebracht haben, besteht der nächste Schritt i
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Verwenden von lokalen und SQL-Magic-Befehlen, um Daten zu zeichnen
 Standardmäßig ist die Ausgabe von allen Codeausschnitten, die Sie über ein Jupyter-Notebook ausführen, innerhalb des Kontexts der Sitzung verfügbar, die auf Workerknoten beibehalten wird. Wenn Sie eine Fahrt für jede Berechnung auf den Workerknoten speichern möchten, und wenn alle Daten, die Sie zur Berechnung benötigen, lokal auf dem Jupyter-Serverknoten (dem Hauptknoten) verfügbar sind, können Sie den Codeausschnitt mit dem Magic-Befehl `%%local` auf dem Jupyter-Server ausführen.
 
-* **SQL Magic** (`%%sql`). Der HDInsight Spark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den SQLContext. Mit dem Argument (`-o VARIABLE_NAME`) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Das bedeutet, dass die Daten im lokalen Modus verfügbar sind.
-* `%%local`**Magic**. Der Magic-Befehl `%%local` führt den Code lokal auf dem Jupyter-Server aus – dem Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter `-o`. Mit dem Parameter `-o` wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl `%%local` die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
+* **SQL Magic** (`%%sql`): Der HDInsight Spark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den SQLContext. Mit dem Argument (`-o VARIABLE_NAME`) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Mit dieser Einstellung wird die Ausgabe im lokalen Modus verfügbar gemacht.
+* `%%local` **magic**: Der Magic-Befehl `%%local` führt den Code lokal auf dem Jupyter-Server aus – dem Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter `-o`. Mit dem Parameter `-o` wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl `%%local` die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 ### <a name="query-the-data-by-using-sql"></a>Abfragen der Daten mit SQL
 Diese Abfrage ruft die Taxifahrten nach Höhe des Fahrpreises, Anzahl der Fahrgäste und Trinkgeldbetrag ab.
@@ -289,9 +289,9 @@ Sie können mit Python-Code zeichnen, sobald der Dataframe im lokalen Kontext al
 
  Der Spark-Kernel visualisiert automatisch die Ausgabe der SQL-Abfragen (HiveQL), nachdem Sie den Code ausgeführt haben. Sie können zwischen verschiedenen Visualisierungstypen wählen:
 
-* Table
+* Tabelle
 * Kreisdiagramm
-* Liniendiagramm
+* Zeile
 * Bereich
 * Balkendiagramm
 
@@ -853,7 +853,7 @@ Erstellen Sie Plots mit Matplotlib von Python.
 ### <a name="create-a-gbt-regression-model"></a>Erstellen eines GBT-Regressionsmodells
 Erstellen Sie als Nächstes ein GBT-Regressionsmodell mit der `GBTRegressor()` -Funktion von Spark ML, und werten Sie das Modell anhand von Testdaten aus.
 
-[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (Gradient-boosted Trees, GBTs) sind Ensembles von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. Sie können GBTs für Regression und Klassifizierung verwenden. Sie können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können sie auch in einer Mehrklassenklassifizierung verwendet werden.
+[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um eine Verlustfunktion zu minimieren. Sie können GBTS für die Regression und die Klassifizierung verwenden. Sie können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können sie auch in einer Mehrklassenklassifizierung verwendet werden.
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()

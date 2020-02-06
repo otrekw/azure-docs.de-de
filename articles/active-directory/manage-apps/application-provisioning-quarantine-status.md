@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3ad689fb57c51d0deb698a723b93e6175bdbb5c
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 933217b2ad86535d45f6674165ee162f263a8cd7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882892"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712172"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -63,7 +63,7 @@ Beheben Sie zuerst das Problem, das dazu geführt hat, dass die Anwendung unter 
 
 - Überprüfen Sie die Bereitstellungseinstellungen der Anwendung, um sicherzustellen, dass Sie [gültige Administratoranmeldeinformationen eingegeben](configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning) haben. Azure AD muss eine Vertrauensstellung mit der Zielanwendung herstellen können. Stellen Sie sicher, dass Sie gültige Anmeldeinformationen eingegeben haben und Ihr Konto über die erforderlichen Berechtigungen verfügt.
 
-- Überprüfen Sie die [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs), um weiter zu untersuchen, welche Fehler zur Quarantäne geführt haben, und beheben Sie den Fehler. Greifen Sie im Azure-Portal auf die Bereitstellungsprotokolle zu, indem Sie zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** (im Abschnitt **Aktivität**) navigieren.
+- Überprüfen Sie die [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md), um weiter zu untersuchen, welche Fehler zur Quarantäne geführt haben, und beheben Sie den Fehler. Greifen Sie im Azure-Portal auf die Bereitstellungsprotokolle zu, indem Sie im Abschnitt **Aktivität** zu **Azure Active Directory** &gt; **Unternehmensanwendungen** &gt; **Bereitstellungsprotokolle (Vorschau)** navigieren.
 
 Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag neu starten. Durch bestimmte Änderungen an den Bereitstellungseinstellungen (wie Attributzuordnungen oder Bereichsfilter) der Anwendung wird die Bereitstellung automatisch neu gestartet. Die Statusanzeige auf der Seite **Bereitstellung** der Anwendung gibt an, wann die Bereitstellung zuletzt gestartet wurde. Wenn Sie den Bereitstellungsauftrag manuell neu starten müssen, verwenden Sie eine der folgenden Methoden:  
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121946"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756159"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
@@ -111,6 +111,9 @@ Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit e
 ### <a name="isolated-virtual-machine-sizes"></a>Isolierte Größen virtueller Computer
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Dedizierte Hosts
+Neben den im vorherigen Abschnitt beschriebenen isolierten Hosts bietet Azure auch dedizierte Hosts. Bei dedizierten Hosts in Azure handelt es sich um einen Dienst für die Bereitstellung physischer Server, die virtuelle Computer hosten können und für ein einzelnes Azure-Abonnement reserviert sind. Dedizierte Hosts bieten Hardwareisolation auf physischer Serverebene. Es werden keine anderen virtuellen Computer auf Ihren Hosts platziert. Dedizierte Hosts werden in den gleichen Rechenzentren bereitgestellt und nutzen das gleiche Netzwerk und die gleiche zugrunde liegende Speicherinfrastruktur wie andere, nicht isolierte Hosts. Weitere Informationen finden Sie in der umfassenden Übersicht zu [dedizierten Azure-Hosts](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V- und Stammbetriebssystem-Isolation zwischen Stamm-VM und Gast-VMs
 Die Computeplattform von Azure basiert auf der Virtualisierung von Computern. Dies bedeutet, dass der gesamte Kundencode auf einem virtuellen Hyper-V-Computer ausgeführt wird. Auf jedem Azure-Knoten (bzw. Netzwerkendpunkt) ist ein Hypervisor angeordnet, der direkt über die Hardware ausgeführt wird und einen Knoten in eine variable Anzahl von virtuellen Gastcomputern unterteilt.

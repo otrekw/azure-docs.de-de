@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 75d657fd9f3ee13c331450b324fd3b99e9cb6ca5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647215"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990605"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -38,8 +38,6 @@ Sie können auf dieser Seite unmittelbar vor dem Hinzufügen einen neuen Contain
 Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 ![Screenshot der Seite „Speicherziel hinzufügen“, aufgefüllt mit Informationen für ein neues Azure-Blobspeicherziel](media/hpc-cache-add-blob.png)
-
-<!-- need to replace screenshot after note text is updated with both required RBAC roles and also with correct search term -->
 
 * **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * **Zieltyp**: Wählen Sie **Blob** aus.

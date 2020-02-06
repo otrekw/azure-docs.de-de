@@ -3,20 +3,20 @@ title: 'Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen: 
 description: Downsampling von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen, um Daten auf eine für die Analyse besser verwaltbare Größe zu reduzieren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c417950e07ae3c6922aa260a3ef40d862870aa1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042882"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719992"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>Extrahieren von Stichproben aus Daten in Azure HDInsight Hive-Tabellen
 In diesem Artikel wird das Downsampling von in Azure HDInsight Hive-Tabellen gespeicherten Daten mithilfe von Hive-Abfragen beschrieben, um Daten auf eine für die Analyse besser verwaltbare Größe zu reduzieren. Dabei werden drei häufig verwendete Samplingmethoden behandelt:
@@ -31,7 +31,7 @@ Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Kompr
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
 ## <a name="how-to-submit-hive-queries"></a>Gewusst wie: Übermitteln von Hive-Abfragen
-Hive-Abfragen können in der Hadoop-Befehlszeilenkonsole auf dem Hauptknoten des Hadoop-Clusters übermittelt werden. Dazu melden Sie sich beim Hauptknoten des Hadoop-Clusters an, öffnen die Hadoop-Befehlszeilenkonsole und übermitteln die Hive-Abfragen von dort aus. Informationen zum Übermitteln von Hive-Abfragen in der Hadoop-Befehlszeilenkonsole finden Sie unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit).
+Hive-Abfragen können in der Hadoop-Befehlszeilenkonsole auf dem Hauptknoten des Hadoop-Clusters übermittelt werden.  Melden Sie sich beim Hauptknoten des Hadoop-Clusters an, öffnen Sie die Hadoop-Befehlszeilenkonsole, und übermitteln Sie die Hive-Abfragen von dort aus. Informationen zum Übermitteln von Hive-Abfragen in der Hadoop-Befehlszeilenkonsole finden Sie unter [Übermitteln von Hive-Abfragen](move-hive-tables.md#submit).
 
 ## <a name="uniform"></a> Einheitliche Stichproben
 Bei einheitlichen Stichproben hat jede Zeile im Dataset die gleiche Wahrscheinlichkeit, als Stichprobe verwendet zu werden. Dies kann durch das Hinzufügen des zusätzlichen Felds „rand()“ zum Dataset in der inneren select-Abfrage und in der äußeren select-Abfrage, die von diesem Zufallsfeld abhängt, implementiert werden.

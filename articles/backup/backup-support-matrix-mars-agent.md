@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281273"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988072"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -95,8 +95,6 @@ Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein |
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja |– .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
-Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja | Ja | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
-Windows Server 2008 SP2 (Standard, Datacenter, Foundation) | Ja | Nein | – .NET 3.5, .Net 4.5 <br> – Windows PowerShell <br> – Kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe)) <br> – Virtual Server 2005 Basis + KB KB948515
 Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 

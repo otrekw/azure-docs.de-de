@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6ecba85a859e902922dfa2b7563a3ceb96a9ef4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457460"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988242"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -137,17 +137,17 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--delete-destination** string   Definiert, ob zusätzliche Dateien am Ziel gelöscht werden sollen, die in der Quelle nicht vorhanden sind. Könnte auf „true“, „false“ oder „prompt“ festgelegt werden. Wenn sie auf „prompt“ festgelegt wurde, wird dem Benutzer eine Frage gestellt, bevor Dateien und Blobs zum Löschen geplant werden. (Standardwert: „false“) (Der Standardwert lautet „false“.)
 
-**--exclude-attributes** string   (Nur Windows) Schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel:  A;S;R
+**--exclude-attributes** string   (Nur Windows) Schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
 **--exclude-path**-Zeichenfolge: Schließt diese Pfade beim Kopieren aus. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads (Beispiel: myFolder;myFolder/subDirName/file.pdf). Wenn die Option in Verbindung mit einem Kontodurchlauf verwendet wird, enthalten Pfade keinen Containernamen.
 
-**--exclude-pattern** string      Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName
+**--exclude-pattern** string      Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: \*.jpg;\*.pdf;exactName
 
 **-h, --help**                        Hilfe zu „sync“
 
-**--include-attributes** string   (Nur Windows) Schließt nur Dateien ein, deren Attribute mit der Attributliste übereinstimmen. Beispiel:  A;S;R
+**--include-attributes** string   (Nur Windows) Schließt nur Dateien ein, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
-**--include-pattern** string      Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: *.jpg;* .pdf;exactName
+**--include-pattern** string      Schließt nur Dateien ein, deren Name der Musterliste entspricht. Beispiel: \*.jpg;\*.pdf;exactName
 
 **--log-level** string            Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen und Antworten), WARNING (langsame Antworten), ERROR (nur fehlerhafte Anforderungen) und NONE (keine Ausgabeprotokolle). (Der Standardwert lautet „INFO“.) (Standardwert: „Info“)
 
@@ -157,7 +157,7 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-|Option|BESCHREIBUNG|
+|Option|Beschreibung|
 |---|---|
 |–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
 |–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|

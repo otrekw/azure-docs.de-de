@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 9fb41b08cb29a68b39fb416b4b7b7bcce9e821dd
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1cf1a97ed6350174511d61d924f893bb209736c2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754345"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712581"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Einbinden eines virtuellen Ubuntu Linux-Computers in eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -32,7 +32,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
     * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
@@ -42,7 +42,7 @@ Wenn Sie über eine vorhandene Ubuntu Linux-VM in Azure verfügen, stellen Sie �
 
 Wenn Sie eine Ubuntu Linux-VM erstellen müssen oder eine Test-VM zur Verwendung mit diesem Artikel erstellen möchten, können Sie eine der folgenden Methoden verwenden:
 
-* [Azure-Portal](../virtual-machines/linux/quick-create-portal.md)
+* [Azure portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure-Befehlszeilenschnittstelle](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -63,13 +63,13 @@ sudo vi /etc/hosts
 
 Aktualisieren Sie in der Datei *hosts* die Adresse *localhost*. Siehe folgendes Beispiel:
 
-* *contoso.com* steht für den DNS-Domänennamen Ihrer durch Azure AD DS verwalteten Domäne.
+* *aadds.contoso.com* steht für den DNS-Domänennamen Ihrer durch Azure AD DS verwalteten Domäne.
 * *ubuntu* ist der Hostname Ihrer Ubuntu-VM, die Sie in die verwaltete Domäne einbinden.
 
 Aktualisieren Sie diese Namen mit Ihren eigenen Werten:
 
 ```console
-127.0.0.1 ubuntu.contoso.com ubuntu
+127.0.0.1 ubuntu.aadds.contoso.com ubuntu
 ```
 
 Anschließend speichern und beenden Sie die Datei *hosts* mit dem Befehl `:wq` im Editor.
@@ -78,7 +78,7 @@ Anschließend speichern und beenden Sie die Datei *hosts* mit dem Befehl `:wq` i
 
 Die VM benötigt einige zusätzliche Pakete, damit sie in die durch Azure AD DS verwalteten Domäne eingebunden werden kann. Zum Installieren und Konfigurieren dieser Pakete aktualisieren und installieren Sie die Tools zum Einbinden in eine Domäne mit `apt-get`.
 
-Während der Kerberos-Installation werden Sie vom Paket *krb5-user* aufgefordert, den Bereichsnamen in Großbuchstaben einzugeben. Wenn der Name Ihrer durch Azure AD DS verwalteten Domäne z.B. *contoso.com* lautet, geben Sie als Bereich *CONTOSO.COM* ein. Die Installation schreibt die Abschnitte `[realm]` und `[domain_realm]` in die Konfigurationsdatei */etc/krb5.conf*. Stellen Sie sicher, dass Sie den Bereich in Großbuchstaben angeben:
+Während der Kerberos-Installation werden Sie vom Paket *krb5-user* aufgefordert, den Bereichsnamen in Großbuchstaben einzugeben. Wenn der Name Ihrer durch Azure AD DS verwalteten Domäne z. B. *aadds.contoso.com* lautet, geben Sie als Bereich *AADDS.CONTOSO.COM* ein. Die Installation schreibt die Abschnitte `[realm]` und `[domain_realm]` in die Konfigurationsdatei */etc/krb5.conf*. Stellen Sie sicher, dass Sie den Bereich in Großbuchstaben angeben:
 
 ```console
 sudo apt-get update
@@ -95,10 +95,10 @@ Damit die Domänenkommunikation ordnungsgemäß funktioniert, müssen Datum und 
     sudo vi /etc/ntp.conf
     ```
 
-1. Erstellen Sie in der Datei *ntp.conf* eine Zeile, um den DNS-Namen Ihrer durch Azure AD DS verwalteten Domäne hinzuzufügen. Im folgenden Beispiel wird ein Eintrag für *contoso.com* hinzugefügt. Verwenden Sie den eigenen DNS-Namen:
+1. Erstellen Sie in der Datei *ntp.conf* eine Zeile, um den DNS-Namen Ihrer durch Azure AD DS verwalteten Domäne hinzuzufügen. Im folgenden Beispiel wird ein Eintrag für *aadds.contoso.com* hinzugefügt. Verwenden Sie den eigenen DNS-Namen:
 
     ```console
-    server contoso.com
+    server aadds.contoso.com
     ```
 
     Anschließend speichern und beenden Sie die Datei *ntp.conf* mit dem Befehl `:wq` im Editor.
@@ -113,7 +113,7 @@ Damit die Domänenkommunikation ordnungsgemäß funktioniert, müssen Datum und 
 
     ```console
     sudo systemctl stop ntp
-    sudo ntpdate contoso.com
+    sudo ntpdate aadds.contoso.com
     sudo systemctl start ntp
     ```
 
@@ -121,30 +121,30 @@ Damit die Domänenkommunikation ordnungsgemäß funktioniert, müssen Datum und 
 
 Nachdem Sie die erforderlichen Pakete auf der VM installiert und NTP konfiguriert haben, binden Sie die VM in die durch Azure AD DS verwaltete Domäne ein.
 
-1. Verwenden Sie den Befehl `realm discover`, um die durch Azure AD DS verwaltete Domäne zu ermitteln. Im folgenden Beispiel wird der Bereich *CONTOSO.COM* erkannt. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
+1. Verwenden Sie den Befehl `realm discover`, um die durch Azure AD DS verwaltete Domäne zu ermitteln. Im folgenden Beispiel wird der Bereich *AADDS.CONTOSO.COM* erkannt. Geben Sie den Namen Ihrer eigenen durch Azure AD DS verwalteten Domäne in Großbuchstaben an:
 
     ```console
-    sudo realm discover CONTOSO.COM
+    sudo realm discover AADDS.CONTOSO.COM
     ```
 
    Wenn mit dem Befehl `realm discover` Ihre durch Azure AD DS verwaltete Domäne nicht gefunden werden kann, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
-    * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
+    * Vergewissern Sie sich, dass die VM die Domäne erreichen kann. Versuchen Sie `ping aadds.contoso.com`, um zu überprüfen, ob eine positive Antwort zurückgegeben wird.
     * Überprüfen Sie, ob die VM in demselben oder einem mittels Peering verbundenen virtuellen Netzwerk bereitgestellt wurde, in dem die durch Azure AD DS verwaltete Domäne verfügbar ist.
     * Stellen Sie sicher, dass die DNS-Servereinstellungen für das virtuelle Netzwerk so aktualisiert wurden, dass auf die Domänencontroller der durch Azure AD DS verwalteten Domäne verwiesen wird.
 
 1. Initialisieren Sie nun Kerberos mit dem Befehl `kinit`. Geben Sie einen Benutzer an, der zur Gruppe *AAD DC-Administratoren* gehört. Bei Bedarf [fügen Sie ein Benutzerkonto zu einer Gruppe in Azure AD hinzu](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Auch hier muss der Name der durch Azure AD DS verwalteten Domäne in Großbuchstaben eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@contoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie das eigene Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist:
+    Auch hier muss der Name der durch Azure AD DS verwalteten Domäne in Großbuchstaben eingegeben werden. Im folgenden Beispiel wird das Konto mit dem Namen `contosoadmin@aadds.contoso.com` zum Initialisieren von Kerberos verwendet. Geben Sie das eigene Benutzerkonto ein, das Mitglied der Gruppe *AAD DC-Administratoren* ist:
 
     ```console
-    kinit contosoadmin@CONTOSO.COM
+    kinit contosoadmin@AADDS.CONTOSO.COM
     ```
 
-1. Zum Schluss binden Sie den Computer mit dem Befehl `realm join` in die durch Azure AD DS verwaltete Domäne ein. Verwenden Sie dasselbe Benutzerkonto, das Mitglied der Gruppe *AAD DC-Administratoren* ist und im vorherigen Befehl `kinit` angegeben wurde, z.B. `contosoadmin@CONTOSO.COM`:
+1. Zum Schluss binden Sie den Computer mit dem Befehl `realm join` in die durch Azure AD DS verwaltete Domäne ein. Verwenden Sie dasselbe Benutzerkonto, das Mitglied der Gruppe *AAD DC-Administratoren* ist und im vorherigen Befehl `kinit` angegeben wurde, z.B. `contosoadmin@AADDS.CONTOSO.COM`:
 
     ```console
-    sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
+    sudo realm join --verbose AADDS.CONTOSO.COM -U 'contosoadmin@AADDS.CONTOSO.COM' --install=/
     ```
 
 Das Einbinden der VM in die durch Azure AD DS verwaltete Domäne dauert einen Moment. Die folgende Beispielausgabe zeigt, dass die VM erfolgreich in die durch Azure AD DS verwaltete Domäne eingebunden wurde:
@@ -248,10 +248,10 @@ Um Mitgliedern der Gruppe *AAD DC-Administratoren* Administratorrechte für die 
 
 Um zu überprüfen, ob die VM erfolgreich in die durch Azure AD DS verwaltete Domäne eingebunden wurde, starten Sie eine neue SSH-Verbindung mithilfe eines Domänenbenutzerkontos. Vergewissern Sie sich, dass ein Basisverzeichnis erstellt wurde und die Gruppenmitgliedschaft aus der Domäne angewendet wird.
 
-1. Erstellen Sie eine neue SSH-Verbindung über die Konsole. Verwenden Sie ein Domänenkonto, das der verwalteten Domäne angehört, mithilfe des Befehls `ssh -l` (z.B. `contosoadmin@contoso.com`), und geben Sie dann die Adresse Ihrer VM ein (z.B. *ubuntu.contoso.com*). Bei Verwendung von Azure Cloud Shell verwenden Sie die öffentliche IP-Adresse der VM anstelle des internen DNS-Namens.
+1. Erstellen Sie eine neue SSH-Verbindung über die Konsole. Verwenden Sie ein Domänenkonto, das der verwalteten Domäne angehört, mithilfe des Befehls `ssh -l` (z. B. `contosoadmin@aadds.contoso.com`), und geben Sie dann die Adresse Ihrer VM ein (z. B. *ubuntu.aadds.contoso.com*). Bei Verwendung von Azure Cloud Shell verwenden Sie die öffentliche IP-Adresse der VM anstelle des internen DNS-Namens.
 
     ```console
-    ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
+    ssh -l contosoadmin@AADDS.CONTOSO.com ubuntu.aadds.contoso.com
     ```
 
 1. Wenn Sie erfolgreich eine Verbindung mit der VM hergestellt haben, vergewissern Sie sich, dass das Basisverzeichnis ordnungsgemäß initialisiert wurde:

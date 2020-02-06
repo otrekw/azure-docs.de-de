@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354282"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720298"
 ---
 # <a name="troubleshoot-input-connections"></a>Problembehandlung für Eingangsverbindungen
 
@@ -24,11 +24,13 @@ Auf dieser Seite werden häufige Probleme mit Eingangsverbindungen und deren Beh
 
 2.  Überprüfen Sie die Eingabedaten.
 
-    Stellen Sie mit [Service Bus-Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) eine Verbindung mit Azure Event Hub her (bei Verwendung der Event Hub-Eingabe), um zu überprüfen, ob Eingabedaten an Event Hub übertragen werden.
+    1. Stellen Sie mit [Service Bus-Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) eine Verbindung mit Azure Event Hub her (bei Verwendung der Event Hub-Eingabe), um zu überprüfen, ob Eingabedaten an Event Hub übertragen werden.
         
-    Verwenden Sie die Schaltfläche [**Beispieldaten**](stream-analytics-sample-data-input.md) für jede Eingabe, und laden Sie die Eingabebeispieldaten herunter.
+    1. Verwenden Sie die Schaltfläche [**Beispieldaten**](stream-analytics-sample-data-input.md) für jede Eingabe. Laden Sie die Beispieldaten für die Eingabe herunter.
         
-    Überprüfen Sie die Beispieldaten, um die Form der Daten zu verstehen: das Schema und die [Datentypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Überprüfen Sie die Beispieldaten, um die Form der Daten zu verstehen – also das Schema und die [Datentypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+
+3.  Vergewissern Sie sich, dass Sie einen Zeitbereich in der Eingabevorschau ausgewählt haben. Wählen Sie **Zeitbereich auswählen** aus, und geben Sie dann eine Beispieldauer ein, bevor Sie die Abfrage testen.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>Falsch formatierte Eingabeereignisse führen zu Deserialisierungsfehlern 
 Deserialisierungsprobleme werden verursacht, wenn der Eingabedatenstrom Ihres Stream Analytics-Auftrags falsch formatierte Nachrichten enthält. Beispielsweise kann eine falsch formatierte Nachricht durch eine fehlende Klammer oder geschweifte Klammer in einem JSON-Objekt oder ein falsches Zeitstempelformat im Zeitfeld verursacht werden. 

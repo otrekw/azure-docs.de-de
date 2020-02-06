@@ -5,24 +5,28 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768434"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842332"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung eines Microsoft-Kontos als Authentifizierungsanbieter konfigurieren. 
+In diesem Thema wird gezeigt, wie Sie Azure App Service für die Verwendung von AAD konfigurieren, um persönliche Microsoft-Kontoanmeldungen zu unterstützen.
+
+> [!NOTE]
+> Sowohl persönliche Microsoft-Konten als auch Organisationskonten verwenden den AAD-Identitätsanbieter. Zurzeit ist es nicht möglich, diesen Identitätsanbieter so zu konfigurieren, dass beide Arten von Anmeldungen unterstützt werden.
 
 ## <a name="register-microsoft-account"> </a>Registrieren Ihrer App bei einem Microsoft-Konto
 
 1. Wechseln Sie im Azure-Portal zu [**App-Registrierungen**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade). Falls erforderlich, melden Sie sich mit Ihrem Microsoft-Konto an.
 1. Wählen Sie **Neue Registrierung** aus, und geben Sie dann einen Anwendungsnamen ein.
-1. Wählen Sie in **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://<app-domain-name>/.auth/login/microsoftaccount/callback` ein. Ersetzen Sie *\<app-domain-name>* durch den Domänennamen Ihrer App.  Beispiel: `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Stellen Sie sicher, dass Sie HTTPS-Schema in der URL verwenden.
+1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)** (Konten in allen Organisationsverzeichnissen (beliebiges Azure AD-Verzeichnis: mehrere Mandanten) und persönliche Microsoft-Konten (z. B. Skype, Xbox)) aus.
+1. Wählen Sie in **Umleitungs-URIs** die Option **Web** aus, und geben Sie dann `https://<app-domain-name>/.auth/login/aad/callback` ein. Ersetzen Sie *\<app-domain-name>* durch den Domänennamen Ihrer App.  Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Stellen Sie sicher, dass Sie HTTPS-Schema in der URL verwenden.
 
 1. Wählen Sie **Registrieren**.
 1. Kopieren Sie die **Anwendungs-ID (Client-ID)** . Sie benötigen die Information später.
@@ -36,12 +40,12 @@ In diesem Thema wird demonstriert, wie Sie Azure App Services zur Verwendung ein
 
 1. Wechseln Sie im [Azure portal] zu Ihrer Anwendung.
 1. Wählen Sie **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
-1. Wählen Sie unter **Authentifizierungsanbieter** die Option **Microsoft-Konto** aus. Fügen Sie die Anwendungs(Client)-ID und den geheimen Clientschlüssel ein, die Sie zuvor erhalten haben. Aktivieren Sie alle Bereiche, die von der Anwendung benötigt werden.
+1. Wählen Sie unter **Authentifizierungsanbieter** die Option **Azure Active Directory** aus. Wählen Sie unter **Verwaltungsmodus** die Option **Erweitert** aus. Fügen Sie die Anwendungs(Client)-ID und den geheimen Clientschlüssel ein, die Sie zuvor erhalten haben. Verwenden Sie **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** für das Feld **Aussteller-URL**.
 1. Klicken Sie auf **OK**.
 
    App Service bietet Authentifizierung, schränkt aber den autorisierten Zugriff auf den Inhalt und die APIs Ihrer Website nicht ein. Sie müssen die Benutzer in Ihrem App-Code autorisieren.
 
-1. (Optional) Um den Zugriff auf Microsoft-Kontobenutzer zu beschränken, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Microsoft-Konto anmelden** fest. Wenn Sie diese Funktion festlegen, erfordert Ihre App, dass alle Anforderungen authentifiziert werden. Sie leitet außerdem alle nicht authentifizierten Anforderungen zur Authentifizierung an das Microsoft-Konto um.
+1. (Optional) Um den Zugriff auf Microsoft-Kontobenutzer zu beschränken, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist** auf **Mit Azure Active Directory anmelden** fest. Wenn Sie diese Funktion festlegen, erfordert Ihre App, dass alle Anforderungen authentifiziert werden. Sie leitet außerdem alle nicht authentifizierten Anforderungen zur Verwendung von AAD für die Authentifizierung um. Beachten Sie Folgendes: Da Sie Ihre **Aussteller-URL** für die Verwendung des Microsoft-Kontomandanten konfiguriert haben, werden nur persönliche Konten erfolgreich authentifiziert.
 
    > [!CAUTION]
    > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, sodass die App die Authentifizierung selbst manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).

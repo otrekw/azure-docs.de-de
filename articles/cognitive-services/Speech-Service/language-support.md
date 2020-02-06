@@ -3,20 +3,20 @@ title: Sprachunterstützung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst unterstützt neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache in Text und Text in Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienstfunktionen.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: erhopf
+ms.date: 01/28/2020
+ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: b5f227deb3385d64160f5a469d76b9763057b160
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381051"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845336"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Sprach- und Regionsunterstützung für den Speech-Dienst
 
@@ -24,49 +24,58 @@ Die Sprachunterstützung ist abhängig von der Funktion des Speech-Diensts. In d
 
 ## <a name="speech-to-text"></a>Spracherkennung
 
-Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze  Die Anpassung der Aussprache ist zurzeit nur für `en-US` und `de-DE` verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
+Sowohl das Microsoft Speech SDK als auch die REST-API unterstützen die folgenden Sprachen (Gebietsschemas). Um die Genauigkeit zu erhöhen, wird die Anpassung für eine Teilmenge der Sprachen durch das Hochladen von Audio- und menschenmarkierten Transkripten oder verwandten Texten angeboten: Sätze Die Anpassung der Aussprache ist zurzeit nur für `en-US` und `de-DE` verfügbar. [Hier](how-to-custom-speech.md) erhalten Sie weitere Informationen zur Anpassung.
 
- Gebietsschema | Sprache | Unterstützt | Anpassbar
+<!--
+To get the AM and ML bits:
+https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20models%3A/GetSupportedLocalesForModels
+
+To get pronunciation bits:
+https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
+-->
+
+ Gebietsschema | Sprache | Unterstützt | Anpassungen
 ------|------------|-----------|-------------
-`ar-EG` | Arabisch (Ägypten), modernes Hocharabisch | Ja | Ja
-`ar-SA` | Arabisch (Saudi-Arabien) | Ja | Ja
-`ar-AE` | Arabisch (VAE) | Ja | Ja
-`ar-KW` | Arabisch (Kuwait) | Ja | Ja
-`ar-QA` | Arabisch (Katar) | Ja | Ja
-`ca-ES` | Katalanisch | Ja | Nein
-`da-DK` | Dänisch (Dänemark) | Ja | Nein
-`de-DE` | Deutsch (Deutschland) | Ja | Ja
-`en-AU` | Englisch (Australien) | Ja | Ja
-`en-CA` | Englisch (Kanada) | Ja | Ja
-`en-GB` | Walisisch (Großbritannien) | Ja | Ja
-`en-IN` | Englisch (Indien) | Ja | Ja
-`en-NZ` | Englisch (Neuseeland) | Ja | Ja
-`en-US` | Englisch (USA) | Ja | Ja
-`es-ES` | Spanisch (Spanien) | Ja | Ja
-`es-MX` | Spanisch (Mexiko) | Ja | Ja
-`fi-FI` | Finnisch (Finnland) | Ja | Nein
-`fr-CA` | Französisch (Kanada) | Ja | Ja
-`fr-FR` | Französisch (Frankreich) | Ja | Ja
-`gu-IN` | Gujarati (Indien) | Ja | Ja
-`hi-IN` | Hindi (Indien) | Ja | Ja
-`it-IT` | Italienisch (Italien) | Ja | Ja
-`ja-JP` | Japanisch (Japan) | Ja | Ja
-`ko-KR` | Koreanisch (Korea) | Ja | Ja
-`mr-IN` | Marathi (Indien) | Ja | Ja
-`nb-NO` | Norwegisch, Bokmål (Norwegen) | Ja | Nein
-`nl-NL` | Niederländisch (Niederlande) | Ja | Ja
-`pl-PL` | Polnisch (Polen) | Ja | Nein
-`pt-BR` | Portugiesisch (Brasilien) | Ja | Ja
-`pt-PT` | Portugiesisch (Portugal) | Ja | Ja
-`ru-RU` | Russisch (Russische Föderation) | Ja | Ja
-`sv-SE` | Schwedisch (Schweden) | Ja | Nein
-`ta-IN` | Tamil (Indien) | Ja | Ja
-`te-IN` | Telugu (Indien) | Ja | Ja
-`zh-CN` | Chinesisch (Mandarin, vereinfacht) | Ja | Ja
-`zh-HK` | Chinesisch (Kantonesisch, traditionell) | Ja | Ja
-`zh-TW` | Chinesisch (Taiwanesisch, Mandarin) | Ja | Ja
+`ar-AE` | Arabisch (VAE) | Ja | Nein
+`ar-BH` | Arabisch (Bahrain) | Ja | Sprachmodell
+`ar-EG` | Arabisch (Ägypten), modernes Hocharabisch | Ja | Sprachmodell
+`ar-KW` | Arabisch (Kuwait) | Ja | Nein
+`ar-QA` | Arabisch (Katar) | Ja | Nein
+`ar-SA` | Arabisch (Saudi-Arabien) | Ja | Nein
+`ca-ES` | Katalanisch | Ja | Sprachmodell
+`da-DK` | Dänisch (Dänemark) | Ja | Sprachmodell
+`de-DE` | Deutsch (Deutschland) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`en-AU` | Englisch (Australien) | Ja | Akustische Modell<br>Sprachmodell
+`en-CA` | Englisch (Kanada) | Ja | Akustische Modell<br>Sprachmodell
+`en-GB` | Walisisch (Großbritannien) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`en-IN` | Englisch (Indien) | Ja | Akustische Modell<br>Sprachmodell
+`en-NZ` | Englisch (Neuseeland) | Ja | Akustische Modell<br>Sprachmodell
+`en-US` | Englisch (USA) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`es-ES` | Spanisch (Spanien) | Ja | Akustische Modell<br>Sprachmodell
+`es-MX` | Spanisch (Mexiko) | Ja | Akustische Modell<br>Sprachmodell
+`fi-FI` | Finnisch (Finnland) | Ja | Sprachmodell
+`fr-CA` | Französisch (Kanada) | Ja | Akustische Modell<br>Sprachmodell
+`fr-FR` | Französisch (Frankreich) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`gu-IN` | Gujarati (Indien) | Ja | Sprachmodell
+`hi-IN` | Hindi (Indien) | Ja | Akustische Modell<br>Sprachmodell
+`it-IT` | Italienisch (Italien) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`ja-JP` | Japanisch (Japan) | Ja | Sprachmodell
+`ko-KR` | Koreanisch (Korea) | Ja | Sprachmodell
+`mr-IN` | Marathi (Indien) | Ja | Sprachmodell
+`nb-NO` | Norwegisch, Bokmål (Norwegen) | Ja | Sprachmodell
+`nl-NL` | Niederländisch (Niederlande) | Ja | Sprachmodell
+`pl-PL` | Polnisch (Polen) | Ja | Sprachmodell
+`pt-BR` | Portugiesisch (Brasilien) | Ja | Akustische Modell<br>Sprachmodell<br>Aussprache
+`pt-PT` | Portugiesisch (Portugal) | Ja | Sprachmodell
+`ru-RU` | Russisch (Russische Föderation) | Ja | Akustische Modell<br>Sprachmodell
+`sv-SE` | Schwedisch (Schweden) | Ja | Sprachmodell
+`ta-IN` | Tamil (Indien) | Ja | Sprachmodell
+`te-IN` | Telugu (Indien) | Ja | Nein
 `th-TH` | Thai (Thailand) | Ja | Nein
-`tr-TR` | Türkei | Ja | Ja
+`tr-TR` | Türkisch (Türkei) | Ja | Nein
+`zh-CN` | Chinesisch (Mandarin, vereinfacht) | Ja | Akustische Modell<br>Sprachmodell
+`zh-HK` | Chinesisch (Kantonesisch, traditionell) | Ja | Sprachmodell
+`zh-TW` | Chinesisch (Taiwanesisch, Mandarin) | Ja | Sprachmodell
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
 
@@ -102,7 +111,7 @@ Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas
 
 Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurzname
 -------|----------|---------|----------|----------
-<sup>&dagger;</sup>`ar-EG` | Arabisch (Ägypten) | Female | Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda) | "ar-EG-Hoda"
+<sup>1</sup>`ar-EG` | Arabisch (Ägypten) | Female | Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda) | "ar-EG-Hoda"
 `ar-SA` | Arabisch (Saudi-Arabien) | Male | Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf) | "ar-SA-Naayf"
 `bg-BG` | Bulgarisch | Male | Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan) | "bg-BG-Ivan"
 `ca-ES` | Katalanisch (Spanien) | Female | Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS) | "ca-ES-HerenaRUS"
@@ -172,7 +181,7 @@ Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurz
 `ta-IN` | Tamil (Indien) | Male | Microsoft Server Speech Text to Speech Voice (ta-IN, Valluvar) | "ta-IN-Valluvar"
 `te-IN` | Telugu (Indien) | Female | Microsoft Server Speech Text to Speech Voice (tr-IN, Chitra) | "te-IN-Chitra"
 `th-TH` | Thailändisch | Male | Microsoft Server Speech Text to Speech Voice (th-TH, Pattara) | "th-TH-Pattara"
-`tr-TR` | Türkisch | Female | Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS) | "tr-TR-SedaRUS"
+`tr-TR` | Türkisch (Türkei) | Female | Microsoft Server Speech Text to Speech Voice (tr-TR, SedaRUS) | "tr-TR-SedaRUS"
 `vi-VN` | Vietnamesisch | Male | Microsoft Server Speech Text to Speech Voice (vi-VN, An) | "vi-VN-An"
 `zh-CN` | Chinesisch (Festland) | Female | Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS) | "zh-CN-HuihuiRUS"
 | | | Female | Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo) | "zh-CN-Yaoyao-Apollo"
@@ -184,7 +193,7 @@ Gebietsschema | Sprache | Geschlecht | Vollständige Dienstnamenzuordnung | Kurz
 | | | Female | Microsoft Server Speech Text to Speech Voice (zh-TW, HanHanRUS) | "zh-TW-HanHanRUS"
 | | | Male | Microsoft Server Speech Text to Speech Voice (zh-TW, Zhiwei, Apollo) | "zh-TW-Zhiwei-Apollo"
 
-&dagger; *ar-EG unterstützt modernes Hocharabisch (Modern Standard Arabic, MSA).*
+**1** *ar-EG unterstützt modernes Hocharabisch (Modern Standard Arabic, MSA).*
 
 > [!NOTE]
 > Sie können entweder die vollständige Dienstnamenzuordnung oder den Kurzzsprachnamen in Ihren Sprachsyntheseanfragen verwenden.

@@ -3,12 +3,12 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463321"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834449"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -37,9 +37,59 @@ Die Mindestgröße der VMs für jeden Knotentyp hängt von der [Dauerhaftigkeits
 
 Die Mindestanzahl der VMs für den primären Knotentyp hängt von der von Ihnen ausgewählten [Zuverlässigkeitsstufe][reliability] ab.
 
-Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
 
 Eine die Mindestanzahl von Knoten überschreitende Anzahl sollte auf der Anzahl der Replikate der Anwendung/Dienste basieren, die mit diesem Knotentyp ausgeführt werden sollen.  Die [Kapazitätsplanung für Service Fabric-Anwendungen](service-fabric-capacity-planning.md) hilft Ihnen, die Ressourcen abzuschätzen, die Sie für die Ausführung Ihrer Anwendungen benötigen. Sie können den Cluster später jederzeit vergrößern oder verkleinern, um ihn an eine sich ändernde Workload von Anwendungen anzupassen. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Verwenden kurzlebiger Betriebssystemdatenträger für VM-Skalierungsgruppen
+
+Bei *kurzlebigen Betriebssystemdatenträgern* handelt es sich um Speicher, der auf dem lokalen virtuellen Computer erstellt und nicht in der externen Azure Storage-Instanz gespeichert wird. Sie werden für alle Service Fabric-Knotentypen (primär und sekundär) empfohlen, da kurzlebige Betriebssystemdatenträger im Vergleich zu herkömmlichen persistenten Betriebssystemdatenträgern Folgendes ermöglichen:
+
+* Reduzieren der Lese-/Schreibwartezeit auf dem Betriebssystemdatenträger
+* Schnellere Vorgänge zum Zurücksetzen/Durchführen eines Reimagings für die Knotenverwaltung
+* Senken der Gesamtkosten (Die Datenträger sind kostenlos, und es fallen keine zusätzlichen Speicherkosten an.)
+
+Kurzlebige Betriebssystemdatenträger sind kein spezifisches Feature von Service Fabric, sondern ein Feature der *VM-Skalierungsgruppen* von Azure, die Service Fabric-Knotentypen zugeordnet sind. Wenn Sie sie mit Service Fabric verwenden, ist in der Azure Resource Manager-Vorlage Ihres Clusters Folgendes erforderlich:
+
+1. Stellen Sie sicher, das die Knotentypen [unterstützte Azure-VM-Größen](../virtual-machines/windows/ephemeral-os-disks.md) für kurzlebige Betriebssystemdatenträger angeben und dass der Cache der VM-Größe für die Größe des Betriebssystemdatenträgers ausreichend dimensioniert ist (siehe *Hinweis* weiter unten). Beispiel:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Wählen Sie unbedingt eine VM-Größe mit einer Cachegröße aus, die mindestens der Größe des Betriebssystemdatenträgers des virtuellen Computers selbst entspricht. Andernfalls tritt bei der Azure-Bereitstellung unter Umständen ein Fehler auf (auch wenn sie zunächst angenommen wurde).
+
+2. Geben Sie mindestens Version `2018-06-01` für VM-Skalierungsgruppen (`vmssApiVersion`) an:
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. Geben Sie im Abschnitt „VM-Skalierungsgruppe“ der Bereitstellungsvorlage die Option `Local` für `diffDiskSettings` an:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+Weitere Informationen und Konfigurationsoptionen finden Sie unter [Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer](../virtual-machines/windows/ephemeral-os-disks.md). 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Auswählen der Dauerhaftigkeits- und der Zuverlässigkeitsstufe für den Cluster
 Über die Dauerhaftigkeitsstufe wird dem System angezeigt, über welche Berechtigungen Ihre VMs für die zugrunde liegende Azure-Infrastruktur verfügen. Auf dem primären Knotentyp kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration), die sich auf die Quorumanforderungen für die Systemdienste und Ihre zustandsbehafteten Dienste auswirken. Auf den nicht primären Knotentypen kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene (z.B. einen VM-Neustart, ein VM-Reimaging und eine VM-Migration) anhalten, die sich auf die Quorumanforderungen für Ihre zustandsbehafteten Dienste auswirken.  Ausführungen zu den Vorteilen der verschiedenen Stufen sowie Empfehlungen dazu, welche Stufe wann verwendet werden sollte, finden Sie unter [Die Dauerhaftigkeitsmerkmale des Clusters][durability].

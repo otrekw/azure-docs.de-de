@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 9798cbd2b1c9dca489e843a7102f213757e4de75
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 27243f47df7da22ab4adda088bdf631c1030dd6c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771818"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845199"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktives Debuggen auf einer Azure Machine Learning Compute-Instanz mit VS Code Remote
 
 In diesem Artikel erfahren Sie, wie Sie Visual Studio Code Remote auf einer Azure Machine Learning Compute-Instanz einrichten, sodass Sie Ihren **Code über VS Code interaktiv debuggen** können. 
 
 > [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar.
+> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** oder **Vereinigtes Königreich, Süden** verfügbar.
 
 + Eine [Azure Machine Learning Compute-Instanz](concept-compute-instance.md) ist eine vollständig verwaltete cloudbasierte Arbeitsstation für Datenanalysten und bietet IT-Administratoren Funktionen für die Verwaltung und Unternehmensbereitschaft. 
 

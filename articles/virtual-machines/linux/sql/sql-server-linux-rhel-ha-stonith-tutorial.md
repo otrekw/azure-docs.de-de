@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: e48f41f1e13346f551f1d83f462de697631d1b9a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775896"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024346"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Tutorial: Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf virtuellen RHEL-Computern in Azure 
 
@@ -52,7 +52,7 @@ Verwenden Sie den folgenden Befehl, um eine Ressourcengruppe (`<resourceGroupNam
 az group create --name <resourceGroupName> --location eastus2
 ```
 
-## <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
+## <a name="create-an-availability-set"></a>Erstellen Sie eine Verfügbarkeitsgruppe.
 
 Im nächsten Schritt wird eine Verfügbarkeitsgruppe erstellt. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, und ersetzen Sie dabei `<resourceGroupName>` durch den Namen Ihrer Ressourcengruppe. Wählen Sie einen Namen für `<availabilitySetName>` aus.
 
@@ -782,7 +782,7 @@ Wenn `synchronization_state_desc` für `db1` den Zustand „SYNCHRONIZED“ (Syn
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Erstellen von Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster
 
-Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster (nur „Extern“)](/sql/linux/sql-server-linux-create-availability-group]#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only) beschrieben vor.
+Wir gehen wie unter [Erstellen der Verfügbarkeitsgruppenressourcen im Pacemaker-Cluster (nur „Extern“)](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only) beschrieben vor.
 
 ### <a name="create-the-ag-cluster-resource"></a>Erstellen der Verfügbarkeitsgruppen-Clusterressource
 
@@ -902,7 +902,7 @@ Daemon Status:
   pcsd: active/enabled
 ```
 
-## <a name="test-failover"></a>Testen des Failovers
+## <a name="test-failover"></a>Testfailover
 
 Wir führen ein Testfailover durch, um uns zu vergewissern, dass die bisherige Konfiguration erfolgreich war. Weitere Informationen finden Sie unter [Failover der Always On-Verfügbarkeitsgruppe unter Linux](/sql/linux/sql-server-linux-availability-group-failover-ha).
 

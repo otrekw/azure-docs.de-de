@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 70fe718884796ac127be38c375003dd728089be8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293452"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016033"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -239,9 +239,9 @@ Die Erweiterung AADLoginForWindows muss installiert sein, damit der Azure AD-Ei
 
    | Auszuführender Befehl | Erwartete Ausgabe |
    | --- | --- |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/instance?api-version=2017-08-01“ | Richtige Informationen zum virtuellen Azure-Computer |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/info?api-version=2018-02-01“ | Gültige dem Azure-Abonnement zugeordnete Mandanten-ID |
-   | curl -H Metadata:true „http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01“ | Gültiges Zugriffstoken, das von Azure Active Directory für die verwaltete Identität, die dem virtuellen Computer zugewiesen ist, ausgestellt wird |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/instance?api-version=2017-08-01"` | Richtige Informationen zum virtuellen Azure-Computer |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01"` | Gültige dem Azure-Abonnement zugeordnete Mandanten-ID |
+   | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Gültiges Zugriffstoken, das von Azure Active Directory für die verwaltete Identität, die dem virtuellen Computer zugewiesen ist, ausgestellt wird |
 
    > [!NOTE]
    > Das Zugriffstoken kann mithilfe eines Tools wie [http://calebb.net/](http://calebb.net/) decodiert werden. Vergewissern Sie sich, dass die „appid“ im Zugriffstoken mit der verwalteten Identität übereinstimmt, die dem virtuellen Computer zugewiesen ist.

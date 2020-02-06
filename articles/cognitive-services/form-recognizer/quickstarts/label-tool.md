@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: f00702326cf6fe2efd8d4abbfce7174815ea0b1d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770287"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025910"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -26,7 +26,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Zugriff auf die Vorschauversion der Formularerkennung mit eingeschränktem Zugriff. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Sie erhalten eine E-Mail mit einem Link zum Erstellen einer Formularerkennungsressource.
-- Zugriff auf das Formularerkennungstool für die Beschriftung von Beispielen. Um Zugriff zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf das Formularerkennungs-Beschriftungstool](https://aka.ms/LabelToolRequestAccess) aus, und übermitteln Sie es. Sie erhalten eine E-Mail mit Anweisungen zum Abrufen Ihrer Anmeldeinformationen und zum Zugreifen auf die private Containerregistrierung. 
 - Einen Satz mit mindestens sechs Formularen desselben Typs. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
@@ -38,18 +37,13 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     |:--|:--|:--|
     |Tool für die Beschriftung von Beispielen|2 Kerne, 4 GB Arbeitsspeicher|4 Kerne, 8 GB Arbeitsspeicher|
     
-1. Als Nächstes benötigen Sie die [Azure CLI (Befehlszeilenschnittstelle)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Installieren Sie diese auf Ihrem Computer, sofern sie noch nicht vorhanden ist.
-1. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein. Die Werte für `<username>` und `<password>` finden Sie in Ihrer Begrüßungs-E-Mail für die Formularerkennung.
-    ```
-    docker login containerpreview.azurecr.io -u <username> -p <password>
-    ```
 1. Rufen Sie mit dem `docker pull`-Befehl den Container für das Tool für die Beschriftung von Beispielen ab.
     ```
-    docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool:latest
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
 1. Jetzt können Sie mit `docker run` den Container ausführen.
     ```
-    docker run -it -p 3000:80 containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer-custom-supervised-labeltool eula=accept
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
 
    Dieser Befehl macht das Tool für die Beschriftung von Beispielen über einen Webbrowser verfügbar. Wechseln Sie zu [http://localhost:3000](http://localhost:3000).

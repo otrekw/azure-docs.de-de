@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433498"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714454"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Skalieren von Azure Cache for Redis
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -166,7 +166,7 @@ Wenn bei einem Skalierungsvorgang ein Fehler auftritt, versucht der Dienst, den 
 
 
 ### <a name="how-long-does-scaling-take"></a>Wie lange dauert die Skalierung?
-Die Skalierung dauert ca. 20 Minuten, je nachdem, wie viele Daten sich im Cache befinden.
+Die Skalierungszeit hängt von der Datenmenge im Cache ab, wobei größere Datenmengen länger für den Abschluss benötigen. Die Skalierung dauert ca. 20 Minuten. Bei gruppierten Caches dauert die Skalierung ungefähr 20 Minuten pro Shard.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Woher weiß ich, dass die Skalierung abgeschlossen ist?
 Im Azure-Portal können Sie den Fortschritt der Skalierung anzeigen. Wenn die Skalierung abgeschlossen ist, ändert sich der Status des Caches zu **Wird ausgeführt**.
@@ -176,6 +176,3 @@ Im Azure-Portal können Sie den Fortschritt der Skalierung anzeigen. Wenn die Sk
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

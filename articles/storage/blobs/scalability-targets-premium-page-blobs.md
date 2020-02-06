@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749708"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756248"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Skalierungs- und Leistungsziele für Seitenblob-Speicherkonten mit Premium-Leistung
 
@@ -31,7 +31,7 @@ Seitenblob-Speicherkonten mit Premium-Leistung weisen folgende Skalierbarkeitszi
 
 | Gesamtkapazität des Kontos                            | Gesamtbandbreite für ein lokal redundantes Speicherkonto                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Datenträgerkapazität: 35 TB <br>Kapazität für Momentaufnahmen: 10 TB | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
+| Datenträgerkapazität: 4 TB (einzelner Datenträger)/35 TB (kumulativer Gesamtwert aller Datenträger) <br>Kapazität für Momentaufnahmen: 10 TB | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
 
 <sup>1</sup> Alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden
 

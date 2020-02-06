@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867674"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841113"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -246,7 +246,7 @@ Die Ausgabe dieses Befehls ähnelt dem folgenden JSON-Code:
 > [!IMPORTANT]
 > Kopieren Sie den Wert des Eintrags `id`, da er im nächsten Abschnitt verwendet wird.
 
-Um eine umfassendere Vorlage für die JSON-Datei zu prüfen, die ein Dataset beschreibt, verwenden Sie den folgenden Befehl:
+Eine umfassendere Vorlage für ein Dataset erhalten Sie mit dem folgenden Befehl:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 Ändern Sie den Wert des Eintrags `id` so, dass er mit dem beim Registrieren des Datasets zurückgegebenen Wert übereinstimmt. Mit diesem Wert werden die Daten während des Trainings in das Computeziel geladen.
 
-Dieser YAML-Code erzielt Folgendes:
+Dieser YAML-Code führt zu den folgenden Aktionen während des Trainings:
 
 * Einbinden des Datasets (basierend auf der ID des Datasets) in der Trainingsumgebung und Speichern des Pfads zum Bereitstellungspunkt in der Umgebungsvariable `mnist`
 * Übergeben des Speicherorts der Daten (Bereitstellungspunkt) innerhalb der Trainingsumgebung an das Skript mithilfe des Arguments `--data-folder`.
@@ -298,7 +298,7 @@ Die Datei „runconfig“ enthält außerdem Informationen zum Konfigurieren der
 > [!TIP]
 > Die Datei „runconfig“ kann manuell erstellt werden, die in diesem Beispiel wurde jedoch mithilfe der im Repository enthaltenen Datei `generate-runconfig.py` erstellt. Diese Datei erhält einen Verweis auf das registrierte Dataset, erstellt programmgesteuert eine Ausführungskonfiguration und speichert diese dann in der Datei.
 
-Weitere Informationen zu Laufzeitkonfigurationsdateien finden Sie unter [Einrichten von und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). In dieser [JSON-Datei](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) finden Sie das vollständige Schema einer Laufzeitkonfiguration.
+Weitere Informationen zu Dateien für Laufzeitkonfigurationen finden Sie unter [Einrichten von und Verwenden von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Eine vollständige JSON-Referenz finden Sie in [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Übermitteln der Trainingsausführung
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Version 1 des Modells verwendet, das Sie zuvor registriert haben.
 
-Die Datei `inferenceConfig.yml` liefert Informationen darüber, wie Sie Rückschlüsse ziehen können, z. B. über das Eingabeskript (`score.py`) und über Softwareabhängigkeiten. Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Die Datei `inferenceConfig.yml` enthält Informationen zur Verwendung des Modells für Rückschlüsse. Sie verweist z. B. auf das Einstiegsskript (`score.py`) und die Softwareabhängigkeiten. 
+
+Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 Die `aciDeploymentConfig.yml` beschreibt die zum Hosten des Dienstes verwendete Bereitstellungsumgebung. Die Bereitstellungskonfiguration hängt vom Computetyp ab, den Sie für die Bereitstellung verwenden. In diesem Fall wird eine Azure Container Instance verwendet. Weitere Informationen finden Sie unter [Bereitstellungskonfigurationsschema](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

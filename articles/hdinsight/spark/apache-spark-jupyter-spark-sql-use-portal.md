@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.custom: mvc
-ms.openlocfilehash: 214a88ad8b0f5dd0352004edc125705ad2f04fc7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c2751f30bdea46a30aa12bd458a12d7640cba404
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494134"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029543"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-portal"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight im Azure-Portal
 
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Geben Sie unter **Grundlagen** die folgenden Werte an:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Subscription  | Wählen Sie im Dropdownmenü ein für diesen Cluster verwendetes Azure-Abonnement aus. Für diese Schnellstartanleitung wird das Abonnement **Azure** verwendet. |
     |Resource group | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Für diese Schnellstartanleitung wird der Ressourcengruppenname **myResourceGroup** verwendet. |
@@ -52,14 +52,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Geben Sie unter **Speicher** die folgenden Werte an:
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Primärer Speichertyp|Übernehmen Sie den Standardwert **Azure Storage**.|
     |Auswahlmethode|Übernehmen Sie den Standardwert **Aus Liste auswählen**.|
     |Primäres Speicherkonto|Verwenden Sie den automatisch ausgefüllten Wert.|
     |Container|Verwenden Sie den automatisch ausgefüllten Wert.|
 
-    ![Erstellen von grundlegenden Konfigurationen für HDInsight Spark-Cluster](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage-spark.png "Erstellen eines Spark-Clusters in HDInsight: grundlegende Konfigurationen")
+    ![Erstellen von grundlegenden Konfigurationen für HDInsight Spark-Cluster](./media/apache-spark-jupyter-spark-sql-use-portal/azure-portal-cluster-storage.png "Erstellen eines Spark-Clusters in HDInsight: grundlegende Konfigurationen")
 
     Wählen Sie zum Fortfahren **Überprüfen + erstellen** aus.
 
@@ -79,11 +79,11 @@ Jupyter Notebook ist eine interaktive Notebook-Umgebung, die verschiedene Progra
 
 1. Wählen Sie im Portal **Clusterdashboards** und dann **Jupyter Notebook** aus. Geben Sie die Anmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
-   ![Öffnen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öffnen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen")
+   ![Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öffnen von Jupyter Notebook zum Ausführen einer interaktiven Spark SQL-Abfrage")
 
 1. Wählen Sie **Neu** > **PySpark** aus, um ein Notebook zu erstellen.
 
-   ![Erstellen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen")
+   ![Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage")
 
    Ein neues Notebook mit dem Namen „Untitled“ (Untitled.pynb) wird erstellt und geöffnet.
 

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790881"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760792"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Qualifikationsgruppenkonzepte und Komposition in Azure Cognitive Search
 
@@ -37,7 +37,7 @@ Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](h
 ### <a name="enrichment-tree"></a>Anreicherungsstruktur
 
 Um zu sehen, wie eine Qualifikationsgruppe Ihr Dokument zunehmend anreichert, beginnen wir damit, wie das Dokument vor den Anreicherungen aussieht. Die Ausgabe der Dokumententschlüsselung ist abhängig von der Datenquelle und dem ausgewählten spezifischen Analysemodus. Dies ist auch der Zustand des Dokuments, aus dem die [Feldzuordnungen](search-indexer-field-mappings.md) beim Hinzufügen von Daten zum Suchindex Inhalte abrufen können.
-![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "KWissensspeicher im Pipelinediagramm")
+![Wissensspeicher im Pipelinediagramm](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "Wissensspeicher im Pipelinediagramm")
 
 Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inhaltsstruktur mit zugeordneten Anreicherungen dargestellt. Diese Struktur wird als Ausgabe der Dokumententschlüsselung instanziiert. Das Anreicherungsstruktur-Format ermöglicht der Anreicherungspipeline das Anfügen von Metadaten auch an primitive Datentypen. Es handelt sich nicht um ein gültiges JSON-Objekt, kann jedoch in ein gültiges JSON-Format projiziert werden. In der folgenden Tabelle wird der Zustand eines Dokuments gezeigt, das in die Anreicherungspipeline wechselt:
 
@@ -56,7 +56,7 @@ In den übrigen Teilen dieses Dokuments gehen wir vom [Beispiel „Hotelbewertun
 Jede Qualifikation erfordert einen Kontext. Ein Kontext bestimmt Folgendes:
 +   Wie oft die Qualifikation ausgeführt wird, basierend auf den ausgewählten Knoten. Wird bei Kontextwerten einer Typsammlung ein ```/*``` an das Ende hinzugefügt, führt dies dazu, dass die Qualifikation für jede Instanz in der Sammlung einmal aufgerufen wird. 
 +   Wo in der Anreicherungsstruktur die Qualifikationsausgaben hinzugefügt werden. Ausgaben werden der Struktur immer als untergeordnete Elemente des Kontextknotens hinzugefügt. 
-+   Form der Eingaben. Bei Sammlungen mit mehreren Ebenen wirkt sich das Festlegen des Kontexts auf die übergeordnete Sammlung auf die Form der Eingabe der Qualifikation aus. Sie verfügen beispielsweise über eine Anreicherungsstruktur mit einer Liste von Ländern, von denen jedes mit einer Liste von Bundesländern angereichert ist, die wiederum eine Liste von Postleitzahlen enthalten.
++   Form der Eingaben. Bei Sammlungen mit mehreren Ebenen hat das Festlegen des Kontexts auf die übergeordnete Sammlung Auswirkungen auf die Form der Eingabe für den Skill. Sie verfügen beispielsweise über eine Anreicherungsstruktur mit einer Liste von Ländern, von denen jedes mit einer Liste von Bundesländern angereichert ist, die wiederum eine Liste von Postleitzahlen enthalten.
 
 |Kontext|Eingabe|Form der Eingabe|Aufruf einer Qualifikation|
 |---|---|---|---|
@@ -65,7 +65,7 @@ Jede Qualifikation erfordert einen Kontext. Ein Kontext bestimmt Folgendes:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` wird nur in Qualifikationseingaben und [Projektionen](knowledge-store-projection-overview.md) verwendet. Es wird verwendet, um geschachtelte Objekte mit mehreren Ebenen zu erstellen. Möglicherweise müssen Sie ein neues Objekt erstellen, um es als Eingabe an eine Qualifikation oder ein Projekt an den Wissensspeicher zu übergeben. Da es sich bei Anreicherungsknoten möglicherweise nicht um ein gültiges JSON-Objekt in der Anreicherungsstruktur handelt und das Verweisen auf einen Knoten in der Struktur nur den Zustand des Knotens zum Zeitpunkt der Erstellung zurückgibt, müssen Sie ein ordnungsgemäß formatiertes JSON-Objekt erstellen, um die Anreicherungen als Qualifikationseingaben oder Projektionen verwenden zu können. Mit `sourceContext` können Sie ein hierarchisches, anonymes Typobjekt erstellen, für das mehrere Qualifikationen erforderlich wären, wenn Sie nur den Kontext verwenden würden. Die Verwendung von `sourceContext` wird im nächsten Abschnitt gezeigt. Sehen Sie sich die Qualifikationsausgabe an, die eine Anreicherung generiert hat, um zu ermitteln, ob es sich um ein gültiges JSON-Objekt und nicht um einen primitiven Typ handelt.
+`sourceContext` wird nur in Qualifikationseingaben und [Projektionen](knowledge-store-projection-overview.md) verwendet. Es wird verwendet, um geschachtelte Objekte mit mehreren Ebenen zu erstellen. Möglicherweise müssen Sie ein neues Objekt erstellen, um es als Eingabe an einen Skill zu übergeben oder in den Wissensspeicher zu projizieren. Da es sich bei Anreicherungsknoten möglicherweise nicht um ein gültiges JSON-Objekt in der Anreicherungsstruktur handelt und bei Verweisen auf einen Knoten in der Struktur nur der Zustand des Knotens zum Zeitpunkt seiner Erstellung zurückgegeben wird, müssen Sie ein wohlgeformtes JSON-Objekt erstellen, um die Anreicherungen als Skilleingaben oder Projektionen verwenden zu können. Mit `sourceContext` können Sie ein hierarchisches, anonymes Typobjekt erstellen, für das mehrere Qualifikationen erforderlich wären, wenn Sie nur den Kontext verwenden würden. Die Verwendung von `sourceContext` wird im nächsten Abschnitt gezeigt. Sehen Sie sich die Qualifikationsausgabe an, die eine Anreicherung generiert hat, um zu ermitteln, ob es sich um ein gültiges JSON-Objekt und nicht um einen primitiven Typ handelt.
 
 ### <a name="projections"></a>Projektionen
 
@@ -96,11 +96,11 @@ Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten, der unter den
 
 Der Stammknoten für alle Anreicherungen ist `"/document"`. Wenn Sie Blob-Indexer verwenden, verfügt der `"/document"`-Knoten über die untergeordneten Knoten `"/document/content"` und `"/document/normalized_images"`. Wenn Sie, wie in diesem Beispiel, CSV-Daten verwenden, werden die Spaltennamen den Knoten unter `"/document"` zugeordnet. Um auf eine der Anreicherungen zuzugreifen, die einem Knoten durch eine Qualifikation hinzugefügt wurden, ist der vollständige Pfad für die Anreicherung erforderlich. Wenn Sie z.B. den Text aus dem Knoten ```pages``` als Eingabe für eine andere Qualifikation verwenden möchten, müssen Sie ihn als ```"/document/reviews_text/pages/*"``` angeben.
  
- ![Anreicherungsstruktur nach Qualifikation 1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Anreicherungsstruktur nach Ausführung von Qualifikation 1")
+ ![Anreicherungsstruktur nach Qualifikation 1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Anreicherungsstruktur nach Ausführung von Skill 1")
 
 ### <a name="skill-2-language-detection"></a>Qualifikation 2: Sprachenerkennung
  Die Qualifikation „Spracherkennung“ ist zwar die dritte in der Qualifikationsgruppe definierte Qualifikation (Qualifikation 3), sie wird aber als nächste Qualifikation ausgeführt. Da keine Eingaben erforderlich sind, wird sie nicht blockiert und parallel mit der vorherigen Qualifikation ausgeführt. Genau wie die Qualifikation „Aufteilung“ wird die Qualifikation „Spracherkennung“ auch einmal für jedes Dokument aufgerufen. Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten für die Sprache.
- ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Enrichment-Struktur nach dem Ausführen der Fähigkeiten #2 ")
+ ![Anreicherungsstruktur nach Qualifikation 2](media/cognitive-search-working-with-skillsets/enrichment-tree-skill2.png "Anreicherungsstruktur nach Ausführung von Skill 2")
  
  ### <a name="skill-3-key-phrases-skill"></a>Qualifikation 3: Qualifikation „Schlüsselbegriffe“ 
 
@@ -108,17 +108,17 @@ Im Kontext ```/document/reviews_text/pages/*``` wird die Qualifikation „Schlü
 
  Wenn Sie sich jetzt die restlichen Qualifikationen in der Qualifikationsgruppe anschauen, sollten Sie sich vorstellen können, wie die Anreicherungsstruktur mit der Ausführung jeder weiteren Qualifikation weiter wächst. Einige Qualifikationen, wie z.B. die Qualifikation „Zusammenführen“ und die Qualifikation „Shaper“, erstellen auch neue Knoten, verwenden jedoch nur Daten aus vorhandenen Knoten und erstellen keine eigenen neuen Anreicherungen.
 
-![Anreicherungsstruktur nach allen Qualifikationen](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "Anreicherungsstruktur nach allen Qualifikationen")
+![Anreicherungsstruktur nach allen Qualifikationen](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "Anreicherungsstruktur nach allen Skills")
 
 Die Farben der Connectors in der Struktur oben zeigen an, dass die Anreicherungen durch unterschiedliche Qualifikationen erstellt wurden, und die Knoten müssen einzeln adressiert werden und sind nicht Teil des Objekts, das bei der Auswahl des übergeordneten Knotens zurückgegeben wird.
 
 ## <a name="save-enrichments-in-a-knowledge-store"></a>Speichern von Anreicherungen in einem Wissensspeicher 
 
-Qualifikationsgruppen definieren außerdem einen Wissensspeicher, in dem Ihre angereicherten Dokumente als Tabellen oder Objekte projiziert werden können. Um die angereicherten Daten im Wissensspeicher zu speichern, definieren Sie eine Reihe von Projektionen Ihres angereicherten Dokuments. Weitere Informationen zum Wissensspeicher finden Sie in der [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md).
+Qualifikationsgruppen definieren außerdem einen Wissensspeicher, in dem Ihre angereicherten Dokumente als Tabellen oder Objekte projiziert werden können. Um Ihre angereicherten Daten im Wissensspeicher zu speichern, definieren Sie eine Reihe von Projektionen für Ihr angereichertes Dokument. Weitere Informationen zum Wissensspeicher finden Sie in der [Übersicht über Wissensspeicher](knowledge-store-concept-intro.md).
 
 ### <a name="slicing-projections"></a>Aufteilen von Projektionen
 
-Wenn Sie eine Tabellenprojektionsgruppe definieren, kann ein einzelner Knoten in der Anreicherungsstruktur in mehrere verwandte Tabellen aufgeteilt werden. Wenn Sie eine Tabelle mit einem Quellpfad hinzufügen, der ein untergeordnetes Element einer vorhandenen Tabellenprojektion ist, wird der resultierende untergeordnete Knoten kein untergeordnetes Element der vorhandenen Tabellenprojektion sein, sondern stattdessen in die neue, verwandte Tabelle projiziert. Mit dieser Aufteilungstechnik können Sie einen einzelnen Knoten in einer Shaper-Qualifikation als Quelle für alle Ihre Tabellenprojektionen definieren. 
+Wenn Sie eine Tabellenprojektionsgruppe definieren, kann ein einzelner Knoten in der Anreicherungsstruktur per Slicing in mehrere verknüpfte Tabellen aufgeteilt werden. Wenn Sie eine Tabelle mit einem Quellpfad hinzufügen, der ein untergeordnetes Element einer vorhandenen Tabellenprojektion ist, wird der resultierende untergeordnete Knoten kein untergeordnetes Element der vorhandenen Tabellenprojektion sein, sondern stattdessen in die neue, verwandte Tabelle projiziert. Mit dieser Aufteilungstechnik können Sie einen einzelnen Knoten in einer Shaper-Qualifikation als Quelle für alle Ihre Tabellenprojektionen definieren. 
 
 ### <a name="shaping-projections"></a>Strukturieren von Projektionen
 

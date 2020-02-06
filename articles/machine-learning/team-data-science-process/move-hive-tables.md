@@ -3,20 +3,20 @@ title: 'Erstellen von Hive-Tabellen und Laden von Daten aus Blob Storage: Team D
 description: Verwenden von Hive-Abfragen zum Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage. Partitionieren Sie Hive-Tabellen, und verwenden Sie das ORC-Format (Optimized Row Columnar) zur Verbesserung der Abfrageleistung.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: af9c072c428c486cab89288db4c9ee1c26513185
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 625d9d5c5ecf095d4acbff625754b2065f184536
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250130"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722525"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -25,12 +25,12 @@ In diesem Artikel werden allgemeine Hive-Abfragen beschrieben, mit denen Hive-Ta
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen, die Sie ggf. benötigen, finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-introduction.md).
+* Sie haben ein Azure Storage-Konto erstellt. Anweisungen finden Sie bei Bedarf unter [Informationen zu Azure Storage-Konten](../../storage/common/storage-introduction.md).
 * Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt.  Anweisungen finden Sie unter [Einrichten von Clustern in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
 * Sie haben den Remotezugriff auf den Cluster aktiviert, sich angemeldet und die Hadoop-Befehlszeilenkonsole geöffnet. Anweisungen finden Sie unter [Verwalten von Apache Hadoop-Clustern](../../hdinsight/hdinsight-administer-use-portal-linux.md).
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure Blob Storage
-Wenn Sie einen virtuellen Azure-Computer mithilfe der Anweisungen in [Einrichten eines virtuellen Azure-Computers für die erweiterte Analyse](../../machine-learning/data-science-virtual-machine/overview.md) erstellt haben, wurde diese Skriptdatei bereits in das Verzeichnis *C:\\Users\\\<user name\>\\Documents\\Data Science Scripts* auf dem virtuellen Computer heruntergeladen. Sie müssen Ihr eigenes Datenschema implementieren und die Konfiguration von Azure Blob Storage in den entsprechenden Feldern dieser Abfragen vornehmen. Danach sollten diese Hive-Abfragen für die Übermittlung bereit sein.
+Wenn Sie einen virtuellen Azure-Computer mithilfe der Anweisungen in [Einrichten eines virtuellen Azure-Computers für die erweiterte Analyse](../../machine-learning/data-science-virtual-machine/overview.md) erstellt haben, wurde diese Skriptdatei bereits in das Verzeichnis *C:\\Users\\\<user name\>\\Documents\\Data Science Scripts* auf dem virtuellen Computer heruntergeladen. Um diese Hive-Abfragen zu übermitteln, müssen Sie lediglich Ihr eigenes Datenschema und die Azure Blob Storage-Konfiguration in den entsprechenden Feldern dieser Abfragen angeben.
 
 Es wird davon ausgegangen, dass die Daten für die Hive-Tabellen in einem **unkomprimierten** Tabellenformat vorliegen und dass die Daten in den Standardcontainer (oder einen zusätzlichen Container) des Speicherkontos hochgeladen wurden, das vom Hadoop-Cluster verwendet wird.
 
@@ -43,15 +43,15 @@ Wenn Sie mit den **NYC Taxi Trip-Daten**üben möchten, gehen Sie so vor:
 ## <a name="submit"></a>Übermitteln von Hive-Abfragen
 Hive-Abfragen können folgendermaßen übermittelt werden:
 
-1. [Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters](#headnode)
-2. [Übermitteln von Hive-Abfragen mit dem Hive-Editor](#hive-editor)
-3. [Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen](#ps)
+* [Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters](#headnode)
+* [Übermitteln von Hive-Abfragen mit dem Hive-Editor](#hive-editor)
+* [Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen](#ps)
 
 Hive-Abfragen sind ähnlich wie SQL-Abfragen. Als mit SQL vertrauter Benutzer finden Sie möglicherweise die Informationen im [Cheat Sheet „Hive for SQL Users“](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) (Spickzettel zu Hive für SQL-Benutzer) nützlich.
 
 Beim Übermitteln von Hive-Abfragen können Sie auch das Ziel der Ausgabe der Hive-Abfragen steuern. Diese kann auf den Bildschirm, in eine lokale Datei auf dem Hauptknoten oder in ein Azure-Blob erfolgen.
 
-### <a name="headnode"></a> 1. Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters
+### <a name="headnode"></a>Übermitteln von Hive-Abfragen über die Hadoop-Befehlszeile im Hauptknoten des Hadoop-Clusters
 Wenn die Hive-Abfrage komplex ist, führt die direkte Übermittlung über den Hauptknoten des Hadoop-Clusters i. d. R. schneller zu Ergebnissen als das Senden im Hive-Editor oder über Azure PowerShell-Skripts.
 
 Melden Sie sich am Hauptknoten des Hadoop-Clusters an, öffnen Sie die Hadoop-Befehlszeile auf dem Desktop des Hauptknotens und geben Sie den Befehl `cd %hive_home%\bin` ein.
@@ -67,10 +67,10 @@ Sie können einen Befehl wie `hive -e "<your hive query>;` ausführen, um einfac
 
 ![Befehl zum Übermitteln der Hive-Abfrage mit Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/run-hive-queries-1.png)
 
-#### <a name="submit-hive-queries-in-hql-files"></a>Übermitteln der Hive-Abfragen in HQL-Dateien
-Wenn die Hive-Abfrage sehr komplex ist und aus mehreren Zeilen besteht, ist das direkte Bearbeiten der Abfragen an der Befehlszeile oder an der Hive-Konsole nicht sehr praktikabel. Alternativ können die Hive-Abfragen mit einem Text-Editor auf dem Hauptknoten des Hadoop-Clusters in einer HQL-Datei in einem lokalen Verzeichnis auf dem Hauptknoten gespeichert werden. Anschließend kann die Hive-Abfrage in der HQL-Datei mithilfe des `-f` -Arguments wie folgt übermittelt werden:
+#### <a name="submit-hive-queries-in-hql-files"></a>Übermitteln von Hive-Abfragen in HQL-Dateien
+Wenn die Hive-Abfrage sehr komplex ist und aus mehreren Zeilen besteht, ist das direkte Bearbeiten der Abfragen an der Befehlszeile oder an der Hive-Konsole nicht sehr praktikabel. Alternativ können die Hive-Abfragen mit einem Text-Editor auf dem Hauptknoten des Hadoop-Clusters als HQL-Datei in einem lokalen Verzeichnis auf dem Hauptknoten gespeichert werden. Anschließend kann die Hive-Abfrage in der HQL-Datei mithilfe des Arguments `-f` wie folgt übermittelt werden:
 
-    hive -f "<path to the .hql file>"
+    hive -f "<path to the '.hql' file>"
 
 ![Hive-Abfrage in einer HQL-Datei](./media/move-hive-tables/run-hive-queries-3.png)
 
@@ -78,7 +78,7 @@ Wenn die Hive-Abfrage sehr komplex ist und aus mehreren Zeilen besteht, ist das 
 
 Standardmäßig wird bei Hive-Abfragen, die über die Hadoop-Befehlszeile übermittelt werden, der Fortschritt des Map/Reduce-Auftrags auf dem Bildschirm angezeigt. Um die Fortschrittsanzeige des Map/Reduce-Auftrags zu unterdrücken, können Sie das Argument `-S` ("S" als Großbuchstabe) wie folgt an der Befehlszeile verwenden:
 
-    hive -S -f "<path to the .hql file>"
+    hive -S -f "<path to the '.hql' file>"
     hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Übermitteln von Hive-Abfragen an der Hive-Befehlskonsole
@@ -111,10 +111,10 @@ Wenn Sie den Standardcontainer des Hadoop-Clusters mit Tools wie Azure Storage-E
 
 ![Azure Storage-Explorer zeigt die Ausgabe der Hive-Abfrage an](./media/move-hive-tables/output-hive-results-3.png)
 
-### <a name="hive-editor"></a> 2. Übermitteln von Hive-Abfragen mit dem Hive-Editor
+### <a name="hive-editor"></a>Übermitteln von Hive-Abfragen mit dem Hive-Editor
 Sie können auch die Abfrage-Konsole (Hive-Editor) nutzen, indem Sie eine URL im Format *https:\//\<Hadoop-Clustername>.azurehdinsight.net/Home/HiveEditor* in einen Webbrowser eingeben. Sie müssen angemeldet sein, um diese Konsole anzeigen zu können, weshalb hier Ihre Hadoop-Clusteranmeldeinformationen erforderlich sind.
 
-### <a name="ps"></a> 3. Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen
+### <a name="ps"></a>Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen
 Sie können zum Übermitteln von Hive-Abfragen auch PowerShell verwenden. Eine Anleitung hierzu finden Sie unter [Übermitteln von Hive-Aufträgen mit PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
 
 ## <a name="create-tables"></a>Erstellen von Hive-Datenbanken und -Tabellen
@@ -137,7 +137,7 @@ Mit dieser Hive-Abfrage erstellen Sie eine Hive-Tabelle.
 
 Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung und andere Konfigurationen vornehmen:
 
-* **\<Datenbankname:\>** Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database...* ausgelassen werden.
+* **\<Datenbankname:\>** Name der zu erstellenden Datenbank. Wenn Sie die Standarddatenbank verwenden möchten, kann die Abfrage *create database* ausgelassen werden.
 * **\<Tabellenname:\>** Name der in der angegebenen Datenbank zu erstellenden Tabelle. Wenn Sie die Standarddatenbank verwenden möchten, kann auf die Tabelle direkt mit *\<Tabellenname\>* ohne \<Datenbankname\> verwiesen werden.
 * **\<Feldtrennzeichen:\>** Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
 * **\<Zeilentrennzeichen:\>** Trennzeichen für die Zeilen in der Datendatei.
@@ -174,7 +174,7 @@ Mit dieser Hive-Abfrage erstellen Sie eine Hive-Tabelle und laden Daten in diese
     LOAD DATA INPATH '<path to the source file>' INTO TABLE <database name>.<partitioned table name>
         PARTITION (<partitionfieldname>=<partitionfieldvalue>);
 
-Beim Abfragen partitionierter Tabellen wird empfohlen, die Partitionierungsbedingung am **Anfang** der `where`-Klausel einzufügen, um die Effizienz der Suche zu verbessern.
+Beim Abfragen partitionierter Tabellen wird empfohlen, die Partitionierungsbedingung am **Anfang** der `where`-Klausel einzufügen, um die Sucheffizienz zu verbessern.
 
     select
         field1, field2, ..., fieldN

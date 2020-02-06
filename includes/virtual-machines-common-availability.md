@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414514"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748899"
 ---
 Dieser Artikel enthält eine Übersicht über die Verfügbarkeitsfunktionen von virtuellen Azure-Computern (VMs).
 
@@ -54,7 +54,7 @@ Anhand von VM-Skalierungsgruppen können Sie den Orchestrierungsmodus angeben.  
 
 |   | „orchestrationMode“: „VM“ (VirtualMachine)| „orchestrationMode“: „ScaleSetVM“ (VirtualMachineScaleSetVM) |
 |----|----|----|
-| VM-Konfigurationsmodell| None (Keine): „VirtualMachineProfile“ ist im Skalierungsgruppenmodell nicht definiert. | Erforderlich. „VirtualMachineProfile“ wird in das Skalierungsgruppenmodell eingefügt. |
+| VM-Konfigurationsmodell| Keine. „VirtualMachineProfile“ ist im Skalierungsgruppenmodell nicht definiert. | Erforderlich. „VirtualMachineProfile“ wird in das Skalierungsgruppenmodell eingefügt. |
 | Hinzufügen einer neuen VM zu einer Skalierungsgruppe| VMs werden bei der Erstellung explizit zur Skalierungsgruppe hinzugefügt. | VMs werden implizit erstellt und der Skalierungsgruppe basierend auf dem VM-Konfigurationsmodell, der Anzahl der Instanzen und den AutoScaling-Regeln hinzugefügt. |
 | Verfügbarkeitszonen| Unterstützt die regionale Bereitstellung oder VMs in einer Verfügbarkeitszone.| Unterstützt regionale Bereitstellung oder mehrere Verfügbarkeitszonen; kann die Strategie zum Sicherstellen eines Zonengleichgewichts definieren. |
 | Fehlerdomänen| Kann die Anzahl der Fehlerdomänen definieren. 2 oder 3 basierend auf der regionalen Unterstützung und 5 für Verfügbarkeitszonen. Die zugewiesene VM-Fehlerdomäne bleibt während des VM-Lebenszyklus erhalten, einschließlich der Freigabe und dem Neustart. | Kann 1, 2 oder 3 Fehlerdomänen für nicht zonenbasierte Bereitstellungen und 5 für Verfügbarkeitszonenbereitstellungen definieren. Die zugewiesene VM-Fehlerdomäne bleibt nicht im VM-Lebenszyklus erhalten, VMs werden bei der Zuordnung einer Fehlerdomäne zugewiesen. |
@@ -62,7 +62,7 @@ Anhand von VM-Skalierungsgruppen können Sie den Orchestrierungsmodus angeben.  
 
 **Fehler- und Updatedomänen**
 
-VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie in [Anzahl der Fehlerdomänen pro Region](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region).
+VM-Skalierungsgruppen vereinfachen durch das Ausrichten von Fehlerdomänen und Updatedomänen das Entwerfen für Hochverfügbarkeit. Sie müssen nur die Anzahl der Fehlerdomänen für die Skalierungsgruppe definieren. Die Anzahl der für die Skalierungsgruppe verfügbaren Fehlerdomänen kann je nach Region variieren. Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
 
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen

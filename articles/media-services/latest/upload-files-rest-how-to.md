@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 38d46978e37ead59deb17a86f643df041452e497
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779160"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705767"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST
+# <a name="upload-files-into-a-media-services-v3-account-using-rest"></a>Hochladen von Dateien in ein Media Services v3-Konto mit REST
 
 In Media Services laden Sie Ihre digitalen Dateien in einen Blobcontainer hoch, der einem Medienobjekt zugeordnet ist. Die [Asset](https://docs.microsoft.com/rest/api/media/operations/asset)-Entität kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die Metadaten zu diesen Dateien) enthalten. Nachdem die Dateien in den Container des Medienobjekts hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und zum Streaming sicher in der Cloud gespeichert.
 

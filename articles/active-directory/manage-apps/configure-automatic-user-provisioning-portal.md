@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e776ce8a455f2a5b453e23ebb996de9ddb5175a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430193"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711961"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -38,7 +38,7 @@ Im Azure Active Directory-Portal können Sie alle Anwendungen in einem Verzeichn
 1. Wählen Sie eine beliebige App aus, um ihren Ressourcenbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
 
-   ![Bildschirm „Bereitstellung“ zum Verwalten der Einstellungen für die Bereitstellung von Benutzerkonten](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Bildschirm „Bereitstellung“ zum Verwalten der Einstellungen für die Bereitstellung von Benutzerkonten](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Bereitstellungsmodi
 
@@ -68,7 +68,7 @@ Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbe
 
 Zwischen Azure AD-Benutzerobjekten und Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Gruppe von Zuordnungen vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. Wählen Sie in der Tabelle eine Zuordnung aus, um den Zuordnungs-Editor auf der rechten Seite zu öffnen, in dem Sie diese anzeigen und anpassen können.
 
-![Zeigt den Bildschirm „Attributzuordnung“](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
+![Zeigt den Bildschirm „Attributzuordnung“](media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Unterstützte Anpassungen umfassen:
 
@@ -88,4 +88,4 @@ Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
 
-Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user). 
+Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md). 

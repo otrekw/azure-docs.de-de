@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 8fe38870f593dd57d8e4dad5601ea404e99c3d10
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668148"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031559"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -64,7 +64,7 @@ Die folgende Tabelle enthält die Beispielpreise und dient lediglich zur Veransc
 | Standard_v2                                       |    0,20             | 0,0080                          |
 | WAF_v2                                            |    0,36             | 0,0144                          |
 
-Weitere Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-gateway/). Die Abrechnung soll planmäßig am 1. Juli 2019 beginnen.
+Weitere Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/application-gateway/). 
 
 **Beispiel 1**
 
@@ -167,15 +167,15 @@ In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestel
 
 |Unterschied|Details|
 |--|--|
-|Authentifizierungszertifikat|Nicht unterstützt.<br>Weitere Informationen finden Sie unter [Übersicht über End-to-End-SSL mit Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
+|Authentifizierungszertifikat|Wird nicht unterstützt.<br>Weitere Informationen finden Sie unter [Übersicht über End-to-End-SSL mit Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
 |Mischen von Standard_v2 und Standardanwendungsgateway in demselben Subnetz|Nicht unterstützt|
 |Benutzerdefinierte Route im Application Gateway-Subnetz|Nicht unterstützt|
 |NSG für Eingangsportbereich| - 65200 bis 65535 für Standard_v2-SKU<br>- 65503 bis 65534 für Standard-SKU.<br>Weitere Informationen finden Sie in den [häufig gestellten Fragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
-|Leistungsprotokolle in Azure-Diagnose|Nicht unterstützt.<br>Es sollten Azure-Metriken verwendet werden.|
+|Leistungsprotokolle in Azure-Diagnose|Wird nicht unterstützt.<br>Es sollten Azure-Metriken verwendet werden.|
 |Abrechnung|Die Abrechnung soll planmäßig am 1. Juli 2019 beginnen.|
 |FIPS-Modus|Diese werden derzeit nicht unterstützt.|
 |Reiner ILB-Modus|Dies wird derzeit nicht unterstützt. Öffentlicher und ILB-Modus kombiniert werden unterstützt.|
-|NetWatcher-Integration|Nicht unterstützt.|
+|NetWatcher-Integration|Wird nicht unterstützt.|
 |Integrieren von Azure Security Center|Noch nicht verfügbar.
 
 ## <a name="migrate-from-v1-to-v2"></a>Migrieren von v1 zu v2

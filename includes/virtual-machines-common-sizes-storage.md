@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b98aebfd7bef3edff8e046d7ef1c388ea57afa04
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 765ee3c737adbe1da89b9e908d0e22e44d0f29ba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501234"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748873"
 ---
 Datenspeicheroptimierte VM-Größen bieten hohen Datenträgerdurchsatz und E/A und eignen sich ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  Beispiele bilden Cassandra, MongoDB, Cloudera und Redis. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum lokalen Speicherdurchsatz und zur Netzwerkbandbreite für die einzelnen optimierten Größen.
 
@@ -40,7 +40,7 @@ Storage Premium-Zwischenspeicherung: Nicht unterstützt
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 400.000/2.000  | 8\.000/160   | 16 | 2/3.200  |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 800.000/4.000  | 16.000/320  | 32 | 4/6.400  |
 | Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1.500.000/8.000    | 32.000/640  | 32 | 8/12.800 |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1,92 TB  | 2,2M / 14000   | 48000/960  | 32 | 8/16.000+ |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1,92 TB  | 2.200.000/14.000   | 48.000/960  | 32 | 8/16.000+ |
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2.900.000/16.000   | 64.000/1.280 | 32 | 8/16.000+ |
 | Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1,92 TB   | 3.800.000/20.000   | 80.000/1.400 | 32 | 8/16.000+ |
 

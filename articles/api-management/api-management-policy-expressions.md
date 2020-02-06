@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: e9e6eff4c527ff2e22be57ebc1eb3dcdb3c4e0ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241989"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845275"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
-Die in diesem Artikel erörterte Syntax für Richtlinienausdrücke entspricht C# 7. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
+In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
 
 Weitere Informationen finden Sie unter:
 
@@ -76,134 +76,134 @@ Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitg
 
 |type|Unterstützte Member|
 |--------------|-----------------------|
-|Newtonsoft.Json.Formatting|Alle|
+|Newtonsoft.Json.Formatting|All|
 |Newtonsoft.Json.JsonConvert|SerializeObject, DeserializeObject|
-|Newtonsoft.Json.Linq.Extensions|Alle|
-|Newtonsoft.Json.Linq.JArray|Alle|
-|Newtonsoft.Json.Linq.JConstructor|Alle|
-|Newtonsoft.Json.Linq.JContainer|Alle|
-|Newtonsoft.Json.Linq.JObject|Alle|
-|Newtonsoft.Json.Linq.JProperty|Alle|
-|Newtonsoft.Json.Linq.JRaw|Alle|
-|Newtonsoft.Json.Linq.JToken|Alle|
-|Newtonsoft.Json.Linq.JTokenType|Alle|
-|Newtonsoft.Json.Linq.JValue|Alle|
-|System.Array|Alle|
-|System.BitConverter|Alle|
-|System.Boolean|Alle|
-|System.Byte|Alle|
-|System.Char|Alle|
-|System.Collections.Generic.Dictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.HashSet\<T>|Alle|
-|System.Collections.Generic.ICollection\<T>|Alle|
-|System.Collections.Generic.IDictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.IEnumerable\<T>|Alle|
-|System.Collections.Generic.IEnumerator\<T>|Alle|
-|System.Collections.Generic.IList\<T>|Alle|
-|System.Collections.Generic.IReadOnlyCollection\<T>|Alle|
-|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|Alle|
-|System.Collections.Generic.ISet\<T>|Alle|
-|System.Collections.Generic.KeyValuePair<TKey, TValue>|Alle|
-|System.Collections.Generic.List\<T>|Alle|
-|System.Collections.Generic.Queue\<T>|Alle|
-|System.Collections.Generic.Stack\<T>|Alle|
-|System.Convert|Alle|
+|Newtonsoft.Json.Linq.Extensions|All|
+|Newtonsoft.Json.Linq.JArray|All|
+|Newtonsoft.Json.Linq.JConstructor|All|
+|Newtonsoft.Json.Linq.JContainer|All|
+|Newtonsoft.Json.Linq.JObject|All|
+|Newtonsoft.Json.Linq.JProperty|All|
+|Newtonsoft.Json.Linq.JRaw|All|
+|Newtonsoft.Json.Linq.JToken|All|
+|Newtonsoft.Json.Linq.JTokenType|All|
+|Newtonsoft.Json.Linq.JValue|All|
+|System.Array|All|
+|System.BitConverter|All|
+|System.Boolean|All|
+|System.Byte|All|
+|System.Char|All|
+|System.Collections.Generic.Dictionary<TKey, TValue>|All|
+|System.Collections.Generic.HashSet\<T>|All|
+|System.Collections.Generic.ICollection\<T>|All|
+|System.Collections.Generic.IDictionary<TKey, TValue>|All|
+|System.Collections.Generic.IEnumerable\<T>|All|
+|System.Collections.Generic.IEnumerator\<T>|All|
+|System.Collections.Generic.IList\<T>|All|
+|System.Collections.Generic.IReadOnlyCollection\<T>|All|
+|System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>|All|
+|System.Collections.Generic.ISet\<T>|All|
+|System.Collections.Generic.KeyValuePair<TKey, TValue>|All|
+|System.Collections.Generic.List\<T>|All|
+|System.Collections.Generic.Queue\<T>|All|
+|System.Collections.Generic.Stack\<T>|All|
+|System.Convert|All|
 |System.DateTime|(Konstruktor), Add, AddDays, AddHours, AddMilliseconds, AddMinutes, AddMonths, AddSeconds, AddTicks, AddYears, Date, Day, DayOfWeek, DayOfYear, DaysInMonth, Hour, IsDaylightSavingTime, IsLeapYear, MaxValue, Millisecond, Minute, MinValue, Month, Now, Parse, Second, Subtract, Ticks, TimeOfDay, Today, ToString, UtcNow, Year|
 |System.DateTimeKind|UTC|
-|System.DateTimeOffset|Alle|
-|System.Decimal|Alle|
-|System.Double|Alle|
-|System.Exception|Alle|
-|System.Guid|Alle|
-|System.Int16|Alle|
-|System. Int32|Alle|
-|System.Int64|Alle|
-|System.IO.StringReader|Alle|
-|System.IO.StringWriter|Alle|
-|System.Linq.Enumerable|Alle|
-|System.Math|Alle|
-|System.MidpointRounding|Alle|
-|System.Net.WebUtility|Alle|
-|System.Nullable|Alle|
-|System.Random|Alle|
-|System.SByte|Alle|
-|System.Security.Cryptography.AsymmetricAlgorithm|Alle|
-|System.Security.Cryptography.CipherMode|Alle|
-|System.Security.Cryptography.HashAlgorithm|Alle|
-|System.Security.Cryptography.HashAlgorithmName|Alle|
-|System.Security.Cryptography.HMAC|Alle|
-|System.Security.Cryptography.HMACMD5|Alle|
-|System.Security.Cryptography.HMACSHA1|Alle|
-|System.Security.Cryptography.HMACSHA256|Alle|
-|System.Security.Cryptography.HMACSHA384|Alle|
-|System.Security.Cryptography.HMACSHA512|Alle|
-|System.Security.Cryptography.KeyedHashAlgorithm|Alle|
-|System.Security.Cryptography.MD5|Alle|
-|System.Security.Cryptography.Oid|Alle|
-|System.Security.Cryptography.PaddingMode|Alle|
-|System.Security.Cryptography.RNGCryptoServiceProvider|Alle|
-|System.Security.Cryptography.RSA|Alle|
-|System.Security.Cryptography.RSAEncryptionPadding|Alle|
-|System.Security.Cryptography.RSASignaturePadding|Alle|
-|System.Security.Cryptography.SHA1|Alle|
-|System.Security.Cryptography.SHA1Managed|Alle|
-|System.Security.Cryptography.SHA256|Alle|
-|System.Security.Cryptography.SHA256Managed|Alle|
-|System.Security.Cryptography.SHA384|Alle|
-|System.Security.Cryptography.SHA384Managed|Alle|
-|System.Security.Cryptography.SHA512|Alle|
-|System.Security.Cryptography.SHA512Managed|Alle|
-|System.Security.Cryptography.SymmetricAlgorithm|Alle|
-|System.Security.Cryptography.X509Certificates.PublicKey|Alle|
-|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Alle|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|NAME|
-|System.Security.Cryptography.X509Certificates.X509Certificate|Alle|
-|System.Security.Cryptography.X509Certificates.X509Certificate2|Alle|
-|System.Security.Cryptography.X509Certificates.X509ContentType|Alle|
-|System.Security.Cryptography.X509Certificates.X509NameType|Alle|
-|System.Single|Alle|
-|System.String|Alle|
-|System.StringComparer|Alle|
-|System.StringComparison|Alle|
-|System.StringSplitOptions|Alle|
-|System.Text.Encoding|Alle|
+|System.DateTimeOffset|All|
+|System.Decimal|All|
+|System.Double|All|
+|System.Exception|All|
+|System.Guid|All|
+|System.Int16|All|
+|System. Int32|All|
+|System.Int64|All|
+|System.IO.StringReader|All|
+|System.IO.StringWriter|All|
+|System.Linq.Enumerable|All|
+|System.Math|All|
+|System.MidpointRounding|All|
+|System.Net.WebUtility|All|
+|System.Nullable|All|
+|System.Random|All|
+|System.SByte|All|
+|System.Security.Cryptography.AsymmetricAlgorithm|All|
+|System.Security.Cryptography.CipherMode|All|
+|System.Security.Cryptography.HashAlgorithm|All|
+|System.Security.Cryptography.HashAlgorithmName|All|
+|System.Security.Cryptography.HMAC|All|
+|System.Security.Cryptography.HMACMD5|All|
+|System.Security.Cryptography.HMACSHA1|All|
+|System.Security.Cryptography.HMACSHA256|All|
+|System.Security.Cryptography.HMACSHA384|All|
+|System.Security.Cryptography.HMACSHA512|All|
+|System.Security.Cryptography.KeyedHashAlgorithm|All|
+|System.Security.Cryptography.MD5|All|
+|System.Security.Cryptography.Oid|All|
+|System.Security.Cryptography.PaddingMode|All|
+|System.Security.Cryptography.RNGCryptoServiceProvider|All|
+|System.Security.Cryptography.RSA|All|
+|System.Security.Cryptography.RSAEncryptionPadding|All|
+|System.Security.Cryptography.RSASignaturePadding|All|
+|System.Security.Cryptography.SHA1|All|
+|System.Security.Cryptography.SHA1Managed|All|
+|System.Security.Cryptography.SHA256|All|
+|System.Security.Cryptography.SHA256Managed|All|
+|System.Security.Cryptography.SHA384|All|
+|System.Security.Cryptography.SHA384Managed|All|
+|System.Security.Cryptography.SHA512|All|
+|System.Security.Cryptography.SHA512Managed|All|
+|System.Security.Cryptography.SymmetricAlgorithm|All|
+|System.Security.Cryptography.X509Certificates.PublicKey|All|
+|System.Security.Cryptography.X509Certificates.RSACertificateExtensions|All|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
+|System.Security.Cryptography.X509Certificates.X509Certificate|All|
+|System.Security.Cryptography.X509Certificates.X509Certificate2|All|
+|System.Security.Cryptography.X509Certificates.X509ContentType|All|
+|System.Security.Cryptography.X509Certificates.X509NameType|All|
+|System.Single|All|
+|System.String|All|
+|System.StringComparer|All|
+|System.StringComparison|All|
+|System.StringSplitOptions|All|
+|System.Text.Encoding|All|
 |System.Text.RegularExpressions.Capture|Index, Length, Value|
 |System.Text.RegularExpressions.CaptureCollection|Count, Item|
 |System.Text.RegularExpressions.Group|Captures, Success|
 |System.Text.RegularExpressions.GroupCollection|Count, Item|
 |System.Text.RegularExpressions.Match|Empty, Groups, Result|
 |System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, Match, Matches, Replace, Unescape, Split|
-|System.Text.RegularExpressions.RegexOptions|Alle|
-|System.Text.StringBuilder|Alle|
-|System.TimeSpan|Alle|
-|System.TimeZone|Alle|
-|System.TimeZoneInfo.AdjustmentRule|Alle|
-|System.TimeZoneInfo.TransitionTime|Alle|
-|System.TimeZoneInfo|Alle|
-|System.Tuple|Alle|
-|System.UInt16|Alle|
-|System.UInt32|Alle|
-|System.UInt64|Alle|
-|System.Uri|Alle|
-|System.UriPartial|Alle|
-|System.Xml.Linq.Extensions|Alle|
-|System.Xml.Linq.XAttribute|Alle|
-|System.Xml.Linq.XCData|Alle|
-|System.Xml.Linq.XComment|Alle|
-|System.Xml.Linq.XContainer|Alle|
-|System.Xml.Linq.XDeclaration|Alle|
+|System.Text.RegularExpressions.RegexOptions|All|
+|System.Text.StringBuilder|All|
+|System.TimeSpan|All|
+|System.TimeZone|All|
+|System.TimeZoneInfo.AdjustmentRule|All|
+|System.TimeZoneInfo.TransitionTime|All|
+|System.TimeZoneInfo|All|
+|System.Tuple|All|
+|System.UInt16|All|
+|System.UInt32|All|
+|System.UInt64|All|
+|System.Uri|All|
+|System.UriPartial|All|
+|System.Xml.Linq.Extensions|All|
+|System.Xml.Linq.XAttribute|All|
+|System.Xml.Linq.XCData|All|
+|System.Xml.Linq.XComment|All|
+|System.Xml.Linq.XContainer|All|
+|System.Xml.Linq.XDeclaration|All|
 |System.Xml.Linq.XDocument|Alle außer: Laden|
-|System.Xml.Linq.XDocumentType|Alle|
-|System.Xml.Linq.XElement|Alle|
-|System.Xml.Linq.XName|Alle|
-|System.Xml.Linq.XNamespace|Alle|
-|System.Xml.Linq.XNode|Alle|
-|System.Xml.Linq.XNodeDocumentOrderComparer|Alle|
-|System.Xml.Linq.XNodeEqualityComparer|Alle|
-|System.Xml.Linq.XObject|Alle|
-|System.Xml.Linq.XProcessingInstruction|Alle|
-|System.Xml.Linq.XText|Alle|
-|System.Xml.XmlNodeType|Alle|
+|System.Xml.Linq.XDocumentType|All|
+|System.Xml.Linq.XElement|All|
+|System.Xml.Linq.XName|All|
+|System.Xml.Linq.XNamespace|All|
+|System.Xml.Linq.XNode|All|
+|System.Xml.Linq.XNodeDocumentOrderComparer|All|
+|System.Xml.Linq.XNodeEqualityComparer|All|
+|System.Xml.Linq.XObject|All|
+|System.Xml.Linq.XProcessingInstruction|All|
+|System.Xml.Linq.XText|All|
+|System.Xml.XmlNodeType|All|
 
 ## <a name="ContextVariables"></a> Kontextvariable
 Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api-management-policy-expressions.md#Syntax) zur Verfügung. Ihre Mitglieder bieten Informationen zu `\request`. Alle `context`-Mitglieder sind schreibgeschützt.
@@ -253,4 +253,4 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
++ [API Management-Richtlinienbeispiele](policy-samples.md)

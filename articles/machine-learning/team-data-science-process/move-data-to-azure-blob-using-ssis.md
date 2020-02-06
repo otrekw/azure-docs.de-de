@@ -3,29 +3,29 @@ title: 'Verschieben von Blob Storage-Daten mit SSIS-Connectors: Team Data Scienc
 description: Erfahren Sie, wie Sie Daten mithilfe von SQL Server Integration Services Feature Pack für Azure in oder aus Azure Blob Storage verschieben.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8fb802905070ab1ddc8af93e501e8e11e262cf4a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053932"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720870"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
 Das [SQL Server Integration Services Feature Pack für Azure](https://msdn.microsoft.com/library/mt146770.aspx) bietet Komponenten zum Herstellen einer Verbindung mit Azure, Übertragen von Daten zwischen Azure und lokalen Datenquellen und Verarbeiten von in Azure gespeicherten Daten.
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Nachdem Kunden lokale Daten in die Cloud verschoben haben, können sie über sämtliche Azure-Dienste darauf zugreifen, um die ganze Leistungsfähigkeit der Azure-Technologiepalette zu nutzen. Die Daten können beispielsweise in Azure Machine Learning oder einem HDInsight-Cluster verwendet werden.
+Nachdem Kunden lokale Daten in die Cloud verschoben haben, können sie über sämtliche Azure-Dienste darauf zugreifen, um die ganze Leistungsfähigkeit der Azure-Technologiepalette zu nutzen. Die Daten können anschließend z. B. in Azure Machine Learning oder auf einem HDInsight-Cluster verwendet werden.
 
-Dies ist normalerweise der erste Schritt in exemplarischen Vorgehensweisen für [SQL](sql-walkthrough.md) und [HDInsight](hive-walkthrough.md).
+Beispiele für die Verwendung dieser Azure-Ressourcen finden sich in den exemplarischen Vorgehensweisen zu [SQL](sql-walkthrough.md) und [HDInsight](hive-walkthrough.md).
 
 Eine Beschreibung gängiger Szenarien, in denen SQL Server Integration Services (SSIS) zum Erfüllen geschäftlicher Anforderungen in hybriden Datenintegrationsszenarien zum Einsatz kommt, finden Sie im Blog [Doing more with SQL Server Integration Services Feature Pack for Azure](https://blogs.msdn.com/b/ssis/archive/2015/06/25/doing-more-with-sql-server-integration-services-feature-pack-for-azure.aspx) .
 
@@ -35,15 +35,15 @@ Eine Beschreibung gängiger Szenarien, in denen SQL Server Integration Services 
 > 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Ausführen der in diesem Artikel beschriebenen Aufgaben benötigen Sie ein eingerichtetes Azure-Abonnement und Azure-Speicherkonto. Um Daten hoch- und herunterladen zu können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen.
+Zum Ausführen der in diesem Artikel beschriebenen Aufgaben benötigen Sie ein eingerichtetes Azure-Abonnement und Azure Storage-Konto. Um Daten hoch- und herunterladen zu können, benötigen Sie den Namen Ihres Azure Storage-Kontos und den Kontoschlüssel.
 
 * Informationen zum Einrichten eines **Azure-Abonnements**finden Sie unter [Kostenlose 1-Monat-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Anleitungen zum Erstellen eines **Speicherkontos** und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md).
+* Anleitungen zum Erstellen eines **Speicherkontos** und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure Storage-Konten](../../storage/common/storage-create-storage-account.md).
 
 Zum Verwenden der **SSIS-Connectors**müssen Sie Folgendes herunterladen:
 
 * **SQL Server 2014 oder 2016 Standard (oder höher)** : Die Installation umfasst SQL Server Integration Services.
-* **Microsoft SQL Server 2014 oder 2016 Integration Services Feature Pack für Azure**: Diese Pakete können auf den Seiten [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) bzw. [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) heruntergeladen werden.
+* **Microsoft SQL Server 2014 oder 2016 Integration Services Feature Pack für Azure**: Diese Connectors können auf den Seiten [SQL Server 2014 Integration Services](https://www.microsoft.com/download/details.aspx?id=47366) bzw. [SQL Server 2016 Integration Services](https://www.microsoft.com/download/details.aspx?id=49492) heruntergeladen werden.
 
 > [!NOTE]
 > SSIS wird mit SQL Server installiert, ist aber nicht in der Express-Version enthalten. Informationen dazu, welche Anwendungen in verschiedenen Editionen von SQL Server enthalten sind, finden Sie unter [SQL Server-Editionen](https://www.microsoft.com/en-us/server-cloud/products/sql-server-editions/).
@@ -55,7 +55,7 @@ Schulungsmaterialien für SSIS finden Sie unter [Praktische Schulung für SSIS](
 Informationen zur Inbetriebnahme von SSIS zum Erstellen von ETL-Paketen (Extrahieren, Transformieren, Laden) finden Sie im [SSIS-Tutorial: Erstellen eines einfachen ETL-Pakets](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Herunterladen des Datasets „NYC Taxi Trips“
-Das hier beschriebene Beispiel verwendet ein öffentlich verfügbares Dataset mit dem Namen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das Dataset besteht aus ca. 173 Millionen Taxifahrten in New York im Jahr 2013. Es gibt zwei Arten von Daten: Daten zu Fahrten und Daten zum Fahrpreis. Für jeden Monat gibt es jeweils eine Datei, sodass wir insgesamt 24 Dateien haben, die unkomprimiert jeweils 2 GB groß sind.
+Das hier beschriebene Beispiel verwendet ein öffentlich verfügbares Dataset mit dem Namen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das Dataset besteht aus ca. 173 Millionen Taxifahrten in New York im Jahr 2013. Es gibt zwei Arten von Daten: Daten zu Fahrten und Daten zum Fahrpreis. Für jeden Monat gibt es jeweils eine Datei, sodass wir insgesamt 24 Dateien haben, die unkomprimiert jeweils ungefähr 2 GB groß sind.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Hochladen von Daten in Azure Blob Storage
 Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure Blob Storage zu verschieben, verwenden wir eine Instanz der nachstehend gezeigten [**Aufgabe zum Hochladen von Azure-Blobs**](https://msdn.microsoft.com/library/mt146776.aspx):
@@ -64,14 +64,14 @@ Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure Blob Stor
 
 Die Parameter dieser Aufgabe werden nachfolgend beschrieben:
 
-| Feld | BESCHREIBUNG |
+| Feld | Beschreibung |
 | --- | --- |
-| **AzureStorageConnection** |Gibt einen vorhandenen Azure Storage-Verbindungs-Manager an oder erstellt einen neuen, der auf ein Azure-Speicherkonto verweist, das dorthin zeigt, wo die Blobdateien gehostet werden. |
+| **AzureStorageConnection** |Gibt einen vorhandenen Azure Storage-Verbindungs-Manager an oder erstellt einen neuen, der auf ein Azure Storage-Konto verweist, das dorthin zeigt, wo die Blobdateien gehostet werden. |
 | **BlobContainer** |Gibt den Namen des Blobcontainers an, der die hochgeladenen Dateien als Blobs enthält. |
 | **BlobDirectory** |Gibt das Blobverzeichnis an, in dem die hochgeladene Datei als Blockblob gespeichert wird. Das Blobverzeichnis ist eine virtuelle hierarchische Struktur. Wenn das Blob bereits vorhanden ist, wird es ersetzt. |
 | **LocalDirectory** |Gibt das lokale Verzeichnis mit den hochzuladenden Dateien an. |
 | **FileName** |Gibt einen Namensfilter an, um Dateien mit dem angegebenen Namensmuster auszuwählen. Beispielsweise enthält „MySheet\*.xls\*“ Dateien wie „MySheet001.xls“ und „MySheetABC.xlsx“. |
-| **TimeRangeFrom/TimeRangeTo** |Gibt einen Zeitbereichsfilter an. Nach *TimeRangeFrom* und vor *TimeRangeTo* geänderte Dateien werden eingeschlossen. |
+| **TimeRangeFrom/TimeRangeTo** |Gibt einen Zeitbereichsfilter an. Dateien, die nach *TimeRangeFrom* und vor *TimeRangeTo* geändert wurden, sind eingeschlossen. |
 
 > [!NOTE]
 > Die Anmeldeinformationen für **AzureStorageConnection** müssen ordnungsgemäß sein, und der **BlobContainer** muss vorhanden sein, bevor die Übertragung versucht wird.

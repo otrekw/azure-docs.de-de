@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433433"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714469"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel erfahren Sie, wie Sie das Clustering in einer Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
@@ -58,12 +58,7 @@ Beispielcode zum Arbeiten mit Clustering mit dem StackExchange.Redis-Client find
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Ändern der Clustergröße auf einem ausgeführten Premium-Cache
-Klicken Sie zum Ändern der Clustergröße auf einem ausgeführten Premium-Cache mit aktiviertem Clustering im **Ressourcenmenü** auf **Größe des Redis-Clusters**.
-
-> [!NOTE]
-> Das Feature „Redis-Clustergröße“ befindet sich derzeit noch in der Vorschauphase, auch wenn Azure Cache for Redis im Premium-Tarif bereits allgemein verfügbar ist.
-> 
-> 
+Klicken Sie zum Ändern der Clustergröße in einem ausgeführten Premium-Cache mit aktiviertem Clustering im **Ressourcenmenü** auf **Clustergröße**.
 
 ![Redis-Clustergröße][redis-cache-redis-cluster-size]
 

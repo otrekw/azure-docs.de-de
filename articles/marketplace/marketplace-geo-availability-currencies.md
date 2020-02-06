@@ -6,20 +6,20 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822952"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843836"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
 
 Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen gemäß der Rechnungsadresse des Kunden erworben werden, und Transaktionen können in 17 Währungen durchgeführt werden. Die folgende Tabelle listet jeden unterstützten geografischen Standort auf, seinen [zweistelligen Alpha Code nach ISO 3166](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), und die zugewiesene Währung.
 
-|   Name des Landes/der Region               |   ISO-2   |   Currency   |
+|   Name des Landes/der Region               |   ISO-2   |   Währung   |
 |-------------------------------------|-----------|--------------|
 | Afghanistan                         | AF        | USD          |
 | Albanien                             | AL        | USD          |
@@ -30,7 +30,7 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 | Armenien                             | AM        | USD          |
 | Australien                           | AU        | AUD          |
 | Österreich                             | AT        | EUR          |
-| Aserbaidschan                          | AZ        | USD          |
+| Aserbaidschan                          | RP        | USD          |
 | Bahrain                             | BH        | USD          |
 | Bangladesch                          | BD        | USD          |
 | Barbados                            | BB        | USD          |
@@ -45,10 +45,11 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 | Brunei                              | BN        | USD          |
 | Bulgarien                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
-| Kanada                              | CA        | CAD          |
+| Canada                              | CA        | CAD          |
 | Cabo Verde                          | CV        | USD          |
-| Kaimaninseln                      | KY        | USD          |
+| Kaimaninseln                      | HE        | USD          |
 | Chile                               | CL        | USD          |
+| China\**                            | CN        | –          |
 | Kolumbien                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
 | Côte d'Ivoire                       | CI        | USD          |
@@ -80,7 +81,7 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 | Indonesien                           | id        | USD          |
 | Irak                                | IQ        | USD          |
 | Irland                             | IE        | EUR          |
-| Israel                              | IL        | USD          |
+| Israel                              | BY        | USD          |
 | Italien                               | IT        | EUR          |
 | Jamaika                             | JM        | USD          |
 | Japan                               | JP        | JPY          |
@@ -104,16 +105,16 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 | Mexiko                              | MX        | USD          |
 | Moldau                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
-| Mongolei                            | MN        | USD          |
+| Mongolei                            | BB        | USD          |
 | Montenegro                          | ME        | USD          |
-| Marokko                             | MA        | USD          |
+| Marokko                             | NI        | USD          |
 | Namibia                             | Nicht verfügbar        | USD          |
 | Nepal                               | NP        | USD          |
 | Niederlande                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |
 | Neuseeland                         | NZ        | NZD          |
 | Nigeria                             | NG        | USD          |
-| Norwegen                              | NO        | NOK          |
+| Norwegen                              | Nein        | NOK          |
 | Oman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
 | Palästinensische Autonomiegebiete               | PS        | USD          |
@@ -153,7 +154,7 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 | Uganda                              | UG        | USD          |
 | Ukraine                             | UA        | USD          |
 | Vereinigte Arabische Emirate                | AE        | USD          |
-| Vereinigtes Königreich                      | GB        | GBP          |
+| United Kingdom                      | GB        | GBP          |
 | USA                       | US        | USD          |
 | Uruguay                             | UY        | USD          |
 | Usbekistan                          | UZ        | USD          |
@@ -165,3 +166,5 @@ Azure Marketplace- und AppSource-Angebote können in 141 geografischen Regionen 
 |   |   |   |
 
 \* Für Kunden in Brasilien wird im Marketplace über Cloud Solution Provider (CSP) die Währung USD verwendet.
+
+\** Nur kostenlose und BYOL-VM-Images.

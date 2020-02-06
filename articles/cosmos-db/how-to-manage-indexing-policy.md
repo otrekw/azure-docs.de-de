@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872059"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767993"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>Verwenden des Python SDK
+## <a name="use-the-python-sdk-v3"></a>Verwenden des Python SDK Version 3
 
-Bei Verwendung des [Python SDK](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in[diesem Schnellstart](create-sql-api-python.md)) wird die Konfiguration des Containers als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
+Bei Verwendung des [Python SDK V3](https://pypi.org/project/azure-cosmos/) (Informationen zur Verwendung in [diesem Schnellstart](create-sql-api-python.md)) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
 
 Abrufen der Details des Containers
 
@@ -669,6 +669,72 @@ Aktualisieren des Containers mit Änderungen
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
+```
+
+## <a name="use-the-python-sdk-v4"></a>Verwenden des Python SDK Version 4
+
+Bei Verwendung des [Python SDK V4](https://pypi.org/project/azure-cosmos/) wird die Containerkonfiguration als Wörterbuch verwaltet. Über dieses Wörterbuch ist der Zugriff auf die Indizierungsrichtlinie und alle ihre Attribute möglich.
+
+Abrufen der Details des Containers
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Festlegen des Indizierungsmodus auf „Konsistent“
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Definieren einer Indizierungsrichtlinie mit einem eingeschlossenen Pfad und einem räumlichen Index
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Definieren einer Indizierungsrichtlinie mit einem ausgeschlossenen Pfad
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Hinzufügen eines zusammengesetzten Index
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+Aktualisieren des Containers mit Änderungen
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zu Azure Media Services | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Azure Media Services
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3aeff680392fbe966682b57ca1318fac9f0d1d93
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bdb5a43ad6669bfcd6e93ef4e3bf1646314e4606
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895981"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705869"
 ---
-# <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+# <a name="media-services-v2-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v2
 
 In diesem Artikel werden häufig gestellte Fragen behandelt, die in der Benutzercommunity von Azure Media Services (AMS) aufgekommen sind.
 

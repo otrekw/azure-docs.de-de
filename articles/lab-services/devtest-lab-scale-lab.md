@@ -1,6 +1,6 @@
 ---
 title: Skalierungskontingente und -beschränkungen in Labs in Azure DevTest Labs | Microsoft-Dokumentation
-description: Informationen zum Erstellen eines Labs in Azure DevTest Labs
+description: In diesem Artikel wird beschrieben, wie Sie Ihr Lab in Azure DevTest Labs skalieren. Zeigen Sie Ihre Nutzungskontingente und -limits an, und fordern Sie eine Erhöhung an.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644850"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761184"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalierungskontingente und -beschränkungen in DevTest Labs
 Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bestimmte Standardbeschränkungen für Azure-Ressourcen gelten, die sich auf den DevTest Labs-Dienst auswirken können. Diese Beschränkungen werden als **Kontingente** bezeichnet.

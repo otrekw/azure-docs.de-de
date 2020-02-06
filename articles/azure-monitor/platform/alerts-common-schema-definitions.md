@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552558"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765674"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
@@ -71,9 +71,9 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 }
 ```
 
-## <a name="essentials"></a>Zusammenfassung
+## <a name="essentials"></a>Essentials
 
-| Feld | BESCHREIBUNG|
+| Feld | Beschreibung|
 |:---|:---|
 | alertId | Die GUID, die diese Warnungsinstanz eindeutig identifiziert. |
 | alertRule | Der Name der Warnungsregel, die die Warnungsinstanz generiert hat. |
@@ -151,7 +151,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen, für die eine benutzerdefinierte JSON-Nutzlast definiert ist, wird das Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

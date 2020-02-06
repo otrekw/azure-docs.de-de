@@ -2,17 +2,17 @@
 title: Integrieren von Azure DNS in Ihre Azure-Ressourcen – Azure DNS
 description: In diesem Artikel erfahren Sie, wie Sie mit Azure DNS für Ihre Azure-Ressourcen DNS bereitstellen.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
-ms.author: allensu
-ms.openlocfilehash: b005cb9e0611d18c24e2b77abf493292d47f44b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.author: rohink
+ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212414"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934902"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -38,9 +38,9 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |Wert  |BESCHREIBUNG  |
+|Eigenschaft  |value  |Beschreibung  |
 |---------|---------|---------|
-|NAME     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|Name     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -63,10 +63,10 @@ Navigieren Sie zu **Netzwerk** > **Öffentliche IP-Adresse**, wählen Sie als Re
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |BESCHREIBUNG  |
+|Eigenschaft  |value  |Beschreibung  |
 |---------|---------|---------|
-|NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
-|type     | Eine Datei        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
+|Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|type     | Ein        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
 |IP-Adresse     | `<your ip address>`       | Öffentliche IP-Adresse|
@@ -90,9 +90,9 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |BESCHREIBUNG  |
+|Eigenschaft  |value  |Beschreibung  |
 |---------|---------|---------|
-|NAME     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -126,9 +126,9 @@ Navigieren Sie zu **Speicher** > **Speicherkonten**, wählen Sie Ihr Speicherkon
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |Wert  |BESCHREIBUNG  |
+|Eigenschaft  |value  |Beschreibung  |
 |---------|---------|---------|
-|NAME     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|Name     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |
@@ -154,9 +154,9 @@ Wählen Sie den Endpunkt aus, mit dem Sie arbeiten, und klicken Sie auf **+ Benu
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |Wert  |BESCHREIBUNG  |
+|Eigenschaft  |value  |Beschreibung  |
 |---------|---------|---------|
-|NAME     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
+|Name     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
 |TTL     | 1        | 1 steht für 1 Stunde.        |
 |TTL-Einheit     | Stunden        | Stunden werden als Maßeinheit für die Zeit verwendet.         |

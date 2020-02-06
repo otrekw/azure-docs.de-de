@@ -3,25 +3,25 @@ title: 'Azure Service Fabric CLI: sfctl chaos'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Verwalten von Chaos.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b91c11dfb9b1249420429bee20f12439fffa4853
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646176"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906167"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
 
 ## <a name="subgroups"></a>Untergruppen
-|Untergruppe|BESCHREIBUNG|
+|Untergruppe|Beschreibung|
 | --- | --- |
 | [schedule](service-fabric-sfctl-chaos-schedule.md) | Ruft den Zeitplan des Chaostests ab und legt diesen fest. |
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | events | Ruft das jeweils nächste Segment der Chaostestereignisse basierend auf dem Fortsetzungstoken oder Zeitbereich ab. |
 | get | Ruft den Status des Chaostests ab. |
@@ -35,7 +35,7 @@ Um das jeweils nächste Segment der Chaostestereignisse abzurufen, können Sie d
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
 | --end-time-utc | Die Windows-Dateizeit, die die Endzeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
@@ -45,7 +45,7 @@ Um das jeweils nächste Segment der Chaostestereignisse abzurufen, können Sie d
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -60,13 +60,13 @@ Ruft den Status des Chaostests ab, wobei der Ausführungsstatus des Chaostests, 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -81,7 +81,7 @@ Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cl
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --app-type-health-policy-map | JSON-codierte Liste mit maximalem Prozentsatz fehlerhafter Anwendungen für bestimmte Anwendungstypen. Jeder Eintrag gibt als Schlüssel den Namen des Anwendungstyps und als Wert eine ganze Zahl an, die dem MaxPercentUnhealthyApplications-Prozentsatz entspricht, mit dem die Anwendungen des angegebenen Anwendungstyps ausgewertet werden. <br><br> Definiert eine Zuordnung mit dem maximalem Prozentsatz fehlerhafter Anwendungen für bestimmte Anwendungstypen. Jeder Eintrag gibt als Schlüssel den Namen des Anwendungstyps und als Wert einen Integer an, die dem MaxPercentUnhealthyApplications-Prozentsatz entspricht und dazu verwendet wird, die Anwendungen des angegebenen Anwendungstyps zu bewerten. Die Zuordnung der Anwendungstyp-Integritätsrichtlinie kann während der Clusterintegritätsevaluierung verwendet werden, um spezielle Anwendungstypen zu beschreiben. Die in der Zuordnung enthaltenen Anwendungstypen werden anhand des Prozentsatzes, der in der Zuordnung angegeben ist, und nicht anhand des in der Clusterintegritätsrichtlinie definierten globalen MaxPercentUnhealthyApplications-Werts ausgewertet. Anwendungen der Anwendungstypen, die in der Zuordnung angegeben sind, werden nicht zum globalen Pool von Anwendungen gezählt. Wenn beispielsweise einige Anwendungen eines Typs wichtig sind, kann der Clusteradministrator der Zuordnung einen Eintrag für diesen Anwendungstyp hinzufügen und ihm den Wert 0 % zuweisen (der aussagt, dass Fehler nicht toleriert werden). Alle anderen Anwendungen können mit einem MaxPercentUnhealthyApplications-Wert von 20 % ausgewertet werden, bei dem einige Ausfälle bei Tausenden von Anwendungsinstanzen toleriert werden. Die Zuordnung von Anwendungstypen zu Integritätsrichtlinien wird nur angewendet, wenn das Clustermanifest die Auswertung der Integrität von Anwendungstypen mithilfe des Konfigurationseintrags für HealthManager/EnableApplicationTypeHealthEvaluation ermöglicht. |
 | --chaos-target-filter | JSON-codiertes Wörterbuch mit zwei Schlüsseln vom Typ string. Die beiden Schlüssel sind NodeTypeInclusionList und ApplicationInclusionList. Die Werte für beide Schlüssel sind Listen von Zeichenfolgen. chaos_target_filter definiert alle Filter für die Chaos-Zielfehler, um z.B. nur bestimmte Knotentypen oder Anwendungen zu stören. <br><br> Wenn chaos_target_filter nicht verwendet wird, stört Chaos alle Clusterentitäten. Wenn chaos_target_filter verwendet wird, stört Chaos nur die Entitäten, die der chaos_target_filter-Spezifikation entsprechen. NodeTypeInclusionList und ApplicationInclusionList gestatten lediglich eine Vereinigungssemantik. Es ist nicht möglich, eine Schnittmenge von NodeTypeInclusionList und ApplicationInclusionList anzugeben. Es ist z. B. nicht möglich, Folgendes anzugeben: „Diese Anwendung nur bemängeln, wenn sie sich auf diesem Knotentyp befindet“. Sobald eine Entität entweder in „NodeTypeInclusionList“ oder „ApplicationInclusionList“ enthalten ist, kann diese Entität nicht mit „ChaosTargetFilter“ ausgeschlossen werden. Selbst wenn „applicationX“ nicht in „ApplicationInclusionList“ enthalten ist, kann „applicationX“ in manchen Chaos-Iterationen fehlerhaft sein, da es sich anscheinend auf einem Knoten von „nodeTypeY“ befindet, der in „NodeTypeInclusionList“ enthalten ist. Wenn sowohl NodeTypeInclusionList als auch ApplicationInclusionList leer sind, wird eine ArgumentException ausgelöst. Für die Knoten dieser Knotentypen sind alle Arten von Fehlern („Knoten neu starten“, „Codepaket neu starten“, „Replikat entfernen“, „Replikat neu starten“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“) aktiviert. Wenn ein Knotentyp (z.B. NodeTypeX) nicht in NodeTypeInclusionList enthalten ist, dann werden Fehler auf Knotenebene (z.B. NodeRestart) niemals für die Knoten von NodeTypeX aktiviert, aber Codepaket- und Replikatfehler können für NodeTypeX weiterhin aktiviert werden, wenn sich eine Anwendung in ApplicationInclusionList zufällig auf einem Knoten von NodeTypeX befindet. Es können maximal 100 Knotentypnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade der MaxNumberOfNodeTypesInChaosEntityFilter-Konfiguration erforderlich. Alle Replikate, die zu den Diensten dieser Anwendungen gehören, sind durch Chaos für Replikatfehler anfällig („Replikat neu starten“, „Replikat entfernen“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“). Chaos startet ein Codepaket möglicherweise nur neu, wenn das Codepaket nur Replikate dieser Anwendungen hostet. Wenn eine Anwendung nicht in dieser Liste enthalten ist, kann sie dennoch in einer Chaos-Iteration gestört werden, wenn die Anwendung auf einem Knoten eines Knotentyps landet, der in NodeTypeInclusionList enthalten ist. Wenn „applicationX“ jedoch durch Platzierungseinschränkungen an „nodeTypeY“ gebunden ist und „applicationX“ in „ApplicationInclusionList“ fehlt und „nodeTypeY“ in „NodeTypeInclusionList“ fehlt, dann wird „applicationX“ niemals fehlerhaft sein. Es können maximal 1.000 Anwendungsnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade der MaxNumberOfApplicationsInChaosEntityFilter-Konfiguration erforderlich. |
@@ -99,7 +99,7 @@ Startet Chaos mit den übergebenen Chaos-Parametern, wenn Chaos noch nicht im Cl
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -114,13 +114,13 @@ Verhindert die Ausführung neuer Fehler im Rahmen des Chaostests. In der Ausfüh
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

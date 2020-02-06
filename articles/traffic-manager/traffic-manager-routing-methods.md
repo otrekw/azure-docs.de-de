@@ -2,20 +2,20 @@
 title: 'Azure Traffic Manager: Routingmethoden für Datenverkehr'
 description: Dieser Artikel erläutert Ihnen die verschiedenen Methoden für das Datenverkehrsrouting, die von Traffic Manager verwendet werden.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
-ms.author: allensu
-ms.openlocfilehash: 824fabf6e694b7148486d6593cf17f741d9e5c9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.author: rohink
+ms.openlocfilehash: 4a035506943eeffa2c3fc4fec27c47da4136683b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483786"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938454"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
@@ -26,7 +26,7 @@ Die folgenden vier Methoden für das Datenverkehrsrouting sind in Traffic Manage
 * **[Priorität:](#priority-traffic-routing-method)** Wählen Sie **Priorität** aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt oder der Sicherungsendpunkt nicht verfügbar ist.
 * **[Gewichtet:](#weighted)** Wählen Sie **Gewichtet**, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten – gleichmäßig oder gemäß einer von Ihnen definierten Gewichtung.
 * **[Leistung:](#performance)** Wählen Sie **Leistung** aus, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden und Endbenutzer an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet werden sollen.
-* **[Geografisch:](#geographic)** Wählen Sie **Geographisch** aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Beispiele dafür bilden etwa die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
+* **[Geografisch:](#geographic)** Wählen Sie **Geographisch** aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Zu Beispielen dafür gehören die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
 * **[MultiValue:](#multivalue)** Wählen Sie **MultiValue** für Traffic Manager-Profile aus, die nur IPv4-/IPv6-Adressen als Endpunkte enthalten können. Wenn eine Abfrage für dieses Profil empfangen wird, werden alle fehlerfreien Endpunkte zurückgegeben.
 * **[Subnetz:](#subnet)** Wählen Sie die Datenverkehrsrouting-Methode **Subnetz** aus, um Gruppen von Endbenutzer-IP-Adressbereichen einem bestimmten Endpunkt in einem Traffic Manager-Profil zuzuordnen. Wenn eine Anforderung empfangen wird, wird der Endpunkt zurückgegeben, der für die Quell-IP-Adresse dieser Anforderung zugeordnet ist. 
 
@@ -98,7 +98,7 @@ Beachten Sie Folgendes:
 
 ## <a name = "geographic"></a>Geografische Routingmethode für Datenverkehr
 
-Traffic Manager-Profile können für die Verwendung der geografischen Routingmethode konfiguriert werden, damit Benutzer je nach dem geografischen Ursprungsort ihrer DNS-Abfrage auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Beispiele dafür bilden etwa die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
+Traffic Manager-Profile können für die Verwendung der geografischen Routingmethode konfiguriert werden, damit Benutzer je nach dem geografischen Ursprungsort ihrer DNS-Abfrage auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Zu Beispielen dafür gehören die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
 Wenn ein Profil für geografisches Routing konfiguriert ist, muss jedem Endpunkt, der dem betreffenden Profil zugeordnet ist, eine Reihe geografischer Regionen zugeordnet sein. Die Granularität einer geografischen Region kann die folgenden Abstufungen aufweisen 
 - Welt – jede Region
 - Regionale Gruppierung - zum Beispiel Afrika, Naher Osten, Australien/Pazifik usw. 

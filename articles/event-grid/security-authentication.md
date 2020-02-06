@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid – Sicherheit und Authentifizierung
-description: Beschreibt Azure Event Grid und die zugehörigen Konzepte.
+description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben.
 services: event-grid
 author: banisadr
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: e8913c1f198c89bdcd779d2faf2706f9d4079c5c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169576"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846293"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -85,9 +85,9 @@ Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die
 }
 ```
 
-Sie müssen den Antwortstatuscode „HTTP 200 OK“ zurückgeben. „HTTP 202 Akzeptiert“ wird nicht als gültige Antwort zur Überprüfung des Event Grid-Abonnements erkannt. Die HTTP-Anforderung muss innerhalb von 30 Sekunden abgeschlossen werden. Wenn der Vorgang nicht innerhalb von 30 Sekunden abgeschlossen wird, wird er abgebrochen und kann nach 5 Sekunden wiederholt werden. Wenn alle Versuche zu Fehlern führen, wird dies als Handshake-Validierungsfehler gewertet.
+Sie müssen den Antwortstatuscode „HTTP 200 OK“ zurückgeben. „HTTP 202 Akzeptiert“ wird nicht als gültige Antwort zur Überprüfung des Event Grid-Abonnements erkannt. Die HTTP-Anforderung muss innerhalb von 30 Sekunden abgeschlossen werden. Wenn der Vorgang nicht innerhalb von 30 Sekunden abgeschlossen wird, wird er abgebrochen und kann nach 5 Sekunden wiederholt werden. Wenn alle Versuche zu Fehlern führen, wird dies als Handshake-Validierungsfehler gewertet.
 
-Alternativ können Sie das Abonnement manuell überprüfen, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement verbleibt im Status „Ausstehend“, bis es validiert wurde. Für die Validierungs-URL wird Port 553 verwendet. Wenn die Firewallregeln Port 553 blockieren, müssen die Regeln für einen erfolgreichen manuellen Handshake möglicherweise angepasst werden.
+Alternativ können Sie das Abonnement manuell überprüfen, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde. Die Überprüfungs-URL verwendet den Port 553. Wenn die Firewallregeln Port 553 blockieren, müssen die Regeln für einen erfolgreichen manuellen Handshake möglicherweise angepasst werden.
 
 Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung finden Sie in einem [C#-Beispiel](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs).
 
@@ -95,7 +95,7 @@ Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung find
 
 Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art „Fehler beim Versuch, den angegebenen Endpunkt https:\//your-endpoint-here zu überprüfen. Ausführlichere Informationen finden Sie unter https:\//aka.ms/esvalidation.“ angezeigt wird, ist dies ein Hinweis darauf, dass für den Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:
 
-* Verfügen Sie über die Kontrolle über den Anwendungscode auf dem Zielendpunkt? Haben Sie beispielsweise beim Schreiben einer Azure Function, die auf einem HTTP-Trigger basiert, Zugriff auf den Anwendungscode, um Änderungen daran vorzunehmen?
+* Haben Sie die Kontrolle über den am Zielendpunkt ausgeführten Anwendungscode? Haben Sie beispielsweise beim Schreiben einer Azure Function, die auf einem HTTP-Trigger basiert, Zugriff auf den Anwendungscode, um Änderungen daran vorzunehmen?
 * Wenn Sie Zugriff auf den Anwendungscode haben, sollten Sie den ValidationCode-basierten Handshakemechanismus wie im obigen Beispiel implementieren.
 
 * Wenn Sie keinen Zugriff auf den Anwendungscode haben (z.B. bei Nutzung eines Drittanbieterdiensts, der Webhooks unterstützt), können Sie den manuellen Handshakemechanismus verwenden. Vergewissern Sie sich, dass Sie die API-Version „2018-05-01-preview“ oder eine spätere Version verwenden (installieren Sie die eventgrid-Erweiterung für die Azure-Befehlszeilenschnittstelle), um den validationUrl-Wert im Überprüfungsereignis zu erhalten. Rufen Sie den Wert der `validationUrl`-Eigenschaft ab, und navigieren Sie im Webbrowser zu dieser URL, um den Handshake für die manuelle Validierung durchzuführen. Wenn die Überprüfung erfolgreich durchgeführt wurde, sollte im Webbrowser eine Meldung mit einem entsprechenden Hinweis angezeigt werden. Sie sehen dann, dass „provisioningState“ für das Ereignisabonnement auf „Succeeded“ (Erfolgreich) festgelegt ist. 
@@ -348,6 +348,10 @@ Im Folgenden finden Sie Beispiele für Event Grid-Rollendefinitionen, die Benutz
 ```
 
 Benutzerdefinierte Rollen können mit [PowerShell](../role-based-access-control/custom-roles-powershell.md), der [Azure CLI](../role-based-access-control/custom-roles-cli.md) oder der [REST-API](../role-based-access-control/custom-roles-rest.md) erstellt werden.
+
+## <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
+
+Alle Ereignisse oder Daten, die vom Event Grid-Dienst auf den Datenträger geschrieben werden, werden unter Verwendung eines von Microsoft verwalteten Schlüssels verschlüsselt, um die Verschlüsselung der ruhenden Daten zu gewährleisten. Ereignisse und Daten werden außerdem maximal 24 Stunden lang aufbewahrt (in Übereinstimmung mit der [Event Grid-Wiederholungsrichtlinie](delivery-and-retry.md)). Nach 24 Stunden oder nach Ablauf der Ereignislebensdauer (je nachdem, welcher Zeitraum kürzer ist) werden alle Ereignisse und Daten von Event Grid gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

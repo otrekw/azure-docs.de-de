@@ -3,22 +3,22 @@ title: Aktivieren von SSL in einer Containergruppe
 description: Erstellen eines SSL- oder TLS-Endpunkts für eine Containergruppe, die in Azure Container Instances ausgeführt wird
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483487"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773072"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Aktivieren eines SSL-Endpunkts in einer Containergruppe
 
 Dieser Artikel zeigt, wie Sie eine [Containergruppe](container-instances-container-groups.md) mit einem Anwendungscontainer und einem Sidecar-Container mit einem SSL-Anbieter erstellen. Durch die Einrichtung einer Containergruppe mit einem separaten SSL-Endpunkt aktivieren Sie SSL-Verbindungen für Ihre Anwendung, ohne Ihren Anwendungscode zu ändern.
 
-Sie richten eine Containergruppe mit zwei Containern ein:
+Sie richten eine Beispielcontainergruppe mit zwei Containern ein:
 * Ein Anwendungscontainer, der eine einfache Web-App mit dem öffentlichen Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)-Image ausführt. 
 * Ein Sidecar-Container, der das öffentliche [Nginx](https://hub.docker.com/_/nginx)-Image ausführt und für die Verwendung von SSL konfiguriert ist. 
 
-In diesem Beispiel stellt die Containergruppe nur den Port 443 für Nginx mit seiner öffentlichen IP-Adresse zur Verfügung. Nginx leitet HTTPS-Anforderungen an die begleitende Web-App weiter, die intern an Port 80 lauscht. Sie können das Beispiel für Container-Apps anpassen, die an anderen Ports lauschen.
+In diesem Beispiel stellt die Containergruppe nur den Port 443 für Nginx mit seiner öffentlichen IP-Adresse zur Verfügung. Nginx leitet HTTPS-Anforderungen an die begleitende Web-App weiter, die intern an Port 80 lauscht. Sie können das Beispiel für Container-Apps anpassen, die an anderen Ports lauschen. Weitere Ansätze zum Aktivieren von SSL in einer Containergruppe finden Sie unter [Nächste Schritte](#next-steps).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -235,4 +235,10 @@ Dieser Artikel hat Ihnen veranschaulicht, wie Sie einen Nginx-Container einricht
 
 Dieser Artikel verwendet zwar Nginx im Sidecar, aber Sie können einen anderen SSL-Anbieter verwenden, wie beispielsweise [Caddy](https://caddyserver.com/).
 
-Ein weiterer Ansatz zur Aktivierung von SSL in einer Containergruppe besteht darin, die Gruppe in einem virtuellen [Azure-Netzwerk](container-instances-vnet.md) mit einem [Azure-Anwendungsgateway](../application-gateway/overview.md) bereitzustellen. Das Gateway kann als SSL-Endpunkt eingerichtet werden. Sie können beispielsweise diese [Bereitstellungsvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) anpassten, um die SSL-Terminierung auf dem Gateway zu aktivieren.
+Wenn Sie die Containergruppe in einem [virtuellen Azure-Netzwerk](container-instances-vnet.md) bereitstellen, können Sie andere Optionen zum Aktivieren eines SSL-Endpunkts für eine Back-End-Containerinstanz in Erwägung ziehen, einschließlich:
+
+* [Azure Functions-Proxys](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Informationen zum Verwenden eines Anwendungsgateways finden Sie im Beispiel für eine [Bereitstellungsvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

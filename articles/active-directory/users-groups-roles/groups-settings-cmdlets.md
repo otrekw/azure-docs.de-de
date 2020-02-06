@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430853"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984947"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -180,7 +180,7 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
    ```  
 4. Aktualisieren Sie dann die Einstellung „AllowToAddGuests“.
    ```powershell
-   $Setting["AllowAddGuests"] = $False
+   $Setting["AllowToAddGuests"] = $False
    ```  
 5. Wenden Sie dann die Einstellungen an:
   
@@ -234,7 +234,7 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen gelesen, die für
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowAddGuests              True
+   AllowToAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -271,7 +271,7 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen entfernt, die fü
 
 4. Festlegen der Einstellung auf den erforderlichen Wert:
    ```powershell
-   $SettingCopy["AllowAddGuests"]=$False
+   $SettingCopy["AllowToAddGuests"]=$False
    ```
 5. Rufen Sie die ID der Gruppe ab, auf die Sie diese Einstellung anwenden möchten:
    ```powershell
@@ -297,7 +297,7 @@ Mit diesen Schritten werden auf Verzeichnisebene Einstellungen entfernt, die fü
    ```
 3. Aktualisieren Sie die Einstellung der Gruppe nach Bedarf, z.B.
    ```powershell
-   $Setting["AllowAddGuests"] = $True
+   $Setting["AllowToAddGuests"] = $True
    ```
 4. Dann rufen Sie die ID der Einstellung für diese spezifische Gruppe ab:
    ```powershell

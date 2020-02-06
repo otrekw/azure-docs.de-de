@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 2d26cbce3398b9a44530553fbff0413c631b7579
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744768"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030920"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -37,7 +37,7 @@ Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 |[Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße> |
 |[Azure portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
-![Azure-Portal – Option zum Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
+![Azure-Portal – Option zum Skalieren von Clustern](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
 Mit jeder dieser Methoden können Sie Ihren HDInsight-Cluster innerhalb von Minuten zentral hoch- oder herunterskalieren.
 

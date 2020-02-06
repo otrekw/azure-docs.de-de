@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 52791719e518f6a6b1a4178d8b9a010f1db14fc4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003866"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988378"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Windows-Computer in Python
 
@@ -136,7 +136,7 @@ Führen Sie die Anweisungen unter [Herstellen einer Verbindung mit einem virtuel
 
 ## <a name="create-and-run-a-sample-python-app"></a>Erstellen und Ausführen einer Python-Beispiel-App
 
-Im nächsten Abschnitt finden Sie eine Beispieldatei mit dem Namen *Sample.py*. Die Datei verwendet eine [Anforderungsbibliothek](http://docs.python-requests.org/en/master/), um HTTP-GET-Aufrufe auszuführen.
+Im nächsten Abschnitt finden Sie eine Beispieldatei mit dem Namen *Sample.py*. Die Datei verwendet eine [Anforderungsbibliothek](https://2.python-requests.org/en/master/), um HTTP-GET-Aufrufe auszuführen.
 
 ## <a name="edit-samplepy"></a>Bearbeiten der Datei „Sample.py“
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 01/23/2020
 ms.author: dapine
-ms.openlocfilehash: dbe2e288309b6682041bf3db9fe3d39455359806
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 97342f1dd4f6ce343626ba6c294f09dabe3db5c0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647277"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717206"
 ---
 # <a name="create-containers-for-reuse"></a>Erstellen wiederverwendbarer Container
 
@@ -122,7 +122,7 @@ Gehen Sie wie folgt vor, um das Dockerfile zu verwenden und das neue Image in Ih
 
 1. Melden Sie sich mit der Azure-Befehlszeilenschnittstelle über eine Konsole bei Ihrer privaten Registrierung an.
 
-    Ersetzen Sie den Wert in spitzen Klammern (`<my-registry>`) durch Ihren eigenen Registrierungsnamen.  
+    Ersetzen Sie die Werte in spitzen Klammern, und geben Sie für `<my-registry>` Ihren eigenen Registrierungsnamen an.  
 
     ```azurecli
     az acr login --name <my-registry>

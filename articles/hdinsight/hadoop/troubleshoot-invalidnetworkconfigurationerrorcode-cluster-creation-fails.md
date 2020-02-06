@@ -1,18 +1,18 @@
 ---
 title: Fehler „InvalidNetworkConfigurationErrorCode“ – Azure HDInsight
 description: Verschiedene Gründe für den Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: f857ee47f5dd8018d2e26aab47252533b0b17617
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 01/22/2020
+ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887103"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720383"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
 
@@ -28,19 +28,19 @@ Fehlerbeschreibung enthält „Fehler beim Auflösen des Hostnamens“.
 
 ### <a name="cause"></a>Ursache
 
-Dieser Fehler ist ein Hinweis auf ein Problem mit der benutzerdefinierten DNS-Konfiguration. DNS-Server innerhalb eines virtuellen Netzwerks können DNS-Abfragen an die rekursiven Resolver von Azure weiterleiten, um Hostnamen innerhalb dieses virtuellen Netzwerks aufzulösen (ausführlichere Informationen unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)). Der Zugriff auf die rekursiven Resolver von Azure wird über die virtuelle IP 168.63.129.16 bereitgestellt. Auf diese IP kann nur von den Azure-VMs aus zugegriffen werden. Es funktioniert also nicht, wenn Sie einen lokalen DNS-Server nutzen oder Ihr DNS-Server eine Azure-VM ist, die nicht Teil des VNET des Clusters ist.
+Dieser Fehler ist ein Hinweis auf ein Problem mit der benutzerdefinierten DNS-Konfiguration. DNS-Server innerhalb eines virtuellen Netzwerks können DNS-Abfragen an die rekursiven Resolver von Azure weiterleiten, um Hostnamen innerhalb dieses virtuellen Netzwerks aufzulösen (ausführlichere Informationen unter [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)). Der Zugriff auf die rekursiven Resolver von Azure wird über die virtuelle IP 168.63.129.16 bereitgestellt. Auf diese IP kann nur von den Azure-VMs aus zugegriffen werden. Sie funktioniert also nicht, wenn Sie einen lokalen DNS-Server nutzen oder Ihr DNS-Server eine Azure-VM ist, die nicht Teil des virtuellen Netzwerks des Clusters ist.
 
 ### <a name="resolution"></a>Lösung
 
-1. Stellen Sie eine SSH-Verbindung mit der VM her, die Teil des Clusters ist, und führen Sie den Befehl `hostname -f` aus. Der vollqualifizierte Domänenname des Hosts (in der Anleitung unten als `<host_fqdn>` bezeichnet) wird zurückgegeben.
+1. Stellen Sie eine SSH-Verbindung mit der VM her, die Teil des Clusters ist, und führen Sie den Befehl `hostname -f` aus. Damit wird der vollqualifizierte Domänenname des Hosts (in der Anleitung unten als `<host_fqdn>` bezeichnet) zurückgegeben.
 
 1. Führen Sie anschließend den Befehl `nslookup <host_fqdn>` aus (z. B. `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net`). Wenn dieser Befehl den Namen in eine IP-Adresse auflöst, bedeutet dies, dass Ihr DNS-Server richtig funktioniert. Erstellen Sie in diesem Fall eine Supportanfrage für HDInsight, damit wir das Problem untersuchen können. Fügen Sie der Supportanfrage die Schritte zur Problembehandlung hinzu, die Sie ausgeführt haben. Wir können das Problem dann schneller beheben.
 
-1. Führen Sie `nslookup <host_fqdn> 168.63.129.16` aus, falls der obige Befehl keine IP-Adresse zurückgibt (z. B. `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Wenn dieser Befehl die IP-Adresse auflösen kann, bedeutet dies Folgendes: Entweder leitet Ihr DNS-Server die Abfrage nicht an das DNS von Azure weiter, oder es handelt sich nicht um eine VM, die in demselben VNET wie der Cluster enthalten ist.
+1. Wenn der obige Befehl keine IP-Adresse zurückgibt, führen Sie `nslookup <host_fqdn> 168.63.129.16` aus (z. B. `nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net 168.63.129.16`). Wenn dieser Befehl die IP-Adresse auflösen kann, leitet entweder Ihr DNS-Server die Abfrage nicht an das DNS von Azure weiter, oder es handelt sich nicht um eine VM im selben virtuellen Netzwerk wie der Cluster.
 
-1. Falls Sie nicht über eine Azure-VM verfügen, die als benutzerdefinierter DNS-Server im VNET des Clusters fungieren kann, müssen Sie diese zuerst hinzufügen. Erstellen Sie eine VM im VNET, die als DNS-Weiterleitung konfiguriert wird.
+1. Wenn Sie nicht über eine Azure-VM verfügen, die als benutzerdefinierter DNS-Server im virtuellen Netzwerk des Clusters agieren kann, müssen Sie diese zuerst hinzufügen. Erstellen Sie eine VM im virtuellen Netzwerk, die als DNS-Weiterleitung konfiguriert wird.
 
-1. Nachdem Sie einen virtuellen Computer in Ihrem VNET bereitgestellt haben, können Sie die Regeln für die DNS-Weiterleitung auf diesem virtuellen Computer konfigurieren. Leiten Sie alle Anforderungen für die iDNS-Namensauflösung an 168.63.129.16 und den Rest an Ihren DNS-Server weiter. [Hier](../hdinsight-plan-virtual-network-deployment.md) ist ein Beispiel für diese Einrichtung für einen benutzerdefinierten DNS-Server angegeben.
+1. Nachdem Sie eine VM in Ihrem virtuellen Netzwerk bereitgestellt haben, können Sie die Regeln für die DNS-Weiterleitung auf dieser VM konfigurieren. Leiten Sie alle Anforderungen für die iDNS-Namensauflösung an 168.63.129.16 und den Rest an Ihren DNS-Server weiter. [Hier](../hdinsight-plan-virtual-network-deployment.md) ist ein Beispiel für diese Einrichtung für einen benutzerdefinierten DNS-Server angegeben.
 
 1. Fügen Sie die IP-Adresse dieser VM als ersten DNS-Eintrag für die DNS-Konfiguration des virtuellen Netzwerks hinzu.
 
@@ -54,7 +54,7 @@ Fehlerbeschreibung enthält: „Fehler beim Herstellen der Verbindung mit dem Az
 
 ### <a name="cause"></a>Ursache
 
-Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir ausgehende Verbindungen zu allen IPs zulassen, um den Zugriff auf diese Dienste zu ermöglichen. Die genauen Lösungsschritte sind davon abhängig, ob Sie eine Netzwerksicherheitsgruppe (NSG) oder benutzerdefinierte Regeln (UDRs) eingerichtet haben. Details zu diesen Konfigurationen finden Sie im Abschnitt zum Thema [Steuern des Netzwerkdatenverkehrs über HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip).
+Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir ausgehende Verbindungen zu allen IP-Adressen zulassen, um den Zugriff auf diese Dienste zu ermöglichen. Die genauen Lösungsschritte sind davon abhängig, ob Sie eine Netzwerksicherheitsgruppe (NSG) oder benutzerdefinierte Regeln (UDRs) eingerichtet haben. Details zu diesen Konfigurationen finden Sie im Abschnitt zum Thema [Steuern des Netzwerkdatenverkehrs über HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip).
 
 ### <a name="resolution"></a>Lösung
 
@@ -67,6 +67,73 @@ Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir au
     Navigieren Sie zum Azure-Portal, und ermitteln Sie die Routingtabelle des Subnetzes, in dem der Cluster bereitgestellt wird. Untersuchen Sie nach der Ermittlung der Routingtabelle für das Subnetz den darin enthaltenen Abschnitt **Routen**.
 
     Wenn Routen definiert sind, sollten Sie sicherstellen, dass Routen für IP-Adressen für die Region vorhanden sind, in der der Cluster bereitgestellt wurde, und dass **NextHopType** für jede Route auf **Internet** festgelegt ist. Für jede erforderliche IP-Adresse, die im obigen Artikel dokumentiert ist, muss eine Route definiert sein.
+
+---
+
+## <a name="virtual-network-configuration-is-not-compatible-with-hdinsight-requirement"></a>Die Konfiguration des virtuellen Netzwerks ist nicht mit der HDInsight-Anforderung kompatibel.
+
+### <a name="issue"></a>Problem
+
+Die Fehlerbeschreibungen weisen Meldungen ähnlich der folgenden auf:
+
+```
+ErrorCode: InvalidNetworkConfigurationErrorCode
+ErrorDescription: Virtual Network configuration is not compatible with HDInsight Requirement. Error: 'Failed to connect to Azure Storage Account; Failed to connect to Azure SQL; HostName Resolution failed', Please follow https://go.microsoft.com/fwlink/?linkid=853974 to fix it.
+```
+
+### <a name="cause"></a>Ursache
+
+Wahrscheinlich ein Problem mit dem benutzerdefinierten DNS-Setup.
+
+### <a name="resolution"></a>Lösung
+
+Vergewissern Sie sich, dass sich 168.63.129.16 in der benutzerdefinierten DNS-Kette befindet. DNS-Server innerhalb eines virtuellen Netzwerks können DNS-Abfragen an die rekursiven Resolver von Azure weiterleiten, um Hostnamen innerhalb dieses virtuellen Netzwerks aufzulösen. Weitere Informationen finden Sie unter [Namensauflösung in virtuellen Netzwerken](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Der Zugriff auf die rekursiven Resolver von Azure wird über die virtuelle IP 168.63.129.16 bereitgestellt.
+
+1. Verwenden Sie einen [ssh-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
+
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Führen Sie den folgenden Befehl aus:
+
+    ```bash
+    cat /etc/resolv.conf | grep nameserver*
+    ```
+
+    Die Ausgabe sollte folgendermaßen aussehen:
+
+    ```output
+    nameserver 168.63.129.16
+    nameserver 10.21.34.43
+    nameserver 10.21.34.44
+    ```
+
+    Befolgen Sie basierend auf dem Ergebnis einen der folgenden Schritte:
+
+#### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 ist nicht in dieser Liste enthalten.
+
+**Option 1:**  
+Fügen Sie 168.63.129.16 mithilfe der Schritte unter [Planen eines virtuellen Netzwerks für Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) als erstes benutzerdefiniertes DNS für das virtuelle Netzwerk hinzu. Diese Schritte gelten nur, wenn der benutzerdefinierte DNS-Server unter Linux ausgeführt wird.
+
+**Option 2**  
+Stellen Sie eine DNS-Server-VM für das virtuelle Netzwerk bereit. Dieser Vorgang umfasst die folgenden Schritte:
+
+* Erstellen Sie eine VM im virtuellen Netzwerk, die als DNS-Weiterleitung konfiguriert wird. (Dies kann eine Linux- oder Windows-VM sein.)
+* Konfigurieren Sie DNS-Weiterleitungsregeln auf dieser VM. (Leiten Sie alle Anforderungen für die iDNS-Namensauflösung an 168.63.129.16 und alle anderen an Ihren DNS-Server weiter.)
+* Fügen Sie die IP-Adresse dieser VM als ersten DNS-Eintrag für die DNS-Konfiguration des virtuellen Netzwerks hinzu.
+
+#### <a name="1686312916-is-in-the-list"></a>168.63.129.16 ist in der Liste enthalten.
+
+Erstellen Sie in diesem Fall eine Supportanfrage für HDInsight, damit wir das Problem untersuchen können. Fügen Sie das Ergebnis der folgenden Befehle in den Supportfall ein. Auf diese Weise können wir das Problem schneller untersuchen und beheben.
+
+Bearbeiten Sie in einer SSH-Sitzung auf dem Hauptknoten den folgenden Text, und führen Sie ihn dann aus:
+
+```bash
+hostname -f
+nslookup <headnode_fqdn> (e.g.nslookup hn1-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+dig @168.63.129.16 <headnode_fqdn> (e.g. dig @168.63.129.16 hn0-hditest.5h6lujo4xvoe1kprq3azvzmwsd.hx.internal.cloudapp.net)
+```
 
 ---
 

@@ -3,21 +3,21 @@ title: 'Azure Service Fabric-CLI: sfctl container'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle für Container.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 316715e65af07176b3dc276d47979a5fa3dc1d6f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 07861e2b67eea67740b341cbea994de978973664
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639138"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906116"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Führt containerbezogene Befehle auf einem Clusterknoten aus.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | invoke-api | Ruft die Container-API für einen Container auf, der auf einem Service Fabric-Knoten für das jeweilige Codepaket bereitgestellt wurde. |
 | logs | Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Knoten bereitgestellt wurden. |
@@ -27,7 +27,7 @@ Ruft die Container-API für einen Container auf, der auf einem Service Fabric-Kn
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id           [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --code-package-instance-id [erforderlich] | Eine ID, die eine Codepaketinstanz eindeutig identifiziert, die auf einem Service Fabric-Knoten bereitgestellt wird. <br><br> Kann über „service code-package-list“ abgerufen werden. |
@@ -42,7 +42,7 @@ Ruft die Container-API für einen Container auf, der auf einem Service Fabric-Kn
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -55,7 +55,7 @@ Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Kno
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id           [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --code-package-instance-id [erforderlich] | Instanz-ID des Codepakets, die mit „service code-package-list“ abgerufen werden kann. |
@@ -67,7 +67,7 @@ Ruft die Containerprotokolle für Container ab, die auf einem Service Fabric-Kno
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

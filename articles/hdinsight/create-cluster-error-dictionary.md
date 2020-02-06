@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines Wörterbuchs für Clusterfehler
 description: Erfahren Sie, wie Sie ein Wörterbuch für Clusterfehler erstellen.
-ms.reviewer: hrasheed
 author: karkrish
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: troubleshooting
-ms.date: 11/19/2019
 ms.author: v-todmc
-ms.openlocfilehash: ee9ed5374b12c3130d952770a4be6a759e37339a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.reviewer: hrasheed
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e5ed996a0f44bae6c37027bc01f30be85d164f9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156861"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905481"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
 
@@ -210,7 +210,7 @@ Dieser Fehler wird in der Regel generiert, wenn ein vorübergehendes Problem vor
 
 ### <a name="resolution"></a>Lösung
 
-Überprüfen Sie die Seite [Azure-Status](https://status.azure.com/status) auf Azure-Ausfälle, die sich auf die Clusterbereitstellung auswirken könnten. Wenn keine Ausfälle angegeben sind, führen Sie die Clusterbereitstellung erneut durch.
+Überprüfen Sie die Seite [Azure-Status](https://status.azure.com) auf Azure-Ausfälle, die sich auf die Clusterbereitstellung auswirken könnten. Wenn keine Ausfälle angegeben sind, führen Sie die Clusterbereitstellung erneut durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

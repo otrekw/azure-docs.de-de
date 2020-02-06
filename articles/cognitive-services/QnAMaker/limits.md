@@ -1,22 +1,14 @@
 ---
 title: 'Einschränkungen und Begrenzungen: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: QnA Maker weist Metagrenzwerte für Teile der Wissensdatenbank und des Diensts auf. Es ist wichtig, Ihre Wissensdatenbank innerhalb dieser Grenzwerte zu halten, um sie testen und veröffentlichen zu können.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381119"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760231"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Grenzwerte und Grenzen für QnA Maker-Wissensdatenbanken
 
@@ -33,6 +25,15 @@ Die maximale Anzahl von Wissensdatenbanken basiert auf den [Grenzwerten für den
  Wenn Ihr Tarif beispielsweise 15 zulässige Indizes aufweist, können Sie 14 Wissensdatenbanken veröffentlichen (1 Index pro veröffentlichter Wissensdatenbank). Der fünfzehnte Index (`testkb`) wird für alle Wissensdatenbanken zum Erstellen und Testen verwendet.
 
 ## <a name="extraction-limits"></a>Grenzwerte für die Extraktion
+
+### <a name="file-naming-constraints"></a>Benennungskonventionen für Dateien
+
+Dateinamen dürfen keines der folgenden Zeichen enthalten:
+
+|Verwenden Sie nicht das Zeichen|
+|--|
+|Einfache Anführungszeichen `'`|
+|Doppelte Anführungszeichen `"`|
 
 ### <a name="maximum-file-size"></a>Maximale Dateigröße
 

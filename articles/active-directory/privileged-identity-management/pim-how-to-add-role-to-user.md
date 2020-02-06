@@ -13,12 +13,12 @@ ms.subservice: pim
 ms.date: 09/17/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e7dc54eccd7a5f01d8f3dd98144e0c4bf6269a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7cbb8c07b75509825795da45d8352140afd0864
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429836"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024227"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Zuweisen von Azure AD-Rollen in Privileged Identity Management
 
@@ -34,6 +34,88 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
     ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
+# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+
+## <a name="assign-a-role"></a>Zuweisen einer Rolle
+
+Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Administratorrolle „berechtigt“ festzulegen.
+
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
+
+    Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Wählen Sie **Azure AD-Rollen** aus.
+
+1. Wählen Sie **Rollen** aus, um die Liste der Rollen für Azure AD-Berechtigungen anzuzeigen.
+
+    ![Azure AD-Rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
+
+1. Wählen Sie **Mitglied hinzufügen** aus, um die Seite **Neue Zuweisung** zu öffnen.
+
+1. Wählen Sie **Rolle auswählen** aus, um die Seite „Rolle auswählen“ zu öffnen.
+
+    ![Bereich „Neue Zuweisung“](./media/pim-how-to-add-role-to-user/select-role.png)
+
+1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**.
+
+    Sie Seite **Mitglied oder Gruppe auswählen** wird geöffnet.
+
+1. Wählen Sie ein Mitglied oder eine Gruppe, dem bzw. der die Rolle zugewiesen werden soll, und dann **Auswählen** aus.
+
+    ![Bereich „Mitglied oder Gruppe auswählen“](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
+
+    Der Bereich „Mitgliedschaftseinstellungen“ wird geöffnet.
+
+1. Wählen Sie in der Liste **Zuweisungstyp** entweder **Berechtigt** oder **Aktiv** aus.
+
+    ![Bereich „Mitgliedschaftseinstellungen“](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
+
+    Privileged Identity Management für Azure-Ressourcen verfügt über zwei unterschiedliche Zuweisungstypen:
+
+    - Für **berechtigte** Zuweisungen muss das Mitglied der Rolle eine Aktion durchführen, um die Rolle verwenden zu können. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen.
+
+    - Für **aktive** Zuweisungen ist es nicht erforderlich, dass das Mitglied eine Aktion durchführt, um die Rolle nutzen zu können. Für Mitglieder, die als „Aktiv“ zugewiesen sind, sind die Berechtigungen immer der Rolle zugewiesen.
+
+1. Wenn die Zuweisung dauerhaft sein soll (dauerhaft berechtigt oder dauerhaft zugewiesen), aktivieren Sie das Kontrollkästchen **Dauerhaft**.
+
+    Je nach Rolleneinstellungen wird das Kontrollkästchen möglicherweise nicht angezeigt oder ist nicht änderbar.
+
+1. Wenn Sie einen bestimmten Zuweisungszeitraum angeben möchten, deaktivieren Sie dieses Kontrollkästchen, und ändern Sie nach Bedarf die Felder für den Start- und/oder den Endzeitpunkt (Datum und Uhrzeit).
+
+    ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. Wählen Sie abschließend **Fertig** aus.
+
+    ![Neue Zuweisung: Hinzufügen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. Wählen Sie **Hinzufügen** aus, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status wird angezeigt.
+
+    ![Neue Zuweisung: Benachrichtigung](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung
+
+Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung.
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Wählen Sie **Azure-Ressourcen** aus.
+
+1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
+
+1. Wählen Sie unter „Verwalten“ den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
+
+1. Wählen Sie die Rolle aus, die Sie aktualisieren oder entfernen möchten.
+
+1. Suchen Sie die Rollenzuweisung auf den Registerkarten **Berechtigte Rollen** oder **Aktive Rollen**.
+
+    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. Wählen Sie **Aktualisieren** oder **Entfernen** aus, um die Rollenzuweisung zu aktualisieren oder zu entfernen.
+
+    Informationen zum Erweitern einer Rollenzuweisung finden Sie unter [Verlängern oder Erneuern von Azure-Ressourcenrollen in Privileged Identity Management](pim-resource-roles-renew-extend.md).
 
 # <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
 
@@ -148,88 +230,6 @@ Gehen Sie wie folgt vor, um die Rolle „Benutzerzugriffsadministrator“ dem MS
    Nach kurzer Zeit wird dem MS-PIM-Dienstprinzipal im Abonnementbereich die Rolle „Benutzerzugriffsadministrator“ zugewiesen.
 
    ![Zugriffssteuerungsseite mit Rollenzuweisung „Benutzerzugriffsadministrator“ für den MS-PIM-Dienstprinzipal](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
-
-## <a name="assign-a-role"></a>Zuweisen einer Rolle
-
-Führen Sie folgende Schritte aus, um einen Benutzer als für eine Azure AD-Administratorrolle „berechtigt“ festzulegen.
-
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) als Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
-
-    Informationen dazu, wie Sie anderen Administratoren Zugriff zum Verwalten von Privileged Identity Management gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
-
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Wählen Sie **Azure AD-Rollen** aus.
-
-1. Wählen Sie **Rollen** aus, um die Liste der Rollen für Azure AD-Berechtigungen anzuzeigen.
-
-    ![Azure AD-Rollen](./media/pim-how-to-add-role-to-user/roles-list.png)
-
-1. Wählen Sie **Mitglied hinzufügen** aus, um die Seite **Neue Zuweisung** zu öffnen.
-
-1. Wählen Sie **Rolle auswählen** aus, um die Seite „Rolle auswählen“ zu öffnen.
-
-    ![Bereich „Neue Zuweisung“](./media/pim-how-to-add-role-to-user/select-role.png)
-
-1. Wählen Sie die Rolle aus, die Sie zuweisen möchten, und klicken Sie dann auf **Auswählen**.
-
-    Sie Seite **Mitglied oder Gruppe auswählen** wird geöffnet.
-
-1. Wählen Sie ein Mitglied oder eine Gruppe, dem bzw. der die Rolle zugewiesen werden soll, und dann **Auswählen** aus.
-
-    ![Bereich „Mitglied oder Gruppe auswählen“](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
-
-    Der Bereich „Mitgliedschaftseinstellungen“ wird geöffnet.
-
-1. Wählen Sie in der Liste **Zuweisungstyp** entweder **Berechtigt** oder **Aktiv** aus.
-
-    ![Bereich „Mitgliedschaftseinstellungen“](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
-
-    Privileged Identity Management für Azure-Ressourcen verfügt über zwei unterschiedliche Zuweisungstypen:
-
-    - Für **berechtigte** Zuweisungen muss das Mitglied der Rolle eine Aktion durchführen, um die Rolle verwenden zu können. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen.
-
-    - Für **aktive** Zuweisungen ist es nicht erforderlich, dass das Mitglied eine Aktion durchführt, um die Rolle nutzen zu können. Für Mitglieder, die als „Aktiv“ zugewiesen sind, sind die Berechtigungen immer der Rolle zugewiesen.
-
-1. Wenn die Zuweisung dauerhaft sein soll (dauerhaft berechtigt oder dauerhaft zugewiesen), aktivieren Sie das Kontrollkästchen **Dauerhaft**.
-
-    Je nach Rolleneinstellungen wird das Kontrollkästchen möglicherweise nicht angezeigt oder ist nicht änderbar.
-
-1. Wenn Sie einen bestimmten Zuweisungszeitraum angeben möchten, deaktivieren Sie dieses Kontrollkästchen, und ändern Sie nach Bedarf die Felder für den Start- und/oder den Endzeitpunkt (Datum und Uhrzeit).
-
-    ![Mitgliedschaftseinstellungen: Datum und Uhrzeit](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
-
-1. Wählen Sie abschließend **Fertig** aus.
-
-    ![Neue Zuweisung: Hinzufügen](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
-
-1. Wählen Sie **Hinzufügen** aus, um die neue Rollenzuweisung zu erstellen. Eine Benachrichtigung zum Status wird angezeigt.
-
-    ![Neue Zuweisung: Benachrichtigung](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
-
-## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung
-
-Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandenen Rollenzuweisung.
-
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Wählen Sie **Azure-Ressourcen** aus.
-
-1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
-
-1. Wählen Sie unter „Verwalten“ den Eintrag **Rollen** aus, um die Liste der Rollen für Azure-Ressourcen anzuzeigen.
-
-1. Wählen Sie die Rolle aus, die Sie aktualisieren oder entfernen möchten.
-
-1. Suchen Sie die Rollenzuweisung auf den Registerkarten **Berechtigte Rollen** oder **Aktive Rollen**.
-
-    ![Aktualisieren oder Entfernen der Rollenzuweisung](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
-
-1. Wählen Sie **Aktualisieren** oder **Entfernen** aus, um die Rollenzuweisung zu aktualisieren oder zu entfernen.
-
-    Informationen zum Erweitern einer Rollenzuweisung finden Sie unter [Verlängern oder Erneuern von Azure-Ressourcenrollen in Privileged Identity Management](pim-resource-roles-renew-extend.md).
 
  ---
 

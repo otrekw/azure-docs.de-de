@@ -9,44 +9,44 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/17/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76165744"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987953"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Schnellstart: Abrufen der Absicht im Browser
 
-Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vorhersageergebnis in einem Webbrowser an. 
+Um zu verstehen, was ein LUIS-Vorhersageendpunkt zurückgibt, zeigen Sie ein Vorhersageergebnis in einem Webbrowser an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
-* Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel (Language Understanding), der über das [LUIS-Portal (Vor)](https://preview.luis.ai/) abgerufen werden kann. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren. 
-* Die ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 
+* Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel (Language Understanding), der über das [LUIS-Portal (Vor)](https://preview.luis.ai/) abgerufen werden kann. Wenn Sie noch kein Abonnement besitzen, um einen Schlüssel zu erstellen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
+* Die ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="use-the-browser-to-see-predictions"></a>Verwenden des Browsers zum Anzeigen von Vorhersagen
 
-1. Öffnen Sie einen Webbrowser. 
+1. Öffnen Sie einen Webbrowser.
 1. Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie `YOUR-KEY` durch Ihren eigenen LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel. Die Anforderungen sind GET-Anforderungen und enthalten die Autorisierung mit dem LUIS-Erstellungsschlüssel oder -Vorhersageschlüssel als Abfragezeichenfolgen-Parameter.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3-Vorhersageanforderung](#tab/V3-1-1)
-    
-    
+
+
     Das Format der V3-URL für eine **GET**-Endpunktanforderung (nach Slots) ist wie folgt:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
     `
 
     #### <a name="v2-prediction-requesttabv2-1-2"></a>[V2-Vorhersageanforderung](#tab/V2-1-2)
-    
+
     Das Format der V2-URL für eine **GET**-Endpunktanforderung ist wie folgt:
-    
+
     `
     https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
     `
@@ -97,7 +97,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
 
     * * *
 
-1. Fügen Sie den entsprechenden Abfragezeichenfolgen-Parameter hinzu, um alle Absichten anzuzeigen. 
+1. Fügen Sie den entsprechenden Abfragezeichenfolgen-Parameter hinzu, um alle Absichten anzuzeigen.
 
     #### <a name="v3-prediction-endpointtabv3-3-1"></a>[V3-Vorhersageendpunkt](#tab/V3-3-1)
 
@@ -174,7 +174,7 @@ Zum Abfragen einer öffentlichen App benötigen Sie Folgendes:
     ```
 
 
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->   
+<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

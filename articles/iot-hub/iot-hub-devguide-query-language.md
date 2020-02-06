@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 03d2ca0b7d6b53215c5293f84c8b22a2dc0d8297
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b224de96f6b6baedc3b57e0245a4c4e8748576b4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450058"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767737"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -233,7 +233,7 @@ Das Abfrageobjekt macht mehrere **Next**-Werte verfügbar, abhängig von der Des
 ### <a name="limitations"></a>Einschränkungen
 
 > [!IMPORTANT]
-> Abfrageergebnisse können mit einigen Minuten Verzögerung im Vergleich zu den aktuellen Werten in Gerätezwillingen ausgegeben werden. Wenn Sie einzelne Gerätezwillinge per ID abfragen, verwenden Sie die API zum Abrufen von Gerätezwillingen. Diese API enthält immer die aktuellen Werte und verfügt über höhere Einschränkungsgrenzwerte.
+> Abfrageergebnisse können mit einigen Minuten Verzögerung im Vergleich zu den aktuellen Werten in Gerätezwillingen ausgegeben werden. Wenn Sie einzelne Gerätezwillinge nach ihrer ID abfragen, verwenden Sie die [REST-API zum Abrufen von Gerätezwillingen](https://docs.microsoft.com/rest/api/iothub/service/gettwin). Diese API gibt immer die aktuellen Werte zurück und weist höhere Einschränkungsgrenzwerte auf. Sie können die REST-API direkt aufrufen oder die entsprechende Funktion in einem der [Azure IoT Hub-Dienst-SDKs](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) verwenden.
 
 Derzeit werden Vergleiche nur zwischen primitiven Typen (keine Objekte) unterstützt. `... WHERE properties.desired.config = properties.reported.config` wird beispielsweise nur unterstützt, wenn diese Eigenschaften über primitive Werte verfügen.
 
@@ -457,26 +457,26 @@ Die folgenden Operatoren werden unterstützt:
 
 Bei Abfragen von Zwillingen und Aufträgen wird nur folgende Funktion unterstützt:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | -------- | ----------- |
 | IS_DEFINED(Eigenschaft) | Gibt einen booleschen Wert zurück, um anzugeben, ob der Eigenschaft ein Wert zugewiesen wurde (inklusive `null`). |
 
 In Routenbedingungen werden die folgenden mathematischen Funktionen unterstützt:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | -------- | ----------- |
 | ABS(x) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
 | EXP(x) | Gibt den Exponentialwert des angegebenen numerischen Ausdrucks (e^x) zurück. |
 | POWER(x,y) | Gibt den Wert des angegebenen Ausdrucks gemäß der angegebenen Potenz (x^y) zurück.|
-| SQUARE(x) | Gibt das Quadrat des angegebenen numerischen Werts zurück. |
+| SQUARE(x) | Gibt die Quadratwurzel des angegebenen numerischen Werts zurück. |
 | CEILING(x) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
-| FLOOR(x) | Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
+| FLOOR(x) | Gibt die größte ganze Zahl zurück, die kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
 | SIGN(x) | Gibt das positive Vorzeichen (+1), null (0) oder das negative Vorzeichen (-1) des angegebenen numerischen Ausdrucks zurück.|
 | SQRT(x) | Gibt die Quadratwurzel des angegebenen numerischen Werts zurück. |
 
 In Routenbedingungen werden die folgenden Typüberprüfungs- und Umwandlungsfunktionen unterstützt:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | -------- | ----------- |
 | AS_NUMBER | Konvertiert die Eingabezeichenfolge in eine Zahl. `noop`, wenn die Eingabe eine Zahl ist; `Undefined`, wenn die Zeichenfolge keine Zahl darstellt.|
 | IS_ARRAY | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „Array“ ist. |
@@ -490,7 +490,7 @@ In Routenbedingungen werden die folgenden Typüberprüfungs- und Umwandlungsfunk
 
 In Routenbedingungen werden die folgenden Zeichenfolgenfunktionen unterstützt:
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 | -------- | ----------- |
 | CONCAT(x, y, …) | Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
 | LENGTH(x) | Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück.|

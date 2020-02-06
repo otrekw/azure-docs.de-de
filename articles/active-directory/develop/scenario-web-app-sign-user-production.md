@@ -14,13 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49782a6e1e86320b508875e2bf931cc1cc19b4e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964769"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768104"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Web-App für Benutzeranmeldungen: Überführen in die Produktion
 
@@ -30,6 +29,13 @@ Da Sie nun wissen, wie Sie ein Token zum Abrufen von Web-APIs aufrufen, erfahren
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+### <a name="same-site"></a>Gleiche Website
+
+Informieren Sie sich über mögliche Probleme im Zusammenhang mit neuen Versionen des Chrome-Browsers:
+
+> [!div class="nextstepaction"]
+> [Verarbeiten von SameSite-Cookieänderungen im Chrome-Browser](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Szenario zum Aufrufen von Web-APIs
 
 Sobald Ihre Web-App Benutzer anmeldet, kann sie für diese angemeldeten Benutzer Web-APIs aufrufen. Genau darum geht es im folgenden Szenario:
@@ -37,7 +43,7 @@ Sobald Ihre Web-App Benutzer anmeldet, kann sie für diese angemeldeten Benutzer
 > [!div class="nextstepaction"]
 > [Web-App, die Web-APIs aufruft](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Ausführliche Betrachtung: Tutorial für ASP.NET Core-Web-Apps
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Ausführliche Betrachtung: Tutorial für ASP.NET Core-Web-Apps
 
 Lernen Sie mithilfe dieses ASP.NET Core-Tutorials andere Möglichkeiten zum Anmelden von Benutzern kennen: 
 
@@ -52,7 +58,7 @@ Dieses fortschreitende Tutorial enthält Web-App-Code, der in Produktionsumgebun
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Nationale Clouds
 
-### <a name="sample-code-java-web-app"></a>Beispielcode: Java-Web-App
+## <a name="sample-code-java-web-app"></a>Beispielcode: Java-Web-App
 
 Weitere Informationen zur Java-Web-App aus dem Beispiel auf GitHub finden Sie hier: 
 

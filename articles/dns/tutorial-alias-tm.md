@@ -3,17 +3,17 @@ title: 'Tutorial: Erstellen eines Aliaseintrags zur Unterstützung von Apex-Dom�
 titleSuffix: Azure DNS
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure DNS-Alias-Ressourceneintrag für die Verwendung des Apex-Domänennamens mit Traffic Manager konfigurieren.
 services: dns
-author: asudbring
+author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: allensu
-ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: rohink
+ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082251"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937924"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Tutorial: Konfigurieren eines Alias-Ressourceneintrags zur Unterstützung von Apex-Domänennamen mit Traffic Manager 
 
@@ -100,7 +100,7 @@ Wiederholen Sie dieses Verfahren, um den Endpunkt **Web-02** unter Verwendung de
 Erstellen Sie einen Alias-Ressourceneintrag, der auf das Traffic Manager-Profil verweist.
 
 1. Wählen Sie Ihre Azure DNS-Zone aus, um sie zu öffnen.
-2. Wählen Sie **Datensatzgruppe** aus.
+2. Wählen Sie **Ressourceneintragssatz**.
 3. Lassen Sie das Textfeld **Name** leer, um den Domänennamen-Apex darzustellen. Ein Beispiel wäre etwa „contoso.com“.
 4. Übernehmen Sie für **Typ** die Option **A-Eintrag**.
 5. Aktivieren Sie das Kontrollkästchen **Alias Record Set** (Aliaseintragssatz).

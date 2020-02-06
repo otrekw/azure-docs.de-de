@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: ea247af871b06bd21c2733272b3d938c536d16ec
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6b154cdbf6490abd935156e6d081d2260cfbc578
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546451"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719363"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
@@ -25,7 +25,7 @@ Verwenden Sie dieses Modul, um ein Clusteringmodell zu trainieren.
 In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie bereits mithilfe des Moduls [K-Means Clustering](k-means-clustering.md) konfiguriert haben. Das Modul trainiert das Modell mit einem bezeichneten oder unbezeichneten Datensatz. Das Modul erstellt sowohl ein trainiertes Modell, das Sie für Vorhersagen verwenden können, als auch eine Reihe von Clusterzuweisungen für jeden Fall in den Trainingsdaten.
 
 > [!NOTE]
-> Ein Clusteringmodell kann nicht mit dem Modul [Train Model](train-model.md) (Trainieren des Modells) trainiert werden, bei dem es sich um das generische Modul zum Training von Machine Learning-Modellen handelt. Das liegt daran, dass [Train Model](train-model.md) nur mit überwachten Lernalgorithmen funktioniert. k-Means- und andere Clusteringalgorithmen ermöglichen unüberwachtes Lernen, was bedeutet, dass der Algorithmus aus unbezeichneten Daten lernen kann.  
+> Ein Clusteringmodell kann nicht mit dem Modul [Train Model](train-model.md) (Modell trainieren) trainiert werden, bei dem es sich um das generische Modul zum Training von Machine Learning-Modellen handelt. Das liegt daran, dass [Train Model](train-model.md) nur mit überwachten Lernalgorithmen funktioniert. k-Means- und andere Clusteringalgorithmen ermöglichen unüberwachtes Lernen, was bedeutet, dass der Algorithmus aus unbezeichneten Daten lernen kann.  
   
 ## <a name="how-to-use-train-clustering-model"></a>Verwenden des Moduls „Train Clustering Model“  
 

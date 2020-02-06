@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c4f0a72cb598a8e38fc69f23f62f0f456cccb04
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543918"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833363"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -130,9 +130,9 @@ Normalerweise wird ein Benutzer gezwungen, sein Kennwort bei der ersten Anmeldun
   
 Mit der Funktion für das temporäre Kennwort können Sie sicherstellen, dass die Übertragung des Besitzes der Anmeldeinformationen bei der ersten Verwendung abgeschlossen wird, um die Zeitspanne zu minimieren, in der diese Anmeldeinformationen mehr als einer Person bekannt sind.
 
-Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unterstützen möchten, können Sie *ForcePasswordResetOnLogonFeature* aktivieren, indem Sie auf Ihrem Azure AD Connect-Server den folgenden Befehl ausführen:
+Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unterstützen möchten, können Sie das Feature *ForcePasswordChangeOnLogOn* aktivieren, indem Sie auf Ihrem Azure AD Connect-Server den folgenden Befehl ausführen:
 
-`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
 > Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.

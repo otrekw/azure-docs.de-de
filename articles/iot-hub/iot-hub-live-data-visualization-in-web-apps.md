@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954646"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767943"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -57,7 +57,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
 
-[Consumergruppen](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) bieten unabhängige Ansichten in den Ereignisstream, die es Apps und Azure-Diensten ermöglichen, unabhängig voneinander Daten desselben Event Hub-Endpunkts zu nutzen. In diesem Abschnitt fügen Sie dem integrierten IoT-Hub-Endpunkt, aus dem die Web-App Daten liest, eine Consumergruppe hinzu.
+[Consumergruppen](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) bieten unabhängige Ansichten des Ereignisstreams, die es Apps und Azure-Diensten ermöglichen, unabhängig voneinander Daten desselben Event Hub-Endpunkts zu nutzen. In diesem Abschnitt fügen Sie dem integrierten IoT-Hub-Endpunkt, aus dem die Web-App Daten liest, eine Consumergruppe hinzu.
 
 Führen Sie den folgenden Befehl aus, um dem integrierten Endpunkt Ihres IoT-Hubs eine Consumergruppe hinzuzufügen:
 
@@ -165,10 +165,10 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Stellen Sie jetzt eine Web-App im App Service-Plan bereit. Durch den `--deployment-local-git`-Parameter kann der Code der Web-App hochgeladen und aus einem Git-Repository auf Ihrem lokalen Computer bereitgestellt werden. Der Name der Web-App muss global eindeutig sein und darf Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+2. Stellen Sie jetzt eine Web-App im App Service-Plan bereit. Durch den `--deployment-local-git`-Parameter kann der Code der Web-App hochgeladen und aus einem Git-Repository auf Ihrem lokalen Computer bereitgestellt werden. Der Name der Web-App muss global eindeutig sein und darf Groß- und Kleinbuchstaben, Ziffern und Bindestriche enthalten. Stellen Sie sicher, dass Sie für den Parameter `--runtime` mindestens Node Version 10.6 angeben, je nach der von Ihnen verwendeten Version der Node.js-Runtime. Sie können mit dem Befehl `az webapp list-runtimes` eine Liste der unterstützten Runtimes abrufen.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Fügen Sie jetzt Anwendungseinstellungen für die Umgebungsvariablen hinzu, die die IoT-Hub-Verbindungszeichenfolge und die Event Hub-Consumergruppe angeben. Einzelne Einstellungen sind im `-settings`-Parameter durch Leerzeichen getrennt. Verwenden Sie die Dienst-Verbindungszeichenfolge für Ihren IoT-Hub und die zuvor in diesem Tutorial erstellte Consumergruppe. Die Werte dürfen nicht in Anführungszeichen stehen.

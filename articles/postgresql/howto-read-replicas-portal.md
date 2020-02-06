@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/24/2020
+ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770219"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768958"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for PostgreSQL – Einzelserver über das Azure-Portal
 
@@ -27,6 +27,9 @@ Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarife
 1. Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server, den Sie als Masterserver verwenden möchten, im Azure-Portal aus.
 
 2. Wählen Sie auf der Randleiste des Servers unter **EINSTELLUNGEN** die Option **Replikation** aus.
+
+> [!NOTE] 
+> Wenn **Replikationsunterstützung deaktivieren** abgeblendet angezeigt wird, wurden die Replikationseinstellungen bereits standardmäßig auf dem Server festgelegt. Sie können die folgenden Schritte überspringen und mit dem Erstellen eines Lesereplikats fortfahren. 
 
 3. Wählen Sie **Replikationsunterstützung aktivieren** aus. 
 
@@ -67,14 +70,14 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
     ![Standort auswählen](./media/howto-read-replicas-portal/location-replica.png)
 
    > [!NOTE]
-   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im Artikel zu den [Lesereplikatkonzepten](concepts-read-replicas.md). 
+   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
 
 6. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
 
-Ein Replikat wird mit denselben Compute- und Speichereinstellungen wie der Master erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
+Ein Replikat wird mit den gleichen Compute- und Speichereinstellungen erstellt wie der Master. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 
 > [!IMPORTANT]
-> Bevor eine Masterservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Durch diese Aktion wird unterstützt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
+> Bevor eine Masterservereinstellung auf einen neuen Wert aktualisiert wird, aktualisieren Sie die Replikateinstellung auf den gleichen oder einen größeren Wert. Diese Aktion sorgt dafür, dass das Replikat mit allen Änderungen auf dem Masterserver Schritt halten kann.
 
 Nach der Erstellung des Lesereplikats kann dieses im Fenster **Replikation** angezeigt werden:
 

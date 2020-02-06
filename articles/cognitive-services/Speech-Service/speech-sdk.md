@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446819"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759874"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -32,6 +32,9 @@ Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen f
 ## <a name="get-the-sdk"></a>Abrufen des SDK
 
 ### <a name="windows"></a>Windows
+
+> [!WARNING]
+> Das Speech SDK unterstützt Windows 10 oder höhere Versionen. Frühere Windows-Versionen werden **nicht unterstützt**.
 
 Für Windows werden die folgenden Sprachen unterstützt:
 
@@ -73,7 +76,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 * C++: Laden Sie das SDK als [TAR-Paket](https://aka.ms/csspeech/linuxbinary) herunter, und entpacken Sie die Dateien in einem Verzeichnis Ihrer Wahl. In der folgenden Tabelle wird die Ordnerstruktur des SDK gezeigt:
 
-  |`Path`|BESCHREIBUNG|
+  |`Path`|Beschreibung|
   |-|-|
   |`license.md`|Lizenz|
   |`ThirdPartyNotices.md`|Hinweise zu Drittanbietern|

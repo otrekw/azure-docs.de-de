@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 8b0e7d717ed5c06600adf261f7ce5b44f572adf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6e9eddbec3cdc46c04f9c9ae78f937e20bfa8270
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774257"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901980"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Schnellstart: Extrahieren von Verkaufsbelegdaten mithilfe der REST-API für die Formularerkennung mit cURL
 
 In diesem Schnellstart verwenden Sie die REST-API der Azure-Formularerkennung mit cURL, um relevante Informationen in USA-Verkaufsbelegen zu extrahieren und zu identifizieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-> [!IMPORTANT]
-> In dieser Schnellstartanleitung wird die Formularerkennungs-API v2.0 verwendet. Wenn sich Ihr Abonnement nicht in der Region `West US 2` oder `West Europe` befindet, müssen Sie die v1.0-API verwenden. Befolgen Sie dann statt dieses Schnellstarts den [v1.0-Schnellstart](./curl-train-extract-v1.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945715"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899952"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Verschlüsselung ruhender Inhalte in Azure Cognitive Search mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 
@@ -26,13 +26,13 @@ Die Verschlüsselung mit von Kunden verwalteten Schlüsseln wird auf Ebene von I
 Die Schlüssel müssen sich nicht alle in derselben Key Vault-Instanz befinden. Ein einzelner Suchdienst kann mehrere verschlüsselte Indizes oder Synonymzuordnungen hosten, die jeweils mit ihren eigenen kundenseitig verwalteten Verschlüsselungsschlüsseln verschlüsselt werden, die in verschiedenen Key Vault-Instanzen gespeichert sind.  Im gleichen Dienst können auch Indizes und Synonymzuordnungen enthalten sein, die nicht mit kundenseitig verwalteten Schlüsseln verschlüsselt wurden. 
 
 > [!IMPORTANT] 
-> Dieses Feature ist in der [REST-API-Version 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) und der [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) verfügbar. Derzeit wird die Konfiguration von kundenseitig verwalteten Verschlüsselungsschlüsseln im Azure-Portal nicht unterstützt.
+> Dieses Feature ist in der [REST-API-Version 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) und der [.NET SDK-Version 8.0-preview](search-dotnet-sdk-migration-version-9.md) verfügbar. Derzeit wird die Konfiguration von kundenseitig verwalteten Verschlüsselungsschlüsseln im Azure-Portal nicht unterstützt. Der Suchdienst muss nach Januar 2019 erstellt worden sein und darf kein kostenloser (gemeinsam genutzter) Dienst sein.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Beispiel werden die folgenden Dienste verwendet. 
 
-+ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Der Suchdienst muss nach Januar 2019 erstellt worden sein und darf kein kostenloser (gemeinsam genutzter) Dienst sein.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. 
 
 + [Erstellen einer Azure Key Vault-Ressource](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) oder Suchen eines vorhandenen Tresors in Ihrem Abonnement.
 
