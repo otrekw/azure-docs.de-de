@@ -8,20 +8,18 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 299bbfbc50e9ba779898ab0e0e9dec060bf6541d
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3173fe010106963b9079bf151c92957735253e84
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687580"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898776"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-Unterstützung bei Azure App Service unter Linux
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) wird häufig für die Remoteausführung von Verwaltungsbefehlen über ein Befehlszeilenterminal verwendet. App Service unter Linux unterstützt SSH in den App-Container für jedes der integrierten Docker-Images, die für den Laufzeitstapel neuer Web-Apps verwendet werden. 
+[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) wird häufig für die Remoteausführung von Verwaltungsbefehlen über ein Befehlszeilenterminal verwendet. App Service für Linux bietet SSH-Unterstützung für den App-Container. 
 
-![Laufzeitstapel](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
-
-Für benutzerdefinierte Docker-Images, indem ein SSH-Server in Ihrem benutzerdefinierten Image konfiguriert wird.
+![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
 Sie können auch direkt von Ihrem lokalen Entwicklungscomputer per SSH und SFTP eine Verbindung herstellen.
 

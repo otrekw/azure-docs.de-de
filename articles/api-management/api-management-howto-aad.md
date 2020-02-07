@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 131621e05d7800e59ce3bbdec5c11c1da9facf11
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442801"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985049"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -53,10 +53,10 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 12. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
 13. Wählen Sie **Neue Registrierung** aus. Legen Sie auf der Seite **Anwendung registrieren** folgende Werte fest:
     
-* Legen Sie für **Name** einen aussagekräftigen Namen fest, z. B. *Entwicklerportal*.
-* Legen Sie **Unterstützte Kontotypen** auf **Nur Konten in diesem Organisationsverzeichnis** fest. 
-* Legen Sie **Umleitungs-URI** auf den Wert aus Schritt 9 fest. 
-* Klicken Sie auf **Registrieren**. 
+    * Legen Sie für **Name** einen aussagekräftigen Namen fest, z. B. *Entwicklerportal*.
+    * Legen Sie **Unterstützte Kontotypen** auf **Nur Konten in diesem Organisationsverzeichnis** fest. 
+    * Legen Sie **Umleitungs-URI** auf den Wert aus Schritt 9 fest. 
+    * Klicken Sie auf **Registrieren**. 
 
 14.  Kopieren Sie nach der Registrierung der Anwendung die **Anwendungs-ID (Client)** von der Seite **Übersicht**. 
 15. Navigieren Sie zurück zur API Management-Instanz. Fügen Sie den Wert **Anwendungs-ID (Client)** im Fenster **Identitätsanbieter hinzufügen** in das Feld **Client-ID** ein.
@@ -71,10 +71,10 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
 
 19. Das Fenster **Identitätsanbieter hinzufügen** enthält auch das Textfeld **Zulässige Mandanten**. Geben Sie die in diesem Feld die Domänen der Azure AD-Instanzen ein, für die Sie den APIs der API Management-Dienstinstanz Zugriff gewähren möchten. Sie können mehrere Domänen durch neue Zeilen, Leerzeichen oder Kommas trennen.
 
-> [!NOTE]
-> Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Bevor sich Benutzer aus einer anderen Domäne als der ursprünglichen Domäne (der Domäne, in der die Anwendung registriert wurde) anmelden können, muss ein globaler Administrator dieser anderen Domäne der Anwendung Berechtigungen für den Verzeichnisdatenzugriff erteilen. Sie müssen als globaler Administrator folgendermaßen vorgehen, um Berechtigungen zu erteilen: a) Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z. B. https://contoso.portal.azure-api.net/aadadminconsent).
-> b. Geben Sie den Domänennamen des Azure AD-Mandanten ein, auf den Zugriff erteilt werden soll.
-> c. Klicken Sie auf **Submit** (Senden). 
+    > [!NOTE]
+    > Sie können im Abschnitt **Zulässige Mandanten** mehrere Domänen angeben. Bevor sich Benutzer aus einer anderen Domäne als der ursprünglichen Domäne (der Domäne, in der die Anwendung registriert wurde) anmelden können, muss ein globaler Administrator dieser anderen Domäne der Anwendung Berechtigungen für den Verzeichnisdatenzugriff erteilen. Sie müssen als globaler Administrator folgendermaßen vorgehen, um Berechtigungen zu erteilen: a) Wechseln Sie zu `https://<URL of your developer portal>/aadadminconsent` (z. B. https://contoso.portal.azure-api.net/aadadminconsent).
+    > b. Geben Sie den Domänennamen des Azure AD-Mandanten ein, auf den Zugriff erteilt werden soll.
+    > c. Klicken Sie auf **Submit** (Senden). 
 
 20.  Nachdem Sie die gewünschte Konfiguration angegeben haben, wählen Sie **Hinzufügen** aus.
 
@@ -95,7 +95,7 @@ Jetzt können Sie externe Azure AD-Gruppen über die Registerkarte **Gruppen** I
 
 1. Wählen Sie die Registerkarte **Gruppen** .
 2. Klicken Sie auf die Schaltfläche **AAD-Gruppe hinzufügen**.
-   ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
+    ![Schaltfläche „AAD-Gruppe hinzufügen“](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. Wählen Sie die Gruppe aus, die Sie hinzufügen möchten.
 4. Klicken Sie auf die Schaltfläche **Auswählen**.
 
@@ -105,11 +105,11 @@ Benutzer aus der konfigurierten Azure AD-Instanz können sich jetzt beim Entwick
 
 ## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
 
-Im Entwicklerportal können Sie sich über das Widget **OAuth-Schaltflächen** bei AAD anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
-
-![Widget für AAD-Schaltflächen](./media/api-management-howto-aad/portal-oauth-widget.png)
+Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“:  OAuth** bei AAD anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 
 Obwohl ein neues Konto automatisch erstellt wird, wenn sich ein neuer Benutzer bei AAD anmeldet, können Sie das gleiche Widget auf der Anmeldeseite hinzufügen.
+
+Das Widget **Registrierungsformular:  OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
 
 > [!IMPORTANT]
 > Sie müssen [das Portal](api-management-howto-developer-portal-customize.md#publish) erneut veröffentlichen, damit die AAD-Änderungen wirksam werden.

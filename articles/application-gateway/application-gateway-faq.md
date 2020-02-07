@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9d47986df9b9cbc6b8519aa0466b3434d6216e72
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770083"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986001"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -68,7 +68,9 @@ Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, finden Sie die Inf
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Welche Einstellungen werden für das Keep-Alive-Timeout und das TCP-Leerlauftimeout verwendet?
 
- In der Application Gateway v1-SKU beträgt das Keep-Alive-Timeout 120 Sekunden. Das Keep-Alive-Timeout für die v2-SKU beträgt 75 Sekunden. Das TCP-Leerlauftimeout beträgt standardmäßig vier Minuten für die virtuelle IP (Virtual IP, VIP) des Front-Ends von Application Gateway.
+*Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. 
+
+Der *Keep-Alive-Timeout* in der Application Gateway v1-SKU beträgt 120 Sekunden und in der v2-SKU 75 Sekunden. Der *TCP-Leerlauftimeout* beträgt standardmäßig 4 Minuten für die virtuelle IP (VIP) des Front-Ends von Application Gateway sowohl für die v1- als auch die v2-SKU. 
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Ändert sich die IP-Adresse oder der DNS-Name während der Lebensdauer des Anwendungsgateways?
 

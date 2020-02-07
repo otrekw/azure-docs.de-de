@@ -2,13 +2,13 @@
 title: Einrichten des Bereitschaftstests in einer Containerinstanz
 description: Erfahren Sie, wie Sie einen Test konfigurieren, um sicherzustellen, dass Container in Azure Container Instances Anforderungen nur erhalten, wenn sie bereit sind.
 ms.topic: article
-ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 01/30/2020
+ms.openlocfilehash: 64bb4a3e429ce820835abbf8e235600e592f7868
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533564"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935680"
 ---
 # <a name="configure-readiness-probes"></a>Konfigurieren von Bereitschaftstests
 
@@ -18,9 +18,12 @@ In diesem Artikel wird erläutert, wie Sie eine Containergruppe mit einem Bereit
 
 Azure Container Instances unterstützt auch [Livetests](container-instances-liveness-probe.md), die Sie so konfigurieren können, dass ein fehlerhafter Container automatisch neu startet.
 
+> [!NOTE]
+> Sie können derzeit keinen Bereitschaftstest in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt ist.
+
 ## <a name="yaml-configuration"></a>YAML-Konfiguration
 
-Erstellen Sie beispielsweise eine `readiness-probe.yaml`-Datei mit dem folgenden Codeausschnitt, der einen Bereitschaftstest beinhaltet. Diese Datei definiert eine Containergruppe, die aus einem Container mit einer kleinen Web-App besteht. Die App wird aus dem öffentlichen `mcr.microsoft.com/azuredocs/aci-helloworld`-Image bereitgestellt. Diese Container-App wird auch in Schnellstarts wie [Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle](container-instances-quickstart.md) veranschaulicht.
+Erstellen Sie beispielsweise eine `readiness-probe.yaml`-Datei mit dem folgenden Codeausschnitt, der einen Bereitschaftstest beinhaltet. Diese Datei definiert eine Containergruppe, die aus einem Container mit einer kleinen Web-App besteht. Die App wird aus dem öffentlichen `mcr.microsoft.com/azuredocs/aci-helloworld`-Image bereitgestellt. Diese containerisierte App wird auch in dem Schnellstart [Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle](container-instances-quickstart.md) und anderen veranschaulicht.
 
 ```yaml
 apiVersion: 2018-10-01
@@ -60,7 +63,9 @@ type: Microsoft.ContainerInstance/containerGroups
 
 ### <a name="start-command"></a>Startbefehl
 
-Die YAML-Datei enthält einen Startbefehl, der beim Start des Containers ausgeführt werden soll. Dieser ist durch die Eigenschaft `command` definiert, die ein Array von Zeichenfolgen akzeptiert. Dieser Befehl simuliert eine Zeit, zu der die Web-App ausgeführt wird, der Container aber noch nicht bereit ist. Zuerst wird eine Shell-Sitzung gestartet und ein `node`-Befehl ausgeführt, um die Web-App zu starten. Es wird auch ein Befehl zum Standbymodus für 240 Sekunden gestartet. Danach wird eine Datei mit dem Namen `ready` im Verzeichnis `/tmp` erstellt:
+Die Bereitstellung umfasst eine `command`-Eigenschaft, die einen Startbefehl definiert, der ausgeführt wird, wenn der Container zum ersten Mal ausgeführt wird. Diese Eigenschaft akzeptiert ein Array von Zeichenfolgen. Dieser Befehl simuliert eine Zeit, zu der die Web-App ausgeführt wird, der Container aber noch nicht bereit ist. 
+
+Zuerst wird eine Shell-Sitzung gestartet und ein `node`-Befehl ausgeführt, um die Web-App zu starten. Es wird auch ein Befehl zum Standbymodus für 240 Sekunden gestartet. Danach wird eine Datei mit dem Namen `ready` im Verzeichnis `/tmp` erstellt:
 
 ```console
 node /usr/src/app/index.js & (sleep 240; touch /tmp/ready); wait

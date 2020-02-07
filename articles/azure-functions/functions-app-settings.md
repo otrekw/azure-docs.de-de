@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 87852d940204f574350321e2690b70c9835093d9
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921092"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963698"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -32,14 +32,14 @@ Konfiguriert in Version 2.x oder höher der Functions-Runtime das App-Verhalten 
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
-Optionale Verbindungszeichenfolge für das Speicherkonto zum Speichern von Protokollen und zu deren Anzeige auf der Registerkarte **Überwachen** im Portal. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkonto](functions-infrastructure-as-code.md#storage-account) und [Anforderungen an das Speicherkonto](functions-create-function-app-portal.md#storage-account-requirements).
+Optionale Verbindungszeichenfolge für das Speicherkonto zum Speichern von Protokollen und zu deren Anzeige auf der Registerkarte **Überwachen** im Portal. Diese Einstellung ist nur für Apps gültig, die für Version 1.x der Azure Functions-Runtime gedacht sind. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](storage-considerations.md#storage-account-requirements).
 
 |Key|Beispielwert|
 |---|------------|
-|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
+|AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
-> [!TIP]
-> Um von mehr Leistung und Benutzerfreundlichkeit zu profitieren, empfiehlt es sich, APPINSIGHTS_INSTRUMENTATIONKEY und App Insights anstelle von AzureWebJobsDashboard für die Überwachung zu verwenden.
+> [!NOTE]
+> Für bessere Leistung und Benutzerfreundlichkeit verwenden dir Runtimeversion 2.x und höhere Versionen APPINSIGHTS_INSTRUMENTATIONKEY und App Insights anstelle von `AzureWebJobsDashboard` für die Überwachung.
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -79,7 +79,7 @@ Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüs
 
 ## <a name="azurewebjobsstorage"></a>AzureWebJobsStorage
 
-Die Azure Functions-Laufzeit verwendet diese Verbindungszeichenfolge des Speicherkontos für alle Funktionen, mit Ausnahme der per HTTP ausgelösten Funktionen. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkonto](functions-infrastructure-as-code.md#storage-account) und [Anforderungen an das Speicherkonto](functions-create-function-app-portal.md#storage-account-requirements).
+Die Azure Functions-Laufzeit verwendet diese Verbindungszeichenfolge des Speicherkontos für alle Funktionen, mit Ausnahme der per HTTP ausgelösten Funktionen. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkonto](functions-infrastructure-as-code.md#storage-account) und [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements).
 
 |Key|Beispielwert|
 |---|------------|

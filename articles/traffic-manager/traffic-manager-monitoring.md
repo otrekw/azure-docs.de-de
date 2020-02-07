@@ -2,20 +2,20 @@
 title: Azure Traffic Manager-Endpunktüberwachung | Microsoft Docs
 description: In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunktüberwachung und das automatische Endpunktfailover verwendet, um Azure-Kunden bei der Bereitstellung von Anwendungen mit hoher Verfügbarkeit zu unterstützen.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
-ms.author: allensu
-ms.openlocfilehash: e06d2ce93ac7c534f2c729dce794e66e3ee894d8
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.author: rohink
+ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333813"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938556"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -25,9 +25,9 @@ Azure Traffic Manager umfasst eine integrierte Endpunktüberwachung und ein auto
 
 Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellungen in Ihrem Traffic Manager-Profil angeben:
 
-* **Protokoll**: Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
+* **Protokoll**. Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
 * **Port**: Wählen Sie den Port aus, der für die Anforderung verwendet wird.
-* **Pfad**: Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
+* **-Path:** Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
 * **Benutzerdefinierte Headereinstellungen**: Diese Konfigurationseinstellung hilft Ihnen, bestimmte HTTP-Header zu den Integritätsüberprüfungen hinzuzufügen, die Traffic Manager an Endpunkte unter einem Profil sendet. Die benutzerdefinierten Header können auf Profilebene so festgelegt werden, dass sie für alle Endpunkte in diesem Profil gelten und/oder auf einer Endpunktebene, die nur für diesen Endpunkt gilt. Sie können benutzerdefinierte Header verwenden, um Integritätsprüfungen an Endpunkte in einer mehrinstanzenfähigen Umgebung zu ermöglichen, die ordnungsgemäß an ihr Ziel weitergeleitet werden, indem Sie einen Hostheader angeben. Sie können mit dieser Einstellung auch eindeutige Header hinzufügen, mit denen Sie von Traffic Manager stammende HTTP(S)-Anforderungen identifizieren und unterschiedlich verarbeiten können. Sie können bis zu acht Header-Wert-Paare durch Trennzeichen getrennt angeben. Beispiel: „header1:wert1,header2:wert2“. 
 * **Erwartete Statuscodebereiche**: Mit dieser Einstellung können Sie mehrere Erfolgscodebereiche im Format 200-299, 301-301 angeben. Wenn diese Statuscodes als Antwort von einem Endpunkt empfangen werden, wenn eine Integritätsprüfung eingeleitet wird, markiert Traffic Manager diese Endpunkte als fehlerfrei. Sie können maximal acht Statuscodebereiche angeben. Diese Einstellung gilt nur für das HTTP- und HTTPS-Protokoll sowie für alle Endpunkte. Diese Einstellung bezieht sich auf die Traffic Manager-Profilebene und standardmäßig ist der Wert 200 als Erfolgsstatuscode definiert.
 * **Testintervall**: Dieser Wert gibt an, wie oft die Integrität eines Endpunkts mit einem Test-Agent von Traffic Manager überprüft wird. Sie können hier zwei Werte angeben: 30 Sekunden (Standardtest) und 10 Sekunden (schneller Test). Wenn keine Werte angegeben sind, wird für das Profil ein Standardwert von 30 Sekunden festgelegt. Weitere Informationen zu den Preisen für schnelle Tests finden Sie auf der Seite [Traffic Manager – Preise](https://azure.microsoft.com/pricing/details/traffic-manager).
@@ -69,12 +69,12 @@ Der Überwachungsstatus von Endpunkten ist ein Wert, der von Traffic Manager gen
 
 | Profilstatus | Endpunktstatus | Überwachungsstatus von Endpunkten | Notizen |
 | --- | --- | --- | --- |
-| Deaktiviert |Enabled |Inaktiv |Das Profil wurde deaktiviert. Obwohl der Endpunktstatus immer noch „Aktiviert“ lautet, hat der Profilstatus („Deaktiviert“) Vorrang. Endpunkte in deaktivierten Profilen werden nicht überwacht. Ein „NXDOMAIN“-Antwortcode wird für die DNS-Abfrage zurückgegeben. |
-| &lt;beliebig&gt; |Deaktiviert |Deaktiviert |Der Endpunkt wurde deaktiviert. Deaktivierte Endpunkte werden nicht überwacht. Der Endpunkt wird nicht in DNS-Antworten einbezogen und kann daher auch keinen Datenverkehr empfangen. |
-| Enabled |Enabled |Online |Der Endpunkt wird überwacht und ist fehlerfrei. Er wird in DNS-Antworten einbezogen und kann Datenverkehr empfangen. |
-| Enabled |Enabled |Heruntergestuft |Bei Integritätsprüfungen im Rahmen der Endpunktüberwachung werden Fehler erkannt. Der Endpunkt wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. <br>Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
-| Enabled |Enabled |CheckingEndpoint |Der Endpunkt wird überwacht, die Ergebnisse der ersten Überprüfung wurden jedoch noch nicht empfangen. CheckingEndpoint ist ein temporärer Status, der in der Regel unmittelbar nach dem Hinzufügen oder Aktivieren eines Endpunkts im Profil auftritt. Ein Endpunkt in diesem Status kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen. |
-| Enabled |Enabled |Beendet |Die Web-App, auf den bzw. die der Endpunkt zeigt, wird nicht ausgeführt. Überprüfen Sie die Web-App-Einstellungen. Dies kann auch vorkommen, wenn der Endpunkt ein geschachtelter Endpunkt ist und das untergeordnete Profil deaktiviert oder inaktiv ist. <br>Ein Endpunkt mit dem Status „Beendet“ wird nicht überwacht. Er wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
+| Disabled |Aktiviert |Inaktiv |Das Profil wurde deaktiviert. Obwohl der Endpunktstatus immer noch „Aktiviert“ lautet, hat der Profilstatus („Deaktiviert“) Vorrang. Endpunkte in deaktivierten Profilen werden nicht überwacht. Ein „NXDOMAIN“-Antwortcode wird für die DNS-Abfrage zurückgegeben. |
+| &lt;beliebig&gt; |Disabled |Disabled |Der Endpunkt wurde deaktiviert. Deaktivierte Endpunkte werden nicht überwacht. Der Endpunkt wird nicht in DNS-Antworten einbezogen und kann daher auch keinen Datenverkehr empfangen. |
+| Aktiviert |Aktiviert |Online |Der Endpunkt wird überwacht und ist fehlerfrei. Er wird in DNS-Antworten einbezogen und kann Datenverkehr empfangen. |
+| Aktiviert |Aktiviert |Heruntergestuft |Bei Integritätsprüfungen im Rahmen der Endpunktüberwachung werden Fehler erkannt. Der Endpunkt wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. <br>Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
+| Aktiviert |Aktiviert |CheckingEndpoint |Der Endpunkt wird überwacht, die Ergebnisse der ersten Überprüfung wurden jedoch noch nicht empfangen. CheckingEndpoint ist ein temporärer Status, der in der Regel unmittelbar nach dem Hinzufügen oder Aktivieren eines Endpunkts im Profil auftritt. Ein Endpunkt in diesem Status kann in DNS-Antworten einbezogen werden und Datenverkehr empfangen. |
+| Aktiviert |Aktiviert |Beendet |Die Web-App, auf den bzw. die der Endpunkt zeigt, wird nicht ausgeführt. Überprüfen Sie die Web-App-Einstellungen. Dies kann auch vorkommen, wenn der Endpunkt ein geschachtelter Endpunkt ist und das untergeordnete Profil deaktiviert oder inaktiv ist. <br>Ein Endpunkt mit dem Status „Beendet“ wird nicht überwacht. Er wird nicht in DNS-Antworten einbezogen und empfängt keinen Datenverkehr. Eine Ausnahme ist der Fall, in dem alle Endpunkte heruntergestuft und in der Abfrageantwort zurückgegeben werden.</br>|
 
 Ausführlichere Informationen zur Berechnung des Überwachungsstatus bei geschachtelten Endpunkten finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
@@ -83,15 +83,15 @@ Ausführlichere Informationen zur Berechnung des Überwachungsstatus bei geschac
 
 ### <a name="profile-monitor-status"></a>Überwachungsstatus von Profilen
 
-Der Überwachungsstatus von Profilen ist das Ergebnis einer Kombination aus dem konfigurierten Profilstatus und den Überwachungsstatuswerten von Endpunkten für alle Endpunkte. Die möglichen Werte sind in der folgenden Tabelle beschrieben:
+Der Überwachungsstatus von Profilen ist das Ergebnis einer Kombination aus dem konfigurierten Profilstatus und den Überwachungsstatuswerten von Endpunkten für alle Endpunkte. Eine Beschreibung der möglichen Werte finden Sie in der folgenden Tabelle:
 
 | Profilstatus (wie konfiguriert) | Überwachungsstatus von Endpunkten | Überwachungsstatus von Profilen | Notizen |
 | --- | --- | --- | --- |
-| Deaktiviert |&lt;beliebig&gt; oder ein Profil ohne definierte Endpunkte. |Deaktiviert |Das Profil wurde deaktiviert. |
-| Enabled |Der Status mindestens eines Endpunkts lautet „Heruntergestuft“. |Heruntergestuft |Überprüfen Sie die einzelnen Endpunkt-Statuswerte, um zu ermitteln, für welche Endpunkte weitere Aufmerksamkeit erforderlich ist. |
-| Enabled |Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Online- |Der Dienst akzeptiert Datenverkehr. Es ist keine weitere Aktion erforderlich. |
-| Enabled |Der Status mindestens eines Endpunkts lautet „CheckingEndpoint“. Es befinden sich keine Endpunkte in den Status „Online“ oder „Heruntergestuft“. |CheckingEndpoints |Dieser Übergangsstatus tritt auf, wenn ein Profil erstellt oder aktiviert wird. Die Endpunktintegrität wird zum ersten Mal überprüft. |
-| Enabled |Der Status aller Endpunkte im Profil ist „Deaktiviert“ oder „Beendet“, oder im Profil wurden keine Endpunkte definiert. |Inaktiv |Es sind keine Endpunkte aktiv, das Profil ist jedoch weiterhin aktiviert. |
+| Disabled |&lt;beliebig&gt; oder ein Profil ohne definierte Endpunkte. |Disabled |Das Profil wurde deaktiviert. |
+| Aktiviert |Der Status mindestens eines Endpunkts lautet „Heruntergestuft“. |Heruntergestuft |Überprüfen Sie die einzelnen Endpunkt-Statuswerte, um zu ermitteln, für welche Endpunkte weitere Aufmerksamkeit erforderlich ist. |
+| Aktiviert |Der Status mindestens eines Endpunkts lautet „Online“. Kein Endpunkt weist den Status „Heruntergestuft“ auf. |Online |Der Dienst akzeptiert Datenverkehr. Es ist keine weitere Aktion erforderlich. |
+| Aktiviert |Der Status mindestens eines Endpunkts lautet „CheckingEndpoint“. Es befinden sich keine Endpunkte in den Status „Online“ oder „Heruntergestuft“. |CheckingEndpoints |Dieser Übergangsstatus tritt auf, wenn ein Profil erstellt oder aktiviert wird. Die Endpunktintegrität wird zum ersten Mal überprüft. |
+| Aktiviert |Der Status aller Endpunkte im Profil ist „Deaktiviert“ oder „Beendet“, oder im Profil wurden keine Endpunkte definiert. |Inaktiv |Es sind keine Endpunkte aktiv, das Profil ist jedoch weiterhin aktiviert. |
 
 ## <a name="endpoint-failover-and-recovery"></a>Endpunktfailover und -wiederherstellung
 
@@ -134,7 +134,7 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 
 * **Priorität**. Endpunkte bilden eine mit Prioritäten versehene Liste. Der erste verfügbare Endpunkt der Liste wird immer zurückgegeben. Wenn ein Endpunkt sich im Status „Heruntergestuft“ befindet, wird der nächste verfügbare Endpunkt zurückgegeben.
 * **Gewichtet**. Alle verfügbaren Endpunkte werden basierend auf der ihnen zugewiesenen Gewichtung und den Gewichtungen der anderen verfügbaren Endpunkte zufällig ausgewählt.
-* **Leistung**. Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
+* **Leistung**: Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
 * **Geografisch**. Der zugeordnete Endpunkt zum Bereitstellen des geografischen Standorts basierend auf den IPs der Abfrageanforderung wird zurückgegeben. Falls dieser Endpunkt nicht verfügbar ist, wird kein anderer Endpunkt für das Failover ausgewählt, da ein geografischer Standort nur einem Endpunkt eines Profils zugeordnet werden kann (weitere Details unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als bewährte Methode bei der Verwendung des geografischen Routings empfehlen wir Kunden, geschachtelte Traffic Manager-Profile mit mehr als einem Endpunkt zu verwenden.
 * **MultiValue**: Mehrere Endpunkte, die IPv4/IPv6-Adressen zugeordnet sind, werden zurückgegeben. Wenn eine Abfrage für dieses Profil empfangen wird, werden fehlerfreie Endpunkte basierend auf dem von Ihnen angegebenen Wert für die **maximale Datensatzanzahl in einer Antwort** zurückgegeben. Die Standardanzahl der Antworten sind zwei Endpunkte.
 * **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 

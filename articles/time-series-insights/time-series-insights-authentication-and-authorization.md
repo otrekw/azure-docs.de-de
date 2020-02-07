@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863477"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984560"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
@@ -93,7 +93,7 @@ Wenn Sie in **Schritt 3** die Anmeldeinformationen Ihrer Anwendung und Ihrer Ben
 
    1. Das Token kann dann im `Authorization`-Header übergeben werden, wenn die Anwendung die Time Series Insights-API aufruft.
 
-* Alternativ können Entwickler sich für die Authentifizierung mit MSAL entscheiden. Unter [Migrieren von Anwendungen zu MSAL.NET](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) erhalten Sie weitere Informationen. 
+* Alternativ können Entwickler sich für die Authentifizierung mit MSAL entscheiden. Weitere Informationen finden Sie unter [Migrieren zu MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) sowie in dem Artikel [Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#](time-series-insights-manage-reference-data-csharp.md). 
 
 ## <a name="common-headers-and-parameters"></a>Allgemeine Parameter und Header
 

@@ -3,12 +3,12 @@ title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74840764"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938876"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -106,7 +106,7 @@ Beispielsweise können Sie eine mehrstufige Aufgaben erstellen, die die folgende
 1. Erstellen eines Webanwendungs-Testimages
 1. Ausführen des Webanwendungs-Testcontainers, der Tests für den aktuell ausgeführten Anwendungscontainer durchführt
 1. Wenn die Tests erfolgreich sind: Erstellen eines Helm-Chart-Archivpakets
-1. Ausführen eines `helm upgrade` mithilfe des neuen Helm-Diagramm-Archivpakets
+1. Ausführen von `helm upgrade` mithilfe des neuen Helm-Chart-Archivpakets
 
 Mit mehrstufigen Aufgaben können Sie das Erstellen, Ausführen und Testen eines Images in mehrere individuelle Schritte aufteilen, wobei Abhängigkeiten zwischen den Schritten unterstützt werden. Mit mehrstufigen Aufgaben in ACR Tasks erhalten Sie eine bessere Kontrolle über die Workflows zur Erstellung von Images, Tests, Betriebssystem- und Frameworkpatches.
 
@@ -116,12 +116,13 @@ Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von 
 
 Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
 
-| Kontextspeicherort | BESCHREIBUNG | Beispiel |
+| Kontextspeicherort | Beschreibung | Beispiel |
 | ---------------- | ----------- | ------- |
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
 | GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-Branch | Bestimmter Branch eines öffentlichen oder privaten GitHub-Repositorys| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub-Commit | Spezifischer Commit in ein öffentliches oder privates GitHub-Repository. Das Beispiel zeigt die Kombination aus einem Commit-Hash (SHA) und einer Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
 | Azure DevOps-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten Azure-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
 
@@ -132,7 +133,7 @@ Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicheror
 
 ACR Tasks erstellt standardmäßig Images für das Linux-Betriebssystem und die amd64-Architektur. Geben Sie das Tag `--platform` an, um Windows-Images oder Linux-Images für andere Architekturen zu erstellen. Geben Sie das Betriebssystem und optional eine unterstützte Architektur im Format „Betriebssystem/Architektur“ an (z. B. `--platform Linux/arm`). Geben Sie bei ARM-Architekturen optional eine Variante im Format „Betriebssystem/Architektur/Variante“ an (z. B. `--platform Linux/arm64/v8`):
 
-| OS | Architecture|
+| OS | Aufbau|
 | --- | ------- | 
 | Linux | amd64<br/>ARM<br/>arm64<br/>386 |
 | Windows | amd64 |

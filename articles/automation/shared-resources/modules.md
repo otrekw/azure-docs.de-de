@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/03/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e300bc0f29808215673407d21b65fe329e50ad45
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786468"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930437"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwenden von Modulen in Azure Automation
 
@@ -64,7 +64,7 @@ Wenn Sie Probleme mit einem Modul haben oder ein Rollback auf eine frühere Vers
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto, und wählen Sie unter **Module** die Option **Freigegebene Ressourcen** aus. Wählen Sie das Modul aus, das Sie entfernen möchten. Klicken Sie auf der Seite **Modul** auf **Löschen**. Handelt es sich bei dem Modul um eines der [Standardmodule](#default-modules), wird ein Rollback auf die Version durchgeführt, die beim Erstellen des Automation-Kontos installiert wurde.
+Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto, und wählen Sie unter **Module** die Option **Freigegebene Ressourcen** aus. Wählen Sie das Modul aus, das Sie entfernen möchten. Wählen Sie auf der Seite **Modul** den Befehl **Löschen** aus. Handelt es sich bei dem Modul um eines der [Standardmodule](#default-modules), wird ein Rollback auf die Version durchgeführt, die beim Erstellen des Automation-Kontos installiert wurde.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -79,10 +79,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 Nachfolgend finden Sie eine Liste der Cmdlets im internen `Orchestrator.AssetManagement.Cmdlets`-Modul, das in jedes Automation-Konto importiert wird. Diese Cmdlets sind in Ihren Runbooks und DSC-Konfigurationen verfügbar und ermöglichen Ihnen die Interaktion mit den Ressourcen in Ihrem Automation-Konto. Zudem ermöglichen die internen-Cmdlets das Abrufen von Geheimnissen aus verschlüsselten **Variablenwerten**, **Anmeldeinformationen** und verschlüsselten **Verbindungsfeldern**. Die Azure PowerShell-Cmdlets können diese Geheimnisse nicht abrufen. Wenn Sie diese Cmdlets verwenden, müssen Sie keine implizite Verbindung mit Azure herstellen, z. B. „Als Konto ausführen“, um sich bei Azure zu authentifizieren.
 
 >[!NOTE]
->Diese internen Cmdlets sind nicht auf einem Hybrid Runbook Worker verfügbar. Auf sie kann nur über Runbooks zugegriffen werden, die in Azure ausgeführt werden. Verwenden Sie die entsprechenden Cmdlets [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) oder [Az-Module](../az-modules.md) für Runbooks, die direkt auf Ihrem Computer oder mit Ressourcen in Ihrer Umgebung ausgeführt werden. 
+>Diese internen Cmdlets sind auf einem Windows Hybrid Runbook Worker verfügbar, aber nicht auf einem Linux Hybrid Runbook Worker. Verwenden Sie die entsprechenden Cmdlets [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) oder [Az-Module](../az-modules.md) für Runbooks, die direkt auf Ihrem Computer oder mit Ressourcen in Ihrer Umgebung ausgeführt werden. 
 >
 
-|NAME|BESCHREIBUNG|
+|Name|Beschreibung|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |

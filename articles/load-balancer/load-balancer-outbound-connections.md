@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225281"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934552"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -40,7 +40,7 @@ Es gibt mehrere [Szenarien für die ausgehende Richtung](#scenarios). Diese Szen
 
 Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) explizit definiert.  In Azure gibt es derzeit drei verschiedene Methoden, wie die ausgehende Konnektivität für Azure Resource Manager-Ressourcen erreicht werden kann. 
 
-| SKUs | Szenario | Methode | IP-Protokolle | BESCHREIBUNG |
+| SKUs | Szenario | Methode | IP-Protokolle | Beschreibung |
 | --- | --- | --- | --- | --- |
 | Standard, Basic | [1. Virtueller Computer mit öffentlicher IP-Adresse (mit oder ohne Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Bei der Verwendung von Load Balancer Standard sollten Sie [Ausgangsregeln](load-balancer-outbound-rules-overview.md) verwenden, um die ausgehenden Verbindungen explizit zu definieren. |
 | Standard, Basic | [2. Öffentlicher Load Balancer, der einem virtuellen Computer zugeordnet ist (keine öffentliche IP-Adresse für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
@@ -160,7 +160,7 @@ In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der
 
 | Poolgröße (VM-Instanzen) | Vorab zugeordnete SNAT-Ports pro IP-Konfiguration|
 | --- | --- |
-| 1-50 | 1024 |
+| 1-50 | 1\.024 |
 | 51-100 | 512 |
 | 101-200 | 256 |
 | 201-400 | 128 |
@@ -237,7 +237,7 @@ Wenn Sie horizontal auf die nächstgrößere Back-End-Poolgröße hochskalieren,
 
 ### <a name="idletimeout"></a>Verwenden von Keepalives zum Zurücksetzen des Leerlauftimeouts für ausgehende Verbindungen
 
-Ausgehende Verbindungen haben einen 4-Minuten-Leerlauftimeout. Dieses Timeout ist nicht anpassbar. Sie können jedoch Keepalives auf der Transportschicht (z. B. TCP-Keepalives) oder der Anwendungsschicht verwenden, um einen im Leerlauf befindlichen Datenfluss zu aktualisieren und den Leerlauftimeout bei Bedarf zurückzusetzen.  
+Ausgehende Verbindungen haben einen 4-Minuten-Leerlauftimeout. Dieses Zeitlimit kann über [Ausgangsregeln](../load-balancer/load-balancer-outbound-rules-overview.md#idletimeout) angepasst werden. Sie können Keepalives auf der Transportschicht (z. B. TCP-Keepalives) oder der Anwendungsschicht verwenden, um einen im Leerlauf befindlichen Datenfluss zu aktualisieren und den Leerlauftimeout bei Bedarf zurückzusetzen.  
 
 Wenn TCP-Keepalives verwendet werden, genügt es, sie auf einer Seite der Verbindung zu aktivieren. Beispielsweise genügt es, sie nur auf der Serverseite zu aktivieren, um den Leerlauftimer des Datenflusses zurückzusetzen, und es ist nicht erforderlich, TCP-Keepalives auf beiden Seiten auszulösen.  Ähnliche Konzepte gibt es für die Anwendungsschicht, einschließlich Client/Server-Konfigurationen für Datenbanken.  Überprüfen Sie auf der Serverseite, welche Optionen es für anwendungsspezifische Keepalives gibt.
 

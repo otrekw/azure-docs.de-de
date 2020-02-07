@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715934"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986817"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -100,7 +100,7 @@ Sie können einen Arbeitsbereich zwischen Ressourcengruppen oder Abonnements ver
 
 Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Neue Warnungsregel** sind nicht verfügbar, wenn der [Abfragebereich](log-query/scope.md) auf eine bestimmte Ressource festgelegt ist. Zum Erstellen von Benachrichtigungen sowie zum Speichern oder Laden von Abfragen muss Log Analytics auf einen Arbeitsbereich festgelegt sein. Wenn Sie Log Analytics im Arbeitsbereichskontext öffnen möchten, wählen Sie im Menü **Azure Monitor** die Option **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](log-query/scope.md).
 
-### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich in der Protokollumgebung nach einem Drilldown für einen virtuellen Computer eine Fehlermeldung mit dem Hinweis, dass ich den Ressourcenanbieter „Microsoft.Insights“ für dieses Abonnement registrieren muss, um diese Abfrage zu ermöglichen, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
 Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbieter müssen jedoch unter Umständen manuell registriert werden. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
@@ -326,6 +326,11 @@ Sie können [mit Power BI](app/export-power-bi.md ) die Anforderungstelemetrieda
 
 ### <a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
 Informationen hierzu finden Sie unter [Datensammlung, -aufbewahrung und -speicherung in Application Insights][data].
+
+### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Was geschieht mit den Telemetriedaten von Application Insight, wenn ein Server oder Gerät die Verbindung mit Azure verliert?
+
+Alle unsere SDKs, einschließlich des Web-SDKs, beinhalten „zuverlässigen Transport“ oder „stabilen Transport“. Wenn der Server oder das Gerät die Verbindung mit Azure verliert, werden die Telemetriedaten [lokal im Dateisystem gespeichert](https://docs.microsoft.com/azure/azure-monitor/app/data-retention-privacy#does-the-sdk-create-temporary-local-storage) (Server-SDKs) oder im HTML5-Sitzungsspeicher (Web-SDK). Das SDK versucht regelmäßig, diese Telemetriedaten zu senden, bis unser Erfassungsdienst diese als „veraltet“ erachtet (48 Stunden für Protokolle, 30 Minuten für Metriken). Veraltete Telemetriedaten werden verworfen. In einigen Fällen, z. B. wenn der lokale Speicher voll ist, wird kein Wiederholungsversuch unternommen.
+
 
 ### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Können beim Senden von Telemetriedaten auch personenbezogene Daten übertragen werden?
 

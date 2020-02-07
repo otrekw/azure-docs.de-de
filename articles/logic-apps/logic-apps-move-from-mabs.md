@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 10c9a1d3723ed30bee5437c3ab7a41308e253bd8
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666651"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905437"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>Migrieren Ihrer Apps und Lösungen von BizTalk Services zu Azure Logic Apps
 
@@ -125,7 +125,7 @@ Diese Aktionen werden im Gegensatz zu BizTalk Services von den Transportprotokol
 
 ## <a name="manage-and-monitor"></a>Verwalten und Überwachen
 
-In BizTalk Services bot ein dediziertes Portal Nachverfolgungsfunktionen für die Überwachung und Problembehandlung an. Logic Apps bietet umfangreichere Nachverfolgungs- und Überwachungsfunktionen im [Azure-Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md). Dies umfasst auch eine mobile App für die Überwachung unterwegs.
+In BizTalk Services bot ein dediziertes Portal Nachverfolgungsfunktionen für die Überwachung und Problembehandlung an. Logic Apps bietet umfangreichere Nachverfolgungs- und Überwachungsfunktionen [zum Überwachen von Logik-Apps im Azure-Portal](../logic-apps/monitor-logic-apps.md). Dies umfasst auch eine mobile App für die Überwachung unterwegs.
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

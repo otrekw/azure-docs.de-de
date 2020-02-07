@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Datenbankrollen und Benutzer auf einem Analys
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147010"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901492"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -42,12 +42,12 @@ Bei **Sicherheitsgruppen** muss [E-Mail-aktiviert](https://docs.microsoft.com/ex
   
 4.  Wählen Sie eine der folgenden Berechtigungen aus:  
   
-    |Berechtigung|BESCHREIBUNG|  
+    |Berechtigung|Beschreibung|  
     |----------------|-----------------|  
-    |**Keine**|Mitglieder können das Modellschema nicht ändern und keine Daten abfragen.|  
+    |**None**|Mitglieder können das Modellschema nicht lesen oder ändern und keine Daten abfragen.|  
     |**Lesen**|Mitglieder können (basierend auf Zeilenfiltern) Daten abfragen, jedoch das Modellschema nicht ändern.|  
     |**Lesen und Verarbeiten**|Mitglieder können Daten (basierend auf Zeilenfiltern) abfragen sowie Prozesse ausführen und alle Vorgänge verarbeiten, jedoch das Modellschema nicht ändern.|  
-    |**Prozess**|Mitglieder können Prozesse ausführen und alle Vorgänge verarbeiten. Sie können das Modellschema nicht ändern und keine Daten abfragen.|  
+    |**Prozess**|Mitglieder können die Vorgänge Verarbeiten und Alles verarbeiten ausführen. Können das Modellschema nicht lesen oder ändern und keine Daten abfragen.|  
     |**Administrator**|Mitglieder können das Modellschema ändern und alle Daten abfragen.|   
   
 5.  Wenn die erstellte Rolle über die Berechtigung „Lesen“ oder „Lesen und Verarbeiten“ verfügt, können Sie mit einer DAX-Formel Zeilenfilter hinzufügen. Klicken Sie auf die Registerkarte **Zeilenfilter**, und wählen Sie eine Tabelle aus. Klicken Sie dann auf das Feld **DAX-Filter**, und geben Sie eine DAX-Formel ein.
@@ -71,10 +71,10 @@ Zum Hinzufügen von Rollen und Benutzern zu einer bereitgestellten Modelldatenba
 
 3. Wählen Sie eine Berechtigung aus.
 
-   |Berechtigung|BESCHREIBUNG|  
+   |Berechtigung|Beschreibung|  
    |----------------|-----------------|  
    |**Vollzugriff (Administrator)**|Mitglieder können das Modellschema ändern, Prozesse ausführen und alle Daten abfragen.| 
-   |**Datenbank verarbeiten**|Mitglieder können Prozesse ausführen und alle Vorgänge verarbeiten. Sie können das Modellschema nicht ändern und keine Daten abfragen.|  
+   |**Datenbank verarbeiten**|Mitglieder können die Vorgänge Verarbeiten und Alles verarbeiten ausführen. Sie können weder das Modellschema ändern noch Daten abfragen.|  
    |**Lesen**|Mitglieder können (basierend auf Zeilenfiltern) Daten abfragen, jedoch das Modellschema nicht ändern.|  
   
 4. Klicken Sie auf **Mitgliedschaft**, und geben Sie einen Benutzer oder eine Gruppe nach E-Mail-Adresse in Ihrem Azure AD-Mandanten ein.
@@ -121,7 +121,7 @@ In diesem Beispiel werden der Rolle „Analyst“ ein externer B2B-Benutzer und 
 
 Das [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
   
-|Cmdlet|BESCHREIBUNG|
+|Cmdlet|Beschreibung|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
@@ -129,15 +129,15 @@ Das [SqlServer](https://docs.microsoft.com/analysis-services/powershell/analysis
 
 ## <a name="row-filters"></a>Zeilenfilter  
 
-Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer bestimmten Rolle abgefragt werden können. Zeilenfilter werden mithilfe von DAX-Formeln für jede Tabelle in einem Modell definiert.  
+Zeilenfilter definieren, welche Zeilen in einer Tabelle von Mitgliedern einer bestimmten Rolle abgefragt werden können. Zeilenfilter werden für jede Tabelle in einem Modell mithilfe von DAX-Formeln definiert.  
   
 Zeilenfilter können nur für Rollen mit den Berechtigungen „Lesen“ und „Lesen und Verarbeiten“ definiert werden. Wenn für eine bestimmte Tabelle kein Zeilenfilter definiert ist, können Mitglieder standardmäßig alle Zeilen in der Tabelle abfragen, sofern keine Kreuzfilterung aus einer anderen Tabelle gilt.
   
  Zeilenfilter erfordern eine DAX-Formel, die als TRUE- oder FALSE-Wert ausgewertet werden muss, um die Zeilen zu definieren, die von Mitgliedern dieser bestimmten Rolle abgefragt werden können. Zeilen, die in der DAX-Formel nicht enthalten sind, können nicht abgefragt werden. Bei der Tabelle „Customers“ mit dem Zeilenfilterausdruck *=Customers[Country]="USA"* können Mitglieder der Rolle „Sales“ beispielsweise nur Kunden in den USA anzeigen.  
   
-Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn für eine Tabelle mehrere Beziehungen definiert sind, wenden Filter Sicherheitseinstellungen für die jeweils aktive Beziehung an. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
+Zeilenfilter gelten für die angegebenen Zeilen und zugehörige Zeilen. Wenn eine Tabelle über mehrere Beziehungen verfügt, wird die Sicherheit für die aktive Beziehung mithilfe von Filtern gewährleistet. Zeilenfilter überschneiden sich mit anderen für zugehörige Tabellen definierte Zeilenfiltern, z.B.:  
   
-|Table|DAX-Ausdruck|  
+|Tabelle|DAX-Ausdruck|  
 |-----------|--------------------|  
 |Region|=Region[Country]="USA"|  
 |ProductCategory|=ProductCategory[Name]="Bicycles"|  

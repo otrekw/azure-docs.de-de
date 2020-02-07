@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845405"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964011"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -79,6 +79,8 @@ Mithilfe der Functions-Erweiterung können Sie zugleich mit Ihrer ersten Funktio
 
     ![Über HTTP ausgelöst Funktionsvorlage in Visual Studio Code](./media/functions-develop-vs-code/new-function-full.png)
 
+### <a name="generated-project-files"></a>Generierte Projektdateien
+
 Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installiert die erforderlichen Abhängigkeiten. Für jede Sprache weist das neue Projekt die folgenden Dateien auf:
 
 * **host.json**: Ermöglicht das Konfigurieren des Functions-Hosts. Diese Einstellungen gelten, wenn Sie Funktionen lokal ausführen und sie in Azure ausführen. Weitere Informationen finden Sie in der [host.json-Referenz](functions-host-json.md).
@@ -87,6 +89,30 @@ Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installi
 
     >[!IMPORTANT]
     >Da die Datei „local.settings.json“ Geheimnisse enthalten kann, müssen Sie sie aus der Quellcodeverwaltung Ihres Projekts ausschließen.
+
+Abhängig von Ihrer Sprache werden diese anderen Dateien erstellt:
+
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+
+* [Klassenbibliotheksdatei „HttpExample.cs“](functions-dotnet-class-library.md#functions-class-library-project) zur Implementierung der Funktion.
+
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+
+* Eine Datei „package.json“ im Stammordner.
+
+* Einen Ordner „HttpExample“ mit der [Definitionsdatei „function.json“](functions-reference-node.md#folder-structure) und der [Datei „index.js“](functions-reference-node.md#exporting-a-function), eine Node.js-Datei mit dem Funktionscode.
+
+<!-- # [PowerShell](#tab/powershell)
+
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the run.ps1 file, which contains the function code.
+ 
+# [Python](#tab/python)
+    
+* A project-level requirements.txt file that lists packages required by Functions.
+    
+* An HttpExample folder that contains the [function.json definition file](functions-reference-python.md#programming-model) and the \_\_init\_\_.py file, which contains the function code.
+     -->
+---
 
 An diesem Punkt können Sie Ihrer Funktion Eingabe- und Ausgabebindungen hinzufügen, indem Sie [die Datei „function.json“ ändern](#add-a-function-to-your-project) oder indem Sie [einer C#-Klassenbibliotheksfunktion einen Parameter hinzufügen](#add-a-function-to-your-project).
 

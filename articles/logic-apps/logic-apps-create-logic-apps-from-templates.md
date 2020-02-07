@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
-ms.openlocfilehash: 58c0ff8cf8a579e2b97ebbe195f47e4baef4621a
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666821"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905118"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -21,7 +21,7 @@ Damit Sie schneller mit dem Erstellen von Workflows beginnen können, werden von
 
 Hier sind einige Vorlagenkategorien angegeben:
 
-| Vorlagentyp | BESCHREIBUNG | 
+| Vorlagentyp | Beschreibung | 
 | ------------- | ----------- | 
 | Enterprise Cloud-Vorlagen | Dienen zum Integrieren von Azure Blob, Dynamics CRM, Salesforce, Box, Azure Blob und enthalten andere Connectors für die Anforderungen Ihrer Unternehmenscloud. Sie können diese Vorlagen beispielsweise verwenden, um geschäftliche Leads zu organisieren oder Ihre Unternehmensdateidaten zu sichern. | 
 | Persönliche Produktivitätsvorlagen | Dienen zum Verbessern der persönlichen Produktivität, indem tägliche Erinnerungen festgelegt, wichtige Arbeitselemente in Aufgabenlisten umgewandelt und langwierige Aufgaben bis hinunter zu einem Genehmigungsschritt durch einen einzelnen Benutzer automatisiert werden. | 
@@ -44,13 +44,13 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
    ![Angeben von Details zur Logik-App](./media/logic-apps-create-logic-apps-from-templates/logic-app-settings.png)
 
-   | Einstellung | value | BESCHREIBUNG | 
+   | Einstellung | value | Beschreibung | 
    | ------- | ----- | ----------- | 
    | **Name** | *Name Ihrer Logik-App* | Geben Sie einen eindeutigen Namen für die Logik-App an. | 
    | **Abonnement** | *Name-Ihres-Azure-Abonnements* | Wählen Sie das gewünschte Azure-Abonnement aus. | 
    | **Ressourcengruppe** | *Name-Ihrer-Azure-Ressourcengruppe* | Erstellen bzw. wählen Sie eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) für diese Logik-App und zum Organisieren aller Ressourcen, die der App zugeordnet sind. | 
    | **Location** | *Ihre-Azure-Datencenterregion* | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus, z.B. „USA, Westen“. | 
-   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Aktivieren Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) für Ihre Logik-App über [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md). Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
+   | **Log Analytics** | **Aus** (Standard) oder **Ein** | Richten Sie die [Diagnoseprotokollierung](../logic-apps/monitor-logic-apps-log-analytics.md) für Ihre Logik-App ein, indem Sie [Azure Monitor-Protokolle](../log-analytics/log-analytics-overview.md) verwenden. Hierfür ist es erforderlich, dass Sie bereits über einen Log Analytics-Arbeitsbereich verfügen. | 
    |||| 
 
 4. Wählen Sie die Option **An Dashboard anheften**, wenn Sie fertig sind. Ihre Logik-App wird dann automatisch in Ihrem Azure-Dashboard angezeigt und nach der Bereitstellung geöffnet. Wählen Sie **Erstellen**.

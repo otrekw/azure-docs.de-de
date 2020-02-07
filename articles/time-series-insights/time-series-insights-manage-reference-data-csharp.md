@@ -9,20 +9,33 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 01/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2bdd11c3b53b650e636d53942fcb94142de556b2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cf5f89197798f95dced5bfd8817f1df050297048
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772826"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76961998"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Verwalten von GA-Referenzdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
 
 In diesem Artikel wird veranschaulicht, wie Sie C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) und Azure Active Directory kombinieren, um programmgesteuert API-Anforderungen an die [Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) von Azure Time Series Insights GA auszuführen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+> [!TIP]
+> C#-Codebeispiele mit allgemeiner Verfügbarkeit finden Sie unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample).
+
+## <a name="summary"></a>Zusammenfassung
+
+Im unten stehenden Beispielcode werden die folgenden Funktionen veranschaulicht:
+
+* Abrufen eines Zugriffstokens mit **PublicClientApplication** für [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)
+* Sequenzielle CREATE-, READ-, UPDATE- und DELETE-Vorgänge für die GA-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
+* Allgemeine Antwortcodes, einschließlich [allgemeiner Fehlercodes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)
+    
+    Die Verweisdatenverwaltungs-API verarbeitet jedes Element einzeln. Wenn bei einem Element ein Fehler auftritt, verhindert dies nicht den erfolgreichen Abschluss der anderen. Wenn Ihre Anforderung z. B. 100 Elemente umfasst und bei einem Element ein Fehler auftritt, werden 99 Elemente geschrieben, und eines wird zurückgewiesen.
+
+## <a name="prerequisites-and-setup"></a>Voraussetzungen und Setup
 
 Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
 
@@ -42,9 +55,6 @@ Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden S
 1. Bearbeiten Sie den unten stehenden Beispielcode, indem Sie alle Vorkommen von **#PLACEHOLDER#** durch den entsprechenden Umgebungsbezeichner ersetzen.
 
 1. Führen Sie `dotnet run` im Stammverzeichnis Ihres Projekts aus. Wenn Sie dazu aufgefordert werden, verwenden Sie Ihr Benutzerprofil für die Anmeldung bei Azure. 
-
-> [!TIP]
-> * Sehen Sie sich GA-Codebeispiele in C# unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) an.
 
 ## <a name="project-dependencies"></a>Projektabhängigkeiten
 
@@ -296,16 +306,6 @@ namespace CsharpTsiMsalGaSample
     }
 }
 ```
-
-## <a name="summary"></a>Zusammenfassung
-
-Im obigen Beispielcode werden die folgenden Funktionen veranschaulicht:
-
-* Abrufen eines Zugriffstokens mit **PublicClientApplication** für [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)
-* Sequenzielle CREATE-, READ-, UPDATE- und DELETE-Vorgänge für die GA-[Verweisdatenverwaltungs-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)
-* Allgemeine Antwortcodes, einschließlich [allgemeiner Fehlercodes](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling)
-    
-    Die Verweisdatenverwaltungs-API verarbeitet jedes Element einzeln. Wenn bei einem Element ein Fehler auftritt, verhindert dies nicht den erfolgreichen Abschluss der anderen. Wenn Ihre Anforderung z. B. 100 Elemente umfasst und bei einem Element ein Fehler auftritt, werden 99 Elemente geschrieben, und eines wird zurückgewiesen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

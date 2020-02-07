@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/12/2019
+ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582645919825c308fce4fe3211fa601955aaf37d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 767c1fddbc3d1f46d4341a70c990c2b57ad40e54
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850175"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76930415"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Anmeldeinformationsobjekte in Azure Automation
 
@@ -25,33 +25,22 @@ Ein Automation-Anmeldeinformationsobjekt enthält ein Objekt, das Sicherheitsanm
 > [!NOTE]
 > Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in Key Vault gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet.
 
-## <a name="azure-classic-powershell-cmdlets"></a>Klassische Azure PowerShell-Cmdlets
+## <a name="azure-powershell-az-cmdlets"></a>Az-Cmdlets der Azure PowerShell
 
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Im Az-Modul der Azure PowerShell werden die Cmdlets in der folgenden Tabelle zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [AzureAz.Automation-Moduls](/powershell/azure/new-azureps-module-az?view=azps-1.1.0), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-| Cmdlets | BESCHREIBUNG |
+| Cmdlets | Beschreibung |
 |:--- |:--- |
-| [Get-AzureAutomationCredential](/powershell/module/servicemanagement/azure/get-azureautomationcredential) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab. Sie können mithilfe der Aktivität **Get-AutomationPSCredential** nur das Anmeldeinformationsobjekt selbst abrufen. |
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Erstellt ein neues Anmeldeinformationsobjekt. |
-| [Remove-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Entfernt ein Anmeldeinformationsobjekt. |
-| [Set-AzureAutomationCredential](/powershell/module/servicemanagement/azure/new-azureautomationcredential) |Legt die Eigenschaften für ein vorhandenes Anmeldeinformationsobjekt fest. |
-
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-Cmdlets
-
-Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Funktionsumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
-
-| Cmdlets | BESCHREIBUNG |
-|:--- |:--- |
-| [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab. Dies gibt kein PSCredential-Objekt zurück.  |
-| [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential) |Erstellt ein neues Anmeldeinformationsobjekt. |
-| [Remove-AzureRmAutomationCredential](/powershell/module/azurerm.automation/remove-azurermautomationcredential) |Entfernt ein Anmeldeinformationsobjekt. |
-| [Set-AzureRmAutomationCredential](/powershell/module/azurerm.automation/set-azurermautomationcredential) |Legt die Eigenschaften für ein vorhandenes Anmeldeinformationsobjekt fest. |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential?view=azps-3.3.0) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab. Dies gibt kein PSCredential-Objekt zurück.  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential?view=azps-3.3.0) |Erstellt ein neues Anmeldeinformationsobjekt. |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential?view=azps-3.3.0) |Entfernt ein Anmeldeinformationsobjekt. |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential?view=azps-3.3.0) |Legt die Eigenschaften für ein vorhandenes Anmeldeinformationsobjekt fest. |
 
 ## <a name="activities"></a>activities
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
 
-| activities | BESCHREIBUNG |
+| activities | Beschreibung |
 |:--- |:--- |
 | Get-AutomationPSCredential |Ruft Anmeldeinformationen zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Management.Automation.PSCredential](/dotnet/api/system.management.automation.pscredential) -Objekt zurück. |
 
@@ -62,7 +51,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinf
 
 Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem Python2-Runbook zugegriffen.
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 |:---|:---|
 | automationassets.get_automation_credential | Ruft Informationen zu einem Anmeldeinformationsobjekt ab. |
 
@@ -74,8 +63,8 @@ Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem
 ### <a name="to-create-a-new-credential-asset-with-the-azure-portal"></a>So erstellen Sie ein neues Anmeldeinformationsobjekt über das Azure-Portal
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Anmeldeinformationen** aus.
-1. Klicken Sie auf **+ Anmeldeinformationen hinzufügen**.
-1. Geben Sie die erforderlichen Daten ein, und klicken Sie auf **Erstellen** , um die neuen Anmeldeinformationen zu speichern.
+1. Wählen Sie **Anmeldeinformationen hinzufügen** aus.
+1. Geben Sie die erforderlichen Daten ein, und wählen Sie **Erstellen** aus, um die neuen Anmeldeinformationen zu speichern.
 
 > [!NOTE]
 > Benutzerkonten, die mehrstufige Authentifizierung verwenden, werden in Azure Automation nicht unterstützt.
@@ -96,7 +85,7 @@ New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name
 In einem Runbook oder einer DSC-Konfiguration rufen Sie ein Anmeldeinformationsobjekt mit der Aktivität **Get-AutomationPSCredential** ab. Diese Aktivität gibt ein [PSCredential-Objekt](/dotnet/api/system.management.automation.pscredential) zurück, das Sie mit einer Aktivität oder einem Cmdlet verwenden können, die oder das einen PSCredential-Parameter erfordert. Sie können auch die Eigenschaften des Anmeldeinformationsobjekts abrufen, um diese einzeln zu verwenden. Das Objekt besitzt eine Eigenschaft für den Benutzernamen und das sichere Kennwort. Oder Sie verwenden die Methode **GetNetworkCredential**, um ein [NetworkCredential](/dotnet/api/system.net.networkcredential)-Objekt zurückzugeben, das eine unsichere Version des Kennworts bereitstellt.
 
 > [!NOTE]
-> **Get-AzureRmAutomationCredential** gibt kein **PSCredential** zurück, das für die Authentifizierung verwendet werden kann. Es bietet lediglich Informationen zu den Anmeldeinformationen. Wenn Sie Anmeldeinformationen in einem Runbook verwenden müssen, müssen Sie **Get-AutomationPSCredential** verwenden, um das **PSCredential**-Objekt abzurufen.
+> **Get-AzAutomationCredential** gibt kein **PSCredential** zurück, das für die Authentifizierung verwendet werden kann. Es bietet lediglich Informationen zu den Anmeldeinformationen. Wenn Sie Anmeldeinformationen in einem Runbook verwenden müssen, müssen Sie **Get-AutomationPSCredential** verwenden, um das **PSCredential**-Objekt abzurufen.
 
 ### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
 
@@ -109,7 +98,7 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
-Sie können Anmeldeinformationen auch zum Authentifizieren mit [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) in Azure verwenden. In den meisten Fällen sollten Sie ein [ausführendes Konto](../manage-runas-account.md) verwenden und mit [Get-AutomationConnection](../automation-connections.md) abrufen.
+Sie können Anmeldeinformationen auch zum Authentifizieren mit [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.3.0) in Azure verwenden. In den meisten Fällen sollten Sie ein [ausführendes Konto](../manage-runas-account.md) verwenden und mit [Get-AzAutomationConnection](../automation-connections.md) abrufen.
 
 ```azurepowershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
@@ -128,7 +117,7 @@ Sie können einem grafischen Runbook eine **Get-AutomationPSCredential**-Aktivit
 
 ![Anmeldeinformationen zum Zeichenbereich hinzufügen](../media/credentials/credential-add-canvas.png)
 
-Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Anmeldeinformationsobjekts in einem grafischen Runbook.  In diesem Fall wird das Objekt zur Bereitstellung von Authentifizierungsinformationen für ein Runbook in Azure-Ressourcen verwendet, wie unter [Authentifizieren von Runbooks mit Azure AD-Benutzerkonto](../automation-create-aduser-account.md) beschrieben.  Die erste Aktivität ruft die Anmeldeinformationen ab, die Zugriff auf das Azure-Abonnement haben.  Die Aktivität **Add-AzureAccount** verwendet diese Anmeldeinformationen anschließend, um eine Authentifizierung für alle nachfolgenden Aktivitäten bereitzustellen.  Es wird eine [Pipelineverknüpfung](../automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da **Get-AutomationPSCredential** ein einzelnes Objekt erwartet.  
+Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Anmeldeinformationsobjekts in einem grafischen Runbook. In diesem Fall wird das Objekt zur Bereitstellung von Authentifizierungsinformationen für ein Runbook in Azure-Ressourcen verwendet, wie unter [Authentifizieren von Runbooks mit Azure AD-Benutzerkonto](../automation-create-aduser-account.md) beschrieben. Die erste Aktivität ruft die Anmeldeinformationen ab, die Zugriff auf das Azure-Abonnement haben. Die Aktivität **Connect-AzureRmAccount** verwendet diese Anmeldeinformationen anschließend, um eine Authentifizierung für alle nachfolgenden Aktivitäten bereitzustellen. Es wird eine [Pipelineverknüpfung](../automation-graphical-authoring-intro.md#links-and-workflow) verwendet, da **Get-AutomationPSCredential** ein einzelnes Objekt erwartet.  
 
 ![Anmeldeinformationen zum Zeichenbereich hinzufügen](../media/credentials/get-credential.png)
 

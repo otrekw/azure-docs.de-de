@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713328"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932594"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters (Preview)
 
@@ -131,7 +131,7 @@ Der Endpunkt des API-Servers weist keine öffentliche IP-Adresse auf. Daher müs
 * Um einen benutzerdefinierten DNS-Server zu verwenden, stellen Sie einen AD-Server mit DNS für die Weiterleitung an die IP-Adresse 168.63.129.16 bereit
 
 ## <a name="limitations"></a>Einschränkungen 
-* Verfügbarkeitszonen werden derzeit nicht unterstützt.
+* Verfügbarkeitszonen werden zurzeit nur für die Regionen „USA, Osten 2“ und „USA, Westen 2“ unterstützt.
 * Die [Einschränkungen für den Azure Private Link-Dienst][private-link-service] gelten für private Cluster, private Azure-Endpunkte und VNET-Dienstendpunkte, die zurzeit nicht im selben virtuellen Netzwerk unterstützt werden.
 * Keine Unterstützung für virtuelle Knoten in einem privaten Cluster zum Wechseln privater Azure Container Instances (ACI) in einem privaten virtuellen Azure-Netzwerk
 * Keine standardmäßige Unterstützung für die Azure DevOps-Integration mit privaten Clustern

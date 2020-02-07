@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e67cd8c85d9ba85e32ef7aece402f97ab24243e5
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310780"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963443"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
-Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken abzufragen und darauf zuzugreifen.
+Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.B. die Diagrammdarstellung im Portal, den Zugriff über die REST-API oder die Abfrage über PowerShell oder CLI. Unten ist eine vollständige Liste aller Metriken aufgeführt, die derzeit mit der Metrikpipeline von Azure Monitor verfügbar sind. Weitere Metriken stehen möglicherweise im Portal oder über Legacy-APIs zur Verfügung. Die unten angegebene Liste enthält nur Metriken, die über die konsolidierte Azure Monitor-Metrikpipeline verfügbar sind. Die Metriken werden nach Namespace organisiert. Eine Liste der Dienste und Namespaces, die zu diesen gehören, finden Sie unter [Ressourcenanbieter für Azure-Dienste](../../azure-resource-manager/management/azure-services-resource-providers.md). Verwenden Sie die [API-Version 2018-01-01](https://docs.microsoft.com/rest/api/monitor/metricdefinitions), um diese Metriken programmgesteuert abzufragen und darauf zuzugreifen.
 
 > [!NOTE]
 > Das Senden mehrdimensionaler Metriken über die Diagnoseeinstellungen wird derzeit nicht unterstützt. Metriken mit Dimensionen werden als vereinfachte eindimensionale Metriken exportiert und dimensionswertübergreifend aggregiert.
@@ -25,7 +25,6 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 > *Beispiel*: Die Metrik „Eingehende Nachrichten“ in einem Event Hub kann auf Warteschlangenebene untersucht und in einem Diagramm dargestellt werden. Wenn Sie die Metrik allerdings über die Diagnoseeinstellungen exportieren, umfasst die Darstellung alle eingehenden Nachrichten für alle Warteschlangen im Event Hub.
 >
 > Eine Liste der Plattformmetriken, die über Diagnoseeinstellungen exportiert werden können, finden Sie in [diesem Artikel](metrics-supported-export-diagnostic-settings.md).
-
 
 
 
@@ -1851,8 +1850,8 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |dwu_used|DWU-Verbrauch|Anzahl|Maximum|DWU-Verbrauch. Gilt nur für Data Warehouses.|Keine|
 |cache_hit_percent|Prozentsatz der Cachetreffer|Percent|Maximum|Prozentsatz der Cachetreffer. Gilt nur für Data Warehouses.|Keine|
 |cache_used_percent|Cacheverwendung in Prozent|Percent|Maximum|Cacheverwendung in Prozent. Gilt nur für Data Warehouses.|Keine|
-|sqlserver_process_core_percent|SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|CPU-Auslastung als Prozentsatz des SQL-DB-Prozesses. Gilt nicht für Data Warehouses.|Keine|
-|sqlserver_process_memory_percent|SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Speicherauslastung als Prozentsatz des SQL-DB-Prozesses. Gilt nicht für Data Warehouses.|Keine|
+|sqlserver_process_core_percent|SQL Server-Prozess: Kern (in Prozent)|Percent|Maximum|CPU-Auslastungsprozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem. Zurzeit nur für serverlose Datenbanken verfügbar.|Keine|
+|sqlserver_process_memory_percent|SQL Server-Prozess: Arbeitsspeicher (in Prozent)|Percent|Maximum|Arbeitsspeicherauslastungs-Prozentsatz für den SQL Server-Prozess, gemessen vom Betriebssystem. Zurzeit nur für serverlose Datenbanken verfügbar.|Keine|
 |tempdb_data_size|Größe der tempdb-Datendatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Datendatei in Kilobytes. Gilt nicht für Data Warehouses.|Keine|
 |tempdb_log_size|Größe der tempdb-Protokolldatei in Kilobytes|Anzahl|Maximum|Die Größe der tempdb-Protokolldatei in Kilobytes. Gilt nicht für Data Warehouses.|Keine|
 |tempdb_log_used_percent|Nutzung des tempdb-Protokolls in Prozent|Percent|Maximum|Die Nutzung des tempdb-Protokolls in Prozent. Gilt nicht für Data Warehouses.|Keine|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: c571a4f36372b250a05564182b240bc4007240a1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 02f1e5e3f3252ffa026d8dffe9fe83c9e5abe65b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977810"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899126"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Von Application Insights und Log Analytics verwendete IP-Adressen
 Der Dienst [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) verwendet eine Reihe von IP-Adressen. Diese müssen Ihnen gegebenenfalls bekannt sein, wenn die überwachte App hinter einer Firewall gehostet wird.
@@ -56,6 +56,14 @@ Statusmonitorkonfiguration – nur erforderlich, wenn Änderungen vorgenommen we
 
 ## <a name="availability-tests"></a>Verfügbarkeitstests
 Diese Liste enthält die Adressen, von denen aus [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md) durchgeführt werden. Wenn Sie Webtests für Ihre App durchführen möchten, Ihr Webserver aber auf die Versorgung bestimmter Clients beschränkt ist, müssen Sie eingehenden Datenverkehr von unseren Verfügbarkeitstestservern zulassen.
+
+Wenn Sie Azure-Netzwerksicherheitsgruppen verwenden, fügen Sie einfach eine **Eingangsportregel** hinzu, um Datenverkehr von Application Insights-Verfügbarkeitstests zuzulassen, indem Sie **Diensttag** als **Quelle** und **ApplicationInsightsAvailability** als **Quelldiensttag** auswählen.
+
+>[!div class="mx-imgBorder"]
+>![Wählen Sie unter „Einstellungen“ die Option „Eingangssicherheitsregeln“ und dann am oberen Rand der Registerkarte „Hinzufügen“ aus. ](./media/ip-addresses/add-inbound-security-rule.png)
+
+>[!div class="mx-imgBorder"]
+>![Registerkarte „Eingangssicherheitsregel hinzufügen“](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Öffnen Sie die Ports 80 (HTTP) und 443 (HTTPS) für eingehenden Datenverkehr von folgenden Adressen (die IP-Adressen sind nach Speicherort gruppiert):
 

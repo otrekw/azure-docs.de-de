@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045582"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898832"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -213,6 +213,18 @@ Dieser Fehler wird angezeigt, wenn ein Aufruf vom Typ `GET` für `https://<manag
 Wenn sich Ihr API Management-Dienst in einem VNET befindet, lesen Sie weiter oben die Frage zur VNET-Konnektivität.
 
 Der Aufruffehler kann auch auf ein SSL-Zertifikat zurückzuführen sein, das einer benutzerdefinierten Domäne zugewiesen ist und dem der Browser nicht vertraut. Sie können die benutzerdefinierte Domäne des Verwaltungsendpunkts entfernen. API Management greift daraufhin auf den Standardendpunkt mit einem vertrauenswürdigen Zertifikat zurück.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Was ist die Browserunterstützung für das Portal?
+
+| Browser                     | Unterstützt       |
+|-----------------------------|-----------------|
+| Apple Safari                | Ja<sup>1</sup> |
+| Google Chrome               | Ja<sup>1</sup> |
+| Microsoft Edge              | Ja<sup>1</sup> |
+| Microsoft Internet Explorer | Nein              |
+| Mozilla Firefox             | Ja<sup>1</sup> |
+
+ <small><sup>1</sup> In den beiden neuesten Produktionsversionen unterstützt.</small>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

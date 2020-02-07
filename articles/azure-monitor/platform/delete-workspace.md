@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845556"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901274"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
@@ -23,7 +23,7 @@ In diesem Artikel werden das Konzept des vorläufigen Löschens eines Azure Log 
 Wenn Sie einen Log Analytics-Arbeitsbereich löschen, wird ein vorläufiger Löschvorgang durchgeführt, um die Wiederherstellung des Arbeitsbereichs einschließlich der zugehörigen Daten und verbundenen Agents innerhalb von 14 Tagen zu ermöglichen, unabhängig davon, ob der Löschvorgang versehentlich oder gezielt durchgeführt wurde. Nach Ablauf des Zeitraums für vorläufiges Löschen können die Arbeitsbereichsressource und die zugehörigen Daten nicht mehr wiederhergestellt werden. Die Daten werden in die Warteschlange zum dauerhaften Löschen gestellt und innerhalb von 30 Tagen vollständig gelöscht. Der Arbeitsbereichsname wird „freigegeben“ und kann zum Erstellen eines neuen Arbeitsbereichs verwendet werden.
 
 > [!NOTE]
-> Wenn Sie das vorläufige Löschen außer Kraft setzen und den Arbeitsbereich dauerhaft löschen möchten, führen Sie die Schritte unter [Dauerhaftes Löschen eines Arbeitsbereichs](#Permanent workspace delete) aus.
+> Wenn Sie das vorläufige Löschen außer Kraft setzen und den Arbeitsbereich dauerhaft löschen möchten, führen Sie die Schritte unter [Dauerhaftes Löschen eines Arbeitsbereichs](#permanent-workspace-delete) aus.
 
 Gehen Sie beim Löschen eines Arbeitsbereichs vorsichtig vor, da er unter Umständen wichtige Daten und Konfigurationen enthält, deren Löschung sich negativ auf den Dienstvorgang auswirken kann. Überprüfen Sie die Agents, Lösungen und anderen Azure-Dienste und Quellen, deren Daten in Log Analytics gespeichert werden, z. B.:
 
@@ -63,7 +63,7 @@ Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise 
 
 
 > [!IMPORTANT]
-> Seien Sie beim dauerhaften Löschen des Arbeitsbereichs sehr vorsichtig, da der Vorgang nicht rückgängig gemacht werden kann und der Arbeitsbereich und seine Daten nicht wiederhergestellt werden können.
+> Verwenden Sie einen dauerhaften Löschvorgang des Arbeitsbereichs mit Vorsicht, da er nicht rückgängig gemacht werden kann, und Sie können weder den Arbeitsbereich noch dessen Daten wiederherstellen.
 
 Das dauerhafte Löschen eines Arbeitsbereichs kann derzeit über die REST-API vorgenommen werden.
 
@@ -80,6 +80,7 @@ Verwenden Sie zum dauerhaften Löschen Ihres Arbeitsbereichs den REST-API-Aufruf
 > DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
 > Authorization: Bearer eyJ0eXAiOiJKV1Qi….
 > ```
+Wobei „eyJ0eXAiOiJKV1Qi…“ das vollständige Autorisierungstoken darstellt.
 
 ## <a name="recover-workspace"></a>Wiederherstellen eines Arbeitsbereichs
 
