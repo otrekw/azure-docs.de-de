@@ -161,6 +161,8 @@
         - name: 'Bereitstellen: REST-API'
           displayName: deployment
           href: deploy-rest.md
+        - name: Bereitstellen über GitHub
+          href: deploy-to-azure-button.md
         - name: Was-wäre-wenn-Bereitstellung
           href: template-deploy-what-if.md
         - name: Erneute Bereitstellung bei einem Fehler

@@ -20,7 +20,7 @@
       href: pim-email-notifications.md
     - name: Microsoft Graph-APIs
       href: pim-apis.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von PIM
@@ -67,7 +67,7 @@
               href: azure-ad-custom-roles-configure.md
         - name: Anzeigen des Überwachungsverlaufs
           href: pim-how-to-use-audit-log.md
-    - name: Verwalten von Azure-Ressourcenrollen
+    - name: Verwalten von Azure-Rollen
       items:
         - name: Zuweisen von Rollen
           href: pim-resource-roles-assign-roles.md
@@ -97,7 +97,7 @@
               href: pim-how-to-perform-security-review.md
             - name: Abschließen einer Zugriffsüberprüfung
               href: pim-how-to-complete-review.md
-        - name: Azure-Ressourcenrollen
+        - name: Azure-Rollen
           items:
             - name: Erstellen einer Zugriffsüberprüfung
               href: pim-resource-roles-start-access-review.md
