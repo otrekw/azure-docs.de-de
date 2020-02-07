@@ -5,10 +5,10 @@
   items:
     - name: Worum handelt es sich bei Cloud-App-Verwaltung und einmaligem Anmelden?
       href: what-is-application-management.md
-    - name: Was ist die Anwendungsbereitstellung?
-      href: user-provisioning.md
     - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
       href: what-is-application-proxy.md
+    - name: Was ist die Anwendungsbereitstellung?
+      href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Schnellstarts
   items:
     - name: Hinzufügen einer Cloud-App aus dem Katalog
@@ -72,16 +72,6 @@
               href: howto-saml-token-encryption.md
             - name: Endbenutzerportale
               href: end-user-experiences.md
-    - name: Anwendungsbereitstellung (SCIM)
-      items:
-        - name: Funktionsweise der Bereitstellung
-          href: how-provisioning-works.md
-        - name: Planen einer automatischen Benutzerbereitstellung
-          href: plan-auto-user-provisioning.md
-    - name: HR-Cloudbereitstellung
-      items:
-        - name: Planen einer HR-Cloudbenutzerbereitstellung
-          href: plan-cloud-hr-provision.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy
@@ -237,60 +227,6 @@
                   href: access-panel-extension-problem-installing.md
                 - name: Fehler beim Verwenden des Self-Service-App-Zugriffs
                   href: access-panel-troubleshoot-self-service-access.md
-    - name: Anwendungsbereitstellung (SCIM)
-      items:
-        - name: Konfigurieren der Bereitstellung für eine Katalog-App
-          href: configure-automatic-user-provisioning-portal.md
-        - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Bearbeiten der Attributzuordnungen
-          items:
-            - name: Anpassen von Attributzuordnungen
-              href: Customize-application-attributes.md
-            - name: Schreiben von Ausdrücken für Attributzuordnungen
-              href: functions-for-customizing-application-data.md
-        - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
-          items:
-            - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
-              href: define-conditional-rules-for-provisioning-user-accounts.md
-            - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
-              href: skip-out-of-scope-deletions.md
-        - name: Überwachen und Melden der Bereitstellung
-          items:
-            - name: Überwachen des Bereitstellungsstatus und der Leistung
-              href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Berichterstellung zur App-Bereitstellung
-              href: check-status-user-account-provisioning.md
-            - name: Exportieren und Importieren Ihrer Konfiguration
-              href: export-import-provisioning-configuration.md
-        - name: Automatisieren der Konfiguration mit MS Graph
-          href: application-provisioning-configure-api.md
-        - name: Problembehandlung bei der Benutzerbereitstellung
-          items:
-            - name: Problembehandlung bei der App-Bereitstellung
-              href: application-provisioning-config-problem.md
-            - name: Quarantänestatus
-              href: application-provisioning-quarantine-status.md
-            - name: Bereitstellungsprotokolle
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
-            - name: 'Synchronisieren eines Attributs für die Zuordnung: Katalog-App'
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: 'Dauert Stunden: Katalog-App'
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Problem mit der Autorisierung (Administratoranmeldeinformationen können nicht gespeichert werden)
-              href: application-provisioning-config-problem-storage-limit.md
-            - name: Benutzer werden nicht bereitgestellt.
-              href: application-provisioning-config-problem-no-users-provisioned.md
-            - name: Falsche Benutzer werden bereitgestellt.
-              href: application-provisioning-config-problem-wrong-users-provisioned.md
-            - name: Bereitstellungsauftrag in Quarantäne
-              href: application-provisioning-quarantine-status.md
-            - name: Fehlendes Quellattribut
-              href: user-provisioning-sync-attributes-for-mapping.md
-            - name: Langsamer Bereitstellungsauftrag
-              href: application-provisioning-when-will-provisioning-finish.md
-            - name: Bereitstellungsprotokolle
-              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Konfigurieren von Connectors
@@ -391,28 +327,10 @@
           href: secure-hybrid-access.md
 - name: Verweis
   items:
-    - name: Anwendungsbereitstellung (SCIM)
-      items:
-        - name: Schreiben von Ausdrücken für Attributzuordnungen
-          href: functions-for-customizing-application-data.md
-        - name: Auswählen einer Bereitstellungsmethode
-          href: isv-automatic-provisioning-multi-tenant-apps.md
-    - name: HR-Cloudbereitstellung
-      items:
-        - name: SuccessFactors-Attributreferenz
-          href: sap-successfactors-attribute-reference.md
-        - name: Workday-Attributreferenz
-          href: workday-attribute-reference.md
-    - name: Azure AD Connect-Bereitstellungs-Agent
-      items:
-        - name: Versionsverlauf des Bereitstellungs-Agents
-          href: provisioning-agent-release-version-history.md
-    - name: Anwendungsproxy für lokale Apps
-      items:
-        - name: 'Anwendungsproxy: häufig gestellte Fragen'
-          href: application-proxy-faq.md
-        - name: Versionsverlauf des Anwendungsproxys
-          href: application-proxy-release-version-history.md
+    - name: 'Anwendungsproxy: häufig gestellte Fragen'
+      href: application-proxy-faq.md
+    - name: Versionsverlauf des Anwendungsproxys
+      href: application-proxy-release-version-history.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen für Entwickler
