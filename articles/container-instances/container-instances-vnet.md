@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Containergruppen in einem neuen oder vorhande
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 40f312ce8bc08c9b59e7c47f05b6a5d3dc94a994
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845173"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901864"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -259,10 +259,6 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>Löschen von Netzwerkressourcen
-
-
-> [!NOTE]
-> Wenn beim Versuch, das Netzwerkprofil zu entfernen, eine Fehlermeldung angezeigt wird, warten Sie drei bis vier Tage, damit die Plattform das Problem automatisch beheben kann, und wiederholen Sie anschließend den Löschvorgang. Wenn Sie ein Netzwerkprofil sofort löschen müssen, [erstellen Sie eine Supportanfrage](https://azure.microsoft.com/support/create-ticket/) mit Verweis auf den Azure Container Instances-Dienst.
 
 Für diese Funktion sind zurzeit mehrere zusätzliche Befehle notwendig, um die Netzwerkressourcen, die Sie zuvor erstellt haben, zu löschen. Wenn Sie die Beispielbefehle in den vorherigen Abschnitten dieses Artikels verwendet haben, um Ihr virtuelles Netzwerk und Subnetz zu erstellen, können Sie diese Netzwerkressourcen mit dem folgenden Skript löschen.
 

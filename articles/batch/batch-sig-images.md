@@ -2,18 +2,18 @@
 title: Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools – Azure Batch | Microsoft-Dokumentation
 description: Erstellen Sie einen Batch-Pool mit Shared Image Gallery, um benutzerdefinierte Images für Computeknoten bereitzustellen, auf denen die Softwarekomponenten und Daten enthalten sind, die Sie für Ihre Anwendung benötigen. Benutzerdefinierte Images sind eine effiziente Möglichkeit zum Konfigurieren von Computeknoten, um Ihre Batch-Workloads auszuführen.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: jushiman
-ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029654"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022935"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools
 

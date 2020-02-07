@@ -3,12 +3,12 @@ title: Abschätzen der Kosten des Verbrauchstarifs in Azure Functions
 description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventuell verursachen, wenn Sie Ihre Funkions-App in einem Verbrauchstarif in Azure ausführen.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890316"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963987"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
@@ -47,7 +47,7 @@ Wenn Sie die Gesamtkosten für ihre Funktions-App und der zugehörige Dienste ab
 
 | Verwandte Kosten | Beschreibung |
 | ------------ | ----------- |
-| **Speicherkonto** | Für jede Funktions-App ist es erforderlich, dass Sie über ein zugeordnetes universelles [Azure Storage-Konto](../storage/common/storage-introduction.md#types-of-storage-accounts) verfügen, das [gesondert abgerechnet](https://azure.microsoft.com/pricing/details/storage/) wird. Dieses Konto wird von der Functions-Laufzeit intern verwendet, aber Sie können es auch für Storage-Trigger und -Bindungen verwenden. Wenn Sie kein Speicherkonto besitzen, wird mit der Erstellung der Funktions-App eins für Sie erstellt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](functions-scale.md#storage-account-requirements).|
+| **Speicherkonto** | Für jede Funktions-App ist es erforderlich, dass Sie über ein zugeordnetes universelles [Azure Storage-Konto](../storage/common/storage-introduction.md#types-of-storage-accounts) verfügen, das [gesondert abgerechnet](https://azure.microsoft.com/pricing/details/storage/) wird. Dieses Konto wird von der Functions-Laufzeit intern verwendet, aber Sie können es auch für Storage-Trigger und -Bindungen verwenden. Wenn Sie kein Speicherkonto besitzen, wird mit der Erstellung der Funktions-App eins für Sie erstellt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | Functions basiert auf [Application Insights](../azure-monitor/app/app-insights-overview.md), um eine Hochleistungsüberwachungs-Erfahrung für Ihre Funktions-Apps bereitzustellen. Wenn dies auch nicht erforderlich ist, sollten Sie doch die [Application Insights-Integration aktivieren](functions-monitoring.md#enable-application-insights-integration). Monatlich ist eine kostenlose Zuweisung von Telemetriedaten enthalten. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). |
 | **Netzwerkbandbreite** | Sie bezahlen nicht für Datenübertragungen zwischen Azure-Diensten innerhalb derselben Region. Allerdings können Sie Kosten für ausgehende Datenübertragungen in eine andere Region oder außerhalb von Azure verursachen. Weitere Informationen finden Sie in den [Bandbreitenpreisdetails](https://azure.microsoft.com/pricing/details/bandwidth/). |
 
