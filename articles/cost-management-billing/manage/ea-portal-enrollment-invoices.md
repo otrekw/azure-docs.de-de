@@ -1,5 +1,5 @@
 ---
-title: Rechnungen für die Azure-Unternehmensregistrierung
+title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 keywords: ''
 author: bandersmsft
@@ -8,113 +8,143 @@ ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1379f4acb88020234aa3a8fa2d3289f0bff0f108
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514356"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76769547"
 ---
-# <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure-Unternehmensregistrierung
+# <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
-In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen. Ihre Rechnung stellt Ihre Abrechnungsdaten dar. Prüfen Sie daher, ob sie korrekt ist. Machen Sie sich außerdem auch mit anderen Aufgaben vertraut, die ggf. zum Verwalten Ihrer Rechnung erforderlich sind.
+In diesem Artikel wird erläutert, wie Sie Ihre Azure Enterprise Agreement-Rechnung (Azure EA) verwalten und Aktionen dafür ausführen. Die Rechnung stellt Ihre Abrechnung dar. Überprüfen Sie die Richtigkeit. Machen Sie sich außerdem auch mit anderen Aufgaben vertraut, die ggf. zum Verwalten Ihrer Rechnung erforderlich sind.
 
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Ändern einer Auftragsnummer für eine Überschreitungsrechnung
 
-Das Azure EA-Portal generiert automatisch eine Standardauftragsnummer (Purchase Order, PO), sofern der EA-Administrator vor dem Rechnungsdatum keine Nummer festlegt. Ein EA-Administrator kann die Auftragsnummer bis zu sieben Tage nach dem Empfang einer automatisierten E-Mail-Rechnungsbenachrichtigung aktualisieren.
+Das Azure Enterprise Portal generiert automatisch eine Standardauftragsnummer (Purchase Order, PO), sofern der Enterprise-Administrator vor dem Rechnungsdatum keine Nummer festlegt. Ein Enterprise-Administrator kann die Auftragsnummer bis zu sieben Tage nach dem Empfang einer automatisierten E-Mail-Rechnungsbenachrichtigung aktualisieren.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>So aktualisieren Sie die Auftragsnummer der Azure-Dienste:
 
-1. Klicken Sie im Azure EA Portal auf **Bericht** und dann auf **Nutzungszusammenfassung**.
-1. Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** .
+1. Wählen Sie im Azure Enterprise Portal **Bericht** > **Nutzungszusammenfassung** aus.
+1. Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** aus.
 1. Aktivieren Sie das Optionsfeld **Azure-Dienste**.
-1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus. Auftragsnummern können bis zu sieben Tage nach der Rechnungsbenachrichtigung oder bis zur Zahlung der Rechnung bearbeitet werden, je nachdem, was zuerst eintritt.
+1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
+
+   Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
 1. Geben Sie eine neue Auftragsnummer in das Feld  **Auftragsnummer** ein.
-1. Klicken Sie auf **Speichern** , um die Änderung zu übermitteln.
+1. Wählen Sie  **Speichern** aus, um die Änderung zu übermitteln.
 
-### <a name="to-update-the-marketplace-purchase-order-number"></a>So aktualisieren Sie die Marketplace-Auftragsnummer:
+### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>So aktualisieren Sie die Azure Marketplace-Auftragsnummer:
 
-1. Klicken Sie im Azure EA Portal auf **Bericht** und dann auf **Nutzungszusammenfassung**.
+1. Wählen Sie im Azure Enterprise Portal **Bericht** > **Nutzungszusammenfassung** aus.
 1. Wählen Sie in der oberen rechten Ecke **Auftragsnummern bearbeiten** aus.
 1. Aktivieren Sie das Optionsfeld **Marketplace**.
-1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus. Auftragsnummern können bis zu sieben Tage nach der Rechnungsbenachrichtigung oder bis zur Zahlung der Rechnung bearbeitet werden, je nachdem, was zuerst eintritt.
-1. Geben Sie eine neue Auftragsnummer in das Feld  **Auftragsnummer** ein.
-1. Klicken Sie auf **Speichern** , um die Änderung zu übermitteln.
+1. Wählen Sie im Dropdownmenü der Datumsbereiche einen **Rechnungszeitraum** aus.
 
-## <a name="cadence-of-azure-ea-billing"></a>Kadenz der Azure EA-Abrechnung
+   Sie können eine Auftragsnummer innerhalb eines Zeitraums von sieben Tagen bearbeiten, nachdem Sie eine Rechnungsbenachrichtigung erhalten haben, aber bevor Sie die Rechnung bezahlt haben.
+1. Geben Sie eine neue Auftragsnummer in das Feld  **Auftragsnummer** ein.
+1. Wählen Sie  **Speichern** aus, um die Änderung zu übermitteln.
+
+## <a name="cadence-of-azure-enterprise-billing"></a>Zahlungsintervall der Azure Enterprise-Abrechnung
+
+Microsoft erstellt jährlich am jeweiligen Registrierungsdatum eine Rechnung für alle Käufe von Microsoft Azure-Diensten im Rahmen von Verpflichtungen. Für die Nutzung, die über die Verpflichtungsbeträge hinausgeht, rechnet Microsoft nachträglich ab.
+
+- Die Verpflichtungsgebühren werden basierend auf einem monatlichen Tarif festgelegt und im Voraus jährlich in Rechnung gestellt.
+- Überschreitungsgebühren werden monatlich berechnet und am Ende des Abrechnungszeitraums nachträglich in Rechnung gestellt.
 
 ### <a name="billing-intervals"></a>Abrechnungsintervalle
 
-Microsoft erstellt jährlich am jeweiligen Registrierungsdatum eine Rechnung für alle Verpflichtungskäufe von Microsoft Azure-Diensten und nachträglich für die Nutzung, die über die Verpflichtungsbeträge hinausgeht. Die Verpflichtungsgebühren werden basierend auf einem monatlichen Tarif festgelegt und im Voraus jährlich in Rechnung gestellt. Überschreitungsgebühren werden monatlich berechnet und am Ende des Abrechnungszeitraums nachträglich in Rechnung gestellt.
+Ihr Abrechnungsintervall hängt davon ab, wie Sie Ihre Verpflichtungskäufe durchführen. Stichtag Ihrer jährlichen Verpflichtung ist entweder:
 
-Je nachdem, wie Sie Ihre Verpflichtungskäufe vornehmen möchten, ist ihre jährliche Verpflichtung entweder mit dem Jahrestag Ihrer Registrierung oder mit dem Gültigkeitsdatum Ihres einjährigen Zusatzabonnements fällig.
+- Der Jahrestag Ihrer Registrierung
+- Das Gültigkeitsdatum Ihres einjährigen Zusatzabonnements.
 
-Sie erhalten Ihre Überschreitungsrechnung abhängig vom Startdatum von Registrierung und Einrichtung.
+Wann Sie Ihre Überschreitungsrechnung erhalten, hängt vom Startdatum von Registrierung und Einrichtung ab:
 
-**Direkte Registrierungen mit Startdatum vor dem 1. Mai 2018**: Für direkte Enterprise Azure-Kunden (EA) wird ein jährlicher Abrechnungszeitraum für Azure-Dienste eingerichtet (ausgenommen Marketplace-Dienste). Ihr Abrechnungszeitraum basiert auf dem Jahrestag. Das Jahrestag ist das Datum, an dem Ihre Vereinbarung wirksam wurde. Um die erste Azure-Dienst-Überschreitungsrechnung zu erhalten, müssen Sie 150 % des Schwellenwerts Ihres Mindestverbrauchs („MC“) überschreiten.  Sobald die gesamte Dienstnutzung 150 % Ihres MC-Schwellenwerts überschreitet, erfolgt automatisch die Konvertierung in einen vierteljährlichen Abrechnungszeitraum, der auf dem Jahrestag basiert.  Wenn Sie 150 % Ihres MC-Schwellenwerts nicht überschreiten, verbleibt die Registrierung in einem jährlichen Abrechnungszeitraum, und die Überschreitungsrechnung erhalten Sie am Ende des Verpflichtungsjahrs.
+- **Direkte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
+  - Für direkte Enterprise Agreement-Kunden (EA) wird ein jährlicher Abrechnungszeitraum für Azure-Dienste eingerichtet, ausgenommen Azure Marketplace-Dienste. Ihr Abrechnungszeitraum basiert auf dem Jahrestag: dem Datum, an dem Ihre Vereinbarung wirksam wurde.
+  - Wenn Sie 150 % Ihres EA-Mindestverbrauchs (Monetary Commitment, MC) überschreiten, wird für Sie automatisch ein vierteljährlicher Abrechnungszeitraum eingerichtet, der auf Ihrem Jahrestag basiert. Außerdem erhalten Sie eine Rechnung für die Azure-Dienstüberschreitung.
+  - Wenn Sie nicht 150 % Ihres MC-Schwellenwerts überschreiten, verbleibt Ihre Registrierung in einem jährlichen Abrechnungszeitraum. Die Rechnung für die Überschreitung erhalten Sie am Ende des Verpflichtungsjahres.
 
-**Direkte Registrierungen mit Startdatum nach dem 1. Mai 2018**: Der Azure-Verbrauch des Kunden und separat abgerechnete Gebühren werden in einem monatlichen Abrechnungszeitraum abgerechnet.  Gebühren, die nicht durch den Azure-Mindestverbrauch abgedeckt werden, sind als Überschreitungszahlung fällig.  
+- **Direkte Registrierungen mit Startdatum nach dem 1. Mai 2018**:
+  - Ihr Azure-Verbrauch und separat abgerechnete Gebühren werden in einem monatlichen Abrechnungszeitraum abgerechnet.
+  - Gebühren, die nicht durch ihren Mindestverbrauch abgedeckt werden, sind als Überschreitungszahlung fällig.  
 
-**Indirekte Registrierungen mit Startdatum vor dem 1. Mai 2018**: Für indirekte Enterprise Azure-Kunden (EA) wird ein vierteljährlicher Abrechnungszyklus eingerichtet.  Der Channelpartner (CP) rechnet direkt mit dem Kunden ab.  
+- **Indirekte Registrierungen mit Startdatum vor dem 1. Mai 2018**:
+  
+  Wenn Sie ein indirekter Enterprise Agreement-Kunde (EA) mit einem Startdatum vor dem 1. Mai 2018 sind, wird für Sie ein vierteljährlicher Abrechnungszeitraum eingerichtet. Vom Channelpartner(CP) erhalten Sie direkt eine Rechnung.  
 
-**Indirekte Registrierungen mit Startdatum nach dem 1. Mai 2018**: Jede indirekte Vereinbarung mit einem Startdatum ab dem 1. Mai 2018 wird monatlich abgerechnet.  
+- **Indirekte Registrierungen mit Startdatum nach dem 1. Mai 2018**:
+  
+  Für Sie gilt ein monatlicher Abrechnungszeitraum.  
 
-### <a name="increasing-commitment"></a>Erhöhung der Verpflichtung
+### <a name="increase-your-monetary-commitment"></a>Erhöhen Sie Ihren Mindestverbrauch
 
-Die Verpflichtung kann jederzeit erhöht werden, und es wird die Anzahl der Monate in Rechnung gestellt, die für den Verpflichtungszeitraum des betreffenden Jahrs verbleiben. Wenn Sie sich z. B. für ein einjähriges Zusatzabonnement registrieren und ihre Verpflichtung während des 6. Monats erhöhen, werden Ihnen die verbleibenden sechs Monate dieser Laufzeit in Rechnung gestellt. Die Höhe Ihrer Verpflichtung wird dann für die letzten sechs Monaten ihrer Verpflichtungslaufzeit aktualisiert, um Überschreitungsgebühren zu ermitteln.
+Sie können ihre Verpflichtung jederzeit erhöhen. Ihnen wird die Anzahl der Monate in Rechnung gestellt, die im Verpflichtungszeitraum des betreffenden Jahrs verbleiben. Wenn Sie sich z. B. für ein einjähriges Zusatzabonnement registrieren und ihre Verpflichtung während des 6. Monats erhöhen, werden Ihnen die verbleibenden sechs Monate dieser Laufzeit in Rechnung gestellt. Die Höhe Ihrer Verpflichtung wird dann für die letzten sechs Monaten ihrer Verpflichtungslaufzeit aktualisiert. Diese neuen Mengen werden verwendet, um Überschreitungsgebühren zu ermitteln.
 
 ### <a name="overage"></a>Überschreitung
 
-Bei Überschreitung werden Ihnen die Nutzung oder Reservierungen in Rechnung gestellt, die ihre Verpflichtung während des Abrechnungszeitraums überschritten haben. Eine Aufschlüsselung der Berechnung der Überschreitungsmenge für einzelne Elemente finden Sie im Bericht der Nutzungszusammenfassung, oder wenden Sie sich an Ihren Channelpartner.
+Bei Überschreitung werden Ihnen die Nutzung oder Reservierungen in Rechnung gestellt, die ihre Verpflichtung während des Abrechnungszeitraums überschreiten. Eine Aufschlüsselung der Berechnung der Überschreitungsmenge für einzelne Elemente finden Sie im Bericht der Nutzungszusammenfassung, oder wenden Sie sich an Ihren Channelpartner.
 
-Für jedes Element in der Rechnung sehen Sie die Gesamtgebühren (Erweiterter Betrag), den zum Abdecken der Gebühren verwendeten Umfang der Verpflichtung (Nutzung der Verpflichtung) und den Betrag der Gebühren bei Überschreitung der Verpflichtung (Nettobetrag).  Die fälligen Steuern werden nur in Bezug auf den Nettobetrag bei Überschreitung der Verpflichtung berechnet.
+Für jedes Element in der Rechnung wird Folgendes angezeigt:
 
-Rechnungsstellung bei Überschreitung ist automatisiert.  Der Zeitpunkt von Benachrichtigungen und Rechnungen hängt vom Enddatum des Abrechnungszeitraums des Kunden ab.  Die Überschreitungsbenachrichtigungen werden in der Regel sieben Tage nach dem Abrechnungsenddatum des Kunden gesendet, währenddessen Kunden das Portal aufsuchen, ihre Gebühren überprüfen und die vom System generierten Auftragsnummern aktualisieren können (diese können auch zu einem beliebigen Zeitpunkt aktualisiert werden, bevor die Überschreitung veröffentlicht wird).  Überschreitungsrechnungen werden 7-9 Tage später gesendet.
+- **Erweiterter Betrag**: die Gesamtkosten
+- **Nutzung der Verpflichtung**: der zum Abdecken der Gebühren verwendete Betrag Ihrer Verpflichtung
+- **Nettobetrag**: die Gebühren, die ihre Verpflichtung überschreiten
+
+Die fälligen Steuern werden nur für den Nettobetrag berechnet, der Ihre Verpflichtung überschreitet.
+
+Rechnungsstellung bei Überschreitung ist automatisiert. Der Zeitpunkt von Benachrichtigungen und Rechnungen hängt vom Enddatum des Abrechnungszeitraums ab.
+
+- Überschreitungsbenachrichtigungen werden normalerweise sieben Tage nach Ihrem Abrechnungsenddatum gesendet.
+- Überschreitungsrechnungen werden sieben bis neun Tage nach der Benachrichtigung gesendet.
+- Sie können während der sieben Tage zwischen der Überschreitungsbenachrichtigung und der Rechnungsstellung die Gebühren überprüfen und die vom System generierten Auftragsnummern aktualisieren.
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
-Ab dem Abrechnungszyklus von April 2019 erhalten Kunden eine einzelne Azure-Rechnung, da wir alle Azure- und Azure Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst haben, anstatt zwei separate Rechnungen zu erstellen. (Diese Änderung gilt nicht für Kunden in Australien, Japan oder Singapur.) Während der Umstellung auf eine konsolidierte Rechnung erhalten Sie eine partielle Marketplace-Rechnung. Diese abschließende gesonderte Rechnung enthält Marketplace-Gebühren vor dem Datum Ihres Abrechnungsupdates. Marketplace-Gebühren nach diesem Datum sind in ihrer Azure-Rechnung enthalten. Nach dem Übergangszeitraum sind alle Azure- und Marketplace-Gebühren in der konsolidierten Rechnung enthalten.  
+Ab dem Abrechnungszyklus von April 2019 erhalten Kunden eine einzelne Azure-Rechnung, da wir alle Azure- und Azure Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst haben, anstatt zwei separate Rechnungen zu erstellen. Diese Änderung gilt nicht für Kunden in Australien, Japan oder Singapur.
 
-### <a name="purchase-order-numbers"></a>Auftragsnummern
-
-Der Standard für den Auftrag ist eine systemgenerierte Auftragsnummer. Benutzer können Ihre Auftragsnummer im Enterprise Portal aktualisieren, indem sie sich als Unternehmensadministrator anmelden und zum Abschnitt „Berichte“ navigieren. In der oberen rechten Ecke des Fensters wird ein Feld für die Auftragsnummer angezeigt, in dem der Unternehmensadministrator die Auftragsnummer durch Klicken auf das Stiftsymbol bearbeiten kann.
+Während der Umstellung auf eine kombinierte Rechnung erhalten Sie eine partielle Azure Marketplace-Rechnung. Diese abschließende gesonderte Rechnung enthält Azure Marketplace-Gebühren, die vor dem Datum Ihres Abrechnungsupdates angefallen sind. Nach diesem Datum angefallene Azure Marketplace-Gebühren sind in ihrer Azure-Rechnung enthalten. Nach dem Übergangszeitraum sind alle Azure- und Azure Marketplace-Gebühren in der kombinierten Rechnung enthalten.  
 
 ## <a name="adjust-billing-frequency"></a>Ändern des Fakturierungsintervalls
 
 Das Fakturierungsintervall eines Kunden kann jährlich, vierteljährlich oder monatlich sein. Der Abrechnungszeitraum wird festgelegt, wenn ein Kunde seine Vereinbarung unterzeichnet. Die monatliche Abrechnung ist das kleinste Abrechnungsintervall.
 
-Die Genehmigung des Unternehmensadministrators ist erforderlich, um den Abrechnungszeitraum für direkte Registrierungen von jährlich in vierteljährlich zu ändern. Für indirekte Registrierungen ist die Genehmigung eines Partneradministrators erforderlich. Die Änderung wird am Ende des laufenden Abrechnungsquartals wirksam.
+- Die **Genehmigung** eines Unternehmensadministrators ist erforderlich, um den Abrechnungszeitraum für direkte Registrierungen von jährlich in vierteljährlich zu ändern. Für indirekte Registrierungen ist die Genehmigung eines Partneradministrators erforderlich. Die Änderung wird am Ende des laufenden Abrechnungsquartals wirksam.
+- Um einen jährlichen oder vierteljährlichen Abrechnungszeitraum in monatlich zu ändern, ist ein **Zusatz** zur Vereinbarung erforderlich.  Jede Änderung am bestehenden Abrechnungszeitraum der Registrierung erfordert die Genehmigung eines Unternehmensadministrators oder Ihres „Bill to Contact“ (Rechnungsempfängers).
+- **Senden Sie** Ihre Genehmigung an den [Azure Enterprise Portal-Support](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Wählen Sie die Problemkategorie aus: **Abrechnung und Rechnungsstellung**.
 
-Um einen jährlichen oder vierteljährlichen Abrechnungszeitraum in monatlich zu ändern, ist ein Zusatz zur Vereinbarung erforderlich.  Jede Änderung am bestehenden Abrechnungszeitraum der Registrierung erfordert die Genehmigung eines Unternehmensadministrators oder der Person, die in Ihrer Vereinbarung als _Bill to Contact_ (Rechnungsempfänger) identifiziert wurde. Sie können Ihre Genehmigung über den [Azure EA-Portal-Support](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c) übermitteln. Wählen Sie die Problemkategorie **Abrechnung und Fakturierung** aus.  Die Änderung wird am Ende des laufenden Abrechnungsquartals wirksam.
+Die Änderung wird am Ende des laufenden Abrechnungsquartals wirksam.
 
 Wenn eine M503-Zusatzvereinbarung geschlossen wurde, können Sie jeden Vertrag von einem beliebigen Intervall in eine monatliche Abrechnung ändern. 
 
 ## <a name="credits-and-adjustments"></a>Gutschriften und Berichtigungen
 
-Alle Gutschriften oder Berichtigungen in Bezug auf Ihre Registrierung erscheinen unter [https://ea.azure.com](https://ea.azure.com) im Abschnitt **Berichte**.
+Im Abschnitt **Berichte** des [Azure Enterprise Portals](https://ea.azure.com) können Sie alle Gutschriften oder Anpassungen anzeigen, die auf Ihre Registrierung angewendet werden.
 
-Führen Sie die folgenden Schritte aus, um die Gutschriften anzuzeigen:
+So zeigen Sie Gutschriften an:
 
-1. Wählen Sie den Abschnitt **Berichte** aus.
-1. Klicken Sie auf **Nutzungszusammenfassung**.
-1. Ändern Sie oben rechts die _M_-Ansicht in die _C_-Ansicht.
+1. Wählen Sie im [Azure Enterprise Portal](https://ea.azure.com) den Abschnitt **Berichte** aus.
+1. Wählen Sie **Nutzungszusammenfassung** aus.
+1. Ändern Sie oben rechts die **M**-Ansicht in die **C**-Ansicht.
 1. Erweitern Sie das Anpassungsfeld in der Tabelle „Mindestabnahme für Azure-Dienst“.
-1. In dieser Zeile sehen Sie die Gutschriften, die auf Ihre Registrierung angewendet werden, und eine kurze Erklärung, etwa: SLA-Gutschrift.
+1. Es werden Gutschriften für Ihre Registrierung und eine kurze Erläuterung angezeigt. Beispiel: SLA-Gutschrift.
 
 ## <a name="request-an-invoice-copy"></a>Anfordern einer Rechnungskopie
 
 Wenden Sie sich an Ihren Partner, um eine Kopie Ihrer Rechnung anzufordern.
 
-## <a name="overage-offset-by-customers"></a>Überschreitungsausgleich durch Kunden
+## <a name="overage-offset"></a>Überschreitungsausgleich
 
-Wenn ein Kunde Überschreitungen durch einen Mindestverbrauch ausgleichen möchte, müssen die folgenden Kriterien erfüllt sein:
+Sie müssen die folgenden Kriterien erfüllen, um Ihren Mindestverbrauch auf Überschreitungen anzuwenden:
 
-- Beim Kunden sind Überschreitungsgebühren angefallen, die noch nicht gezahlt wurden und innerhalb eines Jahres nach dem Enddatum des abgerechneten Diensts fällig sind.
-- Der verfügbare Betrag für den Mindestverbrauch deckt die angefallenen Gebühren vollständig ab, einschließlich aller vergangenen unbezahlten Azure-Rechnungen.
-- Der abzuschließende Abrechnungszeitraum muss vollständig geschlossen werden. Die Abrechnung wird am fünften Tag jedes Monats vollständig geschlossen.
-- Der auszugleichende Abrechnungszeitraum muss vollständig geschlossen werden.
-- Azure-Vertragsrabatte basieren auf dem neuen Mindestverbrauch abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Dies gilt nur für Dienste, für die ein Mindestverbrauch gültig ist, sodass Sie keine Marketplace-Gebühren abdecken können. Marketplace-Gebühren werden separat in Rechnung gestellt.
-- Wenn ein Kunde einen Überschreitungsausgleich durchführen möchte, kann er eine Supportanfrage eröffnen. Alternativ kann auch das Kontoteam die Supportanfrage öffnen. Um den Vorgang abzuschließen, ist eine E-Mail-Genehmigung vom EA-Administrator des Kunden oder vom Rechnungsempfänger erforderlich.
+- Bei Ihnen sind Überschreitungsgebühren angefallen, die noch nicht gezahlt wurden und innerhalb eines Jahres nach dem Enddatum des abgerechneten Diensts fällig sind.
+- Ihr verfügbarer Betrag für den Mindestverbrauch deckt die angefallenen Gebühren vollständig ab, einschließlich aller vergangenen unbezahlten Azure-Rechnungen.
+- Der Abrechnungszeitraum, den Sie abschließen möchten, muss vollständig geschlossen werden. Die Abrechnung wird am fünften Tag jedes Monats vollständig geschlossen.
+- Der Abrechnungszeitraum, den Sie ausgleichen möchten, muss vollständig geschlossen werden.
+- Ihr Azure-Vertragsrabatt (Azure Commitment Discount, ACD) basiert auf dem neuen Mindestverbrauch abzüglich der Beträge, die für den vorherigen Verbrauch geplant wurden. Diese Anforderung gilt nur für angefallene Überschreitungsgebühren. Sie gilt nur für Dienste, für die ein Mindestverbrauch gültig ist, und ist nicht auf Azure Marketplace-Gebühren anwendbar. Azure Marketplace-Gebühren werden separat in Rechnung gestellt.
+
+Um einen Überschreitungsausgleich durchzuführen, können Sie oder das Kontoteam eine Supportanfrage eröffnen. Eine per E-Mail gesendete Genehmigung Ihres Unternehmensadministrators oder „Bill to Contact“ ist erforderlich.
 
 ## <a name="view-price-sheet-information"></a>Preisblattinformationen anzeigen
 
@@ -122,88 +152,99 @@ Unternehmensadministratoren können die mit ihrer Registrierung für Azure-Diens
 
 So zeigen Sie das aktuelle Preisblatt an:
 
-1. Klicken Sie im Azure EA-Portal auf **Berichte** und anschließend auf **Preisblatt**.
-2. Zeigen Sie das Preisblatt an, oder klicken Sie auf **Herunterladen**.
+1. Wählen Sie im Azure Enterprise-Portal **Berichte** und dann **Preisblatt** aus.
+2. Zeigen Sie das Preisblatt an, oder wählen Sie **Herunterladen** aus.
 
 ![Beispiel für Preisblattinformationen](./media/ea-portal-enrollment-invoices/ea-create-view-price-sheet-information.png)
 
 So laden Sie eine Verlaufspreisliste herunter:
 
-1. Klicken Sie im Azure EA-Portal auf **Berichte** und anschließend auf **Nutzung herunterladen**.
+1. Wählen Sie im Azure Enterprise Portal **Berichte** und dann **Nutzung herunterladen** aus.
 2. Laden Sie das Preisblatt herunter.
 
 ![Beispiel für das Herunterladen eines älteren Preisblatts](./media/ea-portal-enrollment-invoices/create-ea-view-price-sheet-download-historical-price-list.png)
 
-Wenn es zu Abweichungen bei den Preisen kommt, kann dies u. a. folgende Gründe haben:
+Einige Gründe für Unterschiede bei den Preisen:
 
-Zwischen der vorherigen und der neuen Registrierung haben sich möglicherweise die Preise geändert. Preisänderungen treten auf, weil die Preise für eine bestimmte Registrierung vom Start- bis zum Enddatum einer Vereinbarung vertragsgebunden sind. Wenn eine Registrierung in eine neue Registrierung übertragen wird, gelten die Preise des neuen Vertrags. Die Preise werden durch das Preisblatt des Kunden definiert. Daher können die Preise bei der neuen Registrierung höher sein.
-
-Bei einer Laufzeitverlängerung der Registrierung ändern sich auch die Preise. Die Preise ändern sich in Tarife für die nutzungsbasierte Bezahlung.
+- Zwischen der vorherigen und der neuen Registrierung haben sich möglicherweise die Preise geändert. Preisänderungen können auftreten, weil die Preise für eine bestimmte Registrierung vom Start- bis zum Enddatum einer Vereinbarung vertragsgebunden sind.
+- Bei der Übertragung zu einer neuen Registrierung ändert sich der Preis gemäß der neuen Vereinbarung. Die Preise, die in der neuen Registrierung möglicherweise höher sind, werden durch Ihr Preisblatt definiert.
+- Bei einer Laufzeitverlängerung der Registrierung ändern sich auch die Preise. Die Preise ändern sich in Tarife für die nutzungsbasierte Bezahlung.
 
 ## <a name="request-detailed-usage-information"></a>Anfordern ausführlicher Informationen zur Verwendung
 
-Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den verbrauchten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure EA-Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
+Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den genutzten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
 
-Wenn Sie Verwendungsdetails für spezifische Konten anzeigen möchten, laden Sie den Bericht mit Verwendungsdetails herunter. Navigieren Sie dazu zu **Berichte** > **Nutzung herunterladen**. Der Bericht enthält keine anwendbaren Steuern. Zwischen der Nutzung und der Angabe im Bericht gibt es unter Umständen eine Wartezeit von bis zu acht Stunden.
+Wenn Sie Nutzungsdetails für spezifische Konten anzeigen möchten, laden Sie den Bericht mit Verwendungsdetails herunter. Navigieren Sie dazu zu **Berichte** > **Nutzung herunterladen**.
+
+> [!NOTE]
+> Der Bericht mit den Nutzungsdetails enthält keine anwendbaren Steuern. Zwischen der Nutzung und der Angabe im Bericht gibt es unter Umständen eine Wartezeit von bis zu acht Stunden.
 
 Bei indirekten Registrierungen muss Ihr Partner die Markupfunktion aktivieren, bevor Sie kostenbezogene Informationen anzeigen können.
 
 ## <a name="reports"></a>Berichte
 
-Unternehmensadministratoren können eine Zusammenfassung Ihrer Nutzungsdaten, den verbrauchten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
+Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den genutzten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
 
-**EA-Berichte**
+### <a name="azure-enterprise-reports"></a>Azure Enterprise-Berichte
 
 - Nutzungszusammenfassung und Diagramme
 - Dienstnutzungsbericht
 - Saldo- und Gebühr-Bericht
 - Verwendungsdetails-Bericht
-- Marketplace-Gebührenbericht
+- Azure Marketplace-Gebührenbericht
 - Preisblatt
 - Herunterladen des erweiterten Berichts
 - Formatierung von CSV-Berichten
 
-**So zeigen Sie die Berichte und Diagramme zur Nutzungszusammenfassung an**
+### <a name="to-view-the-usage-summary-reports-and-graphs"></a>So zeigen Sie die zusammengefassten Nutzungsberichte und -diagramme an:
 
-1. Klicken Sie im Azure EA Portal im linken Navigationsbereich auf **Berichte**, und zeigen Sie die Registerkarte **Nutzungszusammenfassung** an.
-1. Wählen Sie die gewünschte Verpflichtungslaufzeit im Dropdownmenü mit den Datumsbereichen oben links aus.
-1. Wählen Sie den gewünschten Zeitraum oder Monat im Diagramm aus, um weitere Details anzuzeigen.
-1. Zeigen Sie das Diagramm der Nutzung pro Monat mit einer Aufschlüsselung der Nutzung, zu viel berechneten Diensten, separat berechneten Gebühren und Marketplace-Gebühren an.
-1. Filtern Sie für den ausgewählten Monat nach Abteilungen, Konten und Abonnements unterhalb des Diagramms.
-1. Wechseln Sie zwischen den Aufschlüsselungen „Gebühr nach Diensten“ und „Gebühr nach Hierarchie“.
-1. Zeigen Sie Azure-Dienste, separat abgerechnete Gebühren und Azure Marketplace-Gebühren im Detail.
+1. Wechseln Sie zum Azure Enterprise Portal.
+1. Wählen Sie im linken Bereich **Berichte** aus.
+1. Wählen Sie die Registerkarte **Nutzungszusammenfassung** aus.
+1. Wählen Sie die Verpflichtungslaufzeit im Datumsbereichsmenü oben links aus.
+1. Wählen Sie den Zeitraum oder Monat im Diagramm aus, um weitere Details anzuzeigen.
+1. Auf dieser Registerkarte können Sie folgende Aktionen ausführen:
+   - Zeigen Sie das Diagramm der Nutzung pro Monat mit einer Aufschlüsselung der Nutzung, zu viel berechneten Diensten, separat berechneten Gebühren und Azure Marketplace-Gebühren an.
+   - Filtern Sie nach Abteilungen, Konten und Abonnements unterhalb des Diagramms.
+   - Wechseln Sie zwischen den Aufschlüsselungen **Gebühr nach Diensten** und **Gebühr nach Hierarchie**.
+   - Zeigen Sie Azure-Dienste, separat abgerechnete Gebühren und Azure Marketplace-Gebühren im Detail an.
 
 ## <a name="service-usage-report"></a>Dienstnutzungsbericht
 
-Auf der Seite „Dienstnutzungsbericht“ können Unternehmensadministratoren eine Zusammenfassung ihrer Dienstnutzungsdaten anzeigen. Während die Nutzung auf der Zusammenfassungsebene für alle Konten und Abonnements angezeigt wird, können Sie den Bericht auch nach Konten oder Abonnements filtern, um die Nutzung ausführlich anzuzeigen.
+Auf der Seite „Dienstnutzungsbericht“ können Unternehmensadministratoren eine Zusammenfassung ihrer Dienstnutzungsdaten anzeigen. Die Nutzung wird auf der Übersichtsebene für alle Konten und Abonnements angezeigt. Um die detaillierte Nutzung anzuzeigen, können Sie den Bericht nach Konten oder Abonnements filtern.
 
-Beachten Sie, dass möglicherweise auch eine Latenz von bis zu fünf Tagen zwischen dem anfallenden Nutzungsdatum und dem Zeitpunkt, zu dem sich diese Nutzung im Bericht widerspiegelt, auftreten kann.
+> [!NOTE]
+> Möglicherweise kann eine Latenz von bis zu fünf Tagen zwischen dem anfallenden Nutzungsdatum und dem Zeitpunkt, zu dem sich diese Nutzung im Bericht widerspiegelt, auftreten.
 
 ### <a name="to-view-the-report"></a>So zeigen Sie den Bericht an:
 
-1. Melden Sie sich beim Enterprise Portal an.
-1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
-1. Klicken Sie auf die Registerkarte **Nutzungszusammenfassung**.
-1. Klicken Sie auf den gewünschten Datumsbereich.
+1. Melden Sie sich beim Azure Enterprise Portal an.
+1. Wählen Sie im linken Navigationsbereich **Berichte** aus.
+1. Wählen Sie die Registerkarte **Nutzungszusammenfassung** aus.
+1. Wählen Sie den Datumsbereich aus.
 1. Wählen Sie die anzuzeigenden Konten oder Abonnements aus.
-1. Ändern Sie die Ansicht von „Gebühr nach Diensten“ und „Gebühr nach Hierarchie“, um unterschiedliche Aufschlüsselungen anzuzeigen.
-1. Zeigen Sie Details einschließlich „Dienstname“, „Berechnungseinheit“, „Verbrauchte Einheiten“, „Effektivsatz“ und „Erweiterte Kosten“ an.
+1. Optional können Sie:
+   - Wechseln Sie die Ansicht zwischen **Gebühr nach Diensten** und **Gebühr nach Hierarchie**, um unterschiedliche Aufschlüsselungen anzuzeigen.
+   - Zeigen Sie Details von „Dienstname“, „Berechnungseinheit“, „Verbrauchte Einheiten“, „Effektivsatz“ und „Erweiterte Kosten“ an.
 
 ## <a name="download-csv-reports"></a>Herunterladen von CSV-Berichten
 
-Auf der Seite „Download des monatlichen Berichts“ können Unternehmensadministratoren mehrere Berichte als CSV-Dateien herunterladen, z. B. einen „Saldo- und Gebühr-Bericht“, „Verwendungsdetails-Bericht“, „Marketplace-Gebührenbericht“ und „Preisblatt“.
+Die Seite „Download des monatlichen Berichts“ ermöglicht Unternehmensadministratoren, verschiedene Berichte als CSV-Dateien herunterzuladen. Zu den herunterladbaren Berichten zählen:
 
-## <a name="to-download-reports"></a>So laden Sie Berichte herunter:
+- Saldo- und Gebühr-Bericht
+- Verwendungsdetails-Bericht
+- Azure Marketplace-Gebührenbericht
+- Preisblatt
 
-1. Klicken Sie im Azure EA Portal auf **Berichte**.
+### <a name="to-download-reports"></a>So laden Sie Berichte herunter:
+
+1. Wählen Sie im Azure Enterprise Portal **Bericht** aus.
 1. Wählen Sie im oberen Menüband **Verwendungsdownload** aus.
 1. Wählen Sie neben dem gewünschten Bericht des Monats **Herunterladen** aus.
 
+### <a name="csv-report-formatting-issues"></a>Probleme bei der Formatierung von CSV-Berichten
 
-
-## <a name="csv-report-formatting"></a>Formatierung von CSV-Berichten
-
-Kunden, die die CSV-Berichte des Azure EA Portals in Euro anzeigen, können in Bezug auf Kommas und Punkte auf Formatierungsprobleme stoßen.
+Kunden, die die CSV-Berichte des Azure EA-Portals in Euro anzeigen, können in Bezug auf Kommas und Punkte auf Formatierungsprobleme stoßen.
 
 Beispielsweise sehen Sie vielleicht Folgendes:
 
@@ -217,97 +258,99 @@ Folgendes sollte angezeigt werden:
 | --- | --- | --- | --- |
 | Stunden | 24 | 0,0535960591133005 | 1,2863054187192120000000 |
 
-### <a name="root-cause"></a>Grundursache
+Dieses Formatierungsproblem tritt aufgrund der Standardeinstellungen in der Importfunktion von Excel auf. Excel importiert alle Felder als allgemeinen Text und geht davon aus, dass eine Zahl nach mathematischem Standard getrennt wird. Beispiel: „1,000.00“.
 
-Excel importiert alle Felder als allgemeinen Text und geht davon aus, dass eine Zahl nach mathematischem Standard getrennt wird: „1,000.00“.  Daher wird eine europäische Währung, wo ein Punkt (.) als Tausendertrennzeichen und ein Komma als Dezimaltrennzeichen (,) verwendet wird – „1.000,00“ – nicht ordnungsgemäß angezeigt. Dies kann je nach regionaler Spracheinstellung variieren.
+Wenn für eine europäische Währung ein Punkt (.) als Tausendertrennzeichen und ein Komma als Dezimaltrennzeichen (,) verwendet wird, wird sie nicht ordnungsgemäß angezeigt. Beispiel: „1.000,00“. Die Importergebnisse können je nach regionaler Spracheinstellung variieren.
 
-### <a name="when-importing-the-csv-use-the-following-steps"></a>Führen Sie beim Importieren der CSV-Datei die folgenden Schritte aus:
+### <a name="to-import-the-csv-file-without-formatting-issues"></a>So importieren Sie die CSV-Datei ohne Formatierungsprobleme:
 
-1.    Öffnen Sie Excel, und wechseln Sie zu „Datei“ > „Öffnen“.
-1.    Der Textimport-Assistent wird angezeigt.
-1.    Wählen Sie unter „Ursprünglicher Datentyp“ die Option _Mit Trennzeichen_ aus.  Der Standard ist _Feste Breite_.
-1.    Klicken Sie auf **Weiter**.
-1.    Aktivieren Sie unter „Trennzeichen“ das Kontrollkästchen für „Komma“. Der Standardwert ist „Tab“ (deaktivieren).
-1.    Klicken Sie auf **Weiter**.
-1.    Scrollen Sie über die Spalten „ResourceRate“ und „ExtendedCost“.
-1.    Wählen Sie die Spalte „ResourceRate“ aus (wird schwarz hervorgehoben).
-9.    Wählen Sie im Abschnitt „Datenformat der Spalten“ die Option „Text“ anstelle von „Allgemein“ aus.  Sie werden feststellen, dass die Spaltenüberschrift von „Allgemein“ in „Text“ geändert wird.
-10. Wiederholen Sie die Schritte 8 und 9 für die Spalte „ExtendedCost“. Wählen Sie **Fertig stellen** aus.
+1. Wechseln Sie in Microsoft Excel zu **Datei** > **Öffnen**.
+   Der Textimport-Assistent wird angezeigt.
+1. Wählen Sie unter **Ursprünglicher Datentyp** die Option **Mit Trennzeichen** aus.  Der Standard ist **Feste Breite**.
+1. Wählen Sie **Weiter** aus.
+1. Aktivieren Sie unter „Trennzeichen“ das Kontrollkästchen für **Komma**. Deaktivieren Sie **Tab**, falls ausgewählt.
+1. Wählen Sie **Weiter** aus.
+1. Scrollen Sie über die Spalten **ResourceRate** und **ExtendedCost**.
+1. Wählen Sie die Spalte **ResourceRate** aus. Sie wird schwarz hervorgehoben angezeigt.
+1. Wählen Sie im Abschnitt **Datenformat der Spalten** die Option **Text** anstelle von **Allgemein** aus. Die Spaltenüberschrift wird von **Allgemein** in **Text** geändert.
+1. Wiederholen Sie die Schritte 8 und 9 für die Spalte **Erweiterte Kosten**, und wählen Sie dann **Fertigstellen** aus.
 
-Wenn Sie Excel so konfiguriert haben, dass \*.csv-Dateien automatisch geöffnet werden, müssen Sie stattdessen die Funktion „Öffnen“ in Excel verwenden. Öffnen Sie Excel, und wechseln Sie zu „Datei“ > „Öffnen“.
+> [!TIP]
+> Wenn Sie Excel so konfiguriert haben, dass CSV-Dateien automatisch geöffnet werden, müssen Sie stattdessen die Funktion **Öffnen** in Excel verwenden. Wechseln Sie in Excel zu **Datei** > **Öffnen**.
 
 ## <a name="balance-and-charge-report"></a>Saldo- und Gebühr-Bericht
 
-Die API für Bilanz und Gebühren bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren. Alle Zeilen in der Zusammenfassungstabelle für die Azure-Dienstverpflichtung bleiben im Laufe des Monats statisch, während Details zu allen Käufen und Anpassungen in den Abschnitten „Neue Kaufdetails“ und „Anpassungsdetails“ angezeigt werden.
+Die API für Bilanz und Gebühren bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren.
+
+Alle Zeilen in der Tabelle „Mindestabnahme für Azure-Dienst“ bleiben von Monat zu Monat statisch. Details zu allen Käufen und Anpassungen finden Sie in den Abschnitten **Details zu neuen Käufen** und **Anpassungsdetails**.
 
 ### <a name="download-the-balance-and-charge-report"></a>Herunterladen des Saldo- und Gebühr-Berichts
 
-1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
-1. Klicken Sie auf die Registerkarte **Berichtsdownload**.
-1. Wählen Sie in der Spalte _Saldo- und Gebühr_ den entsprechenden Monat aus, und klicken Sie, um den Bericht herunterzuladen.
+1. Melden Sie sich beim Azure Enterprise-Portal als Unternehmensadministrator an.
+1. Wählen Sie im linken Bereich **Berichte** aus.
+1. Wählen Sie die Registerkarte **Berichtsdownload** aus.
+1. Wählen Sie in der Spalte **Saldo- und Gebühr** den entsprechenden Monat und dann das Herunterladen des Berichts aus.
 
 ## <a name="usage-detail-report"></a>Verwendungsdetails-Bericht
 
-Der „Verwendungsdetails-Bericht“ bietet eine monatliche Zusammenfassung der Dienste und Mengen, die von einer Registrierung beansprucht werden, einschließlich Informationen zu Verbrauchseinheiten, Messgerättypen und verbrauchten Mengen.
+Der Nutzungsdetailsbericht enthält eine monatliche Zusammenfassung der Nutzung von Diensten und den Mengen einer Registrierung. Er enthält Informationen zu Namen der Verbrauchseinheiten, Typen der Verbrauchseinheiten und verbrauchten Mengen.
 
 ### <a name="download-the-usage-detail-report"></a>Herunterladen des Verwendungsdetails-Bericht
 
-1. Melden Sie sich beim Azure EA-Portal als Unternehmensadministrator an.
-1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
-1. Klicken Sie auf die Registerkarte **Nutzung herunterladen**.
-1. Wählen Sie in der Spalte _Verwendungsdetails_ den entsprechenden Monat aus, und klicken Sie, um den Bericht herunterzuladen.
+1. Melden Sie sich beim Azure Enterprise-Portal als Unternehmensadministrator an.
+1. Wählen Sie im linken Navigationsbereich **Berichte** aus.
+1. Wählen Sie die Registerkarte **Nutzung herunterladen** aus.
+1. Wählen Sie in der Spalte **Verwendungsdetails** den entsprechenden Monat und dann das Herunterladen des Berichts aus.
 
-## <a name="marketplace-charges-in-azure-ea-portal-reports"></a>Marketplace-Gebühren in Azure EA Portal-Berichten
+## <a name="azure-marketplace-charges-in-azure-enterprise-portal-reports"></a>Azure Marketplace-Gebühren in Azure Enterprise Portal-Berichten
 
-Weitere Informationen zu Marketplace-Gebühren finden Sie [hier.](https://azure.microsoft.com/marketplace/faq/)
-
-Es gibt zwei Arten von Marketplace-Gebühren:
+Es gibt zwei Arten von Azure Marketplace-Gebühren:
 
 - **Nutzungsbasiert:** Produkte, die in Transaktionseinheiten gemessen werden.  Virtuelle Computer werden z. B. stündlich abgerechnet, und Bing-API-Suchen nach Anzahl der Suchvorgänge.
-- **Monatliche Gebühr:** Wird monatlich basierend auf Nutzung/Zugriff abgerechnet.
+- **Monatliche Gebühr**: Wird monatlich basierend auf Nutzung oder Zugriff abgerechnet.
 
-So zeigen Sie die verschiedenen Gebühren im Enterprise Portal an:
+Weitere Informationen zu Azure Marketplace-Gebühren finden Sie unter [Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace](https://azure.microsoft.com/marketplace/faq/).
 
-1. **Bericht der Nutzungszusammenfassung –** zeigt **sowohl** nutzungsbasierte als auch monatliche Marketplace-Gebühren an.
-1. **Bericht über Marketplace-Gebühren –** zeigt **nur** die nutzungsbasierten Marketplace-Gebühren an.  Einmalige Gebühren werden nicht angezeigt.
+So zeigen Sie die verschiedenen Gebühren im Azure Enterprise Portal an:
 
-Beachten Sie, dass Azure Marketplace für MPSA-Registrierungen nicht verfügbar ist.
+- **Bericht der Nutzungszusammenfassung**: Zeigt **beide** Azure Marketplace-Gebühren an – sowohl nutzungsbasierte als auch monatliche.
+- **Marketplace-Gebührenbericht**: Zeigt **nur** die nutzungsbasierten Azure Marketplace-Gebühren an.  Einmalige Gebühren werden nicht angezeigt.
+
+> [!NOTE]
+> Azure Marketplace ist für MPSA-Registrierungen nicht verfügbar.
 
 ## <a name="advanced-report-download"></a>Herunterladen des erweiterten Berichts
 
-Zur Berichterstellung für bestimmte Datumsbereiche oder Konten kann die Option „Erweiterten Bericht herunterladen“ verwendet werden. Am 30. August 2016 wurde das Format der Ausgabedatei von XLSX in CSV geändert, um größere Datensatzgruppen zu unterstützen.
+Zur Berichterstellung für bestimmte Datumsbereiche oder Konten können Sie die Option „Erweiterten Bericht herunterladen“ verwenden. Am 30. August 2016 wurde das Format der Ausgabedatei in CSV geändert, um größere Datensatzgruppen zu unterstützen.
 
-1. Wählen Sie **Erweiterten Bericht herunterladen** aus.
+1. Wählen Sie im Azure Enterprise Portal **Download erweiterter Berichte** aus.
 1. Wählen Sie einen **Entsprechenden Datumsbereich** aus.
 1. Wählen Sie **Entsprechende Konten** aus.
 1. Wählen Sie **Nutzungsdaten anfordern** aus.
-1. Wählen Sie die Schaltfläche **Aktualisieren** aus, bis der Status des Berichts auf „Herunterladen“ aktualisiert wird.
+1. Wählen Sie die Schaltfläche **Aktualisieren** aus, bis der Status des Berichts auf **Herunterladen** aktualisiert wird.
 1. Laden Sie den Bericht herunter.
 
 ## <a name="reporting-for-non-enterprise-administrators"></a>Berichterstellung für Nicht-Unternehmensadministratoren
 
-Unternehmensadministratoren können den Zugriff aktivieren, um Abteilungsadministratoren (Department Administrators, DA) und Kontobesitzern (Account Owners, AO) die Kosten für eine Registrierung anzuzeigen. Nach der Aktivierung kann ein Kontobesitzer CSV-Berichte für das Konto und die Abonnements herunterladen und die Informationen im Berichtsabschnitt des Enterprise Portals anzeigen.
+Unternehmensadministratoren können Abteilungsadministratoren (Department Administrators, DA) und Kontobesitzern (Account Owners, AO) die Berechtigungen zur Anzeige von Gebühren für eine Registrierung geben. Kontobesitzer mit Zugriff können spezifische CSV-Berichte für ihr Konto und ihre Abonnements herunterladen. Sie können die Informationen auch im Azure Enterprise Portal im Berichterstellungsabschnitt anzeigen.
 
 ### <a name="to-enable-access"></a>So aktivieren Sie den Zugriff:
 
- 1. Melden Sie sich als Unternehmensadministrator an.
- 1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
- 1. Klicken Sie auf die Registerkarte **Registrierung**.
- 1. Wählen Sie im Abschnitt „Registrierungsdetails“ das Stiftsymbol aus neben:
-    - Gebühren anzeigen für Abteilungsadministratoren
-    - Gebühren anzeigen für Kontobesitzer
+ 1. Melden Sie sich beim Azure Enterprise-Portal als Unternehmensadministrator an.
+ 1. Wählen Sie im linken Navigationsbereich **Verwalten** aus.
+ 1. Wählen Sie die Registerkarte **Registrierung** aus.
+ 1. Wählen Sie im Abschnitt **Registrierungsdetails** das Stiftsymbol neben **Gebühren anzeigen für Abteilungsadministratoren** oder **Gebühren anzeigen für Kontobesitzer** aus.
  1. Wählen Sie **Aktiviert**.
- 1. Klicken Sie auf **Speichern**.
+ 1. Wählen Sie **Speichern** aus.
 
 ### <a name="to-view-reports"></a>So zeigen Sie Berichte an:
 
-1. Melden Sie sich beim Azure EA Portal als Abteilungsadministrator oder Kontobesitzer an.
-1. Klicken Sie im linken Navigationsbereich auf **Berichte**.
-1. Klicken Sie auf die Registerkarte **Nutzungszusammenfassung**, um Informationen über das Konto und das Abonnement anzuzeigen.
-1. Klicken Sie auf **Verwendungsdownload**, um die CSV-Berichte anzuzeigen.
+1. Melden Sie sich beim Azure Enterprise Portal als Abteilungsadministrator oder Kontobesitzer an.
+1. Wählen Sie im linken Navigationsbereich **Berichte** aus.
+1. Wählen Sie die Registerkarte **Nutzungszusammenfassung** aus, um Informationen über das Konto und das Abonnement anzuzeigen.
+1. Wählen Sie **Verwendungsdownload** aus, um die CSV-Berichte anzuzeigen.
 
-Abteilungsadministratoren und Kontobesitzer können keine Gebühren anzeigen, wenn die Funktion _Download des erweiterten Berichts_ verwendet wird. Die Kosten werden als „0 USD“ angezeigt.
+Abteilungsadministratoren und Kontobesitzer können keine Gebühren anzeigen, wenn die Funktion **Download des erweiterten Berichts** verwendet wird. Die Kosten werden als „0 USD“ angezeigt.
 
 „Gebühren anzeigen für Kontobesitzer“ wird für alle Kontobesitzer und alle Benutzer erweitert, die über Berechtigungen für zugehörige Abonnements verfügen. Wenn Sie ein indirekter Kunde sind, müssen die Kostenfeatures von Ihrem Channelpartner aktiviert werden.
 
@@ -322,47 +365,53 @@ Für beide Optionen müssen Sie eine [Supportanfrage](https://support.microsoft.
 
 ## <a name="azure-ea-pricing-overview"></a>Übersicht über die Preise von Azure EA
 
-Dieses Dokument enthält ausführliche Informationen zur Berechnung der Nutzung und beantwortet viele der am häufigsten gestellten Fragen zu den Preisen für verschiedene Azure-Dienste in Enterprise-Programmen, bei denen die Berechnungen komplexer sind.
+Dieser Abschnitt enthält Details zur Berechnung der Verwendung. Er beantwortet viele häufig gestellte Fragen zu den Gebühren für verschiedene Azure-Dienste in einem Enterprise Agreement, in dem die Berechnungen komplexer sind.
 
 ### <a name="price-protection"></a>Preisschutz
 
-Kunden und Channelpartner (im Fall unserer indirekten Kanäle) erhalten garantiert Preise, die höchstens den in ihrem Kundenpreisblatt (Customer Price Sheet, CPS) angegebenen entsprechen, oder den Preis, der zum Gültigkeitsdatum ihres Azure-Kaufs gültig ist. Dieser Preis wird als Baselinepreis bezeichnet. Für Dienste, die nach diesem Kauf eingeführt wurden, ist dies der Preis, der bei der Einführung des Diensts auf der gültigen Rabattebene gültig war. Dieser Preisschutz gilt für die Dauer der Verpflichtungslaufzeit, die je nach Enterprise-Programm ein oder drei Jahre betragen kann.
+Als Kunde oder Channelpartner erhalten Sie garantiert Preise, die denen auf Ihrem Kundenpreisblatt (Customer Price Sheet, CPS) entsprechen oder sie unterschreiten, oder dem Preis, der zum Gültigkeitsdatum Ihres Azure-Kaufs galt. Dieser Preis wird als Baselinepreis bezeichnet. Für Dienste, die nach diesem Azure-Kauf eingeführt wurden, wird Ihnen der Preis berechnet, der bei der Einführung des Diensts auf der gültigen Rabattebene gültig war. Dieser Preisschutz gilt für die Dauer Ihrer Verpflichtungslaufzeit, die je nach Enterprise Agreement ein oder drei Jahre betragen kann.
 
 ### <a name="price-changes"></a>Preisänderungen
 
-Microsoft kann den aktuellen Enterprise Program-Preis für einzelne Azure-Dienste während der Laufzeit einer Registrierung löschen.  Wir werden diese reduzierten Tarife auf vorhandene Kunden ausweiten, während der niedrigere Preis in Kraft ist.  Wenn diese Tarife später erhöht werden, wird der Preis der Registrierung für einen Dienst nicht die oben beschriebene Preisschutzgrenze des Kunden überschreiten, kann jedoch relativ zum vorher gesenkten Preis steigen.  In beiden Fällen wird Microsoft Kunden und indirekte Channelpartner über bevorstehende Preisänderungen informieren und entsprechende E-Mails an die Unternehmens- und Partneradministratoren senden.
+Microsoft kann den aktuellen Enterprise Agreement-Preis für einzelne Azure-Dienste während der Laufzeit einer Registrierung löschen. Wir werden diese reduzierten Tarife auf vorhandene Kunden ausweiten, während der niedrigere Preis in Kraft ist. Wenn diese Gebühren später erhöht werden, wird der Preis Ihrer Registrierung für einen Dienst nicht über die oben beschriebene Preisschutzobergrenze hinaus erhöht. Die Gebühr kann jedoch relativ zum vorherigen gesenkten Preis steigen. In beiden Fällen werden wir Kunden und indirekte Channelpartner über bevorstehende Preisänderungen informieren und entsprechende E-Mails an die Unternehmens- und Partneradministratoren senden.
 
 ### <a name="current-effective-pricing"></a>Aktuell gültige Preise
 
-Kunden und Channelpartner können Ihre aktuellen Preise für eine Registrierung anzeigen, indem sie sich beim [Azure Enterprise Portal](https://ea.azure.com/) anmelden und zur Preisblattseite für diese Registrierung navigieren.  Wenn Sie Azure indirekt über einen unserer Channelpartner erwerben, müssen Sie Ihre Preisaktualisierungen von Ihrem Channelpartner abrufen, wenn die Anzeige von Preisaufschlägen für Ihre Registrierung nicht aktiviert wurde.
+Kunden und Channelpartner können Ihre aktuellen Preise für eine Registrierung anzeigen, indem sie sich beim [Azure Enterprise Portal](https://ea.azure.com/) anmelden und die Preisblattseite für diese Registrierung anzeigen. Wenn Sie Azure indirekt über einen unserer Channelpartner erwerben, müssen Sie Ihre Preisaktualisierungen von Ihrem Channelpartner abrufen, wenn die Anzeige von Preisaufschlägen für Ihre Registrierung nicht aktiviert wurde.
 
 ### <a name="introduction-of-new-azure-services"></a>Einführung neuer Azure-Dienste
 
-Wir verbessern Azure kontinuierlich und fügen regelmäßig neue Dienste hinzu, die separat von vorhandenen Diensten abgerechnet werden.  Einige Vorschaudienste sind automatisch verfügbar, während andere Kundenaktionen über das [Azure-Kontoportal](https://account.windowsazure.com/PreviewFeatures) erfordern. Beachten Sie auch, dass Preise steigen können, wenn Dienste von der Vorschau auf die allgemeine Verfügbarkeit umgestellt und SLAs für vollständige Leistung und Zuverlässigkeit wirksam werden. Schließlich werden einige Dienste zu Aktionspreisen bereitgestellt, die zur Einführung gelten und zu einem späteren Zeitpunkt erhöht werden können. Alle derartigen Erhöhungen im Zuge des Wechsels von Vorschau oder Aktionspreisen zur allgemeinen Verfügbarkeit werden nicht durch den normalen Baselinepreisschutz beschränkt und gelten für die zukünftige Nutzung dieser Dienste. Kunden können Gebühren im Zusammenhang mit diesen Diensten vermeiden, indem sie sich dafür entscheiden, den neuen Dienst nicht zu nutzen.
+Wir verbessern Azure kontinuierlich und fügen regelmäßig neue Dienste hinzu, die separat von vorhandenen Diensten abgerechnet werden. Einige Vorschaudienste sind automatisch verfügbar, während andere Kundenaktionen im [Azure-Kontoportal](https://account.windowsazure.com/PreviewFeatures) erfordern.
+
+Einige Dienste werden zu Aktionspreisen bereitgestellt, die zur Einführung gelten und zu einem späteren Zeitpunkt erhöht werden können.
+
+Wenn Dienste von der Vorschau auf die allgemeine Verfügbarkeit (General Availability, GA) umgestellt und SLAs für vollständige Leistung und Zuverlässigkeit wirksam werden, können Preise steigen. Eine solche Zunahme ist nicht durch den normalen Baselinepreisschutz beschränkt. Die Nutzung dieser Dienste wird zum erhöhten Preis in Rechnung gestellt. Um Gebühren im Zusammenhang mit diesen neuen Diensten zu vermeiden, müssen Sie die Verwendung dieser Dienste ablehnen.
 
 ### <a name="introduction-of-regional-pricing"></a>Einführung regionaler Preise
 
-Neben der Einführung neuer Dienste wechseln Dienste auch regelmäßig von einer einzelnen globalen Basis zu einem stärker regionsbezogenen Modell, da die regionale Unterstützung für diese Dienste zunimmt. Wenn die Regionalisierung eines Diensts eingeführt wird, gilt für diese neuen Regionen der Preisschutz im Vergleich zum vorherigen für die Registrierung gültigen globalen Preis. Weitere Regionen, die zu einem späteren Zeitpunkt für denselben Dienst eingeführt werden, gelten jedoch als neue Dienste und werden unabhängig vom Baselinepreisschutz zu individuellen Tarifen angeboten.
+Neben der Einführung neuer Dienste wechseln Dienste auch regelmäßig von einer einzelnen globalen Basis zu einem stärker regionsbezogenen Modell, da die regionale Unterstützung für diese Dienste zunimmt.
 
-### <a name="enterprise-msdn-devtest"></a>Enterprise MSDN Dev/Test
+Wenn die Regionalisierung eines Diensts erstmals eingeführt wird, gilt der Baselinepreisschutz für diese neuen Regionen. Wenn jedoch zu einem späteren Zeitpunkt weitere Regionen für denselben Dienst eingeführt werden, gelten die Dienste in diesen Regionen als neue Dienste und werden unabhängig vom Baselinepreisschutz zu individuellen Tarifen angeboten.
 
-Unternehmensadministratoren können Kontobesitzern ermöglichen, Abonnements auf dem EA MSDN Dev/Test-Angebot basierend zu erstellen. Damit dies ordnungsgemäß funktioniert, muss der Kontobesitzer die für die zugrunde liegenden MSDN-Abonnenten benötigten EA MSDN Dev/Test-Abonnements einrichten. Dadurch können aktive MSDN-Abonnenten Entwicklungs- und Testworkloads in Azure zu speziellen Dev/Test-Tarifen ausführen. Weitere Informationen finden Sie unter [EA MSDN Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
+### <a name="enterprise-devtest"></a>Enterprise Dev/Test
 
-### <a name="enterprise-program-usage-calculation-guidelines"></a>Richtlinien zur Berechnung der Enterprise-Programmnutzung
+Unternehmensadministratoren können Kontobesitzern ermöglichen, Abonnements auf dem Enterprise Dev/Test-Angebot basierend zu erstellen. Der Kontobesitzer muss die Enterprise Dev/Test-Abonnements einrichten, die für die zugrunde liegenden Abonnenten erforderlich sind. Diese Konfiguration ermöglicht aktiven Visual Studio-Abonnenten, Entwicklungs- und Testworkloads in Azure zu speziellen Enterprise Dev/Test-Tarifen auszuführen. Weitere Informationen finden Sie unter [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
-Grundlegende öffentliche Preisinformationen, Maßeinheiten, FAQs und Richtlinien zur Erstellung von Nutzungsberichten für jeden einzelnen Dienst finden Sie unter [Azure-Produkte](https://azure.microsoft.com/services/) und [Azure-Preise](https://azure.microsoft.com/pricing/). Außerdem sollten beim Berechnen der Dienstnutzung die folgenden Richtlinien für das Enterprise-Programm verwendet werden.
+## <a name="enterprise-agreement-usage-calculations"></a>Berechnungen der Enterprise Agreement-Nutzung
 
-### <a name="enterprise-program-units-of-measure"></a>Maßeinheiten des Enterprise-Programms
+Grundlegende öffentliche Preisinformationen, Maßeinheiten, FAQs und Richtlinien zur Erstellung von Nutzungsberichten für jeden einzelnen Dienst finden Sie unter [Azure-Produkte](https://azure.microsoft.com/services/) und [Azure-Preise](https://azure.microsoft.com/pricing/). Weitere Informationen zu EA-Berechnungen finden Sie in den folgenden Abschnitten.
 
-Die Maßeinheiten für Enterprise-Programme unterscheiden sich häufig von denen in anderen Programmen wie z. B. dem Microsoft Online Services-Abonnementvertrag-Programm (MOSA). Dies bedeutet, dass für eine Reihe von Diensten die Maßeinheit aggregiert wird, um die normalisierten Preise bereitzustellen. Die Maßeinheit, die in der Ansicht „Nutzungszusammenfassung“ des Enterprise Portals angezeigt wird, ist immer das Enterprise-Maß. Eine vollständige Liste der aktuellen Maßeinheiten und Konvertierungen für jeden Dienst wird in [Friendly_Service_Names.xlsx](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) bereitgestellt.
+### <a name="enterprise-agreement-units-of-measure"></a>Maßeinheiten des Enterprise Agreement
+
+Die Maßeinheiten für Enterprise Agreements unterscheiden sich häufig von denen in anderen Programmen wie z. B. dem Microsoft Online Services-Abonnementvertrag-Programm (MOSA). Diese Ungleichheit bedeutet, dass für eine Reihe von Diensten die Maßeinheit aggregiert wird, um die normalisierten Preise bereitzustellen. Die Maßeinheit, die in der Ansicht „Nutzungszusammenfassung“ des Azure Enterprise Portals angezeigt wird, ist immer das Enterprise-Maß. Eine vollständige Liste der aktuellen Maßeinheiten und Konvertierungen für jeden Dienst wird Ihnen in der Excel-Datei [Friendly_Service_Names.xlsx](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) bereitgestellt.
 
 ### <a name="rounding-rules"></a>Rundungsregeln
 
-Beim Runden innerhalb des Enterprise Portals wird kaufmännisches oder Gaußsches Runden nach IEEE-Standard verwendet. So wird bei Dezimalstellen mit dem Wert 5 auf die nächste gerade Dezimalstelle gerundet, während die gebräuchlicheren Funktionen zum Aufrunden Dezimalstellen mit dem Wert 5 immer auf die nächsthöhere Dezimalstelle runden. Diese Methode bietet im Vergleich zur standardmäßigen Excel-Logik eine genauere Gesamtsumme für die Gruppe.
+Beim Runden innerhalb des Azure Enterprise Portals wird kaufmännisches oder Gaußsches Runden nach IEEE-Standard verwendet. Mit dieser Logik werden Dezimalstellen mit dem Wert 5 auf die nächste gerade Dezimalstelle gerundet. Die gebräuchlicheren Funktionen zum Aufrunden runden Dezimalstellen mit dem Wert 5 immer auf die nächsthöhere Dezimalstelle. Diese Methode im Azure Enterprise Portal bietet im Vergleich zur standardmäßigen Excel-Logik eine genauere Gesamtsumme für die Gruppe.
 
-Wenn die erste zu löschende Stelle den Wert 5 hat und keine Stellen folgen, bzw. die folgenden Stellen Nullen sind, erhält die vorangehende Stelle einen geraden Wert (d. h. wird auf die nächste gerade Ziffer gerundet). Beispielsweise ergibt so die Rundung auf die nächste Hundertsteldezimalstelle sowohl für 2,315 als auch 2,325 den Wert 2,32.
+Zur Veranschaulichung: Wenn die erste gelöschte Ziffer eine 5 ist und keine Ziffern folgen, oder die folgenden Ziffern Nullen sind, wird auf die nächste gerade Ziffer gerundet. Beispiel: Sowohl 2,315 als auch 2,325 ergibt gerundet auf die nächstgelegene Hunderterstelle 2,32.
 
-Wenn Sie Excel verwenden, um die Rundungs- und Konvertierungsregeln zu modellieren, die innerhalb des Enterprise Portals verwendet werden, sollten Sie die MROUND-Formeln wie unten gezeigt als Referenz verwenden.
+In der folgenden Tabelle sind die Excel-Formeln aufgeführt, die Sie verwenden können, um die Azure Enterprise Portal-Regeln für Rundung und Konvertierung zu modellieren:
 
 | Szenario | Formel für kaufmännisches Runden |
 | --- | --- |
@@ -370,35 +419,36 @@ Wenn Sie Excel verwenden, um die Rundungs- und Konvertierungsregeln zu modellier
 | Preisrundung (2 Dezimalstellen) | =MROUND({_Quelle_}, 0,02) |
 | Preisrundung (0 Dezimalstellen) | =MROUND({_Quelle_}, 2) |
 
-**Tabelle** **2** **– Konvertierung von Clouddienst- und VM-Stunden**
+### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertierung zwischen Nutzungsdetailbericht und Nutzungszusammenfassungs-Seite
 
-### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Konvertierung zwischen Downloadnutzungsdatei und Portalansicht der Nutzungszusammenfassung
+Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Verpflichtungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Die reinen Nutzungsdaten werden zuerst auf vier Ziffern gerundet, bevor sie in Einheiten konvertiert werden, die im Azure Enterprise Portal verwendet werden. Anschließend werden die konvertierten Enterprise-Einheiten erneut auf vier Ziffern gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden im heruntergeladenen Nutzungsbericht und nicht im Azure Enterprise Portal angezeigt.
 
-Rohdaten zur Ressourcenverwendung werden mit maximal sechs Dezimalstellen angezeigt, wie dem heruntergeladenen Nutzungsdatenbericht zu entnehmen ist. Allerdings rundet das Azure Enterprise Portal die Nutzung für Verpflichtungseinheiten auf vier Dezimalstellen und schneidet bei Überschreitungseinheiten alle Dezimalstellen ab. Die „Rohdatennutzung“ wird vor der Konvertierung in die Enterprise-Maßeinheit auf vier Stellen gerundet, und die resultierenden Enterprise-Einheiten werden wiederum auf vier Stellen gerundet. Die tatsächlich verbrauchten Stunden vor der Konvertierung werden nur im heruntergeladenen Nutzungsbericht und nicht in der Benutzeroberfläche selbst angezeigt.
+Beispiel: 694,533404 tatsächliche SQL Server-Stunden werden im Nutzungsdetailsbericht angezeigt. Diese Einheiten werden dann in 6,94533404 Einheiten von 100 Computestunden konvertiert, die dann zur Anzeige im Azure Enterprise Portal auf 6,9453 gerundet werden.
 
-Nehmen wir beispielsweise an, dass 694,533404 tatsächliche SQL Server-Stunden im heruntergeladenen Nutzungsbericht angezeigt werden. Diese Einheiten werden dann in 6,94533404 Einheiten von 100 Computestunden konvertiert, die dann zur Anzeige im Enterprise Portal auf 6,9453 gerundet werden.
-
-Diese Einheiten werden dann einfach mit dem Preis je Einheit der Verpflichtung multipliziert, und das Ergebnis wird auf zwei Dezimalzahlen gekürzt, um den erweiterten Abrechnungsbetrag zu bestimmen. Für japanische Yen (JPY) und koreanische Won (KRW) wird der erweiterte Betrag auf null (0) Dezimalstellen gerundet.
-
-Im selben Beispiel werden bei einer Überschreitung die abrechenbaren Einheiten auf sechs gekürzt und dann mit dem Preis je Einheit der Überschreitung multipliziert, um den erweiterten Abrechnungsbetrag zu bestimmen. Bei der Abrechnung für Anbieter verwalteter Dienste (Managed Service Provider, MSP) wird die gesamte als MSP gekennzeichnete Verwendung einer Abteilung nach der Konvertierung in die EA-Maßeinheit auf null (0) Dezimalstellen gekürzt, wie dies bei der Überschreitungsberichterstellung der Fall ist. Demzufolge könnte die Summe dieser Nutzung niedriger sein als die Summe aller in der Benutzeroberfläche gemeldeten Nutzung, je nachdem, ob der MSP noch im Rahmen des Saldos des Mindestverbrauchs liegt oder bereits eine Überschreitung vorliegt.
+- Um den erweiterten Abrechnungsbetrag zu bestimmen, werden die angezeigten Einheiten mit dem Preis je Einheit der Verpflichtung multipliziert, und das Ergebnis wird auf zwei Dezimalzahlen gekürzt. Für japanische Yen (JPY) und koreanische Won (KRW) wird der erweiterte Betrag auf null (0) Dezimalstellen gerundet.
+- Bei einer Überschreitung werden die Abrechnungseinheiten auf sechs Stellen gekürzt und dann mit dem Preis je Einheit der Überschreitung multipliziert, um den erweiterten Abrechnungsbetrag zu bestimmen.
+- Bei der Abrechnung für Anbieter verwalteter Dienste (Managed Service Provider, MSP) wird die gesamte als MSP gekennzeichnete Verwendung einer Abteilung nach der Konvertierung in die EA-Maßeinheit auf null (0) Dezimalstellen gekürzt. Folglich kann die Summe dieser Nutzung niedriger sein als die Summe der gesamten im Azure Enterprise Portal berichteten Nutzung. Dies hängt davon ab, ob sich der MSP innerhalb des Mindestverbrauchs oder in Überschreitung befindet.
 
 ### <a name="graduated-pricing"></a>Gestaffelte Preise
 
-Für Enterprise-Programme liegen derzeit keine gestaffelten Preise (wobei die Preise pro Einheit sinken, wenn die Auslastung zunimmt) vor. Beim Wechsel von einem MOSA-Programm mit gestaffelten Preisen zu einem Enterprise-Programm werden die Preise ggf. nach der Anpassung für Enterprise-Programmrabatte entsprechend des Basistarifs für diesen Dienst festgelegt.
+Für Enterprise Agreement-Programme liegen derzeit keine gestaffelten Preise vor, wobei die Preise pro Einheit sinken, wenn die Nutzung zunimmt. Wenn Sie von einem MOSA-Programm mit gestaffelten Preisen zu einem Enterprise Agreement wechseln, werden die Preise gemäß des Basistarifs des Diensts abzüglich ggf. anwendbarer Anpassungen für Enterprise Agreement-Rabatte festgelegt.
 
 ### <a name="partial-hour-billing"></a>Teilweise Stundenabrechnung
 
-Die Abrechnung erfolgt auf der Grundlage von Minuten, die in Stundeninkremente umgerechnet werden.  Die aufgelisteten Enterprise-Stundentarife werden einfach auf die Gesamtstunden einschließlich ggf. partieller Stunden angewendet.
+Die gesamte abgerechnete Nutzung basiert auf Minuten, die in Teil- und nicht Gesamtstundeninkremente umgerechnet werden. Die aufgelisteten stündlichen Enterprise-Tarife werden auf die Gesamt- und die Teilstunden angewendet.
 
 ### <a name="average-daily-consumption"></a>Durchschnittlicher täglicher Verbrauch
 
-Wenn ein Dienst monatlich abgerechnet wird, die Nutzung jedoch täglich berichtet wird, wird diese Nutzung einmal pro Tag ausgewertet, durch 31 dividiert und mit der Anzahl der Tage in diesem Abrechnungsmonat summiert. Dies führt zu Tarifen, die für einen Monat nie höher als erwartet und für die Monate mit weniger als 31 Tagen etwas niedriger sind.
+Einige Dienste werden monatlich berechnet, aber die Nutzung wird täglich gemeldet. In diesen Fällen wird die Nutzung einmal pro Tag ausgewertet, durch 31 dividiert und über die Anzahl der Tage in diesem Abrechnungsmonat summiert. Dies führt zu Tarifen, die für einen Monat nie höher als erwartet und für die Monate mit weniger als 31 Tagen etwas niedriger sind.
 
 ### <a name="compute-hours-conversion"></a>Konvertierung von Computestunden
 
-In der Vergangenheit wurde die Nutzung von virtuellen Computern der Tarife „Standard“ und „Basic“ sowie Clouddiensten mit den Größen A0, A2, A3 und A4 als ein Bruchteil (bei A0) oder ein Mehrfaches (bei A2, A3 und A4) der Abrechnungsminuten für A1-VMs abgerechnet. Dies führte bei unseren Kunden zu Verwirrung, sodass eine Änderung eingeführt wurde, um die A0-, A2-, A3- und A4-Nutzung minutenbasiert abzurechnen.
+Vor dem 28. Januar 2016 wurde die Nutzung von virtuellen Computern der Tarife „Standard“ und „Basic“ sowie Clouddiensten mit den Größen A0, A2, A3 und A4 als Abrechnungsminuten für A1-VMs abgerechnet. A0-VMs zählten als Bruchteile von A1-VM-Minuten, während A2s, A3s und A4s in Vielfache konvertiert wurden. Diese Richtlinie führte bei unseren Kunden zu Verwirrung, sodass wir eine Änderung einführten, um die A0-, A2-, A3- und A4-Nutzung minutenbasiert abzurechnen.
 
-Die neue Messung wurde zwischen dem 27. und 28. Januar 2016 wirksam. Im CSV-Download für Ihre Bereitstellung während dieses Übergangszeitraums werden Ihnen zwei Zeilenelemente auffallen: Eines für die Nutzung, die auf der A1-Verbrauchseinheit ausgegeben wird, und ein weiteres für die Nutzung, die auf der neuen dedizierten Verbrauchseinheit gemäß der Größe Ihrer Bereitstellung ausgegeben wird.
+Die neue Messung wurde zwischen dem 27. und 28. Januar 2016 wirksam. Im CSV-Download, der die Nutzung während dieses Übergangszeitraums anzeigt, sehen Sie beides:
+
+- In der A1-Verbrauchseinheit ausgegebene Nutzung
+- Nutzung, die in der neuen dedizierten Verbrauchseinheit gemäß der Größe Ihrer Bereitstellung ausgegeben wird.
 
 | **Bereitstellungsgröße** | **Berechnung der Nutzung als Mehrfaches von A1 (bis 26. Januar 2016)** | **Berechnung der Nutzung mit dedizierten Abrechnungseinheiten (ab 27. Januar 2016)** |
 | --- | --- | --- |
@@ -417,25 +467,23 @@ Für Dienste, bei denen Zone und Region die Preise beeinflussen, zeigt die folge
 | Zone 2 | Asien-Pazifik, Osten <br> Asien-Pazifik, Südosten <br> Japan, Osten <br> Japan, Westen <br> Australien (Osten) <br> Australien, Südosten | Asien-Pazifik <br> Japan <br> Lateinamerika <br> Naher Osten/Afrika <br> Australien (Osten) <br> Australien, Südosten |
 | Zone 3 | Brasilien Süd |   |
 
-**Tabelle** **4** **– Datenübertragungsregionen**
-
-Es fallen keine Gebühren für den Datenausgang zwischen Diensten (z. B. O365 und Azure) an, die im selben Rechenzentrum untergebracht sind.
+Es fallen keine Gebühren für den Datenausgang zwischen Diensten an, die im selben Rechenzentrum untergebracht sind. Beispielsweise Office 365 und Azure.
 
 ### <a name="monetary-commitment-and-unbilled-usage"></a>Mindestverbrauch und nicht berechnete Nutzung
 
-Der Mindestverbrauch von Azure ist ein Betrag, der vorab für Azure-Dienste gezahlt wird. Der Mindestverbrauch wird genutzt, wenn Dienste verwendet werden. Für Azure-Erstanbieterdienste kommt der Mindestverbrauch zum Einsatz. Ausnahmen sind getrennt abgerechnete Gebühren und Marketplace-Dienste.
+Der Mindestverbrauch von Azure ist ein Betrag, der vorab für Azure-Dienste gezahlt wird. Der Mindestverbrauch wird genutzt, wenn Dienste verwendet werden. Für Azure-Erstanbieterdienste wird der Mindestverbrauch abgerechnet. Einige Gebühren werden jedoch separat abgerechnet, und Azure Marketplace-Dienste beanspruchen keinen Mindestverbrauch.
 
 ### <a name="charges-billed-separately"></a>Separat abgerechnete Gebühren
 
 Einige Produkte und Dienste, die aus Drittanbieterquellen bereitgestellt werden, werden nicht auf den Azure-Mindestverbrauch angerechnet. Stattdessen werden diese Elemente separat als Teil der Überschreitungsrechnung für den Standardabrechnungszyklus abgerechnet.
 
-Wir haben alle Azure- und Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst, die sich am Abrechnungszyklus der Registrierung orientiert. (Dies gilt nicht für Azure-Kunden in Australien, Japan oder Singapur.)
+Wir haben alle Azure- und Azure Marketplace-Gebühren in einer einzigen Rechnung zusammengefasst, die sich am Abrechnungszyklus der Registrierung orientiert. Die kombinierte Rechnung gilt nicht für Azure-Kunden in Australien, Japan oder Singapur.
 
-Die konsolidierte Rechnung zeigt zunächst die Azure-Nutzung, gefolgt von Marketplace-Gebühren. Kunden in Australien, Japan oder Singapur sehen die Marketplace-Gebühren weiterhin in einer separaten Rechnung.
+Die kombinierte Rechnung zeigt zunächst die Azure-Nutzung und dann alle Azure Marketplace-Gebühren an. Kunden in Australien, Japan oder Singapur sehen die Azure Marketplace-Gebühren in einer separaten Rechnung.
 
-Wenn am Ende des Standardabrechnungszyklus keine Überschreitungsrechnung erstellt wird, werden die Gebühren separat abgerechnet. (Gilt für Kunden in Australien, Japan und Singapur)
+Wenn am Ende des Standardabrechnungszyklus keine Überschreitungsrechnung erstellt wird, werden die Gebühren separat abgerechnet. Dieser Prozess gilt für Kunden in Australien, Japan und Singapur.
 
-**Zu den separat in Rechnung gestellten Diensten zählen:**
+Die folgenden Dienste werden separat in Rechnung gestellt:
 
 - Canonical
 - Citrix XenApp Essentials
@@ -450,223 +498,234 @@ Wenn am Ende des Standardabrechnungszyklus keine Überschreitungsrechnung erstel
 
 ## <a name="azure-marketplace-for-ea-customers"></a>Azure Marketplace für EA-Kunden
 
-Direkten Kunden werden die Marketplace-Gebühren im Azure EA Portal angezeigt. Marketplace-Käufe und deren Nutzung werden außerhalb des Mindestverbrauchs abgerechnet, wobei die Rechnungsstellung vierteljährlich/monatlich und nachträglich erfolgt.
+Direkten EA-Kunden werden die Azure Marketplace-Gebühren im Azure Enterprise Portal angezeigt. Alle Azure Marketplace-Käufe und deren Nutzung werden außerhalb des Mindestverbrauchs abgerechnet, wobei die Rechnungsstellung vierteljährlich oder monatlich und nachträglich erfolgt.
 
-Indirekte Kunden finden ihre Azure Marketplace-Abonnements im Azure EA Portal auf der Seite „Abonnements verwalten“, wobei die Preise jedoch ausgeblendet sind. Kunden sollten ihren Lizenzierungsdienstanbieter zwecks Informationen zu Marketplace-Gebühren kontaktieren.
+Indirekte Kunden finden ihre Azure Marketplace-Abonnements im Azure Enterprise Portal auf der Seite **Abonnements verwalten**, wobei die Preise jedoch ausgeblendet sind. Kunden sollten ihren Lizenzierungsdienstanbieter (Licensing Solutions Provider, LSP) zwecks Informationen zu Azure Marketplace-Gebühren kontaktieren.
 
-Für neue monatlich oder jährlich wiederkehrende Marketplace-Käufe wird der gesamte Betrag in dem Zeitraum in Rechnung gestellt, in dem die Marketplace-Artikel erworben wurden. Diese Artikel werden im folgenden Zeitraum am selben Tag des ursprünglichen Kaufs automatisch verlängert.
+Neue monatlich oder jährlich wiederkehrende Azure Marketplace-Käufe werden innerhalb des Zeitraums, in dem Azure Marketplace-Artikel erworben werden, vollständig abgerechnet. Diese Artikel werden im folgenden Zeitraum am selben Tag des ursprünglichen Kaufs automatisch verlängert.
 
-Dies wirkt sich nicht auf vorhandene wiederkehrende Marketplace-Gebühren aus. Monatlich wiederkehrende Gebühren werden weiterhin am ersten jedes Kalendermonats verlängert und die jährlichen Gebühren am Jahrestag des Kaufdatums.
+Vorhandene monatlich wiederkehrende Gebühren werden weiterhin am ersten jedes Kalendermonats verlängert. Die jährlichen Gebühren werden am Jahrestag des Kaufdatums verlängert.
 
-Manche auf dem Azure Marketplace verfügbaren Wiederverkaufsdienste von Drittanbietern werden jetzt auf Ihren EA-Mindestverbrauchssaldo (Enterprise Agreement) angerechnet. Vorher wurden diese Dienste außerhalb des EA-Mindestverbrauchs und separat abgerechnet. Der EA-Mindestverbrauch für diese Dienste im Marketplace vereinfacht die Verwaltung von kundenseitigen Einkäufen und Zahlungen. Eine umfassende Liste der Dienste, die jetzt auf den Mindestverbrauch angerechnet werden, finden Sie auf der [Azure-Website](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/?WT.mc_id=azurebg_email_Trans_33771_1695_Release_Direct_Tier2_March14).
+Manche auf dem Azure Marketplace verfügbaren Wiederverkaufsdienste von Drittanbietern werden jetzt auf Ihren EA-Mindestverbrauchssaldo (Enterprise Agreement) angerechnet. Vorher wurden diese Dienste außerhalb des EA-Mindestverbrauchs und separat abgerechnet. Der EA-Mindestverbrauch für diese Dienste im Azure Marketplace vereinfacht die Verwaltung von kundenseitigen Einkäufen und Zahlungen. Eine umfassende Liste der Dienste, die jetzt auf den Mindestverbrauch angerechnet werden, finden Sie im [Update der Azure-Website vom 6. März 2018](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
 
 ### <a name="partners"></a>Partner
 
-LSPs können eine für Marketplace spezifische Preisliste herunterladen, indem sie im Azure EA Portal zum Preisblatt navigieren und in der oberen rechten Ecke auf die **Marketplace-Preisliste** klicken. Die Marketplace-Preisliste spiegelt alle verfügbaren Dienste und ihre Preise wider.
+LSPs können eine Azure Marketplace-Preisliste von der Preisblattseite im Azure Enterprise Portal herunterladen. Wählen Sie den Link zur **Marketplace-Preisliste** in der oberen rechten Ecke aus. Die Azure Marketplace-Preisliste zeigt alle verfügbaren Dienste und ihre Preise an.
 
-**Um die Preisliste herunterzuladen, führen Sie die folgenden Schritte aus:**
+So laden Sie die Preisliste herunter:
 
-1. Navigieren Sie zu „Berichte“ > „Preisblatt“.
+1. Navigieren Sie im Azure Enterprise Portal zu **Berichte** > **Preisblatt**.
 1. Suchen Sie in der oberen rechten Ecke den Link zur Azure Marketplace-Preisliste unter Ihrem Benutzernamen.
 1. Klicken Sie mit der rechten Maustaste auf den Link, und wählen Sie **Ziel speichern unter** aus.
-1. Ändern Sie im Fenster „Speichern“ den Titel des Dokuments in _AzureMarketplacePricelist.zip_, wodurch die Datei von einer XLSX-Datei in eine ZIP-Datei geändert wird.
+1. Ändern Sie im Fenster **Speichern** den Titel des Dokuments in `AzureMarketplacePricelist.zip`, wodurch die Datei von einer XLSX-Datei in eine ZIP-Datei geändert wird.
 1. Nach dem Download verfügen Sie über eine ZIP-Datei mit länderspezifischen Preislisten.
-1. LSPs sollten für länderspezifische Preise die jeweilige Länderdatei nutzen. LSPs sollten der Registerkarte „Benachrichtigungen“ entnehmen, welche SKUs im Marketplace neu sind, und welche entfernt wurden.
-1. Preisänderungen sind selten, aber wenn sie auftreten, werden die LSPs 30 Tage im Voraus per E-Mail über Preissteigerungen und FX-Änderungen unterrichtet.
+1. LSPs sollten für länderspezifische Preise die jeweilige Länderdatei nutzen. LSPs können mithilfe der Registerkarte **Benachrichtigungen** erkennen, welche SKUs neu oder abgelaufen sind.
+1. Preisänderungen treten selten auf. LSPs erhalten 30 Tage im voraus E-Mail-Benachrichtigungen über Preissteigerungen und Änderungen bei Devisenumrechnungen (Foreign Exchange, FX).
 1. LSPs erhalten pro Registrierung, ISV und Quartal eine Rechnung.
 
-### <a name="enabling-marketplace-purchases"></a>Aktivieren von Marketplace-Einkäufen
+### <a name="enabling-azure-marketplace-purchases"></a>Aktivieren von Azure Marketplace-Einkäufen
 
-Unternehmensadministratoren können Marketplace-Käufe für alle Azure-Abonnements unter dieser Registrierung „deaktivieren“ oder „aktivieren“. Wenn der Unternehmensadministrator Käufe deaktiviert, und Azure-Abonnements vorhanden sind, die bereits über Marketplace-Abonnements verfügen, werden diese Marketplace-Abonnements nicht abgebrochen oder beeinträchtigt.
+Unternehmensadministratoren können Azure Marketplace-Käufe für alle Azure-Abonnements unter dieser Registrierung deaktivieren oder aktivieren. Wenn der Unternehmensadministrator Käufe deaktiviert, und Azure-Abonnements vorhanden sind, die bereits über Azure Marketplace-Abonnements verfügen, werden diese Azure Marketplace-Abonnements nicht abgebrochen oder beeinträchtigt.
 
-Obwohl Kunden ihre direkten Azure-Abonnements in EA konvertieren können, indem sie sie ihrer Registrierung im Azure EA Portal zuordnen, werden die untergeordneten Marketplace-Abonnements von dieser Aktion nicht automatisch konvertiert.
+Obwohl Kunden ihre direkten Azure-Abonnements in Azure EA konvertieren können, indem sie sie ihrer Registrierung im Azure Enterprise Portal zuordnen, werden die untergeordneten Abonnements von dieser Aktion nicht automatisch konvertiert.
 
-**So aktivieren Sie Marketplace-Einkäufe:**
+So aktivieren Sie Azure Marketplace-Einkäufe:
 
-1. Melden Sie sich beim Azure EA Portal als Unternehmensadministrator an.
-1. Navigieren Sie zu _Verwalten_.
-1. Klicken Sie unter _Registrierungsdetails_ auf das Stiftsymbol neben dem Zeilenelement _Azure Marketplace_.
-1. Schalten Sie nach Bedarf zwischen _Aktiviert/Deaktiviert_ oder _Nur kostenlose/BYOL-SKUs\*_ um.
-1. Klicken Sie auf **Speichern**.
+1. Melden Sie sich beim Azure Enterprise-Portal als Unternehmensadministrator an.
+1. Navigieren Sie zu **Verwalten**.
+1. Wählen Sie unter **Registrierungsdetails** das Stiftsymbol neben dem Zeilenelement **Azure Marketplace** aus.
+1. Schalten Sie nach Bedarf zwischen **Aktiviert/Deaktiviert** oder **Nur kostenlose/BYOL-SKUs** um.
+1. Wählen Sie **Speichern** aus.
 
-### <a name="marketplace-charges-in-azure-ea-portal-reports"></a>Marketplace-Gebühren in Azure EA Portal-Berichten
+> [!NOTE]
+> BYOL (Bring-Your-Own-License) und die Option „Nur kostenlos“ beschränken Kaufen und Erwerben von Azure Marketplace-SKUs auf BYOL- und kostenlose SKUs.
 
-Weitere Informationen zu Marketplace-Gebühren finden Sie [hier.](https://azure.microsoft.com/marketplace/faq/)
+Weitere Informationen finden Sie unter [Azure Marketplace-Gebühren in Azure Enterprise Portal-Berichten](#azure-marketplace-charges-in-azure-enterprise-portal-reports).
 
-Es gibt zwei Arten von Marketplace-Gebühren:
+### <a name="services-billed-hourly-for-azure-ea"></a>Stündlich für Azure EA abgerechnete Dienste
 
-- **Nutzungsbasiert:** Produkte werden in Transaktionseinheiten gemessen.  Virtuelle Computer werden z. B. stündlich abgerechnet, und Bing-API-Suchen nach Anzahl der Suchvorgänge.
-- **Nicht nutzungsbasiert:** Einmalige Gebühr oder wiederkehrende monatliche Gebühr, die von der Nutzung unabhängig ist.
+Die folgenden Dienste werden stundenweise unter einem Enterprise Agreement und nicht in monatlichen Raten in MOSP abgerechnet:
 
-Nutzungsbasierte und nicht nutzungsbasierte Gebühren werden im Marketplace-Gebührenbericht aufgezeichnet.
+- Application Delivery Network
+- Web Application Firewall
 
-Beachten Sie, dass Azure Marketplace für MPSA-Registrierungen nicht verfügbar ist.
+### <a name="azure-remoteapp"></a>Azure RemoteApp
 
-\*BYOL (Bring-Your-Own-License) und die Option „Nur kostenlos“ beschränken Kaufen und Erwerben von Azure Marketplace-SKUs auf BYOL- und kostenlose SKUs.
-
-### <a name="services-billed-hourly-for-ea"></a>Stündlich für EA abgerechnete Dienste
-
-Application Delivery Network und Web Application Firewall werden im Gegensatz zum Monatstarif in MOSP für EA stündlich abgerechnet.
-
-### <a name="remote-app"></a>Remote-App
-
-EA-Kunden zahlen für die Remote-App basierend auf der EA-Preisstufe, und ihnen werden keine zusätzlichen Gebühren in Rechnung gestellt. Der Standardpreispunkt umfasst eine anfängliche Dauer von 40 Stunden, während der unbegrenzte Preispunkt eine anfängliche Dauer von 80 Stunden abdeckt. Die Remote-App verhindert die 80 Stunden überschreitende Nutzung.
+Wenn Sie über ein Enterprise Agreement verfügen, zahlen Sie für Azure RemoteApp auf Basis Ihrer Enterprise Agreement-Preisstufe. Es fallen keine zusätzlichen Gebühren an. Der Standardpreis umfasst die ersten 40 Stunden. Der unbegrenzte Preis deckt die ersten 80 Stunden ab. RemoteApp verhindert die 80 Stunden überschreitende Nutzung.
 
 ## <a name="azure-marketplace-faq"></a>Azure Marketplace – häufig gestellte Fragen
 
-In diesem FAQ-Dokument werden Aktualisierungen der Anwendbarkeit des Azure-Mindestverbrauchs für einige der im Azure Marketplace von Drittanbietern veröffentlichten Dienste überprüft.
+In diesem Abschnitt wird erläutert, wie Ihr Azure-Mindestverbrauch für einige Resellerdienste von Drittanbietern in Azure Marketplace gelten kann.
 
-### <a name="what-are-we-changing-with-respect-to-marketplace-services-and-azure-monetary-commitment"></a>Was ändern wir in Bezug auf Marketplace-Dienste und Azure-Mindestverbrauch?
+### <a name="what-changed-with-azure-marketplace-services-and-ea-monetary-commitment"></a>Was hat sich mit Azure Marketplace-Diensten und EA-Mindestverbrauch geändert?
 
-Abgesehen von reservierten Azure-VM-Instanzen (RIs) erhalten Kunden eine separate Rechnung für alle Dienste, die sie über den Azure Marketplace erwerben. Wir erweitern die Nutzung des Azure-Mindestverbrauchs, um nun einige der von Drittanbietern im Azure Marketplace veröffentlichten Dienste einzubeziehen, die von unseren Kunden am häufigsten gekauft werden.
+Ab dem 1. März 2018 nutzen einige Resellerdienste von Drittanbietern den EA-Mindestverbrauch (MC). Mit Ausnahme der reservierten Azure-VM-Instanzen (RIs) wurden Dienste zuvor außerhalb des EA-Mindestverbrauchs und separat abgerechnet.
 
-### <a name="why-are-we-making-this-change"></a>Warum nehmen wir diese Änderung vor?
+Wir erweiterten die Nutzung des MC, um nun einige der von Drittanbietern im Azure Marketplace veröffentlichten Dienste einzubeziehen, die am häufigsten gekauft werden. Der EA-Mindestverbrauch für diese Dienste im Azure Marketplace vereinfacht die Verwaltung Ihrer Einkäufe und Zahlungen.
 
-Kunden suchen ständig nach zusätzlichen Möglichkeiten, um die Vorauszahlung zu nutzen, die sie für den Azure-Mindestverbrauch geleistet haben.  Wir gehen auf eine häufige Kundenanfrage ein, und die Ausweitung von MC auf diese Dienste betrifft einen großen Teil unserer Azure Marketplace-Kunden.
+### <a name="why-did-we-make-this-change"></a>Warum haben wir diese Änderung vorgenommen?
 
-### <a name="what-is-the-customer-benefit"></a>Was ist der Vorteil für den Kunden?
+Kunden suchen ständig nach zusätzlichen Möglichkeiten, um die MC-Vorabzahlung zu nutzen. Diese Änderung wurde häufig von Kunden angefordert, und dies betraf einen großen Teil der Azure Marketplace-Kunden.
 
-Das Abrechnungsverfahren wird für die Kunden vereinfacht, und sie können sicherstellen, dass sie ihren Azure-Mindestverbrauch nutzen.  Dem vorab bezahlten Mindestverbrauch und MC nutzenden RIs diesen Vorteil hinzuzufügen, erhöht den Wert des Azure-Mindestverbrauchs.
+### <a name="how-do-you-benefit"></a>Wie profitieren Sie davon?
 
-### <a name="what-services-will-deduct-from-azure-monetary-commitment-and-how-will-my-customer-know"></a>Welche Dienste werden vom Azure-Mindestverbrauch abgezogen, und wie wird mein Kunde informiert?
+Sie erhalten eine einfachere Abrechnung und sind eher in der Lage, ihren EA-Mindestverbrauch zu nutzen. Da diese Dienste in Ihrem vorab bezahlten MC enthalten sind, gewinnt Ihr EA-Mindestverbrauch an Wert.
 
-Während des Azure Marketplace-Einkaufs versehen wir jeden Dienst, der den Mindestverbrauch verwendet, mit einem entsprechenden Hinweis. Derzeit werden bestimmte Dienste von Red Hat, SUSE, Autodesk und Oracle unterstützt. Dienste mit ähnlichen Benennungskonventionen, die jedoch von anderen, oben nicht aufgeführten Parteien veröffentlicht werden, werden nicht vom Mindestverbrauch abgezogen. Eine vollständige Liste ist am Ende dieser FAQ verfügbar.
+### <a name="what-azure-marketplace-services-use-ea-monetary-commitment-and-how-do-i-know"></a>Welche Azure Marketplace-Dienste verwenden den EA-Mindestverbrauch, und wie stelle ich das fest?
 
-### <a name="what-if-my-customer-runs-out-of-monetary-commitment"></a>Was geschieht, wenn mein Kunde seinen Mindestverbrauch überschreitet?
+Wenn Sie einen Dienst erwerben, der den MC verwendet, zeigt Azure Marketplace einen Haftungsausschluss dar. Unterstützt werden einige Dienste, die von Red Hat, SUSE, Autodesk und Oracle veröffentlicht werden. Zurzeit werden ähnlich benannte Dienste, die von anderen Parteien veröffentlicht werden, nicht von MC abgezogen. Eine vollständige Liste ist am Ende dieser FAQ verfügbar.
 
-Für Kunden, die ihre gesamte MC genutzt haben und sich nun in der Überschreitung befinden, werden die Gebühren für diese Dienste in der nächsten Überschreitungsrechnung ggf. zusammen mit anderen Verbrauchsdiensten angezeigt.  Dies ist eine Änderung, da diese Gebühren früher mit anderen Azure Marketplace-Angeboten in einer eigenen Rechnung abgerechnet worden wären.
+### <a name="what-if-my-ea-monetary-commitment-runs-out"></a>Was geschieht, wenn mein EA-Mindestverbrauch verbraucht ist?
 
-### <a name="why-are-we-not-enabling-azure-monetary-commitment-for-all-marketplace-purchases"></a>Warum wird der Azure-Mindestverbrauch nicht für alle Marketplace-Käufe aktiviert?
+Wenn Sie Ihren gesamten MC nutzen und sich nun in der Überschreitung befinden, werden die Gebühren für diese Dienste in der nächsten Überschreitungsrechnung zusammen mit anderen Verbrauchsdiensten angezeigt. Vor der Änderung vom 1. März 2018 wurden diese Gebühren mit anderen Azure Marketplace-Diensten abgerechnet.
 
-Wir arbeiten häufig daran, für die beste Kundenerfahrung im Zusammenhang mit dem Azure-Mindestverbrauch zu sorgen. Diese Änderung betrifft eine große Anzahl von Kunden und einen bedeutenden Teil der Gesamtausgaben im Azure Marketplace. Weitere Dienste können künftig hinzugefügt werden.
+### <a name="why-dont-all-azure-marketplaces-consume-ea-monetary-commitment"></a>Warum nutzen nicht alle Azure Marketplace-Orte den EA-Mindestverbrauch?
+
+Wir arbeiten regelmäßig daran, für die beste Kundenerfahrung im Zusammenhang mit dem EA-Mindestverbrauch zu sorgen. Diese Änderung betrifft eine große Anzahl von Kunden und einen bedeutenden Teil der Gesamtausgaben im Azure Marketplace. Weitere Dienste könnten künftig hinzugefügt werden.
 
 ### <a name="how-does-this-impact-indirect-enrollment-and-partners"></a>Wie wirkt sich dies auf indirekte Registrierung und Partner aus?
 
-Unsere Kunden oder Partner mit indirekter Registrierung sind nicht betroffen. Diese Dienste unterliegen denselben Partnermarkupfunktionen wie andere Verbrauchsdienste. Die einzige Änderung ist die Rechnung, auf der sie angezeigt werden, und die Zahlung von Gebühren aus dem Mindestverbrauch.
+Unsere Kunden oder Partner mit indirekter Registrierung sind nicht betroffen. Diese Dienste unterliegen denselben Partnermarkupfunktionen wie andere Verbrauchsdienste. Die einzige Änderung besteht darin, dass die Gebühren in einer anderen Rechnung angezeigt werden und die Zahlung der Gebühren aus dem EA-Mindestverbrauch des Kunden erfolgt.
 
-### <a name="list-of-services-that-will-deduct-from-azure-monetary-commitment"></a>Liste der Dienste, die vom Azure-Mindestverbrauch abgezogen werden
+### <a name="is-there-a-list-of-azure-marketplace-services-that-consume-ea-monetary-commitment"></a>Gibt es eine Liste mit Azure Marketplace-Diensten, die einen EA-Mindestverbrauch nutzen?
 
-Bestimmte Azure Marketplace-Angebote können per Mindestverbrauchsguthaben bezahlt werden. Eine vollständige Liste der Produkte in diesem Programm finden Sie unter [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
-
-## <a name="additional-information"></a>Zusätzliche Informationen
-
-Weitere Informationen finden Sie in diesen zusätzlichen Informationsquellen. Diese Dateien werden zweimal monatlich (am 6. und 20. jedes Monats) aktualisiert. Hier finden Sie ausführliche Informationen zu den Dateien:
-
-| Anhangtitel | Beschreibung | URL-Namenskonvention |
-| --- | --- | --- |
-| [**Anzeigedienstnamen**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Enthält eine Liste aller aktiven Dienste mit Dienstkategorie, Anzeigedienstname, Verpflichtungsname und Teilenummer, Verbrauchsname und Teilenummer, Maßeinheiten und Faktoren zur Konvertierung zwischen gemeldeter Verwendung und angezeigter Enterprise Portal-Verwendung. | Friendly\_Service\_Names.xlsx |
-| [**Dienstdownloadfelder**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Diese Tabelle enthält eine Liste aller möglichen Kombinationen dienstbezogener Felder im Verwendungsdownloadbericht. | Service\_Download\_Fields.xlsx |
-
-**Tabelle** **5** **– zusätzliche Informationsquellen**
+Bestimmte Azure Marketplace-Angebote können per Mindestverbrauchsguthaben bezahlt werden. Eine vollständige Liste der Produkte in diesem Programm finden Sie unter [Wiederverkaufsdienste von Drittanbietern im Azure Marketplace verwenden ab sofort Azure-Zahlungsverpflichtungen](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment).
 
 ## <a name="power-bi-reporting"></a>Power BI-Berichterstellung
 
+Die Power BI-Berichterstellung steht für direkte EA-Kunden, Partner und indirekte Kunden zur Verfügung, die Zugriff zur Anzeige von Abrechnungsinformationen haben.
+
 ### <a name="power-bi-pro"></a>Power BI Pro
 
-Power BI Pro ist nun für EA-Kunden verfügbar. Mit Power BI Pro können Sie Berichte generieren und freigeben, um Ihre Kostendaten mit zusätzlichen Funktionen für Zusammenarbeit und Datenaktualisierung effektiv zu verwalten. Power BI Pro bietet höhere Datenkapazität und Datenstreaminggrenzwerte. Spannende neue Kostenverwaltungsfeatures für Azure Enterprise-Kunden sind in Kürze verfügbar.
+Power BI Pro ist für EA-Kunden verfügbar. Mit Power BI Pro können Sie Berichte generieren und freigeben, um Ihre Kostendaten zu verwalten. Außerdem bietet es zusätzliche Funktionen für Zusammenarbeit und Datenaktualisierung. Power BI Pro bietet höhere Datenkapazität und Datenstreaminggrenzwerte.
 
-Aktuelle Power BI Free-Benutzer, die das Microsoft Azure Consumption Insights-Inhaltspaket verwenden, können eine kostenlose 60-tägige Testversion von Power BI Pro nutzen. Wenn Sie Power BI Pro nach der kostenlosen Testphase weiterhin verwenden möchten, können Sie hierzu eine Lizenz hinzufügen.
+<!--We plan to add new cost management features for Azure Enterprise customers.
 
-Um sich für die kostenlose Testversion zu registrieren, klicken Sie auf das Zahnradsymbol, und wählen Sie **Persönlichen Speicher verwalten** aus. Wählen Sie dann auf der rechten Seite **Pro kostenlos testen** aus. Weitere Informationen zur kostenlosen Testversion von Power BI Pro finden Sie unter [Registrieren für Power BI als Einzelperson](https://powerbi.microsoft.com/documentation/powerbi-service-self-service-signup-for-power-bi/#power-bi-pro-60-day-trial).
+Current Power BI (free) users who use the Microsoft Azure Consumption Insights content pack can get a 60-day free trial of Power BI Pro. After the trial is over, you can continue using Power BI Pro by adding a license.
 
-### <a name="microsoft-azure-ea-power-bi-pro-trial-terms"></a>Testbedingungen für Microsoft Azure EA Power BI Pro
+To sign up for the free Power BI Pro trial:
 
-- **Universell**: Das erweiterte Power BI Pro für das Inhaltspaket-Testangebot für „Microsoft Azure Enterprise“ (das „Angebot“) ist während der Laufzeit des Angebots für vorhandene qualifizierte Benutzer verfügbar, damit sie durch Verwendung eines spezifischen Power BI-Inhaltspakets bestimmte Erkenntnisse über ihren Microsoft Azure-Verbrauch gewinnen.
-- **Berechtigung**: Benutzer unter einem Enterprise Agreement (EA) können das Angebot nutzen, wenn sie eine Funktion im Zusammenhang mit Abrechnung, Dienst, Dienst- und/oder Kostenverwaltung für Microsoft Azure in ihrer Organisation haben.
-- **Ausschlüsse**:
-  - Benutzer, die bereits am erweiterten Power BI Pro-Test teilnehmen, sind weiterhin für das bereits vorhandene Angebot qualifiziert und dürfen das Azure EA Power BI Pro-Testangebot nicht nutzen.
-  - Benutzer, die das Angebot nutzen, dürfen Power BI Pro nur mit dem Microsoft Azure Enterprise-Inhaltspaket verwenden. Jegliche andere Verwendung von Power BI Pro ist unzulässig.
-  - Laufzeit: Das Angebot beginnt am 1. Juni 2017 und endet am 31. Mai 2018.  Die Akzeptanz ist jederzeit während des 12-monatigen Zeitraums möglich, aber das Angebot endet am 31. Mai 2018 für alle Benutzer, unabhängig davon, wann sie das Angebot akzeptiert haben.
+1. From the gear icon in Power BI, select **Manage personal storage**.
+1. Select **Try Pro for free** on the right.
 
-### <a name="to-access-the-microsoft-azure-consumption-insights-content-pack"></a>So greifen Sie auf das Inhaltspaket von Microsoft Azure Consumption Insights zu:
+See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/powerbi-service-self-service-signup-for-power-bi/#power-bi-pro-60-day-trial) for more information on the Power BI Pro free trial.
 
-1. Navigieren Sie zu [Microsoft Azure Consumption Insights](https://app.powerbi.com/getdata/services/azureconsumption?cpcode=MicrosoftAzureConsumptionInsights&amp;getDataForceConnect=true&amp;WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Klicken Sie auf **Jetzt herunterladen**.
-1. Geben Sie „Registrierungsnummer“ und „Anzahl von Monaten“ ein. Klicken Sie auf **Weiter**.
-1. Geben Sie Ihren API-Zugriffsschlüssel ein, um die Verbindung herzustellen. Den Schlüssel für Ihre Registrierung finden Sie im [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Klicken Sie auf **Anmelden**.
-1. Der Importvorgang wird automatisch gestartet. Nach Abschluss des Vorgangs werden im Navigationsbereich ein neues Dashboard, ein Bericht und ein Modell angezeigt. Klicken Sie auf das Dashboard, um die importierten Daten anzuzeigen.
+### Azure EA Power BI Pro trial terms
 
-Weitere Informationen zum Generieren des API-Schlüssels für Ihre Registrierung finden Sie in der Hilfedatei zu API-Berichten im [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Weitere Informationen zum neuen Inhaltspaket finden Sie unter [Microsoft Azure Consumption Insights](/power-bi/desktop-connect-azure-cost-management).
+- **General purpose**: The extended Power BI Pro for the "Microsoft Azure Enterprise" content pack trial offer (the "Offer") is available to existing qualified users during the term of the Offer, to allow them to access certain insights related to their Azure consumption through the use of a specific Power BI content pack.
+- **Eligibility**: Users under an Enterprise Agreement (EA) can participate in the Offer if they have a function related to their organization's Azure billing, service, or cost management.
+- **Exclusions**:
+  - Users already participating in the Extended Power BI Pro trial will continue to qualify under the pre-existing offer and can't enter into the Azure EA Power BI Pro trial offer.
+  - Users participating in the Offer can only use Power BI Pro with the Microsoft Azure Enterprise content pack. Any other use of Power BI Pro is prohibited.
+  - Term: The Offer began on June 1, 2017 and ended on May 31, 2018.  Acceptance can occur at any time during the 12-month period, though the offer will terminate on May 31, 2018 for all users regardless of when they accepted the Offer. 
+  -->
+
+### <a name="to-access-microsoft-azure-consumption-insights"></a>So greifen Sie auf Microsoft Azure Consumption Insights zu:
+
+1. Gehen Sie zu [Microsoft Azure Consumption Insights](https://app.powerbi.com/getdata/services/azureconsumption?cpcode=MicrosoftAzureConsumptionInsights&amp;getDataForceConnect=true&amp;WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+1. Wählen Sie **Jetzt anfordern** aus.
+1. Geben Sie eine Registrierungsnummer und die Anzahl der Monate an, und wählen Sie dann **Weiter** aus.
+1. Geben Sie Ihren API-Zugriffsschlüssel ein, um die Verbindung herzustellen. Den Schlüssel für Ihre Registrierung finden Sie im [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+1. Wählen Sie **Anmelden** aus, um den Importvorgang automatisch zu starten.
+1. Nach Abschluss des Vorgangs werden im Navigationsbereich ein neues Dashboard, ein Bericht und ein Modell angezeigt. Wählen Sie das Dashboard aus, um die importierten Daten anzuzeigen.
+
+> [!TIP]
+> 
+> - Informationen zum Generieren des API-Schlüssels für Ihre Registrierung finden Sie in der Hilfedatei zu API-Berichten im [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26).
+> - Weitere Informationen zum Herstellen einer Verbindung von Power BI mit Ihrem Azure-Verbrauch finden Sie unter [Erstellen von visuellen Elementen und Berichten mit dem Azure Cost Management-Connector in Power BI Desktop](/power-bi/desktop-connect-azure-cost-management).
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>So greifen Sie auf das Legacy-Power BI EA-Inhaltspaket zu:
 
- 1. Navigieren Sie zur [Power BI-Website](https://app.powerbi.com/getdata/services/azure-enterprise).
- 1. Melden Sie sich mit einem gültigen Geschäfts-, Schul- oder Unikonto an.
-    - Das Geschäfts-, Schul- oder Unikonto kann das gleiche Konto sein, das auch für den Zugriff auf die Registrierung über das Azure EA-Portal verwendet wird, dies ist jedoch nicht zwingend erforderlich.
- 1. Wählen Sie auf dem Dashboard der Dienste **Microsoft Azure Enterprise** aus, und klicken Sie auf **Verbinden**.
- 1. Wählen Sie auf dem Bildschirm „Verbindung mit Azure Enterprise herstellen“ Folgendes aus:
-    - URL der Azure-Umgebung: [https://ea.azure.com](https://ea.azure.com/).
-    - Anzahl von Monaten: Wählen Sie einen Wert zwischen 1 und 36 aus.
-    - Registrierungsnummer: Geben Sie die Registrierungsnummer ein.
-    - Klicken Sie auf **Weiter**.
- 1. Geben Sie im Feld „Authentifizierungsschlüssel“ den API-Schlüssel ein. Sie können den API-Schlüssel hier im Azure Enterprise-Portal erhalten; klicken Sie auf der Registerkarte „Nutzung herunterladen“ auf „API-Zugriffsschlüssel“.
-    - Kopieren Sie den Schlüssel, und fügen Sie ihn in das Feld für „Kontoschlüssel“ ein.
- 1. Das Laden von Daten in Power BI dauert je nach Größe der Datasets ungefähr 5-30 Minuten.
+1. Rufen Sie die [Power BI-Website](https://app.powerbi.com/getdata/services/azure-enterprise) auf.
+1. Melden Sie sich mit einem gültigen Geschäfts-, Schul- oder Unikonto an.
 
-Die Power BI-Berichterstellung steht für direkte EA-Kunden, Partner und indirekte Kunden zur Verfügung, die Zugriff zur Anzeige von Abrechnungsinformationen haben.
+   Das Geschäfts-, Schul- oder Unikonto kann das gleiche Konto sein, das Sie auch für den Zugriff auf die Registrierung über das Azure Enterprise Portal verwenden. Dies ist jedoch nicht zwingend erforderlich.
+1. Wählen Sie auf dem Dashboard der Dienste **Microsoft Azure Enterprise** und dann **Verbinden** aus.
+1. Füllen Sie im Bildschirm **Verbindung mit Azure Enterprise herstellen** die Felder aus:
+    - URL der Azure-Umgebung: [https://ea.azure.com](https://ea.azure.com/)
+    - Anzahl der Monate: von 1 bis 36
+    - Registrierungsnummer: Ihre Registrierungsnummer
+1. Wählen Sie **Weiter** aus.
+1. Geben Sie im Feld **Authentifizierungsschlüssel** den API-Schlüssel ein.
 
-## <a name="report-faq"></a>FAQ zu Berichten
+    Den API-Schlüssel erhalten Sie im Azure Enterprise Portal auf der Registerkarte **Nutzung herunterladen**. Wählen Sie **API-Zugriffsschlüssel** aus, und fügen Sie den Schlüssel in das Feld **Kontoschlüssel** ein.
+1. Das Laden von Daten in Power BI dauert je nach Größe der Datasets ungefähr 5-30 Minuten.
 
-In diesem Abschnitt des Artikels werden häufig gestellte Fragen zur Interpretation von Berichten beantwortet.
+## <a name="reports-faq"></a>Häufig gestellte Fragen zu Berichten
+
+In diesem Abschnitt werden häufig gestellte Fragen zu Berichten behandelt.
 
 ### <a name="why-is-my-cost-showing-as-0"></a>Warum werden meine Kosten als „0 USD“ angezeigt?
 
-**Direkte Registrierung** Wenn Sie ein Kontobesitzer oder Abteilungsadministrator sind, wenden Sie sich an Ihren EA-Administrator, um das Preisfeature zu aktivieren:
+Für Kunden mit **direkter Registrierung** können Unternehmensadministratoren Kontobesitzern und Abteilungsadministratoren Zugriff auf Kosten-/Preisinformationen in den Nutzungsberichten gestatten. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im linken Navigationsbereich auf **Verwalten**.
-1. Klicken Sie auf den blauen Stift neben „DA-Ansichtsgebühren“ (Department Administrator, Abteilungsadministrator).
+1. Wählen Sie im Azure Enterprise Portal im Navigationsbereich auf der linken Seite **Verwalten** aus.
+1. Wählen Sie den blauen Stift neben „DA-Ansichtsgebühren“ (Department Administrator, Abteilungsadministrator) aus.
 1. Wählen Sie **Aktiviert** aus, und speichern Sie.
-1. Klicken Sie auf den blauen Stift neben „AO-Ansichtsgebühren“ (Account Owner, Kontobesitzer).
+1. Wählen Sie den blauen Stift neben „AO-Ansichtsgebühren“ (Account Owner, Kontobesitzer) aus.
 1. Wählen Sie **Aktiviert** aus, und speichern Sie.
 
-Durch diese Aktion erhalten Kontobesitzer und Abteilungsadministratoren Zugriff auf Kosten-/Preisinformationen in den Verwendungsberichten.
+> [!NOTE]
+> Wenn Sie ein Kontobesitzer oder Abteilungsadministrator sind, wenden Sie sich an Ihren Unternehmensadministrator, um das Preisfeature zu aktivieren.
 
-**Indirekte Registrierung** Wenden Sie sich an Ihren Partner, damit er das Preisfeature für Sie aktiviert. Dies kann nur durch den Partner erfolgen, und sobald er das Feature aktiviert hat, können Sie die Kosten und Preise für Ihre Registrierung als EA-Administrator anzeigen.
+Wenn Sie ein Kunde mit **indirekter Registrierung** sind, wenden Sie sich an Ihren Partner, um zu überprüfen, ob er das Preisfeature für Sie aktiviert hat. Dies kann nur vom Partner vorgenommen werden. Nach der Aktivierung können Sie die Kosten und Preise für Ihre Registrierung als Unternehmensadministrator anzeigen.
 
-Wenn Sie das Gebührenanzeigefeature für Ihre Kontobesitzer und Abteilungsadministratoren aktivieren möchten, befolgen Sie die oben unter **Direkte Registrierung** aufgeführten Schritte.
+Wenn Sie als Partner die Gebührenanzeigefunktion für einen Kontobesitzer oder Abteilungsadministrator aktivieren möchten, befolgen Sie die Schritte unter **direkte Registrierung**.
 
-### <a name="there-is-no-sku-information-on-the-usage-detail-report"></a>Es sind keine SKU-Informationen im Verwendungsdetails-Bericht vorhanden
+### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>Warum enthält mein Verwendungsdetailsbericht keine SKU-Informationen?
 
-Der Verwendungsdetails-Bericht enthält keine SKU-Informationen. Allerdings können Sie die im Bericht verwendeten Dienstinformationen anzeigen. Anschließend können Sie den Preisblattbericht herunterladen, um die SKU-Informationen zu erhalten.
+Der Verwendungsdetailsbericht enthält keine SKU-Informationen. Der Bericht enthält jedoch Nutzungsinformationen, sodass Sie den Preisblattbericht herunterladen können, um die SKU-Informationen zu erhalten.
 
-### <a name="the-total-amount-on-marketplace-does-not-match-on-usage-summary-and-csv-report"></a>Die Gesamtmenge im Marketplace stimmt nicht mit der Nutzungszusammenfassung und dem CSV-Bericht überein
+### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Warum entspricht der Gesamtbetrag in Azure Marketplace nicht den Berichten für die Nutzungszusammenfassung und -details?
 
-Der Marketplace-Gebührenbericht zeigt nur die nutzungsbasierten Marketplace-Gebühren an. Einmalige Gebühren werden nicht angezeigt. Auf der Seite mit der Nutzungszusammenfassung können Sie sich über die aktuellen Nutzungen sowohl für nutzungsbasierte als auch einmalige Gebühren informieren.
+Der Azure Marketplace-Gebührenbericht zeigt nur die nutzungsbasierten Gebühren an. Einmalige Gebühren werden nicht angezeigt. Auf der Seite mit der Nutzungszusammenfassung können Sie sich sowohl über die aktuellen nutzungsbasierten als auch einmalige Gebühren informieren.
 
-### <a name="there-is-no-information-on-my-api-report"></a>Es sind keine Informationen zu meinem API-Bericht vorhanden.
+### <a name="why-is-there-no-information-on-my-api-report"></a>Warum sind keine Informationen zu meinem API-Bericht vorhanden?
 
-API-Schlüssel laufen alle sechs Monate ab. Generieren Sie einen neuen API-Schlüssel, wenn ein Problem vorliegt. Es ist auch wichtig, dass Sie Ihren EA-Administrator bitten, die neuen API-Schlüssel zu generieren, und die Schritte in den FAQ zu API-Berichten befolgen.
+API-Schlüssel laufen alle sechs Monate ab. Wenn ein Problem vorliegt, sollte ein Unternehmensadministrator einen neuen API-Schlüssel generieren. Führen Sie die im Artikel zu häufig gestellten Fragen zu API-Berichten beschriebenen Schritte aus.
 
-### <a name="my-power-bi-report-isnt-working"></a>Mein Power BI-Bericht funktioniert nicht
+### <a name="why-isnt-my-power-bi-report-working"></a>Warum funktioniert mein Power BI-Bericht nicht?
 
-Wenn Probleme mit Power BI auftreten, melden Sie sich mit einem technischen Ticket unter [https://support.powerbi.com](https://support.powerbi.com) beim Power BI-Team an, damit das Team Ihnen helfen kann.
+Melden Sie bei Problemen mit Power BI ein Ticket beim [Power BI-Supportteam](https://support.powerbi.com) an.
 
-### <a name="my-resource-tags-arent-showing-up-on-my-reports"></a>Meine Ressourcentags werden in meinen Berichten nicht angezeigt
+### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Warum werden meine Ressourcentags nicht in meinen Berichten angezeigt?
 
-Ressourcentags werden im Azure-Portal verwaltet. Sie können sich unter [https://portal.azure.com](https://portal.azure.com) an das Azure-Abonnement-Team wenden. Befolgen Sie die Schritte unter [diesem Link](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request), um eine Supportanfrage zu stellen.
+Ressourcentags werden im Azure-Portal verwaltet. Sie können sich im [Azure-Portal](https://portal.azure.com) an das Azure-Abonnementteam wenden. Befolgen Sie die Schritte im Artikel [Gewusst wie: Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### <a name="why-does-my-resource-rate-change-every-day"></a>Warum ändert sich mein Ressourcensatz jeden Tag?
 
-Der Ressourcensatz im detaillierten Verwendungsbericht ist ein berechneter Wert und stellt die durchschnittliche monatliche Gebühr dar, die für einen Dienst berechnet wird. Diese Gebühr wird anhand des Durchschnitts des Mindestverbrauchs und der monatlichen Überschreitungsgebühren für eine Diensteinheit berechnet. Der Anteil der Nutzung, der mit Mindestverbrauch und Überschreitungsrate abgerechnet wird, ändert sich an dem Tag, an dem der Monat endet. Aus diesem Grund ändert sich der Ressourcensatz auch während des Monats. Der Ressourcensatz wird am fünften Tag nach dem Monatsende gesperrt.
+Der im detaillierten Nutzungsbericht angezeigte Ressourcensatz ist ein berechneter Wert. Er stellt die durchschnittliche monatliche Rate dar, die für den Dienst abgerechnet wurde. Dieser Ressourcensatz wird anhand des Durchschnitts des Mindestverbrauchs und Ihrer monatlichen Überschreitungsgebühren für eine Diensteinheit berechnet. Der Anteil der Nutzung, der mit Ihrem Mindestverbrauch und Ihrer Überschreitungsrate abgerechnet wird, ändert sich an dem Tag, an dem der Monat endet. Daher ändert sich auch der aufgeführte Ressourcensatz während des Monats. Der Ressourcensatz wird am fünften Tag nach dem Monatsende gesperrt.
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>Glossar der Prozesse zum Berechnen des Ressourcensatzes
 
-**Rohdateneinheiten insgesamt:** „Verbrauchte Menge“ innerhalb des detaillierten Verwendungsberichts.
-**MOCP-Ressourcen pro Einheit:** Das Upstreamnutzungssystem gibt die Nutzungen für jeden Dienst in verschiedenen Einheiten aus. (Voreinstellung) **Verbrauch pro Einheit:** EA-Berechnungseinheit. (Voreinstellung) **Preis:** Preis je Einheit im Azure EA Portal.
-**Gesamtkosten:** Erweiterte Kosten aus detailliertem Nutzungsbericht oder Nutzung der Verpflichtung + Überschreitung im Azure EA Portal.
+- **Rohdateneinheiten insgesamt:** Verbrauchte Menge innerhalb des detaillierten Verwendungsberichts.
+- **MOCP-Ressourcen pro Einheit:** Das Upstreamnutzungssystem gibt die Nutzungen für jeden Dienst in verschiedenen Einheiten aus. (Voreinstellung)
+- **Verbrauch pro Einheit:** Azure Enterprise-Maßeinheit. (Voreinstellung)
+- **Preis**: Preis je Einheit im Azure Enterprise Portal.
+- **Gesamtkosten:** Erweiterte Kosten aus detailliertem Nutzungsbericht oder Nutzung der Verpflichtung plus Überschreitung im Azure Enterprise Portal.
 
+### <a name="charges-calculations"></a>Gebührenberechnungen
 
-### <a name="charges-calculation"></a>Gebührenberechnung
+- **Konvertieren in verbrauchte MOCP-Ressourcen** = `ROUND(Total RAW Units * MOCP Resource Per Unit,4)`
+- **Konvertieren in verbrauchte Einheiten** = `Consumed MOCP Resources / Consumption per Unit`
+- **Berechnen der Gesamtkosten** = `Consumed Units * Price`
 
-**Konvertieren in MOCP-Ressourcen pro Einheit** = ROUND(Rohdateneinheiten insgesamt * MOCP-Ressourcen pro Einheit,4) **Konvertieren in Einheiten** = Einheiten nach Konvertieren in MOCP-Ressourcen pro Einheit / Verbrauch pro Einheit **Gesamtkosten** = Einheiten * Preis
+### <a name="logic-in-the-usage-calculation-logic"></a>Nutzungsberechnungslogik
 
-### <a name="download-usage-calculation-logic"></a>Herunterladen der Nutzungsberechnungslogik
+**Ressourcensatz** = `Total Cost /(Total RAW Units / MOCP Resource Per Unit)`
 
-**Ressourcensatz** = Gesamtkosten / (Rohdateneinheiten insgesamt / MOCP-Ressourcen pro Einheit)
+Der Ressourcensatz wird auf Ihren Gebühren basierend abgeleitet. Dies entspricht möglicherweise nicht dem tatsächlichen Einzelpreis im Preisblatt.
 
-Der Ressourcensatz wird von den Gebühren abgeleitet und entspricht oft nicht dem tatsächlichen Preis je Einheit im Preisblatt.
-
-Zur Berechnung von Überschreitungsgebühren werden Rohdaten zur Ressourcenverwendung mit maximal sechs Dezimalstellen angezeigt, wie dem heruntergeladenen Nutzungsdatenbericht zu entnehmen ist. Allerdings rundet das Azure EA Portal die Nutzung für Verpflichtungseinheiten auf vier Dezimalstellen und schneidet bei Überschreitungseinheiten alle Dezimalstellen ab. Dies bedeutet, dass im Azure EA Portal für alle Nutzung, die als Überschreitung abgerechnet wird, nur die vollständigen Einheiten abgerechnet werden. Es gibt einen großen Unterschied zwischen dem Preis je Einheit und dem Ressourcensatz für Nutzung, die als Überschreitung oder in gemischten Monaten abgerechnet wird.
+Im heruntergeladenen Nutzungsdatenbericht können Sie die reine Ressourcennutzung auf bis zu sechs Dezimalstellen genau sehen. Diese Daten werden zur Berechnung von Überschreitungsgebühren verwendet. Allerdings werden die im Azure Enterprise Portal angezeigten Nutzungsdaten für Verpflichtungseinheiten auf vier Dezimalstellen gerundet, und bei Überschreitungseinheiten werden alle Dezimalstellen abgeschnitten. Im Azure Enterprise Portal wird Überschreitungsnutzung nur für vollständige Einheiten in Rechnung gestellt. Sie sehen vielleicht einen großen Unterschied zwischen dem Preis je Einheit und dem Ressourcensatz für Nutzung, die als Überschreitung oder in gemischten Monaten abgerechnet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+- Die folgenden Excel-Dateien enthalten Details zu den Azure-Diensten und werden am 6. und 20. jedes Monats aktualisiert:
+
+   | Titel | Beschreibung | Dateiname |
+   | --- | --- | --- |
+   | [Anzeigedienstnamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Listet alle aktiven Dienste auf und umfasst Folgendes: <br>  <ul><li>Dienstkategorie</li>   <li>Anzeigedienstnamen</li>   <li>Verpflichtungsname und Artikelnummer</li> <li>Verbrauchsname und Artikelnummer</li>   <li>Maßeinheiten</li>   <li>Faktoren zur Konvertierung zwischen berichteter Verwendung und angezeigter Enterprise Portal-Verwendung</li></ul> | Friendly\_Service\_Names.xlsx |
+   | [Dienstdownloadfelder](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Diese Tabelle enthält eine Liste aller möglichen Kombinationen dienstbezogener Felder im Verwendungsdownloadbericht. | Service\_Download\_Fields.xlsx |
+
 - Informationen zu Ihren Rechnungen und Gebühren finden Sie unter [Grundlegendes zu Ihrer Azure Enterprise-Rechnung](../understand/review-enterprise-agreement-bill.md).
-- Informationen zur Verwendung des Azure EA-Portals finden Sie unter [Erste Schritte mit dem Azure EA-Portal](ea-portal-get-started.md).
+- Informationen zur Verwendung des Azure Enterprise Portals finden Sie unter [Erste Schritte mit dem Azure EA-Portal](ea-portal-get-started.md).
