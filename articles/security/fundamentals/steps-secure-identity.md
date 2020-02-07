@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973911"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903587"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -28,8 +28,8 @@ Diese Checkliste erläutert folgende Aspekte und hilft Ihnen dabei, empfohlene w
 * Verstärken Sie Ihre Anmeldeinformationen.
 * Verringern Sie die Angriffsfläche.
 * Automatisieren Sie die Reaktion auf Bedrohungen.
-* Schärfen Sie Ihr Bewusstsein für Überwachung und Überprüfung.
-* Ermöglichen Sie mit Funktionen zur Selbsthilfe eine besser vorhersagbare und umfassendere Sicherheit für Endbenutzer.
+* Nutzen Sie Cloud Intelligence.
+* Aktivieren Sie den Self-Service für Endbenutzer.
 
 Achten Sie darauf, dass Sie beim Lesen dieser Prüfliste den Überblick behalten, welche Funktionen und Schritte vollständig sind.
 
@@ -116,7 +116,7 @@ Sie müssen grundsätzlich davon ausgehen, dass Sicherheitsverletzungen passiere
 
 Es ist wichtig, dass Sie die verschiedenen [Einwilligungserfahrungen für Azure AD-Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), die [Arten von Berechtigungen und Zustimmungen](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) sowie ihre Auswirkungen auf den Sicherheitsstatus ihrer Organisation kennen. Standardmäßig können alle Benutzer in Azure AD Anwendungen zulassen, die die Microsoft Identity Platform nutzen, um auf die Daten Ihrer Organisation zuzugreifen. Zwar können Benutzer durch die Möglichkeit,eine Zustimmung selbst zu erteilen, mühelos nützliche Anwendungen erwerben, die sich in Microsoft 365, Azure und andere Dienste integrieren lassen, allerdings kann dies bei nachlässiger Nutzung und Überwachung ein Risiko darstellen.
 
-Microsoft empfiehlt die [Deaktivierung zukünftiger Vorgänge für die Benutzerzustimmung](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application), um die Angriffsfläche und dieses Risiko zu verringern. Wenn die Endbenutzerzustimmung deaktiviert ist, werden vorherige Zustimmungserteilungen nach wie vor berücksichtigt, aber alle zukünftigen Zustimmungsvorgänge müssen von einem Administrator ausgeführt werden. Die Zustimmung des Administrators kann von Benutzern über einen integrierten [Workflow zur Anforderung der Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) oder über eigene Supportprozesse angefordert werden. Vor dem Deaktivieren dieser Funktionalität wird empfohlen, das Überwachungsprotokoll zu überprüfen, um zu verstehen, welche Anwendungen Benutzer zulassen, und die Änderung entsprechend zu planen. Ziehen Sie für Anwendungen, auf die Sie allen Benutzern Zugriff gewähren möchten, in Betracht, [die Zustimmung im Namen aller Benutzer zu erteilen](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent) und dadurch sicherzustellen, dass Benutzer, die noch nicht einzeln zugestimmt haben, auf die App zugreifen können. Wenn Sie nicht möchten, dass diese Anwendungen allen Benutzern in allen Szenarien zur Verfügung stehen, verwenden Sie [Anwendungszuweisung](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) und [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), um den Benutzerzugriff auf Apps einzuschränken.
+Microsoft empfiehlt die [Deaktivierung zukünftiger Vorgänge für die Benutzerzustimmung](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application), um die Angriffsfläche und dieses Risiko zu verringern. Wenn die Endbenutzerzustimmung deaktiviert ist, werden vorherige Zustimmungserteilungen nach wie vor berücksichtigt, aber alle zukünftigen Zustimmungsvorgänge müssen von einem Administrator ausgeführt werden. Die Zustimmung des Administrators kann von Benutzern über einen integrierten [Workflow zur Anforderung der Administratorzustimmung](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) oder über eigene Supportprozesse angefordert werden. Bevor Sie die Zustimmung des Endbenutzers deaktivieren, nutzen Sie unsere [Empfehlungen](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests), um diese Änderung in Ihrer Organisation zu planen. Ziehen Sie für Anwendungen, auf die Sie allen Benutzern Zugriff gewähren möchten, in Betracht, [die Zustimmung im Namen aller Benutzer zu erteilen](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent) und dadurch sicherzustellen, dass Benutzer, die noch nicht einzeln zugestimmt haben, auf die App zugreifen können. Wenn Sie nicht möchten, dass diese Anwendungen allen Benutzern in allen Szenarien zur Verfügung stehen, verwenden Sie [Anwendungszuweisung](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) und [bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview), um den Benutzerzugriff auf Apps einzuschränken.
 
 Stellen Sie sicher, dass Benutzer eine Administratorgenehmigung für neue Anwendungen anfordern können, um die Spannungen zu vermeiden und den Supportaufwand zu minimieren sowie Benutzer daran zu hindern, sich bei Anwendungen mit Nicht Azure AD-Anmeldeinformationen anzumelden. Sobald Zustimmungsvorgänge reguliert werden, sollten Administratoren die App und die erteilten Berechtigungen regelmäßig überprüfen.
 
@@ -152,7 +152,7 @@ Das Anmelderisiko bezeichnet die Wahrscheinlichkeit, dass eine Person, bei der e
 
 ![Anmelden von anonymen IP-Adressen](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>Schritt 4: Schärfen Sie Ihr Bewusstsein.
+## <a name="step-4---utilize-cloud-intelligence"></a>Schritt 4: Nutzen Sie Cloud Intelligence.
 
 Die Überwachung und Protokollierung von sicherheitsbezogenen Ereignissen und die entsprechenden Warnungen sind grundlegende Komponenten einer effektiven Schutzstrategie. Sicherheitsprotokolle und Berichte bieten eine elektronische Aufzeichnung verdächtiger Aktivitäten und helfen Ihnen bei der Erkennung von Mustern, die auf versuchte oder erfolgreiche externe Eindringversuche in das Netzwerk und auf interne Angriffe hinweisen können. Sie können im Rahmen der Überwachung entsprechende Benutzeraktivitäten überwachen, die Einhaltung gesetzlicher Bestimmungen dokumentieren, forensische Analysen durchführen und vieles mehr. Warnungen benachrichtigen Sie bei Sicherheitsereignissen.
 
@@ -180,7 +180,7 @@ Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich üb
 
 Benutzer können zu einer gefährdeten Website oder App weitergeleitet werden, die Zugriff auf ihre Profilinformationen und Benutzerdaten (z. B. die E-Mail-Adresse) erlangt. Ein böswilliger Akteur kann mithilfe der Berechtigungen, denen zugestimmt wurde, Postfachdaten verschlüsseln und ein Lösegeld für die Herausgabe der Postfachdaten fordern. Die von Benutzern erteilten [Berechtigungen sollten von Administratoren überprüft und überwacht werden](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) bzw. die Möglichkeit der Benutzer, die Zustimmung standardmäßig zu erteilen, sollte deaktiviert werden.
 
-Neben der Überprüfung der von Benutzern erteilten Berechtigungen kann es sinnvoll sein, [risikobehaftete oder unerwünschte OAuth-Anwendungen gezielt zu lokalisieren](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth), eine Funktion, die für Premium-Umgebungen zur Verfügung steht.
+Zusätzlich zum Überwachen der von Benutzern erteilten Berechtigungen können Sie [risikobehaftete oder unerwünschte OAuth-Anwendungen](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth) in Premium-Umgebungen suchen.
 
 ## <a name="step-5---enable-end-user-self-service"></a>Schritt 5: Aktivieren des Self-Service für Endbenutzer
 
@@ -205,7 +205,7 @@ Bei sicheren Identitätsinfrastrukturen gilt es eine Vielzahl von Aspekten zu be
 * Verstärken Sie Ihre Anmeldeinformationen.
 * Verringern Sie die Angriffsfläche.
 * Automatisieren Sie die Reaktion auf Bedrohungen.
-* Schärfen Sie Ihr Bewusstsein für Überwachung und Überprüfung.
+* Nutzen Sie Cloud Intelligence.
 * Ermöglichen Sie mit Funktionen zur Selbsthilfe eine besser vorhersagbare und umfassendere Sicherheit für Endbenutzer.
 
 Wir freuen uns, dass Sie die Sicherheit von Identitäten so ernst nehmen, und hoffen, dass Sie mithilfe des vorliegenden Dokuments den Sicherheitsstatus Ihrer Organisation stärken können.

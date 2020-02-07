@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/31/2020
+ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024834"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934941"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -24,17 +24,29 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 **Aktualisieren** |  **Einheitliches Setup** | **OVA-Datei des Konfigurationsservers** | **Mobilitätsdienst-Agent** | **Site Recovery-Anbieter** | **Recovery Services-Agent**
 --- | --- | --- | --- | --- | ---
-[Rollup 43](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
+[Rollup 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Rollup 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Rollup 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [Rollup 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Rollup 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-        
+
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
 
 ## <a name="updates-january-2020"></a>Updates (Januar 2020)
+
+### <a name="update-rollup-44"></a>Updaterollup 44
+Das [Updaterollup 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) umfasst folgende Updates.
+
+**Aktualisieren** | **Details**
+--- | ---
+**Problemkorrekturen/Verbesserungen** | Eine Reihe von Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
+
+### <a name="azure-vmware-disaster-recovery"></a>Azure VMware-Notfallwiederherstellung
+
+Virtuelle Azure-Computer unterstützen jetzt VMs, die mit vom Kunden verwalteten Schlüsseln für die Verschlüsselung ruhender Daten aktiviert sind. [Weitere Informationen](azure-to-azure-how-to-enable-replication-cmk-disks.md)
+
 
 ### <a name="update-rollup-43"></a>Updaterollup 43
 
@@ -58,7 +70,7 @@ Das [Updaterollup 42](https://support.microsoft.com/help/4531426/update-rollup-4
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben)
 
 
-## <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
 
 Die neuen Features für die Notfallwiederherstellung von virtuellen Azure-Computern sind in der Tabelle zusammengefasst.
 
@@ -153,7 +165,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 
 **Feature** | **Details**
 --- | ---
-Neue Warnungen zum Prozessserver | Wir haben neue Warnungen für Prozessserver hinzugefügt. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md) 
+Neue Warnungen zum Prozessserver | Wir haben neue Warnungen für Prozessserver hinzugefügt. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md)
 
 ### <a name="hyper-v-disaster-recovery"></a>Hyper-V-Notfallwiederherstellung
 
@@ -183,7 +195,7 @@ Die neuen Features für die Notfallwiederherstellung von virtuellen Azure-Comput
 **Feature** | **Details**
 --- | ---
 **Verschlüsselung ohne Azure AD** | Verschlüsselung ohne eine Azure AD-App wird jetzt für die Replikation virtueller Azure-Computer auf verwalteten Datenträgern unter Windows unterstützt.
-**Netzwerkressourcen für Failover** | Wenn Sie ein Failover zu einer anderen Region vorgenommen haben, können Sie nun Netzwerkressourceneinstellungen (NSGs,Lastenausgleich, öffentliche IP-Adresse) zu einem virtuellen Computer zuordnen. 
+**Netzwerkressourcen für Failover** | Wenn Sie ein Failover zu einer anderen Region vorgenommen haben, können Sie nun Netzwerkressourceneinstellungen (NSGs,Lastenausgleich, öffentliche IP-Adresse) zu einem virtuellen Computer zuordnen.
 
 ## <a name="updates-july-2019"></a>Updates (Juli 2019)
 
@@ -255,7 +267,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 
 **Feature** | **Details**
 --- | ---
-**Überwachen des Prozessservers** | Zur Notfallwiederherstellung von lokalen VMware-VMs und physischen Servern können Sie Probleme auf Prozessservern überwachen und beheben. Gleichzeitig haben Sie Zugriff auf verbesserte Berichte und Benachrichtigungen zur Serverintegrität. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md) 
+**Überwachen des Prozessservers** | Zur Notfallwiederherstellung von lokalen VMware-VMs und physischen Servern können Sie Probleme auf Prozessservern überwachen und beheben. Gleichzeitig haben Sie Zugriff auf verbesserte Berichte und Benachrichtigungen zur Serverintegrität. [Weitere Informationen](vmware-physical-azure-monitor-process-server.md)
 
 
 
@@ -284,7 +296,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 
 ## <a name="updates-february-2019"></a>Updates (Februar 2019)
 
-### <a name="update-rollup-34"></a>Updaterollup 34 
+### <a name="update-rollup-34"></a>Updaterollup 34
 
 Mit dem [Updaterollup 34](https://support.microsoft.com/help/4490016/update-rollup-34-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -294,7 +306,7 @@ Mit dem [Updaterollup 34](https://support.microsoft.com/help/4490016/update-roll
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
 
-### <a name="update-rollup-33"></a>Updaterollup 33 
+### <a name="update-rollup-33"></a>Updaterollup 33
 
 Mit dem [Updaterollup 33](https://support.microsoft.com/help/4489582/update-rollup-33-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -304,17 +316,19 @@ Mit dem [Updaterollup 33](https://support.microsoft.com/help/4489582/update-roll
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
 
-### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
-**Netzwerkzuordnung** | Sie können nun ein beliebiges Zielnetzwerk beim Aktivieren der Replikation für die Azure-VM-Notfallwiederherstellung verwenden. 
+**Netzwerkzuordnung** | Sie können nun ein beliebiges Zielnetzwerk beim Aktivieren der Replikation für die Azure-VM-Notfallwiederherstellung verwenden.
 **SSD Standard** | Sie können nun die Notfallwiederherstellung für Azure-VMs mit [SSD Standard-Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd) einrichten.
 **Direkte Speicherplätze** | Sie können nun die Notfallwiederherstellung für Apps auf Azure-VMs mit [direkten Speicherplätzen](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview) für Hochverfügbarkeit einrichten.  Die Verwendung direkten Speicherplätzen (S2D) in Verbindung mit Site Recovery bietet einen umfassenden Schutz von Azure-VM-Workloads. Mit S2D können Sie einen Gastcluster in Azure hosten. Dies ist besonders nützlich, wenn eine VM eine kritische Anwendung hostet, wie z.B. SAP ASCS Layer, SQL Server oder den Dateiserver für die horizontale Skalierung.
 
 
 ### <a name="vmwarephysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware/physische Server
+
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
@@ -332,7 +346,7 @@ Der beschleunigte Netzwerkbetrieb ermöglicht die E/A-Virtualisierung mit Einzel
 
 [Weitere Informationen](azure-vm-disaster-recovery-with-accelerated-networking.md)
 
-### <a name="update-rollup-32"></a>Updaterollup 32 
+### <a name="update-rollup-32"></a>Updaterollup 32
 
 Mit dem [Updaterollup 32](https://support.microsoft.com/help/4485985/update-rollup-32-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -353,13 +367,13 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 ### <a name="vmware-vmsphysical-servers-disaster-recovery"></a>Notfallwiederherstellung von VMware-VMs und physischen Servern
 
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
- 
+
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.6, Red Hat Workstation 6/7, Oracle Linux 6.10, Oracle Linux 7.6 und für neue Kernelversionen für Ubuntu, Debian und SUSE hinzugefügt.
 
 
-### <a name="update-rollup-31"></a>Updaterollup 31 
+### <a name="update-rollup-31"></a>Updaterollup 31
 
 Mit dem [Updaterollup 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -368,8 +382,10 @@ Mit dem [Updaterollup 31](https://support.microsoft.com/help/4478871/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-### <a name="vmware-vmsphysical-servers-replication"></a>Replikation von VMware-VMs/physischen Servern 
+### <a name="vmware-vmsphysical-servers-replication"></a>Replikation von VMware-VMs/physischen Servern
+
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
+
 **Feature** | **Details**
 --- | ---
 **Linux-Unterstützung** |  Es wurde Unterstützung für Oracle Linux 6.8, Oracle Linux 6.9 und Oracle Linux 7.0 mit Red Hat-kompatiblem Kernel sowie für Unbreakable Enterprise Kernel (UEK) Release 5 hinzugefügt.
@@ -380,6 +396,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 **UEFI-Unterstützung** | Azure-VMs unterstützen den Starttyp UEFI nicht. Sie können lokale physische Server mit UEFI nun mithilfe von Site Recovery zu Azure migrieren. Site Recovery migriert den Server, indem der Starttyp vor der Migration in BIOS konvertiert wird. Site Recovery hat diese Konvertierung zuvor nur für VMs unterstützt. Physische Server mit Windows Server 2012 oder höher werden nun unterstützt.
 
 ### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
+
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
@@ -411,7 +428,7 @@ Ankündigung [lesen](https://azure.microsoft.com/blog/know-exactly-how-much-it-w
 
 ## <a name="updates-october-2018"></a>Updates (Oktober 2018)
 
-### <a name="update-rollup-30"></a>Updaterollup 30 
+### <a name="update-rollup-30"></a>Updaterollup 30
 
 Mit dem [Updaterollup 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30) werden die folgenden Updates bereitgestellt.
 
@@ -431,7 +448,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 **Firewall-fähiger Speicher (PowerShell)** | [Speicherkonten mit aktivierter Firewall](https://docs.microsoft.com/azure/storage/common/storage-network-security) werden nun unterstützt.<br/><br/> Im Falle einer Notfallwiederherstellung können Sie Azure-VMs mit nicht verwalteten Datenträgern in Speicherkonten mit aktivierter Firewall in eine andere Azure-Region replizieren.<br/><br/> Sie können Speicherkonten mit aktivierter Firewall als Zielspeicherkonten für nicht verwaltete Datenträger verwenden.<br/><br/> Dies wird nur mit PowerShell unterstützt.
 
 
-### <a name="update-rollup-29"></a>Updaterollup 29 
+### <a name="update-rollup-29"></a>Updaterollup 29
 
 Mit dem [Updaterollup 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -443,7 +460,7 @@ Mit dem [Updaterollup 29](https://support.microsoft.com/help/4466466/update-roll
 
 ## <a name="updates-august-2018"></a>Updates (August 2018)
 
-### <a name="update-rollup-28"></a>Updaterollup 28 
+### <a name="update-rollup-28"></a>Updaterollup 28
 
 Mit dem [Updaterollup 28](https://support.microsoft.com/help/4460079/update-rollup-28-for-azure-site-recovery) werden die folgenden Updates bereitgestellt.
 
@@ -452,7 +469,7 @@ Mit dem [Updaterollup 28](https://support.microsoft.com/help/4460079/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
@@ -461,12 +478,12 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 **Unterstützung für Clouds** | Die Notfallwiederherstellung für Azure-VMs in der Azure Deutschland-Cloud wird nun unterstützt.
 **Abonnementübergreifende Notfallwiederherstellung** | Die Replikation von Azure-VMs von einer Region zu einer anderen Region in einem anderen Abonnement innerhalb desselben Azure Active Directory-Mandanten wird nun unterstützt. [Weitere Informationen](https://aka.ms/cross-sub-blog)
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
 **Feature** | **Details**
 --- | ---
-**Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 6.10 und CentOS 6.10 hinzugefügt.<br/><br/> Linux-basierte VMs, die den Partitionsstil der GUID-Partitionstabelle (GPT) im BIOS-Legacykompatibilitätsmodus verwenden, werden jetzt unterstützt. Lesen Sie die [häufig gestellten Fragen zu Azure-VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) für weitere Informationen. 
+**Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 6.10 und CentOS 6.10 hinzugefügt.<br/><br/> Linux-basierte VMs, die den Partitionsstil der GUID-Partitionstabelle (GPT) im BIOS-Legacykompatibilitätsmodus verwenden, werden jetzt unterstützt. Lesen Sie die [häufig gestellten Fragen zu Azure-VM](https://docs.microsoft.com/azure/virtual-machines/linux/faq-for-disks) für weitere Informationen.
 **Notfallwiederherstellung für VMs nach der Migration** | Unterstützung für die Notfallwiederherstellung in einer sekundären Region für eine lokale VMware-VM, die zu Azure migriert wurde, ohne dass der Mobility-Dienst auf der VM deinstalliert werden muss, bevor die Replikation aktiviert wird.
 **Windows Server 2008** | Die Migration von Computern mit Windows Server 2008 R2/2008 64-Bit und 32-Bit wird nun unterstützt.<br/><br/> Es wird lediglich die Migration unterstützt (Replikation und Failover). Failbacks werden nicht unterstützt.
 
@@ -481,7 +498,7 @@ Mit dem [Updaterollup 27](https://support.microsoft.com/help/4055712/update-roll
 **Anbieter und Agents** | Ein Update für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen (wie im Rollup beschrieben).
 
-### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer 
+### <a name="azure-vm-disaster-recovery"></a>Notfallwiederherstellung für virtuelle Azure-Computer
 
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 
@@ -489,7 +506,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat ne
 --- | ---
 **Linux-Unterstützung** | Es wurde Unterstützung für Red Hat Enterprise Linux 7.5 hinzugefügt.
 
-### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server 
+### <a name="vmware-vmphysical-server-disaster-recovery"></a>Notfallwiederherstellung für VMware-VM/physische Server
 
 In der folgenden Tabelle werden die Features aufgeführt, die in diesem Monat neu hinzugefügt wurden.
 

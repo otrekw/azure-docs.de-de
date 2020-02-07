@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/18/2019
 ms.author: memildin
-ms.openlocfilehash: 686b8bedfeb4ae5e1b2b7bf3b750b51074677990
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3c0fb29c5a4dd73135aa8352c97df29474c36caf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288981"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904128"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
@@ -32,9 +32,10 @@ Ihre Sicherheitsbewertung basiert darauf, wie viele Security Center-Empfehlungen
 |Empfehlung|Beschreibung und zugehörige Richtlinie|severity|Schnelle Behebung aktiviert?([Weitere Informationen](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Ressourcentyp|
 |----|----|----|----|----|
 |**Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden**|Wenden Sie die Just-In-Time-VM-Zugriffssteuerung (JIT) an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie per JIT nur für einen begrenzten Zeitraum zu öffnen.<br>(Zugehörige Richtlinie: Auf VMs muss die Just-in-Time-Netzwerkzugriffssteuerung angewendet werden)|High|N|Virtueller Computer|
-|**Netzwerksicherheitsgruppen auf Subnetzebene sollten aktiviert werden**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für in Ihren Subnetzen bereitgestellte Ressourcen.<br>(Zugehörige Richtlinie: Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden)|Hoch/Mittel|N|Subnet|
-|**Virtuellen Computern muss eine Netzwerksicherheitsgruppe zugeordnet sein**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für Ihre virtuellen Computer.<br>(Zugehörige Richtlinie: Virtuelle Computer sollten einer Netzwerksicherheitsgruppe zugeordnet werden)|Hoch/Mittel|N|Virtueller Computer|
-|**Der Zugriff sollte für tolerante Netzwerksicherheitsgruppen mit VMs mit Internetzugriff eingeschränkt werden**|Stärken Sie die Netzwerksicherheitsgruppen Ihrer VMs mit Internetzugriff, indem Sie den Zugriff auf Ihre bestehenden Zulassungsregeln einschränken.<br>(Zugehörige Richtlinie: Für VMs mit Internetzugriff müssen die NSG-Regeln verstärkt werden)|High|N|Virtueller Computer|
+|**Netzwerksicherheitsgruppen auf Subnetzebene sollten aktiviert werden**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für in Ihren Subnetzen bereitgestellte Ressourcen.<br>(Zugehörige Richtlinie: Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet werden.<br>Diese Richtlinie ist standardmäßig deaktiviert.)|Hoch/Mittel|N|Subnet|
+|**Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.**|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für Ihre virtuellen Computer.<br>(Zugehörige Richtlinie: Virtuelle Computer mit Internetzugang sollten über Netzwerksicherheitsgruppen geschützt werden.)|Hoch/Mittel|N|Virtueller Computer|
+|**Alle Netzwerkports sollten auf NSGs eingeschränkt werden, die ihrer VM zugeordnet sind.**|Stärken Sie die Netzwerksicherheitsgruppen Ihrer VMs mit Internetzugriff, indem Sie den Zugriff auf Ihre bestehenden Zulassungsregeln einschränken.<br>Diese Empfehlung wird ausgelöst, wenn ein beliebiger Port für *alle* Quellen geöffnet wird (mit Ausnahme der Ports 22, 3389, 5985, 5986, 80 und 1443).<br>(Zugehörige Richtlinie: Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden.)|High|N|Virtueller Computer|
+|**Auf VMs mit Internetausrichtung müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.**|Für Kunden im Standard-Tarif wird diese Empfehlung angezeigt, wenn das Feature „Adaptive Netzwerkhärtung“ eine zu wenig einschränkende NSG-Regel findet.<br>(Zugehörige Richtlinie: Auf VMs mit Internetausrichtung müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden.)|High|N|Virtueller Computer|
 |**Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden**|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.<br>(Zugehörige Richtlinie: Für Webanwendungen in IaaS müssen die NSG-Regeln verstärkt werden)|High|N|Virtueller Computer|
 |**Der Zugriff auf App Services sollte eingeschränkt werden**|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.<br>(Zugehörige Richtlinie: [Vorschau]: Zugriff auf App Services muss eingeschränkt sein)|High|N|App Service|
 |**Verwaltungsports sollten auf Ihren virtuellen Computern geschlossen werden**|Härten Sie die Netzwerksicherheitsgruppe Ihrer virtuellen Computer, um den Zugriff auf Verwaltungsports einzuschränken.<br>(Zugehörige Richtlinie: Verwaltungsports müssen auf Ihren VMs geschlossen sein)|High|N|Virtueller Computer|
