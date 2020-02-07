@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769172"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023547"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -257,6 +257,6 @@ Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammeng
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum [Load Balancer Standard](load-balancer-standard-overview.md).
-- [Schnellstart: Erstellen eines öffentlichen Lastenausgleichs im Ressourcen-Manager mit PowerShell](load-balancer-get-started-internet-arm-ps.md)
+- [Schnellstart: Erstellen eines öffentlichen Lastenausgleichs im Ressourcen-Manager mit PowerShell](quickstart-create-standard-load-balancer-powershell.md)
 - [REST-API für Integritätstests](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
 - Anfordern neuer Integritätstestfunktionen mit [Uservoice von Load Balancer](https://aka.ms/lbuservoice)
