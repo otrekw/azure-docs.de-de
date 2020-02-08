@@ -9,17 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4b725c8a1bf0649a640c02a9a1828ec9014d36d6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112289"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905660"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Indizieren von Dokumenten in Azure Data Lake Storage Gen2
 
 > [!IMPORTANT] 
-> Azure Data Lake Storage Gen2 befindet sich zurzeit in der öffentlichen Vorschau. Die Vorschaufunktionalität wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Aktuell werden weder das Portal noch das .NET SDK unterstützt.
+> Azure Data Lake Storage Gen2 befindet sich zurzeit in der öffentlichen Vorschau. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, wenn Sie Zugriff auf die Vorschauversionen anfordern möchten. Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
 
 
 Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
@@ -47,3 +47,10 @@ Das Indizieren von Inhalten in Data Lake Storage Gen2 ist mit dem Indizieren von
 Azure Data Lake Storage Gen2 implementiert ein [Zugriffssteuerungsmodell](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control), das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. Beim Indizieren von Inhalten aus Data Lake Storage Gen2 extrahiert Azure Cognitive Search keine RBAC- und ACL-Informationen aus den Inhalten. Als Ergebnis sind diese Informationen nicht in Ihrem Azure Cognitive Search-Index enthalten.
 
 Wenn die Verwaltung der Zugriffssteuerung für jedes Dokument im Index wichtig ist, kann der Anwendungsentwickler [Sicherheitsfilter](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) implementieren.
+
+## <a name="change-detection"></a>Änderungserkennung
+
+Der Data Lake Storage Gen2-Indexer unterstützt die Änderungserkennung. Dies bedeutet, dass beim Ausführen des Indexers nur die geänderten Blobs neu indiziert werden, die anhand des `LastModified`-Zeitstempels des Blobs ermittelt werden.
+
+> [!NOTE] 
+> Mit Data Lake Storage Gen2 können Verzeichnisse umbenannt werden. Wenn ein Verzeichnis umbenannt wird, werden die Zeitstempel für die Blobs in diesem Verzeichnis nicht aktualisiert. Demzufolge werden diese Blobs vom Indexer nicht neu indiziert. Wenn die Blobs in einem Verzeichnis nach einer Umbenennung des Verzeichnisses neu indiziert werden müssen, da sie nun über neue URLs verfügen, müssen Sie den `LastModified`-Zeitstempel für alle Blobs im Verzeichnis aktualisieren, damit der Indexer erkennt, dass diese bei einer zukünftigen Ausführung neu indiziert werden müssen.

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427030"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899845"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -21,15 +21,20 @@ Beim Erstellen eines Diensts für die kognitive Azure-Suche erfolgt das [Erstell
 
 Die meisten Kunden starten mit dem Tarif „Free“, um den Dienst vorab zu testen. Nach der Auswertung wird oftmals ein zweiter Dienst mit einem der höheren Tarifen erstellst, der für Entwicklungs- und Produktionsbereitstellungen ist.
 
-Obwohl alle Tarife, einschließlich des Tarifs „Free“, in der Regel Featureparität bieten, können größere Workloads höhere Tarife erforderlich machen. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
+## <a name="feature-availability-by-tier"></a>Funktionsverfügbarkeit pro Tarif
 
-> [!NOTE] 
-> Eine Ausnahme bei der Featureparität bilden die [Indexer](search-indexer-overview.md), die in „S3 HD“ nicht verfügbar sind.
->
+Fast jedes Feature ist in jedem Tarif verfügbar, auch im Free-Tarif, aber ressourcenintensive Features oder Workflows funktionieren möglicherweise nicht gut, wenn ihnen nicht ausreichend Kapazität zugewiesen wurde. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Qualifikationen mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 
-## <a name="available-tiers"></a>Verfügbare Tarife
+In der folgenden Tabelle werden die tarifbezogenen Featureeinschränkungen beschrieben.
 
-Tarife geben die Merkmale der Hardware wieder, die den Dienst hostet (anstelle von Funktionen), und unterscheiden sich durch:
+| Funktion | Einschränkungen |
+|---------|-------------|
+| [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar. |
+| [Von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) | Im Free-Tarif nicht verfügbar. |
+
+## <a name="tiers-skus"></a>Tarife (SKUs)
+
+Die Tarife unterscheiden sich durch:
 
 + Anzahl der Indizes und Indexer, die erstellt werden können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
@@ -97,9 +102,9 @@ Der Preis wird stündlich pro SU abgerechnet. Dabei steigt der Preis mit jedem h
 
 Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halten den Rest in Reserve. Die Anzahl der Partitionen und Replikate, die Sie online schalten, bestimmt (mit der SU-Formel berechnet) den stündlichen Preis.
 
-## <a name="how-to-manage-and-reduce-costs"></a>Verwalten und Reduzieren von Kosten
+## <a name="how-to-manage-costs"></a>Verwalten von Kosten
 
-Zusätzlich zu den folgenden Empfehlungen finden Sie weitere Informationen unter [Abrechnungs- und Kostenverwaltung](https://docs.microsoft.com/azure/billing/billing-getting-started).
+Die folgenden Vorschläge können Ihnen dabei helfen, die Kosten minimal zu halten:
 
 - Erstellen Sie alle Ressourcen in derselben Region oder in möglichst wenigen Regionen, um Bandbreitengebühren zu minimieren oder auszuschließen.
 
@@ -109,7 +114,11 @@ Zusätzlich zu den folgenden Empfehlungen finden Sie weitere Informationen unter
 
 - Führen Sie die zentrale Hochskalierung für ressourcenintensive Vorgänge wie die Indizierung durch, und passen Sie die Skalierung anschließend für reguläre Abfrageworkloads wieder an. Beginnen Sie mit der Mindestkonfiguration für die kognitive Azure-Suche (eine SU bestehend aus einer Partition und einem Replikat), und überwachen Sie dann die Benutzeraktivität, um Verwendungsmuster zu identifizieren, die auf die Notwendigkeit einer höheren Kapazität hindeuten. Wenn ein vorhersagbares Muster vorliegt, können Sie möglicherweise die Skalierung mit der Aktivität synchronisieren (um dies zu automatisieren, müssen Sie Code schreiben).
 
-Sie können einen Suchdienst nicht herunterfahren, um die Kosten zu senken. Dedizierte Ressourcen werden für eine exklusive Nutzung während der gesamten Lebensdauer des Diensts ständig betrieben. Im Hinblick auf den Dienst selbst besteht die einzige Möglichkeit zur Kostenreduzierung darin, Replikate und Partitionen auf ein Niveau zu reduzieren, das immer noch eine akzeptable Leistung und [SLA-Konformität](https://azure.microsoft.com/support/legal/sla/search/v1_0/) bietet, oder einen Dienst mit einem niedrigeren Tarif zu erstellen. (Die Stundensätze von S1 sind niedriger als die von S2 oder S3.) Angenommen, Sie stellen einen Dienst am unteren Ende Ihrer voraussichtlichen Auslastungen bereit. Wenn dieser Dienst Ihre Anforderungen nicht mehr erfüllt, können Sie einen zweiten Dienst in einem höheren Tarif erstellen, Ihre Indizes für den zweiten Dienst neu erstellen und dann den ersten Dienst löschen.
+Integrierte Tools und Features im Zusammenhang mit Ausgaben finden Sie außerdem unter [Abrechnung und Kostenverwaltung](https://docs.microsoft.com/azure/billing/billing-getting-started).
+
+Das temporäre Herunterfahren eines Suchdiensts ist nicht möglich. Dedizierte Ressourcen werden für eine exklusive Nutzung während der gesamten Lebensdauer des Diensts ständig betrieben. Das Löschen eines Diensts ist endgültig und löscht auch die zugehörigen Daten.
+
+Im Hinblick auf den Dienst selbst besteht die einzige Möglichkeit zur Kostenreduzierung darin, Replikate und Partitionen auf ein Niveau zu reduzieren, das immer noch eine akzeptable Leistung und [SLA-Konformität](https://azure.microsoft.com/support/legal/sla/search/v1_0/) bietet, oder einen Dienst mit einem niedrigeren Tarif zu erstellen. (Die Stundensätze von S1 sind niedriger als die von S2 oder S3.) Angenommen, Sie stellen einen Dienst am unteren Ende Ihrer voraussichtlichen Auslastungen bereit. Wenn dieser Dienst Ihre Anforderungen nicht mehr erfüllt, können Sie einen zweiten Dienst in einem höheren Tarif erstellen, Ihre Indizes für den zweiten Dienst neu erstellen und dann den ersten Dienst löschen.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>Auswerten von Kapazitätsanforderungen
 

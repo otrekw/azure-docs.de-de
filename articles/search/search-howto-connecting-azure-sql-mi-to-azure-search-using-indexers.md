@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 65e483fd772e20daa73b465ea17dfa6ecde42233
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863120"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964888"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Konfigurieren einer Verbindung eines Indexers der kognitiven Azure-Suche mit einer verwalteten SQL-Datenbank-Instanz
 
@@ -35,11 +35,14 @@ Sie können den öffentlichen Endpunkt auch auf einer vorhandenen verwalteten SQ
    ![NSG-Eingangssicherheitsregel](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG-Eingangssicherheitsregel")
 
 > [!NOTE]
-> Sie können restriktivere Einstellungen für den eingehenden Zugriff auf Ihre verwaltete SQL-Instanz wählen, indem Sie die aktuelle Regel (`public_endpoint_inbound`) durch zwei Regeln ersetzen:
+> Indexer erfordern weiterhin, dass die verwaltete SQL-Instanz mit einem öffentlichen Endpunkt konfiguriert wird, um Daten lesen zu können.
+> Sie können jedoch festlegen, dass der eingehende Zugriff auf diesen öffentlichen Endpunkt eingeschränkt werden soll, indem Sie die aktuelle Regel (`public_endpoint_inbound`) durch die folgenden zwei Regeln ersetzen:
 >
-> * Eingehenden Zugriff über das [Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) `AzureCognitiveSearch` zulassen ("SOURCE" = `AzureCognitiveSearch`)
+> * Eingehenden Zugriff über das `AzureCognitiveSearch`-[Diensttag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) zulassen ("SOURCE" = `AzureCognitiveSearch`, "NAME" = `cognitive_search_inbound`)
 >
-> * Eingehenden Zugriff von der IP-Adresse des Suchdienstanbieters zulassen; kann durch Pingen des vollqualifizierten Domänennamens abgerufen werden (z. B. `<your-search-service-name>.search.windows.net`). ("SOURCE" = `IP address`)
+> * Eingehenden Zugriff von der IP-Adresse des Suchdienstanbieters zulassen; kann durch Pingen des vollqualifizierten Domänennamens abgerufen werden (z. B. `<your-search-service-name>.search.windows.net`). ("SOURCE" = `IP address`, "NAME" = `search_service_inbound`)
+>
+> Legen Sie für jede dieser beiden Regeln "PORT" = `3342`, "PROTOCOL" = `TCP`, "DESTINATION" = `Any`, "ACTION" = `Allow` fest.
 
 ## <a name="get-public-endpoint-connection-string"></a>Abrufen der Verbindungszeichenfolge für den öffentlichen Endpunkt
 Stellen Sie sicher, dass Sie die Verbindungszeichenfolge für den **öffentlichen Endpunkt** verwenden (Port 3342, nicht Port 1433).
