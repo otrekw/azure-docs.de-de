@@ -4,33 +4,18 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsrichtlinien (Zeit
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554890"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76963851"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
 Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
 
-## <a name="backup-policy-essentials"></a>Grundlagen zu Sicherungsrichtlinien
-
-- Eine Sicherungsrichtlinie wird pro Tresor erstellt.
-- Eine Sicherungsrichtlinie kann für die Sicherung der folgenden Workloads erstellt werden.
-  - Azure VM
-  - SQL Server in Azure-VM
-  - Azure-Dateifreigabe
-- Eine Richtlinie kann einer Vielzahl von Ressourcen zugewiesen werden. Eine Azure-VM-Sicherungsrichtlinie kann verwendet werden, um eine Vielzahl von Azure-VMs zu schützen.
-- Eine Richtlinie besteht aus zwei Komponenten.
-  - Zeitplan: Diese Komponente gibt an, wann eine Sicherung durchgeführt werden soll.
-  - Aufbewahrung: Diese Komponente gibt an, wie lange jede einzelne Sicherung beibehalten werden soll.
-- Der Zeitplan kann als „täglich“ oder „wöchentlich“ mit einem bestimmten Zeitpunkt definiert werden.
-- Die Aufbewahrung kann für die Sicherungspunkte „täglich“, „wöchentlich“, „monatlich“ oder „jährlich“ definiert werden.
-- „wöchentlich“ bezieht sich auf eine Sicherung an einem bestimmten Tag der Woche, „monatlich“ auf eine Sicherung an einem bestimmten Tag des Monats und „jährlich“ auf eine Sicherung an einem bestimmten Tag des Jahres.
-- Die Aufbewahrung für die Sicherungspunkte „monatlich“ und „jährlich“ wird als „LongTermRetention“ bezeichnet.
-- Wenn ein Tresor erstellt wurde, wird auch eine Richtlinie für Azure-VM-Sicherungen mit dem Namen „DefaultPolicy“ erstellt. Diese kann zum Sichern von Azure-VMs verwendet werden.
+## <a name="create-or-update-a-policy"></a>Erstellen oder Aktualisieren einer Richtlinie
 
 Verwenden Sie den folgenden *PUT*-Vorgang, um eine Azure Backup-Richtlinie zu erstellen oder zu aktualisieren:
 
@@ -44,7 +29,7 @@ Der `{policyName}` und der `{vaultName}` werden im URI angegeben. Zusätzliche I
 
 Um z.B. eine Richtlinie für Azure-VM-Sicherungen zu erstellen, werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
+|Name  |Erforderlich  |type  |Beschreibung  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
 |tags     |         | Object        |  Ressourcentags       |
@@ -152,7 +137,7 @@ Die Erstellung bzw. Aktualisierung von Sicherungsrichtlinien ist ein [asynchrone
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |Beschreibung  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |

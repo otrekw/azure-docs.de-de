@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8475e90e247aa2a0c081d25486c4ada0854a9e89
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 990e97274d9e35201dfb7930167dc4f9da975d83
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705393"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988123"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -26,7 +26,7 @@ Virtuelle Azure-Computer können wie folgt mit dem Azure Backup-Dienst gesichert
 
 **Szenario** | **Backup** | **Agent** |**Wiederherstellen**
 --- | --- | --- | ---
-Direkte Sicherung virtueller Azure-Computer  | Sicherung der gesamten VM  | Auf dem virtuellen Azure-Computer ist kein Agent erforderlich. Azure Backup installiert und verwendet eine Erweiterung für den [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows), der auf dem virtuellen Computer ausgeführt wird. | Die Wiederherstellung wird wie folgt durchgeführt:<br/><br/> - **Erstellen eines einfachen virtuellen Computers:** Dies ist nützlich, wenn der virtuelle Computer keine besondere Konfiguration (z.B. mehrere IP-Adressen) aufweist.<br/><br/> - **Wiederherstellen des VM-Datenträgers:** Stellen Sie den Datenträger wieder her. Fügen Sie ihn dann an einen vorhandenen virtuellen Computer an, oder erstellen Sie mit PowerShell über den Datenträger einen neuen virtuellen Computer.<br/><br/> - **Ersetzen des VM-Datenträgers:** Wenn ein virtueller Computer vorhanden ist, der verwaltete Datenträger (unverschlüsselt) verwendet, können Sie einen Datenträger wiederherstellen und zum Ersetzen eines vorhandenen Datenträgers auf dem virtuellen Computer verwenden.<br/><br/> - **Wiederherstellen bestimmter Dateien oder Ordner:** Sie können Dateien oder Ordner einer VM statt der gesamten VM wiederherstellen.
+Direkte Sicherung virtueller Azure-Computer  | Sicherung der gesamten VM  | Auf dem virtuellen Azure-Computer ist kein zusätzlicher Agent erforderlich. Azure Backup installiert und verwendet eine Erweiterung für den [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows), der auf dem virtuellen Computer ausgeführt wird. | Die Wiederherstellung wird wie folgt durchgeführt:<br/><br/> - **Erstellen eines einfachen virtuellen Computers:** Dies ist nützlich, wenn der virtuelle Computer keine besondere Konfiguration (z.B. mehrere IP-Adressen) aufweist.<br/><br/> - **Wiederherstellen des VM-Datenträgers:** Stellen Sie den Datenträger wieder her. Fügen Sie ihn dann an einen vorhandenen virtuellen Computer an, oder erstellen Sie mit PowerShell über den Datenträger einen neuen virtuellen Computer.<br/><br/> - **Ersetzen des VM-Datenträgers:** Wenn ein virtueller Computer vorhanden ist, der verwaltete Datenträger (unverschlüsselt) verwendet, können Sie einen Datenträger wiederherstellen und zum Ersetzen eines vorhandenen Datenträgers auf dem virtuellen Computer verwenden.<br/><br/> - **Wiederherstellen bestimmter Dateien oder Ordner:** Sie können Dateien oder Ordner einer VM statt der gesamten VM wiederherstellen.
 Direkte Sicherung von Azure-VMs (nur Windows)  | Sichern bestimmter Dateien, Ordner oder Volumes | Installieren Sie den [Azure Recovery Services-Agent](backup-azure-file-folder-backup-faq.md).<br/><br/> Sie können den MARS-Agent zusammen mit der Sicherungserweiterung für den Azure-VM-Agent ausführen, um den virtuellen Computer auf Datei- oder Ordnerebene zu sichern. | Wiederherstellen bestimmter Ordner oder Dateien
 Sichern von Azure-VMs auf Sicherungsservern  | Sichern von Dateien, Ordnern oder Volumes, von Systemstatusdateien oder Bare-Metal-Dateien und von Anwendungsdaten in System Center DPM oder Microsoft Azure Backup Server (MABS)<br/><br/> DPM/MABS erstellt die Sicherung dann im Sicherungstresor. | Installieren Sie den MABS- oder DPM-Schutz-Agent auf der VM. Der MARS-Agent wird in DPM oder MABS installiert.| Wiederherstellen von Dateien, Ordnern oder Volumes, von Systemstatus- oder Bare-Metal-Dateien und von Anwendungsdaten
 
