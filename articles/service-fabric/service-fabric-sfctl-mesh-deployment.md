@@ -3,21 +3,21 @@ title: Azure Service Fabric-CLI – sfctl mesh deployment | Microsoft-Dokumenta
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Erstellen von Service Fabric Mesh-Ressourcen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 108389407221779ed20e81310f084b7b5c23b8c7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645360"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906029"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Erstellt Service Fabric Mesh-Ressourcen.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | create | Erstellt eine Bereitstellung von Service Fabric-Mesh-Ressourcen. |
 
@@ -26,14 +26,14 @@ Erstellt eine Bereitstellung von Service Fabric-Mesh-Ressourcen.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
-| --input-yaml-files [erforderlich] | Durch Trennzeichen getrennte relative/absolute Dateipfade aller YAML-Dateien oder relativer/absoluter Pfad des Verzeichnisses (rekursiv) mit YAML-Dateien. |
-| --parameters | Ein relativer/absoluter Pfad zur YAML-Datei oder ein JSON-Objekt, das die Parameter enthält, die außer Kraft gesetzt werden müssen. |
+| --input-yaml-files [erforderlich] | Durch Trennzeichen getrennte relative oder absolute Dateipfade aller YAML-Dateien oder relativer oder absoluter Pfad des Verzeichnisses (rekursiv), das YAML-Dateien enthält. |
+| --parameters | Ein relativer oder absoluter Pfad einer YAML-Datei oder einem JSON-Objekt, die bzw. das die Parameter enthält, die außer Kraft gesetzt werden müssen. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

@@ -1,21 +1,21 @@
 ---
-title: Exportieren oder Löschen von Azure-Portal-Einstellungen | Microsoft-Dokumentation
+title: Exportieren oder Löschen von Azure-Portaleinstellungen
 description: Erfahren Sie, wie Sie Ihre Benutzereinstellungen, privaten Dashboards und benutzerdefinierten Einstellungen im Azure-Portal exportieren oder löschen können.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.date: 04/08/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640175"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900752"
 ---
 # <a name="export-or-delete-user-settings"></a>Exportieren oder Löschen von Benutzereinstellungen
 
@@ -32,28 +32,26 @@ Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, bevor 
 ## <a name="export-or-delete-your-portal-settings"></a>Exportieren und Löschen Ihrer Portaleinstellungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie ganz oben im Portal die Option **Einstellungen** aus.
 
-    ![Screenshot des Zahnradsymbols der Portaleinstellungen](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
+1. Wählen Sie ganz oben im Portal die Option ![Einstellungssymbol](media/azure-portal-export-delete-settings/settings-icon.png) **Einstellungen** aus.
 
-3. Wählen Sie **Alle Einstellungen exportieren** oder **Alle Einstellungen und private Dashboards löschen** aus.
+1. Wählen Sie **Alle Einstellungen exportieren** oder **Alle Einstellungen und private Dashboards löschen** aus.
 
-    ![Screenshot der Portaleinstellungen zum Exportieren und Löschen](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Einstellungen des Azure-Portals und Optionen für Einstellungen](media/azure-portal-export-delete-settings/azure-portal-settings-with-export-delete.png)
 
       Diese Aktionen sind in der folgenden Tabelle beschrieben.
 
-      | Action | BESCHREIBUNG |
+      | Aktion | Beschreibung |
       | --- | --- |
-      | **Alle Einstellungen exportieren** | Erstellt eine JSON-Datei, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards.|
+      | **Alle Einstellungen exportieren** | Erstellt eine *JSON*-Datei, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards.|
       | **Alle Einstellungen und private Dashboards löschen** | Löscht alle Verknüpfungen mit privaten Dashboards und anderen benutzerdefinierten Einstellungen, die Sie im Portal vorgenommen haben. |
 
 > [!NOTE]
-> Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der JSON-Datei importieren.
+> Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON*-Datei importieren.
 >
 >
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen und Freigeben von Azure-Dashboards](azure-portal-dashboard-share-access.md)
-* [Hinzufügen, Entfernen und Sortieren von Favoriten](azure-portal-add-remove-sort-favorites.md)
+* [Freigeben von Azure-Dashboards mit rollenbasierter Zugriffssteuerung](azure-portal-dashboard-share-access.md)
+* [Hinzufügen, Entfernen und Neuanordnen von Favoriten](azure-portal-add-remove-sort-favorites.md)

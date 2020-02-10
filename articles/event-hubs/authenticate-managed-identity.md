@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: cbd7de7d526e1954aaad60f7d71e5cdf202f6a29
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0c5d3eca4a01488f521f9a85fa129eb0ac72c363
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992458"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904550"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -24,7 +24,7 @@ In diesem Artikel wird die Autorisierung des Zugriffs auf einen Event Hub mit ei
 ## <a name="enable-managed-identities-on-a-vm"></a>Aktivieren von verwalteten Identitäten auf einem virtuellen Computer
 Damit Sie verwaltete Identitäten für Azure-Ressourcen zum Autorisieren des Zugriffs auf Event Hubs-Ressourcen über Ihren virtuellen Computer verwenden können, müssen Sie zunächst verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktivieren. Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen finden Sie in diesen Artikeln:
 
-- [Azure-Portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure-Befehlszeilenschnittstelle](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager-Vorlage](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -72,18 +72,74 @@ Navigieren Sie im Azure-Portal zur jeweiligen Ressource, um Event Hubs-Ressource
 Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Event Hubs-Ressourcen unter dem definierten Bereich. 
 
 ### <a name="test-the-web-application"></a>Testen der Webanwendung
+1. Erstellen Sie einen Event Hubs-Namespace und einen Event Hub. 
+2. Bereitstellen der Web-App in Azure Links zur Webanwendung auf GitHub finden Sie im folgenden Abschnitt im Registerkartenformat. 
+3. Stellen Sie sicher, dass „SendReceive.aspx“ als Standarddokument für die Web-App festgelegt ist. 
+3. Aktivieren Sie **Identität** für die Web-App. 
+4. Weisen Sie diese Identität der Rolle **Event Hubs-Datenbesitzer** auf Namespace- oder Event Hub-Ebene zu. 
+5. Führen Sie die Webanwendung aus, geben Sie den Namespacenamen und Event Hub-Namen sowie eine Nachricht ein, und wählen Sie dann **Senden** aus. Um das Ereignis zu empfangen, wählen Sie **Empfangen** aus. 
+
+#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure.Messaging.EventHubs (neuestes Paket)](#tab/latest)
+Sie können Ihre Webanwendung jetzt starten und für Ihren Browser auf die ASPX-Beispielseite verweisen. Sie finden die Beispielwebanwendung, mit der Daten für Event Hubs-Ressourcen gesendet und empfangen werden, im [GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp).
+
+Installieren Sie das neueste Paket von [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/), und beginnen Sie mit dem Senden von Ereignissen an Event Hubs mit **EventHubProducerClient** und dem Empfangen von Ereignissen mit **EventHubConsumerClient**.  
+
+```csharp
+protected async void btnSend_Click(object sender, EventArgs e)
+{
+    await using (EventHubProducerClient producerClient = new EventHubProducerClient(txtNamespace.Text, txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        // create a batch
+        using (EventDataBatch eventBatch = await producerClient.CreateBatchAsync())
+        {
+
+            // add events to the batch. only one in this case. 
+            eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(txtData.Text)));
+
+            // send the batch to the event hub
+            await producerClient.SendAsync(eventBatch);
+        }
+
+        txtOutput.Text = $"{DateTime.Now} - SENT{Environment.NewLine}{txtOutput.Text}";
+    }
+}
+protected async void btnReceive_Click(object sender, EventArgs e)
+{
+    await using (var consumerClient = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, $"{txtNamespace.Text}.servicebus.windows.net", txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        int eventsRead = 0;
+        try
+        {
+            using CancellationTokenSource cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+            await foreach (PartitionEvent partitionEvent in consumerClient.ReadEventsAsync(cancellationSource.Token))
+            {
+                txtOutput.Text = $"Event Read: { Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()) }{ Environment.NewLine}" + txtOutput.Text;
+                eventsRead++;
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            txtOutput.Text = $"Number of events read: {eventsRead}{ Environment.NewLine}" + txtOutput.Text;
+        }
+    }
+}
+```
+
+#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft.Azure.EventHubs (Legacypaket)](#tab/old)
 Sie können Ihre Webanwendung jetzt starten und für Ihren Browser auf die ASPX-Beispielseite verweisen. Sie finden die Beispielwebanwendung, mit der Daten für Event Hubs-Ressourcen gesendet und empfangen werden, im [GitHub-Repository](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp).
 
-Installieren Sie das aktuelle Paket von [Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/), und beginnen Sie mit dem Senden und Empfangen von Daten für Event Hubs, indem Sie wie im folgenden Code das EventHubClient-Element verwenden: 
+Installieren Sie das aktuelle Paket von [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/), und beginnen Sie mit dem Senden und Empfangen von Daten von Event Hubs, indem Sie wie im folgenden Code das EventHubClient-Element verwenden: 
 
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
 ```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Laden Sie das [Beispiel](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp) von GitHub herunter.
 - Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie im folgenden Artikel: [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
-- Informationen finden Sie in den folgenden verwandten Artikeln:
+- Weitere Informationen finden Sie in den folgenden verwandten Artikeln:
     - [Authentifizieren von Anforderungen an Event Hubs über eine Anwendung mithilfe von Azure Active Directory](authenticate-application.md)
     - [Authentifizieren von Anforderungen an Azure Event Hubs mithilfe von Shared Access Signature](authenticate-shared-access-signature.md)
     - [Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory](authorize-access-azure-active-directory.md)

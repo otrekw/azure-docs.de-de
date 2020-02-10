@@ -3,12 +3,12 @@ title: Unterstützung der Bewertung physischer Server in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Bewertung physischer Server mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 489f95bbbbeb261b56f1a3a86da44f5fcce0adf5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f2698d0ff046147599a8c5c791a0980a54090932
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846573"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990333"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Unterstützungsmatrix für die Bewertung physischer Server 
 
@@ -38,7 +38,7 @@ Zum Bewerten von lokalen Computern für die Migration in Azure entsprechend der 
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
-| **Berechtigungen**           | **Windows:** Richten Sie auf allen Windows-Servern, die Sie in die Ermittlung einbeziehen möchten, ein lokales Benutzerkonto ein. Das Benutzerkonto muss den folgenden Gruppen hinzugefügt werden: Remotedesktopbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
+| **Berechtigungen**           | **Windows:** Richten Sie auf allen Windows-Servern, die Sie in die Ermittlung einbeziehen möchten, ein lokales oder ein Domänenbenutzerkonto ein. Das Benutzerkonto muss den folgenden Gruppen hinzugefügt werden: Remotedesktopbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
 | **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme mit Ausnahme der folgenden werden unterstützt:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 

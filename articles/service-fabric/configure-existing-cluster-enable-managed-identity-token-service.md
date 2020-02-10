@@ -1,28 +1,30 @@
 ---
-title: 'Azure Service Fabric: Konfigurieren eines vorhandenen Azure Service Fabric-Clusters zum Aktivieren der Unterstützung für verwaltete Identitäten'
-description: In diesem Artikel erfahren Sie, wie Sie einen vorhandenen Azure Service Fabric-Cluster für die Unterstützung verwalteter Identitäten konfigurieren.
+title: Konfigurieren von Unterstützung der verwalteten Identität in einem vorhandenen Service Fabric-Cluster
+description: 'Vorgehensweise: Aktivieren der Unterstützung der verwalteten Identität in einem vorhandenen Azure Service Fabric-Cluster'
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: 13b8b38a206b0dae0877263a5cda56a134d4788d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351606"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934946"
 ---
-# <a name="configure-an-existing-azure-service-fabric-cluster-to-enable-managed-identity-support-preview"></a>Konfigurieren eines vorhandenen Azure Service Fabric-Clusters für die Unterstützung verwalteter Identitäten (Vorschauversion)
-Um auf die Funktion für verwaltete Identitäten für Azure Service Fabric-Anwendungen zuzugreifen, müssen Sie zunächst den **Tokendienst für verwaltete Identitäten** im Cluster aktivieren. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Konfigurieren von Unterstützung der verwalteten Identität in einem vorhandenen Service Fabric-Cluster (Vorschau)
+
+Um [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) in Ihren Service Fabric-Anwendungen zu verwenden, aktivieren Sie zunächst den *Tokendienst für verwaltete Identitäten* auf dem Cluster. Dieser Dienst ist für die Authentifizierung von Service Fabric-Anwendungen anhand ihrer verwalteten Identitäten und für den Abruf von Zugriffstoken in deren Auftrag zuständig. Nachdem der Dienst aktiviert wurde, wird er im Service Fabric Explorer im Abschnitt **System** im linken Bereich unter dem Namen **fabric:/System/ManagedIdentityTokenService** angezeigt.
 
 > [!NOTE]
 > Zum Aktivieren des **Tokendiensts für verwaltete Identitäten** ist mindestens Version 6.5.658.9590 der Service Fabric-Runtime erforderlich.  
-> 
+>
 > Sie finden die Service Fabric-Version eines Clusters im Azure-Portal. Öffnen Sie dazu dort die Clusterressource, und überprüfen Sie die Eigenschaft **Service Fabric-Version** im Abschnitt **Zusammenfassung**.
-> 
+>
 > Wenn sich der Cluster im **manuellen** Upgrademodus befindet, müssen Sie ihn zunächst auf Version 6.5.658.9590 oder höher aktualisieren.
 
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>Aktivieren des *Tokendiensts für verwaltete Identitäten* in einem vorhandenen Cluster
 
-## <a name="enable-the-managed-identity-token-service-in-an-existing-cluster"></a>Aktivieren des Tokendiensts für verwaltete Identitäten in einem vorhandenen Cluster
-Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu aktivieren, müssen Sie ein Clusterupgrade initiieren und dabei zwei Änderungen angeben: Aktivieren Sie den Tokendienst für verwaltete Identitäten, und fordern Sie einen Neustart jedes einzelnen Knotens an. Fügen Sie dazu die folgenden beiden Codeausschnitte in der Azure Resource Manager-Vorlage hinzu:
+Um den Tokendienst für verwaltete Identitäten in einem vorhandenen Cluster zu aktivieren, müssen Sie ein Clusterupgrade initiieren und dabei zwei Änderungen angeben: (1) Aktivieren Sie den Tokendienst für verwaltete Identitäten, und fordern Sie (2) einen Neustart jedes einzelnen Knotens an. Fügen Sie zunächst den folgenden Codeausschnitt Ihrer Azure Resource Manager-Clustervorlage hinzu:
 
 ```json
 "fabricSettings": [

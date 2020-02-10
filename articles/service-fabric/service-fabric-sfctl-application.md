@@ -3,21 +3,21 @@ title: 'Azure Service Fabric-Befehlszeilenschnittstelle: sfctl application'
 description: Hier erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle zum Verwalten von Anwendungen.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645411"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906194"
 ---
 # <a name="sfctl-application"></a>sfctl application
 Ermöglicht es, Anwendungen und Anwendungstypen zu erstellen, zu löschen und zu verwalten.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | create | Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung. |
 | delete | Löscht eine vorhandene Service Fabric-Anwendung. |
@@ -45,7 +45,7 @@ Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --app-name [erforderlich] | Der Name der Anwendung, einschließlich des URI-Schemas „fabric\:“. |
 | --app-type [erforderlich] | Der Anwendungstypname, der im Anwendungsmanifest gefunden wurde. |
@@ -58,7 +58,7 @@ Erstellt eine Service Fabric-Anwendung mithilfe der angegebenen Beschreibung.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -73,7 +73,7 @@ Eine Anwendung muss erstellt worden sein, bevor sie gelöscht werden kann. Wird 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --force-remove | Erzwingt ein Entfernen einer Service Fabric-Anwendung oder eines Service Fabric-Diensts, ohne den Ablauf für das ordnungsgemäße Herunterfahren zu durchlaufen. Dieser Parameter kann für ein erzwungenes Löschen einer Anwendung oder eines Diensts verwendet werden, für die oder den beim Löschen ein Timeout aufgetreten ist, weil Probleme im Dienstcode ein ordnungsgemäßes Schließen von Replikaten verhindern. |
@@ -81,7 +81,7 @@ Eine Anwendung muss erstellt worden sein, bevor sie gelöscht werden kann. Wird 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -96,7 +96,7 @@ Diese Abfrage gibt Systemanwendungsinformationen zurück, wenn die angegebene An
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --node-name [erforderlich] | Der Name des Knotens. |
@@ -105,7 +105,7 @@ Diese Abfrage gibt Systemanwendungsinformationen zurück, wenn die angegebene An
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -120,7 +120,7 @@ Ruft die Informationen über die Integrität einer Anwendung ab, die auf einem S
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --node-name [erforderlich] | Der Name des Knotens. |
@@ -131,7 +131,7 @@ Ruft die Informationen über die Integrität einer Anwendung ab, die auf einem S
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -146,7 +146,7 @@ Ruft die Liste der Anwendungen ab, die auf einem Service Fabric-Knoten bereitges
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
@@ -156,7 +156,7 @@ Ruft die Liste der Anwendungen ab, die auf einem Service Fabric-Knoten bereitges
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -171,7 +171,7 @@ Gibt den Integritätsstatus der Service Fabric-Anwendung zurück. In der Antwort
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --deployed-applications-health-state-filter | Ermöglicht es, die im Ergebnis der Anwendungsintegritätsabfrage zurückgegebenen Integritätsstatusobjekte der bereitgestellten Anwendungen anhand des Integritätsstatus zu filtern. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur bereitgestellte Anwendungen zurückgegeben, die dem Filter entsprechen. Alle bereitgestellten Anwendungen werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen OR-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, wird der Integritätsstatus der bereitgestellten Anwendungen zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat.  <br> – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null.  <br> – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist "1".  <br> – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist "2".  <br> – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist "4".  <br> – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“.  <br> – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“. |
@@ -182,7 +182,7 @@ Gibt den Integritätsstatus der Service Fabric-Anwendung zurück. In der Antwort
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -197,7 +197,7 @@ Gibt die Informationen zu der Anwendung zurück, die im Service Fabric-Cluster e
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --exclude-application-parameters | Das Flag, das angibt, ob die Anwendungsparameter aus dem Ergebnis ausgeschlossen werden sollen. |
@@ -205,7 +205,7 @@ Gibt die Informationen zu der Anwendung zurück, die im Service Fabric-Cluster e
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -220,7 +220,7 @@ Ruft die Informationen zu den Anwendungen ab, die im Service Fabric-Cluster erst
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-definition-kind-filter | Wird zum Filtern nach ApplicationDefinitionKind verwendet, um eine Service Fabric-Anwendung zu definieren.  <br> - Standard: Standardwert, der die gleiche Funktion hat wie die Auswahl von „All“. Der Wert ist "0".  <br> – All: Filter, der mit Eingaben eines beliebigen Werts „ApplicationDefinitionKind“ übereinstimmt. Der Wert ist gleich „65535“.  <br> – ServiceFabricApplicationDescription: Filter, der mit Eingaben übereinstimmt, für die „ApplicationDefinitionKind“ den Wert „ServiceFabricApplicationDescription“ hat. Der Wert ist "1".  <br> – Compose: Filter, der mit Eingaben übereinstimmt, für die „ApplicationDefinitionKind“ den Wert „Compose“ hat. Der Wert ist "2". |
 | --application-type-name | Der Anwendungstypname, der zum Filtern der Anwendungen verwendet wird, die abgefragt werden sollen. Dieser Wert darf nicht die Version des Anwendungstyps enthalten. |
@@ -231,7 +231,7 @@ Ruft die Informationen zu den Anwendungen ab, die im Service Fabric-Cluster erst
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -246,14 +246,14 @@ Gibt die Lastinformationen der Anwendung zurück, die im Service Fabric-Cluster 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -268,7 +268,7 @@ Die Antwort enthält den XML-Code des Anwendungsmanifests als Zeichenfolge.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-type-name [erforderlich] | Der Name des Anwendungstyps. |
 | --application-type-version [erforderlich] | Die Version des Anwendungstyps. |
@@ -276,7 +276,7 @@ Die Antwort enthält den XML-Code des Anwendungsmanifests als Zeichenfolge.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -291,7 +291,7 @@ Stellt einen Service Fabric-Anwendungstyp im Cluster bereit. Die Bereitstellung 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-package-download-uri | Der Pfad zum SFPKG-Anwendungspaket, unter dem das Anwendungspaket über das HTTP- oder HTTPS-Protokoll heruntergeladen werden kann. <br><br> Gilt nur für die Bereitstellung aus einem externen Speicher. Das Anwendungspaket kann in einem externen Speicher gespeichert werden, der den GET-Vorgang zum Herunterladen der Datei bereitstellt. Die Protokolle HTTP und HTTPS werden unterstützt, und der Pfad muss Lesezugriff ermöglichen. |
 | --application-type-build-path | Gilt nur für Imagespeicher zur Bereitstellung. Der relative Pfad für das Anwendungspaket im Imagespeicher, der während des vorherigen Uploadvorgangs angegeben wurde. |
@@ -303,7 +303,7 @@ Stellt einen Service Fabric-Anwendungstyp im Cluster bereit. Die Bereitstellung 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -318,7 +318,7 @@ Meldet den Integritätszustand der angegebenen Service Fabric-Anwendung. Der Ber
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Dienstidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --health-property [erforderlich] | Die Eigenschaft der Integritätsinformationen. <br><br> Eine Entität kann Integritätsberichte für verschiedene Eigenschaften enthalten. Die Eigenschaft ist eine Zeichenfolge und keine feste Enumeration, um dem Reporter Flexibilität zu ermöglichen und entsprechend die Zustandsbedingung zu kategorisieren, die den Bericht auslöst. Beispielsweise kann ein Reporter mit der SourceId „LocalWatchdog“ den Zustand des verfügbaren Datenträgers auf einem Knoten überwachen und folglich die AvailableDisk-Eigenschaft auf diesem Knoten melden. Der gleiche Reporter kann die Knotenkonnektivität überwachen und folglich eine Connectivity-Eigenschaft auf dem gleichen Knoten melden. Im Integritätsspeicher werden diese Berichte als separate Integritätsereignisse für den angegebenen Knoten behandelt. Zusammen mit der SourceId identifiziert die Eigenschaft eindeutig die Integritätsinformationen. |
@@ -333,7 +333,7 @@ Meldet den Integritätszustand der angegebenen Service Fabric-Anwendung. Der Ber
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -348,7 +348,7 @@ Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-type-name [erforderlich] | Der Name des Anwendungstyps. |
 | --application-type-version | Die Version des Anwendungstyps. |
@@ -359,7 +359,7 @@ Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -374,7 +374,7 @@ Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-type-definition-kind-filter | Wird zum Filtern nach ApplicationTypeDefinitionKind verwendet, um einen Service Fabric-Anwendungstyp zu definieren.  <br> - Standard: Standardwert, der die gleiche Funktion hat wie die Auswahl von „All“. Der Wert ist "0".  <br> - All: Filter, der mit Eingaben eines beliebigen ApplicationTypeDefinitionKind-Werts übereinstimmt. Der Wert ist gleich „65535“.  <br> - ServiceFabricApplicationPackage: Filter, der mit Eingaben übereinstimmt, für die ApplicationTypeDefinitionKind den Wert „ServiceFabricApplicationPackage“ enthält. Der Wert ist "1".  <br> - Compose: Filter, der mit Eingaben übereinstimmt, für die „ApplicationTypeDefinitionKind“ den Wert „Compose“ hat. Der Wert ist "2". |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
@@ -384,7 +384,7 @@ Gibt die Informationen über die Anwendungstypen zurück, die im Service Fabric-
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -399,7 +399,7 @@ Dieser Vorgang kann nur ausgeführt werden, wenn alle Anwendungsinstanzen des An
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-type-name [erforderlich] | Der Name des Anwendungstyps. |
 | --application-type-version [erforderlich] | Die Version des Anwendungstyps, wie sie im Anwendungsmanifest definiert ist. |
@@ -408,7 +408,7 @@ Dieser Vorgang kann nur ausgeführt werden, wenn alle Anwendungsinstanzen des An
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -423,7 +423,7 @@ Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. <br><br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --application-version [erforderlich] | Die Version des Zielanwendungstyps (im Anwendungsmanifest enthalten) für das Anwendungsupgrade. |
@@ -445,7 +445,7 @@ Startet ein Aktualisieren einer Anwendung im Service Fabric-Cluster.
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -460,7 +460,7 @@ Setzt ein nicht überwachtes manuelles Upgrade für eine Service Fabric-Anwendun
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --upgrade-domain-name [erforderlich] | Der Name der Upgradedomäne, mit der das Upgrade fortgesetzt werden soll. |
@@ -468,7 +468,7 @@ Setzt ein nicht überwachtes manuelles Upgrade für eine Service Fabric-Anwendun
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -483,14 +483,14 @@ Startet das Rollback des aktuellen Anwendungsupgrades auf die vorherige Version.
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -505,14 +505,14 @@ Gibt die Informationen über den Status des aktuellen Anwendungsupgrades zusamme
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --application-id [erforderlich] | Die Identität (ID) der Anwendung. Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric\:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric\:/meineapp/app1“, weist die Anwendungsidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf. |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -527,16 +527,19 @@ Optional kann der Uploadfortschritt für jede Datei im Paket angezeigt werden. D
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --path [erforderlich] | Pfad zum lokalen Anwendungspaket. |
+| --compress | Gilt nur für Service Fabric-Anwendungspakete. Erstellt einen neuen Ordner, der das komprimierte Anwendungspaket enthält, entweder am Standardspeicherort oder an dem durch den compressed-location-Parameter angegebenen Speicherort, und lädt den neu erstellten Ordner dann hoch. <br><br> Wenn bereits eine von sfctl generierte komprimierte Datei vorhanden ist, wird sie überschrieben, wenn dieses Flag festgelegt ist. Wenn das Verzeichnis kein Anwendungspaket ist, wird ein Fehler zurückgegeben. Wenn es sich bereits um ein komprimiertes Anwendungspaket handelt, wird der Ordner unverändert übernommen. Standardmäßig wird das neu erstellte komprimierte Anwendungspaket nach einem erfolgreichen Upload gelöscht. Wenn der Upload nicht erfolgreich ist, bereinigen Sie das komprimierte Paket nach Bedarf manuell. Der Löschvorgang entfernt keine leeren Verzeichnisse, die möglicherweise erstellt wurden, wenn der komprimierte location-Parameter auf nicht vorhandene Verzeichnisse verweist. |
+| --compressed-location | Der Speicherort, an dem das komprimierte Anwendungspaket abgelegt werden soll. <br><br> Wenn kein Speicherort angegeben wird, wird das komprimierte Paket in einem neu erstellten Ordner namens „sfctl_compressed_temp“ unter dem im path-Argument angegebenen übergeordneten Verzeichnis gespeichert. Wenn das path-Argument beispielsweise den Wert „C\:/FolderA/AppPkg“ aufweist, wird das komprimierte Paket „C\:/FolderA/sfctl_compressed_temp/AppPkg“ hinzugefügt. |
 | --imagestore-string | Zielimagespeicher, in den das Anwendungspaket hochgeladen werden soll.  Standardwert\: „fabric\:ImageStore“. <br><br> Starten Sie diesen Parameter mit „file\:“, um an einen Dateispeicherort hochzuladen. Andernfalls sollte der Wert die Verbindungszeichenfolge des Imagespeichers sein, z. B. der Standardwert. |
+| --keep-compressed | Gibt an, ob das generierte komprimierte Paket bei erfolgreichem Abschluss des Uploads beibehalten werden soll. <br><br> Wenn diese Option nicht festgelegt wird, werden die komprimierten App-Pakete nach erfolgreichem Abschluss gelöscht. Wenn der Upload nicht erfolgreich war, wird das Anwendungspaket für den erneuten Upload immer im Ausgabeverzeichnis gespeichert. |
 | --show-progress | Zeigt den Fortschritt des Dateiuploads für große Pakete an. |
-| --timeout -t | Der Gesamttimeout in Sekunden. Der Upload schlägt fehl und gibt einen Fehler zurück, nachdem die Timeoutdauer für den Upload abgelaufen ist. Dieser Timeout gilt für das gesamte Anwendungspaket, und einzelne Dateitimeouts entsprechen der verbleibenden Timeoutdauer.  Standardwert\: 300 |
+| --timeout -t | Der Gesamttimeout in Sekunden. Der Upload schlägt fehl und gibt einen Fehler zurück, nachdem die Timeoutdauer für den Upload abgelaufen ist. Dieser Timeout gilt für das gesamte Anwendungspaket, und einzelne Dateitimeouts entsprechen der verbleibenden Timeoutdauer. Das Timeout umfasst nicht die Zeit, die zum Komprimieren des Anwendungspakets erforderlich ist.  Standardwert\: 300 |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

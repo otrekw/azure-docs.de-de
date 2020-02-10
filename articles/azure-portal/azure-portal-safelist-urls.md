@@ -1,30 +1,33 @@
 ---
-title: Hinzufügen von Azure-Portal-URLs | Microsoft-Dokumentation
+title: Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver
 description: Hinzufügen dieser URL zu einer Proxyserverumgehung für die Kommunikation mit dem Azure-Portal und dessen Dienste
 services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 09/13/2019
+ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3f81d41bc6d8ce07ea4e7b11c7c48f9b68d70466
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310566"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900661"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Hinzufügen der Azure-Portal-URLs zu einer Liste sicherer Adressen für Ihre Firewall oder Ihren Proxyserver
 
-Damit eine gute Leistung und die Konnektivität Ihres lokalen Netzwerks (Local area network, LAN) oder Ihres Fernnetzes (Wide area Network, WAN) gewährleistet ist, konfigurieren Sie Ihre lokalen Sicherheitsgeräte so, dass sie Sicherheitseinschränkungen für die Azure-Portal-URLs umgehen. Netzwerkadministratoren stellen häufig Proxyserver, Firewalls oder andere Geräte bereit, um den Internetzugriff durch die Benutzer zu sichern und zu steuern. Allerdings können Regeln, die die Benutzer schützen sollen, gerechtfertigten und geschäftsbezogenen Internetdatenverkehr blockieren oder verlangsamen. Dies betrifft z. B. auch Ihre Kommunikation mit Azure. Zur Optimierung der Konnektivität zwischen Ihrem Netzwerk und dem Azure-Portal und dessen Diensten wird empfohlen, Azure-Portal-URLS zu Ihrer Liste mit sicheren Adressen hinzuzufügen.
+Sie können lokale Sicherheitsgeräte so konfigurieren, dass Sicherheitseinschränkungen für die Azure-Portal-URLs umgangen werden. Diese Konfiguration kann die Leistung und Konnektivität zwischen Ihrem lokalen Netzwerk oder einem WAN und der Azure-Cloud verbessern.
+
+Netzwerkadministratoren stellen häufig Proxyserver, Firewalls oder andere Geräte bereit. Diese Geräte helfen dabei, die Art und Weise zu steuern, wie Benutzer auf das Internet zugreifen. Regeln, die Benutzer schützen sollen, können gerechtfertigten und geschäftsbezogenen Internetdatenverkehr blockieren oder verlangsamen. Dies betrifft z. B. auch Ihre Kommunikation mit Azure. Zur Optimierung der Konnektivität zwischen Ihrem Netzwerk und dem Azure-Portal und dessen Diensten wird empfohlen, Azure-Portal-URLS zu Ihrer Liste mit sicheren Adressen hinzuzufügen.
 
 ## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure-Portal-URLs für Proxyumgehung
 
-Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-Endpunkte sind für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt wird. Wählen Sie Ihre Cloud aus, und fügen Sie dann die Liste an URLs zu Ihrem Proxyserver oder Ihrer Firewall hinzu, um Datenverkehr für diese Endpunkte zuzulassen und Einschränkungen zu umgehen.
+Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-Endpunkte sind für die Azure-Cloud spezifisch, in der Ihre Organisation bereitgestellt wird. Um dem Netzwerkdatenverkehr an diese Endpunkte zu erlauben, Einschränkungen zu umgehen, wählen Sie Ihre Cloud aus. Fügen Sie dann die Liste der URLs Ihrem Proxyserver oder der Firewall hinzu.
 
 #### <a name="public-cloudtabpublic-cloud"></a>[Öffentliche Cloud](#tab/public-cloud)
+
 ```
 *.aadcdn.microsoftonline-p.com
 *.aka.ms
@@ -48,6 +51,7 @@ Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-
 ```
 
 #### <a name="us-government-cloudtabus-government-cloud"></a>[US- Government Cloud](#tab/us-government-cloud)
+
 ```
 *.azure.us
 *.loganalytics.us
@@ -60,6 +64,7 @@ Die für das Azure-Portal in die Liste mit sicheren Adressen aufzunehmenden URL-
 ```
 
 #### <a name="china-government-cloudtabchina-government-cloud"></a>[China-Government Cloud](#tab/china-government-cloud)
+
 ```
 *.azure.cn
 *.microsoft.cn

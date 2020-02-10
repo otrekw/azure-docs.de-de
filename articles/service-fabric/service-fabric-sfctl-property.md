@@ -3,21 +3,21 @@ title: 'Azure Service Fabric CLI: sfctl property'
 description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle für die Speicher- und Abfrageeigenschaften.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: d9129f07db9f3499b51707965d10426dbc3d3c12
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639104"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905832"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Speichern und Abfragen von Eigenschaften unter Service Fabric-Namen.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|BESCHREIBUNG|
+|Get-Help|Beschreibung|
 | --- | --- |
 | delete | Löscht die angegebene Service Fabric-Eigenschaft. |
 | get | Ruft die angegebene Service Fabric-Eigenschaft ab. |
@@ -31,7 +31,7 @@ Löscht die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
@@ -39,7 +39,7 @@ Löscht die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen. 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -54,7 +54,7 @@ Ruft die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen ab. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Gibt den Namen der abzurufenden Eigenschaft ab. |
@@ -62,7 +62,7 @@ Ruft die angegebene Service Fabric-Eigenschaft unter einem bestimmten Namen ab. 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -77,7 +77,7 @@ Ein Service Fabric-Name kann eine oder mehrere benannte Eigenschaften haben, in 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
@@ -86,7 +86,7 @@ Ein Service Fabric-Name kann eine oder mehrere benannte Eigenschaften haben, in 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -101,17 +101,17 @@ Erstellt oder aktualisiert die angegebene Service Fabric-Eigenschaft unter einem
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --name-id [erforderlich] | Der Service Fabric-Name ohne das URI-Schema „fabric\:“. |
 | --property-name [erforderlich] | Der Name der Service Fabric-Eigenschaft. |
-| --value [erforderlich] | Beschreibt einen Service Fabric-Eigenschaftswert. Hierbei handelt es sich um eine JSON-Zeichenfolge. <br><br> Die JSON-Zeichenfolge verfügt über zwei Felder, die die Werte „Kind“ und „Value“ der Daten angeben. Der Wert „Kind“ muss als erstes Element in der JSON-Zeichenfolge angezeigt werden und kann die Werte „Binary“, „Int64“, „Double“, „String“ und „Guid“ enthalten. Der Wert sollte für-die angegebenen Typen serialisiert werden können. Die Werte „Kind“ und „Value“ der Daten sollten als Zeichenfolgen angegeben werden. |
+| --value [erforderlich] | Beschreibt einen Service Fabric-Eigenschaftswert. Hierbei handelt es sich um eine JSON-Zeichenfolge. <br><br> Die JSON-Zeichenfolge verfügt über zwei Felder („Kind“ der Daten und „Value“), die als „Data“ der Daten eingegeben werden. Der Wert „Kind“ muss als erstes Element in der JSON-Zeichenfolge angezeigt werden und kann die Werte „Binary“, „Int64“, „Double“, „String“ und „Guid“ enthalten. Der Wert sollte für-die angegebenen Typen serialisiert werden können. Die Werte „Kind“ und „Value“ der Daten sollten als Zeichenfolgen angegeben werden. |
 | --custom-id-type | Die benutzerdefinierte Typ-ID der Eigenschaft. Mithilfe dieser Eigenschaft kann der Benutzer den Typ des Eigenschaftswerts kennzeichnen. |
 | --timeout -t | Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|BESCHREIBUNG|
+|Argument|Beschreibung|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

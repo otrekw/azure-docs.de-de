@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772032"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990707"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -39,14 +39,7 @@ Wenn Sie den Fehler „Die angegebene Manifestdatei ist ungültig: Ungültiger O
 Dies kann der Fall sein, wenn sich der Appliancecomputer hinter einem Proxy befindet.
 
 - Stellen Sie sicher, dass Sie die Anmeldeinformationen für die Autorisierung angeben, wenn der Proxy diese benötigt.
-- Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die folgenden URLs einer Zulassungsliste hinzu:
-
-    - [URLs für VMware-Bewertung](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [URLs für Hyper-V-Bewertung](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-    - [URLs für VMware-Migration ohne Agent](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [URLs für VMware-Migration mit Agent](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
-    - [URLs für Hyper-V-Migration](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
-
+- Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Verbindungen verwenden, fügen Sie die [folgenden URLs](migrate-appliance.md#url-access) einer Zulassungsliste hinzu.
 - Wenn Sie für die Internetverbindung einen abfangenden Proxy verwenden, importieren Sie das Proxyzertifikat [mit diesen Schritten](https://docs.microsoft.com/azure/migrate/concepts-collector) in die Appliance-VM.
 
 ##  <a name="datetime-synchronization-error"></a>Datums-/Zeitsynchronisierungsfehler

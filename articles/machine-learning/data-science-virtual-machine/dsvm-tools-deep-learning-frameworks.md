@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 65bc11282726d9e66dbed8fa1fbb75fc1b89c1d1
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 3dfb2c201138a65379aa509ce1bf10894ab6819b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615325"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984709"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Deep Learning- und KI-Frameworks für Azure Data Science VM
 Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
@@ -115,7 +115,7 @@ Die in DSVM verfügbaren Deep Learning-Frameworks sind nachstehend aufgelistet.
 
 |    |           |
 | ------------- | ------------- |
-| Unterstützte Versionen | 1.2.0 |
+| Unterstützte Versionen | 1.2.0 (Ubuntu 16.04, Windows 2016, Windows 2019), 1.4.0 (Ubuntu 18.04) |
 | Unterstützte DSVM-Editionen      | Linux |
 | Konfiguration/Installation auf der DSVM  | Installiert in [Python 3.5](dsvm-tools-languages.md#python-linux-edition). Jupyter-Beispielnotebooks sind im Lieferumfang enthalten, und die Beispiele befinden sich unter „/dsvm/samples/pytorch“. |
 | Zur Ausführung      | Terminal: Aktivieren Sie die richtige Umgebung, und führen Sie dann Python aus.<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine): Stellen Sie eine Verbindung her, und öffnen Sie dann das PyTorch-Verzeichnis für Beispiele.  |

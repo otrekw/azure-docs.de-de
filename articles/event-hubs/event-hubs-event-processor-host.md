@@ -12,16 +12,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 07/16/2019
+ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 312800482405530d57ce7b0b1e77b91c2ad069ce
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899975"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
+> [!NOTE]
+> Dieser Artikel bezieht sich auf die alte Version des Azure Event Hubs SDK. Informationen dazu, wie Sie Ihren Code zu der neueren Version des SDK migrieren, finden Sie in diesen Migrationsleitfäden. 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md)
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md)
+> - [Java-Skript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md)
+>
+> Siehe auch [Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg](event-processor-balance-partition-load.md).
 
 Azure Event Hubs ist ein leistungsfähiger Dienst zur Erfassung von Telemetriedaten, der zum Streamen von Millionen von Ereignissen zu geringen Kosten verwendet werden kann. In diesem Artikel wird beschrieben, wie erfasste Ereignisse mithilfe des *Ereignisprozessorhosts* (Event Processor Host, EPH) genutzt und verarbeitet werden. Dabei handelt es sich um einen intelligenten Consumer-Agent, der die Verwaltung von Prüfpunkten, Leasing und parallelen Ereignislesern vereinfacht.  
 
@@ -115,8 +123,8 @@ Der Besitz einer Partition durch eine EPH-Instanz (oder einen Consumer) wird üb
 | $Default | 0 | Consumer\_VM3 | 2018-04-15T01:23:45 | 156 |
 | $Default | 1 | Consumer\_VM4 | 2018-04-15T01:22:13 | 734 |
 | $Default | 2 | Consumer\_VM0 | 2018-04-15T01:22:56 | 122 |
-| : |   |   |   |   |
-| : |   |   |   |   |
+| decodiert werden: |   |   |   |   |
+| decodiert werden: |   |   |   |   |
 | $Default | 15 | Consumer\_VM3 | 2018-04-15T01:22:56 | 976 |
 
 In diesem Beispiel übernimmt jeder Host den Besitz einer Partition für eine bestimmte Dauer (Leasedauer). Wenn bei einem Host ein Fehler auftritt (virtueller Computer wird heruntergefahren), läuft die Lease ab. Andere Hosts versuchen, den Besitz der Partition zu übernehmen. Einer der Hosts ist erfolgreich. Bei diesem Prozess wird die Lease für die Partition mit einem neuen Besitzer zurückgesetzt. Auf diese Weise kann nur jeweils ein einzelner Leser Daten von einer bestimmten Partition in einer Consumergruppe lesen.
