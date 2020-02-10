@@ -72,6 +72,8 @@
               href: howto-saml-token-encryption.md
             - name: Endbenutzerportale
               href: end-user-experiences.md
+    - name: Sichtbarkeit und Steuerung von Cloud-Apps
+      href: cloud-app-security.md
     - name: Anwendungsproxy für lokale Apps
       items:
         - name: Anwendungsproxy

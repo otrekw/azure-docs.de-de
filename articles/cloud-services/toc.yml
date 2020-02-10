@@ -141,6 +141,8 @@
           href: applications-dont-support-TLS-1-2.md
         - name: Häufige Ursachen für die Wiederverwendung von Cloud Services-Rollen
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: "Die Anwendung unterstützt TLS\_1.2 nicht."
+          href: applications-dont-support-tls-1-2.md
         - name: Standardgröße für TEMP-Ordner zu klein für eine Rolle
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: Häufige Bereitstellungsprobleme

@@ -5,108 +5,83 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 10/15/2017
-ms.openlocfilehash: 79cc9d1bf7aa9e8848197525646b0a3646a558d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 01/31/2020
+ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666804"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904988"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Diagnostizieren und Beheben von Workflowfehlern in Azure Logic Apps
 
-Ihre Logik-App generiert Informationen, die Ihnen beim Diagnostizieren und Debuggen von Problemen in Ihrer App helfen. Zum Diagnostizieren einer Logik-App können Sie im Azure-Portal die einzelnen Schritte des Workflows prüfen. Sie können einem Workflow aber auch einige Schritte hinzufügen, um ein Laufzeit-Debugging durchzuführen.
+Ihre Logik-App generiert Informationen, die Ihnen beim Diagnostizieren und Debuggen von Problemen in Ihrer App helfen. Zum Diagnostizieren einer Logik-App können Sie im Azure-Portal die einzelnen Schritte des Workflows prüfen. Alternativ können Sie einem Workflow einige Schritte hinzufügen, um ein Laufzeit-Debugging durchzuführen.
 
-## <a name="review-trigger-history"></a>Prüfen des Triggerverlaufs
+<a name="check-trigger-history"></a>
 
-Jede Logik-App beginnt mit einem Trigger. Falls der Trigger nicht ausgelöst wird, überprüfen Sie zunächst den Triggerverlauf. Der Verlauf enthält sämtliche Auslöseversuche Ihrer Logik-App sowie Details zu den Eingaben und Ausgaben des jeweiligen Auslöseversuchs.
+## <a name="check-trigger-history"></a>Triggerverlauf überprüfen
 
-1. Um zu prüfen, ob der Trigger ausgelöst wurde, klicken Sie im Menü Ihrer Logik-App auf **Übersicht**. Sehen Sie sich unter **Triggerverlauf** den Status des Triggers an.
+Jede Ausführung einer Logik-App beginnt mit einem Auslöseversuch. Wenn also der Trigger nicht ausgelöst wird, führen Sie die folgenden Schritte aus:
 
-   > [!TIP]
-   > Falls das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückkehren und Ihre Logik-App erneut öffnen.
+1. Überprüfen Sie den Status des Triggers, indem Sie [den Triggerverlauf überprüfen](../logic-apps/monitor-logic-apps.md#review-trigger-history). Um weitere Informationen zu dem Auslöseversuch anzuzeigen, wählen Sie das Triggerereignis aus, z. B.:
 
-   ![Prüfen des Triggerverlaufs](./media/logic-apps-diagnosing-failures/logic-app-trigger-history-overview.png)
+   ![Anzeigen von Status und Verlauf des Triggers](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-   > [!TIP]
-   > * Sollten Sie nicht die erwarteten Daten vorfinden, klicken Sie auf der Symbolleiste auf **Aktualisieren**.
-   > * Falls die Liste viele Auslöseversuche enthält und Sie den gewünschten Eintrag nicht finden, können Sie die Liste filtern.
+1. Überprüfen Sie die Eingaben des Triggers, um zu bestätigen, dass Sie erwartungsgemäß angezeigt werden. Wählen Sie unter **Eingabelink** den Link aus, über den der Bereich **Eingaben** angezeigt wird.
 
-   Ein Auslöseversuch kann folgende Statuswerte haben:
+   Triggereingaben enthalten die Daten, die vom Trigger erwartet werden und die er zum Starten des Workflows benötigt. Wenn Sie diese Eingaben überprüfen, können Sie bestimmen, ob die Triggereingaben korrekt sind und ob die Bedingung erfüllt wurde, sodass der Workflow fortgesetzt werden kann.
 
-   | Status | BESCHREIBUNG | 
-   | ------ | ----------- | 
-   | **Erfolgreich** | Der Trigger hat den Endpunkt geprüft und verfügbare Daten gefunden. Dieser Status tritt in der Regel zusammen mit dem Status „Ausgelöst“ auf. Andernfalls enthält die Triggerdefinition möglicherweise eine nicht erfüllte Bedingung oder einen `SplitOn`-Befehl, dessen Voraussetzungen nicht erfüllt wurden. <p>Dieser Status kann für einen manuellen Trigger, einen Wiederholungstrigger oder einen Abfragetrigger gelten. Ein Trigger kann erfolgreich ausgeführt werden und die Ausführung dennoch nicht erfolgreich sein, wenn die Aktionen nicht behandelte Fehler generieren. | 
-   | **Übersprungen** | Der Trigger hat den Endpunkt geprüft, aber keine Daten gefunden. | 
-   | **Fehler** | Ein Fehler ist aufgetreten. Wählen Sie zum Überprüfen der ggf. generierten Fehlermeldungen für einen fehlerhaften Trigger den entsprechenden Auslöseversuch aus, und klicken Sie auf **Ausgaben**. Möglicherweise sind ungültige Eingaben vorhanden. | 
-   ||| 
+   Die `feedUrl`-Eigenschaft hat hier beispielsweise einen falschen RSS-Feedwert:
 
-   Unter Umständen sind mehrere Triggereinträge mit der gleichen Zeitangabe (Datum und Uhrzeit) vorhanden. Dieser Fall kann eintreten, wenn Ihre Logik-App mehrere Elemente findet. 
-   Bei jeder Auslösung des Triggers erstellt die Logic Apps-Engine eine Logik-App-Instanz zur Ausführung Ihres Workflows. Standardmäßig werden die einzelnen Instanzen parallel ausgeführt, damit keine Wartezeiten entstehen.
+   ![Triggereingaben auf Fehler überprüfen](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
+
+1. Überprüfen Sie die Ausgaben des Triggers, falls vorhanden, um zu bestätigen, dass Sie erwartungsgemäß angezeigt werden. Wählen Sie unter **Ausgabelink** den Link aus, über den der Bereich **Ausgaben** angezeigt wird.
+
+   Triggerausgaben enthalten die Daten, die der Trigger an den nächsten Schritt im Workflow übergibt. Wenn Sie diese Ausgaben überprüfen, können Sie bestimmen, ob die richtigen oder erwarteten Werte an den nächsten Schritt im Workflow übergeben wurden, z. B.:
+
+   ![Triggerausgaben auf Fehler überprüfen](./media/logic-apps-diagnosing-failures/review-trigger-outputs-for-errors.png)
 
    > [!TIP]
-   > Sie können den Trigger erneut überprüfen, ohne auf die nächste Wiederholung zu warten. Klicken Sie in der Übersicht auf der Symbolleiste auf **Trigger ausführen**, und wählen Sie den Trigger aus, um eine Überprüfung zu erzwingen. Alternativ können Sie auf der Symbolleiste des Designers für Logik-Apps auf **Ausführen** klicken.
+   > Sollten Sie Inhalte vorfinden, die Sie nicht verstehen, erfahren Sie [hier mehr über unterschiedliche Inhaltstypen](../logic-apps/logic-apps-content-type.md) in Azure Logic Apps.
 
-3. Wählen Sie unter **Triggerverlauf** einen Auslöseversuch aus, um die Details zu diesem Auslöseversuch zu untersuchen. 
+<a name="check-runs-history"></a>
 
-   ![Auswählen eines Auslöseversuchs](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
+## <a name="check-runs-history"></a>Ausführungsverlauf überprüfen
 
-4. Überprüfen Sie die Eingaben und die ggf. durch den Trigger generierten Ausgaben. Triggerausgaben zeigen die Daten an, die vom Trigger empfangen wurden. Mithilfe dieser Ausgaben können Sie ermitteln, ob alle Eigenschaften erwartungsgemäß zurückgegeben wurden.
+Jedes Mal, wenn der Trigger für ein Element oder Ereignis ausgelöst wird, erstellt die Logic Apps-Engine eine gesonderte Workflowinstanz für jedes Element oder Ereignis und führt diese aus. Wenn eine Ausführung fehlschlägt, führen Sie diese Schritte aus, um die Vorgänge während dieser Ausführung zu überprüfen – einschließlich des Status für die einzelnen Workflowschritte sowie der Eingaben und Ausgaben für die einzelnen Schritte.
 
-   > [!NOTE]
-   > Sollten Sie Inhalte vorfinden, die Sie nicht verstehen, erfahren Sie [hier](../logic-apps/logic-apps-content-type.md), wie Azure Logic Apps unterschiedliche Inhaltstypen behandelt.
+1. Überprüfen Sie den Ausführungsstatus des Workflows, indem Sie [den Ausführungsverlauf überprüfen](../logic-apps/monitor-logic-apps.md#review-runs-history). Weitere Informationen zu einer fehlgeschlagenen Ausführung, einschließlich aller Schritte in dieser Ausführung mit ihrem jeweiligen Status, erhalten Sie, indem Sie die fehlgeschlagene Ausführung auswählen.
 
-   ![Triggerausgaben](./media/logic-apps-diagnosing-failures/trigger-outputs.png)
+   ![Ausführungsverlauf anzeigen und fehlgeschlagene Ausführung auswählen](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
-## <a name="review-run-history"></a>Überprüfen des Ausführungsverlaufs
+1. Nachdem alle Schritte in der Ausführung angezeigt wurden, erweitern Sie den ersten fehlerhaften Schritt.
 
-Jeder ausgelöste Trigger startet eine Workflowausführung. Sie können die Vorgänge während dieser Ausführung überprüfen – einschließlich des Status für die einzelnen Workflowschritte sowie der Eingaben und Ausgaben für die einzelnen Schritte.
+   ![Ersten fehlerhaften Schritt erweitern](./media/logic-apps-diagnosing-failures/logic-app-run-pane.png)
 
-1. Klicken Sie im Logik-App-Menü auf **Übersicht**. Überprüfen Sie unter **Ausführungsverlauf** die Ausführung für den ausgelösten Trigger.
+1. Überprüfen Sie die Eingaben des fehlgeschlagenen Schritts, um zu bestätigen, dass Sie erwartungsgemäß angezeigt werden.
 
-   > [!TIP]
-   > Falls das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückkehren und Ihre Logik-App erneut öffnen.
+1. Überprüfen Sie die Details zu den einzelnen Schritten in einer bestimmten Ausführung. Wählen Sie unter **Ausführungsverlauf** die Ausführung aus, die Sie untersuchen möchten.
 
-   ![Überprüfen des Ausführungsverlaufs](./media/logic-apps-diagnosing-failures/logic-app-runs-history-overview.png)
-
-   > [!TIP]
-   > * Sollten Sie nicht die erwarteten Daten vorfinden, klicken Sie auf der Symbolleiste auf **Aktualisieren**.
-   > * Falls die Liste viele Ausführungen enthält und Sie den gewünschten Eintrag nicht finden, können Sie die Liste filtern.
-
-   Eine Ausführung kann folgende Statuswerte haben:
-
-   | Status | BESCHREIBUNG | 
-   | ------ | ----------- | 
-   | **Erfolgreich** | Alle Aktionen waren erfolgreich. <p>Falls bei einer bestimmten Aktion ein Fehler aufgetreten ist, wurde dieser von einer nachfolgenden Aktion im Workflow behandelt. | 
-   | **Fehler** | Mindestens eine Aktion war nicht erfolgreich, und der aufgetretene Fehler konnte von keiner nachfolgenden Aktion im Workflow behandelt werden. | 
-   | **Abgebrochen** | Der Workflow wurde ausgeführt, hat dann aber eine Abbruchanforderung erhalten. | 
-   | **Wird ausgeführt** | Der Workflow wird derzeit ausgeführt. <p>Dieser Status kann auf einen gedrosselten Workflow oder auf den aktuellen Tarif zurückzuführen sein. Weitere Informationen finden Sie unter den Aktionsbeschränkungen auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/logic-apps/). Wenn Sie die [Diagnoseprotokollierung](../logic-apps/logic-apps-monitor-your-logic-apps.md) einrichten, erhalten Sie auch Informationen zu ggf. aufgetretenen Drosselungsereignissen. | 
-   ||| 
-
-2. Überprüfen Sie die Details zu den einzelnen Schritten in einer bestimmten Ausführung. Wählen Sie unter **Ausführungsverlauf** die Ausführung aus, die Sie untersuchen möchten.
-
-   ![Überprüfen des Ausführungsverlaufs](./media/logic-apps-diagnosing-failures/logic-app-run-history.png)
-
-   Die Ausführungsdetails enthalten die einzelnen Schritte und geben Aufschluss darüber, ob sie erfolgreich waren (unabhängig davon, ob die Ausführung an sich erfolgreich war).
+   ![Überprüfen des Ausführungsverlaufs](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Details für eine Logik-App-Ausführung anzeigen](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-3. Wählen Sie zum Untersuchen der Eingaben, Ausgaben und Fehlermeldungen für einen bestimmten Schritt den gewünschten Schritt aus, um den Bereich zu erweitern und die Details anzuzeigen. Beispiel:
+1. Wählen Sie zum Untersuchen der Eingaben, Ausgaben und Fehlermeldungen für einen bestimmten Schritt den gewünschten Schritt aus, um den Bereich zu erweitern und die Details anzuzeigen. Beispiel:
 
    ![Schrittdetails anzeigen](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 
 ## <a name="perform-runtime-debugging"></a>Durchführen von Laufzeit-Debugging
 
-Zusätzlich zur Überprüfung des Triggers und des Ausführungsverlaufs können Sie einem Workflow Diagnoseschritte hinzufügen, die Sie beim Debuggen unterstützen. So können Sie beispielsweise Schritte hinzufügen, die den Dienst [Webhook Tester](https://webhook.site/) nutzen, um HTTP-Anforderungen untersuchen und ihre exakte Größe und Form sowie ihr Format ermitteln zu können.
+Zusätzlich zur Überprüfung des Triggers und des Ausführungsverlaufs können Sie einem Logik-App-Workflow Diagnoseschritte hinzufügen, die Sie beim Debuggen unterstützen. So können Sie beispielsweise Schritte hinzufügen, die den Dienst [Webhook Tester](https://webhook.site/) nutzen, um HTTP-Anforderungen untersuchen und ihre exakte Größe und Form sowie ihr Format ermitteln zu können.
 
-1. Besuchen Sie [Webhook Tester](https://webhook.site/), und kopieren Sie die eindeutige URL, die erstellt wurde.
+1. Wechseln Sie zur Site [Webhook Tester](https://webhook.site/), und kopieren Sie die generierte eindeutige URL.
 
-2. Fügen Sie in Ihrer Logik-App eine HTTP POST-Aktion mit dem Textinhalt hinzu, den Sie testen möchten (beispielsweise einen Ausdruck oder eine weitere Schrittausgabe).
+1. Fügen Sie in Ihrer Logik-App eine HTTP POST-Aktion mit dem Textinhalt hinzu, den Sie testen möchten (beispielsweise einen Ausdruck oder eine weitere Schrittausgabe).
 
-3. Fügen Sie die URL für Webhook Tester in die HTTP POST-Aktion ein.
+1. Fügen Sie Ihre URL von Webhook Tester in die HTTP POST-Aktion ein.
 
-4. Um zu prüfen, wie die Anforderung beim Generieren durch die Logic Apps-Engine gebildet wird, führen Sie die Logik-App aus, und prüfen Sie Webhook Tester für weitere Informationen.
+1. Um zu prüfen, wie die Anforderung beim Generieren durch die Logic Apps-Engine gebildet wird, führen Sie die Logik-App aus, und besuchen Sie die „Webhook Tester“-Site erneut, um weitere Details zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überwachen Ihrer Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+* [Überwachen Ihrer Logik-App](../logic-apps/monitor-logic-apps.md)

@@ -4,7 +4,7 @@
   items:
     - name: Informationen zu Azure Red Hat OpenShift
       href: intro-openshift.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Verwalten eines Azure Red Hat OpenShift-Clusters
       items:
@@ -22,7 +22,7 @@
           href: cluster-administration-cluster-admin-role.md
         - name: 2. Verwalten von Sicherheitskontexteinschränkungen
           href: cluster-administration-security-context-constraints.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
@@ -47,6 +47,8 @@
             - name: Deaktivieren von Azure Monitor für Container
               href: ../azure-monitor/insights/container-insights-optout-openshift.md
               maintainContext: true
+    - name: Ausführen von privilegierten Containern in einem Azure Red Hat OpenShift-Cluster
+      href: howto-run-privileged-containers.md
 - name: Verweis
   items:
     - name: Azure Red Hat OpenShift-CLI

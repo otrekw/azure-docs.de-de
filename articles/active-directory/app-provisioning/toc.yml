@@ -1,0 +1,107 @@
+- name: Dokumentation zur Anwendungs- und Personalbereitstellung
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist die Anwendungsbereitstellung?
+      href: user-provisioning.md
+- name: Tutorials
+  items:
+    - name: G Suite
+      href: /azure/active-directory/saas-apps/google-apps-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: ServiceNow
+      href: /azure/active-directory/saas-apps/servicenow-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Amazon Web Services (AWS) – Rollenbereitstellung
+      href: '/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-ont?context=azure/active-directory/app-provisioning/context/app-provisioning-context'
+    - name: Workday
+      href: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: SAP SuccessFactors
+      href: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Alle integrierten Katalog-Apps
+      href: /azure/active-directory/saas-apps
+- name: Konzepte
+  expanded: true
+  items:
+    - name: Funktionsweise der Anwendungsbereitstellung
+      href: how-provisioning-works.md
+    - name: Planen einer Anwendungsbereitstellung
+      href: plan-auto-user-provisioning.md
+    - name: Planen einer HR-Cloudbereitstellung
+      href: plan-cloud-hr-provision.md
+- name: Anleitungen
+  expanded: true
+  items:
+    - name: Konfigurieren der Bereitstellung für eine Katalog-App
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Bearbeiten der Attributzuordnungen
+      items:
+        - name: Anpassen von Attributzuordnungen
+          href: customize-application-attributes.md
+        - name: Schreiben von Ausdrücken für Attributzuordnungen
+          href: functions-for-customizing-application-data.md
+    - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
+      items:
+        - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
+          href: skip-out-of-scope-deletions.md
+    - name: Überwachen und Melden der Bereitstellung
+      items:
+        - name: Überwachen des Bereitstellungsstatus und der Leistung
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: Berichterstellung zur App-Bereitstellung
+          href: check-status-user-account-provisioning.md
+        - name: Exportieren und Importieren Ihrer Konfiguration
+          href: export-import-provisioning-configuration.md
+    - name: Problembehandlung bei der Anwendungsbereitstellung
+      items:
+        - name: Problembehandlung bei der App-Bereitstellung
+          href: application-provisioning-config-problem.md
+        - name: Quarantänestatus
+          href: application-provisioning-quarantine-status.md
+        - name: Problem mit der Autorisierung (Administratoranmeldeinformationen können nicht gespeichert werden)
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: Benutzer werden nicht bereitgestellt.
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: Falsche Benutzer werden bereitgestellt.
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+        - name: Fehlendes Quellattribut
+          href: user-provisioning-sync-attributes-for-mapping.md
+        - name: Langsamer Bereitstellungsauftrag
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: Bereitstellungsprotokolle
+          href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
+      href: use-scim-to-provision-users-and-groups.md
+    - name: Automatisieren der Konfiguration mit MS Graph
+      href: application-provisioning-configure-api.md
+- name: Verweis
+  items:
+    - name: Auswählen einer Bereitstellungsmethode
+      href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: HR-Cloudbereitstellung
+      items:
+        - name: SuccessFactors-Attributreferenz
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday-Attributreferenz
+          href: workday-attribute-reference.md
+    - name: Azure AD Connect-Bereitstellungs-Agent
+      items:
+        - name: Versionsverlauf des Bereitstellungs-Agents
+          href: provisioning-agent-release-version-history.md
+- name: Ressourcen
+  items:
+    - name: Support- und Hilfeoptionen für Entwickler
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: Azure-Feedbackforum
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

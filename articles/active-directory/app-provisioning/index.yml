@@ -1,0 +1,67 @@
+### YamlMime:Landing
+title: Dokumentation zur Anwendungs- und Personalbereitstellung
+summary: Dank der Azure Active Directory-App-Bereitstellung können Sie automatisch Benutzeridentitäten in Ihren Cloud-Apps (SaaS) erstellen und verwalten. Azure AD ermöglicht darüber hinaus die Bereitstellung mit cloudbasierten Anwendungen für das Personalwesen (Human Resources, HR). In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Cloud-Apps verwalten und bereitstellen sowie die Personalbereitstellung verwalten.
+metadata:
+  title: Dokumentation zur Anwendungsbereitstellung
+  description: Dank der Azure Active Directory-App-Bereitstellung können Sie automatisch Benutzeridentitäten in Ihren Cloud-Apps (SaaS) erstellen und verwalten. Azure AD ermöglicht darüber hinaus die Bereitstellung mit cloudbasierten Anwendungen für das Personalwesen (Human Resources, HR). In unseren Schnellstarts, Tutorials und Anleitungen erfahren Sie, wie Sie Cloud-Apps verwalten und bereitstellen sowie die Personalbereitstellung verwalten.
+  ms.service: active-directory
+  ms.subservice: app-mgmt
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 02/06/2020
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
+  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/07/2020
+  ms.locfileid: "77065500"
+landingContent:
+- title: Bereitstellen von Benutzern und Gruppen in einer Cloud-App
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Anwendungsbereitstellung?
+      url: user-provisioning.md
+    - text: Funktionsweise der Bereitstellung
+      url: how-provisioning-works.md
+  - linkListType: tutorial
+    links:
+    - text: 'SAP Cloud Platform Identity Authentication: Bereitstellung'
+      url: /azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: 'Oracle Fusion ERP: Bereitstellung'
+      url: /azure/active-directory/saas-apps/oracle-fusion-erp-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: 'Atlassian Cloud: Bereitstellung'
+      url: /azure/active-directory/saas-apps/atlassian-cloud-provisioning-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+  - linkListType: how-to-guide
+    links:
+    - text: Fügen Sie eine Katalog-App hinzu? Konfigurieren der Bereitstellung für die App
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Anpassen von Attributzuordnungen
+      url: customize-application-attributes.md
+    - text: Verwenden von Bereichsfiltern
+      url: define-conditional-rules-for-provisioning-user-accounts.md
+- title: Entwickeln einer App mithilfe von SCIM für die Bereitstellung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Bereitstellung mit SCIM (Blog zu Identitätsstandards)
+      url: https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010
+  - linkListType: how-to-guide
+    links:
+    - text: Sie entwickeln eine App? Verwenden von SCIM für die automatische Bereitstellung
+      url: use-scim-to-provision-users-and-groups.md
+- title: Verwalten der eingehenden HR-Cloudbereitstellung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Planen einer HR-Cloudbenutzerbereitstellung
+      url: plan-cloud-hr-provision.md
+  - linkListType: tutorial
+    links:
+    - text: 'Workday: Bereitstellung'
+      url: /azure/active-directory/saas-apps/workday-inbound-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context
+    - text: 'SAP SuccessFactors: Bereitstellung'
+      url: /azure/active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial?context=azure/active-directory/app-provisioning/context/app-provisioning-context

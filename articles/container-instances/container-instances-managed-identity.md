@@ -2,13 +2,13 @@
 title: Aktivieren einer verwalteten Identität in einer Containergruppe
 description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
-ms.date: 10/22/2018
-ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 01/29/2020
+ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776522"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901933"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -28,7 +28,7 @@ Passen Sie die Beispiele an, um Identitäten in Azure Container Instances zu akt
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 
-Mit einer verwalteten Identität in einem ausgeführten Container können Sie sich [bei jedem Dienst authentifizieren, der die Azure Active Directory-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), ohne Anmeldeinformationen im Code verwalten zu müssen. Für Dienste, die die Azure AD-Authentifizierung nicht unterstützen, können Sie Geheimnisse in Azure Key Vault speichern und mithilfe der verwalteten Identität auf Key Vault zugreifen, um Anmeldeinformationen abzurufen. Weitere Informationen zur Verwendung einer verwalteten Identität finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
+Mit einer verwalteten Identität in einem ausgeführten Container können Sie sich [bei jedem Dienst authentifizieren, der die Azure Active Directory-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), ohne Anmeldeinformationen im Code verwalten zu müssen. Für Dienste, die die Azure AD-Authentifizierung nicht unterstützen, können Sie Geheimnisse in Azure Key Vault speichern und mithilfe der verwalteten Identität auf den Schlüsseltresor zugreifen, um Anmeldeinformationen abzurufen. Weitere Informationen zur Verwendung einer verwalteten Identität finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert. Derzeit werden verwaltete Identitäten in Azure Container Instances nur für Linux-Container und noch nicht für Windows-Container unterstützt.
@@ -64,28 +64,36 @@ Erstellen Sie zunächst mit dem folgenden Befehl [az group create](/cli/azure/gr
 az group create --name myResourceGroup --location eastus
 ```
 
-Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create), um eine Key Vault-Instanz zu erstellen. Geben Sie hierbei einen eindeutigen Namen für die Key Vault-Instanz an. 
+Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create), um einen Schlüsseltresor zu erstellen. Geben Sie hierbei einen eindeutigen Namen für die Key Vault-Instanz an. 
 
 ```azurecli-interactive
-az keyvault create --name mykeyvault --resource-group myResourceGroup --location eastus
+az keyvault create \
+  --name mykeyvault \
+  --resource-group myResourceGroup \ 
+  --location eastus
 ```
 
-Speichern Sie mithilfe des Befehls [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) ein Beispielgeheimnis in der Key Vault-Instanz:
+Speichern Sie mithilfe des Befehls [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) ein Beispielgeheimnis im Schlüsseltresor:
 
 ```azurecli-interactive
-az keyvault secret set --name SampleSecret --value "Hello Container Instances!" --description ACIsecret  --vault-name mykeyvault
+az keyvault secret set \
+  --name SampleSecret \
+  --value "Hello Container Instances" \
+  --description ACIsecret --vault-name mykeyvault
 ```
 
 Fahren Sie mit den folgenden Beispielen fort, um mit einer vom Benutzer oder vom System zugewiesenen verwalteten Identität in Azure Container Instances auf die Key Vault-Instanz zuzugreifen.
 
-## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Beispiel 1: Verwenden einer vom Benutzer zugewiesenen Identität für den Zugriff auf Azure Key Vault
+## <a name="example-1-use-a-user-assigned-identity-to-access-azure-key-vault"></a>Beispiel 1: Verwenden einer vom Benutzer zugewiesenen Identität für den Zugriff auf Azure Key Vault
 
 ### <a name="create-an-identity"></a>Erstellen einer Identität
 
 Erstellen Sie zunächst mit dem Befehl [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) eine Identität in Ihrem Abonnement. Sie können die gleiche Ressourcengruppe verwenden, die Sie zum Erstellen der Key Vault-Instanz verwendet haben, oder eine andere Ressourcengruppe auswählen.
 
 ```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myACIId
+az identity create \
+  --resource-group myResourceGroup \
+  --name myACIId
 ```
 
 Um die Identität in den folgenden Schritten verwenden zu können, speichern Sie mit dem Befehl [az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) die Dienstprinzipal-ID der Identität und die Ressourcen-ID in Variablen.
@@ -100,22 +108,31 @@ resourceID=$(az identity show --resource-group myResourceGroup --name myACIId --
 
 ### <a name="enable-a-user-assigned-identity-on-a-container-group"></a>Aktivieren einer vom Benutzer zugewiesenen Identität in einer Containergruppe
 
-Führen Sie den folgenden Befehl [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) aus, um eine auf Ubuntu Server basierende Containerinstanz zu erstellen. In diesem Beispiel wird eine einzelne Containergruppe bereitgestellt, die Sie verwenden können, um interaktiv auf andere Azure-Dienste zuzugreifen. Der `--assign-identity`-Parameter übergibt Ihre vom Benutzer zugewiesene verwaltete Identität an die Gruppe. Der Befehl mit langer Laufzeit sorgt dafür, dass der Container weiterhin ausgeführt wird. In diesem Beispiel wird die Ressourcengruppe verwendet, die zum Erstellen der Key Vault-Instanz verwendet wurde, Sie können aber auch eine andere Ressourcengruppe angeben.
+Führen Sie den folgenden [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)-Befehl aus, um eine auf dem `azure-cli`-Image von Microsoft basierende Containerinstanz zu erstellen. In diesem Beispiel wird eine einzelne Containergruppe bereitgestellt, die Sie interaktiv verwenden können, um die Azure CLI auszuführen, um auf andere Azure-Dienste zuzugreifen. In diesem Abschnitt wird nur das Basisbetriebssystem von Ubuntu verwendet. 
+
+Der `--assign-identity`-Parameter übergibt Ihre vom Benutzer zugewiesene verwaltete Identität an die Gruppe. Der Befehl mit langer Laufzeit sorgt dafür, dass der Container weiterhin ausgeführt wird. In diesem Beispiel wird die Ressourcengruppe verwendet, die zum Erstellen der Key Vault-Instanz verwendet wurde, Sie können aber auch eine andere Ressourcengruppe angeben.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity $resourceID --command-line "tail -f /dev/null"
+az container create \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --image mcr.microsoft.com/azure-cli \
+  --assign-identity $resourceID \
+  --command-line "tail -f /dev/null"
 ```
 
 Sie sollten innerhalb weniger Sekunden eine Antwort von der Azure-Befehlszeilenschnittstelle mit dem Hinweis erhalten, dass die Bereitstellung abgeschlossen wurde. Überprüfen Sie den Status mit dem Befehl [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show).
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
+az container show \
+  --resource-group myResourceGroup \
+  --name mycontainer
 ```
 
 Der Abschnitt `identity` in der Ausgabe sieht in etwa wie folgt aus und zeigt, dass die Identität in der Containergruppe festgelegt wurde. Die `principalID` unter `userAssignedIdentities` ist der Dienstprinzipal der Identität, die Sie in Azure Active Directory erstellt haben:
 
 ```console
-...
+[...]
 "identity": {
     "principalId": "null",
     "tenantId": "xxxxxxxx-f292-4e60-9122-xxxxxxxxxxxx",
@@ -127,23 +144,30 @@ Der Abschnitt `identity` in der Ausgabe sieht in etwa wie folgt aus und zeigt, d
       }
     }
   },
-...
+[...]
 ```
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Gewähren des Zugriffs auf die Key Vault-Instanz für die vom Benutzer zugewiesene Identität
 
-Führen Sie den folgenden Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
+Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der vom Benutzer zugewiesenen Identität das Abrufen von Geheimnissen aus dem Schlüsseltresor:
 
 ```azurecli-interactive
- az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
+ az keyvault set-policy \
+    --name mykeyvault \
+    --resource-group myResourceGroup \
+    --object-id $spID \
+    --secret-permissions get
 ```
 
 ### <a name="use-user-assigned-identity-to-get-secret-from-key-vault"></a>Verwenden der vom Benutzer zugewiesenen Identität zum Abrufen von Geheimnissen aus der Key Vault-Instanz
 
-Jetzt können Sie mithilfe der verwalteten Identität in der ausgeführten Containerinstanz auf die Key Vault-Instanz zugreifen. Für dieses Beispiel müssen Sie zuerst eine Bash-Shell im Container starten:
+Jetzt können Sie mithilfe der verwalteten Identität in der ausgeführten Containerinstanz auf den Schlüsseltresor zugreifen. Starten Sie zuerst eine Bash-Shell im Container:
 
 ```azurecli-interactive
-az container exec --resource-group myResourceGroup --name mycontainer --exec-command "/bin/bash"
+az container exec \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --exec-command "/bin/bash"
 ```
 
 Führen Sie die folgenden Befehle in der Bash-Shell im Container aus. Rufen Sie mit dem folgenden Befehl ein Zugriffstoken ab, um Azure Active Directory für die Authentifizierung bei Key Vault zu verwenden:
@@ -174,36 +198,49 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 Die Antwort sieht in etwa wie folgt aus und enthält das Geheimnis. In Ihrem Code würden Sie diese Ausgabe analysieren, um das Geheimnis abzurufen. Verwenden Sie das Geheimnis anschließend in einem nachfolgenden Vorgang, um auf eine andere Azure-Ressource zuzugreifen.
 
 ```bash
-{"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
+{"value":"Hello Container Instances","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
 ```
 
-## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Beispiel 2: Verwenden einer vom System zugewiesenen Identität für den Zugriff auf Azure Key Vault
+## <a name="example-2-use-a-system-assigned-identity-to-access-azure-key-vault"></a>Beispiel 2: Verwenden einer vom System zugewiesenen Identität für den Zugriff auf Azure Key Vault
 
 ### <a name="enable-a-system-assigned-identity-on-a-container-group"></a>Aktivieren einer vom System zugewiesenen Identität in einer Containergruppe
 
-Führen Sie den folgenden Befehl [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) aus, um eine auf Ubuntu Server basierende Containerinstanz zu erstellen. In diesem Beispiel wird eine einzelne Containergruppe bereitgestellt, die Sie verwenden können, um interaktiv auf andere Azure-Dienste zuzugreifen. Der `--assign-identity`-Parameter ohne zusätzlichen Wert aktiviert eine vom System zugewiesene verwaltete Identität in der Gruppe. Der Befehl mit langer Laufzeit sorgt dafür, dass der Container weiterhin ausgeführt wird. In diesem Beispiel wird die Ressourcengruppe verwendet, die zum Erstellen der Key Vault-Instanz verwendet wurde, Sie können aber auch eine andere Ressourcengruppe angeben.
+Führen Sie den folgenden [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create)-Befehl aus, um eine auf dem `azure-cli`-Image von Microsoft basierende Containerinstanz zu erstellen. In diesem Beispiel wird eine einzelne Containergruppe bereitgestellt, die Sie interaktiv verwenden können, um die Azure CLI auszuführen, um auf andere Azure-Dienste zuzugreifen. 
+
+Der `--assign-identity`-Parameter ohne zusätzlichen Wert aktiviert eine vom System zugewiesene verwaltete Identität in der Gruppe. Die Gültigkeit der Identität ist auf die Ressourcengruppe der Containergruppe beschränkt. Der Befehl mit langer Laufzeit sorgt dafür, dass der Container weiterhin ausgeführt wird. In diesem Beispiel wird die Ressourcengruppe verwendet, die zum Erstellen der Key Vault-Instanz verwendet wurde, Sie können aber auch eine andere Ressourcengruppe angeben.
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image microsoft/azure-cli --assign-identity --command-line "tail -f /dev/null"
+# Get the resource ID of the resource group
+rgID=$(az group show --name myResourceGroup --query id --output tsv)
+
+# Create container group with system-managed identity
+az container create \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --image mcr.microsoft.com/azure-cli \
+  --assign-identity --scope $rgID \
+  --command-line "tail -f /dev/null"
 ```
 
 Sie sollten innerhalb weniger Sekunden eine Antwort von der Azure-Befehlszeilenschnittstelle mit dem Hinweis erhalten, dass die Bereitstellung abgeschlossen wurde. Überprüfen Sie den Status mit dem Befehl [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show).
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
+az container show \
+  --resource-group myResourceGroup \
+  --name mycontainer
 ```
 
 Der Abschnitt `identity` in der Ausgabe sieht in etwa wie folgt aus und zeigt, dass eine vom System zugewiesene Identität in Azure Active Directory erstellt wurde:
 
 ```console
-...
+[...]
 "identity": {
     "principalId": "xxxxxxxx-528d-7083-b74c-xxxxxxxxxxxx",
     "tenantId": "xxxxxxxx-f292-4e60-9122-xxxxxxxxxxxx",
     "type": "SystemAssigned",
     "userAssignedIdentities": null
 },
-...
+[...]
 ```
 
 Legen Sie eine Variable auf den Wert von `principalId` (Dienstprinzipal-ID) der Identität fest, um sie in späteren Schritten zu verwenden.
@@ -214,54 +251,50 @@ spID=$(az container show --resource-group myResourceGroup --name mycontainer --q
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Gewähren des Zugriffs auf die Key Vault-Instanz für die Containergruppe
 
-Führen Sie den folgenden Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) aus, um eine Zugriffsrichtlinie für die Key Vault-Instanz festzulegen. Das folgende Beispiel ermöglicht der vom System verwalteten Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
+Führen Sie den folgenden Befehl vom Typ [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) aus, um eine Zugriffsrichtlinie für den Schlüsseltresor festzulegen. Das folgende Beispiel ermöglicht der vom System verwalteten Identität das Abrufen von Geheimnissen aus der Key Vault-Instanz:
 
 ```azurecli-interactive
- az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $spID --secret-permissions get
+ az keyvault set-policy \
+   --name mykeyvault \
+   --resource-group myResourceGroup \
+   --object-id $spID \
+   --secret-permissions get
 ```
 
 ### <a name="use-container-group-identity-to-get-secret-from-key-vault"></a>Verwenden der Identität der Containergruppe zum Abrufen von Geheimnissen aus der Key Vault-Instanz
 
-Jetzt können Sie mithilfe der verwalteten Identität in der ausgeführten Containerinstanz auf die Key Vault-Instanz zugreifen. Für dieses Beispiel müssen Sie zuerst eine Bash-Shell im Container starten:
+Jetzt können Sie mithilfe der verwalteten Identität in der ausgeführten Containerinstanz auf die Key Vault-Instanz zugreifen. Starten Sie zuerst eine Bash-Shell im Container:
 
 ```azurecli-interactive
-az container exec --resource-group myResourceGroup --name mycontainer --exec-command "/bin/bash"
+az container exec \
+  --resource-group myResourceGroup \
+  --name mycontainer \
+  --exec-command "/bin/bash"
 ```
 
-Führen Sie die folgenden Befehle in der Bash-Shell im Container aus. Rufen Sie mit dem folgenden Befehl ein Zugriffstoken ab, um Azure Active Directory für die Authentifizierung bei Key Vault zu verwenden:
+Führen Sie die folgenden Befehle in der Bash-Shell im Container aus. Melden Sie sich zuerst mithilfe der verwalteten Identität bei der Azure CLI an:
 
 ```bash
-curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net%2F' -H Metadata:true -s
+az login --identity
 ```
 
-Ausgabe:
+Rufen Sie aus dem ausgeführten Container heraus das Geheimnis aus dem Schlüsseltresor ab:
 
 ```bash
-{"access_token":"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSIsImtpZCI6Imk2bEdrM0ZaenhSY1ViMkMzbkVRN3N5SEpsWSJ9......xxxxxxxxxxxxxxxxx","refresh_token":"","expires_in":"28799","expires_on":"1539927532","not_before":"1539898432","resource":"https://vault.azure.net/","token_type":"Bearer"}
+az keyvault secret show \
+  --name SampleSecret \
+  --vault-name mykeyvault --query value
 ```
 
-Um das Zugriffstoken in einer Variablen zu speichern, die in nachfolgenden Befehlen zur Authentifizierung verwendet werden kann, führen Sie den folgenden Befehl aus:
+Der Wert des Geheimnisses wird abgerufen:
 
 ```bash
-token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net' -H Metadata:true | jq -r '.access_token')
-
-```
-
-Nun verwenden Sie das Zugriffstoken zum Durchführen der Authentifizierung bei Key Vault und Lesen eines Geheimnisses. Denken Sie daran, den Namen Ihres Schlüsseltresors in der URL zu ersetzen (*https:\//mykeyvault.vault.azure.net/...* ):
-
-```bash
-curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"
-```
-
-Die Antwort sieht in etwa wie folgt aus und enthält das Geheimnis. In Ihrem Code würden Sie diese Ausgabe analysieren, um das Geheimnis abzurufen. Verwenden Sie das Geheimnis anschließend in einem nachfolgenden Vorgang, um auf eine andere Azure-Ressource zuzugreifen.
-
-```bash
-{"value":"Hello Container Instances!","contentType":"ACIsecret","id":"https://mykeyvault.vault.azure.net/secrets/SampleSecret/xxxxxxxxxxxxxxxxxxxx","attributes":{"enabled":true,"created":1539965967,"updated":1539965967,"recoveryLevel":"Purgeable"},"tags":{"file-encoding":"utf-8"}}
+"Hello Container Instances"
 ```
 
 ## <a name="enable-managed-identity-using-resource-manager-template"></a>Aktivieren der verwalteten Identität mithilfe einer Resource Manager-Vorlage
 
-Um eine verwaltete Identität in einer Containergruppe mithilfe einer [Resource Manager-Vorlage](container-instances-multi-container-group.md) zu aktivieren, legen Sie die `identity`-Eigenschaft des `Microsoft.ContainerInstance/containerGroups`-Objekts mit einem `ContainerGroupIdentity`-Objekt fest. Die folgenden Codeausschnitte zeigen die für verschiedene Szenarien konfigurierte `identity`-Eigenschaft. Weitere Informationen finden Sie unter [Resource Manager template reference](/azure/templates/microsoft.containerinstance/containergroups) (Referenz zur Resource Manager-Vorlage). Legen Sie `apiVersion` auf `2018-10-01` fest.
+Um eine verwaltete Identität in einer Containergruppe mithilfe einer [Resource Manager-Vorlage](container-instances-multi-container-group.md) zu aktivieren, legen Sie die `identity`-Eigenschaft des `Microsoft.ContainerInstance/containerGroups`-Objekts mit einem `ContainerGroupIdentity`-Objekt fest. Die folgenden Codeausschnitte zeigen die für verschiedene Szenarien konfigurierte `identity`-Eigenschaft. Weitere Informationen finden Sie unter [Resource Manager template reference](/azure/templates/microsoft.containerinstance/containergroups) (Referenz zur Resource Manager-Vorlage). Geben Sie mindestens eine `apiVersion` von `2018-10-01` an.
 
 ### <a name="user-assigned-identity"></a>Vom Benutzer zugewiesene Identität
 
@@ -309,7 +342,7 @@ Sie können in einer Containergruppe sowohl eine vom System zugewiesene Identit�
 ## <a name="enable-managed-identity-using-yaml-file"></a>Aktivieren der verwalteten Identität mithilfe einer YAML-Datei
 
 Um eine verwaltete Identität in einer mithilfe einer [YAML-Datei](container-instances-multi-container-yaml.md) bereitgestellten Containergruppe zu aktivieren, fügen Sie den folgenden YAML-Code hinzu.
-Legen Sie `apiVersion` auf `2018-10-01` fest.
+Geben Sie mindestens eine `apiVersion` von `2018-10-01` an.
 
 ### <a name="user-assigned-identity"></a>Vom Benutzer zugewiesene Identität
 
