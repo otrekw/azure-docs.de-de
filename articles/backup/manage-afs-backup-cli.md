@@ -1,24 +1,18 @@
 ---
-title: Verwalten der Sicherungen von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle
-description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle Azure-Dateifreigaben, die durch den Azure Backup-Dienst gesichert wurden, verwalten und überwachen.
+title: Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
+description: Erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle Azure-Dateifreigaben, die durch Azure Backup gesichert wurden, verwalten und überwachen.
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: bf824b1868ad7c9e4df2cceeca101d82272e18d6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 44a49913abd99b285397b8b78ad9d4c0f9df52ea
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294868"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934889"
 ---
-# <a name="manage-azure-file-share-backups-with-azure-cli"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
+# <a name="manage-azure-file-share-backups-with-the-azure-cli"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der Azure-Befehlszeilenschnittstelle
 
-Die Azure-Befehlszeilenschnittstelle (CLI) stellt eine Befehlszeilenumgebung zum Verwalten von Azure-Ressourcen bereit. Azure CLI ist ein großartiges Tool zum Erstellen einer benutzerdefinierten Automatisierung zur Verwendung von Azure-Ressourcen. In diesem Artikel wird erläutert, wie die nachstehenden Aufgaben zur Verwaltung und Überwachung der durch den [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview)-Dienst gesicherten Azure-Dateifreigaben durchgeführt werden. Sie können diese Schritte auch über das [Azure-Portal](https://portal.azure.com/) ausführen.
-
-* [Überwachen von Aufträgen](#monitor-jobs)
-* [Ändern der Richtlinie](#modify-policy)
-* [Beenden des Schutzes für eine Dateifreigabe](#stop-protection-on-a-file-share)
-* [Fortsetzen des Schutzes für eine Dateifreigabe](#resume-protection-on-a-file-share)
-* [Aufheben der Registrierung eines Speicherkontos](#unregister-a-storage-account)
+Azure CLI ist die Befehlszeilenumgebung zum Verwalten von Azure-Ressourcen. Azure CLI ist ein großartiges Tool zum Erstellen einer benutzerdefinierten Automatisierung zur Verwendung von Azure-Ressourcen. In diesem Artikel wird erläutert, wie Sie die Aufgaben zur Verwaltung und Überwachung der durch [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) gesicherten Azure-Dateifreigaben durchführen. Sie können diese Schritte auch über das [Azure-Portal](https://portal.azure.com/) ausführen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -26,7 +20,7 @@ Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass Sie bereits über eine durch den Dienst [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) gesicherte Azure-Dateifreigabe verfügen. Wenn dies nicht der Fall ist, erfahren Sie unter [Sichern von Azure-Dateifreigaben mit der Befehlszeilenschnittstelle](backup-afs-cli.md), wie Sie die Sicherung für Ihre Dateifreigaben konfigurieren. In diesem Artikel werden die folgenden Ressourcen verwendet:
+In diesem Artikel wird vorausgesetzt, dass Sie bereits über eine durch [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) gesicherte Azure-Dateifreigabe verfügen. Wenn Sie noch nicht über eine Dateifreigabe verfügen, erfahren Sie unter [Sichern von Azure-Dateifreigaben mit CLI](backup-afs-cli.md), wie Sie die Sicherung für Ihre Dateifreigaben konfigurieren. In diesem Artikel verwenden Sie die folgenden Ressourcen:
 
 * **Ressourcengruppe:** *azurefiles*
 * **RecoveryServicesVault:** *azurefilesvault*
@@ -35,7 +29,7 @@ In diesem Tutorial wird vorausgesetzt, dass Sie bereits über eine durch den Die
 
 ## <a name="monitor-jobs"></a>Überwachen von Aufträgen
 
-Wenn Sie einen Sicherungs- oder Wiederherstellungsvorgang auslösen, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Verwenden Sie das Cmdlet [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list), um abgeschlossene oder derzeit ausgeführte Aufträge zu überwachen. Mit der CLI haben Sie auch die Möglichkeit, [einen ausgeführten Auftrag anzuhalten](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) oder [den Abschluss eines Auftrags abzuwarten](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait).
+Wenn Sie einen Sicherungs- oder Wiederherstellungsvorgang auslösen, erstellt der Sicherungsdienst einen Auftrag zum Nachverfolgen. Verwenden Sie das Cmdlet [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list), um abgeschlossene oder derzeit ausgeführte Aufträge zu überwachen. Mit der Befehlszeilenschnittstelle haben Sie auch die Möglichkeit, [einen ausgeführten Auftrag anzuhalten](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-stop) oder [den Abschluss eines Auftrags abzuwarten](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-wait).
 
 Im folgenden Beispiel wird der Status von Sicherungsaufträgen für den Recovery Services-Tresor *azurefilesvault* angezeigt:
 
@@ -98,15 +92,15 @@ az backup job list --resource-group azurefiles --vault-name azurefilesvault
 ]
 ```
 
-## <a name="modify-policy"></a>Richtlinie ändern
+## <a name="modify-policy"></a>Ändern der Richtlinie
 
 Sie können eine Sicherungsrichtlinie mit [az backup item set-policy](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-set-policy) bearbeiten, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
 
 Um die Richtlinie zu ändern, definieren Sie die folgenden Parameter:
 
-* **--container-name** ist der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
-* **--name** ist der Name der Dateifreigabe, für die Sie die Richtlinie ändern möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
-* **--policy-name** ist der Name der Sicherungsrichtlinie, die Sie für die Dateifreigabe festlegen möchten. Sie können [az backup policy list](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list) verwenden, um alle Richtlinien für Ihren Tresor anzuzeigen.
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
+* **--name**: Der Name der Dateifreigabe, für die Sie die Richtlinie ändern möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
+* **--policy-name**: Der Name der Sicherungsrichtlinie, die Sie für die Dateifreigabe festlegen möchten. Sie können [az backup policy list](https://docs.microsoft.com/cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-list) verwenden, um alle Richtlinien für Ihren Tresor anzuzeigen.
 
 Im folgenden Beispiel wird die Sicherungsrichtlinie *schedule2* für die Dateifreigabe *azurefiles* im Speicherkonto *afsaccount* festgelegt.
 
@@ -114,7 +108,7 @@ Im folgenden Beispiel wird die Sicherungsrichtlinie *schedule2* für die Dateifr
 az backup item set-policy --policy-name schedule2 --name azurefiles --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --name "AzureFileShare;azurefiles" --backup-management-type azurestorage --out table
 ```
 
-Sie können den oben angegebenen Befehl auch mit den „Anzeigenamen“ für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
+Sie können den vorstehende Befehl auch mit den Anzeigenamen für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
 
 * **--backup-management-type**: *azurestorage*
 * **--workload-type**: *azurefileshare*
@@ -135,27 +129,27 @@ Das Attribut **Name** in der Ausgabe entspricht dem Namen des Auftrags, der vom 
 
 Der Schutz für Azure-Dateifreigaben kann auf zwei Arten beendet werden:
 
-* Beenden aller zukünftigen Sicherungsaufträge und *Löschen* aller Wiederherstellungspunkte
-* Beenden aller zukünftigen Sicherungsaufträge unter *Beibehaltung* der Wiederherstellungspunkte
+* Beenden aller zukünftigen Sicherungsaufträge und *Löschen* aller Wiederherstellungspunkte.
+* Beenden aller zukünftigen Sicherungsaufträge unter *Beibehaltung* der Wiederherstellungspunkte.
 
 Unter Umständen fallen für die Aufbewahrung der Wiederherstellungspunkte im Speicher Gebühren an, da die von Azure Backup erstellten zugrundeliegenden Momentaufnahmen beibehalten werden. Der Vorteil der Beibehaltung von Wiederherstellungspunkten besteht darin, dass Sie die Dateifreigabe bei Bedarf später wiederherstellen können. Informationen zu den Kosten, die durch die Beibehaltung der Wiederherstellungspunkte entstehen, finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/storage/files). Wenn Sie alle Wiederherstellungspunkte löschen, kann die Dateifreigabe nicht mehr wiederhergestellt werden.
 
 Um den Schutz der Dateifreigabe zu beenden, definieren Sie die folgenden Parameter:
 
-* **--container-name** ist der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
-* **--item-name** ist der Name der Dateifreigabe, deren Schutz Sie beenden möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
+* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie beenden möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
 
-### <a name="stop-protection-and-retain-recovery-points"></a>Beenden des Schutzes und Beibehalten der Sicherungsdaten
+### <a name="stop-protection-and-retain-recovery-points"></a>Beenden des Schutzes und Beibehalten der Wiederherstellungspunkte
 
 Um den Schutz zu beenden, die Daten jedoch beizubehalten, verwenden Sie das Cmdlet [az backup protection disable](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-disable).
 
-Im nachstehenden Beispiel wird der Schutz für die Dateifreigabe *azurefiles* beendet, jedoch werden alle Wiederherstellungspunkte beibehalten.
+Im folgenden Beispiel wird der Schutz für die Dateifreigabe *azurefiles* beendet, aber alle Wiederherstellungspunkte werden beibehalten.
 
 ```azurecli-interactive
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --out table
 ```
 
-Sie können den oben angegebenen Befehl auch mit den „Anzeigenamen“ für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
+Sie können den vorstehende Befehl auch mit den Anzeigenamen für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
 
 * **--backup-management-type**: *azurestorage*
 * **--workload-type**: *azurefileshare*
@@ -182,7 +176,7 @@ Im nachstehenden Beispiel wird der Schutz für die Dateifreigabe *azurefiles* be
 az backup protection disable --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name “AzureFileShare;azurefiles” --delete-backup-data true --out table
 ```
 
-Sie können den oben angegebenen Befehl auch mit den „Anzeigenamen“ für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
+Sie können den vorstehende Befehl auch mit den Anzeigenamen für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
 
 * **--backup-management-type**: *azurestorage*
 * **--workload-type**: *azurefileshare*
@@ -197,9 +191,9 @@ Wenn Sie den Schutz für eine Azure-Dateifreigabe beendet, die Wiederherstellung
 
 Um den Schutz der Dateifreigabe wieder aufzunehmen, definieren Sie die folgenden Parameter:
 
-* **--container-name** ist der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
-* **--item-name** ist der Name der Dateifreigabe, deren Schutz Sie wieder aufnehmen möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
-* **--policy-name** ist der Name der Sicherungsrichtlinie, für die Sie den Schutz der Dateifreigabe wieder aufnehmen möchten.
+* **--container-name**: Der Name des Speicherkontos, das die Dateifreigabe hostet. Um den **Namen** oder den **Anzeigenamen** Ihres Containers abzurufen, verwenden Sie den Befehl [az backup container list](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list).
+* **--item-name**: Der Name der Dateifreigabe, deren Schutz Sie wieder aufnehmen möchten. Um den **Namen** oder **Anzeigenamen** Ihres gesicherten Elements abzurufen, verwenden Sie den Befehl [az backup item list](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list).
+* **--policy-name**: Der Name der Sicherungsrichtlinie, für die Sie den Schutz der Dateifreigabe wieder aufnehmen möchten.
 
 Im folgenden Beispiel wird das Cmdlet [az backup protection resume](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-resume) verwendet, um den Schutz für die Dateifreigabe *azurefiles* mithilfe der Sicherungsrichtlinie *schedule1* wieder aufzunehmen.
 
@@ -207,7 +201,7 @@ Im folgenden Beispiel wird das Cmdlet [az backup protection resume](https://docs
 az backup protection resume --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --policy-name schedule2 --out table
 ```
 
-Sie können den oben angegebenen Befehl auch mit den „Anzeigenamen“ für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
+Sie können den vorstehende Befehl auch mit den Anzeigenamen für den Container und das Element ausführen, indem Sie die folgenden beiden zusätzlichen Parameter angeben:
 
 * **--backup-management-type**: *azurestorage*
 * **--workload-type**: *azurefileshare*
@@ -236,7 +230,7 @@ Im folgenden Beispiel wird die Registrierung des Speicherkontos *afsaccount* von
 az backup container unregister --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --out table
 ```
 
-Sie können das obige Cmdlet auch mit dem „Anzeigenamen“ für den Container ausführen, indem Sie den folgenden zusätzlichen Parameter angeben:
+Sie können das vorstehende Cmdlet auch mit dem Anzeigenamen für den Container ausführen, indem Sie den folgenden zusätzlichen Parameter angeben:
 
 * **--backup-management-type**: *azurestorage*
 
