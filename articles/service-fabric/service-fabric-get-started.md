@@ -3,14 +3,14 @@ title: Einrichten einer Windows-Entwicklungsumgebung
 description: Installieren Sie Laufzeit, SDK und Tools, und erstellen Sie einen lokalen Entwicklungscluster. Nach Abschluss des Setups können Sie mit der Erstellung von Anwendungen unter Windows beginnen.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 01/07/2020
+ms.date: 01/28/2020
 ms.custom: sfrev
-ms.openlocfilehash: e65ba228540529ec1f852442ebc838a60631fa5c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70a819636b786cedce5bbd0abd0d2594738cbfb9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750217"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904109"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Windows
 
@@ -68,8 +68,8 @@ Wenn Sie nur das SDK benötigen, können Sie dieses Paket installieren:
 
 Aktuelle Versionen:
 
-* Service Fabric-SDK und -Tools 4.0.457
-* Service Fabric-Runtime 7.0.457
+* Service Fabric-SDK und -Tools 4.0.464
+* Service Fabric-Runtime 7.0.464
 
 Eine Liste mit unterstützten Versionen finden Sie unter [Unterstützte Service Fabric-Versionen](service-fabric-versions.md).
 
