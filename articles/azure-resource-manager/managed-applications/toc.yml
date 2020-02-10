@@ -11,7 +11,7 @@
       href: publish-managed-app-definition-quickstart.md
     - name: Bereitstellen einer Dienstkatalog-App
       href: deploy-service-catalog-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen von Definitionsdateien
       href: publish-service-catalog-app.md
@@ -35,7 +35,7 @@
       href: concepts-built-in-policy.md
     - name: Rollendefinitionsartefakt
       href: concepts-custom-role-definition.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herausgeber
       items:
@@ -110,6 +110,10 @@
               href: microsoft-compute-sizeselector.md
             - name: UserNameTextBox
               href: microsoft-compute-usernametextbox.md
+        - name: Verwaltete Identität
+          items:
+            - name: IdentitySelector
+              href: microsoft-managedidentity-identityselector.md
         - name: Netzwerk
           items:
             - name: PublicIPAddressCombo

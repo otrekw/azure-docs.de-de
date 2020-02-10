@@ -25,6 +25,9 @@
         - name: Erstellen eines automatisierten ML-Experiments
           displayName: 'automl, automated, auto ml, portal, ui'
           href: tutorial-first-experiment-automated-ml.md
+        - name: Vorhersage der Nachfrage mit automatisiertem maschinellem Lernen (Daten für Leihfahrräder)
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-automated-ml-forecast.md
     - name: Python SDK
       items:
         - name: Erstellen des ersten ML-Experiments
