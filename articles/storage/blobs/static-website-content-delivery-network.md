@@ -1,0 +1,76 @@
+---
+title: Integrieren einer statischen Website in Azure CDN – Azure Storage
+description: Erfahren Sie, wie Sie den Inhalt einer statischen Website aus einem Azure Storage-Konto mithilfe von Azure Content Delivery Network (CDN) zwischenspeichern.
+author: normesta
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.author: normesta
+ms.date: 01/22/2020
+ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76907461"
+---
+# <a name="integrate-a-static-website-with-azure-cdn"></a>Integrieren einer statischen Website in Azure CDN
+
+Sie können [Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md) aktivieren, um den Inhalt einer in einem Azure-Speicherkonto gehosteten [statischen Website](storage-blob-static-website.md) zwischenzuspeichern. Mit Azure CDN können Sie den benutzerdefinierten Domänenendpunkt für Ihre statische Website konfigurieren, benutzerdefinierte SSL-Zertifikate bereitstellen und benutzerdefinierte Umschreibungsregeln konfigurieren. Durch die Konfiguration von Azure CDN fallen zusätzliche Gebühren an, der Dienst bietet jedoch auf der ganzen Welt durchgängig kurze Wartezeiten für Ihre Website. Azure CDN bietet auch eine SSL-Verschlüsselung mit Ihrem eigenen Zertifikat. 
+
+Weitere Informationen zu den Preisen von Azure CDN finden Sie unter [Azure Content Delivery Network – Preise](https://azure.microsoft.com/pricing/details/cdn/).
+
+## <a name="enable-azure-cdn-for-your-static-website"></a>Aktivieren von Azure CDN für Ihre statische Website
+
+Sie können Azure CDN direkt über Ihr Speicherkonto für Ihre statische Website aktivieren. Wenn Sie erweiterte Konfigurationseinstellungen (etwa die [Optimierung des Downloads großer Dateien](../../cdn/cdn-optimization-overview.md#large-file-download)) für den CDN-Endpunkt angeben möchten, können Sie stattdessen die [Azure CDN-Erweiterung](../../cdn/cdn-create-new-endpoint.md) verwenden, um ein CDN-Profil und einen CDN-Endpunkt zu erstellen.
+
+1. Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, und zeigen Sie die Kontoübersicht an.
+
+2. Wählen Sie im Menü **Blob-Dienst** die Option **Azure CDN** aus, um Azure CDN zu konfigurieren.
+
+    Die Seite **Azure CDN** wird angezeigt.
+
+    ![Erstellen eines CDN-Endpunkts](../../cdn/media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
+
+3. Geben Sie im Abschnitt **CDN-Profil** ein neues oder vorhandenes CDN-Profil an. 
+
+4. Geben Sie einen Tarif für den CDN-Endpunkt an. Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/). Weitere Informationen zu den in den einzelnen Tarifen verfügbaren Features finden Sie unter [Vergleichen von Azure CDN-Produktfeatures](../../cdn/cdn-features.md).
+
+5. Geben Sie im Feld **Name des CDN-Endpunkts** einen Namen für Ihren CDN-Endpunkt an. Der Name des CDN-Endpunkts muss innerhalb von Azure eindeutig sein.
+
+6. Geben Sie im Feld **Hostname des Ursprungs** den Endpunkt Ihrer statischen Website an. 
+
+   Navigieren Sie zum Ermitteln des Endpunkts Ihrer statischen Website zum Abschnitt **Statische Website** Ihres Speicherkontos.  Kopieren Sie den primären Endpunkt, und fügen Sie ihn in die CDN-Konfiguration ein.
+
+   > [!IMPORTANT]
+   > Stellen Sie sicher, dass Sie die Protokoll-ID (*z. B.* HTTPS) und den nachgestellten Schrägstrich in der URL entfernen. Wenn der Endpunkt der statischen Website z. B. `https://mystorageaccount.z5.web.core.windows.net/` lautet, geben Sie im Feld **Hostname des Ursprungs** den Namen `mystorageaccount.z5.web.core.windows.net` ein.
+
+   Die folgende Abbildung zeigt eine Beispiel-Endpunktkonfiguration:
+
+   ![Screenshot einer Beispiel-CDN-Endpunktkonfiguration](media/storage-blob-static-website-custom-domain/add-cdn-endpoint.png)
+
+7. Wählen Sie **Erstellen** aus, und warten Sie, bis der Verteilungsvorgang abgeschlossen ist. Der erstellte Endpunkt wird in der Liste mit den Endpunkten angezeigt.
+
+8. Überprüfen Sie, ob der CDN-Endpunkt korrekt konfiguriert ist. Klicken Sie dazu auf den Endpunkt, um die Einstellungen anzuzeigen. Suchen Sie wie in der folgenden Abbildung dargestellt in der CDN-Übersicht für Ihr Speicherkonto nach dem Endpunkthostnamen, und navigieren Sie zum Endpunkt. Das Format Ihres CDN-Endpunkts sieht in etwa wie folgt aus: `https://staticwebsitesamples.azureedge.net`.
+
+    ![Screenshot mit der Übersicht des CDN-Endpunkts](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
+
+9. Wenn Sie nach Abschluss der Verteilung zum CDN-Endpunkt navigieren, wird der Inhalt der Datei „index.html“ angezeigt, die Sie zuvor in Ihre statische Website hochgeladen haben.
+
+10. Navigieren Sie zum Überprüfen der Ursprungseinstellungen Ihres CDN-Endpunkts im Abschnitt **Einstellungen** für den CDN-Endpunkt zu **Ursprung**. Das Feld **Ursprungstyp** ist auf *Benutzerdefinierter Ursprung* festgelegt, und im Feld **Hostname des Ursprungs** wird der Endpunkt Ihrer statischen Website angezeigt.
+
+    ![Screenshot der Ursprungseinstellungen für den CDN-Endpunkt](media/storage-blob-static-website-custom-domain/verify-cdn-origin.png)
+
+## <a name="remove-content-from-azure-cdn"></a>Entfernen von Inhalten aus Azure CDN
+
+Wenn ein Objekt nicht mehr in Azure CDN zwischengespeichert werden soll, können Sie einen der folgenden Schritte ausführen:
+
+* Legen Sie den öffentlichen Container als privat fest. Weitere Informationen finden Sie unter [Verwalten des anonymen Lesezugriffs auf Container und Blobs](storage-manage-access-to-resources.md).
+* Deaktivieren oder löschen Sie den CDN-Endpunkt mit dem Azure-Portal.
+* Ändern Sie den gehosteten Dienst so, dass er nicht mehr auf Anforderungen für das Objekt antwortet.
+
+Ein bereits in Azure CDN zwischengespeichertes Objekt bleibt zwischengespeichert, bis die Lebensdauer des Objekts abgelaufen ist oder der Endpunkt [gelöscht](../../cdn/cdn-purge-endpoint.md) wird. Wenn die Lebensdauer abläuft, bestimmt Azure CDN, ob der CDN-Endpunkt weiterhin gültig ist und ob weiterhin anonym auf das Objekt zugegriffen werden kann. Ist dies nicht der Fall, wird das Objekt nicht mehr zwischengespeichert.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+(Optional) Fügen Sie dem Azure CDN-Endpunkt eine benutzerdefinierte Domäne hinzu. Siehe [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](../../cdn/cdn-map-content-to-custom-domain.md).

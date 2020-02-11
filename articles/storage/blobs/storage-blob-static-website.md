@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: a35239354d23f75361d5577d6b7efc8254943147
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708161"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906591"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -81,22 +81,16 @@ Wenn Sie also beispielsweise die öffentliche Zugriffsebene des Containers **$we
 
 Der öffentliche Zugriff auf den primären Endpunkt des Blobdiensts (`https://contosoblobaccount.blob.core.windows.net/$web/index.html`) ändert sich hingegen von privat in öffentlich. Nun können Benutzer die Datei unter Verwendung eines der beiden Endpunkte öffnen.
 
-## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Unterstützung von Content Delivery Network (CDN) und Secure Socket Layer (SSL)
+## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Zuordnen einer benutzerdefinierten Domäne zu einer URL einer statischen Website
 
-Informationen dazu, wie Sie Ihre statischen Websitedateien über Ihre benutzerdefinierte Domäne und HTTPS verfügbar machen, finden Sie unter [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md). Im Rahmen dieses Prozesses müssen Sie Ihr CDN auf den primären Endpunkt der *statischen Website* verweisen (nicht auf den primären Endpunkt des *Blobdiensts*). Unter Umständen dauert es ein paar Minuten, bis Ihre Inhalte angezeigt werden, da die CDN-Konfiguration nicht sofort ausgeführt wird.
+Sie können Ihre statische Website über eine benutzerdefinierte Domäne verfügbar machen. 
 
-Wenn Sie Ihre statische Website aktualisieren, stellen Sie sicher, dass Sie zwischengespeicherte Inhalte auf den CDN-Edge-Servern löschen, indem Sie den CDN-Endpunkt bereinigen. Weitere Informationen finden Sie unter [Löschen eines Azure CDN-Endpunkts](../../cdn/cdn-purge-endpoint.md).
+Es ist einfacher, den HTTP-Zugriff für Ihre benutzerdefinierte Domäne zu aktivieren, weil dies von Azure Storage nativ unterstützt wird. Zum Aktivieren von HTTPS müssen Sie Azure CDN verwenden, weil Azure Storage HTTPS bei benutzerdefinierten Domänen noch nicht nativ unterstützt. Eine Schritt-für-Schritt-Anleitung finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).
 
-> [!NOTE]
-> HTTPS wird nativ über den Webendpunkt des Kontos unterstützt, sodass sowohl per HTTP als auch per HTTPS auf den Webendpunkt zugegriffen werden kann. Wenn das Speicherkonto jedoch für die sichere Übertragung über HTTPS konfiguriert ist, müssen Benutzer den HTTPS-Endpunkt verwenden. Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../common/storage-require-secure-transfer.md).
->
-> Die Verwendung von benutzerdefinierten Domänen über HTTPS erfordert derzeit die Verwendung von Azure CDN.
+Wenn das Speicherkonto für die [sichere Übertragung](../common/storage-require-secure-transfer.md) über HTTPS konfiguriert ist, müssen Benutzer den HTTPS-Endpunkt verwenden. 
 
-## <a name="custom-domain-names"></a>Benutzerdefinierte Domänennamen
-
-Sie können Ihre statische Website über eine benutzerdefinierte Domäne verfügbar machen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](storage-custom-domain-name.md).
-
-Einen detaillierten Einblick in das Hosten Ihrer Domäne in Azure finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
+> [!TIP]
+> Ziehen Sie das Hosten Ihrer Domäne in Azure in Betracht. Weitere Informationen finden Sie unter [Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md).
 
 ## <a name="pricing"></a>Preise
 
@@ -111,8 +105,7 @@ Informationen zum Aktivieren von Metriken für Seiten Ihrer statischen Website f
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Host a static website in Azure Storage](storage-blob-static-website-how-to.md) (Hosten einer statischen Website in Azure Storage)
-* [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md)
+* [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)
 * [Azure-Funktionen](/azure/azure-functions/functions-overview)
 * [Azure App Service](/azure/app-service/overview)
 * [Build a serverless web app in Azure](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895388"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964616"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Apache Ambari-Heartbeatprobleme in Azure HDInsight
 
@@ -82,6 +82,21 @@ Die Warnungen werden dadurch verursacht, dass der Ambari-Agent nicht ausgeführt
     ```
 
     Wenn die Failovercontrollerdienste nicht ausgeführt werden, liegt wahrscheinlich ein Problem vor, das den Start des Failovercontrollers durch den HDInsight-Agent verhindert. Überprüfen Sie das Protokoll des HDInsight-Agents aus der Datei `/var/log/hdinsight-agent/hdinsight-agent.out`.
+
+## <a name="scenario-heartbeat-lost-for-ambari"></a>Szenario: Verlust des Heartbeats bei Ambari
+
+### <a name="issue"></a>Problem
+
+Es wird kein Heartbeat des Ambari-Agents mehr empfangen.
+
+### <a name="cause"></a>Ursache
+
+Die OMS-Protokolle führen zu einer hohen CPU-Auslastung.
+
+### <a name="resolution"></a>Lösung
+
+* Deaktivieren Sie die OMS-Protokollierung mithilfe des PowerShell-Moduls [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0). 
+* Löschen Sie die Protokolldatei `mdsd.warn`.
 
 ---
 

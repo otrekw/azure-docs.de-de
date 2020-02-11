@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 150927ac05cba058d1d152ce568d7a462043d076
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890440"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937759"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -49,6 +49,24 @@ Die folgende Tabelle enthält Links zu Codebeispielen für jede unterstützte Sp
 | [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) |MQTT_Protocol |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) |TransportType.Mqtt |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) |Unterstützt MQTT standardmäßig immer. |
+
+### <a name="default-keep-alive-timeout"></a>Keep-Alive-Standardtimeout 
+
+Um sicherzustellen, dass eine Client/IoT Hub-Verbindung aktiv bleibt, senden sowohl der Dienst als auch der Client einander regelmäßig einen *Keep-Alive*-Ping. Der Client, der das IoT SDK verwendet, sendet in dem in der nachstehenden Tabelle definierten Intervall ein Keep-Alive:
+
+|Sprache  |Keep-Alive-Standardintervall  |Konfigurierbar  |
+|---------|---------|---------|
+|Node.js     |   180 Sekunden      |     Nein    |
+|Java     |    230 Sekunden     |     Nein    |
+|C     | 240 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|C#     | 300 Sekunden |  [Ja](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
+|Python (V2)   | 60 Sekunden |  Nein   |
+
+Entsprechend der [MQTT-Spezifikation](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081) ist das Keep-Alive-Pingintervall von IoT Hub das 1,5-fache des Keep-Alive-Werts für Clients. IoT Hub schränkt jedoch das maximale serverseitige Timeout auf 29,45 Minuten (1.767 Sekunden) ein, weil sämtliche Azure-Dienste an das TCP-Leerlauftimeout von Azure Load Balancer (29,45 Minuten) gebunden sind. 
+
+So sendet beispielsweise ein Gerät, das das Java SDK verwendet, den Keep-Alive-Ping und verliert dann die Netzwerkkonnektivität. 230 Sekunden später verpasst das Gerät den Keep-Alive-Ping, weil es offline ist. Allerdings schließt IoT Hub die Verbindung nicht sofort, sondern wartet weitere `(230 * 1.5) - 230 = 115` Sekunden, bevor es die Geräteverbindung mit der Fehlermeldung [404104 DeviceConnectionClosedRemotely](iot-hub-troubleshoot-error-404104-deviceconnectionclosedremotely.md) trennt. 
+
+Als maximalen Keep-Alive-Wert für Clients können Sie `1767 / 1.5 = 1177` Sekunden festlegen. Das Keep-Alive wird durch jeglichen Datenverkehr zurückgesetzt. Beispielsweise setzt eine erfolgreiche SAS-Tokenaktualisierung das Keep-Alive zurück.
 
 ### <a name="migrating-a-device-app-from-amqp-to-mqtt"></a>Migrieren einer Geräte-App von AMQP zu MQTT
 
@@ -230,10 +248,6 @@ client.publish("devices/" + device_id + "/messages/events/", "{id=123}", qos=1)
 client.loop_forever()
 ```
 
-Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt.
-
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
-
 Um sich mit einem Gerätezertifikat zu authentifizieren, aktualisieren Sie den obigen Codeausschnitt mit den folgenden Änderungen (siehe [Abrufen eines X.509-Zertifizierungsstellenzertifikats](./iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate), um mehr zur Vorbereitung der zertifikatsbasierten Authentifizierung zu erfahren):
 
 ```python
@@ -309,7 +323,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
 | 204 | Erfolg (kein Inhalt) |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
@@ -319,7 +333,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen](io
 
 ## <a name="update-device-twins-reported-properties"></a>Aktualisieren der gemeldeten Eigenschaften des Gerätezwillings
 
-Zum Aktualisieren der gemeldeten Eigenschaften gibt das Gerät eine Anforderung an den IoT Hub in Form einer Veröffentlichung über ein designiertes MQTT-Thema aus. Nach dem Verarbeiten dieser Anforderung antwortet IoT Hub mit dem Erfolgs- oder Fehlerstatus des Aktualisierungsvorgangs in Form einer Veröffentlichung unter einem anderen Thema. Dieses Thema kann vom Gerät abonniert werden, um es über das Ergebnis der Aktualisierungsanforderung seines Gerätezwillings zu benachrichtigen. Um diese Art von Anforderungs-/Antwortinteraktion in MQTT zu implementieren, nutzen wir das Konzept der Anforderungs-ID (`$rid`), die ursprünglich vom Gerät in seiner Aktualisierungsanforderung bereitgestellt wurde. Diese Anforderungs-ID ist ebenfalls in der Antwort von IoT Hub enthalten, um dem Gerät das Zuordnen der Antwort zu seiner einzelnen früheren Anforderung zu ermöglichen.
+Zum Aktualisieren der gemeldeten Eigenschaften gibt das Gerät eine Anforderung an den IoT Hub in Form einer Veröffentlichung über ein designiertes MQTT-Thema aus. Nach dem Verarbeiten dieser Anforderung antwortet IoT Hub mit dem Erfolgs- oder Fehlerstatus des Aktualisierungsvorgangs in Form einer Veröffentlichung unter einem anderen Thema. Dieses Thema kann vom Gerät abonniert werden, um es über das Ergebnis der Aktualisierungsanforderung seines Gerätezwillings zu benachrichtigen. Um diese Art von Anforderungs-/Antwortinteraktion in MQTT zu implementieren, nutzen wir das Konzept der Anforderungs-ID (`$rid`), die ursprünglich vom Gerät in seiner Aktualisierungsanforderung bereitgestellt wurde. Diese Anforderungs-ID ist auch in der Antwort von IoT Hub enthalten, damit das Gerät die Antwort mit seiner jeweiligen früheren Anforderung korrelieren kann.
 
 Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in dem Gerätezwilling in IoT Hub aktualisiert:
 
@@ -340,9 +354,9 @@ Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten 
 
 Die möglichen Statuscodes lauten:
 
-|Status | BESCHREIBUNG |
+|Status | Beschreibung |
 | ----- | ----------- |
-| 200 | Erfolgreich |
+| 200 | Erfolg |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Serverfehler |
@@ -392,7 +406,7 @@ Als Antwort sendet das Gerät eine Nachricht mit einem gültigen JSON-Code oder 
 
 Weitere Informationen finden Sie im [Entwicklerhandbuch zu direkten Methoden](iot-hub-devguide-direct-methods.md).
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 Wenn Sie das Verhalten des MQTT-Protokolls auf der Cloudseite anpassen müssen, sollten Sie den Artikel zum [Azure IoT-Protokollgateway](iot-hub-protocol-gateway.md) lesen. Diese Software ermöglicht Ihnen die Bereitstellung eines benutzerdefinierten Hochleistungs-Protokollgateways, das eine direkte Schnittstelle mit IoT Hub bildet. Das Azure IoT-Protokollgateway dient zum Anpassen des Geräteprotokolls zum Unterstützen von Brownfield MQTT-Bereitstellungen oder anderer benutzerdefinierter Protokolle. Dieser Ansatz setzt jedoch voraus, dass Sie ein benutzerdefiniertes Protokollgateway ausführen und betreiben.
 

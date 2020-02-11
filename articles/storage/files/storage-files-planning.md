@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771614"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906266"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -201,49 +201,14 @@ Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreiga
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Standard-Dateifreigaben sind für alle Regionen bis zu 5 TiB verfügbar. In einigen Regionen sind sie mit einem Limit von 100 TiB verfügbar. Diese sind in der folgenden Tabelle aufgeführt:
+Standarddateifreigaben mit einer Kapazitätsgrenze von 100 TiB sind in allen Azure-Regionen allgemein verfügbar.
 
-|Region |Unterstützte Redundanz |
-|-------|---------|
-|Australien, Mitte    |LRS     |
-|Australien, Mitte 2    |LRS     |
-|Australien (Osten) |LRS     |
-|Australien, Südosten|LRS |
-|Brasilien Süd    |LRS     |
-|Kanada, Mitte  |LRS     |
-|Kanada, Osten     |LRS     |
-|Indien, Mitte  |LRS     |
-|USA, Mitte*   |LRS, ZRS    |
-|Asien, Osten      |LRS     |
-|USA, Osten*        |LRS, ZRS|
-|USA, Osten 2*      |LRS, ZRS     |
-|Frankreich, Mitte |LRS, ZRS|
-|Frankreich, Süden   |LRS     |
-|Japan, Osten     |LRS     |
-|Japan, Westen     |LRS     |
-|Korea, Mitte  |LRS     |
-|Korea, Süden    |LRS     |
-|USA Nord Mitte |LRS   |
-|Nordeuropa   |LRS     |
-|Indien (Süden)    |LRS     |
-|USA Süd Mitte |LRS     |
-|Asien, Südosten |LRS, ZRS|
-|Schweiz, Norden    |LRS     |
-|Schweiz, Westen    |LRS     |
-|VAE, Mitte    |LRS     |
-|Vereinigte Arabische Emirate, Norden    |LRS     |
-|Vereinigtes Königreich, Norden   |LRS, ZRS    |
-|UK, Süden    |LRS     |
-|UK, Westen    |LRS     |
-|USA, Westen-Mitte|LRS     |
-|Europa, Westen*    |LRS, ZRS|
-|Indien, Westen   |LRS     |
-|USA (Westen)        |LRS     |
-|USA, Westen 2      |LRS, ZRS|
+- LRS: Alle Regionen außer „Südafrika, Norden“ und „Südafrika, Westen“.
+   - Nationale Clouds (Government, Deutschland, China) werden über PowerShell und die Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) unterstützt. Keine Portalunterstützung. 
+   - „USA, Osten“, „USA, Osten 2“, „Europa, Westen“: Alle neuen Konten werden unterstützt. Für eine kleine Anzahl von vorhandenen Konten wurde der Upgradevorgang noch nicht abgeschlossen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
 
-\* Wird für neue Konten unterstützt. Nicht alle vorhandenen Konten haben den Upgradeprozess vollständig durchlaufen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
-
-Damit wir neue Regionen und Funktionen priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/azurefilesatscalesurvey) aus.
+- ZRS: Alle Regionen außer „Japan, Osten“, „Europa, Norden“ und „Südafrika, Norden“.
+- GRS/GZRS: Wird nicht unterstützt.
 
 ### <a name="enable-and-create-larger-file-shares"></a>Aktivieren und Erstellen größerer Dateifreigaben
 

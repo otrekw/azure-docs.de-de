@@ -2,13 +2,13 @@
 title: Einrichten des Livetests in einer Containerinstanz
 description: Erfahren Sie, wie Sie Livetests zu Neustart von fehlerhaften Containern in Azure Container Instances konfigurieren.
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/30/2020
+ms.openlocfilehash: 11c6c9d39067c536bf4325f74eb24b2ab64ef515
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481682"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934161"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurieren von Livetests
 
@@ -17,6 +17,9 @@ Containerbasierte Anwendungen werden möglicherweise über einen längeren Zeitr
 Dieser Artikel erläutert die Bereitstellung einer Containergruppe mit integriertem Livetest, um den automatischen Neustart eines simulierten fehlerhaften Containers zu demonstrieren.
 
 Azure Container Instances unterstützt darüber hinaus auch [Bereitschaftstests](container-instances-readiness-probe.md), die Sie so konfigurieren können, dass sichergestellt wird, dass der Datenverkehr einen Container nur dann erreicht, wenn dieser dafür bereit ist.
+
+> [!NOTE]
+> Sie können derzeit keinen Livetest in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt ist.
 
 ## <a name="yaml-deployment"></a>YAML-Bereitstellung
 
@@ -60,25 +63,25 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ### <a name="start-command"></a>Startbefehl
 
-Die Bereitstellung definiert einen Startbefehl, der ausgeführt wird, wenn der Container zum ersten Mal läuft, definiert durch die `command`-Eigenschaft, die ein Zeichenfolgenarray akzeptiert. In diesem Beispiel wird eine Bash-Sitzung gestartet und eine Datei mit der Bezeichnung `healthy` im `/tmp`-Verzeichnis erstellt, indem dieser Befehl weitergegeben wird:
+Die Bereitstellung umfasst eine `command`-Eigenschaft, die einen Startbefehl definiert, der ausgeführt wird, wenn der Container zum ersten Mal ausgeführt wird. Diese Eigenschaft akzeptiert ein Array von Zeichenfolgen. Dieser Befehl simuliert den Container, der in einen fehlerhaften Zustand wechselt.
+
+Zunächst startet er eine Bash-Sitzung und erstellt im Verzeichnis `/tmp` eine Datei namens `healthy`. Die Bereitstellung wechselt vor dem Löschen der Datei in einen 30-sekündigen Ruhezustand, und geht anschließend in einen 10-minütige Ruhezustand über:
 
 ```bash
 /bin/sh -c "touch /tmp/healthy; sleep 30; rm -rf /tmp/healthy; sleep 600"
 ```
 
- Die Bereitstellung wechselt vor dem Löschen der Datei in einen 30-sekündigen Ruhezustand, und geht anschließend in einen 10-minütige Ruhezustand über.
-
 ### <a name="liveness-command"></a>Livetestbefehl
 
-Diese Bereitstellung definiert ein `livenessProbe`-Element, das einen `exec`-Livetestbefehl unterstützt, der als Livetestüberprüfung agiert. Wenn dieser Befehl mit einem Wert ungleich Null beendet wird, wird der Container beendet und neu gestartet, was bedeutet, dass die `healthy`-Datei nicht gefunden werden konnte. Wenn dieser Befehl erfolgreich mit Exitcode 0 beendet wird, wird keine Aktion ausgeführt.
+Diese Bereitstellung definiert ein `livenessProbe`-Element, das einen `exec`-Livetestbefehl unterstützt, der als Livetestüberprüfung agiert. Wenn dieser Befehl mit einem Wert ungleich Null beendet wird, wird der Container beendet und neu gestartet, was bedeutet, dass die `healthy`-Datei nicht gefunden werden konnte. Wenn dieser Befehl erfolgreich mit Exitcode 0 beendet wird, wird keine Aktion ausgeführt.
 
 Die `periodSeconds`-Eigenschaft gibt an, dass der Livetestbefehl alle 5 Sekunden ausgeführt werden soll.
 
 ## <a name="verify-liveness-output"></a>Überprüfen der Livetestausgabe
 
-Innerhalb der ersten 30 Sekunden wird die vom Startbefehl erstellte `healthy`-Datei beendet. Wenn der Livetestbefehl das Vorhandensein der `healthy`-Datei überprüft, gibt der Statuscode einen Nullwert zurück. Dies zeigt einen Erfolg an, sodass kein Neustart ausgeführt wird.
+Innerhalb der ersten 30 Sekunden wird die vom Startbefehl erstellte `healthy`-Datei beendet. Wenn der Livetestbefehl das Vorhandensein der `healthy`-Datei überprüft, gibt der Statuscode 0 zurück. Dies zeigt einen Erfolg an, sodass kein Neustart ausgeführt wird.
 
-Nach 30 Sekunden tritt ein Fehler bei `cat /tmp/healthy` auf, und es kommt zu Fehler- und Beendigungsereignissen.
+Nach 30 Sekunden tritt ein Fehler bei dem `cat /tmp/healthy`-Befehl auf, und es kommt zu Fehler- und Beendigungsereignissen.
 
 Diese Ereignisse können über das Azure-Portal oder Azure CLI angezeigt werden.
 

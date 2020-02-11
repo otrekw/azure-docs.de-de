@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 67f04b3873da020853c2523f6acc8c7dc7dcdedc
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0e830aaca4f952f75c220b4f482ce831883b058
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749603"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905573"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -35,9 +35,9 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 | Updaterollup von Juni 2019: [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | 13. Juni 2019 | Unterstützt |
 | Mai 2019 Updaterollup – [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | 7\. Mai 2019 | Unterstützt |
 | V6 Release - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21. April 2019 | Unterstützt |
-| Updaterollup von April 2019: [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. April 2019 | Unterstützt |
-| Updaterollup von März 2019: [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. März 2019 | Unterstützt |
-| V5 Release – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. Februar 2019 | Unterstützt |
+| Updaterollup von April 2019: [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4\. April 2019 | Unterstützt – Agent-Version läuft am 12. Februar 2020 ab. |
+| Updaterollup von März 2019: [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7\. März 2019 | Unterstützt – Agent-Version läuft am 12. Februar 2020 ab. |
+| V5 Release – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. Februar 2019 | Unterstützt – Agent-Version läuft am 12. Februar 2020 ab. |
 | Release V4 | 4.0.1.0 – 4.3.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 6. November 2019 abgelaufen. |
 | Release V3 | 3.1.0.0 – 3.4.0.0 | – | Nicht unterstützt – Agent-Versionen sind am 19. August 2019 abgelaufen. |
 | Pre-GA-Agents | 1.1.0.0 – 3.0.13.0 | – | Nicht unterstützt – Agent-Versionen sind am 1. Oktober 2018 abgelaufen. |

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764400"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905605"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 
@@ -45,6 +45,10 @@ Verwaltete Identitäten werden in Azure HDInsight in verschiedenen Szenarien ver
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise-Sicherheitspaket](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka – Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+
+## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Was geschieht, wenn ich die verwaltete Identität nach der Clustererstellung lösche?
+In Ihrem Cluster treten Probleme auf, wenn die verwaltete Identität benötigt wird. Es gibt derzeit keine Möglichkeit, die verwaltete Identität nach der Clustererstellung zu aktualisieren oder zu ändern. Sie sollten daher unbedingt sicherstellen, dass die verwaltete Identität während der Clusterlaufzeit nicht gelöscht wird. Alternativ können Sie den Cluster neu erstellen und eine neue verwaltete Identität zuweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

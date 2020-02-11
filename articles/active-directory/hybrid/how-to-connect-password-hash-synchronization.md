@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 165bd93f2d35425965df9358c8d85f79ce557d66
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833363"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025179"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -124,7 +124,7 @@ Nachteil: Wenn synchronisierte Konten vorhanden sind, die in Azure AD nicht abla
 > [!NOTE]
 > Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase.
 
-#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-reset-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingen der Kennwortzurücksetzung bei der nächsten Anmeldung
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingung der Änderung des Kennworts bei der nächsten Anmeldung
 
 Normalerweise wird ein Benutzer gezwungen, sein Kennwort bei der ersten Anmeldung zu ändern, insbesondere nachdem das Administratorkennwort zurückgesetzt wurde.  Dies wird häufig als Festlegen eines „temporären“ Kennworts bezeichnet und durch Aktivieren des Flags „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ für ein Benutzerobjekt in Active Directory (AD) vollzogen.
   

@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832311"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933860"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -29,6 +29,24 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 * Bekannte Probleme
 * Behebung von Programmfehlern
 * Veraltete Funktionen
+
+## <a name="january-2020"></a>Januar 2020
+ 
+### <a name="custom-language-support-for-additional-languages"></a>Benutzerdefinierte Sprachunterstützung für weitere Sprachen
+
+Video Indexer unterstützt jetzt benutzerdefinierte Sprachmodelle für `ar-SY`, `en-UK` und `en-AU` (nur API).
+ 
+### <a name="delete-account-timeframe-action-update"></a>Aktualisierung des Zeitrahmens der Aktion „Konto löschen“
+
+Beim Ausführen der Aktion „Konto löschen“ wird das Konto jetzt innerhalb von 90 Tagen und nicht innerhalb von 48 Stunden gelöscht.
+ 
+### <a name="new-video-indexer-github-repository"></a>Neues GitHub-Repository für Video Indexer
+
+Ein neues Video Indexer-GitHub mit verschiedenen Projekten, Leitfäden mit ersten Schritten und Codebeispielen ist jetzt unter https://github.com/Azure-Samples/media-services-video-indexer verfügbar.
+ 
+### <a name="swagger-update"></a>Swagger-Update
+
+Video Indexer hat **Authentifizierungen** und **Vorgänge** in einer einzigen [Video Indexer-OpenAPI-Spezifikation (Swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) vereinheitlicht. Entwickler finden die APIs im [Entwicklerportal für Video Indexer](https://api-portal.videoindexer.ai/).
 
 ## <a name="december-2019"></a>Dezember 2019
 

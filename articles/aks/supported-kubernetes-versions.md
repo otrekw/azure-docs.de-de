@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: bba4196547bda3d3ddcf3344032de5b9286639a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996747"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026114"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -96,7 +96,7 @@ New Supported Version List
 * Bei neuen **Nebenversionen** von Kubernetes:
   * Alle Benutzer werden öffentlich über die neue Version benachrichtigt. Außerdem wird mitgeteilt, welche Version entfernt wird.
   * Wenn eine neue Patchversion veröffentlicht wird, wird gleichzeitig die älteste Patchversion entfernt.
-  * Kunden haben ab dem Datum der öffentlichen Benachrichtigung **60 Tage** Zeit, ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen.
+  * Kunden haben ab dem Datum der öffentlichen Benachrichtigung **30 Tage** Zeit, ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen.
 * Bei neuen **Patchversionen** von Kubernetes:
   * Alle Benutzer werden über die neue Patchversion benachrichtigt. Außerdem werden sie aufgefordert, ein Upgrade auf das neueste Patchrelease vorzunehmen.
   * Benutzer haben **30 Tage** Zeit, ein Upgrade auf ein neueres, unterstütztes Patchrelease durchzuführen, bevor das älteste Patchrelease entfernt wird.

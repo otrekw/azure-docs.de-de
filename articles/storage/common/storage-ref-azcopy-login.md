@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034074"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905284"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -39,7 +39,7 @@ azcopy login [flags]
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
-- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Blobspeicher](storage-use-azcopy-blobs.md)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
@@ -97,10 +97,12 @@ Behandeln Sie „/path/to/my/cert“ als Pfad zu einer PEM- oder PKCS12-Datei. A
 
 „--certificate-path“ ist bei der zertifikatbasierten Dienstprinzipalautorisierung zwingend erforderlich.
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
-|Option|BESCHREIBUNG|
+|Option|Beschreibung|
 |--|--|
+|--aad-endpoint|Der zu verwendende Azure Active Directory-Endpunkt. Für die öffentliche Azure-Cloud gilt der Standardwert (https://login.microsoftonline.com). Legen Sie diesen Parameter bei der Authentifizierung in einer nationalen Cloud fest. Weitere Informationen finden Sie unter [Azure AD-Authentifizierungsendpunkte](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+Für die verwaltete Dienstidentität ist dieses Flag nicht erforderlich.|
 |--application-id string|Anwendungs-ID der benutzerseitig zugewiesenen Identität. Erforderlich für die Dienstprinzipalautorisierung.|
 |--certificate-path string|Pfad zum Zertifikat für die SPN-Authentifizierung. Erforderlich für die zertifikatbasierte Dienstprinzipalautorisierung.|
 |-h, --help|Zeigt den Hilfeinhalt für den Befehl „login“ an.|
@@ -113,7 +115,7 @@ Behandeln Sie „/path/to/my/cert“ als Pfad zu einer PEM- oder PKCS12-Datei. A
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-|Option|BESCHREIBUNG|
+|Option|Beschreibung|
 |---|---|
 |–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
 |–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|

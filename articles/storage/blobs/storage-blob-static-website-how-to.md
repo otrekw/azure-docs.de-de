@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: d5b8121c7888903f3e4552a21a6ddc175ecc5176
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4214c4eb9fbe1d3e39d1ee16289f30b893b94653
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489089"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906604"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie das Hosting statischer Websites über da
 
 ## <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Ein Tutorial mit schrittweisen Anleitungen finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
+Ein Schritt-für-Schritt-Tutorial finden Sie unter [Tutorial: Host a static website on Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website-host) (Tutorial: Hosten einer statischen Website in Blob Storage) aus, bevor Sie mit diesem Tutorial beginnen.
 
 Nachdem Sie das Hosting statischer Websites aktiviert haben, können Sie die Seiten Ihrer Website über deren öffentliche URL in einem Browser anzeigen.
 
@@ -221,10 +221,5 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)
-* [Verwenden von Azure-CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS](storage-https-custom-domain-cdn.md)
-* [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](storage-custom-domain-name.md)
-* [Azure-Funktionen](/azure/azure-functions/functions-overview)
-* [Azure App Service](/azure/app-service/overview)
-* [Build a serverless web app in Azure](https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database) (Erstellen einer serverlosen Web-App in Azure)
-* [Tutorial: Hosten Ihrer Domäne in Azure DNS](../../dns/dns-delegate-domain-azure-dns.md)
+* Erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren. Weitere Informationen finden Sie unter [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md).
+
