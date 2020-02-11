@@ -255,8 +255,6 @@
         - name: Konfigurieren von lokalen Encodern für die Verwendung mit einem Cloudencoder
           href: media-services-live-encoders-overview.md
           items:
-            - name: FMLE-Encoder
-              href: media-services-configure-fmle-live-encoder.md
             - name: Haivision KB-Encoder
               href: media-services-configure-kb-live-encoder.md
             - name: NewTek TriCaster-Encoder

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 01/30/2020
 ms.author: helohr
-ms.openlocfilehash: e525976edee08097d75605ea1921d0552ed02785
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841062"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906873"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -38,6 +38,14 @@ Als genehmigter Anbieter werden die Vorteile von Windows Virtual Desktop für Mi
 
 - [Registrieren Sie sich für die Tech Preview von Horizon Cloud auf Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Zur Partnerwebsite](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+## <a name="10zig"></a>10ZiG
+
+![10ZiG-Logo](./media/partners/10zig.png)
+
+10ZiG Technology, ein Anbieter von hochmoderner Thin- und Zero-Client-Hardware und -Software, ist ein langjähriges Partnerunternehmen von Microsoft und ein dedizierter Partner für Microsoft Azure und Windows Virtual Desktop. IoT-basierte Thin Clients für Windows 10 von 10ZiG sind leistungsstarke, zuverlässige und kostengünstige Endpunkte für alle Mehrbenutzerinstanzen von Windows Virtual Desktop. 10ZiG Manager Software verfügt über außergewöhnliche Verwaltungs- und Bereitstellungsfunktionen ohne Lizenzbeschränkungen und zusätzliche Kosten. Dank des technischen Teams von 10ZiG, des Programms für die erweiterte Garantie und benutzerfreundlicher Demos erhalten Kunden eine Windows Virtual Desktop-Gesamtlösung, für die mehrere gleichzeitige Sitzungen in der Cloud unterstützt werden.
+
+10ZiG ist Weltmarktführer im Bereich der Thin- und Zero-Client-Endpunktgeräte und Verwaltungssoftware für virtuelle Desktops. Dies wird auch durch die Arbeit des Unternehmens für seine Kunden verdeutlicht. Die Thin-Client-Hardware verfügt über sorgfältig durchdachte Features und Optionen, mit denen sichergestellt wird, dass Kunden die richtigen Clientgeräte für ihre Anforderungen erhalten. 10ZiG passt seine Geräte so an, dass sie genau zu Kundenumgebungen mit Windows- und Linux-basierten Clients passen, um die bestmögliche Leistung auf virtuellen Desktops zu erzielen – sowohl innerhalb als auch außerhalb der Cloud.
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -133,6 +141,14 @@ Liquidware Essentials steigert den Nutzen von Windows Virtual Desktop, indem es 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oSY1).
 - [Zur Partnerwebsite](https://www.liquidware.com/solutions/solutions-platform/microsoft).
 
+## <a name="liquit"></a>Liquit
+
+![Liquit-Logo](./media/partners/liquit.png)
+
+Mit der Liquit-Software für die Anwendungsaggregation und -bereitstellung können Unternehmen und Dienstanbieter eine Verbindung mit allen Arbeitsbereichs-Back-Ends (Citrix, VMWare, Windows Virtual Desktop, RDP und Legacy) sowie entsprechende Kombinationen herstellen, um eine maßgeschneiderte und einheitliche Kundenerfahrung zu erzielen – unabhängig davon, wo sich die Anwendungen der Kunden befinden. Wenn ein Kunde das intelligente Symbol veröffentlicht, trifft Liquit die Entscheidung, wo die Anwendung basierend auf Standort, Gerät und Profilrechten des Kunden gestartet wird.
+
+Als zertifizierter Integrationspartner unterstützt Liquit die Umstellung auf die Cloud, ohne dass umfangreiche Austauschvorgänge durchgeführt werden müssen. Für Windows Virtual Desktop ist das Herstellen einer Verbindung mit einer vorhandenen Umgebung, das Erstellen eines Arbeitsbereichs und das Bereitstellen des Desktops problemlos möglich. Sie können sich dann Zeit mit dem Durchführen der Migration von alten Plattformen lassen und Änderungen auf dem Back-End vornehmen, ohne dass Ihre Benutzer dies bemerken. Ermöglichen Sie eine einheitliche Endbenutzererfahrung und eine flexible Infrastruktur, und behalten Sie unabhängig vom Standort immer die Kontrolle über Ihre Anwendungen.
+
 ## <a name="login-vsi"></a>Login VSI
 
 ![Login VSI-Logo](./media/partners/loginvsi.png)
@@ -202,6 +218,16 @@ RDPSoft ist ein Windows Virtual Desktop-Partner, der leistungsstarke und kosteng
 Die Remote Desktop Commander-Lösungen von RDPSoft verbessern die Verwaltung von Windows Virtual Desktop. Premiumverwaltungsfeatures vereinfachen die Delegierung von Windows Virtual Desktop-Verwaltungsaufgaben zur Unterstützung von Büromitarbeitern durch Bereitstellen von Remoteunterstützung, Benutzersitzungen und Prozessverwaltung. Gleichzeitig sammelt die Remote Desktop Commander-Suite umfassende Metriken zur Leistung und Auslastung pro Benutzer, Benutzeraktivität und Überwachung, Windows Virtual Desktop-Verbindungsqualität (Latenz und Bandbreite), Lizenzierung und Sicherheit in einer zentralen Azure SQL-Datenbank-Instanz zur dortigen Überprüfung. Mit RDPSoft sind detaillierte Verlaufsberichte und umfassende Dashboards nur einen Mausklick entfernt.
 
 - [Zur Partnerwebsite wechseln](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+
+## <a name="sepago"></a>sepago
+
+![sepago-Logo](./media/partners/sepago.png)
+
+sepago wurde 2002 von vier Freunden in Köln gegründet. Heute ist sepago ein Beratungsunternehmen im Bereich IT Management, das über einen ständig wachsenden Kundenstamm und Niederlassungen in Köln, München und Hamburg verfügt. Bei sepago sind Experten in den Bereichen automatisierte Anwendungsbereitstellung, Virtualisierung, Cloudlösungen und IT-Sicherheit beschäftigt. sepago unterstützt mittlere und große Unternehmen bei der digitalen Transformation und sorgt dafür, dass Benutzer sicher und effizient arbeiten können.
+
+Im Innovation & Development Lab von sepago werden mit Big Data- und KI-Technologie intelligente Lösungen erstellt. Bei diesen Lösungen geht es hauptsächlich um die Verbesserung der Geschäftsabläufe, der Benutzererfahrung und der Verwaltung von Partnerprodukten, z. B. Windows Virtual Desktop.
+
+- [Zur Partnerwebsite wechseln](https://www.sepago.de/wvd-value-add-tools/)
 
 ## <a name="thinprint"></a>ThinPrint
 

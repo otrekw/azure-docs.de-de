@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 52bec8bba7bb3ddf545e3bd1866775f0964c6ad3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893142"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025808"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
@@ -268,6 +268,18 @@ Spezifische Einstellungen für Azure Cosmos DB sind auf der Registerkarte **Quel
 **Durchsatz:** Legen Sie einen optionalen Wert für die Anzahl von RUs fest, die Sie für jede Ausführung dieses Datenflusses während des Lesevorgangs auf die CosmosDB-Sammlung anwenden möchten. Der Mindestwert ist 400.
 
 **Bevorzugte Region:** Sie können die bevorzugten Leseregionen für diesen Prozess auswählen.
+
+#### <a name="json-settings"></a>JSON-Einstellungen
+
+**Einzelnes Dokument:** Wählen Sie diese Option aus, wenn die gesamte Datei von ADF wie ein einzelnes JSON-Dokument behandelt werden soll.
+
+**Spaltennamen ohne Anführungszeichen:** Wählen Sie diese Option aus, wenn die Spaltennamen im JSON-Code nicht in Anführungszeichen gesetzt sind.
+
+**Mit Kommentaren:** Verwenden Sie diese Auswahl, wenn Ihre JSON-Dokumente über Kommentare in den Daten verfügen.
+
+**Einfache Anführungszeichen:** Diese Option sollte ausgewählt werden, wenn die Spalten und Werte in Ihrem Dokument in einfache Anführungszeichen gesetzt sind.
+
+**Umgekehrter Schrägstrich mit Escapezeichen:** Wählen Sie diese Option aus, wenn Sie in Ihrem JSON-Code umgekehrte Schrägstriche als Escapezeichen verwenden.
 
 ### <a name="sink-transformation"></a>Senkentransformation
 

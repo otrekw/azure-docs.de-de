@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 04e7aeddaa4e3aba38f1bf08893b0b0487109653
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910672"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025451"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
-Azure Maps verwendet sowohl Raster- als auch Vektorkacheln zum Erstellen von Karten. Mit der niedrigsten Auflösung passt die ganze Welt auf eine einzige Kachel. Mit der höchsten Auflösung stellt eine einzige Kachel 38 Quadratmeter dar. Wenn Sie eine Karte vergrößern, sehen Sie zunehmend mehr Details von Kontinenten, Regionen, Städten und einzelnen Straßen. Weitere Informationen finden Sie unter [Zoomstufen und Grobraster](zoom-levels-and-tile-grid.md).
+Azure Maps verwendet sowohl Raster- als auch Vektorkacheln zum Erstellen von Karten. Bei der niedrigsten Auflösung passt die ganze Welt auf eine einzige Kachel. Bei der höchsten Auflösung werden mit einer einzelnen Kachel 38 Quadratmeter abgebildet. Wenn Sie die Ansicht vergrößern, werden weitere Details zu Kontinenten, Regionen, Orten und einzelnen Straßen angezeigt. Weitere Informationen zu Kacheln finden Sie unter [Zoomfaktoren und Kachelraster](zoom-levels-and-tile-grid.md).
 
-Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informationen und Genauigkeit. Die folgenden Tabellen enthalten Informationen zum Detaillierungsgrad des Renderns, den Sie in den einzelnen Regionen erwarten können.
+Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informationen und Genauigkeit. In den folgenden Tabellen ist der Informationsgrad angegeben, den Sie für die einzelnen Regionen rendern können.
 
 ## <a name="legend"></a>Legende
 

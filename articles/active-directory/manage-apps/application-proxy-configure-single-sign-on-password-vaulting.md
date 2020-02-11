@@ -14,12 +14,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18510bd7ace6ca87278b5bf68f79b372251ac0e1
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807826"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025740"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 
@@ -34,6 +34,8 @@ Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und geteste
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Liste die App aus, für die SSO einrichten möchten.  
+1. Wählen Sie **Anwendungsproxy**. 
+1. Ändern Sie den **Typ für die Vorauthentifizierung** in **Passthrough**, und wählen Sie **Speichern** aus. Später können Sie dann wieder zurück zum Typ **Azure Active Directory** wechseln. 
 1. Wählen Sie **Einmaliges Anmelden**.
 
    ![Auswählen von „Einmaliges Anmelden“ auf der Übersichtsseite der App](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
@@ -44,6 +46,17 @@ Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und geteste
    ![Kennwortbasierte Anmeldung auswählen und URL eingeben](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
 1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Anwendungsproxy**. 
+1. Ändern Sie den **Typ für die Vorauthentifizierung** in **Azure Active Directory**, und wählen Sie **Speichern** aus. 
+1. Wählen Sie **Benutzer und Gruppen**.
+1. Weisen Sie Benutzer der Anwendung zu, indem Sie **Benutzer hinzufügen** auswählen. 
+1. Wenn Sie Anmeldeinformationen für einen Benutzer vorab definieren möchten, aktivieren Sie das Kontrollkästchen vor dem Benutzernamen und wählen dann die Option **Anmeldeinformationen aktualisieren** aus.
+1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Liste die App aus, die Sie mit Kennwort-SSO konfiguriert haben.
+1. Wählen Sie **Branding** aus. 
+1. Aktualisieren Sie die **URL der Startseite** mit der **Anmelde-URL** über die Seite „Kennwort-SSO“, und wählen Sie **Speichern** aus.  
+
+
 
 <!-- Need to repro?
 7. The page should tell you that a sign-in form was successfully detected at the provided URL. If it doesn't, select **Configure [your app name] Password Single Sign-on Settings** and choose **Manually detect sign-in fields**. Follow the instructions to point out where the sign-in credentials go. 
@@ -51,7 +64,7 @@ Sie sollten Ihre App bereits mit dem Anwendungsproxy veröffentlicht und geteste
 
 ## <a name="test-your-app"></a>Testen Ihrer App
 
-Navigieren Sie zu der externen URL, die Sie für den Remotezugriff auf Ihre Anwendung konfiguriert haben. Melden Sie sich mit Ihren Anmeldeinformationen für die App an (oder mit den Anmeldeinformationen für ein Testkonto, für das Sie den Zugriff eingerichtet haben). Nachdem Sie sich erfolgreich angemeldet haben, sollten Sie die App verlassen und wieder aufrufen können, ohne Ihre Anmeldeinformationen erneut eingeben zu müssen.
+Navigieren Sie zum Portal „Meine Apps“. Melden Sie sich mit Ihren Anmeldeinformationen an (oder mit den Anmeldeinformationen für ein Testkonto, für das Sie den Zugriff eingerichtet haben). Klicken Sie nach dem erfolgreichen Anmelden auf das Symbol der App. Auf diese Weise kann unter Umständen die Installation der Browsererweiterung für die sichere Anmeldung von „Meine Apps“ ausgelöst werden. Wenn Ihr Benutzer über vordefinierte Anmeldeinformationen verfügt, sollte die Authentifizierung für die App automatisch durchgeführt werden. Andernfalls müssen Sie den Benutzernamen oder das Kennwort zum ersten Mal angeben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
-description: In diesem Artikel werden CloudSimple-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten CloudSimple-Cloud ausgeführt werden.
+description: In diesem Artikel werden AVS-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten AVS-Cloud ausgeführt werden.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,42 +8,42 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206539"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025349"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 
-Die CloudSimple-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware in der Azure-Umgebung ausgeführt werden. In der folgenden Tabelle werden Fehlerszenarien und die entsprechenden Hochverfügbarkeitsfunktionen aufgeführt.
+Die AVS-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware in der Azure-Umgebung ausgeführt werden. In der folgenden Tabelle werden Fehlerszenarien und die entsprechenden Hochverfügbarkeitsfunktionen aufgeführt.
 
 | Fehlerszenario | Anwendung geschützt? | Hochverfügbarkeitsfunktion für Plattform | Hochverfügbarkeitsfunktion für VMware | Hochverfügbarkeitsfunktion für Azure |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Datenträgerfehler | JA | Schnelles Ersetzen des fehlerhaften Knotens | [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Lüfterausfall | JA | Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens |  |  |
-| NIC-Fehler | JA | Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens
-| Stromausfall bei Host | JA | Redundante Stromversorgung |  |  |
-| ESXi-Hostfehler | JA | Schnelles Ersetzen des fehlerhaften Knotens | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-Fehler | JA | [Load Balancer](load-balancers.md)  | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer für zustandslose VMware-VMs |
-| Fehler an Blattknoten-Switchport | JA | Redundante NIC |  |  |
-| Fehler an Blattknoten-Switch | JA | Redundante Blattknoten-Switches |  |  |
-| Rack-Fehler | JA | Platzierungsgruppen |  |  |
-| Netzwerkkonnektivität zum lokalen Rechenzentrum | JA  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
-| Netzwerkkonnektivität mit Azure | JA | |  | Redundante ExpressRoute-Leitungen |
-| Datacenter-Fehler | JA |  |  | Verfügbarkeitszonen |
-| Regionaler Fehler | JA  |  |  | Azure-Regionen |
+| Datenträgerfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Lüfterausfall | YES | Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens |  |  |
+| NIC-Fehler | YES | Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens
+| Stromausfall bei Host | YES | Redundante Stromversorgung |  |  |
+| ESXi-Hostfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM-Fehler | YES | [Load Balancer](load-balancers.md)  | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer für zustandslose VMware-VMs |
+| Fehler an Blattknoten-Switchport | YES | Redundante NIC |  |  |
+| Fehler an Blattknoten-Switch | YES | Redundante Blattknoten-Switches |  |  |
+| Rack-Fehler | YES | Platzierungsgruppen |  |  |
+| Netzwerkkonnektivität zum lokalen Rechenzentrum | YES  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
+| Netzwerkkonnektivität mit Azure | YES | |  | Redundante ExpressRoute-Leitungen |
+| Datacenter-Fehler | YES |  |  | Verfügbarkeitszonen |
+| Regionaler Fehler | YES  |  |  | Azure-Regionen |
 
-Die Azure VMware-Lösung von CloudSimple bietet die folgenden Hochverfügbarkeitsfunktionen.
+Azure VMware Solutions von AVS verfügt über die unten angegebenen Hochverfügbarkeitsfunktionen.
 
 ## <a name="fast-replacement-of-failed-node"></a>Schnelles Ersetzen des fehlerhaften Knotens
 
-Die CloudSimple-Software für die Steuerungsebene überwacht kontinuierlich die Integrität der VMware-Cluster und erkennt Ausfälle von ESXi-Knoten. In diesem Fall fügt sie dem betreffenden VMware-Cluster aus seinem Pool verfügbarer Knoten automatisch einen neuen ESXi-Host hinzu und entfernt den ausgefallenen Knoten aus dem Cluster. Durch diese Funktion wird sichergestellt, dass die Reservekapazität im VMware-Cluster schnell wiederhergestellt wird, sodass die von vSAN und VMware-Hochverfügbarkeit bereitgestellte Resilienz des Clusters wiederhergestellt wird.
+Die AVS-Software für die Steuerungsebene überwacht kontinuierlich die Integrität der VMware-Cluster und erkennt Ausfälle von ESXi-Knoten. In diesem Fall fügt sie dem betreffenden VMware-Cluster aus seinem Pool verfügbarer Knoten automatisch einen neuen ESXi-Host hinzu und entfernt den ausgefallenen Knoten aus dem Cluster. Durch diese Funktion wird sichergestellt, dass die Reservekapazität im VMware-Cluster schnell wiederhergestellt wird, sodass die von vSAN und VMware-Hochverfügbarkeit bereitgestellte Resilienz des Clusters wiederhergestellt wird.
 
 ## <a name="placement-groups"></a>Platzierungsgruppen
 
-Ein Benutzer, der eine private Cloud erstellt, kann eine Azure-Region und eine Platzierungsgruppe innerhalb der ausgewählten Region auswählen. Eine Platzierungsgruppe ist eine Gruppe von Knoten, die auf verschiedene Racks verteilt sind, jedoch innerhalb desselben Spine-Netzwerksegments liegen. Knoten innerhalb derselben Platzierungsgruppe können einander mit maximal zwei zusätzlichen Switchhops erreichen. Eine Platzierungsgruppe befindet sich immer innerhalb einer einzigen Azure-Verfügbarkeitszone und umfasst mehrere Racks. Die CloudSimple-Steuerungsebene verteilt Knoten einer privaten Cloud bestmöglich auf mehrere Racks. Knoten in unterschiedlichen Platzierungsgruppen werden garantiert in unterschiedlichen Racks platziert.
+Ein Benutzer, der eine private AVS-Cloud erstellt, kann eine Azure-Region und eine Platzierungsgruppe innerhalb der ausgewählten Region auswählen. Eine Platzierungsgruppe ist eine Gruppe von Knoten, die auf verschiedene Racks verteilt sind, jedoch innerhalb desselben Spine-Netzwerksegments liegen. Knoten innerhalb derselben Platzierungsgruppe können einander mit maximal zwei zusätzlichen Switchhops erreichen. Eine Platzierungsgruppe befindet sich immer innerhalb einer einzigen Azure-Verfügbarkeitszone und umfasst mehrere Racks. Die AVS-Steuerungsebene verteilt Knoten einer privaten AVS-Cloud bestmöglich auf mehrere Racks. Knoten in unterschiedlichen Platzierungsgruppen werden garantiert in unterschiedlichen Racks platziert.
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
@@ -55,7 +55,7 @@ Für die Rechenzentren-Konnektivität mit Azure vNet mit ExpressRoute sind redun
 
 ## <a name="redundant-networking-services"></a>Redundante Netzwerkdienste
 
-Alle CloudSimple-Netzwerkdienste für die Private Cloud (einschließlich VLAN, Firewall, öffentlichen IP-Adressen, Internet und VPN) sind auf Hochverfügbarkeit ausgelegt und unterstützen die Vereinbarung zum Servicelevel für Dienste.
+Alle AVS-Netzwerkdienste für die Private AVS-Cloud (einschließlich VLAN, Firewall, öffentlichen IP-Adressen, Internet und VPN) sind auf Hochverfügbarkeit ausgelegt und unterstützen die Vereinbarung zum Servicelevel für Dienste.
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Load Balancer (Schicht 7) für zustandslose VMware-VMs
 

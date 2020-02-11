@@ -1,22 +1,22 @@
 ---
-title: Analysen in Azure Batch | Microsoft-Dokumentation
-description: Referenz zu Analysen in Azure Batch.
+title: Azure Batch-Analysen
+description: Die Themen in „Batch-Analysen“ enthalten Referenzinformationen zu den Ereignissen und Warnungen, die für Batch-Dienstressourcen verfügbar sind.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: 39a8bfb6a48bf55ae9f2ec36f7716959e6ada9dd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: d9538461dfa48a961f9325566b2adaf265e8daeb
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027386"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025961"
 ---
 # <a name="batch-analytics"></a>Batch-Analysen
 Die Themen in „Batch-Analysen“ enthalten Referenzinformationen zu den Ereignissen und Warnungen, die für Batch-Dienstressourcen verfügbar sind.

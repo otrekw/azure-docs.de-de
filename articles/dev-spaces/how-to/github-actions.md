@@ -1,17 +1,17 @@
 ---
 title: GitHub-Aktionen und Azure Kubernetes Service
 services: azure-dev-spaces
-ms.date: 11/04/2019
+ms.date: 02/04/2020
 ms.topic: conceptual
 description: Überprüfen und Testen von Änderungen eines Pull Requests direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 7d96726e829154847744d9aec07a9cb0938f75de
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 35050d0c9d1e6062866747dc8544d03574a8d8fe
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771120"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026097"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -29,8 +29,8 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-* [Azure-CLI installiert][azure-cli-installed].
+* ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
+* Die [Azure CLI][azure-cli-installed] muss installiert sein.
 * [Helm 3 muss installiert sein][helm-installed].
 * Ein GitHub-Konto mit [aktivierten GitHub-Aktionen][github-actions-beta-signup].
 * Ausführung der [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) in einem AKS-Cluster.
@@ -57,7 +57,6 @@ az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
 Speichern Sie die JSON-Ausgabe, da sie in einem späteren Schritt verwendet wird.
-
 
 Verwenden Sie [az aks show][az-aks-show], um die *ID* Ihres AKS-Clusters anzuzeigen:
 
@@ -93,7 +92,6 @@ Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen*. Kli
 1. *CLUSTER_NAME*: Der Name des AKS-Clusters (in diesem Beispiel *MyAKS*).
 1. *CONTAINER_REGISTRY*: Der *loginServer* für die ACR.
 1. *Host*: Der Host für den Entwicklungsbereich im Format *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* (in diesem Beispiel *dev.bikesharingweb.fedcab0987.eus.azds.io*).
-1. *HOST_SUFFIX*: Das Hostsuffix für den Entwicklungsbereich (in diesem Beispiel *fedcab0987.eus.azds.io*).
 1. *IMAGE_PULL_SECRET*: Der Name des Geheimnisses, das Sie verwenden möchten, z. B. *demo-secret*.
 1. *MASTER_SPACE*: Der Name des übergeordneten Entwicklungsbereichs (in diesem Beispiel *dev*).
 1. *REGISTRY_USERNAME*: *clientID* in der JSON-Ausgabe der Dienstprinzipalerstellung.
@@ -101,6 +99,8 @@ Navigieren Sie zum geforkten Repository und klicken Sie auf *Einstellungen*. Kli
 
 > [!NOTE]
 > Alle aufgeführten Geheimnisse werden von der GitHub-Aktion verwendet und in [.github/workflows/bikes.yml][github-action-yaml] konfiguriert.
+
+Optional: Wenn Sie den Masterbereich nach der PR-Zusammenführung aktualisieren möchten, können Sie das *GATEWAY_HOST*-Geheimnis im Format *<MASTERBEREICH>.gateway.<HOSTSUFFIX>* hinzufügen. In diesem Beispiel ist dies *dev.gateway.fedcab0987.eus.azds.io*. Nachdem Sie Ihre Änderungen im Master-Branch in Ihrem Fork zusammengeführt haben, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im Master-Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist *dev* der Masterbereich. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Neuen Branch für Codeänderungen erstellen
 
@@ -167,7 +167,7 @@ az group delete --name MyResourceGroup --yes --no-wait
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-quickstart]
+> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-quickstart]
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac

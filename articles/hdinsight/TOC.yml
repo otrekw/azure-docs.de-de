@@ -346,6 +346,8 @@
               href: ./spark/apache-azure-spark-history-server.md
             - name: Aktivieren der Zwischenspeicherung mit E/A-Cache
               href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Verwalten von JAR-Abhängigkeiten
+              href: ./spark/manage-jar-dependency.md
             - name: Verwenden von Notebooks mit Apache Spark
               items:
                 - name: Verwenden eines lokalen Jupyter Notebooks

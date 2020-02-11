@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037239"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026131"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -33,7 +33,7 @@ Informationen zum Zuweisen von Rollen zu Sicherheitsprinzipalen im Bereich Ihres
 
 RBAC-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Zugriffsberechtigungen, aber im Vergleich zu Zugriffssteuerungslisten nicht sehr detailliert. Die kleinste Granularität für RBAC ist die Containerebene, und diese wird mit einer höheren Priorität als Zugriffssteuerungslisten ausgewertet. Wenn Sie einem Sicherheitsprinzipal im Bereich eines Containers eine Rolle zuweisen, hat dieser Sicherheitsprinzipal daher die Autorisierungsstufe dieser Rolle für ALLE Verzeichnisse und Dateien in diesem Container, unabhängig von den ACL-Zuweisungen.
 
-Wenn einem Sicherheitsprinzipal RBAC-Datenberechtigungen über eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen bei der Autorisierung einer Anforderung als erstes. Wenn der angeforderte Vorgang durch die RBAC-Zuweisungen des Sicherheitsprinzipals autorisiert wird, erfolgt die Berechtigungsauflösung sofort, ohne dass zusätzliche ACL-Prüfungen durchgeführt werden. Wenn der Sicherheitsprinzipal keine RBAC-Zuweisung hat oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, erfolgen ACL-Prüfungen, um festzustellen, ob der Sicherheitsprinzipal berechtigt ist, den gewünschten Vorgang durchzuführen.
+Wenn einem Sicherheitsprinzipal RBAC-Datenberechtigungen über eine [integrierte Rolle](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues) oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen bei der Autorisierung einer Anforderung als erstes. Wenn der angeforderte Vorgang durch die RBAC-Zuweisungen des Sicherheitsprinzipals autorisiert wird, erfolgt die Berechtigungsauflösung sofort, ohne dass zusätzliche ACL-Prüfungen durchgeführt werden. Wenn der Sicherheitsprinzipal über keine RBAC-Zuweisung verfügt oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, werden alternativ ACL-Prüfungen durchgeführt, um zu bestimmen, ob der Sicherheitsprinzipal für die Durchführung des angeforderten Vorgangs autorisiert ist.
 
 > [!NOTE]
 > Wenn dem Sicherheitsprinzipal die integrierte Rolle des Besitzers der Speicherblobdaten zugewiesen wurde, gilt der Sicherheitsprinzipal als *super-user*, und er erhält Vollzugriff für alle Änderungsvorgänge, einschließlich Festlegung des Besitzers eines Verzeichnisses oder einer Datei sowie von ACLs für Verzeichnisse und Dateien, deren Besitzer er nicht ist. Dieser Administratorzugriff ist die einzige autorisierte Möglichkeit, den Besitzer einer Ressource zu ändern.
@@ -58,10 +58,15 @@ Zugriffssteuerungslisten können nicht verwendet werden, um eine Zugriffsebene b
 
 Informationen zum Festlegen von Berechtigungen auf Datei- und Verzeichnisebene finden Sie in den folgenden Artikeln:
 
-|Gewünschtes Tool:    |In diesem Artikel finden Sie weitere Informationen:    |
+|||
 |--------|-----------|
-|Azure Storage-Explorer    |[Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)|
-|REST-API    |[Pfad – Aktualisierung](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure Storage-Explorer |[Verwenden von Azure Storage-Explorer zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-explorer.md#managing-access)|
+|.NET |[Verwenden von .NET zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-dotnet.md)|
+|Java|[Verwenden von Java zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-java.md)|
+|Python|[Verwenden von Python zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-python.md)|
+|PowerShell|[Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-powershell.md)|
+|Azure-Befehlszeilenschnittstelle|[Verwenden der Azure CLI zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2](data-lake-storage-directory-file-acl-cli.md)|
+|REST-API |[Pfad – Aktualisierung](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Wenn der Sicherheitsprinzipal ein *Dienstprinzipal* ist, muss die Objekt-ID des Dienstprinzipals verwendet werden, nicht die Objekt-ID der zugehörigen App-Registrierung. Um die Objekt-ID des Dienstprinzipals abzurufen, öffnen Sie die Azure-Befehlszeilenschnittstelle, und verwenden Sie diesen Befehl: `az ad sp show --id <Your App ID> --query objectId`. Achten Sie darauf, den Platzhalter `<Your App ID>` durch die App-ID der App-Registrierung zu ersetzen.

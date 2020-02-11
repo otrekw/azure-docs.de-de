@@ -3,18 +3,18 @@ title: Sichern von SQL Server in Azure als eine DPM-Workload
 description: Eine Einführung in die Sicherung von SQL Server-Datenbanken mithilfe des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: b5709eb845d07e3638e0c100c857e5538e293317
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173263"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025400"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Sichern von SQL Server in Azure als eine DPM-Workload
 
 Dieser Artikel führt Sie durch die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Azure Backup.
 
-Für die Sicherung von SQL Server-Datenbanken in Azure benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+Für die Sicherung von SQL Server-Datenbanken in Azure benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 
 Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und aus Azure umfasst drei Schritte:
 
@@ -53,7 +53,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
    >
    >
 
-8. Klicken Sie unten auf der Seite auf **Weiter**
+8. Klicken Sie auf **Weiter**.
 
     DPM zeigt den verfügbaren Gesamtspeicherplatz sowie die wahrscheinliche Festplattenspeicherbelegung an.
 
@@ -103,7 +103,7 @@ Vergewissern Sie sich zunächst, dass für den Schutz von Workloads mit Microsof
 14. Klicken Sie auf **Weiter** , und wählen Sie die geeignete Option zum Übertragen der anfänglichen Sicherung nach Azure aus. Sie können zwischen den Optionen **Automatisch über das Netzwerk** und **Offlinesicherung** wählen.
 
     * **Automatisch über das Netzwerk** werden die Sicherungsdaten gemäß dem für die Sicherung ausgewählten Zeitplan nach Azure übertragen.
-    * Die Funktionsweise der Option **Offlinesicherung** wird unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md)beschrieben.
+    * Die Funktionsweise der **Offlinesicherung** wird unter [Übersicht über die Offlinesicherung](offline-backup-overview.md) beschrieben.
 
     Wählen Sie die geeignete Übertragungsmethode zum Senden der anfänglichen Sicherungskopie an Azure, und klicken Sie auf **Weiter**.
 15. Nachdem Sie die Richtliniendetails auf dem Bildschirm **Zusammenfassung** überprüft haben, klicken Sie auf die Schaltfläche **Gruppe erstellen**, um den Workflow abzuschließen. Sie können anschließend auf die Schaltfläche **Schließen** klicken und den Auftragsfortschritt im Arbeitsbereich "Überwachung" verfolgen.

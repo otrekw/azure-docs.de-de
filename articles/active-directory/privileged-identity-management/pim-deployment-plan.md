@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 02/04/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eef096322c8a8cfbf1618447529d46f6fbfd13b1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021849"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025995"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
@@ -58,7 +58,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen für die Verwendung 
 
 ### <a name="key-terminology"></a>Wesentliche Terminologie
 
-| Begriff oder Konzept | BESCHREIBUNG |
+| Begriff oder Konzept | Beschreibung |
 | --- | --- |
 | Berechtigt | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
 | aktivieren | Das Ausführen mindestens einer Aktion zum Verwenden einer Rolle, zu der der Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
@@ -99,7 +99,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Beteiligte: Privileged Identity Management für Azure AD-Rollen
 
-| NAME | Role | Aktion |
+| Name | Role | Aktion |
 | --- | --- | --- |
 | Name und E-Mail-Adresse | **Identitätsarchitekt oder globaler Azure-Administrator**<br/>Ein Vertreter des Identitätsverwaltungsteams, der definiert, wie diese Änderung an der Kerninfrastruktur für die Identitätsverwaltung in Ihrer Organisation ausgerichtet ist. | SO/R/I |
 | Name und E-Mail-Adresse | **Dienstbesitzer/Linienmanager**<br/>Ein Vertreter der IT-Besitzer eines Diensts oder eine Gruppe von Diensten. Er ist der Hauptentscheidungsträger und in erster Linie verantwortlich für die Einführung von Privileged Identity Management für sein Team. | SO/R/I |
@@ -109,7 +109,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Beteiligte: Privileged Identity Management für Azure-Ressourcenrollen
 
-| NAME | Role | Aktion |
+| Name | Role | Aktion |
 | --- | --- | --- |
 | Name und E-Mail-Adresse | **Abonnement/Ressourcenbesitzer**<br/>Ein Vertreter der IT-Besitzer jedes Abonnements oder jeder Ressource, für das oder die Sie Privileged Identity Management bereitstellen möchten | SO/R/I |
 | Name und E-Mail-Adresse | **Sicherheitsbesitzer**<br/>Ein Vertreter des Sicherheitsteams, der abzeichnen kann, dass der Plan die Sicherheitsanforderungen Ihrer Organisation erfüllt. | SO/R |
@@ -120,7 +120,7 @@ Der folgende Abschnitt hilft Ihnen beim Identifizieren aller Projektbeteiligten,
 
 Im Rahmen des Planungsprozesses müssen Sie zuerst Privileged Identity Management zustimmen und aktivieren. Folgen Sie dazu den Anweisungen im Artikel [Einstieg in die Verwendung von PIM](pim-getting-started.md). Durch das Aktivieren von Privileged Identity Management erhalten Sie Zugriff auf einige Funktionen, die speziell für die Unterstützung Ihrer Bereitstellung vorgesehen sind.
 
-Wenn Sie Privileged Identity Management für Azure-Ressourcen bereitstellen möchten, sollten Sie den Anweisungen im Artikel [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](pim-resource-roles-discover-resources.md) folgen. Nur Besitzer von Ressourcen, Ressourcengruppen und Abonnements können diese in Privileged Identity Management ermitteln. Wenn Sie als globaler Administrator versuchen, Privileged Identity Management für Azure-Ressourcen bereitzustellen, können Sie [die Zugriffsrechte zum Verwalten aller Azure-Abonnements erhöhen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json), um sich selbst Zugriff auf alle Azure-Ressourcen im Verzeichnis für die Ermittlung zu erteilen. Wir raten jedoch dazu, die Genehmigung aller Ihrer Abonnementbesitzer einzuholen, bevor Sie deren Ressourcen mit Privileged Identity Management verwalten.
+Wenn Sie Privileged Identity Management für Azure-Ressourcen bereitstellen möchten, sollten Sie den Anweisungen im Artikel [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](pim-resource-roles-discover-resources.md) folgen. Nur Besitzer von Abonnements und Verwaltungsgruppen können diese Ressourcen ermitteln und dafür das Onboarding für Privileged Identity Management durchführen. Nach dem Onboarding ist die PIM-Funktionalität für Besitzer auf allen Ebenen verfügbar, einschließlich Verwaltungsgruppe, Abonnement, Ressourcengruppe und Ressource. Wenn Sie als globaler Administrator versuchen, Privileged Identity Management für Azure-Ressourcen bereitzustellen, können Sie [die Zugriffsrechte zum Verwalten aller Azure-Abonnements erhöhen](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json), um sich selbst Zugriff auf alle Azure-Ressourcen im Verzeichnis für die Ermittlung zu erteilen. Wir raten jedoch dazu, die Genehmigung aller Ihrer Abonnementbesitzer einzuholen, bevor Sie deren Ressourcen mit Privileged Identity Management verwalten.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Durchsetzen des Prinzips der geringsten Rechte
 
@@ -198,7 +198,7 @@ Wenn Rollen vorhanden sind, denen Gastbenutzer zugewiesen sind, sind sie besonde
 > [!TIP]
 > :heavy_check_mark: **Microsoft-Empfehlung**: Verwalten Sie alle Rollen für Gastbenutzer mit Privileged Identity Management, um Risiken im Zusammenhang mit kompromittierten Gastbenutzerkonten zu reduzieren.
 
-Leserrollen wie „Verzeichnis lesen“, „Nachrichtencenter-Leser“ und „Sicherheitsleseberechtigter“ gelten bisweilen als weniger wichtig als andere Rollen, da sie keine Schreibberechtigung haben. Allerdings ist uns bekannt, dass einige Kunden auch diese Rollen schützen, da Angreifer, die Zugriff auf diese Konten erlangt haben, möglicherweise sensible Daten wie beispielsweise personenbezogene Informationen lesen können. Dies sollten Sie berücksichtigen, wenn Sie entscheiden, ob Leserrollen in Ihrer Organisation mit Privileged Identity Management verwaltet werden müssen.
+Leserrollen wie „Verzeichnis lesen“, „Nachrichtencenter-Leser“ und „Sicherheitsleseberechtigter“ gelten bisweilen als weniger wichtig als andere Rollen, da sie keine Schreibberechtigung haben. Allerdings ist uns bekannt, dass einige Kunden auch diese Rollen schützen, da Angreifer, die Zugriff auf diese Konten erlangt haben, unter Umständen sensible Daten, z. B. personenbezogene Daten, lesen können. Dies sollten Sie berücksichtigen, wenn Sie entscheiden, ob Leserrollen in Ihrer Organisation mit Privileged Identity Management verwaltet werden müssen.
 
 #### <a name="azure-resource-roles"></a>Azure-Ressourcenrollen
 
@@ -256,7 +256,7 @@ Vor dem Implementieren Ihrer Privileged Identity Management-Lösung empfiehlt es
 
 In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 | --- | --- |
 | Role | Name der Rolle, für die Sie die Einstellungen definieren. |
 | Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |
