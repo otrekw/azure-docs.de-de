@@ -261,6 +261,8 @@
               href: create-ssh-keys-detailed.md
     - name: Schützen von virtuellen Computern
       items:
+        - name: Notfallwiederherstellung
+          href: ../virtual-machines-disaster-recovery-guidance.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Sichern virtueller Computer
           href: ../../backup/backup-introduction-to-azure-backup.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
           items:
