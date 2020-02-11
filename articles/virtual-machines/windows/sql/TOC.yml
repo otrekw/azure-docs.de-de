@@ -97,11 +97,13 @@
               href: virtual-machines-windows-sql-availability-group-quickstart-template.md
             - name: Mehrere Regionen
               href: virtual-machines-windows-portal-sql-availability-group-dr.md
+            - name: Domänenunabhängig (Arbeitsgruppe)
+              href: virtual-machines-windows-sql-workgroup-availability-group.md
             - name: Manuelles Konfigurieren
               items:
                 - name: Voraussetzungen
                   href: virtual-machines-windows-portal-sql-availability-group-prereq.md
-                - name: Tutorial
+                - name: Lernprogramm
                   href: virtual-machines-windows-portal-sql-availability-group-tutorial.md
                 - name: Load Balancer – Azure-Portal
                   href: virtual-machines-windows-portal-sql-alwayson-int-listener.md

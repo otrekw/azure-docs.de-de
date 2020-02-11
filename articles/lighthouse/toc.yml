@@ -44,6 +44,9 @@
     - name: Kunden anzeigen und verwalten
       displayName: my customers
       href: ./how-to/view-manage-customers.md
+    - name: Verwenden von Azure Monitor-Protokollen im großen Stil
+      displayName: 'log, analytics, analyze, activity'
+      href: ./how-to/monitor-at-scale.md
     - name: Azure Policy-Integration
       items:
         - name: Bedarfsorientiertes Bereitstellen einer Richtlinie

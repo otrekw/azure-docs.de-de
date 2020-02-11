@@ -109,6 +109,10 @@
           href: long-audio-api.md
         - name: Verwenden der Sprachsynthese mit Docker-Containern
           href: speech-container-howto.md?tabs=tts
+        - name: Abrufen einer Liste von Stimmen mit REST (Python)
+          href: quickstart-python-get-text-to-speech-voices.md
+        - name: Konvertieren von Text in Sprache mit REST (Python)
+          href: quickstart-python-text-to-speech.md
     - name: Verweis
       items:
         - name: Sprach-SDK
