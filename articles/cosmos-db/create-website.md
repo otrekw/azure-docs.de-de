@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 11b84877171fae8e788d3298973fd74645b35480
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719335"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901919"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
 In diesem Lernprogramm erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), eine [Azure App Service-Web-App](https://go.microsoft.com/fwlink/?LinkId=529714) und eine Beispielwebanwendung bereitstellen und integrieren.
@@ -69,7 +69,7 @@ Jetzt stellen wir unsere erste Vorlage bereit.
    ![Screenshot der Benutzeroberfläche für die Vorlagenbereitstellung](./media/create-website/TemplateDeployment6.png)
 7. Wenn die Bereitstellung abgeschlossen ist, wird der Bereich der Ressourcengruppe geöffnet.
    ![Screenshot des Bereichs „Ressourcengruppe“](./media/create-website/TemplateDeployment7.png)  
-8. Um die Anwendung zu verwenden, navigieren Sie zur Web-App-URL (im obigen Beispiel: http://mydemodocdbwebapp.azurewebsites.net) ).  Die folgende Webanwendung wird angezeigt:
+8. Wenn Sie die Anwendung verwenden möchten, navigieren Sie zur Web-App-URL (im obigen Beispiel lautet die URL `http://mydemodocdbwebapp.azurewebsites.net`).  Die folgende Webanwendung wird angezeigt:
    
    ![Todo-Beispielanwendung](./media/create-website/image2.png)
 9. Erstellen Sie nun eine Reihe von Aufgaben in der Web-App, und kehren Sie dann zum Bereich der Ressourcengruppe im Azure-Portal zurück. Klicken Sie auf die Azure Cosmos DB-Kontoressource in der Liste „Ressourcen“ und dann auf **Daten-Explorer**.

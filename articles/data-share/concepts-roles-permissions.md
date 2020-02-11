@@ -1,86 +1,97 @@
 ---
 title: Rollen und Anforderungen für Azure Data Share
-description: Erfahren Sie etwas über die Zugriffssteuerungsrollen und Anforderungen für Datenanbieter und Datenconsumer für die Freigabe von Daten in Azure Data Share.
+description: Hier erfahren Sie mehr über die erforderlichen Berechtigungen zum Freigeben und Empfangen von Daten mithilfe von Azure Data Share.
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 34c73a6bd400da076c68f308a2100a0f4569bd04
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f836553c3c3bb324d76d022af189f154b5b1972
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490578"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964463"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Rollen und Anforderungen für Azure Data Share 
 
-In diesem Artikel werden die Rollen beschrieben, die erforderlich sind, um Daten mithilfe von Azure Data Share freizugeben, zu akzeptieren und zu empfangen. 
+In diesem Artikel werden Rollen und Berechtigungen beschrieben, die zum Freigeben und Empfangen von Daten mit dem Azure Data Share-Dienst erforderlich sind. 
 
 ## <a name="roles-and-requirements"></a>Rollen und Anforderungen
 
-Azure Data Share verwendet verwaltete Identitäten für Azure-Dienste (früher als MSIs bezeichnet), um sich bei den zugrunde liegenden Speicherkonten zu authentifizieren. Auf diese Weise können von einem Datenanbieter freigegebene Daten gelesen und von einem Datenconsumer freigegebene Daten empfangen werden. Zwischen dem Datenanbieter und dem Datenconsumer findet somit kein Austausch von Anmeldeinformationen statt. 
+Mit dem Azure Data Share-Dienst können Sie Daten freigeben, ohne Anmeldeinformationen zwischen Datenanbieter und Consumer auszutauschen. Der Azure Data Share-Dienst verwendet verwaltete Identitäten (früher als „MSIs“ bezeichnet) für die Authentifizierung beim Azure-Datenspeicher. 
 
-Der verwalteten Dienstidentität muss Zugriff auf das zugrunde liegende Speicherkonto oder die zugrunde liegende SQL-Datenbank gewährt werden. Der Azure Data Share-Dienst verwendet die verwaltete Dienstidentität der Azure Data Share-Ressource, um Daten zu lesen und zu schreiben. Der Azure Data Share-Benutzer muss für die verwaltete Dienstidentität eine Rollenzuweisung für das Speicherkonto oder die SQL-Datenbank erstellen können, von denen oder für die Daten freigegeben werden. 
+Der verwalteten Identität der Azure Data Share-Ressource muss Zugriff auf den Azure-Datenspeicher gewährt werden. Der Azure Data Share-Dienst verwendet dann diese verwaltete Identität zum Lesen und Schreiben von Daten für die auf Momentaufnahmen basierende Freigabe und zum Einrichten einer symbolischen Verknüpfung für die direkte Freigabe. 
 
-Bei der Speicherung ist die Berechtigung zum Erstellen von Rollenzuweisungen in der Rolle **Besitzer**, der Rolle „Benutzerzugriffsadministrator“ sowie in benutzerdefinierten Rollen mit zugewiesener Berechtigung „Microsoft.Authorization/role assignments/write“ enthalten. 
+Zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher benötigt der Benutzer mindestens die folgenden Berechtigungen. Für die SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich.
+* Berechtigung zum Schreiben in den Azure-Datenspeicher. Diese Berechtigung ist normalerweise in der Rolle **Mitwirkender** enthalten.
+* Berechtigung zum Erstellen einer Rollenzuweisung im Azure-Datenspeicher. Die Berechtigung zum Erstellen von Rollenzuweisungen ist normalerweise in der Rolle **Besitzer**, der Rolle „Benutzerzugriffsadministrator“ oder einer benutzerdefinierten Rolle mit zugewiesener Berechtigung „Microsoft.Authorization/role assignments/write“ enthalten. Diese Berechtigung ist nicht erforderlich, wenn der verwalteten Identität der Data Share-Ressource bereits Zugriff auf den Azure-Datenspeicher gewährt wurde. Die erforderliche Rolle finden Sie in der nachstehenden Tabelle.
 
-Wenn Sie kein Besitzer des entsprechenden Speicherkontos sind und keine Rollenzuweisung für die verwaltete Identität der Azure Data Share-Ressource erstellen können, bitten Sie einen Azure-Administrator, eine Rollenzuweisung für Sie zu erstellen. 
-
-Im Folgenden finden Sie eine Zusammenfassung der Rollen, die verwalteten Identitäten der Data Share-Ressource zugewiesen sind:
+Im Folgenden finden Sie eine Zusammenfassung der Rollen, die der verwalteten Identität der Data Share-Ressource zugewiesen werden:
 
 | |  |  |
 |---|---|---|
-|**Speichertyp**|**Speicher des Datenanbieters**|**Zielspeicher des Datenconsumers**|
+|**Datenspeichertyp**|**Quelldatenspeicher des Datenanbieters**|**Zieldatenspeicher des Datenconsumers**|
 |Azure Blob Storage| Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
-|Azure Data Lake Gen1 | Owner (Besitzer) | Nicht unterstützt
+|Azure Data Lake Gen1 | Besitzer | Nicht unterstützt
 |Azure Data Lake Gen2 | Leser von Speicherblobdaten | Mitwirkender an Storage-Blobdaten
-|Azure SQL | dbo | dbo 
+|Azure SQL Server | Mitwirkender von SQL DB | Mitwirkender von SQL DB
+|Azure Data Explorer-Cluster | Mitwirkender | Mitwirkender
 |
 
-### <a name="data-providers"></a>Datenanbieter 
-Um in Azure Data Share ein Dataset hinzuzufügen, muss der Rolle „Storage-Blobdatenleser“ die verwaltete Identität der Datenfreigaberessource des Datenanbieters hinzugefügt werden. Dies erfolgt automatisch durch den Azure Data Share-Dienst, wenn der Benutzer Datasets über Azure hinzufügt und Besitzer des Speicherkontos oder Mitglied einer benutzerdefinierten Rolle ist, der die Berechtigung „Microsoft.Authorization/role assignments/write“ zugewiesen ist. 
+Bei SQL-basierter Freigabe muss ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Nachstehend finden Sie eine Zusammenfassung der für den SQL-Benutzer erforderlichen Berechtigung.
 
-Alternativ kann der Benutzer der Rolle „Storage-Blobdatenleser“ die verwaltete Identität der Datenfreigaberessource durch einen Azure-Administrator manuell hinzufügen lassen. Wenn diese Rollenzuweisung manuell durch den Administrator erstellt wird, ist es nicht mehr erforderlich, Besitzer des Speicherkontos zu sein oder über eine benutzerdefinierte Rollenzuweisung zu verfügen. Dies betrifft Daten, die von Azure Storage oder Azure Data Lake Gen2 freigegeben werden. 
+| |  |  |
+|---|---|---|
+|**SQL-Datenbanktyp**|**SQL-Benutzerberechtigung des Datenanbieters**|**SQL-Benutzerberechtigung des Datenconsumers**|
+|Azure SQL-Datenbank | db_datareader | db_datareader, db_datawriter, db_ddladmin
+|Azure Synapse Analytics (ehemals SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
+|
 
-Bei der Freigabe von Daten aus Azure Data Lake Gen1 muss die Rolle „Besitzer“ zugewiesen werden. 
 
-Um eine Rollenzuweisung für die verwaltete Identität der Datenfreigaberessource zu erstellen, führen Sie die folgenden Schritte aus:
+### <a name="data-provider"></a>Datenanbieter 
+Zum Hinzufügen eines Datasets in Azure Data Share muss der verwalteten Identität der Data Share-Ressource des Anbieters Zugriff auf den Azure-Quelldatenspeicher gewährt werden. Bei einem Speicherkonto beispielsweise wird der verwalteten Identität der Data Share-Ressource die Rolle „Leser von Speicherblobdaten“ zugewiesen. 
 
-1. Navigieren Sie zum Speicherkonto.
+Dies geschieht automatisch durch den Azure Data Share-Dienst, wenn der Benutzer ein Dataset über das Azure-Portal hinzufügt und über die entsprechende Berechtigung verfügt. So ist der Benutzer beispielsweise Besitzer des Azure-Datenspeichers oder Mitglied einer benutzerdefinierten Rolle, der die Berechtigung „Microsoft.Authorization/role assignments/write“ zugewiesen wurde. 
+
+Alternativ kann der Benutzer veranlassen, dass der Besitzer des Azure-Datenspeichers die verwaltete Identität der Data Share-Ressource seinem Datenspeicher manuell hinzufügt. Diese Aktion muss nur einmal pro Data Share-Ressource ausgeführt werden.
+
+Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Ressource erstellen möchten, führen Sie die folgenden Schritte aus:
+
+1. Navigieren Sie zum Azure-Datenspeicher.
 1. Wählen Sie **Access Control (IAM)** aus.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie unter *Rolle* die Option *Storage-Blobdatenleser* aus.
-1. Geben Sie unter *Auswählen* den Namen Ihres Azure Data Share-Kontos ein.
+1. Wählen Sie unter *Rolle* die gewünschte Rolle in der vorstehenden Rollenzuweisungstabelle aus (z. B. für das Speicherkonto die Rolle *Leser von Speicherblobdaten*).
+1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Bei SQL-basierten Quellen muss ein Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, von der Daten freigegeben werden, und zwar mit demselben Namen wie das Azure Data Share-Konto. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben von Daten](share-your-data.md). 
+Zusätzlich zu den vorstehenden Schritten muss bei SQL-basierten Quellen ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Freigeben von Daten](share-your-data.md). 
 
-### <a name="data-consumers"></a>Datenconsumer
-Zum Empfangen von Daten muss der Rolle „Mitwirkender an Storage-Blobdaten“ und/oder der Rolle „dbo“ einer SQL-Datenbank (wenn Daten in einer SQL-Datenbank empfangen werden) die verwaltete Identität der Datenfreigaberessource des Datenconsumers hinzugefügt werden. 
+### <a name="data-consumer"></a>Datenconsumer
+Zum Empfangen von Daten muss der verwalteten Identität der Data Share-Ressource des Consumers Zugriff auf den Azure-Zieldatenspeicher gewährt werden. Bei einem Speicherkonto beispielsweise wird der verwalteten Identität der Data Share-Ressource die Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen. 
 
-Bei der Speicherung erfolgt dies automatisch durch den Azure Data Share-Dienst, wenn der Benutzer Datasets über Azure hinzufügt und Besitzer des Speicherkontos oder Mitglied einer benutzerdefinierten Rolle ist, der die Berechtigung „Microsoft.Authorization/role assignments/write“ zugewiesen ist. 
+Dies geschieht automatisch durch den Azure Data Share-Dienst, wenn der Benutzer einen Zieldatenspeicher über das Azure-Portal angibt und über die entsprechende Berechtigung verfügt. So ist der Benutzer beispielsweise Besitzer des Azure-Datenspeichers oder Mitglied einer benutzerdefinierten Rolle, der die Berechtigung „Microsoft.Authorization/role assignments/write“ zugewiesen wurde. 
 
-Alternativ kann der Benutzer der Rolle „Mitwirkender an Storage-Blobdaten“ die verwaltete Identität der Datenfreigaberessource durch einen Azure-Administrator manuell hinzufügen lassen. Wenn diese Rollenzuweisung manuell durch den Administrator erstellt wird, ist es nicht mehr erforderlich, Besitzer des Speicherkontos zu sein oder über eine benutzerdefinierte Rollenzuweisung zu verfügen. Beachten Sie, dass dies Daten betrifft, die für Azure Storage oder Azure Data Lake Gen2 freigegeben werden. Das Empfangen von Daten in Azure Data Lake Gen1 wird nicht unterstützt. 
+Alternativ kann der Benutzer veranlassen, dass der Besitzer des Azure-Datenspeichers die verwaltete Identität der Data Share-Ressource seinem Datenspeicher manuell hinzufügt. Diese Aktion muss nur einmal pro Data Share-Ressource ausgeführt werden.
 
-Um manuell eine Rollenzuweisung für die verwaltete Identität der Datenfreigaberessource zu erstellen, führen Sie die folgenden Schritte aus:
+Wenn Sie eine Rollenzuweisung für die verwaltete Identität der Data Share-Ressource manuell erstellen möchten, führen Sie die folgenden Schritte aus:
 
-1. Navigieren Sie zum Speicherkonto.
+1. Navigieren Sie zum Azure-Datenspeicher.
 1. Wählen Sie **Access Control (IAM)** aus.
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
-1. Wählen Sie unter *Rolle* die Option *Mitwirkender an Storage-Blobdaten* aus. 
-1. Geben Sie unter *Auswählen* den Namen Ihres Azure Data Share-Kontos ein.
+1. Wählen Sie unter *Rolle* die gewünschte Rolle in der vorstehenden Rollenzuweisungstabelle aus (z. B. für das Speicherkonto die Rolle *Leser von Speicherblobdaten*).
+1. Geben Sie unter *Auswählen* den Namen Ihrer Azure Data Share-Ressource ein.
 1. Klicken Sie auf *Speichern*.
 
-Wenn Sie Daten mithilfe unserer REST-APIs freigeben, müssen Sie diese Rollenzuweisungen manuell erstellen, indem Sie das Data Share-Konto den entsprechenden Rollen hinzufügen. 
+Zusätzlich zu den vorstehenden Schritten muss beim SQL-basierten Ziel ein SQL-Benutzer über einen externen Anbieter in der SQL-Datenbank erstellt werden, und zwar mit demselben Namen wie die Azure Data Share-Ressource. Diesem Benutzer muss die Berechtigung *db_datareader, db_datawriter, db_ddladmin* erteilt werden. Ein Beispielskript sowie weitere Voraussetzungen für die SQL-basierte Freigabe finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md). 
 
-Wenn Daten in einer SQL-basierten Quelle empfangen werden, stellen Sie sicher, dass ein neuer Benutzer über einen externen Anbieter mit dem gleichen Namen wie Ihr Azure Data Share-Konto erstellt wird. Informationen zu den Voraussetzungen finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md). 
+Wenn Sie Daten mithilfe von Rest-APIs freigeben, müssen Sie diese Rollenzuweisungen manuell erstellen. 
 
-Weitere Informationen zum Hinzufügen einer Rollenzuweisung finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment), in der das Hinzufügen einer Rollenzuweisung zu einer Azure-Ressource beschrieben wird. 
+Weitere Informationen zum Hinzufügen einer Rollenzuweisung finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#add-a-role-assignment). 
 
 ## <a name="resource-provider-registration"></a>Ressourcenanbieterregistrierung 
 
-Wenn Sie eine Azure Data Share-Einladung annehmen, müssen Sie den Microsoft.DataShare-Ressourcenanbieter manuell in Ihrem Abonnement registrieren. Führen Sie diese Schritte aus, um den Microsoft.DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement zu registrieren. 
+Wenn Sie eine Azure Data Share-Einladung zum ersten Mal in Ihrem Azure-Mandanten anzeigen möchten, müssen Sie den Microsoft. DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement möglicherweise manuell registrieren. Führen Sie diese Schritte aus, um den Microsoft.DataShare-Ressourcenanbieter in Ihrem Azure-Abonnement zu registrieren. 
 
 1. Navigieren Sie im Azure-Portal zu **Abonnements**.
 1. Wählen Sie das Abonnement aus, das Sie für Azure Data Share verwenden.

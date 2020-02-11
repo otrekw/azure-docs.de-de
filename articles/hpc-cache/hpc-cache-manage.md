@@ -4,18 +4,18 @@ description: Verwalten und Aktualisieren von Azure HPC Cache im Azure-Portal
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867082"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988855"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Verwalten des Caches im Azure-Portal
 
-Auf der Übersichtsseite für den Cache im Azure-Portal werden Projektdetails, der Cachestatus und grundlegende Statistiken für den Cache angezeigt. Die Seite umfasst außerdem Steuerelemente zum Löschen des Caches, Leeren der Daten in den Langzeitspeicher oder Aktualisieren der Software.
+Auf der Übersichtsseite für den Cache im Azure-Portal werden Projektdetails, der Cachestatus und grundlegende Statistiken für den Cache angezeigt. Außerdem verfügt die Seite über Steuerelemente zum Beenden oder Starten des Caches, zum Löschen des Caches, zum Leeren der Daten in den Langzeitspeicher und zum Aktualisieren der Software.
 
 Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Portal aus. Laden Sie z. B. die Seite **Alle Ressourcen**, und klicken Sie auf den Namen des Caches.
 
@@ -23,12 +23,29 @@ Um die Übersichtsseite zu öffnen, wählen Sie die Cacheressource im Azure-Port
 
 Über die Schaltflächen oben auf der Seite können Sie den Cache verwalten:
 
+* **Starten** und [**Beenden**](#stop-the-cache): Der Cachevorgang wird angehalten.
 * [**Leeren:** ](#flush-cached-data) Geänderte Daten werden in Speicherziele geschrieben.
 * [**Aktualisieren:** ](#upgrade-cache-software) Die Cachesoftware wird aktualisiert.
 * **Aktualisieren:** Die Übersichtsseite wird erneut geladen.
 * [**Löschen:** ](#delete-the-cache) Der Cache wird dauerhaft zerstört.
 
 Nachfolgend finden Sie weitere Informationen zu diesen Optionen.
+
+## <a name="stop-the-cache"></a>Beenden des Caches
+
+Sie können den Cache beenden, um die Kosten während eines inaktiven Zeitraums zu senken. Ihnen wird keine Betriebszeit in Rechnung gestellt, während der Cache angehalten wird. Es werden jedoch Gebühren für den zugeordneten Datenträgerspeicher des Caches erhoben. (Ausführlichere Informationen finden Sie auf der Seite mit der [Preisübersicht](https://aka.ms/hpc-cache-pricing).)
+
+Ein beendeter Cache reagiert nicht auf Clientanforderungen. Sie sollten die Bereitstellung von Clients aufheben, bevor Sie den Cache beenden.
+
+Mit der Schaltfläche **Beenden** wird ein aktiver Cache angehalten. Die Schaltfläche **Beenden** ist verfügbar, wenn der Cachestatus **Fehlerfrei** oder **Heruntergestuft** lautet.
+
+![Screenshot der oberen Schaltflächen, wobei „Beenden“ hervorgehoben ist und in einer Popupnachricht die Aktion „Beenden“ beschrieben ist und die Frage „Möchten Sie den Vorgang fortsetzen?“ gestellt wird einschließlich der Schaltflächen „Ja“ (Standard) und „Nein“](media/stop-cache.png)
+
+Wenn Sie auf „Ja“ klicken, um das Beenden des Caches zu bestätigen, leert der Cache seinen Inhalt automatisch in die Speicherziele. Dieser Vorgang kann einige Zeit dauern, stellt jedoch die Datenkonsistenz sicher. Schließlich ändert sich der Cachestatus in **Beendet**.
+
+Um einen beendeten Cache erneut zu aktivieren, klicken Sie auf die Schaltfläche **Starten**. Es ist keine Bestätigung erforderlich.
+
+![Screenshot der oberen Schaltflächen, wobei „Starten“ hervorgehoben ist](media/start-cache.png)
 
 ## <a name="flush-cached-data"></a>Leeren zwischengespeicherter Daten
 
@@ -68,13 +85,14 @@ Die Back-End-Speichervolumes, die als Speicherziele verwendet werden, sind nicht
 > [!NOTE]
 > Azure HPC Cache schreibt geänderte Daten nicht automatisch aus dem Cache in die Back-End-Speichersysteme, bevor der Cache gelöscht wird.
 >
-> Um sicherzustellen, dass alle Daten im Cache in den Langzeitspeicher geschrieben wurden, befolgen Sie dieses Verfahren:
+> Um sicherzustellen, dass alle Daten im Cache in den Langzeitspeicher geschrieben wurden, [beenden Sie den Cache](#stop-the-cache), bevor Sie ihn löschen. Vergewissern Sie sich, dass der Status **Beendet** angezeigt wird, bevor Sie auf die Schaltfläche „Löschen“ klicken.
+<!--... written to long-term storage, follow this procedure:
 >
-> 1. [Entfernen](hpc-cache-edit-storage.md#remove-a-storage-target) Sie jedes Speicherziel aus Azure HPC Cache, indem Sie die Schaltfläche „Löschen“ auf der Seite „Speicherziele“ verwenden. Das System schreibt automatisch alle geänderten Daten aus dem Cache in das Back-End-Speichersystem, bevor das Ziel entfernt wird.
-> 1. Warten Sie darauf, dass das Speicherziel vollständig entfernt wird. Der Prozess kann eine Stunde oder länger dauern, wenn viele Daten aus dem Cache geschrieben werden müssen. Wenn dies erfolgt ist, meldet eine Portalbenachrichtigung, dass der Löschvorgang erfolgreich durchgeführt wurde, und das Speicherziel wird aus der Liste entfernt.
-> 1. Nachdem alle betroffenen Speicherziele gelöscht wurden, ist es sicher, den Cache zu löschen.
+> 1. [Remove](hpc-cache-edit-storage.md#remove-a-storage-target) each storage target from the Azure HPC Cache by using the delete button on the Storage targets page. The system automatically writes any changed data from the cache to the back-end storage system before removing the target.
+> 1. Wait for the storage target to be completely removed. The process can take an hour or longer if there is a lot of data to write from the cache. When it is done, a portal notification says that the delete operation was successful, and the storage target disappears from the list.
+> 1. After all affected storage targets have been deleted, it is safe to delete the cache.
 >
-> Alternativ können Sie die Option [flush](#flush-cached-data) (Leeren) verwenden, um zwischengespeicherte Daten zu speichern, aber es besteht ein geringes Risiko, Arbeit zu verlieren, wenn ein Client eine Änderung in den Cache schreibt, nachdem das Leeren abgeschlossen ist, aber bevor die Cacheinstanz zerstört wird.
+> Alternatively, you can use the [flush](#flush-cached-data) option to save cached data, but there is a small risk of losing work if a client writes a change to the cache after the flush completes but before the cache instance is destroyed.-->
 
 ## <a name="cache-metrics-and-monitoring"></a>Metriken und Überwachung des Caches
 

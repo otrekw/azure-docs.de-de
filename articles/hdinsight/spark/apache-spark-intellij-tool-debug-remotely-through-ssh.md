@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 36e665f889ece48661a859e1a9a44f23aec08c37
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75548875"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934748"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 
@@ -25,7 +25,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 * Für Windows-Benutzer: Beim Ausführen der lokalen Spark Scala-Anwendung auf einem Windows-Computer wird unter Umständen eine Ausnahme wie unter [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) beschrieben ausgelöst. Diese Ausnahme tritt auf, weil die Datei „WinUtils.exe“ in Windows fehlt.
 
-    Um diesen Fehler zu beheben, müssen Sie [die ausführbare Datei herunterladen](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\WinUtils\bin** speichern. Fügen Sie anschließend die Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable auf **C:\WinUtils** fest.
+    Um diesen Fehler zu beheben, müssen Sie [Winutils.exe](https://github.com/steveloughran/winutils) herunterladen und an einem Speicherort wie **C:\WinUtils\bin** ablegen. Fügen Sie anschließend die Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable auf **C:\WinUtils** fest.
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (Die Community Edition ist kostenlos.).
 
@@ -54,7 +54,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 1. Geben Sie im nächsten Fenster **New Project** (Neues Projekt) die folgenden Informationen an:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Projektname|Geben Sie einen Namen ein. In dieser exemplarischen Vorgehensweise wird `myApp` verwendet.|
     |Projektspeicherort|Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|

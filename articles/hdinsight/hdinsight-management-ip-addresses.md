@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 598bf677b06c5ec1f431144e7e76deee55d23f33
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 982e80f4c47a6f59b65edb06461a9d592248cc61
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435485"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76929880"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
 > [!Important]
-> Verwenden Sie das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen. Neue Regionen werden nur für Diensttags hinzugefügt und die statischen IP-Adressen werden schließlich eingestellt.
+> In den meisten Fällen können Sie jetzt das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen verwenden, statt IP-Adressen manuell hinzuzufügen. Neue Regionen werden nur für Diensttags hinzugefügt und die statischen IP-Adressen werden schließlich eingestellt.
 
 Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (UDRs) zum Steuern von eingehendem Datenverkehr verwenden, müssen Sie sicherstellen, dass Ihr Cluster mit kritischen Azure-Integritäts- und -Verwaltungsdiensten kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige davon gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
 

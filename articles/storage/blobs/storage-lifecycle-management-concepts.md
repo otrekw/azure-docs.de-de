@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260952"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939244"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -348,9 +348,9 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 }
 ```
 
-### <a name="archive-data-at-ingest"></a>Archivieren von Daten bei der Erfassung
+### <a name="archive-data-after-ingest"></a>Archivieren von Daten nach der Erfassung
 
-Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
+Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten kurz nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
 > [!NOTE] 
 > Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-acess-tier“ für [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) oder [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) mit REST-Version 2018-11-09 und höher oder unsere neuesten Blobspeicher-Clientbibliotheken verwenden. 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749502"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905587"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -35,7 +35,7 @@ Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkon
 
 Es gibt drei Kategorien von Einschränkungen, die für Azure Files zu berücksichtigen sind: Speicherkonten, Freigaben und Dateien.
 
-Beispiel:  Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
+Beispiel: Bei Premium-Dateifreigaben kann eine einzige Freigabe einen IOPS-Wert von 100.000 erreichen, und eine einzelne Datei kann bis zu 5.000 IOPS zentral hochskaliert werden. Wenn Sie drei Dateien in einer Freigabe haben, entspricht der maximale IOPS-Wert aus dieser Freigabe 15.000.
 
 ### <a name="standard-storage-account-limits"></a>Begrenzungen beim Standard-Speicherkonto
 
@@ -51,7 +51,7 @@ Diese Grenzwerte finden Sie im Abschnitt [Skalierbarkeitsziele für das Azure-Sp
 ### <a name="file-share-and-file-scale-targets"></a>Skalierungsziele für Dateifreigaben und Dateien
 
 > [!NOTE]
-> Standarddateifreigaben über 5 TiB unterliegen neben regionalen auch bestimmten anderen Einschränkungen.
+> Für Standarddateifreigaben über 5 TiB gelten bestimmte Einschränkungen.
 > Eine Liste der Einschränkungen, regionale Informationen und Anweisungen dazu, wie Sie diese größeren Dateifreigaben aktivieren, finden Sie im Abschnitt [Onboarding für größere Dateifreigaben](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) des Planungshandbuchs.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

@@ -11,12 +11,12 @@ ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940578"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935409"
 ---
 # <a name="what-is-workload-management"></a>Worum geht es bei der Workloadverwaltung?
 
@@ -31,7 +31,7 @@ Eine Data Warehouse-Workload bezieht sich auf alle Vorgänge, die in Bezug auf e
 - Exportieren von Daten aus dem Data Warehouse
 
 Die Leistungskapazität eines Data Warehouse richtet sich nach den [Data Warehouse-Einheiten](what-is-a-data-warehouse-unit-dwu-cdwu.md).
-- Zum Anzeigen der zugewiesenen Ressourcen für alle Leistungsprofile lesen Sie die Informationen unter [Speicher- und Parallelitätsgrenzwerte]memory-concurrency-limits.md).
+- Informationen zum Anzeigen der zugeordneten Ressourcen für alle Leistungsprofile finden Sie unter [Speicher- und Parallelitätsgrenzwerte](memory-concurrency-limits.md).
 - Für die Anpassung der Kapazität können Sie [zentral hoch- oder herunterskalieren](quickstart-scale-compute-portal.md).
 
 

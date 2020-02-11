@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890495"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934617"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -50,7 +50,7 @@ Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-constru
 
 Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identifiziert. 
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
@@ -163,7 +163,7 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ## <a name="message-routing-query-based-on-device-twin"></a>Abfrage des Nachrichtenroutings basierend auf dem Gerätezwilling 
 
-Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Das Abfragen des Modulzwillings wird nicht unterstützt. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
+Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften des [Gerätezwillings](iot-hub-devguide-device-twins.md), die JSON-Objekte sind. Das Abfragen des Modulzwillings wird ebenfalls unterstützt. Im Folgenden wird ein Beispiel für Gerätezwillingstags gezeigt.
 
 ```JSON
 {
@@ -196,7 +196,7 @@ Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften
 
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
-Einer Abfrage des Nachrichtentexts muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
+Einer Abfrage des Nachrichtentexts muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Dies gilt für Gerätezwillinge und Modulzwillinge. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

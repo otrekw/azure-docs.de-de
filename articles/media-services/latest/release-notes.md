@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: e7770a3faef0ccf7ca0f5b8c56f98007b8d89436
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719839"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962942"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -36,6 +36,13 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="january-2020"></a>Januar 2020
+
+### <a name="improvements-in-media-processors"></a>Verbesserungen bei Medienprozessoren
+
+- Verbesserte Unterstützung für verschachtelte Quellen in der Videoanalyse: Diese Inhalte werden jetzt ordnungsgemäß entschachtelt, bevor sie an Inferenzmodule gesendet werden.
+- Beim Generieren von Miniaturansichten im „besten“ Modus sucht der Encoder jetzt über 30 Sekunden, um einen nicht monochromen Frame auszuwählen.
+ 
 ## <a name="november-2019"></a>November 2019
 
 ### <a name="live-transcription-preview"></a>Livetranskription Preview

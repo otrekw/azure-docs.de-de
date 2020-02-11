@@ -9,35 +9,73 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: a1d32bf7ea296ed2c4ed9351fcefe400c03effa5
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 76e3ac85a6725976ebd14dac1805079613c94ec6
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861437"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76980986"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-preview-environment-using-c"></a>Abfragen von Daten aus der Azure Time Series Insights Preview-Umgebung mit C#
 
-Dieses C#-Beispiel veranschaulicht, wie Daten aus der Azure Time Series Insights Preview-Umgebung abgefragt werden können.
+Dieses C#-Beispiel veranschaulicht, wie Daten von den [Preview-APIs für den Datenzugriff](https://docs.microsoft.com/rest/api/time-series-insights/preview) in der Azure Time Series Insights Preview-Umgebung abgefragt werden können.
 
-Das Beispiel zeigt einige einfache Beispiele für die Verwendung der Abfrage-API:
+> [!TIP]
+> C#-Codebeispiele der Vorschauphase finden Sie unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample).
 
-1. Rufen Sie zur Vorbereitung das Zugriffstoken mithilfe der Azure Active Directory-API ab. Übergeben Sie dieses Token im `Authorization`-Header jeder Abfrage-API-Anforderung. Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md). Stellen Sie außerdem sicher, dass alle Konstanten, die zu Anfang des Beispiels definiert wurden, ordnungsgemäß festgelegt sind.
-1. Die Liste der Umgebungen, auf die der Benutzer Zugriff hat, wird abgerufen. Eine der Umgebungen wird als relevant übernommen, und für diese Umgebung werden weitere Daten abgefragt.
-1. Als Beispiel für eine HTTPS-Anforderung werden Verfügbarkeitsdaten für die relevante Umgebung abgefragt.
-1. Hier finden Sie ein Beispiel für die Unterstützung der automatischen SDK-Generierung von [Azure AutoRest](https://github.com/Azure/AutoRest).
+## <a name="summary"></a>Zusammenfassung
 
-> [!NOTE]
-> Den Beispielcode und die Schritte zum Kompilieren und Ausführen dieses Codes sind unter [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) verfügbar.
+Im unten stehenden Beispielcode werden die folgenden Funktionen veranschaulicht:
 
-## <a name="c-example"></a>C#-Beispiel
+* Unterstützung der automatischen SDK-Generierung von [Azure AutoRest](https://github.com/Azure/AutoRest).
+* Abrufen eines Zugriffstokens durch Azure Active Directory mithilfe von [Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).
+* Übergeben dieses erhaltenen Zugriffstokens an den `Authorization`-Header nachfolgender Datenzugriffs-API-Anforderungen. 
+* Im Beispiel wird eine Konsolenschnittstelle bereitgestellt, die veranschaulicht, wie HTTP-Anforderungen gestellt werden an:
+
+    * [Vorschauumgebungen-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#preview-environments-apis)
+        * [„Umgebungsverfügbarkeit abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability) und [„Ereignisschema abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/geteventschema)
+    * [Vorschauabfrage-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#query-apis)
+        * [„Ereignisse abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getevents), [„Reihe abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#getseries) und [„Aggregierte Reihe abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
+    * [Time Series-Modell-APIs](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#aggregateseries)
+        * [„Hierarchien abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/get) und [Hierarchienbatch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeserieshierarchies/executebatch)
+        * [„Typen abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/get) und [Typenbatch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriestypes/executebatch)
+        * [„Instanzen abrufen“-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/get) und [Instanzenbatch-API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/timeseriesinstances/executebatch)
+* Erweiterte [Such](https://docs.microsoft.com/rest/api/time-series-insights/preview#search-features)- und [TSX](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)-Funktionen.
+
+## <a name="prerequisites-and-setup"></a>Voraussetzungen und Setup
+
+Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
+
+1. [Stellen Sie eine Azure Time Series Insights Preview](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment)-Umgebung bereit.
+1. Konfigurieren Sie Ihre Azure Time Series Insights-Umgebung für Azure Active Directory wie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md) beschrieben. 
+1. Führen Sie die [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) wie in [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) angegeben aus, um die Time Series Insights Preview-Clientabhängigkeiten zu generieren.
+1. Öffnen Sie die Projektmappe `TSIPreviewDataPlaneclient.sln`, und legen Sie `DataPlaneClientSampleApp` als Standardprojekt in Visual Studio fest.
+1. Installieren Sie erforderlichen Projektabhängigkeiten mithilfe der [unten](#project-dependencies) beschriebenen Schritte, und kompilieren Sie das Beispiel in eine ausführbare `.exe`-Datei.
+1. Führen Sie die `.exe`-Datei aus, indem Sie darauf doppelklicken.
+
+## <a name="project-dependencies"></a>Projektabhängigkeiten
+
+Es wird empfohlen, die neueste Version von Visual Studio zu verwenden:
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) ab Version 16.4.2
+
+Der Beispielcode besitzt mehrere erforderliche Abhängigkeiten, die in der Datei [packages.config](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClientSampleApp/packages.config) zu sehen sind.
+
+Laden Sie die Pakete in Visual Studio 2019 herunter, indem Sie die Optionen **Build** > **Projektmappe erstellen** auswählen. 
+
+Alternativ fügen Sie jedes Paket mithilfe von [NuGet 2.12+](https://www.nuget.org/) hinzu. Beispiel:
+
+* `dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory --version 4.5.1`
+
+## <a name="c-sample-code"></a>C#-Beispielcode
 
 [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
-> Das obige Codebeispiel kann ausgeführt werden, ohne die Standardumgebungswerte zu ändern.
+> * Das Codebeispiel kann ausgeführt werden, ohne die Standardumgebungsvariablen zu ändern.
+> * Das Codebeispiel wird in eine ausführbare .NET-Konsolen-App kompiliert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

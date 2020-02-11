@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit der in JavaScript integrierten Abfrage-API in Azure Cosmos DB
+title: Arbeiten mit der in JavaScript integrierten Abfrage-API in gespeicherten Prozeduren und Triggern in Azure Cosmos DB
 description: In diesem Artikel werden die Konzepte für die in die JavaScript-Sprache integrierte Abfrage-API zum Erstellen von gespeicherten Prozeduren und Triggern in Azure Cosmos DB vorgestellt.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445309"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901836"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript-Abfrage-API in Azure Cosmos DB
 
-Neben Abfragen über die SQL-API in Azure Cosmos DB können Sie mithilfe des [serverseitigen Cosmos DB SDK](https://azure.github.io/azure-cosmosdb-js-server/) auch optimierte Abfragen über eine JavaScript-Schnittstelle ausführen. Für die Verwendung dieser JavaScript-Schnittstelle sind keine SQL-Sprachkenntnisse erforderlich. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen an eine Funktionsaufrufsequenz übergeben. Abfragen werden von der JavaScript-Runtime analysiert und unter Verwendung von Azure Cosmos DB-Indizes effizient ausgeführt.
+Zusätzlich zum Ausführen von Abfragen mithilfe der SQL-API in Azure Cosmos DB bietet das [serverseitige Cosmos DB SDK](https://azure.github.io/azure-cosmosdb-js-server/) eine JavaScript-Schnittstelle zum Ausführen optimierter Abfragen in gespeicherten Prozeduren und Triggern in Cosmos DB. Für die Verwendung dieser JavaScript-Schnittstelle sind keine SQL-Sprachkenntnisse erforderlich. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie Lodash vergleichbar ist, Prädikatfunktionen an eine Funktionsaufrufsequenz übergeben. Abfragen werden von der JavaScript-Runtime analysiert und unter Verwendung von Azure Cosmos DB-Indizes effizient ausgeführt.
 
 ## <a name="supported-javascript-functions"></a>Unterstützte JavaScript-Funktionen
 

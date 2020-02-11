@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 01/23/2020
-ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: 09cc9e1475616700aa77cdf92fd7ca808cd4290c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715089"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937835"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
 
@@ -53,7 +53,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen den Diensteb
 |**In-Memory-OLTP** | | – | – | Verfügbar |
 |**Schreibgeschützte Replikate**| | 0: Integriert <br> 0–4: Verwendung von [Georeplikation](sql-database-active-geo-replication.md) | 0–4: Integriert | 1: Integriert, im Preis inbegriffen <br> 0–4: Verwendung von [Georeplikation](sql-database-active-geo-replication.md) |
 |**Preise/Abrechnung** | Einzeldatenbank | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. | [Virtueller Kern für jedes Replikat und den verwendeten Speicher](https://azure.microsoft.com/pricing/details/sql-database/single/) wird in Rechnung gestellt. <br/>IOPS noch nicht in Rechnung gestellt. | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/single/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt. |
-|| SQL-Datenbank-Instanz | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | – | [V-Kern und reservierter Speicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.<br/>Sicherungsspeicher wird noch nicht abgerechnet. | 
+|| SQL-Datenbank-Instanz | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| – | [Virtueller Kern, reservierter Speicher und Sicherungsspeicher](https://azure.microsoft.com/pricing/details/sql-database/managed/) werden in Rechnung gestellt. <br/>IOPS werden nicht in Rechnung gestellt.| 
 |**Rabattmodelle**| | [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Azure-Hybridvorteil](sql-database-azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements| [Reservierte Instanzen](sql-database-reserved-capacity.md)<br/>[Azure-Hybridvorteil](sql-database-azure-hybrid-benefit.md) (nicht verfügbar für Dev/Test-Abonnements)<br/>[Enterprise](https://azure.microsoft.com/offers/ms-azr-0148p/)- und [Pay-as-you-Go](https://azure.microsoft.com/offers/ms-azr-0023p/)-Dev/Test-Abonnements|
 
 Weitere Informationen finden Sie in den ausführlichen Unterschieden zwischen den Dienstebenen auf den Seiten zu [einzelnen Datenbanken (virtueller Kern)](sql-database-vcore-resource-limits-single-databases.md), [einzelnen Datenbankpools (virtueller Kern)](sql-database-dtu-resource-limits-single-databases.md), [einzelnen Datenbanken (DTU)](sql-database-dtu-resource-limits-single-databases.md), [einzelnen Datenbankpools (DTU)](sql-database-dtu-resource-limits-single-databases.md) und [verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).

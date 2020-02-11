@@ -6,16 +6,16 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 754977788c5f6e5e574500552f670ba9083cf683
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490653"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964242"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>Konfigurieren einer Datasetzuordnung für eine empfangene Freigabe in Azure Data Share
 
-In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share konfiguriert wird. Sie sollten so vorgehen, wenn Sie eine Datenfreigabeeinladung zwar angenommen, sich aber für „Annehmen und später konfigurieren“ entschieden haben. Möglicherweise möchten Sie eine Datasetzuordnung konfigurieren, wenn Sie das Ziel für Daten ändern müssen, die für Sie freigegeben wurden, oder wenn Sie Daten in einer SQL Server-Instanz empfangen möchten. 
+In diesem Artikel wird gezeigt, wie eine Datasetzuordnung für eine empfangene Freigabe in Azure Data Share konfiguriert wird. Sie sollten so vorgehen, wenn Sie eine Datenfreigabeeinladung zwar angenommen, sich aber für „Annehmen und später konfigurieren“ entschieden haben oder wenn Daten direkt freigegeben werden. Möglicherweise möchten Sie eine Datasetzuordnung konfigurieren, wenn Sie das Ziel für Daten ändern müssen, die für Sie freigegeben wurden, oder wenn Sie Daten in einer SQL Server-Instanz empfangen möchten. 
 
 ## <a name="navigate-to-a-received-data-share"></a>Navigieren zu einer empfangenen Datenfreigabe
 
@@ -27,9 +27,9 @@ Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweise
 
 ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
 
-## <a name="select-a-new-destination-store"></a>Auswählen eines neuen Zielspeichers
+## <a name="select-a-new-target-store"></a>Auswählen eines neuen Zielspeichers
 
-Wählen Sie einen Zieldatentyp aus, in dem die Daten gespeichert werden sollen. Beachten Sie, dass alle Daten, die bereits in einem zuvor zugeordneten Speicherkonto vorhanden sind, nicht automatisch in das neue Ziel verschoben werden.
+Wählen Sie einen Zieldatentyp aus, in dem die Daten gespeichert werden sollen. Bei der auf Momentaufnahmen basierenden Freigabe werden Daten, die in zuvor zugeordneten Speicherkonten bereits vorhanden sind, nicht automatisch in den neuen Zielspeicher verschoben. Wählen Sie für die direkte Freigabe einen Datenspeicher am angegebenen Speicherort aus. Der Speicherort ist das Azure-Rechenzentrum, in dem sich der Quelldatenspeicher des Datenanbieters befindet.
 
 ![Zielspeicherkonto](./media/dataset-map-target-sql.png "Zielspeicher") 
 

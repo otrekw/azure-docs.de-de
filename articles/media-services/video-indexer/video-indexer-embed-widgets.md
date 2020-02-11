@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/29/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b9fb15fc9f3dc51a0df40a4ccb738a97d4558dff
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ed3e2cf9830e3776886e662fd27f43f76728d6b2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545890"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988718"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -86,9 +86,9 @@ Sie müssen ein Zugriffstoken im **src**-Attribut des „iframe“ übergeben, u
     
 Verwenden Sie einen der folgenden Schritte, um die Inhalte des Widgets vom Typ „Kognitive Erkenntnisse“ zu erhalten:<br/>
 - Die API des Widgets vom Typ [Erkenntnisse abrufen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget).<br/>
-- Das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?). Fügen Sie es als Abfrageparameter zur URL hinzu. Geben Sie diese URL als **src**-Wert für den iframe an, wie zuvor gezeigt.
+- Das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?). Fügen Sie es als Abfrageparameter zur URL hinzu. Geben Sie diese URL als **src**-Wert für den iframe an, wie zuvor gezeigt.
 
-Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie das Widget vom Typ [Erkenntnisse abrufen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) oder das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) mit `&allowEdit=true`. 
+Um Funktionen zur Bearbeitung von Erkenntnissen in Ihrem eingebetteten Widget bereitzustellen, müssen Sie ein Zugriffstoken übergeben, das Berechtigungen zur Bearbeitung enthält. Verwenden Sie das Widget vom Typ [Erkenntnisse abrufen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) oder das [Token zum Abrufen des Videozugriffs](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) mit `&allowEdit=true`. 
 
 ## <a name="widgets-interaction"></a>Interaktion von Widgets
 
@@ -264,6 +264,23 @@ Wenn Sie Untertitel deaktivieren möchten, können Sie den Parameterwert `captio
 
 #### <a name="autoplay"></a>Automatische Wiedergabe
 Standardmäßig beginnt der Player mit der Wiedergabe des Videos. Sie können dies verhindern, indem Sie `&autoplay=false` an die vorhergehende URL für die Einbettung übergeben.
+
+## <a name="code-samples"></a>Codebeispiele
+
+Navigieren Sie zum Repository mit den [Codebeispielen](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Widgets), das Beispiele für die Video Indexer-API und -Widgets enthält:
+
+| Datei/Ordner                       | Beschreibung                                |
+|-----------------------------------|--------------------------------------------|
+| `azure-media-player`              | Laden eines Video Indexer-Videos in einem benutzerdefinierten Azure Media Player                        |
+| `azure-media-player-vi-insights`  | Einbetten von VI-Erkenntnissen mit einem benutzerdefinierten Azure Media Player                             |
+| `control-vi-embedded-player`      | Einbetten von VI-Player und Steuern des Players von außen                                    |
+| `custom-index-location`           | Einbetten von VI-Erkenntnissen aus einem benutzerdefinierten externen Speicherort (kann ein Blob eines Kunden sein)     |
+| `embed-both-insights`             | Grundlegende Verwendung von VI-Informationen, sowohl Player als auch Erkenntnisse                            |
+| `embed-insights-with-AMP`         | Einbetten eines VI-Widgets vom Typ „Kognitive Erkenntnisse“ mit einem benutzerdefinierten Azure Media Player                      |
+| `customize-the-widgets`           | Einbetten von VI-Widgets mit benutzerdefinierten Optionen                                     |
+| `embed-both-widgets`              | Einbetten von VI-Player und -Erkenntnissen und Kommunizieren zwischen den Widgets                      |
+| `url-generator`                   | Generiert eine URL des benutzerdefinierten eingebetteten Widgets auf Grundlage der vom Benutzer angegebenen Optionen             |
+| `html5-player`                    | Einbetten von VI-Erkenntnissen mit einem standardmäßigen HTML5-Videoplayer                            |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

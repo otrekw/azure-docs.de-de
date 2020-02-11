@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b9ac15e6909498c38f618a24be6b010dc2774b07
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029982"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905505"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ Weitere Informationen finden Sie in den Beispielen.
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
-- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Blobspeicher](storage-use-azcopy-blobs.md)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
@@ -167,19 +167,19 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 - azcopy cp "https://s3.amazonaws.com/ [bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive=true
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
 **--blob-type** string                     Definiert den Typ des Blobs am Ziel. Wird zum Hochladen von Blobs und beim Kopieren zwischen Konten verwendet (Standardeinstellung: „Detect“). Gültige Werte sind „Detect“, „BlockBlob“, „PageBlob“ und „AppendBlob“. Beim Kopieren zwischen Konten bewirkt der Wert „Detect“, dass AzCopy den Typ des Zielblobs anhand des Typs des Quellblobs bestimmt. Beim Hochladen einer Datei bestimmt „Detect“ anhand der Dateierweiterung, ob es sich um eine VHD- oder VHDX-Datei handelt. Eine VHD- oder VHDX-Datei wird von AzCopy als Seitenblob behandelt. (Standardwert: „Detect“)
 
 **--block-blob-tier** string               Lädt ein Blockblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Standardwert: „None“)
 
-**--block-size-mb** float                  Verwendet diese Blockgröße (in MiB) beim Hochladen in Azure Storage und beim Herunterladen aus Azure Storage. Der Standardwert wird anhand der Dateigröße automatisch berechnet. Dezimalzahlen sind zulässig (z. B. 0,25).
+**--block-size-mb** float                  Verwendet diese Blockgröße (in MiB) beim Hochladen in Azure Storage und beim Herunterladen aus Azure Storage. Der Standardwert wird anhand der Dateigröße automatisch berechnet. Dezimalzahlen sind zulässig (Beispiel: 0,25).
 
 **--cache-control** string                 Legt den Cache-Control-Header fest. Wird beim Herunterladen zurückgegeben.
 
 **--check-length**                         Überprüft nach der Übertragung die Länge einer Datei am Ziel. Wenn die Quelle und das Ziel nicht übereinstimmen, wird die Übertragung als fehlerhaft gekennzeichnet. (Standardwert: „true“)
 
-**--check-md5** string                     Gibt an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollten. Nur beim Herunterladen verfügbar. Verfügbare Optionen: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (Die Standardeinstellung ist „FailIfDifferent“.)
+**--check-md5** string                     Gibt an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollten. Nur beim Herunterladen verfügbar. Verfügbare Optionen: „NoCheck“, „LogOnly“, „FailIfDifferent“, „FailIfDifferentOrMissing“. (Die Standardeinstellung ist „FailIfDifferent“.)
 
 **--content-disposition** string           Legt den Content-Disposition-Header fest. Wird beim Herunterladen zurückgegeben.
 
@@ -191,7 +191,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--decompress**                           Dekomprimiert Dateien beim Herunterladen automatisch, wenn ihr Content-Encoding-Wert angibt, dass sie komprimiert sind. Die unterstützten Content-Encoding-Werte sind „gzip“ und „deflate“. Die Dateierweiterungen „.gz“/„.gzip“ oder „.zz“ sind nicht erforderlich, werden jedoch entfernt, falls vorhanden.
 
-**--exclude-attributes** string            (Nur Windows) Schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel:  A;S;R
+**--exclude-attributes** string            (Nur Windows) Schließt Dateien aus, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
 **--exclude-blob-type** string             Gibt optional den Typ von Blob (BlockBlob/PageBlob/AppendBlob) an, der ausgeschlossen werden soll, wenn Blobs aus dem Container oder Konto kopiert werden. Die Verwendung dieses Flags gilt nicht für das Kopieren von Daten von einem nicht zu Azure gehörenden Dienst in einen Dienst. Bei Angabe von mehreren Blobs sollte „;“ als Trennzeichen verwendet werden.
 
@@ -205,7 +205,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **-h, --help**                                 Hilfe zu „copy“
 
-**--include-attributes** string            (Nur Windows) Schließt Dateien ein, deren Attribute mit der Attributliste übereinstimmen. Beispiel:  A;S;R
+**--include-attributes** string            (Nur Windows) Schließt Dateien ein, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
 **--include-path** string                  Schließt nur diese Pfade beim Kopieren ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads (Beispiel: myFolder;myFolder/subDirName/file.pdf).
 
@@ -217,7 +217,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--no-guess-mime-type**                   Verhindert, dass AzCopy anhand der Erweiterung oder des Inhalts der Datei den Inhaltstyp erkennt.
 
-**--overwrite** string                     Überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf „true“ festgelegt ist. Mögliche Werte sind „true“, „false“ und „prompt“. (Der Standardwert lautet „true“.)
+**--overwrite** string                     Überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf „true“ festgelegt ist. Mögliche Werte sind „true“, „false“, „ifSourceNewer“ und „prompt“. (Der Standardwert lautet „true“.)
 
 **--page-blob-tier** string                Lädt ein Seitenblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Standardwert: „None“)
 

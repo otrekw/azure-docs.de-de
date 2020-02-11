@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841232"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908933"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -31,6 +31,9 @@ Es gibt mehrere, für unterschiedliche Szenarien geeignete Möglichkeiten, die B
 Wenn Sie [Benutzerflows](user-flow-overview.md) verwenden, können Sie das Aussehen Ihrer Benutzerflow-Seiten mithilfe von integrierten *Seitenlayoutvorlagen* oder mit eigenem HTML und CSS anpassen. Beide Methoden werden später in diesem Artikel beschrieben.
 
 Sie konfigurieren die Anpassung der Benutzeroberfläche für Benutzerflows im [Azure-Portal](tutorial-customize-ui.md) an.
+
+> [!TIP]
+> Wenn Sie nur das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe Ihrer Benutzerflowseiten ändern möchten, können Sie das Feature [Unternehmensbranding (Vorschauversion)](#company-branding-preview) ausprobieren, das weiter unten in diesem Artikel beschrieben wird.
 
 ### <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
 
@@ -149,6 +152,60 @@ In der folgenden Tabelle finden Sie die HTML-Fragmente, die Azure AD B2C im `<di
 | Einheitliche Registrierung oder Anmeldung | Verarbeitet sowohl die Registrierung als auch die Anmeldung von Kunden. Diese können als Identitätsanbieter soziale Netzwerke wie z. B. Facebook, Google oder lokale Konten verwenden. |
 | Multi-Factor Authentication | Kunden können während der Registrierung oder Anmeldung ihre Telefonnummern verifizieren (per SMS oder Sprachnachricht). |
 | Fehler | Stellt dem Kunden Fehlerinformationen bereit. |
+
+## <a name="company-branding-preview"></a>Unternehmensbranding (Vorschauversion)
+
+In Azure Active Directory können Sie mithilfe des Features [Unternehmensbranding](../active-directory/fundamentals/customize-branding.md) Ihre Benutzerflowseiten mit einem Bannerlogo, einem Hintergrundbild und einer Hintergrundfarbe anpassen.
+
+Zum Anpassen Ihrer Benutzerflowseiten konfigurieren Sie zuerst das Unternehmensbranding in Azure Active Directory, und dann aktivieren Sie es in den Seitenlayouts Ihrer Benutzerflows in Azure AD B2C.
+
+[!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
+
+### <a name="configure-company-branding"></a>Konfigurieren des Unternehmensbrandings
+
+Legen Sie zuerst das Bannerlogo, das Hintergrundbild und die Hintergrundfarbe in **Unternehmensbranding** fest.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie unter **Verwalten** die Option **Unternehmensbranding** aus.
+1. Führen Sie die unter [Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation](../active-directory/fundamentals/customize-branding.md) aufgeführten Schritte aus.
+
+Beachten Sie beim Konfigurieren des Unternehmensbrandings in Azure AD B2C die folgenden Punkte:
+
+* Das Unternehmensbranding in Azure AD B2C ist derzeit auf die Anpassung des **Hintergrundbilds**, des **Bannerlogos** und der **Hintergrundfarbe** beschränkt. Die anderen Eigenschaften im Bereich „Unternehmensbranding“ (z. B. die unter **Erweiterte Einstellungen**) werden *nicht unterstützt*.
+* Auf Ihren Benutzerflowseiten wird die Hintergrundfarbe angezeigt, bevor das Hintergrundbild geladen wird. Es wird empfohlen, eine Hintergrundfarbe auszuwählen, die weitestgehend den Farben in Ihrem Hintergrundbild entspricht, um ein reibungsloseres Ladeerlebnis zu ermöglichen.
+* Das Bannerlogo wird in den Überprüfungs-E-Mails angezeigt, die an Ihre Benutzer gesendet werden, wenn sie einen Benutzerflow für die Registrierung initiieren.
+
+### <a name="enable-branding-in-user-flow-pages"></a>Aktivieren von Branding auf Benutzerflowseiten
+
+Nachdem Sie das Unternehmensbranding konfiguriert haben, können Sie es in Ihren Benutzerflows aktivieren.
+
+1. Wählen Sie im Azure-Portal im linken Menü die Option **Azure AD B2C** aus.
+1. Wählen Sie unter **Richtlinien** die Option **Benutzerflows (Richtlinien)** aus.
+1. Wählen Sie den Benutzerflow aus, für den Sie das Unternehmensbranding aktivieren möchten. Für die Benutzerflowtypen *Anmeldung v1* und *Profilbearbeitung v1* wird das Unternehmensbranding **nicht unterstützt**.
+1. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus, und wählen Sie dann das Layout aus, das Sie mit Branding versehen möchten. Wählen Sie z. B. **Einheitliche Seite für Registrierung oder Anmeldung** aus.
+1. Wählen Sie für **Seitenlayoutversion (Vorschau)** die Version **1.2.0** oder eine höhere Version aus.
+1. Wählen Sie **Speichern** aus.
+
+Wenn Sie alle Seiten im Benutzerflow mit Branding versehen möchten, legen Sie die Seitenlayoutversion für jedes Seitenlayout im Benutzerflow fest.
+
+![Seitenlayoutauswahl in Azure AD B2C im Azure-Portal](media/customize-ui-overview/portal-02-page-layout-select.png)
+
+In diesem kommentierten Beispiel sehen Sie ein benutzerdefiniertes Bannerlogo und Hintergrundbild auf einer Benutzerflowseite für die *Registrierung und Anmeldung*, für die die Vorlage „Ozeanblau“ verwendet wird:
+
+![Von Azure AD B2C bereitgestellte Registrierungs-/Anmeldeseite mit Branding](media/customize-ui-overview/template-ocean-blue-branded.png)
+
+### <a name="use-company-branding-assets-in-custom-html"></a>Verwenden von Unternehmensbrandingobjekten in benutzerdefiniertem HTML
+
+Wenn Sie Ihre Unternehmensbrandingobjekte in benutzerdefiniertem HTML verwenden möchten, fügen Sie die folgenden Tags außerhalb des Tags `<div id="api">` hinzu:
+
+```HTML
+<img data-tenant-branding-background="true" />
+<img data-tenant-branding-logo="true" alt="Company Logo" />
+```
+
+Die Bildquelle wird durch die des Hintergrundbilds und Bannerlogos ersetzt. Wie im Abschnitt [Erste Schritte mit benutzerdefiniertem HTML und CSS](#get-started-with-custom-html-and-css) beschrieben, verwenden Sie CSS-Klassen, um die Objekte auf der Seite zu formatieren und zu positionieren.
 
 ## <a name="localize-content"></a>Lokalisieren von Inhalt
 

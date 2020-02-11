@@ -3,38 +3,26 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v8 für Java'
 description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Azure Storage-Clientbibliothek v8 für Java, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: a6c4380e44d705e551bc96746a809c57aa02ac5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 373875aee836485bb994d81e0945cec3a9b088eb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825369"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906491"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v8-for-java"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v8 für Java
+# <a name="quickstart-manage-blobs-with-java-v8-sdk"></a>Schnellstart: Verwalten von Blobs mit Java SDK, Version 8
 
-Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v8 für Java. Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Führen Sie die Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert.
-
-Mit der Azure Blob Storage-Clientbibliothek für Java ist Folgendes möglich:
-
-* Erstellen eines Containers
-* Festlegen von Berechtigungen für einen Container
-* Erstellen eines Blobs in Azure Storage
-* Herunterladen des Blobs auf den lokalen Computer
-* Auflisten aller Blobs in einem Container
-* Löschen eines Containers
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Java verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Hier werden Sie Blobs hochladen, herunterladen und auflisten. Außerdem erstellen Sie Container, legen Berechtigungen dafür fest und löschen Container.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Eine IDE mit Maven-Integration.
-* Alternativ können Sie Maven installieren und so konfigurieren, dass es über die Befehlszeile verwendet werden kann.
-
-In dieser Anleitung wird [Eclipse](https://www.eclipse.org/downloads/) mit der Konfiguration „Eclipse-IDE für Java-Entwickler“ verwendet.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
+- Eine IDE mit Maven-Integration. In dieser Anleitung wird [Eclipse](https://www.eclipse.org/downloads/) mit der Konfiguration „Eclipse-IDE für Java-Entwickler“ verwendet.
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
@@ -48,7 +36,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-java-quickstart.git
 
 Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Um das Projekt zu öffnen, starten Sie Eclipse, und schließen Sie die Willkommensseite. Wählen Sie **File** (Datei) und anschließend **Open Projects from File System** (Projekte aus Dateisystem öffnen) aus. Stellen Sie sicher, dass **Detect and configure project natures** (Projektarten erkennen und konfigurieren) aktiviert ist. Wählen Sie **Directory** (Verzeichnis) aus, und navigieren Sie zum Speicherort des geklonten Repositorys. Wählen Sie innerhalb des geklonten Repositorys den Ordner **blobAzureApp** aus. Vergewissern Sie sich, dass das Projekt **blobAzureApp** als Eclipse-Projekt angezeigt wird, und wählen Sie anschließend **Finish** (Fertig stellen) aus.
 
-Nachdem das Importieren des Projekts abgeschlossen ist, öffnen Sie **AzureApp.java** (unter **blobQuickstart.blobAzureApp** in **src/main/java**), und ersetzen Sie `accountname` und `accountkey` in der `storageConnectionString`-Zeichenfolge. Führen Sie die Anwendung dann aus. Spezifische Anweisungen für diese Aufgaben finden Sie in den folgenden Abschnitten.
+Nachdem das Importieren des Projekts abgeschlossen ist, öffnen Sie **AzureApp.java** (unter **blobQuickstart.blobAzureApp** in **src/main/java**), und ersetzen Sie in der Zeichenfolge `storageConnectionString` die Angaben `accountname` und `accountkey`. Führen Sie die Anwendung dann aus. Spezifische Anweisungen für diese Aufgaben finden Sie in den folgenden Abschnitten.
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -89,7 +77,7 @@ Deleting the source, and downloaded files
   >[!NOTE]
   >Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Azure Storage-Explorer](https://storageexplorer.com/?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), verwenden. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht.
 
-Nachdem Sie die Dateien erfolgreich überprüft haben, drücken Sie die**EINGABETASTE**, um die Demo zu beenden und die Testdateien zu löschen. Da Sie jetzt wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die Datei **AzureApp.java**, um den Code zu betrachten.
+Drücken Sie nach dem Überprüfen der Dateien die**EINGABETASTE**, um die Demo zu beenden und die Testdateien zu löschen. Da Sie jetzt wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die Datei **AzureApp.java**, um den Code zu betrachten.
 
 ## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
 

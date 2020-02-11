@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: c17576bb8cd772742b5335000a2453ff34753779
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64f285ea27bde4565d051a84a65c5b4d7b8e9e8c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457071"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906982"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -107,6 +107,7 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 | Automatische Geräte- und Modulkonfigurationen<sup>1</sup> | 100 Konfigurationen pro kostenpflichtigem SKU-Hub. 20 Konfigurationen pro kostenfreiem SKU-Hub. |
 | Automatische IoT Edge-Bereitstellungen<sup>1</sup> | 20 Module pro Bereitstellung 100 Bereitstellungen (einschließlich geschichteter Bereitstellungen) pro kostenpflichtigem SKU-Hub. 10 Bereitstellungen pro kostenfreiem SKU-Hub. |
 | Zwillinge<sup>1</sup> | Die maximale Größe der Abschnitte für gewünschte Eigenschaften und gemeldete Eigenschaften beträgt jeweils 32 KB. Die maximale Größe des Tagabschnitts beträgt 8 KB. |
+| Freigegebene Zugriffsrichtlinien | Die maximale Anzahl von Shared Access-Richtlinien beträgt 16. |
 
 <sup>1</sup>Dieses Feature ist im Tarif „Basic“ von IoT Hub nicht verfügbar. Weitere Informationen finden Sie unter [Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung](iot-hub-scaling.md).
 

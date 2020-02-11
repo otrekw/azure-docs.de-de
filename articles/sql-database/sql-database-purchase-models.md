@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/01/2020
+ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973525"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964769"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
@@ -47,9 +47,9 @@ In der folgenden Tabelle und im Diagramm werden die Kaufmodelle „V-Kern-basier
 
 In der bereitgestellten Computeebene spiegeln die Computekosten die gesamte Computekapazität wider, die für die Anwendung bereitgestellt wird.
 
-Für die Dienstebene „Unternehmenskritisch“ werden mindestens drei Replikate automatisch zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell für die Dienstebene „Unternehmenskritisch“ ungefähr 2,7 Mal höher als für die Dienstebene „Universell“. Analog entspricht der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ dem höheren E/A-Wert und der geringeren Wartezeit des SSD-Speichers.
+Für die Dienstebene „Unternehmenskritisch“ werden automatisch mindestens drei Replikate zugeordnet. Um diese zusätzliche Zuordnung von Computeressourcen widerzuspiegeln, ist der Preis im vCore-basierten Kaufmodell für die Dienstebene „Unternehmenskritisch“ ungefähr 2,7 Mal höher als für die Dienstebene „Universell“. Entsprechend spiegelt der höhere Speicherpreis pro GB für die Dienstebene „Unternehmenskritisch“ die höheren E/A-Grenzwerte und die geringere Latenz des SSD-Speichers wider.
 
-Die Kosten für Sicherungsspeicher sind für die Dienstebene „Unternehmenskritisch“ und die Dienstebene „Universell“ identisch, da für beide Ebenen Standardspeicher verwendet wird.
+Die Kosten für Sicherungsspeicher sind für die Dienstebene „Unternehmenskritisch“ und die Dienstebene „Universell“ identisch, weil beide Ebenen Standardspeicher für Sicherungen verwenden.
 
 ### <a name="serverless-compute-costs"></a>Serverlose Computekosten
 
@@ -83,8 +83,8 @@ Wenn Ihre Einzeldatenbank oder Ihr Pool für elastische Datenbanken mehr als 300
 
 Wenn Sie vom DTU-basierten Kaufmodell auf das vCore-basierte Kaufmodell umstellen möchten, wählen Sie die Computegröße entsprechend den folgenden Faustregeln aus:
 
-- Jeweils 100 DTUs im Standard-Tarif erfordern mindestens 1 virtuellen Kern in der Dienstebene „Universell“.
-- Jeweils 125 DTUs im Premium-Tarif erfordern mindestens 1 virtuellen Kern in der Dienstebene „Unternehmenskritisch“.
+- Für jeweils 100 DTUs im Standard-Tarif ist mindestens 1 virtueller Kern in der Dienstebene „Universell“ erforderlich.
+- Für jeweils 125 DTUs im Premium-Tarif ist mindestens 1 virtueller Kern in der Dienstebene „Unternehmenskritisch“ erforderlich.
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
@@ -125,7 +125,19 @@ Sie können einem vorhandenen Pool weitere eDTUs hinzufügen, ohne dass es zu Da
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>Ermitteln der für eine Workload erforderlichen Anzahl von DTUs
 
-Wenn Sie die vorhandene Workload eines lokalen oder virtuellen SQL Server-Computers zu Azure SQL-Datenbank migrieren möchten, verwenden Sie den [DTU-Rechner](https://dtucalculator.azurewebsites.net/), um die ungefähre Anzahl von benötigten DTUs zu berechnen. Für eine vorhandene Azure SQL-Datenbank-Workload verwenden Sie die [Statistik zur Abfrageleistung](sql-database-query-performance.md), um den Ressourcenverbrauch (DTUs) Ihrer Datenbank zu verstehen und einen tieferen Einblick zur Optimierung Ihrer Workload zu gewinnen. In der dynamischen Verwaltungssicht (Dynamic Management View, DMV) [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) wird der Ressourcenverbrauch der letzten Stunde angezeigt. In der Katalogansicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) wird der Ressourcenverbrauch der letzten 14 Tage angezeigt. Da hierfür Durchschnittswerte für jeweils fünf Minuten genutzt werden, ist jedoch die Genauigkeit geringer.
+Wenn Sie die vorhandene Workload eines lokalen oder virtuellen SQL Server-Computers zu Azure SQL-Datenbank migrieren möchten, verwenden Sie den [DTU-Rechner](https://dtucalculator.azurewebsites.net/), um die ungefähre Anzahl von benötigten DTUs zu berechnen. Für eine vorhandene Azure SQL-Datenbank-Workload verwenden Sie die [Statistik zur Abfrageleistung](sql-database-query-performance.md), um den Ressourcenverbrauch (DTUs) Ihrer Datenbank zu verstehen und einen tieferen Einblick zur Optimierung Ihrer Workload zu gewinnen. In der dynamischen Verwaltungssicht (Dynamic Management View, DMV) [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) können Sie den Ressourcenverbrauch der letzten Stunde anzeigen. In der Katalogansicht [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) wird der Ressourcenverbrauch der letzten 14 Tage angezeigt. Da hierfür Durchschnittswerte für jeweils fünf Minuten genutzt werden, ist jedoch die Genauigkeit geringer.
+
+### <a name="determine-dtu-utilization"></a>Ermitteln der DTU-Nutzung
+
+Verwenden Sie die folgende Formel, um den durchschnittlichen Prozentsatz der DTU-/eDTU-Nutzung in Relation zum DTU-/eDTU-Grenzwert einer Datenbank oder eines Pools für elastische Datenbanken zu bestimmen:
+
+`avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
+
+Die Eingabewerte für diese Formel können aus den DMVs [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) und [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) abgerufen werden. Anders ausgedrückt: Um den Prozentsatz der DTU-/eDTU-Nutzung für den DTU-/eDTU-Grenzwert einer Datenbank oder eines Pools für elastische Datenbanken zu ermitteln, wählen Sie den größten Prozentwert aus `avg_cpu_percent`, `avg_data_io_percent` und `avg_log_write_percent` zu einem bestimmten Zeitpunkt aus.
+
+> [!NOTE]
+> Der DTU-Grenzwert einer Datenbank wird durch die für die Datenbank verfügbaren Werte von CPU, Lesevorgängen, Schreibvorgängen und Arbeitsspeicher bestimmt. Da das SQL Server-Datenbankmodul jedoch in der Regel den gesamten verfügbaren Arbeitsspeicher für den Datencache verwendet, um die Leistung zu verbessern, liegt der `avg_memory_usage_percent`-Wert unabhängig von der aktuellen Datenbankauslastung normalerweise nahe bei 100 %. Daher wird der Arbeitsspeicher nicht in der DTU-Nutzungsformel verwendet, obwohl er den DTU-Grenzwert indirekt beeinflusst.
+>
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads, die von einem elastischen Ressourcenpool profitieren
 

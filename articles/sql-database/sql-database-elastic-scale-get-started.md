@@ -11,12 +11,12 @@ author: anumjs
 ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: b5c323bf3d5ff55c2c30961003e8c456cbe39c82
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823658"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987021"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
 
@@ -81,7 +81,7 @@ Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.
 
 Gehen Sie folgendermaßen vor, um das Beispiel herunterzuladen und auszuführen: 
 
-1. Laden Sie das Beispiel [Elastic DB Tools for Azure SQL - Getting Started (Elastische DB-Tools für Azure SQL – Erste Schritte)](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) von MSDN herunter. Entzippen Sie das Beispiel an einem Speicherort Ihrer Wahl.
+1. Laden Sie das Beispiel [Elastic DB Tools for Azure SQL – Getting Started](https://github.com/Azure/elastic-db-tools) herunter. Entzippen Sie das Beispiel an einem Speicherort Ihrer Wahl.
 
 2. Um ein Projekt zu erstellen, öffnen Sie die Projektmappe *ElasticScaleStarterKit.sln* im Verzeichnis *C#* .
 
@@ -127,7 +127,7 @@ Preisinformationen finden Sie unter [SQL-Datenbank – Preisdetails](https://azu
 Weitere Informationen zu den Tools für elastische Datenbanken finden Sie in den folgenden Artikeln:
 
 * Codebeispiele: 
-  * Tools für elastische Datenbanken ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
+  * Tools für elastische Datenbanken ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Tools für elastische Datenbanken für Azure SQL – Entity Framework-Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Shard-Elastizität im Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Ankündigung der elastischen Skalierung](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/) (in englischer Sprache)

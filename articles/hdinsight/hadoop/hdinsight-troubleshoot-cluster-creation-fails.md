@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1e13c7ef8eae81ef2a12a8761b0596f6329f94dc
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980495"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76937902"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Behandeln von Fehlern bei der Clustererstellung mit Azure HDInsight
 
@@ -64,7 +64,7 @@ Wenn Sie ExpressRoute oder Ihren eigenen benutzerdefinierten DNS-Server verwende
 
 ## <a name="resources-locks"></a>Ressourcensperren  
 
-Vergewissern Sie sich, dass keine [Sperren für Ihr virtuelles Netzwerk oder für Ihre Ressourcengruppe](../../azure-resource-manager/management/lock-resources.md) vorhanden sind.  
+Vergewissern Sie sich, dass keine [Sperren für Ihr virtuelles Netzwerk oder für Ihre Ressourcengruppe](../../azure-resource-manager/management/lock-resources.md) vorhanden sind. Wenn die Ressourcengruppe gesperrt ist, können Cluster nicht erstellt oder gelöscht werden. 
 
 ## <a name="unsupported-component-versions"></a>Nicht unterstützte Komponentenversionen
 
@@ -78,7 +78,7 @@ Für die Clustererstellung gelten noch weitere Benennungseinschränkungen. Weite
 
 ## <a name="service-outages"></a>Dienstausfälle
 
-Überprüfen Sie den [Azure-Status](https://status.azure.com/status) auf mögliche Dienstunterbrechungen oder -probleme.
+Überprüfen Sie den [Azure-Status](https://status.azure.com) auf mögliche Dienstunterbrechungen oder -probleme.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

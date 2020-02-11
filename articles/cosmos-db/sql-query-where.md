@@ -1,17 +1,17 @@
 ---
 title: WHERE-Klausel in Azure Cosmos DB
 description: Erfahren Sie mehr über die WHERE-Klausel von SQL für Azure Cosmos DB.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.author: mjbrown
-ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 02/03/2020
+ms.author: tisande
+ms.openlocfilehash: 31653b598f0f3a79bf7f9c09231b1d111f167a16
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326636"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982228"
 ---
 # <a name="where-clause-in-azure-cosmos-db"></a>WHERE-Klausel in Azure Cosmos DB
 
@@ -36,7 +36,7 @@ WHERE <filter_condition>
    Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie unter [Scalar expressions in Azure Cosmos DB SQL queries](sql-query-scalar-expressions.md) (Skalarausdrücke in SQL-Abfragen in Azure Cosmos DB).  
   
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
   Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert TRUE erfüllt die Bedingung, jeder andere Wert – „undefined“, „NULL“, „FALSE“, „Number“, „Array“ oder „Object“ – erfüllt die Bedingung nicht. 
 
@@ -50,7 +50,7 @@ Die folgende Abfrage fordert Elemente an, die eine `id`-Eigenschaft mit dem Wert
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -74,7 +74,7 @@ Sie können die folgenden unterstützten binären Operatoren verwenden:
 |Bitweise    | \|, &, ^, <<, >>, >>> (Nullauffüllung, Verschiebung nach rechts) |
 |Logisch    | AND, OR, NOT      |
 |Vergleich | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Zeichenfolge     |  \|\| (Verkettung) |
+|String     |  \|\| (Verkettung) |
 
 Die folgenden Abfragen verwenden binäre Operatoren:
 
@@ -104,10 +104,10 @@ Sie können auch die unären Operatoren +, -, ~ und NOT in Abfragen verwenden, w
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Element zurück, das die Eigenschaft `isRegistered` mit dem Wert `true` enthält. Jeder andere Wert (z.B. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` oder `<array>`) führt dazu, dass das Element aus dem Ergebnis ausgeschlossen wird. 
+Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt `SELECT * FROM Families f WHERE f.isRegistered` das JSON-Element zurück, das die Eigenschaft `isRegistered` mit dem Wert `true` enthält. Jeder andere Wert (z.B. `false`, `null`, `Undefined`, `<number>`, `<string>`, `<object>` oder `<array>`) führt dazu, dass das Element aus dem Ergebnis ausgeschlossen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erste Schritte](sql-query-getting-started.md)
-- [Azure Cosmos DB-.NET-Beispiele](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [IN-Schlüsselwort](sql-query-keywords.md#in)
 - [FROM-Klausel](sql-query-from.md)

@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
-ms.openlocfilehash: 4a2b66f95467e7f6cb99f632548351f827e259c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476431"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986035"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: Häufig gestellte Fragen
 
@@ -24,6 +24,8 @@ In diesem Artikel finden Sie die wichtigsten Fragen im Zusammenhang mit Microsof
 ## <a name="how-do-i-run-gatk4-workflows-on-microsoft-genomics"></a>Wie führe ich GATK4-Workflows für Microsoft Genomics aus?
 Legen Sie in der Datei „config.txt“ für den Microsoft Genomics-Dienst den process_name als `gatk4` fest. Beachten Sie, dass Ihnen die regulären Abrechnungstarife in Rechnung gestellt werden.
 
+## <a name="how-do-i-enable-output-compression"></a>Wie aktiviere ich die Ausgabekomprimierung?
+Sie können die VCF- oder GVCF-Ausgabe mithilfe eines optionalen Arguments für die Ausgabekomprimierung komprimieren. Dies entspricht dem Ausführen von `-bgzip` gefolgt von `-tabix` in der VCF- oder GVCF-Ausgabe, um die Dateien `.gz` (BGZIP-Ausgabe) und `.tbi` (TABIX-Ausgabe) zu erstellen. `bgzip` komprimiert die VCF-oder GVCF-Datei, und `tabix` erstellt einen Index für die komprimierte Datei. Das Argument ist ein boolescher Wert, der für die VCF-Ausgabe standardmäßig auf `false` und für die GVCF-Ausgabe standardmäßig auf `true` festgelegt ist. Wenn Sie die Befehlszeile verwenden möchten, geben Sie `-bz` oder `--bgzip-output` mit `true` (BGZIP und TABIX ausführen) oder `false` an. Wenn Sie dieses Argument in der Datei „config.txt“ verwenden möchten, fügen Sie in der Datei die Angabe `bgzip_output: true` oder `bgzip_output: false` hinzu.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Wie lautet die Vereinbarung zum Servicelevel für Microsoft Genomics?
 Wir garantieren, dass der Microsoft Genomics-Dienst 99,9% der Zeit für den Empfang von Workflow-API-Anforderungen zur Verfügung steht. Weitere Informationen finden Sie unter [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).

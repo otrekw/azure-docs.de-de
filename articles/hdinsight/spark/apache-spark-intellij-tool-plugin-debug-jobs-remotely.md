@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: 76603642b90bd4d3926e10ce1c5a3c38391362cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 393356bd8604f6e7622acd778817681aad31f1f9
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749780"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76935020"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine schrittweise Anleitung, in der erläutert wird, wie
 * **IntelliJ IDEA**. In diesem Artikel wird die Version 2017.1 verwendet. Sie können diese IDE von der [JetBrains-Website](https://www.jetbrains.com/idea/download/) herunterladen und installieren.
 * **HDInsight-Tools im Azure-Toolkit für IntelliJ.** Die HDInsight Tools für IntelliJ sind als Teil des Azure-Toolkits für IntelliJ verfügbar. Anweisungen zum Installieren des Azure-Toolkits finden Sie unter [Installieren des Azure-Toolkits für IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation).
 * **Melden Sie sich über IntelliJ IDEA bei Ihrem Azure-Abonnement an**. Folgen Sie den Anweisungen unter [Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ](apache-spark-intellij-tool-plugin.md).
-* **Ausnahmeproblemumgehung**. Wenn Sie die Spark Scala-Anwendung zum Remotedebuggen auf einem Windows-Computer ausführen, wird unter Umständen eine Ausnahme angezeigt. Diese Ausnahme wird in [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) erläutert und tritt aufgrund einer fehlenden Datei „WinUtils.exe“ in Windows auf. Um diesen Fehler zu umgehen, müssen Sie [die ausführbare Datei herunterladen](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) und an einem Speicherort wie **C:\WinUtils\bin** speichern. Fügen Sie eine Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable dann auf **C\WinUtils** fest.
+* **Ausnahmeproblemumgehung**. Wenn Sie die Spark Scala-Anwendung zum Remotedebuggen auf einem Windows-Computer ausführen, wird unter Umständen eine Ausnahme angezeigt. Diese Ausnahme wird in [SPARK-2356](https://issues.apache.org/jira/browse/SPARK-2356) erläutert und tritt aufgrund einer fehlenden Datei „WinUtils.exe“ in Windows auf. Um diesen Fehler zu umgehen, müssen Sie [Winutils.exe](https://github.com/steveloughran/winutils) herunterladen und an einem Speicherort wie **C:\WinUtils\bin** ablegen. Fügen Sie eine Umgebungsvariable **HADOOP_HOME** hinzu, und legen Sie den Wert der Variable dann auf **C\WinUtils** fest.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>Schritt 1: Erstellen eines virtuellen Azure-Netzwerks
 

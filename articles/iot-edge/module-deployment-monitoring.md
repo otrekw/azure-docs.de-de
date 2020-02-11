@@ -4,16 +4,16 @@ description: Verwenden Sie automatische Bereitstellungen in Azure IoT Edge, um G
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 12/12/2019
+ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 406830add1891a058e9b43fccb8435aa4d339ed0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8aaac6100ba980301ff3e85a3ac3959bfee89b49
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548678"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76895967"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
@@ -61,7 +61,7 @@ Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlic
 
 So verfügen Sie beispielsweise über eine Bereitstellung mit der Zielbedingung „tags.environment = 'prod'“. Wenn Sie die Bereitstellung starten, sind 10 Produktionsgeräte vorhanden. Die Module werden erfolgreich auf diesen 10 Geräten installiert. Im Status des IoT Edge-Agents werden insgesamt 10 Geräte, 10 erfolgreiche Antworten, 0 Fehlerantworten und 0 ausstehende Antworten angezeigt. Nun fügen Sie fünf weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents wird in insgesamt 15 Geräte, 10 erfolgreiche Antworten, 0 Fehlerantworten und 5 ausstehende Antworten geändert, während der Agent die fünf neuen Geräte bereitstellt.
 
-Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](../iot-hub/iot-hub-devguide-device-twins.md)
+Verwenden Sie eine beliebige boolesche Bedingung bei Gerätezwillingstags, vom Gerätezwilling gemeldeten Eigenschaften oder für „deviceId“, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Beispiele für Zielbedingungen:
 
@@ -70,10 +70,11 @@ Beispiele für Zielbedingungen:
 * tags.environment = 'prod' AND tags.location = 'westus'
 * tags.environment = 'prod' OR tags.location = 'westus'
 * tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+* properties.reported.devicemodel = '4000x'
 
-Beim Erstellen einer Zielbedingung gelten die folgenden Einschränkungen:
+Beachten Sie diese Einschränkungen, wenn Sie eine Zielbedingung erstellen:
 
-* Sie können auf einem Gerätezwilling nur eine Zielbedingung mithilfe von Tags oder der Geräte-ID erstellen.
+* Sie können auf einem Gerätezwilling eine Zielbedingung nur mithilfe von Tags, gemeldeten Eigenschaften oder von „deviceId“ erstellen.
 * Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
 * Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Geben Sie für die Zielbedingung des Geräts mit dem Namen `operator'sDevice` beispielsweise `deviceId='operator''sDevice'` an.
 * In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `-:.+%_#*?!(),=@;$`.
@@ -92,8 +93,8 @@ Alle Bereitstellungen melden standardmäßig über vier Metriken:
 
 * **Gezielt** zeigt die IoT Edge-Geräte, die der Zielbedingung für die Bereitstellung entsprechen.
 * **Angewendet** zeigt die IoT Edge-Zielgeräte, für die es keine weitere Bereitstellung mit höherer Priorität gibt.
-* **Erfolg gemeldet** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass die Module erfolgreich bereitgestellt wurden.
-* **Fehler gemeldet** zeigt die IoT Edge-Geräte, die an den Dienst gemeldet haben, dass eines oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit diesen Geräten her, und zeigen Sie die Protokolldateien an.
+* **Erfolg gemeldet** zeigt die IoT Edge-Geräte, die gemeldet haben, dass die Module erfolgreich bereitgestellt wurden.
+* **Fehler gemeldet** zeigt die IoT Edge-Geräte, die gemeldet haben, dass ein oder mehrere Module nicht erfolgreich bereitgestellt wurden. Stellen Sie zum weiteren Untersuchen des Fehlers eine Remoteverbindung mit diesen Geräten her, und zeigen Sie die Protokolldateien an.
 
 Darüber hinaus können Sie Ihre eigenen benutzerdefinierten Metriken zum Überwachen und Verwalten der Bereitstellung definieren.
 
@@ -112,7 +113,7 @@ Bei mehrstufigen Bereitstellungen handelt es sich um automatische Bereitstellung
 
 Mehrstufige Bereitstellungen bestehen aus denselben Grundkomponenten wie jede automatische Bereitstellung. Sie richten sich an Geräte, die auf Tags in den Gerätezwillingen basieren, und bieten dieselbe Funktionalität wie Bezeichnungen, Metriken und Statusberichte. Mehrstufigen Bereitstellungen werden außerdem Prioritäten zugewiesen. Statt aber anhand der Priorität zu bestimmen, welche Bereitstellung auf ein Gerät angewendet wird, bestimmt die Priorität, wie mehrere Bereitstellungen auf einem Gerät eingestuft werden. Wenn beispielsweise zwei mehrstufige Bereitstellungen ein Modul oder eine Route mit demselben Namen enthalten, wird die Bereitstellung mit der höheren Priorität angewendet und die Bereitstellung mit der niedrigeren Priorität überschrieben.
 
-Die Systemlaufzeitmodule, „edgeAgent“ und „edgeHub“, werden nicht als Teil einer mehrstufigen Bereitstellung konfiguriert. Auf ein IoT Edge Gerät, das als Ziel einer mehrstufigen Bereitstellung verwendet wird, muss zunächst eine standardmäßige automatische Bereitstellung angewendet werden, um die Basis erhalten, auf der mehrstufige Bereitstellungen hinzugefügt werden können.
+Die Systemlaufzeitmodule, „edgeAgent“ und „edgeHub“, werden nicht als Teil einer mehrstufigen Bereitstellung konfiguriert. Auf IoT Edge-Geräte, die Ziel für eine mehrstufige Bereitstellung sind, muss zunächst eine automatische Standardbereitstellung angewendet werden. Bei der automatischen Bereitstellung wird die Basis bereitgestellt, auf der mehrstufige Bereitstellungen hinzugefügt werden können.
 
 Ein IoT Edge-Gerät kann nur eine einzige automatische Standardbereitstellung (aber mehrere mehrstufige automatische Bereitstellungen) anwenden. Alle mehrstufigen Bereitstellungen, deren Ziel ein Gerät ist, müssen eine höhere Priorität als die automatische Bereitstellung für dieses Gerät haben.
 
@@ -141,7 +142,7 @@ So könnten Sie in einer Standardbereitstellung beispielsweise das simulierte Te
 }
 ```
 
-In einer mehrstufigen Bereitstellung für dieselben Geräte oder eine Teilmenge derselben Geräte können Sie eine zusätzliche Eigenschaft hinzufügen, die den simulierten Sensor anweist, 1.000 Nachrichten zu senden und dann zu stoppen. Weil Sie die vorhandenen Eigenschaften nicht überschreiben möchten, erstellen Sie innerhalb der gewünschten Eigenschaften den neuen Abschnitt `layeredProperties`, der die neue Eigenschaft enthält:
+In einer mehrstufigen Bereitstellung, deren Ziel einige oder alle identischen Geräte sind, können Sie eine Eigenschaft hinzufügen, die den simulierten Sensor anweist, 1000 Nachrichten zu senden und dann anzuhalten. Weil Sie die vorhandenen Eigenschaften nicht überschreiben möchten, erstellen Sie innerhalb der gewünschten Eigenschaften den neuen Abschnitt `layeredProperties`, der die neue Eigenschaft enthält:
 
 ```json
 "SimulatedTemperatureSensor": {
