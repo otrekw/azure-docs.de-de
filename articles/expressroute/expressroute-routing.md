@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 934dc94da9bbdfc38cc12e78eaa5b67fa9f786ca
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083310"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901578"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -175,6 +175,12 @@ Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwe
 | UK, Westen | 12076:51025 | 12076:52025 | 12076:53025 | 12076:54025 |
 | Frankreich, Mitte | 12076:51030 | 12076:52030 | 12076:53030 | 12076:54030 |
 | Frankreich, Süden | 12076:51031 | 12076:52031 | 12076:53031 | 12076:54031 |
+| Schweiz, Norden | 12076:51038 | 12076:52038 | 12076:53038 | 12076:54038 | 
+| Schweiz, Westen | 12076:51039 | 12076:52039 | 12076:53039 | 12076:54039 | 
+| Deutschland, Norden | 12076:51040 | 12076:52040 | 12076:53040 | 12076:54040 | 
+| Deutschland, Westen-Mitte | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
+| Norwegen, Osten | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
+| Norwegen, Westen | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
 | **Asien-Pazifik** | |
 | Asien, Osten | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | Asien, Südosten | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |

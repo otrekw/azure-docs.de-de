@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect find a Virtual WAN partner
-ms.openlocfilehash: 44ce62f957dbdd71a41962ae7257cbc6e048e03c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: b7a3d443b64943c097a51eeae4be6253a0466e18
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953320"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933708"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Standorte von Virtual WAN-Partnern und -Hubs
 
@@ -40,7 +40,7 @@ Einige Konnektivitätspartner können die Automatisierung erweitern, indem sie d
 
 [!INCLUDE [partners](../../includes/virtual-wan-partners-include.md)]
 
-Die folgenden Partner sind auf unsere Roadmap in naher Zukunft vorgesehen: Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems und VMWare Velocloud.
+Die folgenden Partner sind auf unsere Roadmap in naher Zukunft vorgesehen: Arista, Aruba HPE, Cisco Systems, F5 Networks, Open Systems, Oracle Talari, SharpLink und VMWare Velocloud.
 
 ## <a name="locations"></a>Standorte
 

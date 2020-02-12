@@ -3,8 +3,8 @@ title: Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf dem 
 description: Hochverfügbarkeitsleitfaden für SAP NetWeaver auf dem SUSE Linux Enterprise Server for SAP Applications
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: d08f17bd22188f3d969261d8626d47a9e0faf08e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 02/03/2020
+ms.author: radeltch
+ms.openlocfilehash: 77a26d229ddc4ce5f35fde3db010e3b7c146a563
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839605"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985516"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 
@@ -277,7 +277,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    </code></pre>
 
    > [!NOTE]
-   > Verwenden Sie in den Hostnamen Ihrer Clusterknoten keine Bindestriche. Andernfalls funktioniert der Cluster nicht. Dies ist eine bekannte Einschränkung, und SUSE arbeitet an einer Lösung. Die Lösung wird als ein Patch für das Paket sap-suse-cloud-connector veröffentlicht.
+   > Das bekannte Problem bei der Verwendung eines Gedankenstrichs in Hostnamen wird mit Version **3.1.1** des Pakets **sap-suse-cluster-connector** korrigiert. Stellen Sie sicher, dass Sie mindestens Version 3.1.1 des Pakets sap-suse-cluster-connector verwenden, wenn Sie Clusterknoten mit Gedankenstrichen im Hostnamen verwenden. Andernfalls funktioniert der Cluster nicht. 
 
    Stellen Sie sicher, dass Sie die neue Version des SAP SUSE-Clusterconnectors installiert haben. Der alte Name war „sap_suse_cluster_connector“, und der neue Name ist **sap-suse-cluster-connector**.
 

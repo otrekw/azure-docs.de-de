@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911283"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933661"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Hinzufügen einer Blasenebene zu einer Karte
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Bla
 
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
-Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen und mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)verbunden. Der Blasenebene werden Optionen zugewiesen, um den Radius jeder Blase bei fünf Pixeln, eine Füllfarbe von Weiß, eine Strichfarbe von Blau und eine Strichbreite von sechs Pixeln darzustellen. 
+Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen. Anschließend werden die Datenpunkte mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) verbunden. Der Blasenebene rendert den Radius jeder Blase mit fünf Pixeln, einer weißen Füllfarbe, einer blauen Strichfarbe und eine Strichbreite von sechs Pixeln. 
 
 ```javascript
 //Add point locations.

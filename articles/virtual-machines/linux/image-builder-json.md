@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760010"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905765"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Vorschau: Erstellen einer Azure Image Builder-Vorlage 
 
@@ -317,6 +317,8 @@ Anpassungseigenschaften:
 - **restartCheckCommand:** Befehl zur Überprüfung, ob der Neustart erfolgreich war (Optional). 
 - **restartTimeout:** Zeichenfolge von Größe und Einheit des Timeouts für den Neustart, z. B. `5m` (5 Minuten) oder `2h` (2 Stunden). Der Standardwert lautet: „5m“
 
+### <a name="linux-restart"></a>Linux-Neustart  
+Es gibt keine Anpassung für den Linux-Neustart, aber wenn Sie Treiber oder Komponenten installieren, die einen Neustart erfordern, können Sie diese installieren und einen Neustart mit der Shellanpassung aufrufen. Es gibt ein 20-minütiges SSH-Zeitlimit für die Build-VM.
 
 ### <a name="powershell-customizer"></a>PowerShell-Anpassung 
 Die Shellanpassung unterstützt das Ausführen von PowerShell-Skripts und Inlinebefehlen. Diese Skripts müssen öffentlich zugänglich sein, damit Image Builder auf diese zugreifen kann.

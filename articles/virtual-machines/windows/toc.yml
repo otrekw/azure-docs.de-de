@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: Ermitteln nicht angefügter Datenträger
           href: find-unattached-disks.md
-        - name: Verwenden von File Storage
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: Häufig gestellte Fragen zu Datenträgern
           href: faq-for-disks.md
     - name: Verwalten von Netzwerken

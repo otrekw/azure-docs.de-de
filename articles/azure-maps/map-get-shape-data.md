@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ca1b9854b118d359167873313f1fcb11bfecee52
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d74a7906157eed33487a5f88082701da1b2269dc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911010"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988548"
 ---
 # <a name="get-shape-data"></a>Abrufen von Formdaten
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der **drawingManager.getSource()** -Funktion des [Zeichnungs-Managers](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) auf der Karte gezeichnete Formdaten abrufen. Es gibt verschiedene Szenarien, in denen Sie GeoJSON-Daten einer gezeichneten Form extrahieren und an anderer Stelle verwenden möchten.  
+In diesem Artikel wird gezeigt, wie Sie Daten von Formen erhalten, die auf der Karte gezeichnet sind. Wir verwenden die Funktion **drawingManager.getSource()** innerhalb des [Zeichnungs-Managers](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--). Es gibt verschiedene Szenarien, in denen Sie GeoJSON-Daten einer gezeichneten Form extrahieren und an anderer Stelle verwenden möchten.  
 
 
 ## <a name="get-data-from-drawn-shape"></a>Abrufen von Daten aus gezeichneten Formen

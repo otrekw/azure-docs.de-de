@@ -5,7 +5,7 @@
   items:
     - name: Info zu Azure Blockchain Workbench
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Erstellen einer Blockchain-App
@@ -18,7 +18,7 @@
       href: architecture.md
     - name: Integrationsmuster
       href: integration-patterns.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von Workbench
@@ -71,7 +71,5 @@
   items:
     - name: Ethereum-PoA-Konsortium
       href: ../templates/ethereum-poa-deployment.md
-    - name: Hyperledger – Fabric-Konsortium
-      href: ../templates/hyperledger-fabric-consortium-blockchain.md
     - name: 'Hyperledger Fabric-Konsortium: Azure Kubernetes Service'
       href: ../templates/hyperledger-fabric-consortium-azure-kubernetes-service.md

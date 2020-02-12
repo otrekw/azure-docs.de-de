@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5450ada04a1af44a3fff0402b30540e899cc4dd5
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911039"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988531"
 ---
 # <a name="get-information-from-a-coordinate"></a>Abrufen von Informationen von einer Koordinate
 
@@ -27,17 +27,17 @@ Es gibt zwei Möglichkeiten, eine inverse Adresssuche durchzuführen. Eine Mögl
 <iframe height='500' scrolling='no' title='Abrufen von Informationen von einer Koordinate (Dienstmodul)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>Get information from a coordinate (Service Module)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus das Zugriffstoken fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
+Im obigen Code erstellt der erste Block ein Kartenobjekt und legt als Authentifizierungsmechanismus die Verwendung des Zugriffstokens fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
 Der zweite Codeblock erstellt ein `TokenCredential`-Element, um HTTP-Anforderungen an Azure Maps mit dem Zugriffstoken zu authentifizieren. Anschließend wird das `TokenCredential`-Element an `atlas.service.MapsURL.newPipeline()` übergeben, und es wird eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-maps-typescript-latest)-Instanz erstellt. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
 
 Der dritte Codeblock aktualisiert den Stil des Mauscursors in einen Zeiger und erstellt ein [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)-Objekt. Eine Anleitung finden Sie unter [Hinzufügen eines Popupfensters zur Karte](./map-add-popup.md).
 
-Der vierte Codeblock fügt einen [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) für Mausklicks hinzu. Bei Auslösung wird eine Suchabfrage mit den Koordinaten des Punkts erstellt, auf den geklickt wurde. Dabei wird die [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)-Methode des Dienstmoduls verwendet, um die [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) nach der Adresse der Koordinaten abzufragen. Anschließend wird mit der Methode `geojson.getFeatures()` eine GeoJSON-Merkmalsauswahl aus der Antwort extrahiert.
+Der vierte Codeblock fügt einen [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) für Mausklicks hinzu. Bei Auslösung wird eine Suchabfrage mit den Koordinaten des Punkts erstellt, auf den geklickt wurde. Dabei wird die [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.searchurl?view=azure-iot-typescript-latest#searchaddressreverse-aborter--geojson-position--searchaddressreverseoptions-)-Methode verwendet, um die [API für die umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) nach der Adresse der Koordinaten abzufragen. Anschließend wird mit der Methode `geojson.getFeatures()` eine GeoJSON-Merkmalsauswahl aus der Antwort extrahiert.
 
 Der fünfte Codeblock richtet den HTML-Popupinhalt ein, um die Adresse aus der Antwort für die Koordinatenposition, auf die geklickt wurde, anzuzeigen.
 
-Die Änderung des Cursors, ein Popup-Objekt und das Klickereignis werden jeweils im [Ladeereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt, um sicherzustellen, dass die Karte vollständig geladen wurde, bevor die Koordinateninformationen abgerufen werden können.
+Die Änderung des Cursors, ein Popup-Objekt und das Klickereignis werden jeweils im [Ladeereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt, um sicherzustellen, dass die Karte vollständig geladen wurde, bevor die Koordinateninformationen abgerufen werden.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Durchführen einer inversen Suchanforderung über die Fetch-API
 
@@ -48,11 +48,11 @@ Klicken Sie auf die Karte, um für die ausgewählte Position mithilfe der Fetch-
 
 Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus das Zugriffstoken fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock aktualisiert den Stil des Mauscursors in einen Zeiger und ein Objekt vom Typ [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Eine Anleitung finden Sie unter [Hinzufügen eines Popupfensters zur Karte](./map-add-popup.md).
+Der zweite Codeblock aktualisiert den Stil des Mauscursors zu einem Zeiger. Er instanziiert ein [popup](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)-Objekt. Eine Anleitung finden Sie unter [Hinzufügen eines Popupfensters zur Karte](./map-add-popup.md).
 
-Der dritte Codeblock fügt einen Ereignislistener für Mausklicks hinzu. Nach einem Mausklick wird mithilfe der [Fetch-API](https://fetch.spec.whatwg.org/) die [Azure Maps-API für eine umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) nach der Adresse für die Koordinaten, auf die geklickt wurde, abgefragt. Für eine erfolgreiche Antwort wird die Adresse für die angeklickte Position gesammelt sowie der Popupinhalt und die Position über die Funktion [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) der Popupklasse definiert.
+Der dritte Codeblock fügt einen Ereignislistener für Mausklicks hinzu. Nach einem Mausklick wird mithilfe der [Fetch-API](https://fetch.spec.whatwg.org/) die [Azure Maps-API für eine umgekehrte Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) nach der Adresse für die Koordinaten, auf die geklickt wurde, abgefragt. Für eine erfolgreiche Antwort sammelt sie die Adresse für den angeklickten Standort. Sie definiert den popup-Inhalt und die Position mithilfe der Funktion [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) der popup-Klasse.
 
-Die Änderung des Cursors, ein Popup-Objekt und das Klickereignis werden jeweils im [Ladeereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt, um sicherzustellen, dass die Karte vollständig geladen wurde, bevor die Koordinateninformationen abgerufen werden können.
+Die Änderung des Cursors, ein Popup-Objekt und das Klickereignis werden jeweils im [Ladeereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt, um sicherzustellen, dass die Karte vollständig geladen wurde, bevor Koordinateninformationen abgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

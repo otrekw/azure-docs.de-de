@@ -9,8 +9,8 @@
   items:
     - name: Aktivieren der Self-Service-Kennwortzurücksetzung
       href: tutorial-enable-sspr.md
-    - name: Aktivieren von MFA für Anwendungen
-      href: tutorial-mfa-applications.md
+    - name: Aktivieren von Azure Multi-Factor Authentication
+      href: tutorial-enable-azure-mfa.md
     - name: Aktivieren der lokalen SSPR-Integration
       href: tutorial-enable-writeback.md
     - name: Integrieren von Azure Identity Protection

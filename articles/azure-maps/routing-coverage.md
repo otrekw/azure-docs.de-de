@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f6e16ed6646340a5c623ecd027e8b0fe323bf7f9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910613"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988939"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps-Streckenabdeckung
 
-Dieser Artikel bietet Informationen zur Abdeckung für die Azure Maps-Streckenplanung. Wenn Sie die optimale Route von Standort A nach B suchen, kann Azure Maps äußerst präzise Reisezeiten, Reiseinformationen mit Liveupdate und Routenanweisungen bereitstellen. Die Route berücksichtigt zusätzliche Suchbegriffe wie den aktuellen Verkehr, den Fahrzeugtyp und die zu vermeidenden Bedingungen. Die Möglichkeit zur Optimierung der Route hängt von der Region ab, da Azure Maps hinsichtlich Informationen und Genauigkeit über unterschiedliche Stufen für verschiedene Regionen verfügt. In der folgenden Tabelle sind die Regionen aufgeführt und welche Art von Informationen Sie für diese anfordern können.
+Dieser Artikel bietet Informationen zur Abdeckung für die Azure Maps-Streckenplanung. Bei einer Suchabfrage gibt Azure Maps eine optimale Route von Standort A nach Standort B zurück. Sie erhalten genaue Reisezeiten, Liveupdates von Reiseinformationen und Routenanweisungen. Sie können auch zusätzliche Suchparameter wie den aktuellen Verkehr, den Fahrzeugtyp und zu vermeidende Bedingungen hinzufügen. Die Optimierung der Route hängt von der Region ab. Der Grund dafür ist, dass Azure Maps für verschiedene Regionen unterschiedliche Ebenen von Informationen und Genauigkeit aufweist. In der folgenden Tabelle sind die Regionen aufgeführt und welche Art von Informationen Sie für diese anfordern können.
  
 Verschaffen Sie sich einen Überblick über die Abdeckung der [**Geocodierung**](geocoding-coverage.md).       
 Verschaffen Sie sich einen Überblick über die Abdeckung der [**Verkehrsinformationen**](traffic-coverage.md).  

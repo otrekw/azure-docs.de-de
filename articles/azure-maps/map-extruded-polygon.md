@@ -9,21 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 36914240caf3c1321dfa0102bd87cb29173f8b1d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911069"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988565"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Hinzufügen einer Polygonextrusionsebene zur Karte
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe der Polygonextrusionsebene Bereiche von `Polygon`- und `MultiPolygon`-Featuregeometrien als extrudierte Formen auf der Karte darstellen. Das Azure Maps-Web-SDK unterstützt auch die Erstellung von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise werden beim Rendern auf der Karte in Polygone umgewandelt. Alle Featuregeometrien können auch ganz einfach aktualisiert werden, wenn in der Klasse [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) umschlossen sind.
-
+In diesem Artikel erfahren Sie, wie Sie mithilfe der Polygonextrusionsebene Bereiche von `Polygon`- und `MultiPolygon`-Featuregeometrien als extrudierte Formen darstellen. Das Azure Maps-Web-SDK unterstützt das Rendering von Kreisgeometrien gemäß der Definition im [erweiterten GeoJSON-Schema](extend-geojson.md#circle). Diese Kreise können beim Rendern auf der Karte in Polygone umgewandelt werden. Alle Featuregeometrien können ganz einfach aktualisiert werden, wenn sie in der Klasse [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) umschlossen sind.
 
 ## <a name="use-a-polygon-extrusion-layer"></a>Verwenden einer Polygonextrusionsebene
 
-Wenn eine [Polygonextrusionsebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) mit einer Datenquelle verbunden ist und in die Karte geladen wird, werden die Bereiche der `Polygon`- und `MultiPolygon`-Features als extrudierte Formen gerendert. Die Eigenschaften `height` und `base` der Polygonextrusionsebene definieren den Basisabstand vom Boden und die Höhe der extrudierten Form in **Metern**. Der folgende Code zeigt, wie Sie ein Polygon erstellen, dieses einer Datenquelle hinzufügen und dann mit einer Klasse für die Polygonextrusionsebene rendern.
+Verbinden Sie die [Polygonextrusionsebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest) mit einer Datenquelle. Laden Sie sie anschließend auf die Karte. Die Polygonextrusionsebene stellt die Bereiche eines `Polygon`- und `MultiPolygon`-Features als extrudierte Formen dar. Die Eigenschaften `height` und `base` der Polygonextrusionsebene definieren den Basisabstand vom Boden und die Höhe der extrudierten Form in **Metern**. Der folgende Code zeigt, wie Sie ein Polygon erstellen, dieses einer Datenquelle hinzufügen und dann mit einer Klasse für die Polygonextrusionsebene rendern.
 
 > [!Note]
 > Der in der Polygonextrusionsebene definierte Wert `base` sollte kleiner oder gleich dem Wert von `height` sein.
@@ -34,9 +33,9 @@ Wenn eine [Polygonextrusionsebene](https://docs.microsoft.com/javascript/api/azu
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wvvBpvE'>Extruded polygon</a> (Extrudiertes Polygon) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.</iframe>
 
 
-## <a name="add-data-driven-multipolygons"></a>Hinzufügen von datengesteuerten Multipolygonen
+## <a name="add-data-driven-polygons"></a>Hinzufügen von datengesteuerten Polygonen
 
-Eine Choroplethenkarte kann mithilfe der Polygonextrusionsebene gerendert werden, indem die Eigenschaften `height` und `fillColor` proportional zur Messung der statistischen Variable in den Featuregeometrien `Polygon` und `MultiPolygon` festgelegt werden. Das folgende Codebeispiel zeigt eine extrudierte Choroplethenkarte der USA basierend auf der Messung der Bevölkerungsdichte nach Bundesstaat.
+Eine Choroplethenkarte kann mithilfe der Polygonextrusionsebene gerendert werden. Legen Sie die Eigenschaften `height` und `fillColor` der Extrusionsebene auf die Messung der statistischen Variablen in den Featuregeometrien `Polygon` und `MultiPolygon` fest. Das folgende Codebeispiel zeigt eine extrudierte Choroplethenkarte der USA basierend auf der Messung der Bevölkerungsdichte nach Bundesstaat.
 
 <br/>
 
@@ -62,7 +61,7 @@ Azure Maps verwendet eine erweiterte Version des GeoJSON-Schemas, das eine Defin
 } 
 ```
 
-Das Azure Maps Web SDK wandelt diese `Point`-Features im Hintergrund in `Polygon`-Features um, die auf der Karte auf der Polygonextrusionsebene gerendert werden können, wie im folgenden Codebeispiel gezeigt.
+Das Azure Maps-Web-SDK wandelt diese `Point`-Features im Hintergrund in `Polygon`-Features um. Diese `Point`-Features können auf der Karte auf der Polygonextrusionsebene gerendert werden, wie im folgenden Codebeispiel gezeigt.
 
 <br/>
 
