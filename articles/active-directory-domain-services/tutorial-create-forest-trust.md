@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: bd0ec46d224e68f92b5d042826633d1efc7c336e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3637a11724c1f0bab049077c5abbd817e168bd44
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425435"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931234"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services-preview"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services (Vorschauversion)
 
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Bei Bedarf [erstellen und konfigurieren Sie eine Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance-advanced].
     
     > [!IMPORTANT]
-    > Erstellen Sie unbedingt eine verwaltete Azure AD DS-Domäne mithilfe einer *Ressourcengesamtstruktur*. Mit der Standardoption wird eine *Benutzergesamtstruktur* erstellt. Nur Ressourcengesamtstrukturen können Vertrauensstellungen für lokale AD DS-Umgebungen erstellen.
+    > Erstellen Sie unbedingt eine verwaltete Azure AD DS-Domäne mithilfe einer *Ressourcengesamtstruktur*. Mit der Standardoption wird eine *Benutzergesamtstruktur* erstellt. Nur Ressourcengesamtstrukturen können Vertrauensstellungen für lokale AD DS-Umgebungen erstellen. Sie müssen außerdem mindestens ein *Enterprise*-SKU für Ihre verwaltete Domäne verwenden. [Ändern Sie die SKU in eine verwaltete Azure AD DS-Domäne][howto-change-sku], wenn Bedarf besteht.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -220,3 +220,4 @@ Weitere konzeptbezogene Informationen zu Gesamtstrukturtypen in Azure AD DS fi
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance-advanced]: tutorial-create-instance-advanced.md
+[howto-change-sku]: change-sku.md

@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330f3100858d517666ac14fa8c206b4c06998c4f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274200"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896904"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Endbenutzerumgebungen für Anwendungen in Azure Active Directory
 
@@ -36,7 +36,7 @@ Der Zugriffsbereich unter https://myapps.microsoft.com ist ein webbasiertes Port
 
 ![Screenshot zeigt das Azure AD-Zugriffsbereichsportal](media/what-is-single-sign-on/azure-ad-access-panel.png)
 
-Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Arbeitsbereichen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, wodurch sie leichter auffindbar sind. So können Sie mit Arbeitsbereichen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Arbeitsbereichen zum Anpassen von Zugriffsbereichen für Benutzer (Vorschau)](access-panel-workspaces.md). 
+Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Auflistungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Auflistungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Auflistungen zum Anpassen von Zugriffsbereichen für Benutzer](access-panel-collections.md). 
 
 Der Zugriffsbereich ist unabhängig vom Azure-Portal und setzt nicht voraus, dass Benutzer über ein Azure- oder Office 365-Abonnement verfügen.
 

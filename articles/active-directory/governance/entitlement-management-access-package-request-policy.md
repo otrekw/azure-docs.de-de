@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174675"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897611"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern der Anforderungs- und Genehmigungseinstellungen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -42,6 +42,9 @@ Mit einer Richtlinie legen Sie fest, wer ein Zugriffspaket anfordern kann. Beim 
 | Sowohl die Benutzer in meinem Verzeichnis als auch Benutzer außerhalb meines Verzeichnisses sollen ein Zugriffspaket anfordern können. | Mehrere |
 | Ich möchte für einige Benutzer andere Genehmigungseinstellungen angeben. | Mehrere |
 | Ich möchte, dass die Zugriffspaketzuweisungen einiger Benutzer ablaufen, während andere Benutzer ihren Zugriff verlängern können. | Mehrere |
+
+Informationen zur Prioritätslogik, die beim Anwenden mehrerer Richtlinien verwendet wird, finden Sie unter [Mehrere Richtlinien](entitlement-management-troubleshoot.md#multiple-policies
+).
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>Öffnen einer vorhandenen Richtlinie mit Anforderungs- und Genehmigungseinstellungen
 

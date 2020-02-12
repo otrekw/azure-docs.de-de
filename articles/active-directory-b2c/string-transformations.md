@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/04/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 72b3349e0ad4fd86b91a7a02f70b2bcf1efbc271
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712853"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982756"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -499,6 +499,47 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 - Ausgabeansprüche:
     - **domain**: outlook.com
 
+## <a name="setclaimsifregexmatch"></a>SetClaimsIfRegexMatch
+
+Überprüft, ob ein Zeichenfolgenanspruch `claimToMatch` und der Eingabeparameter `matchTo` gleich sind, und legt die Ausgabeansprüche mit dem Wert im Eingabeparameter `outputClaimIfMatched` fest, zusammen mit dem Ausgabeanspruch des Vergleichsregebnisses, der anhand des Vergleichsergebnisses auf `true` oder `false` festgelegt werden muss.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| inputClaim | claimToMatch | string | Der Anspruchstyp, der verglichen werden soll. |
+| InputParameter | matchTo | string | Der reguläre Ausdruck, mit dem eine Übereinstimmung bestehen soll. |
+| InputParameter | outputClaimIfMatched | string | Der Wert, der festgelegt werden soll, wenn Zeichenfolgen gleich sind. |
+| OutputClaim | outputClaim | string | Wenn es eine Übereinstimmung mit dem regulären Ausdruck gibt, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder Null, wenn keine Übereinstimmung vorliegt. |
+| OutputClaim | regexCompareResultClaim | boolean | Der Ausgabeanspruchstyp des Übereinstimmungsergebnisses mit dem regulären Ausdruck, der anhand des Übereinstimmungsergebnisses auf `true` oder `false` festgelegt werden muss. |
+
+Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft, ob die angegebene Telefonnummer gültig ist.  
+
+```XML
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="^[0-9]{4,16}$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isPhone" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isPhoneBoolean" TransformationClaimType="regexCompareResultClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **claimToMatch:** "64854114520"
+- Eingabeparameter:
+    - **matchTo**: "^[0-9]{4,16}$"
+    - **outputClaimIfMatched**:  "isPhone"
+- Ausgabeansprüche:
+    - **outputClaim**: "isPhone"
+    - **regexCompareResultClaim**: true
+
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Überprüft, ob ein Zeichenfolgen-Anspruch und der Eingabeparameter `matchTo` gleich sind, und legt die Ausgabeansprüche mit dem Wert in den Eingabeparametern `stringMatchMsg` und `stringMatchMsgCode` fest, zusammen mit dem Ausgabeanspruch „CompareResult“, der basierend auf dem Ergebnis des Vergleichs auf `true` oder `false` festgelegt werden muss.
@@ -592,3 +633,188 @@ Bei der folgenden Anspruchstransformation wird beispielsweise überprüft, ob de
     - **isMinorResponseCode:** B2C_V1_90001
     - **isMinor**: true
 
+
+## <a name="stringcontains"></a>StringContains
+
+Bestimmt, ob eine angegebene Teilzeichenfolge im Eingabeanspruch vorhanden ist. Das Ergebnis ist ein neuer boolescher Anspruchstyp mit dem Wert `true` oder `false`. `true`, wenn der Wert des Parameters in dieser Zeichenfolge vorkommt, andernfalls `false`.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | Der Anspruchstyp, der gesucht werden soll. |
+|InputParameter|contains|string|Der zu suchende Wert.|
+|InputParameter|ignoreCase|string|Gibt an, ob bei diesem Vergleich die Groß-/Kleinschreibung in den zu vergleichenden Zeichenfolgen ignoriert werden soll.|
+| OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Ein boolescher Indikator, wenn die Teilzeichenfolge innerhalb des Eingabeanspruchs auftritt. |
+
+Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Zeichenfolgenanspruchstyp eine Teilzeichenfolge enthält. Im folgenden Beispiel wird überprüft, ob der Zeichenfolgenanspruchstyp `roles` den Wert **admin** enthält.
+
+```XML
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
+  </InputClaims>
+  <InputParameters>
+    <InputParameter  Id="contains" DataType="string" Value="admin"/>
+    <InputParameter  Id="ignoreCase" DataType="string" Value="true"/>
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
+  </OutputClaims>         
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **inputClaim:** "Admin, Approver, Editor"
+- Eingabeparameter:
+    - **contains**: "admin,"
+    - **ignoreCase**: true
+- Ausgabeansprüche:
+    - **outputClaim**: true 
+
+## <a name="stringsubstring"></a>StringSubstring
+
+Extrahiert Teile eines Zeichenfolgenanspruchstyps ab dem Zeichen an der angegebenen Position und gibt die angegebene Anzahl von Zeichen zurück.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | Der Anspruchstyp, der die Zeichenfolge enthält. |
+| InputParameter | startIndex | INT | Die nullbasierte Anfangsposition einer Teilzeichenfolge in dieser Instanz. |
+| InputParameter | length | INT | Die Anzahl der Zeichen in der Teilzeichenfolge. |
+| OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der Teilzeichenfolge mit der Länge „length“ ab „startIndex“ in dieser Instanz entspricht, oder „Empty“, wenn „startIndex“ der Länge dieser Instanz entspricht und „length“ Null ist. |
+
+Ruft z. B. die Ländervorwahl der Telefonnummer ab.  
+
+
+```XML
+<ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="startIndex" DataType="int" Value="0" />
+  <InputParameter Id="length" DataType="int" Value="2" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phonePrefix" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **inputClaim**: "+1644114520"
+- Eingabeparameter:
+    - **startIndex**: 0
+    - **length**:  2
+- Ausgabeansprüche:
+    - **outputClaim**: "+1"
+
+## <a name="stringreplace"></a>StringReplace
+
+Durchsucht die Zeichenfolge eine Anspruchstyps nach einem bestimmten Wert und gibt eine neue Zeichenfolge für den Anspruchstyp zurück, in der alle Vorkommen einer bestimmten Zeichenfolge in der aktuellen Zeichenfolge durch eine andere bestimmte Zeichenfolge ersetzt werden.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | Der Anspruchstyp, der die Zeichenfolge enthält. |
+| InputParameter | oldValue | string | Zu suchende Zeichenfolge. |
+| InputParameter | newValue | string | Die Zeichenfolge, die alle Vorkommen von `oldValue` ersetzen soll |
+| OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der aktuellen Zeichenfolge entspricht, nur dass alle Instanzen von „oldValue“ durch „newValue“ ersetzt werden. Wenn „oldValue“ in der aktuellen Instanz nicht gefunden wird, gibt die Methode die aktuelle Instanz unverändert zurück. |
+
+Beispielsweise können Sie eine Telefonnummer normalisieren, indem Sie die Zeichen `-` entfernen.  
+
+
+```XML
+<ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
+  </InputClaims>
+<InputParameters>
+  <InputParameter Id="oldValue" DataType="string" Value="-" />
+  <InputParameter Id="newValue" DataType="string" Value="" />
+</InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **inputClaim**: "+164-411-452-054"
+- Eingabeparameter:
+    - **oldValue**: "-"
+    - **length**: ""
+- Ausgabeansprüche:
+    - **outputClaim**: "+164411452054"
+
+## <a name="stringjoin"></a>StringJoin
+
+Verkettet die Elemente eines bestimmten stringCollection-Anspruchstyps und verwendet dazu das angegebene Trennzeichen zwischen jedem Element bzw. Member.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | stringCollection | Eine Auflistung, die die zu verkettenden Zeichenfolgen enthält. |
+| InputParameter | Trennzeichen | string | Die als Trennzeichen zu verwendende Zeichenfolge, z. B. Komma `,`. |
+| OutputClaim | outputClaim | string | Eine Zeichenfolge, die aus den Membern der Zeichenfolgenauflistung `inputClaim` besteht, getrennt durch den Eingabeparameter `delimiter`. |
+  
+Im folgenden Beispiel wird eine Zeichenfolgenauflistung von Benutzerrollen in eine Zeichenfolge mit Kommatrennzeichen konvertiert. Mit dieser Methode können Sie eine Zeichenfolgenauflistung im Azure AD-Benutzerkonto speichern. Wenn Sie später das Konto aus dem Verzeichnis lesen, konvertieren Sie die Zeichenfolge mit Kommatrennzeichen mithilfe von `StringSplit` zurück in die Zeichenfolgenauflistung.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
+  <InputClaims>
+   <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter DataType="string" Id="delimiter" Value="," />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="rolesCommaDelimiterConverted" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+  - **inputClaim**: [ "Admin", "Author", "Reader" ]
+- Eingabeparameter:
+  - **delimiter**: ","
+- Ausgabeansprüche:
+  - **outputClaim:** "Admin,Author,Reader"
+
+
+## <a name="stringsplit"></a>StringSplit
+
+Gibt ein Zeichenfolgenarray zurück, das die Teilzeichenfolgen in dieser Instanz enthält, die durch Elemente einer bestimmten Zeichenfolge getrennt sind.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| InputClaim | inputClaim | string | Ein Zeichenfolgenanspruchstyp, der die zu unterteilenden Teilzeichenfolgen enthält. |
+| InputParameter | Trennzeichen | string | Die als Trennzeichen zu verwendende Zeichenfolge, z. B. Komma `,`. |
+| OutputClaim | outputClaim | stringCollection | Eine Zeichenfolgenauflistung, deren Elemente die Teilzeichenfolgen in dieser Zeichenfolge enthalten, die durch den Eingabeparameter `delimiter` getrennt sind. |
+  
+Im folgenden Beispiel wird eine Zeichenfolge von Benutzerrollen mit Kommatrennzeichen in eine Zeichenfolgenauflistung konvertiert.
+
+```XML
+<ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+  <InputParameter DataType="string" Id="delimiter" Value="," />
+    </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="roles" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+  - **inputClaim:** "Admin,Author,Reader"
+- Eingabeparameter:
+  - **delimiter**: ","
+- Ausgabeansprüche:
+  - **outputClaim**: [ "Admin", "Author", "Reader" ]

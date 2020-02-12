@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 019c2f8a13a80de395803ca1782e578c049a7923
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 51e5c58d29f01cadcc3ea2e8ec48ae67e58c4180
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549345"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76909039"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -29,6 +29,9 @@ Für die Verwendung der Azure AD Connect-Cloudbereitstellung benötigen Sie Folg
 - ein globales Administratorkonto für Ihren Azure AD-Mandanten
 - einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher
 - lokale Firewallkonfigurationen
+
+>[!NOTE]
+>Der Bereitstellungs-Agent kann derzeit nur auf englischsprachigen Servern installiert werden. Das Installieren eines englischen Sprachpakets auf einem nicht englischsprachigen Server ist als Problemumgehung ungültig und führt dazu, dass der Agent nicht installiert wird. 
 
 Im Weiteren finden Sie schrittweise Anleitungen für diese Voraussetzungen.
 

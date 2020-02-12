@@ -1,6 +1,6 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – öffentliche IP-Adresse
-description: Erfahren Sie mehr über öffentliche IP-Adressen und deren Vorteile für die Azure-VMware-Lösung von CloudSimple.
+title: 'Azure VMware Solutions (AVS): Öffentliche IP-Adresse'
+description: Hier erfahren Sie mehr über öffentliche IP-Adressen und ihre Vorteile für Azure VMware Solutions (AVS).
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 147ab6b5ace4493e1a0b303c320cb2e81d829b29
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2cb9d0e33da4447760ae0be216c1dd9868c498bd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877681"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024975"
 ---
-# <a name="cloudsimple-public-ip-address-overview"></a>Öffentliche CloudSimple-IP-Adresse – Übersicht
+# <a name="avs-public-ip-address-overview"></a>Öffentliche AVS-IP-Adresse – Übersicht
 
-Eine öffentliche IP-Adresse ermöglicht Internetressourcen die eingehende Kommunikation mit Ressourcen in einer privaten Cloud über eine private IP-Adresse. Die private IP-Adresse gehört ist entweder ein virtueller Computer oder ein softwarebasiertes Lastenausgleichsmodul im vCenter Ihrer privaten Cloud. Über die öffentliche IP-Adresse können Sie Dienste, die in Ihrer privaten Cloud ausgeführt werden, für das Internet verfügbar machen.
+Eine öffentliche IP-Adresse ermöglicht Internetressourcen die eingehende Kommunikation mit Ressourcen in einer privaten AVS-Cloud über eine private IP-Adresse. Die private IP-Adresse ist entweder ein virtueller Computer oder ein softwarebasiertes Lastenausgleichsmodul in der vCenter-Instanz Ihrer privaten AVS-Cloud. Über die öffentliche IP-Adresse können Sie Dienste, die in Ihrer privaten AVS-Cloud ausgeführt werden, für das Internet verfügbar machen.
 
 Die öffentliche IP-Adresse ist solange der privaten IP-Adresse zugewiesen, bis Sie diese Zuweisung aufgehoben haben. Eine öffentliche IP-Adresse kann nur einer privaten IP-Adresse zugewiesen werden.
 

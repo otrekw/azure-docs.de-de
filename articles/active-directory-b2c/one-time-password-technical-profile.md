@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c50edb03fe849c70596c0bfb3cdc2dafa15f136f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475052"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982788"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -51,7 +51,7 @@ Der erste Modus dieses technischen Profils besteht darin, einen Code zu generier
 
 Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
+| ClaimReferenceId | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner zur Identifizierung des Benutzers, der den Code später überprüfen muss. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 
@@ -61,7 +61,7 @@ Das **InputClaimsTransformations**-Element darf eine Sammlung von **InputClaimsT
 
 Das **OutputClaims**-Element enthält eine Liste der Ansprüche, die vom Anbieter des Einmalkennwortprotokolls generiert werden. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
+| ClaimReferenceId | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | otpGenerated | Ja | Der generierte Code, dessen Sitzung von Azure AD B2C verwaltet wird. |
 
@@ -71,12 +71,13 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Die folgenden Einstellungen können verwendet werden, um die Codegenerierung und -wartung zu konfigurieren:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Nein | Die Zeit in Sekunden bis zum Ablauf des Codes. Mindestwert: `60`, Maximalwert: `1200`, Standardwert: `600`. |
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
 | CharacterSet | Nein | Der Zeichensatz für den Code, der für die Verwendung in einem regulären Ausdruck formatiert ist. Beispiel: `a-z0-9A-Z`. Standardwert: `0-9`. Der Zeichensatz muss mindestens zehn verschiedene Zeichen enthalten, die im angegebenen Zeichensatz enthalten sind. |
 | NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. |
+| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte sind `GenerateCode` oder `VerifyCode`. |
 | ReuseSameCode | Nein | Gibt an, ob ein doppelter Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`. |
 
 ### <a name="returning-error-message"></a>Zurückgegebene Fehlermeldung
@@ -116,7 +117,7 @@ Der zweite Modus dieses technischen Profils besteht darin, einen Code zu überpr
 
 Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
+| ClaimReferenceId | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner, der den Benutzer identifiziert, der zuvor einen Code generiert hat. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 | otpToVerify | Ja | Der Überprüfungscode, der vom Benutzer bereitgestellt wird. |
@@ -133,7 +134,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die Codeüberprüfungssitzung abgelaufen ist. Der Code ist entweder abgelaufen, oder der Code wurde nie für einen angegebenen Bezeichner generiert. |
 | UserMessageIfMaxRetryAttempted | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn die maximal zulässige Anzahl von Überprüfungsversuchen überschritten wurde. |

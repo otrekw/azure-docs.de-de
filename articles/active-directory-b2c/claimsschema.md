@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76713073"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983043"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -50,8 +50,8 @@ Das **ClaimType**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
-| DataType | 0:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“, „stringCollection“, „alternativeSecurityIdCollection“ können verwendet werden. |
+| DisplayName | 1:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
+| DataType | 1:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“ und „stringCollection“ können verwendet werden. Der primitive Datentyp ist die Entsprechung des C#-Datentyps „Variable“. stringCollection stellt eine Auflistung von Zeichenfolgen dar. Weitere Informationen finden Sie unter [C#-Typen und Variablen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Das Datum entspricht der Konvention ISO 8601. |
 | DefaultPartnerClaimTypes | 0:1 | Die Partneranspruchstypen, die standardmäßig für ein angegebenes Protokoll verwendet werden sollen. Der Wert kann mit dem in den Elementen **InputClaim** oder **OutputClaim** angegebenen **PartnerClaimType** überschrieben werden. Verwenden Sie dieses Element, um den Standardnamen für ein Protokoll anzugeben.  |
 | Mask | 0:1 | Eine optionale Zeichenfolge von Maskierungszeichen, die bei der Anzeige des Anspruchs angewendet werden kann. Beispielsweise kann die Telefonnummer 324-232-4343 als XXX-XXX-4343 maskiert werden. |
 | UserHelpText | 0:1 | Eine Beschreibung des Anspruchstyps, der Benutzern helfen kann, dessen Zweck zu verstehen. Der Wert kann [lokalisiert](localization.md) sein. |
@@ -65,7 +65,7 @@ Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
 | Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
-| Protocol | 0:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
+| Protocol | 1:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 

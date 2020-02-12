@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dcebcc3e2021938f3fd3bde236ef08e4f26b8a97
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0d6d74271cc4ff0be4a653b389cc70ad5c56ef9
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949890"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983077"
 ---
 # <a name="boolean-claims-transformations"></a>Transformationen von booleschen Ansprüchen
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von b
 
 Führt einen And-Vorgang für zwei boolesche Eingabeansprüche aus und legt den Ausgabeanspruch mit dem Ergebnis des Vorgangs fest.
 
-| Item  | TransformationClaimType  | Datentyp  | Notizen |
+| Element  | TransformationClaimType  | Datentyp  | Notizen |
 |-------| ------------------------ | ---------- | ----- |
 | InputClaim | inputClaim1 | boolean | Der erste auszuwertende Anspruchstyp |
 | InputClaim | inputClaim2  | boolean | Der zweite auszuwertende Anspruchstyp |
@@ -61,7 +61,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang 
 
 Überprüft, ob die booleschen Werte von zwei Ansprüchen identisch sind und löst eine Ausnahme aus, wenn sie es nicht sind.
 
-| Item | TransformationClaimType  | Datentyp  | Notizen |
+| Element | TransformationClaimType  | Datentyp  | Notizen |
 | ---- | ------------------------ | ---------- | ----- |
 | inputClaim | inputClaim | boolean | Der Anspruchstyp, der bestätigt werden soll. |
 | InputParameter |valueToCompareTo | boolean | Der Wert, der verglichen werden soll (TRUE oder FALSE). |
@@ -84,7 +84,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines boo
 ```
 
 
-Das technische Validierungsprofil `login-NonInteractive` ruft die Anspruchstransformation `AssertAccountEnabledIsTrue` auf.
+Das `login-NonInteractive`technische Validierungsprofil ruft die `AssertAccountEnabledIsTrue`-Anspruchstransformation auf.
 ```XML
 <TechnicalProfile Id="login-NonInteractive">
   ...
@@ -114,11 +114,49 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
     - **valueToCompareTo**: TRUE
 - Ergebnis: Fehler wird ausgelöst.
 
+## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
+
+Überprüft, ob der boolesche Wert eines Anspruchs `true` oder `false` entspricht, und gibt das Ergebnis der Komprimierung zurück. 
+
+| Element | TransformationClaimType  | Datentyp  | Notizen |
+| ---- | ------------------------ | ---------- | ----- |
+| inputClaim | inputClaim | boolean | Der Anspruchstyp, der bestätigt werden soll. |
+| InputParameter |valueToCompareTo | boolean | Der Wert, der verglichen werden soll (TRUE oder FALSE). |
+| OutputClaim | inputClaim | boolean | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+
+Die folgende Anspruchstransformation veranschaulicht, wie Sie den Wert eines booleschen Anspruchstyps mit einem `true`-Wert überprüfen. Wenn der Wert des `IsAgeOver21Years`-Anspruchstyps `true` entspricht, gibt die Anspruchstransformation `true`, andernfalls `false` zurück.
+
+```XML
+<ClaimsTransformation Id="AssertAccountEnabled" TransformationMethod="CompareBooleanClaimToValue">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="IsAgeOver21Years" TransformationClaimType="inputClaim" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="valueToCompareTo" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+      <OutputClaim  ClaimTypeReferenceId="accountEnabled" TransformationClaimType="compareResult"/>
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Eingabeansprüche:
+    - **inputClaim**: FALSE
+- Eingabeparameter:
+    - **valueToCompareTo**: TRUE
+- Ausgabeansprüche:
+    - **compareResult**: false 
+
+
+
 ## <a name="notclaims"></a>NotClaims
 
 Führt einen Not-Vorgang für den booleschen Eingabeanspruch durch und legt den Ausgabeanspruch mit dem Ergebnis des Vorgangs fest.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | boolean | Der auszuführende Anspruch |
 | OutputClaim | outputClaim | boolean | Die Anspruchstypen, die erstellt werden, nachdem die Anspruchstransformation aufgerufen wurde (TRUE oder FALSE). |
@@ -140,13 +178,13 @@ Verwenden Sie diese Anspruchstransformation, um die logische Negation für einen
 - Eingabeansprüche:
     - **inputClaim**: FALSE
 - Ausgabeansprüche:
-    - **outputClaim**: TRUE
+    - **outputClaim**: true
 
 ## <a name="orclaims"></a>OrClaims
 
 Berechnet einen Or-Vorgang für zwei boolesche Eingabeansprüche und legt den Ausgabeanspruch mit dem Ergebnis des Vorgangs fest.
 
-| Item | TransformationClaimType | Datentyp | Notizen |
+| Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim1 | boolean | Der erste auszuwertende Anspruchstyp |
 | InputClaim | inputClaim2 | boolean | Der zweite auszuwertende Anspruchstyp |
@@ -173,5 +211,4 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie einen `Or`-Vorgang
     - **inputClaim1**: TRUE
     - **inputClaim2**: FALSE
 - Ausgabeansprüche:
-    - **outputClaim**: TRUE
-
+    - **outputClaim**: true

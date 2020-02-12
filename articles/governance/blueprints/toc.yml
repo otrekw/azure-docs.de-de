@@ -52,6 +52,17 @@
         - name: Schritte zum Bereitstellen
           displayName: 'standards, cis'
           href: ./samples/cis-azure-1.1.0/deploy.md
+    - name: "DoD-Auswirkungsstufe\_4"
+      items:
+        - name: Übersicht
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, DoD, IL4'
+          href: ./samples/dod-impact-level-4/deploy.md
     - name: FedRAMP Moderate
       items:
         - name: Übersicht

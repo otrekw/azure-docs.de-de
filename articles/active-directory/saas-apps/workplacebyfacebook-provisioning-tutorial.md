@@ -15,23 +15,34 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996934"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985164"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
-Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Workplace by Facebook und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Workplace by Facebook automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
+In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Workplace by Facebook als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Workplace by Facebook](https://work.workplace.com/) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+
+> [!NOTE]
+> Die Azure AD-Drittanbieteranwendung in Workplace by Facebook wurde genehmigt. Kunden erfahren am 16. Dezember keine Dienstunterbrechung. In der Verwaltungskonsole für Workplace by Facebook wird ein Hinweis angezeigt, der den Stichtag 28. Februar 2020 angibt, an dem Sie auf die neue Anwendung umsteigen müssen. Wir arbeiten daran, den Übergang so einfach wie möglich zu halten, und werden hier bis zum Ende des Monats ein Update für den Übergang bereitstellen.
+
+## <a name="capabilities-supported"></a>Unterstützte Funktionen
+> [!div class="checklist"]
+> * Erstellen von Benutzern in Workplace by Facebook
+> * Entfernen von Benutzern aus Workplace by Facebook, wenn diese keinen Zugriff mehr benötigen
+> * Synchronisieren von Benutzerattributen zwischen Azure AD and Workplace by Facebook
+> * [Einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) für Workplace by Facebook (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für das Konfigurieren der Azure AD-Integration mit Workplace by Facebook benötigen Sie Folgendes:
+Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-- Ein Azure AD-Abonnement
-- Ein Workplace by Facebook-Abonnement, für das einmaliges Anmelden aktiviert ist
+* [Azure AD-Mandant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator)
+* Ein Workplace by Facebook-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -41,68 +52,119 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
 
-## <a name="assigning-users-to-workplace-by-facebook"></a>Zuweisen von Benutzern zu Workplace by Facebook
+## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
+3. Bestimmen Sie, welche Daten [zwischen Azure AD und Workplace by Facebook zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
 
-Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Workplace by Facebook zur Unterstützung der Bereitstellung mit Azure AD
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre Workplace by Facebook-App benötigen. Anschließend können Sie diese Benutzer Ihrer Workplace by Facebook-App zuweisen, indem Sie diese Anweisungen befolgen:
-
-[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
-
-### <a name="important-tips-for-assigning-users-to-workplace-by-facebook"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Workplace by Facebook
 
 *   Es wird empfohlen, Workplace by Facebook einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
 *   Wenn Sie Workplace by Facebook einen Benutzer zuweisen, müssen Sie eine gültige Benutzerrolle auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
 
-## <a name="enable-user-provisioning"></a>Aktivieren der Benutzerbereitstellung
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Workplace by Facebook aus dem Azure AD-Anwendungskatalog
 
-Dieser Abschnitt führt Sie durch das Verbinden von Azure AD mit der Workplace by Facebook-API zur Bereitstellung von Benutzerkonten sowie durch das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in Workplace by Facebook basierend auf der Benutzer- und Gruppenzuweisung in Azure AD.
+Fügen Sie Workplace by Facebook aus dem Azure AD-Anwendungskatalog hinzu, um die Verwaltung der Bereitstellung für Workplace by Facebook zu beginnen. Wenn Sie Workplace by Facebook zuvor für das einmalige Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog.
 
->[!Tip]
->Sie können auch das SAML-basierte einmalige Anmelden für Workplace by Facebook aktivieren. Befolgen Sie dazu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
-### <a name="to-configure-user-account-provisioning-to-workplace-by-facebook-in-azure-ad"></a>So konfigurieren Sie die Benutzerkontenbereitstellung für Workplace by Facebook in Azure AD:
+Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) beschriebenen Bereichsfilter verwenden. 
 
-In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Directory-Benutzerkonten für Workplace by Facebook aktivieren.
+* Beim Zuweisen von Benutzern und Gruppen zu Workplace by Facebook müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) und weitere Rollen hinzufügen. 
 
-Azure AD unterstützt die Möglichkeit, die Kontodetails zugewiesener Benutzer mit Workplace by Facebook zu synchronisieren. Dank dieser automatischen Synchronisierung kann Workplace by Facebook die erforderlichen Daten für die Autorisierung von Benutzern für den Zugriff abrufen, bevor diese sich zum ersten Mal anmelden. Sie hebt zudem die Bereitstellung von Benutzern in Workplace by Facebook auf, wenn der Zugriff in Azure AD widerrufen wurde.
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) angeben. 
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
-2. Wenn Sie Workplace by Facebook bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Workplace by Facebook-Instanz. Klicken Sie andernfalls auf **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Workplace by Facebook**. Wählen Sie Workplace by Facebook in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Wählen Sie Ihre Workplace by Facebook-Instanz und dann die Registerkarte **Bereitstellung** aus.
+2. Wählen Sie in der Anwendungsliste **Workplace by Facebook** aus.
 
-4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
+    ![Der Link von Workplace by Facebook in der Anwendungsliste](common/all-applications.png)
+
+3. Wählen Sie die Registerkarte **Bereitstellung**.
+
+    ![Registerkarte „Bereitstellung“](common/provisioning.png)
+
+4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+
+    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
+
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Sie werden auf die Autorisierungsseite von Workplace by Facebook umgeleitet. Geben Sie Ihren Benutzernamen für Workplace by Facebook ein, und klicken Sie auf die Schaltfläche **Weiter**. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Workplace by Facebook herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Workplace by Facebook-Konto über Administratorberechtigungen verfügt. Wiederholen Sie dann den Vorgang.
 
     ![Bereitstellung](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** das Zugriffstoken Ihres Workplace by Facebook-Administrators ein, und legen Sie die Mandanten-URL auf `https://www.facebook.com/scim/v1/` fest. Lesen Sie [diese Anweisungen](https://developers.facebook.com/docs/workplace/integrations/custom-integrations/apps) zum Erstellen eines Zugriffstoken für Workplace. 
+    ![Autorisieren](./media/workplacebyfacebook-provisioning-tutorial/workplacelogin.png)
 
-6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Workplace by Facebook-App herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, sollten Sie sicherstellen, dass Ihr Workplace by Facebook-Konto über Teamadministratorberechtigungen verfügt.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
+    ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-8. Klicken Sie auf **Speichern**.
+7. Wählen Sie **Speichern** aus.
 
-9. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Workplace by Facebook synchronisieren** aus.
+8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Workplace by Facebook synchronisieren** aus.
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Workplace by Facebook synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Workplace by Facebook für Updatevorgänge verwendet. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Workplace by Facebook synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Workplace by Facebook für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) zu ändern, müssen Sie sicherstellen, dass die Workplace by Facebook-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Workplace by Facebook zu aktivieren.
+   |attribute|type|
+   |---|---|
+   |userName|String|
+   |displayName|String|
+   |aktiv|Boolean|
+   |title|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |addresses[type eq "work"].formatted|String|
+   |addresses[type eq "work"].streetAddress|String|
+   |addresses[type eq "work"].locality|String|
+   |addresses[type eq "work"].region|String|
+   |addresses[type eq "work"].country|String|
+   |addresses[type eq "work"].postalCode|String|
+   |addresses[type eq "other"].formatted|String|
+   |phoneNumbers[type eq "work"].value|String|
+   |phoneNumbers[type eq "mobile"].value|String|
+   |phoneNumbers[type eq "fax"].value|String|
+   |externalId|String|
+   |preferredLanguage|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
 
-12. Klicken Sie auf **Speichern**.
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-Weitere Informationen zum Konfigurieren der automatischen Bereitstellung finden Sie unter [https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers](https://developers.facebook.com/docs/facebook-at-work/provisioning/cloud-providers).
+11. Ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für Workplace by Facebook zu aktivieren.
 
-Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu überprüfen, ob das Konto mit Workplace by Facebook synchronisiert wurde.
+    ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-> [!NOTE]
-> Die Azure AD-Drittanbieteranwendung in Workplace by Facebook wurde genehmigt. Kunden erfahren am 16. Dezember keine Dienstunterbrechung. In der Verwaltungskonsole für Workplace by Facebook wird ein Hinweis angezeigt, der den Stichtag 28. Februar 2020 angibt, an dem Sie auf die neue Anwendung umsteigen müssen. Wir arbeiten daran, den Übergang so einfach wie möglich zu halten, und werden hier bis zum Ende des Monats ein Update für den Übergang bereitstellen.
+12. Legen Sie die Benutzer und/oder Gruppen fest, die in Workplace by Facebook bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+
+    ![Bereitstellungsbereich](common/provisioning-scope.png)
+
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+
+    ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
+
+Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
+
+## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
+Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
+
+1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+*  Wenn Sie feststellen, dass ein Benutzer nicht erfolgreich erstellt wurde und ein Überwachungsprotokollereignis mit dem Code „1789003“ vorliegt, bedeutet dies, dass der Benutzer aus einer nicht überprüften Domäne stammt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](tutorial-list.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren des einmaligen Anmeldens](workplacebyfacebook-tutorial.md)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)

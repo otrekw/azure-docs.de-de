@@ -14,12 +14,12 @@ ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 15fa6b9c7b9c84cd17b67c53dd65acd54ea63910
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 7b42676fa387914bc4825e2850b3d2f032827a79
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699222"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76962117"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -130,6 +130,6 @@ In der Azure-App-Registrierung für die Clientanwendung:
 ## <a name="code-sample"></a>Codebeispiel
 
 > [!NOTE]
-> Sie müssen den X5T-Header berechnen, indem Sie den Hash des Zertifikats verwenden und in eine Base64-Zeichenfolge umwandeln. In C# ähnelt die Ausgabe `System.Convert.ToBase64String(cert.GetCertHash());`.
+> Sie müssen den X5T-Header berechnen, indem Sie ihn mit der Hashfunktion des Zertifikats in eine Base64-Zeichenfolge umwandeln. Der Code zum Ausführen dieser Umwandlung lautet in C# wie folgt: `System.Convert.ToBase64String(cert.GetCertHash());`
 
 Das Codebeispiel unter [Authenticating to Microsoft Identity Platform in daemon apps with certificates](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Authentifizierung bei Microsoft Identity Platform in Daemonanwendungen mit Zertifikaten) zeigt, wie eine Anwendung ihre eigenen Anmeldeinformationen für die Authentifizierung verwendet. Zudem erfahren Sie darin, wie Sie mit dem `New-SelfSignedCertificate`-PowerShell-Befehl ein [selbstsigniertes Zertifikat erstellen](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) können. Sie können auch die [App-Erstellungsskripte](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) verwenden, um die Zertifikate zu erstellen, den Fingerabdruck zu berechnen und so weiter.

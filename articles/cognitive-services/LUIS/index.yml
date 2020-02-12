@@ -3,7 +3,7 @@ title: Language Understanding (LUIS) – Dokumentation
 summary: Erfahren Sie, wie Ihre Anwendung mithilfe von Language Understanding verstehen kann, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.
 metadata:
   ms.topic: landing-page
-  ms.date: 11/22/2019
+  ms.date: 02/11/2020
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) – Dokumentation
   titleSuffix: Azure Cognitive Services
   description: Mit dem Language Understanding-Dienst (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert. Für LUIS wird das maschinelle Lernen genutzt, um Entwicklern das Erstellen von Anwendungen zu ermöglichen, die Benutzereingaben in natürlicher Sprache empfangen und die Bedeutung entschlüsseln können.
-  ms.openlocfilehash: f45461b49b51d6d25464ffa7d2084b1bbb1f9e0e
-  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+  ms.openlocfilehash: 1d9b17bcf6817d3c94d191d54be26ce0ff1f14c2
+  ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/17/2020
-  ms.locfileid: "76169658"
+  ms.lasthandoff: 02/11/2020
+  ms.locfileid: "77137348"
 landingContent:
 - title: Informationen zu Language Understanding (LUIS)
   linkLists:
@@ -39,8 +39,8 @@ landingContent:
       url: whats-new.md
   - linkListType: video
     links:
-    - text: 'KI-Roadshow: LUIS'
-      url: https://azure.microsoft.com/resources/videos/whats-new-with-language-understanding-service-luis
+    - text: 'Ignite 2019: Erweiterte NLU-Modelle (Natural Language Understanding, Verstehen natürlicher Sprache) mit LUIS'
+      url: https://www.youtube.com/watch?v=JdJEV2jV0_Y
 - title: Erstellen von Absichten, Entitäten und Features
   linkLists:
   - linkListType: concept

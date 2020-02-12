@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 01/31/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b49c873112358db4fec2992ef3d2d61161e8b373
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840178"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982414"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -45,7 +45,7 @@ Das **TrustFrameworkPolicy**-Element enthält die folgenden Attribute:
 | TenantId | Ja | Der eindeutige Bezeichner des Mandanten, zu dem diese Richtlinie gehört. |
 | `PolicyId` | Ja | Der eindeutige Bezeichner für die Richtlinie. Diesem Bezeichner muss das Präfix *B2C_1A_* vorangestellt werden. |
 | PublicPolicyUri | Ja | Der URI für die Richtlinie, bei dem es sich um eine Kombination der Mandanten-ID und der Richtlinien-ID handelt. |
-| DeploymentMode | Nein | Mögliche Werte: `Production`, `Debugging` oder `Development`. `Production` ist die Standardeinstellung. Verwenden Sie diese Eigenschaft, um Ihre Richtlinie zu debuggen. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
+| DeploymentMode | Nein | Mögliche Werte sind `Production` oder `Development`. `Production` ist die Standardeinstellung. Verwenden Sie diese Eigenschaft, um Ihre Richtlinie zu debuggen. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
 | UserJourneyRecorderEndpoint | Nein | Der Endpunkt, der verwendet wird, wenn **DeploymentMode** auf `Development` festgelegt ist. Der Wert muss `urn:journeyrecorder:applicationinsights` sein. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
 
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712522"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908852"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -192,6 +192,23 @@ Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat ge
 
 > [!NOTE]
 > Wenn Sie Ihre eigenen Zertifikate verwenden, statt diese mit dem PowerShell-Skript zu generieren, stellen Sie sicher, dass sie den NPS-Namenskonventionen entsprechen. Der Antragstellernamen muss **CN=\<Mandanten-ID\>,OU=Microsoft NPS Extension** sein. 
+
+### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government – Zusätzliche Schritte
+
+Für Kunden, die Azure Government Cloud verwenden, sind auf jedem NPS-Server die folgenden zusätzlichen Konfigurationsschritte erforderlich:
+
+1. Öffnen Sie den **Registrierungs-Editor** auf dem NPS-Server.
+1. Navigieren Sie zu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Legen Sie die folgenden Hauptwerte fest:
+
+    | Registrierungsschlüssel       | value |
+    |--------------------|-----------------------------------|
+    | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
+    | STS_URL            | https://login.microsoftonline.us/ |
+
+1. Wiederholen Sie die beiden vorherigen Schritte, um für jeden NPS-Server die Registrierungsschlüsselwerte festzulegen.
+1. Starten Sie auf jedem NPS-Server den NPS-Dienst erneut.
+
+    Nehmen Sie für minimale Auswirkung jeden NPS-Server einzeln aus der NLB-Rotation heraus, und warten Sie, bis alle Verbindungen beendet sind.
 
 ### <a name="certificate-rollover"></a>Zertifikatrollover
 

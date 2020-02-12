@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/31/2020
 ms.author: iainfou
-ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 682935fa2324b8de4992ab2f90c7f71e05c4f8ac
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481012"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931564"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services
 
@@ -74,6 +74,36 @@ In einer *Ressourcengesamtstruktur* für Azure AD DS authentifizieren sich Ben
 
 Weitere Informationen zu Gesamtstrukturtypen in Azure AD DS finden Sie unter [Was sind Ressourcengesamtstrukturen?][concepts-forest] sowie unter [Wie funktionieren Gesamtstruktur-Vertrauensstellungen in Azure AD DS?][concepts-trust].
 
+## <a name="azure-ad-ds-skus"></a>Azure AD DS-SKUs
+
+In Azure AD DS beruhen die verfügbare Leistung und die Funktionen auf der SKU. Beim Erstellen der verwalteten Domäne wählen Sie eine SKU aus und wechseln die SKU, wenn sich Ihre Geschäftsanforderungen nach der Bereitstellung der verwalteten Domäne ändern. In der folgenden Tabelle werden die verfügbaren SKUs und die Unterschiede zwischen ihnen aufgeführt:
+
+| SKU-Name   | Maximale Anzahl von Objekten | Sicherungshäufigkeit | Maximale Anzahl von ausgehenden Gesamtstrukturvertrauensstellungen |
+|------------|----------------------|------------------|----|
+| Standard   | Unbegrenzt            | Alle 7 Tage     | 0  |
+| Enterprise | Unbegrenzt            | Alle 3 Tage     | 5  |
+| Premium    | Unbegrenzt            | Täglich            | 10 |
+
+Vor diesen Azure AD DS-SKUs wurde in der verwalteten Azure AD DS-Domäne ein Abrechnungsmodell verwendet, das auf der Anzahl von Objekten (Benutzer- und Computerkonten) basierte. Die variable Preisgestaltung, die auf der Anzahl der Objekte in der verwalteten Domäne beruhte, gibt es nicht mehr.
+
+Weitere Informationen finden Sie auf der Seite [Azure AD DS – Preise][pricing].
+
+### <a name="managed-domain-performance"></a>Leistung der verwalteten Domäne
+
+Die Leistung der Domäne hängt davon ab, wie die Authentifizierung für eine Anwendung implementiert wird. Zusätzliche Computeressourcen können dabei helfen, die Antwortzeit bei Abfragen zu verbessern und die Zeit für Synchronisierungsvorgänge zu reduzieren. Je höher der SKU-Tarif, desto mehr Computeressourcen stehen für die verwaltete Domäne zur Verfügung. Überwachen Sie die Leistung Ihrer Anwendungen, und planen Sie die erforderlichen Ressourcen.
+
+Wenn sich Ihre Geschäfts- oder Anwendungsanforderungen ändern und Sie zusätzliche Rechenleistung für Ihre verwaltete Azure AD DS-Domäne benötigen, können Sie zu einer anderen SKU wechseln.
+
+### <a name="backup-frequency"></a>Sicherungshäufigkeit
+
+Die Sicherungshäufigkeit bestimmt, wie oft eine Momentaufnahme der verwalteten Domäne erstellt wird. Sicherungen sind ein automatischer Prozess, der von der Azure-Plattform verwaltet wird. Bei einem Problem mit Ihrer verwalteten Domäne kann der Azure-Support Ihnen bei der Wiederherstellung von einer Sicherung helfen. Da die Synchronisierung *von* Azure AD nur unidirektional erfolgt, wirken sich mögliche Probleme bei einer verwalteten Azure AD DS-Domäne nicht auf Azure AD oder lokale AD DS-Umgebungen und -Funktionen aus.
+
+Je höher der SKU-Tarif, desto häufiger werden Sicherungsmomentaufnahmen erstellt. Überprüfen Sie Ihre Geschäftsanforderungen und Recovery Point Objective (RPO), um die erforderliche Sicherungshäufigkeit für Ihre verwaltete Domäne zu bestimmen. Wenn sich Ihre Geschäfts-oder Anwendungsanforderungen ändern und Sie häufigere Sicherungen benötigen, können Sie zu einer anderen SKU wechseln.
+
+### <a name="outbound-forests"></a>Ausgehende Gesamtstrukturen
+
+Im vorherigen Abschnitt wurde die unidirektionale ausgehende Gesamtstrukturvertrauensstellung von einer verwalteten Azure AD DS-Domäne zu einer lokalen AD DS-Umgebung (derzeit in der Vorschau verfügbar) beschrieben. Die SKU bestimmt die maximale Anzahl von Gesamtstrukturvertrauensstellungen, die Sie für eine verwaltete Azure AD DS-Domäne erstellen können. Überprüfen Sie Ihre Geschäfts- und Anwendungsanforderungen, um zu bestimmen, wie viele Vertrauensstellungen Sie tatsächlich benötigen, und wählen Sie die entsprechende Azure AD DS-SKU aus. Wenn sich Ihre geschäftlichen Anforderungen ändern und Sie zusätzliche Gesamtstrukturvertrauensstellungen erstellen müssen, können Sie zu einer anderen SKU wechseln.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erstellen Sie als Einstieg [eine verwaltete Azure AD DS-Domäne][create-instance].
@@ -87,3 +117,6 @@ Erstellen Sie als Einstieg [eine verwaltete Azure AD DS-Domäne][create-instance
 [tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
 [concepts-forest]: concepts-resource-forest.md
 [concepts-trust]: concepts-forest-trust.md
+
+<!-- EXTERNAL LINKS -->
+[pricing]: https://azure.microsoft.com/pricing/details/active-directory-ds/

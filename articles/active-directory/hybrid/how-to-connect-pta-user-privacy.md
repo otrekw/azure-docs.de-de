@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1a7b740a6b248a12fa3d95f85f602ef7a8b2fa5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0af1c42e7e2c163e7f9e7407d0236e35bfacf8e8
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60242376"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931008"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Datenschutz und Passthrough-Authentifizierung von Azure Active Directory
 
@@ -73,7 +73,7 @@ Mit diesem Produkt können auch **Windows-Ereignisprotokolle** erstellt werden. 
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>Löschen der Ablaufverfolgungsprotokoll-Dateien für den Authentifizierungs-Agent
 
-Es ist ratsam, den Inhalt von <strong>%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\</strong> regelmäßig zu überprüfen und den Inhalt dieses Ordners alle 48 Stunden zu löschen. 
+Sie sollten den Inhalt von **%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace** regelmäßig überprüfen und den Inhalt dieses Ordners alle 48 Stunden löschen. 
 
 >[!IMPORTANT]
 >Wenn der Authentifizierungs-Agent ausgeführt wird, ist es nicht möglich, die aktuelle Protokolldatei im Ordner zu löschen. Beenden Sie den Dienst, bevor Sie es erneut versuchen. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) bereits konfiguriert haben.

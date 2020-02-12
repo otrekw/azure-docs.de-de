@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/03/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da1390de4e2eb0624032dc490416e7b6e5d61baa
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67846851"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982856"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -43,7 +43,7 @@ Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsig
 | **forgotpassword_link** | Forgot your password? (Kennwort vergessen?) |
 | **createaccount_intro** | Sie haben kein Konto? |
 | **createaccount_link** | Jetzt anmelden |
-| **divider_title** | OR |
+| **divider_title** | oder |
 | **cancel_message** | Der Benutzer hat sein Kennwort vergessen. |
 | **button_signin** | Anmelden |
 | **social_intro** | Melden Sie sich mit Ihrem Konto für ein soziales Netzwerk an. |
@@ -79,7 +79,7 @@ Im folgenden Beispiel wird der Facebook-Identitätsanbieter in Arabisch lokalisi
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">فيس بوك</LocalizedString>
 ```
 
-## <a name="sign-up-or-sign-in-error-messages"></a>Fehlermeldungen beim Registrieren oder Anmelden
+### <a name="sign-up-or-sign-in-error-messages"></a>Fehlermeldungen beim Registrieren oder Anmelden
 
 | id | Standardwert |
 | -- | ------------- |
@@ -88,7 +88,7 @@ Im folgenden Beispiel wird der Facebook-Identitätsanbieter in Arabisch lokalisi
 | **UserMessageIfOldPasswordUsed** | Sie verwenden offenbar ein altes Kennwort. |
 | **DefaultMessage** | Ungültiger Benutzername oder ungültiges Kennwort. |
 | **UserMessageIfUserAccountDisabled** | Ihr Konto wurde gesperrt. Wenden Sie sich an einen Supportmitarbeiter, um die Sperre aufheben zu lassen, und wiederholen Sie den Vorgang. |
-| **UserMessageIfUserAccountLocked** | Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später erneut. |
+| **UserMessageIfUserAccountLocked** | Ihr Konto wurde vorübergehend gesperrt, um eine unbefugte Nutzung zu verhindern. Versuchen Sie es später noch einmal. |
 | **AADRequestsThrottled** | Derzeit sind zu viele Anforderungen vorhanden. Warten Sie einige Zeit, und versuchen Sie es erneut. |
 
 ## <a name="sign-up-and-self-asserted-pages-user-interface-elements"></a>Benutzeroberflächenelemente für Anmeldeseiten und Seiten zur Identitätsüberprüfung
@@ -132,7 +132,7 @@ Folgende IDs dienen der Inhaltsdefinition mit der ID `api.localaccountsignup` od
 | **ver_intro_msg** | Es ist eine Überprüfung erforderlich. Klicken Sie auf die Schaltfläche „Senden“. |
 | **ver_input** | Prüfcode |
 
-## <a name="sign-up-and-self-asserted-pages-error-messages"></a>Fehlermeldungen für Anmeldeseiten und Seiten zur Identitätsüberprüfung
+### <a name="sign-up-and-self-asserted-pages-error-messages"></a>Fehlermeldungen für Anmeldeseiten und Seiten zur Identitätsüberprüfung
 
 | id | Standardwert |
 | -- | ------------- |
@@ -202,6 +202,30 @@ Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemen
 Die folgenden Beispiele zeigen die Verwendung einiger Benutzeroberflächenelemente auf der MFA-Überprüfungsseite:
 
 ![UX-Elemente zur E-Mail-Überprüfung auf der Registrierungsseite](./media/localization-string-ids/localization-mfa2.png)
+
+## <a name="verification-display-control-user-interface-elements"></a>Anzeigesteuerelemente zur Überprüfung von Benutzeroberflächenelementen
+
+Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung](display-control-verification.md)
+
+| id | Standardwert |
+| -- | ------------- |
+|verification_control_but_change_claims |Change |
+|verification_control_fail_send_code |Der Code konnte nicht gesendet werden, versuchen Sie es später erneut. |
+|verification_control_fail_verify_code |Der Code konnte nicht überprüft werden, versuchen Sie es später erneut. |
+|verification_control_but_send_code |Code senden |
+|verification_control_but_send_new_code |Neuen Code senden |
+|verification_control_but_verify_code |Code überprüfen |
+
+## <a name="one-time-password-error-messages"></a>Fehlermeldungen für Einmalkennwort
+Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Einmalkennwort](one-time-password-technical-profile.md)
+
+| id | Standardwert |
+| -- | ------------- |
+|UserMessageIfMaxRetryAttempted |Die für das Einmalkennwort bereitgestellte Überprüfung hat die maximale Anzahl von Versuchen überschritten |
+|UserMessageIfSessionDoesNotExist |Überprüfungssitzung für Einmalkennwort ist abgelaufen |
+|UserMessageIfSessionConflict |Konflikt bei der Überprüfungssitzung für Einmalkennwort |
+|UserMessageIfInvalidCode |Das Einmalkennwort für die Überprüfung ist falsch |
+
 
 
 

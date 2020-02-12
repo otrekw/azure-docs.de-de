@@ -19,7 +19,7 @@
           href: container-registry-get-started-powershell.md
         - name: 'Senden von Ereignissen an Event Grid: CLI'
           href: container-registry-event-grid-quickstart.md
-    - name: Lernprogramme
+    - name: Tutorials
       expanded: false
       items:
         - name: Georeplikation für eine Registrierung
@@ -80,16 +80,18 @@
               href: container-registry-vnet.md
             - name: Zugriff hinter einer Firewall
               href: container-registry-firewall-access-rules.md
-            - name: Authentication
+            - name: Authentifizierung
               items:
                 - name: Übersicht über die Authentifizierung
                   href: container-registry-authentication.md
-                - name: Dienstprinzipalauthentifizierung
+                - name: Authentifizieren mit dem Dienstprinzipal
                   href: container-registry-auth-service-principal.md
-                - name: Authentifizierung der verwalteten Identität
+                - name: Authentifizieren mit einer verwalteten Identität
                   href: container-registry-authentication-managed-identity.md
                 - name: Authentifizieren über Azure Container Instances
                   href: container-registry-auth-aci.md
+                - name: Authentifizieren über Kubernetes mit Geheimnisabruf per Pullvorgang
+                  href: container-registry-auth-kubernetes.md
                 - name: Authentifizieren über Azure Kubernetes Service (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: Rollenbasierte Zugriffssteuerung
@@ -134,7 +136,7 @@
       items:
         - name: 'Erstellen, Pushen und Ausführen eines Images: CLI'
           href: container-registry-quickstart-task-cli.md
-    - name: Lernprogramme
+    - name: Tutorials
       expanded: false
       items:
         - name: Automatisieren von Containerimage-Buildvorgängen
