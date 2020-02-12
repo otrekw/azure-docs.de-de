@@ -11,16 +11,16 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: b85dd8d899a7e5d7d9f9d41ad7e2872249ee29c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9dcb185ab8375d46c75a12e6adaeeae2358c13ac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702019"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022085"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Tutorial: Exportieren von Daten aus Azure IoT Central und Visualisieren von Erkenntnissen in Power BI
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In den beiden vorherigen Tutorials haben Sie eine IoT Central-Anwendung erstellt und angepasst, indem Sie die Anwendungsvorlage **In-Store-Analyse – Auschecken** verwendet haben. In diesem Tutorial konfigurieren Sie Ihre IoT Central-Anwendung für den Export der erfassten Telemetriedaten von den Geräten. Anschließend nutzen Sie Power BI zum Erstellen eines benutzerdefinierten Dashboards für den Store Manager, um die aus den Telemetriedaten gewonnenen Erkenntnisse zu visualisieren.
 
@@ -440,7 +440,7 @@ Fügen Sie vier Liniendiagrammkacheln hinzu, um die Werte für die Temperatur bz
 
 | Einstellung | Diagramm 1 | Diagramm 2 | Diagramm 3 | Diagramm 4 |
 | ------- | -------- | -------- | -------- | -------- |
-| Datensatz | Zone 1 sensor (Sensor Zone 1) | Zone 1 sensor (Sensor Zone 1) | Zone 2 sensor (Sensor Zone 2) | Zone 2 sensor (Sensor Zone 2) |
+| Dataset | Zone 1 sensor (Sensor Zone 1) | Zone 1 sensor (Sensor Zone 1) | Zone 2 sensor (Sensor Zone 2) | Zone 2 sensor (Sensor Zone 2) |
 | Visualisierungstyp | Liniendiagramm | Liniendiagramm | Liniendiagramm | Liniendiagramm |
 | Achse | Timestamp | Timestamp | Timestamp | Timestamp |
 | Werte | Temperatur | Luftfeuchtigkeit | Temperatur | Luftfeuchtigkeit |
@@ -458,7 +458,7 @@ Fügen Sie vier Kartenkacheln hinzu, um die aktuellen Temperatur- bzw. Luftfeuch
 
 | Einstellung | Karte 1 | Karte 2 | Karte 3 | Karte 4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Datensatz | Zone 1 sensor (Sensor Zone 1) | Zone 1 sensor (Sensor Zone 1) | Zone 2 sensor (Sensor Zone 2) | Zone 2 sensor (Sensor Zone 2) |
+| Dataset | Zone 1 sensor (Sensor Zone 1) | Zone 1 sensor (Sensor Zone 1) | Zone 2 sensor (Sensor Zone 2) | Zone 2 sensor (Sensor Zone 2) |
 | Visualisierungstyp | Karte | Karte | Karte | Karte |
 | Felder | Temperatur | Luftfeuchtigkeit | Temperatur | Luftfeuchtigkeit |
 | Titel | Temperatur (F) | Luftfeuchtigkeit (%) | Temperatur (F) | Luftfeuchtigkeit (%) |
@@ -474,10 +474,10 @@ Fügen Sie vier Kartenkacheln hinzu, um für die beiden Kassen des Geschäfts di
 
 | Einstellung | Karte 1 | Karte 2 | Karte 3 | Karte 4 |
 | ------- | ------- | ------- | ------- | ------- |
-| Datensatz | Auslastungssensor | Auslastungssensor | Auslastungssensor | Auslastungssensor |
+| Dataset | Auslastungssensor | Auslastungssensor | Auslastungssensor | Auslastungssensor |
 | Visualisierungstyp | Gruppiertes Säulendiagramm | Gruppiertes Säulendiagramm | Maßstab | Maßstab |
 | Achse    | Timestamp | Timestamp | – | – |
-| Wert | Wartezeit 1 | Wartezeit 2 | Länge der Schlange 1 | Länge der Schlange 2 |
+| value | Wartezeit 1 | Wartezeit 2 | Länge der Schlange 1 | Länge der Schlange 2 |
 | Zeitfenster | 60 Minuten | 60 Minuten |  – | – |
 | Titel | Wartezeit | Wartezeit | Warteschlangenlänge | Warteschlangenlänge |
 | Untertitel | Kasse 1 | Kasse 2 | Kasse 1 | Kasse 2 |
