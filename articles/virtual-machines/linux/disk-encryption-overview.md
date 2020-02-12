@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f78ef583a58b8a51276823a2a4730540b6735bb0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 96ac1becfed74141b3b1544646f5d82bd0985045
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896357"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988419"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -78,7 +78,9 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | SLES | 12-SP3 | Datenträger |
 
 > [!NOTE]
-> Die neue ADE-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt. ADE wird derzeit nicht für RHEL-BYOS-Images (Bring-Your-Own-Subscription) unterstützt. 
+> Die neue Azure Disk Encryption-Implementierung wird für Betriebssystem- und andere Datenträger für RHEL7-Images mit nutzungsbasierter Bezahlung unterstützt.  
+>
+> ADE wird auch für RHEL-Bring-Your-Own-Subscription-Gold-Images unterstützt, aber erst **nachdem** das Abonnement registriert wurde. Weitere Informationen finden Sie unter [Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure](../workloads/redhat/byos.md##encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)
 
 ## <a name="additional-vm-requirements"></a>Weitere VM-Anforderungen
 

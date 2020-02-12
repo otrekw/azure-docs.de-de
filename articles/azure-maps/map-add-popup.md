@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 79bafb331cb7ad38ea7cad9e510b22886b647764
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 45d210725f7f09663b126528479655d7f4d9c19f
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911145"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933353"
 ---
 # <a name="add-a-popup-to-the-map"></a>Hinzufügen eines Popupfensters zu der Karte
 
@@ -22,7 +22,7 @@ In diesem Artikel wird gezeigt, wie Sie ein Popupfenster einem Punkt auf einer K
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-Der folgende Code fügt der Karte über eine Symbolebene ein Punktfeature mit den Eigenschaften `name` und `description` hinzu. Es wird eine Instanz der [Popup-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) hinzugefügt, aber nicht angezeigt. Mausereignisse werden der Symbolebene hinzugefügt, um das Öffnen und Schließen des Popups auszulösen, wenn die Maus über und aus dem Symbolmarker bewegt wird. Wenn Sie den Mauszeiger über das Markersymbol bewegen, wird die `position`-Eigenschaft des Popups mit der Position des Markers aktualisiert und die `content`-Option wird mit HTML aktualisiert, das die `name`- und `description`-Eigenschaften des zu bewegenden Punktfeatures umschließt. Das Popup wird dann mithilfe der `open`-Funktion auf der Karte angezeigt.
+Der folgende Code fügt der Karte über eine Symbolebene ein Punktfeature mit den Eigenschaften `name` und `description` hinzu. Es wird eine Instanz der [Popup-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest) hinzugefügt, aber nicht angezeigt. Mausereignisse werden der Symbolebene hinzugefügt, um das Öffnen und Schließen des Popups auszulösen. Wenn Sie den Mauszeiger über das Markersymbol bewegen, wird die `position`-Eigenschaft des Popups mit der Position des Markers aktualisiert und die `content`-Option wird mit HTML aktualisiert, das die `name`- und `description`-Eigenschaften des zu bewegenden Punktfeatures umschließt. Das Popup wird dann mithilfe der `open`-Funktion auf der Karte angezeigt.
 
 ```javascript
 //Define an HTML template for a custom popup content laypout.
@@ -85,7 +85,7 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 ## <a name="reusing-a-popup-with-multiple-points"></a>Wiederverwenden eines Popups für mehrere Punkte
 
-Wenn Sie viele Punkte verwenden und immer nur ein Popup anzeigen möchten, sollten Sie am besten ein Popup erstellen und wiederverwenden, anstatt für jedes Punktfeature ein Popup zu erstellen. Durch die Wiederverwendung des Popup wird die Anzahl der von der Anwendung erstellten DOM-Elemente erheblich reduziert, wodurch eine bessere Leistung erzielt werden kann. Im folgenden Beispiel werden drei Punktfeatures erstellt. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
+Wenn Sie viele Punkte verwenden und immer nur ein Popup anzeigen möchten, sollten Sie am besten ein Popup erstellen und wiederverwenden. Durch die Wiederverwendung des Popup wird die Anzahl der von der Anwendung erstellten DOM-Elemente erheblich reduziert, wodurch eine bessere Leistung erzielt werden kann. Im folgenden Beispiel werden drei Punktfeatures erstellt. Wenn Sie auf eines davon klicken, wird ein Popup mit dem Inhalt für dieses Punktfeature angezeigt.
 
 <br/>
 
@@ -94,7 +94,7 @@ Wenn Sie viele Punkte verwenden und immer nur ein Popup anzeigen möchten, sollt
 
 ## <a name="customizing-a-popup"></a>Anpassen eines Popups
 
-Standardmäßig hat das Popup einen weißen Hintergrund, einen Zeigerpfeil unten und eine Schaltfläche „Schließen“ in der oberen rechten Ecke. Das folgende Beispiel ändert die Hintergrundfarbe mit der Option `fillColor` des Popups in Schwarz. Die Schaltfläche „Schließen“ wird entfernt, indem die Option `shoCloseButton` auf „false“ gesetzt wird. Der HTML-Inhalt des Popups verwendet aufgefüllte 10 Pixel von den Rändern des Popups und der Text ist weiß, sodass er gut auf dem schwarzen Hintergrund dargestellt wird.  
+Standardmäßig hat das Popup einen weißen Hintergrund, einen Zeigerpfeil unten und eine Schaltfläche „Schließen“ in der oberen rechten Ecke. Das folgende Beispiel ändert die Hintergrundfarbe mit der Option `fillColor` des Popups in Schwarz. Die Schaltfläche „Schließen“ wird entfernt, indem die Option `CloseButton` auf „false“ gesetzt wird. Der HTML-Inhalt des Popups wird von den Rändern des Popups aus mit 10 Pixeln aufgefüllt. Der Text ist weiß, damit er auf dem schwarzen Hintergrund gut sichtbar ist.  
 
 <br/>
 
@@ -104,7 +104,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="popup-events"></a>Popup-Ereignisse
 
-Popups können geöffnet, geschlossen und gezogen werden. Die Popup-Klasse stellt Ereignisse für die Hilfeentwickler bereit, die auf diese Aktionen reagieren können. Das folgende Beispiel zeigt, welche Ereignisse ausgelöst werden, wenn Sie das Popup öffnen, schließen oder ziehen. 
+Popups können geöffnet, geschlossen und gezogen werden. Die Popup-Klasse stellt Ereignisse für Hilfeentwickler bereit, die auf diese Ereignisse reagieren können. Im folgenden Beispiel wird hervorgehoben, welche Ereignisse ausgelöst werden, wenn der Benutzer das Popup öffnet, schließt oder zieht. 
 
 <br/>
 

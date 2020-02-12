@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e2ad8eb181685d3ac3de8b1e0ed7ef8ddfa4e224
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911268"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933279"
 ---
 # <a name="add-controls-to-a-map"></a>Hinzufügen von Steuerelementen zu einer Karte
 
@@ -39,7 +39,7 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 ## <a name="add-pitch-control"></a>Hinzufügen eines Neigungssteuerelements
 
-Ein Neigungssteuerelement fügt Schaltflächen zum Kippen der Neigung für eine Karte relativ zum Horizont hinzu. Das folgende Codebeispiel erstellt eine Instanz der Klasse [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol) und fügt sie in der rechten oberen Ecke der Karte hinzu.
+Ein Neigungssteuerelement fügt Schaltflächen zum Kippen der Neigung für eine Karte relativ zum Horizont hinzu. Im folgenden Codebeispiel wird eine Instanz der [PitchControl](/javascript/api/azure-maps-control/atlas.control.pitchcontrol)-Klasse erstellt. Er fügt der oberen rechten Ecke der Karte das PitchControl-Steuerelement hinzu.
 
 ```javascript
 //Construct a pitch control and add it to the map.

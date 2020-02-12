@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 739322feb8e844a197f2943f4ff050cacc0f2274
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911297"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933301"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -67,7 +67,7 @@ Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neige
 
 In die Karte sind einige Tastenkombinationen integriert, die die Verwendung der Karte vereinfachen. Diese Tastenkombinationen sind funktionsfähig, wenn die Karte den Fokus hat.
 
-| Key      | Action                            |
+| Key      | Aktion                            |
 |----------|-----------------------------------|
 | `Tab` | Navigieren Sie zwischen den Steuerelementen und Popups auf der Karte. |
 | `ESC` | Wechseln Sie den Fokus von einem beliebigen Element auf der Karte zum Kartenelement der obersten Ebene. |
@@ -84,7 +84,7 @@ In die Karte sind einige Tastenkombinationen integriert, die die Verwendung der 
 | Minuszeichen, Bindestrich (`-`) oder <sup>*</sup>Unterstrich (`_`) | Verkleinern | 
 | `Shift` + Ziehen der Maus auf der Karte, um einen Bereich zu markieren | Vergrößern eines Bereichs |
 
-<sup>*</sup> Für diese Tastenkombinationen wird normalerweise dieselbe Taste auf einer Tastatur verwendet. Sie wurden hinzugefügt, um die Bedienfreundlichkeit zu verbessern, sodass es keine Rolle spielt, ob der Benutzer die UMSCHALTTASTE für diese Verknüpfungen verwendet.
+<sup>*</sup> Für diese Tastenkombinationen wird normalerweise dieselbe Taste auf einer Tastatur verwendet. Diese Verknüpfungen wurden hinzugefügt, um die Benutzerfreundlichkeit zu verbessern. Es spielt auch keine Rolle, ob der Benutzer für diese Verknüpfungen die UMSCHALTTASTE verwendet.
 
 ## <a name="screen-reader-support"></a>Unterstützung der Sprachausgabe
 
@@ -94,9 +94,9 @@ Zusätzliche Informationen, die auf die allgemeine Karte platziert werden, sollt
 
 ## <a name="make-popups-keyboard-accessible"></a>Verfügbarmachen von Popups für die Tastatursteuerung
 
-Häufig wird ein Marker oder Symbol verwendet, um einen Standort auf der Karte darzustellen. Weitere Informationen zu diesem Standort werden in der Regel in einem Popup angezeigt, wenn der Benutzer mit dem Marker interagiert. Bei den meisten Anwendungen werden Popups angezeigt, wenn ein Benutzer auf einen Marker klickt oder tippt. Dies erfordert jedoch die Verwendung der Maus oder des Touchscreens durch den Benutzer. Es empfiehlt sich, Popups auch bei Verwendung der Tastatur zugänglich zu machen. Dies können Sie erreichen, indem Sie für jeden Datenpunkt ein Popup erstellen und der Karte hinzufügen. 
+Häufig wird ein Marker oder Symbol verwendet, um einen Standort auf der Karte darzustellen. Weitere Informationen zu diesem Standort werden in der Regel in einem Popup angezeigt, wenn der Benutzer mit dem Marker interagiert. Bei den meisten Anwendungen werden Popups angezeigt, wenn ein Benutzer auf einen Marker klickt oder tippt. Dieses Ereignis erfordert jedoch die Verwendung der Maus oder des Touchscreens durch den Benutzer. Es empfiehlt sich, Popups auch bei Verwendung der Tastatur zugänglich zu machen. Diese Funktionalität können Sie erreichen, indem Sie für jeden Datenpunkt ein Popup erstellen und der Karte hinzufügen. 
 
-Im folgenden Beispiel werden Points of Interest (POI) auf der Karte mithilfe einer Symbolebene geladen. Außerdem wird der Karte für jeden Point of Interest ein Popup hinzugefügt. Ein Verweis auf die einzelnen Popups wird in den Eigenschaften der Datenpunkte gespeichert, sodass sie auch für einen Marker abgerufen werden können, wenn z. B. auf diesen geklickt wird. Wenn die Karte den Fokus hat, kann der Benutzer die einzelnen Popups auf der Karte durch Drücken der TAB-TASTE einzeln durchlaufen.
+Im folgenden Beispiel werden Points of Interest (POI) auf der Karte mithilfe einer Symbolebene geladen. Außerdem wird der Karte für jeden Point of Interest ein Popup hinzugefügt. Ein Verweis auf die einzelnen Popups wird in den Eigenschaften der einzelnen Datenpunkte gespeichert. Er kann auch für einen Marker abgerufen werden, z. B. beim Klicken auf einen Marker. Wenn die Karte den Fokus hat, kann der Benutzer die einzelnen Popups auf der Karte durch Drücken der TAB-TASTE einzeln durchlaufen.
 
 <br/>
 
@@ -111,7 +111,7 @@ Im Folgenden finden Sie einige zusätzliche Tipps, wie Sie Ihre Webkartenanwendu
 - Wenn viele interaktive Punktdaten auf der Karte angezeigt werden, sollten Sie die Übersichtlichkeit per Clustering erhöhen. 
 - Sorgen Sie für einen ausreichenden Farbkontrast zwischen Text/Symbolen und den Hintergrundfarben von 4:5:1 oder höher.
 - Halten Sie die Meldungen der Sprachausgabe (ARIA-, alt- und title-Attribute) kurz und aussagekräftig. Vermeiden Sie unnötigen Jargon und Akronyme.
-- Versuchen Sie die an die Sprachausgabe gesendeten Meldungen zu optimieren, um kurze und aussagekräftige Informationen bereitzustellen, die für den Benutzer einfach zu verstehen sind. Wenn Sie z. B. die Sprachausgabe häufig aktualisieren möchten (etwa beim Verschieben der Karte), sollten Sie wie folgt vorgehen:
+- Versuchen Sie die an die Sprachausgabe gesendeten Meldungen zu optimieren, um kurze und aussagekräftige Informationen bereitzustellen, die für den Benutzer einfach zu verstehen sind. Wenn Sie z. B. die Sprachausgabe häufig aktualisieren möchten (etwa beim Verschieben der Karte), sollten Sie die folgenden Punkte erwägen:
     - Warten Sie, bis das Verschieben der Karte abgeschlossen ist, bevor Sie die Sprachausgabe aktualisieren.
     - Geben Sie Aktualisierungen nur alle paar Sekunden aus. 
     - Kombinieren Sie die Meldungen auf logische Weise. 
@@ -122,7 +122,7 @@ Im Folgenden finden Sie einige zusätzliche Tipps, wie Sie Ihre Webkartenanwendu
     - Wenn Polygondaten angezeigt werden, kann als Alternative zur Farbe ein Muster (z. B. Streifen) verwendet werden. 
 - Einige Visualisierungen wie Wärmebilder, Kachelebenen und Bildebenen sind für Benutzer mit Sehbehinderungen nicht zugänglich. Einige Überlegungen:
     - Lassen Sie über die Sprachausgabe beschreiben, was auf einer Ebene angezeigt wird, wenn sie der Karte hinzugefügt wird. Wenn z. B. eine Kachelebene mit einem Wetterradar angezeigt wird, können Sie über die Sprachausgabe beispielsweise „Die Karte wird mit Wetterradardaten überlagert“ ausgeben.
-- Schränken Sie die Menge an Funktionen ein, für die ein Mauszeiger erforderlich ist. Sie sind für Benutzer unzugänglich, die eine Tastatur oder ein Touchgerät für die Interaktion mit Ihrer Anwendung verwenden. Beachten Sie, dass dennoch empfohlen wird, für interaktive Inhalte wie klickbare Symbole, Links und Schaltflächen einen Stil für die Maussteuerung bereitzustellen.
+- Schränken Sie die Menge an Funktionen ein, für die ein Mauszeiger erforderlich ist. Diese Funktionen sind für Benutzer unzugänglich, die eine Tastatur oder ein Touchgerät für die Interaktion mit Ihrer Anwendung verwenden. Beachten Sie, dass dennoch empfohlen wird, für interaktive Inhalte wie klickbare Symbole, Links und Schaltflächen einen Stil für die Maussteuerung bereitzustellen.
 - Versuchen Sie selbst, mit der Tastatur in Ihrer Anwendung zu navigieren. Sorgen Sie für eine logische Aktivierreihenfolge.
 - Wenn Sie Tastenkombinationen erstellen, versuchen Sie, diese auf zwei Tasten oder weniger zu beschränken. 
 
