@@ -3,22 +3,22 @@ title: 'Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Ve
 description: In diesem Tutorial erfahren Sie, wie Sie Sensordaten unter Verwendung von Azure Notebooks (Python) mit Wettervorhersagedaten des Microsoft Azure Maps-Wetterdiensts verknüpfen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/09/2019
+ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910794"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989619"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
-Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf gegen den Klimawandel. Da Wind naturgemäß nicht konsistent weht, müssen Betreiber von Windkraftanlagen ML-Modelle (Machine Learning) zur Vorhersage der Windenergiekapazität erstellen, um den Strombedarf zu decken und die Stabilität des Stromnetzes zu gewährleisten. In diesem Tutorial erfahren Sie Schritt für Schritt, wie Azure Maps-Wettervorhersagedaten mit Demo-Datasets von Sensorstandorten mit Wetterdaten kombiniert werden können. Wettervorhersagedaten werden durch Aufrufen des Azure Maps-Wetterdiensts angefordert.
+Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf gegen den Klimawandel. Da der Wind von Natur aus nicht immer gleich stark ist, müssen Betreiber von Windenergieanlagen Machine Learning-Modelle (ML) erstellen, um die Windenergiekapazität vorherzusagen. Diese Vorhersage ist erforderlich, um die Nachfrage nach Strom erfüllen und die Netzstabilität sicherstellen zu können. In diesem Tutorial wird Schritt für Schritt beschrieben, wie die Daten der Azure Maps-Wettervorhersage mit Demodaten für Wettermesswerte kombiniert werden. Wettervorhersagedaten werden durch Aufrufen des Azure Maps-Wetterdiensts angefordert.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -39,7 +39,7 @@ Für dieses Tutorial sind folgende Vorbereitungen erforderlich:
 2. Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
 
 
-Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
+Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 Unter [Erstellen eines Azure-Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook) können Sie sich mit Azure-Notebooks und mit den ersten Schritten vertraut machen.
 
@@ -51,15 +51,16 @@ Unter [Erstellen eines Azure-Notebooks](https://docs.microsoft.com/azure/azure-m
 Führen Sie das folgende Skript aus, um alle erforderlichen Module und Frameworks zu laden:
 
 ```python
-import aiohttp
 import pandas as pd
 import datetime
 from IPython.display import Image, display
+!pip install aiohttp
+import aiohttp
 ```
 
 ## <a name="import-weather-data"></a>Importieren von Wetterdaten
 
-Im Rahmen dieses Tutorials verwenden wir Wetterdaten von Sensoren, die an vier verschiedenen Windkraftanlagen installiert sind. Bei den Beispieldaten handelt es sich um Wetterdaten für einen Zeitraum von 30 Tagen, die von Wetterdatencentern in der Nähe der einzelnen Windkraftanlagenstandorte gesammelt wurden. In den Demodaten sind Messwerte für Temperatur, Windgeschwindigkeit und Windrichtung enthalten. Die Demodaten können [hier](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data) heruntergeladen werden. Das folgende Skript importiert Demodaten in das Azure-Notebook:
+Im Rahmen dieses Tutorials verwenden wir Wetterdaten von Sensoren, die an vier verschiedenen Windkraftanlagen installiert sind. Die Beispieldaten enthalten die Wettermesswerte für 30 Tage. Diese Messwerte werden über Wetterdatenzentren erfasst, die sich in der Nähe der einzelnen Windkraftstandorte befinden. In den Demodaten sind Messwerte für Temperatur, Windgeschwindigkeit und Windrichtung enthalten. Die Demodaten können [hier](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/tree/master/AzureMapsJupyterSamples/Tutorials/Analyze%20Weather%20Data/data) heruntergeladen werden. Das folgende Skript importiert Demodaten in das Azure-Notebook:
 
 ```python
 df = pd.read_csv("./data/weather_dataset_demo.csv")
@@ -67,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Anfordern täglicher Vorhersagedaten
 
-In unserem Beispielszenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Das folgende Skript ruft die [API für tägliche Vorhersagen](https://aka.ms/AzureMapsWeatherDailyForecast) des Azure Maps-Wetterdiensts auf, um für jede Windkraftanlage tägliche Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zu erhalten:
+In unserem Szenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Das folgende Skript ruft die [API für tägliche Vorhersagen](https://aka.ms/AzureMapsWeatherDailyForecast) des Azure Maps-Wetterdiensts auf, um für jede Windkraftanlage tägliche Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zu erhalten:
 
 
 ```python
@@ -128,7 +129,7 @@ display(Image(poi_range_map))
 ![Anlagenstandorte](./media/weather-service-tutorial/location-map.png)
 
 
-Um die Demodaten mit den Vorhersagedaten anzureichern, gruppieren wir die Vorhersagedaten mit den Demodaten auf der Grundlage der Stations-ID für das Wetterdatencenter.
+Wir gruppieren die Vorhersagedaten basierend auf der Stationskennung des Wetterdatenzentrums mit den Demodaten. Mit dieser Gruppierung werden die Demodaten um die Vorhersagedaten erweitert. 
 
 ```python
 # Group forecasted data for all locations
@@ -156,7 +157,7 @@ grouped_weather_data.get_group(station_ids[0]).reset_index()
 
 ## <a name="plot-forecast-data"></a>Zeichnen von Vorhersagedaten
 
-Um zu sehen, wie sich Windgeschwindigkeit und -richtung im Laufe der nächsten 15 Tage verändern, zeichnen wir die vorhergesagten Werte für die jeweiligen Tage.
+Wir stellen die vorhergesagten Werte anhand der Vorhersagetage dar. Hieran können wir erkennen, wie sich die Geschwindigkeit und die Richtung des Winds in den nächsten 15 Tagen ändern wird.
 
 ```python
 # Plot wind speed
@@ -175,7 +176,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Die folgenden Diagramme zeigen die vorhergesagten Daten für die Änderung der Windgeschwindigkeit (linkes Diagramm) und der Windrichtung (rechtes Diagramm) in den nächsten 15 Tagen ab dem Tag, an dem die Daten angefordert werden:
+Mit den unten angegebenen Diagrammen werden die Vorhersagedaten visualisiert. Informationen zur Änderung der Windgeschwindigkeit finden Sie im linken Diagramm. Informationen zur Änderung der Windrichtung finden Sie im rechten Diagramm. Diese Daten enthalten die Vorhersage für die nächsten 15 Tage ab dem Anforderungstag der Daten.
 
 <center>
 
@@ -184,7 +185,7 @@ Die folgenden Diagramme zeigen die vorhergesagten Daten für die Änderung der W
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Azure Maps-REST-APIs aufrufen, um Wettervorhersagedaten abzurufen und die Daten in Diagrammen zu visualisieren.
+In diesem Tutorial haben Sie gelernt, wie Sie Azure Maps-REST-APIs aufrufen, um Wettervorhersagedaten zu erhalten. Außerdem wurde gezeigt, wie Sie die Daten in Diagrammen visualisieren.
 
 Weitere Informationen zum Aufrufen von Azure Maps-REST-APIs in Azure Notebooks finden Sie unter [Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing).
 

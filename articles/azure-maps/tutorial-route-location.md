@@ -3,18 +3,18 @@ title: 'Tutorial: Ermitteln einer Route zu einem Ort | Microsoft Azure Maps'
 description: In diesem Tutorial wird gezeigt, wie Sie mit dem Microsoft Azure Maps-Routingdienst die Route zu einem Ort (Point of Interest) auf einer Karte darstellen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910833"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989636"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Tutorial: Route zu einem Point of Interest mit Azure Maps
 
@@ -27,7 +27,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und das Ro
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Befolgen Sie zunächst die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte zum [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Befolgen Sie vor dem Fortfahren die Anleitung unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps). Sie benötigen ein Abonnement mit dem Tarif „S1“. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 <a id="getcoordinates"></a>
 
@@ -139,7 +139,7 @@ In diesem Tutorial wird eine einfache Route mit einem Symbol für Anfang und End
     });
     ```
     
-    Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Routenlinie und der Start- und Endpunkte erstellt. Eine Linienebene wird erstellt und an die Datenquelle angefügt, um zu definieren, wie die Routenlinie dargestellt werden soll. Die Routenlinie wird in einem hübschen Blauton mit einer Stärke von 5 Pixeln sowie abgerundeten Linienverbindungen und -abschlüssen gerendert. Beim Hinzufügen der Ebene zur Karte wird ein zweiter Parameter mit dem Wert `'labels'` übergeben. Dieser gibt an, dass diese Ebene unterhalb der Kartenbeschriftungen gerendert werden soll. Dadurch wird sichergestellt, dass die Routenlinie keine Straßenbezeichnungen verdeckt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden sollen. In diesem Fall wurden Ausdrücke hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. 
+    Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Routenlinie und der Start- und Endpunkte erstellt. Eine Linienebene wird erstellt und an die Datenquelle angefügt, um zu definieren, wie die Routenlinie dargestellt werden soll. Die Routenlinie wird in einer schönen blauen Farbe dargestellt. Sie verfügt über eine Breite von fünf Pixeln und abgerundete Linienverbindungen und -abschlüsse. Beim Hinzufügen der Ebene zur Karte wird ein zweiter Parameter mit dem Wert `'labels'` übergeben. Dieser gibt an, dass diese Ebene unterhalb der Kartenbeschriftungen gerendert werden soll. Dadurch wird sichergestellt, dass die Routenlinie keine Straßenbezeichnungen verdeckt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden. In diesem Fall wurden Ausdrücke hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. 
     
 2. Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Endpunkt eine Tankstelle in Seattle fest. Fügen Sie im Kartenereignishandler `ready` den folgenden Code hinzu:
 
@@ -174,9 +174,9 @@ In diesem Tutorial wird eine einfache Route mit einem Symbol für Anfang und End
 
 ## <a name="get-directions"></a>Abrufen einer Wegbeschreibung
 
-In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure Maps verwenden, um die Route von einem bestimmten Startpunkt zum Endpunkt zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Abrufen von Wegbeschreibungen). Alle folgenden Funktionen müssen **innerhalb des eventListener-Elements für die Bereitschaft der Karte** hinzugefügt werden, um sicherzustellen, dass die Kartenressourcen für den Zugriff bereit sind.
+In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure Maps verwenden. Die Routendienst-API ermittelt die Route von einem bestimmten Startpunkt zu einem Endpunkt. Dieser Dienst verfügt über APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten. Darüber hinaus ermöglicht dieser Dienst auch das Planen von zukünftigen Routen, indem die umfangreiche Azure-Datenbank für den Verkehrsverlauf verwendet wird. Benutzer können die Vorhersage der Routendauern für jeden Tag und jede Uhrzeit anzeigen. Weitere Informationen finden Sie unter [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Abrufen von Wegbeschreibungen). Alle folgenden Funktionen müssen **innerhalb des eventListener-Elements für die Bereitschaft der Karte** hinzugefügt werden, um sicherzustellen, dass die Kartenressourcen für den Zugriff bereit sind.
 
-1. Fügen Sie in der GetMap-Funktion den folgenden JavaScript-Code hinzu.
+1. Fügen Sie dem JavaScript-Code in der GetMap-Funktion Folgendes hinzu:
 
     ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key

@@ -14,15 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 09/17/2019
+ms.date: 02/03/2020
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 559050d11b6b85a9842c679b94e0e5b2fd5dd0f8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186060"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987712"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
@@ -32,6 +32,14 @@ Die Media Services v3 SDKs basieren auf der [OpenAPI-Spezifikation von Media Ser
 
 > [!NOTE]
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+
+## <a name="compliance-privacy-and-security"></a>Compliance, Datenschutz und Sicherheit
+ 
+Wichtig: Ihre Nutzung von Azure Media Services darf nicht gegen geltende Gesetze verstoßen, und weder Azure Media Services noch ein anderer Azure-Dienst darf auf eine Weise verwendet werden, die die Rechte Dritter verletzt oder für Dritte schädlich ist. 
+
+Bevor Sie Videos/Bilder, einschließlich biometrischer Daten, zur Verarbeitung und Speicherung in Media Services hochladen, müssen Sie (1) über alle entsprechenden Rechte für die Videos/Bilder und (2) über alle zugehörigen Einwilligungen von den Personen in den Videos verfügen, mit denen die Nutzung und Speicherung ihrer biometrischen Daten in Media Services zugelassen wird. 
+
+Besuchen Sie das [Azure Trust Center](https://www.microsoft.com/trust-center/?rtc=1), um sich über die Konformität, den Datenschutz und den Schutz Ihrer Daten in Azure Media Services durch Microsoft zu informieren. Informationen zu den Datenschutzauflagen und zur Behandlung Ihrer Daten durch Microsoft finden Sie in den [Datenschutzbestimmungen](https://privacy.microsoft.com/PrivacyStatement), in den [Lizenzbedingungen für Onlinedienste](https://www.microsoft.com/licensing/product-licensing/products) (Online Services Terms, OST) und im [Nachtrag zur Datenverarbeitung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=67) (Data Processing Addendum, DPA). Informationen zur Aufbewahrung und Löschung von Kundendaten sind im Nachtrag zur Datenverarbeitung enthalten. Wenn Sie Azure Media Services nutzen, erklären Sie sich damit einverstanden, dass Sie OST, DPA und den Datenschutzbestimmungen unterliegen.
 
 ## <a name="what-can-i-do-with-media-services"></a>Wie kann ich Media Services nutzen?
 
@@ -66,7 +74,7 @@ Die Schnellstartanleitungen enthalten grundlegende Informationen für Einsteiger
 * [Streamen von Videodateien: CLI](stream-files-cli-quickstart.md)
 * [Streamen von Videodateien: Node.js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>Lernprogramme
+### <a name="tutorials"></a>Tutorials
 
 Die Tutorials enthalten szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.
 

@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 97a215d8f111753c8fcc857fe4c48956c1236b3b
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 35ac39109bfcb4dc63b738c947d2ad8caf8ac0a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027444"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021286"
 ---
 # <a name="tutorial-deploy-and-walkthrough-a-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen einer App für die ständige Überwachung von Patienten und exemplarische Vorgehensweise für die zugehörige Vorlage
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-In diesem Tutorial wird für Sie als Lösungsentwickler veranschaulicht, wie Sie in dieses Thema einsteigen können, indem Sie eine IoT Central-Vorlage für eine Anwendung für die ständige Überwachung von Patienten bereitstellen. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte sinnvoll sind.
+
+In diesem Tutorial wird für Sie als Lösungsentwickler veranschaulicht, wie Sie in dieses Thema einsteigen können, indem Sie eine IoT Central-Vorlage für eine Anwendung für die ständige Überwachung von Patienten bereitstellen. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte Sie ausführen können.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,16 +34,17 @@ Navigieren Sie zur [Anwendungs-Manager-Website von Azure IoT Central](https://ap
 >[!div class="mx-imgBorder"] 
 >![Anwendungs-Manager: Gesundheitswesen](media/app-manager-health.png)
 
-Klicken Sie auf die Schaltfläche **App erstellen**, um mit der Erstellung Ihrer Anwendung zu beginnen, und melden Sie sich dann mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto an. Sie gelangen auf die Seite **Neue Anwendung**.
+Klicken Sie auf die Schaltfläche **App erstellen**, um mit der Erstellung Ihrer Anwendung zu beginnen, und melden Sie sich dann mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto an. Sie gelangen zur Seite **Neue Anwendung**.
 
->[!div class="mx-imgBorder"] 
->![Erstellen einer Anwendung: Gesundheitswesen](media/app-manager-health-create.png)
+![Erstellen einer Anwendung: Gesundheitswesen](media/app-manager-health-create.png)
+
+![Erstellen einer Anwendung: Abrechnungsinformationen im Bereich Gesundheitswesen](media/app-manager-health-create-billinginfo.png)
 
 Erstellung Sie Ihre Anwendung wie folgt:
 
 1. Azure IoT Central schlägt entsprechend der von Ihnen ausgewählten Vorlage automatisch einen Anwendungsnamen vor. Sie können diesen Namen übernehmen oder einen eigenen aussagekräftigen Anwendungsnamen eingeben, z. B. **Ständige Überwachung von Patienten**. Azure IoT Central generiert für Sie außerdem entsprechend dem Anwendungsnamen ein Präfix mit einer eindeutigen URL. Sie können dieses URL-Präfix in einen einprägsameren Wert ändern.
 
-2. Sie können auswählen, ob Sie eine Anwendung vom Typ **Testversion** oder **Nutzungsbasierte Zahlung** erstellen möchten. Anwendungen vom Typ **Testversion** sind sieben Tage lang kostenlos, bevor sie ablaufen, und es sind bis zu fünf kostenlose Geräte zulässig. Bevor das geschieht, können sie jederzeit auf die nutzungsbasierte Zahlung umgestellt werden. Bei der Erstellung einer Testanwendung müssen Sie Ihre Kontaktdaten eingeben und auswählen, ob Sie Informationen und Tipps von Microsoft erhalten möchten. Für Anwendungen vom Typ **Nutzungsbasierte Zahlung** werden bis zu zwei kostenlose Geräte unterstützt, und Sie müssen die Informationen zu Ihrem Azure-Abonnement eingeben.
+2. Sie können auswählen, ob Sie die Anwendung unter dem Tarif *Free* oder unter einem der Tarife vom Typ *Standard* erstellen möchten. Anwendungen, die Sie unter dem Free-Tarif erstellen, sind sieben Tage lang kostenlos, bevor sie ablaufen, und es sind bis zu fünf kostenlose Geräte zulässig. Sie können eine Anwendung vor dem Ablauf jederzeit vom Free-Tarif auf einen Standard-Tarif umstellen. Bei Wahl des Free-Tarifs müssen Sie Ihre Kontaktdaten eingeben und auswählen, ob Sie Informationen und Tipps von Microsoft erhalten möchten. Anwendungen, die Sie unter einem Standard-Tarif erstellen, unterstützen bis zu zwei kostenlose Geräte, und Sie müssen Ihre Informationen zum Azure-Abonnement für die Abrechnung eingeben.
 
 3. Wählen Sie unten auf der Seite die Option **Erstellen** aus, um Ihre Anwendung bereitzustellen.
 
@@ -57,7 +58,7 @@ Nach der Bereitstellung der App-Vorlage gelangen Sie zunächst zum **Lamna-Dashb
 
 * Zeigen Sie den **Raumplan** und den Standort des Smart Vitals Patch-Geräts an.
 
-* Führen Sie die **Bereitstellung** des Smart Vitals Patch-Geräts für einen neuen Patienten durch.
+* Führen Sie die **erneute Bereitstellung** des Smart Vitals Patch-Geräts für einen neuen Patienten durch.
 
 * Zeigen Sie ein Beispiel für ein **Anbieterdashboard** an, das von einem Pflegeteam des Krankenhauses ggf. zum Nachverfolgen der Patienten genutzt wird.
 
@@ -77,7 +78,7 @@ In beiden Dashboards können Sie jeweils auf diese Dokumentation zugreifen.
 
 Wenn Sie auf die Registerkarte **Gerätevorlagen** klicken, werden für die Vorlage zwei unterschiedliche Gerätetypen angezeigt:
 
-* **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Patchgerät, mit dem verschiedene lebenswichtige Werte gemessen werden, die für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden können. Wenn Sie auf die Vorlage klicken, sehen Sie Folgendes: Zusätzlich zum Senden von Gerätedaten, z. B. Akkustand und Gerätetemperatur, sendet das Patchgerät auch Daten zum Gesundheitszustand des Patienten, z. B. Atemfrequenz und Blutdruck.
+* **Smart Vitals Patch**: Bei diesem Gerät handelt es sich um ein Patchgerät, mit dem verschiedene lebenswichtige Werte gemessen werden. Es kann für die Überwachung von Patienten innerhalb und außerhalb des Krankenhauses verwendet werden. Wenn Sie auf die Vorlage klicken, sehen Sie Folgendes: Zusätzlich zum Senden von Gerätedaten, z. B. Akkustand und Gerätetemperatur, sendet das Patchgerät auch Daten zum Gesundheitszustand des Patienten, z. B. Atemfrequenz und Blutdruck.
 
 * **Smart Knee Brace**: Bei diesem Gerät handelt es sich um eine Stützmanschette für das Knie, die für Patienten mit einem neuen Kniegelenk genutzt werden kann. Wenn Sie auf diese Vorlage klicken, werden zusätzlich zu den Gerätedaten Funktionen wie Bewegungsbereich und Beschleunigung angezeigt.
 
@@ -101,7 +102,7 @@ Wenn Sie zur Registerkarte „Regeln“ wechseln, werden in der Anwendungsvorlag
 
 ### <a name="devices"></a>Geräte
 
-Klicken Sie auf die Registerkarte **Geräte**, und wählen Sie anschließend eine Instanz von **Smart Knee Brace** aus. Es sind drei Ansichten verfügbar, in denen Sie Informationen zum jeweils ausgewählten Gerät untersuchen können. Diese Ansichten werden erstellt und veröffentlicht, wenn Sie die Gerätevorlage für Ihr Gerät erstellen. Dies bedeutet, dass sie für alle Geräte, die Sie verbinden oder simulieren, einheitlich sind.
+Klicken Sie auf die Registerkarte **Geräte**, und wählen Sie anschließend eine Instanz von **Smart Knee Brace** aus. Es sind drei Ansichten verfügbar, in denen Sie Informationen zum jeweils ausgewählten Gerät untersuchen können. Diese Ansichten werden erstellt und veröffentlicht, wenn Sie die Gerätevorlage für Ihr Gerät erstellen. Dies bedeutet, dass sie auf allen Geräten, die Sie verbinden oder simulieren, einheitlich sind.
 
 Die Ansicht **Dashboard** enthält eine Übersicht über die Telemetriedaten und Eigenschaften vom Gerät, die für den Bediener bestimmt sind.
 
