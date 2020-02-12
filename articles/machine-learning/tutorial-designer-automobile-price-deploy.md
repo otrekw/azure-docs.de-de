@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 6fc6479ccda77bff84319d3244b2bd4a0599dc47
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719788"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933988"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,6 +38,8 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 ### <a name="create-a-real-time-inference-pipeline"></a>Erstellen einer Echtzeit-Rückschlusspipeline
 
 1. Wählen Sie über der Pipelinecanvas **Rückschlusspipeline erstellen** > **Echtzeit-Rückschlusspipeline** aus.
+
+    ![Screenshot: Position der Schaltfläche „Pipeline erstellen“](./media/tutorial-designer-automobile-price-deploy/create-inference-pipeline.png)
 
     Ihre Pipeline sollte nun wie folgt aussehen: 
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 408501232891a7971d03c89acc647d9ed19609b3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760826"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77026148"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
@@ -132,6 +132,8 @@ In diesen folgenden Abschnitten finden Sie allgemeine Methoden zur Verbesserung 
 Es ist möglich, Ihre Merkmalssätze zu verbessern, indem Sie sie bearbeiten, um sie größer und mehr oder weniger dicht zu machen.
 
 Ein Zeitstempel mit Sekundenangaben ist beispielsweise ein Merkmal von sehr geringer Dichte. Seine Dichte könnte erhöht (effektiver) werden, indem Zeiten in „Morgen“, „Mittag“, „Nachmittag“ usw. klassifiziert werden.
+
+Standortinformationen profitieren in der Regel auch von der Erstellung umfassenderer Klassifizierungen. Eine Koordinate mit Breitengrad-Längengrad wie Breitengrad: 47.67402° N, Längengrad: 122.12154° W ist z. B. zu präzise und zwingt das Modell, Breiten- und Längengrade als unterschiedliche Dimensionen zu erlernen. Wenn Sie versuchen, auf der Grundlage von Standortinformationen eine Personalisierung vorzunehmen, hilft es, Standortinformationen in größeren Sektoren zu gruppieren. Eine einfache Möglichkeit dazu besteht darin, eine geeignete Rundungsgenauigkeit für die Breitengrad-Längengrad-Zahlen auszuwählen und Breiten- und Längengrade zu „Bereichen“ zu kombinieren, indem sie zu einer Zeichenfolge zusammengefasst werden. Es wäre z. B. eine gute Möglichkeit, 47.67402° N, Längengrad: 122,12154° W in Regionen mit einer Breite von einigen Kilometern als "location":"34.3 , 12.1" darzustellen.
 
 
 #### <a name="expand-feature-sets-with-extrapolated-information"></a>Erweitern von Merkmalssätzen mit extrapolierten Informationen

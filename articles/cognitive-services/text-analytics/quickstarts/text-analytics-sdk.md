@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Textanalyse-Clientbibliothek v3 | Microsoft-Dokumentation'
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe der Textanalyse-API von Azure Cognitive Services Sprache erkennen.
+description: In dieser Schnellstartanleitung wird gezeigt, wie Sie Ihre Anwendungen mit der Textanalyse-API von Azure Cognitive Services verbinden.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,46 +10,79 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: 89680ad61296cd225bb87d2d6b46259586304da2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+zone_pivot_groups: programming-languages-text-analytics
+ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774104"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987894"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek v3
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek
 
 Hier finden Sie Informationen zu den ersten Schritten mit der Textanalyse-Clientbibliothek. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben.
 
-Version `3.0-preview` der Textanalyse-Clientbibliothek kann für Folgendes verwendet werden:
+Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 
-* Standpunktanalyse (Public Preview)
+* Stimmungsanalyse
 * Spracherkennung
-* Erkennung benannter Entitäten (Public Preview)
+* Entitätserkennung
 * Schlüsselwortextraktion
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+> [!IMPORTANT]
+> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+>    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
+> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+
+[!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
+> [!IMPORTANT]
+> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+>    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
+> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
 
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+> [!IMPORTANT]
+> * Diese Schnellstartanleitung gilt nur für Version `3.0-preview` der Textanalyse-Clientbibliothek. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
+> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+
+[!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
+::: zone pivot="programming-language-javascript"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+> [!IMPORTANT]
+> * Die aktuelle Vorschauversion der Textanalyse-API ist `3.0-preview`. Diese beinhaltet eine Public Preview für verbesserte [Standpunktanalyse](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) und [Erkennung benannter Entitäten (Named Entity Recognition, NER)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Die aktuelle stabile Version ist `2.1`.
+>    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
+> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-other"
+
+## <a name="additional-language-support"></a>Zusätzliche Sprachunterstützung
+
+Wenn Sie auf diese Registerkarte geklickt haben, wurde wahrscheinlich keine Schnellstartanleitung für Ihre bevorzugte Programmiersprache angezeigt. Keine Sorge, es stehen weitere Schnellstartanleitungen zur Verfügung. Verwenden Sie die Tabelle, um das richtige Beispiel für Ihre Programmiersprache zu finden.
+
+| Sprache | Verfügbare Version | 
+|----------|------------------------|
+| Ruby     | [Version 2.1](ruby-sdk.md)          | 
+| Go       | [Version 2.1](go-sdk.md)          | 
 
 ::: zone-end
 

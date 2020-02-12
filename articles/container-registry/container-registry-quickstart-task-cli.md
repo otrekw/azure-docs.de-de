@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen und Ausführen eines Containerimages'
-description: Führen Sie mit Azure Container Registry schnell Aufgaben aus, um bei Bedarf ein Containerimage in der Cloud zu erstellen und auszuführen.
+description: Führen Sie mit Azure Container Registry schnell Aufgaben aus, um bei Bedarf ein Docker-Containerimage in der Cloud zu erstellen und auszuführen.
 ms.topic: quickstart
-ms.date: 04/02/2019
-ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/31/2020
+ms.openlocfilehash: f08f10dd170acaa8594ad5a47f5ef58e27288b10
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454951"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986273"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Schnellstart: Erstellen und Ausführen eines Containerimages mithilfe von Azure Container Registry Tasks
 
@@ -44,7 +44,7 @@ In diesem Beispiel wird eine Registrierung vom Typ *Basic* erstellt. Dabei hande
 
 ## <a name="build-an-image-from-a-dockerfile"></a>Erstellen eines Images auf der Grundlage eines Dockerfile
 
-Erstellen Sie nun mithilfe von Azure Container Registry ein Image. Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend ein Dockerfile namens *Dockerfile* mit folgendem Inhalt. Hierbei handelt es sich um ein einfaches Beispiel für die Erstellung eines Linux-Containerimages. Sie können jedoch Ihr eigenes Standard-Dockerfile sowie Images für andere Plattformen erstellen.
+Erstellen Sie nun mithilfe von Azure Container Registry ein Image. Erstellen Sie zunächst ein Arbeitsverzeichnis und anschließend ein Dockerfile namens *Dockerfile* mit folgendem Inhalt. Hierbei handelt es sich um ein einfaches Beispiel für die Erstellung eines Linux-Containerimages. Sie können jedoch Ihr eigenes Standard-Dockerfile sowie Images für andere Plattformen erstellen. Die Befehlsbeispiele in diesem Artikel sind für die Ausführung in der Bash-Shell formatiert.
 
 ```bash
 echo FROM hello-world > Dockerfile
@@ -53,7 +53,9 @@ echo FROM hello-world > Dockerfile
 Führen Sie den Befehl [az acr build][az-acr-build] aus, um das Image zu erstellen. Nach erfolgreicher Erstellung wird das Image mithilfe von Push an Ihre Registrierung übertragen. Im folgenden Beispiel wird das Image `sample/hello-world:v1` mithilfe von Push übertragen. Der Punkt (`.`) am Ende des Befehls legt den Speicherort des Dockerfile fest (in diesem Fall: das aktuelle Verzeichnis).
 
 ```azurecli-interactive
-az acr build --image sample/hello-world:v1 --registry myContainerRegistry008 --file Dockerfile . 
+az acr build --image sample/hello-world:v1 \
+  --registry myContainerRegistry008 \
+  --file Dockerfile . 
 ```
 
 Die Ausgabe nach erfolgreicher Erstellung und Pushübertragung sieht in etwa wie folgt aus:
@@ -110,22 +112,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>Ausführen des Images
 
-Führen Sie nun schnell das Image aus, das Sie erstellt und mithilfe von Push an Ihre Registrierung übertragen haben. In Ihrem Workflow für die Containerentwicklung kann dieser Schritt zur Überprüfung vor der Imagebereitstellung genutzt werden.
+Führen Sie nun schnell das Image aus, das Sie erstellt und mithilfe von Push an Ihre Registrierung übertragen haben. Hier verwenden Sie [az acr run][az-acr-run] für die Ausführung des Containerbefehls. In Ihrem Workflow für die Containerentwicklung kann dieser Schritt zur Überprüfung vor der Imagebereitstellung genutzt werden. Alternativ können Sie den Befehl in eine [mehrstufige YAML-Datei][container-registry-tasks-multi-step] einfügen. 
 
-Erstellen Sie in einem lokalen Arbeitsverzeichnis eine Datei namens *quickrun.yaml* mit dem folgenden Inhalt für einen einzelnen Schritt. Ersetzen Sie den Namen des Anmeldeservers Ihrer Registrierung durch *\<acrLoginServer\>* . Der Name des Anmeldeservers wird im Format *\<Registrierungsname\>.azurecr.io* (nur Kleinbuchstaben) angegeben (Beispiel: *mycontainerregistry008.azurecr.io*). In diesem Beispiel wird davon ausgegangen, dass Sie im vorherigen Abschnitt das Image `sample/hello-world:v1` erstellt und mithilfe von Push übertragen haben:
-
-```yml
-steps:
-  - cmd: <acrLoginServer>/sample/hello-world:v1
-```
-
-Im Schritt `cmd` dieses Beispiels wird der Container in seiner Standardkonfiguration ausgeführt. `cmd` unterstützt jedoch zusätzliche Parameter vom Typ `docker run` und sogar andere Befehle vom Typ `docker`.
-
-Führen Sie den Container mithilfe des folgenden Befehls aus:
+Im folgenden Beispiel wird `$Registry` zum Angeben der Registrierung verwendet, in der der Befehl ausgeführt wird:
 
 ```azurecli-interactive
-az acr run --registry myContainerRegistry008 --file quickrun.yaml .
+az acr run --registry myContainerRegistry008 \
+  --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
+
+Der Parameter `cmd` dieses Beispiels führt den Container in seiner Standardkonfiguration aus. `cmd` unterstützt jedoch zusätzliche Parameter vom Typ `docker run` und sogar andere Befehle vom Typ `docker`.
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
@@ -182,10 +178,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mithilfe von ACR Tasks-Features schnell ein Docker-Containerimage erstellt, mithilfe von Push übertragen und nativ in Azure ausgeführt. In den Tutorials zu Azure Container Registry erfahren Sie, wie Sie Imagebuildvorgänge und -aktualisierungen mithilfe von ACR Tasks automatisieren.
+In dieser Schnellstartanleitung haben Sie mithilfe von ACR Tasks-Features und ohne lokale Docker-Installation schnell ein Docker-Containerimage erstellt, mithilfe von Push übertragen und nativ in Azure ausgeführt. In den Tutorials zu Azure Container Registry Tasks erfahren Sie, wie Sie Imagebuildvorgänge und -aktualisierungen mithilfe von ACR Tasks automatisieren.
 
 > [!div class="nextstepaction"]
-> [Tutorials zu Azure Container Registry][container-registry-tutorial-quick-task]
+> [Tutorials zu Azure Container Registry Tasks][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -201,10 +197,12 @@ In dieser Schnellstartanleitung haben Sie mithilfe von ACR Tasks-Features schne
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#az-acr-create
 [az-acr-build]: /cli/azure/acr#az-acr-build
+[az-acr-run]: /cli/azure/acr#az-acr-run
 [az-group-create]: /cli/azure/group#az-group-create
 [az-group-delete]: /cli/azure/group#az-group-delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
+[container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md
 [azure-cli-install]: /cli/azure/install-azure-cli

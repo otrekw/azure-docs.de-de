@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps | Microsoft Azure Map
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Webanwendung für die Shopsuche erstellen.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910967"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987004"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -35,7 +35,7 @@ Sehen Sie sich das [Beispiel für eine Live-Shopsuche](https://azuremapscodesamp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Tutorial müssen Sie zuerst ein Azure Maps-Konto erstellen und Ihren Primärschlüssel (Abonnementschlüssel) abrufen. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte zum [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Für die Schritte in diesem Tutorial müssen Sie zuerst ein Azure Maps-Konto erstellen und Ihren Primärschlüssel (Abonnementschlüssel) abrufen. Befolgen Sie die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte zum [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="design"></a>Entwurf
 
@@ -51,7 +51,7 @@ Zur Steigerung der Nützlichkeit dieser Shopsuche fügen wir ein dynamisches Lay
 
 ![Drahtmodell der Anwendung für die Contoso Coffee-Shopsuche auf einem mobilen Gerät](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
-Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die Anwendung enthält ein Suchfeld, eine Liste mit Shops in der Nähe, eine Karte mit Markern (Symbolen) und ein Popupfenster, in dem zusätzliche Informationen angezeigt werden, wenn der Benutzer einen Marker auswählt. Hier werden die Features der Shopsuche aus diesem Tutorial ausführlicher beschrieben:
+Mit den Drahtmodellen wird eine relativ einfache Anwendung veranschaulicht. Die Anwendung enthält ein Suchfeld, eine Liste mit Shops in der Nähe und eine Karte mit Markern (beispielsweise Symbole). Darüber hinaus enthält sie ein Popupfenster, in dem zusätzliche Informationen angezeigt werden, wenn der Benutzer einen Marker auswählt. Hier werden die Features der Shopsuche aus diesem Tutorial ausführlicher beschrieben:
 
 * Alle Standorte aus der importierten Datei mit den durch Tabstopps getrennten Daten werden in die Karte geladen.
 * Der Benutzer kann die Karte schwenken und zoomen, eine Suche durchführen und die Schaltfläche zum Anzeigen der GPS-Daten für den eigenen Standort (My Location) verwenden.
@@ -81,12 +81,12 @@ Wenn Sie sich den Screenshot mit den Daten ansehen, fällt Ihnen Folgendes auf:
     
 * Die Informationen zum Standort sind in den Spalten **AddressLine**, **City**, **Municipality** (Verwaltungsbezirk), **AdminDivision** (Bundesland/Kanton), **PostCode** (Postleitzahl) und **Country** enthalten.  
 * Die Spalten **Latitude** und **Longitude** enthalten die Koordinaten für die einzelnen Coffee-Shop-Standorte von Contoso Coffee. Falls Sie keine Informationen zu Koordinaten besitzen, können Sie die Suchdienste in Azure Maps nutzen, um die Standortkoordinaten zu ermitteln.
-* Einige zusätzliche Spalten enthalten Metadaten zu den Coffee-Shops: eine Telefonnummer, boolesche Spalten für WLAN-Hotspots und Barrierefreiheit für Rollstühle sowie die Geschäftszeiten im 24-Stunden-Format. Sie können auch eigene Spalten mit Metadaten erstellen, die für Ihre Standortdaten eine höhere Relevanz haben.
+* Einige zusätzliche Spalten enthalten Metadaten zu den Coffee-Shops: eine Telefonnummer, boolesche Spalten sowie die Öffnungszeiten im 24-Stunden-Format. Die booleschen Spalten dienen zur Angabe von WLAN-Verfügbarkeit sowie von Barrierefreiheit für Rollstuhlfahrer. Sie können auch eigene Spalten mit Metadaten erstellen, die für Ihre Standortdaten eine höhere Relevanz haben.
 
 > [!Note]
 > Azure Maps rendert Daten in der sphärischen Mercator-Projektion „EPSG:3857“, liest Daten jedoch in „EPSG:4325“ mit WGS84-Bezug. 
 
-Es gibt viele Möglichkeiten, um das Dataset für die Anwendung verfügbar zu machen. Ein Ansatz besteht darin, die Daten in eine Datenbank zu laden und einen Webdienst verfügbar zu machen, mit dem die Daten abgefragt und die Ergebnisse an den Browser des Benutzers gesendet werden. Diese Option ist ideal für große oder häufig aktualisierte Datasets geeignet. Für diese Option fallen aber deutlich mehr Entwicklungsaufwand und höhere Kosten an. 
+Es gibt viele Möglichkeiten, um das Dataset für die Anwendung verfügbar zu machen. Eine Möglichkeit besteht darin, die Daten in eine Datenbank zu laden und einen Webdienst verfügbar zu machen, der die Daten abfragt. Die Ergebnisse können dann an den Browser des Benutzers gesendet werden. Diese Option ist ideal für große oder häufig aktualisierte Datasets geeignet. Für diese Option fallen aber mehr Entwicklungsaufwand und höhere Kosten an. 
 
 Ein anderer Ansatz besteht darin, dieses Dataset in eine Textflatfile zu konvertieren, die vom Browser leicht analysiert werden kann. Die Datei selbst kann mit dem Rest der Anwendung gehostet werden. Diese Option sorgt für eine Vereinfachung, aber sie eignet sich gut für kleinere Datasets, weil der Benutzer alle Daten herunterlädt. Wir verwenden die Textflatfile für dieses Dataset, weil die Größe der Datendatei unter 1 MB liegt.  
 
@@ -105,7 +105,7 @@ Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wi
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
 
-Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker in der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
+Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker auf der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
 
 <center>
 
@@ -115,7 +115,7 @@ Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.micr
 
 Fügen Sie zum Erstellen der Benutzeroberfläche der Datei *index.html* Code hinzu:
 
-1. Fügen Sie dem Element `head` von *index.html* die folgenden `meta`-Tags hinzu. Mit den Tags wird der Zeichensatz (UTF-8) definiert, Internet Explorer und Microsoft Edge werden angewiesen, die aktuellen Browserversionen zu verwenden, und es wird ein Anzeigebereich angegeben, der für dynamische Layouts gut funktioniert.
+1. Fügen Sie dem Element `head` von *index.html* die folgenden `meta`-Tags hinzu. Das Tag `charset` dient zum Definieren des Zeichensatzes (UTF-8). Mit dem Wert `http-equiv` werden Internet Explorer und Microsoft Edge angewiesen, die neueste Browserversion zu verwenden. Und mit dem letzten Tag (`meta`) wird ein geeigneter Viewport für reaktionsfähige Layouts angegeben.
 
     ```HTML
     <meta charset="utf-8">
@@ -375,13 +375,13 @@ Im nächsten Schritt werden die CSS-Stile definiert. Mit CSS-Stilen wird definie
     }
    ```
 
-Wenn Sie die Anwendung jetzt ausführen, werden die Kopfzeile, das Suchfeld und die Suchschaltfläche angezeigt, aber die Karte ist nicht sichtbar, da sie noch nicht geladen wurde. Wenn Sie versuchen, eine Suche durchzuführen, passiert nichts. Wir müssen die JavaScript-Logik einrichten, die im nächsten Abschnitt beschrieben wird, um auf die gesamte Funktionalität der Shopsuche zuzugreifen.
+Wenn Sie die Anwendung jetzt ausführen, werden die Kopfzeile, das Suchfeld und die Suchschaltfläche angezeigt. Die Karte ist jedoch nicht sichtbar, da sie noch nicht geladen wurde. Wenn Sie versuchen, eine Suche durchzuführen, passiert nichts. Wir müssen die JavaScript-Logik einrichten. Dies wird im nächsten Abschnitt beschrieben. Von dieser Logik wird auf sämtliche Funktionen der Shopsuche zugegriffen.
 
 ## <a name="wire-the-application-with-javascript"></a>Hinzufügen von JavaScript-Code zur Anwendung
 
-In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den JavaScript-Code zum Laden und Analysieren der Daten und anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js*, und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
+Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js*, und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
 
-1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie außerdem Variablen für die Karte, ein Popupfenster, eine Datenquelle, eine Symbolebene, einen HTML-Marker zum Anzeigen des Mittelpunkts für den Suchbereich und eine Instanz des Azure Maps-Suchdienstclients.
+1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie die Variablen für die Karte, das Popupfenster, die Datenquelle, eine Symbolebene, einen HTML-Marker zum Anzeigen des Mittelpunkts eines Suchbereichs und eine Instanz des Azure Maps-Suchdienstclients.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -395,7 +395,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
     var map, popup, datasource, iconLayer, centerMarker, searchURL;
     ```
 
-1. Fügen Sie der Datei *index.js* Code hinzu. Mit dem folgenden Code wird Folgendes durchgeführt: Die Karte wird initialisiert, es wird ein [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, der den Abschluss des Seitenladevorgangs abwartet, es werden Ereignisse zum Überwachen des Kartenladevorgangs eingerichtet, und die Grundlage für die Suchschaltfläche und die Schaltfläche zum Anzeigen des eigenen Standorts wird geschaffen.
+1. Fügen Sie der Datei *index.js* Code hinzu. Der folgende Code dient zum Initialisieren der Karte. Wir haben einen [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, um zu warten, bis die Seite geladen wurde. Anschließend haben wir Ereignisse zur Überwachung des Kartenladevorgangs eingebunden und die Suchschaltfläche sowie die Schaltfläche zum Anzeigen des eigenen Standorts mit entsprechenden Funktionen verknüpft.
 
    Wenn der Benutzer die Suchschaltfläche wählt oder nach dem Eingeben eines Standorts im Suchfeld die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länderwerten an die Option `countrySet`, um die Suchergebnisse auf diese Länder/Regionen zu begrenzen. Durch das Begrenzen der zu durchsuchenden Länder/Regionen kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
   
@@ -544,7 +544,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
 
 1. Nachdem Sie das Dataset in den Ereignislistener `ready` der Karte geladen haben, definieren Sie eine Gruppe mit Ebenen zum Rendern der Daten. Eine Blasenebene wird verwendet, um gruppierte Datenpunkte zu rendern. Eine Symbolebene wird zum Rendern der Anzahl von Punkten in jedem Cluster oberhalb der Blasenebene verwendet. Über eine zweite Symbolebene wird ein benutzerdefiniertes Symbol für einzelne Standorte auf der Karte gerendert.
 
-   Fügen Sie die Ereignisse `mouseover` und `mouseout` der Blasen- und Symbolebene hinzu, damit sich der Mauszeiger ändert, wenn der Benutzer die Maus in der Karte auf einen Cluster oder ein Symbol bewegt. Fügen Sie der Clusterblasenebene das Ereignis `click` hinzu. Mit diesem `click`-Ereignis wird die Karte um zwei Zoomfaktoren vergrößert und ein Cluster in der Karte zentriert, wenn der Benutzer den Cluster auswählt. Fügen Sie der Symbolebene ein `click`-Ereignis hinzu. Mit diesem `click`-Ereignis wird ein Popupfenster angezeigt, in dem die Details zu einem Coffee-Shop eingeblendet werden, wenn ein Benutzer ein Symbol für einen Standort wählt. Fügen Sie der Karte ein Ereignis hinzu, um zu überwachen, wann die Verschiebung der Karte abgeschlossen ist. Aktualisieren Sie die Elemente im Listenbereich, wenn dieses Ereignis ausgelöst wird.  
+   Fügen Sie die Ereignisse `mouseover` und `mouseout` der Blasen- und Symbolebene hinzu, damit sich der Mauszeiger ändert, wenn der Benutzer die Maus in der Karte auf einen Cluster oder ein Symbol bewegt. Fügen Sie der Clusterblasenebene das Ereignis `click` hinzu. Mit diesem Ereignis vom Typ `click` wird die Karte um zwei Zoomstufen vergrößert und über einem Cluster zentriert, wenn der Benutzer einen Cluster auswählt. Fügen Sie der Symbolebene ein `click`-Ereignis hinzu. Mit diesem `click`-Ereignis wird ein Popupfenster angezeigt, in dem die Details zu einem Coffee-Shop eingeblendet werden, wenn ein Benutzer ein Symbol für einen Standort wählt. Fügen Sie der Karte ein Ereignis hinzu, um zu überwachen, wann die Verschiebung der Karte abgeschlossen ist. Aktualisieren Sie die Elemente im Listenbereich, wenn dieses Ereignis ausgelöst wird.  
 
     ```JavaScript
     //Create a bubble layer to render clustered data points.
@@ -686,7 +686,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
     }
     ```
 
-1. Beim Aktualisieren des Listenbereichs wird die Entfernung des Mittelpunkts der Karte zu allen Punktfeatures in der aktuellen Kartenansicht berechnet. Die Features werden dann nach Entfernung sortiert. Es wird HTML-Code generiert, um die einzelnen Standorte im Listenbereich anzuzeigen.
+1. Beim Aktualisieren des Listenbereichs wird die Entfernung berechnet. Hierbei handelt es sich um die Entfernung vom Mittelpunkt der Karte zu allen Punktfeatures in der aktuellen Kartenansicht. Die Features werden dann nach Entfernung sortiert. Es wird HTML-Code generiert, um die einzelnen Standorte im Listenbereich anzuzeigen.
 
     ```JavaScript
     var listItemTemplate = '<div class="listItem" onclick="itemSelected(\'{id}\')"><div class="listItem-title">{title}</div>{city}<br />Open until {closes}<br />{distance} miles away</div>';

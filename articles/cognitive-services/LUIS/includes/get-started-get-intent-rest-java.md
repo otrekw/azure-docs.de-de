@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1bd7a2bb6d3393aca397686a2817f1dcd5f89a38
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414606"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987773"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -21,9 +21,22 @@ ms.locfileid: "74414606"
 * [Visual Studio Code](https://code.visualstudio.com/) oder Ihre bevorzugte IDE
 * ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>Abrufen des LUIS-Schlüssels
+## <a name="create-luis-runtime-key-for-predictions"></a>Erstellen eines LUIS-Runtimeschlüssels für Vorhersagen
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+1. Geben Sie alle erforderlichen Einstellungen für den **Runtimeschlüssel** ein:
+
+    |Einstellung|value|
+    |--|--|
+    |Name|Gewünschter Name (2 bis 64 Zeichen)|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
+    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
+    |Preisstufe|`F0` – der Mindesttarif|
+    |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
+
+1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
+1. Erfassen Sie den konfigurierten Endpunkt (`endpoint`) und einen Schlüssel (`key`).
 
 ## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
@@ -47,70 +60,72 @@ Verwenden Sie Java, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pred
     import org.apache.http.client.utils.URIBuilder;
     import org.apache.http.impl.client.HttpClients;
     import org.apache.http.util.EntityUtils;
-    
+
     public class Predict {
-    
-        public static void main(String[] args) 
+
+        public static void main(String[] args)
         {
             HttpClient httpclient = HttpClients.createDefault();
-    
+
             try
             {
-    
+
                 // The ID of a public sample LUIS app that recognizes intents for turning on and off lights
                 String AppId = "df67dcdb-c37d-46af-88e1-8b97951ca1c2";
-                
-                // Add your endpoint key 
+
+                // Add your prediction Runtime key
                 String Key = "YOUR-KEY";
-    
-                // Add your endpoint, example is westus.api.cognitive.microsoft.com
+
+                // Add your endpoint, example is your-resource-name.api.cognitive.microsoft.com
                 String Endpoint = "YOUR-ENDPOINT";
-    
+
                 String Utterance = "turn on all lights";
-    
+
                 // Begin endpoint URL string building
                 URIBuilder endpointURLbuilder = new URIBuilder("https://" + Endpoint + "/luis/prediction/v3.0/apps/" + AppId + "/slots/production/predict?");
-    
+
                 // query string params
                 endpointURLbuilder.setParameter("query", Utterance);
                 endpointURLbuilder.setParameter("subscription-key", Key);
                 endpointURLbuilder.setParameter("show-all-intents", "true");
                 endpointURLbuilder.setParameter("verbose", "true");
-    
+
                 // create URL from string
                 URI endpointURL = endpointURLbuilder.build();
-    
+
                 // create HTTP object from URL
                 HttpGet request = new HttpGet(endpointURL);
-    
+
                 // access LUIS endpoint - analyze text
                 HttpResponse response = httpclient.execute(request);
-    
+
                 // get response
                 HttpEntity entity = response.getEntity();
-    
-    
-                if (entity != null) 
+
+
+                if (entity != null)
                 {
                     System.out.println(EntityUtils.toString(entity));
                 }
             }
-    
+
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
             }
-        }   
-    }    
+        }
+    }
     ```
 
-1. Ersetzen Sie die folgenden Werte:
+1. Ersetzen Sie die Werte `YOUR-KEY` und `YOUR-ENDPOINT` durch Ihren eigenen Schlüssel- bzw. Endpunktwert für die **Vorhersageruntime**.
 
-    * `YOUR-KEY` durch Ihren Startschlüssel
-    * `YOUR-ENDPOINT` durch Ihren Endpunkt Beispiel: `westus2.api.cognitive.microsoft.com`.
+    |Information|Zweck|
+    |--|--|
+    |`YOUR-KEY`|Ihr 32-stelliger Schlüssel für die **Vorhersageruntime**.|
+    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Vorhersage. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Kompilieren Sie das Java-Programm über die Befehlszeile: 
+1. Kompilieren Sie das Java-Programm über die Befehlszeile:
 
     ```console
     javac -cp ":lib/*" Predict.java
@@ -128,7 +143,7 @@ Verwenden Sie Java, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pred
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Die zur besseren Lesbarkeit formatierte JSON-Antwort: 
+    Die zur besseren Lesbarkeit formatierte JSON-Antwort:
 
     ```JSON
     {
@@ -171,13 +186,9 @@ Verwenden Sie Java, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pred
     }
     ```
 
-## <a name="luis-keys"></a>LUIS-Schlüssel
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

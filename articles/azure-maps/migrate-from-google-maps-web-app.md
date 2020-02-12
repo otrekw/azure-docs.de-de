@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d9b873a058410219bc55abc4f575823b519a646b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910867"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989111"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrieren einer Web-App aus Google Maps
 
-Die meisten Web-Apps, die Google Maps verwenden, verwenden das Google Maps V3 JavaScript SDK. Das Azure Maps Web SDK ist das passende Azure-basierte SDK, zu dem migriert werden kann. Mit dem Azure Maps Web SDK können Sie interaktive Karten mit eigenen Inhalten und Bildern anpassen, die in Ihren webbasierten oder mobilen Anwendungen angezeigt werden sollen. Dieses Steuerelement nutzt WebGL, was das Rendern umfangreicher Datasets mit hoher Leistung ermöglicht. Verwenden Sie für die Entwicklung mit dem SDK JavaScript oder TypeScript.
+Die meisten Web-Apps, die Google Maps nutzen, verwenden das Google Maps V3 JavaScript SDK. Das Azure Maps Web SDK ist das passende Azure-basierte SDK, zu dem migriert werden kann. Mit dem Azure Maps Web SDK können Sie interaktive Karten mit eigenen Inhalten und Bildern anpassen. Ihre App kann sowohl in webbasierten als auch in mobilen Anwendungen ausgeführt werden. Dieses Steuerelement nutzt WebGL, was das Rendern umfangreicher Datasets mit hoher Leistung ermöglicht. Verwenden Sie für die Entwicklung mit dem SDK JavaScript oder TypeScript.
 
-Wenn Sie eine vorhandene Webanwendung migrieren, überprüfen Sie, ob sie eine Open Source-Kartensteuerelement-Bibliothek wie Cesium, Leaflet oder OpenLayers verwendet. Wenn dies der Fall ist und Sie das Azure Maps Web SDK nicht verwenden möchten, besteht eine weitere Option zum Migrieren der Anwendung darin, das Open Source-Kartensteuerelement weiterhin zu verwenden und es mit den Kacheldiensten von Azure Maps zu verbinden ([Straßenkacheln](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [Satellitenkacheln](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Nachfolgend finden Sie ausführliche Informationen zur Verwendung von Azure Maps in einigen häufig verwendeten Open Source-Kartensteuerelement-Bibliotheken.
+Wenn Sie eine vorhandene Webanwendung migrieren, überprüfen Sie, ob die Anwendung eine Open Source-basierte Kartensteuerelement-Bibliothek verwendet. Beispiele für Open Source-basierte Kartensteuerelement-Bibliotheken wären etwa Cesium, Leaflet und OpenLayers. Wenn dies der Fall ist und Sie das Azure Maps Web SDK nicht verwenden möchten, besteht eine weitere Option zum Migrieren der Anwendung darin, das Open Source-Kartensteuerelement weiterhin zu verwenden und es mit den Kacheldiensten von Azure Maps zu verbinden ([Straßenkacheln](https://docs.microsoft.com/rest/api/maps/render/getmaptile) \| [Satellitenkacheln](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Im Anschluss finden Sie ausführliche Informationen zur Verwendung von Azure Maps in einigen gängigen Open Source-basierten Kartensteuerelement-Bibliotheken:
 
 - Cesium: ein 3D-Kartensteuerelement für das Web. [Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \| [Dokumentation](https://cesiumjs.org/)
 - Leaflet: schlankes 2D-Kartensteuerelement für das Web. [Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \| [Dokumentation](https://leafletjs.com/)
@@ -28,9 +28,9 @@ Wenn Sie eine vorhandene Webanwendung migrieren, überprüfen Sie, ob sie eine O
 
 ## <a name="key-features-support"></a>Unterstützung wichtiger Funktionen
 
-In der folgenden Tabelle sind die wichtigsten API-Funktionen im Google Maps V3 JavaScript SDK und die Unterstützung einer ähnlichen API im Azure Maps Web SDK aufgeführt.
+Die folgende Tabelle enthält die wichtigsten API-Features im Google Maps V3 JavaScript SDK sowie das unterstützte API-Feature im Azure Maps Web SDK:
 
-| Google Maps-Funktion     | Azure Maps Web SDK-Unterstützung |
+| Google Maps-Feature     | Azure Maps Web SDK-Unterstützung |
 |-------------------------|:--------------------------:|
 | Marker                 | ✓                          |
 | Markerclustering       | ✓                          |
@@ -48,40 +48,40 @@ In der folgenden Tabelle sind die wichtigsten API-Funktionen im Google Maps V3 J
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Wichtige Unterschiede in den Web-SDKs
 
-Nachfolgend finden Sie einige der wichtigsten Unterschiede zwischen den Google Maps und Azure Maps Web SDKs, die Sie beachten sollten:
+Hier finden Sie einige der wichtigsten Unterschiede zwischen den Web-SDKs für Google Maps und Azure Maps, die Sie beachten sollten:
 
 - Zusätzlich zur Bereitstellung eines gehosteten Endpunkts für den Zugriff auf das Azure Maps Web SDK hinaus steht außerdem ein NPM-Paket zum Einbetten des Web SDKs in Apps zur Verfügung. Weitere Informationen finden Sie in dieser [Dokumentation](how-to-use-map-control.md). Dieses Paket enthält außerdem TypeScript-Definitionen.
 - Nachdem Sie eine Instanz der Map-Klasse in Azure Maps erstellt haben, sollte der Code warten, bis das Kartenereignis `ready` oder `load` ausgelöst wird, bevor er mit der Zuordnung interagiert. Dadurch wird sichergestellt, dass alle Kartenressourcen geladen wurden und für den Zugriff bereit sind.
 - Beide Plattformen verwenden ein ähnliches System der Anordnung für die Basiskarten, jedoch messen die Kacheln in Google Maps 256 Pixel, während die Kacheln in Azure Maps 512 Pixel groß sind. Daher muss, um in Azure Maps die gleiche Kartenansicht wie in Google Maps zu erreichen, eine in Google Maps verwendete Zoomstufe von der Zoomstufe in Azure Maps subtrahiert werden.
-- Koordinaten werden in Google Maps als "Breitengrad, Längengrad" angegeben, während Azure Maps "Längengrad, Breitengrad" verwendet. Dies richtet sich nach dem Standard `[x, y]`, dem die meisten GIS-Plattformen folgen.
-- Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [*atlas.data*-Namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest) verfügbar gemacht. Es gibt ferner die [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape)-Klasse, die zum Umschließen von GeoJSON-Objekten verwendet werden kann, damit sie sich leicht in einer Weise aktualisieren und warten lassen, die Datenbindungen zulässt.
-- Koordinaten sind in Azure Maps als Position-Objekte definiert, die als einfaches Zahlenarray im Format `[longitude, latitude]` oder als neue atlas.data.Position(Längengrad, Breitengrad) angegeben werden können.
+- Koordinaten werden in Google Maps im Format „Breitengrad, Längengrad“ angegeben. In Azure Maps wird dagegen das Format „Längengrad, Breitengrad“ verwendet. Das Format von Azure Maps entspricht dem Standardformat `[x, y]`, das von den meisten GIS-Plattformen genutzt wird.
+- Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [*atlas.data*-Namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data?view=azure-iot-typescript-latest) verfügbar gemacht. Darüber hinaus gibt es die Klasse [*atlas.Shape*](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape). Diese Klasse kann zum Umschließen von GeoJSON-Objekten verwendet werden, damit sie sich leicht in einer für Datenbindungen geeigneten Weise aktualisieren und warten lassen.
+- Koordinaten werden in Azure Maps als Positionsobjekte definiert. Eine Koordinate wird als einfaches Zahlenarray im Format `[longitude, latitude]` oder mithilfe der neuen Option „atlas.data.Position(Längengrad, Breitengrad)“ angegeben.
     > [!TIP]
-    > Die Position-Klasse weist eine statische Hilfsmethode zum Importieren von Koordinaten im Format „Breitengrad, Längengrad“ auf. Die Methode [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) kann die Methode `new google.maps.LatLng` in Google Maps-Code in vielen Fällen ersetzen.
-- Anstatt Formatierungsinformationen für jede Form anzugeben, die der Karte hinzugefügt wird, trennt Azure Maps Formatvorlagen von den Daten. Daten werden in Datenquellen gespeichert und sind mit Renderingebenen verbunden, die vom Azure-Code für das Rendern von Daten verwendet werden. Dieser Ansatz bietet den Vorteil besserer Leistung. Darüber hinaus unterstützen viele Ebenen datengesteuerte Formatierungen, bei denen den Optionen der Ebenenformatvorlage Geschäftslogik hinzugefügt werden kann, die das Rendering einzelner Formen auf einer Ebene auf der Grundlage der in der Form definierten Eigenschaften ändert.
+    > Die Position-Klasse weist eine statische Hilfsmethode zum Importieren von Koordinaten im Format „Breitengrad, Längengrad“ auf. Die Methode [atlas.data.Position.fromLatLng](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.position?view=azure-iot-typescript-latest) kann in vielen Fällen durch die Methode `new google.maps.LatLng` in Google Maps-Code ersetzt werden.
+- Anstatt Formatierungsinformationen für jede Form anzugeben, die der Karte hinzugefügt wird, trennt Azure Maps Formatvorlagen von den Daten. Daten werden in Datenquellen gespeichert und sind mit Renderingebenen verbunden. In Azure Maps-Code werden Datenquellen zum Rendern der Daten verwendet. Dieser Ansatz bietet den Vorteil besserer Leistung. Darüber hinaus unterstützen viele Ebenen ein datengesteuertes Format, bei dem Ebenenformatoptionen mit Geschäftslogik versehen werden können. Durch diese Unterstützung ändert sich die Art und Weise, wie individuelle Formen innerhalb einer Ebene auf der Grundlage der in der Form definierten Eigenschaften gerendert werden.
 
 ## <a name="web-sdk-side-by-side-examples"></a>Beispiele zum Web SDK in der Gegenüberstellung
 
-Nachfolgend finden Sie eine Zusammenstellung von Codebeispielen für jede Plattform, die häufige Anwendungsfälle abdecken und Ihnen die Migration Ihrer Webanwendung vom Google Maps V3 JavaScript SDK zum Azure Maps Web SDK erleichtern sollen. Codebeispiele für Webanwendungen werden in JavaScript zur Verfügung gestellt; Azure Maps bietet darüber hinaus über ein [NPM-Modul](how-to-use-map-control.md) aber außerdem TypeScript-Definitionen.
+Hier finden Sie eine Sammlung von Codebeispielen für gängige Anwendungsfälle der Plattformen. Die Beispiele helfen Ihnen bei der Migration Ihrer Webanwendung vom Google Maps V3 JavaScript SDK zum Azure Maps Web SDK. Codebeispiele für Webanwendungen werden in JavaScript bereitgestellt. Darüber hinaus bietet Azure Maps aber auch TypeScript-Definitionen über ein [NPM-Modul](how-to-use-map-control.md).
 
 ### <a name="load-a-map"></a>Laden einer Karte
 
-Das Laden einer Karte folgt in SDKs der gleichen Schrittfolge:
+Zum Laden einer Karte müssen in beiden SDKs die gleichen Schritte ausgeführt werden:
 
 - Hinzufügen eines Verweises auf das Karten-SDK.
-- Hinzufügen eines `div`-Tags zum Textkörper der Seite, das als Platzhalter für die Karte fungiert.
+- Hinzufügen eines Tags vom Typ `div` zum Textkörper der Seite. (Das Tag fungiert als Platzhalter für die Karte.)
 - Erstellen einer JavaScript-Funktion, die nach dem Laden der Seite aufgerufen wird.
 - Erstellen einer Instanz der jeweiligen Kartenklasse.
 
 **Einige wesentliche Unterschiede**
 
-- Für Google Maps muss im Skriptverweis der API ein Kontoschlüssel angegeben werden. Authentifizierungs-Anmeldeinformationen für Azure Maps werden als Optionen der Kartenklasse angegeben. Dabei kann es sich um einen Abonnementschlüssel oder um Azure Active Directory-Informationen handeln.
-- Google Maps akzeptiert eine Rückruffunktion im Skriptverweis der API, die verwendet wird, um eine Initialisierungsfunktion zum Laden der Karte aufzurufen. Bei Azure Maps sollte das onload-Ereignis der Seite verwendet werden.
+- Für Google Maps muss im Skriptverweis der API ein Kontoschlüssel angegeben werden. Authentifizierungs-Anmeldeinformationen für Azure Maps werden als Optionen der Kartenklasse angegeben. Bei diesen Anmeldeinformationen kann es sich um einen Abonnementschlüssel oder um Azure Active Directory-Informationen handeln.
+- Google Maps akzeptiert eine Rückruffunktion im Skriptverweis der API, um eine Initialisierungsfunktion zum Laden der Karte aufzurufen. Bei Azure Maps sollte das onload-Ereignis der Seite verwendet werden.
 - Beim Verweisen auf das `div`-Element, in dem die Karte gerendert werden soll, benötigt die `Map`-Klasse in Azure Maps lediglich den `id`-Wert, während Google Maps ein `HTMLElement`-Objekt erfordert.
-- Koordinaten sind in Azure Maps als Position-Objekte definiert, die als einfaches Zahlenarray im Format `[longitude, latitude]` angegeben werden können.
-- Die Zoomstufe in Azure Maps ist aufgrund der unterschiedlichen Größen im Anordnungssystem der Kacheln bei beiden Plattformen eine Stufe niedriger als im Google Maps-Beispiel.
-- Standardmäßig fügt Azure Maps dem Kartenzeichenbereich keine Navigationssteuerelemente hinzu, wie etwa Zoomschaltflächen und Kartenstil-Schaltflächen. Es gibt jedoch Steuerelemente zum Hinzufügen eines Auswahlelements für den Kartenstil, von Zoomschaltflächen oder eines Drehungssteuerelements sowie eines Gradsteuerelements.
-- In Azure Maps wird ein Ereignishandler hinzugefügt, um das `ready`-Ereignis der Karteninstanz zu überwachen. Dieses wird ausgelöst, wenn die Karte das Laden des WebGL-Kontexts und aller benötigten Ressourcen abgeschlossen hat. Jeglicher nach dem Laden auszuführende Code kann diesem Ereignishandler hinzugefügt werden.
+- Koordinaten werden in Azure Maps als Positionsobjekte definiert, die als einfaches Zahlenarray im Format `[longitude, latitude]` angegeben werden können.
+- Die Zoomstufe in Azure Maps ist eine Stufe niedriger als in Google Maps. Diese Abweichung ist auf den Größenunterschied zwischen den Kachelsystemen der beiden Plattformen zurückzuführen.
+- Von Azure Maps werden der Kartencanvas standardmäßig keine Navigationssteuerelemente hinzugefügt. Eine Karte verfügt also standardmäßig über keine Schaltflächen zum Zoomen oder zum Anpassen des Kartenstils. Es gibt jedoch Steuerelemente zum Hinzufügen eines Auswahlelements für den Kartenstil, von Zoomschaltflächen oder eines Drehungssteuerelements sowie eines Gradsteuerelements.
+- In Azure Maps wird ein Ereignishandler hinzugefügt, um das `ready`-Ereignis der Karteninstanz zu überwachen. Dieses Ereignis wird ausgelöst, wenn der WebGL-Kontext und alle benötigten Ressourcen geladen wurden. Fügen Sie diesem Ereignishandler jeglichen Code hinzu, der nach dem vollständigen Laden der Karte ausgeführt werden soll.
 
 Die Beispiele unten zeigen das Laden einer einfachen Karte, die über New York an den Koordinaten (Längengrad: -73.985, Breitengrad: 40,747) zentriert ist.
 
@@ -186,7 +186,7 @@ Beim Ausführen dieses Codes in einem Browser wird eine Karte angezeigt, die wie
 Eine ausführliche Dokumentation zum Einrichten und Verwenden des Azure Maps-Steuerelements finden Sie [hier](how-to-use-map-control.md).
 
 > [!NOTE]
-> Im Gegensatz zu Google Maps ist bei Azure Maps keine Angabe einer Anfangszentrierung und einer Anfangszoomstufe beim Laden der Karte erforderlich. Wenn diese Informationen beim Laden der Karte nicht angegeben werden, versucht die Karte zu bestimmen, in welcher Stadt sich der Benutzer befindet und zentriert und vergrößert sich entsprechend.
+> Im Gegensatz zu Google Maps ist bei Azure Maps keine Angabe einer Anfangszentrierung und einer Anfangszoomstufe erforderlich, wenn die Karte geladen wird. Wenn diese Informationen beim Laden der Karte nicht angegeben werden, versucht die Karte zu bestimmen, in welcher Stadt sich der Benutzer befindet und zentriert und vergrößert sich entsprechend.
 
 **Zusätzliche Ressourcen:**
 
@@ -212,7 +212,7 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr-FR“.
 
 **Nachher: Azure Maps**
 
-Azure Maps bietet zwei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Die erste Option besteht darin, diese Informationen dem globalen *atlas*-Namespace hinzuzufügen. Dies führt dazu, dass alle Kartensteuerelementinstanzen in Ihrer App diese Einstellungen als Standard verwenden. Im Folgenden wird die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt:
+Azure Maps bietet zwei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Die erste Option besteht darin, diese Informationen dem globalen Namespace *atlas* hinzuzufügen. Dies führt dazu, dass alle Kartensteuerelementinstanzen in Ihrer App diese Einstellungen als Standard verwenden. Im Folgenden wird die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt:
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -234,7 +234,7 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!NOTE]
-> Mit Azure Maps ist es möglich, mehrere Karteninstanzen auf derselben Seite mit unterschiedlichen Sprach- und Regionseinstellungen zu laden. Außerdem ist es möglich, diese Einstellungen in der Karte auch nach dem Laden zu aktualisieren. [Hier](supported-languages.md) finden Sie eine ausführliche Liste der in Azure Maps unterstützten Sprachen.
+> Mit Azure Maps ist es möglich, auf der gleichen Seite mehrere Karteninstanzen mit unterschiedlichen Sprach- und Regionseinstellungen zu laden. Außerdem ist es möglich, diese Einstellungen in der Karte auch nach dem Laden zu aktualisieren. [Hier](supported-languages.md) finden Sie eine ausführliche Liste der in Azure Maps unterstützten Sprachen.
 
 Hier sehen Sie ein Beispiel für Azure Maps mit der Spracheinstellung „fr“ und der auf „fr-FR“ festgelegten Benutzerregion.
 
@@ -244,14 +244,14 @@ Hier sehen Sie ein Beispiel für Azure Maps mit der Spracheinstellung „fr“ u
 
 ### <a name="setting-the-map-view"></a>Festlegen der Kartenansicht
 
-Dynamische Karten können sowohl in Azure als auch in Google Maps programmgesteuert durch Aufrufen der passenden Funktionen in JavaScript an neue geografische Standorte verschoben werden. Die Beispiele unten demonstrieren das Festlegen der Karte auf Satellitenluftbilder, das Zentrieren der Karte über einem Standort mit den Koordinaten (Längengrad: -111,0225, Breitengrad: 35,0272) und das Ändern der Zoomstufe auf 15 in Google Maps.
+Dynamische Karten können sowohl in Azure Maps als auch in Google Maps programmgesteuert an neue geografische Orte verschoben werden. Rufen Sie hierzu die entsprechenden Methoden in JavaScript auf. In den Beispielen wird gezeigt, wie Sie in Google Maps eine Karte mit Satellitenluftaufnahmen anzeigen, die Karte über einem Ort zentrieren und die Zoomstufe auf „15“ festlegen. Der Ort hat die Koordinaten „-111,0225“ (Längengrad) und „35,0272“ (Breitengrad).
 
 > [!NOTE]
 > Google Maps verwendet Kacheln mit der Abmessung 256 Pixel, während Azure Maps größere 512 Pixel-Kacheln verwendet. Dadurch wird die Anzahl der Netzwerkanforderungen reduziert, die Azure Maps zum Laden des gleichen Kartenbereichs wie Google Maps benötigt. Aufgrund der Funktionsweise von Kachelpyramiden in den Kartensteuerelementen, erfordern die größeren Kacheln in Azure Maps zum Erreichen des gleichen sichtbaren Bereichs einer Karte in Google Maps, dass Sie die in Google Maps verwendete Zoomstufe in Azure Maps um 1 verringern müssen.
 
 **Vorher: Google Maps**
 
-Das Kartensteuerelement in Google Maps kann mithilfe der `setOptions`-Methode programmgesteuert verschoben werden, was es Ihnen ermöglicht, den Mittelpunkt der Karte und eine Zoomstufe anzugeben.
+Das Kartensteuerelement von Google Maps kann mithilfe der Methode `setOptions` programmgesteuert verschoben werden. Diese Methode ermöglicht die Angabe des Kartenmittelpunkts und einer Zoomstufe.
 
 ```javascript
 map.setOptions({
@@ -267,7 +267,7 @@ map.setOptions({
 
 **Nachher: Azure Maps**
 
-In Azure Maps kann die Kartenposition programmgesteuert mithilfe der `setCamera`-Methode der Karte und der Kartenstil mithilfe der `setStyle`-Methode geändert werden. Beachten Sie, dass die Koordinaten in Azure Maps im Format „Längengrad, Breitengrad“ angegeben werden und der Wert für die Zoomstufe um 1 verringert ist.
+In Azure Maps kann die Kartenposition programmgesteuert mithilfe der Methode `setCamera` der Karte geändert werden. Der Kartenstil kann mithilfe der Methode `setStyle` geändert werden. Die Koordinaten in Azure Maps werden im Format „Längengrad, Breitengrad“ angegeben, und der Wert für die Zoomstufe ist um eine Stufe niedriger.
 
 ```javascript
 map.setCamera({
@@ -291,13 +291,13 @@ map.setStyle({
 
 ### <a name="adding-a-marker"></a>Hinzufügen eines Markers
 
-In Azure Maps gibt es mehrere Möglichkeiten, wie Punktdaten auf der Karte gerendert werden können.
+In Azure Maps können Punktdaten auf mehrere Arten auf der Karte gerendert werden.
 
 - **HTML-Marker**: Rendering von Punkten mithilfe herkömmlicher DOM-Elemente. HTML-Markers unterstützten Ziehbewegungen.
 - **Symbolebene**: Rendering von Punkten als Symbol und/oder Text im WebGL-Kontext.
 - **Blasenebene**: Punktdaten werden als Kreise auf der Karte gerendert. Die Radien der Kreise können auf der Grundlage von Eigenschaften in den Daten skaliert werden.
 
-Sowohl die Symbol- als auch die Blasenebene wird innerhalb des WebGL-Kontexts gerendert, und beide können sehr große Punktmengen auf der Karte darstellen. Für diese Ebenen ist die Speicherung der Daten in einer Datenquelle erforderlich. Die Datenquellen und Renderingebenen sollten der Karte nach dem Auslösen des `ready`-Ereignisses hinzugefügt werden. HTML-Marker werden als DOM-Elemente auf der Seite gerendert und benötigen keine Datenquelle. Je mehr DOM-Elemente eine Seite aufweist, desto langsamer wird sie. Wenn mehr als ein paar hundert Punkte auf einer Karte gerendert werden sollen, empfiehlt es sich, stattdessen eine der Renderingebenen zu verwenden.
+Sowohl die Symbol- als auch die Blasenebene wird innerhalb des WebGL-Kontexts gerendert. Von beiden Ebenen können große Punktmengen auf der Karte gerendert werden. Für diese Ebenen ist die Speicherung der Daten in einer Datenquelle erforderlich. Die Datenquellen und Renderingebenen sollten der Karte nach dem Auslösen des `ready`-Ereignisses hinzugefügt werden. HTML-Marker werden als DOM-Elemente auf der Seite gerendert und benötigen keine Datenquelle. Je mehr DOM-Elemente eine Seite aufweist, desto langsamer wird sie. Wenn mehr als ein paar hundert Punkte auf einer Karte gerendert werden sollen, empfiehlt es sich, stattdessen eine der Renderingebenen zu verwenden.
 
 In den folgenden Beispielen wird der Karte ein Marker bei (Längengrad: -0,2, Breitengrad: 51,5) mit der als Bezeichnung überlagerten Zahl „10“ hinzugefügt.
 
@@ -320,7 +320,7 @@ var marker = new google.maps.Marker({
 
 **Nachher: Azure Maps unter Verwendung von HTML-Markern**
 
-In Azure Maps können HTML-Marker verwendet werden, um einen Punkt auf der Karte anzuzeigen, und werden für einfache Apps empfohlen, die nur eine kleine Anzahl Punkte auf der Karte darstellen müssen. Um einen HTML-Marker zu verwenden, erstellen Sie einfach eine Instanz der `atlas.HtmlMarker`-Klasse, legen Sie die Optionen für Text und Position fest, und fügen Sie der Karte den Marker mithilfe der `map.markers.add`-Methode hinzu.
+In Azure Maps können HTML-Marker verwendet werden, um einen Punkt auf der Karte anzuzeigen. HTML-Marker werden für einfache Apps empfohlen, die nur eine kleine Anzahl von Punkte auf der Karte darstellen müssen. Wenn Sie einen HTML-Marker verwenden möchten, erstellen Sie eine Instanz der Klasse `atlas.HtmlMarker`, legen Sie die Optionen für Text und Position fest, und fügen Sie der Karte den Marker mithilfe der Methode `map.markers.add` hinzu.
 
 ```javascript
 //Create a HTML marker and add it to the map.
@@ -336,7 +336,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Nachher: Azure Maps unter Verwendung einer Symbolebene**
 
-Beim Verwenden einer Symbolebene müssen die Daten einer Datenquelle hinzugefügt werden, und die Datenquelle muss an die Ebene angefügt werden. Außerdem sollten die Datenquelle und die Ebene der Karte nach dem Auslösen des `ready`-Ereignisses hinzugefügt werden. Zum Rendern eines eindeutigen Textwerts oberhalb eines Symbols müssen die Textinformationen als Eigenschaft des Datenpunkts gespeichert werden, und in der `textField`-Option der Ebene muss auf diese Eigenschaft verweisen werden. Das ist etwas arbeitsaufwändiger als die Verwendung von HTML-Markern, bietet aber viele Leistungsvorteile.
+Beim Verwenden einer Symbolebene müssen die Daten einer Datenquelle hinzugefügt werden, und die Datenquelle muss an die Ebene angefügt werden. Außerdem sollten die Datenquelle und die Ebene der Karte nach dem Auslösen des `ready`-Ereignisses hinzugefügt werden. Zum Rendern eines eindeutigen Textwerts über einem Symbol müssen die Textinformationen als Eigenschaft des Datenpunkts gespeichert werden, und in der Option `textField` der Ebene muss auf diese Eigenschaft verweisen werden. Diese Vorgehensweise ist zwar etwas aufwendiger als die Verwendung von HTML-Markern, hat aber Leistungsvorteile.
 
 ```html
 <!DOCTYPE html>
@@ -415,16 +415,16 @@ Beim Verwenden einer Symbolebene müssen die Daten einer Datenquelle hinzugefüg
 
 ### <a name="adding-a-custom-marker"></a>Hinzufügen eines benutzerdefinierten Markers
 
-Benutzerdefinierte Bilder können zur Darstellung von Punkten auf einer Karte verwendet werden. Das folgende Bild wird in den Beispielen unten zur Verwendung eines benutzerdefinierten Bilds zum Darstellen eines Punkts auf der Karte an (Breitengrad: 51,5, Längengrad: -0,2) verwendet und versetzt die Position des Markers so, dass der Punkt des Ortsmarkensymbols sich an der richtigen Position auf der Karte ausrichtet.
+Benutzerdefinierte Bilder können zur Darstellung von Punkten auf einer Karte verwendet werden. Im folgenden Kartenbild wird ein benutzerdefiniertes Bild verwendet, um einen Punkt auf der Karte anzuzeigen. Der Punkt wird an folgenden Koordinaten angezeigt: 51,5 (Breitengrad), -0,2 (Längengrad). Die Position des Markers wird durch den Anker so angepasst, dass die Spitze des Stecknadelsymbols auf die korrekte Kartenposition ausgerichtet ist.
 
 <center>
 
-![Bild von gelber Ortsmarke](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
+![Bild: gelbe Stecknadel](media/migrate-google-maps-web-app/ylw_pushpin.png)<br/>
 ylw\_pushpin.png</center>
 
 **Vorher: Google Maps**
 
-In Google Maps wird ein benutzerdefinierter Marker durch Angeben eines `Icon`-Objekts erstellt, das die `url` des Bilds und einen `anchor`-Punkt zum Ausrichten des Punkts des Ortsmarkenbilds an der Koordinate auf der Karte enthält. Der Ankerwert in Google Maps ist relativ zur oberen linken Ecke des Bilds.
+In Google Maps wird ein benutzerdefinierter Marker durch Angeben eines `Icon`-Objekts erstellt, das die `url` des Bilds und einen `anchor`-Punkt zum Ausrichten des Punkts des Ortsmarkenbilds an der Koordinate auf der Karte enthält. Der Ankerwert in Google Maps wird relativ zur linken oberen Ecke des Bilds angegeben.
 
 ```javascript
 var marker = new google.maps.Marker({
@@ -443,7 +443,7 @@ var marker = new google.maps.Marker({
 
 **Nachher: Azure Maps unter Verwendung von HTML-Markern**
 
-Zum Anpassen eines HTML-Markers kann in Azure Maps der `htmlContent`-Option des Markers ein HTML-`string` oder -`HTMLElement` übergeben werden. In Azure Maps wird eine `anchor`-Option verwendet, um die relative Position des Markers bezogen auf die Positionskoordinate mithilfe eines von neun definierten Referenzpunkten anzugeben: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte werden standardmäßig unten in der Mitte des HTML-Inhalts verankert. Um die Migration von Code aus Google Maps zu vereinfachen, legen Sie den `anchor` auf „top-left“ fest, und verwenden Sie dann die Option `pixelOffset` mit dem gleichen Offset, der in Google Maps verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Google Maps entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
+Zum Anpassen eines HTML-Markers kann in Azure Maps ein HTML-Element vom Typ `string` oder `HTMLElement` an die Option `htmlContent` des Markers übergeben werden. In Azure Maps wird eine Option vom Typ `anchor` verwendet, um die Position des Markers relativ zur Positionskoordinate anzugeben. Hierzu kann einer der neun definierten Referenzpunkte verwendet werden. Folgende Referenzpunkte sind definiert: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte werden standardmäßig unten in der Mitte des HTML-Inhalts verankert. Um die Migration von Code aus Google Maps zu vereinfachen, legen Sie den `anchor` auf „top-left“ fest, und verwenden Sie dann die Option `pixelOffset` mit dem gleichen Offset, der in Google Maps verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Google Maps entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
 
 > [!TIP]
 > Fügen Sie `pointer-events:none` im HTML-Inhalt als Formatvorlage hinzu, um das Standardverhalten beim Ziehen in Microsoft Edge zu deaktivieren, bei dem ein unerwünschtes Symbol angezeigt wird.
@@ -463,7 +463,7 @@ map.markers.add(new atlas.HtmlMarker({
 
 **Nachher: Azure Maps unter Verwendung einer Symbolebene**
 
-Symbolebenen in Azure Maps unterstützen ebenfalls benutzerdefinierte Bilder, das Bild muss jedoch zuerst in die Kartenressourcen geladen, und ihm muss eine eindeutige ID zugewiesen werden. Anschließend kann die Symbolebene auf diese ID verweisen. Für das Symbol kann zur Ausrichtung am richtigen Punkt des Bilds ein Offset mithilfe der Symboloption `offset` festgelegt werden. In Azure Maps wird eine `anchor`-Option verwendet, um die relative Position des Symbols bezogen auf die Positionskoordinate mithilfe eines von neun definierten Referenzpunkten anzugeben: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte werden standardmäßig unten in der Mitte des HTML-Inhalts verankert. Um die Migration von Code aus Google Maps zu vereinfachen, legen Sie den `anchor` auf „top-left“ fest, und verwenden Sie dann die Option `offset` mit dem gleichen Offset, der in Google Maps verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Google Maps entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
+Symbolebenen in Azure Maps unterstützen ebenfalls benutzerdefinierte Bilder, das Bild muss jedoch zuerst in die Kartenressourcen geladen, und ihm muss eine eindeutige ID zugewiesen werden. Anschließend kann die Symbolebene auf diese ID verweisen. Für das Symbol kann mithilfe der Symboloption `offset` ein Versatz festgelegt werden, um es auf den richtigen Punkt des Bilds auszurichten. In Azure Maps wird eine Option vom Typ `anchor` verwendet, um die Position des Symbols relativ zur Positionskoordinate anzugeben. Hierzu kann einer der neun definierten Referenzpunkte verwendet werden. Folgende Positionskoordinaten sind definiert: „center“, „top“, „bottom“, „left“, „right“, „top-left“, „top-right“, „bottom-left“, „bottom-right“. Die Inhalte werden standardmäßig unten in der Mitte des HTML-Inhalts verankert. Um die Migration von Code aus Google Maps zu vereinfachen, legen Sie den `anchor` auf „top-left“ fest, und verwenden Sie dann die Option `offset` mit dem gleichen Offset, der in Google Maps verwendet wird. Die Offsets in Azure Maps bewegen sich in der zu Google Maps entgegengesetzten Richtung, Sie müssen sie daher mit minus Eins multiplizieren.
 
 ```html
 <!DOCTYPE html>
@@ -529,7 +529,7 @@ Symbolebenen in Azure Maps unterstützen ebenfalls benutzerdefinierte Bilder, da
 ![Symbolebene für benutzerdefinierte Symbole in Azure Maps](media/migrate-google-maps-web-app/azure-maps-custom-icon-symbol-layer.png)</center>
 
 > [!TIP]
-> Um ein erweitertes benutzerdefiniertes Rendering von Punkten zu erreichen, können mehrere Renderingebenen in Kombination verwendet werden. Wenn Sie beispielsweise mehrere Ortsmarken mit dem gleichen Symbol in Kreisen mit verschiedenen Farben verwenden möchten, können Sie, statt eine Gruppe Bilder für die einzelnen Farben zu erstellen, eine Symbolebene oberhalb einer Blasenebene überlagern und beide auf die gleiche Datenquelle verweisen lassen. Dies ist viel effizienter, als die genannte Gruppe verschiedener Bilder zu erstellen und sie durch die Karte verwalten zu lassen.
+> Um ein erweitertes benutzerdefiniertes Rendering von Punkten zu erreichen, können mehrere Renderingebenen in Kombination verwendet werden. Ein Beispiel: Angenommen, Sie möchten mehrere Ortsmarken mit dem gleichen Symbol in Kreisen mit unterschiedlichen Farben verwenden. In diesem Fall können Sie eine Symbolebene über einer Blasenebene hinzufügen und die Ortsmarken auf die gleiche Datenquelle verweisen lassen, anstatt jeweils eine Gruppe von Bildern für die einzelnen Farben zu erstellen. Diese Vorgehensweise ist viel effizienter als die Erstellung und Verwaltung zahlreicher verschiedener Bilder.
 
 **Zusätzliche Ressourcen:**
 
@@ -588,7 +588,7 @@ line.setMap(map);
 
 **Nachher: Azure Maps**
 
-In Azure Maps werden Polylinien als LineString- oder MultiLineString-Objekte bezeichnet. Diese Objekte können einer Datenquelle hinzugefügt und mithilfe einer Linienebene gerendert werden.
+In Azure Maps werden Polylinien als Objekt vom Typ `LineString` oder `MultiLineString` bezeichnet. Diese Objekte können einer Datenquelle hinzugefügt und mithilfe einer Linienebene gerendert werden.
 
 ```javascript
 //Get the center of the map.
@@ -625,7 +625,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="adding-a-polygon"></a>Hinzufügen eines Polygons
 
-Polygone werden verwendet, um einen Bereich auf der Karte darzustellen. Azure Maps und Google Maps bieten sehr ähnliche Unterstützung für Polygone. In den folgenden Beispielen wird gezeigt, wie ein Polygon erstellt wird, das ein Dreieck bildet, das auf der Mittelpunktkoordinate der Karte basiert.
+Polygone werden verwendet, um einen Bereich auf der Karte darzustellen. Die Polygonunterstützung ist in Azure Maps und Google Maps ähnlich. In den folgenden Beispielen wird gezeigt, wie ein Polygon erstellt wird, das ein Dreieck bildet, das auf der Mittelpunktkoordinate der Karte basiert.
 
 **Vorher: Google Maps**
 
@@ -658,7 +658,7 @@ polygon.setMap(map);
 
 **Nachher: Azure Maps**
 
-In Azure Maps können einer Datenquelle Polygon- und MultiPolygon-Objekte hinzugefügt und mithilfe von Ebenen auf der Karte gerendert werden. Der Bereich eines Polygons kann in einer Polygonebene gerendert werden. Der Umriss eines Polygons kann mithilfe einer Linienebene gerendert werden.
+In Azure Maps können einer Datenquelle Objekte vom Typ `Polygon` und `MultiPolygon` hinzugefügt und mithilfe von Ebenen auf der Karte gerendert werden. Der Bereich eines Polygons kann in einer Polygonebene gerendert werden. Der Umriss eines Polygons kann mithilfe einer Linienebene gerendert werden.
 
 ```javascript
 //Get the center of the map.
@@ -702,7 +702,7 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="display-an-info-window"></a>Anzeigen eines Infofensters
 
-Zusätzliche Informationen zu einer Entität auf einer Karte können in Google Maps als `google.maps.InfoWindow`-Klasse dargestellt werden, in Azure Maps kann dies mithilfe der `atlas.Popup`-Klasse erreicht werden. In den folgenden Beispielen wird der Karte ein Marker hinzugefügt, der ein Infofenster/Popup anzeigt, wenn darauf geklickt wird.
+Zusätzliche Informationen zu einer Entität können in Google Maps als Klasse vom Typ `google.maps.InfoWindow` auf der Karte angezeigt werden. In Azure Maps kann dafür die Klasse `atlas.Popup` verwendet werden. In den folgenden Beispielen wird der Karte ein Marker hinzugefügt, der ein Infofenster/Popup anzeigt, wenn darauf geklickt wird.
 
 **Vorher: Google Maps**
 
@@ -732,7 +732,7 @@ marker.addListener('click', function () {
 
 **Nachher: Azure Maps**
 
-In Azure Maps kann ein Popup verwendet werden, um zusätzliche Informationen zu einem Ort anzuzeigen. Ein `string`- oder `HTMLElement`-HTML-Objekt kann der `content`-Option des Popups übergeben werden. Popups können bei Bedarf unabhängig von jeder Form angezeigt werden. Daher muss ein `position`-Wert angegeben werden. Um ein Popup anzuzeigen, rufen Sie die `open`-Methode auf, und übergeben Sie die `map`, in der das Popup angezeigt werden soll.
+In Azure Maps kann ein Popup verwendet werden, um zusätzliche Informationen zu einem Ort anzuzeigen. Ein `string`- oder `HTMLElement`-HTML-Objekt kann der `content`-Option des Popups übergeben werden. Popups können auf Wunsch unabhängig von einer Form angezeigt werden. Daher muss für Popups ein Wert vom Typ `position` angegeben werden. Um ein Popup anzuzeigen, rufen Sie die `open`-Methode auf, und übergeben Sie die `map`, in der das Popup angezeigt werden soll.
 
 ```javascript
 //Add a marker to the map in which to display a popup for.
@@ -775,13 +775,13 @@ map.events.add('click', marker, function () {
 
 ### <a name="import-a-geojson-file"></a>Importieren einer GeoJSON-Datei
 
-Google Maps unterstützt das Laden und dynamische Formatieren von GeoJSON-Daten mithilfe der `google.maps.Data`-Klasse. Die Funktionalität dieser Klasse orientiert sich viel stärker an der datengesteuerten Formatierung von Azure Maps. Ein wichtiger Unterschied besteht darin, dass Sie bei Google Maps eine Rückruffunktion und die entsprechende Geschäftslogik zum Formatieren jedes Features angeben, die einzeln im UI-Thread verarbeitet werden. In Azure Maps unterstützen Ebenen das Angeben von datengesteuerten Ausdrücken als Formatierungsoptionen. Diese Ausdrücke werden zur Renderingzeit in einem separaten Thread verarbeitet, was für höhere Renderingleistung sorgt und ein schnelleres Rendering größerer Datasets ermöglicht.
+Google Maps unterstützt das Laden und dynamische Formatieren von GeoJSON-Daten mithilfe der `google.maps.Data`-Klasse. Die Funktionalität dieser Klasse orientiert sich viel stärker an der datengesteuerten Formatierung von Azure Maps. Ein wichtiger Unterschied besteht darin, dass Sie bei Google Maps eine Rückruffunktion angeben. Die Geschäftslogik zur Gestaltung des jeweiligen Features wird individuell im Benutzeroberflächenthread verarbeitet. In Azure Maps unterstützen Ebenen das Angeben von datengesteuerten Ausdrücken als Formatierungsoptionen. Diese Ausdrücke werden zur Renderzeit in einem separaten Thread verarbeitet. Dieser Ansatz bietet eine höhere Renderingleistung, was sich durch schnelleres Rendering größerer Datasets bemerkbar macht.
 
-In den folgenden Beispielen wird ein GeoJSON-Feed aller Erdbeben der letzten sieben Tage aus dem USGS geladen und in Form skalierter Kreise auf der Karte dargestellt. Farbe und Maßstab jedes Kreises basieren auf der Magnitude der einzelnen Erdbeben, die in der `"mag"`-Eigenschaft jedes Features im Dataset gespeichert ist. Wenn die Magnitude größer als oder gleich 5 ist, ist der Kreis rot, ist sie größer als oder gleich 3, aber kleiner als 5, ist der Kreis orange, ist sie kleiner als 3, ist der Kreis grün. Der Radius der einzelnen Kreise entspricht dem Exponentialwert der Magnitude, multipliziert mit 0,1.
+In den folgenden Beispielen wird ein GeoJSON-Feed aller Erdbeben der letzten sieben Tage aus dem USGS geladen. Diese werden in Form skalierter Kreise auf der Karte gerendert. Farbe und Maßstab jedes Kreises basieren auf der Magnitude der einzelnen Erdbeben, die in der Eigenschaft `"mag"` jedes Features im Dataset gespeichert ist. Ist die Magnitude größer oder gleich fünf, ist der Kreis rot. Zwischen drei und fünf ist der Kreis orange. Und unter drei ist der Kreis grün. Der Radius der einzelnen Kreise entspricht dem Exponentialwert der Magnitude, multipliziert mit 0,1.
 
 **Vorher: Google Maps**
 
-In Google Maps kann in der `map.data.setStyle`-Methode eine einzelne Rückruffunktion angegeben werden, die zum Anwenden von Geschäftslogik auf jedes Feature verwendet wird, das mithilfe der `map.data.loadGeoJson`-Methode aus dem GeoJSON-Feed geladen wird.
+In Google Maps kann in der Methode `map.data.setStyle` eine einzelne Rückruffunktion angegeben werden. Mithilfe dieser Methode wird Geschäftslogik auf jedes Feature angewendet, das mithilfe der Methode `map.data.loadGeoJson` aus dem GeoJSON-Feed geladen wird.
 
 ```html
 <!DOCTYPE html>
@@ -854,7 +854,7 @@ In Google Maps kann in der `map.data.setStyle`-Methode eine einzelne Rückruffun
 
 **Nachher: Azure Maps**
 
-GeoJSON ist der Basisdatentyp in Azure Maps, der leicht mithilfe der `datasource.importFromUrl`-Methode in eine Datenquelle importiert werden kann. Eine Blasenebene stellt Funktionen zum Rendern von skalierten Kreisen auf der Grundlage der Eigenschaften der Features in einer Datenquelle bereit. Statt eine Rückruffunktion zu verwenden, wird die Geschäftslogik in einen Ausdruck konvertiert und an die Formatoptionen übergeben. Mithilfe von Ausdrücken wird definiert, wie die Geschäftslogik funktioniert, damit sie an einen anderen Thread übergeben und anhand der Featuredaten ausgewertet werden kann. Azure Maps können mehrere Datenquellen und Ebenen hinzugefügt werden, jeweils mit einer anderen Geschäftslogik, sodass mehrere Datasets auf der Karte auf unterschiedliche Weise gerendert werden können.
+GeoJSON ist der Basisdatentyp in Azure Maps, der leicht mithilfe der `datasource.importFromUrl`-Methode in eine Datenquelle importiert werden kann. Eine Blasenebene stellt Funktionen zum Rendern von skalierten Kreisen auf der Grundlage der Eigenschaften der Features in einer Datenquelle bereit. Statt eine Rückruffunktion zu verwenden, wird die Geschäftslogik in einen Ausdruck konvertiert und an die Formatoptionen übergeben. Mithilfe von Ausdrücken wird definiert, wie die Geschäftslogik funktioniert. Ausdrücke können an einen anderen Thread übergeben und anhand der Featuredaten ausgewertet werden. Azure Maps können mehrere Datenquellen und Ebenen mit jeweils eigener Geschäftslogik hinzugefügt werden. Dadurch können auf der Karte mehrere Datasets auf unterschiedliche Weise gerendert werden.
 
 ```html
 <!DOCTYPE html>
@@ -944,14 +944,14 @@ GeoJSON ist der Basisdatentyp in Azure Maps, der leicht mithilfe der `datasource
 
 Bei der Visualisierung vieler Datenpunkte auf der Karte überlappen sich die Punkte. Die Karte wirkt überladen, und es wird schwierig, die Karte zu überblicken und zu verwenden. Das Clustering von Punktdaten kann dazu verwendet werden, die Benutzerfreundlichkeit zu erhöhen und zugleich die Leistung zu verbessern. Das Clustering von Punktdaten ist der Prozess, bei dem benachbarte Punktdaten kombiniert und auf der Karte als ein einzelner gruppierter Datenpunkt dargestellt werden. Wenn der Benutzer in die Karte zoomt, werden die Cluster in ihre einzelnen Datenpunkte unterteilt.
 
-In den folgenden Beispielen wird ein GeoJSON-Feed aus den Erdbebendaten der letzten Woche geladen und der Karte hinzugefügt. Cluster werden als skalierte und farbige Kreise dargestellt, abhängig von der Anzahl der Punkte, die sie enthalten.
+In den folgenden Beispielen wird durch den Code ein GeoJSON-Feed der Erdbebendaten der letzten Woche geladen und der Karte hinzugefügt. Cluster werden als skalierte und farbige Kreise dargestellt, abhängig von der Anzahl der Punkte, die sie enthalten.
 
 > [!NOTE]
 > Es gibt eine Reihe verschiedener Algorithmen, die für das Clustering von Markern verwendet werden. Google und Azure Maps verwenden leicht abweichende Algorithmen. Daher kann sich die Punktverteilung in den Clustern gelegentlich unterscheiden.
 
 **Vorher: Google Maps**
 
-In Google Maps können Marker durch Laden in die MarkerClusterer-Bibliothek gruppiert werden. Clustersymbole sind auf Bilder beschränkt, die die Zahlen von 1 bis 5 als Name aufweisen und im gleichen Verzeichnis gehostet werden.
+In Google Maps können Marker durch Laden in die MarkerClusterer-Bibliothek gruppiert werden. Clustersymbole sind auf Bilder beschränkt, die mit Zahlen von Eins bis Fünf benannt sind, und werden im gleichen Verzeichnis gehostet.
 
 ```html
 <!DOCTYPE html>
@@ -1016,7 +1016,7 @@ In Azure Maps werden Daten aus einer Datenquelle hinzugefügt und verwaltet. Ebe
 
 - `cluster`: weist die Datenquelle an, Punktdaten zu gruppieren.
 - `clusterRadius`: der Radius in Pixeln zum Gruppieren von Punkten.
-- `clusterMaxZoom`: die maximale Zoomstufe, bei der Clustering erfolgt. Wenn Sie über diesen Wert hinaus vergrößern, werden alle Punkte als Symbole dargestellt.
+- `clusterMaxZoom`: die maximale Zoomstufe, bei der Clustering erfolgt. Bei Überschreiten dieser Zoomstufe werden alle Punkte als Symbole gerendert.
 - `clusterProperties`: Definiert benutzerdefinierte Eigenschaften, die mithilfe von Ausdrücken für alle Punkte in jedem Cluster berechnet und den Eigenschaften jedes Clusterpunkts hinzugefügt werden.
 
 Bei aktiviertem Clustering sendet die Datenquelle gruppierte und nicht gruppierte Datenpunkte zum Rendern an Ebenen. Die Datenquelle kann Hunderttausende von Datenpunkten gruppieren. Ein gruppierter Datenpunkt weist die folgenden Eigenschaften auf:
@@ -1036,7 +1036,7 @@ Die `DataSource`-Klasse weist die folgende Hilfsfunktion für den Zugriff auf zu
 | `getClusterExpansionZoom(clusterId: number)` | Promise&lt;number&gt; | Berechnet einen Zoomfaktor, bei dem der Cluster mit der Erweiterung oder Unterteilung beginnt. |
 | `getClusterLeaves(clusterId: number, limit: number, offset: number)` | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt;\| Shape&gt;&gt; | Ruft alle Punkte in einem Cluster ab. Legen Sie `limit` fest, um eine Teilmenge der Punkte zurückzugeben, und verwenden Sie `offset`, um die Punkte zu durchlaufen. |
 
-Beim Rendern von gruppierten Daten auf der Karte ist es oft am einfachsten, zwei oder mehr Ebenen zu verwenden. Im folgenden Beispiel werden drei Ebenen verwendet, eine Blasenebene zum Zeichnen von skalierten, farbigen, auf der Größe der Cluster basierenden Kreisen, eine Symbolebene zum Rendern der Clustergröße als Text und eine zweite Symbolebene zum Rendern der nicht gruppierten Punkte. Es gibt viele weitere Möglichkeiten, gruppierte Daten in Azure Maps darzustellen, die in der [Clusterpunktdaten](clustering-point-data-web-sdk.md)-Dokumentation beleuchtet werden.
+Beim Rendern von gruppierten Daten auf der Karte ist es oft am einfachsten, zwei oder mehr Ebenen zu verwenden. Im folgenden Beispiel werden drei Ebenen verwendet: Eine Blasenebene, um skalierte farbige Kreise auf der Grundlage der Clustergröße zu zeichnen. Eine Symbolebene, um die Clustergröße als Text zu rendern. Und eine zweite Symbolebene, um die nicht gruppierten Punkte zu rendern. Gruppierte Daten können auch auf viele andere Arten gerendert werden. Weitere Informationen finden Sie in der [Dokumentation zu Clusterpunktdaten](clustering-point-data-web-sdk.md).
 
 GeoJSON-Daten können mithilfe der `importDataFromUrl`-Funktion der `DataSource`-Klasse direkt in Azure Maps importiert werden.
 
@@ -1147,13 +1147,13 @@ GeoJSON-Daten können mithilfe der `importDataFromUrl`-Funktion der `DataSource`
 
 ### <a name="add-a-heat-map"></a>Hinzufügen eines Wärmebilds
 
-Wärmebilder, die auch als Punktdichtekarten bezeichnet werden, stellen eine Art der Datenvisualisierung dar, die verwendet wird, um die Dichte von Daten mit Farbbereichen darzustellen. Sie werden häufig verwendet, um die „Hotspots“ von Daten auf einer Karte anzuzeigen und sind gut zum Rendern von großen Punktdatasets geeignet.
+Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen. Und sie werden häufig eingesetzt, um die Hotspots der Daten auf einer Karte zu zeigen. Wärmebilder eignen sich gut zum Rendern großer Punktdatasets.
 
-In den folgenden Beispielen wird ein GeoJSON-Feed aller Erdbeben im letzten Monat von der USGS geladen; diese werden dann als gewichtetes Wärmebild gerendert, wobei die `"mag"`-Eigenschaft als Gewichtung dient.
+In den folgenden Beispielen wird ein GeoJSON-Feed aller Erdbeben im letzten Monat von der USGS geladen. Diese werden dann als gewichtetes Wärmebild gerendert, wobei die Eigenschaft `"mag"` als Gewichtung dient.
 
 **Vorher: Google Maps**
 
-In Google Maps muss zum Erstellen eines Wärmebilds die Visualisierungsbibliothek geladen werden, indem der URL des API-Skripts `&libraries=visualization` hinzugefügt wird. Die Wärmebildebene in Google Maps unterstützt GeoJSON-Daten nicht direkt, vielmehr müssen die Daten zuerst heruntergeladen und in ein Array gewichteter Datenpunkte konvertiert werden.
+In Google Maps muss zum Erstellen eines Wärmebilds die Visualisierungsbibliothek geladen werden, indem der URL des API-Skripts `&libraries=visualization` hinzugefügt wird. Die Wärmebildebene in Google Maps unterstützt GeoJSON-Daten nicht direkt. Die Daten müssen zuerst heruntergeladen und in ein Array gewichteter Datenpunkte konvertiert werden.
 
 ```html
 <!DOCTYPE html>
@@ -1295,9 +1295,9 @@ Laden Sie in Azure Maps die GeoJSON-Daten in eine Datenquelle, und verbinden Sie
 
 ### <a name="overlay-a-tile-layer"></a>Überlagern einer Kachelebene
 
-Kachelebenen, die in Google Maps auch als Bildüberlagerungen bezeichnet werden, ermöglichen es Ihnen, große Bilder zu überlagern, die in kleinere gekachelte Bilder aufgeteilt wurden, die sich am Kartenkachel-Positionierungssystem orientieren. Dies ist eine gängige Methode zum Überlagern großer Bilder oder sehr großer Datasets.
+In Google Maps werden Kachelebenen auch als Bildüberlagerungen bezeichnet. Kachelebenen ermöglichen es Ihnen, große Bilder zu überlagern, die in kleinere gekachelte Bilder aufgeteilt wurden, die sich am Kachelsystem der Karte orientieren. Diese Methode wird häufig zur Überlagerung großer Bilder oder Datasets verwendet.
 
-In den folgenden Beispielen wird eine Wetterradar-Kachelebene aus dem Iowa Environmental Mesonet der Iowa State University überlagert.
+In den folgenden Beispielen wird eine Kachelebene eines Wetterradars aus dem Iowa Environmental Mesonet der Iowa State University überlagert.
 
 **Vorher: Google Maps**
 
@@ -1319,10 +1319,10 @@ map.overlayMapTypes.insertAt(0, new google.maps.ImageMapType({
 
 **Nachher: Azure Maps**
 
-In Azure Maps kann eine Kachel Ebene einer Karte auf ziemlich die gleiche Weise wie jede andere Ebene hinzugefügt werden. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem `{quadkey}`-, `{bbox-epsg-3857}`- und `{subdomain}`-Platzhalter.
+In Azure Maps kann der Karte eine Kachelebene auf ähnliche Weise hinzugefügt werden wie andere Ebenen. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem Platzhalter vom Typ `{quadkey}`, `{bbox-epsg-3857}` und `{subdomain}`.
 
 > [!TIP]
-> In Azure Maps können Ebenen leicht unterhalb von anderen Ebenen gerendert werden, einschließlich Basiskartenebenen. Es ist häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die `map.layers.add`-Methode nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unterhalb der die neue Ebene eingefügt werden soll. Um eine Kachelebene unterhalb der Kartenbezeichnungen einzufügen, kann der folgende Code verwendet werden: `map.layers.add(myTileLayer, "labels");`
+> In Azure Maps können Ebenen leicht unterhalb von anderen Ebenen gerendert werden, einschließlich Basiskartenebenen. Es ist häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, "labels");`
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -1365,7 +1365,7 @@ trafficLayer.setMap(map);
 
 **Nachher: Azure Maps**
 
-Azure Maps bietet verschiedene Optionen zum Anzeigen von Verkehr. Verkehrsvorfälle, wie etwa Straßensperrungen und Unfälle, können als Symbole auf der Karte angezeigt werden. Der Verkehrsfluss und farbig codierte Straßen können der Karte überlagert werden; die Farben können geändert werden und auf dem veröffentlichten Tempolimit, der normalerweise zu erwartenden Verzögerung oder der absoluten Verzögerung basieren. Vorfallsdaten in Azure Maps werden jede Minute aktualisiert, Daten zum Verkehrsfluss alle zwei Minuten.
+Azure Maps bietet verschiedene Optionen zum Anzeigen von Verkehrsinformationen. Ereignisse wie etwa Straßensperrungen und Unfälle können als Symbole auf der Karte angezeigt werden. Der Verkehrsfluss und farbig codierte Straßen können auf der Karte eingeblendet werden, die Farben können geändert werden und auf dem veröffentlichten Tempolimit, der normalerweise zu erwartenden Verzögerung oder der absoluten Verzögerung basieren. Vorfallsdaten in Azure Maps werden im Minutentakt aktualisiert, Daten zum Verkehrsfluss alle zwei Minuten.
 
 ```javascript
 map.setTraffic({
@@ -1376,7 +1376,7 @@ map.setTraffic({
 
 <center>
 
-![Azure Maps-Verkehrsdarstellung](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
+![Verkehrsinformationen in Azure Maps](media/migrate-google-maps-web-app/azure-maps-traffic.png)</center>
 
 Wenn Sie in Azure Maps auf eins der Verkehrssymbole klicken, werden zusätzliche Informationen in einem Popup angezeigt.
 
@@ -1391,11 +1391,11 @@ Wenn Sie in Azure Maps auf eins der Verkehrssymbole klicken, werden zusätzliche
 
 ### <a name="add-a-ground-overlay"></a>Hinzufügen einer Bodenüberlagerung
 
-Sowohl Azure- als auch Google-Karten unterstützen das Überlagern von georeferenzierten Bildern auf der Karte, die beim Schwenken und Zoomen der Karte mit bewegt werden. In Google Maps werden diese als Bodenüberlagerungen bezeichnet, während sie in Azure Maps als Bildebenen bezeichnet werden. Diese eigenen sich hervorragend für Grundrisse von Gebäuden, die Überlagerung alter Karten oder Bilder von einer Drohne.
+Sowohl Azure- als auch Google-Karten unterstützen das Überlagern von georeferenzierten Bildern auf der Karte, die beim Schwenken und Zoomen der Karte mit bewegt werden. In Google Maps werden diese als Bodenüberlagerungen bezeichnet. In Azure Maps heißen sie Bildebenen. Diese eigenen sich hervorragend für Grundrisse von Gebäuden, die Überlagerung alter Karten oder Bilder von einer Drohne.
 
 **Vorher: Google Maps**
 
-Beim Erstellen einer Bodenüberlagerung in Google Maps müssen Sie die URL für das zu überlagernde Bild und einen Begrenzungsrahmen für das Anbinden des Bilds an die Karte angeben. In diesem Beispiel wird der Karte ein Kartenbild von [Newark New Jersey von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) überlagert.
+Beim Erstellen einer Bodenüberlagerung in Google Maps müssen Sie die URL für das zu überlagernde Bild und einen Begrenzungsrahmen angeben, an den das Bild auf der Karte gebunden wird. In diesem Beispiel wird der Karte ein Kartenbild von [Newark New Jersey von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) überlagert.
 
 ```html
 <!DOCTYPE html>
@@ -1531,7 +1531,7 @@ Nachfolgend finden Sie einige zusätzliche Codebeispiele im Zusammenhang mit der
 
 ## <a name="google-maps-v3-to-azure-maps-web-sdk-class-mapping"></a>Klassenzuordnung von Google Maps V3 zum Azure Maps Web SDK
 
-Der folgende Anhang bietet eine Zuordnung der am häufigsten verwendeten Klassen in Google Maps V3 zu ihren Äquivalenten im Azure Maps Web SDK in Form von Querverweisen.
+Der folgende Anhang enthält Querverweise für die gängigsten Klassen in Google Maps V3 und die Äquivalente im Azure Maps Web SDK.
 
 ### <a name="core-classes"></a>Core-Klassen
 
@@ -1562,7 +1562,7 @@ Der folgende Anhang bietet eine Zuordnung der am häufigsten verwendeten Klassen
 
 ## <a name="service-classes"></a>Dienstklassen
 
-Das Azure Maps Web-SDK enthält ein [Dienstmodul](how-to-use-services-module.md) das separat geladen werden kann. Dieses Modul umschließt die Azure Maps REST-Dienste mit einer Web-API und kann in JavaScript-, TypeScript- und Node.js-Anwendungen verwendet werden.
+Das Azure Maps Web SDK enthält ein Dienstmodul, das separat geladen werden kann. Dieses Modul umschließt die Azure Maps-REST-Dienste mit einer Web-API und kann in JavaScript-, TypeScript- und Node.js-Anwendungen verwendet werden.
 
 | Google Maps | Azure Maps  |
 |-------------|-------------|

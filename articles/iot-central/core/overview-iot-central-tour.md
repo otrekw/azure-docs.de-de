@@ -1,144 +1,192 @@
 ---
 title: Kennenlernen der Benutzeroberfläche von Azure IoT Central | Microsoft-Dokumentation
-description: Machen Sie sich als Ersteller mit den wichtigsten Bereichen der Benutzeroberfläche von Azure IoT Central vertraut, die Sie zur Erstellung von IoT-Lösungen verwenden.
-author: dominicbetts
-ms.author: dobett
-ms.date: 06/09/2019
+description: Machen Sie sich mit den wichtigsten Bereichen der Benutzeroberfläche von Azure IoT Central vertraut, die Sie zum Erstellen, Verwalten und Nutzen Ihrer IoT-Lösung verwenden.
+author: lmasieri
+ms.author: lmasieri
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: philmea
-ms.openlocfilehash: 6e375e809308da8be0723fb2fcbdf718e9fb5479
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+manager: corywink
+ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936779"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024159"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+
 
 In diesem Artikel wird die Benutzeroberfläche von Microsoft Azure IoT Central vorgestellt. Über die Benutzeroberfläche können Sie Azure IoT Central-Lösungen und die damit verbundenen Geräte erstellen, verwalten und verwenden.
 
-_Ersteller_ verwenden die Benutzeroberfläche von Azure IoT Central, um ihre Azure IoT Central-Lösung zu definieren. Die Benutzeroberfläche bietet folgende Möglichkeiten:
+Als _Lösungsentwickler_ verwenden Sie die Benutzeroberfläche von Azure IoT Central, um Ihre Azure IoT Central-Lösung zu definieren. Die Benutzeroberfläche bietet folgende Möglichkeiten:
 
-- Definieren der Art von Gerät, das eine Verbindung mit Ihrer Lösung herstellt
-- Konfigurieren der Regeln und Aktionen für Ihre Geräte
-- Anpassen der Benutzeroberfläche für einen _Bediener_, der Ihre Lösung verwendet
+* Definieren der Art von Gerät, das eine Verbindung mit Ihrer Lösung herstellt
+* Konfigurieren der Regeln und Aktionen für Ihre Geräte 
+* Anpassen der Benutzeroberfläche für einen _Bediener_, der Ihre Lösung verwendet
 
 _Bediener_ verwenden die Benutzeroberfläche von Azure IoT Central, um ihre Azure IoT Central-Lösung zu verwalten. Die Benutzeroberfläche bietet folgende Möglichkeiten:
 
-- Überwachen Ihrer Geräte
-- Konfigurieren Ihrer Geräte
-- Behandeln und Beheben von Problemen mit Ihren Geräten
-- Bereitstellen von neuen Geräten
+* Überwachen Ihrer Geräte
+* Konfigurieren Ihrer Geräte
+* Behandeln und Beheben von Problemen mit Ihren Geräten
+* Bereitstellen von neuen Geräten
 
-## <a name="use-the-left-pane"></a>Verwenden des linken Bereichs
+## <a name="iot-central-homepage"></a>IoT Central-Startseite
 
-Über den linken Bereich können Sie auf die verschiedenen Bereiche der Anwendung zugreifen. Wählen Sie **<** oder **>** aus, um die Navigationsleiste zu erweitern oder zu reduzieren:
+Auf der [IoT Central-Startseite](https://aka.ms/iotcentral-get-started) finden Sie weitere Informationen zu den aktuellen News und Features von IoT Central, zum Erstellen neuer Anwendungen und zum Anzeigen und Starten Ihrer vorhandenen Anwendung.
+
+> [!div class="mx-imgBorder"]
+> ![IoT Central-Startseite](media/overview-iot-central-tour/iot-central-homepage-pnp.png)
+
+### <a name="create-an-application"></a>Erstellen einer Anwendung
+
+Im Abschnitt für die Erstellung können Sie die Liste mit den branchenrelevanten IoT Central-Vorlagen durchsuchen, um schnell einzusteigen. Alternativ können Sie auch von Grund auf neu beginnen, indem Sie eine Vorlage für eine benutzerdefinierte App verwenden.  
+> [!div class="mx-imgBorder"]
+> ![IoT Central-Seite für die Erstellung](media/overview-iot-central-tour/iot-central-build-pnp.png)
+
+Weitere Informationen finden Sie in der Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung](quick-deploy-iot-central.md).
+
+### <a name="launch-your-application"></a>Starten Ihrer Anwendung
+
+Sie können Ihre IoT Central-Anwendung starten, indem Sie auf die URL zugreifen, die von Ihnen bzw. Ihrem Lösungsentwickler bei der App-Erstellung ausgewählt wurde. Darüber hinaus können Sie im [App-Manager von IoT Central](https://aka.ms/iotcentral-apps) eine Liste mit allen Anwendungen anzeigen, auf die Sie Zugriff haben.
+
+> [!div class="mx-imgBorder"]
+> ![App-Manager von IoT Central](media/overview-iot-central-tour/app-manager-pnp.png)
+
+## <a name="navigate-your-application"></a>Navigieren in der Anwendung
+
+In der IoT-Anwendung können Sie die Navigationselemente auf der linken Seite nutzen, um auf die verschiedenen Bereiche zuzugreifen. Sie können die Navigationsleiste erweitern oder reduzieren, indem Sie oben in der Leiste das Symbol mit den drei Linien auswählen:
+
+> [!NOTE]
+> Welche Elemente in der Navigationsleiste angezeigt werden, hängt von Ihrer Benutzerrolle ab. Lesen Sie die weiteren Informationen zum [Verwalten von Benutzern und Rollen](howto-manage-users-roles.md). 
 
 :::row:::
   :::column span="":::
-      ![linker Bereich](media/overview-iot-central-tour/navigationbar.png)
+      > [!div class="mx-imgBorder"]
+      > ![Navigationsbereich auf der linken Seite](media/overview-iot-central-tour/navigationbar-pnp.png)
   :::column-end:::
   :::column span="2":::
-     Unter **Dashboard** wird Ihr Anwendungsdashboard angezeigt. Als Ersteller können Sie das Dashboard für Ihre Bediener anpassen. Benutzer können auch ihre eigenen Dashboards erstellen.
-    
-     **Device Explorer** dient zum Auflisten der simulierten und echten Geräte, die den einzelnen Gerätevorlagen in der Anwendung zugeordnet sind. Bediener verwenden den **Device Explorer**, um ihre verbundenen Geräte zu verwalten.
-    
-     **Device Sets** (Gerätegruppen) dient zum Anzeigen und Erstellen von Gerätegruppen. Bediener können Gerätegruppen als logische, durch eine Abfrage angegebene Sammlung von Geräten erstellen.
-    
-     **Analytics** dient zum Anzeigen von Analysen, die auf Gerätetelemetriedaten für Geräte und Gerätegruppen basieren. Bediener können benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um basierend auf ihrer Anwendung Erkenntnisse zu gewinnen.
-    
-     **Aufträge** ermöglicht eine Geräteverwaltung per Massenvorgang, da Sie Aufträge für Updates in großem Umfang erstellen und ausführen können.
-    
-     Unter **Gerätevorlagen** werden die Tools angezeigt, die ein Ersteller zum Erstellen und Verwalten von Gerätevorlagen verwendet.
-    
-     Unter **Kontinuierlicher Datenexport** kann ein Administrator einen fortlaufenden Export an andere Azure-Dienste (etwa Speicher und Warteschlangen) konfigurieren.
-    
-     **Verwaltung** dient zum Anzeigen der Seiten für die Anwendungsverwaltung, auf denen ein Administrator Anwendungseinstellungen, Benutzer und Rollen verwalten kann.
+     Unter **Dashboard** wird Ihr Anwendungsdashboard angezeigt. Als *Lösungsentwickler* können Sie das globale Dashboard für Ihre Bediener anpassen. Je nach Benutzerrolle können Bediener auch eigene persönliche Dashboards erstellen.
+     
+     Unter **Geräte** können Sie Ihre verbundenen Geräte verwalten – real oder simuliert.
+
+     Unter **Gerätegruppen** können Sie logische Sammlungen mit Geräten anzeigen und erstellen, die per Abfrage angegeben werden. Sie können diese Abfrage speichern und Gerätegruppen über die Anwendung nutzen, um Massenvorgänge durchzuführen.
+
+     Unter **Regeln** können Sie Regeln zur Überwachung Ihrer Geräte erstellen und bearbeiten. Regeln werden anhand der Gerätetelemetrie ausgewertet und dienen zum Auslösen von anpassbaren Aktionen.
+
+     Unter **Analyse** können Sie benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um basierend auf Ihrer Anwendung Erkenntnisse zu gewinnen.
+
+     Unter **Aufträge** können Sie Ihre Geräte bedarfsgesteuert verwalten, indem Sie Massenvorgänge durchführen.
+
+     Die Option **Gerätevorlagen** ermöglicht die Erstellung und Verwaltung der Merkmale von Geräten, für die eine Verbindung mit Ihrer Anwendung hergestellt wird.
+
+     Unter **Datenexport** können Sie den fortlaufenden Export in externe Dienste konfigurieren, z. B. Speicher und Warteschlangen.
+
+     Die Option **Verwaltung** ermöglicht Ihnen das Verwalten der Bereiche Einstellungen, Anpassung, Abrechnung, Benutzer und Rollen Ihrer Anwendung.
+
+     Mit **IoT Central** können *Administratoren* zurück zum App-Manager von IoT Central wechseln.
+     
    :::column-end:::
 :::row-end:::
 
-## <a name="search-help-and-support"></a>Suche, Hilfe und Support
+### <a name="search-help-theme-and-support"></a>Suche, Hilfe, Design und Support
 
 Das obere Menü wird auf jeder Seite angezeigt:
 
-![Symbolleiste](media/overview-iot-central-tour/toolbar.png)
+> [!div class="mx-imgBorder"]
+> ![Symbolleiste](media/overview-iot-central-tour/toolbar-pnp.png)
 
-- Wenn Sie nach Gerätevorlagen und Geräten suchen möchten, geben Sie einen Wert für die **Suche** ein.
-- Wählen Sie zum Ändern der Sprache der Benutzeroberfläche oder des Designs das Symbol **Einstellungen** aus.
-- Wählen Sie das Symbol **Konto** aus, um sich von der Anwendung abzumelden.
-- Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. In einer Testanwendung beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
+* Wenn Sie nach Gerätevorlagen und Geräten suchen möchten, geben Sie einen Wert für die **Suche** ein.
+* Wählen Sie zum Ändern der Sprache der Benutzeroberfläche oder des Designs das Symbol **Einstellungen** aus. Informieren Sie sich über das [Verwalten Ihrer Anwendungseinstellungen](howto-manage-preferences.md).
+* Wählen Sie das Symbol **Konto** aus, um sich von der Anwendung abzumelden.
+* Wenn Sie Hilfe oder Unterstützung benötigen, klicken Sie auf das Dropdownmenü **Hilfe**, um eine Liste mit Ressourcen anzuzeigen. Bei einer Anwendung im Tarif „Free“ beinhalten die Supportressourcen Zugriff auf den [Livechat](howto-show-hide-chat.md).
 
 Sie können zwischen einem hellen und einem dunklen Benutzeroberflächendesign wählen:
-
-![Auswählen eines Designs für die Benutzeroberfläche](media/overview-iot-central-tour/themes.png)
 
 > [!NOTE]
 > Die Option zum Wählen zwischen hellen und dunklen Designs ist nicht verfügbar, wenn Ihr Administrator ein benutzerdefiniertes Design für die Anwendung konfiguriert hat.
 
-## <a name="dashboard"></a>Dashboard
+> [!div class="mx-imgBorder"]
+> ![Auswählen eines Designs für die Benutzeroberfläche](media/overview-iot-central-tour/themes-pnp.png)
 
-![Dashboard](media/overview-iot-central-tour/homepage.png)
+### <a name="dashboard"></a>Dashboard
+> [!div class="mx-imgBorder"]
+> ![Dashboard](media/overview-iot-central-tour/dashboard-pnp.png)
 
-* Nach der Anmeldung bei Ihrer Azure IoT Central-Anwendung wird als Erstes das Dashboard angezeigt. Als Ersteller können Sie das Anwendungsdashboard für andere Benutzer anpassen, indem Sie Kacheln hinzufügen. Weitere Informationen finden Sie im Tutorial [Customize the Azure IoT Central operator's view](tutorial-customize-operator.md) (Anpassen der Azure IoT Central-Ansicht für Bediener).
+* Nach der Anmeldung bei Ihrer Azure IoT Central-Anwendung wird als Erstes das Dashboard angezeigt. Als *Lösungsentwickler* können Sie mehrere globale Anwendungsdashboards für andere Benutzer erstellen und anpassen. Informieren Sie sich über das [Hinzufügen von Kacheln zu Ihrem Dashboard](howto-add-tiles-to-your-dashboard.md).
 
-* Als Bediener können Sie personalisierte Dashboards erstellen und zwischen diesen und dem Standarddashboard wechseln. Weitere Informationen finden Sie in der Anleitung [Erstellen und Verwalten mehrerer Dashboards](howto-create-personal-dashboards.md).
+* Sofern Ihre Benutzerrolle als *Bediener* es zulässt, können Sie persönliche Dashboards erstellen, um die für Sie wichtigen Aspekte zu überwachen. Weitere Informationen finden Sie in der Anleitung zum [Erstellen und Verwalten mehrerer Dashboards](howto-create-personal-dashboards.md).
 
-## <a name="device-explorer"></a>Device Explorer
+### <a name="devices"></a>Geräte
 
-![Explorer-Seite](media/overview-iot-central-tour/explorer.png)
+> [!div class="mx-imgBorder"]
+> ![Seite „Geräte“](media/overview-iot-central-tour/devices-pnp.png)
 
-Auf der Explorer-Seite werden die _Geräte_ in Ihrer Azure IoT Central-Anwendung angezeigt (gruppiert nach _Gerätevorlage_).
+Auf der Explorer-Seite werden die _Geräte_ in Ihrer Azure IoT Central-Anwendung angezeigt (gruppiert nach _Gerätevorlage_). 
 
-* Eine Gerätevorlage definiert einen Gerätetyp, der eine Verbindung mit Ihrer Anwendung herstellen kann. Weitere Informationen finden Sie unter [Define a new device type in your Azure IoT Central application](tutorial-define-device-type.md) (Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung).
-* Bei einem Gerät handelt es sich um ein echtes oder simuliertes Gerät in Ihrer Anwendung. Weitere Informationen finden Sie unter [Add a real device to your Azure IoT Central application](tutorial-add-device.md) (Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung).
+* Eine Gerätevorlage definiert einen Gerätetyp, der eine Verbindung mit Ihrer Anwendung herstellen kann.
+* Bei einem Gerät handelt es sich um ein echtes oder simuliertes Gerät in Ihrer Anwendung.
 
-## <a name="device-sets"></a>Gerätegruppen
+Weitere Informationen finden Sie in der Schnellstartanleitung [Überwachen Ihrer Geräte](./quick-monitor-devices.md). 
 
-![Seite „Device Sets“ (Gerätegruppen)](media/overview-iot-central-tour/devicesets.png)
+### <a name="device-groups"></a>Gerätegruppen
 
-Auf der Seite _Device Sets_ (Gerätegruppen) werden Gerätegruppen angezeigt, die der Ersteller erstellt hat. Bei einer Gerätegruppe handelt es sich um eine Sammlung verwandter Geräte. Ein Ersteller definiert eine Abfrage, um die in einer Gerätegruppe enthaltenen Geräte zu identifizieren. Gerätegruppen werden verwendet, wenn Sie die Analyse in Ihrer Anwendung anpassen. Weitere Informationen finden Sie im Artikel [Use device sets in your Azure IoT Central application](howto-use-device-sets.md) (Definieren von Gerätegruppen in Ihrer Azure IoT Central-Anwendung).
+> [!div class="mx-imgBorder"]
+> ![Seite „Gerätegruppen“](media/overview-iot-central-tour/device-groups-pnp.png)
 
-## <a name="analytics"></a>Analytics
+Bei einer Gerätegruppe handelt es sich um eine Sammlung mit verwandten Geräten. Ein *Lösungsentwickler* definiert eine Abfrage, um die in einer Gerätegruppe enthaltenen Geräte zu identifizieren. Sie verwenden Gerätegruppen, um in Ihrer Anwendung Massenvorgänge durchzuführen. Weitere Informationen finden Sie im Artikel [Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung](tutorial-use-device-groups.md).
 
-![Seite „Analytics“](media/overview-iot-central-tour/analytics.png)
+### <a name="rules"></a>Regeln
+> [!div class="mx-imgBorder"]
+> ![Seite „Regeln“](media/overview-iot-central-tour/rules-pnp.png)
 
-Anhand der Diagramme auf der Analyseseite können Sie das Verhalten der mit Ihrer Anwendung verbundenen Geräte nachvollziehen. Bediener verwenden diese Seite zur Überwachung und Untersuchung von Problemen mit verbundenen Geräten. Der Ersteller kann definieren, welche Diagramme auf dieser Seite angezeigt werden. Weitere Informationen finden Sie im Artikel [How to use analytics to analyze your device data](howto-use-device-sets.md) (Analysieren Ihrer Anwendungsdaten mithilfe von Analysen).
+Auf der Seite „Regeln“ können Sie Regeln basierend auf den Telemetriedaten, dem Status oder den Ereignissen von Geräten definieren. Bei Auslösung einer Regel können mehrere Aktionen ausgelöst werden, z. B. das Senden einer E-Mail, das Benachrichtigen eines externen Systems über Webhookwarnungen usw. Weitere Informationen hierzu finden Sie im Tutorial zum [Konfigurieren von Regeln](tutorial-create-telemetry-rules.md). 
 
-## <a name="jobs"></a>Aufträge
+### <a name="analytics"></a>Analytics
 
-![Seite „Aufträge“](media/overview-iot-central-tour/jobs.png)
+> [!div class="mx-imgBorder"]
+> ![Seite „Analyse“](media/overview-iot-central-tour/analytics-pnp.png)
 
-Auf der Seite „Aufträge“ können Sie Massenvorgänge für die Geräteverwaltung auf Ihren Geräten ausführen. Ersteller verwenden diese Seite, um Eigenschaften, Einstellungen und Befehle für Geräte zu aktualisieren. Weitere Informationen finden Sie im Artikel [Ausführen eines Auftrags](howto-run-a-job.md).
+Mit der Analyse können Sie benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um mit Ihrer Anwendung Erkenntnisse zu gewinnen. Weitere Informationen finden Sie im Artikel zum Thema [Erstellen einer Analyse für Ihre Azure IoT Central-Anwendung](howto-create-analytics.md).
 
-## <a name="device-templates"></a>Gerätevorlagen
+### <a name="jobs"></a>Aufträge
 
-![Seite „Gerätevorlagen“](media/overview-iot-central-tour/templates.png)
+> [!div class="mx-imgBorder"]
+> ![Seite „Aufträge“](media/overview-iot-central-tour/jobs-pnp.png)
 
-Auf der Seite „Gerätevorlagen“ können Ersteller die Gerätevorlagen in der Anwendung erstellen und verwalten. In einer Gerätevorlage werden spezielle Geräteeigenschaften angegeben, z.B. die folgenden:
+Auf der Seite „Aufträge“ können Sie Massenvorgänge für die Geräteverwaltung auf Ihren Geräten ausführen. Sie können Geräteeigenschaften und Einstellungen aktualisieren und Befehle für Gerätegruppen ausführen. Weitere Informationen finden Sie im Artikel [Ausführen eines Auftrags](howto-run-a-job.md).
 
-- Telemetriedaten, Status und Ereignismessungen.
-- Einstellungen und Eigenschaften.
-- Befehle.
-- Regeln auf Grundlage von Ereignissen oder Telemetriewerten.
+### <a name="device-templates"></a>Gerätevorlagen
 
-Weitere Informationen finden Sie im Tutorial [Define a new device type in your Azure IoT Central application](tutorial-define-device-type.md) (Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung).
+> [!div class="mx-imgBorder"]
+> ![Seite „Gerätevorlagen“](media/overview-iot-central-tour/templates-pnp.png)
 
-## <a name="continuous-data-export"></a>Kontinuierlicher Datenexport
+Auf der Seite „Gerätevorlagen“ können Ersteller die Gerätevorlagen in der Anwendung erstellen und verwalten. In einer Gerätevorlage werden Gerätemerkmale angegeben, z. B.:
 
-![Seite „Kontinuierlicher Datenexport“](media/overview-iot-central-tour/export.png)
+* Telemetriedaten, Status und Ereignismessungen
+* Eigenschaften
+* Befehle
+* Sichten
 
-Auf der Seite „Kontinuierlicher Datenexport“ können Administratoren definieren, wie Daten (beispielsweise Telemetriedaten) aus der Anwendung gestreamt werden sollen. Die exportierten Daten können von anderen Diensten gespeichert oder zu Analysezwecken genutzt werden. Weitere Informationen finden Sie im Artikel [Exportieren von Daten in Azure IoT Central](howto-export-data-blob-storage.md).
+Der *Lösungsentwickler* kann auch Formulare und Dashboards für Bediener erstellen, die zum Verwalten von Geräten verwendet werden.
 
-## <a name="administration"></a>Verwaltung
+Weitere Informationen finden Sie im Tutorial [Define a new device type in your Azure IoT Central application](howto-set-up-template.md) (Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung). 
 
-![Verwaltungsseite](media/overview-iot-central-tour/administration.png)
+### <a name="data-export"></a>Datenexport
+> [!div class="mx-imgBorder"]
+> ![Seite „Datenexport“](media/overview-iot-central-tour/export-pnp.png)
 
-Die Verwaltungsseite enthält Links zu den Tools, die ein Administrator verwendet, um beispielsweise Benutzer und Rollen in der Anwendung zu definieren oder die Benutzeroberfläche anzupassen. Weitere Informationen finden Sie im Artikel [How to administer your application](howto-administer.md) (Verwalten Ihrer Anwendung).
+Per Datenexport können Sie Datenströme, z. B. für Telemetriedaten, von der Anwendung zu externen Systemen einrichten. Weitere Informationen finden Sie im Artikel [Exportieren von Daten in Azure IoT Central](./howto-export-data.md).
+
+### <a name="administration"></a>Verwaltung
+> [!div class="mx-imgBorder"]
+> ![Seite „Verwaltung“](media/overview-iot-central-tour/administration-pnp.png)
+
+Auf der Seite „Verwaltung“ können Sie Ihre IoT Central-Anwendung konfigurieren und anpassen. Sie können den Anwendungsnamen, die URL und das Design ändern, Benutzer und Rollen verwalten, API-Token erstellen und Ihre Anwendung exportieren. Weitere Informationen finden Sie im Artikel [How to administer your application](howto-administer.md) (Verwalten Ihrer Anwendung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

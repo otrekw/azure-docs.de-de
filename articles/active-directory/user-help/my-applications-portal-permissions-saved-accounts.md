@@ -1,27 +1,27 @@
 ---
-title: Verwalten von Anwendungsberechtigungen im Portal „Meine Apps“ (Vorschauversion) – Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Anwendungsberechtigungen für die cloudbasierten Apps Ihrer Organisation über das Portal „Meine Apps“ (Vorschauversion) verwalten.
+title: 'Verwalten von Anwendungsberechtigungen im Portal „Meine Apps“: Azure Active Directory | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie Anwendungsberechtigungen für die cloudbasierten Apps Ihrer Organisation über das Portal „Meine Apps“ verwalten.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: kasimpso
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bac33386371b13950163727497cabd0f262df135
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705053"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022408"
 ---
-# <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“ (Vorschauversion)
+# <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“
 
-Wenn Sie Organisationsanwendungen im Portal **Meine Apps** (Vorschauversion) verwenden, erteilen Sie häufig Berechtigungen und speichern Kontoinformationen. Um Ihre Daten zu schützen, können Sie die Berechtigungen überprüfen und widerrufen oder gespeicherte Kontoanmeldeinformationen löschen. Durch das Entfernen von Berechtigungen oder Konten können einige App-Funktionen eventuell zu Fehlern führen. Wenn nach dem Entfernen von Berechtigungen oder Konten Probleme auftreten, wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung zu erhalten.
+Wenn Sie Organisationsanwendungen im Portal **Meine Apps** verwenden, erteilen Sie häufig Berechtigungen und speichern Kontoinformationen. Um Ihre Daten zu schützen, können Sie die Berechtigungen überprüfen und widerrufen oder gespeicherte Kontoanmeldeinformationen löschen. Durch das Entfernen von Berechtigungen oder Konten können einige App-Funktionen eventuell zu Fehlern führen. Wenn nach dem Entfernen von Berechtigungen oder Konten Probleme auftreten, wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung zu erhalten.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -46,11 +46,11 @@ Unten im Berechtigungsfenster wird angezeigt, welche Einwilligungen Ihr Administ
 
 Nach dem Verwalten von App-Berechtigungen und dem Speichern von Konten im Portal **Meine Apps** haben Sie folgende Möglichkeiten:
 
-- Organisieren Ihrer Apps in den verschiedenen Kategorien, die von Ihrer Organisation erstellt und bereitgestellt werden. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Arbeitsbereichen im Portal „Meine Apps“ (Vorschauversion)](my-applications-portal-workspaces.md).
+- Organisieren Ihrer Apps in den verschiedenen Kategorien, die von Ihrer Organisation erstellt und bereitgestellt werden. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Sammlungen im Portal „Meine Apps“](my-applications-portal-workspaces.md).
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Meine Apps** (Vorschauversion) angezeigt werden
+- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). In diesem Artikel finden Sie Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Meine Apps** angezeigt werden.
 
 - [Verwalten Ihrer Organisationen](my-account-portal-organizations-page.md). Anweisungen zum Anzeigen und Verwalten gruppenbezogener Informationen auf der Seite **Organisationen** im Portal **Meine Apps**
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 7014882e7da9eb7ab7df65cd20403982a46018a3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112609"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016373"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial wird Schritt für Schritt die Erstellung einer Anwendung zur Überwachung der Wasserqualität in Azure IoT Central beschrieben. Sie erstellen die Anwendung mit der Azure IoT Central-Anwendungsvorlage **Überwachung der Wasserqualität**.
 
@@ -54,7 +54,7 @@ In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung d
 
 1. Wählen Sie **App erstellen** aus. Der Bereich **Neue Anwendung** mit den folgenden Elementen wird geöffnet:
 
-    * **Anwendungsname:** Standardmäßig lautet der Anwendungsname **Überwachung der Wasserqualität**, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Bei Bedarf können Sie einen Anzeigenamen eingeben oder den Anwendungsnamen später ändern.
+    * **Anwendungsname**: Standardmäßig lautet der Anwendungsname **Überwachung der Wasserqualität**, gefolgt von einer eindeutigen ID-Zeichenfolge, die von Azure IoT Central generiert wird. Bei Bedarf können Sie einen Anzeigenamen eingeben oder den Anwendungsnamen später ändern.
     * **URL**: Sie können eine beliebige URL eingeben oder den URL-Wert später ändern.
     * Geben Sie Werte für **Verzeichnis**, **Azure-Abonnement** und **Region** ein, wenn Sie über ein Azure-Abonnement verfügen. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.
 
@@ -63,6 +63,8 @@ In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung d
 1. Wählen Sie unten links auf der Seite die Schaltfläche **Erstellen** aus.
 
     ![Seite für neue Anwendung in Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
+
+    ![Neue Anwendung in Azure IoT Central: Abrechnungsinformationen](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
 Sie haben nun eine Anwendung zur Überwachung der Wasserqualität erstellt, indem Sie die Azure IoT Central-Vorlage **Überwachung der Wasserqualität** verwendet haben.
 

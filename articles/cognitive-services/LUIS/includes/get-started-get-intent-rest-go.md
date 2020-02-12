@@ -6,34 +6,47 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 02cb7738e20df6aba8690c9fe2ee718144bad114
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414562"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987774"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Programmiersprache [Go](https://golang.org/)  
+* Programmiersprache [Go](https://golang.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>Abrufen des LUIS-Schlüssels
+## <a name="create-luis-runtime-key-for-predictions"></a>Erstellen eines LUIS-Runtimeschlüssels für Vorhersagen
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+1. Geben Sie alle erforderlichen Einstellungen für den **Runtimeschlüssel** ein:
+
+    |Einstellung|value|
+    |--|--|
+    |Name|Gewünschter Name (2 bis 64 Zeichen)|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
+    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
+    |Preisstufe|`F0` – der Mindesttarif|
+    |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
+
+1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
+1. Erfassen Sie den konfigurierten Endpunkt (`endpoint`) und einen Schlüssel (`key`).
 
 ## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
 Verwenden Sie Go, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-prediction) abzurufen und ein Vorhersageergebnis zu erhalten.
 
 1. Erstellen Sie eine neue Datei mit dem Namen `predict.go`. Fügen Sie den folgenden Code hinzu:
-    
+
     ```go
     package main
-    
+
     /* Do dependencies */
     import (
         "fmt"
@@ -43,65 +56,67 @@ Verwenden Sie Go, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-predic
         "log"
     )
     func main() {
-        
+
         // public app
         var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-        
+
         // utterance for public app
         var utterance = "turn on all lights"
-        
-        // YOUR-KEY - your starter or prediction key
+
+        // YOUR-KEY - your **Runtime** key
         var endpointKey = "YOUR-KEY"
-        
-        // YOUR-ENDPOINT - example is westus2.api.cognitive.microsoft.com
+
+        // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
         var endpoint = "YOUR-ENDPOINT"
-    
+
         endpointPrediction(appID, endpointKey, endpoint, utterance)
     }
     func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
-    
+
         var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
-        
+
         response, err := http.Get(endpointUrl)
-    
+
         if err!=nil {
             // handle error
             fmt.Println("error from Get")
             log.Fatal(err)
         }
-        
+
         response2, err2 := ioutil.ReadAll(response.Body)
-    
+
         if err2!=nil {
             // handle error
             fmt.Println("error from ReadAll")
             log.Fatal(err2)
         }
-    
+
         fmt.Println("response")
         fmt.Println(string(response2))
     }
     ```
 
-1. Ersetzen Sie die folgenden Werte:
+1. Ersetzen Sie die Werte `YOUR-KEY` und `YOUR-ENDPOINT` durch Ihren eigenen Schlüssel- bzw. Endpunktwert für die **Vorhersageruntime**.
 
-    * `YOUR-KEY` durch Ihren Startschlüssel
-    * `YOUR-ENDPOINT` durch Ihren Endpunkt Beispiel: `westus2.api.cognitive.microsoft.com`.
+    |Information|Zweck|
+    |--|--|
+    |`YOUR-KEY`|Ihr 32-stelliger Schlüssel für die **Vorhersageruntime**.|
+    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Vorhersage. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Geben Sie in dem Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Go-Datei zu kompilieren:
 
     ```console
     go build predict.go
-    ```  
+    ```
 
-1. Führen Sie die Go-Anwendung über die Befehlszeile aus, indem Sie den folgenden Text an der Eingabeaufforderung eingeben: 
+1. Führen Sie die Go-Anwendung über die Befehlszeile aus, indem Sie den folgenden Text an der Eingabeaufforderung eingeben:
 
     ```console
     go run predict.go
     ```
-    
-    Die Antwort der Eingabeaufforderung sieht wie folgt aus: 
-    
+
+    Die Antwort der Eingabeaufforderung sieht wie folgt aus:
+
     ```console
     appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
     endpointKey has value a7b206911f714e71a1ddae36928a61cc
@@ -155,13 +170,9 @@ Verwenden Sie Go, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-predic
     ```
 
 
-## <a name="luis-keys"></a>LUIS-Schlüssel
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

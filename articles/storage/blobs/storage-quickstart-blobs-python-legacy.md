@@ -3,33 +3,30 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v2.1 für Python'
 description: In diesem Schnellstart erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Anschließend verwenden Sie die Speicherclientbibliothek v2.1 für Python, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122677"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906441"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v2.1 für Python
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Schnellstart: Verwalten von Blobs per Python v2.1 SDK
 
-In diesem Artikel verwenden Sie Python, um Blockblobs in einem Container in Azure Blob Storage hochzuladen, herunterzuladen und aufzulisten. Bei Blobs handelt es sich einfach um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Blobs in Azure Storage unterscheiden sich von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen.  Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mit Python verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs und das Erstellen und Löschen von Containern durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
+- [Python](https://www.python.org/downloads/).
+- [Azure Storage SDK für Python](https://github.com/Azure/azure-sdk-for-python).
 
-Stellen Sie sicher, dass die folgenden zusätzlichen Komponenten installiert sind:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Azure Storage SDK für Python](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 

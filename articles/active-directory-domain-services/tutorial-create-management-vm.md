@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703647"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931584"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Installieren der Active Directory-Verwaltungstools auf einer Windows Server-VM
 > * Verwenden des Active Directory-Verwaltungscenters zum Ausführen allgemeiner Aufgaben
 
-Wenn Sie kein Azure-Abonnement haben, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,15 +39,15 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
     * Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Einen mit Ihrem Abonnement verknüpften Azure Active Directory-Mandanten, der entweder mit einem lokalen Verzeichnis synchronisiert oder ein reines Cloudverzeichnis ist.
     * [Erstellen Sie einen Azure Active Directory-Mandanten][create-azure-ad-tenant], oder [verknüpfen Sie ein Azure-Abonnement mit Ihrem Konto][associate-azure-ad-tenant], sofern erforderlich.
-* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
-    * Falls Sie keine solche Domäne haben, gehen Sie wie im ersten Tutorial beschrieben vor, um eine [Azure Active Directory Domain Services-Instanz zu erstellen und zu konfigurieren][create-azure-ad-ds-instance].
+* Eine verwaltete Azure Active Directory Domain Services-Domäne, die in Ihrem Azure AD-Mandanten aktiviert und konfiguriert ist.
+    * Sehen Sie sich bei Bedarf das erste Tutorial zum [Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz][create-azure-ad-ds-instance] an.
 * Eine Windows Server-VM, die in die verwaltete Azure AD DS-Domäne eingebunden ist.
-    * Falls Sie keine solche VM haben, gehen Sie wie im vorherigen Tutorial beschrieben vor, um eine [Windows Server-VM zu erstellen und in eine verwaltete Domäne einzubinden][create-join-windows-vm].
+    * Sehen Sie sich bei Bedarf das vorherige Tutorial zum [Einbinden eines virtuellen Windows Server-Computers in eine verwaltete Domäne][create-join-windows-vm] an.
 * Ein Benutzerkonto, das Mitglied der *Administratorengruppe für Azure AD-Domänencontroller* (AAD-DC-Administratoren) in Ihrem Azure AD-Mandanten ist.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-In diesem Tutorial erstellen und konfigurieren Sie eine Verwaltungs-VM mithilfe des Azure-Portals. Melden Sie sich als Erstes beim [Azure-Portal](https://portal.azure.com) an.
+In diesem Tutorial erstellen und konfigurieren Sie eine Verwaltungs-VM mithilfe des Azure-Portals. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="available-administrative-tasks-in-azure-ad-ds"></a>Verfügbare administrative Aufgaben in Azure AD DS
 
@@ -93,7 +93,7 @@ Stellen Sie zunächst wie folgt eine Verbindung mit der Windows Server-VM her:
 1. Wählen Sie die Option *RDP-Datei herunterladen* aus. Speichern Sie die RDP-Datei in Ihrem Webbrowser.
 1. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 1. Geben Sie die Anmeldeinformationen eines Benutzers ein, der Mitglied der Gruppe der *Azure AD DC-Administratoren* ist (z. B. *contoso\dee*).
-1. Wenn während des Anmeldevorgangs eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Ja** oder **Weiter**, um eine Verbindung herzustellen.
+1. Wenn während des Anmeldevorgangs eine Zertifikatwarnung angezeigt wird, klicken Sie auf **Ja** oder **Weiter**, um die Verbindung herzustellen.
 
 ## <a name="install-active-directory-administrative-tools"></a>Installieren der Active Directory-Verwaltungstools
 

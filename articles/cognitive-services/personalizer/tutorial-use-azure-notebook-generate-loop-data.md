@@ -8,30 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 02/03/2020
 ms.author: diberry
-ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 03e8b658f7edf4640d738e5ea3af84953185d0f5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007601"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986834"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Tutorial: Verwenden der Personalisierung in Azure Notebook
 
-In diesem Tutorial wird in einer Azure Notebook-Instanz eine Personalisierungsschleife ausgeführt, um den damit verbundenen End-to-End-Lebenszyklus zu veranschaulichen. 
+In diesem Tutorial wird in einer Azure Notebook-Instanz eine Personalisierungsschleife ausgeführt, um den damit verbundenen End-to-End-Lebenszyklus zu veranschaulichen.
 
 In der Schleife wird vorgeschlagen, welche Art von Kaffee ein Kunde bestellen soll. Die Benutzer und ihre Präferenzen werden in einem Benutzerdataset gespeichert. Informationen zum Kaffee werden in einem Kaffeedataset gespeichert.
 
 ## <a name="users-and-coffee"></a>Benutzer und Kaffee
 
-Das Notebook wählt aus dem Dataset nach dem Zufallsprinzip einen Benutzer, eine Tageszeit und einen Wettertyp aus. Eine Zusammenfassung der Benutzerinformationen lautet:
+Das Notebook simuliert die Benutzerinteraktion mit einer Website und wählt aus dem Dataset nach dem Zufallsprinzip einen Benutzer, eine Tageszeit und einen Wettertyp aus. Eine Zusammenfassung der Benutzerinformationen lautet:
 
 |Kunden: Kontextfeatures|Tageszeiten|Wetter|
 |--|--|--|
-|Alina<br>Bernd<br>Cathrin<br>David|Morgens<br>Nachmittags<br>Abends|Sonnig<br>Regnerisch<br>Schnee| 
+|Alina<br>Bernd<br>Cathrin<br>David|Morgens<br>Nachmittags<br>Abends|Sonnig<br>Regnerisch<br>Schnee|
 
-Damit die Personalisierung im Laufe der Zeit für jede Person die Auswahl des richtigen Kaffees erlernen kann, sind dem _System_ auch die jeweiligen Kaffeedetails bekannt.
+Damit die Personalisierung im Laufe der Zeit lernen kann, sind dem _System_ auch die Details zur Kaffeeauswahl für jede Person bekannt.
 
 |Kaffee: Aktionsfeatures|Temperaturtypen|Ursprungsorte|Röstungsarten|Bio|
 |--|--|--|--|--|
@@ -40,64 +40,63 @@ Damit die Personalisierung im Laufe der Zeit für jede Person die Auswahl des ri
 |Iced Mocha|Kalt|Äthiopien|Leicht|Kein Bio|
 |Latte|Heiß|Brasilien|Dark|Kein Bio|
 
-
-Der **Zweck** der Personalisierungsschleife besteht darin, so häufig wie möglich die beste Übereinstimmung zwischen den Benutzern und dem Kaffee zu finden. 
+Der **Zweck** der Personalisierungsschleife besteht darin, so häufig wie möglich die beste Übereinstimmung zwischen den Benutzern und dem Kaffee zu finden.
 
 Der Code für dieses Tutorial steht im [GitHub-Repository mit den Personalisierungsbeispielen](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) zur Verfügung.
 
 ## <a name="how-the-simulation-works"></a>Funktionsweise der Simulation
 
-Zu Beginn der Systemausführung sind die Vorschläge der Personalisierung nur in 20 % bis 30 % der Fälle erfolgreich (Relevanzbewertung 1). Nach einigen Anforderungen verbessern sich die Ergebnisse des Systems.
+Zu Beginn der Systemausführung sind die Vorschläge der Personalisierung nur in 20 bis 30 Prozent der Fälle erfolgreich. Dieser Erfolg wird durch die an die Relevanz-API der Personalisierung gesendete Relevanzbewertung 1 angegeben. Nach einigen Rangfolge- und Relevanzaufrufen verbessert sich das System.
 
-Führen Sie nach den ersten 10.000 Anforderungen eine Offlineauswertung durch. Die Personalisierung kann so die Daten überprüfen und eine bessere Lernrichtlinie vorschlagen. Wenden Sie die neue Lernrichtlinie an, und führen Sie mit dem Notebook erneut 2.000 Anforderungen durch. Die Schleife führt zu einer besseren Leistung.
+Führen Sie nach der ersten Anforderung eine Offlineauswertung durch. Die Personalisierung kann so die Daten überprüfen und eine bessere Lernrichtlinie vorschlagen. Wenden Sie die neue Lernrichtlinie an, und führen Sie mit dem Notebook erneut 20 Prozent der vorherigen Anforderungsanzahl durch. Die Schleife führt mit der neuen Lernrichtlinie zu einer besseren Leistung.
 
 ## <a name="rank-and-reward-calls"></a>Einstufen nach Rangfolge und Belohnen von Aufrufen
 
 Für jeden der Tausende von Aufrufen des Personalisierungsdiensts sendet Azure Notebook die Rangfolgenanforderung (**Rank**) an die REST-API:
 
 * Eindeutige ID für das Rangfolgen-/Anforderungsereignis
-* Kontext: Zufällige Auswahl des Benutzers, des Wetters und der Tageszeit – Simulation eines Benutzers auf einer Website oder einem mobilen Gerät
-* Features: _Alle_ Kaffeedaten, aus denen die Personalisierung einen Vorschlag erstellt
+* Kontextfeatures: Zufällige Auswahl des Benutzers, des Wetters und der Tageszeit – Simulation eines Benutzers auf einer Website oder einem mobilen Gerät
+* Aktionen mit Features: _Alle_ Kaffeedaten, aus denen die Personalisierung einen Vorschlag erstellt
 
-Das System empfängt die Rangfolge der Kaffeeauswahlmöglichkeiten und vergleicht diese Vorhersage dann mit der bereits bekannten Wahl des Benutzers für die gleiche Tageszeit und das gleiche Wetter. Falls die bekannte Wahl mit der vorhergesagten Auswahl übereinstimmt, wird der Belohnungswert „1“ (**Reward**) an die Personalisierung gesendet. Andernfalls ist der Belohnungswert „0“. 
+Das System empfängt die Anforderung und vergleicht diese Vorhersage dann mit der bereits bekannten Wahl des Benutzers für die gleiche Tageszeit und das gleiche Wetter. Falls die bekannte Wahl mit der vorhergesagten Auswahl übereinstimmt, wird der Belohnungswert „1“ (**Reward**) an die Personalisierung gesendet. Andernfalls lautet zurückgesendete Relevanzwert „0“.
 
 > [!Note]
-> Da es sich hierbei um eine Simulation handelt, ist der Algorithmus für die Belohnung nicht kompliziert. Bei einem echten Szenario sollte für den Algorithmus eine Geschäftslogik verwendet werden, wobei ggf. Gewichtungen für unterschiedliche Aspekte der Erfahrung des Kunden vergeben werden, um das Belohnungsergebnis zu ermitteln. 
+> Da es sich hierbei um eine Simulation handelt, ist der Algorithmus für die Belohnung nicht kompliziert. Bei einem echten Szenario sollte für den Algorithmus eine Geschäftslogik verwendet werden, wobei ggf. Gewichtungen für unterschiedliche Aspekte der Erfahrung des Kunden vergeben werden, um das Belohnungsergebnis zu ermitteln.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [Azure Notebook](https://notebooks.azure.com/)-Konto 
-* Eine [Azure-Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) 
-    * Wenn Sie die Personalisierungsressource bereits verwendet haben, sollten Sie sicherstellen, dass Sie im Azure-Portal für die Ressource die [Daten löschen](how-to-settings.md#clear-data-for-your-learning-loop). 
-* Laden Sie alle Dateien für [dieses Beispiel](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) in ein Azure Notebook-Projekt hoch. 
+* Ein [Azure Notebook](https://notebooks.azure.com/)-Konto
+* Eine [Azure-Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer)
+    * Wenn Sie die Personalisierungsressource bereits verwendet haben, sollten Sie sicherstellen, dass Sie im Azure-Portal für die Ressource die [Daten löschen](how-to-settings.md#clear-data-for-your-learning-loop).
+* Laden Sie alle Dateien für [dieses Beispiel](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) in ein Azure Notebook-Projekt hoch.
 
 Dateibeschreibungen:
 
 * [Personalizer.ipynb](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/Personalizer.ipynb) ist das Jupyter-Notebook für dieses Tutorial.
 * Das [Benutzerdataset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/users.json) wird in einem JSON-Objekt gespeichert.
-* Das [Kaffeedataset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) wird in einem JSON-Objekt gespeichert. 
+* Das [Kaffeedataset](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/coffee.json) wird in einem JSON-Objekt gespeichert.
 * Das [Beispiel für den JSON-Code einer Anforderung](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/samples/azurenotebook/example-rankrequest.json) weist das erwartete Format für eine POST-Anforderung an die Rangfolge-API auf.
 
 ## <a name="configure-personalizer-resource"></a>Konfigurieren der Personalisierungsressource
 
-Konfigurieren Sie im Azure-Portal Ihre [Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) so, dass die **Häufigkeit der Modellaktualisierung** auf 15 Sekunden und die **Wartezeit für Belohnung** ebenfalls auf 15 Sekunden festgelegt ist. Diese Werte finden Sie auf der Seite **[Konfiguration](how-to-settings.md#configure-service-settings-in-the-azure-portal)** . 
+Konfigurieren Sie im Azure-Portal Ihre [Personalisierungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer) so, dass die **Häufigkeit der Modellaktualisierung** auf 15 Sekunden und die **Wartezeit für Belohnung** ebenfalls auf 15 Sekunden festgelegt ist. Diese Werte finden Sie auf der Seite **[Konfiguration](how-to-settings.md#configure-service-settings-in-the-azure-portal)** .
 
-|Einstellung|Wert|
+|Einstellung|value|
 |--|--|
 |Häufigkeit der Modellaktualisierung|15 Sekunden|
 |Wartezeit für Belohnung|15 Sekunden|
 
-Diese Werte sind absichtlich niedrig gehalten, um für dieses Tutorial die Änderungen zu verdeutlichen. Sie sollten nicht in einem Produktionsszenario verwendet werden, ohne vorher zu prüfen, ob für Ihre Personalisierungsschleife damit das gewünschte Ziel erreicht wird. 
+Diese Werte sind absichtlich niedrig gehalten, um für dieses Tutorial die Änderungen zu verdeutlichen. Sie sollten nicht in einem Produktionsszenario verwendet werden, ohne vorher zu prüfen, ob für Ihre Personalisierungsschleife damit das gewünschte Ziel erreicht wird.
 
 ## <a name="set-up-the-azure-notebook"></a>Einrichten der Azure Notebook-Instanz
 
-1. Ändern Sie den Kernel in `Python 3.6`. 
+1. Ändern Sie den Kernel in `Python 3.6`.
 1. Öffnen Sie die Datei `Personalizer.ipynb` .
 
 ## <a name="run-notebook-cells"></a>Ausführen von Notebookzellen
 
-Führen Sie die einzelnen ausführbaren Zellen aus, und warten Sie auf die Rückgabe. Der Vorgang ist abgeschlossen, wenn in den Klammern neben der Zelle anstelle von `*` eine Zahl angezeigt wird. In den folgenden Abschnitten wird beschrieben, welche programmgesteuerten Vorgänge in den einzelnen Zellen ablaufen und was als Ausgabe zu erwarten ist. 
+Führen Sie die einzelnen ausführbaren Zellen aus, und warten Sie auf die Rückgabe. Der Vorgang ist abgeschlossen, wenn in den Klammern neben der Zelle anstelle von `*` eine Zahl angezeigt wird. In den folgenden Abschnitten wird beschrieben, welche programmgesteuerten Vorgänge in den einzelnen Zellen ablaufen und was als Ausgabe zu erwarten ist.
 
 ### <a name="include-the-python-modules"></a>Einfügen der Python-Module
 
@@ -106,7 +105,7 @@ Dient zum Einfügen der erforderlichen Python-Module. Die Zelle hat keine Ausgab
 ```python
 import json
 import matplotlib.pyplot as plt
-import random 
+import random
 import requests
 import time
 import uuid
@@ -114,7 +113,7 @@ import uuid
 
 ### <a name="set-personalizer-resource-key-and-name"></a>Festlegen des Schlüssels und Namens für die Personalisierungsressource
 
-Suchen Sie im Azure-Portal auf der Seite **Schnellstart** Ihrer Personalisierungsressource nach Ihrem Schlüssel und Endpunkt. Ändern Sie den Wert von `<your-resource-name>` in den Namen Ihrer Personalisierungsressource. Ändern Sie den Wert von `<your-resource-key>` in Ihren Personalisierungsschlüssel. 
+Suchen Sie im Azure-Portal auf der Seite **Schnellstart** Ihrer Personalisierungsressource nach Ihrem Schlüssel und Endpunkt. Ändern Sie den Wert von `<your-resource-name>` in den Namen Ihrer Personalisierungsressource. Ändern Sie den Wert von `<your-resource-key>` in Ihren Personalisierungsschlüssel.
 
 ```python
 # Replace 'personalization_base_url' and 'resource_key' with your valid endpoint values.
@@ -136,11 +135,11 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Abrufen des Zeitpunkts der letzten Modellaktualisierung
 
-Wenn die Funktion `get_last_updated` aufgerufen wird, gibt die Funktion das Datum und die Uhrzeit der letzten Änderung zur Aktualisierung des Modells aus. 
+Wenn die Funktion `get_last_updated` aufgerufen wird, gibt die Funktion das Datum und die Uhrzeit der letzten Änderung zur Aktualisierung des Modells aus.
 
 Diese Zellen haben keine Ausgabe. Wenn diese Funktion aufgerufen wird, gibt sie das Datum des letzten Modelltrainings aus.
 
-Für die Funktion wird eine GET REST-API zum [Abrufen der Modelleigenschaften](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties) verwendet. 
+Für die Funktion wird eine GET REST-API zum [Abrufen der Modelleigenschaften](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/GetModelProperties) verwendet.
 
 ```python
 # ititialize variable for model's last modified date
@@ -149,18 +148,18 @@ modelLastModified = ""
 
 ```python
 def get_last_updated(currentModifiedDate):
-    
+
     print('-----checking model')
-    
+
     # get model properties
     response = requests.get(personalization_model_properties_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 
     # get lastModifiedTime
     lastModifiedTime = json.dumps(response.json()["lastModifiedTime"])
-    
+
     if (currentModifiedDate != lastModifiedTime):
         currentModifiedDate = lastModifiedTime
         print(f'-----model updated: {lastModifiedTime}')
@@ -174,28 +173,28 @@ Diese Zellen haben keine Ausgabe. Wenn diese Funktion aufgerufen wird, gibt sie 
 
 ```python
 def get_service_settings():
-    
+
     print('-----checking service settings')
-    
+
     # get learning policy
     response = requests.get(personalization_model_policy_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
-    
+
     # get service settings
     response = requests.get(personalization_service_configuration_url, headers = headers, params = None)
-    
+
     print(response)
     print(response.json())
 ```
 
 ### <a name="construct-urls-and-read-json-data-files"></a>Erstellen von URLs und Lesen von JSON-Datendateien
 
-Mit dieser Zelle wird Folgendes durchgeführt: 
+Mit dieser Zelle wird Folgendes durchgeführt:
 
-* Die in REST-Aufrufen verwendeten URLs werden erstellt. 
-* Der Sicherheitsheader wird festgelegt, indem der Schlüssel Ihrer Personalisierungsressource verwendet wird. 
+* Die in REST-Aufrufen verwendeten URLs werden erstellt.
+* Der Sicherheitsheader wird festgelegt, indem der Schlüssel Ihrer Personalisierungsressource verwendet wird.
 * Der zufällige Ausgangswert für die Rangfolgeereignis-ID wird festgelegt.
 * Die JSON-Datendateien werden eingelesen.
 * Die `get_last_updated`-Methode wird aufgerufen (Lernrichtlinie wurde in der Beispielausgabe entfernt).
@@ -225,8 +224,8 @@ requestpath = "example-rankrequest.json"
 # initialize random
 random.seed(time.time())
 
-userpref = None 
-rankactionsjsonobj = None 
+userpref = None
+rankactionsjsonobj = None
 actionfeaturesobj = None
 
 with open(users) as handle:
@@ -234,10 +233,10 @@ with open(users) as handle:
 
 with open(coffee) as handle:
     actionfeaturesobj = json.loads(handle.read())
-    
+
 with open(requestpath) as handle:
-    rankactionsjsonobj = json.loads(handle.read())  
-    
+    rankactionsjsonobj = json.loads(handle.read())
+
 get_last_updated(modelLastModified)
 get_service_settings()
 
@@ -245,8 +244,8 @@ print(f'User count {len(userpref)}')
 print(f'Coffee count {len(actionfeaturesobj)}')
 ```
 
-Überprüfen Sie, ob in der Ausgabe für `rewardWaitTime` und `modelExportFrequency` jeweils 15 Sekunden als Wert angegeben ist. 
-    
+Überprüfen Sie, ob in der Ausgabe für `rewardWaitTime` und `modelExportFrequency` jeweils 15 Sekunden als Wert angegeben ist.
+
 ```console
 -----checking model
 <Response [200]>
@@ -265,21 +264,21 @@ Coffee count 4
 
 Diese vorherige Zelle ist die erste Zelle, die einen Aufruf der Personalisierung durchführt. Stellen Sie sicher, dass der REST-Statuscode in der Ausgabe `<Response [200]>` lautet. Wenn Sie einen Fehler erhalten (z. B. 404), obwohl Sie sicher sind, dass Ressourcenschlüssel und -name korrekt sind, sollten Sie das Notebook neu laden.
 
-Stellen Sie sicher, dass für Kaffee und Benutzer jeweils der Wert „4“ angegeben ist. Falls Sie einen Fehler erhalten, sollten Sie überprüfen, ob Sie alle drei JSON-Dateien hochgeladen haben. 
+Stellen Sie sicher, dass für Kaffee und Benutzer jeweils der Wert „4“ angegeben ist. Falls Sie einen Fehler erhalten, sollten Sie überprüfen, ob Sie alle drei JSON-Dateien hochgeladen haben.
 
 ### <a name="set-up-metric-chart-in-azure-portal"></a>Einrichten eines Metrikdiagramms im Azure-Portal
 
 Später in diesem Tutorial können Sie den Langzeitprozess mit 10.000 Anforderungen im Browser in einem Textfeld verfolgen, das aktualisiert wird. Unter Umständen ist dies in einem Diagramm oder als Gesamtsumme einfacher zu sehen, nachdem der Langzeitprozess abgeschlossen ist. Verwenden Sie die Metriken der Ressource, um diese Informationen anzuzeigen. Sie können das Diagramm jetzt erstellen, da Sie eine Anforderung an den Dienst gesendet haben. Aktualisieren Sie das Diagramm dann regelmäßig, während der Langzeitprozess aktiv ist.
 
 1. Wählen Sie im Azure-Portal Ihre Personalisierungsressource aus.
-1. Wählen Sie in der Ressourcennavigation unter „Überwachung“ die Option **Metriken** aus. 
+1. Wählen Sie in der Ressourcennavigation unter „Überwachung“ die Option **Metriken** aus.
 1. Wählen Sie im Diagramm die Option **Metrik hinzufügen** aus.
 1. Der Ressourcen- und Metriknamespace sind bereits festgelegt. Sie müssen die Metrik für **erfolgreiche Aufrufe** und die Aggregation für die **Summe** auswählen.
 1. Ändern Sie die Einstellung des Zeitfilters auf die letzten vier Stunden.
 
     ![Richten Sie das Metrikdiagramm im Azure-Portal ein, indem Sie die Metrik für erfolgreiche Aufrufe für die letzten vier Stunden hinzufügen.](./media/tutorial-azure-notebook/metric-chart-setting.png)
 
-    Im Diagramm sollten drei erfolgreiche Aufrufe angezeigt werden. 
+    Im Diagramm sollten drei erfolgreiche Aufrufe angezeigt werden.
 
 ### <a name="generate-a-unique-event-id"></a>Generieren einer eindeutigen Ereignis-ID
 
@@ -300,7 +299,7 @@ Mit dieser Funktion werden ein eindeutiger Benutzer, das Wetter und die Tageszei
 
 Die Zelle hat keine Ausgabe. Wenn die Funktion aufgerufen wird, gibt sie den Benutzernamen, das Wetter und die Tageszeit nach dem Zufallsprinzip zurück.
 
-Liste mit vier Benutzern und ihren Präferenzen (aus Platzgründen sind nur einige Präferenzen aufgeführt): 
+Liste mit vier Benutzern und ihren Präferenzen (aus Platzgründen sind nur einige Präferenzen aufgeführt):
 
 ```json
 {
@@ -336,7 +335,7 @@ Liste mit vier Benutzern und ihren Präferenzen (aus Platzgründen sind nur eini
 ```
 
 ```python
-def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):   
+def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, rankjsonobj):
     name = namesoption[random.randint(0,3)]
     weather = weatheropt[random.randint(0,2)]
     timeofday = timeofdayopt[random.randint(0,2)]
@@ -347,12 +346,12 @@ def add_random_user_and_contextfeatures(namesoption, weatheropt, timeofdayopt, r
 
 ### <a name="add-all-coffee-data"></a>Hinzufügen aller Kaffeedaten
 
-Mit dieser Funktion wird die gesamte Kaffeeliste dem JSON-Objekt hinzugefügt, das an die Rangfolgeanforderung gesendet wird. 
+Mit dieser Funktion wird die gesamte Kaffeeliste dem JSON-Objekt hinzugefügt, das an die Rangfolgeanforderung gesendet wird.
 
 Die Zelle hat keine Ausgabe. Wenn diese Funktion aufgerufen wird, wird keine Änderung des `rankjsonobj`-Elements durchgeführt.
 
 
-Das Beispiel für die Features einer einzelnen Kaffeesorte lautet: 
+Das Beispiel für die Features einer einzelnen Kaffeesorte lautet:
 
 ```json
 {
@@ -363,7 +362,7 @@ Das Beispiel für die Features einer einzelnen Kaffeesorte lautet:
         "origin": "kenya",
         "organic": "yes",
         "roast": "dark"
-        
+
     }
 }
 ```
@@ -382,34 +381,34 @@ Mit dieser Funktion wird die Benutzerpräferenz in Bezug auf den Kaffee nach dem
 ```python
 def get_reward_from_simulated_data(name, weather, timeofday, prediction):
     if(userpref[name][weather][timeofday] == str(prediction)):
-        return 1 
+        return 1
     return 0
-``` 
+```
 
 ### <a name="loop-through-calls-to-rank-and-reward"></a>Schleife für Rangfolge- und Belohnungsaufrufe
 
-Die nächste Zelle umfasst die _Hauptarbeit_ des Notebooks: Abrufen eines zufälligen Benutzers, Abrufen der Kaffeeliste und Senden beider Angaben an die Rangfolge-API. Die Vorhersage wird mit den bekannten Präferenzen des Benutzers verglichen, und anschließend wird der Belohnungswert zurück an den Personalisierungsdienst gesendet. 
+Die nächste Zelle umfasst die _Hauptarbeit_ des Notebooks: Abrufen eines zufälligen Benutzers, Abrufen der Kaffeeliste und Senden beider Angaben an die Rangfolge-API. Die Vorhersage wird mit den bekannten Präferenzen des Benutzers verglichen, und anschließend wird der Belohnungswert zurück an den Personalisierungsdienst gesendet.
 
-Die Schleife wird so häufig ausgeführt, wie dies unter `num_requests` angegeben ist. Die Personalisierung benötigt einige Tausend Rangfolge- und Belohnungsaufrufe, um ein Modell erstellen zu können. 
+Die Schleife wird so häufig ausgeführt, wie dies unter `num_requests` angegeben ist. Die Personalisierung benötigt einige Tausend Rangfolge- und Belohnungsaufrufe, um ein Modell erstellen zu können.
 
 Unten ist ein Beispiel für den JSON-Code angegeben, der an die Rangfolge-API gesendet wird. Aus Platzgründen ist nicht die gesamte Kaffeeliste angegeben. Den vollständigen JSON-Code für Kaffee finden Sie in `coffee.json`.
 
 An die Rangfolge-API gesendeter JSON-Code:
 
 ```json
-{ 
-   'contextFeatures':[ 
-      { 
+{
+   'contextFeatures':[
+      {
          'timeofday':'Evening',
          'weather':'Snowy',
          'name':'Alice'
       }
    ],
-   'actions':[ 
-      { 
+   'actions':[
+      {
          'id':'Cappucino',
-         'features':[ 
-            { 
+         'features':[
+            {
                'type':'hot',
                'origin':'kenya',
                'organic':'yes',
@@ -419,7 +418,7 @@ An die Rangfolge-API gesendeter JSON-Code:
       }
         ...rest of coffee list
    ],
-   'excludedActions':[ 
+   'excludedActions':[
 
    ],
    'eventId':'b5c4ef3e8c434f358382b04be8963f62',
@@ -436,8 +435,8 @@ JSON-Codeantwort der Rangfolge-API:
         {'id': 'Iced mocha', 'probability': 0.05 },
         {'id': 'Cappucino', 'probability': 0.05 },
         {'id': 'Cold brew', 'probability': 0.05 }
-    ], 
-    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2', 
+    ],
+    'eventId': '5001bcfe3bb542a1a238e6d18d57f2d2',
     'rewardActionId': 'Latte'
 }
 ```
@@ -450,14 +449,14 @@ Abschließend wird für jede Schleife eine zufällige Auswahl für Benutzer, Wet
 
 In der Funktion wird Folgendes verwendet:
 
-* Rangfolge: POST-REST-API zum [Abrufen der Rangfolge](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank). 
+* Rangfolge: POST-REST-API zum [Abrufen der Rangfolge](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank).
 * Belohnung: POST-REST-API zum [Melden der Belohnung](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward).
 
 ```python
 def iterations(n, modelCheck, jsonFormat):
 
     i = 1
-    
+
     # default reward value - assumes failed prediction
     reward = 0
 
@@ -473,8 +472,8 @@ def iterations(n, modelCheck, jsonFormat):
     namesopt = ['Alice', 'Bob', 'Cathy', 'Dave']
     weatheropt = ['Sunny', 'Rainy', 'Snowy']
     timeofdayopt = ['Morning', 'Afternoon', 'Evening']
-    
-    
+
+
     while(i <= n):
 
         # create unique id to associate with an event
@@ -484,16 +483,16 @@ def iterations(n, modelCheck, jsonFormat):
         [name, weather, timeofday] = add_random_user_and_contextfeatures(namesopt, weatheropt, timeofdayopt, jsonFormat)
 
         # add action features to rank
-        add_action_features(jsonFormat) 
+        add_action_features(jsonFormat)
 
         # show JSON to send to Rank
-        print('To: ', jsonFormat)    
+        print('To: ', jsonFormat)
 
         # choose an action - get prediction from Personalizer
         response = requests.post(personalization_rank_url, headers = headers, params = None, json = jsonFormat)
 
-        # show Rank prediction 
-        print ('From: ',response.json())    
+        # show Rank prediction
+        print ('From: ',response.json())
 
         # compare personalization service recommendation with the simulated data to generate a reward value
         prediction = json.dumps(response.json()["rewardActionId"]).replace('"','')
@@ -502,7 +501,7 @@ def iterations(n, modelCheck, jsonFormat):
         # show result for iteration
         print(f'   {i} {currentDateTime()} {name} {weather} {timeofday} {prediction} {reward}')
 
-        # send the reward to the service 
+        # send the reward to the service
         response = requests.post(personalization_reward_url + eventid + "/reward", headers = headers, params= None, json = { "value" : reward })
 
         # for every N rank requests, compute total correct  total
@@ -513,7 +512,7 @@ def iterations(n, modelCheck, jsonFormat):
 
             print("**** 10% of loop found")
 
-            get_last_updated(modelLastModified) 
+            get_last_updated(modelLastModified)
 
         # aggregate so chart is easier to read
         if(i % 10 == 0):
@@ -522,7 +521,7 @@ def iterations(n, modelCheck, jsonFormat):
              total = 0
 
         i = i + 1
-        
+
     # Print out dateTime
     currentDateTime()
 
@@ -530,7 +529,7 @@ def iterations(n, modelCheck, jsonFormat):
 ```
 
 ## <a name="run-for-10000-iterations"></a>Ausführen von 10.000 Iterationen
-Führen Sie für die Personalisierungsschleife 10.000 Iterationen aus. Dies ist ein zeitintensives Ereignis. Schließen Sie nicht den Browser, in dem das Notebook ausgeführt wird. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 20.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen. 
+Führen Sie für die Personalisierungsschleife 10.000 Iterationen aus. Dies ist ein zeitintensives Ereignis. Schließen Sie nicht den Browser, in dem das Notebook ausgeführt wird. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 20.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen.
 
 ```python
 # max iterations
@@ -547,7 +546,7 @@ jsonTemplate = rankactionsjsonobj
 
 
 
-## <a name="chart-results-to-see-improvement"></a>Anzeigen der Ergebnisse in einem Diagramm zur Verdeutlichung der Verbesserung 
+## <a name="chart-results-to-see-improvement"></a>Anzeigen der Ergebnisse in einem Diagramm zur Verdeutlichung der Verbesserung
 
 Erstellen Sie aus `count` und `rewards` ein Diagramm.
 
@@ -569,16 +568,16 @@ createChart(count,rewards)
 
 ## <a name="reading-the-chart"></a>Lesen des Diagramms
 
-In diesem Diagramm ist der Erfolg des Modells für die aktuelle Standardlernrichtlinie dargestellt. 
+In diesem Diagramm ist der Erfolg des Modells für die aktuelle Standardlernrichtlinie dargestellt.
 
 ![In diesem Diagramm ist der Erfolg der aktuellen Lernrichtlinie für die Dauer des Tests dargestellt.](./media/tutorial-azure-notebook/azure-notebook-chart-results.png)
 
 
-Das ideale Ziel besteht darin, dass sich für die Schleife nach Abschluss des Tests eine Erfolgsrate ergibt, die nahe bei 100 Prozent liegt (abzüglich der Durchsuchung). Der Standardwert für die Durchsuchung beträgt 20 %. 
+Das ideale Ziel besteht darin, dass sich für die Schleife nach Abschluss des Tests eine Erfolgsrate ergibt, die nahe bei 100 Prozent liegt (abzüglich der Durchsuchung). Der Standardwert für die Durchsuchung beträgt 20 %.
 
 `100-20=80`
 
-Sie finden diesen Durchsuchungswert im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource. 
+Sie finden diesen Durchsuchungswert im Azure-Portal auf der Seite **Konfiguration** für die Personalisierungsressource.
 
 Sie können eine bessere Lernrichtlinie ermitteln, indem Sie basierend auf Ihren Daten für die Rangfolge-API im Portal für Ihre Personalisierungsschleife eine [Offlinebewertung](how-to-offline-evaluation.md) durchführen.
 
@@ -586,19 +585,19 @@ Sie können eine bessere Lernrichtlinie ermitteln, indem Sie basierend auf Ihren
 
 1. Öffnen Sie im Azure-Portal die Seite **Bewertungen** der Personalisierungsressource.
 1. Wählen Sie die Option **Bewertung erstellen** aus.
-1. Geben Sie die erforderlichen Daten für den Bewertungsnamen und den Datumsbereich für die Schleifenbewertung ein. Der Datumsbereich sollte nur die Tage enthalten, die für Ihre Bewertung relevant sind. 
+1. Geben Sie die erforderlichen Daten für den Bewertungsnamen und den Datumsbereich für die Schleifenbewertung ein. Der Datumsbereich sollte nur die Tage enthalten, die für Ihre Bewertung relevant sind.
     ![Öffnen Sie im Azure-Portal die Seite „Bewertungen“ der Personalisierungsressource. Wählen Sie „Bewertung erstellen“ aus. Geben Sie den Namen und Datumsbereich für die Bewertung ein.](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
     Mit dieser Offlinebewertung soll ermittelt werden, ob für die in dieser Schleife verwendeten Features und Aktionen eine bessere Lernrichtlinie vorhanden ist. Stellen Sie sicher, dass die **Ermittlung zur Optimierung** aktiviert ist, um diese bessere Lernrichtlinie zu ermitteln.
 
-1. Wählen Sie **OK** aus, um die Bewertung zu starten. 
-1. Auf der Seite **Bewertungen** werden die neue Bewertung und der aktuelle Status angezeigt. Die Dauer dieser Bewertung hängt davon ab, wie viele Daten Sie nutzen. Nach einigen Minuten können Sie zu dieser Seite zurückkehren, um die Ergebnisse zu prüfen. 
-1. Wählen Sie nach Abschluss der Bewertung die Option **Vergleich verschiedener Lernrichtlinien** aus. Es werden die verfügbaren Lernrichtlinien und das jeweilige Verhalten für die Daten angezeigt. 
-1. Wählen Sie in der Tabelle die oberste Lernrichtlinie und dann die Option **Anwenden** aus. Die _beste_ Lernrichtlinie wird auf Ihr Modell angewendet, und es wird ein neuer Trainingslauf durchgeführt. 
+1. Wählen Sie **OK** aus, um die Bewertung zu starten.
+1. Auf der Seite **Bewertungen** werden die neue Bewertung und der aktuelle Status angezeigt. Die Dauer dieser Bewertung hängt davon ab, wie viele Daten Sie nutzen. Nach einigen Minuten können Sie zu dieser Seite zurückkehren, um die Ergebnisse zu prüfen.
+1. Wählen Sie nach Abschluss der Bewertung die Option **Vergleich verschiedener Lernrichtlinien** aus. Es werden die verfügbaren Lernrichtlinien und das jeweilige Verhalten für die Daten angezeigt.
+1. Wählen Sie in der Tabelle die oberste Lernrichtlinie und dann die Option **Anwenden** aus. Die _beste_ Lernrichtlinie wird auf Ihr Modell angewendet, und es wird ein neuer Trainingslauf durchgeführt.
 
 ## <a name="change-update-model-frequency-to-5-minutes"></a>Ändern der Häufigkeit der Modellaktualisierung in „5 Minuten“
 
-1. Wählen Sie im Azure-Portal für die Personalisierungsressource die Seite **Konfiguration** aus. 
+1. Wählen Sie im Azure-Portal für die Personalisierungsressource die Seite **Konfiguration** aus.
 1. Ändern Sie die **Häufigkeit der Modellaktualisierung** und die **Wartezeit für Belohnung** jeweils in „5 Minuten“, und wählen Sie anschließend **Speichern** aus.
 
 Informieren Sie sich weiter über die [Wartezeit für Belohnung](concept-rewards.md#reward-wait-time) und die [Häufigkeit der Modellaktualisierung](how-to-settings.md#model-update-frequency).
@@ -608,7 +607,7 @@ Informieren Sie sich weiter über die [Wartezeit für Belohnung](concept-rewards
 get_service_settings()
 ```
 
-Überprüfen Sie, ob in der Ausgabe für `rewardWaitTime` und `modelExportFrequency` jeweils „5 Minuten“ als Wert angegeben ist. 
+Überprüfen Sie, ob in der Ausgabe für `rewardWaitTime` und `modelExportFrequency` jeweils „5 Minuten“ als Wert angegeben ist.
 ```console
 -----checking model
 <Response [200]>
@@ -623,9 +622,9 @@ User count 4
 Coffee count 4
 ```
 
-## <a name="validate-new-learning-policy"></a>Überprüfen der neuen Lernrichtlinie 
+## <a name="validate-new-learning-policy"></a>Überprüfen der neuen Lernrichtlinie
 
-Wechseln Sie zur Azure Notebook-Instanz zurück, und führen Sie die gleiche Schleife aus, aber nur für 2.000 Iterationen. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 4.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen. 
+Wechseln Sie zur Azure Notebook-Instanz zurück, und führen Sie die gleiche Schleife aus, aber nur für 2.000 Iterationen. Aktualisieren Sie das Metrikdiagramm im Azure-Portal in regelmäßigen Abständen, um die Gesamtzahl der Dienstaufrufe anzuzeigen. Wenn ungefähr 4.000 Aufrufe und ein Rangfolge- und Belohnungsaufruf für jede Iteration der Schleife durchgeführt wurden, sind die Iterationen abgeschlossen.
 
 ```python
 # max iterations
@@ -650,7 +649,7 @@ createChart(count2,rewards2)
 
 ## <a name="review-the-second-chart"></a>Überprüfen des zweiten Diagramms
 
-Im zweiten Diagramm sollte ein merklicher Anstieg bei den Rangfolgevorhersagen, für die sich Übereinstimmungen mit den Benutzerpräferenzen ergeben, zu beobachten sein. 
+Im zweiten Diagramm sollte ein merklicher Anstieg bei den Rangfolgevorhersagen, für die sich Übereinstimmungen mit den Benutzerpräferenzen ergeben, zu beobachten sein.
 
 ![Im zweiten Diagramm sollte ein merklicher Anstieg bei den Rangfolgevorhersagen, für die sich Übereinstimmungen mit den Benutzerpräferenzen ergeben, zu beobachten sein.](./media/tutorial-azure-notebook/azure-notebook-chart-results-happy-graph.png)
 
@@ -658,10 +657,10 @@ Im zweiten Diagramm sollte ein merklicher Anstieg bei den Rangfolgevorhersagen, 
 
 Falls Sie die Tutorialreihe nicht weiter durcharbeiten möchten, sollten Sie die folgenden Ressourcen bereinigen:
 
-* Löschen Sie Ihr Azure Notebook-Projekt. 
-* Löschen Sie Ihre Personalisierungsressource. 
+* Löschen Sie Ihr Azure Notebook-Projekt.
+* Löschen Sie Ihre Personalisierungsressource.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie finden die in diesem Beispiel verwendeten [Jupyter-Notebook- und Datendateien](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) im GitHub-Repository für die Personalisierung. 
+Sie finden die in diesem Beispiel verwendeten [Jupyter-Notebook- und Datendateien](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/tree/master/samples/azurenotebook) im GitHub-Repository für die Personalisierung.
 

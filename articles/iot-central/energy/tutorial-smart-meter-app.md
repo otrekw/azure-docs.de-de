@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: a73f4d75811a384eb822d1f8594a22506509d560
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9e954e9c1a7efa43a19849b1c5b40284ec84eeed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112535"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77015999"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Tutorial: Erstellen und Durchlaufen der App-Vorlage für die intelligente Zählerüberwachung 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial werden die Schritte zum Erstellen der Überwachungsanwendung für intelligente Zähler erläutert, die ein Beispielgerätemodell mit simulierten Daten enthält. In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -27,7 +27,7 @@ In diesem Tutorial werden die Schritte zum Erstellen der Überwachungsanwendung 
 > * Bereinigen von Ressourcen
 
 
-Wenn Sie noch nicht über ein Abonnement verfügen, [erstellen Sie ein kostenloses Testkonto](https://azure.microsoft.com/free).
+Falls Sie noch nicht über ein Abonnement verfügen, [erstellen Sie ein kostenloses Testkonto](https://azure.microsoft.com/free).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Keine
@@ -48,16 +48,18 @@ Sie können diese Anwendung in drei einfachen Schritten erstellen:
 3. Über **App erstellen** wird das Formular **Neue Anwendung** geöffnet. Geben Sie wie in der nachfolgenden Abbildung dargestellt die erforderlichen Details ein:
     * **Anwendungsname**: Geben Sie einen Namen für die IoT Central-Anwendung an. 
     * **URL**: Geben Sie eine IoT Central-URL an. Die Eindeutigkeit wird auf der Plattform überprüft.
-    * **Kostenlose 7-Tage-Testversion**: Wenn Sie bereits über ein Azure-Abonnement verfügen, wird die Standardeinstellung empfohlen. Wenn Sie noch nicht über ein Azure-Abonnement verfügen, beginnen Sie mit einer kostenlosen Testversion.
+    * **Kostenlose 7-Tage-Testversion**: Wenn Sie bereits über ein Azure-Abonnement verfügen, wird die Standardeinstellung empfohlen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, beginnen Sie mit einer kostenlosen Testversion.
     * **Abrechnungsinfo**: Die Anwendung selbst ist kostenlos. Die Detailangaben zu Verzeichnis, Azure-Abonnement und Region sind für die Bereitstellung der Ressourcen für die App erforderlich.
-    * Klicken Sie unten auf der Seite auf die Schaltfläche **Erstellen**. Die App wird innerhalb etwa einer Minute erstellt.     
-        > [!div class="mx-imgBorder"]
-        > ![Formular für neue Anwendung](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+    * Klicken Sie unten auf der Seite auf die Schaltfläche **Erstellen**. Die App wird innerhalb etwa einer Minute erstellt.
+
+        ![Formular „Neue Anwendung“](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app.png)
+
+        ![Formular „Neue Anwendung“: Abrechnungsinformationen](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Überprüfen der Anwendung und der simulierten Daten
 
-Sie können Ihre neu erstellte App für intelligente Zähler jederzeit ändern. Stellen Sie sicher, dass die App wie erwartet bereitgestellt wurde und ausgeführt wird, bevor Sie sie ändern.
+Sie können Ihre neu erstellte App für intelligente Zähler jederzeit ändern. Vergewissern Sie sich, dass die App wie erwartet bereitgestellt wurde und ausgeführt wird, bevor Sie sie ändern.
 
 Wechseln Sie zum Überprüfen der App-Erstellung und der Datensimulation zum **Dashboard**. Wenn die Kacheln mit einigen Daten angezeigt werden, war die Bereitstellung Ihrer App erfolgreich. Bei der Datensimulation kann es einige Minuten dauern, bis die Daten generiert wurden. Warten Sie daher 1–2 Minuten. 
 
