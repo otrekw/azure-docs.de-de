@@ -1,30 +1,29 @@
 ---
-title: Verwenden von Java zum Senden von Daten an und von Azure Event Hubs
-description: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Java-Anwendung, die Ereignisse an Azure Event Hubs sendet.
+title: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von Java (Legacypaket)
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer Java-Anwendung, die unter Verwendung des alten Pakets „azure-eventhubs“ Ereignisse an Azure Event Hubs sendet bzw. von dort empfängt.
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.custom: seodec18, seo-java-august2019, seo-java-september2019
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: be9919950f24dbee7fb8a3f901767c298105bf53
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.topic: quickstart
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a2cce90b5aa28dac6ff945ac48f70bfd319683b9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72325467"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029893"
 ---
-# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Senden von Ereignissen an oder Empfangen von Ereignissen von Event Hubs mithilfe von Java
+# <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von Java (azure-eventhubs)
 
 In diesem Tutorial wird gezeigt, wie Sie Java-Anwendungen erstellen, die Ereignisse an Azure Event Hubs senden oder von diesem empfangen.
 
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter „Was ist Azure Event Hubs?“ und „Event Hubs-Features“.
 
-> [!NOTE]
-> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
+> [!WARNING]
+> In dieser Schnellstartanleitung werden die alten Paketen **azure-eventhubs** und **azure-eventhubs-eph** verwendet. Es empfiehlt sich, zur Verwendung des aktuellen Pakets [azure-messaging-eventhubs](get-started-java-send-v2.md) den Code zu [migrieren](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md). 
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,10 +31,13 @@ Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 - Ein aktives Azure-Konto. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 - Eine Java-Entwicklungsumgebung. In diesem Lernprogramm wird [Eclipse](https://www.eclipse.org/) verwendet.
-- **Erstellen eines Event Hubs-Namespace und eines Event Hubs**. Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie anschließend wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
+- **Erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie anschließend wie im Artikel beschrieben vor, um den Wert des Zugriffsschlüssels für den Event Hub abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden den Zugriffsschlüssel im Code, den Sie später in diesem Tutorial schreiben. Der Standardschlüsselname lautet: **RootManageSharedAccessKey**.
 
 ## <a name="send-events"></a>Senden von Ereignisse 
 In diesem Abschnitt erfahren Sie, wie Sie eine Java-Anwendung zum Senden von Ereignissen an einen Event Hub erstellen. 
+
+> [!NOTE]
+> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Hinzufügen von Verweisen auf die Azure Event Hubs-Bibliothek
 

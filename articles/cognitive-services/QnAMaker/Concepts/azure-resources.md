@@ -3,12 +3,12 @@ title: 'Azure-Ressourcen: QnA Maker'
 description: In QnA Maker werden verschiedene Azure-Quellen verwendet, von denen jede einen anderen Zweck erfüllt. Wenn Sie wissen, wie sie einzeln verwendet werden, können Sie den richtigen Tarif planen und auswählen oder bestimmen, wann ein Tarifwechsel sinnvoll ist. Das Verständnis dafür, wie sie kombiniert verwendet werden, ermöglicht es Ihnen, auftretende Probleme zu finden und zu beheben.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 2b3a06122ce6123cd8edcedf5dfbf38c3c12218a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843495"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76902068"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -111,6 +111,10 @@ Die erste Wissensdatenbank, die in der QnA Maker-Ressource erstellt wird, wird v
 Die QnA Maker-Ressource bietet zur Laufzeit Zugriff auf die Erstellungs- und Veröffentlichungs-APIs sowie auf die zweite Bewertungsschicht (Bewerter Nr. 2) der QnA-Sätze, die auf natürlichsprachlicher Verarbeitung (Natural Language Processing, NLP) beruht.
 
 Die zweite Bewertung wendet intelligente Filter an, die Metadaten und Folgeaufforderungen beinhalten können.
+
+#### <a name="qna-maker-resource-configuration-settings"></a>Ressourcenkonfigurationseinstellungen für QnA Maker
+
+Wenn Sie eine neue Wissensdatenbank im [QnA Maker-Portal](https://qnamaker.ai) erstellen, ist die Einstellung für **Sprache** die einzige Einstellung, die auf der Ressourcenebene angewendet wird. Sie wählen die Sprache aus, wenn Sie die erste Wissensdatenbank für die Ressource erstellen. 
 
 ### <a name="app-service-and-app-service-plan"></a>App Service und App Service-Plan
 

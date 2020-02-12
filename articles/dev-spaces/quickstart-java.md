@@ -6,37 +6,30 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Java-Anwendung im Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Java, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: a814516eb002eadb19100182d1917fd4aaa0cec6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293571"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025196"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes mit Visual Studio Code und Java: Azure Dev Spaces
 
-In diesem Leitfaden lernen Sie Folgendes:
-
-- Einrichten von Azure Dev Spaces mit einem verwalteten Kubernetes-Cluster in Azure
-- Iteratives Entwickeln von Code in Containern mit Visual Studio Code
-- Debuggen des Codes in Ihrem Entwicklerbereich über Visual Studio Code
-
-Azure Dev Spaces ermöglicht außerdem das Debuggen und Durchlaufen mit Folgendem:
-- [Node.js und Visual Studio Code](quickstart-nodejs.md)
-- [.NET Core und Visual Studio Code](quickstart-netcore.md)
-- [.NET Core und Visual Studio](quickstart-netcore-visualstudio.md)
+In dieser Schnellstartanleitung richten Sie Azure Dev Spaces mit einem Managed Kubernetes-Cluster ein und verwenden eine Java-App in Visual Studio Code, um Code in Containern iterativ zu entwickeln und zu debuggen. Azure Dev Spaces ermöglicht es Ihnen, alle Komponenten Ihrer Anwendung mit minimalem Einrichtungsaufwand für Entwicklungscomputer in Azure Kubernetes Service (AKS) zu debuggen und zu testen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
-- [Installation von Visual Studio Code](https://code.visualstudio.com/download).
-- Installation der Erweiterungen [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) und [Java-Debugger für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) für Visual Studio Code.
-- Die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) muss installiert sein.
-- [Installation und Konfiguration von Maven](https://maven.apache.org).
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- [Java Development Kit (JDK) 1.8.0 oder höher](https://aka.ms/azure-jdks)
+- [Maven 3.5.0 oder höher](https://maven.apache.org/download.cgi)
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- Die Erweiterungen [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) und [Java-Debugger für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) für Visual Studio Code
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Git](https://www.git-scm.com/downloads).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters
 
-Sie müssen einen AKS-Cluster in einer [unterstützten Region][supported-regions] erstellen. Mit den unten angegebenen Befehlen wird eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt.
+Sie müssen einen AKS-Cluster in einer [unterstützten Region][supported-regions] erstellen. Mit den folgenden Befehlen werden eine Ressourcengruppe mit dem Namen *MyResourceGroup* und der AKS-Cluster *MyAKS* erstellt:
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
@@ -45,13 +38,14 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Aktivieren von Azure Dev Spaces in Ihrem AKS-Cluster
 
-Verwenden Sie den Befehl `use-dev-spaces`, um Dev Spaces in Ihrem AKS-Cluster zu aktivieren, und befolgen Sie die angezeigten Anweisungen. Mit dem unten angegebenen Befehl wird Dev Spaces im Cluster *MyAKS* in der Gruppe *MyResourceGroup* aktiviert und der Entwicklerbereich *default* erstellt.
+Verwenden Sie den Befehl `use-dev-spaces`, um Dev Spaces in Ihrem AKS-Cluster zu aktivieren, und befolgen Sie die angezeigten Anweisungen. Mit dem folgenden Befehl wird Dev Spaces im Cluster *MyAKS* in der Gruppe *MyResourceGroup* aktiviert und der Entwicklerbereich *default* erstellt.
 
 > [!NOTE]
 > Mit dem Befehl `use-dev-spaces` wird außerdem die Azure Dev Spaces-Befehlszeilenschnittstelle installiert, falls diese nicht bereits installiert ist. Die Azure Dev Spaces-Befehlszeilenschnittstelle kann nicht in Azure Cloud Shell installiert werden.
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
 
 'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
 
@@ -80,11 +74,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>Vorbereiten der Beispielanwendung in Visual Studio Code
 
-Öffnen Sie Visual Studio Code, klicken Sie auf *Datei* und dann auf *Öffnen...* , navigieren Sie zum Verzeichnis *dev-spaces/samples/java/getting-started/webfrontend*, und klicken Sie auf *Öffnen*.
+Öffnen Sie Visual Studio Code, wählen Sie **Datei** und dann **Öffnen** aus, navigieren Sie zum Verzeichnis *dev-spaces/samples/java/getting-started/webfrontend*, und wählen Sie **Öffnen** aus.
 
 Das Projekt *webfrontend* ist nun in Visual Studio Code geöffnet. Um die Anwendung in Ihrem Entwicklungsbereich auszuführen, generieren Sie in der Befehlspalette mithilfe der Azure Dev Spaces-Erweiterung die Docker- und die Helm-Chart-Ressourcen.
 
-Klicken Sie zum Öffnen der Befehlspalette in Visual Studio Code auf *Ansicht* und dann auf *Befehlspalette*. Beginnen Sie mit dem Eingeben von `Azure Dev Spaces`, und klicken Sie auf `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
+Wählen Sie zum Öffnen der Befehlspalette in Visual Studio Code **Ansicht** und dann **Befehlspalette** aus. Beginnen Sie mit der Eingabe von `Azure Dev Spaces`, und wählen Sie **Azure Dev Spaces: Vorbereiten von Konfigurationsdateien für Azure Dev Spaces** aus.
 
 ![Vorbereiten von Konfigurationsdateien für Azure Dev Spaces](./media/common/command-palette.png)
 
@@ -99,28 +93,28 @@ Wenn Sie von Visual Studio Code auch zum Konfigurieren Ihres Basisimages, Ihres 
 Dieser Befehl generiert ein Dockerfile und ein Helm-Chart, um Ihr Projekt für die Ausführung in Azure Dev Spaces vorzubereiten. Außerdem wird das Verzeichnis *.vscode* mit der grundlegenden Debugkonfiguration Ihres Projekts generiert.
 
 > [!TIP]
-> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Diagramm](how-dev-spaces-works.md#prepare-your-code) zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](how-dev-spaces-works.md#prepare-your-code) Ihres Projekts zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Erstellen und Ausführen von Code in Kubernetes über Visual Studio
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Erstellen und Ausführen von Code in Kubernetes über Visual Studio Code
 
-Klicken Sie links auf das Symbol *Debuggen* und dann oben auf *Launch Java Program (AZDS)* (Java-Programm starten (AZDS)).
+Wählen Sie links das Symbol **Debuggen** und dann oben **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)) aus.
 
 ![Starten des Java-Programms](media/get-started-java/debug-configuration.png)
 
-Mit diesem Befehl wird Ihr Dienst in Azure Dev Spaces erstellt und ausgeführt. Im Fenster *Terminal* am unteren Rand werden die Buildausgabe und die URLs zur Ausführung von Azure Dev Spaces für Ihren Dienst angezeigt. In der *Debugging-Konsole* wird die Protokollausgabe angezeigt.
+Mit diesem Befehl wird Ihr Dienst in Azure Dev Spaces erstellt und ausgeführt. Im Fenster **Terminal** am unteren Rand werden die Buildausgabe und die URLs zur Ausführung von Azure Dev Spaces für Ihren Dienst angezeigt. In der **Debugging-Konsole** wird die Protokollausgabe angezeigt.
 
 > [!Note]
-> Falls in der *Befehlspalette* keine Azure Dev Spaces-Befehle angezeigt werden, sollten Sie überprüfen, ob die [Visual Studio Code-Erweiterung für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) installiert wurde. Vergewissern Sie sich auch, dass Sie das Verzeichnis *dev-spaces/samples/java/getting-started/webfrontend* in Visual Studio Code geöffnet haben.
+> Falls in der **Befehlspalette** keine Azure Dev Spaces-Befehle angezeigt werden, sollten Sie überprüfen, ob die [Visual Studio Code-Erweiterung für Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) installiert wurde. Vergewissern Sie sich auch, dass Sie das Verzeichnis *dev-spaces/samples/java/getting-started/webfrontend* in Visual Studio Code geöffnet haben.
 
 Wenn Sie die öffentliche URL öffnen, sehen Sie, dass der Dienst ausgeführt wird.
 
-Klicken Sie auf *Debuggen* und dann auf *Debuggen beenden*, um den Debugger zu beenden.
+Wählen Sie **Debuggen** und dann **Debuggen beenden** aus, um den Debugger zu beenden.
 
 ## <a name="update-code"></a>Aktualisieren des Codes
 
-Zum Bereitstellen einer aktualisierten Version Ihres Diensts können Sie Dateien in Ihrem Projekt aktualisieren und *Launch Java Program (AZDS)* (Java-Programm starten (AZDS)) erneut ausführen. Beispiel:
+Zum Bereitstellen einer aktualisierten Version Ihres Diensts können Sie Dateien in Ihrem Projekt aktualisieren und **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)) erneut ausführen. Beispiel:
 
-1. Falls Ihre Anwendung noch ausgeführt wird, klicken Sie auf *Debuggen* und anschließend auf *Debuggen beenden*, um sie zu beenden.
+1. Falls Ihre Anwendung noch ausgeführt wird, wählen Sie **Debuggen** und anschließend **Debuggen beenden** aus, um sie zu beenden.
 1. Aktualisieren Sie [Zeile 19 unter `src/main/java/com/ms/sample/webfrontend/Application.java`](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19) in:
     
     ```java
@@ -128,30 +122,30 @@ Zum Bereitstellen einer aktualisierten Version Ihres Diensts können Sie Dateien
     ```
 
 1. Speichern Sie die Änderungen.
-1. Führen Sie *Launch Java Program (AZDS)* (Java-Programm starten (AZDS)) erneut aus.
+1. Führen Sie **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)) erneut aus.
 1. Navigieren Sie zu Ihrem ausgeführten Dienst, und sehen Sie sich Ihre Änderungen an.
-1. Klicken Sie auf *Debuggen* und anschließend auf *Debuggen beenden*, um Ihre Anwendung zu beenden.
+1. Wählen Sie **Debuggen** und anschließend **Debuggen beenden** aus, um Ihre Anwendung zu beenden.
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>Festlegen und Verwenden von Haltepunkten für das Debuggen
 
-Starten Sie Ihren Dienst mit *Launch Java Program (AZDS)* (Java-Programm starten (AZDS)). Dadurch wird Ihr Dienst auch im Debugmodus ausgeführt.
+Starten Sie Ihren Dienst mit **Launch Java Program (AZDS)** (Java-Programm starten (AZDS)). Dadurch wird Ihr Dienst auch im Debugmodus ausgeführt.
 
-Navigieren Sie zurück zur Ansicht *Explorer*, indem Sie auf *Ansicht* und dann auf *Explorer* klicken. Öffnen Sie `src/main/java/com/ms/sample/webfrontend/Application.java`, und klicken Sie in Zeile 19, um den Cursor darin zu platzieren. Drücken Sie zum Festlegen eines Haltepunkts *F9*, oder klicken Sie auf *Debuggen* und dann auf *Haltepunkt umschalten*.
+Navigieren Sie zurück zur Ansicht **Explorer**, indem Sie **Ansicht** und dann **Explorer** auswählen. Öffnen Sie *src/main/java/com/ms/sample/webfrontend/Application.java*, und klicken Sie auf die Zeile 19, um den Cursor darin zu platzieren. Drücken Sie zum Festlegen eines Breakpoints **F9**, oder wählen Sie **Debuggen** und dann **Haltepunkt ein/aus** aus.
 
-Öffnen Sie Ihren Dienst in einem Browser. Sie sehen, dass keine Meldung angezeigt wird. Wechseln Sie zurück zu Visual Studio Code. Sie sehen, dass Zeile 19 hervorgehoben ist. Durch den von Ihnen festgelegten Haltepunkt wurde der Dienst in Zeile 19 angehalten. Drücken Sie zum Fortsetzen des Diensts *F5*, oder klicken Sie auf *Debuggen* und dann auf *Weiter*. Wechseln Sie zurück zum Browser. Sie sehen, dass die Meldung jetzt angezeigt wird.
+Öffnen Sie Ihren Dienst in einem Browser. Sie sehen, dass keine Meldung angezeigt wird. Wechseln Sie zurück zu Visual Studio Code. Sie sehen, dass Zeile 19 hervorgehoben ist. Durch den von Ihnen festgelegten Haltepunkt wurde der Dienst in Zeile 19 angehalten. Drücken Sie zum Fortsetzen des Diensts **F5**, oder wählen Sie **Debuggen** und dann **Weiter** aus. Wechseln Sie zurück zum Browser. Sie sehen, dass die Meldung jetzt angezeigt wird.
 
 Beim Ausführen Ihres Diensts in Kubernetes mit einem angefügten Debugger haben Sie Vollzugriff auf Debuginformationen, z. B. Aufrufliste, lokale Variablen und Ausnahmeninformationen.
 
-Entfernen Sie den Haltepunkt, indem Sie Ihren Cursor in `src/main/java/com/ms/sample/webfrontend/Application.java` in Zeile 19 platzieren und *F9* drücken.
+Entfernen Sie den Breakpoint, indem Sie in *src/main/java/com/ms/sample/webfrontend/Application.java* den Cursor in der Zeile 19 platzieren und **F9** drücken.
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualisieren von Code aus Visual Studio Code
 
-Aktualisieren Sie während der Ausführung des Diensts im Debugmodus Zeile 19 in `src/main/java/com/ms/sample/webfrontend/Application.java`. Beispiel:
+Aktualisieren Sie die Zeile 19 in *src/main/java/com/ms/sample/webfrontend/Application.java*, während der Dienst im Debugmodus ausgeführt wird. Beispiel:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-Speichern Sie die Datei . Klicken Sie auf *Debuggen* und dann auf *Debugging erneut starten*, oder klicken Sie in der *Debug-Symbolleiste* auf die Schaltfläche *Debugging erneut starten*.
+Speichern Sie die Datei . Wählen Sie **Debuggen** und dann **Debugging erneut starten** aus, oder klicken Sie in der **Debug-Symbolleiste** auf die Schaltfläche **Debugging erneut starten**.
 
 ![Aktualisieren des Debuggens](media/common/debug-action-refresh.png)
 

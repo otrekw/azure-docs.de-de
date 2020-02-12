@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 493c60e8148b666ba1f514d303229b7a11c2e43e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425041"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908835"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit (Vorschau)
 
@@ -27,6 +27,7 @@ ms.locfileid: "75425041"
 
 > [!NOTE]
 > Am 22.12.2019 wurde das Vorschaufeature für Massenbenutzereinladungen vorübergehend deaktiviert.
+> Aktuell ist nicht bekannt, wann dieses Feature wieder aktiviert wird. 
 
 Wenn Sie Azure Active Directory (Azure AD) für die B2B-Zusammenarbeit mit externen Partnern verwenden, können Sie mehrere Gastbenutzer gleichzeitig in Ihre Organisation einladen. In diesem Tutorial erfahren Sie, wie Sie mit dem Azure-Portal Masseneinladungen an externe Benutzer senden. Das Tutorial umfasst vor allem die folgenden Aufgaben:
 

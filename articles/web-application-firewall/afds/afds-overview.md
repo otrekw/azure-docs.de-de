@@ -5,20 +5,22 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 11/23/2019
+ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406199"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76934720"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
-Azure Web Application Firewall (WAF) für Azure Front Door bietet zentralen Schutz für Ihre Webanwendungen, die mithilfe von Azure Front Door global bereitgestellt werden. WAF wurde zum Schutz Ihrer Webdienste vor allgemeinen Exploits und Sicherheitsrisiken entwickelt und sorgt im Betrieb für die ständige Hochverfügbarkeit Ihrer Dienste für die Benutzer. Außerdem hilft es Ihnen dabei, Ihre Compliance-Anforderungen zu erfüllen.
+Azure Web Application Firewall (WAF) für Azure Front Door bietet zentralen Schutz für Ihre Webanwendungen. WAF schützt Ihre Webdienste von gängigen Exploits und Sicherheitsrisiken. Die Lösung gewährleistet eine hohe Verfügbarkeit Ihres Diensts für Benutzer und unterstützt Sie bei der Erfüllung von Complianceanforderungen.
 
-WAF für Front Door ist eine globale und zentrale Lösung. WAF wird an Edge-Standorten des Azure-Netzwerks auf der ganzen Welt bereitgestellt und untersucht am Netzwerk-Edge jede eingehende Anforderung für eine WAF-fähige, von Front Door bereitgestellte Webanwendung. So ist WAF mit seinem globalen bedarfsabhängigen Schutz ohne Leistungseinbußen näher an der Angriffsquelle und kann böswilllige Angriffe bereits abwehren, bevor sie das virtuelle Netzwerk erreichen. Eine WAF-Richtlinie kann problemlos mit jedem Front Door-Profil in Ihrem Abonnement verknüpft werden. Neue Regeln werden innerhalb weniger Minuten bereitgestellt, damit Sie schnell auf wechselnde Bedrohungsmuster reagieren können.
+WAF für Front Door ist eine globale und zentrale Lösung. Sie wird an Edgestandorten des Azure-Netzwerks auf der ganzen Welt bereitgestellt. WAF-fähige Webanwendungen untersuchen jede eingehende Anforderung, die von Front Door im Edgebereich des Netzwerks übermittelt wird. 
+
+WAF vereitelt Angriffe in der Nähe der Angriffsquellen, bevor sie Ihr virtuelles Netzwerk erreichen. Sie erhalten globalen bedarfsgerechten Schutz ohne Leistungseinbußen. Eine WAF-Richtlinie kann problemlos mit einem beliebigen Front Door-Profil in Ihrem Abonnement verknüpft werden. Neue Regeln lassen sich innerhalb weniger Minuten bereitstellen, um schnell auf veränderte Bedrohungsmuster zu reagieren.
 
 ![Azure Web Application Firewall](../media/overview/wafoverview.png)
 
@@ -32,17 +34,17 @@ Sie können eine WAF-Richtlinie konfigurieren und diese Richtlinie einem oder me
 
 Wenn beides vorhanden ist, werden die benutzerdefinierten Regeln vor den Regeln eines verwalteten Regelsatzes verarbeitet. Eine Regel besteht aus einer Übereinstimmungsbedingung, einer Priorität und einer Aktion. Folgende Aktionstypen werden unterstützt: ALLOW, BLOCK, LOG und REDIRECT. Sie können eine vollständig angepasste Richtlinie erstellen, die Ihre speziellen Anforderungen an die Anwendungssicherheit erfüllt, indem Sie verwaltete und benutzerdefinierte Regeln kombinieren.
 
-Regeln in einer Richtlinie werden in einer Prioritätsreihenfolge verarbeitet, wobei eine eindeutige Ganzzahl die Priorität und damit die Reihenfolge der Regelverarbeitung definiert. Kleinere ganzzahlige Wert geben eine höhere Priorität an und werden vor den Regeln mit einem höheren ganzzahligen Wert ausgewertet. Sobald eine Übereinstimmung mit einer Regel erkannt wird, wird die entsprechende Aktion, die in der Regel definiert wurde, auf die Anforderung angewendet. Wurde eine derartige Übereinstimmung verarbeitet, werden die Regeln mit niedrigerer Priorität nicht weiter verarbeitet.
+Die Regeln innerhalb einer Richtlinie werden nach Priorität verarbeitet. Bei der Priorität handelt es sich um eine eindeutige ganze Zahl, die die Reihenfolge der Regelverarbeitung definiert. Kleinere ganzzahlige Wert stehen für eine höhere Priorität und werden vor Regeln mit einem höheren ganzzahligen Wert ausgewertet. Sobald eine Übereinstimmung mit einer Regel erkannt wird, wird die entsprechende Aktion, die in der Regel definiert wurde, auf die Anforderung angewendet. Nach der Verarbeitung einer derartigen Übereinstimmung werden Regeln mit niedrigerer Priorität nicht weiter verarbeitet.
 
-Einer von Front Door bereitgestellten Webanwendung kann jeweils nur eine WAF-Richtlinie zugeordnet werden. Sie können jedoch eine Front Door-Konfiguration auch ohne eine zugehörige WAF-Richtlinie erstellen. Wenn eine WAF-Richtlinie vorhanden ist, wird sie in all unsere Edge-Standorte repliziert, um bei den Sicherheitsrichtlinien auf der ganzen Welt Konsistenz zu gewährleisten.
+Einer von Front Door bereitgestellten Webanwendung kann jeweils nur eine WAF-Richtlinie zugeordnet werden. Sie können jedoch eine Front Door-Konfiguration auch ohne eine zugehörige WAF-Richtlinie erstellen. Ist eine WAF-Richtlinie vorhanden, wird sie in allen unseren Edgestandorten repliziert, um bei den Sicherheitsrichtlinien auf der ganzen Welt Konsistenz zu gewährleisten.
 
 ## <a name="waf-modes"></a>WAF-Modi
 
 Für die Ausführung der WAF-Richtlinie können die beiden folgenden Modi konfiguriert werden:
 
-- **Erkennungsmodus:** Bei der Ausführung im Erkennungsmodus überwacht WAF nur die Anforderung und die entsprechende WAF-Regel und protokolliert die Ergebnisse im WAF-Protokoll. Es werden keine anderen Aktionen ausgeführt. Sie können die Protokollierung von Diagnosedaten für Front Door aktivieren. (Wechseln Sie dazu im Azure-Portal zum Abschnitt **Diagnose**.)
+- **Erkennungsmodus:** Im Erkennungsmodus überwacht WAF nur die Anforderung und die entsprechende WAF-Regel und protokolliert die Ergebnisse im WAF-Protokoll. Es werden keine weiteren Aktionen ausgeführt. Sie können die Protokollierung von Diagnosedaten für Front Door aktivieren. Navigieren Sie bei Verwendung des Portals zum Abschnitt **Diagnose**.
 
-- **Schutzmodus:** Wenn für WAF die Ausführung im Schutzmodus konfiguriert ist und eine Anforderung einer Regel entspricht, führt WAF die entsprechende Aktion aus. Nachdem eine Übereinstimmung gefunden wurde, werden keine weiteren Regeln mit niedrigerer Priorität mehr ausgewertet. Jede Anforderung mit einer Regelübereinstimmung wird außerdem in den WAF-Protokollen protokolliert.
+- **Schutzmodus:** Im Schutzmodus führt WAF die angegebene Aktion aus, wenn eine Anforderung einer Regel entspricht. Nachdem eine Entsprechung gefunden wurde, werden keine weiteren Regeln mit niedrigerer Priorität mehr ausgewertet. Jede Anforderung mit einer Regelübereinstimmung wird außerdem in den WAF-Protokollen protokolliert.
 
 ## <a name="waf-actions"></a>WAF-Aktionen
 
@@ -61,17 +63,17 @@ Eine WAF-Richtlinie kann aus zwei Arten von Sicherheitsregeln bestehen: benutzer
 
 Sie können benutzerdefinierte WAF-Regeln wie folgt konfigurieren:
 
-- **Liste zugelassener und gesperrter IP-Adressen**: Sie können benutzerdefinierte Regeln zum Steuern des Zugriffs auf Ihre Webanwendungen anhand einer Liste von Client-IP-Adressen (oder IP-Adressbereichen) konfigurieren. Unterstützt werden sowohl IPv4- als auch IPv6-Adresstypen. Diese Liste können Sie so konfigurieren, dass Anforderungen, deren Quell-IP-Adresse mit einer IP-Adresse in der Liste übereinstimmt, entweder gesperrt oder zugelassen werden.
+- **Liste zugelassener und gesperrter IP-Adressen**: Sie können den Zugriff auf Ihre Webanwendungen auf der Grundlage einer Liste von Client-IP-Adressen (oder IP-Adressbereichen) steuern. Unterstützt werden sowohl IPv4- als auch IPv6-Adresstypen. Diese Liste können Sie so konfigurieren, dass Anforderungen, deren Quell-IP-Adresse mit einer IP-Adresse in der Liste übereinstimmt, entweder gesperrt oder zugelassen werden.
 
-- **Geografiebasierte Zugriffssteuerung**: Sie können benutzerdefinierte Regeln konfigurieren, um den Zugriff auf Ihre Webanwendungen anhand des Ländercodes einer Client-IP-Adresse zu steuern.
+- **Geografiebasierte Zugriffssteuerung**: Sie können den Zugriff auf Ihre Webanwendungen auf der Grundlage des Ländercodes einer Client-IP-Adresse zu steuern.
 
-- **Zugriffssteuerung auf Basis von HTTP-Parametern:** Sie können benutzerdefinierte Regeln anhand von Zeichenfolgen konfigurieren, die mit HTTP/HTTPS-Anforderungsparametern (z.B. Abfragezeichenfolgen, POST-Argumente, Anforderungs-URI, Anforderungsheader und Anforderungstext) übereinstimmen.
+- **Zugriffssteuerung auf Basis von HTTP-Parametern:** Sie können Zeichenfolgenübereinstimmungen in HTTP/HTTPS-Anforderungsparametern als Grundlage für Regeln verwenden.  Hierzu zählen beispielsweise Abfragezeichenfolgen, POST-Argumente, Anforderungs-URI, Anforderungsheader und Anforderungstext.
 
-- **Zugriffssteuerung auf Basis der Anforderungsmethode:** Sie können benutzerdefinierte Regeln anhand der HTTP-Anforderungsmethode der Anforderung (z.B. GET, PUT oder HEAD) konfigurieren.
+- **Zugriffssteuerung auf Basis der Anforderungsmethode:** Sie können Regeln verwenden, die auf der HTTP-Anforderungsmethode der Anforderung basieren. Beispiel wären etwa GET, PUT und HEAD.
 
-- **Größenbeschränkung:** Sie können benutzerdefinierte Regeln anhand der Länge bestimmter Teile einer Anforderung (z.B. Abfragezeichenfolge, URI oder Anforderungstext) konfigurieren.
+- **Größenbeschränkung:** Sie können Regeln verwenden, die auf der Länge bestimmter Teile einer Anforderung (Abfragezeichenfolge, URI, Anforderungstext oder Ähnliches) basieren.
 
-- **Ratenbegrenzungsregeln:** Eine Regel für die Ratensteuerung dient dazu, ungewöhnlich umfangreichen Datenverkehr von beliebigen Client-IP-Adressen zu beschränken. Sie können einen Schwellenwert für die Anzahl der Webanforderungen konfigurieren, die von einer Client-IP-Adresse während einer Minute zulässig sind. Dies unterscheidet sich von der benutzerdefinierten Regel mit einer Liste zugelassener oder gesperrter IP-Adressen, die alle Anforderungen von einer Client-IP-Adresse entweder zulässt oder sperrt. Für eine noch präzisere Ratensteuerung kann die Ratenbegrenzung mit weiteren Übereinstimmungsbedingungen (z.B. HTTP-Parametern) kombiniert werden.
+- **Ratenbegrenzungsregeln:** Eine Regel für die Ratensteuerung dient dazu, ungewöhnlich umfangreichen Datenverkehr von beliebigen Client-IP-Adressen zu beschränken. Sie können einen Schwellenwert für die Anzahl der Webanforderungen konfigurieren, die von einer Client-IP-Adresse während einer Minute zulässig sind. Diese Regel unterscheidet sich von der benutzerdefinierten Regel mit einer Liste zugelassener oder gesperrter IP-Adressen, die alle Anforderungen von einer Client-IP-Adresse entweder zulässt oder blockiert. Für eine präzise Ratensteuerung kann die Ratenbegrenzung mit weiteren Übereinstimmungsbedingungen (etwa mit HTTP(S)-Parametern) kombiniert werden.
 
 ### <a name="azure-managed-rule-sets"></a>Von Azure verwaltete Regelsätze
 
@@ -88,13 +90,23 @@ Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitste
 - Protokollangreifer
 
 Die Versionsnummer des Standardregelsatzes wird erhöht, wenn dem Regelsatz neue Angriffssignaturen hinzugefügt werden.
-Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtlinien aktiviert. Sie können einzelne Regeln im Standardregelsatz deaktivieren bzw. aktivieren, um die Anforderungen Ihrer Anwendungen zu erfüllen. Sie können pro Regel auch bestimmte Aktionen (ALLOW/BLOCK/REDIRECT/LOG) festlegen. Standardaktion ist BLOCK. Außerdem können in der gleichen WAF-Richtlinie auch benutzerdefinierte Regeln konfiguriert werden, wenn Sie eine der vorkonfigurierten Regeln im Standardregelsatz umgehen möchten.
-Benutzerdefinierte Regeln werden immer vor den Regeln im Standardregelsatz ausgewertet. Wenn eine Anforderung mit einer benutzerdefinierten Regel übereinstimmt, wird die entsprechende Regelaktion angewendet, und die Anforderung wird entweder gesperrt oder an den Back-End weitergeleitet, ohne weitere benutzerdefinierte Regeln oder Regeln im Standardregelsatz aufzurufen. Darüber hinaus haben Sie die Möglichkeit, den Standardregelsatz aus Ihren WAF-Richtlinien zu entfernen.
+Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtlinien aktiviert. Sie können einzelne Regeln im Standardregelsatz deaktivieren bzw. aktivieren, um die Anforderungen Ihrer Anwendungen zu erfüllen. Sie können pro Regel auch bestimmte Aktionen (ALLOW/BLOCK/REDIRECT/LOG) festlegen.
 
+Die Standardaktion ist „BLOCK“ (Blockieren). Darüber hinaus können in der gleichen WAF-Richtlinie auch benutzerdefinierte Regeln konfiguriert werden, wenn Sie eine der vorkonfigurierten Regeln im Standardregelsatz umgehen möchten.
+
+Benutzerdefinierte Regeln werden immer vor den Regeln im Standardregelsatz ausgewertet. Wenn eine Anforderung einer benutzerdefinierten Regel entspricht, wird die entsprechende Regelaktion angewendet. Die Anforderung wird entweder gesperrt oder an das Back-End weitergeleitet. Es werden keine weiteren benutzerdefinierten Regeln oder Regeln im Standardregelsatz verarbeitet. Der Standardregelsatz kann auch aus WAF-Richtlinien entfernt werden.
 
 ### <a name="bot-protection-rule-set-preview"></a>Bot-Schutzregelsatz (Vorschauversion)
 
-Ein verwalteter Bot-Schutzregelsatz kann für Ihre WAF aktiviert werden, damit bei Anforderungen von bekannten Bot-Kategorien benutzerdefinierte Aktionen ausgeführt werden können. Es werden drei Bot-Kategorien unterstützt: böswillige Bots, gute Bots und unbekannte Bots. Bot-Signaturen werden von der WAF-Plattform verwaltet und dynamisch aktualisiert. Die schädlichen IP-Adressen böswilliger Bots stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten verwendet (einschließlich Azure Security Center). Zu den guten Bots gehören auch validierte Suchmaschinen. Die Kategorien der unbekannten Bots umfassen weitere Bot-Gruppen. Sie können benutzerdefinierte Aktionen festlegen, um Bots der unterschiedlichen Kategorien zu sperren, zuzulassen, zu protokollieren oder umzuleiten.
+Sie können einen verwalteten Bot-Schutzregelsatz aktivieren, damit bei Anforderungen aus bekannten Bot-Kategorien benutzerdefinierte Aktionen ausgeführt werden. 
+
+Es werden drei Bot-Kategorien unterstützt: „Ungültig“, „Gültig“ und „Unbekannt“. Bot-Signaturen werden von der WAF-Plattform verwaltet und dynamisch aktualisiert.
+
+Zu ungültigen Bots zählen Bots mit schädlicher IP-Adresse sowie Bots mit gefälschter Identität. Schädliche IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed und werden stündlich aktualisiert. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten verwendet (einschließlich Azure Security Center).
+
+Zu den guten Bots gehören auch validierte Suchmaschinen. Zur Kategorie „Unbekannt“ zählen weitere Bot-Gruppen, die sich selbst als Bots identifiziert haben. Beispiele wären etwa Agents für die Marktanalyse, für das Abrufen von Feeds oder für die Datensammlung. 
+
+Unbekannte Bots werden über veröffentlichte Benutzer-Agents ohne zusätzliche Überprüfung klassifiziert. Sie können benutzerdefinierte Aktionen festlegen, um Bots der unterschiedlichen Kategorien zu sperren, zuzulassen, zu protokollieren oder umzuleiten.
 
 ![Bot-Schutzregelsatz](../media/afds-overview/botprotect2.png)
 
@@ -105,7 +117,7 @@ Wenn der Bot-Schutz aktiviert ist, werden eingehende Anforderungen, die mit Bot-
 
 ## <a name="configuration"></a>Konfiguration
 
-Das Konfigurieren und Bereitstellen von allen WAF-Regelarten wird für das Azure-Portal, REST-APIs, Azure Resource Manager-Vorlagen und Azure PowerShell vollständig unterstützt.
+Alle Arten von WAF-Regeln können über das Azure-Portal, mithilfe von REST-APIs, unter Verwendung von Azure Resource Manager-Vorlagen und per Azure PowerShell konfiguriert und bereitgestellt werden.
 
 ## <a name="monitoring"></a>Überwachung
 

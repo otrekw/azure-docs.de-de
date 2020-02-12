@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: d72636265ff3ac654faba91d1420b502b35d3192
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5632d98d9d853d9a4b0882c28cad1836bb6f3cef
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888995"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025468"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Dieses Tutorial zeigt, wie Sie durch Bereitstellen einer IoT Central-Vorlage in die **intelligente Bestandsverwaltung** einsteigen. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte sinnvoll sind.
 
@@ -25,31 +25,37 @@ In diesem Tutorial lernen Sie Folgendes:
 * Einführung in die Anwendung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Zum Bereitstellen dieser App sind keine besonderen Voraussetzungen erforderlich.
 * Ein Azure-Abonnement ist empfehlenswert, Sie können es aber auch ohne versuchen.
 
 ## <a name="create-smart-inventory-management-application-template"></a>Erstellen einer Anwendungsvorlage für intelligente Bestandsverwaltung
 
 Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
+
 1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
 
-> [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
 
 2. Wählen Sie die Registerkarte **Einzelhandel** und unter **Intelligente Bestandsverwaltung** die Option **App erstellen** aus.
 
 3. Mit **App erstellen** wird ein neues Anwendungsformular geöffnet, wobei die erforderlichen Details wie unten dargestellt ausgefüllt werden.
    **Anwendungsname:** Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
-   **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Im nächsten Schritt wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Andernfalls können Sie mit einer siebentägigen kostenlosen Testversion beginnen und jederzeit vor dem Ablauf der kostenlosen Testversion auf die nutzungsbasierte Bezahlung umstellen.
-   **Abrechnungsinfo:** Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
+   **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Als Nächstes wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Sie können mit dem Tarif für die kostenlose 7-Tage-Testversion beginnen und jederzeit vor Ablauf der kostenlosen Testversion auf einen Standard-Tarif umstellen.
+   **Abrechnungsinfo**: Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
    **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
-> [!div class="mx-imgBorder"]
-> ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    > [!div class="mx-imgBorder"]
+    > ![Intelligente Bestandsverwaltung: Dashboard](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![Abrechnungsinformationen der intelligenten Bestandsverwaltung](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
 
 ## <a name="walk-through-the-application"></a>Einführung in die Anwendung 
 
 ### <a name="dashboard"></a>Dashboard 
+
 Nach erfolgreicher Bereitstellung der App-Vorlage ist das Standarddashboard ein Portal für den Betreiber intelligenter Bestandsverwaltung. Northwind Trader ist ein fiktiver Anbieter von intelligenter Bestandsverwaltung, der Lagerräume mit Bluetooth Low Energy (BLE) und Einzelhandelsfilialen mit RFID (Radio Frequency Identification) verwaltet. Auf diesem Dashboard sehen Sie zwei verschiedene Gateways, die Telemetrie zum Bestand zusammen mit zugeordneten Befehlen, Aufträgen und Aktionen bereitstellen, die Sie ausführen können. Dieses Dashboard ist vorkonfiguriert, sodass die Aktivität von kritischen Vorgängen bei der intelligenten Bestandsverwaltung hervorgehoben wird.
 Das Dashboard ist logisch in zwei verschiedene Gateway-Geräteverwaltungsvorgänge unterteilt. 
    * Das Lager wird mit einem festen BLE-Gateway und BLE-Tags auf den Paletten bereitgestellt, um den Bestand in einer größeren Einrichtung nachverfolgen zu können.
@@ -83,7 +89,7 @@ Klicken Sie auf die Registerkarte „Gerätevorlagen“, dann wird das Gatewayfu
 ## <a name="rules"></a>Regeln
 Wählen Sie die Registerkarte „Regeln“ aus, um zwei verschiedene Regeln anzuzeigen, die in dieser Anwendungsvorlage vorhanden sind. Diese Regeln sind so konfiguriert, dass sie zwecks weiterer Untersuchungen E-Mail-Benachrichtigungen an die Operatoren senden.
 
-**Gateway offline:** Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkuladestands, eines Verbindungsverlusts oder des Gerätezustands nicht mehr.
+**Gateway offline:** Diese Regel wird ausgelöst, wenn das Gateway für einen längeren Zeitraum keine Meldung an die Cloud sendet. Das Gateway reagiert möglicherweise aufgrund eines niedrigen Akkuladestands, eines Verbindungsverlusts oder des Gerätezustands nicht.
 
 **Unbekannte Tags:** Es ist wichtig, alle RFID- und BLE-Tags nachzuverfolgen, die einer Ressource zugeordnet sind. Wenn das Gateway zu viele unbekannte Tags erkennt, deutet dies auf Probleme bei der Synchronisierung in den Tagbeschaffungsanwendungen hin.
 
@@ -109,4 +115,4 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendu
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Konzepte der intelligenten Bestandsverwaltung](./architecture-smart-inventory-management-pnp.md).
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail-pnp.md)
-* Lesen Sie die [Übersicht über IoT Central](../preview/overview-iot-central.md).
+* Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central.md).

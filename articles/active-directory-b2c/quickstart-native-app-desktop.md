@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 01adebbab1e39e2de5603be4c95335a5fe40ef06
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f36b705d590f34a79aefe14355f25f7639562d2a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841408"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76908971"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Azure Active Directory B2C (Azure AD B2C) ermöglicht die Cloudidentitätsverwal
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit der Workload **ASP.NET und Webentwicklung**
 - Ein Social Media-Konto von Facebook, Google oder Microsoft
-- [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip), oder klonen Sie die Beispiel-Web-App aus GitHub.
+- [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip), oder klonen Sie das GitHub-Repository [Azure-Samples/active-directory-b2c-dotnet-desktop](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop).
 
     ```
     git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git

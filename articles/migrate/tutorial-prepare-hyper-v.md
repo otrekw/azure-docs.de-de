@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Bewertung/Migration von Hyper-V-VM
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 1d327f558806e0205540c183c56b92ba31e33cb7
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028927"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031219"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Vorbereiten auf die Bewertung und Migration von virtuellen Hyper-V-Computern zu Azure
 
@@ -39,10 +39,10 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Sie müssen Berechtigungen für die Azure Migrate-Bereitstellung einrichten:
 
-- Berechtigungen für Ihr Azure-Konto zum Erstellen eines Azure Migrate-Projekts
-- Berechtigungen für Ihr Konto zum Registrieren der Azure Migrate-Appliance. Die Appliance wird für die Ermittlung und Bewertung der virtuellen Hyper-V-Computer verwendet, die Sie migrieren. Während der Appliance-Registrierung erstellt Azure Migrate zwei Azure Active Directory-Apps (Azure AD), die die Appliance eindeutig identifizieren:
-    - Die erste App kommuniziert mit Azure Migrate-Dienstendpunkten.
-    - Die zweite App greift auf eine Azure Key Vault-Instanz zu, die während der Registrierung erstellt wurde, um Azure AD-App-Informationen und Appliancekonfigurationseinstellungen zu speichern.
+**Aufgabe** | **Berechtigungen**
+--- | ---
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Projekts.
+**Registrieren der Azure Migrate-Appliance** | Azure Migrate verwendet eine schlanke Azure Migrate-Appliance, um virtuelle Hyper-V-Computer mit der Azure Migrate-Serverbewertung zu ermitteln und zu bewerten. Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu den VMs an Azure Migrate.<br/><br/>Bei der Registrierung der Appliance werden die folgenden Registrierungsanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde: Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.<br/><br/> Im Rahmen des Onboardings erstellt Azure Migrate eine Azure Active Directory-App (Azure AD-App):<br/> Die AAD-App wird für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure verwendet. Diese App verfügt nicht über Berechtigungen zum Senden von ARM-Aufrufen oder über RBAC-Zugriff auf Ressourcen.
 
 
 
@@ -59,15 +59,14 @@ Sie müssen Berechtigungen für die Azure Migrate-Bereitstellung einrichten:
 
 ### <a name="assign-permissions-to-register-the-appliance"></a>Zuweisen von Berechtigungen zum Registrieren der Appliance
 
-Sie können wie folgt Berechtigungen für Azure Migrate zuweisen, um die während der Applianceregistrierung erstellten Azure AD-Apps zu erstellen:
+Sie können wie folgt Berechtigungen für Azure Migrate zuweisen, um während der Applianceregistrierung die Azure AD-App zu erstellen:
 
 - Ein Mandantenadministrator/globaler Administrator kann Benutzern unter dem Mandanten Berechtigungen zum Erstellen und Registrieren von Azure AD-Apps erteilen.
 - Ein Mandantenadministrator/globaler Administrator kann dem Konto die Rolle „Anwendungsentwickler“ (die über die Berechtigungen verfügt) zuweisen.
 
-Beachten Sie Folgendes:
-
-- Die Apps verfügen nur über die oben beschriebenen Zugriffsberechtigungen für das Abonnement.
-- Sie benötigen diese Berechtigungen nur, wenn Sie eine neue Appliance registrieren. Nach Einrichtung der Appliance können die Berechtigungen wieder entfernt werden.
+> [!NOTE]
+> - Die App verfügt nur über die oben beschriebenen Zugriffsberechtigungen für das Abonnement.
+> - Sie benötigen diese Berechtigungen nur, wenn Sie eine neue Appliance registrieren. Nach Einrichtung der Appliance können die Berechtigungen wieder entfernt werden.
 
 
 #### <a name="grant-account-permissions"></a>Erteilen von Kontoberechtigungen

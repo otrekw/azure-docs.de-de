@@ -9,30 +9,30 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 643d48cb931bcec1a8a3385d2ec24a394660c368
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6e54d8ea44b6c322f311cc1baeb6ca3ab6715aee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75909191"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989959"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrieren von Android-Apps aus Google Maps
 
-Das Android SDK für Azure Maps verfügt über eine API-Schnittstelle, die dem Web SDK sehr ähnlich ist. Für beide SDKs gelten teilweise die gleichen Konzepte, Best Practices und Architekturen bei der Entwicklung, und wenn Sie eines bereits verwendet haben, sollten Sie Ihr Wissen auch auf das andere anwenden können.
+Das Android SDK für Azure Maps verfügt über eine API-Schnittstelle, die dem Web SDK ähnelt. Wenn Sie bei Ihrer Entwicklung eines dieser SDKs verwendet haben, sind viele der Konzepte, bewährten Methoden und Architekturen identisch. Ihre bisherigen Kenntnisse sind problemlos übertragbar.
 
 Das Android SDK für Azure Maps unterstützt API 21 als Mindestversion von Android: Android 5.0.0 (Lollipop).
 
-Alle Beispiele wurden in Java geschrieben, aber Sie können auch Kotlin für das Android SDK für Azure Maps verwenden.
+Die Beispiele werden zwar in Java bereitgestellt, Sie können aber auch Kotlin mit dem Android SDK für Azure Maps verwenden.
 
-Weitere Informationen zum Entwickeln mit diesem SDK finden Sie unter [Erste Schritte mit dem Android SDK für Azure Maps](how-to-use-android-map-control-library.md).
+Weitere Informationen zum Entwickeln mit dem Android SDK für Azure Maps finden Sie unter [Erste Schritte mit dem Android SDK für Azure Maps](how-to-use-android-map-control-library.md).
 
 ## <a name="load-a-map"></a>Laden einer Karte
 
-Wenn Sie mithilfe von Google Maps oder Azure Maps eine Karte in einer Android-App laden möchten, müssen Sie bei beiden SDKs teilweise sehr ähnlich vorgehen. Bei beiden SDKs müssen Sie die folgenden Schritte ausführen:
+Wenn Sie mithilfe von Google Maps oder Azure Maps eine Karte in einer Android-App laden möchten, müssen Sie bei beiden SDKs teilweise sehr ähnlich vorgehen. Bei beiden SDKs müssen die folgenden Schritte ausgeführt werden:
 
 - Sie benötigen einen API- oder Abonnementschlüssel, um auf eine der beiden Plattformen zugreifen zu können.
 - Fügen Sie XML-Code zu einer Aktivität hinzu, um festzulegen, wo die App gerendert und angeordnet werden soll.
-- Leiten Sie alle Lebenszyklusmethoden aus der Aktivität weiter, die die Kartenansicht der zugehörigen Methoden in der map-Klasse enthält. Insbesondere müssen Sie die folgenden Methoden weiterleiten:
+- Leiten Sie alle Lebenszyklusmethoden aus der Aktivität weiter, die die Kartenansicht der zugehörigen Methoden in der map-Klasse enthält. Insbesondere müssen die folgenden Methoden überschrieben werden:
     - `onCreate(Bundle)`
     - `onStart()`
     - `onResume()`
@@ -67,7 +67,7 @@ Wenn Sie mithilfe des Google Maps SDK für Android eine Karte abrufen möchten, 
             android:layout_height="match_parent"/>
     ```
 
-1.  Sie müssen zur Datei **MainActivity.java** Importe für das Google Maps SDK hinzufügen. Leiten Sie alle Lebenszyklusmethoden aus der Aktivität weiter, die die Kartenansicht der zugehörigen Methoden in der map-Klasse enthält. Mithilfe der Methode `getMapAsync(OnMapReadyCallback)` kann eine `MapView`-Instanz aus dem Kartenfragment abgerufen werden. Das `MapView`-Objekt initialisiert automatisch das Kartensystem und die Ansicht. Bearbeiten Sie die Datei **MainActivity.java** wie folgt:
+1.  In der Datei „MainActivity.java“ müssen Importe für das Google Maps SDK hinzugefügt werden. Leiten Sie alle Lebenszyklusmethoden aus der Aktivität weiter, die die Kartenansicht der zugehörigen Methoden in der map-Klasse enthält. Mithilfe der Methode `getMapAsync(OnMapReadyCallback)` kann eine `MapView`-Instanz aus dem Kartenfragment abgerufen werden. Das `MapView`-Objekt initialisiert automatisch das Kartensystem und die Ansicht. Bearbeiten Sie die Datei **MainActivity.java** wie folgt:
 
     ```java
     import com.google.android.gms.maps.GoogleMap;
@@ -142,7 +142,7 @@ Wenn Sie mithilfe des Google Maps SDK für Android eine Karte abrufen möchten, 
     }
     ```
 
-Wenn das Kartensteuerelement in einer App ausgeführt wird, wird es wie folgt geladen:
+Wenn Sie eine Anwendung ausgeführt haben, wurde das Kartensteuerelement wie folgt geladen:
 
 <center>
 
@@ -152,9 +152,9 @@ Wenn das Kartensteuerelement in einer App ausgeführt wird, wird es wie folgt ge
 
 Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen möchten, gehen Sie wie folgt vor:
 
-1. Öffnen Sie die Datei **build.gradle** auf der obersten Ebene, und fügen Sie dem Blockabschnitt **all projects**, **repositories** den folgenden Code hinzu:
+1. Öffnen Sie die übergeordnete Datei **build.gradle**, und fügen Sie dem Blockabschnitt **all projects** den folgenden Code hinzu:
 
-    ```
+    ```JAVA
     maven {
             url "https://atlas.microsoft.com/sdk/android"
     }
@@ -166,7 +166,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
 
     2. Fügen Sie den folgenden Code dem Abschnitt „Android“ hinzu:
 
-        ```
+        ```JAVA
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -174,15 +174,15 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
         ```
     3. Aktualisieren Sie Ihren Block „dependencies“, und fügen Sie eine neue Implementierungsabhängigkeitszeile für das neueste Android SDK von Azure Maps hinzu:
 
-        ```
+        ```JAVA
         implementation "com.microsoft.azure.maps:mapcontrol:0.2"
         ```
 
         > [!Note]
-        > Das Android SDK für Azure Maps wird regelmäßig aktualisiert und verbessert. In der Dokumentation [Erste Schritte mit dem Android-Kartensteuerelement](how-to-use-android-map-control-library.md) finden Sie die neueste Implementierungsversionsnummer von Azure Maps. Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“ festlegen, damit immer auf die neueste Version verwiesen wird.
+        > Das Android SDK für Azure Maps wird regelmäßig aktualisiert und verbessert. Die aktuelle Versionsnummer von Azure Maps finden Sie in der Dokumentation [Erste Schritte mit dem Android-Kartensteuerelement](how-to-use-android-map-control-library.md). Außerdem können Sie die Versionsnummer von „0.2“ auf „0+“ festlegen, damit Ihr Code immer auf die neueste Version verweist.
     
     4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
-3. Fügen Sie der Hauptaktivität ein Kartenfragment hinzu (res \> Layout \> activity\_main.xml):
+3. Fügen Sie der Hauptaktivität (Ressourcen \> Layout \> activity\_main.xml) ein Kartenfragment hinzu:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -201,7 +201,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
     </FrameLayout>
     ```
 
-4. In der Datei **MainActivity.java** müssen Sie Folgendes ausführen:
+4. In der Datei **MainActivity.java** müssen folgende Schritte ausgeführt werden:
     
     * Hinzufügen von Importen für das Azure Maps SDK
     * Festlegen Ihrer Azure Maps-Authentifizierungsinformationen
@@ -209,7 +209,7 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
 
     Wenn Sie die Authentifizierungsinformationen für die Klasse `AzureMaps` mithilfe der Methode `setSubscriptionKey` oder der Methode `setAadProperties` global festlegen, müssen Sie nicht für jede Ansicht Ihre Authentifizierungsinformationen hinzufügen. 
 
-    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Damit Ihre App ordnungsgemäß funktioniert, rufen Sie die Lebenszyklusmethoden des Kartensteuerelements auf. Sie müssen die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
+    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Zum ordnungsgemäßen Aufrufen der Lebenszyklusmethoden des Kartensteuerelements müssen Sie die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
 
     * `onCreate(Bundle)` 
     * `onStart()` 
@@ -310,7 +310,7 @@ Wenn Sie Ihre Anwendung ausführen, lädt das Kartensteuerelement wie folgt.
 Hinweis: Das Azure Maps-Steuerelement unterstützt das Zoomen und bietet eine Weltansicht.
 
 > [!TIP]
-> Wenn Sie einen Android-Emulator in Windows verwenden, wird die Karte möglicherweise aufgrund von Konflikten mit OpenGL und dem von der Software beschleunigten Rendern von Grafiken nicht gerendert. In einigen Fällen konnte dieses Problem wie folgt behoben werden: Öffnen Sie den AVD-Manager, und wählen Sie das zu bearbeitende virtuelle Gerät aus. Legen Sie im Abschnitt **Emulated Performance** (Emulierte Leistung) die Option **Grafiken** auf **Hardware** fest.
+> Wenn Sie einen Android-Emulator in Windows verwenden, wird die Karte möglicherweise aufgrund von Konflikten mit OpenGL und dem von der Software beschleunigten Rendern von Grafiken nicht gerendert. In einigen Fällen konnte dieses Problem wie folgt behoben werden: Öffnen Sie den AVD-Manager, und wählen Sie das zu bearbeitende virtuelle Gerät aus. Scrollen Sie im Bereich **Verify Configuration** (Konfiguration überprüfen) nach unten. Legen Sie im Abschnitt **Emulated Performance** (Emulierte Leistung) die Option **Grafiken** auf **Hardware** fest.
 
 ## <a name="localizing-the-map"></a>Lokalisieren der Karte
 
@@ -318,7 +318,7 @@ Wenn sich Ihre Zielgruppe über mehrere Länder erstreckt oder verschiedene Spra
 
 **Vorher: Google Maps**
 
-Sie können die Sprache der Karte in der Methode `onCreate` der Hauptaktivität festlegen, indem Sie den folgenden Code hinzufügen, bevor Sie die Kontextansicht der Karte festlegen. Im folgenden Code wird mithilfe des Sprachcodes „fr“ die Sprache auf Französisch festgelegt.
+Sie können die Sprache der Karte in der Methode `onCreate` der Hauptaktivität festlegen, indem Sie den folgenden Code hinzufügen. Der Code muss vor dem Festlegen der Kontextansicht der Karte hinzugefügt werden. Im folgenden Code wird mithilfe des Sprachcodes „fr“ die Sprache auf Französisch festgelegt.
 
 ```java
 String languageToLoad = "fr";
@@ -365,7 +365,7 @@ Die zweite Option besteht darin, die Informationen zur Sprache und Ansicht an di
     />
 ```
 
-Die dritte Option besteht darin, die Sprache und regionale Ansicht der Karte mithilfe der Kartenmethode `setStyle` programmgesteuert festzulegen. Dies kann jederzeit geschehen, um die Sprache und regionale Ansicht der Karte zu ändern.
+Die dritte Option besteht darin, die Sprache und regionale Ansicht der Karte mithilfe der Kartenmethode `setStyle` programmgesteuert festzulegen. Diese Option kann jederzeit festgelegt werden, um die Sprache und die regionale Ansicht der Karte zu ändern.
 
 ```java
 mapControl.onReady(map -> {
@@ -384,14 +384,14 @@ Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten is
 
 ## <a name="setting-the-map-view"></a>Festlegen der Kartenansicht
 
-Dynamische Karten können sowohl in Azure Maps als auch in Google Maps programmgesteuert durch Aufrufen der passenden Methoden an neue geografische Standorte verschoben werden. Die Beispiele unten demonstrieren das Festlegen der Karte auf Satellitenluftaufnahmen, das Zentrieren der Karte über einem Standort mit Koordinaten (Breitengrad: 35,0272; Längengrad: -111,0225) und das Ändern der Zoomstufe auf 15 in Google Maps.
+Dynamische Karten können sowohl in Azure Maps als auch in Google Maps programmgesteuert durch Aufrufen der entsprechenden Methoden an neue geografische Orte verschoben werden. In den folgenden Beispielen wird gezeigt, wie Sie eine Karte mit Satellitenluftaufnahmen anzeigen, die Karte über einem Standort mit Koordinaten (Breitengrad: 35,0272; Längengrad: -111,0225) zentrieren und die Zoomstufe in „15“ ändern (in Google Maps).
 
 > [!NOTE]
-> Google Maps verwendet Kacheln mit der Abmessung 256 Pixel, während Azure Maps größere Kacheln mit 512 Pixel verwendet. Dadurch wird die Anzahl der Netzwerkanforderungen reduziert, die Azure Maps zum Laden des gleichen Kartenbereichs wie Google Maps benötigt. Aufgrund der Funktionsweise von Kachelpyramiden in Kartensteuerelementen müssen Sie für größere Kacheln in Azure Maps allerdings die in Google Maps verwendete Zoomstufe in Azure Maps um 1 verringern, damit in Azure Maps derselbe Bereich angezeigt wird wie in Google Maps.
+> Google Maps verwendet Kacheln mit der Abmessung 256 Pixel, während Azure Maps größere Kacheln mit 512 Pixel verwendet. Dadurch wird die Anzahl der Netzwerkanforderungen reduziert, die Azure Maps zum Laden des gleichen Kartenbereichs wie Google Maps benötigt. Aufgrund der Funktionsweise von Kachelpyramiden in Kartensteuerelementen müssen Sie für größere Kacheln in Azure Maps allerdings die in Google Maps verwendete Zoomstufe in Azure Maps um 1 verringern, damit in Azure Maps derselbe Bereich angezeigt wird wie in Google Maps. 
 
 **Vorher: Google Maps**
 
-Die Kamera des Kartensteuerelements in Google Maps kann mithilfe der Methode `moveCamera` programmgesteuert verschoben werden, wodurch Sie den Mittelpunkt der Karte und eine Zoomstufe angeben können. Die Methode `setMapType` kann verwendet werden, um den Typ der angezeigten Karte zu ändern.
+Die Kamera des Kartensteuerelements in Google Maps kann mithilfe der Methode `moveCamera` programmgesteuert bewegt werden, um den Mittelpunkt der Karte und eine Zoomstufe anzugeben. Die Methode `setMapType` kann verwendet werden, um den Typ der angezeigten Karte zu ändern.
 
 ```java
 @Override
@@ -468,7 +468,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-In Azure Maps können Sie Punktdaten auf der Karte rendern, indem Sie zuerst die Daten zu einer Datenquelle hinzufügen und anschließend diese Datenquellen zu einer Symbolebene hinzufügen. Die Datenquelle optimiert die Verwaltung räumlicher Daten im Kartensteuerelement, und die Symbolebene legt fest, wie Datenpunkte als Bilder und/oder Text gerendert werden sollen.
+In Azure Maps können Punktdaten auf der Karte gerendert werden, indem die Daten zunächst einer Datenquelle hinzugefügt werden. Anschließend muss diese Datenquelle einer Symbolebene hinzugefügt werden. Die Datenquelle optimiert die Verwaltung räumlicher Daten im Kartensteuerelement. Die Symbolebene gibt an, wie Punktdaten als Bild und/oder Text gerendert werden sollen.
 
 ```java
 mapControl.onReady(map -> {
@@ -490,7 +490,7 @@ mapControl.onReady(map -> {
 
 ## <a name="adding-a-custom-marker"></a>Hinzufügen eines benutzerdefinierten Markers
 
-Benutzerdefinierte Bilder können zur Darstellung von Punkten auf einer Karte verwendet werden. Das folgende Bild wird in den Beispielen unten als benutzerdefiniertes Bild verwendet, um einen Punkt auf der Karte anzuzeigen (Breitengrad: 51,5, Längengrad: -0,2), und versetzt die Position des Markers so, dass der Punkt des Stecknadelsymbols sich auf die richtige Position auf der Karte ausrichtet.
+Benutzerdefinierte Bilder können zur Darstellung von Punkten auf einer Karte verwendet werden. Bei der Karte in den folgenden Beispielen wird ein benutzerdefiniertes Bild verwendet, um einen Punkt auf der Karte anzuzeigen. Der Punkt befindet sich am Breitengrad 51,5 und am Längengrad -0,2. Die Position des Markers wird so angepasst, dass die Spitze des Stecknadelsymbols auf die korrekte Kartenposition ausgerichtet ist.
 
 <center>
 
@@ -501,7 +501,7 @@ In beiden Beispielen wird das obige Bild dem Ordner „drawable“ der App-Resso
 
 **Vorher: Google Maps**
 
-Mit Google Maps können Sie benutzerdefinierte Bilder für Marker verwenden, indem Sie sie über die Option `icon` des Markers laden. Sie können die Option `anchor` verwenden, um den Punkt des Bilds auf die Koordinate auszurichten. Die Option „anchor“ steht in Relation zu den Maßen des Bilds. In diesem Fall ist es 0,2 Einheiten breit und eine Einheit hoch.
+Bei Google Maps können benutzerdefinierte Bilder für Marker verwendet werden. Laden Sie benutzerdefinierte Bilder mithilfe der Markeroption `icon`. Mit der Option `anchor` können Sie die Spitze des Bilds auf die Koordinate ausrichten. Die Option „anchor“ steht in Relation zu den Maßen des Bilds. In diesem Fall ist es 0,2 Einheiten breit und eine Einheit hoch.
 
 ```java
 @Override
@@ -520,7 +520,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-Symbolebenen in Azure Maps unterstützen ebenfalls benutzerdefinierte Bilder, diese müssen jedoch zuerst in die Kartenressourcen geladen werden, und ihnen muss jeweils eine eindeutige ID zugewiesen sein. Anschließend kann die Symbolebene auf diese ID verweisen. Das Symbol kann mithilfe der Option `iconOffset` entsprechend dem richtigen Datenpunkt auf dem Bild versetzt werden. Beachten Sie, dass für die Option „iconOffset“ Pixelwerte verwendet werden. Standardmäßig steht diese Option in Relation zum unteren mittleren Bereich des Bilds. Dies kann aber mithilfe der Option `iconAnchor` angepasst werden. In diesem Beispiel wird die Option `iconAnchor` auf `"center"` festgelegt, und die Option „iconOffset“ wird verwendet, um das Bild 5 Pixel nach rechts und 15 Pixel nach oben zu verschieben, sodass dieses auf den Punkt des Stecknadelbilds ausgerichtet ist.
+Von Symbolebenen in Azure Maps werden zwar benutzerdefinierte Bilder unterstützt, diese müssen jedoch zuerst in die Kartenressourcen geladen werden, und ihnen muss jeweils eine eindeutige ID zugewiesen werden. Anschließend kann die Symbolebene auf diese ID verweisen. Verwenden Sie die Option `iconOffset`, um das Symbol so zu versetzen, dass es auf den korrekten Punkt auf dem Bild ausgerichtet ist. Der Symbolversatz wird in Pixeln angegeben. Der Versatz wird standardmäßig relativ zur Mitte des unteren Bildrands angegeben, dies kann jedoch mithilfe der Option `iconAnchor` angepasst werden. In diesem Beispiel wird die Option `iconAnchor` auf `"center"` festgelegt, und die Option „iconOffset“ wird verwendet, um das Bild 5 Pixel nach rechts und 15 Pixel nach oben zu verschieben, sodass dieses auf den Punkt des Stecknadelbilds ausgerichtet ist.
 
 ```java
 mapControl.onReady(map -> {
@@ -580,7 +580,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-In Azure Maps werden Polylinien als LineString- oder MultiLineString-Objekte bezeichnet. Diese Objekte können einer Datenquelle hinzugefügt und mithilfe einer Linienebene gerendert werden. Hinweis: Die Strichbreite und die Pixeleinheiten des Stricharrays werden auf das Web SDK für Azure Maps ausgerichtet, sodass bei der Verwendung derselben Werte in beiden SDKs auch dieselben Ergebnisse erzeugt werden.
+In Azure Maps werden Polylinien als Objekt vom Typ `LineString` oder `MultiLineString` bezeichnet. Diese Objekte können einer Datenquelle hinzugefügt und mithilfe einer Linienebene gerendert werden. Die Pixeleinheiten für Strichbreite und Stricharray sind auf das Azure Maps Web SDK abgestimmt, sodass bei der Verwendung der gleichen Werte in beiden SDKs die gleichen Ergebnisse erzielt werden.
 
 ```java
 mapControl.onReady(map -> {
@@ -643,7 +643,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-In Azure Maps können einer Datenquelle Polygon- und MultiPolygon-Objekte hinzugefügt und mithilfe von Ebenen auf der Karte gerendert werden. Der Bereich eines Polygons kann in einer Polygonebene gerendert werden. Der Umriss eines Polygons kann mithilfe einer Linienebene gerendert werden. Hinweis: Die Strichbreite und die Pixeleinheiten des Stricharrays werden auf das Web SDK für Azure Maps ausgerichtet, sodass bei der Verwendung derselben Werte in beiden SDKs auch dieselben Ergebnisse erzeugt werden.
+In Azure Maps können einer Datenquelle Objekte vom Typ `Polygon` und `MultiPolygon` hinzugefügt und mithilfe von Ebenen auf der Karte gerendert werden. Der Bereich eines Polygons kann in einer Polygonebene gerendert werden. Der Umriss eines Polygons kann mithilfe einer Linienebene gerendert werden. Die Pixeleinheiten für Strichbreite und Stricharray sind auf das Azure Maps Web SDK abgestimmt, sodass bei der Verwendung der gleichen Werte in beiden SDKs die gleichen Ergebnisse erzielt werden.
 
 ```java
 mapControl.onReady(map -> {
@@ -679,7 +679,7 @@ mapControl.onReady(map -> {
 
 ## <a name="overlay-a-tile-layer"></a>Überlagern einer Kachelebene
 
-Kachelebenen, die in Google Maps auch als Bildüberlagerungen bezeichnet werden, ermöglichen es Ihnen, Bilder mit mehreren Ebenen zu überlagern, die in kleinere gekachelte Bilder aufgeteilt wurden, die sich am Kachelsystem für Karten orientieren. Dies ist eine gängige Methode zum Überlagern von Bildern mit mehreren Ebenen oder sehr großer Datasets.
+ Kachelebenen ermöglichen es Ihnen, Bilder mit mehreren Ebenen zu überlagern, die in kleinere gekachelte Bilder aufgeteilt wurden, die sich am Kachelsystem der Karte orientieren. Dies ist eine gängige Methode, um Bilder mit mehreren Ebenen oder große Datasets zu überlagern. In Google Maps werden Kachelebenen als Bildüberlagerungen bezeichnet.
 
 In den folgenden Beispielen wird eine Kachelebene eines Wetterradars aus dem Iowa Environmental Mesonet der Iowa State University überlagert. Die Kacheln sind 256 Pixel groß.
 
@@ -718,7 +718,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-In Azure Maps können Sie die Kachelebenen einer Karte auf ähnliche Weise wie jede andere Ebene hinzufügen. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem `{quadkey}`-, `{bbox-epsg-3857}`- und `{subdomain}`-Platzhalter. Die Kachelebene wird halbtransparent angezeigt, wenn der Wert 0,8 für die Deckkraft verwendet wird. Beachten Sie, dass für Deckkraft und Transparenz jeweils der umgekehrte Wert verwendet wird, obwohl sich beide Aspekte ähneln. Wenn Sie die Werte konvertieren möchten, subtrahieren sie diese jeweils einfach von der Zahl 1.
+Eine Kachelebene kann der Karte auf ähnliche Weise hinzugefügt werden wie andere Ebenen. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem die Platzhalter `{quadkey}`, `{bbox-epsg-3857}` und `{subdomain}`. Die Kachelebene wird halbtransparent angezeigt, wenn der Wert 0,8 für die Deckkraft verwendet wird. Deckkraft und Transparenz ähneln sich zwar, verwenden aber umgekehrte Werte. Wenn Sie die Werte konvertieren möchten, subtrahieren Sie sie von der Zahl 1.
 
 > [!TIP]
 > In Azure Maps können Ebenen leicht unterhalb von anderen Ebenen gerendert werden, einschließlich Basiskartenebenen. Es ist häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, "labels");`
@@ -740,7 +740,7 @@ mapControl.onReady(map -> {
 
 ## <a name="show-traffic"></a>Anzeigen des Verkehrs
 
-Sowohl Azure- als auch Google-Karten können mit Verkehrsdaten überlagert werden.
+Verkehrsdaten können sowohl in Azure Maps als auch in Google Maps eingeblendet werden.
 
 **Vorher: Google Maps**
 
@@ -761,7 +761,7 @@ public void onMapReady(GoogleMap googleMap) {
 
 **Nachher: Azure Maps**
 
-Azure Maps bietet verschiedene Optionen zum Anzeigen von Verkehrsinformationen. Ereignisse wie etwa Straßensperrungen und Unfälle können als Symbole auf der Karte angezeigt werden. Der Verkehrsfluss und farbig codierte Straßen können auf der Karte eingeblendet werden, die Farben können geändert werden und auf dem veröffentlichten Tempolimit, der normalerweise zu erwartenden Verzögerung oder der absoluten Verzögerung basieren. Die Ereignisdaten werden in Azure Maps minütlich aktualisiert, die Daten zum Verkehrsfluss alle zwei Minuten.
+Azure Maps bietet verschiedene Optionen zum Anzeigen von Verkehrsinformationen. Ereignisse wie etwa Straßensperrungen und Unfälle können als Symbole auf der Karte angezeigt werden. Der Verkehrsfluss und farbig codierte Straßen können auf der Karte eingeblendet werden. Die Farben können geändert werden und auf dem geltenden Tempolimit, der normalerweise zu erwartenden Verzögerung oder der absoluten Verzögerung basieren. Vorfallsdaten in Azure Maps werden im Minutentakt aktualisiert, Daten zum Verkehrsfluss alle zwei Minuten.
 
 ```java
 mapControl.onReady(map -> {

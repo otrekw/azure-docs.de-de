@@ -8,36 +8,36 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: cab593990369bb8a4135e82534a2eb409b574e96
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8f3772c1d65780337c421cfaaa7b70d7ac7186cf
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582760"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024312"
 ---
 # <a name="azure-iot-central---smart-meter-app-architecture"></a>Azure IoT Central – Architektur der Intelligenter Stromzähler-Anwendung
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Dieser Artikel bietet eine Übersicht der Architektur der Vorlage der Überwachungs-App für intelligente Stromzähler. Das nachstehende Diagramm zeigt eine häufig verwendete Architektur für die Intelligenter Stromzähler-App in Azure unter Verwendung der IoT Central-Plattform.
 
 > [!div class="mx-imgBorder"]
-> ![Architektur für intelligente Stromzähler](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
+> ![Architektur für intelligente Messgeräte](media/concept-iot-central-smart-meter/smart-meter-app-architecture.png)
 
 Diese Architektur umfasst die folgenden Komponenten. Für einige Lösungen sind möglicherweise nicht alle der hier aufgeführten Komponenten erforderlich.
 
 ## <a name="smart-meters-and-connectivity"></a>Intelligente Stromzähler und Konnektivität 
 
-Ein intelligenter Stromzähler zählt unter den Energieressourcen zu den wichtigsten Geräten. Er zeichnet Daten zum Energieverbrauch auf und kommuniziert sie an Hilfsprogramme zur Überwachung und für andere Anwendungen, wie etwa Abrechnung und Reaktion auf die Nachfrage. Je nach Art des intelligenten Stromzählers kann er Verbindungen mit IoT Central entweder über Gateways oder über andere zwischengeschaltete Geräte oder Systeme, wie etwa Edgegeräte und Kopfteilgeräte, herstellen. Erstellen Sie eine IoT Central-Gerätebridge, um Geräte zu verbinden, die nicht direkt verbunden werden können. Bei der IoT Central-Gerätebridge handelt es sich um eine Open-Source-Lösung. Die Details finden Sie [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge). 
+Ein intelligenter Stromzähler zählt unter den Energieressourcen zu den wichtigsten Geräten. Er zeichnet Daten zum Energieverbrauch auf und kommuniziert sie an Hilfsprogramme zur Überwachung und für andere Anwendungen, wie etwa Abrechnung und Reaktion auf die Nachfrage. Der Stromzähler kann je nach Typ entweder über Gateways oder über andere zwischengeschaltete Geräte oder Systeme (z. B. Edgegeräte und Head-End-Systeme) eine Verbindung mit IoT Central herstellen. Erstellen Sie eine IoT Central-Geräte-Bridge, um Geräte zu verbinden, die nicht direkt verbunden werden können. Bei der IoT Central-Gerätebridge handelt es sich um eine Open-Source-Lösung. Die Details finden Sie [hier](https://docs.microsoft.com/azure/iot-central/core/howto-build-iotc-device-bridge). 
 
 
 ## <a name="iot-central-platform"></a>IoT Central-Plattform
 
-Azure IoT Central ist eine Plattform, die das Erstellen Ihrer IoT-Lösungen vereinfacht und den Aufwand und die Kosten für die Verwaltung, den Betrieb und die Entwicklung von IoT-Lösungen senkt. Mit IoT Central können Sie Ihre Sie IoT-Ressourcen (Internet of Things) einfach und in jeder Größenordnung verbinden, überwachen und verwalten. Nachdem Sie Ihre intelligenten Stromzähler mit IoT Central verbunden haben, verwendet die App-Vorlage integrierte Features wie Gerätemodelle, Befehle und Dashboards. Die App-Vorlage verwendet außerdem den IoT Central-Speicher für Szenarien mit warmen Pfaden, z.B. Datenüberwachung nahezu in Echtzeit, Analysen, Regeln und Visualisierung. 
+Azure IoT Central ist eine Plattform, die das Erstellen Ihrer IoT-Lösungen vereinfacht und den Aufwand und die Kosten für die Verwaltung, den Betrieb und die Entwicklung von IoT-Lösungen senkt. Mit IoT Central können Sie Ihre IoT-Ressourcen (Internet of Things) einfach und in jeder Größenordnung verbinden, überwachen und verwalten. Nachdem Sie Ihre intelligenten Stromzähler mit IoT Central verbunden haben, verwendet die App-Vorlage integrierte Features wie Gerätemodelle, Befehle und Dashboards. Die App-Vorlage verwendet außerdem den IoT Central-Speicher für Szenarien mit warmen Pfaden, z. B. Datenüberwachung nahezu in Echtzeit, Analysen, Regeln und Visualisierung. 
 
 
-## <a name="extensibility-options-to-build-with-iot-central"></a>Erweiterungsoptionen für das Erstellen mit IoT Central
-Die IoT Central-Plattform bietet zwei Erweiterungsoptionen: Kontinuierlichen Datenexport (Continuous Data Export, CDE) und APIs. Die Kunden und Partner können zwischen diesen Optionen wählen, um ihre Lösungen an bestimmte Anforderungen anzupassen. Beispielsweise konfigurierte einer unserer Partner CDE mit Azure Data Lake Storage (ADLS). Er verwendet ADLS für die langfristige Datenaufbewahrung und andere Speicherszenarien mit kalten Pfaden, z.B. Batchverarbeitung, Überwachung und Berichterstellung. 
+## <a name="extensibility-options-to-build-with-iot-central"></a>Erweiterbarkeitsoptionen für die Erstellung mit IoT Central
+Die IoT Central-Plattform bietet zwei Erweiterbarkeitsoptionen: Kontinuierlichen Datenexport (Continuous Data Export, CDE) und APIs. Die Kunden und Partner können zwischen diesen Optionen auswählen, um ihre Lösungen an bestimmte Anforderungen anzupassen. Beispielsweise konfigurierte einer unserer Partner CDE mit Azure Data Lake Storage (ADLS). Er verwendet ADLS für die langfristige Datenaufbewahrung und andere Speicherszenarien mit kalten Pfaden, z.B. Batchverarbeitung, Überwachung und Berichterstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

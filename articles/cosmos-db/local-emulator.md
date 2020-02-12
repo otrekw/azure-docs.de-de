@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760571"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76939161"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -419,23 +419,7 @@ Navigieren Sie in Ihrem Browser zu folgender URL, um den Daten-Explorer zu öffn
 
     https://<emulator endpoint provided in response>/_explorer/index.html
 
-Wenn Sie über eine in einem Linux-Docker-Container ausgeführte .NET-Clientanwendung verfügen und den Azure Cosmos-Emulator auf einem Hostcomputer ausführen, kann über den Emulator keine Verbindung mit dem Azure Cosmos-Konto hergestellt werden. Da die App nicht auf dem Hostcomputer ausgeführt wird, kann das Zertifikat, das für den Linux-Container registriert ist, der dem Endpunkt des Emulators entspricht, nicht hinzugefügt werden. 
-
-Zur Umgehung dieses Problems können Sie über Ihre Clientanwendung die SSL-Zertifikatüberprüfung des Servers deaktivieren, indem Sie eine Instanz vom Typ `HttpClientHandler` übergeben, wie im folgenden .NET-Codebeispiel zu sehen. Diese Problemumgehung funktioniert nur bei Verwendung des NuGet-Pakets `Microsoft.Azure.DocumentDB`. Für das NuGet-Paket `Microsoft.Azure.Cosmos` wird sie nicht unterstützt:
- 
- ```csharp
-var httpHandler = new HttpClientHandler()
-{
-    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-};
- 
-using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-{
-    RunDatabaseDemo(client).GetAwaiter().GetResult();
-}
-```
-
-Zusätzlich zur Deaktivierung der SSL-Zertifikatüberprüfung muss der Emulator mit der Option `/allownetworkaccess` gestartet werden, und der Zugriff auf den Endpunkt des Emulators muss über die Host-IP-Adresse möglich sein (nicht per `host.docker.internal`-DNS).
+Wenn Sie über eine in einem Linux-Docker-Container ausgeführte .NET-Clientanwendung verfügen und den Azure Cosmos-Emulator auf einem Hostcomputer ausführen, gehen Sie wie im folgenden Abschnitt beschrieben vor, um das Zertifikat in den Linux-Docker-Container zu importieren.
 
 ## Ausführung unter Mac oder Linux<a id="mac"></a>
 
@@ -447,47 +431,59 @@ Führen Sie innerhalb der Windows-VM den folgenden Befehl aus, und notieren Sie 
 ipconfig.exe
 ```
 
-Innerhalb Ihrer Anwendung müssen Sie den URI für das DocumentClient-Objekt ändern, um die von `ipconfig.exe` zurückgegebene IPv4-Adresse zu verwenden. Der nächste Schritt ist, die CA-Validierung bei der Erstellung des DocumentClient-Objekts zu umgehen. Dazu müssen Sie dem DocumentClient-Konstruktor einen HttpClientHandler zur Verfügung stellen, der eine eigene Implementierung für ServerCertificateCustomValidationCallback hat.
+Sie müssen in Ihrer Anwendung den als Endpunkt verwendeten URI ändern, um die von `ipconfig.exe` zurückgegebene IPv4-Adresse zu verwenden (anstelle von `localhost`).
 
-Unten sehen Sie ein Beispiel für den Code.
-
-```csharp
-using System;
-using Microsoft.Azure.Documents;
-using Microsoft.Azure.Documents.Client;
-using System.Net.Http;
-
-namespace emulator
-{
-    class Program
-    {
-        static async void Main(string[] args)
-        {
-            string strEndpoint = "https://10.135.16.197:8081/";  //IPv4 address from ipconfig.exe
-            string strKey = "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==";
-
-            //Work around the CA validation
-            var httpHandler = new HttpClientHandler()
-            {
-                ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
-            };
-
-            //Pass http handler to document client
-            using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
-            {
-                Database database = await client.CreateDatabaseIfNotExistsAsync(new Database { Id = "myDatabase" });
-                Console.WriteLine($"Created Database: id - {database.Id} and selfLink - {database.SelfLink}");
-            }
-        }
-    }
-}
-```
-
-Starten Sie schließlich den Cosmos-Emulator auf der Windows-VM mit den folgenden Optionen über die Befehlszeile.
+Starten Sie als Nächstes den Cosmos-Emulator auf dem virtuellen Windows-Computer mit den folgenden Optionen über die Befehlszeile.
 
 ```cmd
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
+
+Zum Schluss muss das Zertifizierungsstellenzertifikat des Emulators in die Linux- oder Mac-Umgebung importiert werden.
+
+### <a name="linux"></a>Linux
+
+Unter Linux verwendet .NET OpenSSL für die Überprüfung:
+
+1. [Exportieren Sie das Zertifikat im PFX-Format.](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX ist verfügbar, wenn Sie den privaten Schlüssel exportieren.) 
+
+1. Kopieren Sie die PFX-Datei in Ihre Linux-Umgebung.
+
+1. Konvertieren Sie die PFX-Datei in eine CRT-Datei.
+
+   ```bash
+   openssl pkcs12 -in YourPFX.pfx -clcerts -nokeys -out YourCTR.crt
+   ```
+
+1. Kopieren Sie die CRT-Datei in den Ordner, der in Ihrer Linux-Distribution benutzerdefinierte Zertifikate enthält. In Debian-Distributionen befindet er sich üblicherweise unter `/usr/local/share/ca-certificates/`.
+
+   ```bash
+   cp YourCTR.crt /usr/local/share/ca-certificates/
+   ```
+
+1. Aktualisieren Sie die Zertifizierungsstellenzertifikate. Dadurch wird der Ordner `/etc/ssl/certs/` aktualisiert.
+
+   ```bash
+   update-ca-certificates
+   ```
+
+### <a name="mac-os"></a>Mac OS
+
+Führen Sie in einer Mac-Umgebung die folgenden Schritte aus:
+
+1. [Exportieren Sie das Zertifikat im PFX-Format.](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (PFX ist verfügbar, wenn Sie den privaten Schlüssel exportieren.)
+
+1. Kopieren Sie die PFX-Datei in Ihre Mac-Umgebung.
+
+1. Öffnen Sie die Anwendung *Keychain Access*, und importieren Sie die PFX-Datei.
+
+1. Öffnen Sie die Liste mit den Zertifikaten, und suchen Sie nach dem Zertifikat `localhost`.
+
+1. Wählen Sie im Kontextmenü für dieses Element die Option *Element abrufen* und anschließend unter *Vertrauensstellung* > *Bei Verwendung dieses Zertifikats* die Option *Immer vertrauen* aus. 
+
+   ![Auswählen der Option „Element abrufen“ im Kontextmenü für dieses Element und anschließendes Auswählen von „Immer vertrauen“ unter „Vertrauensstellung“ > „Bei Verwendung dieses Zertifikats“](./media/local-emulator/mac-trust-certificate.png)
+
+Nach diesen Schritten vertraut Ihre Umgebung dem vom Emulator verwendeten Zertifikat, wenn eine Verbindung mit der von `/AllowNetworkAccess` verfügbar gemachten IP-Adresse hergestellt wird.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

@@ -8,29 +8,30 @@ ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 6773b5d4635089d0977dfa0699549ad22e00aead
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 96590faae26892771ce27c539bb6e71c84b65b10
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770729"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938943"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Node.js zum Herstellen von Verbindungen mit Daten und Abfragen von Daten in Azure Database for MySQL
-In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Node.js](https://nodejs.org/) auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
+
+In dieser Schnellstartanleitung stellen Sie unter Verwendung von Node.js eine Verbindung mit einer Azure Database for MySQL-Instanz her. Anschließend verwenden Sie SQL-Anweisungen, um Daten in der Datenbank über Mac-, Ubuntu Linux- und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+
+In diesem Thema wird davon ausgegangen, dass Sie mit der Node.js-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-Außerdem benötigen Sie Folgendes:
-- Installation der [Node.js](https://nodejs.org)-Laufzeit
-- Installation des [mysql](https://www.npmjs.com/package/mysql)-Pakets zum Herstellen der Verbindung mit MySQL für die Node.js-Anwendung 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ein Azure Database for MySQL-Server. [Erstellen Sie einen Azure Database for MySQL-Server mithilfe des Azure-Portals](quickstart-create-mysql-server-database-using-azure-portal.md), oder [erstellen Sie einen Azure Database for MySQL-Server mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
 
-## <a name="install-nodejs-and-the-mysql-connector"></a>Installation von Node.js und MySQL-Connector
-Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen im entsprechende Abschnitt. Verwenden Sie npm, um das mysql-Paket und die Abhängigkeiten in Ihrem Projektordner zu installieren.
+## <a name="install-nodejs-and-the-mysql-connector"></a>Installieren von Node.js und MySQL-Connector
+
+Befolgen Sie zum Installieren von [Node.js](https://nodejs.org) die plattformabhängigen Anweisungen im entsprechenden Abschnitt. Verwenden Sie npm, um das Paket [mysql](https://www.npmjs.com/package/mysql) und die entsprechenden Abhängigkeiten in Ihrem Projektordner zu installieren.
 
 ### <a name="windows"></a>**Windows**
+
 1. Besuchen Sie die [Node.js-Seite „Downloads“](https://nodejs.org/en/download/), und wählen Sie dann die gewünschte Windows Installer-Option aus.
 2. Erstellen Sie einen lokalen Projektordner, z.B. `nodejsmysql`. 
 3. Öffnen Sie die Eingabeaufforderung, und wechseln Sie zum Projektordner, z.B. mit `cd c:\nodejsmysql\`.
@@ -45,6 +46,7 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
 5. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von `npm list` ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+
 1. Führen Sie die folgenden Befehle zum Installieren von **Node.js** und **npm** (Paket-Manager für Node.js) aus.
 
    ```bash
@@ -62,6 +64,7 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
 3. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von „npm list“ ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
 ### <a name="mac-os"></a>**Mac OS**
+
 1. Geben Sie die folgenden Befehle zum Installieren von **brew** ein, einem einfach zu verwendenden Paket-Manager für Mac OS X und **Node.js**.
 
    ```bash
@@ -80,6 +83,7 @@ Befolgen Sie für die Installation von Node.js je nach Plattform die Anweisungen
 3. Überprüfen Sie die Installation, indem Sie sich den Ausgabetext von `npm list` ansehen. Die Versionsnummer kann hiervon abweichen, wenn neue Patches veröffentlicht werden.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
+
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
@@ -89,12 +93,14 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
  ![Servername für Azure-Datenbank für MySQL](./media/connect-nodejs/server-name-azure-database-mysql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Ausführen des JavaScript-Codes in Node.js
+
 1. Fügen Sie den JavaScript-Code in Textdateien ein, und speichern Sie ihn dann in einem Projektordner mit der Dateierweiterung „.js“, z.B. „C:\nodejsmysql\createtable.js“ oder „/home/username/nodejsmysql/createtable.js“.
 2. Öffnen Sie die Eingabeaufforderung oder die Bash-Shell, und wechseln Sie zu Ihrem Projektordner: `cd nodejsmysql`.
 3. Um die Anwendung auszuführen, geben Sie den node-Befehl gefolgt vom Dateinamen ein, z.B. `node createtable.js`.
 4. Unter Windows müssen Sie unter Umständen den vollständigen Pfad verwenden, um die Node-Anwendung zu starten, z.B. `"C:\Program Files\nodejs\node.exe" createtable.js`, wenn sich die Node-Anwendung nicht unter dem Pfad der Umgebungsvariablen befindet.
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
+
 Verwenden Sie den folgenden Code, um eine Verbindung herzustellen und die Daten zu laden, indem Sie die SQL-Anweisungen **CREATE TABLE** und **INSERT INTO** verwenden.
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die Funktion [connect()](https://github.com/mysqljs/mysql#establishing-connections) wird verwendet, um die Verbindung mit dem Server herzustellen. Die Funktion [query()](https://github.com/mysqljs/mysql#performing-queries) wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -162,6 +168,7 @@ function queryDatabase(){
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **SELECT** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. Das results-Array wird für die Ergebnisse der Abfrage verwendet.
@@ -214,6 +221,7 @@ function readData(){
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **UPDATE** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -262,6 +270,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer SQL-Anweisung des Typs **DELETE** zu verbinden und zu lesen. 
 
 Die [mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Kommunikation mit dem MySQL-Server zu ermöglichen. Die [connect()](https://github.com/mysqljs/mysql#establishing-connections)-Methode wird verwendet, um die Verbindung mit dem Server herzustellen. Die [query()](https://github.com/mysqljs/mysql#performing-queries)-Methode wird verwendet, um die SQL-Abfrage für die MySQL-Datenbank auszuführen. 
@@ -310,5 +319,6 @@ function deleteData(){
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
 > [Migrieren der Datenbank mit Export und Import](./concepts-migrate-import-export.md)

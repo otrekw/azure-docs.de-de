@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 02/05/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 860577938eab0f7561e9b66d0f58c9fc0d077b26
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: e4a4e9d8d1d100fe2e8c35053cea31c55b0f030d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704152"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023156"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Schnellstart: Einrichten eines Mandanten
 
@@ -57,7 +57,7 @@ Sollte Ihrem Konto kein vorhandener Mandant zugeordnet sein, wird unter Ihrem Ko
 
 ### <a name="create-a-new-azure-ad-tenant"></a>Erstellen eines neuen Azure AD-Mandanten
 
-Falls Sie nicht bereits über einen Azure AD-Mandanten verfügen oder einen neuen Mandanten für die Entwicklung erstellen möchten, können Sie hierfür die [Benutzeroberfläche für die Verzeichniserstellung](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) verwenden. Sie müssen die folgende Informationen zum Erstellen Ihres neuen Mandanten angeben:
+Falls Sie noch nicht über einen Azure AD-Mandanten verfügen oder einen neuen Mandanten für die Entwicklung erstellen möchten, sehen sie sich die [Schnellstartanleitung](../fundamentals/active-directory-access-create-new-tenant.md) an, oder verwenden Sie einfach die [Benutzeroberfläche für die Verzeichniserstellung](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Sie müssen die folgende Informationen zum Erstellen Ihres neuen Mandanten angeben:
 
 - **Name der Organisation**
 - **Anfangsdomäne**: Diese ist Bestandteil von *.onmicrosoft.com. Sie können die Domäne später weiter anpassen.

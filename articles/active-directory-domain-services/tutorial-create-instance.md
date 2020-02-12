@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703694"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76931268"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 Es ist bei Azure AD DS zwar nicht erforderlich, für den Azure AD-Mandanten die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zu konfigurieren][configure-sspr], es wird jedoch empfohlen. Benutzer können Ihr Kennwort ohne SSPR ändern. SSPR ist jedoch hilfreich, wenn Benutzer ihr Kennwort vergessen haben und es zurücksetzen müssen.
 
 > [!IMPORTANT]
-> Nach der Erstellung einer verwalteten Azure AD DS-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
+> Nach der Erstellung einer verwalteten Azure AD DS-Domäne können Sie die Instanz nicht in eine andere Ressourcengruppe, ein anderes virtuelles Netzwerk, ein anderes Abonnement usw. verschieben. Wählen Sie bei der Bereitstellung der Azure AD DS-Instanz das am besten geeignete Abonnement, die am besten geeignete Ressourcengruppe und Region und das am besten geeignete virtuelle Netzwerk aus.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -93,19 +93,22 @@ Füllen Sie die Felder im Fenster *Grundlagen* des Azure-Portals aus, um eine Az
 
     Für die Verteilung auf Zonen für Azure AD DS fällt für Sie kein Konfigurationsaufwand an. Die Verteilung der Ressourcen auf Zonen wird von der Azure-Plattform automatisch durchgeführt. Weitere Informationen, z. B. zur regionalen Verfügbarkeit, finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][availability-zones].
 
-1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Azure AD DS-Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert, einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
+1. Die **SKU** bestimmt die Leistung, die Sicherungshäufigkeit und die maximale Anzahl von Gesamtstrukturvertrauensstellungen, die Sie erstellen können. Sie können die SKU nach der Erstellung der verwalteten Domäne ändern, wenn es Ihr Unternehmen erfordert oder sich die Anforderungen ändern. Weitere Informationen finden Sie unter [Verwaltungskonzepte für Benutzerkonten, Kennwörter und die Verwaltung in Azure Active Directory Domain Services][concepts-sku].
+
+    Wählen Sie für dieses Tutorial die SKU *Standard* aus.
+1. Eine *Gesamtstruktur* ist ein logisches Konstrukt, das von Active Directory Domain Services zum Gruppieren von Domänen verwendet wird. Eine verwaltete Azure AD DS-Domäne wird standardmäßig als *Benutzergesamtstruktur* erstellt. Mit dieser Art von Gesamtstruktur werden alle Objekte aus Azure AD synchronisiert – einschließlich aller in einer lokalen AD DS-Umgebung erstellten Benutzerkonten. Eine *Ressourcengesamtstruktur* synchronisiert nur Benutzer und Gruppen, die direkt in Azure AD erstellt werden. Ressourcengesamtstrukturen sind derzeit als Vorschau verfügbar. Weitere Informationen zu *Ressourcengesamtstrukturen* finden Sie in der [Übersicht zu Azure AD DS-Ressourcengesamtstrukturen][resource-forests]. Dort werden u. a. die Gründe für ihre Verwendung sowie die Vorgehensweise zum Erstellen von Gesamtstrukturvertrauensstellungen mit lokalen AD DS-Domänen erläutert.
 
     Erstellen Sie für dieses Tutorial eine *Benutzergesamtstruktur*.
 
     ![Konfigurieren der grundlegenden Einstellungen für eine Azure AD Domain Services-Instanz](./media/tutorial-create-instance/basics-window.png)
 
-Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei der Auswahl dieser Erstellungsoption werden die folgenden Standardwerte konfiguriert:
+Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Überprüfen + erstellen** auswählen, um zusätzliche Standardkonfigurationsoptionen zu akzeptieren. Bei Verwendung dieser Erstellungsoption werden folgende Standardwerte konfiguriert:
 
 * Ein virtuelles Netzwerk mit dem Namen *aadds-vnet* und dem IP-Adressbereich *10.0.1.0/24* wird erstellt.
 * Ein Subnetz mit dem Namen *aadds-subnet* und dem IP-Adressbereich *10.0.1.0/24* wird erstellt.
-* *Alle* Benutzer aus Azure AD werden mit der verwalteten Azure AD DS-Domäne synchronisiert.
+* *Alle* Benutzer aus Azure AD werden mit der verwalteten Azure AD DS-Domäne synchronisiert.
 
-1. Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsoptionen zu akzeptieren.
+Wählen Sie **Überprüfen + erstellen** aus, um diese Standardkonfigurationsoptionen zu akzeptieren.
 
 ## <a name="deploy-the-managed-domain"></a>Bereitstellen der verwalteten Domäne
 
@@ -200,6 +203,7 @@ Konfigurieren Sie ein virtuelles Azure-Netzwerk für Anwendungsworkloads, bevor 
 [skus]: overview.md
 [resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
+[concepts-sku]: administration-concepts.md#azure-ad-ds-skus
 
 <!-- EXTERNAL LINKS -->
 [naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

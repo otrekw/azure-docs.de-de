@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1665ef3e845491f116174cf1914c38e7cf5c691
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660799"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964446"
 ---
 # <a name="what-is-azure-data-share"></a>Was ist Azure Data Share?
 
@@ -37,7 +37,7 @@ Ein anderer Anwendungsfall für Azure Data Share ist die Einrichtung eines Daten
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Azure Data Share ermöglicht derzeit die auf Momentaufnahmen basierende Freigabe und die direkte Freigabe (eingeschränkte Vorschau). 
+Azure Data Share ermöglicht derzeit die auf Momentaufnahmen basierende Freigabe und die direkte Freigabe. 
 
 Bei der auf Momentaufnahmen basierenden Freigabe werden Daten aus dem Azure-Abonnement des Datenanbieters in das Azure-Abonnement des Datenconsumers verschoben. Als Datenanbieter stellen Sie eine Datenfreigabe bereit und laden Empfänger zur Nutzung der Datenfreigabe ein. Datenconsumer erhalten per E-Mail eine Einladung für Ihre Datenfreigabe. Nachdem ein Datenconsumer die Einladung angenommen hat, kann er eine vollständige Momentaufnahme der Daten auslösen, die für ihn freigegeben werden. Diese Daten werden über das Speicherkonto des Datenconsumers empfangen. Datenconsumer können regelmäßige inkrementelle Updates der freigegebenen Daten erhalten, damit sie immer über die aktuelle Version der Daten verfügen. 
 
@@ -47,7 +47,7 @@ Datenanbieter können ihren Datenconsumern inkrementelle Updates der freigegeben
 
 Wenn ein Datenconsumer eine Datenfreigabe akzeptiert, kann er die Daten in einem Datenspeicher seiner Wahl empfangen. Wenn der Datenanbieter beispielsweise Daten mit Azure Blob Storage freigibt, kann der Datenconsumer diese Daten in Azure Data Lake Store empfangen. Analog gilt Folgendes: Wenn der Datenanbieter Daten einer Azure SQL Data Warehouse-Instanz freigibt, kann der Datenconsumer wählen, ob er die Daten in einer Azure Data Lake Store-Instanz, einer Azure SQL-Datenbank oder einer Azure SQL Data Warehouse-Instanz erhalten möchte. Bei der Freigabe über SQL-basierte Quellen kann der Datenconsumer auch auswählen, ob er Daten im Parquet- oder CSV-Format empfangen möchte. 
 
-Die direkte Freigabe befindet sich derzeit in der eingeschränkten Vorschauphase für Azure Data Explorer. Datenanbieter können Daten vom derzeitigen Speicherort über eine symbolische Verknüpfung freigeben, ohne dass Daten verschoben werden. Registrieren Sie sich [hier](https://aka.ms/azuredatasharepreviewsignup) für die eingeschränkte Vorschauversion der direkten Freigabe für Azure Data Explorer. 
+Mit der direkten Freigabe können Datenanbieter Daten direkt an ihrem Speicherort freigeben, ohne die Daten zu kopieren. Nachdem die Freigabebeziehung durch den Einladungsflow hergestellt wurde, wird eine symbolische Verbindung zwischen dem Quelldatenspeicher des Datenanbieters und dem Zieldatenspeicher des Datenconsumers hergestellt. Der Datenconsumer kann die Daten unter Verwendung seines eigenen Datenspeichers lesen und abfragen. Änderungen am Quelldatenspeicher sind sofort für den Datenconsumer verfügbar. Die direkte Freigabe befindet sich derzeit in der Vorschauphase für Azure Data Explorer.
 
 ## <a name="key-capabilities"></a>Wichtige Funktionen
 
@@ -56,6 +56,8 @@ Mit Azure Data Share haben Datenanbieter folgende Möglichkeiten:
 * Freigeben von Daten über die Liste mit den [unterstützten Datenspeichern](supported-data-stores.md) mit Kunden und Partnern außerhalb Ihrer Organisation
 
 * Nachverfolgen, für wen Sie Ihre Daten freigegeben haben
+
+* Wahl zwischen der Momentaufnahmefreigabe oder der direkten Freigabe
 
 * Verfolgen, wie häufig Ihre Datenconsumer Updates Ihrer Daten erhalten
 
@@ -69,13 +71,13 @@ Mit Azure Data Share haben Datenconsumer folgende Möglichkeiten:
 
 * Annehmen oder Ablehnen einer Azure Data Share-Einladung
 
+* Akzeptieren von Daten, die für Sie in einem [unterstützten Datenspeicher](supported-data-stores.md) freigegeben werden
+
 * Auslösen einer vollständigen oder inkrementellen Momentaufnahme einer Datenfreigabe, die Sie von einer Organisation erhalten haben
 
 * Abonnieren einer Datenfreigabe, um die aktuelle Kopie der Daten per inkrementeller Momentaufnahme zu erhalten
 
-* Akzeptieren von Daten, die für Sie in einem [unterstützten Datenspeicher](supported-data-stores.md) freigegeben werden
-
-Alle wichtigen Funktionen, die oben aufgeführt sind, werden über die Azure- oder REST-APIs unterstützt. Weitere Informationen zur Verwendung von Azure Data Share mit REST-APIs finden Sie in unserer Referenzdokumentation. 
+Alle wichtigen Funktionen, die oben aufgeführt sind, werden über das Azure-Portal oder REST-APIs unterstützt. Weitere Informationen zur Verwendung von Azure Data Share mit REST-APIs finden Sie in unserer Referenzdokumentation. 
 
 ## <a name="security"></a>Sicherheit
 
@@ -88,9 +90,9 @@ Azure Data Share nutzt verwaltete Identitäten für Azure-Ressourcen (bisher als
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Eine Liste mit Azure-Regionen, in denen Azure Data Share verfügbar ist, finden Sie auf der [Seite mit den verfügbaren Produkten nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-share/), wenn Sie nach Azure Data Share suchen. 
+Eine Liste mit Azure-Regionen, in denen Azure Data Share verfügbar ist, finden Sie auf der [Seite mit den verfügbaren Produkten nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-share), wenn Sie nach Azure Data Share suchen. 
 
-Von Azure Data Share selbst werden keine Daten gespeichert. Die Daten werden im zugrunde liegenden Datenspeicher gespeichert, der freigegeben wird. Wenn ein Datenproduzent seine Daten beispielsweise unter einem Azure Data Lake Store-Konto in der Region „USA, Westen“ speichert, werden die Daten auch dort gespeichert. Falls Daten für ein Azure Storage-Konto in der Region „Europa, Westen“ freigegeben werden, werden die Daten direkt an das Azure Storage-Konto übertragen, das sich in „Europa, Westen“ befindet. 
+Von Azure Data Share selbst wird keine Kopie der Daten gespeichert. Die Daten werden im zugrunde liegenden Datenspeicher gespeichert, der freigegeben wird. Wenn ein Datenproduzent seine Daten beispielsweise unter einem Azure Data Lake Store-Konto in der Region „USA, Westen“ speichert, werden die Daten auch dort gespeichert. Falls Daten für ein Azure Storage-Konto in der Region „Europa, Westen“ über eine Momentaufnahme freigegeben werden, werden die Daten in der Regel direkt an das Azure Storage-Konto übertragen, das sich in „Europa, Westen“ befindet.
 
 Der Dienst Azure Data Share muss in Ihrer Region nicht verfügbar sein, um den Dienst nutzen zu können. Wenn Sie beispielsweise Daten unter einem Azure Storage-Konto in einer Region gespeichert haben, in der Azure Data Share noch nicht verfügbar ist, können Sie den Dienst trotzdem zum Freigeben Ihrer Daten nutzen. 
 

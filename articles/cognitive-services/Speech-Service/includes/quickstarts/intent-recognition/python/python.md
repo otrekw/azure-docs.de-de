@@ -1,28 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten, Python – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773042"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900300"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes Python-Projekt ist, verwenden Sie diesen Leitfaden zum <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">Erstellen eines leeren Beispielprojekts</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung</a>.
+* Wenn dies Ihr erstes Python-Projekt ist, verwenden Sie <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">diesen Leitfaden <span class="docon docon-navigate-external x-hidden-focus"></span></a>, um ein leeres Beispielprojekt zu erstellen.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung. <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 
@@ -65,7 +61,7 @@ Als Nächstes erstellen wir ein Objekt vom Typ `IntentRecognizer`. Fügen Sie de
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>Hinzufügen von LanguageUnderstandingModel und Absichten
 
-Sie müssen der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen und die zu erkennenden Absichten hinzufügen. Wir verwenden Absichten aus der vordefinierten Domäne für die Gebäudeautomatisierung. 
+Sie müssen der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen und die zu erkennenden Absichten hinzufügen. Wir verwenden Absichten aus der vordefinierten Domäne für die Gebäudeautomatisierung.
 
 Fügen Sie diesen Code unterhalb von `IntentRecognizer` ein. Stellen Sie sicher, dass Sie `"YourLanguageUnderstandingAppId"` durch die ID Ihrer LUIS-App ersetzen. 
 
@@ -90,7 +86,7 @@ Fügen Sie unterhalb des Aufrufs von `recognize_once()` den folgenden Code hinzu
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 
-Ihr Code sollte nun wie folgt aussehen:  
+Ihr Code sollte nun wie folgt aussehen:
 
 > [!NOTE]
 > Wir haben dieser Version einige Kommentare hinzugefügt.

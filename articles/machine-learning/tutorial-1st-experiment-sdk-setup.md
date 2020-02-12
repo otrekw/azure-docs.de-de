@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 84fa6b1d7f48ac7aea44e693a7df8945ba180d29
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658643"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982533"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 Wenn Sie über benutzerdefinierte Widgets verfügen oder die Verwendung von Jupyter/JupyterLab bevorzugen, wählen Sie ganz rechts das Dropdownmenü **Jupyter** und dann **Jupyter** oder **JupyterLab** aus. Das neue Browserfenster wird geöffnet.
 
 > [!NOTE]
-> Compute-Instanzen (Vorschauversion) sind zurzeit nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
+> Compute-Instanzen (Vorschau) sind zurzeit nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
 >Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.  Sie können entweder eine Notebook-VM oder eine Computeinstanz für die Ausführung Ihres Notebooks verwenden. Ein virtueller Computer wird weiterhin ausgeführt und verursacht weiter Kosten, wenn Sie ihn nicht beenden. Sie können ihn manuell in Studio auf der Registerkarte **Compute** beenden. Lesen Sie alternativ [diesen Blogbeitrag](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) zum Aktivieren des geplanten automatischen Herunterfahrens für Azure-VMs.
 
 ## <a name="next-steps"></a>Nächste Schritte

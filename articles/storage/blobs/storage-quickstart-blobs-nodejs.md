@@ -3,41 +3,33 @@ title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 – JavaScript'
 description: In dieser Schnellstartanleitung erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek, Version 12 für JavaScript ein Container und ein Blob im Blobspeicher (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/19/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: eabfefbf28b54e4a0a025698f8da48518e7df9bf
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970257"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906464"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v12-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js
 
-Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript. Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Führen Sie die Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert.
-
-> [!NOTE]
-> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek für JavaScript](storage-quickstart-blobs-nodejs-legacy.md).
-
-Mit der Azure Blob Storage-Clientbibliothek v12 für JavaScript können Sie Folgendes erledigen:
-
-* Erstellen eines Containers
-* Hochladen eines Blobs in Azure Storage
-* Auflisten aller Blobs in einem Container
-* Herunterladen des Blobs auf den lokalen Computer
-* Löschen eines Containers
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Node.js verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs durch und erstellen und löschen Container.
 
 [API-Referenzdokumentation](/javascript/api/@azure/storage-blob) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob) | [Paket (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-blob) | [Beispiele](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Aktuelle [Node.js](https://nodejs.org/en/download/) für Ihr Betriebssystem.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org/en/download/).
+
+> [!NOTE]
+> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js](storage-quickstart-blobs-nodejs-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -96,7 +88,7 @@ npm install
 
 1. Öffnen einer weiteren neuen Textdatei im Code-Editor
 1. Hinzufügen von `require`-Aufrufen zum Laden von Azure- und Node.js-Modulen
-1. Erstellen der Struktur für das Programm, einschließlich einer sehr einfachen Ausnahmebehandlung
+1. Erstellen der Struktur für das Programm, einschließlich einer einfachen Ausnahmebehandlung
 
     Der Code lautet wie folgt:
 
@@ -314,7 +306,7 @@ Durchlaufen Sie den Code Schritt für Schritt im Debugger, und überprüfen Sie 
 
 In dieser Schnellstartanleitung wurde beschrieben, wie Sie Blobs mit JavaScript hochladen, herunterladen und auflisten.
 
-Tutorials, Beispiele, Schnellstarts und weitere Dokumentation finden Sie unter:
+Tutorials, Beispiele, Schnellstartanleitungen und weiteres Dokumentationsmaterial finden Sie hier:
 
 > [!div class="nextstepaction"]
 > [Dokumentation zu Azure für JavaScript](/azure/javascript/)

@@ -8,18 +8,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/30/2020
+ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720166"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76982597"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mit dem Designer von Azure Machine Learning eine Predictive Analytics-Lösung entwickeln und bereitstellen, mit der der Preis eines beliebigen Autos prognostiziert werden kann.
+In diesem zweiteiligen Tutorial erfahren Sie, wie Sie mithilfe des Designers von Azure Machine Learning ein Machine Learning-Modell trainieren und bereitstellen, das den Preis eines beliebigen Autos prognostiziert. Bei dem Designer handelt es sich um ein Drag & Drop-Tool, mit dem Sie ganz ohne Programmieraufwand Machine Learning-Modelle erstellen können.
 
 Im ersten Teil des Tutorials lernen Sie Folgendes:
 
@@ -45,13 +45,15 @@ Für die Erstellung einer Azure Machine Learning-Pipeline benötigen Sie einen A
 
 ### <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
+Um den Designer verwenden zu können, benötigen Sie zunächst einen Azure Machine Learning-Arbeitsbereich. Der Arbeitsbereich ist die Ressource der obersten Ebene für Azure Machine Learning und bietet einen zentralen Ort für die Arbeit mit allen Artefakten, die Sie in Azure Machine Learning erstellen.
+
 Wenn Sie über einen Azure Machine Learning-Arbeitsbereich mit einer Enterprise Edition verfügen, können Sie [mit dem nächsten Abschnitt fortfahren](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Erstellen der Pipeline
 
-1. Melden Sie sich bei [ml.azure.com](https://ml.azure.com) an, und wählen Sie den gewünschten Arbeitsbereich aus.
+1. Melden Sie sich bei <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> an, und wählen Sie den gewünschten Arbeitsbereich aus.
 
 1. Wählen Sie **Designer** aus.
 
@@ -60,6 +62,30 @@ Wenn Sie über einen Azure Machine Learning-Arbeitsbereich mit einer Enterprise 
 1. Wählen Sie **Easy-to-use prebuilt modules** (Benutzerfreundliche vorgefertigte Module) aus.
 
 1. Wählen Sie im oberen Bereich der Canvas den Standardpipelinenamen **Pipeline-Created-on** aus. Ändern Sie den Namen in *Automobile price prediction* (Automobilpreisvorhersage). Der Name muss nicht eindeutig sein.
+
+## <a name="set-the-default-compute-target"></a>Festlegen des Standardcomputeziels
+
+Ein Pipeline wird auf einem Computeziel ausgeführt. Dabei handelt es sich um eine an Ihren Arbeitsbereich angefügte Computeressource. Nachdem Sie ein Computeziel erstellt haben, können Sie es für künftige Ausführungen wiederverwenden.
+
+Sie können ein **Standardcomputeziel** für die gesamte Pipeline festlegen, wodurch jedes Modul standardmäßig das gleiche Computeziel verwendet. Sie können aber auch modulspezifische Computeziele angeben.
+
+1. Wählen Sie im oberen Bereich der Canvas neben dem Namen der Pipeline das **Zahnradsymbol** ![Screenshot des Zahnradsymbols](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) aus, um den Bereich **Einstellungen** zu öffnen.
+
+1. Wählen Sie rechts neben der Canvas im Bereich **Einstellungen** die Option **Computeziel auswählen** aus.
+
+    Falls Sie bereits über ein verfügbares Computeziel verfügen, können Sie es auswählen, um diese Pipeline auszuführen.
+
+    > [!NOTE]
+    > Im Designer können nur Experimente für Azure Machine Learning Compute-Ziele ausgeführt werden. Andere Computeziele werden nicht angezeigt.
+
+1. Geben Sie einen Namen für die Computeressource ein.
+
+1. Wählen Sie **Speichern** aus.
+
+    > [!NOTE]
+    > Die Erstellung einer Computeressource dauert etwa fünf Minuten. Nach der Erstellung der Ressource können Sie sie wiederverwenden und diese Wartezeit in künftigen Ausführungen vermeiden.
+    >
+    > Eine im Leerlauf befindliche Computeressource wird automatisch auf 0 Knoten skaliert, um Kosten zu sparen. Wenn Sie sie nach einer Verzögerung erneut verwenden, müssen Sie unter Umständen etwa fünf Minuten warten, bis sie wieder hochskaliert wurde.
 
 ## <a name="import-data"></a>Daten importieren
 
@@ -77,7 +103,7 @@ Sie können die Daten visualisieren, um sich mit dem zu verwendenden Dataset ver
 
 1. Wählen Sie das Modul **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) aus.
 
-1. Wählen Sie im Bereich „Eigenschaften“ rechts neben der Canvas die Option **Ausgaben** aus.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben** aus.
 
 1. Wählen Sie das Diagrammsymbol aus, um die Daten zu visualisieren.
 
@@ -95,7 +121,7 @@ Für Datasets ist vor der Analyse in der Regel eine Vorverarbeitung erforderlich
 
 Wenn Sie ein Modell trainieren, müssen Sie etwas gegen fehlende Daten tun. In diesem Dataset fehlen in der Spalte **normalized-losses** zahlreiche Werte. Daher schließen wir diese Spalte ganz aus dem Modell aus.
 
-1. Geben Sie im oberen Bereich der Palette den Suchbegriff **Select** (Auswählen) in das Suchfeld ein, um nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) zu suchen.
+1. Erweitern Sie in der Modulpalette auf der linken Seite der Canvas den Abschnitt **Datentransformation**, und suchen Sie nach dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen).
 
 1. Ziehen Sie das Modul **Select Columns in Dataset** (Spalten im Dataset auswählen) auf die Canvas. Legen Sie das Modul unter dem Datasetmodul ab.
 
@@ -109,11 +135,13 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas gegen fehlende Daten tun. In d
 
 1. Wählen Sie das Modul **Select Columns in Dataset** aus.
 
-1. Wählen Sie im Eigenschaftenbereich rechts neben der Canvas die Option **Alle Spalten** aus.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Spalte bearbeiten** aus.
+
+1. Erweitern Sie neben **Einschließen** die Dropdownliste **Spaltennamen**, und wählen Sie **Alle Spalten** aus.
 
 1. Wählen Sie **+** aus, um eine neue Regel hinzuzufügen.
 
-1. Wählen Sie im Dropdownmenü **Ausschließen** und **Spaltennamen** aus.
+1. Wählen Sie in den Dropdownmenüs die Optionen **Ausschließen** und **Spaltennamen** aus.
     
 1. Geben Sie *normalized-losses* in das Textfeld ein.
 
@@ -123,7 +151,7 @@ Wenn Sie ein Modell trainieren, müssen Sie etwas gegen fehlende Daten tun. In d
 
 1. Wählen Sie das Modul **Select Columns in Dataset** aus. 
 
-1. Wählen Sie im Eigenschaftenbereich das Textfeld **Kommentar** aus, und geben Sie *Exclude normalized losses* (Normalisierte Verluste ausschließen) ein.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails das Textfeld **Kommentar** aus, und geben Sie *Exclude normalized losses* (Normalisierte Verluste ausschließen) ein.
 
     Kommentare werden im Diagramm angezeigt, um Sie bei der Strukturierung Ihrer Pipeline zu unterstützen.
 
@@ -134,13 +162,15 @@ Auch nach dem Entfernen der Spalte **normalized-losses** weist Ihr Dataset noch 
 > [!TIP]
 > Die Bereinigung fehlender Werte in den Eingabedaten wird bei den meisten Modulen im Designer vorausgesetzt.
 
-1. Geben Sie den Suchbegriff **Clean** in das Suchfeld ein, um nach dem Modul **Clean Missing Data** (Fehlende Daten bereinigen) zu suchen.
+1. Erweitern Sie in der Modulpalette auf der linken Seite der Canvas den Abschnitt **Datentransformation**, und suchen Sie nach dem Modul **Clean Missing Data** (Fehlende Daten bereinigen).
 
 1. Ziehen Sie das Modul **Clean Missing Data** (Fehlende Daten bereinigen) auf die Pipelinecanvas. Verbinden Sie es mit dem Modul **Select Columns in Dataset** (Spalten im Dataset auswählen). 
 
-1. Klicken Sie im Bereich „Eigenschaften“ unter **Cleaning mode** (Bereinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen).
+1. Wählen Sie das Modul **Clean Missing Data** (Fehlende Daten bereinigen) aus.
 
-1. Geben Sie im Bereich „Eigenschaften“ im Feld **Kommentar** den Text *Remove missing value rows* (Zeilen mit fehlenden Werten entfernen) ein. 
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails unter **Cleaning mode** (Bereinigungsmodus) die Option **Remove entire row** (Gesamte Zeile entfernen) aus.
+
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails das Textfeld **Kommentar** aus, und geben Sie *Remove missing value rows* (Zeilen mit fehlenden Werten entfernen) ein. 
 
     Ihre Pipeline sollte nun in etwa wie folgt aussehen:
     
@@ -156,26 +186,28 @@ Da Sie einen Preis (also eine Zahl) vorhersagen möchten, können Sie einen Regr
 
 Das Aufteilen von Daten ist eine gängige Aufgabe beim maschinellen Lernen. Ihre Daten werden in zwei separate Datasets aufgeteilt: eins zum Trainieren des Modells und eins zum Testen der Ergebnisqualität des Modells.
 
-1. Geben Sie im Suchfeld den Begriff **split data** ein, um nach dem Modul **Split Data** (Daten aufteilen) zu suchen. Verbinden Sie den linken Port des Moduls **Clean Missing Data** (Fehlende Daten bereinigen) mit dem Modul **Split Data** (Daten aufteilen).
+1. Erweitern Sie in der Modulpalette den Abschnitt **Datentransformation**, und suchen Sie nach dem Modul **Split Data** (Daten aufteilen).
+
+1. Ziehen Sie das Modul **Split Data** (Daten aufteilen) auf die Pipelinecanvas.
+
+1. Verbinden Sie den linken Port des Moduls **Clean Missing Data** (Fehlende Daten bereinigen) mit dem Modul **Split Data** (Daten aufteilen).
 
     > [!IMPORTANT]
     > Achten Sie darauf, dass der linke Ausgabeport von **Clean Missing Data** (Fehlende Daten bereinigen) mit **Split Data** (Daten aufteilen) verbunden ist. Der linke Port enthält die bereinigten Daten. Der rechte Port enthält die verworfenen Daten.
 
 1. Wählen Sie das Modul **Split Data** (Daten aufteilen) aus.
 
-1. Legen Sie im Bereich „Eigenschaften“ den Wert für **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset) auf „0,7“ fest.
+1. Legen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Fraction of rows in the first output dataset** (Anteil der Zeilen im ersten Ausgabedataset) auf „0,7“ fest.
 
     Mit dieser Option werden 70 Prozent der Daten zum Trainieren des Modells und 30 Prozent zum Testen verwendet. Auf das Dataset mit den 70 Prozent kann über den linken Ausgabeport zugegriffen werden. Die restlichen Daten sind über den rechten Ausgabeport verfügbar.
 
-1. Geben Sie im Bereich „Eigenschaften“ im Feld **Kommentar** den Text *Split the dataset into training set(0.7) and test set(0.3)* (Dataset in Trainingssatz (0,7) und Testsatz (0,3) unterteilen) ein.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails das Textfeld **Kommentar** aus, und geben Sie *Split the dataset into training set (0.7) and test set (0.3)* (Dataset in Trainingssatz (0,7) und Testsatz (0,3) unterteilen) ein.
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 
 Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch den Algorithmus wird ein Modell erstellt, das die Beziehung zwischen den Features und dem Preis aus den Trainingsdaten erklärt.
 
-1. Löschen Sie zum Auswählen des Lernalgorithmus das Suchfeld der Modulpalette.
-
-1. Erweitern Sie **Machine Learning-Algorithmen**.
+1. Erweitern Sie in der Modulpalette den Abschnitt **Machine Learning-Algorithmen**.
     
     Mit dieser Option werden verschiedene Kategorien von Modulen angezeigt, die Sie zur Initialisierung von Lernalgorithmen verwenden können.
 
@@ -192,9 +224,11 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
     ![Screenshot der richtigen Konfiguration des Moduls „Train Model“. Das Modul „Linear Regression“ ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ ist mit dem rechten Port von „Train Model“ verbunden.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
+1. Erweitern Sie in der Modulpalette den Abschnitt **Module training** (Modultraining), und ziehen Sie das Modul **Train Model** (Modell trainieren) auf die Canvas.
+
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
-1. Wählen Sie im Bereich „Eigenschaften“ die Option **Spalte bearbeiten** aus.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails den Selektor **Spalte bearbeiten** aus.
 
 1. Erweitern Sie im Dialogfeld **Bezeichnungsspalte** das Dropdownmenü, und wählen Sie **Spaltennamen** aus. 
 
@@ -204,7 +238,7 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
     ![Screenshot: Korrekte Pipelinekonfiguration nach dem Hinzufügen des Moduls „Train Model“ (Modell trainieren)](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="score-a-machine-learning-model"></a>Bewerten eines Machine Learning-Modells
+### <a name="add-the-score-model-module"></a>Hinzufügen des Moduls „Score Model“ (Modell bewerten)
 
 Nachdem Sie das Modell mit 70 Prozent der Daten trainiert haben, können Sie unter Verwendung der restlichen 30 Prozent bewerten, wie gut das Modell funktioniert.
 
@@ -212,7 +246,7 @@ Nachdem Sie das Modell mit 70 Prozent der Daten trainiert haben, können Sie un
 
 1. Verbinden Sie die Ausgabe des Moduls **Train Model** mit dem linken Eingabeport des Moduls **Score Model**. Verbinden Sie die Testdatenausgabe (den rechten Port) des Moduls **Split Data** mit dem rechten Eingabeport des Moduls **Score Model**.
 
-## <a name="evaluate-a-machine-learning-model"></a>Auswerten eines Machine Learning-Modells
+### <a name="add-the-evaluate-model-module"></a>Hinzufügen des Moduls „Evaluate Model“
 
 Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, wie gut das Testdataset von Ihrem Modell bewertet wurde.
 
@@ -224,9 +258,22 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, w
 
     ![Screenshot: Korrekte Konfiguration des der Pipeline](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
+## <a name="run-the-pipeline"></a>Ausführen der Pipeline
 
-[!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
+Nachdem Ihre Pipeline nun vollständig eingerichtet ist, können Sie eine Pipelineausführung übermitteln.
+
+1. Wählen Sie im oberen Bereich der Canvas die Option **Ausführen** aus.
+
+1. Wählen Sie im Dialogfeld **Pipelineausführung einrichten** für **Experiment** die Option **+ Neues Experiment** aus.
+
+    > [!NOTE]
+    > Experimente fassen ähnliche Pipelineausführungen in einer Gruppe zusammen. Wenn Sie eine Pipeline mehrmals ausführen, können Sie für weitere Ausführungen das gleiche Experiment auswählen.
+
+    1. Geben Sie unter **Name des Experiments** einen aussagekräftigen Namen ein.
+
+    1. Klicken Sie auf **Run** (Ausführen).
+    
+    Ausführungsstatus und Details können rechts oben auf der Canvas angezeigt werden.
 
 ### <a name="view-scored-labels"></a>Anzeigen bewerteter Bezeichnungen
 
@@ -234,7 +281,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Si
 
 1. Wählen Sie das Modul **Score Model** (Modell bewerten) aus, um dessen Ausgabe anzuzeigen.
 
-1. Wählen Sie im Eigenschaftenbereich **Ausgaben** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
@@ -246,7 +293,7 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um zu prüfen, wi
 
 1. Wählen Sie das Modul **Evaluate Model** (Modell auswerten) aus, um dessen Ausgabe anzuzeigen.
 
-1. Wählen Sie im Eigenschaftenbereich **Ausgaben** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgabe** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
 
 Die folgenden Statistiken werden für Ihr Modell angezeigt:
 
@@ -260,16 +307,11 @@ Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
+Überspringen Sie diesen Abschnitt, wenn Sie mit dem zweiten Teil des Tutorials ([Bereitstellen eines Machine Learning-Modells mit dem Designer](tutorial-designer-automobile-price-deploy.md)) fortfahren möchten.
+
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Im ersten Teil dieses Tutorial haben Sie folgende Aufgaben ausgeführt:
-
-* Erstellen einer Pipeline
-* Vorbereiten der Daten
-* Trainieren des Modells
-* Bewerten und Auswerten des Modells
 
 Im zweiten Teil erfahren Sie, wie Sie Ihr Modell als Echtzeitendpunkt bereitstellen.
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b07c6d6317d8ca284008d271f507b965414bfbc1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: d19a7cc8d81f9e6e913f147b24c5cce03ff82027
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257497"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986732"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Tableau Server
 
@@ -45,6 +44,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Tableau Server unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von Tableau Server können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-tableau-server-from-the-gallery"></a>Hinzufügen von Tableau Server aus dem Katalog
 
@@ -109,7 +109,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -135,11 +135,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 2. Wählen Sie auf der Registerkarte **CONFIGURATION (KONFIGURATION)** **User Identity & Access (Benutzeridentität und Zugriff)** aus, und wählen Sie dann die Registerkarte **Authentication Method (Authentifizierungsmethode)** aus.
 
-    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Einmaliges Anmelden konfigurieren](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. Führen Sie auf der Seite **CONFIGURATION (KONFIGURATION)** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Einmaliges Anmelden konfigurieren](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. Wählen Sie als **Authentication Method (Authentifizierungsmethode)** die Option „SAML“ aus.
 
@@ -184,3 +184,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Tableau Server“ klicken, sollten
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Tableau Server mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

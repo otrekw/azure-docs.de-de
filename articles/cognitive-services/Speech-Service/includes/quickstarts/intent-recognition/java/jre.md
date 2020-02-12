@@ -1,28 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten, Java – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761397"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900573"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes Java-Projekt für die JRE ist, verwenden Sie diesen Leitfaden zum <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">Erstellen eines leeren Beispielprojekts</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung</a>.
+* Wenn dies Ihr erstes Java-Projekt für die JRE ist, verwenden Sie <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">diesen Leitfaden <span class="docon docon-navigate-external x-hidden-focus"></span></a>, um ein leeres Beispielprojekt zu erstellen.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung. <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 
@@ -96,7 +92,7 @@ Es ist wichtig, die Speech-Ressourcen freizugeben, wenn Sie sie nicht mehr benö
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 
-Ihr Code sollte nun wie folgt aussehen:  
+Ihr Code sollte nun wie folgt aussehen:
 
 > [!NOTE]
 > Wir haben dieser Version einige Kommentare hinzugefügt.
@@ -105,7 +101,7 @@ Ihr Code sollte nun wie folgt aussehen:
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
-Drücken Sie F11, oder wählen Sie **Ausführen** > **Debuggen** aus.
+Drücken Sie F11, oder wählen Sie **Ausführen** > **Debuggen** aus.<kbd></kbd>
 Die nächsten 15 Sekunden der Spracheingabe vom Mikrofon werden erkannt und im Konsolenfenster protokolliert.
 
 ## <a name="next-steps"></a>Nächste Schritte

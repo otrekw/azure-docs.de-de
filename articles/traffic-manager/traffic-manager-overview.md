@@ -2,7 +2,7 @@
 title: Azure Traffic Manager | Microsoft Docs
 description: Dieser Artikel enthält eine Übersicht zu Azure Traffic Manager. Erfahren Sie, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
 services: traffic-manager
-author: asudbring
+author: rohinkoul
 manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
@@ -11,13 +11,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
-ms.author: allensu
-ms.openlocfilehash: 48ce72104c4cc08fc26777aa7111b705c57317f5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.author: rohink
+ms.openlocfilehash: c8f604c042aee8b1af30af9da5a43ed2cd79f214
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420285"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014384"
 ---
 # <a name="what-is-traffic-manager"></a>Was ist Traffic Manager?
 Azure Traffic Manager ist ein DNS-basierter Lastenausgleich für Datenverkehr, der es Ihnen ermöglicht, den Datenverkehr optimal auf Dienste in den globalen Azure-Regionen zu verteilen, und gleichzeitig Hochverfügbarkeit und Reaktionsfähigkeit sicherzustellen.
@@ -28,6 +28,7 @@ Traffic Manager verwendet DNS, um Clientanforderungen auf der Grundlage einer Da
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Application Gateway](../application-gateway/application-gateway-introduction.md). Informationen zum regionalen Lastenausgleich finden Sie unter [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
 >
 > Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+
 Traffic Manager bietet folgende Funktionen:
 
 ## <a name="increase-application-availability"></a>Steigern der Anwendungsverfügbarkeit

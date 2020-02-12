@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5b59bdc06d455c7bd0ec9cf889f5cfa382948467
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911184"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933479"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Hinzufügen einer Linienebene zur Karte
 
@@ -23,7 +23,7 @@ Eine Linienebene kann verwendet werden, um `LineString`- und `MultiLineString`-F
 > [!TIP]
 > Linienebenen werden standardmäßig sowohl die Koordinaten von Polygonen als auch Linien in einer Datenquelle rendern. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'LineString']` oder `['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]` fest, um die Ebene dahingehend zu beschränken, dass nur LineString-Funktionen gerendert werden, wenn auch MultiLineString-Funktionen berücksichtigt werden sollen.
 
-Der folgende Code zeigt das Erstellen einer Linie, das Hinzufügen zu einer Datenquelle und das Rendern mit einer Linienebene mit der [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Klasse.
+Der folgende Code zeigt, wie Sie eine Line erstellen. Fügen Sie die Linie zu einer Datenquelle hinzu, und rendern Sie sie dann mit einer Linienebene unter Verwendung der Klasse [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest).
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,7 +51,7 @@ Linienebenen können mit [LineLayerOptions](/javascript/api/azure-maps-control/a
 
 ## <a name="add-symbols-along-a-line"></a>Hinzufügen von Symbolen entlang einer Linie
 
-In diesem Beispiel wird gezeigt, wie Pfeilsymbole entlang einer Linie auf der Karte hinzugefügt werden. Wenn Sie eine Symbolebene verwenden, legen Sie die Option „placement“ auf „line“ fest. Dies bewirkt, dass die Symbole entlang der Linie gerendert und dass sie gedreht (0 Grad = rechts) werden.
+In diesem Beispiel wird gezeigt, wie Pfeilsymbole entlang einer Linie auf der Karte hinzugefügt werden. Wenn Sie eine Symbolebene verwenden, legen Sie die Option „placement“ (Platzierung) auf „line“ (Linie) fest. Diese Option rendert die Symbole entlang der Linie und dreht die Symbole (0 Grad = rechts).
 
 <br/>
 
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="add-a-stroke-gradient-to-a-line"></a>Hinzufügen eines Strichverlaufs zu einer Linie
 
-Zusätzlich zur Möglichkeit, eine einzelne Strichfarbe auf eine Linie anzuwenden, können Sie auch eine Linie mit einem Farbverlauf füllen, um den Übergang von einem Liniensegment zum nächsten anzuzeigen. Linienverläufe können z. B. dazu verwendet werden, um Veränderungen über Zeit und Entfernung, aber auch Temperaturunterschiede bei verbundenen Objekten anzuzeigen. Damit dieses Feature auf eine Linie angewendet werden kann, muss für die Datenquelle die Option `lineMetrics` auf „true“ festgelegt sein. Dann kann ein Farbverlaufsausdruck an die Option `strokeColor` der Linie übergeben werden. Der Ausdruck des Strichverlaufs muss auf den Datenausdruck `['line-progress']` verweisen, der die berechneten Linienmetriken für den Ausdruck bereitstellt.
+Sie können eine einzelne Strichfarbe auf eine Linie anwenden. Sie können auch eine Linie mit einem Farbverlauf füllen, um den Übergang von einem Liniensegment zum nächsten anzuzeigen. Linienverläufe können z. B. dazu verwendet werden, um Veränderungen über Zeit und Entfernung, aber auch Temperaturunterschiede bei verbundenen Objekten anzuzeigen. Damit dieses Feature auf eine Linie angewendet werden kann, muss für die Datenquelle die Option `lineMetrics` auf „true“ festgelegt sein. Dann kann ein Farbverlaufsausdruck an die Option `strokeColor` der Linie übergeben werden. Der Ausdruck des Strichverlaufs muss auf den Datenausdruck `['line-progress']` verweisen, der die berechneten Linienmetriken für den Ausdruck bereitstellt.
 
 <br/>
 

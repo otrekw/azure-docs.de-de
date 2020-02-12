@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 8c7d2481fe3ef361386bacc652d87744c1c790bb
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 13b626945743c17bad8df58fba77e1c960e90ef3
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581506"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016561"
 ---
 # <a name="build-energy-solutions-with-iot-central"></a>Erstellen von Lösungen für die Energiebranche mit IoT Central 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 
 Intelligente Messgeräte und Solarpanels spielen in der Transformation der Energiebranche eine wichtige Rolle. Intelligente Messgeräte sorgen für mehr Kontrolle und Echtzeiterkenntnisse in Bezug auf den Energieverbrauch, und das Wachstum von Solarpanels sorgt für Durchbrüche bei der Erzeugung erneuerbarer Energien. Die Apps für die Überwachung von intelligenten Messgeräten und Solarpanels sind Beispielvorlagen, die die verschiedenen Funktionen demonstrieren sollen. Partner können mithilfe dieser Vorlagen Energielösungen mit IoT Central für ihre speziellen Anforderungen erstellen. Zum Bereitstellen und Verwenden dieser Anwendungen ist kein neuer Code erforderlich, und es fallen keine zusätzlichen Kosten an. Erfahren Sie mehr über Energieanwendungsvorlagen und ihre Funktionen.

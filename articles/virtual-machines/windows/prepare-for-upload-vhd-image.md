@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 6a9385a49e85806464e8f9ccf11d9232fae42435
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 933f0c52cf0d65c7dca480971589c0d0f2ebabf0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461128"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906785"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -33,6 +33,22 @@ Weitere Informationen zur Supportrichtlinie für Azure-VMs finden Sie unter [Mic
 > Die Anweisungen in diesem Artikel gelten für Folgendes:
 >1. Die 64-Bit-Version von Windows Server 2008 R2 und höhere Versionen des Windows Server-Betriebssystems. Informationen zum Ausführen einer 32-Bit-Version des Betriebssystems in Azure finden Sie unter [Unterstützung für 32-Bit-Betriebssysteme in Azure-VMs](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines).
 >2. Wird die Workload mithilfe eines Notfallwiederherstellungstools wie Azure Site Recovery oder Azure Migrate migriert, muss dieser Prozess trotzdem für das Gastbetriebssystem ausgeführt werden, um das Image vor der Migration vorzubereiten.
+
+## <a name="system-file-checker-sfc-command"></a>System File Checker (SFC) – Befehl
+
+### <a name="run-windows-system-file-checker-utility-run-sfc-scannow-on-os-prior-to-generalization-step-of-creating-customer-os-image"></a>Ausführen des Windows System File Checker-Hilfsprogramms (run sfc /scannow) auf dem Betriebssystem vor der Generalisierung der Erstellung des Betriebsystemimages des Kunden
+
+Der SFC-Befehl (System File Checker) wird verwendet, um Windows-Systemdateien zu überprüfen und zu ersetzen.
+
+So führen Sie den SFC-Befehl aus
+
+1. Öffnen Sie eine CMD-Eingabeaufforderung mit erhöhten Rechten als Administrator.
+1. Geben Sie `sfc /scannow` ein, und drücken Sie dann die **EINGABETASTE**.
+
+    ![System File Checker](media/prepare-for-upload-vhd-image/system-file-checker.png)
+
+
+Nachdem die SFC-Prüfung abgeschlossen ist, versuchen Sie, Windows-Updates zu installieren und den Computer neu zu starten.
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-and-to-vhd"></a>Konvertieren des virtuellen Datenträgers in einen Datenträger mit fester Größe und eine VHD
 

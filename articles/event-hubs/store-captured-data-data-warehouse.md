@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718888"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905691"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Tutorial: Migrieren erfasster Event Hubs-Daten zu einer SQL Data Warehouse-Instanz mithilfe von Event Grid und Azure Functions
 
@@ -40,9 +40,11 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Achten Sie bei der Installation darauf, folgende Workloads zu installieren: .NET-Desktopentwicklung, Azure-Entwicklung, ASP.NET- und Webentwicklung, Node.js-Entwicklung, Python-Entwicklung.
-- Laden Sie das [Git-Beispiel](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) herunter. Die Beispiellösung umfasst folgende Komponenten:
+- Laden Sie das [Git-Beispiel](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) herunter. Die Beispiellösung umfasst folgende Komponenten:
     - *WindTurbineDataGenerator:* Ein einfacher Verleger, der Beispieldaten einer Windturbine an einen Capture-fähigen Event Hub sendet.
     - *FunctionDWDumper:* Eine Azure-Funktion, die eine Event Grid-Benachrichtigung erhält, wenn im Azure Storage-Blob eine Avro-Datei erfasst wird. Sie erhält den URI-Pfad des Blobs, liest dessen Inhalt und pusht die Daten an eine SQL Data Warehouse-Instanz.
+
+    In diesem Beispiel wird das aktuelle Paket „Azure.Messaging.EventHubs“ verwendet. Das alte Beispiel mit dem Paket „Microsoft.Azure.EventHubs“ finden Sie [hier](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
 
 ### <a name="deploy-the-infrastructure"></a>Bereitstellen der Infrastruktur
 Verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle sowie [diese Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json), um die für dieses Tutorial benötigte Infrastruktur bereitzustellen. Diese Vorlage erstellt die folgenden Ressourcen:

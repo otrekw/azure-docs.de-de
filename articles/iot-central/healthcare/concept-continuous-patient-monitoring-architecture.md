@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: cf8cfc5fe75ff5364f812af034d772c7aadd891c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 92eb4157abb55b7056952d1fb064c7c7d7500335
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027470"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77021695"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>Architektur für die ständige Überwachung von Patienten
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Lösungen für die kontinuierliche Patientenüberwachung können mithilfe der bereitgestellten App-Vorlage sowie auf der Grundlage der weiter unten skizzierten Architektur erstellt werden.
 
@@ -43,7 +43,7 @@ Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizin
 Azure IoT Central ist zwar HIPAA-konform und HITRUST&reg;-zertifiziert, unter Umständen möchten Sie jedoch auch Patientengesundheitsdaten an Azure API for FHIR senden. [Azure API for FHIR](../../healthcare-apis/overview.md) ist eine vollständig verwaltete, standardbasierte, konforme API für Gesundheitsdaten von Kliniken, mit der Sie neue Systems of Engagement für Ihre Gesundheitsdaten entwickeln können. Sie ermöglicht einen schnellen Datenaustausch über FHIR-APIs und basiert auf einem verwalteten PaaS-Angebot (Platform-as-a-Service) in der Cloud. Daten können mithilfe der Funktion „Kontinuierlicher Datenexport“ von IoT Central an Azure API for FHIR gesendet werden.
 
 ### <a name="machine-learning"></a>Machine Learning
-Nachdem Sie Ihre Daten aggregiert und in das FHIR-Format konvertiert haben, können Sie Machine Learning-Modelle erstellen, um bessere Erkenntnisse zu gewinnen und es Ihrem Patientenversorgungsteam zu ermöglichen, intelligentere Entscheidungen zu treffen. Für die Erstellung, das Trainieren und die Bereitstellung von Machine Learning-Modellen stehen verschiedene Dienste zur Verfügung. Weitere Informationen zur Verwendung der Machine Learning-Angebote von Azure finden Sie in unserer [Machine Learning-Dokumentation](../../machine-learning/index.yml).
+Nachdem Sie Ihre Daten aggregiert und in das FHIR-Format konvertiert haben, können Sie Machine Learning-Modelle erstellen, um bessere Erkenntnisse zu gewinnen und es Ihrem Patientenversorgungsteam zu ermöglichen, intelligentere Entscheidungen zu treffen. Für das Erstellen, Trainieren und Bereitstellen von Machine Learning-Modellen stehen verschiedene Dienste zur Verfügung. Weitere Informationen zur Verwendung der Machine Learning-Angebote von Azure finden Sie in unserer [Machine Learning-Dokumentation](../../machine-learning/index.yml).
 
 ### <a name="provider-dashboard"></a>Anbieterdashboard
 Die Daten in Azure API for FHIR können zur Erstellung eines Dashboards mit Patienteninformationen verwendet oder direkt in eine EPA integriert werden, um Patientenversorgungsteams bei der Visualisierung des Patientenstatus zu unterstützen. Patientenversorgungsteams können dieses Dashboard nutzen, um Maßnahmen für Patienten zu ergreifen, die Unterstützung benötigen. Außerdem lassen sich damit frühzeitig Anzeichen für eine Verschlechterung erkennen. Informationen zum Erstellen eines Power BI-Echtzeitanbieterdashboards finden Sie in unserer [Schrittanleitung](howto-health-data-triage.md).

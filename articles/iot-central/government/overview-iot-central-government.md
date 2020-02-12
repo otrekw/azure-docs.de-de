@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a862a221f9fe2db5448473bddcca2a9932716e0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464078"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016509"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für Behörden mit Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Nutzen Sie Azure IoT Central-Anwendungsvorlagen zur Erstellung von Smart-City-Lösungen. Starten Sie mit **water quality monitoring** (Überwachung der Wasserqualität), **water consumption monitoring** (Überwachung des Wasserverbrauchs) und **connected waste management** (Vernetzte Abfallwirtschaft).
 
@@ -32,7 +32,7 @@ Die App-Vorlage umfasst Folgendes:
 * Beispieldashboards für Bediener
 * Beispielvorlagen für Geräte zur Überwachung der Wasserqualität
 * Simulierte Geräte zur Überwachung der Wasserqualität
-* Vorkonfigurierte Regeln und Aufträge
+* Vorkonfigurierten Regeln und Aufträgen
 * White Label-Branding 
 
 Das Tutorial für die Anwendung zur Überwachung der Wasserqualität finden Sie [hier](./tutorial-water-quality-monitoring.md).
@@ -51,7 +51,7 @@ Die App-Vorlage zur Überwachung des Wasserverbrauchs umfasst folgende vorkonfig
 * Beispieldashboards für Bediener
 * Beispielvorlagen für Geräte zur Überwachung der Wasserqualität
 * Simulierte Geräte zur Überwachung der Wasserqualität
-* Vorkonfigurierte Regeln und Aufträge
+* Vorkonfigurierten Regeln und Aufträgen
 * White Label-Branding 
 
  Das Tutorial für die Anwendung zur Überwachung des Wasserverbrauchs finden Sie [hier](./tutorial-water-consumption-monitoring.md).
@@ -67,7 +67,7 @@ Die App-Vorlage für eine vernetzte Abfallwirtschaft umfasst folgende vorkonfigu
 * Beispieldashboards für Bediener
 * Beispielvorlagen für Geräte für vernetzte Abfallbehälter
 * Simulierte Geräte für vernetzte Abfallbehälter
-* Vorkonfigurierte Regeln und Aufträge
+* Vorkonfigurierten Regeln und Aufträgen
 * White Label-Branding 
 
 Das Tutorial für die Anwendung für eine vernetzte Abfallwirtschaft finden Sie [hier](./tutorial-connected-waste-management.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 1cc3664ff8472a6b5a73fa89588611f59ac27e6a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720265"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029490"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Häufig gestellte Fragen zu Azure Network Watcher
 Dier Dienst [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) stellt eine Sammlung von Tools für die Überwachung, Diagnose, Metrikanzeige sowie zur Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereit. In diesem Artikel werden häufig gestellte Fragen zum Dienst beantwortet.
@@ -54,17 +54,29 @@ Besuchen Sie die Seite [Preise](https://azure.microsoft.com/pricing/details/netw
 ### <a name="which-regions-is-network-watcher-supportedavailable-in"></a>In welchen Regionen ist Network Watcher verfügbar und wird unterstützt?
 Sie können die aktuelle regionale Verfügbarkeit auf der Azure-Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=network-watcher) anzeigen.
 
-### <a name="what-are-resource-limits-on-network-watcher"></a>Welche Ressourcengrenzwerte gelten für Network Watcher?
-Alle Grenzwerte finden Sie unter [Network Watcher-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits).  
+### <a name="which-permissions-are-needed-to-use-network-watcher"></a>Welche Berechtigungen sind erforderlich, um Network Watcher zu verwenden?
+Weitere Informationen finden Sie in der Liste der [RBAC-Berechtigungen, die für die Verwendung von Network Watcher erforderlich sind](https://docs.microsoft.com/azure/network-watcher/required-rbac-permissions). Für die Bereitstellung von Ressourcen benötigen Sie „Mitwirkender“-Berechtigungen für NetworkWatcherRG (siehe unten).
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Warum ist pro Region nur eine einzelne Network Watcher-Instanz zulässig?
-Network Watcher muss lediglich einmal für ein Abonnement aktiviert werden, damit die zugehörigen Features funktionieren. Hierbei handelt es sich nicht um eine Diensteinschränkung.
+### <a name="how-do-i-enable-network-watcher"></a>Wie kann ich Network Watcher aktivieren?
+Der Network Watcher-Dienst wird [automatisch](https://azure.microsoft.com/updates/azure-network-watcher-will-be-enabled-by-default-for-subscriptions-containing-virtual-networks/) für jedes Abonnement aktiviert.
+
+### <a name="what-is-the-network-watcher-deployment-model"></a>Was ist das Bereitstellungsmodell von Network Watcher?
+Die übergeordnete Network Watcher-Ressource wird mit einer eindeutigen Instanz in den einzelnen Regionen bereitgestellt. Namensformat: NetworkWatcher_RegionName. Beispiel: „NetworkWatcher_centralus“ ist die Network Watcher-Ressource für die Region „USA, Mitte“.
+
+### <a name="what-is-the-networkwatcherrg"></a>Was ist NetworkWatcherRG?
+Network Watcher-Ressourcen befinden sich in der ausgeblendeten **NetworkWatcherRG**-Ressourcengruppe, die automatisch erstellt wird. Die „NSG-Flussprotokolle“-Ressource ist z. B. eine untergeordnete Ressource von Network Watcher und wird in der NetworkWatcherRG aktiviert.
 
 ### <a name="why-do-i-need-to-install-the-network-watcher-extension"></a>Warum muss ich die Network Watcher-Erweiterung installieren? 
 Die Network Watcher-Erweiterung ist für alle Features erforderlich, die Datenverkehr von einer VM generieren oder abfangen müssen. 
 
 ### <a name="which-features-require-the-network-watcher-extension"></a>Welche Features erfordert die Network Watcher-Erweiterung?
-Die Network Watcher-Erweiterung wird nur für die Paketerfassung, die Verbindungsproblembehandlung und den Verbindungsmonitor benötigt.
+Die Network Watcher-Erweiterung wird für die Features „Paketerfassung“, „Verbindungsproblembehandlung“ und „Verbindungsmonitor“ benötigt.
+
+### <a name="what-are-resource-limits-on-network-watcher"></a>Welche Ressourcengrenzwerte gelten für Network Watcher?
+Alle Grenzwerte finden Sie unter [Network Watcher-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits).  
+
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Warum ist pro Region nur eine einzelne Network Watcher-Instanz zulässig?
+Network Watcher muss lediglich einmal für ein Abonnement aktiviert werden, damit die zugehörigen Features funktionieren. Hierbei handelt es sich nicht um eine Diensteinschränkung.
 
 ## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 

@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 0b100e0bebc7c5b26449e396650da5434334075d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1bad4ab6320e757ac766776a95b8dbe6ebaa3259
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112621"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016424"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-in-iot-central"></a>Tutorial: Erstellen einer Anwendung zur Überwachung des Wasserverbrauchs in IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial wird Schritt für Schritt die Erstellung einer Anwendung zur Überwachung des Wasserverbrauchs mit Azure IoT Central beschrieben, indem die entsprechende IoT Central-Anwendungsvorlage verwendet wird. 
 
@@ -39,7 +39,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-water-consumption-monitoring-app-in-iot-central"></a>Erstellen der App für die Überwachung des Wasserverbrauchs in IoT Central
 
-In diesem Abschnitt verwenden wir die Azure IoT Central-Vorlage **Überwachung des Wasserverbrauchs** zum Erstellen einer entsprechenden Anwendung in IoT Central.
+In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Überwachung des Wasserverbrauchs** zum Erstellen einer entsprechenden Anwendung in IoT Central.
 
 Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung zur Überwachung des Wasserverbrauchs:  
 
@@ -60,11 +60,13 @@ Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung zur Überwachung d
     * **URL**: IoT Central generiert basierend auf dem Anwendungsnamen automatisch eine URL für Sie. Sie können die URL wie gewünscht aktualisieren. Es ist auch möglich, die URL zu einem späteren Zeitpunkt zu ändern. 
     * Wenn Sie ein Azure-Abonnement haben, geben Sie die entsprechenden Angaben für *Verzeichnis, Azure-Abonnement und Region* ein. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.  
 
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../preview/quick-deploy-iot-central.md).
+    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
 
 5. Klicken Sie am unteren Rand der Seite auf die Schaltfläche **Erstellen**. 
 
     ![Azure IoT Central-Seite „Anwendung erstellen“](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring.png)
+
+    ![„Anwendung erstellen“ in Azure IoT Central: Abrechnungsinformationen](./media/tutorial-waterconsumptionmonitoring/new-application-waterconsumptionmonitoring-billinginfo.png)
 
 6. Sie haben nun mit der Azure IoT Central-Vorlage **Überwachung des Wasserverbrauchs** eine entsprechende App erstellt.
 
@@ -72,7 +74,7 @@ Glückwunsch! Sie haben die Erstellung der Anwendung zur Überwachung der Wasser
 * Beispieldashboards für Bediener
 * Beispiel für eine vordefinierte Wasserversorgung und Vorlagen für Ventile
 * Simulation von Wasserversorgung und intelligenten Ventilen
-* Vorkonfigurierte Regeln und Aufträge
+* Vorkonfigurierten Regeln und Aufträgen
 * Beispiel für Branding mit Whitelabeling 
 
 Es ist Ihre Anwendung, und Sie können sie jederzeit ändern. Wir erkunden die Anwendung jetzt und nehmen einige Anpassungen vor.  
@@ -105,7 +107,7 @@ Das Dashboard besteht aus unterschiedlichen Arten von Kacheln:
 
 * **Inhaltskachel zum Zurücksetzen des Warnungsschwellenwerts**: Sie können Inhaltskacheln mit Handlungsaufforderungen bereitstellen und den Link zu einer Seite zum Durchführen einer Aktion einbetten. In diesem Fall gelangen Sie mit „Warnungsschwellenwert zurücksetzen“ zur Anwendung **Aufträge**, mit der Sie Updates für Geräteeigenschaften durchführen können. Dies wird später im Abschnitt **Konfigurieren von Aufträgen** dieses Tutorials beschrieben.
 
-* **Kacheln für Eigenschaften**: Im Dashboard werden die Kacheln **Valve operational info** (Betriebsinformationen zum Ventil), **Flow alert thresholds** (Warnungsschwellenwerte für Wasserfluss) und **Maintenance info** (Wartungsinformationen) angezeigt. Hierbei handelt es sich um Geräteeigenschaften.  
+* **Kacheln für Eigenschaften**: Auf dem Dashboard werden die Kacheln **Valve operational info** (Betriebsinformationen zum Ventil), **Flow alert thresholds** (Warnungsschwellenwerte für Wasserfluss) und **Maintenance info** (Wartungsinformationen) angezeigt. 
 
 
 ### <a name="customize-dashboard"></a>Anpassen des Dashboards 
@@ -139,17 +141,17 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 Versuchen Sie, Folgendes anzupassen:
 1. Navigieren Sie im Menü für Gerätevorlagen zu **Anpassen**.
 2. Suchen Sie nach dem Telemetrietyp `Temperature`.
-3. Aktualisieren Sie **Anzeigename**, indem Sie `Temperature` in `Reported temperature` ändern.
+3. Aktualisieren Sie die Option **Anzeigename**, indem Sie `Temperature` in `Reported temperature` ändern.
 4. Aktualisieren Sie die Maßeinheit, oder legen Sie Werte für *Minimalwert* und *Maximalwert* fest.
 5. Wählen Sie **Speichern**, um die Änderungen zu speichern. 
 
 ### <a name="add-a-cloud-property"></a>Hinzufügen einer Cloudeigenschaft 
 1. Navigieren Sie über das Gerätevorlagenmenü zu **Cloudeigenschaft**.
 2. Fügen Sie eine neue Cloudeigenschaft hinzu, indem Sie auf **+ Cloudeigenschaft hinzufügen** klicken. 
-    In IoT Central können Sie eine Eigenschaft hinzufügen, die für das Gerät relevant ist. Bei einer Cloudeigenschaft kann es sich beispielsweise um einen Warnungsschwellenwert handeln, der für einen bestimmten Installationsbereich oder bestimmte Ressourcen- oder Wartungsinformationen gilt. 
+    In IoT Central können Sie eine Eigenschaft hinzufügen, die für das Gerät relevant ist. Bei einer Cloudeigenschaft kann es sich beispielsweise um einen Warnungsschwellenwert handeln, der für einen bestimmten Installationsbereich, bestimmte Ressourceninformationen oder andere Wartungsinformationen gilt. 
 3. Wählen Sie **Speichern**, um die Änderungen zu speichern. 
  
-### <a name="views"></a>Ansichten 
+### <a name="views"></a>Sichten 
 Die Gerätevorlage zur Überwachung des Wasserverbrauchs verfügt über vordefinierte Ansichten. Sie können die Ansichten erkunden und Updates vornehmen. In den Ansichten ist definiert, wie Bedienern die Gerätedaten angezeigt werden, aber es können auch Cloudeigenschaften eingegeben werden. 
 
   ![Ansichten der Gerätevorlage](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-devicetemplate-views.png)
@@ -196,7 +198,7 @@ Die Anwendung **Überwachung des Wasserverbrauchs**, die Sie mit der Vorlage ers
 
      ![Warnung: Hoher pH-Wert](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    Die Regel `High flow alert` ist so konfiguriert, dass die Bedingung `Acidity (pH)` auf Folgendes überprüft wird: `greater than` `Max flow threshold`. Der Schwellenwert für die maximale Flussmenge (Max flow threshold) ist eine Cloudeigenschaft, die in der Gerätevorlage für intelligente Ventile (*Smart Valve*) definiert ist. Der Wert von `Max flow threshold` wird pro Geräteinstanz festgelegt. 
+    Die Regel `High flow alert` ist so konfiguriert, dass die Bedingung `Acidity (pH)` auf Folgendes überprüft wird: `greater than``Max flow threshold`. Der Schwellenwert für die maximale Flussmenge (Max flow threshold) ist eine Cloudeigenschaft, die in der Gerätevorlage für intelligente Ventile (*Smart Valve*) definiert ist. Der Wert von `Max flow threshold` wird pro Geräteinstanz festgelegt. 
 
 Als Nächstes erstellen wir eine E-Mail-Aktion.
 
@@ -244,7 +246,7 @@ Als Lösungsersteller können Sie verschiedene Einstellungen ändern, um die Ben
 Falls Sie diese Anwendung nicht weiterverwenden möchten, sollten Sie sie mit den folgenden Schritten löschen:
 
 1. Öffnen Sie im linken Bereich Ihrer IoT Central-Anwendung die Registerkarte „Verwaltung“. 
-2. Wählen Sie „Application settings“ (Anwendungseinstellungen) aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Delete“ (Löschen). 
+2. Wählen Sie „Anwendungseinstellungen“ aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Löschen“. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

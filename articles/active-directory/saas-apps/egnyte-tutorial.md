@@ -11,64 +11,51 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 2/4/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7201b7d3f9f7e8333b18a087f58b6211101b1304
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233550"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983672"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Tutorial: Azure Active Directory-Integration mit Egnyte
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Egnyte
 
-In diesem Tutorial erfahren Sie, wie Sie Egnyte in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Egnyte in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Egnyte in Azure Active Directory (Azure AD) integrieren. Die Integration von Egnyte in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Egnyte haben soll.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Egnyte anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf Egnyte hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Egnyte anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Konfigurieren der Azure AD-Integration mit Egnyte benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Egnyte-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Egnyte-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Egnyte unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Nach dem Konfigurieren von Egnyte können Sie eine Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-egnyte-from-the-gallery"></a>Hinzufügen von Egnyte aus dem Katalog
 
 Zum Konfigurieren der Integration von Egnyte in Azure AD müssen Sie Egnyte aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um Egnyte aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
-
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
-
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
-
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
-
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
-
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
-
-4. Geben Sie **Egnyte** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Egnyte** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
-
-     ![Egnyte in der Ergebnisliste](common/search-new-app.png)
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Egnyte** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **Egnyte** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -77,14 +64,16 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Egnyte müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Egnyte](#configure-egnyte-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Egnyte-Testbenutzers](#create-egnyte-test-user)** , um ein Pendant von Britta Simon in Egnyte zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Egnyte die folgenden Schritte aus:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Egnyte](#configure-egnyte-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+    1. **[Erstellen eines Egnyte-Testbenutzers](#create-egnyte-test-user)** , um ein Pendant von B. Simon in Egnyte zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+
+### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
@@ -125,42 +114,6 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Egnyte d
 
     c. Abmelde-URL
 
-### <a name="configure-egnyte-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Egnyte
-
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Egnyte-Unternehmenswebsite als Administrator an.
-
-2. Klicken Sie auf **Einstellungen**.
-   
-    ![Einstellungen](./media/egnyte-tutorial/ic787819.png "Einstellungen")
-
-3. Klicken Sie im Menü auf **Einstellungen**.
-
-    ![Einstellungen](./media/egnyte-tutorial/ic787820.png "Einstellungen")
-
-4. Klicken Sie auf die Registerkarte **Konfiguration** und anschließend auf **Sicherheit**.
-
-    ![Sicherheit](./media/egnyte-tutorial/ic787821.png "Sicherheit")
-
-5. Führen Sie im Abschnitt **SSO-Authentifizierung** die folgenden Schritte aus:
-
-    ![Single Sign On Authentication (SSO-Authentifizierung)](./media/egnyte-tutorial/ic787822.png "SSO-Authentifizierung")   
-    
-    a. Wählen Sie für **SSO-Authentifizierung** die Option **SAML 2.0** aus.
-   
-    b. Wählen Sie für **Identitätsanbieter** die Option **AzureAD** aus.
-   
-    c. Fügen Sie die **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
-   
-    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider entity ID** (Entitäts-ID des Identitätsanbieters) ein.
-      
-    e. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Identitätsanbieterzertifikat** ein.
-   
-    f. Wählen Sie für **Standardbenutzerzuordnung** die Option **E-Mail-Adresse** aus.
-   
-    g. Wählen Sie für **Domänenspezifischen Ausstellerwert verwenden** die Einstellung **Deaktiviert** aus.
-   
-    h. Klicken Sie auf **Speichern**.
-
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -184,7 +137,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -212,13 +165,49 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
+## <a name="configure-egnyte-sso"></a>Konfigurieren des einmaligen Anmeldens für Egnyte
+
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Egnyte-Unternehmenswebsite als Administrator an.
+
+2. Klicken Sie auf **Einstellungen**.
+   
+    ![Einstellungen](./media/egnyte-tutorial/ic787819.png "Einstellungen")
+
+3. Klicken Sie im Menü auf **Einstellungen**.
+
+    ![Einstellungen](./media/egnyte-tutorial/ic787820.png "Einstellungen")
+
+4. Klicken Sie auf die Registerkarte **Konfiguration** und anschließend auf **Sicherheit**.
+
+    ![Security](./media/egnyte-tutorial/ic787821.png "Sicherheit")
+
+5. Führen Sie im Abschnitt **SSO-Authentifizierung** die folgenden Schritte aus:
+
+    ![Single Sign On Authentication (SSO-Authentifizierung)](./media/egnyte-tutorial/ic787822.png "SSO-Authentifizierung")   
+    
+    a. Wählen Sie für **SSO-Authentifizierung** die Option **SAML 2.0** aus.
+   
+    b. Wählen Sie für **Identitätsanbieter** die Option **AzureAD** aus.
+   
+    c. Fügen Sie die **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
+   
+    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider entity ID** (Entitäts-ID des Identitätsanbieters) ein.
+      
+    e. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Identitätsanbieterzertifikat** ein.
+   
+    f. Wählen Sie für **Standardbenutzerzuordnung** die Option **E-Mail-Adresse** aus.
+   
+    g. Wählen Sie für **Domänenspezifischen Ausstellerwert verwenden** die Einstellung **Deaktiviert** aus.
+   
+    h. Klicken Sie auf **Speichern**.
+
 ### <a name="create-egnyte-test-user"></a>Erstellen eines Egnyte-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Egnyte anmelden können, müssen sie in Egnyte bereitgestellt werden. Im Fall von Egnyte ist die Bereitstellung eine manuelle Aufgabe.
+Damit sich Azure AD-Benutzer bei Egnyte anmelden können, müssen sie in Egnyte bereitgestellt werden. Im Fall von Egnyte ist die Bereitstellung eine manuelle Aufgabe.
 
 **Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
-1. Melden Sie sich bei der **Egnyte** -Unternehmenswebsite als Administrator an.
+1. Melden Sie sich bei der **Egnyte**-Unternehmenswebsite als Administrator an.
 
 2. Navigieren Sie zu **Einstellungen \> Benutzer und Gruppen**.
 
@@ -246,7 +235,7 @@ Damit sich Azure AD-Benutzer bei Egnyte anmelden können, müssen sie in Egnyte 
 >Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Egnyte-Benutzerkonten oder mit den APIs von Egnyte bereitstellen.
 >
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -260,3 +249,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Egnyte“ klicken, sollten Sie aut
 
 - [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e985fdda4638529e8ade2c700456d595ff355e8a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911313"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988735"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Verwenden des Moduls „Dienste“ von Azure Maps
 
@@ -177,7 +177,7 @@ atlas.setDomain('atlas.azure.us');
 
 Verwenden Sie beim Authentifizieren der Karte und der Dienste unbedingt die Azure Maps-Authentifizierungsinformationen der Azure Government-Cloudplattform.
 
-Wenn Sie das Modul „Dienste“ verwenden, muss die Domäne für die Dienste beim Erstellen einer Instanz eines API-URL-Endpunkts festgelegt werden. Mit dem folgenden Code wird z. B. eine Instanz der `SearchURL`-Klasse erstellt und mit der Domäne auf die Azure Government-Cloud verwiesen.
+Wenn Sie das Services-Modul verwenden, muss die Domäne für die Dienste beim Erstellen einer Instanz eines API-URL-Endpunkts festgelegt werden. Mit dem folgenden Code wird z. B. eine Instanz der `SearchURL`-Klasse erstellt und mit der Domäne auf die Azure Government-Cloud verwiesen.
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');

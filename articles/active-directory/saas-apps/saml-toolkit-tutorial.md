@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83e5790a036a93c947a79bc2848e7be6febf30b6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 1aa2d58a40c623cc451ca30aaa9d75a4a6b3d4c0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122048"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983871"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Azure AD SAML Toolkit
 
@@ -76,17 +76,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Azure AD SAML Toolkit** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten. Sie können Einstellungen über die SAML-Konfigurationsseite des SAML-Toolkits abrufen. 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Geben Sie auf der Seite **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://samltoolkit.azurewebsites.net/`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://samltoolkit.azurewebsites.net/SAML/Login/<3digitnumber>`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://samltoolkit.azurewebsites.net`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://samltoolkit.azurewebsites.net/SAML/Consume`.
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://samltoolkit.azurewebsites.net/SAML/Consume/<3digitnumber>`.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Rohdaten)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
@@ -106,7 +106,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -136,7 +136,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
     ![SAML-Konfiguration für Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
     ![Erstellen des einmaligen Anmeldens für Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -152,7 +152,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
     1. Klicken Sie auf **Choose File** (Datei auswählen), um die **Zertifikatdatei (Rohdaten)** hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben.
 
-    1. Klicken Sie auf **Create**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>Erstellen des Testbenutzers für Azure AD SAML Toolkit
 

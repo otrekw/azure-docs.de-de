@@ -1,28 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten, C++ – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b141fcdb2aacc8654999d023c4174c7eb9bc177f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a7245d97c4043a5e4b4e1555e899d3301fc36f3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761430"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900464"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen:
 
-* Wenn dies Ihr erstes C++-Projekt ist, verwenden Sie diesen Leitfaden zum <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">Erstellen eines leeren Beispielprojekts</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung</a>.
+* Wenn dies Ihr erstes C++-Projekt ist, verwenden Sie <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=windows" target="_blank">diesen Leitfaden <span class="docon docon-navigate-external x-hidden-focus"></span></a>, um ein leeres Beispielprojekt zu erstellen.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=windows" target="_blank">Installieren Sie das Speech SDK für Ihre Entwicklungsumgebung. <span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>Erstellen einer LUIS-App für die Absichtserkennung
 
@@ -97,7 +93,7 @@ Fügen Sie diesen Code unterhalb von `auto result = recognizer->RecognizeOnceAsy
 
 ## <a name="check-your-code"></a>Überprüfen des Codes
 
-Ihr Code sollte nun wie folgt aussehen:  
+Ihr Code sollte nun wie folgt aussehen:
 
 > [!NOTE]
 > Wir haben dieser Version einige Kommentare hinzugefügt.
@@ -109,7 +105,7 @@ Ihr Code sollte nun wie folgt aussehen:
 Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
 1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
-2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
+2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie <kbd>F5</kbd>.
 3. **Starten der Erkennung**: Sie werden aufgefordert, etwas auf Englisch zu sagen. Ihre Spracheingabe wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole ausgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte

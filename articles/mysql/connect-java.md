@@ -8,29 +8,33 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 12/02/2019
-ms.openlocfilehash: 5f463434261dd782bb180f55986cc0f05c71cbe9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18a61c215f6c10bb399beaa83ec53ad2ebc62970
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770746"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76938984"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit Azure Database for MySQL und zum Abfragen von Daten
 
-Diese Schnellstartanleitung veranschaulicht, wie Sie unter Verwendung einer Java-Anwendung und des JDBC-Treibers [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
+In dieser Schnellstartanleitung stellen Sie unter Verwendung einer Java-Anwendung und des JDBC-Treibers „MariaDB Connector/J“ eine Verbindung mit einer Azure Database for MySQL-Instanz her. Anschließend verwenden Sie SQL-Anweisungen, um Daten in der Datenbank über Mac-, Ubuntu Linux- und Windows-Plattformen abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+
+In diesem Thema wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
-   - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-2. Stellen Sie sicher, dass die Sicherheit Ihrer Azure-Datenbank für MySQL-Verbindung so konfiguriert ist, dass die Firewall geöffnet ist und SSL-Einstellungen für Ihre Anwendung angepasst wurden, damit die Verbindungsherstellung erfolgreich ist.
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ein Azure Database for MySQL-Server. [Erstellen Sie einen Azure Database for MySQL-Server mithilfe des Azure-Portals](quickstart-create-mysql-server-database-using-azure-portal.md), oder [erstellen Sie einen Azure Database for MySQL-Server mithilfe der Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Die Sicherheit Ihrer Azure Database for MySQL-Verbindung ist so konfiguriert, dass die Firewall geöffnet ist und SSL-Verbindungseinstellungen für Ihre Anwendung festgelegt sind.
 
-3. Rufen Sie den Connector „MariaDB Connector/J“ mit einer der folgenden Methoden ab:
+## <a name="obtain-the-mariadb-connector"></a>Beziehen des MariaDB-Connectors
+
+Rufen Sie den Connector [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) mit einer der folgenden Methoden ab:
    - Verwenden Sie das Maven-Paket [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client), um die [mariadb-java-client-Abhängigkeit](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) in die POM-Datei für Ihr Projekt aufzunehmen.
-   - Laden Sie den JDBC-Treiber [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) herunter, und nehmen Sie die JDBC-JAR-Datei (beispielsweise „mariadb-java-client-2.4.3.jar“) in den Klassenpfad Ihrer Anwendung auf. Ausführlichere Informationen zu Klassenpfaden finden Sie bei Bedarf in der Dokumentation der Umgebung (beispielsweise [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
+   - Laden Sie den JDBC-Treiber [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) herunter, und nehmen Sie die JDBC-JAR-Datei (beispielsweise „mariadb-java-client-2.4.3.jar“) in den Klassenpfad Ihrer Anwendung auf. Ausführlichere Informationen zu Klassenpfaden finden Sie in der Dokumentation der Umgebung (beispielsweise [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
+
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
@@ -40,6 +44,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
  ![Servername für Azure-Datenbank für MySQL](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
+
 Verwenden Sie den folgenden Code, um die Verbindung herzustellen und die Daten zu laden, indem Sie die Funktion mit einer **INSERT**-SQL-Anweisung nutzen. Die [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Mit den Methoden [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) und „execute()“ wird die Tabelle verworfen und erstellt. Mit dem „prepareStatement“-Objekt werden die Einfügebefehle erstellt, und „setString()“ und „setInt()“ werden zum Binden der Parameterwerte genutzt. Mit der „executeUpdate()“-Methode wird der Befehl für jeden Parametersatz ausgeführt, um die Werte einzufügen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
@@ -142,6 +147,7 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Lesen von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer **SELECT**-SQL-Anweisung zu lesen. Die [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Die Methoden [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) und „executeQuery()“ werden verwendet, um die SELECT-Anweisung zu verbinden und auszuführen. Die Ergebnisse werden mit einem ResultSet-Objekt verarbeitet. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
@@ -229,6 +235,7 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Aktualisieren von Daten
+
 Verwenden Sie den folgenden Code, um die Daten mit einer **UPDATE**-SQL-Anweisung zu ändern. Die [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Die Methoden [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um die Verbindung für die UPDATE-Anweisung herzustellen und sie vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.
@@ -311,6 +318,7 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>Löschen von Daten
+
 Verwenden Sie den folgenden Code, um Daten mit einer **DELETE**-SQL-Anweisung zu entfernen. Die [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen.  Die Methoden [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) und „executeUpdate()“ werden verwendet, um DELETE-Anweisung vorzubereiten und auszuführen. 
 
 Ersetzen Sie die Parameter „host“, „database“, „user“ und „password“ durch die Werte, die Sie beim Erstellen Ihres eigenen Servers und der Datenbank angegeben haben.

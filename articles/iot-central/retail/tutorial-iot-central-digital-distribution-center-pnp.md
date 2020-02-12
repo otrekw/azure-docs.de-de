@@ -7,16 +7,16 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: 879e1911c715688c2fed4044e23f437b3bbef7b2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 93a77d73b5cc249c39609f98f055a7b1927dd6ed
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890671"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025485"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial wird der Einstieg durch das Bereitstellen einer IoT Central-Anwendungsvorlage für **digitale Verteilzentren** gezeigt. Sie erfahren, wie Sie die Vorlage bereitstellen, was im Lieferumfang enthalten ist und welche nächsten Schritte sinnvoll sind.
 
@@ -34,19 +34,22 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
 
 1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
 
-2. Wählen Sie die Registerkarte **Einzelhandel** aus, und wählen Sie unter **Digital Distribution Center-Anwendung** die Option **App erstellen** aus.
+2. Wählen Sie die Registerkarte **Einzelhandel** aus, und wählen Sie unter **Digital Distribution Center-Anwendung** die Option **App erstellen** aus.
 
 3. Mit **App erstellen** wird ein neues Anwendungsformular geöffnet, wobei die erforderlichen Details wie unten dargestellt ausgefüllt werden.
    **Anwendungsname:** Sie können den vorgeschlagenen Standardnamen verwenden oder einen eigenen Anwendungsnamen eingeben.
-   **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Als Nächstes wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Andernfalls können Sie mit einer siebentägigen kostenlosen Testversion beginnen und jederzeit vor Ablauf der kostenlosen Testversion zur nutzungsbasierten Bezahlung wechseln.
-   **Abrechnungsinfo:** Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
+   **URL:** Sie können die vorgeschlagene Standard-URL verwenden oder eine eigene, einfach merkbare und benutzerfreundliche URL eingeben. Als Nächstes wird die Standardeinstellung empfohlen, wenn Sie bereits über ein Azure-Abonnement verfügen. Sie können mit dem Tarif für die kostenlose 7-Tage-Testversion beginnen und jederzeit vor Ablauf der kostenlosen Testversion auf einen Standard-Tarif umstellen.
+   **Abrechnungsinfo**: Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
    **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
-> [!div class="mx-imgBorder"]
-> ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center](./media/tutorial-iot-central-ddc/ddc-create.png)
+
+    > [!div class="mx-imgBorder"]
+    > ![Digital Distribution Center: Abrechnungsinformationen](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
 
 ## <a name="walk-through-the-application-dashboard"></a>Einführung in das Anwendungsdashboard 
 
@@ -113,4 +116,4 @@ Wenn Sie diese Anwendung nicht mehr verwenden möchten, löschen Sie die Anwendu
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur Digital Distribution Center-Lösungsarchitektur finden Sie unter [Konzepte in Digital Distribution Center](./architecture-digital-distribution-center-pnp.md).
 * Weitere Informationen zu anderen [IoT Central-Einzelhandelsvorlagen](./overview-iot-central-retail-pnp.md)
-* Lesen Sie die [Übersicht über IoT Central](../preview/overview-iot-central.md).
+* Lesen Sie die [Übersicht über IoT Central](../core/overview-iot-central.md).

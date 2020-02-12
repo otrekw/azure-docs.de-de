@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 6c80963976783321d05fc6f32bb24daed36fa105
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561846"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Slack
 
@@ -46,6 +46,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * Slack unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Slack unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 * Slack unterstützt die [**automatisierte** Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial).
+* Nach dem Konfigurieren von Slack können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 > [!NOTE]
 > Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
@@ -193,3 +194,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Slack“ klicken, sollten Sie auto
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Slack mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

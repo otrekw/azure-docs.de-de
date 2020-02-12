@@ -3,22 +3,22 @@ title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Azure Maps Routen für verschiedene Fortbewegungsmittel finden.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910862"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989653"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
-In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und den Routendienst verwenden, um die Route zum Point of Interest je nach Fortbewegungsart zu ermitteln. Sie zeigen zwei verschiedene Routen auf Ihrer Karte an, eine für PKWs und eine für LKWs, die aufgrund von Höhe, Gewicht oder Gefahrgut Routeneinschränkungen haben können. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und den Routendienst verwenden. Der Routendienst kann die Route zu einem Point of Interest priorisiert nach Fortbewegungsmittel ermitteln. Sie können zwei verschiedene Routen auf Ihrer Karte anzeigen, eine für PKWs und eine für LKWs. Der Routingdienst berücksichtigt Einschränkungen, die aufgrund von Fahrzeughöhe und -gewicht oder des Transports von Gefahrgut gelten können. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
@@ -27,7 +27,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und den Ro
 > * Anzeigen mehrerer Routen auf Ihrer Karte
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Befolgen Sie zunächst die Anleitung zum [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), um ein Azure Maps-Kontoabonnement mit S1-Tarif zu erstellen. Führen Sie außerdem die Schritte zum [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto abzurufen. Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
+Befolgen Sie die Anweisungen unter [Erstellen eines Kontos](quick-demo-map-app.md#create-an-account-with-azure-maps), und wählen Sie den Tarif S1 aus, bevor Sie den Vorgang fortsetzen. Führen Sie die Schritte unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) aus, um den Primärschlüssel für Ihr Konto zu erhalten. Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="create-a-new-map"></a>Erstellen einer neuen Karte
 
@@ -158,7 +158,7 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: e
     });
     ```
     
-    Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Routenlinien und der Start- und Endpunkte erstellt. Eine Linienebene wird erstellt und an die Datenquelle angefügt, um zu definieren, wie die Routenlinie dargestellt werden soll. Stärke und Farbe der Linie werden mithilfe von Ausdrücken aus Eigenschaften des Routenlinienfeatures abgerufen. Beim Hinzufügen der Ebene zur Karte wird ein zweiter Parameter mit dem Wert `'labels'` übergeben. Dieser gibt an, dass diese Ebene unterhalb der Kartenbeschriftungen gerendert werden soll. Dadurch wird sichergestellt, dass die Routenlinie keine Straßenbezeichnungen verdeckt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden sollen. In diesem Fall wurden Ausdrücke hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. 
+    Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Routenlinien und der Start- und Endpunkte erstellt. Eine Linienebene wird erstellt und an die Datenquelle angefügt, um zu definieren, wie die Routenlinie dargestellt werden soll. Stärke und Farbe der Linie werden mithilfe von Ausdrücken aus Eigenschaften des Routenlinienfeatures abgerufen. Beim Hinzufügen der Ebene zur Karte wird ein zweiter Parameter mit dem Wert `'labels'` übergeben. Dieser gibt an, dass diese Ebene unterhalb der Kartenbeschriftungen gerendert werden soll. Dadurch wird sichergestellt, dass die Routenlinie keine Straßenbezeichnungen verdeckt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Start- und Endpunkte gerendert werden. In diesem Fall wurden Ausdrücke hinzugefügt, um das Symbol und die Beschriftungsinformationen aus Eigenschaften für das jeweilige Punktobjekt abzurufen. 
     
 2. In diesem Tutorial legen Sie den Startpunkt auf eine fiktive Firma in Seattle namens Fabrikam und den Zielpunkt auf ein Microsoft-Büro fest. Fügen Sie im Kartenereignishandler `ready` den folgenden Code hinzu:
 
@@ -192,7 +192,7 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: e
 
     Die Start- und Endpunkte werden der Datenquelle hinzugefügt. Das umgebende Rechteck für die Start- und Endpunkte wird mithilfe der Funktion `atlas.data.BoundingBox.fromData` berechnet. Dieses umgebende Rechteck dient dazu, die Kameraansicht der Karte mithilfe der Funktion `map.setCamera` auf die gesamte Route zu platzieren. Zur Kompensierung der Pixeldimensionen der Symbole wird ein Abstand hinzugefügt.
 
-4. Speichern Sie die Datei, und aktualisieren Sie Ihren Browser, damit die Stecknadeln auf Ihrer Karte angezeigt werden. Die Karte ist nun auf Seattle zentriert, und Sie sehen die runde blaue Markierung für den Startpunkt und die blaue Markierung für das Ziel.
+4. Speichern Sie die Datei, und aktualisieren Sie Ihren Browser, damit die Stecknadeln auf Ihrer Karte angezeigt werden. Die Karte ist nun auf Seattle zentriert. Sie sehen die runde blaue Markierung für den Startpunkt und die blaue Markierung für das Ziel.
 
    ![Anzeigen der Karte mit Start- und Endpunkten](./media/tutorial-prioritized-routes/pins-map.png)
 
@@ -244,7 +244,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verw
     });
     ```
 
-    Mit dem obigen Codeausschnitt wird der Azure Maps-Routingdienst über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest)-Methode abgefragt. Die Routenlinie wird dann aus der GeoJSON-Funktionssammlung der Antwort extrahiert, die mit der `geojson.getFeatures()`-Methode extrahiert wird. Anschließend wird die Routenlinie der Datenquelle hinzugefügt. Darüber hinaus wird ein Index von 0 hinzugefügt, um sicherzustellen, dass sie vor allen anderen Linien in der Datenquelle gerendert wird. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route, und wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel).
+    Mit dem obigen Codeausschnitt wird der Azure Maps-Routingdienst über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest)-Methode abgefragt. Die Routenlinie wird dann aus der GeoJSON-Funktionssammlung der Antwort extrahiert, die mit der `geojson.getFeatures()`-Methode extrahiert wird. Anschließend wird die Routenlinie der Datenquelle hinzugefügt. Ein Index von 0 stellt sicher, dass sie vor allen anderen Linien in der Datenquelle gerendert wird. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route, und wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel).
 
 3. Fügen Sie den folgenden JavaScript-Code hinzu, um eine Route für ein Auto zu erstellen und die Ergebnisse anzuzeigen.
 

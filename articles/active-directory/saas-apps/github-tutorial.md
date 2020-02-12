@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c61ab2279592c93fa22c1bb5102c868f3e13e473
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4ddc2622a67979f989c030d615c402387e7762d5
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289883"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76983469"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit GitHub
 
@@ -46,7 +46,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 * GitHub unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 * GitHub unterstützt die [**automatisierte** Benutzerbereitstellung](github-provisioning-tutorial.md).
-* Nach dem Konfigurieren von GitHub können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von GitHub können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 ## <a name="adding-github-from-the-gallery"></a>Hinzufügen von GitHub aus dem Katalog
 
@@ -221,5 +221,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „GitHub“ klicken, sollten Sie aut
 - [GitHub mit Azure AD ausprobieren](https://aad.portal.azure.com/)
 
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

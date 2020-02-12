@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843135"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901748"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -97,7 +97,8 @@ Endpunktschlüssel können im [QnA Maker-Portal](https://qnamaker.ai) verwaltet 
 
 2. Zeigen Sie Ihre Schlüssel an, oder setzen Sie die Schlüssel zurück:
 
-    ![Endpunktschlüssel-Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [![Anzeigen, Kopieren oder Festlegen des Endpunktschlüssels in den Diensteinstellungen](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >Aktualisieren Sie Ihre Schlüssel, wenn Sie denken, dass sie gefährdet sind. Dazu müssen möglicherweise entsprechende Änderungen an Ihrem Clientanwendungs- oder Botcode vorgenommen werden.
@@ -136,7 +137,7 @@ Die **App Service**-Ressource von QnA Maker verwendet die Cognitive Search-Resso
 1. Wählen Sie **Einstellungen** und dann **Konfiguration** aus. Dadurch werden alle vorhandenen Einstellungen für den App Service des QnA Makers angezeigt.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot des Azure-Portals mit dargestellten Konfigurationseinstellungen für den App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [![Screenshot des Azure-Portals mit dargestellten Konfigurationseinstellungen für den App Service](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. Ändern Sie die Werte für die folgenden Schlüssel:
 
@@ -146,7 +147,7 @@ Die **App Service**-Ressource von QnA Maker verwendet die Cognitive Search-Resso
 1. Um die neuen Einstellungen zu verwenden, müssen Sie den App Service neu starten. Wählen Sie **Übersicht** und dann **Neu starten** aus.
 
     > [!div class="mx-imgBorder"]
-    > ![Screenshot des Azure-Portals beim Neustart von App Service nach dem Ändern der Konfigurationseinstellungen](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [![Screenshot des Azure-Portals beim Neustart von App Service nach dem Ändern der Konfigurationseinstellungen](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, können Sie alle Ressourcen erstellen und die App Service-Erstellung so steuern, dass sie einen vorhandenen Suchdienst nutzt.
 

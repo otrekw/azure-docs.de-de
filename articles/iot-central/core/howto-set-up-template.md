@@ -1,332 +1,270 @@
 ---
-title: Einrichten einer Gerätevorlage in einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
-description: Informationen zum Einrichten einer Gerätevorlage mit Messungen, Einstellungen, Eigenschaften, Regeln und Dashboard.
-author: viv-liu
-ms.author: viviali
-ms.date: 06/19/2019
-ms.topic: conceptual
+title: Definieren eines neuen IoT-Gerätetyps in Azure IoT Central | Microsoft-Dokumentation
+description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung eine neue Azure IoT-Gerätevorlage erstellen. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Befehle für den Typ.
+author: dominicbetts
+ms.author: dobett
+ms.date: 12/06/2019
+ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c4df07174a5d8826acd7682fa3035fcfd201c5c9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942379"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023785"
 ---
-# <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
-
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
+# <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
 Eine Gerätevorlage ist eine Blaupause, die die Merkmale und das Verhalten eines Gerätetyps definiert, der eine Verbindung mit einer Azure IoT Central-Anwendung herstellt.
 
 Beispielsweise kann ein Hersteller eine Gerätevorlage für einen verbundenen Lüfter mit folgenden Merkmalen erstellen:
 
-- Messung der Temperaturtelemetrie
-- Messung des Standorts
-- Messung von Lüftermotor-Fehlerereignissen
-- Messung des Lüfterbetriebszustands
-- Einstellung der Lüfterdrehzahl
-- Regeln zum Senden von Warnungen
-- Dashboard mit einer allgemeinen Übersicht über das Gerät
+- Sendet Temperaturtelemetriedaten
+- Sendet Standorteigenschaft
+- Sendet Lüftermotor-Fehlerereignisse
+- Sendet Lüfterbetriebszustand
+- Bietet eine schreibbare Eigenschaft für die Lüftergeschwindigkeit
+- Bietet einen Befehl zum Neustarten des Geräts
+- Bietet eine allgemeine Übersicht über das Gerät mithilfe eines Dashboards
 
-Anhand dieser Gerätevorlage kann ein Operator reale Lüftergeräte mit Namen wie z.B. **Lüfter 1** und **Lüfter 2** erstellen und verbinden. All diese Lüfter weisen Messungen, Einstellungen, Eigenschaften, Regeln und ein Dashboard auf, die von Benutzern Ihrer Anwendung überwacht und verwaltet werden können.
-
-> [!NOTE]
-> Nur Ersteller und Administratoren können Gerätevorlagen erstellen, bearbeiten und löschen. Auf der Seite **Device Explorer** kann jeder Benutzer Geräte anhand vorhandener Gerätevorlagen erstellen.
-
-## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
-
-1. Navigieren Sie zur Seite **Gerätevorlagen**.
-
-2. Um eine Vorlage zu erstellen, wählen Sie zunächst **+ Neu** aus.
-
-3. Um schnell einzusteigen, wählen Sie zwischen den vorhandenen vorab erstellten Vorlagen aus. Wählen Sie andernfalls **Benutzerdefiniert** aus, geben Sie einen Namen ein, und klicken Sie auf **Erstellen**, um eine eigene Vorlage von Grund auf neu zu erstellen.
-
-   ![Gerätevorlagenbibliothek](./media/howto-set-up-template/newtemplate.png)
-
-4. Wenn Sie eine benutzerdefinierte Vorlage erstellen, wird die Seite **Gerätedetails** für Ihre neue Gerätevorlage angezeigt. IoT Central erstellt automatisch ein simuliertes Gerät, wenn Sie eine Gerätevorlage erstellen. Mit einem simulierten Gerät können Sie das Verhalten Ihrer Anwendung testen, bevor Sie eine Verbindung mit einem echten Gerät herstellen.
-
-Die folgenden Abschnitte beschreiben die Registerkarten auf der Seite **Gerätevorlage**.
-
-## <a name="measurements"></a>Messungen
-
-Messungen sind die Daten, die von Ihrem Gerät stammen. Sie können Ihrer Gerätevorlage mehrere Messungen hinzufügen, die den Funktionen Ihres Geräts entsprechen.
-
-- **Telemetriemessungen** sind die numerischen Datenpunkte, die im Lauf der Zeit von Ihrem Gerät erfasst werden. Diese werden als kontinuierlicher Datenstrom dargestellt. Ein Beispiel ist Temperatur.
-- **Ereignismessungen** sind zeitpunktbezogene Daten, die ein bedeutsames Ereignis auf dem Gerät darstellen. Ein Schweregrad stellt die Bedeutung eines Ereignisses dar. Ein Beispiel ist ein Lüftermotorfehler.
-- **Zustandsmessungen** bilden den Zustand des Geräts oder der zugehörigen Komponenten über einen Zeitraum ab. Beispielsweise können für den Lüftermodus **In Betrieb** und **Angehalten** als die beiden möglichen Zustandsangaben definiert werden.
-- Bei der Messung des **Standorts** handelt es sich um die Längen- und Breitengrade des Geräts über einen Zeitraum hinweg. Ein Lüfter kann zum Beispiel von einem Standort zu einem anderen gebracht werden.
-
-### <a name="create-a-telemetry-measurement"></a>Erstellen einer Telemetriemessung
-
-Um eine neue Telemetriemessung hinzuzufügen, wählen Sie **+ Neue Messung** aus, wählen Sie den Messungstyp **Telemetrie** aus, und geben Sie die Details im Formular ein.
+Anhand dieser Gerätevorlage kann ein Bediener echte Lüftergeräte erstellen und verbinden. Alle diese Lüfter weisen Messungen, Eigenschaften und Befehle auf, die von Bedienern zum Überwachen und Verwalten verwendet werden. Bediener verwenden die Gerätedashboards und -formulare, um mit den Lüftergeräten zu interagieren.
 
 > [!NOTE]
-> Die Feldnamen in der Gerätevorlage müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Telemetriemessung in der Anwendung angezeigt werden, wenn ein echtes Gerät verbunden ist. Gehen Sie beim Konfigurieren von Einstellungen, Geräteeigenschaften und Befehlen auf die gleiche Weise vor, wenn Sie die Gerätevorlage in den folgenden Abschnitten weiter definieren.
+> Nur Ersteller und Administratoren können Gerätevorlagen erstellen, bearbeiten und löschen. Auf der Seite **Geräte** kann jeder Benutzer Geräte anhand vorhandener Gerätevorlagen erstellen.
 
-Beispielsweise können Sie eine neue Temperaturtelemetriemessung hinzufügen:
+[IoT Plug & Play (Vorschau)](../../iot-pnp/overview-iot-plug-and-play.md) ermöglicht IoT Central die Integration von Geräten, ohne dass Sie eingebetteten Gerätecode schreiben müssen. Das Herzstück von IoT Plug & Play (Vorschau) ist ein Gerätefunktionsmodell-Schema, das Gerätefunktionen beschreibt. In einer IoT Central-Anwendung verwenden Gerätevorlagen diese Gerätefunktionsmodelle von IoT Plug & Play (Vorschau).
 
-| Anzeigename        | Feldname    |  Units    | Min   |max|
-| --------------------| ------------- |-----------|-------|---|
-| Temperatur         | temp          |  degC     |  0    |100|
+Als Ersteller haben Sie mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
-![Formular „Telemetrie erstellen“ mit Details zur Temperaturmessung](./media/howto-set-up-template/measurementsform.png)
+- Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätefunktionsmodell in Ihrem Gerätecode.
+- Importieren Sie ein Gerätefunktionsmodell aus dem [Azure Certified for IoT-Gerätekatalog](https://aka.ms/iotdevcat). Fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
+- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätefunktionsmodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
+- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie das echte Gerät mithilfe einer Geräte bevorzugenden Verbindung mit Ihrer IoT Central-Anwendung. IoT Central ermittelt und importiert das Gerätefunktionsmodell automatisch aus dem öffentlichen Repository. Sie können dann alle Cloudeigenschaften, Anpassungen und Dashboards, die Ihre IoT Central-Anwendung benötigt, der Gerätevorlage hinzufügen.
 
-Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Temperatur** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Temperaturdaten des simulierten Geräts.
+## <a name="create-a-device-template-from-the-device-catalog"></a>Erstellen einer Gerätevorlage aus dem Gerätekatalog
 
-Beim Anzeigen von Telemetriedaten können Sie zwischen den folgenden Aggregationsoptionen auswählen: Mittelwert, Minimum, Maximum, Summe und Anzahl. **Mittelwert** ist als Standardaggregation im Diagramm ausgewählt.
+Als Ersteller können Sie mit einem für IoT Plug & Play (Vorschau) zertifizierten Gerät schnell mit der Erstellung Ihrer Lösung beginnen. Weitere Informationen finden Sie in der Liste im [Azure IoT-Gerätekatalog](https://catalog.azureiotsolutions.com/alldevices). IoT Central ist in den Gerätekatalog integriert, sodass Sie ein Gerätefunktionsmodell von einem dieser für IoT Plug & Play (Vorschau) zertifizierten Geräte importieren können. Zum Erstellen einer Gerätevorlage von einem dieser Geräte in IoT Central führen Sie die folgenden Schritte aus:
 
-> [!NOTE]
-> Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
+1. Navigieren Sie in Ihrer IoT Central-Anwendung zur Seite **Gerätevorlagen**.
+1. Wählen Sie **+ Neu** und dann im Katalog eines der für IoT Plug & Play (Vorschau) zertifizierten Geräte aus. IoT Central erstellt eine Gerätevorlage basierend auf diesem Gerätefunktionsmodell.
+1. Fügen Sie der Gerätevorlage beliebige Cloudeigenschaften, Anpassungen oder Ansichten hinzu.
+1. Wählen Sie **Veröffentlichen** aus, um Bedienern die Vorlage zum Anzeigen und Verbinden von Geräten zur Verfügung zu stellen.
 
-### <a name="create-an-event-measurement"></a>Erstellen einer Ereignismessung
+## <a name="create-a-device-template-from-scratch"></a>Erstellen einer vollkommen neuen Gerätevorlage
 
-Um eine neue Ereignismessung hinzuzufügen, wählen Sie **+ Neue Messung** aus, und wählen Sie den Messungstyp **Ereignis** aus. Geben Sie die Details im Formular **Ereignis erstellen** ein.
+Eine Gerätevorlage umfasst Folgendes:
 
-Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und Details zum **Schweregrad** des Ereignisses an. Sie können aus den folgenden drei Schweregraden auswählen: **Fehler**, **Warnung** und **Information**.
+- Ein _Gerätefunktionsmodell_, das die Telemetrie, Eigenschaften und Befehle angibt, die das Gerät implementiert. Diese Funktionen sind in einer oder mehreren Schnittstellen organisiert.
+- _Cloudeigenschaften_, die Informationen definieren, die Ihre IoT Central-Anwendung über Ihre Geräte speichert. Beispielsweise kann eine Cloudeigenschaft das Datum der letzten Wartung eines Geräts erfassen. Diese Informationen werden niemals für das Gerät freigegeben.
+- Durch _Anpassungen_ kann der Ersteller einige der Definitionen im Gerätefunktionsmodell überschreiben. Beispielsweise kann der Ersteller den Namen einer Geräteeigenschaft überschreiben. Eigenschaftsnamen werden in IoT Central-Dashboards und -Formularen angezeigt.
+- Mithilfe von _Dashboards und Formularen_ kann der Ersteller eine Benutzeroberfläche erstellen, mit der Bediener die mit der Anwendung verbundenen Geräte überwachen und verwalten können.
 
-Beispielsweise können Sie das neue Ereignis **Lüftermotorfehler** hinzufügen.
+Zum Erstellen einer Gerätevorlage in IoT Central führen Sie die folgenden Schritte aus:
 
-| Anzeigename        | Feldname    |  Standardschweregrad |
-| --------------------| ------------- |-----------|
-| Fan Motor Error     | fanmotorerror |  Error    |
+1. Navigieren Sie in Ihrer IoT Central-Anwendung zur Seite **Gerätevorlagen**.
+1. Wählen Sie **+ Neu** > **Benutzerdefiniert** aus.
+1. Geben Sie einen Namen für die Vorlage ein, z.B. **Umgebungssensor**.
+1. Drücken Sie die **EINGABETASTE**. IoT Central erstellt eine leere Gerätevorlage.
 
-![Formular „Ereignis erstellen“ mit Details zu einem Lüftermotorereignis](./media/howto-set-up-template/eventmeasurementsform.png)
+## <a name="manage-a-device-template"></a>Verwalten einer Gerätevorlage
 
-Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Lüftermotorfehler** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Ereignisdaten des simulierten Geräts.
+Sie können eine Vorlage auf der jeweiligen Startseite umbenennen oder löschen.
 
-Wählen Sie im Diagramm das Ereignissymbol aus, um zusätzliche Details zu einem Ereignis anzuzeigen:
+Nachdem Sie Ihrer Vorlage ein Gerätefunktionsmodell hinzugefügt haben, können Sie sie veröffentlichen. Erst nachdem Sie die Vorlage veröffentlicht haben, können Sie ein Gerät basierend auf dieser Vorlage verbinden, damit es den Bedienern auf der Seite **Geräte** angezeigt wird.
 
-![Details für das Ereignis „Lüftermotorfehler“](./media/howto-set-up-template/eventmeasurementsdetail.png)
+## <a name="create-a-capability-model"></a>Erstellen eines Funktionsmodells
 
-> [!NOTE]
-> Die Ereignismessung gibt Daten vom Typ „string“ aus.
+Sie können ein Gerätefunktionsmodell auf folgende Arten erstellen:
 
-### <a name="create-a-state-measurement"></a>Erstellen einer Zustandsmessung
+- Verwenden Sie IoT Central, um ein benutzerdefiniertes Modell ohne Vorlage zu erstellen.
+- Importieren Sie ein Modell aus einer JSON-Datei. Der Ersteller eines Geräts hat möglicherweise Visual Studio Code verwendet, um ein Gerätefunktionsmodell für Ihre Anwendung zu erstellen.
+- Wählen Sie eines der Geräte aus dem Gerätekatalog aus. Mit dieser Option wird das Gerätefunktionsmodell importiert, das der Hersteller für dieses Gerät veröffentlicht hat. Ein auf diese Weise importiertes Gerätefunktionsmodell wird automatisch veröffentlicht.
 
-Um eine neue Zustandsmessung hinzuzufügen, wählen Sie **+ Neue Messung** aus, und wählen Sie den Messungstyp **Zustand** aus. Geben Sie die Details im Formular **Zustand erstellen** ein.
+## <a name="manage-a-capability-model"></a>Verwalten eines Funktionsmodells
 
-Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und **Werte** für den Zustand an. Jeder Wert kann auch einen Anzeigenamen aufweisen, der bei der Anzeige des Werts in Diagrammen und Tabellen verwendet wird.
+Nach dem Erstellen eines Gerätefunktionsmodells haben Sie folgende Möglichkeiten:
 
-Sie können z.B. den neuen Zustand **Lüftermodus** hinzufügen, der zwei mögliche Werte hat, die vom Gerät gesendet werden können: **In Betrieb** und **Angehalten**.
+- Fügen Sie dem Modell Schnittstellen hinzu. Ein Modell muss mindestens eine Schnittstelle aufweisen.
+- Bearbeiten Sie Modellmetadaten, z. B. ID, Namespace und Name.
+- Löschen Sie das Modell.
 
-| Anzeigename | Feldname    |  Wert 1   | Anzeigename | Wert 2    |Anzeigename  |
-| -------------| ------------- |----------- | -------------| -----------| -------------|
-| Fan Mode     | fanmode       |  1         | Operating    |     0      | Beendet      |
+## <a name="create-an-interface"></a>Erstellen einer Schnittstelle
 
-![Formular „Zustand bearbeiten“ mit Details zum Lüftermodus](./media/howto-set-up-template/statemeasurementsform.png)
+Eine Gerätefunktion muss mindestens eine Schnittstelle aufweisen. Eine Schnittstelle ist eine wiederverwendbare Sammlung von Funktionen.
 
-Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Lüftermodus** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Zustandsdaten des simulierten Geräts.
+Zum Erstellen einer Schnittstelle führen Sie die folgenden Schritte aus:
 
-Wenn das Gerät in einer kleinen Zeitspanne zu viele Datenpunkte sendet, wird die Zustandsmessung mit einem anderen visuellen Element angezeigt. Wählen Sie das Diagramm aus, um alle Datenpunkte innerhalb dieses Zeitraums in chronologischer Reihenfolge anzuzeigen. Sie können den Zeitbereich auch einschränken, um die Messung im Diagramm anzuzeigen.
+1. Navigieren Sie zu Ihrem Gerätefunktionsmodell, und wählen Sie **+ Schnittstelle hinzufügen** aus.
 
-> [!NOTE]
-> Die Statusmessung gibt Daten vom Typ „string“ aus.
+1. Auf der Seite **Schnittstelle auswählen** können Sie folgende Aktionen ausführen:
 
-### <a name="create-a-location-measurement"></a>Erstellen einer Standortmessung
+    - Erstellen Sie eine benutzerdefinierte Schnittstelle ohne Vorlage.
+    - Importieren Sie eine vorhandene Schnittstelle aus einer Datei. Der Ersteller eines Geräts hat möglicherweise Visual Studio Code verwendet, um eine Schnittstelle für Ihr Gerät zu erstellen.
+    - Wählen Sie eine der Standardschnittstellen aus, z. B. die Schnittstelle **Geräteinformationen**. Standardschnittstellen geben die Funktionen an, die viele Geräte gemeinsam haben. Diese Standardschnittstellen werden von Azure IoT veröffentlicht und können nicht mit einer Versionsangabe versehen oder bearbeitet werden.
 
-Um eine neue Standortmessung hinzuzufügen, wählen Sie **+ Neue Messung** aus, wählen Sie den Messungstyp **Standort** aus, und geben Sie die Details im Formular **Messung erstellen** ein.
+1. Nachdem Sie eine Schnittstelle erstellt haben, wählen Sie **Identität bearbeiten** aus, um den Anzeigenamen der Schnittstelle zu ändern.
 
-Beispielsweise können Sie eine neue Standorttelemetriemessung hinzufügen:
+1. Wenn Sie eine benutzerdefinierte Schnittstelle ohne Vorlage erstellen möchten, können Sie die Funktionen Ihres Geräts hinzufügen. Gerätefunktionen sind Telemetrie, Eigenschaften und Befehle.
 
-| Anzeigename        | Feldname    |
-| --------------------| ------------- |
-| Asset-Standort      |  assetloc     |
+### <a name="telemetry"></a>Telemetrie
 
-![Formular „Standort erstellen“ mit Details zum Standort](./media/howto-set-up-template/locationmeasurementsform.png)
+Telemetrie ist ein Wertedatenstrom, der vom Gerät gesendet wird, üblicherweise von einem Sensor. Beispielsweise kann ein Sensor die Umgebungstemperatur melden.
 
-Nachdem Sie auf **Speichern** geklickt haben, wird die Messung **Standort** in der Liste der Messungen angezeigt. In Kürze sehen Sie die Visualisierung der Standortdaten des simulierten Geräts.
+In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetriefunktion angegeben:
 
-Wenn ein Standort angezeigt wird, können Sie eine der folgenden Optionen wählen: letzter Standort und Standortverlauf. Der **Standortverlauf** wird nur über den ausgewählten Zeitraum angezeigt.
+| Feld | Beschreibung |
+| ----- | ----------- |
+| Anzeigename | Der Anzeigename für den Telemetriewert, der in Dashboards und Formularen verwendet wird. |
+| Name | Der Name des Felds in der Telemetrienachricht. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
+| Funktionstyp | Telemetrie. |
+| Semantischer Typ | Der semantische Typ der Telemetriedaten, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
+| Schema | Der Telemetriedatentyp, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. Schema ist für die semantischen Typen „Ereignis“ und „Zustand“ nicht verfügbar. |
+| severity | Nur für den semantischen Typ „Ereignis“ verfügbar. Die Schweregrade lauten **Fehler**, **Information** und **Warnung**. |
+| Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
+| Einheit | Eine Einheit für den Telemetriewert, z. B. **km/h**, **%** oder **&deg;C**. |
+| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
+| Comment | Beliebige Kommentare zur Telemetriefunktion. |
+| Beschreibung | Eine Beschreibung der Telemetriefunktion. |
 
-Der Datentyp der Standortmessung ist ein Objekt, das Längengrad, Breitengrad und optional auch die Höhe enthält. Der folgende Ausschnitt zeigt die JavaScript-Struktur:
+### <a name="properties"></a>Eigenschaften
 
-```javascript
-assetloc: {
-  lon: floating point number,
-  lat: floating point number,
-  alt?: floating point number
-}
-```
+Eigenschaften stellen Zeitpunktwerte dar. Ein Gerät kann beispielsweise eine Eigenschaft verwenden, um die Zieltemperatur zu melden, die es zu erreichen versucht. Sie können schreibbare Eigenschaften über IoT Central festlegen.
 
-Wenn das echte Gerät verbunden wird, wird der als Messung hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie Ihre Standortmessung konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-measurement-in-the-dashboard).
+In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigenschaftsfunktion angegeben:
 
-## <a name="settings"></a>Einstellungen
+| Feld | Beschreibung |
+| ----- | ----------- |
+| Anzeigename | Der Anzeigename für den Eigenschaftswert, der in Dashboards und Formularen verwendet wird. |
+| Name | Der Name der Eigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
+| Funktionstyp | Eigenschaft. |
+| Semantischer Typ | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
+| Schema | Der Eigenschaftsdatentyp, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. Schema ist für die semantischen Typen „Ereignis“ und „Zustand“ nicht verfügbar. |
+| Schreibbar | Wenn die Eigenschaft nicht schreibbar ist, kann das Gerät Eigenschaftswerte an IoT Central melden. Ist die Eigenschaft schreibbar, kann das Gerät Eigenschaftswerte an IoT Central melden, und IoT Central kann Aktualisierungen der Eigenschaft an das Gerät senden.
+| severity | Nur für den semantischen Typ „Ereignis“ verfügbar. Die Schweregrade lauten **Fehler**, **Information** und **Warnung**. |
+| Zustandswerte | Nur für den semantischen Typ „Zustand“ verfügbar. Definieren Sie die möglichen Zustandswerte, die jeweils einen Anzeigenamen, Namen, Enumerationstyp und Wert umfassen. |
+| Einheit | Eine Einheit für den Eigenschaftswert, z. B. **km/h**, **%** oder **&deg;C**. |
+| Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
+| Comment | Beliebige Kommentare zur Eigenschaftsfunktion. |
+| Beschreibung | Eine Beschreibung der Eigenschaftsfunktion. |
 
-Ein Gerät wird durch Einstellungen gesteuert. Diese ermöglichen den Bedienern die Angabe von Eingaben für das Gerät. Sie können Ihrer Gerätevorlage mehrere Einstellungen hinzufügen, die auf der Registerkarte **Einstellungen** als Kacheln angezeigt und von Operatoren verwendet werden können. Sie können verschiedene Arten von Einstellungen hinzufügen: Drehzahl, Text, Datum, Ein-/Ausschalten und Abschnittsbezeichnung.
+### <a name="commands"></a>Befehle
 
-Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet diese Zustände.
+Sie können Gerätebefehle über IoT Central aufrufen. Befehle übergeben optional Parameter an das Gerät und empfangen eine Antwort vom Gerät. Beispielsweise können Sie einen Befehl zum Neustarten eines Geräts in 10 Sekunden aufrufen.
 
-- **Synchronisiert**: Das Gerät wurde entsprechend dem Einstellungswert geändert.
+In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsfunktion angegeben:
 
-- **Pending**: Das Gerät wird zurzeit auf den Einstellungswert geändert.
+| Feld | Beschreibung |
+| ----- | ----------- |
+| Anzeigename | Der Anzeigename für den Befehl, der in Dashboards und Formularen verwendet wird. |
+| Name | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
+| Funktionstyp | Befehl. |
+| Get-Help | `SynchronousExecutionType`. |
+| Comment | Beliebige Kommentare zur Befehlsfunktion. |
+| Beschreibung | Eine Beschreibung der Befehlsfunktion. |
+| Anforderung | Wenn aktiviert, eine Definition des Anforderungsparameters, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
+| Antwort | Wenn aktiviert, eine Definition der Befehlsantwort, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
 
-- **Fehler**: Das Gerät hat einen Fehler zurückgegeben.
+## <a name="manage-an-interface"></a>Verwalten einer Schnittstelle
 
-Sie können zum Beispiel eine neue Einstellung für die Lüfterdrehzahl hinzufügen, indem Sie **Einstellungen** auswählen und die neue Einstellung für die **Nummer** eingeben:
+Wenn Sie die Schnittstelle noch nicht veröffentlicht haben, können Sie die durch die Schnittstelle definierten Funktionen bearbeiten. Nach dem Veröffentlichen der Schnittstelle müssen Sie eine neue Version der Gerätevorlage erstellen und der Schnittstelle eine Versionsangabe zuweisen, wenn Sie Änderungen vornehmen möchten. Änderungen, für die keine Versionsangabe erforderlich ist (z. B. Anzeigenamen oder Einheiten), können Sie im Abschnitt **Anpassen** vornehmen.
 
-| Anzeigename  | Feldname    |  Units  | Dezimalstellen |Initial|
-| --------------| ------------- |---------| ---------|---- |
-| Lüfterdrehzahl     | fanSpeed      | U/Min     | 2        | 0   |
+Sie können die Schnittstelle auch als JSON-Datei exportieren, wenn Sie sie in einem anderen Funktionsmodell wiederverwenden möchten.
 
-![Formular „Drehzahl konfigurieren“ mit Details zu Geschwindigkeitseinstellungen](./media/howto-set-up-template/settingsform.png)
+## <a name="add-cloud-properties"></a>Hinzufügen von Cloudeigenschaften
 
-Nach der Auswahl von **Speichern** wird die Einstellung **Lüfterdrehzahl** als Kachel angezeigt. Ein Bediener kann mit der Einstellung auf der Seite **Device Explorer** die Lüfterdrehzahl des Geräts ändern.
+Verwenden Sie Cloudeigenschaften, um Informationen zu Geräten in IoT Central zu speichern. Cloudeigenschaften werden niemals an ein Gerät gesendet. Sie können Cloudeigenschaften beispielsweise verwenden, um den Namen des Kunden, der das Gerät installiert hat, oder das Datum der letzten Wartung des Geräts zu speichern.
 
-## <a name="properties"></a>Properties
+In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Cloudeigenschaft angegeben:
 
-Eigenschaften sind die dem Gerät zugeordneten Gerätemetadaten, z. B. ein fester Gerätestandort und Seriennummer. Fügen Sie Ihrer Gerätevorlage mehrere Eigenschaften hinzu, die auf der Registerkarte **Eigenschaften** als Kacheln angezeigt werden. Eine Eigenschaft kann einen Typ wie z. B. Anzahl, Text, Datum, Ein-/Ausschalten, Geräteeigenschaft, Bezeichnung oder einen festen Standort haben. Ein Bediener kann die Werte für Eigenschaften beim Erstellen eines neuen Geräts angeben und sie anschließend jederzeit bearbeiten. Geräteeigenschaften sind schreibgeschützt und werden vom Gerät an die Anwendung gesendet. Ein Bediener kann Eigenschaften des Geräts nicht ändern. Wenn ein echtes Gerät eine Verbindung herstellt, wird die Geräteeigenschaftenkachel in der Anwendung aktualisiert.
+| Feld | Beschreibung |
+| ----- | ----------- |
+| Anzeigename | Der Anzeigename für den Cloudeigenschaftswert, der in Dashboards und Formularen verwendet wird. |
+| Name | Der Name der Cloudeigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
+| Semantischer Typ | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist. |
+| Schema | Der Datentyp der Cloudeigenschaft, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. |
 
-Es gibt zwei Kategorien von Eigenschaften:
+## <a name="add-customizations"></a>Hinzufügen von Anpassungen
 
-- _Geräteeigenschaften_ werden vom Gerät an die IoT Central-Anwendung gemeldet. Geräteeigenschaften sind schreibgeschützte Werte, die vom Gerät gemeldet und in der Anwendung aktualisiert werden, wenn das echte Gerät verbunden wird.
-- _Anwendungseigenschaften_ werden in der Anwendung gespeichert und können vom Bediener bearbeitet werden. Anwendungseigenschaften werden nur in der Anwendung gespeichert und erreichen nie das Gerät.
+Verwenden Sie Anpassungen, wenn Sie eine importierte Schnittstelle ändern oder IoT Central-spezifische Features zu einer Funktion hinzufügen müssen. Sie können nur Felder anpassen, die die Schnittstellenkompatibilität nicht beeinträchtigen. Beispielsweise können Sie folgende Aktionen ausführen:
 
-Sie können z.B. das Datum der letzten Wartung für das Gerät als neue Eigenschaft **Datum** (eine Anwendungseigenschaft) auf der Registerkarte **Eigenschaften** hinzufügen:
+- Anpassen des Anzeigenamens und der Einheiten einer Funktion
+- Hinzufügen einer Standardfarbe, die beim Anzeigen des Werts in einem Diagramm verwendet werden soll
+- Angeben der anfänglichen, minimalen und maximalen Werte für eine Eigenschaft
 
-| Anzeigename  | Feldname | Anfangswert   |
-| --------------| -----------|-----------------|
-| Datum der letzten Wartung      | lastServiced        | 29.01.2019     |
+(Der Funktionsname oder -typ kann nicht angepasst werden.) Wenn Änderungen vorgenommen werden müssen, die im Abschnitt **Anpassen** nicht möglich sind, müssen Sie die Gerätevorlage und Schnittstelle mit einer Versionsangabe versehen, um die Funktion zu ändern.
 
-![Formular zum Konfigurieren des Datums der letzten Wartung auf der Registerkarte „Eigenschaften“](./media/howto-set-up-template/propertiesform.png)
+### <a name="generate-default-views"></a>Generieren von Standardansichten
 
-Nach der Auswahl von **Speichern** wird das Datum der letzten Wartung für das Gerät als Kachel angezeigt.
+Das Generieren von Standardansichten ist eine schnelle Möglichkeit, Ihre wichtigen Geräteinformationen zu visualisieren. Sie können für Ihre Gerätevorlage bis zu drei Standardansichten generieren:
 
-Nach Erstellung der Kachel können Sie den Wert der Anwendungseigenschaft im **Device Explorer** ändern.
+- **Befehle** bietet eine Ansicht der Gerätebefehle und ermöglicht es dem Bediener, diese an Ihr Gerät auszugeben.
+- **Übersicht** stellt eine Ansicht mit Gerätetelemetrie bereit, in der Diagramme und Metriken angezeigt werden.
+- **Info** stellt eine Ansicht mit Geräteinformationen und Geräteeigenschaften bereit.
 
-### <a name="create-a-location-property"></a>Erstellen einer Standorteigenschaft
+Nachdem Sie **Standardansichten generieren** ausgewählt haben, werden diese automatisch im Abschnitt **Ansichten** Ihrer Gerätevorlage hinzugefügt.
 
-Sie können Ihre Standortdaten mit geografischem Kontext in Azure IoT Central versehen und Breiten- und Längengradkoordinaten oder einer Anschrift zuordnen. Azure Maps unterstützt diese Funktion in IoT Central.
+## <a name="add-dashboards"></a>Hinzufügen von Dashboards
 
-Sie können zwei Arten von Standorteigenschaften hinzufügen:
+Fügen Sie einer Gerätevorlage Dashboards hinzu, um Bedienern die Visualisierung eines Geräts mithilfe von Diagrammen und Metriken zu ermöglichen. Sie können über mehrere Dashboards für eine Gerätevorlage verfügen.
 
-- **Standort als eine Anwendungseigenschaft**, die in der Anwendung gespeichert wird. Anwendungseigenschaften werden nur in der Anwendung gespeichert und erreichen nie das Gerät.
-- **Standort als eine Geräteeigenschaft**, die vom Gerät an die Anwendung gemeldet wird. Diese Art von Eigenschaft eignet sich am besten für einen statischen Standort.
+Zum Hinzufügen eines Dashboards zu einer Gerätevorlage führen Sie die folgenden Schritte aus:
 
-> [!NOTE]
-> Standort als Eigenschaft zeichnet keinen Verlauf auf. Wenn Sie einen Verlauf benötigen, verwenden Sie stattdessen die Standortmessung.
+1. Navigieren Sie zu Ihrer Gerätevorlage, und wählen Sie **Ansichten** aus.
+1. Wählen Sie **Gerät visualisieren** aus.
+1. Geben Sie im Feld **Dashboardname** einen Namen für das Dashboard ein.
+1. Fügen Sie dem Dashboard Kacheln aus der Liste mit statischen Kacheln und Kacheln für Eigenschaften, Cloudeigenschaften, Telemetrie und Befehle hinzu. Ziehen Sie die Kacheln, die Sie dem Dashboard hinzufügen möchten, per Drag & Drop.
+1. Wenn Sie mehrere Telemetriewerte auf einer einzelnen Diagrammkachel darstellen möchten, wählen Sie die Telemetriewerte und dann **Kombinieren** aus.
+1. Konfigurieren Sie jede Kachel, die Sie hinzufügen, um die Anzeige von Daten auf ihr anzupassen. Wählen Sie hierzu das Zahnradsymbol aus, oder wählen Sie auf der Diagrammkachel **Konfiguration ändern** aus.
+1. Ordnen Sie die Kacheln auf Ihrem Dashboard an, und ändern Sie deren Größe.
+1. Speichern Sie die Änderungen.
 
-#### <a name="add-location-as-an-application-property"></a>Hinzufügen eines Standorts als eine Anwendungseigenschaft
+### <a name="configure-preview-device-to-view-dashboard"></a>Konfigurieren eines Vorschaugeräts zum Anzeigen des Dashboards
 
-Sie können mithilfe von Azure Maps in Ihrer Azure IoT Central-Anwendung eine Standorteigenschaft als eine Anwendungseigenschaft erstellen. Beispielsweise können Sie die Geräteinstallationsadresse hinzufügen:
+Wählen Sie **Vorschaugerät konfigurieren** aus, um das Dashboard anzuzeigen und zu testen. Dadurch können Sie das Dashboard so anzeigen, wie es nach der Veröffentlichung dem Bediener angezeigt wird. Überprüfen Sie mit dieser Option, ob in Ihren Ansichten die richtigen Daten angezeigt werden. Sie können zwischen folgenden Möglichkeiten auswählen:
 
-1. Navigieren Sie zur Registerkarte **Eigenschaften**.
+- Kein Vorschaugerät
+- Das tatsächliche Testgerät, das Sie für Ihre Gerätevorlage konfiguriert haben
+- Ein vorhandenes Gerät in Ihrer Anwendung mithilfe der Geräte-ID
 
-2. Wählen Sie in der Bibliothek **Standort** aus.
+## <a name="add-forms"></a>Hinzufügen von Formularen
 
-3. Konfigurieren Sie den **Anzeigenamen**, **Feldnamen** und (optional) den **Anfangswert** des Standorts.
+Fügen Sie Formulare zu einer Gerätevorlage hinzu, damit Bediener ein Gerät durch Anzeigen und Festlegen von Eigenschaften verwalten können. Bediener können nur Cloudeigenschaften und schreibbare Geräteeigenschaften bearbeiten. Sie können über mehrere Formulare für eine Gerätevorlage verfügen.
 
-    | Anzeigename  | Feldname | Anfangswert |
-    | --------------| -----------|---------|
-    | Installationsadresse | installAddress | Microsoft, 1 Microsoft Way, Redmond, WA 98052   |
+Zum Hinzufügen eines Formulars zu einer Gerätevorlage führen Sie die folgenden Schritte aus:
 
-   ![Formular „Standort konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationcloudproperty2.png)
+1. Navigieren Sie zu Ihrer Gerätevorlage, und wählen Sie **Ansichten** aus.
+1. Wählen Sie **Geräte- und Clouddaten bearbeiten** aus.
+1. Geben Sie im Feld **Formularname** einen Namen für das Formular ein.
+1. Wählen Sie die Anzahl der Spalten aus, die für das Layout des Formulars verwendet werden sollen.
+1. Fügen Sie einem vorhandenen Abschnitt im Formular Eigenschaften hinzu, oder wählen Sie Eigenschaften und dann **Abschnitt hinzufügen** aus. Verwenden Sie Abschnitte, um Eigenschaften auf dem Formular zu gruppieren. Sie können einem Abschnitt einen Titel hinzufügen.
+1. Konfigurieren Sie die einzelnen Eigenschaften auf dem Formular, um deren Verhalten anzupassen.
+1. Ordnen Sie die Eigenschaften auf dem Formular an.
+1. Speichern Sie die Änderungen.
 
-   Es gibt zwei unterstützte Formate zum Hinzufügen eines Standorts:
-   - **Standort als Adresse**
-   - **Standort als Koordinaten**
+## <a name="publish-a-device-template"></a>Veröffentlichen einer Gerätevorlage
 
-4. Wählen Sie **Speichern** aus. Ein Bediener kann den Standortwert im **Device Explorer** aktualisieren.
+Bevor Sie ein Gerät verbinden können, das Ihr Gerätefunktionsmodell implementiert, müssen Sie die Gerätevorlage veröffentlichen.
 
-#### <a name="add-location-as-a-device-property"></a>Hinzufügen eines Standorts als eine Geräteeigenschaft
+Nachdem Sie eine Gerätevorlage veröffentlicht haben, können Sie nur eingeschränkte Änderungen am Gerätefunktionsmodell vornehmen. Zum Ändern einer Schnittstelle müssen Sie [eine neue Version erstellen und veröffentlichen](./howto-version-device-template.md).
 
-Sie können eine Standorteigenschaft als eine Geräteeigenschaft erstellen, die vom Gerät gemeldet wird. Angenommen, Sie möchten den Gerätestandort nachverfolgen:
+Wenn Sie eine Gerätevorlage veröffentlichen möchten, navigieren Sie zu der Gerätevorlage, und wählen Sie **Veröffentlichen** aus.
 
-1. Navigieren Sie zur Registerkarte **Eigenschaften**.
+Nachdem Sie eine Gerätevorlage veröffentlicht haben, kann ein Bediener zur Seite **Geräte** wechseln und echte oder simulierte Geräte hinzufügen, die Ihre Gerätevorlage verwenden. Sie können Ihre Gerätevorlage weiter bearbeiten und speichern, während Sie Änderungen vornehmen. Immer wenn Sie diese Änderungen auf der Seite **Geräte** an die Bediener übermitteln möchten, müssen Sie **Veröffentlichen** auswählen.
 
-2. Klicken Sie in der Bibliothek auf **Geräteeigenschaft**.
-
-3. Konfigurieren Sie den Anzeigenamen und den Feldnamen, und wählen Sie **Standort** als Datentyp:
-
-    | Anzeigename  | Feldname | Datentyp |
-    | --------------| -----------|-----------|
-    | Gerätestandort | deviceLocation | location  |
-
-   > [!NOTE]
-   > Die Feldnamen müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen.
-
-   ![Formular „Geräteeigenschaften konfigurieren“ mit Details zum Standort](./media/howto-set-up-template/locationdeviceproperty2.png)
-
-Wenn das echte Gerät verbunden wird, wird der als Geräteeigenschaft hinzugefügte Standort mit dem vom Gerät gesendeten Wert aktualisiert. Nachdem Sie nun Ihre Standorteigenschaft konfiguriert haben, können Sie [eine Karte hinzufügen, um den Standort auf dem Gerätedashboard zu visualisieren](#add-a-location-property-in-the-dashboard).
-
-## <a name="commands"></a>Befehle
-
-Befehle werden verwendet, um ein Gerät remote zu verwalten. Sie ermöglichen Operatoren, Befehle auf dem Gerät auszuführen. Sie können Ihrer Gerätevorlage mehrere Befehle hinzufügen, die auf der Registerkarte **Befehle** als Kacheln angezeigt und von Bedienern verwendet werden können. Als Gerätehersteller können Sie Befehle nach Ihren Wünschen flexibel definieren.
-
-Wie unterscheidet sich ein Befehl von einer Einstellung?
-
-- **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten, dass das Gerät die Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird.
-
-- **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.
-
-Sie können z. B. einen neuen **Echo**-Befehl hinzufügen, indem Sie die Registerkarte **Befehle** auswählen, **+ Neuer Befehl** auswählen und die neuen Befehlsdetails eingeben:
-
-| Anzeigename  | Feldname | Standardzeitlimit | Datentyp |
-| --------------| -----------|---------------- | --------- |
-| Echo-Befehl  | Echo       |  30             | text      |
-
-![Formular „Befehl konfigurieren“ mit Details zu „Echo“](./media/howto-set-up-template/commandsecho1.png)
-
-Nach der Auswahl von **Speichern** wird der Befehl **Echo** als Kachel angezeigt und kann vom **Device Explorer** verwendet werden, sobald Ihr echtes Gerät verbunden ist. Die Feldnamen Ihres Befehls müssen mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, damit die Befehle erfolgreich ausgeführt werden können.
-
-[Dies ist ein Link zum Beispielcode für C-Geräte.](https://github.com/Azure/iot-central-firmware/blob/ad40358906aeb8f2040a822ba5292df866692c16/MXCHIP/mxchip_advanced/src/AzureIOTClient.cpp#L34)
-
-## <a name="rules"></a>Regeln
-
-Anhand von Regeln können Operatoren Geräte nahezu in Echtzeit überwachen. Regeln rufen automatisch Aktionen auf. Beispielsweise kann bei Auslösen der Regel eine E-Mail gesendet werden. Zurzeit ist ein Regeltyp verfügbar:
-
-- Eine **Telemetrieregel** wird ausgelöst, wenn die ausgewählten Gerätetelemetriedaten einen angegebenen Schwellenwert überschreiten. [Weitere Informationen zu Telemetrieregeln](howto-create-telemetry-rules.md).
-
-## <a name="dashboard"></a>Dashboard
-
-Im Dashboard findet ein Bediener Informationen zu einem Gerät. Als Hersteller können Sie dieser Seite Kacheln hinzufügen, mit deren Hilfe Bediener das Verhalten des Geräts nachvollziehen können. Sie können verschiedene Arten von Dashboardkacheln hinzufügen. Hierzu zählen unter anderem Bild, Liniendiagramm, Balkendiagramm, Key Performance Indicator (KPI), Einstellungen und Eigenschaften sowie Bezeichnung.
-
-Beispielsweise können Sie eine Kachel **Einstellungen und Eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften anzuzeigen, indem Sie die Registerkarte **Dashboard** und die Kachel aus der Bibliothek auswählen:
-
-![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](./media/howto-set-up-template/dashboardsettingsandpropertiesform1.png)
-
-Wenn jetzt Bediener das Dashboard im **Device Explorer** anzeigen, können sie die Kachel sehen.
-
-### <a name="add-a-location-measurement-in-the-dashboard"></a>Hinzufügen einer Standortmessung im Dashboard
-
-Wenn Sie eine Standortmessung konfiguriert haben, können Sie den Standort mithilfe einer Karte im Dashboard Ihres Geräts visualisieren. Bei Standortmessungen haben Sie die Möglichkeit, den Standortverlauf darzustellen.
-
-1. Navigieren Sie zur **Dashboard**-Registerkarte.
-
-1. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus.
-
-1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **Aktueller Gerätestandort**. Wählen Sie dann die Standortmessung aus, die Sie zuvor auf der Registerkarte **Messungen** konfiguriert haben. Im folgenden Beispiel währen Sie die Messung **Asset-Standort** aus:
-
-   ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty5map.png)
-
-1. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
-
-Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
-
-### <a name="add-a-location-property-in-the-dashboard"></a>Hinzufügen einer Standorteigenschaft im Dashboard
-
-Wenn Sie eine Standorteigenschaft konfiguriert haben, können Sie den Standort mit einer Karte im Dashboard Ihres Geräts visualisieren.
-
-1. Navigieren Sie zur **Dashboard**-Registerkarte.
-
-1. Wählen Sie auf dem Gerätedashboard in der Bibliothek **Karte** aus.
-
-1. Geben Sie der Karte einen Titel. Das folgende Beispiel hat den Titel **Aktueller Gerätestandort**. Wählen Sie dann die Standorteigenschaft aus, die Sie zuvor auf der Registerkarte **Eigenschaften** konfiguriert haben. Im folgenden Beispiel wurde die Messung **Gerätestandort** ausgewählt:
-
-   ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty6map.png)
-
-1. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben.
-
-Sie können die Größe der Kartenkachel ändern. Wenn ein Bediener nun das Dashboard im **Device Explorer** anzeigt, kann dieser alle von Ihnen konfigurierten Dashboardkacheln einsehen, einschließlich einer Standortkarte.
-
-Mehr über die Verwendung von Kacheln in Azure IoT Central erfahren Sie unter [Verwenden von Dashboardkacheln](howto-use-tiles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie erfahren haben, wie eine Gerätevorlage in Ihrer Azure IoT Central-Anwendung eingerichtet wird, wird als Nächstes Folgendes empfohlen:
+In diesem Tutorial haben Sie Folgendes gelernt:
 
-- [Erstellen einer neuen Gerätevorlagenversion](howto-version-device-template.md)
-- [Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung](howto-connect-devkit.md)
-- [Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](howto-connect-nodejs.md)
+* Erstellen einer neuen IoT-Gerätevorlage
+* Erstellen von Cloudeigenschaften
+* Erstellen von Anpassungen
+* Definieren einer Visualisierung für die Gerätetelemetriedaten
+* Veröffentlichen Ihrer Gerätevorlage
+
+Als Nächstes haben Sie folgende Möglichkeiten:
+
+> [!div class="nextstepaction"]
+> [Herstellen einer Verbindung mit einem Gerät](howto-connect-devkit.md)

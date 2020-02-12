@@ -1,21 +1,21 @@
 ---
 title: Azure-Schnellstart – Ausführen eines Batch-Auftrags – CLI
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen.
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie einen Batch-Auftrag in der Azure CLI ausführen. Erstellen und verwalten Sie Azure-Ressourcen über die Befehlszeile oder in Skripts.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029480"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024499"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
 

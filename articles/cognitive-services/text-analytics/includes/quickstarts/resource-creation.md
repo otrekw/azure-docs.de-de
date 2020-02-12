@@ -4,15 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 254fe3602bdb6a05f3a3225035460b88ebd3e23f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159261"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987355"
 ---
-Beginnen Sie mit einer der unten genannten Optionen mit der Verwendung der Textanalyse-API.
-
+Sie benötigen einen Schlüssel und einen Endpunkt aus einer Textanalyseressource, um eine Verbindung mit Ihrer Anwendung herzustellen. Erstellen Sie eine der folgenden Ressourcen, um diese Werte zu erhalten:
 
 * <a href="https://azure.microsoft.com/try/cognitive-services/my-apis/?api=text-analytics" title="Erstellen einer Testressource für die Textanalyse" target="_blank">Erstellen einer Testressource<span class="docon docon-navigate-external x-hidden-focus"></span></a>
     * Kein Azure-Abonnement erforderlich. 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153135"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899212"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -174,7 +174,7 @@ Führen Sie nach der Installation der Postman-App die unten angegebenen Schritte
 
 In diesem Abschnitt erstellen wir einen Ereignishandler, der Benachrichtigungen empfängt. Dieser Ereignishandler sollte den Betriebsleiter darüber benachrichtigen, wenn Ausrüstung im Baustellenbereich ankommt (enter) oder diesen verlässt (exit).
 
-Wir erstellen zwei [Logik-Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)-Dienste zum Verarbeiten von enter- und exit-Ereignissen. Wenn die Ereignisse in der Logik-App ausgelöst werden, werden nacheinander weitere Ereignisse ausgelöst. Das Ziel ist, dass Warnungen (in diesem Fall in Form von E-Mails) an den Betriebsleiter gesendet werden. In der folgenden Abbildung ist die Erstellung einer Logik-App für das Geofence-Ereignis „enter“ dargestellt. Auf ähnliche Weise können Sie auch eine Logik-App für das Ereignis „exit“ erstellen. Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anzeigen](https://docs.microsoft.com/azure/event-grid/event-handlers).
+Wir erstellen zwei [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)-Dienste für die Behandlung von enter- und exit-Ereignissen. Wenn die Ereignisse in der Logik-App ausgelöst werden, werden nacheinander weitere Ereignisse ausgelöst. Das Ziel ist, dass Warnungen (in diesem Fall in Form von E-Mails) an den Betriebsleiter gesendet werden. In der folgenden Abbildung ist die Erstellung einer Logik-App für das Geofence-Ereignis „enter“ dargestellt. Auf ähnliche Weise können Sie auch eine Logik-App für das Ereignis „exit“ erstellen. Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anzeigen](https://docs.microsoft.com/azure/event-grid/event-handlers).
 
 1. Erstellen einer Logik-App im Azure-Portal
 
@@ -194,7 +194,7 @@ Wir erstellen zwei [Logik-Apps](https://docs.microsoft.com/azure/event-grid/even
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Erstellen eines Abonnements für Azure Maps-Ereignisse
 
-Azure Maps unterstützt drei Ereignistypen. Die von Azure Maps unterstützten Ereignistypen finden Sie [hier](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Wir benötigen zwei verschiedene Ereignisabonnements: eins für enter-Ereignisse und eins für exit-Ereignisse.
+Azure Maps unterstützt drei Ereignistypen. Sie können sich die von Azure Maps unterstützten Ereignistypen [hier](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps) ansehen. Wir benötigen zwei verschiedene Ereignisabonnements: eins für enter-Ereignisse und eins für exit-Ereignisse.
 
 Führen Sie die unten angegebenen Schritte aus, um ein Ereignisabonnement für die enter-Ereignisse von Geofences zu erstellen. Sie können exit-Ereignisse von Geofences auf ähnliche Weise abonnieren.
 

@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 64c5d80b5a2660164b21e71f06e847d5b11e40da
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438734"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964419"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
@@ -22,7 +22,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen einer Datenfreigabe
 > * Hinzufügen von Datasets zu Ihrer Datenfreigabe
-> * Aktivieren eines Synchronisierungszeitplans für Ihre Datenfreigabe 
+> * Aktivieren eines Momentaufnahmezeitplans für Ihre Datenfreigabe 
 > * Hinzufügen von Empfängern zu Ihrer Datenfreigabe 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -33,25 +33,36 @@ In diesem Tutorial lernen Sie Folgendes:
 ### <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto:
 
 * Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
-* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (in der Berechtigung *Microsoft.Authorization/role assignments/write* enthalten). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
+* Berechtigung zum Schreiben in das Speicherkonto (unter *Microsoft.Storage/storageAccounts/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
+* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
+
 
 ### <a name="share-from-a-sql-based-source"></a>Freigeben über eine SQL-basierte Quelle:
 
-* Eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz mit Tabellen und Ansichten, die Sie freigeben möchten
+* Eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz (ehemals Azure SQL Data Warehouse) mit Tabellen und Ansichten, die Sie freigeben möchten.
+* Berechtigung zum Schreiben in die Datenbanken in SQL Server (unter *Microsoft.Sql/servers/databases/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
 * Berechtigung der Datenfreigabe für den Zugriff auf Data Warehouse. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
-    1. Legen Sie sich als Azure Active Directory-Administrator für den Server fest.
+    1. Legen Sie sich selbst als Azure Active Directory-Administrator für den SQL-Server fest.
     1. Stellen Sie mithilfe von Azure Active Directory eine Verbindung mit der Azure SQL-Datenbank-/Data Warehouse-Instanz her.
-    1. Führen Sie mit dem Abfrage-Editor (Vorschau) das folgende Skript aus, um die Data Share-MSI als „db_owner“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
+    1. Führen Sie mithilfe des Abfrage-Editors (Vorschauversion) das folgende Skript aus, um die verwaltete Identität der Data Share-Ressource als „db_datareader“ hinzuzufügen. Sie müssen mithilfe von Active Directory und nicht über die SQL Server-Authentifizierung eine Verbindung herstellen. 
     
-```sql
-    create user <share_acct_name> from external provider;     
-    exec sp_addrolemember db_owner, <share_acct_name>; 
-```                   
-Beachten Sie, dass *<share_acc_name>* der Name Ihres Data Share-Kontos ist. Wenn Sie noch kein Data Share-Konto erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
+        ```sql
+        create user "<share_acct_name>" from external provider;     
+        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
+        ```                   
+       Beachten Sie, dass *<share_acc_name>* der Name Ihrer Data Share-Ressource ist. Falls Sie noch keine Data Share-Ressource erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
 
-* Ein [Azure SQL-Datenbank-Benutzer mit `db_owner`-Zugriff](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) zum Navigieren und Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten 
+* Ein Azure SQL-Datenbank-Benutzer mit Zugriff vom Typ „db_datareader“ zum Navigieren durch Tabellen und/oder Ansichten sowie zum Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten. 
 
-* Client-IP-SQL Server-Firewallzugriff: Die Berechtigung kann mit folgenden Schritten gewährt werden: 1. Navigieren Sie zu *Firewalls und virtuelle Netzwerke*. 2. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen. 
+* Client-IP-SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
+    1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
+    1. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen.
+    1. Klicken Sie auf **+ Client-IP-Adresse hinzufügen** und anschließend auf **Speichern**. Die IP-Adresse kann sich ggf. ändern. Sie können auch einen IP-Adressbereich hinzufügen. 
+
+### <a name="share-from-azure-data-explorer"></a>Freigeben über Azure Data Explorer
+* Ein Azure Data Explorer-Cluster mit Datenbanken, die Sie freigeben möchten.
+* Berechtigung zum Schreiben in den Azure Data Explorer-Cluster (unter *Microsoft.Kusto/clusters/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
+* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Azure Data Explorer-Cluster (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -91,7 +102,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Klicken Sie auf **Erstellen**.   
 
-1. Geben Sie die Details für Ihre Datenfreigabe ein. Geben Sie einen Namen, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
+1. Geben Sie die Details für Ihre Datenfreigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
     ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
 
@@ -101,7 +112,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
     ![Datasets](./media/datasets.png "Datasets")
 
-1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz werden Sie zur Eingabe einiger SQL-Anmeldeinformationen aufgefordert. Authentifizieren Sie sich unter Verwendung des Benutzers, den Sie im Rahmen der Voraussetzungen erstellt haben.
+1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz werden Sie zur Eingabe von SQL-Anmeldeinformationen aufgefordert. Authentifizieren Sie sich unter Verwendung des Benutzers, den Sie im Rahmen der Voraussetzungen erstellt haben.
 
     ![AddDatasets](./media/add-datasets.png "Hinzufügen von Datasets")    
 
@@ -115,7 +126,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
 1. Wählen Sie **Weiter**.
 
-1. Aktivieren Sie den Zeitplan für Momentaufnahmen, wenn Sie möchten, dass Ihre Datenconsumer inkrementelle Updates Ihrer Daten erhalten. 
+1. Wenn Sie eine Momentaufnahmefreigabe ausgewählt haben, können Sie einen Momentaufnahmezeitplan konfigurieren, um Aktualisierungen Ihrer Daten für Ihren Datenconsumer bereitzustellen. 
 
     ![EnableSnapshots](./media/enable-snapshots.png "Aktivieren von Momentaufnahmen") 
 

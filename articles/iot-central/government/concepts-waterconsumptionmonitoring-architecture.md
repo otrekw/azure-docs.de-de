@@ -7,16 +7,16 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d979c4210c7de4588338c8e3c30b179056102d0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3a64ca5b0c2a092f895873e097ea6beb9a235a37
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498802"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017699"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Überwachung des Wasserverbrauchs: Referenzarchitektur 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Die Lösung für die Überwachung des Wasserverbrauchs kann mit der **Azure IoT Central-App-Vorlage** als Einstieg in IoT-Anwendungen erstellt werden. Dieser Artikel enthält einen Leitfaden mit einer allgemeinen Referenzarchitektur für die Entwicklung einer Komplettlösung. 
 
@@ -44,7 +44,7 @@ Nachdem Sie Ihre intelligenten Wasserwirtschaftsgeräte mit IoT Central verbunde
 ## <a name="extensibility-and-integrations"></a>Erweiterbarkeit und Integrationen 
 Sie können Ihre IoT-Anwendung in IoT Central erweitern und haben folgende Optionen:
 * Transformieren und Integrieren Ihrer IoT-Daten für erweiterte Analysen, z. B. für das Training von Machine Learning-Modellen durch kontinuierlichen Datenexport aus der IoT Central-Anwendung
-* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Microsoft Flow oder Webhooks ausgelöst werden
+* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Microsoft Flow oder Webhooks ausgelöst werden
 * Programmgesteuertes Zugreifen auf Ihre IoT-Anwendung in IoT Central über IoT Central-APIs
 
 ## <a name="business-applications"></a>Geschäftsanwendungen 

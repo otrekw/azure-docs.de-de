@@ -13,31 +13,38 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 62455b395e6cad3ccf7650534d92d94a6a0a2417
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1f799c8f2e2b209e9939845047c61d50bc1a244d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977495"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898533"
 ---
-# <a name="quickstart-create-an-azure-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Azure Data Factory und einer Pipeline mithilfe von Python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-python.md)
 
-Diese Schnellstartanleitung beschreibt, wie Sie Python verwenden, um eine Azure Data Factory zu erstellen. Die Pipeline in dieser Data Factory kopiert Daten aus einem Ordner in einen anderen Ordner in ein und demselben Azure Blob Storage.
+In diesem Schnellstart erstellen Sie eine Data Factory mit Python. Die Pipeline in dieser Data Factory kopiert Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage.
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können.
+Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows erstellen können, um die Datenverschiebung und Datentransformation zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows – sogenannte Pipelines – erstellen und planen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Pipelines können Daten aus unterschiedlichen Datenspeichern erfassen. Pipelines verarbeiten oder transformieren Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning. Pipelines veröffentlichen Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse für BI-Anwendungen (Business Intelligence).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher** und als **Senkendatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
-* **Erstellen Sie eine Anwendung in Azure Active Directory**, indem Sie [diese Anweisungen](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+* Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-### <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
+* [Python 3.4 oder höher](https://www.python.org/downloads/)
+
+* [Azure Storage-Konto](../storage/common/storage-account-create.md)
+
+* [Azure Storage Explorer](https://storageexplorer.com/) (optional)
+
+* [Eine Anwendung in Azure Active Directory.](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) Notieren Sie sich die folgenden Werte, die Sie in späteren Schritten benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen.
+
+## <a name="create-and-upload-an-input-file"></a>Erstellen und Hochladen einer Eingabedatei
 
 1. Starten Sie den Editor. Kopieren Sie den folgenden Text, und speichern Sie ihn als **input.txt**-Datei auf Ihrem Datenträger.
 

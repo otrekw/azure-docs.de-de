@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76887511"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76961606"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -429,7 +429,7 @@ Ja.
 
 **Welche Datenträgergröße wird vom Azure Backup- und vom Azure Site Recovery-Dienst maximal unterstützt?**
 
-Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB. Unterstützung für die größeren Datenträger bis zu 32 TiB ist noch nicht verfügbar.
+Die größte von Azure Backup unterstützte Datenträgergröße beträgt 32 TiB (4 TiB für verschlüsselte Datenträger). Die maximale Datenträgergröße, die von Azure Site Recovery unterstützt wird, beträgt 8 TiB. Unterstützung für die größeren Datenträger bis zu 32 TiB ist in Azure Site Recovery noch nicht verfügbar.
 
 **Welche VM-Größen werden für große Datenträger (> 4TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?**
 

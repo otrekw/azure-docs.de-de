@@ -11,18 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: f9624f516d5f38f1db02c6a103c40d01f8dc26ca
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: fea3440dd7c017b85d6fffa2ec0fe5d26cd98b97
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702687"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022170"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Tutorial:  Anpassen des Dashboards für Bediener und Verwalten von Geräten in Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Dieses Tutorial veranschaulicht, wie Sie als Ersteller das Bedienerdashboard in Ihrer Azure IoT Central-Anwendung für die In-Store-Analyse anpassen können. Anwendungsbediener können das angepasste Dashboard verwenden, um die Anwendung auszuführen und die angeschlossenen Geräte zu verwalten.
+In diesem Tutorial erfahren Sie, wie Sie als Ersteller das Bedienerdashboard in Ihrer Azure IoT Central-Anwendung für die In-Store-Analyse anpassen können. Anwendungsbediener können das angepasste Dashboard verwenden, um die Anwendung auszuführen und die angeschlossenen Geräte zu verwalten.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -35,12 +34,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, muss der Ersteller das erste Tutorial absolvieren, um die Azure IoT Central-Anwendung für die In-Store-Analyse zu erstellen und Geräte hinzuzufügen:
+Der Ersteller muss das Tutorial absolvieren, um die Azure IoT Central-Anwendung für die In-Store-Analyse zu erstellen und Geräte hinzuzufügen:
 
 * [Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central](./tutorial-in-store-analytics-create-app-pnp.md) (erforderlich)
 
 ## <a name="change-the-dashboard-name"></a>Ändern des Dashboardnamens
-Zum Anpassen des Bedienerdashboards bearbeiten Sie das Standarddashboard in Ihrer Anwendung. Optional können Sie auch neue Dashboards erstellen. Der erste Schritt beim Anpassen des Dashboards in Ihrer Anwendung besteht darin, den Namen zu ändern.
+Zum Anpassen des Bedienerdashboards müssen Sie das Standarddashboard in Ihrer Anwendung bearbeiten. Sie können auch neue Dashboards erstellen. Der erste Schritt beim Anpassen des Dashboards in Ihrer Anwendung besteht darin, den Namen zu ändern.
 
 1. Navigieren Sie zur Website des [Azure IoT Central-Anwendungs-Managers](https://aka.ms/iotcentral).
 
@@ -54,7 +53,7 @@ Zum Anpassen des Bedienerdashboards bearbeiten Sie das Standarddashboard in Ihre
 
 1. Geben Sie im Feld **Dashboardname** einen Anzeigenamen für das Dashboard ein. In diesem Tutorial wird ein fiktives Unternehmen namens „Contoso“ verwendet, und der Name des Beispieldashboards lautet *Contoso-Dashboard*. 
 
-1. Wählen Sie **Speichern** aus. Damit werden Ihre Änderungen am Dashboard gespeichert und der Bearbeitungsmodus deaktiviert.
+1. Wählen Sie **Speichern** aus. Die Änderungen werden auf dem Dashboard gespeichert, und der Bearbeitungsmodus ist deaktiviert.
 
     ![Azure IoT Central-Dashboard: Ändern des Namens](./media/tutorial-in-store-analytics-customize-dashboard-pnp/dashboard-change-name.png)
 

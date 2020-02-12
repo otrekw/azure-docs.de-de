@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841011"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896445"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -97,10 +97,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
     | Location       | Wählen Sie **USA, Osten** aus.                                           |
     | Resource group | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
 
-    Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Wenn Sie kein Speicherkonto erstellen, sondern ein vorhandenes Konto verwenden, vergewissern Sie sich, dass Sie ein Speicherkonto auswählen, für das **Alle Netzwerke** (Standard) unter **Firewalls und virtuelle Netzwerken** in **EINSTELLUNGEN** ausgewählt ist. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden.
-
-    > [!NOTE]
-    > Microsoft.Insight- und Microsoft.Network-Anbieter werden derzeit zwar als vertrauenswürdige Microsoft-Dienste für Azure Storage unterstützt, die NSG-Flussprotokolle wurden jedoch noch nicht vollständig integriert. Für die NSG-Flussprotokollierung muss **Alle Netzwerke** weiterhin aktiviert werden, bis das Feature vollständig integriert wurde. 
+    Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Das Speicherkonto muss sich immer in derselben Region wie die NSG befinden.
 4. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 5. Wählen Sie unter **PROTOKOLLE** die Option **NSG-Flussprotokolle** aus (siehe folgende Abbildung):
 
@@ -114,9 +111,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
 9. Wählen Sie das in Schritt 3 erstellte Speicherkonto aus.
    > [!NOTE]
-   > NSG-Flowprotokolle können in den folgenden Fällen nicht mit Speicherkonten verwendet werden:
-   > * Für die Speicherkonten ist eine Firewall aktiviert.
-   > * Für die Speicherkonten ist der [hierarchische Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) aktiviert.
+   > NSG-Flowprotokolle können nicht für Speicherkonten mit aktiviertem [hierarchischem Namespace](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) verwendet werden.
 1. Wählen Sie oben links im Portal die Option **Alle Dienste** aus. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wählen Sie **Network Watcher** aus, wenn der Begriff in den Suchergebnissen angezeigt wird.
 10. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5a15b3b9e51772d8c7e5312968fecb180069e2a7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911251"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76933608"
 ---
 # <a name="add-html-markers-to-the-map"></a>Hinzufügen von HTML-Markern zur Karte
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten HTML-Code, wie
 > HTML-Marker sind nicht mit Datenquellen verbunden. Stattdessen werden Positionsinformationen direkt dem Marker hinzugefügt und der Marker wird der Karteneigenschaft `markers` hinzugefügt, die ein [HtmlMarkerManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarkermanager?view=azure-iot-typescript-latest) ist.
 
 > [!IMPORTANT]
-> Im Gegensatz zu den meisten Ebenen im Azure Maps-Websteuerelement, die WebGL zum Rendern verwenden, werden von HTML-Markern traditionelle DOM-Elemente zum Rendern verwendet. Je mehr HTML-Marker eine Seite hinzugefügt haben, desto mehr DOM-Elemente gibt es. Die Leistung kann nach dem Hinzufügen von ein paar hundert HTML-Markern nachlassen. Für größere Datensätze empfiehlt sich entweder ein Clustering der Daten oder die Verwendung einer Symbol- oder Blasenebene.
+> Im Gegensatz zu den meisten Ebenen im Azure Maps-Websteuerelement, die WebGL zum Rendern verwenden, werden von HTML-Markern traditionelle DOM-Elemente zum Rendern verwendet. Je mehr HTML-Marker zu einer Seite hinzugefügt werden, desto mehr DOM-Elemente gibt es. Die Leistung kann nach dem Hinzufügen von ein paar hundert HTML-Markern nachlassen. Für größere Datensätze empfiehlt sich entweder ein Clustering der Daten oder die Verwendung einer Symbol- oder Blasenebene.
 
 ## <a name="add-an-html-marker"></a>Hinzufügen eines HTML-Markers
 
@@ -33,7 +33,7 @@ Die [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/at
 Der folgende Code erstellt einen HTML-Marker und setzt die Farbeigenschaft auf „DodgerBlue“ und die Texteigenschaft auf „10“. Ein Popup wird an den Marker angefügt, und das `click`-Ereignis wird verwendet, um die Sichtbarkeit des Popups umzuschalten.
 
 ```javascript
-//Create a HTML marker and add it to the map.
+//Create an HTML marker and add it to the map.
 var marker = new atlas.HtmlMarker({
     color: 'DodgerBlue',
     text: '10',

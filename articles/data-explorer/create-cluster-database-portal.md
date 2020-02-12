@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank'
+title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank'
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure-Daten-Explorer-Cluster und eine Datenbank erstellen und Daten erfassen (laden).
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: 10030cf69009c59fa607ad68c3b7ab19c7a22860
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 895b26fc7f35303cbef6c9df543c87ca435c2290
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326715"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984352"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
@@ -80,7 +80,7 @@ Sie sind nun für den zweiten Schritt bereit: das Erstellen der Datenbank.
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Datenbankname | *TestDatabase* | Der Datenbankname muss innerhalb des Clusters eindeutig sein.
-    | Aufbewahrungszeitraum | *3650* | Die Zeitspanne (in Tagen), für die garantiert wird, dass die Daten für Abfragen verfügbar bleiben. Die Zeitspanne wird ab dem Zeitpunkt gemessen, zu dem die Daten erfasst werden.
+    | Beibehaltungsdauer | *3650* | Die Zeitspanne (in Tagen), für die garantiert wird, dass die Daten für Abfragen verfügbar bleiben. Die Zeitspanne wird ab dem Zeitpunkt gemessen, zu dem die Daten erfasst werden.
     | Zwischenspeicherungsdauer | *31* | Die Zeitspanne (in Tagen), wie lange häufig abgefragte Daten im SSD-Speicher oder RAM (und nicht im längerfristigen Speicher) verfügbar bleiben.
     | | | |
 

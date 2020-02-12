@@ -10,14 +10,14 @@ ms.workload: identity
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: ajburnle
-ms.custom: it-pro, seodec18
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ef577f5d086b22779392cd6d8b5d43a340f7329
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de205beaf9800c2061cc41343b4153bd0e2b5dc7
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423100"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024601"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
@@ -31,7 +31,7 @@ Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre O
 
 ### <a name="to-create-a-new-tenant"></a>Erstellen eines neuen Mandanten
 
-1. Melden Sie sich mit dem Konto eines globalen Administrators im [Azure-Portal](https://portal.azure.com/) Ihrer Organisation an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) Ihrer Organisation an.
 
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.  
 
@@ -58,6 +58,7 @@ Ihr neuer Mandant wird mit der Domäne „contoso.onmicrosoft.com“ erstellt.
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie den Mandanten folgendermaßen löschen:
 
+- Vergewissern Sie sich anhand des Filters **Verzeichnis + Abonnement** im Azure-Portal, dass Sie bei dem Verzeichnis angemeldet sind, das Sie löschen möchten, und wechseln Sie ggf. zum Zielverzeichnis.
 - Wählen Sie **Azure Active Directory**, die Seite **Contoso – Übersicht** und dann **Verzeichnis löschen** aus.
 
     Der Mandant und die dazugehörigen Informationen werden gelöscht.

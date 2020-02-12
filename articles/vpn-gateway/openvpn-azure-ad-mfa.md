@@ -7,22 +7,23 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 771dea2d9ae2979bc71880368ed3a9a538e8a803
+ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169708"
+ms.lasthandoff: 02/02/2020
+ms.locfileid: "76964709"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Aktivieren von Azure Multi-Factor Authentication (MFA) für VPN-Benutzer
 
-Wenn Sie möchten, dass Benutzer vor der Gewährung des Zugriffs zur Angabe eines zweiten Authentifizierungsfaktor aufgefordert werden, können Sie Azure Multi-Factor Authentication (MFA) für Ihren Azure AD-Mandanten konfigurieren. Die Schritte in diesem Artikel helfen Ihnen, eine Anforderung für die zweistufige Überprüfung zu aktivieren.
+Wenn Benutzer vor der Zugriffsgewährung zu einem zweiten Authentifizierungsfaktor aufgefordert werden sollen, können Sie Azure Multi-Factor Authentication (MFA) auf Benutzerbasis konfigurieren oder Multi-Factor Authentication (MFA) über [bedingten Zugriff](../active-directory/conditional-access/overview.md) für eine differenziertere Kontrolle nutzen. Die Konfiguration von Multi-Factor Authentication auf Benutzerbasis kann ohne zusätzliche Kosten aktiviert werden. Wenn jedoch MFA auf Benutzerbasis aktiviert wird, wird der Benutzer zur Authentifizierung mit dem zweiten Faktor für alle Anwendungen aufgefordert, die an den Azure AD-Mandanten gebunden sind. Der bedingte Zugriff ermöglicht eine differenziertere Kontrolle darüber, wie ein zweiter Faktor höher gestuft werden soll, und kann die Zuweisung von MFA nur an VPN und nicht an andere Anwendungen, die an den Azure AD-Mandanten gebunden sind, ermöglichen.
 
-## <a name="prereq"></a>Voraussetzung
+## <a name="enableauth"></a>Aktivieren der Authentifizierung
 
-Voraussetzung für diese Konfiguration ist ein konfigurierter Azure AD-Mandant mithilfe der Schritte in [Konfigurieren eines Mandanten](openvpn-azure-ad-tenant.md).
+1. Navigieren Sie zu **Azure Active Directory -> Unternehmensanwendungen -> Alle Anwendungen**.
+2. Wählen Sie auf der Seite **Unternehmensanwendungen – Alle Anwendungen** die Option **Azure-VPN** aus.
 
-[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
+   ![Verzeichnis-ID](../../includes/media/vpn-gateway-vwan-openvpn-azure-ad-mfa/user1.jpg)
 
 ## <a name="enablesign"></a> Konfigurieren von Anmeldeeinstellungen
 
@@ -33,6 +34,22 @@ Konfigurieren Sie auf der Seite **Azure-VPN – Eigenschaften** die Anmeldeeinst
 3. Speichern Sie die Änderungen.
 
    ![Berechtigungen](./media/openvpn-azure-ad-mfa/user2.jpg)
+
+## <a name="option-1---enable-multi-factor-authentication-mfa-via-conditional-access"></a>Option 1 – Aktivieren von Multi-Factor Authentication (MFA) über bedingten Zugriff
+
+Der bedingte Zugriff ermöglicht eine differenzierte Zugriffssteuerung auf Anwendungsbasis.  Beachten Sie, dass Sie für die Nutzung des bedingten Zugriffs eine Azure AD Premium 1-Lizenz oder höher auf die Benutzer, die den Regeln des bedingten Zugriffs unterliegen, anwenden sollten.
+
+1. Wählen Sie auf der Seite **Unternehmensanwendungen – Alle Anwendungen** die Option **Azure-VPN** und dann **Bedingter Zugriff** aus, und klicken Sie anschließend auf **Neue Richtlinie**.
+2. Aktivieren Sie unter „Benutzer und Gruppen“ auf der Registerkarte *Einschließen* die Option **Benutzer und Gruppen auswählen**, aktivieren Sie **Benutzer und Gruppen**, und wählen Sie eine Gruppe oder einen Satz von Benutzern aus, die MFA unterliegen sollen.  Klicken Sie auf **Fertig**.
+![Zuweisungen](../../includes/media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-assignments.png)
+3. Aktivieren Sie unter **Erteilen** die Option **Zugriff gewähren** sowie die Optionen **Multi-Factor Authentication erforderlich** und **Alle ausgewählten Kontrollen anfordern**, und klicken Sie anschließend auf die Schaltfläche **Auswählen**.
+![Zugriff gewähren – MFA](../../includes/media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
+4. Aktivieren Sie **Ein** unter **Richtlinie aktivieren**, und klicken Sie auf die Schaltfläche **Erstellen**.
+![Richtlinie aktivieren](../../includes/media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)
+
+## <a name="option-2---enable-multi-factor-authentication-mfa-per-user"></a>Option 2 – Aktivieren von Multi-Factor Authentication (MFA) auf Benutzerbasis
+
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

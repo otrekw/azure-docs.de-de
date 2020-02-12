@@ -8,13 +8,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 12/06/2019
-ms.openlocfilehash: 4d32980e825f12c76b5c8bf8df0673fa82065751
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/03/2020
+ms.openlocfilehash: 5be6e7937a6e1f710b8e2576a9058963413fb6c2
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460425"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76984559"
 ---
 1. Wählen Sie im [Azure-Portal](https://ms.portal.azure.com/) nacheinander **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus.
 
@@ -34,18 +34,30 @@ ms.locfileid: "75460425"
 
 1. Auf dem Blatt **Authentifizierung** sind wichtige Konfigurationseinstellungen für die Authentifizierung angegeben. 
 
+    1. Fügen Sie **Umleitungs-URIs** hinzu, und konfigurieren Sie **Zugriffstoken**, indem Sie **+ Plattform hinzufügen** auswählen.
+
+    1. Legen Sie fest, ob die App ein **öffentlicher Client** ist, indem Sie **Ja** oder **Nein** auswählen.
+
+    1. Überprüfen Sie, welche Konten und Mandanten unterstützt werden.
+
+    [![Konfigurieren der impliziten Genehmigung](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+
+1. Konfigurieren Sie nach der Auswahl der geeigneten Plattform die **Umleitungs-URIs** und **Zugriffstoken** im Seitenpanel rechts auf der Benutzeroberfläche.
+
     1. **Umleitungs-URIs** müssen mit der in der Authentifizierungsanforderung angegebenen Adresse übereinstimmen:
 
-        * Wählen Sie für Anwendungen, die in einer lokalen Entwicklungsumgebung gehostet werden, **Öffentlicher Client (Mobilgerät und Desktop)** aus. Stellen Sie sicher, dass **Standardclienttyp** auf „Ja“ festgelegt ist.
+        * Wählen Sie für Anwendungen, die in einer lokalen Entwicklungsumgebung gehostet werden, **Öffentlicher Client (Mobilgerät und Desktop)** aus. Stellen Sie sicher, dass **Öffentlicher Client** auf **Ja** festgelegt ist.
         * Wählen Sie für in Azure App Service gehostete Einzelseiten-Apps **Web** aus.
+
+    1. Legen Sie fest, ob eine **Abmelde-URL** geeignet ist.
 
     1. Aktivieren Sie den Ablauf für die implizite Genehmigung, indem Sie die Option **Zugriffstoken** oder **ID-Token** aktivieren.
 
-   [![Erstellen von Umleitungs-URIs und Konfigurieren der impliziten Gewährung](media/time-series-insights-aad-registration/active-directory-auth-blade.png)](media/time-series-insights-aad-registration/active-directory-auth-blade.png#lightbox)
+    [![Erstellen von Umleitungs-URIs](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png)](media/time-series-insights-aad-registration/active-directory-auth-redirect-uri.png#lightbox)
 
-   Klicken Sie auf **Speichern**.
+    Klicken Sie auf **Konfigurieren** und dann auf **Speichern**.
 
-1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, um ein Anwendungskennwort zu erstellen, die der Client zum Nachweis seiner Identität verwenden kann.
+1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, um ein Anwendungskennwort zu erstellen, das die Client-App zum Nachweis ihrer Identität verwenden kann.
 
    [![Erstellen eines neuen geheimen Clientschlüssels](media/time-series-insights-aad-registration/active-directory-application-keys-save.png)](media/time-series-insights-aad-registration/active-directory-application-keys-save.png#lightbox)
 

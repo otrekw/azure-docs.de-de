@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 12c2f1bd2a3185d26eae02b5cd756392b5b87c16
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: e7717cdeec33a32f926cb5ef4c1f6d28c25f9d93
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533305"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989082"
 ---
 ## <a name="create-a-self-hosted-integration-runtime"></a>Erstellen einer selbstgehosteten Integration Runtime
 
@@ -83,7 +83,8 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 
 5. Kopieren Sie einen der Schlüssel (ohne Anführungszeichen) zum Registrieren der selbstgehosteten Integration Runtime, die Sie in den nächsten Schritten auf Ihrem Computer installieren.  
 
-## <a name="install-the-integration-runtime"></a>Installieren der Integration Runtime
+## <a name="install-the-integration-runtime-tool"></a>Installieren des Integration Runtime-Tools
+
 1. Falls die Integration Runtime bereits auf Ihrem Computer installiert ist, deinstallieren Sie sie über **Programme hinzufügen oder entfernen**. 
 
 2. Führen Sie den [Download](https://www.microsoft.com/download/details.aspx?id=39717) der selbstgehosteten Integration Runtime auf einen lokalen Windows-Computer durch. Führen Sie die Installation aus.
@@ -135,5 +136,4 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
     h. Wählen Sie die Option **Test**, um zu überprüfen, ob die Integration Runtime eine Verbindung mit SQL Server herstellen kann. Wenn die Verbindung erfolgreich hergestellt wurde, wird ein grünes Häkchen angezeigt. Wenn keine Verbindung hergestellt wurde, wird eine Fehlermeldung angezeigt. Beheben Sie alle Probleme, und stellen Sie sicher, dass die Integration Runtime eine Verbindung mit SQL Server herstellen kann.    
 
     > [!NOTE]
-    > Notieren Sie die Werte für Authentifizierungstyp, Server, Datenbank, Benutzer und Kennwort. Sie benötigen sie später in diesem Tutorial. 
-    
+    > Notieren Sie die Werte für Authentifizierungstyp, Server, Datenbank, Benutzer und Kennwort. Sie benötigen sie später in diesem Tutorial.

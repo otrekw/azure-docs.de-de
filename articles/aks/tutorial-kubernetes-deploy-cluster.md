@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8ad542a3614253e11331e9b49513a887aff65890
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 130cb973f2de1de0d4c4636a4752a06e22edf65b
+ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512930"
+ms.lasthandoff: 02/01/2020
+ms.locfileid: "76932560"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -70,7 +70,7 @@ Mit dem Befehl [az aks get-credentials][] können Sie `kubectl` für die Verbind
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Zum Überprüfen der Verbindung mit dem Cluster führen Sie den Befehl [kubectl get nodes][kubectl-get] aus:
+Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get nodes][kubectl-get], um eine Liste der Clusterknoten zu erhalten:
 
 ```
 $ kubectl get nodes
@@ -81,7 +81,7 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.13.10
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt, und Sie haben `kubectl` für die Verbindung damit konfiguriert. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt, und Sie haben `kubectl` für die Verbindung damit konfiguriert. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Bereitstellen eines Kubernetes-AKS-Clusters, der sich bei einer Azure-Containerregistrierung authentifizieren kann

@@ -9,16 +9,14 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 35f99abaf5e0142c29d6dd43c968b66b21a28a50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f752c77a6a62b9b259a8bb1869ca03ff6a19b1f5
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898525"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020878"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Micro-Fulfillment-Center-Architektur
-
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
 Micro-Fulfillment-Center-Lösungen ermöglichen die digitale Verbindung, Überwachung und Verwaltung sämtlicher Aspekte eines vollständig automatisierten Fulfillment-Centers mit dem Ziel, die Kosten zu senken, indem Sie Downtime beseitigen und gleichzeitig die Sicherheit und die Gesamteffizienz erhöhen. Diese Lösungen können unter Nutzung einer der Anwendungsvorlagen in Azure IoT Central und der unten dargestellten Architektur als Richtschnur erstellt werden.
 
@@ -38,7 +36,7 @@ Eine Micro-Fulfillment-Center-Lösung verfügt wahrscheinlich über zahlreiche T
 
 ## <a name="condition-monitoring-sensors"></a>Sensoren zur Zustandsüberwachung
 
-Eine IoT-Lösung beginnt mit einer Reihe von Sensoren, die aussagekräftige Signale aus Ihrem Fulfillment-Center erfassen. Dies wird durch eine Auswahl von Sensoren ganz am linken Rand des Architekturdiagramms oben wiedergegeben.
+Eine IoT-Lösung beginnt mit einer Reihe von Sensoren, die aussagekräftige Signale aus Ihrem Fulfillment-Center erfassen. Dies wird durch verschiedene Arten von Sensoren ganz am linken Rand des Architekturdiagramms oben wiedergegeben.
 
 ## <a name="gateway-devices"></a>Gatewaygeräte
 
@@ -54,7 +52,7 @@ Azure IoT Central bietet darüber hinaus eine maßgeschneiderte Benutzeroberflä
 Die Azure IoT Central-Anwendung kann in einer Lösung so konfiguriert werden, dass sie unformatierte oder aggregierte Erkenntnisse an eine Reihe von Azure-PaaS-Diensten (Platform-as-a-Service) exportiert, die die Daten bearbeiten und die Erkenntnisse anreichern können, bevor sie in einer Geschäftsanwendung landen. 
 
 ## <a name="business-application"></a>Geschäftsanwendung
-Die IoT-Daten können die Basis einer Vielzahl von Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt sind. Ein Manager oder Mitarbeiter eines Fulfillment-Centers kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
+Die IoT-Daten können die Basis verschiedener Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt sind. Ein Manager oder Mitarbeiter eines Fulfillment-Centers kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Führen Sie die ersten Schritte mit der Anwendungsvorlage für [Micro-Fulfillment-Center](https://aka.ms/checkouttemplate) aus. 

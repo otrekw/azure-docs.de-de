@@ -1,33 +1,30 @@
 ---
-title: 'Schnellstart: Senden und Empfangen von Ereignissen unter Verwendung von Node.js: Azure Event Hubs'
-description: 'Schnellstart: Dieser Artikel enthält eine exemplarische Vorgehensweise für die Erstellung einer Node.js-Anwendung, die Ereignisse aus Azure Event Hubs sendet.'
+title: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs unter Verwendung von Node.js (Legacypaket)
+description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer Node.js-Anwendung, die unter Verwendung des alten Pakets „azure/event-hubs“ (Version 2) Ereignisse an Azure Event Hubs sendet bzw. von dort empfängt.
 services: event-hubs
 author: spelluru
-manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9aa2418657c2d3bcab9ef8883e5bd57422ce5e29
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940729"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899895"
 ---
-# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Schnellstart: Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von Node.js
+# <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs-azureevent-hubs-version-2"></a>Schnellstart: Senden oder Empfangen von Ereignissen an bzw. von Azure Event Hubs mithilfe von Node.js (@azure/event-hubs, Version 2)
 
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
 In diesem Tutorial wird beschrieben, wie Sie Node.js-Anwendungen erstellen, die Ereignisse an einen Event Hub senden oder von diesem empfangen.
 
-> [!IMPORTANT]
-> In diesem Schnellstart wird Version 2 des Java Script SDK für Azure Event Hubs verwendet. Wenn Sie noch nicht mit Azure Event Hubs vertraut sind, verwenden Sie Version 5 des Java Script SDK. Eine Schnellstartanleitung, in der Version 5 des Java Script SDK verwendet wird, finden Sie in [diesem Artikel](get-started-node-send-v2.md). Wenn Sie vorhandenen Code von Version 2 zu Version 5 migrieren müssen, finden Sie weitere Informationen im [Migrationsleitfaden](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
+> [!WARNING]
+> In dieser Schnellstartanleitung wird Version 2 des Java Script SDK für Azure Event Hubs verwendet. Es empfiehlt sich, den Code zu [Version 5 des JavaScript SDK](get-started-node-send-v2.md) zu [migrieren](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md). 
 
-> [!NOTE]
-> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,6 +52,9 @@ npm install @azure/event-processor-host
 ## <a name="send-events"></a>Senden von Ereignisse
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Node.js-Anwendung zum Senden von Ereignissen an einen Event Hub erstellen. 
+
+> [!NOTE]
+> Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) herunterladen, die Zeichenfolgen `EventHubConnectionString` und `EventHubName` durch die Werte für Ihren Event Hub ersetzen und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
 
 1. Öffnen Sie Ihren bevorzugten Editor, z. B. [Visual Studio Code](https://code.visualstudio.com). 
 2. Erstellen Sie eine Datei namens `send.js`, und fügen Sie den folgenden Code ein. Gehen Sie wie im folgenden Artikel beschrieben vor, um die Verbindungszeichenfolge für den Event Hub-Namespace abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 

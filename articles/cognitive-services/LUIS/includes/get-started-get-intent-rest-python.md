@@ -6,14 +6,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414576"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76987770"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -21,9 +21,22 @@ ms.locfileid: "74414576"
 * [Visual Studio Code](https://code.visualstudio.com/)
 * ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
-## <a name="get-luis-key"></a>Abrufen des LUIS-Schlüssels
+## <a name="create-luis-runtime-key-for-predictions"></a>Erstellen eines LUIS-Runtimeschlüssels für Vorhersagen
 
-[!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Klicken Sie auf [**Language Understanding** erstellen](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne).
+1. Geben Sie alle erforderlichen Einstellungen für den **Runtimeschlüssel** ein:
+
+    |Einstellung|Wert|
+    |--|--|
+    |Name|Gewünschter Name (2 bis 64 Zeichen)|
+    |Subscription|Wählen Sie ein passendes Abonnement aus|
+    |Location|Wählen Sie einen nahe gelegenen und verfügbaren Speicherort aus|
+    |Preisstufe|`F0` – der Mindesttarif|
+    |Ressourcengruppe|Wählen Sie eine verfügbare Ressourcengruppe aus|
+
+1. Klicken Sie auf **Erstellen**, und warten Sie, bis die Ressource erstellt wird. Nachdem sie erstellt wurde, navigieren Sie zur Ressourcenseite.
+1. Erfassen Sie den konfigurierten Endpunkt (`endpoint`) und einen Schlüssel (`key`).
 
 ## <a name="get-intent-from-the-prediction-endpoint"></a>Abrufen der Absicht vom Vorhersageendpunkt
 
@@ -34,17 +47,17 @@ Verwenden Sie Python, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pr
     ```python
     ########### Python 3.6 #############
     import requests
-    
+
     try:
-    
-        key = 'YOUR-KEY'
-        endpoint = 'YOUR-ENDPOINT' # such as 'westus2.api.cognitive.microsoft.com' 
+
+        key = 'YOUR-KEY' # your Runtime key
+        endpoint = 'YOUR-ENDPOINT' # such as 'your-resource-name.api.cognitive.microsoft.com'
         appId = 'df67dcdb-c37d-46af-88e1-8b97951ca1c2'
         utterance = 'turn on all lights'
-    
+
         headers = {
         }
-    
+
         params ={
             'query': utterance,
             'timezoneOffset': '0',
@@ -54,18 +67,20 @@ Verwenden Sie Python, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pr
             'staging': 'false',
             'subscription-key': key
         }
-    
+
         r = requests.get(f'https://{endpoint}/luis/prediction/v3.0/apps/{appId}/slots/production/predict',headers=headers, params=params)
         print(r.json())
-    
+
     except Exception as e:
         print(f'{e}')
     ```
 
-1. Ersetzen Sie die folgenden Werte:
+1. Ersetzen Sie die Werte `YOUR-KEY` und `YOUR-ENDPOINT` durch Ihren eigenen Schlüssel- bzw. Endpunktwert für die **Vorhersageruntime**.
 
-    * `YOUR-KEY` durch Ihren Startschlüssel
-    * `YOUR-ENDPOINT` durch Ihren Endpunkt Beispiel: `westus2.api.cognitive.microsoft.com`.
+    |Information|Zweck|
+    |--|--|
+    |`YOUR-KEY`|Ihr 32-stelliger Schlüssel für die **Vorhersageruntime**.|
+    |`YOUR-ENDPOINT`| Ihr URL-Endpunkt für die Vorhersage. Beispiel: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 1. Installieren Sie die Abhängigkeit `requests`. Diese wird für die Ausführung von HTTP-Anforderungen verwendet:
 
@@ -77,7 +92,7 @@ Verwenden Sie Python, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pr
 
     ```console
     python predict.py
-    ``` 
+    ```
 
 1. Überprüfen Sie die Vorhersageantwort, die im JSON-Format zurückgegeben wird:
 
@@ -85,7 +100,7 @@ Verwenden Sie Python, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pr
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Dies ist die zur besseren Lesbarkeit formatierte JSON-Antwort: 
+    Dies ist die zur besseren Lesbarkeit formatierte JSON-Antwort:
 
     ```JSON
     {
@@ -128,13 +143,9 @@ Verwenden Sie Python, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-pr
     }
     ```
 
-## <a name="luis-keys"></a>LUIS-Schlüssel
-
-[!INCLUDE [Use authoring key for endpoint](../includes/starter-key-explanation.md)]
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben. 
+Löschen Sie die Datei aus dem Dateisystem, nachdem Sie diese Schnellstartanleitung durchgearbeitet haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

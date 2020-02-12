@@ -3,24 +3,26 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript'
 description: Erstellen, Hochladen und Löschen von Blobs und Containern in Node.js mit der Azure Storage-Clientbibliothek v10 für JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/24/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6a530c96c99a9f22f1943a5b874656bcabd9594b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862848"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906475"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js
 
-In diesem Schnellstart erfahren Sie, wie Sie das [Azure Storage v10 SDK für JavaScript](https://github.com/Azure/azure-sdk-for-js) in Node.js verwenden, um Blobs hochzuladen, herunterzuladen, aufzulisten und zu löschen sowie Container zu verwalten.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mithilfe von Node.js verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Hier wird gezeigt, wie Sie Blobs hochladen, herunterladen, auflisten und löschen und wie Sie Container verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
+- [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 
@@ -133,7 +135,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Für von der API gestellte Anforderungen kann ein Timeout nach einem angegebenen Intervall festgelegt werden. Die [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
+Für Anforderungen der API kann festgelegt werden, dass nach einem bestimmten Intervall ein Timeout auftreten soll. Die [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -203,7 +205,7 @@ Wie bei dem Container ist der Blockblob noch nicht vorhanden. Die Variable *bloc
 
 ### <a name="using-the-aborter-class"></a>Verwenden der Aborter-Klasse
 
-Für von der API gestellte Anforderungen kann ein Timeout nach einem angegebenen Intervall festgelegt werden. Die *Aborter*-Klasse ist zuständig für das Verwalten, wie ein Timeout von Anforderungen erfolgt. Der folgende Code erstellt einen Kontext, in dem eine Gruppe von Anforderungen 30 Minuten Zeit zur Ausführung erhält.
+Für Anforderungen der API kann festgelegt werden, dass nach einem bestimmten Intervall ein Timeout auftreten soll. Die *Aborter*-Klasse ist zuständig für das Verwalten, wie ein Timeout von Anforderungen erfolgt. Der folgende Code erstellt einen Kontext, in dem eine Gruppe von Anforderungen 30 Minuten Zeit zur Ausführung erhält.
 
 ```javascript
 const aborter = Aborter.timeout(30 * ONE_MINUTE);

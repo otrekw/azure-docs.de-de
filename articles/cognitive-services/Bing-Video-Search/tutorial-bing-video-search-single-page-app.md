@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 7c8485a5521709452217fb4ab1832b6a42cce9ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb989825ed27cc83c14c36e6394e37ae2db2c12a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382462"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988259"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Tutorial: Single-Page-Webanwendung für die Videosuche
 Mit der Bing-Videosuche-API können Sie das Web durchsuchen und für eine Suchabfrage relevante Videoergebnisse abrufen. In diesem Tutorial wird eine Single-Page-Webanwendung erstellt, die unter Verwendung der Bing-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten.
@@ -100,7 +100,7 @@ Die folgende Abbildung zeigt das Abfragetextfeld und Optionen, die eine Suche de
 
 Das HTML-Formular enthält folgende Elemente:
 
-|Element|BESCHREIBUNG|
+|Element|Beschreibung|
 |-|-|
 | `where` | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache), der für die Suche verwendet wird. |
 | `query` | Das Textfeld, in das Suchbegriffe eingegeben werden. |
@@ -120,7 +120,7 @@ function bingSearchOptions(form) {
 
     var options = [];
     options.push("mkt=" + form.where.value);
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
 
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-Der Parameter `SafeSearch` kann bei einem API-Aufruf beispielsweise die Werte `strict`, `moderate` oder `off` annehmen, wobei `moderate` der Standardwert ist. In unserem Formular wird hingegen ein Kontrollkästchen verwendet, das nur über zwei Zustände verfügt. Der JavaScript-Code konvertiert diese Einstellung entweder in `strict` oder `off` (`moderate` wird nicht verwendet).
+Der Parameter `SafeSearch` kann bei einem tatsächlichen API-Aufruf beispielsweise den Wert `strict` oder `moderate` haben, wobei `moderate` der Standardwert ist.
 
 ## <a name="performing-the-request"></a>Ausführen der Anforderung
 Die `BingWebSearch`-Funktion verwendet auf der Grundlage der Abfrage, der Optionszeichenfolge und des API-Schlüssels ein `XMLHttpRequest`-Objekt, um die Anforderung an den Bing-Suche-API-Endpunkt zu senden. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
@@ -308,7 +308,7 @@ Die Suchergebnisse werden als `value`-Objekt der obersten Ebene in der JSON-Antw
 
 Die Bing-News-Suche-API gibt bis zu vier verschiedene Arten verwandter Ergebnisse zurück, und zwar jeweils in einem eigenen Objekt der obersten Ebene. Sie lauten wie folgt:
 
-|Beziehung|BESCHREIBUNG|
+|Beziehung|Beschreibung|
 |-|-|
 |`pivotSuggestions`|Abfragen, bei denen ein Pivot-Wort in der ursprünglichen Suche durch ein anderes ersetzt wird. Wenn Sie beispielsweise nach „rote Blumen“ suchen, kann ein Pivot-Wort „rote“ sein, und ein Pivot-Vorschlag kann „gelbe Blumen“ sein.|
 |`queryExpansions`|Abfragen, bei denen die ursprüngliche Suche durch Hinzufügen weiterer Begriffe eingegrenzt wird. Wenn Sie beispielsweise nach „Microsoft Surface“ suchen, kann eine Abfrageerweiterung „Microsoft Surface Pro“ sein.|
@@ -332,7 +332,7 @@ searchItemRenderers = {
 ```
 Für eine Funktion zum Rendern können die folgenden Parameter angegeben werden:
 
-|Parameter|BESCHREIBUNG|
+|Parameter|Beschreibung|
 |-|-|
 |`item`| Das JavaScript-Objekt mit Eigenschaften des Elements, z.B. seine URL und Beschreibung.|
 |`index`| Der Index des Ergebniselements innerhalb der Auflistung.|

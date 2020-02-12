@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/30/2019
-ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.date: 01/29/2020
+ms.openlocfilehash: b75b760704511627c74301ae3fff82c24a262e17
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563456"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904889"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Wissensspeichers im Azure-Portal
 
@@ -81,7 +81,7 @@ Klicken Sie auf der Übersichtsseite des Suchdiensts auf der Befehlsleiste auf *
 In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen für kognitive Qualifikationen. Die Quelldaten bestehen aus Kundenbewertungen in verschiedenen Sprachen. Zu den Qualifikationen, die für dieses Dataset relevant sind, gehören die Schlüsselwortextraktion, die Stimmungserkennung und die Textübersetzung. Diese Anreicherungen werden in einem späteren Schritt als Azure-Tabellen in einen Wissensspeicher „projiziert“.
 
 1. Erweitern Sie **Cognitive Services-Instanz anfügen**. Standardmäßig ist **Free (begrenzte Anreicherung)** ausgewählt. Da „HotelReviews-Free.csv“ 19 Datensätze enthält und mit der kostenlosen Ressource 20 Transaktionen pro Tag möglich sind, können Sie diese Ressource verwenden.
-1. Erweitern Sie **Kognitive Qualifikationen hinzufügen (Optional)** .
+1. Erweitern Sie **Anreicherungen hinzufügen**.
 1. Geben Sie unter **Name des Skillsets** den Namen `hotel-reviews-ss` ein.
 1. Wählen Sie unter **Quelldatenfeld** die Option **reviews_text** aus.
 1. Wählen Sie unter **Granularitätsebene für Anreicherung** die Option **Seiten (5.000 Zeichenblöcke)** aus.
@@ -93,11 +93,11 @@ In diesem Schritt des Assistenten erstellen Sie ein Skillset mit Anreicherungen 
       ![Erstellen eines Skillsets](media/knowledge-store-create-portal/hotel-reviews-ss.png "Erstellen eines Skillsets")
 
 1. Erweitern Sie **Anreicherungen in einem Wissensspeicher speichern (Vorschau)** .
-1. Geben Sie unter **Verbindungszeichenfolge für Speicherkonto** die Verbindungszeichenfolge ein, die Sie in einem früheren Schritt gespeichert haben.
 1. Wählen Sie unter **Azure-Tabellenprojektionen** die folgenden Projektionen aus:
     + **Dokumente**
     + **Seiten**
     + **Schlüsselbegriffe**
+1. Geben Sie unter **Verbindungszeichenfolge für Speicherkonto** die Verbindungszeichenfolge ein, die Sie in einem früheren Schritt gespeichert haben.
 
     ![Konfigurieren des Wissensspeichers](media/knowledge-store-create-portal/hotel-reviews-ks.png "Konfigurieren des Wissensspeichers")
 

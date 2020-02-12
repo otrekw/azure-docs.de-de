@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: tutorial
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1acc17f9c2fbeb53b992891174866433d14f128d
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977249"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76986660"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
@@ -82,7 +82,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |-----------|-------------|
 | `query` | Ein Textfeld zur Eingabe einer Abfragezeichenfolge. |
 | `where` | Ein Dropdownmenü zur Auswahl des Markts (Ort und Sprache). |
@@ -105,7 +105,7 @@ function bingSearchOptions(form) {
     // Where option.
     options.push("mkt=" + form.where.value);
     // SafeSearch option.
-    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "off"));
+    options.push("SafeSearch=" + (form.safe.checked ? "strict" : "moderate"));
     // Freshness option.
     if (form.when.value.length) options.push("freshness=" + form.when.value);
     var what = [];
@@ -128,7 +128,7 @@ function bingSearchOptions(form) {
 }
 ```
 
-`SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen, das nur über zwei Zustände verfügt. In diesem Ausschnitt ist SafeSearch auf `strict` oder `off` festgelegt. `moderate` wird nicht verwendet.
+`SafeSearch` kann auf `strict`, `moderate` oder `off` festgelegt werden, wobei `moderate` die Standardeinstellung für die Bing-Websuche ist. Dieses Formular verwendet ein Kontrollkästchen mit zwei Zuständen: `strict` oder `moderate`.
 
 Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `promote` ist `answerCount` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
 > [!NOTE]
@@ -386,7 +386,7 @@ Einige Renderingfunktionen akzeptieren nur den Parameter `item`. Andere Funktion
 
 Folgende Kontextargumente sind verfügbar:
 
-| Parameter  | BESCHREIBUNG |
+| Parameter  | Beschreibung |
 |------------|-------------|
 | `section` | Der Ergebnisbereich (`pole`, `mainline` oder `sidebar`), in dem das Element angezeigt wird. |
 | `index`<br>`count` | Verfügbar, wenn durch das `RankingResponse`-Element angegeben wird, dass alle Ergebnisse einer Collection angezeigt werden sollen. Andernfalls wird `undefined` verwendet. Der Index des Elements innerhalb seiner Auflistung und die Gesamtzahl von Elementen in dieser Auflistung. Sie können mit diesen Informationen beispielsweise die Ergebnisse nummerieren oder für das erste und letzte Ergebnis unterschiedlichen HTML-Code erzeugen. |
@@ -437,7 +437,7 @@ Antworten von Bing-Suche-APIs können einen `X-MSEdge-ClientID`-Header enthalten
 
 Durch das Bereitstellen des `X-MSEdge-ClientID`-Headers können die Bing-Suche-APIs die Suchvorgänge eines Benutzers zuordnen. Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorherigen Suchvorgängen nutzen, um Ergebnisse anzuzeigen, die der Anforderung besser entsprechen. Wenn ein Benutzer in der Vergangenheit beispielsweise nach Segelbegriffen gesucht hat, können bei einer Suche nach „Knoten“ möglicherweise Informationen zu Segelknoten zurückgegeben werden. Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Wenn Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Browsersicherheitsrichtlinien, z. B. CORS (Cross-Origin Resource Sharing), können verhindern, dass die Beispiel-App auf den `X-MSEdge-ClientID`-Header zugreift. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Browsersicherheitsrichtlinien, z. B. CORS (Cross-Origin Resource Sharing), können verhindern, dass die Beispiel-App auf den `X-MSEdge-ClientID`-Header zugreift. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
 > In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Abonnementschlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Benutzer zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.

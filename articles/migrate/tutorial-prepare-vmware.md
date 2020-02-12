@@ -1,18 +1,15 @@
 ---
 title: Vorbereiten von VMware-VMs für die Bewertung/Migration mit Azure Migrate
 description: Hier erfahren Sie, wie Sie virtuelle VMware-Computer auf die Bewertung/Migration mit Azure Migrate vorbereiten.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f00d5ba4841427098b0ab79ad1930e357008b6e0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028907"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030794"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Vorbereiten von VMware-VMs für die Bewertung und die Migration zu Azure
 
@@ -41,8 +38,12 @@ Sie benötigen folgende Berechtigungen:
 **Aufgabe** | **Berechtigungen**
 --- | ---
 **Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Projekts.
-**Registrieren der Azure Migrate-Appliance** | Azure Migrate verwendet eine schlanke Azure Migrate- Appliance, um VMware-VMs mit der Azure Migrate-Serverbewertung zu bewerten und für die VMware-VMs mit der Azure Migrate-Servermigration eine [Migration ohne Agents](server-migrate-overview.md) durchzuführen. Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu den VMs an Azure Migrate.<br/><br/>Während der Registrierung erstellt Azure Migrate zwei Azure AD-Apps (Active Directory), die die Appliance eindeutig identifizieren. Azure Migrate benötigt Berechtigungen zum Erstellen dieser Apps.<br/> – Die erste App kommuniziert mit Azure Migrate-Dienstendpunkten.<br/> – Die zweite App greift auf eine Azure Key Vault-Instanz zu, die während der Registrierung erstellt wurde, um Azure AD-App-Informationen und Appliancekonfigurationseinstellungen zu speichern.
+**Registrieren der Azure Migrate-Appliance** | Azure Migrate verwendet eine schlanke Azure Migrate- Appliance, um VMware-VMs mit der Azure Migrate-Serverbewertung zu bewerten und für die VMware-VMs mit der Azure Migrate-Servermigration eine [Migration ohne Agents](server-migrate-overview.md) durchzuführen. Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu den VMs an Azure Migrate.<br/><br/>Bei der Registrierung der Appliance werden die folgenden Registrierungsanbieter bei dem Abonnement registriert, das in der Appliance ausgewählt wurde: Microsoft.OffAzure, Microsoft.Migrate und Microsoft.KeyVault. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um die Ressourcenanbieter zu registrieren.<br/><br/> Im Rahmen des Onboardings erstellt Azure Migrate zwei Azure Active Directory-Apps (Azure AD-Apps):<br/> -    Die erste App wird für die Kommunikation (Authentifizierung und Autorisierung) zwischen den auf der Appliance ausgeführten Agents und den entsprechenden Diensten in Azure verwendet. Diese App verfügt nicht über Berechtigungen zum Senden von ARM-Aufrufen oder über RBAC-Zugriff auf Ressourcen.<br/> - Die zweite App wird ausschließlich für den Zugriff auf die im Abonnement des Benutzers erstellte Key Vault-Instanz für die Migration ohne Agent verwendet. Sie verfügt über RBAC-Zugriff auf Azure Key Vault (im Kundenmandanten erstellte Instanz), wenn die Ermittlung von der Appliance initiiert wird.
 **Erstellen einer Key Vault-Instanz** | Für die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration erstellt Azure Migrate eine Key Vault-Instanz, um Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement zu verwalten. Für die Tresorerstellung benötigen Sie Rollenzuweisungsberechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet.
+
+
+
+
 
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung
@@ -80,9 +81,9 @@ Der Mandantenadministrator/globale Administrator kann Berechtigungen wie folgt e
 
 Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
-### <a name="assign-role-assignment-permissions"></a>Zuweisen von Rollenzuweisungsberechtigungen
+### <a name="assign-permissions-to-create-a-key-vault"></a>Zuweisen von Berechtigungen für die Key Vault-Erstellung
 
-Um das Erstellen einer Key Vault-Instanz durch Azure Migrate zu ermöglichen, weisen Sie die folgenden Rollenzuweisungsberechtigungen zu:
+Um das Erstellen einer Key Vault-Instanz durch Azure Migrate zu ermöglichen, weisen Sie die folgenden Berechtigungen zu:
 
 1. Wählen Sie im Azure-Portal unter der Ressourcengruppe die Option **Zugriffssteuerung (IAM)** aus.
 2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen.

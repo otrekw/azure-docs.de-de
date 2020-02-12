@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 5560cb31e31f7cf33ac8ae71d649e88be3dbb6e6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112511"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77025774"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Tutorial: Erstellen und Durchlaufen der App-Vorlage für die Überwachung von Solarpanels 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial werden die Schritte zum Erstellen der Anwendung für die Überwachung von Solarpanels erläutert, die ein Beispielgerätemodell mit simulierten Daten enthält. In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -28,11 +28,11 @@ In diesem Tutorial werden die Schritte zum Erstellen der Anwendung für die Übe
 > * Bereinigen von Ressourcen
 
 
-Wenn Sie noch nicht über ein Abonnement verfügen, [erstellen Sie ein kostenloses Testkonto](https://azure.microsoft.com/free).
+Falls Sie noch nicht über ein Abonnement verfügen, [erstellen Sie ein kostenloses Testkonto](https://azure.microsoft.com/free).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Keine
-- Ein Azure-Abonnement wird empfohlen, aber für das Testen nicht benötigt.
+- Ein Azure-Abonnement wird empfohlen, ist aber für das Testen nicht erforderlich.
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Erstellen einer App für die Überwachung von Solarelementen 
@@ -47,18 +47,19 @@ Sie können diese Anwendung in drei einfachen Schritten erstellen:
     > ![Erstellen einer App](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
 3. Über **App erstellen** wird das Formular **Neue Anwendung** geöffnet. Geben Sie wie in der nachfolgenden Abbildung dargestellt die erforderlichen Details ein:
-    * **Anwendungsname:** Geben Sie einen Namen für die IoT Central-Anwendung an. 
+    * **Anwendungsname**: Geben Sie einen Namen für die IoT Central-Anwendung an. 
     * **URL**: Geben Sie eine IoT Central-URL an. Die Eindeutigkeit wird auf der Plattform überprüft.
-    * **Kostenlose 7-Tage-Testversion:** Wenn Sie bereits über ein Azure-Abonnement verfügen, wird die Standardeinstellung empfohlen. Wenn Sie noch nicht über ein Azure-Abonnement verfügen, beginnen Sie mit einer kostenlosen Testversion.
-    * **Abrechnungsinfo:** Die Anwendung selbst ist kostenlos. Die Detailangaben zu Verzeichnis, Azure-Abonnement und Region sind für die Bereitstellung der Ressourcen für die App erforderlich.
+    * **Kostenlose 7-Tage-Testversion**: Wenn Sie bereits über ein Azure-Abonnement verfügen, wird die Standardeinstellung empfohlen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, beginnen Sie mit einer kostenlosen Testversion.
+    * **Abrechnungsinfo**: Die Anwendung selbst ist kostenlos. Die Detailangaben zu Verzeichnis, Azure-Abonnement und Region sind für die Bereitstellung der Ressourcen für die App erforderlich.
     * Klicken Sie unten auf der Seite auf die Schaltfläche **Erstellen**. Die App wird innerhalb etwa einer Minute erstellt.
-        > [!div class="mx-imgBorder"]
-        > ![Formular für neue Anwendung](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![Formular für neue Anwendung](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        
+        ![Formular „Neue Anwendung“: Abrechnungsinformationen](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Überprüfen der Anwendung und der simulierten Daten
 
-Sie können Ihre neu erstellte Solarpanel-App jederzeit ändern. Stellen Sie sicher, dass die App wie erwartet bereitgestellt wurde und ausgeführt wird, bevor Sie sie ändern.
+Sie können Ihre neu erstellte Solarpanel-App jederzeit ändern. Vergewissern Sie sich, dass die App wie erwartet bereitgestellt wurde und ausgeführt wird, bevor Sie sie ändern.
 
 Wechseln Sie zum Überprüfen der App-Erstellung und der Datensimulation zum **Dashboard**. Wenn die Kacheln mit einigen Daten angezeigt werden, war die Bereitstellung Ihrer App erfolgreich. Bei der Datensimulation kann es einige Minuten dauern, bis die Daten generiert wurden. Warten Sie daher 1–2 Minuten. 
 
@@ -98,8 +99,8 @@ Klicken Sie auf die Registerkarte **Device templates** (Gerätevorlagen), um das
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie diese Anwendung nicht mehr verwenden möchten, können Sie sie mit den folgenden Schritten löschen:
 
-1. Öffnen Sie im linken Bereich die Registerkarte „Administration“ (Verwaltung).
-2. Wählen Sie „Application settings“ (Anwendungseinstellungen) aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Delete“ (Löschen). 
+1. Öffnen Sie im linken Bereich die Registerkarte „Verwaltung“.
+2. Wählen Sie „Anwendungseinstellungen“ aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Löschen“. 
 
     > [!div class="mx-imgBorder"]
     > ![Löschen der Anwendung](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
