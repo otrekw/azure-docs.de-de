@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 934a4fdf7cabb89c4b98c7800252cb24d4e23abf
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833893"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "77013793"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
+- Die folgenden VM-Serien werden unterstützt: DSv3, ESv3 und Fsv2. 
 
 ## <a name="benefits"></a>Vorteile 
 
@@ -73,7 +73,7 @@ Die Infrastruktur, die Ihre virtuellen Computer unterstützt, kann gelegentlich 
 Die **Wartungssteuerung** bietet Kunden eine Option zum Überspringen regulärer Plattformupdates, die für ihre dedizierten Hosts geplant sind, und wendet sie dann zu einem ausgewählten Zeitpunkt innerhalb eines 35-tägigen gleitenden Fensters an.
 
 > [!NOTE]
->  Die Wartungssteuerung befindet sich derzeit in einer begrenzten Vorschau und erfordert ein Onboarding. Bewerben Sie sich für diese Vorschau, indem Sie an einer [Nominierungsumfrage](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u) teilnehmen.
+>  Die Wartungssteuerung ist derzeit als öffentliche Vorschauversion verfügbar. Weitere Informationen finden Sie unter **Steuern von Updates mit der Wartungssteuerung und der [Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-cli?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) oder [PowerShell](https://docs.microsoft.com/azure/virtual-machines/maintenance-control-powershell?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json)** .
 
 ## <a name="capacity-considerations"></a>Überlegungen zur Kapazität
 

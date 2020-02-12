@@ -7,25 +7,25 @@ ms.date: 10/23/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 957e9337bf8ea5941b140ba4f3266417d36df6a7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ae266495db1d6b94a43aa962a3e9b63a8115c526
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498772"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77017666"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Erstellen einer End-to-End-Lösung mit Azure IoT Central und Dynamics 365 for Field Service 
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 Als Entwickler können Sie die Integration Ihrer Azure IoT Central-Anwendung in andere Geschäftssysteme aktivieren. 
 
 
-Bei einer Lösung für die vernetzte Abfallwirtschaft können Sie die Aussendung von Müllfahrzeugen basierend auf den IoT-Sensordaten der vernetzten Mülleimer optimieren. In Ihrer [IoT Central-Anwendung für die vernetzte Abfallwirtschaft](./tutorial-connected-waste-management.md) können Sie Regeln und Aktionen konfigurieren und so festlegen, dass in Dynamics 365 for Field Service die Erstellung von Warnungen ausgelöst wird. Dies wird mit Microsoft Flow erreicht. Sie können diese Anwendung direkt in IoT Central konfigurieren, um Workflows für Anwendungen und Dienste zu automatisieren. Außerdem können Informationen basierend auf Dienstaktivitäten in Field Service zurück an Azure IoT Central gesendet werden. 
+Bei einer Lösung für vernetzte Abfallwirtschaft können Sie beispielsweise die Aussendung von Müllfahrzeugen optimieren. Diese Optimierung kann basierend auf IoT-Sensordaten von vernetzten Mülleimern erfolgen. In Ihrer [IoT Central-Anwendung für die vernetzte Abfallwirtschaft](./tutorial-connected-waste-management.md) können Sie Regeln und Aktionen konfigurieren und so festlegen, dass in Dynamics 365 for Field Service die Erstellung von Warnungen ausgelöst wird. Dies wird mit Microsoft Flow erreicht. Diese Anwendung wird direkt in IoT Central konfiguriert, um Workflows für Anwendungen und Dienste zu automatisieren. Darüber hinaus können Informationen basierend auf Dienstaktivitäten in Field Service zurück an Azure IoT Central gesendet werden. 
 
 ## <a name="how-to-connect-your-azure-iot-central-application-with-dynamics-365-field-services"></a>Verbinden Ihrer Azure IoT Central-Anwendung mit Dynamics 365 for Field Service 
 
-Die folgenden End-to-End-Integrationsprozesse können über eine reine Konfigurationsumgebung leicht implementiert werden:
+Die folgenden Integrationsprozesse können über eine reine Konfigurationsumgebung leicht implementiert werden:
 * Azure IoT Central kann Informationen zu Geräteanomalien zur Diagnose an Connected Field Service senden (als IoT-Warnung).
 * Mit Connected Field Service können Vorfälle oder Arbeitsaufträge erstellt werden, die über Geräteanomalien ausgelöst werden.
 * Connected Field Service kann auch genutzt werden, um Techniker für die Inspektion einzuplanen, damit Ausfallzeiten verhindert werden.

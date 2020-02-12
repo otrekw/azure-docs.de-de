@@ -7,22 +7,23 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 38da444779a56f39d4119f3797ddb5bd2f31aeae
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112642"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016492"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Tutorial: Erstellen einer Anwendung für die vernetzte Abfallwirtschaft in IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial wird Schritt für Schritt beschrieben, wie Sie mit der Anwendungsvorlage **Vernetzte Abfallwirtschaft** eine entsprechende Azure IoT Central-Anwendung erstellen. 
 
 In diesem Tutorial lernen Sie Folgendes: 
 
 > [!div class="checklist"]
+
 > * Verwenden der Azure IoT Central-Vorlage **Vernetzte Abfallwirtschaft**, um eine entsprechende Anwendung zu erstellen
 > * Erkunden und Anpassen des Bedienerdashboards 
 > * Erkunden der Gerätevorlage für vernetzte Abfallbehälter
@@ -38,7 +39,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>Erstellen einer App für vernetzte Abfallwirtschaft in IoT Central
 
-In diesem Abschnitt verwenden wir die Azure IoT Central-Vorlage **Vernetzte Abfallwirtschaft**, um in IoT Central eine Anwendung dieser Art zu erstellen.
+In diesem Abschnitt verwenden Sie die Azure IoT Central-Vorlage **Vernetzte Abfallwirtschaft**, um in IoT Central eine Anwendung dieser Art zu erstellen.
 
 Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung für die vernetzte Abfallwirtschaft:  
 
@@ -59,22 +60,25 @@ Erstellen Sie wie folgt eine neue Azure IoT Central-Anwendung für die vernetzte
     * **URL**: Optional können Sie auch Ihre gewünschte URL auswählen. Es ist auch möglich, die URL zu einem späteren Zeitpunkt zu ändern. 
     * Wenn Sie ein Azure-Abonnement haben, geben Sie die entsprechenden Angaben für *Verzeichnis, Azure-Abonnement und Region* ein. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.  
 
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../preview/quick-deploy-iot-central.md).
+    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
 
 5. Klicken Sie am unteren Rand der Seite auf die Schaltfläche **Erstellen**. 
 
     ![Azure IoT Central-Seite zur Erstellung einer Anwendung für die vernetzte Abfallwirtschaft](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
+    
+    ![Azure IoT Central: Erstellen von Informationen zur vernetzten Abrechnung](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
+ 
 6. Sie haben nun eine App für die vernetzte Abfallwirtschaft erstellt, indem Sie die Azure IoT Central-Vorlage **Vernetzte Abfallwirtschaft** verwendet haben. 
 
 Glückwunsch! Ihre neu erstellte Anwendung ist bereits vorkonfiguriert und verfügt über folgende Elemente:
 * Beispieldashboards für Bediener
 * Vordefinierte Beispielgerätevorlagen für vernetzte Abfallbehälter
 * Simulierte Geräte für vernetzte Abfallbehälter
-* Vorkonfigurierte Regeln und Aufträge
+* Vorkonfigurierten Regeln und Aufträgen
 * Beispiel für Branding mit Whitelabeling 
 
-Es ist Ihre Anwendung, und Sie können sie jederzeit ändern. Wir erkunden die Anwendung jetzt und nehmen einige Anpassungen vor.  
+Es ist Ihre Anwendung, und Sie können sie jederzeit ändern. Wir erkunden nun die Anwendung und nehmen einige Anpassungen vor.  
 
 ## <a name="explore-and-customize-operator-dashboard"></a>Erkunden und Anpassen des Bedienerdashboards 
 Nachdem Sie die Anwendung erstellt haben, gelangen Sie zum **Wide World Waste-Dashboard für vernetzte Abfallwirtschaft**.
@@ -131,7 +135,7 @@ Zeigen Sie die Gerätevorlage wie folgt an:
 
 2. In der Liste mit den Gerätevorlagen wird **Connected Waste Bin** (Vernetzter Abfallbehälter) angezeigt. Öffnen Sie die Vorlage, indem Sie auf den Namen klicken.
 
-3. Machen Sie sich mit den Funktionen der Gerätevorlage vertraut. Sie sehen, dass dafür Sensoren vom Typ *Fill level* (Füllstand), *Odor meter* (Geruchsmessung), *Weight* (Gewicht), *Location* (Standort) usw. definiert sind.
+3. Machen Sie sich mit den Funktionen der Gerätevorlage vertraut. Sie sehen, dass dafür beispielsweise Sensoren vom Typ *Fill level* (Füllstand), *Odor meter* (Geruchsmessung), *Weight* (Gewicht) und *Location* (Standort) definiert sind.
 
    ![Gerätevorlage](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
@@ -149,10 +153,10 @@ Versuchen Sie, Folgendes anzupassen:
 ### <a name="add-a-cloud-property"></a>Hinzufügen einer Cloudeigenschaft 
 
 1. Navigieren Sie über das Gerätevorlagenmenü zu **Cloudeigenschaft**.
-2. Fügen Sie eine neue Cloudeigenschaft hinzu, indem Sie auf **+ Cloudeigenschaft hinzufügen** klicken. In IoT Central können Sie eine Eigenschaft hinzufügen, die für das Gerät relevant ist, aber für die das Senden durch ein Gerät nicht erwartet wird. Bei einer Cloudeigenschaft kann es sich beispielsweise um einen Warnungsschwellenwert handeln, der für einen bestimmten Installationsbereich oder bestimmte Ressourcen- oder Wartungsinformationen gilt. 
+2. Fügen Sie eine neue Cloudeigenschaft hinzu, indem Sie auf **+ Cloudeigenschaft hinzufügen** klicken. In IoT Central können Sie eine Eigenschaft hinzufügen, die für das Gerät relevant ist, aber für die das Senden durch ein Gerät nicht erwartet wird. Bei einer Cloudeigenschaft kann es sich beispielsweise um einen Warnungsschwellenwert handeln, der für einen bestimmten Installationsbereich oder bestimmte Ressourcen- oder Wartungsinformationen oder andere Informationen gilt. 
 3. Wählen Sie **Speichern**, um die Änderungen zu speichern. 
  
-### <a name="views"></a>Ansichten 
+### <a name="views"></a>Sichten 
 * Die Gerätevorlage für vernetzte Abfallbehälter verfügt über vordefinierte Ansichten. Sie können die Ansichten erkunden und Updates vornehmen. In den Ansichten ist definiert, wie Bedienern die Gerätedaten angezeigt werden, aber es können auch Cloudeigenschaften eingegeben werden. 
 
   ![Ansichten der Gerätevorlage](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-views.png)
@@ -259,7 +263,7 @@ Als Lösungsersteller können Sie verschiedene Einstellungen ändern, um die Ben
 Falls Sie diese Anwendung nicht weiterverwenden möchten, sollten Sie sie mit den folgenden Schritten löschen:
 
 1. Öffnen Sie im linken Bereich Ihrer IoT Central-Anwendung die Registerkarte „Verwaltung“.
-2. Wählen Sie „Application settings“ (Anwendungseinstellungen) aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Delete“ (Löschen).
+2. Wählen Sie „Anwendungseinstellungen“ aus, und klicken Sie unten auf der Seite auf die Schaltfläche „Löschen“.
 
   
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
-ms.openlocfilehash: 6cdb539846104f70dabf684925685fb062fea8af
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: a4cd74c9c85ee7413cde9f0fb4cf3ffb54c9b3d0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797548"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906747"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>Übersicht über virtuelle Computer der HC-Serie
 
@@ -31,7 +31,7 @@ Die obige Topologie hat auch Auswirkungen auf die Hypervisorkonfiguration der HC
 
 Dem virtuellen Computer ist nicht bekannt, dass ihm die physischen Kerne 0–1 und 24–25 nicht zugewiesen wurden. Die einzelnen vNUMA-Instanzen werden daher so verfügbar gemacht, als stünden nativ nur 22 Kerne zur Verfügung.
 
-Bei Intel Xeon-CPUs vom Typ Platinum, Gold und Silver wird auch ein 2D-On-Die-Meshnetzwerk für die interne und externe Kommunikation mit dem CPU-Socket eingeführt. Aus Leistungs- und Konsistenzgründen wird dringend empfohlen, Prozesse fest zuzuordnen (Process Pinning). Eine feste Prozesszuordnung funktioniert bei virtuellen Computern der HC-Serie, da der zugrunde liegende Chip unverändert für den virtuellen Gastcomputer verfügbar gemacht wird. Weitere Informationen finden Sie in diesem Artikel zur [Intel Xeon-SP-Architektur](https://bit.ly/2RCYkiE) (in englischer Sprache).
+Bei Intel Xeon-CPUs vom Typ Platinum, Gold und Silver wird auch ein 2D-On-Die-Meshnetzwerk für die interne und externe Kommunikation mit dem CPU-Socket eingeführt. Aus Leistungs- und Konsistenzgründen wird dringend empfohlen, Prozesse fest zuzuordnen. Eine feste Prozesszuordnung funktioniert bei virtuellen Computern der HC-Serie, da der zugrunde liegende Chip unverändert für den virtuellen Gastcomputer verfügbar gemacht wird. Weitere Informationen finden Sie in diesem Artikel zur [Intel Xeon-SP-Architektur](https://bit.ly/2RCYkiE) (in englischer Sprache).
 
 Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure-Hypervisor reserviert sind, und den Kernen für den virtuellen Computer der HC-Serie:
 
@@ -41,7 +41,7 @@ Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure
 
 | Hardwarespezifikationen          | Virtueller Computer der HC-Serie                     |
 |----------------------------------|----------------------------------|
-| Kerne                            | 40 (HT deaktiviert)                 |
+| Kerne                            | 44 (HT deaktiviert)                 |
 | CPU                              | Intel Xeon Platinum 8168*        |
 | CPU-Frequenz (ohne AVX)          | 3,7 GHz (einzelner Kern), 2,7 bis 3,4 GHz (alle Kerne) |
 | Arbeitsspeicher                           | 8 GB/Kern (insgesamt 352 GB)            |
@@ -53,7 +53,7 @@ Das folgende Diagramm zeigt die Trennung zwischen den Kernen, die für den Azure
 
 | Softwarespezifikationen     | Virtueller Computer der HC-Serie          |
 |-----------------------------|-----------------------|
-| Maximale MPI-Auftragsgröße            | 4\.400 Kerne (100 VM-Skalierungsgruppen), 8.800 Kerne (200 VM-Skalierungsgruppen) |
+| Maximale MPI-Auftragsgröße            | 13200 Kerne (300 VMs in einer einzelnen VMSS mit singlePlacementGroup=true) |
 | MPI-Unterstützung                 | MVAPICH2, OpenMPI, MPICH, Platform MPI, Intel MPI  |
 | Zusätzliche Frameworks       | Unified Communication X, libfabric, PGAS |
 | Azure Storage-Unterstützung       | Standard und Premium (max. vier Datenträger) |

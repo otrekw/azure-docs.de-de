@@ -3,12 +3,12 @@ title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028826"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031662"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -32,7 +32,7 @@ Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von ph
 **Downloadlink** | https://aka.ms/migrate/appliance/vmware 
 **Downloadgröße** | 11,2 GB
 **Lizenz** | Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
-**Bereitstellung** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen in der vCenter-Server-Instanz, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/><br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.<br/><br/> Die Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
+**Bereitstellung** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen in der vCenter-Server-Instanz, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
 **Hardware** | Ressourcen in vCenter zum Zuordnen eines virtuellen Computers mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch 
 **Hashwert** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256: 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter-Server/Host** | Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
@@ -63,17 +63,15 @@ Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von ph
 
 **Anforderung** | **Physisch** 
 --- | ---
-**Downloadformat** | Gezippter Ordner (mit PowerShell-Installationsskript)
+**Downloadformat** | Gezippter Ordner (mit PowerShell-basiertem Installationsskript)
 **Downloadlink** | [Downloadlink](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Downloadgröße** | 59,7 MB
-**Hardware** | Dedizierter physischer Computer oder virtueller Computer. Der Computer, auf dem die Appliance ausgeführt wird, benötigt 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch.<br/><br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
-**Hashwert** | MD5: 96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
-**Software** | Auf dem Appliancecomputer muss Windows Server 2016 ausgeführt werden. 
+**Hardware** | Dedizierter physischer Computer oder verwendete VM. Der Computer, auf dem die Appliance ausgeführt wird, benötigt 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
+**Hashwert** | MD5: 1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Betriebssystem** | Auf dem Appliancecomputer muss Windows Server 2016 ausgeführt werden. 
 **Bereitstellung einer Appliance**   |  Das Installationsskript für die Appliance wird über das Portal heruntergeladen (in einem gezippten Ordner). <br/> Sie entzippen den Ordner und führen das PowerShell-Skript („AzureMigrateInstaller.ps1“) aus.
 **Ermittlung** | Eine Appliance kann bis zu 250 physische Server ermitteln.
 **Appliancekomponenten** | Verwaltungs-App: Web-App in der Appliance für Benutzereingaben während der Bereitstellung.<br/> Ermittlungs-Agent: Erfasst Computerkonfigurationsdaten.<br/> Bewertungs-Agent: Erfasst Leistungsdaten.<br/>  Dienst für automatische Aktualisierungen: Aktualisiert Komponenten (wird alle 24 Stunden ausgeführt).
-**Portzugriff** | Nach dem Konfigurieren der Appliance eingehende Verbindungen an TCP-Port 3389, um Remotedesktopverbindungen mit der Appliance zu ermöglichen<br/><br/> Eingehende Verbindungen an Port 44368, um über Remotezugriff über die URL „https://<appliance-ip-or-name>:44368“ auf die Applianceverwaltungs-App zugreifen zu können<br/><br/> Ausgehende Verbindungen an Port 443, 5671 und 5672, um Ermittlungs- und Leistungsmetadaten an Azure Migrate zu senden
-
 
 
 ## <a name="url-access"></a>URL-Zugriff
@@ -93,9 +91,10 @@ dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die inter
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
 download.microsoft.com/download | Zulassen von Downloads von Microsoft Download Center
-*.servicebus.windows.net | Wird für die VMware-Migration ohne Agent verwendet.<br/><br/> Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Wird für die VMware-Migration ohne Agent verwendet.<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
-*.blob.core.windows.net |  Wird für die VMware-Migration ohne Agent verwendet.<br/><br/>Hochladen von Daten in Storage
+*.servicebus.windows.net | Kommunikation zwischen der Appliance und dem Azure Migrate-Dienst
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.hypervrecoverymanager.windowsazure.com | **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/> Herstellen einer Verbindung mit Azure Migrate-Dienst-URLs
+*.blob.core.windows.net |  **Wird für die VMware-Migration ohne Agent verwendet.**<br/><br/>Hochladen von Daten in Storage für die Migration
 
 
 

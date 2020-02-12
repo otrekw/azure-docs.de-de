@@ -1,25 +1,49 @@
 ---
-title: Verwenden von Anwendungsvorlagen in Azure IoT Central | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwenden.
+title: Exportieren einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
+description: Ich möchte als Lösungsmanager eine Anwendungsvorlage exportieren, um sie wiederverwenden zu können.
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/30/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: d682c49aa833b9e11dbbddc5e9f6afd52cbb6e84
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b5c8f7fd1c87ce279a8edd39aacb332b8aef28be
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942311"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023445"
 ---
-# <a name="use-application-templates"></a>Verwenden von Anwendungsvorlagen
+# <a name="export-your-application"></a>Exportieren Ihrer Anwendung
 
-[!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-In diesem Artikel wird beschrieben, wie Sie als Solution Manager Anwendungsvorlagen erstellen und verwenden.
+
+In diesem Artikel wird beschrieben, wie Sie als Lösungsmanager eine IoT Central-Anwendung exportieren, um sie wiederverwenden zu können.
+
+Sie haben zwei Möglichkeiten:
+
+- Sie können eine Kopie Ihrer Anwendung erstellen, wenn Sie nur eine duplizierte Kopie davon erstellen müssen.
+- Wenn Sie die Erstellung mehrerer Kopien planen, können Sie aus Ihrer Anwendung eine Anwendungsvorlage erstellen.
+
+## <a name="copy-your-application"></a>Kopieren Ihrer Anwendung
+
+Sie können eine Kopie jeder Anwendung erstellen, mit Ausnahme von Geräteinstanzen, Gerätedatenverlauf und Benutzerdaten. Die Kopie verwendet einen Standard-Tarif, der Ihnen in Rechnung gestellt wird. Es ist nicht möglich, eine Anwendung mit dem kostenlosen Tarif zu erstellen, indem Sie eine Anwendung kopieren.
+
+Wählen Sie **Kopieren** aus. Geben Sie im Dialogfeld die Details für die neue Anwendung ein. Wählen Sie dann **Kopieren** aus, um zu bestätigen, dass Sie den Vorgang fortsetzen möchten. Weitere Informationen zu den Feldern im Formular finden Sie im Schnellstart [Erstellen einer Anwendung](quick-deploy-iot-central.md).
+
+![Seite „Anwendungseinstellungen“](media/howto-use-app-templates/appcopy2.png)
+
+Nach erfolgreichem Abschluss des App-Kopiervorgangs können Sie über den Link zur neuen Anwendung navigieren.
+
+![Seite „Anwendungseinstellungen“](media/howto-use-app-templates/appcopy3a.png)
+
+Beim Kopieren einer Anwendung wird auch die Definition von Regeln und E-Mail-Aktionen kopiert. Einige Aktionen, z.B. Flow und Logic Apps, sind über die Regel-ID an bestimmte Regeln gebunden. Wenn eine Regel in eine andere Anwendung kopiert wird, erhält sie eine eigene Regel-ID. In diesem Fall müssen Benutzer eine neue Aktion erstellen und diese dann der neuen Regel zuordnen. Generell empfiehlt es sich, die Regeln und Aktionen zu überprüfen, damit sie in der neuen App auf dem neuesten Stand sind.
+
+> [!WARNING]
+> Wenn ein Dashboard Kacheln enthält, in denen Informationen zu bestimmten Geräten angezeigt werden, erscheint in der neuen Anwendung die Meldung **Die angeforderte Ressource wurde nicht gefunden** in diesen Kacheln. Sie müssen diese Kacheln erneut konfigurieren, damit in der neuen Anwendung Informationen zu Geräten angezeigt werden.
+
+## <a name="create-an-application-template"></a>Erstellen einer Anwendungsvorlage
 
 Wenn Sie eine Azure IoT Central-Anwendung erstellen, können Sie unter verschiedenen integrierten Beispielvorlagen auswählen. Sie können auch eigene Anwendungsvorlagen von vorhandenen IoT Central-Anwendungen erstellen. Anschließend können Sie bei der Erstellung neuer Anwendung Ihre eigenen Anwendungsvorlagen verwenden.
 
@@ -42,8 +66,6 @@ Die folgenden Elemente sind nicht enthalten, wenn Sie eine Anwendungsvorlage ers
 
 Diese Elemente müssen allen von einer Anwendungsvorlage erstellten Anwendungen manuell hinzugefügt werden.
 
-## <a name="create-an-application-template"></a>Erstellen einer Anwendungsvorlage
-
 So erstellen Sie eine Anwendungsvorlage von einer vorhandenen IoT Central-Anwendung:
 
 1. Wechseln Sie in Ihrer Anwendung zum Abschnitt **Verwaltung**.
@@ -53,15 +75,15 @@ So erstellen Sie eine Anwendungsvorlage von einer vorhandenen IoT Central-Anwend
 
 ![Erstellen einer Anwendungsvorlage](media/howto-use-app-templates/create-template.png)
 
-## <a name="use-an-application-template"></a>Verwenden einer Anwendungsvorlage
+### <a name="use-an-application-template"></a>Verwenden einer Anwendungsvorlage
 
 Um eine Anwendungsvorlage zum Erstellen einer neuen IoT Central-Anwendung zu verwenden, benötigen Sie einen zuvor erstellten **Freigabefähigen Link**. Fügen Sie den **Freigabefähigen Link** in die Adressleiste Ihres Browsers ein. Die Seite **Anwendung erstellen** wird angezeigt. Dabei ist Ihre benutzerdefinierte Anwendungsvorlage ausgewählt:
 
 ![Erstellen einer Anwendung von einer Vorlage](media/howto-use-app-templates/create-app.png)
 
-Wählen Sie Ihren Zahlungsplan aus, und füllen Sie die übrigen Felder im Formular aus. Wählen Sie dann **Erstellen** aus, um von der Anwendungsvorlage eine neue IoT Central-Anwendung zu erstellen.
+Wählen Sie Ihren Tarif aus, und füllen Sie die übrigen Felder im Formular aus. Wählen Sie dann **Erstellen** aus, um von der Anwendungsvorlage eine neue IoT Central-Anwendung zu erstellen.
 
-## <a name="manage-application-templates"></a>Verwalten von Anwendungsvorlagen
+### <a name="manage-application-templates"></a>Verwalten von Anwendungsvorlagen
 
 Auf der Seite zum **Exportieren von Anwendungsvorlagen** können Sie die Anwendungsvorlage löschen oder aktualisieren.
 

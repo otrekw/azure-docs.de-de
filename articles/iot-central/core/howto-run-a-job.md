@@ -8,19 +8,17 @@ ms.author: sahubbar
 ms.date: 07/08/2019
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 2a18cfabdecf930f45ca10ae25e9be44cf3f1a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 68d4dbff364f8d3fda72fc2377722031e9cccc3d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942395"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018889"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Erstellen und Ausführen von Aufträgen in Ihrer Azure IoT Central-Anwendung
 
-Sie können Microsoft Azure IoT Central verwenden, um Ihre angeschlossenen Geräte bedarfsgerecht mithilfe von Aufträgen zu überwachen. Mit Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften, -einstellungen und -befehlen vornehmen. In diesem Artikel wird der Einstieg in die Verwendung von Aufträgen in der eigenen Anwendung beschrieben.
+Sie können Microsoft Azure IoT Central verwenden, um Ihre angeschlossenen Geräte bedarfsgerecht mithilfe von Aufträgen zu überwachen. Mit Aufträgen können Sie Massenaktualisierungen an Geräteeigenschaften und -befehlen vornehmen. In diesem Artikel wird der Einstieg in die Verwendung von Aufträgen in der eigenen Anwendung beschrieben.
 
-> [!NOTE] 
-> Aufträge für Azure IoT Edge-Geräte werden derzeit nicht unterstützt. 
 
 ## <a name="create-and-run-a-job"></a>Erstellen und Ausführen eines Auftrags
 
@@ -34,9 +32,9 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
 
 3. Geben Sie einen Namen und eine Beschreibung ein, mit denen Sie Ihren Auftrag wiedererkennen können.
 
-4. Wählen Sie die Gerätegruppe aus, auf die Ihr Auftrag angewendet werden soll. Nachdem Sie die Gerätegruppe ausgewählt haben, werden auf der rechten Seite die in der Gerätegruppe enthaltenen Geräte aufgeführt. Wenn Sie eine fehlerhafte Gerätegruppe auswählen, werden keine Geräte, stattdessen jedoch eine Meldung angezeigt, dass Ihre Gerätegruppe fehlerhaft ist.
+4. Wählen Sie die Gerätegruppe aus, auf die der Auftrag angewandt werden soll. Im Abschnitt „Zusammenfassung“ können Sie sehen, auf wie viele Geräte Ihre Auftragskonfiguration angewandt wird. 
 
-5. Wählen Sie anschließend den zu definierenden Auftragstyp (Einstellung, Eigenschaft oder Befehl) aus. Klicken Sie neben dem ausgewählten Auftragstyp auf **+** , und fügen Sie die Vorgänge hinzu.
+5. Wählen Sie als Nächstes den zu definierenden Auftragstyp (Eigenschaft oder Befehl) aus. Richten Sie die Auftragskonfiguration ein, indem Sie die Eigenschaft auswählen und neue Werte festlegen oder einen Befehl auswählen. Es können mehrere Eigenschaften gleichzeitig hinzugefügt werden.
 
     ![Auftrag konfigurieren](./media/howto-run-a-job/configurejob.png)
 
@@ -49,13 +47,13 @@ In diesem Abschnitt erfahren Sie, wie Sie einen Auftrag erstellen und ausführen
     > [!NOTE]
     > Der Verlauf von bisher ausgeführten Aufträgen wird bis zu 30 Tage lang angezeigt.
 
-8. Eine Übersicht zu Ihrem Auftrag erhalten Sie, indem Sie den anzuzeigenden Auftrag aus der Liste auswählen. Diese Übersicht enthält die Auftragsdetails, Geräte und Gerätestatuswerte. In dieser Übersicht können Sie auch auf **Auftragsdetails herunterladen** klicken, um eine CSV-Datei mit den Auftragsdetails, einschließlich der Geräte und ihrer Statuswerte, herunterzuladen. Diese Informationen können bei der Problembehandlung hilfreich sein.
+7. Eine Übersicht zu Ihrem Auftrag erhalten Sie, indem Sie den anzuzeigenden Auftrag aus der Liste auswählen. Diese Übersicht enthält die Auftragsdetails, Geräte und Gerätestatuswerte. In dieser Übersicht können Sie auch auf **Auftragsdetails herunterladen** klicken, um eine CSV-Datei mit den Auftragsdetails, einschließlich der Geräte und ihrer Statuswerte, herunterzuladen. Diese Informationen können bei der Problembehandlung hilfreich sein.
 
     ![Anzeigen des Gerätestatus](./media/howto-run-a-job/downloaddetails.png)
 
 ### <a name="stop-a-running-job"></a>Beenden eines ausgeführten Auftrags
 
-Sie können einen Auftrag anhalten, indem Sie ihn auswählen und im angezeigten Bereich auf **Anhalten** klicken. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag angehalten wurde.
+Sie können einen Auftrag anhalten, indem Sie zuerst ihn und dann **Beenden** auswählen. Der Auftragsstatus wird geändert, um anzugeben, dass der Auftrag angehalten wurde.
 
    ![Auftrag beenden](./media/howto-run-a-job/stopjob.png)
 
@@ -67,7 +65,7 @@ Zum Ausführen eines angehaltenen Auftrags wählen Sie diesen aus, und klicken S
 
 ## <a name="copy-a-job"></a>Kopieren eines Auftrags
 
-Wählen Sie einen Auftrag auf der Hauptseite für Aufträge aus, und klicken Sie auf **Kopieren**, um einen vorhandenen Auftrag zu kopieren. Daraufhin wird eine neue Kopie der Auftragskonfiguration zur Bearbeitung geöffnet. Sie können den neuen Auftrag speichern oder ausführen. Wenn Sie Änderungen an der ausgewählten Gerätegruppe vorgenommen haben, werden diese zur Bearbeitung im kopierten Auftrag angezeigt.
+Um einen vorhandenen Auftrag, den Sie erstellt haben, zu kopieren, öffnen Sie ihn, und wählen Sie **Kopieren**aus. Daraufhin wird eine neue Kopie der Auftragskonfiguration zur Bearbeitung geöffnet. Sie können den neuen Auftrag speichern oder ausführen. 
 
    ![Auftrag kopieren](./media/howto-run-a-job/copyjob.png)
 
@@ -87,7 +85,7 @@ Der Statusmeldung folgt eine Übersicht über die Geräte im Auftrag. In der fol
 
 | Statusmeldung       | Bedeutung der Statusmeldung                                                     |
 | -------------------- | ------------------------------------------------------------------ |
-| Succeeded            | Die Anzahl der Geräte, auf denen der Auftrag erfolgreich ausgeführt wurde.       |
+| Erfolgreich            | Die Anzahl der Geräte, auf denen der Auftrag erfolgreich ausgeführt wurde.       |
 | Fehler               | Die Anzahl der Geräte, auf denen der Auftrag nicht erfolgreich ausgeführt wurde.       |
 
 ### <a name="view-the-device-status"></a>Anzeigen des Gerätestatus
@@ -107,6 +105,5 @@ Zum Anzeigen des Status eines Auftrags und aller betroffenen Geräte wählen Sie
 
 Nachdem Sie nun erfahren haben, wie Aufträge in Ihrer Azure IoT Central-Anwendung erstellt werden, können Sie die nächsten Schritte ausführen:
 
-- [Verwenden von Gerätegruppen](howto-use-device-sets.md)
 - [Verwalten von Geräten](howto-manage-devices.md)
 - [Verwalten der Versionen Ihrer Gerätevorlage](howto-version-device-template.md)

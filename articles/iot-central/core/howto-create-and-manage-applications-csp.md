@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40c5f612b5b1571bb3d39f452d64a7005701f7c1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453969"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023802"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
@@ -23,25 +23,29 @@ Als CSP können Sie Microsoft Azure IoT Central-Anwendungen im Auftrag Ihrer Kun
 
 Melden Sie sich zum Einstieg bei Ihrem Konto im Microsoft-Partnerportal an, und wählen Sie einen Kunden aus, für den Sie eine Azure IoT Central-Anwendung erstellen möchten. Navigieren Sie vom linken Navigationsbereich zur Dienstverwaltung für den Kunden.
 
-![Microsoft Partner Center, Kundenansicht](media/howto-create-application-csp/image1.png)
+![Microsoft Partner Center, Kundenansicht](media/howto-create-and-manage-applications-csp/image1.png)
 
 Azure IoT Central wird als zur Verwaltung verfügbarer Dienst aufgeführt. Wählen Sie auf der Seite den Azure IoT Central-Link aus, um für diesen Kunden neue Anwendungen zu erstellen oder vorhandene Anwendungen zu verwalten.
 
-![Azure IoT Central, verfügbar zur Verwaltung](media/howto-create-application-csp/image2.png)
+![Azure IoT Central, verfügbar zur Verwaltung](media/howto-create-and-manage-applications-csp/image2.png)
 
 Sie gelangen zur „Anwendungs-Manager“-Seite von Azure IoT Central. Azure IoT Central beachtet den Kontext, dass Sie vom Microsoft Partner Center gekommen sind, um diesen bestimmten Kunden zu verwalten. Dies wird in der Kopfzeile der Seite „Anwendungs-Manager“ bestätigt. Von hier aus können Sie entweder zu einer zuvor für diesen Kunden erstellten Anwendung navigieren, um sie zu verwalten, oder eine neue Anwendung für den Kunden erstellen.
 
-![Erstellen des Managers für CSPs](media/howto-create-application-csp/image3.png)
+![Erstellen des Managers für CSPs](media/howto-create-and-manage-applications-csp/image3.png)
 
 Um eine Azure IoT Central-Anwendung zu erstellen, wählen Sie im linken Menü **Erstellen** aus. Wählen Sie eine der Branchenvorlagen oder **Legacyanwendung** aus, um eine Anwendung von Grund auf neu zu erstellen. Dadurch wird die Seite „Anwendungserstellung“ geladen. Sie müssen alle Felder auf dieser Seite ausfüllen und dann **Erstellen** auswählen. Unten finden Sie weitere Informationen zu den einzelnen Feldern.
 
-![Erstellen einer Anwendungsseite für CSPs](media/howto-create-application-csp/image4.png)
+![Erstellen einer Anwendungsseite für CSPs](media/howto-create-and-manage-applications-csp/image4.png)
 
-![Erstellen einer Anwendungsseite für CSPs](media/howto-create-application-csp/image4-1.png)
+![Erstellen einer Anwendungsseite für CSPs](media/howto-create-and-manage-applications-csp/image4-1.png)
 
-## <a name="payment-plan"></a>Zahlungsplan
+![Erstellen einer Anwendungsseite für CSP-Abrechnungsinformationen](media/howto-create-and-manage-applications-csp/image4-2.png)
 
-Sie können als CSP nur Anwendungen mit nutzungsbasierter Bezahlung erstellen. Um Ihrem Kunden Azure IoT Central vorzustellen, können Sie separat eine Testanwendung erstellen. Auf der Seite [IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/) erfahren Sie mehr über eine kostenlose Testversion und Anwendungen mit nutzungsbasierter Bezahlung.
+## <a name="pricing-plan"></a>Tarif
+
+Sie können nur Anwendungen erstellen, die einen Standardtarif als CSP verwenden. Um Ihrem Kunden Azure IoT Central vorzustellen, können Sie separat eine Anwendung erstellen, die den kostenlosen Tarif nutzt. Weitere Informationen zu den Tarifen „Free“ und „Standard“ finden Sie auf der Seite [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
+
+Sie können nur Anwendungen erstellen, die einen Standardtarif als CSP verwenden. Um Ihrem Kunden Azure IoT Central vorzustellen, können Sie separat eine Anwendung erstellen, die den kostenlosen Tarif nutzt. Weitere Informationen zu den Tarifen „Free“ und „Standard“ finden Sie auf der Seite [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/).
 
 ## <a name="application-name"></a>Anwendungsname
 
@@ -65,16 +69,13 @@ Weitere Informationen finden Sie unter [Azure Active Directory](https://docs.mic
 
 Mit einem Azure-Abonnement können Sie Instanzen von Azure-Diensten erstellen. Azure IoT Central findet automatisch alle Azure-Abonnements des Kunden, auf die Sie Zugriff haben, und zeigt sie auf der Seite **Anwendung erstellen** in einem Dropdownmenü an. Wählen Sie ein Azure-Abonnement, um eine neue Azure IoT Central-Anwendung zu erstellen.
 
-Wenn Sie über kein Azure-Abonnement verfügen, können Sie im Microsoft Partner Center eins erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Anwendung erstellen**. Ihr neues Abonnement wird in der Dropdownliste **Azure-Abonnement** angezeigt.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie im Microsoft Partner Center eines erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Anwendung erstellen**. Ihr neues Abonnement wird in der Dropdownliste **Azure-Abonnement** angezeigt.
 
 Weitere Informationen finden Sie unter [Azure-Abonnements](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing).
 
 ## <a name="region"></a>Region
 
-Wählen Sie die Region oder [Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) aus, in der Sie Ihre Azure IoT Central-Anwendung erstellen möchten. Normalerweise sollten Sie die Region wählen, die Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen.
-
-> [!NOTE]
-> Die Vorlagen für Vorschauanwendungen sind derzeit nur an den Standorten **Europa** und **USA** verfügbar.
+Wählen Sie die Region oder [Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) aus, in der Sie Ihre Azure IoT Central-Anwendung erstellen möchten. Normalerweise sollten Sie die Region wählen, die Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen.
 
 Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) und [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
 
@@ -85,11 +86,7 @@ Die Regionen, in denen Azure IoT Central verfügbar ist, finden Sie auf der Seit
 
 ## <a name="application-template"></a>Anwendungsvorlage
 
-Sie können die nachstehende Anwendungsvorlage für Ihre neue Azure IoT Central-Anwendung auswählen.
-
-| Anwendungsvorlage | BESCHREIBUNG |
-| -------------------- | ----------- |
-| Legacyanwendung   | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
+Wählen Sie die Anwendungsvorlage aus, die Sie für Ihre Anwendung verwenden möchten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

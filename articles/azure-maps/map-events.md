@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 06fdb9733ad9c173c88936e5502214b58f5d10ee
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911079"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76985916"
 ---
 # <a name="interact-with-the-map"></a>Interaktion mit der Karte
 
-In diesem Artikel erfahren Sie, wie Sie die Eigenschaft [map class events](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) verwenden, um Ereignisse auf der Karte und auf verschiedenen Ebenen der Karte hervorzuheben. Außerdem wird beschrieben, wie Sie die Eigenschaft „map class events“ verwenden, um Ereignisse bei der Interaktion mit einem HTML-Marker hervorzuheben.
+In diesem Artikel wird die Verwendung der [Klasse von Kartenereignissen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?#events) gezeigt. Die Eigenschaft hebt Ereignisse auf der Karte und auf verschiedenen Ebenen der Karte hervor. Sie können auch Ereignisse hervorheben, wenn Sie mit einem HTML-Marker interagieren.
 
 ## <a name="interact-with-the-map"></a>Interaktion mit der Karte
 
-Experimentieren Sie mit der unten gezeigten Karte, und sehen Sie die entsprechenden Mausereignisse hervorgehoben auf der rechten Seite. Sie können auf die Registerkarte **JS** klicken, um den JavaScript-Code anzuzeigen und zu bearbeiten. Außerdem können Sie auf die Schaltfläche **Auf CodePen bearbeiten** klicken und den Code auf CodePen bearbeiten.
+Experimentieren Sie mit der unten gezeigten Karte, und sehen Sie die entsprechenden Mausereignisse hervorgehoben auf der rechten Seite. Sie können auf die Registerkarte **JS** klicken, um den JavaScript-Code anzuzeigen und zu bearbeiten. Sie können auch auf **Auf CodePen bearbeiten** klicken, um den Code auf CodePen zu ändern.
 
 <br/>
 
@@ -31,7 +31,7 @@ Experimentieren Sie mit der unten gezeigten Karte, und sehen Sie die entsprechen
 
 ## <a name="interact-with-map-layers"></a>Interaktion mit Kartenebenen
 
-Der folgende Code hebt den Namen der Ereignisse hervor, die bei der Interaktion mit der Symbolebene ausgelöst werden. Die Symbol-, Blasen-, Linien- und Polygonebenen unterstützen den gleichen Satz von Ereignissen. Die Wärmebild- und Kachelebenen unterstützen keines dieser Ereignisse.
+Der folgende Code hebt das ausgelöste Ereignis hervor, während Sie mit der Symbolebene interagieren. Die Symbol-, Blasen-, Linien- und Polygonebenen unterstützen den gleichen Satz von Ereignissen. Die Wärmebild- und Kachelebenen unterstützen keines dieser Ereignisse.
 
 <br/>
 

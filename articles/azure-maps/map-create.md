@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 49c86f3e6c654ecbfcd07809f42a1b038ca3f8ab
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911109"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76988582"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Karte erstellen und animieren.
 
 ## <a name="loading-a-map"></a>Laden einer Karte
 
-Um eine Karte zu laden, erstellen Sie eine neue Instanz der [Map-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Beim Initialisieren der Karte werden eine DIV-Element-ID zum Rendern der Karte und eine Reihe von Optionen übergeben, die beim Laden der Karte verwendet werden können. Wenn im `atlas`-Namespace keine standardmäßigen Authentifizierungsinformationen angegeben sind, müssen diese Informationen beim Laden der Karte in den Kartenoptionen angegeben werden. Die Karte lädt aus Leistungsgründen verschiedene Ressourcen asynchron. Fügen Sie daher nach dem Erstellen der Karteninstanz ein `ready`- oder ein `load`-Ereignis zur Karte hinzu, und fügen Sie dann zusätzlichen Code hinzu, der in diesem Ereignishandler mit der Karte interagiert. Das `ready`-Ereignis wird ausgelöst, sobald genügend Ressourcen geladen wurden, um eine programmgesteuerte Interaktion mit der Karte zu ermöglichen. Das `load`-Ereignis wird ausgelöst, nachdem die anfängliche Kartenansicht vollständig geladen wurde. 
+Um eine Karte zu laden, erstellen Sie eine neue Instanz der [Map-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Beim Initialisieren der Karte übergeben Sie eine DIV-Element-ID zum Rendern der Karte und eine Reihe von Optionen, die beim Laden der Karte verwendet werden. Wenn im `atlas`-Namespace keine standardmäßigen Authentifizierungsinformationen angegeben sind, müssen diese Informationen beim Laden der Karte in den Kartenoptionen angegeben werden. Die Karte lädt aus Leistungsgründen verschiedene Ressourcen asynchron. Fügen Sie daher nach dem Erstellen der Karteninstanz ein `ready`- oder ein `load`-Ereignis zur Karte hinzu, und fügen Sie dann zusätzlichen Code, der mit der Karte interagiert, zum Ereignishandler hinzu. Das `ready`-Ereignis wird ausgelöst, sobald genügend Ressourcen geladen wurden, um eine programmgesteuerte Interaktion mit der Karte zu ermöglichen. Das `load`-Ereignis wird ausgelöst, nachdem die anfängliche Kartenansicht vollständig geladen wurde. 
 
 <br/>
 
@@ -31,11 +31,11 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 </iframe>
 
 > [!TIP]
-> Auf einer Seite können mehrere Karten geladen werden, und jede dieser Karten kann unterschiedliche oder die gleichen Authentifizierungs- und Spracheinstellungen aufweisen.
+> Sie können mehrere Karten auf dieselbe Seite laden. Mehrere Karten auf derselben Seite können dieselben oder unterschiedliche Authentifizierungs- und Spracheinstellungen verwenden.
 
 ## <a name="show-a-single-copy-of-the-world"></a>Anzeigen nur einer Weltkarte
 
-Wenn der Maßstab einer Karte auf einem Breitbildschirm verkleinert wird, werden mehrere Kopien der Weltkarte horizontal angezeigt. Dies ist in den meisten Szenarien in Ordnung, aber bei einigen Anwendungen ist es wünschenswert, nur eine Kopie anzuzeigen. Dies lässt sich durch Einrichten der Kartenoption `renderWorldCopies` auf `false` erreichen.
+Wenn der Maßstab einer Karte auf einem Breitbildschirm verkleinert wird, werden mehrere Kopien der Weltkarte horizontal angezeigt. Diese Option ist für einige Szenarien hervorragend geeignet, aber für andere Anwendungen ist es empfehlenswert, dass nur eine einzelne Kopie der Welt angezeigt wird. Dieses Verhalten wird implementiert, indem die Option `renderWorldCopies` der Karte auf `false` festgelegt wird.
 
 <br/>
 
@@ -45,13 +45,13 @@ Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>render
 
 ## <a name="controlling-the-map-camera"></a>Steuern der Kartenkamera
 
-Es gibt zwei Möglichkeiten, um den angezeigten Kartenbereich mithilfe der Kamera festzulegen. Sie können Kameraoptionen wie „Zentrieren“ oder „Zoomen“ beim Laden der Karte festlegen. Sie können auch jederzeit, nachdem die Karte geladen wurde, die Option `setCamera` aufrufen, um die Kartenansicht programmgesteuert zu aktualisieren.  
+Es gibt zwei Möglichkeiten, um den angezeigten Kartenbereich mithilfe der Kamera einer Karte festzulegen. Sie können die Kameraoptionen beim Laden der Karte festlegen. Sie können die Option `setCamera` auch jederzeit nach dem Laden der Karte aufrufen, um die Kartenansicht programmgesteuert zu aktualisieren.  
 
 <a id="setCameraOptions"></a>
 
 ### <a name="set-the-camera"></a>Festlegen der Kamera
 
-Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) erstellt, und die Optionen für Zentrieren und Zoomen werden festgelegt. Karteneigenschaften wie Zentrieren und Zoomfaktor gehören zu [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
+Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) erstellt, und die Optionen für Zentrieren und Zoomen werden festgelegt. Karteneigenschaften wie „Zentrieren“ und „Zoomfaktor“ gehören zu [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <br/>
 
@@ -71,7 +71,7 @@ Im folgenden Code wird über `new atlas.Map()` ein [Map-Objekt](https://docs.mic
 
 ### <a name="animate-map-view"></a>Animieren der Kartenansicht
 
-Im folgenden Code erstellt der erste Codeblock eine Karte und legt Kartenstil, Zentrierung und Zoomwerte fest. Im zweiten Codeblock wird ein Klickereignishandler für die Schaltfläche zum Animieren erstellt. Beim Klicken auf diese Schaltfläche wird die setCamera-Funktion mit zufällig generierten Werten für [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) und [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) aufgerufen.
+Im folgenden Code erstellt der erste Codeblock eine Karte und legt die Kartenstile für Zentrierung und Zoom fest. Im zweiten Codeblock wird ein Klickereignishandler für die Schaltfläche zum Animieren erstellt. Beim Klicken auf diese Schaltfläche wird die `setCamera`-Funktion mit zufällig generierten Werten für [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) und [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) aufgerufen.
 
 <br/>
 
@@ -80,7 +80,7 @@ Im folgenden Code erstellt der erste Codeblock eine Karte und legt Kartenstil, Z
 
 ## <a name="try-out-the-code"></a>Testen Sie den Code
 
-Sehen Sie sich den obigen Beispielcode an. Sie können den JavaScript-Code links auf der Registerkarte **JS** bearbeiten und sich die Änderungen an der Kartenansicht rechts auf der Registerkarte **Ergebnis** ansehen. Außerdem können Sie auf die Schaltfläche **Auf CodePen bearbeiten** klicken, und den Code auf CodePen bearbeiten.
+Schauen Sie sich die Codebeispiele an. Sie können den JavaScript-Code auf der Registerkarte **JS** bearbeiten und sich die Änderungen an der Kartenansicht auf der Registerkarte **Ergebnis** ansehen. Sie können auch oben rechts auf **Auf CodePen bearbeiten** klicken und den Code in CodePen ändern.
 
 <a id="relatedReference"></a>
 

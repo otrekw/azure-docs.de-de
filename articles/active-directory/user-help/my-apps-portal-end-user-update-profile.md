@@ -2,31 +2,38 @@
 title: Aktualisieren von Profil- und Kontoinformationen über das Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie Ihr Profil und Ihre Geschäfts-, Schul- oder Unikontoinformationen aktualisieren können, einschließlich Ändern Ihres Kennworts, Zurücksetzen des Kennworts, Aktualisieren Ihrer Sicherheitsüberprüfungsmethoden, Anzeigen des Hinweises mit den Nutzungsbedingungen Ihres Unternehmens und Abmelden von überall dort, wo Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a6bcfa7fc58d47e64bff0838ff698bc59eda4e70
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704866"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022278"
 ---
-# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Aktualisieren Ihres Profils und der Informationen zu Ihrem Geschäfts-, Schul- oder Unikonto über das Portal „Meine Apps“
+# <a name="update-your-profile-and-account-information-on-the-my-apps-portal"></a>Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“
 
-Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
+Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** für folgende Aufgaben verwenden: 
+
+- Anzeigen und Starten vieler cloudbasierter Apps Ihrer Organisation
+- Aktualisieren einiger Ihrer Profil- und Kontoinformationen
+- Anzeigen von Informationen zu Ihren **Gruppen**
+- Ausführen von **Zugriffsüberprüfungen** für Ihre Apps und Gruppen 
+
+Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+> [!Important]
+> Dieser Inhalt richtet sich an Benutzer von **Meine Apps**. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="view-your-organization-related-profile-information"></a>Anzeigen der auf Ihre Organisation bezogenen Profilinformationen
 

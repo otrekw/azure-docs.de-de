@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: fd3396a98359aef966cd8bb2f984e556fc6abcc7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 08fbe9565356dc1b7db952fdd265770fef600ca8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584858"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989041"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Erstellen und Verwalten einer Classroom-Vorlage in Azure Lab Services
 Eine Vorlage in einem Lab ist ein VM-Basisimage und dient zur Erstellung der virtuellen Computer aller Benutzer. Richten Sie den virtuellen Computer der Vorlage so ein, dass er genau das enthält, was Sie den Lab-Benutzern zur Verfügung stellen möchten. Sie können einen Namen und eine Beschreibung der Vorlage angeben, die den Lab-Benutzern angezeigt werden. Anschließend veröffentlichen Sie die Vorlage, um Instanzen der Vorlagen-VM für Ihre Lab-Benutzer zur Verfügung zu stellen. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer entspricht der maximalen Anzahl von Benutzern im Lab, die Sie in der Nutzungsrichtlinie des Labs festlegen können. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage.
@@ -39,17 +39,15 @@ Gehen Sie wie folgt vor, um Titel und Beschreibung erstmals festzulegen und spä
 ## <a name="update-a-template-vm"></a>Aktualisieren einer Vorlage für virtuelle Computer
 Gehen Sie wie folgt vor, um eine Vorlage für virtuelle Computer zu aktualisieren:  
 
-1. Wählen Sie auf der Seite **Vorlage** auf der Symbolleiste die Option**Customize template** (Vorlage anpassen) aus. 
-2. Wählen Sie im Dialogfeld **Customize template** (Vorlage anpassen) die Option **Weiter** aus. Wenn Sie die Vorlage gestartet und Änderungen vorgenommen haben, hat sie nicht mehr dasselbe Setup wie die virtuellen Computer, die zuletzt für die Benutzer veröffentlicht wurden. Vorlagenänderungen werden erst nach der erneuten Veröffentlichung auf den vorhandenen virtuellen Computern der Benutzer widergespiegelt.
-
-    ![Dialogfeld „Anpassen“](../media/how-to-create-manage-template/customize-template-dialog.png)
 1. Warten Sie, bis die Vorlage für virtuelle Computer gestartet wurde, und wählen Sie dann auf der Symbolleiste **Mit Vorlage verbinden** aus, um eine Verbindung mit der Vorlage für virtuelle Computer herzustellen. Befolgen Sie dann die Anweisungen. Handelt es sich um einen Windows-Computer, wird eine Option zum Herunterladen der RDP-Datei angezeigt. 
+1. Wenn Sie eine Verbindung mit der Vorlage hergestellt und Änderungen vorgenommen haben, hat sie nicht mehr dasselbe Setup wie die virtuellen Computer, die zuletzt für die Benutzer veröffentlicht wurden. Vorlagenänderungen werden erst nach der erneuten Veröffentlichung auf den vorhandenen virtuellen Computern der Benutzer widergespiegelt.
 
     ![Herstellen einer Verbindung mit der Vorlage für virtuelle Computer](../media/how-to-create-manage-template/connect-template-vm.png)
+    
 1. Installieren Sie die Software, die die Teilnehmer für das Lab benötigen (z.B. Visual Studio, Azure Storage-Explorer usw.). 
-2. Trennen Sie die Verbindung mit der Vorlage für virtuelle Computer (indem Sie die Remotedesktopsitzung schließen). 
-3. **Beenden** Sie die Vorlage für virtuelle Computer, indem Sie **Stop template** (Vorlage beenden) auswählen. 
-4. Führen Sie die Schritte im nächsten Abschnitt aus, um die aktualisierte Vorlage für virtuelle Computer zu **veröffentlichen**. 
+1. Trennen Sie die Verbindung mit der Vorlage für virtuelle Computer (indem Sie die Remotedesktopsitzung schließen). 
+1. **Beenden** Sie die Vorlage für virtuelle Computer, indem Sie **Stop template** (Vorlage beenden) auswählen. 
+1. Führen Sie die Schritte im nächsten Abschnitt aus, um die aktualisierte Vorlage für virtuelle Maschinen zu **veröffentlichen**. 
 
 ## <a name="publish-the-template-vm"></a>Veröffentlichen der Vorlage für virtuelle Computer  
 Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie dies später nachholen. Vor der Veröffentlichung empfiehlt es sich, eine Verbindung mit der Vorlagen-VM herzustellen und sie ggf. mit Software zu aktualisieren. Wenn Sie eine Vorlage veröffentlichen, werden von Azure Lab Services im Lab mithilfe der Vorlage virtuelle Computer erstellt. Die Anzahl der in diesem Vorgang erstellten virtuellen Computer ist die Anzahl der virtuellen Computer, die Sie bei der ersten Veröffentlichung bzw. auf der Seite „VM-Pool“ angegeben haben. Alle virtuellen Computer haben die gleiche Konfiguration wie die Vorlage. 
@@ -61,7 +59,7 @@ Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie
 
     > [!IMPORTANT]
     > Sobald eine Vorlage veröffentlicht wurde, kann dies nicht mehr rückgängig gemacht werden. Sie können die Vorlage jedoch erneut veröffentlichen. 
-4. Sie können den Status des Veröffentlichungsvorgangs auf der Seite „Vorlage“ verfolgen. Warten Sie, bis der Status der Vorlage in **Veröffentlicht** geändert wird. 
+1. Sie können den Status des Veröffentlichungsvorgangs auf der Seite „Vorlage“ verfolgen. Warten Sie, bis der Status der Vorlage in **Veröffentlicht** geändert wird. 
 
     ![Veröffentlichungsstatus](../media/how-to-create-manage-template/publish-status.png)
 1. Wechseln Sie zur Seite **Virtuelle Computer**, und vergewissern Sie sich, dass virtuelle Computer mit dem Status **Nicht zugewiesen** angezeigt werden. Diese virtuellen Computer sind noch keinen Teilnehmern zugewiesen. Warten Sie, bis die virtuellen Computer erstellt wurden. Sie sollten den Status **Beendet** aufweisen. Auf dieser Seite können Sie einen virtuellen Computer für einen Teilnehmer starten, eine Verbindung damit herstellen und ihn beenden und löschen. Sie können virtuelle Computer auf dieser Seite starten oder sie von Ihren Kursteilnehmern starten lassen. 
@@ -70,7 +68,7 @@ Wenn Sie die Vorlage nicht beim Erstellen des Labs veröffentlichen, können Sie
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen und Verwalten von Labkonten als Administrator](how-to-manage-lab-accounts.md)
 - [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)

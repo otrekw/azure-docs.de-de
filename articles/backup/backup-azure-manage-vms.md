@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über das Verwalten und Überwachen von Azure-VM-
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dd4e9dc199048b3faf3da0cadfdf60bdcb26c5bc
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172971"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989687"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Verwalten von Azure-VM-Sicherungen mit dem Azure Backup-Dienst
 
@@ -38,19 +38,19 @@ So zeigen Sie virtuelle Computer auf dem Tresordashboard an:
 3. Klicken Sie mit der rechten Maustaste auf den Tresor, und wählen Sie **An Dashboard anheften** aus.
 4. Öffnen Sie das Dashboard des Tresors.
 
-    ![Öffnen des Tresor-Dashboards und des Blatts „Einstellungen“](./media/backup-azure-manage-vms/full-view-rs-vault.png)
+    ![Öffnen des Tresor-Dashboards und des Bereichs „Einstellungen“](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
 5. Wählen Sie auf der Kachel **Sicherungselemente** die Option **Virtuelle Azure-Computer** aus.
 
     ![Öffnen der Kachel „Sicherungselemente“](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6. Auf dem Blatt **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer anzeigen. In diesem Beispiel schützt der Tresor einen virtuellen Computer: demobackup.  
+6. Im Bereich **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer anzeigen. In diesem Beispiel schützt der Tresor einen virtuellen Computer: demobackup.  
 
-    ![Anzeigen des Blatts „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Anzeigen des Bereichs „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 7. Im Dashboard für Tresorobjekte können Sie Sicherungsrichtlinien ändern, eine On-Demand-Sicherung durchführen, den Schutz von virtuellen Computern beenden und wieder aufnehmen, Sicherungsdaten löschen, Wiederherstellungspunkte anzeigen und eine Wiederherstellung durchführen.
 
-    ![Dashboard „Sicherungselemente“ mit Blatt „Einstellungen“](./media/backup-azure-manage-vms/item-dashboard-settings.png)
+    ![Dashboard „Sicherungselemente“ mit Bereich „Einstellungen“](./media/backup-azure-manage-vms/item-dashboard-settings.png)
 
 ## <a name="manage-backup-policy-for-a-vm"></a>Verwalten der Sicherungsrichtlinie für einen virtuellen Computer
 
@@ -61,9 +61,9 @@ So verwalten Sie eine Sicherungsrichtlinie:
 
     ![Öffnen der Kachel „Sicherungselemente“](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3. Auf dem Blatt **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer und den Status der letzten Sicherung mit dem Zeitpunkt der letzten Wiederherstellung anzeigen.
+3. Im Bereich **Sicherungselemente** können Sie die Liste der geschützten virtuellen Computer und den Status der letzten Sicherung mit der Zeit des letzten Wiederherstellungspunkts anzeigen.
 
-    ![Anzeigen des Blatts „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
+    ![Anzeigen des Bereichs „Sicherungselemente“](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
 4. Auf dem Dashboard für Tresorelemente können Sie eine Sicherungsrichtlinie auswählen.
 
@@ -85,8 +85,8 @@ So lösen Sie eine On-Demand-Sicherung aus:
 
     ![Die Option „Jetzt sichern“](./media/backup-azure-manage-vms/backup-now-button.png)
 
-2. Wählen Sie unter **Sicherungsverwaltungstyp** die Option **Virtueller Azure-Computer** aus. Das Blatt **Sicherungselemente (Virtueller Azure-Computer)** wird angezeigt.
-3. Wählen Sie einen virtuellen Computer und dann **Jetzt sichern** aus, um eine On-Demand-Sicherung zu erstellen. Das Blatt **Jetzt sichern** wird angezeigt.
+2. Wählen Sie unter **Sicherungsverwaltungstyp** die Option **Virtueller Azure-Computer** aus. Der Bereich **Sicherungselemente (Virtueller Azure-Computer)** wird angezeigt.
+3. Wählen Sie einen virtuellen Computer und dann **Jetzt sichern** aus, um eine On-Demand-Sicherung zu erstellen. Der Bereich **Jetzt sichern** wird angezeigt.
 4. Geben Sie im Feld **Sicherung beibehalten bis** ein Datum ein, bis zu dem die Sicherung beibehalten werden soll.
 
     ![Der Kalender „Jetzt sichern“](./media/backup-azure-manage-vms/backup-now-check.png)
@@ -157,6 +157,8 @@ Es gibt zwei Möglichkeiten, die Sicherungsdaten eines virtuellen Computers zu l
     ![Löschen von Sicherungsdaten](./media/backup-azure-manage-vms/delete-backup-data1.png)
 
   * Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
+
+Zum Schutz Ihrer Daten bietet Azure Backup ein Feature für vorläufiges Löschen. Beim vorläufigen Löschen werden die Sicherungsdaten auch nach dem Löschen der Sicherung (alle Wiederherstellungspunkte) eines virtuellen Computers 14 weitere Tage lang aufbewahrt. Weitere Informationen finden Sie in der [Dokumentation zum vorläufigen Löschen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
   > [!NOTE]
   > Wenn Sie die Sicherungsdaten löschen, werden alle zugehörigen Wiederherstellungspunkte gelöscht. Sie können keine bestimmten Wiederherstellungspunkte zum Löschen auswählen.

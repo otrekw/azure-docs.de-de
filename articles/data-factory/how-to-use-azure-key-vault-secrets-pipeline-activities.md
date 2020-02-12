@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: chlound
-ms.openlocfilehash: 837d62784a56ad0f17471cca5a660819d4a83e12
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca2ea6a45bdf37f15f2ab4fd9c685f11f6d7f64
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926758"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031491"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>Verwenden von Azure Key Vault-Geheimnissen in Pipelineaktivitäten
 
@@ -47,12 +47,12 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
 
 4. Fügen Sie in der Data Factory-Pipeline eine neue Webaktivität hinzu, und konfigurieren Sie diese wie folgt.  
 
-    |Eigenschaft  |Wert  |
+    |Eigenschaft  |value  |
     |---------|---------|
     |Sichere Ausgabe     |True         |
     |URL     |[Ihr Geheimnis-URI]?api-version=7.0         |
     |Methode     |GET         |
-    |Authentication     |MSI         |
+    |Authentifizierung     |MSI         |
     |Resource        |https://vault.azure.net       |
 
     ![Webaktivität](media/how-to-use-azure-key-vault-secrets-pipeline-activities/webactivity.png)
@@ -63,7 +63,7 @@ Diese Funktion basiert auf der verwalteten Data Factory-Identität.  Information
     > [!CAUTION]
     > Legen Sie die Option „Sichere Ausgabe“ auf „True“ fest, um zu verhindern, dass der Geheimniswert als Klartext protokolliert wird.  Für alle weiteren Aktivitäten, die diesen Wert verwenden, sollte die Option „Sichere Eingabe“ auf „True“ festgelegt werden.
 
-5. Wenn Sie den Wert in einer anderen Aktivität nutzen möchten, verwenden Sie den Codeausdruck **@activity("web").output.value)** .
+5. Wenn Sie den Wert in einer anderen Aktivität nutzen möchten, verwenden Sie den Codeausdruck **@activity("web").output.value**.
 
     ![Codeausdruck](media/how-to-use-azure-key-vault-secrets-pipeline-activities/usewebactivity.png)
 

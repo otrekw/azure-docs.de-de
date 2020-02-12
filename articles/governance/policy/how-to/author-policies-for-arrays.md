@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 915f50945e0c2520fbda09c4db1b581c9381073b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873096"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023190"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -95,7 +95,7 @@ Das Format für den Parameterwert unterscheidet sich bei der Verwendung der Azur
 
 Die Befehle zur Verwendung dieser Zeichenfolge mit den einzelnen SDKs lauten wie folgt:
 
-- Azure-Befehlszeilenschnittstelle: Befehl [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) mit dem Parameter **params**
+- Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create) mit dem Parameter **params**
 - Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) mit dem Parameter **PolicyParameter**
 - REST-API: Im _PUT_-Vorgang [create](/rest/api/resources/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters**-Eigenschaft
 
@@ -104,7 +104,7 @@ Die Befehle zur Verwendung dieser Zeichenfolge mit den einzelnen SDKs lauten wie
 ### <a name="array-conditions"></a>Arraybedingungen
 
 Die [Bedingungen](../concepts/definition-structure.md#conditions) für Richtlinienregeln, mit denen ein Parameter vom 
-**Typ** _array_ verwendet werden kann, sind auf `in` und `notIn` beschränkt. Die folgende Richtliniendefinition mit der Bedingung `equals` kann hierfür als Beispiel dienen:
+**Typ**_array_ verwendet werden kann, sind auf `in` und `notIn` beschränkt. Die folgende Richtliniendefinition mit der Bedingung `equals` kann hierfür als Beispiel dienen:
 
 ```json
 {
@@ -136,11 +136,12 @@ Wenn Sie versuchen, diese Richtliniendefinition über das Azure-Portal zu erstel
 
 - „Die Richtlinie ‚{0}‘ konnte aufgrund von Überprüfungsfehlern nicht parametrisiert werden. Überprüfen Sie, ob die Richtlinienparameter richtig definiert sind. Innere Ausnahme: Das Auswertungsergebnis des Sprachausdrucks ‚[parameters('allowedLocations')]‘ ist vom Typ ‚Array‘. Erwartet wird Typ ‚String‘.“
 
-Der erwartete **Typ** der Bedingung `equals` ist _string_. Da **allowedLocations** als **Typ** _array_ definiert ist, wertet das Richtlinienmodul den Sprachausdruck aus und löst den Fehler aus. Bei den Bedingungen `in` und `notIn` erwartet das Richtlinienmodul den **Typ** _array_ im Sprachausdruck. Um dieses Problem zu beheben, ändern Sie `equals` in `in` oder `notIn`.
+Der erwartete **Typ** der Bedingung `equals` ist _string_. Da **allowedLocations** als **Typ** _array_ definiert ist, wertet die Richtlinien-Engine den Sprachausdruck aus und löst den Fehler aus. Bei den Bedingungen `in` und `notIn` erwartet die Richtlinien-Engine den **Typ** _array_ im Sprachausdruck. Um dieses Problem zu beheben, ändern Sie `equals` in `in` oder `notIn`.
 
 ### <a name="evaluating-the--alias"></a>Auswerten des [*]-Alias
 
-Wenn an den Namen von Aliasen **\[\*\]** angefügt ist, bedeutet dies, dass es sich um den **Typ** _array_ handelt. **\[\*\]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt den Wert des gesamten Arrays auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Standardszenarien hilfreich: „Kein(e)“, „Beliebig“ und „Alle“. Verwenden Sie für komplexe Szenarien [count](../concepts/definition-structure.md#count).
+Wenn an den Namen von Aliasen **\[\*\]** angefügt ist, bedeutet dies, dass es sich um den **Typ**_array_ handelt. **\[\*\]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt jedes Element des Arrays einzeln mit einer Verknüpfung über einen logischen AND-Operator auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Standardszenarien hilfreich: Elemente vom Typ _None_, _Any_ und _All_ stimmen überein.
+Verwenden Sie für komplexe Szenarien [count](../concepts/definition-structure.md#count).
 
 Das Richtlinienmodul löst die Auswirkung (**effect**) in **then** nur aus, wenn die **if**-Regel als „true“ ausgewertet wird.
 Dies ist wichtig für das Verständnis der Art und Weise, wie **\[\*\]** jedes einzelne Element des Arrays auswertet.
@@ -183,16 +184,16 @@ Ersetzen Sie für jede der unten stehenden Beispielbedingungen `<field>` durch `
 
 Die Kombination der Bedingung, der Beispielrichtlinienregel und des Arrays der obigen vorhandenen Werte führt zu den folgenden Ergebnissen:
 
-|Bedingung |Ergebnis |Erklärung |
-|-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |Nichts |Ein Arrayelement wird als „false“ ausgewertet (127.0.0.1 != 127.0.0.1) und ein Element als „true“ (127.0.0.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
-|`{<field>,"notEquals":"10.0.4.1"}` |Richtlinienauswirkung |Beide Arrayelemente werden als „true“ ausgewertet (10.0.4.1 != 127.0.0.1 und 10.0.4.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _true_, und die Auswirkung wird ausgelöst. |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |Richtlinienauswirkung |Ein Arrayelement wird als „true“ ausgewertet (127.0.0.1 == 127.0.0.1) und ein Element als „false“ (127.0.0.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_. Der logische Operator wird als „true“ ausgewertet (**nicht** _false_), sodass die Auswirkung ausgelöst wird. |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |Richtlinienauswirkung |Beide Arrayelemente werden als „false“ ausgewertet (10.0.4.1 == 127.0.0.1 und 10.0.4.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_. Der logische Operator wird als „true“ ausgewertet (**nicht** _false_), sodass die Auswirkung ausgelöst wird. |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |Richtlinienauswirkung |Ein Arrayelement wird als „false“ ausgewertet (127.0.0.1 != 127.0.0.1) und ein Element als „true“ (127.0.0.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _false_. Der logische Operator wird als „true“ ausgewertet (**nicht** _false_), sodass die Auswirkung ausgelöst wird. |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nichts |Beide Arrayelemente werden als „true“ ausgewertet (10.0.4.1 != 127.0.0.1 und 10.0.4.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _true_. Der logische Operator wird als „false“ ausgewertet (**nicht** _true_), sodass die Auswirkung nicht ausgelöst wird. |
-|`{<field>,"Equals":"127.0.0.1"}` |Nichts |Ein Arrayelement wird als „true“ ausgewertet (127.0.0.1 == 127.0.0.1) und ein Element als „false“ (127.0.0.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
-|`{<field>,"Equals":"10.0.4.1"}` |Nichts |Beide Arrayelemente werden als „false“ ausgewertet (10.0.4.1 == 127.0.0.1 und 10.0.4.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
+|Bedingung |Ergebnis | Szenario |Erklärung |
+|-|-|-|-|
+|`{<field>,"notEquals":"127.0.0.1"}` |Nichts |Keine Übereinstimmung |Ein Arrayelement wird als „false“ ausgewertet (127.0.0.1 != 127.0.0.1) und ein Element als „true“ (127.0.0.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
+|`{<field>,"notEquals":"10.0.4.1"}` |Richtlinienauswirkung |Keine Übereinstimmung |Beide Arrayelemente werden als „true“ ausgewertet (10.0.4.1 != 127.0.0.1 und 10.0.4.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _true_, und die Auswirkung wird ausgelöst. |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |Richtlinienauswirkung |Eine oder mehrere Übereinstimmungen |Ein Arrayelement wird als „false“ ausgewertet (127.0.0.1 != 127.0.0.1) und ein Element als „true“ (127.0.0.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _false_. Der logische Operator wird als TRUE ausgewertet (**nicht** _FALSE_), sodass die Auswirkung ausgelöst wird. |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |Nichts |Eine oder mehrere Übereinstimmungen |Beide Arrayelemente werden als „true“ ausgewertet (10.0.4.1 != 127.0.0.1 und 10.0.4.1 != 192.168.1.1). Die **notEquals**-Bedingung ist daher _true_. Der logische Operator wird als FALSE ausgewertet (**nicht** _TRUE_), sodass die Auswirkung nicht ausgelöst wird. |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |Richtlinienauswirkung |Nicht alle stimmen überein |Ein Arrayelement wird als „true“ ausgewertet (127.0.0.1 == 127.0.0.1) und ein Element als „false“ (127.0.0.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_. Der logische Operator wird als TRUE ausgewertet (**nicht** _FALSE_), sodass die Auswirkung ausgelöst wird. |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |Richtlinienauswirkung |Nicht alle stimmen überein |Beide Arrayelemente werden als „false“ ausgewertet (10.0.4.1 == 127.0.0.1 und 10.0.4.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_. Der logische Operator wird als TRUE ausgewertet (**nicht** _FALSE_), sodass die Auswirkung ausgelöst wird. |
+|`{<field>,"Equals":"127.0.0.1"}` |Nichts |Alle stimmen überein |Ein Arrayelement wird als „true“ ausgewertet (127.0.0.1 == 127.0.0.1) und ein Element als „false“ (127.0.0.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
+|`{<field>,"Equals":"10.0.4.1"}` |Nichts |Alle stimmen überein |Beide Arrayelemente werden als „false“ ausgewertet (10.0.4.1 == 127.0.0.1 und 10.0.4.1 == 192.168.1.1). Die **Equals**-Bedingung ist daher _false_, und die Auswirkung wird nicht ausgelöst. |
 
 ## <a name="the-append-effect-and-arrays"></a>Auswirkung „append“ und Arrays
 

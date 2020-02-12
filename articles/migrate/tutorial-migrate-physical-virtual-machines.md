@@ -1,27 +1,23 @@
 ---
-title: Migrieren von lokalen physischen oder virtualisierten Computern zu Azure per Azure Migrate-Servermigration | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie lokale physische oder virtualisierte Computer per Azure Migrate-Servermigration zu Azure migrieren.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Migrieren von Computern als physischer Server zu Azure mit Azure Migrate
+description: In diesem Artikel wird beschrieben, wie Sie physische Computer mit Azure Migrate zu Azure migrieren.
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.author: raynew
+ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028808"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989755"
 ---
-# <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Migrieren von physischen oder virtualisierten Servern zu Azure 
+# <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
-In diesem Artikel wird beschrieben, wie Sie physische oder virtualisierte Server zu Azure migrieren. Das Tool für die Azure Migrate-Servermigration ermöglicht die Migration von physischen und virtualisierten Servern, indem eine Agent-basierte Replikation durchgeführt wird. Mit diesem Tool können Sie viele verschiedene Computer zu Azure migrieren:
+In diesem Artikel wird veranschaulicht, wie Sie Computer als physische Server zu Azure migrieren, indem Sie das Tool „Azure Migrate-Servermigration“ verwenden. Die Behandlung von Computern als physische Server für die Migration ist in verschiedenen Szenarien hilfreich:
 
 - Migrieren von lokalen physischen Servern
 - Migrieren von VMs, die über eine Plattform, z. B. Xen oder KVM, virtualisiert wurden
-- Migrieren von Hyper-V- oder VMware-VMs. Dies ist hilfreich, falls Sie aus einem bestimmten Grund nicht den Standardmigrationsablauf nutzen können, der von der Azure Migrate-Servermigration für die [Hyper-V-Migration](tutorial-migrate-hyper-v.md), die [VMware-Migration ohne Agent](tutorial-migrate-vmware.md) oder die [Agent-basierte VMware-Migration](tutorial-migrate-vmware-agent.md) angeboten wird.
+- Migrieren von Hyper-V- oder VMware-VMs, falls Sie aus einem bestimmten Grund den Standardmigrationsprozess für [Hyper-V](tutorial-migrate-hyper-v.md) oder die [VMware](server-migrate-overview.md)-Migration nicht nutzen können.
 - Migrieren von VMs, die in privaten Clouds ausgeführt werden
 - Migrieren von VMs, die in öffentlichen Clouds ausgeführt werden, z. B. Amazon Web Services (AWS) oder Google Cloud Platform (GCP)
 
@@ -266,8 +262,7 @@ Wählen Sie nun Computer für die Migration aus.
 
 2. Wählen Sie unter **Replizieren** > **Quelleinstellungen** > **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus.
 3. Wählen Sie unter **Lokale Appliance** den Namen der Azure Migrate-Appliance aus, die Sie eingerichtet haben.
-4. Geben Sie unter **vCenter Server** den Namen des vCenter-Servers an, der die virtuellen Computer verwaltet, oder den vSphere-Server, auf dem die VMs gehostet werden.
-5. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.
+4. Wählen Sie unter **Prozessserver** den Namen der Replikationsappliance aus.
 6. Geben Sie unter **Gastanmeldeinformationen** ein VM-Administratorkonto an, das für die Pushinstallation des Mobility Service-Diensts verwendet wird. Da wir den Mobility Service in diesem Tutorial manuell installieren, können Sie ein beliebiges Dummy-Konto hinzufügen. Klicken Sie anschließend auf **Next: Virtuelle Computer**.
 
     ![Replizieren von VMs](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)

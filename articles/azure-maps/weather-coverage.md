@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 77b95806c2040e7950e1133fcc4c7bc5e0e2ab53
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910803"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989602"
 ---
 # <a name="azure-maps-weather-coverage"></a>Umfang der Azure Maps-Wetterberichte
 
-In diesem Artikel finden Sie Informationen zum Umfang der [Wetterdienste](https://aka.ms/AzureMapsWeatherService) von Azure Maps. Azure Maps-Wetterdienste können Daten wie Radarkacheln, aktuelle Wetterbedingungen, Wettervorhersagen und das Wetter entlang einer Strecke zurückgeben.
+In diesem Artikel finden Sie Informationen zum Umfang der [Wetterdienste](https://aka.ms/AzureMapsWeatherService) von Azure Maps. Azure Maps-Wetterdatendienste geben Details wie Radarkacheln, aktuelle Wetterbedingungen, Wettervorhersagen und das Wetter entlang einer Strecke zurück.
 
 Azure Maps verfügt nicht für alle Länder und Regionen über das gleiche Maß an Informationen und Genauigkeit.
 
@@ -179,7 +179,6 @@ In der folgenden Tabelle finden Sie Informationen zu der Art von Wetterinformati
 | Afghanistan                       | ✓ |   |  ✓| 
 | Amerikanisch-Samoa                    | ✓ |   |  ✓| 
 | Australien                         | ✓ | ✓ |  ✓| 
-| Aserbaidschan                        | ✓ |   |  ✓| 
 | Bangladesch                        | ✓ |   |  ✓| 
 | Bhutan                            | ✓ |   |  ✓| 
 | Britisches Territorium im Indischen Ozean    | ✓ |   |  ✓| 
@@ -247,7 +246,8 @@ In der folgenden Tabelle finden Sie Informationen zu der Art von Wetterinformati
 | Albanien                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
 | Armenien                | ✓ |   |  ✓| 
-| Österreich                | ✓ | ✓ |  ✓| 
+| Österreich                | ✓ | ✓ |  ✓|
+| Aserbaidschan             | ✓ |   |  ✓| 
 | Belarus                | ✓ |   |  ✓| 
 | Belgien                | ✓ | ✓ |  ✓| 
 | Bosnien und Herzegowina | ✓ | ✓ |  ✓| 

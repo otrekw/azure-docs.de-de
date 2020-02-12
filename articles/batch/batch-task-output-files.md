@@ -1,23 +1,23 @@
 ---
-title: Beibehalten der Ausgabe von Aufträgen und Tasks in Azure Storage mit der Azure Batch-Dienst-API | Microsoft-Dokumentation
-description: In diesem Artikel erhalten Sie Informationen zur Verwendung der Batch-Dienst-API zur Beibehaltung der Ausgabe von Batch-Tasks und -Aufträgen in Azure Storage.
+title: Beibehalten von Ausgabedaten mithilfe der Batch-Dienst-API in Azure Storage – Azure Batch
+description: Erfahren Sie mehr über die Verwendung der Batch-Dienst-API zur Beibehaltung der Ausgabedaten von Batch-Tasks und -Aufträgen in Azure Storage.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 11bd8bc427dd3da35ec5aa0f728f6b04b7d4527d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029634"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022850"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 

@@ -1,6 +1,6 @@
 ---
 title: Erstellen von VLANs/Subnetzen
-description: 'Azure VMware-Lösung von CloudSimple: Beschreibt das Erstellen und Verwalten von VLANs/Subnetzen für Ihre privaten Clouds und das anschließende Anwenden von Firewallregeln.'
+description: 'Azure-VMware-Lösung: Hier wird das Erstellen und Verwalten von VLANs/Subnetzen für Ihre privaten AVS-Clouds und das anschließende Anwenden von Firewallregeln beschrieben.'
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,30 +8,30 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 56e0f720221f8de531087e8b8d0476688feb2547
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 249c48500dbcd75f62f856b3345b3a2c02502d1a
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601477"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024771"
 ---
-# <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Erstellen und Verwalten von VLANs/Subnetzen für private Clouds
+# <a name="create-and-manage-vlanssubnets-for-your-avs-private-clouds"></a>Erstellen und Verwalten von VLANs/Subnetzen für private AVS-Clouds
 
-Öffnen Sie die Registerkarte „VLANs/Subnets“ (VLANs/Subnetze) auf der Seite „Network“ (Netzwerk), um VLANs/Subnetze für Ihre privaten Clouds zu erstellen und zu verwalten. Nachdem Sie ein VLAN/Subnetz erstellt haben, können Sie Firewallregeln anwenden.
+Öffnen Sie die Registerkarte „VLANs/Subnets“ (VLANs/Subnetze) auf der Seite „Network“ (Netzwerk), um VLANs/Subnetze für Ihre privaten AVS-Clouds zu erstellen und zu verwalten. Nachdem Sie ein VLAN/Subnetz erstellt haben, können Sie Firewallregeln anwenden.
 
 ## <a name="create-a-vlansubnet"></a>Erstellen eines VLAN/Subnetzes
 
-1. [Greifen Sie auf das CloudSimple Portal zu](access-cloudsimple-portal.md), und wählen Sie **Network** (Netzwerk) im seitlichen Menü aus.
+1. [Greifen Sie auf das AVS-Portal zu](access-cloudsimple-portal.md), und klicken Sie im seitlichen Menü auf **Network** (Netzwerk).
 2. Wählen Sie **VLANs/subnets** (VLANs/Subnetze) aus.
 3. Klicken Sie auf **Create VLAN/Subnet** (VLAN/Subnetz erstellen).
 
     ![Seite „VLAN/Subnetz“](media/vlan-subnet-page.png)
 
-4. Wählen Sie die private Cloud für das neue VLAN/Subnetz aus.
+4. Wählen Sie die private AVS-Cloud für das neue VLAN/Subnetz aus.
 5. Geben Sie eine VLAN-ID ein.
 6. Geben Sie den Namen des Subnetzes ein.
 7. Um das Routing im VLAN (Subnetz) zu aktivieren, geben Sie den CIDR-Bereich des Subnetzes an. Stellen Sie sicher, dass sich der CIDR-Bereich nicht mit einem Ihrer lokalen Subnetze, Azure-Subnetzen oder dem Gatewaysubnetz überschneidet.
-8. Klicken Sie auf **Submit**.
+8. Klicken Sie auf **Submit**(Senden).
 
     ![Erstellen des VLAN/Subnetzes](media/create-new-vlan-subnet-details.png)
 
@@ -41,13 +41,13 @@ ms.locfileid: "73601477"
 
 ## <a name="use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere"></a>Verwenden von VLAN-Informationen zum Einrichten einer verteilten Portgruppe in vSphere
 
-Befolgen Sie zum Erstellen einer verteilten Portgruppe in vSphere die Anweisungen im VMware-Thema „Hinzufügen einer verteilten Portgruppe“ im <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf" target="_blank">vSphere-Netzwerkleitfaden</a>. Geben Sie beim Einrichten der verteilten Portgruppe die VLAN-Informationen aus der CloudSimple-Konfiguration an.
+Befolgen Sie zum Erstellen einer verteilten Portgruppe in vSphere die Anweisungen im VMware-Thema „Hinzufügen einer verteilten Portgruppe“ im <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf" target="_blank">vSphere-Netzwerkleitfaden</a>. Geben Sie beim Einrichten der verteilten Portgruppe die VLAN-Informationen aus der AVS-Konfiguration an.
 
 ![Verteilte Portgruppe](media/distributed-port-group.png)
 
 ## <a name="select-a-firewall-table"></a>Auswählen einer Firewalltabelle
 
-Firewalltabellen und zugehörige Regeln werden auf der Seite **Network (Netzwerk) > Firewall Tables (Firewalltabellen)** definiert. Um die Firewalltabelle auszuwählen, die auf das VLAN/Subnetz für eine private Cloud angewendet werden soll, wählen Sie das VLANs/Subnetz aus, und klicken Sie dann auf der Seite **VLANs/Subnets** (VLAN/Subnetz) auf **Firewall table attachment** (Firewalltabellenanlage). Anleitungen zum Einrichten von Firewalltabellen und Definieren von Regeln finden Sie unter [Firewalltabellen](firewall.md).
+Firewalltabellen und zugehörige Regeln werden auf der Seite **Network (Netzwerk) > Firewall Tables (Firewalltabellen)** definiert. Wählen Sie das VLANs/Subnetz aus, und klicken Sie dann auf der Seite **VLANs/Subnets** (VLAN/Subnetz) auf **Firewall table attachment** (Firewalltabellenanlage), um die Firewalltabelle auszuwählen, die auf das VLAN/Subnetz für eine private AVS-Cloud angewendet werden soll. Anleitungen zum Einrichten von Firewalltabellen und Definieren von Regeln finden Sie unter [Firewalltabellen](firewall.md).
 
 ![Firewalltabellenverbindung](media/vlan-subnet-firewall-link.png)
 

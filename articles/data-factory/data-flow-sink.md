@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 1c65a456270cdca345504c07b927a7ef7e1f725b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b631c068d1a444691345e054219208c4c8b0b8c
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440268"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020045"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
@@ -52,6 +52,12 @@ Nachdem Sie eine Senke hinzugefügt haben, konfigurieren Sie die Senke über die
 Ähnlich wie bei einer Auswahltansformation können Sie auf der Registerkarte **Zuordnung** der Senke festlegen, welche eingehenden Spalten geschrieben werden. Standardmäßig werden alle Eingabespalten – auch abweichende Spalten – zugeordnet. Dies wird als **automatische Zuordnung** bezeichnet.
 
 Wenn Sie die automatische Zuordnung deaktivieren, können Sie eine feste spaltenbasierte Zuordnung oder eine regelbasierte Zuordnung hinzuzufügen. Die regelbasierte Zuordnung ermöglicht das Schreiben von Ausdrücken mit Musterabgleich, während bei der festen Zuordnung logische und physische Spaltennamen zugeordnet werden. Weitere Informationen zur regelbasierten Zuordnung finden Sie unter [Spaltenmuster im Zuordnungsdatenfluss](concepts-data-flow-column-pattern.md#rule-based-mapping-in-select-and-sink).
+
+## <a name="custom-sink-ordering"></a>Benutzerdefinierte Senkenreihenfolge
+
+Standardmäßig werden Daten ohne festgeschriebene Reihenfolge in mehrere Senken geschrieben. Die Ausführungs-Engine schreibt im Verlauf der Transformationslogik Daten parallel. Dabei kann die Senkenreihenfolge bei jeder Ausführung variieren. Um die genaue Reihenfolge der Senken anzugeben, aktivieren Sie auf der Registerkarte „Allgemein“ des Datenflusses die Option **Benutzerdefinierte Senkenreihenfolge**. Wenn diese Option aktiviert ist, erfolgt das Schreiben sequenziell in aufsteigender Reihenfolge in den Senken.
+
+![Benutzerdefinierte Senkenreihenfolge](media/data-flow/custom-sink-ordering.png "Benutzerdefinierte Senkenreihenfolge")
 
 ## <a name="data-preview-in-sink"></a>Datenvorschau in Senken
 

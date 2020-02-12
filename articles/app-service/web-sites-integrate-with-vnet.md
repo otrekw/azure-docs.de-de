@@ -6,13 +6,13 @@ ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 71dc37fc000b2f195478e06f7e755fa8df926444
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 472fe621fc7a95317f143ef96a1d7f8b5adfe581
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688289"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016968"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
@@ -74,7 +74,7 @@ Diese Funktion ist zurzeit als Vorschauversion verfügbar, wird aber mit folgend
 * Sie können nur Adressen im RFC 1918-Bereich erreichen. d. h. Adressen in den Adressblöcken 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16.
 * Sie können nicht über Verbindungen mit globalem Peering auf Ressourcen zugreifen.
 * Sie können keine Routen für den Datenverkehr festlegen, der von Ihrer App in Ihr VNET gesendet wird.
-* Die Funktion ist nur bei neueren App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen.
+* Die Funktion ist nur bei neueren App Service-Skalierungseinheiten verfügbar, die App Service-Pläne mit dem Tarif „PremiumV2“ unterstützen. Dies bedeutet wohlgemerkt nicht, dass Ihre App in einer PremiumV2-SKU ausgeführt werden muss, sondern nur, dass sie in einem App Service-Plan ausgeführt werden muss, in dem die PremiumV2-Option verfügbar ist. (Dies bedeutet wiederum, dass es sich um eine neuere Skalierungseinheit handelt, bei der dieses VNET-Integrationsfeature ebenfalls verfügbar ist.)
 * Das Integrationssubnetz kann nur von einem App Service-Plan verwendet werden.
 * Die Funktion kann nicht für Apps im Plan „App Service (isoliert)“ in einer App Service-Umgebung verwendet werden.
 * Für das Feature ist ein nicht genutztes Subnetz erforderlich, also vom Typ /27 mit 32 Adressen oder höher in Ihrem Resource Manager-VNET.

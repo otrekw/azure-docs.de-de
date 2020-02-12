@@ -1,22 +1,22 @@
 ---
-title: 'Azure Batch: Taskstartereignis | Microsoft-Dokumentation'
-description: Referenz zum Batch-Taskstartereignis.
+title: 'Azure Batch: Taskstartereignis'
+description: Referenzinformationen zum Taskstartereignis in Batch. Dieses Ereignis wird einmal ausgegeben, nachdem ein Task vom Scheduler für den Start auf einem Computeknoten geplant wurde.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: bed3749e29867298f3e8258a08448b7b094055ec
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029627"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022816"
 ---
 # <a name="task-start-event"></a>Taskstartereignis
 

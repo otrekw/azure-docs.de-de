@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1051ea91378cc2e2facec7e34f6d303297b91ce8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454063"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019025"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Verwalten von IoT Central über Azure CLI
 
@@ -44,34 +44,28 @@ az group create --location "East US" \
 az iotcentral app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku S1 --template "iotc-demo@1.0.0" \
+  --sku ST1 --template "iotc-demo@1.0.0" \
   --display-name "My Custom Display Name"
 ```
 
-Mit diesen Befehlen wird für die Anwendung zuerst eine Ressourcengruppe in der Region „USA, Osten“ erstellt. In der folgenden Tabelle sind die Parameter beschrieben, die für den **az iotcentral app create**-Befehl verwendet werden:
+Diese Befehle erstellen zuerst für die Anwendung eine Ressourcengruppe in der Region „East US“ (USA, Osten). In der folgenden Tabelle sind die Parameter beschrieben, die für den **az iotcentral app create**-Befehl verwendet werden:
 
-| Parameter         | BESCHREIBUNG |
+| Parameter         | Beschreibung |
 | ----------------- | ----------- |
 | resource-group    | Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
-| location          | Standardmäßig wird in diesem Befehl der Standort aus der Ressourcengruppe verwendet. Sie können derzeit eine IoT Central-Anwendung an den Standorten **USA**, **Australien**, **Asien, Osten** oder **Europa** erstellen. |
+| location          | Standardmäßig wird in diesem Befehl der Standort aus der Ressourcengruppe verwendet. Derzeit können Sie eine IoT Central-Anwendung in den Regionen **USA, Osten**, **USA, Westen**, **Europa, Norden** oder **Europa, Westen** oder aber in den geografischen Regionen **Australien** oder **Asien, Osten** erstellen. |
 | name              | Der Name der Anwendung im Azure-Portal. |
 | subdomain         | Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL https://mysubdomain.azureiotcentral.com. |
-| sku               | Zurzeit ist **S1** (Standard-Tarif) der einzige Wert. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
+| sku               | Derzeit können Sie **ST1** oder **ST2** verwenden. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
 | Vorlage          | Die zu verwendende Anwendungsvorlage. Weitere Informationen finden Sie in der Tabelle unten: |
 | display-name      | Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
-**Anwendungsvorlage mit allgemein verfügbaren Funktionen**
+**Anwendungsvorlagen**
 
-| Vorlagenname            | BESCHREIBUNG |
+| Vorlagenname            | Beschreibung |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können.
-
-
-**Anwendungsvorlagen mit öffentlichen Previewfunktionen**
-
-| Vorlagenname            | BESCHREIBUNG |
-| ------------------------ | ----------- |
-| iotc-pnp-preview@1.0.0   | Mit dieser Vorlage wird eine leere Plug & Play-Vorschauanwendung erstellt, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
+| iotc-pnp-preview@1.0.0   | Mit dieser Vorlage wird eine leere Plug & Play-Anwendung (Vorschauversion) erstellt, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
 | iotc-condition@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Bedingungsüberwachungsvorlage). Verwenden Sie diese Vorlage, um eine Verbindung mit der Speicherumgebung herzustellen und sie zu überwachen. |
 | iotc-consumption@1.0.0   | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung des Wasserverbrauchs erstellt. Verwenden Sie diese Vorlage, um den Wasserfluss zu überwachen und zu steuern. |
 | iotc-distribution@1.0.0  | Mit dieser Vorlage wird eine Anwendung mit Vorlage für die digitale Verteilung erstellt. Verwenden Sie diese Vorlage, um die Effizienz des Warenausgangs aus dem Lager durch die Digitalisierung wichtiger Ressourcen und Aktionen zu verbessern. |
@@ -83,9 +77,6 @@ Mit diesen Befehlen wird für die Anwendung zuerst eine Ressourcengruppe in der 
 | iotc-quality@1.0.0       | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung der Wasserqualität erstellt. Verwenden Sie diese Vorlage, um die Wasserqualität digital zu überwachen.|
 | iotc-store@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Auftragsabschlussvorlage). Verwenden Sie diese Vorlage, um den Auftragsabschlussflow in Ihrem Unternehmen zu überwachen und zu verwalten. |
 | iotc-waste@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für eine vernetzte Abfallwirtschaft erstellt. Verwenden Sie diese Vorlage, um Müllcontainer zu überwachen und Mitarbeiter für deren Leerung rechtzeitig loszuschicken. |
-
-> [!NOTE]
-> Die Vorlagen für Vorschauanwendungen sind derzeit nur an den Standorten **Europa** und **USA** verfügbar.
 
 ## <a name="view-your-applications"></a>Anzeigen Ihrer Anwendungen
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware-Lösung von CloudSimple: Auswählen einer Lastenausgleichslösung für private CloudSimple-Clouds'
-description: Beschreibt die Lastenausgleichsoptionen beim Bereitstellen einer Anwendung in einer privaten Cloud.
+title: 'Azure VMware Solutions (AVS): Auswählen einer Lastenausgleichslösung für private AVS-Clouds'
+description: Beschreibt die Lastenausgleichsoptionen beim Bereitstellen einer Anwendung in einer privaten AVS-Cloud
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045737"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77014877"
 ---
-# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Auswählen einer Lastenausgleichslösung für private CloudSimple-Clouds
+# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>Auswählen einer Lastenausgleichslösung für private AVS-Clouds
 
-Wenn Sie eine Anwendung in einer privaten CloudSimple-Cloud bereitstellen, können Sie eine der verschiedenen Optionen für Lastenausgleich auswählen.
+Wenn Sie eine Anwendung in einer privaten AVS-Cloud bereitstellen, können Sie eine von mehreren Optionen für den Lastenausgleich auswählen.
 
-Sie können einen virtuellen oder softwarebasierten Lastenausgleich in ihrer privaten CloudSimple-Cloud auswählen oder sogar den Azure L7-Lastenausgleich, der in Ihrem Azure-Abonnement ausgeführt wird, als Front-End für die Webschicht-VMS verwenden, die in der privaten CloudSimple-Cloud ausgeführt werden. Einige der Optionen, die verfügbar sind:
+Sie können einen virtuellen oder softwarebasierten Lastenausgleich in Ihrer privaten AVS-Cloud auswählen oder sogar den Azure-L7-Lastenausgleich in Ihrem Azure-Abonnement als Front-End für die VMs auf Webebene verwenden, die in der privaten AVS-Cloud ausgeführt werden. Einige der Optionen, die verfügbar sind:
 
 ## <a name="virtual-load-balancers"></a>Virtueller Lastenausgleich
 
@@ -29,13 +29,13 @@ Einige beliebte Anbieter sind: NginX: http://nginx.org/en/docs/http/load_balanci
 
 ## <a name="azure-l7-load-balancer"></a>Azure L7-Lastenausgleich
 
-Wenn Sie Azure Application Gateway als L7-Lastenausgleich für Ihre Anwendung verwenden, die in einer privaten Cloud ausgeführt wird, müssen Sie die Lastenausgleichssoftware nicht verwalten. Die Lastenausgleichssoftware wird von Azure verwaltet. Alle Webschicht-VMs in der privaten Cloud verwenden private IP-Adressen und erfordern keine zusätzlichen NAT-Regeln oder öffentlichen IP-Adressen zum Auflösen von Namen. VMs der Webschicht kommunizieren mit Azure Application Gateway über eine private Verbindung mit niedriger Latenz und hoher Bandbreite.
+Wenn Sie Azure Application Gateway als L7-Lastenausgleich für Ihre in einer privaten AVS-Cloud ausgeführte Anwendung verwenden, müssen Sie die Lastenausgleichssoftware nicht verwalten. Die Lastenausgleichssoftware wird von Azure verwaltet. Alle VMs auf Webebene in der privaten AVS-Cloud verwenden private IP-Adressen und erfordern keine zusätzlichen NAT-Regeln oder öffentlichen IP-Adressen zum Auflösen von Namen. VMs der Webschicht kommunizieren mit Azure Application Gateway über eine private Verbindung mit niedriger Latenz und hoher Bandbreite.
 
 Weitere Informationen zum Konfigurieren dieser Lösung finden Sie im Lösungsleitfaden zum Verwenden von Azure Application Gateway als L7-Lastenausgleich.
 
 ## <a name="azure-internal-load-balancer"></a>Interner Azure-Lastenausgleich
 
-Wenn Sie Ihre Anwendung in einer Hybridbereitstellung ausführen möchten, bei der die Web-Front-End-Schicht innerhalb eines Azure vNet in Ihrem Azure-Abonnement und die DB-Schicht der Anwendung in VMware-VMs in der privaten CloudSimple-Cloud ausgeführt wird, können Sie den internen Lastausgleich (L4-Lastenausgleich) von Azure vor Ihren VMs der DB-Schicht für die Datenverkehrsverwaltung verwenden.
+Wenn Sie Ihre Anwendung in einer Hybridbereitstellung ausführen möchten, bei der die Web-Front-End-Ebene innerhalb eines Azure-VNET in Ihrem Azure-Abonnement und die DB-Ebene der Anwendung auf VMware-VMs in der privaten AVS-Cloud ausgeführt wird, können Sie den internen Lastenausgleich (L4-Lastenausgleich) von Azure vor Ihren VMs der DB-Ebene für die Datenverkehrsverwaltung verwenden.
 
 Weitere Informationen finden Sie in der Azure-Dokumentation zum [internen Lastenausgleich](../load-balancer/concepts-limitations.md#internalloadbalancer).
 

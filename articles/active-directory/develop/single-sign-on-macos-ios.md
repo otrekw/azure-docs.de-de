@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2019
+ms.date: 02/03/2020
 ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: ecc55c0d41f552d2c29fe5c964a7c40ab9e382ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: bfc656911abf3349e03543e6bb668db977422738
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701381"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022629"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Gewusst wie: Konfigurieren von SSO unter macOS und iOS
 
@@ -71,7 +71,9 @@ Damit die Microsoft Identity Platform darüber informiert ist, welche Anwendunge
 
 Von der Microsoft Identity Platform können Apps, für die die gleiche Anwendungs-ID verwendet wird, anhand ihrer **Umleitungs-URIs** unterschieden werden. Jede Anwendung kann mehrere Umleitungs-URIs im Integrationsportal registrieren. Jede App innerhalb Ihrer Suite kann einen anderen Umleitungs-URI verwenden. Beispiel:
 
-Umleitungs-URI von App1: `msauth.com.contoso.mytestapp1://auth` Umleitungs-URI von App2: `msauth.com.contoso.mytestapp2://auth` Umleitungs-URI von App3: `msauth.com.contoso.mytestapp3://auth`
+Umleitungs-URI für App1: `msauth.com.contoso.mytestapp1://auth`  
+Umleitungs-URI für App2: `msauth.com.contoso.mytestapp2://auth`  
+Umleitungs-URI für App3: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Das Format von Umleitungs-URIs muss mit dem von der MSAL unterstützten Format kompatibel sein. Dies ist unter [MSAL-Formatanforderungen für Umleitungs-URIs](redirect-uris-ios.md#msal-redirect-uri-format-requirements) dokumentiert.
@@ -96,6 +98,18 @@ Wenn Sie die Berechtigungen richtig eingerichtet haben, wird in Ihrem Projektver
 </plist>
 ```
 
+#### <a name="add-a-new-keychain-group"></a>Hinzufügen einer neuen Keychaingruppe
+
+Fügen Sie Ihrem Projekt **Funktionen** eine neue Keychaingruppe hinzu. Die Keychaingruppe sollte wie folgt lauten:
+* `com.microsoft.adalcache` unter iOS 
+* `com.microsoft.identity.universalstorage` unter macOS
+
+![Beispiel für eine Keychain](media/single-sign-on-macos-ios/keychain-example.png)
+
+Weitere Informationen finden Sie unter [Keychaingruppen](howto-v2-keychain-objc.md).
+
+## <a name="configure-the-application-object"></a>Konfigurieren des Anwendungsobjekts
+
 Nachdem Sie die Keychainberechtigung in allen Anwendungen aktiviert haben und zur Verwendung von SSO bereit sind, können Sie `MSALPublicClientApplication` mit Ihrer Keychainzugriffsgruppe wie im folgenden Beispiel konfigurieren:
 
 Objective-C:
@@ -113,16 +127,14 @@ Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<my-client-id>")
 config.cacheConfig.keychainSharingGroup = "my.keychain.group"
-        
+
 do {
-    let application = try MSALPublicClientApplication(configuration: config)
-  // continue on with application          
+   let application = try MSALPublicClientApplication(configuration: config)
+  // continue on with application
 } catch let error as NSError {
   // handle error here
-}       
+}
 ```
-
-
 
 > [!WARNING]
 > Bei anwendungsübergreifender Nutzung einer Keychain kann jede Anwendung Benutzer und sogar anwendungsübergreifend alle Token löschen.
@@ -206,7 +218,7 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
 ```
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Hier erfahren Sie mehr zu [Authentifizierungsfluss und Anwendungsszenarios](authentication-flows-app-scenarios.md)

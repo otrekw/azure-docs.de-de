@@ -1,9 +1,9 @@
 ---
-title: Ausführen von Aufgaben unter Benutzerkonten – Azure Batch | Microsoft-Dokumentation
-description: Konfigurieren von Benutzerkonten zum Ausführen von Aufgaben in Azure Batch
+title: Ausführen von Aufgaben unter Benutzerkonten – Azure Batch
+description: Es ist hilfreich, das Benutzerkonto, unter dem eine Aufgabe ausgeführt werden soll, konfigurieren zu können. Erfahren Sie mehr über die Typen von Benutzerkonten und deren Konfiguration.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 editor: ''
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/18/2019
-ms.author: jushiman
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: d4975935c872f059dde6b08bcd7a4f06540c2dfd
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029607"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022782"
 ---
 > [!NOTE] 
 > Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell). 

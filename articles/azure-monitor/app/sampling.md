@@ -9,12 +9,12 @@ ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e30c4812ad11d7b39197062da30c90b2d8b1649b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281069"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989976"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind die für die jeweiligen SDKs und Anwendungstypen v
 |-|-|-|-|
 | ASP.NET | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | ASP.NET Core | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ja](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
-| Azure Functions | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-azure-functions) | Nein | Nur wenn keine andere Stichprobenerstellung aktiv ist |
+| Azure-Funktionen | [Ja (standardmäßig aktiviert)](#configuring-adaptive-sampling-for-azure-functions) | Nein | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Java | Nein | [Ja](#configuring-fixed-rate-sampling-for-java-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Python | Nein | [Ja](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Nur wenn keine andere Stichprobenerstellung aktiv ist |
 | Alle anderen | Nein | Nein | [Ja](#ingestion-sampling) |
@@ -52,9 +52,9 @@ Es gibt drei verschiedene Methoden der Stichprobenerstellung:
 
 * Die **adaptive Stichprobenerstellung** passt die Menge an Telemetriedaten, die vom SDK in Ihrer ASP.NET-/ASP.NET Core-App und von Azure Functions gesendet wird, automatisch an. Dies ist die Standardstichprobenerstellung bei Verwendung des ASP.NET SDK oder ASP.NET Core SDK. Die adaptive Stichprobenerstellung ist derzeit nur für serverseitige Telemetriedaten von ASP.NET und für Azure Functions verfügbar.
 
-* Die **Stichprobenerstellung mit festem Prozentsatz** reduziert die Menge an Telemetriedaten, die von Ihrem ASP.NET-, ASP.NET Core- oder Java-Server und von den Browsern Ihrer Benutzer gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in Search zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
+* Die **Stichprobenerstellung mit festem Prozentsatz** reduziert die Menge an Telemetriedaten, die von Ihrem ASP.NET-, ASP.NET Core- oder Java-Server und von den Browsern Ihrer Benutzer gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 
-* Die **Erfassungs-Stichprobenerstellung** erfolgt auf dem Application Insights-Dienstendpunkt. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenhäufigkeit verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung ist, dass die Stichprobenhäufigkeit ohne erneute Bereitstellung Ihrer App festgelegt werden kann. Die Erfassungs-Stichprobenerstellung funktioniert für alle Server und Clients gleich, trifft jedoch nicht zu, wenn andere Arten der Stichprobenerstellung ausgeführt werden.
+* Die **Erfassungs-Stichprobenerstellung** erfolgt auf dem Application Insights-Dienstendpunkt. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenerstellungsrate verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung ist, dass die Stichprobenrate ohne erneute Bereitstellung Ihrer App festgelegt werden kann. Die Erfassungs-Stichprobenerstellung funktioniert für alle Server und Clients gleich, trifft jedoch nicht zu, wenn andere Arten der Stichprobenerstellung ausgeführt werden.
 
 > [!IMPORTANT]
 > Während die Methode der adaptiven Stichprobenerstellung oder der Stichprobenerstellung mit festem Prozentsatz aktiv ist, wird die Erfassungs-Stichprobenerstellung deaktiviert.
@@ -70,7 +70,7 @@ Die Menge wird automatisch angepasst, damit sie eine festgelegte maximale Datenv
 
 Um die Zielmenge zu erreichen, werden einige der generierten Telemetriedaten verworfen. Aber wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln.
 
-Metrikwerte wie z. B. die Anforderungs- und Ausnahmerate werden zum Kompensieren der Stichprobenhäufigkeit angepasst, sodass im Metrik-Explorer annähernd korrekte Werte angezeigt werden.
+Metrikwerte wie z. B. die Anforderungs- und Ausnahmerate werden zum Kompensieren der Stichprobenrate angepasst, sodass im Metrik-Explorer annähernd korrekte Werte angezeigt werden.
 
 ### <a name="configuring-adaptive-sampling-for-aspnet-applications"></a>Konfigurieren der adaptiven Stichprobenerstellung für ASP.NET-Anwendungen
 
@@ -161,7 +161,7 @@ builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:5, excludedTypes: "Depend
 ### <a name="configuring-adaptive-sampling-for-aspnet-core-applications"></a>Konfigurieren der adaptiven Stichprobenerstellung für ASP.NET Core-Anwendungen
 
 Da es für ASP.NET Core-Anwendungen keine Datei `ApplicationInsights.config` gibt, müssen alle Konfigurationen über den Code vorgenommen werden.
-Die adaptive Stichprobenerstellung ist standardmäßig für alle ASP.NET Core-Anwendungen aktiviert. Sie können das Verhalten für die Stichprobenerstellung aktivieren oder anpassen.
+Die adaptive Stichprobenerstellung ist standardmäßig für alle ASP.NET Core-Anwendungen aktiviert. Sie können das Verhalten für die Stichprobenentnahme aktivieren oder anpassen.
 
 #### <a name="turning-off-adaptive-sampling"></a>Deaktivieren der adaptiven Stichprobenerstellung
 
@@ -180,11 +180,11 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Mit dem Code oben wird die adaptive Stichprobenerstellung deaktiviert. Führen Sie die folgenden Schritte aus, um die Stichprobenerstellung mit weiteren Anpassungsoptionen hinzuzufügen.
+Mit dem Code oben wird die adaptive Stichprobenerstellung deaktiviert. Führen Sie die folgenden Schritte aus, um die Stichprobenentnahme mit weiteren Anpassungsoptionen hinzuzufügen.
 
 #### <a name="configure-sampling-settings"></a>Konfigurieren von Einstellungen für die Stichprobenerstellung
 
-Verwenden Sie die Erweiterungsmethoden von `TelemetryProcessorChainBuilder` wie unten dargestellt, um das Verhalten für die Stichprobenerstellung anzupassen.
+Verwenden Sie die Erweiterungsmethoden von `TelemetryProcessorChainBuilder` wie unten dargestellt, um das Verhalten für die Stichprobenentnahme anzupassen.
 
 > [!IMPORTANT]
 > Wenn Sie diese Methode zum Konfigurieren der Stichprobenerstellung verwenden, vergewissern Sie sich, dass die Eigenschaft `aiOptions.EnableAdaptiveSampling` beim Aufrufen von `AddApplicationInsightsTelemetry()` auf `false` festgelegt ist.
@@ -221,7 +221,7 @@ Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verri
 
 Wie bei anderen Methoden der Stichprobenerstellung werden auch hier verwandte Elemente beibehalten. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Wenn Sie also beispielsweise eine Seitenansicht in Search betrachten, können Sie die dazugehörige Serveranforderungen ermitteln. 
 
-Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderungen und Ausnahmen mit einem Faktor multipliziert, um die Stichprobenhäufigkeit zu kompensieren und annähernd korrekte Werte zu erhalten.
+Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderungen und Ausnahmen mit einem Faktor multipliziert, um die Stichprobenrate zu kompensieren und annähernd korrekte Werte zu erhalten.
 
 ### <a name="configuring-fixed-rate-sampling-for-aspnet-applications"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz für ASP.NET-Anwendungen
 
@@ -347,12 +347,13 @@ Folgende Telemetrietypen können in die Stichprobenerstellung eingeschlossen ode
 
 ### <a name="configuring-fixed-rate-sampling-for-opencensus-python-applications"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz für OpenCensus Python-Anwendungen
 
-1. Instrumentieren Sie Ihre Anwendung mit der neuesten Version von [OpenCensus Azure Monitor Exporters](../../azure-monitor/app/opencensus-python.md).
+Instrumentieren Sie Ihre Anwendung mit der neuesten Version von [OpenCensus Azure Monitor Exporters](../../azure-monitor/app/opencensus-python.md).
 
 > [!NOTE]
-> Die Stichprobenerstellung mit festem Prozentsatz steht nur bei Verwendung des Ablaufverfolgungsexporters zur Verfügung. Das bedeutet, dass eingehende und ausgehende Anforderungen die einzigen Arten von Telemetriedaten sind, bei denen eine Stichprobenerstellung konfiguriert werden kann.
+> Die Stichprobenentnahme mit festem Prozentsatz ist für das Exportprogramm für Metriken nicht verfügbar. Das bedeutet, dass benutzerdefinierte Metriken die einzigen Arten von Telemetriedaten sind, bei denen eine Stichprobenentnahme NICHT konfiguriert werden kann. Das Exportprogramm für Metriken sendet alle Telemetriedaten, die es nachverfolgt.
 
-2. Sie können in Ihrer `Tracer`-Konfiguration ein `sampler`-Element angeben. Wenn kein expliziter Sampler angegeben wird, wird standardmäßig der `ProbabilitySampler` verwendet. Für den `ProbabilitySampler` wird standardmäßig eine Rate von 1/10000 verwendet. Dies bedeutet, dass eine von 10000 Anforderungen an Application Insights gesendet wird. Falls Sie eine Stichprobenhäufigkeit angeben möchten, helfen Ihnen die Informationen unten weiter.
+#### <a name="fixed-rate-sampling-for-tracing"></a>Stichprobenentnahme mit festem Prozentsatz für die Ablaufverfolgung ####
+Sie können in Ihrer `Tracer`-Konfiguration ein `sampler`-Element angeben. Wenn kein expliziter Sampler angegeben wird, wird standardmäßig der `ProbabilitySampler` verwendet. Für den `ProbabilitySampler` wird standardmäßig eine Rate von 1/10000 verwendet. Dies bedeutet, dass eine von 10000 Anforderungen an Application Insights gesendet wird. Falls Sie eine Stichprobenhäufigkeit angeben möchten, helfen Ihnen die Informationen unten weiter.
 
 Stellen Sie zum Angeben der Stichprobenhäufigkeit sicher, dass über Ihren `Tracer` ein Sampler mit einer Stichprobenhäufigkeit zwischen 0,0 und 1,0 (einschließlich) angegeben wird. Eine Stichprobenhäufigkeit von 1,0 steht für 100 %. Das bedeutet, dass Ihre gesamten Anforderungen als Telemetriedaten an Application Insights gesendet werden.
 
@@ -362,6 +363,16 @@ tracer = Tracer(
         instrumentation_key='00000000-0000-0000-0000-000000000000',
     ),
     sampler=ProbabilitySampler(1.0),
+)
+```
+
+#### <a name="fixed-rate-sampling-for-logs"></a>Stichprobenentnahme mit festem Prozentsatz für Protokolle ####
+Sie können die Stichprobenentnahme mit festem Prozentsatz für `AzureLogHandler` konfigurieren, indem Sie das optionale Argument `logging_sampling_rate` ändern. Wenn kein Argument angegeben wird, wird eine Samplingrate von 1,0 verwendet. Eine Stichprobenhäufigkeit von 1,0 steht für 100 %. Das bedeutet, dass Ihre gesamten Anforderungen als Telemetriedaten an Application Insights gesendet werden.
+
+```python
+exporter = metrics_exporter.new_metrics_exporter(
+    instrumentation_key='00000000-0000-0000-0000-000000000000',
+    logging_sampling_rate=0.5,
 )
 ```
 
@@ -410,7 +421,7 @@ Die Erfassungs-Stichprobenerstellung erfolgt an dem Punkt, an dem die Telemetrie
 
 Verwenden Sie diese Art der Stichprobenerstellung, wenn Ihre App häufig das monatliche Kontingent überschreitet und Sie keine der SDK-basierten Formen der Stichprobenerstellung verwenden können. 
 
-Legen Sie die Stichprobenhäufigkeit auf der Seite „Nutzung und geschätzte Kosten“ fest:
+Legen Sie die Samplingrate auf der Seite „Nutzung und geschätzte Kosten“ fest:
 
 ![Klicken Sie auf dem Übersichtsblatt der Anwendung auf „Einstellungen“ > „Kontingent“ > „Stichproben“. Wählen Sie anschließend eine Stichprobenhäufigkeit aus, und klicken Sie auf „Aktualisieren“.](./media/sampling/data-sampling.png)
 
@@ -531,7 +542,7 @@ Die Genauigkeit der Annäherung hängt weitgehend vom konfigurierten Prozentsatz
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 
-* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Da Initialisierer garantiert vor Telemetrieprozessoren (einschließlich Stichprobenerstellung) ausgeführt werden, ist sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element bei jeglichen Überlegungen der Stichprobenerstellung ignorieren.
+* Dies erreichen Sie am besten, indem Sie einen benutzerdefinierten [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer) schreiben, der `SamplingPercentage` für das Telemetriedatenelement, das Sie behalten möchten, auf 100 festlegt (wie unten veranschaulicht). Da Initialisierer garantiert vor Telemetrieprozessoren (einschließlich Stichprobenerstellung) ausgeführt werden, ist sichergestellt, dass alle Verfahren zur Stichprobenerstellung dieses Element bei jeglichen Überlegungen der Stichprobenerstellung ignorieren. Benutzerdefinierte Telemetrieinitialisierer sind im ASP.NET SDK, im ASP.NET Core SDK, im JavaScript SDK und im Java SDK verfügbar. Sie können beispielsweise einen Telemetrieinitialisierer mithilfe des ASP.NET SDK konfigurieren:
 
     ```csharp
     public class MyTelemetryInitializer : ITelemetryInitializer

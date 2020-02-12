@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757566"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906629"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Tutorial: Hosten einer statischen Website in Blob Storage
 
-Dieses Tutorial ist der erste Teil einer Serie. Darin wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
+In diesem Tutorial wird beschrieben, wie Sie eine statische Website erstellen und in Azure Storage bereitstellen. Nach Abschluss des Vorgangs verfügen Sie über eine statische Website, auf die Benutzer öffentlich zugreifen können. 
 
-Im ersten Teil der Serie lernen Sie Folgendes:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren des Hostens von statischen Websites
@@ -99,9 +99,9 @@ Sie haben das Tutorial erfolgreich abgeschlossen und eine statische Website in A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im ersten Teil dieses Tutorials wurde beschrieben, wie Sie Ihr Azure Storage-Konto für das Hosten von statischen Websites konfigurieren und eine statische Website auf einem Azure-Endpunkt erstellen und bereitstellen.
+In diesem Tutorial wurde beschrieben, wie Sie Ihr Azure Storage-Konto für das Hosten von statischen Websites konfigurieren und eine statische Website auf einem Azure-Endpunkt erstellen und bereitstellen.
 
-Fahren Sie jetzt mit Teil 2 fort, in dem Sie eine benutzerdefinierte Domäne mit SSL für Ihre statische Website mit Azure CDN konfigurieren.
+Als Nächstes erfahren Sie, wie Sie eine benutzerdefinierte Domäne mit Ihrer statischen Website konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Verwenden von Azure CDN zum Aktivieren einer benutzerdefinierten Domäne mit SSL für eine statische Website](storage-blob-static-website-custom-domain.md)
+> [Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)

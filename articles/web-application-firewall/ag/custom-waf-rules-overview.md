@@ -5,24 +5,24 @@ services: web-application-firewall
 ms.topic: article
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/04/2019
+ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 072c7bd5b5b292ca4f0e53c59fcb7e9771331a94
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645088"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031730"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
-Die Web Application Firewall (WAF) v2 in Azure Application Gateway enthält einen vorkonfigurierten, von der Plattform verwalteten Regelsatz, der Schutz vor verschiedensten Angriffsarten bietet. Hierzu zählen unter anderem websiteübergreifende Skripts und die Einschleusung von SQL-Befehlen. WAF-Administratoren können die Regeln des Kernregelsatzes (Core Rule Set, CRS) bei Bedarf durch selbst geschriebene Regeln erweitern. Die Regeln können angeforderten Datenverkehr auf der Grundlage von Abgleichskriterien blockieren oder zulassen.
+Die Web Application Firewall (WAF) v2 in Azure Application Gateway enthält einen vorkonfigurierten, von der Plattform verwalteten Regelsatz, der Schutz vor verschiedensten Angriffsarten bietet. Hierzu zählen unter anderem websiteübergreifende Skripts und die Einschleusung von SQL-Befehlen. WAF-Administratoren sollten die Regeln des Kernregelsatzes (Core Rule Set, CRS) bei Bedarf durch selbst geschriebene Regeln erweitern. Die Regeln können angeforderten Datenverkehr auf der Grundlage von Abgleichskriterien blockieren oder zulassen.
 
 Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln, die für jede Anforderung ausgewertet werden, die die WAF durchläuft. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Die benutzerdefinierten Regeln enthalten einen Regelnamen, eine Regelpriorität und ein Array von Abgleichsbedingungen. Sind diese Bedingungen erfüllt, erfolgt eine Aktion (Zulassen oder Blockieren).
 
 So können beispielsweise alle Anforderungen von einer IP-Adresse im Bereich 192.168.5.4/24 blockiert werden. In dieser Regel ist der Operator *IPMatch*, „matchValues“ ist der IP-Adressbereich (192.168.5.4/24), und die Aktion ist die Blockierung des Datenverkehrs. Darüber hinaus werden Name und Priorität der Regel festgelegt.
 
-Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zur Erstellung komplexerer Regeln für Ihre individuellen Sicherheitsanforderungen. Beispiel: (Bedingung 1 **und** Bedingung 2) **oder** Bedingung 3).  In diesem Beispiel soll die in der benutzerdefinierten Regel angegebene Aktion ausgeführt werden, wenn die Bedingung 1 **und** die Bedingung 2 erfüllt sind **oder** wenn die Bedingung 3 erfüllt ist.
+Benutzerdefinierte Regeln unterstützen die Verwendung von Verknüpfungslogik zur Erstellung komplexerer Regeln für Ihre individuellen Sicherheitsanforderungen. Beispiel: (Bedingung 1 **und** Bedingung 2) **oder** Bedingung 3). In diesem Beispiel soll die WAF die in der benutzerdefinierten Regel angegebene Aktion ausführen, wenn Bedingung 1 **und** Bedingung 2 erfüllt sind **oder** wenn Bedingung 3 erfüllt ist.
 
 Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch **und** verknüpft. Beispiel: Blockieren des Datenverkehrs einer bestimmten IP-Adresse – und zwar nur bei Verwendung eines bestimmten Browsers.
 
@@ -31,7 +31,7 @@ Wenn Sie zwei Bedingungen mit **oder** verknüpfen möchten, müssen sich diese 
 > [!NOTE]
 > Es können maximal 100 benutzerdefinierte WAF-Regeln verwendet werden. Weitere Informationen zu Application Gateway-Grenzwerten finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
-In benutzerdefinierten Regeln werden genau wie in den Kernregelsätzen auch reguläre Ausdrücke unterstützt. Entsprechende Beispiele finden Sie unter [Create and use Web Application Firewall custom rules](create-custom-waf-rules.md) (Erstellen und Verwenden benutzerdefinierter Web Application Firewall-Regeln) in den Beispielen 3 und 5.
+In benutzerdefinierten Regeln werden genau wie in den Kernregelsätzen auch reguläre Ausdrücke unterstützt. Entsprechende Beispiele finden Sie unter [Erstellen und Verwenden von benutzerdefinierten Regeln für Web Application Firewall v2 auf Application Gateway](create-custom-waf-rules.md) in den Beispielen 3 und 5.
 
 ## <a name="allowing-vs-blocking"></a>Zulassen/Blockieren
 
@@ -92,7 +92,7 @@ Diese benutzerdefinierte Regel enthält einen Namen, eine Priorität, eine Aktio
 
 ### <a name="name-optional"></a>Name (optional)
 
-Der Name der Regel. Dieser Name wird in den Protokollen angezeigt.
+Der Name der Regel.  Dieser wird in den Protokollen angezeigt.
 
 ### <a name="priority-required"></a>Priorität (erforderlich)
 
@@ -157,198 +157,13 @@ Liste mit Werten für den Abgleich (verknüpft durch *oder*). Dabei kann es sich
 
 ### <a name="action-required"></a>Aktion (erforderlich)
 
-- Allow: Autorisiert die Transaktion. Alle nachfolgenden Regeln werden übersprungen. Die angegebene Anforderung wird also der Zulassungsliste hinzugefügt. Nach erfolgreichem Abgleich findet keine weitere Auswertung mehr statt, und die Anforderung wird an den Back-End-Pool gesendet. Regeln in der Zulassungsliste werden für keine weiteren benutzerdefinierten oder verwalteten Regeln ausgewertet.
+- Allow: Autorisiert die Transaktion. Alle anderen Regeln werden übersprungen. Die angegebene Anforderung wird der Zulassungsliste hinzugefügt. Nach erfolgreichem Abgleich findet keine weitere Auswertung mehr statt, und die Anforderung wird an den Back-End-Pool gesendet. Regeln in der Zulassungsliste werden für keine weiteren benutzerdefinierten oder verwalteten Regeln ausgewertet.
 - Block: Blockiert die Transaktion auf der Grundlage von *SecDefaultAction* (Erkennungs-/Schutzmodus). Nachdem die Anforderung ausgewertet und der Blockierungsliste hinzugefügt wurde, findet keine weitere Auswertung mehr statt, und die Anforderung wird blockiert. Nachfolgende Anforderungen, die die gleichen Bedingungen erfüllen, werden nicht ausgewertet und einfach blockiert. 
-- Log: Ermöglicht der Regel das Schreiben in das Protokoll sowie die Auswertung der restlichen Regeln. Nachfolgende benutzerdefinierte Regeln werden gemäß ihrer Priorität ausgewertet – gefolgt von den verwalteten Regeln.
+- Log: Ermöglicht der Regel das Schreiben in das Protokoll sowie die Auswertung der restlichen Regeln. Alle weiteren benutzerdefinierten Regeln werden gemäß ihrer Priorität ausgewertet – gefolgt von den verwalteten Regeln.
 
 ## <a name="geomatch-custom-rules-preview"></a>Benutzerdefinierte Geomatch-Regeln (Vorschau)
 
-Benutzerdefinierte Regeln ermöglichen die Erstellung maßgeschneiderter Regeln, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Sie können den Zugriff auf Ihre Webanwendungen nun nach Land oder Region beschränken (als öffentliche Vorschau verfügbar). Wie bei allen benutzerdefinierten Regeln kann diese Logik auch mit anderen Regeln kombiniert werden, um den Anforderungen Ihrer Anwendung zu entsprechen. 
-
-   > [!NOTE]
-   > Benutzerdefinierte Geomatch-Regeln sind in den Regionen „USA, Süden-Mitte“ und „Europa, Norden“ verfügbar. Wenn Sie im Portal darauf zugreifen möchten, verwenden Sie bis zur Liveschaltung für alle Benutzer [diesen Link](https://aka.ms/AppGWWAFGeoMatch). 
-
-Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um einen der folgenden zweistelligen Ländercodes handeln. 
-
-|Landesvorwahl | Name des Lands |
-| ----- | ----- |
-| AD | Andorra |
-| AE | Vereinigte Arabische Emirate|
-| AF | Afghanistan|
-| Verfügbarkeitsgruppe | Antigua und Barbuda|
-| AL | Albanien|
-| AM | Armenien|
-| AO | Angola|
-| AR | Argentinien|
-| AS | Amerikanisch-Samoa|
-| AT | Österreich|
-| AU | Australien|
-| RP | Aserbaidschan|
-| BA | Bosnien und Herzegowina|
-| BB | Barbados|
-| BD | Bangladesch|
-| BE | Belgien|
-| BF | Burkina Faso|
-| BG | Bulgarien|
-| BH | Bahrain|
-| BI | Burundi|
-| BJ | Benin|
-| BL | St. Barthélemy|
-| BN | Brunei Darussalam|
-| BO | Bolivien|
-| BR | Brasilien|
-| BS | Bahamas|
-| BT | Bhutan|
-| BW | Botsuana|
-| BY | Belarus|
-| BZ | Belize|
-| CA | Canada|
-| CD | Demokratische Republik Kongo|
-| CF | Zentralafrikanische Republik|
-| CH | Schweiz|
-| CI | Côte d'Ivoire|
-| CL | Chile|
-| CM | Kamerun|
-| CN | China|
-| CO | Kolumbien|
-| CR | Costa Rica|
-| CU | Kuba|
-| CV | Cabo Verde|
-| CY | Zypern|
-| CZ | Tschechische Republik|
-| DE | Deutschland|
-| DK | Dänemark|
-| DO | Dominikanische Republik|
-| DZ | Algerien|
-| EC | Ecuador|
-| EE | Estland|
-| EG | Ägypten|
-| ES | Spanien|
-| ET | Äthiopien|
-| FI | Finnland|
-| FJ | Fidschi|
-| FM | Föderierte Staaten von Mikronesien|
-| BV | Frankreich|
-| GB | United Kingdom|
-| GE | Georgien|
-| GF | Französisch-Guayana|
-| GH | Ghana|
-| GN | Guinea|
-| GP | Guadeloupe|
-| GR | Griechenland|
-| GT | Guatemala|
-| GY | Guayana|
-| HK | Hongkong (SAR)|
-| HN | Honduras|
-| HR | Kroatien|
-| HT | Haiti|
-| HU | Ungarn|
-| id | Indonesien|
-| IE | Irland|
-| BY | Israel|
-| IN | Indien|
-| IQ | Irak|
-| IR | Islamische Republik Iran|
-| IS | Island|
-| IT | Italien|
-| JM | Jamaika|
-| JO | Jordan|
-| JP | Japan|
-| KE | Kenia|
-| KG | Kirgisistan|
-| KH | Kambodscha|
-| KI | Kiribati|
-| KN | St. Kitts und Nevis|
-| KP | Demokratische Volksrepublik Korea|
-| KR | Republik Korea|
-| KW | Kuwait|
-| HE | Kaimaninseln|
-| KZ | Kasachstan|
-| LA | Demokratische Volksrepublik Laos|
-| LB | Libanon|
-| LI | Liechtenstein|
-| LK | Sri Lanka|
-| LR | Liberia|
-| LS | Lesotho|
-| LT | Litauen|
-| LU | Luxemburg|
-| LV | Lettland|
-| LY | Libyen |
-| NI | Marokko|
-| MD | Republik Moldau|
-| MG | Madagaskar|
-| MK | Nordmazedonien|
-| ML | Mali|
-| MM | Myanmar|
-| BB | Mongolei|
-| MO | Macau (SAR)|
-| MQ | Martinique|
-| MR | Mauretanien|
-| MT | Malta|
-| MV | Malediven|
-| MW | Malawi|
-| MX | Mexiko|
-| MY | Malaysia|
-| MZ | Mosambik|
-| Nicht verfügbar | Namibia|
-| NE | Niger|
-| NG | Nigeria|
-| NI | Nicaragua|
-| NL | Niederlande|
-| Nein | Norwegen|
-| NP | Nepal|
-| NR | Nauru|
-| NZ | Neuseeland|
-| OM | Oman|
-| PA | Panama|
-| PE | Peru|
-| PH | Philippinen|
-| PK | Pakistan|
-| PL | Polen|
-| PR | Puerto Rico|
-| PT | Portugal|
-| PW | Palau|
-| PY | Paraguay|
-| QA | Katar|
-| RE | Réunion|
-| RO | Rumänien|
-| RS | Serbien|
-| RU | Russische Föderation|
-| RW | Ruanda|
-| SA | Saudi-Arabien|
-| SD | Sudan|
-| SE | Schweden|
-| SG | Singapur|
-| SI | Slowenien|
-| SK | Slowakei|
-| SN | Senegal|
-| SO | Somalia|
-| SR | Surinam|
-| SS | Südsudan|
-| SV | El Salvador|
-| SY | Arabische Republik Syrien|
-| SZ | Swasiland|
-| TC | Turks- und Caicosinseln|
-| TG | Togo|
-| TH | Thailand|
-| TN | Tunesien|
-| TR | Türkei|
-| TT | Trinidad und Tobago|
-| TW | Taiwan|
-| TZ | Vereinigte Republik Tansania|
-| UA | Ukraine|
-| UG | Uganda|
-| US | USA|
-| UY | Uruguay|
-| UZ | Usbekistan|
-| VC | St. Vincent und die Grenadinen|
-| VE | Venezuela|
-| VG | Britische Jungferninseln|
-| VI | Amerikanische Jungferninseln|
-| VN | Vietnam|
-| ZA | Südafrika|
-| ZM | Sambia|
-| ZW | Simbabwe|
+Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstellen, die genau die Anforderungen Ihrer Anwendungen und Sicherheitsrichtlinien erfüllen. Sie können den Zugriff auf Ihre Webanwendungen länder-/regionsbasiert einschränken. Weitere Informationen finden Sie unter [Benutzerdefinierte Geomatch-Regeln (Vorschau)](geomatch-custom-rules.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

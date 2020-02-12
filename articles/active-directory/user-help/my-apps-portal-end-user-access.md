@@ -2,31 +2,38 @@
 title: Suchen und Verwenden von Apps im Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie das Portal „Meine Apps“ suchen und auf die cloudbasierten Apps Ihrer Organisation zugreifen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c15580481c153a58122db593f678998be485b57d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705002"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022304"
 ---
-# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>Suchen und Verwenden der cloudbasierten Apps Ihrer Organisation im Portal „Meine Apps“
+# <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
-Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
+Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** für folgende Aufgaben verwenden:
+
+- Anzeigen und Starten vieler cloudbasierter Apps Ihrer Organisation
+- Aktualisieren Ihrer Profil- und Kontoinformationen
+- Anzeigen von Informationen zu Ihren **Gruppen**
+- Ausführen von **Zugriffsüberprüfungen** für Ihre Apps und Gruppen
+
+Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
->[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
+> [!Important]
+> Dieser Inhalt richtet sich an Benutzer von „Meine Apps“. Administratoren können sich in der [Dokumentation zur Anwendungsverwaltung](https://docs.microsoft.com/azure/active-directory/manage-apps) über die Einrichtung und Verwaltung cloudbasierter Apps informieren.
 
 ## <a name="supported-browsers"></a>Unterstützte Browser
 
@@ -66,7 +73,8 @@ Laden Sie die Erweiterung in Ihrem Browser herunter, und installieren Sie sie:
 
 Rechts neben der **Adressleiste** wird ein Symbol hinzugefügt, über das Sie sich anmelden und die Erweiterung anpassen können.
 
-#### <a name="to-change-your-my-apps-portal-using-the-extension"></a>So ändern Sie Ihr Portal „Meine Apps“ mithilfe der Erweiterung
+## <a name="to-change-your-my-apps-portal-using-the-extension"></a>So ändern Sie Ihr Portal „Meine Apps“ mithilfe der Erweiterung
+
 Sie können wählen, wie viele Anwendungen im Abschnitt **Zuletzt verwendet** angezeigt werden sollen, und festlegen, ob die internen URLs Ihrer Organisation umgeleitet werden dürfen.
 
 1. Klicken Sie auf das neue Symbol **Erweiterung zur sicheren Anmeldung bei „Meine Apps“** ![Symbol der Erweiterung](media/my-apps-portal/my-apps-portal-extension-icon.png) rechts neben der **Adressleiste** und dann auf **Anmelden, um zu beginnen**.
@@ -78,16 +86,18 @@ Sie können wählen, wie viele Anwendungen im Abschnitt **Zuletzt verwendet** an
     ![Seite „Einstellungen“ der Erweiterung mit den verfügbaren Anpassungsmöglichkeiten](media/my-apps-portal/my-apps-portal-extension-settings-page.png)
 
 ## <a name="access-and-use-the-my-apps-portal-by-device"></a>Zugreifen auf und Verwenden des Portals „Meine Apps“ auf verschiedenen Geräten
+
 Sie können auf das Portal „Meine Apps“ auf Ihrem Computer, in einem Intune Managed Browser oder auf einem iOS- oder Android-Mobilgerät zugreifen und es dort nutzen.
 
 ![Seite „Apps“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-portal-apps-page.png)
 
 ### <a name="access-and-use-the-my-apps-portal-on-your-computer"></a>Zugreifen auf und Verwenden des Portals „Meine Apps“ auf Ihrem Computer
+
 Wenn Sie die Berechtigung für den Zugriff und die Nutzung der cloudbasierten Apps Ihrer Organisation haben, können Sie diese über das Portal **Meine Apps** aufrufen.
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an.
+1. Melden Sie sich auf Ihrem Computer bei Ihrem Geschäfts-, Schul- oder Unikonto an.
 
-2. Öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Navigieren Sie in einem unterstützten Webbrowser zu https://myapps.microsoft.com , oder verwenden Sie den von Ihrer Organisation bereitgestellten Link, falls Sie auf eine benutzerdefinierte Seite (z. B. `https://myapps.microsoft.com/contoso.com` ) geleitet werden sollen.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -101,7 +111,7 @@ Sie können die Apps Ihrer Organisation über einen Intune Managed Browser auf I
 
 1. Laden Sie auf Ihrem mobilen Gerät die App „Intune Managed Browser“ aus dem [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) oder dem [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser) herunter, und installieren Sie sie.
 
-2. Öffnen Sie die App „Intune Managed Browser“, und wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Navigieren Sie in der Intune Managed Browser-App zu https://myapps.microsoft.com , oder verwenden Sie den von Ihrer Organisation bereitgestellten Link, falls Sie auf eine benutzerdefinierte Seite (z. B. https://myapps.microsoft.com/contoso.com ) geleitet werden sollen.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -111,11 +121,11 @@ Sie können die Apps Ihrer Organisation über einen Intune Managed Browser auf I
 
 ### <a name="access-and-use-the-my-apps-portal-on-an-ios-device"></a>Zugreifen auf und Verwenden des Portals „Meine Apps“ auf einem iOS-Gerät
 
-Sie können das Portal **Meine Apps** auf einem iPhone- oder iPad-Gerät mit iOS ab Version 7 anzeigen und nutzen. Sie können auch die [mobile App „Meine Apps“](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) installieren, um auf Ihren iOS-Geräten auf die Apps Ihrer Organisation zuzugreifen. 
+Sie können das Portal **Meine Apps** auf einem iPhone- oder iPad-Gerät mit iOS ab Version 7 anzeigen und nutzen. Sie können auch die [mobile App „Meine Apps“](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8) installieren, um auf Ihren iOS-Geräten auf die Apps Ihrer Organisation zuzugreifen.
 
 1. Starten Sie auf Ihrem mobilen Gerät eine Webbrowser-App wie z.B. Safari.
 
-2. Wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Navigieren Sie zu https://myapps.microsoft.com , oder verwenden Sie den von Ihrer Organisation bereitgestellten Link, falls Sie auf eine benutzerdefinierte Seite (z. B. https://myapps.microsoft.com/contoso.com ) geleitet werden sollen.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -129,7 +139,7 @@ Sie können auf einem Android-Gerät das Portal **Meine Apps** anzeigen und verw
 
 1. Starten Sie auf Ihrem Mobilgerät eine Webbrowser-App, z.B. Google Chrome ein.
 
-2. Wechseln Sie zu https://myapps.microsoft.com, oder verwenden Sie den von Ihrer Organisation bereitgestellten Link. So können Sie beispielsweise zu einer benutzerdefinierten Seite Ihrer Organisation wie https://myapps.microsoft.com/contoso.com geleitet werden.
+2. Navigieren Sie zu https://myapps.microsoft.com , oder verwenden Sie den von Ihrer Organisation bereitgestellten Link, falls Sie auf eine benutzerdefinierte Seite (z. B. https://myapps.microsoft.com/contoso.com ) geleitet werden sollen.
 
     Die Seite **Apps** wird mit allen im Besitz Ihrer Organisation befindlichen Cloud-Apps angezeigt, die Ihnen zur Verfügung stehen.
 
@@ -141,17 +151,39 @@ Sie können auf einem Android-Gerät das Portal **Meine Apps** anzeigen und verw
 
 Wenn Ihr Administrator Ihnen diese Berechtigung erteilt hat, können Sie auf der Seite **Apps** eine neue App hinzufügen.
 
-1. Wählen Sie auf der Seite **Apps** den Eintrag **App hinzufügen** aus.
+1. Führen Sie auf der Seite **Apps** einen der folgenden Schritte aus:
+    - Wenn Sie die unveränderte Benutzeroberfläche von „Meine Apps“ verwenden, wählen Sie **App hinzufügen** aus, wie hier gezeigt.
 
-    Die Seite **Apps hinzufügen** wird angezeigt.
+      ![Seite „Apps hinzufügen“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-portal-add-apps-page.png)
 
-    ![Seite „Apps hinzufügen“ im Portal „Meine Apps“](media/my-apps-portal/my-apps-portal-add-apps-page.png)
+    - Wenn Sie die aktualisierte Benutzeroberfläche von „Meine Apps“ verwenden, wählen Sie **Self-Service-Apps hinzufügen** aus.
+
+       ![Seite „Apps hinzufügen“ im Portal „Meine Apps“ unter myapplications.microsoft.com](media/my-apps-portal/my-apps-portal-add-app-link.png)
 
 2. Wählen Sie in der Liste die App aus, die Sie hinzufügen möchten, und klicken Sie dann auf **Hinzufügen**.
 
 3. Die App wird der Liste auf der Seite **Apps** hinzugefügt.
 
-    Bei einigen Apps ist ggf. eine Genehmigung durch den Administrator erforderlich ist, bevor sie hinzugefügt werden. In diesem Fall wird die App erst dann zur Seite **Apps** hinzugefügt, nachdem der Administrator sie genehmigt hat.
+    Bei einigen Apps ist ggf. eine Genehmigung durch den Administrator erforderlich ist, bevor sie hinzugefügt werden. In diesem Fall wird die App erst dann auf der Seite **Apps** hinzugefügt, nachdem der Administrator sie genehmigt hat.
+
+## <a name="start-a-cloud-based-app"></a>Starten einer cloudbasierten App
+
+Im Portal **Meine Apps** können Sie alle der verfügbaren cloudbasierten Apps starten. Es werden nur die Apps angezeigt, für deren Verwendung Sie eine Berechtigung haben.
+
+- Wählen Sie auf der Seite **Apps** die Anwendung aus, mit deren Nutzung Sie beginnen möchten.
+
+    Für die App öffnet sich eine neue Seite, auf der Sie sich (bei Bedarf) anmelden oder mit der Nutzung der App beginnen können.
+
+## <a name="activities-in-the-my-apps-portal"></a>Aktivitäten im Portal „Meine Apps“
+
+Im Portal **Meine Apps** haben Sie folgende Möglichkeiten:
+
+- Organisieren Ihrer Apps in den verschiedenen Kategorien, die von Ihrer Organisation erstellt und bereitgestellt werden. Weitere Informationen finden Sie unter [Zugreifen auf und Verwenden von Sammlungen im Portal „Meine Apps“](my-applications-portal-workspaces.md).
+
+- Überprüfen, Aktualisieren oder Widerrufen von Berechtigungen für Anwendungen. Weitere Informationen finden Sie unter [Bearbeiten oder Widerrufen von Anwendungsberechtigungen im Portal „Meine Apps“](my-applications-portal-permissions-saved-accounts.md).
+
+>[!Note]
+>Wenn keine verfügbaren Sammlungen oder Kategorien angezeigt werden, hat Ihr Administrator keine eingerichtet oder diese nicht für Sie freigegeben. Wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung oder die Berechtigungen zum Anzeigen der freigegebenen Sammlungen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

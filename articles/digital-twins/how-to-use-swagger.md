@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 27874e5731bd6fb9821e7aeda9333adbdbb79099
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863528"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023292"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
@@ -93,11 +93,11 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
 ## <a name="swagger-oauth-20-authorization"></a>Swagger-OAuth 2.0-Autorisierung
 
 > [!NOTE]
-> * Der Benutzerprinzipal, der die Azure Digital Twins-Ressource erstellt hat, verfügt über eine Raumadministrator-Rollenzuweisung und kann zusätzliche Rollenzuweisungen für andere Benutzer erstellen. Derartige Benutzer und ihre Rollen können zum Aufrufen der APIs autorisiert werden.
+> * Der Benutzerprinzipal, der die Azure Digital Twins-Ressource erstellt hat, verfügt über eine Raumadministrator-Rollenzuweisung und kann zusätzliche Rollenzuweisungen für andere Benutzer erstellen. Solche Benutzer und ihre Rollen können für das Aufrufen der APIs autorisiert werden.
 
-1. Führen Sie die Schritte in [diesem Schnellstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) zum Erstellen und Konfigurieren einer Azure AD-Anwendung aus. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
+1. Führen Sie die Schritte in [diesem Schnellstart](quickstart-view-occupancy-dotnet.md#set-permissions-for-your-app) zum Erstellen und Konfigurieren einer Azure Active Directory-Anwendung aus. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
 
-1. Fügen Sie die folgende **Umleitungs-URL** zu Ihrer Registrierung der Azure AD-App hinzu:
+1. Fügen Sie Ihrer Azure Active Directory-App-Registrierung den folgenden **Umleitungs-URI** hinzu:
 
     [![Registrieren der Swagger-Umleitungs-URL in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
@@ -108,7 +108,9 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Dokumentations-URL Ihrer Verwaltungs-REST-API aus dem Portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Kopieren Sie die **Client-ID** Ihrer Azure AD-App.
+1. Aktivieren Sie das Kontrollkästchen **Implizite Gewährung** > **Zugriffstoken**, um die Verwendung des impliziten OAuth 2.0-Gewährungsablaufs zuzulassen. Wählen Sie **Konfigurieren** und dann **Speichern** aus.
+
+1. Kopieren Sie die **Client-ID** Ihrer Azure Active Directory-App.
 
 Nach Abschluss der Azure Active Directory-Registrierung:
 

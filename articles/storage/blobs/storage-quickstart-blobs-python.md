@@ -3,41 +3,33 @@ title: 'Schnellstart: Azure Blob Storage-Bibliothek v12 für Python'
 description: In diesem Schnellstart erfahren Sie, wie mithilfe der Azure Blob Storage-Clientbibliothek Version 12 für Python ein Container und ein Blob in Blob Storage (Objektspeicher) erstellt werden. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03f298b49e6a1eba84e8adf5ca6039df0bfe1abd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443739"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906415"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für Python
+# <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Schnellstart: Verwalten von Blobs per Python v12 SDK
 
-Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für Python. Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Führen Sie die Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert.
-
-> [!NOTE]
-> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek für Python](storage-quickstart-blobs-python-legacy.md).
-
-Mit der Azure Blob Storage-Clientbibliothek ist Folgendes möglich:
-
-* Erstellen eines Containers
-* Hochladen eines Blobs in Azure Storage
-* Auflisten aller Blobs in einem Container
-* Herunterladen des Blobs auf den lokalen Computer
-* Löschen eines Containers
+In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs mit Python verwalten. Bei Blobs handelt es sich um Objekte, die große Mengen von Text oder Binärdaten enthalten können, z. B. Bilder, Dokumente, Streamingmedien und Archivdaten. Sie führen das Hochladen, Herunterladen und Auflisten von Blobs und das Erstellen und Löschen von Containern durch.
 
 [API-Referenzdokumentation](/python/api/azure-storage-blob) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob) | [Paket (Python Package Index)](https://pypi.org/project/azure-storage-blob/) | [Beispiele](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples)
 
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-* Azure Storage-Konto – [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [Python](https://www.python.org/downloads/) für Ihr Betriebssystem – 2.7, 3.5 oder höher
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Azure Storage-Konto [Informationen zu Azure-Speicherkonten](../common/storage-account-create.md)
+- [Python](https://www.python.org/downloads/) 2.7, 3.5 oder höher.
+
+> [!NOTE]
+> Informationen zu den ersten Schritten mit der vorherigen SDK-Version finden Sie unter [Schnellstart: Azure Blob Storage-Clientbibliothek v2.1 für Python](storage-quickstart-blobs-python-legacy.md).
+
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -81,7 +73,7 @@ Dieser Befehl installiert das Paket mit der Azure Blob Storage-Clientbibliothek 
 
 1. Öffnen einer neuen Textdatei im Code-Editor
 1. Hinzufügen von `import`-Anweisungen
-1. Erstellen der Struktur für das Programm, einschließlich einer sehr einfachen Ausnahmebehandlung
+1. Erstellen der Struktur für das Programm, einschließlich einer einfachen Ausnahmebehandlung
 
     Der Code lautet wie folgt:
 
@@ -234,7 +226,7 @@ with open(download_file_path, "wb") as download_file:
 
 Im folgenden Code werden die mit der App erstellten Ressourcen bereinigt, indem der gesamte Container mit der [delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-)-Methode gelöscht wird. Sie können bei Bedarf auch die lokalen Dateien löschen.
 
-Die App wird unterbrochen, um auf Benutzereingaben zu warten, indem `input()` aufgerufen wird, bevor Blob, Container und lokale Dateien gelöscht werden. Dies ist eine gute Möglichkeit, um zu überprüfen, ob die Ressourcen tatsächlich ordnungsgemäß erstellt wurden, bevor sie gelöscht werden.
+Die App wird unterbrochen, um auf Benutzereingaben zu warten, indem `input()` aufgerufen wird, bevor Blob, Container und lokale Dateien gelöscht werden. Dies ist eine gute Möglichkeit, um zu überprüfen, ob die Ressourcen richtig erstellt wurden, bevor sie gelöscht werden.
 
 Fügen Sie diesen Code am Ende des `try`-Blocks hinzu:
 

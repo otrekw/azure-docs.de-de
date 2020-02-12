@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b2f9853c2699b69a0c9be13e6925a4b30f358f7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102029"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031355"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Sicherheitsüberlegungen für SQL Server in Azure Virtual Machines
 
@@ -56,6 +56,10 @@ Zusätzlich zu NSG-Regeln zum Einschränken des Netzwerkdatenverkehrs können Si
 Wenn Sie Endpunkte mit dem klassischen Bereitstellungsmodell verwenden, sollten Sie alle Endpunkte auf dem virtuellen Computer entfernen, sofern Sie sie nicht nutzen. Weitere Informationen zur Verwendung von ACLs für Endpunkte finden Sie unter [Verwalten der ACL für einen Endpunkt](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint) Dies ist nicht für VMs erforderlich, für die der Resource Manager verwendet wird.
 
 Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für die Instanz der SQL Server-Datenbank-Engine auf Ihrem virtuellen Azure-Computer. Konfigurieren Sie die SQL Server-Instanz mit einem signierten Zertifikat. Weitere Informationen finden Sie unter [Aktivieren von verschlüsselten Verbindungen mit der Datenbank-Engine](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) und [Syntax für Verbindungszeichenfolgen](https://msdn.microsoft.com/library/ms254500.aspx).
+
+## <a name="encryption"></a>Verschlüsselung
+
+Verwaltete Datenträger bieten serverseitige Verschlüsselung und Azure Disk Encryption. Die [serverseitige Verschlüsselung](/azure/virtual-machines/windows/disk-encryption) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. [Azure Disk Encryption](/azure/security/fundamentals/azure-disk-encryption-vms-vmss) nutzt entweder BitLocker- oder DM-Crypt-Technologie und lässt sich mit Azure Key Vault integrieren, um sowohl das Betriebssystem als auch die Datenträger zu verschlüsseln. 
 
 ## <a name="use-a-non-default-port"></a>Verwenden eines Ports, der kein Standardport ist
 
@@ -93,9 +97,14 @@ Sie möchten verhindern, dass Angreifer Kontonamen oder Kennwörter leicht errat
 
   - Falls Sie die **SA**-Anmeldung verwenden müssen, sollten Sie die Anmeldung nach der Bereitstellung aktivieren und ein neues sicheres Kennwort zuweisen.
 
-## <a name="follow-on-premises-best-practices"></a>Befolgen von bewährten Methoden für lokale Standorte
+## <a name="additional-best-practices"></a>Weitere Best Practices
 
-Zusätzlich zu den in diesem Thema beschriebenen Methoden empfehlen wir Ihnen, die herkömmlichen Sicherheitsmethoden für lokale Standorte zu beachten und zu implementieren, soweit sie zutreffend sind. Weitere Informationen finden Sie unter [Überlegungen zur Sicherheit bei SQL Server-Installationen](https://docs.microsoft.com/sql/sql-server/install/security-considerations-for-a-sql-server-installation).
+Neben den in diesem Artikel beschriebenen bewährten Methoden wird empfohlen, dass Sie auch die bewährten Methoden für lokale Sicherheit und VM-Sicherheit berücksichtigen und implementieren. 
+
+Weitere Informationen über lokale Sicherheitsmethoden finden Sie unter [Überlegungen zur Sicherheit bei SQL Server-Installationen](/sql/sql-server/install/security-considerations-for-a-sql-server-installation) und im [Sicherheitscenter](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database). 
+
+Weitere Informationen zur Sicherheit von VMs finden Sie in der [Sicherheitsübersicht über virtuelle Azure-Computer](/azure/security/fundamentals/virtual-machines-overview).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,13 +3,13 @@ title: Offlinesicherung für DPM und Azure Backup Server
 description: Mit Azure Backup können Sie mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für DPM und Azure Backup Server (MABS) erläutert.
 ms.reviewer: saurse
 ms.topic: conceptual
-ms.date: 05/08/2018
-ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 1/28/2020
+ms.openlocfilehash: 6be75062ab0ce06784d8cd7c833e0070476acf60
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996322"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022578"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 
@@ -56,13 +56,74 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
     | USA | [Link](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | China | [Link](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
-* Es wurde ein Azure Storage-Konto mit dem *klassischen* Bereitstellungsmodell in dem Abonnement erstellt, aus dem Sie die Datei mit den Veröffentlichungseinstellungen heruntergeladen haben, wie im Folgenden dargestellt:
+* Es wurde ein Azure Storage-Konto mit dem *Resource Manager*-Bereitstellungsmodell in dem Abonnement erstellt, aus dem Sie die Datei mit den Veröffentlichungseinstellungen heruntergeladen haben, wie im Folgenden dargestellt:
 
-  ![Erstellen klassischer Speicherkonten](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Erstellen eines Speicherkontos mit Resource Manager-Entwicklung](./media/backup-azure-backup-import-export/storage-account-resource-manager.png)
 
 * Es wurde ein Stagingspeicherort, bei dem es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer (intern oder extern) handeln kann, mit genügend Speicherplatz zum Speichern der Erstkopie erstellt. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
 * Bei Datenträgern, die an Azure gesendet werden sollen, stellen Sie sicher, dass nur interne 2,5-Zoll-SSD- oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II/III-Festplatten verwendet werden. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-requirements.md#supported-hardware) die aktuell vom Dienst unterstützten Laufwerke nach.
 * Die SATA-Laufwerke müssen mit einem Computer verbunden sein (als *Kopiercomputer* bezeichnet), auf dem die Sicherungsdaten vom *Stagingspeicherort* auf die SATA Laufwerke kopiert werden. Stellen Sie sicher, dass BitLocker auf dem *Kopiercomputer* aktiviert ist.
+
+## <a name="prepare-the-server-for-the-offline-backup-process"></a>Vorbereiten des Servers für die Offlinesicherung
+
+>[!NOTE]
+> Wenn Sie die aufgelisteten Hilfsprogramme (z. B. *AzureOfflineBackupCertGen.exe*) in Ihrer Installation des MARS-Agents nicht finden können, schreiben Sie an AskAzureBackupTeam@microsoft.com, um Zugriff darauf zu erhalten.
+
+* Öffnen Sie auf dem Server eine Eingabeaufforderung mit erhöhten Rechten, und führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe CreateNewApplication SubscriptionId:<Subs ID>
+    ```
+
+    Wenn noch keine AD-Anwendung für die Azure-Offlinesicherung vorhanden ist, erstellt das Tool diese.
+
+    Wenn bereits eine Anwendung vorhanden ist, werden Sie durch die ausführbare Datei aufgefordert, das Zertifikat manuell in die Anwendung im Mandanten hochzuladen. Führen Sie die Schritte in [diesem Abschnitt](#manually-upload-offline-backup-certificate) aus, um das Zertifikat manuell in die Anwendung hochzuladen.
+
+* Das Tool „AzureOfflineBackup.exe“ generiert die Datei „OfflineApplicationParams.xml“.  Kopieren Sie diese Datei mit dem MABS oder DPM auf den Server.
+* Installieren Sie den [aktuellen MARS-Agent-](https://aka.ms/azurebackup_agent) auf dem DPM-/Azure Backup-Server (MABS).
+* Registrieren Sie den Server bei Azure.
+* Führen Sie den folgenden Befehl aus:
+
+    ```cmd
+    AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname configured with Azure Data Box>
+    ```
+
+* Mit dem obigen Befehl wird die Datei `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch\MicrosoftBackupProvider\OfflineApplicationParams_<Storageaccountname>.xml` erstellt.
+
+## <a name="manually-upload-offline-backup-certificate"></a>Manuelles Hochladen eines Offlinesicherungszertifikats
+
+Führen Sie die folgenden Schritte aus, um das Offlinesicherungszertifikat manuell in eine zuvor erstellte Azure Active Directory-Anwendung hochzuladen, die für die Offlinesicherung vorgesehen ist.
+
+1. Melden Sie sich beim Azure-Portal an.
+2. Wechseln Sie zu **Azure Active Directory** > **App-Registrierungen**.
+3. Navigieren Sie zur Registerkarte **Anwendungen mit Besitzer**, und suchen Sie nach einer Anwendung mit dem Anzeigenamensformat `AzureOfflineBackup _<Azure User Id`, wie unten dargestellt:
+
+    ![Suchen der Anwendung auf der Registerkarte „Anwendungen mit Besitzer“](./media/backup-azure-backup-import-export/owned-applications.png)
+
+4. Klicken Sie auf die Anwendung. Wechseln Sie auf der Registerkarte **Verwalten** im linken Bereich zu **Zertifikate & Geheimnisse**.
+5. Überprüfen Sie, ob bereits Zertifikate oder öffentliche Schlüssel vorhanden sind. Wenn noch keine vorhanden sind, können Sie die Anwendung auf sichere Weise löschen, indem Sie auf der Seite **Übersicht** der Anwendung auf die Schaltfläche **Löschen** klicken. Anschließend können Sie die Schritte zum [Vorbereiten des Servers für die Offlinesicherung](#prepare-the-server-for-the-offline-backup-process) wiederholen und die folgenden Schritte überspringen. Führen Sie andernfalls die folgenden Schritte auf dem DPM-Server/MABS (Azure Backup Server) aus, auf dem Sie die Offlinesicherung konfigurieren möchten.
+6. Öffnen Sie die Registerkarte **Manage computer certificate application** > **Personal** (Computerzertifikatanwendung verwalten > Persönlich), und suchen Sie nach dem Zertifikat mit dem Namen `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
+7. Wählen Sie das oben angegebene Zertifikat aus, klicken Sie mit der rechten Maustaste auf **Alle Aufgaben**, und führen Sie dann einen **Export** ohne privaten Schlüssel im CER-Format aus.
+8. Wechseln Sie im Azure-Portal zur Anwendung für die Azure-Offlinesicherung.
+9. Klicken Sie auf **Verwalten** > **Zertifikate & Geheimnisse** > **Zertifikat hochladen**, und laden Sie das Zertifikat hoch, das Sie im vorherigen Schritt exportiert haben.
+
+    ![Hochladen des Zertifikats](./media/backup-azure-backup-import-export/upload-certificate.png)
+10. Öffnen Sie auf dem Server die Registrierung, indem Sie im Fenster „Ausführen“ **regedit** eingeben.
+11. Wechseln Sie zum Registrierungseintrag *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*.
+12. Klicken Sie mit der rechten Maustaste auf **CloudBackupProvider**, und fügen Sie einen neuen Zeichenfolgenwert mit dem Namen `AzureADAppCertThumbprint_<Azure User Id>` hinzu.
+
+    >[!NOTE]
+    > Hinweis: Führen Sie einen der folgenden Schritte aus, um die Azure-Benutzer-ID zu ermitteln:
+    >
+    >1. Führen Sie in PowerShell mit Azure-Verbindung den Befehl `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as appears in the portal”` aus.
+    >2. Navigieren Sie zum Registrierungspfad: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;`.
+
+13. Klicken Sie mit der rechten Maustaste auf die im vorherigen Schritt hinzugefügte Zeichenfolge, und wählen Sie **Ändern** aus. Geben Sie als Wert den Fingerabdruck des Zertifikats an, das Sie in Schritt 7 exportiert haben, und klicken Sie auf **OK**.
+14. Um den Wert des Fingerabdrucks zu erhalten, doppelklicken Sie auf das Zertifikat, wählen Sie die Registerkarte **Details** aus, und scrollen Sie nach unten, bis das Feld „Fingerabdruck“ angezeigt wird. Klicken Sie auf **Fingerabdruck**, und kopieren Sie den Wert.
+
+    ![Kopieren des Werts aus dem Feld „Fingerabdruck“](./media/backup-azure-backup-import-export/thumbprint-field.png)
+
+15. Fahren Sie mit dem Abschnitt [Workflow](#workflow) fort, um den Offlinesicherungsprozess fortzusetzen.
 
 ## <a name="workflow"></a>Workflow
 
@@ -104,7 +165,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
 Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Laufwerke verwendet, die an das nächste Azure-Rechenzentrum gesendet werden. Dieses Hilfsprogramm steht im Installationsverzeichnis des Recovery Services-Agents unter folgendem Pfad zur Verfügung:
 
-    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
+`*\\Microsoft Azure Recovery Services Agent\Utils\*`
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen Kopiercomputer, mit dem die vorzubereitenden SATA-Laufwerke verbunden sind. Überprüfen Sie für den Kopiercomputer Folgendes:
 
@@ -121,7 +182,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Obligatorische Eingabe zum Angeben des Pfads zum Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
     | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Optionale Eingabe zum Angeben des Pfads zur Datei **Azure-Veröffentlichungseinstellungen**, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
@@ -162,7 +223,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
    `*.\AzureOfflineBackupDiskPrep.exe*  u:  s:<*Staging Location Path*>   p:<*Path to AzurePublishSettingsFile*>`
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     | --- | --- |
     | u: | Erforderliche Eingabe zum Aktualisieren der Versanddetails für einen Azure-Importauftrag |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; | Erforderliche Eingabe, wenn der Befehl nicht auf dem Quellcomputer ausgeführt wird. Dient dem Angeben des Pfads zum Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
@@ -218,4 +279,3 @@ Zum nächsten geplanten Sicherungszeitpunkt führt Azure Backup eine inkrementel
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
-

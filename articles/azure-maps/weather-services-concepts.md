@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911027"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991196"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
@@ -21,7 +21,7 @@ In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von A
 
 ## <a name="unit-types"></a>Einheitstypen
 
-Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Daten entweder in metrischen oder in Zolleinheiten zurückgegeben werden. Die zurückgegebene Antwort für diese APIs enthält auch unitType, einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
+Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Daten entweder in metrischen oder in Zolleinheiten zurückgegeben werden. Die zurückgegebene Antwort für diese APIs enthält den unitType und einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
 
 |unitType|Beschreibung         |
 |--------|--------------------|
@@ -52,7 +52,7 @@ Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Dat
 
 ## <a name="weather-icons"></a>Wettersymbole
 
-Einige der Wetterdienst-APIs geben Symbolcodes (iconCode) in der Antwort zurück, einen numerischen Wert, der zum Definieren des Symbols verwendet werden kann. Stellen Sie aus Ihren Anwendungen keine direkten Verknüpfungen mit diesen Bildern her, da sich die URLs ändern können und werden.
+Einige der Wetterinfodienst-APIs geben den `iconCode` in der Antwort zurück. Der `iconCode` ist ein numerischer Wert, der zum Definieren des Symbols verwendet wird. Stellen Sie aus Ihren Anwendungen keine direkten Verknüpfungen mit diesen Bildern her, da sich die URLs ändern können und werden.
 
 | Symbolnummer |Symbol| Day (Tag) | Nacht | Text |
 |-------------|:----:|-----|-------|------|

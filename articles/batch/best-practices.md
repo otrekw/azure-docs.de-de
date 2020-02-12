@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden – Azure Batch
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
-author: ju-shim
-ms.author: jushiman
+author: LauraBrenner
+ms.author: labrenne
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
-manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+manager: evansma
+ms.openlocfilehash: 16fb2786f180b1e28b76d9246d599a871278d00d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026143"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022731"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -152,3 +152,15 @@ Zwar ist dies selten, doch eine Aufgabe kann aufgrund von Fehlern auf dem Comput
 ### <a name="security-isolation"></a>Sicherheitsisolierung
 
 Zum Zwecke der Isolierung, falls Ihr Szenario die Isolierung von Aufträgen voneinander erfordert, sollten Sie diese Aufträge isolieren, indem Sie sie in separaten Pools platzieren. Ein Pool ist die Sicherheitsisolierungsgrenze in Batch, und standardmäßig sind zwei Pools nicht gegenseitig sichtbar und können auch nicht miteinander kommunizieren. Vermeiden Sie die Verwendung separater Batch-Konten als Isolierungsmethode.
+
+## <a name="moving"></a>Verschieben
+
+### <a name="move-batch-account-across-regions"></a>Verschieben von Batch-Konten zwischen Regionen 
+
+Es gibt verschiedene Szenarien, in denen Sie Ihr vorhandenes Batch-Konto aus einer Region in eine andere verschieben möchten. Möglicherweise möchten Sie im Rahmen der Planung einer Notfallwiederherstellung eine Verschiebung in eine andere Region durchführen.
+
+Azure Batch-Konten können nicht von einer Region in eine andere verschoben werden. Sie können jedoch eine Azure Resource Manager-Vorlage verwenden, um die vorhandene Konfiguration Ihres Batch-Kontos zu exportieren.  Anschließend können Sie die Ressource in einer anderen Region stagen, indem Sie das Batch-Konto in eine Vorlage exportieren, die Parameter so ändern, dass sie der Zielregion entsprechen, und die Vorlage dann in der neuen Region bereitstellen. Nachdem Sie die Vorlage in der neuen Region hochgeladen haben, müssen Sie Zertifikate, Auftragszeitpläne und Anwendungspakete neu erstellen. Um die Änderungen zu committen und das Verschieben des Batch-Kontos abzuschließen, müssen Sie das ursprüngliche Batch-Konto oder die ursprüngliche Ressourcengruppe löschen.  
+
+Weitere Informationen zu Resource Manager und Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+
+

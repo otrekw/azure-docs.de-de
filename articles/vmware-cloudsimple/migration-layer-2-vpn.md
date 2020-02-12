@@ -1,6 +1,6 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Erweitern eines lokalen Layer-2-Netzwerks in die private Cloud
-description: Erfahren Sie, wie Sie ein Layer-2-VPN zwischen NSX-T in einer privaten CloudSimple-Cloud und einem lokalen, eigenständigen NSX Edge-Client einrichten.
+title: 'Azure VMware Solutions (AVS): Erweitern eines lokalen Layer-2-Netzwerks auf die private AVS-Cloud'
+description: Erfahren Sie, wie Sie ein Layer-2-VPN zwischen NSX-T in einer privaten AVS-Cloud und einem lokalen, eigenständigen NSX Edge-Client einrichten.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2ddfa9611143d5c3f823539e018c8afc885c6a46
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232378"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019824"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
-In dieser Anleitung erfahren Sie, wie Sie mit dem Layer-2-VPN (L2VPN) ein Layer-2-Netzwerk von Ihrer lokalen Umgebung auf Ihre private CloudSimple-Cloud ausdehnen. Diese Lösung ermöglicht die Migration von Workloads, die in Ihrer lokalen VMware-Umgebung ausgeführt werden, zur privaten Cloud in Azure. Dabei kann derselbe Subnetzadressraum verwendet werden, ohne dass den Workloads neue IP-Adressen zugewiesen werden müssen.
+In dieser Anleitung erfahren Sie, wie Sie mit dem Layer-2-VPN (L2VPN) ein Layer-2-Netzwerk von Ihrer lokalen Umgebung auf Ihre private AVS-Cloud ausdehnen. Diese Lösung ermöglicht die Migration von Workloads, die in Ihrer lokalen VMware-Umgebung ausgeführt werden, zur privaten AVS-Cloud in Azure. Dabei kann derselbe Subnetzadressraum verwendet werden, ohne den Workloads neue IP-Adressen zuzuweisen.
 
 Ein auf L2VPN basierendes Erweitern von Layer-2-Netzwerken kann mit und ohne NSX-basierte Netzwerke in Ihrer lokalen VMware-Umgebung verwendet werden. Wenn Sie lokal nicht über NSX-basierte Netzwerke für Workloads verfügen, können Sie ein eigenständiges NSX Edge-Dienstgateway verwenden.
 
 > [!NOTE]
-> Diese Anleitung behandelt ein Szenario, in dem die lokalen Rechenzentren und die in der privaten Cloud über ein Site-to-Site-VPN verbunden sind.
+> Diese Anleitung behandelt ein Szenario, in dem die lokalen Rechenzentren und die in der privaten AVS-Cloud über ein Site-to-Site-VPN verbunden sind.
 
 ## <a name="deployment-scenario"></a>Bereitstellungsszenario
 
-Um das lokale Netzwerk mithilfe von L2VPN zu erweitern, müssen Sie einen L2VPN-Server (NSX-T-Zielrouter Ebene 0) und einen L2VPN-Client (eigenständiger Client am Ausgangspunkt) konfigurieren.  
+Um das lokale Netzwerk mithilfe von L2VPN zu erweitern, müssen Sie einen L2VPN-Server (NSX-T-Zielrouter Ebene 0) und einen L2VPN-Client (eigenständiger Client am Ausgangspunkt) konfigurieren. 
 
-In diesem Bereitstellungsszenario ist Ihre private Cloud mit Ihrer lokalen Umgebung über einen Site-to-Site-VPN-Tunnel verbunden, der die Kommunikation der lokalen Verwaltung und der vMotion-Subnetze mit der Verwaltung der privaten Cloud und den vMotion-Subnetzen ermöglicht. Diese Anordnung ist für Cross vCenter vMotion (xVC-vMotion) erforderlich. Ein NSX-T-Router der Ebene 0 wird als L2VPN-Server in der privaten Cloud bereitgestellt.
+In diesem Bereitstellungsszenario ist Ihre private AVS-Cloud mit Ihrer lokalen Umgebung über einen Site-to-Site-VPN-Tunnel verbunden, der die Kommunikation der lokalen Verwaltung und der vMotion-Subnetze zum Verwalten der privaten AVS-Cloud und den vMotion-Subnetzen ermöglicht. Diese Anordnung ist für Cross vCenter vMotion (xVC-vMotion) erforderlich. Ein NSX-T-Router der Ebene 0 wird als L2VPN-Server in der privaten AVS-Cloud bereitgestellt.
 
-NSX Edge wird eigenständig in Ihrer lokalen Umgebung als L2VPN-Client bereitgestellt und anschließend mit dem L2VPN-Server gekoppelt. An jedem Ende wird ein GRE-Tunnelendpunkt erstellt und so konfiguriert, dass das lokale Layer-2-Netzwerk auf Ihre private Cloud ausgeweitet wird. Die folgende Abbildung veranschaulicht diese Konfiguration.
+NSX Edge wird eigenständig in Ihrer lokalen Umgebung als L2VPN-Client bereitgestellt und anschließend mit dem L2VPN-Server gekoppelt. An jedem Ende wird ein GRE-Tunnelendpunkt erstellt und so konfiguriert, dass das lokale Layer-2-Netzwerk auf Ihre private AVS-Cloud ausgeweitet wird. Die folgende Abbildung veranschaulicht diese Konfiguration.
 
 ![Bereitstellungsszenario](media/l2vpn-deployment-scenario.png)
 
@@ -42,29 +42,29 @@ Vergewissern Sie sich, dass Folgendes gewährleistet ist, bevor Sie die Lösung 
 
 * Die lokale vSphere-Version ist 6.7U1+ oder 6.5P03+.
 * Die lokale vSphere-Lizenz befindet sich auf Enterprise Plus-Ebene (für den verteilten vSphere-Switch).
-* Identifizieren Sie das Layer-2-Netzwerk der Workload, das auf Ihre private Cloud ausgedehnt werden soll.
+* Identifizieren Sie das Layer-2-Netzwerk der Workload, das auf Ihre private AVS-Cloud ausgedehnt werden soll.
 * Identifizieren Sie ein Layer-2-Netzwerk in Ihrer lokalen Umgebung für die Bereitstellung Ihrer L2VPN-Clientappliance.
-* [Es wurde bereits eine private Cloud erstellt.](create-private-cloud.md)
-* Die Version der eigenständigen NSX-T Edge-Appliance ist mit der NSX-T Manager-Version (NSX-T 2.3.0) kompatibel, die in Ihrer privaten Cloudumgebung verwendet wird.
+* [Es wurde bereits eine private AVS-Cloud erstellt.](create-private-cloud.md)
+* Die Version der eigenständigen NSX-T Edge-Appliance ist mit der NSX-T Manager-Version (NSX-T 2.3.0) kompatibel, die in Ihrer privaten AVS-Cloudumgebung verwendet wird.
 * Es wurde eine Trunkportgruppe im lokalen vCenter mit aktivierten gefälschten Übertragungen erstellt.
 * Es wurde eine öffentliche IP-Adresse für die Verwendung als Uplink-IP-Adresse des eigenständigen NSX-T-Clients reserviert, und für die Übersetzung zwischen den beiden Adressen wurde 1:1-NAT festgelegt.
-* Die DNS-Weiterleitung ist auf den lokalen DNS-Servern für die Domäne az.cloudsimple.io mit einem Verweis auf die DNS-Server der privaten Cloud festgelegt.
+* Die DNS-Weiterleitung ist auf den lokalen DNS-Servern für die Domäne az.avs.io mit einem Verweis auf die DNS-Server der privaten AVS-Cloud festgelegt.
 * Die RTT-Latenz beträgt höchstens 150 ms. Dies ist erforderlich, damit vMotion an den beiden Standorten funktioniert.
 
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
-In der folgenden Tabelle sind die unterstützten vSphere-Versionen und Netzwerkadaptertypen aufgeführt.  
+In der folgenden Tabelle sind die unterstützten vSphere-Versionen und Netzwerkadaptertypen aufgeführt. 
 
 | vSphere-Version | vSwitch-Quelltyp | Treiber der virtuellen NIC | vSwitch-Zieltyp | Unterstützt? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Alle | DVS | Alle | DVS | Ja |
+| All | DVS | All | DVS | Ja |
 | vSphere 6.7UI oder höher, 6.5P03 oder höher | DVS | VMXNET3 | N-VDS | Ja |
 | vSphere 6.7UI oder höher, 6.5P03 oder höher | DVS | E1000 | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
-| vSphere 6.7UI oder 6.5P03, NSX-V oder Versionen unter NSX-T2.2, 6.5P03 oder höher | Alle | Alle | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
+| vSphere 6.7UI oder 6.5P03, NSX-V oder Versionen unter NSX-T2.2, 6.5P03 oder höher | All | All | N-VDS | [Nicht von VMware unterstützt](https://kb.vmware.com/s/article/56991) |
 
 Ab Release VMware NSX-T 2.3:
 
-* Der logische Switch aufseiten der privaten Cloud, die über L2VPN auf einen lokalen Standort ausgedehnt wird, kann nicht gleichzeitig weitergeleitet werden. Der erweiterte logische Switch kann nicht mit einem logischen Router verbunden werden.
+* Der logische Switch aufseiten der privaten AVS-Cloud, die über L2VPN auf einen lokalen Standort ausgedehnt wird, kann nicht gleichzeitig weitergeleitet werden. Der erweiterte logische Switch kann nicht mit einem logischen Router verbunden werden.
 * L2VPN und routenbasierte IPsec-VPNs können nur mithilfe von API-Aufrufen konfiguriert werden.
 
 Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Private Networks](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58.html#GUID-A8B113EC-3D53-41A5-919E-78F1A3705F58__section_44B4972B5F12453B90625D98F86D5704) (Virtuelle private Netzwerke).
@@ -88,7 +88,7 @@ Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Priv
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
-### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>IP-Schema der privaten Cloud für NSX-T-Router der Ebene 0 (L2VPN-Dienst)
+### <a name="avs-private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>IP-Schema der privaten AVS-Cloud für NSX-T-Router der Ebene 0 (über L2VPN)
 
 | **Element** | **Wert** |
 |------------|-----------------|
@@ -97,7 +97,7 @@ Weitere Informationen finden Sie in der VMware-Dokumentation unter [Virtual Priv
 | Logischer Switch (erweitert) | Stretch_LS |
 | Loopbackschnittstelle (NAT-IP-Adresse) | 104.40.21.81 |
 
-### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Privates Cloudnetzwerk, das dem erweiterten Netzwerk zugeordnet werden soll
+### <a name="avs-private-cloud-network-to-be-mapped-to-the-stretched-network"></a>Privates AVS-Cloudnetzwerk, das dem erweiterten Netzwerk zugeordnet werden soll
 
 | **Element** | **Wert** |
 |------------|-----------------|
@@ -116,7 +116,7 @@ Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logische
 
     ![Notieren der Verwaltungs-IP-Adresse](media/l2vpn-fetch02.png)
 
-3. Öffnen Sie eine SSH-Sitzung mit der Verwaltungs-IP-Adresse der Edge-VM. Führen Sie den Befehl ```get logical-router``` mit dem Benutzernamen **admin** und dem Kennwort **CloudSimple 123!** aus.
+3. Öffnen Sie eine SSH-Sitzung mit der Verwaltungs-IP-Adresse der Edge-VM. Führen Sie den Befehl ```get logical-router``` mit dem Benutzernamen **admin** und dem Kennwort **AVS123!** aus.
 
     ![Abrufen der Ausgabe des logischen Routers](media/l2vpn-fetch03.png)
 
@@ -126,7 +126,7 @@ Die folgenden Schritte zeigen, wie Sie die ID des logischen Routers der logische
 
     ![Erstellen des logischen Switches](media/l2vpn-fetch04.png)
 
-6. Fügen Sie den Platzhalterswitch mit einer verlinkten lokalen IP-Adresse oder einem nicht überlappenden Subnetz aus der lokalen Umgebung oder der privaten Cloud an den Router der Ebene 1 an. Weitere Informationen finden Sie in der VMware-Dokumentation unter [Add a Downlink Port on a Tier-1 Logical Router](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) (Hinzufügen eines Downlinkports auf einem logischen Router der Ebene 1).
+6. Fügen Sie den Platzhalterswitch mit einer verlinkten lokalen IP-Adresse oder einem Subnetz ohne Überlappung aus der lokalen Umgebung oder der privaten AVS-Cloud an den Router der Ebene 1 an. Weitere Informationen finden Sie in der VMware-Dokumentation unter [Add a Downlink Port on a Tier-1 Logical Router](https://docs.vmware.com/en/VMware-NSX-T-Data-Center/2.3/com.vmware.nsxt.admin.doc/GUID-E7EA867C-604C-4224-B61D-2A8EF41CB7A6.html) (Hinzufügen eines Downlinkports auf einem logischen Router der Ebene 1).
 
     ![Anfügen des Platzhalterswitches](media/l2vpn-fetch05.png)
 
@@ -148,7 +148,7 @@ Um ein auf IPsec-Routen basierendes VPN zwischen dem NSX-T-Router der Ebene 0 u
 
 ### <a name="allow-udp-5004500-for-ipsec"></a>Zulassen von UDP 500/4500 für IPsec
 
-1. [Erstellen Sie eine öffentliche IP-Adresse](public-ips.md) für die NSX-T-Loopbackschnittstelle der Ebene 0 im CloudSimple-Portal.
+1. [Erstellen Sie eine öffentliche IP-Adresse](public-ips.md) für die NSX-T-Loopbackschnittstelle der Ebene 0 im AVS-Portal.
 
 2. [Erstellen Sie eine Firewalltabelle](firewall.md) mit zustandsbehafteten Regeln, die eingehenden UDP 500/4500-Datenverkehr zulassen, und fügen Sie die Firewalltabelle dem NSX-T-Subnetz „HostTransport“ hinzu.
 
@@ -173,9 +173,9 @@ Um ein auf IPsec-Routen basierendes VPN zwischen dem NSX-T-Router der Ebene 0 u
 
 ## <a name="configure-a-route-based-vpn-on-the-nsx-t-tier0-router"></a>Konfigurieren eines routenbasierten VPN auf dem NSX-T-Router der Ebene 0
 
-Verwenden Sie die folgende Vorlage, um alle Details zum Konfigurieren eines routenbasierten VPN auf dem NSX-T-Router der Ebene 0 auszufüllen. Die UUIDs in den einzelnen POST-Aufruf sind bei nachfolgenden POST-Aufrufen erforderlich. Die IP-Adressen für die Loopback-und Tunnelschnittstellen für L2VPN müssen eindeutig sein und dürfen sich nicht mit den lokalen Netzwerken oder denen der privaten Cloud überlappen.
+Verwenden Sie die folgende Vorlage, um alle Details zum Konfigurieren eines routenbasierten VPN auf dem NSX-T-Router der Ebene 0 auszufüllen. Die UUIDs in den einzelnen POST-Aufruf sind bei nachfolgenden POST-Aufrufen erforderlich. Die IP-Adressen für die Loopback- und Tunnelschnittstellen für L2VPN müssen eindeutig sein und dürfen keine Überlappung mit den lokalen Netzwerken oder denen der privaten AVS-Cloud aufweisen.
 
-Die IP-Adressen, die für die Loopback-und Tunnelschnittstellen für L2VPN ausgewählt wurden, müssen eindeutig sein und dürfen sich nicht mit den lokalen Netzwerken oder denen der privaten Cloud überlappen. Das Netzwerk der Loopbackschnittstelle muss immer /32 sein.
+Die IP-Adressen, die für die Loopback- und Tunnelschnittstellen für L2VPN ausgewählt wurden, müssen eindeutig sein und dürfen keine Überlappung mit den lokalen Netzwerken oder denen der privaten AVS-Cloud aufweisen. Das Netzwerk der Loopbackschnittstelle muss immer /32 sein.
 
 ```
 Loopback interface ip : 192.168.254.254/32
@@ -422,7 +422,7 @@ GET https://192.168.110.201/api/v1/vpn/l2vpn/sessions/<session-id>/peer-codes
 
 ## <a name="deploy-the-nsx-t-standalone-client-on-premises"></a>Bereitstellen des eigenständigen NSX-T-Clients (lokal)
 
-Stellen Sie vor der Bereitstellung sicher, dass Ihre lokalen Firewallregeln eingehenden und ausgehenden UDP 500/4500-Datenverkehr an der öffentlichen CloudSimple-IP-Adresse zulassen, die zuvor für die Loopbackschnittstelle des NSX-T-Routers der Ebene 0 reserviert wurde. 
+Stellen Sie vor der Bereitstellung sicher, dass Ihre lokalen Firewallregeln eingehenden und ausgehenden UDP 500/4500-Datenverkehr an die öffentliche IP-Adresse von AVS zulassen, die zuvor für die Loopbackschnittstelle des NSX-T-Routers der Ebene 0 reserviert wurde. 
 
 1. [Laden Sie die OVF-Dateien des eigenständigen NSX Edge-Clients herunter](https://my.vmware.com/group/vmware/details?productId=673&rPId=33945&downloadGroup=NSX-T-230), und extrahieren Sie diese aus dem heruntergeladenen Paket in einen Ordner.
 
@@ -448,14 +448,14 @@ Stellen Sie vor der Bereitstellung sicher, dass Ihre lokalen Firewallregeln eing
 
     Erweitern von L2T:
 
-    * **Peer Address** (Peeradresse): Geben Sie die IP-Adresse ein, die im Azure-CloudSimple-Portal für die Loopbackschnittstelle von NSX-T Ebene 0 reserviert wurde.
+    * **Peer Address** (Peeradresse): Geben Sie die IP-Adresse ein, die im Azure-AVS-Portal für die NSX-T-Loopbackschnittstelle der Ebene 0 reserviert wurde.
     * **Peer Code** (Peercode): Fügen Sie den Peercode aus dem letzten Schritt der L2VPN-Serverbereitstellung ein.
     * **Sub Interfaces VLAN (Tunnel ID)** (Subschnittstellen-VLAN (Tunnel-ID)): Geben Sie die ID des zu erweiternden VLAN ein. Geben Sie in Klammern () die Tunnel-ID ein, die zuvor konfiguriert wurde.
 
     Erweitern der Uplinkschnittstelle:
 
     * **DNS IP Address** (DNS-IP-Adresse): Geben Sie die lokale DNS-IP-Adresse ein.
-    * **Default Gateway** (Standardgateway):  Geben Sie das Standardgateway des VLAN ein, das als Standardgateway für diesen Client fungieren soll.
+    * **Default Gateway** (Standardgateway): Geben Sie das Standardgateway des VLAN ein, das als Standardgateway für diesen Client fungieren soll.
     * **IP Address** (IP-Adresse): Geben Sie die Uplink-IP-Adresse des eigenständigen Clients ein.
     * **Prefix Length** (Präfixlänge): Geben Sie die Präfixlänge für das Uplink-VLAN/-Subnetz ein.
     * **CLI admin/enable/root User Password** (CLI-Kennwort für admin/enable/root): Legen Sie das Kennwort für die Konten „admin“, „enable“ und „root“ fest.

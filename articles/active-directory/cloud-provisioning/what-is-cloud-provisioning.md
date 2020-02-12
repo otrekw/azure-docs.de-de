@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef73abdd6bfdadd0078c30ad1b0145cdae41722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 69b8cbdba018b9d03dca67573b1f4fe6efa546b6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767602"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024040"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Was ist die Azure AD Connect-Cloudbereitstellung?
 Die Azure AD Connect-Cloudbereitstellung ist ein neuer Microsoft-Agent, der entwickelt wurde, um Ihre Hybrididentitätsziele für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erfüllen und zu erreichen.  Die Azure AD Connect-Cloudbereitstellung kann zusammen mit der Azure AD Connect-Synchronisierung verwendet werden und bietet die folgenden Vorteile:
@@ -46,6 +46,8 @@ Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchr
 | Unterstützung für Kontaktobjekte |● |● |
 | Unterstützung für Geräteobjekte |● | |
 | Zulassen grundlegender Anpassungen von Attributflüssen |● |● |
+| Synchronisieren von Exchange Online-Attributen |● |● |
+| Synchronisieren der Erweiterungsattribute 1–15 |● |● |
 | Synchronisieren von benutzerdefinierten AD-Attributen (Verzeichniserweiterungen) |● | |
 | Unterstützung der Kennworthashsynchronisierung |●|●|
 | Unterstützung der Passthrough-Authentifizierung |●||
@@ -60,7 +62,7 @@ Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchr
 | Zulassen einer erweiterten Anpassung des Attributflusses |● | |
 | Unterstützung des Rückschreibens (Kennwörter, Geräte, Gruppen) |● | |
 | Azure AD Domain Services-Unterstützung|● | |
-| Exchange-Hybridkonfiguration |● | |
+| [Exchange-Hybridrückschreiben](../hybrid/reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) |● | |
 | Unterstützung für mehr als 50.000 Objekte pro AD-Domäne |● | |
 
 ## <a name="next-steps"></a>Nächste Schritte 

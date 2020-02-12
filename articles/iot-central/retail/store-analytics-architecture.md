@@ -9,18 +9,18 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 728c5dcbf94e030e860a222add6498824c66930d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615396"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022119"
 ---
 # <a name="in-store-analytics-architecture"></a>Architektur der In-Store-Analyse
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Lösungen zur In-Store-Analyse ermöglichen Ihnen das Überwachen verschiedener Bedingungen innerhalb der Einzelhandelsumgebung. Diese Lösungen können unter Nutzung einer der Anwendungsvorlagen in Azure IoT Central und der unten dargestellten Architektur als Richtschnur erstellt werden.
+
+Lösungen zur In-Store-Analyse ermöglichen Ihnen das Überwachen verschiedener Bedingungen innerhalb der Einzelhandelsumgebung. Diese Lösungen können erstellt werden, indem eine der Anwendungsvorlagen in Azure IoT Central und die unten dargestellte Architektur als Richtschnur genutzt werden.
 
 
 ![Azure IoT Central Store Analytics](./media/architecture/store-analytics-architecture-frame.png)
@@ -35,7 +35,7 @@ Werfen wir einen Blick auf die Schlüsselkomponenten, die bei Lösungen zur In-S
 
 ## <a name="condition-monitoring-sensors"></a>Sensoren zur Zustandsüberwachung
 
-Eine IoT-Lösung beginnt mit einer Reihe von Sensoren, die aussagekräftige Signale in einer Einzelhandelsumgebung erfassen. Dies wird durch eine Auswahl von Sensoren ganz am linken Rand des Architekturdiagramms oben wiedergegeben.
+Eine IoT-Lösung beginnt mit einer Reihe von Sensoren, die aussagekräftige Signale in einer Einzelhandelsumgebung erfassen. Dies wird durch verschiedene Arten von Sensoren ganz am linken Rand des obigen Architekturdiagramms wiedergespiegelt.
 
 ## <a name="gateway-devices"></a>Gatewaygeräte
 
@@ -43,7 +43,7 @@ Viele IoT-Sensoren können unformatierte Signale direkt in die Cloud oder in ein
 
 ## <a name="iot-central-application"></a>IoT Central-Anwendung
 
-Die Azure IoT Central-Anwendung erfasst Daten von einer Vielzahl von IoT-Sensoren sowie von Gatewaygeräten innerhalb der Einzelhandelsumgebung und generiert eine Reihe aussagekräftiger Erkenntnisse.
+Die Azure IoT Central-Anwendung erfasst Daten von unterschiedlichen Arten von IoT-Sensoren sowie von Gatewaygeräten innerhalb der Einzelhandelsumgebung und generiert eine Reihe aussagekräftiger Erkenntnisse.
 
 Azure IoT Central bietet darüber hinaus eine maßgeschneiderte Benutzeroberfläche für den Betreiber des Geschäfts, die ihm die Überwachung und Verwaltung der Infrastrukturgeräte aus der Ferne erlaubt.
 
@@ -51,8 +51,8 @@ Azure IoT Central bietet darüber hinaus eine maßgeschneiderte Benutzeroberflä
 Die Azure IoT Central-Anwendung kann in einer Lösung so konfiguriert werden, dass sie unformatierte oder aggregierte Erkenntnisse an eine Reihe von Azure-PaaS-Diensten (Platform-as-a-Service) exportiert, die Datenbearbeitung durchführen und diese Erkenntnisse anreichern, bevor sie in einer Geschäftsanwendung landen. 
 
 ## <a name="business-application"></a>Geschäftsanwendung
-Die IoT-Daten können die Basis einer Vielzahl von Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt sind. Ein Manager oder Mitarbeiter eines Einzelhandelsunternehmens kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Wenn Sie das Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam lernen möchten, folgen Sie dem [Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
+Die IoT-Daten können die Basis verschiedener Geschäftsanwendungen bilden, die in einer Einzelhandelsumgebung bereitgestellt werden. Ein Manager oder Mitarbeiter eines Einzelhandelsunternehmens kann diese Anwendungen nutzen, um geschäftliche Erkenntnisse zu visualisieren und in Echtzeit zielgerichtete Maßnahmen zu ergreifen. Informationen zum Erstellen eines Power BI-Echtzeit-Dashboards für Ihr Einzelhandelsteam finden Sie in [diesem Tutorial](./tutorial-in-store-analytics-create-app-pnp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Machen Sie den Einstieg mit den Anwendungsvorlagen [In-Store-Analyse – Auschecken](https://aka.ms/checkouttemplate) und [In-Store-Analyse – Überwachen von Bedingungen](https://aka.ms/conditiontemplate). 
-* Arbeiten Sie das [End-to-End-Tutorial](https://aka.ms/storeanalytics-tutorial) durch. Darin wird Schritt für Schritt beschrieben, wie Sie eine Lösung erstellen, indem Sie eine der Anwendungsvorlagen für die In-Store-Analyse verwenden.
+* Arbeiten Sie das [End-to-End-Tutorial](https://aka.ms/storeanalytics-tutorial) durch. Darin wird Schritt für Schritt beschrieben, wie Sie eine Lösung erstellen, indem Sie eine der Anwendungsvorlagen für die In-Store-Analyse nutzen.

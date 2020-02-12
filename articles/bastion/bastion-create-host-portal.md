@@ -5,23 +5,20 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 12/09/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 95f7d71c0de7570eee6e4c94e88fd65ff1d45ec8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f907dcb4427fd07a2c212e5de91ccce5e8198960
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973083"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990418"
 ---
 # <a name="create-an-azure-bastion-host"></a>Erstellen eines Azure Bastion-Hosts
 
-In diesem Artikel wird gezeigt, wie Sie einen Azure Bastion-Host erstellen. Wenn Sie den Azure Bastion-Dienst in Ihrem virtuellen Netzwerk bereitgestellt haben, steht die nahtlose RDP-/SSH-Funktion für alle virtuellen Computer im gleichen virtuellen Netzwerk zur Verfügung. Diese Bereitstellung erfolgt pro virtuellem Netzwerk und nicht pro Abonnement/Konto oder virtuellem Computer.
+In diesem Artikel wird gezeigt, wie Sie mit dem Azure-Portal einen Azure Bastion-Host erstellen. Wenn Sie den Azure Bastion-Dienst in Ihrem virtuellen Netzwerk bereitgestellt haben, steht die nahtlose RDP-/SSH-Funktion für alle virtuellen Computer im selben virtuellen Netzwerk zur Verfügung. Diese Bereitstellung von Azure Bastion erfolgt pro virtuellem Netzwerk und nicht pro Abonnement/Konto oder virtuellem Computer.
 
-Für die Erstellung einer Bastion-Hostressource gibt es zwei Möglichkeiten:
-
-* Erstellen einer Bastion-Ressource über das Azure-Portal
-* Erstellen einer Bastion-Ressource im Azure-Portal unter Verwendung bereits vorhandener VM-Einstellungen
+Sie können eine neue Bastionhostressource im Portal erstellen, indem Sie alle Einstellungen manuell angeben oder die Einstellungen entsprechend einer vorhandenen VM verwenden. Optional können Sie [Azure PowerShell](bastion-create-host-powershell.md) verwenden, um einen Azure Bastion-Host zu erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -29,7 +26,7 @@ Bastion ist in den folgenden öffentlichen Azure-Regionen verfügbar:
 
 [!INCLUDE [available regions](../../includes/bastion-regions-include.md)]
 
-## <a name="createhost"></a>Erstellen eines Bastion-Hosts
+## <a name="createhost"></a>Erstellen eines Bastionhosts – Angeben von Einstellungen
 
 In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource über das Azure-Portal erstellen.
 
@@ -49,20 +46,22 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
     * **Ressourcengruppe**: Die Azure-Ressourcengruppe, in der die neue Bastion-Ressource erstellt wird. Sollte noch keine Ressourcengruppe vorhanden sein, können Sie eine neue Ressourcengruppe erstellen.
     * **Name**: Der Name der neuen Bastion-Ressource.
     * **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird.
-    * **Virtuelles Netzwerk:** Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. Im Rahmen dieses Prozesses können Sie über das Portal ein neues virtuelles Netzwerk erstellen, falls Sie noch nicht über ein virtuelles Netzwerk verfügen oder keines der vorhandenen virtuellen Netzwerke verwenden möchten. Achten Sie bei Verwendung eines bereits vorhandenen virtuellen Netzwerks darauf, dass der freie Adressraum die Anforderungen des Bastion-Subnetzes erfüllt.
-    * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Dies unterscheidet sich von einem Gatewaysubnetz. Verwenden Sie mindestens ein Subnetz mit „/27“ oder ein größeres Subnetz („/27“, „/26“ usw.). Erstellen Sie **AzureBastionSubnet** ohne Routentabellen oder Delegierungen. Weitere Informationen zum Verwenden von Netzwerksicherheitsgruppen in **AzureBastionSubnet** finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).
+    * **Virtuelles Netzwerk:** Das virtuelle Netzwerk, in dem die Bastion-Ressource erstellt wird. Im Rahmen dieses Prozesses können Sie über das Portal ein neues virtuelles Netzwerk erstellen oder eines der vorhandenen virtuellen Netzwerke verwenden. Achten Sie bei Verwendung eines bereits vorhandenen virtuellen Netzwerks darauf, dass der freie Adressraum die Anforderungen des Bastion-Subnetzes erfüllt.
+    * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Dieses Subnetz unterscheidet sich von einem Gatewaysubnetz. Verwenden Sie mindestens ein Subnetz mit „/27“ oder ein größeres Subnetz („/27“, „/26“ usw.).
+    
+       Erstellen Sie **AzureBastionSubnet** ohne Routentabellen oder Delegierungen. Weitere Informationen zum Verwenden von Netzwerksicherheitsgruppen in **AzureBastionSubnet** finden Sie im Artikel [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).
     * **Öffentliche IP-Adresse:** Die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über den Port 443). Erstellen Sie eine neue öffentliche IP-Adresse, oder verwenden Sie eine bereits vorhandene. Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen.
     * **Öffentliche IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
-    * **SKU der öffentlichen IP-Adresse**: Dieser Wert ist bereits standardmäßig auf **Standard** festgelegt. Azure Bastion verwendet/unterstützt nur die SKU „Standard“ für die öffentliche IP-Adresse.
-    * **Zuweisung**: Dieser Wert ist bereits standardmäßig auf **Statisch** festgelegt.
+    * **SKU der öffentlichen IP-Adresse**: Diese Einstellung ist standardmäßig bereits auf **Standard** festgelegt. Azure Bastion verwendet/unterstützt nur die SKU „Standard“ für die öffentliche IP-Adresse.
+    * **Zuweisung**: Diese Einstellung ist standardmäßig bereits auf **Statisch** festgelegt.
 
 1. Klicken Sie nach Angabe der Einstellungen auf **Überprüfen + erstellen**. Daraufhin werden die Werte überprüft. Nach erfolgreicher Überprüfung können Sie mit der Erstellung beginnen.
-1. Klicken Sie auf der Seite zum Erstellen einer Bastion-Ressource auf **Erstellen**.
+1. Klicken Sie auf der Seite **Bastion-Instanz erstellen** auf **Erstellen**.
 1. Daraufhin wird eine Meldung mit dem Hinweis angezeigt, dass Ihre Bereitstellung ausgeführt wird. Der Status der Ressourcenerstellung wird auf dieser Seite angezeigt. Die Erstellung und Bereitstellung der Bastion-Ressource dauert etwa fünf Minuten.
 
-## <a name="createvmset"></a>Erstellen eines Bastion-Hosts unter Verwendung von VM-Einstellungen
+## <a name="createvmset"></a>Erstellen eines Bastionhosts – Verwenden von VM-Einstellungen
 
-Wenn Sie über das Portal einen Bastion-Host unter Verwendung eines bereits vorhandenen virtuellen Computers erstellen, werden verschiedene Einstellungen automatisch auf Standardwerte für Ihren virtuellen Computer und/oder Ihr virtuelles Netzwerk festgelegt.
+Wenn Sie über das Portal einen Bastionhost unter Verwendung eines bereits vorhandenen virtuellen Computers erstellen, werden verschiedene Einstellungen automatisch auf Standardwerte für Ihren virtuellen Computer und/oder Ihr virtuelles Netzwerk festgelegt.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu Ihrem virtuellen Computer, und klicken Sie dann auf **Verbinden**.
 
@@ -73,11 +72,15 @@ Wenn Sie über das Portal einen Bastion-Host unter Verwendung eines bereits vorh
 1. Füllen Sie auf der Seite „Bastion“ die folgenden Einstellungsfelder aus:
 
    * **Name**: Der Name des zu erstellenden Bastion-Hosts.
-   * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die Bastion-Ressource bereitgestellt wird. Das Subnetz muss mit dem Namen **AzureBastionSubnet** erstellt werden. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressource bereitgestellt werden soll. Dieses Subnetz unterscheidet sich von einem Gatewaysubnetz. Klicken Sie auf **Subnetzkonfiguration verwalten**, um das Azure Bastion-Subnetz zu erstellen. Es wird dringend empfohlen, mindestens ein Subnetz der Größe „/27“ („/27“, „/26“ usw.) zu verwenden. Erstellen Sie das Subnetz **AzureBastionSubnet** ganz ohne Netzwerksicherheitsgruppen, Routingtabellen oder Delegierungen. Klicken Sie auf **Erstellen**, um das Subnetz zu erstellen, und fahren Sie mit den nächsten Einstellungen fort.
+   * **Subnetz**: Das Subnetz in Ihrem virtuellen Netzwerk, in dem die Bastion-Ressource bereitgestellt wird. Das Subnetz muss mit dem Namen **AzureBastionSubnet** erstellt werden. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressource bereitgestellt werden soll. Dieses Subnetz unterscheidet sich von einem Gatewaysubnetz. Verwenden Sie mindestens ein Subnetz mit „/27“ oder ein größeres Subnetz („/27“, „/26“ usw.). Erstellen Sie das Subnetz ohne Netzwerksicherheitsgruppen, Routingtabellen oder Delegierungen. Weitere Informationen zum Verwenden von Netzwerksicherheitsgruppen in **AzureBastionSubnet** finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).
+   
+     Klicken Sie auf **Subnetzkonfiguration verwalten**, um das **AzureBastionSubnet** zu erstellen.  Klicken Sie auf **Erstellen**, um das Subnetz zu erstellen, und fahren Sie mit den nächsten Einstellungen fort.
    * **Öffentliche IP-Adresse:** Die öffentliche IP-Adresse der Bastion-Ressource für den RDP-/SSH-Zugriff (über den Port 443). Erstellen Sie eine neue öffentliche IP-Adresse, oder verwenden Sie eine bereits vorhandene. Die öffentliche IP-Adresse muss sich in der gleichen Region befinden wie die Bastion-Ressource, die Sie erstellen.
    * **Öffentliche IP-Adresse**: Der Name der öffentlichen IP-Adressressource.
-1. Klicken Sie auf dem Überprüfungsbildschirm auf **Erstellen**. Warten Sie etwa fünf Minuten, bis die Bastion-Ressource erstellt und bereitgestellt wurde.
+1. Klicken Sie auf dem Überprüfungsbildschirm auf **Erstellen**. Warten Sie etwa fünf Minuten, bis die Erstellung und Bereitstellung der Bastion-Ressource abgeschlossen wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die [häufig gestellten Fragen zu Bastion](bastion-faq.md).
+* Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Bastion](bastion-faq.md).
+
+* Informationen zur Verwendung von Netzwerksicherheitsgruppen mit dem Azure Bastion-Subnetz finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](bastion-nsg.md).

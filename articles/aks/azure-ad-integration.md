@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/02/2019
 ms.author: mlearned
-ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 9a82b51083a7d31bc39c4556712c1489bad8bca0
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103785"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031474"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -20,7 +20,7 @@ Azure Kubernetes Service (AKS) kann für die Verwendung von Azure Active Directo
 
 Clusteradministratoren können die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Kubernetes auf der Grundlage einer Benutzeridentität oder Verzeichnisgruppenmitgliedschaft konfigurieren.
 
-In diesem Artikel werden die folgenden Aufgaben erläutert:
+In diesem Artikel wird Folgendes erläutert:
 
 - Bereitstellen der Voraussetzungen für AKS und Azure AD
 - Bereitstellen eines Azure AD-fähigen Clusters
@@ -117,6 +117,13 @@ Die zweite Azure AD-Anwendung wird beim Anmelden mit der Kubernetes-CLI (kubectl
     b. Wählen Sie für **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
 
     c. Wählen Sie als Typ für die Umleitungs-URI die Option **Web** aus, und geben Sie dann einen beliebigen URI-formatierten Wert ein, z.B. *https://aksazureadclient* .
+
+    >[!NOTE]
+    >Fügen Sie der Liste die folgenden beiden zusätzlichen Umleitungs-URLs als **Webanwendungstypen** hinzu, wenn Sie einen neuen RBAC-fähigen Cluster für die Unterstützung von Azure Monitor für Container erstellen möchten. Der erste Basis-URL-Wert sollte `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten und der zweite Basis-URL-Wert `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`.
+    >
+    >Wenn Sie diese Funktion in Azure China verwenden, sollte der erste Basis-URL-Wert `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` und der zweite Basis-URL-Wert `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten.
+    >
+    >Weitere Informationen zu Azure Monitor für Container finden Sie unter [Einrichten der Funktion für Livedaten (Vorschau)](../azure-monitor/insights/container-insights-livedata-setup.md). Die Schritte zum Konfigurieren der Authentifizierung werden im Abschnitt [Konfigurieren der integrierten AD-Authentifizierung](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) erläutert.
 
     d. Wählen Sie anschließend **Registrieren** aus.
 

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: fc38dce3deaa601c9ed36f60439a08bb89cc7630
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646896"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77031628"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 
@@ -70,7 +70,7 @@ Bei beiden Methoden wird der Konfigurationsbereich für die Repositoryeinstellun
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | BESCHREIBUNG | value |
+| Einstellung | Beschreibung | value |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |
@@ -157,7 +157,7 @@ Im Konfigurationsbereich werden die folgenden Einstellungen für das GitHub-Repo
 
 - Die GitHub-Integration in die visuellen Data Factory-Erstellungstools funktioniert nur in der allgemein verfügbaren Version von Data Factory.
 
-- Von einer einzelnen GitHub-Verzweigung können maximal 1.000 Entitäten pro Ressourcentyp wie Pipelines und Datasets abgerufen werden. Sobald diese Begrenzung erreicht wurde, sollten Sie Ihre Ressourcen in einzelne Factorys aufteilen.
+- Von einer einzelnen GitHub-Verzweigung können maximal 1.000 Entitäten pro Ressourcentyp wie Pipelines und Datasets abgerufen werden. Sobald diese Begrenzung erreicht wurde, sollten Sie Ihre Ressourcen in einzelne Factorys aufteilen. Azure DevOps-Git-Repositorys unterliegen dieser Einschränkung nicht.
 
 ## <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
 
@@ -249,8 +249,13 @@ Wenn der Branch für die Veröffentlichung nicht mit dem Masterbranch synchron i
 
 1. Entfernen des aktuellen Git-Repositorys
 1. Konfigurieren Sie Git mit denselben Einstellungen neu. Stellen Sie jedoch sicher, dass **Vorhandene Data Factory Ressourcen in Repository importieren** ausgewählt ist, und wählen Sie **Neuer Branch** aus.
-1. Löschen aller Ressourcen aus dem Kollaborationsbranch
 1. Erstellen eines Pull Request zum Mergen der Änderungen in den Kollaborationsbranch 
+
+Im Folgenden werden einige Beispielsituationen veranschaulicht, die zu einem veralteten Branch für die Veröffentlichung führen können:
+- Ein Benutzer verfügt über mehrere Branches. In einem Featurebranch hat er einen verknüpften Dienst gelöscht, der nicht mit Azure Key Vault verknüpft ist (nicht mit Azure Key Vault verknüpfte Dienste werden sofort veröffentlicht, unabhängig davon, ob sie sich in Git befinden oder nicht), und hat den Featurebranch nicht mit dem Kollaborationsbranch zusammengeführt.
+- Ein Benutzer hat die Data Factory über das SDK oder über PowerShell bearbeitet.
+- Ein Benutzer hat alle Ressourcen zu einem neuen Branch migriert und zum ersten Mal versucht, eine Veröffentlichung durchzuführen. Verknüpfte Dienste sollten beim Importieren von Ressourcen manuell erstellt werden.
+- Ein Benutzer lädt einen nicht mit Azure Key Vault verknüpften Dienst oder eine Integration Runtime-JSON-Datei manuell hoch. Er verweist aus einer anderen Ressource auf diese Ressource, z. B. in einem Dataset, einem verknüpften Dienst oder einer Pipeline. Ein nicht mit Azure Key Vault verknüpfter Dienst, der über die Benutzeroberfläche erstellt wird, wird sofort veröffentlicht, weil die Anmeldeinformationen verschlüsselt werden müssen. Wenn Sie ein Dataset hochladen, das auf diesen verknüpften Dienst verweist, und versuchen, dieses zu veröffentlichen, wird das von der Benutzeroberfläche zugelassen, weil es in der Git-Umgebung enthalten ist. Es wird zum Zeitpunkt der Veröffentlichung abgelehnt, da es nicht im Data Factory-Dienst vorhanden ist.
 
 ## <a name="provide-feedback"></a>Feedback geben
 Wählen Sie **Feedback** aus, um Kommentare zu Funktionen abzugeben oder um Microsoft Probleme mit dem Tool zu melden:

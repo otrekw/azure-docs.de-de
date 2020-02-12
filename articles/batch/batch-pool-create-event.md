@@ -1,22 +1,22 @@
 ---
-title: 'Azure Batch: Poolerstellungsereignis | Microsoft-Dokumentation'
-description: Referenz zum Batch-Poolerstellungsereignis.
+title: 'Azure Batch: Poolerstellungsereignis'
+description: Referenz zum Batch-Poolerstellungsereignis, das nach dem Erstellen eines Pools ausgegeben wird. Der Inhalt des Protokolls macht allgemeine Informationen zum Pool verfügbar.
 services: batch
-author: ju-shim
-manager: gwallace
+author: LauraBrenner
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: jushiman
-ms.openlocfilehash: b804d828d276c39febf7fdd9347bce04a062676a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.author: labrenne
+ms.openlocfilehash: dea025b274278aa5fed2900c95b4a274541ffef9
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026755"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022188"
 ---
 # <a name="pool-create-event"></a>Poolerstellungsereignis
 

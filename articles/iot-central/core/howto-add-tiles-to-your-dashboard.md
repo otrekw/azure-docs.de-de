@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b13349ae4293f6377429e9dc72b6c2cb43f92348
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35965f238ed5b7768dd174788453838c917adb32
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435127"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023224"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -48,7 +48,6 @@ Wenn ein Bediener jetzt das Standarddashboard der Anwendung anzeigt, wird die ne
 > [!div class="mx-imgBorder"]
 > ![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-add-tiles-to-your-dashboard/settings-and-properties.png)
 
-
 ## <a name="edit-tiles"></a>Bearbeiten von Kacheln
 
 Zum Bearbeiten einer Kachel im Dashboard klicken Sie zuerst in der Seite oben links auf **Bearbeiten**. Dadurch wird in den Bearbeitungsmodus für das Dashboard und alle zugehörigen Kacheln gewechselt. 
@@ -70,7 +69,7 @@ Sie können auch die Visualisierung der Kachel ändern, indem Sie auf das **Line
 
 In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusammengefasst:
  
-| Kachel | Dashboard | BESCHREIBUNG
+| Kachel | Dashboard | Beschreibung
 | ----------- | ------- | ------- |
 | Inhalt | Dashboards von Anwendungen und Gerätegruppen |Kacheln mit Unterstützung für Markdown sind Kacheln, auf die geklickt werden kann und in denen Überschriften und Beschreibungstext angezeigt werden. Sie können diese Kachel auch als Link-Kachel verwenden, um Benutzern das Navigieren zu einer URL Ihrer Anwendung zu ermöglichen.|
 | Image | Dashboards von Anwendungen und Gerätegruppen |Auf Bildkacheln, auf denen ein benutzerdefiniertes Bild angezeigt wird, kann geklickt werden. Verwenden Sie eine Bildkachel, um einem Dashboard Grafiken hinzuzufügen und optional einem Benutzer die Navigation zu einer URL zu ermöglichen, die für Ihre Anwendung relevant ist.|
@@ -87,4 +86,4 @@ In der folgende Tabelle ist die Verwendung von Kacheln in Azure IoT Central zusa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun gelernt haben, wie Sie das Standarddashboard der Azure IoT Central-Anwendung konfigurieren, [erfahren Sie nun, wie Sie Bilder vorbereiten und hochladen](howto-prepare-images.md).
+Nachdem Sie gelernt haben, wie Sie das Standarddashboard der Azure IoT Central-Anwendung konfigurieren, [erfahren Sie nun, wie Sie ein persönliches Dashboard erstellen](howto-create-personal-dashboards.md).

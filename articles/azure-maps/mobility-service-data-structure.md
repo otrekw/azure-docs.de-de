@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ceecdcc508e5b43c8775b6a88f9b4e4f0eb23c77
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910717"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989007"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datenstrukturen in Azure Maps Mobility Service
 
-In diesem Artikel werden das Stadtbereichskonzept in [Azure Maps Mobility Service](https://aka.ms/AzureMapsMobilityService) sowie einige der allgemeinen Felder behandelt, die über die Dienste zurückgegeben werden, wenn Haltestellen und Linien öffentlicher Verkehrsmittel abgefragt werden. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Mobility Service-APIs verwenden. Die allgemeinen Felder werden weiter unten erläutert.
+In diesem Artikel wird das Konzept des Stadtbereichs in [Azure Maps Mobility Service](https://aka.ms/AzureMapsMobilityService) vorgestellt. Es werden einige der üblichen Felder diskutiert, die bei der Abfrage dieses Diensts nach Haltestellen und Linien des öffentlichen Verkehrs zurückgegeben werden. Es wird empfohlen, diesen Artikel vor der Entwicklung mit den Mobility Service-APIs zu lesen.
 
 ## <a name="metro-area"></a>Stadtbereich
 
-Mobility Service-Daten werden in unterstützte Stadtbereiche unterteilt. Stadtbereiche basieren nicht auf Stadtgrenzen. Ein Stadtbereich kann mehrere Städte umfassen – etwa eine dicht besiedelte Stadt und die umliegenden Städte. Auch ein Land/eine Region kann ein Stadtbereich sein. 
+Mobility Service-Daten werden nach unterstützten Stadtbereichen gruppiert. Stadtbereiche folgen nicht den Stadtgrenzen. Ein Stadtbereich kann mehrere Städte, eine dicht besiedelte Stadt und umliegende Städte umfassen. Tatsächlich kann ein Land/eine Region ein einzelner Stadtbereich sein. 
 
-`metroID` ist die ID eines Stadtbereichs, die zum Aufrufen der [API zum Abrufen von Stadtbereichsinformationen](https://aka.ms/AzureMapsMobilityMetroAreaInfo) verwendet werden kann, um unterstützte Arten von öffentlichen Verkehrsmitteln bzw. Routen sowie zusätzliche Details für den Stadtbereich anzufordern. Hierzu zählen beispielsweise entsprechende Anbieter und aktive Warnungen. Mithilfe der Azure Maps-API zum Abrufen von Stadtbereichsinformationen können Sie die unterstützten Stadtbereiche und Stadt-IDs (metroIDs) anfordern. IDs für den Stadtbereichs können sich ändern.
+Die `metroID` ist die ID eines Stadtbereichs, die zum Aufrufen der [API „Get Metro Area Info“](https://aka.ms/AzureMapsMobilityMetroAreaInfo) (Stadtbereichsinformationen abrufen) verwendet werden kann. Verwenden Sie die API „Get Metro“ von Azure Maps, um Typen von öffentlichen Verkehrsmitteln, entsprechende Anbieter, aktive Warnungen und zusätzliche Details für den gewählten Stadtbereich anzufordern. Sie können auch die unterstützten Stadtbereiche und zugehörigen IDs (metroID) anfordern. IDs für den Stadtbereichs können sich ändern.
 
 **metroID:** 522   **Name:** Seattle-Tacoma-Bellevue
 
@@ -31,25 +31,25 @@ Mobility Service-Daten werden in unterstützte Stadtbereiche unterteilt. Stadtb
 
 ## <a name="stop-ids"></a>Haltestellen-IDs
 
-Auf Haltestellen kann durch zwei Arten von IDs verwiesen werden: durch die als „stopKey“ bezeichnete [GFTS-ID](https://gtfs.org/) (General Transit Feed Specification) sowie durch die als „stopId“ bezeichnete Azure Maps-Haltestellen-ID. Bei Haltestellenverweisen über einen längeren Zeitraum empfiehlt sich die Verwendung der Azure Maps-Haltestellen-ID, da diese ID beständiger ist und voraussichtlich so lange unverändert bleibt, wie die physische Haltestelle vorhanden ist. Die GTFS-Haltestellen-ID wird häufiger aktualisiert – beispielsweise, wenn eine Änderung durch den GTFS-Anbieter vorgenommen oder eine neue GTFS-Version veröffentlicht wird, obwohl sich an der physischen Haltestelle nichts geändert hat.
+Auf Haltestellen kann durch zwei Arten von IDs verwiesen werden: durch die [GFTS-ID](https://gtfs.org/) (General Transit Feed Specification) sowie durch die Azure Maps-Haltestellen-ID. Die GFTS-ID wird als „stopKey“ und die Azure Maps-Haltestellen-ID als „stopID“ bezeichnet. Wenn Sie sich häufig auf Haltestellen von öffentlichen Verkehrsmitteln beziehen, sollten Sie die Azure Maps-Haltestellen-ID verwenden. „stopID“ ist stabiler und wird wahrscheinlich unverändert bleiben, solange die physische Haltestelle besteht. Die GTFS-Haltestellen-ID wird öfter aktualisiert. Beispielsweise kann die GTFS-Haltestellen-ID auf Anforderung des GTFS-Anbieters oder bei der Veröffentlichung einer neuen GTFS-Version aktualisiert werden. Obwohl die physische Haltestelle keine Änderung aufwies, kann sich die GTFS-Haltestellen-ID ändern.
 
 Zum Einstieg können Sie mithilfe der [API zum Abrufen nahegelegener öffentlicher Verkehrsmittel](https://aka.ms/AzureMapsMobilityNearbyTransit) in der Nähe befindliche Haltestellen anfordern.
 
 ## <a name="line-groups-and-lines"></a>Liniengruppen und Linien
 
-Zur besseren Verarbeitung von Änderungen, die vom [GTFS](https://gtfs.org/)-Datenmodell für Routen und Fahrten geerbt wurden, verwendet Mobility Service ein paralleles Datenmodell für Linien und Liniengruppen.
+Mobility Service verwendet ein paralleles Datenmodell für Linien und Liniengruppen. Dieses Modell wird verwendet, um Änderungen, die von [GTFS](https://gtfs.org/)-Routen und den Fahrtdaten geerbt werden, besser verarbeiten zu können.
 
 
 ### <a name="line-groups"></a>Liniengruppen
 
-Eine Liniengruppe ist eine Entität, in der alle Linien zusammengefasst werden, die logisch zur gleichen Gruppe gehören. Eine Liniengruppe enthält in der Regel zwei Linien: eine von Punkt A zu Punkt B und eine von Punkt B zu Punkt A. Beide gehören zum gleichen öffentlichen Verkehrsanbieter und haben die gleiche Liniennummer. Eine Liniengruppe kann aber auch mehr als zwei Linien oder nur eine einzelne Linie enthalten.
+Eine Liniengruppe ist eine Entität, in der alle Linien zusammengefasst werden, die logisch zur gleichen Gruppe gehören. Eine Liniengruppe enthält in der Regel zwei Linien: eine von Punkt A zu Punkt B und eine von Punkt B zu Punkt A. Beide Linien würden zum gleichen öffentlichen Verkehrsanbieter gehören und dieselbe Liniennummer aufweisen. Eine Liniengruppe kann aber auch mehr als zwei Linien oder nur eine einzelne Linie enthalten.
 
 
 ### <a name="lines"></a>Linien
 
-Wie oben bereits erwähnt, setzt sich jede Liniengruppe aus einer Gruppe von Linien zusammen. Die einzelnen Linien beschreiben häufig jeweils eine Richtung, und jede Liniengruppe umfasst zwei Linien. Eine Liniengruppe kann aber auch mehrere Linien umfassen – etwa, wenn eine Linie manchmal durch ein bestimmtes Viertel führt, manchmal aber nicht, und in beiden Fällen die gleiche Liniennummer verwendet wird. Und auch Liniengruppen mit einer einzelnen Linie sind möglich (beispielsweise eine ringförmige Linie mit nur einer Richtung).
+Wie oben bereits erwähnt, setzt sich jede Liniengruppe aus einer Gruppe von Linien zusammen. Jede Liniengruppe besteht aus zwei Linien, und jede Linie beschreibt eine Richtung.  Es gibt jedoch Fälle, in denen mehrere Linien eine Liniengruppe bilden. Es gibt z. B. eine Linie, die manchmal einen Umweg durch ein bestimmtes Viertel macht und manchmal nicht. In beiden Fällen operiert sie unter derselben Liniennummer. Außerdem kann eine Liniengruppe aus einer einzelnen Linie bestehen. Eine kreisförmige Linie mit einer einzelnen Richtung ist eine Liniengruppe mit einer Linie.
 
-Zum Einstieg können Sie mithilfe der [API zum Abrufen von Linien öffentlicher Verkehrsmittel](https://aka.ms/AzureMapsMobilityTransitLine) Liniengruppen anfordern und später Detailinformationen zu Linien anzeigen.
+Zum Einstieg können Sie mithilfe der [API zum Abrufen von Linien öffentlicher Verkehrsmittel](https://aka.ms/AzureMapsMobilityTransitLine) Liniengruppen anfordern.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

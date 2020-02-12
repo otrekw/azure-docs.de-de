@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cd06d4cbf62078c2c7a5def4a0032ddce97d67f0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842451"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77018600"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -61,6 +61,7 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |**Azure Database for PostgreSQL – Einzelserver** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
+|**Azure Key Vault** | Microsoft.KeyVault/vaults    | Tresor |
  
 ## <a name="network-security-of-private-endpoints"></a>Netzwerksicherheit privater Endpunkte 
 Bei Verwenden privater Endpunkte für Azure-Dienste wird der Datenverkehr zu einer bestimmten Private Link-Ressource abgesichert. Die Plattform führt eine Zugriffssteuerung durch, um zu bestätigen, dass Netzwerkverbindungen nur die angegebene Private Link-Ressource erreichen. Um auf zusätzliche Ressourcen innerhalb desselben Azure-Diensts zuzugreifen, sind zusätzliche private Endpunkte erforderlich. 
@@ -118,6 +119,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 |Azure Database for PostgreSQL – Einzelserver (Microsoft.DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
 |Azure Database for MySQL (Microsoft.DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
 |Azure Database for MariaDB (Microsoft.DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
+|Azure Key Vault (Microsoft.KeyVault/vaults)|Tresor|privatelink.vaultcore.azure.net|
  
 Azure erstellt einen DNS-Eintrag des Typs CNAME (kanonischer Name) im öffentlichen DNS zum Umleiten der Auflösung an die vorgeschlagenen Domänennamen. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
  
@@ -130,9 +132,7 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 
 |Einschränkung |Beschreibung |Minderung  |
 |---------|---------|---------|
-|Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Bereitstellen einzelner Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte        |
-|  Virtuelle Netzwerke mit Peering mit nur privaten Endpunkten werden nicht unterstützt.   |   Das Herstellen einer Verbindung mit privaten Endpunkten in einem virtuellen Netzwerk mit Peering ohne andere Workload wird nicht unterstützt.       | Stellen Sie einen einzelnen virtuellen Computer im virtuellen Netzwerk mit Peering bereit, um die Konnektivität zu ermöglichen. |
-|Spezialisierte Workloads können nicht auf private Endpunkte zugreifen    |   Die folgenden Dienste, die in Ihrem virtuellen Netzwerk bereitgestellt werden, können nicht über private Endpunkte auf Private Link-Ressourcen zugreifen:<br>App Service-Plan</br>Azure Container Instances</br>Azure NetApp Files</br>Dediziertes HSM von Azure<br>       |   Keine Risikominderung in der Vorschauphase.       |
+|Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Stellen Sie einzelne Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte bereit. NSG-Datenflussprotokolle und Überwachungsinformationen für ausgehende Verbindungen werden weiterhin unterstützt und können verwendet werden.        |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

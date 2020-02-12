@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772595"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906799"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -185,7 +185,7 @@ Nachdem Sie die virtuellen Computer erstellt und konfiguriert haben, können Sie
   > - Erwägen Sie den Einsatz einer gesonderten Dateifreigabe für Sicherungsdateien, um die IOPS- und Größenkapazität dieser Freigabe für Daten- und Protokolldateien zu reservieren. Sie können für Sicherungsdateien eine Standard- oder Premium-Dateifreigabe verwenden.
   > - Wenn Sie unter Windows 2012 R2 oder früher arbeiten, führen Sie die gleichen Schritte aus, um die Dateifreigabe einzubinden, die Sie als Dateifreigabezeugen verwenden. 
 
-## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>Schritt 3: Konfigurieren des Failoverclusters mit der Dateifreigabe
+## <a name="step-3-configure-the-failover-cluster"></a>Schritt 3: Konfigurieren des Failoverclusters
 
 Im nächsten Schritt konfigurieren Sie den Failovercluster. In diesem Schritt führen Sie die folgenden untergeordneten Schritte aus:
 

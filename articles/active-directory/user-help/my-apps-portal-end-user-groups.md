@@ -2,22 +2,22 @@
 title: Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie Ihre gruppenbezogenen Informationen anzeigen und aktualisieren können, einschließlich der Anzeige der Gruppen, die Sie besitzen, der Erstellung neuer Gruppen, der Anzeige der Gruppen, deren Mitglied Sie bereits sind, und des Beitritts zu allen Gruppen, denen Sie noch nicht angehören.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/21/2019
-ms.author: lizross
+ms.date: 02/03/2020
+ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: de7fa1952b2e23276a9f088f5840e54675b44d01
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 00639462fce4e67561b8e50609264d4423872c82
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704951"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022295"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Gruppeninformationen im Portal „Meine Apps“
 
@@ -98,8 +98,6 @@ Wenn Ihr Administrator Ihnen die Berechtigung zum Anzeigen der Kachel **Gruppen*
 
 Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h. vorhandene Informationen aktualisieren.
 
-### <a name="to-edit-your-details"></a>So bearbeiten Sie die Gruppendetails
-
 1. Wählen Sie auf der Seite **Gruppen** die Gruppe aus, die Sie bearbeiten möchten, und wählen Sie dann auf der Seite *&lt;Gruppenname&gt;* die Option **Details bearbeiten** aus.
 
     Das Feld **Details bearbeiten** wird angezeigt, in dem Sie die Informationen aktualisieren können, die Sie beim ersten Erstellen der Gruppe hinzugefügt haben.
@@ -108,9 +106,7 @@ Nachdem Sie eine Gruppe erstellt haben, können Sie ihre Details bearbeiten, d.h
 
 ## <a name="add-or-remove-a-member"></a>Hinzufügen oder Entfernen eines Mitglieds
 
-Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
-
-### <a name="to-add-or-remove-a-member"></a>So können Sie ein Mitglied hinzufügen oder entfernen
+Für Gruppen in Ihrem Besitz können Sie Mitglieder hinzufügen und entfernen.
 
 1. Wählen Sie die Gruppe aus, der Sie Mitglieder hinzufügen möchten, und klicken Sie anschließend auf der Seite *&lt;Gruppenname&gt;* auf **+** .
 
@@ -130,8 +126,6 @@ Bei Ihren eigenen Gruppen können Sie Mitglieder hinzufügen und entfernen.
 
 Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuern und damit deren Ablaufdatum verlängern.
 
-### <a name="to-renew-a-group"></a>So verlängern Sie eine Gruppe
-
 1. Wählen Sie die Office 365-Gruppe aus, die Sie verlängern möchten, und wählen Sie dann **Gruppe verlängern** aus.
 
     ![Verlängern einer Office 365-Gruppe und deren Ablaufdatum](media/my-apps-portal/my-apps-portal-renew-group-link.png)
@@ -144,8 +138,6 @@ Wenn Ihre Organisation dies zulässt, können Sie eine Office 365-Gruppe erneuer
 
 Sie können Ihre eigenen Gruppen jederzeit löschen. Wenn Sie eine Gruppe versehentlich gelöscht haben, müssen Sie jedoch neu erstellen und Mitglieder wieder hinzufügen.
 
-### <a name="to-delete-the-group"></a>So löschen Sie die Gruppe
-
 1. Wählen Sie die Gruppe aus, die Sie dauerhaft löschen möchten, und klicken Sie dann auf der Seite *&lt;Gruppenname&gt;* auf **Gruppe löschen**.
 
     ![Seite „<Gruppenname>“ mit hervorgehobenem Link zum Löschen der Gruppe](media/my-apps-portal/my-apps-portal-delete-group-link.png)
@@ -156,9 +148,7 @@ Sie können Ihre eigenen Gruppen jederzeit löschen. Wenn Sie eine Gruppe verseh
 
 ## <a name="join-an-existing-group"></a>Beitreten zu einer vorhandenen Gruppe
 
-Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten.
-
-### <a name="to-join-or-leave-a-group"></a>So können Sie einer Gruppe beitreten oder sie verlassen
+Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten oder diese verlassen.
 
 1. Wählen Sie auf der Seite **Gruppen** im Bereich **Meine Gruppenmitgliedschaften** den Befehl **Gruppe beitreten** aus.
 
@@ -172,7 +162,7 @@ Auf der Seite **Gruppen** können Sie einer bereits vorhandenen Gruppe beitreten
 
 3. Wenn Sie einer Gruppe versehentlich beigetreten sind oder Sie nicht mehr daran teilnehmen möchten, können Sie auf der Seite **Gruppen beitreten** den Gruppennamen auswählen und dann auf **Gruppe verlassen** klicken.
 
-    ![Seite „Gruppen beitreten“ mit hervorgehobener Schaltfläche „Gruppe verlassen“](media/my-apps-portal/my-apps-portal-leave-group-link.png)    
+    ![Seite „Gruppen beitreten“ mit hervorgehobener Schaltfläche „Gruppe verlassen“](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

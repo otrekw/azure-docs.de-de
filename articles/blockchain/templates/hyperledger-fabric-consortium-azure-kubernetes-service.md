@@ -4,12 +4,12 @@ description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortium
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289644"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029910"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric-Konsortium auf Azure Kubernetes Service (AKS)
 
@@ -143,7 +143,6 @@ SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 -
 ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
 ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
 ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=
 ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
@@ -466,7 +465,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente (mit Kommas als Trennzeichen) in `<queryFunction>` bzw. `<queryFuncArgs>`. Auch hierfür wird der`fabcar`-Chaincode als Referenz verwendet. Damit alle Autos im Weltzustand abgefragt werden, legen Sie `<queryFunction>` auf `"queryAllCars"` und `<queryArgs>' to ` auf "" fest.
+Übergeben Sie den Namen der Abfragefunktion und die Liste der Argumente (mit Kommas als Trennzeichen) in `<queryFunction>` bzw. `<queryFuncArgs>`. Nutzen Sie den `fabcar`-Chaincode nochmals als Referenz, und legen Sie `<queryFunction>` auf `"queryAllCars"` und `<queryArgs>` auf `""` fest, um alle Autos im Weltzustand abzufragen.
 
 Weitere Informationen zu den Argumenten, die an den Befehl übergeben werden, finden Sie in der Hilfe zum Befehl.
 

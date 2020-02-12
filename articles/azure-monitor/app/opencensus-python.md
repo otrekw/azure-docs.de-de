@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 87c0b62cec0b61bfc52ec31233ca7c1f947fdd98
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846130"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989517"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung (Vorschau)
 
@@ -336,9 +336,9 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
         main()
     ```
 
-6. Sie können Ihren Protokollen auch benutzerdefinierte Dimensionen hinzufügen. Diese werden als Schlüssel-Wert-Paare in `customDimensions` in Azure Monitor angezeigt.
+6. Sie können Ihren Protokollnachrichten auch benutzerdefinierte Eigenschaften im Schlüsselwortargument *extra* hinzufügen, indem Sie das Feld „custom_dimensions“ verwenden. Diese werden als Schlüssel-Wert-Paare in `customDimensions` in Azure Monitor angezeigt.
 > [!NOTE]
-> Damit dieses Feature funktioniert, müssen Sie ein Wörterbuch als Argument an Ihre Protokolle übergeben. Andere Datenstrukturen werden ignoriert. Um die Formatierung der Zeichenfolgen beizubehalten, speichern Sie sie in einem Wörterbuch, und übergeben Sie sie als Argumente.
+> Damit dieses Feature funktioniert, müssen Sie im Feld „custom_dimensions“ ein Wörterbuch übergeben. Wenn Sie Argumente eines anderen Typs übergeben, werden diese von der Protokollierung ignoriert.
 
     ```python
     import logging
@@ -350,7 +350,17 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
     logger.addHandler(AzureLogHandler(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
     )
-    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+
+    properties = {'custom_dimensions': {'key_1': 'value_1', 'key_2': 'value_2'}}
+
+    # Use properties in logging statements
+    logger.warning('action', extra=properties)
+
+    # Use properties in exception logs
+    try:
+        result = 1 / 0  # generate a ZeroDivisionError
+    except Exception:
+    logger.exception('Captured an exception.', extra=properties)
     ```
 
 7. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation) für OpenCensus Python.

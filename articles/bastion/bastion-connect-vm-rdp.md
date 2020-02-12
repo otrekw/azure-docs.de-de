@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 02/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: dc741007c7de8d8e24f9c0f9e4e0c03306d036a4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dad6a517341f83f693e1e7e1f7d27e899e00f7e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498359"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76990486"
 ---
 # <a name="connect-to-a-windows-virtual-machine-using-azure-bastion"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer mit Azure Bastion
 
@@ -20,13 +20,22 @@ In diesem Artikel erfahren Sie, wie Sie mit Azure Bastion sicher und problemlos 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](bastion-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um sich mit jeder VM in diesem virtuellen Netzwerk zu verbinden. In Bastion wird vorausgesetzt, dass Sie RDP für die Verbindung mit virtuellen Windows-Computern und SSH für die Verbindung mit virtuellen Linux-Computern verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh.md).
+Stellen Sie sicher, dass Sie einen Azure Bastion-Host für das virtuelle Netzwerk eingerichtet haben, in dem sich die VM befindet. Weitere Informationen finden Sie unter [Erstellen eines Azure Bastion-Hosts](bastion-create-host-portal.md). Sobald der Bastion-Dienst provisioniert und in Ihrem virtuellen Netzwerk bereitgestellt wurde, können Sie ihn verwenden, um sich mit jeder VM in diesem virtuellen Netzwerk zu verbinden.
 
+In Bastion wird vorausgesetzt, dass Sie RDP für die Verbindung mit virtuellen Windows-Computern und SSH für die Verbindung mit virtuellen Linux-Computern verwenden. Informationen zur Verbindung mit einer Linux-VM finden Sie unter [Herstellen einer Verbindung mit einer VM – Linux](bastion-connect-vm-ssh.md).
+
+### <a name="required-roles"></a>Erforderliche Rollen
 Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 
 * Rolle „Leser“ auf dem virtuellen Computer
 * Rolle „Leser“ auf dem Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
 * Rolle „Leser“ für die Azure Bastion-Ressource
+
+### <a name="ports"></a>Ports
+
+Zum Herstellen einer Verbindung mit dem virtuellen Windows-Computer über RDP müssen die folgenden Ports auf Ihrer Windows-VM geöffnet sein:
+
+* Eingehende Ports: RDP (3389)
 
 ## <a name="rdp"></a>Verbindung über RDP
 

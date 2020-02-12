@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: e2067bea25dae05c496c81929ae65d00565bf4f1
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309998"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77020759"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -31,6 +31,10 @@ Für die Cloudbereitstellung ist eine Ausführung alle zwei Minuten geplant. Al
 **F: Bei der ersten Ausführung werden Fehler bei der Kennworthashsynchronisierung angezeigt. Warum?**
 
 Dies entspricht dem erwarteten Verhalten. Die Fehler sind darauf zurückzuführen, dass das Benutzerobjekt nicht in Azure AD vorhanden ist. Nach der Bereitstellung von Benutzern in Azure AD sollten Kennworthashes bei der nachfolgenden Ausführung bereitgestellt werden. Warten Sie einige Ausführungen, und vergewissern Sie sich, dass bei der Kennworthashsynchronisierung keine Fehler mehr auftreten.
+
+**F: Was passiert, wenn die Active Directory-Instanz über Attribute verfügt, die von der Cloudbereitstellung nicht unterstützt werden (z. B. Verzeichniserweiterungen)?**
+
+Die Cloudbereitstellung wird ausgeführt, und die unterstützten Attribute werden bereitgestellt. Die nicht unterstützten Attribute werden in Azure AD nicht bereitgestellt. Sehen Sie sich die Verzeichniserweiterungen in Active Directory an, und stellen Sie sicher, dass Sie die Bereitstellung dieser Attribute für Azure AD nicht benötigen. Falls ein oder mehrere Attribute erforderlich sind, können Sie erwägen, die Azure AD Connect-Synchronisierung zu verwenden oder die benötigten Informationen in eines der unterstützten Attribute zu verschieben (z. B. Erweiterungsattribute 1 - 15).
 
 **F: Worin besteht der Unterschied zwischen Azure AD Connect-Synchronisierung und Cloudbereitstellung?**
 

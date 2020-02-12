@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 7a438a52ab69810ecf49319c148f817da974ea61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 128b15bd5b3ba3c3ac891719bf5c3ec8e5137cce
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440216"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023513"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Quelltransformation in einem Zuordnungsdatenfluss 
 
@@ -44,6 +44,8 @@ Nachdem Sie eine Quelle hinzugefügt haben, konfigurieren Sie sie über die Regi
 
 ![Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Registerkarte „Quelleinstellungen“")
 
+**Verbindung testen:** Testen Sie, ob der Spark-Dienst des Datenflusses erfolgreich eine Verbindung mit dem verknüpften Dienst herstellen kann, der in Ihrem Quelldataset verwendet wird. Damit diese Funktion aktiviert werden kann, muss der Debugmodus aktiviert sein.
+
 **Schemaabweichung**: [Schemaabweichung](concepts-data-flow-schema-drift.md) ist die Fähigkeit von Data Factory, flexible Schemas in Ihren Datenflüssen nativ zu verarbeiten, ohne explizit Spaltenänderungen definieren zu müssen.
 
 * Aktivieren Sie das Kontrollkästchen **Schemaabweichung zulassen**, wenn die Quellspalten häufig geändert werden. Diese Einstellung ermöglicht es, dass alle eingehenden Quellfelder durch die Transformationen zur Senke fließen.
@@ -69,13 +71,17 @@ Wie Schemas in Datasets definiert die Projektion in einer Quelle die Datenspalte
 
 ![Einstellungen auf der Registerkarte „Projektion“](media/data-flow/source3.png "Projektion")
 
-Wenn in Ihrer Textdatei kein Schema definiert ist, wählen Sie **Datentyp erkennen** aus, damit Data Factory Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln. 
+Wenn in Ihrer Textdatei kein Schema definiert ist, wählen Sie **Datentyp erkennen** aus, damit Data Factory Stichproben erstellt und die Datentypen ableitet. Wählen Sie **Standarddatenformat** aus, um die Standarddatenformate automatisch zu ermitteln.
+
+**Schema zurücksetzen** setzt die Projektion auf die Vorgaben im referenzierten Dataset zurück.
 
 Sie können die Spaltendatentypen in einer späteren Transformation für nachgeschaltete Spalten ändern. Verwenden Sie eine Transformation, um die Spaltennamen zu ändern.
 
 ### <a name="import-schema"></a>Schema importieren
 
-Datasets wie Avro und CosmosDB, die komplexe Datenstrukturen unterstützen, erfordern keine Schemadefinitionen, die im Dataset vorhanden sind. Daher können Sie bei diesen Quellentypen auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren** klicken.
+Mithilfe der Schaltfläche **Schema importieren** auf der Registerkarte **Projektion** können Sie einen aktiven Debugcluster zum Erstellen einer Schemaprojektion verwenden. Diese Funktion ist für jeden Quelltyp verfügbar. Durch das Importieren des Schemas wird die im Dataset definierte Projektion überschrieben. Das Datasetobjekt wird nicht geändert.
+
+Dies ist insbesondere bei Datasets wie Avro und Cosmos DB hilfreich, die komplexe Datenstrukturen unterstützen und keine Schemadefinitionen im Dataset erfordern.
 
 ## <a name="optimize-the-source-transformation"></a>Optimieren der Quelltransformation
 

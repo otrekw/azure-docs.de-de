@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Ex
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 162d129eaea83ef6623daaa063e8a088c021e25d
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997359"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022612"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -75,6 +75,15 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
     ![Importbildschirm](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
+2. Wählen Sie die Option **Übertragung über eigenen Datenträger** aus.
+
+    >[!NOTE]
+    >Es wird empfohlen, Azure Data Box zu verwenden, um die Daten der Erstsicherung offline zu übertragen. Diese Option spart den Aufwand der Beschaffung eigener Azure-kompatibler Datenträger, da Ihnen von Microsoft proprietäre, sichere und manipulationsgeschützte Azure Data Box-Geräte bereitgestellt werden, auf die die Sicherungsdaten vom MARS-Agent direkt geschrieben werden können.
+
+3. Klicken Sie auf **Weiter**, und füllen Sie die Angaben sorgfältig aus:
+
+    ![Eingeben von Datenträgerdetails](./media/backup-azure-backup-import-export/your-disk-details.png)
+
    Die Beschreibung der Eingaben lautet wie folgt:
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
@@ -85,15 +94,15 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
   
    Geben Sie die erforderlichen Werte in den Bildschirm ein, und klicken Sie anschließend auf **Weiter**. Speichern Sie die Angaben für *Stagingspeicherort* und *Name des Azure-Importauftrags*. Diese werden zur Vorbereitung der Datenträger benötigt.
 
-2. Melden Sie sich bei Ihrem Azure-Abonnement an, wenn Sie dazu aufgefordert werden. Die Anmeldung ist erforderlich, damit Azure Backup die Azure Active Directory-Anwendung erstellen und die erforderlichen Berechtigungen für den Zugriff auf den Azure-Import-Dienst bereitstellen kann.
+4. Melden Sie sich bei Ihrem Azure-Abonnement an, wenn Sie dazu aufgefordert werden. Die Anmeldung ist erforderlich, damit Azure Backup die Azure Active Directory-Anwendung erstellen und die erforderlichen Berechtigungen für den Zugriff auf den Azure-Import-Dienst bereitstellen kann.
 
-    ![Jetzt sichern](./media/backup-azure-backup-import-export/azurelogin.png)
+    ![Jetzt sichern](./media/backup-azure-backup-import-export/azure-login.png)
 
-3. Schließen Sie den Workflow ab, und klicken Sie in der Konsole des Azure Backup-Agents auf **Jetzt sichern**.
+5. Schließen Sie den Workflow ab, und klicken Sie in der Konsole des Azure Backup-Agents auf **Jetzt sichern**.
 
     ![Jetzt sichern](./media/backup-azure-backup-import-export/backupnow.png)
 
-4. Klicken Sie auf der Bestätigungsseite des Assistenten auf **Sichern**. Im Rahmen der Einrichtung wird die Erstsicherung in den Stagingbereich geschrieben.
+6. Klicken Sie auf der Bestätigungsseite des Assistenten auf **Sichern**. Im Rahmen der Einrichtung wird die Erstsicherung in den Stagingbereich geschrieben.
 
    ![Bestätigen der Sicherungsbereitschaft](./media/backup-azure-backup-import-export/backupnow-confirmation.png)
 
@@ -122,7 +131,7 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
     ```.\AzureOfflineBackupDiskPrep.exe s:<Staging Location Path>```
 
-    | Parameter | BESCHREIBUNG |
+    | Parameter | Beschreibung |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Obligatorische Eingabe zum Angeben des Pfads für den Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
     | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Optionale Eingabe zum Angeben des Pfads zur Datei **Azure-Veröffentlichungseinstellungen**, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
@@ -206,4 +215,3 @@ Nach Abschluss der Erstsicherung können die in den Azure-Speichercontainer impo
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
-

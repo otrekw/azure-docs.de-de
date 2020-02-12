@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c556b71acf814203a67317039dafeede5f7b65a6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895976"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016747"
 ---
 # <a name="vpn-gateway-faq"></a>Häufig gestellte Fragen zum VPN-Gateway
 
@@ -68,14 +68,15 @@ Richtlinienbasierte Gateways implementieren richtlinienbasierte VPNs verwendet. 
 
 Routenbasierte Gateways implementieren die routenbasierten VPNs. Bei routingbasierten VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungs- oder -Routingtabelle an die entsprechenden VPN-Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie bzw. der Datenverkehrselektor für routenbasierte VPNs werden im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert.
 
-### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kann ich meine richtlinienbasiertes VPN-Gateway zu einem routenbasierten aktualisieren?
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kann ich mein richtlinienbasiertes VPN-Gateway zu einem routenbasierten aktualisieren?
+
 Nein. Ein Azure-VNET-Gatewaytyp kann nicht von richtlinienbasiert zu routenbasiert geändert werden oder umgekehrt. Das Gateway muss gelöscht und neu erstellt werden. Dieser Prozess dauert etwa 60 Minuten. Die IP-Adresse des Gateways und der vorinstallierte Schlüssel (PSK) werden nicht beibehalten.
 1. Löschen Sie alle Verbindungen, die dem zu löschenden Gateway zugeordnet sind.
 1. Löschen des Gateways:
-1. [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
-1. [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
-1. [Azure Powershell – klassisch](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-1. [Erstellen Sie ein neues Gateway des gewünschten Typs, und schließen Sie das VPN-Setup ab.](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+   - [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
+   - [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+   - [Azure PowerShell – klassisch](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+1. [Erstellen Sie ein neues Gateway des gewünschten Typs, und schließen Sie das VPN-Setup ab](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway).
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>Benötige ich ein Gatewaysubnetz?
 
@@ -89,11 +90,15 @@ Nein.
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>Kann ich die IP-Adresse meines VPN-Gateways vor dessen Erstellung erhalten?
 
-Nein. Die IP-Adresse kann erst nach der Erstellung des Gateways bezogen werden. Wenn Sie das VPN-Gateway löschen und anschließend neu erstellen, ändert sich die IP-Adresse.
+Sowohl zonenredundante als auch zonale Gateways (Gateway-SKUs mit _AZ_ im Namen) basieren auf einer Azure-Ressource mit öffentlicher IP-Adresse und _Standard-SKU_. Ressourcen mit öffentlichen IP-Adressen und Azure-Standard-SKU müssen eine statische Zuordnungsmethode verwenden. Daher erhalten Sie die öffentliche IP-Adresse für Ihr VPN-Gateway, sobald Sie die Ressource mit öffentlicher IP-Adresse und Standard-SKU erstellen, die Sie für die Ressource verwenden möchten.
+
+Für nicht zonenredundante und nicht zonale Gateways (Gateway-SKUs _ohne_ _AZ_ im Namen) können Sie die IP-Adresse des VPN-Gateways nicht vor dem Erstellen erhalten. Nur wenn Sie das VPN-Gateway löschen und anschließend neu erstellen, ändert sich die IP-Adresse.
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>Kann ich eine statische öffentliche IP-Adresse für mein VPN-Gateway anfordern?
 
-Nein. Nur die Zuweisung dynamischer IP-Adressen wird unterstützt. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die IP-Adresse des VPN-Gateways ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Die öffentliche IP-Adresse des VPN-Gateways ändert sich bei Größenänderungen, beim Zurücksetzen oder bei anderen internen Wartungs-/Upgradeprozessen Ihres VPN-Gateways nicht. 
+Wie oben angegeben basieren sowohl zonenredundante als auch zonale Gateways (Gateway-SKUs mit _AZ_ im Namen) auf einer Azure-Ressource mit öffentlicher IP-Adresse und _Standard-SKU_. Ressourcen mit öffentlichen IP-Adressen und Azure-Standard-SKU müssen eine statische Zuordnungsmethode verwenden.
+
+Für nicht zonenredundante und nicht zonale Gateways (Gateway-SKUs _ohne_ _AZ_ im Namen) wird nur die dynamische Zuweisung von IP-Adressen unterstützt. Das bedeutet jedoch nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die IP-Adresse des VPN-Gateways ändert sich nur, wenn das Gateway gelöscht und dann neu erstellt wird. Die öffentliche IP-Adresse des VPN-Gateways ändert sich nicht bei Größenänderungen, beim Zurücksetzen oder bei anderen internen Wartungs- und Upgradeprozessen Ihres VPN-Gateways.
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>Wie wird mein VPN-Tunnel authentifiziert?
 

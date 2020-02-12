@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 3170ca428b0b06f3d76bfd6037f75f345a2a466a
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122456"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989670"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -38,6 +38,7 @@ Verwenden Sie die identifizierte Version, um zu bestätigen, welches Release auf
 | --- | --- |
 |**Metriken im Workloadverwaltungsportal (Vorschauversion)**|Seit der Veröffentlichung der [Workloadisolation](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) als Vorschauversion im letzten Oktober können Benutzer ihre eigenen [Arbeitsauslastungsgruppen](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) erstellen, um die Systemressourcen effizient zu verwalten und die Einhaltung von geschäftlichen SLAs sicherzustellen.  Im Rahmen der allgemeinen Verbesserungen an der [Workloadverwaltung](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) für Azure Synapse Analytics sind nun neue [Metriken zur Überwachung der Workloadverwaltung](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) verfügbar.</br> </br> Das Überwachen Ihrer Workloads bietet nun mehr Erkenntnisse durch die folgenden Metriken: </br> - Effektives Ressourcenlimit (Prozent)  </br> - Effektive Mindestanzahl von Ressourcen (Prozent) </br> - Aktive Abfragen von Arbeitsauslastungsgruppen </br> - Zuordnung von Arbeitsauslastungsgruppen nach maximalem Ressourcenprozentsatz </br> - Zuordnung von Arbeitsauslastungsgruppen nach Systemprozentsatz </br> - Abfragetimeouts für Arbeitsauslastungsgruppen </br> - In der Warteschlange befindliche Abfragen der Arbeitsauslastungsgruppe </br></br> Verwenden Sie diese Metriken, um [Engpässe bei Arbeitsauslastungsgruppen](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) zu ermitteln oder Arbeitsauslastungsgruppen zu identifizieren, die mit einer [unterausgelasteten Workloadisolation](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation) konfiguriert wurde.  Diese Metriken können im Azure-Portal verwendet werden. Dort können Sie auch eine Aufteilung nach Arbeitsauslastungsgruppen durchführen.  Filtern Sie Ihre bevorzugten Graphen, und heften Sie diese an ein Dashboard an, um schnell auf Erkenntnisse Zugriff zu erhalten.|
 |**Überwachungsmetriken im Portal**| Die folgenden Metriken wurden dem Portal zum Überwachen der allgemeinen Abfrageaktivität hinzugefügt: </br> - Aktive Abfragen </br> - Abfragen in Warteschlange </br> </br>Diese Metriken werden zusammen mit den vorhandenen Metriken in der [Dokumentation zur Überwachung der Ressourcenverwendung und der Abfrageaktivität](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity) beschrieben.|
+|**Produktname**|Ab Juni 2020 wird der durch „SELECT @@VERSION“ zurückgegebene Produktname von Microsoft Azure SQL Data Warehouse in Azure Synapse Analytics geändert. Wir veröffentlichen den Zeitplan in den Versionshinweisen. Diese Änderung ist insbesondere für Kunden von Bedeutung, die den Produktnamen aus dem Ergebnis von „SELECT @@VERSION“ in ihrem Anwendungscode analysieren. Um Änderungen am Anwendungscode aufgrund der Produktumbenennung zu vermeiden, verwenden Sie diese Befehle, um SERVERPROPERTY nach dem Produktnamen und der Version der Datenbank abzufragen. </br> Um die DW-Versionsnummer XX.X.XXXXX.X zurückzugeben (ohne Produktname), verwenden Sie den folgenden Befehl: SELECT SERVERPROPERTY('ProductVersion') </br> Um die Engine-Edition zurückzugeben, verwenden Sie diesen Befehl, der für Azure Synapse Analytics (früher SQL Data Warehouse) den Wert „6“ zurückgibt: SELECT SERVERPROPERTY('EngineEdition')|
 
 ## <a name="october-2019"></a>Oktober 2019
 
@@ -156,7 +157,7 @@ Verwenden Sie die identifizierte Version, um zu bestätigen, welches Release auf
 ## <a name="more-information"></a>Weitere Informationen
 
 - [Blog: Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- [Customer Advisory Team-Blogs](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Customer Advisory Team-Blogs](https://docs.microsoft.com/archive/blogs/sqlcat/)
 - [Kundenerfolgsgeschichten](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

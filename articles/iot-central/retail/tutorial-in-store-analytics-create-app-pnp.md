@@ -11,16 +11,16 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6b89b667855d827acfb7c181da014cd0d0b4bfc4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702021"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77022102"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Tutorial: Erstellen einer Anwendung für die In-Store-Analyse in Azure IoT Central
 
-[!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
+
 
 In diesem Tutorial wird für Lösungsersteller erläutert, wie sie in Azure IoT Central eine Anwendung für die In-Store-Analyse entwickeln können. Die Beispielanwendung ist für einen Laden im Einzelhandel gedacht. Es handelt sich um eine Lösung für die allgemeine Geschäftsanforderung, die Auslastung und Umgebungsbedingungen zu überwachen und entsprechende Anpassungen vornehmen zu können.
 
@@ -64,24 +64,27 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 
 1. Wählen Sie **Einzelhandel** aus.  Auf der Seite „Einzelhandel“ werden verschiedene Vorlagen für Einzelhandelsanwendungen angezeigt.
 
-So erstellen Sie eine neue Kassenanwendung für die In-Store-Analyse, die Previewfunktionen verwendet:  
+Erstellen Sie wie folgt eine neue Anwendung vom Typ „In-Store-Analyse – Auschecken“:  
 
 1. Wählen Sie die Anwendungsvorlage **In-store analytics - checkout** aus. Diese Vorlage enthält Gerätevorlagen für alle im Tutorial verwendeten Geräte mit Ausnahme der RuuviTag-Sensoren. Die Vorlage bietet auch ein Dashboard für Bediener zur Überwachung von Kassen- und Umgebungsbedingungen sowie des Gerätestatus. 
 
-1. Wählen Sie optional einen benutzerfreundlichen **Anzeigenamen** aus. Diese Anwendung basiert auf einem fiktiven Einzelhandelsgeschäft mit dem Namen „Contoso“. In diesem Tutorial wird der **Anwendungsname** *Contoso-Kasse* verwendet. Die Anwendungsvorlage basiert auf dem fiktiven Unternehmen Northwind. In diesem Tutorial lernen Sie anhand von Contoso, wie Sie die Anwendung anpassen.
+1. Wählen Sie optional einen benutzerfreundlichen **Anzeigenamen** aus. Diese Anwendung basiert auf einem fiktiven Einzelhandelsgeschäft mit dem Namen „Contoso“. In diesem Tutorial wird als **Anwendungsname** *Contoso checkout* (Contoso-Kasse) verwendet. Die Anwendungsvorlage basiert auf dem fiktiven Unternehmen Northwind. In diesem Tutorial lernen Sie anhand von Contoso, wie Sie die Anwendung anpassen.
 
     > [!NOTE]
     > Wenn Sie einen benutzerfreundlichen **Anwendungsnamen** verwenden, müssen Sie dennoch einen eindeutigen Wert für die Anwendungs-**URL** angeben.
 
 1. Wenn Sie ein Azure-Abonnement haben, geben Sie die entsprechenden Angaben für *Verzeichnis, Azure-Abonnement und Region* ein. Wenn Sie kein Abonnement haben, können Sie eine **7-tägige kostenlose Testversion** aktivieren und die erforderlichen Kontaktinformationen eingeben.  
 
-    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../preview/quick-deploy-iot-central.md).
+    Weitere Informationen zu Verzeichnissen und Abonnements finden Sie unter [Erstellen einer Azure IoT Central-Anwendung](../core/quick-deploy-iot-central.md).
 
 1. Klicken Sie auf **Erstellen**.
 
     ![Azure IoT Central-Seite „Anwendung erstellen“](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template.png)
 
+    ![„Anwendung erstellen“ in Azure IoT Central: Abrechnungsinformationen](./media/tutorial-in-store-analytics-create-app-pnp/preview-application-template-billinginfo.png)
+
 ## <a name="customize-application-settings"></a>Anpassen der Anwendungseinstellungen
+
 Als Lösungsersteller können Sie verschiedene Einstellungen ändern, um die Benutzeroberfläche in Ihrer Anwendung anzupassen. In diesem Abschnitt wählen Sie ein vordefiniertes Anwendungsdesign aus. Optional erfahren Sie, wie Sie ein benutzerdefiniertes Design erstellen und das Bild der Anwendung aktualisieren. Mit einem benutzerdefinierten Design können Sie die Farben des Anwendungsbrowsers, das Browsersymbol und das Anwendungslogo festlegen, das im Mastertitel angezeigt wird.
 
 So wählen Sie ein vordefiniertes Anwendungsdesign aus:
@@ -160,7 +163,7 @@ Eine zweite Möglichkeit ist die Anpassung Ihrer Gerätevorlagen durch Hinzufüg
 
 Die dritte Möglichkeit für das Anpassen von Gerätevorlagen ist das Erstellen benutzerdefinierter Ansichten. Mit Ansichten können Bediener Telemetrie- und Metadaten für Ihre Geräte visualisieren, wie z. B. die Gerätemetriken und die -integrität.
 
-Hier verwenden Sie die ersten beiden Methoden, um die Gerätevorlage für Ihre RuuviTag-Sensoren anzupassen. Weitere Informationen zum Erstellen von Ansichten für Ihre Sensoren finden Sie im Schnellstart [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](../preview/quick-create-pnp-device.md).
+Hier verwenden Sie die ersten beiden Methoden, um die Gerätevorlage für Ihre RuuviTag-Sensoren anzupassen. Weitere Informationen zum Erstellen von Ansichten für Ihre Sensoren finden Sie im Schnellstart [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](../core/quick-create-pnp-device.md).
 
 So passen Sie die integrierten Schnittstellen der RuuviTag-Gerätevorlage an:
 
@@ -202,7 +205,7 @@ Geben Sie die folgenden Werte an, um eine benutzerdefinierte Eigenschaft zum Spe
 
 1. Wählen Sie in der Dropdownliste **Schema** die Option *Zeichenfolge* aus. Mit einem Zeichenfolgentyp können Sie basierend auf der Vorlage eine Zeichenfolge für den Standortnamen einem beliebigen Gerät zuordnen. Beispielsweise können Sie jedem Gerät einen Bereich in einem Laden zuordnen. Optional können Sie den **semantischen Typ** Ihrer Eigenschaft auf *Standort* festlegen. Dadurch wird für das **Schema** automatisch *Geopunkt* verwendet. Damit ist es möglich, einem Gerät GPS-Koordinaten zuzuordnen. 
 
-1. Legen Sie für **Mindestlänge** *2* fest. 
+1. Legen Sie für **Mindestlänge***2* fest. 
 
 1. Stellen Sie die Option **Leerzeichen kürzen** auf **Ein**.
 
@@ -225,10 +228,10 @@ Für dieses Tutorial verwenden Sie zum Erstellen der Anwendung den folgenden Sat
 > [!NOTE]
 > Wenn Sie keine echten Geräte haben, können Sie dieses Tutorial trotzdem absolvieren. Erstellen Sie dafür einfach simulierte RuuviTag-Sensoren. Die folgenden Anweisungen enthalten Schritte zum Erstellen eines simulierten RuuviTag-Sensors. Sie müssen kein simuliertes Gateway erstellen.
 
-Führen Sie die Schritte in den folgenden beiden Artikeln aus, um eine Verbindung mit einem echten Rigado-Gateway und RuuviTag-Sensoren herzustellen. Wenn Sie fertig sind, kehren Sie zu diesem Tutorial zurück. Da Sie in diesem Tutorial bereits Gerätevorlagen erstellt haben, müssen Sie diese in der folgenden Anleitung nicht erneut erstellen.
+Führen Sie die Schritte in den folgenden beiden Artikeln aus, um eine Verbindung mit einem echten Rigado-Gateway und RuuviTag-Sensoren herzustellen. Kehren Sie zu diesem Tutorial zurück, wenn Sie fertig sind. Da Sie in diesem Tutorial bereits Gerätevorlagen erstellt haben, müssen Sie diese in der folgenden Anleitung nicht erneut erstellen.
 
-- Informationen zum Verbinden eines Rigado-Gateways finden Sie in [Verbinden eines Rigado Cascade 500 mit Ihrer Azure IoT Central-Anwendung](../preview/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
-- Informationen zum Verbinden eines RuuviTag-Sensors finden Sie in [Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung](../preview/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Mithilfe dieser Anweisungen können Sie bei Bedarf auch zwei simulierte Sensoren erstellen.
+- Informationen zum Verbinden eines Rigado-Gateways finden Sie in [Verbinden eines Rigado Cascade 500 mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-rigado-cascade-500.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json).
+- Informationen zum Verbinden eines RuuviTag-Sensors finden Sie in [Verbinden eines RuuviTag-Sensors mit Ihrer Azure IoT Central-Anwendung](../core/howto-connect-ruuvi.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json). Mithilfe dieser Anweisungen können Sie bei Bedarf auch zwei simulierte Sensoren erstellen.
 
 ## <a name="add-rules-and-actions"></a>Hinzufügen von Regeln und Aktionen
 Als Teil der Verwendung von Sensoren in Ihrer Azure IoT Central-Anwendung zur Überwachung von Umgebungsbedingungen können Sie Regeln erstellen, mit denen Aktionen ausgeführt werden, wenn bestimmte Bedingungen erfüllt sind. Eine Regel ist einer Gerätevorlage und einem oder mehreren Geräten zugeordnet und enthält Bedingungen, die aufgrund von Gerätetelemetriedaten oder Ereignissen erfüllt sein müssen. Einer Regel sind zudem eine oder mehrere Aktionen zugeordnet. Die Aktionen können das Senden von E-Mail-Benachrichtigungen oder das Auslösen einer Webhook-Aktion zum Senden von Daten an andere Dienste umfassen. Die Anwendungsvorlage **In-store analytics - checkout** enthält einige vordefinierte Regeln für die in der Anwendung verwendeten Geräte.

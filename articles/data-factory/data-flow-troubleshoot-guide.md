@@ -1,5 +1,5 @@
 ---
-title: Beheben von Problemen mit Datenflüssen
+title: Problembehandlung für Datenflüsse
 description: In diesem Artikel wird beschrieben, wie Sie in Azure Data Factory Datenflussprobleme beheben.
 services: data-factory
 ms.author: makromer
@@ -7,114 +7,64 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/04/2020
+ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443945"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77029519"
 ---
-# <a name="troubleshoot-azure-data-factory-data-flows"></a>Problembehandlung für Azure Data Factory-Datenflüsse
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
 
 In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflüsse in Azure Data Factory beschrieben.
 
 ## <a name="common-errors-and-messages"></a>Häufige Fehler und Meldungen
 
-### <a name="error-message-df-sys-01-shadeddatabricksorgapachehadoopfsazureazureexception-commicrosoftazurestoragestorageexception-the-specified-container-does-not-exist"></a>Fehlermeldung: DF-SYS-01: shaded.databricks.org.apache.hadoop.fs.azure.AzureException: com.microsoft.azure.storage.StorageException: Der angegebene Container ist nicht vorhanden.
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>Fehlercode: DF-Executor-SourceInvalidPayload
+- **Meldung**: Data preview, debug, and pipeline data flow execution failed because container does not exist (Fehler beim Anzeigen von Daten in der Vorschau, beim Debuggen und bei der Datenflussausführung in der Pipeline, weil der Container nicht vorhanden ist)
+- **Ursachen**: Das Dataset enthält einen Container, der im Speicher nicht vorhanden ist.
+- **Empfehlung**: Stellen Sie sicher, dass der Container, auf den Sie im Dataset verweisen, vorhanden ist und darauf zugegriffen werden kann.
 
-- **Symptome:** Fehler beim Anzeigen von Daten in der Vorschau, beim Debuggen und bei der Datenflussausführung in der Pipeline, weil der Container nicht vorhanden ist
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>Fehlercode: DF-Executor-SystemImplicitCartesian
 
-- **Ursache:** Das Dataset enthält einen Container, der im Speicher nicht vorhanden ist.
+- **Meldung**: Implicit cartesian product for INNER join is not supported, use CROSS JOIN instead. (Implizites kartesisches Produkt wird für INNER JOIN nicht unterstützt. Verwenden Sie stattdessen CROSS JOIN.) Die im Join verwendeten Spalten müssen einen eindeutigen Schlüssel für Zeilen erstellen.
+- **Ursachen**: Implizites kartesisches Produkt für INNER JOIN zwischen logischen Plänen wird nicht unterstützt. Dies ist der Fall, wenn die im Join verwendeten Spalten den eindeutigen Schlüssel erstellen.
+- **Empfehlung**: Bei nicht gleichheitsbasierten Joins müssen Sie CROSS JOIN verwenden.
 
-- **Lösung:** Stellen Sie sicher, dass der Container vorhanden ist, auf den Sie im Dataset verweisen.
+### <a name="error-code-df-executor-systeminvalidjson"></a>Fehlercode: DF-Executor-SystemInvalidJson
 
-### <a name="error-message-df-sys-01-javalangassertionerror-assertion-failed-conflicting-directory-structures-detected-suspicious-paths"></a>Fehlermeldung: DF-SYS-01: java.lang.AssertionError: Assertionsfehler: Conflicting directory structures detected. (Es wurden widersprüchliche Verzeichnisstrukturen erkannt.) Suspicious paths (Verdächtige Pfade)
+- **Meldung**: JSON parsing error, unsupported encoding or multiline (JSON-Analysefehler: nicht unterstützte Codierung oder mehrzeiliger Text)
+- **Ursachen**: Mögliche Probleme mit der JSON-Datei: nicht unterstützte Codierung, beschädigte Bytes oder Verwendung der JSON-Quelle als einzelnes Dokument in vielen geschachtelten Zeilen
+- **Empfehlung**: Überprüfen Sie, ob die Codierung der JSON-Datei unterstützt wird. Erweitern Sie in der Quelltransformation, die ein JSON-Dataset verwendet, die Option „JSON Settings“ („JSON-Einstellungen“), und aktivieren Sie „Single Document“ („Einzelnes Dokument“).
+ 
+### <a name="error-code-df-executor-broadcasttimeout"></a>Fehlercode: DF-Executor-BroadcastTimeout
 
-- **Symptome:** Platzhalter werden in der Quelltransformation mit Parquet-Dateien verwendet.
+- **Meldung**: Broadcast join timeout error, make sure broadcast stream produces data within 60 secs in debug runs and 300 secs in job runs (Übertragungsjoin-Timeoutfehler: Stellen Sie sicher, dass der Übertragungsdatenstrom in Debugausführungen Daten innerhalb von 60 Sekunden und in Auftragsausführungen innerhalb von 300 Sekunden Daten erzeugt.)
+- **Ursachen**: Das Zeitlimit für Übertragungen beträgt standardmäßig 60 Sekunden bei Debugausführungen und 300 Sekunden bei Auftragsausführungen. Der Datenstrom, der für die Übertragung ausgewählt wurde, ist anscheinend zu groß, um innerhalb dieser Zeitspanne Daten zu erzeugen.
+- **Empfehlung**: Vermeiden Sie es, große Datenströme zu übertragen, deren Verarbeitung länger als 60 Sekunden dauern kann. Wählen Sie stattdessen einen kleineren Datenstrom für die Übertragung. Große SQL/DW-Tabellen und -Quelldateien sind hierfür eher ungeeignet.
 
-- **Ursache:** Falsche oder ungültige Platzhaltersyntax
+### <a name="error-code-df-executor-conversion"></a>Fehlercode: DF-Executor-Conversion
 
-- **Lösung:** Überprüfen Sie die Platzhaltersyntax, die Sie in den Optionen für die Quelltransformation verwenden.
+- **Meldung**: Converting to a date or time failed due to an invalid character (Fehler beim Umwandeln eines Datums oder einer Uhrzeit aufgrund eines ungültigen Zeichens)
+- **Ursachen**: Die Daten haben nicht das erwartete Format.
+- **Empfehlung**: Verwenden Sie den richtigen Datentyp.
 
-### <a name="error-message-df-src-002-container-container-name-is-required"></a>Fehlermeldung: DF-SRC-002: 'container' (Containername) ist erforderlich
+### <a name="error-code-df-executor-invalidcolumn"></a>Fehlercode: DF-Executor-InvalidColumn
 
-- **Symptome:** Fehler beim Anzeigen von Daten in der Vorschau, beim Debuggen und bei der Datenflussausführung in der Pipeline, weil der Container nicht vorhanden ist
-
-- **Ursache:** Das Dataset enthält einen Container, der im Speicher nicht vorhanden ist.
-
-- **Lösung:** Stellen Sie sicher, dass der Container vorhanden ist, auf den Sie im Dataset verweisen.
-
-### <a name="error-message-df-uni-001-primarykeyvalue-has-incompatible-types-integertype-and-stringtype"></a>Fehlermeldung: DF-UNI-001: PrimaryKeyValue has incompatible types IntegerType and StringType (PrimaryKeyValue weist inkompatible Typen IntegerType und StringType auf)
-
-- **Symptome:** Fehler beim Anzeigen von Daten in der Vorschau, beim Debuggen und bei der Datenflussausführung in der Pipeline, weil der Container nicht vorhanden ist
-
-- **Ursache:** Tritt auf, wenn versucht wird, einen falschen Primärschlüsseltyp in Datenbanksenken einzufügen.
-
-- **Lösung:** Verwenden Sie eine Derived Column, um die im Primärschlüssel des Datenflusses verwendete Spalte umzuwandeln, sodass sie dem Datentyp der Zieldatenbank entspricht.
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-the-tcpip-connection-to-the-host-xxxxxdatabasewindowsnet-port-1433-has-failed-error-xxxxdatabasewindowsnet-verify-the-connection-properties-make-sure-that-an-instance-of-sql-server-is-running-on-the-host-and-accepting-tcpip-connections-at-the-port-make-sure-that-tcp-connections-to-the-port-are-not-blocked-by-a-firewall"></a>Fehlermeldung: DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException: Fehler beim Herstellen der TCP/IP-Verbindung mit dem Host xxxxx.database.windows.net, Port 1433. Fehler: „xxxx.database.windows.net. Überprüfen Sie die Verbindungseigenschaften. Stellen Sie sicher, dass eine SQL Server-Instanz auf dem Host ausgeführt wird, die TCP/IP-Verbindungen am Port annimmt. Überprüfen Sie außerdem, dass die TCP-Verbindungen mit dem Port nicht von einer Firewall blockiert werden.“
-
-- **Symptome:** Vorschau von Daten oder Ausführen der Pipeline mit der Datenbankquelle oder der Senke ist nicht möglich.
-
-- **Ursache:** Die Datenbank ist durch eine Firewall geschützt.
-
-- **Lösung:** Gestatten Sie den Firewallzugriff auf die Datenbank.
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-there-is-already-an-object-named-xxxxxx-in-the-database"></a>Fehlermeldung: DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException: In der Datenbank ist bereits ein Objekt mit dem Namen 'xxxxxx' vorhanden.
-
-- **Symptome:** Die Senke kann keine Tabelle erstellen.
-
-- **Ursache:** In der Zieldatenbank ist bereits eine Tabelle mit dem Namen vorhanden, der in der Quelle oder im Dataset definiert ist.
-
-- **Lösung:** Ändern Sie den Namen der Tabelle, die Sie erstellen möchten.
-
-### <a name="error-message-df-sys-01-commicrosoftsqlserverjdbcsqlserverexception-string-or-binary-data-would-be-truncated"></a>Fehlermeldung: DF-SYS-01: com.microsoft.sqlserver.jdbc.SQLServerException: String- oder binäre Daten würden abgeschnitten. 
-
-- **Symptome:** Beim Schreiben von Daten in eine SQL-Senke tritt bei Ihrem Datenfluss bei der Pipelineausführung ein Fehler auf, möglicherweise ein Kürzungsfehler.
-
-- **Ursache:** Ein Feld aus dem Datenfluss wird einer Spalte in Ihrer SQL-Datenbank zugeordnet, die nicht breit genug ist, um den Wert zu speichern, sodass der SQL-Treiber diesen Fehler auslöst.
-
-- **Lösung:** Sie können die Länge der Daten für Zeichenfolgenspalten mithilfe von ```left()``` in einer abgeleiteten Spalte reduzieren oder das [„Fehlerzeilen“-Muster implementieren.](how-to-data-flow-error-rows.md)
-
-### <a name="error-message-since-spark-23-the-queries-from-raw-jsoncsv-files-are-disallowed-when-the-referenced-columns-only-include-the-internal-corrupt-record-column"></a>Fehlermeldung: Seit Spark 2.3 sind die Abfragen aus JSON-/CSV-Dateien mit Rohdaten unzulässig, wenn die Spalten, auf die verwiesen wird, nur die interne Spalte mit beschädigten Datensätzen enthalten. 
-
-- **Symptome:** Fehler beim Lesen aus einer JSON-Quelle
-
-- **Ursache:** Beim Lesen aus einer JSON-Quelle mit einem einzelnen Dokument in zahlreichen geschachtelten Zeilen kann ADF nicht über Spark ermitteln, wo das vorherige Dokument endet und ein neues Dokument beginnt.
-
-- **Lösung:** Erweitern Sie in der Quelltransformation, die ein JSON-Dataset verwendet, die Option „JSON-Einstellungen“, und aktivieren Sie „Einzelnes Dokument“.
-
-### <a name="error-message-duplicate-columns-found-in-join"></a>Fehlermeldung: Doppelte Spalten bei Join gefunden
-
-- **Symptome:** Die JOIN-Transformation führte zu Spalten auf der linken und der rechten Seite, die doppelte Spaltennamen enthalten.
-
-- **Ursache:** Die verknüpften Datenströme enthalten identische Spaltennamen.
-
-- **Lösung:** Fügen Sie nach dem Join eine SELECT-Transformation hinzu, und wählen Sie „Doppelte Spalten entfernen“ für die Eingabe und die Ausgabe aus.
-
-### <a name="error-message-possible-cartesian-product"></a>Fehlermeldung: Mögliches kartesisches Produkt
-
-- **Symptome:** Die Join- oder Lookup-Transformation hat bei der Ausführung Ihres Datenflusses ein mögliches kartesisches Produkt entdeckt.
-
-- **Ursache:** Der Datenfluss kann fehlschlagen, wenn Sie Azure Data Factory nicht direkt angewiesen haben, ein Kreuzprodukt zu verwenden.
-
-- **Lösung:** Ändern Sie die Lookup- oder Join-Transformation in einen Join, der ein benutzerdefiniertes Kreuzprodukt verwendet, und geben Sie Ihre Lookup- oder Joinbedingung in den Ausdrucks-Editor ein. Wenn Sie explizit ein vollständiges kartesisches Produkt erzeugen möchten, verwenden Sie vor dem Join die Transformation für abgeleitete Spalten in beiden unabhängigen Datenströmen, um einen synthetischen Schlüssel für den Vergleich zu erstellen. Erstellen Sie z. B. mit der Transformation für abgeleitete Spalten eine neue Spalte in jedem Datenstrom mit dem Namen ```SyntheticKey``` und legen Sie ihn auf ```1``` fest. Verwenden Sie dann ```a.SyntheticKey == b.SyntheticKey``` als benutzerdefinierten Joinausdruck.
-
-> [!NOTE]
-> Achten Sie darauf, dass Sie mindestens eine Spalte von jeder Seite der linken und rechten Beziehung in ein benutzerdefiniertes Kreuzprodukt einbeziehen. Die Ausführung von Kreuzprodukten mit statischen Werten anstelle von Spalten von jeder Seite führt zu vollständigen Überprüfungen des gesamten Datasets, sodass der Datenfluss mit geringer Leistung ausgeführt wird.
+- **Meldung**: Column name needs to be specified in the query, set an alias if using a SQL function (Spaltenname muss in der Abfrage angegeben werden. Legen Sie einen Alias fest, wenn Sie eine SQL-Funktion verwenden.)
+- **Ursachen**: Es wurde kein Spaltenname angegeben.
+- **Empfehlung**: Legen Sie einen Alias fest, wenn Sie SQL-Funktionen wie min()/max() etc. verwenden.
 
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung
 
 1. Überprüfen Sie den Status der Datasetverbindungen. Besuchen Sie in jeder Quell-und Senkentransformation den verknüpften Dienst für jedes verwendete Dataset, und testen Sie die Verbindungen.
-2. Überprüfen Sie den Status der Datei- und Tabellenverbindungen aus dem Datenfluss-Designer. Aktivieren Sie das Debuggen, und klicken Sie auf „Datenvorschau“ für Ihre Quelltransformationen, um sicherzustellen, dass Sie auf die Daten zugreifen können.
-3. Wenn in der Datenvorschau keine Probleme erkennbar sind, wechseln Sie zum Pipeline-Designer, und fügen Sie den Datenfluss in eine Pipelineaktivität ein. Debuggen Sie die Pipeline in einem End-to-End-Test.
+1. Überprüfen Sie den Status der Datei- und Tabellenverbindungen aus dem Datenfluss-Designer. Aktivieren Sie das Debuggen, und klicken Sie auf „Datenvorschau“ für Ihre Quelltransformationen, um sicherzustellen, dass Sie auf die Daten zugreifen können.
+1. Wenn in der Datenvorschau keine Probleme erkennbar sind, wechseln Sie zum Pipeline-Designer, und fügen Sie den Datenfluss in eine Pipelineaktivität ein. Debuggen Sie die Pipeline in einem End-to-End-Test.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Problembehandlung finden Sie in diesen Ressourcen:
-
 *  [Data Factory-Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory-Funktionsanfragen](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure-Videos](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)

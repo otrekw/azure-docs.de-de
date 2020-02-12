@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Migration in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der Migration virtueller VMware-Computer in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030925"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77013993"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -123,7 +123,15 @@ Wenn Sie die Replikationsappliance mit der OVA-Vorlage im Azure Migrate-Hub ein
 
 - Erfahren Sie etwas über die [Anforderungen für die Replikationsappliance](migrate-replication-appliance.md#appliance-requirements) für VMware.
 - MySQL muss auf der Appliance installiert sein. Erfahren Sie etwas über die [Installationsoptionen ](migrate-replication-appliance.md#mysql-installation).
-- Erfahren Sie etwas über die [URLs](migrate-replication-appliance.md#url-access), auf die die Replikationsappliance Zugriff benötigt.
+- Erfahren Sie etwas über die [URLs](migrate-replication-appliance.md#url-access) und [Ports](migrate-replication-appliance.md#port-access), auf die die Replikationsappliance Zugriff benötigt.
+
+## <a name="agent-based-ports"></a>Agent-basierte Ports
+
+**Device** | **Connection**
+--- | ---
+VMs | Der Mobilitätsdienst auf virtuellen Computern kommuniziert mit der lokalen Replikationsappliance (Konfigurationsserver) über den HTTPS-Port 443 für eingehenden Datenverkehr, um die Replikationsverwaltung auszuführen.<br/><br/> Virtuelle Computer senden Replikationsdaten an den Prozessserver (der auf dem Konfigurationsserver ausgeführt wird) über Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
+Replikationsappliance | Die Replikationsappliance orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
+Prozessserver | Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.<br/> Der Prozessserver wird standardmäßig auf der Replikationsappliance ausgeführt.
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 

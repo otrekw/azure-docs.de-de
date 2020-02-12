@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 12c624c6798ca48cad9312cafaf3425091a82a71
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fde46ddfe85ca2cd1aa4ba65c8bd93d4db328410
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867459"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77019042"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
@@ -26,33 +26,16 @@ Anwendungsvorlagen bestehen aus:
 - Vorkonfigurierten Regeln und Aufträgen
 - Umfassender Dokumentation einschließlich Tutorials und Anleitungen
 
-## <a name="preview-templates"></a>Vorschauvorlagen
+Sie wählen die Anwendungsvorlage aus, wenn Sie Ihre Anwendung erstellen. Sie können die Vorlage nach dem Erstellen der Anwendung nicht mehr ändern.
 
-Durch die Auswahl der Anwendungsvorlage ist vorgegeben, ob in Ihrer Anwendung IoT Central-Previewfunktionen wie Plug & Play für Geräte verwendet werden.
+## <a name="custom-templates"></a>Benutzerdefinierte Vorlagen
 
-Derzeit werden _allgemein verfügbare_ Funktionen in der folgenden Anwendungsvorlage verwendet:
+Wenn Sie die Anwendung von Grund auf neu erstellen möchten, wählen Sie eine der beiden benutzerdefinierten Anwendungsvorlagen aus:
 
-- Benutzerdefinierte App > Legacy application
+- Benutzerdefinierte Anwendung
+- Benutzerdefinierte Anwendung (veraltet)
 
-
-Aktuell werden in folgenden Anwendungsvorlagen _Public Preview_-Funktionen verwendet:
-
-- Benutzerdefinierte App > Vorschauanwendung
-- Retail > Vernetzte Logistik
-- Retail > Digitales Verteilzentrum
-- Retail > In-Store-Analyse – Bedingungsüberwachung
-- Retail > In-Store-Analyse – Auschecken
-- Retail > Micro-Fulfillment-Center
-- Retail > Intelligente Bestandsverwaltung
-- Energieversorgung > Intelligente Messgerätüberwachung
-- Energieversorgung > Überwachung von Solarpaneln
-- Behörden > Vernetzte Abfallwirtschaft
-- Behörden > Überwachung des Wasserverbrauchs
-- Behörden > Überwachung der Wasserqualität
-- Gesundheitswesen > Fortlaufende Patientenüberwachung
-
-> [!NOTE]
-> Die Vorlagen **Legacy application** sind derzeit in den Regionen **USA**, **Australien**, **Asien-Pazifik** und **Europa** verfügbar, andere Vorlagen sind dagegen aktuell nur in den Regionen **Europa** und **USA** verfügbar.
+Wählen Sie die Vorlage **Benutzerdefinierte Anwendung** aus, sofern Sie keinen bestimmten Grund haben, die Legacyvorlage zu verwenden.
 
 ## <a name="industry-focused-templates"></a>Branchenorientierten Vorlagen
 

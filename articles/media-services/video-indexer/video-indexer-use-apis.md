@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 4da437fecf0529194d72b2d403302ff81055ec0f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 8b6d160f71bfe8b2e5c447296d511b54ce6542c8
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892684"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989772"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
@@ -86,7 +86,7 @@ Der Parameter für die Konto-ID (Account ID) ist in allen API-Aufrufen für Vorg
 
 * Im  **Portal für Video Indexer-Entwickler** können Sie die Konto-ID programmgesteuert abrufen.
 
-    Verwenden Sie die API [Get accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) (Konten abrufen).
+    Verwenden Sie die API [Get account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account?) (Konto abrufen).
 
     > [!TIP]
     > Sie können Zugriffstoken für die Konten generieren, indem Sie `generateAccessTokens=true` definieren.
@@ -214,4 +214,6 @@ Debug.WriteLine(playerWidgetLink);
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json-v2.md)
+- [Untersuchen der Details der JSON-Ausgabe](video-indexer-output-json-v2.md)
+- Sehen Sie sich den [Beispielcode](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/API) an, in dem wichtige Aspekte zum Hochladen und Indizieren eines Videos veranschaulicht werden. Wenn Sie sich an den Code halten, erhalten Sie eine gute Übersicht über die Verwendung unserer API für grundlegende Funktionen. Lesen Sie unbedingt die enthaltenen Kommentare, und beachten Sie unsere Hinweise zu bewährten Methoden.
+

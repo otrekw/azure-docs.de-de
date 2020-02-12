@@ -3,7 +3,7 @@ title: 'Tutorial: Verwenden der Azure Batch-Clientbibliothek für Node.js | Micr
 description: Erfahren Sie mehr über die grundlegenden Konzepte von Azure Batch, und erstellen Sie eine einfache Lösung mit Node.js.
 services: batch
 author: shwetams
-manager: gwallace
+manager: evansma
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323402"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77023649"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Erste Schritte mit dem Batch SDK für Node.js
 
@@ -279,7 +279,7 @@ Sie können das Skript in ein Azure Storage-Konto hochladen und einen SAS-URI f�
 
 Eine Vorbereitungsaufgabe wird im Rahmen der Azure Batch-Auftragsübermittlung angegeben. Für die Vorbereitungsaufgabe stehen folgende Konfigurationsparameter zur Verfügung:
 
-* **ID**: Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
+* **ID:** Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
 * **commandLine**: Befehlszeile zum Ausführen der ausführbaren Aufgabendatei.
 * **resourceFiles**: Array mit Objekten, die Details zu Dateien angeben, welche zum Ausführen dieser Aufgabe heruntergeladen werden müssen.  Verfügbare Optionen:
     - blobSource: Der SAS-URI der Datei.

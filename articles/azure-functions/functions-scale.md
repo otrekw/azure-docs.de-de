@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a07d019893e69308b35b4a941fe50d2736efe01
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: fb36b81d1b2a343da334d63d9c0555ed537ef122
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921916"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024652"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -26,7 +26,7 @@ Sowohl beim Verbrauchsplan als auch beim Premium-Plan wird beim Ausführen Ihres
 
 Der Premium-Plan bietet zusätzliche Features wie Premium-Compute-Instanzen, die Möglichkeit, Instanzen unbegrenzt betriebsbereit zu halten, und VNET-Konnektivität.
 
-Mit dem App Service-Plan können Sie eine von Ihnen verwaltete dedizierte Infrastruktur nutzen. Die Skalierung Ihrer Funktions-App basiert nicht auf Ereignissen, d.h. sie wird niemals auf 0 (null) herunterskaliert. (Hierzu muss [Always On](#always-on) aktiviert sein.)
+Mit dem App Service-Plan können Sie eine von Ihnen verwaltete dedizierte Infrastruktur nutzen. Die Skalierung Ihrer Funktions-App basiert nicht auf Ereignissen, d. h., sie wird nie horizontal auf Null herunterskaliert. (Hierzu muss [Always On](#always-on) aktiviert sein.)
 
 ## <a name="hosting-plan-support"></a>Unterstützung für Hostingpläne
 
@@ -152,7 +152,7 @@ Die Skalierungseinheit für Azure Functions ist die Funktions-App. Bei einer hor
 
 Die Skalierung variiert ausgehend von verschiedenen Faktoren, und die Skalierung ist je nach dem ausgewählten Auslöser und der Sprache unterschiedlich. Es gibt einige Feinheiten des Skalierungsverhaltens, die zu beachten sind:
 
-* Eine einzelne Funktions-App wird maximal auf 200 Instanzen hochskaliert. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.
+* Eine einzelne Funktions-App wird maximal auf 200 Instanzen erweitert. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.
 * Bei HTTP-Triggern werden neue Instanzen höchstens einmal pro Sekunde zugeordnet.
 * Bei Nicht-HTTP-Triggern werden neue Instanzen höchstens einmal alle 30 Sekunden zugeordnet.
 

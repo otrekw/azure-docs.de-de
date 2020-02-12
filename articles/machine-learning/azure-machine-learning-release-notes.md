@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 07ef3858cc6a514ed60a9d25046dc4ff9566fa31
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546349"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030811"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -23,6 +23,25 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2020-02-04"></a>4\.2.2020
+
+### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning-SDK für Python v1.1.0rc0
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-runtime**
+    + Schnellere Featurebereitstellung
+    + Behebung von Fehlern bei der Häufigkeitsprüfung während der Bewertung. Bei Vorhersageaufgaben ist nun keine genaue Übereinstimmung der Häufigkeit zwischen Trainings- und Testdataset mehr erforderlich.
+  + **azureml-core**
+    + Benutzer können jetzt beim Neugenerieren von Schlüsseln für Webdienste einen Wert für den Authentifizierungsschlüssel angeben.
+  + **azureml-interpret**
+    + Nach dem Update hängt „azureml-interpret“ nun von „interpret-community 0.5.0“ ab.
+  + **azureml-pipeline-core**
+    + Behebung eines Fehlers, bei dem PythonScriptStep-Ergebnisse trotz Ändern der Argumentliste inkorrekt wiederverwendet werden konnten
+  + **azureml-pipeline-steps**
+    + Hinzufügen eines Dokumentationsbeispiels für ein Dataset als PythonScriptStep-Eingabe
+  + **azureml-contrib-pipeline-steps**
+    + Parameter, die in ParallelRunConfig übergeben werden, können nun durch Übergabe von Pipelineparametern überschrieben werden. Neue unterstützte Pipelineparameter: aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count und aml_process_count_per_node waren bereits Teil eines früheren Releases).
+  
 ## <a name="2020-01-21"></a>2020-01-21
 
 ### <a name="azure-machine-learning-sdk-for-python-v1085"></a>Azure Machine Learning SDK für Python v1.0.85
@@ -1236,7 +1255,7 @@ Das [`PipelineEndpoint`](https://docs.microsoft.com/python/api/azureml-pipeline-
 
 ### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure Machine Learning Data Prep SDK, Version 1.1.2
 
-Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht mehr installiert. Weitere Informationen finden Sie in den [aktualisierten Installationsanweisungen](https://aka.ms/aml-data-prep-installation).
+Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht mehr installiert. Weitere Informationen finden Sie in den [aktualisierten Installationsanweisungen](https://github.com/Microsoft/AMLDataPrepDocs).
 
 + **Neue Features**
   + Sie können jetzt die Pivottransformation verwenden.

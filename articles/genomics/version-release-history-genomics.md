@@ -9,22 +9,25 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: 03bbbed53cd0494e8507a156d0fadac8dcd4297a
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 20475e2cde1b42790740889cf341b3a0a0afccc0
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249154"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76991081"
 ---
 # <a name="version-release-history"></a>Verlauf der Versionsveröffentlichungen
 Das Microsoft Genomics-Team aktualisiert regelmäßig den Microsoft Genomics-Python-Client um Fehlerbehebungen und neue Funktionen einzuführen. 
 
 ## <a name="latest-release"></a>Aktuelles Release
-Der aktuelle Python-Client ist Version 0.8.1. Die Version wurde am 3. Dezember 2018 veröffentlicht und unterstützt laufende Workflows mit GATK 3.5 und GATK4. Sie unterstützt darüber hinaus die gVCF-Ausgabe.
+Der aktuelle Python-Client ist Version 0.9.0. Die Version wurde am 6. Februar 2019 veröffentlicht und unterstützt die Ausführung von Workflows mit GATK 3.5 und GATK 4. Sie unterstützt die gVCF-Ausgabe und akzeptiert ein optionales Argument für die Ausgabekomprimierung.
 
 
-## <a name="release-history"></a>Versionsverlauf 
-Neue Versionen des Microsoft Genomics-Python-Clients werden etwa zweimal pro Jahr veröffentlicht. Wenn neue Versionen des Microsoft Genomics-Python-Clients veröffentlicht werden, wird hier die Liste der Fehlerbehebungen und Features aktualisiert. Wenn neue Versionen veröffentlicht werden, sollten frühere Versionen mindestens 90 Tage lang weiterhin unterstützt werden. Wenn frühere Versionen nicht mehr unterstützt werden, wird dies auf dieser Seite angegeben. 
+## <a name="release-history"></a>Releaseverlauf 
+Neue Versionen des Microsoft Genomics-Python-Clients werden etwa einmal pro Jahr veröffentlicht. Wenn neue Versionen des Microsoft Genomics-Python-Clients veröffentlicht werden, wird hier die Liste der Fehlerbehebungen und Features aktualisiert. Wenn neue Versionen veröffentlicht werden, sollten frühere Versionen mindestens 90 Tage lang weiterhin unterstützt werden. Wenn frühere Versionen nicht mehr unterstützt werden, wird dies auf dieser Seite angegeben. 
+
+### <a name="version-090"></a>Version 0.9.0
+Version 0.9.0 bietet Unterstützung für die Ausgabekomprimierung. Dies entspricht dem Ausführen von `-bgzip` gefolgt von `-tabix` in der VCF- oder gVCF-Ausgabe. Weitere Informationen finden Sie unter [Häufig gestellte Fragen](frequently-asked-questions-genomics.md). 
 
 ### <a name="version-081"></a>Version 0.8.1
 Version 0.8.1 enthält Behebungen geringfügiger Programmfehler.  

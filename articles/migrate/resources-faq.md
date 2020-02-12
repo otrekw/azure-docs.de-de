@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: d06e75ec900faa17ed4441c20a52d8da60ee4d97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: a9d008406e59c66a8b742194e2e2d388c778ac9e
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289457"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989347"
 ---
 # <a name="azure-migrate-common-questions"></a>Von der Azure Häufig gestellte Fragen
 
@@ -62,14 +62,14 @@ Sie identifizieren das Tool, das Sie benötigen, und fügen es einem Azure Migra
 - In jedem Tool ist eine Option zum Herstellen einer Verbindung mit Azure Migrate vorhanden. Befolgen Sie die Anweisungen des Tools und seine Dokumentation, um das Tool mit Azure Migrate zu verbinden.
 Sie verfolgen Ihre Migration innerhalb des Azure Migrate-Projekts zentral über Azure und andere Tools hinweg nach.
 
-### <a name="how-do-i-delete-a-project"></a>Wie lösche ich ein Projekt?
+## <a name="how-do-i-delete-a-project"></a>Wie lösche ich ein Projekt?
 
 [Informationen](how-to-delete-project.md) zum Löschen eines ein Projekts. 
 
 
+## <a name="do-machines-retain-domain-identity-after-migration"></a>Behalten Computer nach der Migration ihre Domänenidentität bei?
 
-
-
+Vorausgesetzt, dass Domänendienste [in Azure integriert](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/) sind, werden die Domänenmitgliedschaft und die Computeridentität in der Domäne nach der Migration beibehalten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sehen Sie sich die [Übersicht zu Azure Migrate](migrate-services-overview.md) an.

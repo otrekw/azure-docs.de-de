@@ -3,12 +3,12 @@ title: Einrichten von Livedaten (Vorschau) mit Azure Monitor für Container | Mi
 description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Azure Monitor für Container einrichten.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
+ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404702"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77030678"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -101,7 +101,7 @@ Die Azure AD-Clientregistrierung muss neu konfiguriert werden, damit das Azure-P
 Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes finden Sie in der [Kubernetes-Dokumentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/). 
 
 >[!NOTE]
->Wenn Sie einen neuen RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Azure Monitor für Container erstellen müssen. 
+>Wenn Sie einen neuen RBAC-fähigen Cluster erstellen, lesen Sie [Integrieren von Azure Active Directory in Azure Kubernetes Service](../../aks/azure-ad-integration.md), und folgen Sie den Schritten zum Konfigurieren der Azure AD-Authentifizierung. Während der Schritte zum Erstellen der Clientanwendung werden in einem Hinweis in diesem Abschnitt zwei Umleitungs-URLs hervorgehoben, die Sie für Azure Monitor für Container erstellen müssen, die den in Schritt 3 unten angegebenen Containern entsprechen.
 
 ### <a name="client-registration-reconfiguration"></a>Neukonfiguration der Clientregistrierung
 

@@ -6,13 +6,13 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 01/21/2020
-ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715845"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77016254"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Die Methode für das Senden von Aktivitätsprotokolleinträgen an [einen Event Hub oder ein Speicherkonto](activity-log-export.md) oder an einen [Log Analytics-Arbeitsbereich](activity-log-collect.md) wurde in die Verwendung von [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel werden die Unterschiede zwischen den Methoden und das Löschen von Legacyeinstellungen in Vorbereitung auf den Wechsel zu Diagnoseeinstellungen beschrieben.
@@ -53,6 +53,9 @@ Die folgenden Spalten wurden hinzugefügt:
 - Authorization_d
 - Claims_d
 - Properties_d
+
+> [!IMPORTANT]
+> In einigen Fällen werden die Werte in diesen Spalten vollständig in Großbuchstaben angegeben. Wenn Ihre Abfrage diese Spalten umfasst, sollten Sie den [=~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)-Operator verwenden, um einen Vergleich ohne Beachtung der Groß- und Kleinschreibung durchzuführen.
 
 ## <a name="work-with-legacy-settings"></a>Arbeiten mit Legacyeinstellungen
 Legacyeinstellungen für das Erfassen des Aktivitätsprotokolls funktionieren weiterhin, wenn Sie diese nicht durch eine Diagnoseeinstellung ersetzen. Verwenden Sie die folgende Methode, um das Protokollprofil für ein Abonnement zu verwalten.

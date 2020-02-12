@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 09003c26ead9108d07ae339fcf64235c246474a4
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028512"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024142"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Einführung in inkrementelle Anreicherung und das Zwischenspeichern in Azure Cognitive Search
 
@@ -26,7 +26,7 @@ Durch die inkrementelle Anreicherung werden Zwischenspeicherung und Statusbehaft
 
 Die inkrementelle Anreicherung ergänzt die Anreicherungspipeline um einen Zwischenspeicher. Der Indexer speichert die Ergebnisse der Dokumententschlüsselung sowie die Ausgaben der einzelnen Qualifikationen für jedes Dokument zwischen. Wenn ein Skillset aktualisiert wird, werden lediglich die geänderten Qualifikationen (oder die Downstreamqualifikationen) erneut ausgeführt. Die aktualisierten Ergebnisse werden in den Zwischenspeicher geschrieben, und das Dokument wird im Suchindex oder im Wissensspeicher aktualisiert.
 
-Der Zwischenspeicher wird physisch in einem Blobcontainer in Ihrem Azure Storage-Konto gespeichert. Alle Indizes in einem Suchdienst können für den Indexercache das gleiche Speicherkonto verwenden. Jedem Indexer wird ein eindeutiger und unveränderlicher Cachebezeichner zum Container zugewiesen, der ihn verwendet.
+Der Zwischenspeicher wird physisch in einem Blobcontainer in Ihrem Azure Storage-Konto gespeichert. Der Cache verwendet auch Table Storage für die interne Aufzeichnung der Verarbeitung von Updates. Alle Indizes in einem Suchdienst können für den Indexercache das gleiche Speicherkonto verwenden. Jedem Indexer wird ein eindeutiger und unveränderlicher Cachebezeichner zum Container zugewiesen, der ihn verwendet.
 
 ## <a name="cache-configuration"></a>Cachekonfiguration
 
@@ -97,7 +97,7 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 Der Zweck des Caches ist es, unnötige Verarbeitung zu vermeiden, aber angenommen, Sie nehmen eine Änderung an einer Qualifikation vor, die der Indexer nicht erkennt (etwa eine Änderung an Elementen in externem Code, wie z. B. einer benutzerdefinierten Qualifikation).
 
-In diesem Fall können Sie [Reset Skills](preview-api-resetskills.md) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
+In diesem Fall können Sie [Reset Skills](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills) verwenden, um die erneute Verarbeitung einer bestimmten Qualifikation zu erzwingen, einschließlich aller Downstreamqualifikationen, die von der Ausgabe dieser Qualifikation abhängig sind. Diese API akzeptiert eine POST-Anforderung mit einer Liste von Qualifikationen, die ungültig gemacht und zur erneuten Verarbeitung markiert werden sollten. Führen Sie nach „Reset Skills“ den Indexer aus, um die Pipeline aufzurufen.
 
 ## <a name="change-detection"></a>Änderungserkennung
 
@@ -136,39 +136,27 @@ Bei der inkrementellen Verarbeitung wird Ihre Skillsetdefinition ausgewertet, un
 * Änderung der Wissensspeicherprojektionen, wodurch Dokumente neu projiziert werden müssen
 * Änderung der Ausgabefeldzuordnungen für einen Indexer, wodurch Dokumente erneut im Index projiziert werden müssen
 
-## <a name="api-reference-content-for-incremental-enrichment"></a>API-Referenzinhalt für inkrementelle Anreicherung
+## <a name="api-reference"></a>API-Referenz
 
-REST `api-version=2019-05-06-Preview` stellt die APIs für die inkrementelle Anreicherung mit Ergänzungen für Indexer, Skillsets und Datenquellen bereit. Die [offizielle Referenzdokumentation](https://docs.microsoft.com/rest/api/searchservice/) bezieht sich auf allgemein verfügbare APIs und deckt keine Previewfunktionen ab. Der folgende Abschnitt enthält den Referenzinhalt für betroffene APIs.
+Die REST-API-Version `2019-05-06-Preview` bietet eine inkrementelle Anreicherung durch zusätzliche Eigenschaften für Indexer, Skillsets und Datenquellen. Ergänzende Informationen zur Referenzdokumentation mit Einzelheiten zum Aufrufen der APIs finden Sie unter [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md).
 
-Verwendungsinformationen und Beispiele finden Sie unter [Konfigurieren der Zwischenspeicherung für inkrementelle Anreicherung](search-howto-incremental-index.md).
++ [Create Indexer (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-indexer) 
 
-### <a name="indexers"></a>Indexer
++ [Update Indexer (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-indexer) 
 
-[Indexer erstellen](https://docs.microsoft.com/rest/api/searchservice/create-indexer) und [Indexer aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-indexer) machen nun neue Eigenschaften im Zusammenhang mit dem Cache verfügbar:
++ [Update Skillset (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) (Neuer URI-Parameter in der Anforderung)
 
-+ `StorageAccountConnectionString`: Die Verbindungszeichenfolge für das Speicherkonto, das zum Zwischenspeichern der Zwischenergebnisse verwendet wird.
++ [Reset Skills (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/reset-skills)
 
-+ `EnableReprocessing`: Ist standardmäßig auf `true` festgelegt. Wird die Eigenschaft auf `false` festgelegt, werden zwar weiterhin Dokumente in den Cache geschrieben, vorhandene Dokumente werden jedoch nicht auf der Grundlage der zwischengespeicherten Daten erneut verarbeitet.
++ Datenbankindexer (Azure SQL, Cosmos DB). Einige Indexer rufen Daten über Abfragen ab. Für Abfragen, die Daten abrufen, unterstützt [Update Data Source](https://docs.microsoft.com/rest/api/searchservice/update-data-source) einen neuen Parameter in einer Anforderung: **ignoreResetRequirement**, der auf `true` festgelegt werden sollte, wenn Ihre Aktualisierungsaktion den Cache nicht ungültig machen soll. 
 
-+ `ID` (schreibgeschützt): Die Cache-ID (`ID`) ist der Bezeichner des Containers innerhalb des `annotationCache`-Speicherkontos, das als Cache für diesen Indexer verwendet wird. Hierbei handelt es sich um einen eindeutigen Cache für den Indexer. Wird der Indexer gelöscht und dann mit dem gleichen Namen erneut erstellt, wird auch `ID` erneut generiert. `ID` kann nicht festgelegt werden, sondern wird durch den Dienst generiert.
-
-### <a name="skillsets"></a>Qualifikationsgruppen
-
-+ [Update Skillset](https://docs.microsoft.com/rest/api/searchservice/update-skillset) unterstützt einen neuen Parameter in der Anforderung: `disableCacheReprocessingChangeDetection`. Dieser sollte auf `true` festgelegt werden, wenn Sie keine Aktualisierungen bestehender Dokumente auf der Grundlage der aktuellen Aktion wünschen.
-
-+ [Reset Skills](preview-api-resetskills.md) ist eine neue Operation, mit der ein Skillset ungültig gemacht wird.
-
-### <a name="datasources"></a>Datenquellen
-
-+ Einige Indexer rufen Daten über Abfragen ab. Für Abfragen, die Daten abrufen, unterstützt [Update Data Source](https://docs.microsoft.com/rest/api/searchservice/update-data-source) einen neuen Parameter in einer Anforderung: `ignoreResetRequirement`, der auf `true` festgelegt werden sollte, wenn Ihre Aktualisierungsaktion den Cache nicht ungültig machen soll.
-
-Setzen Sie `ignoreResetRequirement` mit Bedacht ein, da diese Option zu unerwünschten Inkonsistenzen in Ihren Daten führen kann, die nicht ohne Weiteres erkennbar sind.
+  Setzen Sie **ignoreResetRequirement** mit Bedacht ein, da diese Option zu unerwünschten Inkonsistenzen in Ihren Daten führen kann, die nicht ohne Weiteres erkennbar sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Inkrementelle Anreicherung ist ein leistungsstarkes Feature, das die Änderungsverfolgung auf Skillsets und KI-Anreicherung ausdehnt. Während sich Skillsets weiterentwickeln, sorgt die Anreicherung für letztliche Konsistenz bei Ihren Dokumenten und hält dabei den Aufwand so gering wie möglich.
+Inkrementelle Anreicherung ist ein leistungsstarkes Feature, das die Änderungsverfolgung auf Skillsets und KI-Anreicherung ausdehnt. Eine inkrementelle Anreicherung ermöglicht die Wiederverwendung vorhandener, verarbeiteter Inhalte beim Durchlaufen des Skillsetdesigns.
 
-Beginnen Sie damit, dem einem vorhandenen Indexer einen Cache hinzuzufügen, oder fügen Sie den Cache beim Definieren eines neuen Indexers hinzu.
+Aktivieren Sie im nächsten Schritt die Zwischenspeicherung in einem vorhandenen Indexer, oder fügen Sie den Cache beim Definieren eines neuen Indexers hinzu.
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Zwischenspeicherung für die inkrementelle Anreicherung](search-howto-incremental-index.md)

@@ -4,50 +4,49 @@ description: In diesem Artikel finden Sie Antworten auf häufige Fragen zu den B
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cf7bf49d29b5faa9811a591b45179fe83c1d483
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
+ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172928"
+ms.lasthandoff: 02/04/2020
+ms.locfileid: "76989568"
 ---
 # <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup-Überwachungswarnungen – häufig gestellte Fragen
 
-In diesem Artikel werden häufig gestellte Fragen zur Azure-Überwachungswarnung beantwortet.
+In diesem Artikel werden häufig gestellte Fragen zur Azure Backup-Überwachung und zur Berichterstellung beantwortet.
 
 ## <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Wie überprüfe ich, ob bereits Berichtsdaten an ein Speicherkonto übermittelt werden?
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Wie überprüfe ich, ob bereits Berichtsdaten an einen Log Analytics-Arbeitsbereich (LA) übermittelt werden?
 
-Öffnen Sie das konfigurierte Speicherkonto, und wählen Sie Container aus. Wenn der Container einen Eintrag für „insights-logs-azurebackupreport“ aufweist, bedeutet dies, dass Berichtsdaten übermittelt werden.
+Navigieren Sie zum LA-Arbeitsbereich, den Sie konfiguriert haben, navigieren Sie zum Menüelement **Protokolle**, und führen Sie die Abfrage „CoreAzureBackup | take 1“ aus. Wenn ein Datensatz zurückgegeben wird, bedeutet dies, dass Daten an den Arbeitsbereich übertragen wurden. Der erste Datenpush kann bis zu 24 Stunden dauern.
 
-### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Wie oft werden Daten an das Speicherkonto und das Azure Backup-Inhaltspaket in Power BI mithilfe von Push übertragen?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Wie oft erfolgt ein Datenpush an einen LA-Arbeitsbereich?
 
-  Nach dem Aktivieren dauert es etwa 24 Stunden, bis Daten mithilfe von Push an ein Speicherkonto übertragen werden. Nach dem ersten Push gelten für die Aktualisierungshäufigkeit der Daten die Angaben in der folgenden Abbildung.
+Die Diagnosedaten aus dem Tresor werden mit einer gewissen Verzögerung in den Log Analytics-Arbeitsbereich übertragen. Jedes Ereignis erreicht den Log Analytics-Arbeitsbereich 20 bis 30 Minuten nach dem Push aus dem Recovery Services-Tresor. Hier finden Sie weitere Details zu dieser Verzögerung:
 
-* Daten zu **Aufträgen**, **Warnungen**, **Sicherungselementen**, **Tresoren**, **geschützten Servern** und **Richtlinien** werden beim Protokollieren mithilfe von Push an das Speicherkonto des Kunden übertragen.
+* Lösungsübergreifend werden die im Sicherungsdienst integrierten Warnungen sofort nach ihrer Erstellung gepusht. Daher werden sie normalerweise nach 20 bis 30 Minuten im Log Analytics-Arbeitsbereich angezeigt.
+* Lösungsübergreifend werden bedarfsgesteuerte Sicherungs- und Wiederherstellungsaufträge gepusht, sobald sie abgeschlossen sind.
+* Die geplanten Sicherungsaufträge aus allen Lösungen (außer SQL-Sicherung) werden gepusht, sobald sie abgeschlossen sind.
+* Da Protokollsicherungen alle 15 Minuten auftreten können, werden für SQL-Sicherungen Informationen für alle abgeschlossenen geplanten Sicherungsaufträge (einschließlich Protokolle) als Batch gesammelt und alle 6 Stunden gepusht.
+* Alle anderen Informationen wie Sicherungselemente, Richtlinien, Wiederherstellungspunkte, Speicher usw. werden lösungsübergreifend mindestens einmal täglich gepusht.
+* Eine Änderung der Sicherungskonfiguration (wie einer Änderung der Richtlinie oder Bearbeitungsrichtlinie) löst einen Push aller zugehörigen Sicherungsinformationen aus.
 
-* Daten bezüglich des **Speichers** werden alle 24 Stunden mithilfe von Push an das Speicherkonto des Kunden übertragen.
+### <a name="how-long-can-i-retain-reporting-data"></a>Wie lange kann ich Berichtsdaten aufbewahren?
 
-    ![Übermittlungshäufigkeit von Azure Backup-Berichtsdaten](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+Nachdem Sie einen LA-Arbeitsbereich erstellt haben, können Sie die Daten für maximal 2 Jahre aufbewahren. Standardmäßig werden die Daten in einem LA-Arbeitsbereich 31 Tage aufbewahrt.
 
-* Power BI verfügt über eine [täglich geplante Aktualisierung](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Sie können die Daten in Power BI für das Inhaltspaket manuell aktualisieren.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>Werden nach dem Konfigurieren des LA-Arbeitsbereichs alle meine Daten in Berichten angezeigt?
 
-### <a name="how-long-can-i-retain-reports"></a>Wie lange kann ich Berichte aufbewahren?
-
-Beim Einrichten eines Speicherkontos können Sie einen Aufbewahrungszeitraum für Berichtsdaten auswählen. Führen Sie Schritt 6 im Abschnitt [Konfigurieren des Speicherkontos für Berichte](backup-azure-configure-reports.md#configure-storage-account-for-reports) aus. Außerdem können Sie [Berichte in Excel analysieren](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) und sie Ihren Anforderungen entsprechend für einen längeren Zeitraum aufbewahren.
-
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Werden alle meine Daten in Berichten nach dem Konfigurieren des Speicherkontos angezeigt?
-
- Alle Daten, die nach der Konfiguration des Speicherkontos generiert werden, werden mithilfe von Push an das Speicherkonto übertragen und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder fehlschlägt, wird er an die Berichte gesendet.
-
-### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Ich habe das Speicherkonto bereits so konfiguriert, dass Berichte angezeigt werden. Kann ich die Konfiguration ändern, um ein anderes Speicherkonto zu verwenden?
-
-Ja, Sie können die Konfiguration ändern und auf ein anderes Speicherkonto zeigen. Verwenden Sie beim Verbinden mit dem Azure Backup-Inhaltspaket das neu konfigurierte Speicherkonto. Sobald ein anderes Speicherkonto konfiguriert ist, werden neue Daten an dieses Speicherkonto übermittelt. Daten, die vor der Konfigurationsänderung stammen, verbleiben im älteren Speicherkonto.
+ Alle Daten, die nach der Konfiguration der Diagnoseeinstellungen generiert werden, werden an den LA-Arbeitsbereich gepusht und stehen in den Berichten zur Verfügung. Aufträge, die sich in Bearbeitung befinden, werden nicht mithilfe von Push für die Berichterstellung übertragen. Wenn ein Auftrag abgeschlossen wird oder zu einem Fehler führt, wird er an die Berichte gesendet.
 
 ### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Kann ich Berichte für verschiedene Tresore und Abonnements anzeigen?
 
-Ja, Sie können dasselbe Speicherkonto für verschiedene Tresore konfigurieren, um tresorübergreifende Berichte anzuzeigen. Sie können auch dasselbe Speicherkonto für Tresore in verschiedenen Abonnements verwenden. Dieses Speicherkonto lässt sich dann beim Verbinden mit dem Azure Backup-Inhaltspaket in Power BI verwenden, um die Berichte anzuzeigen. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
+Ja, Sie können Berichte über Tresore, Abonnements und Regionen hinweg anzeigen. Ihre Daten können sich in einem einzelnen LA-Arbeitsbereich oder in einer Gruppe von LA-Arbeitsbereichen befinden.
+
+### <a name="can-i-view-reports-across-tenants"></a>Kann ich Berichte mandantenübergreifend anzeigen?
+
+Wenn Sie ein [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/)-Benutzer mit delegiertem Zugriff auf die Abonnements oder LA-Arbeitsbereiche Ihrer Kunden sind, können Sie in den Berichten von Backup Daten zu allen Ihren Mandanten anzeigen.
 
 ### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
 

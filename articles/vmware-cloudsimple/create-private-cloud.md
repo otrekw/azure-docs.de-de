@@ -1,6 +1,6 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Erstellen einer privaten CloudSimple-Cloud'
-description: Informationen zum Erstellen einer privaten CloudSimple-Cloud zum Erweitern von VMware-Workloads auf die Cloud mit operativer Flexibilität und Kontinuität
+title: 'Azure-VMware-Lösungen (AVS): Erstellen einer privaten AVS-Cloud'
+description: Informationen zum Erstellen einer privaten AVS-Cloud zum Erweitern von VMware-Workloads auf die Cloud mit operativer Flexibilität und Kontinuität
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,71 +8,75 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 128a0a1eec03878d0deba93048c54324aab7d888
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893921"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024788"
 ---
-# <a name="create-a-cloudsimple-private-cloud"></a>Erstellen einer privaten CloudSimple-Cloud
+# <a name="create-an-avs-private-cloud"></a>Erstellen einer privaten AVS-Cloud
 
-Eine private Cloud ist ein isolierter VMware-Stapel, der ESXi-Hosts, vCenter, vSAN und NSX unterstützt. Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in ihrer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
+Eine private AVS-Cloud ist ein isolierter VMware-Stapel, der ESXi-Hosts, vCenter, vSAN und NSX unterstützt. Private AVS-Clouds werden über das AVS-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in einer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
 
-Mithilfe einer privaten Cloud können Sie verschiedene häufige Anforderungen an die Netzwerkinfrastruktur angehen:
+Mithilfe einer privaten AVS-Cloud können Sie verschiedene häufige Anforderungen an die Netzwerkinfrastruktur angehen:
 
-* **Wachstum:** Wenn Sie den Punkt erreichen, an dem Ihre Hardware für Ihre bereits bestehende Infrastruktur aktualisiert werden muss, ermöglicht eine private Cloud Erweiterungen ohne weitere Hardwareinvestitionen.
+* **Wachstum:** Wenn Sie den Punkt erreichen, an dem die Hardware für Ihre bereits bestehende Infrastruktur aktualisiert werden muss, ermöglicht eine private AVS-Cloud Erweiterungen ohne weitere Hardwareinvestitionen.
 
-* **Schnelle Erweiterung:** Wenn temporärer oder ungeplanter Kapazitätsbedarf entsteht, können Sie mithilfe einer privaten Cloud ohne Verzögerung die zusätzlichen Kapazitäten bereitstellen.
+* **Schnelle Erweiterung:** Wenn temporärer oder ungeplanter Kapazitätsbedarf entsteht, können Sie mithilfe einer privaten AVS-Cloud die zusätzlichen Kapazitäten ohne Verzögerungen bereitstellen.
 
-* **Verbesserter Schutz:** Über eine private Cloud, die aus mindestens drei Knoten besteht, erhalten Sie automatische Redundanz und Schutz durch Hochverfügbarkeit.
+* **Verbesserter Schutz:** Mit einer privaten AVS-Cloud, die aus mindestens drei Knoten besteht, erhalten Sie Schutz durch automatische Redundanz und Hochverfügbarkeit.
 
-* **Langfristige Infrastrukturanforderungen:** Wenn Ihre Rechenzentren ausgelastet sind oder Sie eine Neustrukturierung vornehmen möchten, um Ihre Kosten zu senken, bietet eine private Cloud Ihnen die Möglichkeit, einerseits Rechenzentren außer Betrieb zu nehmen und eine Migration zu einer cloudbasierten Lösung durchzuführen und andererseits die Kompatibilität mit den Vorgängen in Ihrem Unternehmen zu wahren.
+* **Langfristige Infrastrukturanforderungen:** Wenn Ihre Rechenzentren ausgelastet sind oder Sie eine Neustrukturierung vornehmen möchten, um Ihre Kosten zu senken, bietet eine private AVS-Cloud Ihnen die Möglichkeit, Rechenzentren außer Betrieb zu nehmen und eine Migration zu einer cloudbasierten Lösung durchzuführen und dennoch die Kompatibilität mit den Vorgängen in Ihrem Unternehmen zu wahren.
 
-Wenn Sie eine private Cloud erstellen, erhalten Sie einen einzelnen vSphere-Cluster und sämtliche VMs, die zur Verwaltung dienen und in diesem Cluster erstellt werden.
+Wenn Sie eine private AVS-Cloud erstellen, erhalten Sie einen einzelnen vSphere-Cluster und sämtliche VMs, die zur Verwaltung dienen und in diesem Cluster erstellt werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie eine private Cloud erstellen können, müssen Knoten bereitgestellt werden. Weitere Informationen zum Bereitstellen von Knoten finden Sie unter [Bereitstellen von Knoten für Azure VMware Solution by CloudSimple](create-nodes.md).
+Bevor Sie eine private AVS-Cloud erstellen können, müssen Knoten bereitgestellt werden. Weitere Informationen zum Bereitstellen von Knoten finden Sie unter [Bereitstellen von Knoten für Azure-VMware-Lösungen (AVS)](create-nodes.md).
 
-Zuordnung eines CIDR-Bereichs für vSphere/vSAN-Subnetze für die private Cloud. Eine private Cloud wird als isolierte VMware-Stapelumgebung (mit ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt. Der Adressraum des vSphere/vSAN-Subnetzadressraums muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. Weitere Informationen zu vSphere/vSAN-Subnetzen finden Sie unter „Übersicht über VLANs und Subnetze“.
+Zuordnung eines CIDR-Bereichs für vSphere/vSAN-Subnetze für die private AVS-Cloud. Eine private AVS-Cloud wird als isolierte VMware-Stapelumgebung (mit ESXi-Hosts, vCenter, vSAN und NSX) erstellt, die von einem vCenter-Server verwaltet wird. Verwaltungskomponenten werden in dem Netzwerk bereitgestellt, das für vSphere/vSAN-Subnetze-CIDR ausgewählt ist. Der Netzwerk CIDR-Bereich wird während der Bereitstellung in unterschiedliche Subnetze aufgeteilt. Der Adressraum des vSphere/vSAN-Subnetzadressraums muss eindeutig sein. Er darf sich nicht mit dem eines Netzwerks überschneiden, das mit der AVS-Umgebung kommuniziert. Zu den Netzwerken, die mit AVS kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. Weitere Informationen zu vSphere/vSAN-Subnetzen finden Sie unter „Übersicht über VLANs und Subnetze“.
 
 * Minimales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /24
 * Maximales Präfix für vSphere/vSAN-Subnetze-CIDR-Bereich: /21
 
 
-## <a name="access-the-cloudsimple-portal"></a>Zugriff auf das CloudSimple-Portal
+## <a name="access-the-avs-portal"></a>Auf das AVS-Portal zugreifen
 
-Greifen Sie auf das [CloudSimple-Portal](access-cloudsimple-portal.md) zu.
+Greifen Sie auf das [AVS-Portal](access-cloudsimple-portal.md) zu.
 
-## <a name="create-a-new-private-cloud"></a>Erstellen einer neuen privaten Cloud
+## <a name="create-a-new-avs-private-cloud"></a>Erstellen einer neuen privaten AVS-Cloud
 
 1. Wählen Sie **Alle Dienste** aus.
-2. Suchen Sie nach **CloudSimple Services**.
-3. Wählen Sie den CloudSimple-Dienst aus, über den Sie Ihre private Cloud erstellen möchten.
-4. Klicken Sie in der **Übersicht** auf **Create Private Cloud** (Private Cloud erstellen), um eine neue Browserregisterkarte für das CloudSimple-Portal zu öffnen. Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an.
+2. Suchen Sie nach **AVS Services** (AVS-Dienste).
+3. Wählen Sie den AVS-Dienst aus, über den Sie Ihre private AVS-Cloud erstellen möchten.
+4. Klicken Sie unter **Übersicht** auf **Create AVS Private Cloud** (Private AVS-Cloud erstellen), um eine neue Browserregisterkarte für das AVS-Portal zu öffnen. Melden Sie sich nach Aufforderung mit Ihren Azure-Anmeldeinformationen an.
 
-    ![Erstellen einer privaten Cloud aus Azure](media/create-private-cloud-from-azure.png)
+    ![Erstellen einer privaten AVS-Cloud in Azure](media/create-private-cloud-from-azure.png)
 
+5. Geben Sie im AVS-Portal einen Namen für Ihre private AVS-Cloud an.
+6. Wählen Sie den **Standort** für Ihre private AVS-Cloud aus.
+7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure erworbenen Knotentyp übereinstimmt.
+8. Geben Sie die **Knotenanzahl** an. Für das Erstellen einer privaten AVS-Cloud sind mindestens drei Knoten erforderlich.
 5. Geben Sie im CloudSimple-Portal einen Namen für Ihre private Cloud an.
 6. Wählen Sie den **Standort** für Ihre private Cloud aus.
 7. Wählen Sie den **Knotentyp** aus, der mit dem in Azure bereitgestellten Knotentyp übereinstimmt.
 8. Geben Sie die **Knotenanzahl** an.  Für das Erstellen einer privaten Cloud sind mindestens drei Knoten erforderlich.
 
-    ![Erstellen einer privaten Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)
+    ![Erstellen einer privaten AVS-Cloud: grundlegende Informationen](media/create-private-cloud-basic-info.png)
 
 9. Klicken Sie auf **Weiter: Erweiterte Optionen**.
 10. Geben Sie den CIDR-Bereich für vSphere/vSAN-Subnetze ein. Stellen Sie sicher, dass sich der CIDR-Bereich nicht mit einem Ihrer lokalen Subnetze, mit anderen Azure-Subnetzen (virtuelle Netzwerke) oder dem Gatewaysubnetz überlappt.
 
-    **Mögliche CIDR-Bereiche:** /24, /23, /22 oder /21. Der CIDR-Bereich /24 unterstützt bis zu neun Knoten, der Bereich /23 bis zu 41 Knoten und die Bereiche /22 und /21 bis zu 64 Knoten (die maximale Anzahl an Knoten in einer privaten Cloud).
+    **Mögliche CIDR-Bereiche:** /24, /23, /22 oder /21. Der CIDR-Bereich /24 unterstützt bis zu neun Knoten, der Bereich /23 bis zu 41 Knoten und die Bereiche /22 und /21 bis zu 64 Knoten (die maximale Anzahl von Knoten in einer privaten AVS-Cloud).
 
     > [!IMPORTANT]
-    > IP-Adressen im vSphere/vSAN CIDR-Bereich sind zur Verwendung durch die private Cloudinfrastruktur reserviert.  Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
+    > IP-Adressen im vSphere/vSAN-CIDR-Bereich sind für die Verwendung durch die private AVS-Cloudinfrastruktur reserviert. Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
 
 11. Klicken Sie auf **Weiter: Überprüfen und erstellen**.
 12. Überprüfen Sie die Einstellungen. Wenn Sie irgendeine der Einstellungen ändern müssen, klicken Sie auf **Zurück**.
-13. Klicken Sie auf **Create**.
+13. Klicken Sie auf **Erstellen**.
 
-Der Prozess der Bereitstellung der privaten Cloud wird gestartet. Es kann bis zu zwei Stunden dauern, bis die private Cloud bereitgestellt wird.
+Der Prozess der Bereitstellung der privaten AVS-Cloud wird gestartet. Es kann bis zu zwei Stunden dauern, bis die private AVS-Cloud bereitgestellt wird.
 
-Eine Anleitung zur Erweiterung einer vorhandenen privaten Cloud finden Sie unter [Erweitern einer privaten Cloud](expand-private-cloud.md).
+Eine Anleitung zur Erweiterung einer bereits vorhandenen privaten AVS-Cloud finden Sie unter [Erweitern einer privaten AVS-Cloud](expand-private-cloud.md).

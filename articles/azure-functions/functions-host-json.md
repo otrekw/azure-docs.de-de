@@ -3,18 +3,18 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 782998e49b9af3bf4d2ae5a561faaca399c6809f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
+ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978816"
+ms.lasthandoff: 02/05/2020
+ms.locfileid: "77024669"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version der Azure Functions-Runtime aus: "]
 > * [Version 1](functions-host-json-v1.md)
-> * [Version 2](functions-host-json.md)
+> * [Version 2 und höher](functions-host-json.md)
 
 Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die Einstellungen aufgelistet, die ab Version 2.x der Azure Functions-Laufzeit verfügbar sind.  
 
@@ -27,7 +27,7 @@ Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [loc
 
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 
-In der folgenden Beispieldatei *host.json* sind alle möglichen Optionen angegeben (mit Ausnahme der Optionen, die nur für die interne Verwendung vorgesehen sind).
+In der folgenden Beispieldatei *host.json* für Version 2.x und höher sind alle möglichen Optionen angegeben (mit Ausnahme der Optionen, die nur für die interne Verwendung vorgesehen sind).
 
 ```json
 {
@@ -74,10 +74,10 @@ In der folgenden Beispieldatei *host.json* sind alle möglichen Optionen angegeb
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
               "maxSamplingPercentage": 0.1,
-              "movingAverageRatio": 1.0
+              "movingAverageRatio": 1.0,
+              "excludedTypes" : "Dependency;Event",
+              "includedTypes" : "PageView;Trace"
             },
-            "samplingExcludedTypes" : "Dependency;Event",
-            "samplingIncludedTypes" : "PageView;Trace",
             "enableLiveMetrics": true,
             "enableDependencyTracking": true,
             "enablePerformanceCountersCollection": true,            
@@ -377,7 +377,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 
 ## <a name="version"></a>version
 
-Die Versionszeichenfolge `"version": "2.0"` ist für Funktions-App mit der v2-Runtime als Ziel erforderlich.
+Dieser Wert gibt die Schemaversion von „host.json“ an. Die Versionszeichenfolge `"version": "2.0"` ist erforderlich für Funktions-Apps mit v2 oder höher der Runtime als Ziel. Zwischen v2 und v3 wurden am Schema von „host.json“ keine Änderungen vorgenommen.
 
 ## <a name="watchdirectories"></a>watchDirectories
 
