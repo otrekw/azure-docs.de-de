@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6656361fd4634c46cd5216b57eb8465536319f09
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062811"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063610"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Hinzufügen einer nicht aufgeführten Anwendung (Nicht-Kataloganwendung) zu Ihrer Azure AD-Organisation
 
@@ -25,7 +25,7 @@ Zusätzlich zu den Optionen im [Azure AD-Anwendungskatalog](https://azure.micros
 
 - Self-Service-Integration von Anwendungen, die [Security Assertion Markup Language (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0)-Identitätsanbieter unterstützen (vom Dienstanbieter (SP) oder vom Identitätsanbieter (IdP) initiiert)
 - Self-Service-Integration für Webanwendungen, die über eine HTML-basierte Anmeldeseite mit [kennwortbasierter einmaliger Anmeldung (Single Sign-On, SSO)](what-is-single-sign-on.md#password-based-sso)
-- Self-Service-Verbindung für Anwendungen, die das [SCIM-Protokoll (System for Cross-Domain Identity Management) verwenden](use-scim-to-provision-users-and-groups.md)
+- Self-Service-Verbindung für Anwendungen, die das [SCIM-Protokoll (System for Cross-Domain Identity Management) verwenden](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 - Möglichkeit zum Hinzufügen von Links zu Anwendungen im [Office 365-App-Startfeld](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/) oder im [Azure AD-Zugriffsbereich](what-is-single-sign-on.md#linked-sign-on)
 
 In diesem Artikel wird beschrieben, wie Sie im Azure-Portal den **Unternehmensanwendungen** eine Nicht-Kataloganwendung hinzufügen, ohne Code schreiben zu müssen. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md). Wenn Sie eine App entwickeln, die ein modernes Protokoll wie [OpenID Connect/OAuth](../develop/active-directory-v2-protocols.md) zum Authentifizieren von Benutzern verwendet, können Sie die App im Azure-Portal über die Oberfläche für [App-Registrierungen](../develop/quickstart-register-app.md) bei der Microsoft Identity Platform registrieren.
@@ -73,28 +73,28 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal den **Unternehmensan
        | Eigenschafteneinstellungen der Anwendung | | | Zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | Ja | Ja  |
-       | Ja | Ja | no  | Ja | no   |
-       | Ja | no  | Ja | Ja | Ja  |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | ja | ja  |
+       | ja | ja | nein  | ja | nein   |
+       | ja | nein  | ja | ja | ja  |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
       Verhalten für **nicht zugewiesene** Benutzer:
 
        | Eigenschafteneinstellungen der Anwendung | | | Nicht zugewiesene Benutzer | |
        |---|---|---|---|---|
        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
-       | Ja | Ja | Ja | no  | no   |
-       | Ja | Ja | no  | no  | no   |
-       | Ja | no  | Ja | Ja | no   |
-       | Ja | no  | no  | Ja | no   |
-       | no  | Ja | Ja | no  | no   |
-       | no  | Ja | no  | no  | no   |
-       | no  | no  | Ja | no  | no   |
-       | no  | no  | no  | no  | no   |
+       | ja | ja | ja | nein  | nein   |
+       | ja | ja | nein  | nein  | nein   |
+       | ja | nein  | ja | ja | nein   |
+       | ja | nein  | nein  | ja | nein   |
+       | nein  | ja | ja | nein  | nein   |
+       | nein  | ja | nein  | nein  | nein   |
+       | nein  | nein  | ja | nein  | nein   |
+       | nein  | nein  | nein  | nein  | nein   |
 
      *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
 

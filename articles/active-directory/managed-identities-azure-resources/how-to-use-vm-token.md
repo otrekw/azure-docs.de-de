@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9ac0f4d5c10cf128b6161163a81cc171bcafbd36
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547356"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158994"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -38,14 +38,14 @@ Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, m�
 
 
 > [!IMPORTANT]
-> - Bei allen Beispielcodes/-skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ für virtuelle Computer im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Ausführliche Informationen zum Aktivieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
+> - Bei allen Beispielcodes/-skripts in diesem Artikel wird vorausgesetzt, dass der Client auf einem virtuellen Computer mit verwalteten Identitäten für Azure-Ressourcen ausgeführt wird. Verwenden Sie die Funktion „Verbinden“ für virtuelle Computer im Azure-Portal zum Herstellen einer Remoteverbindung mit Ihrem virtuellen Computer. Weitere Informationen zur Aktivierung von verwalteten Identitäten für Azure-Ressourcen auf einer VM finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einer VM über das Azure-Portal](qs-configure-portal-windows-vm.md) oder in einem der verwandten Artikel (PowerShell, CLI, Vorlage oder Azure SDK). 
 
 > [!IMPORTANT]
 > - Die Sicherheitsgrenze für verwaltete Identitäten für Azure-Ressourcen wird durch die Ressource vorgegeben, auf der sie verwendet werden. Der gesamte Code und alle Skripts, die auf einem virtuellen Computer ausgeführt werden, können Token für die darin verfügbaren verwalteten Identitäten anfordern und abrufen. 
 
 ## <a name="overview"></a>Übersicht
 
-Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-the-managed-identities-for-azure-resources-work). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v1-oauth2-client-creds-grant-flow.md).
+Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-the-managed-identities-for-azure-resources-work). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v2-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |
@@ -113,7 +113,7 @@ Content-Type: application/json
 }
 ```
 
-| Element | BESCHREIBUNG |
+| Element | Beschreibung |
 | ------- | ----------- |
 | `access_token` | Das angeforderte Zugriffstoken. Beim Aufrufen einer geschützten REST-API wird das Token als „Bearertoken“ in das `Authorization`-Anforderungsheader-Feld eingebettet, damit der Aufrufer von der API authentifiziert werden kann. | 
 | `refresh_token` | Wird von verwalteten Identitäten für Azure-Ressourcen nicht verwendet. |
@@ -371,7 +371,7 @@ Wenn ein Fehler auftritt, enthält der entsprechende HTTP-Antworttext JSON-Code 
 
 In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status „200 OK“ ist eine erfolgreiche Antwort, und das Zugriffstoken ist im JSON-Antworttext im Element „access_token“ enthalten.
 
-| Statuscode | Error | Fehlerbeschreibung | Lösung |
+| Statuscode | Fehler | Fehlerbeschreibung | Lösung |
 | ----------- | ----- | ----------------- | -------- |
 | 400 – Ungültige Anforderung | invalid_resource | AADSTS50001: Die Anwendung namens *\<URI\>* wurde im Mandanten *\<TENANT-ID\>* nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet. | (Nur Linux) |
 | 400 – Ungültige Anforderung | bad_request_102 | Erforderlicher Metadatenheader nicht angegeben | Entweder fehlt der `Metadata`-Anforderungsheader in Ihrer Anforderung, oder er ist falsch formatiert. Der Wert muss als `true` (in Kleinbuchstaben) angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|

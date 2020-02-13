@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: secdec18
-ms.openlocfilehash: aa5fc1dddec6931b5eff1e34cf6c12b218bdf2fd
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec6c68d209f867ab3547e855f3cf754bc27d53c5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769956"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117622"
 ---
 # <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurieren von Speicherkonten für Cloudyn
 
@@ -34,12 +34,12 @@ Wenn Sie keinen AWS Simple Storage Service Bucket (S3-Bucket) haben, müssen Sie
 
 Das Konfigurieren Ihres Azure-Speichers zur Verwendung durch Cloudyn ist einfach. Besorgen Sie sich die Details zu dem Speicherkonto, und kopieren Sie diese in das Cloudyn-Portal.
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie auf **Alle Dienste**, wählen Sie **Speicherkonten** aus, scrollen Sie zu dem Speicherkonto, das Sie verwenden möchten, und wählen Sie es aus.
 3. Klicken Sie auf Ihrer Speicherkontoseite unter **Einstellungen** auf **Zugriffsschlüssel**.
 4. Kopieren Sie Ihren **Speicherkontonamen** und Ihre **Verbindungszeichenfolge** unter „Schlüssel1“.  
    ![Kopieren von Speicherkontoname und Verbindungszeichenfolge](./media/storage-accounts/azure-storage-access-keys.png)  
-5. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich an.
+5. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com), und melden Sie sich an.
 6. Klicken Sie auf das Zahnrad-Symbol, und wählen Sie dann **Reports Storage Management** aus.
 7. Klicken Sie auf **Add new +** , und vergewissern Sie sich, dass Microsoft Azure ausgewählt ist. Fügen Sie den Namen Ihres Azure-Speicherkontos im Bereich **Name** ein. Fügen Sie Ihre **Verbindungszeichenfolge** im entsprechenden Bereich ein. Geben Sie einen Containernamen ein, und klicken Sie dann auf **Save**.  
    ![Einfügen des Namens eines Azure-Speicherkontos und einer Verbindungszeichenfolge in das Feld zum Hinzufügen eines neuen Berichtspeichers](./media/storage-accounts/azure-cloudyn-storage.png)
@@ -147,7 +147,7 @@ Sie können die Berechtigung zum Erstellen von Berichten in Ihrem S3-Bucket auch
 
 ### <a name="add-aws-report-storage-to-cloudyn"></a>Hinzufügen von AWS-Berichtsspeicher zu Cloudyn
 
-1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich an.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu [https://azure.cloudyn.com](https://azure.cloudyn.com), und melden Sie sich an.
 2. Klicken Sie auf das Zahnrad-Symbol, und wählen Sie dann **Reports Storage Management** aus.
 3. Klicken Sie auf **Add new +** , und vergewissern Sie sich, dass AWS ausgewählt ist.
 4. Wählen Sie ein Konto und einen Speicherbucket aus. Der Name des AWS-Speicherbuckets wird automatisch ausgefüllt.  

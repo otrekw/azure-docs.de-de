@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701925"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160065"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API
 
@@ -42,7 +42,7 @@ Sie können beim Erstellen der Zugriffstokenanforderung die API-Bereiche festleg
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Abrufen eines Tokens mit einem Popupfenster
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Im folgenden Code wird das zuvor beschriebene Muster mit den Methoden für ein Popupelement kombiniert:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Der MSAL Angular-Wrapper nutzt den HTTP-Interceptor, der Zugriffstoken automatisch im Hintergrund abruft und an die HTTP-Anforderungen für APIs anfügt.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 Alternativ können Sie Token auch explizit mithilfe der in der MSAL.js-Kernbibliothek beschriebenen „acquire-token“-Methoden abrufen.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Abrufen eines Tokens mit einer Umleitung
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Muster entspricht dem zuvor beschriebenen Muster, wird jedoch mit einer Umleitungsmethode zum interaktiven Abrufen von Token dargestellt. Wie bereits erwähnt, müssen Sie den Umleitungsrückruf registrieren.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>Anfordern optionaler Ansprüche
+
 Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 - Einbinden zusätzlicher Ansprüche in Token für Ihre Anwendung
@@ -150,7 +153,6 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 Zum Anfordern optionaler Ansprüche in `IdToken` können Sie ein als Zeichenfolge dargestelltes Anspruchsobjekt an das Feld `claimsRequest` der `AuthenticationParameters.ts`-Klasse senden.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 Weitere Informationen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Dieser Code entspricht dem zuvor beschriebenen Code.
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

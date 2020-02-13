@@ -3,19 +3,19 @@ title: 'Schnellstart: Benutzerdefinierter Sprachassistent, C# (UWP) – Speech-
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie eine C#-UWP-Anwendung (Universelle Windows-Plattform) mithilfe des Cognitive Services Speech Software Development Kit (SDK)q. Sie stellen eine Verbindung Ihrer Clientanwendung mit einem zuvor erstellten Bot Framework-Bot her, der für die Verwendung des Direct Line Speech-Kanals konfiguriert ist. Die Anwendung basiert auf dem NuGet-Paket für das Speech SDK und auf Microsoft Visual Studio 2019.
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: af9395b8f75a9097d4449571fd54be6259a7b9f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816227"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119781"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>Schnellstart: Erstellen eines Sprachassistenten mit dem Speech SDK (UWP)
 
@@ -35,7 +35,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 * Ein zuvor erstellter, mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurierter Bot.
 
   > [!NOTE]
-  > Beachten Sie [die Liste der unterstützten Regionen für Sprachassistenten](regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
+  > Beachten Sie [die Liste mit den unterstützten Regionen für Sprach-Assistenten](regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
 
 ## <a name="optional-get-started-fast"></a>Optional: Schneller Einstieg
 
@@ -303,7 +303,7 @@ Zum Hinzufügen der CodeBehind-Quelle führen Sie die folgenden Schritte aus:
     ```
 
    > [!NOTE]
-   > Beachten Sie [die Liste der unterstützten Regionen für Sprachassistenten](regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
+   > Beachten Sie [die Liste mit den unterstützten Regionen für Sprach-Assistenten](regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
 
    > [!NOTE]
    > Informationen zur Konfiguration Ihres Bots und zum Abrufen eines Kanalgeheimnisses finden Sie in der Bot-Framework-Dokumentation zum [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).

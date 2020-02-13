@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 01/10/2020
-ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16e4a7e2f06d2630c970f8daa4428e7a184a79df
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895445"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163040"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins (Vorschauversion) und Konfigurieren eines Raumgraphen
 
@@ -38,7 +38,7 @@ In diesen Tutorials werden die Beispiele aus [Quickstart: Find available rooms](
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- ein Azure-Abonnement Falls Sie noch kein Azure-Konto haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ein Azure-Abonnement. Falls Sie noch kein Azure-Konto haben, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 - Das .NET Core SDK. Die Azure Digital Twins-Beispiele in diesen Tutorials sind in C# geschrieben. Zum Erstellen und Ausführen des Beispiels müssen Sie [.NET Core SDK Version 2.1.403 oder höher](https://www.microsoft.com/net/download) auf dem Entwicklungscomputer installieren. Überprüfen Sie, ob die richtige Version auf Ihrem Computer installiert ist, indem Sie `dotnet --version` in einem Befehlsfenster ausführen.
 
@@ -52,7 +52,7 @@ Erstellen Sie anhand der Schritte in diesem Abschnitt eine neue Instanz des Azur
 
 ## <a name="grant-permissions-to-your-app"></a>Gewähren von Berechtigungen für Ihre App
 
-Digital Twins verwendet [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD), um den [Lese-/Schreibzugriff](../active-directory/develop/v1-permissions-and-consent.md) auf den Dienst zu steuern. Jede Anwendung, die eine Verbindung mit Ihrer Digital Twins-Instanz herstellen muss, muss in Azure AD registriert werden. In diesem Abschnitt wird erläutert, wie Sie Ihre Beispiel-App registrieren.
+Digital Twins verwendet [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD), um den [Lese-/Schreibzugriff](../active-directory/develop/v2-permissions-and-consent.md) auf den Dienst zu steuern. Jede Anwendung, die eine Verbindung mit Ihrer Digital Twins-Instanz herstellen muss, muss in Azure AD registriert werden. In diesem Abschnitt wird erläutert, wie Sie Ihre Beispiel-App registrieren.
 
 Falls Sie bereits über eine App-Registrierung verfügen, können Sie sie für das Beispiel wiederverwenden. Sie sollten diesen Abschnitt aber trotzdem kurz durchlesen, um sicherzustellen, dass Ihre App-Registrierung korrekt konfiguriert ist.
 

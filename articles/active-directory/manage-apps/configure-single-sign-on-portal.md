@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: c5e8ed4a78fccce4f3a5c631a99a8729114e5722
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: a415ac749d0d322bc2f71f64d4bec6e32ad1f12e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422604"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063491"
 ---
 # <a name="how-to-configure-saml-based-single-sign-on"></a>Konfigurieren des SAML-basierten einmaligen Anmeldens
 
@@ -31,7 +31,7 @@ Wenn Sie einmaliges Anmelden für eine Anwendung konfigurieren möchten, die nic
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-- Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, lesen Sie [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Add an unlisted (non-gallery) application to your Azure AD organization](add-non-gallery-app.md) (Hinzufügen einer nicht aufgeführten (nicht im Katalog enthaltenen) Anwendung zu Ihrer Azure AD-Organisation).
+- Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, helfen Ihnen die Artikel [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Hinzufügen einer nicht aufgeführten Anwendung (Nicht-Kataloganwendung) zu Ihrer Azure AD-Organisation](add-non-gallery-app.md) weiter.
 - Wenden Sie sich an Ihren Anwendungsanbieter, um die korrekten Informationen für die folgenden Einstellungen zu erhalten:
 
     | Einstellung für die grundlegende SAML-Konfiguration | Vom Dienstanbieter initiiert | Vom Identitätsanbieter initiiert | Beschreibung |
@@ -102,7 +102,7 @@ Azure AD verwendet ein Zertifikat zum Signieren der SAML-Token, die an die Anwe
 
 1. Klicken Sie oben im Abschnitt **SAML-Signaturzertifikat** auf **Speichern**. 
 
-## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Schritt 4: Einrichten der Anwendung für die Verwendung von Azure AD
+## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Schritt 4. Einrichten der Anwendung für die Verwendung von Azure AD
 
 Im Abschnitt **\<Anwendungsname> einrichten** werden die Werte aufgeführt, die in der Anwendung konfiguriert werden müssen, damit sie Azure AD als SAML-Identitätsanbieter verwendet. Die erforderlichen Werte variieren je nach Anwendung. Einzelheiten finden Sie in der SAML-Dokumentation der Anwendung.
 
@@ -135,4 +135,4 @@ Sollte eine Fehlermeldung angezeigt werden, gehen Sie wie folgt vor:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md)
-- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)
+- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)

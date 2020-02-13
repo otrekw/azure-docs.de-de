@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8124aea96ab00e7f09782531702dcb5cfa4ccdf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701823"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159963"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Single-Page-Webanwendung: An- und Abmeldung
 
@@ -47,7 +47,7 @@ Sie können in Ihrer Anwendung nicht die Popupfenster- und die Umleitungsmethode
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Anmelden mit einem Popupfenster
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Mit dem MSAL Angular-Wrapper können Sie bestimmte Routen in Ihrer Anwendung sichern, indem Sie `MsalGuard` zu der Routendefinition hinzufügen. Dieser Wächter ruft die Methode für die Anmeldung auf, wenn auf diese Route zugegriffen wird.
 
@@ -89,10 +89,11 @@ Aktivieren Sie für ein Popupfenster die Konfigurationsoption `popUp`. Sie könn
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>Anmelden mit einer Umleitung
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Die Umleitungsmethoden geben aufgrund der Navigation weg von der Hauptanwendung keine Zusage zurück. Sie müssen vor dem Abrufen der Umleitungsmethoden Erfolgs- und Fehlerrückrufe registrieren, um die zurückgegebenen Token zu verarbeiten und auf sie zuzugreifen.
 
@@ -110,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Hier entspricht der Code dem zuvor im Abschnitt über das Anmelden mit einem Popupfenster beschriebenen Code. Der Standardfluss wird umgeleitet.
 
 > [!NOTE]
 > Das ID-Token enthält nicht die Bereiche, zu denen Zustimmung erteilt wurde, und repräsentiert nur den authentifizierten Benutzer. Die Bereiche mit Zustimmung werden im Zugriffstoken zurückgegeben, das Sie im nächsten Schritt abrufen.
+
+---
 
 ## <a name="sign-out"></a>Abmeldung
 
@@ -123,7 +126,7 @@ Die MSAL-Bibliothek bietet eine `logout`-Methode, die den Cache im Speicher des 
 
 Durch Festlegen von `postLogoutRedirectUri` können Sie den URI konfigurieren, zu dem nach der Anmeldung umgeleitet werden soll. Dieser URI sollte auch als Abmeldungs-URI in Ihrer Anwendungsregistrierung registriert sein.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -140,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Angular
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -154,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

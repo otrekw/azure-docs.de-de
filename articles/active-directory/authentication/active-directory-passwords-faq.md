@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e1cc9dde6bb2b6ae47affaed4c557f3746a681b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848781"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061453"
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -41,7 +41,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Wenn ich Kennwortzurücksetzung für eine Gruppe aktiviere und mich anschließend entscheide, sie für alle zu aktivieren, müssen sich meine Benutzer dann erneut registrieren?**
 
-  > **A:**  Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.
+  > **A:** Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.
   >
   >
 * **F:  Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**
@@ -61,7 +61,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Müssen meine Benutzer registriert werden, damit sie die Kennwortzurücksetzung verwenden können?**
 
-  > **A:**  Nein. Wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben.
+  > **A:** Nein. Wenn Sie genügend Authentifizierungsinformationen in ihrem Auftrag definieren, müssen Benutzer sich nicht registrieren. Das Zurücksetzen des Kennworts funktioniert, solange Sie in den entsprechenden Feldern im Verzeichnis ordnungsgemäß formatierte Daten gespeichert haben.
   >
   >
 * **F:  Kann ich die Felder „Telefon für Authentifizierung“, „E-Mail-Adresse zur Authentifizierung“ oder „Alternatives Telefon für Authentifizierung“ im Namen meiner Benutzer synchronisieren oder festlegen?**
@@ -80,7 +80,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
   >
 
-## <a name="password-reset"></a>Zurücksetzen des Kennworts
+## <a name="password-reset"></a>Zurücksetzen von Kennwörtern
 
 * **F:  Verhindern Sie, dass Benutzer in kurzer Zeit mehrfach versuchen, ein Kennwort zurückzusetzen?**
 
@@ -114,7 +114,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Wie informiere ich meine Benutzer, wo sie ihre Kennwörter zurücksetzen können?**
 
-  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#communications-plan).
+  > **A:** Nutzen Sie die Vorschläge in unserem [Artikel zur SSPR-Bereitstellung](howto-sspr-deployment.md#plan-communications).
   >
   >
 * **F:  Kann ich diese Seite von einem mobilen Gerät aus verwenden?**
@@ -159,7 +159,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Kann ein Benutzer sich für dieselbe Sicherheitsfrage mehrmals registrieren?**
 
-  > **A:**  Nein. Sobald ein Benutzer sich für eine bestimmte Frage registriert, kann er sich kein zweites Mal für dieselbe Frage registrieren.
+  > **A:** Nein. Sobald ein Benutzer sich für eine bestimmte Frage registriert, kann er sich kein zweites Mal für dieselbe Frage registrieren.
   >
   >
 * **F:  Ist es möglich, eine Mindestanzahl von Sicherheitsfragen für die Registrierung und Zurücksetzung festzulegen?**

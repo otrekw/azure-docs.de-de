@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e0a4eed020728bea5de196eebe438947ae509e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48df954f680c6774b0aa189453615156f4f0b4a8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515665"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063270"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce Sandbox für die automatische Benutzerbereitstellung
 
@@ -28,7 +28,7 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Salesforce Sandbox und Azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 *   Einen Azure Active Directory-Mandanten
 *   Einen gültigen Mandanten für Salesforce Sandbox for Work oder Salesforce Sandbox for Education. Sie können ein kostenloses Testkonto für einen der Dienste verwenden.
@@ -78,15 +78,15 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Um Ihr Salesforce Sandbox-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce Sandbox-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
 
-     ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
+     ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
 
 1. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen**, um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
   
-    ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
 
 1. Klicken Sie auf der Seite **Sicherheitstoken zurücksetzen** auf die Schaltfläche **Sicherheitstoken zurücksetzen**.
 
-    ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatische Benutzerbereitstellung aktivieren")
+    ![Aktivieren der automatischen Benutzerbereitstellung](./media/salesforce-sandbox-provisioning-tutorial/sf-reset-token.png "Automatische Benutzerbereitstellung aktivieren")
 
 1. Überprüfen Sie den E-Mail-Posteingang dieses Administratorkontos. Achten Sie auf eine E-Mail von „Salesforce Sandbox.com“, die das neue Sicherheitstoken enthält.
 
@@ -108,7 +108,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Salesforce Sandbox im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in der Salesforce Sandbox-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043371"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148197"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Bedingter Zugriff: Vorschreiben der MFA für Administratoren
 
@@ -24,14 +24,14 @@ Konten, denen Administratorrechte zugewiesen sind, werden von Angreifern ins Vis
 
 Microsoft empfiehlt, dass Sie MFA mindestens für die folgenden Rollen erfordern:
 
-* Globaler Administrator
-* SharePoint-Administrator
-* Exchange-Administrator
+* Rechnungsadministrator
 * Administrator für den bedingten Zugriff
-* Sicherheitsadministrator
+* Exchange-Administrator
+* Globaler Administrator
 * Helpdeskadministrator (Kennwort)
 * Kennwortadministrator
-* Rechnungsadministrator
+* Sicherheitsadministrator
+* SharePoint-Administrator
 * Benutzeradministrator
 
 Unternehmen können Rollen nach eigenem Ermessen ein- oder ausschließen.
@@ -55,14 +55,14 @@ Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.
    1. Wählen Sie unter **Einschließen** die Option **Verzeichnisrollen (Vorschau)** , und wählen Sie mindestens die folgenden Rollen aus:
-      * Globaler Administrator
-      * SharePoint-Administrator
-      * Exchange-Administrator
+      * Rechnungsadministrator
       * Administrator für den bedingten Zugriff
-      * Sicherheitsadministrator
+      * Exchange-Administrator
+      * Globaler Administrator
       * Helpdesk-Administrator
       * Kennwortadministrator
-      * Rechnungsadministrator
+      * Sicherheitsadministrator
+      * SharePoint-Administrator
       * Benutzeradministrator
    1. Wählen Sie unter **Ausschließen** die Option **Benutzer und Gruppen** und dann die Konten für den Notfallzugriff Ihres Unternehmens aus. 
    1. Wählen Sie **Fertig**aus.

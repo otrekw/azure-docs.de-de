@@ -15,12 +15,12 @@ ms.date: 07/16/2018
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1291db8cd895a1104183ae2b5388eb6a23305874
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72895931"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063379"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 
@@ -85,7 +85,7 @@ Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufüg
 In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf Anwendungen beschrieben, nachdem sie mithilfe von Azure AD-Connectors und Azure AD in Azure AD integriert wurden.
 
 * [Verwalten des Zugriffs auf Apps mit Azure AD](what-is-access-management.md)
-* [Automatisieren mit Azure AD-Connectors](user-provisioning.md)
+* [Automatisieren mit Azure AD-Connectors](../app-provisioning/user-provisioning.md)
 * [Zuweisen von Benutzern zu einer Anwendung](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Zuweisen von Gruppen zu einer Anwendung](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Gemeinsames Verwenden von Konten](../active-directory-sharing-accounts.md)

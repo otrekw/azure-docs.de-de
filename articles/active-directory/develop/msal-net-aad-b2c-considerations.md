@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Lernen Sie bestimmte Überlegungen zur Verwendung von Azure AD B2C mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) kennen.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 697b4bc8e3a25085ac6f7d600ea2227dd30a6624
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834194"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084010"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -182,6 +182,6 @@ Eine Möglichkeit ist es, den „Name“-Anspruch als bevorzugten Benutzernamen 
 
 Weitere Informationen zum interaktiven Abrufen von Token mit MSAL.NET für Azure AD B2C-Anwendungen finden Sie im folgenden Beispiel.
 
-| Beispiel | Plattform | Beschreibung|
+| Beispiel | Plattform | BESCHREIBUNG|
 |------ | -------- | -----------|
 |[active-directory-b2c-xamarin-native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Eine einfache Xamarin.Forms-App, die das Verwenden von MSAL.NET zum Authentifizieren von Benutzern über Azure AD B2C und den Zugriff auf eine Web-API mit den daraus resultierenden Token veranschaulicht.|

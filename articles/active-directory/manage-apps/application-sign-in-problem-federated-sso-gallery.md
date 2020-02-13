@@ -16,19 +16,19 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f3b2f45a808ebfa71f456c015de3dd59d60bd9
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381370"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159249"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
 Zur Behandlung der unten aufgeführten Anmeldeprobleme wird empfohlen, die folgenden Vorschläge umzusetzen. So werden bessere Diagnosen bereitgestellt, und Lösungsschritte lassen sich automatisieren:
 
 - Installieren Sie die [Browsererweiterung zur sicheren Anmeldung für„Meine Apps“](access-panel-extension-problem-installing.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, bessere Diagnosen und Lösungen bereitzustellen, wenn Sie die Testumgebung im Azure-Portal nutzen.
-- Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen finden Sie unter [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](../develop/howto-v1-debug-saml-sso-issues.md).
+- Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen finden Sie unter [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
 
 
 ## <a name="application-not-found-in-directory"></a>Die Anwendung wurde im Verzeichnis nicht gefunden.
@@ -41,7 +41,7 @@ Das `Issuer`-Attribut, das in der SAML-Anforderung von der Anwendung an Azure AD
 
 **Lösung**
 
-Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
+Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../azuread-dev/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
@@ -71,7 +71,7 @@ Der `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung stimmt nicht mit 
 
 **Lösung**
 
-Stellen Sie sicher, dass der `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung dem in Azure AD konfigurierten Wert der Antwort-URL entspricht. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
+Stellen Sie sicher, dass der `AssertionConsumerServiceURL`-Wert in der SAML-Anforderung dem in Azure AD konfigurierten Wert der Antwort-URL entspricht. Wenn Sie die [Testumgebung](../azuread-dev/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
@@ -101,7 +101,7 @@ Dem Benutzer wurde kein Zugriff auf die Anwendung in Azure AD erteilt.
 
 **Lösung**
 
-Führen Sie die unten aufgeführten Schritte aus, um einer Anwendung mindestens einen Benutzer direkt zuzuweisen. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
+Führen Sie die unten aufgeführten Schritte aus, um einer Anwendung mindestens einen Benutzer direkt zuzuweisen. Wenn Sie die [Testumgebung](../azuread-dev/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen.
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
@@ -127,11 +127,11 @@ Führen Sie die unten aufgeführten Schritte aus, um einer Anwendung mindestens 
 
 1. Zeigen Sie auf den **Benutzer** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Bild oder Logo des Benutzerprofils, um den Benutzer der Liste **Ausgewählt** hinzuzufügen.
 
-1. **Optional**: Wenn Sie **mehrere Benutzer hinzufügen möchten**, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren vollständigen Namen oder eine weitere E-Mail-Adresse ein, und klicken Sie auf das Kontrollkästchen, um den Benutzer der Liste **Ausgewählt** hinzuzufügen.
+1. **Optional:** Wenn Sie **mehrere Benutzer hinzufügen möchten**, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren vollständigen Namen oder eine weitere E-Mail-Adresse ein, und klicken Sie auf das Kontrollkästchen, um den Benutzer der Liste **Ausgewählt** hinzuzufügen.
 
 1. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie der Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
 
-1. **Optional**: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
+1. **Optional:** Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Auswahlfeld **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
 
 1. Klicken Sie auf die Schaltfläche **Zuweisen**, um die Anwendung den ausgewählten Benutzern zuzuweisen.
 
@@ -150,7 +150,7 @@ Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete S
 
 **Lösung**
 
-1. Erfassen Sie die SAML-Anforderung. Im Tutorial [Debug SAML-based single sign-on to applications in Azure Active Directory (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](../develop/howto-v1-debug-saml-sso-issues.md) erhalten Sie Informationen zum Erfassen der SAML-Anforderung.
+1. Erfassen Sie die SAML-Anforderung. Im Tutorial [Debug SAML-based single sign-on to applications in Azure Active Directory (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](../azuread-dev/howto-v1-debug-saml-sso-issues.md) erhalten Sie Informationen zum Erfassen der SAML-Anforderung.
 
 1. Wenden Sie sich an den Anwendungshersteller, und teilen Sie diesem folgende Informationen mit:
 
@@ -170,7 +170,7 @@ Das `Issuer`-Attribut, das in der SAML-Anforderung von der Anwendung an Azure AD
 
 **Lösung**
 
-Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../develop/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen:
+Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem in Azure AD konfigurierten Bezeichnerwert übereinstimmt. Wenn Sie die [Testumgebung](../azuread-dev/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der Browsererweiterung zur sicheren Anmeldung für„Meine Apps“ verwenden, müssen Sie diese Schritte nicht manuell ausführen:
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
 
@@ -271,4 +271,4 @@ Informationen zum Anpassen der SAML-Attributsansprüche, die an Ihre Anwendung g
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD](../develop/howto-v1-debug-saml-sso-issues.md)
+[Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

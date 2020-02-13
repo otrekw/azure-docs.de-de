@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978525"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118604"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Die Liste enthält die in diesem Tutorial verwendeten Cognitive Services. Verwenden Sie den Link, um für jedes Feature die API-Referenz zu durchsuchen.
 
-| Dienst | Feature | BESCHREIBUNG |
+| Dienst | Funktion | BESCHREIBUNG |
 |---------|---------|-------------|
 | Textübersetzung | [Get Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Ruft eine vollständige Liste mit den unterstützten Sprachen für die Textübersetzung ab. |
 | Textübersetzung | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Übersetzt Text in mehr als 60 Sprachen. |
@@ -114,7 +114,7 @@ Wir sehen uns nun an, was erstellt werden soll.
 
 Die Benutzeroberfläche enthält die folgenden Komponenten:
 
-| NAME | type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 |------|------|-------------|
 | `FromLanguageComboBox` | Kombinationsfeld | Zeigt eine Liste mit den Sprachen an, die von Microsoft Translator für Textübersetzungen unterstützt werden. Der Benutzer wählt die Ausgangssprache für die Übersetzung aus. |
 | `ToLanguageComboBox` | Kombinationsfeld | Dient zum Auswählen der Zielsprache für die Übersetzung und zeigt die gleiche Sprachenliste wie `FromComboBox` an. |

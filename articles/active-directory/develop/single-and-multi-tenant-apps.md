@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701449"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159912"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Mandanten in Azure Active Directory
 
@@ -46,9 +46,9 @@ Im Azure-Portal können Sie Ihre App als einzel- oder mehrinstanzenfähig konfig
 
 Das Erstellen guter mehrinstanzenfähiger Apps kann aufgrund der Vielzahl unterschiedlicher Richtlinien, die IT-Administratoren in ihren Mandanten festlegen können, eine Herausforderung darstellen. Wenn Sie eine mehrinstanzenfähige App erstellen möchten, wenden Sie die folgenden bewährten Methoden an:
 
-* Testen Sie Ihre App in einem Mandanten, für den [Richtlinien für bedingten Zugriff](conditional-access-dev-guide.md) konfiguriert sind.
+* Testen Sie Ihre App in einem Mandanten, für den [Richtlinien für bedingten Zugriff](../azuread-dev/conditional-access-dev-guide.md) konfiguriert sind.
 * Befolgen Sie das Prinzip des geringstmöglichen Benutzerzugriffs, um sicherzustellen, dass Ihre App nur Berechtigungen anfordert, die sie tatsächlich benötigt. Vermeiden Sie es, Berechtigungen anzufordern, die die Zustimmung des Administrators erfordern, da dies Benutzer in einigen Unternehmen daran hindern kann, Ihre App überhaupt zu nutzen. 
-* Geben Sie geeignete Namen und Beschreibungen für alle Berechtigungen an, die Sie als Teil Ihrer App bereitstellen. Auf diese Weise können sich Benutzer und Administratoren besser informieren, welchen Berechtigungen sie zustimmen, wenn sie versuchen, die APIs Ihrer App zu verwenden. Weitere Informationen finden Sie im Abschnitt zu den bewährten Methoden im [Berechtigungsleitfaden](v1-permissions-and-consent.md).
+* Geben Sie geeignete Namen und Beschreibungen für alle Berechtigungen an, die Sie als Teil Ihrer App bereitstellen. Auf diese Weise können sich Benutzer und Administratoren besser informieren, welchen Berechtigungen sie zustimmen, wenn sie versuchen, die APIs Ihrer App zu verwenden. Weitere Informationen finden Sie im Abschnitt zu den bewährten Methoden im [Berechtigungsleitfaden](v2-permissions-and-consent.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

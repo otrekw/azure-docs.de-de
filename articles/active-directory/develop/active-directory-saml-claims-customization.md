@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 7a4a58943b251628780694c001ca441a14e9c09a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 52779b7ffea0f33676426f145a700c7181cf0bf1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698678"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161255"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -55,7 +55,7 @@ Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Azure AD
 
 Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
 
-| NameID-Format | Beschreibung |
+| NameID-Format | BESCHREIBUNG |
 |---------------|-------------|
 | **Standard** | Azure AD verwendet das Standardquellformat. |
 | **Persistent** | Azure AD verwendet das NameID-Format „Persistent“. |
@@ -69,7 +69,7 @@ Eine vorübergehende NameID wird ebenfalls unterstützt, ist jedoch im Dropdownm
 
 Wählen Sie die gewünschte Quelle für den Anspruch `NameIdentifier` (oder NameID) aus. Sie können aus folgenden Optionen auswählen:
 
-| Name | Beschreibung |
+| Name | BESCHREIBUNG |
 |------|-------------|
 | Email | E-Mail-Adresse des Benutzers |
 | userprincipalName | Benutzerprinzipalname (User Principal Name, UPN) des Benutzers |
@@ -126,7 +126,7 @@ So wenden Sie eine Transformation auf ein Benutzerattribut an
 
 Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwenden.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |----------|-------------|
 | **ExtractMailPrefix()** | Entfernt das Domänensuffix aus der E-Mail-Adresse oder dem Benutzerprinzipalnamen. Dadurch wird nur der erste Teil des Benutzernamens übergeben (z.B. „joe_smith“ anstelle von joe_smith@contoso.com). |
 | **Join()** | Erstellt einen neuen Wert durch Verknüpfen von zwei Attributen. Optional können Sie ein Trennzeichen zwischen den beiden Attributen verwenden. Bei der NameID-Anspruchstransformation beschränkt sich die Verknüpfung auf eine verifizierte Domäne. Wenn der ausgewählte Wert für die Benutzer-ID über eine Domäne verfügt, wird der Benutzername extrahiert, an den ausgewählte überprüfte Domäne angefügt werden soll. Wenn Sie z.B. die E-Mail-Adresse (joe_smith@contoso.com) als Wert für die Benutzer-ID und „contoso.onmicrosoft.com“ als überprüfte Domäne verwenden, erhalten Sie joe_smith@contoso.onmicrosoft.com. |
@@ -180,4 +180,4 @@ Zuerst wertet Azure AD aus, ob Britas Benutzertyp `All guests` entspricht. Da di
 
 * [Anwendungsverwaltung in Azure AD](../manage-apps/what-is-application-management.md)
 * [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure AD-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)
+* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

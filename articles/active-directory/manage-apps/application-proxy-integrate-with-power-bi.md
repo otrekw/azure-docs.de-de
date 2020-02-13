@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275523"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111577"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Ermöglichen des Remotezugriffs auf Power BI Mobile mit dem Azure AD-Anwendungsproxy
 
@@ -133,14 +133,11 @@ Bevor die mobile Power BI-App eine Verbindung herstellen und auf Berichtsdienste
 
    ![Power BI Mobile-App mit externer URL](media/application-proxy-integrate-with-power-bi/app-proxy-power-bi-mobile-app.png)
 
-2. Wählen Sie **Verbinden**aus. Sie werden zur Azure Active Directory Anmeldeseite weitergeleitet.
+2. Wählen Sie **Verbinden**. Sie werden zur Azure Active Directory Anmeldeseite weitergeleitet.
 
 3. Geben Sie gültige Anmeldeinformationen für Ihren Benutzer ein, und wählen Sie **Anmelden** aus. Die Elemente Ihres Reporting Services-Servers werden angezeigt.
 
 ## <a name="step-5-configure-intune-policy-for-managed-devices-optional"></a>Schritt 5: Konfigurieren einer Intune-Richtlinie für verwaltete Geräte (optional)
-
-> [!NOTE]
-> Diese Funktionalität steht derzeit nur in iOS zur Verfügung.
 
 Sie können Microsoft Intune verwenden, um die von Ihrem Personal verwendeten Client-Apps zu verwalten. Intune bietet Funktionen wie Datenverschlüsselung und zusätzliche Zugriffsanforderungen. Weitere Informationen zur App-Verwaltung mit Intune finden Sie unter „Intune-App-Verwaltung“. Gehen Sie wie folgt vor, um der Power BI Mobile-Anwendung die Verwendung der Intune-Richtlinie zu ermöglichen:
 

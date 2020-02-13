@@ -16,18 +16,18 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cae5458a9b9456d26363802ee9b06aaa842e72
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712346"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063593"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
 Über Azure Active Directory (Azure AD) können Benutzer und Gruppen automatisch für alle Anwendungen oder Systeme bereitgestellt werden, denen ein Webdienst mit der in der [SCIM 2.0-Protokollspezifikation](https://tools.ietf.org/html/draft-ietf-scim-api-19) definierten Schnittstelle vorgelagert ist. 
 
-Die Azure AD-Unterstützung für das SCIM 2.0-Protokoll wird unter [Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)](use-scim-to-provision-users-and-groups.md) beschrieben. Dort werden auch die einzelnen Teile des Protokolls aufgeführt, die implementiert werden, um Benutzer und Gruppen aus Azure AD für Anwendungen, die SCIM 2.0 unterstützen, automatisch bereitzustellen.
+Die Azure AD-Unterstützung für das SCIM 2.0-Protokoll wird unter [Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)](../app-provisioning/use-scim-to-provision-users-and-groups.md) beschrieben. Dort werden auch die einzelnen Teile des Protokolls aufgeführt, die implementiert werden, um Benutzer und Gruppen aus Azure AD für Anwendungen, die SCIM 2.0 unterstützen, automatisch bereitzustellen.
 
 In diesem Artikel werden aktuelle und ehemalige Probleme mit dem Bereitstellungsdienst für Azure AD-Benutzer im Zusammenhang mit der Einhaltung des SCIM 2.0-Protokolls und Möglichkeiten zur Umgehung dieser Probleme beschrieben.
 
@@ -113,5 +113,5 @@ Ja. Wenn Sie eine Anwendung mit dem alten Verhalten vor den Fehlerkorrekturen pr
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erfahren Sie mehr über die Bereitstellung und Bereitstellungsaufhebung für SaaS-Anwendungen.](user-provisioning.md)
+[Erfahren Sie mehr über die Bereitstellung und Bereitstellungsaufhebung für SaaS-Anwendungen.](../app-provisioning/user-provisioning.md)
 

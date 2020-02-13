@@ -2,21 +2,21 @@
 title: Grundlegendes zur Rechnung für eine Microsoft-Kundenvereinbarung in Azure
 description: Erfahren Sie, wie Sie die Rechnung für Ihre Microsoft-Kundenvereinbarung erfassen und verstehen.
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 793caae31841c0ea744a80a811c86aa4af63f60a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 54fcff23501c3f65e32298126d402f7a3b6ae6d1
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985342"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134989"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Kundenvereinbarung
 
@@ -78,7 +78,7 @@ Der fällige Gesamtbetrag für jede Dienstfamilie errechnet sich aus den *Guthab
 
 ![Details nach Rechnungsabschnitt](./media/mca-understand-your-invoice/invoicesectiondetails.png)
 
-| Begriff |Beschreibung |
+| Begriff |BESCHREIBUNG |
 | --- | --- |
 | Unit price | Der geltenden Einzelpreis für den Dienst (in der Abrechnungswährung), anhand dessen die Gebühren für die Nutzung berechnet werden. Dieser Preis ist für jedes Produkt, jede Dienstfamilie, jede Verbrauchseinheit und jedes Angebot anders. |
 | Qty (Menge) | Während des Abrechnungszeitraums gekaufte oder genutzt Menge |

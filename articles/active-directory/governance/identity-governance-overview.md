@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c90052d1d75ba65a8e0b0e7a2cd26a279019a82d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: bd319dd6a83a392f6df26d07a58be22a9c8bdb61
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173156"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063678"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -58,7 +58,7 @@ Organisationen benötigen einen Prozess, um den Zugriff über die anfänglich be
 
 In der Regel delegiert die IT-Abteilung Entscheidungen bezüglich der Zugriffsgenehmigung an Entscheidungsträger im Unternehmen.  Darüber hinaus kann die IT die Benutzer selbst in den Prozess einbeziehen.  Beispielsweise müssen Benutzer, die in Europa auf vertrauliche Kundendaten in der Marketinganwendung eines Unternehmens zugreifen, die Richtlinien des Unternehmens kennen. Gastbenutzer kennen die Anforderungen für die Behandlung von Daten in einer Organisation, zu der sie eingeladen wurden, möglicherweise nicht.
 
-Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../manage-apps/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../b2b/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
+Organisationen können den Zugriffslebenszyklus mit Technologien wie [dynamischen Gruppen](../users-groups-roles/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Apps](../saas-apps/tutorial-list.md) oder [in SCIM integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren.  Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../b2b/hybrid-cloud-to-on-premises.md).  Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](access-reviews-overview.md) überprüft werden.   Mit der [Azure AD-Berechtigungsverwaltung](entitlement-management-overview.md) können Sie außerdem definieren, wie Benutzer übergreifend über Pakete von Gruppen- und Teammitgliedschaften, Anwendungsrollen und SharePoint Online-Rollen Zugriff anfordern.
 
 Wenn ein Benutzer auf Anwendungen zuzugreifen versucht, erzwingt Azure AD Richtlinien für [bedingten Zugriff](/azure/active-directory/conditional-access/). Richtlinien für bedingten Zugriff können beispielsweise beinhalten, dass [Nutzungsbedingungen](../conditional-access/terms-of-use.md) angezeigt werden und [der Benutzer diesen Bedingungen zustimmen muss](../conditional-access/require-tou.md), bevor er auf eine Anwendung zugreifen kann.
 
@@ -88,7 +88,7 @@ Es gibt keine perfekte Lösung oder Empfehlung, die für alle Kunden geeignet is
 
 Für die Ausführung administrativer Aufgaben in Identity Governance gilt die Verwendung der Rolle mit den geringsten Rechten als bewährte Methode. Es wird empfohlen, Azure AD PIM zu verwenden, um nach Bedarf eine Rolle zum Ausführen dieser Aufgaben zu aktivieren. Nachfolgend werden die Verzeichnisrollen mit den geringsten Rechten zum Konfigurieren von Identity Governance-Features aufgeführt:
 
-| Feature | Am wenigsten privilegierte Rolle |
+| Funktion | Am wenigsten privilegierte Rolle |
 | ------- | --------------------- |
 | Berechtigungsverwaltung | Benutzeradministrator (mit Ausnahme des Hinzufügens von SharePoint Online-Websites zu Katalogen, wofür die Rolle „Globaler Administrator“ erforderlich ist) |
 | Zugriffsüberprüfungen | Benutzeradministrator (mit Ausnahme von Zugriffsüberprüfungen für Azure- oder Azure AD-Rollen, wofür ein Administrator für privilegierte Rollen erforderlich ist) |

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834634"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150169"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Erstellen eines zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
 
@@ -21,27 +21,11 @@ Sie können VPN- und ExpressRoute-Gateways in Azure-Verfügbarkeitszonen bereits
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Sie können entweder eine lokal auf Ihrem Computer installierte PowerShell-Instanz oder die Azure Cloud Shell verwenden. Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Feature die neueste Version des PowerShell-Moduls verwenden.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>Lokale Verwendung von PowerShell
-
-Wenn Sie nicht Cloud Shell nutzen, sondern PowerShell lokal auf Ihrem Computer verwenden möchten, müssen Sie das PowerShell-Modul 1.0.0 oder höher installieren. Um die installierte PowerShell-Version zu überprüfen, verwenden Sie den folgenden Befehl:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu.
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. Deklarieren von Variablen
 
-Die in den Beispielschritten verwendeten Werte werden hier unten aufgeführt. Darüber hinaus verwenden einige Beispiele deklarierte Variablen in den Schritten. Wenn Sie diese Schritte in Ihrer eigenen Umgebung ausführen, ersetzen Sie diese Werte durch Ihre eigenen. Wenn Sie einen Standort angeben, stellen Sie sicher, dass die angegebene Region unterstützt wird. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
+Deklarieren Sie die gewünschten Variablen. Verwenden Sie das unten gezeigte Beispiel, und ersetzen Sie die Werte nach Bedarf durch Ihre eigenen. Wenn Sie Ihre PowerShell-/Cloud Shell-Sitzung zu einem beliebigen Zeitpunkt während der Übung schließen, kopieren Sie einfach die Werte noch mal, und fügen Sie sie ein, um die Variablen erneut zu deklarieren. Wenn Sie einen Standort angeben, stellen Sie sicher, dass die angegebene Region unterstützt wird. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

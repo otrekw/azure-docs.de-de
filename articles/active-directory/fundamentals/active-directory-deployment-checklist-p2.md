@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc06931dd36c9ecd91ec1d748b9463f47f7afafc
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f84226a631014b51338d47887fe3bafc969dc571
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880588"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063644"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Bereitstellungshandbuch für Azure Active Directory-Features
 
@@ -94,7 +94,7 @@ In Phase 4 erzwingen Administratoren die Prinzipien der geringsten Rechte für d
 | [Abschließen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](../privileged-identity-management/pim-how-to-start-security-review.md) | Arbeiten Sie mit Ihren Sicherheits- und Führungsteams zusammen, um eine Richtlinie für die Zugriffsüberprüfung zu erstellen, anhand derer der Administratorzugriff basierend auf den Richtlinien Ihrer Organisation überprüft wird. | Azure AD Premium P2 |
 | [Implementieren von Richtlinien für dynamische Gruppenmitgliedschaft](../users-groups-roles/groups-dynamic-membership.md) | Weisen Sie mit dynamischen Gruppen automatisch Benutzer basierend auf deren Attributen von HR (oder Ihrer zuverlässigen Datenquelle) wie z.B. Abteilung, Titel, Region und anderen Attributen Gruppen zu. |  |
 | [Implementieren von gruppenbasierter Anwendungsbereitstellung](../manage-apps/what-is-access-management.md) | Verwenden Sie die gruppenbasierte Bereitstellung der Zugriffsverwaltung zum automatischen Bereitstellen von Benutzern für SaaS-Anwendungen. |  |
-| [Automatisieren der Bereitstellung und Bereitstellungsaufhebung](../manage-apps/user-provisioning.md) | Entfernen Sie manuelle Schritte aus dem Kontolebenszyklus Ihrer Mitarbeiter, um nicht autorisierte Zugriffe zu verhindern. Synchronisieren Sie Identitäten über Ihre zuverlässige Datenquelle (HR-System) mit Azure AD. |  |
+| [Automatisieren der Bereitstellung und Bereitstellungsaufhebung](../app-provisioning/user-provisioning.md) | Entfernen Sie manuelle Schritte aus dem Kontolebenszyklus Ihrer Mitarbeiter, um nicht autorisierte Zugriffe zu verhindern. Synchronisieren Sie Identitäten über Ihre zuverlässige Datenquelle (HR-System) mit Azure AD. |  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

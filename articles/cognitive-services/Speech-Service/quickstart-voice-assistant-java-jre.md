@@ -3,19 +3,19 @@ title: 'Schnellstart: Benutzerdefinierter Sprach-Assistent für Java (Windows, L
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Cognitive Services Speech SDK in einer Java-Konsolenanwendung verwenden. Es wird beschrieben, wie Sie Ihre Clientanwendung mit einem zuvor erstellten Bot Framework-Bot verbinden, der für die Verwendung des Direct Line Speech-Kanals konfiguriert ist, und einen Sprach-Assistenten implementieren.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815855"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119674"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Schnellstart: Erstellen eines Sprach-Assistenten mit dem Speech SDK – Java (Vorschauversion)
 

@@ -4,17 +4,17 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: 02e9553b9704c96794e0c1113ab3e06458f0f7c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391651"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123178"
 ---
 Der Azure-Dateisynchronisierungs-Agent wird regelmäßig aktualisiert, um neue Funktionalität hinzuzufügen und Probleme zu beheben. Es wird empfohlen, Microsoft Update zu konfigurieren, um Updates für den Azure-Dateisynchronisierungs-Agent zu erhalten, wenn diese verfügbar sind.
 
 #### <a name="major-vs-minor-agent-versions"></a>Unterschiede zwischen Haupt- und Nebenversionen des Agents
-* Hauptversionen des Agents enthalten oft neue Features und haben eine aufsteigende Zahl als ersten Teil der Versionsnummer. Beispiel:  \*2.\*.\*\*
+* Hauptversionen des Agents enthalten oft neue Features und haben eine aufsteigende Zahl als ersten Teil der Versionsnummer. Beispiel: \*2.\*.\*\*
 * Nebenversionen des Agents werden auch als „Patches“ bezeichnet und werden häufiger veröffentlicht als Hauptversionen. Sie enthalten oft Fehlerbehebungen und kleinere Verbesserungen, aber keine neuen Features. Beispiel: \*\*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Upgradepfade
@@ -40,7 +40,7 @@ Die folgenden Anweisungen beschreiben, wie Sie die Einstellungen nach Abschluss 
 Öffnen Sie eine PowerShell-Konsole, und navigieren Sie zu dem Verzeichnis, in dem Sie den Synchronisierungs-Agent installiert haben. Importieren Sie dann die Server-Cmdlets. Dies sieht üblicherweise etwa wie folgt aus:
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
-Import-Module -Name \StorageSync.Management.ServerCmdlets.dll
+Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
 Sie können `Get-StorageSyncAgentAutoUpdatePolicy` ausführen, um die aktuelle Richtlinieneinstellung zu überprüfen und festzustellen, ob Sie sie ändern möchten.

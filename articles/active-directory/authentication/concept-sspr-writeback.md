@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70d3e17a007e8cfa7eed299659d4cff114f72158
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023122"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161578"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -29,7 +29,7 @@ Kennwortrückschreiben wird in Umgebungen unterstützt, die folgende Elemente ve
 * [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md)
 
 > [!WARNING]
-> Das Kennwortrückschreiben funktioniert nicht mehr für Kunden, die Azure AD Connect-Versionen bis 1.0.8641.0 verwenden, wenn der [Azure Access Control Service (ACS) am 7. November 2018 eingestellt wird](../develop/active-directory-acs-migration.md). Azure AD Connect-Versionen bis 1.0.8641.0 lassen ab diesem Zeitpunkt kein Kennwortrückschreiben mehr zu, da sie für diese Funktionalität von ACS abhängen.
+> Das Kennwortrückschreiben funktioniert nicht mehr für Kunden, die Azure AD Connect-Versionen bis 1.0.8641.0 verwenden, wenn der [Azure Access Control Service (ACS) am 7. November 2018 eingestellt wird](../azuread-dev/active-directory-acs-migration.md). Azure AD Connect-Versionen bis 1.0.8641.0 lassen ab diesem Zeitpunkt kein Kennwortrückschreiben mehr zu, da sie für diese Funktionalität von ACS abhängen.
 >
 > Um eine Dienstunterbrechung zu vermeiden, führen Sie bei früheren Versionen von Azure AD Connect ein Upgrade auf eine neuere Version durch. Weitere Informationen finden Sie unter [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](../hybrid/how-to-upgrade-previous-version.md).
 >

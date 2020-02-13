@@ -2,7 +2,7 @@
 title: Verwalten Ihrer verbundenen Geräte im Portal „Mein Konto“ – Azure AD
 description: Sie erfahren, wie Sie im Portal „Mein Konto“ auf der Seite „Geräte“ mit Ihrem Geschäfts-, Schul- oder Unikonto verbundene Geräte anzeigen und deaktivieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: jpettere
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.author: lizross
-ms.openlocfilehash: 60eb0fb0f7129b148b4a30f9ed96b402d6b018fb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705155"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062488"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>Verwalten von verbundenen Geräten auf der Seite „Geräte“
 

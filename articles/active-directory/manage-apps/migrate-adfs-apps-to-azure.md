@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c77b03c6e1f2240059d884b051e00b01836d714
-ms.sourcegitcommit: 0ebc62257be0ab52f524235f8d8ef3353fdaf89e
+ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67724012"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159011"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 
@@ -59,7 +59,7 @@ Für Organisationen, die bereits AD FS, Ping oder einen anderen lokalen Authenti
   Azure AD unterstützt als Identitätsanbieter für SaaS-Apps zusätzliche Funktionen, z.B.:
   - Tokensignaturzertifikate pro Anwendung
   - [Konfigurierbare Zertifikatablaufdaten](manage-certificates-for-federated-single-sign-on.md)
-  - [Automatisierte Bereitstellung](user-provisioning.md) von Benutzerkonten (in wichtigen Azure Marketplace-Apps) basierend auf Azure AD-Identitäten
+  - [Automatisierte Bereitstellung](../app-provisioning/user-provisioning.md) von Benutzerkonten (in wichtigen Azure Marketplace-Apps) basierend auf Azure AD-Identitäten
 
 - **Bewahren der Vorteile eines lokalen Identitätsanbieters**
   
@@ -108,7 +108,7 @@ Die Migration beginnt damit, wie die Anwendung lokal konfiguriert wird, und mit 
 - AD FS-Begriff: Vertrauende Seite oder Vertrauensstellung der vertrauenden Seite.
 - Azure AD-Begriff: Unternehmensanwendung oder App-Registrierung (je nach App-Typ).
 
-|App-Konfigurationselement|BESCHREIBUNG|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
+|App-Konfigurationselement|Beschreibung|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
 |-----|-----|-----|-----|-----|
 |Anmelde-URL der App|URL der Anmeldeseite dieser Anwendung. Hierüber meldet sich der Benutzer in einem SP-initiierten SAML-Datenfluss an der App an.|–|In Azure AD ist die Anmelde-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Anmelde-URL anzuzeigen.)|–|
 |Antwort-URL der App|Die URL der App aus Sicht des Identitätsanbieters (IdP). An diesen Ort werden der Benutzer und das Token gesendet, nachdem sich der Benutzer beim IdP angemeldet hat.</br></br> Dies wird auch als „Consumerendpunkt der SAML-Assertion“ bezeichnet.|Sie befindet sich in der Vertrauensstellung der vertrauenden Seite von AD FS für die App. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|In Azure AD ist die Antwort-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Antwort-URL anzuzeigen.)|Ist im SAML-Token dem **Destination**-Element zugeordnet.</br></br> Beispielwert: `https://contoso.my.salesforce.com`|
@@ -136,9 +136,9 @@ In der folgenden Tabelle werden die wichtigen IdP-Konfigurationselemente zum Kon
 |---|---|---|---|
 |IdP- </br>Anmelde- </br>URL|Anmelde-URL des IdP aus App-Sicht (an die der Benutzer zur Anmeldung umgeleitet wird).|Die AD FS-Anmelde-URL ist der AD FS-Verbunddienstname, gefolgt von „/adfs/ls/“. Beispiel: https&#58;//fs.contoso.com/adfs/ls/|Der entsprechende Wert für Azure AD basiert auf dem Muster, bei dem {Mandanten-ID} durch Ihre Mandanten-ID ersetzt wird. Sie finden sie im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** als **Verzeichnis-ID**.</br></br>Für Apps, die das SAML-P-Protokoll nutzen: https&#58;//login.microsoftonline.com/{Mandanten-ID}/saml2 </br></br>Für Apps, die das Webdiensteverbund-Protokoll nutzen: https&#58;//login.microsoftonline.com/{Mandanten-ID}/wsfed|
 |IdP- </br>Abmeldung </br>URL|Abmelde-URL des IdP aus App-Sicht (an die der Benutzer umgeleitet wird, wenn er sich von der App abmelden möchte).|Für AD FS entspricht die Abmelde-URL entweder der Anmelde-URL, oder es wird die gleiche URL mit dem Zusatz „wa=wsignout1.0“ verwendet. Beispiel: https&#58;//fs.contoso.com/adfs/ls/?wa=wsignout1.0|Der entsprechende Wert für Azure AD hängt davon ab, ob die App die SAML 2.0-Abmeldung unterstützt.</br></br>Wenn die SAML-Abmeldung von der App unterstützt wird, folgt der Wert einem Muster, bei dem der Wert für {Mandanten-ID} durch die Mandanten-ID ersetzt wird. Sie finden sie im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** als **Verzeichnis-ID**: https&#58;//login.microsoftonline.com/{Mandanten-ID}/saml2</br></br>Wenn die App die SAML-Abmeldung nicht unterstützt: https&#58;//login.microsoftonline.com/common/wsfederation?wa=wsignout1.0|
-|Tokenverschlüsselung </br>signatur- </br>Zertifikat|Zertifikat, dessen privater Schlüssel vom IdP zum Signieren von ausgestellten Token verwendet wird. Überprüft, ob das Token von demselben IdP stammt, für den für die App die Vertrauensstellung konfiguriert wurde.|Das AD FS-Tokensignaturzertifikat befindet sich in der AD FS-Verwaltung unter **Zertifikate**.|Für Azure AD finden Sie das Tokensignaturzertifikat im Azure-Portal in den **SSO**-Eigenschaften unter der Überschrift **SAML-Signaturzertifikat**. Dort können Sie das Zertifikat für den Upload in die App herunterladen.</br></br> Falls die Anwendung über mehr als ein Zertifikat verfügt, sind alle Zertifikate in der XML-Datei mit den Verbundmetadaten enthalten.|
+|Token </br>signatur- </br>Zertifikat|Zertifikat, dessen privater Schlüssel vom IdP zum Signieren von ausgestellten Token verwendet wird. Überprüft, ob das Token von demselben IdP stammt, für den für die App die Vertrauensstellung konfiguriert wurde.|Das AD FS-Tokensignaturzertifikat befindet sich in der AD FS-Verwaltung unter **Zertifikate**.|Für Azure AD finden Sie das Tokensignaturzertifikat im Azure-Portal in den **SSO**-Eigenschaften unter der Überschrift **SAML-Signaturzertifikat**. Dort können Sie das Zertifikat für den Upload in die App herunterladen.</br></br> Falls die Anwendung über mehr als ein Zertifikat verfügt, sind alle Zertifikate in der XML-Datei mit den Verbundmetadaten enthalten.|
 |Bezeichner/</br>„Aussteller“|Bezeichner des IdP aus App-Sicht (auch als „Aussteller-ID“ bezeichnet).</br></br>Im SAML-Token wird der Wert als **Issuer**-Element angezeigt.|Der Bezeichner für AD FS ist normalerweise der Verbunddienstbezeichner in der AD FS-Verwaltung unter **Dienst** > **Verbunddiensteigenschaften bearbeiten**. Beispiel: http&#58;//fs.contoso.com/adfs/services/trust|Der entsprechende Wert für Azure AD basiert auf dem Muster, bei dem der Wert für „{Mandanten-ID}“ durch die Mandanten-ID ersetzt wird. Sie finden ihn im Azure-Portal unter **Azure Active Directory** > **Eigenschaften** als **Verzeichnis-ID**: https&#58;//sts.windows.net/{Mandanten-ID}/|
-|IdP- </br>Verbund- </br>metadata|Speicherort der öffentlich verfügbaren Verbundmetadaten des IdP. (Einige Apps verwenden Verbundmetadaten als Alternative zur individuellen Konfiguration der URLs, des Bezeichners und des Tokensignaturzertifikats durch den Administrator.)|Sie finden die URL für die AD FS-Verbundmetadaten in der AD FS-Verwaltung unter **Dienst** > **Endpunkte** > **Metadaten** > **Typ: Verbundmetadaten**. Beispiel: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Der entsprechende Wert für Azure AD basiert auf dem Muster „https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml“. Hierbei wird der Wert für „{TenantDomainName}“ durch den Namen Ihres Mandanten im Format „contoso.onmicrosoft.com“ ersetzt. </br></br>Weitere Informationen finden Sie unter [Verbundmetadaten](../develop/azure-ad-federation-metadata.md).
+|IdP- </br>Verbund- </br>metadata|Speicherort der öffentlich verfügbaren Verbundmetadaten des IdP. (Einige Apps verwenden Verbundmetadaten als Alternative zur individuellen Konfiguration der URLs, des Bezeichners und des Tokensignaturzertifikats durch den Administrator.)|Sie finden die URL für die AD FS-Verbundmetadaten in der AD FS-Verwaltung unter **Dienst** > **Endpunkte** > **Metadaten** > **Typ: Verbundmetadaten**. Beispiel: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Der entsprechende Wert für Azure AD basiert auf dem Muster „https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml“. Hierbei wird der Wert für „{TenantDomainName}“ durch den Namen Ihres Mandanten im Format „contoso.onmicrosoft.com“ ersetzt. </br></br>Weitere Informationen finden Sie unter [Verbundmetadaten](../azuread-dev/azure-ad-federation-metadata.md).
 
 ## <a name="moving-saas-apps"></a>Verschieben von SaaS-Apps
 
@@ -260,7 +260,7 @@ Da Sie zuvor unter **Identität** > **Einzelanmeldungseinstellungen** die entspr
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Optional: Konfigurieren der Benutzerbereitstellung in Azure AD
 
-Wenn Sie möchten, dass Azure AD die Benutzerbereitstellung für eine SaaS-App direkt verarbeitet, helfen Ihnen die Informationen unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md) weiter.
+Wenn Sie möchten, dass Azure AD die Benutzerbereitstellung für eine SaaS-App direkt verarbeitet, helfen Ihnen die Informationen unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

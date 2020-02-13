@@ -3,17 +3,17 @@ title: C#-Tutorial zur Suchergebnispaginierung
 titleSuffix: Azure Cognitive Search
 description: In diesem Tutorial wird die Paginierung von Suchergebnissen veranschaulicht. Es basiert auf einem vorhandenen „hotels“-Projekt, bei dem Schaltflächen für „Erste“, „Nächste“, „Vorherige“ und „Letzte“ sowie mit Seitenzahlen verwendet werden. Bei einem zweiten Paginierungssystem wird das unendliche Scrollen verwendet. Dies wird ausgelöst, indem eine vertikale Scrollleiste ganz nach unten verschoben wird.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113768"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121523"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search
 

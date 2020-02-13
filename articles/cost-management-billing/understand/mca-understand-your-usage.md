@@ -2,21 +2,21 @@
 title: Begriffe in der Datei für die Azure-Nutzung und -Gebühren mit Microsoft-Kundenvereinbarung
 description: Informationen zu den Abschnitten der CSV-Datei zu Azure-Nutzung und -Gebühren in Ihrem Abrechnungsprofil.
 author: bandersmsft
-manager: jureid
+manager: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: b48cc5d5a36a382909adb250dd76b4f5783a4340
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 009a69baa68ed4a826d6a78c0df5d19d34bff006
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985322"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134581"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 

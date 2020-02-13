@@ -3,23 +3,23 @@ title: C#-Tutorial zur Reihenfolge von Ergebnissen
 titleSuffix: Azure Cognitive Search
 description: In diesem Tutorial wird veranschaulicht, wie Sie Suchergebnisse sortieren. Es basiert auf einem vorherigen „hotels“-Projekt mit einer Sortierung nach primären und sekundären Eigenschaften und enthält ein Bewertungsprofil zum Hinzufügen von Kriterien für die Erhöhung.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9230e555f9ea56ca4cda3fcabe1f9719e36a8f62
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112672"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121544"
 ---
 # <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#-Tutorial: Reihenfolge der Ergebnisse – Azure Cognitive Search
 
 Bis zu diesem Punkt in unserer Tutorialreihe werden Ergebnisse zurückgegeben und in einer Standardreihenfolge Reihenfolge angezeigt. Dies kann die Reihenfolge sein, in der sich die Daten befinden, oder es wurde möglicherweise ein standardmäßiges _Bewertungsprofil_ definiert, das verwendet wird, wenn keine Reihenfolgeparameter angegeben sind. In diesem Tutorial wird erläutert, wie Ergebnisse basierend auf einer primären Eigenschaft angeordnet werden, und wie diese Auswahl dann für Ergebnisse mit derselben primären Eigenschaft basierend auf einer sekundären Eigenschaft angeordnet werden. Als Alternative zur Sortierung nach Zahlenwerten zeigt das letzte Beispiel, wie nach einem benutzerdefinierten Bewertungsprofil sortiert wird. Wir werden uns auch etwas näher mit der Anzeige von _komplexen Typen_ befassen.
 
-Um die zurückgegebenen Ergebnisse leicht vergleichen zu können, baut dieses Projekt auf dem in [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) erstellten Projekt zum unendlichen Scrollen auf.
+Um die zurückgegebenen Ergebnisse leicht vergleichen zu können, baut dieses Projekt auf dem in [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) zum unendlichen Scrollen erstellt wurde.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Einsatzbereite Version des Projekts zum unendlichen Scrollen aus [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md). Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
+Einsatzbereite Version des Projekts zum unendlichen Scrollen aus [C#-Tutorial: Suchergebnispaginierung – Azure Cognitive Search](tutorial-csharp-paging.md) muss einsatzbereit sein. Dieses Projekt kann entweder Ihre eigene Version sein, oder Sie installieren es über GitHub: [Erstellen der ersten App](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 
 ## <a name="order-results-based-on-one-property"></a>Sortieren von Ergebnissen basierend auf einer Eigenschaft
 

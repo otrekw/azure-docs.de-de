@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d191abafbaad123ed47f8eaae6cdd4e48478da7a
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422642"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063525"
 ---
 # <a name="configure-password-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens per Kennwort
 
@@ -38,7 +38,7 @@ Einmaliges Anmelden per Kennwort eignet sich hervorragend, um Anwendungen schnel
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, helfen Ihnen die Artikel [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Add an unlisted (non-gallery) application to your Azure AD organization](add-non-gallery-app.md) (Hinzufügen einer nicht aufgeführten (nicht im Katalog enthaltenen) Anwendung zu Ihrer Azure AD-Organisation) weiter.
+Falls die Anwendung Ihrem Azure AD-Mandanten noch nicht hinzugefügt wurde, helfen Ihnen die Artikel [Hinzufügen einer Katalog-App zu Ihrer Azure AD-Organisation](add-gallery-app.md) bzw. [Hinzufügen einer nicht aufgeführten Anwendung (Nicht-Kataloganwendung) zu Ihrer Azure AD-Organisation](add-non-gallery-app.md) weiter.
 
 ## <a name="open-the-app-and-select-password-single-sign-on"></a>Öffnen der App und Auswählen des einmaligen Anmeldens per Kennwort
 
@@ -95,4 +95,4 @@ Nach dem Erfassen der Anmeldeseite können Sie Benutzer und Gruppen zuweisen sow
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md)
-- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](configure-automatic-user-provisioning-portal.md)
+- [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)

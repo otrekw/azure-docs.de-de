@@ -13,16 +13,16 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 912287200097906af7a8a9d6d12eb1421f3edadc
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696757"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160949"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
-`id_tokens` werden als Teil eines [OpenID Connect](v1-protocols-openid-connect-code.md)-Flusses an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
+`id_tokens` werden als Teil eines [OpenID Connect](v2-protocols-oidc.md)-Flusses an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
 
 ## <a name="using-the-id_token"></a>Verwenden des ID-Tokens
 
@@ -50,7 +50,7 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 
 ### <a name="header-claims"></a>Headeransprüche
 
-|Anspruch | Format | Beschreibung |
+|Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 |`typ` | Zeichenfolge – immer „JWT“ | Gibt an, dass das Token ein JWT ist.|
 |`alg` | String | Gibt den Algorithmus an, mit dem das Token signiert wurde. Beispiel: "RS256" |

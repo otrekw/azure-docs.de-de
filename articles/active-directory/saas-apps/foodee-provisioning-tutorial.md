@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2195056ec66550063aba5ce5e2b977b51a6dc5e3
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170067"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057806"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Foodee für die automatische Benutzerbereitstellung
 
 In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (Azure AD) in Foodee und Azure AD für die automatische Bereitstellung oder Aufhebung der Bereitstellung von Benutzern oder Gruppen in Foodee konfigurieren.
 
 > [!NOTE]
-> Der Artikel enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wenn Sie sich über den Zweck und die Funktionsweise dieses Diensts informieren sowie Antworten auf häufig gestellte Fragen erhalten möchten, lesen Sie [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> Der Artikel enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wenn Sie sich über den Zweck und die Funktionsweise dieses Diensts informieren sowie Antworten auf häufig gestellte Fragen erhalten möchten, lesen Sie [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
 > Dieser Connector befindet sich derzeit in der Vorschauversion. Weitere Informationen zu den Nutzungsbedingungen von Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -100,7 +100,7 @@ In diesem Abschnitt konfigurieren Sie den Azure AD-Bereitstellungsdienst für da
 
 Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure AD, indem Sie die folgenden Schritte ausführen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Unternehmensanwendungen** > **Alle Anwendungen** aus.
 
     ![Bereich für Unternehmensanwendungen](common/enterprise-applications.png)
 
@@ -150,7 +150,7 @@ Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure A
     ![Foodee-Benutzerzuordnungen](media/Foodee-provisioning-tutorial/groupattribute.png)
 
 1. Wenn Sie Ihre Änderungen committen möchten, wählen Sie **Speichern** aus.
-1. Konfigurieren Sie die Bereichsfilter. Informationen zur Vorgehensweise finden Sie in den Anleitungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+1. Konfigurieren Sie die Bereichsfilter. Informationen zur Vorgehensweise finden Sie in den Anleitungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
 1. Um den Azure AD-Bereitstellungsdienst für Foodee zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -164,15 +164,15 @@ Konfigurieren Sie die automatische Benutzerbereitstellung für Foodee in Azure A
 
     ![Die Schaltfläche „Speichern“ für die Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Durch diesen Vorgang wird die Erstsynchronisierung der Benutzer oder Gruppen gestartet, die Sie in der Dropdownliste **Bereich** definiert haben. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Weitere Informationen finden Sie unter [Wie lange dauert die Bereitstellung von Benutzern?](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
+Durch diesen Vorgang wird die Erstsynchronisierung der Benutzer oder Gruppen gestartet, die Sie in der Dropdownliste **Bereich** definiert haben. Die Erstsynchronisierung nimmt mehr Zeit in Anspruch als die nachfolgenden Synchronisierungen. Weitere Informationen finden Sie unter [Wie lange dauert die Bereitstellung von Benutzern?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Sie können den Abschnitt **Aktueller Status** verwenden, um den Fortschritt zu überwachen und den Links zu Ihrem Bereitstellungsaktivitätsbericht zu folgen. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst für Foodee ausgeführten Aktionen. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Sie können den Abschnitt **Aktueller Status** verwenden, um den Fortschritt zu überwachen und den Links zu Ihrem Bereitstellungsaktivitätsbericht zu folgen. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst für Foodee ausgeführten Aktionen. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
