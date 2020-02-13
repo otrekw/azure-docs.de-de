@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 084f3a1ecc7e44dc404d63a75b4561f8d5cb57cb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0e9fff56949125c5fa797e0e4ef7e1183448dd0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839810"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168571"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>Verwalten von (klassischen) Azure Machine Learning Studio-Webdiensten mit API Management
 ## <a name="overview"></a>Übersicht
@@ -38,12 +38,12 @@ Sie können Ihren Azure Machine Learning-Webdienst mit einer API Management-Inst
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **+ Ressource erstellen**.
 3. Geben Sie im Suchfeld „API Management“ ein, und wählen Sie dann die Ressource „API Management“ aus.
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 5. Der Wert **Name** wird verwendet, um eine eindeutige URL zu erstellen (in diesem Beispiel „demoazureml“).
 6. Wählen Sie **Abonnement**, **Ressourcengruppe** und **Region** für Ihre Dienstinstanz aus.
 7. Geben Sie einen Wert für **Name der Organisation** ein (in diesem Beispiel „demoazureml“).
 8. Geben Sie unter **Administrator-E-Mail** Ihre Adresse ein. Diese E-Mail-Adresse wird für Benachrichtigungen des API Management-Systems verwendet.
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 
 Es kann bis zu 30 Minuten dauern, bis ein neuer Dienst erstellt wird.
 

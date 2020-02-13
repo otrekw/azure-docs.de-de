@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0d220d1d88d9d761d9f0eba6187abefb372681be
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715523"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131900"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Erfassen historischer Telemetriedaten
 
@@ -87,7 +87,7 @@ Führen Sie folgende Schritte durch:
 |  ProductCode                    |  Produktcode oder Modellname oder -nummer des Geräts. Beispiel: EnviroMonitor#6800.  |
 |            Ports          |     Portname und -typ (digital oder analog).
 |     Name                 |  Name zum Identifizieren der Ressource. Beispiel: Modell- oder Produktname.
-      Beschreibung     | Aussagekräftige Beschreibung des Modells
+      BESCHREIBUNG     | Aussagekräftige Beschreibung des Modells
 |    Eigenschaften          |    Zusätzliche Eigenschaften des Herstellers   |
 |    **Device**             |                      |
 |   DeviceModelId     |     ID des zugeordneten Gerätemodells  |
@@ -96,7 +96,7 @@ Führen Sie folgende Schritte durch:
 |  Location            |  Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts   
 |ParentDeviceId       |    ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Beispielsweise ein Knoten, der mit einem Gateway verbunden ist. Ein Knoten weist die parentDeviceId als Gateway auf.  |
 |    Name            | Ein Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite konsistent ist. Ist der Partnergerätename benutzerdefiniert, muss der gleiche benutzerdefinierte Name in FarmBeats angegeben werden.|
-|     Beschreibung       |      Eine aussagekräftige Beschreibung |
+|     BESCHREIBUNG       |      Eine aussagekräftige Beschreibung |
 |     Eigenschaften    |  Zusätzliche Eigenschaften des Herstellers
 |     **SensorModel**        |          |
 |       Type (analog, digital)          |      Art des Sensors (analog oder digital)       |
@@ -117,7 +117,7 @@ Führen Sie folgende Schritte durch:
 |   Port > Name        |  Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist. |
 |    DeviceID  |    ID des Geräts, mit dem der Sensor verbunden ist     |
 | Name            |   Der Name zur Identifizierung der Ressource. Beispiel: Sensorname oder Produktname und Modellnummer oder Produktcode|
-|    Beschreibung      | Eine aussagekräftige Beschreibung |
+|    BESCHREIBUNG      | Eine aussagekräftige Beschreibung |
 |    Eigenschaften        |Zusätzliche Eigenschaften des Herstellers |
 
 Weitere Informationen zu Objekten finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
@@ -422,4 +422,4 @@ Hier finden Sie ein Beispiel für eine Telemetrienachricht:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu REST-API-basierten Integrationsdetails finden Sie unter [REST-API](references-for-azure-farmbeats.md#rest-api).
+Weitere Informationen zu REST-API-basierten Integrationsdetails finden Sie unter [REST-API](rest-api-in-azure-farmbeats.md).

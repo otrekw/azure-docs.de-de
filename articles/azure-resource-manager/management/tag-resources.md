@@ -3,12 +3,12 @@ title: Kennzeichnen von Ressourcen für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 0b2fff801b01afce0907bf86887fb110478377c1
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665160"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166605"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen
 
@@ -43,7 +43,7 @@ Um Tags auf Ressourcen anwenden zu können, muss der Benutzer Schreibzugriff auf
 
 Sie können [Azure Policy](../../governance/policy/overview.md) verwenden, um Taggingregeln und -konventionen zu erzwingen. Durch die Erstellung einer Richtlinie vermeiden Sie das Szenario, dass Ressourcen in Ihrem Abonnement bereitgestellt werden, die nicht den erwarteten Tags für Ihr Unternehmen entsprechen. Anstelle der manuellen Anwendung von Tags oder der Suche nach Ressourcen, die nicht konform sind, können Sie eine Richtlinie erstellen, die die erforderlichen Tags während der Bereitstellung automatisch anwendet. Tags können jetzt auch auf vorhandene Ressourcen mit dem neuen Effekt [Ändern](../../governance/policy/concepts/effects.md#modify) und einer [Korrekturaufgabe](../../governance/policy/how-to/remediate-resources.md) angewendet werden. Im folgenden Abschnitt werden Beispielrichtlinien für Tags dargestellt.
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-general-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 
@@ -394,7 +394,7 @@ Wenn Sie mehrere Werte in einem einzelnen Tag speichern möchten, wenden Sie ein
 
 ### <a name="apply-tags-from-resource-group"></a>Anwenden von Tags aus der Ressourcengruppe
 
-Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, verwenden Sie die Funktion [resourceGroup](../templates/template-functions-resource.md#resourcegroup). Wenn Sie den Tagwert abrufen, verwenden Sie die `tags.[tag-name]`-Syntax anstelle der `tags.tag-name`-Syntax, da einige Zeichen in der Punktnotation nicht ordnungsgemäß analysiert werden.
+Wenn Sie Tags aus einer Ressourcengruppe auf eine Ressource anwenden möchten, verwenden Sie die Funktion [resourceGroup](../templates/template-functions-resource.md#resourcegroup). Wenn Sie den Tagwert abrufen, verwenden Sie die `tags[tag-name]`-Syntax anstelle der `tags.tag-name`-Syntax, da einige Zeichen in der Punktnotation nicht ordnungsgemäß analysiert werden.
 
 ```json
 {

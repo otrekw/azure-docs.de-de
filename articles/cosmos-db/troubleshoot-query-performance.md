@@ -1,19 +1,19 @@
 ---
 title: Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 description: Erfahren Sie, wie Sie Probleme mit SQL-Abfragen in Azure Cosmos DB identifizieren, diagnostizieren und beheben.
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 01/14/2020
-ms.author: girobins
+ms.date: 02/10/2020
+ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264270"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132062"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 
@@ -198,7 +198,7 @@ Obwohl Abfragen mit einem Filter und einer `ORDER BY`-Klausel normalerweise eine
 Abfrage:
 
 ```sql
-SELECT * FROM c WHERE c.foodGroup = “Soups, Sauces, and Gravies” ORDER BY c._ts ASC
+SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
 ```
 
 Indizierungsrichtlinie:
@@ -224,8 +224,8 @@ Indizierungsrichtlinie:
 Aktualisierte Abfrage (enthält beide Eigenschaften in der `ORDER BY`-Klausel):
 
 ```sql
-SELECT * FROM c 
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” 
+SELECT * FROM c
+WHERE c.foodGroup = “Soups, Sauces, and Gravies”
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
@@ -308,14 +308,14 @@ Wenn wir beispielsweise einen Container mit dem Partitionsschlüssel „foodGrou
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 Diese Abfragen könnten auch durch Einschließen des Partitionsschlüssels in die Abfrage optimiert werden:
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup IN(“Soups, Sauces, and Gravies”, “"Vegetables and Vegetable Products”) and  c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
 Abfragen, die Bereichsfilter für den Partitionsschlüssel oder keine Filter für den Partitionsschlüssel enthalten, müssen „aufgefächert“ werden und den Index jeder physischen Partition auf Ergebnisse überprüfen.
@@ -327,7 +327,7 @@ WHERE c.description = "Mushroom, oyster, raw"
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
+WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
 ## <a name="filters-on-multiple-properties"></a>Filter für mehrere Eigenschaften

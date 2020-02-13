@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e0505960a413308283c4e67e33ec495eedd3b092
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 568a21cee5b50a8914c603976f5951d0235dbff7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827722"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157175"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -61,7 +61,7 @@ Event Hubs ermöglicht eine differenzierte Kontrolle über Ereignisherausgeber d
 
 Sie müssen Herausgebernamen nicht im Voraus erstellen, jedoch müssen diese mit dem SAS-Token übereinstimmen, das beim Veröffentlichen eines Ereignisses verwendet wird, um die Identitäten unabhängiger Herausgeber sicherzustellen. Bei Verwendung von Herausgeberrichtlinien wird der Wert **PartitionKey** auf den Herausgebernamen festgelegt. Diese Werte müssen übereinstimmen, damit alles ordnungsgemäß funktioniert.
 
-## <a name="capture"></a>Erfassen
+## <a name="capture"></a>Erfassung
 
 Mit [Event Hubs Capture](event-hubs-capture-overview.md) lassen sich die Streamingdaten automatisch in Event Hubs aufzeichnen und in einem Blob Storage-Konto oder einem Azure Data Lake-Dienstkonto speichern. Sie können Event Hubs Capture im Azure-Portal aktivieren und eine Mindestgröße sowie ein Mindestzeitfenster für die Aufzeichnung angeben. Mit Event Hubs Capture legen Sie ein eigenes Azure Blob Storage-Konto und einen Container bzw. ein Azure Data Lake-Dienstkonto fest, wovon eines zum Speichern der aufgezeichneten Daten verwendet wird. Die aufgezeichneten Daten werden im Apache Avro-Format geschrieben.
 
@@ -79,7 +79,7 @@ Eine Entität, die Ereignisdaten von einem Event Hub liest, ist ein *Ereigniscon
 
 ### <a name="consumer-groups"></a>Verbrauchergruppen
 
-Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch *Consumergruppen*. Eine Consumergruppe ist eine Ansicht (Status, Position oder Offset) des gesamten Event Hubs. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisstreams aufweisen und den Stream unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
+Der Veröffentlichen-/Abonnieren-Mechanismus von Event Hubs erfolgt durch *Consumergruppen*. Eine Consumergruppe ist eine Ansicht (Status, Position oder Offset) des gesamten Event Hubs. Mithilfe von Consumergruppen können mehrere verarbeitende Anwendungen jeweils eine separate Ansicht des Ereignisdatenstroms aufweisen und den Datenstrom unabhängig voneinander in einem unabhängigen Tempo und mit eigenen Offsets lesen.
 
 In einer Streamverarbeitungsarchitektur entspricht jede Downstreamanwendung einer Consumergruppe. Wenn Sie Ereignisdaten in den langfristigen Speicher schreiben möchten, ist die entsprechende Speicherschreibanwendung eine Consumergruppe. Komplexe Ereignisverarbeitung kann von einer anderen separaten Consumergruppe ausgeführt werden. Sie können auf Partitionen nur über eine Consumergruppe zugreifen. In einem Event Hub gibt es immer eine Standardconsumergruppe, und Sie können bis zu 20 Consumergruppen für einen Event Hub auf Standardebene erstellen.
 
@@ -93,7 +93,7 @@ Es folgen Beispiele für die URI-Konvention für Consumergruppen:
 //[my namespace].servicebus.windows.net/[event hub name]/[Consumer Group #2]
 ```
 
-Die folgende Abbildung zeigt die Streamverarbeitungsarchitektur von Event Hubs:
+Die folgende Abbildung zeigt die Datenstromverarbeitungsarchitektur von Event Hubs:
 
 ![Event Hubs](./media/event-hubs-features/event_hubs_architecture.png)
 
@@ -134,11 +134,14 @@ Die Verwaltung des Offsets liegt in Ihrer Verantwortung.
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
-* Erste Schritte mit einem [Event Hubs-Tutorial][Event Hubs tutorial]
+- Erste Schritte mit Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 * [Event Hubs-Beispiele][]
 
-[Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
 [Event Hubs-Beispiele]: https://github.com/Azure/azure-event-hubs/tree/master/samples

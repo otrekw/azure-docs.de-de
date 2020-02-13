@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e70d2e07f74a48e1d99e04c5369a933cfd9cede1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: da950c2219d3faf679953690d207372b64913ba8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905352"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162057"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>Git-Repositorys mit Beispielen für Azure Event Hubs 
 Sie finden Event Hubs-Beispiele auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples). Mit diesen Beispielen werden wichtige Features in [Azure Event Hubs](/azure/event-hubs/) veranschaulicht. Dieser Artikel kategorisiert und beschreibt die verfügbaren Beispiele und stellt Links zu jedem der Beispiele zur Verfügung.
@@ -46,7 +46,7 @@ Sie finden Event Hubs-Beispiele auf [GitHub](https://github.com/Azure/azure-even
 | azure-eventhubs, Version 5 (neueste Version) | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples) | 
 | azure-eventhub, Version 1 (Legacy) | [GitHub-Speicherort](https://github.com/Azure/azure-sdk-for-python/tree/release/eventhub-v1/sdk/eventhub/azure-eventhubs/examples) |
 
-## <a name="nodejs-samples"></a>Beispiele für Node.js
+## <a name="javascript-samples"></a>JavaScript-Beispiele
 
 | Version | Speicherort für Beispiele |
 | ------- | ---------------- | 

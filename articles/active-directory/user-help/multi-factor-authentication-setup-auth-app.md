@@ -2,20 +2,20 @@
 title: 'Einrichten einer Authentifikator-App als Methode für die zweistufige Überprüfung: Azure Active Directory | Microsoft-Dokumentation'
 description: Hier finden Sie eine Anleitung zum Einrichten der Microsoft Authenticator-App als Methode für die zweistufige Überprüfung.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
-ms.author: lizross
-ms.openlocfilehash: 078379c52c7e7fe5072ecc19c95d6b7e40b5f876
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705257"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062573"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Einrichten einer Authentifikator-App als Methode für die zweistufige Überprüfung
 

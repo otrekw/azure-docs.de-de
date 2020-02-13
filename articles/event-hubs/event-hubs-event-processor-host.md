@@ -14,12 +14,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/10/2020
 ms.author: shvija
-ms.openlocfilehash: 7533c2a4d5ef2bb3e6f66e116d3ff3937ddd77b3
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 414179d62970315a7575be0411bf1cb152349fdc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899975"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162292"
 ---
 # <a name="event-processor-host"></a>Ereignisprozessorhost
 > [!NOTE]
@@ -202,7 +202,11 @@ Es wird nicht empfohlen, einen Empfänger mit epoch-Wert zu erstellen und dann i
 
 Nachdem Sie sich mit dem Ereignisprozessorhost vertraut gemacht haben, finden Sie in den folgenden Artikeln weitere Informationen zu Event Hubs:
 
-* Erste Schritte mit einem [Event Hubs-Tutorial](event-hubs-dotnet-standard-getstarted-send.md)
+- Erste Schritte mit Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md)
 * [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312225"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152277"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Referenz des Moduls „Extract N-Gram Features from Text“
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben. Verwenden Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren), um unstrukturierte Textdaten *in Merkmale zu zerlegen*. 
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben. Verwenden Sie das Modul „Extract N-Gram Features from Text“ (N-Gramm-Merkmale aus Text extrahieren), um unstrukturierte Textdaten *in Merkmale zu zerlegen*. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Konfiguration des Moduls „Extract N-Gram Features from Text“
 

@@ -8,11 +8,11 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 064786de1f25c3d185984534b9a8fc61602826ee
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 02/10/2020
 ms.locfileid: "76311460"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Unterschiede zwischen Azure Machine Learning und Machine Learning Studio (klassisch)
@@ -24,19 +24,20 @@ Dieser Artikel enthält einen Vergleich der Features, der Funktionen und der Obe
 
 ## <a name="about-azure-machine-learning"></a>Über Azure Machine Learning
 
-[Azure Machine Learning](overview-what-is-azure-ml.md) verfügt sowohl über eine Weboberfläche, die als Designer bezeichnet wird, **als auch** über mehrere SDKs und eine CLI zum schnellen Aufbereiten von Daten und Trainieren und Bereitstellen von Machine Learning-Modellen. Mit Azure Machine Learning erhalten Sie Skalierbarkeit, Unterstützung für mehrere Frameworks sowie erweiterte ML-Funktionen, z. B. automatisiertes Machine Learning und Pipelineunterstützung.
+[Azure Machine Learning](overview-what-is-azure-ml.md) verfügt sowohl über eine Weboberfläche, die als Designer (Vorschauversion) bezeichnet wird, **als auch** über mehrere SDKs und eine CLI zum schnellen Aufbereiten von Daten und Trainieren und Bereitstellen von Machine Learning-Modellen. Mit Azure Machine Learning erhalten Sie Skalierbarkeit, Unterstützung für mehrere Frameworks sowie erweiterte ML-Funktionen, z. B. automatisiertes Machine Learning und Pipelineunterstützung.
 
 Der Azure Machine Learning-Designer verfügt über eine ähnliche Drag & Drop-Umgebung wie Studio (klassisch). Im Gegensatz zur proprietären Computeplattform von Studio (klassisch) nutzt der Designer aber Ihre eigenen Computeressourcen und ist skalierbar und vollständig in Azure Machine Learning integriert.  
 
 > [!TIP]
-> Kunden, die derzeit Machine Learning Studio (klassisch) verwenden oder evaluieren, wird empfohlen, den [Azure Machine Learning-Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) auszuprobieren. Er bietet Drag & Drop-ML-Module und __zusätzlich__ Skalierbarkeit, Versionskontrolle und Unternehmenssicherheit.
+> Kunden, die derzeit Machine Learning Studio (klassisch) verwenden oder evaluieren, wird empfohlen, den [Azure Machine Learning-Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (Vorschauversion) auszuprobieren. Er bietet Drag & Drop-ML-Module und __zusätzlich__ Skalierbarkeit, Versionskontrolle und Unternehmenssicherheit.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Vergleich: Azure Machine Learning und Machine Learning Studio (klassisch)
 
 Hier ist ein kurzer Vergleich:
 
 ||  Azure Machine Learning-Designer|Studio (klassisch) |
-|---| --- | --- | 
+|---| --- | --- |
+||Der Designer befindet sich in der Vorschauphase, Azure Machine Learning ist allgemein verfügbar.|Allgemein verfügbar (Generally Available, GA) | 
 |Drag & Drop-Oberfläche| Ja | Ja|
 |Experiment| Skalieren mit Computeziel|Skalieren (Limit für Trainingsdaten: 10 GB) | 
 |Module für Schnittstellen| [Viele beliebte Module](algorithm-module-reference/module-reference.md) | Mehrere |

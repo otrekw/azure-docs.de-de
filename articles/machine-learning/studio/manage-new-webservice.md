@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2e72c8a363ee7f58630b1c0d8d0f00434c2e2b7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 30e9e31c7b3f372ed252f1b81eeece02d2ca1f21
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838792"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168505"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio (klassisch) Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -84,7 +84,7 @@ Sie können die folgenden Eigenschaften aktualisieren:
 
 * In **Description** können Sie eine Beschreibung des Webdiensts eingeben.
 * In **Title** können Sie einen Titel für den Webdienst eingeben.
-* in **Keys** können Sie den primären und die sekundären API-Schlüssel rotieren lassen.
+* **Keys** können Sie den primären und die sekundären API-Schlüssel rotieren lassen.
 * In **Storage account key** können Sie den Schlüssel des Speicherkontos aktualisieren, das dem Webdienst zugeordnet ist. 
 * **Enable Sample data** ermöglicht das Bereitstellen von Beispieldaten, die Sie mit dem Request-Response-Dienst testen können. Wenn Sie den Webdienst in Machine Learning Studio (klassisch) erstellt haben, stammen die Beispieldaten aus den Daten, mit denen Sie Ihr Modell trainiert haben. Wenn Sie den Dienst programmgesteuert erstellt haben, stammen die Daten aus den Beispieldaten, die Sie als Teil des JSON-Pakets bereitgestellt haben.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159876"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138015"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -36,7 +36,7 @@ Dieser Artikel beschäftigt sich mit Folgendem:
 ## <a name="cloud-security-advantages"></a>Sicherheitsvorteile der Cloud
 Es ist wichtig, die [Aufteilung der Zuständigkeiten](shared-responsibility.md) zwischen Ihnen und Microsoft zu verstehen. In einer lokalen Umgebung sind Sie für den gesamten Stapel zuständig. Bei einem Wechsel in die Cloud wird dagegen ein Teil der Zuständigkeit auf Microsoft übertragen.
 
-Die [Nutzung der Cloud bringt einige Sicherheitsvorteile mit sich](shared-responsibility.md#cloud security advantages). In einer lokalen Umgebung werden in Organisationen häufig nicht alle Zuständigkeitsbereiche abgedeckt, und für die Sicherheit stehen nur begrenzte Ressourcen zur Verfügung. So entsteht eine Umgebung, in der Angreifer Sicherheitslücken auf allen Ebenen ausnutzen können.
+Die [Nutzung der Cloud bringt einige Sicherheitsvorteile mit sich](shared-responsibility.md#cloud-security-advantages). In einer lokalen Umgebung werden in Organisationen häufig nicht alle Zuständigkeitsbereiche abgedeckt, und für die Sicherheit stehen nur begrenzte Ressourcen zur Verfügung. So entsteht eine Umgebung, in der Angreifer Sicherheitslücken auf allen Ebenen ausnutzen können.
 
 Mithilfe der cloudbasierten Sicherheitsfunktionen und Clouddaten eines Anbieters können Organisationen ihre Bedrohungserkennung und ihre Reaktionszeiten verbessern.  Durch die Übertragung von Aufgaben an den Cloudanbieter profitieren Organisationen von einer höheren Sicherheit und können Sicherheitsressourcen und entsprechende Finanzmittel für andere geschäftliche Prioritäten nutzen.
 
@@ -100,7 +100,7 @@ In der folgende Tabelle sind die STRIDE-Bedrohungen sowie einige Beispiele für 
 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | --- | --- | --- |
-| Spoofing | Authentication | Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind. |
+| Spoofing | Authentifizierung | Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind. |
 | Manipulation | Integrität | Überprüfen Sie SSL-Zertifikate. |
 | Nichtanerkennung | Unleugbarkeit | Aktivieren Sie die [Überwachung und Diagnose](/azure/architecture/best-practices/monitoring) von Azure. |
 | Veröffentlichung von Informationen | Vertraulichkeit | Verschlüsseln Sie vertrauliche ruhende Daten mithilfe von [Dienstzertifikaten](/rest/api/appservice/certificates). |

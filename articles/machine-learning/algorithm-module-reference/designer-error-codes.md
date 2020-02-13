@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311664"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152362"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
+# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
-In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes im Azure Machine Learning-Designer beschrieben, um Ihnen bei der Problembehandlung Ihrer Pipelines für maschinelles Lernen zu helfen.
+In diesem Artikel werden die Fehlermeldungen und Ausnahmecodes in Azure Machine Learning Designer (Preview) beschrieben, um Ihnen bei der Problembehandlung Ihrer Machine Learning-Pipelines zu helfen.
 
 Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Designer abzurufen:  
 

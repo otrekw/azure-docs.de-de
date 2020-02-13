@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941479"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157447"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -202,7 +202,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-Einwilligung ist der Prozess, mit dem ein Benutzer einer Anwendung die Autorisierung für den Zugriff auf geschützte Ressourcen in seinem Auftrag gewährt. Microsoft Identity Platform 2.0 unterstützt die inkrementelle Zustimmung. Das heißt, ein Sicherheitsprinzipal kann zunächst einen Mindestsatz von Berechtigungen anfordern und im Laufe der Zeit und nach Bedarf Berechtigungen hinzufügen. Wenn Ihr Code ein Zugriffstoken anfordert, geben Sie mit dem `scope`-Parameter den Umfang der Berechtigungen an, die Ihre App jederzeit braucht. Weitere Informationen zur inkrementellen Zustimmung finden Sie im Abschnitt **Inkrementelle und dynamische Zustimmung** des Artikels [Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)](../../active-directory/develop/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
+Einwilligung ist der Prozess, mit dem ein Benutzer einer Anwendung die Autorisierung für den Zugriff auf geschützte Ressourcen in seinem Auftrag gewährt. Microsoft Identity Platform 2.0 unterstützt die inkrementelle Zustimmung. Das heißt, ein Sicherheitsprinzipal kann zunächst einen Mindestsatz von Berechtigungen anfordern und im Laufe der Zeit und nach Bedarf Berechtigungen hinzufügen. Wenn Ihr Code ein Zugriffstoken anfordert, geben Sie mit dem `scope`-Parameter den Umfang der Berechtigungen an, die Ihre App jederzeit braucht. Weitere Informationen zur inkrementellen Zustimmung finden Sie im Abschnitt **Inkrementelle und dynamische Zustimmung** des Artikels [Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent).
 
 Mit der folgenden Methode werden die Authentifizierungseigenschaften für die Anforderung der inkrementellen Zustimmung erstellt:
 

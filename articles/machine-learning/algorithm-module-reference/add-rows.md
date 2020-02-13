@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 39bbf3b3a38926d696233c2d77bae83ccfc85206
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314554"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152464"
 ---
 # <a name="add-rows-module"></a>Modul „Add Rows“ (Hinzufügen von Zeilen)
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul zum Verketten zweier Datasets. Bei der Verkettung werden die Zeilen des zweiten Datasets am Ende des ersten Datasets hinzugefügt.  
   

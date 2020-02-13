@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475776"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132049"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Abrufen der Drohnenbilder von Drohnenpartnern
 
@@ -91,4 +91,4 @@ Vom Drohnenanbieter hochgeladene Dateien und Bilder werden im Abschnitt **Karten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Ihre Drohnenbilder unter Verwendung der [APIs](references-for-azure-farmbeats.md#rest-api) des FarmBeats-Datenhubs abrufen.
+Erfahren Sie, wie Sie Ihre Drohnenbilder unter Verwendung der [APIs](rest-api-in-azure-farmbeats.md) des FarmBeats-Datenhubs abrufen.

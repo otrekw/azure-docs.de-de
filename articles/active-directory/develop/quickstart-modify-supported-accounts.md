@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704118"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160688"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Schnellstart: Ändern der von einer Anwendung unterstützten Konten
 
@@ -63,7 +63,7 @@ Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb
 
 Single-Page-Webanwendungen (SPAs) basieren in der Regel auf einem JavaScript-intensiven Front-End, das im Browser ausgeführt wird. Hierüber wird das Web-API-Back-End der Anwendung zum Ausführen der Geschäftslogik aufgerufen. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an die dazugehörige Back-End-Web-API schützen können.
 
-Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Informieren Sie sich über den Ablauf der impliziten OAuth 2.0-Genehmigung in Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) und [v2.0](v2-oauth2-implicit-grant-flow.md), um weitere Informationen zur impliziten Autorisierungsgenehmigung zu erhalten und entscheiden zu können, ob sie für Ihr Anwendungsszenario geeignet ist.
+Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Informieren Sie sich über den Ablauf der impliziten OAuth 2.0-Genehmigung in Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) und [v2.0](v2-oauth2-implicit-grant-flow.md), um weitere Informationen zur impliziten Autorisierungsgenehmigung zu erhalten und entscheiden zu können, ob sie für Ihr Anwendungsszenario geeignet ist.
 
 Die implizite OAuth 2.0-Genehmigung ist für Anwendungen standardmäßig deaktiviert. Sie können die implizite OAuth 2.0-Genehmigung für Ihre Anwendung mithilfe der unten aufgeführten Schritte aktivieren.
 

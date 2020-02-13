@@ -2,19 +2,19 @@
 title: 'Schnellstart: Erstellen eines Suchindex in Python mithilfe von REST-APIs'
 titleSuffix: Azure Cognitive Search
 description: Hier wird erläutert, wie Sie mit Python, Jupyter Notebooks und der Azure Cognitive Search-REST-API einen Index erstellen, Daten laden und Abfragen ausführen.
-author: heidisteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792258"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121617"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Python mithilfe von Jupyter Notebooks
 
@@ -36,7 +36,7 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section) mit Python 3.x und Jupyter Notebooks.
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Sie können den Free-Tarif für diesen Schnellstart verwenden. 
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Sie können den Free-Tarif für diesen Schnellstart verwenden. 
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
@@ -297,7 +297,7 @@ In diesem Schritt wird beschrieben, wie Sie einen Index mit der [REST-API zum Du
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
    ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 

@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750731"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162309"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -71,7 +71,7 @@ Alle Protokolle werden im JavaScript Object Notation (JSON)-Format gespeichert. 
 
 JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-Name | Beschreibung
+Name | BESCHREIBUNG
 ------- | -------
 TaskName | Beschreibung der Aufgabe, bei der ein Fehler aufgetreten ist
 ActivityId | Interne ID zur Nachverfolgung
@@ -109,7 +109,7 @@ Es folgt ein Codebeispiel für eine JSON-Zeichenfolge im Archivierungsprotokoll:
 
 JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-Name | Beschreibung
+Name | BESCHREIBUNG
 ------- | -------
 ActivityId | Interne ID zur Nachverfolgung
 EventName | Vorgangsname  
@@ -139,6 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
-* [Erste Schritte mit Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)
+- [Einführung in Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Übersicht über die Event Hubs-API](event-hubs-api-overview.md)
+- Erste Schritte mit Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

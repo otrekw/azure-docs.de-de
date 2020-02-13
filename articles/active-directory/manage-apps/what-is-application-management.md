@@ -12,16 +12,16 @@ ms.date: 06/05/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d1ebb4b094ab5c03343486e7af6624273288453
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7ca73fac06649f801461e53130a67aa9ec0ad0d0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421210"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063321"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Anwendungsverwaltung mit Azure Active Directory
 
-Azure Active Directory (Azure AD) vereinfacht die Verwaltung von Anwendungen durch ein einziges Identitätssystem für Ihre cloudbasierten und lokalen Apps. Sie können Azure AD Ihre SaaS-Anwendungen (Software-as-a-Service), lokalen Anwendungen und branchenspezifischen Apps hinzufügen. Die Benutzer melden sich einmal an, um sicher und nahtlos auf diese Anwendungen sowie auf Office 365 und andere Geschäftsanwendungen von Microsoft zuzugreifen. Durch die [Automatisierung der Benutzerbereitstellung](user-provisioning.md) können Sie die Verwaltungskosten senken. Sie können die mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff verwenden, um sicheren Zugriff auf Anwendungen zu ermöglichen.
+Azure Active Directory (Azure AD) vereinfacht die Verwaltung von Anwendungen durch ein einziges Identitätssystem für Ihre cloudbasierten und lokalen Apps. Sie können Azure AD Ihre SaaS-Anwendungen (Software-as-a-Service), lokalen Anwendungen und branchenspezifischen Apps hinzufügen. Die Benutzer melden sich einmal an, um sicher und nahtlos auf diese Anwendungen sowie auf Office 365 und andere Geschäftsanwendungen von Microsoft zuzugreifen. Durch die [Automatisierung der Benutzerbereitstellung](../app-provisioning/user-provisioning.md) können Sie die Verwaltungskosten senken. Sie können die mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff verwenden, um sicheren Zugriff auf Anwendungen zu ermöglichen.
 
 ![Diagramm: Apps im Verbund über Azure AD](media/what-is-application-management/app-management-overview.png)
 

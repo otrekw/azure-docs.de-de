@@ -2,22 +2,22 @@
 title: 'Schnellstart: Microsoft Identity Platform – iOS und macOS | Azure'
 description: Hier finden Sie Informationen zum Anmelden von Benutzern und zum Abfragen von Microsoft Graph in einer iOS- oder macOS-Anwendung.
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/24/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 25e37d27805adb47fae19bdcc0e94253f8c4ccf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4dea0feb5d5a1cb42640b1fc05bb185e970ae8af
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703455"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084499"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer iOS- oder macOS-App
 

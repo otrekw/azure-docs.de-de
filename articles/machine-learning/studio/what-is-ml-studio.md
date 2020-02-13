@@ -3,20 +3,20 @@ title: Was ist ML Studio (klassisch)?
 titleSuffix: Azure
 description: Azure Machine Learning Studio (klassisch) ist ein Drag & Drop-Tool zum schnellen Erstellen von Modellen auf der Grundlage einer verwendungsbereiten Bibliothek mit Algorithmen und Modulen.
 services: machine-learning
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: be3a07eb2d4232d27a5b41ddc4258c89b79729bf
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314068"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169037"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Was ist Machine Learning Studio (klassisch)?
 
@@ -38,13 +38,13 @@ Es ist keinerlei Programmierung erforderlich. Sie müssen lediglich Datasets und
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Inwiefern unterscheidet sich Azure Machine Studio (klassisch) von Azure Machine Learning?
 
-In [Azure Machine Learning](../overview-what-is-azure-ml.md) stehen SDKs **und** der Azure Machine Learning-Designer zur Verfügung, um im Handumdrehen Daten vorzubereiten und Machine Learning-Modelle zu trainieren und bereitzustellen. Der Designer bietet eine ähnliche Drag & Drop-Umgebung wie Studio (klassisch). Im Gegensatz zur proprietären Computeplattform von Studio (klassisch) nutzt der Designer jedoch Ihre eigenen Computeressourcen und ist vollständig in Azure Machine Learning integriert.
+In [Azure Machine Learning](../overview-what-is-azure-ml.md) stehen SDKs **und** der Azure Machine Learning-Designer (Vorschauversion) zur Verfügung, um im Handumdrehen Daten vorzubereiten und Machine Learning-Modell zu trainieren und bereitzustellen. Der Designer bietet eine ähnliche Drag & Drop-Umgebung wie Studio (klassisch). Im Gegensatz zur proprietären Computeplattform von Studio (klassisch) nutzt der Designer jedoch Ihre eigenen Computeressourcen und ist vollständig in Azure Machine Learning integriert.
 
 Im Anschluss finden Sie eine kurze Gegenüberstellung:
 
 || Machine Learning Studio (klassisch) | Azure Machine Learning |
 |---| --- | --- |
-| Drag & Drop-Oberfläche | Ja | Ja: [Azure Machine Learning-Designer](../concept-designer.md) |
+| Drag & Drop-Oberfläche | Ja | Ja (siehe [Was ist der Azure Machine Learning-Designer (Vorschau)?](../concept-designer.md)) |
 | Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
 | Module für die Drag & Drop-Oberfläche | Mehrere | Anfänglicher Satz beliebter [Module](../algorithm-module-reference/module-reference.md)|
 |Trainieren von Computezielen| Proprietäres Computeziel, nur CPU-Unterstützung| Unterstützt Azure Machine Learning Compute (GPU oder CPU) und virtuelle Notebook-Computer.<br/>([Weitere Computeziele werden im SDK unterstützt.](../concept-compute-target.md#train))|

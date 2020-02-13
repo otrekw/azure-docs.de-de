@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c44f37c37bff2ddeb0fbba83d170054bf21129a6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791840"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162343"
 ---
 #   <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
@@ -47,7 +47,7 @@ So könnte ein JSON-Dokument aussehen, das hilfreiche Eingabewerte für diesen S
       {
         "text": "The brown fox jumps over the dog",
         "itemsToInsert": ["quick", "lazy"],
-        "offsets": [3, 28],
+        "offsets": [3, 28]
       }
     }
   ]
@@ -142,6 +142,6 @@ Im oben gezeigten Beispiel wird davon ausgegangen, dass ein Feld mit normalisier
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Integrierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

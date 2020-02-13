@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6e2c1af03d5d6ccfbcb15a2dd33bc2e987be4d48
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 810f2b376e9983743617dae77d74d596a7fbe663
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543119"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084185"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Was ist Azure Private Link? (Vorschau)
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Link ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
@@ -50,6 +50,7 @@ Azure Private Link bietet folgende Vorteile:
 |  |  Azure Database for PostgreSQL (Einzelserver)         | Alle öffentlichen Regionen      |   Vorschau      |
 |  |  Azure Database for MySQL         | Alle öffentlichen Regionen      |   Vorschau      |
 |  |  Azure Database for MariaDB         | Alle öffentlichen Regionen      |   Vorschau      |
+|  |  Azure-Schlüsseltresor         | Alle öffentlichen Regionen      |   Vorschau      |
 
 Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

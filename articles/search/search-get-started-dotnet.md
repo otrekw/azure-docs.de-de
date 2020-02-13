@@ -3,18 +3,18 @@ title: 'Schnellstart: Erstellen eines Suchindex in C# mit .NET'
 titleSuffix: Azure Cognitive Search
 description: In diesem C#-Schnellstart erfahren Sie, wie Sie mit dem Azure Cognitive Search-.NET SDK einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406754"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121652"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in C# mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + [Visual Studio](https://visualstudio.microsoft.com/downloads/) (beliebige Edition). Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden.
 
 <a name="get-service-info"></a>
 
@@ -56,7 +56,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-## <a name="set-up-your-environment"></a>Einrichten der Umgebung
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
 Öffnen Sie zunächst Visual Studio, und erstellen Sie ein neues Konsolen-App-Projekt, das mit .NET Core ausgeführt werden kann.
 
@@ -77,7 +77,7 @@ Verwenden Sie für dieses Projekt die Version 9 des NuGet-Pakets `Microsoft.Azu
 1. Wiederholen Sie diese Schritte für `Microsoft.Extensions.Configuration.Json`, und wählen Sie dabei mindestens die Version 2.2.0 aus.
 
 
-### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
+### <a name="add-azure-cognitive-search-service-information"></a>Hinzufügen von Azure Cognitive Search-Dienstinformationen
 
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Neues Element...** aus. 
 

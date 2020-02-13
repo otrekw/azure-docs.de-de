@@ -2,21 +2,20 @@
 title: 'Schnellstart: Erstellen einer Event Hub-Instanz mit PowerShell: Azure Event Hubs'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe von Azure PowerShell einen Event Hub erstellen und anschließend mithilfe des .NET Standard SDK Ereignisse senden und empfangen.
 services: event-hubs
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 2a88fe340037c31a71cb34181682095f31400c36
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.author: spelluru
+ms.openlocfilehash: 89ec1957e75fa45eef6c7939a77e5cc1b3cf7806
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720595"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162122"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Schnellstart: Erstellen einer Event Hub-Instanz mit Azure PowerShell
 
@@ -71,11 +70,10 @@ Glückwunsch! Sie haben Azure PowerShell verwendet, um einen Event Hubs-Namespac
 
 In diesem Artikel haben Sie den Event Hubs-Namespace erstellt und Beispielanwendungen verwendet, um Ereignisse von Ihrem Event Hub zu senden und zu empfangen. Schritt-für-Schritt-Anleitungen zum Senden von Ereignissen an einen Event Hub oder Empfangen von Ereignissen von einem Event Hub finden Sie in den Tutorials zum **Senden und Empfangen von Ereignissen**: 
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (nur senden)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (nur empfangen)](event-hubs-storm-getstarted-receive.md)

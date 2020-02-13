@@ -3,18 +3,18 @@ title: 'Schnellstart: Überwachen Ihrer Geräte in Azure IoT Central'
 description: Hier erfahren Sie, wie Sie als Bediener mit der Azure IoT Central-Anwendung Ihre Geräte überwachen können.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026163"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168753"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Schnellstart: Überwachen Ihrer Geräte mithilfe von Azure IoT Central
 
@@ -41,8 +41,6 @@ Die Ansicht **Übersicht** für das simulierte Gerät, das Sie in den vorherigen
 ## <a name="investigate-an-issue"></a>Untersuchen eines Problems
 
 Als Bediener können Sie in den Ansichten **Übersicht**, **Info** und **Befehle** Informationen zum Gerät anzeigen. Der Ersteller hat die Ansicht **Gerät verwalten** erstellt, damit Sie Geräteinformationen bearbeiten und Geräteeigenschaften festlegen können.
-
-Wählen Sie die Ansicht **Übersicht** aus, um Informationen zum Gerät anzuzeigen.
 
 Das Diagramm auf dem Dashboard zeigt einen Plot der Gerätetemperatur. Sie entscheiden, dass die Gerätetemperatur zu hoch ist.
 

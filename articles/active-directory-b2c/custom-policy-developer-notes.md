@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850585"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166959"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -72,7 +72,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | OAUTH1 der vertrauenden Seite |  |  |  | Wird nicht unterstützt. |
 | OAUTH2 der vertrauenden Seite |  |  | X |  |
 | OIDC der vertrauenden Seite |  |  | X |  |
-| SAML der vertrauenden Seite | X |  |  |  |
+| SAML der vertrauenden Seite |  |X  |  |  |
 | WSFED der vertrauenden Seite | X |  |  |  |
 | REST-API mit Standard- und Zertifikatauthentifizierung |  |  | X | z.B. Azure Logic Apps |
 
@@ -85,7 +85,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | E-Mail-Subsystem in Azure für die Verifizierung per E-Mail |  |  | X |  |
 | Unterstützung für mehrere Sprachen|  |  | X |  |
 | Prädikatüberprüfungen |  |  | X | z.B. Kennwortkomplexität |
-| Verwendung von E-Mail-Diensten von Drittanbietern | X |  |  |  |
+| Verwendung von E-Mail-Diensten von Drittanbietern |  |X  |  |  |
 
 ### <a name="content-definition"></a>Inhaltsdefinition
 

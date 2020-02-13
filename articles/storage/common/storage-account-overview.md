@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274536"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157266"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -115,11 +115,9 @@ Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen
 > [!IMPORTANT]
 > Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie im Abschnitt [Speicherkontoabrechnung](#storage-account-billing).
 
-## <a name="replication"></a>Replikation
+## <a name="redundancy"></a>Redundanz
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-Weitere Informationen zur Speicherreplikation finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
 ## <a name="encryption"></a>Verschlüsselung
 

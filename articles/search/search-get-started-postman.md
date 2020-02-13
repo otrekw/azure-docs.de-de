@@ -2,19 +2,19 @@
 title: 'Schnellstart: Erstellen eines Suchindex in Postman mithilfe von REST-APIs'
 titleSuffix: Azure Cognitive Search
 description: In diesem REST-API-Schnellstart erfahren Sie, wie Sie mithilfe von Postman und Beispieldaten und -definitionen die Azure Cognitive Search-REST-APIs aufrufen.
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: c502886aac9d13f7a470a9b83f1fc12334913beb
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406954"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121634"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Postman mit REST-APIs
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + Die [Postman-Desktop-App](https://www.getpostman.com/) wird zum Senden von Anforderungen an Azure Cognitive Search verwendet.
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 

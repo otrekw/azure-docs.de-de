@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 9a69ebaa9b7f6ffffdfc80e09fb2eec9495e2ce2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e2e13942b4ada2c6e90a056a0239bc620951638b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838823"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168497"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Verwalten von Experimentiterationen in Azure Machine Learning Studio (klassisch)
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
@@ -44,7 +44,7 @@ Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linea
 | 0,1 |11.9.2014 16:18:58 |
 | 0.2 |11.9.2014 16:24:33 |
 | 0,4 |11.9.2014 16:28:36 |
-| 0,5 |11.9.2014 16:33:31 |
+| 0.5 |11.9.2014 16:33:31 |
 
 Wenn Sie auf **VIEW RUN HISTORY**(AUSFÜHRUNGSVERLAUF ANZEIGEN) klicken, wird eine Liste aller Testläufe angezeigt:
 

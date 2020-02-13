@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834163"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161918"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -251,7 +251,7 @@ Für eine App mit einer verwalteten Identität sind zwei Umgebungsvariablen defi
 
 Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die Ihre App Tokens anfordern kann. Um ein Token für eine Ressource abzurufen, senden Sie eine HTTP-GET-Anforderung mit folgenden Parametern an diesen Endpunkt:
 
-> |Parametername|Geben Sie in|Beschreibung|
+> |Parametername|Geben Sie in|BESCHREIBUNG|
 > |-----|-----|-----|
 > |resource|Abfrage|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
 > |api-version|Abfrage|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
@@ -263,14 +263,14 @@ Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die 
 
 Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigenschaften:
 
-> |Eigenschaftenname|Beschreibung|
+> |Eigenschaftenname|BESCHREIBUNG|
 > |-------------|----------|
 > |access_token|Das angeforderte Zugriffstoken. Der aufrufende Webdienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Webdienst durchzuführen.|
 > |expires_on|Die Uhrzeit, zu der das Zugriffstoken abläuft. Das Datum wird als Anzahl der Sekunden ab 1970-01-01T0:0:0Z UTC bis zur Ablaufzeit dargestellt. Dieser Wert wird verwendet, um die Lebensdauer von zwischengespeicherten Token zu bestimmen.|
 > |resource|Der App-ID-URI des empfangenden Webdiensts.|
 > |token_type|Gibt den Wert des Tokentyps an. Bearertoken ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-Diese Antwort ist mit der [Antwort für die Zugriffstokenanforderung zwischen zwei AAD-Diensten](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response) identisch.
+Diese Antwort ist mit der [Antwort für die Zugriffstokenanforderung zwischen zwei AAD-Diensten](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token) identisch.
 
 > [!NOTE]
 > Beim ersten Starten des Prozesses werden Umgebungsvariablen eingerichtet, sodass Sie nach der Aktivierung der verwalteten Identität für Ihre Anwendung möglicherweise die Anwendung neu starten oder ihren Code erneut bereitstellen müssen, bevor `MSI_ENDPOINT` und `MSI_SECRET` für Ihren Code verfügbar sind.

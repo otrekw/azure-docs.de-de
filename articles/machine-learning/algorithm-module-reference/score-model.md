@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314095"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138177"
 ---
 # <a name="score-model-module"></a>Modul Modell bewerten
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul zum Generieren von Vorhersagen mithilfe eines trainierten Klassifizierungs- oder Regressionsmodells.
 
@@ -44,7 +44,7 @@ Das Ergebnis, oder der vorhergesagte Wert, kann je nach Modell und Eingabedaten 
 
 - Für Klassifizierungsmodelle gibt [Bewertungsmodell](./score-model.md) einen vorhergesagten Wert für die Klasse sowie die Wahrscheinlichkeit des vorhergesagten Werts aus.
 - Für Regressionsmodelle generiert [Bewertungsmodell](./score-model.md) lediglich den vorhergesagten numerischen Wert.
-- Für Bildklassifizierungsmodelle könnte die Bewertung die Klasse des Objekts im Bild oder ein boolescher Wert sein, der angibt, ob ein bestimmtes Feature gefunden wurde.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Veröffentlichen eines Modells als Webdienst
 

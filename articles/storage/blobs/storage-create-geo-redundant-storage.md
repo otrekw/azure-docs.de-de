@@ -6,23 +6,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0eabd918b5f8f52049792ceb28ef8055945d6475
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892905"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162173"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
 Dieses Tutorial ist der erste Teil einer Serie. In diesem Teil erfahren Sie, wie Sie Hochverfügbarkeit für Ihre Anwendungsdaten in Azure herstellen.
 
-Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GRS-Speicherkonto ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) hochlädt und aus diesem abruft.
+Am Ende des Tutorials verfügen Sie über eine Konsolenanwendung, die ein Blob in ein RA-GRS-Speicherkonto ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md)) hochlädt und aus diesem abruft.
 
 Georedundanter Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS) beruht auf der Replikation von Transaktionen von einer primären in eine sekundäre Region. Dieser Replikationsprozess garantiert, dass die Daten in der sekundären Region letztendlich konsistent sind. Die Anwendung ermittelt mithilfe des [Circuit-Breaker](/azure/architecture/patterns/circuit-breaker)-Musters, mit welchem Endpunkt eine Verbindung hergestellt werden soll, und wechselt automatisch zwischen Endpunkten, wenn Fehler und Wiederherstellungen simuliert werden.
 
@@ -71,7 +71,7 @@ Führen Sie die folgenden Schritte aus, um ein georedundantes Speicherkonto mit 
 3. Wählen Sie unter **Ausgewählte** die Option **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 4. Füllen Sie das Speicherkontoformular wie in der Abbildung dargestellt mit den folgenden Angaben aus, und klicken Sie auf **Erstellen**.
 
-   | Einstellung       | Empfohlener Wert | Beschreibung |
+   | Einstellung       | Vorgeschlagener Wert | Beschreibung |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Name** | mystorageaccount | ein eindeutiger Wert für Ihr Speicherkonto |
    | **Bereitstellungsmodell** | Ressourcen-Manager  | Azure Resource Manager enthält die neuesten Funktionen.|

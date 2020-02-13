@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: peterlu
+author: likebupt
+ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312276"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152294"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
-In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrer Azure Machine Learning-Designer-Pipeline auszuführen.
+In diesem Artikel wird beschrieben, wie Sie das Modul **Execute R Script** verwenden, um R-Code in Ihrer Azure Machine Learning-Designer-Pipeline (Vorschauversion) auszuführen.
 
 Mit R können Sie Aufgaben ausführen, die von vorhandenen Modulen aktuell nicht unterstützt werden, beispielsweise: 
 - Erstellen benutzerdefinierter Datentransformationen

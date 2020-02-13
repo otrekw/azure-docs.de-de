@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931400"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166564"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -67,8 +67,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
  3. Geben Sie auf der Seite **Beschreibung** Folgendes ein, und klicken Sie anschließend auf **Weiter**:
 
     **Name:** Geben Sie einen aussagekräftigen Namen für die Regel ein.<br>
-    **Beschreibung:** Geben Sie eine aussagekräftige Beschreibung ein.<br> 
-    
+    **Beschreibung:** Geben Sie eine aussagekräftige Beschreibung ein.<br>
     **Verbundenes System:** Wählen Sie den AD-Connector aus, für den Sie die benutzerdefinierte Synchronisierungsregel erstellen.<br>
     **Objekttyp des verbundenen Systems:** Benutzer<br>
     **Metaverse-Objekttyp:** Person<br>

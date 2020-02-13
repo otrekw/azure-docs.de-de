@@ -3,18 +3,18 @@ title: 'Schnellstart: Erstellen eines Suchindex in PowerShell mithilfe von REST-
 titleSuffix: Azure Cognitive Search
 description: In diesem REST-API-Schnellstart erfahren Sie, wie Sie mit „Invoke-RestMethod“ von PowerShell und der Azure Cognitive Search-REST-API einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
-author: heidisteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: db474b7e880ec2d65b9b9a71194964740e4fb329
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: 612751c2405cd55ad0b3760aa8e093e434a22f57
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406915"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121610"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in PowerShell mithilfe von REST-APIs
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Für diesen Schnellstart sind die folgenden Dienste und Tools erforderlich.
 
 + [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 

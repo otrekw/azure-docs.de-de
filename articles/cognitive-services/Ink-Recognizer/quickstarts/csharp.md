@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: c5379452449188f17b75036eb09c3ca15bae0c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1cf519d8d8c25877b49bf14aefd1c0be3afa8023
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448177"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137893"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#
 
@@ -49,11 +49,11 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 1. Erstellen Sie in Visual Studio eine neue Konsolenprojektmappe, und fügen Sie die folgenden Pakete hinzu. 
     
-    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
+    [!code-csharp[import statements](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=imports)]
 
 2. Erstellen Sie Variablen für den Abonnementschlüssel und -endpunkt und die JSON-Beispieldatei. Der Endpunkt wird später für den Zugriff auf die API mit `inkRecognitionUrl` kombiniert. 
 
-    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
+    [!code-csharp[endpoint file and key variables](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>Erstellen einer Funktion zum Senden von Anforderungen
 
@@ -63,7 +63,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
  
 3. Senden Sie die Anforderung mit `PutAsync()`. Wenn die Anforderung erfolgreich ist, geben Sie die Antwort zurück.  
     
-    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=request)]
+    [!code-csharp[request example method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=request)]
 
 ## <a name="send-an-ink-recognition-request"></a>Senden einer Freihanderkennungsanforderung
 
@@ -71,13 +71,13 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 2. Deserialisieren Sie das JSON-Objekt, und schreiben Sie es in die Konsole. 
     
-    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
+    [!code-csharp[request to recognize ink data](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=recognize)]
 
 ## <a name="load-your-digital-ink-data"></a>Laden der digitalen Freihanddaten
 
 Erstellen Sie eine Funktion namens `LoadJson()`, um die Freihanddaten-JSON-Datei zu laden. Verwenden Sie ein `StreamReader`- und ein `JsonTextReader`-Element zum Erstellen eines `JObject`-Objekts, und geben Sie es zurück.
 
-[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
+[!code-csharp[load the JSON file](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=loadJson)]
 
 ## <a name="send-the-api-request"></a>Senden der API-Anforderung
 
@@ -85,7 +85,7 @@ Erstellen Sie eine Funktion namens `LoadJson()`, um die Freihanddaten-JSON-Datei
 
 2. Rufen Sie die oben erstellte `recognizeInk()`-Funktion auf. Verwenden Sie `System.Console.ReadKey()`, damit das Konsolenfenster nach dem Ausführen der Anwendung geöffnet bleibt.
     
-    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/InkRecognition/quickstart/recognizeInk.cs?name=main)]
+    [!code-csharp[file main method](~/cognitive-services-rest-samples/dotnet/Vision/InkRecognition/quickstart/recognizeInk.cs?name=main)]
 
 
 ## <a name="run-the-application-and-view-the-response"></a>Ausführen der Anwendung und Anzeigen der Antwort

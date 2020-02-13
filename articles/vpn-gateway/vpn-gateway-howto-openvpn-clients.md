@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425771"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162428"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway
 
@@ -20,7 +20,7 @@ Dieser Artikel umfasst Informationen zum Konfigurieren von **OpenVPN ® Protocol
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für Ihr VPN-Gateway abgeschlossen haben. Einzelheiten finden Sie unter [Konfigurieren von OpenVPN für Azure VPN Gateway](vpn-gateway-howto-openvpn.md).
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 171f06ad238f862adbd7071ee10d81133d7a6855
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 808a17fcf303c6eb72f11f5379fa172302dc782a
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022136"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059850"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
 
@@ -160,7 +160,7 @@ Der folgende Screenshot zeigt das Standarddashboard in der Anwendungsvorlage. Da
 > [!div class="mx-imgBorder"]
 > ![Micro-Fulfillment-Center](./media/overview-iot-central-retail/MFC-Dashboard.png)
 
-Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md).
+Weitere Informationen finden Sie im Tutorial [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-micro-fulfillment-center-pnp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -170,5 +170,5 @@ Gehen Sie wie folgt vor, um eine Lösung für den Einzelhandel zu erstellen:
 * [Bereitstellung und exemplarische Vorgehensweise für eine Anwendungsvorlage für vernetzte Logistik](./tutorial-iot-central-connected-logistics-pnp.md)
 * [Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren](./tutorial-iot-central-digital-distribution-center-pnp.md)
 * [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md)
-* [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-iot-central-smart-inventory-management-pnp.md)
+* [Bereitstellen und Durchlaufen einer Anwendungsvorlage für intelligente Bestandsverwaltung](./tutorial-micro-fulfillment-center-pnp.md)
 * Weitere Informationen zu IoT Central finden Sie in der [Übersicht über IoT Central](../preview/overview-iot-central.md).

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530886"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179013"
 ---
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
@@ -103,7 +103,7 @@ Wenn Sie [Premium-SSDs](../articles/virtual-machines/windows/disks-types.md), [v
 Bei nicht verwalteten Datenträgern können Sie den lokal redundanten Speichertyp für IaaS-Datenträger verwenden. Stellen Sie aber sicher, dass Azure Backup mit der Option für georedundanten Speicher für den Recovery Services-Tresor aktiviert ist.
 
 > [!NOTE]
-> Wenn Sie den [georedundanten Speicher](../articles/storage/common/storage-redundancy-grs.md) oder [georedundanten Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) als Option für Ihre nicht verwalteten Datenträger verwenden, benötigen Sie trotzdem konsistente Momentaufnahmen für die Sicherung und die Notfallwiederherstellung. Verwenden Sie entweder [Azure Backup](https://azure.microsoft.com/services/backup/) oder [konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots).
+> Wenn Sie den [georedundanten Speicher](../articles/storage/common/storage-redundancy-grs.md) oder [georedundanten Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy.md) als Option für Ihre nicht verwalteten Datenträger verwenden, benötigen Sie trotzdem konsistente Momentaufnahmen für die Sicherung und die Notfallwiederherstellung. Verwenden Sie entweder [Azure Backup](https://azure.microsoft.com/services/backup/) oder [konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots).
 
  Die folgende Tabelle enthält eine Zusammenfassung der für die Notfallwiederherstellung verfügbaren Lösungen.
 
@@ -113,7 +113,7 @@ Bei nicht verwalteten Datenträgern können Sie den lokal redundanten Speicherty
 | Verwaltete Datenträger | Lokal ([lokal redundanter Speicher](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nicht verwaltete Datenträger mit lokal redundantem Speicher | Lokal ([lokal redundanter Speicher](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nicht verwaltete Datenträger mit georedundantem Speicher | Regionsübergreifend ([georedundanter Speicher](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots) |
-| Nicht verwaltete Datenträger mit georedundantem Speicher mit Lesezugriff | Regionsübergreifend ([georedundanter Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots) |
+| Nicht verwaltete Datenträger mit georedundantem Speicher mit Lesezugriff | Regionsübergreifend ([georedundanter Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots) |
 
 Hochverfügbarkeit kann am besten durch die Verwendung von Managed Disks in einer Verfügbarkeitsgruppe mit Azure Backup erzielt werden. Wenn Sie nicht verwaltete Datenträger nutzen, können Sie Azure Backup trotzdem für die Notfallwiederherstellung verwenden. Falls die Verwendung von Azure Backup nicht möglich ist, ist das Erstellen von [konsistenten Momentaufnahmen](#alternative-solution-consistent-snapshots) (in einem späteren Abschnitt beschrieben) eine Alternativlösung für die Sicherung und Notfallwiederherstellung.
 

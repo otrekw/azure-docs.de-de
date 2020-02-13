@@ -2,20 +2,20 @@
 title: Worum handelt es sich bei der Seite „Zusätzliche Sicherheitsüberprüfung“? – Azure AD
 description: Informationen zum Aufrufen der Seite „Zusätzliche Sicherheitsüberprüfung“ für die zweistufige Überprüfung
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
-ms.author: lizross
-ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.author: curtand
+ms.openlocfilehash: 5a7f0e10b23bf1a541fe83c3112962c38f7e1331
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705291"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062556"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Worum handelt es sich bei der Seite „Zusätzliche Sicherheitsüberprüfung“?
 
@@ -51,7 +51,7 @@ Nachdem Ihre Organisation die zweistufige Überprüfung aktiviert und eingericht
 
 2. Auf der Seite **Zusätzliche Sicherheitsüberprüfung** müssen Sie die Methode zur zweistufigen Überprüfung festlegen, mit der Sie nach der Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto Ihre Identität bestätigen. Sie können Folgendes auswählen:
 
-    | Kontaktmethode | Beschreibung |
+    | Kontaktmethode | BESCHREIBUNG |
     | --- | --- |
     | Mobile App | <ul><li>**Benachrichtigungen zur Überprüfung empfangen**: Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.</li><li>**Prüfcode verwenden**: In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie auf dem Anmeldebildschirm den aktuellen Prüfcode ein.<br>Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594) und [iOS](https://go.microsoft.com/fwlink/?linkid=866594) verfügbar.</li></ul> |
     | Authentifizierungstelefon | <ul><li>**Telefonanruf**: Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die Rautetaste (#) auf der Telefontastatur, um sich zu authentifizieren.</li><li>**SMS**: Es wird eine SMS gesendet, die einen Prüfcode enthält. Je nachdem, wozu Sie in der SMS aufgefordert werden, antworten Sie auf die SMS, oder geben Sie im Anmeldungsfenster den angegebenen Überprüfungscode ein.</li></ul> |
