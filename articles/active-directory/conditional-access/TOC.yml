@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: Komponenten der Richtlinie für bedingten Zugriff
       href: concept-conditional-access-policies.md
-    - name: Cloud-Apps oder -aktionen
-      href: concept-conditional-access-cloud-apps.md
-    - name: Bedingungen
-      href: conditions.md
-    - name: Standortbedingungen
-      href: location-condition.md
-    - name: Kontrollen
-      href: controls.md
+    - name: Zuweisungen
+      items:
+        - name: Benutzer und Gruppen
+          href: concept-conditional-access-users-groups.md
+        - name: Cloud-Apps oder -aktionen
+          href: concept-conditional-access-cloud-apps.md
+        - name: Bedingungen
+          href: concept-conditional-access-conditions.md
+    - name: Zugriffssteuerung
+      items:
+        - name: Erteilen
+          href: concept-conditional-access-grant.md
+        - name: Sitzung
+          href: concept-conditional-access-session.md
     - name: Modus „Nur Bericht“
       href: concept-conditional-access-report-only.md
     - name: Dienstabhängigkeiten
       href: service-dependencies.md
+    - name: Standortbedingungen
+      href: location-condition.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md
+    - name: Kontrollen
+      href: controls.md
     - name: Migration klassischer Richtlinien
       href: policy-migration.md
     - name: Baselineschutzrichtlinien
@@ -84,10 +94,6 @@
       items:
         - name: Troubleshooting mithilfe des What If-Tools
           href: troubleshoot-conditional-access-what-if.md
-- name: Verweis
-  items:
-    - name: Technische Referenz
-      href: technical-reference.md
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum

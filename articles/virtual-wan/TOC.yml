@@ -21,7 +21,11 @@
 - name: Konzepte
   items:
     - name: Standorte und Partner
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: Hub-Standorte und -Partner
+          href: virtual-wan-locations-partners.md
+        - name: Automatisierungsrichtlinien für Partner
+          href: virtual-wan-configure-automation-providers.md
     - name: IPsec-Richtlinien
       href: virtual-wan-ipsec.md
 - name: Anleitungen
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: "Konfigurieren der Azure\_AD-Authentifizierung für mehrere Anwendungen für Benutzer-VPN"
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Konfigurieren der Automatisierung (Virtual WAN-Partner)
-      href: virtual-wan-configure-automation-providers.md
     - name: Herunterladen von globalen und hub-basierten VPN-Profilen
       href: global-hub-profile.md
     - name: Konfigurieren des Routings
