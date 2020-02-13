@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 05/05/2019
-ms.openlocfilehash: 0628d5c07d7258cc4d68727c364e65bd81c78e8e
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 6394d7149bd4e80f0a17a59a6259eedf4c806fd4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66388999"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188175"
 ---
 # <a name="azure-devops-task-for-azure-data-explorer"></a>Azure DevOps-Aufgabe für Azure Data Explorer
 
@@ -42,7 +42,7 @@ Erstellen Sie die folgenden Beispielordner (*Funktionen*, *Richtlinien*, *Tabell
 ![Erstellen Sie die Ordner.](media/devops/create-folders.png)
 
 > [!TIP]
-> Bei der Erstellung eines eigenen Workflows empfehlen wir, den Code idempotent zu gestalten. Verwenden Sie beispielsweise [.create-merge table](/azure/kusto/management/tables#create-merge-tables) anstelle von [.create table](/azure/kusto/management/tables#create-table) und [.create-or-alter](/azure/kusto/management/functions#create-or-alter-function)-Funktion anstelle der [.create](/azure/kusto/management/functions#create-function)-Funktion.
+> Bei der Erstellung eines eigenen Workflows empfehlen wir, den Code idempotent zu gestalten. Verwenden Sie beispielsweise [.create-merge table](/azure/kusto/management/create-table-command#create-merge-table) anstelle von [.create table](/azure/kusto/management/create-table-command) und [.create-or-alter](/azure/kusto/management/functions#create-or-alter-function)-Funktion anstelle der [.create](/azure/kusto/management/functions#create-function)-Funktion.
 
 ## <a name="create-a-release-pipeline"></a>Erstellen einer Releasepipeline
 
@@ -93,7 +93,7 @@ Erstellen Sie die folgenden Beispielordner (*Funktionen*, *Richtlinien*, *Tabell
 
 1. Geben Sie die folgenden Informationen im Fenster **Data Explorer-Dienstverbindung hinzufügen** ein:
 
-    |Einstellung  |Empfohlener Wert  |
+    |Einstellung  |Vorgeschlagener Wert  |
     |---------|---------|
     |**Verbindungsname**     |    Geben Sie den Namen zum Identifizieren dieses Dienstendpunkts ein.     |
     |**Cluster-URL**    |    Den Wert finden Sie im Übersichtsbereich Ihres Azure Data Explorer-Clusters im Azure-Portal. | 

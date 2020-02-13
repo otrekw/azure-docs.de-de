@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928731"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187477"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -136,15 +136,15 @@ Eine mögliche Ursache ist, dass TLS (Transport Layer Security) in SSIS Integrat
 
 Stellen Sie sicher, dass Ihre Azure-SSIS Integration Runtime mit selbstgehosteter Integration Runtime konfiguriert ist. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md).
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: ErrorCode: 2010, ErrorMessage: Die selbstgehostete Integration Runtime ... ist offline“
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: Fehlercode: 2010, ErrorMessage: Die selbstgehostete Integration Runtime ... ist offline“
 
 Stellen Sie sicher, dass Ihre selbstgehostete Integration Runtime installiert ist und gestartet wurde. Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md).
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Fehlermeldung: „Fehler bei Stagingaufgabe: ErrorCode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": „Fehler: Der angeforderte OLE DB Anbieter... ist nicht registriert. Wenn der 64-Bit-Treiber nicht installiert ist, führen Sie das Paket im 32-Bit-Modus aus... „
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Fehlermeldung: „Fehler bei Stagingaufgabe: Fehlercode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": „Fehler: Der angeforderte OLE DB Anbieter... ist nicht registriert. Wenn der 64-Bit-Treiber nicht installiert ist, führen Sie das Paket im 32-Bit-Modus aus... „
 
-Stellen Sie sicher, dass der entsprechende Anbieter, der von Ihren OLE DB-Connectors in Ihrem Paket verwendet wird, auf dem Computer mit der selbstgehosteten Integration Runtime ordnungsgemäß installiert ist. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir).
+Stellen Sie sicher, dass der entsprechende Anbieter, der von Ihren OLE DB-Connectors in Ihrem Paket verwendet wird, auf dem Computer mit der selbstgehosteten Integration Runtime ordnungsgemäß installiert ist. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir).
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Fehlermeldung: „Fehler bei Stagingaufgabe: ErrorCode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": „Fehler: System.IO.FileLoadException: Dabei oder Assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' oder eine ihrer Abhängigkeiten kann nicht geladen werden. Die Manifestdefinition der gefundenen Assembly stimmt nicht mit dem Assemblyverweis ‚...‘ überein.
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Fehlermeldung: „Fehler bei Stagingaufgabe: Fehlercode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": „Fehler: System.IO.FileLoadException: Dabei oder Assembly 'Microsoft.WindowsAzure.Storage, Version=..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' oder eine ihrer Abhängigkeiten kann nicht geladen werden. Die Manifestdefinition der gefundenen Assembly stimmt nicht mit dem Assemblyverweis ‚...‘ überein.
 
 Eine mögliche Ursache ist, dass Ihre selbstgehosteter Integration Runtime nicht ordnungsgemäß installiert oder aktualisiert wurde. Laden Sie die neueste selbstgehostete Integration Runtime herunter, und installieren Sie sie erneut. Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md#installation-best-practices).
 
@@ -155,9 +155,9 @@ Eine mögliche Ursache ist, dass Ihre selbstgehosteter Integration Runtime nicht
   * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
   * Alternativ kann ein VNet für den Zugriff auf lokale Daten verwendet werden. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 
-### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: ErrorCode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": "SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
+### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: Fehlercode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": "SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"
 
-Stellen Sie sicher, dass die Visual C++-Runtime auf dem selbstgehosteten Integration Runtime-Computer installiert ist. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir).
+Stellen Sie sicher, dass die Visual C++-Runtime auf dem selbstgehosteten Integration Runtime-Computer installiert ist. Weitere Details finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir).
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Unerwartetes Auslösen der Ausführung mehrerer Pakete
 

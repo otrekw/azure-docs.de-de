@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931121"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190932"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Beheben von häufigen Problemen bei Suchindexern in der kognitiven Azure-Suche
 
@@ -112,6 +112,6 @@ Indexer finden Dokumente in einer [Datenquelle](https://docs.microsoft.com/rest/
 
 * Das Dokument wurde nicht indiziert. Überprüfen Sie das Portal auf eine erfolgreiche Indexerausführung hin.
 * Das Dokument wurde nach der Ausführung des Indexers aktualisiert. Wenn Sie für Ihren Indexer einen [Zeitplan](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule) festgelegt haben, wird er das Dokument schließlich erneut ausführen und abrufen.
-* Die in der Datenquelle angegebene [Abfrage](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) schließt das Dokument aus. Indexer können keine Dokumente indizieren, die nicht zur Datenquelle gehören.
+* Die in der Datenquelle angegebene [Abfrage](/rest/api/searchservice/create-data-source) schließt das Dokument aus. Indexer können keine Dokumente indizieren, die nicht zur Datenquelle gehören.
 * Das Dokument wurde durch [Feldzuordnungen](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) oder [KI-Anreicherung](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) geändert und sieht anders als erwartet aus.
 * Verwenden Sie zur Dokumentensuche die [API zum Suchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/lookup-document).

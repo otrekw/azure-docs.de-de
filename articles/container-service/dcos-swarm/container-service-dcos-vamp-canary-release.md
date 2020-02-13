@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275659"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189105"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
 
@@ -127,7 +127,7 @@ Sobald Elasticsearch als **Wird ausgeführt** gemeldet wird, können Sie das VAM
 
 Stellen Sie nach der Einrichtung von VAMP einen Dienst aus einer Blaupause bereit. 
 
-In der einfachsten Form beschreibt eine [VAMP-Blaupause](https://vamp.io/documentation/using-vamp/blueprints/) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
+In der einfachsten Form beschreibt eine [VAMP-Blaupause](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
 
 In diesem Szenario wird eine monolithische Beispielanwendung namens [**sava**](https://github.com/magneticio/sava) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
 
@@ -287,9 +287,9 @@ Zudem haben wir einige leistungsstarke Funktionen von VAMP besprochen, z.B. die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Verwalten von VAMP-Aktionen finden Sie unter [VAMP-REST-API](https://vamp.io/documentation/api/api-reference/).
+* Informationen zum Verwalten von VAMP-Aktionen finden Sie unter [VAMP-REST-API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events).
 
-* Erstellen Sie VAMP-Automatisierungsskripts in Node.js, und führen Sie sie als [VAMP-Workflows](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow) aus.
+* Erstellen Sie VAMP-Automatisierungsskripts in Node.js, und führen Sie sie als [VAMP-Workflows](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows) aus.
 
-* Weitere Informationen finden Sie in den zusätzlichen [VAMP-Tutorials](https://vamp.io/documentation/tutorials/).
+* Weitere Informationen finden Sie in den zusätzlichen [VAMP-Tutorials](https://docs.vamp.io/tutorials/).
 

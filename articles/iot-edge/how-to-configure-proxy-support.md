@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a8ee1e07dafac46467aa26f89b609cd499346974
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510820"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186577"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -22,7 +22,7 @@ Dieser Artikel geht die folgenden vier Schritte zum Konfigurieren und anschließ
 
 1. **Installieren Sie die IoT Edge-Runtime auf Ihrem Gerät.**
 
-   Die IoT Edge-Installationsskripts pullen Pakete und Dateien aus dem Internet, weshalb Ihr Gerät über den Proxyserver kommunizieren können muss, um diese Anforderungen auszuführen. Ausführliche Schritte finden Sie im Abschnitt [Installieren der Runtime durch einen Proxy](#install-the-runtime-through-a-proxy) in diesem Artikel. Windows-Geräten bietet das Installationsskript außerdem eine Option für die [Offlineinstallation](how-to-install-iot-edge-windows.md#offline-installation).
+   Die IoT Edge-Installationsskripts pullen Pakete und Dateien aus dem Internet, weshalb Ihr Gerät über den Proxyserver kommunizieren können muss, um diese Anforderungen auszuführen. Ausführliche Schritte finden Sie im Abschnitt [Installieren der Runtime durch einen Proxy](#install-the-runtime-through-a-proxy) in diesem Artikel. Windows-Geräten bietet das Installationsskript außerdem eine Option für die [Offlineinstallation](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation).
 
    Dieser Schritt ist ein einmaliger Prozess, der auf dem IoT Edge-Gerät ausgeführt wird, wenn Sie es zum ersten Mal einrichten. Dieselben Verbindungen sind ebenfalls erforderlich, wenn Sie IoT Edge-Runtime aktualisieren.
 

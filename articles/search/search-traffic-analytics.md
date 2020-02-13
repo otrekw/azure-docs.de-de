@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426986"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190940"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementieren von „Datenverkehrsanalyse durchsuchen“ in Azure Cognitive Search
 
@@ -106,7 +106,7 @@ Bei jeder Suchanforderung eines Benutzers sollten Sie dies mit folgendem Schema 
 **SearchServiceName**: (String) Suchdienstname **SearchId**: (GUID) eindeutiger Bezeichner der Suchabfrage (in der Suchantwort enthalten) **IndexName**: (String) abzufragender Suchdienstindex **QueryTerms**: (String) vom Benutzer eingegebene Suchbegriffe **ResultCount**: (Int) Anzahl der zurückgegebenen Dokumente (in der Suchantwort enthalten) **ScoringProfile**: (String) Name des verwendeten Bewertungsprofils, falls vorhanden
 
 > [!NOTE]
-> Fordern Sie die Anzahl vom Benutzer generierter Abfragen an, indem Sie „$count = true“ Ihrer Suchabfrage hinzufügen. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+> Fordern Sie die Anzahl vom Benutzer generierter Abfragen an, indem Sie „$count = true“ Ihrer Suchabfrage hinzufügen. Weitere Informationen finden Sie [hier](/rest/api/searchservice/search-documents#counttrue--false).
 >
 
 > [!NOTE]

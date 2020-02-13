@@ -26,6 +26,8 @@
       href: convert-to-csv.md
     - name: Konvertieren in ein Dataset
       href: convert-to-dataset.md
+    - name: Konvertieren in Indikatorwerte
+      href: convert-to-indicator-values.md
     - name: Fehlende Daten bereinigen
       href: clean-missing-data.md
     - name: Bearbeiten von Metadaten
@@ -62,7 +64,7 @@
           href: boosted-decision-tree-regression.md
         - name: Entscheidungswaldregression
           href: decision-forest-regression.md
-        - name: Linear Regression
+        - name: Lineare Regression
           href: linear-regression.md
         - name: Regression mit neuronalen Netzwerken
           href: neural-network-regression.md
@@ -70,7 +72,7 @@
       items:
         - name: K-Means Clustering
           href: k-means-clustering.md
-    - name: Classification
+    - name: Klassifizierung
       items:
         - name: Verstärkte Entscheidungsstruktur mit mehreren Klassen
           href: multiclass-boosted-decision-tree.md
@@ -120,7 +122,7 @@
       href: create-python-model.md
     - name: Ausführen von Python-Skripts
       href: execute-python-script.md
-- name: R (Programmiersprache)
+- name: R-Sprache
   items:
     - name: Execute R Script
       href: execute-r-script.md

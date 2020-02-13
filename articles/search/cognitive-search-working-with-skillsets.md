@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0637e160454897af774c3bac48fc02866cb71835
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760792"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191028"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Qualifikationsgruppenkonzepte und Komposition in Azure Cognitive Search
 
@@ -47,7 +47,7 @@ Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inha
 |SQL|/document/{column1}<br>/document/{column2}<br>…|– |
 |Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|–|
 
- Beim Ausführen von Qualifikationen werden neue Knoten zur Anreicherungsstruktur hinzugefügt. Diese neuen Knoten können dann als Eingaben für Downstreamqualifikationen verwendet werden, und somit in den Wissensspeicher projiziert oder Indexfeldern zugeordnet werden. Anreicherungen sind nicht änderbar: Die Knoten können nach der Erstellung nicht bearbeitet werden. Mit steigender Komplexität Ihrer Qualifikationen wird auch Ihre Anreicherungsstruktur komplexer, aber nicht alle Knoten in der Anreicherungsstruktur müssen in den Index oder Wissensspeicher aufgenommen werden. Sie können selektiv nur eine Teilmenge der Anreicherungen im Index oder Wissensspeicher beibehalten.
+ Beim Ausführen von Qualifikationen werden neue Knoten zur Anreicherungsstruktur hinzugefügt. Diese neuen Knoten können dann als Eingaben für Downstreamqualifikationen verwendet werden, und somit in den Wissensspeicher projiziert oder Indexfeldern zugeordnet werden. Anreicherungen sind nicht änderbar: Die Knoten können nach der Erstellung nicht bearbeitet werden. Mit steigender Komplexität Ihrer Qualifikationen wird auch Ihre Anreicherungsstruktur komplexer, aber nicht alle Knoten in der Anreicherungsstruktur müssen in den Index oder Wissensspeicher aufgenommen werden. 
 
 Sie können selektiv nur eine Teilmenge der Anreicherungen im Index oder Wissensspeicher beibehalten.
 In den übrigen Teilen dieses Dokuments gehen wir vom [Beispiel „Hotelbewertungen“](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi) aus, die gleichen Konzepte gelten aber auch für die Anreicherung von Dokumenten aus allen anderen Datenquellen.
@@ -96,7 +96,7 @@ Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten, der unter den
 
 Der Stammknoten für alle Anreicherungen ist `"/document"`. Wenn Sie Blob-Indexer verwenden, verfügt der `"/document"`-Knoten über die untergeordneten Knoten `"/document/content"` und `"/document/normalized_images"`. Wenn Sie, wie in diesem Beispiel, CSV-Daten verwenden, werden die Spaltennamen den Knoten unter `"/document"` zugeordnet. Um auf eine der Anreicherungen zuzugreifen, die einem Knoten durch eine Qualifikation hinzugefügt wurden, ist der vollständige Pfad für die Anreicherung erforderlich. Wenn Sie z.B. den Text aus dem Knoten ```pages``` als Eingabe für eine andere Qualifikation verwenden möchten, müssen Sie ihn als ```"/document/reviews_text/pages/*"``` angeben.
  
- ![Anreicherungsstruktur nach Qualifikation 1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Anreicherungsstruktur nach Ausführung von Skill 1")
+ ![Anreicherungsstruktur nach Qualifikation 1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "Anreicherungsstruktur nach Ausführung von Qualifikation 1")
 
 ### <a name="skill-2-language-detection"></a>Qualifikation 2: Sprachenerkennung
  Die Qualifikation „Spracherkennung“ ist zwar die dritte in der Qualifikationsgruppe definierte Qualifikation (Qualifikation 3), sie wird aber als nächste Qualifikation ausgeführt. Da keine Eingaben erforderlich sind, wird sie nicht blockiert und parallel mit der vorherigen Qualifikation ausgeführt. Genau wie die Qualifikation „Aufteilung“ wird die Qualifikation „Spracherkennung“ auch einmal für jedes Dokument aufgerufen. Die Anreicherungsstruktur verfügt jetzt über einen neuen Knoten für die Sprache.
@@ -108,7 +108,7 @@ Im Kontext ```/document/reviews_text/pages/*``` wird die Qualifikation „Schlü
 
  Wenn Sie sich jetzt die restlichen Qualifikationen in der Qualifikationsgruppe anschauen, sollten Sie sich vorstellen können, wie die Anreicherungsstruktur mit der Ausführung jeder weiteren Qualifikation weiter wächst. Einige Qualifikationen, wie z.B. die Qualifikation „Zusammenführen“ und die Qualifikation „Shaper“, erstellen auch neue Knoten, verwenden jedoch nur Daten aus vorhandenen Knoten und erstellen keine eigenen neuen Anreicherungen.
 
-![Anreicherungsstruktur nach allen Qualifikationen](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "Anreicherungsstruktur nach allen Skills")
+![Anreicherungsstruktur nach allen Qualifikationen](media/cognitive-search-working-with-skillsets/enrichment-tree-final.png "Anreicherungsstruktur nach allen Qualifikationen")
 
 Die Farben der Connectors in der Struktur oben zeigen an, dass die Anreicherungen durch unterschiedliche Qualifikationen erstellt wurden, und die Knoten müssen einzeln adressiert werden und sind nicht Teil des Objekts, das bei der Auswahl des übergeordneten Knotens zurückgegeben wird.
 

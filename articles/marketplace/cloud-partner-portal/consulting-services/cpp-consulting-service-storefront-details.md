@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818076"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191166"
 ---
 # <a name="storefront-details-tab"></a>Registerkarte „Storefront Details“ (Storefrontdetails)
 
@@ -42,12 +42,12 @@ Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die dire
 *Beispiel 1*
 
 -   **Angebotsname:** Cloud-Analysen: Dreitägiger Workshop
--   **Angebotszusammenfassung:** Übersicht über Microsoft Azure und Power BI, Bewertung der aktuellen Umgebung und Mini-PoC.
+-   **Angebotszusammenfassung**: Übersicht über Microsoft Azure und Power BI, Bewertung der aktuellen Umgebung und Mini-PoC.
 
 *Beispiel 2*
 
 -   **Angebotsname:** Azure-IoT in der Industrie: 30-tägige Proof of Concept-Verifizierung
--   **Angebotszusammenfassung:** Es wird ein für den industriellen Einsatz vorgesehenes Produktpilotprojekt erstellt, in dem betrieblich genutzte Geräte sicher mit einer Azure IoT Hub-Lösung verbunden werden, die Dashboards, Berichte und Benachrichtigungen bereitstellt.
+-   **Angebotszusammenfassung**: Es wird ein für den industriellen Einsatz vorgesehenes Produktpilotprojekt erstellt, in dem betrieblich genutzte Geräte sicher mit einer Azure IoT Hub-Lösung verbunden werden, die Dashboards, Berichte und Benachrichtigungen bereitstellt.
 
 *Beispiel 3*
 
@@ -57,12 +57,12 @@ Die Angebotszusammenfassung ist eine kurze Beschreibung Ihres Angebots, die dire
 *Beispiel 4*
 
 -   **Angebotsname:** Einstieg in Power BI: Vierstündiger Workshop
--   **Angebotszusammenfassung:** Sie erstellen und konfigurieren Ihr erstes Dashboard und lernen bewährte Methoden kennen. Für bis zu 12 Teilnehmer; Durchführung vor Ort.
+-   **Angebotszusammenfassung**: Sie erstellen und konfigurieren Ihr erstes Dashboard und lernen bewährte Methoden kennen. Für bis zu 12 Teilnehmer; Durchführung vor Ort.
 
 *Beispiel 5*
 
 -   **Angebotsname:** Dynamics und Projekte: Dreitägige Bewertung
--   **Angebotszusammenfassung:** Anforderungserfassung und -bewertung für eine ERP-Lösung, die für Dienstleistungsunternehmen und projektorientierte Unternehmen konzipiert ist.
+-   **Angebotszusammenfassung**: Anforderungserfassung und -bewertung für eine ERP-Lösung, die für Dienstleistungsunternehmen und projektorientierte Unternehmen konzipiert ist.
 
 
 ### <a name="offer-description"></a>Angebotsbeschreibung\*
@@ -71,7 +71,7 @@ Geben Sie die Beschreibung des Beratungsdienstangebots in das Feld für die **An
 
 Schließen Sie weder Ihre E-Mail-Adresse noch Ihre Telefonnummer in die Angebotsbeschreibung ein. Über die in Ihrem Angebot enthaltene Schaltfläche **Kontakt mit mir aufnehmen** werden Leads in das Leadverwaltungsziel hochgeladen, das Sie für Ihr Angebot angeben.
 
-Geben Sie die Angebotsbeschreibung im Markdown-Format ein. Unter [Verwenden von Markdown für das Schreiben von Dokumentationsartikeln](https://docs.microsoft.com/contribute/how-to-write-use-markdown) finden Sie bei Bedarf Informationen zu Markdown sowie zur Formatierung für HTML.
+Geben Sie die Angebotsbeschreibung im Markdown-Format ein. Unter [Verwenden von Markdown für das Schreiben von Dokumentationsartikeln](/contribute/markdown-reference) finden Sie bei Bedarf Informationen zu Markdown sowie zur Formatierung für HTML.
 
 Verwenden Sie diese Formate, und achten Sie darauf, dass das Angebot für Ihre Kunden gut lesbar ist.
 
@@ -81,7 +81,7 @@ Das folgende Beispiel zeigt eine gut gestaltete Angebotsbeschreibung und den daz
 
 **Angebotsname:** Cloud-Analysen: Dreitägiger Workshop
 
-**Angebotszusammenfassung:** Übersicht über Microsoft Azure und Power BI, Bewertung der aktuellen Umgebung und Mini-PoC.
+**Angebotszusammenfassung**: Übersicht über Microsoft Azure und Power BI, Bewertung der aktuellen Umgebung und Mini-PoC.
 
 **Angebotsbeschreibung:** Dieser dreitägige Workshop ist für technische und geschäftliche Führungskräfte vorgesehen und findet in den Räumlichkeiten des Kunden statt.
 

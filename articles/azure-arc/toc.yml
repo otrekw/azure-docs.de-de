@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Verbinden von Computern mit Azure Arc über das Azure-Portal
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Verbinden von Computern im großen Stil mithilfe eines Dienstprinzipals
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Verweis
   items:
     - name: Azure Connected Machine Agent CLI-Schnittstelle

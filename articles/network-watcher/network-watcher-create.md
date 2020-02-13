@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845124"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191176"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Erstellen einer Azure Network Watcher-Instanz
 
@@ -132,5 +132,3 @@ Erfahren Sie, nachdem Sie über eine Instanz von Network Watcher verfügen, welc
 * [Sicherheitsgruppenansicht](network-watcher-security-group-view-overview.md)
 * [NSG-Datenflussprotokollierung](network-watcher-nsg-flow-logging-overview.md)
 * [Beheben von Problemen bei Virtual Network-Gateways](network-watcher-troubleshoot-overview.md)
-
-Sobald eine Network Watcher-Instanz erstellt wurde, können Sie die Paketerfassung auf virtuellen Computern aktivieren. Informationen hierzu finden Sie unter [Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions](network-watcher-alert-triggered-packet-capture.md).

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c504e2f574970142942945de5a0a9fb409bb166b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5407c38f33d167ff5114cd55878e3470e7248d71
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498307"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188715"
 ---
 # <a name="time-to-live-ttl-in-azure-cosmos-db"></a>Gültigkeitsdauer (TTL) in Azure Cosmos DB 
 
@@ -44,9 +44,7 @@ Der Wert für die Gültigkeitsdauer wird in Sekunden festgelegt und als Deltawer
 
 * Ist für einen Container keine Gültigkeitsdauer festgelegt, wird die für ein Element in diesem Container festgelegte Gültigkeitsdauer ignoriert. 
 
-* Wurde die Gültigkeitsdauer für einen Container auf „-1“ festgelegt, läuft die Gültigkeit eines Elements in diesem Container, dessen Gültigkeitsdauer auf „n“ festgelegt ist, nach n Sekunden ab. Die Gültigkeit der übrigen Elemente läuft dagegen nicht ab. 
-
-Das Löschen von Elementen auf der Grundlage der Gültigkeitsdauer ist kostenlos. Bei Elementen, die nach Ablauf der Gültigkeitsdauer gelöscht werden, fallen keine zusätzlichen Kosten an (sprich: es werden keine zusätzlichen RUs genutzt).
+* Wurde die Gültigkeitsdauer für einen Container auf „-1“ festgelegt, läuft die Gültigkeit eines Elements in diesem Container, dessen Gültigkeitsdauer auf „n“ festgelegt ist, nach n Sekunden ab. Die Gültigkeit der übrigen Elemente läuft dagegen nicht ab.
 
 ## <a name="examples"></a>Beispiele
 

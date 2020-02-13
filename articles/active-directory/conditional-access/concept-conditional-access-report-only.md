@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180046"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186117"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Was ist der reine Berichtsmodus des bedingten Zugriffs?
 
@@ -25,7 +25,8 @@ Der bedingte Zugriff wird von unseren Kunden häufig verwendet, um durch die Anw
 Der reine Berichtsmodus ist ein neuer Status von Richtlinien für bedingten Zugriff, mit dem Administratoren die Auswirkungen von Richtlinien für bedingten Zugriff auswerten können, bevor sie die jeweiligen Richtlinien in ihrer Umgebung aktivieren.  Durch die Einführung des reinen Berichtsmodus ergeben sich die folgenden Vorteile:
 
 - Richtlinien für bedingten Zugriff können im reinen Berichtsmodus aktiviert werden.
-- Bei der Anmeldung werden Richtlinien im reinen Berichtsmodus ausgewertet, aber nicht erzwungen. Die Ergebnisse werden auf den Registerkarten **Bedingter Zugriff** und **Nur Bericht (Vorschau)** der Anmeldeprotokolldetails protokolliert.
+- Bei der Anmeldung werden Richtlinien im reinen Berichtsmodus ausgewertet, aber nicht erzwungen.
+- Die Ergebnisse werden auf den Registerkarten **Bedingter Zugriff** und **Nur Bericht (Vorschau)** der Anmeldeprotokolldetails protokolliert.
 - Kunden mit einem Azure Monitor-Abonnement können die Auswirkungen ihrer Richtlinien für bedingten Zugriff mithilfe der Arbeitsmappe für Erkenntnisse zum bedingten Zugriff überwachen.
 
 > [!WARNING]
@@ -39,7 +40,7 @@ Wenn eine Richtlinie im reinen Berichtsmodus für eine bestimmte Anmeldung ausge
 
 | Ergebnis | BESCHREIBUNG |
 | --- | --- |
-| Nur Bericht: Erfolgreich | Alle konfigurierten Richtlinienbedingungen, alle erforderlichen nicht interaktiven Steuerelemente zur Rechteerteilung und alle Sitzungssteuerelemente wurden erfüllt. Beispiele: Eine Anforderung zur mehrstufigen Authentifizierung wird durch einen MFA-Anspruch erfüllt, der bereits im Token vorhanden ist, oder eine Richtlinie für konforme Geräte wird durch Ausführen einer Geräteprüfung auf einem konformen Gerät erfüllt. |
+| Nur Bericht: Erfolg | Alle konfigurierten Richtlinienbedingungen, alle erforderlichen nicht interaktiven Steuerelemente zur Rechteerteilung und alle Sitzungssteuerelemente wurden erfüllt. Beispiele: Eine Anforderung zur mehrstufigen Authentifizierung wird durch einen MFA-Anspruch erfüllt, der bereits im Token vorhanden ist, oder eine Richtlinie für konforme Geräte wird durch Ausführen einer Geräteprüfung auf einem konformen Gerät erfüllt. |
 | Nur Bericht: Fehler | Alle konfigurierten Richtlinienbedingungen wurden erfüllt, aber es wurden nicht alle erforderlichen nicht interaktiven Steuerelemente zur Rechteerteilung oder Sitzungssteuerelemente erfüllt. Beispiele: Eine Richtlinie gilt für einen Benutzer, für den eine Blockierungssteuerung konfiguriert ist, oder ein Gerät entspricht nicht einer Richtlinie für konforme Geräte. |
 | Nur Bericht: Benutzeraktion erforderlich | Alle konfigurierten Richtlinienbedingungen wurden erfüllt, aber es ist eine Benutzeraktion erforderlich, um die erforderlichen Steuerelemente zur Rechteerteilung oder Sitzungssteuerelemente zu erfüllen. Im reinen Berichtsmodus wird der Benutzer nicht aufgefordert, die erforderlichen Maßnahmen zu erfüllen. Beispielsweise werden Benutzer nicht zur mehrstufigen Authentifizierung oder zur Bestätigung der Nutzungsbedingungen aufgefordert.   |
 | Nur Bericht: Nicht angewendet | Es wurden nicht alle konfigurierten Richtlinienbedingungen erfüllt. Beispiele: Der Benutzer wird aus der Richtlinie ausgeschlossen, oder die Richtlinie gilt nur für bestimmte vertrauenswürdige benannte Standorte. |

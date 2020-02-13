@@ -9,12 +9,12 @@ tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 657cded5e16897f9581bbcf365bacc2d2f1a821a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2edd62825de08becf22f2f953a63a7f89f55e0a6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754359"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190996"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
@@ -125,7 +125,7 @@ Felder müssen im Index als „Abrufbar“ markiert sein, wenn sie in den Sucher
 
 ## <a name="filter-facet-and-sort-complex-fields"></a>Filtern, Faceting und Sortieren komplexer Felder
 
-Die für die Filterung und für feldbezogene Suchen verwendete [OData-Pfadsyntax](query-odata-filter-orderby-syntax.md) kann auch für das Faceting, die Sortierung und die Auswahl von Feldern in einer Suchanforderung verwendet werden. Für komplexe Typen gelten Regeln, mit denen gesteuert wird, welche Unterfelder als sortierbar oder facettierbar markiert werden können. Weitere Informationen zu diesen Regeln finden Sie in der [Referenz zur API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Die für die Filterung und für feldbezogene Suchen verwendete [OData-Pfadsyntax](query-odata-filter-orderby-syntax.md) kann auch für das Faceting, die Sortierung und die Auswahl von Feldern in einer Suchanforderung verwendet werden. Für komplexe Typen gelten Regeln, mit denen gesteuert wird, welche Unterfelder als sortierbar oder facettierbar markiert werden können. Weitere Informationen zu diesen Regeln finden Sie in der [Referenz zur API zur Indexerstellung](/rest/api/searchservice/create-index).
 
 ### <a name="faceting-sub-fields"></a>Faceting von Unterfeldern
 
@@ -149,7 +149,7 @@ Um nach einem Feld in einer komplexen Sammlung zu filtern, können Sie einen **L
 
     $filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)
 
-Wie schon bei einfachen Feldern der obersten Ebene können auch einfache untergeordnete Felder von komplexen Feldern nur in Filtern verwendet werden, wenn Ihr **filterable**-Attribut in der Indexdefinition auf `true` festgelegt wurde. Weitere Informationen finden Sie in der [Referenz zur API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index#request).
+Wie schon bei einfachen Feldern der obersten Ebene können auch einfache untergeordnete Felder von komplexen Feldern nur in Filtern verwendet werden, wenn Ihr **filterable**-Attribut in der Indexdefinition auf `true` festgelegt wurde. Weitere Informationen finden Sie in der [Referenz zur API zur Indexerstellung](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

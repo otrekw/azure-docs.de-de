@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Visualisieren von Daten
       items:
-        - name: Sichten
-          items:
-            - name: Sicht-Designer
-              href: platform/view-designer.md
-            - name: Kachelreferenz
-              href: platform/view-designer-tiles.md
-            - name: Referenz zur Visualisierungskomponente
-              href: platform/view-designer-parts.md
-            - name: Filter
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Exportieren von Protokolldateien
-              href: platform/powerbi.md
-            - name: Exportieren von Anwendungsdaten
-              href: app/export-power-bi.md
         - name: Arbeitsmappen
           items:
             - name: Übersicht
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Textparameter
                       href: platform/workbooks-text.md
+        - name: Sichten
+          items:
+            - name: Konvertieren von Ansichten in Arbeitsmappen
+              items:
+                - name: Konvertierungsübersicht
+                  href: platform/view-designer-conversion-overview.md
+                - name: Konvertierungsoptionen
+                  href: platform/view-designer-conversion-options.md
+                - name: Übersicht und Zugriff
+                  href: platform/view-designer-conversion-access.md
+                - name: Häufige Aufgaben
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Kachelkonvertierungen
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Beispiele
+                  href: platform/view-designer-conversion-examples.md
+            - name: Sicht-Designer
+              href: platform/view-designer.md
+            - name: Kachelreferenz
+              href: platform/view-designer-tiles.md
+            - name: Referenz zur Visualisierungskomponente
+              href: platform/view-designer-parts.md
+            - name: Filter
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Exportieren von Protokolldateien
+              href: platform/powerbi.md
+            - name: Exportieren von Anwendungsdaten
+              href: app/export-power-bi.md
         - name: Dashboards
           items:
             - name: Verwenden von Protokolldaten im Dashboard

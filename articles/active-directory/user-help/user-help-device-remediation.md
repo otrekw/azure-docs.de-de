@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062182"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190028"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“
 
@@ -29,7 +29,7 @@ Wenn die Meldung **Der Wechsel von hier nach dort ist nicht möglich.** den Hinw
 
 ![Fehlermeldung im Zusammenhang mit der Browserunterstützung](media/user-help-device-remediation/browser-version.png)
 
-Zur Behebung dieses Problems müssen Sie einen unterstützten Browser für Ihr Betriebssystem installieren und ausführen. Unter Windows 10 werden unter anderem Microsoft Edge, Internet Explorer und Google Chrome unterstützt. Benutzer anderer Betriebssysteme finden [hier](../conditional-access/technical-reference.md#supported-browsers) eine umfassende Liste der unterstützten Browser.
+Zur Behebung dieses Problems müssen Sie einen unterstützten Browser für Ihr Betriebssystem installieren und ausführen. Unter Windows 10 werden unter anderem Microsoft Edge, Internet Explorer und Google Chrome unterstützt. Benutzer anderer Betriebssysteme finden [hier](../conditional-access/concept-conditional-access-conditions.md#supported-browsers) eine umfassende Liste der unterstützten Browser.
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Vergewissern Sie sich, dass Sie ein unterstütztes Betriebssystem verwenden.
 Vergewissern Sie sich, dass Sie eine unterstützte Version des Betriebssystems verwenden:

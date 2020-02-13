@@ -7,14 +7,14 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780282"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188367"
 ---
-# <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Erfassen von Daten aus IoT Hub in Azure Data Explorer (Vorschauversion)
+# <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Erfassen von Daten aus IoT Hub in Azure Data Explorer 
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
@@ -83,7 +83,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit der IoT�
     | IoT Hub | IoT Hub-Name |
     | SAS-Richtlinie | Der Name der SAS-Richtlinie. Leseberechtigungen erforderlich |
     | Consumergruppe |  Die Consumergruppe, die im integrierten IoT Hub-Endpunkt definiert ist. |
-    | Ereignissystemeigenschaften | Die [IoT Hub-Ereignissystemeigenschaften](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/tables#create-table) oder [aktualisieren](/azure/kusto/management/tables#alter-table-and-alter-merge-table) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. | | | 
+    | Ereignissystemeigenschaften | Die [IoT Hub-Ereignissystemeigenschaften](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Beim Hinzufügen von Systemeigenschaften [erstellen](/azure/kusto/management/create-table-command) oder [aktualisieren](/azure/kusto/management/alter-table-command) Sie das Tabellenschema und die [Zuordnung](/azure/kusto/management/mappings), um die ausgewählten Eigenschaften einzubeziehen. | | | 
 
     > [!NOTE]
     > Im Falle eines [manuellen Failovers](/azure/iot-hub/iot-hub-ha-dr#manual-failover) muss die Datenverbindung neu erstellt werden.

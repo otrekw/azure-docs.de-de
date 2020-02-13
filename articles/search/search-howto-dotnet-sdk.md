@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112597"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190986"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Verwenden der kognitiven Azure-Suche in einer .NET-Anwendung
 
@@ -128,7 +128,7 @@ Console.WriteLine("{0}", "Creating index...\n");
 CreateIndex(indexName, serviceClient);
 ```
 
-Danach muss der Index gefüllt werden. Zum Auffüllen des Index benötigen wir ein `SearchIndexClient`-Element. Dieses Objekt erhalten Sie entweder, indem Sie es erstellen oder indem Sie für `SearchServiceClient` `Indexes.GetClient` aufrufen. Der Einfachheit halber verwenden wir die zweite Methode.
+Danach muss der Index gefüllt werden. Zum Auffüllen des Index benötigen wir ein `SearchIndexClient`-Element. Dieses Objekt erhalten Sie entweder, indem Sie es erstellen oder indem Sie für `SearchServiceClient``Indexes.GetClient` aufrufen. Der Einfachheit halber verwenden wir die zweite Methode.
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
@@ -251,7 +251,7 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 }
 ```
 
-Diese Methode erstellt ein neues `Index`-Objekt mit einer Liste von `Field`-Objekten, die das Schema des neuen Index definiert. Jedes Feld weist einen Namen, einen Datentyp und mehrere Attribute auf, die das Suchverhalten des Felds definieren. Die Klasse `FieldBuilder` verwendet Reflektion, um durch Untersuchen der öffentlichen Eigenschaften und Attribute der entsprechenden `Hotel`-Modellklasse eine Liste von `Field`-Objekten für den Index zu erstellen. Wir werden uns die Klasse `Hotel` später genauer ansehen.
+Diese Methode erstellt ein neues `Index`-Objekt mit einer Liste von `Field`-Objekten, die das Schema des neuen Index definiert. Jedes Feld weist einen Namen, einen Datentyp und mehrere Attribute auf, die das Suchverhalten des Felds definieren. Die Klasse `FieldBuilder` verwendet Reflexion, um durch Untersuchen der öffentlichen Eigenschaften und Attribute der entsprechenden `Hotel`-Modellklasse eine Liste von `Field`-Objekten für den Index zu erstellen. Wir werden uns die Klasse `Hotel` später genauer ansehen.
 
 > [!NOTE]
 > Sie können die Liste der `Field`-Objekte immer direkt erstellen, anstatt `FieldBuilder` bei Bedarf zu verwenden. Sie möchten z.B. vielleicht keine Modellklasse verwenden oder Sie müssen möglicherweise eine vorhandene Modellklasse verwenden, die Sie nicht durch Hinzufügen von Attributen ändern möchten.
@@ -462,7 +462,7 @@ Als erstes ist zu beachten, dass der Name jeder öffentlichen Eigenschaft in der
 > 
 > 
 
-Als zweites ist zu beachten, dass jede Eigenschaft mit Attributen wie `IsFilterable`, `IsSearchable`, `Key` und `Analyzer` versehen ist. Diese Attribute sind den [entsprechenden Feldattributen in einem Index der kognitiven Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/create-index#request) direkt zugeordnet. Die `FieldBuilder`-Klasse verwendet diese Eigenschaften, um Felddefinitionen für den Index zu erstellen.
+Als zweites ist zu beachten, dass jede Eigenschaft mit Attributen wie `IsFilterable`, `IsSearchable`, `Key` und `Analyzer` versehen ist. Diese Attribute sind den [entsprechenden Feldattributen in einem Index der kognitiven Azure-Suche](/rest/api/searchservice/create-index) direkt zugeordnet. Die `FieldBuilder`-Klasse verwendet diese Eigenschaften, um Felddefinitionen für den Index zu erstellen.
 
 Der dritte bemerkenswerte Punkt an der Klasse `Hotel` sind die Datentypen der öffentlichen Eigenschaften. Die .NET-Typen dieser Eigenschaften stimmen mit den entsprechenden Feldtypen in der Indexdefinition überein. Die Zeichenfolgeeigenschaft `Category` passt zum Beispiel zum Feld `category`, das den Typ `Edm.String` hat. Ähnliche Zuordnungen bestehen auch zwischen `bool?`, `Edm.Boolean`, `DateTimeOffset?` und `Edm.DateTimeOffset` usw. Die jeweiligen Regeln für die Zuordnung eines Typs sind in der [Referenz zum .NET SDK für die kognitive Azure-Suche](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get) unter der `Documents.Get`-Methode dokumentiert. Die Klasse `FieldBuilder` übernimmt diese Zuordnung für Sie, aber es kann dennoch hilfreich sein, den Vorgang zu verstehen, falls Sie Serialisierungsprobleme beheben müssen.
 
@@ -678,7 +678,7 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-In diesem Fall durchsuchen wir den gesamten Index nach dem Wort „motel“ in einem beliebigen Suchfeld und möchten nur die Hotelnamen abrufen, wie durch Parameter `Select` angegeben. Hier sehen Sie die Ergebnisse:
+In diesem Fall durchsuchen wir den gesamten Index nach dem Wort „motel“ in einem beliebigen Suchfeld und möchten nur die Hotelnamen abrufen, wie durch Parameter `Select` angegeben. Dies sind die Ergebnisse:
 
     Name: Secret Point Motel
 
@@ -727,7 +727,7 @@ WriteDocuments(results);
 
 In diesem Fall verwenden wir erneut OData-Syntax, um den Parameter `OrderBy` auf `lastRenovationDate desc` festzulegen. Wir legen zudem auch `Top` auf 2 fest, um sicherzustellen, dass wir nur die zwei obersten Dokumente abrufen. Wie zuvor geben wir `Select` an, um festzulegen, welche Felder zurückgegeben werden sollen.
 
-Hier sehen Sie die Ergebnisse:
+Dies sind die Ergebnisse:
 
     Name: Fancy Stay        Last renovated on: 6/27/2010 12:00:00 AM +00:00
     Name: Roach Motel       Last renovated on: 4/28/1982 12:00:00 AM +00:00

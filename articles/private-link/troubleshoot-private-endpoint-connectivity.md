@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 1c3fc4ebaffe2347a9c46b626b94042d1c9cfe11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77032172"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191066"
 ---
 # <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Problembehandlung bei Konnektivitätsproblemen mit privaten Endpunkten
 
@@ -100,7 +100,7 @@ Führen Sie die unten aufgeführten Schritte aus, um sicherzustellen, dass alle 
        ![NSG-Ausgangsregeln](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
 5. Wenn die Ergebnisse der Verbindung überprüft wurden, kann das Konnektivitätsproblem mit anderen Aspekten wie Geheimnissen, Token oder Kennwörtern auf der Anwendungsebene zusammenhängen.
-   - Überprüfen Sie in diesem Fall die Konfiguration der Private Link-Ressource, die dem privaten Endpunkt zugeordnet ist. Informationen dazu finden Sie im [Leitfaden zur Problembehandlung für Private Link](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting). 
+   - Überprüfen Sie in diesem Fall die Konfiguration der Private Link-Ressource, die dem privaten Endpunkt zugeordnet ist. Informationen dazu finden Sie im [Leitfaden zur Problembehandlung für Private Link](troubleshoot-private-link-connectivity.md). 
 
 6. Wenden Sie sich an das [Azure-Supportteam](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), wenn Sie weiterhin Konnektivitätsprobleme haben. 
 
@@ -108,4 +108,4 @@ Führen Sie die unten aufgeführten Schritte aus, um sicherzustellen, dass alle 
 
  * [Erstellen eines privaten Endpunkts im aktualisierten Subnetz über das Azure-Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
 
- * [Leitfaden zur Problembehandlung für Private Link](https://docs.microsoft.com/azure/private-link/private-link-connectivity-troubleshooting).
+ * [Leitfaden zur Problembehandlung für Private Link](troubleshoot-private-link-connectivity.md).

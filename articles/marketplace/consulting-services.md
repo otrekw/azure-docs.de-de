@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825974"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191127"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -76,7 +76,7 @@ Partner müssen über eine **Silver- oder Gold-Kompetenz** im entsprechenden Ber
 |---------|----------|----------|----------|
 |Australien |Frankreich  |     Mexiko          |Spanien       |
 |Belgien   |Deutschland |     Niederlande     |Schweden       |
-|Kanada    |Indien   |     Neuseeland     |Vereinigtes Königreich  |
+|Canada    |Indien   |     Neuseeland     |United Kingdom  |
 |Dänemark   |Italien   |     Norwegen          |USA |
 |Finnland   |Japan   |     Polen          
 
@@ -115,7 +115,7 @@ Vor der Registrierung können Sie mit der Sammlung und Vorbereitung der Inhalte 
 Die folgenden Schritte sind erforderlich, um Ihr Beratungsdienstangebot in Azure Marketplace und AppSource zu listen:
 
 1. **Auflisten:** Beginnen Sie mit dem Entwurf einer neuen Angebotsauflistung, indem Sie sich bei Ihrem [Cloud-Partnerportal](https://cloudpartner.azure.com)-Konto anmelden. Wählen Sie im Dropdownmenü „Neues Angebot“ und „Beratungsdienste“ aus. Geben Sie den zu listenden Gegenstand ein, und veröffentlichen Sie Ihr Angebot.
-2. **Überprüfung:** Ihre Anfrage wird geprüft, um sicherzustellen, dass Sie die Eignungskriterien erfüllen. Wir senden Ihnen dann Anweisungen zum Listen von Beratungsdienstangeboten zu. 
+2. **Validierung**: Ihre Anfrage wird geprüft, um sicherzustellen, dass Sie die Eignungskriterien erfüllen. Wir senden Ihnen dann Anweisungen zum Listen von Beratungsdienstangeboten zu. 
 3. **Übermittlung:** Geben Sie die erforderlichen Informationen ein, wie in den Anweisungen aufgeführt. Alle Inhalte und Begleitmaterialien müssen in englischer Sprache übermittelt werden. 
 4. **Überprüfung:** Unser Marketing- und Redaktionsteam überprüft die von Ihnen übermittelten Angaben und optimiert diese, um deren Lesbarkeit, Grammatik und Effizienz zu verbessern. 
 5. **Staging:** Ihre übermittelten Angaben werden für Sie zur Durchsicht bereitgestellt. 
@@ -125,9 +125,9 @@ Die folgenden Schritte sind erforderlich, um Ihr Beratungsdienstangebot in Azure
 Angebote müssen von einem der folgenden fünf Diensttypen sein (Sie können mehr als einen auflisten): 
 
 * **Bewertung:** Eine Auswertung der Umgebung eines Kunden, um die Anwendbarkeit einer Lösung zu bestimmen und eine Schätzung der Kosten und des zeitlichen Umfangs aufzustellen 
-* **Einweisung**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um das Interesse von Kunden durch Frameworks, Demos und Kundenbeispiele zu wecken 
-* **Implementierung:** Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
-* **Proof of Concept:** Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt 
+* **Einweisung**: Eine Einführung in eine Lösung oder einen Beratungsdienst, um das Interesse von Kunden anhand von Frameworks, Demos und Kundenbeispielen zu wecken. 
+* **Implementierung**: Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird. Es wird empfohlen, sich auf Lösungen, die in maximal zwei Wochen implementiert werden können, zu beschränken. 
+* **Proof of Concept**: Eine Implementierung in einem begrenzten Bereich, um zu bestimmen, ob eine Lösung die Anforderungen eines Kunden erfüllt 
 * **Workshop**: Ein interaktives Angebot, das beim Kunden vor Ort durchgeführt wird. Dabei kann es sich um Schulungen, Briefings, Bewertungen oder Demonstrationen handeln, die auf den Daten oder der Umgebung des Kunden aufbauen. 
 
 **Hinweis:** Abgesehen von der Art des *Briefings* können Beratungsdienste persönlich (d. h. vor Ort beim Kunden oder bei einem Partner) oder virtuell (d. h. per Telefonkonferenz, Webkonferenz oder Remoteimplementierung) angeboten werden. Briefings müssen in Form einer Präsenzveranstaltung angeboten werden.
@@ -159,7 +159,7 @@ Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichti
 |**Proof of Concept**    |    Erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.     | Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.        |
 |**Workshop**    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
 
-Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
+Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](/contribute/markdown-reference) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
 
 **Anmerkungen zu Markdown**
 * Hinzufügen von * am Anfang und Ende des Kopieblocks ohne Leerzeichen für Kursivschrift (z.B. *Inhalt*)

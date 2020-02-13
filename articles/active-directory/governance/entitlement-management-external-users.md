@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608719"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185580"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
@@ -91,7 +91,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 ### <a name="review-your-conditional-access-policies"></a>Überprüfen Ihrer Richtlinien für bedingten Zugriff
 
-- Stellen Sie sicher, dass Gastbenutzer von allen Richtlinien für bedingten Zugriff ausgeschlossen werden, die neue Gastbenutzer nicht erfüllen können, da sie dadurch daran gehindert werden, sich bei Ihrem Verzeichnis anzumelden. Beispielsweise verfügen Gastbenutzer wahrscheinlich nicht über ein registriertes Gerät, befinden sich nicht an einem bekannten Standort und möchten sich nicht für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) registrieren. Deshalb wird die Verwendung der der Berechtigungsverwaltung für Gastbenutzer blockiert, wenn diese Anforderungen in einer Richtlinie für bedingten Zugriff verwendet werden. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/conditions.md).
+- Stellen Sie sicher, dass Gastbenutzer von allen Richtlinien für bedingten Zugriff ausgeschlossen werden, die neue Gastbenutzer nicht erfüllen können, da sie dadurch daran gehindert werden, sich bei Ihrem Verzeichnis anzumelden. Beispielsweise verfügen Gastbenutzer wahrscheinlich nicht über ein registriertes Gerät, befinden sich nicht an einem bekannten Standort und möchten sich nicht für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) registrieren. Deshalb wird die Verwendung der der Berechtigungsverwaltung für Gastbenutzer blockiert, wenn diese Anforderungen in einer Richtlinie für bedingten Zugriff verwendet werden. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/concept-conditional-access-conditions.md).
 
     ![Einstellungen zum Ausschluss in Azure AD-Richtlinien für bedingten Zugriff](./media/entitlement-management-external-users/conditional-access-exclude.png)
 

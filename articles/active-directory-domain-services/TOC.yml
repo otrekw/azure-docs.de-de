@@ -77,7 +77,7 @@
           href: notifications.md
         - name: Löschen einer verwalteten Domäne
           href: delete-aadds.md
-        - name: Migrieren von einer klassischen Bereitstellung (Vorschau)
+        - name: Migrieren von einer klassischen Bereitstellung
           href: migrate-from-classic-vnet.md
         - name: Ändern der SKU
           href: change-sku.md

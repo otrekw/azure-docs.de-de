@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548337"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188021"
 ---
 # <a name="streaming-ingestion-preview"></a>Streamingerfassung (Vorschauversion)
 
@@ -23,7 +23,7 @@ Wenn die Datenmenge mehr als 1 MB pro Sekunde und Tabelle beträgt, verwenden S
 > [!NOTE]
 > Folgende Features werden von der Streamingerfassung nicht unterstützt:
 > * [Datenbankcursor](/azure/kusto/management/databasecursor)
-> * [Datenzuordnung](/azure/kusto/management/mappings). Es wird nur die [vorab erstellte](/azure/kusto/management/tables#create-ingestion-mapping) Datenzuordnung unterstützt. 
+> * [Datenzuordnung](/azure/kusto/management/mappings). Es wird nur die [vorab erstellte](/azure/kusto/management/create-ingestion-mapping-command) Datenzuordnung unterstützt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

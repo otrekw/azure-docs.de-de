@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 53cf055a0900a25923fe67b961755c1f4367e1fb
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1fb1301ae7e0cdff36f3771a44769c8bf9cc9c62
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496890"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187916"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)
 
@@ -30,7 +30,7 @@ Azure Data Explorer (ADX) ist ein schneller und hochgradig skalierbarer Dienst z
 Install-Package Microsoft.Azure.Kusto.Ingest.NETStandard
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Für die Authentifizierung von Anwendungen verwendet der Azure-Daten-Explorer Ihre AAD-Mandanten-ID. Um Ihre Mandanten-ID zu suchen, verwenden Sie die folgende URL, und ersetzen Sie dabei *YourDomain* durch Ihre Domäne.
 
@@ -123,7 +123,7 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 ## <a name="define-ingestion-mapping"></a>Definieren der Erfassungszuordnung
 
 Ordnen Sie die eingehenden CSV-Daten den beim Erstellen der Tabelle verwendeten Spaltennamen zu.
-Bereitstellen eines [Objekts für die CSV-Spaltenzuordnung](/azure/kusto/management/tables#create-ingestion-mapping) in dieser Tabelle
+Bereitstellen eines [Objekts für die CSV-Spaltenzuordnung](/azure/kusto/management/create-ingestion-mapping-command) in dieser Tabelle
 
 ```csharp
 var tableMapping = "StormEvents_CSV_Mapping";

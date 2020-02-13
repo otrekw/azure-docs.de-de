@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612661"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185490"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um der Azure AD-Konfiguration ein Attrib
 
 Die Anmeldung bei der App schlägt möglicherweise fehl, weil in der SAML-Antwort ein Attribut (beispielsweise eine Rolle) fehlt. Sie kann auch fehlschlagen, wenn die App ein anderes Format oder einen anderen Wert für das **NameID**-Attribut (Benutzer-ID) erwartet.
 
-Wenn Sie die [automatische Benutzerbereitstellung von Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) verwenden, um Benutzer in der App zu erstellen, zu verwalten und aus dieser zu löschen, müssen Sie darauf achten, dass der Benutzer in der SaaS-App bereitgestellt wurde. Weitere Informationen finden Sie unter [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned).
+Wenn Sie die [automatische Benutzerbereitstellung von Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) verwenden, um Benutzer in der App zu erstellen, zu verwalten und aus dieser zu löschen, müssen Sie darauf achten, dass der Benutzer in der SaaS-App bereitgestellt wurde. Weitere Informationen finden Sie unter [Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Hinzufügen eines Attributs zur Azure AD-App-Konfiguration
 
@@ -91,7 +91,7 @@ Um den Benutzer-ID-Wert zu ändern, führen Sie die folgenden Schritte aus:
    > [!NOTE]
    > Wenn eine App nicht wie erwartet angezeigt wird, verwenden Sie das **Filter**-Steuerelement über der Liste **Alle Anwendungen**. Legen Sie für die Option **Anzeigen** „Alle Anwendungen“ fest.
 
-6. Wählen Sie die App aus, die Sie für das einmalige Anmelden konfigurieren möchten.
+6. Wählen Sie die App aus, die Sie für SSO konfigurieren möchten.
 
 7. Warten Sie, bis die App geladen ist, und klicken Sie anschließend im Navigationsbereich auf **Einmaliges Anmelden**.
 
@@ -107,7 +107,7 @@ Azure AD wählt das Format für das **NameID**-Attribut (Benutzer-ID) auf Grundl
 
 Führen Sie folgende Schritte durch, um einzustellen, welche Teile des SAML-Tokens von Azure AD digital signiert werden:
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als globaler Administrator oder Co-Administrator an.
 
 2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 
@@ -140,7 +140,7 @@ Standardmäßig signiert Azure AD das SAML-Token mit dem sichersten Algorithmus.
 
 Um den Signaturalgorithmus zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als Globaler Administrator oder Co-Administrator an.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und melden Sie sich als globaler Administrator oder Co-Administrator an.
 
 2. Klicken Sie oben im Navigationsbereich auf der linken Seite auf **Alle Dienste** um die Azure AD-Erweiterung zu öffnen.
 

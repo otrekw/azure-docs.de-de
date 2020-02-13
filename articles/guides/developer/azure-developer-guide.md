@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965952"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186946"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -60,7 +60,7 @@ Da sich alle drei App-Typen die App Service-Runtime teilen, können Sie eine Web
 
 App Service wurde mit Blick auf DevOps entworfen. App Service unterstützt verschiedene Tools für die Veröffentlichung und Continuous Integration von Implementierungen. Zu diesen Tools gehören GitHub-Webhooks, Jenkins, Azure DevOps, TeamCity und andere.
 
-Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das [Onlinetool für die Migration](https://www.migratetoazure.net/) verwenden.
+Sie können Ihre vorhandenen Anwendungen zu App Service migrieren, indem Sie das [Onlinetool für die Migration](https://appmigration.microsoft.com/) verwenden.
 
 > **Einsatzgebiete**: Verwenden Sie App Service, wenn Sie vorhandene Webanwendungen zu Azure migrieren, und wenn Sie eine vollständig verwaltete Hostingplattform für Ihre Web-Apps benötigen. Sie können App Service auch verwenden, wenn Sie mobile Clients unterstützen oder REST-APIs mit Ihrer App verfügbar machen müssen.
 >
@@ -171,7 +171,7 @@ Es ist wichtig, nicht nur zu wissen, wer Ihre Anwendungen verwendet, sondern auc
 
   > **Einsatzgebiete**: Wenn Sie SSO bereitstellen, mit graphbasierten Daten arbeiten oder domänenbasierte Benutzer authentifizieren möchten.
   >
-  > **Erste Schritte**: Weitere Informationen finden Sie im [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
+  > **Erste Schritte**: Weitere Informationen finden Sie im [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v2-overview.md).
 
 - **App Service-Authentifizierung**: Wenn Sie App Service zum Hosten Ihrer App auswählen, erhalten Sie auch integrierte Authentifizierungsunterstützung für Azure AD, zusammen mit Identitätsanbietern aus sozialen Netzwerken wie Facebook, Google, Microsoft und Twitter.
 

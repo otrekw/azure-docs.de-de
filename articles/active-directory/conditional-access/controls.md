@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424968"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186212"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?
 
@@ -85,18 +85,18 @@ Weitere Informationen finden Sie unter [Einrichten von Richtlinien für den ger�
 Da Ihre Mitarbeiter mobile Geräte sowohl für private als auch für berufliche Zwecke verwenden, sollten Sie die Möglichkeit haben, Unternehmensdaten, auf die mit den Geräten zugegriffen wird, auch dann zu schützen, wenn diese Geräte nicht von Ihnen verwaltet werden.
 Sie können [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden, um die Daten Ihres Unternehmens unabhängig von der jeweiligen MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) zu schützen.
 
-Wenn Sie genehmigte Client-Apps verwenden, können Sie die Anforderung festlegen, dass eine Client-App, die auf Ihre Cloud-Apps zugreifen möchte, die [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) unterstützen muss. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken. Eine Richtlinie für den bedingten Zugriff, die genehmigte Client-Apps erfordert, wird auch als [Richtlinie für den App-basierten bedingten Zugriff](app-based-conditional-access.md) bezeichnet. Eine Liste der unterstützten genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement).
+Wenn Sie genehmigte Client-Apps verwenden, können Sie die Anforderung festlegen, dass eine Client-App, die auf Ihre Cloud-Apps zugreifen möchte, die [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) unterstützen muss. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken. Eine Richtlinie für den bedingten Zugriff, die genehmigte Client-Apps erfordert, wird auch als [Richtlinie für den App-basierten bedingten Zugriff](app-based-conditional-access.md) bezeichnet. Eine Liste der unterstützten genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>App-Schutzrichtlinie (Vorschauversion)
 
 Da Ihre Mitarbeiter mobile Geräte sowohl für private als auch für berufliche Zwecke verwenden, sollten Sie die Möglichkeit haben, Unternehmensdaten, auf die mit den Geräten zugegriffen wird, auch dann zu schützen, wenn diese Geräte nicht von Ihnen verwaltet werden.
 Sie können [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden, um die Daten Ihres Unternehmens unabhängig von der jeweiligen MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) zu schützen.
 
-Über App-Schutzrichtlinien können Sie den Zugriff auf Clientanwendungen begrenzen, deren [Intune-App-Schutzrichtlinien](https://docs.microsoft.com/intune/app-protection-policy) bei Azure AD gemeldet wurden. Sie können zum Beispiel den Zugriff auf Exchange Online auf die Outlook-App beschränken, die eine Intune-App-Schutzrichtlinie aufweist. Eine Richtlinie für den bedingten Zugriff, die eine App-Schutzrichtlinie erfordert, wird auch als [Schutzrichtlinie für den App-basierten bedingten Zugriff](app-protection-based-conditional-access.md) bezeichnet. 
+Über App-Schutzrichtlinien können Sie den Zugriff auf Clientanwendungen begrenzen, deren [Intune-App-Schutzrichtlinien](https://docs.microsoft.com/intune/app-protection-policy) bei Azure AD gemeldet wurden. Sie können zum Beispiel den Zugriff auf Exchange Online auf die Outlook-App beschränken, die eine Intune-App-Schutzrichtlinie aufweist. Eine Richtlinie für den bedingten Zugriff, die eine App-Schutzrichtlinie erfordert, wird auch als [Schutzrichtlinie für den App-basierten bedingten Zugriff](concept-conditional-access-session.md#application-enforced-restrictions) bezeichnet. 
 
 Ihr Gerät muss bei Azure AD registriert werden, bevor eine Anwendung als von einer Richtlinie geschützt gekennzeichnet werden kann.
 
-Eine Liste der unterstützen durch Richtlinien geschützten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#app-protection-policy-requirement).
+Eine Liste der unterstützen durch Richtlinien geschützten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](concept-conditional-access-session.md#application-enforced-restrictions).
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880272"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185899"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen Ihrer Bereitstellung für bedingten Zugriff in Azure Active Directory
 
@@ -53,7 +53,7 @@ Verwenden Sie die folgende Beispielvorlage, um Richtlinien für bedingten Zugrif
 |Zugriffsversuch:<br>- Auf eine Cloud-App *<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Geräteplattformen)|Zugriff gewähren mit (UND):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
 |Zugriffsversuch:<br>- Auf eine Cloud-App *<br>- Durch Benutzer und Gruppen*<br>Unter Verwendung von:<br>- Bedingung 1 (beispielsweise außerhalb des Unternehmensnetzwerks)<br>- Bedingung 2 (beispielsweise Geräteplattformen)|Zugriff gewähren mit (ODER):<br>- Anforderung 1 (beispielsweise MFA)<br>- Anforderung 2 (beispielsweise Gerätekonformität)|
 
-**Ereignis** definiert mindestens den Prinzipal (**wer**), der versucht, auf eine Cloud-App (**was**) zuzugreifen. Bei Bedarf können Sie auch mit einschließen, **wie** ein Zugriffsversuch erfolgt. Beim bedingten Zugriff werden die Elemente zum Definieren von „Wer“, „Was“ und „Wie“ als Bedingungen bezeichnet. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](conditions.md) 
+**Ereignis** definiert mindestens den Prinzipal (**wer**), der versucht, auf eine Cloud-App (**was**) zuzugreifen. Bei Bedarf können Sie auch mit einschließen, **wie** ein Zugriffsversuch erfolgt. Beim bedingten Zugriff werden die Elemente zum Definieren von „Wer“, „Was“ und „Wie“ als Bedingungen bezeichnet. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](concept-conditional-access-conditions.md) 
 
 Mit dem **auszuführenden Ereignis** definieren Sie die Reaktion Ihrer Richtlinie auf eine Zugriffsbedingung. In der Reaktion können Sie den Zugriff blockieren oder mit zusätzlichen Auflagen (beispielsweise mit mehrstufiger Authentifizierung (Multi-Factor Authentication, MFA)) gewähren. Eine vollständige Übersicht finden Sie unter [Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?](controls.md)  
 
@@ -116,7 +116,7 @@ Gängige Anwendungsfälle für die MFA-Anforderung sind:
 
 Mit Richtlinien für bedingten Zugriff können Sie automatisierte Reaktionen auf Anmeldungen von potenziell gefährdeten Identitäten implementieren. Die Wahrscheinlichkeit, dass ein Konto gefährdet ist, wird in Form von Risikostufen ausgedrückt. Von Identity Protection werden zwei Risikostufen berechnet: Anmelderisiko und Benutzerrisiko. Bei der Implementierung einer Reaktion auf ein Anmelderisiko stehen zwei Optionen zur Verfügung:
 
-- [Die Bedingung „Anmelderisiko“](conditions.md#sign-in-risk) in der Richtlinie für bedingten Zugriff
+- [Die Bedingung „Anmelderisiko“](concept-conditional-access-conditions.md#sign-in-risk) in der Richtlinie für bedingten Zugriff
 - [Die Richtlinie zum Anmelderisiko](../identity-protection/howto-sign-in-risk-policy.md) in Identity Protection 
 
 Die Behandlung des Anmelderisikos als Bedingung ist die bevorzugte Methode, da Ihnen in diesem Fall mehr Anpassungsoptionen zur Verfügung stehen.
@@ -141,9 +141,9 @@ Azure AD unterstützt mehrere der am häufigsten verwendeten Protokolle zur Auth
 
 Eine Richtlinie sollte vor dem Rollout in die Produktionsumgebung getestet werden, um sicherzustellen, dass sie wie erwartet funktioniert.
 
-1. Erstellen Sie Testbenutzer.
-1. Erstellen Sie einen Testplan.
-1. Konfigurieren Sie die Richtlinie.
+1. Erstellen von Testbenutzern
+1. Erstellen eines Testplans
+1. Konfigurieren der Richtlinie
 1. Auswerten einer simulierten Anmeldung
 1. Testen Ihrer Richtlinie
 1. Cleanup

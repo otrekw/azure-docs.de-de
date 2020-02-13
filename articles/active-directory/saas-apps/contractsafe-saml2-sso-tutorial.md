@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291531"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185621"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Tutorial: Integrieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ContractSafe Saml2 SSO
 
@@ -85,7 +85,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den ContractSafe Saml2 SSO-Client](mailto:donne@contractsafe.com). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den ContractSafe Saml2 SSO-Client](mailto:support@contractsafe.com). Sie können sich auch die Formate im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. ContractSafe Saml2 SSO erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -114,7 +114,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
-   1. Geben Sie im Feld **Benutzername** eine E-Mail-Adresse in folgendem Format ein: `username@companydomain.extension`. Beispiel: `B.Simon@contoso.com`
+   1. Geben Sie im Feld **Benutzername** eine E-Mail-Adresse in folgendem Format ein: `username@companydomain.extension`. z. B. `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
@@ -138,11 +138,11 @@ In diesem Abschnitt ermöglichen Sie **B.Simon** die Verwendung des einmaligen A
 
 ## <a name="configure-contractsafe-saml2-sso"></a>Konfigurieren des einmaligen Anmeldens für ContractSafe Saml2 SSO
 
-Um einmaliges Anmelden aufseiten von **ContractSafe Saml2 SSO** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [ContractSafe Saml2 SSO-Supportteam](mailto:donne@contractsafe.com) senden. Das Team sorgt dafür, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet wird.
+Um einmaliges Anmelden aufseiten von **ContractSafe Saml2 SSO** zu konfigurieren, müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [ContractSafe Saml2 SSO-Supportteam](mailto:support@contractsafe.com) senden. Das Team sorgt dafür, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet wird.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Erstellen eines ContractSafe Saml2 SSO-Testbenutzers
 
-Erstellen Sie in ContractSafe Saml2 SSO einen Benutzer namens B.Simon. Arbeiten Sie mit dem[ContractSafe Saml2 SSO-Supportteam](mailto:donne@contractsafe.com) zusammen, um der ContractSafe Saml2 SSO-Plattform Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+Erstellen Sie in ContractSafe Saml2 SSO einen Benutzer namens B.Simon. Arbeiten Sie mit dem[ContractSafe Saml2 SSO-Supportteam](mailto:support@contractsafe.com) zusammen, um der ContractSafe Saml2 SSO-Plattform Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

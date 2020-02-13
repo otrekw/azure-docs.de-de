@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379978"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185885"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Beheben von Problemen mit dem What If-Tool beim bedingten Zugriff
 
@@ -30,7 +30,7 @@ Mit dem **Was-wäre-wenn-Tool für den bedingten Zugriff** erhalten Sie Einblick
 
 Das **Was-wäre-wenn**-Tool stellt auch eine Möglichkeit dar, die Richtlinien zu ermitteln, die für einen bestimmten Benutzer gelten. Sie können diese Informationen z.B. nutzen, um ein Problem zu beheben.    
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Sie müssen im **Was-wäre-wenn-Tool für den bedingten Zugriff** zunächst die Einstellungen des Anmeldeszenarios konfigurieren, das Sie simulieren möchten. Dies umfasst Folgendes:
 
@@ -72,11 +72,11 @@ Die IP-Adresse ist eine einzelne IPv4-Adresse zum Imitieren der [Standortbedingu
 
 ### <a name="device-platforms"></a>Geräteplattformen
 
-Diese Einstellung imitiert die [Geräteplattformbedingung](conditions.md#device-platforms) und stellt die Entsprechung von **Alle Plattformen (auch nicht unterstützte)** dar. 
+Diese Einstellung imitiert die [Geräteplattformbedingung](concept-conditional-access-conditions.md#device-platforms) und stellt die Entsprechung von **Alle Plattformen (auch nicht unterstützte)** dar. 
 
 ### <a name="client-apps"></a>Client-Apps
 
-Diese Einstellung imitiert die [Client-Apps-Bedingung](conditions.md#client-apps).
+Diese Einstellung imitiert die [Client-Apps-Bedingung](concept-conditional-access-conditions.md#client-apps-preview).
 Standardmäßig bewirkt diese Einstellung eine Auswertung aller Richtlinien, bei denen **Browser** und/oder **Mobile Apps und Desktopclients** aktiviert ist. Damit werden außerdem Richtlinien erkannt, die **Exchange ActiveSync (EAS)** erzwingen. Sie können diese Einstellung eingrenzen, indem Sie Folgendes auswählen:
 
 - **Browser**, um alle Richtlinien auszuwerten, für die mindestens **Browser** ausgewählt wurde. 
@@ -84,7 +84,7 @@ Standardmäßig bewirkt diese Einstellung eine Auswertung aller Richtlinien, bei
 
 ### <a name="sign-in-risk"></a>Anmelderisiko
 
-Diese Einstellung imitiert die [Anmelderisikobedingung](conditions.md#sign-in-risk).   
+Diese Einstellung imitiert die [Anmelderisikobedingung](concept-conditional-access-conditions.md#sign-in-risk).   
 
 ## <a name="evaluation"></a>Auswertung 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989840"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190498"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -175,9 +175,9 @@ Das folgende Skript ist ein Beispiel. Sie müssen Ressourcengruppe, Speicherort,
 
 Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux können mithilfe von [Azure Disk Encryption](../../linux/disk-encryption-overview.md) geschützt werden. Allerdings **muss** das Abonnement vor dem Aktivieren der Verschlüsselung registriert werden.  Details zum Registrieren eines BYOS-Gold-Images für RHEL finden Sie auf der Red Hat-Website. Weitere Informationen finden Sie unter [How to register and subscribe a system to the Red Hat Customer Portal using Red Hat Subscription-Manager](https://access.redhat.com/solutions/253273) (Registrieren und Abonnieren eines Systems im Red Hat-Kundenportal mithilfe des Red Hat-Abonnement-Managers). Wenn Sie über ein aktives Red Hat-Abonnement verfügen, können Sie auch [Creating Red Hat Customer Portal Activation Keys](https://access.redhat.com/articles/1378093) (Erstellen der Aktivierungsschlüssel für das Red Hat-Kundenportal) lesen.
 
-Azure Disk Encryption wird für [benutzerdefinierte Red Hat-Images](/linux/redhat-create-upload-vhd) nicht unterstützt. Weitere Informationen zu den Anforderungen und Voraussetzungen für ADE finden Sie unter [Azure Disk Encryption für virtuelle Linux-Computer](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+Azure Disk Encryption wird für [benutzerdefinierte Red Hat-Images](../../linux/redhat-create-upload-vhd.md) nicht unterstützt. Weitere Informationen zu den Anforderungen und Voraussetzungen für ADE finden Sie unter [Azure Disk Encryption für virtuelle Linux-Computer](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
-Die Schritte zum Anwenden von Azure Disk Encryption sind in [Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern](../../linux/disk-encryption-linux.md) und verwandten Artikeln verfügbar.  
+Die Schritte zum Anwenden von Azure Disk Encryption sind in [Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern](../../linux/disk-encryption-linux.md) und verwandten Artikeln verfügbar.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
@@ -186,7 +186,7 @@ Die Schritte zum Anwenden von Azure Disk Encryption sind in [Azure Disk Encrypti
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     Wenden Sie sich in diesem Fall an Microsoft oder Red Hat, um Ihr Abonnement aktivieren zu lassen.
 
 - Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:

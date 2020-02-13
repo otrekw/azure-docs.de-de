@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062526"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185535"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy
 
@@ -144,5 +144,5 @@ Bei Ablauf eines Zertifikats erhalten Sie eine Warnung mit der Aufforderung, ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Aktivieren des einmaligen Anmeldens](application-proxy-configure-single-sign-on-with-kcd.md) bei Ihren veröffentlichten Apps mithilfe der Azure AD-Authentifizierung.
-* [Aktivieren des bedingten Zugriffs](../conditional-access/technical-reference.md#cloud-apps-assignments) auf Ihre veröffentlichten Apps
+* [Aktivieren des bedingten Zugriffs](../conditional-access/overview.md) auf Ihre veröffentlichten Apps
 

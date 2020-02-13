@@ -13,9 +13,11 @@
           href: b2b-quickstart-add-guest-users-portal.md
         - name: Hinzufügen von Gastbenutzern mit PowerShell
           href: b2b-quickstart-invite-powershell.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
-        - name: Masseneinladung von B2B-Gastbenutzern
+        - name: Masseneinladung über PowerShell
+          href: bulk-invite-powershell.md
+        - name: Masseneinladung über das Portal (Vorschau)
           href: tutorial-bulk-invite.md
         - name: Erzwingen der Multi-Factor Authentication
           href: b2b-tutorial-require-mfa.md
@@ -50,7 +52,7 @@
           href: hybrid-organizations.md
         - name: Aktuelle Einschränkungen
           href: current-limitations.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       expanded: true
       items:
         - name: Verwalten der B2B-Freigabe

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767669"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186885"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
@@ -57,7 +57,7 @@ Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto.
 1. Klicken Sie auf **Erstellen**.
 1. Auf dem Bildschirm **Speicherkonto erstellen**:
     1. Wählen Sie das richtige Abonnement und die Ressourcengruppe aus.
-    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/resource-naming#storage).
+    1. Geben Sie einen Namen für Ihr Data Lake Storage Gen2-Konto ein. Weitere Informationen zu Namenskonventionen für Speicherkonten finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
     1. Klicken Sie auf die Registerkarte **Erweitert**.
     1. Klicken Sie auf **Aktiviert** neben **Hierarchischer Namespace** unter **Data Lake Storage Gen2**.
     1. Klicken Sie auf **Überprüfen + erstellen**.
@@ -102,7 +102,7 @@ Weisen Sie die verwaltete Identität der Rolle **Besitzer von Speicherblobdaten*
 
 Sie können [hier eine Beispielvorlagendatei](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json) und [hier eine Beispieldatei für Parameter](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json) herunterladen. Ersetzen Sie vor der Verwendung der Vorlage und des Azure CLI-Codeausschnitts unten die folgenden Platzhalter durch die korrekten Werte:
 
-| Platzhalter | Beschreibung |
+| Platzhalter | BESCHREIBUNG |
 |---|---|
 | `<SUBSCRIPTION_ID>` | Die ID Ihres Azure-Abonnements |
 | `<RESOURCEGROUPNAME>` | Die Ressourcengruppe, in der der neue Cluster und das Speicherkonto erstellt werden sollen |

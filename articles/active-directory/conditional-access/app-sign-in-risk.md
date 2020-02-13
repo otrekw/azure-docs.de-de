@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381070"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186609"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
-Zum Schutz Ihrer Umgebung sollten Sie verhindern, dass sich verdächtige Benutzer anmelden können. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analysiert alle Anmeldungen und berechnet die Wahrscheinlichkeit dafür, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Die Wahrscheinlichkeit (gering, mittel, hoch) wird in Form eines berechneten Wertes mit der Bezeichnung [Risikostufen für die Anmeldung](conditions.md#sign-in-risk) angegeben. Durch Festlegen der Bedingung zum Anmelderisiko können Sie eine Richtlinie für bedingten Zugriff konfigurieren, um auf bestimmte Risikostufen für die Anmeldung zu reagieren.
+Zum Schutz Ihrer Umgebung sollten Sie verhindern, dass sich verdächtige Benutzer anmelden können. [Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analysiert alle Anmeldungen und berechnet die Wahrscheinlichkeit dafür, dass ein Anmeldeversuch nicht vom rechtmäßigen Besitzer eines Benutzerkontos durchgeführt wurde. Die Wahrscheinlichkeit (gering, mittel, hoch) wird in Form eines berechneten Wertes mit der Bezeichnung [Risikostufen für die Anmeldung](concept-conditional-access-conditions.md#sign-in-risk) angegeben. Durch Festlegen der Bedingung zum Anmelderisiko können Sie eine Richtlinie für bedingten Zugriff konfigurieren, um auf bestimmte Risikostufen für die Anmeldung zu reagieren.
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie eine [Richtlinie für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) konfigurieren, mit der eine Anmeldung blockiert wird, wenn eine konfigurierte Risikostufe für die Anmeldung erkannt wird.
 
@@ -52,16 +52,16 @@ Für das Szenario in dieser Schnellstartanleitung wird eine Anmeldung über eine
 
 In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedingten Zugriff erstellen. Legen Sie in Ihrer Richtlinie Folgendes fest:
 
-| Einstellung | Wert |
+| Einstellung | value |
 | --- | --- |
 | Benutzer und Gruppen | Alain Charon  |
 | Cloud-Apps | Alle Cloud-Apps |
-| Anmelderisiko | Mittel |
-| Gewährung | Zugriff blockieren |
+| Anmelderisiko | Medium |
+| Erteilen | Zugriff blockieren |
 
 ![Richtlinie erstellen](./media/app-sign-in-risk/130.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 1. Klicken Sie im Azure-Portal auf der linken Navigationsleiste auf **Azure Active Directory**.
@@ -74,11 +74,11 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
 1. Klicken Sie auf der Seite **Bedingter Zugriff** auf der Symbolleiste am oberen Rand auf **Hinzufügen**.
 
-   ![NAME](./media/app-sign-in-risk/108.png)
+   ![Name](./media/app-sign-in-risk/108.png)
 
 1. Geben Sie auf der Seite **Neu** im Textfeld **Name** den Namen **Zugriff für mittlere Risikostufe blockieren** ein.
 
-   ![NAME](./media/app-sign-in-risk/104.png)
+   ![Name](./media/app-sign-in-risk/104.png)
 
 1. Klicken Sie im Abschnitt **Zuweisung** auf **Benutzer und Gruppen**.
 
@@ -129,7 +129,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
    ![Richtlinie aktivieren](./media/app-sign-in-risk/18.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Auswerten einer simulierten Anmeldung
 
