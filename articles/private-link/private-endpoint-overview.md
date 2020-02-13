@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: cbb5882950636e281d311bf0536acf5b92cf11ea
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: dd73f42aaa0d0bd1884892143d96446935a401a5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018600"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048438"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -54,7 +54,7 @@ Eine Private Link-Ressource ist das Ziel eines bestimmten privaten Endpunkts. Es
 |---------|---------|---------|
 |**Private Link-Dienst** (Ihr eigener Dienst)   |  Microsoft.Network/privateLinkServices       | empty |
 |**Azure SQL-Datenbank** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
+|**Azure Synapse Analytics** | Microsoft.Sql/servers    |  SQL Server (sqlServer)        |
 |**Azure Storage (in englischer Sprache)**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Tabelle (table, table_secondary)<BR> Warteschlange (queue, queue_secondary)<BR> Datei (file, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Data Lake-Dateisystem Gen2 (dfs, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
@@ -130,7 +130,7 @@ Ihre Anwendungen müssen die Verbindungs-URL nicht ändern. Beim Versuch der Auf
 Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verwendung privater Endpunkte: 
 
 
-|Einschränkung |Beschreibung |Minderung  |
+|Einschränkung |BESCHREIBUNG |Minderung  |
 |---------|---------|---------|
 |Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Stellen Sie einzelne Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte bereit. NSG-Datenflussprotokolle und Überwachungsinformationen für ausgehende Verbindungen werden weiterhin unterstützt und können verwendet werden.        |
 

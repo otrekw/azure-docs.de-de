@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984862"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169873"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -84,9 +84,6 @@ Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberf
 
 ### <a name="compute-instance"></a>Compute-Instanz (Vorschauversion)
 
-> [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden. 
 
 Eine **Azure Machine Learning-Compute-Instanz** (früher Notebook-VM) ist eine vollständig verwaltete, cloudbasierte Arbeitsstation, die mehrere für Machine Learning installierte Tools und Umgebungen umfasst. Compute-Instanzen können als Computeziel für Trainings- und Rückschlussaufträge verwendet werden. Bei großen Aufgaben sind [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten die bessere Wahl eines Computeziels.
 

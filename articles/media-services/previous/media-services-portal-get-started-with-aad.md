@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4428187c985c1004c88f2ac20b0e5811803cce2a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719619"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162768"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals
 
@@ -64,7 +64,7 @@ Die Werte für diese Parameter können Sie auf der Seite **Verbindung mit Media 
 
 Wenn Sie mithilfe des Microsoft .NET SDK für Media Services eine Verbindung mit der Media Services-API herstellen, sind die erforderlichen Werte als Teil des SDK verfügbar. Weitere Informationen finden Sie unter [Use Azure AD authentication to access the Azure Media Services API with .NET](media-services-dotnet-get-started-with-aad.md) (Zugreifen auf die Azure Media Services-API mit .NET mithilfe der Azure AD-Authentifizierung).
 
-Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die zuvor beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/develop/active-directory-authentication-libraries.md).
+Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die zuvor beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ## <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
@@ -90,7 +90,7 @@ Wenn Sie über keine Berechtigungen zum Erstellen von Azure AD-Apps in Ihrer Dom
 
 Weitere Informationen zum Herstellen einer Verbindung mit der Media Services-API mithilfe des Media Services .NET SDK finden Sie unter [Use Azure AD authentication to access Azure Media Services API with .NET](media-services-dotnet-get-started-with-aad.md) (Zugreifen auf die Azure Media Services-API mit .NET mithilfe der Azure AD-Authentifizierung).
 
-Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die zuvor beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/develop/active-directory-authentication-libraries.md).
+Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die zuvor beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ### <a name="get-the-client-id-and-client-secret"></a>Abrufen der Client-ID und des geheimen Clientschlüssels
 

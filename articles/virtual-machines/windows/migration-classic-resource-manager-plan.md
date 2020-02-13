@@ -3,8 +3,8 @@ title: Planen der Migration vom klassischen Bereitstellungsmodell zu Azure Resou
 description: Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,20 +12,17 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 2d7eca56556c8a1097b625b8f4b0e2de2facbc60
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980885"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061606"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
-
-> [!NOTE]
-> An der folgenden Anleitung haben das Azure Customer Advisory Team und die Cloudlösungsarchitekten maßgeblich mitgewirkt, die Kunden bei der Migration umfangreicher Umgebungen zu unterstützen. Das Dokument wird immer wieder mit neuen Erfolgsmustern aktualisiert. Prüfen Sie daher von Zeit zu Zeit, ob neue Empfehlungen verfügbar sind.
 
 Die Migration lässt sich in vier allgemeine Phasen unterteilen:<br>
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: cf36c233df9f8aaf76333b0add8b1ffce869156b
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 40db6e9f429569bc19641aa5f0f371f287db7b18
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773249"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158025"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -71,7 +71,7 @@ Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und 
 
 ![1][]
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover sehr häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
 
@@ -142,7 +142,11 @@ Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal
 
 Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
-* Erste Schritte mit einem [Event Hubs-Tutorial](event-hubs-dotnet-standard-getstarted-send.md)
+- Erste Schritte mit Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 * [Beispielanwendungen mit Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 

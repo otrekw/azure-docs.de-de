@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 248c4d38141f30016837f090ab04c64f82749f2b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a4ce383959b10836791ea065ffe8a9c243f6ad0d
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838488"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168986"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Anzeigen und Löschen von im Produkt enthaltenen Benutzerdaten im Azure KI-Katalog
 

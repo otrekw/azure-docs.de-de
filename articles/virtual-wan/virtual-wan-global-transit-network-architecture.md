@@ -1,18 +1,19 @@
 ---
-title: Architektur mit einem globalen Transitnetzwerk für Azure Virtual WAN | Microsoft-Dokumentation
+title: 'Architektur: Globale Übertragungsnetzwerkarchitektur'
+titleSuffix: Azure Virtual WAN
 description: Erfahren Sie mehr zur Architektur mit einem globalen Transitnetzwerk für Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 10/18/2019
+ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9b736e897278c4656df83c30388efc812ac6193d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607366"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064970"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
 

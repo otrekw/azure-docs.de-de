@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530645"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132825"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
 
@@ -142,7 +142,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Gerätepartnern die Erstellung 
   Location    |Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
   ParentDeviceId | ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Z. B., wenn ein Knoten mit einem Gateway verbunden ist, besitzt der Knoten den parentDeviceID-Wert als Gateway. |
   Name  | Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
-  BESCHREIBUNG  | Eine aussagekräftige Beschreibung  |
+  Beschreibung  | Eine aussagekräftige Beschreibung  |
   Eigenschaften  |Zusätzliche Eigenschaften des Herstellers  |
   **SensorModel** |  |
   Type (analog, digital)  |Gibt an, ob der Sensor analog oder digital ist.|
@@ -345,4 +345,4 @@ Gerätehersteller oder -partner können die folgende Checkliste verwenden, um si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur REST-API finden Sie unter [REST-API](references-for-azure-farmbeats.md#rest-api).
+Weitere Informationen zur REST-API finden Sie unter [REST-API](rest-api-in-azure-farmbeats.md).

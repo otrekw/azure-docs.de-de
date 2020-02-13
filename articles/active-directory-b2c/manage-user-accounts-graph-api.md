@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851057"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161663"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -26,7 +26,7 @@ Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Man
 Für B2C-Mandanten gibt es zwei primäre Modi für die Kommunikation mit der Graph-API:
 
 * Für **interaktive** Aufgaben mit einmaliger Ausführung sollten Sie beim Ausführen der Aufgaben ein Administratorkonto im B2C-Mandanten verwenden. In diesem Modus muss sich ein Administrator mit Anmeldeinformationen anmelden, bevor er alle Aufrufe der Graph-API ausführen kann.
-* Für **automatische**, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer *Anwendungs-ID* , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/service-to-service.md)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
+* Für **automatische**, kontinuierliche Aufgaben sollte eine Art von Dienstkonto verwendet werden, dem Sie die benötigten Rechte zum Ausführen von Verwaltungsaufgaben gewähren. In Azure AD registrieren Sie dazu eine Anwendung und authentifizieren sie bei Azure AD. Dies geschieht mithilfe einer *Anwendungs-ID* , die die [OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)verwendet. In diesem Fall verhält sich die Anwendung beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer.
 
 In diesem Artikel wird die Ausführung des automatischen Anwendungsfalls erläutert. Sie erstellen das .NET 4.5-Element `B2CGraphClient`, das Benutzervorgänge zum Erstellen, Lesen, Aktualisieren und Löschen (CRUD) ausführt. Der Client verfügt über eine Windows-Befehlszeilenschnittstelle, über die Sie verschiedene Methoden aufrufen können. Der Code ist jedoch so geschrieben, dass er sich auf nicht interaktive, automatisierte Weise verhält.
 
@@ -73,7 +73,7 @@ Ihre Azure AD B2C-Anwendung verfügt jetzt über die zusätzlichen Berechtigunge
 
 ## <a name="get-the-sample-code"></a>Laden Sie den Beispielcode herunter
 
-Das Codebeispiel ist eine .NET-Konsolenanwendung, die für die Interaktion mit der Azure AD Graph-API die [Active Directory Authentication Library (ADAL) ](../active-directory/develop/active-directory-authentication-libraries.md) verwendet. Der Code veranschaulicht, wie die API aufgerufen wird, um Benutzer in einem Azure AD B2C-Mandanten programmgesteuert zu verwalten.
+Das Codebeispiel ist eine .NET-Konsolenanwendung, die für die Interaktion mit der Azure AD Graph-API die [Active Directory Authentication Library (ADAL) ](../active-directory/azuread-dev/active-directory-authentication-libraries.md) verwendet. Der Code veranschaulicht, wie die API aufgerufen wird, um Benutzer in einem Azure AD B2C-Mandanten programmgesteuert zu verwalten.
 
 Sie können das [Beispielarchiv herunterladen](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*.zip) oder das GitHub-Repository klonen:
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
-ms.openlocfilehash: b0fec44a59bd70c6f1d0236861d93e81aaba033c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 68f42aa13288c2416257f3ba6c0b6072c1572977
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969444"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162989"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services 
 
@@ -215,10 +215,10 @@ Die Implementierung umfasst die folgenden Schritte:
 
     | **DRM-System** | **Browser** | **Ergebnis für berechtigten Benutzer** | **Ergebnis für nicht berechtigten Benutzer** |
     | --- | --- | --- | --- |
-    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fail |
-    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fail |
-    | **FairPlay** |Safari unter macOS      |Erfolg |Fail |
-    | **AES-128** |Meisten modernen Browser  |Erfolg |Fail |
+    | **PlayReady** |Microsoft Edge oder Internet Explorer 11 unter Windows 10 |Erfolg |Fehler |
+    | **Widevine** |Chrome, Firefox, Opera |Erfolg |Fehler |
+    | **FairPlay** |Safari unter macOS      |Erfolg |Fehler |
+    | **AES-128** |Meisten modernen Browser  |Erfolg |Fehler |
 
 Informationen zum Einrichten von Azure AD für einen ASP.NET MVC-Player finden Sie unter [Integrate an Azure Media Services OWIN MVC-based app with Azure Active Directory and restrict content key delivery based on JWT claims](http://gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/) (Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen).
 
@@ -226,7 +226,7 @@ Weitere Informationen finden Sie unter [JWT token authentication in Azure Media 
 
 Informationen zu Azure AD:
 
-* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/develop/v1-overview.md).
+* Informationen für Entwickler bietet das [Entwicklerhandbuch zu Azure Active Directory](../../active-directory/azuread-dev/v1-overview.md).
 * Informationen für Administratoren finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../../active-directory/fundamentals/active-directory-administer.md).
 
 ### <a name="some-issues-in-implementation"></a>Mögliche Probleme bei der Implementierung
@@ -313,9 +313,9 @@ Was passiert, wenn das Schlüsselrollover ausgeführt wird, nachdem Azure AD ein
 Da ein Schlüsselrollover jederzeit erfolgen kann, steht im Dokument mit den Verbundmetadaten immer mehr als ein gültiger öffentlicher Schlüssel zur Verfügung. Die Media Services-Lizenzbereitstellung kann jeden der im Dokument angegebenen Schlüssel verwenden. Da für einen Schlüssel möglicherweise bald ein Rollover ausgeführt wird, dient der andere als Ersatz.
 
 ### <a name="where-is-the-access-token"></a>Wo befindet sich das Zugriffstoken?
-Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/web-api.md) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
+Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/azuread-dev/web-api.md) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
 
-* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/develop/web-app.md).
+* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/azuread-dev/web-app.md).
 * Der Azure AD-Autorisierungsendpunkt leitet den Benutzer-Agent mit einem Autorisierungscode zurück zur Clientanwendung. Der Benutzer-Agent gibt den Autorisierungscode an den Umleitungs-URI der Clientanwendung zurück.
 * Die Webanwendung muss ein Zugriffstoken abrufen, damit sie sich gegenüber der Web-API authentifizieren und die gewünschte Ressource abrufen kann. Sie sendet eine Anforderung an den Azure AD-Tokenendpunkt und gibt die Anmeldeinformationen, die Client-ID sowie den Anwendungs-ID-URI der Web-API an. Sie legt den Autorisierungscode vor, um zu belegen, dass der Benutzer zugestimmt hat.
 * Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
@@ -472,7 +472,7 @@ Dieses Dokument erläuterte CENC mit mehreren nativen DRM-Systemen und Zugriffss
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 
-* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

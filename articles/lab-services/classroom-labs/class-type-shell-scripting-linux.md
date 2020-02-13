@@ -1,6 +1,6 @@
 ---
 title: Einrichten eines Linux-Labs zur Shell-Skripterstellung mit Azure Lab Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein Lab zur Schulung von Shellskripts unter Linux einrichten.
+description: Erfahren Sie, wie Sie ein Lab für Schulungen zu Shellskripts unter Linux einrichten.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 9502a81149df11ffa378bf8ffc2c377f4bb22d7f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177119"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133677"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Einrichten eines Labs zur Schulung in Shellskripts unter Linux
 Erfahren Sie, wie Sie unter Linux ein Lab für Schulungen zum Erstellen von Shellskripts einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können. 
@@ -30,11 +30,11 @@ Zum Einrichten dieses Labs benötigen Sie als Einstieg ein Azure-Abonnement. Wen
 
 Nachdem Sie das Lab-Konto erstellt haben, aktivieren Sie die folgenden Einstellungen im Lab-Konto: 
 
-| Lab-Kontoeinstellungen | Anleitung |
+| Lab-Kontoeinstellungen | Instructions |
 | ----------- | ------------ |  
-| Marketplace-Bilder | Aktivieren Sie das Image [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) zur Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators) | 
+| Marketplace-Bilder | Aktivieren Sie das Image [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) zur Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
 
-Führen Sie [dieses Tutorial](tutorial-setup-classroom-lab.md) aus, um ein neues Lab mit den folgenden Einstellungen zu erstellen:
+Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab mit den folgenden Einstellungen zu erstellen:
 
 | Lab-Einstellungen | Wert/Anweisungen | 
 | ------------ | ------------------ |

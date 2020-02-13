@@ -1,5 +1,5 @@
 ---
-title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen | Microsoft-Dokumentation
+title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 description: Informationen zu Ablehnungszuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479361"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137376"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 
@@ -54,15 +54,15 @@ Ablehnungszuweisungen folgen einem ähnlichen Muster wie Rollenzuweisungen, weis
  Eine Ablehnungszuweisungen hat folgende Eigenschaften:
 
 > [!div class="mx-tableFixed"]
-> | Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
+> | Eigenschaft | Erforderlich | type | BESCHREIBUNG |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ja | Zeichenfolge | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
-> | `Description` | Nein | Zeichenfolge | Die Beschreibung der Ablehnungszuweisung. |
+> | `DenyAssignmentName` | Ja | String | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
+> | `Description` | Nein | String | Die Beschreibung der Ablehnungszuweisung. |
 > | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
 > | `Permissions.DataActions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
-> | `Scope` | Nein | Zeichenfolge | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
+> | `Scope` | Nein | String | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
 > | `DoNotApplyToChildScopes` | Nein | Boolean | Gibt an, ob die Ablehnungszuweisung für untergeordnete Bereiche gilt. Der Standardwert ist „false“. |
 > | `Principals[i].Id` | Ja | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |
 > | `Principals[i].Type` | Nein | String[] | Ein Array von Objekttypen, das durch „Principals[i].Id“ dargestellt wird. Eine leere GUID `SystemDefined` repräsentiert alle Prinzipale. |

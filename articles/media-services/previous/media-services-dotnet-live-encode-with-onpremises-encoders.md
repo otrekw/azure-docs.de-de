@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: bc7c8a059e1e17b7b280a7061206b10ed6c530aa
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 11c6da0b79f169b250dc0178f76dcd885ce91668
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "69015835"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162870"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
 * Richten Sie Ihre Entwicklungsumgebung ein. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-set-up-computer.md).
-* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](https://www.telestream.net/wirecast/overview.htm).
+* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md).
 
 Wir empfehlen, die folgenden Artikel zu lesen:
 

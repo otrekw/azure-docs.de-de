@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646879"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121807"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -230,7 +230,7 @@ Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Berei
 Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 - Azure-Portal: Bereitstellen von VNets über das [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network)- und [klassische](virtual-networks-create-vnet-classic-pportal.md) Bereitstellungsmodell.
 - PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/az.network)- und [klassische](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
-- Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) zum Bereitstellen und Verwalten von VNETs, die über das [Resource Manager-Modell](/cli/azure/network/vnet) und das [klassische](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) Bereitstellungsmodell bereitgestellt werden  
+- Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) zum Bereitstellen und Verwalten von VNETs, die über das [Resource Manager-Modell](/cli/azure/network/vnet) und das [klassische](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-resources) Bereitstellungsmodell bereitgestellt werden  
 
 ## <a name="vnet-peering"></a>VNet-Peering
 

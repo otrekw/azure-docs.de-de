@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: ba21ec6ba82ac4984d3c51fc46f88de2cd56b2b2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 83902ea5a3e73603311a0c469126ed603d0ebd16
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933693"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064868"
 ---
 # <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>Verwenden einer Jupyter Notebook-Instanz und der Kqlmagic-Erweiterung zum Analysieren von Daten in Azure Data Explorer
 
@@ -168,7 +168,7 @@ In vielen Analyseszenarios sollten Sie, wiederverwendbare Notebooks erstellen, d
     ```
 
 > [!TIP]
-> Um Informationen zu allen verfügbaren Konfigurationen zu erhalten, verwenden Sie `%config KQLmagic`. Verwenden Sie zum Beheben und Erfassen von Kusto-Fehlern (z. B. Verbindungsprobleme und falsche Abfragen) `%config Kqlmagic.short_errors=False`.
+> Um Informationen zu allen verfügbaren Konfigurationen zu erhalten, verwenden Sie `%config Kqlmagic`. Verwenden Sie zum Beheben und Erfassen von Kusto-Fehlern (z. B. Verbindungsprobleme und falsche Abfragen) `%config Kqlmagic.short_errors=False`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

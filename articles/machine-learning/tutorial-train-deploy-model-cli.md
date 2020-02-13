@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841113"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087031"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -381,7 +381,7 @@ Dieser Befehl stellt einen neuen Dienst namens `myservice` bereit, der die Versi
 
 Die Datei `inferenceConfig.yml` enthält Informationen zur Verwendung des Modells für Rückschlüsse. Sie verweist z. B. auf das Einstiegsskript (`score.py`) und die Softwareabhängigkeiten. 
 
-Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
+Weitere Informationen zur Struktur dieser Datei finden Sie unter [Rückschlusskonfigurationsschema](reference-azure-machine-learning-cli.md#inference-configuration-schema). Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 Die `aciDeploymentConfig.yml` beschreibt die zum Hosten des Dienstes verwendete Bereitstellungsumgebung. Die Bereitstellungskonfiguration hängt vom Computetyp ab, den Sie für die Bereitstellung verwenden. In diesem Fall wird eine Azure Container Instance verwendet. Weitere Informationen finden Sie unter [Bereitstellungskonfigurationsschema](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

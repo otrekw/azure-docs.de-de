@@ -9,12 +9,12 @@ ms.date: 01/30/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 88f713c5695e2453edc58d072899aa417f0514af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6554385a879b054153dcb808c3dff4b60c136458
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147040"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120863"
 ---
 # <a name="using-the-azure-classic-cli-with-azure-storage"></a>Verwenden der klassischen Azure CLI mit Azure Storage
 
@@ -27,7 +27,7 @@ Diese Anleitung enthält Informationen zur Verwendung der [klassischen Azure CLI
 Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Storage verstehen. Die Anleitung bietet eine Reihe von Skripts, um die Verwendung der klassischen Azure CLI mit Azure Storage zu veranschaulichen. Sie müssen die Skriptvariablen auf Basis Ihrer Konfiguration aktualisieren, bevor Sie die jeweiligen Skripts ausführen.
 
 > [!NOTE]
-> Die Anleitung enthält die Befehle der klassischen Azure CLI und Skriptbeispiele für klassische Speicherkonten. Befehle der klassischen Azure CLI für Resource Manager-Speicherkonten finden Sie unter [Verwenden der klassischen Azure CLI für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects).
+> Die Anleitung enthält die Befehle der klassischen Azure CLI und Skriptbeispiele für klassische Speicherkonten. Befehle der klassischen Azure CLI für Resource Manager-Speicherkonten finden Sie unter [Verwenden der klassischen Azure CLI für Mac, Linux und Windows mit der Azure-Ressourcenverwaltung](../../virtual-machines/azure-cli-arm-commands.md#storage-objects).
 >
 >
 
@@ -233,7 +233,7 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 Sie finden die Befehlsreferenz zur klassischen Azure CLI für die Arbeit mit Speicherressourcen hier:
 
-* [Befehle der klassischen Azure CLI im Resource Manager-Modus](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Befehle der klassischen Azure CLI im Resource Manager-Modus](../../virtual-machines/azure-cli-arm-commands.md#storage-objects)
 * [Befehle der klassischen Azure CLI im Modus „Azure-Dienstverwaltung“](../../cli-install-nodejs.md)
 
 Probieren Sie auch die aktuelle Version der [Azure CLI](../storage-azure-cli.md) zur Verwendung mit dem Resource Manager-Bereitstellungsmodell aus.

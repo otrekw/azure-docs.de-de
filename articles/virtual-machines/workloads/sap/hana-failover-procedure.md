@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2c8483948deae41edbe3922dc77361ba2c58a94
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40511aac29182dafbe01408960376589198ceb64
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099865"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151920"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Failoverprozedur für die Notfallwiederherstellung
 
@@ -34,12 +34,12 @@ Beim Failover auf einen Standort für die Notfallwiederherstellung müssen zwei 
 >[!NOTE]
 >Die folgenden Schritte müssen auf der HANA-Einheit (große Instanzen) ausgeführt werden, die der Notfallwiederherstellungseinheit entspricht. 
  
-Um die letzte replizierte Speichermomentaufnahme wiederherzustellen, befolgen Sie die Schritte unter „Perform full DR failover – azure_hana_dr_failover“ (Ausführen eines vollständigen Failovers für die Notfallwiederherstellung – azure_hana_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Um die letzte replizierte Speichermomentaufnahme wiederherzustellen, befolgen Sie die Schritte unter „Perform full DR failover – azure_hana_dr_failover“ (Ausführen eines vollständigen Failovers für die Notfallwiederherstellung – azure_hana_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 Wenn Sie für mehrere SAP HANA-Instanzen ein Failover ausführen möchten, führen Sie den Befehl azure_hana_dr_failover mehrfach aus. Geben Sie bei entsprechender Aufforderung die SAP HANA-SID ein, für die Sie das Failover und die Wiederherstellung ausführen möchten. 
 
 
-Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Um ein Testfailover auszuführen, befolgen Sie die Schritte unter „Perform a test DR failover – azure_hana_test_dr_failover“ (Ausführen eines Testfailovers für die Notfallwiederherstellung – azure_hana_test_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.1/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
+Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Um ein Testfailover auszuführen, befolgen Sie die Schritte unter „Perform a test DR failover – azure_hana_test_dr_failover“ (Ausführen eines Testfailovers für die Notfallwiederherstellung – azure_hana_test_dr_failover) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure). 
 
 >[!IMPORTANT]
 >Führen Sie auf der Instanz, die Sie am Standort der Notfallwiederherstellung beim **Testen eines Failovers** erstellt haben, *keine* Produktionstransaktionen durch. Der Befehl azure_hana_test_dr_failover erstellt einen Satz von Volumes, die keine Beziehung zum primären Standort haben. Eine Synchronisierung zurück an den primären Standort ist daher *nicht* möglich. 
@@ -117,7 +117,7 @@ Folgen Sie diesen Schritten:
 
 Um den Status der Speicherreplikation zu überwachen, führen Sie das Skript `azure_hana_replication_status` aus. Dieser Befehl muss über eine Einheit ausgeführt werden, die am Standort für die Notfallwiederherstellung ausgeführt wird, damit es erwartungsgemäß funktioniert. Der Befehl funktioniert unabhängig davon, ob die Replikation aktiv ist. Der Befehl kann für jede HANA-Einheit (große Instanzen) Ihres Mandanten am Standort für die Notfallwiederherstellung ausgeführt werden. Er kann nicht zum Abrufen von Details über das Startvolume verwendet werden. 
 
-Weitere Informationen zu dem Befehl und seiner Ausgabe finden Sie unter „Get DR replication status – azure_hana_replication_status“ (Abrufen des Status der Notfallwiederherstellungsreplikation – azure_hana_replication_status) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.0/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.0.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
+Weitere Informationen zu dem Befehl und seiner Ausgabe finden Sie unter „Get DR replication status – azure_hana_replication_status“ (Abrufen des Status der Notfallwiederherstellungsreplikation – azure_hana_replication_status) in [Microsoft snapshot tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf) (Microsoft-Momentaufnahmetools für SAP HANA in Azure).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

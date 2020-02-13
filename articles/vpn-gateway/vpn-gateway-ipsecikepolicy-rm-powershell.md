@@ -8,18 +8,18 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514917"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161901"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen
 
 In diesem Artikel werden die Schritte zum Konfigurieren der IPsec/IKE-Richtlinie für Site-to-Site-VPN- oder VNet-zu-VNet-Verbindungen mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about"></a>IPsec- und IKE-Richtlinienparameter für Azure-VPN-Gateways
 Der IPsec- und IKE-Protokollstandard unterstützt ein breites Spektrum von Kryptografiealgorithmen in verschiedenen Kombinationen. Informationen dazu, wie Sie damit erreichen können, dass die standortübergreifende und VNet-zu-VNet-Konnektivität Ihre Konformitäts- oder Sicherheitsanforderungen erfüllt, finden Sie unter [Kryptografische Anforderungen und Azure-VPN-Gateways](vpn-gateway-about-compliance-crypto.md).

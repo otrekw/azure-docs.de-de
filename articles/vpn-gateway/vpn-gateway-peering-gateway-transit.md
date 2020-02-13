@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 3f0f3528a59c721fe6926dd4c8c5039b680e1588
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025757"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161884"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -33,7 +33,7 @@ In diesem Dokument werden zwei Szenarien beschrieben:
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Das Beispiel in diesem Dokument erfordert die Erstellung der folgenden Ressourcen:
 

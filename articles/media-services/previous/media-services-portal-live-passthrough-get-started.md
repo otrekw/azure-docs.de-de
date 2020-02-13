@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463300"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162751"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 * Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/). 
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
-* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](https://www.telestream.net/wirecast/overview.htm).
+* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md). 
 
 Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 
@@ -139,7 +139,7 @@ Klicken Sie zum Überwachen des Ereignisses im Azure-Portal auf **Überwachen** 
 
 Das Liveereignis wird automatisch in On-Demand-Inhalt konvertiert, wenn es beendet wird.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Weitere Informationen zu Pass-Through-Kanälen finden Sie unter [Livestreaming mit lokalen Encodern, die Multi-Bitrate-Datenströme erstellen](media-services-live-streaming-with-onprem-encoders.md).
 
 * Ein Kanal kann nur beendet werden, wenn auch alle Ereignisse/Programme des Kanals beendet wurden.  Wenn der Kanal beendet ist, fallen keine Kosten an. Wenn Sie den Kanal erneut starten, weist er die gleiche Erfassungs-URL auf, damit Sie den Encoder nicht erneut konfigurieren müssen.
@@ -150,7 +150,7 @@ Auch nach dem Beenden und Löschen des Ereignisses können die Benutzer archivie
 
 Wählen Sie zum Verwalten der Objekte **Einstellung** aus, und klicken Sie auf **Assets**.
 
-![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![Objekte](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Nächster Schritt
 Überprüfen Sie die Media Services-Lernpfade.

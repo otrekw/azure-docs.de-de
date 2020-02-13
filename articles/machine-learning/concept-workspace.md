@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984760"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169793"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -77,10 +77,6 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 | Upgrade auf Enterprise Edition    | **&check;** | **&check;**  | |     |
 | Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Erstellen einer Notebook-VM |   | **&check;** | |     |
-
-> [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.
 
 ## <a name='create-workspace'></a> Erstellen eines Arbeitsbereichs
 

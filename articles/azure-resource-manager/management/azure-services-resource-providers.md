@@ -3,12 +3,12 @@ title: Ressourcenanbieter durch Azure-Dienste
 description: Listet alle Ressourcenanbieter-Namespaces für Azure Resource Manager auf und gibt den Azure-Dienst für den jeweiligen Namespace an.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: d16c5fe148f8b6c907c897963e72cb84bc9ae2d5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 64c1d3c6f30a4f817abbea5001852df3eeeb9327
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984369"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109356"
 ---
 # <a name="resource-providers-for-azure-services"></a>Ressourcenanbieter für Azure-Dienste
 
@@ -124,7 +124,7 @@ In diesem Artikel wird die Zuordnung von Ressourcenanbieter-Namespaces zu Azure-
 | Microsoft.RecoveryServices | [Site Recovery](../../site-recovery/index.yml) |
 | Microsoft.Relay | [Azure Relay](../../service-bus-relay/relay-what-is-it.md) |
 | Microsoft.ResourceGraph | [Azure Resource Graph](/azure/governance/resource-graph/) |
-| Microsoft.ResourceHealth | core |
+| Microsoft.ResourceHealth | [Azure Service Health](../../service-health/index.yml)|
 | Microsoft.Resources | [Azure Resource Manager](../index.yml) |
 | Microsoft.SaaS | core |
 | Microsoft.Scheduler | [Scheduler](/azure/scheduler/) |

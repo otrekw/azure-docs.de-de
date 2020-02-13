@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 05a466d52d89fa021235c10e7187900c350b5e50
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044889"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086933"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -48,7 +48,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](/azure/container-registry) oder eine andere Docker-Registrierung, die über das Internet zugänglich ist.
-* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie im Abschnitt „Vorbereitung auf die Bereitstellung“ unter [Wo und wie wird die Bereitstellung durchgeführt](how-to-deploy-and-where.md#prepare-to-deploy).
+* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie im Abschnitt „Vorbereitung auf die Bereitstellung“ unter [Wo und wie wird die Bereitstellung durchgeführt](how-to-deploy-and-where.md#prepare-deployment-artifacts).
 
 ## <a name="create-a-custom-base-image"></a>Erstellen eines benutzerdefinierten Basisimages
 
@@ -181,7 +181,7 @@ Um ein benutzerdefiniertes Image zu verwenden, benötigen Sie die folgenden Info
 
 Microsoft stellt mehrere Docker-Images in einem öffentlich zugänglichen Repository zur Verfügung, die in den Schritten in diesem Abschnitt verwendet werden können:
 
-| Image | Beschreibung |
+| Image | BESCHREIBUNG |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Basisimage für Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Enthält ONNX Runtime für CPU-Rückschlüsse |

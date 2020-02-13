@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: e8d0f446442db6eeb0aec38efcc69bdf09c9b56f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 37da62a4eb0f934133d6486872ba319138299614
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990707"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048704"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -139,7 +139,7 @@ Wenn Sie virtuelle Computer löschen und sie weiterhin im Portal angezeigt werde
 
 Azure Migrate unterstützt die Erkennung von Anwendungen, Rollen und Features mithilfe von Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. Die App-Ermittlung wird derzeit nur für VMware unterstützt. [Erfahren Sie mehr](how-to-discover-applications.md) über die Anforderungen und Schritte bei der Einrichtung der App-Ermittlung.
 
-Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst.
+Typische Fehler bei der App-Ermittlung sind in der Tabelle zusammengefasst. 
 
 **Fehler** | **Ursache** | **Aktion**
 --- | --- | --- | ---

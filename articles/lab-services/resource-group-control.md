@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647338"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134529"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Angeben einer Ressourcengruppe für virtuelle Labcomputer in Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Als Labbesitzer können Sie Ihre Lab-VMs so konfigurieren, dass sie in einer bes
 Mit dieser Funktion können Sie mithilfe eines Skripts eine neue oder vorhandene Ressourcengruppe in Ihrem Azure-Abonnement für all Ihre virtuellen Lab-Computer angeben. Azure DevTest Labs unterstützt diese Funktion derzeit über eine API.
 
 > [!NOTE]
-> Es gelten alle Abonnementeinschränkungen, wenn Sie Labs in DevTest Labs erstellen. Stellen Sie sich ein Lab so vor wie jede andere Ressource in Ihrem Abonnement. Im Fall von Ressourcengruppen beträgt die Einschränkung [980 Ressourcengruppen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Es gelten alle Abonnementeinschränkungen, wenn Sie Labs in DevTest Labs erstellen. Stellen Sie sich ein Lab so vor wie jede andere Ressource in Ihrem Abonnement. Im Fall von Ressourcengruppen beträgt die Einschränkung [980 Ressourcengruppen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie die folgenden Schritte aus, um eine Ressourcengruppe für alle im Lab erstellten virtuellen Computer anzugeben. 

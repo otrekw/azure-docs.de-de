@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024908"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116737"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -118,7 +118,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
 
 ## <a name="deploy-image-as-a-web-app"></a>Bereitstellen eines Images als Web-App
 
-1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<acrinstance>` durch den zuvor von `package.location` zurückgegebenen Wert: 
+1. Verwenden Sie den folgenden Befehl, um die Anmeldeinformationen für die Azure Container Registry-Instanz zu erhalten, die das Image enthält. Ersetzen Sie `<myacr>` durch den zuvor von `package.location` zurückgegebenen Wert: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
 1. Erstellen Sie das Speicherkonto, das für die Blobtrigger-Speicherung verwendet werden soll, und rufen Sie dessen Verbindungszeichenfolge ab. Ersetzen Sie `<triggerStorage>` durch den Namen, den Sie verwenden möchten.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv

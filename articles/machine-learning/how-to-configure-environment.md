@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 56d6e8642ffd127f0982485902c466b76cbaaeed
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 32db7b19b7ec63135c3359f9685dd767dd0921f5
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986511"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169857"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,10 +57,6 @@ Um die SDK-Umgebung für Ihren [lokalen Computer](#local), Ihren [Jupyter Notebo
 ## <a id="compute-instance"></a>Ihre eigene cloudbasierte Compute-Instanz
 
 Die Azure Machine Learning-[Compute-Instanz (Vorschauversion)](concept-compute-instance.md) ist eine sichere, cloudbasierte Azure-Arbeitsstation, die Data Scientists einen Jupyter Notebook-Server, JupyterLab und eine vollständig vorbereitete Machine Learning-Umgebung bereitstellt.
-
-> [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.
 
 Für eine Compute-Instanz muss nichts installiert oder konfiguriert werden.  In Ihrem Azure Machine Learning-Arbeitsbereich können Sie jederzeit eine Notebook-VM erstellen. Geben Sie einfach einen Namen und einen Azure-VM-Typ an. Sie die Einrichtung unter [Tutorial: Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md).
 

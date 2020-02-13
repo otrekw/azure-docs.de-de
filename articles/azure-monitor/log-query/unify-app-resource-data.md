@@ -6,13 +6,13 @@ ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/02/2020
+ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364967"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137493"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
 In diesem Artikel wird beschrieben, wie Sie all Ihre Application Insights-Protokolldaten an einem zentralen Ort abfragen und anzeigen, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
@@ -20,12 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie all Ihre Application Insights-Protok
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Empfohlener Ansatz zum Abfragen mehrerer Application Insights-Ressourcen 
 Das Auflisten mehrerer Application Insights-Ressourcen in einer Abfrage kann aufwendig und schwierig zu verwalten sein. Sie können aber stattdessen eine Funktion zum Trennen der Abfragelogik vom Gültigkeitsbereich einer Anwendung nutzen.  
 
-Dieses Beispiel zeigt, wie Sie mehrere Application Insights-Ressourcen überwachen und die Anzahl fehlerhafter Anforderungen anhand des Anwendungsnamens visualisieren können. Bevor Sie beginnen, führen Sie diese Abfrage in dem Arbeitsbereich aus, der mit Application Insights-Ressourcen verknüpft ist, um eine Liste der verbundenen Anwendungen abzurufen: 
-
-```
-ApplicationInsights
-| summarize by ApplicationName
-```
+Dieses Beispiel zeigt, wie Sie mehrere Application Insights-Ressourcen überwachen und die Anzahl fehlerhafter Anforderungen anhand des Anwendungsnamens visualisieren können.
 
 Erstellen Sie mithilfe des union-Operators eine Funktion mit der Liste der Anwendungen, und speichern Sie die Abfrage in Ihrem Arbeitsbereich als Funktion mit dem Alias *applicationsScoping*. 
 
@@ -61,32 +56,8 @@ Die Abfrage verwendet das Application Insights-Schema, obwohl sie im Arbeitsbere
 
 ![Beispiel für abfrageübergreifende Ergebnisse](media/unify-app-resource-data/app-insights-query-results.png)
 
-## <a name="query-across-application-insights-resources-and-workspace-data"></a>Abfragen über Application Insights-Ressourcen und Arbeitsbereichsdaten 
-Wenn Sie den Connector beenden und Abfragen über einen Zeitraum, der durch die Application Insights-Datenaufbewahrung (90 Tage) gekürzt wurde, ausführen müssen, führen Sie für einen mittleren Zeitraum [ressourcenübergreifende Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) in dem Arbeitsbereich und für die Application Insights Ressourcen aus. Dies gilt, bis die Anwendungsdaten entsprechend der neuen Application Insights-Datenaufbewahrung gesammelt wurden. Die Abfrage erfordert einige Änderungen, da die Schemas in Application Insights und im Arbeitsbereich unterschiedlich sind. Sehen Sie sich dazu die Tabelle weiter unten in diesem Abschnitt an, in der die Schemaunterschiede hervorgehoben sind. 
-
 >[!NOTE]
 >Eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [ scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
-
-Wenn der Connector z.B. am 1.11.2018 beendet wurde, während Sie Protokolle von Application Insights-Ressourcen und Anwendungsdaten im Arbeitsbereich abgefragt haben, würde Ihre Abfrage wie im folgenden Beispiel erstellt werden:
-
-```
-applicationsScoping //this brings data from Application Insights resources 
-| where timestamp between (datetime("2018-11-01") .. now()) 
-| where success == 'False' 
-| where duration > 1000 
-| union ( 
-    ApplicationInsights //this is Application Insights data in Log Analytics workspace 
-    | where TimeGenerated < (datetime("2018-12-01") 
-    | where RequestSuccess == 'False' 
-    | where RequestDuration > 1000 
-    | extend duration = RequestDuration //align to Application Insights schema 
-    | extend timestamp = TimeGenerated //align to Application Insights schema 
-    | extend name = RequestName //align to Application Insights schema 
-    | extend resultCode = ResponseCode //align to Application Insights schema 
-    | project-away RequestDuration , RequestName , ResponseCode , TimeGenerated 
-) 
-| project timestamp , duration , name , resultCode 
-```
 
 ## <a name="application-insights-and-log-analytics-workspace-schema-differences"></a>Schemaunterschiede zwischen Application Insights und Log Analytics-Arbeitsbereichen
 Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und Application Insights.  

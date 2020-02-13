@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: a1b14a4f004e9b6fe64d9095eeb63ebf78750387
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f94427ddfbdc19836cd177fd642987aaaeedf1ee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546536"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152090"
 ---
 # <a name="multiclass-neural-network-module"></a>Modul „Multiclass Neural Network“ (Neuronales Netz mit mehreren Klassen)
 
@@ -86,7 +86,7 @@ Um die Ausgabe des Netzes für eine bestimmte Eingabe zu berechnen, wird bei jed
 
 Nach Abschluss des Trainings:
 
-- Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** (Trainieren des Modells) aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
+- Um eine Momentaufnahme des trainierten Modells zu speichern, wählen Sie die Registerkarte **Ausgaben** im rechten Bereich des Moduls **Train model** aus. Wählen Sie das Symbol **Register dataset** (Dataset registrieren) aus, um das Modell als wiederverwendbares Modul zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

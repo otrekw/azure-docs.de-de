@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984811"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169813"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -56,10 +56,6 @@ Sie können Azure Machine Learning-Compute-Instanzen (Vorschau) oder -Computeclu
 | Computecluster | ja | ja | ja | ja | ja |
 
 Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
-
-> [!NOTE]
-> Computeinstanzen sind nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden. 
 
 ### <a name="compute-clusters"></a>Computecluster
 

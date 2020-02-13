@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 310b3778a43c74db30940368d35c39c99f64a28c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513387"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049986"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -60,7 +60,7 @@ Weitere Informationen finden Sie auch unter [Migration von Azure Media Indexer v
 
 ### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) am 1. März 2020 an.
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an. Die Daten zur Einstellung finden Sie unter dem Thema [Legacykomponenten](legacy-components.md).
 
 Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435769"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162666"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight
 
@@ -198,7 +198,7 @@ Alle Daten werden automatisch mit  [Storage Service Encryption (SSE)](../../sto
 - [Lokal redundanter Speicher (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zonenredundanter Speicher (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Georedundanter Speicher (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 Azure Data Lake Storage bietet lokal redundanten Speicher (LRS), aber Sie sollten wichtige Daten auch auf ein anderes Data Lake Storage-Konto in einer anderen Region kopieren, und zwar mit einer Häufigkeit, die den Anforderungen des Notfallwiederherstellungsplans entspricht. Es gibt verschiedene Methoden zum Kopieren von Daten, z. B.  [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md) oder  [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Außerdem wird empfohlen, Zugriffsrichtlinien für das Data Lake Storage-Konto zu erzwingen, um versehentliches Löschen zu verhindern.
 

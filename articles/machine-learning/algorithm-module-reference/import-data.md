@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546655"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163193"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -42,7 +42,7 @@ Bevor Sie Cloudspeicher verwenden können, müssen Sie zunächst einen Datenspei
 
 Nachdem Sie die gewünschten Daten definiert und eine Verbindung mit der Quelle hergestellt haben, leitet **[Import Data](./import-data.md)** den Datentyp jeder Spalte basierend auf den darin enthaltenen Werten ab und lädt die Daten in Ihre Designer-Pipeline. **Import Data** gibt ein Dataset aus, das mit beliebigen Designer-Pipelines verwendet werden kann.
 
-Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen. Wenn die Daten jedoch nicht bei jeder Ausführung der Pipeline erneut aus der Quelle gelesen werden sollen, legen Sie die Option **Use cached results** (Zwischengespeicherte Ergebnisse verwenden) auf TRUE fest. Ist diese Option ausgewählt, überprüft das Modul, ob die Pipeline schon einmal unter Verwendung der gleichen Quelle und der gleichen Eingabeoptionen ausgeführt wurde. Wenn eine frühere Ausführung gefunden wird, werden die Daten aus dem Cache verwendet, statt die Daten erneut aus der Quelle zu laden.
+Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neue Daten hinzufügen, indem Sie [Import Data](./import-data.md) erneut ausführen.
 
 ## <a name="how-to-configure-import-data"></a>Konfigurieren von „Import Data“ (Daten importieren)
 
@@ -60,11 +60,7 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
 
     ![import-data-preview](media/module/import-data.png)
 
-1. Wählen Sie die Option **Use cached results**, wenn Sie das Dataset für sukzessive Ausführungen zwischenspeichern möchten.
 
-    Sofern keine weiteren Änderungen an den Modulparametern vorgenommen werden, lädt die Pipeline die Daten nur bei der erstmaligen Ausführung des Moduls. Anschließend wird eine zwischengespeicherte Version des Datasets verwendet.
-
-    Deaktivieren Sie diese Option, wenn die Daten bei jeder Ausführung der Pipeline erneut geladen werden sollen.
 
 1. Ausführen der Pipeline.
 

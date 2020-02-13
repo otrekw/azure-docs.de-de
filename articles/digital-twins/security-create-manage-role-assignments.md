@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438060"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110405"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
@@ -36,7 +36,7 @@ Jede Rollenzuweisung entspricht der folgenden Definition:
 
 In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
 
-| attribute | Name | Erforderlich | type | BESCHREIBUNG |
+| attribute | Name | Erforderlich | type | Beschreibung |
 | --- | --- | --- | --- | --- |
 | roleId | Bezeichner der Rollendefinition | Ja | String | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
 | objectId | Objektbezeichner | Ja | String | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
@@ -94,7 +94,7 @@ Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 
 Ein Benutzer mit der Rolle **Administrator** kann einem Benutzer die Rolle „Raumadministrator“ zuweisen, indem er eine authentifizierte HTTP-POST-Anforderung an folgende URL stellt:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
@@ -116,7 +116,7 @@ Mit folgendem JSON-Text:
 
 Um alle verfügbaren Rollen (Rollendefinitionen) aufzulisten, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
@@ -157,7 +157,7 @@ Eine erfolgreiche Anforderung gibt ein JSON-Array mit Einträgen für jede Rolle
 
 Um eine bestimmte Rollenzuweisung zu überprüfen, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
@@ -174,7 +174,7 @@ Eine erfolgreiche Anforderung gibt einen booleschen `true`- oder `false`-Wert zu
 
 Um alle Rollenzuweisungen für einen Pfad abzurufen, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
@@ -200,7 +200,7 @@ Eine erfolgreiche Anforderung gibt ein JSON-Array mit jeder Rollenzuweisung zur�
 
 Um eine Berechtigung eines Empfängers zu widerrufen, löschen Sie die Rollenzuweisung, indem Sie eine authentifizierte HTTP-DELETE-Anforderung ausführen:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 ```
 
@@ -214,7 +214,7 @@ Eine erfolgreicher DELETE-Anforderung gibt einen Antwortstatus „204“ zurück
 
 Um eine Rollenzuweisung zu erstellen, stellen Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 

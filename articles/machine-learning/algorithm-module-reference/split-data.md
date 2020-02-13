@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: b707971f0b150bce63b4dd0ffa4e55dc3b3d6bac
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e831e58b47d53e2924956cab13568c69bc1432e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313957"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153739"
 ---
 # <a name="split-data-module"></a>Modul „Split Data“ (Daten aufteilen)
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um ein Dataset in zwei verschiedene Sätze aufzuteilen.
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833963"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152005"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
 
@@ -166,7 +166,7 @@ Sie können den Gatewaystatus mithilfe des Cmdlets **Get-AzureVNetGateway** übe
 
 ## <a name="creatermgw"></a>Abschnitt 2 – Konfigurieren des RM-VNET-Gateways
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Als Voraussetzungen müssen Sie bereits ein Resource Manager-VNET erstellt haben. In diesem Schritt erstellen Sie ein VPN-Gateway für das Resource Manager-VNET. Bevor Sie diese Schritte ausführen, müssen Sie die öffentliche IP-Adresse für das Gateway des klassischen VNETs abrufen. 
 

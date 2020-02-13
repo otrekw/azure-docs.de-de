@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264066"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062148"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
@@ -43,8 +43,6 @@ Weitere Informationen zur Zusammenarbeit von Azure Analysis Services mit dem Gat
 * Wenn Sie das Gateway installieren, muss das Benutzerkonto, unter dem Sie auf Ihrem Computer angemeldet sind, über die Berechtigungen „Anmelden als Dienst“ verfügen. Wenn die Installation abgeschlossen ist, verwendet der lokale Datengatewaydienst das Konto „NT SERVICE\PBIEgwService“, um sich als Dienst anzumelden. Ein anderes Konto kann während des Setups oder nach dem Setup in „Dienste“ angegeben werden. Stellen Sie sicher, dass die Gruppenrichtlinieneinstellungen sowohl das Konto, mit dem Sie sich beim Installieren angemeldet haben, als auch das Dienstkonto, das Sie für die Berechtigungen „Anmelden als Dienst“ ausgewählt haben, zulassen.
 * Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
 * Wenn sich die Datenquellen in einem Azure Virtual Network (VNET) befinden, müssen Sie die [AlwaysUseGateway](analysis-services-vnet-gateway.md)-Servereigenschaft konfigurieren.
-* Das hier beschriebene (einheitliche) Gateway wird für Azure Deutschland-Regionen nicht unterstützt. Verwenden Sie das **dedizierte lokale Gateway für Azure Analysis Services**, das vom **Schnellstart** Ihres Servers installiert wurde, im Portal. 
-
 
 ## <a name="download"></a>Herunterladen
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332296"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133760"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Einrichten eines Labs mit Schwerpunkt Deep Learning und Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services
 Dieser Artikel beschreibt, wie Sie ein Lab mit Schwerpunkt Deep Learning mit Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) mithilfe von Azure Lab Services einrichten. NLP ist eine Form der künstlichen Intelligenz (KI), die Computern Übersetzungs-, Spracherkennungs- und andere Sprachverständnisfunktionen bietet.  
@@ -30,9 +30,9 @@ Zum Einrichten dieses Labs benötigen Sie als Einstieg ein Azure-Abonnement. Wen
  
 Nachdem Sie das Lab-Konto erstellt haben, aktivieren Sie die folgenden Einstellungen im Lab-Konto: 
 
-| Lab-Kontoeinstellungen | Anleitung |
+| Lab-Kontoeinstellungen | Instructions |
 | ----------- | ------------ |  
-| Marketplace-Bilder | Aktivieren Sie das Image Data Science Virtual Machine für Linux (Ubuntu) zur Verwendung in Ihrem Lab-Konto.  Anweisungen finden Sie in folgenden Artikeln: [Für Lab-Ersteller verfügbare Marketplace-Images festlegen](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators). | 
+| Marketplace-Bilder | Aktivieren Sie das Image Data Science Virtual Machine für Linux (Ubuntu) zur Verwendung in Ihrem Lab-Konto.  Anweisungen finden Sie in folgenden Artikeln: [Für Lab-Ersteller verfügbare Marketplace-Images festlegen](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
 
 Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab mit den folgenden Einstellungen zu erstellen:
 

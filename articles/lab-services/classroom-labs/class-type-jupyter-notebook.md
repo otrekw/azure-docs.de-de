@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 695b87540178fb5c1012a095c2a86937a189ef24
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530679"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133746"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebooks
 
@@ -30,7 +30,7 @@ Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein
 
 ### <a name="lab-account-settings"></a>Lab-Kontoeinstellungen
 
-Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Tabelle beschrieben werden. Weitere Informationen zum Aktivieren von Marketplace-Images finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
+Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Tabelle beschrieben werden. Weitere Informationen zum Aktivieren von Marketplace-Images finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators).
 
 | Lab-Kontoeinstellungen | Instructions |
 | ------------------- | ------------ |

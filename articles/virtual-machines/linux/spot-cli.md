@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781850"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163091"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Vorschau: Bereitstellen von Spot-VMs mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -27,15 +27,15 @@ Mithilfe von [Azure Spot-VMs](spot-vms.md) profitieren Sie von unserer ungenutzt
 
 Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu 5 Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMS – Preise](spot-vms.md#pricing).
+Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stunde für die VM bezahlen möchten. Der maximale Preis für eine Spot-VM kann in US-Dollar (USD) mit bis zu fünf Dezimalstellen festgelegt werden. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die VM nicht basierend auf dem Preis entfernt. Der Preis für die VM entspricht dem aktuellen Preis für Spot-VMs oder dem Preis für eine Standard-VM, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind. Weitere Informationen zum Festlegen des maximalen Preises finden Sie unter [Spot-VMs – Preise](spot-vms.md#pricing).
 
 Der Vorgang zum Erstellen einer VM mit Spot unter Verwendung der Azure-Befehlszeilenschnittstelle ist identisch mit dem im [Schnellstartartikel](/azure/virtual-machines/linux/quick-create-cli) beschriebenen Vorgang. Fügen Sie einfach den Parameter „--priority Spot“ hinzu, und geben Sie einen maximalen Preis oder `-1` an.
 
 > [!IMPORTANT]
-> Spot-Instanzen sind zurzeit als öffentliche Vorschau verfügbar.
+> Spot-Instanzen sind zurzeit als Public Preview verfügbar.
 > Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Im frühen Stadium der öffentlichen Vorschau verfügen Spot-Instanzen über einen festen Preis, sodass sie nicht basierend auf dem Preis entfernt werden.
+
 
 
 ## <a name="install-azure-cli"></a>Installieren der Azure-Befehlszeilenschnittstelle
@@ -77,4 +77,4 @@ az vm list \
 
 Sie können eine Spot-VM auch mit [Azure PowerShell](../windows/spot-powershell.md) oder einer [Vorlage](spot-template.md) erstellen.
 
-Informationen zu Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Informationen zu eventuell auftretenden Fehlern finden Sie unter [Fehlercodes](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

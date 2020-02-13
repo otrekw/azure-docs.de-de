@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 5e64cb2db2bd16a881334779a1c6f1ef19296da2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951733"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152022"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -30,7 +30,7 @@ Falls Sie noch kein Gateway für virtuelle Netzwerke besitzen und keins erstelle
 
 ### <a name="before"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 * Bei den folgenden Schritten wird davon ausgegangen, dass beide VNETs bereits erstellt wurden. Wenn Sie diesen Artikel als Übung verwenden und Sie keine VNETs besitzen, finden Sie über die in den Schritten angegebenen Links Informationen zu ihrer Erstellung.
 * Stellen Sie sicher, dass sich die Adressbereiche für die VNETs weder einander überlappen noch die Bereiche für andere Verbindungen, mit denen die Gateways verbunden werden können.
@@ -75,7 +75,7 @@ Für diese Konfiguration erstellen Sie eine VPN-Gatewayverbindung über einen IP
 
 Die folgende Tabelle enthält ein Beispiel dafür, wie die Beispiel-VNETs und lokalen Standorte definiert werden:
 
-| Virtuelles Netzwerk | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |
+| Virtual Network | Adressraum | Region | Verbindung mit dem lokalen Netzwerkstandort |
 |:--- |:--- |:--- |:--- |
 | ClassicVNet |(10.0.0.0/24) |USA (Westen) | RMVNetLocal (192.168.0.0/16) |
 | RMVNet | (192.168.0.0/16) |East US |ClassicVNetLocal (10.0.0.0/24) |
@@ -100,7 +100,7 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 
 1. Navigieren Sie zu **Alle Ressourcen** und suchen Sie in der Liste nach **ClassicVNet**.
 2. Klicken Sie im Abschnitt **Einstellungen** des Menüs auf **Gateway**, und klicken Sie dann auf das Banner, um ein Gateway zu erstellen.
-  ![Konfigurieren eines VPN-Gateways](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CKonfigurieren eines VPN-Gateways")
+  ![Konfigurieren eines VPN-Gateways](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Konfigurieren eines VPN-Gateways")
 3. Wählen Sie auf die Seite **Neue VPN-Verbindung** unter **Verbindungstyp** die Option **Standort-zu-Standort** aus.
 4. Klicken Sie unter **Lokaler Standort** auf **Erforderliche Einstellungen konfigurieren**. Daraufhin wird die Seite **Lokaler Standort** geöffnet.
 5. Erstellen Sie auf die Seite **Lokaler Standort** einen Namen, um auf das Ressourcen-Manager-VNET zu verweisen. Beispiel: „RMVNetLocal“.
@@ -277,7 +277,7 @@ Legen Sie den gemeinsam verwendeten Schlüssel fest und erstellen Sie die Verbin
 
 - In diesem Beispiel ist **-VNetName** der Name des klassischen VNET, der in Ihrer Netzwerkkonfigurationsdatei enthalten ist. 
 - **-LocalNetworkSiteName** ist der Name, den Sie für den lokalen Standort festgelegt haben und der in Ihrer Netzwerkkonfigurationsdatei enthalten ist.
-- **-SharedKey** ist ein Wert, den Sie generieren und festlegen. In diesem Beispiel wurde *abc123* verwendet, aber Sie können etwas Komplexeres generieren. Entscheidend ist Folgendes: Der Wert, den Sie hier angeben, muss demselben Wert entsprechen, den Sie beim Erstellen der Verbindung zwischen Ihrem Resource Manager-VNET und dem klassischen VNET angegeben haben.
+- **-SharedKey** ist ein Wert, den Sie generieren und angeben. In diesem Beispiel wurde *abc123* verwendet, aber Sie können etwas Komplexeres generieren. Entscheidend ist Folgendes: Der Wert, den Sie hier angeben, muss demselben Wert entsprechen, den Sie beim Erstellen der Verbindung zwischen Ihrem Resource Manager-VNET und dem klassischen VNET angegeben haben.
 
 ```powershell
 Set-AzureVNetGatewayKey -VNetName "Group ClassicRG ClassicVNet" `

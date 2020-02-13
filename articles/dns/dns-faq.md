@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937290"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121725"
 ---
 # <a name="azure-dns-faq"></a>Häufig gestellte Fragen zu Azure DNS
 
@@ -149,7 +149,7 @@ Ja. Azure DNS unterstützt das gemeinsame Hosten von Domänen mit anderen DNS-Di
 
 Ändern Sie zum Einrichten des gemeinsamen Hostens die NS-Einträge für die Domäne, damit sie auf die Namenserver beider Anbieter verweisen. Mit den NS-Einträgen (Namenserver) wird gesteuert, welche Anbieter DNS-Abfragen für die Domäne empfangen. Sie können diese NS-Einträge in Azure DNS, beim anderen Anbieter und in der übergeordneten Zone ändern. Die übergeordnete Zone wird normalerweise über die Domänennamen-Registrierungsstelle konfiguriert. Weitere Informationen zur DNS-Delegierung finden Sie unter [Delegieren von Domänen](dns-domain-delegation.md).
 
-Stellen Sie auch sicher, dass die DNS-Einträge für die Domäne zwischen beiden DNS-Anbietern synchron sind. Azure DNS unterstützt derzeit keine DNS-Zonenübertragungen. DNS-Einträge müssen über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](https://docs.microsoft.com/powershell/module/az.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) synchronisiert werden.
+Stellen Sie auch sicher, dass die DNS-Einträge für die Domäne zwischen beiden DNS-Anbietern synchron sind. Azure DNS unterstützt derzeit keine DNS-Zonenübertragungen. DNS-Einträge müssen über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](https://docs.microsoft.com/rest/api/dns/), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) synchronisiert werden.
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Muss ich meine Domäne an alle vier Azure DNS-Namenserver delegieren?
 

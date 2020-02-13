@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ecb704253597bf4eb5672fe924a0dafc4c1b3fd1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b53fca292630ef988ee1357ea50adc4d7b7e9be5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64726554"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162878"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET
 
@@ -36,7 +36,7 @@ Ab windowsazure.mediaservices 4.0.0.4 unterstützt Azure Media Services auf Azur
 
 Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können Sie auf zwei Arten authentifizieren:
 
-- Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung soll den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
 - Die **Dienstprinzipalauthentifizierung** dient der Authentifizierung eines Diensts. Anwendungen, für die diese Authentifizierungsmethode normalerweise verwendet wird, sind Apps, die Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge wie Web-Apps, Funktions-Apps, Logik-Apps, APIs oder Microservices ausführen.
 
 >[!IMPORTANT]
@@ -48,7 +48,7 @@ Zur Herstellung einer Verbindung zur Azure Media Services-API mit der Azure AD-A
 
 So müssen Sie z.B. keine Azure AD-Autorität, Media Services-Ressourcen-URI oder Details der nativen Azure AD-Anwendung angeben. Hierbei handelt es sich um bekannte Werte, die bereits von der Providerklasse für das Azure AD-Zugriffstoken konfiguriert wurden. 
 
-Wenn Sie das Azure Media Services-.NET-SDK nicht verwenden, empfehlen wir die [Azure AD-Authentifizierungsbibliothek](../../active-directory/develop/active-directory-authentication-libraries.md). Informationen zu den Werten der Parameter, die Sie mit der Azure AD-Authentifizierungsbibliothek verwenden müssen, finden Sie unter [Get started with Azure AD authentication by using the Azure portal (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal)](media-services-portal-get-started-with-aad.md).
+Wenn Sie das Azure Media Services-.NET-SDK nicht verwenden, empfehlen wir die [Azure AD-Authentifizierungsbibliothek](../../active-directory/azuread-dev/active-directory-authentication-libraries.md). Informationen zu den Werten der Parameter, die Sie mit der Azure AD-Authentifizierungsbibliothek verwenden müssen, finden Sie unter [Get started with Azure AD authentication by using the Azure portal (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal)](media-services-portal-get-started-with-aad.md).
 
 Sie haben auch die Option, die standardmäßige Implementierung von **AzureAdTokenProvider** durch Ihre eigene Implementierung zu ersetzen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 35c050a17219b80348857494ad41f834d3a60c85
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b7036b305b4b1041fced3be68024be29d49a4990
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397300"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086855"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -398,7 +398,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
   1. Wiederholen Sie das Onboarding mithilfe der [Anweisungen](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md#onboarding-using-the-command-line) der Befehlszeile „omsadmin.sh“.
   2. Vergewissern Sie sich im Azure-Portal unter **Erweiterte Einstellungen**, dass die Einstellung **Apply the following configuration to my Linux Servers** (Die nachstehende Konfiguration auf meine Linux-Server anwenden) aktiviert ist.  
 
-2. Überprüfen Sie, ob der `omsconfig`-Agent mit Azure Monitor kommunizieren kann, indem Sie den Befehl `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` ausführen.  Dieser Befehl gibt die Konfiguration zurück, die der Agent vom Dienst empfängt (einschließlich der Syslog-Einstellungen, Linux-Leistungsindikatoren und benutzerdefinierten Protokolle). Falls bei diesem Befehl ein Fehler auftritt, führen Sie den folgenden Befehl aus: `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py`. Dieser Befehl erzwingt die Kommunikation des omsconfig-Agents mit Azure Monitor und das Abrufen der aktuellen Konfiguration.
+2. Überprüfen Sie, ob der `omsconfig`-Agent mit Azure Monitor kommunizieren kann, indem Sie den Befehl `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/GetDscConfiguration.py'` ausführen.  Dieser Befehl gibt die Konfiguration zurück, die der Agent vom Dienst empfängt (einschließlich der Syslog-Einstellungen, Linux-Leistungsindikatoren und benutzerdefinierten Protokolle). Falls bei diesem Befehl ein Fehler auftritt, führen Sie den folgenden Befehl aus: `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/PerformRequiredConfigurationChecks.py'`. Dieser Befehl erzwingt die Kommunikation des omsconfig-Agents mit Azure Monitor und das Abrufen der aktuellen Konfiguration.
 
 **Hintergrund:** Der Log Analytics-Agent für Linux wird nicht als privilegierter Benutzer `root` ausgeführt, sondern als Benutzer `omsagent`. In den meisten Fällen muss diesem Benutzer eine explizite Berechtigung erteilt werden, damit bestimmte Dateien gelesen werden können. Damit Benutzer `omsagent` die erforderliche Berechtigung bekommt, führen Sie die folgenden Befehle aus:
 

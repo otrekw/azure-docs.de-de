@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: dce05c558423400d095c83800cdcaf85e174e081
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860411"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152073"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
 
 In diesem Artikel werden die Schritte zur Herstellung von Aktiv/Aktiv-Verbindungen (lokal und VNet zu VNet) mit dem Resource Manager-Bereitstellungsmodell und PowerShell beschrieben.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-highly-available-cross-premises-connections"></a>Informationen zu standortübergreifenden Verbindungen mit hoher Verfügbarkeit
 Um für lokale und VNET-zu-VNET-Verbindungen Hochverfügbarkeit zu erzielen, sollten Sie mehrere VPN-Gateways bereitstellen und mehrere parallele Verbindungen zwischen Ihren Netzwerken und Azure herstellen. Eine Übersicht über Verbindungsoptionen und die Topologie finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).

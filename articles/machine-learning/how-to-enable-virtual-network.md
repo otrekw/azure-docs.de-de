@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988215"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169962"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -124,10 +124,6 @@ Um die Azure Machine Learning-Experimentierfunktionen mit Azure Key Vault hinter
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Verwenden einer Machine Learning Compute-Instanz
-
-> [!NOTE]
-> Computeinstanzen (Vorschauversion) sind zurzeit nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
-> Verwenden Sie eine dieser Regionen, um eine Compute-Instanz zu erstellen, die einem virtuellen Netzwerk hinzugefügt werden kann.
 
 Wenn Sie eine Azure Machine Learning-Compute-Instanz oder einen Computecluster in einem virtuellen Netzwerk verwenden möchten, müssen die folgenden Netzwerkanforderungen erfüllt sein:
 

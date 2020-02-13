@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 804aeee112d060c411a4e37b5d19e4766307b0a0
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838666"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169167"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
@@ -59,7 +59,7 @@ In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren
 
 Rufen Sie mit den folgenden Schritten die APIs zum erneuten Trainieren auf:
 
-1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** >  **Konsolen-App (.NET Framework)** .
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
 1. Melden Sie sich beim Machine Learning-Webdienstportal an.
 1. Klicken Sie auf den verwendeten Webdienst.
 1. Klicken Sie auf **Consume**.

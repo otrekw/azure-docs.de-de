@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: e8717d10f61dfd50b9cdfa20a91203a5842d4c7d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de80094c3fd2df7d2f8b32d1e968e9bebea847a1
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185383"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064341"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>Hinzufügen, Ändern oder Löschen von Subnetzen virtueller Netzwerke
 
@@ -49,17 +49,18 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
    - **Netzwerksicherheitsgruppe**: Sie können einem Subnetz keine oder eine vorhandene Netzwerksicherheitsgruppe zuordnen, um ein- und ausgehenden Netzwerkdatenverkehr für das Subnetz zu filtern. Die Netzwerksicherheitsgruppe muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Netzwerksicherheitsgruppen](security-overview.md) und das [Erstellen einer Netzwerksicherheitsgruppe](tutorial-filter-network-traffic.md).
    - **Routingtabelle**: Sie können einem Subnetz keine oder eine vorhandene Routingtabelle zuordnen, um die Weiterleitung von Netzwerkdatenverkehr an andere Netzwerke zu steuern. Die Routingtabelle muss demselben Abonnement und Standort wie das virtuelle Netzwerk angehören. Erfahren Sie mehr über [Azure-Routing](virtual-networks-udr-overview.md) und das [Erstellen einer Routingtabelle](tutorial-create-route-table-portal.md).
    - **Dienstendpunkte**: Für ein Subnetz können keine oder mehrere Dienstendpunkte aktiviert sein. Zum Aktivieren eines Dienstendpunkts für einen Dienst wählen Sie Dienste, für die Sie Dienstendpunkte aktivieren möchten, in der Liste **Dienste** aus. Der Standort wird für einen Endpunkt automatisch konfiguriert. Standardmäßig werden Dienstendpunkte für die Region des virtuellen Netzwerks konfiguriert. Damit Azure Storage Szenarien für ein regionales Failover unterstützt, werden Endpunkte automatisch für [Azure-Regionspaare](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions) konfiguriert.
-   - **Subnetzdelegierung:** Für ein Subnetz können keine oder mehrere Delegierungen aktiviert sein. Bei der Subnetzdelegierung erhält der Dienst explizite Berechtigungen, um dienstspezifische Ressourcen im Subnetz zu erstellen, indem beim Bereitstellen des Diensts ein eindeutiger Bezeichner verwendet wird. Wählen Sie in der Liste **Dienste** den Dienst aus, der als Ziel für die Delegierung fungieren soll.
-
+   
        Zum Entfernen eines Dienstendpunkts heben Sie die Auswahl des Diensts auf, für den der Dienstendpunkt entfernt werden soll. Weitere Informationen zu Dienstendpunkten und den Diensten, für die sie aktiviert werden können, finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md). Nach dem Aktivieren eines Dienstendpunkts für einen Dienst müssen Sie auch Netzwerkzugriff für das Subnetz für eine mit dem Dienst erstellte Ressource aktivieren. Beispiel: Wenn Sie den Dienstendpunkt für *Microsoft.Storage* aktivieren, müssen Sie auch Netzwerkzugriff auf alle Azure Storage-Konten aktivieren, auf die Netzwerkzugriff gewährt werden soll. Ausführliche Informationen zum Aktivieren des Netzwerkzugriffs auf Subnetze, für die ein Dienstendpunkt aktiviert ist, finden Sie in der Dokumentation zum jeweiligen Dienst, für den Sie den Dienstendpunkt aktiviert haben.
 
      Um zu überprüfen, ob ein Dienstendpunkt für ein Subnetz aktiviert wurde, zeigen Sie die [effektiven Routen](diagnose-network-routing-problem.md) für eine Netzwerkschnittstelle im Subnetz an. Wenn der Endpunkt konfiguriert ist, wird eine *Standardroute* mit den Adresspräfixen des Diensts angezeigt, und für „nextHopType“ ist **VirtualNetworkServiceEndpoint** angegeben. Weitere Informationen zum Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
+   - **Subnetzdelegierung:** Für ein Subnetz können keine oder mehrere Delegierungen aktiviert sein. Bei der Subnetzdelegierung erhält der Dienst explizite Berechtigungen, um dienstspezifische Ressourcen im Subnetz zu erstellen, indem beim Bereitstellen des Diensts ein eindeutiger Bezeichner verwendet wird. Wählen Sie in der Liste **Dienste** den Dienst aus, der als Ziel für die Delegierung fungieren soll.
+
 6. Um das Subnetz dem ausgewählten virtuellen Netzwerk hinzuzufügen, wählen Sie **OK**.
 
 **Befehle**
 
 - Azure CLI: [az network vnet subnet create](/cli/azure/network/vnet/subnet)
-- PowerShell: [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)
+- Mit PowerShell: [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig)
 
 ## <a name="change-subnet-settings"></a>Ändern von Subnetzeinstellungen
 
@@ -78,7 +79,7 @@ Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindun
 **Befehle**
 
 - Azure CLI: [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)
-- PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
+- Mit PowerShell: [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)
 
 ## <a name="delete-a-subnet"></a>Löschen eines Subnetzes
 
@@ -93,13 +94,13 @@ Sie können ein Subnetz erst löschen, wenn es keine Ressourcen mehr enthält. F
 **Befehle**
 
 - Azure CLI: [az network vnet subnet delete](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-delete)
-- PowerShell: [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- Mit PowerShell: [Remove-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/remove-azvirtualnetworksubnetconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
 ## <a name="permissions"></a>Berechtigungen
 
 Zum Durchführen von Aufgaben für Subnetze muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die entsprechenden, in der folgenden Tabelle aufgeführten Aktionen zugewiesen wurden:
 
-|Aktion                                                                   |   NAME                                       |
+|Aktion                                                                   |   Name                                       |
 |-----------------------------------------------------------------------  |   -----------------------------------------  |
 |Microsoft.Network/virtualNetworks/subnets/read                           |   Lesen des Subnetzes eines virtuellen Netzwerks              |
 |Microsoft.Network/virtualNetworks/subnets/write                          |   Erstellen oder Aktualisieren des Subnetzes eines virtuellen Netzwerks  |

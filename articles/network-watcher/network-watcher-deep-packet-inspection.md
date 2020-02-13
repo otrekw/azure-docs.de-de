@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: c937a07133dc38d2d9e1e1ef2cc324b4c8bb360e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845077"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152923"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
 
@@ -39,7 +39,7 @@ In diesem Szenario führen Sie Folgendes durch:
 
 In diesem Szenario wird veranschaulicht, wie Sie die anfängliche Roundtripzeit (Round Trip Time, RTT) einer TCP-Konversation (Transmission Control Protocol) zwischen zwei Endpunkten anzeigen.
 
-Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip
+Bei der Herstellung einer TCP-Verbindung basieren die ersten drei Pakete, die für die Verbindung gesendet werden, auf einem Muster, das üblicherweise als Drei-Wege-Handshake bezeichnet wird. Indem die ersten beiden gesendeten Pakete dieses Handshake-Vorgangs untersucht werden (eine erste Anforderung vom Client und eine Antwort vom Server), können wir die Wartezeit bei der Herstellung der Verbindung berechnen. Diese Wartezeit wird als Roundtripzeit (Round Trip Time, RTT) bezeichnet. Weitere Informationen zum TCP-Protokoll und zum Drei-Wege-Handshake finden Sie unter der folgenden Ressource: [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
 ### <a name="step-1"></a>Schritt 1
 

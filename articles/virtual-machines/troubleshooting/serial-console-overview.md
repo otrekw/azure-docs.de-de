@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451229"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153858"
 ---
 # <a name="azure-serial-console"></a>Serielle Azure-Konsole
 
@@ -38,7 +38,7 @@ Für den Zugriff auf die serielle Konsole auf dem virtuellen Computer oder in de
 - Das Azure-Konto, über das auf die serielle Konsole zugegriffen wird, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für den virtuellen Computer sowie für das Speicherkonto der [Startdiagnose](boot-diagnostics.md) aufweisen.
 
 > [!NOTE]
-> - Klassische Bereitstellungen werden nicht unterstützt. Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss das Azure Resource Manager-Bereitstellungsmodell verwenden.
+> Klassische Bereitstellungen werden nicht unterstützt. Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss das Azure Resource Manager-Bereitstellungsmodell verwenden.
 
 ## <a name="get-started-with-the-serial-console"></a>Erste Schritte mit der seriellen Konsole
 Auf die serielle Konsole für VMs und VM-Skalierungsgruppen kann nur über das Azure-Portal zugegriffen werden:

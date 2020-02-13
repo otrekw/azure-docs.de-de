@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff86c25de006495e3536f2ff907e1cf40a216f8e
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927858"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048565"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM-Bereitstellungsarchitektur
 
@@ -32,10 +32,13 @@ Die HSMs sind auf die Datencenter von Microsoft verteilt und können problemlos 
 * East US
 * USA (Ost) 2
 * USA (Westen)
-* USA, Westen 2
 * USA Süd Mitte
 * Asien, Südosten
 * Asien, Osten
+* Indien, Mitte
+* Indien, Süden
+* Japan, Osten
+* Japan, Westen
 * Nordeuropa
 * Europa, Westen
 * UK, Süden

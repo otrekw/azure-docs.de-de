@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015206"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162564"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Livestreaming mit Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate im Azure-Portal  
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 1. Schließen Sie eine Videokamera an einen Computer an. <br/>Ausrüstungsanregungen finden Sie unter [Simple and Portable Event Video Gear Setup]( https://link.medium.com/KNTtiN6IeT) (Einfache und tragbare Videoausrüstung für Veranstaltungen).
 
-    Wenn Sie keinen Zugriff auf eine Kamera haben, können Sie mit Tools wie [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) einen Livefeed aus einer Videodatei generieren.
+    Wenn Sie keinen Zugriff auf eine Kamera haben, können Sie mit Tools wie [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) einen Livefeed aus einer Videodatei generieren.
 1. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein Einzelbitraten-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Sehen Sie sich auch den folgenden Blog an: [Live streaming production with OBS](https://link.medium.com/ttuwHpaJeT) (Livestreamproduktion mit OBS).
 
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
@@ -65,8 +65,8 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
-* Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. 
-  Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. 
+  Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Erstellen eines Kontos](media-services-portal-create-account.md).
 * Sie benötigen eine Webcam und einen Encoder, von dem ein Single-Bitrate-Livedatenstrom gesendet wird.
 
@@ -76,7 +76,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 2. Wählen Sie **Livestreaming**.
 3. Wählen Sie **Benutzerdefiniert erstellen**. Mit dieser Option können Sie einen Kanal erstellen, der für Live Encoding aktiviert ist.
 
-    ![Erstellen eines KANALS](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
+    ![Erstellen eines Kanals](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. Klicken Sie auf **Einstellungen**.
 
    1. Wählen Sie den Kanaltyp **Live Encoding** . Mit diesem Typen geben Sie an, dass Sie einen Kanal erstellen möchten, der für Livecodierung aktiviert ist. Dies bedeutet, dass der eingehende Single-Bitrate-Datenstrom an den Kanal gesendet und mithilfe angegebener Liveencodereinstellungen in einen Multi-Bitrate-Datenstrom codiert wird. Weitere Informationen finden Sie unter [Livestreaming mit Azure Media Services zum Erstellen von Datenströmen mit Mehrfachbitrate](media-services-manage-live-encoder-enabled-channels.md). Klicken Sie auf OK.
@@ -171,7 +171,7 @@ Klicken Sie zum Überwachen des Ereignisses im Azure-Portal auf **Überwachen** 
 
 Das Liveereignis konvertiert Ereignisse automatisch in On-Demand-Inhalt, wenn es beendet wird.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 Wenn die Streamingereignisse beendet sind und Sie die zuvor bereitgestellten Ressourcen bereinigen möchten, führen Sie das folgende Verfahren aus:
 
 * Beenden Sie die Datenstromeingabe vom Encoder.

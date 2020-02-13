@@ -7,20 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
-ms.openlocfilehash: cc2d6df952b2e0aa9b9f4d4e1dcb4859a5bb3790
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 62fcdf01250728cf84726db7e9b39452a4d4e5ff
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130529"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046344"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub Actions für die Bereitstellung im Kubernetes Service
 
 [GitHub Actions](https://help.github.com/en/articles/about-github-actions) bietet Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Die Kubernetes-Aktion [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) erleichtert die Bereitstellung in Azure Kubernetes Service-Clustern. Die Aktion legt den Ziel-AKS-Clusterkontext fest, der von anderen Aktionen wie [azure/k8s-deploy](https://github.com/Azure/k8s-deploy/tree/master), [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) usw. verwendet werden oder beliebige kubectl-Befehle ausführen kann.
-
-> [!IMPORTANT]
-> GitHub Actions liegt zurzeit in einer Betaversion vor. Sie müssen sich zunächst mit Ihrem GitHub-Konto [registrieren, um die Vorschau nutzen zu können](https://github.com/features/actions).
-> 
 
 Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden.
 

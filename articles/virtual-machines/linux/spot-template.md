@@ -12,18 +12,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781914"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162445"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Bereitstellen von Spot-VMs mithilfe einer Resource Manager-Vorlage
 
-Mithilfe von [Spot-VMs](spot-vms.md) können Sie die ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen verkraften können, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
+Mithilfe von [Spot-VMs](spot-vms.md) können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
 Die Preise für Spot-VMs variieren je nach Region und SKU. Weitere Informationen finden Sie unter den VM-Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
@@ -31,9 +31,9 @@ Sie haben die Möglichkeit, einen maximalen Preis festzulegen, den Sie pro Stund
 
 > [!IMPORTANT]
 > Spot-Instanzen sind zurzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Im frühen Stadium der Public Preview weisen Spot-Instanzen einen festen Preis auf, sodass sie nicht basierend auf dem Preis entfernt werden.
+
 
 
 ## <a name="use-a-template"></a>Verwenden einer Vorlage 
@@ -48,9 +48,6 @@ Verwenden Sie `"apiVersion": "2019-03-01"` oder höher für Spot-Vorlagenbereits
                 }
 ```
 
-
-> [!IMPORTANT]
-> Im frühen Stadium der Public Preview können Sie einen maximalen Preis festlegen, der jedoch ignoriert wird. Für Spot-VMs wird ein fester Preis festgelegt. Es wird also auch keine preisbasierten Entfernungen geben.
 
 
 In der folgenden Beispielvorlage wurden die Eigenschaften für eine Spot-VM hinzugefügt. Ersetzen Sie die Ressourcennamen durch Ihre eigenen und `<password>` durch das Kennwort für das lokale Administratorkonto auf der VM.

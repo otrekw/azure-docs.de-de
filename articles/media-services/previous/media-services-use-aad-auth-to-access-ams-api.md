@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60826146"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157855"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
 
@@ -46,7 +46,7 @@ Für nicht autorisierte Anforderungen tritt ein Fehler mit dem Statuscode 401 au
  
 Wenn Sie die Azure AD-Authentifizierung mit Azure Media Services nutzen, stehen Ihnen zwei Authentifizierungsoptionen zur Verfügung:
 
-- **Benutzerauthentifizierung**. Dient zum Authentifizieren einer Person, die die App zum Interagieren mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- **Benutzerauthentifizierung**. Dient zum Authentifizieren einer Person, die die App für die Interaktion mit Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
 - **Dienstprinzipalauthentifizierung**. Dient zum Authentifizieren eines Diensts. Bei Anwendungen, die diese Authentifizierungsmethode normalerweise nutzen, handelt es sich um Apps, mit denen Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge ausgeführt werden. Beispiele sind Web-Apps, Funktions-Apps, Logik-Apps, API und Microservices.
 
 ### <a name="user-authentication"></a>Benutzerauthentifizierung 
@@ -74,7 +74,7 @@ Im obigen Diagramm stellen die Zahlen den Fluss der Anforderungen in chronologis
 1. Fordern Sie einen Benutzer zur Eingabe von Anmeldeinformationen auf.
 2. Fordern Sie ein Azure AD-Zugriffstoken mit den folgenden Parametern an:  
 
-   * Azure AD-Mandanten-Endpunkt
+   * Azure AD-Mandantenendpunkt.
 
        Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
    * Media Services-Ressourcen-URI. 
@@ -82,7 +82,7 @@ Im obigen Diagramm stellen die Zahlen den Fluss der Anforderungen in chronologis
        Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
 
    * Client-ID für (native) Media Services-Anwendungen.
-   * Umleitungs-URI für Media Services-Anwendungen (nativ)
+   * Umleitungs-URI für (native) Media Services-Anwendungen.
    * Ressourcen-URI für REST Media Services
         
        Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
@@ -95,7 +95,7 @@ Im obigen Diagramm stellen die Zahlen den Fluss der Anforderungen in chronologis
 
 Informationen zur Verwendung der Azure AD-Authentifizierung zum Kommunizieren mit REST-Anforderungen über das Media Services-.NET-Client-SDK finden Sie unter [Use Azure AD authentication to access Azure Media Services API with .NET](media-services-dotnet-get-started-with-aad.md) (Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET). 
 
-Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Anforderung mit Azure AD-Zugriffstoken erstellen, indem Sie die in Schritt 2 beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/develop/active-directory-authentication-libraries.md).
+Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Anforderung mit Azure AD-Zugriffstoken erstellen, indem Sie die in Schritt 2 beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ### <a name="service-principal-authentication"></a>Dienstprinzipalauthentifizierung
 
@@ -137,7 +137,7 @@ In der obigen Abbildung stellen die Zahlen den Fluss der Anforderungen in chrono
 
 Weitere Informationen zur Verwendung der Azure AD-Authentifizierung zum Kommunizieren mit REST-Anforderungen über das Media Services-.NET-Client-SDK finden Sie unter [Use Azure AD authentication to access Azure Media Services API with .NET](media-services-dotnet-get-started-with-aad.md) (Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API mit .NET). 
 
-Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die in Schritt 1 beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/develop/active-directory-authentication-libraries.md).
+Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell eine Azure AD-Tokenanforderung erstellen, indem Sie die in Schritt 1 beschriebenen Parameter verwenden. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](../../active-directory/azuread-dev/active-directory-authentication-libraries.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

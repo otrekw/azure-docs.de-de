@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
 ms.date: 11/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 462d9acbda37bbbd007af6d6d1267e9b0e7d3e0a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023190"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77050079"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -140,8 +140,7 @@ Der erwartete **Typ** der Bedingung `equals` ist _string_. Da **allowedLocations
 
 ### <a name="evaluating-the--alias"></a>Auswerten des [*]-Alias
 
-Wenn an den Namen von Aliasen **\[\*\]** angefügt ist, bedeutet dies, dass es sich um den **Typ**_array_ handelt. **\[\*\]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt jedes Element des Arrays einzeln mit einer Verknüpfung über einen logischen AND-Operator auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Standardszenarien hilfreich: Elemente vom Typ _None_, _Any_ und _All_ stimmen überein.
-Verwenden Sie für komplexe Szenarien [count](../concepts/definition-structure.md#count).
+Wenn an den Namen von Aliasen **\[\*\]** angefügt ist, bedeutet dies, dass es sich um den **Typ**_array_ handelt. **\[\*\]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt jedes Element des Arrays einzeln mit einer Verknüpfung über einen logischen AND-Operator auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Standardszenarien hilfreich: Elemente vom Typ _None_, _Any_ und _All_ stimmen überein. Verwenden Sie für komplexe Szenarien [count](../concepts/definition-structure.md#count).
 
 Das Richtlinienmodul löst die Auswirkung (**effect**) in **then** nur aus, wenn die **if**-Regel als „true“ ausgewertet wird.
 Dies ist wichtig für das Verständnis der Art und Weise, wie **\[\*\]** jedes einzelne Element des Arrays auswertet.
