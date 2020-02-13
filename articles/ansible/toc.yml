@@ -10,7 +10,7 @@
     - name: Bereitstellen einer Ansible-Lösungsvorlage in CentOS
       href: ./ansible-deploy-solution-template.md
     - name: Installieren von Ansible auf virtuellen Linux-Computern
-      href: /azure/virtual-machines/linux/ansible-install-configure
+      href: ./ansible-install-configure.md
       maintainContext: true
     - name: Ausführen von Playbooks in Cloud Shell
       href: ./ansible-run-playbook-in-cloudshell.md
@@ -18,12 +18,12 @@
       expanded: true
       items:
         - name: Konfigurieren von virtuellen Linux-Computern
-          href: /azure/virtual-machines/linux/ansible-create-vm
+          href: ./ansible-create-vm.md
           maintainContext: true
         - name: Verwalten von virtuellen Linux-Computern
-          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          href: ./ansible-manage-linux-vm.md
           maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Azure Application Gateway
       items:
