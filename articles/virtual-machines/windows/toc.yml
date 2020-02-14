@@ -242,6 +242,8 @@
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Freigegebene Datenträger
+          href: disks-shared.md
         - name: Kurzlebige Betriebssystemdatenträger
           href: ephemeral-os-disks.md
     - name: Netzwerk
@@ -547,6 +549,8 @@
           href: detach-disk.md
         - name: Bereitstellen von Datenträgern mit Vorlage
           href: using-managed-disks-template-deployments.md
+        - name: Aktivieren freigegebener Datenträger
+          href: disks-shared-enable.md
         - name: 'Hochladen einer VHD auf einen Datenträger: PowerShell'
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: Ändern der Größe eines Datenträgers

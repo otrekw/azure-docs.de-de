@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Konfigurieren von Labkonten
           href: how-to-configure-lab-accounts.md
+        - name: Zulassen der Auswahl des Labstandorts durch den Lab-Ersteller
+          href: allow-lab-creator-pick-lab-location.md
         - name: Herstellen einer Verbindung zwischen Ihren Labs und einem virtuellen Peernetzwerk
           href: how-to-connect-peer-virtual-network.md
         - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images

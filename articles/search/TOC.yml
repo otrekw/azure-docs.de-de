@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: Relevanzoptimierung (Bewertungsprofile)
           href: index-add-scoring-profiles.md
-    - name: Verwalten und Überwachen
+    - name: Verwalten eines Diensts
       items:
-        - name: Portalverwaltung
+        - name: Portal
           href: search-manage.md
-        - name: PowerShell-Verwaltung
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Überwachen der Aktivität und Protokollierung
+    - name: Überwachen und Protokollieren
+      items:
+        - name: Grundlagen
           href: search-monitor-usage.md
+        - name: Überwachen der Abfrageaktivität
+          href: search-monitor-queries.md
+        - name: Diagnoseprotokollierung
+          href: search-monitor-logs.md
         - name: Durchsuchen der Datenverkehrsanalyse
           href: search-traffic-analytics.md
     - name: Problembehandlung

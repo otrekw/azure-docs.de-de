@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Freigegebene Datenträger
+          href: disks-shared.md
         - name: Kurzlebige Betriebssystemdatenträger
           href: ephemeral-os-disks.md
     - name: Netzwerk
@@ -553,6 +555,8 @@
         - name: Bereitstellen von Datenträgern mit Vorlage
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Aktivieren freigegebener Datenträger
+          href: disks-shared-enable.md
         - name: 'Hochladen einer VHD auf einen Datenträger: CLI'
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Ändern der Größe eines Datenträgers
