@@ -1,5 +1,6 @@
 ---
-title: Wählen der richtigen Authentifizierungsmethode für Ihre Azure AD-Hybrididentitätslösung | Microsoft-Dokumentation
+title: Authentifizierung für Azure AD-Hybrididentitätslösungen
+titleSuffix: Active Directory
 description: Dieser Leitfaden dient CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects sowie Sicherheits- und IT-Entscheidungsträgern als Hilfe, die für die Auswahl einer Authentifizierungsmethode für ihre Azure AD-Hybrididentitätslösung in mittleren bis großen Unternehmen verantwortlich sind.
 keywords: ''
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 2865ce640389c0250f14a53088a94aff15ddf1c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a13e50e6b5357264e7096fa58e34a4bcaf6ad8b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460686"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190910"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -184,7 +185,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Welche Optionen gibt es für die mehrstufige Authentifizierung?|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|[Azure MFA](https://docs.microsoft.com/azure/multi-factor-authentication/)<br><br>[Azure MFA-Server](../../active-directory/authentication/howto-mfaserver-deploy.md)<br><br>[MFA über Drittanbieter](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-additional-authentication-methods-for-ad-fs)<br><br>[Benutzerdefinierte Steuerelemente mit bedingtem Zugriff*](../../active-directory/conditional-access/controls.md)|
 |Welche Benutzerkontenstatus werden unterstützt?|Deaktivierte Konten<br>(bis zu 30 Minuten Verzögerung)|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|Deaktivierte Konten<br><br>Konto gesperrt<br><br>Konto abgelaufen<br><br>Kennwort abgelaufen<br><br>Anmeldestunden|
 |Welche Optionen für bedingten Zugriff gibt es?|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS-Anspruchsregeln](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
-|Wird Blockieren älterer Protokolle unterstützt?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
+|Wird Blockieren älterer Protokolle unterstützt?|[Ja](../../active-directory/conditional-access/overview.md)|[Ja](../../active-directory/conditional-access/overview.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Können das Logo, das Bild und die Beschreibung auf den Anmeldeseiten angepasst werden?|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
 |Welche erweiterten Szenarien werden unterstützt?|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Berichte über kompromittierte Anmeldeinformationen mit Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)|Authentifizierungssystem mit geringer Wartezeit für mehrere Standorte<br><br>[AD FS-Extranetsperre](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration in Identitätssysteme von Drittanbietern](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 

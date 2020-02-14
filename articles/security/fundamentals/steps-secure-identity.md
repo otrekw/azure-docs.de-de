@@ -1,5 +1,6 @@
 ---
-title: Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur in Azure Active Directory
+title: Sichern Ihrer Azure AD-Identitätsinfrastruktur
+titleSuffix: Azure Active Directory
 description: Dieses Dokument beschreibt eine Reihe von wichtigen Aktionen, die Administratoren implementieren sollten, um ihre Organisation mithilfe von Azure AD-Funktionen zu schützen.
 author: martincoetzer
 manager: manmeetb
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903587"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190896"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -106,7 +107,7 @@ Apps, die eigene, veraltete Methoden zur Authentifizierung bei Azure AD und zum 
 
 1. Blockieren Sie [ältere Authentifizierungsmethoden, wenn Sie AD FS verwenden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Richten Sie [SharePoint Online und Exchange Online für moderne Authentifizierungsverfahren](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md) ein.
-3. Wenn Sie über Azure AD Premium verfügen, verwenden Sie [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/conditions.md), um ältere Authentifizierungsmethoden zu blockieren. Verwenden Sie andernfalls [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
+3. Wenn Sie über Azure AD Premium verfügen, verwenden Sie [Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/overview.md), um ältere Authentifizierungsmethoden zu blockieren. Verwenden Sie andernfalls [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blockieren von ungültigen Authentifizierungseinstiegspunkten
 

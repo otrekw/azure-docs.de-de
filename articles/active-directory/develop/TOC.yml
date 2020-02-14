@@ -7,6 +7,7 @@
     - name: Entwicklung der Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Einrichten eines Mandanten
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: Beispiele
   href: sample-v2-code.md
 - name: Konzepte
+  expanded: true
   items:
     - name: Authentifizierungsgrundlagen
       href: authentication-scenarios.md
