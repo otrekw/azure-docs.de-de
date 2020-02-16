@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899624"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190381"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronisieren Ihrer App Configuration-Instanz mithilfe von GitHub Actions
 Azure App Configuration verwendet GitHub Actions zum Aktualisieren einer App Configuration-Instanz, wenn dies durch eine Aktion ausgelöst wird, die in einem GitHub-Repository ausgeführt wird. Sie können GitHub-Workflows nutzen, um App Configuration zu aktualisieren, und damit die Integration von App Configuration-Updates in denselben Workflow integrieren, der zum Aktualisieren von App-Code verwendet wird.
@@ -25,8 +25,7 @@ GitHub-Ereignisse, z. B. ein Push in ein Repository, können einen GitHub Actio
 Die GitHub-[Dokumentation](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) bietet ausführliche Informationen zu GitHub-Workflows und GitHub Actions. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Aktivieren von GitHub Actions in Ihrem Repository
-Um mit der Verwendung dieser GitHub-Aktion zu beginnen, navigieren Sie zu Ihrem Repository, und wählen Sie die Registerkarte **Aktionen** aus. Suchen Sie die GitHub-Aktion im Marketplace mit dem Suchbegriff „Azure App Configuration-Synchronisierung“, und wählen Sie sie aus. 
-
+Um mit der Verwendung dieser GitHub-Aktion zu beginnen, navigieren Sie zu Ihrem Repository, und wählen Sie die Registerkarte **Aktionen** aus. Klicken Sie auf „Neuer Workflow“ und dann auf „Eigenen Workflow einrichten“. Suchen Sie von dort aus dem Marketplace nach „Azure App Configuration-Synchronisierung“.
 > [!div class="mx-imgBorder"]
 > ![Auswählen der Registerkarte „Aktionen“](media/find-github-action.png)
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: be3d98dc0b3a8119fb853493440c6fc78d65c5a2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19a676f4187af2d358934539e4ca29dbc5c25897
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409544"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190643"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 
@@ -57,15 +57,15 @@ Bei jedem Gerätefailover sollten die folgenden Voraussetzungen erfüllt sein:
   > 
 * Das Zielgerät darf nicht den gleichen Namen wie das Quellgerät haben.
 * Quell- und Zielgerät müssen vom gleichen Typ sein. Ein Failover auf einen anderen Dateiserver kann nur für ein als Dateiserver konfiguriertes virtuelles Array durchgeführt werden. Dies gilt auch für einen iSCSI-Server.
-* Für eine Dateiserver-Notfallwiederherstellung empfehlen wir Ihnen, das Zielgerät mit der gleichen Domäne wie das Quellgerät zu verbinden. Eine solche Konfiguration sorgt dafür, dass die Freigabeberechtigungen automatisch aufgelöst werden. In dieser Version wird nur das Failover auf ein Zielgerät in derselben Domäne unterstützt.
+* Für eine Dateiserver-Notfallwiederherstellung empfehlen wir Ihnen, das Zielgerät mit der gleichen Domäne wie das Quellgerät zu verbinden. Eine solche Konfiguration sorgt dafür, dass die Freigabeberechtigungen automatisch aufgelöst werden. Ein Failover wird nur auf ein Zielgerät in derselben Domäne unterstützt.
 * Die verfügbaren Zielgeräte für die Notfallwiederherstellung sind Geräte, die im Vergleich zum Quellgerät die gleiche oder eine höhere Kapazität aufweisen. Geräte, die mit Ihrem Dienst verbunden sind, aber das Speicherplatzkriterium nicht erfüllen, stehen als Zielgeräte nicht zur Verfügung.
 
 ### <a name="other-considerations"></a>Weitere Überlegungen
 
-* Ausführen eines geplanten Failovers 
+* Für ein geplantes Failover:
   
   * Es ist ratsam, alle Volumes oder Freigaben auf dem Quellgerät in den Offlinezustand zu versetzen.
-  * Wir empfehlen Ihnen, zuerst eine Sicherung des Geräts zu erstellen, bevor Sie mit dem Failover beginnen, um Datenverluste zu minimieren. 
+  * Wir empfehlen Ihnen, zuerst eine Sicherung des Geräts zu erstellen, bevor Sie mit dem Failover beginnen, um Datenverluste zu minimieren.
 * Wenn es sich um ein nicht geplantes Failover handelt, verwendet das Gerät die letzte Sicherung für die Wiederherstellung der Daten.
 
 ### <a name="device-failover-prechecks"></a>Vorüberprüfungen für das Gerätefailover
@@ -114,7 +114,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
    
     4. Wenn Sie zur Bestätigung aufgefordert werden, versehen Sie **Ich verstehe die Auswirkung des Offlineschaltens dieser Freigabe.** mit einem Häkchen. 
    
-    5. Klicken Sie auf **Take offline** (Offline schalten).
+    5. Klicken Sie auf **Offline schalten**.
 
 3. Wechseln Sie in Ihrem StorSimple-Geräte-Manager-Dienst zu **Management > Geräte**. Wählen Sie auf dem Blatt **Geräte** das Quellgerät aus, und klicken Sie darauf.
 

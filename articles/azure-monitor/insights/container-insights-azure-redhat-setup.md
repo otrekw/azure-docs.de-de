@@ -2,13 +2,13 @@
 title: Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: 215835c04a1877ccdb6454c4c3902332b9dc1ab2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979785"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190072"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container
 
@@ -20,8 +20,8 @@ Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azur
 
 Azure Monitor für Container kann für neue oder mindestens eine vorhandene Bereitstellung von Azure Red Hat OpenShift mit den folgenden unterstützten Methoden aktiviert werden:
 
-- für einen vorhandenen Cluster im Azure-Portal oder mit einer Azure Resource Manager-Vorlage
-- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage
+- für einen vorhandenen Cluster im Azure-Portal oder mit einer Azure Resource Manager-Vorlage.
+- für einen neuen Cluster mit einer Azure Resource Manager-Vorlage oder beim Erstellen eines neuen Clusters mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/openshift?view=azure-cli-latest#az-openshift-create).
 
 ## <a name="supported-and-unsupported-features"></a>Unterstützte und nicht unterstützte Funktionen
 

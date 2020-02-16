@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 1f5824f349650e340e395221785266096da16d6f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: df44cbefaec943a2df483f4804650b939c796cb5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969546"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191151"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Einschränkungen in Azure Database for MariaDB
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben.
@@ -23,12 +23,12 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|Allgemeiner Zweck| 2| 600|
-|Allgemeiner Zweck| 4| 1250|
-|Allgemeiner Zweck| 8| 2500|
-|Allgemeiner Zweck| 16| 5\.000|
-|Allgemeiner Zweck| 32| 10000|
-|Allgemeiner Zweck| 64| 20000|
+|Universell| 2| 600|
+|Universell| 4| 1250|
+|Universell| 8| 2500|
+|Universell| 16| 5\.000|
+|Universell| 32| 10000|
+|Universell| 64| 20000|
 |Arbeitsspeicheroptimiert| 2| 800|
 |Arbeitsspeicheroptimiert| 4| 2500|
 |Arbeitsspeicheroptimiert| 8| 5\.000|
@@ -37,6 +37,11 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > FEHLER 1040 (08004): Zu viele Verbindungen
+
+> [!IMPORTANT]
+> Für eine optimale Erfahrung empfehlen wir, dass Sie einen Verbindungspooler wie ProxySQL verwenden, um Verbindungen effizient zu verwalten.
+
+Das Erstellen neuer Clientverbindungen mit MariaDB nimmt Zeit in Anspruch, und nach der Herstellung belegen diese Verbindungen Datenbankressourcen, auch wenn Sie sich im Leerlauf befinden. Die meisten Anwendungen fordern viele kurzlebige Verbindungen an, was diese Situation erschwert. Das Ergebnis sind weniger Ressourcen, die für ihre tatsächliche Workload verfügbar sind, was zu verringerter Leistung führt. Ein Verbindungspooler, der Verbindungen im Leerlauf reduziert und vorhandene Verbindungen wiederverwendet, hilft dabei, dies zu vermeiden. Weitere Informationen zum Einrichten von ProxySQL finden Sie in unserem [Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
 
 ## <a name="storage-engine-support"></a>Speicher-Engine-Unterstützung
 

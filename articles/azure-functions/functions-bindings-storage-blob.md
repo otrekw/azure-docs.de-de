@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 593d596881d0ec53b0f18e8af5a71b55c619f7a5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 5113b59f314a40feb02485b3fdc99fe4df406d88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922114"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168107"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
@@ -205,26 +205,7 @@ def main(myblob: func.InputStream):
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Das folgende Beispiel zeigt eine Blobtriggerbindung in einer Datei *function.json* und [Java-Code](functions-reference-java.md), der die Bindung verwendet. Die Funktion schreibt ein Protokoll, wenn im Container `myblob` ein Blob hinzugefügt oder aktualisiert wird.
-
-Die Datei *function.json* sieht wie folgt aus:
-
-```json
-{
-    "disabled": false,
-    "bindings": [
-        {
-            "name": "file",
-            "type": "blobTrigger",
-            "direction": "in",
-            "path": "myblob/{name}",
-            "connection":"MyStorageAccountAppSetting"
-        }
-    ]
-}
-```
-
-Dies ist der Java-Code:
+Diese Funktion schreibt ein Protokoll, wenn im `myblob`-Container ein Blob hinzugefügt oder aktualisiert wird.
 
 ```java
 @FunctionName("blobprocessor")
@@ -1127,7 +1108,7 @@ Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Me
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Blob` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf `blob` festgelegt sein. |
 |**direction** | – | Muss für eine Ausgabebindung auf `out` festgelegt werden. Ausnahmen sind im Abschnitt [Verwendung](#output---usage) angegeben. |

@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792029"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191331"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Aufrufen, Auslösen oder Schachteln von Logik-Apps mithilfe von HTTP-Endpunkten in Azure Logic Apps
 
@@ -278,7 +278,7 @@ Antworten haben folgende Eigenschaften:
 | Eigenschaft (Anzeige) | Eigenschaft (JSON) | BESCHREIBUNG |
 |--------------------|-----------------|-------------|
 | **Statuscode** | `statusCode` | Der HTTP-Statuscode, der in der Antwort auf die eingehende Anforderung verwendet werden soll. Dieser Code kann jeder gültige Statuscode sein, der mit 2xx, 4xx oder 5xx beginnt. Mit 3xx beginnende Statuscodes sind jedoch nicht zulässig. |
-| **Header** | `headers` | Mindestens ein Header, der in die Antwort eingefügt werden soll. |
+| **Headers** | `headers` | Mindestens ein Header, der in die Antwort eingefügt werden soll. |
 | **Text** | `body` | Ein Textobjekt, das eine Zeichenfolge, ein JSON-Objekt oder sogar binäre Inhalte enthalten kann und auf das in einem vorherigen Schritt verwiesen wird. |
 ||||
 
@@ -309,7 +309,7 @@ Um die JSON-Definition der Antwortaktion und die vollständige JSON-Definition I
 **A:** Azure generiert über eine [Shared Access Signature (SAS)](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature) auf sichere Weise Rückruf-URLs für Logik-Apps. Diese Signatur wird als Abfrageparameter übergeben und muss überprüft werden, bevor Ihre Logik-App ausgeführt werden kann. Azure generiert die Signatur durch eine eindeutige Kombination aus einem geheimen Schlüssel pro Logik-App, dem Namen des Triggers und dem ausgeführten Vorgang. Nur wenn ein Benutzer Zugriff auf den geheimen Logik-App-Schlüssel hat, kann er eine gültige Signatur generieren.
 
 > [!IMPORTANT]
-> Bei Produktions- und sicheren Systemen wird dringend davon abgeraten, Ihre Logik-App direkt aus dem Browser aufzurufen. Das hat folgende Gründe:
+> Bei Produktionssystemen und Systemen mit höherer Sicherheit wird dringend davon abgeraten, Ihre Logik-App direkt aus dem Browser aufzurufen. Das hat folgende Gründe:
 >
 > * Der Schlüssel für den gemeinsamen Zugriff ist in der URL enthalten.
 > * Sie können keine Richtlinien für sichere Inhalte verwalten, da Domänen von Azure Logic Apps-Benutzern gemeinsam verwendet werden.

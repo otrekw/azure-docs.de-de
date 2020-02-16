@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: d5e78c3ab08e791a5f484e45d487c3a85dc95de7
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f4fdf25fa1403b8429e7ad7e7fc644d0355b1324
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613090"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189818"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -262,7 +262,7 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 |Alle Werte (`*`)|<nobr>"0 * 5 * * *"</nobr>|täglich um 5:mm:00, wobei „mm“ für jede Minute in der Stunde steht (sechzigmal pro Tag)|
 |Ein Bereich (`-`-Operator)|<nobr>"5-7 * * * * *"</nobr>|um hh:mm:05, hh:mm:06 und hh:mm:07, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
 |Eine Gruppe von Werten (`,`-Operator)|<nobr>"5,8,10 * * * * *"</nobr>|um hh:mm:05, hh:mm:08 und hh:mm:10, wobei „hh:mm“ für jede Minute in jeder Stunde steht (dreimal pro Minute)|
-|Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:05:00, hh:10:00, hh:15:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
+|Ein Intervallwert (`/`-Operator)|<nobr>"0 */5 * * * *"</nobr>|um hh:00:00, hh:05:00, hh:10:00 usw. bis hh:55:00, wobei „hh“ für jede Stunde steht (zwölfmal pro Stunde)|
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 

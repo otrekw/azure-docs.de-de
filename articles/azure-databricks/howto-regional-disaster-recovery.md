@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639870"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161935"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
@@ -37,7 +37,7 @@ Wenn Sie eine eigene Topologie für die regionale Notfallwiederherstellung erste
 
    1. Stellen Sie mehrere Azure Databricks-Arbeitsbereiche in separaten Azure-Regionen bereit. Erstellen Sie den primären Azure Databricks-Arbeitsbereich beispielsweise in „USA, Osten 2“. Erstellen Sie den sekundären Azure Databricks-Arbeitsbereich für die Notfallwiederherstellung in einer separaten Region (beispielsweise „USA, Westen“).
 
-   2. Verwenden Sie [georedundanten Speicher](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage). Die mit Azure Databricks verknüpften Daten werden standardmäßig in Azure Storage gespeichert. Die Ergebnisse der Databricks-Aufträge werden auch in Azure Blob Storage gespeichert, sodass die verarbeiteten Daten auch nach Beendigung des Clusters dauerhaft und hoch verfügbar sind. Da sich Speicher und Databricks-Cluster am gleichen Ort befinden, müssen Sie georedundanten Speicher verwenden, damit auf Daten in der sekundären Region zugegriffen werden kann, wenn der Zugriff auf die primäre Region nicht mehr möglich ist.
+   2. Verwenden Sie [georedundanten Speicher](../storage/common/storage-redundancy.md). Die mit Azure Databricks verknüpften Daten werden standardmäßig in Azure Storage gespeichert. Die Ergebnisse der Databricks-Aufträge werden auch in Azure Blob Storage gespeichert, sodass die verarbeiteten Daten auch nach Beendigung des Clusters dauerhaft und hoch verfügbar sind. Da sich Speicher und Databricks-Cluster am gleichen Ort befinden, müssen Sie georedundanten Speicher verwenden, damit auf Daten in der sekundären Region zugegriffen werden kann, wenn der Zugriff auf die primäre Region nicht mehr möglich ist.
 
    3. Nach Erstellung der sekundären Region müssen Sie Benutzer, Benutzerordner, Notebooks, Clusterkonfiguration, Auftragskonfiguration, Bibliotheken, Speicher und Initialisierungsskripts migrieren und die Zugriffssteuerung neu konfigurieren. Ausführlichere Informationen finden Sie im folgenden Abschnitt.
 

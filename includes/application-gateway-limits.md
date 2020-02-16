@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 0ba21fe3789fba03cd4814d19fb103c3a2559c13
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 6ab6c4c2051ccd2fbb22c383b9ca0af53ceb13d3
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75662905"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77054947"
 ---
 | Resource | Standard/maximales Limit | Hinweis |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "75662905"
 | HTTP-Listener |100<sup>1</sup> | |
 | HTTP-Lastenausgleichsregeln |100<sup>1</sup> | |
 | Back-End-HTTP-Einstellungen |100<sup>1</sup> | |
-| Instanzen pro Gateway |32 | |
+| Instanzen pro Gateway |V1 SKU – 32<br>V2 SKU – 125 | |
 | SSL-Zertifikate |100<sup>1</sup> |1 pro HTTP-Listener |
 | Maximale SSL-Zertifikatgröße |V1 SKU – 10 KB<br>V2 SKU - 16 KB| |
 | Authentifizierungszertifikate |100 | |
@@ -36,7 +36,7 @@ ms.locfileid: "75662905"
 | Maximale URL-Länge|32 KB| |
 | Maximale Headergröße für HTTP/2 |4 KB| |
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
-| Maximale Dateiuploadgröße (WAF) |v1 Mittlere WAF-Gateways, 100 MB<br>v1 Große WAF-Gateways, 500 MB<br>v2 WAF, 750 MB| |
+| Maximale Dateiuploadgröße (WAF) |V1 Mittlere WAF-Gateways, 100 MB<br>V1 Große WAF-Gateways, 500 MB<br>V2 WAF, 750 MB| |
 | WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB||
 | Maximale benutzerdefinierte WAF-Regeln|100||
 | Maximale WAF-Ausschlüsse|100||

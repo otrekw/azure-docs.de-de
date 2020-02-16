@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314027"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138151"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Importieren Ihrer Daten in Azure Machine Learning-Designer
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Importieren Ihrer Daten in Azure Machine Learning-Designer (Preview)
 
 In diesem Artikel erfahren Sie, wie Sie Ihre eigenen Daten in den Designer importieren, um benutzerdefinierte Lösungen zu erstellen. Es gibt zwei Möglichkeiten, wie Sie Daten in den Designer importieren können: 
 
@@ -45,7 +45,7 @@ Ihre registrierten Datasets finden Sie in der Modulpalette unter **Datasets** > 
 
 ![Screenshot: Speicherort gespeicherter Datasets in der Designerpalette](media/how-to-designer-import-data/use-datasets-designer.png)
 
-Jedes [Dateidataset](how-to-create-register-datasets.md#dataset-types), das in Ihrem Machine Learning-Arbeitsbereich registriert ist, wird in der Modulpalette angezeigt. Sie sind nicht auf die Verwendung von im Designer erstellten Datasets beschränkt.
+
 
 > [!NOTE]
 > Der Designer unterstützt derzeit nur die Verarbeitung [Tabellendatasets](how-to-create-register-datasets.md#dataset-types). Wenn Sie [Dateidatasets](how-to-create-register-datasets.md#dataset-types) verwenden möchten, verwenden Sie das Azure Machine Learning SDK, das für Python und R verfügbar ist.

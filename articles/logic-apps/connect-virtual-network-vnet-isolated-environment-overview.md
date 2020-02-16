@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 12/16/2019
-ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/10/2020
+ms.openlocfilehash: 1f743384f467e4559412fa1a46d48011b568d249
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860747"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191575"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
@@ -45,7 +45,7 @@ Wenn Sie in Azure eine Integrationsdienstumgebung (ISE) erstellen, können Sie d
 
 Logik-Apps in einer Integrationsdienstumgebung bieten die gleiche Benutzeroberfläche und ähnliche Funktionen wie im öffentlichen globalen Logic Apps-Dienst. Sie können dieselben integrierten Trigger, Aktionen und verwalteten Connectors verwenden, die im globalen Logic Apps-Dienst verfügbar sind. Einige verwaltete Connectors bieten zusätzliche ISE-Versionen. Der Unterschied besteht darin, wo sie ausgeführt werden und welche Bezeichnungen im Logik-App-Designer angezeigt werden, wenn Sie in einer ISE arbeiten.
 
-![Connectors mit und ohne Bezeichnungen in einer ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
+![Connectors mit und ohne Bezeichnungen in einer ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-trigger-actions-integration-service-environment.png)
 
 * Integrierte Trigger und Aktionen zeigen die Bezeichnung **CORE** an, und sie werden immer in derselben ISE wie Ihre Logik-App ausgeführt. Verwaltete Connectors, die die Bezeichnung **ISE** anzeigen, werden ebenfalls in derselben ISE wie Ihre Logik-App ausgeführt.
 
@@ -111,7 +111,7 @@ Bei lokalen Systemen, die mit einem virtuellen Azure-Netzwerk verbunden sind, f�
 * Benutzerdefinierter Connector
 
   * Wenn Sie über benutzerdefinierte Connectors verfügen, für die das lokale Datengateway erforderlich ist, und Sie diese Connectors außerhalb einer ISE erstellt haben, können Logik-Apps in einer ISE diese Connectors ebenfalls verwenden.
-  
+
   * Benutzerdefinierte Connectors, die in einer ISE erstellt wurden, funktionieren nicht mit dem lokalen Datengateway. Diese Connectors können jedoch direkt auf lokale Datenquellen zugreifen, die mit dem virtuellen Netzwerk verbunden sind, das die ISE hostet. Deshalb benötigen Logik-Apps in einer ISE sehr wahrscheinlich das Datengateway nicht, wenn sie mit diesen Ressourcen kommunizieren.
 
 Bei lokalen Systemen, die nicht mit einem virtuellen Netzwerk verbunden sind oder keine Connectors mit der Bezeichnung „ISE“ aufweisen, müssen Sie zuerst [das lokale Datengateway einrichten](../logic-apps/logic-apps-gateway-install.md), bevor Ihre Logik-Apps eine Verbindung zu diesen Systemen aufbauen können.

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933321"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167326"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
 
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Das folgende Beispiel zeigt einen Trigger für die Aufwärmphase in einer *function.json*-Datei und eine [Java-Funktion](functions-reference-java.md), die auf jeder neuen Instanz ausgeführt wird, wenn diese Ihrer App hinzugefügt wird.
+Das folgende Beispiel zeigt einen Aufwärmtrigger, der immer ausgeführt wird, wenn Ihrer App eine neue Instanz hinzugefügt wird.
 
-Ihre Funktion muss ```warmup``` (ohne Berücksichtigung der Groß-/Kleinschreibung) heißen, und pro App kann nur eine Aufwärmfunktion vorhanden sein.
-
-Die Datei *function.json* sieht wie folgt aus:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-Dies ist der Java-Code:
+Ihre Funktion muss `warmup` (ohne Berücksichtigung der Groß-/Kleinschreibung) heißen, und pro App kann nur eine Aufwärmfunktion vorhanden sein.
 
 ```java
 @FunctionName("Warmup")

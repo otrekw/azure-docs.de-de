@@ -1,18 +1,18 @@
 ---
 title: SSL-Terminierung mit Azure Key Vault-Zertifikaten
-description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die an HTTPS-fähige Listener angefügt sind.
+description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die einem HTTPS-fähigen Listener zugeordnet sind.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571978"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137696"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>SSL-Terminierung mit Key Vault-Zertifikaten
 
@@ -33,6 +33,9 @@ Die Application Gateway-Integration mit Key Vault bietet viele Vorteile. Zu dies
 - Unterstützung für die automatische Verlängerung von Zertifikaten, die in Ihrem Schlüsseltresor gespeichert sind
 
 Application Gateway unterstützt derzeit nur per Software überprüfte Zertifikate. Durch das Hardwaresicherheitsmodul (HSM) überprüfte Zertifikate werden nicht unterstützt. Nachdem Application Gateway für die Verwendung von Key Vault-Zertifikaten konfiguriert wurde, rufen die Instanzen das Zertifikat von Key Vault ab und installieren sie lokal für die SSL-Terminierung. Die Instanzen rufen außerdem Key Vault in 24-Stunden-Intervallen ab, um ggf. eine erneuerte Version des Zertifikats zu erhalten. Wenn ein aktualisiertes Zertifikat gefunden wird, wird das derzeit dem HTTPS-Listener zugeordnete SSL-Zertifikat automatisch rotiert.
+
+> [!NOTE]
+> Das Azure-Portal unterstützt nur KeyVault-Zertifikate und keine Geheimnisse. Application Gateway unterstützt weiterhin die Referenzierung von Geheimnissen aus KeyVault, aber nur über Nicht-Portalressourcen wie PowerShell, CLI, API, ARM-Vorlagen usw. 
 
 ## <a name="how-integration-works"></a>Funktionsweise der Integration
 

@@ -5,24 +5,24 @@ services: azure-portal
 keywords: Einstellungen, Timeout
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/19/2019
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 950580048f0496fd8436901938a5b6768c61bab6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310797"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132076"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Festlegen des Inaktivitätstimeouts auf Verzeichnisebene
 
-Die Einstellung für das Inaktivitätstimeout schützt Ihre Ressourcen vor nicht autorisiertem Zugriff, wenn die Benutzer vergessen, ihre Arbeitsstation abzusichern. Wenn ein Benutzer sich für längere Zeit keine Aktionen ausführt, wird seine Sitzung im Azure-Portal automatisch abgemeldet. Administratoren können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Die Einstellung für das Inaktivitätstimeout schützt Ihre Ressourcen vor nicht autorisiertem Zugriff, wenn die Benutzer vergessen, ihre Arbeitsstation abzusichern. Wenn ein Benutzer sich für längere Zeit keine Aktionen ausführt, wird seine Sitzung im Azure-Portal automatisch abgemeldet. Administratoren in der [globalen Administratorrolle](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 ## <a name="configure-the-inactive-timeout-setting"></a>Konfigurieren der Einstellung für das Inaktivitätstimeout
 
-Wenn Sie ein Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, führen Sie die folgenden Schritte aus:
+Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie in der globalen Kopfzeile **Einstellungen** aus.

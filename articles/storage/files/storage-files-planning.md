@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b77d6fe03a051c019519f195d55cdeb00fb9afb2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906266"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157215"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -93,7 +93,7 @@ Wenn Sie erfahren möchten, wie Sie eine Premium-Dateifreigabe erstellen, lesen 
 Derzeit ist eine direkte Konvertierung zwischen einer Standard- und einer Premium-Dateifreigabe nicht möglich. Wenn Sie zu einem der beiden Tarifen wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Sie können dazu eines der von Azure Files unterstützten Kopiertools wie Robocopy oder AzCopy verwenden.
 
 > [!IMPORTANT]
-> Premium-Dateifreigaben sind mit LRS in den meisten Regionen verfügbar, in denen Speicherkonten angeboten werden. Mit ZRS sind sie in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter [Supportabdeckung und regionale Verfügbarkeit](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+> Premium-Dateifreigaben sind mit LRS in den meisten Regionen verfügbar, in denen Speicherkonten angeboten werden. Mit ZRS sind sie in einer kleineren Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen zu Regionen, die ZRS unterstützen, finden Sie unter [Azure Storage-Redundanz](../common/storage-redundancy.md).
 >
 > Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
 
@@ -155,41 +155,14 @@ Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. 
 
 ## <a name="file-share-redundancy"></a>Dateifreigaberedundanz
 
-Azure Files-Standardfreigaben unterstützen vier Optionen für Datenredundanz: lokal redundanter Speicher (LRS), zonenredundanter Speicher (ZRS), georedundanter Speicher (GRS) und geozonenredundanter Speicher (GZRS) (Vorschau).
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Premium-Freigaben von Azure Files unterstützen sowohl LRS als auch ZRS, wobei ZRS derzeit in einer kleineren Teilmenge von Regionen verfügbar ist.
-
-In den folgenden Abschnitten werden die Unterschiede zwischen den verschiedenen Redundanzoptionen erläutert:
-
-### <a name="locally-redundant-storage"></a>Lokal redundanter Speicher
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>Zonenredundanter Speicher
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>Georedundanter Speicher
+Wenn Sie sich für schreibgeschützten georedundanten Speicher (RA-GRS) entscheiden, sollten Sie wissen, dass Azure File schreibgeschützten georedundanten Speicher (RA-GRS) zu diesem Zeitpunkt in keiner Region unterstützt. Dateifreigaben im RA-GRS-Speicherkonto funktionieren wie in GRS-Konten und werden mit GRS-Preisen abgerechnet.
 
 > [!Warning]  
 > Wenn Sie Ihre Azure-Dateifreigabe als Cloudendpunkt in einem GRS-Speicherkonto verwenden, sollten Sie kein Failover des Speicherkontos einleiten. Dies würde das Funktionieren der Synchronisierung beenden und könnte außerdem bei neu einbezogenen Dateien zu unerwartetem Datenverlust führen. Im Fall des Ausfalls einer Azure-Region löst Microsoft das Failover des Speicherkontos auf eine Weise aus, die mit der Azure-Dateisynchronisierung kompatibel ist.
 
-Georedundanter Speicher (GRS) ist so konzipiert, dass er eine Dauerhaftigkeit von mindestens 99,99999999999999999999 % (16 mal die 9) von Objekten über ein gegebenes Jahr bereitstellt, indem Ihre Daten in eine sekundäre Region repliziert werden, die Hunderte Kilometer von der primären Region entfernt ist. Wenn für Ihr Speicherkonto GRS aktiviert ist, sind Ihre Daten beständig gespeichert, selbst bei einem regionalen Komplettausfall oder einem Notfall, nach dem die primäre Region nicht mehr wiederhergestellt werden kann.
-
-Wenn Sie sich für schreibgeschützten georedundanten Speicher (RA-GRS) entscheiden, sollten Sie wissen, dass Azure File schreibgeschützten georedundanten Speicher (RA-GRS) zu diesem Zeitpunkt in keiner Region unterstützt. Dateifreigaben im RA-GRS-Speicherkonto funktionieren wie in GRS-Konten und werden mit GRS-Preisen abgerechnet.
-
-GRS repliziert Ihre Daten in ein anderes Rechenzentrum in einer sekundären Region, aber diese Daten sind nur schreibgeschützt verfügbar, wenn Microsoft ein Failover von der primären in die sekundäre Region initiiert.
-
-Bei einem Speicherkonto mit aktiviertem GRS werden alle Daten zunächst mit dem lokal redundanten Speicher (LRS) repliziert. Ein Update wird zunächst an den primären Speicherort übertragen und mit LRS repliziert. Anschließend wird das Update asynchron mit GRS in die sekundäre Region repliziert. Wenn Daten in den sekundären Speicherort geschrieben werden, werden sie dort auch mit LRS repliziert.
-
-Sowohl in der primären als auch in der sekundären Region werden Replikate über separate Fehlerdomänen und Upgradedomänen hinweg in einer Speicherskalierungseinheit verwaltet. Die Speicherskalierungseinheit ist die grundlegende Replikationseinheit im Datencenter. Die Replikation auf dieser Ebene wird von LRS bereitgestellt. Weitere Informationen finden Sie unter [Lokal redundanter Speicher (LRS): Kostengünstige Datenredundanz für Azure Storage](../common/storage-redundancy-lrs.md).
-
-Beachten Sie diese Punkte, wenn Sie sich für eine Replikationsoption entscheiden:
-
-* Geozonenredundanter Speicher (GZRS) (Vorschau) bietet hohe Verfügbarkeit und maximale Dauerhaftigkeit, indem Daten synchron in drei Azure-Verfügbarkeitszonen und dann asynchron in der sekundären Region repliziert werden. Sie können auch den Lesezugriff auf die sekundäre Region aktivieren. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen. Weitere Informationen zu GZRS finden Sie unter [Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau](../common/storage-redundancy-gzrs.md).
-* Zonenredundanter Speicher (ZRS) bietet eine hohe Verfügbarkeit mit synchroner Replikation und ist für einige Szenarien ggf. besser geeignet als GRS. Weitere Informationen zu ZRS finden Sie unter [ZRS](../common/storage-redundancy-zrs.md).
-* Die asynchrone Replikation beinhaltet eine Verzögerung zwischen dem Zeitpunkt, zu dem diese Daten in der primären Region geschrieben werden, und dem Zeitpunkt, zu dem sie in der sekundären Region repliziert werden. Bei einem regionalen Notfall gehen Änderungen, die noch nicht in der sekundären Region repliziert wurden, möglicherweise verloren, wenn die Daten nicht in der primären Region wiederhergestellt werden können.
-* Mit GRS ist das Replikat nicht für den Lese- oder Schreibzugriff verfügbar, sofern von Microsoft kein Failover in der sekundären Region initiiert wird. Im Fall eines Failovers erhalten Sie nach Abschluss des Failovers Lese- und Schreibzugriff auf diese Daten. Weitere Informationen finden Sie im [Leitfaden zur Notfallwiederherstellung](../common/storage-disaster-recovery-guidance.md).
+Premium-Freigaben von Azure Files unterstützen sowohl LRS als auch ZRS, wobei ZRS derzeit in einer kleineren Teilmenge von Regionen verfügbar ist.
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Onboarding für größere Dateifreigaben (Standard-Tarif)
 
@@ -204,8 +177,7 @@ Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreiga
 Standarddateifreigaben mit einer Kapazitätsgrenze von 100 TiB sind in allen Azure-Regionen allgemein verfügbar.
 
 - LRS: Alle Regionen außer „Südafrika, Norden“ und „Südafrika, Westen“.
-   - Nationale Clouds (Government, Deutschland, China) werden über PowerShell und die Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) unterstützt. Keine Portalunterstützung. 
-   - „USA, Osten“, „USA, Osten 2“, „Europa, Westen“: Alle neuen Konten werden unterstützt. Für eine kleine Anzahl von vorhandenen Konten wurde der Upgradevorgang noch nicht abgeschlossen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
+   - „USA, Osten“ und „Europa, Westen“: Alle neuen Konten werden unterstützt. Für eine kleine Anzahl von vorhandenen Konten wurde der Upgradevorgang noch nicht abgeschlossen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
 
 - ZRS: Alle Regionen außer „Japan, Osten“, „Europa, Norden“ und „Südafrika, Norden“.
 - GRS/GZRS: Wird nicht unterstützt.

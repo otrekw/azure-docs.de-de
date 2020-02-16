@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893673"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191360"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -203,7 +203,7 @@ Sie können Gateways (wie jeden anderen Windows-Dienst) auf verschiedene Arten s
 
 Benutzer in Ihrer Organisation können auf lokale Daten zugreifen, für die sie bereits über autorisierten Zugriff verfügen. Bevor diese Benutzer jedoch eine Verbindung mit Ihrer lokalen Datenquelle herstellen können, müssen Sie ein lokales Datengateway installieren und einrichten. Normalerweise ist ein Administrator die Person, die ein Gateway installiert und einrichtet. Diese Aktionen erfordern möglicherweise Serveradministratorberechtigungen oder besondere Kenntnisse zu Ihren lokalen Servern.
 
-Das Gateway ermöglicht die schnelle und sichere Kommunikation hinter den Kulissen. Diese Kommunikation erfolgt zwischen einem Benutzer in der Cloud, dem Gatewayclouddienst und ihrer lokalen Datenquelle. Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen dem Benutzer, dem Gateway und Ihrer lokalen Datenquelle weiter.
+Das Gateway ermöglicht die schnellere und sicherere Kommunikation hinter den Kulissen. Diese Kommunikation erfolgt zwischen einem Benutzer in der Cloud, dem Gatewayclouddienst und ihrer lokalen Datenquelle. Der Gatewayclouddienst verschlüsselt und speichert Ihre Anmeldeinformationen für Datenquellen und Ihre Gatewaysdetails. Der Dienst leitet außerdem Abfragen und deren Ergebnisse zwischen dem Benutzer, dem Gateway und Ihrer lokalen Datenquelle weiter.
 
 Das Gateway funktioniert mit Firewalls und verwendet nur ausgehende Verbindungen. Der gesamte Datenverkehr stammt als sicherer ausgehender Datenverkehr vom Gateway-Agent. Das Gateway überträgt Daten aus lokalen Quellen durch verschlüsselte Kanäle über [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Diese Service Bus-Instanz erstellt einen Kanal zwischen dem Gateway und dem aufrufenden Dienst, speichert jedoch keine Daten. Alle über das Gateway übertragenen Daten sind verschlüsselt.
 

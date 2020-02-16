@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557944"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190009"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Verwenden externer Dienste über den Azure API Management-Dienst
 Mit den im Azure API Management-Dienst verfügbaren Richtlinien können Sie zahlreiche nützliche Aufgaben durchführen, ausschließlich basierend auf der eingehenden Anforderung, der ausgehenden Antwort und den grundlegenden Konfigurationsinformationen. Die Interaktionsfähigkeit mit externen Diensten mithilfe von API Management-Richtlinien eröffnet jedoch viele weitere Möglichkeiten.
@@ -101,6 +101,10 @@ Nachdem das Autorisierungstoken von API Management empfangen wurde, kann die Anf
 Das `response-variable-name` -Attribut wird verwendet, um auf die zurückgegebene Antwort zuzugreifen. Der in dieser Eigenschaft definierte Name kann als Schlüssel für das `context.Variables`-Wörterbuch verwendet werden, um auf das `IResponse`-Objekt zuzugreifen.
 
 Aus dem Antwortobjekt können Sie den Textkörper abrufen. RFC 7622 weist API Management an, dass die Antwort ein JSON-Objekt sein und mindestens eine Eigenschaft namens `active` enthalten muss, bei der es sich um einen booleschen Wert handelt. Wenn `active` true ist, dann wird das Token als gültig erachtet.
+
+Alternativ können Sie, wenn der Autorisierungsserver das Feld „aktiv“ nicht enthält, um anzugeben, ob das Token gültig ist, ein Tool wie Postman verwenden, um zu bestimmen, welche Eigenschaften in einem gültigen Token festgelegt sind. Wenn z. B. eine gültige Tokenantwort eine Eigenschaft namens „expires_in“ enthält, überprüfen Sie, ob dieser Eigenschaftsname in der Autorisierungsserverantwort vorhanden ist, auf diese Weise:
+
+<when condition="@(((IResponse)context.Variables["tokenstate"]).Body.As<JObject>().Property("expires_in") == null)">
 
 ### <a name="reporting-failure"></a>Melden eines Fehlers
 Sie können mithilfe einer `<choose>`-Richtlinie ermitteln, ob das Token ungültig ist. Wenn dies der Fall ist, wird eine 401-Antwort zurückgegeben.

@@ -9,12 +9,12 @@ ms.date: 02/11/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 2bac51a86c8acdba0f6c2f03e5a24ab2b133aa8e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7529cfbd0ab75d0113e5cea666bc04aa1b15d30b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521007"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157703"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -32,15 +32,15 @@ In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal, PowerShell o
 Damit Sie ein Kontofailover für Ihr Speicherkonto ausführen können, müssen Sie die folgenden Schritte ausführen:
 
 - Registrieren Sie sich für die Vorschauversion des Kontofailovers. Informationen zur Registrierung finden Sie unter [Informationen zur Vorschau](storage-disaster-recovery-guidance.md#about-the-preview).
-- Stellen Sie sicher, dass Ihr Speicherkonto zur Verwendung als georedundanter Speicher (GRS) oder georedundanter Speicher mit Lesezugriff (RA-GRS) konfiguriert ist. Weitere Informationen zum georedundanten Speicher finden Sie unter [Georedundanter Speicher (GRS): Regionsübergreifende Replikation für Azure Storage](storage-redundancy-grs.md). 
+- Stellen Sie sicher, dass Ihr Speicherkonto zur Verwendung als georedundanter Speicher (GRS) oder georedundanter Speicher mit Lesezugriff (RA-GRS) konfiguriert ist. Weitere Informationen zum georedundanten Speicher finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
 ## <a name="important-implications-of-account-failover"></a>Wichtige Auswirkungen eines Kontofailovers
 
 Wenn Sie ein Kontofailover für Ihr Speicherkonto initiieren, werden die DNS-Einträge für den sekundären Endpunkt so aktualisiert, dass der sekundäre Endpunkt zum primären Endpunkt wird. Vor dem Initiieren eines Failovers sollten Sie daher die möglichen Auswirkungen auf Ihr Speicherkonto verstehen.
 
-Um den Umfang des wahrscheinlichen Datenverlusts schon vor dem Initiieren eines Failovers abschätzen zu können, sollten Sie mithilfe des PowerShell-Cmdlets `Get-AzStorageAccount` die Eigenschaft **Letzte Synchronisierungszeit** überprüfen und den Parameter `-IncludeGeoReplicationStats` einfügen. Überprüfen Sie dann die `GeoReplicationStats`-Eigenschaft für Ihr Konto. 
+Um den Umfang des wahrscheinlichen Datenverlusts schon vor dem Initiieren eines Failovers abschätzen zu können, sollten Sie mithilfe des PowerShell-Cmdlets `Get-AzStorageAccount` die Eigenschaft **Letzte Synchronisierungszeit** überprüfen und den Parameter `-IncludeGeoReplicationStats` einfügen. Überprüfen Sie dann die `GeoReplicationStats`-Eigenschaft für Ihr Konto. \
 
-Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundanten Speicher (LRS) in der neuen primären Region konvertiert. Sie können den georedundanten Speicher (GRS) oder den georedundanten Speicher mit Lesezugriff (RA-GRS) wieder aktivieren. Beachten Sie, dass für die Konvertierung von LRS in GRS oder RA-GRS zusätzliche Kosten anfallen. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/). 
+Nach dem Failover wird der Speicherkontotyp automatisch in einen lokal redundanten Speicher (LRS) in der neuen primären Region konvertiert. Sie können den georedundanten Speicher (GRS) oder den georedundanten Speicher mit Lesezugriff (RA-GRS) wieder aktivieren. Beachten Sie, dass für die Konvertierung von LRS in GRS oder RA-GRS zusätzliche Kosten anfallen. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Nachdem Sie wieder GRS für Ihr Speicherkonto aktiviert haben, beginnt Microsoft, die Daten in Ihrem Konto in die neue sekundäre Region zu replizieren. Die Dauer der Replikation hängt von der Menge der zu replizierenden Daten ab.  
 

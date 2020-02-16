@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2d530792e1a6f598dbf2ed66889c01cc43467ed
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395755"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162241"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -42,7 +42,7 @@ Die Ermittlung der Anzahl benötigter Arbeitsbereiche wird durch eine oder mehre
 
 IT-Organisationen werden heute entweder zentralisiert oder dezentralisiert oder in einer Hybridversion beider Strukturen modelliert. Infolgedessen werden häufig die folgenden Modelle der Arbeitsbereichsbereitstellung entsprechend einer dieser Organisationsstrukturen verwendet:
 
-* **Zentralisiert**: Alle Protokolle werden in einem zentralen Arbeitsbereich gespeichert und von einem einzigen Team verwaltet, wobei Azure Monitor differenzierten Zugriff pro Team bietet. In diesem Szenario ist es einfach, Protokolle zu verwalten, ressourcenübergreifend zu durchsuchen und übergreifend zu korrelieren. Der Arbeitsbereich kann je nach Datenmenge, die von mehreren Ressourcen in Ihrem Abonnement gesammelt wird, erheblich anwachsen, und zusätzlichen Verwaltungsaufwand bei der Zugriffssteuerung für verschiedene Benutzer bedeuten.
+* **Zentralisiert**: Alle Protokolle werden in einem zentralen Arbeitsbereich gespeichert und von einem einzigen Team verwaltet, wobei Azure Monitor differenzierten Zugriff pro Team bietet. In diesem Szenario ist es einfach, Protokolle zu verwalten, ressourcenübergreifend zu durchsuchen und übergreifend zu korrelieren. Der Arbeitsbereich kann je nach Datenmenge, die von mehreren Ressourcen in Ihrem Abonnement gesammelt wird, erheblich anwachsen, und zusätzlichen Verwaltungsaufwand bei der Zugriffssteuerung für verschiedene Benutzer bedeuten. Dieses Modell wird als „Hub-and-Spoke“ (Nabe und Speiche) bezeichnet.
 * **Dezentralisiert**: Für jedes Team wird ein eigener Arbeitsbereich in einer Ressourcengruppe erstellt, den es besitzt und verwaltet, und die Protokolldaten werden nach Ressource getrennt. In diesem Szenario kann der Arbeitsbereich geschützt werden und die Zugriffssteuerung ist mit dem Ressourcenzugriff konsistent, doch ist es schwierig, Protokolle übergreifend zu korrelieren. Benutzer, die einen umfassenden Überblick über viele Ressourcen benötigen, können die Daten nicht auf sinnvolle Weise analysieren.
 * **Hybrid**: Konformitätsanforderungen für die Sicherheitsüberwachung machen dieses Szenario noch komplizierter, da viele Organisationen beide Bereitstellungsmodelle parallel implementieren. Dies führt häufig zu einer komplexen, teuren und schwer zu verwaltenden Konfiguration mit Lücken in der Protokollabdeckung.
 

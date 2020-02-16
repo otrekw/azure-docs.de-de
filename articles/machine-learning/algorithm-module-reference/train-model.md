@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548406"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137919"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -39,7 +39,7 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
 
 3. Nach Abschluss des Trainings verwenden Sie das trainierte Modell mit einem der [Bewertungsmodule](./score-model.md), um Vorhersagen für neue Daten zu treffen.
 
-## <a name="how-to-use-train-model"></a>Gewusst wie: Verwenden von **Train Model**  
+## <a name="how-to-use-train-model"></a>Gewusst wie: Verwenden von „Train Model“ 
   
 1.  Konfigurieren Sie in Azure Machine Learning ein Klassifizierungs- oder Regressionsmodell.
     
@@ -49,7 +49,7 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
 
     Das Trainingsdataset muss eine Bezeichnungsspalte enthalten. Zeilen ohne Bezeichnung werden ignoriert.
   
-4.  Klicken Sie für **Label column** (Bezeichnungsspalte) auf **Launch column selector** (Spaltenauswahl starten), und wählen Sie eine einzelne Spalte mit Ergebnissen aus, die vom Modell zu Trainingszwecken verwendet werden können.
+4.  Klicken Sie für **Label column** (Bezeichnungsspalte) im rechten Bereich des Moduls auf **Launch column selector** (Spaltenauswahl starten), und wählen Sie eine einzelne Spalte mit Ergebnissen aus, die vom Modell zu Trainingszwecken verwendet werden können.
   
     - Bei Klassifizierungsproblemen muss die Bezeichnungsspalte entweder **kategorische** oder **diskrete** Werte enthalten. Einige Beispiele sind: Ja/keine Bewertung, ein Code oder ein Name zur Klassifizierung von Krankheiten oder eine Gehaltsgruppe.  Wenn Sie eine Spalte mit nicht kategorischen Werten auswählen, gibt das Modul während des Trainings einen Fehler zurück.
   

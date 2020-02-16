@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894883"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191205"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -83,7 +83,7 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten mit den S
 
 In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatisch skaliert oder normalisiert, damit die Algorithmen gut funktionieren.  Während des Modelltrainings wird eine der folgenden Skalierungs- oder Normalisierungstechniken auf jedes Modell angewendet.
 
-|Skalierung&nbsp;&&nbsp;Normalisierung| Beschreibung |
+|Skalierung&nbsp;&&nbsp;Normalisierung| BESCHREIBUNG |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardisieren von Features durch Entfernen des Mittelwerts und Skalierung auf Einheitenvarianz.  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformieren von Features durch Skalieren jedes Features anhand des Mindest- und Maximalwerts dieser Spalte.  |
@@ -95,11 +95,11 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatis
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Erweiterte Vorverarbeitung: optionale Featurebereitstellung
 
-Außerdem stehen zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung zur Verfügung, z. B. Schutzmaßnahmen für Daten, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#preprocess). Diese Einstellung kann aktiviert werden über:
+Außerdem stehen zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung zur Verfügung, z. B. Schutzmaßnahmen für Daten, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#featurization). Diese Einstellung kann aktiviert werden über:
 
-+ Azure Machine Learning Studio: Auswählen von **Einstellungen für die Merkmalserstellung anzeigen** im Abschnitt **Configuration Run** (Konfigurationsausführung) [über diese Schritte](how-to-create-portal-experiments.md).
++ Azure Machine Learning Studio: Aktivieren Sie die **Automatische Merkmalserstellung** im Abschnitt **Konfigurationsausführung** [mit diesen Schritten](how-to-create-portal-experiments.md#create-and-run-experiment).
 
-+ Python SDK: Angeben von `"feauturization": auto' / 'off' / FeaturizationConfig` für die [`AutoMLConfig`-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
++ Python SDK: Angeben von `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` für die [`AutoMLConfig`-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
 ## <a name="prevent-over-fitting"></a>Verhindern von Überanpassung
 
@@ -215,11 +215,11 @@ Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Pyth
 
 Automatisiertes ML ist auch in anderen Lösungen von Microsoft verfügbar:
 
-|Integrationen|Beschreibung|
+|Integrationen|BESCHREIBUNG|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische Modellauswahl und Training in .NET-Apps mithilfe von Visual Studio und Visual Studio Code (mit Machine Learning mit Automatisierung per ML.NET (Vorschauversion)).|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische Modellauswahl und Training in .NET-Apps mithilfe von Visual Studio und Visual Studio Code mit Machine Learning mit Automatisierung per ML.NET.|
 |[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Sie können Ihre automatisierten ML-Trainingsaufträge in Spark in HDInsight-Clustern parallel horizontal hochskalieren.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Sie können Machine Learning-Modelle direkt in Power BI (Vorschauversion) aufrufen.|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Sie können Machine Learning-Modelle direkt in Power BI aufrufen.|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Erstellen Sie neue Modelle für das maschinelle Lernen über Ihre Daten in Big Data-Clustern von SQL Server 2019.|
 
 ## <a name="next-steps"></a>Nächste Schritte

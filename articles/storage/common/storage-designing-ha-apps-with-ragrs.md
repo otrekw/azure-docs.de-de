@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945451"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157091"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff
 
@@ -23,8 +23,8 @@ Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie e
 
 Speicherkonten, die für die georedundante Replikation konfiguriert sind, werden synchron in die primäre Region und dann asynchron in eine sekundäre Region repliziert, die Hunderte von Kilometern entfernt ist. Azure Storage bietet zwei Arten der georedundanten Replikation:
 
-* [Geozonenredundanter Speicher (GZRS) (Vorschau)](storage-redundancy-gzrs.md) ermöglicht die Replikation für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von zoneredundantem Speicher (ZRS) repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
-* [Georedundanter Speicher (GRS)](storage-redundancy-grs.md) bietet regionsübergreifende Replikation zum Schutz vor regionalen Ausfällen. Die Daten werden in der primären Region unter Verwendung von lokal redundantem Speicher (LRS) drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
+* [Geozonenredundanter Speicher (GZRS) (Vorschau)](storage-redundancy.md) ermöglicht die Replikation für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region mithilfe von zoneredundantem Speicher (ZRS) repliziert und anschließend asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
+* [Georedundanter Speicher (GRS)](storage-redundancy.md) bietet regionsübergreifende Replikation zum Schutz vor regionalen Ausfällen. Die Daten werden in der primären Region unter Verwendung von lokal redundantem Speicher (LRS) drei Mal synchron repliziert und dann asynchron in die sekundäre Region repliziert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Anwendung so entwerfen, dass sie einen Ausfall in der primären Region verarbeiten kann. Wenn die primäre Region nicht mehr verfügbar ist, kann sich Ihre Anwendung anpassen, um stattdessen Lesevorgänge in der sekundären Region durchzuführen. Stellen Sie sicher, dass Ihr Speicherkonto für RA-GRS oder RA-GZRS konfiguriert ist, bevor Sie beginnen.
 
@@ -214,38 +214,7 @@ In diesem Beispiel wird davon ausgegangen, dass der Client bei T5 zum Lesen aus 
 
 Um möglicherweise inkonsistente Daten zu erkennen, kann der Client den Wert des *Zeitpunkts der letzten Synchronisierung* verwenden, den Sie jederzeit durch eine Abfrage eines Speicherdiensts abrufen können. Dadurch können Sie den Zeitpunkt der letzten Datenkonsistenz in der sekundären Region und den Zeitpunkt feststellen, zu dem der Dienst alle Transaktionen vor diesem Zeitpunkt angewendet hat. Im Beispiel oben wird nach dem Einfügen der **Mitarbeiterentität** in der sekundären Region durch den Dienst der Zeitpunkt der letzten Synchronisierung auf *T1* festgelegt. Der Wert bleibt *T1*, bis der Dienst die **Mitarbeiterentität** in der sekundären Region aktualisiert, sobald sie auf *T6* festgelegt wird. Wenn der Client den Zeitpunkt der letzten Synchronisierung beim Lesen der Entität bei *T5* abruft, kann dieser ihn mit dem Zeitstempel der Entität vergleichen. Wenn der Zeitstempel der Entität nach dem Zeitpunkt der letzten Synchronisierung liegt, ist die Entität möglicherweise inkonsistent, und Sie können die entsprechende Aktion für Ihre Anwendung ausführen. Die Verwendung dieses Felds erfordert, dass Sie wissen, wann die letzte Aktualisierung des primären Replikats abgeschlossen wurde.
 
-## <a name="getting-the-last-sync-time"></a>Abrufen des Zeitpunkts der letzten Synchronisierung
-
-Sie können den Zeitpunkt der letzten Synchronisierung mithilfe von PowerShell oder der Azure CLI abrufen, um festzustellen, wann das letzte Mal Daten in die sekundäre Region geschrieben wurden.
-
-### <a name="powershell"></a>PowerShell
-
-Um die letzte Synchronisierungszeit für das Speicherkonto mit PowerShell abzurufen, installieren Sie ein Azure Storage-Vorschaumodul, das das Abrufen von Georeplikationsstatistiken unterstützt. Beispiel:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-Überprüfen Sie dann die Eigenschaft **GeoReplicationStats.LastSyncTime** des Speicherkontos. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-Rufen Sie den Zeitpunkt der letzten Synchronisierung für das Speicherkonto mithilfe der Azure CLI ab, indem Sie die Eigenschaft **geoReplicationStats.lastSyncTime** des Speicherkontos überprüfen. Verwenden Sie den Parameter `--expand`, um Werte für die unter **geoReplicationStats** geschachtelten Eigenschaften zurückzugeben. Denken Sie daran, die Platzhalterwerte durch Ihre eigenen Werte zu ersetzen:
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+Informationen, wie Sie die letzte Synchronisierungszeit überprüfen, finden Sie unter [Überprüfen der Eigenschaft „Letzte Synchronisierung“ für ein Speicherkonto](last-sync-time-get.md).
 
 ## <a name="testing"></a>Testen
 

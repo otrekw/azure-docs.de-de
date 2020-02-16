@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793224"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191445"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -102,7 +102,7 @@ Hier werden die einzelnen Schritte Ihrer API aus API-Sicht beschrieben:
    
    * *Erforderlich*: Ein `location`-Header, der den absoluten Pfad zu einer URL angibt, über die die Logic Apps-Engine den Auftragsstatus Ihrer API überprüfen kann.
 
-   * *Optional:* Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
+   * *Optional*: Ein `retry-after`-Header, der die Anzahl der Sekunden angibt, für die die Engine vor der Überprüfung des Auftragsstatus über die `location`-URL warten sollte. 
 
      Standardmäßig führt die Engine alle 20 Sekunden eine Überprüfung durch. Schließen Sie zum Angeben eines anderen Zeitintervalls den `retry-after`-Header und die Anzahl der Sekunden bis zum nächsten Abruf ein.
 
@@ -206,9 +206,9 @@ Webhooktrigger fungieren ähnlich wie die zuvor in diesem Thema beschriebenen [W
 > [!TIP]
 > Ein Beispiel für Webhookmuster finden Sie in diesem [Webhooktriggercontroller-Beispiel in GitHub](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Schützen von Aufrufen Ihrer APIs in Logik-Apps
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Verbessern der Sicherheit für Aufrufe Ihrer APIs in Logik-Apps
 
-Nachdem Sie Ihre benutzerdefinierten APIs erstellt haben, richten Sie die Authentifizierung für Ihre APIs so ein, dass Sie sie in Logik-Apps sicher aufrufen können. Erfahren Sie mehr zum [Schützen von Aufrufen Ihrer benutzerdefinierten APIs in Logik-Apps](../logic-apps/logic-apps-custom-api-authentication.md).
+Nachdem Sie Ihre benutzerdefinierten APIs erstellt haben, richten Sie die Authentifizierung für Ihre APIs so ein, dass Sie sie in Logik-Apps sicher aufrufen können. Informationen zu [Verbessern der Sicherheit für Aufrufe von benutzerdefinierten APIs in Logik-Apps](../logic-apps/logic-apps-custom-api-authentication.md).
 
 ## <a name="deploy-and-call-your-apis"></a>Bereitstellen und Aufrufen Ihrer APIs
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514854"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120820"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,13 +48,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente
 
-|NAME|BESCHREIBUNG|Erforderlich|
+|Name|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |authentication-basic|Stammelement|Ja|
 
-### <a name="attributes"></a>Attribute
+### <a name="attributes"></a>Attributes
 
-|NAME|BESCHREIBUNG|Erforderlich|Standard|
+|Name|BESCHREIBUNG|Erforderlich|Standard|
 |----------|-----------------|--------------|-------------|
 |username|Gibt den Benutzernamen für die Standardanmeldeinformationen an.|Ja|–|
 |password|Gibt das Kennwort für die Standardanmeldeinformationen an.|Ja|–|
@@ -88,13 +88,13 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-certificate|Stammelement|Ja|  
   
-### <a name="attributes"></a>Attribute  
+### <a name="attributes"></a>Attributes  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|Beschreibung|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|Der Fingerabdruck für das Clientzertifikat.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
 |certificate-id|Der Zertifikatressourcenname.|Entweder `thumbprint` oder `certificate-id` muss vorhanden sein.|–|  
@@ -147,15 +147,15 @@ In diesem Beispiel wird das Clientzertifikat durch seinen Ressourcennamen identi
 
 ### <a name="elements"></a>Elemente  
   
-|NAME|BESCHREIBUNG|Erforderlich|  
+|Name|Beschreibung|Erforderlich|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |Stammelement|Ja|  
   
-### <a name="attributes"></a>Attribute  
+### <a name="attributes"></a>Attributes  
   
-|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|Name|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|resource|Eine Zeichenfolge. Der App-ID-URI der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
+|resource|Eine Zeichenfolge. Die App-ID der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
 |output-token-variable-name|Eine Zeichenfolge. Name der Kontextvariablen, die den Tokenwert als Objekttyp erhält `string`. |Nein|–|  
 |ignore-error|Boolesch. Bei Festlegung auf `true` wird die Richtlinienpipeline auch dann weiter ausgeführt, wenn kein Zugriffstoken abgerufen wird.|Nein|false|  
   
@@ -172,4 +172,4 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)
++ [API Management-Richtlinienbeispiele](policy-samples.md)

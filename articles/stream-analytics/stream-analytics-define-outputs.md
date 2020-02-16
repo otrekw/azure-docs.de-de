@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2010
-ms.openlocfilehash: 6d8957fc5d4ba49dd034d6687df61c68b9d35ada
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9fae39f8c03206a7a63338890101b820a585595b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314282"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190618"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -55,7 +55,7 @@ Sie können auch eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.micr
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Datenbank weiterzuleiten. |
 | Datenbank | Der Name der Datenbank, an die Sie die Ausgabe senden. |
@@ -74,7 +74,7 @@ Azure Blob Storage bietet eine kostengünstige und skalierbare Lösung zum Speic
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Blob- oder ADLS Gen2-Ausgabe.
 
-| Eigenschaftenname       | Beschreibung                                                                      |
+| Eigenschaftenname       | BESCHREIBUNG                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Ausgabealias        | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Blobspeicher weiterzuleiten. |
 | Speicherkonto     | Der Name des Speicherkontos, an das Sie die Ausgabe senden.               |
@@ -129,7 +129,7 @@ Die Power BI-Ausgabe aus Stream Analytics ist zurzeit nicht in den Regionen Azur
 
 In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen aufgeführt, um Ihre Power BI-Ausgabe zu konfigurieren.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Stellen Sie einen Anzeigenamen bereit, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Power BI-Ausgabe weiterzuleiten. |
 | Gruppenarbeitsbereich |Um die gemeinsame Datennutzung mit anderen Power BI-Benutzern zu ermöglichen, können Sie Gruppen in Ihrem Power BI-Konto auswählen. Wählen Sie alternativ **Mein Arbeitsbereich**, wenn Sie nicht in eine Gruppe schreiben möchten. Zum Aktualisieren einer vorhandenen Gruppe muss die Power BI-Authentifizierung erneuert werden. |
@@ -180,7 +180,7 @@ Datetime | String | String |  Datetime | String
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Tabellenspeicher weiterzuleiten. |
 | Speicherkonto |Der Name des Speicherkontos, an das Sie die Ausgabe senden. |
@@ -196,7 +196,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Warteschlangenausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Service Bus-Warteschlange weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. |
@@ -217,7 +217,7 @@ Service Bus-Warteschlangen bieten eine 1:1-Kommunikationsmethode vom Sender zum 
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Service Bus-Themenausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an dieses Service Bus-Thema weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Service Bus-Namespace erstellt. |
@@ -261,13 +261,15 @@ Die Azure Functions-Ausgabe aus Stream Analytics ist zurzeit nicht in den Region
 
 Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Functions-Ausgabeadapter wird mit folgenden konfigurierbaren Eigenschaften zur Verfügung gestellt:
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Funktionen-App |Der Name der Azure Functions-App. |
 | Funktion |Der Name der Funktion in der Azure Functions-App. |
 | Key |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dazu den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
 | Max Batch Size |Eine Eigenschaft, mit der Sie die maximale Größe für jeden Ausgabebatch festlegen können, der an Ihre Azure-Funktion gesendet wird. Die Eingabeeinheit ist Bytes. Standardmäßig ist dieser Wert auf 262,144 Bytes (256 KB) festgelegt. |
 | Max Batch Count  |Eine Eigenschaft, mit der Sie die maximale Anzahl von Ereignissen in jedem Batch angeben können, die an Azure Functions gesendet werden. Der Standardwert ist 100. |
+
+Azure Stream Analytics erwartet den HTTP-Status 200 von der Functions-App für Batches, die erfolgreich verarbeitet wurden.
 
 Die Größe der an Azure Functions gesendeten Batches wird verringert, wenn in Azure Stream Analytics Ausnahme 413 (HTTP-Anforderungseinheit zu groß) durch Azure Functions auftritt. Verwenden Sie in Ihrem Azure-Funktionscode diese Ausnahme, um sicherzustellen, dass Azure Stream Analytics keine übermäßig großen Batches sendet. Stellen Sie außerdem sicher, dass die Werte für die maximal zulässige Batchanzahl und -größe in der Funktion mit den Werten übereinstimmen, die im Stream Analytics-Portal eingegeben wurden.
 

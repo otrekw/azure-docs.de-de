@@ -1,17 +1,17 @@
 ---
 title: Hinzufügen von Artefakten zu Integrationsdienstumgebungen
-description: Hinzufügen von Logik-Apps, Integrationskonten und benutzerdefinierten Connectors zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) für den Zugriff auf Azure-VNETs (virtual networks, virtuelle Netzwerke)
+description: Hinzufügen von Logik-Apps, Integrationskonten, benutzerdefinierten Connectors und verwalteten Connectors zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 02/10/2020
+ms.openlocfilehash: e2505d8ee8b8539f158c0a549bedfcd69a954e24
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732230"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191670"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Artefakten zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -19,7 +19,7 @@ Fügen Sie nach der Erstellung einer [Integrationsdienstumgebung (ISE)](../logic
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die ISE, die Sie für die Ausführung Ihrer Logik-Apps erstellt haben. Besitzen Sie keine ISE, [erstellen Sie zuerst eine](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
 
@@ -33,18 +33,19 @@ Führen Sie die folgenden Schritte aus, um Logik-Apps zu erstellen, die in Ihrer
 
    ![Hinzufügen einer neuen Logik-App zur ISE](./media/add-artifacts-integration-service-environment-ise/add-logic-app-to-ise.png)
 
-   Oder
+1. Stellen Sie Informationen zu der Logik-App bereit, die Sie erstellen möchten, z. B.:
 
-   Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Integration** > **Logik-App**.
+   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-logic-app-integration-service-environment.png)
 
-1. Geben Sie den Namen, das Azure-Abonnement und die Azure-Ressourcengruppe (neu oder vorhanden) an, die Sie für Ihre Logik-App verwenden möchten.
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Name** | Ja | Der Name der zu erstellenden Logik-App. |
+   | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements |
+   | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
+   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** die zu verwendende ISE aus, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihre Logik-Apps mit einem Integrationskonto zu verwenden, müssen beide dieselbe ISE verwenden. |
+   ||||
 
-1. Wählen Sie in der Liste **Speicherort** im Abschnitt **Integrationsdienstumgebungen** Ihre ISE aus, z. B.:
-
-   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-logic-app-with-integration-service-environment.png)
-
-   > [!IMPORTANT]
-   > Falls Sie Ihre Logik-Apps mit einem Integrationskonto verwenden möchten, muss für diese Logik-Apps und das Integrationskonto dieselbe ISE verwendet werden.
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 1. Fahren Sie wie gewohnt mit der [Erstellung Ihrer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) fort.
 
@@ -64,15 +65,20 @@ Führen Sie die folgenden Schritte aus, um ein Integrationskonto zu erstellen, d
 
    ![Hinzufügen eines neuen Integrationskontos zur ISE](./media/add-artifacts-integration-service-environment-ise/add-integration-account-to-ise.png)
 
-   Oder
+1. Stellen Sie Informationen zu der Logik-App bereit, die Sie erstellen möchten, z. B.:
 
-   Wählen Sie im Hauptmenü von Azure die Optionen **Ressource erstellen** > **Integration** > **Integrationskonto** aus.
+   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-integration-account-integration-service-environment.png)
 
-1. Geben Sie den Namen, das Azure-Abonnement, die Azure-Ressourcengruppe (neu oder vorhanden) und den Tarif für Ihr Integrationskonto an.
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
+   |----------|----------|-------------|
+   | **Name** | Ja | Der Name des zu erstellenden Integrationskontos. |
+   | **Abonnement** | Ja | Der Name des zu verwendenden Azure-Abonnements. |
+   | **Ressourcengruppe** | Ja | Der Name der (neuen oder vorhandenen) zu verwendenden Ressourcengruppe in Azure. |
+   | **Preisstufe** | Ja | Der für das Integrationskonto zu verwendende Tarif. |
+   | **Location** | Ja | Wählen Sie unter **Integrationsdienstumgebungen** dieselbe ISE aus, die Ihre Logik-Apps verwenden, sofern diese nicht bereits ausgewählt ist. <p><p> **Wichtig**: Um Ihr Integrationskonto mit Logik-Apps zu verwenden, müssen beide dieselbe ISE verwenden. |
+   ||||
 
-1. Wählen Sie in der Liste **Speicherort** im Abschnitt **Integrationsdienstumgebungen** dieselbe ISE aus, die von Ihren Logik-Apps verwendet wird, z. B.:
-
-   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-integration-account-with-integration-service-environment.png)
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
 1. [Verknüpfen Sie Ihre Logik-App wie gewohnt mit Ihrem Integrationskonto.](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)
 
@@ -110,7 +116,7 @@ Wenn Sie benutzerdefinierte Connectors in ihrer ISE verwenden möchten, erstelle
 
 1. Wählen Sie in der Liste **Speicherort** im Abschnitt **Integrationsdienstumgebungen** dieselbe ISE aus, die von Ihren Logik-Apps verwendet wird, und wählen Sie **Erstellen** aus. Beispiel:
 
-   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-with-integration-service-environment.png)
+   ![Auswählen der Integrationsdienstumgebung](./media/add-artifacts-integration-service-environment-ise/create-custom-connector-integration-service-environment.png)
 
 1. Wählen Sie den neuen benutzerdefinierten Connector und anschließend **Bearbeiten** aus. Beispiel:
 

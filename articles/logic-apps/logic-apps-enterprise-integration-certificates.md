@@ -8,19 +8,19 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c1b48ae8191e2e5313d9037c791eca73c8a55691
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790690"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191380"
 ---
-# <a name="secure-b2b-messages-with-certificates"></a>Schützen von B2B-Nachrichten mit Zertifikaten
+# <a name="improve-security-for-b2b-messages-by-using-certificates"></a>Verbessern der Sicherheit von B2B-Nachrichten mithilfe von Zertifikaten
 
-Wenn B2B-Kommunikation vertraulich sein soll, können Sie sie für Ihre Unternehmensintegrations-Apps, insbesondere Logik-Apps, schützen, indem Sie Ihrem Integrationskonto Zertifikate hinzufügen. Zertifikate sind digitale Dokumente, mit denen die Identität der Teilnehmer an einer elektronischen Kommunikation überprüft wird und die zur Sicherung der Kommunikation auf folgende Arten dienen:
+Wenn B2B-Kommunikation vertraulich sein soll, können Sie die Sicherheit für B2B-Kommunikation in Ihren Unternehmensintegrations-Apps, insbesondere Logik-Apps, erhöhen, indem Sie Ihrem Integrationskonto Zertifikate hinzufügen. Zertifikate sind digitale Dokumente, mit denen die Identität der Teilnehmer an einer elektronischen Kommunikation überprüft wird und die zur Sicherung der Kommunikation auf folgende Arten dienen:
 
 * Verschlüsseln des Nachrichteninhalts
-* Digitales Signieren von Nachrichten 
+* Digitales Signieren von Nachrichten
 
 In Ihren Unternehmensintegrations-Apps können Sie die folgenden Zertifikate verwenden:
 
@@ -44,7 +44,7 @@ Um ein *öffentliches Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu 
 
 3. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | Wert | BESCHREIBUNG | 
+   | Eigenschaft | value | Beschreibung | 
    |----------|-------|-------------|
    | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „PublicCert“) | 
    | **Zertifikattyp** | Öffentlich | Der Typ Ihres Zertifikats |
@@ -83,10 +83,10 @@ Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic
 
 5. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | Wert | BESCHREIBUNG | 
+   | Eigenschaft | value | BESCHREIBUNG | 
    |----------|-------|-------------|
    | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „privateCert“) | 
-   | **Zertifikattyp** | Private | Der Typ Ihres Zertifikats |
+   | **Zertifikattyp** | Privat | Der Typ Ihres Zertifikats |
    | **Certificate** | <*certificate-file-name*> (Name der Zertifikatdatei) | Klicken Sie neben dem Feld **Zertifikat** auf das Ordnersymbol, um die Zertifikatdatei zu suchen und auszuwählen, die Sie hochladen möchten. Wenn Sie einen Schlüsseltresor für den privaten Schlüssel verwenden, handelt es sich bei der hochgeladenen Datei um das öffentliche Zertifikat. | 
    | **Ressourcengruppe** | <*integration-account-resource-group*> (Ressourcengruppe des Integrationskontos) | Die Ressourcengruppe Ihres Integrationskontos (in diesem Beispiel „MyResourceGroup“) | 
    | **Schlüsseltresor** | <*key-vault-name*> (Name des Schlüsseltresors) | Der Name Ihres Azure-Schlüsseltresors |

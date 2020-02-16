@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: da05dc7136a75d519660412f2ce176f7530eb392
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 3ef2fdcaefeedb0769eac34d292e67a99524a6f2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547437"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168063"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB-Bindungen für Azure Functions 2.x
 
@@ -173,22 +173,7 @@ Dies ist der Python-Code:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [Java-Funktion](functions-reference-java.md), die die Bindung verwendet. Die Funktion wird aufgerufen, wenn etwas in der angegebenen Datenbank und Sammlung eingefügt oder aktualisiert wird.
-
-```json
-{
-    "type": "cosmosDBTrigger",
-    "name": "items",
-    "direction": "in",
-    "leaseCollectionName": "leases",
-    "connectionStringSetting": "AzureCosmosDBConnection",
-    "databaseName": "ToDoList",
-    "collectionName": "Items",
-    "createLeaseCollectionIfNotExists": false
-}
-```
-
-Dies ist der Java-Code:
+Diese Funktion wird aufgerufen, wenn etwas in der angegebenen Datenbank und Sammlung eingefügt oder aktualisiert wird.
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -2282,7 +2267,7 @@ Die `CosmosDBOutput`-Anmerkung dient dem Schreiben von Daten in Cosmos DB. Sie 
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDB` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type**     | – | Muss auf `cosmosDB` festgelegt sein.        |
 |**direction**     | – | Muss auf `out` festgelegt sein.         |

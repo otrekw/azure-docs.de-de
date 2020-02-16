@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732143"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190669"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
 
-Ursprünglich konnten standardmäßige Dateifreigaben nur auf maximal 5 TiB skaliert werden. Ab jetzt lassen sie sich dank großer Dateifreigaben auf bis zu 100 TiB skalieren. Sie können diese Skalierung bei Ihren vorhandenen Speicherkonten für die vorhandenen Dateifreigaben aktivieren. Premium-Dateifreigaben können standardmäßig auf bis zu 100 TiB skaliert werden.
+Wenn Sie große Dateifreigaben in Ihrem Speicherkonto aktivieren, können Ihre Dateifreigaben auf bis zu 100 TiB skaliert werden. Sie können diese Skalierung bei Ihren vorhandenen Speicherkonten für die vorhandenen Dateifreigaben aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -26,7 +26,7 @@ Ursprünglich konnten standardmäßige Dateifreigaben nur auf maximal 5 TiB ska
 
 ## <a name="restrictions"></a>Beschränkungen
 
-Derzeit können Sie nur LRS oder ZRS für Konten mit aktivierter großer Dateifreigabe verwenden. Eine Verwendung von GZRS, GRS oder RA-GRS ist nicht möglich.
+Derzeit können Sie nur lokal redundanten Speicher (LRS) oder zonenredundanten Speicher (ZRS) für Konten mit aktivierter großer Dateifreigabe verwenden. Sie können keinen geozonenredundanten Speicher (GZRS), georedundanten Speicher (GRS) oder georedundanten Speicher mit Lesezugriff (RA-GRS) verwenden.
 Die Aktivierung großer Dateifreigaben für ein Konto kann nicht rückgängig gemacht werden. Danach kann Ihr Konto nicht mehr für GZRS, GRS oder RA-GRS konvertiert werden.
 
 ## <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos

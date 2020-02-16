@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120808"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190359"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management
 
@@ -202,7 +202,7 @@ Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>
@@ -212,7 +212,7 @@ Sie können die Richtlinie [JWT überprüfen](api-management-access-restriction-
 
 ## <a name="build-an-application-to-call-the-api"></a>Erstellen einer Anwendung zum Aufrufen der API
 
-In diesem Handbuch wird die Entwicklerkonsole in API Management als Beispielclientanwendung verwendet, um die durch OAuth 2.0 geschützte `Echo API` aufzurufen. Weitere Informationen zum Erstellen einer Anwendung und zum Implementieren von OAuth 2.0 finden Sie unter [Azure Active Directory-Codebeispiele](../active-directory/develop/sample-v1-code.md).
+In diesem Handbuch wird die Entwicklerkonsole in API Management als Beispielclientanwendung verwendet, um die durch OAuth 2.0 geschützte `Echo API` aufzurufen. Weitere Informationen zum Erstellen einer Anwendung und zum Implementieren von OAuth 2.0 finden Sie unter [Azure Active Directory-Codebeispiele](../active-directory/develop/sample-v2-code.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-scenarios.md)

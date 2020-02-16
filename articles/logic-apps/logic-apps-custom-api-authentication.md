@@ -1,25 +1,25 @@
 ---
 title: Hinzufügen von Authentifizierung zum Sichern von Aufrufen benutzerdefinierter APIs
-description: Vorgehensweise zum Einrichten der Authentifizierung zum Sichern von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
+description: Vorgehensweise zum Einrichten der Authentifizierung zum Verbessern der Sicherheit für Aufrufe benutzerdefinierter APIs in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666889"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191404"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Erhöhen der Sicherheit von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
-Um Aufrufe Ihrer APIs zu schützen, können Sie die Azure Active Directory-Authentifizierung (Azure AD) über das Azure-Portal einrichten, sodass Sie Ihren Code nicht aktualisieren müssen. Alternativ können Sie die Authentifizierung über den API-Code anfordern oder erzwingen.
+Um die Sicherheit für Aufrufe Ihrer APIs zu erhöhen, können Sie die Azure Active Directory-Authentifizierung (Azure AD) über das Azure-Portal einrichten, sodass Sie Ihren Code nicht aktualisieren müssen. Alternativ können Sie die Authentifizierung über den API-Code anfordern oder erzwingen.
 
 ## <a name="authentication-options-for-your-api"></a>Authentifizierungsoptionen für Ihre API
 
-Sie können Aufrufe Ihrer benutzerdefinierten API auf folgende Arten sichern:
+Sie können die Sicherheit für Aufrufe Ihrer benutzerdefinierten API auf folgende Arten erhöhen:
 
 * [Keine Änderungen am Code:](#no-code) Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht erneut bereitstellen müssen.
 
@@ -248,7 +248,7 @@ Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 } 
 ```
 
-| Eigenschaft | Erforderlich | BESCHREIBUNG |
+| Eigenschaft | Erforderlich | Beschreibung |
 | -------- | -------- | ----------- |
 | `type` | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. |
 | `password` | Nein | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) |
@@ -271,7 +271,7 @@ Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 }
 ```
 
-| Eigenschaft | Erforderlich | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | Beschreibung | 
 | -------- | -------- | ----------- | 
 | type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
 | username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 

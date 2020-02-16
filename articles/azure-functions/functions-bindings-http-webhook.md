@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 11f5c07305fa9192097dbcb1386c13707c0d46f7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 25f3cb6f03e3a3c581d8977168e572554b5e0cc7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711134"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168117"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -256,28 +256,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 * [Lesen eines Parameters aus einer Route](#read-parameter-from-a-route)
 * [Lesen des POJO-Hauptteils aus einer POST-Anforderung](#read-pojo-body-from-a-post-request)
 
-Das folgende Beispiel zeigt die HTTP-Triggerbindung in einer Datei *function.json* sowie die entsprechenden [Java-Funktionen](functions-reference-java.md), die die Bindung verwenden. 
-
-Die Datei *function.json* sieht wie folgt aus:
-
-```json
-{
-    "disabled": false,    
-    "bindings": [
-        {
-            "authLevel": "anonymous",
-            "type": "httpTrigger",
-            "direction": "in",
-            "name": "req"
-        },
-        {
-            "type": "http",
-            "direction": "out",
-            "name": "res"
-        }
-    ]
-}
-```
+In den folgenden Beispielen wird die HTTP-Triggerbindung veranschaulicht.
 
 #### <a name="read-parameter-from-the-query-string"></a>Lesen eines Parameters aus der Abfragezeichenfolge
 
@@ -515,7 +494,7 @@ Ein vollständiges Beispiel finden Sie unter [Triggerbeispiel](#trigger---exampl
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `HttpTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type** | –| Erforderlich – muss auf `httpTrigger` festgelegt sein. |
 | **direction** | –| Erforderlich – muss auf `in` festgelegt sein. |
@@ -878,7 +857,7 @@ Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* festlegen. Für C#-Klassenbibliotheken gibt es keine Attributeigenschaften, die den folgenden Eigenschaften der Datei *function.json* entsprechen.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 | **type** |Muss auf `http` festgelegt sein. |
 | **direction** | Muss auf `out` festgelegt sein. |
@@ -917,11 +896,11 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 | customHeaders|none|Ermöglicht das Festlegen benutzerdefinierter Header in der HTTP-Antwort. Im vorherigen Beispiel wird der Antwort der `X-Content-Type-Options`-Header hinzugefügt, um die Inhaltstypermittlung zu vermeiden. |
 |dynamicThrottlesEnabled|true<sup>\*</sup>|Bei einer Aktivierung dieser Einstellung überprüft die Pipeline zur Anforderungsverarbeitung regelmäßig Leistungsindikatoren zur Systemleistung wie Verbindungen/Threads/Prozesse/Speicher/CPU usw., und wenn einer dieser Leistungsindikatoren einen integrierten Schwellenwert (80 %) übersteigt, werden Anforderungen mit der Antwort „429 – Ausgelastet“ zurückgewiesen, bis die Leistungsindikatoren wieder ein normales Niveau erreichen.<br/><sup>\*</sup>Der Standardwert in einem Verbrauchstarif ist `true`. Der Standardwert im Tarif „Dedicated“ ist `false`.|
-|hsts|Nicht aktiviert|Wenn `isEnabled` auf `true` festgelegt ist, wird das [HSTS-Verhalten (HTTP Strict Transport Security) von .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) erzwungen, wie in der [`HstsOptions`-Klasse](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0) definiert. Das Beispiel oben legt außerdem die [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)-Eigenschaft auf 10 Tage fest. Folgende Eigenschaften von `hsts` werden unterstützt: <table><tr><th>Eigenschaft</th><th>Beschreibung</th></tr><tr><td>excludedHosts</td><td>Ein Zeichenfolgenarray mit Hostnamen, für die der HSTS-Header nicht hinzugefügt wird.</td></tr><tr><td>includeSubDomains</td><td>Boolescher Wert, der angibt, ob der „includeSubDomain“-Parameter des „Strict-Transport-Security“-Headers aktiviert wurde.</td></tr><tr><td>maxAge</td><td>Eine Zeichenfolge, die den „max-age“-Parameter des „Strict-Transport-Security“-Headers definiert.</td></tr><tr><td>preload</td><td>Boolescher Wert, der angibt, ob der „preload“-Parameter des „Strict-Transport-Security“-Headers aktiviert ist.</td></tr></table>|
+|hsts|Nicht aktiviert|Wenn `isEnabled` auf `true` festgelegt ist, wird das [HSTS-Verhalten (HTTP Strict Transport Security) von .NET Core](/aspnet/core/security/enforcing-ssl?view=aspnetcore-3.0&tabs=visual-studio#hsts) erzwungen, wie in der [`HstsOptions`-Klasse](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions?view=aspnetcore-3.0) definiert. Das Beispiel oben legt außerdem die [`maxAge`](/dotnet/api/microsoft.aspnetcore.httpspolicy.hstsoptions.maxage?view=aspnetcore-3.0#Microsoft_AspNetCore_HttpsPolicy_HstsOptions_MaxAge)-Eigenschaft auf 10 Tage fest. Folgende Eigenschaften von `hsts` werden unterstützt: <table><tr><th>Eigenschaft</th><th>BESCHREIBUNG</th></tr><tr><td>excludedHosts</td><td>Ein Zeichenfolgenarray mit Hostnamen, für die der HSTS-Header nicht hinzugefügt wird.</td></tr><tr><td>includeSubDomains</td><td>Boolescher Wert, der angibt, ob der „includeSubDomain“-Parameter des „Strict-Transport-Security“-Headers aktiviert wurde.</td></tr><tr><td>maxAge</td><td>Eine Zeichenfolge, die den „max-age“-Parameter des „Strict-Transport-Security“-Headers definiert.</td></tr><tr><td>preload</td><td>Boolescher Wert, der angibt, ob der „preload“-Parameter des „Strict-Transport-Security“-Headers aktiviert ist.</td></tr></table>|
 |maxConcurrentRequests|100<sup>\*</sup>|Die maximale Anzahl von HTTP-Funktionen, die parallel ausgeführt werden. Dadurch können Sie die Parallelität steuern und somit die Verwaltung der Ressourcenverwendung vereinfachen. Beispielsweise könnten Sie über eine HTTP-Funktion verfügen, die viele Systemressourcen (Speicher/CPU/Sockets) verbraucht und daher Probleme verursacht, wenn die Parallelität zu hoch ist. Oder eine Funktion führt ausgehende Anforderungen an einen Dienst eines Drittanbieters durch, und die Rate dieser Aufrufe muss eingeschränkt werden. In diesen Fällen kann eine Drosselung hilfreich sein. <br/><sup>*</sup>Der Standardwert für einen Verbrauchstarif ist 100. Der Standardwert im Tarif „Dedicated“ ist unbegrenzt (`-1`).|
 |maxOutstandingRequests|200<sup>\*</sup>|Die maximale Anzahl ausstehender Anforderungen, die zu einem beliebigen Zeitpunkt gespeichert werden. Dieser Grenzwert umfasst Anforderungen in der Warteschlange, deren Ausführung aber noch nicht gestartet ist, sowie alle laufenden Ausführungen. Alle eingehenden Anforderungen über diesem Grenzwert werden mit der Antwort 429 „Ausgelastet“ zurückgewiesen. Das ermöglicht es dem Aufrufer zeitbasierte Strategien für Wiederholungsversuche einzusetzen, und Sie erhalten damit die Möglichkeit, die maximalen Wartezeiten für Anforderungen zu steuern. Damit wird nur das Queuing gesteuert, das innerhalb des Ausführungspfads des Skripthosts auftritt. Andere Warteschlangen, z.B. die ASP.NET-Anforderungswarteschlange, sind von dieser Einstellung nicht betroffen und werden weiterhin verwendet. <br/><sup>\*</sup>Der Standardwert für einen Verbrauchstarif ist 200. Der Standardwert im Tarif „Dedicated“ ist unbegrenzt (`-1`).|
 |routePrefix|api|Das Routenpräfix, das für alle Routen gilt. Verwenden Sie eine leere Zeichenfolge, um das Standardpräfix zu entfernen. |

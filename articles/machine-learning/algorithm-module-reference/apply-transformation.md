@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314520"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137582"
 ---
 # <a name="apply-transformation-module"></a>Apply Transformation-Modul
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Verwenden Sie dieses Modul, um einen Eingabedatensatz basierend auf einer zuvor berechneten Transformation zu ändern.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning unterstützt das Erstellen und anschließende Anwenden vi
 
 ## <a name="how-to-use-apply-transformation"></a>Verwenden des Moduls „Apply Transformation“  
   
-1. Fügen Sie das Modul **Apply Transformation** (Transformation anwenden) Ihrer Pipeline hinzu. Sie finden dieses Modul unter **Machine Learning** in der Kategorie **Score**. 
+1. Fügen Sie das Modul **Apply Transformation** (Transformation anwenden) Ihrer Pipeline hinzu. Sie finden dieses Modul in der Kategorie **Modellbewertung und -evaluierung**. 
   
-2. Suchen Sie eine vorhandene Transformation, die als Eingabe verwendet werden soll.  Zuvor gespeicherte Transformationen finden Sie im linken Navigationsbereich in der Gruppe **Transforms**.  
+2. Suchen Sie eine vorhandene Transformation, die als Eingabe verwendet werden soll. Zuvor gespeicherte Transformationen finden Sie in der linken Modulstruktur in der Gruppe **Meine Datasets** unter **Datasets**.  
   
    
   

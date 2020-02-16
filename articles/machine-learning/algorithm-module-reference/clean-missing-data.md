@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314469"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137570"
 ---
 # <a name="clean-missing-data-module"></a>Modul „Clean Missing Data“
 
-In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
+In diesem Artikel wird ein Modul in Azure Machine Learning-Designer (Vorschauversion) beschrieben.
 
 Mit diesem Modul können Sie fehlende Werte entfernen, ersetzen oder ableiten. 
 
@@ -37,11 +37,11 @@ Dieses Modul gibt außerdem eine Definition der Transformation aus, die zum Bere
 
 ## <a name="how-to-use-clean-missing-data"></a>Verwenden des Moduls „Clean Missing Data“
 
-Mit diesem Modul können Sie einen Bereinigungsvorgang definieren. Sie können den Bereinigungsvorgang auch speichern, damit Sie ihn zu einem späteren Zeitpunkt auf neue Daten anwenden können. Lesen Sie unter den nachstehenden Links eine Beschreibung dazu, wie Sie einen Bereinigungsprozess erstellen und speichern können: 
+Mit diesem Modul können Sie einen Bereinigungsvorgang definieren. Sie können den Bereinigungsvorgang auch speichern, damit Sie ihn zu einem späteren Zeitpunkt auf neue Daten anwenden können. In den folgenden Abschnitten erfahren Sie, wie Sie einen Bereinigungsprozess erstellen und speichern können: 
  
-+ So ersetzen Sie fehlende Werte
++ [So ersetzen Sie fehlende Werte](#replace-missing-values)
   
-+ So wenden Sie eine Bereinigungstransformation auf neue Daten an
++ [So wenden Sie eine Bereinigungstransformation auf neue Daten an](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > Die Bereinigungsmethode, die Sie zur Behandlung fehlender Werte verwenden, kann sich auf Ihre Ergebnisse erheblich auswirken. Wir empfehlen, dass Sie mit verschiedenen Methoden experimentieren. Berücksichtigen Sie sowohl die Begründung zur Verwendung einer bestimmten Methode als auch die Qualität der Ergebnisse.
@@ -56,12 +56,9 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
 
     Um beispielsweise auf fehlende Werte in allen numerischen Spalten zu überprüfen, führen Sie die folgenden Schritte aus:
 
-    1. Öffnen Sie die Spaltenauswahl, und wählen Sie **WITH RULES** (MIT REGELN) aus.
-    2. Wählen Sie bei **BEGIN WITH** (BEGINNEN MIT) **NO COLUMNS** (KEINE SPALTEN) aus.
+    1. Wählen Sie das Modul **Clean Missing Data** (Fehlende Daten bereinigen) aus, und klicken Sie im rechten Bereich des Moduls auf **Spalte bearbeiten**.
 
-        Sie können auch mit „ALL COLUMNS“ (ALLE SPALTEN) beginnen und dann Spalten ausschließen. Wenn Sie zuerst auf **ALL COLUMNS** klicken, werden zunächst keine Regeln angezeigt. Sie können aber auch auf **NO COLUMNS** und dann erneut **ALL COLUMNS** klicken, um mit allen Spalten zu beginnen. Anschließend können Sie Spalten anhand des Namens, Datentyps oder Spaltenindex ausfiltern (ausschließen).
-
-    3. Wählen Sie für **Include** (Einschließen) den **Column Type** (Spaltentyp) aus der Dropdownliste und anschließend **Numeric** (Numerisch) oder einen spezifischeren numerischen Typ aus. 
+    3. Wählen Sie für **Include** (Einschließen) den **Column Type** (Spaltentyp) aus der Dropdownliste und anschließend **Numeric** (Numerisch) aus. 
   
     Jede von Ihnen ausgewählte Bereinigungs- oder Ersetzungsmethode muss auf **alle** Spalten in der Auswahl anwendbar sein. Wenn die Daten in einer Spalte mit dem angegebenen Vorgang inkompatibel sind, gibt das Modul einen Fehler zurück und beendet die Pipeline.
   
@@ -109,7 +106,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
   
 6. Die Option **Replacement value** (Ersatzwert) steht zur Verfügung, wenn Sie die Option **Custom substitution value** (Benutzerdefinierter Ersatzwert) ausgewählt haben. Geben Sie den neuen Wert ein, der als Ersatzwert für alle fehlenden Werte in der Spalte verwendet werden soll.  
   
-    Beachten Sie, dass Sie diese Option nur in Spalten mit den Datentypen „Integer“, „Double“, „Boolean“ oder „Date“ verwenden können. Bei Datumsspalten kann der Ersatzwert auch als die Anzahl von 100-Nanosekunden-Takten seit dem 01.01.0001 12:00 Uhr eingegeben werden.  
+    Beachten Sie, dass Sie diese Option nur in Spalten mit den Datentypen „Integer“, „Double“, „Boolean“ oder „String“ verwenden können.
   
 7. **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren): Wählen Sie diese Option aus, wenn Sie einen Hinweis darauf ausgeben möchten, dass die Werte in der Spalte die Kriterien für eine Bereinigung von fehlenden Werten erfüllt haben. Diese Option ist besonders hilfreich, wenn Sie beim Einrichten eines neuen Bereinigungsvorgangs sicherstellen möchten, dass er wie vorgesehen funktioniert.
   

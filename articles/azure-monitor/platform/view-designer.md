@@ -6,18 +6,19 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/22/2018
-ms.openlocfilehash: 05d849aa0edf5892e568c4078ca619490cfcd98e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2019
+ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363199"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166475"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Ansichten in Azure Monitor laufen aus und werden durch [Arbeitsmappen](workbooks-overview.md) ersetzt, die zusätzliche Funktionalität bereitstellen. Ausführliche Informationen zum Umwandeln Ihrer vorhandenen Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang von Azure Monitor-Ansichts-Designer zu Arbeitsmappen](view-designer-conversion-overview.md).
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
@@ -32,7 +33,7 @@ Ansichten werden im Azure-Portal auf der Seite **Übersicht** von Azure Monitor 
 
 Die mit dem Ansicht-Designer erstellten Ansichten enthalten die in der folgenden Tabelle beschriebenen Elemente:
 
-| Teil | BESCHREIBUNG |
+| Teil | Beschreibung |
 |:--- |:--- |
 | Kacheln | Werden auf der Seite **Übersicht** von Azure Monitor angezeigt. In jeder Kachel wird eine visuelle Zusammenfassung der jeweils dargestellten benutzerdefinierten Ansicht angezeigt. Jeder Kacheltyp enthält eine unterschiedliche Visualisierung Ihrer Datensätze. Zum Anzeigen einer benutzerdefinierten Ansicht wählen Sie die entsprechende Kachel aus. |
 | Benutzerdefinierte Ansicht | Wird angezeigt, wenn Sie eine Kachel auswählen. Jede Ansicht enthält eine oder mehrere Visualisierungskomponenten. |
@@ -95,7 +96,7 @@ Die Optionen zur Verwendung von Ansichten im Bearbeitungsmodus sind in der folge
 
 ![Bearbeitungsmenü](media/view-designer/edit-menu.png)
 
-| Option | BESCHREIBUNG |
+| Option | Beschreibung |
 |:--|:--|
 | Speichern        | Speichert die Änderungen und schließt die Ansicht. |
 | Abbrechen      | Verwirft die Änderungen und schließt die Ansicht. |

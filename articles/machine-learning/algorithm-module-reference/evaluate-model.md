@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546689"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137546"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -80,10 +80,10 @@ Da es sich um ein Clusteringmodell handelt, sind die Auswertungsergebnisse ander
 
 Dieser Abschnitt beschreibt die Metriken, die für die bestimmten Arten von Modellen zurückgegeben werden, die für den Einsatz mit **Evaluate Model** unterstützt werden:
 
-+ [Klassifizierungsmodelle](#bkmk_classification)
-+ [Regressionsmodelle](#bkmk_regression)
++ [Klassifizierungsmodelle](#metrics-for-classification-models)
++ [Regressionsmodelle](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a> Metriken für Klassifizierungsmodelle
+### <a name="metrics-for-classification-models"></a>Metriken für Klassifizierungsmodelle
 
 Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen erfasst. Wenn Sie Modelle vergleichen, werden sie anhand der Metrik eingestuft, die Sie für die Auswertung auswählen.  
   
@@ -101,7 +101,7 @@ Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen er
   
 - **Training log loss** (logarithmische Trainingsdämpfung) ist ein einzelner Wert, der den Vorteil des Klassifizierers gegenüber einer Zufallsvorhersage wiedergibt. Die Trainingsdämpfung misst die Unsicherheit Ihres Modells, indem die ausgegebenen Wahrscheinlichkeiten mit den bekannten Werten (Ground Truth) in den Bezeichnungen verglichen werden. Die Trainingsdämpfung sollte für das Modell als Ganzes minimiert werden.
 
-##  <a name="bkmk_regression"></a> Metriken für Regressionsmodelle
+### <a name="metrics-for-regression-models"></a>Metriken für Regressionsmodelle
  
 Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass sie die Fehlerquote schätzen.  Ein Modell passt gut zu den Daten, wenn der Unterschied zwischen beobachteten und vorhergesagten Werten gering ist. Wenn Sie sich jedoch das Muster der Residuen (die Differenz zwischen einem beliebigen vorhergesagten Punkt und seinem entsprechenden Istwert) ansehen, können Sie viel über eine mögliche Verzerrung im Modell erfahren.  
   
@@ -115,7 +115,7 @@ Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass si
   
 - **Relative squared error (RSE)** (relativer quadratischer Fehler) normalisiert ebenfalls den gesamten quadrierten Fehler der vorhergesagten Werte durch Division durch den gesamten quadrierten Fehler der Istwerte.  
   
-- **Mean Zero One Error (MZOE)** (mittlerer absoluter Fehler) gibt an, ob die Vorhersage richtig war oder nicht.  Mit anderen Worten: `ZeroOneLoss(x,y) = 1` bei `x!=y`, andernfalls `0`.
+
   
 - **Coefficient of determination** (Bestimmtheitsmaß), oft auch als R<sup>2</sup> bezeichnet, stellt die Vorhersagekraft des Modells als Wert von 0 bis 1 dar. 0 bedeutet, dass das Modell zufällig ist (also nichts erklärt). 1 bedeutet, dass es eine perfekte Anpassung gibt. Bei der Interpretation der R<sup>2</sup>-Werte ist jedoch Vorsicht geboten, da niedrige Werte völlig normal und hohe Werte verdächtig sein können.
   

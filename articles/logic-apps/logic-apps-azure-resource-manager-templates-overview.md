@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972696"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191417"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen
 
@@ -145,11 +145,11 @@ In diesem Beispiel sind lediglich die Vorlagenparameter für die Werte aufgefüh
 
 Jeder dieser Parameter hat, sofern er kein Parameter ist, in dem ein sensibler oder zu schützender Wert (etwa Benutzername, Kennwort und Geheimnis) verwaltet wird, ein `defaultValue`-Attribut, wobei es Fälle gibt, in denen der Standardwert ein leerer Wert ist. Die Bereitstellungswerte, die für diese Vorlagenparameter verwendet werden sollen, sind in der Beispiel-[Parameterdatei](#template-parameter-files) enthalten, die weiter unten in diesem Thema beschrieben ist.
 
-Informationen dazu, wie Vorlagenparameter geschützt werden, finden Sie in den folgenden Themen:
+Weitere Informationen zum Sichern von Vorlagenparametern finden Sie in diesen Themen:
 
 * [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Sichere Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Übergeben von sicheren Parameterwerten mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+* [Verbessern der Sicherheit für Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Übergeben von geschützten Parameterwerten mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 In anderen Vorlagenobjekten wird häufig auf Vorlagenparameter verwiesen, sodass für sie die Werte verwendet werden können, die über Vorlagenparameter übergeben werden, beispielsweise:
 
@@ -171,9 +171,9 @@ Nachstehend sind einige bewährte Methoden zum Definieren von Parametern beschri
 
   * [Sicherheitsempfehlungen für Vorlagenparameter](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Sichere Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Verbessern der Sicherheit für Vorlagenparameter](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Übergeben von sicheren Parameterwerten mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Übergeben von geschützten Parameterwerten mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Um Vorlagenparameternamen von Workflowdefinitionsparameternamen zu unterscheiden, können Sie beschreibende Vorlagenparameternamen verwenden, etwa: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Wenn Sie die Werte für Vorlagenparameter bereitstellen möchten, speichern Sie 
 * Name der Vorlagendatei einer Logik-App: **<*logik-app-name*>.json**
 * Name einer Parameterdatei: **<*logik-app-name*>.parameters.json**
 
-Die Parameterdatei hat die folgende Struktur, wobei die Datei einen Schlüsseltresorverweis (Key Vault-Verweis) [zum Übergeben eines sicheren Parameterwerts mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) enthält:
+Die Parameterdatei hat die folgende Struktur, wobei die Datei einen Schlüsseltresorverweis (Key Vault-Verweis) [zum Übergeben eines geschützten Parameterwerts mit Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) enthält:
 
 ```json
 {
@@ -319,7 +319,7 @@ Die Ressourcendefinition ihrer Logik-App beginnt mit dem `properties`-Objekt, da
 
 Die folgenden Attribute gehören speziell zur Ressourcendefinition Ihrer Logik-App:
 
-| attribute | Erforderlich | type | Beschreibung |
+| attribute | Erforderlich | type | BESCHREIBUNG |
 |-----------|----------|------|-------------|
 | `state` | Ja | String | Der Zustand Ihrer Logik-App bei der Bereitstellung, wobei `Enabled` bedeutet, dass Ihre Logik-App aktiv ist, und `Disabled` bedeutet, dass Ihre Logik-App inaktiv ist. Die Option `Disabled` können Sie beispielsweise verwenden, wenn Ihre Logik-App noch nicht aktiviert, aber bereits als Entwurfsversion bereitgestellt werden soll. |
 | `integrationAccount` | Nein | Object | Wird in Ihrer Logik-App ein Integrationskonto verwendet, das Artefakte für B2B-Szenarien (Business-to-Business) speichert, enthält dieses Objekt das `id`-Attribut, das die ID für das Integrationskonto angibt. |
@@ -413,7 +413,7 @@ Um den Wert für den Workflowdefinitionsparameter festzulegen, verwenden Sie das
 
 In dieser Beispielvorlage ist gezeigt, wie Sie diese Aufgaben durchführen können, indem Sie bei Bedarf geschützte (sichere) Parameter definieren, damit Sie deren Werte in Azure Key Vault speichern können:
 
-* Deklarieren Sie sichere Parameter für die Werte, die zum Authentifizieren von Zugriffen verwendet werden.
+* Deklarieren Sie geschützte Parameter für die Werte, die zum Authentifizieren von Zugriffen verwendet werden.
 * Verwenden Sie diese Werte sowohl auf der Vorlagen- als auch auf der Workflowdefinitionsebene.
 * Stellen Sie diese Werte über eine Parameterdatei bereit.
 
@@ -936,7 +936,7 @@ Für einige Verbindungen wird die Verwendung eines Azure AD-[Dienstprinzipals](.
 }
 ```
 
-| attribute | Beschreibung |
+| attribute | BESCHREIBUNG |
 |-----------|-------------|
 | `token:clientId` | Die Anwendungs- oder Client-ID, die Ihrem Dienstprinzipal zugeordnet ist |
 | `token:clientSecret` | Der Schlüsselwert, der Ihrem Dienstprinzipal zugeordnet ist |

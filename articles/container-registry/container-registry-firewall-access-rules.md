@@ -2,13 +2,13 @@
 title: Firewallzugriffsregeln
 description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Speicherendpunkts zulassen.
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745202"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168018"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall
 
@@ -115,6 +115,10 @@ Suchen Sie nach einer bestimmten Region, z.B. **Storage.AustraliaCentral**.
 Verwenden Sie in einem virtuellen Azure-Netzwerk Netzwerksicherheitsregeln, um den Datenverkehr von einer Ressource wie z.B. einem virtuellen Computer zu einer Containerregistrierung zu filtern. Um die Erstellung der Azure-Netzwerkregeln zu vereinfachen, verwenden Sie das [Diensttag](../virtual-network/security-overview.md#service-tags) **AzureContainerRegistry**. Ein Diensttag repräsentiert eine Gruppe von IP-Adresspräfixen, mit denen global oder pro Azure-Region auf einen Azure-Dienst zugegriffen werden kann. Das Tag wird automatisch aktualisiert, wenn sich Adressen ändern. 
 
 Erstellen Sie z.B. eine ausgehende Netzwerksicherheitsgruppen-Regel mit dem Ziel **AzureContainerRegistry**, um Datenverkehr zu einer Azure-Containerregistrierung zuzulassen. Um den Zugriff auf das Diensttag nur in einer bestimmten Region zuzulassen, geben Sie die Region in folgendem Format an: **AzureContainerRegistry**.[*Regionsname*].
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>Konfigurieren von Clientfirewallregeln für MCR
+
+Wenn Sie von hinter einer Firewall auf Microsoft Container Registry (MCR) zugreifen müssen, lesen Sie den Leitfaden zum Konfigurieren von [MCR-Clientfirewallregeln](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md). MCR ist die primäre Registrierung für alle von Microsoft veröffentlichten Docker-Images, z. B. Windows Server-Images.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548372"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137899"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
@@ -43,17 +43,13 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 
 2.  Verbinden Sie ein untrainiertes Modell mit der am weitesten links befindlichen Eingabe. 
 
-3. Legen Sie die Option **Create trainer mode** (Trainermodus erstellen) auf **Parameter Range** (Parameterbereich) fest. Verwenden Sie **Range Builder** (Bereichs-Generator), um einen Wertebereich für die Verwendung bei der Parameterbereinigung anzugeben.  
 
-    Fast alle Klassifizierungs- und Regressionsmodule unterstützen eine integrierte Parameterbereinigung. Für Lernmodule, bei denen das Konfigurieren eines Parameterbereichs nicht unterstützt wird, können Sie auch nur die verfügbaren Parameterwerte testen.
-
-    Sie können den Wert für einen oder mehrere Parameter manuell festlegen und die Bereinigung dann für die restlichen Parameter ausführen. Dadurch lässt sich möglicherweise einige Zeit sparen.
 
 4.  Fügen Sie das Dataset hinzu, das Sie für das Training verwenden möchten, und verbinden Sie es mit der mittleren Eingabe von „Tune Model Hyperparameters“.  
 
     Wenn Sie ein mit Tags versehenes Dataset haben, können Sie es optional mit dem am weitesten rechts befindlichen Eingabeport (**Optional validation dataset**, „Optionales Validierungsdataset“) verbinden. Dies ermöglicht es Ihnen, die Genauigkeit beim Training und bei der Optimierung zu messen.
 
-5.  Wählen Sie im Bereich **Properties** (Eigenschaften) von „Tune Model Hyperparameters“ einen Wert für **Parameter sweeping mode** (Parameterbereinigungsmodus) aus. Mit dieser Option wird gesteuert, wie die Parameter ausgewählt werden.
+5.  Wählen Sie im rechten Bereich von „Tune Model Hyperparameters“ einen Wert für **Parameter sweeping mode** (Parameterbereinigungsmodus) aus. Mit dieser Option wird gesteuert, wie die Parameter ausgewählt werden.
 
     - **Entire grid** (Gesamtes Raster): Wenn Sie diese Option auswählen, durchläuft das Modul ein vom System vordefiniertes Raster in einer Schleife, um unterschiedliche Kombinationen auszuprobieren und das beste Lernmodul zu ermitteln. Diese Option ist nützlich, falls Sie die besten Parametereinstellungen nicht kennen und alle möglichen Kombinationen von Werten ausprobieren möchten.
 
@@ -64,8 +60,6 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 7.  Auswählen der Anzahl von Ausführungen:
 
     1. **Maximum number of runs on random sweep**: Wenn Sie eine zufällige Bereinigung auswählen, können Sie angeben, wie oft das Modell mit einer zufälligen Kombination von Parameterwerten trainiert werden soll.
-
-    2. **Maximum number of runs on random grid** (Maximale Anzahl von Ausführungen für Zufallsraster): Mit dieser Option wird auch die Anzahl von Iterationen für zufällige Stichproben von Parameterwerten gesteuert, aber die Werte werden nicht zufällig aus dem angegebenen Bereich generiert. Stattdessen wird vom Modul eine Matrix mit allen möglichen Kombinationen von Parameterwerten erstellt. Anschließend wird eine zufällige Stichprobe für die Matrix genommen. Diese Methode ist effizienter und weniger anfällig für regionale Überquotierung oder Unterquotierung.
 
 8.  Wählen Sie unter **Rang** eine Metrik aus, die zum Zuweisen eines Rangs für die Modelle verwendet werden soll.
 

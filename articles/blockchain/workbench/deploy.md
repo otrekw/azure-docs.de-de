@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Bereitstellen von Azure Blockchain Workbench Previ
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 190f780d7aed30667c23bb97f9ce7726da0f00ca
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: fab61b5850815e480b4a380fdccd6c1df5b449cd
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779829"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189201"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Bereitstellen von Azure Blockchain Workbench Preview
 
@@ -100,7 +100,7 @@ Wenn die erforderlichen Schritte abgeschlossen sind, können Sie die Blockchain 
 
      ![Erweiterte Einstellungen für ein vorhandenes Blockchainnetzwerk](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | Einstellung | Beschreibung  |
+     | Einstellung | BESCHREIBUNG  |
      |---------|--------------|
      | Ethereum-RPC-Endpunkt | Geben Sie den RPC-Endpunkt eines bestehenden PoA-Blockchainnetzwerks an. Der Endpunkt beginnt mit „https://“ oder „http://“ und endet mit einer Portnummer. Zum Beispiel, `http<s>://<network-url>:<port>` |
      | Azure Active Directory-Einstellungen | Klicken Sie auf **Später hinzufügen**.</br>Hinweis: Wenn Sie [Azure AD vorab konfigurieren](#azure-ad-configuration) möchten oder wenn sie es erneut bereitstellen, klicken Sie auf *Jetzt hinzufügen*. |
@@ -195,7 +195,7 @@ Die Blockchain Workbench-Bereitstellung erfordert die Registrierung einer Azure 
 Als Nächstes müssen Sie das Manifest für die Verwendung von Anwendungsrollen innerhalb von Azure AD ändern, um Blockchain Workbench-Administratoren festzulegen.  Weitere Informationen zu Anwendungsmanifesten finden Sie unter [Azure Active Directory-Anwendungsmanifest](../../active-directory/develop/reference-app-manifest.md).
 
 
-1. Für das Manifest muss eine GUID generiert werden. Zum Generieren einer GUID können Sie den PowerShell-Befehl `[guid]::NewGuid()` oder das Cmdlet `New-GUID` verwenden. Alternativ können Sie auch eine GUID-Generator-Website verwenden.
+1. Für das Manifest ist eine GUID erforderlich. Zum Generieren einer GUID können Sie den PowerShell-Befehl `[guid]::NewGuid()` oder das Cmdlet `New-GUID` verwenden. Alternativ können Sie auch eine GUID-Generator-Website verwenden.
 1. Wählen Sie für die Anwendung, die Sie registriert haben, im Bereich **Verwalten** die Option **Manifest** aus.
 1. Aktualisieren Sie als Nächstes den Abschnitt **appRoles** des Manifests. Ersetzen Sie `"appRoles": []` durch den bereitgestellten JSON-Code. Stellen Sie sicher, dass Sie den Wert für das Feld **ID** durch die von Ihnen generierte GUID ersetzen. 
 
@@ -233,8 +233,15 @@ Als Nächstes müssen Sie das Manifest für die Verwendung von Anwendungsrollen 
 Der Benutzer muss zulassen, dass die API-Anwendung auf das Verzeichnis zuzugreifen darf. Legen Sie die folgenden erforderlichen Berechtigungen für die API-Anwendung fest:
 
 1. Wählen Sie in der App-Registrierung für die *Blockchain-API* die Option **API-Berechtigungen** aus. Standardmäßig wird die Graph-API-Berechtigung **User.Read** hinzugefügt.
+1. Die Workbench-Anwendung erfordert Lesezugriff auf die grundlegenden Profilinformationen von Benutzern. Wählen Sie in *Konfigurierte Berechtigungen* die Option **Berechtigung hinzufügen** aus. Wählen Sie in **Microsoft-APIs** die Option **Microsoft Graph** aus.
+1. Da die Workbench-Anwendung die authentifizierten Benutzeranmeldeinformationen verwendet, wählen Sie **Delegierte Berechtigungen** aus.
+1. Wählen Sie in der Kategorie *Benutzer* die Berechtigung **User.Read Basic.All** aus.
 
-1. Wählen Sie unter **Einwilligung erteilen** die Option **Administratoreinwilligung erteilen** für die Domäne aus, und bestätigen Sie den Vorgang anschließend mit **Ja**, wenn Sie dazu aufgefordert werden.
+    ![Die Azure AD-App-Registrierungskonfiguration, die das Hinzufügen der delegierten Microsoft Graph-Berechtigung „User.ReadBasic.All“ zeigt](media/deploy/add-graph-user-permission.png)
+
+    Wählen Sie **Berechtigungen hinzufügen** aus.
+
+1. Wählen Sie in *Konfigurierte Berechtigungen* die Option **Administratoreinwilligung erteilen** für die Domäne aus, und bestätigen Sie den Vorgang anschließend mit **Ja**, wenn Sie dazu aufgefordert werden.
 
    ![Erteilen von Berechtigungen](media/deploy/client-app-grant-permissions.png)
 
