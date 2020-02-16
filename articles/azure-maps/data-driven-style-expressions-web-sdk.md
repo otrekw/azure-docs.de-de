@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911782"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189646"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
-Mit Ausdrücken können Sie Geschäftslogik auf Formatvorlagenoptionen anwenden, bei denen die Eigenschaften beachtet werden, die für jede Form in einer Datenquelle definiert sind. Darüber hinaus können Ausdrücke auch zum Filtern von Daten in einer Datenquelle oder auf einer Datenebene verwendet werden. Ausdrücke können aus bedingter Logik bestehen, z. B. if-Anweisungen, und auch genutzt werden, um Daten mit Zeichenfolgen-, logischen und mathematischen Operatoren zu bearbeiten. 
+Mit Ausdrücken können Sie Geschäftslogik auf Formatvorlagenoptionen anwenden, bei denen die Eigenschaften beachtet werden, die für jede Form in einer Datenquelle definiert sind. Ausdrücke können zum Filtern von Daten in einer Datenquelle oder Datenebene verwendet werden. Ausdrücke können aus bedingter Logik bestehen, z. B. aus if-Anweisungen. Und sie können verwendet werden, um Daten mithilfe von Zeichenfolgenoperatoren, logischen Operatoren und mathematischen Operatoren zu bearbeiten.
 
-Mit datengesteuerten Formatvorlagen können Sie die Menge an Code reduzieren, die zum Implementieren von Geschäftslogik für die Formatierung benötigt wird. Bei Verwendung mit Ebenen werden Ausdrücke zur Renderzeit unter einem separaten Thread ausgewertet, mit dem gegenüber der Auswertung von Geschäftslogik über den UI-Thread eine höhere Leistung erzielt wird.
+Datengesteuerte Formatvorlagen verringern die Menge an Code, die zum Implementieren von Geschäftslogik für die Formatierung benötigt wird. Bei Verwendung mit Ebenen werden Ausdrücke zur Renderingzeit in einem separaten Thread ausgewertet. Diese Funktion bietet im Vergleich zur Auswertung der Geschäftslogik im UI-Thread bessere Leistung.
 
-Das folgende Video enthält eine Übersicht über die datengesteuerte Formatierung im Azure Maps Web SDK.
+Dieses Video enthält eine Übersicht über die datengesteuerte Formatierung im Azure Maps Web SDK.
 
 <br/>
 
@@ -39,7 +39,7 @@ Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks
 ] 
 ```
 
-Das Azure Maps Web SDK unterstützt viele Arten von Ausdrücken, die allein oder zusammen mit anderen Ausdrücken verwendet werden können.
+Das Azure Maps Web SDK unterstützt viele Typen von Ausdrücken. Ausdrücke können eigenständig oder in Kombination mit anderen Ausdrücken verwendet werden.
 
 | Art der Ausdrücke | Beschreibung |
 |---------------------|-------------|
@@ -53,7 +53,7 @@ Das Azure Maps Web SDK unterstützt viele Arten von Ausdrücken, die allein oder
 | [Mathematische Ausdrücke](#math-expressions) | Es werden mathematische Operatoren bereitgestellt, um datengesteuerte Berechnungen innerhalb des Ausdrucksframeworks durchzuführen. |
 | [Zeichenfolgenoperator-Ausdrücke](#string-operator-expressions) | Mit Zeichenfolgenoperator-Ausdrücken werden Konvertierungsvorgänge für Zeichenfolgen durchgeführt, z. B. zum Verketten und Ändern der Groß-/Kleinschreibung. |
 | [Typenausdrücke](#type-expressions) | Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher Datentypen, z. B. Zeichenfolgen, Zahlen und boolesche Werte, bereitgestellt. |
-| [Ausdrücke mit variabler Bindung](#variable-binding-expressions) | Mit Ausdrücken mit variabler Bindung können die Ergebnisse einer Berechnung in einer Variablen gespeichert werden, und an einer anderen Stelle eines Ausdrucks kann mehrfach darauf verwiesen werden, ohne dass der gespeicherte Wert erneut berechnet werden muss. |
+| [Ausdrücke mit variabler Bindung](#variable-binding-expressions) | Mit Ausdrücken mit variabler Bindung werden die Ergebnisse einer Berechnung in einer Variablen gespeichert, und an einer anderen Stelle eines Ausdrucks kann mehrfach darauf verwiesen werden, ohne dass der gespeicherte Wert erneut berechnet werden muss. |
 | [Zoom-Ausdruck](#zoom-expression) | Ruft zur Renderzeit den aktuellen Zoomfaktor der Karte ab. |
 
 In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um die verschiedenen Möglichkeiten der Verwendung der einzelnen Ausdrücke zu veranschaulichen. 
@@ -81,7 +81,7 @@ In allen Beispielen dieses Dokuments werden die folgenden Features verwendet, um
 
 Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature gewährt. 
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['at', number, array]` | Objekt (object) | Ruft ein Element aus einem Array ab. |
 | `['geometry-type']` | string | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
@@ -94,7 +94,7 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 
 **Beispiele**
 
-Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. Im folgenden Beispiel wird der „zoneColor“-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben. 
+Auf die Eigenschaften eines Features kann in einem Ausdruck direkt zugegriffen werden, indem ein `get`-Ausdruck verwendet wird. In diesem Beispiel wird der „zoneColor“-Wert des Features verwendet, um die Farbeigenschaft einer Blasenebene anzugeben. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -102,7 +102,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Das obige Beispiel funktioniert, wenn alle Punktfeatures über die `zoneColor`-Eigenschaft verfügen. Wenn dies nicht der Fall ist, wird die Farbe meist auf „black“ (Schwarz) zurückgesetzt. Zum Ändern der Fallbackfarbe kann ein `case`-Ausdruck zusammen mit dem `has`-Ausdruck verwendet werden, um zu überprüfen, ob die Eigenschaft vorhanden ist. Wenn nicht, wird stattdessen eine Fallbackfarbe zurückgegeben.
+Das obige Beispiel funktioniert problemlos, wenn alle Punktfeatures über die `zoneColor`-Eigenschaft verfügen. Wenn dies nicht der Fall ist, wird die Farbe wahrscheinlich auf „schwarz“ zurückgesetzt. Verwenden Sie zum Ändern der Fallbackfarbe einen `case`-Ausdruck in Kombination mit dem `has`-Ausdruck, um zu überprüfen, ob die Eigenschaft vorhanden ist. Wenn die Eigenschaft nicht vorhanden ist, geben Sie eine Fallbackfarbe zurück.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -117,7 +117,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Blasen- und Symbolebenen rendern standardmäßig die Koordinaten aller Formen einer Datenquelle. Dies kann durchgeführt werden, um die Scheitelpunkte eines Polygons oder einer Linie hervorzuheben. Die Option `filter` der Ebene kann verwendet werden, um den Geometrietyp der gerenderten Features zu beschränken, indem ein `['geometry-type']`-Ausdruck in einem booleschen Ausdruck verwendet wird. Im folgenden Beispiel wird eine Blasenebene so beschränkt, dass nur `Point`-Features gerendert werden.
+Blasen- und Symbolebenen rendern standardmäßig die Koordinaten aller Formen in einer Datenquelle. Dieses Verhalten kann die Scheitelpunkte eines Polygons oder einer Linie hervorheben. Die Option `filter` der Ebene kann verwendet werden, um den Geometrietyp der gerenderten Features zu beschränken, indem ein `['geometry-type']`-Ausdruck in einem booleschen Ausdruck verwendet wird. Im folgenden Beispiel wird eine Blasenebene so beschränkt, dass nur `Point`-Features gerendert werden.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -186,7 +186,7 @@ Ein Aggregatausdruck verwendet drei Werte: einen Operatorwert, einen Anfangswert
 
 **Beispiele**
 
-Wenn alle Funktionen in einem Dataset eine `revenue`-Eigenschaft haben, die eine Zahl ist. Der Gesamtumsatz aller Punkte in einem Cluster, der aus dem Dataset erstellt wurde, kann mithilfe des folgenden Aggregatausdrucks berechnet werden: `['+', 0, ['get', 'revenue']]`
+Wenn alle Funktionen in einem Dataset eine `revenue`-Eigenschaft haben, die eine Zahl ist. Dann kann der Gesamtumsatz aller Punkte in einem Cluster, der aus dem Dataset erstellt wurde, mithilfe des folgenden Aggregatausdrucks berechnet werden. Diese Berechnung erfolgt mit dem folgenden Aggregatausdruck: `['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>Boolesche Ausdrücke
 
@@ -194,7 +194,7 @@ Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitges
 
 Beim Vergleichen von Werten ist der Vergleich streng typisiert. Werte unterschiedlichen Typs werden immer als ungleich betrachtet. Fälle, in denen bekannt ist, dass die Typen zur Analysezeit unterschiedlich sind, werden als ungültig angesehen und führen zu einem Analysefehler. 
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['! ', boolean]` | boolean | Logische Negation. Gibt `true` zurück, wenn für die Eingabe `false` gilt, und `false`, wenn für die Eingabe `true` gilt. |
 | `['!= ', value, value]` | boolean | Gibt `true` zurück, wenn die Eingabewerte nicht gleich sind, andernfalls `false`. |
@@ -214,7 +214,7 @@ Mit den folgenden Ausdrücken werden bedingte Logikvorgänge für die Eingabedat
 
 ### <a name="case-expression"></a>Case-Ausdruck
 
-Ein `case`-Ausdruck ist eine Art von bedingtem Ausdruck, der eine Logik wie bei einer if-Anweisung (if/then/else) ermöglicht. Bei dieser Art von Ausdruck wird eine Liste mit booleschen Bedingungen durchlaufen und der Ausgabewert der ersten booleschen Bedingung zurückgegeben, die wahr ist.
+Ein `case`-Ausdruck ist eine Art von bedingtem Ausdruck, der die „if/then/else“-Logik bietet. Diese Art Ausdruck durchläuft eine Liste mit booleschen Bedingungen. Er gibt den Ausgabewert der ersten booleschen Bedingung zurück, die als true ausgewertet wird.
 
 Mit dem folgenden Pseudocode wird die Struktur des `case`-Ausdrucks definiert. 
 
@@ -294,7 +294,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Im folgenden Beispiel wird ein Array zum Auflisten einer Gruppe von Bezeichnungen verwendet, für die jeweils der gleiche Wert zurückgegeben werden sollte. Dies ist viel effizienter als das einzelne Auflisten aller Bezeichnungen. In diesem Fall wird die Farbe „red“ zurückgegeben, wenn die `entityType`-Eigenschaft „restaurant“ oder „grocery_store“ lautet.
+Im folgenden Beispiel wird ein Array zum Auflisten einer Gruppe von Bezeichnungen verwendet, für die jeweils der gleiche Wert zurückgegeben werden sollte. Dieser Ansatz ist viel effizienter als das einzelne Auflisten aller Bezeichnungen. In diesem Fall wird die Farbe „red“ zurückgegeben, wenn die `entityType`-Eigenschaft „restaurant“ oder „grocery_store“ lautet.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -315,7 +315,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Im folgenden Beispiel wird ein match-Ausdruck verwendet, um einen Filter vom Typ „in array“ (im Array) oder „array contains“ (Array enthält) anzuwenden – in diesem Fall, um Daten mit einem ID-Wert zu filtern, der in einer Liste zulässiger IDs enthalten ist. Wenn Sie Ausdrücke mit Filtern verwenden, muss das Ergebnis ein boolescher Wert sein.
+Im folgenden Beispiel wird ein Vergleichsausdruck verwendet, um einen Filter der Art „in Array“ oder „Array enthält“ auszuführen. In diesem Fall filtert der Ausdruck Daten mit einem ID-Wert, der in einer Liste zulässiger IDs enthalten ist. Wenn Sie Ausdrücke mit Filtern verwenden, muss das Ergebnis ein boolescher Wert sein.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -397,7 +397,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher Datentypen, z. B. Zeichenfolgen, Zahlen und boolesche Werte, bereitgestellt.
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Gibt einen Literalarray- oder Objektwert zurück. Verwenden Sie diesen Ausdruck, um zu verhindern, dass ein Array oder ein Objekt als Ausdruck ausgewertet wird. Dies ist erforderlich, wenn ein Array oder Objekt von einem Ausdruck zurückgegeben werden muss. |
 | `['image', string]` | string | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
@@ -433,7 +433,7 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 
 Farbausdrücke erleichtern Ihnen das Erstellen und Bearbeiten von Farbwerten.
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente `1` lauten muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
 | `['rgba', number, number, number, number]` | color | Erstellt einen Farbwert aus den Komponenten *red*, *green* und *blue*, die zwischen `0` und `255` liegen müssen und deren Alphakomponente zwischen `0` und `1` liegen muss. Wenn eine Komponente außerhalb des Bereichs liegt, tritt für den Ausdruck ein Fehler auf. |
@@ -461,7 +461,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Mit Zeichenfolgenoperator-Ausdrücken werden Konvertierungsvorgänge für Zeichenfolgen durchgeführt, z. B. zum Verketten und Ändern der Groß-/Kleinschreibung. 
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | string | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
 | `['downcase', string]` | string | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
@@ -492,7 +492,7 @@ Mit dem obigen Ausdruck wird in der Karte eine Nadel mit dem Überlagerungstext 
 
 ## <a name="interpolate-and-step-expressions"></a>Interpolations- und Schrittausdrücke
 
-Interpolations- und Schrittausdrücke können verwendet werden, um Werte entlang einer interpolierten Kurve oder für eine Schrittfunktion zu berechnen. Für diese Ausdrücke wird ein Ausdruck verwendet, bei dem ein numerischer Wert als Eingabe zurückgegeben wird, z. B. `['get',  'temperature']`. Der Eingabewert wird anhand von Paaren mit Ein- und Ausgabewerten ausgewertet (als „Stopps“ bezeichnet), um den Wert zu ermitteln, der am besten zur interpolierten Kurve oder Schrittfunktion passt. Bei den Eingabewerten für jeden „Stopp“ muss es sich um Zahlen in aufsteigender Reihenfolge handeln. Die Ausgabewerte müssen eine Zahl, ein Array mit Farben oder eine Farbe sein.
+Interpolations- und Schrittausdrücke können verwendet werden, um Werte entlang einer interpolierten Kurve oder für eine Schrittfunktion zu berechnen. Für diese Ausdrücke wird ein Ausdruck verwendet, bei dem ein numerischer Wert als Eingabe zurückgegeben wird, z. B. `['get',  'temperature']`. Der Eingabewert wird anhand von Paaren mit Ein- und Ausgabewerten ausgewertet, um den Wert zu ermitteln, der am besten zur interpolierten Kurve oder Schrittfunktion passt. Die Ausgabewerte werden als „Stopps“ bezeichnet. Bei den Eingabewerten für jeden „Stopp“ muss es sich um Zahlen in aufsteigender Reihenfolge handeln. Die Ausgabewerte müssen eine Zahl, ein Array mit Farben oder eine Farbe sein.
 
 ### <a name="interpolate-expression"></a>Interpolate-Ausdruck
 
@@ -527,7 +527,7 @@ Mit dem folgenden Pseudocode wird die Struktur des `interpolate`-Ausdrucks defin
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein `linear interpolate`-Ausdruck verwendet, um die `color`-Eigenschaft einer Blasenebene basierend auf der `temperature`-Eigenschaft des Punktfeatures festzulegen. Wenn der Wert `temperature` unter 60 liegt, wird „blue“ zurückgegeben. Für den Bereich zwischen 60 und < 70 wird „yellow“, zwischen 70 und < 80 wird „orange“ und für 80 oder höher wird „red“ zurückgegeben.
+Im folgenden Beispiel wird ein `linear interpolate`-Ausdruck verwendet, um die `color`-Eigenschaft einer Blasenebene basierend auf der `temperature`-Eigenschaft des Punktfeatures festzulegen. Wenn der `temperature` Wert kleiner als 60 ist, wird „blue“ zurückgegeben. Liegt der Wert zwischen 60 und 70 (nicht einschließlich), wird Gelb zurückgegeben. Liegt der Wert zwischen 70 und 80 (nicht einschließlich), wird „orange“ zurückgegeben. Liegt er bei 80 oder darüber, wird „red“ zurückgegeben.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -576,7 +576,7 @@ Bei Step-Ausdrücken wird der Ausgabewert des Stopps direkt vor dem Eingabewert 
 
 **Beispiel**
 
-Im folgenden Beispiel wird ein `step`-Ausdruck verwendet, um die `color`-Eigenschaft einer Blasenebene basierend auf der `temperature`-Eigenschaft des Punktfeatures festzulegen. Wenn der Wert `temperature` unter 60 liegt, wird „blue“ zurückgegeben. Für den Bereich zwischen 60 und < 70 wird „yellow“, zwischen 70 und < 80 wird „orange“ und für 80 oder höher wird „red“ zurückgegeben.
+Im folgenden Beispiel wird ein `step`-Ausdruck verwendet, um die `color`-Eigenschaft einer Blasenebene basierend auf der `temperature`-Eigenschaft des Punktfeatures festzulegen. Wenn der `temperature` Wert kleiner als 60 ist, wird „blue“ zurückgegeben. Liegt der Wert zwischen 60 und 70, wird „yellow“ zurückgegeben. Liegt der Wert zwischen 70 und 80 (nicht einschließlich), wird „orange“ zurückgegeben. Liegt er bei 80 oder darüber, wird „red“ zurückgegeben.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -610,7 +610,7 @@ Spezielle Ausdrücke, die nur für bestimmte Ebenen gelten.
 Mit einem Heatmap Density-Ausdruck wird der Wärmebilddichte-Wert für jedes Pixel einer Wärmebildebene abgerufen. Er ist als `['heatmap-density']` definiert. Dieser Wert ist eine Zahl zwischen `0` und `1`. Er wird zusammen mit einem `interpolation`- oder `step`-Ausdruck verwendet, um den Farbverlauf zu definieren, der zum Einfügen der Farben in das Wärmebild genutzt wird. Dieser Ausdruck kann nur in der [color-Option](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) der Wärmebildebene verwendet werden.
 
 > [!TIP]
-> Die Farbe bei Index „0“ in einem „interpolation“-Ausdruck bzw. die Standardfarbe einer „step“-Farbe definiert die Farbe in einem Bereich ohne Daten und kann für die Definition einer Hintergrundfarbe verwendet werden. Viele Benutzer legen hierfür einen transparenten Wert oder ein halbtransparentes Schwarz fest. 
+> Die Farbe bei Index „0“ in einem interpolation-Ausdruck bzw. die Standardfarbe einer Schrittfarbe definiert die Farbe in einem Bereich ohne Daten. Die Farbe bei Index 0 kann verwendet werden, um eine Hintergrundfarbe zu definieren. Viele Benutzer legen hierfür einen transparenten Wert oder ein halbtransparentes Schwarz fest.
 
 **Beispiel**
 
@@ -630,7 +630,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-Zusätzlich zur Nutzung eines nahtlosen Farbverlaufs zum Versehen eines Wärmebilds mit Farben können Farben auch in Bereichen angegeben werden, indem ein `step`-Ausdruck verwendet wird. Durch Verwenden eines `step`-Ausdrucks für die farbige Darstellung des Wärmebilds wird die Dichte visuell in Bereiche gegliedert, die eher einer Kontur- oder Radarkarte ähneln.  
+Zusätzlich zur Nutzung eines nahtlosen Farbverlaufs zum Versehen eines Wärmebilds mit Farben können Farben auch in Bereichen angegeben werden, indem ein `step`-Ausdruck verwendet wird. Durch Verwenden eines `step`-Ausdrucks für die farbige Darstellung des Wärmebilds wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln.  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -651,14 +651,14 @@ Weitere Informationen finden Sie unter [Hinzufügen einer Wärmebildebene](map-a
 
 ### <a name="line-progress-expression"></a>Line Progress-Ausdruck
 
-Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1 und wird zusammen mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) der Linienebene verwendet werden. 
+Mit einem Line Progress-Ausdruck wird der Fortschritt entlang einer Farbverlaufslinie auf einer Linienebene abgerufen. Er ist als `['line-progress']` definiert. Dieser Wert ist eine Zahl zwischen 0 und 1. Er wird in Kombination mit einem `interpolation`- oder `step`-Ausdruck verwendet. Dieser Ausdruck kann nur mit der [strokeGradient-Option]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) der Linienebene verwendet werden. 
 
 > [!NOTE]
 > Für die `strokeGradient`-Option der Linienebene muss die `lineMetrics`-Option der Datenquelle auf `true` festgelegt sein.
 
 **Beispiel**
 
-Im folgenden Beispiel wird der `['line-progress']`-Ausdruck verwendet, um einen Farbverlauf auf den Strich einer Linie anzuwenden.
+In diesem Beispiel wird der `['line-progress']`-Ausdruck verwendet, um einen Farbverlauf auf den Strich einer Linie anzuwenden.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -793,7 +793,7 @@ Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
 
 ## <a name="zoom-expression"></a>Zoom-Ausdruck
 
-Ein `zoom`-Ausdruck wird verwendet, um zur Renderzeit den aktuellen Zoomfaktor der Karte abzurufen. Er ist als `['zoom']` definiert. Mit diesem Ausdruck wird eine Zahl zwischen dem minimalen und maximalen Wert des Zoomfaktorbereichs der Karte zurückgegeben. Mithilfe des Ausdrucks können Formatvorlagen dynamisch angepasst werden, wenn sich der Zoomfaktor der Karte ändert. Der `zoom`-Ausdruck kann nur mit `interpolate`- und `step`-Ausdrücken verwendet werden.
+Ein `zoom`-Ausdruck wird verwendet, um zur Renderzeit den aktuellen Zoomfaktor der Karte abzurufen. Er ist als `['zoom']` definiert. Mit diesem Ausdruck wird eine Zahl zwischen dem minimalen und maximalen Wert des Zoomfaktorbereichs der Karte zurückgegeben. Die interaktiven Kartensteuerelemente in Azure Maps für Web und Android unterstützen 25 Zoomfaktoren, nummeriert von 0 bis 24. Mithilfe des `zoom`-Ausdrucks können Formatvorlagen dynamisch angepasst werden, wenn sich der Zoomfaktor der Karte ändert. Der `zoom`-Ausdruck kann nur mit `interpolate`- und `step`-Ausdrücken verwendet werden.
 
 **Beispiel**
 
@@ -819,16 +819,16 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 ## <a name="variable-binding-expressions"></a>Ausdrücke mit variabler Bindung
 
-Bei Ausdrücken mit variabler Bindung werden die Ergebnisse einer Berechnung in einer Variablen gespeichert, damit an einer anderen Stelle eines Ausdrucks mehrfach darauf verwiesen werden kann, ohne dass eine erneute Berechnung durchgeführt werden muss. Dies ist eine nützliche Optimierung für Ausdrücke, die viele Berechnungen umfassen.
+Bei Ausdrücken mit variabler Bindung werden die Ergebnisse einer Berechnung in einer Variablen gespeichert. Auf diese Weise kann an anderer Stelle in einem Ausdruck mehrfach auf die Berechnungsergebnisse verwiesen werden. Dies ist eine nützliche Optimierung für Ausdrücke, die viele Berechnungen umfassen.
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'let',<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2: string,<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Speichert einen oder mehrere Werte als Variablen zur Verwendung mit dem `var`-Ausdruck im untergeordneten Ausdruck, mit dem das Ergebnis zurückgegeben wird. |
 | `['var', name: string]` | any | Verweist auf eine Variable, die mit dem `let`-Ausdruck erstellt wurde. |
 
 **Beispiel**
 
-In diesem Beispiel wird ein Ausdruck verwendet, mit dem der Umsatz relativ zum Temperaturverhältnis berechnet wird, und anschließend wird ein `case`-Ausdruck verwendet, um für diesen Wert verschiedene boolesche Vorgänge auszuwerten. Der `let`-Ausdruck wird zum Speichern des Umsatzes relativ zum Temperaturverhältnis genutzt, damit die Berechnung nur einmal durchgeführt werden muss. Für den `var`-Ausdruck wird so häufig wie nötig auf diese Variable verwiesen, ohne dass neu berechnet werden muss.
+In diesem Beispiel wird ein Ausdruck verwendet, mit dem der Umsatz relativ zum Temperaturverhältnis berechnet wird, und anschließend wird ein `case`-Ausdruck verwendet, um für diesen Wert verschiedene boolesche Vorgänge auszuwerten. Der `let`-Ausdruck wird zum Speichern des Umsatzes in Relation zum Temperaturverhältnis verwendet, sodass er nur einmal berechnet werden muss. Der `var`-Ausdruck verweist auf diese Variable so oft wie nötig, ohne ihn neu berechnen zu müssen.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
