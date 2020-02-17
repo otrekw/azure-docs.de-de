@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
-        - name: Skalieren von Partitionen und Replikaten
+        - name: Anpassen der Kapazität
           href: search-capacity-planning.md
-        - name: Bereitstellungsstrategien und bewährte Methoden
+        - name: Skalieren zur Verbesserung der Leistung
           href: search-performance-optimization.md
         - name: Mehrinstanzenfähige Architektur
           href: search-modeling-multitenant-saas-applications.md

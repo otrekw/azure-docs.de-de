@@ -47,7 +47,7 @@ Die Architektur basiert auf dem OPC Vault-Microservice mit einem OPC Vault-IoT
 Der OPC Vault-Microservice umfasst die folgenden Schnittstellen zum Implementieren des Workflows für die Verteilung und Verwaltung einer unternehmensspezifischen Zertifizierungsstelle für OPC UA-Anwendungen.
 
 ### <a name="application"></a>Anwendung 
-- Eine OPC UA-Anwendung kann als Server, Client oder beides fungieren. OPC Vault dient in diesem Fall als Stelle für die Anwendungsregistrierung. 
+- Eine OPC UA-Anwendung kann als Server, Client oder beides fungieren. OPC Vault dient in diesem Fall als Anwendungsregistrierungsstelle. 
 - Zusätzlich zu den grundlegenden Vorgängen zum Registrieren, Aktualisieren und Aufheben der Registrierung von Anwendungen sind auch Schnittstellen vorhanden, mit denen nach Anwendungen mit Suchbegriffen gesucht werden kann und Abfragen durchgeführt werden können. 
 - In den Zertifikatanforderungen muss auf eine gültige Anwendung verwiesen werden, um eine Anforderung zu verarbeiten und ein signiertes Zertifikat mit allen OPC UA-spezifischen Erweiterungen auszustellen. 
 - Der Anwendungsdienst basiert auf einer Datenbank in Azure Cosmos DB.
