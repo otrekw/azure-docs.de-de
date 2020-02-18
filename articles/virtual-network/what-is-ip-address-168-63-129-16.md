@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196668"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114360"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Was ist die IP-Adresse 168.63.129.16?
 
@@ -34,10 +34,11 @@ Die IP-Adresse 168.63.129.16 ist eine virtuelle öffentliche IP-Adresse, die ver
 
 ## <a name="scope-of-ip-address-1686312916"></a>Bereich der IP-Adresse 168.63.129.16
 
-Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Sie ist gemäß der Standard-Netzwerksicherheitsgruppe zulässig. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien sowohl für eingehenden als auch für ausgehenden Datenverkehr zulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen.
-Für die Kommunikation mit WireServer müssen mindestens die folgenden Ports geöffnet sein: 80, 443 und 32526.
+Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Wir empfehlen Ihnen, diese IP-Adresse in lokalen Firewallrichtlinien (auf der VM, in ausgehender Richtung) zuzulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen. 168.63.129.16 ist eine [virtuelle IP des Hostknotens](../virtual-network/security-overview.md#azure-platform-considerations) und unterliegt daher keinen benutzerdefinierten Routen.
 
-[Azure Load Balancer-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) gehen von dieser IP-Adresse aus. Wenn Sie diese IP-Adresse blockieren, treten bei Ihren Tests Fehler auf.
+- Für den VM-Agent ist die Kommunikation in ausgehender Richtung über die Ports 80, 443, 32526 mit WireServer (168.63.129.16) erforderlich. Diese Ports müssen in der lokalen Firewall auf dem virtuellen Computer geöffnet sein. Die Kommunikation mit 168.63.129.16 über diese Ports unterliegt nicht den konfigurierten Netzwerksicherheitsgruppen.
+- 168.63.129.16 kann DNS-Dienste für die VM bereitstellen. Falls dies nicht erwünscht ist, kann dieser Datenverkehr in der lokalen Firewall auf der VM blockiert werden. Standardmäßig unterliegt die DNS-Kommunikation nicht den konfigurierten Netzwerksicherheitsgruppen, sofern dies nicht speziell eingerichtet und das Diensttag [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) genutzt wird.
+- Wenn die VM Teil eines Back-End-Pools für den Lastenausgleich ist, sollte für die [Integritätstest](../load-balancer/load-balancer-custom-probe-overview.md)-Kommunikation zugelassen werden, dass sie von „168.63.129.16“ ausgeht. Die Standardkonfiguration der Netzwerksicherheitsgruppen enthält eine Regel, die diese Kommunikation zulässt. Für diese Regel wird das Diensttag [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) genutzt. Dieser Datenverkehr kann bei Bedarf blockiert werden, indem die Netzwerksicherheitsgruppe konfiguriert wird, aber dies führt zum Auftreten von Fehlern für Tests.
 
 In einem nicht virtuellen Netzwerkszenario (klassisch) wird der Integritätstest von einer privaten IP bezogen und 168.63.129.16 nicht verwendet.
 

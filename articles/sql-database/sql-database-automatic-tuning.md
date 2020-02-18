@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 179bb5c9d718a556b829af8f860cb284597835aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821893"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190759"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
@@ -78,6 +78,13 @@ Sie können die Optimierungsempfehlungen entweder manuell über das Portal anwen
 Wenn Sie Optimierungsempfehlungen über T-SQL anwenden, sind die automatische Leistungsüberprüfung und die Mechanismen für die Umkehrung nicht verfügbar. Auf diese Weise angewendete Empfehlungen bleiben zwischen 24 und 48 Stunden lang aktiv und werden in der Liste mit den Optimierungsempfehlungen angezeigt. Danach zieht sie das System automatisch zurück. Falls Sie vorher eine Empfehlung entfernen möchten, können Sie sie über das Azure-Portal verwerfen.
 
 Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf SQL-Datenbank-Servern konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. SQL-Datenbank-Server können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
+
+> [!IMPORTANT]
+> Ab März 2020 werden Änderungen an den Azure-Standardeinstellungen für die automatische Optimierung wie folgt wirksam:
+> - Neue Azure-Standardwerte werden „FORCE_LAST_GOOD_PLAN“ = aktiviert, „CREATE_INDEX“ = deaktiviert und „DROP_INDEX“ = deaktiviert.
+> - Vorhandene Server ohne konfigurierte automatische Optimierungseinstellungen werden automatisch mit den neuen Azure-Standardeinstellungen konfiguriert. Dies gilt für alle Kunden, deren automatische Optimierung zurzeit einen nicht definierten Zustand aufweist.
+> - Neue erstellte Server werden automatisch mit den neuen Azure-Standardeinstellungen konfiguriert (im Gegensatz zu früher, wo sich die automatische Optimierungskonfiguration bei der Erstellung neuer Server in einem nicht definierten Zustand befunden hat).
+>
 
 Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem übergeordneten Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
 

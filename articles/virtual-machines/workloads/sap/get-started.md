@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42df2d24aad1465a200203e648feb97d4e96fd18
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989823"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087371"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -121,6 +121,7 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 7\.2.2020: Änderung in [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) zum Aktualisieren des NSG-Beispielscreenshots
 - 3\.2.2020: Änderung an der [Hochverfügbarkeit für SAP NW auf virtuellen Azure-Computern in SLES für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) und [Hochverfügbarkeit für SAP NW auf virtuellen Azure-Computern in SLES mit ANF für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), um die Warnung zur Verwendung von Gedankenstrichen in den Hostnamen von Clusterknoten in SLES zu entfernen.
 - 28.1.2020: Änderung in [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel), um die SAP HANA-Clusterressourcentimeouts an den Empfehlungen für Red Hat-Timeouts auszurichten.
 - 17.1.2020: Änderung in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) zur Änderung des Abschnitts der Verschiebung vorhandener VMs in eine Näherungsplatzierungsgruppe.
