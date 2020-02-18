@@ -35,7 +35,7 @@
       items:
         - name: Erstellen einer Datenbank – Portal
           href: quickstart-create-hyperscale-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Einzelserver
       items:
@@ -175,7 +175,7 @@
           items:
             - name: Konfigurationsoptionen
               href: concepts-hyperscale-configuration-options.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Einzelserver
       items:
@@ -183,7 +183,7 @@
           items:
             - name: Azure-Portal
               href: howto-create-manage-server-portal.md
-        - name: Authentication
+        - name: Authentifizierung
           items:
             - name: Erstellen von Benutzern
               href: howto-create-users.md
@@ -245,6 +245,8 @@
           items:
             - name: Beheben von Verbindungsproblemen
               href: howto-troubleshoot-common-connection-issues.md
+            - name: Problembehandlung für Datenverschlüsselung
+              href: howto-data-encryption-troubleshoot.md
         - name: Erweiterter Schutz vor Bedrohungen
           items:
             - name: Azure-Portal

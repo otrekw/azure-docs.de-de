@@ -39,8 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Identitätsdatenspeicher für die EU
       href: active-directory-data-storage-eu.md
-    - name: Identitätsdatenspeicher für Australien
-      href: active-directory-data-storage-australia.md
+    - name: Identitätsdatenspeicher für Australien und Neuseeland
+      href: active-directory-data-storage-australia-newzealand.md
     - name: Neuigkeiten in Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Referenz zu Azure AD-Vorgängen
