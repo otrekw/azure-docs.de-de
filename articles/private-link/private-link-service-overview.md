@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647372"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191079"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -55,6 +55,7 @@ Ein Private Link-Dienst legt die folgenden Eigenschaften fest:
 |Front-End-IP-Konfiguration des Lastenausgleichs (loadBalancerFrontendIpConfigurations)    |    Der Private Link-Dienst ist an die Front-End-IP-Adresse eines Load Balancer Standard gebunden. Der gesamte für den Dienst bestimmte Datenverkehr erreicht das Front-End des Load Balancer Standard. Sie können Load Balancer Standard-Regeln konfigurieren, um diesen Datenverkehr an geeignete Back-End-Pools weiterzuleiten, in denen Ihre Anwendungen ausgeführt werden. Front-End-IP-Konfigurationen für den Lastenausgleich unterscheiden sich von NAT-IP-Konfigurationen.      |
 |NAT-IP-Konfiguration (ipConfigurations)    |    Diese Eigenschaft bezieht sich auf die NAT-IP-Konfiguration (Network Address Translation) für den Private Link-Dienst. Die NAT-IP-Adresse kann aus einem beliebigen Subnetz im virtuellen Netzwerk eines Dienstanbieters ausgewählt werden. Der Private Link-Dienst führt die zielseitige NAT-Erstellung für den Private Link-Datenverkehr durch. Dadurch wird sichergestellt, dass es keinen IP-Konflikt zwischen Quell- (Consumerseite) und Zieladressraum (Dienstanbieter) gibt. Auf der Zielseite (Dienstanbieterseite) wird die NAT-IP-Adresse als Quell-IP-Adresse für alle von Ihrem Dienst empfangenen Pakete und die Ziel-IP-Adresse für alle von Ihrem Dienst gesendeten Pakete angezeigt.       |
 |Private Endpunktverbindungen (privateEndpointConnections)     |  Diese Eigenschaft listet die privaten Endpunkte auf, die sich mit dem Private Link-Dienst verbinden. Mehrere private Endpunkte können mit demselben Private Link-Dienst verbunden werden, und der Dienstanbieter kann den Status für einzelne private Endpunkte steuern.        |
+|TCP-Proxy V2 (EnableProxyProtocol)     |  Mit dieser Eigenschaft kann der Dienstanbieter den TCP-Proxy V2 zum Abrufen von Verbindungsinformationen über den Dienstconsumer verwenden. Der Dienstanbieter ist für das Einrichten von Empfängerkonfigurationen zuständig, um den Proxy V2-Protokollheader analysieren zu können.        |
 |||
 
 
@@ -95,14 +96,28 @@ Consumer, für die Ihr Private Link-Dienst offengelegt ist (über die Sichtbarke
 
 Die Genehmigung der Verbindungen kann automatisiert werden, indem Sie die Eigenschaft „auto-approval“ (automatische Genehmigung) im Private Link-Dienst verwenden. Die automatische Genehmigung ist eine Möglichkeit für Dienstanbieter, eine Reihe von Abonnements für den automatisierten Zugriff auf ihren Dienst vorab zu genehmigen. Kunden müssen ihre Abonnements offline freigeben, damit Dienstanbieter sie in die Liste der automatischen Genehmigungen aufnehmen können. Die automatische Genehmigung ist eine Teilmenge des Sichtbarkeitsarrays. Die Sichtbarkeit steuert die Einstellungen für die Offenlegung, während die automatische Genehmigung die Genehmigungseinstellungen für Ihren Dienst steuert. Wenn ein Kunde eine Verbindung von einem Abonnement in der automatischen Genehmigungsliste anfordert, wird die Verbindung automatisch genehmigt und hergestellt. Dienstanbieter müssen die Anforderung nicht mehr manuell genehmigen. Wenn ein Kunde hingegen eine Verbindung von einem Abonnement im Sichtbarkeitsarray und nicht im automatischen Genehmigungsarray anfordert, erreicht die Anforderung den Dienstanbieter, aber der Dienstanbieter muss die Verbindungen manuell genehmigen.
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Abrufen von Verbindungsinformationen mithilfe von TCP-Proxy v2
+
+Bei Verwendung des Private Link-Diensts ist die Quell-IP-Adresse der von dem privaten Endpunkt kommenden Pakete die NAT (Netzwerkadressenübersetzung) auf der Dienstanbieterseite, die die NAT-IP verwendet, die vom virtuellen Netzwerk des Anbieters zugewiesen wird. Daher erhalten die Anwendungen die zugeordnete NAT-IP-Adresse anstelle der tatsächlichen Quell-IP-Adresse der Dienstconsumer. Wenn Ihre Anwendung die tatsächliche Quell-IP-Adresse von der Consumerseite benötigt, können Sie das Proxyprotokoll in Ihrem Dienst aktivieren und die Informationen aus dem Proxyprotokollheader abrufen. Zusätzlich zur Quell-IP-Adresse enthält der Proxyprotokollheader auch die LinkID des privaten Endpunkts. Die Kombination aus Quell-IP-Adresse und LinkID kann Dienstanbietern bei der eindeutigen Identifizierung ihrer Kunden helfen. Weitere Informationen zum Proxyprotokoll finden Sie hier. 
+
+Diese Informationen werden wie folgt mithilfe eines benutzerdefinierten TLV-Vektors (Type-Length-Value) codiert:
+
+Details zum benutzerdefinierten TLV:
+
+|Feld |Länge (Oktette)  |BESCHREIBUNG  |
+|---------|---------|----------|
+|type  |1        |PP2_TYPE_AZURE (0xEE)|
+|Länge  |2      |Länge des Werts|
+|value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |UINT32 (4 Bytes); stellt die LINKID des privaten Endpunkts dar. Codiert im Little-Endian-Format.|
+
+
 ## <a name="limitations"></a>Einschränkungen
 
 Nachfolgend sind die bekannten Einschränkungen bei der Nutzung des Private Link-Diensts aufgeführt:
 - Wird nur von Load Balancer Standard unterstützt 
 - Unterstützt nur IPv4-Datenverkehr
 - Unterstützt nur TCP-Datenverkehr
-- Erstellen und Verwalten von Erfahrungen aus dem Azure-Portal wird nicht unterstützt
-- Verbindungsinformationen von Clients, die das Proxyprotokoll verwenden, sind für den Dienstanbieter nicht verfügbar
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)
