@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466522"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157838"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Verwalten des Azure Cognitive Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -24,23 +24,19 @@ ms.locfileid: "73466522"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um Azure Cognitive Search zu erstellen und zu konfigurieren. Das **Az.Search**-Modul erweitert Azure PowerShell um vollständige Parität mit den [REST-APIs für die Azure Cognitive Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement). Mit Azure PowerShell und **Az.Search** können Sie folgende Aufgaben ausführen:
+Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um Azure Cognitive Search zu erstellen und zu konfigurieren. Das **Az.Search**-Modul erweitert [Azure PowerShell](https://docs.microsoft.com/powershell/) um vollständige Parität mit den [Search-Verwaltungs-REST-APIs](https://docs.microsoft.com/rest/api/searchmanagement) und die Fähigkeit, die folgenden Aufgaben auszuführen:
 
 > [!div class="checklist"]
-> * [Auflisten aller Suchdienste in Ihrem Abonnement](#list-search-services)
-> * [Abrufen von Informationen zu einem bestimmten Suchdienst](#get-search-service-information)
+> * [Auflisten von Suchdiensten in einem Abonnement](#list-search-services)
+> * [Zurückgeben von Dienstinformationen](#get-search-service-information)
 > * [Erstellen oder Löschen eines Diensts](#create-or-delete-a-service)
 > * [Erneutes Generieren von Administrator-API-Schlüsseln](#regenerate-admin-keys)
 > * [Erstellen oder Löschen von Abfrage-API-Schlüsseln](#create-or-delete-query-keys)
-> * [Skalieren eines Diensts durch Erhöhen oder Verringern der Anzahl von Replikaten und Partitionen](#scale-replicas-and-partitions)
+> * [Zentrales Hoch- oder Herunterskalieren mit Replikaten und Partitionen](#scale-replicas-and-partitions)
 
-Mit PowerShell kann nicht der Name, die Region oder der Tarif Ihres Diensts geändert werden. Dedizierte Ressourcen werden beim Erstellen eines Diensts zugeordnet. Zum Ändern der zugrunde liegenden Hardware (Standort oder Knotentyp) ist ein neuer Dienst erforderlich. Es gibt keine Tools oder APIs für die Übertragung von Inhalten aus einem Dienst in einen anderen. Die gesamte Inhaltsverwaltung erfolgt über [REST](https://docs.microsoft.com/rest/api/searchservice/)- oder [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)-APIs, und wenn Sie Indizes verschieben möchten, müssen Sie diese in einem neuen Dienst erneut erstellen und erneut laden. 
+Gelegentlich werden Fragen zu Aufgaben gestellt, die *nicht* in der oben stehenden Liste enthalten sind. Derzeit können Sie weder das **Az.Search**-Modul noch die Verwaltungs-REST-API verwenden, um einen Servernamen, eine Region oder eine Ebene zu ändern. Dedizierte Ressourcen werden beim Erstellen eines Diensts zugeordnet. Daher ist zum Ändern der zugrunde liegenden Hardware (Standort oder Knotentyp) ein neuer Dienst erforderlich. Ebenso gibt es keine Tools oder APIs für die Übertragung von Inhalten, wie z. B. einem Index, aus einem Dienst in einen anderen.
 
-Zwar sind keine dedizierten PowerShell-Befehle für die Inhaltsverwaltung vorhanden, doch können Sie ein PowerShell-Skript schreiben, das REST oder .NET zum Erstellen und Laden von Indizes aufruft. Das **Az.Search**-Modul selbst stellt diese Vorgänge nicht bereit.
-
-Nachfolgend sind noch andere Aufgaben aufgeführt, die nicht durch PowerShell oder eine andere API (nur Portal) unterstützt werden:
-+ [Anfügen einer Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) für [um KI erweiterte Indizierung](cognitive-search-concept-intro.md). Ein Cognitive Service wird einer Qualifikationsgruppe und nicht einem Abonnement oder Dienst angefügt.
-+ [Add-On-Überwachungslösungen](search-monitor-usage.md#add-on-monitoring-solutions) für die Überwachung von Azure Cognitive Search.
+Innerhalb eines Diensts erfolgt die Erstellung und Verwaltung von Inhalten über die [Azure Search-Dienste-REST-API](https://docs.microsoft.com/rest/api/searchservice/) oder das [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). Zwar sind keine dedizierten PowerShell-Befehle für Inhalt vorhanden, doch können Sie ein PowerShell-Skript schreiben, das REST- oder .NET-APIs zum Erstellen und Laden von Indizes aufruft.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Auflisten aller Azure Cognitive Search-Dienste in Ihrem Abonnement
+## <a name="list-services-in-a-subscription"></a>Auflisten von Diensten in einem Abonnement
 
 Die folgenden Befehle stammen von [**Az.Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources) und geben Informationen zu vorhandenen Ressourcen und Diensten zurück, die bereits in Ihrem Abonnement bereitgestellt sind. Wenn Sie nicht wissen, wie viele Suchdienste bereits erstellt wurden, geben die folgenden Befehle diese Information zurück und ersparen Ihnen dadurch das Aufrufen des Portals.
 
@@ -174,7 +170,7 @@ ResourceId        : /subscriptions/<alphanumeric-subscription-ID>/resourceGroups
 
 ## <a name="create-or-delete-a-service"></a>Erstellen oder Löschen eines Diensts
 
-Mit [**New-AzSearchService** ](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wird [ein neuer Suchdienst erstellt](search-create-service-portal.md).
+Mit [**New-AzSearchService**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wird [ein neuer Suchdienst erstellt](search-create-service-portal.md).
 
 ```azurepowershell-interactive
 New-AzSearchService -ResourceGroupName "demo-westus" -Name "my-demo-searchapp" -Sku "Standard" -Location "West US" -PartitionCount 3 -ReplicaCount 3
@@ -195,7 +191,7 @@ Tags
 
 ## <a name="regenerate-admin-keys"></a>Erneutes Generieren von Administratorschlüsseln
 
-Mit [**New-AzSearchAdminKey** ](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wird ein Rollover von Administrator-[API-Schlüsseln](search-security-api-keys.md) ausgeführt. Mit jedem Dienst werden zwei Administratorschlüssel für den authentifizierten Zugriff erstellt. Schlüssel sind für jede Anforderung erforderlich. Beide Administratorschlüssel sind funktionell gleichwertig und gewähren vollständigen Schreibzugriff auf einen Suchdienst mit der Möglichkeit, alle Informationen abrufen oder ein beliebiges Objekt zu erstellen und zu löschen. Es sind zwei Schlüssel vorhanden, sodass Sie den einen verwenden können, während der andere ersetzt wird. 
+Mit [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) wird ein Rollover von Administrator-[API-Schlüsseln](search-security-api-keys.md) ausgeführt. Mit jedem Dienst werden zwei Administratorschlüssel für den authentifizierten Zugriff erstellt. Schlüssel sind für jede Anforderung erforderlich. Beide Administratorschlüssel sind funktionell gleichwertig und gewähren vollständigen Schreibzugriff auf einen Suchdienst mit der Möglichkeit, alle Informationen abrufen oder ein beliebiges Objekt zu erstellen und zu löschen. Es sind zwei Schlüssel vorhanden, sodass Sie den einen verwenden können, während der andere ersetzt wird. 
 
 Sie können immer nur jeweils einen Schlüssel erneut generieren, der entweder als `primary`- oder `secondary`-Schlüssel angegeben ist. Um einen ununterbrochenen Dienst zu gewährleisten, denken Sie daran, den gesamten Clientcode so zu aktualisieren, dass während des Rollovers des primären Schlüssels ein sekundärer Schlüssel verwendet wird. Vermeiden Sie das Ändern der Schlüssel, während Vorgänge ausgeführt werden.
 
