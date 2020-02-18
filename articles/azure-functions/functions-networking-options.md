@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 79c27d252136281249c217f51019e53987922334
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7b47e7b0672716141f62e3f7df4b0d3ed95c663d
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846454"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114298"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -111,7 +111,7 @@ Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von A
 
 ### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Für dieses Konto können derzeit keine Einschränkungen für virtuelle Netzwerke verwendet werden. Wenn Sie einen Dienstendpunkt des virtuellen Netzwerks für das Speicherkonto konfigurieren, das Sie für ihre Funktions-App verwenden, funktioniert die App nicht mehr.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Für dieses Konto können derzeit keine Einschränkungen für virtuelle Netzwerke verwendet werden. Wenn Sie einen Dienstendpunkt des virtuellen Netzwerks für das Speicherkonto konfigurieren, das Sie für Ihre Funktions-App verwenden, funktioniert die App nicht mehr. Diese Funktionalität ist derzeit bei Verwendung des Premium-Plans und einer Integration in ein virtuelles Netzwerk verfügbar.
 
 [Weitere Informationen zu Speicherkontoanforderungen.](./functions-create-function-app-portal.md#storage-account-requirements)
 

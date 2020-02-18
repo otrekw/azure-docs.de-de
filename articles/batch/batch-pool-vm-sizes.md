@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: be19de19dab92bc40ca5529ad578e033a98929cd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c18190ec5e5d079d51630a976681717a78a46e00
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023564"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087048"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -36,38 +36,40 @@ Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
 
 Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu alle VM-Größen ([Linux](../virtual-machines/linux/sizes.md), [Windows](../virtual-machines/windows/sizes.md)). In der folgenden Tabelle finden Sie weitere Informationen zu unterstützten Größen und Einschränkungen.
 
-Für alle nicht aufgeführten Vorschauversionen von VM-Größen oder VM-Größen aus Werbeangeboten kann die Unterstützung nicht gewährleistet werden.
+| VM-Serie  | Unterstützte Größen |
+|------------|---------|
+| Basic A | Alle Größen *außer* Basic_A0 (A0) |
+| Ein | Alle Größen *außer* Standard_A0 |
+| Av2 | Alle Größen |
+| B | Keine |
+| SL | Keine |
+| Dv2, DSv2 | Alle Größen |
+| Dv3, Dsv3 | Alle Größen |
+| Dav4, Dasv4 | Keine: Noch nicht verfügbar |
+| Ev3, Esv3 | Alle Größen, mit Ausnahme von E64is_v3 und E64i_v3 |
+| Eav4, Easv4 | Keine: Noch nicht verfügbar |
+| F, Fs | Alle Größen |
+| Fsv2 | Alle Größen |
+| G, Gs | Alle Größen |
+| H | Alle Größen |
+| HB<sup>1</sup> | Alle Größen |
+| HBv2<sup>1</sup> | Alle Größen |
+| HC<sup>1</sup> | Alle Größen |
+| Ls | Alle Größen |
+| Lsv2 | Keine: Noch nicht verfügbar |
+| M<sup>1</sup> | Alle Größen, mit Ausnahme von M64, M64m, M128, M128m |
+| Mv2 | Keine: Noch nicht verfügbar |
+| NC | Alle Größen |
+| NCv2<sup>1</sup> | Alle Größen |
+| NCv3<sup>1</sup> | Alle Größen |
+| ND<sup>1</sup> | Alle Größen |
+| NDv2<sup>1</sup> | Keine: Noch nicht verfügbar |
+| SH | Alle Größen |
+| NVv3<sup>1</sup> | Alle Größen |
+| NVv4 | Keine |
+| SAP HANA | Keine |
 
-| VM-Serie  | Unterstützte Größen | Poolzuordnungsmodus des Batch-Kontos<sup>1</sup> |
-|------------|---------|-----------------|
-| Serie „Basic A“ | Alle Größen *außer* Basic_A0 (A0) | Any |
-| A-Serie | Alle Größen *außer* Standard_A0 | Any |
-| Av2-Serie | Alle Größen | Any |
-| B-Serie | Keine | Nicht verfügbar |
-| DC-Serie | Keine | Nicht verfügbar |
-| Dv2/DSv2-Serie | Alle Größen | Any |
-| Dv3/DSv3-Serie | Alle Größen | Any |
-| Ev3/ESv3-Serie | Alle Größen | Any |
-| Fsv2-Serie | Alle Größen | Any |
-| H-Reihe | Alle Größen | Any |
-| HB-Serie<sup>2</sup> | Alle Größen | Any |
-| HC-Serie<sup>2</sup> | Alle Größen | Any |
-| Ls-Serie | Alle Größen | Any |
-| Lsv2-Reihe | Keine | Nicht verfügbar |
-| M-Serie | Standard_M64ms (nur mit niedriger Priorität), Standard_M128s (nur mit niedriger Priorität) | Any |
-| Mv2-Serie | Keine | Nicht verfügbar |
-| NC-Serie | Alle Größen | Any |
-| NCv2-Serie<sup>2</sup> | Alle Größen | Any |
-| NCv3-Serie<sup>2</sup> | Alle Größen | Any |
-| ND-Serie<sup>2</sup> | Alle Größen | Any |
-| NDv2-Serie | Alle Größen | Modus „Benutzerabonnement“ |
-| NV-Serie | Alle Größen | Any |
-| NVv3-Serie | Keine | Nicht verfügbar |
-| SAP HANA | Keine | Nicht verfügbar |
-
-<sup>1</sup> Einige neuere VM-Serien werden anfänglich nur teilweise unterstützt. Diese VM-Serien können von Batch-Konten zugeordnet werden, bei denen der **Poolzuordnungsmodus** auf **Benutzerabonnement** festgelegt ist. Weitere Informationen zur Konfiguration von Batch-Konten finden Sie unter [Verwalten von Batch-Konten](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode). Unter [Kontingente und Grenzwerte](batch-quota-limit.md) erfahren Sie, wie Sie Kontingente für diese teilweise unterstützten VM-Serien für Batch-Konten mit Poolzuordnungsmodus **Benutzerabonnement** anfordern.  
-
-<sup>2</sup> Diese VM-Größen können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen jedoch eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern.
+<sup>1</sup> Diese VM-Größen können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen aber ein neues Batch-Konto erstellen und eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern. Diese Einschränkung wird aufgehoben, sobald das vCPU-Kontingent pro VM-Serie für Batch-Konten vollständig unterstützt wird.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pools in der Clouddienstkonfiguration
 

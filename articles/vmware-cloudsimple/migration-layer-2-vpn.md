@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 975ffcd7142aac24363c2235db3742c155c1007b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d4e25074203ddcc016f54842f25f52017c6137f0
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019824"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083226"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Migrieren von Workloads unter Verwendung von Layer-2-Stretchingnetzwerken
 
@@ -48,7 +48,7 @@ Vergewissern Sie sich, dass Folgendes gewährleistet ist, bevor Sie die Lösung 
 * Die Version der eigenständigen NSX-T Edge-Appliance ist mit der NSX-T Manager-Version (NSX-T 2.3.0) kompatibel, die in Ihrer privaten AVS-Cloudumgebung verwendet wird.
 * Es wurde eine Trunkportgruppe im lokalen vCenter mit aktivierten gefälschten Übertragungen erstellt.
 * Es wurde eine öffentliche IP-Adresse für die Verwendung als Uplink-IP-Adresse des eigenständigen NSX-T-Clients reserviert, und für die Übersetzung zwischen den beiden Adressen wurde 1:1-NAT festgelegt.
-* Die DNS-Weiterleitung ist auf den lokalen DNS-Servern für die Domäne az.avs.io mit einem Verweis auf die DNS-Server der privaten AVS-Cloud festgelegt.
+* Die DNS-Weiterleitung ist auf den lokalen DNS-Servern für die Domäne „az.cloudsimple.io“ mit einem Verweis auf die DNS-Server der privaten AVS-Cloud festgelegt.
 * Die RTT-Latenz beträgt höchstens 150 ms. Dies ist erforderlich, damit vMotion an den beiden Standorten funktioniert.
 
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte

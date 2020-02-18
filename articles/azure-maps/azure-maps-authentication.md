@@ -3,46 +3,45 @@ title: Authentifizierungsmethoden | Microsoft Azure Maps
 description: In diesem Artikel wird die Authentifizierung per Azure Active Directory (Azure AD) und gemeinsam verwendetem Schlüssel beschrieben. Beide Verfahren werden für Microsoft Azure Maps-Dienste verwendet. Lesen Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 2bcc2d4c92e903b723bffa8461a8a1a10534d3e4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 73c0d9f76ad92d0ef7ed0f518de5ab1f8b174c9d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025621"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189788"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
-Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und Azure Active Directory-Authentifizierung. In diesem Artikel werden diese Authentifizierungsmethoden als Anleitung für Ihre Implementierung beschrieben.
+Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anforderungen: Authentifizierung per gemeinsam verwendetem Schlüssel und Azure Active Directory-Authentifizierung. In diesem Artikel werden diese Authentifizierungsmethoden beschrieben, um Ihnen bei Ihrer Implementierung von Azure Maps-Diensten zu helfen.
 
 ## <a name="shared-key-authentication"></a>Authentifizierung mit gemeinsam verwendetem Schlüssel
 
-Bei der Authentifizierung mit einem gemeinsam verwendeten Schlüssel werden bei jeder Anforderung an Azure Maps Schlüssel übergeben, die mit einem Azure Maps-Konto generiert werden. Für jede Anforderung, die an Azure Maps-Dienste gesendet wird, muss der *Abonnementschlüssel* der URL als Parameter hinzugefügt werden. Nach dem Erstellen des Azure Maps-Kontos werden der Primär- und der Sekundärschlüssel generiert. Wir empfehlen Ihnen, den Primärschlüssel als Abonnementschlüssel zu verwenden, wenn Sie Azure Maps mithilfe der Authentifizierung mit gemeinsam verwendetem Schlüssel aufrufen. Der Sekundärschlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden.  
+ Nach dem Erstellen des Azure Maps-Kontos werden der Primär- und der Sekundärschlüssel generiert. Sie sollten den Primärschlüssel als Abonnementschlüssel verwenden, wenn Sie Azure Maps mithilfe der Authentifizierung mit gemeinsam verwendetem Schlüssel aufrufen. Bei der Authentifizierung mit einem gemeinsam verwendeten Schlüssel wird ein von einem Azure Maps-Konto generierter Schlüssel an einen Azure Maps-Dienst übergeben. Fügen Sie für jede Anforderung, die an Azure Maps-Dienste gesendet wird, der URL den *Abonnementschlüssel* als Parameter hinzu. Der Sekundärschlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden.  
 
 Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://aka.ms/amauthdetails).
 
 > [!Tip]
 > Wir empfehlen Ihnen, Ihre Schlüssel regelmäßig neu zu generieren. Es werden zwei Schlüssel bereitgestellt, damit Sie die Verbindungen mit einem Schlüssel aufrechterhalten können, während Sie den anderen neu generieren. Bei der erneuten Generierung Ihrer Schlüssel müssen Sie alle Anwendungen, die auf Ihr Konto zugreifen, mit den neuen Schlüsseln aktualisieren.
 
-
-
 ## <a name="authentication-with-azure-active-directory-preview"></a>Authentifizierung mit Azure Active Directory (Vorschauversion)
 
-Azure Maps verfügt jetzt über die Anforderungsauthentifizierung für Azure Maps-Dienste mit [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD ermöglicht die identitätsbasierte Authentifizierung, einschließlich der [rollenbasierten Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wird genutzt, um den Zugriff auf Azure Maps-Ressourcen auf Benutzerebene, Gruppenebene oder Anwendungsebene zu gewähren. In den nächsten Abschnitten können Sie sich mit den Konzepten und Komponenten der Azure Maps-Integration in Azure AD vertraut machen.
+Azure Maps verfügt jetzt über die Anforderungsauthentifizierung für Azure Maps-Dienste mit [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis). Azure AD ermöglicht die identitätsbasierte Authentifizierung, einschließlich der [rollenbasierten Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). RBAC wird genutzt, um den Zugriff auf Azure Maps-Ressourcen auf Benutzerebene, Gruppenebene oder Anwendungsebene zu gewähren. In den nächsten Abschnitten werden die Konzepte und Komponenten der Azure Maps-Integration in Azure AD diskutiert.
+
 ## <a name="authentication-with-oauth-access-tokens"></a>Authentifizierung mit OAuth-Zugriffstoken
 
-Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die einem Azure-Abonnement zugeordnet sind, in dem ein Azure Maps-Konto enthalten ist. Azure Maps akzeptiert Token für:
+Azure Maps akzeptiert **OAuth 2.0**-Zugriffstoken für Azure AD-Mandanten, die einem Azure-Abonnement zugeordnet sind, in dem ein Azure Maps-Konto enthalten ist. Azure Maps akzeptiert auch Token für:
 
 * Azure AD-Benutzer
 * Partneranwendungen, für die von Benutzern delegierte Berechtigungen verwendet werden
 * Verwaltete Identitäten für Azure-Ressourcen
 
-Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Sie können Token von Azure AD anfordern, wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren. Zum Anfordern eines Tokens müssen Sie die Werte in der folgenden Tabelle angeben (je nach Ihrer Azure-Umgebung).
+Azure Maps generiert für jedes Azure Maps-Konto einen *eindeutigen Bezeichner (Client-ID)* . Sie können Token von Azure AD anfordern, wenn Sie diese Client-ID mit zusätzlichen Parametern kombinieren. Zum Anfordern eines Tokens geben Sie die Werte in der folgenden Tabelle an, basierend auf Ihrer Azure-Umgebung.
 
 | Azure-Umgebung   | Azure AD-Tokenendpunkt |
 | --------------------|-------------------------|
@@ -56,7 +55,7 @@ Allgemeine Informationen zum Anfordern von Token aus Azure AD finden Sie unter [
 
 ## <a name="request-azure-map-resources-with-oauth-tokens"></a>Anfordern von Azure Maps-Ressourcen mit OAuth-Token
 
-Nachdem ein Token von Azure AD empfangen wurde, wird eine Anforderung an Azure Maps gesendet, für die die beiden folgenden Anforderungsheader erforderlich sind:
+Nachdem Azure AD ein Token empfangen hat, sendet Azure Maps eine Anforderung mit dem folgenden Satz erforderlicher Anforderungsheader:
 
 | Anforderungsheader    |    value    |
 |:------------------|:------------|
@@ -79,7 +78,7 @@ Weitere Informationen zum Anzeigen Ihrer Client-ID finden Sie unter [Anzeigen vo
 
 ## <a name="control-access-with-rbac"></a>Steuern des Zugriffs mit RBAC
 
-Verwenden Sie RBAC in Azure AD, um den Zugriff auf geschützte Ressourcen zu steuern. Richten Sie Ihr Azure Maps-Konto ein, und registrieren Sie Ihren Azure AD-MANDANTEN für Azure Maps. Azure Maps unterstützt die Steuerung des Lesezugriffs für einzelne Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie Azure-Dienste über verwaltete Identitäten für Azure-Ressourcen. Auf der Azure Maps-Portalseite können Sie RBAC für Ihre gewünschten Rollen einrichten.
+Verwenden Sie RBAC in Azure AD, um den Zugriff auf geschützte Ressourcen zu steuern. Richten Sie Ihr Azure Maps-Konto ein, und registrieren Sie Ihren Azure AD-Mandanten für Azure Maps. Azure Maps unterstützt die Steuerung des Lesezugriffs für einzelne Azure AD-Benutzer, -Gruppen und -Anwendungen, Azure-Ressourcen sowie Azure-Dienste über verwaltete Identitäten für Azure-Ressourcen. Auf der Azure Maps-Portalseite können Sie RBAC für Ihre ausgewählten Rollen einrichten.
 
 ![Azure Maps-Datenleser (Vorschauversion)](./media/azure-maps-authentication/concept.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f9135d0a602bfa1f36f9723311e82a4d26abe6c9
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d3e4a794a948dd6bd9860c9b7e6f06ac981f86b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934552"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162496"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -43,7 +43,7 @@ Azure Load Balancer und die zugehörigen Ressourcen werden bei Verwendung von [A
 | SKUs | Szenario | Methode | IP-Protokolle | Beschreibung |
 | --- | --- | --- | --- | --- |
 | Standard, Basic | [1. Virtueller Computer mit öffentlicher IP-Adresse (mit oder ohne Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Bei der Verwendung von Load Balancer Standard sollten Sie [Ausgangsregeln](load-balancer-outbound-rules-overview.md) verwenden, um die ausgehenden Verbindungen explizit zu definieren. |
-| Standard, Basic | [2. Öffentlicher Load Balancer, der einem virtuellen Computer zugeordnet ist (keine öffentliche IP-Adresse für die Instanz)](#lb) | SNAT mit Portmaskierung (PAT) unter Verwendung der Front-Ends des Lastenausgleichs | TCP, UDP |In Azure wird die öffentliche Front-End-IP-Adresse des öffentlichen Lastenausgleichs mit mehreren privaten IP-Adressen gemeinsam genutzt. Für PAT verwendet Azure kurzlebige Ports der Front-Ends. |
+| Standard, Basic | [1. Virtuelle Computer mit öffentlicher IP-Adresse auf Instanzebene (mit oder ohne Azure Load Balancer)](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | In Azure wird die öffentliche IP-Adresse verwendet, die der IP-Konfiguration der NIC einer Instanz zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. Bei Verwendung von Load Balancer Standard werden [Ausgangsregeln](load-balancer-outbound-rules-overview.md) nicht unterstützt, wenn dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen wird. |
 | Keine oder Basic. | [3. Eigenständiger virtueller Computer (kein Load Balancer, keine öffentliche IP-Adresse)](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist SNAT automatisch eine öffentliche IP-Adresse zu, nutzt diese öffentliche IP-Adresse gemeinsam mit mehreren privaten IP-Adressen der Verfügbarkeitsgruppe und verwendet kurzlebige Ports dieser öffentlichen IP-Adresse. Dieses Szenario ist ein Fallback für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. |
 
 Wenn ein virtueller Computer nicht mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum kommunizieren soll, können Sie nach Bedarf zum Blockieren des Zugriffs Netzwerksicherheitsgruppen verwenden. Netzwerksicherheitsgruppen werden im Abschnitt [Verhindern der ausgehenden Konnektivität](#preventoutbound) ausführlicher beschrieben. Das Entwerfen, Implementieren und Verwalten eines virtuellen Netzwerks ohne ausgehenden Zugriff und die entsprechenden Anleitungen hierzu sind nicht Gegenstand dieses Artikels.

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c4b8b03394eee6dffb79b0e40a22dd49880dee88
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793487"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059646"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Überwachen der Ressourcennutzung und der Abfrageaktivität in der kognitiven Azure-Suche
 
@@ -56,7 +56,7 @@ In der kognitiven Azure-Suche werden neben den verwalteten Objekten keine weiter
 
 In der folgenden Tabelle werden die Optionen zum Speichern von Protokollen und Hinzufügen einer umfassenden Überwachung von Dienstvorgängen und Abfrageworkloads über Application Insights verglichen.
 
-| Resource | Verwendung |
+| Resource | Syntaxelemente |
 |----------|----------|
 | [Azure Monitor-Protokolle](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Log Analytics-Arbeitsbereich protokolliert. Sie können Abfragen für einen Arbeitsbereich ausführen, um detaillierte Informationen aus dem Protokoll zurückzugeben. Weitere Informationen finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokollierte Ereignisse und Abfragemetriken, basierend auf den weiter unten beschriebenen Schemas. Ereignisse werden in einem Blobcontainer protokolliert und in JSON-Dateien gespeichert. Verwenden Sie einen JSON-Editor, um die Dateiinhalte anzuzeigen.|
@@ -76,19 +76,21 @@ In diesem Abschnitt erfahren Sie, wie Sie protokollierte Ereignisse und Metrikda
 
    Ihr Speicherkonto muss sich in derselben Region wie die kognitive Azure-Suche befinden.
 
-2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Überwachung aktivieren**.
+2. Öffnen Sie die Seite „Übersicht“ für Ihren Suchdienst. Scrollen Sie im linken Navigationsbereich nach unten zu **Überwachung**, und klicken Sie auf **Diagnoseeinstellungen**.
 
-   ![Aktivieren der Überwachung](./media/search-monitor-usage/enable-monitoring.png "Aktivieren der Überwachung")
+   ![Diagnoseeinstellungen](./media/search-monitor-usage/diagnostic-settings.png "Diagnoseeinstellungen")
 
-3. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
+3. Wählen Sie **Diagnoseeinstellung hinzufügen**  aus.
+
+4. Wählen Sie die Daten aus, die Sie exportieren möchten: Protokolle, Metriken oder beides. Sie können sie in ein Speicherkonto kopieren, an einen Event Hub senden oder nach Azure Monitor-Protokollen exportieren.
 
    Für die Archivierung in Blob Storage muss nur das Speicherkonto vorhanden sein. Container und Blobs werden beim Exportieren von Protokolldaten nach Bedarf erstellt.
 
    ![Konfigurieren des Blob Storage-Archivs](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurieren des Blob Storage-Archivs")
 
-4. Speichern Sie das Profil.
+5. Speichern des Profils
 
-5. Testen Sie die Protokollierung, indem Sie Objekte erstellen oder löschen (Protokollereignisse werden erstellt) und Abfragen übermitteln (Metriken werden generiert). 
+6. Testen Sie die Protokollierung, indem Sie Objekte erstellen oder löschen (Protokollereignisse werden erstellt) und Abfragen übermitteln (Metriken werden generiert). 
 
 Die Protokollierung ist aktiviert, nachdem Sie das Profil gespeichert haben. Container werden nur erstellt, wenn eine Aktivität zum Protokollieren oder Messen vorhanden ist. Beim Kopieren der Daten in ein Speicherkonto werden sie im JSON-Format formatiert und in zwei Containern platziert:
 
@@ -108,42 +110,42 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Protokollschema
 Blobs, die die Datenverkehrsprotokolle des Suchdiensts enthalten, sind entsprechend der Beschreibung in diesem Abschnitt strukturiert. Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
 
-| NAME | type | Beispiel | Notizen |
+| Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| operationName |Zeichenfolge |„Query.Search“ |Der Name des Vorgangs |
-| operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
-| category |Zeichenfolge |„OperationLogs“ |Konstante |
-| resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
-| resultSignature |int |200 |HTTP-Ergebniscode |
-| durationMS |int |50 |Dauer des Vorgangs in Millisekunden |
-| properties |object |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| operationName |string |„Query.Search“ |Name des Vorgangs |
+| operationVersion |string |"2019-05-06" |Die verwendete API-Version |
+| category |string |„OperationLogs“ |Konstante |
+| resultType |string |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
+| resultSignature |INT |200 |HTTP-Ergebniscode |
+| durationMS |INT |50 |Dauer des Vorgangs in Millisekunden. |
+| properties |Objekt (object) |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
 
 **Eigenschaftsschema**
 
-| NAME | type | Beispiel | Notizen |
+| Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| BESCHREIBUNG |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
-| Abfrage |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
-| Dokumente |int |42 |Anzahl von verarbeiteten Dokumenten |
-| IndexName |Zeichenfolge |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
+| BESCHREIBUNG |string |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
+| Abfrage |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
+| Dokumente |INT |42 |Anzahl von verarbeiteten Dokumenten |
+| IndexName |string |„testindex“ |Name des Indexes, der dem Vorgang zugeordnet ist |
 
 ## <a name="metrics-schema"></a>Metrikenschema
 
 Metriken werden für Abfrageanforderungen erfasst.
 
-| NAME | type | Beispiel | Notizen |
+| Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
-| in |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
-| average |int |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
-| minimum |int |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
-| maximum |int |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
-| total |int |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall |
-| count |int |4 |Die Anzahl der unformatierten Beispiele, die zum Generieren der Metrik verwendet werden |
-| timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601 |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| metricName |string |„Latency“ |Der Name der Metrik |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
+| average |INT |64 |Der Durchschnittswert der unformatierten Beispiele im Metrikzeitintervall |
+| minimum |INT |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall |
+| maximum |INT |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall |
+| total |INT |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall |
+| count |INT |4 |Die Anzahl der unformatierten Beispiele, die zum Generieren der Metrik verwendet werden |
+| timegrain |string |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601 |
 
 Alle Metriken werden in Intervallen von einer Minute gemeldet. Jede Metrik macht Mindest-, Höchst- und Durchschnittswerte pro Minute verfügbar.
 

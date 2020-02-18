@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Rollenzuweisungen mithilfe von Azure RBAC- und Azure Resource Manager-Vorlagen
+title: Hinzufügen von Rollenzuweisungen per RBAC und Azure Resource Manager-Vorlagen
 description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Resource Manager-Vorlagen gewähren.
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981015"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138301"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Hinzufügen von Rollenzuweisungen mithilfe von Azure RBAC- und Azure Resource Manager-Vorlagen
 

@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157663"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153161"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -527,6 +527,13 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | clusters | Ressourcengruppe | 4–63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
 > | workspaces | Ressourcengruppe | 4–63 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen und enden Sie mit einem alphanumerischen Zeichen. |
+
+## <a name="microsoftportal"></a>Microsoft.Portal
+
+> [!div class="mx-tableFixed"]
+> | Entität | `Scope` | Länge | Gültige Zeichen |
+> | --- | --- | --- | --- |
+> | dashboards | Ressourcengruppe | 3 - 160 | Alphanumerische Zeichen und Bindestriche.<br><br>Fügen Sie zur Verwendung von eingeschränkten Zeichen das Tag **hidden-title** mit dem gewünschten Dashboardnamen hinzu. Im Portal wird dieser Name angezeigt, wenn das Dashboard eingeblendet wird. |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 

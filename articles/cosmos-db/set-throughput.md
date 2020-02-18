@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 9ac22461e04b447fe34d5647eb5ec7847d25a09d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931272"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188773"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -60,24 +60,11 @@ Alle in einer Datenbank erstellten Container mit bereitgestelltem Durchsatz müs
 
 Wenn die Workload in einer logischen Partition mehr als den Durchsatz verbraucht, der der jeweiligen logischen Partition zugewiesen wurde, werden Ihre Vorgänge begrenzt. Bei einer Ratenbegrenzung können Sie entweder den Durchsatz für die gesamte Datenbank erhöhen oder die Vorgänge wiederholen. Weitere Informationen zur Partitionierung finden Sie unter [Logische Partitionen](partition-data.md).
 
-Der für eine Datenbank bereitgestellte Durchsatz kann von den Containern innerhalb der Datenbank gemeinsam genutzt werden. Jeder neue Container in auf Datenbankebene gemeinsam genutztem Durchsatz benötigt 100 RU/s. Beim Bereitstellen von Containern mit gemeinsam genutzter Datenbank gilt Folgendes:
+Container in einer Datenbank mit gemeinsam genutztem Durchsatz teilen den Durchsatz (RU/s), der dieser Datenbank zugeordnet ist. In einer Datenbank mit gemeinsam genutztem Durchsatz:
 
-* Es werden jeweils 25 Container zu einer Partitionsgruppe zusammengefasst, und der Datenbankdurchsatz (D) wird von den Containern in der Partitionsgruppe gemeinsam genutzt. Wenn in der Datenbank bis zu 25 Container vorhanden sind und Sie nur einen einzelnen Container verwenden, steht diesem Container der maximale Durchsatz (D) zur Verfügung.
+* Können Sie bis zu vier Container mit mindestens 400 RU/s in der Datenbank haben. Erfordert jeder neue Container nach den ersten vier mindestens zusätzliche 100 RU/s. Wenn Sie z. B. eine Datenbank mit gemeinsam genutztem Durchsatz mit acht Containern haben, beträgt die Mindestanforderungen für die RU/s in der Datenbank 800 RU/s.
 
-* Für jeden neuen Container, der erstellt wird, wenn bereits 25 Container vorhanden sind, wird eine neue Partitionsgruppe erstellt, und der Datenbankdurchsatz wird auf die neu erstellten Partitionsgruppen aufgeteilt: D/2 bei zwei Partitionsgruppen, D/3 bei drei Partitionsgruppen usw. Falls Sie lediglich einen einzelnen Container aus der Datenbank verwenden, steht für diesen der jeweilige maximale Durchsatz (D/2, D/3, D/4 usw.) zur Verfügung. Aufgrund des geringeren Durchsatzes empfiehlt es sich, in einer Datenbank maximal 25 Container zu erstellen.
-
-**Beispiel**
-
-* Angenommen, Sie erstellen eine Datenbank namens „MyDB“ mit einem bereitgestellten Durchsatz von 10.000 RU/s.
-
-* Wenn Sie unter „MyDB“ 25 Container bereitstellen, werden alle Container in einer Partitionsgruppe zusammengefasst. Falls Sie lediglich einen einzelnen Container aus der Datenbank verwenden, steht für diesen der maximale Durchsatz von 10.000 RU/s (D) zur Verfügung.
-
-* Wenn Sie einen 26. Container bereitstellen, wird eine neue Partitionsgruppe erstellt, und der Durchsatz wird gleichmäßig auf die beiden Partitionsgruppen verteilt. Das bedeutet: Wenn Sie nun lediglich einen einzelnen Container aus der Datenbank verwenden, stehen für diesen maximal 5.000 RU/s (D/2) zur Verfügung. Da zwei Partitionsgruppen vorhanden sind, beträgt der Faktor für die gemeinsame Durchsatznutzung D/2.
-
-   In der folgenden Abbildung wird das obige Beispiel grafisch dargestellt:
-
-   ![Faktor für die gemeinsame Durchsatznutzung auf Datenbankebene](./media/set-throughput/database-level-throughput-shareability-factor.png)
-
+* Es können maximal 25 Container in der Datenbank vorhanden sein. Wenn Sie bereits über mehr als 25 Container in einer Datenbank mit gemeinsam genutztem Durchsatz verfügen, können Sie erst dann zusätzliche Container erstellen, wenn die Containeranzahl kleiner als 25 ist.
 
 Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer Datenbank beinhalten, wird empfohlen, die leere Datenbank zu löschen und vor der Erstellung der Sammlung eine neue Datenbank anzulegen. Die folgende Abbildung zeigt, wie eine physische Partition eine bzw. mehrere logische Partitionen hosten kann, die zu unterschiedlichen Containern innerhalb einer Datenbank gehören:
 

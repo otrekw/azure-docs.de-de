@@ -4,18 +4,18 @@ description: Hier erfahren Sie, wie Sie die Blaugrün-Bereitstellung mit Azure S
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 4adeb5593f86bdf3f8a4ea5f844c31a8314e0f15
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276916"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138139"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Einrichten einer Stagingumgebung in Azure Spring Cloud
 
-In diesem Artikel wird erläutert, wie Sie unter Verwendung des Blaugrün-Bereitstellungsmusters in Azure Spring Cloud eine Stagingbereitstellung einrichten. Außerdem wird gezeigt, wie Sie diese Stagingbereitstellung in die Produktion überführen, ohne die Produktionsbereitstellung direkt zu ändern.
+In diesem Artikel wird erläutert, wie Sie unter Verwendung des Blaugrün-Bereitstellungsmusters in Azure Spring Cloud eine Stagingbereitstellung einrichten. Die Blau/Grün-Bereitstellung ist ein Azure DevOps-Muster für Continuous Delivery, bei dem eine vorhandene Version (blau) live bleibt, während eine neue Version (grün) bereitgestellt wird. In diesem Artikel wird außerdem gezeigt, wie Sie diese Stagingbereitstellung in die Produktion überführen, ohne die Produktionsbereitstellung direkt zu ändern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,28 +1,19 @@
 ---
-title: Notfallwiederherstellungsszenarien für Azure-VMs | Microsoft Docs
+title: Szenarien der Notfallwiederherstellung
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
-services: virtual-machines
-documentationcenter: ''
-author: kmouss
-manager: gwallace
-editor: ''
-ms.assetid: 65272148-ff06-4bce-91f1-851d706d4d40
+author: cynthn
 ms.service: virtual-machines
-ms.workload: virtual-machines
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: gwallace
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b59343fca5e14d211864a1354001819c918bd1ca
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.author: cynthn
+ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891516"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115612"
 ---
-# <a name="what-to-do-in-the-event-that-an-azure-service-disruption-impacts-azure-vms"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer
+# <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Was passiert, wenn sich die Störung eines Azure-Diensts auf Azure-VMs auswirkt?
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).

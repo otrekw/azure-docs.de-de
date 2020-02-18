@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0bbd8a12820432ce2f131dda29af6740a2f04e18
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ccdf385d2581923e1fad4fa5c42f351c4f0947ca
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024720"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083158"
 ---
 # <a name="set-up-avs-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>Einrichten der privaten AVS-Cloud als Notfallwiederherstellungsziel mit VMware-Site Recovery Manager
 
@@ -101,7 +101,7 @@ Sie können wie unter [Verwenden von Azure AD als Identitätsanbieter für vCent
 
 Richten Sie wie unter [Einrichten von DNS- und DHCP-Anwendungen und -Workloads in der privaten AVS-Cloud](dns-dhcp-setup.md) beschrieben einen DHCP- und DNS-Server ein, um das Nachschlagen von IP-Adressen, die Verwaltung von IP-Adressen und Namensauflösungsdienste für Ihre Workloads in der privaten AVS-Cloud bereitzustellen.
 
-Die Domäne „*.avs.io“ wird von Verwaltungs-VMs und Hosts in der privaten AVS-Cloud verwendet. Um Anforderungen an diese Domäne aufzulösen, konfigurieren Sie die DNS-Weiterleitung auf dem DNS-Server, wie in [Erstellen einer bedingten Weiterleitung](on-premises-dns-setup.md#create-a-conditional-forwarder) beschrieben.
+Die Domäne „*.cloudsimple.io“ wird von Verwaltungs-VMs und Hosts in Ihrer privaten AVS-Cloud verwendet. Um Anforderungen an diese Domäne aufzulösen, konfigurieren Sie die DNS-Weiterleitung auf dem DNS-Server, wie in [Erstellen einer bedingten Weiterleitung](on-premises-dns-setup.md#create-a-conditional-forwarder) beschrieben.
 
 ### <a name="install-vsphere-replication-appliance-in-your-on-premises-environment"></a>Installieren der vSphere Replication-Appliance in der lokalen Umgebung
 

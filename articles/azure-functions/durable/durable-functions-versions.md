@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849801"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152889"
 ---
 # <a name="durable-functions-versions-overview"></a>Übersicht über die Durable Functions-Versionen
 
@@ -59,6 +59,10 @@ Durable Functions 2.x verwendet ein neues host.json-Schema. Zu den wichtigsten 
 * `"notifications"` (und Unterabschnitt `"eventGrid"`) für die Konfiguration von Event Grid-Benachrichtigungen
 
 Ausführliche Informationen finden Sie in der [Referenzdokumentation für die host.json-Datei von Durable Functions](durable-functions-bindings.md#durable-functions-2-0-host-json).
+
+#### <a name="default-taskhub-name-changes"></a>Standardnamensänderungen für Aufgabenhubs
+
+Wenn in Version 1.x in der Datei „host.json“ kein Aufgabenhubname angegeben wurde, wurde standardmäßig „DurableFunctionsHub“ verwendet. In Version 2.x wird der Standardname für Aufgabenhubs jetzt vom Namen der Funktions-App abgeleitet. Aus diesem Grund gilt Folgendes: Wenn Sie beim Upgrade auf 2.x keinen Aufgabenhubnamen angegeben haben, wird für Ihren Code ein neuer Aufgabenhub verwendet, und alle ausgeführten Orchestrierungen verfügen nicht mehr über eine Anwendung für die Verarbeitung. Als Problemumgehung können Sie entweder Ihren Aufgabenhubnamen explizit auf den Standardnamen „DurableFunctionsHub“ aus v1.x festlegen, oder Sie können sich an die Anleitung in unserem [Leitfaden zur Bereitstellung ohne Ausfallzeit](durable-functions-zero-downtime-deployment.md) halten, um wichtige Änderungen für ausgeführte Orchestrierungen zu verarbeiten.
 
 #### <a name="public-interface-changes-net-only"></a>Änderungen an der öffentlichen Schnittstelle (nur .NET)
 

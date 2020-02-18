@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 66396de52b3709c1d9357f32a375a29a8dcdbd1d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972250"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048751"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 
@@ -34,7 +34,7 @@ Die Spalten, die Sie ändern und dem Schema hinzufügen, werden im Ausgabeschema
 
 ![Hinzufügen einer Unterspalte](media/data-flow/addsubcolumn.png "Hinzufügen einer Unterspalte")
 
-Weitere Informationen zum Umgang mit komplexen Typen im Datenfluss finden Sie unter [JSON-Verarbeitung mit Mapping Data Flow](concepts-data-flow-json.md).
+Weitere Informationen zum Umgang mit komplexen Typen im Datenfluss finden Sie unter [JSON-Verarbeitung mit Mapping Data Flow](format-json.md#mapping-data-flow-properties).
 
 ![Hinzufügen einer komplexen Spalte](media/data-flow/complexcolumn.png "Hinzufügen von Spalten")
 

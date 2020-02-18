@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715581"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138366"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -40,27 +40,32 @@ Nachdem Sie das Streamen von Sensordaten gestartet haben, können Sie mit dem Ab
 Sie können die oben beschriebenen Informationen mit den folgenden Schritten generieren: (Beachten Sie, dass diese Schritte auf Azure durchgeführt werden müssen, daher benötigen Sie Zugriff auf das Azure-Abonnement, in dem FarmBeats bereitgestellt wird)
 
 1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscriptv2) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. Es wird eine Datei in der ZIP-Datei enthalten sein.
-2. Melden Sie sich bei https://portal.azure.com/ an, und wechseln Sie zu Azure Active Directory -> App-Registrierungen
 
-3. Klicken Sie auf die App-Registrierung, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
+2. Melden Sie sich bei https://portal.azure.com/ an.
 
-4. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
+3. **Überspringen Sie bei Verwendung der Version 1.2.7 von FarmBeats (oder höher) die Schritte 3a, 3b und 3c, und fahren Sie mit Schritt 4 fort.** Sie können die FarmBeats-Version überprüfen, indem Sie auf der FarmBeats-Benutzeroberfläche oben rechts auf das Symbol „Einstellungen“ klicken.
 
-5. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
+3a. Navigieren Sie zu „Azure Active Directory“ > „App-Registrierungen“.
+
+3b. Klicken Sie auf die App-Registrierung, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
+
+3c. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
+
+4. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
 
     ![Symbolleiste im Azure-Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
+5. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
 
     ![Einstellung „PowerShell“ auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Laden Sie die Datei aus dem ersten Schritt in Ihre Cloud Shell-Instanz hoch.
+6. Laden Sie die Datei aus dem ersten Schritt in Ihre Cloud Shell-Instanz hoch.
 
     ![Uploadschaltfläche auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-8. Wechseln Sie in das Verzeichnis, in das die Datei hochgeladen wurde. Die Datei wird standardmäßig in das Basisverzeichnis unter dem Benutzernamen hochgeladen.
+7. Wechseln Sie in das Verzeichnis, in das die Datei hochgeladen wurde. Die Datei wird standardmäßig in das Basisverzeichnis unter dem Benutzernamen hochgeladen.
 
-9. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite „Azure Active Directory -> Übersicht“ erhalten können.
+8. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite „Azure Active Directory -> Übersicht“ erhalten können.
 
     ```azurepowershell-interactive 
 
@@ -68,7 +73,7 @@ Sie können die oben beschriebenen Informationen mit den folgenden Schritten gen
 
     ```
 
-10. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
+9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 

@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: e8df7ffd285b0d49f5d4a87585e769b5b0bbafe9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513149"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049033"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Anpassen eines Sprachmodells mit den Video Indexer-APIs
 
@@ -105,9 +105,8 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
 }
 ```
 
-Sie sollten den zurückgegebenen **id**-Wert des Sprachmodells für den Parameter **linguisticModelId** verwenden, wenn [Sie ein zu indizierendes Video hochladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), und für den Parameter **languageModelId**, wenn Sie [ein Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+Die zurückgegebene **ID** ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. **languageModelId** wird dagegen sowohl für die API zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) als auch für die API zum [erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als **linguisticModelId** bezeichnet) verwendet.
 
- 
 ## <a name="delete-a-language-model"></a>Löschen eines Sprachmodells
 
 Die API zum [Löschen eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.

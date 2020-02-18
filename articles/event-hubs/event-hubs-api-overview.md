@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310967"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162224"
 ---
 # <a name="available-event-hubs-apis"></a>Verfügbare Event Hubs-APIs
 
@@ -47,7 +47,7 @@ Das .NET-Ökosystem enthält mehrere Laufzeiten, weshalb mehrere .NET-Bibliothek
 
 #### <a name="node"></a>Node
 
-Die [Node.js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs)-Bibliothek befindet sich derzeit in der Vorschauphase und wird von Microsoft-Mitarbeitern und externen Mitwirkenden nebenbei betrieben. Alle Beiträge, auch Quellcode, sind willkommen und werden überprüfen.
+Die [JavaScript-Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) befindet sich derzeit in der Vorschauphase und wird von Microsoft-Mitarbeitern und externen Mitwirkenden nebenbei betrieben. Alle Beiträge, auch Quellcode, sind willkommen und werden überprüfen.
 
 ## <a name="management-apis"></a>Verwaltungs-APIs
 

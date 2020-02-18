@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Erfahren Sie etwas über die Unterstützung der VMware-Bewertung in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 8ed20ecd37eacdcb771db7c166ff8fc22b96cb89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846174"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121325"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -42,7 +42,7 @@ Neben der Ermittlung von Computern können mithilfe von „Azure Migrate: Server
 **Betriebssystem des Computers** | Alle Windows- und Linux-Versionen.
 **vCenter-Anmeldeinformationen** | Ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“.
 **VM-Anmeldeinformationen** | Unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server.<br/><br/> Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
-**VMware Tools** | Auf virtuellen Computern, die Sie ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden.
+**VMware Tools** | Auf virtuellen Computern, die Sie ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden. <br/> Wenn Sie für die VMware-Tools eine Version zwischen 9.10 und 10.2.0 nutzen, sollten Sie das Upgrade auf eine höhere Version als 10.2.0 durchführen.
 **Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie ermitteln möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
 **Einschränkungen** | Pro Appliance können bis zu 10.000 Anwendungen ermittelt werden. 
 
@@ -96,10 +96,10 @@ Diese Option befindet sich zurzeit in der Vorschau. [Weitere Informationen](how-
 **VM-Support** | Zurzeit nur unterstützt für VMware-VMs.
 **Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)
 **Virtuelle Linux-Computer** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14.04, 16.04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
-**Windows-Konto** |  Die Visualisierung benötigt ein Benutzerkonto mit Gastzugriff.
+**Windows-Konto** |  Für die Visualisierung wird ein lokales Konto oder ein Domänenadministratorkonto benötigt.
 **Linux-Konto** | Die Visualisierung benötigt ein Benutzerkonto mit Root-Berechtigung.<br/><br/> Alternativ benötigt das Benutzerkonto diese Berechtigungen für „/bin/netstat“- und „/bin/ls“-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
 **VM-Agents** | Kein Agent auf den VMs erforderlich.
-**VMware Tools** | Auf virtuellen Computern, die Sie analysieren möchten, müssen VMware-Tools installiert sein und ausgeführt werden.
+**VMware Tools** | Auf virtuellen Computern, die Sie analysieren möchten, müssen VMware-Tools installiert sein und ausgeführt werden. <br/> Wenn Sie für die VMware-Tools eine Version zwischen 9.10 und 10.2.0 nutzen, sollten Sie das Upgrade auf eine höhere Version als 10.2.0 durchführen.
 **vCenter-Anmeldeinformationen** | Ein vCenter Server-Konto mit schreibgeschütztem Zugriff und aktivierten Berechtigungen für „Virtuelle Computer“ > „Gastvorgänge“.
 **Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie analysieren möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
 

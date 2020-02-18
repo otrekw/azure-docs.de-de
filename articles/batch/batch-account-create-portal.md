@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0c6fab0c9e26630bd54830044da56dba20564b3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3723631609a04f6d12abcaac1f9d7733bf3caa01
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025895"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048629"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -117,6 +117,14 @@ Wenn Sie das Batch-Konto im Benutzerabonnementmodus erstellen, verwenden Sie die
 Wenn Sie den Zugriff auf den Schlüsseltresor lieber manuell gewähren möchten, wechseln Sie zum Abschnitt **Zugriffsrichtlinien** des Schlüsseltresors, wählen Sie **Zugriffsrichtlinie hinzufügen** aus, und suchen Sie nach **Microsoft Azure Batch**. Nach Auswahl dieser Option müssen Sie die **Berechtigungen für Geheimnis** mithilfe des Dropdownmenüs konfigurieren. Azure Batch muss mindestens die Berechtigungen **Abrufen**, **Auflisten**, **Festlegen** und **Löschen** erhalten.
 
 ![Berechtigungen für Geheimnis für Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
+
+
+> [!NOTE]
+> Stellen Sie sicher, dass unter **Zugriffsrichtlinien** für die verknüpfte **Key Vault**-Ressource die Kontrollkästchen **Azure Virtual Machines für Bereitstellung** und **Azure Resource Manager für Vorlagenbereitstellung** aktiviert sind.
+> 
+> ![Obligatorische Key Vault-Zugriffsrichtlinie](./media/batch-account-create-portal/key-vault-access-policy.png) Dies ist beim Erstellen eines Batch-Kontos im Azure-Portal nicht obligatorisch. Die Option ist standardmäßig ausgewählt.
+
+
 
 ### <a name="configure-subscription-quotas"></a>Konfigurieren von Abonnementkontingenten
 

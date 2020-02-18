@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: c9c47506e61c665da459558735a3afc93e8b9806
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 11607ffe03d5d2519df1b1199a741dfb55aff2f4
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659779"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111623"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)
 
@@ -52,9 +52,9 @@ Der IP-Adressplan eines AKS-Clusters enthält neben einem virtuellen Netzwerk mi
 | --------- | ------------- |
 | Virtuelles Netzwerk | Das virtuelle Azure-Netzwerk kann eine Größe von /8 haben, ist aber auf 65.536 konfigurierte IP-Adressen beschränkt. |
 | Subnet | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. Die Größe des Subnetzes sollte auch Aktualisierungsvorgänge oder zukünftige Skalierungsanforderungen berücksichtigen.<p />So berechnen Sie die *Mindestsubnetzgröße* mit einem zusätzlichen Knoten für Aktualisierungsvorgänge: `(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Beispiel für einen Cluster mit 50 Knoten: `(51) + (51  * 30 (default)) = 1,581` (/ 21 oder mehr)<p/>Beispiel für einen 50-Knoten-Cluster, der auch die Möglichkeit beinhaltet, ihn um weitere 10 Knoten hochzuskalieren: `(61) + (61 * 30 (default)) = 1,891` (/21 oder größer)<p>Wenn Sie beim Erstellen des Clusters keine maximale Anzahl von Pods pro Knoten angeben, wird diese auf *30* festgelegt. Die mindestens erforderliche Anzahl von IP-Adressen basiert auf diesem Wert. Wenn Sie Ihre mindestens erforderliche Anzahl von IP-Adressen anhand eines anderen Maximalwerts berechnen, finden Sie Informationen zum Festlegen dieses Werts beim Bereitstellen Ihres Clusters unter [Konfigurieren der maximalen Anzahl von Pods pro Knoten](#configure-maximum---new-clusters). |
-| Kubernetes-Dienstadressbereich | Dieser Bereich darf nicht von Netzwerkelementen verwendet werden, die sich in diesem virtuellen Netzwerk befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. |
+| Kubernetes-Dienstadressbereich | Dieser Bereich darf nicht von Netzwerkelementen verwendet werden, die sich in diesem virtuellen Netzwerk befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. Sie können diesen Bereich für unterschiedliche AKS-Cluster wiederverwenden. |
 | Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung (kube-dns) verwendet. Verwenden Sie nicht die erste IP-Adresse Ihres Adressbereichs, z.B. „.1“. Die erste Adresse Ihres Subnetzbereichs wird für die Adresse *kubernetes.default.svc.cluster.local* genutzt. |
-| Docker-Bridge-Adresse | Die Docker-Bridge-Netzwerkadresse stellt die Standardnetzwerkadresse der Bridge *docker0* dar, die in allen Docker-Installationen vorhanden ist. Die Bridge *docker0* wird zwar nicht von AKS-Clustern oder den Pods selbst verwendet, die Adresse muss aber trotzdem festgelegt werden, damit Szenarien wie *docker build* innerhalb des AKS-Clusters weiterhin unterstützt werden. Für die Docker-Bridge-Netzwerkadresse muss ein CIDR-Wert ausgewählt werden, da Docker andernfalls automatisch ein Subnetz auswählt, was zu Konflikten mit anderen CIDRs führen kann. Wählen Sie einen Adressraum aus, der nicht mit den übrigen CIDRs in Ihrem Netzwerk in Konflikt steht (einschließlich Dienst-CIDR und Pod-CIDR des Clusters). Standard 172.17.0.1/16. |
+| Docker-Bridge-Adresse | Die Docker-Bridge-Netzwerkadresse stellt die Standardnetzwerkadresse der Bridge *docker0* dar, die in allen Docker-Installationen vorhanden ist. Die Bridge *docker0* wird zwar nicht von AKS-Clustern oder den Pods selbst verwendet, die Adresse muss aber trotzdem festgelegt werden, damit Szenarien wie *docker build* innerhalb des AKS-Clusters weiterhin unterstützt werden. Für die Docker-Bridge-Netzwerkadresse muss ein CIDR-Wert ausgewählt werden, da Docker andernfalls automatisch ein Subnetz auswählt, was zu Konflikten mit anderen CIDRs führen kann. Wählen Sie einen Adressraum aus, der nicht mit den übrigen CIDRs in Ihrem Netzwerk in Konflikt steht (einschließlich Dienst-CIDR und Pod-CIDR des Clusters). Standard 172.17.0.1/16. Sie können diesen Bereich für unterschiedliche AKS-Cluster wiederverwenden. |
 
 ## <a name="maximum-pods-per-node"></a>Maximale Pods pro Knoten
 

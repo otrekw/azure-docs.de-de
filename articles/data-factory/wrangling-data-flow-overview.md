@@ -7,18 +7,18 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531381"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048364"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Was sind Wranglingdatenflüsse?
 
 Organisationen müssen Datenaufbereitung und Data Wrangling durchführen, um komplexe Daten, deren Menge täglich wächst, exakt analysieren zu können. Die Datenaufbereitung ist erforderlich, damit Organisationen die Daten in verschiedenen Geschäftsprozessen verwenden und die Amortisationszeit verkürzen können.
 
-Wranglingdatenflüsse in Azure Data Factory ermöglichen Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](https://docs.microsoft.com/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Factory-Benutzer bereit.
+Wranglingdatenflüsse in Azure Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](https://docs.microsoft.com/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Factory-Benutzer bereit.
 
 Wranglingdatenflüsse übersetzen M-Code, der vom Power Query Online Mashup Editor generiert wird, in Spark-Code für die Cloudskalierungsausführung.
 
@@ -28,7 +28,7 @@ Wranglingdatenflüsse sind besonders nützlich für Datentechniker oder für Dat
 
 ### <a name="fast-interactive-data-exploration-and-preparation"></a>Schnelle interaktive Untersuchung und Aufbereitung von Daten
 
-Mehrere Datentechniker und Datenintegratoren ohne Programmiererfahrung können Datasets in der Cloud interaktiv untersuchen und aufbereiten. Mit zunehmender Menge, Vielfalt und Geschwindigkeit der Daten in Data Lakes benötigen Benutzer eine effektive Möglichkeit zum Untersuchen und Aufbereiten von Datasets. Beispielsweise müssen Sie möglicherweise ein Dataset erstellen, das über alle demografischen Informationen zu neuen Kunden seit 2017 verfügt. Sie führen keine Zuordnung zu einem bekannten Ziel durch. Vor dem Veröffentlichen im Lake unterziehen Sie Datasets der Untersuchung, dem Wrangling und der Aufbereitung, damit sie eine Anforderung erfüllen. Wranglingdatenflüsse werden oft für weniger formale Analyseszenarios verwendet. Die aufbereiteten Datasets können für Downstreamtransformationen und -Machine Learning-Vorgänge verwendet werden.
+Mehrere Datentechniker und Datenintegratoren ohne Programmiererfahrung können Datasets in der Cloud interaktiv untersuchen und aufbereiten. Mit zunehmender Menge, Vielfalt und Geschwindigkeit der Daten in Data Lakes benötigen Benutzer eine effektive Möglichkeit zum Untersuchen und Aufbereiten von Datasets. Beispielsweise müssen Sie möglicherweise ein Dataset erstellen, das über alle demografischen Informationen zu neuen Kunden seit 2017 verfügt. Sie nehmen keine Zuordnung zu einem bekannten Ziel vor. Vor dem Veröffentlichen im Lake unterziehen Sie Datasets der Untersuchung, dem Wrangling und der Aufbereitung, damit sie eine Anforderung erfüllen. Wranglingdatenflüsse werden oft für weniger formale Analyseszenarios verwendet. Die aufbereiteten Datasets können für Downstreamtransformationen und -Machine Learning-Vorgänge verwendet werden.
 
 ### <a name="code-free-agile-data-preparation"></a>Codefreie agile Datenaufbereitung
 
@@ -42,9 +42,9 @@ Die Datenintegratoren ohne Programmiererfahrung verbringen mehr als 60 % ihrer 
 
 | Connector | Datenformat | Authentifizierungsart |
 | -- | -- | --|
-| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Kontoschlüssel |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Kontoschlüssel |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Dienstprinzipal |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Kontoschlüssel, Dienstprinzipal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Kontoschlüssel, Dienstprinzipal |
 | [Azure SQL-Datenbank](connector-azure-sql-database.md) | - | SQL-Authentifizierung |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-Authentifizierung |
 

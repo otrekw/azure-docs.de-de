@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fbd2b227c9292593a7652044ef4c013bf0cfaf8e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8188fac270eadb6e09cc3561ddefb05aa59ba661
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017002"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087128"
 ---
 # <a name="configure-a-vpn-connection-to-your-avs-private-cloud"></a>Konfigurieren einer VPN-Verbindung mit Ihrer privaten AVS-Cloud
 
@@ -97,7 +97,7 @@ Eine Point-to-Site-VPN-Verbindung löst die DNS-Namen der ersten erstellten priv
 
     ![Bearbeiten der VPN-Verbindung](media/viscosity-edit-connection.png)
 
-7. Klicken Sie auf die Registerkarte **Networking** (Netzwerk), und geben Sie die IP-Adressen der DNS-Server der privaten AVS-Cloud getrennt durch Kommas oder Leerzeichen sowie die Domäne als ```AVS.io``` ein. Wählen Sie **Ignore DNS settings sent by VPN server** (Vom VPN-Server gesendete DNS-Einstellungen ignorieren) aus.
+7. Klicken Sie auf die Registerkarte **Networking** (Netzwerk), und geben Sie die IP-Adressen der DNS-Server der privaten AVS-Cloud getrennt durch Kommas oder Leerzeichen sowie die Domäne als ```az.cloudsimple.io``` ein. Wählen Sie **Ignore DNS settings sent by VPN server** (Vom VPN-Server gesendete DNS-Einstellungen ignorieren) aus.
 
     ![VPN-Netzwerk](media/viscosity-edit-connection-networking.png)
 
@@ -117,4 +117,4 @@ Informationen zum Einrichten des lokalen VPN-Gateways im Hochverfügbarkeitsmodu
 
 > [!IMPORTANT]
 >    1. Legen Sie TCP MSS-Clamping für das VPN-Gerät auf 1200 fest. Wenn Ihre VPN-Geräte MSS-Clamping nicht unterstützen, können Sie stattdessen auch den MTU-Wert der Tunnelschnittstelle auf 1240 Bytes festlegen.
-> 2. Nach dem Einrichten des Site-to-Site-VPN können Sie die DNS-Anforderungen für *.avs.io an die DNS-Server der privaten AVS-Cloud weiterleiten. Befolgen Sie die Anweisungen unter [Einrichten des lokalen DNS](on-premises-dns-setup.md).
+> 2. Nach dem Einrichten der Site-to-Site-VPN-Verbindung können Sie die DNS-Anforderungen für „*.cloudsimple.io“ an die DNS-Server der privaten AVS-Cloud weiterleiten. Befolgen Sie die Anweisungen unter [Einrichten des lokalen DNS](on-premises-dns-setup.md).

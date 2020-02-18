@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982119"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132852"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
 Dieser Artikel enthält eine Referenzarchitektur als Unterstützung für die Bereitstellung einer Azure DevTest Labs-basierten Lösung in einem Unternehmen. Dies umfasst Folgendes:
@@ -41,7 +41,7 @@ Dies sind die Schlüsselelemente der Referenzarchitektur:
     - Sie möchten erzwingen, dass der gesamte ein- und ausgehende Netzwerkdatenverkehr der Cloudumgebung aus Sicherheits-/Konformitätsgründen eine lokale Firewall durchläuft.
 - **Netzwerksicherheitsgruppen**: Eine gängige Methode, um den Datenverkehr an die Cloudumgebung (oder innerhalb der Cloudumgebung) auf der Grundlage von Quell- und Ziel-IP-Adressen einzuschränken, ist die Verwendung einer [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md). Sie möchten z. B. nur Datenverkehr, der aus dem Unternehmensnetzwerk stammt, in den Netzwerken des Labs erlauben.
 - **Remotedesktopgateway:** Unternehmen blockieren ausgehende Remotedesktopverbindungen in der Regel an der Unternehmensfirewall. Es gibt verschiedene Optionen, um die Konnektivität mit der cloudbasierten Umgebung in den DevTest Labs zu ermöglichen, einschließlich:
-  - Verwenden Sie ein [Remotedesktopgateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), und fügen Sie die statische IP-Adresse des Gatewaylastenausgleichs zur Whitelist hinzu.
+  - Verwenden Sie ein [Remotedesktopgateway](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture), und lassen Sie die statische IP-Adresse des Gatewaylastenausgleichs zu.
   - [Leiten Sie den gesamten eingehenden RDP-Verkehr](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) über die ExpressRoute-/Site-to-Site-VPN-Verbindung. Diese Funktionalität ist eine häufige Überlegung, wenn Unternehmen eine DevTest Labs-Bereitstellung planen.
 - **Netzwerkdienste (virtuelle Netzwerke, Subnetze)** : Die Topologie des [Azure-Netzwerks](../networking/networking-overview.md) ist ein weiteres wichtiges Element der DevTest Labs-Architektur. Sie steuert, ob Ressourcen aus dem Lab mit lokalen Standorten und dem Internet kommunizieren können und darauf Zugriff haben. Unser Architekturdiagramm enthält die gängigsten Methoden, wie Kunden DevTest Labs nutzen: Alle Labs werden über [virtuelles Netzwerkpeering](../virtual-network/virtual-network-peering-overview.md) mithilfe eines [Hub-Spoke-Modells](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) mit der ExpressRoute-/Site-toto-Site-VPN-Verbindung mit lokalen Standorten verbunden. DevTest Labs verwendet Azure Virtual Network jedoch direkt, sodass es keine Einschränkungen bei der Einrichtung der Netzwerkinfrastruktur gibt.
 - **DevTest Labs:**  DevTest Labs ist ein wichtiger Bestandteil der allgemeinen Architektur. Weitere Informationen zu diesem Dienst finden Sie unter [Informationen zu Azure DevTest Labs](devtest-lab-overview.md).
@@ -50,7 +50,7 @@ Dies sind die Schlüsselelemente der Referenzarchitektur:
 ## <a name="scalability-considerations"></a>Überlegungen zur Skalierbarkeit
 DevTest Labs verfügt zwar nicht über integrierte Kontingente oder Grenzwerte, für andere Azure-Ressourcen, die in typischen Vorgängen eines Labs genutzt werden, gelten jedoch [Kontingente auf Abonnementebene](../azure-resource-manager/management/azure-subscription-service-limits.md). In einer typischen Unternehmensbereitstellung sind daher mehrere Azure-Abonnements erforderlich, um eine umfangreiche Bereitstellung von DevTest Labs abzudecken. Zu den Kontingenten, die von Unternehmen am häufigsten erreicht werden, zählen folgende:
 
-- **Ressourcengruppen**: In der Standardkonfiguration erstellt DevTest Labs jeweils eine Ressourcengruppe für jeden neuen virtuellen Computer oder der Benutzer erstellt eine Umgebung, indem er den Dienst verwendet. Abonnements können [bis zu 980 Ressourcengruppen](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) enthalten. Das sind also die Grenzwerte für virtuelle Computer und Umgebungen in einem Abonnement. Darüber hinaus sollten noch zwei weitere Konfigurationen berücksichtigt werden:
+- **Ressourcengruppen**: In der Standardkonfiguration erstellt DevTest Labs jeweils eine Ressourcengruppe für jeden neuen virtuellen Computer oder der Benutzer erstellt eine Umgebung, indem er den Dienst verwendet. Abonnements können [bis zu 980 Ressourcengruppen](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) enthalten. Das sind also die Grenzwerte für virtuelle Computer und Umgebungen in einem Abonnement. Darüber hinaus sollten noch zwei weitere Konfigurationen berücksichtigt werden:
     - **[Alle virtuellen Computer in einer Ressourcengruppe:](resource-group-control.md)** Dieses Setup hilft zwar bei der Einhaltung des Ressourcengruppenlimits, wirkt sich aber auf das Ressourcentyplimit pro Ressourcengruppe aus.
     - **Verwenden gemeinsamer öffentlicher IP-Adressen:** Alle virtuellen Computer mit gleicher Größe und Region werden in derselben Ressourcengruppe platziert. Diese Konfiguration stellt einen Mittelweg zwischen Ressourcengruppenkontingenten und Ressourcentypkontingenten pro Ressourcengruppe dar, wenn virtuelle Computer öffentliche IP-Adressen besitzen dürfen.
 - **Ressourcen pro Ressourcengruppe, pro Ressourcentyp**: Das Standardlimit für [Ressourcen pro Ressourcengruppe, pro Ressourcentyp](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) liegt bei 800.  Bei Verwendung der Konfiguration *Alle virtuellen Computer in einer Ressourcengruppe* wird dieses Abonnementlimit deutlich früher erreicht – insbesondere, wenn die virtuellen Computer über zahlreiche zusätzliche Datenträger verfügen.

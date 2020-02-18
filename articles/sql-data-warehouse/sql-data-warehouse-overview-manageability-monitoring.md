@@ -1,6 +1,6 @@
 ---
 title: Verwaltung und Überwachung – Übersicht
-description: Übersicht über die Überwachungs- und Verwaltungsfunktionen für die Ressourcennutzung, Protokoll- und Abfrageaktivitäten, Empfehlungen und den Schutz von Daten (Sichern und Wiederherstellen) in Azure SQL Data Warehouse.
+description: Übersicht über die Überwachungs- und Verwaltungsfunktionen für die Ressourcennutzung, Protokoll- und Abfrageaktivitäten, Empfehlungen und den Schutz von Daten (Sichern und Wiederherstellen) mit SQL-Pool.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760741"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153263"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Verwaltung und Überwachung von Azure SQL Data Warehouse
+# <a name="manageability-and-monitoring-with-sql-pool"></a>Verwaltbarkeit und Überwachung mit SQL-Pool
 
-Sehen Sie sich an, welche Funktionen verfügbar sind, die Sie beim Verwalten und Überwachen von SQL Data Warehouse unterstützen. In den folgenden Artikeln werden Möglichkeiten zum Optimieren der Leistung und Nutzung Ihres Data Warehouse hervorgehoben.
+Mit SQL Analytics können Sie ein Data Warehouse per SQL-Pool bereitstellen. Die unten angegebenen Artikel enthalten Informationen, die Ihnen als Hilfe beim Verwalten und Überwachen Ihres Data Warehouse dienen. Außerdem wird beschrieben, wie Sie die Nutzung und Leistung des Data Warehouse optimieren.
 
 ## <a name="overview"></a>Übersicht
 
@@ -33,4 +33,4 @@ Sehen Sie sich an, welche Funktionen verfügbar sind, die Sie beim Verwalten und
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Anleitungen finden Sie unter [Überwachen und Optimieren Ihres Data Warehouse](sql-data-warehouse-manage-monitor.md).
+Entsprechende Schrittanleitungen finden Sie unter [Überwachen und Optimieren Ihres SQL-Pools](sql-data-warehouse-manage-monitor.md).

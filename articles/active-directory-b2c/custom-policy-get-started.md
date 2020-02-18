@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: cd1b5f120952752e956c957df9daa124a06d7b63
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850673"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114036"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ Sie müssen diese beiden Anwendungen nur ein Mal in Ihrem Azure AD B2C-Mandanten
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrieren der IdentityExperienceFramework-Anwendung
 
-Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die aktuelle Benutzeroberfläche für **Anwendungen** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
+Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die Benutzeroberfläche für **App-Registrierungen (Legacy)** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
 #### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: 2b11bbc22714ab1905421812e3cb24ee660ee667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372329"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131970"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 
@@ -271,7 +271,7 @@ Das App-Paket ist die „Außengrenze“ der Ressourcenverwaltung für eine Date
 
 Der Benutzerressourcenpool ist die „Innengrenze“ der Ressourcenverwaltung für eine Datenbank, wobei es keine Rolle spielt, ob sich die Datenbank auf einer serverlosen oder einer bereitgestellten Computeebene befindet. Der Benutzerressourcenpool beschränkt CPU und E/A für Benutzerworkload, die von DDL-Abfragen (z.B. CREATE und ALTER) und DML-Abfragen (z.B. SELECT, INSERT, UPDATE und DELETE) generiert wird. Diese Abfragen sind im Allgemeinen für den Großteil der Auslastung des App-Pakets verantwortlich.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 Metriken für die Überwachung des Ressourcenverbrauchs des App-Pakets und Benutzerpools einer serverlosen Datenbank sind in der folgenden Tabelle aufgeführt:
 
@@ -342,7 +342,7 @@ Die genaue Berechnung der Computekosten für dieses Beispiel lautet:
 |8:00 - 24:00|0|0|Keine Berechnung von Computeleistung während des Anhaltens|0 Sekunden für virtuelle Kerne|
 |Gesamte berechnete Sekunden für virtuelle Kerne in 24 Stunden||||50.400 Sekunden für virtuelle Kerne|
 
-Angenommen, der Compute-Einzelpreis beträgt 0,000073 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000073 USD/V-Kern/Sekunde * 50.400 Sekunden für virtuelle Kerne = 3,68 USD
+Angenommen, der Compute-Einheitenpreis beträgt 0,000145 USD/V-Kern/Sekunde.  Die Computeleistung, die für diesen 24-Stunden-Zeitraum berechnet wird, ist dann das Produkt aus dem Preis der Compute-Einheit und den berechneten Sekunden für virtuelle Kerne: 0,000145 USD/V-Kern/Sekunde * 50400 Sekunden für virtuelle Kerne ~ 7,31 USD
 
 ### <a name="azure-hybrid-benefit-and-reserved-capacity"></a>Azure-Hybridvorteil und reservierte Kapazität
 

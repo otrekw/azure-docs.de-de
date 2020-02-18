@@ -3,12 +3,12 @@ title: Authentifizierungsoptionen für die Registrierung
 description: Hier erfahren Sie mehr über Authentifizierungsoptionen für eine private Azure-Containerregistrierung wie z. B. das Anmelden mit einer Azure Active Directory-Identität, mithilfe von Dienstprinzipalen sowie mittels optionalen Administratoranmeldeinformationen.
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 384f401a986c58dc6ce63384ce3e2a43b8db27fa
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 5459ac29c1264b18404cb2863b9d4209907ac029
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029876"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152942"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Authentifizieren mit einer Azure-Containerregistrierung
 
@@ -23,7 +23,7 @@ In der folgenden Tabelle werden die verfügbaren Authentifizierungsmethoden und 
 | Methode                               | Authentifizierung                                           | Szenarien                                                            | RBAC                             | Einschränkungen                                |
 |---------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------|----------------------------------|--------------------------------------------|
 | [Individuelle AD-Identität](#individual-login-with-azure-ad)                | `az acr login`  in der Azure CLI                             | Interaktiver Push/Pull von Entwicklern oder Testern                                    | Ja                              | Das AD-Token muss alle 3 Stunden erneuert werden.     |
-| [AD-Dienstprinzipal](#service-principal)                  | `docker login`<br/><br/>`az acr login` in der Azure CLI<br/><br/> Registrierungsanmeldungseinstellungen in APIs oder Tools<br/><br/> PullSecret in Kubernetes                                           | Unbeaufsichtigter Push aus der CI/CD-Pipeline<br/><br/> Unbeaufsichtigter Pull in Azure oder externe Dienste  | Ja                              | Standardablaufzeit für Dienstprinzipalkennwörter beträgt 1 Jahr       |                                                           
+| [AD-Dienstprinzipal](#service-principal)                  | `docker login`<br/><br/>`az acr login` in der Azure CLI<br/><br/> Registrierungsanmeldungseinstellungen in APIs oder Tools<br/><br/> [PullSecret in Kubernetes](container-registry-auth-kubernetes.md)                                           | Unbeaufsichtigter Push aus der CI/CD-Pipeline<br/><br/> Unbeaufsichtigter Pull in Azure oder externe Dienste  | Ja                              | Standardablaufzeit für Dienstprinzipalkennwörter beträgt 1 Jahr       |                                                           
 | [Integration mit Azure Kubernetes Service](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json)                    | Registrierung anfügen, wenn AKS-Cluster erstellt oder aktualisiert werden  | Unbeaufsichtigter Pull in AKS-Cluster                                                  | Nein, Zugriff ist nur per Pull möglich             | Nur mit AKS-Cluster verfügbar            |
 | [Verwaltete Identität für Azure-Ressourcen](container-registry-authentication-managed-identity.md)  | `docker login`<br/><br/> `az acr login`  in der Azure CLI                                       | Unbeaufsichtigter Push aus der Azure CI/CD-Pipeline<br/><br/> Unbeaufsichtigter Pull in Azure-Dienste<br/><br/>   | Ja                              | Kann nur über Azure-Dienste verwendet werden, die [verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)              |
 | [Administratorbenutzer](#admin-account)                            | `docker login`                                          | Interaktiver Push/Pull durch einen einzelnen Entwickler oder Tester                           | Nein, der Zugriff erfolgt immer per Pull/Push.  | Nur ein Konto pro Registrierung, wird nicht für mehrere Benutzer empfohlen         |

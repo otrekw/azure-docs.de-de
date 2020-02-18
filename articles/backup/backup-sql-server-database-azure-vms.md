@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 10f55bb4c5c488975f075aa0382296f808a9a5b1
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029570"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120831"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -87,7 +87,7 @@ So erstellen Sie eine Regel mit PowerShell:
 
 **Zulassen des Zugriffs mithilfe von Azure Firewall-Tags**. Wenn Sie Azure Firewall verwenden, erstellen Sie eine Anwendungsregel mithilfe des [FQDN-Tags](https://docs.microsoft.com/azure/firewall/fqdn-tags) „AzureBackup“. Es erlaubt den ausgehenden Zugriff auf Azure Backup.
 
-**Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
+**Bereitstellen eines HTTP-Proxyservers für das Weiterleiten von Datenverkehr**. Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, verwendet die Sicherungserweiterung auf dem virtuellen Computer die HTTPS-APIs, um Verwaltungsbefehle an Azure Backup und Daten an Azure Storage zu senden. Die Sicherungserweiterung verwendet auch Azure AD zur Authentifizierung. Leiten Sie den Datenverkehr der Sicherungserweiterung für diese drei Dienste über den HTTP-Proxy weiter. Für Azure Backup werden keine Platzhalterdomänen verwendet, die der Zulassungsliste für Ihre Proxyregeln hinzugefügt werden können. Sie müssen die Bereiche mit den öffentlichen IP-Adressen für diese Dienste verwenden, die von Azure bereitgestellt werden. Die Erweiterungen sind die einzigen Komponenten, die für den Zugriff auf das öffentliche Internet konfiguriert sind.
 
 Die Konnektivitätsoptionen haben u.a. die folgenden Vor- und Nachteile:
 
@@ -96,7 +96,7 @@ Die Konnektivitätsoptionen haben u.a. die folgenden Vor- und Nachteile:
 Zulassen von IP-Adressbereichen | Keine zusätzlichen Kosten | Komplexe Verwaltung, da sich die IP-Adressbereiche im Laufe der Zeit ändern <br/><br/> Zugriff auf alle Azure-Dienste, nicht nur auf Azure Storage
 Verwenden von NSG-Diensttags | Einfachere Verwaltung, da Bereichsänderungen automatisch zusammengeführt werden <br/><br/> Keine zusätzlichen Kosten <br/><br/> | Nur mit NSGs möglich <br/><br/> Zugriff auf den gesamten Dienst
 Verwenden von FQDN-Tags von Azure Firewall | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich
-Verwenden eines HTTP-Proxys | Feinsteuerung im Proxy über die Speicher-URLs zulässig <br/><br/> Zentraler Internetzugriffspunkt für VMs <br/><br/> Unterliegt keinen Azure-IP-Adressänderungen | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware
+Verwenden eines HTTP-Proxys | Zentraler Internetzugriffspunkt für VMs <br/> | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware <br/> Keine veröffentlichten FQDN-Adressen, Zulassungsregeln unterliegen Änderungen von Azure-IP-Adressen
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Benennungsrichtlinien für Datenbanken in Azure Backup
 

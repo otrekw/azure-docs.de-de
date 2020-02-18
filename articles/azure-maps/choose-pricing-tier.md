@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155756"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190280"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
 Azure Maps bietet die beiden Tarife S0 und S1. Dieser Artikel soll Ihnen bei der Auswahl des richtigen Tarifs für Ihre Ansprüche helfen. Um den richtigen Tarif auszuwählen, sollten Sie sich die folgenden zwei Fragen stellen.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welche Geofunktionen planen Sie, zu verwenden?
-Der Tarif S0 ist der richtige für Sie, wenn die Kerngeofunktions-APIs Ihre Dienstanforderungen erfüllen. Wenn Sie erweiterte Funktionen für Ihre Anwendung benötigen, sollten Sie den Tarif S1 in Erwägung ziehen. Beispiel für erweiterte Funktionen: Luft- und Hybridaufnahmen, Abruf von Routenbereichen und Batchgeocodierung. Die Tabelle **Tarife und Funktionen** kann Ihnen bei der Auswahl eines Tarifs helfen, der für Ihre Anwendung am besten geeignet ist.
-
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Wie viele gleichzeitige Benutzer planen Sie, zu unterstützen? 
-Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz verarbeitet. Im Tarif S0 können bis zu **50 Abfragen pro Sekunde** verarbeitet werden, während im Tarif S1 **mehr als 50 Abfragen pro Sekunde** verarbeitet werden können.
+Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz verarbeitet. Mit dem Tarif S0 werden bis zu **50 Abfragen pro Sekunde** verarbeitet. Während mit dem Tarif S1 **mehr als 50 Abfragen pro Sekunde** verarbeitet werden.
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welche Geofunktionen planen Sie, zu verwenden?
+Der Tarif S0 ist der richtige für Sie, wenn die Kerngeofunktions-APIs Ihre Dienstanforderungen erfüllen. Wenn Sie erweiterte Funktionen für Ihre Anwendung benötigen, sollten Sie den Tarif S1 in Erwägung ziehen. Erweiterte Funktionen umfassen: Luft- und Hybridaufnahmen, Abruf von Routenbereichen und Batchgeocodierung. Lesen Sie die Tabelle **Tarife und Funktionen**, um den Tarif auszuwählen, der für Ihre Anwendung am besten geeignet ist.
 
 ### <a name="pricing-tier-capabilities"></a>Tarife und Funktionen
 
@@ -46,7 +46,7 @@ Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz vera
 | Mobilität (Vorschau)                       |                     | ✓        |
 | Wetter (Vorschau)                        |✓                    |✓        |
 
-Diese zusätzliche Datenpunkte sollten in Betracht gezogen werden:
+Beachten Sie diese zusätzlichen Erwägungen:
 * In welchem Bereich ist Ihr Unternehmen tätig?
 * Wie wichtig ist Ihre Anwendung?
 
@@ -57,7 +57,7 @@ Einen besseren Eindruck von den Tarifen S0 und S1 verschafft Ihnen die Tabelle *
 | Tarif  |     Tarife und Kundenzielgruppen                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>Der Tarif S0 kann für Anwendungen in allen Phasen der Produktion verwendet werden: von der Entwicklung einer Machbarkeitsstudie und frühen Testphasen bis hin zur Produktion und Bereitstellung von Anwendungen. Dieser Tarif ist jedoch für die Entwicklung im geringeren Umfang oder für Kunden mit einer geringen Anzahl gleichzeitiger Benutzer oder beides konzipiert. <p>|
-| S1            |    <p>Der Tarif S1 richtet sich an Kunden, die Unterstützung für große Unternehmen, unternehmenskritische Anwendungen oder eine große Anzahl gleichzeitiger Benutzer benötigen. Er ist auch für Kunden geeignet, die komplexe Geodienste benötigen.</p>|
+| S1            |    <p>Der Tarif S1 richtet sich an Kunden mit großen Unternehmensanwendungen, unternehmenskritischen Anwendungen oder einer großen Anzahl gleichzeitiger Benutzer. Er ist auch für Kunden geeignet, die komplexe Geodienste benötigen.</p>|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 774d3325cff98ef01dc0b2e8d5c1db38e449d1b5
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982756"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045368"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -81,7 +81,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 - Eingabeansprüche:
   - **inputClaim1**: someone@contoso.com
   - **inputClaim2**: someone@outlook.com
-    - Eingabeparameter:
+- Eingabeparameter:
   - **stringComparison**:  ordinalIgnoreCase
 - Ergebnis: Fehler wird ausgelöst.
 
@@ -91,7 +91,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputClaim1 | string | Der Anspruchstyp, der geändert wird. |
+| InputClaim | inputClaim1 | string | Der Anspruchstyp, der geändert werden soll. |
 | InputParameter | toCase | string | Einer der folgenden Werte: `LOWER` oder `UPPER`. |
 | OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
@@ -326,7 +326,7 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
-Formatiert zwei Ansprüche anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode **String.Format** verwendet.
+Formatiert zwei Ansprüche anhand der angegebenen Formatzeichenfolge. Bei dieser Transformation wird die C#-Methode `String.Format` verwendet.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
@@ -361,6 +361,76 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
     - **stringFormat**: {0} {1}
 - Ausgabeansprüche:
     - **outputClaim:** Joe Fernando
+
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+
+Kopiert lokalisierte Zeichenfolgen in Ansprüche.
+
+| Element | TransformationClaimType | Datentyp | Notizen |
+| ---- | ----------------------- | --------- | ----- |
+| OutputClaim | Der Name der lokalisierten Zeichenfolge. | string | Die Liste mit den Anspruchstypen, die erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+
+Verwenden Sie die Anspruchstransformation „GetLocalizedStringsTransformation“ wie folgt:
+
+1. Definieren Sie eine [Lokalisierungszeichenfolge](localization.md), und ordnen Sie sie einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) zu.
+1. Der `ElementType` des `LocalizedString`-Elements muss auf `GetLocalizedStringsTransformationClaimType` festgelegt sein.
+1. `StringId` ist ein eindeutiger Bezeichner, den Sie definieren und später in Ihrer Anspruchstransformation nutzen.
+1. Geben Sie in der Anspruchstransformation die Liste mit den Ansprüchen an, die für die lokalisierte Zeichenfolge festgelegt werden sollen. `ClaimTypeReferenceId` ist ein Verweis auf ein „ClaimType“-Element, das bereits im Abschnitt „ClaimsSchema“ der Richtlinie definiert wurde. `TransformationClaimType` ist der Name der lokalisierten Zeichenfolge gemäß der Definition in der `StringId` des `LocalizedString`-Elements.
+1. Verweisen Sie in einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) oder einer Eingabe- oder Ausgabeanspruchstransformation des [Anzeigesteuerelements](display-controls.md) auf Ihre Anspruchstransformation.
+
+![GetLocalizedStringsTransformation](./media/string-transformations/get-localized-strings-transformation.png)
+
+Im folgenden Beispiel werden der E-Mail-Betreff, der Text, Ihre Codemeldung und die Signatur der E-Mail für lokalisierte Zeichenfolgen nachgeschlagen. Diese Ansprüche werden später von der benutzerdefinierten Vorlage für die E-Mail-Überprüfung verwendet.
+
+Definieren Sie lokalisierte Zeichenfolgen für Englisch (Standardeinstellung) und Spanisch.
+
+```XML
+<Localization Enabled="true">
+  <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
+    <SupportedLanguage>en</SupportedLanguage>
+    <SupportedLanguage>es</SupportedLanguage>
+   </SupportedLanguages>
+
+  <LocalizedResources Id="api.localaccountsignup.en">
+    <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+     </LocalizedStrings>
+   </LocalizedResources>
+   <LocalizedResources Id="api.localaccountsignup.es">
+     <LocalizedStrings>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Gracias por comprobar la cuenta de </LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Su código es</LocalizedString>
+      <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Atentamente</LocalizedString>
+    </LocalizedStrings>
+  </LocalizedResources>
+</Localization>
+```
+
+Die Anspruchstransformation legt den Wert des Anspruchstyps *subject* mit dem Wert von `StringId` *email_subject* fest.
+
+```XML
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Beispiel
+
+- Ausgabeansprüche:
+  - **subject**: E-Mail-Prüfcode für Contoso-Konto
+  - **message**: Vielen Dank für die Bestätigung Ihres Kontos! 
+  - **codeIntro**: Ihr Code lautet: 
+  - **signature**: Mit freundlichen Grüßen  
+
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
 
@@ -414,7 +484,7 @@ Sucht in einer Liste von Werten basierend auf dem Wert eines anderen Anspruchs n
 | InputClaim | inputParameterId | string | Der Anspruch, der den Suchwert enthält |
 | InputParameter | |string | Die Sammlung von inputParameters. |
 | InputParameter | errorOnFailedLookup | boolean | Steuert, ob bei keinem übereinstimmenden Suchergebnis ein Fehler zurückgegeben wird. |
-| OutputClaim | inputParameterId | string | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Wert der übereinstimmenden ID. |
+| OutputClaim | inputParameterId | string | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde. Der Wert der übereinstimmenden `Id`. |
 
 Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem Domänennamen gesucht. Bei der Anspruchstransformation wird in dem Bezeichner nach dem Domänennamen gesucht und der zugehörige Wert (eine Anwendungs-ID) zurückgegeben.
 
@@ -479,7 +549,7 @@ Ruft den Domänenteil einer E-Mail-Adresse ab.
 | InputClaim | emailAddress | string | Der Anspruchstyp, der die E-Mail-Adresse enthält. |
 | OutputClaim | Domäne | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde (die Domäne). |
 
-Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem Symbol @ des Benutzers analysieren. Dies kann beim Entfernen personenbezogener Informationen aus Überwachungsdaten hilfreich sein. Die folgende Anspruchstransformation veranschaulicht, wie der Domänenname aus einem Anspruch vom Typ **email** analysiert wird.
+Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem Symbol @ des Benutzers analysieren. Die folgende Anspruchstransformation veranschaulicht, wie der Domänenname aus einem Anspruch vom Typ **email** analysiert wird.
 
 ```XML
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
@@ -681,7 +751,7 @@ Extrahiert Teile eines Zeichenfolgenanspruchstyps ab dem Zeichen an der angegebe
 | InputClaim | inputClaim | string | Der Anspruchstyp, der die Zeichenfolge enthält. |
 | InputParameter | startIndex | INT | Die nullbasierte Anfangsposition einer Teilzeichenfolge in dieser Instanz. |
 | InputParameter | length | INT | Die Anzahl der Zeichen in der Teilzeichenfolge. |
-| OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der Teilzeichenfolge mit der Länge „length“ ab „startIndex“ in dieser Instanz entspricht, oder „Empty“, wenn „startIndex“ der Länge dieser Instanz entspricht und „length“ Null ist. |
+| OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der Teilzeichenfolge mit der Länge ab „startIndex“ in dieser Instanz entspricht, oder „Empty“, wenn „startIndex“ der Länge dieser Instanz entspricht und „length“ Null ist. |
 
 Ruft z. B. die Ländervorwahl der Telefonnummer ab.  
 
@@ -794,7 +864,7 @@ Gibt ein Zeichenfolgenarray zurück, das die Teilzeichenfolgen in dieser Instanz
 | InputParameter | Trennzeichen | string | Die als Trennzeichen zu verwendende Zeichenfolge, z. B. Komma `,`. |
 | OutputClaim | outputClaim | stringCollection | Eine Zeichenfolgenauflistung, deren Elemente die Teilzeichenfolgen in dieser Zeichenfolge enthalten, die durch den Eingabeparameter `delimiter` getrennt sind. |
   
-Im folgenden Beispiel wird eine Zeichenfolge von Benutzerrollen mit Kommatrennzeichen in eine Zeichenfolgenauflistung konvertiert.
+Im folgenden Beispiel wird eine Zeichenfolge mit durch Kommas getrennten Benutzerrollen in eine Zeichenfolgenauflistung konvertiert.
 
 ```XML
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">

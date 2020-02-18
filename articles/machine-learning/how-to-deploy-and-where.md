@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3b3b83719da4c1c19706845fa4cb1dc75712d145
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932392"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083238"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -172,22 +172,22 @@ Endpunkte mit mehreren Modellen verwenden einen freigegebenen Container, um mehr
 
 Ein E2E-Beispiel, das zeigt, wie mehrere Modelle hinter einem einzelnen containerisierten Endpunkt verwendet werden können, finden Sie in [diesem Beispiel](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-multi-model).
 
-## <a name="prepare-to-deploy"></a>Vorbereiten der Bereitstellung
+## <a name="prepare-deployment-artifacts"></a>Vorbereiten der Bereitstellungsartefakte
 
-Um das Modell bereitzustellen, benötigen Sie folgende Elemente:
+Sie benötigen Folgendes, um das Modell bereitzustellen:
 
-* Ein **Eingabeskript**. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderungen über Verwenden des Modells und gibt die Ergebnisse zurück.
+* **Eingabeskript und Quellcodeabhängigkeiten**. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderungen über Verwenden des Modells und gibt die Ergebnisse zurück.
 
     > [!IMPORTANT]
     > * Das Eingabeskript ist für Ihr Modell spezifisch. Es muss das Format der Daten der eingehenden Anforderung, das Format der im Modell erwarteten Daten und das Format der an Clients zurückgegebenen Daten erkennen.
     >
     >   Wenn die Anforderungsdaten in einem Format vorliegen, das in Ihrem Modell nicht verwendet werden kann, können sie im Skript in ein akzeptables Format umgewandelt werden. Außerdem kann die Antwort im Skript umgewandelt werden, bevor sie an den Client zurückgegeben wird.
     >
-    > * Das Azure Machine Learning SDK bietet keine Möglichkeit, mit der aus Webdiensten oder IoT Edge-Bereitstellungen auf Ihren Datenspeicher oder Ihre Datasets zugegriffen werden kann. Wenn in dem von Ihnen bereitgestellten Modell auf Daten zugegriffen werden muss, die außerhalb der Bereitstellung gespeichert sind, etwa Daten in einem Azure Storage-Konto, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
+    > * Webdienste und IoT Edge-Bereitstellungen können nicht auf Datenspeicher oder Datasets von Arbeitsbereichen zugreifen. Wenn in dem von Ihnen bereitgestellten Dienst auf Daten zugegriffen werden muss, die außerhalb der Bereitstellung gespeichert sind, z. B. Daten in einem Azure Storage-Konto, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
     >
     >   Eine Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-use-parallel-run-step.md), die während des Erstellens von Bewertungen Zugriff auf Datenspeicher bietet.
 
-* **Abhängigkeiten**, etwa Hilfsskripts oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind.
+* **Rückschlussumgebung**: Das Basisimage mit den installierten Paketabhängigkeiten zum Ausführen des Modells.
 
 * Die **Bereitstellungskonfiguration** für das Computeziel, von dem das bereitgestellte Modell gehostet wird. Diese Konfiguration beschreibt Aspekte wie Arbeitsspeicher- und CPU-Anforderungen für die Ausführung des Modells.
 
@@ -485,7 +485,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-### <a name="2-define-your-inferenceconfig"></a>2. Definieren der Rückschlusskonfiguration
+### <a name="2-define-your-inference-environment"></a>2. Definieren Ihrer Rückschlussumgebung
 
 Die Rückschlusskonfiguration beschreibt, wie das Modell zum Treffen von Vorhersagen konfiguriert wird. Diese Konfiguration ist kein Bestandteil Ihres Eingabeskripts. Sie verweist auf Ihr Eingabeskript und wird dazu verwendet, nach allen Ressourcen zu suchen, die für die Bereitstellung benötigt werden. Sie wird später verwendet, wenn Sie das Modell bereitstellen.
 
@@ -547,41 +547,6 @@ Die Klassen für lokale, Azure Container Instances- und AKS-Webdienste können a
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
-
-#### <a name="profiling"></a>Profilerstellung
-
-Bevor Sie Ihr Modell als Dienst bereitstellen, möchten Sie möglicherweise ein Profil für Ihr Modell erstellen, um die optimalen CPU- und Arbeitsspeicheranforderungen zu bestimmen. Sie können entweder über das SDK oder die CLI ein Profil für Ihr Modell erstellen. Die folgenden Beispiele zeigen, wie mit dem SDK ein Profil für ein Modell erstellt werden kann.
-
-> [!IMPORTANT]
-> Wenn Sie Profilerstellung verwenden, kann die von Ihnen bereitgestellte Rückschlusskonfiguration nicht auf eine Azure Machine Learning-Umgebung verweisen. Definieren Sie stattdessen die Softwareabhängigkeiten, indem Sie den `conda_file`-Parameter des `InferenceConfig`-Objekts verwenden.
-
-```python
-import json
-test_data = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10]
-]})
-
-profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
-profile.wait_for_profiling(True)
-profiling_results = profile.get_results()
-print(profiling_results)
-```
-
-Mit diesem Code wird ein Ergebnis angezeigt, das der folgenden Ausgabe ähnelt:
-
-```python
-{'cpu': 1.0, 'memoryInGB': 0.5}
-```
-
-Die Ergebnisse der Profilerstellung für das Modell werden als `Run`-Objekt ausgegeben.
-
-Informationen zur Verwendung der Profilerstellung über die CLI finden Sie unter [az ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
-
-Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
-
-* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
-* [Rückschlusskonfigurationsdatei-Schema](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Bereitstellen auf dem Ziel
 

@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: aed22cab9281f272421a574efebcf346139348d5
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121878"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120617"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -86,8 +86,22 @@ Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können
 Bei Bereitstellungen auf Abonnementebene müssen bei der Verwendung von Vorlagenfunktionen einige wichtige Aspekte berücksichtigt werden:
 
 * Die Funktion [resourceGroup()](template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
-* Die Funktion [resourceId()](template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Abonnementebene verwendet werden. Rufen Sie beispielsweise die Ressourcen-ID für eine Richtliniendefinition mit `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` ab. Sie können auch mit der Funktion [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) die Ressourcen-ID für eine Ressource auf der Abonnementebene abrufen.
 * Die Funktionen [reference()](template-functions-resource.md#reference) und [list()](template-functions-resource.md#list) werden unterstützt.
+* Die Funktion [resourceId()](template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Abonnementebene verwendet werden. Geben Sie für den Parameter der Ressourcengruppe keinen Wert an.
+
+  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  Die zurückgegebene Ressourcen-ID hat das folgende Format:
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  Sie können auch mit der Funktion [subscriptionResourceId()](template-functions-resource.md#subscriptionresourceid) die Ressourcen-ID für eine Ressource auf der Abonnementebene abrufen.
 
 ## <a name="create-resource-groups"></a>Erstellen von Ressourcengruppe
 
@@ -98,7 +112,7 @@ Mit der folgenden Vorlage wird eine leere Ressourcengruppe erstellt.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ Verwenden Sie das [copy-Element](create-multiple-instances.md) mit Ressourcengru
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ Das folgende Beispiel erstellt eine Ressourcengruppe und stellt ein Speicherkont
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -357,6 +371,11 @@ New-AzDeployment `
   -Location centralus `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json
 ```
+
+## <a name="template-samples"></a>Vorlagenbeispiele
+
+* Erstellen Sie eine Ressourcengruppe, sperren Sie sie, und gewähren Sie die Berechtigungen dafür. Klicken Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
+* Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung.  Klicken Sie [hier](https://github.com/Azure/azure-docs-json-samples/blob/master/subscription-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

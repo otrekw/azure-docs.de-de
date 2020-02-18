@@ -1,24 +1,22 @@
 ---
-title: Verwenden des Portals für Wartungsbenachrichtigungen für virtuelle Azure-Computer
+title: Verwenden des Portals für Wartungsbenachrichtigungen
 description: Zeigen Sie Wartungsbenachrichtigungen für in Azure ausgeführte virtuelle Computer über das Portal an, und starten Sie eine Self-Service-Wartung.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534926"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115742"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen über das Portal
 
-**Dieser Artikel gilt für virtuelle Computer, auf denen Linux und Windows ausgeführt wird.**
+**Dieser Artikel gilt für virtuelle Computer, auf denen sowohl Linux als auch Windows ausgeführt wird.**
 
 Nachdem eine [geplante Wartung](maintenance-notifications.md) angesetzt wurde, können Sie nach einer Liste der virtuellen Computer suchen, die betroffen sind. 
 
@@ -34,7 +32,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
    **Wartungsstatus**: Zeigt den Wartungsstatus für den virtuellen Computer an. Mögliche Werte:
       
-      | Wert | BESCHREIBUNG |
+      | value | BESCHREIBUNG |
       |-------|-------------|
       | Jetzt starten | Der virtuelle Computer befindet sich im Zeitfenster für die Self-Service-Wartung, in dem Sie die Wartung selbst initiieren können. Informationen zum Starten der Wartung für Ihren virtuellen Computer finden Sie weiter unten. | 
       | Geplant | Die Wartung für den virtuellen Computer ist geplant und kann nicht von Ihnen initiiert werden. Informationen zum Wartungszeitfenster erhalten Sie, indem Sie in dieser Ansicht „Wartung – geplantes Fenster“ auswählen oder auf den virtuellen Computer klicken. | 

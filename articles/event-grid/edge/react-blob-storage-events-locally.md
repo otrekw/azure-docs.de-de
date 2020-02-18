@@ -9,12 +9,12 @@ ms.date: 12/13/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 2f52d72a1f2e3c3d1f3495c4b7f6f633db30778e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437284"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086606"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Tutorial: Reagieren auf Blob Storage-Ereignisse in IoT Edge (Preview)
 In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage für das IoT-Modul bereitstellen, das als Event Grid-Herausgeber fungieren würde, um Ereignisse bei der Blob-Erstellung und Blob-Löschung an Event Grid zu senden.  
@@ -62,9 +62,8 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     ```json
         {
           "Env": [
-           "inbound:serverAuth:tlsPolicy=enabled",
-           "inbound:clientAuth:clientCert:enabled=false",
-           "outbound:webhook:httpsOnly=false"
+           "inbound__serverAuth__tlsPolicy=enabled",
+           "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,18 +78,15 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     ```    
 
  1. Klicken Sie unten auf der Seite auf **Speichern**.
- 1. Fahren Sie mit dem nächsten Abschnitt fort, um das Azure Functions-Modul hinzuzufügen.
+ 1. Fahren Sie mit dem nächsten Abschnitt fort, um vor der gemeinsamen Bereitstellung das Azure Event Grid-Abonnent-Modul hinzuzufügen.
 
     >[!IMPORTANT]
-    > In diesem Tutorial erfahren Sie, wie Sie das Event Grid-Modul so bereitstellen, dass HTTP- und HTTPS-Anforderungen zulässig sind, Clientauthentifizierung deaktiviert wird und HTTP-Abonnenten zulässig sind. Für Produktionsworkloads empfiehlt es sich, dass Sie lediglich HTTPS-Anforderungen und Abonnenten mit aktivierter Clientauthentifizierung aktivieren. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
+    > In diesem Tutorial erfahren Sie, wie Sie das Event Grid-Modul so bereitstellen, dass HTTP- und HTTPS-Anforderungen zulässig sind, und wie Sie die Clientauthentifizierung deaktivieren. Für Produktionsworkloads empfiehlt es sich, dass Sie lediglich HTTPS-Anforderungen und Abonnenten mit aktivierter Clientauthentifizierung aktivieren. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Bereitstellen des Azure Functions-IoT Edge-Moduls
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Bereitstellen des IoT Edge-Moduls für Event Grid-Abonnenten
 
-In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitstellen, das als Event Grid-Abonnent fungiert, an den Ereignisse übermittelt werden können.
-
->[!IMPORTANT]
->In diesem Abschnitt stellen Sie als Beispiel ein Azure Functions-basiertes Abonnementmodul bereit. Es kann sich natürlich um ein beliebiges benutzerdefiniertes IoT-Modul handeln, das auf HTTP POST-Anforderungen lauschen kann.
+In diesem Abschnitt erfahren Sie, wie Sie ein weiteres IoT-Modul als Ereignishandler bereitstellen, an den Ereignisse übermittelt werden können.
 
 ### <a name="add-modules"></a>Hinzufügen von Modulen
 
@@ -99,23 +95,8 @@ In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitst
 1. Geben Sie den Namen, das Image und die Optionen für die Containererstellung für den Container an:
 
    * **Name**: subscriber
-   * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Optionen für Containererstellung**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Optionen für Containererstellung**: Keine
 1. Klicken Sie unten auf der Seite auf **Speichern**.
 1. Fahren Sie mit dem nächsten Abschnitt fort, um das Azure Blob Storage-Modul hinzuzufügen.
 
@@ -133,7 +114,7 @@ In diesem Abschnitt erfahren Sie, wie Sie das Azure Blob Storage-Modul bereitste
    * **Image-URI**: mcr.microsoft.com/azure-blob-storage:latest
    * **Optionen für Containererstellung**:
 
-```json
+   ```json
        {
          "Env":[
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
@@ -149,13 +130,12 @@ In diesem Abschnitt erfahren Sie, wie Sie das Azure Blob Storage-Modul bereitste
            }
          }
        }
-```
-> [!IMPORTANT]
-> - Das Blob Storage-Modul kann Ereignisse mithilfe von HTTPS und HTTP veröffentlichen. 
-> - Wenn Sie clientbasierte Authentifizierung für EventGrid aktiviert haben, stellen Sie sicher, dass Sie den Wert EVENTGRID_ENDPOINT wie folgt aktualisieren, um HTTPS zuzulassen: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438` 
-> - Fügen Sie dem obigen JSON-Code außerdem eine weitere Umgebungsvariable `AllowUnknownCertificateAuthority=true` hinzu. Bei der Kommunikation mit EventGrid über HTTPS ermöglicht **AllowUnknownCertificateAuthority**, dass das Speichermodul selbstsignierten EventGrid-Serverzertifikaten vertraut.
+   ```
 
-
+   > [!IMPORTANT]
+   > - Das Blob Storage-Modul kann Ereignisse mithilfe von HTTPS und HTTP veröffentlichen. 
+   > - Wenn Sie die clientbasierte Authentifizierung für Event Grid aktiviert haben, sollten Sie sicherstellen, dass Sie den Wert EVENTGRID_ENDPOINT wie folgt aktualisieren, um HTTPS zuzulassen: `EVENTGRID_ENDPOINT=https://<event grid module name>:4438`.
+   > - Fügen Sie dem obigen JSON-Code außerdem `AllowUnknownCertificateAuthority=true` als weitere Umgebungsvariable hinzu. Bei der Kommunikation mit EventGrid über HTTPS ermöglicht **AllowUnknownCertificateAuthority**, dass das Speichermodul selbstsignierten EventGrid-Serverzertifikaten vertraut.
 
 4. Aktualisieren Sie den kopierten JSON-Code mit folgenden Informationen:
 
@@ -221,42 +201,41 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
 2. Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröffentlicht werden. Zum Empfang von Ereignissen müssen Sie ein Event Grid-Abonnement für das Thema **MicrosoftStorage** erstellen.
     1. Erstellen Sie „blobsubscription.json“ mit dem folgenden Inhalt. Ausführliche Informationen zur Nutzlast finden Sie in unserer [API-Dokumentation](api.md).
 
-    ```json
+       ```json
         {
           "properties": {
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    >[!NOTE]
-    > Die **endpointType**-Eigenschaft gibt an, dass es sich bei dem Abonnenten um einen **Webhook** handelt.  Die **endpointUrl** gibt die URL an, an der der Abonnent auf Ereignisse lauscht. Diese URL entspricht der aus dem Azure Functions-Beispiel, das Sie zuvor bereitgestellt haben.
+       >[!NOTE]
+       > Die **endpointType**-Eigenschaft gibt an, dass es sich bei dem Abonnenten um einen **Webhook** handelt.  Die **endpointUrl** gibt die URL an, an der der Abonnent auf Ereignisse lauscht. Diese URL entspricht der aus dem Azure Functions-Beispiel, das Sie zuvor bereitgestellt haben.
 
     2. Führen Sie den folgenden Befehl aus, um ein Abonnement für das Thema zu erstellen. Vergewissern Sie sich, dass der HTTP-Statuscode `200 OK` angezeigt wird.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    > [!IMPORTANT]
-    > - Wenn Clientauthentifizierung über den SAS-Schlüssel aktiviert ist, sollte für den HTTPS-Flow der zuvor angegebene SAS-Schlüssel als Header hinzugefügt werden. Daher lautet die curl-Anforderung wie folgt: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
-    > - Für den HTTPS-Flow lautet die curl-Anforderung folgendermaßen, wenn Clientauthentifizierung über das Zertifikat aktiviert ist: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-
+       > [!IMPORTANT]
+       > - Wenn Clientauthentifizierung über den SAS-Schlüssel aktiviert ist, sollte für den HTTPS-Flow der zuvor angegebene SAS-Schlüssel als Header hinzugefügt werden. Daher lautet die curl-Anforderung wie folgt: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview` 
+       > - Für den HTTPS-Flow lautet die curl-Anforderung folgendermaßen, wenn Clientauthentifizierung über das Zertifikat aktiviert ist: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X PUT -g -d @blobsubscription.json https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
     3. Führen Sie den folgenden Befehl aus, um zu bestätigen, dass das Abonnement erfolgreich erstellt wurde. Der HTTP-Statuscode „200 OK“ sollte zurückgegeben werden.
 
-    ```sh
-    curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
-    ```
+       ```sh
+       curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview
+       ```
 
-    Beispielausgabe:
+       Beispielausgabe:
 
-    ```json
+       ```json
         {
           "id": "/iotHubs/eg-iot-edge-hub/devices/eg-edge-device/modules/eventgridmodule/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5",
           "type": "Microsoft.EventGrid/eventSubscriptions",
@@ -266,18 +245,18 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
         }
-    ```
+       ```
 
-    > [!IMPORTANT]
-    > - Wenn Clientauthentifizierung über den SAS-Schlüssel aktiviert ist, sollte für den HTTPS-Flow der zuvor angegebene SAS-Schlüssel als Header hinzugefügt werden. Daher lautet die curl-Anforderung wie folgt: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
-    > - Für den HTTPS-Flow lautet die curl-Anforderung folgendermaßen, wenn Clientauthentifizierung über das Zertifikat aktiviert ist: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > [!IMPORTANT]
+       > - Wenn Clientauthentifizierung über den SAS-Schlüssel aktiviert ist, sollte für den HTTPS-Flow der zuvor angegebene SAS-Schlüssel als Header hinzugefügt werden. Daher lautet die curl-Anforderung wie folgt: `curl -k -H "Content-Type: application/json" -H "aeg-sas-key: <your SAS key>" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
+       > - Für den HTTPS-Flow lautet die curl-Anforderung folgendermaßen, wenn Clientauthentifizierung über das Zertifikat aktiviert ist: `curl -k -H "Content-Type: application/json" --cert <certificate file> --key <certificate private key file> -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage/eventSubscriptions/sampleSubscription5?api-version=2019-01-01-preview`
 
-2. Laden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunter, und [verbinden Sie ihn mit Ihrem lokalen Speicher](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer).
+3. Laden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) herunter, und [verbinden Sie ihn mit Ihrem lokalen Speicher](../../iot-edge/how-to-store-data-blob.md#connect-to-your-local-storage-with-azure-storage-explorer).
 
 ## <a name="verify-event-delivery"></a>Überprüfen der Ereignisübermittlung
 
@@ -289,7 +268,7 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
     Beispielausgabe:
 
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "d278f2aa-2558-41aa-816b-e6d8cc8fa140",
               "topic": "MicrosoftStorage",
@@ -309,7 +288,6 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 ### <a name="verify-blobdeleted-event-delivery"></a>Überprüfen der BlobDeleted-Ereignisübermittlung
@@ -320,7 +298,7 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
     Beispielausgabe:
     
     ```json
-            Received event data [
+            Received Event:
             {
               "id": "ac669b6f-8b0a-41f3-a6be-812a3ce6ac6d",
               "topic": "MicrosoftStorage",
@@ -340,7 +318,6 @@ Behalten Sie Standardrouten bei, und wählen Sie **Weiter** aus, um mit dem Absc
                 "blobType": "BlockBlob"
               }
             }
-          ]
     ```
 
 Glückwunsch! Sie haben das Tutorial abgeschlossen. Die folgenden Abschnitte bieten Details zu den Ereigniseigenschaften.
@@ -349,7 +326,7 @@ Glückwunsch! Sie haben das Tutorial abgeschlossen. Die folgenden Abschnitte bie
 
 Im Folgenden finden Sie die Liste der unterstützten Ereigniseigenschaften mit ihren zugehörigen Typen und Beschreibungen. 
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | type | Beschreibung |
 | -------- | ---- | ----------- |
 | topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -366,7 +343,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | -------- | ---- | ----------- |
 | api | string | Der Vorgang, durch den das Ereignis ausgelöst wurde. Es kann sich um einen der folgenden Werte handeln: <ul><li>BlobCreated: zulässige Werte sind: `PutBlob` und `PutBlockList`.</li><li>BlobDeleted: zulässige Werte sind: `DeleteBlob`, `DeleteAfterUpload` und `AutoDelete`. <p>Das `DeleteAfterUpload`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil die gewünschte Eigenschaft „deleteAfterUpload“ auf „true“ festgelegt ist. </p><p>Das `AutoDelete`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil der Wert der gewünschten Eigenschaft „deleteAfterMinutes“ abgelaufen ist.</p></li></ul>|
 | clientRequestId | string | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Ausführliche Informationen finden Sie unter [Protokollformat](/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | string | Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| requestId | string | Vom Dienst generierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
 | eTag | string | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
 | contentType | string | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |

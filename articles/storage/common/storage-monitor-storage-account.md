@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862831"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116273"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -25,6 +25,8 @@ Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/sto
 > Für die Untersuchung von Überwachungsdaten im Azure-Portal fallen Kosten an. Weitere Informationen finden Sie unter [Storage Analytics](storage-analytics.md).
 >
 > Azure Files unterstützt derzeit Storage Analytics-Metriken, allerdings noch keine Protokollierung.
+>
+> Für Blockblob-Speicherkonten mit Premium-Leistung werden keine Storage Analytics-Metriken unterstützt, sondern nur die Protokollierung. Sie können die Protokollierung programmgesteuert per REST-API oder über die Clientbibliothek aktivieren. Wenn Sie Metriken über Blockblob-Speicherkonten mit Premium-Leistung anzeigen möchten, können Sie die Verwendung von [Azure Storage-Metriken in Azure Monitor](storage-metrics-in-azure-monitor.md) erwägen.
 >
 > Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
 >

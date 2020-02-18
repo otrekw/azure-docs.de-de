@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: c5e58f496176ec0f1b8317c8b862a8ef2ffa434d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 96515d81668bf172325f88e3e5bac8d8cccfa999
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262734"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190856"
 ---
 # <a name="connect-your-domain-name-server"></a>Verbinden eines Domänennamenservers
 
@@ -73,7 +73,17 @@ Die Lösung sammelt Daten zum DNS-Inventar und zu DNS-Ereignissen von den DNS-Se
 
 Suchen Sie in Log Analytics nach dem Schema **DnsEvents**, und stellen Sie sicher, dass drei Ereignisse vorhanden sind.
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn Suchabfragen in Azure Sentinel nicht angezeigt werden, führen Sie die folgenden Schritte aus, damit die Abfragen ordnungsgemäß angezeigt werden:
+1. Aktivieren Sie die [DNS-Analyseprotokolle auf Ihren Servern](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn800669(v=ws.11)).
+2. Stellen Sie sicher, dass DNSEvents in der Liste Ihrer Log Analytics-Sammlung angezeigt wird.
+3. Aktivieren Sie [Azure DNS-Analysen](../azure-monitor/insights/dns-analytics.md).
+4. Ändern Sie in Azure DNS-Analysen unter **Konfiguration** die Einstellungen, speichern Sie sie, und ändern Sie sie bei Bedarf wieder zurück, und speichern Sie sie dann erneut.
+5. Überprüfen Sie Azure DNS-Analysen, um sicherzustellen, dass die Abfragen jetzt angezeigt werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel haben Sie gelernt, wie Sie lokale DNS-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).

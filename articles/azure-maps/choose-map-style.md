@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911792"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189738"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Auswählen eines Kartenstils in Azure Maps
 
-Viele der [unterstützten Kartenstile in Azure Maps](./supported-map-styles.md) sind im Web SDK verfügbar. In diesem Artikel wird gezeigt, wie Sie mit den stilbezogenen Funktionen einen Stil für eine geladene Karte festlegen, einen neuen Stil festlegen und das Stilauswahlsteuerelement verwenden.
+Viele der [unterstützten Kartenstile in Azure Maps](./supported-map-styles.md) sind im Web SDK verfügbar. Dieser Artikel beschreibt die Verwendung der stilbezogenen Funktionen. Erfahren Sie, wie Sie beim Laden einer Karte einen Stil festlegen, und erfahren Sie, wie Sie mithilfe des Stilauswahl-Steuerelements einen neuen Kartenstil festlegen.
 
 ## <a name="set-style-on-map-load"></a>Festlegen des Stils für die geladene Karte
 
@@ -30,7 +30,7 @@ Im folgenden Code wird die Option `style` der Karte bei der Initialisierung auf 
 
 ## <a name="update-the-style"></a>Aktualisieren des Stils
 
-Im folgenden Code wird nach dem Laden einer Karteninstanz der Kartenstil mithilfe der Funktion [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) der Karte von `road` auf `satellite` aktualisiert:
+Im folgenden Code wird nach dem Laden einer Karteninstanz der Kartenstil mithilfe der Funktion [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) von `road` auf `satellite` aktualisiert.
 
 <br/>
 
@@ -39,7 +39,7 @@ Im folgenden Code wird nach dem Laden einer Karteninstanz der Kartenstil mithilf
 
 ## <a name="add-the-style-picker"></a>Hinzufügen der Stilauswahl
 
-Der folgende Code fügt der Karte ein Element vom Typ [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) hinzu, damit der Benutzer mühelos zwischen den verschiedenen Kartenstilen wechseln kann: 
+Der folgende Code fügt der Karte ein Element vom Typ [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) hinzu, damit der Benutzer mühelos zwischen den verschiedenen Kartenstilen wechseln kann. Schalten Sie den Kartenstil mithilfe des Kartenstil-Steuerelements in der Nähe der oberen rechten Ecke um.
 
 <br/>
 
@@ -47,7 +47,7 @@ Der folgende Code fügt der Karte ein Element vom Typ [StyleControl](/javascript
 </iframe>
 
 > [!TIP]
-> Standardmäßig listet das Steuerelement für die Stilauswahl alle verfügbaren Stile auf, wenn standardmäßig der S0-Tarif Azure Maps verwendet wird. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
+> Standardmäßig listet das Steuerelement für die Stilauswahl alle verfügbaren Stile auf, wenn der S0-Tarif von Azure Maps verwendet wird. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

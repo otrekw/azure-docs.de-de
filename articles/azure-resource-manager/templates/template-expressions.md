@@ -2,19 +2,21 @@
 title: Vorlagensyntax und -ausdrücke
 description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476280"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120602"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax und Ausdrücke in Azure Resource Manager-Vorlagen
 
 Die grundlegende Syntax der Vorlage ist JSON. Allerdings können Sie Ausdrücke verwenden, um die JSON-Werte zu erweitern, die in der Vorlage zur Verfügung stehen.  Ausdrücke beginnen und enden mit Klammern, entsprechend `[` und `]`. Der Wert des Ausdrucks wird bei der Bereitstellung der Vorlage ausgewertet. Ein Ausdruck kann eine Zeichenfolge, eine ganze Zahl, einen booleschen Wert, ein Array oder ein Objekt zurückgeben.
 
 Ein Vorlagenausdruck darf aus maximal 24.576 Zeichen bestehen.
+
+Für Ausdrücke wird „json('null')“ und für Eigenschaften ein Literalwert von „null“ unterstützt. In beiden Fällen wird dies von Resource Manager-Vorlagen so behandelt, als ob die Eigenschaft nicht vorhanden ist.
 
 ## <a name="use-functions"></a>Verwenden von Funktionen
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/18/2019
+ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3d9316f42c8d0ac5b44cda2e484ca4c92110813d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474728"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045934"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C
 
@@ -389,6 +389,36 @@ Weitere Informationen finden Sie unter [Selbstbestätigtes technisches Profil](r
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
+```
+
+## <a name="optional-localize-your-email"></a>[Optional] Lokalisieren Ihrer E-Mail
+
+Zum Lokalisieren der E-Mail müssen Sie lokalisierte Zeichenfolgen an SendGrid oder Ihren E-Mail-Anbieter senden. Dies kann beispielsweise die Lokalisierung des E-Mail-Betreffs, des Texts, Ihrer Codemeldung oder der Signatur der E-Mail umfassen. Hierfür können Sie die Anspruchstransformation [GetLocalizedStringsTransformation](string-transformations.md) nutzen, um lokalisierte Zeichenfolgen in Anspruchstypen zu kopieren. In der Anspruchstransformation `GenerateSendGridRequestBody`, mit der die JSON-Nutzlast generiert wird, werden Eingabeansprüche verwendet, die die lokalisierten Zeichenfolgen enthalten.
+
+1. Definieren Sie in Ihrer Richtlinie die folgenden Zeichenfolgenansprüche: „subject“, „message“, „codeIntro“ und „signature“.
+1. Definieren Sie die Anspruchstransformation [GetLocalizedStringsTransformation](string-transformations.md), um die lokalisierten Zeichenfolgenwerte in den Ansprüchen aus Schritt 1 zu ersetzen.
+1. Ändern Sie die Anspruchstransformation `GenerateSendGridRequestBody`, um Eingabeansprüche mit dem folgenden XML-Codeausschnitt zu verwenden.
+1. Aktualisieren Sie Ihre SendGrind-Vorlage, um dynamische Parameter anstelle aller Zeichenfolgen zu verwenden, die mit Azure AD B2C lokalisiert werden.
+
+```XML
+<ClaimsTransformation Id="GenerateSendGridRequestBody" TransformationMethod="GenerateJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.to.0.email" />
+    <InputClaim ClaimTypeReferenceId="subject" TransformationClaimType="personalizations.0.dynamic_template_data.subject" />
+    <InputClaim ClaimTypeReferenceId="otp" TransformationClaimType="personalizations.0.dynamic_template_data.otp" />
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="personalizations.0.dynamic_template_data.email" />
+    <InputClaim ClaimTypeReferenceId="message" TransformationClaimType="personalizations.0.dynamic_template_data.message" />
+    <InputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="personalizations.0.dynamic_template_data.codeIntro" />
+    <InputClaim ClaimTypeReferenceId="signature" TransformationClaimType="personalizations.0.dynamic_template_data.signature" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="template_id" DataType="string" Value="d-1234567890" />
+    <InputParameter Id="from.email" DataType="string" Value="my_email@mydomain.com" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="sendGridReqBody" TransformationClaimType="outputClaim" />
+  </OutputClaims>
+</ClaimsTransformation>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

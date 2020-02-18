@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
-ms.openlocfilehash: ba14a6bb9e234a5eae34232fc617f8b04284cd4f
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 8071ddbc5f6073598daf0a08d359ccd19ccd1e4a
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147463"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110806"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>Senden von C2D-Nachrichten mit IoT Hub (Node.js)
 
@@ -34,7 +34,7 @@ Weitere Informationen zu Cloud-zu-Gerät-Nachrichten finden Sie im [Entwicklungs
 
 Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 
-* **SimulatedDevice** ist eine modifizierte Version der App, die in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-node.md) erstellt wurde. Sie stellt eine Verbindung mit Ihrem IoT-Hub her und empfängt C2D-Nachrichten.
+* **SimulatedDevice** ist eine modifizierte Version der App, die in [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-node.md) erstellt wurde. Sie stellt eine Verbindung mit Ihrem IoT-Hub her und empfängt C2D-Nachrichten.
 
 * **SendCloudToDeviceMessage** sendet über IoT Hub eine C2D-Nachricht an die simulierte Geräte-App und empfängt die zugehörige Übermittlungsbestätigung.
 
@@ -47,6 +47,8 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 * Node.js, Version 10.0.x oder höher. Unter [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) erstellen.)
+
+* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App
 

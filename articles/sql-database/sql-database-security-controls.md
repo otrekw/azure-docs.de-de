@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802840"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190692"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Sicherheitskontrollen für Azure SQL-Datenbank
 
@@ -44,10 +44,10 @@ SQL-Datenbank umfasst Konzepte für [Einzeldatenbanken](sql-database-single-inde
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja | Azure Active Directory (Azure AD) |
+| Authentifizierung| Ja | Azure Active Directory (Azure AD) |
 | Authorization| Ja | Keine |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
@@ -55,7 +55,7 @@ SQL-Datenbank umfasst Konzepte für [Einzeldatenbanken](sql-database-single-inde
 | Verschlüsselung während der Übertragung:<ul><li>Azure ExpressRoute-Verschlüsselung</li><li>Verschlüsselung in einem virtuellen Netzwerk</li><li>Verschlüsselung zwischen virtuellen Netzwerken</ul>| Ja | Mithilfe von HTTPS |
 | Behandeln von Verschlüsselungsschlüsseln, wie z. B. CMK oder BYOK| Ja | Es wird sowohl die Verarbeitung von vom Dienst verwalteten Schlüsseln als auch die Verarbeitung von vom Kunden verwalteten Schlüsseln angeboten. Letztere Option wird über [Azure Key Vault](../key-vault/index.yml) angeboten. |
 | Verschlüsselung auf Spaltenebene, die von Azure Data Services bereitgestellt wird| Ja | Durch [Always Encrypted](sql-database-always-encrypted.md). |
-| Verschlüsselte API-Aufrufe| Ja | Mithilfe von HTTPS/SSL. |
+| Verschlüsselte API-Aufrufe| Ja | Mithilfe von HTTPS/TLS. |
 
 ## <a name="configuration-management"></a>Konfigurationsverwaltung
 

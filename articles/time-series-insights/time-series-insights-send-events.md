@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981105"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152515"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 
@@ -73,12 +73,18 @@ Das Time Series Insights-Update verwendet Instanzen, um eingehenden Telemetrieda
 
     [![Kopieren des Werts der Primärschlüssel-Verbindungszeichenfolge](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Gehe zu https://tsiclientsample.azurewebsites.net/windFarmGen.html. Die URL führt simulierte Windenergieanlagen aus.
+1. Gehe zu https://tsiclientsample.azurewebsites.net/windFarmGen.html. Über die URL werden simulierte Windenergieanlagen erstellt und ausgeführt.
 1. Fügen Sie in das Feld **Event Hub-Verbindungszeichenfolge** auf der Webseite die Verbindungszeichenfolge ein, die Sie im [Eingabefeld für Windenergieanlagen](#push-events-to-windmills-sample) kopiert haben.
   
     [![Einfügen der Primärschlüssel-Verbindungszeichenfolge in das Feld „Event Hub-Verbindungszeichenfolge“](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Wählen Sie **Zum Starten klicken** aus. Der Simulator generiert Instanz-JSON, das Sie direkt verwenden können.
+1. Wählen Sie **Zum Starten klicken** aus. 
+
+    > [!TIP]
+    > Der Windenergieanlagen-Simulator erstellt auch JSON-Code, den Sie als Nutzlast für die [Time Series Insights-GA-Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) verwenden können.
+
+    > [!NOTE]
+    > Der Simulator sendet weiterhin Daten, bis der Browsertab geschlossen wird.
 
 1. Wechseln Sie zu Ihrem Event Hub im Azure-Portal zurück. Auf der Seite **Übersicht** werden die neuen vom Event Hub empfangenen Ereignisse angezeigt.
 

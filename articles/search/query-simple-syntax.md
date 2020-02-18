@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,23 +19,25 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792554"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152668"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Einfache Abfragesyntax in der kognitiven Azure-Suche
 
 Die kognitive Azure-Suche implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). In der kognitiven Azure-Suche schließt die einfache Abfragesyntax die Fuzzy-/Slop-Optionen aus.  
 
-> [!NOTE]  
->  Für komplexere Abfragen bietet die kognitive Azure-Suche eine alternative [Lucene-Abfragesyntax](query-lucene-syntax.md). Weitere Informationen über die Abfrageanalysearchitektur und die Vorteile der einzelnen Syntaxen finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
+> [!NOTE]
+> Die einfache Abfragesyntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Diese unterschiedlichen Syntaxen verfügen über eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
+>
+> Für komplexere Abfragen verfügt Azure Cognitive Search im Parameter **search** über eine alternative [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md). Weitere Informationen über die Abfrageanalysearchitektur und die Vorteile der einzelnen Syntaxen finden Sie unter [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Aufrufen der einfachen Analyse
 
-Die einfache Syntax ist die Standardeinstellung. Der Aufruf ist nur notwendig, wenn Sie die Syntax von vollständig auf einfach zurücksetzen. Um die Syntax explizit festzulegen, verwenden Sie den `queryType`-Suchparameter. Gültige Werte sind `simple|full`, mit `simple` als Standard und `full` für Lucene. 
+Die einfache Syntax ist die Standardeinstellung. Der Aufruf ist nur notwendig, wenn Sie die Syntax von vollständig auf einfach zurücksetzen. Um die Syntax explizit festzulegen, verwenden Sie den `queryType`-Suchparameter. Gültige Werte sind `simple|full` (der Standardwert ist `simple`) und `full` für Lucene. 
 
 ## <a name="query-behavior-anomalies"></a>Anomalien beim Abfrageverhalten
 
@@ -55,7 +57,7 @@ Der AND-Operator ist ein Pluszeichen (+). Zum Beispiel sucht `wifi+luxury` nach 
 
 ### <a name="or-operator-"></a>OR-Operator`|`
 
-Der OR-Operator ist ein vertikaler Balken oder ein senkrechter Strich. Zum Beispiel sucht `wifi | luxury` nach Dokumenten, die entweder `wifi`oder `luxury` oder beides enthalten.
+Der OR-Operator ist ein vertikaler Balken bzw. ein senkrechter Strich. Zum Beispiel sucht `wifi | luxury` nach Dokumenten, die entweder `wifi`oder `luxury` oder beides enthalten.
 
 <a name="not-operator"></a>
 
@@ -90,6 +92,6 @@ Der precedence-Operator schließt die Zeichenfolge in Klammern `( )` ein. Zum Be
 
 ## <a name="see-also"></a>Weitere Informationen  
 
-+ [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
++ [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Lucene-Abfragesyntax](query-lucene-syntax.md)
 + [OData-Ausdruckssyntax](query-odata-filter-orderby-syntax.md) 

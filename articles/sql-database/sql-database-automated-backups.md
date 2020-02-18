@@ -12,22 +12,22 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348971"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157498"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
-SQL-Datenbank erstellt automatisch die Datenbanksicherungen, die für die Dauer des konfigurierten Aufbewahrungszeitraums gespeichert werden. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
+SQL-Datenbank erstellt automatisch die Datenbanksicherungen, die für die Dauer des konfigurierten Aufbewahrungszeitraums gespeichert werden. Es wird [georedundanter Azure-Speicher mit Lesezugriff (RA-GRS)](../storage/common/storage-redundancy.md) verwendet, um sicherzustellen, dass diese auch dann beibehalten werden, wenn das Rechenzentrum nicht verfügbar ist. Diese Sicherungskopien werden automatisch erstellt. Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Falls es gemäß Ihren Sicherheitsregeln erforderlich ist, dass Ihre Sicherungen über einen längeren Zeitraum verfügbar sind (bis zu 10 Jahre), können Sie eine [Langzeitaufbewahrung](sql-database-long-term-retention.md) in Singleton-Datenbanken und Pools für elastische Datenbanken konfigurieren.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>Was ist die Sicherung einer SQL-Datenbank-Instanz?
 
-SQL-Datenbank nutzt SQL Server-Technologie, um wöchentlich [vollständige Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server), alle zwölf Stunden [differenzielle Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) und alle fünf bis zehn Minuten [Transaktionsprotokollsicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) zu erstellen. Die Sicherungen werden in [RA-GRS-Speicherblobs](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) gespeichert, die in einem [gekoppelten Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert werden, um Schutz vor Rechenzentrumsausfällen zu bieten. Wenn Sie eine Datenbank wiederherstellen, ermittelt der Dienst, welche vollständigen und differenziellen Sicherungen bzw. Transaktionsprotokollsicherungen wiederhergestellt werden müssen.
+SQL-Datenbank nutzt SQL Server-Technologie, um wöchentlich [vollständige Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server), alle zwölf Stunden [differenzielle Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) und alle fünf bis zehn Minuten [Transaktionsprotokollsicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) zu erstellen. Die Sicherungen werden in [RA-GRS-Speicherblobs](../storage/common/storage-redundancy.md) gespeichert, die in einem [gekoppelten Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert werden, um Schutz vor Rechenzentrumsausfällen zu bieten. Wenn Sie eine Datenbank wiederherstellen, ermittelt der Dienst, welche vollständigen und differenziellen Sicherungen bzw. Transaktionsprotokollsicherungen wiederhergestellt werden müssen.
 
 Sie können diese Sicherungen für Folgendes verwenden:
 
@@ -55,9 +55,9 @@ Sie können einige dieser Vorgänge ausprobieren, indem Sie die folgenden Beispi
 
 ### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
-SQL-Datenbank unterstützt den Self-Service für die Point-in-Time-Wiederherstellung (Point-in-Time Restore, PITR), indem automatisch vollständige Sicherungen, differenzielle Sicherungen und Transaktionsprotokollsicherungen erstellt werden. Vollständige Datensicherungen werden wöchentlich erstellt. Differenzielle Sicherungen erfolgen im Allgemeinen alle 12 Stunden und Transaktionsprotokollsicherungen alle 5-10 Minuten, wobei die Häufigkeit auf der Computegröße und dem Umfang der Datenbankaktivität basiert. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für alle Datenbanksicherungen wird vom SQL-Datenbank-Dienst je nach der gesamten Systemworkload bestimmt. Sie können die Sicherungsaufträge nicht ändern oder deaktivieren. 
+SQL-Datenbank unterstützt den Self-Service für die Point-in-Time-Wiederherstellung (Point-in-Time Restore, PITR), indem automatisch vollständige Sicherungen, differenzielle Sicherungen und Transaktionsprotokollsicherungen erstellt werden. Vollständige Datensicherungen werden wöchentlich erstellt. Differenzielle Sicherungen erfolgen im Allgemeinen alle 12 Stunden und Transaktionsprotokollsicherungen alle 5-10 Minuten, wobei die Häufigkeit auf der Computegröße und dem Umfang der Datenbankaktivität basiert. Die erste vollständige Sicherung wird unmittelbar nach der Datenbankerstellung geplant. Sie wird normalerweise innerhalb von 30 Minuten abgeschlossen, aber der Vorgang kann auch länger dauern, wenn es sich um eine sehr große Datenbank handelt. Die erste Sicherung kann bei einer wiederhergestellten Datenbank oder einer Datenbankkopie beispielsweise länger dauern. Nach der ersten vollständigen Sicherung werden alle weiteren Sicherungen automatisch geplant und im Hintergrund verwaltet. Die genaue Zeitplanung für alle Datenbanksicherungen wird vom SQL-Datenbank-Dienst je nach der gesamten Systemworkload bestimmt. Sie können die Sicherungsaufträge nicht ändern oder deaktivieren.
 
-Die PITR-Sicherungen sind georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
+Die PITR-Sicherungen werden durch georedundanten Speicher geschützt. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](../storage/common/storage-redundancy.md).
 
 Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore).
 
@@ -65,17 +65,17 @@ Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-dat
 
 Einzel- und Pooldatenbanken verfügen über eine Option zum Konfigurieren der Langzeitaufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
 
-Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
+Wie bei PITR werden die LTR-Sicherungen durch georedundanten Speicher geschützt. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](../storage/common/storage-redundancy.md).
 
 Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
 
 ## <a name="backup-storage-consumption"></a>Sicherungsspeicherverbrauch 
 
 Bei einzelnen Datenbanken wird der gesamte Sicherungsspeicherverbrauch wie folgt berechnet:   
-[https://login.microsoftonline.com/consumers/](`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`).
+`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`.
 
 Bei Pools für elastische Datenbanken wird die gesamte Sicherungsspeichergröße auf Poolebene aggregiert und wie folgt berechnet:   
-[https://login.microsoftonline.com/consumers/](`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`). 
+`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`. 
 
 Sicherungen, deren Alter den Aufbewahrungszeitraum überschreitet, werden basierend auf ihrem Zeitstempel automatisch bereinigt. Da die differenziellen Sicherungen und Protokollsicherungen erst von Nutzen sind, wenn eine frühere vollständige Sicherung erfolgt, werden sie zusammen in wöchentlichen Blöcken bereinigt. 
 
