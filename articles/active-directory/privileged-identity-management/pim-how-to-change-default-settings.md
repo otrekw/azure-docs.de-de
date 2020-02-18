@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a480327efacee2d1eb74353b2d0ef7885a6194
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024210"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048083"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
@@ -43,12 +43,8 @@ Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen f
 Führen Sie die folgenden Schritte aus, um die Einstellungen für eine Azure AD-Rolle zu öffnen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Benutzer mit der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) an.
-
-1. Öffnen Sie **Azure AD Privileged Identity Management**.
-
-1. Wählen Sie **Azure AD-Rollen** aus.
-
-1. Klicken Sie auf **Rolleneinstellungen**.
+gt
+1. Öffnen Sie **Azure AD Privileged Identity Management** &gt; **Azure AD-Rollen** &gt; **Rolleneinstellungen**.
 
     ![Seite „Rolleneinstellungen“ mit einer Auflistung der Azure-Ressourcenrollen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -89,7 +85,7 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure Mu
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
 
-In einigen Fällen sollten Sie einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) einen Benutzer oder eine Gruppe zuweisen. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die Multi-Factor Authentication (MFA) nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
+Es kann vorkommen, dass Sie einen Benutzer einer Rolle für einen kurzen Zeitraum (z. B. einen Tag) zuweisen möchten. In diesem Fall müssen die zugewiesenen Benutzer die Aktivierung nicht anfordern. In diesem Szenario kann Privileged Identity Management die Multi-Factor Authentication (MFA) nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
 
 Sie können sicherstellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, indem Sie für die aktive Zuweisung MFA erzwingen. Aktivieren Sie dafür das Kontrollkästchen neben der Option **Multi-Factor Authentication bei aktiver Zuweisung erforderlich**.
 
@@ -115,11 +111,11 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 1. Aktivieren Sie das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
 
-1. Klicken Sie auf **Genehmigende Personen auswählen**, um die Seite **Mitglied oder Gruppe auswählen** zu öffnen.
+1. Wählen Sie **Genehmigende Personen auswählen** aus.
 
     ![Bereich „Mitglied oder Gruppe auswählen“ zum Auswählen von genehmigenden Personen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-1. Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, und klicken Sie dann auf **Auswählen**. Sie können eine beliebige Kombination von Benutzern und Gruppen hinzufügen. Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung.
+1. Wählen Sie mindestens einen Benutzer aus, und klicken Sie dann auf **Auswählen**. Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung.
 
     Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
 
@@ -208,7 +204,7 @@ Wenn Sie die angeforderte Genehmigung zum Aktivieren einer Rolle delegieren möc
 
     ![Azure AD-Rollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
-1. Wählen Sie zusätzlich zum Administrator für privilegierten Rollen eine oder mehrere genehmigende Personen aus, und klicken Sie dann auf **Auswählen**. Sie können Benutzer oder Gruppen auswählen. Es sollten mindestens zwei genehmigende Personen hinzugefügt werden. Auch wenn Sie sich selbst als genehmigende Person hinzufügen, können Sie eine Rollenaktivierung nicht für sich selbst genehmigen. Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
+1. Wählen Sie zusätzlich zum Administrator für privilegierten Rollen eine oder mehrere genehmigende Personen aus, und klicken Sie dann auf **Auswählen**. Es sollten mindestens zwei genehmigende Personen hinzugefügt werden. Auch wenn Sie sich selbst als genehmigende Person hinzufügen, können Sie eine Rollenaktivierung nicht für sich selbst genehmigen. Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
 
 1. Wenn Sie alle gewünschten Rolleneinstellungen angegeben haben, wählen Sie **Speichern** aus, um die Änderungen zu speichern.
 

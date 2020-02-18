@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473324"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149812"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -113,7 +113,7 @@ Im Folgenden finden Sie ein Informationsdokument, das einige der Best Practices 
 - Staging-Server sind nicht als Hochverfügbarkeitslösung gedacht, aber Sie können mehrere Staging-Server haben.
 - Die Einführung eines „Verzögerungs“-Staging-Servers könnte bei einem Fehler mögliche Ausfallzeiten minimieren.
 - Testen und validieren Sie zuerst alle Upgrades auf dem Staging-Server.
-- Validieren Sie Exporte immer vor dem Wechsel auf den Staging-Server. Nutzen Sie den Staging-Server für Vollimporte und Vollsynchronisierungen, um die Auswirkungen auf den Geschäftsbetrieb zu reduzieren.
+- Überprüfen Sie die Exporte immer, bevor Sie zum Stagingserver wechseln.  Nutzen Sie den Stagingserver für vollständige Importe und vollständige Synchronisierungen, um die geschäftlichen Auswirkungen zu reduzieren
 - Die Version zwischen den Azure AD Connect-Servern muss so weit wie möglich konsistent bleiben. 
 
 **F: Kann ich zulassen, dass Azure AD Connect das Azure AD Connector-Konto auf dem Arbeitsgruppencomputer erstellt?**

@@ -8,46 +8,46 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78fc3af10bde5e9dd25d02f7a21d77e958b15190
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840093"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149523"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript und Seitenlayoutversionen in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure AD B2C stellt eine Reihe von gepackten Inhalten bereit, die HTML, CSS und JavaScript für die Benutzeroberflächenelemente in Ihren Benutzerflows und benutzerdefinierten Richtlinien enthalten. Um JavaScript für Ihre Anwendungen zu aktivieren, müssen Sie ein Element zu Ihrer [benutzerdefinierten Richtlinie](custom-policy-overview.md) hinzufügen oder im Portal für Benutzerflows aktivieren, ein Seitenlayout auswählen und [b2clogin.com](b2clogin.md) in Ihren Anforderungen verwenden.
+Azure AD B2C stellt eine Reihe von gepackten Inhalten bereit, die HTML, CSS und JavaScript für die Benutzeroberflächenelemente in Ihren Benutzerflows und benutzerdefinierten Richtlinien enthalten.
 
-Wenn Sie beabsichtigen, clientseitigen [JavaScript](javascript-samples.md)-Code zu aktivieren, sollten Sie sicherstellen, dass die Elemente, auf denen der JavaScript-Code basiert, unveränderlich sind. Andernfalls könnten Änderungen zu einem unerwarteten Verhalten auf Ihren Benutzerseiten führen. Um diese Probleme zu vermeiden, können Sie die Verwendung eines Seitenlayouts erzwingen und eine Seitenlayoutversion angeben. Dadurch wird sichergestellt, dass alle Inhaltsdefinitionen, auf denen Ihr JavaScript-Code basiert, unveränderlich sind. Auch wenn Sie nicht beabsichtigen, JavaScript zu aktivieren, können Sie eine Seitenlayoutversion für Ihre Seiten angeben.
+So aktivieren Sie JavaScript für Ihre Anwendungen
 
-## <a name="user-flows"></a>Benutzerabläufe
+* Aktivieren Sie es im Benutzerflow über das Azure-Portal.
+* Wählen Sie ein [Seitenlayout](page-layout.md) aus.
+* Verwenden Sie [b2clogin.com](b2clogin.md) in Ihren Anforderungen.
 
-In den **Eigenschaften** des Benutzerflows können Sie JavaScript aktivieren, wodurch auch die Verwendung eines Seitenlayouts erzwungen wird. Anschließend können Sie die Seitenlayoutversion für den Benutzerflow festlegen, wie im nächsten Abschnitt beschrieben.
+Wenn Sie beabsichtigen, clientseitigen [JavaScript](javascript-samples.md)-Code zu aktivieren, müssen die Elemente, auf denen der JavaScript-Code basiert, unveränderlich sein. Wenn sie nicht unveränderlich sind, könnten Änderungen zu einem unerwarteten Verhalten auf Ihren Benutzerseiten führen. Um diese Probleme zu vermeiden, erzwingen Sie die Verwendung eines Seitenlayouts, und geben Sie eine Seitenlayoutversion an, um sicherzustellen, dass die Inhaltsdefinitionen, auf denen Ihr JavaScript basiert, unveränderlich sind. Auch wenn Sie nicht beabsichtigen, JavaScript zu aktivieren, können Sie eine Seitenlayoutversion für Ihre Seiten angeben.
+
+## <a name="enable-javascript"></a>Aktivieren von JavaScript
+
+Im Benutzerflow **Eigenschaften** können Sie JavaScript aktivieren. Das Aktivieren von JavaScript erzwingt auch die Verwendung eines Seitenlayouts. Anschließend können Sie die Seitenlayoutversion für den Benutzerflow festlegen, wie im nächsten Abschnitt beschrieben.
 
 ![Benutzerablaufeigenschaften-Seite mit hervorgehobener Einstellung „JavaScript aktivieren“](media/user-flow-javascript-overview/javascript-settings.png)
 
-### <a name="select-a-page-layout-version"></a>Auswählen einer Seitenlayoutversion
+## <a name="select-a-page-layout-version"></a>Auswählen einer Seitenlayoutversion
 
 Sie können eine Seitenlayoutversion für Ihre Benutzerflowseiten unabhängig davon angeben, ob Sie JavaScript in den Benutzerfloweigenschaften aktivieren oder nicht. Öffnen Sie den Benutzerflow, und wählen Sie **Seitenlayouts** aus. Wählen Sie unter **LAYOUTNAME** eine Benutzerflowseite und dann die Option **Seitenlayoutversion** aus.
 
-Informationen zu den verschiedenen Seitenlayoutversionen finden Sie im [Versionsänderungsprotokoll](page-layout.md#version-change-log).
+Informationen zu den verschiedenen Seitenlayoutversionen finden Sie im [Versionsänderungsprotokoll für das Seitenlayout](page-layout.md).
 
 ![Seitenlayouteinstellungen im Portal mit der Dropdownliste für Seitenlayouts](media/user-flow-javascript-overview/page-layout-version.png)
 
-## <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
-
-Um JavaScript in benutzerdefinierten Richtlinien zu aktivieren, fügen Sie in der Datei für die benutzerdefinierte Richtlinie dem Element **RelyingParty** das Element **ScriptExecution** hinzu. Weitere Informationen finden Sie unter [JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C](javascript-samples.md).
-
-Unabhängig davon, ob Sie JavaScript in den benutzerdefinierten Richtlinien aktivieren oder nicht, können Sie eine Seitenlayoutversion für Ihre Seiten angeben. Weitere Informationen zum Angeben eines Seitenlayouts finden Sie unter [Auswählen eines Seitenlayouts in Azure Active Directory B2C mit benutzerdefinierten Richtlinien](page-layout.md).
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen zu den verschiedenen Seitenlayoutversionen finden Sie im Abschnitt **Versionsänderungsprotokoll** des Artikels [Auswählen eines Seitenlayouts in Azure Active Directory B2C mit benutzerdefinierten Richtlinien](page-layout.md#version-change-log).
 
 Beispiele für die JavaScript-Verwendung finden Sie in [JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C](javascript-samples.md).

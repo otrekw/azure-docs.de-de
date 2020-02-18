@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907129"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120083"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Erstellen von Sammlungen im Portal „Meine Apps“
 
@@ -30,7 +30,7 @@ Ihre Benutzer können im Portal „Meine Apps“ die cloudbasierten Anwendungen,
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie ein Administrator Sammlungen aktivieren und erstellen kann. Informationen für Endbenutzer zur Verwendung des Portals „Meine Apps“ und der Sammlungen finden Sie unter [Zugreifen auf und Verwenden von Sammlungen](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Aktivieren von „Meine Apps“-Previewfunktionen
+## <a name="enable-the-latest-my-apps-features"></a>Aktivieren der neuesten Meine Apps-Features
 
 1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als Benutzeradministrator oder globaler Administrator an.
 
@@ -39,8 +39,8 @@ Ihre Benutzer können im Portal „Meine Apps“ die cloudbasierten Anwendungen,
 3. Wählen Sie unter **Vorschauen für Benutzerfeatures** die Option **Vorschaueinstellungen für Benutzerfeatures verwalten** aus.
 
 4. Wählen Sie unter **Benutzer können Previewfunktionen für „Meine Apps“ verwenden**, eine der folgenden Optionen aus:
-   * **Ausgewählt**: Aktiviert Previewfunktionen für eine bestimmte Gruppe. Verwenden Sie die Option **Eine Gruppe auswählen**, um die Gruppe auszuwählen, für die Sie Previewfunktionen aktivieren möchten.  
-   * **Alle**: Aktiviert Previewfunktionen für alle Benutzer.
+   * **Ausgewählt**: Aktiviert die Features für eine bestimmte Gruppe. Verwenden Sie die Option **Eine Gruppe auswählen**, um die Gruppe auszuwählen, für die Sie die Features aktivieren möchten.  
+   * **Alle**: Aktiviert die Features für alle Benutzer.
 
 > [!NOTE]
 > Benutzer können das Portal „Meine Apps“ über den Link `https://myapps.microsoft.com` oder den angepassten Link für Ihre Organisation (z.B. `https://myapps.microsoft.com/contoso.com`) öffnen. Nachdem Sie die neue Benutzeroberfläche „Meine Apps“ aktiviert haben, wird oben auf der Seite „Meine Apps“ das Banner **Eine aktualisierte Funktion "Meine Apps" ist verfügbar** angezeigt, und Benutzer können die Option zum **Testen** auswählen, um die neue Benutzeroberfläche anzuzeigen. Wenn die neue Benutzeroberfläche nicht mehr verwendet werden soll, können Benutzer oben auf der Seite auf dem Banner **Neue Oberfläche verlassen** die Option **Ja** auswählen.

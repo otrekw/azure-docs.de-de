@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0d770336099611d69fa9e44d04fff4dd37696707
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382149"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120128"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection Benachrichtigungen
 
@@ -26,6 +26,9 @@ Von Azure AD Identity Protection werden zwei Arten von automatisierten Benachri
 - Wöchentliche E-Mail mit Übersicht
 
 Dieser Artikel gibt Ihnen eine Übersicht zu beiden Benachrichtigungs-E-Mails.
+
+>[!NOTE]
+>E-Mail-Benachrichtigungen sind nur in der öffentlichen Cloud verfügbar und stehen derzeit nicht in der US-Government Cloud zur Verfügung.
 
 ## <a name="users-at-risk-detected-email"></a>E-Mail für erkannte gefährdete Benutzer
 

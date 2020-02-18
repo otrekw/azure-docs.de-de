@@ -15,19 +15,43 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81c9d8582eb41d4a13799c42383ff22010c60577
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985164"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121448"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Workplace by Facebook als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Workplace by Facebook](https://work.workplace.com/) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
-> [!NOTE]
-> Die Azure AD-Drittanbieteranwendung in Workplace by Facebook wurde genehmigt. Kunden erfahren am 16. Dezember keine Dienstunterbrechung. In der Verwaltungskonsole für Workplace by Facebook wird ein Hinweis angezeigt, der den Stichtag 28. Februar 2020 angibt, an dem Sie auf die neue Anwendung umsteigen müssen. Wir arbeiten daran, den Übergang so einfach wie möglich zu halten, und werden hier bis zum Ende des Monats ein Update für den Übergang bereitstellen.
+## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrieren zur neuen Workplace by Facebook-Anwendung
+Wenn Sie bereits über eine Integration mit Workplace by Facebook verfügen, lesen Sie den folgenden Abschnitt über bevorstehende Änderungen. Wenn Sie Workplace by Facebook zum ersten Mal einrichten, können Sie diesen Abschnitt überspringen und zu den unterstützten Funktionen wechseln. 
+
+#### <a name="whats-changing"></a>Was hat sich geändert?
+* Änderungen auf der Azure AD-Seite: Die Autorisierungsmethode für die Bereitstellung von Benutzern in Workplace war in der Vergangenheit ein langlebiges, geheimes Token. Bald werden Sie sehen, dass die Autorisierungsmethode zur OAuth-Autorisierungsgewährung gewechselt ist. 
+* Änderungen auf der Workplace-Seite: Zuvor war die Azure AD-App eine benutzerdefinierte Integration in Workplace by Facebook. Jetzt finden Sie Azure AD im Verzeichnis der Workplace-Integrationen als Drittanbieteranwendung. 
+
+ 
+
+#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wie muss ich vorgehen, um meine bestehende benutzerdefinierte Integration in die neue Anwendung zu migrieren?
+Wenn Sie über eine bestehende Workplace-Integration mit einem gültigen Token verfügen, **ist keine Aktion erforderlich**. Wir migrieren jede Woche automatisch Kunden zu der neuen Anwendung. Dies erfolgt vollständig im Hintergrund. Wenn Sie nicht warten können und manuell zur neuen Anwendung wechseln möchten, können Sie eine neue Instanz von Workplace aus dem Katalog hinzufügen und die Bereitstellung erneut konfigurieren. Alle neuen Instanzen von Workplace verwenden automatisch die neue Anwendungsversion. 
+
+ 
+Wenn sich Ihre Workplace-Integration in Quarantäne befindet, müssen Sie uns erneut ein gültiges Token zur Verfügung stellen, damit wir Sie migrieren können. Der Abschnitt mit den Administratoranmeldeinformationen wird abgeblendet, aber Sie können den folgenden Text ( **?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true**) an Ihre URL anfügen, um die Anmeldeinformationen erneut zu speichern. 
+
+https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
+
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Wie kann ich erkennen, ob meine Anwendung migriert wurde? 
+Wenn Ihre Anwendung migriert wird, wird das Banner im Autorisierungsabschnitt über bevorstehende Änderungen entfernt und das Feld für das geheime Token wird durch eine blaue Autorisierungsschaltfläche ersetzt. 
+
+#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Der Abschnitt mit den Administratoranmeldeinformationen ist für meine Anwendung abgeblendet und ich kann nicht speichern. Warum?
+Wir haben den Abschnitt mit den Administratoranmeldeinformationen für bestehende Workplace-Kunden gesperrt. Wenn Ihr Mandant zur neuen Workplace-Anwendung migriert wurde, können Sie den Abschnitt mit den Administratoranmeldeinformationen erneut aktualisieren. Wenn Sie nicht warten können, können Sie die obige URL verwenden, um Ihre Anwendung zu bearbeiten. 
+
+ 
+#### <a name="when-will-these-changes-happen"></a>Wann werden diese Änderungen stattfinden?
+Alle neuen Instanzen von Workplace werden bereits die neue Integrations-/Autorisierungsmethode verwenden. Bestehende Integrationen werden im Februar schrittweise migriert. Die Migration wird für alle Mandanten bis zum Ende des Monats abgeschlossen. 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
 > [!div class="checklist"]

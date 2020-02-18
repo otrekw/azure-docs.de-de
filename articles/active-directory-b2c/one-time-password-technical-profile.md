@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dab35fbcd221af9f4eb587b8c98a8ff85aeef59f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982788"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114051"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -51,7 +51,7 @@ Der erste Modus dieses technischen Profils besteht darin, einen Code zu generier
 
 Das **InputClaims**-Element enthält eine Liste der Ansprüche, die zum Senden an den Anbieter des Einmalkennwortprotokolls erforderlich sind. Sie können auch den Namen Ihres Anspruchs dem unten definierten Namen zuordnen.
 
-| ClaimReferenceId | Erforderlich | Beschreibung |
+| ClaimReferenceId | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Bezeichner | Ja | Der Bezeichner zur Identifizierung des Benutzers, der den Code später überprüfen muss. Er wird häufig als Bezeichner des Ziels verwendet, an das der Code übermittelt wird, z.B. eine E-Mail-Adresse oder Telefonnummer. |
 
@@ -168,3 +168,10 @@ Das folgende Beispiel `TechnicalProfile` wird zum Überprüfen eines Codes verwe
     </InputClaims>
 </TechnicalProfile>
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Im folgenden Artikel finden Sie ein Beispiel für die Verwendung eines technischen Profils mit Einmalkennwort und benutzerdefinierter E-Mail-Überprüfung:
+
+- [Benutzerdefinierte E-Mail-Überprüfung in Azure Active Directory B2C](custom-email.md)
+

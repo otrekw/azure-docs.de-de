@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f8f48f73248e2108e79b8e244ed0d7b51855092a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184102"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048153"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Anzeigen des Dienstprinzipals einer verwalteten Identität im Azure-Portal
 
@@ -42,7 +42,7 @@ In diesem Artikel erhalten Sie Informationen zur Anzeige des Dienstprinzipals ei
 Dieses Verfahren zeigt, wie der Dienstprinzipal einer VM mit aktivierter systemseitig zugewiesener Identität angezeigt wird. (Dieselben Schritte gelten für eine Anwendung.)
 
 1. Klicken Sie auf **Azure Active Directory** und dann auf **Unternehmensanwendungen**.
-2. Wählen Sie unter **Anwendungstyp** die Option **Alle Anwendungen** aus.
+2. Wählen Sie unter **Anwendungstyp** die Option **Alle Anwendungen** aus, und klicken Sie dann auf **Übernehmen**.
 3. Geben Sie im Suchfilterfeld den Namen des virtuellen Computers oder der Anwendung mit aktivierter verwalteter Identität ein, oder wählen Sie den Namen in der angezeigten Liste aus.
 
    ![Anzeigen eines Dienstprinzipals für verwaltete Identitäten im Portal](./media/how-to-view-managed-identity-service-principal-portal/view-managed-identity-service-principal-portal.png)

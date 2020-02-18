@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b49b10acb7f2deaed217bb28478d2c98a033eab9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768678"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046457"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -55,6 +55,8 @@ Die folgenden Benutzeraktionen bewirken die automatische Gruppenerneuerung:
 ### <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
 
 Administratoren können eine Liste der automatisch erneuerten Gruppen aus den Aktivitätsüberwachungsprotokollen in Azure AD abrufen.
+
+![Automatische Erneuerung von Gruppen auf der Grundlage von Aktivitäten](./media/groups-lifecycle/audit-logs-autorenew-group.png)
 
 ## <a name="roles-and-permissions"></a>Rollen und Berechtigungen
 

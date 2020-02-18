@@ -2,21 +2,21 @@
 title: Anmelden mit der Microsoft Authenticator-App – Azure AD
 description: Verwenden Sie die Microsoft Authenticator-App, um sich an Ihrem Geschäfts-, Schul- oder Unikonto oder Ihrem persönlichen Microsoft-Konto und anderen Konten anzumelden, indem Sie entweder die zweistufige Überprüfung oder die Anmeldung per Telefon nutzen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.author: lizross
+ms.date: 02/07/2020
+ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 84aa3731f8066772c6a268f2ae4e16215452e78a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b5f2b42728fd6f3d61695b4f88cc416015dd97cb
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704679"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108262"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 
@@ -116,7 +116,7 @@ Die erforderlichen Schritte für die Anmeldung an Ihrem Geschäfts-, Schul- oder
 | Muss ich zwei Benachrichtigungen bestätigen, wenn ich die zweistufige Überprüfung für mein Konto aktiviert lasse? | Nein. Die Anmeldung bei Ihrem Microsoft-Konto mit Ihrem Telefon zählt ebenfalls als zweistufige Überprüfung, sodass keine zweite Genehmigung erforderlich ist. |
 | Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen? | Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden. |
 | Wie kann ich die Verwendung des Features beenden und wieder zur Verwendung meines Kennworts zurückkehren? | Wählen Sie für persönliche Konten bei der Anmeldung den Link **Stattdessen Ihr Kennwort verwenden** aus. Ihre aktuelle Auswahl wird gespeichert und standardmäßig bei Ihrer nächsten Anmeldung angeboten. Falls Sie einmal zur Anmeldung per Telefon zurückkehren möchten, können Sie während der Anmeldung den Link **Stattdessen eine App verwenden** auswählen.<br><br>Für Geschäfts-, Schul- oder Unikonten müssen Sie entweder die Registrierung des Geräts auf der Seite **Einstellungen** der Microsoft Authenticator-App aufheben oder das Gerät im Bereich **Geräte und Aktivität** Ihres Profils deaktivieren. Weitere Informationen zum Deaktivieren Ihres Geräts in Ihrem Profil finden Sie unter [Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“](my-apps-portal-end-user-update-profile.md#view-your-organization-related-profile-information). |
-| Warum kann ich für die Anmeldung per Telefon nicht mehrere Geschäfts-, Schul- oder Unikonten verwenden? | Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie zuerst die Registrierung des alten Geräts über die Seite **Einstellungen** aufheben. |
+| Warum kann ich für die Anmeldung per Telefon nicht mehrere Geschäfts-, Schul- oder Unikonten verwenden? | Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie die Registrierung Ihres Kontos auf diesem Gerät über die Seite **Einstellungen** aufheben. |
 | Kann ich mich mithilfe meines Telefons bei meinem Computer anmelden? | Bei Ihrem Computer sollten Sie sich mithilfe von Windows Hello unter Windows 10 anmelden. Mit Windows Hello können Sie sich mit Ihrem Gesicht, Fingerabdruck oder Ihrer PIN anmelden. |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cfe5a26740837508ea3a3e76295a896c3cc107
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 988efc2087b3b30e6073bd7f6e2cf08f91fd397c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670921"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060485"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die Sie in Samanage und Azure Active Directory (Azure AD) ausführen müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und Gruppen in Samanage zu konfigurieren.
 
 > [!NOTE]
-> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> Das Tutorial enthält die Beschreibung eines Connectors, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Informationen zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen (Software as a Service) mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -100,51 +100,45 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Samanage-Bereitstellungsmodus](./media/samanage-provisioning-tutorial/ProvisioningCredentials.png)
+    ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den Administratorbenutzernamen und das Administratorkennwort Ihres Samanage-Kontos ein. Beispiele für diese Werte:
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Mandanten-URL** und **Geheimes Token** für Samanage ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Samanage herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Samanage-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 
-   * Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos in Ihrem Samanage-Mandanten ein. Ein Beispiel ist admin@contoso.com.
+    ![Verbindung testen in Samanage](./media/samanage-provisioning-tutorial/provisioning.png)
 
-   * Geben Sie im Feld **Administratorkennwort** das Kennwort des Administratorkontos für den Administratorbenutzernamen ein.
-
-6. Nachdem Sie die in Schritt 5 gezeigten Felder ausgefüllt haben, wählen Sie **Verbindung testen** aus, um sicherzustellen, dass Azure AD eine Verbindung mit Samanage herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr Samanage-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
-
-    ![Verbindung testen in Samanage](./media/samanage-provisioning-tutorial/TestConnection.png)
-
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Samanage-Benachrichtigungs-E-Mail](./media/samanage-provisioning-tutorial/EmailNotification.png)
 
-8. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern** aus.
 
-9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Samanage synchronisieren**.
+8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Samanage synchronisieren**.
 
     ![Samanage-Benutzersynchronisierung](./media/samanage-provisioning-tutorial/UserMappings.png)
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Samanage synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Samanage für Updatevorgänge verwendet werden. Um alle Änderungen zu speichern, wählen Sie **Speichern** aus.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Samanage synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Samanage für Updatevorgänge verwendet werden. Um alle Änderungen zu speichern, wählen Sie **Speichern** aus.
 
     ![Übereinstimmende Benutzerattribute in Samanage](./media/samanage-provisioning-tutorial/UserAttributeMapping.png)
 
-11. Wählen Sie zum Aktivieren von Gruppenzuordnungen im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Samanage synchronisieren**.
+10. Wählen Sie zum Aktivieren von Gruppenzuordnungen im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Samanage synchronisieren**.
 
     ![Samanage-Gruppensynchronisierung](./media/samanage-provisioning-tutorial/GroupMappings.png)
 
-12. Legen Sie **Aktiviert** auf **Ja** fest, um Gruppen zu synchronisieren. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Samanage synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Samanage für Updatevorgänge verwendet werden. Um alle Änderungen zu speichern, wählen Sie **Speichern** aus.
+11. Legen Sie **Aktiviert** auf **Ja** fest, um Gruppen zu synchronisieren. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Samanage synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Samanage für Updatevorgänge verwendet werden. Um alle Änderungen zu speichern, wählen Sie **Speichern** aus.
 
     ![Übereinstimmende Gruppenattribute in Samanage](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
 
-13. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Um den Azure AD-Bereitstellungsdienst für Samanage zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+13. Um den Azure AD-Bereitstellungsdienst für Samanage zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Samanage-Bereitstellungsstatus](./media/samanage-provisioning-tutorial/ProvisioningStatus.png)
 
-15. Definieren Sie die Benutzer oder Gruppen, die in Samanage bereitgestellt werden sollen. Wählen Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus. Berücksichtigen Sie bei Auswahl der Option **Alle Benutzer und Gruppen synchronisieren** die im nachstehenden Abschnitt „Connectoreinschränkungen“ beschriebenen Einschränkungen.
+14. Definieren Sie die Benutzer oder Gruppen, die in Samanage bereitgestellt werden sollen. Wählen Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus. Berücksichtigen Sie bei Auswahl der Option **Alle Benutzer und Gruppen synchronisieren** die im nachstehenden Abschnitt „Connectoreinschränkungen“ beschriebenen Einschränkungen.
 
     ![Samanage-Bereich](./media/samanage-provisioning-tutorial/ScopeSync.png)
 
-16. Wählen Sie **Speichern** aus, wenn die Bereitstellung erfolgen kann.
+15. Wählen Sie **Speichern** aus, wenn die Bereitstellung erfolgen kann.
 
     ![Speichern in Samanage](./media/samanage-provisioning-tutorial/SaveProvisioning.png)
 
@@ -153,7 +147,7 @@ Dadurch wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die
 
 Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zum Bereitstellungsaktivitätsbericht navigieren. Der Bericht beschreibt alle vom Azure AD-Bereitstellungsdienst in Samanage ausgeführten Aktionen.
 
-Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
@@ -163,13 +157,13 @@ Wenn Sie die Option **Alle Benutzer und Gruppen synchronisieren** auswählen und
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png

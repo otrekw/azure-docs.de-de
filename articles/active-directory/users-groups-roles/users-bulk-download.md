@@ -4,21 +4,21 @@ description: Laden Sie Benutzerdatensätze in einem Massenvorgang im Azure Admin
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 07/15/2019
+manager: daveba
+ms.date: 02/06/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.workload: identity
 ms.custom: it-pro
-ms.reviewer: jeffsta
+ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d106e803fdef4f054b7e4717ba59a43359d1d68a
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720288"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063831"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Herunterladen einer Liste von Benutzern (Vorschau) im Azure Active Directory-Portal
 
@@ -39,7 +39,7 @@ Um die Liste der Benutzer aus dem Azure AD Admin Center herunterzuladen, müssen
 
    Die Downloaddatei enthält die gefilterte Benutzerliste.
 
-   Enthalten sind die folgenden Benutzerattribute: 
+   Enthalten sind die folgenden Benutzerattribute:
 
    - userPrincipalName
    - displayName
@@ -50,7 +50,6 @@ Um die Liste der Benutzer aus dem Azure AD Admin Center herunterzuladen, müssen
    - userType
    - jobTitle
    - department
-   - manager
    - accountEnabled
    - usageLocation
    - streetAddress
