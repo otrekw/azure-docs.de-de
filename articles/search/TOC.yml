@@ -323,10 +323,10 @@
       items:
         - name: Grundlagen
           href: search-monitor-usage.md
-        - name: Überwachen der Abfrageaktivität
-          href: search-monitor-queries.md
         - name: Diagnoseprotokollierung
           href: search-monitor-logs.md
+        - name: Überwachen der Abfrageaktivität
+          href: search-monitor-queries.md
         - name: Durchsuchen der Datenverkehrsanalyse
           href: search-traffic-analytics.md
     - name: Problembehandlung
