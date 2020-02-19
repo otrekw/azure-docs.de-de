@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806027"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137766"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
-Das Training einer Spracherkennung kann die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell, das Sie erstellen möchten, verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt. Je mehr domäneninterne Datasets Sie bereitstellen (Daten, die sich darauf beziehen, was Benutzer sagen und was erwartungsgemäß erkannt wird), desto genauer wird Ihr Modell sein, was zu einer besseren Erkennung führt. Denken Sie daran, dass Sie durch die Eingabe von unabhängigen Daten in Ihr Training die Genauigkeit Ihres Modells reduzieren oder beeinträchtigen können.
+Das Training einer Spracherkennung kann die Erkennungsgenauigkeit für das Microsoft-Basismodell verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt. Je mehr domäneninterne Datasets Sie bereitstellen (Daten, die sich darauf beziehen, was Benutzer sagen und was erwartungsgemäß erkannt wird), desto genauer wird Ihr Modell sein, was zu einer besseren Erkennung führt. Denken Sie daran, dass Sie durch die Eingabe von unabhängigen Daten in Ihr Training die Genauigkeit Ihres Modells reduzieren oder beeinträchtigen können.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Lösen von Genauigkeitsproblemen durch Training
 
@@ -47,7 +47,7 @@ Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsd
 7. Nachdem das Training abgeschlossen ist, können Sie sich für das Ausführen von Genauigkeitsprüfungen für das neu trainierte Modell entscheiden. Dieser Schritt ist optional.
 8. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.
 
-In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an: Wird verarbeitet, Erfolgreich, Fehlerhaft.
+In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an: „Verarbeitung“, „Erfolgreich“ oder „Fehler“.
 
 ## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Bewerten der Genauigkeit eines trainierten Modells
 

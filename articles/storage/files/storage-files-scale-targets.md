@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905587"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151988"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -88,7 +88,7 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Anzahl der Objekte | 25 Millionen Objekte |
 | Datasetgröße| ca. 4,7 TiB |
 | Durchschnittliche Dateigröße | ca. 200 KiB (größte Datei: 100 GiB) |
-| Uploaddurchsatz | 20 Objekte pro Sekunde |
+| Uploaddurchsatz | 20 Objekte pro Sekunde pro Synchronisierungsgruppe |
 | Durchsatz beim Download von Namespaces* | 400 Objekte pro Sekunde |
 
 *Wenn ein neuer Serverendpunkt erstellt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
@@ -98,7 +98,7 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Anzahl der synchronisierten Objekte| 125.000 Objekte (Änderungsumfang ca. 1 %) |
 | Datasetgröße| 50 GiB |
 | Durchschnittliche Dateigröße | Ca. 500 KiB |
-| Uploaddurchsatz | 20 Objekte pro Sekunde |
+| Uploaddurchsatz | 20 Objekte pro Sekunde pro Synchronisierungsgruppe |
 | Durchsatz bei vollständigen Downloads* | 60 Objekte pro Sekunde |
 
 *Wenn Cloudtiering aktiviert ist, werden Sie wahrscheinlich eine bessere Leistung beobachten, da nur ein Teil der Dateidaten heruntergeladen wird. Die Azure-Dateisynchronisierung lädt die Daten zwischengespeicherter Dateien nur dann herunter, wenn sie auf einem der Endpunkte geändert werden. Bei mehrstufigen oder neu erstellten Dateien lädt der Agent nicht die Dateidaten herunter, sondern synchronisiert lediglich den Namespace auf allen Serverendpunkten. Der Agent unterstützt auch teilweise Downloads von mehrstufigen Dateien, wenn Benutzer auf diese zugreifen. 

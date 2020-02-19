@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,19 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0bb8474b30c05e21a62ded1fa2cb8a6df8e4e321
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112191"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149880"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
 Sie können für Azure Cognitive Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Cognitive Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Cognitive Search mit `$filter`-Ausdrücken erstellt werden. 
+
+> [!NOTE]
+> Die vollständige Lucene-Syntax wird für Abfrageausdrücke verwendet, die im **search**-Parameter der [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/search-documents)-API übergeben werden. Sie sollte nicht mit der [OData-Syntax](query-odata-filter-orderby-syntax.md) verwechselt werden, die für den [$filter](search-filters.md)-Parameter dieser API verwendet wird. Für diese unterschiedlichen Syntaxen gelten eigene Regeln für das Erstellen von Abfragen, das Auskommentieren von Zeichenfolgen usw.
 
 ## <a name="how-to-invoke-full-parsing"></a>Aufrufen der vollständigen Analyse
 
@@ -123,7 +126,7 @@ Der NOT-Operator ist ein Ausrufezeichen oder ein Minuszeichen. Beispiel: `wifi !
  Azure Cognitive Search verwendet für Textabfragen die häufigkeitsbasierte Bewertung ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). Für Platzhalterabfragen und Abfragen mit regulären Ausdrücken, bei denen die Anzahl von Begriffen groß sein kann, wird der Häufigkeitsfaktor jedoch ignoriert. Dadurch wird verhindert, dass Übereinstimmungen für seltenere Begriffe bei der Rangzuweisung bevorzugt behandelt werden. Alle Übereinstimmungen werden bei Platzhalterabfragen und Abfragen mit regulären Ausdrücken gleich behandelt.
 
 ##  <a name="bkmk_fields"></a>Feldbezogene Suche  
-Sie können einen feldbezogenen Suchvorgang mit der `fieldName:searchExpression`-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Beispiele hierfür sind:  
+Sie können einen feldbezogenen Suchvorgang mit der `fieldName:searchExpression`-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Einige Beispiele für Änderungen sind in der folgenden Liste aufgeführt:  
 
 - genre:jazz NOT history  
 

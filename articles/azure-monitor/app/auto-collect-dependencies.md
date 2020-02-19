@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 04/29/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6fe43eb5963f2918f41ad15f1904f883b5e9c298
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e774690fae2314b8db6e14f19a67c7ae1ce3a203
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678301"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064273"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
@@ -82,12 +82,13 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 | Kommunikationsbibliotheken | Versionen |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alle |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | All |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](../../azure-monitor/app/asp-net-dependencies.md)
 - Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](../../azure-monitor/app/java-agent.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [OpenCensus Python](../../azure-monitor/app/opencensus-python-dependency.md)
 - [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
 - Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
 - Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).

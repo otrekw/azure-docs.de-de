@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901763"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188531"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -85,8 +85,6 @@ Wenn Sie keine Daten für ein Abonnement sehen und feststellen möchten, ob Ihr 
 
 Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder nicht. Alle Kosten werden so lange geschätzt, bis eine Rechnung generiert wurde. Die angezeigten Kosten beinhalten keine kostenlosen und Prepaid-Guthaben.
 
-**Kosten und Nutzungsdaten**
-
 | **Enthalten** | **Nicht enthalten** |
 | --- | --- |
 | Nutzung durch Azure-Dienste<sup>5</sup>        | Supportgebühren – Weitere Informationen finden Sie unter [Erläuterung der Rechnungsbedingungen](../understand/understand-invoice.md). |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Marketplace-Käufe sind für die nutzungsbasierte Bezahlung, M
 
 _<sup>**7**</sup> Reservierungskäufe sind zurzeit nur für Enterprise Agreement-Konten (EA) verfügbar._
 
-**Metadaten**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Verwendung von Tags in Kosten- und Nutzungsdaten
 
-| **Enthalten** | **Nicht enthalten** |
-| --- | --- |
-| Ressourcentags<sup>8</sup> | Ressourcengruppen-Tags |
+Azure Cost Management empfängt Tags mit jedem Nutzungsdatensatz, der von den einzelnen Diensten übermittelt wird. Für diese Tags gelten folgende Einschränkungen:
 
-_<sup>**8**</sup> Ressourcentags werden verwendet, wenn die Nutzung von jedem Dienst ausgegeben wird, und sind nicht rückwirkend für die historische Nutzung verfügbar._
+- Tags werden nicht implizit von der übergeordneten Ressourcengruppe geerbt und müssen direkt auf Ressourcen angewendet werden.
+- Ressourcentags werden nur für in Ressourcengruppen bereitgestellte Ressourcen unterstützt.
+- Einige bereitgestellte Ressourcen unterstützen unter Umständen keine Tags oder enthalten keine Tags in Nutzungsdaten. Weitere Informationen finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
+- Ressourcentags werden nur in Nutzungsdaten eingeschlossen, während das Tag angewendet ist. Tags werden nicht auf historische Daten angewendet.
+- Ressourcentags stehen in Cost Management erst zur Verfügung, nachdem die Daten aktualisiert wurden. Weitere Informationen finden Sie unter [Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert](#usage-data-update-frequency-varies).
+- Ressourcentags sind nur in Cost Management verfügbar, wenn die Ressource aktiv ist/ausgeführt wird und Nutzungsdatensätze generiert (also beispielsweise nicht, wenn die Zuordnung eines virtuellen Computers aufgehoben wurde).
+- Für die Tagverwaltung ist Zugriff vom Typ „Mitwirkender“ auf die einzelnen Ressourcen erforderlich.
+- Für die Verwaltung von Tagrichtlinien ist Zugriff vom Typ „Besitzer“ oder „Mitwirkender an Richtlinien“ auf eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe erforderlich.
+    
+Sollte in Cost Management ein bestimmtes Tag nicht angezeigt werden, überprüfen Sie Folgendes:
+
+- Wurde das Tag direkt auf die Ressource angewendet?
+- Wurde das Tag vor mehr als 24 Stunden angewendet? Weitere Informationen finden Sie unter [Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert](#usage-data-update-frequency-varies).
+- Unterstützt der Ressourcentyp Tags? Von den folgenden Ressourcentypen werden keine Tags in Nutzungsdaten unterstützt (Stand: 1. Dezember 2019). Die vollständige Liste der unterstützten Tags finden Sie unter [Tagunterstützung für Azure-Ressourcen](../../azure-resource-manager/tag-support.md).
+    - Azure Active Directory B2C-Verzeichnisse
+    - Azure Firewalls
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - Load Balancer
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN-Gateway
+    
+Im Anschluss finden Sie einige Tipps zur Verwendung von Tags:
+
+- Planen Sie voraus, und definieren Sie eine Taggingstrategie, die es Ihnen ermöglicht, Kosten nach Organisation, Anwendung, Umgebung usw. aufzuschlüsseln.
+- Verwenden Sie Azure Policy, um Ressourcengruppentags für einzelne Ressourcen zu kopieren und Ihre Taggingstrategie umzusetzen.
+- Verwenden Sie die Tags-API zusammen mit „Query“ oder „UsageDetails“, um alle Kosten auf der Grundlage der aktuellen Tags zu erhalten.
+
 
 **Upgrade einer kostenlosen Testversion auf nutzungsbasierte Bezahlung**
 

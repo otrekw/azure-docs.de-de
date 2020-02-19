@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644697"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131470"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -194,6 +194,9 @@ Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors be
 ### <a name="is-the-self-hosted-integration-runtime-available-for-data-flows"></a>Ist die selbstgehostete Integration Runtime für Datenflüsse verfügbar?
 
 Die selbstgehostete IR ist ein ADF-Pipelinekonstrukt, das Sie mit der Kopieraktivität zum Abrufen oder Verschieben von Daten in und aus lokalen oder VM-basierten Datenquellen und -senken verwenden können. Stellen Sie die Daten zuerst mit einem Kopiervorgang, dann einem Datenfluss für die Transformation und dann einem nachfolgenden Kopiervorgang bereit, wenn Sie die transformierten Daten zurück in den lokalen Speicher verschieben müssen.
+
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Bedient die Datenfluss-Computerengine mehrere Mandanten?
+Cluster werden nie gemeinsam genutzt. Wir garantieren die Isolation für jede Auftragsausführung in Produktionsläufen. Bei einem Debugszenario erhält eine einzige Person einen Cluster, und alle Debuggingfehler werden in diesen Cluster verschoben, der von dem betreffenden Benutzer gestartet wird.
 
 ## <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
 

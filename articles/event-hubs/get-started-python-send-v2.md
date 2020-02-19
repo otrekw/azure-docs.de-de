@@ -6,31 +6,27 @@ author: spelluru
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 01/30/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d977ae9ea8b78664ac1d3a318f58553da696c089
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906358"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162972"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Senden oder Empfangen von Ereignissen an bzw. von Event Hubs unter Verwendung von Python (Version 5 von „azure-eventhub“)
-
-Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. Event Hubs können Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyseanbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Weitere Informationen finden Sie unter [Azure Event Hubs: Big Data-Streamingplattform und Ereigniserfassungsdienst](event-hubs-about.md) sowie unter [Features und Terminologie in Azure Event Hubs](event-hubs-features.md).
-
-In dieser Schnellstartanleitung erfahren Sie, wie Sie Python-Anwendungen erstellen, die Ereignisse an einen Event Hub senden bzw. von diesem empfangen können.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Python-Pakets **azure-eventhub** (Version 5) Ereignisse an einen Event Hub senden bzw. von dort empfangen.
 
 > [!IMPORTANT]
-> In diesem Schnellstart wird Version 5 des Python SDK für Azure Event Hubs verwendet. Eine Schnellstartanleitung, in der Version 1 des Python SDK verwendet wird, finden Sie in [diesem Artikel](event-hubs-python-get-started-send.md). 
+> In dieser Schnellstartanleitung wird das aktuelle Paket „azure-eventhub“ (Version 5) verwendet. Eine Schnellstartanleitung, in der das alte Paket „azure-eventhub“ (Version 1) verwendet wird, finden Sie unter [Schnellstart: Senden und Empfangen von Ereignissen mit Event Hubs mithilfe von Python (Version 1 von „azure-eventhub“)](event-hubs-python-get-started-send.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+Wenn Sie mit Azure Event Hubs noch nicht vertraut sind, lesen Sie vor dem Durcharbeiten dieser Schnellstartanleitung die Informationen unter [Übersicht über Event Hubs](event-hubs-about.md). 
 
 Zum Durchführen dieser Schnellstartanleitung benötigen Sie Folgendes:
 
-- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
-- Ein aktiver Event Hubs-Namespace und -Event Hub. Informationen zu ihrer Erstellung finden Sie unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](event-hubs-create.md). Notieren Sie sich den Namespace- und den Event Hub-Namen zur späteren Verwendung in dieser Schnellstartanleitung.
-- Den Namen des freigegebenen Zugriffsschlüssels und den Wert des Primärschlüssels für Ihren Event Hubs-Namespace. Rufen Sie den Namen und den Wert des Zugriffsschlüssels ab, indem Sie die Anweisungen unter [Abrufen einer Event Hubs-Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal) befolgen. Der Standardname des Zugriffsschlüssels lautet *RootManageSharedAccessKey*. Notieren Sie den Namen des Schlüssels und den Wert des Primärschlüssels zur späteren Verwendung in dieser Schnellstartanleitung.
+- **Microsoft Azure-Abonnement.** Für die Verwendung von Azure-Diensten benötigen Sie ein Abonnement. Das gilt auch für Azure Event Hubs.  Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free/) registrieren oder beim [Erstellen eines Kontos](https://azure.microsoft.com) Ihre MSDN-Abonnentenvorteile nutzen.
 - Python 2.7 bzw. 3.5 oder höher mit installiertem und aktualisiertem PIP
 - Das Python-Paket für Event Hubs. 
 
@@ -45,6 +41,7 @@ Zum Durchführen dieser Schnellstartanleitung benötigen Sie Folgendes:
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
+- **Erstellen Sie einen Event Hubs-Namespace und einen Event Hub**. Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und beschaffen Sie die Verwaltungsanmeldeinformationen, die Ihre Anwendung für die Kommunikation mit dem Event Hub benötigt. Erstellen Sie anhand der Anleitung in [diesem Artikel](event-hubs-create.md) einen Namespace und einen Event Hub. Gehen Sie dann wie im folgenden Artikel beschrieben vor, um die **Verbindungszeichenfolge für den Event Hubs-Namespace** abzurufen: [Abrufen der Verbindungszeichenfolge](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Sie verwenden die Verbindungszeichenfolge im weiteren Verlauf dieser Schnellstartanleitung.
 
 ## <a name="send-events"></a>Senden von Ereignisse
 In diesem Abschnitt erstellen Sie ein Python-Skript, um Ereignisse an den Event Hub zu senden, den Sie zuvor erstellt haben.

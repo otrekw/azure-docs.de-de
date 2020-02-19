@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837346"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161731"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -58,7 +58,8 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
-* RHEL 8.0
+* RHEL 8.0, 7.6, 7.5, 7.4, 7.0
+* CentOS 8.0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich
 
@@ -102,16 +103,17 @@ VMs der Generation 2 können aus einem Marketplace-Image, das den UEFI-Start unt
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-Generation 2-Images für Windows und SLES sind im selben Serverangebot wie die Gen1-Images enthalten. Aus Sicht des Ablaufs bedeutet dies, dass Sie das Angebot und die SKU im Portal für Ihren virtuellen Computer (VM) auswählen. Unterstützt die SKU sowohl Generation 1- als Generation 2-Images, können Sie im Ablauf der VM-Erstellung auf der Registerkarte *Erweitert* auswählen, dass eine VM der Generation 2 erstellt werden soll.
+Im Folgenden finden Sie die Schritte zum Erstellen eines virtuellen Computers der Generation 2 (Gen2) im Azure-Portal.
 
-Derzeit unterstützen die folgenden SKUs sowohl Generation 1- als auch Generation 2-Images:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Wenn Sie eine Windows Server-SKU als Angebot auswählen, gibt es auf der Registerkarte **Erweitert** die Option, entweder eine **Gen 1**- (BIOS) oder eine **Gen 2**-VM (UEFI) zu erstellen. Wenn Sie **Gen 2** auswählen, müssen Sie sicherstellen, dass die auf der Registerkarte **Grundlagen** ausgewählte VM-Größe [für VMs der Generation 2 unterstützt wird](#generation-2-vm-sizes).
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Wählen Sie **Ressource erstellen**.
+1. Klicken Sie im Azure Marketplace links auf **Alle anzeigen**.
+1. Wählen Sie ein Image aus, das Gen2 unterstützt.
+1. Klicken Sie auf **Erstellen**.
+1. Wählen Sie auf der Registerkarte **Erweitert** im Abschnitt **VM-Generation** die Option **Gen 2** aus.
+1. Wechseln Sie auf der Registerkarte **Grundlagen** unter **Instanzdetails** zu **Größe**, und öffnen Sie das Blatt **VM-Größe auswählen**.
+1. Wählen Sie eine [unterstützte VM der Generation 2](#generation-2-vm-sizes) aus.
+1. Durchlaufen Sie den [Erstellungsflow im Azure-Portal](quick-create-portal.md), um die Erstellung des virtuellen Computers abzuschließen.
 
 ![Virtuellen Computer der Gen 1 oder Gen 2 auswählen](./media/generation-2/gen1-gen2-select.png)
 
@@ -195,6 +197,13 @@ VMs der Generation 2 können auch mithilfe von VM-Skalierungsgruppen erstellt we
 
 * **Kann ich VMs der Generation 1 zu Generation 2 migrieren?**  
     Nein, Sie können die Generation eines virtuellen Computers nicht mehr ändern, nachdem Sie ihn erstellt haben. Wenn Sie zwischen VM-Generationen wechseln möchten, müssen Sie einen neuen virtuellen Computer einer anderen Generation erstellen.
+
+* **Warum ist meine VM-Größe in der Größenauswahl nicht aktiviert, wenn ich versuche, eine Gen2-VM zu erstellen?**
+
+    Dies kann eventuell wie folgt gelöst werden:
+
+    1. Vergewissern Sie sich, dass die Eigenschaft **VM-Generation** auf der Registerkarte **Erweitert** auf **Gen 2** festgelegt ist.
+    1. Vergewissern Sie sich, dass Sie nach einer [VM-Größe suchen, die Gen2-VMs unterstützt](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

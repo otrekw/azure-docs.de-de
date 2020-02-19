@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 2abccf3c891a4e5c4db1e05f09d2e61a590b73b7
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6d6a50db42924d868b57cacc415246ee6990859c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548565"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110479"
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -38,6 +38,8 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Konsolen-Apps:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
+
+* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 

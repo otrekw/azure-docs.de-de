@@ -2,22 +2,20 @@
 title: Sperren von Ressourcen, um Änderungen zu verhindern
 description: Verhindern Sie, dass Benutzer kritische Azure-Ressourcen aktualisieren oder löschen, indem Sie eine Sperre für alle Benutzer und Rollen anwenden.
 ms.topic: conceptual
-ms.date: 05/14/2019
-ms.openlocfilehash: b7c6c7980f12e7f9015f4504f461733100b14ea8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/07/2020
+ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644357"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77109537"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
 Als Administrator möchten Sie möglicherweise ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Sie können die Sperrebene auf **CanNotDelete** oder **ReadOnly** festlegen. Im Portal heißen die Sperren **Löschen** und **Schreibgeschützt**.
 
 * **CanNotDelete** bedeutet, dass autorisierte Benutzer weiterhin eine Ressource lesen und ändern, aber nicht löschen können. 
-* **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource zwar lesen, aber nicht löschen oder aktualisieren können. Mit dieser Sperre erzielen Sie einen ähnlichen Effekt wie durch die Beschränkung sämtlicher autorisierter Benutzer auf die Berechtigungen der **Leserolle**. 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **ReadOnly** bedeutet, dass autorisierte Benutzer eine Ressource zwar lesen, aber nicht löschen oder aktualisieren können. Mit dieser Sperre erzielen Sie einen ähnlichen Effekt wie durch die Beschränkung sämtlicher autorisierter Benutzer auf die Berechtigungen der **Leserolle**.
 
 ## <a name="how-locks-are-applied"></a>Anwenden von Sperren
 
@@ -36,6 +34,7 @@ Das Aktivieren von **ReadOnly** kann zu unerwarteten Ergebnissen führen, da ein
 * Eine **ReadOnly**-Sperre für eine Ressourcengruppe, die einen virtuellen Computer enthält, hindert alle Benutzer am Starten bzw. Neustarten des virtuellen Computers. Diese Vorgänge erfordern eine POST-Anforderung.
 
 ## <a name="who-can-create-or-delete-locks"></a>Voraussetzungen für das Erstellen oder Löschen von Sperren
+
 Zum Erstellen oder Löschen von Verwaltungssperren benötigen Sie Zugriff auf `Microsoft.Authorization/*`- oder `Microsoft.Authorization/locks/*`-Aktionen. Unter den integrierten Rollen können nur **Besitzer** und **Benutzerzugriffsadministrator** diese Aktionen ausführen.
 
 ## <a name="managed-applications-and-locks"></a>Verwaltete Anwendungen und Sperren
@@ -58,7 +57,12 @@ Um alle Elemente für den Dienst zu löschen, einschließlich der gesperrten Inf
 
 ![Suchdienst löschen](./media/lock-resources/delete-service.png)
 
+## <a name="azure-backups-and-locks"></a>Azure Backup und Sperren
+
+Wenn Sie die vom Azure Backup-Dienst erstellte Ressourcengruppe sperren, treten bei Sicherungen Fehler auf. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer **CanNotDelete**-Sperre kann der Backup-Dienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.md).
+
 ## <a name="portal"></a>Portal
+
 [!INCLUDE [resource-manager-lock-resources](../../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Vorlage

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867431"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049882"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -73,6 +73,8 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
     Wenn Sie über Domänencontroller verfügen, die über das delegierte Azure NetApp Files-Subnetz nicht erreichbar sind, können Sie eine Azure-Supportanfrage übermitteln, um den Bereich von **global** (Standard) in **Standort** zu ändern.  Azure NetApp Files muss nur mit Domänencontrollern an dem Standort kommunizieren, an dem sich der Adressraum des delegierten Azure NetApp Files-Subnetzes befindet.
 
     Weitere Informationen zu AD-Standorten und -Diensten finden Sie unter [Entwerfen der Standorttopologie](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology). 
+    
+Weitere Informationen zu zusätzlichen AD-Informationen finden Sie in den [häufig gestellten Fragen zu SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) für Azure NetApp Files. 
 
 ## <a name="create-an-active-directory-connection"></a>Erstellen einer Active Directory-Verbindung
 

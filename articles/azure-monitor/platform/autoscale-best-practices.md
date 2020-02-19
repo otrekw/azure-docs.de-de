@@ -4,12 +4,12 @@ description: Autoskalierungsmuster in Azure für Web-Apps, VM-Skalierungsgruppen
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396997"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117114"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -113,7 +113,7 @@ Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird ebenf
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Skalierungsüberlegungen, wenn in einem Profil mehrere Regeln konfiguriert sind
 
-Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die Autoskalierung werden von Diensten verwendet, wenn mehrere Regeln festgelegt sind.
+Es gibt Fälle, in denen Sie möglicherweise mehrere Regeln innerhalb eines Profils festlegen müssen. Die folgenden Regeln für die Autoskalierung werden von der Autoskalierungs-Engine verwendet, wenn mehrere Regeln festgelegt sind.
 
 Beim *horizontalen Hochskalieren* wird die Autoskalierung durchgeführt, sobald eine Regel erfüllt wird.
 Beim *horizontalen Herunterskalieren* wird die automatische Skalierung nur ausgeführt, wenn alle Regeln erfüllt werden.
@@ -133,13 +133,13 @@ Daraufhin erfolgt Folgendes:
 Andererseits wird, wenn die CPU-Auslastung 25 % und die Arbeitsspeicherauslastung 51 % beträgt, **nicht** automatisch horizontal herunterskaliert. Um horizontal herunterzuskalieren, muss die CPU-Auslastung 29 % und die Arbeitsspeicherauslastung 49 % betragen.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Wählen Sie als Standard immer eine sichere Anzahl an Instanzen
-Die Standardinstanzenanzahl ist wichtig, da die automatische Skalierung Ihren Dienst auf diese Instanzenanzahl skaliert, wenn keine Metriken zur Verfügung stehen. Wählen Sie daher eine Standardanzahl an Instanzen, die für Ihre Workloads sicher ist.
+Die Standardinstanzenanzahl ist wichtig, da die Autoskalierung Ihren Dienst auf diese Instanzenanzahl skaliert, wenn keine Metriken zur Verfügung stehen. Wählen Sie daher eine Standardanzahl an Instanzen, die für Ihre Workloads sicher ist.
 
 ### <a name="configure-autoscale-notifications"></a>Konfigurieren der Benachrichtigungen für das automatische Skalieren
 Die automatische Skalierung schreibt in das Aktivitätsprotokoll, wenn eine der folgenden Bedingungen eintritt:
 
-* Die automatische Skalierung gibt einen Skalierungsvorgang aus.
-* Die automatische Skalierung schließt eine Skalierungsaktion erfolgreich ab.
+* Die Autoskalierung gibt einen Skalierungsvorgang aus.
+* Der Autoskalierungsdienst schließt eine Skalierungsaktion erfolgreich ab.
 * Bei einer Skalierungsaktion der automatischen Skalierung tritt ein Fehler auf.
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.

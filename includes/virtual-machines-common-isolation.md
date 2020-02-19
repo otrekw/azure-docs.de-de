@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912485"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77123224"
 ---
 Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
@@ -29,16 +29,18 @@ Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtuelle
 
 Weitere Informationen zu jeder verfügbaren isolierten Größe finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
-## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>Außerbetriebnahme der D15_v2/DS15_v2-Isolation am 15. Februar 2020
-Azure Dedicated Host ist jetzt allgemein verfügbar, sodass Sie die virtuellen Linux- und Windows-Computer Ihrer Organisation auf physischen Servern mit einem einzigen Mandanten ausführen können. Eine vollständige Ersetzung der isolierten Azure-VMs durch Azure Dedicated Host ist geplant. Nach dem **15. Februar 2020** sind die Azure-VMs der Serie D15_v2/DS15_v2 nicht mehr hardwareisoliert.
+## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>Außerbetriebnahme der D15_v2/DS15_v2-Isolation am 15. Mai 2020
+**Update am 10. Februar 2020: Die Außerbetriebnahme-Zeitachse für „Isolation“ wurde bis zum 15. Mai 2020 verlängert**
+
+Azure Dedicated Host ist jetzt allgemein verfügbar, sodass Sie die virtuellen Linux- und Windows-Computer Ihrer Organisation auf physischen Servern mit einem einzigen Mandanten ausführen können. Eine vollständige Ersetzung der isolierten Azure-VMs durch Azure Dedicated Host ist geplant. Nach dem **15. Mai 2020** sind die Azure-VMs der Serie D15_v2/DS15_v2 nicht mehr hardwareisoliert.
 
 ## <a name="how-does-this-affect-me"></a>Welche Folgen hat das für mich?
-Ab dem 15. Februar 2020 wird keine Isolationsgarantie für Ihre virtuellen Azure-Computer des Typs D15_v2/DS15_v2 gewährleistet. 
+Ab dem 15. Mai 2020 wird keine Isolationsgarantie für Ihre virtuellen Azure-Computer des Typs D15_v2/DS15_v2 gewährleistet. 
 
 ## <a name="what-actions-should-i-take"></a>Welche Aktionen zieht das für mich nach sich?
 Wenn die Hardwareisolation für Sie nicht erforderlich ist, müssen Sie keine Maßnahmen ergreifen. 
 
-Wenn die Isolation für Sie jedoch erforderlich ist, müssen Sie eine der folgenden Maßnahmen vor dem 15. Februar 2020 ergreifen:
+Wenn die Isolation für Sie jedoch erforderlich ist, müssen Sie eine der folgenden Maßnahmen vor dem 15. Mai 2020 ergreifen:
 
 •   [Migrieren](https://azure.microsoft.com/blog/introducing-azure-dedicated-host) Sie Ihre Workload zu Azure Dedicated Host.
 
@@ -49,15 +51,21 @@ Wenn die Isolation für Sie jedoch erforderlich ist, müssen Sie eine der folgen
 Weitere Informationen finden Sie unten:
 
 ## <a name="timeline"></a>Zeitachse
-| Date | Action | 
+| Date | Aktion | 
 | --- | --- |
-| 18. November 2019  | Verfügbarkeit von D/DS15i_v2 (PAYG, 1 Jahr RI) |
-| 14. Februar 2020  | Letzter Tag zum Erwerb von D/DS15i_v2 RI für 1 Jahr | 
-| 15. Februar 2020   | D/DS15_v2-Isolationsgarantie entfernt | 
+| 18. November 2019 | Verfügbarkeit von D/DS15i_v2 (PAYG, 1 Jahr RI) |
+| 14. Mai 2020  | Letzter Tag zum Erwerb von D/DS15i_v2 RI für 1 Jahr | 
+| 15. Mai 2020   | D/DS15_v2-Isolationsgarantie entfernt | 
 | 15. Mai 2021  | Außerbetriebnahme von D/DS15i_v2 (alle Kunden mit Ausnahme derjenigen, die vor dem 18. November 2019 RIs von D/DS15_v2 für 3 Jahre erworben haben)| 
-| 17. November 2022   | Außerbetriebnahme von D/DS15i_v2 nach Ablauf von RIs für 3 Jahre (für Kunden, die vor dem 18. November 2019 RIs von D/DS15_v2 für 3 Jahre erworben haben) | 
+| 17. November 2022  | Außerbetriebnahme von D/DS15i_v2 nach Ablauf von RIs für 3 Jahre (für Kunden, die vor dem 18. November 2019 RIs von D/DS15_v2 für 3 Jahre erworben haben) | 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+### <a name="q-is-the-size-dds15_v2-going-to-get-retired"></a>F: Soll die Größe D/DS15_v2 eingestellt werden?
+**A:** Nein, nur die Funktion „Isolation“ wird eingestellt. Wenn Sie keine Isolation benötigen, brauchen Sie keine Maßnahmen zu ergreifen.
+
+### <a name="q-is-the-size-dds15i_v2-going-to-get-retired"></a>F: Soll die Größe D/DS15i_v2 eingestellt werden?
+**A:** Ja, die Größe ist nur bis zum 15. Mai 2021 verfügbar. Kunden die 3-jährige reservierte Instanzen von D/DS15_v2 vor dem 18. November 2019 erworben haben, haben Zugriff auf D/DS15i_v2 bis zum 17. November 2022.
+
 ### <a name="q-why-am-i-not-seeing-the-new-dds15i_v2-sizes-in-the-portal"></a>F: Warum sehe ich keine neuen D/DS15i_v2-Größen im Portal?
 **A:** Wenn Sie ein aktueller D/DS15_v2-Kunde sind und die neuen D/DS15i_v2-Größen verwenden möchten, füllen Sie dieses [Formular](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0FTPNXHdWpJlO27GE-bHitUMkZUWEFPNjFPNVgyMkhZS05FSzlPTzRIOS4u) aus.
 
@@ -100,7 +108,7 @@ Flexibilität der Instanzgröße kann nicht verwendet werden, um auf andere Grö
 **A:** Leider ist bei einem Neuerwerb nur eine RI mit einjähriger Laufzeit verfügbar.
  
 ### <a name="q-can-i-move-my-existing-d15_v2ds15_v2-reserve-instance-to-an-isolated-size-reserved-instance"></a>F: Kann ich meine vorhandene reservierte D15_v2/DS15_v2-Instanz in eine reservierte Instanz der isolierten Größe verschieben?
-**A:** Dies ist nicht erforderlich, da der Vorteil sowohl für isolierte als auch für nicht isolierte Größen gilt. Azure unterstützt jedoch das Ändern vorhandener reservierter D15_v2/DS15_v2-Instanzen in D15i_v2/DS15i_v2. Verwenden Sie für alle anderen reservierten Dv2/Dsv2-Instanzen die vorhandene reservierte Instanz, oder erwerben Sie neue reservierte Instanzen für die isolierten Größen.
+**A:** Diese Aktion ist nicht erforderlich, da der Vorteil sowohl für isolierte als auch für nicht isolierte Größen gilt. Azure unterstützt jedoch das Ändern vorhandener reservierter D15_v2/DS15_v2-Instanzen in D15i_v2/DS15i_v2. Verwenden Sie für alle anderen reservierten Dv2/Dsv2-Instanzen die vorhandene reservierte Instanz, oder erwerben Sie neue reservierte Instanzen für die isolierten Größen.
 
-### <a name="q-im-a-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>F: Ich bin ein Azure Service Fabric-Kunde, der die Dauerhaftigkeitsstufen Silver oder Gold verwendet. Wirkt sich diese Änderung auf mich aus?
+### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>F: Ich bin ein Azure Service Fabric-Kunde, der die Dauerhaftigkeitsstufen Silver oder Gold verwendet. Wirkt sich diese Änderung auf mich aus?
 **A:** Nein. Die von den [Dauerhaftigkeitsstufen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster) von Service Fabric bereitgestellten Garantien werden auch nach dieser Änderung weiterhin funktionieren. Wenn Sie aus anderen Gründen physische Hardwareisolierung benötigen, müssen Sie möglicherweise dennoch eine der oben beschriebenen Aktionen ausführen. 

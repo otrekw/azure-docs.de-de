@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427127"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133419"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -115,7 +115,7 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
 * Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
 * Sie müssen in Ihrem Konto reservierte Einheiten für Medien (Media Reserved Units, MRUs) bereitstellen, um die Parallelität und Leistung Ihrer Aufträge zu steuern. Das gilt insbesondere für Aufträge mit Video- oder Audioanalyse. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](../previous/media-services-scale-media-processing-overview.md). Die MRUs können per [CLI 2.0 für Media Services v3](media-reserved-units-cli-how-to.md), über das [Azure-Portal](../previous/media-services-portal-scale-media-processing.md) oder mithilfe der [v2-APIs](../previous/media-services-dotnet-encoding-units.md) verwaltet werden. MRUs müssen unabhängig davon bereitgestellt werden, ob Sie Media Services v2- oder v3-APIs verwenden.
 * Mit der v3-API erstellte Media Services-Entitäten können von der v2-API nicht verwaltet werden.  
-* Es wird nicht empfohlen, mit v2-APIs erstellte Entitäten über die v3-APIs zu verwalten. Es folgen Beispiele für die Unterschiede, aufgrund deren die Entitäten in zwei Versionen nicht kompatibel sind:   
+* Nicht alle Entitäten in der V2-API werden automatisch in der V3-API angezeigt.  Im Folgenden sind Beispiele für Entitäten in den beiden Versionen aufgeführt, die nicht kompatibel sind:  
     * In v2 erstellte Aufträge und Aufgaben werden in v3 nicht angezeigt, da sie keiner Transformation zugeordnet sind. Es wird empfohlen, zu v3-Transformationen und -Aufträge zu wechseln. Während des Wechsels müssen die aktiven v2-Aufträge für einen relativ kurzen Zeitraum überwacht werden.
     * Mit v2 erstellte Kanäle und Programme (die Liveereignissen und Liveausgaben in v3 zugeordnet sind) können nicht mehr mit v3 verwaltet werden. Es wird empfohlen, zu einem günstigen Zeitpunkt (beim Beenden des Kanals) zu v3-Liveereignissen und -Liveausgaben zu wechseln.<br/>Derzeit können Sie kontinuierlich ausgeführte Kanäle nicht migrieren.  
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749386"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086152"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -81,6 +81,15 @@ Dieses fensterbasierte Modell entspricht im Wesentlichen dem TCP-Konzept der fen
 In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard und Event Hubs. Für Service Bus Premium sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
+
+### <a name="amqp-outbound-port-requirements"></a>Anforderungen für ausgehende Ports für AMQP-Verbindungen
+
+Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
+
+![Liste der Zielports][4]
+
+Bei einem .NET-Client tritt ein SocketException-Fehler auf („Der Zugriff auf einen Socket war aufgrund der Zugriffsrechte des Sockets unzulässig“), wenn diese Ports durch die Firewall blockiert werden. Die Funktion kann deaktiviert werden, indem `EnableAmqpLinkRedirect=false` in der Verbindungszeichenfolge festgelegt wird. Dadurch wird die Kommunikation zwischen den Clients und dem Remotedienst über Port 5671 erzwungen.
+
 
 ### <a name="links"></a>Links
 
@@ -224,7 +233,7 @@ Jede Eigenschaft, die die Anwendung definieren muss, sollte der `application-pro
 | --- | --- | --- |
 | message-id |Anwendungsdefinierte Freiform-ID für diese Nachricht. Wird für die Duplikaterkennung verwendet. |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |Anwendungsdefinierte Benutzer-ID, von Service Bus nicht interpretiert. |Nicht über die Service Bus-API zugänglich. |
-| to |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| zu |Anwendungsdefinierte Ziel-ID, von Service Bus nicht interpretiert. |[An](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |Anwendungsdefinierte Nachrichtenzweck-ID, von Service Bus nicht interpretiert. |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |Anwendungsdefinierter Antwortpfadindikator, von Service Bus nicht interpretiert. |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |Anwendungsdefinierte Korrelations-ID, von Service Bus nicht interpretiert. |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -283,7 +292,7 @@ Der Controller schließt die Transaktionsaufgabe durch Senden einer `discharge`-
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
 |  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>)|
-| | . . . <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> . . . |
+| | erforderlich. erforderlich. erforderlich. <br/>Transaktionsaufgabe<br/>auf anderen Links<br/> erforderlich. erforderlich. erforderlich. |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)** )}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()** )|
 
@@ -359,11 +368,11 @@ Die Protokollgeste ist ein Anforderung/Antwort-Austausch, der von der Verwaltung
 
 Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 
-| Schlüssel | Optional | Werttyp | Wertinhalt |
+| Key | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| operation |Nein |Zeichenfolge |**put-token** |
-| type |Nein |Zeichenfolge |Der Typ des abgelegten Tokens. |
-| name |Nein |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
+| operation |Nein |string |**put-token** |
+| type |Nein |string |Der Typ des abgelegten Tokens. |
+| name |Nein |string |Die Zielgruppe, für die das Token gilt. |
 | expiration |Ja |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
@@ -378,10 +387,10 @@ Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: �
 
 Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte:
 
-| Schlüssel | Optional | Werttyp | Wertinhalt |
+| Key | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| status-code |Nein |int |HTTP-Antwortcode **[RFC2616]** |
-| status-description |Ja |Zeichenfolge |Beschreibung des Status |
+| status-code |Nein |INT |HTTP-Antwortcode **[RFC2616]** |
+| status-description |Ja |string |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 

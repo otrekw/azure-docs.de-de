@@ -1,5 +1,6 @@
 ---
-title: Eine Welt ohne Kennwörter – Grundlegendes zu Azure Active Directory | Microsoft-Dokumentation
+title: Kennwortlose Authentifizierung mit Azure AD
+titleSuffix: Active Directory
 description: Dieser Leitfaden dient als Hilfe für CEOs, CIOs, CISOs, Chief Identity Architects, Enterprise Architects sowie Sicherheits- und IT-Entscheidungsträgern, die für die Auswahl einer kennwortlosen Authentifizierungsmethode für die Azure Active Directory-Implementierung verantwortlich sind.
 keywords: kennwortlos, Azure AD
 author: martincoetzer
@@ -9,12 +10,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 5fc6a4a23573995cf791a21ec7cf3a7d68d048e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945580"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064477"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 

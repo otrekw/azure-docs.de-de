@@ -3,18 +3,18 @@ title: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erstellen Sie eine neue Azure IoT Central-Anwendung. Erstellen Sie die Anwendung entweder im Free-Tarif oder in einem der Standard-Tarife.
 author: viv-liu
 ms.author: viviali
-ms.date: 08/02/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 09ff84bf17bbc07ee86e90f3985a949f70d9fe27
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d69a761df8066b4a84312c0c3ae8be5a79490960
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018294"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169423"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Erstellen einer Azure IoT Central-Anwendung
 
@@ -24,15 +24,15 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie eine Azure IoT Central-An
 
 Navigieren Sie zur Buildwebsite für [Azure IoT Central](https://aka.ms/iotcentral). Melden Sie sich dann mit einem persönlichen Microsoft-Konto oder mit einem Geschäfts-, Schul- oder Unikonto an.
 
-Sie können eine neue Anwendung entweder anhand der Liste mit den branchenrelevanten IoT Central-Vorlagen erstellen, um schnell einzusteigen, oder Sie starten von Grund auf neu, indem Sie eine Vorlage für eine **benutzerdefinierte App** verwenden. In dieser Schnellstartanleitung verwenden Sie die Vorlage **Benutzerdefinierte App**.
+Sie erstellen eine neue Anwendung entweder anhand der Liste mit den branchenrelevanten IoT Central-Vorlagen, um schnell einzusteigen, oder Sie starten von Grund auf neu, indem Sie eine Vorlage für **benutzerdefinierte Apps** verwenden. In dieser Schnellstartanleitung verwenden Sie die Vorlage **Benutzerdefinierte Anwendung**.
 
-So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benutzerdefinierte App**:
+So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benutzerdefinierte Anwendung**:
 
 1. Navigieren Sie zur Seite **Erstellen**:
 
     ![Seite „Eigene IoT-Anwendung erstellen“](media/quick-deploy-iot-central/iotcentralcreate-new-application.png)
 
-1. Wählen Sie **Benutzerdefinierte App** aus, und vergewissern Sie sich, dass die Vorlage **Benutzerdefinierte Anwendung** ausgewählt ist.
+1. Wählen Sie **Benutzerdefinierte Apps** aus, und vergewissern Sie sich, dass die Vorlage **Benutzerdefinierte Anwendung** ausgewählt ist.
 
 1. Azure IoT Central schlägt automatisch einen **Anwendungsnamen** entsprechend der von Ihnen ausgewählten Anwendungsvorlage vor. Sie können diesen Namen übernehmen oder einen eigenen aussagekräftigen Namen eingeben.
 
@@ -40,7 +40,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
 
     ![Azure IoT Central-Seite „Anwendung erstellen“](media/quick-deploy-iot-central/iotcentralcreate-custom.png)
 
-    ![Abrechnungsinformationen zu Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-billinginfo-pnp.png)
+    ![Abrechnungsinformationen zu Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
     > Wenn Sie auf der vorherigen Seite **Benutzerdefinierte App** ausgewählt haben, wird das Dropdownmenü **Anwendungsvorlage** angezeigt. Hier können Sie zwischen benutzerdefinierten Vorlagen und Legacyvorlagen wechseln. Möglicherweise werden auch andere Vorlagen angezeigt, die für Ihre Organisation zur Verfügung gestellt wurden.
@@ -48,7 +48,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
 1. Erstellen Sie die Anwendung entweder im Tarif für die kostenlose 7-Tage-Testversion oder in einem der Standard-Tarife.
 
     - Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.
-    - Anwendungen, die mit einem *Standard*-Tarif erstellt werden, werden pro Gerät abgerechnet. Sie können entweder den Tarif **Standard 1** oder den Tarif **Standard 2** auswählen. Die ersten zwei Geräte sind dabei kostenlos. Weitere Informationen zu den Tarifen „Free“ und „Standard“ finden Sie auf der Seite [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). Wenn Sie eine Anwendung im Standard-Tarif erstellen, müssen Sie Ihr *Verzeichnis*, Ihr *Azure-Abonnement* und Ihren *Standort* auswählen:
+    - Anwendungen, die mit einem *Standard*-Tarif erstellt werden, werden pro Gerät abgerechnet. Sie können entweder den Tarif **Standard 1** oder den Tarif **Standard 2** auswählen. Die ersten zwei Geräte sind dabei kostenlos. Weitere Informationen zu den Tarifen „Free“ und „Standard“ finden Sie auf der Seite [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). Wenn Sie eine Anwendung im Standard-Tarif erstellen, müssen Sie Ihr *Verzeichnis*, Ihr *Azure-Abonnement* und Ihren *Standort* auswählen:
         - Bei *Verzeichnis* handelt es sich um die Azure Active Directory-Instanz, in der Sie Ihre Anwendung erstellen. Eine Azure Active Directory-Instanz enthält Benutzeridentitäten, Anmeldeinformationen und andere organisatorische Informationen. Wenn Sie keine Azure Active Directory-Instanz besitzen, wird beim Erstellen eines Azure-Abonnements eine für Sie angelegt.
         - Mit einem *Azure-Abonnement* können Sie Instanzen von Azure-Diensten erstellen. IoT Central stellt Ressourcen in Ihrem Abonnement bereit. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) kostenlos eines erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Neue Anwendung**. Ihr neues Abonnement wird nun in der Dropdownliste **Azure-Abonnement** angezeigt.
         - Der *Standort* beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.

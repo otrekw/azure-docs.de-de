@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1ba7fca7576c6f015ad7bbcb47909b90c3065d58
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 7d897b9f85ce6565cbdc1a253a0e20b989539cae
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045963"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048659"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Operations
 
@@ -109,19 +109,9 @@ Wählen Sie mindestens eine und höchstens drei Kategorien aus. Diese Kategorien
 
 Geben Sie die Versionsnummer Ihres Angebots ein. Für Kunden wird diese Version auf der Detailseite des Angebots aufgeführt.
 
-### <a name="standard-contract"></a>Standardvertrag
+### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern.
-
-Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Sie Ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen.
-
-Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aktivieren Sie das Kontrollkästchen **Standardvertrag verwenden?** , um den Standardvertrag zu verwenden.
-
-#### <a name="terms-of-use"></a>Nutzungsbedingungen
-
-Wenn Sie das Kontrollkästchen **Standardvertrag verwenden?** nicht aktivieren, müssen Sie Ihre eigenen rechtlichen Bedingungen im Feld **Nutzungsbedingungen** angeben. Geben Sie bis zu 10.000 Textzeichen oder, wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, eine URL ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
+Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bestimmungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
@@ -140,7 +130,7 @@ Der hier eingegebene Name wird Kunden als Titel Ihrer Angebotsliste angezeigt. D
 
 Geben Sie eine kurze Beschreibung Ihres Angebots an (bis zu 100 Zeichen). Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein.
 

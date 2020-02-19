@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions – Azure Active Directory B2C | Microsoft-Dokumentation
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das ContentDefinitions-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 50e17fae88f16d7579997b3b356638777ec3163a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77014282"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157872"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,38 +57,97 @@ Die Metadaten des selbstbestätigten technischen Profils **LocalAccountSignUpWit
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 Das **ContentDefinition**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
 
 Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Eine Zeichenfolge, die die URL der HTML5-Seite für die Inhaltsdefinition enthält. |
 | RecoveryUri | 0:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. |
 | DataUri | 1:1 | Eine Zeichenfolge mit der relativen URL einer HTML-Datei, die die Benutzeroberfläche, die für den Schritt aufgerufen werden soll, bereitstellt. |
-| Metadaten | 1:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die Metadaten enthält, die von der Inhaltsdefinition genutzt werden. |
+| Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die Metadaten enthält, die von der Inhaltsdefinition genutzt werden. |
 | LocalizedResourcesReferences | 0:1 | Eine Sammlung von Verweisen auf lokalisierte Ressourcen. Verwenden Sie dieses Element, um die Lokalisierung einer Benutzeroberfläche und eines Anspruchsattributs anzupassen. |
 
 ### <a name="datauri"></a>DataUri
 
-Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`.  Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
+Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure AD B2C verwendet den Seitenbezeichner, um Elemente der Benutzeroberfläche und clientseitigen JavaScript-Code zu laden und zu initiieren. Das Format des Werts ist `urn:com:microsoft:aad:b2c:elements:page-name:version`. Die folgende Tabelle enthält die Seitenbezeichner, die Sie verwenden können.
 
-| value |   Beschreibung |
+| Seitenbezeichner | BESCHREIBUNG |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. Dieser Wert stellt auch die Funktion „Angemeldet bleiben“ und die Verknüpfung „Kennwort vergessen?“ bereit . |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | Überprüft während der Registrierung oder Anmeldung (per SMS oder Sprachnachricht) die Telefonnummern. |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | Zeigt ein Formular an, mit dem Benutzer ihr Profil erstellen oder aktualisieren können. |
+| `globalexception` | Zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
+| `providerselection` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können. |
+| `unifiedssp` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. Dieser Wert stellt auch die Funktion „Angemeldet bleiben“ und die Verknüpfung „Kennwort vergessen?“ bereit . |
+| `unifiedssd` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. |
+| `multifactor` | Überprüft während der Registrierung oder Anmeldung (per SMS oder Sprachnachricht) die Telefonnummern. |
+| `selfasserted` | Zeigt ein Formular an, mit dem Benutzer ihr Profil erstellen oder aktualisieren können. |
 
+### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
+
+Sie können [clientseitigen JavaScript-Code](javascript-samples.md) aktivieren, indem Sie `contract` zwischen `elements` und dem Seitentyp einfügen. Beispiel: `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+Der Bereich [version](page-layout.md) des `DataUri` gibt das Inhaltspaket an, das HTML, CSS und JavaScript für die Benutzeroberflächenelemente in Ihrer Richtlinie enthält. Wenn Sie beabsichtigen, clientseitigen JavaScript-Code zu aktivieren, müssen die Elemente, auf denen der JavaScript-Code basiert, unveränderlich sein. Wenn sie nicht unveränderlich sind, könnten Änderungen zu einem unerwarteten Verhalten auf Ihren Benutzerseiten führen. Um diese Probleme zu vermeiden, können Sie die Verwendung eines Seitenlayouts erzwingen und eine Seitenlayoutversion angeben. Damit stellen Sie sicher, dass alle Inhaltsdefinitionen, auf denen Ihr JavaScript-Code basiert, unveränderlich sind. Auch wenn Sie nicht beabsichtigen, JavaScript zu aktivieren, können Sie eine Seitenlayoutversion für Ihre Seiten angeben.
+
+Das folgende Beispiel zeigt den **DataUri** von `selfasserted`version`1.2.0`:
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>Migrieren zum Seitenlayout
+
+Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:b2c:elements:**contract**:page-name:version_. Um ein Seitenlayout in Ihren benutzerdefinierten Richtlinien anzugeben, die einen alten **DataUri**-Wert verwenden, verwenden Sie die folgende Tabelle für das Migrieren zum neuen Format.
+
+| Alter DataUri-Wert | Neuer DataUri-Wert |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+
+
+### <a name="metadata"></a>Metadaten
+
+Das **Metadata**-Element enthält die folgenden Elemente:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Element | 0:n | Die Metadaten zu der Inhaltsdefinition. |
+
+Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| Key | Ja | Der Metadatenschlüssel.  |
+
+#### <a name="metadata-keys"></a>Metadatenschlüssel
+
+Die Inhaltsdefinition unterstützt die folgenden Metadatenelemente: 
+
+| Key | Erforderlich | Beschreibung |
+| --------- | -------- | ----------- |
+| DisplayName | Nein | Eine Zeichenfolge, die den Namen der Inhaltsdefinition enthält. |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -97,25 +157,12 @@ Das **LocalizedResourcesReferences**-Element enthält die folgenden Elemente:
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1:n | Eine Liste mit Verweisen auf lokalisierte Ressourcen für die Inhaltsdefinition. |
 
-Das **LocalizedResourcesReferences**-Element enthält die folgenden Attribute:
+Das **LocalizedResourcesReference**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
 | LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |
-
-Das folgende Beispiel zeigt eine Inhaltsdefinition für die Registrierung oder Anmeldung:
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 Das folgende Beispiel zeigt eine Inhaltsdefinition für die Registrierung oder Anmeldung mit einem Verweis auf die Lokalisierung für Englisch, Französisch und Spanisch:
 
@@ -154,3 +201,8 @@ Das ID-Attribut des **ContentDefinition**-Elements gibt den Typ der Seite an, di
 | **api.selfasserted.profileupdate** | [updateprofile.cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Seite zur Profilaktualisierung:** enthält ein Formular, auf das Benutzer zum Aktualisieren des Profils zugreifen können. Diese Seite ähnelt der Seite für die Registrierung bei einem Konto für ein soziales Netzwerk, mit Ausnahme der Felder für die Kennworteingabe. |
 | **api.signuporsignin** | [unified.cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Einheitliche Seite für Registrierung oder Anmeldung:** führt den Registrierungs- oder Anmeldevorgang für Benutzer durch. Benutzer können Unternehmensidentitätsanbieter, Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten verwenden. |
 
+## <a name="next-steps"></a>Nächste Schritte
+
+Ein Beispiel für die Anpassung der Benutzeroberfläche mithilfe von Inhaltsdefinitionen finden Sie unter:
+
+[Anpassen der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](custom-policy-ui-customization.md)

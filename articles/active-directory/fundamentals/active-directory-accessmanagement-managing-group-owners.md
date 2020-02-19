@@ -12,17 +12,17 @@ ms.date: 09/11/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ee4b452d087bfef0e9f5f7c820870da0df8dc3e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f83a48ad13fe4ae217319b2aa85adf976aa6a7ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74683933"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149846"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Hinzufügen oder Entfernen von Gruppenbesitzern in Azure Active Directory
 Azure AD-Gruppen (Azure Active Directory) befinden sich im Besitz von Gruppenbesitzern und werden von diesen verwaltet. Gruppenbesitzer können Benutzer oder Dienstprinzipale sein, die in der Lage sind, die Gruppe einschließlich der Mitgliedschaft zu verwalten. Nur bestehende Gruppenbesitzer oder Gruppen verwaltende Administratoren können Gruppenbesitzer zuweisen. Die Gruppenbesitzer müssen der Gruppe nicht angehören.
 
-Wenn eine Gruppe keinen Besitzer hat, können Gruppen verwaltende Administratoren die Gruppe weiterhin verwalten.
+Wenn eine Gruppe keinen Besitzer hat, können Gruppen verwaltende Administratoren die Gruppe weiterhin verwalten. Es wird empfohlen, dass jede Gruppe über mindestens einen Besitzer verfügt. Nachdem einer Gruppe Besitzer zugewiesen wurden, kann der letzte Besitzer der Gruppe nicht entfernt werden. Bitte achten Sie darauf, einen anderen Besitzer auszuwählen, bevor Sie den letzten Besitzer aus der Gruppe entfernen.
 
 ## <a name="add-an-owner-to-a-group"></a>Hinzufügen eines Besitzers zu einer Gruppe
 Nachfolgend finden Sie Anweisungen zum Hinzufügen eines Benutzers als Besitzer zu einer Gruppe über das Azure AD-Portal. Um einen Dienstprinzipal als Besitzer einer Gruppe hinzuzufügen, befolgen Sie die Anweisungen, um dies mit [PowerShell](https://docs.microsoft.com/powershell/module/Azuread/Add-AzureADGroupOwner?view=azureadps-2.0) durchzuführen.

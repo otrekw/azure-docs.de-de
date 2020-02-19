@@ -3,12 +3,12 @@ title: Unterstützung der Hyper-V-Migration in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Hyper-V-Migration mit Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 4ca946597417ccde0e00c8bf09c70207bc4f85b9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031645"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064460"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Unterstützungsmatrix für die Hyper-V-Migration
 
@@ -23,10 +23,10 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 
 | **Unterstützung**                | **Details**               
 | :-------------------       | :------------------- |
-| **Bereitstellung**       | Der Hyper-V-Host kann eigenständig oder in einem Cluster bereitgestellt werden. |
+| **Bereitstellung**       | Der Hyper-V-Host kann eigenständig oder in einem Cluster bereitgestellt werden. <br/>Azure Migrate-Replikationssoftware (Hyper-V-Replikationsanbieter) muss auf den Hyper-V-Hosts installiert werden.|
 | **Berechtigungen**           | Sie benötigen Administratorrechte auf dem Hyper-V-Host. |
 | **Betriebssystem des Hosts** | Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 |
-| **URL-Zugriff** | Hyper-V-Hosts benötigen Zugriff auf die folgenden URLs:<br/><br/> - login.microsoftonline.com: Zugriffssteuerung und Identitätsverwaltung mit Active Directory<br/><br/> - *.backup.windowsazure.com: Für die Übertragung und Koordinierung von Replikationsdaten Migrate-Dienst-URLs:<br/><br/> - *.blob.core.windows.net: Hochladen von Daten in Speicherkonten<br/><br/> - dc.services.visualstudio.com: Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.<br/><br/> - time.windows.com | Überprüft die Zeitsynchronisierung zwischen Systemzeit und globaler Zeit
+| **URL-Zugriff** | Die Software des Replikationsanbieters auf den Hyper-V-Hosts benötigt Zugriff auf die folgenden URLs:<br/><br/> - login.microsoftonline.com: Zugriffssteuerung und Identitätsverwaltung mit Active Directory<br/><br/> - *.backup.windowsazure.com: Für die Übertragung und Koordinierung von Replikationsdaten Migrate-Dienst-URLs:<br/><br/> - *.blob.core.windows.net: Hochladen von Daten in Speicherkonten<br/><br/> - dc.services.visualstudio.com: Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.<br/><br/> - time.windows.com: Überprüft die Zeitsynchronisierung zwischen Systemzeit und globaler Zeit
 | **Portzugriff** |  Ausgehende Verbindungen über HTTPS-Port 443 zum Senden von VM-Replikationsdaten.
 
 ## <a name="hyper-v-vms"></a>Virtuelle Hyper-V-Computer
@@ -34,8 +34,6 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 | **Unterstützung**                  | **Details**               
 | :----------------------------- | :------------------- |
 | **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme, die von Azure unterstützt werden |
-| **Berechtigungen**           | Sie benötigen Administratorrechte für jede Hyper-V-VM, die Sie bewerten möchten. |
-| **Integrationsdienste**       | [Hyper-V Integration Services](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) muss auf den von Ihnen bewerteten VMs ausgeführt werden, um Betriebssysteminformationen zu erfassen. |
 | **Erforderliche Änderungen für Azure** | Einige VMs erfordern möglicherweise Änderungen, damit sie in Azure ausgeführt werden können. Diese Anpassungen müssen manuell vor der Migration vorgenommen werden. Die entsprechenden Artikel enthalten Anweisungen zur Vorgehensweise. |
 | **Linux-Start**                 | Wenn sich „/boot“ in einer dedizierten Partition befindet, sollte diese auf dem Betriebssystemdatenträger und nicht auf mehrere Datenträger verteilt vorhanden sein.<br/> Wenn „/boot“ Teil der Stammpartition (/) ist, sollte sich diese auf dem Betriebssystemdatenträger befinden und sich nicht auf andere Datenträger erstrecken. |
 | **UEFI-Start**                  | Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert. Auf dem virtuellen Computer sollte nur Windows Server 2012 oder höher ausgeführt werden. Der Betriebssystemdatenträger sollte maximal fünf Partitionen aufweisen, und die Größe des Betriebssystemdatenträgers sollte weniger als 300 GB betragen.
@@ -55,15 +53,13 @@ Sie können bis zu 10 VMs gleichzeitig für die Replikation auswählen. Wenn Si
 
 ## <a name="azure-vm-requirements"></a>Azure-VM-Anforderungen
 
-Alle lokalen VMs, die in Azure repliziert werden, müssen die in dieser Tabelle zusammengefassten Azure-VM-Anforderungen erfüllen. Wenn Site Recovery eine Voraussetzungsprüfung für die Replikation durchführt, ist diese nicht erfolgreich, wenn einige der Anforderungen nicht erfüllt sind.
+Alle lokalen VMs, die in Azure repliziert werden, müssen die in dieser Tabelle zusammengefassten Azure-VM-Anforderungen erfüllen.
 
 **Komponente** | **Anforderungen** | **Details**
 --- | --- | ---
-Gastbetriebssystem | Überprüft die unterstützten Betriebssysteme der virtuellen VMware-Computer für die Migration.<br/> Sie können alle Workloads migrieren, die unter einem unterstützten Betriebssystem ausgeführt werden. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Anzahl von Datenträgern für Daten | Maximal 64. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Anzahl von Datenträgern für Daten | Maximal 16. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Datenträgergröße | Bis zu 4.095 GB | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
 Freigegebene VHD | Wird nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.

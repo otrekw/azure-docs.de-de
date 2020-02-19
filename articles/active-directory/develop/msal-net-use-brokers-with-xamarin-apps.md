@@ -1,7 +1,7 @@
 ---
-title: Verwenden von Brokern mit Xamarin, iOS und Android | Azure
+title: Verwenden von Brokern mit Xamarin iOS und Android | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie Sie Xamarin iOS-Anwendungen, die Microsoft Authenticator verwenden können, von der Azure AD Authentication Library for .NET (ADAL.NET, Azure AD-Authentifizierungsbibliothek für .NET) zur Microsoft Authentication Library for .NET (MSAL.NET, Microsoft-Authentifizierungsbibliothek für .NET) migrieren.
+description: Erfahren Sie, wie Xamarin iOS-Anwendungen eingerichtet werden, die Microsoft Authenticator und die Microsoft Authentication Library for .NET (MSAL.NET) verwenden können. Erfahren Sie außerdem, wie Sie von der Azure AD Authentication Library for .NET (ADAL.NET) zu Microsoft Authentication Library for .NET (MSAL.NET) migrieren.
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,29 +12,31 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 839f62660096aaf3d7954acc45443f04d9ace77d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 25b8aa9b5e80720e9543dafce7970404a62b7d1f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695142"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132642"
 ---
-# <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin-Anwendungen
+# <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
-Unter Android und iOS ermöglichen Broker wie Microsoft Authenticator oder das Microsoft Intune-Unternehmensportal (nur Android) Folgendes:
+Unter Android und iOS ermöglichen Broker wie Microsoft Authenticator und das Android-spezifische Microsoft Intune-Unternehmensportal Folgendes:
 
-- Einmaliges Anmelden (Single Sign-On, SSO). Ihre Benutzer müssen sich nicht bei jeder Anwendung anmelden.
-- Geräteidentifikation. Der Broker greift auf das Gerätezertifikat zu, das auf dem Gerät erstellt wurde, als es in den Arbeitsplatz eingebunden wurde.
-- Überprüfung der Anwendungsidentifikation. Wenn eine Anwendung den Broker aufruft, übergibt sie die Umleitungs-URL, und der Broker überprüft sie.
+- **Einmaliges Anmelden (Single Sign-On, SSO)** : Die Benutzer müssen sich nicht bei jeder Anwendung anmelden.
+- **Geräteidentifikation**: Der Broker greift auf das Gerätezertifikat zu. Dieses Zertifikat wird auf dem Gerät erstellt, wenn es dem Arbeitsplatz hinzugefügt wird.
+- **Überprüfung der Anwendungsidentifikation**: Wenn eine Anwendung den Broker aufruft, übergibt sie ihre Umleitungs-URL. Die URL wird dann vom Broker überprüft.
 
-Zum Aktivieren einer dieser Funktionen müssen Anwendungsentwickler beim Aufrufen der `PublicClientApplicationBuilder.CreateApplication`-Methode den `WithBroker()`-Parameter verwenden. `.WithBroker()` ist standardmäßig auf „true“ festgelegt. Außerdem müssen Entwickler die hier aufgeführten Schritte für [iOS](#brokered-authentication-for-ios)- oder [Android](#brokered-authentication-for-android)-Anwendungen ausführen.
+Verwenden Sie zum Aktivieren einer dieser Funktionen den `WithBroker()`-Parameter, wenn Sie die `PublicClientApplicationBuilder.CreateApplication`-Methode aufrufen. Der `.WithBroker()`-Parameter ist standardmäßig auf „true“ festgelegt. 
+
+Befolgen Sie außerdem die Anweisungen in den folgenden Abschnitten, um die Brokerauthentifizierung für [iOS](#brokered-authentication-for-ios)-Anwendungen oder [Android](#brokered-authentication-for-android)-Anwendungen einzurichten.
 
 ## <a name="brokered-authentication-for-ios"></a>Brokerauthentifizierung für iOS
 
-Führen Sie diese Schritte aus, um Ihre Xamarin.iOS-App für die Kommunikation mit der [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458)-App zu aktivieren.
+Führen Sie die folgenden Schritte aus, um Ihre Xamarin.iOS-App für die Kommunikation mit der [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458)-App zu aktivieren.
 
 ### <a name="step-1-enable-broker-support"></a>Schritt 1: Aktivieren der Brokerunterstützung
-Die Brokerunterstützung wird pro PublicClientApplication aktiviert. Standardmäßig ist es deaktiviert. Verwenden Sie den (standardmäßig auf „true“ festgelegten) `WithBroker()`-Parameter, wenn Sie die PublicClientApplication über den PublicClientApplicationBuilder erstellen.
+Sie müssen Brokerunterstützung für einzelne Instanzen von `PublicClientApplication` aktivieren. Die Unterstützung ist standardmäßig deaktiviert. Wenn Sie `PublicClientApplication` über `PublicClientApplicationBuilder`erstellen, verwenden Sie den `WithBroker()`-Parameter, wie im folgenden Beispiel gezeigt. Der `WithBroker()`-Parameter ist standardmäßig auf „true“ festgelegt.
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -46,7 +48,7 @@ var app = PublicClientApplicationBuilder
 
 ### <a name="step-2-enable-keychain-access"></a>Schritt 2: Aktivieren des Keychainzugriffs
 
-Um den Keychainzugriff zu aktivieren, muss die Anwendung über eine Keychain-Zugriffsgruppe verfügen. Sie können die `WithIosKeychainSecurityGroup()`-API verwenden, um die Keychainzugriffsgruppe festzulegen, wenn Sie die Anwendung erstellen:
+Um den Keychainzugriff zu aktivieren, müssen Sie über eine Keychain-Zugriffsgruppe für Ihre Anwendung verfügen. Sie können die `WithIosKeychainSecurityGroup()`-API verwenden, um die Keychainzugriffsgruppe festzulegen, wenn Sie die Anwendung erstellen:
 
 ```csharp
 var builder = PublicClientApplicationBuilder
@@ -59,7 +61,7 @@ var builder = PublicClientApplicationBuilder
 Weitere Informationen finden Sie unter [Aktivieren des Keychainzugriffs](msal-net-xamarin-ios-considerations.md#enable-keychain-access).
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Schritt 3: Aktualisieren von AppDelegate zum Verarbeiten des Rückrufs
-Wenn die Microsoft Authentication Library for .NET (MSAL.NET) den Broker aufruft, führt der Broker wiederum einen Rückruf Ihrer Anwendung über die `OpenUrl`-Methode der `AppDelegate`-Klasse aus. Da MSAL auf die Antwort vom Broker wartet, muss Ihre Anwendung kooperieren, damit der Rückruf von MSAL.NET erfolgen kann. Um diese Kooperation zu ermöglichen, müssen Sie die Datei `AppDelegate.cs` zur Außerkraftsetzung der folgenden Methode aktualisieren.
+Wenn die Microsoft Authentication Library for .NET (MSAL.NET) den Broker aufruft, führt der Broker einen Rückruf Ihrer Anwendung über die `OpenUrl`-Methode der `AppDelegate`-Klasse aus. Da MSAL auf die Antwort vom Broker wartet, muss Ihre Anwendung kooperieren, damit der Rückruf von MSAL.NET erfolgen kann. Um diese Kooperation zu ermöglichen, müssen Sie die Datei `AppDelegate.cs` zur Außerkraftsetzung der folgenden Methode aktualisieren.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url, 
@@ -81,46 +83,48 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 }           
 ```
 
-Diese Methode wird jedes Mal aufgerufen, wenn die Anwendung gestartet wird. Sie wird verwendet, um die Antwort vom Broker zu verarbeiten und den von MSAL.NET initiierten Authentifizierungsprozess abzuschließen.
+Diese Methode wird jedes Mal aufgerufen, wenn die Anwendung gestartet wird. Sie wird verwendet, um die Antwort vom Broker zu verarbeiten und den von MSAL.NET eingeleiteten Authentifizierungsprozess abzuschließen.
 
-### <a name="step-4-set-a-uiviewcontroller"></a>Schritt 4: Festlegen von „UIViewController()“
-Sie müssen in der Datei `AppDelegate.cs` ein Objektfenster festlegen. Normalerweise müssen Sie mit Xamarin iOS nicht das Objektfenster festlegen. Um Antworten an den Broker zu senden und von ihm zu empfangen, benötigen Sie ein Objektfenster. 
+### <a name="step-4-set-uiviewcontroller"></a>Schritt 4: Festlegen von „UIViewController()“
+Sie müssen in der Datei `AppDelegate.cs` ein Objektfenster festlegen. Normalerweise brauchen Sie für Xamarin iOS kein Objektfenster festzulegen. Sie benötigen aber ein Objektfenster, um an den Broker senden und Antworten von ihm empfangen zu können. 
 
-Zu diesem Zweck müssen Sie zwei Schritte ausführen. 
-1. Legen Sie in der Datei `AppDelegate.cs` das `App.RootViewController`-Objekt auf einen neuen `UIViewController()` fest. Diese Zuweisung stellt sicher, dass ein UIViewController mit dem Aufruf des Brokers vorhanden ist. Wenn der Controller nicht ordnungsgemäß festgelegt wird, erhalten Sie möglicherweise folgende Fehlermeldung: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-1. Verwenden Sie im AcquireTokenInteractive-Aufruf den `.WithParentActivityOrWindow(App.RootViewController)`-Parameter, und übergeben Sie den Verweis an das Objektfenster, das Sie verwenden.
+So richten Sie das Objektfenster ein: 
+1. Legen Sie in der `AppDelegate.cs`-Datei `App.RootViewController` auf einen neuen `UIViewController()` fest. Mit dieser Zuweisung wird sichergestellt, dass der Aufruf an den Broker `UIViewController`enthält. Wenn diese Einstellung falsch zugewiesen wird, wird möglicherweise der folgende Fehler angezeigt:
 
-**Beispiel:**
+      `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 
-In `App.cs`:
-```csharp
-   public static object RootViewController { get; set; }
-```
-In `AppDelegate.cs`:
-```csharp
-   LoadApplication(new App());
-   App.RootViewController = new UIViewController();
-```
-Im AcquireToken-Aufruf:
-```csharp
-result = await app.AcquireTokenInteractive(scopes)
-             .WithParentActivityOrWindow(App.RootViewController)
-             .ExecuteAsync();
-```
+1. Verwenden Sie im `AcquireTokenInteractive`-Aufruf `.WithParentActivityOrWindow(App.RootViewController)`, und übergeben Sie dann den Verweis auf das Objektfenster, das Sie verwenden möchten.
+
+    In `App.cs`:
+    
+    ```csharp
+       public static object RootViewController { get; set; }
+    ```
+    
+    In `AppDelegate.cs`:
+    
+    ```csharp
+       LoadApplication(new App());
+       App.RootViewController = new UIViewController();
+    ```
+    
+    Im `AcquireToken`-Aufruf:
+    
+    ```csharp
+    result = await app.AcquireTokenInteractive(scopes)
+                 .WithParentActivityOrWindow(App.RootViewController)
+                 .ExecuteAsync();
+    ```
 
 ### <a name="step-5-register-a-url-scheme"></a>Schritt 5: Registrieren eines URL-Schemas
 MSAL.NET verwendet URLs, um den Broker aufzurufen und die Brokerantwort dann an Ihre App zurückzugeben. Um den Roundtrip abzuschließen, registrieren Sie in der Datei `Info.plist` ein URL-Schema für Ihre App.
 
-Der `CFBundleURLSchemes`-Name muss das Präfix `msauth.` gefolgt von Ihrem `CFBundleURLName` enthalten.
+Der `CFBundleURLSchemes`-Name muss das Präfix `msauth.` enthalten. Stellen Sie dem Präfix `CFBundleURLName` nach. 
 
-`$"msauth.(BundleId)"`
-
-**Beispiel:**
-
-`msauth.com.yourcompany.xforms`
+Im URL-Schema bezeichnet `BundleId` eindeutig die App `$"msauth.(BundleId)"`. Wenn `BundleId` also `com.yourcompany.xforms` ist, lautet das URL-Schema `msauth.com.yourcompany.xforms`.
 
 > [!NOTE]
-> Dieses URL-Schema wird Teil des Umleitungs-URI, der zur eindeutigen Identifizierung Ihrer App verwendet wird, wenn die Antwort vom Broker empfangen wird.
+> Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn sie die Antwort vom Broker empfängt.
 
 ```XML
  <key>CFBundleURLTypes</key>
@@ -139,9 +143,9 @@ Der `CFBundleURLSchemes`-Name muss das Präfix `msauth.` gefolgt von Ihrem `CFBu
 ```
 
 ### <a name="step-6-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Schritt 6: Hinzufügen der Broker-ID im Abschnitt LSApplicationQueriesSchemes
-MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. 
+MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. 
 
-Fügen Sie `msauthv2` dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plist`-Datei hinzu.
+Fügen Sie dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plist`-Datei `msauthv2` hinzu, wie im folgenden Beispiel zu sehen:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -152,11 +156,13 @@ Fügen Sie `msauthv2` dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plis
 ```
 
 ### <a name="step-7-register-your-redirect-uri-in-the-application-portal"></a>Schritt 7: Registrieren des Umleitungs-URI im Anwendungsportal
-Die Verwendung des Brokers bringt eine zusätzliche Anforderung an Ihren Umleitungs-URI mit sich. Der Umleitungs-URI _muss_ das folgende Format aufweisen:
+Wenn Sie den Broker verwenden, gilt für den Umleitungs-URI eine zusätzliche Anforderung. Der Umleitungs-URI _muss_ das folgende Format aufweisen:
 ```csharp
 $"msauth.{BundleId}://auth"
 ```
-**Beispiel:**
+
+Hier sehen Sie ein Beispiel: 
+
 ```csharp
 public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth"; 
 ```
@@ -164,11 +170,13 @@ Beachten Sie, dass der Umleitungs-URI mit dem `CFBundleURLSchemes`-Namen überei
 
 ### <a name="step-8-make-sure-the-redirect-uri-is-registered-with-your-app"></a>Schritt 8: Sicherstellen, dass der Umleitungs-URI bei Ihrer App registriert wird
 
-Dieser Umleitungs-URI muss im App-Registrierungsportal (https://portal.azure.com) als gültiger Umleitungs-URI für Ihre Anwendung registriert werden. 
+Der Umleitungs-URI muss im [App-Registrierungsportal](https://portal.azure.com) als gültiger Umleitungs-URI für Ihre Anwendung registriert werden. 
 
-Das Portal bietet ein neues App-Registrierungsportal, das Sie beim Berechnen des Brokerantwort-URIs aus der Paket-ID unterstützt.
+Das App-Registrierungsportal stellt eine neue Benutzerumgebung zur Verfügung, die Sie beim Berechnen des Brokerantwort-URIs aus der Paket-ID unterstützt. 
 
-1. Wählen Sie in der App-Registrierung die Option **Authentifizierung** aus, und wählen Sie dann **Neue Benutzeroberfläche ausprobieren** aus.
+So berechnen Sie den Umleitungs-URI:
+
+1. Wählen Sie im App-Registrierungsportal **Authentifizierung** > **Neue Benutzeroberfläche ausprobieren** aus.
 
    ![Ausprobieren der neuen Benutzeroberfläche für die App-Registrierung](media/msal-net-use-brokers-with-xamarin-apps/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
@@ -182,18 +190,18 @@ Das Portal bietet ein neues App-Registrierungsportal, das Sie beim Berechnen des
 
 1. Geben Sie die Paket-ID wie angefordert ein, und wählen Sie dann **Konfigurieren** aus.
 
-   ![Eingeben der Paket-ID](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
+   ![Geben Sie die Paket-ID ein.](media/msal-net-use-brokers-with-xamarin-apps/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
-1. Der Umleitungs-URI wird für Sie berechnet.
+Wenn Sie die Schritte abgeschlossen haben, wird der Umleitungs-URI berechnet.
 
-   ![Kopieren des Umleitungs-URI](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+![Kopieren des Umleitungs-URI](media/msal-net-use-brokers-with-xamarin-apps/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 ## <a name="brokered-authentication-for-android"></a>Brokerauthentifizierung für Android
 
-MSAL.NET unterstützt zurzeit nur die Xamarin.iOS-Plattform. Broker für die Xamarin.Android-Plattform werden noch nicht unterstützt.
+MSAL.NET unterstützt nur die Xamarin.iOS-Plattform. Broker für die Xamarin.Android-Plattform werden noch nicht unterstützt.
 
-Die native MSAL-Android-Bibliothek unterstützt diese bereits. Weitere Informationen finden Sie unter [Brokerauthentifizierung in Android](brokered-auth.md).
+Die native MSAL-Android-Bibliothek unterstützt bereits Brokerauthentifizierung. Weitere Informationen finden Sie unter [Brokerauthentifizierung unter Android](brokered-auth.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über [Spezifische Überlegungen zur Universellen Windows-Plattform mit MSAL.NET](msal-net-uwp-considerations.md).
+Informieren Sie sich über [Überlegungen zur Verwendung der Universellen Windows-Plattform mit MSAL.NET](msal-net-uwp-considerations.md).

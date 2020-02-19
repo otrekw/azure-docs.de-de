@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844541"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086635"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Tutorial: Lokales Veröffentlichen und Abonnieren von Ereignissen
 
@@ -64,8 +64,7 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
     ```json
         {
           "Env": [
-            "inbound__clientAuth__clientCert__enabled=false",
-            "outbound__webhook__httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -79,21 +78,17 @@ Ein Bereitstellungsmanifest ist ein JSON-Dokument, das beschreibt, welche Module
         }
     ```    
  1. Klicken Sie unten auf der Seite auf **Speichern**.
- 1. Fahren Sie mit dem nächsten Abschnitt fort, um vor der gemeinsamen Bereitstellung das Azure Functions-Modul hinzuzufügen.
+ 1. Fahren Sie mit dem nächsten Abschnitt fort, um vor der gemeinsamen Bereitstellung das Azure Event Grid-Abonnentenmodul hinzuzufügen.
 
     >[!IMPORTANT]
-    > In diesem Tutorial stellen Sie das Event Grid-Modul mit deaktivierter Clientauthentifizierung bereit und lassen HTTP-Abonnenten zu. Für Produktionsworkloads empfiehlt es sich, dass Sie die Clientauthentifizierung aktivieren und ausschließlich HTTPS-Abonnenten zulassen. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
+    > In diesem Tutorial stellen Sie das Event Grid-Modul mit deaktivierter Clientauthentifizierung bereit. Für Produktionsworkloads empfiehlt es sich, die Clientauthentifizierung zu aktivieren. Weitere Informationen zum sicheren Konfigurieren des Event Grid-Moduls finden Sie unter [Sicherheit und Authentifizierung](security-authentication.md).
     > 
     > Wenn Sie eine Azure-VM als Edge-Gerät verwenden, fügen Sie eine Portregel hinzu, um eingehenden Datenverkehr an Port 4438 zuzulassen. Anweisungen zum Hinzufügen der Regel finden Sie unter [Öffnen von Ports für einen virtuellen Computer](../../virtual-machines/windows/nsg-quickstart-portal.md).
     
 
-## <a name="deploy-azure-function-iot-edge-module"></a>Bereitstellen des Azure Functions-IoT Edge-Moduls
+## <a name="deploy-event-grid-subscriber-iot-edge-module"></a>Bereitstellen des IoT Edge-Moduls für Event Grid-Abonnenten
 
-In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitstellen, das als Event Grid-Abonnent fungiert, an den Ereignisse übermittelt werden können.
-
->[!IMPORTANT]
->In diesem Abschnitt stellen Sie als Beispiel ein Azure Functions-basiertes Abonnementmodul bereit. Es kann sich natürlich um ein beliebiges benutzerdefiniertes IoT-Modul handeln, das auf HTTP POST-Anforderungen lauschen kann.
-
+In diesem Abschnitt erfahren Sie, wie Sie ein weiteres IoT-Modul als Ereignishandler bereitstellen, an den Ereignisse übermittelt werden können.
 
 ### <a name="add-modules"></a>Hinzufügen von Modulen
 
@@ -102,23 +97,8 @@ In diesem Abschnitt erfahren Sie, wie Sie das Azure Functions-IoT-Modul bereitst
 1. Geben Sie den Namen, das Image und die Optionen für die Containererstellung für den Container an:
 
    * **Name**: subscriber
-   * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber-azfunc:latest`
-   * **Optionen für Containererstellung**:
-
-       ```json
-            {
-              "HostConfig": {
-                "PortBindings": {
-                  "80/tcp": [
-                    {
-                      "HostPort": "8080"
-                    }
-                  ]
-                }
-              }
-            }
-       ```
-
+   * **Image-URI**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Optionen für Containererstellung**: Keine
 1. Klicken Sie unten auf der Seite auf **Speichern**.
 1. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
 
@@ -191,7 +171,7 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -199,7 +179,7 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
     ```
 
     >[!NOTE]
-    > Die **endpointType**-Eigenschaft gibt an, dass es sich bei dem Abonnenten um einen **Webhook** handelt.  Die **endpointUrl** gibt die URL an, an der der Abonnent auf Ereignisse lauscht. Diese URL entspricht der aus dem Azure Functions-Beispiel, das Sie zuvor bereitgestellt haben.
+    > Die **endpointType**-Eigenschaft gibt an, dass es sich bei dem Abonnenten um einen **Webhook** handelt.  Die **endpointUrl** gibt die URL an, an der der Abonnent auf Ereignisse lauscht. Diese URL entspricht der aus dem Azure-Abonnentenbeispiel, das Sie zuvor bereitgestellt haben.
 2. Führen Sie den folgenden Befehl aus, um ein Abonnement für das Thema zu erstellen. Vergewissern Sie sich, dass der HTTP-Statuscode `200 OK` angezeigt wird.
 
     ```sh
@@ -223,7 +203,7 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
             "destination": {
               "endpointType": "WebHook",
               "properties": {
-                "endpointUrl": "http://subscriber:80/api/subscriber"
+                "endpointUrl": "https://subscriber:4430"
               }
             }
           }
@@ -275,7 +255,7 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
     Beispielausgabe:
 
     ```sh
-        Received event data [
+        Received Event:
             {
               "id": "eventId-func-0",
               "topic": "sampleTopic1",
@@ -289,7 +269,6 @@ Abonnenten können sich für Ereignisse registrieren, die in einem Thema veröff
                 "model": "Monster"
               }
             }
-          ]
     ```
 
 ## <a name="cleanup-resources"></a>Bereinigen von Ressourcen

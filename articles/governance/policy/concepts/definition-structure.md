@@ -3,16 +3,18 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7502c1c9a2e125052abf71e50273fbd9bab15cd1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989874"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169769"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
-Definitionen von Ressourcenrichtlinien werden von Azure Policy verwendet, um Konventionen für Ressourcen festzulegen. Jede Definition beschreibt Ressourcenkonformität und welche Maßnahme ergriffen werden soll, wenn eine Ressource nicht konform ist.
+Azure Policy richtet Konventionen für Ressourcen ein. Richtliniendefinitionen beschreiben [Bedingungen](#conditions) für die Ressourcenkonformität und die Maßnahmen, die ergriffen werden, wenn eine Bedingung erfüllt ist. Eine Bedingung vergleicht ein [Feld](#fields) einer Ressourceneigenschaft mit einem erforderlichen Wert. Der Zugriff auf Ressourceneigenschaftsfelder erfolgt über [Aliase](#aliases). Ein Ressourceneigenschaftsfeld ist entweder ein einwertiges Feld oder ein [Array](#understanding-the--alias) mehrerer Werte. Die Auswertung der Bedingung erfolgt bei Arrays auf andere Weise.
+Erfahren Sie mehr über [Bedingungen](#conditions).
+
 Durch Definieren von Konventionen können Sie Kosten beeinflussen und Ihre Ressourcen einfacher verwalten. Sie können beispielsweise angeben, dass nur bestimmte Typen virtueller Computer zulässig sind. Oder Sie können festlegen, dass alle Ressourcen ein bestimmtes Tag aufweisen. Richtlinien werden von allen untergeordneten Ressourcen geerbt. Wenn eine Richtlinie auf eine Ressourcengruppe angewendet wird, gilt sie für alle Ressourcen in dieser Ressourcengruppe.
 
 Das Richtliniendefinitionsschema finden Sie hier: [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
@@ -73,6 +75,8 @@ Der Modus (**mode**) bestimmt, welche Ressourcentypen für eine Richtlinie ausge
 
 - `all`: Ressourcengruppen und alle Ressourcentypen werden ausgewertet.
 - `indexed`: Nur Ressourcentypen, die Tags und Speicherort unterstützen, werden ausgewertet.
+
+Beispielsweise unterstützt die Ressource `Microsoft.Network/routeTables` Tags und Standort und wird in beiden Modi ausgewertet. Es ist jedoch nicht möglich, die Ressource `Microsoft.Network/routeTables/routes` mit einem Tag zu versehen, sodass sie im Modus `Indexed` nicht ausgewertet wird.
 
 Es wird empfohlen, **mode** in den meisten Fällen auf `all` zu setzen. Alle über das Portal erstellten Richtliniendefinitionen verwenden für „mode“ die Option `all`. Wenn Sie PowerShell oder die Azure CLI verwenden, können Sie den **mode**-Parameter manuell angeben. Wenn die Richtliniendefinition keinen Wert für **mode** enthält, wird dieser in Azure PowerShell standardmäßig auf `all` und in der Azure CLI auf `null` festgelegt. Der Modus `null` entspricht dem Verwenden von `indexed`, um Abwärtskompatibilität zu unterstützen.
 
@@ -251,7 +255,9 @@ Eine Bedingung prüft, ob ein **Feld** oder der Accessor **Wert** bestimmte Krit
 Bei Verwendung der Bedingungen **like** und **notLike** können Sie im Wert den Platzhalter `*` angeben.
 Der Wert darf maximal einen Platzhalter des Typs `*` enthalten.
 
-Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein. Während bei **match** und **notMatch** die Groß-/Kleinschreibung beachtet wird, erfolgt bei allen anderen Bedingungen, die einen _stringValue_ auswerten, keine Berücksichtigung der Groß-/Kleinschreibung. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung. Beispiele finden Sie unter [Zulassen mehrerer Namensmuster](../samples/allow-multiple-name-patterns.md).
+Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein. Während bei **match** und **notMatch** die Groß-/Kleinschreibung beachtet wird, erfolgt bei allen anderen Bedingungen, die einen _stringValue_ auswerten, keine Berücksichtigung der Groß-/Kleinschreibung. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung.
+
+Bei den Feldwerten eines Arrays mit einem **\[\*\]-Alias** wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden. Weitere Informationen finden Sie unter [Auswerten eines Alias mit Stern [\[\*\]]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ### <a name="fields"></a>Felder
 
@@ -265,7 +271,7 @@ Folgende Felder werden unterstützt:
 - `kind`
 - `type`
 - `location`
-  - Verwenden Sie **global** für Ressourcen, die speicherortagnostisch sind. Ein Beispiel finden Sie unter [Beispiele: Zulässige Speicherorte](../samples/allowed-locations.md).
+  - Verwenden Sie **global** für Ressourcen, die speicherortagnostisch sind.
 - `identity.type`
   - Gibt den Typ [Verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) zurück, der für die Ressource aktiviert ist.
 - `tags`

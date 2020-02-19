@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 1074c4bc561236039e6ee55ef2df4fc8bd8dbbfc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b1f7708c9bd213e201ba4eb8837a191dca68ca9e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772515"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167014"
 ---
 # <a name="azure-serial-console-for-linux"></a>Die serielle Azure-Konsole für Linux
 
@@ -124,7 +124,7 @@ Uns sind einige Probleme mit der seriellen Konsole und dem Betriebssystem der VM
 
 Problem                           |   Minderung
 :---------------------------------|:--------------------------------------------|
-Das Drücken der **EINGABETASTE** nach dem Verbindungsbanner führt nicht zur Anzeige einer Anmeldeaufforderung. | Weitere Informationen finden Sie unter [Hitting enter does nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) (Das Drücken der Eingabetaste bewirkt nichts). Dieses Problem kann auftreten, wenn Sie eine benutzerdefinierte VM, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Linux aufgrund dessen keine Verbindung mit dem seriellen Port herstellen kann.
+Das Drücken der **EINGABETASTE** nach dem Verbindungsbanner führt nicht zur Anzeige einer Anmeldeaufforderung. | Möglicherweise ist GRUB nicht ordnungsgemäß konfiguriert. Führen Sie die folgenden Befehle aus: `grub2-mkconfig -o /etc/grub2-efi.cfg` und/oder `grub2-mkconfig -o /etc/grub2.cfg`. Weitere Informationen finden Sie unter [Hitting enter does nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) (Das Drücken der Eingabetaste bewirkt nichts). Dieses Problem kann auftreten, wenn Sie eine benutzerdefinierte VM, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Linux aufgrund dessen keine Verbindung mit dem seriellen Port herstellen kann.
 Der Text in der seriellen Konsole nimmt nur einen Teil der Größe des Bildschirms in Anspruch (häufig nach Verwendung eines Text-Editors). | Serielle Konsolen unterstützen keine Aushandlung der Fenstergröße ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)). Daher wird kein SIGWINCH-Signal gesendet, um die Bildschirmgröße zu aktualisieren, und der virtuelle Computer erhält keine Informationen über die Größe Ihres Terminals. Installieren Sie xterm oder ein ähnliches Hilfsprogramm, das über einen `resize`-Befehl verfügt, und führen Sie dann `resize` aus.
 Das Einfügen von langen Zeichenfolgen funktioniert nicht. | Die serielle Konsole begrenzt die Länge der Zeichenfolgen, die in das Terminal eingefügt werden können, auf 2048 Zeichen, um die Bandbreite am seriellen Port nicht zu überlasten.
 Fehlerhafte Tastatureingaben in SLES-BYOS-Images. Tastatureingaben werden nur sporadisch erkannt. | Dies ist ein Problem mit dem Plymouth-Paket. Plymouth sollte nicht in Azure ausgeführt werden, da Sie keinen Begrüßungsbildschirm benötigen. Außerdem beeinträchtigt Plymouth die Fähigkeit der Plattform, die serielle Konsole zu verwenden. Entfernen Sie Plymouth mit `sudo zypper remove plymouth`, und führen Sie dann einen Neustart durch. Sie können auch die Kernelzeile in Ihrer GRUB-Konfiguration ändern und `plymouth.enable=0` an das Ende der Zeile anfügen. Dazu [bearbeiten Sie den Starteintrag beim Systemstart](https://aka.ms/serialconsolegrub#single-user-mode-in-suse-sles) oder die Zeile GRUB_CMDLINE_LINUX in `/etc/default/grub`, erstellen GRUB mit `grub2-mkconfig -o /boot/grub2/grub.cfg` neu und führen dann einen Neustart durch.

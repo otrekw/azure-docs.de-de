@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546706"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137527"
 ---
 # <a name="cross-validate-model"></a>Durchführen einer Kreuzvalidierung für ein Modell
 
@@ -62,21 +62,19 @@ In diesem Szenario verwenden Sie „Cross Validate Model“, um das Modell zu tr
 
 2. Verbinden Sie die Ausgabe eines beliebigen Klassifizierungs- oder Regressionsmodells. 
 
-    Wenn Sie beispielsweise **Two Class Bayes Point Machine** für die Klassifizierung verwenden, sollten Sie das Modell mit den gewünschten Parametern konfigurieren. Ziehen Sie anschließend einen Connector vom Port **Untrainiertes Modell** zum Klassifizierer des passenden Ports von „Cross Validate Model“. 
+    Wenn Sie beispielsweise **Two Class Boosted Decision Tree** für die Klassifizierung verwenden, sollten Sie das Modell mit den gewünschten Parametern konfigurieren. Ziehen Sie anschließend einen Connector vom Port **Untrainiertes Modell** zum Klassifizierer des passenden Ports von „Cross Validate Model“. 
 
     > [!TIP] 
     > Sie müssen das Modell nicht trainieren, weil dies von „Cross Validate Model“ im Rahmen der Auswertung automatisch durchgeführt wird.  
 3.  Verbinden Sie den Port **Dataset** von „Cross Validate Model“ mit einem gekennzeichneten Trainingsdataset.  
 
-4.  Wählen Sie im Bereich mit den **Eigenschaften** von „Cross Validate Model“ die Option **Launch column selector** (Spaltenauswahl starten). Wählen Sie die einzelne Spalte mit der Klassenbezeichnung oder den vorhersagbaren Wert aus. 
+4.  Klicken Sie im rechten Bereich des Kreuzvalidierungsmodells auf **Spalte bearbeiten**. Wählen Sie die einzelne Spalte mit der Klassenbezeichnung oder dem vorhersagbaren Wert aus. 
 
 5. Legen Sie einen Wert für den Parameter **Zufälliger Ausgangswert** fest, wenn Sie die Ergebnisse der Kreuzvalidierung über aufeinanderfolgende Ausführungen für dieselben Daten hinweg wiederholen möchten.  
 
 6. Ausführen der Pipeline.
 
 7. Eine Beschreibung der Berichte finden Sie im Abschnitt [Ergebnisse](#results).
-
-    Um eine Kopie des Modells zur späteren Wiederverwendung zu erhalten, wechseln Sie im rechten Bereich des Moduls, das den Algorithmus enthält (z. B. **Two Class Bayes Point Machine**), zur Registerkarte **Ausgaben**. Wählen Sie dann das Symbol **Register dataset** (Dataset registrieren) aus, um eine Kopie des trainierten Modells in der Modulstruktur zu speichern.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -88,7 +86,7 @@ Die erste Ausgabe des Moduls stellt die Quelldaten für jede Zeile zusammen mit 
 
 Klicken Sie zum Anzeigen der Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie **Visualize Scored results** (Bewertete Ergebnisse visualisieren) aus.
 
-| Neuer Spaltenname      | Beschreibung                              |
+| Neuer Spaltenname      | BESCHREIBUNG                              |
 | -------------------- | ---------------------------------------- |
 | Scored Labels (Bewertete Bezeichnungen)        | Diese Spalte wird am Ende des Datasets hinzugefügt. Sie enthält den vorhergesagten Wert für jede Zeile. |
 | Scored Probabilities (Bewertete Wahrscheinlichkeiten) | Diese Spalte wird am Ende des Datasets hinzugefügt. Sie gibt die geschätzte Wahrscheinlichkeit des Werts in **Scored Labels** (Bewertete Bezeichnungen) an. |

@@ -3,12 +3,12 @@ title: Einrichten von Livedaten (Vorschau) mit Azure Monitor für Container | Mi
 description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Azure Monitor für Container einrichten.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 1ca52384e5ce657e4fedeb42e3304449a2d6be11
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030678"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063763"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -114,7 +114,7 @@ Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes f
     >[!NOTE]
     >Wenn Sie diese Funktion in Azure China verwenden, sollte der erste Basis-URL-Wert `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` und der zweite Basis-URL-Wert `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` lauten. 
     
-4. Nachdem Sie die Umleitungs-URLs registriert haben, wählen Sie unter **Erweiterte Einstellungen** die Optionen **Zugriffstoken** und **ID-Token** aus, und speichern Sie die Änderungen.
+4. Nachdem Sie die Umleitungs-URLs registriert haben, wählen Sie unter **Implizite Genehmigung** die Optionen **Zugriffstoken** und **ID-Token** aus, und speichern Sie die Änderungen.
 
 >[!NOTE]
 >Die Konfiguration der Authentifizierung mit Azure Active Directory für einmaliges Anmelden kann nur während der anfänglichen Bereitstellung eines neuen AKS-Clusters durchgeführt werden. Sie können einmaliges Anmelden nicht für einen bereits bereitgestellten AKS-Cluster konfigurieren.

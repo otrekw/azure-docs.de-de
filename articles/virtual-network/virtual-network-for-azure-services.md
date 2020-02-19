@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: d343f09320a95265ac5e84c80941f454a268ffd4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 24bcc7e698527cd39958c53b48a0b36404c36bb4
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772175"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048829"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integration virtueller Netzwerke für Azure-Dienste
 
@@ -60,4 +60,4 @@ Das Bereitstellen von Diensten in einem virtuellen Netzwerk bietet die folgenden
 | Gehostet | [Dediziertes HSM von Azure](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Ja <br/> Ja <br/>
 | | |
 
-¹ „Dediziert“ beinhaltet, dass nur dienstspezifische Ressourcen in diesem Subnetz bereitgestellt und nicht mit VM/VMSSs von Kunden kombiniert werden können. <br/> ² Empfohlen, aber nicht zwingend erforderlich vom Dienst vorgeschrieben.
+¹ „Dediziert“ beinhaltet, dass nur dienstspezifische Ressourcen in diesem Subnetz bereitgestellt und nicht mit VM/VMSSs von Kunden kombiniert werden können. <br/> ² Es wird als bewährte Methode empfohlen, diese Dienste in einem dedizierten Subnetz auszuführen, dies ist jedoch keine zwingende Vorgabe des Diensts.

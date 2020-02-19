@@ -3,8 +3,8 @@ title: Migrieren zu Resource Manager mit PowerShell
 description: In diesem Artikel wird die plattformgestützte Migration von IaaS-Ressourcen wie virtuellen Computern (VMs), virtuellen Netzwerken und Speicherkonten vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell-Befehlen erläutert.
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 2b3dff9b-2e99-4556-acc5-d75ef234af9c
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 03/30/2017
-ms.author: kasing
-ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 109bffe7b5ab9bb322c4ddb2f7b8ec4ac87a54cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647559"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168334"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell
 Diese Schritte zeigen, wie Sie Azure PowerShell-Befehle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden.
@@ -52,8 +52,6 @@ Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie überlege
 Für die Installation von Azure PowerShell stehen zwei Hauptoptionen zur Verfügung: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) oder [Webplattform-Installer (WebPI)](https://aka.ms/webpi-azps). WebPI empfängt monatliche Updates. Der PowerShell-Katalog wird fortlaufend aktualisiert. Dieser Artikel basiert auf Azure PowerShell Version 2.1.0.
 
 Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-
-<br>
 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Schritt 3: Sicherstellen, dass Sie Administrator für das Abonnement sind
 Um diese Migration auszuführen, müssen Sie im [Azure-Portal](https://portal.azure.com) als Co-Administrator für das Abonnement hinzugefügt werden.
@@ -104,6 +102,14 @@ Warten Sie fünf Minuten, bis die Registrierung abgeschlossen wird. Überprüfen
 
 Stellen Sie sicher, dass der RegistrationState-Wert `Registered` lautet, bevor Sie fortfahren.
 
+Vergewissern Sie sich vor dem Wechsel zum klassischen Bereitstellungsmodell, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres aktuellen virtuellen Netzwerks verfügen. Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#managing-limits).
+
+In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüft. Ersetzen Sie den Regionsnamen im Beispiel durch den Namen Ihrer eigenen Region.
+
+```powershell
+    Get-AzVMUsage -Location "West US"
+```
+
 Melden Sie sich jetzt bei Ihrem Konto für das klassische Bereitstellungsmodell an.
 
 ```powershell
@@ -122,27 +128,17 @@ Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. In diesem Beispie
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
 ```
 
-<br>
 
-## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Schritt 5: Sicherstellen, dass genügend Resource Manager-VM-vCPUs verfügbar sind
-Vergewissern Sie sich, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres aktuellen virtuellen Netzwerks verfügen. Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
-
-In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüft. Ersetzen Sie den Regionsnamen im Beispiel durch den Namen Ihrer eigenen Region.
-
-```powershell
-Get-AzVMUsage -Location "West US"
-```
-
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Schritt 6: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
-* [Migrieren virtueller Computer in einem Clouddienst (nicht in einem virtuellen Netzwerk)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
-* [Migrieren von virtuellen Computern in einem virtuellen Netzwerk](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
-* [Migrieren eines Speicherkontos](#step-62-migrate-a-storage-account)
+## <a name="step-5-run-commands-to-migrate-your-iaas-resources"></a>Schritt 5: Ausführen von Befehlen zum Migrieren Ihrer IaaS-Ressourcen
+* [Migrieren virtueller Computer in einem Clouddienst (nicht in einem virtuellen Netzwerk)](#step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Migrieren von virtuellen Computern in einem virtuellen Netzwerk](#step-51-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Migrieren eines Speicherkontos](#step-52-migrate-a-storage-account)
 
 > [!NOTE]
 > Alle hier beschriebenen Vorgänge sind idempotent. Sollte ein Problem auftreten, das nicht auf ein nicht unterstütztes Feature oder auf einen Konfigurationsfehler zurückzuführen ist, wiederholen Sie den Vorbereitungs-, Abbruch- oder Commitvorgang. Die Plattform versucht dann erneut, die Aktion auszuführen.
 
 
-### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Schritt 6.1: Option 1 – Migrieren virtueller Computer in einem Clouddienst (nicht in einem virtuellen Netzwerk)
+### <a name="step-51-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Schritt 5.1: Option 1 – Migrieren virtueller Computer in einem Clouddienst (nicht in einem virtuellen Netzwerk)
 Verwenden Sie den folgenden Befehl, um die Liste der Clouddienste abzurufen. Wählen Sie dann den Clouddienst aus, den Sie migrieren möchten. Falls sich die virtuellen Computer im Clouddienst in einem virtuellen Netzwerk befinden oder über Web- oder Workerrollen verfügen, gibt der Befehl eine Fehlermeldung zurück.
 
 ```powershell
@@ -223,7 +219,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Schritt 6.1: Option 2 – Migrieren virtueller Computer in einem virtuellen Netzwerk
+### <a name="step-51-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Schritt 5.1: Option 2 – Migrieren virtueller Computer in einem virtuellen Netzwerk
 
 Um virtuelle Computer in einem virtuellen Netzwerk zu migrieren, migrieren Sie das virtuelle Netzwerk. Die virtuellen Computer werden automatisch zusammen mit dem virtuellen Netzwerk migriert. Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten.
 > [!NOTE]
@@ -266,7 +262,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-### <a name="step-62-migrate-a-storage-account"></a>Schritt 6.2: Migrieren eines Speicherkontos
+### <a name="step-52-migrate-a-storage-account"></a>Schritt 5.2: Migrieren eines Speicherkontos
 Sobald die Migration der virtuellen Computer abgeschlossen ist, überprüfen Sie, ob die folgenden Voraussetzungen erfüllt sind, bevor Sie die Speicherkonten migrieren.
 
 > [!NOTE]

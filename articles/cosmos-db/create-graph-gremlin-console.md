@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 78dfbabdcddaafefe77711e8f7b0ea1028f15c58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665181"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117912"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 
@@ -49,7 +49,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloa
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>Verbindung mit App Service herstellen
+## <a id="ConnectAppService"></a>Herstellen einer Verbindung mit Ihrem App-Dienst/Graph
 1. Erstellen bzw. ändern Sie die Konfigurationsdatei „remote-secure.yaml“ im Verzeichnis `apache-tinkerpop-gremlin-console-3.2.5/conf`, bevor Sie die Gremlin-Konsole starten.
 2. Füllen Sie die Konfigurationen *Host*, *Port*, *Benutzername*, *Kennwort*, *connectionPool* und *Serialisierungsmodul* aus, wie in der folgenden Tabelle definiert:
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6342e6a75c8397712e028874b4d727bf3d6f5ff4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529642"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087109"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Sicheres Verwalten der Python-Umgebung in Azure HDInsight mithilfe einer Skriptaktion
 
@@ -24,7 +24,7 @@ Für den Spark-Cluster verfügt HDInsight mit Anaconda Python 2.7 und Python 3.5
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -122,7 +122,7 @@ Der HDInsight-Cluster hängt von der integrierten Python-Umgebung (Python 2.7 od
 
 ## <a name="known-issue"></a>Bekanntes Problem
 
-Es gibt einen bekannten Fehler in Anaconda-Version 4.7.11 und 4.7.12. Wenn Ihre Skriptaktionen bei `"Collecting package metadata (repodata.json): ...working..."` hängen und mit `"Python script has been killed due to timeout after waiting 3600 secs"` fehlschlagen, können Sie [dieses Skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) herunterladen und damit Skriptaktionen für alle Knoten ausführen, um das Problem zu beheben.
+Es gibt einen bekannten Fehler in den Versionen 4.7.11, 4.7.12 und 4.8.0 von Anaconda. Wenn Ihre Skriptaktionen bei `"Collecting package metadata (repodata.json): ...working..."` hängen und mit `"Python script has been killed due to timeout after waiting 3600 secs"` fehlschlagen, können Sie [dieses Skript](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) herunterladen und damit Skriptaktionen für alle Knoten ausführen, um das Problem zu beheben.
 
 Wenn Sie wissen möchten, welche Anaconda-Version Sie verwenden, können Sie SSH auf dem Clusterheaderknoten anwenden und `/usr/bin/anaconda/bin/conda --v` ausführen.
 

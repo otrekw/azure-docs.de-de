@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c8ddd343cd00b24506382521361ebad33ad112a7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288953"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049747"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
 
@@ -62,7 +62,7 @@ Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents a
 
 Richten Sie ein Benutzerkonto ein, das über die erforderlichen Berechtigungen verfügt, damit die Serverbewertung für die Ermittlung auf die VM zugreifen kann. Sie können ein Benutzerkonto angeben.
 
-- **Erforderliche Berechtigung für Windows-VMs**: Für das Benutzerkonto ist „Gast“-Zugriff erforderlich.
+- **Erforderliche Berechtigung für Windows-VMs**: Das Benutzerkonto muss ein lokales Konto oder ein Domänenadministratorkonto sein.
 - **Erforderliche Berechtigung für Linux-VMs**: Für das Konto ist root-Berechtigung erforderlich. Alternativ benötigt das Benutzerkonto diese beiden Funktionen für /bin/netstat- und /bin/ls-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Hinzufügen des Benutzerkontos zur Appliance

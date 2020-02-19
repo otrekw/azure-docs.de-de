@@ -1,21 +1,20 @@
 ---
 title: 'Tutorial: Erstellen und Verwalten von Azure-Budgets | Microsoft-Dokumentation'
 description: Dieses Tutorial hilft bei der Planung und Abrechnung der Kosten für Azure-Dienste, die Sie in Anspruch nehmen.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769798"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132105"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -34,11 +33,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Budgets im Azure-Portal
+> * Erstellen und Bearbeiten von Budgets mit PowerShell
 > * Bearbeiten eines Budgets
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Budgets werden für eine Vielzahl von Azure-Kontotypen unterstützt. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Budgets anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
+Budgets werden für verschiedene Azure-Kontotypen unterstützt. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Budgets anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
 
  Zum Anzeigen von Budgets für Azure EA-Abonnements müssen Sie über Lesezugriff verfügen. Zum Erstellen und Verwalten von Budgets müssen Sie über die Berechtigung „Mitwirkender“ verfügen. Sie können individuelle Budgets für EA-Abonnements und Ressourcengruppen erstellen. Sie können jedoch keine Budgets für EA-Abrechnungskonten erstellen.
 
@@ -62,7 +62,7 @@ Um ein Budget zu erstellen oder anzuzeigen, öffnen Sie den gewünschten Bereich
 
 Nachdem Sie Budgets erstellt haben, wird eine einfache Ansicht Ihrer aktuellen Ausgaben im Abgleich mit dem Budget angezeigt.
 
-Klicken Sie auf **Hinzufügen**.
+Wählen Sie **Hinzufügen**.
 
 ![Beispiel für eine Liste von bereits erstellten Budgets](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,15 +78,19 @@ Basierend auf den bis jetzt im Budget ausgewählten Feldern wird ein Diagramm an
 
 ![Beispiel für die Erstellung eines Budgets mit monatlichen Kostendaten ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um Budgetwarnungen zu konfigurieren. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als 20 Stunden empfangen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md). Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind. Wenn Sie ein Budget mit der API für Budgets erstellen, können Sie Personen auch Rollen zuweisen, damit sie Warnungen erhalten. Das Zuweisen von Rollen zu Personen wird im Azure-Portal nicht unterstützt. Weitere Informationen zur Budgets-API von Azure finden Sie unter [API für Budgets](/rest/api/consumption/budgets).
+Nachdem Sie den Budgetbetrag konfiguriert haben, klicken Sie auf **Weiter**, um Budgetwarnungen zu konfigurieren. Budgets erfordern mindestens einen Kostenschwellenwert (% des Budgets) und eine entsprechende E-Mail-Adresse. Sie können optional bis zu fünf Schwellenwerte und fünf E-Mail-Adressen in ein einzelnes Budget aufnehmen. Wenn ein Budgetschwellenwert erreicht wird, werden E-Mail-Benachrichtigungen normalerweise in weniger als 20 Stunden empfangen.
+
+Wenn Sie E-Mails erhalten möchten, fügen Sie azure-noreply@microsoft.com der Liste mit genehmigten Absendern hinzu, damit E-Mails nicht im Junk-E-Mail-Ordner landen. Weitere Informationen zu Benachrichtigungen finden Sie unter [Verwenden von Kostenwarnungen](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
+
+Im nachstehenden Beispiel wird eine E-Mail-Warnung generiert, wenn 90% des Budgets erreicht sind. Wenn Sie ein Budget mit der API für Budgets erstellen, können Sie Personen auch Rollen zuweisen, damit sie Warnungen erhalten. Das Zuweisen von Rollen zu Personen wird im Azure-Portal nicht unterstützt. Weitere Informationen zur Budgets-API von Azure finden Sie unter [API für Budgets](/rest/api/consumption/budgets).
 
 ![Beispiel für Warnungsbedingungen](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
-Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Betrachtung Ihres Budgets in Bezug auf Ihren Ausgabentrend ist einer der ersten Schritte in der [Analyse Ihrer Kosten und Ausgaben](../../cost-management/quick-acm-cost-analysis.md).
+Nach der Erstellung eines Budgets wird es in der Kostenanalyse angezeigt. Die Betrachtung Ihres Budgets in Bezug auf Ihren Ausgabentrend ist einer der ersten Schritte bei der [Analyse Ihrer Kosten und Ausgaben](../../cost-management/quick-acm-cost-analysis.md).
 
 ![Beispiel für in der Kostenanalyse angezeigtes Budget und Ausgaben](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie können jedoch auch ein Budget für eine Ressourcengruppe erstellen. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Cost Management + Abrechnung** &gt; **Abonnements** &gt; Abonnement auswählen > **Ressourcengruppen** > Ressourcengruppe auswählen > **Budgets** > und dann **Hinzufügen**, um ein Budget hinzuzufügen.
+Im obigen Beispiel haben Sie ein Budget für ein Abonnement erstellt. Sie können auch ein Budget für eine Ressourcengruppe erstellen. Wenn Sie ein Budget für eine Ressourcengruppe erstellen möchten, navigieren Sie zu **Cost Management + Abrechnung** &gt; **Abonnements** &gt; Abonnement auswählen > **Ressourcengruppen** > Ressourcengruppe auswählen > **Budgets** > und dann **Hinzufügen**, um ein Budget hinzuzufügen.
 
 ## <a name="costs-in-budget-evaluations"></a>Kosten in Budgetauswertungen
 
@@ -128,12 +132,42 @@ Das folgende Beispiel zeigt Budgetschwellenwerte für 50 %, 75 % und 100 %. J
 
 Die Budgetintegration in Aktionsgruppen funktioniert nur bei Aktionsgruppen, für die das allgemeine Warnungsschema deaktiviert ist. Weitere Informationen zum Deaktivieren des Schemas finden Sie unter [Wie kann ich das allgemeine Warnungsschema aktivieren?](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
 
+## <a name="create-and-edit-budgets-with-powershell"></a>Erstellen und Bearbeiten von Budgets mit PowerShell
+
+EA-Kunden können Budgets mithilfe des Azure PowerShell-Moduls programmgesteuert erstellen und bearbeiten.  Führen Sie zum Herunterladen der neuesten Version von Azure PowerShell den folgenden Befehl aus:
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+Mit den folgenden Beispielbefehlen wird ein Budget erstellt:
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen eines Budgets im Azure-Portal
+> * Erstellen und Bearbeiten von Budgets mit PowerShell
 > * Bearbeiten eines Budgets
 
 Fahren Sie mit dem nächsten Tutorial fort, um einen sich wiederholenden Export für Ihre Cost Management-Daten zu erstellen.

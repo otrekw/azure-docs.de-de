@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422642"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120241"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Erstellen und Verwalten eines Ressourcenkatalogs in der Azure AD-Berechtigungsverwaltung
 
@@ -51,6 +51,10 @@ Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen 
 
 1. Klicken Sie auf **Erstellen**, um den Katalog zu erstellen.
 
+### <a name="creating-a-catalog-programmatically"></a>Programmgesteuertes Erstellen eines Katalogs
+
+Sie können auch mithilfe von Microsoft Graph einen Katalog erstellen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu erstellen](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Hinzufügen von Ressourcen zu einem Katalog
 
 Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressourcen in einem Katalog vorhanden sein. Bei den Typen von Ressourcen, die Sie hinzufügen können, handelt es sich um Gruppen, Anwendungen und SharePoint Online-Websites. Die Gruppen können in der Cloud erstellte Office 365-Gruppen oder in der Cloud erstellte Azure AD-Sicherheitsgruppen sein. Die Anwendungen können Azure AD-Unternehmensanwendungen sein, einschließlich SaaS-Anwendungen und Ihrer eigenen Anwendungen, die mit Azure AD verbunden sind. Die Websites können SharePoint Online-Websites oder SharePoint Online-Websitesammlungen sein.
@@ -76,6 +80,10 @@ Um Ressourcen in ein Zugriffspaket einschließen zu können, müssen die Ressour
 1. Klicken Sie abschließend auf **Hinzufügen**.
 
     Diese Ressourcen können jetzt in Zugriffspakete im Katalog aufgenommen werden.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programmgesteuertes Hinzufügen einer Ressource zu einem Katalog
+
+Sie können eine Ressource auch mithilfe von Microsoft Graph einem Katalog hinzufügen.  Ein Benutzer in einer passenden Rolle oder ein Katalog- und Ressourcenbesitzer mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [eine accessPackageResourceRequest zu erstellen](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Entfernen von Ressourcen aus einem Katalog
 
@@ -144,6 +152,10 @@ Sie können einen Katalog nur löschen, wenn er keine Zugriffspakete enthält.
 1. Klicken Sie auf der Seite **Übersicht** des Katalogs auf **Löschen**.
 
 1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
+
+### <a name="deleting-a-catalog-programmatically"></a>Programmgesteuertes Löschen eines Katalogs
+
+Sie können auch mithilfe von Microsoft Graph einen Katalog löschen.  Ein Benutzer in einer passenden Rolle mit einer Anwendung, die über die delegierte `EntitlementManagement.ReadWrite.All`-Berechtigung verfügt, kann die API aufrufen, um [einen accessPackageCatalog zu löschen](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

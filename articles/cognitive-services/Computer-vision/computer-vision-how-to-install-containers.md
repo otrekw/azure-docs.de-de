@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: dapine
+ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 51c60c8cd13c8ad7cef123f2001fcd0ec61f38ba
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 383abc674674fc024052b2c04d3c538838b83856
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770797"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120207"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Installieren und Ausführen von Lesecontainern (Vorschauversion)
 
@@ -45,6 +45,16 @@ Zur Verwendung der Container müssen die folgenden Voraussetzungen erfüllt sein
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
+
+### <a name="advanced-vector-extension-support"></a>Unterstützung von Advanced Vector Extensions
+
+Der **Hostcomputer** ist der Computer, auf dem der Docker-Container ausgeführt wird. Der Host *muss* [Advanced Vector Extensions](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) (AVX2) unterstützen. Sie können die AVX2-Unterstützung auf Linux-Hosts mit dem folgenden Befehl überprüfen:
+
+```console
+grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
+```
+> [!WARNING]
+> Der Hostcomputer *muss* AVX2 unterstützen. Ohne AVX2-Unterstützung funktioniert der Container *nicht* ordnungsgemäß.
 
 ### <a name="container-requirements-and-recommendations"></a>Containeranforderungen und -empfehlungen
 

@@ -5,21 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 02/01/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: deabef0c2c3540e515fe72a161710c95a20fa86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 50ce8530aca40eed07741f35be1a57bbd7cc1868
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67177954"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133603"
 ---
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten.
 
-
-
-Wenn Sie Azure PowerShell lokal ausführen, stellen Sie eine Verbindung mit Ihrem Azure-Konto her. Das Cmdlet *Connect-AzAccount* fordert Sie zur Eingabe von Anmeldeinformationen auf. Nach der Authentifizierung werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Wenn Sie PowerShell nicht lokal ausführen und stattdessen über Azure Cloud Shell die Funktion zum Testen im Browser verwenden, können Sie diesen ersten Schritt überspringen. Es wird automatisch eine Verbindung mit Ihrem Azure-Konto hergestellt.
+Wenn Sie Azure PowerShell lokal ausführen, stellen Sie eine Verbindung mit Ihrem Azure-Konto her. Das Cmdlet *Connect-AzAccount* fordert Sie zur Eingabe von Anmeldeinformationen auf. Nach der Authentifizierung werden Ihre Kontoeinstellungen heruntergeladen, damit sie Azure PowerShell zur Verfügung stehen. Wenn Sie stattdessen Azure Cloud Shell verwenden, ist es nicht erforderlich, *Connect-AzAccount-* auszuführen. Azure Cloud Shell stellt automatisch eine Verbindung mit Ihrem Azure-Konto her.
 
 ```azurepowershell
 Connect-AzAccount

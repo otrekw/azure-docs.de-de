@@ -3,21 +3,19 @@ title: Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung | Micro
 description: Hier erfahren Sie, wie Sie als Operator mithilfe von Gerätegruppen Telemetriedaten aus Geräten in Ihrer Azure IoT Central-Anwendung analysieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 4fd05631e7f54b6258978f70fdd5dfb9705f989b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026474"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167201"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Tutorial: Verwenden von Gerätegruppen zum Analysieren von Gerätetelemetriedaten
-
-
 
 In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen zum Analysieren von Gerätetelemetriedaten in Ihrer Azure IoT Central-Anwendung verwenden.
 
@@ -31,15 +29,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Erstellen Sie zunächst mithilfe der Schnellstartanleitungen [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) und [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](./quick-create-pnp-device.md) die Gerätevorlage **Environment Sensor** (Umgebungssensor), um sie hier verwenden zu können.
+Erstellen Sie zunächst anhand der Schnellstartanleitungen [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md) und [Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung](./quick-create-pnp-device.md) die Gerätevorlage **MXChip IoT DevKit**, um sie hier verwenden zu können.
 
 ## <a name="create-simulated-devices"></a>Erstellen von simulierten Geräten
 
-Fügen Sie vor dem Erstellen einer Gerätegruppe mindestens fünf simulierte Geräte aus der Gerätevorlage **Environment Sensor** hinzu, um sie in diesem Tutorial zu verwenden:
+Fügen Sie vor dem Erstellen einer Gerätegruppe mindestens fünf simulierte Geräte aus der Gerätevorlage **MXChip IoT DevKit** hinzu, um sie in diesem Tutorial zu verwenden:
 
-![Fünf simulierte Umgebungssensorgeräte](./media/tutorial-use-device-groups/simulated-devices.png)
+![Fünf simulierte Sensorgeräte](./media/tutorial-use-device-groups/simulated-devices.png)
 
-Verwenden Sie für vier der Umgebungssensorgeräte die Ansicht **Environmental Sensor properties** (Eigenschaften des Umgebungssensors), um den Kundennamen auf **Contoso** festzulegen:
+Verwenden Sie bei vier der simulierten Sensorgeräte die Ansicht **Gerät verwalten**, um den Kundennamen auf *Contoso* festzulegen:
 
 ![Festlegen des Kundennamens auf „Contoso“](./media/tutorial-use-device-groups/customer-name.png)
 
@@ -49,17 +47,17 @@ Gehen Sie wie folgt vor, um eine Gerätegruppe zu erstellen:
 
 1. Wählen Sie im linken Bereich **Gerätegruppen** aus.
 
-1. Wählen Sie **+ Neu** aus.
+1. Wählen Sie **+** aus:
 
     ![Neue Gerätegruppe](media/tutorial-use-device-groups/image1.png)
 
-1. Geben Sie Ihrer Gerätegruppe einen Namen wie **Contoso-Geräte**. Sie können auch eine Beschreibung hinzufügen. Eine Gerätegruppe kann nur Geräte aus einer einzigen Gerätevorlage enthalten. Wählen Sie die Gerätevorlage **Umgebungssensor** aus, die für diese Gruppe verwendet werden soll.
+1. Nennen Sie Ihre Gerätegruppe *Contoso-Geräte*. Sie können auch eine Beschreibung hinzufügen. Eine Gerätegruppe kann nur Geräte aus einer einzigen Gerätevorlage enthalten. Wählen Sie die Gerätevorlage **MXChip IoT DevKit** aus, die für diese Gruppe verwendet werden soll.
 
-1. Erstellen Sie die Abfrage zum Identifizieren der Geräte für die Gerätegruppe, die zu **Contoso** gehören, indem Sie die Eigenschaft **Kundenname**, den Vergleichsoperator **Gleich** und **Contoso** als Wert auswählen. Sie können mehrere Abfragen hinzufügen, und Geräte, die **alle** Kriterien erfüllen, werden in die Gerätegruppe aufgenommen. Die von Ihnen erstellte Gerätegruppe ist für jeden zugänglich, der Zugriff auf die Anwendung hat, sodass jeder die Gerätegruppe anzeigen, ändern oder löschen kann.
+1. Wenn Sie die Gruppe so anpassen möchten, dass sie nur die zu **Contoso** gehörenden Geräte enthält, wählen Sie **+ Filter** aus. Wählen Sie die Eigenschaft **Kundenname**, den Vergleichsoperator **Ist gleich** und **Contoso** als Wert aus. Sie können mehrere Filter hinzufügen. Dann werden Geräte, die **alle** Filterkriterien erfüllen, in die Gerätegruppe aufgenommen. Die von Ihnen erstellte Gerätegruppe ist für jeden zugänglich, der Zugriff auf die Anwendung hat, sodass jeder die Gerätegruppe anzeigen, ändern oder löschen kann:
 
     ![Gerätegruppenabfrage](media/tutorial-use-device-groups/image2.png)
 
-    > [!NOTE]
+    > [!TIP]
     > Die Gerätegruppe ist eine dynamische Abfrage. Jedes Mal, wenn Sie die Liste der Geräte anzeigen, werden möglicherweise andere Geräte in der Liste angezeigt. Die Liste hängt davon ab, welche Geräte derzeit die Kriterien der Abfrage erfüllen.
 
 1. Wählen Sie **Speichern** aus.

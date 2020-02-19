@@ -2,17 +2,17 @@
 title: Was ist ein Clouddienstmodell, und wie kann es gepackt werden? | Microsoft Docs
 description: Beschreibung des Clouddienstmodells (.csdef, .cscfg) und der Paketdatei (.cspkg) in Azure
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360700"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148308"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Was ist das Clouddienstmodell, und wie kann es gepackt werden?
 Ein Clouddienst wird aus drei Komponenten erstellt: aus der Dienstdefinition *(.csdef)* , der Dienstkonfiguration *(.cscfg)* und einem Dienstpaket *(.cspkg)* . Die beiden Dateien **ServiceDefinition.csdef** und **ServiceConfig.cscfg** sind XML-basiert und beschreiben die Struktur und Konfiguration des Clouddiensts; zusammen werden sie als Modell bezeichnet. Die Datei **ServicePackage.cspkg** ist eine ZIP-Datei, die auf der Grundlage der Datei **ServiceDefinition.csdef** generiert wird und unter anderem alle erforderlichen binärbasierten Abhängigkeiten enthält. In Azure wird ein Clouddienst aus der Datei **ServicePackage.cspkg** sowie der Datei **ServiceConfig.cscfg** erstellt.
@@ -216,6 +216,9 @@ Die [Azure-Laufzeitbibliothek](/previous-versions/azure/reference/mt419365(v=azu
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Die maximale Paketgröße, die bereitgestellt werden kann, beträgt 600 MB.
+
 Um eine Anwendung als Clouddienst in Azure bereitzustellen, müssen Sie zunächst die Anwendung im entsprechenden Format packen. Als Alternative zu Visual Studio können Sie das Befehlszeilentool **CSPack** (wird mit dem [Azure SDK](https://azure.microsoft.com/downloads/)installiert) verwenden, um die Paketdatei zu erstellen.
 
 **CSPack** verwendet den Inhalt der Dienstdefinitionsdatei und Dienstkonfigurationsdatei, um den Inhalt des Pakets zu definieren. **CSPack** generiert eine Anwendungspaketdatei (.cspkg), die Sie über das [Azure-Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy)in Azure hochladen können. Standardmäßig erhält das Paket den Namen `[ServiceDefinitionFileName].cspkg`, durch Verwendung der Option `/out` von **CSPack** können Sie jedoch auch einen anderen Namen angeben.

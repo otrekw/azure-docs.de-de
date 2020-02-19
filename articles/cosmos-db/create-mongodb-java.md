@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 05a796e5bf197bf9ea4f8f47adfbf30851b300ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 35c6944ddcfac1553ffb2c1cc28472f2a56d4515
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445501"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061705"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Schnellstart: Erstellen einer Konsolen-App mit Java und der MongoDB-API in Azure Cosmos DB
 
@@ -27,18 +27,13 @@ ms.locfileid: "75445501"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-In diesem Schnellstart verwenden Sie die Azure Cosmos DB-API für Mongo DB und Java SDK zum Erstellen einer Konsolen-Web-App. In Azure Cosmos DB können Sie schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Cosmos DB zugrunde liegen.
-
-In diesem Schnellstart wird veranschaulicht, wie ein Cosmos-Konto mit der [API für MongoDB von Azure Cosmos DB](mongodb-introduction.md) erstellt wird. Anschließend erstellen Sie eine Konsolen-App mit dem [MongoDB Java-Treiber](https://docs.mongodb.com/ecosystem/drivers/java/) und stellen diese bereit. 
+In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB für MongoDB-API-Konto im Azure-Portal und fügen Daten mithilfe einer über GitHub geklonten Java SDK-App hinzu. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Bevor Sie dieses Beispiel ausführen können, müssen folgende Voraussetzungen erfüllt sein:
-* [Installieren des JDK für Azure und Azure Stack, JDK-Version 8](https://aka.ms/azure-jdks)
-* Maven (Führen Sie `apt-get install maven` aus, wenn Sie nicht über Maven verfügen)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+- Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement. Sie können auch den [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) mit der Verbindungszeichenfolge `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` verwenden.
+- [Java Development Kit (JDK), Version 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) 
+- [Maven](https://maven.apache.org/download.cgi). Oder führen Sie `apt-get install maven` aus, um Maven zu installieren.
+- [Git](https://git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -78,7 +73,9 @@ Klonen Sie jetzt eine App aus GitHub, legen Sie die Verbindungszeichenfolge fest
 
 Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Aktualisieren der Verbindungszeichenfolge](#update-your-connection-string) fortfahren. 
 
-Die folgenden Codeausschnitte stammen alle aus der Datei „Program.java“.
+Die folgenden Codeausschnitte stammen alle aus der Datei *Program.java*.
+
+Diese Konsolen-App verwendet den [Java-Treiber von MongoDB](https://docs.mongodb.com/ecosystem/drivers/java/). 
 
 * Der DocumentClient wird initialisiert.
 
@@ -114,9 +111,9 @@ Die folgenden Codeausschnitte stammen alle aus der Datei „Program.java“.
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren.
 
-1. Wählen Sie auf der Kontoseite **Schnellstart** und dann **Java** aus, und kopieren Sie anschließend die Verbindungszeichenfolge in die Zwischenablage.
+1. Wählen Sie im Azure Cosmos DB-Konto **Schnellstart** und dann **Java** aus, und kopieren Sie anschließend die Verbindungszeichenfolge in die Zwischenablage.
 
-2. Öffnen Sie die Datei `Program.java`, und ersetzen Sie das Argument des MongoClientURI-Konstruktors durch die Verbindungszeichenfolge. Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
+2. Öffnen Sie die Datei *Program.java*, und ersetzen Sie das Argument des MongoClientURI-Konstruktors durch die Verbindungszeichenfolge. Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
     
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 
@@ -136,7 +133,7 @@ Jetzt können Sie [Robomongo](mongodb-robomongo.md) / [Studio 3T](mongodb-mongoc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Cosmos-Konto erstellen, eine Sammlung erstellen und eine Konsolen-App ausführen. Jetzt können Sie zusätzliche Daten in Ihre Cosmos-Datenbank importieren.
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB für MongoDB-API-Konto erstellen, eine Datenbank und einen Container mit dem Daten-Explorer erstellen und Daten mithilfe einer Java-Konsolen-App hinzufügen. Jetzt können Sie zusätzliche Daten in Ihre Cosmos-Datenbank importieren. 
 
 > [!div class="nextstepaction"]
 > [Import MongoDB data into Azure Cosmos DB (Importieren von Daten aus MongoDB in Azure Cosmos DB)](mongodb-migrate.md)

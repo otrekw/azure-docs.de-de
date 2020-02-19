@@ -1,6 +1,6 @@
 ---
 title: Sichern einer Datenbank
-description: Tipps für das Sichern einer Datenbank in Azure SQL Data Warehouse für die Entwicklung von Lösungen.
+description: Tipps zum Schützen einer Datenbank und zum Entwickeln von Lösungen in der SQL-Poolressource von SQL-Analyse.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8e9ab9dddad35708b58d32802452789adf84a19e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759464"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153280"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Sichern einer Datenbank in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "76759464"
 > 
 > 
 
-Dieser Artikel beschreibt die Grundlagen zum Sichern der Azure SQL Data Warehouse-Datenbank. Insbesondere erhalten Sie in diesem Artikel erste Informationen über Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten und zum Überwachen von Aktivitäten in einer Datenbank.
+In diesem Artikel werden die Grundlagen zum Schützen Ihres SQL-Pools in SQL-Analyse erläutert. Insbesondere erhalten Sie in diesem Artikel erste Informationen zu Ressourcen für das Einschränken des Zugriffs, das Schützen von Daten und das Überwachen von Aktivitäten in einer Datenbank, die mit einem SQL-Pool bereitgestellt wurde.
 
 ## <a name="connection-security"></a>Verbindungssicherheit
-Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewallregeln und Verbindungsverschlüsselung einschränken und sichern.
+Verbindungssicherheit bezieht sich darauf, auf welche Weise Sie die Verbindungen zu Ihrer Datenbank mithilfe von Firewall-Regeln und Verbindungsverschlüsselung einschränken und sichern.
 
 Firewallregeln werden vom Server und der Datenbank verwendet, um Verbindungsversuche von IP-Adressen abzuwehren, die nicht explizit der weißen Liste hinzugefügt wurden. Damit von Ihrer Anwendung oder von der öffentlichen IP-Adresse Ihres Clientcomputers aus Verbindungen hergestellt werden können, müssen Sie zuerst über das Azure-Portal, über REST-API oder über PowerShell eine Firewallregel auf Serverebene erstellen. 
 
-Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Um von Ihrem lokalen Computer aus auf Azure SQL Data Warehouse zuzugreifen, stellen Sie sicher, dass die Firewall im Netzwerk und auf dem lokalen Computer eine ausgehende Kommunikation an TCP-Port 1433 zulässt.  
+Eine bewährte Methode besteht darin, die von der Server-Firewall zugelassenen IP-Adressbereiche so weit wie möglich einzuschränken.  Wenn Sie vom lokalen Computer aus auf einen SQL-Pool zugreifen möchten, stellen Sie sicher, dass von der Firewall im Netzwerk und auf dem lokalen Computer ausgehende Kommunikation über den TCP-Port 1433 zugelassen wird.  
 
-Azure Synapse verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md).
+Azure Synapse Analytics verwendet IP-Firewallregeln auf Serverebene. IP-Firewallregeln auf Datenbankebene werden nicht unterstützt. Weitere Informationen finden Sie unter [Firewallregeln für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md).
 
-Verbindungen mit Ihrem SQL Data Warehouse sind standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
+Verbindungen mit Ihrem SQL-Pool sind standardmäßig verschlüsselt.  Das Ändern von Verbindungseinstellungen zum Deaktivieren der Verschlüsselung wird ignoriert.
 
 ## <a name="authentication"></a>Authentifizierung
-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL Data Warehouse unterstützt derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie mit Azure Active Directory. 
+Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Pools unterstützen derzeit die SQL Server-Authentifizierung mit Benutzername und Kennwort sowie mit Azure Active Directory. 
 
 Bei der Erstellung des logischen Servers für die Datenbank haben Sie eine "Server Admin"-Anmeldung mit Benutzername und Kennwort angegeben. Mit diesen Anmeldeinformationen können Sie sich mittels SQL Server-Authentifizierung bei jeder Datenbank auf diesem Server als Datenbankbesitzer bzw. „dbo“ (database owner) authentifizieren.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der **SQL Data Warehouse-Datenbank** her, und erstellen Sie einen Datenbankbenutzer basierend auf der erstellten Serveranmeldung.
+Stellen Sie dann mit den Anmeldedaten für den Serveradministrator eine Verbindung mit der **SQL-Pooldatenbank** her, und erstellen Sie einen Datenbankbenutzer basierend auf der erstellten Serveranmeldung.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -66,7 +66,7 @@ Um einem Benutzer die Berechtigung zu erteilen, zusätzliche Vorgänge wie das E
 
 Weitere Informationen zu diesen zusätzlichen Rollen sowie zur Authentifizierung bei einer SQL-Datenbank finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](../sql-database/sql-database-manage-logins.md).  Weitere Informationen zum Herstellen einer Verbindung mithilfe von Azure Active Directory finden Sie unter [Herstellen einer Verbindung mithilfe der Azure Active Directory-Authentifizierung](sql-data-warehouse-authentication.md).
 
-## <a name="authorization"></a>Autorisierung
+## <a name="authorization"></a>Authorization
 Die Autorisierung bezieht sich darauf, was Sie innerhalb einer Datenbank tun können, sobald Sie authentifiziert und verbunden sind. Autorisierungsrechte werden anhand von Rollenmitgliedschaften und -berechtigungen festgelegt. Als bewährte Methode sollten Sie Benutzern nur die minimal erforderlichen Berechtigungen erteilen. Um Rollen zu verwalten, können Sie die folgenden gespeicherten Prozeduren verwenden:
 
 ```sql
@@ -98,4 +98,4 @@ In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integri
 Sie können Ihre Datenbank mit dem [Azure-Portal](sql-data-warehouse-encryption-tde.md) oder mit [T-SQL](sql-data-warehouse-encryption-tde-tsql.md) verschlüsseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen und Beispiele zum Herstellen einer Verbindung mit Ihrem Warehouse anhand von verschiedenen Protokollen finden Sie unter [Herstellen einer Verbindung mit SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
+Informationen und Beispiele zum Herstellen einer Verbindung mit Ihrem Warehouse mithilfe verschiedener Protokolle finden Sie unter [Herstellen einer Verbindung mit SQL-Pools](sql-data-warehouse-connect-overview.md).

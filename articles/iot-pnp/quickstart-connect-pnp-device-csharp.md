@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964832"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121018"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Schnellstart: Verbinden einer IoT Plug & Play Preview-Beispielgeräteanwendung mit IoT Hub (C#)
 
@@ -25,7 +25,7 @@ In diesem Schnellstart erfahren Sie, wie Sie eine IoT Plug & Play-Beispielgerät
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um diese Schnellstartanleitung abzuschließen, müssen Sie .NET Core 2.2 auf Ihrem Entwicklungscomputer installieren. Sie können diese Version des .NET Core SDK für verschiedene Plattformen von [Download .NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2) herunterladen.
+Um diese Schnellstartanleitung abzuschließen, müssen Sie .NET Core 3.0 auf Ihrem Entwicklungscomputer installieren. Sie können diese Version des .NET Core SDK für verschiedene Plattformen unter [Herunterladen von .NET Core 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0) herunterladen.
 
 Überprüfen Sie die auf Ihrem Entwicklungscomputer installierte .NET-Version, indem Sie in einem lokalen Terminalfenster den folgenden Befehl ausführen: 
 
@@ -72,7 +72,7 @@ Mit dem geklonten Beispielcode erstellen Sie eine Anwendung, die ein Gerät simu
 1. Führen Sie eine Beispielanwendung aus, um ein IoT Plug & Play-Gerät zu simulieren, das Telemetriedaten an Ihren IoT-Hub sendet. Verwenden Sie im selben Terminalfenster den folgenden Befehl, um die erforderlichen Pakete zu erstellen und die Beispielanwendung auszuführen:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Sie werden in Meldungen darüber informiert, dass das Gerät erfolgreich registriert wurde und auf Updates aus der Cloud wartet. Das bedeutet, dass das Gerät jetzt zum Empfangen von Befehlen und Eigenschaftenaktualisierungen bereit ist und mit dem Senden von Telemetriedaten an den Hub begonnen hat. Behalten Sie die Ausführung des Beispiels während der nächsten Schritte bei.

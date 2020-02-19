@@ -3,15 +3,15 @@ title: Verwaltete Containerregistrierungen
 description: Enthält eine Einführung in den Dienst „Azure-Containerregistrierung“ und die Bereitstellung von cloudbasierten, verwalteten, privaten Docker-Registrierungen.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445727"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132026"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
@@ -41,7 +41,7 @@ Azure bietet für die Verwaltung Ihrer Azure-Containerregistrierungen verschiede
 * **Sicherheit und Zugriff**: Melden Sie sich mithilfe der Azure-Befehlszeilenschnittstelle oder mit dem Standardbefehl `docker login` bei der Registrierung an. Azure Container Registry überträgt Containerimages über HTTPS und unterstützt TLS zum Sichern von Clientverbindungen. 
 
   > [!IMPORTANT]
-  > Ab dem 13. Januar 2020 setzt Azure Container Registry voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.
+  > Ab dem 13. Januar 2020 setzt Azure Container Registry voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Aktivieren Sie TLS 1.2 mithilfe eines beliebigen aktuellen Docker-Clients (Version 18.03.0 und höher). Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt. 
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einer Azure-Identität, einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Verwenden Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um Benutzern oder Systemen differenzierte Berechtigungen für eine Registrierung zuzuweisen.
 

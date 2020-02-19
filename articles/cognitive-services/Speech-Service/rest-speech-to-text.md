@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975838"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168308"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -32,9 +32,18 @@ Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, ve
 
 ## <a name="regions-and-endpoints"></a>Regionen und Endpunkte
 
-Diese Regionen werden für die Spracherkennungstranskription über die REST-API unterstützt. Achten Sie darauf, dass Sie den Endpunkt für Ihre Abonnementregion auswählen.
+Der Endpunkt für die REST-API weist das folgende Format auf:
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+Ersetzen Sie `<REGION_IDENTIFIER>` durch den Bezeichner aus der folgenden Tabelle, der mit der Region Ihres Abonnements übereinstimmt:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> Der Sprachparameter muss an die URL angefügt werden, um HTTP Fehler des Typs „4xx“ zu vermeiden. Das folgende Beispiel zeigt die Spracheinstellung „Englisch (USA)“ bei Verwendung des Endpunkt „USA, Westen“: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ## <a name="query-parameters"></a>Abfrageparameter
 
@@ -69,7 +78,7 @@ Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in e
 | OGG | OPUS | 16 Bit | 16 kHz, mono |
 
 >[!NOTE]
->Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig nur das WAV-Format mit dem PCM-Codec.
+>Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig das WAV-Format mit dem PCM-Codec sowie [weitere Formate](how-to-use-codec-compressed-audio-input-streams.md).
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -91,7 +100,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 
 | HTTP-Statuscode | BESCHREIBUNG | Mögliche Ursache |
 |------------------|-------------|-----------------|
-| 100 | Weiter | Die ursprüngliche Anforderung wurde akzeptiert. Mit dem Senden der restlichen Daten fortfahren. (Wird mit segmentierter Übertragung verwendet.) |
+| 100 | Continue | Die ursprüngliche Anforderung wurde akzeptiert. Mit dem Senden der restlichen Daten fortfahren. (Wird mit segmentierter Übertragung verwendet.) |
 | 200 | OK | Die Anforderung war erfolgreich. Der Antworttext ist ein JSON-Objekt. |
 | 400 | Ungültige Anforderung | Der Sprachcode wurde nicht bereitgestellt, ist keine unterstützte Sprache, eine ungültige Audiodatei usw. |
 | 401 | Nicht autorisiert | Der Abonnementschlüssel oder das Autorisierungstoken ist in der angegebenen Region ungültig oder ungültiger Endpunkt. |
@@ -144,7 +153,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 Ergebnisse werden im JSON-Format bereitgestellt. Das `simple`-Format schließt diese Felder auf oberster Ebene ein.
 
-| Parameter | BESCHREIBUNG  |
+| Parameter | Beschreibung  |
 |-----------|--------------|
 |`RecognitionStatus`|Status, z.B. `Success` für erfolgreiche Erkennung. Siehe nächste Tabelle.|
 |`DisplayText`|Der erkannte Text nach Großschreibung, Interpunktion, inverser Textnormalisierung (Umwandlung von gesprochenem Text in kürzere Formen, z.B. 200 für „zweihundert“ oder „Dr. Smith“ für „doctor smith“) und Obszönitätenmaskierung. Nur bei Erfolg vorhanden.|
@@ -153,7 +162,7 @@ Ergebnisse werden im JSON-Format bereitgestellt. Das `simple`-Format schließt d
 
 Das `RecognitionStatus`-Feld kann diese Werte enthalten:
 
-| Status | BESCHREIBUNG |
+| Status | Beschreibung |
 |--------|-------------|
 | `Success` | Die Erkennung war erfolgreich, und das `DisplayText`-Feld ist vorhanden. |
 | `NoMatch` | Im Audiodatenstrom wurde Sprache erkannt, aber es wurde keine Übereinstimmung mit Wörtern aus der Zielsprache festgestellt. Normalerweise bedeutet dies, dass die Erkennungssprache eine andere Sprache ist als die, die der Benutzer spricht. |
@@ -168,7 +177,7 @@ Das Format `detailed` enthält die gleichen Daten wie das Format `simple` sowie 
 
 Jedes Objekt in der `NBest`-Liste enthält:
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |-----------|-------------|
 | `Confidence` | Die Zuverlässigkeitsbewertung des Eintrags von 0,0 (keine Zuverlässigkeit) bis 1,0 (volle Zuverlässigkeit) |
 | `Lexical` | Die lexikalische Form des erkannten Texts: die tatsächlich erkannten Wörter. |

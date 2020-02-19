@@ -3,19 +3,19 @@ title: Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK C#
 titleSuffix: Azure Cognitive Services
 description: In diesem Leitfaden erfahren Sie, wie Sie mit dem Speech SDK für C# Absichten anhand gesprochener Sprache erkennen können.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805891"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120044"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK für C#
 
@@ -91,12 +91,15 @@ Als Nächstes fügen Sie dem Projekt Code hinzu.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Fügen Sie in der bereitgestellten `Main()`-Methode den folgenden Code hinzu:
+1. Ersetzen Sie die angegebene Methode `Main()` durch die folgende asynchrone Entsprechung:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Erstellen Sie eine leere asynchrone `RecognizeIntentAsync()`-Methode, wie nachfolgend gezeigt:
@@ -173,7 +176,7 @@ Die Anwendung analysiert das JSON-Ergebnis nicht. Sie zeigt lediglich den JSON-T
 
 ## <a name="specify-recognition-language"></a>Angeben der Erkennungssprache
 
-Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z. B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Anwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Weitere Informationen finden Sie unter [Unterstützte Sprachen](language-support.md#speech-to-text).
+Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z. B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Anwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Weitere Informationen finden Sie unter [LUIS-Sprachunterstützung](../LUIS/luis-language-support.md#languages-supported).
 
 ## <a name="continuous-recognition-from-a-file"></a>Kontinuierliche Erkennung aus einer Datei
 

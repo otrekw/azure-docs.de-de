@@ -55,10 +55,10 @@ Sehen Sie sich diese Beispieläußerungen an:
 
 |Beispiele für Äußerungen|
 |--|
-|Wie bekomme ich einen Computer?|
-|Wo bekomme ich einen Computer?|
-|Ich möchte einen Computer bekommen, wie gehe ich dazu vor?|
-|Wann kann ich einen Computer bekommen?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 Für den zentralen Begriff („Computer“) sind keine Varianten vorhanden. Verwenden Sie Alternativen wie „Desktopcomputer“, „Laptop“, „Arbeitsstation“ oder sogar nur „Maschine“. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es immer besser, diese zu variieren.
 
@@ -144,8 +144,8 @@ In den folgenden Äußerungen ist das Wort `fair` ein Homograph. Die Schreibweis
 
 |Äußerung|
 |--|
-|Welche Arten von Jahrmärkten finden in diesem Sommer in der Region Seattle statt?|
-|Ist die aktuelle Bewertung für die Seattle-Rezension fair?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Wenn Sie mit einer Veranstaltungsentität alle Veranstaltungsdaten suchen möchten, bezeichnen Sie das Wort `fair` in der ersten Äußerung, aber nicht in der zweiten.
 

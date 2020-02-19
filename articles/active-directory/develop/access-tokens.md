@@ -12,12 +12,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7d596292a823b4d912204f5cfbe8623ab7429fa3
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834419"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161391"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -63,7 +63,7 @@ JWTs sind in drei Teile unterteilt:
 
 Diese Teile sind jeweils durch einen Punkt (`.`) getrennt und werden separat Base64-codiert.
 
-Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden ist. Ihre App sollte daher nicht vom Vorhandensein eines Anspruchs abhängig sein. Beispiele hierfür sind `pwd_exp` (nicht jeder Mandant erfordert das Ablaufen von Kennwörtern) oder `family_name` (Flows für [Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md) erfolgen im Auftrag von Anwendungen, die keine Namen haben). Zur Überprüfung von Zugriffstoken verwendete Ansprüche sind immer vorhanden.
+Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden ist. Ihre App sollte daher nicht vom Vorhandensein eines Anspruchs abhängig sein. Beispiele hierfür sind `pwd_exp` (nicht jeder Mandant erfordert das Ablaufen von Kennwörtern) oder `family_name` (Flows für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) erfolgen im Auftrag von Anwendungen, die keine Namen haben). Zur Überprüfung von Zugriffstoken verwendete Ansprüche sind immer vorhanden.
 
 > [!NOTE]
 > Einige Ansprüche werden verwendet, um Azure AD das Schützen von Token im Fall einer Wiederverwendung zu ermöglichen. Diese Ansprüche sind in der Beschreibung als „nicht transparent“ markiert, um anzugeben, dass sie nicht für die öffentliche Nutzung vorgesehen sind. Solche Ansprüche können eventuell in einem Token enthalten sein, und neue Ansprüche können ohne vorherige Ankündigung hinzugefügt werden.
@@ -80,7 +80,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 
 ### <a name="payload-claims"></a>Nutzlastansprüche
 
-| Anspruch | Format | Beschreibung |
+| Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 | `aud` | Zeichenfolge, ein App-ID-URI | Identifiziert den vorgesehenen Empfänger des Tokens. In ID-Token ist die Zielgruppe die Ihrer App im Azure-Portal zugewiesene Anwendungs-ID der App. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
 | `iss` | Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das ausgegebene Token ein v2. 0-Token ist (weitere Informationen finden Sie im Anspruch `ver`), endet der URI in `/v2.0`. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App sollte ggf. den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können. |
@@ -98,7 +98,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `preferred_username` | String | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen.  Er kann jedoch für Benutzernamenhinweise verwendet werden. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `name` | String | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `scp` | Zeichenfolge, eine durch Leerzeichen getrennte Liste von Bereichen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Bereichen, für die die Clientanwendung eine Einwilligung angefordert (und empfangen) hat. Ihre App sollte überprüfen, ob diese Bereiche gültige, von Ihrer App verfügbar gemachte Bereiche sind, und Autorisierungsentscheidungen basierend auf dem Wert der Bereiche treffen. Wird nur für [Benutzertoken](#user-and-application-tokens) verwendet. |
-| `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung bzw. dem anfordernden Benutzer die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für [Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
+| `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung bzw. dem anfordernden Benutzer die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
 | `wids` | Array von [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)-GUIDs | Gibt die mandantenweiten Rollen an, die diesem Benutzer aus dem Abschnitt mit Rollen auf der Seite[Administratorrollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) zugewiesen wurden.  Dieser Anspruch wird über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert.  Der Wert muss auf „All“ oder „DirectoryRole“ festgelegt werden.  Ist in Token, die über den impliziten Flow abgerufen wurden, aufgrund von Beschränkungen der Tokenlänge u. U. nicht enthalten. |
 | `groups` | JSON-Array von GUIDs | Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe „Object ID“) und eignen sich zum sicheren Verwalten des Zugriffs, z.B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch „groups“ enthaltenen Gruppen werden über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. <br><br>Informationen zur Verwendung des Anspruchs `groups` mit impliziter Gewährung finden Sie unter dem Anspruch `hasgroups`. <br>Wenn bei anderen Flows die Anzahl von Gruppen, denen der Benutzer angehört, einen Grenzwert überschreitet (150 für SAML, 200 für JWT), wird den Anspruchsquellen, die auf den AAD Graph-Endpunkt mit der Liste der Gruppen für den Benutzer verweisen, ein Überschreitungsanspruch hinzugefügt. |
 | `hasgroups` | Boolean | Ist immer auf `true` festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Anspruchs `groups` für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client über den Graph die Gruppen des Benutzers bestimmen soll (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
@@ -138,7 +138,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 
 Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standardmäßig aber nicht in v2.0-Token enthalten. Wenn Sie v2.0 verwenden und einen dieser Ansprüche benötigen, können Sie ihn mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) anfordern.
 
-| Anspruch | Format | Beschreibung |
+| Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 | `ipaddr`| String | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
 | `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
@@ -154,7 +154,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 
 Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, die möglicherweise für Ihre Anwendung relevant sind. Der `amr`-Anspruch ist ein Array, das mehrere Elemente (beispielsweise `["mfa", "rsa", "pwd"]`) für eine Authentifizierung enthalten kann, bei der sowohl ein Kennwort als auch die Authenticator-App verwendet wurden.
 
-| value | Beschreibung |
+| value | BESCHREIBUNG |
 |-----|-------------|
 | `pwd` | Kennwortauthentifizierung, entweder das Microsoft-Kennwort eines Benutzers oder der geheime Clientschlüssel einer App. |
 | `rsa` | Die Authentifizierung erfolgt basierend auf der Prüfung eines RSA-Schlüssels, beispielsweise mit der [Microsoft Authenticator-App](https://aka.ms/AA2kvvu). Dies beinhaltet auch, ob die Authentifizierung von einem selbst signierten JWT mit einem X509-Zertifikat im Besitz eines Diensts durchgeführt wurde. |
@@ -172,7 +172,7 @@ Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ih
 
 Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).
 
-Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung problemlos ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
+Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung problemlos ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](../azuread-dev/active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
 
 ### <a name="validating-the-signature"></a>Überprüfen der Signatur
 
@@ -229,9 +229,9 @@ Diesen Schritt bestimmt die Geschäftslogik Ihrer Anwendung. Im Folgenden finden
 
 ## <a name="user-and-application-tokens"></a>Benutzer- und Anwendungstoken
 
-Ihre Anwendung kann Token im Namen eines Benutzers (der übliche Flow) oder direkt von einer Anwendung (über den [Flow für Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Abgesehen von den folgenden Unterschieden werden diese Token weitgehend auf die gleiche Weise behandelt:
+Ihre Anwendung kann Token im Namen eines Benutzers (der übliche Flow) oder direkt von einer Anwendung (über den Flow für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) empfangen. Diese nur für die App geltenden Token geben an, dass der Aufruf von einer Anwendung stammt und nicht von einem Benutzer unterstützt wird. Abgesehen von den folgenden Unterschieden werden diese Token weitgehend auf die gleiche Weise behandelt:
 
-* Nur für die App geltende Token enthalten keinen `scp`-Anspruch, stattdessen aber möglicherweise einen `roles`-Anspruch. Hier wird die Anwendungsberechtigung (im Gegensatz zu delegierten Berechtigungen) aufgezeichnet. Weitere Informationen zu delegierten Berechtigungen und Anwendungsberechtigungen finden Sie im Thema über Berechtigungen und die Einwilligung in [v1.0](v1-permissions-and-consent.md) und [v2.0](v2-permissions-and-consent.md).
+* Nur für die App geltende Token enthalten keinen `scp`-Anspruch, stattdessen aber möglicherweise einen `roles`-Anspruch. Hier wird die Anwendungsberechtigung (im Gegensatz zu delegierten Berechtigungen) aufgezeichnet. Weitere Informationen zu delegierten Berechtigungen und Anwendungsberechtigungen finden Sie im Thema über Berechtigungen und die Einwilligung ([v1.0](../azuread-dev/v1-permissions-consent.md), [v2.0](v2-permissions-and-consent.md)).
 * Viele benutzerspezifische Ansprüche fehlen, beispielsweise `name` oder `upn`.
 * Der `sub`- und `oid`-Anspruch sind identisch. 
 
@@ -257,7 +257,7 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 | Administrator setzt Kennwort zurück | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Benutzer widerruft Aktualisierungstoken [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Widerrufen | Widerrufen | Widerrufen | Widerrufen | Widerrufen |
 | Admin widerruft alle Aktualisierungstoken für den Mandanten [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen | Widerrufen |
-| [Einmaliges Abmelden](v1-protocols-openid-connect-code.md#single-sign-out) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
+| Einmaliges Abmelden ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v2.0](v2-protocols-oidc.md#single-sign-out)) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
 
 > [!NOTE]
 > Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO2-Schlüssel oder eine PIN.
@@ -269,4 +269,4 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [`id_tokens` in Azure AD](id-tokens.md).
-* Erfahren Sie mehr über Berechtigungen und die Einwilligung in [v1.0](v1-permissions-and-consent.md) und [v2.0](v2-permissions-and-consent.md).
+* Erfahren Sie mehr über Berechtigungen und die Einwilligung ([v1.0](../azuread-dev/v1-permissions-consent.md), [v2.0](v2-permissions-and-consent.md)).

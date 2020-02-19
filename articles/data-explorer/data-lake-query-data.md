@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512911"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161748"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Abfragen von Daten in Azure Data Lake mit Azure Data Explorer
 
 Azure Data Lake Storage ist eine hochgradig skalierbare und kostengünstige Data Lake-Lösung für Big Data-Analysen. Dank des leistungsstarken Dateisystems kombiniert mit immenser Skalierbarkeit und Profitabilität können Sie in kurzer Zeit aufschlussreiche Erkenntnisse gewinnen. Data Lake Storage Gen2 erweitert die Funktionen von Azure Blob Storage und ist für Analyseworkloads optimiert.
  
-Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 integriert und bietet schnellen, zwischengespeicherten und indizieren Zugriff auf Daten im Lake. Sie können Daten im Lake analysieren und abfragen, ohne sie vorher in Azure Data Explorer erfassen zu müssen. Sie können auch erfasste und nicht erfasste native Lake-Daten gleichzeitig abfragen.  
+Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage (Gen1 und Gen2) integriert und bietet schnellen, zwischengespeicherten und indizierten Zugriff auf Daten im Lake. Sie können Daten im Lake analysieren und abfragen, ohne sie vorher in Azure Data Explorer erfassen zu müssen. Sie können auch erfasste und nicht erfasste native Lake-Daten gleichzeitig abfragen.  
 
 > [!TIP]
-> Zur Erzielung der besten Abfrageleistung ist die Datenerfassung in Azure Data Explorer erforderlich. Die Möglichkeit des Abfragens von Daten in Azure Data Lake Storage Gen2 ohne vorherige Erfassung sollte nur für Verlaufsdaten oder für Daten genutzt werden, die nur selten abgefragt werden. [Optimieren Sie die Abfrageleistung im Lake](#optimize-your-query-performance), um optimale Ergebnisse zu erzielen.
+> Zur Erzielung der besten Abfrageleistung ist die Datenerfassung in Azure Data Explorer erforderlich. Die Möglichkeit, externe Daten ohne vorherige Erfassung abzufragen, sollte nur für Verlaufsdaten oder selten abgefragte Daten genutzt werden. [Optimieren Sie die Abfrageleistung im Lake](#optimize-your-query-performance), um optimale Ergebnisse zu erzielen.
  
 
 ## <a name="create-an-external-table"></a>Erstellen einer externen Tabelle
 
  > [!NOTE]
- > Derzeit werden die Speicherkonten Azure Blob Storage und Azure Data Lake Storage Gen2 unterstützt. Aktuell werden folgende Datenformate unterstützt: JSON, CSV, TSV und TXT.
+ > Derzeit werden die Speicherkonten Azure Blob Storage und Azure Data Lake Storage (Gen1 und Gen2) unterstützt.
 
 1. Verwenden Sie den Befehl `.create external table`, um eine externe Tabelle in Azure Data Explorer zu erstellen. Weitere Befehle für externe Tabellen wie `.show`, `.drop` und `.alter` sind unter [Befehle für externe Tabellen](/azure/kusto/management/externaltables) dokumentiert.
 
@@ -46,6 +46,7 @@ Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 i
     > * Wenn Sie eine externe Tabelle mit Partitionen definieren, wird davon ausgegangen, dass die Speicherstruktur identisch ist.
 Wenn die Tabelle z. B. mit einer DateTime-Partition im Format JJJJ/MM/TT (Standard) definiert ist, sollte der Dateipfad des URI-Speichers *container1/JJJJ/MM/TT/all_exported_blobs* lauten. 
     > * Wenn die externe Tabelle durch eine datetime-Spalte partitioniert ist, müssen Sie in der Abfrage immer einen Zeitfilter für einen geschlossenen Bereich einschließen (z.B. sollte die Abfrage `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` bessere Leistung aufweisen als diese Abfrage (mit offenem Bereich): `ArchivedProducts | where Timestamp > ago(1h)`). 
+    > * Alle [unterstützten Erfassungsformate](ingest-data-overview.md#supported-data-formats) können mithilfe externer Tabellen abgefragt werden.
 
 1. Die externe Tabelle ist im linken Bereich der Webbenutzeroberfläche sichtbar.
 

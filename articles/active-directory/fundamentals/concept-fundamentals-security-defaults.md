@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024584"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149829"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -74,7 +74,7 @@ Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, un
 
 Der Großteil aller gefährdenden Anmeldeversuche erfolgt über Legacyauthentifizierungen. Die Legacyauthentifizierung unterstützt keine mehrstufige Authentifizierung. Selbst wenn Sie in Ihrem Verzeichnis eine MFA-Richtlinie aktiviert haben, kann sich ein Angreifer mit einem älteren Protokoll authentifizieren und die mehrstufige Authentifizierung umgehen. 
 
-Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authentifizierungsanforderungen blockiert, die über ein Legacyprotokoll an einen beliebigen Mandanten gerichtet werden. Exchange ActiveSync wird von den Sicherheitsstandards nicht blockiert.
+Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten werden alle Authentifizierungsanforderungen blockiert, die über ein Legacyprotokoll an einen beliebigen Mandanten gerichtet werden. Durch die Sicherheitsstandards ist die Standardauthentifizierung für Exchange Active Sync blockiert.
 
 > [!WARNING]
 > Stellen Sie vor dem Aktivieren von Sicherheitsstandards sicher, dass Ihre Administratoren keine älteren Authentifizierungsprotokolle verwenden. Weitere Informationen finden Sie unter [Blockieren der Legacyauthentifizierung](concept-fundamentals-block-legacy-authentication.md).

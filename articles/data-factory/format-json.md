@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: e7a6e819676752aac679a36221eb60f9ad767071
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7dac8d21e3b45307284ece15ca5ddbcc69db909b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830155"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049849"
 ---
 # <a name="json-format-in-azure-data-factory"></a>JSON-Format in Azure Data Factory
 
@@ -26,7 +26,7 @@ Das JSON-Format wird für folgende Connectors unterstützt: [Amazon S3](connecto
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom JSON-Dataset unterstützt werden.
 
-| Eigenschaft         | Beschreibung                                                  | Erforderlich |
+| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **Json** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften. **Informationen hierzu finden Sie im Abschnitt „Dataset-Eigenschaften“ des Artikels über Connectors**. | Ja      |
@@ -67,7 +67,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **Source** festgelegt werden. | Ja      |
 | storeSettings | Eine Gruppe von Eigenschaften für das Lesen von Daten aus einem Datenspeicher. Jeder dateibasierte Connector verfügt unter `storeSettings` über eigene unterstützte Leseeinstellungen. **Informationen hierzu finden Sie im Abschnitt über die Eigenschaften der Kopieraktivität im Artikel über Connectors**. | Nein       |
@@ -76,7 +76,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **JSONSink** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **JSON-Schreibeinstellungen** finden Sie in der Tabelle unten. | Nein       |
@@ -84,7 +84,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **JSON-Schreibeinstellungen** unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Der Typ von „formatSettings“ muss auf **JsonWriteSettings** festgelegt werden. | Ja                                                   |
 | filePattern |Geben Sie das Muster der in jeder JSON-Datei gespeicherten Daten an. Zulässige Werte sind **setOfObjects** und **arrayOfObjects**. Der **Standardwert** ist **setOfObjects**. Weitere Informationen zu diesen Mustern finden Sie im Abschnitt [JSON-Dateimuster](#json-file-patterns). |Nein |
@@ -183,7 +183,148 @@ Die Kopieraktivität kann die folgenden Muster von JSON-Dateien automatisch erke
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
-Ausführliche Informationen hierzu finden Sie unter [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) in Mapping Data Flow.
+JSON-Dateitypen können als Senke und auch als Quelle für Zuordnungsdatenflüsse verwendet werden.
+
+### <a name="creating-json-structures-in-a-derived-column"></a>Erstellen von JSON-Strukturen in abgeleiteten Spalten
+
+Sie können Ihrem Datenfluss eine komplexe Spalte über den Ausdrucks-Editor für abgeleitete Spalten hinzufügen. Fügen Sie in der Transformation für abgeleitete Spalten eine neue Spalte hinzu, und öffnen Sie den Ausdrucks-Generator, indem Sie auf das blaue Feld klicken. Um eine Spalte komplex zu gestalten, können Sie die JSON-Struktur manuell eingeben oder die Benutzeroberfläche verwenden, um Unterspalten interaktiv hinzuzufügen.
+
+#### <a name="using-the-expression-builder-ux"></a>Verwenden der Benutzeroberfläche des Ausdrucks-Generators
+
+Zeigen Sie im Seitenbereich des Ausgabeschemas mit dem Mauszeiger auf eine Spalte, und klicken Sie auf das Pluszeichen. Wählen Sie **Unterspalte hinzufügen** aus, um die Spalte als komplexen Typ zu gestalten.
+
+![Hinzufügen einer Unterspalte](media/data-flow/addsubcolumn.png "Hinzufügen einer Unterspalte")
+
+Sie können weitere Spalten und Unterspalten auf die gleiche Weise hinzufügen. Im Ausdrucks-Editor auf der rechten Seite kann für jedes nicht komplexe Feld ein Ausdruck hinzugefügt werden.
+
+![Komplexe Spalte](media/data-flow/complexcolumn.png "Komplexe Spalte")
+
+#### <a name="entering-the-json-structure-manually"></a>Manuelles Eingeben der JSON-Struktur
+
+Zum manuellen Hinzufügen einer JSON-Struktur fügen Sie eine neue Spalte hinzu, und geben Sie den Ausdruck im Editor ein. Der Ausdruck weist das folgende allgemeine Format auf:
+
+```
+@(
+    field1=0,
+    field2=@(
+        field1=0
+    )
+)
+```
+
+Wenn dieser Ausdruck für eine Spalte mit dem Namen „complexColumn“ eingegeben wird, wird er als der folgende JSON-Code in die Senke geschrieben:
+
+```
+{
+    "complexColumn": {
+        "field1": 0,
+        "field2": {
+            "field1": 0
+        }
+    }
+}
+```
+
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>Beispiel für ein manuelles Skript für eine vollständige hierarchische Definition
+```
+@(
+    title=Title,
+    firstName=FirstName,
+    middleName=MiddleName,
+    lastName=LastName,
+    suffix=Suffix,
+    contactDetails=@(
+        email=EmailAddress,
+        phone=Phone
+    ),
+    address=@(
+        line1=AddressLine1,
+        line2=AddressLine2,
+        city=City,
+        state=StateProvince,
+        country=CountryRegion,
+        postCode=PostalCode
+    ),
+    ids=[
+        toString(CustomerID), toString(AddressID), rowguid
+    ]
+)
+```
+
+### <a name="source-format-options"></a>Quellformatoptionen
+
+Wenn Sie ein JSON-Dataset als Quelle in Ihrem Datenfluss verwenden, können Sie fünf weitere Einstellungen festlegen. Diese Einstellungen finden Sie auf der Registerkarte **Quelloptionen**  im Accordion-Element **JSON-Einstellungen**.  
+
+![JSON-Einstellungen](media/data-flow/json-settings.png "JSON-Einstellungen")
+
+#### <a name="default"></a>Standard
+
+JSON-Daten werden standardmäßig im folgenden Format gelesen.
+
+```
+{ "json": "record 1" }
+{ "json": "record 2" }
+{ "json": "record 3" }
+```
+
+#### <a name="single-document"></a>Einzelnes Dokument
+
+Wenn **Einzelnes Dokument** ausgewählt ist, liest Mapping Data Flow ein einzelnes JSON-Dokument aus jeder Datei. 
+
+``` json
+File1.json
+{
+    "json": "record 1"
+}
+File2.json
+{
+    "json": "record 2"
+}
+File3.json
+{
+    "json": "record 3"
+}
+```
+
+#### <a name="unquoted-column-names"></a>Spaltennamen ohne Anführungszeichen
+
+Wenn **Spaltennamen ohne Anführungszeichen** ausgewählt ist, liest Mapping Data Flow JSON-Spalten, die nicht in Anführungszeichen eingeschlossen sind. 
+
+```
+{ json: "record 1" }
+{ json: "record 2" }
+{ json: "record 3" }
+```
+
+#### <a name="has-comments"></a>Mit Kommentaren
+
+Wählen Sie **Mit Kommentaren** aus, wenn die JSON-Daten Kommentare im C- oder C++-Stil enthalten.
+
+``` json
+{ "json": /** comment **/ "record 1" }
+{ "json": "record 2" }
+{ /** comment **/ "json": "record 3" }
+```
+
+#### <a name="single-quoted"></a>Einfache Anführungszeichen
+
+Wählen Sie **Einfache Anführungszeichen** aus, wenn für JSON-Felder und -Werte einfache Anführungszeichen anstelle von doppelten Anführungszeichen verwendet werden.
+
+```
+{ 'json': 'record 1' }
+{ 'json': 'record 2' }
+{ 'json': 'record 3' }
+```
+
+#### <a name="backslash-escaped"></a>Umgekehrter Schrägstrich mit Escapezeichen
+
+Wählen Sie **Einfache Anführungszeichen** aus, wenn umgekehrte Schrägstriche für Escapezeichen in den JSON-Daten verwendet werden.
+
+```
+{ "json": "record 1" }
+{ "json": "\} \" \' \\ \n \\n record 2" }
+{ "json": "record 3" }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

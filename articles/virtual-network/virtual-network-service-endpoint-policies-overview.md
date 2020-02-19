@@ -11,20 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumi
-ms.openlocfilehash: 86726eefb53638036a4e9207c648bf5ffe6c866e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1aa4328a6d5367ef356ce33807289a873c93d90f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595386"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056698"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für VNET-Dienstendpunkte (Vorschau)
 
 Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNET, Virtual Network) ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr über Dienstendpunkte zu Azure-Diensten zu filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden. Endpunktrichtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten.
 
-Dieses Feature ist für die folgenden Azure-Dienste und -Regionen als __Vorschauversion__ verfügbar:
-
-__Azure Storage__: USA, Westen-Mitte; USA, Westen 2; USA, Norden-Mitte; USA, Süden-Mitte; USA, Mitte; USA, Osten 2.
+Dieses Feature ist in allen öffentlichen Azure-Regionen für Azure Storage als __Vorschauversion__ verfügbar.
 
 Aktuelle Hinweise zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

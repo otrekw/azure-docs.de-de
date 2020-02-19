@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 09b25dbdc8fc13c40ccd89b2cfd78611cedaac9d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a9760b5c7a70c58a1afe1b14b781a35f2b9b18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024465"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082974"
 ---
 # <a name="accessing-your-avs-private-cloud-environment-and-applications-from-on-premises"></a>Lokales Zugreifen auf Ihre private AVS-Cloudumgebung und darin enthaltene Anwendungen
 
@@ -26,7 +26,7 @@ Für den Zugriff auf vCenter und NSX-T-Manager in Ihrer privaten AVS-Cloud müss
 
 | Port       | `Source`                           | Destination                      | Zweck                                                                                                                |
 |------------|----------------------------------|----------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| 53 (UDP)   | Lokale DNS-Server          | DNS-Server in der privaten AVS-Cloud        | Erforderlich für die Weiterleitung der DNS-Suche von *az.avs.io* an DNS-Server in der privaten AVS-Cloud aus dem lokalen Netzwerk.     |
+| 53 (UDP)   | Lokale DNS-Server          | DNS-Server in der privaten AVS-Cloud        | Erforderlich für die Weiterleitung der DNS-Suche von *az.cloudsimple.io* an DNS-Server in der privaten AVS-Cloud aus dem lokalen Netzwerk.     |
 | 53 (UDP)   | DNS-Server in der privaten AVS-Cloud        | Lokale DNS-Server          | Erforderlich für die Weiterleitung der DNS-Suche von lokalen Domänennamen aus vCenter in der privaten AVS-Cloud an lokale DNS-Server. |
 | 80 (TCP)   | Lokales Netzwerk              | Verwaltungsnetzwerk für die private AVS-Cloud | Erforderlich für die Umleitung der vCenter-URL von *http* zu *https*.                                                         |
 | 443 (TCP)  | Lokales Netzwerk              | Verwaltungsnetzwerk für die private AVS-Cloud | Erforderlich für den Zugriff auf vCenter und NSX-T-Manager aus dem lokalen Netzwerk.                                           |

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888140"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117972"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Senden von ausgehenden Aufrufen an HTTP- oder HTTPS-Endpunkte mithilfe von Azure Logic Apps
 
@@ -28,7 +28,7 @@ Basierend auf den Fähigkeiten des Zielendpunkts unterstützt der HTTP-Connector
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die URL für den Zielendpunkt, den Sie aufrufen möchten
 
@@ -50,9 +50,12 @@ Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für ein
 
 1. Geben Sie die Werte für die [HTTP-Triggerparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten. Geben Sie mithilfe einer Wiederholung an, wie oft der Trigger den Zielendpunkt überprüfen soll.
 
-   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Eingeben der HTTP-Triggerparameter](./media/connectors-native-http/http-trigger-parameters.png)
+
+   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP finden Sie unter den folgenden Themen:
+
+   * [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Authentifizieren des Zugriffs auf Ressourcen mit verwalteten Identitäten](../logic-apps/create-managed-service-identity.md)
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
@@ -80,9 +83,12 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
 1. Geben Sie die Werte für die [HTTP-Aktionsparameter](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) ein, die Sie in den Aufruf des Zielendpunkts aufnehmen möchten.
 
-   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Eingeben der Parameter für die HTTP-Aktion](./media/connectors-native-http/http-action-parameters.png)
+
+   Wenn Sie einen anderen Authentifizierungstyp als **Keiner**auswählen, unterscheiden sich die Authentifizierungseinstellungen je nach Ihrer Auswahl. Weitere Informationen zu verfügbaren Authentifizierungstypen für HTTP finden Sie unter den folgenden Themen:
+
+   * [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Authentifizieren des Zugriffs auf Ressourcen mit verwalteten Identitäten](../logic-apps/create-managed-service-identity.md)
 
 1. Öffnen Sie zum Hinzufügen weiterer verfügbarer Parameter die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Parameter aus.
 
@@ -145,7 +151,7 @@ Weitere Informationen zu Trigger- und Aktionsparametern finden Sie in diesen Abs
 
 Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger oder einer -Aktion, die diese Informationen zurückgeben:
 
-| Eigenschaftenname | type | Beschreibung |
+| Eigenschaftenname | type | BESCHREIBUNG |
 |---------------|------|-------------|
 | headers | Objekt (object) | Die Header aus der Anforderung |
 | body | Objekt (object) | JSON-Objekt | Das Objekt mit dem Inhalt des Texts aus der Anforderung |

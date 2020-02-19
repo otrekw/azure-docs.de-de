@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121912"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117036"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erstellen von Ressourcen auf der Verwaltungsgruppenebene
 
@@ -63,8 +63,20 @@ Bei Bereitstellungen auf Verwaltungsgruppenebene müssen bei der Verwendung von 
 
 * Die Funktion [resourceGroup()](template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
 * Die Funktion [subscription()](template-functions-resource.md#subscription) wird **nicht** unterstützt.
-* Die Funktion [resourceId()](template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Verwaltungsgruppenebene verwendet werden. Rufen Sie beispielsweise die Ressourcen-ID für eine Richtliniendefinition mit `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))` ab. Die Ressourcen-ID wird im Format `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`zurückgegeben.
 * Die Funktionen [reference()](template-functions-resource.md#reference) und [list()](template-functions-resource.md#list) werden unterstützt.
+* Die Funktion [resourceId()](template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Verwaltungsgruppenebene verwendet werden. Geben Sie für den Parameter der Ressourcengruppe keinen Wert an.
+
+  Verwenden Sie beispielsweise Folgendes, um die Ressourcen-ID für eine Richtliniendefinition abzurufen:
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  Die zurückgegebene Ressourcen-ID hat das folgende Format:
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>Erstellen von Richtlinien
 
@@ -136,9 +148,13 @@ Im folgenden Beispiel wird der Verwaltungsgruppe eine vorhandene Richtliniendefi
 }
 ```
 
+## <a name="template-sample"></a>Vorlagenbeispiel
+
+* Erstellen Sie eine Ressourcengruppe, eine Richtlinie und eine Richtlinienzuweisung.  Klicken Sie [hier](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen über das Zuweisen von Rollen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md).
 * Unter [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) finden Sie ein Beispiel für die Bereitstellung von Arbeitsbereichseinstellungen für Azure Security Center.
-* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md). 
+* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
 * Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md).

@@ -1,25 +1,28 @@
 ---
-title: Azure Monitor für Dienstanbieter | Microsoft-Dokumentation
-description: Azure Monitor unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
+title: Azure Monitor-Protokolle für Dienstanbieter | Microsoft-Dokumentation
+description: Mit Azure Monitor-Protokollen können Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter Server in der lokalen oder Cloudinfrastruktur des Kunden verwalten und überwachen.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
-ms.date: 08/06/2019
-ms.openlocfilehash: b0f25d01421edd329b03d8f2b7e1aafaa2ba67d5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932059"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117062"
 ---
-# <a name="azure-monitor-for-service-providers"></a>Azure Monitor für Dienstanbieter
-Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
+# <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
+
+Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics in Azure Monitor einer der in [Azure CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics in Azure Monitor einer Dienste, die in Azure CSP-Abonnements verfügbar sind.
+
+Log Analytics in Azure Monitor kann außerdem von Dienstanbietern verwendet werden, die Kundenressourcen über die Funktion der delegierten Azure-Ressourcenverwaltung in [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwalten.
 
 ## <a name="architectures-for-service-providers"></a>Architekturen für Dienstanbieter
 
@@ -27,42 +30,44 @@ Log Analytics-Arbeitsbereiche ermöglichen Administratoren die Steuerung des Fl
 
 Für Dienstanbieter gibt es im Hinblick auf Log Analytics-Arbeitsbereiche drei mögliche Architekturen:
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Verteilt: Protokolle werden in Arbeitsbereichen gespeichert, die sich im Mandanten des Kunden befinden 
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Verteilt: Protokolle werden in Arbeitsbereichen gespeichert, die sich im Mandanten des Kunden befinden
 
-Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden bereitgestellt, der für alle Protokolle dieses Kunden verwendet wird. Den Administratoren des Dienstanbieters wird mithilfe der [Azure Active Directory-Gastbenutzer (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) Zugriff auf diesen Arbeitsbereich erteilt. Der Administrator des Dienstanbieters muss im Azure-Portal zum Verzeichnis seines Kunden wechseln, um Zugriff auf diese Arbeitsbereiche zu erhalten.
+Bei dieser Architektur wird ein Arbeitsbereich in dem Mandanten des Kunden bereitgestellt, der für alle Protokolle dieses Kunden verwendet wird.
 
-Diese Architektur bietet diese Vorzüge:
-* Der Kunde kann den Zugriff auf die Protokolle mithilfe seines eigenen [rollenbasierten Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/overview) steuern.
+Es gibt zwei Möglichkeiten, wie Administratoren des Dienstanbieters Zugriff auf einen Log Analytics-Arbeitsbereich in einem Kundenmandanten erhalten:
+
+- Ein Kunde kann einzelne Benutzer des Dienstanbieters als [Azure Active Directory-Gastbenutzer (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b) hinzufügen. Die Administratoren des Dienstanbieters müssen sich im Azure-Portal im Verzeichnis jedes Kunden anmelden, um Zugriff auf diese Arbeitsbereiche zu erhalten. Dies macht es auch erforderlich, dass die Kunden den Zugriff für jeden Administrator des Dienstanbieters verwalten.
+- Für eine größere Skalierbarkeit und Flexibilität können Dienstanbieter die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) von [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) verwenden, um auf den Mandanten des Kunden zuzugreifen. Bei dieser Methode sind die Administratoren des Dienstanbieters in einer Azure AD-Benutzergruppe im Mandanten des Dienstanbieters enthalten. Diese Gruppe erhält während des Onboardingprozesses für jeden Kunden Zugriff. Die Administratoren können dann über ihren Mandanten des Dienstanbieters auf die Arbeitsbereiche jedes Kunden zugreifen, statt sich jeweils beim Mandanten der einzelnen Kunden anmelden zu müssen. Wenn Sie auf diese Weise auf die Ressourcen der Log Analytics-Arbeitsbereiche Ihrer Kunden zugreifen, verringert sich der Arbeitsaufwand auf Kundenseite, und die Daten mehrerer Kunden, die über den gleichen Dienstanbieter verwaltet werden, lassen sich über Tools wie z. B. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview) einfacher erfassen und analysieren. Weitere Informationen finden Sie unter [Überwachen von Kundenressourcen in großem Umfang](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+
+Die verteilte Architektur bietet folgende Vorteile:
+
+* Der Kunde kann spezifische Berechtigungsebenen über die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) überprüfen oder den Zugriff auf die Protokolle über seinen [rollenbasierten Zugriff](https://docs.microsoft.com/azure/role-based-access-control/overview) verwalten.
+* Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur von agentbasierten VM-Daten. Beispielsweise Azure-Überwachungsprotokolle.
 * Jeder Kunde kann andere Einstellungen für seinen Arbeitsbereich verwenden, etwa hinsichtlich Vermerkdauer und Datenbegrenzung.
 * Isolation zwischen Kunden im Hinblick auf behördliche Bestimmungen und Compliance.
 * Die Gebühr für jeden Arbeitsbereich wird im Abonnement des Kunden erfasst.
-* Protokolle können von Ressourcen jeder Art erfasst werden, nicht nur auf Agent-basierte Weise. Beispielsweise Azure-Überwachungsprotokolle.
 
-Die Nachteile dieser Architektur sind:
-* Die gleichzeitige Verwaltung einer großen Anzahl von Kundenmandanten ist für den Dienstanbieter schwieriger.
-* Die Administratoren des Dienstanbieters müssen im Verzeichnis des Kunden bereitgestellt werden.
-* Der Dienstanbieter kann Daten nicht kundenübergreifend analysieren.
+Nachteile der verteilten Architektur:
+
+* Durch die zentrale Visualisierung und Analyse von Daten mehrerer Kundenmandanten mit Tools wie z. B. Azure Monitor-Arbeitsmappen können sich Vorgänge verlangsamen, insbesondere bei der Analyse von Daten für mehr als 50 Arbeitsbereiche.
+* Wenn für Kunden kein Onboarding für die delegierte Azure-Ressourcenverwaltung durchgeführt wird, müssen Administratoren des Dienstanbieters im Kundenverzeichnis bereitgestellt werden, und für den Dienstanbieter ist es schwieriger, eine große Anzahl von Kundenmandanten gleichzeitig zu verwalten.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. Zentral: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Dienstanbieters befindet
 
 Bei dieser Architektur werden die Protokolle nicht in den Mandanten des Kunden gespeichert, sondern nur an einem zentralen Speicherort in einem der Abonnements des Dienstanbieters. Die Agents, die auf den VMs des Kunden installiert sind, sind dafür konfiguriert, ihre Protokolle unter Verwendung der Arbeitsbereich-ID und des geheimen Schlüssels an diesen Arbeitsbereich zu senden.
 
-Diese Architektur bietet diese Vorzüge:
+Die zentralisierte Architektur bietet folgende Vorteile:
+
 * Es ist einfach, eine große Anzahl Kunden zu verwalten und sie in verschiedene Back-End-Systeme zu integrieren.
-
 * Der Dienstanbieter ist im vollständigen Besitz der Protokolle und der verschiedenen Artefakte, wie etwa Funktionen und gespeicherte Abfragen.
-
 * Der Dienstanbieter kann Analysen übergreifend über alle Kunden ausführen.
 
-Die Nachteile dieser Architektur sind:
+Nachteile der zentralisierten Architektur:
+
 * Diese Architektur eignet sich nur für Agent-basierte VM-Daten, sie deckt PaaS-, SaaS- und Azure-Fabric-Datenquellen nicht ab.
-
 * Es kann schwierig sein, die Daten der Kunden zu trennen, wenn sie in einem einzelnen Arbeitsbereich zusammengeführt werden. Das einzig gute Verfahren dazu ist die Verwendung des FQDNs (vollqualifizierten Domänennamens) des Computers oder der Azure-Abonnement-ID. 
-
 * Alle Daten aller Kunden werden im gleichen Bereich mit einer einzelnen Rechnung und mit gleicher Vermerkdauer und gleichen Konfigurationseinstellungen gespeichert.
-
 * Azure-Fabric- und PaaS-Dienste, wie Azure-Diagnose und Azure-Überwachungsprotokolle, erfordern einen Arbeitsbereich im gleichen Mandanten wie die Ressource, sie können also keine Protokolle an den zentralen Arbeitsbereich senden.
-
 * Alle VM-Agents von allen Kunden werden beim zentralen Arbeitsbereich mit der gleichen Arbeitsbereichs-ID und dem gleichen Schlüssel authentifiziert. Es gibt kein Verfahren, Protokolle eines bestimmten Kunden zu blockieren, ohne andere Kunden zu unterbrechen.
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. Hybrid: Protokolle werden in einem Arbeitsbereich gespeichert, der sich im Mandanten des Kunden befindet, und einige von ihnen werden per Pull an einen zentralen Speicherort übertragen.
@@ -85,4 +90,4 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 * Generieren Sie Zusammenfassungsberichte mit [Power BI](../../azure-monitor/platform/powerbi.md).
 
-* Überprüfen Sie den Prozess des [Konfigurierens von Log Analytics und Power BI zum Überwachen mehrerer CSP-Kunden](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)
+* Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) durch.

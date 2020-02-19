@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 0fc23a63ba9c54896212f0a3f398b33514fbb5f1
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: a6210c4672042801350e56ef6c8e8a2c02420a81
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555343"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110392"
 ---
 # <a name="get-started-with-device-twins-python"></a>Erste Schritte mit Gerätezwillingen (Python)
 
@@ -31,7 +31,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei Python-Konsolen-Apps:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -70,7 +72,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, mit der dem Gerätez
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Fügen Sie den folgenden Code hinzu: Ersetzen Sie `[IoTHub Connection String]` durch die IoT-Hub-Verbindungszeichenfolge, die Sie unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie `[Device Id]` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben.
+4. Fügen Sie den folgenden Code hinzu. Ersetzen Sie `[IoTHub Connection String]` durch die IoT-Hub-Verbindungszeichenfolge, die Sie unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben. Ersetzen Sie `[Device Id]` durch die Geräte-ID, die Sie unter [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) registriert haben.
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -171,7 +173,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolenanwendung, die als Ihre **
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Fügen Sie den folgenden Code hinzu: Ersetzen Sie den Platzhalterwert `[IoTHub Device Connection String]` durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert haben.
+4. Fügen Sie den folgenden Code hinzu. Ersetzen Sie den Platzhalterwert `[IoTHub Device Connection String]` durch die Geräteverbindungszeichenfolge, die Sie im Abschnitt [Registrieren eines neuen Geräts beim IoT-Hub](#register-a-new-device-in-the-iot-hub) kopiert haben.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"

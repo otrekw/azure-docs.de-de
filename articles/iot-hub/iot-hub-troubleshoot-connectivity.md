@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: ed1abe3565805810a6a3fe383e1ddfa209950469
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935371"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110676"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -101,6 +101,8 @@ Wenn das Problem mit den vorstehenden Schritten nicht behoben werden konnte, ver
 * Wenn Sie Zugriff auf die problematischen Geräte haben, entweder physisch oder remote (wie SSH), folgen Sie der [Anleitung zur geräteseitigen Problembehandlung](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices), um die Fehlerbehebung fortzusetzen.
 
 * Überprüfen Sie, ob Ihre Geräte im Azure-Portal > IoT Hub > IoT-Geräte **aktiviert** sind.
+
+* Wenn Ihr Gerät das MQTT-Protokoll verwendet, vergewissern Sie sich, dass Port 8883 geöffnet ist. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 * Weitere Hilfe erhalten Sie im [Azure IoT Hub-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub), im [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) oder vom [Azure-Support](https://azure.microsoft.com/support/options/).
 

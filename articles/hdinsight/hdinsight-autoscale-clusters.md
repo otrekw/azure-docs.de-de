@@ -5,22 +5,22 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: ace9794bd72aa124137a6b543c79979e8f5ca7c0
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.custom: hdinsightactive
+ms.date: 02/11/2020
+ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031254"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162853"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
 > [!Important]
-> Das Feature für die Autoskalierung funktioniert nur für Spark-, Hive-, LLAP- und HBase-Cluster, die nach dem 8. Mai 2019 erstellt wurden. 
+> Das Feature für die Autoskalierung funktioniert nur für Apache Spark-, Apache Hive-, LLAP- und Apache HBase-Cluster, die nach dem 8. Mai 2019 erstellt wurden. Die Autoskalierung für LLAP und HBase befindet sich in der Vorschauphase.
 
-Das Azure HDInsight-Feature „Autoskalierung“ skaliert die Anzahl der Workerknoten in einem Cluster automatisch zentral hoch oder herunter. Andere Arten von Knoten im Cluster können derzeit nicht skaliert werden.  Während der Erstellung eines neuen HDInsight-Clusters kann eine minimale und maximale Anzahl von Workerknoten festgelegt werden. Die automatische Skalierung überwacht dann die Ressourcenanforderungen der Analyselast und skaliert die Anzahl von Workerknoten dann zentral hoch oder herunter. Für dieses Feature fallen keine zusätzlichen Gebühren an.
+Das Azure HDInsight-Feature der Autoskalierung skaliert die Anzahl der Workerknoten in einem Cluster automatisch zentral hoch oder herunter. Andere Arten von Knoten im Cluster können derzeit nicht skaliert werden.  Während der Erstellung eines neuen HDInsight-Clusters kann eine minimale und maximale Anzahl von Workerknoten festgelegt werden. Die automatische Skalierung überwacht dann die Ressourcenanforderungen der Analyselast und skaliert die Anzahl von Workerknoten dann zentral hoch oder herunter. Für dieses Feature fallen keine zusätzlichen Gebühren an.
 
 ## <a name="cluster-compatibility"></a>Clusterkompatibilität
 
@@ -45,12 +45,14 @@ Die zeitplanbasierte Skalierung ändert die Anzahl der Knoten in Ihrem Cluster b
 
 Die automatische Skalierung überwacht kontinuierlich die Cluster und sammelt die folgenden Metriken:
 
-* **CPU insgesamt für ausstehende**: Die Gesamtanzahl von Kernen, die zum Starten der Ausführung aller ausstehenden Container erforderlich sind.
-* **Arbeitsspeicher insgesamt für ausstehende**: Die Gesamtgröße des Arbeitsspeichers (in MB), die zum Starten der Ausführung aller ausstehenden Container erforderlich ist.
-* **Freie CPUs insgesamt**: Die Summe aller nicht verwendeten Kerne auf den aktiven Workerknoten.
-* **Freier Arbeitsspeicher insgesamt**: Die Summe aller nicht verwendeten Kerne (in MB) auf den aktiven Workerknoten.
-* **Verwendeter Arbeitsspeicher pro Knoten**: Die Last auf einem Workerknoten. Ein Workerknoten, auf dem 10GB Arbeitsspeicher verwendet werden, ist höher ausgelastet als ein Workerknoten, auf dem 2GB verwendet werden.
-* **Anzahl der Anwendungsmaster pro Knoten**: Die Anzahl der Anwendungsmastercontainer (Application Master, AM), die auf einem Workerknoten ausgeführt werden. Ein Workerknoten, der 2 AM-Container hostet, gilt als wichtiger als ein Workerknoten, der 0 AM-Container hostet.
+|Metrik|BESCHREIBUNG|
+|---|---|
+|CPU insgesamt für ausstehende|Die Gesamtanzahl von Kernen, die zum Starten der Ausführung aller ausstehenden Container erforderlich sind.|
+|Arbeitsspeicher insgesamt für ausstehende|Die Gesamtgröße des Arbeitsspeichers (in MB), die zum Starten der Ausführung aller ausstehenden Container erforderlich ist.|
+|Freie CPUs insgesamt|Die Summe aller nicht verwendeten Kerne auf den aktiven Workerknoten.|
+|Freier Arbeitsspeicher insgesamt|Die Summe aller nicht verwendeten Kerne (in MB) auf den aktiven Workerknoten.|
+|Verwendeter Arbeitsspeicher pro Knoten|Die Last auf einem Workerknoten. Ein Workerknoten, auf dem 10GB Arbeitsspeicher verwendet werden, ist höher ausgelastet als ein Workerknoten, auf dem 2GB verwendet werden.|
+|Anzahl der Anwendungsmaster pro Knoten|Die Anzahl der Anwendungsmastercontainer (Application Master, AM), die auf einem Workerknoten ausgeführt werden. Ein Workerknoten, der 2 AM-Container hostet, gilt als wichtiger als ein Workerknoten, der 0 AM-Container hostet.|
 
 Die oben aufgeführten Metriken werden alle 60 Sekunden überprüft. Die Autoskalierung trifft auf Basis dieser Metriken Entscheidungen zum zentralen Hoch- und Herunterskalieren.
 
@@ -76,9 +78,7 @@ Basierend auf der Anzahl der AM-Container pro Knoten und der aktuellen CPU- und 
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Erstellen eines Clusters mit lastbasierter Autoskalierung
 
-Wenn Sie die automatische Skalierung in einem Cluster verwenden möchten, müssen Sie die Option **Automatische Skalierung aktivieren** beim Erstellen des Clusters aktivieren. 
-
-Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, führen Sie als Teil des normalen Clustererstellungsvorgangs folgende Schritte aus:
+Wenn Sie die automatische Skalierung in einem Cluster verwenden möchten, müssen Sie die Option **Automatische Skalierung aktivieren** beim Erstellen des Clusters aktivieren. Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, führen Sie als Teil des normalen Clustererstellungsvorgangs folgende Schritte aus:
 
 1. Aktivieren Sie auf der Registerkarte **Konfiguration + Preise** das Kontrollkästchen **Automatische Skalierung aktivieren**.
 1. Wählen Sie **Lastbasiert** unter **Autoskalierungstyp** aus.
@@ -90,7 +90,7 @@ Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, 
 
     ![Aktivieren der lastbasierten Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-Die anfängliche Anzahl der Workerknoten kann vom Mindest- bis zum Höchstwert reichen. Dieser Wert definiert die Anfangsgröße des Clusters bei der Erstellung. Die Mindestzahl der Workerknoten sollte auf drei oder mehr festgelegt werden. erforderlich. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt. Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode).
+Die anfängliche Anzahl der Workerknoten kann vom Mindest- bis zum Höchstwert reichen. Dieser Wert definiert die Anfangsgröße des Clusters bei der Erstellung. Die Mindestzahl der Workerknoten sollte auf drei oder mehr festgelegt werden. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt.  Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
 ### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>Erstellen eines Clusters mit zeitplanbasiert Autoskalierung
 
@@ -99,7 +99,7 @@ Um das Feature „Autoskalierung“ mit zeitplanbasierter Skalierung zu aktivier
 1. Aktivieren Sie auf der Registerkarte **Konfiguration + Preise** das Kontrollkästchen **Automatische Skalierung aktivieren**.
 1. Geben Sie die **Anzahl der Knoten** für **Workerknoten** ein. Damit wird begrenzt, wie hoch der Cluster skaliert werden kann.
 1. Wählen Sie unter **Autoskalierungstyp** die Option **Zeitplanbasiert** aus.
-1. Klicken Sie auf **Konfigurieren**, um das Fenster **Konfiguration der Autoskalierung** zu öffnen.
+1. Wählen Sie **Konfigurieren** aus, um das Fenster **Konfiguration der Autoskalierung** zu öffnen.
 1. Wählen Sie Ihre Zeitzone aus, und klicken Sie dann auf **+ Bedingung hinzufügen**.
 1. Wählen Sie die Tage der Woche, an denen die neue Bedingung angewendet werden soll.
 1. Bearbeiten Sie die Zeit, zu der die Bedingung wirksam werden soll, und die Anzahl der Knoten, auf die der Cluster skaliert werden soll.
@@ -190,7 +190,7 @@ Sie können einen HDInsight-Cluster mit zeitplanbasierter Autoskalierung und ein
 
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Zum Aktivieren der Autoskalierung in einem ausgeführten Cluster wählen **Clustergröße** unter **Einstellungen**. Klicken Sie dann auf **Autoskalierung aktivieren**. Wählen Sie die gewünschte Art der Autoskalierung, und geben Sie die Optionen für die last- oder zeitplanbasierte Skalierung ein. Klicken Sie abschließend auf **Speichern**.
+Zum Aktivieren der Autoskalierung in einem ausgeführten Cluster wählen **Clustergröße** unter **Einstellungen**. Wählen Sie dann **Automatische Skalierung aktivieren** aus. Wählen Sie die gewünschte Art der Autoskalierung, und geben Sie die Optionen für die last- oder zeitplanbasierte Skalierung ein. Klicken Sie abschließend auf **Speichern**.
 
 ![Aktivieren der zeitplanbasierte Autoskalierung des Workerknotens für einen aktiven Cluster](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
@@ -219,7 +219,7 @@ Berücksichtigen Sie die folgenden Faktoren, bevor Sie sich für einen Modus ent
 * Aktivieren Sie die automatische Skalierung während der Clustererstellung.
 * Die Mindestanzahl von Knoten muss mindestens drei Knoten betragen.
 * Lastvarianz: Folgt die Last des Clusters zu bestimmten Zeiten bzw. an bestimmten Tagen einem einheitlichen Muster? Wenn nicht, ist die lastbasierte Skalierung die besser geeignete Option.
-* SLA-Anforderungen: Die Autoskalierung ist nicht vorausschauend (prädiktiv), sondern reaktiv. Besteht eine ausreichende Verzögerung zwischen dem Zeitpunkt, zu dem die Zunahme der Last beginnt, und dem Zeitpunkt, zu dem der Cluster die Zielgröße erreicht haben muss? Falls strenge SLA-Anforderungen gelten und die Last einem festen bekannten Muster folgt, ist „zeitplanbasiert“ die besser geeignete Option.
+* SLA-Anforderungen: Die Autoskalierung ist nicht vorausschauend (prädiktiv), sondern reaktiv. Besteht eine ausreichende Verzögerung zwischen dem Zeitpunkt, zu dem die Zunahme der Last beginnt, und dem Zeitpunkt, zu dem der Cluster die Zielgröße erreicht haben muss? Falls strenge SLA-Anforderungen gelten und die Last einem festen bekannten Muster folgt, ist „zeitplanbasiert“ die bessere Option.
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Berücksichtigen der Latenz von Vorgängen zum zentralen Hoch- bzw. Herunterskalieren
 
@@ -233,7 +233,7 @@ Die ausgeführten Aufträge werden weiterhin ausgeführt und abgeschlossen. Für
 
 ### <a name="minimum-cluster-size"></a>Minimale Clustergröße
 
-Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt. Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus]( https://docs.microsoft.com/ azure/hdinsight/hdinsight-scaling-best-practices#getting-stuck-in-safe-mode).
+Skalieren Sie den Cluster nicht auf weniger als drei Knoten herunter. Die Skalierung des Clusters auf weniger als drei Knoten kann dazu führen, dass der Cluster aufgrund unzureichender Dateireplikation im abgesicherten Modus hängen bleibt.  Weitere Informationen finden Sie unter [Hängenbleiben im abgesicherten Modus](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode).
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -245,7 +245,7 @@ Der im Azure-Portal aufgeführte Clusterstatus kann Ihnen helfen, die Aktivität
 
 Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden in der folgenden Liste erläutert.
 
-| Clusterstatus | Erklärung |
+| Clusterstatus | Beschreibung |
 |---|---|
 | Wird ausgeführt | Der Cluster wird normal ausgeführt. Alle vorherigen Autoskalierungsaktivitäten wurde erfolgreich abgeschlossen. |
 | Wird aktualisiert  | Die Autoskalierungskonfiguration für den Cluster wird aktualisiert.  |
@@ -253,16 +253,16 @@ Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden 
 | Fehler beim Aktualisieren  | HDInsight hat beim Aktualisieren der Autoskalierungskonfiguration Fehler festgestellt. Kunden können wählen, ob sie den Aktualisierungsvorgang wiederholen oder die Autoskalierung deaktivieren möchten.  |
 | Fehler  | Es gibt ein Problem mit dem Cluster, sodass er kann nicht verwendet werden kann. Löschen Sie diesen Cluster, und erstellen Sie einen neuen.  |
 
-Ihrem Cluster anzuzeigen, gehen Sie zum Diagramm **Clustergröße** auf der Seite **Übersicht** für Ihren Cluster, oder klicken Sie unter **Einstellungen** auf **Clustergröße**.
+Um die aktuelle Anzahl der Knoten im Cluster anzuzeigen, wechseln Sie zum Diagramm **Clustergröße** auf der Seite **Übersicht** für den Cluster, oder wählen Sie unter **Einstellungen** die Option **Clustergröße** aus.
 
 ### <a name="operation-history"></a>Vorgangsverlauf
 
 Sie können den Verlauf des zentralen Hoch- und Herunterskalierens des Clusters als Teil der Clustermetriken anzeigen. Sie können auch alle Skalierungsaktionen des letzten Tags, der letzten Woche oder eines anderen Zeitraums auflisten.
 
-Wählen Sie unter **Überwachung** **Metriken** aus. Klicken Sie dann im Dropdownfeld **Metrik** auf **Metrik hinzufügen** und auf **Anzahl der aktiven Worker**. Klicken Sie auf die Schaltfläche in der oberen rechten Ecke, um den Zeitbereich zu ändern.
+Wählen Sie unter **Überwachung** **Metriken** aus. Wählen Sie dann im Dropdownfeld **Metrik** die Option **Metrik hinzufügen** und dann **Anzahl der aktiven Worker** aus. Wählen Sie die Schaltfläche in der rechten oberen Ecke aus, um den Zeitbereich zu ändern.
 
 ![Aktivieren der Metrik für die zeitplanbasierte Autoskalierung des Workerknotens](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über bewährte Methoden für die manuelle Skalierung von Clustern in [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md)
+Erfahren Sie mehr über bewährte Methoden für die manuelle Skalierung von Clustern in [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md)

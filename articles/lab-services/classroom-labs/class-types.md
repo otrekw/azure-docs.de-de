@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: e1c5504b30c2784e8657ccc0dc4ec18689fe2a68
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: ef5cc0fb561d385a1b1d7b4c14db8c10343508cf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806812"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133671"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Übersicht über Klassentypen: Azure Lab Services
 
@@ -26,9 +26,9 @@ Mithilfe von Azure Lab Services können Sie schnell eine Classroom-Lab-Umgebung 
 
 ## <a name="deep-learning-in-natural-language-processing"></a>Deep Learning mit Verarbeitung natürlicher Sprache
 
-Sie können ein Lab mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services einrichten. Verarbeitung natürlicher Sprache ist eine Form der künstlichen Intelligenz (KI), die Computern Übersetzungs-, Spracherkennungs- und andere Sprachverständnisfunktionen bietet. Kursteilnehmer, die einen Kurs zur Verarbeitung natürlicher Sprache belegen, erhalten einen virtuellen Linux-Computer, auf dem Sie lernen, wie neuronale Netzwerkalgorithmen angewendet werden, um Deep Learning-Modelle zum Analysieren geschriebener menschlicher Sprache zu entwickeln.
+Sie können ein Lab mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services einrichten. NLP ist eine Form der künstlichen Intelligenz (KI), die Computern Übersetzungs-, Spracherkennungs- und andere Sprachverständnisfunktionen bietet. Kursteilnehmer, die einen Kurs zur Verarbeitung natürlicher Sprache belegen, erhalten einen virtuellen Linux-Computer, auf dem Sie lernen, wie neuronale Netzwerkalgorithmen angewendet werden, um Deep Learning-Modelle zum Analysieren geschriebener menschlicher Sprache zu entwickeln.
 
-Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services](class-type-deep-learning-natural-processing.md).
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services](class-type-deep-learning-natural-processing.md).
 
 ## <a name="shell-scripting-on-linux"></a>Shellskripts unter Linux
 
@@ -36,19 +36,35 @@ Sie können ein Lab zur Schulung in Shellskripts unter Linux einrichten. Die Skr
 
 Kursteilnehmer bekommen einen virtuellen Linux-Computer zugewiesen, um die Grundlagen von Linux zu erlernen und sich mit der Erstellung von Bash-Skripts vertraut zu machen. Bei dem virtuellen Linux-Computer ist der Remotedesktopzugriff aktiviert und die Text-Editoren [gedit](https://help.gnome.org/users/gedit/stable/) und [Visual Studio Code](https://code.visualstudio.com/) sind installiert.
 
-Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Shellskripts unter Linux](class-type-shell-scripting-linux.md).
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zur Schulung in Shellskripts unter Linux](class-type-shell-scripting-linux.md).
 
 ## <a name="ethical-hacking"></a>„Ethisches“ Hacken
 
-Sie können ein Lab für eine Klasse einrichten, die sich auf die forensischen Aspekte des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendende Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Sicherheitsrisiken zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte.
+Sie können ein Lab für eine Klasse einrichten, die sich auf die forensischen Aspekte des ethischen Hackens konzentriert. Bei Penetrationstests, eine von der Community für ethisches Hacken verwendete Vorgehensweise, versucht eine Person, auf das System oder Netzwerk zuzugreifen, um Schwachstellen zu demonstrieren, die ein böswilliger Angreifer ausnutzen könnte.
 
 In einem Kurs für ethisches Hacken erlernen die Kursteilnehmer moderne Techniken zum Schützen vor Schwachstellen kennen. Jeder Kursteilnehmer erhält einen virtuellen Windows Server-Hostcomputer mit zwei geschachtelten virtuellen Computern: einem virtuellen Computer mit einem [Metaspoiltable3](https://github.com/rapid7/metasploitable3)-Image und einem anderen Computer mit einem [Kali Linux](https://www.kali.org/)-Image. Der virtuelle Metasploitable-Computer wird angegriffen.  Der virtuelle Kali-Computer stellt die Tools zur Verfügung, die zum Ausführen forensischer Aufgaben erforderlich sind.
 
-Ausführliche Informationen zum Einrichten dieser Art von Lab finden Sie unter [Einrichten eines Labs zum Unterrichten des ethischen Hackens](class-type-ethical-hacking.md).
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken](class-type-ethical-hacking.md).
+
+## <a name="database-management"></a>Datenbankverwaltung
+Datenbankkonzepte werden in den Einführungskursen vermittelt, die in den meisten Informatikfachbereichen an Hochschulen angeboten werden. Sie können ein Lab für einen Grundkurs zur Datenbankverwaltung in Azure Lab Services einrichten. Sie können beispielsweise eine Vorlage für virtuelle Computer in einem Lab mit einem [MySQL](https://www.mysql.com/)-Datenbankserver oder einem [SQL Server 2019](https://www.microsoft.com/sql-server/sql-server-2019)-Server einrichten.
+
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Kenntnissen zur Verwaltung von relationalen Datenbanken](class-type-database-management.md).
+
+## <a name="python-and-jupyter-notebooks"></a>Python und Jupyter Notebook-Instanzen
+Sie können einen Vorlagencomputer in Azure Lab Services mit den Tools einrichten, die erforderlich sind, um Kursteilnehmern die Verwendung von [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) zu vermitteln. Jupyter Notebooks ist ein Open-Source-Projekt, mit dem Sie problemlos Rich-Text und ausführbaren [Python](https://www.python.org/)-Quellcode in einem einzelnen Zeichenbereich kombinieren können, der als Notebook bezeichnet wird. Das Ausführen eines Notebooks führt zu einem linearen Datensatz von Eingaben und Ausgaben.  Diese Ausgaben können Text, Tabellen mit Informationen, Punktdiagramme und mehr enthalten.
+
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebooks](class-type-jupyter-notebook.md).
+
+## <a name="mobile-app-development-with-android-studio"></a>Entwicklung mobiler Apps mit Android Studio
+Sie können ein Lab in Azure Lab Services einrichten, um eine Einführungsklasse für die Entwicklung mobiler Anwendungen zu unterrichten. Diese Klasse befasst sich mit mobilen Android-Anwendungen, die im [Google Play Store](https://play.google.com/store/apps) veröffentlicht werden können.  Die Kursteilnehmer lernen, wie Anwendungen mit [Android Studio](https://developer.android.com/studio) erstellt werden.  Für das lokale Testen der Anwendung wird der [Visual Studio-Emulator für Android](https://visualstudio.microsoft.com/vs/msft-android-emulator/) verwendet.
+
+Ausführliche Informationen zum Einrichten derartiger Labs finden Sie unter [Einrichten eines Labs zum Vermitteln der Entwicklung mobiler Anwendungen mit Android Studio](class-type-mobile-dev-android-studio.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Einrichten eines Labs mit Schwerpunkt auf Deep Learning mit Verarbeitung natürlicher Sprache mithilfe von Azure Lab Services](class-type-deep-learning-natural-processing.md)
 - [Shellskripts unter Linux](class-type-shell-scripting-linux.md)

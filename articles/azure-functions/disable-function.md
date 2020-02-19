@@ -3,18 +3,21 @@ title: Deaktivieren von Funktionen in Azure Functions
 description: Erfahren Sie, wie Sie Funktionen in Azure Functions deaktivieren und aktivieren.
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970974"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116142"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Deaktivieren von Funktionen in Azure Functions
 
 In diesem Artikel wird erläutert, wie Sie eine Funktion in Azure Functions deaktivieren. Durch das *Deaktivieren* einer Funktion wird die Runtime angewiesen, den für die Funktion definierten automatischen Trigger zu ignorieren. Dadurch können Sie das Ausführen einer bestimmten Funktion verhindern, ohne die gesamte Funktions-App zu beenden.
 
 Es wird empfohlen, eine Funktion mithilfe einer App-Einstellung im Format `AzureWebJobs.<FUNCTION_NAME>.Disabled` zu deaktivieren. Sie können diese Anwendungseinstellung auf verschiedene Weise erstellen und ändern, z. B. über die [Azure-Befehlszeilenschnittstelle](/cli/azure/) und im [Azure-Portal](https://portal.azure.com) auf der Registerkarte **Verwalten** der Funktion. 
+
+> [!NOTE]  
+> Wenn Sie eine durch HTTP ausgelöste Funktion mithilfe der in diesem Artikel beschriebenen Methoden deaktivieren, kann der Zugriff auf den Endpunkt bei Ausführung auf dem lokalen Computer weiterhin möglich sein.  
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 

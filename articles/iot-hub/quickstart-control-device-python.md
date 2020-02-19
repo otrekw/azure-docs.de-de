@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/09/2020
-ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 23f9a88cd0accbf8716c706643e7b67f4ecaf05c
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864400"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110524"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)
 
@@ -45,7 +45,9 @@ Laden Sie das Python-Beispielprojekt von https://github.com/Azure-Samples/azure-
 
 Mindestens [Python-Version 3.7](https://www.python.org/downloads/) auf dem Entwicklungscomputer. Informationen zu anderen unterstützten Python-Versionen finden Sie in der SDK-Dokumentation im Abschnitt mit [Azure IoT-Gerätefeatures](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features).
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in dieser Schnellstartanleitung wird das MQTT-Protokoll verwendet, das über den Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 Wenn Sie das vorherige Tutorial [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (Node.js)](quickstart-send-telemetry-python.md) absolviert haben, können Sie diesen Schritt überspringen.
 

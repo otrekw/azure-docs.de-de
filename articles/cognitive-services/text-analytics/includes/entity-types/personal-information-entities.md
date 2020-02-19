@@ -6,30 +6,110 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/21/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3aa4da9a9cf3d1d4b664e81f1fd18f2b225d731d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d678a29de9dea8a5a2f6d0259a452ca4c69feb03
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73799869"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086904"
 ---
 ## <a name="personal-information-entity-types"></a>Entitätstypen für personenbezogene Informationen:
 
+### <a name="person"></a>Person
+Erkennen von Personennamen in Text.
+
+Sprachen:
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | BESCHREIBUNG                                               | Erst ab dieser Modellversion verfügbar |
+|--------------|-----------------------------------------------------------|----------------------------------------|
+| –          | Erkannte Namen, z.B. `Bill Gates`, `Marie Curie` | `2020-02-01`                           |
+
+### <a name="organization"></a>Organization  
+
+Erkannte Organisationen, Unternehmen, Agenturen, Firmen, Vereine und andere Personengruppen.
+
+Sprachen: 
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                                                                                       | Erst ab dieser Modellversion verfügbar|
+|--------------|---------------------------------------------------------------------------------------------------|--------------|
+| –          | Organisationen, z. B. `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration` | `2020-02-01` |
+
 ### <a name="phone-number"></a>Rufnummer
 
-Telefonnummern 
+Telefonnummern (nur US-Telefonnummern) 
 
 Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps           | BESCHREIBUNG                                           |
-|------------------------|-------------------------------------------------------|
-| –                    | Telefonnummern, z. B. `+1 123-123-123`          |
-| EU-Telefonnummer        | Telefonnummern, die spezifisch für die Europäische Union sind.         |
-| EU-Mobiltelefonnummer | Mobiltelefonnummern, die spezifisch für die Europäische Union sind. |
+| Name des Untertyps | BESCHREIBUNG                                    | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------|----------------------------------------|
+| –          | US-Telefonnummern, z. B. `(312) 555-0176` | `2020-02-01`                           |
+
+### <a name="email"></a>Email
+
+E-Mail-Adresse. 
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                                      | Erst ab dieser Modellversion verfügbar |
+|--------------|--------------------------------------------------|----------------------------------------|
+| –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2020-02-01`                           |
+
+### <a name="url"></a>URL
+
+Internet-URLs.
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                                          | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------------|----------------------------------------|
+| –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2020-02-01`                           |
+
+### <a name="ip-address"></a>IP-Adresse
+
+Internetprotokolladresse
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | BESCHREIBUNG                              | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------|----------------------------------------|
+| –          | Netzwerkadresse, z. B. `10.0.0.101` | `2020-02-01`                           |
+
+### <a name="quantity"></a>Menge 
+
+Numerische Mengen
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                   | Erst ab dieser Modellversion verfügbar |
+|--------------|-------------------------------|----------------------------------------|
+| Age          | `90 days old`, `30 years old` | `2020-02-01`                           |
+
+### <a name="datetime"></a>Datetime
+
+Datums- und Uhrzeitentitäten
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                   | Erst ab dieser Modellversion verfügbar |
+|--------------|-------------------------------|----------------------------------------|
+| Date         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
 
 ### <a name="eu-gps-coordinates"></a>EU-GPS-Koordinaten
 
@@ -39,13 +119,15 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                               |
-|--------------|-------------------------------------------|
-| –          | GPS-Koordinaten innerhalb der Europäischen Union |
+| Name des Untertyps | BESCHREIBUNG                               | Erst ab dieser Modellversion verfügbar |
+|--------------|-------------------------------------------|----------------------------------------|
+| –          | GPS-Koordinaten innerhalb der Europäischen Union | `2019-10-01`                           |
 
 ### <a name="azure-information"></a>Azure-Informationen
 
 Identifizierbare Azure-Informationen, Authentifizierungsinformationen und Verbindungszeichenfolgen eingeschlossen. 
+
+* Erst ab der Modellversion `2019-10-01` verfügbar.
 
 Sprachen:
 
@@ -67,13 +149,15 @@ Sprachen:
 
 ### <a name="identification"></a>Identifikation
 
+* Erst ab der Modellversion `2019-10-01` verfügbar.
+
 Sprachen:
 
 * Öffentliche Vorschau: `English`
 
 #### <a name="financial-account-identification"></a>Identifikation bei Finanzkonten
 
-| Name des Untertyps               | BESCHREIBUNG                                                                |
+| Name des Untertyps               | Beschreibung                                                                |
 |----------------------------|----------------------------------------------------------------------------|
 | ABA-Nummern        | ABA-Nummern (American Bankers Association) für den Zahlungsverkehr mit US-amerikanischen Banken.                  |
 | SWIFT-Code                 | SWIFT-Codes in Zahlungsanweisungen.                           |
@@ -90,7 +174,7 @@ Argentinien
 Australien
 * Steuernummer 
 * Führerscheinnummer
-* Reisepass-ID
+* Reisepassnummer
 * Krankenversicherungsnummer
 * Kontonummern (beispielsweise Giro-, Spar- und Debitkonten)
 
@@ -102,7 +186,7 @@ Brasilien
 * CPF-Nummer
 * Nationale ID-Karte (RG)
 
-Kanada
+Canada
 * Reisepassnummer
 * Führerscheinnummer
 * Krankenversicherungsnummer
@@ -232,7 +316,7 @@ Taiwan
 Thailand
 * Bürgeridentifikationscode
 
-Vereinigtes Königreich
+United Kingdom
 * Reisepassnummer
 * Führerscheinnummer
 * Sozialversicherungsnummer (NINO)

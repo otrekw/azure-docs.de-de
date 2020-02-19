@@ -1,5 +1,6 @@
 ---
-title: JavaScript-Beispiele – Azure Active Directory B2C | Microsoft-Dokumentation
+title: JavaScript-Beispiele
+titleSuffix: Azure AD B2C
 description: Hier finden Sie Informationen zur Verwendung von JavaScript in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841930"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149071"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Sie müssen ein Element zu Ihrer [benutzerdefinierten Richtlinie](custom-policy-overview.md) hinzufügen, ein [Seitenlayout](page-layout.md) auswählen und [b2clogin.com](b2clogin.md) in Ihren Anforderungen verwenden, um JavaScript für Ihre Anwendungen zu aktivieren. In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie ändern können, um die Skriptausführung zu aktivieren.
+Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren eigenen clientseitigen JavaScript-Code hinzufügen.
+
+So aktivieren Sie JavaScript für Ihre Anwendungen
+
+* Hinzufügen eines Elements zu Ihrer [benutzerdefinierten Richtlinie](custom-policy-overview.md)
+* Auswählen eines [Seitenlayouts](page-layout.md)
+* Verwenden von [b2clogin.com-](b2clogin.md) in Ihren Anforderungen
+
+In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie ändern können, um die Skriptausführung zu aktivieren.
 
 > [!NOTE]
 > Wenn Sie JavaScript für Benutzerflows aktivieren möchten, finden Sie Informationen unter [JavaScript und Seitenlayoutversionen in Azure Active Directory B2C](user-flow-javascript-overview.md).
@@ -30,9 +39,9 @@ Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren ei
 
 ### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
 
-* [Wählen Sie ein Seitenlayout](page-layout.md) für die Benutzeroberflächenelemente Ihrer Anwendung aus.
+* Wählen Sie ein [Seitenlayout](contentdefinitions.md#select-a-page-layout) für die Benutzeroberflächenelemente Ihrer Anwendung aus.
 
-    Wenn Sie JavaScript verwenden möchten, müssen Sie eine [Seitenlayoutversion](page-layout.md#replace-datauri-values) für *alle* Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
+    Wenn Sie JavaScript verwenden möchten, müssen Sie eine [Seitenlayoutversion](contentdefinitions.md#migrating-to-page-layout) mit der `contract`-Version der Seite für *alle* Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 
@@ -52,25 +61,7 @@ Sie aktivieren die Skriptausführung, indem Sie dem [RelyingParty](relyingparty.
     ```
 3. Speichern Sie die Datei, und laden Sie sie hoch.
 
-## <a name="guidelines-for-using-javascript"></a>Richtlinien für die Verwendung von JavaScript
-
-Beachten Sie die folgenden Richtlinien, wenn Sie die Benutzeroberfläche Ihrer Anwendung mit JavaScript anpassen:
-
-- Binden Sie kein Click-Ereignis an `<a>`-HTML-Elemente.
-- Machen Sie sich nicht von Azure AD B2C-Code oder Kommentaren abhängig.
-- Ändern Sie nicht die Reihenfolge oder die Hierarchie von Azure AD B2C-HTML-Elementen. Verwenden Sie eine Azure AD B2C-Richtlinie, um die Reihenfolge der Benutzeroberflächenelemente zu steuern.
-- Sie können jeden RESTful-Dienst unter Berücksichtigung der folgenden Überlegungen aufrufen:
-    - Möglicherweise müssen Sie die CORS-Einstellung für den RESTful-Dienst so festlegen, dass clientseitige HTTP-Aufrufe zulässig sind.
-    - Stellen Sie sicher, dass Ihr RESTful-Dienst sicher ist und nur das Protokoll HTTPS verwendet.
-    - Verwenden Sie JavaScript nicht direkt, um Azure AD B2C-Endpunkte aufzurufen.
-- Sie können Ihren JavaScript-Code einbetten oder einen Link zu externen JavaScript-Dateien hinzufügen. Stellen Sie bei Verwendung einer externen JavaScript-Datei sicher, dass Sie die absolute URL und keine relative URL verwenden.
-- JavaScript-Frameworks:
-    - Azure AD B2C verwendet eine bestimmte Version von jQuery. Fügen Sie keine weitere Version von jQuery hinzu. Wenn mehr als eine Version auf derselben Seite verwendet wird, treten Probleme auf.
-    - Die Verwendung von RequireJS wird nicht unterstützt.
-    - Die meisten JavaScript-Frameworks werden von Azure AD B2C nicht unterstützt.
-- Azure AD B2C-Einstellungen (wie die aktuelle Sprache der Benutzeroberfläche) können durch Aufrufen der Objekte `window.SETTINGS` und `window.CONTENT` gelesen werden. Ändern Sie nicht den Wert dieser Objekte.
-- Verwenden Sie zum Anpassen der Azure AD B2C-Fehlermeldung Lokalisierung in einer Richtlinie.
-- Wenn etwas durch die Verwendung einer Richtlinie erreicht werden kann, ist dies im Allgemeinen die empfohlene Methode.
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>JavaScript-Beispiele
 

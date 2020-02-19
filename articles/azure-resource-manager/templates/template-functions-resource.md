@@ -2,13 +2,13 @@
 title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: b8d0a3e60654c9d3f951c6f288ea904bb4c0d50b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900647"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120529"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -112,7 +112,7 @@ Im folgenden Beispiel wird die Ressourcen-ID für eine Ressourcengruppensperre z
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys` und `listSecrets` verwendet. 
+Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgänge. Jede Implementierung gibt Werte für den Ressourcentyp zurück, der einen Auflistungsvorgang unterstützt. Der Name des Vorgangs muss mit `list` beginnen. Häufig werden `listKeys` und `listSecrets` verwendet.
 
 ### <a name="parameters"></a>Parameter
 
@@ -120,7 +120,7 @@ Die Syntax für diese Funktion variiert je nach dem Namen der Auflistungsvorgän
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |string |Eindeutiger Bezeichner für die Ressource. |
 | apiVersion |Ja |string |API-Version eines Ressourcen-Laufzeitstatus. In der Regel im Format **jjjj-mm-tt**. |
-| functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. | 
+| functionValues |Nein |Objekt (object) | Ein Objekt, das über Werte für die Funktion verfügt. Geben Sie dieses Objekt nur für Funktionen an, die den Empfang eines Objekts mit Parameterwerten unterstützen – z.B. **listAccountSas** für ein Speicherkonto. Ein Beispiel für die Übergabe von Funktionswerten wird in diesem Artikel gezeigt. |
 
 ### <a name="valid-uses"></a>Gültige Verwendungen
 
@@ -154,7 +154,7 @@ Die Verwendungsmöglichkeiten von list* werden in der folgenden Tabelle gezeigt.
 | Microsoft.DataFactory/datafactories/gateways | listauthkeys |
 | Microsoft.DataFactory/factories/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
 | Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft.DataShare/accounts/shares | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) | 
+| Microsoft.DataShare/accounts/shares | [listSynchronizations](/rest/api/datashare/shares/listsynchronizations) |
 | Microsoft.DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
 | Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
 | Microsoft.DataShare/accounts/shareSubscriptions | [listSynchronizations](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
@@ -287,7 +287,7 @@ Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereits
 
 ### <a name="list-example"></a>list-Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) zeigt, wie die Primär- und Sekundärschlüssel von einem Speicherkonto im Abschnitt „outputs“ zurückgegeben werden können. Es wird auch ein SAS-Token für das Speicherkonto zurückgegeben. 
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) zeigt, wie die Primär- und Sekundärschlüssel von einem Speicherkonto im Abschnitt „outputs“ zurückgegeben werden können. Es wird auch ein SAS-Token für das Speicherkonto zurückgegeben.
 
 Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die Ablaufzeit muss in der Zukunft liegen. Dieses Beispiel soll Ihnen zeigen, wie Sie die Listenfunktionen verwenden können. In der Regel würden Sie das SAS-Token eher in einem Ressourcenwert verwenden, statt es als Ausgabewert zurückzugeben. Ausgabewerte werden im Bereitstellungsverlauf gespeichert und sind nicht sicher.
 
@@ -371,7 +371,7 @@ Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Re
 
 ### <a name="return-value"></a>Rückgabewert
 
-Jeder unterstützte Typ wird im folgenden Format zurückgegeben: 
+Jeder unterstützte Typ wird im folgenden Format zurückgegeben:
 
 ```json
 {
@@ -441,7 +441,7 @@ Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | resourceName oder resourceIdentifier |Ja |string |Name oder eindeutiger Bezeichner einer Ressource Wenn Sie auf eine Ressource in der aktuellen Vorlage verweisen, stellen Sie nur den Ressourcennamen als Parameter bereit. Wenn Sie auf eine zuvor bereitgestellte Ressource verweisen oder der Name der Ressource nicht eindeutig ist, geben Sie die Ressourcen-ID an. |
 | apiVersion |Nein |string |API-Version der angegebenen Ressource. Schließen Sie diesen Parameter ein, wenn die Ressource nicht innerhalb der gleichen Vorlage bereitgestellt wird. In der Regel im Format **jjjj-mm-tt**. Informationen zu gültigen API-Versionen für Ihre Ressource finden Sie in der [Vorlagenreferenz](/azure/templates/). |
@@ -460,11 +460,11 @@ Sie verwenden in der Regel die Funktion **Verweis**, um einen bestimmten Wert au
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -523,7 +523,7 @@ Wenn Sie auf eine Ressource verweisen, die nicht in der gleichen Vorlage bereitg
 Um Mehrdeutigkeiten in Bezug auf die Ressource zu vermeiden, auf die Sie verweisen, können Sie eine vollqualifizierte Ressourcen-ID angeben.
 
 ```json
-"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
 Wenn Sie einen vollqualifizierten Verweis auf eine Ressource erstellen, ist die Reihenfolge für die Kombination von Segmenten von Typ und Name nicht einfach eine Verkettung beider Werte. Verwenden Sie stattdessen nach dem Namespace eine Folge von *Typ-Name*-Paaren, beginnend mit dem am wenigsten spezifischen bis zum spezifischsten:
@@ -555,7 +555,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "storageAccountName": { 
+      "storageAccountName": {
           "type": "string"
       }
   },
@@ -585,7 +585,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
       }
     }
 }
-``` 
+```
 
 Im vorherigen Beispiel werden die beiden Objekt zurückgegeben. Das Eigenschaftenobjekt hat das folgende Format:
 
@@ -672,7 +672,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 resourceGroup()
 ```
 
-Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt. 
+Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -752,14 +752,14 @@ Im vorherigen Beispiel wird ein Objekt im folgenden Format zurückgegeben:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. 
+Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. Das Format des zurückgegebenen Bezeichners variiert abhängig davon, ob die Bereitstellung im Bereich einer Ressourcengruppe, eines Abonnements, einer Verwaltungsgruppe oder eines Mandanten erfolgt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Nein |Zeichenfolge (im GUID-Format) |Der Standardwert ist das aktuelle Abonnement. Geben Sie diesen Wert an, wenn Sie eine Ressource in einem anderen Abonnement abrufen möchten. |
-| resourceGroupName |Nein |string |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. |
+| resourceGroupName |Nein |string |Der Standardwert ist die aktuelle Ressourcengruppe. Geben Sie diesen Wert an, wenn Sie eine Ressource in einer anderen Ressourcengruppe abrufen möchten. Geben Sie diesen Wert nur an, wenn die Bereitstellung im Bereich einer Ressourcengruppe erfolgt. |
 | resourceType |Ja |string |Ressourcentyp einschließlich Namespace von Ressourcenanbieter. |
 | resourceName1 |Ja |string |Name der Ressource. |
 | resourceName2 |Nein |string |Nächstes Ressourcennamensegment, sofern erforderlich. |
@@ -768,7 +768,7 @@ Fügen Sie weitere Ressourcennamen als Parameter hinzu, wenn der Ressourcentyp m
 
 ### <a name="return-value"></a>Rückgabewert
 
-Die Ressourcen-ID wird im folgenden Format zurückgeben:
+Wenn die Vorlage im Bereich einer Ressourcengruppe bereitgestellt wird, wird die Ressourcen-ID im folgenden Format zurückgegeben:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ Bei Verwendung in einer [Bereitstellung auf Abonnementebene](deploy-to-subscript
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Bei Verwendung in einer [Bereitstellung auf Verwaltungsgruppenebene](deploy-to-management-group.md) oder auf Mandantenebene wird die Ressourcen-ID im folgenden Format zurückgegeben:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Informationen zum Abrufen der ID in anderen Formaten finden Sie unter:
@@ -903,7 +909,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 subscription()
 ```
 
-Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück. 
+Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -924,7 +930,7 @@ Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen 
 
 ### <a name="subscription-example"></a>subscription-Beispiel
 
-Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) zeigt die im Abschnitt „outputs“ abgerufene subscription-Funktion. 
+Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) zeigt die im Abschnitt „outputs“ abgerufene subscription-Funktion.
 
 ```json
 {

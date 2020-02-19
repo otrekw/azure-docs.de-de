@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758749"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185805"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -42,7 +42,7 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den Änderungen, die in der Produktionsumgebung bestehen oder eingeführt werden. 
 
-## <a name="february-2020"></a>Februar 2020: 
+## <a name="february-2020"></a>Februar 2020 
 
 ### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>An jede HTTP-Umleitung vom Endpunkt der Anmeldung werden leere Fragmente angehängt. 
 
@@ -156,7 +156,7 @@ Ab dem 15. November 2018 akzeptiert Azure AD bereits zuvor verwendete Authentifi
 
 Wenn Ihre App Autorisierungscodes zum Abrufen von Token für mehrere Ressourcen wiederverwendet, sollten Sie den Code für das Abrufen eines Aktualisierungstokens verwenden. Verwenden Sie dieses Aktualisierungstoken anschließend, um die zusätzlichen Token für andere Ressourcen abzurufen. Autorisierungscodes können nur einmal verwendet werden, Aktualisierungstoken hingegen können mehrere Male und für mehrere Ressourcen verwendet werden. Für jede neue App, die einen Authentifizierungscode im OAuth-Codefluss erneut verwenden möchte, wird ein Fehler vom Typ „invalid_grant“ zurückgegeben.
 
-Weitere Informationen zu Aktualisierungstoken finden Sie unter [Aktualisieren der Zugriffstoken](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Wenn Sie ADAL oder MSAL verwenden, wird dies automatisch durch die Bibliothek durchgeführt – ersetzen Sie die zweite Instanz von AcquireTokenByAuthorizationCodeAsync durch AcquireTokenSilentAsync. 
+Weitere Informationen zu Aktualisierungstoken finden Sie unter [Aktualisieren der Zugriffstoken](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  Wenn Sie ADAL oder MSAL verwenden, wird dies automatisch durch die Bibliothek durchgeführt – ersetzen Sie die zweite Instanz von AcquireTokenByAuthorizationCodeAsync durch AcquireTokenSilentAsync. 
 
 ## <a name="may-2018"></a>Mai 2018
 
@@ -166,7 +166,7 @@ Weitere Informationen zu Aktualisierungstoken finden Sie unter [Aktualisieren de
 
 **Betroffene Endpunkte:** v1.0 und v2.0
 
-**Betroffene Protokolle:** Impliziter Flow und [OBO-Fluss](v1-oauth2-on-behalf-of-flow.md)
+**Betroffene Protokolle:** Impliziter Ablauf und [„im Auftrag von“-Ablauf](v2-oauth2-on-behalf-of-flow.md)
 
 Seit dem 1. Mai 2018 können ID-Token nicht mehr als Assertion in einem OBO-Fluss für neue Anwendungen verwendet werden. Stattdessen müssen Zugriffstoken zum Schützen von APIs genutzt werden (auch zwischen einem Client und der mittleren Ebene der gleichen Anwendung). Vor dem 1. Mai 2018 registrierte Apps funktionieren weiterhin und können ID-Token gegen Zugriffstoken austauschen. Dieses Muster wird jedoch nicht empfohlen.
 

@@ -3,18 +3,18 @@ title: 'Schnellstart: Konfigurieren von Regeln und Aktionen in Azure IoT Central
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Azure IoT Central-Anwendung konfigurieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a63e77fb3c50d4387c27912336d65f9f84d2d5c9
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026243"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169518"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central
 
@@ -34,7 +34,7 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Geben Sie als Regelname **Environmental temperature** (Umgebungstemperatur) ein.
 
-1. Wählen Sie im Abschnitt **Zielgeräte** die Option **MXChip IoT DevKit** als Gerätevorlage aus. Diese Option filtert die Geräte, auf die die Regel angewendet wird, nach Gerätevorlagentyp. Sie können weitere Filterkriterien hinzufügen, indem Sie **+ Filter** auswählen.
+1. Wählen Sie im Abschnitt **Zielgeräte** die Option **MXChip IoT DevKit** als Gerätevorlage aus. Diese Option filtert die Geräte, auf die die Regel angewendet wird, nach Gerätevorlagentyp. Sie können weitere Filterkriterien hinzufügen, indem Sie **+ Filter** auswählen.
 
 1. Im Abschnitt **Bedingungen** definieren Sie, wodurch Ihre Regel ausgelöst wird. Verwenden Sie die folgenden Informationen, um eine Bedingung basierend auf Temperaturtelemetrie zu definieren:
 

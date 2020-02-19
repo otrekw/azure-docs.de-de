@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aba613911328b1272ebb07eeae633932cb4a442f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 5257d9f94f6304c2a8dbea3f1648a71d0ba65e94
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935355"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064749"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,6 +111,62 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 Weitere Informationen zu benutzerdefinierten Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](/azure/role-based-access-control/custom-roles).
 
 Weitere Informationen zu den Vorgängen (Aktionen), die mit benutzerdefinierten Rollen durchgeführt werden können, finden Sie unter [Vorgänge für Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices).
+
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+
+### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Q. Welche Berechtigungen sind erforderlich, um verschiedene Aktionen in Azure Machine Learning Service auszuführen?
+
+Die folgende Tabelle ist eine Zusammenfassung der Azure Machine Learning-Aktivitäten und der erforderlichen Berechtigungen, um sie im kleinstmöglichen Umfang auszuführen. Wenn eine Aktivität beispielsweise im Bereich eines Arbeitsbereichs (Spalte 4) ausgeführt werden kann, funktionieren alle umfassenderen Bereiche mit dieser Berechtigung automatisch ebenfalls. Alle Pfade in dieser Tabelle sind **relativ** zu `Microsoft.MachineLearningServices/`.
+
+| Aktivität | Bereich der Abonnementebene | Bereich einer Ressourcengruppe | Bereich eines Arbeitsbereichs |
+|---|---|---|---|
+| Erstellen eines neuen Arbeitsbereichs | Nicht erforderlich | „Besitzer“ oder „Mitwirkender“ | – (wird nach der Erstellung zum Besitzer oder erbt eine Rolle mit umfassenderem Bereich) |
+| Erstellen eines neuen Computeclusters | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/computes/write` |
+| Erstellen einer neuen Notebook-VM | Nicht erforderlich | „Besitzer“ oder „Mitwirkender“ | Nicht möglich |
+| Erstellen einer neuen Computeinstanz | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/computes/write` |
+| Aktivität auf Datenebene, z. B. Übermitteln einer Ausführung, Zugreifen auf Daten, Bereitstellen von Modellen oder Veröffentlichen einer Pipeline | Nicht erforderlich | Nicht erforderlich | „Besitzer“, „Mitwirkender“ oder benutzerdefinierte Rolle mit folgenden Berechtigungen: `workspaces/*/write` <br/> Beachten Sie, dass Sie auch einen im Arbeitsbereich registrierten Datenspeicher benötigen, damit MSI auf Daten in Ihrem Speicherkonto zugreifen kann. |
+
+
+### <a name="q-how-do-i-list-all-the-custom-roles-in-my-subscription"></a>Q. Wie liste ich alle benutzerdefinierten Rollen in meinem Abonnement auf?
+
+Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus.
+
+```azurecli-interactive
+az role definition list --subscription <sub-id> --custom-role-only true
+```
+
+### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Q. Wie suche ich die Rollendefinition für eine Rolle in meinem Abonnement?
+
+Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus. Beachten Sie, dass `<role-name>` das Format aufweisen sollte, das vom obigen Befehl zurückgegeben wird.
+
+```azurecli-interactive
+az role definition list -n <role-name> --subscription <sub-id>
+```
+
+### <a name="q-how-do-i-update-a-role-definition"></a>Q. Wie aktualisiere ich eine Rollendefinition?
+
+Führen Sie in der Azure-Befehlszeilenschnittstelle den folgenden Befehl aus.
+
+```azurecli-interactive
+az role definition update --role-definition update_def.json --subscription <sub-id>
+```
+
+Beachten Sie, dass Sie über Berechtigungen für den gesamten Bereich der neuen Rollendefinition verfügen müssen. Wenn diese neue Rolle beispielsweise als Bereich drei Abonnements umfasst, müssen Sie über Berechtigungen für alle drei Abonnements verfügen. 
+
+> [!NOTE]
+> Es kann bei einem Rollenupdate zwischen 15 Minuten und einer Stunde dauern, alle Rollenzuweisungen in diesem Bereich anzuwenden.
+### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Q. Kann ich eine Rolle definieren, die das Aktualisieren der Arbeitsbereichs-Edition verhindert? 
+
+Ja, Sie können eine Rolle definieren, die das Aktualisieren der Arbeitsbereichs-Edition verhindert. Da es sich bei der Arbeitsbereichsaktualisierung um einen PATCH-Aufruf für das Arbeitsbereichsobjekt handelt, erreichen Sie dies, indem Sie die folgende Aktion in das `"NotActions"`-Array in Ihrer JSON-Definition einfügen: 
+
+`"Microsoft.MachineLearningServices/workspaces/write"`
+
+### <a name="q-what-permissions-are-needed-to-perform-quota-operations-in-a-workspace"></a>Q. Welche Berechtigungen sind erforderlich, um Kontingentvorgänge in einem Arbeitsbereich auszuführen? 
+
+Sie benötigen Berechtigungen auf Abonnementebene, um auf das Kontingent bezogene Vorgänge im Arbeitsbereich auszuführen. Das bedeutet, dass das Festlegen eines Kontingents auf Abonnementebene oder auf Arbeitsbereichsebene für Ihre verwalteten Computeressourcen nur möglich ist, wenn Sie über Schreibberechtigungen im Abonnementbereich verfügen. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

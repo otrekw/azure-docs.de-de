@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/11/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: a95b59c6cc0d486c1d4b10f39d0d272dd4b34f54
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 944f5008cff8d982ef15a1b129e2cd41d7df5cb4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018991"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137732"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
@@ -57,7 +57,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-demo@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -66,30 +66,14 @@ Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Regio
 |Parameter         |Beschreibung |
 |------------------|------------|
 |ResourceGroupName |Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
-|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Derzeit können Sie eine IoT Central-Anwendung in den Regionen **USA, Osten**, **USA, Westen**, **Europa, Norden** oder **Europa, Westen** oder aber in den geografischen Regionen **Australien** oder **Asien, Osten** erstellen.  |
+|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Sie können derzeit eine IoT Central-Anwendung in den geografischen Regionen **Australien**, **Asien, Osten**, **Europa** oder **USA** erstellen.  |
 |Name              |Der Name der Anwendung im Azure-Portal. |
 |Unterdomäne         |Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Derzeit können Sie **ST1** oder **ST2** verwenden. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
-|Vorlage          | Die zu verwendende Anwendungsvorlage. Weitere Informationen finden Sie in der Tabelle unten: |
+|Vorlage          | Die zu verwendende Anwendungsvorlage. Ausführlichere Informationen finden Sie in der unten stehenden Tabelle. |
 |DisplayName       |Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
-**Anwendungsvorlagen**
-
-| Vorlagenname            | Beschreibung |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können.
-| iotc-pnp-preview@1.0.0   | Mit dieser Vorlage wird eine leere Plug & Play-Anwendung (Vorschauversion) erstellt, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
-| iotc-condition@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Bedingungsüberwachungsvorlage). Verwenden Sie diese Vorlage, um eine Verbindung mit der Speicherumgebung herzustellen und sie zu überwachen. |
-| iotc-consumption@1.0.0   | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung des Wasserverbrauchs erstellt. Verwenden Sie diese Vorlage, um den Wasserfluss zu überwachen und zu steuern. |
-| iotc-distribution@1.0.0  | Mit dieser Vorlage wird eine Anwendung mit Vorlage für die digitale Verteilung erstellt. Verwenden Sie diese Vorlage, um die Effizienz des Warenausgangs aus dem Lager durch die Digitalisierung wichtiger Ressourcen und Aktionen zu verbessern. |
-| iotc-inventory@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die intelligente Bestandsverwaltung erstellt. Verwenden Sie diese Vorlage, um Empfang, Produktbewegung, Zykluszählung und Nachverfolgung von Sensoren zu automatisieren. |
-| iotc-logistics@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für vernetzte Logistik erstellt. Verwenden Sie diese Vorlage, um Ihre Sendung auf dem Luft-, Wasser- oder Landweg mit Standort- und Zustandsüberwachung in Echtzeit zu verfolgen. |
-| iotc-meter@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die intelligente Verbrauchseinheitenüberwachung erstellt. Verwenden Sie diese Vorlage zum Überwachen des Energieverbrauchs und des Netzwerkstatus, und identifizieren Sie Trends, um den Kundensupport und Verwaltungsvorgänge für intelligente Verbrauchseinheiten zu verbessern.  |
-| iotc-patient@1.0.0       | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die fortlaufende Patientenüberwachung erstellt. Verwenden Sie diese Vorlage, um die Patientenversorgung zu erweitern, Wiedereinweisungen zu vermeiden und Krankheiten zu behandeln. |
-| iotc-power@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die Überwachung von Solarpaneln erstellt. Verwenden Sie diese Vorlage, um den Status von Solarpaneln zu überwachen und Trends bei der Energieerzeugung zu erkennen. |
-| iotc-quality@1.0.0       | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung der Wasserqualität erstellt. Verwenden Sie diese Vorlage, um die Wasserqualität digital zu überwachen.|
-| iotc-store@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Auftragsabschlussvorlage). Verwenden Sie diese Vorlage, um den Auftragsabschlussflow in Ihrem Unternehmen zu überwachen und zu verwalten. |
-| iotc-waste@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für eine vernetzte Abfallwirtschaft erstellt. Verwenden Sie diese Vorlage, um Müllcontainer zu überwachen und Mitarbeiter für deren Leerung rechtzeitig loszuschicken. |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-iot-central-applications"></a>Anzeigen Ihrer IoT Central-Anwendungen
 

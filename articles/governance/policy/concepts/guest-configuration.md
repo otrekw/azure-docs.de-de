@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 205aa5a9292d0f70fed8247a8af1fe575ad3614e
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 128baa0df1d3e555fe9629005529710202e1bbf6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830495"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169525"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -183,10 +183,10 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Beispiele für Guest Configuration
 
-Beispiele für Guest Configuration von Policy finden Sie unter:
+Die Quelle für die integrierten Initiativen der Policy-Gastkonfiguration finden Sie unter:
 
-- [Beispielindex: Guest Configuration](../samples/index.md#guest-configuration)
-- [Azure Policy-Beispiele: GitHub-Repository](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
+- [Integrierte Initiativen: Gastkonfiguration](../samples/built-in-initiatives.md#guest-configuration)
+- [Azure Policy-Beispiele: GitHub-Repository](https://github.com/Azure/azure-policy/tree/master/built-in-policies/policySetDefinitions/Guest Configuration)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

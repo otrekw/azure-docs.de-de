@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2bae3bd268dba8efdf23ae314671b17a2c89420
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844614"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086628"
 ---
 # <a name="persist-state-in-windows"></a>Beibehalten des Status in Windows
 
@@ -212,7 +212,7 @@ Anstatt ein Volume einzubinden, können Sie auch ein Verzeichnis auf dem Hostsys
     ```
 ## <a name="persist-events"></a>Persistentes Speichern von Ereignissen
 
-Um Ereignispersistenz zu aktivieren, müssen Sie zunächst Metadatenpersistenz über Volumeeinbindung oder Hostverzeichniseinbindung aktivieren.
+Um Ereignispersistenz zu aktivieren, müssen Sie Ereignispersistenz zunächst gemäß den Abschnitten weiter oben zur Volumeeinbindung oder Hostverzeichniseinbindung aktivieren.
 
 Wichtige Punkte beim persistenten Speichern von Ereignissen:
 

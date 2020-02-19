@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837933"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064681"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -69,7 +69,7 @@ Es ist wichtig, dass Sie die in Ihren HDInsight-Clustern ausgeführten Workloadt
 
 * Überlegen Sie, ob eine Überwachungslösung oder ein entsprechender Dienst nützlich wäre. In Microsoft System Center ist ein [HDInsight Management Pack](https://www.microsoft.com/download/details.aspx?id=42521) verfügbar. Sie können auch Drittanbietertools verwenden, z. B. Apache Chukwa und Ganglia, um Protokolle zu sammeln und zu zentralisieren. Viele Unternehmen bieten Dienste, um Hadoop-basierte Big Data-Lösungen zu überwachen, zum Beispiel: Centerity, Compuware APM, Sematext SPM und Zettaset Orchestrator.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Skriptaktionsprotokollen
+## <a name="step-2-manage-cluster-service-versions-and-view-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Protokollen
 
 Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-Softwarepakete verwendet (z.B. Apache HBase, Apache Spark usw.). Bei einigen Workloads, z. B. der Bioinformatik, kann es ggf. erforderlich sein, zusätzlich zu den Protokollen zur Auftragsausführung den Protokollierungsverlauf der Dienstkonfiguration aufzubewahren.
 
@@ -89,15 +89,27 @@ Mit der Ambari-Benutzeroberfläche können Sie die Konfiguration für beliebige 
 
 Mit HDInsight-[Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) werden Skripts in einem Cluster manuell oder gemäß Festlegung ausgeführt. Skriptaktionen können beispielsweise verwendet werden, um zusätzliche Software im Cluster zu installieren oder für Konfigurationseinstellungen die Standardwerte zu ändern. Skriptaktionsprotokolle können Erkenntnisse zu Fehlern liefern, die während der Einrichtung des Clusters aufgetreten sind, sowie zu Änderungen von Konfigurationseinstellungen, die sich auf die Clusterleistung und -verfügbarkeit auswirken können.  Wählen Sie zum Anzeigen des Status einer Skriptaktion in der Ambari-Benutzeroberfläche die Schaltfläche **ops** (Vorgänge), oder greifen Sie auf die Statusprotokolle im Standardspeicherkonto zu. Die Speicherprotokolle stehen unter `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` zur Verfügung.
 
+### <a name="view-ambari-alerts-status-logs"></a>Anzeigen von Protokollen zum Ambari-Warnungsstatus
+
+Apache Ambari schreibt Warnungsstatusänderungen in `ambari-alerts.log`. Der vollständige Pfad lautet `/var/log/ambari-server/ambari-alerts.log`. Um das Debuggen für das Protokoll zu aktivieren, ändern Sie eine Eigenschaft in `/etc/ambari-server/conf/log4j.properties.`. Ändern Sie dann den Eintrag unter `# Log alert state changes` von:
+
+```
+log4j.logger.alerts=INFO,alerts
+
+to
+
+log4j.logger.alerts=DEBUG,alerts
+```
+
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Schritt 3: Verwalten von Protokolldateien zur Ausführung von Clusteraufträgen
 
-Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für die verschiedenen Dienste überprüft.  Beispiele für diese Dienste sind Apache HBase, Apache Spark und viele weitere. Ein Hadoop-Cluster erzeugt eine große Zahl von ausführlichen Protokollen, sodass die Ermittlung, welche Protokolle nützlich sind (und welche nicht), ein zeitaufwändiger Vorgang sein kann.  Es ist wichtig, das Protokollierungssystem zu verstehen, um eine zielgerichtete Verwaltung von Protokolldateien zu ermöglichen.  Im Folgenden ist ein Beispiel für eine Protokolldatei angegeben.
+Im nächsten Schritt werden die Protokolldateien zur Auftragsausführung für die verschiedenen Dienste überprüft.  Beispiele für diese Dienste sind Apache HBase, Apache Spark und viele weitere. Ein Hadoop-Cluster erzeugt eine große Zahl von ausführlichen Protokollen, sodass die Ermittlung, welche Protokolle nützlich sind (und welche nicht), ein zeitaufwändiger Vorgang sein kann.  Es ist wichtig, das Protokollierungssystem zu verstehen, um eine zielgerichtete Verwaltung von Protokolldateien zu ermöglichen.  Die folgende Abbildung zeigt ein Beispiel für eine Protokolldatei.
 
 ![HDInsight – Beispielausgabe für Beispielprotokolldatei](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Zugreifen auf die Hadoop-Protokolldateien
 
-Für HDInsight werden die Protokolldateien sowohl im Clusterdateisystem als auch im Azure-Speicher gespeichert. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine [SSH](hdinsight-hadoop-linux-use-ssh-unix.md)-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure-Speicher mit allen Tools untersuchen, mit denen auf Daten des Azure-Speichers zugegriffen und der Download dafür durchgeführt werden kann. Beispiele hierfür sind [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
+HDInsight speichert die Protokolldateien sowohl im Clusterdateisystem als auch in Azure Storage. Sie können Protokolldateien im Cluster untersuchen, indem Sie eine [SSH](hdinsight-hadoop-linux-use-ssh-unix.md)-Verbindung mit dem Cluster öffnen und das Dateisystem durchsuchen oder das Hadoop YARN-Statusportal auf dem Hauptknoten-Remoteserver verwenden. Sie können die Protokolldateien in Azure Storage mit allen Tools untersuchen, mit denen auf Daten in Azure Storage zugegriffen und diese heruntergeladen werden können. Beispiele hierfür sind [AzCopy](../storage/common/storage-use-azcopy.md), [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) und der Server-Explorer von Visual Studio. Sie können auch PowerShell und die Azure Storage-Clientbibliotheken oder die Azure .NET SDKs verwenden, um auf Daten in Azure Blob Storage zuzugreifen.
 
 Hadoop führt die Schritte der Aufträge als *Taskversuche* auf verschiedenen Knoten im Cluster aus. HDInsight kann spekulative Taskversuche initiieren und zuerst alle anderen Taskversuche beenden, die nicht erfolgreich abgeschlossen werden können. Hierbei wird eine erhebliche Zahl von Aktivitäten generiert, die nebenbei in den controller-, stderr- und syslog-Protokolldateien protokolliert werden. Außerdem werden gleichzeitig mehrere Taskversuche ausgeführt, aber eine Protokolldatei kann Ergebnisse nur linear anzeigen.
 
@@ -140,7 +152,7 @@ Nachdem Sie die obigen Schritte ausgeführt haben, sind Sie mit den Typen und Me
 
 Analysieren Sie als Nächstes für einen bestimmten Zeitraum die Menge der Protokolldaten an wichtigen Protokollspeicherorten. Sie können beispielsweise die Menge und die Zunahme für Zeiträume von 30, 60 oder 90 Tagen analysieren.  Zeichnen Sie diese Informationen in einer Tabelle auf, oder verwenden Sie andere Tools, z.B. Visual Studio, Azure Storage-Explorer oder Power Query für Excel. Weitere Informationen finden Sie unter [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md).  
 
-Sie verfügen jetzt über ausreichende Informationen zum Aufstellen einer Protokollverwaltungsstrategie für die Schlüsselprotokolle.  Verwenden Sie Ihre Tabelle (bzw. das Tool Ihrer Wahl), um sowohl die Zunahme der Protokollgröße als auch die Kosten für Azure-Dienste zur Protokollspeicherung zu prognostizieren.  Berücksichtigen Sie für die Gruppe der Protokolle, die Sie untersuchen, auch alle Anforderungen in Bezug auf die Protokollaufbewahrung.  Sie können nun die zukünftigen Kosten für die Protokollspeicherung erneut prognostizieren, nachdem Sie ermittelt haben, welche Protokolldateien gelöscht (falls zutreffend) und welche Protokolle aufbewahrt und in kostengünstigerem Azure-Speicher archiviert werden können.
+Sie verfügen jetzt über ausreichende Informationen zum Aufstellen einer Protokollverwaltungsstrategie für die Schlüsselprotokolle.  Verwenden Sie Ihre Tabelle (bzw. das Tool Ihrer Wahl), um sowohl die Zunahme der Protokollgröße als auch die Kosten für Azure-Dienste zur Protokollspeicherung zu prognostizieren.  Berücksichtigen Sie für die Gruppe der Protokolle, die Sie untersuchen, auch alle Anforderungen in Bezug auf die Protokollaufbewahrung.  Sie können nun die zukünftigen Kosten für die Protokollspeicherung erneut prognostizieren, nachdem Sie ermittelt haben, welche Protokolldateien ggf. gelöscht und welche Protokolle aufbewahrt und in kostengünstigeren Azure Storage-Optionen archiviert werden können.
 
 ## <a name="step-5-determine-log-archive-policies-and-processes"></a>Schritt 5: Ermitteln der Richtlinien und Prozesse für die Protokollarchivierung
 
@@ -152,10 +164,10 @@ Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur 
 
 Alternativ hierzu können Sie auch mit PowerShell ein Skript für die Protokollarchivierung erstellen.  Ein PowerShell-Beispielskript finden Sie unter [Archive Azure Automation logs to Azure BLOB Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8) (Archivieren von Azure Automation-Protokollen in Azure Blob Storage).
 
-### <a name="accessing-azure-storage-metrics"></a>Zugreifen auf Azure-Speichermetriken
+### <a name="accessing-azure-storage-metrics"></a>Zugreifen auf Azure Storage-Metriken
 
-Azure-Speicher kann zum Protokollieren von Speicher- und Zugriffsvorgängen konfiguriert werden. Sie können diese sehr ausführlichen Protokolle für die Kapazitätsüberwachung und -planung sowie für die Überwachung von Anforderungen für den Speicher verwenden. Die protokollierten Informationen enthalten auch Details zur Wartezeit, sodass Sie die Leistung Ihrer Lösungen überwachen und optimieren können.
-Sie können das .NET SDK für Hadoop verwenden, um die Protokolldateien zu untersuchen, die für den Azure-Speicher mit den Daten für einen HDInsight-Cluster generiert werden.
+Azure Storage kann zum Protokollieren von Speichervorgängen und Zugriffen konfiguriert werden. Sie können diese sehr ausführlichen Protokolle für die Kapazitätsüberwachung und -planung sowie für die Überwachung von Anforderungen für den Speicher verwenden. Die protokollierten Informationen enthalten auch Details zur Wartezeit, sodass Sie die Leistung Ihrer Lösungen überwachen und optimieren können.
+Sie können das .NET SDK für Hadoop verwenden, um die Protokolldateien zu untersuchen, die für das Azure Storage-Konto mit den Daten für einen HDInsight-Cluster generiert werden.
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>Steuern der Größe und Anzahl von Sicherungsindizes für alte Protokolldateien
 

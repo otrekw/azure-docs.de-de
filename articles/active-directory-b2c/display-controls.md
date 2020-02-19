@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474700"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136345"
 ---
 # <a name="display-controls"></a>Anzeigesteuerelemente
 
@@ -46,7 +46,7 @@ In der folgenden Abbildung wird eine selbstbestätigte Registrierungsseite mit z
 
 Das **DisplayControl**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für das Anzeigesteuerelement verwendet wird. Auf diesen kann [verwiesen](#referencing-display-controls) werden. |
 | UserInterfaceControlType | Ja | Der Typ des Anzeigesteuerelements. Derzeit wird [VerificationControl](display-control-verification.md) unterstützt. |
@@ -90,7 +90,7 @@ Bestimmte Anzeigeansprüche sind für bestimmte Arten von Anzeigesteuerelementen
 
 Die **Ausgabeansprüche** eines Anzeigesteuerelements werden nicht an den nächsten Orchestrierungsschritt gesendet. Sie werden nur für die aktuelle Sitzung gespeichert, in der das Anzeigesteuerelement verwendet wird. Diese temporären Ansprüche können von den verschiedenen Aktionen desselben Anzeigesteuerelements gemeinsam genutzt werden.
 
-Verwenden Sie das **OutputClaims**-Element des selbstbestätigten technischen Profils, das auf dieses Anzeigesteuerelement verweist, um die Ausgabe der Ansprüche an den nächsten Orchestrierungsschritt weiterzugeben.
+Verwenden Sie das **OutputClaims**-Element des selbstbestätigten technischen Profils, das auf dieses Anzeigesteuerelement verweist, um die Ausgabeansprüche an den nächsten Orchestrierungsschritt weiterzugeben.
 
 ### <a name="display-control-actions"></a>Actions-Anzeigesteuerelement
 

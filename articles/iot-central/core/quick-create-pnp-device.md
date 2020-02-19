@@ -3,23 +3,23 @@ title: 'Schnellstart: Hinzufügen eines simulierten Geräts zu Azure IoT Central
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Gerätevorlage erstellen und Ihrer IoT Central-Anwendung ein simuliertes Gerät hinzufügen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026183"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169587"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung
 
 *Dieser Artikel gilt für Betreiber, Ersteller und Administratoren.*
 
-Eine Gerätevorlage definiert die Funktionen eines Geräts, das eine Verbindung mit Ihrer IoT Central-Anwendung herstellt. Zu den Funktionen zählen die vom Gerät gesendeten Telemetriedaten, Geräteeigenschaften und die Befehle, auf die ein Gerät reagiert. Auf der Grundlage einer Gerätevorlage kann ein Ersteller oder Operator sowohl echte als auch simulierte Geräte zu einer Anwendung hinzufügen. Mithilfe von simulierten Geräten können Sie das Verhalten Ihrer IoT Central-Anwendung testen, bevor Sie eine Verbindung mit echten Geräten herstellen.
+Eine Gerätevorlage definiert die Funktionen eines Geräts, das eine Verbindung mit Ihrer IoT Central-Anwendung herstellt. Zu den Funktionen zählen die vom Gerät gesendeten Telemetriedaten, Geräteeigenschaften und die Befehle, auf die ein Gerät reagiert. Auf der Grundlage einer Gerätevorlage kann ein Ersteller oder Bediener sowohl echte als auch simulierte Geräte zu einer Anwendung hinzufügen. Mithilfe von simulierten Geräten können Sie das Verhalten Ihrer IoT Central-Anwendung testen, bevor Sie eine Verbindung mit echten Geräten herstellen.
 
 In dieser Schnellstartanleitung wird eine Gerätevorlage für ein DevKit-Board (*MXChip IoT DevKit*) hinzugefügt und ein simuliertes Gerät erstellt. Für diese Schnellstartanleitung wird kein echtes Gerät benötigt. Stattdessen wird mit einer Simulation des Geräts gearbeitet. Von einem DevKit-Gerät werden folgende Aktionen ausgeführt:
 
@@ -52,7 +52,7 @@ In den folgenden Schritten wird gezeigt, wie Sie den Gerätekatalog verwenden, u
 
 1. Scrollen Sie auf der Seite **Vorlagentyp auswählen** nach unten zur Kachel **MXChip IoT DevKit**.
 
-1. Wählen Sie die Kachel **MXChip IoT DevKit** und anschließend **Weiter: Anpassen** aus.
+1. Wählen Sie die Kachel **MXChip IoT DevKit** und anschließend **Weiter: Anpassen**.
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus.
 
@@ -66,7 +66,7 @@ In den folgenden Schritten wird gezeigt, wie Sie den Gerätekatalog verwenden, u
 
 Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind nur in der IoT Central-Anwendung vorhanden und werden niemals an ein Gerät gesendet bzw. von einem Gerät empfangen.
 
-1. Wählen Sie **Cloudeigenschaften** und dann **+ Cloudeigenschaft hinzufügen**. Verwenden Sie die Informationen in der folgenden Tabelle, um Ihrer Gerätevorlage zwei Cloudeigenschaften hinzuzufügen:
+1. Wählen Sie **Cloudeigenschaften** und dann **+ Cloudeigenschaft hinzufügen** aus. Verwenden Sie die Informationen in der folgenden Tabelle, um Ihrer Gerätevorlage zwei Cloudeigenschaften hinzuzufügen:
 
     | Anzeigename      | Semantischer Typ | Schema |
     | ----------------- | ------------- | ------ |
@@ -79,7 +79,7 @@ Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind n
 
 ## <a name="views"></a>Sichten
 
-Als Ersteller können Sie die Anwendung so anpassen, dass einem Operator relevante Informationen zum Gerät angezeigt werden. Ihre Anpassungen ermöglichen dem Operator die Verwaltung der mit der Anwendung verbundenen Geräte. Sie können zwei Arten von Ansichten erstellen, die von einem Operator zum Interagieren mit Geräten verwendet werden:
+Als Ersteller können Sie die Anwendung so anpassen, dass einem Operator relevante Informationen zum Gerät angezeigt werden. Ihre Anpassungen ermöglichen dem Operator die Verwaltung der mit der Anwendung verbundenen Geräte. Sie können zwei Arten von Ansichten erstellen, die von einem Bediener zum Interagieren mit Geräten verwendet werden:
 
 * Formulare zum Anzeigen und Bearbeiten von Geräte- und Cloudeigenschaften
 * Dashboards zum Visualisieren von Geräten und der von ihnen gesendeten Telemetriedaten
@@ -88,7 +88,7 @@ Als Ersteller können Sie die Anwendung so anpassen, dass einem Operator relevan
 
 Standardansichten ermöglichen einen schnellen Einstieg in die Visualisierung wichtiger Geräteinformationen. Sie können für Ihre Gerätevorlage bis zu drei Standardansichten generieren:
 
-* Über die Ansicht **Befehle** kann der Operator Befehle an Ihr Gerät senden.
+* Über die Ansicht **Befehle** kann der Bediener Befehle an Ihr Gerät senden.
 * In der Ansicht **Übersicht** werden Diagramme und Metriken verwendet, um Gerätetelemetriedaten anzuzeigen.
 * In der Ansicht **Info** werden Geräteeigenschaften angezeigt.
 
@@ -120,13 +120,13 @@ Veröffentlichen Sie wie folgt eine Gerätevorlage:
 
 1. Wählen Sie im Dialogfeld **Diese Gerätevorlage für die Anwendung veröffentlichen** die Option **Veröffentlichen** aus. 
 
-Veröffentlichte Gerätevorlagen werden auf der Seite **Geräte** angezeigt. In einer veröffentlichten Gerätevorlage können Sie ein Gerätefunktionsmodell nicht bearbeiten, ohne eine neue Versionsnummer zu erstellen. Sie können aber Aktualisierungen für Cloudeigenschaften, Anpassungen und Ansichten in einer veröffentlichten Gerätevorlage ohne Versionsvergabe durchführen. Wählen Sie nach dem Vornehmen von Änderungen die Option **Veröffentlichen**, um diese Änderungen für Ihren Operator bereitzustellen.
+Veröffentlichte Gerätevorlagen werden auf der Seite **Geräte** angezeigt. In einer veröffentlichten Gerätevorlage können Sie ein Gerätefunktionsmodell nicht bearbeiten, ohne eine neue Versionsnummer zu erstellen. Sie können aber Aktualisierungen für Cloudeigenschaften, Anpassungen und Ansichten in einer veröffentlichten Gerätevorlage ohne Versionsvergabe durchführen. Wählen Sie nach dem Vornehmen von Änderungen die Option **Veröffentlichen**, um diese Änderungen für Ihren Bediener bereitzustellen.
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
 Verwenden Sie die von Ihnen erstellte Gerätevorlage **MXChip IoT DevKit**, um Ihrer Anwendung ein simuliertes Gerät hinzuzufügen.
 
-1. Wählen Sie als Operator im linken Bereich die Option **Geräte** aus, um ein neues Gerät hinzuzufügen. Auf der Registerkarte **Geräte** werden die Option **Alle Geräte** und die Gerätevorlage **MXChip IoT DevKit** angezeigt. Wählen Sie **MXChip IoT DevKit** aus.
+1. Wählen Sie als Bediener im linken Bereich die Option **Geräte** aus, um ein neues Gerät hinzuzufügen. Auf der Registerkarte **Geräte** werden die Option **Alle Geräte** und die Gerätevorlage **MXChip IoT DevKit** angezeigt. Wählen Sie **MXChip IoT DevKit** aus.
 
 1. Wählen Sie **+** aus, um ein simuliertes DevKit-Gerät hinzuzufügen. Verwenden Sie die vorgeschlagene **Geräte-ID**, oder geben Sie Ihre eigene **Geräte-ID** (in Kleinbuchstaben) ein. Sie können auch einen Namen für Ihr neues Gerät eingeben. Achten Sie darauf, dass die Umschaltfläche **Simuliert** auf **Ein** festgelegt ist, und wählen Sie anschließend **Erstellen** aus.
 

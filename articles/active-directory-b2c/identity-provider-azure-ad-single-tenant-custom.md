@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1802c3a92ed18dec5cba974c54c92f01324245eb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 64934dd5bc591415c0bad6ac3dc6a4a2d98dd005
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850669"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136303"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Azure Active Directory-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -50,6 +50,19 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus.
 1. Geben Sie eine **Beschreibung** für das Geheimnis ein, wählen Sie ein Ablaufdatum aus, und wählen Sie dann **Hinzufügen** aus. Notieren Sie sich den **Wert** des Geheimnisses zur Verwendung in einem späteren Schritt.
 
+## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
+
+Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten möchten, können Sie optionale Ansprüche für Ihre Anwendung im Azure-Portal oder im Anwendungsmanifest konfigurieren. Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für Ihre Azure AD-App](../active-directory/develop/active-directory-optional-claims.md).
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie im Abschnitt **Verwalten** die Option **App-Registrierungen** aus.
+1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
+1. Wählen Sie im Abschnitt **Verwalten** die Option **Tokenkonfiguration (Vorschau)** aus.
+1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
+1. Wählen Sie den Tokentyp aus, den Sie konfigurieren möchten.
+1. Wählen Sie die hinzuzufügenden optionalen Ansprüche aus.
+1. Klicken Sie auf **Hinzufügen**.
+
 ## <a name="create-a-policy-key"></a>Erstellen eines Richtlinienschlüssels
 
 Sie müssen den von Ihnen erstellten Anwendungsschlüssel in Ihrem Azure AD B2C-Mandanten speichern.
@@ -73,23 +86,20 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
 2. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
 3. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
-
-    ```XML
+    ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="ContosoProfile">
+        <TechnicalProfile Id="OIDC-Contoso">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
           <Metadata>
-            <Item Key="METADATA">https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
-            <!-- Update the Client ID below to the Application ID -->
+            <Item Key="METADATA">https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration</Item>
             <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
             <Item Key="response_types">code</Item>
-            <Item Key="scope">openid</Item>
+            <Item Key="scope">openid profile</Item>
             <Item Key="response_mode">form_post</Item>
             <Item Key="HttpBinding">POST</Item>
             <Item Key="UsePolicyInRedirectUri">false</Item>
@@ -125,12 +135,11 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
 
 Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle definieren, die Azure AD B2C zur Kommunikation mit Azure AD verwenden soll. Dies erfolgt im **TechnicalProfile**-Element von **ClaimsProvider**.
 
-1. Aktualisieren Sie die ID des **TechnicalProfile**-Elements. Diese ID wird als Verweis auf dieses technische Profil aus anderen Teilen der Richtlinie verwendet.
+1. Aktualisieren Sie die ID des **TechnicalProfile**-Elements. Diese ID wird als Verweis auf dieses technische Profil aus anderen Teilen der Richtlinie verwendet, z. B. `OIDC-Contoso`.
 1. Aktualisieren Sie den Wert für **DisplayName**. Dieser Wert wird auf dem Anmeldebildschirm auf der Anmeldeschaltfläche angezeigt.
 1. Aktualisieren Sie den Wert von **Beschreibung**.
 1. Azure AD verwendet das OpenID Connect-Protokoll. Stellen Sie daher sicher, dass der Wert für **Protokoll**`OpenIdConnect` lautet.
-1. Legen Sie den Wert von **METADATA** auf `https://login.windows.net/your-AD-tenant-name.onmicrosoft.com/.well-known/openid-configuration` fest, wobei `your-AD-tenant-name` der Name Ihres Azure AD-Mandanten ist. Zum Beispiel, `https://login.windows.net/fabrikam.onmicrosoft.com/.well-known/openid-configuration`
-1. Öffnen Sie Ihren Browser, und navigieren Sie zur URL **METADATA**, die Sie gerade aktualisiert haben. Suchen Sie nach dem **issuer**-Objekt, kopieren Sie den Wert, und fügen Sie ihn dann in der XML-Datei in den Wert für **ProviderName** ein.
+1. Legen Sie den Wert von **METADATA** auf `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration` fest, wobei `tenant-name` der Name Ihres Azure AD-Mandanten ist. Zum Beispiel, `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. Legen Sie **client_id** auf die Anwendungs-ID aus der Anwendungsregistrierung fest.
 1. Aktualisieren Sie unter **CryptographicKeys** den Wert von **StorageReferenceId** auf den Namen des zuvor erstellten Richtlinienschlüssels. Beispiel: `B2C_1A_ContosoAppSecret`.
 
@@ -171,10 +180,10 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
 1. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, um sicherzustellen, dass Sie für **Id** den gleichen Wert verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
 
     ```XML
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
+    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `ContosoProfile`.
+    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `OIDC-Contoso`.
 
 1. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
 

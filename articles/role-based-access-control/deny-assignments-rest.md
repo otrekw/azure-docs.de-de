@@ -1,5 +1,5 @@
 ---
-title: 'Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
+title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
 description: Hier erfahren Sie, wie Sie Ablehnungszuweisungen für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen und der REST-API auflisten.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0bc49456f5965846a2de542b4a063bab2d1838bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e6214b3cb2cdca2d80ebae43771b206e3396d8b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67118283"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137324"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
 
@@ -45,10 +45,10 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 
 1. Ersetzen Sie innerhalb des URI *{scope}* durch den Bereich, für den die Ablehnungszuweisungen aufgelistet werden sollen.
 
-    | `Scope` | Type |
+    | `Scope` | type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Abonnement |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Ersetzen Sie *{deny-assignment-id}* durch den Bezeichner für die Ablehnungszuweisung, die Sie abrufen möchten.
@@ -69,15 +69,15 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 
 1. Ersetzen Sie innerhalb des URI *{scope}* durch den Bereich, für den die Ablehnungszuweisungen aufgelistet werden sollen.
 
-    | `Scope` | Type |
+    | `Scope` | type |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | Abonnement |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
 
 1. Ersetzen Sie *{filter}* durch die Bedingung, die zum Filtern der Liste mit den Ablehnungszuweisungen angewendet werden soll.
 
-    | Filter | BESCHREIBUNG |
+    | Filtern | BESCHREIBUNG |
     | --- | --- |
     | (Kein Filter) | Alle Ablehnungszuweisungen des angegebenen Bereichs (auch ober- und unterhalb) werden aufgelistet. |
     | `$filter=atScope()` | Nur die Ablehnungszuweisungen für den angegebenen Bereich und oberhalb davon werden aufgelistet. Hierin sind nicht die Ablehnungszuweisungen von Unterbereichen enthalten. |
@@ -95,7 +95,7 @@ Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folge
 
 1. Ersetzen Sie *{filter}* durch die Bedingung, die zum Filtern der Liste mit den Ablehnungszuweisungen angewendet werden soll. Ein Filter ist erforderlich.
 
-    | Filter | BESCHREIBUNG |
+    | Filtern | BESCHREIBUNG |
     | --- | --- |
     | `$filter=atScope()` | Nur Ablehnungszuweisungen für den Stammbereich werden aufgelistet. Hierin sind nicht die Ablehnungszuweisungen von Unterbereichen enthalten. |
     | `$filter=denyAssignmentName%20eq%20'{deny-assignment-name}'` | Ablehnungszuweisungen mit dem angegebenen Namen werden aufgelistet. |

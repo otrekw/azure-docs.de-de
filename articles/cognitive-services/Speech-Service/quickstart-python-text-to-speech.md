@@ -1,31 +1,29 @@
 ---
-title: 'Schnellstart: Konvertieren von Text in Sprache, Python – Speech-Dienst'
+title: Konvertieren von Text in Sprache, Python – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der Beispieltext in diesem Leitfaden ist als SSML (Speech Synthesis Markup Language) strukturiert. Auf diese Weise können Sie die Stimme und Sprache für die Sprachantwort auswählen.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 639120b283775bcdb5fe4316d78c538c9db9cf4a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975906"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119714"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>Schnellstart: Konvertieren von Text in Sprache mit Python
+# <a name="convert-text-to-speech-using-python"></a>Konvertieren von Text in Sprache mit Python
 
-In diesem Schnellstart erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der in diesem Leitfaden enthaltene Anforderungstext ist als [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) strukturiert, wodurch Sie die Stimme und die Sprache für die Sprachantwort auswählen können.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Python und der Text-to-Speech-REST-API Text in Sprache konvertieren. Der in diesem Leitfaden enthaltene Anforderungstext ist als [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) strukturiert, wodurch Sie die Stimme und die Sprache für die Sprachantwort auswählen können.
 
-Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](get-started.md) einen Abonnementschlüssel abrufen.
+Für diesen Artikel wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](get-started.md) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Python 2.7.x oder 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor

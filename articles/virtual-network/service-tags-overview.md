@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 1fec2778ce8c839c5bac0c1d74085db0f8b283ce
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903004"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190488"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
@@ -42,7 +42,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 
 | Tag | Zweck | Eingehend oder ausgehend möglich? | Regional möglich? | Einsatz mit Azure Firewall möglich? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **ApiManagement** | Verwaltungsdatenverkehr für dedizierte Azure API Management-Bereitstellungen. | Beide | Nein | Ja |
+| **ApiManagement** | Verwaltungsdatenverkehr für dedizierte Azure API Management-Bereitstellungen. <br/><br/>*Hinweis:* Dieses Tag stellt den Azure API Management-Dienstendpunkt für die Steuerungsebene pro Region dar. Dadurch können Kunden Verwaltungsvorgänge für die APIs, Vorgänge, Richtlinien und NamedValues ausführen, die für den API Management Dienst konfiguriert sind.  | Eingehend | Ja | Ja |
 | **ApplicationInsightsAvailability** | Verfügbarkeit von Application Insights | Eingehend | Nein | Nein |
 | **AppService**    | Azure App Service Dieses Tag wird für ausgehende Sicherheitsregeln zu Web-App-Front-Ends empfohlen. | Ausgehend | Ja | Ja |
 | **AppServiceManagement** | Verwaltungsdatenverkehr für dedizierte Bereitstellungen der App Service-Umgebung. | Beide | Nein | Ja |
@@ -85,7 +85,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security | Ausgehend | Nein | Nein |
 | **MicrosoftContainerRegistry** | Containerregistrierung für Microsoft-Containerimages. <br/><br/>*Hinweis:* Fügen Sie auch die folgende IP-Adresse in die Whitelist ein (diese Abhängigkeit wird bald entfernt): 204.79.197.219. | Ausgehend | Ja | Ja |
 | **ServiceBus** | Azure Service Bus-Datenverkehr, der die Dienstebene „Premium“ verwendet. | Ausgehend | Ja | Ja |
-| **ServiceFabric** | Azure Service Fabric. | Ausgehend | Nein | Nein |
+| **ServiceFabric** | Azure Service Fabric.<br/><br/>*Hinweis:* Dieses Tag stellt den Service Fabric-Dienstendpunkt für die Steuerungsebene pro Region dar. Dadurch können Kunden Verwaltungsvorgänge für ihre Service Fabric-Cluster aus ihrem VNET vornehmen (Beispiel für Endpunkt https:// westus.servicefabric.azure.com) | Beide | Nein | Nein |
 | **SQL** | Azure SQL-Datenbank, Azure Database for MySQL, Azure Database for PostgreSQL und Azure SQL Data Warehouse.<br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure SQL-Datenbank-Dienst, aber nicht für eine bestimmte SQL-Datenbank oder einen bestimmten SQL-Server. | Ausgehend | Ja | Ja |
 | **SqlManagement** | Verwaltungsdatenverkehr für dedizierte SQL-Bereitstellungen. | Beide | Nein | Ja |
 | **Storage** | „Azure Storage“. <br/><br/>*Hinweis:* Dieses Tag steht für den Dienst, nicht für bestimmte Instanzen des Diensts. Beispielsweise steht das Tag für den Azure Storage-Dienst, aber nicht für ein bestimmtes Azure Storage-Konto. | Ausgehend | Ja | Ja |

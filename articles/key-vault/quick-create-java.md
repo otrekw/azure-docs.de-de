@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b5748824590f40e30af8f462d4c8ff25521cfd94
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769234"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136092"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Java
 
@@ -22,7 +22,7 @@ Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnis
 - Verbessern der Sicherheit und der Kontrolle über Schlüssel und Kennwörter
 - Erstellen und Importieren von Verschlüsselungsschlüsseln in wenigen Minuten
 - Verringern der Wartezeit durch Cloudskalierung und globale Redundanz
-- Vereinfachen und Automatisieren von Aufgaben für SSL-/TLS-Zertifikate
+- Vereinfachen und Automatisieren von Aufgaben für TLS-/SSL-Zertifikate
 - Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
 
 [Quellcode](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API-Referenzdokumentation](https://azure.github.io/azure-sdk-for-java) | [Produktdokumentation](index.yml) | [Beispiele](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
@@ -168,7 +168,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Mit der Azure Key Vault-Clientbibliothek für Java können Sie Schlüssel und zugehörige Objekte wie etwa Zertifikate und Geheimnisse verwalten. In den folgenden Codebeispielen wird gezeigt, wie Sie einen Client erstellen und ein Geheimnis festlegen, abrufen und löschen.
 
-Die gesamte Konsolen-App steht unter https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app zur Verfügung.
+Die vollständige Konsolen-App finden Sie [weiter unten](#sample-code).
 
 ## <a name="code-examples"></a>Codebeispiele
 

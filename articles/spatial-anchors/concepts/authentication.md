@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270584"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161680"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -45,38 +45,38 @@ Zwei Schlüssel stehen zur Verfügung, und beide sind gleichzeitig für den Zugr
 
 Das SDK bietet integrierte Unterstützung für die Authentifizierung mit Kontoschlüssel, Sie müssen einfach nur die AccountKey-Eigenschaft in Ihrem cloudSession-Objekt festlegen.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accountKey = @"MyAccountKey";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accountKey = "MyAccountKey"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccountKey("MyAccountKey");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccountKey(R"(MyAccountKey)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -92,10 +92,17 @@ Sobald das geschehen ist, verarbeitet das SDK den Austausch des Kontoschlüssels
 
 ## <a name="azure-ad-user-authentication"></a>Azure AD-Benutzerauthentifizierung
 
-Bei Anwendungen für Azure Active Directory-Benutzer ist das empfohlene Verfahren die Verwendung eines Azure AD-Tokens für den Benutzer, das Sie über die Active Directory-Authentifizierungsbibliothek (Azure Directory Authentication Library, ADAL) abrufen können, wie in der folgenden Dokumentation beschrieben: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md). Führen Sie die Schritte der Schnellstartanleitungen aus, zu denen folgende gehören:
+Für Anwendungen, die an Azure Active Directory-Benutzer gerichtet sind, wird empfohlen, ein Azure AD-Token für den Benutzer zu verwenden, das Sie mithilfe der [MSAL-Bibliothek](../../active-directory/develop/msal-overview.md) abrufen können. Befolgen Sie die Schritte im [Schnellstart zum Registrieren einer App](../../active-directory/develop/quickstart-register-app.md), einschließlich der folgenden:
 
 1. Konfiguration im Azure-Portal
     1.  Registrieren Sie Ihre Anwendung in Azure AD als **native Anwendung**. Im Rahmen der Registrierung müssen Sie festlegen, ob Ihre Anwendung mehrinstanzenfähig sein soll oder nicht, und Sie müssen die Umleitungs-URLs angeben, die für Ihre Anwendung zugelassen sind.
+        1.  Wechseln Sie zur Registerkarte **API-Berechtigungen**.
+        2.  Wählen Sie **Berechtigung hinzufügen** aus.
+            1.  Wählen Sie auf der Registerkarte **Von meiner Organisation verwendete APIs** die Option **Mixed Reality Resource Provider** (Mixed Reality-Ressourcenanbieter) aus.
+            2.  Wählen Sie **Delegierte Berechtigungen** aus.
+            3.  Aktivieren Sie das Kontrollkästchen **mixedreality.signin** unter **mixedreality**.
+            4.  Wählen Sie **Berechtigungen hinzufügen** aus.
+        3.  Wählen Sie **Administratoreinwilligung erteilen** aus.
     2.  Gewähren Sie Ihrer Anwendung bzw. den Benutzern Zugriff auf Ihre Ressource:
         1.  Navigieren Sie im Azure-Portal zu Ihrer Spatial Anchors-Ressource.
         2.  Wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** .
@@ -111,40 +118,40 @@ Bei Anwendungen für Azure Active Directory-Benutzer ist das empfohlene Verfahre
         3.  Wenn Ihre Anwendung **Alle Microsoft-Kontobenutzer** unterstützt, ersetzen Sie diesen Wert durch **Allgemein**.
     3.  Legen Sie in der Tokenanforderung die **Ressource** auf „https://sts.mixedreality.azure.com“ fest. Diese „Ressource“ informiert Azure AD darüber, dass Ihre Anwendung ein Token für den Azure Spatial Anchors-Dienst anfordert.
 
-Damit sollte Ihre Anwendung in der Lage sein, ein Azure AD-Token aus der ADAL abzurufen. Sie können dieses Azure AD-Token als **authenticationToken** im config-Objekt Ihrer Cloudsitzung festlegen.
+Damit sollte Ihre Anwendung in der Lage sein, von MSAL ein Azure AD-Token abzurufen. Sie können dieses Azure AD-Token als **authenticationToken** im config-Objekt Ihrer Cloudsitzung festlegen.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.authenticationToken = @"MyAuthenticationToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.authenticationToken = "MyAuthenticationToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAuthenticationToken("MyAuthenticationToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AuthenticationToken(R"(MyAuthenticationToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();
@@ -161,7 +168,7 @@ Die empfohlene Option für die Bereitstellung von Apps in die Produktion, die Az
 
 Hier wird davon ausgegangen, dass Ihre App einen eigenen Mechanismus (z.B. Microsoft-Konto, PlayFab, Facebook, Google ID, benutzerdefinierter Benutzername/Kennwort usw.) für die Authentifizierung beim Back-End-Dienst verwendet. Sobald Ihre Benutzer bei Ihrem Back-End-Dienst authentifiziert sind, kann der Dienst ein Azure AD-Token abrufen, dieses gegen ein Zugriffstoken für Azure Spatial Anchors austauschen und es dann an die Clientanwendung zurückgeben.
 
-Das Azure AD-Zugriffstoken wird über die ADAL abgerufen, wie in der folgenden Dokumentation beschrieben: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md). Führen Sie die Schritte der Schnellstartanleitungen aus, zu denen folgende gehören:
+Das Azure AD-Zugriffstoken wird mithilfe der [MSAL-Bibliothek](../../active-directory/develop/msal-overview.md) abgerufen. Befolgen Sie die Schritte im [Schnellstart zum Registrieren einer App](../../active-directory/develop/quickstart-register-app.md), einschließlich der folgenden:
 
 1.  Konfiguration im Azure-Portal:
     1.  Registrieren Ihrer Anwendung bei Azure AD:
@@ -204,38 +211,38 @@ Die Antwort enthält das MR-Token im Klartext.
 
 Dieses MR-Token wird an den Client zurückgegeben. Ihre Client-App kann dieses dann als Zugriffstoken in der config-Datei für die Cloudsitzung festlegen.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";
 ```
 
-# <a name="objctabobjc"></a>[ObjC](#tab/objc)
+# <a name="objc"></a>[ObjC](#tab/objc)
 
 ```objc
 _cloudSession.configuration.accessToken = @"MyAccessToken";
 ```
 
-# <a name="swifttabswift"></a>[Swift](#tab/swift)
+# <a name="swift"></a>[Swift](#tab/swift)
 
 ```swift
 _cloudSession!.configuration.accessToken = "MyAccessToken"
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 mCloudSession.getConfiguration().setAccessToken("MyAccessToken");
 ```
 
-# <a name="c-ndktabcpp"></a>[C++ NDK](#tab/cpp)
+# <a name="c-ndk"></a>[C++ NDK](#tab/cpp)
 
 ```cpp
 auto configuration = cloudSession_->Configuration();
 configuration->AccessToken(R"(MyAccessToken)");
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
+# <a name="c-winrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 auto configuration = m_cloudSession.Configuration();

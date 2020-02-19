@@ -3,16 +3,19 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben mit PowerShell
 description: Erfahren Sie, wie Sie über PowerShell Azure-Dateifreigaben, die durch den Azure Backup-Dienst gesichert wurden, verwalten und überwachen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 9004e16c4b7c6ee704460d744612bafcd32831b9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776107"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083165"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie über PowerShell Azure-Dateifreigaben, die durch den Azure Backup-Dienst gesichert wurden, verwalten und überwachen.
+
+> [!WARNING]
+> Stellen Sie für AFS-Sicherungen sicher, dass die PS-Version auf die Mindestversion für Az.RecoveryServices 2.6.0 aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) zur Anforderung für diese Änderung.
 
 ## <a name="modify-the-protection-policy"></a>Ändern der Schutzrichtlinie
 

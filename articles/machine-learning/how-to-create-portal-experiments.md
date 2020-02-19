@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/04/2020
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720400"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116887"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Erstellen, Untersuchen und Bereitstellen von automatisierten Machine Learning-Experimenten mit Azure Machine Learning-Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -47,7 +47,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
 ## <a name="create-and-run-experiment"></a>Erstellen und Ausführen eines Experiments
 
-1. Wählen Sie **+ Experiment erstellen** aus, und füllen Sie das Formular aus.
+1. Wählen Sie **+ Neue Ausführung von automatisiertem ML** aus, und füllen Sie das Formular aus.
 
 1. Wählen Sie ein Dataset in Ihrem Speichercontainer aus, oder erstellen Sie ein neues Dataset. Datasets können aus lokalen Dateien, Web-URLs, Datenspeichern oder Azure Open Datasets erstellt werden. 
 
@@ -60,7 +60,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
     1. Weisen Sie Ihrem Dataset einen eindeutigen Namen zu, und geben Sie eine optionale Beschreibung ein. 
 
-    1. Wählen Sie **Weiter** aus, um die Datei in den Standardspeichercontainer hochzuladen, der automatisch mit Ihrem Arbeitsbereich erstellt wird, oder wählen Sie einen Speichercontainer aus, den Sie für das Experiment verwenden möchten. 
+    1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset hochgeladen werden soll. Dies kann der Standardspeichercontainer sein, der automatisch mit Ihrem Arbeitsbereich erstellt wird, oder ein Speichercontainer, den Sie für das Experiment auswählen. 
 
     1. Überprüfen Sie das Formular **Einstellungen und Vorschau** auf Genauigkeit. Das Formular wird ausgehend vom Dateityp intelligent aufgefüllt. 
 
@@ -78,7 +78,7 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
             
         Wählen Sie **Weiter** aus.
 
-    1. Das Formular **Details bestätigen** ist eine Zusammenfassung der Informationen, die zuvor in die Formulare **Grundlegende Infos** und **Einstellungen und Vorschau** eingetragen wurden. Sie haben auch die Möglichkeit, ein Profil für Ihr Dataset zu erstellen, indem Sie ein Compute mit aktivierter Profilerstellung verwenden. Weitere Informationen zur [Datenprofilerstellung](#profile).
+    1. Das Formular **Details bestätigen** ist eine Zusammenfassung der Informationen, die zuvor in die Formulare **Grundlegende Infos** und **Einstellungen und Vorschau** eingetragen wurden. Sie haben auch die Möglichkeit, ein Datenprofil für Ihr Dataset zu erstellen, indem Sie Compute mit aktivierter Profilerstellung verwenden. Weitere Informationen zur [Datenprofilerstellung](#profile).
 
         Wählen Sie **Weiter** aus.
 1. Wählen Sie Ihr neu erstelltes Dataset aus, sobald es angezeigt wird. Sie können auch eine Vorschau des Datasets und der Stichprobenstatistiken anzeigen. 
@@ -113,16 +113,19 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
 
         1. Wählen Sie den Vorhersagehorizont aus: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
-1. (Optional) Weitere Konfigurationen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
+1. (Optional:) Anzeigen weiterer Konfigurationseinstellungen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 
-    Zusätzliche Konfigurationen|Beschreibung
+    Zusätzliche Konfigurationen|BESCHREIBUNG
     ------|------
     Primary metric (Primäre Metrik)| Die wichtigste Metrik, die für die Bewertung Ihres Modells verwendet wird. [Weitere Informationen zur Modellmetriken](how-to-configure-auto-train.md#explore-model-metrics).
-    Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. [Weitere Informationen zur Vorverarbeitung](#preprocess).
+    Automatische Featurebereitstellung| Aktivieren oder deaktivieren Sie mit dieser Option die Vorverarbeitung durch automatisiertes Machine Learning. Vorverarbeitung umfasst die automatische Datenbereinigung, die Vorbereitung und die Transformation, um synthetische Features zu generieren. Für den Aufgabentyp Zeitreihenvorhersagen nicht unterstützt. [Weitere Informationen zur Vorverarbeitung](#featurization). 
+    Explain best model (Bestes Modell erläutern) | Wählen Sie diese Option aus, um die Erläuterungsfähigkeit des empfohlenen besten Modells anzuzeigen oder zu deaktivieren.
     Blocked algorithm (Blockierter Algorithmus)| Wählen Sie Algorithmen aus, die Sie aus den Trainingsauftrag ausschließen möchten.
     Beendigungskriterium| Wenn eines dieser Kriterien erfüllt ist, wird der Trainingsauftrag beendet. <br> *Training job time (hours)* Trainingsauftragszeit (Stunden): Gibt an, wie lange der Trainingsauftrag ausgeführt werden soll. <br> *Metric score threshold* (Metrischer Bewertungsschwellenwert):  Die Metrikmindestbewertung für alle Pipelines. Auf diese Weise wird sichergestellt, dass Sie nicht mehr Zeit für den Trainingsauftrag aufwenden als nötig, wenn Sie eine definierte Zielmetrik verwenden, die Sie erreichen möchten.
     Überprüfen| Wählen Sie eine der Optionen für Kreuzvalidierung aus, die im Trainingsauftrag verwendet werden soll. [Weitere Informationen zur Kreuzvalidierung](how-to-configure-auto-train.md).
-    Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt. <br> *Max cores per iteration* (Max. Anzahl von Kernen pro Iteration): Wählen Sie die Multi-Core-Grenzwerte aus, die Sie verwenden möchten, wenn Multi-Core-Compute zum Einsatz kommt.
+    Parallelität| *Max concurrent iterations* (Maximale Anzahl gleichzeitiger Iterationen): Die maximale Anzahl von Pipelines (Iterationen), die im Trainingsauftrag getestet werden. Der Auftrag wird nicht häufiger als die angegebene Anzahl von Iterationen ausgeführt.
+
+1. (Optional:) Anzeigen von Featureerstellungseinstellungen: Wenn Sie **Automatische Merkmalserstellung** im Formular **Additional configuration settings** (Zusätzliche Konfigurationseinstellungen) aktivieren, geben Sie in diesem Formular an, für welche Spalten diese Featureerstellung durchgeführt werden soll, und wählen den statistischen Wert aus, der für fehlende Werte verwendet werden soll.
 
 <a name="profile"></a>
 
@@ -151,17 +154,13 @@ Schiefe| Das Maß für die Unterschiede zwischen den Daten dieser Spalte und der
 Kurtosis| Das Maß für die schweren Ränder der Daten dieser Spalte im Vergleich mit der normalen Verteilung.
 
 
-<a name="preprocess"></a>
+<a name="featurization"></a>
 
 ## <a name="advanced-featurization-options"></a>Erweiterte Optionen bei der Featurebereitstellung
 
-Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `feauturization` aktivieren. 
+Automatisiertes maschinelles Lernen bietet eine Vorverarbeitung und automatische Schutzmaßnahmen für Daten, damit Sie potenzielle Probleme mit Ihren Daten identifizieren und verwalten können. 
 
-|Konfiguration der Featurebereitstellung | Beschreibung |
-| ------------- | ------------- |
-|"featurization" = 'FeaturizationConfig'| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
-|"featurization" = 'off'| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|
-|"featurization" = 'auto'| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden Schritte für Datenschutzmaßnahmen und Featurebereitstellung automatisch durchgeführt werden.|
+### <a name="preprocessing"></a>Preprocessing (Vorverarbeitung)
 
 |Vorverarbeitungsschritte&nbsp;| Beschreibung |
 | ------------- | ------------- |
@@ -177,7 +176,7 @@ Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `
 
 ### <a name="data-guardrails"></a>Schutzmaßnahmen für Daten
 
-Automatisiertes maschinelles Lernen bietet Schutzmaßnahmen für Daten, die Ihnen dabei helfen, potenzielle Probleme mit Ihren Daten zu erkennen (z. B. fehlende Werte, Klassenungleichgewicht) und Korrekturmaßnahmen zur Verbesserung der Ergebnisse zu ergreifen. Es gibt viele bewährte Methoden, mit denen zuverlässige Ergebnisse erzielt werden können. 
+Schutzmaßnahmen für Daten werden automatisch angewandt, um Ihnen dabei zu helfen, potenzielle Probleme mit Ihren Daten zu erkennen (z. B. fehlende Werte, Klassenungleichgewicht) und Korrekturmaßnahmen zur Verbesserung der Ergebnisse zu ergreifen. Es gibt viele bewährte Methoden, mit denen zuverlässige Ergebnisse erzielt werden können. 
 
 In der folgenden Tabelle werden die derzeit unterstützten Schutzmaßnahmen für Daten und die zugehörigen Statuswerte beschrieben, die Benutzern beim Übermitteln Ihres Experiments unter Umständen angezeigt werden.
 
@@ -191,14 +190,11 @@ Konsistenz von Zeitreihendaten|**Erfolgreich** <br><br><br><br> **Korrigiert** |
 
 ## <a name="run-experiment-and-view-results"></a>Ausführen des Experiments und Anzeigen der Ergebnisse
 
-Wählen Sie **Start** aus, um das Experiment auszuführen. Der Vorgang zum Vorbereiten eines Experiments kann bis zu 10 Minuten dauern. Ein Ausführen von Trainingsaufträgen kann für jede Pipeline weitere 2 bis 3 Minuten beanspruchen.
+Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Der Vorgang zum Vorbereiten eines Experiments kann bis zu 10 Minuten dauern. Ein Ausführen von Trainingsaufträgen kann für jede Pipeline weitere 2 bis 3 Minuten beanspruchen.
 
 ### <a name="view-experiment-details"></a>Anzeigen von Details zum Experiment
 
->[!NOTE]
-> Wählen Sie von Zeit zu Zeit **Aktualisieren** aus, um den Status der Ausführung anzuzeigen. 
-
-Die Anzeige für **Ausführungsdetails** wird mit der Registerkarte **Details** geöffnet. In dieser Anzeige wird eine Zusammenfassung der Experimentausführung einschließlich des **Status der Ausführung** angezeigt. 
+Die Anzeige für **Ausführungsdetails** wird mit der Registerkarte **Details** geöffnet. In dieser Anzeige wird eine Zusammenfassung der Experimentausführung einschließlich einer Statusleiste oben neben der Ausführungsnummer angezeigt. 
 
 Die Registerkarte **Modelle** enthält eine Liste der erstellten Modelle, wobei diese nach der Metrikbewertung (Metrikscore) geordnet sind. Standardmäßig steht das Modell, das anhand der ausgewählten Metrik die höchste Bewertung erhält, in der Liste ganz oben. Während der Trainingsauftrag weitere Modelle testet, werden diese zur Liste hinzugefügt. Verwenden Sie diese Liste, um einen schnellen Vergleich der Metriken für die bisher generierten Modelle zu erhalten.
 
@@ -218,9 +214,9 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
 
 1. Sie haben einige Optionen für die Bereitstellung. 
 
-    + Option 1: Um das beste Modell (entsprechend den definierten Metrikkriterien) bereitzustellen, wählen Sie „Deploy Best Model“ (Bestes Modell bereitstellen) auf der Registerkarte „Details“ aus.
+    + Option 1: Um das beste Modell (entsprechend den definierten Metrikkriterien) bereitzustellen, wählen Sie die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) auf der Registerkarte **Details** aus.
 
-    + Option 2: Um eine bestimmte Modelliteration aus diesem Experiment bereitzustellen, führen Sie einen Drilldown für das Modell aus, um dessen Registerkarte für Modelldetails zu öffnen, und wählen Sie „Deploy model“ (Modell bereitstellen) aus.
+    + Option 2: Um eine bestimmte Modelliteration aus diesem Experiment bereitzustellen, führen Sie einen Drilldown für das Modell aus, um die Registerkarte **Modelldetails** zu öffnen, und wählen Sie **Modell bereitstellen** aus.
 
 1. Füllen Sie den Bereich **Modell bereitstellen** aus.
 
@@ -229,7 +225,7 @@ Automatisiertes maschinelles Lernen unterstützt Sie dabei, das Modell bereitzus
     Name| Geben Sie einen eindeutigen Namen für die Bereitstellung ein.
     Beschreibung| Geben Sie eine Beschreibung ein, um den Zweck dieser Bereitstellung genauer anzugeben.
     Computetyp| Wählen Sie die Art des bereitzustellenden Endpunkts aus: *Azure Kubernetes Service (AKS)* oder *Azure-Containerinstanz (ACI)* .
-    Name| *Nur für AKS:* Wählen Sie den Namen des AKS-Clusters aus, der als Ziel für die Bereitstellung verwendet werden soll.
+    Computename| *Nur für AKS:* Wählen Sie den Namen des AKS-Clusters aus, der als Ziel für die Bereitstellung verwendet werden soll.
     Authentifizierung aktivieren | Wählen Sie diese Option aus, um eine token- oder schlüsselbasierte Authentifizierung zu ermöglichen.
     Use custom deployment assets (Benutzerdefinierte Bereitstellungsressourcen verwenden)| Aktivieren Sie dieses Feature, wenn Sie Ihr eigenes Bewertungsskript und Ihre eigene Umgebungsdatei hochladen möchten. Weitere Informationen zu Bewertungsskripts finden Sie [hier](how-to-deploy-and-where.md#script).
 
@@ -244,7 +240,7 @@ Nun haben Sie einen einsatzfähigen Webdienst, mit dem Vorhersagen generiert wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Probieren Sie das End-to-End-[Tutorial zum Erstellen Ihres ersten Experiments mit automatisiertem ML mit Azure Machine Learning](tutorial-first-experiment-automated-ml.md) aus. 
+* Probieren Sie das End-to-End-[Tutorial zum Erstellen Ihres ersten Experiments mit automatisiertem maschinellem Lernen mit Azure Machine Learning Studio](tutorial-first-experiment-automated-ml.md) aus. 
 * [Weitere Informationen zu automatisiertem Machine Learning](concept-automated-ml.md) und Azure Machine Learning.
 * [Grundlagen von Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md)
 * [Informationen zum Nutzen eines Webdiensts](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312197"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137505"
 ---
 # <a name="edit-metadata-module"></a>Modul „Metadaten bearbeiten“
 
-In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer enthalten ist.
+In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer (Vorschauversion) enthalten ist.
 
 Verwenden Sie das Modul „Metadaten bearbeiten“, um Metadaten zu ändern, die Spalten in einem Dataset zugeordnet sind. Nach Verwendung des Moduls „Metadaten bearbeiten“ werden Wert und Datentyp des Datasets geändert.
 
@@ -40,9 +40,9 @@ Typische Metadatenänderungen können Folgendes umfassen:
   
 ## <a name="configure-edit-metadata"></a>Konfigurieren von „Metadaten bearbeiten“
   
-1. Fügen Sie Ihrer Pipeline in Azure Machine Learning das Modul „Metadaten bearbeiten“ hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Sie finden das Dataset unter **Datentransformation** in der Kategorie **Bearbeiten**.
+1. Fügen Sie Ihrer Pipeline im Azure Machine Learning-Designer das Modul Edit Metadata hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Das Modul befindet sich in der Kategorie **Data Transformation**.
   
-1. Klicken Sie auf **Spaltenauswahl starten**, und wählen Sie die Spalte oder die Gruppe von Spalten aus, mit denen Sie arbeiten möchten. Sie können Spalten einzeln nach Name oder Index auswählen, oder Sie können eine Gruppe von Spalten nach Typ auswählen.  
+1. Klicken Sie im rechten Bereich des Moduls auf **Spalten bearbeiten**, und wählen Sie die Spalte oder Gruppe von Spalten aus, mit der Sie arbeiten möchten. Sie können Spalten einzeln nach Name oder Index auswählen, oder Sie können eine Gruppe von Spalten nach Typ auswählen.  
   
 1. Wählen Sie die Option **Datentyp** aus, wenn Sie den ausgewählten Spalten einen anderen Datentyp zuweisen müssen. Möglicherweise müssen Sie den Datentyp für bestimmte Vorgänge ändern. Wenn Ihr Quelldataset beispielsweise Zahlen enthält, die wie Text behandelt werden, müssen Sie diese vor der Verwendung von mathematischen Operationen in einen numerischen Datentyp ändern.
 

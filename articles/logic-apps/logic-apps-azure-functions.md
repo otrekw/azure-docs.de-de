@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453471"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116909"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
 
@@ -28,7 +28,7 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Eine Funktions-App in Azure, bei der es sich um einen Container für Azure-Funktionen handelt, zusammen mit Ihrer Azure-Funktion. Wenn noch keine Funktionen-App vorhanden ist, [erstellen Sie zuerst Ihre Funktionen-App](../azure-functions/functions-create-first-azure-function.md). Sie können dann Ihre Funktion außerhalb Ihrer Logik-App im Azure-Portal oder [aus Ihrer Logik-App heraus](#create-function-designer) im Logik-App-Designer erstellen.
 
@@ -200,11 +200,11 @@ Wenn Sie eine Logik-App aus einer Azure-Funktion auslösen möchten, muss diese 
 
 Um den Zugriff auf Ressourcen in anderen Azure AD-Mandanten (Azure Active Directory) ohne Anmeldung oder Bereitstellung von Anmeldeinformationen oder Geheimnissen zu authentifizieren, kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität verwendet, können die Azure-Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Azure-Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität oder eine manuell erstellte benutzerseitig zugewiesene Identität verwendet, können die Azure-Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Azure-Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-Um die vom System zugewiesene Identität mit Ihrer Funktion einzurichten und zu verwenden, führen Sie diese Schritte aus:
+Um die verwaltete Identität mit Ihrer Funktion einzurichten und zu verwenden, führen Sie diese Schritte aus:
 
-1. Aktivieren Sie die vom System zugewiesene Identität in Ihrer Logik-App, und richten den Zugriff dieser Identität auf die Zielressource ein. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
+1. Aktivieren Sie die verwaltete Identität in Ihrer Logik-App, und richten den Zugriff dieser Identität auf die Zielressource ein. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
 
 1. Aktivieren Sie die Authentifizierung in ihrer Azure-Funktion und der Funktions-App, indem Sie folgende Schritte ausführen:
 
@@ -215,7 +215,7 @@ Um die vom System zugewiesene Identität mit Ihrer Funktion einzurichten und zu 
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Einrichten der anonymen Authentifizierung in ihrer Funktion
 
-Um die vom System zugewiesene Identität Ihrer Logik-App in Ihrer Azure-Funktion zu verwenden, müssen Sie die Authentifizierungsebene Ihrer Funktion auf „Anonym“ festlegen. Andernfalls löst die Logik-App einen „BadRequest“-Fehler aus.
+Um die verwaltete Identität Ihrer Logik-App in Ihrer Azure-Funktion zu verwenden, müssen Sie die Authentifizierungsebene Ihrer Funktion auf „Anonym“ festlegen. Andernfalls löst die Logik-App einen „BadRequest“-Fehler aus.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Funktions-App, und wählen Sie sie aus. In diesen Schritten wird „FabrikamFunctionApp“ als Beispiel für eine Funktions-App verwendet.
 

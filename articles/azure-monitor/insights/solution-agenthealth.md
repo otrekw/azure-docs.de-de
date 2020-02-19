@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/19/2017
-ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/06/2020
+ms.openlocfilehash: 9a7cb80b5510ff0ac4a2491d896aded866180c19
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402446"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77062131"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -39,7 +39,7 @@ Fügen Sie die Lösung für die Agent-Integritätsdiagnose dem Log Analytics-Arb
 ### <a name="supported-agents"></a>Unterstützte Agents
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
+| Verbundene Quelle | Unterstützt | Beschreibung |
 | --- | --- | --- |
 | Windows-Agents | Ja | Heartbeat-Ereignisse werden von direkten Windows-Agents erfasst.|
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Heartbeat-Ereignisse werden von Agents, die ihre Daten an die Verwaltungsgruppe melden, alle 60 Sekunden erfasst und dann an Azure Monitor weitergeleitet. Es ist keine direkte Verbindung zwischen Operations Manager-Agents und Azure Monitor erforderlich. Daten von Heartbeat-Ereignissen werden von der Verwaltungsgruppe an den Log Analytics-Arbeitsbereich weitergeleitet.|
@@ -49,7 +49,7 @@ Wenn Sie die Lösung dem Log Analytics-Arbeitsbereich hinzufügen, wird Ihrem Da
 
 Klicken Sie auf die Kachel **Agent-Integrität**, um das Dashboard **Agent-Integrität** zu öffnen.  Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind die zehn häufigsten Ereignisse entsprechend den Kriterien der Spalte für den angegebenen Zeitbereich aufgeführt. Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie rechts unten in jeder Spalte die Option **Alle anzeigen** wählen oder auf die Spaltenüberschrift klicken.
 
-| Column | BESCHREIBUNG |
+| Column | Beschreibung |
 |--------|-------------|
 | Agent-Anzahl über die Zeit | Ein Trend der Agent-Anzahl für einen Zeitraum von sieben Tagen für Linux- und Windows-Agents.|
 | Anzahl der nicht reagierenden Agents | Eine Liste mit Agents, die in den letzten 24 Stunden keinen Heartbeat gesendet haben.|
@@ -68,7 +68,7 @@ Die Lösung erstellt im Log Analytics-Arbeitsbereich eine Art von Datensatz.
 ### <a name="heartbeat-records"></a>Heartbeat-Datensätze
 Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt.  
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 | --- | --- |
 | `Type` | *Heartbeat*|
 | `Category` | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|
@@ -79,7 +79,7 @@ Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datens
 | `Version` | Log Analytics-Agent- oder Operations Manager-Agent-Version.|
 | `SCAgentChannel` | Der Wert lautet *Direct* bzw. *SCManagementServer*.|
 | `IsGatewayInstalled` | Wenn das Log Analytics-Gateway installiert ist, lautet der Wert *true*, andernfalls *false*.|
-| `ComputerIP` | IP-Adresse des Computers|
+| `ComputerIP` | Die öffentliche IP-Adresse des Computers. Auf virtuellen Azure-Computern wird hier die öffentliche IP-Adresse angezeigt, sofern sie verfügbar ist. Bei virtuellen Computern, auf denen private IP-Adressen verwendet werden, wird die Azure-SNAT-Adresse (und nicht die private IP-Adresse) angezeigt. |
 | `RemoteIPCountry` | Geografischer Standort, an dem der Computer bereitgestellt wird|
 | `ManagementGroupName` | Name der Operations Manager-Verwaltungsgruppe|
 | `SourceComputerId` | Eindeutige ID des Computers|
@@ -91,7 +91,7 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfrage | BESCHREIBUNG |
+| Abfrage | Beschreibung |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |

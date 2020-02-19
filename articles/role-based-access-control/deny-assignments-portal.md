@@ -1,5 +1,5 @@
 ---
-title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal | Microsoft-Dokumentation
+title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen über das Azure-Portal
 description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67127484"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137425"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
 

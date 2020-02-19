@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 01/18/2020
-ms.openlocfilehash: 95960a0af628526eb11335ea5c2fcec51f3c66b5
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/10/2020
+ms.openlocfilehash: 348c393a623f0059eec011faf823f9b5131508f3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548542"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122130"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -191,8 +191,9 @@ Die folgenden Grenzwerte gelten für benutzerdefinierte Connectors, die Sie übe
 ## <a name="managed-identities"></a>Verwaltete Identitäten
 
 | Name | Begrenzung |
-| ---- | ----- |
-| Anzahl von Logik-Apps mit vom System zugewiesener Identität pro Azure-Abonnement und Region | 100 |
+|------|-------|
+| Verwaltete Identitäten pro Logik-App | Entweder die vom System zugewiesene Identität oder eine benutzerseitig zugewiesene Identität |
+| Anzahl von Logik-Apps mit einer verwalteten Identität in einem Azure-Abonnement pro Region | 100 |
 |||
 
 <a name="integration-account-limits"></a>

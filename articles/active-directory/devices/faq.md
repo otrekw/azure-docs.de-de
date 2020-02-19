@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207383"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185844"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -55,7 +55,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>F: Warum sehen meine Benutzer auf ihren Windows 10-Geräten eine Fehlermeldung, die besagt, dass die Organisation das Gerät gelöscht oder deaktiviert hat?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>F: Warum sehen meine Benutzer auf ihren Windows 10-Geräten eine Fehlermeldung, die besagt, dass die Organisation das Gerät gelöscht oder deaktiviert hat?
 
 **A:** Benutzer erhalten auf Windows 10-Geräten, die in Azure AD eingebunden oder registriert sind, ein [Primäres Aktualisierungstoken](concept-primary-refresh-token.md) (Primary Refresh Token, PRT), das das einmalige Anmelden ermöglicht. Die Gültigkeit des PRT basiert auf der Gültigkeit des Geräts selbst. Benutzern wird diese Meldung angezeigt, wenn das Gerät in Azure AD entweder gelöscht oder deaktiviert wurde, ohne dass die Aktion vom Gerät selbst initiiert wurde. Ein Gerät kann in einem der folgenden Szenarien in Azure AD gelöscht oder deaktiviert werden: 
 
@@ -119,7 +119,7 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?
 
-**A:** Die Windows 10-Geräteregistrierung wird nur für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join oder Azure AD Hybrid Join fortfahren. Beachten Sie, dass Microsoft keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereitstellt, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 
+**A:** Die Windows 10-Geräteregistrierung wird nur für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join oder Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 
 
 ---
 
@@ -312,7 +312,7 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **Hinweise:**
 
-- Die in der Richtlinie für bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/technical-reference.md#client-apps-condition). 
+- Die in der Richtlinie für bedingten Zugriff enthaltenen Benutzer benötigen für den Zugriff auf Ressourcen eine [unterstützte Version von Office für macOS](../conditional-access/concept-conditional-access-conditions.md). 
 - Beim ersten Zugriffsversuch werden die Benutzer aufgefordert, das Gerät über das Unternehmensportal zu registrieren.
 
 ---

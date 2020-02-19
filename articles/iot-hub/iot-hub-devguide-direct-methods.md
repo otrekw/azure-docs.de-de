@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dcbc03257b8bfeacda700f60f2724f2d02ec147d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429268"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048269"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 
@@ -73,7 +73,10 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die aus den folgend
     }
     ```
 
-Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
+Der als `responseTimeoutInSeconds` in der Anforderung angegebene Wert ist die Zeitspanne, die der IoT Hub-Dienst auf den Abschluss der Ausführung einer direkten Methode auf einem Gerät warten muss. Legen Sie diesen Timeoutwert mindestens auf die erwartete Ausführungszeit einer direkten Methode durch ein Gerät fest. Wenn kein Timeout angegeben ist, wird der Standardwert von 30 Sekunden verwendet. Die Mindest- und Höchstwerte für `responseTimeoutInSeconds` betragen 5 bzw. 300 Sekunden.
+
+Der als `connectTimeoutInSeconds` in der Anforderung angegebene Wert ist die Zeitspanne nach dem Aufrufen einer direkten Methode, die der IoT Hub-Dienst darauf warten muss, dass ein getrenntes Gerät online geschaltet wird. Der Standardwert ist 0 (Null). Das bedeutet, dass Geräte beim Aufrufen einer direkten Methode bereits online sein müssen. Der Höchstwert für `connectTimeoutInSeconds` beträgt 300 Sekunden.
+
 
 #### <a name="example"></a>Beispiel
 
@@ -98,7 +101,10 @@ curl -X POST \
 
 Die Back-End-App empfängt eine Antwort, die aus den folgenden Elementen besteht:
 
-* *HTTP-Statuscode*, der für Fehler von IoT Hub verwendet wird. Dazu gehören z.B. 404-Fehler für Geräte, die derzeit nicht verbunden sind.
+* *HTTP-Statuscode:*
+  * 200 gibt die erfolgreiche Ausführung der direkten Methode an.
+  * 404 gibt an, dass entweder die Geräte-ID ungültig ist oder das Gerät nach dem Aufruf einer direkten Methode und `connectTimeoutInSeconds` danach nicht online war (die Grundursache können Sie mithilfe der zugehörigen Fehlermeldung ermitteln).
+  * 504 gibt an, dass ein Gatewaytimeout ausgelöst wurde, da das Gerät nicht innerhalb von `responseTimeoutInSeconds` auf den Aufruf einer direkten Methode geantwortet hat.
 
 * *Headern*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten.
 

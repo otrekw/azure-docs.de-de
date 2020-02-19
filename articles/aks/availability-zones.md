@@ -1,20 +1,21 @@
 ---
-title: Verwendung von Verfügbarkeitszonen in Azure Kubernetes Service (AKS)
+title: Verwenden von Verfügbarkeitszonen in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Cluster erstellen, der Knoten über Verfügbarkeitszonen verteilt.
 services: container-service
 author: mlearned
+ms.custom: fasttrack-edit
 ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 3790511bf3f71cdeb01853e4051a013719502d9f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605087"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086526"
 ---
-# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service (AKS)-Clusters, der Verfügbarkeitszonen verwendet
+# <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
 Ein Azure Kubernetes Service-Cluster (AKS) verteilt Ressourcen wie Knoten und Speicher auf logische Abschnitte der zugrunde liegenden Azure-Computerinfrastruktur. Dieses Bereitstellungsmodell stellt sicher, dass die Knoten über getrennte Update- und Fehlerdomänen in einem einzigen Azure-Rechenzentrum laufen. AKS-Cluster, die mit diesem Standardverhalten bereitgestellt werden, bieten ein hohes Maß an Verfügbarkeit zum Schutz vor Hardwareausfällen oder geplanten Wartungsereignissen.
 
@@ -60,7 +61,7 @@ Wenn Sie zustandsbehaftete Workloads ausführen müssen, verwenden Sie Taints un
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Übersicht über Verfügbarkeitszonen für AKS-Cluster
 
-Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Zonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg.
+Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Zonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten in mehreren Verfügbarkeitszonen, um sie vor Single Points of Failure zu schützen.
 
 Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?][az-overview].
 
@@ -122,6 +123,53 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Wenn Sie einem Agentpool zusätzliche Knoten hinzufügen, verteilt die Azure-Plattform die zugrunde liegenden VMs automatisch auf die angegebenen Verfügbarkeitszonen.
 
+Beachten Sie, dass in neueren Kubernetes-Versionen (ab 1.17.0) in AKS `topology.kubernetes.io/zone`zusätzlich zur veralteten Bezeichnung`failure-domain.beta.kubernetes.io/zone` die neuere Bezeichnung verwendet wird.
+
+## <a name="verify-pod-distribution-across-zones"></a>Überprüfen der Verteilung der Pods auf die Zonen
+
+Wie unter [Well-Known Labels, Annotations and Taints][kubectl-well_known_labels] (Bekannte Bezeichnungen, Anmerkungen und Taints) dokumentiert, wird in Kubernetes die Bezeichnung `failure-domain.beta.kubernetes.io/zone` zum automatischen Verteilen von Pods in einem Replikationscontroller oder Replikationsdienst in den verschiedenen verfügbaren Zonen verwendet. Um dies zu testen, können Sie den Cluster von 3 auf 5 Knoten zentral hochskalieren, um die korrekte Verteilung der Pods zu überprüfen:
+
+```azurecli-interactive
+az aks scale \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 5
+```
+
+Wenn der Skalierungsvorgang nach einigen Minuten abgeschlossen ist, sollte über den Befehl `kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"` eine Ausgabe ähnlich dem folgenden Beispiel ausgegeben werden:
+
+```console
+Name:       aks-nodepool1-28993262-vmss000000
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000001
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+Name:       aks-nodepool1-28993262-vmss000002
+            failure-domain.beta.kubernetes.io/zone=eastus2-3
+Name:       aks-nodepool1-28993262-vmss000003
+            failure-domain.beta.kubernetes.io/zone=eastus2-1
+Name:       aks-nodepool1-28993262-vmss000004
+            failure-domain.beta.kubernetes.io/zone=eastus2-2
+```
+
+Wie Sie sehen können, sind nun zwei zusätzliche Knoten in Zone 1 und Zone 2 vorhanden. Sie können eine Anwendung bereitstellen, die aus drei Replikaten besteht. Als Beispiel wird NGINX verwendet:
+
+```console
+kubectl run nginx --image=nginx --replicas=3
+```
+
+Wenn Sie die Knoten überprüfen, auf denen Ihre Pods ausgeführt werden, können Sie sehen, dass die Pods auf den Knoten ausgeführt werden, die den drei verschiedenen Verfügbarkeitszonen entsprechen. Beispielsweise erhalten Sie mit dem Befehl `kubectl describe pod | grep -e "^Name:" -e "^Node:"` eine Ausgabe ähnlich der folgenden:
+
+```console
+Name:         nginx-6db489d4b7-ktdwg
+Node:         aks-nodepool1-28993262-vmss000000/10.240.0.4
+Name:         nginx-6db489d4b7-v7zvj
+Node:         aks-nodepool1-28993262-vmss000002/10.240.0.6
+Name:         nginx-6db489d4b7-xz6wj
+Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
+```
+
+Wie Sie in dieser Ausgabe sehen können, wird der erste Pod auf dem Knoten 0 ausgeführt, der sich in der Verfügbarkeitszone `eastus2-1` befindet. Der zweite Pod wird auf dem Knoten 2 ausgeführt, der `eastus2-3` entspricht, und der dritte Knoten auf dem Knoten 4, der `eastus2-2` entspricht. Ohne zusätzliche Konfiguration verteilt Kubernetes die Pods ordnungsgemäß auf alle drei Verfügbarkeitszonen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Dieser Artikel beschreibt, wie Sie einen AKS-Cluster erstellen, der Verfügbarkeitszonen verwendet. Weitere Informationen zu hochverfügbaren Clustern finden Sie unter [Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)][best-practices-bc-dr].
@@ -144,3 +192,4 @@ Dieser Artikel beschreibt, wie Sie einen AKS-Cluster erstellen, der Verfügbarke
 
 <!-- LINKS - external -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[kubectl-well_known_labels]: https://kubernetes.io/docs/reference/kubernetes-api/labels-annotations-taints/

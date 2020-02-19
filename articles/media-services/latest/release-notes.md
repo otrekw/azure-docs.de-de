@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 52d8dda8b543e5bdf3ca88ae3784df65be3a2ba1
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962942"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114223"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -35,14 +35,33 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
-
+ 
 ## <a name="january-2020"></a>Januar 2020
 
 ### <a name="improvements-in-media-processors"></a>Verbesserungen bei Medienprozessoren
 
 - Verbesserte Unterstützung für verschachtelte Quellen in der Videoanalyse: Diese Inhalte werden jetzt ordnungsgemäß entschachtelt, bevor sie an Inferenzmodule gesendet werden.
 - Beim Generieren von Miniaturansichten im „besten“ Modus sucht der Encoder jetzt über 30 Sekunden, um einen nicht monochromen Frame auszuwählen.
- 
+
+### <a name="azure-government-cloud-updates"></a>Updates für die Azure Government-Cloud
+
+Media Services ist nun in den folgenden Azure Government-Regionen allgemein verfügbar: *USGov Arizona* und *USGov Texas*.
+
+## <a name="december-2019"></a>Dezember 2019
+
+CDN-Unterstützung für *Origin-Assist Prefetch*-Header für Livestreaming und On-Demand-Videostreaming wurde hinzugefügt und ist für Kunden mit direktem Vertrag mit Akamai CDN verfügbar. Die Funktion „Origin-Assist CDN-Prefetch“ umfasst den folgenden HTTP-Header-Austausch zwischen Akamai CDN und dem Azure Media Services-Ursprung:
+
+|HTTP-Header|Werte|Sender|Receiver|Zweck|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN-Origin-Assist-Prefetch-Enabled | „1“ (Standardwert) oder „0“ |CDN|Origin|Angabe, dass CDN für den Vorabruf aktiviert ist|
+|CDN-Origin-Assist-Prefetch-Path| Beispiel: <br/>Fragments(video=1400000000,format=mpd-time-cmaf)|Origin|CDN|Angabe des Vorabrufpfads zu CDN|
+|CDN-Origin-Assist-Prefetch-Request|„1“ (Vorabrufanforderung) oder „0“ (reguläre Anforderung)|CDN|Origin|Angabe, dass die Anforderung von CDN ein Vorabruf ist|
+
+Um einen Teil des Headeraustausches in Aktion zu sehen, können Sie folgende Schritte ausführen:
+
+1. Verwenden Sie Postman oder cURL, um eine Anforderung an den Media Services-Ursprung für ein Audio- oder Videosegment oder Audio- oder Videofragment auszugeben. Fügen Sie den Header „CDN-Origin-Assist-Prefetch-Enabled: 1“ in der Anforderung hinzu.
+2. In der Antwort sollte der Header „CDN-Origin-Assist-Prefetch-Path“ mit einem relativen Pfad als Wert angezeigt werden.
+
 ## <a name="november-2019"></a>November 2019
 
 ### <a name="live-transcription-preview"></a>Livetranskription Preview

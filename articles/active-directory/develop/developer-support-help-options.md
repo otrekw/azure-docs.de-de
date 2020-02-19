@@ -13,12 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697471"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160966"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -47,7 +47,7 @@ Hierbei entspricht *{Your Search Terms}* Ihren Schlüsselwörtern für die Suche
 
 ## <a name="use-the-development-support-tools"></a>Verwenden der Supporttools für die Entwicklung
 
-| Tool  | Beschreibung  |
+| Tool  | BESCHREIBUNG  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Fügen Sie eine ID oder ein Zugriffstoken zum Entschlüsseln von Anspruchsnamen und Werten ein. |
 | [Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)| Ein Tool, mit dem Sie Anforderungen an die Microsoft Graph-API richten und deren Antworten anzeigen können. |
@@ -79,8 +79,8 @@ Wenn Sie einen Fehler oder ein Problem im Zusammenhang mit unseren Bibliotheken 
 
 Die folgenden Ressourcen enthalten eine Liste der Bibliotheken und ihrer GitHub-Repositorys:
 
-* [ADAL](active-directory-authentication-libraries.md)-Bibliotheken und GitHub-Repositorys
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)-Bibliotheken [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android) und [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) sowie GitHub-Repositorys
+* [Azure Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL)](../azuread-dev/active-directory-authentication-libraries.md)-Bibliotheken und GitHub-Repositorys.
+* [Microsoft Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](reference-v2-libraries.md)-Bibliotheken und GitHub-Repositorys.
 
 ## <a name="open-a-support-request"></a>Stellen einer Supportanfrage
 

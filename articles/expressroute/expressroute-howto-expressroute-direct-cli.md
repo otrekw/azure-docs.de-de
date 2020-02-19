@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080213"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049941"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 
@@ -38,7 +38,12 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
    az account set --subscription "<subscription ID>"
    ```
 
-2. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird:
+2. Registrieren Sie Ihr Abonnement erneut bei Microsoft.Network, um auf die APIs expressrouteportslocation und expressrouteport zugreifen zu können.
+
+   ```azurecli
+   az provider register --namespace Microsoft.Network
+   ```
+3. Listen Sie alle Standorte auf, an denen ExpressRoute Direct unterstützt wird:
     
    ```azurecli
    az network express-route port location list
@@ -105,7 +110,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
    }
    ]
    ```
-3. Ermitteln Sie, ob für einen der im vorherigen Schritt aufgeführten Standorte Bandbreite verfügbar ist:
+4. Ermitteln Sie, ob für einen der im vorherigen Schritt aufgeführten Standorte Bandbreite verfügbar ist:
 
    ```azurecli
    az network express-route port location show -l "Equinix-Ashburn-DC2"
@@ -131,7 +136,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
    "type": "Microsoft.Network/expressRoutePortsLocations"
    }
    ```
-4. Erstellen Sie eine ExpressRoute Direct-Ressource, die auf dem Standort basiert, den Sie in den vorherigen Schritten ausgewählt haben.
+5. Erstellen Sie eine ExpressRoute Direct-Ressource, die auf dem Standort basiert, den Sie in den vorherigen Schritten ausgewählt haben.
 
    ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q. Bei Auswahl von QinQ wird jeder ExpressRoute-Leitung dynamisch ein S-Tag zugewiesen, damit sie in der gesamten ExpressRoute Direct-Ressource eindeutig ist. Jedes C-Tag für die Leitung muss innerhalb der Leitung eindeutig sein, aber nicht für die gesamte ExpressRoute Direct-Ressource.  
 

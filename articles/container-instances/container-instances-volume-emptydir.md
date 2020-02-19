@@ -2,13 +2,13 @@
 title: Einbinden eines emptyDir-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein emptyDir-Volume einbinden, um Daten zwischen den Containern in einer Containergruppe in Azure Container Instances freizugeben.
 ms.topic: article
-ms.date: 02/08/2018
-ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/31/2020
+ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552456"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117742"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Einbinden eines emptyDir-Volumes in Azure Container Instances
 
@@ -29,18 +29,20 @@ Beispiele für die Verwendung eines *emptyDir*-Volumes:
 
 Daten in einem *emptyDir*-Volume bleiben bei Containerabstürzen gespeichert. Bei neu gestarteten Container kann jedoch nicht garantiert werden, dass die Daten in einem *emptyDir*-Volume beibehalten werden. Wenn Sie eine Containergruppe anhalten, wird das *emptyDir*-Volume nicht persistent gespeichert.
 
+Die maximale Größe eines *emptyDir*-Volumes unter Linux beträgt 50 GB.
+
 ## <a name="mount-an-emptydir-volume"></a>Einbinden eines emptyDir-Volumes
 
-Sie können ein emptyDir-Volume in eine Containerinstanz einbinden, indem Sie zum Bereitstellen eine [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups) verwenden.
+Sie können ein emptyDir-Volume in eine Containerinstanz einbinden, indem Sie eine [Azure Resource Manager-Vorlage](/azure/templates/microsoft.containerinstance/containergroups), eine [YAML-Datei](container-instances-reference-yaml.md) oder andere programmgesteuerte Methoden zum Bereitstellen einer Containergruppe verwenden.
 
-Füllen Sie in der Vorlage zunächst das `volumes`-Array im Abschnitt `properties` für die Containergruppe auf. Füllen Sie als Nächstes für jeden Container in der Containergruppe, in die Sie das *emptyDir*-Volume einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf.
+Füllen Sie in der Datei zunächst das `volumes`-Array im Abschnitt `properties` für die Containergruppe auf. Füllen Sie als Nächstes für jeden Container in der Containergruppe, in die Sie das *emptyDir*-Volume einbinden möchten, das Array `volumeMounts` im Abschnitt `properties` der Containerdefinition auf.
 
 Mit der folgenden Resource Manager-Vorlage wird beispielsweise eine Containergruppe mit zwei Containern erstellt, die jeweils das *emptyDir*-Volume einbinden:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Ein Beispiel für die Bereitstellung der Containerinstanzen mit einer Azure Resource Manager-Vorlage finden Sie unter [Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances](container-instances-multi-container-group.md).
+Beispiele für die Bereitstellung von Containergruppen finden Sie unter [Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](container-instances-multi-container-group.md) und [Bereitstellen einer Gruppe mit mehreren Containern mithilfe einer YAML-Datei](container-instances-multi-container-yaml.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,31 +1,29 @@
 ---
-title: 'Schnellstart: Auflisten von Stimmen für die Sprachsynthese, Python – Speech-Dienst'
+title: Auflisten von Stimmen für die Sprachsynthese, Python – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
+description: In diesem Artikel erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: c645d01dd37fd370911019446c99c76c9da6221c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 51fe6cea80e097f34432ab8dc7293c758bd8d720
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975974"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119797"
 ---
-# <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Schnellstart: Abrufen der Liste der Stimmen für Text-to-Speech mit Python
+# <a name="get-the-list-of-text-to-speech-voices-using-python"></a>Abrufen der Liste der Stimmen für Text-to-Speech mit Python
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region. Eine Liste der unterstützten Regionen finden Sie unter [Regionen](regions.md).
+In diesem Artikel erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region. Eine Liste der unterstützten Regionen finden Sie unter [Regionen](regions.md).
 
-Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](get-started.md) einen Abonnementschlüssel abrufen.
+Für diesen Artikel wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](get-started.md) einen Abonnementschlüssel abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Python 2.7.x oder 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor

@@ -8,41 +8,80 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: 6fa7d6a93a56cc531df238a8580207ef7a89d5d0
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 162e60ac8d33dc5d1951a58b0a9643b668608d7b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732619"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188799"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
 
-## <a name="named-entity-recognition-v3-public-preview---october-2019"></a>Named Entity Recognition v3 – öffentliche Vorschau: Oktober 2019
+## <a name="february-2020"></a>Februar 2020
 
-Die nächste Version von Named Entity Recognition (NER, Erkennung benannter Entitäten) ist jetzt als öffentliche Vorschauversion erhältlich und bietet erweiterte Erkennung und Kategorisierung von in Text gefundenen Entitäten. Die Lösung umfasst Folgendes:
+### <a name="sdk-support-for-text-analytics-api-v3-public-preview"></a>SDK-Unterstützung für die öffentliche Vorschauversion der Textanalyse-API v3
 
-* Erkennung der folgenden neuen Entitätstypen:
-    * Telefonnummer
+Als Teil der [vereinheitlichten Azure SDK-Veröffentlichung](https://techcommunity.microsoft.com/t5/azure-sdk/january-2020-unified-azure-sdk-release/ba-p/1097290) ist das Textanalyse-API v3 SDK jetzt als öffentliche Vorschauversion für die folgenden Programmiersprachen verfügbar:
+   * [C#](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-csharp)
+   * [Python](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-python)
+   * [JavaScript (Node.js)](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-javascript)
+   * [Java](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3&pivots=programming-language-java)
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zum Textanalyse-API v3 SDK](https://docs.microsoft.com/azure/cognitive-services/text-analytics/quickstarts/text-analytics-sdk?tabs=version-3)
+
+### <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 – öffentliche Vorschau
+
+Weitere Entitätstypen stehen jetzt in der öffentlichen Vorschauversion des Diensts zur Erkennung benannter Entitäten (NER) v3 zur Verfügung, da wir die Erkennung allgemeiner und persönlicher Informationsentitäten, die in Text erkannt werden, ausweiten. Dieses Update führt die [Modellversion](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2020-02-01` ein, die Folgendes beinhaltet:
+
+* Erkennung der folgenden allgemeinen Entitätstypen (nur in englischer Sprache):
+    * PersonType
+    * Produkt
+    * Ereignis
+    * Geopolitische Entität (GPE) als Untertyp unter Standort
+    * Skill
+
+* Erkennung der folgenden persönlichen Entitätstypen (nur in englischer Sprache):
+    * Person
+    * Organization
+    * Alter als Untertyp unter Menge
+    * Datum als Untertyp unter DateTime
+    * Email 
+    * Telefonnummer (nur USA)
+    * URL
     * IP-Adresse
-
-* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
-* Separate Endpunkte für die [Entitätserkennung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
-
-Die Entitätsverknüpfung unterstützt Englisch und Spanisch. Die NER-Sprachunterstützung ist je nach Entitätstyp unterschiedlich. 
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zu Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
-## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Standpunktanalyse v3 – Öffentliche Vorschau: Oktober 2019
+### <a name="october-2019"></a>Oktober 2019
 
-Die [nächste Version der Standpunktanalyse](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) ist jetzt als Public Preview verfügbar und bietet erhebliche Verbesserungen bei Genauigkeit und Detailgrad der Textkategorisierung und -bewertung der API. Außerdem bietet sie Folgendes:
+#### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-* Automatische Bezeichnung für verschiedene Stimmungen im Text
-* Standpunktanalyse und Ausgabe auf Dokument- und Satzebene 
+* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
+
+* Separate Endpunkte für die [Entitätserkennung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+
+* [Modellversion](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) `2019-10-01`, die Folgendes beinhaltet:
+    * Erweiterte Erkennung und Kategorisierung von Entitäten, die im Text erkannt wurden. 
+    * Erkennung der folgenden neuen Entitätstypen:
+        * Telefonnummer
+        * IP-Adresse
+
+Die Entitätsverknüpfung unterstützt Englisch und Spanisch. Die NER-Sprachunterstützung ist je nach Entitätstyp unterschiedlich.
+
+#### <a name="sentiment-analysis-v3-public-preview"></a>Öffentliche Vorschau der Standpunktanalyse v3
+
+* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) für die Stimmungsanalyse.
+* [Modellversion](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) `2019-10-01`, die Folgendes beinhaltet:
+
+    * Deutliche Verbesserungen bei Genauigkeit und Details der Textkategorisierung und -bewertung der API.
+    * Automatische Bezeichnung für verschiedene Stimmungen im Text
+    * Standpunktanalyse und Ausgabe auf Dokument- und Satzebene 
 
 Unterstützt derzeit Englisch (`en`), Japanisch (`ja`), vereinfachtes Chinesisch (`zh-Hans`), traditionelles Chinesisch (`zh-Hant`), Französisch (`fr`), Italienisch (`it`), Spanisch (`es`), Niederländisch (`nl`), Portugiesisch (`pt`) und Deutsch (`de`) und ist in den folgenden Regionen erhältlich: `Australia East`, `Central Canada`, `Central US`, `East Asia`, `East US`, `East US 2`, `North Europe`, `Southeast Asia`, `South Central US`, `UK South`, `West Europe` und `West US 2`. 
 

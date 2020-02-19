@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f16cb95a42bf201aa7d75a3393917c58f51fbb07
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122439"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122489"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -35,14 +35,14 @@ Durch das Bereitstellen eines SQL Server-VM-Azure Marketplace-Images über das 
 
 - **Vereinfachte Lizenzverwaltung**: Durch die Registrierung beim SQL-VM-Ressourcenanbieter wird die SQL Server-Lizenzverwaltung vereinfacht. Außerdem können Sie über das [Azure-Portal](virtual-machines-windows-sql-manage-portal.md), die Azure-Befehlszeilenschnittstelle oder PowerShell schnell SQL Server-VMs mit aktiviertem Azure-Hybridvorteil identifizieren: 
 
-   # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+   # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
    ```azurecli-interactive
    $vms = az sql vm list | ConvertFrom-Json
    $vms | Where-Object {$_.sqlServerLicenseType -eq "AHUB"}
    ```
 
-   # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell-interactive
    Get-AzSqlVM | Where-Object {$_.LicenseType -eq 'AHUB'}
@@ -106,14 +106,14 @@ Um Ihre SQL Server-VM beim SQL-VM-Ressourcenanbieter zu registrieren, müssen S
 
 Registrieren Sie Ihren SQL-VM-Ressourcenanbieter mithilfe von Azure-Befehlszeilenschnittstelle oder PowerShell bei Ihrem Azure-Abonnement. 
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="az-cli"></a>[Azure CLI](#tab/bash)
 
 ```azurecli-interactive
 # Register the SQL VM resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell-interactive
 # Register the SQL VM resource provider to your subscription
@@ -130,7 +130,7 @@ Wenn die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-serve
 
 Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können nur im Modus „Lightweight“ beim SQL-VM-Ressourcenanbieter registriert werden. 
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="az-cli"></a>[Azure CLI](#tab/bash)
 
 Registrieren der SQL Server-VM im Modus „Lightweight“ mit der Azure-Befehlszeilenschnittstelle: 
 
@@ -140,7 +140,7 @@ Registrieren der SQL Server-VM im Modus „Lightweight“ mit der Azure-Befehlsz
   ```
 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Registrieren der SQL Server-VM im Modus „Lightweight“ mit PowerShell:  
 
@@ -161,39 +161,59 @@ Registrieren der SQL Server-VM im Modus „Lightweight“ mit PowerShell:
 
 Wenn die SQL-IaaS-Erweiterung bereits manuell auf der VM installiert wurde, können Sie die SQL Server-VM im Modus „Vollständig“ registrieren, ohne den SQL Server-Dienst neu zu starten. **Wenn die SQL-IaaS-Erweiterung jedoch nicht installiert wurde, wird die SQL-IaaS-Erweiterung durch die Registrierung im Modus „Vollständig“ ebenfalls im Modus „Vollständig“ installiert. Darüber hinaus wird der SQL Server-Dienst neu gestartet. Sie sollten daher mit Vorsicht vorgehen.**
 
-Im Folgenden der Codeausschnitt für die Registrierung beim SQL-VM-Ressourcenanbieter im Modus „Vollständig“. Verwenden Sie den folgenden PowerShell-Befehl, um eine Registrierung im Verwaltungsmodus „Vollständig“ auszuführen:
+
+Verwenden Sie den folgenden PowerShell-Befehl, um Ihre SQL Server-VM direkt im vollständigen Modus zu registrieren (und ggf. den SQL Server-Dienst neu zu starten): 
 
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
         
   # Register with SQL VM resource provider in full mode
-  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
-
 
 ### <a name="noagent-management-mode"></a>Verwaltungsmodus „NoAgent“ 
 
-Installationen von SQL Server 2008 und 2008 R2 unter Windows Server 2008 können beim SQL-VM-Ressourcenanbieter im [Modus „NoAgent“](#management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
+Installationen von SQL Server 2008 und 2008 R2 unter Windows Server 2008 (_nicht R2_) können beim SQL-VM-Ressourcenanbieter im [NoAgent-Modus](#management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
 
 Geben Sie entweder `AHUB` oder `PAYG` als **sqlLicenseType** und entweder `SQL2008-WS2008` oder `SQL2008R2-WS2008` als **sqlImageOffer** an. 
 
 Verwenden Sie für die Registrierung Ihrer SQL Server 2008- oder 2008 R2-Instanz bei einer Windows Server 2008-Instanz den folgenden Codeausschnitt für die Azure-Befehlszeilenschnittstelle oder PowerShell: 
 
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="az-cli"></a>[Azure CLI](#tab/bash)
 
-Registrieren der SQL Server-VM im Modus „NoAgent“ mit der Azure-Befehlszeilenschnittstelle: 
+Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit der Azure-Befehlszeilenschnittstelle: 
 
   ```azurecli-interactive
    az sql vm create -n sqlvm -g myresourcegroup -l eastus |
    --license-type PAYG --sql-mgmt-type NoAgent 
    --image-sku Enterprise --image-offer SQL2008-WS2008R2
  ```
+ 
+ 
+Registrieren Ihrer SQL Server 2008 R2-VM im NoAgent-Modus mit der Azure-Befehlszeilenschnittstelle: 
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+  ```azurecli-interactive
+   az sql vm create -n sqlvm -g myresourcegroup -l eastus |
+   --license-type PAYG --sql-mgmt-type NoAgent 
+   --image-sku Enterprise --image-offer SQL2008R2-WS2008R2
+ ```
 
-Registrieren der SQL Server-VM im Modus „NoAgent“ mit PowerShell: 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Registrieren Ihrer SQL Server 2008-VM im NoAgent-Modus mit PowerShell: 
+
+
+  ```powershell-interactive
+  # Get the existing compute VM
+  $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
+          
+  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
+    -LicenseType PAYG -SqlManagementType NoAgent -Sku Standard -Offer SQL2008-WS2008
+  ```
+  
+  Registrieren Ihrer SQL Server 2008 R2-VM im NoAgent-Modus mit PowerShell: 
 
 
   ```powershell-interactive
@@ -236,7 +256,7 @@ So führen Sie Upgrade des Agent-Modus auf „Vollständig“ durch:
 
 ### <a name="command-line"></a>Befehlszeile
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="az-cli"></a>[Azure CLI](#tab/bash)
 
 Führen Sie den folgenden Codeausschnitt in der Azure CLI aus:
 
@@ -245,17 +265,16 @@ Führen Sie den folgenden Codeausschnitt in der Azure CLI aus:
   az sql vm update --name <vm_name> --resource-group <resource_group_name> --sql-mgmt-type full  
   ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Führen Sie den folgenden Codeausschnitt in PowerShell aus:
 
   ```powershell-interactive
   # Get the existing  Compute VM
   $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-
-  # Update to full mode
-  New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-     -LicenseType PAYG -SqlManagementType Full
+        
+  # Register with SQL VM resource provider in full mode
+  Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
   ```
 
 ---
@@ -276,14 +295,14 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Po
 
 Überprüfen Sie den aktuellen Registrierungsstatus der SQL Server-VM per Azure-Befehlszeilenschnittstelle oder PowerShell. `ProvisioningState` zeigt `Succeeded` an, wenn die Registrierung erfolgreich abgeschlossen wurde. 
 
-# <a name="az-clitabbash"></a>[Azure CLI](#tab/bash)
+# <a name="az-cli"></a>[Azure CLI](#tab/bash)
 
 
   ```azurecli-interactive
   az sql vm show -n <vm_name> -g <resource_group>
  ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
   ```powershell-interactive
   Get-AzSqlVM -Name <vm_name> -ResourceGroupName <resource_group>
@@ -324,7 +343,7 @@ Gehen Sie wie folgt vor, um Ihre SQL Server-VM beim Ressourcenanbieter über das
 
 ### <a name="command-line"></a>Befehlszeile
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure-Befehlszeilenschnittstelle aufzuheben, verwenden Sie den Befehl [az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 
@@ -335,7 +354,7 @@ az sql vm delete
   --yes 
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Um die Registrierung Ihrer SQL Server-VM beim Ressourcenanbieter mithilfe der Azure-Befehlszeilenschnittstelle aufzuheben, verwenden Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm). Dadurch wird die SQL Server-VM-*Ressource* entfernt, aber der virtuelle Computer nicht gelöscht. 
 
 ```powershell-interactive

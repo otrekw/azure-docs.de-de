@@ -3,20 +3,18 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: d6aa04586c9c087a736c7e1b10b8c21328a63cab
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cae653c9e51e2a497d6fa3781415a1f836053593
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934941"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064528"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
 Der [Azure Site Recovery](site-recovery-overview.md)-Dienst wird laufend aktualisiert und verbessert. Um Sie auf dem Laufenden zu halten, bietet Ihnen dieser Artikel Informationen zu den neuesten Releases, neuen Features und neuen Inhalten. Diese Seite wird regelmäßig aktualisiert.
 
 Sie können Site Recovery-Updatebenachrichtigungen im Kanal für [Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery) nachverfolgen und abonnieren.
-
-
 
 ## <a name="supported-updates"></a>Unterstützte Updates
 
@@ -30,18 +28,18 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 [Rollup 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [Rollup 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
 
-
-
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
 
 ## <a name="updates-january-2020"></a>Updates (Januar 2020)
 
 ### <a name="update-rollup-44"></a>Updaterollup 44
+
 Das [Updaterollup 44](https://support.microsoft.com/help/4538187/update-rollup-44-for-azure-site-recovery) umfasst folgende Updates.
 
 **Aktualisieren** | **Details**
 --- | ---
-**Problemkorrekturen/Verbesserungen** | Eine Reihe von Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
+**Anbieter und Agents** | Es finden keine Updates für die Site Recovery-Anbieter und -Agents statt.
+**Problemkorrekturen/Verbesserungen** | Mehrere Fehlerbehebungen und Verbesserungen, wie im Rollup beschrieben.
 
 ### <a name="azure-vmware-disaster-recovery"></a>Azure VMware-Notfallwiederherstellung
 

@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 8b58e9d2eae1fbe5b0f4086f772bea3bf46399c3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895952"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131604"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Übersicht über Livestreaming mit Media Services
 
@@ -55,13 +55,13 @@ In Azure Media Services verarbeiten die **Kanäle**, **Programme** und **Streami
 
 Ein **Kanal** stellt eine Pipeline zum Verarbeiten von Livestreaming-Inhalten dar. Ein Kanal kann Live-Eingabedatenströme auf folgende Arten empfangen:
 
-* Von einem lokalen Liveencoder wird Mehrfachbitraten-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Mehrfachbitraten-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den für **Pass-Through** konfigurierten Kanal gesendet. Bei der **Pass-Through-Übertragung** durchlaufen die erfassten Datenströme die **Kanäle** ohne weitere Verarbeitung. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Telestream Wirecast-, Haivision-, Teradek- und Tricaster-Transcoder.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings, wenn mehrere Ereignisse über einen längeren Zeitraum gestreamt werden und Sie bereits in lokale Encoder investiert haben. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/media-services/) .
   > 
   > 
-* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Live-Codierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Bei den folgenden Liveencodern mit RTMP-Ausgabe ist bekannt, dass sie mit Kanälen dieses Typs funktionieren: Telestream Wirecast, FMLE. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Live-Codierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Bei den folgenden Liveencodern mit RTMP-Ausgabe ist bekannt, dass sie mit Kanälen dieses Typs funktionieren: Telestream Wirecast. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Eingabedatenstrom vom Kanal empfangen werden soll und ob vom Kanal eine Livecodierung des Datenstroms ausgeführt werden soll. Sie haben zwei Möglichkeiten:
 
@@ -72,7 +72,7 @@ Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben,
 
 Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von Media Services unterstützten Kanaltypen.
 
-| Feature | Pass-Through-Kanal | Standardkanal |
+| Funktion | Pass-Through-Kanal | Standardkanal |
 | --- | --- | --- |
 | Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein |Ja |
 | Maximale Auflösung, Anzahl der Ebenen |1080p, 8 Ebenen, 60 fps oder mehr |720p, 6 Ebenen, 30 fps |
@@ -104,7 +104,7 @@ Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführe
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>Beschreibung von Kanälen und zugehörigen Komponenten
 
-### <a name="channel"></a>Kanal
+### <a name="channel"></a>Channel
 
 In Media Services sind [Kanäle](https://docs.microsoft.com/rest/api/media/operations/channel)für die Verarbeitung von Livestreaminginhalten zuständig. Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem Live-Transcoder vorlegen. Der Kanal empfängt Live-Eingabestreams aus dem Live-Transcoder und stellt diese zum Streamen durch einen oder mehrere StreamingEndpoints zur Verfügung. Zudem bieten Kanäle einen Vorschauendpunkt (Vorschau-URL), mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln.
 
@@ -151,7 +151,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Kanalstatus | Portal-UI-Indikatoren | Werden Gebühren berechnet? |
 | --- | --- | --- |
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
-| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
+| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |YES |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
 | Beendet |Beendet |Nein |
 

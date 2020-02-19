@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816648"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168362"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
 Mithilfe des Speech-Diensts kann Ihre Anwendung Sprache in Text konvertieren, Sprachübersetzungen ausführen und Text in Sprache konvertieren. Der Dienst ist in mehreren Regionen mit eindeutigen Endpunkten für das Speech SDK und REST-APIs verfügbar.
 
-Stellen Sie sicher, dass Sie den Endpunkt verwenden, der mit der Region für Ihr Abonnement übereinstimmt.
+Das Sprachportal zum Durchführen benutzerdefinierter Konfigurationen für Ihre Sprachfunktionen für alle Regionen finden Sie hier: https://speech.microsoft.com
+
+Stellen Sie bei Aufrufen Ihres Speech-Diensts sicher, dass der Aufruf mit der Region Ihres Abonnements übereinstimmt.
 
 ## <a name="speech-sdk"></a>Sprach-SDK
 
@@ -30,28 +32,13 @@ Im [Speech SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. 
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Spracherkennung, Sprachsynthese und Übersetzung
 
-Das Speech SDK ist in den folgenden Regionen für **Spracherkennung**, **Sprachsynthese** und **Übersetzung** verfügbar:
+Das Speech-Anpassungsportal ist hier verfügbar: https://speech.microsoft.com
 
-| Region           | Speech SDK-Parameter | Speech-Anpassungsportal    |
-| ---------------- | -------------------- | ------------------------------ |
-| USA (Westen)          | `westus`             | https://westus.cris.ai         |
-| USA, Westen 2        | `westus2`            | https://westus2.cris.ai        |
-| East US          | `eastus`             | https://eastus.cris.ai         |
-| USA (Ost) 2        | `eastus2`            | https://eastus2.cris.ai        |
-| USA (Mitte)       | `centralus`          | https://centralus.cris.ai      |
-| USA Nord Mitte | `northcentralus`     | https://northcentralus.cris.ai |
-| USA Süd Mitte | `southcentralus`     | https://southcentralus.cris.ai |
-| Indien, Mitte    | `centralindia`       | https://centralindia.cris.ai   |
-| Asien, Osten        | `eastasia`           | https://eastasia.cris.ai       |
-| Asien, Südosten   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japan, Osten       | `japaneast`          | https://japaneast.cris.ai      |
-| Korea, Mitte    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Australien (Osten)   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Kanada, Mitte   | `canadacentral`      | https://canadacentral.cris.ai  |
-| Nordeuropa     | `northeurope`        | https://northeurope.cris.ai    |
-| Europa, Westen      | `westeurope`         | https://westeurope.cris.ai     |
-| UK, Süden         | `uksouth`            | https://uksouth.cris.ai        |
-| Frankreich, Mitte   | `francecentral`      | https://francecentral.cris.ai  |
+Der Speech-Dienst ist in den folgenden Regionen für **Spracherkennung**, **Sprachsynthese** und **Übersetzung** verfügbar:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+Wenn Sie das [Speech SDK](speech-sdk.md) verwenden, werden die Regionen durch den **Regionsbezeichner** angegeben (z. B. als Parameter von `SpeechConfig.FromSubscription`). Achten Sie darauf, dass die Region mit der Region Ihres Abonnements übereinstimmt.
 
 ### <a name="intent-recognition"></a>Absichtserkennung
 
@@ -59,8 +46,8 @@ Verfügbare Regionen für **Absichtserkennung** über das Speech SDK sind die fo
 
 | Globale Region | Region           | Speech SDK-Parameter |
 | ------------- | ---------------- | -------------------- |
-| Asien          | Asien, Osten        | `eastasia`           |
-| Asien          | Asien, Südosten   | `southeastasia`      |
+| Asia          | Asien, Osten        | `eastasia`           |
+| Asia          | Asien, Südosten   | `southeastasia`      |
 | Australien     | Australien (Osten)   | `australiaeast`      |
 | Europa        | Nordeuropa     | `northeurope`        |
 | Europa        | Europa, Westen      | `westeurope`         |
@@ -96,7 +83,18 @@ Der Speech-Dienst macht auch REST-Endpunkte für Spracherkennungs- und Sprachsyn
 
 Die Referenzdokumentation zur Spracherkennung finden Sie unter [Spracherkennungs-REST-API](rest-speech-to-text.md).
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+Der Endpunkt für die REST-API weist das folgende Format auf:
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+Ersetzen Sie `<REGION_IDENTIFIER>` durch den Bezeichner aus der folgenden Tabelle, der mit der Region Ihres Abonnements übereinstimmt:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> Der Sprachparameter muss an die URL angefügt werden, um HTTP Fehler des Typs „4xx“ zu vermeiden. Das folgende Beispiel zeigt die Spracheinstellung „Englisch (USA)“ bei Verwendung des Endpunkt „USA, Westen“: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Text-zu-Sprache
 

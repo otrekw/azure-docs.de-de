@@ -15,24 +15,26 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
-ms.openlocfilehash: be3c75680599c07a3cebe3dcf0436884958e1706
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1d9d63aa6b3da1b8d8389722bd5af0eeed585d03
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016665"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134971"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des Wirecast-Encoders zum Senden eines Single-Bitrate-Livedatenstroms 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
-In diesem Artikel wird beschrieben, wie Sie den [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) -Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind.  Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Live Encoding mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+In diesem Artikel wird beschrieben, wie Sie den [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) -Liveencoder zum Senden eines Single-Bitrate-Livedatenstroms an AMS-Kanäle konfigurieren, für die Livecodierung aktiviert sind. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Live Encoding mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool Azure Media Services Explorer (AMSE) verwalten. Dieses Tool kann nur auf Windows-PCs ausgeführt werden. Verwenden Sie unter Mac OS oder Linux das Azure-Portal, um [Kanäle](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) und [Programme](media-services-portal-creating-live-encoder-enabled-channel.md) zu erstellen.
+
+> [!NOTE]
+> Encoder müssen TLS 1.2 unterstützen, wenn RTMPS-Protokolle verwendet werden. Verwenden Sie aufgrund der TLS 1.2-Anforderung die Wirecast-Version 13.0.2 oder höher.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Erstellen eines Azure Media Services-Kontos](media-services-portal-create-account.md)

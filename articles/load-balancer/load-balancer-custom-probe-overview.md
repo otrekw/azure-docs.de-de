@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 5aa75de694d05ce31becc6996aca419dff256a3f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5517b6434d8d654e8aa7e28bec8f6d2a3d9ca73b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023547"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056681"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -128,7 +128,7 @@ Wenn Sie Cloud Services verwenden und über Webrollen verfügen, die „w3wp.exe
 
 HTTP-/HTTPS-Tests führen in folgenden Fällen zu Fehlern:
 * Der Testendpunkt gibt einen anderen HTTP-Antwortcode als 200 zurück (z.B. 403, 404 oder 500). Dadurch wird der Integritätstest sofort als nicht ausgeführt markiert. 
-* Der Testendpunkt reagiert während des Zeitlimits von 31 Sekunden gar nicht. Möglicherweise bleiben mehrere Testanforderungen unbeantwortet, bevor der Test als nicht ausgeführt markiert wird und die Summe aller Timeoutintervalle erreicht wurde.
+* Der HTTP-Testendpunkt reagiert während des kleineren Zeitraums des Testintervalls und eines Zeitlimits von 30 Sekunden gar nicht. Möglicherweise bleiben mehrere Testanforderungen unbeantwortet, bevor der Test als nicht ausgeführt markiert wird und die Summe aller Timeoutintervalle erreicht wurde.
 * Der Testendpunkt schließt die Verbindung über ein TCP-Reset.
 
 Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in einer Resource Manager-Vorlage ausdrücken können:

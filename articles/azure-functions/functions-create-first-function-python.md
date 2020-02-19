@@ -1,17 +1,17 @@
 ---
-title: Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
+title: Erstellen einer serverlosen Python-Funktion für HTTP-Anforderungen in Azure Functions
 description: Es wird beschrieben, wie Sie serverlosen Python-Code mit Azure Functions in der Cloud erstellen und bereitstellen.
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898561"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157889"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Schnellstart: Erstellen einer durch HTTP ausgelösten Python-Funktion in Azure
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Schnellstart: Erstellen einer Python-Funktion in Azure, die auf HTTP-Anforderungen reagiert
 
 In diesem Artikel verwenden Sie Befehlszeilentools zum Erstellen einer Python-Funktion, die auf HTTP-Anforderungen antwortet. Der Code wird lokal getestet und anschließend in der serverlosen Umgebung von Azure Functions bereitgestellt. Im Rahmen dieser Schnellstartanleitung fallen in Ihrem Azure-Konto ggf. geringfügige Kosten im Centbereich an.
 
@@ -36,7 +36,7 @@ Es gibt auch eine [Visual Studio Code-basierte Version](/azure/azure-functions
 Führen Sie die folgenden Befehle in einem geeigneten Ordner aus, um eine virtuelle Umgebung mit dem Namen `.venv` zu erstellen und zu aktivieren. Achten Sie darauf, dass Sie Python 3.7 verwenden. Diese Version wird von Azure Functions unterstützt.
 
 
-# <a name="bashtabbash"></a>[Bash](#tab/bash)
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 python -m venv .venv
@@ -52,7 +52,7 @@ Führen Sie den folgenden Befehl aus, wenn über Python das venv-Paket auf Ihrer
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -m venv .venv
@@ -62,7 +62,7 @@ py -m venv .venv
 .venv\scripts\activate
 ```
 
-# <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+# <a name="cmd"></a>[Cmd](#tab/cmd)
 
 ```cmd
 py -m venv .venv
@@ -107,7 +107,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
 
 Bei Bedarf können Sie [Lokales Ausführen der Funktion](#run-the-function-locally) überspringen und den Dateiinhalt später untersuchen.
 
-### <a name="__init__py"></a>\_\_init\_\_.py
+#### <a name="__init__py"></a>\_\_init\_\_.py
 
 *\_\_init\_\_.py* enthält eine Python-Funktion vom Typ `main()`, die gemäß der Konfiguration in *function.json* ausgelöst wird.
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Für den HTTP-Trigger empfängt die Funktion Anforderungsdaten in der Variablen `req`, wie dies in *function.json* definiert ist. `req` ist eine Instanz der [azure.functions.HttpRequest-Klasse](/python/api/azure-functions/azure.functions.httprequest). Das Rückgabeobjekt, das in *function.json* als `$return` definiert ist, ist eine Instanz der [azure.functions.HttpResponse-Klasse](/python/api/azure-functions/azure.functions.httpresponse). Weitere Informationen finden Sie unter [HTTP-Trigger und -Bindungen in Azure Functions](functions-bindings-http-webhook.md).
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *function.json* ist eine Konfigurationsdatei, in der die Eingabe- und Ausgabebindungen (`bindings`) für die Funktion, einschließlich Triggertyp, definiert sind. Falls erforderlich, können Sie `scriptFile` auch so ändern, dass eine andere Python-Datei aufgerufen wird.
 
@@ -269,14 +269,14 @@ Functions in msdocs-azurefunctions-qs:
 
 Da für Ihre Funktion ein HTTP-Trigger verwendet wird, führen Sie das Aufrufen durch, indem Sie per Browser eine HTTP-Anforderung an die entsprechende URL senden oder ein Tool wie curl verwenden. In beiden Fällen ist der URL-Parameter `code` Ihr eindeutiger Funktionsschlüssel, über den der Aufruf mit Ihrem Funktionsendpunkt autorisiert wird.
 
-# <a name="browsertabbrowser"></a>[Browser](#tab/browser)
+# <a name="browser"></a>[Browser](#tab/browser)
 
 Kopieren Sie die vollständige **Aufruf-URL**, die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Azure` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
 
 ![Ausgabe der in Azure ausgeführten Funktion in einem Browser](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curl"></a>[curl](#tab/curl)
 
 Führen Sie [curl](https://curl.haxx.se/) mit der **Aufruf-URL** aus, und fügen Sie den Parameter `&name=Azure` an. Die Ausgabe des Befehls sollte der Text „Hello Azure“ sein.
 

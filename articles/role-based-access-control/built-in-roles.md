@@ -15,12 +15,12 @@ ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264253"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121978"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -152,9 +152,9 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Besitzer von Speicherblobdaten](#storage-blob-data-owner) | Bietet Vollzugriff auf Azure Storage-Blobcontainer und -daten, einschließlich POSIX-Zugriffssteuerung. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Leser von Speicherblobdaten](#storage-blob-data-reader) | Lesen und Auflisten von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Storage Blob-Delegator](#storage-blob-delegator) | Abrufen eines Benutzerdelegierungsschlüssels, mit dem dann eine SAS (Shared Access Signature) für einen Container oder Blob erstellt werden kann, die mit Azure AD-Anmeldeinformationen signiert ist. Weitere Informationen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [Speicherdateidaten-SMB-Freigabemitwirkender](#storage-file-data-smb-share-contributor) | Ermöglicht den Lese-, Schreib- und Löschzugriff in Azure Storage-Dateifreigaben über SMB. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten](#storage-file-data-smb-share-elevated-contributor) | Ermöglicht den Lese-, Schreib-, Lösch- und Änderungszugriff auf NTFS-Berechtigungen in Azure Storage-Dateifreigaben über SMB. | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [Speicherdateidaten-SMB-Freigabeleser](#storage-file-data-smb-share-reader) | Ermöglicht den Lesezugriff auf Azure-Dateifreigaben über SMB. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [Speicherdateidaten-SMB-Freigabemitwirkender](#storage-file-data-smb-share-contributor) | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. Für diese Rolle gibt es keine integrierte Entsprechung auf Windows-Dateiservern. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten](#storage-file-data-smb-share-elevated-contributor) | Ermöglicht das Lesen, Schreiben, Löschen und Bearbeiten von Zugriffssteuerungslisten für Dateien/Verzeichnisse in Azure-Dateifreigaben. Diese Rolle entspricht einer Dateifreigabe-ACL für das Bearbeiten auf Windows-Dateiservern. | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [Speicherdateidaten-SMB-Freigabeleser](#storage-file-data-smb-share-reader) | Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. Diese Rolle entspricht einer Dateifreigabe-ACL für das Lesen auf Windows-Dateiservern. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Mitwirkender an Storage-Warteschlangendaten](#storage-queue-data-contributor) | Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Verarbeiter von Speicherwarteschlangen-Datennachrichten](#storage-queue-data-message-processor) | Einsehen, Abrufen und Löschen einer Nachricht aus einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [Absender der Speicherwarteschlangen-Datennachricht](#storage-queue-data-message-sender) | Hinzufügen von Nachrichten zu einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -2915,7 +2915,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht den Lese-, Schreib- und Löschzugriff in Azure Storage-Dateifreigaben über SMB. |
+> | **Beschreibung** | Ermöglicht den Lese-, Schreib- und Löschzugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. Für diese Rolle gibt es keine integrierte Entsprechung auf Windows-Dateiservern. |
 > | **Id** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **Aktionen** |  |
 > | *keine* |  |
@@ -2932,7 +2932,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht den Lese-, Schreib-, Lösch- und Änderungszugriff auf NTFS-Berechtigungen in Azure Storage-Dateifreigaben über SMB. |
+> | **Beschreibung** | Ermöglicht das Lesen, Schreiben, Löschen und Bearbeiten von Zugriffssteuerungslisten für Dateien/Verzeichnisse in Azure-Dateifreigaben. Diese Rolle entspricht einer Dateifreigabe-ACL für das Bearbeiten auf Windows-Dateiservern. |
 > | **Id** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **Aktionen** |  |
 > | *keine* |  |
@@ -2950,7 +2950,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht den Lesezugriff auf Azure-Dateifreigaben über SMB. |
+> | **Beschreibung** | Ermöglicht den Lesezugriff auf Dateien/Verzeichnisse in Azure-Dateifreigaben. Diese Rolle entspricht einer Dateifreigabe-ACL für das Lesen auf Windows-Dateiservern. |
 > | **Id** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **Aktionen** |  |
 > | *keine* |  |

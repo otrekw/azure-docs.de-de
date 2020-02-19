@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292331"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064698"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -16,6 +16,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Azure Migrate-Appliance be
 
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate.
 - [Fragen](common-questions-discovery-assessment.md) zur Ermittlung, Bewertung und Abhängigkeitsvisualisierung.
+- [Fragen](common-questions-server-migration.md) zur Servermigration.
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Was ist die Azure Migrate-Appliance?

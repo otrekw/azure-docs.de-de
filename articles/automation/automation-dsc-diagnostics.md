@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bbc9048452c5361306dd05e712090543bb1066ce
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850345"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111532"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
 
@@ -74,9 +74,9 @@ Set-AzDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Workspa
 
 ## <a name="view-the-state-configuration-logs"></a>Anzeigen der DSC-Protokolle
 
-Nachdem Sie die Integration in Azure Monitor-Protokolle für Ihre Automation State Configuration-Daten eingerichtet haben, wird in Ihrem Automation-Konto auf dem Blatt **DSC-Knoten** die Schaltfläche **Protokollsuche** angezeigt. Klicken Sie auf die Schaltfläche **Protokollsuche**, um die Protokolle für DSC-Knotendaten anzuzeigen.
+Nachdem Sie die Integration mit Azure Monitor-Protokollen für Ihre Automation-State Configuration-Daten eingerichtet haben, können Sie diese anzeigen, indem Sie im linken Bereich der State Configuration-Seite (DSC) im Abschnitt **Überwachung** die Option **Protokolle** auswählen.  
 
-![Schaltfläche „Protokollsuche“](media/automation-dsc-diagnostics/log-search-button.png)
+![Protokolle](media/automation-dsc-diagnostics/automation-dsc-logs-toc-item.png)
 
 Das Blatt **Protokollsuche** wird geöffnet. Dort wird ein Vorgang **DscNodeStatusData** für jeden DSC-Knoten und ein Vorgang **DscResourceStatusData** für jede [DSC-Ressource](/powershell/scripting/dsc/resources/resources) angezeigt, die in der Knotenkonfiguration aufgerufen wird.
 
@@ -84,11 +84,14 @@ Der Vorgang **DscResourceStatusData** enthält Fehlerinformationen für fehlerha
 
 Klicken Sie auf jeden Vorgang in der Liste, um die Daten für diesen Vorgang anzuzeigen.
 
-Sie können die Protokolle auch anzeigen, indem Sie in Azure Monitor-Protokolle eine Suche durchführen.
-Weitere Informationen finden Sie unter [Suchen von Daten mithilfe der Protokollsuche](../log-analytics/log-analytics-log-searches.md).
-Geben Sie die folgende Abfrage ein, um die DSC-Protokolle zu suchen: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
+Sie können die Protokolle auch anzeigen, indem Sie in Azure Monitor-Protokolle eine Suche durchführen. Weitere Informationen finden Sie unter [Suchen von Daten mithilfe der Protokollsuche](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview). Geben Sie die folgende Abfrage ein, um die State Configuration-Protokolle zu suchen.
 
-Sie können die Abfrage auch anhand des Vorgangsnamens eingrenzen. Beispiel: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
+```
+AzureDiagnostics
+| where Category == 'DscNodeStatus' 
+| where OperationName contains 'DSCNodeStatusData'
+| where ResultType != 'Compliant'
+```
 
 ### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Senden einer E-Mail bei einer fehlgeschlagenen DSC-Konformitätsprüfung
 
@@ -129,12 +132,12 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
-| OperationName |DscNodeStatusData |
+| Vorgangsname |DscNodeStatusData |
 | ResultType |Gibt an, ob der Knoten konform ist |
 | NodeName_s |Der Name des verwalteten Knotens. |
 | NodeComplianceStatus_s |Gibt an, ob der Knoten konform ist |
 | DscReportStatus |Gibt an, ob die Konformitätsüberprüfung erfolgreich ausgeführt wurde |
-| ConfigurationMode | Gibt an, wie die Konfiguration auf den Knoten angewendet wird. Mögliche Werte sind __ApplyOnly__, __ApplyandMonitior__ und __ApplyandAutoCorrect__. <ul><li>__ApplyOnly__: DSC wendet die Konfiguration an und führt nur dann weitere Schritte durch, wenn eine neue Konfiguration per Push an den Zielknoten übertragen oder eine neue Konfiguration von einem Server abgerufen wird. Nach der ersten Anwendung einer neuen Konfiguration führt DSC keine Überprüfung auf Abweichungen von einem zuvor konfigurierten Zustand durch. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyOnly__ in Kraft tritt. </li><li> __ApplyAndMonitor__: Dies ist der Standardwert. Der LCM wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyAndMonitor__ in Kraft tritt.</li><li>__ApplyAndAutoCorrect__: DSC wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht, und wendet dann die aktuelle Konfiguration erneut an.</li></ul> |
+| ConfigurationMode | Gibt an, wie die Konfiguration auf den Knoten angewendet wird. Mögliche Werte sind __ApplyOnly__, __ApplyandMonitior__ und __ApplyandAutoCorrect__. <ul><li>__ApplyOnly__: DSC wendet die Konfiguration an und führt nur dann weitere Schritte durch, wenn eine neue Konfiguration per Push an den Zielknoten übertragen oder eine neue Konfiguration von einem Server abgerufen wird. Nach der ersten Anwendung einer neuen Konfiguration führt DSC keine Überprüfung auf Abweichungen von einem zuvor konfigurierten Zustand durch. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyOnly__ in Kraft tritt. </li><li> __ApplyAndMonitor__: Dies ist der Standardwert. Der LCM wendet alle neuen Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht. DSC versucht, die Konfiguration anzuwenden, bis der Vorgang erfolgreich abgeschlossen wurde und bevor __ApplyAndMonitor__ in Kraft tritt.</li><li>__ApplyAndAutoCorrect:__ DSC wendet neue Konfigurationen an. Nach der ersten Anwendung einer neuen Konfiguration meldet DSC Abweichungen in Protokollen, wenn der Zielknoten vom gewünschten Zustand abweicht, und wendet dann die aktuelle Konfiguration erneut an.</li></ul> |
 | HostName_s | Der Name des verwalteten Knotens. |
 | IPAddress | Die IPv4-Adresse des verwalteten Knotens. |
 | Category | DscNodeStatus |
@@ -147,7 +150,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | ReportEndTime_t |Datum und Uhrzeit des Berichtsabschlusses. |
 | NumberOfResources_d |Die Anzahl der DSC-Ressourcen, die bei der Anwendung der Konfiguration auf den Knoten abgerufen wurden. |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
-| ResourceId |Gibt das Azure Automation-Konto an. |
+| resourceId |Gibt das Azure Automation-Konto an. |
 | ResultDescription | Die Beschreibung für diesen Vorgang. |
 | SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
 | ResourceGroup | Name der Ressourcengruppe für das Automation-Konto. |
@@ -160,7 +163,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
-| OperationName |DscResourceStatusData|
+| Vorgangsname |DscResourceStatusData|
 | ResultType |Gibt an, ob die Ressource konform ist. |
 | NodeName_s |Der Name des verwalteten Knotens. |
 | Category | DscNodeStatus |
@@ -178,7 +181,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | ErrorMessage_s |Die Fehlermeldung, wenn die Ressource fehlerhaft ist. |
 | DscResourceDuration_d |Die Zeit in Sekunden, für die die DSC-Ressource ausgeführt wurde. |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
-| ResourceId |Gibt das Azure Automation-Konto an. |
+| resourceId |Gibt das Azure Automation-Konto an. |
 | ResultDescription | Die Beschreibung für diesen Vorgang. |
 | SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
 | ResourceGroup | Name der Ressourcengruppe für das Automation-Konto. |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293588"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168158"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -75,7 +75,7 @@ ms.locfileid: "76293588"
 - `FromHost()`-API hinzugefügt, um die Verwendung mit lokalen Containern und Sovereign Clouds zu vereinfachen
 - Automatische Erkennung der Ausgangssprache für die Spracherkennung hinzugefügt (in Java und C++)
 - `SourceLanguageConfig`-Objekt zur Angabe erwarteter Ausgangssprachen für die Spracherkennung hinzugefügt (in Java und C++)
-- `KeywordRecognizer`-Unterstützung unter Windows (UWP), Android und iOS über die Nuget- und Unity-Pakete hinzugefügt
+- `KeywordRecognizer`-Unterstützung unter Windows (UWP), Android und iOS über die NuGet- und Unity-Pakete hinzugefügt
 - Java-Remoteunterhaltungs-API für die Unterhaltungstranskription in asynchronen Batches hinzugefügt
 
 **Wichtige Änderungen**

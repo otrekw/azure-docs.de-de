@@ -1,69 +1,68 @@
 ---
 title: UWP-Überlegungen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie mehr über bestimmte Überlegungen zur Verwendung der Universellen Windows-Plattform mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
+description: Erfahren Sie mehr über Überlegungen zur Verwendung der Universellen Windows-Plattform (UWP) mit der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/16/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2eeec28569cf31af4542d6cd7aca1fb27d77b1e0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695091"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132526"
 ---
-# <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Spezifische Überlegungen zur Universellen Windows-Plattform mit MSAL.NET
-Unter UWP gibt es verschiedene Überlegungen, die Sie bei Verwendung von MSAL.NET berücksichtigen müssen.
+# <a name="considerations-for-using-universal-windows-platform-with-msalnet"></a>Überlegungen zur Verwendung der Universellen Windows-Plattform mit MSAL.NET
+Entwickler von Anwendungen, die die UWP (Universelle Windows-Plattform) mit MSAL.NET verwenden, sollten sich mit den Konzepten befassen, die in diesem Artikel vorgestellt werden.
 
 ## <a name="the-usecorporatenetwork-property"></a>UseCorporateNetwork-Eigenschaft
-In der WinRT-Plattform hat `PublicClientApplication` die folgende boolesche Eigenschaft ``UseCorporateNetwork``. Durch diese Eigenschaft profitieren Win8.1- und UWP-Anwendungen von der integrierten Windows-Authentifizierung (und daher vom einmaligen Anmelden des im Betriebssystem angemeldeten Benutzers), falls dieser mit einem Konto in einem verbundenen Azure AD-Mandanten angemeldet ist. Wenn Sie diese Eigenschaft festlegen, nutzt MSAL.NET WAB (Web Authentication Broker).
+Auf der WinRT-Plattform (Windows Runtime) hat `PublicClientApplication` die boolesche Eigenschaft `UseCorporateNetwork`. Diese Eigenschaft ermöglicht es Windows 8.1-Anwendungen und UWP-Anwendungen, von der integrierten Windows-Authentifizierung (IWA) zu profitieren, wenn der Benutzer bei einem Konto angemeldet ist, das über einen Azure Active Directory-Verbundmandanten (Azure AD) verfügt. Benutzer, die beim Betriebssystem angemeldet sind, können auch Einmaliges Anmelden (SSO) verwenden. Wenn Sie die `UseCorporateNetwork`-Eigenschaft festlegen, verwendet MSAL.NET einen Webauthentifizierungsbroker (WAB).
 
 > [!IMPORTANT]
-> Wenn diese Eigenschaft auf TRUE festgelegt ist, wird davon ausgegangen, dass der Anwendungsentwickler die integrierte Windows-Authentifizierung (IWA) in der Anwendung aktiviert hat. Hier:
-> - Aktivieren Sie in ``Package.appxmanifest`` für Ihre UWP-Anwendung auf der Registerkarte **Funktionen** die folgenden Funktionen:
->   - Unternehmensauthentifizierung
->   - Private Netzwerke (Client und Server)
->   - Freigegebenes Benutzerzertifikat
+> Wenn die `UseCorporateNetwork`-Eigenschaft auf „true“ festgelegt ist, wird davon ausgegangen, dass der Anwendungsentwickler IWA in der Anwendung aktiviert hat. So aktivieren Sie IWA:
+> - Aktivieren Sie im `Package.appxmanifest` für Ihre UWP-Anwendung auf der Registerkarte **Funktionen** die folgenden Funktionen:
+>   - **Unternehmensauthentifizierung**
+>   - **Private Netzwerke (Client und Server)**
+>   - **Freigegebenes Benutzerzertifikat**
 
-Die integrierte Windows-Authentifizierung ist standardmäßig nicht aktiviert, da für Anwendungen, welche die Funktion „Unternehmensauthentifizierung“ oder „Freigegebene Benutzerzertifikate“ anfordern, eine höhere Überprüfungsebene erforderlich ist, um im Windows Store akzeptiert zu werden, und gegebenenfalls nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten.
+IWA ist standardmäßig nicht aktiviert, da Microsoft Store ein hohes Maß an Überprüfung erfordert, bevor Anwendungen akzeptiert werden, die auf Funktionen der Unternehmensauthentifizierung oder freigegebene Benutzerzertifikate zugreifen. Nicht alle Entwickler möchten dieses Maß an Überprüfung durchführen.
 
-Die zugrunde liegende Implementierung auf die Universelle Windows-Plattform (WAB) funktioniert nicht ordnungsgemäß in Enterprise-Szenarios, für die der bedingte Zugriff aktiviert wurde. Das Symptom ist, dass der Benutzer versucht, sich mit Windows Hello anzumelden, und es wird vorgeschlagen, ein Zertifikat auszuwählen, aber:
+Auf der UWP-Plattform funktioniert die zugrunde liegende WAB-Implementierung in Unternehmensszenarien, für die bedingter Zugriff aktiviert ist, nicht ordnungsgemäß. Benutzer können Symptome dieses Problems bemerken, wenn sie versuchen, sich mithilfe von Windows Hello anzumelden. Wenn der Benutzer aufgefordert wird, ein Zertifikat auszuwählen:
 
-- das Zertifikat für die PIN wurde nicht gefunden,
-- oder der Benutzer wählt sie aus, wird jedoch nie zur Eingabe der PIN aufgefordert.
+- Das Zertifikat für die PIN wurde nicht gefunden.
+- Nachdem der Benutzer ein Zertifikat ausgewählt hat, wird er nicht zur Eingabe der PIN aufgefordert.
 
-Eine Möglichkeit zur Umgehung dieses Problems besteht darin, eine alternative Methode zu verwenden (Benutzername/Kennwort + Telefonauthentifizierung), jedoch hat sich diese Vorgehensweise nicht bewährt.
+Sie können versuchen, dieses Problem zu vermeiden, indem Sie eine alternative Methode wie Benutzername/Kennwort- und Telefonauthentifizierung verwenden, aber das Benutzererlebnis ist nicht gut.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Einige Kunden haben berichtet, dass in einigen bestimmten Unternehmensumgebungen der folgende Anmeldefehler aufgetreten ist:
+Einige Kunden haben in bestimmten Unternehmensumgebungen, von denen sie wissen, dass eine Internetverbindung besteht und dass die Verbindung mit einem öffentlichen Netzwerk funktioniert, von folgendem Anmeldefehler berichtet.
 
 ```Text
-We can't connect to the service you need right now. Check your network connection or try this again later
+We can't connect to the service you need right now. Check your network connection or try this again later.
 ```
 
-während sie wissen, dass sie über eine Internetverbindung verfügen, und dies mit einem öffentlichen Netzwerk funktioniert.
-
-Eine Problemumgehung ist, sicherzustellen, dass WAB (die zugrunde liegende Windows-Komponente) privates Netzwerk zulässt. Dies können Sie erreichen, indem Sie einen Registrierungsschlüssel festlegen:
+Sie können dieses Problem vermeiden, indem Sie sicherstellen, dass WAB (die zugrunde liegende Windows-Komponente) ein privates Netzwerk zulässt. Dies können Sie erreichen, indem Sie einen Registrierungsschlüssel festlegen:
 
 ```Text
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\authhost.exe\EnablePrivateNetwork = 00000001
 ```
 
-Weitere Informationen finden Sie unter [Webauthentifizierungsbroker – Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
+Weitere Informationen finden Sie unter [Webauthentifizierungsbroker: Fiddler](https://docs.microsoft.com/windows/uwp/security/web-authentication-broker#fiddler).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie in den folgenden Beispielen:
+Die folgenden Beispiele enthalten weitere Informationen.
 
 Beispiel | Plattform | Beschreibung 
 |------ | -------- | -----------|
-|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Eine msal.net verwendende Clientanwendung der Universellen Windows-Plattform für den Zugriff auf Microsoft Graph für eine Benutzerauthentifizierung mit dem Azure AD v2.0-Endpunkt <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
-|[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Eine einfache Xamarin Forms-App, mit der die Verwendung von MSAL zum Authentifizieren von MSA und Azure AD über den AAD v2.0-Endpunkt und der Zugriff auf Microsoft Graph mit dem sich daraus ergebenden Token veranschaulicht wird <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|
+|[active-directory-dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) | UWP | Eine UWP-Clientanwendung, die MSAL.NET verwendet. Sie greift für einen Benutzer, der sich über einen Azure AD 2.0-Endpunkt authentifiziert, auf Microsoft Graph zu. <br>![Topologie](media/msal-net-uwp-considerations/topology-native-uwp.png)|
+|[active-directory-xamarin-native-v2](https://github.com/Azure-Samples/active-directory-xamarin-native-v2) | Xamarin iOS, Android, UWP | Eine einfache Xamarin Forms-App, die die Verwendung von MSAL zeigt, um persönliche Microsoft-Konten und Azure AD über den Azure AD 2.0-Endpunkt zu authentifizieren. Ferner wird der Zugriff auf Microsoft Graph und das resultierende Token gezeigt. <br>![Topologie](media/msal-net-uwp-considerations/topology-xamarin-native.png)|

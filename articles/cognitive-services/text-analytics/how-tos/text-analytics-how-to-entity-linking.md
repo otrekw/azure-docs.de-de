@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774136"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137968"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -44,7 +44,35 @@ Der Textanalyse-API bietet zwei Versionen der Erkennung benannter Entitäten –
 
 Weitere Informationen finden Sie unter [Sprachunterstützung](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition).
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
+
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
+
+### <a name="entity-types"></a>Entitätstypen
+
+Named Entity Recognition v3 bietet erweiterte Erkennung über mehrere Typen hinweg. Aktuell kann NER v3 die folgenden Kategorien von Entitäten erkennen:
+
+* Allgemein
+* Personenbezogene Informationen 
+
+Eine ausführliche Liste der unterstützten Entitäten und Sprachen finden Sie im Artikel [Unterstützte Entitätstypen für NER v3 ](../named-entity-types.md).
+
+### <a name="request-endpoints"></a>Anforderungsendpunkte
+
+Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen und Entitätsverknüpfungsanforderungen. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
+
+NER
+* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
+
+* Personenbezogene Informationen – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+
+Entitätsverknüpfung
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+### <a name="model-versioning"></a>Versionsverwaltung der Modelle
+
+[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
 
 ### <a name="entity-types"></a>Entitätstypen
 
@@ -83,33 +111,6 @@ Die Named Entity Recognition v2 verwendet separate Endpunkte für NER-Anforderun
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
-
-### <a name="entity-types"></a>Entitätstypen
-
-Named Entity Recognition v3 bietet erweiterte Erkennung über mehrere Typen hinweg. Aktuell kann NER v3 die folgenden Kategorien von Entitäten erkennen:
-
-* Allgemein
-* Personenbezogene Informationen 
-
-Eine ausführliche Liste der unterstützten Entitäten und Sprachen finden Sie im Artikel [Unterstützte Entitätstypen für NER v3 ](../named-entity-types.md).
-
-### <a name="request-endpoints"></a>Anforderungsendpunkte
-
-Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen und Entitätsverknüpfungsanforderungen. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
-
-NER
-* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
-
-* Personenbezogene Informationen – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
-
-Entitätsverknüpfung
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
-
-### <a name="model-versioning"></a>Versionsverwaltung der Modelle
-
-[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
-
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung
@@ -124,17 +125,10 @@ Jedes Dokument darf jeweils maximal 5.120 Zeichen groß sein, und pro Sammlung s
 
 Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Links [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-[Verweis für Named Entity Recognition (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-Version 2 verwendet den folgenden Endpunkt für die Entitätsverknüpfungs- und NER-Anforderungen: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[Version 3](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 [Verweis für Named Entity Recognition (NER) v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 Entitätsverknüpfung
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+[Verweis für Named Entity Recognition (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Version 2 verwendet den folgenden Endpunkt für die Entitätsverknüpfungs- und NER-Anforderungen: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkann
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können.
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Beispiel für eine Antwort von NER v2
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-Preview](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Beispiel für eine Antwort von Version 3
 
@@ -271,6 +237,43 @@ Version 3 bietet separate Endpunkte für NER und Entitätsverknüpfung. Die Antw
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Beispiel für eine Antwort von NER v2
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

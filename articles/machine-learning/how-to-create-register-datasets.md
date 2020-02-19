@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260853"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116716"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -172,12 +172,14 @@ So erstellen Sie ein Dataset im Studio
 1. Wählen Sie **Datasets** im Abschnitt **Assets** im linken Bereich aus. 
 1. Wählen Sie **Dataset erstellen** aus, um die Quelle Ihres Datasets auszuwählen. Bei dieser Quelle kann es sich um lokale Dateien, um einen Datenspeicher oder um öffentliche URLs handeln.
 1. Wählen Sie **Tabellarisch** oder **Datei** als Datasettyp aus.
-1. Wählen Sie **Weiter** aus, um die Formulare **Einstellungen und Vorschau**, **Schema** und **Details bestätigen** zu überprüfen. Diese werden ausgehend vom Dateityp intelligent ausgefüllt. Verwenden Sie diese Formulare, um Ihre ausgewählten Optionen zu überprüfen und das Dataset vor der Erstellung weiter zu konfigurieren.  
+1. Wählen Sie **Weiter** aus, um das Formular **Datenspeicher- und Dateiauswahl** zu öffnen. In diesem Formular wählen Sie aus, wo das Dataset nach dem Erstellen aufbewahrt werden soll, sowie welche Datendateien für Ihr Dataset verwendet werden sollen. 
+1. Wählen Sie **Weiter** aus, um die Formulare **Einstellungen und Vorschau** und **Schema** auszufüllen. Sie werden basierend auf dem Dateityp auf intelligente Weise aufgefüllt, und Sie können das Dataset in diesen Formularen vor der Erstellung weiter konfigurieren. 
+1. Wählen Sie **Weiter** aus, um das Formular **Details bestätigen** zu überprüfen. Überprüfen Sie Ihre Auswahl, und erstellen Sie ein optionales Datenprofil für das Dataset. Weitere Informationen zur [Datenprofilerstellung](how-to-create-portal-experiments.md#profile). 
 1. Wählen Sie **Erstellen** aus, um die Erstellung des Datasets abzuschließen.
 
 ## <a name="register-datasets"></a>Registrieren von Datasets
 
-Registrieren Sie Ihre Datasets bei einem Arbeitsbereich, um den Erstellungsprozess abzuschließen. Verwenden Sie die Methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--visible-true--exist-ok-false--update-if-exist-false-), um Datasets bei Ihrem Arbeitsbereich zu registrieren, damit sie für andere freigegeben und für unterschiedliche Experimente wiederverwendet werden können:
+Registrieren Sie Ihre Datasets bei einem Arbeitsbereich, um den Erstellungsprozess abzuschließen. Verwenden Sie die Methode [`register()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#register-workspace--name--description-none--tags-none--create-new-version-false-), um Datasets bei Ihrem Arbeitsbereich zu registrieren, damit sie für andere freigegeben und für unterschiedliche Experimente wiederverwendet werden können:
 
 ```Python
 titanic_ds = titanic_ds.register(workspace=workspace,

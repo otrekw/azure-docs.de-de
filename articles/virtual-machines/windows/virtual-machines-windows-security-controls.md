@@ -9,12 +9,12 @@ manager: barbkess
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0e35efc0da929136a889b1611a48a60671ed2af8
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: f105eac0f6f21ea3358340a4e2aaec7d1f1a95ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828334"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190560"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Sicherheitskontrollen für virtuelle Windows-Computer
 
@@ -43,10 +43,10 @@ In diesem Artikel sind die Sicherheitskontrollen dokumentiert, die in virtuellen
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| Ja |  |
+| Authentifizierung| Ja |  |
 | Authorization| Ja |  |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
@@ -54,7 +54,7 @@ In diesem Artikel sind die Sicherheitskontrollen dokumentiert, die in virtuellen
 | Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, Verschlüsselung im VNET und VNET-zu-VNET-Verschlüsselung)| Ja | Azure Virtual Machines unterstützt [ExpressRoute](/azure/expressroute)- und VNET-Verschlüsselung. Siehe [Verschlüsselung während der Übertragung zwischen virtuellen Computern](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Ja | Von Kunden verwaltete Schlüssel werden bei der Azure-Verschlüsselung unterstützt; siehe [Übersicht über die Azure-Verschlüsselung](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| – | |
-| Verschlüsselte API-Aufrufe| Ja | Per HTTPS und SSL |
+| Verschlüsselte API-Aufrufe| Ja | Per HTTPS und TLS |
 
 
 

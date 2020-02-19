@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42d315b44a76e79d6f1db48e5024094099564a98
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d7f27ad2adc5d4abf2b5ec993b3398ebf1370f52
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700480"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159674"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der implizit gewährte Datenfluss
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Mit dem Microsoft Identity Platform-Endpunkt können Sie Benutzer sowohl mit persönlichen Konten als auch mit Geschäfts-, Schul- oder Unikonten von Microsoft bei Single-Page-Apps anmelden. Bei Single-Page-Apps und anderen JavaScript-Apps, die hauptsächlich im Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige interessante Herausforderungen:
 
@@ -42,6 +40,35 @@ Wenn Sie jedoch in Ihrer Single-Page-App keine Bibliothek verwenden und Protokol
 
 > [!NOTE]
 > Es werden nicht alle Azure Active Directory-Szenarien und -Features (Azure AD) vom Microsoft Identity Platform-Endpunkt unterstützt. Informieren Sie sich über die [Einschränkungen der Microsoft Identity Platform](active-directory-v2-limitations.md), um zu ermitteln, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
+
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Geeignete Szenarien für die implizite OAuth2-Gewährung
+
+Gemäß Deklaration der OAuth2-Spezifikation wurde die implizite Gewährung entwickelt, um die Verwendung von Benutzer-Agent-Anwendungen (JavaScript-Anwendungen, die in einem Browser ausgeführt werden) zu ermöglichen. Solche Anwendungen zeichnen sich insbesondere dadurch aus, dass für den Zugriff auf Serverressourcen (üblicherweise eine Web-API) und für die entsprechende Aktualisierung der Benutzeroberfläche der Anwendung JavaScript-Code verwendet wird. Denken Sie dabei z.B. an Anwendungen wie Gmail oder Outlook Web Access: Wenn Sie eine Nachricht aus Ihrem Posteingang auswählen, ändert sich nur der Bereich, in dem die Nachricht dargestellt wird, während der Rest der Seite unverändert bleibt. Im Gegensatz dazu führt bei konventionellen, auf Umleitungen basierenden Web-Apps jede Benutzerinteraktion zu einem ganzseitigen Postback sowie zum ganzseitigen Rendern der neuen Serverantwort.
+
+Extrembeispiele für Anwendungen mit der JavaScript-basierten Methode sind die sogenannten Single-Page-Webanwendungen (Single-Page Applications, SPAs). Diese Anwendungen sind nur für die Versorgung einer HTML-Startseite und des dazugehörigen JavaScript-Codes konzipiert. Alle nachfolgenden Interaktionen werden mithilfe von Web-API-Aufrufen über JavaScript ausgeführt. Hybride Methoden, bei denen Anwendungen größtenteils Postback-orientiert sind, aber auch einzelne JS-Aufrufe ausführen, sind allerdings nichts Ungewöhnliches, und die Informationen zur Verwendung impliziter Abläufe sind auch für diese Methoden relevant.
+
+Auf Umleitungen basierende Anwendungen schützen ihre Anforderungen in der Regel mithilfe von Cookies. Bei JavaScript-Anwendungen funktioniert diese Methode jedoch nicht so gut. Cookies können nur für die Domäne verwendet werden, für die sie erstellt wurden. JavaScript-Aufrufe können dagegen an andere Domänen weitergeleitet werden. Das kommt in der Praxis auch recht häufig vor – etwa bei Anwendungen, die die Microsoft Graph-API, Office-API oder Azure-API aufrufen: Diese befinden sich alle außerhalb der Domäne, von der aus die Anwendung bereitgestellt wird. Bei JavaScript-Anwendungen geht der Trend zunehmend dahin, dass kein Back-End vorhanden ist und sie zur Implementierung der Geschäftsfunktion zu 100 % auf Web-APIs basieren.
+
+Aktuell wird zum Schutz von Web-API-Aufrufen die Verwendung der OAuth2-Bearertoken-Methode empfohlen. Bei dieser Methode wird jeder Aufruf von einem OAuth2-Zugriffstoken begleitet. Die Web-API untersucht das eingehende Zugriffstoken und gewährt dem angeforderten Vorgang Zugriff, wenn das Token in den erforderlichen Bereichen gefunden wurde. Der implizite Ablauf ist eine praktische Methode, mit der JavaScript-Anwendungen Zugriffstoken für eine Web-API beziehen können. Gegenüber Cookies bietet er diverse Vorteile:
+
+* Token können zuverlässig abgerufen werden, ohne dass ursprungsübergreifende Aufrufe erforderlich sind. Die obligatorische Registrierung des Umleitungs-URI, an den Token zurückgegeben werden, stellt sicher, dass Token nicht verschoben werden.
+* JavaScript-Anwendungen können beliebig viele Zugriffstoken für beliebig viele Web-APIs beziehen. Hierbei gelten keine Domänenbeschränkungen.
+* HTML5-Features wie Sitzungen oder lokale Speicher ermöglichen es, das Zwischenspeichern von Token und die Lebensdauerverwalltung vollständig zu steuern, wobei die Verwaltung von Cookies für die App nicht transparent ist.
+* Zugriffstoken sind für websiteübergreifende Anforderungsfälschungen (CSRF) nicht anfällig.
+
+Bei der impliziten Gewährung werden insbesondere aus Sicherheitsgründen keine Aktualisierungstoken ausgegeben. Ein Aktualisierungstoken hat einen breiteren Umfang als Zugriffstoken und gewährt mehr Rechte, weshalb der Schaden bei Verlust auch größer sein kann. Beim impliziten Ablauf werden Token in der URL übermittelt, weshalb die Gefahr eines Abfangens höher ist als bei der Gewährung über einen Autorisierungscode.
+
+JavaScript-Anwendungen verfügen jedoch über andere Möglichkeiten, um Zugriffstoken zu erneuern, bei denen der Benutzer nicht wiederholt zur Eingabe der Anmeldeinformationen aufgefordert wird. Zum Ausführen neuer Tokenanforderungen in Bezug auf den Autorisierungsendpunkt von Azure AD kann die Anwendung ein ausgeblendetes iFrame verwenden: Wenn der Browser über eine aktive Sitzung mit der Azure AD-Domäne (d.h. über ein Sitzungscookie) verfügt, kann die Authentifizierungsanforderung ausgeführt werden, ohne dass eine Benutzerinteraktion erforderlich ist.
+
+Bei diesem Modell kann die JavaScript-Anwendung Zugriffstoken unabhängig erneuern und sogar neue Token für eine neue API beziehen (sofern der Benutzer dem vorher zugestimmt hat). Dadurch entfällt das zusätzliche Beziehen, Verwalten und Schützen eines hochwertigen Artefakts (etwa ein Aktualisierungstoken). Das Artefakt, das die Verlängerung im Hintergrund ermöglicht (das Azure AD-Sitzungscookie), wird außerhalb der Anwendung verwaltet. Ein weiterer Vorteil dieser Methode: Ein Benutzer kann sich über eine beliebige, bei Azure AD angemeldete Anwendung, die auf einer beliebigen Browserregisterkarte ausgeführt wird, von Azure AD abmelden. Daraufhin wird das Azure AD-Sitzungscookie gelöscht, sodass die JavaScript-Anwendung für den abgemeldeten Benutzer keine Token mehr erneuern kann.
+
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Eignet sich die implizite Gewährung für meine App?
+
+Die implizite Genehmigung stellt ein höheres Risiko dar als andere Genehmigungen, die besonders zu beachtenden Bereiche sind jedoch gut dokumentiert (z. B. [Missbräuchliches Verwenden von Zugriffstoken zum Annehmen der Identität des Ressourcenbesitzers im impliziten Flow][OAuth2-Spec-Implicit-Misuse] und [Überlegungen zum OAuth 2.0-Bedrohungsmodell und zur Sicherheit][OAuth2-Threat-Model-And-Security-Implications]). Das höhere Risiko liegt größtenteils darin begründet, dass Anwendungen aktiviert werden, die aktiven Code ausführen, der von einer Remoteressource direkt für einen Browser bereitgestellt wird. Wenn Sie eine SPA-Architektur planen, über keine Back-End-Komponenten verfügen oder eine Web-API über JavaScript aufrufen möchten, empfiehlt sich die Verwendung des impliziten Ablaufs für den Tokenabruf.
+
+Falls es sich bei Ihrer Anwendung dagegen um einen nativen Client handelt, ist der implizite Ablauf weniger empfehlenswert. Da bei nativen Clients keine Azure AD-Sitzungscookies vorhanden sind, hat Ihre Anwendung keine Möglichkeit, eine Sitzung mit langer Laufzeit aufrechtzuerhalten. Das bedeutet, dass Ihre Anwendung beim Abrufen von Zugriffstoken für neue Ressourcen immer wieder Eingabeaufforderung an den Benutzer richtet.
+
+Auch wenn Sie eine Webanwendung mit einem Back-End entwickeln, die eine API über den Back-End-Code nutzen soll, ist der implizite Ablauf nicht die beste Wahl. Bei anderen Methoden haben Sie deutlich mehr Steuerungsmöglichkeiten. Bei der OAuth2-Gewährung mit Clientanmeldeinformationen haben Sie beispielsweise die Möglichkeit, Token zu beziehen, die die Berechtigungen für die Anwendung widerspiegeln (im Gegensatz zu Benutzerdelegierungen). Das bedeutet unter anderem, dass der Client den programmgesteuerten Zugriff auf Ressourcen verwalten kann, auch wenn ein Benutzer nicht aktiv in eine Sitzung eingebunden ist. Darüber hinaus gewährleisten Gewährungen dieser Art eine höhere Sicherheit. So durchlaufen Zugriffstoken etwa niemals den Browser des Benutzers und können dadurch gar nicht erst im Browserverlauf gespeichert werden. Die Clientanwendung kann außerdem beim Anfordern eines Tokens eine strenge Authentifizierung durchführen.
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -73,7 +100,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > Klicken Sie zum Testen der Anmeldung mit dem impliziten Fluss auf <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a> Nach der Anmeldung sollte der Browser mit einem `id_token` in der Adressleiste zu `https://localhost/myapp/` umgeleitet werden.
 >
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
 | `client_id` | required | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -103,7 +130,7 @@ GET https://localhost/myapp/#
 &state=12345
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `access_token` |Ist enthalten, wenn `token` in `response_type` enthalten ist. Das von der App angeforderte Zugriffstoken. Das Zugriffstoken sollte nicht decodiert oder anderweitig untersucht werden, es sollte als nicht transparente Zeichenfolge behandelt werden. |
 | `token_type` |Ist enthalten, wenn `token` in `response_type` enthalten ist. Ist immer `Bearer`. |
@@ -171,7 +198,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fgraph.windows.net%2Fdirectory.read
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `access_token` |Ist enthalten, wenn `token` in `response_type` enthalten ist. Das von der Anwendung angeforderte Zugriffstoken, in diesem Fall für Microsoft Graph. Das Zugriffstoken sollte nicht decodiert oder anderweitig untersucht werden, es sollte als nicht transparente Zeichenfolge behandelt werden. |
 | `token_type` | Ist immer `Bearer`. |
@@ -209,7 +236,7 @@ Die OpenID Connect `end_session_endpoint` ermöglicht Ihrer App das Senden einer
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redirect_uri=https://localhost/myapp/
 ```
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` |required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints). |
 | `post_logout_redirect_uri` | empfohlen | Die URL, zu der der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Dieser Wert muss einem der Umleitung-URIs entsprechen, die für die Anwendung registriert sind. Wenn keine Angabe erfolgt, wird dem Benutzer vom Microsoft Identity Platform-Endpunkt eine allgemeine Meldung angezeigt. |

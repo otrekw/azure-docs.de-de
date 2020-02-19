@@ -9,25 +9,27 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 7f9bd55054fca6b45a25ef737a1a00872e536ca8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5782f07167f72be2ea7b148ad1b0a61d8cb710e2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75908942"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048897"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
-Hierbei handelt es sich um von der Community ausgehende Open-Source-Initiativen, die vom Azure Maps-Team erstellt und verwaltet werden, die aber nicht Teil des standardmäßigen Produkt- oder Dienstangebots sind. Im Folgenden finden Sie eine Liste einiger der bekannteren mit Azure Maps erstellten Open-Source-Projekte und -Beispiele.
+Diese von der Community ausgehenden Open-Source-Initiativen werden vom Azure Maps-Team erstellt und verwaltet. Sie sind nicht Teil des standardmäßigen Produkt- oder Dienstangebots.
 
-| Projektname | Beschreibung |
+Im Folgenden sind einige der beliebtesten Open-Source-Projekte und -Beispiele in Azure Maps aufgeführt.
+
+| Projektname | BESCHREIBUNG |
 |-|-|
 | [Azure Maps-Codebeispiele](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen von webbasierten Apps verwendet werden kann. |
 | [Azure Maps-Codebeispiele mit der Azure Government-Cloud](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Hier finden Sie eine Sammlung von Codebeispielen, wie Azure Maps im Rahmen der Azure Government-Cloud verwendet werden kann. |
 | [Beispiele für Azure Maps und Microsoft Azure Active Directory](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Hier finden Sie eine Sammlung von Beispielen für die Verwendung von Azure Active Directory mit Azure Maps. | 
 | [Implementieren der räumlichen IoT-Analyse mit Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. |
 | [Azure Maps-Beispiele für Jupyter Notebooks](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Hier finden Sie eine Sammlung von Python-Beispielen, für die die REST-Dienste von Azure Maps verwendet werden. |
-| [Bot-Framework – Fähigkeit „Point of Interest“](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Die Fähigkeit „Point of Interest“ (POI) stellt mithilfe von Azure Maps, Azure Bot Service und dem Bot-Framework POI-Funktionen für einen virtuellen Assistenten zur Verfügung. |
+| [Bot-Framework – Fähigkeit „Point of Interest“](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Die Qualifikation „Point of Interest“ (POI) stellt mithilfe von Azure Maps, Azure Bot Service und dem Bot-Framework POI-Funktionen für einen virtuellen Assistenten zur Verfügung. |
 
 [Hier](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) finden Sie noch mehr Beispiele für von der Community erstellte Open-Source-Projekte.
 

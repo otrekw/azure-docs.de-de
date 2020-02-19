@@ -5,14 +5,14 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 02/08/2020
 ms.author: helohr
-ms.openlocfilehash: 472b8800a09cb12bc3e703ef53d0aab2b578e0d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92e11edf3b28017ac73702e3f71dfc491d3986e3
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460217"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110629"
 ---
 # <a name="connect-with-the-ios-client"></a>Herstellen einer Verbindung mit dem iOS-Client
 
@@ -47,4 +47,4 @@ Sobald Sie einen Feed abonniert haben, wird der Inhalt des Feeds in regelmäßig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwenden des iOS-Betaclients finden Sie in der Dokumentation [Erste Schritte mit dem iOS-Client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios).
+Weitere Informationen zum Verwenden des iOS-Clients finden Sie in der Dokumentation [Erste Schritte mit dem iOS-Client](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-ios).

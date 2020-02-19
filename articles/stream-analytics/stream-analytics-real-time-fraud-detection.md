@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0273a0a729d39de27b9e417c23624992d1d55b42
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458795"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064389"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -55,26 +55,33 @@ Um einen Datenstrom zu analysieren, *erfassen* Sie diesen in Azure. Eine typisch
 ### <a name="create-a-namespace-and-event-hub"></a>Erstellen eines Namespace und eines Event Hubs
 In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen diesem Namespace dann einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
 
-1. Melden Sie sich beim Azure-Portal an, und klicken Sie auf **Ressource erstellen** > **Internet der Dinge** > **Event Hub**. 
+1. Melden Sie sich beim Azure-Portal an, und klicken Sie links oben auf **Ressource erstellen**.
 
-2. Geben Sie im Bereich **Namespace erstellen** einen Namen für den Namespace ein (z.B. `<yourname>-eh-ns-demo`). Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
+2. Wählen Sie im linken Menü **Alle Dienste** aus. Wählen Sie dann in der Kategorie **Analyse** neben **Event Hubs** den **Stern (`*`)** aus. Überprüfen Sie, ob **Event Hubs** im linken Navigationsmenü zu **FAVORITEN** hinzugefügt wurde. 
+
+   ![Suchen nach Event Hubs](./media/stream-analytics-real-time-fraud-detection/select-event-hubs-menu.png)
+
+3. Wählen Sie im linken Navigationsmenü unter **FAVORITEN** die Option **Event Hubs**. Wählen Sie anschließend auf der Symbolleiste die Option **Hinzufügen** aus.
+
+   ![Schaltfläche „Hinzufügen“](./media/stream-analytics-real-time-fraud-detection/event-hubs-add-toolbar.png)
+
+4. Geben Sie im Bereich **Namespace erstellen** einen Namen für den Namespace ein (z.B. `<yourname>-eh-ns-demo`). Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
     
-3. Wählen Sie ein Abonnement aus, und erstellen oder wählen Sie eine Ressourcengruppe. Klicken Sie dann auf **Erstellen**.
+5. Wählen Sie ein Abonnement aus, und erstellen oder wählen Sie eine Ressourcengruppe. Klicken Sie dann auf **Erstellen**.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
-4. Wenn die Bereitstellung des Namespace abgeschlossen ist, suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
+6. Wenn die Bereitstellung des Namespace abgeschlossen ist, suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
 
-5. Klicken Sie auf den neuen Namespace, und wählen Sie im Bereich „Namespace“ **Event Hub** aus.
+7. Klicken Sie auf den neuen Namespace, und wählen Sie im Bereich „Namespace“ **Event Hub** aus.
 
    ![Schaltfläche „Event Hub hinzufügen“ zum Erstellen eines neuen Event Hubs](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
-6. Vergeben Sie einen Namen für den neuen Event Hub `asa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
+8. Vergeben Sie einen Namen für den neuen Event Hub `asa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
- 
-7. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Erstellen**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Gewähren des Zugriffs auf den Event Hub und Abrufen einer Verbindungszeichenfolge
 

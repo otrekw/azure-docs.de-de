@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263138"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086551"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Schnellstart: Erstellen eines Azure Databricks-Arbeitsbereichs in Ihrem eigenen virtuellen Netzwerk
 
 Die Standardbereitstellung von Azure Databricks erstellt ein neues virtuelles Netzwerk, das von Databricks verwaltet wird. In dieser Schnellstartanleitung erfahren Sie, wie Sie stattdessen einen Azure Databricks-Arbeitsbereich in Ihrem eigenen virtuellen Netzwerk erstellen. Außerdem erstellen Sie in diesem Arbeitsbereich einen Apache Spark-Cluster. 
 
-Weitere Informationen dazu, warum Sie ggf. einen Azure Databricks-Arbeitsbereich in Ihrem eigenen virtuellen Netzwerk erstellen sollten, finden Sie unter [Bereitstellen von Azure Databricks in Ihrem Azure Virtual Network (VNET-Einschleusung)] (/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
+Weitere Informationen dazu, warum Sie ggf. einen Azure Databricks-Arbeitsbereich in Ihrem eigenen virtuellen Netzwerk erstellen sollten, finden Sie unter [Bereitstellen von Azure Databricks in Ihrem virtuellen Azure-Netzwerk (VNET-Einschleusung)](https://docs.microsoft.com/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/databricks/) erstellen.
 
@@ -39,7 +39,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Legen Sie unter **Virtuelles Netzwerk erstellen** die folgenden Einstellungen fest: 
 
-    |Einstellung|Vorgeschlagener Wert|Beschreibung|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |Subscription|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Resource group|databricks-quickstart|Klicken Sie auf **Neu erstellen**, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.|
@@ -50,7 +50,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 3. Klicken Sie auf **Weiter: IP-Adressen >** , und wenden Sie die folgenden Einstellungen an. Wählen Sie dann **Überprüfen + erstellen** aus.
     
-    |Einstellung|Vorgeschlagener Wert|Beschreibung|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |IPv4-Adressraum|10.2.0.0/16|Der Adressbereich des virtuellen Netzwerks in CIDR-Notation. Der CIDR-Bereich muss zwischen /16 und /24 liegen.|
     |Subnetzname|default|Wählen Sie für das Standardsubnetz in Ihrem virtuellen Netzwerk einen Namen aus.|
@@ -70,7 +70,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Legen Sie für den **Azure Databricks-Dienst** folgende Werte fest:
 
-    |Einstellung|Vorgeschlagener Wert|Beschreibung|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |Arbeitsbereichname|databricks-quickstart|Wählen Sie einen Namen für Ihren Azure Databricks-Arbeitsbereich aus.|
     |Subscription|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
@@ -82,7 +82,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 3. Nachdem Sie die Eingabe der Einstellungen auf der Seite **Grundlagen** eingegeben haben, wählen Sie **Weiter: Netzwerk >** aus, und wenden Sie die folgenden Einstellungen an:
 
-    |Einstellung|Vorgeschlagener Wert|Beschreibung|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |Bereitstellen eines Azure Databricks-Arbeitsbereichs in Ihrem virtuellen Netzwerk (VNET)|Ja|Mit dieser Einstellung können Sie einen Azure Databricks-Arbeitsbereich in Ihrem virtuellen Netzwerk bereitstellen.|
     |Virtual Network|databricks-quickstart|Wählen Sie das im vorherigen Abschnitt erstellte virtuelle Netzwerk aus.|

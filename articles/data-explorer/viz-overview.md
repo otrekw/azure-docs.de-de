@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über die verschiedenen Möglichkeiten, mit denen
 services: data-explorer
 author: orspod
 ms.author: orspodek
-ms.reviewer: rkarlin
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 06/30/2019
-ms.openlocfilehash: d1c73d8eb65ed5d67d5250b4a3bca3b80450001e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.date: 01/30/2020
+ms.openlocfilehash: 32ccc5ad236c87d3609798a8432db14ee440d067
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536720"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064562"
 ---
 # <a name="data-visualization-with-azure-data-explorer"></a>Datenvisualisierung mit Azure Data Explorer 
 
@@ -37,7 +37,7 @@ Azure Data Explorer ermöglicht es, eine Verbindung mit [Power BI](https://power
 
 ## <a name="microsoft-excel"></a>Microsoft Excel
 
-Azure Data Explorer ermöglicht es, eine Verbindung mit [Microsoft Excel](https://products.office.com/excel) über den integrierten nativen Excel-Connector herzustellen oder eine Abfrage aus Azure Data Explorer in Excel zu importieren.
+Azure Data Explorer ermöglicht es, eine Verbindung mit [Microsoft Excel](https://products.office.com/excel) über den [integrierten nativen Excel-Connector](excel-connector.md) herzustellen oder eine Abfrage aus Azure Data Explorer in Excel zu [importieren](excel-blank-query.md).
 
 ## <a name="grafana"></a>Grafana
 
@@ -60,3 +60,7 @@ Azure Data Explorer ermöglicht das Herstellen einer Verbindung mit [Qlik](https
 ## <a name="sisense"></a>Sisense
 
 Azure Data Explorer ermöglicht es, eine Verbindung mit [Sisense](https://www.sisense.com) über den JDBC-Connector herzustellen. Sie [richten Azure Data Explorer als Datenquelle für Sisense ein und visualisieren dann die Daten](/azure/data-explorer/sisense).
+
+## <a name="redash"></a>Redash
+
+Sie können [Redash](https://redash.io/) verwenden, um Dashboards zu erstellen und Daten zu visualisieren. [Richten Sie Azure Data Explorer als Datenquelle für Redash ein, und visualisieren Sie dann die Daten](/azure/data-explorer/redash).

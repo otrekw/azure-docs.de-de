@@ -1,27 +1,26 @@
 ---
 title: Erstellen Ihrer ersten Azure Service Fabric-Anwendung in C#
 description: Einführung in das Erstellen einer Microsoft Azure Service Fabric-Anwendung mit zustandslosen und zustandsbehafteten Diensten.
-author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: vturecek
-ms.openlocfilehash: e7c5c30dc7cbfa0a3f5a8dc76899c5c8bad6e6ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: 15dd9bf6ac19bdac7bc8b50fc70e0b3b0a4e9a83
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462812"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083772"
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
+
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-services-quick-start.md)
 > * [Java unter Linux](service-fabric-reliable-services-quick-start-java.md)
-> 
-> 
 
 Eine Azure Service Fabric-Anwendung enthält einen oder mehrere Dienste zum Ausführen von Code. Dieses Handbuch veranschaulicht das Erstellen sowohl zustandsloser als auch zustandsbehafteter Service Fabric-Anwendungen mit [Reliable Services](service-fabric-reliable-services-introduction.md).  
 
 ## <a name="basic-concepts"></a>Grundlegende Konzepte
+
 Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
 
 * **Diensttyp**: Dies ist Ihre Dienstimplementierung. Sie wird durch die von Ihnen geschriebene Klasse definiert, mit der `StatelessService` und alle anderen darin verwendeten Codeelemente oder Abhängigkeiten erweitert werden, einschließlich eines Namens und der Versionsnummer.
@@ -30,6 +29,7 @@ Für den Einstieg in Reliable Services müssen Sie sich nur mit einigen grundleg
 * **Dienstregistrierung**: Bei der Registrierung werden alle Elemente zusammengeführt. Der Diensttyp muss bei der Service Fabric-Laufzeit in einem Diensthost registriert werden, damit von Service Fabric Instanzen davon für die Ausführung erstellt werden können.  
 
 ## <a name="create-a-stateless-service"></a>Erstellen eines zustandslosen Diensts
+
 Ein zustandsloser Dienst ist eine Art von Dienst, der in Cloudanwendungen derzeit die Norm ist. Er wird als zustandslos angesehen, weil der Dienst selbst keine Daten enthält, die zuverlässig gespeichert werden oder hoch verfügbar sein müssen. Wenn eine Instanz eines zustandslosen Diensts heruntergefahren wird, geht sein gesamter interner Zustand verloren. Damit der Zustand dieser Dienste hoch verfügbar und zuverlässig ist, muss er extern gespeichert werden, z. B. in Azure-Tabellen oder in einer SQL-Datenbank.
 
 Starten Sie Visual Studio 2017 oder Visual Studio 2019 als Administrator, und erstellen Sie ein neues Projekt mit einer Service Fabric-Anwendung, das den Namen *HelloWorld* trägt:
@@ -46,6 +46,7 @@ Die Projektmappe enthält jetzt zwei Projekte:
 * *HelloWorldStateless*. Dies ist das Dienstprojekt. Es enthält die Implementierung des zustandslosen Diensts.
 
 ## <a name="implement-the-service"></a>Implementieren des Diensts
+
 Öffnen Sie im Dienstprojekt die Datei **HelloWorld.cs** . In Service Fabric kann mit einem Dienst jegliche Art von Geschäftslogik ausgeführt werden. Die Dienst-API bietet zwei Einstiegspunkte für den Code:
 
 * Eine Einstiegspunktmethode mit offenem Ende namens *RunAsync*, mit der Sie die Ausführung beliebiger Workloads startet können, inklusive lang andauernder Compute-Workloads.
@@ -70,11 +71,10 @@ In diesem Tutorial geht es um die Einstiegspunktmethode `RunAsync()` . Hiermit k
 Die Projektvorlage enthält ein Beispiel für eine Implementierung von `RunAsync()` , die einen rollierenden Zähler schrittweise erhöht.
 
 > [!NOTE]
-> Ausführliche Informationen zur Verwendung eines Kommunikationsstapels finden Sie unter [Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md)
-> 
-> 
+> Ausführliche Informationen zur Verwendung eines Kommunikationsstapels finden Sie unter [Dienstkommunikation mit ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md).
 
 ### <a name="runasync"></a>RunAsync
+
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
 {
@@ -110,6 +110,7 @@ Zum Abbrechen der Arbeitsauslastung ist das Zusammenspiel verschiedener Aktionen
 In diesem Beispiel eines zustandslosen Diensts wird die Anzahl in einer lokalen Variablen gespeichert. Da es sich aber um einen zustandslosen Dienst handelt, existiert der gespeicherte Wert nur für den aktuellen Lebenszyklus der Dienstinstanz. Wenn der Dienst verschoben oder neu gestartet wird, geht der Wert verloren.
 
 ## <a name="create-a-stateful-service"></a>Erstellen eines zustandsbehafteten Diensts
+
 Mit Service Fabric wird eine neue Art von zustandsbehaftetem Dienst eingeführt. Bei einem zustandsbehafteten Dienst kann der Zustand zuverlässig innerhalb des Diensts selbst verwaltet und dem Code zugeordnet werden, in dem er verwendet wird. Service Fabric stellt die hohe Verfügbarkeit des Zustands sicher, ohne dass dieser extern gespeichert werden muss.
 
 Um einen Zählerwert selbst bei einer Verschiebung oder einem Neustart des Diensts von zustandslos zu hoch verfügbar und persistent zu konvertieren, benötigen Sie einen zustandsbehafteten Dienst.
@@ -159,9 +160,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
+
 `RunAsync()` funktioniert in zustandsbehafteten und zustandslosen Diensten ähnlich. Bei einem zustandsbehafteten Dienst werden von der Plattform aber noch weitere Schritte in Ihrem Namen ausgeführt, bevor `RunAsync()`ausgeführt wird. Hierzu kann auch die Sicherstellung dessen gehören, dass der Reliable State Manager und Reliable Collections für die Verwendung bereit sind.
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>Reliable Collections und der Reliable State Manager
+
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
@@ -178,6 +181,7 @@ Reliable Collections können mit gewissen Einschränkungen beliebige .NET-Typen�
 Reliable State Manager verwaltet Reliable Collections für Sie. Sie können über Reliable State Manager jederzeit und von jedem Ort in Ihrem Dienst aus anhand des Namens eine zuverlässige Auflistung anfordern. Der Reliable State Manager stellt sicher, dass Sie einen Verweis zurückerhalten. Es ist nicht ratsam, Verweise auf Reliable Collection-Instanzen in Klassenmembervariablen oder -eigenschaften zu speichern. Achten Sie besonders darauf sicherzustellen, dass der Verweis während des Dienstlebenszyklus jederzeit auf eine Instanz festgelegt ist. Der Reliable State Manager übernimmt diesen Schritt für Sie. Er ist für wiederholte Besuche optimiert.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transaktionale und asynchrone Vorgänge
+
 ```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
@@ -189,7 +193,7 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Reliable Collections verfügen über viele der gleichen Vorgänge, die auch für ihre Gegenstücke `System.Collections.Generic` und `System.Collections.Concurrent` möglich sind, außer LINQ. Vorgänge für Reliable Collections sind asynchron. Das liegt daran, dass Schreibvorgänge mit Reliable Collections E/A-Vorgänge ausführen, um Replikationen der Daten und ihre persistente Speicherung auf dem Datenträger vorzunehmen.
+Zuverlässige Sammlungen verfügen über viele der gleichen Vorgänge, die auch für ihre Gegenstücke `System.Collections.Generic` und `System.Collections.Concurrent` möglich sind, mit Ausnahme von Language Integrated Query (LINQ). Vorgänge für Reliable Collections sind asynchron. Das liegt daran, dass Schreibvorgänge mit Reliable Collections E/A-Vorgänge ausführen, um Replikationen der Daten und ihre persistente Speicherung auf dem Datenträger vorzunehmen.
 
 Reliable Collection-Vorgänge sind *transaktional*, damit Sie den Zustand über mehrere Reliable Collections und Vorgänge hinweg beibehalten können. Sie können beispielsweise ein Arbeitselement aus einer zuverlässigen Warteschlange entfernen, einen Vorgang daran ausführen und das Ergebnis in einem zuverlässigen Wörterbuch speichern – alles in einer Transaktion. Dies wird als atomischer Vorgang behandelt und es wird sichergestellt, dass entweder der gesamte Vorgang erfolgreich ist oder ein Rollback für den gesamten Vorgang ausgeführt wird. Wenn nach dem Entfernen des Elements aus der Warteschlange und vor dem Speichern des Ergebnisses ein Fehler auftritt, wird für die gesamte Transaktion ein Rollback ausgeführt, und das Element bleibt zur Verarbeitung in der Warteschlange enthalten.
 

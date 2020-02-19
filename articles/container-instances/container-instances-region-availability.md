@@ -2,18 +2,18 @@
 title: Ressourcenverfügbarkeit in verschiedenen Region
 description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den Azure Container Instances-Dienst in verschiedenen Azure-Regionen
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888004"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117834"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
-In diesem Artikel wird die Verfügbarkeit der Compute- und Arbeitsspeicherressourcen von Azure Container Instances in Azure-Regionen erläutert. 
+In diesem Artikel wird die Verfügbarkeit der Compute-, Arbeitsspeicher- und Speicherressourcen von Azure Container Instances in Azure-Regionen und nach Zielbetriebssystem erläutert. 
 
 Die angezeigten Werte stellen die maximalen Ressourcen dar, die pro Bereitstellung einer [Containergruppe](container-instances-container-groups.md) zur Verfügung stehen. Die Werte sind zum Zeitpunkt der Veröffentlichung aktuell. 
 
@@ -26,23 +26,23 @@ Weitere Informationen zu Kontingenten und anderen Grenzwerten in Ihren Bereitste
 
 Die folgenden Regionen und Ressourcen stehen Containergruppen mit Linux- und [unterstützten](container-instances-faq.md#what-windows-base-os-images-are-supported) Windows Server 2016-basierten Containern zur Verfügung.
 
-| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) |
-| -------- | -- | :---: | :-----------: |
-| „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 16 |
-| „Australien, Osten“, „Japan, Osten“ | Linux | 2 | 8 |
-| USA Nord Mitte | Linux | 2 | 3,5 |
-| „Brasilien, Süden“, „Japan, Osten“, „Europa, Westen“ | Windows | 4 | 16 |
-| USA, Osten; USA, Westen | Windows | 4 | 14 |
-| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „USA, Westen 2“ | Windows | 2 | 3,5 |
+| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 16 | 50 |
+| „Australien, Osten“, „Japan, Osten“ | Linux | 2 | 8 | 50 |
+| USA Nord Mitte | Linux | 2 | 3,5 | 50 |
+| „Brasilien, Süden“, „Japan, Osten“, „Europa, Westen“ | Windows | 4 | 16 | 20 |
+| USA, Osten; USA, Westen | Windows | 4 | 14 | 20 |
+| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „USA, Westen 2“ | Windows | 2 | 3,5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Verfügbarkeit – Windows Server 2019 LTSC, 1809 Bereitstellungen (Vorschauversion)
 
 Die folgenden Regionen und Ressourcen stehen Containergruppen mit Windows Server 2019-basierten Containern zur Verfügung (Vorschauversion).
 
-| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) |
-| -------- | -- | :---: | :-----------: |
-| „Australien, Osten“, „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ | Windows | 4 | 16 |
-| „USA, Osten 2“, „USA, Westen 2“ | Windows | 2 | 3,5 |
+| Regions | OS | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| „Australien, Osten“, „Brasilien, Süden“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Vereinigtes Königreich, Süden“, „Europa, Westen“ | Windows | 4 | 16 | 20 |
+| „USA, Osten 2“, „USA, Westen 2“ | Windows | 2 | 3,5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>Verfügbarkeit: Bereitstellung eines virtuellen Netzwerks

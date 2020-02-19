@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750996"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148894"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -38,7 +38,7 @@ Azure-Ressourcen generieren eine erhebliche Menge an Überwachungsdaten. Azure M
 
 Metriken in Azure Monitor werden in einer Zeitreihendatenbank gespeichert, die für das Analysieren von Daten mit Zeitstempel optimiert ist. Dadurch sind Metriken besonders für Warnungen und das schnelle Erkennen von Problemen geeignet. Sie bieten Informationen über die Leistung Ihres Systems, müssen aber in der Regel mit Protokollen kombiniert werden, um die zugrunde liegende Ursache von Problemen zu identifizieren.
 
-Metriken sind für die interaktive Analyse im Azure-Portal mit [Metrik-Explorer](../app/metrics-explorer.md) verfügbar. Sie können einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzugefügt und für [Warnungen](alerts-metric.md) nahezu in Echtzeit verwendet werden.
+Metriken sind für die interaktive Analyse im Azure-Portal mit [Azure-Metrik-Explorer](../platform/metrics-getting-started.md) verfügbar. Sie können einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzugefügt und für [Warnungen](alerts-metric.md) nahezu in Echtzeit verwendet werden.
 
 Weitere Informationen zu Azure Monitor-Metriken, einschließlich ihrer Datenquellen, finden Sie unter [Metriken in Azure Monitor](data-platform-metrics.md).
 

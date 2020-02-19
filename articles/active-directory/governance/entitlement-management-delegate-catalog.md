@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174384"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120197"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegieren der Zugriffssteuerung an Katalogersteller in der Azure AD-Berechtigungsverwaltung
 
-Wenn Sie an Benutzer delegieren möchten, die keine Administratoren sind, damit sie ihre eigenen Kataloge erstellen können, fügen Sie diese Benutzer der in der Azure AD-Berechtigungsverwaltung definierten Rolle Katalogersteller hinzu. Sie können einzelne Benutzer oder eine ganze Gruppe hinzufügen, deren Mitglieder dann Kataloge erstellen können.
+Ein Katalog ist ein Container für Ressourcen und Zugriffspakete. Sie erstellen einen Katalog, wenn Sie zugehörige Ressourcen und Zugriffspakete gruppieren möchten. Standardmäßig kann ein globaler Administrator oder ein Benutzeradministrator [einen Katalog erstellen](entitlement-management-catalog-create.md) und zusätzliche Benutzer als Katalogbesitzer hinzufügen.
+
+Wenn Sie an Benutzer delegieren möchten, die keine Administratoren sind, damit sie ihre eigenen Kataloge erstellen können, fügen Sie diese Benutzer der in der Azure AD-Berechtigungsverwaltung definierten Rolle Katalogersteller hinzu. Sie können einzelne Benutzer oder eine ganze Gruppe hinzufügen, deren Mitglieder dann Kataloge erstellen können.  Nach dem Erstellen eines Katalogs können sie ihrem Katalog dann die Ressourcen hinzufügen, die sie besitzen.
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Delegieren an einen Katalogersteller als IT-Administrator
 
@@ -37,7 +39,7 @@ Führen Sie diese Schritte aus, um einen Benutzer der Katalogerstellerrolle zuzu
 
 1. Klicken Sie im linken Menü im Abschnitt **Berechtigungsverwaltung** auf **Einstellungen**.
 
-1. Klicken Sie auf **Edit**.
+1. Klicken Sie auf **Bearbeiten**.
 
     ![Einstellungen zum Hinzufügen von Katalogerstellern](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 

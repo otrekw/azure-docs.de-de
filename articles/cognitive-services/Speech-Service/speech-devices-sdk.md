@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815532"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188975"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
 
@@ -27,11 +27,11 @@ Anwendungsmöglichkeiten für das Speech-Geräte-SDK:
 - Integrieren Sie den cloudbasierten Speech-Dienst einfacher auf Ihrem Gerät.
 - Sorgen Sie für eine herausragende Benutzerfreundlichkeit für Ihre Kunden.
 
-Das Speech-Geräte-SDK nutzt das [Speech-SDK](speech-sdk.md). Es verwendet das Speech-SDK zum Senden von Audioinhalten, die mit unserem Audioverarbeitungsalgorithmus bearbeitet wurden, vom Mikrofonarray des Geräts an den [Speech-Dienst](overview.md). Es verwendet Mehrkanal-Audio für eine präzisere Fernfeld-[Spracherkennung](speech-to-text.md) mit Geräuschunterdrückung, Echounterdrückung, Beamforming und Hallunterdrückung.
+Das Speech-Geräte-SDK nutzt das [Speech-SDK](speech-sdk.md). Mithilfe unserer Audioverarbeitungsalgorithmus mit dem Mikrofonarray des Geräts, um das Audiosignal an den [Speech-Dienst](overview.md) zu senden. Es bietet eine präzise Fernfeld-[Spracherkennung](speech-to-text.md) mit Geräuschunterdrückung, Echounterdrückung, Beamforming und Hallunterdrückung.
 
-Mit dem Speech Devices SDK können Sie auch Ambient Devices mit einem [benutzerdefinierten Schlüsselwort](speech-devices-sdk-create-kws.md) erstellen, sodass der Auslöser zum Initiieren einer Benutzerinteraktion in Bezug auf Ihre Marke einmalig ist.
+Sie können auch das Speech-Geräte-SDK für die Erstellung von Ambient Devices verwenden, die Ihr eigenes [benutzerdefiniertes Schlüsselwort](speech-devices-sdk-create-kws.md) verwenden. Ein benutzerdefiniertes Schlüsselwort gibt einen Hinweis, der eine Benutzerinteraktion startet, die für Ihre Marke spezifisch ist.
 
-Mit dem Speech Devices SDK lassen sich verschiedenste stimmaktivierte Szenarien entwickeln, z. B. [Sprachassistenten](https://aka.ms/bots/speech/va), Drive-through-Bestellsysteme, [Unterhaltungstranskription](conversation-transcription-service.md) und intelligente Lautsprecher. Es ist möglich, Benutzern mit Textausgaben oder mit Sprachausgaben in einer Standard- oder [benutzerdefinierten Stimme](how-to-customize-voice-font.md) zu antworten, Suchergebnisse bereitzustellen, [Übersetzungen](speech-translation.md) in andere Sprachen durchzuführen und vieles mehr. Wir freuen uns darauf, zu sehen, was Sie erstellen!
+Das Speech Devices SDK erleichtert die Entwicklung verschiedenster stimmaktivierter Szenarien, z. B. [Sprachassistenten](https://aka.ms/bots/speech/va), Drive-through-Bestellsysteme, [Unterhaltungstranskription](conversation-transcription-service.md) und intelligente Lautsprecher. Es ist möglich, Benutzern mit Textausgaben oder mit Sprachausgaben in einer Standard- oder [benutzerdefinierten Stimme](how-to-customize-voice-font.md) zu antworten, Suchergebnisse bereitzustellen, [Übersetzungen](speech-translation.md) in andere Sprachen durchzuführen und vieles mehr. Wir freuen uns darauf, zu sehen, was Sie erstellen!
 
 ## <a name="get-the-speech-devices-sdk"></a>Abrufen des SDK für sprachaktivierte Geräte
 
@@ -48,6 +48,8 @@ Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 
 
 Für Linux wird die Beispielanwendung als plattformübergreifende Java-Anwendung bereitgestellt. Laden Sie die neueste Version des [Speech-Geräte-SDK für die JRE](https://aka.ms/sdsdk-download-JRE) herunter.
 Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
+
+Zusätzliche Binärdateien werden bereitgestellt, um demnächst erscheinende Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) und [Urbetter DDK-](https://aka.ms/sdsdk-download-urbetter) zu unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

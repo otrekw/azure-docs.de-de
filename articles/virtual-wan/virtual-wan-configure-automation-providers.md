@@ -1,20 +1,20 @@
 ---
-title: Azure Virtual WAN-Partner | Microsoft-Dokumentation
+title: Azure Virtual WAN – Automatisierungsrichtlinien für Partner | Microsoft-Dokumentation
 description: Dieser Artikel unterstützt Partner bei der Einrichtung von Azure Virtual WAN-Automatisierung.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775319"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190416"
 ---
-# <a name="virtual-wan-partners"></a>Virtual WAN-Partner
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Automatisierungsrichtlinien für Virtual WAN-Partner
 
 In diesem Artikel erfahren Sie, wie Sie die Automatisierungsumgebung einrichten, um ein Zweigstellengerät (ein lokales VPN-Gerät oder SDWAN eines Kunden) für Azure Virtual WAN zu verbinden und zu konfigurieren. Wenn Sie Zweigstellengeräte anbieten, die VPN-Konnektivität über IPsec/IKEv2 oder IPsec/IKEv1 ermöglichen, ist dieser Artikel für Sie interessant.
 

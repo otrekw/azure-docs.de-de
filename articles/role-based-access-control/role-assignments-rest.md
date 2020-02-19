@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
+title: Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von RBAC und der REST-API
 description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981033"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138311"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
 

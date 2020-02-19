@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: virtual-machines
-author: singhkays
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/18/2018
-ms.author: kasing
+ms.date: 02/06/2020
+ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020919"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068419"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Wirkt sich dieser Migrationsplan auf meine vorhandenen Dienste oder Anwendungen aus, die auf virtuellen Azure-Computern ausgeführt werden? 
 
@@ -37,7 +37,7 @@ Sie können die Migration abbrechen, solange sich die Ressourcen im Zustand „V
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Kann ich für meine Migration einen Rollback durchführen, wenn beim Commitvorgang ein Fehler auftritt? 
 
-Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder posten Sie unter Verwendung des Tags ClassicIaaSMigration in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows).
+Sie können die Migration nicht abbrechen, wenn für den Commitvorgang ein Fehler auftritt. Alle Migrationsvorgänge, einschließlich des Commitvorgangs, sind idempotent. Daher wird empfohlen, den Vorgang nach einer kurzen Wartezeit zu wiederholen. Sollten weiterhin Fehler auftreten, erstellen Sie ein Supportticket, oder erstellen Sie einen Forumsbeitrag auf [Microsoft Q&A](https://docs.microsoft.com/answers/index.html).
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Muss ich eine weitere ExpressRoute-Verbindung erwerben, wenn ich IaaS unter Resource Manager verwenden muss? 
 
@@ -49,7 +49,7 @@ Während der Migration wird für die Ressourcen die Transformation vom klassisch
 
 ## <a name="i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ich habe meine klassischen virtuellen Computer in einem Tresor gesichert. Kann ich meine virtuellen Computer vom klassischen Modus in den Resource Manager-Modus migrieren und diese in einem Recovery Services-Tresor schützen?
 
-<a name="vault">Wenn</a> Sie einen virtuellen Computer vom klassischen in den Resource Manager-Modus verschieben, werden Sicherungen, die vor der Migration aufgezeichnet wurden, nicht auf die neu migrierte Resourcen Manager-VM migriert. Wenn Sie die Sicherungen der klassischen VMs Jedoch aufbewahren möchten, gehen Sie vor der Migration folgendermaßen vor. 
+Wenn Sie einen virtuellen Computer vom klassischen in den Resource Manager-Modus verschieben, werden Sicherungen, die vor der Migration aufgezeichnet wurden, nicht auf die neu migrierte Resource Manager-VM migriert. Wenn Sie die Sicherungen der klassischen VMs Jedoch aufbewahren möchten, gehen Sie vor der Migration folgendermaßen vor. 
 
 1. Wechseln Sie im Recovery Services-Tresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. 
 2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen***nicht**.

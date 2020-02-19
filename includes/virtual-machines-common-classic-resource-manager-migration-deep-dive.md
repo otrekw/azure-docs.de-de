@@ -3,13 +3,13 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: cynthn
-ms.openlocfilehash: dc871b29cdafa57d337f9be6cf01e76212f31b67
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.author: tanmaygore
+ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178067"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77068416"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Zunächst einmal ist es wichtig, den Unterschied zwischen Vorgängen auf der Datenebene und Vorgängen auf der Verwaltungsebene für IaaS-Ressourcen (Infrastructure-as-a-Service) zu verstehen.
@@ -121,7 +121,7 @@ Hierbei handelt es sich um einen optionalen Schritt, mit dem Sie Ihre Änderunge
 Nach Abschluss der Überprüfung können Sie einen Commit für die Migration durchführen. Die Ressourcen werden nicht mehr im klassischen Bereitstellungsmodell angezeigt und stehen nur noch im Resource Manager-Bereitstellungsmodell zur Verfügung. Die migrierten Ressourcen können nur im neuen Portal verwaltet werden.
 
 > [!NOTE]
-> Dies ist ein idempotenter Vorgang. Sollte er nicht erfolgreich sein, wiederholen Sie ihn. Ist der Vorgang weiterhin nicht erfolgreich, erstellen Sie ein Supportticket, oder erstellen Sie in unserem [VM-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows) einen Beitrag mit dem Tag „ClassicIaaSMigration“.
+> Dies ist ein idempotenter Vorgang. Sollte er nicht erfolgreich sein, wiederholen Sie ihn. Wenn der Fehler weiterhin auftritt, erstellen Sie ein Support Ticket, oder erstellen Sie ein Forum auf [Microsoft Q&A](https://docs.microsoft.com/answers/index.html)
 >
 >
 

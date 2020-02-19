@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901789"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77178995"
 ---
 Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
@@ -23,16 +23,12 @@ Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw
 > Spot-Instanzen sind zurzeit als Public Preview verfügbar.
 > Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Im frühen Stadium der Public Preview weisen Spot-Instanzen einen festen Preis auf, sodass sie nicht basierend auf dem Preis entfernt werden.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
 VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximalen Preis entfernt werden. Bei virtuellen Computern wird die Entfernungsrichtlinie so festgelegt, dass *die Zuordnung aufgehoben wird*. Dabei wechseln die entfernten VMs in den Zustand „Beendet (Zuordnung aufgehoben)“, sodass Sie die entfernten VMs zu einem späteren Zeitpunkt erneut bereitstellen können. Die erneute Zuordnung von Spot-VMs ist jedoch auf verfügbare Spot-Kapazität angewiesen. Die virtuellen Computer, deren Zuordnung aufgehoben wurde, werden auf Ihr Kontingent an Spot-vCPUs angerechnet, und die zugrunde liegenden Datenträger werden Ihnen in Rechnung gestellt. 
 
 Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
-
-> [!IMPORTANT]
-> Im frühen Stadium der Public Preview können Sie einen maximalen Preis festlegen, der jedoch ignoriert wird. Für Spot-VMs wird ein fester Preis festgelegt. Es wird also auch keine preisbasierten Entfernungen geben.
 
 
 | Option | Ergebnis |
@@ -54,7 +50,7 @@ Die folgenden VM-Größen werden für Spot-VMs nicht unterstützt:
 
 Spot-VMs können derzeit keine kurzlebigen Betriebssystemdatenträger verwenden.
 
-Spot-VMs können in einer beliebigen Region bereitgestellt werden, mit Ausnahme von „Microsoft Azure China 21ViaNet“ und „Department of Defense (DoD)“ in der Azure Government-Region.
+Mit Ausnahme von Microsoft Azure China 21ViaNet können Spot-VMs in jeder beliebigen Region bereitgestellt werden.
 
 ## <a name="pricing"></a>Preise
 

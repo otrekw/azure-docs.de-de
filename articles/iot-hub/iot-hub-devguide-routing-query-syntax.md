@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 04db62f402c25dd4a04281047f684dc23d41a502
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e95a0b4b9f071a0fd3949d50eeee17b811dfb8ea
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934617"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064817"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -50,7 +50,7 @@ Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-constru
 
 Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identifiziert. 
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | contentType | string | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | string | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
@@ -196,7 +196,7 @@ Das Nachrichtenrouting ermöglicht Ihnen das Abfragen von Tags und Eigenschaften
 
 ### <a name="query-expressions"></a>Abfrageausdrücke
 
-Einer Abfrage des Nachrichtentexts muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Dies gilt für Gerätezwillinge und Modulzwillinge. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
+Einer Abfrage des Nachrichtenzwillings muss das Präfix `$twin` vorangestellt werden. Der Abfrageausdruck kann auch ein Zwillingstag oder Eigenschaftenverweis mit einem Textverweis und mit Nachrichtensystemeigenschaften sowie einem Verweis auf Nachrichtenanwendungseigenschaften kombinieren. Die Verwendung eindeutiger Namen wird für Tags und Eigenschaften empfohlen, da die Abfrage die Groß- und Kleinschreibung nicht beachtet. Dies gilt für Gerätezwillinge und Modulzwillinge. Außerdem sollten Sie `twin`, `$twin`, `body` oder `$body` nicht als Eigenschaftennamen verwenden. Die folgenden Abfrageausdrücke sind beispielsweise sämtlich gültig: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

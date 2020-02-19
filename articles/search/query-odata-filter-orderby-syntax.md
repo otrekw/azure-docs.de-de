@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786160"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153875"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
 
@@ -59,10 +59,10 @@ identifier ::= [a-zA-Z_][a-zA-Z_0-9]*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#field_path)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Ein Feldpfad besteht aus einem oder mehreren **Bezeichnern**, die durch Schrägstriche voneinander getrennt sind. Jeder Bezeichner ist eine Folge von Zeichen, die mit einem ASCII-Buchstaben oder einem Unterstrich beginnen muss und nur ASCII-Buchstaben, Ziffern oder Unterstriche enthalten darf. Es können Groß- und Kleinbuchstaben verwendet werden.
 
@@ -70,7 +70,7 @@ Ein Bezeichner kann entweder auf den Namen eines Felds oder auf eine **Bereichsv
 
 Die folgende Tabelle enthält Beispiele für Feldpfade:
 
-| Feldpfad | BESCHREIBUNG |
+| Feldpfad | Beschreibung |
 | --- | --- |
 | `HotelName` | Verweist auf ein Feld der obersten Ebene des Indexes |
 | `Address/City` | Verweist auf das untergeordnete Feld `City` eines komplexen Felds im Index; `Address` ist in diesem Beispiel vom Typ `Edm.ComplexType` |
@@ -91,7 +91,7 @@ In diesem Beispiel ist die Bereichsvariable `room` im Feldpfad `room/Type` entha
 
 Feldpfade werden in zahlreichen Parametern der [REST-APIs für die kognitive Azure-Suche](https://docs.microsoft.com/rest/api/searchservice/) verwendet. Die folgende Tabelle enthält alle Stellen, an denen sie verwendet werden können, sowie einige Einschränkungen für ihre Nutzung:
 
-| API | Parametername | Einschränkungen |
+| API | Parametername | Beschränkungen |
 | --- | --- | --- |
 | [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `suggesters/sourceFields` | Keine |
 | [Erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) oder [Aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index) des Index | `scoringProfiles/text/weights` | Kann nur auf **durchsuchbare** Felder verweisen |
@@ -121,6 +121,17 @@ Die folgende Tabelle zeigt Beispiele für Konstanten für jeden der von der kogn
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Verwenden von Sonderzeichen in Zeichenfolgenkonstanten
+
+Zeichenfolgenkonstanten in OData werden durch einfache Anführungszeichen getrennt. Wenn Sie eine Abfrage mit einer Zeichenfolgenkonstante erstellen müssen, die selbst Anführungszeichen enthalten kann, können Sie die eingebetteten Anführungszeichen verdoppeln, um sie mit Escapezeichen zu versehen.
+
+Beispielsweise würde ein Ausdruck mit einem unformatierten Apostroph wie „Alice's car“ in OData als die Zeichenfolgenkonstante `'Alice''s car'` dargestellt werden.
+
+> [!IMPORTANT]
+> Wenn Sie Filter programmgesteuert erstellen, sollten Sie daran denken, Zeichenfolgenkonstanten aus Benutzereingaben mit Escapezeichen zu versehen. Dadurch wird – insbesondere bei Verwendung von Filtern zum Implementieren von [Sicherheitskürzungen](search-security-trimming-for-azure-search.md) – die Möglichkeit von [Injektionsangriffen](https://wikipedia.org/wiki/SQL_injection) umgangen.
+
+### <a name="constants-syntax"></a>Konstantensyntax
 
 Die folgende EBNF ([erweiterte Backus-Naur-Form](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definiert die Grammatik für die meisten Konstanten in der obigen Tabelle. Die Grammatik für geografische Datentypen finden Sie unter [Geografische OData-Funktionen in der kognitiven Azure-Suche](search-query-odata-geo-spatial-functions.md).
 
@@ -187,10 +198,10 @@ boolean_literal ::= 'true' | 'false'
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#constant)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#constant)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 ## <a name="building-expressions-from-field-paths-and-constants"></a>Erstellen von Ausdrücken aus Feldpfaden und Konstanten
 
@@ -213,10 +224,10 @@ select_expression ::= '*' | field_path(',' field_path)*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#filter_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Die Parameter **$orderby** und **$select** sind durch Trennzeichen getrennte Listen mit einfachen Ausdrücken. Der **$filter**-Parameter ist ein boolescher Ausdruck, der sich aus einfacheren untergeordneten Ausdrücken zusammensetzt. Diese untergeordneten Ausdrücke werden mithilfe logischer Operatoren wie z. B. [`and`, `or` und `not`](search-query-odata-logical-operators.md), Vergleichsoperatoren wie [`eq`, `lt`, `gt` usw.](search-query-odata-comparison-operators.md) und Sammlungsoperatoren wie [`any` und `all`](search-query-odata-collection-operators.md) kombiniert.
 
@@ -229,7 +240,7 @@ In den folgenden Artikeln werden die Parameter **$filter**, **$orderby** und **$
 ## <a name="see-also"></a>Weitere Informationen  
 
 - [Facettennavigation in der kognitiven Azure-Suche](search-faceted-navigation.md)
-- [Filter in der kognitiven Azure-Suche](search-filters.md)
-- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
 - [Lucene-Abfragesyntax](query-lucene-syntax.md)
-- [Einfache Abfragesyntax in der kognitiven Azure-Suche](query-simple-syntax.md)
+- [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md)

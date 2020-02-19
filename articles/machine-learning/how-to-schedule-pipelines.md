@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722253"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116760"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planen von Machine Learning-Pipelines mit dem Azure Machine Learning-SDK für Python
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>Erstellen eines Zeitplans
 
 Wenn eine Pipeline regelmäßig ausgeführt werden soll, erstellen Sie einen Plan. Ein `Schedule` verknüpft eine Pipeline, ein Experiment und einen Auslöser. Der Auslöser kann entweder vom Typ `ScheduleRecurrence` sein, der die Wartezeit zwischen den Ausführungen beschreibt, oder ein Datenspeicherpfad, der ein Verzeichnis angibt, das auf Änderungen überwacht werden soll. In beiden Fällen benötigen Sie die ID der Pipeline und den Namen des Experiments, in dem der Plan erstellt werden soll.
+
+Importieren Sie am Anfang der Python-Datei die Klassen `Schedule` und `ScheduleRecurrence`:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>Erstellen eines zeitbasierten Plans
 
@@ -141,3 +148,4 @@ Weitere Informationen finden Sie unter
 
 * Weitere Informationen zu [Pipelines](concept-ml-pipelines.md)
 * Erfahren Sie mehr über das [Erkunden von Azure Machine Learning mit Jupyter](samples-notebooks.md)
+

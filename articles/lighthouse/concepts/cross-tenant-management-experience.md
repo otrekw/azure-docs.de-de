@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 01/06/2020
+ms.date: 02/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75706987"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122045"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -55,6 +55,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Backup](../../backup/index.yml):
 
 - Sichern und Wiederherstellen von Kundendaten in Kundenmandanten
+- Verwenden des [Backup-Explorers](../../backup/monitor-azure-backup-with-backup-explorer.md) zum Anzeigen von Betriebsinformationen zu Sicherungselementen (einschließlich noch nicht für die Sicherung konfigurierten Azure-Ressourcen) und Überwachungsinformationen (Aufträge und Warnungen) zu delegierten Abonnements. Der Backup-Explorer ist zurzeit nur für Azure-VM-Daten verfügbar.
 
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 

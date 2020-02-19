@@ -3,12 +3,12 @@ title: Grundlagen von Ressourcensperren
 description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406409"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057344"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -102,6 +102,26 @@ In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen 
   }
 }
 ```
+
+## <a name="exclude-an-action-from-a-deny-assignment"></a>Ausschließen einer Aktion von einer Ablehnungszuweisung
+
+Ähnlich wie beim [Ausschließen eines Prinzipals](#exclude-a-principal-from-a-deny-assignment) von einer [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) in einer Blaupausenzuweisung können Sie auch bestimmte [RBAC-Vorgänge](../../../role-based-access-control/resource-provider-operations.md) ausschließen. Innerhalb des Blocks **properties.locks** kann an derselben Stelle, an der auch **excludedPrincipals** steht, ein **excludedActions**-Element hinzugefügt werden:
+
+```json
+"locks": {
+    "mode": "AllResourcesDoNotDelete",
+    "excludedPrincipals": [
+        "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+        "38833b56-194d-420b-90ce-cff578296714"
+    ],
+    "excludedActions": [
+        "Microsoft.ContainerRegistry/registries/push/write",
+        "Microsoft.Authorization/*/read"
+    ]
+},
+```
+
+Während **excludedPrincipals** explizit sein muss, können **excludedActions**-Einträge `*` als Platzhalter für Vergleiche von RBAC-Vorgängen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

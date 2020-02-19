@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen oder Aktualisierten von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
+title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
 description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe der REST-API auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 474de8934ec7e27df601fe80809566a801e6af61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 145bc45e1b7faeddc23cf5f0662337e15ab51c29
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452939"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137359"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
 
@@ -38,7 +38,7 @@ Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen in einem Verzeichni
 
 1. Ersetzen Sie *{Filter}* mit dem Rollentyp.
 
-    | Filtern | BESCHREIBUNG |
+    | Filtern | Beschreibung |
     | --- | --- |
     | `$filter=type%20eq%20'CustomRole'` | Auf dem CustomRole-Typ basierender Filter |
 
@@ -86,7 +86,7 @@ Verwenden Sie die [Rollendefinitionen – Abrufen](/rest/api/authorization/roled
 
 1. Ersetzen Sie *{Filter}* mit dem Anzeigenamen für die Rolle.
 
-    | Filtern | BESCHREIBUNG |
+    | Filtern | Beschreibung |
     | --- | --- |
     | `$filter=roleName%20eq%20'{roleDisplayName}'` | Verwenden Sie die URL-codierte Form des genauen Anzeigenamens der Rolle. Beispiel: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'`. |
 

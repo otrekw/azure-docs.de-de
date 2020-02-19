@@ -1,5 +1,5 @@
 ---
-title: Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen | Microsoft-Dokumentation
+title: Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Rollen
 description: 'Enthält eine Beschreibung der unterschiedlichen Rollen in Azure: Administrator für klassisches Abonnement, Rollenbasierte Zugriffssteuerung (RBAC) in Azure und Azure AD-Administrator (Azure Active Directory).'
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979305"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138072"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 

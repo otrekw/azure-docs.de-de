@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697743"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161131"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
 
@@ -28,7 +28,7 @@ Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung
 
 Das Consent Framework basiert auf OAuth 2.0 und seinen verschiedenen Datenflüssen, z. B. Authorization Code Grant und Client Credentials Grant. Dabei kommen öffentliche oder vertrauliche Clients zum Einsatz. Durch die Verwendung von OAuth 2.0 ermöglicht Azure AD die Entwicklung zahlreicher verschiedener Typen von Clientanwendungen, beispielsweise für Telefon, Tablet, Server oder Web, und ermöglicht den Zugriff auf die erforderlichen Ressourcen.
 
-Weitere Informationen zur Verwendung des Zustimmungsframeworks mit OAuth2.0-Autorisierungsgewährungen finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](v1-protocols-oauth-code.md) und [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md). Informationen dazu, wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, finden Sie auf der Seite zur [App-Authentifizierung mit Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Weitere Informationen zur Verwendung des Zustimmungsframeworks mit OAuth2.0-Autorisierungsgewährungen finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](v2-oauth2-auth-code-flow.md) und [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md). Informationen dazu, wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, finden Sie auf der Seite zur [App-Authentifizierung mit Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Oberfläche für die Zustimmung: ein Beispiel
 
@@ -42,13 +42,13 @@ Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzerober
 
 1. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom `/authorize`-Endpunkt von Azure AD zum Anmelden aufgefordert.
 
-    ![Benutzer- oder Administratoranmeldung bei Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Benutzer- oder Administratoranmeldung bei Azure AD](./media/consent-framework/usersignin.png)
 
 1. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob für den Benutzer eine Seite für die Zustimmungserteilung angezeigt werden muss. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat. Wenn die Zustimmung noch nicht erteilt wurde, fordert Azure AD den Benutzer zur Zustimmung auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Der Berechtigungssatz, der im Dialogfeld für die Zustimmung angezeigt wird, ist identisch mit der Auswahl unter **Delegierte Berechtigungen** im Azure-Portal.
 
-    ![Abbildung eines Beispiels für im Zustimmungsdialogfeld angezeigte Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Abbildung eines Beispiels für im Zustimmungsdialogfeld angezeigte Berechtigungen](./media/consent-framework/consent.png)
 
-1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Ablauf finden Sie unter [Web API](web-api.md) (Web-API).
+1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Flow finden Sie unter [OAuth 2.0-Autorisierungscodefluss](v2-oauth2-auth-code-flow.md).
 
 1. Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im [Azure-Portal](https://portal.azure.com) von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Um zu erfahren, welche Administratorrollen delegierten Berechtigungen zustimmen können, lesen Sie [Berechtigungen der Administratorrolle in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 

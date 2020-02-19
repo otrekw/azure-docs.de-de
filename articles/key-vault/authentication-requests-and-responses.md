@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883997"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148231"
 ---
 # <a name="authentication-requests-and-responses"></a>Authentifizierung, Anforderungen und Antworten
 
@@ -87,7 +87,7 @@ Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemein
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>Authentifizierung  
  Alle Anforderungen an Azure Key Vault MÜSSEN authentifiziert werden. Azure Key Vault unterstützt Azure Active Directory-Zugriffstoken, die mithilfe von OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] abgerufen werden können. 
  
  Weitere Informationen zur Registrierung Ihrer Anwendung und zur Authentifizierung für die Verwendung von Azure Key Vault finden Sie unter [Registrieren Ihrer Clientanwendung bei Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
@@ -112,7 +112,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization: Die Adresse des OAuth2-Autorisierungsdiensts, die zum Abrufen eines Zugriffstokens für die Anforderung verwendet werden kann.  
 
--   resource: Der Name der in der Autorisierungsanforderung zu verwendenden Ressource.  
+-   resource: Der Name der in der Autorisierungsanforderung zu verwendenden Ressource (https://vault.azure.net).  
 
-## <a name="see-also"></a>Siehe auch  
+## <a name="see-also"></a>Weitere Informationen  
  [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)

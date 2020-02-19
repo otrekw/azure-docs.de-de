@@ -5,21 +5,18 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171217"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086985"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Erstellen von Web Application Firewall-Richtlinien für Application Gateway
 
 Das Zuordnen einer WAF-Richtlinie zu Listenern ermöglicht den Schutz mehrerer Websites hinter einer einzelnen WAF durch unterschiedliche Richtlinien. Wenn sich beispielsweise hinter Ihrer WAF fünf Websites befinden, können Sie fünf einzelne WAF-Richtlinien (eine für jeden Listener) verwenden, um Ausschlüsse, benutzerdefinierte Regeln und verwaltete Regelsätze für jeweils eine Website anzupassen, ohne dass die anderen vier Websites davon beeinträchtigt werden. Wenn Sie eine einzelne Richtlinie auf alle Standorte anwenden möchten, weisen Sie diese Richtlinie einfach Application Gateway anstelle der einzelnen Listener zu, um sie global anzuwenden. Richtlinien können auch auf eine pfadbasierte Routingregel angewandt werden. 
-
-   > [!NOTE]
-   > Die WAF-Richtlinie für einzelne Websites ist in den Regionen „USA, Süden-Mitte“ und „Europa, Norden“ verfügbar. Wenn Sie im Portal darauf zugreifen möchten, verwenden Sie bis zur Liveschaltung für alle Benutzer [diesen Link](https://aka.ms/AppgwwafWithAllFeatureFlags).  
 
 Sie können beliebig viele Richtlinien erstellen. Nachdem Sie eine Richtlinie erstellt haben, muss sie einer Application Gateway-Instanz zugeordnet werden, damit sie wirksam wird. Sie kann jedoch auch einer beliebigen Kombination aus Application Gateway-Instanzen und Listenern zugeordnet werden. 
 
@@ -37,7 +34,7 @@ Erstellen Sie zuerst im Azure-Portal mithilfe des verwalteten Standardregelsatze
 1. Wählen Sie links oben im Portal die Option **Ressource erstellen** aus. Suchen Sie nach **WAF**, wählen Sie **Web Application Firewall** aus, und wählen Sie dann **Erstellen** aus.
 2. Geben Sie auf der Seite **WAF-Richtlinie erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus. Übernehmen Sie die Standardwerte für die übrigen Einstellungen, und wählen Sie **Überprüfen + erstellen** aus:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |Richtlinie für     |Regionale WAF (Application Gateway)|
    |Subscription     |Wählen Sie Ihren Abonnementnamen aus.|
@@ -45,7 +42,7 @@ Erstellen Sie zuerst im Azure-Portal mithilfe des verwalteten Standardregelsatze
    |Richtlinienname     |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
 3. Geben Sie auf der Registerkarte **Zuordnung** eine der folgenden Einstellungen ein, und wählen Sie dann**Hinzufügen** aus:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |Application Gateway zuordnen     |Wählen Sie Ihren Application Gateway-Profilnamen aus.|
    |Listener zuordnen     |Wählen Sie den Namen Ihres Application Gateway-Listeners und dann **Hinzufügen** aus.|
@@ -64,13 +61,13 @@ Wenn Sie eine WAF-Richtlinie erstellen, erfolgt dies standardmäßig im Modus *E
 
 Von Azure verwaltete OWASP-Regeln sind standardmäßig aktiviert. Um eine einzelne Regel innerhalb einer Regelgruppe zu deaktivieren, erweitern Sie die Regeln innerhalb dieser Regelgruppe. Aktivieren Sie das Kontrollkästchen vor der Regelnummer, und wählen Sie oben auf der Registerkarte **Deaktivieren** aus.
 
-[![Verwaltete Regeln](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
+[ ![Verwaltete Regeln](../media/create-waf-policy-ag/managed-rules.png) ](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>Benutzerdefinierte Regeln
 
 Sie können eine benutzerdefinierte Regel erstellen, indem Sie auf der Registerkarte **Benutzerdefinierte Regeln** die Option **Benutzerdefinierte Regel hinzufügen** auswählen. Die Seite für die Konfiguration einer benutzerdefinierten Regel wird geöffnet. Der folgende Screenshot zeigt ein Beispiel für eine benutzerdefinierte Regel, nach deren Konfiguration eine Anforderung blockiert wird, wenn die Abfragezeichenfolge den Text *blockme* enthält.
 
-[![Bearbeiten benutzerdefinierter Regeln](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
+[ ![Bearbeiten benutzerdefinierter Regeln](../media/create-waf-policy-ag/edit-custom-rule.png) ](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>Migrieren Ihrer WAF-Konfiguration zu einer WAF-Richtlinie
 
@@ -82,7 +79,7 @@ Wenn Sie bereits über eine WAF verfügen, sind Ihnen möglicherweise einige Än
 
 Sie können den Zustand der WAF im Portal erkennen. Wenn die WAF-Einstellungen sichtbar sind und in der Application Gateway-Ansicht geändert werden können, befindet sich die WAF im Zustand 1.
 
-[![WAF-Konfiguration](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
+[ ![WAF-Konfiguration](../media/create-waf-policy-ag/waf-configure.png) ](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 Wenn Sie **Web Application Firewall** auswählen und eine zugeordnete Richtlinie angezeigt wird, befindet sich die WAF in einem der Zustände 2 oder 3. Wenn nach dem Navigieren zur Richtlinie **nur** benutzerdefinierte Regeln und zugeordnete Application Gateway-Instanzen angezeigt werden, handelt es sich um eine Richtlinie mit ausschließlich benutzerdefinierten Regeln.
 

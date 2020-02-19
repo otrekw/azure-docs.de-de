@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.openlocfilehash: 38e688528d7445b16141d9f1ecc0318faf07e140
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e3f55f9be28a8b53f012e111e43ba1f495b1d585
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510004"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186467"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installieren der Azure IoT Edge-Runtime unter Windows
 
@@ -133,14 +133,14 @@ Wenn Sie ein Gerät automatisch installieren und bereitstellen lassen, können S
 
 Weitere Informationen zu diesen Installationsoptionen finden Sie in diesem Artikel. Sie können diesen auch überspringen und [hier](#all-installation-parameters) mehr über alle Installationsparameter erfahren.
 
-## <a name="offline-installation"></a>Offlineinstallation
+## <a name="offline-or-specific-version-installation"></a>Offlineinstallation oder Installation einer bestimmten Version
 
 Während der Installation werden zwei Dateien mit folgendem Inhalt heruntergeladen:
 
 * Microsoft Azure IoT Edge-CAB-Datei, die IoT Edge-Sicherheitsdaemon (iotedged), Moby-Container-Engine und Moby-CLI enthält.
-* Visual C++ Redistributable Package (VC-Runtime, MSI-Datei)
+* Visual C++ Redistributable Package (VC-Runtime) MSI
 
-Sie können eine Datei oder beide vorher auf das Gerät herunterladen und das Verzeichnis dieser Dateien im Installationsskript angeben. Das Installationsprogramm überprüft dieses Verzeichnis dann zuerst und lädt nur Komponenten herunter, die nicht gefunden werden konnten. Wenn alle Dateien offline verfügbar sind, können Sie die Installation ohne Internetverbindung durchführen. Sie können mit diesem Feature auch eine bestimmte Version der Komponenten installieren.  
+Wenn Ihr Gerät während der Installation offline ist oder wenn Sie eine bestimmte Version von IoT Edge installieren möchten, können Sie eine dieser Dateien oder beide im Voraus auf das Gerät herunterladen. Wenn Sie die Installation durchführen möchten, verweisen Sie im Installationsskript auf das Verzeichnis, in dem die heruntergeladenen Dateien gespeichert sind. Das Installationsprogramm überprüft dieses Verzeichnis zuerst und lädt dann nur Komponenten herunter, die nicht gefunden werden konnten. Wenn alle Dateien offline verfügbar sind, können Sie die Installation ohne Internetverbindung durchführen.
 
 Die aktuellen IoT Edge-Installationsdateien und die früheren Versionen finden Sie auf der Seite für [Azure IoT Edge-Releases](https://github.com/Azure/azure-iotedge/releases).
 
@@ -151,7 +151,17 @@ Wenn Sie die Installation mit Offlinekomponenten durchführen möchten, müssen 
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-Sie können auch den Pfadparameter der Offlineinstallation mit dem weiter unten in diesem Artikel vorgestellten Update-IoTEdge-Befehl verwenden.
+>[!NOTE]
+>Der Parameter `-OfflineInstallationPath` sucht im angegebenen Verzeichnis nach der Datei **Microsoft-Azure-IoTEdge.cab**. Ab IoT Edge, Version 1.0.9-rc4, stehen zwei CAB-Dateien zur Verfügung – eine für AMD64-Geräte und eine für ARM32. Laden Sie die richtige Datei für Ihr Gerät herunter, und benennen Sie sie um, damit das Architektursuffix entfernt wird.
+
+Mit dem Befehl `Deploy-IoTEdge` werden die IoT Edge-Komponenten installiert. Als Nächstes müssen Sie mit dem Befehl `Initialize-IoTEdge` das Gerät mit seiner IoT Hub-Geräte-ID und -Verbindung bereitstellen. Führen Sie entweder den Befehl direkt aus, und geben Sie eine Verbindungszeichenfolge aus IoT Hub an, oder informieren Sie sich über einen der Links im vorherigen Abschnitt, wie Geräte mit dem Device Provisioning-Dienst automatisch bereitgestellt werden.
+
+```powershell
+. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+Initialize-IoTEdge
+```
+
+Sie können auch den Pfadparameter für die Offlineinstallation mit dem Befehl „Update-IoTEdge“ verwenden.
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
@@ -204,29 +214,6 @@ Die Engine-URI ist in der Ausgabe des Installationsskripts aufgeführt, oder Sie
 ![moby_runtime uri in config.yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
 Weitere Informationen zu Befehlen, mit denen Sie mit Containern und Images interagieren können, die auf Ihrem Gerät ausgeführt werden, finden Sie unter [Docker-Befehlszeilenschnittstellen](https://docs.docker.com/engine/reference/commandline/docker/).
-
-## <a name="update-an-existing-installation"></a>Aktualisieren einer bestehenden Installation
-
-Wenn Sie die IoT Edge-Runtime bereits auf einem Gerät installiert und mit einer Identität von IoT Hub bereitgestellt haben, können Sie die Runtime aktualisieren, ohne Ihre Geräteinformationen neu eingeben zu müssen.
-
-Weitere Informationen finden Sie unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md).
-
-In diesem Beispiel wird eine Installation veranschaulicht, die auf eine vorhandene Konfigurationsdatei verweist und Windows-Container verwendet:
-
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Update-IoTEdge
-```
-
-Bei der Aktualisierung von IoT Edge können Sie zusätzliche Parameter verwenden, um das Update zu ändern, einschließlich:
-
-* Sie können direkten Datenverkehr über einen Proxyserver leiten, oder
-* Sie können das Installationsprogramm auf ein Offlineverzeichnis verweisen.
-* Neustart ohne Aufforderung, falls erforderlich
-
-Sie können das Containerimage eines IoT Edge-Agents nicht mit Skriptparametern deklarieren, da diese Informationen durch die vorherige Installation bereits in der Konfigurationsdatei festgelegt wurden. Wenn Sie das Containerimage eines Agents ändern möchten, müssen Sie dies in der config.yaml-Datei durchführen.
-
-Um weitere Informationen zu diesen Updateoptionen zu erhalten, verwenden Sie den Befehl `Get-Help Update-IoTEdge -full`, oder fahren Sie mit [Alle Installationsparameter](#all-installation-parameters) fort.
 
 ## <a name="uninstall-iot-edge"></a>Deinstallieren von IoT Edge
 

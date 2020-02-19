@@ -1,5 +1,5 @@
 ---
-title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell | Microsoft-Dokumentation
+title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 06/12/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c1ea26fdb4d60262f89ea6ab0f87220a08c01e68
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba18b89bd37dbd55350321c503e37ab0590ab87
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113592"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137395"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-azure-powershell"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit Azure PowerShell
 

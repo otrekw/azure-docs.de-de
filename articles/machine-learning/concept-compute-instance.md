@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: f6d2da49e2659cfa69d25e3fe71351547706fd42
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984845"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169835"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -26,9 +26,6 @@ Nutzen Sie eine Compute-Instanz als Ihre vollständig konfigurierte und verwalte
 
 Compute-Instanzen werden in der Regel als Entwicklungsumgebungen genutzt.  Sie können auch als Computeziel für Entwicklungs- und Testzwecke für Training und Rückschluss verwendet werden.  Bei umfangreichen Aufgaben ist ein [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten die bessere Wahl eines Computeziels.
 
-> [!NOTE]
-> Computeinstanzen sind zurzeit nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden. 
 
 ## <a name="why-use-a-compute-instance"></a>Gründe für eine Compute-Instanz
 
@@ -124,7 +121,7 @@ Sie können folgende Aktionen ausführen:
 
 Für jede Compute-Instanz in Ihrem Arbeitsbereich können Sie folgende Aktionen ausführen:
 
-* Zugreifen auf Jupyter-, JupyterLab-, RStudio- und Visual Studio Code-URIs auf der Compute-Instanz
+* Zugreifen auf Jupyter, JupyterLab, RStudio auf der Computeinstanz
 * SSH-Verbindung mit Compute-Instanz. Der SSH-Zugriff ist standardmäßig deaktiviert, kann aber zum Zeitpunkt der Erstellung der Compute-Instanz aktiviert werden. Der SSH-Zugriff erfolgt über einen Mechanismus mit öffentlichem/privatem Schlüssel. Auf der Registerkarte finden Sie Details zur SSH-Verbindung wie IP-Adresse, Benutzername und Portnummer.
 * Informieren Sie sich über Details einer bestimmten Compute-Instanz wie IP-Adresse und Region.
 

@@ -5,16 +5,16 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alzam
-ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4b9678f72dd69db24b105d4b1d708928e29a09ba
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647916"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134512"
 ---
-# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung (Vorschau)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung
 
 Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Verbindung zu einem virtuellen Netzwerk mit einem Point-to-Site-VPN und Azure Active Directory-Authentifizierung. Damit Sie mit Azure AD eine Verbindung herstellen und eine Authentifizierung durchführen können, müssen Sie zuerst Ihren Azure AD-Mandanten konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md).
 
@@ -24,11 +24,11 @@ Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Ve
 
 ## <a name="profile"></a>Arbeiten mit Clientprofilen
 
-Sie müssen zum Herstellen einer Verbindung auf jedem Computer, der eine Verbindung mit dem VNET herstellen möchte, Azure VPN Client (Vorschauversion) herunterladen und ein VPN-Clientprofil konfigurieren. Sie können ein Clientprofil auf einem Computer erstellen, das Profil exportieren und dann auf weiteren Computern importieren.
+Zum Herstellen einer Verbindung müssen Sie auf jedem Computer, der eine Verbindung mit dem VNET herstellen möchte, Azure VPN Client herunterladen und ein VPN-Clientprofil konfigurieren. Sie können ein Clientprofil auf einem Computer erstellen, das Profil exportieren und dann auf weiteren Computern importieren.
 
 ### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
-Verwenden Sie [diesen Link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab), um Azure VPN Client (Vorschauversion) herunterzuladen.
+Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um Azure VPN Client herunterzuladen.
 
 ### <a name="cert"></a>So erstellen Sie ein zertifikatbasiertes Clientprofil
 
@@ -163,6 +163,24 @@ Sie können die heruntergeladene XML-Profildatei ändern und die Tags **\<dnssuf
           <dnssuffix>.xyz.com</dnssuffix>
           <dnssuffix>.etc.net</dnssuffix>
     </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Wie füge ich dem VPN-Client benutzerdefinierte Routen hinzu?
+
+Sie können die heruntergeladene XML-Profildatei ändern und die Tags **\<route>\<includeroutes>\<destination>\<mask> \</route>\</includeroutes>\</destination>\</mask>** hinzufügen.
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
     
 </clientconfig>
 </azvpnprofile>

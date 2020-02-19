@@ -8,12 +8,12 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 058fe9aea87879fe85dcbc6dcb864fd841fcb049
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026422"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049695"
 ---
 # <a name="export-your-azure-iot-central-data"></a>Exportieren Ihrer Azure IoT Central-Daten
 
@@ -62,10 +62,14 @@ Wenn Sie eine Service Bus-Instanz als Exportziel auswählen, dürfen für Wartes
 
 Wenn Sie kein vorhandenes Azure Storage-Konto als Exportziel haben, führen Sie die folgenden Schritte aus:
 
-1. Erstellen Sie ein [neues Speicherkonto im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie können sich zum Erstellen neuer [Azure Blob Storage-Konten](https://aka.ms/blobdocscreatestorageaccount) oder neuer [Azure Data Lake Storage v2-Speicherkonten](../../storage/blobs/data-lake-storage-quickstart-create-account.md) genauer informieren.
+1. Erstellen Sie ein [neues Speicherkonto im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie können sich zum Erstellen neuer [Azure Blob Storage-Konten](https://aka.ms/blobdocscreatestorageaccount) oder neuer [Azure Data Lake Storage v2-Speicherkonten](../../storage/blobs/data-lake-storage-quickstart-create-account.md) genauer informieren. Beim Datenexport können Daten nur in Speicherkonten geschrieben werden, die Blockblobs unterstützen. Im Folgenden finden Sie eine Liste bekannter kompatibler Typen von Speicherkonten: 
 
-    - Wenn Sie Daten in ein Azure Data Lake Storage v2-Speicherkonto exportieren möchten, müssen Sie in **Kontoart** die Option **BlobStorage** auswählen.
-    - Sie können Daten in Speicherkonten anderer Abonnements exportieren, die sich vom Abonnement für Ihre IoT Central-Anwendung unterscheiden. In diesem Fall stellen Sie die Verbindung mithilfe einer Verbindungszeichenfolge her.
+    |Leistungsstufe|Kontotyp|
+    |-|-|
+    |Standard|Universell v2|
+    |Standard|Universell v1|
+    |Standard|Blob Storage|
+    |Premium|Block Blob Storage|
 
 2. Erstellen Sie einen Container in Ihrem Speicherkonto. Wechseln Sie zum Speicherkonto. Wählen Sie unter **Blob-Dienst** die Option **Blobs durchsuchen**. Wählen Sie oben die Option **+ Container** aus, um einen neuen Container zu erstellen.
 

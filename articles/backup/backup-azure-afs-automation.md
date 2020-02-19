@@ -3,12 +3,12 @@ title: Sichern von Azure Files mit PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell sichern.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773100"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120518"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Sichern von Azure Files mit PowerShell
 
@@ -44,6 +44,13 @@ Die Objekthierarchie ist im folgenden Diagramm zusammengefasst.
 Richten Sie PowerShell wie folgt ein:
 
 1. [Laden Sie die neueste Version von Azure PowerShell](/powershell/azure/install-az-ps) herunter. Version 1.0.0 ist die erforderliche Mindestversion.
+
+> [!WARNING]
+> Die für die Vorschau erforderliche Mindestversion von PowerShell war Az 1.0.0. Aufgrund bevorstehender Änderungen für die allgemeine Verfügbarkeit ist die erforderliche PowerShell-Mindestversion nun Az.RecoveryServices 2.6.0. Alle vorhandenen PowerShell-Versionen müssen unbedingt auf diese Version aktualisiert werden. Andernfalls treten bei den vorhandenen Skripts nach der allgemeinen Verfügbarkeit Fehler auf. Installieren Sie die Mindestversion mit den folgenden PowerShell-Befehlen.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
 
 2. Ermitteln Sie die PowerShell-Cmdlets für Azure Backup mit dem folgenden Befehl:
 
@@ -241,19 +248,32 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
+## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Wichtiger Hinweis: Identifizierung von Sicherungselementen für AFS-Sicherungen
+
+In diesem Abschnitt wird eine wichtige Änderung bei der AFS-Sicherung als Vorbereitung für die allgemeine Verfügbarkeit erläutert.
+
+Beim Aktivieren der Sicherung für AFS gibt der Benutzer den benutzerfreundlichen Dateifreigabenamen als Entitätsnamen ein. Dann wird ein Sicherungselement erstellt. Der „Name“ des Sicherungselements ist ein eindeutiger Bezeichner, der im Azure Backup-Dienst erstellt wird. Der Bezeichner enthält in der Regel den benutzerfreundlichen Namen. In Bezug auf das wichtige Szenario des vorläufigen Löschens, bei dem eine Dateifreigabe gelöscht werden und eine andere Freigabe mit dem gleichen Namen erstellt werden kann, wird als eindeutige Identität in Azure nun jedoch eine ID anstelle eines benutzerfreundlichen Namens verwendet. Um die eindeutige Identität oder den eindeutigen Namen der einzelnen Elemente zu ermitteln, führen Sie einfach den Befehl ```Get-AzRecoveryServicesBackupItem``` mit den entsprechenden Filtern für backupManagementType und WorkloadType aus, um alle relevanten Elemente abzurufen, und sehen Sie sich dann das Feld „Name“ im zurückgegebenen PS-Objekt oder der zurückgegebenen PS-Antwort an. Es wird immer empfohlen, Elemente aufzulisten und dann ihren eindeutigen Namen aus dem Feld „Name“ in der Antwort abzurufen. Verwenden Sie diesen Wert, um die Elemente mit dem Parameter „Name“ zu filtern. Verwenden Sie andernfalls den Parameter „FriendlyName“, um das Element mit seinem benutzerfreundlichen Namen oder Bezeichner abzurufen.
+
+> [!WARNING]
+> Stellen Sie für AFS-Sicherungen sicher, dass die PS-Version auf die Mindestversion für Az.RecoveryServices 2.6.0 aktualisiert wird. Mit dieser Version ist der Filter „friendlyName“ für den Befehl ```Get-AzRecoveryServicesBackupItem``` verfügbar. Übergeben Sie den Namen der Azure-Dateifreigabe an den Parameter „friendlyName“. Wenn Sie den Namen der Azure-Dateifreigabe an den Parameter „Name“ übergeben, löst diese Version eine Warnung aus, dass dieser Anzeigename an den Parameter „friendlyName“ übergeben werden muss. Wenn Sie diese Mindestversion nicht installieren, kann dies zu Fehlern bei vorhandenen Skripts führen. Installieren Sie die Mindestversion von PowerShell mit dem folgenden Befehl.
+
+```powershell
+Install-module -Name Az.RecoveryServices -RequiredVersion 2.6.0
+```
+
 ## <a name="trigger-an-on-demand-backup"></a>Auslösen einer bedarfsgesteuerten Sicherung
 
 Verwenden Sie [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0), um eine bedarfsgesteuerte Sicherung für eine geschützte Azure-Dateifreigabe auszuführen.
 
-1. Rufen Sie mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) das Speicherkonto und die Dateifreigabe aus dem Container im Tresor ab, in dem sich die Sicherungsdaten befinden.
-2. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zum virtuellen Computer ab.
+1. Rufen Sie mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) das Speicherkonto aus dem Container im Tresor ab, in dem sich die Sicherungsdaten befinden.
+2. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zu der Azure-Dateifreigabe ab.
 3. Führen Sie mit [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) eine bedarfsgesteuerte Sicherung aus.
 
 Führen Sie die bedarfsgesteuerte Sicherung wie folgt aus:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -Name "testAzureFS"
+$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType "AzureFiles" -FriendlyName "testAzureFS"
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
@@ -272,6 +292,9 @@ Momentaufnahmen von Azure-Dateifreigaben werden beim Erstellen von Sicherungen v
 Durch Verwendung von bedarfsgesteuerten Sicherungen können Ihre Momentaufnahmen 10 Jahre lang aufbewahrt werden. Sie können Scheduler verwenden, um bedarfsgesteuerte PowerShell-Skripts mit ausgewählter Aufbewahrung auszuführen und so Momentaufnahmen in regelmäßigen Abständen (wöchentlich, monatlich oder jährlich) zu erstellen. Informationen zum Erstellen regelmäßiger Momentaufnahmen unter Verwendung von Azure Backup finden Sie unter den [Einschränkungen von bedarfsgesteuerten Sicherungen](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share).
 
 Ein Beispielskript finden Sie auf GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>). Mit diesem Skript können Sie unter Verwendung eines Azure Automation-Runbooks Sicherungen regelmäßig planen und sogar bis zu 10 Jahre aufbewahren.
+
+> [!WARNING]
+> Stellen Sie sicher, dass die PS-Version in den Automatisierungs-Runbooks auf die Mindestversion für Az.RecoveryServices 2.6.0 für AFS-Sicherungen aktualisiert wird. Sie müssen das alte Modul „AzureRM“ durch das Modul „Az“ ersetzen. Mit dieser Version ist der Filter „friendlyName“ für den Befehl ```Get-AzRecoveryServicesBackupItem``` verfügbar. Übergeben Sie den Namen der Azure-Dateifreigabe an den Parameter „friendlyName“. Wenn Sie den Namen der Azure-Dateifreigabe an den Parameter „Name“ übergeben, löst diese Version eine Warnung aus, dass dieser Anzeigename an den Parameter „friendlyName“ übergeben werden muss.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

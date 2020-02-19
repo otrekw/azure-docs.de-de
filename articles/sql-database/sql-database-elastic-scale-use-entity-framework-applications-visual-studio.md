@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/04/2019
-ms.openlocfilehash: 4198b3a9213ed535c6649c50a20f2ff957d60c94
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1653a904875964d86864c59c718603a6dacdcbda
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823484"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087187"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Clientbibliothek für elastische Datenbanken mit Entity Framework
 
@@ -27,7 +27,7 @@ Dieses Dokument zeigt, welche Änderungen in einer Entity Framework-Anwendung er
 So laden Sie den Code für diesen Artikel herunter:
 
 * Visual Studio 2012 oder höher wird vorausgesetzt. 
-* Laden Sie das [Beispiel Elastic DB Tools for Azure SQL – Entity Framework Integration](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) von MSDN herunter. Entzippen Sie das Beispiel in einem Speicherort Ihrer Wahl.
+* Laden Sie das [Beispiel Elastic DB Tools for Azure SQL – Entity Framework Integration](https://github.com/Azure/elastic-db-tools/) herunter. Entzippen Sie das Beispiel in einem Speicherort Ihrer Wahl.
 * Starten Sie Visual Studio. 
 * Wählen Sie in Visual Studio „Datei“ > „Projekt/Projektmappe öffnen“ aus. 
 * Navigieren Sie im Dialog **Projekt öffnen** zu dem Beispiel, das Sie heruntergeladen haben, und wählen Sie **EntityFrameworkCodeFirst.sln** aus, um das Beispiel zu öffnen. 
@@ -66,7 +66,7 @@ Bei gleichzeitiger Verwendung der Clientbibliothek für elastische Datenbanken u
 * **Horizontale Skalierung:** Datenbanken werden der Datenschicht der Anwendung entsprechend den Kapazitätsanforderungen der partitionierten Anwendung hinzugefügt oder aus dieser entfernt. Dies impliziert die Kontrolle über die Erstellung und Löschung von Datenbanken und den Einsatz der APIs für die Shardzuordnungsverwaltung von elastischen Datenbanken, um Datenbanken und die Zuordnung von Shardlets zu verwalten. 
 * **Konsistenz:** Die Anwendung nutzt Sharding und verwendet die datenabhängigen Routingfunktionen der Clientbibliothek. Um Beschädigung von Daten oder falsche Abfrageergebnisse zu vermeiden, werden Verbindungen über die Shard-Zuordnungsverwaltung vermittelt. Dadurch bleiben auch Gültigkeitsprüfung und Konsistenz gewahrt.
 * **Code First:** Beibehalten des komfortablen Code-First-Paradigmas von EF. In Code First werden in der Anwendung vorhandene Klassen transparent den zugrunde liegenden Datenbankstrukturen zugeordnet. Der Anwendungscode arbeitet mit DbSets, wodurch die meisten Aspekte der zugrunde liegenden Datenbankverarbeitung maskiert werden.
-* **Schema:** Entity Framework übernimmt die Schemaerstellung für die Ausgangsdatenbank und die nachfolgende Weiterentwicklung des Schemas über Migrationsvorgänge. Wenn diese Funktionen beibehalten werden, lassen sich Anwendung einfach an die Datenentwicklung anpassen. 
+* **Schema**: Entity Framework übernimmt die Schemaerstellung für die Ausgangsdatenbank und die nachfolgende Weiterentwicklung des Schemas über Migrationsvorgänge. Wenn diese Funktionen beibehalten werden, lassen sich Anwendung einfach an die Datenentwicklung anpassen. 
 
 Die folgende Anleitung beschreibt, wie diese Anforderungen für Code-First-Anwendungen unter Verwendung der Tools für elastische Datenbanken erfüllt werden. 
 

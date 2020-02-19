@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544156"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161646"
 ---
-# <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Vorschauversion: Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager
+# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager
 
 Für Azure Active Directory Domain Services (AD DS) wird für Kunden, die derzeit das klassische VNET-Modell nutzen, eine einmalige Umstellung auf das Resource Manager-basierte VNET-Modell unterstützt. Von Azure AD DS verwaltete Domänen, die das Resource Manager-Bereitstellungsmodell verwenden, bieten zusätzliche Features wie eine differenzierte Kennwortrichtlinie, Überwachungsprotokolle und einen Kontosperrschutz.
 
-In diesem Artikel werden die Vorteile und Aspekte der Migration und anschließend die erforderlichen Schritte für eine erfolgreiche Migration zu einer vorhandenen Azure AD DS-Instanz beschrieben. Diese Migrationsfunktion steht derzeit als Vorschauversion zur Verfügung.
+In diesem Artikel werden die Vorteile und Aspekte der Migration und anschließend die erforderlichen Schritte für eine erfolgreiche Migration zu einer vorhandenen Azure AD DS-Instanz beschrieben.
 
 ## <a name="overview-of-the-migration-process"></a>Übersicht über den Migrationsprozess
 

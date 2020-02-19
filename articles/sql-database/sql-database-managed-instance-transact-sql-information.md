@@ -9,14 +9,14 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 12/30/2019
+ms.date: 02/10/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 7319bb680e449a27fbe6f48c831d87d9c7b5ba4f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 392d7d7efcd5b23a7a4575e2d22d21fb4433bb6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552745"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121957"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -276,7 +276,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
 
 - Das Aktivieren und Deaktivieren von SQL Server-Agent wird derzeit in verwalteten Instanzen nicht unterstützt. Der SQL-Agent wird immer ausgeführt.
 - SQL Server-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt. 
-- Jobs
+- Aufträge
   - T-SQL-Auftragsschritte werden unterstützt.
   - Die folgenden Replikationsaufträge werden unterstützt:
     - Transaktionsprotokollleser
@@ -531,6 +531,15 @@ Die folgenden MSDB-Schemas in der verwalteten Instanz müssen ihren jeweiligen v
 Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog ](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) oder [Verwaltete Instanzerweiterung (Vorschauversion)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) für Azure Data Studio.
 
 ## <a name="Issues"></a> Bekannte Probleme
+
+
+### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Einschränkung beim manuellen Failover über das Portal für Failovergruppen
+
+**Datum:** Januar 2020
+
+Wenn sich die Failovergruppe über mehrere Instanzen in verschiedenen Azure-Abonnements oder Ressourcengruppen erstreckt, kann von der primären Instanz in der Failovergruppe kein manuelles Failover initiiert werden.
+
+**Problemumgehung**: Initiieren Sie das Failover über das Portal von der geosekundären Instanz.
 
 ### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind
 

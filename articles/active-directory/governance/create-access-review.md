@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 05/21/2019
+ms.date: 02/06/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fcb2198ea3f01e923022c205e478167240a01894
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932624"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084449"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -127,6 +127,20 @@ Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung
 Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md) anzeigen. Wenn Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen ](review-your-access.md) anzeigen.
 
 Wenn Sie Gäste als Prüfer zugewiesen haben, diese die Einladung aber nicht angenommen haben, erhalten sie keine E-Mail zu Zugriffsüberprüfungen, da die Einladung zuerst akzeptiert werden muss, bevor Überprüfungen vorgenommen werden können.
+
+## <a name="access-review-status-table"></a>Zugriffsüberprüfungs-Statustabelle
+
+| Status | Definition |
+|--------|------------|
+|NotStarted | Die Überprüfung wurde erstellt, die Benutzerermittlung wartet auf den Start. |
+|Wird initialisiert...   | Die Benutzerermittlung ist dabei, alle Benutzer zu identifizieren, die Teil der Überprüfung sind. |
+|Wird gestartet | Die Überprüfung wird gestartet. Wenn E-Mail-Benachrichtigungen erlaubt sind, werden E-Mails an Überprüfer gesendet. |
+|InProgress | Die Überprüfung hat begonnen. Wenn E-Mail-Benachrichtigungen aktiviert sind, wurden E-Mails an Überprüfer gesendet. Überprüfer können Entscheidungen bis zum Fälligkeitsdatum einreichen. |
+|Wird abgeschlossen | Die Überprüfung wird abgeschlossen, und E-Mails werden an den Besitzer der Überprüfung gesendet. |
+|Die automatische Überprüfung wird ausgeführt | Die Überprüfung befindet sich in einer Systemüberprüfungsphase. Das System zeichnet Entscheidungen für Benutzer auf, die auf der Grundlage von Empfehlungen oder vorkonfigurierten Entscheidungen nicht geprüft wurden. |
+|Automatisch überprüft | Für alle Benutzer, die nicht überprüft wurden, wurden Entscheidungen vom System aufgezeichnet. Die Überprüfung ist bereit, zu **Anwenden** fortzuschreiten, wenn die automatische Übernahme aktiviert ist. |
+|Anwenden | Für Benutzer, die genehmigt wurden, wird der Zugriff nicht geändert. |
+|Übernommen | Abgelehnte Benutzer, sofern vorhanden, wurden aus der Ressource oder dem Verzeichnis entfernt. |
 
 ## <a name="create-reviews-via-apis"></a>Erstellen von Überprüfungen über APIs
 

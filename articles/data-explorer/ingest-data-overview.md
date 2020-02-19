@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091787"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187991"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -76,7 +76,7 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 
 * Erfassen von Daten über den Datenverwaltungsdienst von Azure-Daten-Explorer (hoher Durchsatz und zuverlässige Erfassung):
 
-    [**Batch-Erfassung** ](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (bereitgestellt vom SDK): Der Client lädt die Daten auf den Azure Blob Storage hoch (der vom Datenverwaltungsdienst des Azure-Daten-Explorers angegeben wird) und sendet eine Benachrichtigung an eine Azure-Warteschlange. Batch-Erfassung ist die empfohlene Technik für die hochvolumige, zuverlässige und kostengünstige Datenerfassung.
+    [**Batch-Erfassung**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (bereitgestellt vom SDK): Der Client lädt die Daten auf den Azure Blob Storage hoch (der vom Datenverwaltungsdienst des Azure-Daten-Explorers angegeben wird) und sendet eine Benachrichtigung an eine Azure-Warteschlange. Batch-Erfassung ist die empfohlene Technik für die hochvolumige, zuverlässige und kostengünstige Datenerfassung.
 
 * Erfassen von Daten direkt in die Azure-Daten-Explorer-Engine (am besten geeignet für Untersuchungen und Prototyping):
 
@@ -118,7 +118,7 @@ Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messaging
 ## <a name="supported-data-formats"></a>Unterstützte Datenformate
 
 Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der Abfrage so, dass sie von Azure Data Explorer analysiert werden können. 
-* Die folgenden Datenformate werden unterstützt: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (getrennte Zeilen, mehrzeilig), Avro und Parquet. 
+* Die folgenden Datenformate werden unterstützt: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (getrennte Zeilen, mehrzeilig), Avro, Orc und Parquet. 
 * Unterstützt ZIP- und GZIP-Komprimierung.
 
 > [!NOTE]
@@ -133,8 +133,8 @@ Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der A
 
 Die Schemazuordnung hilft dabei, Quelldatenfelder an Spalten der Zieltabelle zu binden.
 
-* [CSV-Zuordnung](/azure/kusto/management/mappings?branch=master#csv-mapping) (optional) funktioniert mit allen ordinalbasierten Formaten. Sie kann über den Erfassungsbefehlsparameter vorgenommen oder [in der Tabelle vorab erstellt](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) und vom Erfassungsbefehlsparameter referenziert werden.
-* Die [JSON-Zuordnung](/azure/kusto/management/mappings?branch=master#json-mapping) (obligatorisch) und die [Avro-Zuordnung](/azure/kusto/management/mappings?branch=master#avro-mapping) (obligatorisch) können mit dem Erfassungsbefehlsparameter durchgeführt werden. Diese Vorgänge können auch [in der Tabelle vorab erstellt](/azure/kusto/management/tables#create-ingestion-mapping) und vom Erfassungsbefehlsparameter referenziert werden.
+* [CSV-Zuordnung](/azure/kusto/management/mappings?branch=master#csv-mapping) (optional) funktioniert mit allen ordinalbasierten Formaten. Sie kann über den Erfassungsbefehlsparameter vorgenommen oder [in der Tabelle vorab erstellt](/azure/kusto/management/create-ingestion-mapping-command) und vom Erfassungsbefehlsparameter referenziert werden.
+* Die [JSON-Zuordnung](/azure/kusto/management/mappings?branch=master#json-mapping) (obligatorisch) und die [Avro-Zuordnung](/azure/kusto/management/mappings?branch=master#avro-mapping) (obligatorisch) können mit dem Erfassungsbefehlsparameter durchgeführt werden. Diese Vorgänge können auch [in der Tabelle vorab erstellt](/azure/kusto/management/create-ingestion-mapping-command) und vom Erfassungsbefehlsparameter referenziert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

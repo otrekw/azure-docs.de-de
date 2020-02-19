@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644680"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137962"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -50,14 +50,7 @@ Der Textanalyse-API bietet zwei Versionen der Standpunktanalyse – v2 und v3. S
 | Bezeichnung von Stimmungen                        |                       | X                     |
 | Versionsverwaltung der Modelle                   |                       | X                     |
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>Standpunktbewertung
-
-Die Standpunktanalyse klassifiziert den Text als vorwiegend positiv oder negativ. Hierzu wird dem Text eine Punktzahl zwischen 0 und 1 zugewiesen. Gegen 0,5 tendierende Werte sind neutral oder ungewiss. Die Punktzahl 0,5 steht für Neutralität. Wenn für eine Zeichenfolge keine Standpunktanalyse möglich ist oder eine Zeichenfolge keinen Standpunkt beinhaltet, ist die Punktzahl immer genau 0,5. Wenn Sie also beispielsweise eine spanische Zeichenfolge mit einem Sprachcode für Englisch übergeben, ist die Punktzahl 0,5.
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Standpunktbewertung
 
@@ -85,6 +78,13 @@ Die Standpunktanalyse v3 kann Bewertungen und Bezeichnungen auf Satz- und Dokume
 
 Eine C#-Beispielanwendung, die diese Version der Standpunktanalyse aufruft, finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>Standpunktbewertung
+
+Die Standpunktanalyse klassifiziert den Text als vorwiegend positiv oder negativ. Hierzu wird dem Text eine Punktzahl zwischen 0 und 1 zugewiesen. Gegen 0,5 tendierende Werte sind neutral oder ungewiss. Die Punktzahl 0,5 steht für Neutralität. Wenn für eine Zeichenfolge keine Standpunktanalyse möglich ist oder eine Zeichenfolge keinen Standpunkt beinhaltet, ist die Punktzahl immer genau 0,5. Wenn Sie also beispielsweise eine spanische Zeichenfolge mit einem Sprachcode für Englisch übergeben, ist die Punktzahl 0,5.
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung 
@@ -101,27 +101,28 @@ Ein Dokument darf maximal 5.120 Zeichen enthalten. Pro Sammlung können bis zu 1
 
 Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Verweislinks [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-[Referenz zu Standpunktanalyse v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 [Referenz zu Standpunktanalyse v3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+[Referenz zu Standpunktanalyse v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
 Legen Sie den HTTPS-Endpunkt für die Standpunktanalyse entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Sie müssen die richtige URL für die Version einschließen, die Sie verwenden möchten. Beispiel:
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
+> [!NOTE]
+> Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ Die Standpunktanalyse klassifiziert den Text als vorwiegend positiv oder negativ
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können.
 
-#### <a name="version-2tabversion-2"></a>[Version 2](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>Beispielantwort der Standpunktanalyse v2
-
-Antworten von Standpunktanalyse v2 enthalten Standpunktergebnisse für jedes gesendete Dokument.
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Version 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-preview"></a>[Version 3.0-preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Beispielantwort der Standpunktanalyse v3
 
@@ -255,6 +237,26 @@ Antworten von Standpunktanalyse v3 enthalten Stimmungsbezeichnungen und Standpun
     "errors": []
 }
 ```
+
+#### <a name="version-21"></a>[Version 2.1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>Beispielantwort der Standpunktanalyse v2
+
+Antworten von Standpunktanalyse v2 enthalten Standpunktergebnisse für jedes gesendete Dokument.
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>Zusammenfassung

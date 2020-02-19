@@ -1,36 +1,29 @@
 ---
-title: Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus | Microsoft-Dokumentation
-description: Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Verwalten von Ressourcen im Resource Manager-Bereitstellungsmodell
-services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
-documentationcenter: ''
+title: Befehle der klassischen Azure-Befehlszeilenschnittstelle
+description: Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Verwalten von Ressourcen.
 author: cynthn
 manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: be37da5b-72fe-41a1-9fa0-8937b69464ec
-ms.service: multiple
-ms.workload: multiple
-ms.tgt_pltfrm: command-line-interface
-ms.devlang: na
+ms.service: virtual-machines
+ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355929"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122454"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
-Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).  
+# <a name="azure-classic-cli-commands"></a>Befehle der klassischen Azure-Befehlszeilenschnittstelle 
 
-> [!NOTE]
-> In diesem Artikel werden Befehle der Azure CLI (auch als klassische Azure CLI bezeichnet) im Resource Manager-Modus vorgestellt. Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure CLI](/cli/azure/install-az-cli2) testen, unsere Multi-Plattform-CLI der nächsten Generation.
->Erfahren Sie mehr über die [alte und die neue Azure-Befehlszeilenschnittstelle](/cli/azure/old-and-new-clis).
->
+> [!IMPORTANT]
+> In diesem Thema wird beschrieben, wie Sie die klassische Azure CLI installieren. Die klassische CLI ist veraltet und sollte nur mit dem klassischen Bereitstellungsmodell verwendet werden.
+> Verwenden Sie für alle anderen Bereitstellungen die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/).
 
-Führen Sie zuerst die [Installation der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) durch, und [stellen Sie die Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli).
+Dieser Artikel enthält die Syntax und Optionen für Befehle der klassischen Azure-Befehlszeilenschnittstelle (CLI), die Sie normalerweise zum Erstellen und Verwalten von Azure-Ressourcen verwenden. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. 
+
+Als Erstes [installieren Sie die klassische Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) und [stellen eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli).
 
 Geben Sie zum Anzeigen der aktuellen Befehlssyntax und Optionen in der Befehlszeile im Ressourcen-Manager-Modus `azure help` oder der Hilfe für einen bestimmten Befehl `azure help [command]` ein. In der Dokumentation finden Sie auch CLI-Beispiele zum Erstellen und Verwalten bestimmter Azure-Dienste.
 
@@ -45,10 +38,10 @@ Verwenden Sie den folgenden Befehl, um Befehle für den Resource Manager-Modus d
 
 > [!NOTE]
 > Der Azure Resource Manager-Modus und der Azure-Dienstverwaltungsmodus der CLI schließen sich gegenseitig aus. Das heißt, dass Ressourcen, die in einem Modus erstellt wurden, nicht im anderen Modus verwaltet werden können.
-> 
-> 
+>
 
-## <a name="azure-account-manage-your-account-information"></a>azure account: Verwalten Ihrer Kontoinformationen
+
+## <a name="account-information"></a>Kontoinformationen
 Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkonto zu verbinden.
 
 **Auflisten der importierten Abonnements**
@@ -75,7 +68,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>azure ad: Befehle zum Anzeigen von Active Directory-Objekten
+## <a name="active-directory-objects"></a>Active Directory-Objekte
 **Befehle zum Anzeigen von Active Directory-Anwendungen**
 
     ad app create [options]
@@ -102,7 +95,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>azure availset: Befehle zum Verwalten der Verfügbarkeitsgruppen
+## <a name="availability-sets"></a>Verfügbarkeitsgruppen
 **Erstellen einer Verfügbarkeitsgruppe innerhalb einer Ressourcengruppe**
 
     availset create [options] <resource-group> <name> <location> [tags]
@@ -119,7 +112,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>azure config: Befehle zum Verwalten lokaler Einstellungen
+## <a name="local-settings"></a>Lokale Einstellungen
 **Auflisten von der Konfigurationseinstellungen der Azure-Befehlszeilenschnittstelle**
 
     config list [options]
@@ -137,7 +130,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>azure feature: Befehle zum Verwalten von Kontofunktionen
+## <a name="account-features"></a>Kontofeatures
 **Auflisten aller für Ihr Abonnement verfügbaren Funktionen**
 
     feature list [options]
@@ -150,7 +143,7 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>azure group: Befehle zum Verwalten der Ressourcengruppen
+## <a name="resource-groups"></a>Ressourcengruppen
 **Erstellen einer Ressourcengruppe**
 
     group create [options] <name> <location>
@@ -189,12 +182,13 @@ Das Tool verwendet Ihre Azure-Kontoinformationen, um sich mit Ihrem Benutzerkont
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>azure hdinsight: Befehle zum Verwalten von HDInsight-Clustern
+## <a name="hdinsight-clusters"></a>HDInsight-Cluster
 **Befehle zum Erstellen oder Hinzufügen einer Cluster-Konfigurationsdatei**
 
     hdinsight config create [options] <configFilePath> <overwrite>
     hdinsight config add-config-values [options] <configFilePath>
     hdinsight config add-script-action [options] <configFilePath>
+
 
 Beispiel: Erstellen einer Konfigurationsdatei mit einer Skriptaktion, die beim Erstellen eines Clusters ausgeführt wird.
 
@@ -307,21 +301,21 @@ Parameteroptionen:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>azure insights: Befehle im Zusammenhang mit der Überwachung von Insights (Ereignisse, Warnungsregeln, Einstellungen für die automatische Skalierung, Metriken)
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>Erkenntnisse (Ereignisse, Warnungsregeln, Einstellungen für die Autoskalierung, Metriken)
 **Abrufen von Vorgangsprotokolle für ein Abonnement, eine correlationId, eine Ressourcengruppe, Ressource oder einen Ressourcenanbieter**
 
     insights logs list [options]
 
-## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>azure location: Befehle zum Abrufen verfügbarer Speicherorte für alle Ressourcentypen
+## <a name="locations"></a>Standorte 
 **Auflisten der verfügbaren Speicherorte**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>azure network: Befehle zum Verwalten von Netzwerkressourcen
+## <a name="network-resources"></a>Netzwerkressourcen
 **Befehle zum Verwalten virtueller Netzwerke**
 
     network vnet create [options] <resource-group> <name> <location>
-Erstellen Sie ein virtuelles Netzwerk. Im folgenden Beispiel erstellen wir ein virtuelles Netzwerk mit dem Namen "newvnet" für die Ressourcengruppe "myresourcegroup" in der Region "Westliche USA".
+Erstellen Sie ein virtuelles Netzwerk. Im folgenden Beispiel erstellen wir ein virtuelles Netzwerk mit dem Namen &quot;newvnet&quot; für die Ressourcengruppe &quot;myresourcegroup&quot; in der Region &quot;USA, Westen&quot;.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -1509,7 +1503,7 @@ Parameteroptionen:
 
     network gateway list [options] <resource-group>
 
-## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>azure provider: Befehle zum Verwalten von Ressourcenanbieterregistrierungen
+## <a name="resource-provider-registrations"></a>Ressourcenanbieterregistrierungen
 **Auflisten der zuletzt registrierten Anbieter in Resource Manager**
 
     provider list [options]
@@ -1526,7 +1520,7 @@ Parameteroptionen:
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>azure resource: Befehle zum Verwalten der Ressourcen
+## <a name="resources"></a>Ressourcen
 **Erstellen einer Ressource in einer Ressourcengruppe**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
@@ -1547,7 +1541,7 @@ Parameteroptionen:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>azure role: Befehle zum Verwalten der Azure-Rollen
+## <a name="azure-roles"></a>Azure-Rollen
 **Abrufen aller verfügbaren Rollendefinitionen**
 
     role list [options]
@@ -1562,7 +1556,7 @@ Parameteroptionen:
     role assignment list [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
-## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>azure storage: Befehle zum Verwalten Ihrer Speicherobjekte
+## <a name="storage-objects"></a>Speicherobjekte
 **Befehle zum Verwalten Ihrer Speicherkonten**
 
     storage account list [options]
@@ -1685,7 +1679,7 @@ Parameteroptionen:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>azure tag: Befehle zum Verwalten des Ressourcen-Manager-Tags
+## <a name="tags"></a>`Tags`
 **Hinzufügen eines Tags**
 
     tag create [options] <name> <value>
@@ -1702,7 +1696,7 @@ Parameteroptionen:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>azure vm: Befehle zum Verwalten Ihrer Azure Virtual Machines-Instanzen
+## <a name="virtual-machines"></a>Virtual Machines
 **Erstellen eines virtuellen Computers**
 
     vm create [options] <resource-group> <name> <location> <os-type>

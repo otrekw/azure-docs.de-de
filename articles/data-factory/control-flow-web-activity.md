@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 5929d4edac53b2be87e168b527034c5a473f154f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678173"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77110020"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
 Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben.
@@ -65,8 +65,8 @@ Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpu
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der Webaktivität | Zeichenfolge | Ja
-type | Muss auf **WebActivity** festgelegt sein. | Zeichenfolge | Ja
+name | Name der Webaktivität | String | Ja
+type | Muss auf **WebActivity** festgelegt sein. | String | Ja
 method | REST-API-Methode für den Zielendpunkt. | Eine Zeichenfolge. <br/><br/>Unterstützte Typen: „GET“, „POST“, „PUT“ | Ja
 url | Zielendpunkt und Pfad | Zeichenfolge (oder Ausdruck mit resultType der Zeichenfolge). Nach einer Minute tritt für die Aktivität ein Timeout mit einem Fehler auf, falls sie keine Antwort vom Endpunkt erhält. | Ja
 headers | Header, die in der Anforderung gesendet werden. Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Ja, der Content-Type-Header ist erforderlich. `"headers":{ "Content-Type":"application/json"}`
@@ -88,12 +88,16 @@ Die folgende Tabelle enthält die Anforderungen für JSON-Inhalt:
 | Nicht-JSON-Typ | Nicht unterstützt | Nicht unterstützt |
 ||||
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
+
+Im Folgenden finden Sie die unterstützten Authentifizierungstypen in der Webaktivität.
 
 ### <a name="none"></a>Keine
+
 Wenn keine Authentifizierung erforderlich ist, schließen Sie die Eigenschaft „authentication“ nicht ein.
 
 ### <a name="basic"></a>Basic
+
 Geben Sie Benutzername und Kennwort für die Standardauthentifizierung an.
 
 ```json
@@ -105,6 +109,7 @@ Geben Sie Benutzername und Kennwort für die Standardauthentifizierung an.
 ```
 
 ### <a name="client-certificate"></a>Clientzertifikat
+
 Geben Sie die Base64-codierten Inhalte einer PFX-Datei und das Kennwort an.
 
 ```json
@@ -125,6 +130,9 @@ Geben Sie den Ressourcen-URI an, für den das Zugriffstoken mithilfe der verwalt
     "resource": "https://management.azure.com/"
 }
 ```
+
+> [!NOTE]
+> Wenn Ihre Data Factory mit einem Git-Repository konfiguriert ist, müssen Sie Ihre Anmeldeinformationen in Azure Key Vault speichern, um die Standardauthentifizierung oder die Clientzertifikatauthentifizierung zu verwenden. Azure Data Factory speichert keine Kennwörter in Git.
 
 ## <a name="request-payload-schema"></a>Schema der Anforderungsnutzlast
 Wenn Sie die POST/PUT-Methode verwenden, stellt die Eigenschaft „body“ die Nutzlast dar, die an den Endpunkt gesendet wird. Sie können verknüpfte Dienste und Datasets als Teil der Nutzlast übergeben. Dies ist das Schema für die Nutzlast:

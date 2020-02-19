@@ -1,5 +1,5 @@
 ---
-title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure PowerShell | Microsoft-Dokumentation
+title: Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe von Azure PowerShell
 description: Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe von Azure PowerShell auflisten, erstellen, aktualisieren oder löschen.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa4ff5f35df0f541d8a7e633df024af81676e58b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 52057477fdba9757be2737c223d569b9e9a3e749
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703100"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137440"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Erstellen oder Aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe von Azure PowerShell
 

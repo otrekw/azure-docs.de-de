@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5cd82635f3aec2cca251e122aadf96f70d377c8a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833832"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190520"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 
@@ -28,7 +28,7 @@ Vergewissern Sie sich, dass die Azure PowerShell-Version 2.8.0 oder höher insta
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Die folgenden VM-Serien werden unterstützt: DSv3 und ESv3. 
+- Die folgenden VM-Serien werden unterstützt: DSv3, ESv3 und Fsv2. 
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -56,7 +56,7 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Erstellen eines Hosts
 
-Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.  Während der Vorschau werden die folgenden Host-SKU-Werte unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
+Nun erstellen Sie einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.
 
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).

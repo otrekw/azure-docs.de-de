@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053734"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122113"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Übersicht über die Unternehmenssicherheit in Azure HDInsight
 
@@ -32,7 +32,7 @@ Die Umgebungssicherheit in HDInsight wird mithilfe von [virtuellen Netzwerken](.
 
 Alle Cluster, die in einem VNET bereitgestellt werden, verfügen auch über einen privaten Endpunkt, der sich auf eine private IP-Adresse innerhalb des VNET auflöst, um privaten HTTP-Zugriff auf die Clustergateways zu ermöglichen.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Das [Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md) von HDInsight unterstützt die Active Directory-basierte Authentifizierung, Unterstützung mehrerer Benutzer und rollenbasierte Zugriffssteuerung. Die Active Directory-Integration wird durch die Verwendung von [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) erreicht. Mit diesen Funktionen können Sie einen HDInsight-Cluster erstellen, der in eine verwaltete Active Directory-Domäne eingebunden ist. Sie können dann eine Liste mit Mitarbeitern des Unternehmens konfigurieren, die eine Authentifizierung und Anmeldung am Cluster durchführen können.
 
@@ -60,7 +60,7 @@ Der Schutz von Daten ist wichtig, um die Sicherheits- und Compliance-Anforderung
 
 Beide Datenspeicher für HDInsight-Cluster – Azure Blob Storage und Azure Data Lake Storage Gen1/Gen2 – unterstützen die transparente serverseitige [Verschlüsselung von Daten](../../storage/common/storage-service-encryption.md) im Ruhezustand. Sichere HDInsight-Cluster arbeiten reibungslos mit dieser Funktion zur serverseitigen Verschlüsselung ruhender Daten zusammen.
 
-### <a name="compliance"></a>Compliance
+### <a name="compliance"></a>Kompatibilität
 
 Azure-Complianceangebote basieren auf unterschiedlichen Arten von Zusicherungen, z.B. formalen Zertifizierungen, Nachweisen, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. Informationen zur HDInsight-Compliance finden Sie im [Microsoft Trust Center](https://www.microsoft.com/trust-center) und in der [Übersicht der Microsoft Azure-Complianceangebote](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (in englischer Sprache).
 
@@ -87,12 +87,12 @@ Die folgende Tabelle enthält Links zu Ressourcen für jede Art von Sicherheitsl
 |  | Sicherstellen, dass das [Betriebssystempatching](../hdinsight-os-patching.md) in regelmäßigen Abständen durchgeführt wird | Kunde |
 | Netzwerksicherheit | Konfigurieren eines [virtuellen Netzwerks](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Konfigurieren [eingehender NSG-Regeln (Netzwerksicherheitsgruppe)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Kunde |
-|  | Konfigurieren einer [ausgehenden Datenverkehrseinschränkung](../hdinsight-restrict-outbound-traffic.md) mit Firewall (Vorschauversion) | Kunde |
+|  | Konfigurieren einer [ausgehenden Datenverkehrseinschränkung](../hdinsight-restrict-outbound-traffic.md) mit Firewall | Kunde |
 | Virtualisierte Infrastruktur | – | HDInsight (Cloudanbieter) |
 | Sicherheit der physischen Infrastruktur | – | HDInsight (Cloudanbieter) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Planen für HDInsight-Cluster mit Enterprise-Sicherheitspaket](apache-domain-joined-architecture.md)
-* [Konfigurieren von HDInsight-Clustern mit Enterprise-Sicherheitspaket](apache-domain-joined-configure.md)
+* [Konfigurieren eines HDInsight-Clusters mit dem Enterprise-Sicherheitspaket mithilfe der Azure Active Directory Domain Services](apache-domain-joined-configure.md)
 * [Verwalten von HDInsight-Clustern mit ESP](apache-domain-joined-manage.md)

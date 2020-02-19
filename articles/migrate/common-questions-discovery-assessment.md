@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen: Ermittlung, Bewertung und Abhängigkeitsanalys
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513285"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77059486"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -16,6 +16,8 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Ermitt
 
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate.
 - [Fragen](common-questions-appliance.md) zur Azure Migrate-Appliance.
+- [Fragen](common-questions-server-migration.md) zur Servermigration.
+
 
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Wie viele VMs können mit einer Appliance ermittelt werden?

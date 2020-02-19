@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 224180bdebdf94c6d2360df8ea6615add4675921
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72902183"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77135051"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Unterstützte Verteilungen und Treiber
 
@@ -34,7 +34,7 @@ Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuel
 
 | Distribution | Treiber |
 | --- | -- |
-|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.0 bis 7.6<br/><br/>CentOS-basiert: 7.0 bis 7.6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 9.1, Treiberbranch R430|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.0 bis 7.6<br/><br/>CentOS-basiert: 7.0 bis 7.6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 10.1, Treiberbranch R440|
 
 > [!WARNING] 
 > Die Installation von Drittanbietersoftware auf Red Hat-Produkten kann Auswirkungen auf die Red Hat-Supportbedingungen haben. Weitere Informationen hierzu finden Sie im [Red Hat-Knowledgebase-Artikel](https://access.redhat.com/articles/1067).

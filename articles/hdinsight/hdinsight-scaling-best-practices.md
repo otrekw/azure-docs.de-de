@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 0649908e4767e48d23306c72b8db92dea9f26284
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/05/2020
+ms.openlocfilehash: 035f819cfaad82373f7cb55a7bb2d14fc53bb49b
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030920"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064630"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -216,6 +216,10 @@ Wenn Hive temporäre Dateien zurückgelassen hat, können Sie diese Dateien vor 
 Wenn der Cluster beim zentralen Herunterskalieren auf weniger als drei Workerknoten häufig im abgesicherten Modus hängen bleibt und das Problem durch die vorherigen Schritte nicht behoben wird, können Sie vermeiden, dass der Cluster generell in den abgesicherten Modus wechselt, indem Sie mindestens drei Workerknoten beibehalten.
 
 Die Beibehaltung von drei Workerknoten ist kostenaufwendiger als das zentrale Herunterskalieren auf nur einen Workerknoten, es wird jedoch verhindert, dass der Cluster im abgesicherten Modus hängen bleibt.
+
+### <a name="scale-hdinsight-down-to-one-worker-node"></a>Herunterskalieren von HDInsight auf einen Workerknoten
+
+Auch wenn der Cluster auf einen Knoten herunterskaliert wird, bleibt Workerknoten 0 weiterhin bestehen. Workerknoten 0 kann nie außer Betrieb gesetzt werden.
 
 #### <a name="run-the-command-to-leave-safe-mode"></a>Ausführen des Befehls zum Verlassen des abgesicherten Modus
 
