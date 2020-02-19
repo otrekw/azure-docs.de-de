@@ -3,12 +3,12 @@ title: Steuerungen des FedRAMP Moderate-Blaupausenbeispiels
 description: Steuerungszuordnung des FedRAMP Moderate-Blaupausenbeispiels. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 0ecf5430f643ee795f81759f3d07a062e433f5b6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544553"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150477"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Steuerungszuordnung des FedRAMP Moderate-Blaupausenbeispiels
 
@@ -17,7 +17,7 @@ In diesem Artikel wird erläutert, wie das FedRAMP Moderate-Blaupausenbeispiel 
 Die folgenden Zuordnungen gelten für die **FedRAMP Moderate**-Steuerungen. Über den rechten Navigationsbereich können Sie direkt zu einer bestimmten Steuerungszuordnung springen. Viele der zugeordneten Steuerungen werden mit einer [Azure Policy](../../../policy/overview.md)-Initiative implementiert. Zum Anzeigen der vollständigen Initiative öffnen Sie **Richtlinie** im Azure-Portal und wählen dann die Seite **Definitionen** aus. Suchen Sie anschließend die integrierte Richtlinieninitiative **\[Vorschauversion\]: FedRAMP Moderate-Steuerungen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen**, und wählen Sie sie aus.
 
 > [!IMPORTANT]
-> Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlauf finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md).
+> Jede Steuerung unten ist einer oder mehreren [Azure Policy](../../../policy/overview.md)-Definitionen zugeordnet. Diese Richtlinien können Ihnen bei der [Konformitätsbewertung](../../../policy/how-to/get-compliance-data.md) mit der Steuerung helfen. Es gibt jedoch oft keine 1:1- oder vollständige Übereinstimmung zwischen einer Steuerung und einer bzw. mehreren Richtlinien. Daher bezieht sich **Konform** in Azure Policy nur auf die Richtlinien selbst und gewährleistet nicht die vollständige Konformität mit allen Anforderungen einer Steuerung. Außerdem enthält der Kompatibilitätsstandard Steuerungen, die derzeit von keiner Azure Policy-Definition abgedeckt werden. Daher ist die Konformität in Azure Policy nur eine partielle Ansicht Ihres gesamten Konformitätsstatus. Die Zuordnungen zwischen Steuerungen und Azure Policy-Definitionen für dieses Konformitätsblaupausenbeispiel können sich im Laufe der Zeit ändern. Den Änderungsverlaufs finden Sie im [GitHub-Commit-Verlauf](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>AC-2 Kontoverwaltung
 
@@ -190,7 +190,7 @@ Mit dieser Blaupause werden außerdem Richtliniendefinitionen zugewiesen, die ni
 
 - NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
 - Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden
-- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
+- Webports müssen für Netzwerksicherheitsgruppen beschränkt werden, die Ihrem virtuellen Computer zugeordnet sind.
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) Schutz von Grenzen | Zugriffspunkte
@@ -271,7 +271,7 @@ Diese Blaupause hilft Ihnen bei der Überwachung Ihres Systems, indem sie die Pr
 - Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 - Bereitstellen von Advanced Data Security auf SQL-Servern
 - Bereitstellen von Advanced Threat Protection für Speicherkonten
-- Bereitstellen von Auditing auf SQL-Servern
+- Bereitstellen von Überwachung auf SQL-Server-Instanzen
 - Bereitstellen von Network Watcher beim Erstellen virtueller Netzwerke
 - Bereitstellen von Bedrohungserkennung auf SQL-Servern
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Serverlose Anwendungen mit Azure SignalR Service – JavaScript'
+title: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von JavaScript
 description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums.
 author: sffamily
 ms.service: signalr
@@ -7,28 +7,29 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.openlocfilehash: eadeb0f0203868c2a1a37190fdd46e47bf26e8f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450264"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083195"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und dem SignalR-Dienst mithilfe von JavaScript
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und SignalR Service mithilfe von JavaScript
 
-Mit dem Azure SignalR-Dienst können Sie Ihrer Anwendung ganz einfach Echtzeitfunktionen hinzufügen. Azure Functions ist eine serverlose Plattform, mit der Sie Ihren Code ohne Verwaltung von Infrastruktur ausführen können. Erfahren Sie in diesem Schnellstart, wie Sie den SignalR-Dienst und Azure Functions verwenden, um eine serverlose Chatanwendung in Echtzeit zu erstellen.
+Mit Azure SignalR Service können Sie Ihrer Anwendung ganz einfach Echtzeitfunktionen hinzufügen. Azure Functions ist eine serverlose Plattform, mit der Sie Ihren Code ohne Verwaltung von Infrastruktur ausführen können. In dieser Schnellstartanleitung verwenden Sie JavaScript, um eine serverlose Echtzeit-Chatanwendung mithilfe von SignalR Service und Functions zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieser Schnellstart kann unter MacOS, Windows oder Linux ausgeführt werden.
+- Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/)
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), Version 2 oder höher. Dient zum lokalen Ausführen von Azure-Funktions-Apps.
+- [Node.js](https://nodejs.org/en/download/), Version 10.x
 
-Stellen Sie sicher, dass Sie einen Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/) installiert haben.
+   > [!NOTE]
+   > Die Beispiele können auch mit anderen Node.js-Versionen verwendet werden. Weitere Informationen finden Sie in der [Übersicht über die Runtimeversionen von Azure Functions](../azure-functions/functions-versions.md#languages).
 
-Installieren Sie die [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (Version 2 oder höher), um Azure Functions-Apps lokal auszuführen.
-
-In diesem Schnellstart wird [Node.js](https://nodejs.org/en/download/) 10.x verwendet, es sollte aber auch mit anderen Versionen funktionieren. Weitere Informationen zu unterstützten Node.js-Versionen finden Sie in der [Übersicht über die Runtimeversionen von Azure Functions](../azure-functions/functions-versions.md#languages).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+> [!NOTE]
+> Dieser Schnellstart kann unter MacOS, Windows oder Linux ausgeführt werden.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 

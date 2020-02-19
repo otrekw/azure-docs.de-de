@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: e469837c8e374e62824bd8f7a7feb110ed1be9c9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765068"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153110"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -42,7 +42,7 @@ In diesem Artikel lernen Sie Folgendes:
 * Die Daten, die beschriftet werden sollen und entweder in lokalen Dateien oder im Azure-Speicher vorhanden sind.
 * Der Satz von Beschriftungen, die Sie anwenden möchten.
 * Die Anweisungen für die Beschriftung.
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
@@ -125,7 +125,7 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 
 ## <a name="initialize-the-labeling-project"></a>Initialisieren des Beschriftungsprojekts
 
-Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projekts unveränderlich. Sie können den Aufgabentyp oder das Dataset nicht ändern. Beschriftungen sowie die URL für die Aufgabenbeschreibung *können* dagegen geändert werden. Überprüfen Sie die Einstellungen sorgfältig, bevor Sie das Projekt erstellen. Nachdem Sie das Projekt übermittelt haben, werden Sie wieder auf die Startseite für **Beschriftungen** geleitet, wo das Projekt als **Wird initialisiert** angezeigt wird. Diese Seite wird nicht automatisch aktualisiert. Aktualisieren Sie die Seite nach einer Pause manuell, um den Status des Projekts als **Erstellt** anzuzeigen.
+Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projekts unveränderlich. Sie können den Aufgabentyp oder das Dataset nicht ändern. Beschriftungen sowie die URL für die Aufgabenbeschreibung *können* dagegen geändert werden. Überprüfen Sie die Einstellungen sorgfältig, bevor Sie das Projekt erstellen. Nachdem Sie das Projekt übermittelt haben, gelangen Sie wieder zur Startseite von **Datenbeschriftung**, wo das Projekt mit dem Status **Initialisierung** angezeigt wird. Diese Seite wird nicht automatisch aktualisiert. Aktualisieren Sie die Seite nach einer Pause manuell, um den Status des Projekts als **Erstellt** anzuzeigen.
 
 ## <a name="manage-teams-and-people"></a>Verwalten von Teams und Personen
 
@@ -139,7 +139,7 @@ Zum Senden einer E-Mail an das Team wählen Sie das Team aus, um die Seite **Det
 
 ## <a name="run-and-monitor-the-project"></a>Ausführen und Überwachen des Projekts
 
-Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite **Beschriftung**, um zu **Projektdetails** zu gelangen. Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
+Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus, um zu **Projektdetails** zu gelangen. Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
 
 Auf der Registerkarte**Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
 
@@ -148,6 +148,24 @@ Auf der Registerkarte **Team** können Sie dem Projekt Teams zuweisen oder eine 
 Um das Projekt anzuhalten oder neu zu starten, wählen Sie die Schaltfläche **Anhalten**/**Starten** aus. Sie können Daten nur dann beschriften, wenn das Projekt ausgeführt wird.
 
 Sie können Daten direkt über die Seite **Projektdetails** beschriften, indem Sie **Daten beschriften** auswählen.
+
+## <a name="add-labels-to-a-project"></a>Hinzufügen von Beschriftungen zu einem Projekt
+
+Im Rahmen des Beschriftungsprozesses stellen Sie möglicherweise fest, dass Sie weitere Beschriftungen benötigen, um Ihre Bilder zu klassifizieren.  So kann es beispielsweise sein, dass Sie für verwirrende Bilder Beschriftungen wie „Unbekannt“ oder „Sonstiges“ hinzufügen möchten.
+
+Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
+
+1. Wählen Sie das Projekt auf der Hauptseite von **Datenbeschriftung** aus.
+1. Wählen Sie oben auf der Seite die Option **Anhalten** aus, um die Aktivität der Beschriftungsersteller zu beenden.
+1. Wählen Sie die Registerkarte **Details** aus.
+1. Wählen Sie in der Liste auf der linken Seite die Option **Beschriftungsklassen** aus.
+1. Wählen Sie im oberen Bereich der Liste **+ Beschriftungen hinzufügen** aus. ![Hinzufügen einer Beschriftung](media/how-to-create-labeling-projects/add-label.png)
+1. Fügen Sie im Formular Ihre neue Beschriftung hinzu, und wählen Sie aus, wie Sie fortfahren möchten.  Da Sie die verfügbaren Beschriftungen für ein Bild geändert haben, wählen Sie aus, wie mit den bereits beschrifteten Daten verfahren werden soll:
+    * „Von vorn beginnen und alle vorhandenen Beschriftungen entfernen.“  Wählen Sie diese Option aus, wenn Sie mit der Beschriftung von vorn beginnen und dabei den neuen vollständigen Beschriftungssatz verwenden möchten. 
+    * „Von vorn beginnen und alle vorhandenen Beschriftungen beibehalten.“  Wählen Sie diese Option aus, um alle Daten als nicht beschriftet zu markieren, die vorhandenen Beschriftungen aber als Standardtag für Bilder beizubehalten, die bereits beschriftet wurden.
+    * „Fortfahren und alle vorhandenen Beschriftungen beibehalten.“ Wählen Sie diese Option aus, um die bereits beschrifteten Daten unverändert zu lassen und von nun an die neue Beschriftung für noch nicht beschriftete Daten verwenden zu können.
+1. Passen Sie Ihre Anweisungsseite nach Bedarf für die neuen Beschriftungen an.
+1. Wählen Sie nach dem Hinzufügen aller neuen Beschriftungen oben auf der Seite die Option **Starten** aus, um das Projekt wieder zu starten.  
 
 ## <a name="export-the-labels"></a>Exportieren der Beschriftungen
 

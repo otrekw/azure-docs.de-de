@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 8035cce1482c3c441cc956272a7300f0d0ea8194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815310"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189078"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Linux
 
@@ -38,11 +38,11 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 * Laden Sie die aktuelle Version des [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) für Java herunter, und extrahieren Sie die ZIP in Ihrem Arbeitsverzeichnis.
    > [!NOTE]
-   > Die Datei „JRE-Sample-Release.zip“ enthält die JRE-Beispiel-App. In dieser Schnellstartanleitung wird davon ausgegangen, dass die App in das Verzeichnis „/home/wcaltest/JRE-Sample-Release“ extrahiert wurde.
+   > In dieser Schnellstartanleitung wird davon ausgegangen, dass die App in „/home/wcaltest/JRE-Sample-Release“ extrahiert wird.
 
 Stellen Sie sicher, dass diese Abhängigkeiten installiert sind, bevor Sie Eclipse starten.
 
-* Unter Ubuntu:
+* Auf Ubuntu:
 
   ```sh
   sudo apt-get update
@@ -82,7 +82,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
 1. Öffnen Sie die Datei „pom.xml“, und bearbeiten Sie sie.
 
-    Erstellen Sie am Ende der Datei vor dem schließenden Tag `</project>` ein `repositories`- und ein `dependencies`-Element, wie hier zu sehen, und stellen Sie sicher, dass der Wert von `version` Ihrer aktuellen Version entspricht:
+    Erstellen Sie am Ende der Datei vor dem schließenden Tag `</project>` Elemente vom Typ `repositories` und `dependencies`, wie hier zu sehen, und stellen Sie sicher, dass der Wert von `version` Ihrer aktuellen Version entspricht:
     ```xml    
     <repositories>
          <repository>
@@ -96,7 +96,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.7.0</version>
+             <version>1.9.0</version>
         </dependency>
     </dependencies>
    ```

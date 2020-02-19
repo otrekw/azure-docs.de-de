@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770331"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086847"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Herstellen einer Verbindung mit einem Amazon Web Services-Konto
 
@@ -41,7 +41,7 @@ Im ersten Schritt rufen Sie die eindeutige Verbindungspassphrase im Cloudyn-Port
 
 ### <a name="add-aws-read-only-role-based-access"></a>Hinzufügen des rollenbasierten schreibgeschützten AWS-Zugriffs
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/home an, und wählen Sie **Roles (Rollen)** aus.
+1. Melden Sie sich unter [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) bei der AWS-Konsole an, und wählen Sie **Roles** (Rollen) aus.
 2. Klicken Sie auf **Create Role (Rolle erstellen)** , und wählen Sie dann **Another AWS account (Anderes AWS-Konto)** .
 3. Fügen Sie `432263259397` in das Feld **Account ID (Konto-ID)** ein. Diese Konto-ID ist das Cloudyn-Datensammlerkonto, das dem Cloudyn-Dienst von AWS zugewiesen wurde. Verwenden Sie exakt die angezeigte Konto-ID.
 4. Aktivieren Sie neben **Options (Optionen)** den Befehl **Require external ID (Externe ID anfordern)** . Fügen Sie Ihren eindeutigen Wert ein, den Sie zuvor aus dem Feld **External ID (Externe ID)** in Cloudyn kopiert haben. Klicken Sie anschließend auf **Next: Permissions** (Weiter: Berechtigungen).  
@@ -54,7 +54,7 @@ Im ersten Schritt rufen Sie die eindeutige Verbindungspassphrase im Cloudyn-Port
 
 ### <a name="configure-aws-iam-role-access-in-cloudyn"></a>Konfigurieren des AWS-IAM-Rollenzugriffs in Cloudyn
 
-1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/ , und melden Sie sich an.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich an.
 2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)** .
 4. Geben Sie in **Account Name (Kontoname)** einen Namen für das Konto ein.
@@ -76,7 +76,7 @@ Die folgenden Abschnitte führen Sie durch das Erstellen eines Benutzers ohne Sc
 
 ### <a name="add-aws-read-only-user-based-access"></a>Hinzufügen des benutzerbasierten schreibgeschützten AWS-Zugriffs
 
-1. Melden Sie sich bei der AWS-Konsole unter https://console.aws.amazon.com/iam/home an, und wählen Sie **Users (Benutzer)** aus.
+1. Melden Sie sich unter [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) bei der AWS-Konsole an, und wählen Sie **Users** (Benutzer) aus.
 2. Klicken Sie auf **Benutzer hinzufügen**.
 3. Geben Sie in das Feld **User name (Benutzername)** einen Benutzernamen ein.
 4. Wählen Sie für **Access type** (Zugriffstyp) die Option **Programmatic access** (Programmgesteuerter Zugriff), und klicken Sie auf **Next: Permissions** (Weiter: Berechtigungen).  
@@ -91,7 +91,7 @@ Die folgenden Abschnitte führen Sie durch das Erstellen eines Benutzers ohne Sc
 
 ### <a name="configure-aws-iam-user-based-access-in-cloudyn"></a>Konfigurieren des Zugriffs auf AWS-IAM-Benutzerbasis in Cloudyn
 
-1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/ , und melden Sie sich an.
+1. Öffnen Sie im Azure-Portal das Cloudyn-Portal, oder navigieren Sie zu https://azure.cloudyn.com/, und melden Sie sich an.
 2. Klicken Sie auf das Zahnradsymbol, und wählen Sie dann **Cloud Accounts (Cloudkonten)** aus.
 3. Wählen Sie unter „Accounts Management (Kontenverwaltung)“ die Registerkarte **AWS Accounts (AWS-Konten)** aus, und klicken Sie dann auf **Add new + (Neu hinzufügen)** .
 4. Geben Sie für **Account Name (Kontoname)** einen Kontonamen ein.
@@ -107,7 +107,7 @@ Cloudyn startet das Sammeln der Daten und Auffüllen von Berichten. Als Nächste
 
 Führen Sie die folgenden Schritte aus, um Ihren AWS-Rollen-ARN abzurufen. Sie verwenden den Rollen-ARN, um einem Abrechnungsbucket Leseberechtigungen zu erteilen.
 
-1. Melden Sie sich unter https://console.aws.amazon.com bei der AWS-Konsole an, und klicken Sie auf **Services** (Dienste).
+1. Melden Sie sich unter [https://console.aws.amazon.com](https://console.aws.amazon.com) bei der AWS-Konsole an, und wählen Sie **Services** (Dienste) aus.
 2. Geben Sie in das Feld „Service Search (Dienstsuche) *IAM* ein, und wählen Sie diese Option aus.
 3. Wählen Sie im linken Menü die Option **Roles (Rollen)** aus.
 4. Wählen Sie in der Liste der Rollen die Rolle aus, die Sie für den Cloudyn-Zugriff angelegt haben.
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um Ihren AWS-Rollen-ARN abzurufen. Sie v
 
 Sie erstellen einen S3-Bucket zum Speichern detaillierter Abrechnungsinformationen.
 
-1. Melden Sie sich unter https://console.aws.amazon.com bei der AWS-Konsole an, und klicken Sie auf **Services** (Dienste).
+1. Melden Sie sich unter [https://console.aws.amazon.com](https://console.aws.amazon.com) bei der AWS-Konsole an, und wählen Sie **Services** (Dienste) aus.
 2. Geben Sie in das Feld „Service Search (Dienstsuche) *S3* ein, und wählen Sie **S3** aus.
 3. Klicken Sie auf der Amazon S3-Seite auf **Create bucket (Bucket erstellen)** .
 4. Wählen Sie im Assistenten zum Erstellen von Buckets einen Bucketnamen and eine Region aus, und klicken Sie auf **Next (Weiter)** .  

@@ -16,30 +16,31 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: cb4e27aeada4f1b5f9e06279382327dcc51cc7dc
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b912dfe3fb6461a925977192a6631ecac1357d35
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899605"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77049841"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für Python mit Azure DevOps Projects
 
-Azure DevOps Projects hat eine vereinfachte Oberfläche zum Erstellen von Azure-Ressourcen sowie zum Einrichten einer CI-Pipeline (Continuous Integration) und einer CD-Pipeline (Continuous Delivery) für Ihre Python-App.  
+In dieser Schnellstartanleitung verwenden Sie die vereinfachte Azure DevOps Projects-Oberfläche zum Einrichten einer CI-Pipeline (Continuous Integration) und einer CD-Pipeline (Continuous Delivery) für Ihre Python-App in Azure Pipelines. Sie können mit Azure DevOps Projects alles einrichten, was Sie zum Entwickeln, Bereitstellen und Überwachen Ihrer App benötigen. 
 
-Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) ein kostenloses Abonnement.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
+- Ein [Azure DevOps](https://azure.microsoft.com/services/devops/)-Konto und eine Organisation
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
- Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt.  Sie können eine kostenlose neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen im Azure-Abonnement Ihrer Wahl erstellt.
+Mit DevOps Projects wird eine CI/CD-Pipeline in Azure Pipelines erstellt. Sie können eine neue Azure DevOps-Organisation erstellen oder eine bestehende Organisation verwenden. Ferner werden mit DevOps Projects Azure-Ressourcen im Azure-Abonnement Ihrer Wahl erstellt.
 
-1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie im linken Bereich **Ressource erstellen** aus. 
 
-2. Wählen Sie im linken Bereich das Symbol **Ressource erstellen** aus, und suchen Sie nach **DevOps Projects**.  
+   ![Erstellen einer Azure-Ressource im Azure-Portal](_img/azure-devops-project-python/fullbrowser.png)
 
-3. Klicken Sie auf **Erstellen**.
-
-    ![Konfiguration von Continuous Delivery](_img/azure-devops-project-python/fullbrowser.png)
+1. Suchen Sie nach **DevOps Projects**, wählen Sie die Option aus, und wählen sie dann **Erstellen** aus.
 
 ## <a name="select-a-sample-application-and-azure-service"></a>Auswählen einer Beispielanwendung und eines Azure-Diensts
 
@@ -99,7 +100,7 @@ Auf einer Browserregisterkarte wird die Buildpipeline für Ihr neues Projekt ang
 1. In diesem Bereich können Sie sich die verschiedenen Aufgaben ansehen, die Sie für Ihre Buildpipeline ausführen können.  
         Vom Build werden verschiedene Aufgaben durchgeführt. Beispielsweise werden Quellen aus dem Git-Repository abgerufen, Abhängigkeiten wiederhergestellt und Ausgaben für Bereitstellungen veröffentlicht.
 
-1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen.
+1. Wählen Sie oben in der Buildpipeline den Buildpipelinenamen aus.
 
 1. Ersetzen Sie den Namen Ihrer Buildpipeline durch einen aussagekräftigeren Namen, und wählen Sie **Speichern und in Warteschlange einreihen** und dann **Speichern** aus.
 
@@ -125,7 +126,7 @@ Die in den vorherigen Schritten untersuchte Buildpipeline erzeugt die für das A
         Die Releasepipeline enthält einen aktivierten CD-Trigger. Jedes Mal, wenn ein neues Buildartefakt verfügbar ist, wird von diesem CD-Trigger eine Bereitstellung ausgeführt. Optional können Sie den Trigger deaktivieren, sodass Ihre Bereitstellungen manuell ausgeführt werden müssen. 
 
 1. Wählen Sie auf der linken Seite **Aufgaben** aus.   
-Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess ausgeführt werden. In diesem Beispiel wurde eine Aufgabe für die Bereitstellung in Azure App Service erstellt.
+Bei den Aufgaben handelt es sich um die Aktivitäten, die beim Bereitstellungsprozess ausgeführt werden. In diesem Beispiel wurde für die Bereitstellung in Azure App Service eine Aufgabe erstellt.
 
 1. Wählen Sie auf der rechten Seite **Releases anzeigen** aus, um einen Releaseverlauf anzuzeigen.  
         

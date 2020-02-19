@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294149"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188651"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -61,6 +61,13 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 **Pivot-/Ringdiagramme**: Stellen Sie dynamische Pivotdiagramme bereit, die die Gesamtkosten nach einem gemeinsamen Satz von Standardeigenschaften aufschlüsseln. Für den aktuellen Monat werden die höchsten bis hin zu den geringsten Kosten angezeigt. Sie können die Pivotdiagramme jederzeit anpassen, indem Sie einen anderen Pivotbereich auswählen. Die Kosten werden standardmäßig nach Dienst (Kategorie der Verbrauchseinheit), Standort (Region) und untergeordnetem Bereich kategorisiert. Beispielsweise befinden sich Registrierungskonten unter Abrechnungskonten, Ressourcengruppen unter Abonnements und Ressourcen unter Ressourcengruppen.
 
 ![Anfängliche Ansicht der Kostenanalyse im Azure-Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+### <a name="understand-forecast"></a>Grundlegendes zur Vorhersage
+
+Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausgewählten Zeitraum. Das Modell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich. 
+
+Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD. 
+
 
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten
 
@@ -113,7 +120,7 @@ Standardmäßig werden in der Kostenanalyse alle Kosten für Verbrauch und Eink�
 
 ![Wechseln zwischen tatsächlichen und amortisierten Kosten, um die auf den Zeitraum verteilten Reservierungseinkäufe anzuzeigen, die den entsprechenden Ressourcen mit Reservierung zugeordnet sind](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Bei den amortisierten Kosten werden Reservierungseinkäufe in tägliche Blöcke unterteilt und auf die Dauer des Reservierungszeitraums aufgeteilt. Beispiel: Anstelle eines Einkaufs in Höhe von 365 USD am 1. Januar sehen Sie für jeden Tag vom 1. Januar bis zum 31. Dezember einen Einkauf in Höhe von 1 USD. Zusätzlich zur einfachen Amortisierung werden diese Kosten auch neu zugeteilt und den spezifischen Ressourcen zugeordnet, die die Reservierung genutzt haben. Falls die Kosten von 1 USD beispielsweise auf zwei virtuelle Computer aufgeteilt waren, werden für den Tag zwei Gebühren von jeweils 0,50 USD angezeigt. Wenn ein Teil der Reservierung für den Tag nicht genutzt wird, wird eine Gebühr von 0,50 USD für den entsprechenden virtuellen Computer und eine weitere Gebühr von 0,50 USD mit dem Gebührentyp `UnusedReservation` angezeigt. Beachten Sie, dass nicht verwendete Reservierungskosten nur unter den amortisierten Kosten angezeigt werden.
+Bei den amortisierten Kosten werden Reservierungseinkäufe in tägliche Blöcke unterteilt und auf die Dauer des Reservierungszeitraums aufgeteilt. Beispiel: Anstelle eines Einkaufs in Höhe von 365 USD am 1. Januar sehen Sie für jeden Tag vom 1. Januar bis zum 31. Dezember einen Einkauf in Höhe von 1,00 USD. Zusätzlich zur einfachen Amortisierung werden diese Kosten auch neu zugeteilt und den spezifischen Ressourcen zugeordnet, die die Reservierung genutzt haben. Falls die Kosten von 1,00 USD beispielsweise auf zwei virtuelle Computer aufgeteilt waren, werden für den Tag zwei Gebühren von jeweils 0,50 USD angezeigt. Wenn ein Teil der Reservierung für den Tag nicht genutzt wird, wird eine Gebühr von 0,50 USD für den entsprechenden virtuellen Computer und eine weitere Gebühr von 0,50 USD mit dem Gebührentyp `UnusedReservation` angezeigt. Beachten Sie, dass nicht verwendete Reservierungskosten nur unter den amortisierten Kosten angezeigt werden.
 
 Aufgrund der veränderten Anzeige von Kosten ist es wichtig zu beachten, dass für die Ansicht mit den Ist-Kosten und den amortisierten Kosten unterschiedliche Gesamtwerte angezeigt werden. Im Allgemeinen verringern sich die Gesamtkosten für Monate mit einem Reservierungseinkauf, wenn die amortisierten Kosten angezeigt werden, und sie erhöhen sich für Monate, die auf einen Reservierungseinkauf folgen. Die Amortisierung ist nur für Reservierungseinkäufe verfügbar und gilt derzeit nicht für Azure Marketplace-Einkäufe.
 

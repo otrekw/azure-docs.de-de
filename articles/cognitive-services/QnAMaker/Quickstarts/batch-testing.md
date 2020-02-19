@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/19/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 9483db2187c05fe8e0f4fa2d41c17b8748ba3db7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
+ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451105"
+ms.lasthandoff: 02/09/2020
+ms.locfileid: "77108991"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Schnellstart: Testen der Wissensdatenbank mit Batchfragen und erwarteten Antworten
 
@@ -24,7 +24,7 @@ Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer Qn
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Erstellen Sie einen QnA Maker-Dienst](create-publish-knowledge-base.md#create-a-new-qna-maker-knowledge-base), oder verwenden Sie einen vorhandenen Dienst, der für das Beispieldokument in dieser Schnellstartanleitung Englisch verwenden kann.
+* [Erstellen Sie einen QnA Maker-Dienst](create-publish-knowledge-base.md), oder verwenden Sie einen vorhandenen Dienst, der Englisch als Sprache verwendet.
 * Laden Sie die [`.docx`-Datei mit einem Beispiel für mehrere Durchläufe](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx) herunter.
 * Laden Sie das [Batchtesttool](https://aka.ms/qnamakerbatchtestingtool) herunter, und extrahieren Sie die ausführbare Datei aus der `.zip`-Datei.
 
@@ -41,9 +41,16 @@ Verwenden Sie das QnA Maker-Batchtesttool, um die Wissensdatenbanken in Ihrer Qn
     * Name des Azure QnA-Diensts
     * Sprache: Englisch
 1. Geben Sie `Multi-turn batch test quickstart` als Namen Ihrer Wissensdatenbank ein.
-1. In **Schritt 4** aktivieren Sie **Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren**.
-1. Geben Sie `Quickstart - can't find answer` als **Standardantworttext** ein. In einer Wissensdatenbank einer Produktionsumgebung sollte diese Antwort bessere Informationen für die Benutzer enthalten, aber für diese Schnellstartanleitung genügt ein einfacher Antworttext.
-1. Wählen Sie in **Schritt 4** zudem **+Datei hinzufügen** aus, und wählen Sie dann die heruntergeladene `.docx`-Datei aus, die in den Voraussetzungen aufgeführt ist.
+
+1. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
+
+    |Einstellung|value|
+    |--|--|
+    |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
+    |**Default answer text** (Standardantworttext)| `Batch test - default answer not found.`|
+    |**+ Datei hinzufügen**|Wählen Sie die heruntergeladene `.docx`-Datei aus, die in den Voraussetzungen aufgeführt ist.|
+    |**Smalltalk**|Wählen Sie **Professional** aus.|
+
 1. Wählen Sie in **Schritt 5** die Option **Wissensdatenbank erstellen** aus.
 
     Wenn der Erstellungsprozess beendet ist, zeigt das Portal die bearbeitbare Wissensdatenbank an.
@@ -160,7 +167,7 @@ Bei Batchtests gibt es zwei Hauptszenarien:
 * **Verarbeiten von Chatprotokolldateien**: Sie möchten die häufigste Antwort für eine bisher unbekannte Frage ermitteln. Dieses Szenario tritt am häufigsten dann auf, wenn Sie eine Protokolldatei mit Fragen verarbeiten müssen, beispielsweise Benutzerfragen an einen Chatbot. Erstellen Sie einen Batchdateitest, und verwenden Sie dabei nur die erforderlichen Spalten. Der Test gibt die häufigste Antwort für jede Frage zurück. Das bedeutet nicht, dass diese Antwort auch die richtige Antwort ist. Sobald Sie den Test abgeschlossen haben, fahren Sie mit dem Validierungstest fort.
 * **Validierungstest**: Überprüfen Sie die erwartete Antwort. Für diesen Test müssen alle Fragen und die entsprechenden erwarteten Antworten im Batchtest überprüft worden sein. Hierfür ist ein gewisses Maß an manueller Verarbeitung erforderlich.
 
-Beim folgenden Verfahren wird davon ausgegangen, dass Chatprotokolle verarbeitet werden sollen. 
+Beim folgenden Verfahren wird davon ausgegangen, dass Chatprotokolle verarbeitet werden sollen.
 
 1. Erstellen Sie eine neue Batchtestdatei, der optionale Daten hinzugefügt werden können: `batch-test-data-2.tsv`. Fügen Sie die sechs Zeilen aus der ursprünglichen Eingabedatei für den Batchtest hinzu, und fügen Sie dann die Metadaten, die häufigste Antwort und die QnA-Satz-ID für jede Zeile hinzu.
 

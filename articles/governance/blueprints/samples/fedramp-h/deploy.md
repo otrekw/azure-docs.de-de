@@ -1,14 +1,14 @@
 ---
-title: 'Beispiel: Blaupause „FedRAMP High“ – Bereitstellungsschritte'
+title: Bereitstellen des Blaupausenbeispiels „FedRAMP High“
 description: Bereitstellungsschritte für das FedRAMP High-Blaupausenbeispiel, einschließlich Details zum Blaupausenartefakt-Parameter.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: baa9f419a9f15e84eced322c8f7095606c7a24c4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 91f208105a07770c557b1f273f3420c03b3d6dcb
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76941328"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087297"
 ---
 # <a name="deploy-the-fedramp-high-blueprint-sample"></a>Bereitstellen des FedRAMP High-Blaupausenbeispiels
 
@@ -91,7 +91,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
 Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartefakts:
 
-|Artefaktname|Artefakttyp|Parametername|Beschreibung|
+|Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|ID des Log Analytics-Arbeitsbereichs, für den die VMs konfiguriert werden sollen|Dies ist die ID (GUID) des Log Analytics-Arbeitsbereichs, für den die virtuellen Computer konfiguriert werden sollen.|
 |\[Vorschau\]: FedRAMP High-Kontrollen überwachen und spezifische VM-Erweiterungen zur Unterstützung von Überwachungsanforderungen bereitstellen|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|

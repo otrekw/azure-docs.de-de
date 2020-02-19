@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 788fcf15ebd68aae525c2895340f437594c9c58c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906408"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187243"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Erfassen von Event Hubs-Daten in Azure Storage und Lesen dieser Daten mithilfe von Python (azure-eventhub, Version 5)
 
-Sie können einen Event Hub so konfigurieren, dass die an einen Event Hub gesendeten Daten in einem Azure-Speicherkonto oder in Azure Data Lake Storage erfasst werden. In diesem Artikel erfahren Sie, wie Sie Python-Code zum Senden von Ereignissen an einen Event Hub sowie zum Lesen der erfassten Daten aus Azure Blob Storage verwenden. Weitere Informationen zu diesem Feature finden Sie unter [Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage](event-hubs-capture-overview.md).
+Sie können einen Event Hub so konfigurieren, dass die an einen Event Hub gesendeten Daten in einem Azure-Speicherkonto oder in Azure Data Lake Storage Gen 1 oder Gen 2 erfasst werden. In diesem Artikel erfahren Sie, wie Sie Python-Code zum Senden von Ereignissen an einen Event Hub sowie zum Lesen der erfassten Daten aus **Azure Blob Storage** verwenden. Weitere Informationen zu diesem Feature finden Sie unter [Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage](event-hubs-capture-overview.md).
 
 In dieser Schnellstartanleitung wird das [Azure Python SDK](https://azure.microsoft.com/develop/python/) verwendet, um die Verwendung des Erfassungsfeatures zu veranschaulichen. Mit der App *sender.py* werden simulierte Telemetriedaten der Umgebung im JSON-Format an Event Hubs gesendet. Der Event Hub ist für die Verwendung des Capture-Features konfiguriert, um diese Daten in Batches in den Blobspeicher zu schreiben. Die App *capturerereader.py* liest diese Blobs und erstellt eine Anfügedatei für jedes Gerät. Anschließend schreibt die App die Daten in CSV-Dateien.
 

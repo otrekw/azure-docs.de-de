@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 02/03/2020
+ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 49c5566454a93307dedd150a3508b33dbd7506e6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1abcd22621d427244f9b0533aaea46cbf1f356ad
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022357"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064035"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Verwenden von Sammlungen im Portal „Meine Apps“
 
-Arbeitsbereiche sind unterschiedliche App-Ansichten, die im Portal **Meine Apps** angezeigt werden. Apps können beispielsweise nach Abteilungsfunktion oder Benutzerrolle in Sammlungen gruppiert werden. Wenn keine verfügbaren Sammlungen oder Kategorien angezeigt werden, hat Ihr Administrator keine eingerichtet oder diese nicht für Sie freigegeben. Wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung oder die Berechtigungen zum Anzeigen der freigegebenen Sammlungen zu erhalten.
+Sammlungen sind unterschiedliche App-Ansichten, die im Portal **Meine Apps** angezeigt werden. Apps können beispielsweise nach Abteilungsfunktion oder Benutzerrolle in Sammlungen gruppiert werden. Wenn keine verfügbaren Sammlungen oder Kategorien angezeigt werden, hat Ihr Administrator keine eingerichtet oder diese nicht für Sie freigegeben. Wenden Sie sich an den Helpdesk Ihrer Organisation, um weitere Unterstützung oder die Berechtigungen zum Anzeigen der freigegebenen Sammlungen zu erhalten.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
@@ -48,7 +48,7 @@ Nach dem Organisieren Ihrer Apps in den verschiedenen Kategorien im Portal **Mei
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Meine Apps** angezeigt werden
+- [Aktualisieren Ihrer Profil- und Kontoinformationen](my-account-portal-overview.md). In diesem Artikel finden Sie Anweisungen zum Aktualisieren Ihrer personenbezogenen Daten, die im Portal **Meine Apps** angezeigt werden.
 
 - [Verwalten Ihrer Organisationen](my-account-portal-organizations-page.md). Anweisungen zum Anzeigen und Verwalten gruppenbezogener Informationen auf der Seite **Organisationen** im Portal **Meine Apps**
 

@@ -2,21 +2,21 @@
 title: Open Banking (PSD2) und strenge Kundenauthentifizierung (SCA) für Azure-Kunden
 description: In diesem Artikel wird erläutert, weshalb die mehrstufige Authentifizierung für einige Azure-Käufe und zum Abschluss der Authentifizierung erforderlich ist.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986902"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133561"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Open Banking (PSD2) und strenge Kundenauthentifizierung (SCA) für Azure-Kunden
 
@@ -53,14 +53,13 @@ Wenn die Gebühren von Ihrer Bank abgelehnt werden, ändert sich der Status Ihre
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Begleichen ausstehender Gebühren für Marketplace- und Reservierungseinkäufe
 
-Marketplace- und Reservierungseinkäufe werden getrennt von Azure-Diensten abgerechnet. Wenn Ihre Bank die Marketplace- oder Reservierungsgebühren ablehnt, wird der Rechnungsstatus im Azure-Portal als **Überfällig** angezeigt. Sie können den Status Ihrer Marketplace- und der Reservierungsrechnungen überprüfen, indem Sie die folgenden Schritte ausführen:
+Marketplace- und Reservierungseinkäufe werden getrennt von Azure-Diensten abgerechnet. Wenn Ihre Bank die Marketplace- oder Reservierungsgebühren ablehnt, wird Ihre Rechnung überfällig, und im Azure-Portal wird die Option **Jetzt zahlen** angezeigt. Sie können für überfällige Marketplace- und Reservierungsrechnungen bezahlen, indem Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 2. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 3. Wählen Sie unter „Abrechnung“ die Option **Rechnungen** aus.
-4. Klicken Sie rechts auf die Registerkarte **Azure Marketplace und Reservierungen**.
-5. Wählen Sie das entsprechende Abonnement aus.
-6. Überprüfen Sie im Raster „Rechnungen“ die Statusspalte. Wenn die Rechnung **Fällig** oder **Überfällig** ist, klicken Sie auf **Jetzt zahlen**. Während des Vorgangs werden Sie aufgefordert, die mehrstufige Authentifizierung durchzuführen.
+5. Wählen Sie im Dropdownfilter für Abonnements das dem Marketplace- oder Reservierungskauf zugeordnete Abonnement aus.
+6. Überprüfen Sie im Raster „Rechnungen“ die Typspalte. Lautet der Typ **Azure Marketplace und Reservierungen**, wird der Link **Jetzt zahlen** angezeigt, wenn die Rechnung fällig oder überfällig ist. Wird **Jetzt zahlen** nicht angezeigt, wurde Ihre Rechnung bereits bezahlt. Während des Bezahlvorgangs werden Sie aufgefordert, die mehrstufige Authentifizierung durchzuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum Bezahlen von Azure-Rechnungen finden Sie unter [Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement](resolve-past-due-balance.md).

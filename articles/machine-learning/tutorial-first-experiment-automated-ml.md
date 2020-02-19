@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/04/2020
+ms.openlocfilehash: 70fcdb1c22664a0bd3091fea88c8e23e3d1b81e5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982435"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048283"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen.
 
 * Laden Sie die Datendatei [**bankmarketing_train.csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) herunter. In der Spalte **y** ist angegeben, ob ein Kunde Festgeld angelegt hat. Sie wird später als Zielspalte für Vorhersagen in diesem Tutorial festgelegt. 
 
@@ -69,11 +69,15 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 
 1. Erstellen Sie ein neues Dataset, indem Sie im Dropdown **+ Dataset erstellen** die Option **Aus lokalen Dateien** auswählen. 
 
+    1. Geben Sie Ihrem Dataset im Formular **Grundlegende Informationen** einen Namen, und geben Sie optional eine Beschreibung an. Für automatisiertes maschinelles Lernen in Azure Machine Learning Studio werden derzeit nur tabellarische Datasets unterstützt, daher sollte der Datasettyp standardmäßig auf „Tabellarisch“ festgelegt sein.
+
+    1. Wählen Sie links unten die Option **Weiter** aus.
+
+    1. Wählen Sie im Formular **Datenspeicher- und Dateiauswahl** den Standarddatenspeicher aus, der im Zuge der Erstellung Ihres Arbeitsbereichs automatisch eingerichtet wurde: **workspaceblobstore (Azure Blob Storage)** . Hier laden Sie Ihre Datendatei hoch, um sie für Ihren Arbeitsbereich verfügbar zu machen.
+
     1. Wählen Sie **Durchsuchen** aus.
     
     1. Wählen Sie auf dem lokalen Computer die Datei **bankmarketing_train.csv** aus. Dies ist die Datei, die Sie als [Voraussetzung](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) heruntergeladen haben.
-
-    1. Wählen Sie als Datasettyp **Tabellarisch** aus. 
 
     1. Weisen Sie Ihrem Dataset einen eindeutigen Namen zu, und geben Sie eine optionale Beschreibung ein. 
 
@@ -136,18 +140,18 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
         Blockierte Algorithmen | Algorithmen, die Sie aus den Trainingsauftrag ausschließen möchten.| Keine
         Beendigungskriterium| Wenn ein Kriterium erfüllt ist, wird der Trainingsauftrag angehalten. |Dauer&nbsp;des&nbsp;Trainingsauftrags (Stunden): 1 <br> Metrikschwellenwert&nbsp;&nbsp;: Keine
         Überprüfen | Wählen Sie einen Kreuzvalidierungstyp und die Anzahl von Tests aus.|Überprüfungstyp:<br>&nbsp;k-fold&nbsp;cross-validation <br> <br> Anzahl von Überprüfungen: 2
-        Parallelität| Die maximale Anzahl paralleler Iterationen und die pro Iteration verwendeten Kerne| Max.&nbsp;parallele&nbsp;Iterationen: 5<br> Max.&nbsp;Kerne&nbsp;pro&nbsp;Iteration: Keine
+        Parallelität| Die maximale Anzahl paralleler Iterationen pro Iteration| Max.&nbsp;parallele&nbsp;Iterationen: 5
         
         Wählen Sie **Speichern** aus.
 
-1. Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Sobald die Experimentvorbereitung beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, in dem der **Ausführungsstatus** angezeigt.
+1. Wählen Sie **Fertig stellen** aus, um das Experiment auszuführen. Wenn die Vorbereitung des Experiments beginnt, wird der Bildschirm **Ausführungsdetails** geöffnet, auf dem am oberen Rand der **Ausführungsstatus** angezeigt wird.
 
 >[!IMPORTANT]
 > Die Vorbereitung des Experiments nimmt **10 –15 Minuten** in Anspruch.
 > Sobald es ausgeführt wird, dauert **jede Iteration mindestens zwei bis drei Minuten**.  
 > Klicken Sie von Zeit zu Zeit auf **Aktualisieren**, um den Status der Ausführung während der Experimentausführung anzuzeigen.
 >
-> In einer Produktionsumgebung würden Sie in dieser Zeit wahrscheinlich eine kurze Pause machen. Für dieses Tutorial empfehlen wir jedoch, schon während der Ausführung der weiteren Iterationen mit der Untersuchung der getesteten Algorithmen zu beginnen. 
+> In einer Produktionsumgebung würden Sie in dieser Zeit wahrscheinlich eine kurze Pause machen. Für dieses Tutorial empfehlen wir jedoch, schon während der Ausführung der weiteren Iterationen mit der Untersuchung der getesteten Algorithmen auf der Registerkarte **Modelle** zu beginnen. 
 
 ##  <a name="explore-models"></a>Untersuchen von Modellen
 
@@ -165,11 +169,11 @@ Durch die Verwendung von automatisiertem maschinellen Lernen im Azure Machine Le
 
 In diesem Experiment bedeutet Bereitstellung in einem Webdienst, dass das Finanzinstitut nun über eine iterative und skalierbare Weblösung zur Identifizierung potenzieller Festgeldkunden verfügt. 
 
-Nach Abschluss der Ausführung navigieren Sie zurück zur Seite **Ausführungsdetails** und wählen die Registerkarte **Modelle** aus. Klicken Sie auf **Aktualisieren**. 
+Nach Abschluss der Ausführung navigieren Sie zurück zur Seite **Ausführungsdetails** und wählen die Registerkarte **Modelle** aus.
 
 Aus diesem Experimentkontext geht **VotingEnsemble** basierend auf der **AUC_weighted**-Metrik als bestes Modell hervor.  Wir stellen dieses Modell bereit. Die Bereitstellung dauert jedoch etwa 20 Minuten. Der Bereitstellungsprozess umfasst mehrere Schritte, einschließlich der Registrierung des Modells, der Erstellung von Ressourcen und der Konfiguration dieser Ressourcen für den Webdienst.
 
-1. Klicken Sie oben rechts auf die Schaltfläche **Bestes Modell bereitstellen**.
+1. Wählen Sie rechts unten die Schaltfläche **Deploy Best Model** (Bestes Modell bereitstellen) aus.
 
 1. Füllen Sie den Bereich **Modell bereitstellen** wie folgt aus:
 
@@ -216,7 +220,7 @@ In diesem Tutorial zum automatisierten maschinellen Lernen haben Sie im Azure Ma
 > [!div class="nextstepaction"]
 > [Verwenden eines Webdiensts](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
-+ Weitere Informationen zur [Vorverarbeitung](how-to-create-portal-experiments.md#preprocess).
++ Weitere Informationen zur [Featurebereitstellung](how-to-create-portal-experiments.md#featurization)
 + Weitere Informationen zur [Datenprofilerstellung](how-to-create-portal-experiments.md#profile).
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
 + Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md#classification).

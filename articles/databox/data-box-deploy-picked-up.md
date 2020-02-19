@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 517940ab4a3e004d99faf6ca2bedb43c93dba8c5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: d116ba81b0c8940687663c17a4ed403e86dd6c22
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514186"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187547"
 ---
 ::: zone target="docs"
 
@@ -77,7 +77,7 @@ Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden
 
 ::: zone-end
 
-## <a name="in-us-canada-europetabin-us-canada-europe"></a>[In den USA, in Kanada oder in Europa](#tab/in-us-canada-europe)
+## <a name="in-us-canada-europe"></a>[In den USA, in Kanada oder in Europa](#tab/in-us-canada-europe)
 
 Wenn Sie das Gerät in den USA, in Kanada oder in Europa zurücksenden möchten, gehen Sie wie folgt vor:
 
@@ -114,7 +114,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 ::: zone-end
 
 
-## <a name="in-australiatabin-australia"></a>[In Australien](#tab/in-australia)
+## <a name="in-australia"></a>[In Australien](#tab/in-australia)
 
 Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für den Versand in Australien wie folgt vor:
 
@@ -143,7 +143,7 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
 ::: zone-end
 
-## <a name="in-japantabin-japan"></a>[In Japan](#tab/in-japan) 
+## <a name="in-japan"></a>[In Japan](#tab/in-japan) 
 
 1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
@@ -191,5 +191,120 @@ Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten au
 
 ::: zone-end
 
+## <a name="in-singapore"></a>[In Singapur](#tab/in-singapore) 
 
+1. Bewahren Sie den Originalversandkarton des Geräts für den Rückversand auf.
+2. Notieren Sie sich die Nachverfolgungsnummer (als Referenznummer auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt). Diese ist verfügbar, wenn der Schritt zur Versandvorbereitung erfolgreich abgeschlossen wurde. Laden Sie das Adressetikett von dieser Seite herunter, und bringen Sie es auf dem Versandkarton an. 
+3. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
+4. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts. 
+5. Senden Sie eine E-Mail an den SingPost-Kundendienst, indem Sie die folgende E-Mail-Vorlage mit der Nachverfolgungsnummer verwenden:
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - OrderName 
+    Body: 
+        1. Requestor name  
+        2. Requestor contact number
+        3. Requestor collection address
+        4. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > Für Anforderungen, die an einem Werktag eingehen, gilt Folgendes:
+   > - Bei Anforderung vor 15 Uhr erfolgt die Abholung am nächsten Werktag zwischen 9 und 13 Uhr.
+   > - Bei Anforderung nach 15 Uhr erfolgt die Abholung am nächsten Werktag zwischen 14 und 18 Uhr.  
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Löschen von Daten von der Data Box
+ 
+Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten auf den Datenträgern gemäß den [NIST-Richtlinien (SP 800-88 Revision 1)](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
+
+<!--## [In Korea](#tab/in-korea) 
+
+1. Retain the original box used to ship the device for return shipment.
+2. Note down the tracking number (shown as reference number on the Prepare to Ship page of the Data Box local web UI). This is available after the prepare to ship step successfully completes. Download the shipping label from this page and paste on the packing box. 
+3. Power off the device and remove the cables.
+4. Spool and securely place the power cord that was provided with the device in the back of the device. 
+
+Request pickup  
+If consignment note is present:  
+
+1. Call Quantium Solutions International hotline at 070-8231-1418 during office hours (10 AM to 5 PM, Monday to Friday). Quote Microsoft Azure pickup and the service request number to arrange for a collection.
+2. If the hotline is busy, email microsoft@rocketparcel.com, with the email subject Microsoft Azure Pickup and the service request number as reference.  
+3. If the courier does not arrive for collection, call Quantium Solutions International hotline for alternate arrangements.  
+4. You will receive an email confirmation for the pickup schedule.  
+
+Exception process
+If the consignment note is not present:
+1. Call Quantium Solutions International hotline at 070-8231-1418 during office hours (10 AM to 5 PM, Monday to Friday). Quote Microsoft Azure pickup and the service request number. Specify that you need a new consignment note to arrange for a collection. Provide sender (customer), receiver information (Azure datacenter), and reference number (service request number).
+2. If the hotline is busy, email microsoft@rocketparcel.com, with the email subject Microsoft Azure Pickup and the service request number as reference.
+3. If the courier does not arrive for collection, call Quantium Solutions International hotline for alternate arrangements.
+4. You get a verbal confirmation if request is made via telephone.  
+::: zone target="chromeless"
+
+## Verify data upload to Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## Erasure of data from Data Box
+ 
+Once the upload to Azure is complete, the Data Box erases the data on its disks as per the [NIST SP 800-88 Revision 1 guidelines](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+-->
+
+## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged) 
+
+Wenn Sie Data Box in Japan, Singapur, Südkorea und Westeuropa verwenden und bei der Auftragserstellung die Option für den selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor: 
+
+1. Notieren Sie sich den Autorisierungscode, der auf der Seite „Für den Versand vorbereiten“ der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
+2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
+3. Senden Sie eine E-Mail an das Azure Data Box Operations-Team, wenn Sie bereit sind, das Gerät zurückzusenden. Verwenden Sie dafür die folgende Vorlage:
+    
+    ```
+    To: adbops@microsoft.com 
+    Subject: Request for Azure Data Box drop-off for order: ‘orderName’ 
+    Body: 
+        1. Order name  
+        2. Authorization code available after Prepare to Ship has completed [Yes/No]  
+        3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
+    ```
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Löschen von Daten von der Data Box
+ 
+Nachdem die Daten in Azure hochgeladen wurden, löscht die Data Box die Daten auf den Datenträgern gemäß den [NIST-Richtlinien (SP 800-88 Revision 1)](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi).
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
 

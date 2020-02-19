@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613760"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121742"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -28,7 +28,7 @@ In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von 
 
 ## <a name="overview"></a>Übersicht
 
-Der [Azure Active Directory-Benutzerbereitstellungsdienst](../manage-apps/user-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Azure AD nutzt diese Verbindung zum Ermöglichen der folgenden Workflows für die Benutzerbereitstellung:
+Der [Azure Active Directory-Benutzerbereitstellungsdienst](../app-provisioning/user-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Azure AD nutzt diese Verbindung zum Ermöglichen der folgenden Workflows für die Benutzerbereitstellung:
 
 * **Bereitstellung von Benutzern in Active Directory:** Sie können ausgewählte Gruppen von Benutzern aus Workday in eine oder mehrere Active Directory-Domänen bereitstellen.
 
@@ -40,13 +40,13 @@ Der [Azure Active Directory-Benutzerbereitstellungsdienst](../manage-apps/user-p
 
 Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows zur Benutzerbereitstellung ermöglichen die Automatisierung der folgenden Szenarien im Personalwesen und bei der Verwaltung des Lebenszyklus von Identitäten:
 
-* **Einstellung neuer Mitarbeiter**: Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure Active Directory und optional Office 365 sowie [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird dabei in Workday zurückgeschrieben.
+* **Einstellung neuer Mitarbeiter**: Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure Active Directory und optional Office 365 sowie [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird dabei in Workday zurückgeschrieben.
 
-* **Aktualisierungen von Mitarbeiterattributen und -profil**: Wenn ein Mitarbeiterdatensatz in Workday aktualisiert wird (wie z.B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch aktualisiert.
+* **Aktualisierungen von Mitarbeiterattributen und -profil**: Wenn ein Mitarbeiterdatensatz in Workday aktualisiert wird (wie z.B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch aktualisiert.
 
-* **Kündigungen von Mitarbeitern** : Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch deaktiviert.
+* **Kündigungen von Mitarbeitern** : Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch deaktiviert.
 
-* **Erneute Einstellung von Mitarbeitern**: Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch reaktiviert oder erneut bereitgestellt werden (je nachdem, was Sie bevorzugen).
+* **Erneute Einstellung von Mitarbeitern**: Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../app-provisioning/user-provisioning.md) automatisch reaktiviert oder erneut bereitgestellt werden (je nachdem, was Sie bevorzugen).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
@@ -378,7 +378,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
 
@@ -502,7 +502,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
    > Wenn Sie die Bereitstellungs-App zum ersten Mal konfigurieren, müssen Sie Ihre Attributzuordnungen und Ausdrücke testen und überprüfen, um sicherzustellen, dass sie damit das gewünschte Ergebnis erzielen. Microsoft empfiehlt, die Bereichsfilter unter **Quellobjektbereich** zu verwenden, um Ihre Zuordnungen mit einigen Testbenutzern von Workday zu testen. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
 
    > [!CAUTION] 
-   > Beim Standardverhalten des Bereitstellungsmoduls werden Benutzer deaktiviert/gelöscht, die sich außerhalb des gültigen Bereichs befinden. Dies ist bei Ihrer Integration von Workday in AD möglicherweise nicht wünschenswert. Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie im Artikel [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](../manage-apps/skip-out-of-scope-deletions.md).
+   > Beim Standardverhalten des Bereitstellungsmoduls werden Benutzer deaktiviert/gelöscht, die sich außerhalb des gültigen Bereichs befinden. Dies ist bei Ihrer Integration von Workday in AD möglicherweise nicht wünschenswert. Informationen zum Außerkraftsetzen dieses Standardverhaltens finden Sie im Artikel [Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs](../app-provisioning/skip-out-of-scope-deletions.md).
   
 1. Im Feld **Zielobjektaktionen** können Sie global filtern, welche Aktionen auf Active Directory angewendet werden. **Erstellen** und **Aktualisieren** erfolgen am häufigsten.
 
@@ -516,7 +516,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
          * **Konstant**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
-         * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../manage-apps/functions-for-customizing-application-data.md).
+         * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md).
 
       * **Quellattribut**: Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
 
@@ -543,9 +543,9 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 * Der Ausdruck für die Zuordnung zum Attribut *parentDistinguishedName* wird verwendet, um Benutzer basierend auf mindestens einem Workday-Quellattribut in anderen Organisationseinheiten bereitzustellen. In diesem Beispiel werden Benutzer basierend auf dem Ort in verschiedenen Organisationseinheiten platziert.
 
-* Das Attribut *userPrincipalName* im Active Directory wird mit der Deduplizierungsfunktion [SelectUniqueValue](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue) erzeugt, die das Vorhandensein eines generierten Wertes in der Ziel-AD-Domäne überprüft und ihn nur dann festlegt, wenn er eindeutig ist.  
+* Das Attribut *userPrincipalName* im Active Directory wird mit der Deduplizierungsfunktion [SelectUniqueValue](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue) erzeugt, die das Vorhandensein eines generierten Wertes in der Ziel-AD-Domäne überprüft und ihn nur dann festlegt, wenn er eindeutig ist.  
 
-* [Hier finden Sie Dokumentation zum Schreiben von Ausdrücken](../manage-apps/functions-for-customizing-application-data.md). Dieser Abschnitt enthält auch Beispiele zum Entfernen von Sonderzeichen.
+* [Hier finden Sie Dokumentation zum Schreiben von Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md). Dieser Abschnitt enthält auch Beispiele zum Entfernen von Sonderzeichen.
 
 | WORKDAY-ATTRIBUT | ACTIVE DIRECTORY-ATTRIBUT |  ÜBEREINSTIMMENDE ID? | ERSTELLEN/AKTUALISIEREN |
 | ---------- | ---------- | ---------- | ---------- |
@@ -572,7 +572,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 | **Fax**      | facsimileTelephoneNumber     |     |    Erstellen und aktualisieren |
 | **Mobile**  |    mobile       |     |       Erstellen und aktualisieren |
 | **LocalReference** |  preferredLanguage  |     |  Erstellen und aktualisieren |                                               
-| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  Erstellen und aktualisieren |
+| **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", "London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  Erstellen und aktualisieren |
 
 Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning).
 
@@ -603,7 +603,7 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -653,7 +653,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * **Konstant**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
-      * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../manage-apps/functions-for-customizing-application-data.md).
+      * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md).
 
    * **Quellattribut**: Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
 
@@ -700,7 +700,7 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -1023,9 +1023,9 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
     )
      ```
     Weitere Informationen:
-  * [Wechseln der Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#switch)
-  * [Verknüpfen der Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#join)
-  * [Anfügen der Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#append)
+  * [Wechseln der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#switch)
+  * [Verknüpfen der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#join)
+  * [Anfügen der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#append)
 
 #### <a name="how-can-i-use-selectuniquevalue-to-generate-unique-values-for-samaccountname-attribute"></a>Wie kann ich mit „SelectUniqueValue eindeutige Werte für das Attribut „samAccountName“ generieren?
 
@@ -1043,17 +1043,17 @@ So funktioniert der obige Ausdruck: Wenn der Benutzer John Smith ist, wird zuers
 
 Weitere Informationen:
 
-* [Mid-Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#mid)
-* [Ersetzen der Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#replace)
-* [SelectUniqueValue-Funktionssyntax](../manage-apps/functions-for-customizing-application-data.md#selectuniquevalue)
+* [Mid-Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#mid)
+* [Ersetzen der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#replace)
+* [SelectUniqueValue-Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)
 
 #### <a name="how-do-i-remove-characters-with-diacritics-and-convert-them-into-normal-english-alphabets"></a>Wie entferne ich Zeichen mit diakritischen Zeichen und konvertiere sie in normale englische Schriftzeichen?
 
-Verwenden Sie die Funktion [NormalizeDiacritics](../manage-apps/functions-for-customizing-application-data.md#normalizediacritics), um Sonderzeichen im Vor- und Nachnamen des Benutzers zu entfernen, wenn Sie die E-Mail-Adresse oder den CN-Wert für den Benutzer erstellen.
+Verwenden Sie die Funktion [NormalizeDiacritics](../app-provisioning/functions-for-customizing-application-data.md#normalizediacritics), um Sonderzeichen im Vor- und Nachnamen des Benutzers zu entfernen, wenn Sie die E-Mail-Adresse oder den CN-Wert für den Benutzer erstellen.
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-Dieser Abschnitt enthält spezielle Hinweise zur Behebung von Bereitstellungsproblemen mit Ihrer Workday-Integration mithilfe der Protokolle „Azure AD-Überwachungsprotokolle“ und „Protokolle für die Windows Server-Ereignisanzeige“. Sie bauen auf allgemeinen Schritten zur Problembehandlung und den Konzepten in [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md) auf.
+Dieser Abschnitt enthält spezielle Hinweise zur Behebung von Bereitstellungsproblemen mit Ihrer Workday-Integration mithilfe der Protokolle „Azure AD-Überwachungsprotokolle“ und „Protokolle für die Windows Server-Ereignisanzeige“. Sie bauen auf allgemeinen Schritten zur Problembehandlung und den Konzepten in [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md) auf.
 
 Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung:
 
@@ -1209,7 +1209,7 @@ Wenn der Bereitstellungsdienst keine Verbindung zu Workday oder Active Directory
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
 |1.| Fehler beim Exportvorgang im Überwachungsprotokoll mit der Meldung *Fehler: OperationsError-SvcErr: Es ist ein Vorgangsfehler aufgetreten. Im Verzeichnisdienst wurde kein übergeordneter Verweis konfiguriert. Der Verzeichnisdienst kann daher keine Verweise auf Objekte außerhalb dieser Gesamtstruktur ausgeben.* | Dieser Fehler tritt in der Regel auf, wenn die Organisationseinheit *Active Directory-Container* nicht korrekt eingestellt ist oder wenn es Probleme mit der für *parentDistinguishedName* verwendeten Ausdruckszuordnung gibt. | Überprüfen Sie den Parameter der Organisationseinheit *Active Directory-Container* auf Tippfehler. Wenn Sie *parentDistinguishedName* in der Attributzuordnung verwenden, müssen Sie sicherstellen, das die Auswertung immer hinsichtlich eines bekannten Containers innerhalb der AD-Domäne ausgeführt wird. Überprüfen Sie im Ereignis *Export* des Überwachungsprotokolls den generierten Wert. |
-|2.| Fehler beim Exportvorgang im Überwachungsprotokoll mit dem Fehlercode: *SystemForCrossDomainIdentityManagementBadResponse* und der Meldung *Fehler: ConstraintViolation-AtrErr: Ein Wert in der Anforderung ist ungültig. Ein Wert für das Attribut befindet sich nicht im zulässigen Wertebereich. \nFehlerdetails: CONSTRAINT_ATT_TYPE - company*. | Dieser Fehler wird zwar meist spezifisch für das Attribut *company* angezeigt, kann aber auch bei Attributen wie *CN* auftreten. Dieser Fehler tritt aufgrund von AD erzwungenen Schemaeinschränkungen auf. Standardmäßig gibt es für die Attribute wie *company* und *CN* in AD eine Obergrenze von 64 Zeichen. Wenn der aus Workday stammende Wert mehr als 64 Zeichen enthält, wird diese Fehlermeldung angezeigt. | Überprüfen Sie das Ereignis *Export* in den Überwachungsprotokollen, um den Wert für das in der Fehlermeldung gemeldete Attribut anzuzeigen. Sie sollten in Betracht ziehen, den aus Workday kommenden Wert mit der Funktion [Mid](../manage-apps/functions-for-customizing-application-data.md#mid) zu kürzen oder die Zuordnungen in ein AD-Attribut zu ändern, das keine ähnlichen Längenbeschränkungen hat.  |
+|2.| Fehler beim Exportvorgang im Überwachungsprotokoll mit dem Fehlercode: *SystemForCrossDomainIdentityManagementBadResponse* und der Meldung *Fehler: ConstraintViolation-AtrErr: Ein Wert in der Anforderung ist ungültig. Ein Wert für das Attribut befindet sich nicht im zulässigen Wertebereich. \nFehlerdetails: CONSTRAINT_ATT_TYPE - company*. | Dieser Fehler wird zwar meist spezifisch für das Attribut *company* angezeigt, kann aber auch bei Attributen wie *CN* auftreten. Dieser Fehler tritt aufgrund von AD erzwungenen Schemaeinschränkungen auf. Standardmäßig gibt es für die Attribute wie *company* und *CN* in AD eine Obergrenze von 64 Zeichen. Wenn der aus Workday stammende Wert mehr als 64 Zeichen enthält, wird diese Fehlermeldung angezeigt. | Überprüfen Sie das Ereignis *Export* in den Überwachungsprotokollen, um den Wert für das in der Fehlermeldung gemeldete Attribut anzuzeigen. Sie sollten in Betracht ziehen, den aus Workday kommenden Wert mit der Funktion [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) zu kürzen oder die Zuordnungen in ein AD-Attribut zu ändern, das keine ähnlichen Längenbeschränkungen hat.  |
 
 #### <a name="ad-user-account-update-errors"></a>Fehler bei der Aktualisierung des AD-Benutzerkontos
 
@@ -1348,7 +1348,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 ### <a name="exporting-and-importing-your-configuration"></a>Exportieren und Importieren Ihrer Konfiguration
 
-Entsprechende Informationen finden Sie im Artikel [Exportieren und Importieren der Bereitstellungskonfiguration](../manage-apps/export-import-provisioning-configuration.md).
+Entsprechende Informationen finden Sie im Artikel [Exportieren und Importieren der Bereitstellungskonfiguration](../app-provisioning/export-import-provisioning-configuration.md).
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
 
@@ -1362,7 +1362,7 @@ In Bezug auf die Datenaufbewahrung erstellt der Azure AD-Bereitstellungsdienst k
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 * [Lesen Sie, wie Sie das einmalige Anmelden zwischen Workday und Azure Active Directory konfigurieren.](workday-tutorial.md)
 * [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](tutorial-list.md)
 * [Erfahren Sie, wie Sie Microsoft Graph-APIs verwenden, um die Bereitstellungskonfigurationen zu verwalten](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

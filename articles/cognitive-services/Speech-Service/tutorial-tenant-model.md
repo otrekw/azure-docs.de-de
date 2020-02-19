@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446800"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188998"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Tutorial: Erstellen eines Mandantenmodells (Vorschau)
 
@@ -39,11 +39,11 @@ Bevor Sie Ihr Mandantenmodell bereitstellen können, müssen Sie sich beim Manda
 
 1. Melden Sie sich beim [Microsoft 365 Admin Center](https://admin.microsoft.com) an.
 
-1. Wählen Sie im linken Bereich nacheinander **Einstellungen**, **Apps** und **Azure Speech-Dienste** aus.
+1. Wählen Sie im linken Bereich die Option **Einstellungen** und dann im geschachtelten Menü die Option **Einstellungen** aus. Wählen Sie anschließend im Hauptfenster **Azure Speech-Dienste** aus.
 
    ![Der Bereich „Dienste und Add-Ins“](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Aktivieren Sie das Kontrollkästchen **Organisationsweites Sprachmodell zulassen**, und wählen Sie dann **Änderungen speichern** aus. 
+1. Aktivieren Sie das Kontrollkästchen **Organisationsweites Sprachmodell zulassen**, und wählen Sie dann **Änderungen speichern** aus.
 
    ![Der Bereich „Azure Speech-Dienste“](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -79,11 +79,11 @@ Nachdem Ihr Administrator das Mandantenmodell für Ihre Organisation aktiviert h
 
    > [!NOTE]
    > Office 365 Enterprise-Kunden in Nordamerika sind berechtigt, ein Mandantenmodell (Englisch) zu erstellen. Für Kunden vom Typ „Kunden-Lockbox“, „Kundenschlüssel“ oder „Office 365 Government“ ist dieses Feature nicht verfügbar. Informationen dazu, ob Ihr Kundenkonto den Typ „Kunden-Lockbox“ oder „Kundenschlüssel“ aufweist, finden Sie hier:
-   > * [Kunden-Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [Kundenschlüssel](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Office 365 Government](https://www.microsoft.com/microsoft-365/government)
+   > * [Kunden-Lockbox](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Kundenschlüssel](/microsoft-365/compliance/customer-key-overview)
+   > * [Office 365 Government](/microsoft-365/government)
 
-1. Wählen Sie **Aktivieren** aus. 
+1. Wählen Sie **Aktivieren** aus.
 
    Wenn Ihr Mandantenmodell bereit ist, erhalten Sie per E-Mail eine Bestätigung mit weiteren Anweisungen.
 

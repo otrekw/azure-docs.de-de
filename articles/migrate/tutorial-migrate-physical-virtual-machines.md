@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie physische Computer mit 
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 6cdd107cb761aab3a85b73067fd646a36fe97d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989755"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134935"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -61,9 +61,6 @@ Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüll
 Sie müssen Azure-Berechtigungen einrichten, bevor Sie die Migration per Azure Migrate-Servermigration durchführen können.
 
 - **Erstellen eines Projekts:** Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines Azure Migrate-Projekts. 
-- **Registrieren der Azure Migrate-Replikationsappliance:** Die Replikationsappliance erstellt und registriert eine Azure Active Directory-App in Ihrem Azure-Konto. Delegieren Sie hierfür die Berechtigungen.
-- **Erstellen eines Schlüsseltresors:** Für die Migration von Computern erstellt Azure Migrate einen Schlüsseltresor in der Ressourcengruppe, mit dem Zugriffsschlüssel für das Replikationsspeicherkonto in Ihrem Abonnement verwaltet werden können. Für die Tresorerstellung benötigen Sie Rollenzuweisungsberechtigungen für die Ressourcengruppe, in der sich das Azure Migrate-Projekt befindet. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung
 
@@ -73,43 +70,6 @@ Sie müssen Azure-Berechtigungen einrichten, bevor Sie die Migration per Azure M
     - Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements.
     - Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Rolle zuzuweisen.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Zuweisen von Berechtigungen zum Registrieren der Replikationsappliance
-
-Delegieren Sie bei der Agent-basierten Migration Berechtigungen für die Azure Migrate-Servermigration, um die Erstellung und Registrierung einer Azure AD-App in Ihrem Konto zu ermöglichen. Berechtigungen können wie folgt zugewiesen werden:
-
-- Ein Mandantenadministrator/globaler Administrator kann Benutzern unter dem Mandanten Berechtigungen zum Erstellen und Registrieren von Azure AD-Apps erteilen.
-- Ein Mandantenadministrator/globaler Administrator kann dem Konto die Rolle „Anwendungsentwickler“ (die über die Berechtigungen verfügt) zuweisen.
-
-Beachten Sie Folgendes:
-
-- Die Apps verfügen nur über die oben beschriebenen Zugriffsberechtigungen für das Abonnement.
-- Sie benötigen diese Berechtigungen nur, wenn Sie eine neue Replikationsappliance registrieren. Nach Einrichtung der Replikationsappliance können die Berechtigungen wieder entfernt werden. 
-
-
-#### <a name="grant-account-permissions"></a>Erteilen von Kontoberechtigungen
-
-Der Mandantenadministrator/globale Administrator kann Berechtigungen wie folgt erteilen:
-
-1. In Azure AD muss der globale oder der Mandantenadministrator zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen** navigieren.
-2. Der Administrator muss **App-Registrierungen** auf **Ja** festlegen.
-
-    ![Azure AD-Berechtigungen](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Dies ist eine Standardeinstellung, die nicht vertraulich ist. [Weitere Informationen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)
-
-#### <a name="assign-application-developer-role"></a>Zuweisen der Rolle „Anwendungsentwickler“ 
-
-Der Mandantenadministrator/globale Administrator kann einem Konto die Rolle „Anwendungsentwickler“ zuweisen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
-
-## <a name="assign-permissions-to-create-key-vault"></a>Zuweisen von Berechtigungen für die Key Vault-Erstellung
-
-Gehen Sie wie folgt vor, um Rollenzuweisungsberechtigungen für die Ressourcengruppe zuzuweisen, in der sich das Azure Migrate-Projekt befindet:
-
-1. Wählen Sie im Azure-Portal unter der Ressourcengruppe die Option **Zugriffssteuerung (IAM)** aus.
-2. Suchen Sie unter **Zugriff überprüfen** nach dem relevanten Konto, und klicken Sie darauf, um Berechtigungen anzuzeigen. Sie benötigen die Berechtigung **Besitzer** (oder die Berechtigungen **Mitwirkender** und **Benutzerzugriffsadministrator**).
-3. Sollten Sie nicht über die erforderlichen Berechtigungen verfügen, müssen Sie sie beim Besitzer der Ressourcengruppe anfordern. 
-
 ## <a name="prepare-for-migration"></a>Vorbereiten der Migration
 
 ### <a name="check-machine-requirements-for-migration"></a>Überprüfen der Computeranforderungen für die Migration
@@ -117,7 +77,7 @@ Gehen Sie wie folgt vor, um Rollenzuweisungsberechtigungen für die Ressourcengr
 Stellen Sie sicher, dass die Computer die Anforderungen für die Migration zu Azure erfüllen. 
 
 > [!NOTE]
-> Die Agent-basierte Migration mit der Azure Migrate-Servermigration basiert auf Features des Azure Site Recovery-Diensts. Einige Anforderungen sind daher ggf. mit der Site Recovery-Dokumentation verknüpft.
+> Die agentbasierte Migration mit „Azure Migrate-Servermigration“ hat die gleiche Replikationsarchitektur wie das Feature für die agentbasierte Notfallwiederherstellung des Azure Site Recovery-Diensts. Darüber hinaus weisen einige der verwendeten Komponenten die gleiche Codebasis auf. Einige Anforderungen sind daher ggf. mit der Site Recovery-Dokumentation verknüpft.
 
 1. [Überprüfen](migrate-support-matrix-physical-migration.md#physical-server-requirements) Sie die Anforderungen physischer Server.
 2. Überprüfen Sie die VM-Einstellungen. Lokale virtuelle Computer, die Sie in Azure replizieren möchten, müssen die [Azure-VM-Anforderungen](migrate-support-matrix-physical-migration.md#azure-vm-requirements) erfüllen.
@@ -194,7 +154,7 @@ Der erste Schritt bei der Migration besteht darin, die Replikationsappliance ein
 
     ![Registrierung abschließen](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
-Es kann nach dem Abschluss der Registrierung bis zu 15 Minuten dauern, bis ermittelte Computer in „Azure Migrate-Servermigration“ angezeigt werden. Wenn VMs ermittelt werden, erhöht sich die Anzahl unter **Ermittelte Server**.
+Nach dem Abschluss der Registrierung kann es einige Zeit dauern, bis ermittelte Computer in „Azure Migrate-Servermigration“ angezeigt werden. Wenn VMs ermittelt werden, erhöht sich die Anzahl unter **Ermittelte Server**.
 
 ![Ermittelte Server](./media/tutorial-migrate-physical-virtual-machines/discovered-servers.png)
 

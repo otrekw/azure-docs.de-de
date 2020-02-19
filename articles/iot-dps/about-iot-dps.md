@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: d097894c841d91d344b5958e7f5e1c10249f8b6e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904873"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77082864"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für IoT Hub und ermöglicht eine unbeaufsichtigte Just-In-Time-Bereitstellung im richtigen IoT-Hub ganz ohne Benutzereingriff. DPS ermöglicht die skalierbare und sichere Bereitstellung von Millionen von Geräten.
@@ -80,8 +80,10 @@ Dank zahlreicher Features eignet sich DPS perfekt für die Bereitstellung von Ge
 * Eine **Registrierungsliste** mit der vollständigen Aufzeichnung von Geräten/Gerätegruppen, die sich zu einem beliebigen Zeitpunkt registrieren könnten. Die Registrierungsliste enthält Informationen zu der gewünschten Konfiguration des Geräts, sobald es registriert ist, und sie kann jederzeit aktualisiert werden.
 * **Mehrere Zuordnungsrichtlinien**, um die DPS-basierte Zuweisung von Geräten zu IoT-Hubs für Ihre Szenarien zu steuern: Niedrigste Latenz, gleichmäßig gewichtete Verteilung (Standard) und statische Konfiguration über die Registrierungsliste. Wartezeit wird mithilfe der gleichen Methode ermittelt wie bei [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * **Überwachungs- und Diagnoseprotokolle**, um sicherzustellen, dass alles ordnungsgemäß funktioniert
-* **Unterstützung mehrerer Hubs**, sodass DPS Geräte zur Laufzeit spät an einen IoT-Hub binden kann. DPS kann über mehrere Azure-Abonnements hinweg mit Hubs kommunizieren.
+* **Unterstützung für mehrere Hubs**, sodass Device Provisioning Service (DPS) Geräte mehreren IoT Hubs zuweisen kann. DPS kann über mehrere Azure-Abonnements hinweg mit Hubs kommunizieren.
 * **Regionsübergreifende Unterstützung**, um DPS das Zuweisen von Geräten zu IoT-Hubs in anderen Regionen zu ermöglichen.
+* Mit der **Verschlüsselung für ruhende Daten** können Daten in DPS auf transparente Weise mit der 256-Bit-AES-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – ver- und entschlüsselt werden. Die Verschlüsselung ist darüber hinaus mit dem FIPS 140-2-Standard konform.
+
 
 Weitere Informationen zu den Konzepten und Features in Verbindung mit der Gerätebereitstellung finden Sie unter [IoT Hub Device Provisioning Service device concepts](concepts-device.md) (IoT Hub Device Provisioning-Dienst: Gerätekonzepte), [IoT Hub Device Provisioning Service concepts](concepts-service.md) (IoT Hub Device Provisioning-Dienst: Konzepte) und [IoT Hub Device Provisioning Service security concepts](concepts-security.md) (IoT Hub Device Provisioning-Dienst: Sicherheitskonzepte).
 

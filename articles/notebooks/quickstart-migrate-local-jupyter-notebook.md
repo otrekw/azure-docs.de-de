@@ -3,24 +3,30 @@ title: Migrieren eines lokalen Jupyter Notebooks zu Azure Notebooks (Vorschauver
 description: Übertragen Sie schnell ein Jupyter-Notebook vom lokalen Computer oder von einer Web-URL in Azure Notebooks (Vorschauversion), und geben Sie es dann für die Zusammenarbeit frei.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 9e5270c59a64f9510f9108bbe4d00b922178888c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: baf05d7adb1340d712ff0fc87436d5bbac51bc8f
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647049"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064324"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook-in-azure-notebooks-preview"></a>Schnellstart: Migrieren eines lokalen Jupyter Notebooks zu Azure Notebooks (Vorschauversion)
 
-Auf Jupyter-Notebooks, die Sie lokal auf Ihrem Computer erstellen, haben nur Sie Zugriff. Sie können Ihre Dateien auf verschiedene Weise teilen, aber dann haben die Empfänger eine eigene, lokale Kopie des Notebooks, und es wird für Sie schwierig, die von ihnen vorgenommenen Änderungen zu integrieren. Sie können Notebooks auch in einem gemeinsam verwendeten Onlinerepository wie GitHub speichern, aber das setzt immer noch voraus, dass jeder Mitwirkende über eine eigene lokale Installation von Jupyter mit der gleichen Konfiguration wie Ihre verfügt.
+In dieser Schnellstartanleitung migrieren Sie eine Jupyter Notebook-Instanz von Ihrem lokalen Computer oder einer anderen zugänglichen Datei-URL zu Azure Notebooks. 
 
-Durch Migrieren Ihrer lokalen oder auf Repositorys gehosteten Notebooks zu Azure Notebooks erreichen Sie die Speicherung in der Cloud, von wo aus Sie sie sofort mit Ihren Mitwirkenden teilen können. Diese Mitwirkenden benötigen lediglich einen Browser zum Anzeigen und Ausführen Ihrer Notebooks, und wenn sie sich bei Azure Notebooks [anmelden](quickstart-sign-in-azure-notebooks.md), können sie auch Änderungen vornehmen.
+Auf Jupyter Notebook-Instanzen auf Ihrem Computer haben nur Sie Zugriff. Sie können Ihre Dateien freigeben, Empfänger besitzen dann jedoch eigene lokale Kopien des Notebooks, und die Integration ihrer Änderungen wird erschwert. Auch wenn Sie Notebooks in einem freigegebenen Onlinerepository wie GitHub speichern, muss jeder Projektmitarbeiter über eine lokale Jupyter-Installation verfügen, die wie Ihre konfiguriert ist.
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+Durch Migrieren Ihrer lokalen oder auf Repositorys basierenden Notebooks zu Azure Notebooks können Sie sie sofort mit den Projektmitarbeitern teilen. Diese benötigen nur einen Browser zum Anzeigen und Ausführen Ihrer Notebooks. Wenn sie sich bei Azure Notebooks anmelden, können sie auch Änderungen vornehmen.
 
-Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von Ihrem lokalen Computer oder einer sonstigen Datei-URL, die zugänglich ist. Informationen zum Migrieren von Notebooks aus einem GitHub-Repository finden Sie unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md).
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Eine [Jupyter Notebook-Instanz](https://jupyter-notebook.readthedocs.io) auf Ihrem lokalen Computer oder unter einer anderen zugänglichen Datei-URL 
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Erstellen eines Projekts auf Azure Notebooks
+
+Diese Schnellstartanleitung veranschaulicht die Migration für ein Notebook von Ihrem lokalen Computer oder einer sonstigen zugänglichen Datei-URL. Informationen zum Migrieren von Notebooks aus einem GitHub-Repository finden Sie unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md).
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
@@ -28,7 +34,7 @@ Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von
 
     ![Link „Meine Projekte“ am oberen Rand des Browserfensters](media/quickstarts/my-projects-link.png)
 
-1. Klicken Sie auf der Seite **My Projects** (Meine Projekte) auf **+ New Project** (+ Neues Projekt, Tastenkombination: n). Wenn Ihr Browserfenster schmal ist, wird möglicherweise nur **+** für die Schaltfläche angezeigt:
+1. Wählen Sie auf der Seite **Meine Projekte** die Option **Neues Projekt** aus (Tastenkombination: n). Ist das Browserfenster schmal, wird die Schaltfläche unter Umständen nur als **+** angezeigt:
 
     ![Befehl „New Project“ (Neues Projekt) auf der Seite „My Projects“ (Meine Projekte)](media/quickstarts/new-project-command.png)
 
@@ -40,13 +46,13 @@ Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von
 
     ![Befehl zum Hochladen eines Notebooks von einer URL oder dem lokalen Computer](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Nur zur Erinnerung, falls sich Ihr Notebook in einem GitHub-Repository befindet, führen Sie stattdessen die Schritte unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md) aus.)
+   Nur zur Erinnerung: Falls sich Ihr Notebook in einem GitHub-Repository befindet, führen Sie stattdessen die Schritte unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md) aus.
 
-   - Wenn Sie **Von Computer** verwenden, ziehen Sie Ihre *.ipynb*-Dateien auf das Popupfenster, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen**, navigieren Sie dann zu den zu importierenden Dateien, und wählen Sie sie aus. Wählen Sie dann die Option **Hochladen**. Die hochgeladenen Dateien erhalten die gleichen Namen wie die lokalen Dateien. (Die Inhalte von *.ipynb_checkpoints*-Ordnern brauchen nicht hochgeladen zu werden.)
+   - Wenn Sie **Von Computer** verwenden, ziehen Sie Ihre *.ipynb*-Dateien auf das Popupfenster, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen**, navigieren Sie dann zu den zu importierenden Dateien, und wählen Sie sie aus. Wählen Sie dann die Option **Hochladen**. Die hochgeladenen Dateien erhalten die gleichen Namen wie die lokalen Dateien. Die Inhalte der Ordner vom Typ *.ipynb_checkpoints* müssen nicht hochgeladen werden.
 
      ![Popupfenster „Vom Computer hochladen“](media/quickstarts/upload-from-computer-popup.png)
 
-   - Wenn Sie **Von URL** verwenden, geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** ein. Wählen Sie dann die Option **Hochladen**. Wenn Sie über mehrere Dateien mit separaten URLs verfügen, verwenden Sie den Befehl **+ Datei hinzufügen**, um die erste eingegebene URL zu überprüfen; anschließend stellt das Popup neue Felder für eine weitere Datei zur Verfügung.
+   - Wenn Sie **Von URL** verwenden, geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** ein. Wählen Sie dann die Option **Hochladen**. Wenn Sie über mehrere Dateien mit separaten URLs verfügen, verwenden Sie den Befehl **Datei hinzufügen**, um die erste eingegebene URL zu überprüfen. Anschließend stellt das Popup neue Felder für eine weitere Datei zur Verfügung.
 
      ![Popup „Von URL hochladen“](media/quickstarts/upload-from-url-popup.png)
 
@@ -59,4 +65,4 @@ Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks für lineare Regression](tutorial-create-run-jupyter-notebook.md)
+> [Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Instanz für lineare Regression](tutorial-create-run-jupyter-notebook.md)

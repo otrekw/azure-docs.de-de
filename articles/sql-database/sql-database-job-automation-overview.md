@@ -9,13 +9,13 @@ ms.topic: overview
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 01/25/2019
-ms.openlocfilehash: c2548bb4537d17a3dab94d5476c743e2a70faad0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/07/2020
+ms.openlocfilehash: 1ffa17bd0e35e3753cde3e915c0ee70d8000147a
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810093"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083119"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Automatisieren von Verwaltungsaufgaben mithilfe von Datenbankaufträgen
 
@@ -72,7 +72,7 @@ Der SQL-Agent ermöglicht die Erstellung verschiedener Arten von Auftragsschritt
 
 - Transaktionsprotokollleser
 - Momentaufnahme
-- Verteiler
+- Der Verteiler.
 
 Andere Arten von Auftragsschritten werden derzeit nicht unterstützt, einschließlich:
 
@@ -158,7 +158,7 @@ EXEC msdb.dbo.sp_update_job @job_name=N'Load data using SSIS',
 
 Einige der in SQL Server verfügbaren SQL-Agent-Features werden in verwalteten Instanzen nicht unterstützt:
 - SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.
-- Das Aktivieren/Deaktivieren des SQL-Agents wird in verwalteten Instanzen derzeit nicht unterstützt. Der SQL-Agent wird kontinuierlich ausgeführt.
+- Das Aktivieren/Deaktivieren des SQL-Agents wird in verwalteten Instanzen derzeit nicht unterstützt. Der SQL-Agent wird immer ausgeführt.
 - Benachrichtigungen werden teilweise unterstützt.
   - Der Pager wird nicht unterstützt.
   - NetSend wird nicht unterstützt.
@@ -202,7 +202,9 @@ Die *Auftragsdatenbank* dient zum Definieren von Aufträgen sowie zum Nachverfol
 
 Für die aktuelle Vorschauversion muss eine Azure SQL-Datenbank (S0 oder höher) vorhanden sein, um einen Agent für elastische Aufträge erstellen zu können.
 
-Die *Auftragsdatenbank* muss nicht neu, aber eine bereinigte, leere Datenbank der Dienstebene S0 oder höher sein. Für die *Auftragsdatenbank* wird zwar die Dienstebene S1 oder höher empfohlen, ausschlaggebend sind jedoch die Leistungsanforderungen Ihrer Aufträge (sprich: die Anzahl von Auftragsschritten sowie Anzahl und Intervall der Auftragswiederholungen). Ein Beispiel: Für einen Auftrags-Agent, der nur wenige Aufträge pro Stunde ausführt, ist eine S0-Datenbank ggf. ausreichend. Für einen Auftrag, der im Minutentakt ausgeführt wird, empfiehlt sich dagegen unter Umständen eine höhere Dienstebene.
+Die *Auftragsdatenbank* muss nicht unbedingt neu, aber eine bereinigte, leere Datenbank mit dem Dienstziel S0 oder höher sein. Für die *Auftragsdatenbank* wird das Dienstziel S1 oder höher empfohlen, die optimale Wahl hängt jedoch von den Leistungsanforderungen Ihrer Aufträge ab (also von der Anzahl von Auftragsschritten, der Anzahl von Auftragszielen und der Ausführungshäufigkeit der Aufträge). Ein Beispiel: Für einen Auftrags-Agent, der nur wenige Aufträge pro Stunde für weniger als zehn Datenbanken ausführt, ist eine S0-Datenbank ggf. ausreichend. Wenn Sie jedoch Aufträge im Minutentakt ausführen möchten, ist eine S0-Datenbank möglicherweise nicht schnell genug, und es empfiehlt sich ggf. die Verwendung einer höheren Dienstebene. 
+
+Sollten Vorgänge für die Auftragsdatenbank unerwartet langsam sein, [überwachen](sql-database-monitor-tune-overview.md#monitor-database-performance) Sie die Datenbankleistung und die Ressourcenverwendung der Auftragsdatenbank in langsamen Phasen über das Azure-Portal oder mithilfe der dynamische Verwaltungssicht [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database). Wenn eine Ressource (etwa CPU, Daten-E/A oder Protokollschreibvorgänge) in langsamen Phasen nahezu vollständig ausgelastet ist, empfiehlt es sich gegebenenfalls, die Datenbank schrittweise auf höhere Dienstziele zu skalieren (entweder im [DTU-Modell](sql-database-service-tiers-dtu.md) oder im [V-Kern-Modell](sql-database-service-tiers-vcore.md)), bis sich die Leistung der Auftragsdatenbank ausreichend verbessert hat.
 
 
 ##### <a name="job-database-permissions"></a>Berechtigungen für die Auftragsdatenbank
@@ -250,6 +252,10 @@ Die folgenden Beispiele zeigen, wie verschiedene Zielgruppendefinitionen zum Zei
 
 **Beispiel 5** und **Beispiel 6** zeigen erweiterte Szenarien, bei denen Azure SQL Server-Instanzen, Datenbanken und Pools für elastische Datenbanken mithilfe von Ein- und Ausschlussregeln kombiniert werden können.<br>
 **Beispiel 7** zeigt, dass die Shards in einer Shard-Zuordnung zum Zeitpunkt der Auftragsausführung ebenfalls ausgewertet werden können.
+
+> [!NOTE]
+> Die Auftragsdatenbank kann selbst Ziel eines Auftrags sein. In diesem Szenario wird die Auftragsdatenbank genau wie jede andere Zieldatenbank behandelt. Der Auftragsbenutzer muss in der Auftragsdatenbank mit ausreichenden Berechtigungen erstellt werden, und die datenbankweit gültigen Anmeldeinformationen für den Auftragsbenutzer müssen auch in der Auftragsdatenbank vorhanden sein (genau wie bei anderen Zieldatenbanken).
+>
 
 #### <a name="job"></a>Auftrag
 

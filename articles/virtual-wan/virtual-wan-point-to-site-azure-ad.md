@@ -5,14 +5,14 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: 19aa029311584b5a9762691d24ed10c1666a032c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781727"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122032"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Benutzer-VPN-Verbindung per Azure Virtual WAN
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
-* Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken überlappt, mit denen Sie eine Verbindung herstellen möchten. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im [Schnellstart](../virtual-network/quick-create-portal.md).
+* Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken für die Verbindungsherstellung überschneidet. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie in der [Schnellstartanleitung](../virtual-network/quick-create-portal.md).
 
 * Ihr virtuelles Netzwerk verfügt nicht über Gateways für virtuelle Netzwerke. Falls Ihr virtuelles Netzwerk über ein Gateway verfügt (entweder VPN oder ExpressRoute), müssen Sie alle Gateways entfernen. Für diese Konfiguration ist es erforderlich, dass virtuelle Netzwerke stattdessen mit dem Gateway des Virtual WAN-Hubs verbunden werden.
 
@@ -86,19 +86,17 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindung mit Remoteclients.
 
-1. Legen Sie die folgenden Variablen fest, und ersetzen Sie dabei die Werte nach Bedarf für Ihre Umgebung.
+1. Wählen Sie für Ihr virtuelles WAN die Option **Benutzer-VPN-Konfigurationen** aus.
 
-   ```powershell
-   $aadAudience = "00000000-abcd-abcd-abcd-999999999999"
-   $aadIssuer = "https://sts.windows.net/00000000-abcd-abcd-abcd-999999999999/"
-   $aadTenant = "https://login.microsoftonline.com/00000000-abcd-abcd-abcd-999999999999"    
-   ```
+   ![Neue Konfiguration](media/virtual-wan-point-to-site-azure-ad/aadportal1.jpg)
 
-2. Führen Sie die folgenden Befehle aus, um die Konfiguration zu erstellen:
+2. Klicken Sie auf **+ Benutzer-VPN-Konfiguration erstellen**.
 
-   ```powershell
-   $aadConfig = New-AzVpnServerConfiguration -ResourceGroupName <ResourceGroup> -Name newAADConfig -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadTenant $aadTenant -AadIssuer $aadIssuer -AadAudience $aadAudience -Location westcentralus
-   ```
+   ![Neue Konfiguration](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
+
+3. Geben Sie die entsprechenden Informationen ein, und klicken Sie auf **Erstellen**.
+
+   ![Neue Konfiguration](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
 ## <a name="hub"></a>Bearbeiten der Hub-Zuweisung
 
@@ -125,7 +123,7 @@ Verwenden Sie das VPN-Profil, um Ihre Clients zu konfigurieren.
 
 ## <a name="configure-user-vpn-clients"></a>Konfigurieren von Benutzer-VPN-Clients
 
-Für die Verbindungsherstellung muss auf jedem Computer, von dem eine Verbindung mit dem VNET hergestellt werden soll, Azure VPN Client (Vorschauversion) heruntergeladen und das in den vorherigen Schritten heruntergeladene VPN-Clientprofil importiert werden.
+Für die Verbindungsherstellung muss auf jedem Computer, von dem eine Verbindung mit dem VNET hergestellt werden soll, Azure VPN Client heruntergeladen und das in den vorherigen Schritten heruntergeladene VPN-Clientprofil importiert werden.
 
 > [!NOTE]
 > Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
@@ -133,7 +131,7 @@ Für die Verbindungsherstellung muss auf jedem Computer, von dem eine Verbindung
 
 #### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
-Verwenden Sie [diesen Link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab), um Azure VPN Client (Vorschauversion) herunterzuladen.
+Verwenden Sie diesen [Link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab), um Azure VPN Client herunterzuladen.
 
 #### <a name="import"></a>So importieren Sie ein Clientprofil
 

@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: 83c4ad92cc367deb52e4e9e5cd8b76ddab409933
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: 75e61ea3f4fa6c2b346f912a9effd66ad94e7e93
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75532213"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116448"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder über einen virtuellen Notebook-Computer verfügen.
-* Öffnen Sie nach Abschluss des Einrichtungstutorials das Notebook **tutorials/regression-automated-ml.ipynb** unter Verwendung des gleichen Notebook-Servers.
+* Öffnen Sie nach Abschluss des Einrichtungstutorials das Notebook *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* unter Verwendung des gleichen Notebook-Servers.
 
 Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten. Führen Sie `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` aus, um die erforderlichen Pakete abzurufen.
 
@@ -894,7 +894,7 @@ Führen Sie die folgenden Schritte aus, um ein Modell automatisch zu trainieren:
 
 Definieren Sie die Experimentparameter und Modelleinstellungen für das Training. Die vollständige Liste mit den Einstellungen finden Sie [hier](how-to-configure-auto-train.md). Mit diesen Standardeinstellungen dauert die Übermittlung des Experiments etwa fünf bis 20 Minuten. Durch Verringern des Parameters `experiment_timeout_minutes` können Sie die Laufzeit allerdings verkürzen.
 
-|Eigenschaft| Wert in diesem Tutorial |BESCHREIBUNG|
+|Eigenschaft| Wert in diesem Tutorial |Beschreibung|
 |----|----|---|
 |**iteration_timeout_minutes**|2|Zeitlimit in Minuten für jede Iteration. Verringern Sie diesen Wert, um die Gesamtlaufzeit zu verringern.|
 |**experiment_timeout_minutes**|20|Maximal zulässige Dauer für alle Iterationen (in Minuten). Danach wird das Experiment beendet.|

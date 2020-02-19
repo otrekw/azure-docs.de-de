@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161714"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186813"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -33,21 +33,20 @@ Weitere Informationen zu den APIs finden Sie in der Apache-Dokumentation unter [
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Apache Kafka in HDInsight 3.6. Informationen zum Erstellen eines Clusters für Kafka in HDInsight finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight](apache-kafka-get-started.md).
-
+* Apache Kafka in einem HDInsight-Cluster. Informationen zum Erstellen des Clusters finden Sie unter [Schnellstart: Erstellen eines Apache Kafka-Clusters in Azure HDInsight im Azure-Portal](apache-kafka-get-started.md).
 * [Version 8 des Java Developer Kit (JDK)](https://aka.ms/azure-jdks) oder eine vergleichbare Lösung (etwa OpenJDK).
-
 * Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
-
-* Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Ein SSH-Client wie Putty. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Producer-Consumer` -Unterverzeichnis. Die Anwendung besteht im Wesentlichen aus vier Dateien:
+Die exemplarische Anwendung befindet sich unter [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) im `Producer-Consumer` -Unterverzeichnis. Wenn Sie einen Kafka-Cluster mit aktiviertem **Enterprise-Sicherheitspaket (ESP)** verwenden, sollten Sie die Anwendungsversion im Unterverzeichnis `DomainJoined-Producer-Consumer` verwenden.
 
+Die Anwendung besteht im Wesentlichen aus vier Dateien:
 * `pom.xml`: Diese Datei definiert die Projektabhängigkeiten, Java-Version und Verpackungsmethoden.
 * `Producer.java`: Diese Datei sendet mithilfe der Producer-API willkürliche Sätze an Kafka.
 * `Consumer.java`: Diese Datei verwendet die Consumer-API zum Lesen von Daten aus Kafka und Ausgeben an STDOUT.
+* `AdminClientWrapper.java`: Diese Datei verwendet die Admin-API, um Kafka-Themen zu erstellen, zu beschreiben und zu löschen.
 * `Run.java`: Die Befehlszeilenschnittstelle zum Ausführen des Producer- und Consumer-Codes.
 
 ### <a name="pomxml"></a>Pom.Xml
@@ -116,9 +115,11 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
 
 ## <a name="build-and-deploy-the-example"></a>Erstellen und Bereitstellen des Beispiels
 
+Wenn Sie diesen Schritt überspringen möchten, können Sie vorgefertigte JAR-Dateien aus dem Unterverzeichnis `Prebuilt-Jars` herunterladen. Laden Sie die Datei „kafka-producer-consumer.jar“ herunter. Wenn für Ihren Cluster das **Enterprise-Sicherheitspaket (ESP)** aktiviert ist, verwenden Sie „kafka-producer-consumer-esp.jar“. Führen Sie Schritt 3 aus, um die JAR-Datei in Ihren HDInsight-Cluster zu kopieren.
+
 1. Laden Sie die Beispiele aus [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) herunter, und extrahieren Sie sie.
 
-2. Legen Sie Ihr aktuelles Verzeichnis auf den Speicherort des Verzeichnisses `hdinsight-kafka-java-get-started\Producer-Consumer` fest, und verwenden Sie folgenden Befehl:
+2. Legen Sie Ihr aktuelles Verzeichnis auf den Speicherort des Verzeichnisses `hdinsight-kafka-java-get-started\Producer-Consumer` fest. Wenn Sie einen Kafka-Cluster mit aktiviertem **Enterprise-Sicherheitspaket (ESP)** verwenden, sollten Sie den Speicherort auf das Unterverzeichnis `DomainJoined-Producer-Consumer` festlegen. Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ Die Datei [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-s
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Installieren Sie den JSON-Befehlszeilenprozessor [jq](https://stedolan.github.io/jq/). Geben Sie über die geöffnete SSH-Verbindung den folgenden Befehl ein, um `jq` zu installieren:
+1. Ersetzen Sie zum Abrufen der Kafka-Brokerhosts die Werte für `<clustername>` und `<password>` im folgenden Befehl, und führen Sie ihn aus. Verwenden Sie die gleiche Groß-/Kleinschreibung für `<clustername>` wie im Azure-Portal gezeigt. Ersetzen Sie `<password>` durch das Kennwort für die Clusteranmeldung, und führen Sie dann den Befehl aus:
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. Richten Sie eine Kennwortvariable ein. Ersetzen Sie `PASSWORD` durch das Kennwort für die Clusteranmeldung, und geben Sie dann den folgenden Befehl ein:
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. Extrahieren Sie den Clusternamen mit korrekter Groß-/Kleinschreibung. Die tatsächliche Schreibweise des Clusternamens kann je nach Clustererstellung anders sein als erwartet. Mit diesem Befehl wird die tatsächliche Schreibweise abgerufen und in einer Variable gespeichert. Geben Sie den folgenden Befehl ein:
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > Falls Sie diesen Vorgang außerhalb des Clusters ausführen, gilt für das Speichern des Clusternamens eine andere Vorgehensweise. Rufen Sie den Clusternamen in Kleinbuchstaben aus dem Azure-Portal ab. Ersetzen Sie dann im folgenden Befehl den Clusternamen durch `<clustername>`, und führen Sie den Befehl aus: `export clusterName='<clustername>'`.  
-
-1. Verwenden Sie den folgenden Befehl, um die Kafka-Brokerhosts abzurufen:
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

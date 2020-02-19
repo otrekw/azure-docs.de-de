@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077938"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186232"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -32,15 +32,15 @@ Im Teil „Zuweisungen“ wird das „Wer“, „Was“ und „Wo“ der Richtli
 
 ### <a name="users-and-groups"></a>Benutzer und Gruppen
 
-Benutzer und Gruppen legen anhand der Zuweisungen fest, welche Personen in die Richtlinie einbezogen oder von der Richtlinie ausgeschlossen werden sollen. Diese Zuweisung kann alle Benutzer, bestimmte Benutzergruppen, Verzeichnisrollen oder externe Gastbenutzer einschließen. 
+[Benutzer und Gruppen](concept-conditional-access-users-groups.md) legen anhand der Zuweisungen fest, welche Personen in die Richtlinie einbezogen oder von der Richtlinie ausgeschlossen werden sollen. Diese Zuweisung kann alle Benutzer, bestimmte Benutzergruppen, Verzeichnisrollen oder externe Gastbenutzer einschließen. 
 
-### <a name="cloud-apps-or-actions"></a>Cloud-Apps oder -Aktionen
+### <a name="cloud-apps-or-actions"></a>Cloud-Apps oder -aktionen
 
-Cloud-Apps oder -Aktionen können Cloudanwendungen oder Benutzeraktionen, die der Richtlinie unterliegen, ein- oder ausschließen.
+[Cloud-Apps oder -aktionen](concept-conditional-access-cloud-apps.md) können Cloudanwendungen oder Benutzeraktionen ein- oder ausschließen, die der Richtlinie unterliegen.
 
 ### <a name="conditions"></a>Bedingungen
 
-Eine Richtlinie kann mehrere Bedingungen enthalten.
+Eine Richtlinie kann mehrere [Bedingungen](concept-conditional-access-conditions.md) enthalten.
 
 #### <a name="sign-in-risk"></a>Anmelderisiko
 
@@ -70,13 +70,15 @@ Mit diesem Steuerelement können Geräte mit Hybrid-Azure AD-Einbindung oder Ger
 
 Die Zugriffssteuerung der Richtlinie für bedingten Zugriff ist der Teil, der steuert, wie eine Richtlinie erzwungen wird.
 
-### <a name="grant"></a>Gewährung
+### <a name="grant"></a>Erteilen
+
+[Erteilen](concept-conditional-access-grant.md) bietet Administratoren eine Möglichkeit zur Richtlinienerzwingung, bei der sie den Zugriff blockieren oder gewähren können.
 
 #### <a name="block-access"></a>Zugriff blockieren
 
 „Zugriff blockieren“ bewirkt genau dies. Der Zugriff wird unter den angegebenen Zuweisungen blockiert. Das Blockieren des Zugriffs ist ein leistungsstarkes Steuerelement, das nur mit entsprechenden Kenntnissen eingesetzt werden sollte.
 
-#### <a name="grant-access"></a>Zugriff gewähren
+#### <a name="grant-access"></a>Gewähren von Zugriff
 
 Das Steuerelement zum Gewähren des Zugriffs kann die Erzwingung von mindestens einem weiteren Steuerelementen auslösen. 
 
@@ -93,9 +95,9 @@ Administratoren können mithilfe der folgenden Optionen auswählen, ob eins der 
 
 ### <a name="session"></a>Sitzung
 
-Sitzungssteuerelemente können die Umgebung einschränken 
+[Sitzungssteuerelemente](concept-conditional-access-session.md) können die Umgebung einschränken. 
 
-- App-erzwungene Einschränkungen verwenden
+- Verwenden von App-erzwungenen Einschränkungen
    - Funktioniert derzeit nur mit Exchange Online und SharePoint Online.
       - Übergibt Geräteinformationen, um das Gewähren von vollständigem oder eingeschränktem Zugriff auf die Umgebung zu steuern.
 - App-Steuerung für bedingten Zugriff verwenden
@@ -121,11 +123,11 @@ Eine Richtlinie für bedingten Zugriff muss mindestens Folgendes enthalten, um e
 
 ![Leere Richtlinie für bedingten Zugriff](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
+Der Artikel [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md) enthält einige Richtlinien, die für die meisten Organisationen nützlich sein könnten.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Simulieren des Anmeldeverhaltens mit dem Was-wäre-wenn-Tool für den bedingten Zugriff](troubleshoot-conditional-access-what-if.md)
-
-[Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 
 [Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](../authentication/howto-mfa-getstarted.md)
 

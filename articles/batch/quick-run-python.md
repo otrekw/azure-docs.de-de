@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ausführen eines Azure Batch-Auftrags – Python-API'
+title: Ausführen eines Azure Batch-Auftrags mit der Python-API
 description: Enthält eine Schnellstartanleitung zur Ausführung eines Azure Batch-Beispielauftrags und von Aufgaben mit der Batch Python-Clientbibliothek. Erfahren Sie mehr über die wichtigsten Konzepte des Batch-Diensts.
 services: batch
 author: LauraBrenner
@@ -12,30 +12,26 @@ ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 87c08c403a1e5eefd7645572f593b20037a8212b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77017104"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086043"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Schnellstart: Ausführen eines Azure Batch-Auftrags mit der Python-API
 
-In dieser Schnellstartanleitung wird ein Azure Batch-Auftrag über eine Anwendung ausgeführt, die auf der Azure Batch Python-API basiert.  Nach Abschluss dieser Schnellstartanleitung sind Sie mit den wichtigsten Konzepten des Batch-Diensts vertraut und können Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+In dieser Schnellstartanleitung führen Sie mithilfe der Python-API einen Azure Batch-Auftrag über eine App aus. Die App lädt Eingabedatendateien in Azure Storage hoch und erstellt einen *Pool* mit Batch-Computeknoten (virtuelle Computer). Anschließend wird ein *Auftrag* erstellt, mit dem *Aufgaben* ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten.
 
-Die App lädt einige Eingabedatendateien in den Azure-Speicher und erstellt anschließend einen *Pool* mit Batch-Computeknoten (virtuelle Computer). Als Nächstes wird ein Beispiel für einen *Auftrag* erstellt, mit dem *Aufgaben* ausgeführt werden, um die einzelnen Eingabedateien im Pool mit einem einfachen Befehl zu verarbeiten.
- 
+Hier machen Sie sich mit den wichtigsten Konzepten des Batch-Diensts vertraut und können dann Batch mit realistischeren Workloads und in größerem Umfang ausprobieren.
+
 ![Übersicht über den Azure Batch-Workflow](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Python-Version 2.7 oder 3.3 oder höher](https://www.python.org/downloads/)
-
-* [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Manager
-
-* Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md). 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Ein **Azure Batch**-Konto und ein verknüpftes **Azure Storage**-Konto. Verwenden Sie das [Azure-Portal](quick-create-portal.md) oder die [CLI](quick-create-cli.md) für die Erstellung dieser Konten.
+- [Python](https://python.org/downloads), Version 2.7 bzw. 3.3 oder höher, einschließlich des [pip](https://pip.pypa.io/en/stable/installing/)-Paket-Managers
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

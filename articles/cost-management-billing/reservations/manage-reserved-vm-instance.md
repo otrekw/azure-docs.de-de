@@ -3,19 +3,17 @@ title: Verwalten von Azure-Reservierungen
 description: Hier erfahren Sie, wie Sie Azure-Reservierungen verwalten.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986290"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188518"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -128,7 +126,7 @@ Gehen Sie wie folgt vor, um die Optimierungseinstellung für die Reservierung zu
 
 ## <a name="optimize-reservation-use"></a>Optimieren der Reservierungsnutzung
 
-Einsparungen durch Azure-Reservierungen ergeben sich nur bei anhaltender Ressourcennutzung. Wenn Sie eine Reservierung erwerben, bezahlen Sie vorab für die voraussichtliche Ressourcennutzung in einem Zeitraum von einem Jahr oder drei Jahren. Versuchen Sie, Ihre Reservierung zu maximieren, um den größtmöglichen Nutzen und die höchstmöglichen Einsparungen zu erzielen. In den folgenden Abschnitten erfahren Sie, wie Sie eine Reservierung überwachen und deren Nutzung optimieren.
+Einsparungen durch Azure-Reservierungen ergeben sich nur bei anhaltender Ressourcennutzung. Wenn Sie eine Reservierung erwerben, bezahlen Sie für die voraussichtliche Ressourcennutzung in einem Zeitraum von einem Jahr oder drei Jahren. Versuchen Sie, Ihre Reservierung zu maximieren, um den größtmöglichen Nutzen und die höchstmöglichen Einsparungen zu erzielen. In den folgenden Abschnitten erfahren Sie, wie Sie eine Reservierung überwachen und deren Nutzung optimieren.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Anzeigen der Reservierungsnutzung im Azure-Portal
 

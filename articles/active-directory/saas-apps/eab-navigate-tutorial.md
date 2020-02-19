@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03de10f9ea3bc3bf13a0fffaf22805412456a6f9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8e185f4065fee0399104feadc27f038dd9c4a612
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991902"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046694"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EAB Navigate
 
@@ -45,7 +45,8 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * EAB Navigate unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-* Nach dem Konfigurieren von EAB Navigate können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+> [!NOTE]
+> Der Bezeichner dieser Anwendung ist ein fester Zeichenfolgenwert, daher kann in einem Mandanten nur eine Instanz konfiguriert werden.
 
 ## <a name="adding-eab-navigate-from-the-gallery"></a>Hinzufügen von EAB Navigate aus dem Katalog
 
@@ -57,7 +58,6 @@ Zum Konfigurieren der Integration von EAB Navigate in Azure AD müssen Sie EAB
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **EAB Navigate** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **EAB Navigate** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
-
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-eab-navigate"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für EAB Navigate
 
@@ -82,32 +82,21 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+    
+    Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** exakt den folgenden Wert ein: `https://bouncer.eab.com`.
+    
+    Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die beiden folgenden Werte als separate Zeilen ein: `https://bouncer.eab.com/sso/saml2/acs`.
+    `https://bouncer.eab.com/sso/saml2/acs/`
+    
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.navigate.eab.com/`
 
-    a. Klicken Sie auf **Metadatendatei hochladen**.
+    > [!NOTE]
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den EAB Navigate-Client](mailto:EABTechSupport@eab.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    ![Metadatendatei hochladen](common/upload-metadata.png)
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
-    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
-
-    ![Metadatendatei auswählen](common/browse-upload-metadata.png)
-
-    c. Nach dem erfolgreichen Upload der Metadatendatei wird der Wert **Bezeichner** automatisch im Abschnitt „Grundlegende SAML-Konfiguration“ eingefügt.
-
-    ![SSO-Informationen zur Domäne und zu den URLs für EAB Navigate](common/sp-identifier.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.navigate.eab.com`
-
-    > [!Note]
-    > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den erforderlichen Wert manuell ein. Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Diesen Wert erhalten Sie vom [Supportteam für den EAB Navigate-Client](mailto:jmahoney@eab.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
-
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Rohdaten)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
-
-    ![Downloadlink für das Zertifikat](common/certificateraw.png)
-
-1. Kopieren Sie im Abschnitt **EAB Navigate einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
-
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -141,13 +130,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-eab-navigate-sso"></a>Konfigurieren des einmaligen Anmeldens für EAB Navigate
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB Navigate** müssen Sie das heruntergeladene **Zertifikat (Rohdaten)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von EAB Navigate](mailto:jmahoney@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB Navigate** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EAB Navigate](mailto:EABTechSupport@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-eab-navigate-test-user"></a>Erstellen eines EAB Navigate-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in EAB Navigate einen Benutzer namens B. Simon. Wenden Sie sich an das [Supportteam von EAB Navigate](mailto:jmahoney@eab.com), um die Benutzer auf der EAB Navigate-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in EAB Navigate einen Benutzer namens B. Simon. Wenden Sie sich an das [Supportteam von EAB Navigate](mailto:EABTechSupport@eab.com), um die Benutzer auf der EAB Navigate-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 

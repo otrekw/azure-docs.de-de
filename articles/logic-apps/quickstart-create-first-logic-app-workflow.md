@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428762"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191282"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal
 
@@ -116,7 +116,7 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 1. Wenn der ausgewählte E-Mail-Connector Sie auffordert, Ihre Identität zu authentifizieren, führen Sie diesen Schritt jetzt aus, um eine Verbindung zwischen Ihrer Logik-App und Ihrem E-Mail-Dienst herzustellen.
 
    > [!NOTE]
-   > In diesem speziellen Beispiel authentifizieren Sie Ihre Identität manuell. Connectors, die eine Authentifizierung erfordern, unterscheiden sich jedoch in Hinsicht auf die jeweils unterstützten Authentifizierungstypen. Außerdem stehen Optionen bereit, mit denen Sie die Handhabung der Authentifizierung einrichten können. Wenn Sie z.B. Azure Resource Manager-Vorlagen für die Bereitstellung verwenden, können Sie Eingaben, die Sie häufig oder einfach ändern möchten (z.B. Verbindungsinformationen), parametrisieren und sichern. Weitere Informationen finden Sie in den folgenden Themen:
+   > In diesem speziellen Beispiel authentifizieren Sie Ihre Identität manuell. Connectors, die eine Authentifizierung erfordern, unterscheiden sich jedoch in Hinsicht auf die jeweils unterstützten Authentifizierungstypen. Außerdem stehen Optionen bereit, mit denen Sie die Handhabung der Authentifizierung einrichten können. Wenn Sie beispielsweise Azure Resource Manager-Vorlagen für die Bereitstellung verwenden, können Sie Eingaben, die Sie häufig oder einfach ändern möchten (z. B. Verbindungsinformationen), parametrisieren und die Sicherheit dafür erhöhen. Weitere Informationen finden Sie in den folgenden Themen:
    >
    > * [Vorlagenparameter für die Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [Autorisieren von OAuth-Verbindungen](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)
@@ -147,7 +147,7 @@ Fügen Sie nun eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-conc
 
       ![Auswählen von Eigenschaften für E-Mail-Textinhalt](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | Eigenschaft | BESCHREIBUNG |
+      | Eigenschaft | Beschreibung |
       |----------|-------------|
       | **Feedtitel** | Der Titel des Elements |
       | **Feed veröffentlicht am** | Datum und Uhrzeit der Elementveröffentlichung |

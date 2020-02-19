@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und einer Resource Manager-Vorlage'
+title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und einer Resource Manager-Vorlage'
 description: In diesem Tutorial erfahren Sie, wie Sie einem Benutzer mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und einer Azure Resource Manager-Vorlage Zugriff auf Azure-Ressourcen gewähren.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418489"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138215"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und einer Resource Manager-Vorlage
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Gewähren des Zugriffs für einen Benutzer im Ressourcengruppenbereich
 > * Überprüfen der Bereitstellung
-> * Bereinigen
+> * Bereinigung
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -69,7 +69,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 1. Wählen Sie **Rollenzuweisungen** aus. 
 1. Geben Sie in **Name** die E-Mail-Adresse ein, die Sie im letzten Verfahren eingegeben haben. Sie sehen dann, dass der Benutzer mit der E-Mail-Adresse die Rolle **Mitwirkender für virtuelle Computer** besitzt.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die im letzten Verfahren erstellte Ressourcengruppe zu entfernen, wählen Sie **Jetzt testen** aus, um die Azure Cloud Shell zu öffnen, und fügen Sie anschließend das folgende PowerShell-Skript in das Shellfenster ein.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9a260577906ec94ecba87bb1be02fe35d8c763b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467634"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156603"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +58,7 @@ Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt e
 
 1. Ersetzen Sie in der gleichen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
 
-1. Ersetzen Sie außerdem die Zeichenfolge `YourServiceRegion` durch die mit Ihrem Abonnement verknüpfte [Region](~/articles/cognitive-services/Speech-Service/regions.md). Verwenden Sie beispielsweise `westus` für das kostenlose Testabonnement.
+1. Ersetzen Sie außerdem die Zeichenfolge `YourServiceRegion` durch den Speech SDK-Parameter für die [Region](https://aka.ms/speech/sdkregion), die mit Ihrem Abonnement verknüpft ist. Verwenden Sie beispielsweise `westus` für das kostenlose Testabonnement.
 
 ## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
 

@@ -3,28 +3,31 @@ title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure Notebooks (Vorscha
 description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks (Vorschauversion), führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 7b983d927bfd789cddb8d00675294cefc9f55e08
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647083"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77064443"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Schnellstart: Erstellen und Teilen eines Notebooks in Azure Notebooks (Vorschauversion)
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie schnell ein Jupyter-Notebook in Azure Notebooks erstellen und ausführen und dann für andere Benutzer freigeben.
+In dieser Schnellstartanleitung erstellen Sie eine Jupyter Notebook-Instanz in Azure Notebooks, führen sie aus und geben das Notebook dann für andere Benutzer frei. Jupyter ermöglicht es Ihnen, auf einfache Weise Markdowntext, ausführbaren Code, persistente Daten, Grafiken und Visualisierungen auf einer einzelnen Canvas zu kombinieren, die als „Notebook“ bezeichnet wird. Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation.
 
-[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+Keine.
 
 ## <a name="create-a-new-project-and-notebook"></a>Erstellen eines neuen Projekts und Notebooks
 
-1. Wechseln Sie zur [Azure Notebooks-Website (https://notebooks.azure.com)](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+1. Wechseln Sie zur [Azure Notebooks-Website (https://notebooks.azure.com)](https://notebooks.azure.com), und melden Sie sich an. Ausführliche Informationen finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 
     ![Link „Meine Projekte“ am oberen Rand des Browserfensters](media/quickstarts/my-projects-link.png)
 
-1. Klicken Sie auf der Seite **My Projects** (Meine Projekte) auf **+ New Project** (+ Neues Projekt, Tastenkombination: n). Wenn Ihr Browserfenster schmal ist, wird möglicherweise nur **+** für die Schaltfläche angezeigt:
+1. Wählen Sie auf der Seite **Meine Projekte** die Option **+ Neues Projekt** aus (Tastenkombination: n). Ist das Browserfenster schmal, wird die Schaltfläche unter Umständen nur als **+** angezeigt:
 
     ![Befehl „New Project“ (Neues Projekt) auf der Seite „My Projects“ (Meine Projekte)](media/quickstarts/new-project-command.png)
 
@@ -102,4 +105,4 @@ Auf der Projektseite können Sie außerdem das Menü **Freigabe** verwenden, um 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks für lineare Regression](tutorial-create-run-jupyter-notebook.md)
+> [Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Instanz für lineare Regression](tutorial-create-run-jupyter-notebook.md)

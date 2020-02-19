@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180038"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186083"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus (Vorschauversion)
 
@@ -41,9 +41,12 @@ Gehen Sie wie folgt vor, um das Ergebnis einer Richtlinie im reinen Berichtsmodu
 1. Wählen Sie eine Anmeldung aus, oder fügen Sie Filter hinzu, um die Ergebnisse einzugrenzen.
 1. Wählen Sie im Bereich **Details** die Registerkarte **Nur Bericht (Vorschau)** aus, um die bei der Anmeldung ausgewerteten Richtlinien anzuzeigen.
 
+> [!NOTE]
+> Wählen Sie beim Herunterladen der Anmeldeprotokolle das JSON-Format aus, um nur berichtsspezifische Ergebnisdaten für den bedingten Zugriff einzubeziehen.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Einrichten der Integration von Azure Monitor in Azure AD
 
-Damit Sie die aggregierten Auswirkungen von Richtlinien für bedingten Zugriff mithilfe der neuen Arbeitsmappe für Erkenntnisse zum bedingten Zugriff anzeigen können, müssen Sie Azure Monitor in Azure AD integrieren und die Anmeldeprotokolle exportieren. Zur Einrichtung dieser Integration müssen Sie zwei Schritte ausführen: 
+Damit Sie die aggregierten Auswirkungen von Richtlinien für bedingten Zugriff mithilfe der neuen Arbeitsmappe für Erkenntnisse zum bedingten Zugriff anzeigen können, müssen Sie Azure Monitor in Azure AD integrieren und die Anmeldeprotokolle exportieren. Zum Einrichten dieser Integration müssen Sie zwei Schritte ausführen: 
 
 1. [Registrieren Sie sich für ein Azure Monitor-Abonnement, und erstellen Sie einen Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 1. [Exportieren Sie die Anmeldeprotokolle aus Azure AD in Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).

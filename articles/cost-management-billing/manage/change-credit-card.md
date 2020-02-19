@@ -2,35 +2,44 @@
 title: Ändern Ihrer Kreditkarte für Azure
 description: Es wird beschrieben, wie Sie die für die Zahlung eines Azure-Abonnements verwendete Kreditkarte ändern.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 6ae55e0075883de08af516b71089f00353975b34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 10d475b9c0c33dfd17c3d87beed00154511e1ab6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985918"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188471"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kreditkarte für Azure
 
 Dieses Dokument gilt für Kunden, die sich online mit einer Kreditkarte für Azure registriert haben.
 
-Im Azure-Portal können Sie eine neue Kreditkarte hinzufügen, eine vorhandene Kreditkarte aktualisieren oder eine nicht verwendete Kreditkarte löschen. Sie können diese Änderungen nur als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) vornehmen.
+Im Azure-Portal können Sie Ihre Standardzahlungsmethode auf eine neue Kreditkarte festlegen, Ihre Kreditkartendetails aktualisieren und nicht mehr verwendete Kreditkarten löschen. Sie können diese Änderungen nur als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) vornehmen.
 
-Wenn Sie über eine [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) verfügen, werden Ihre Zahlungsmethoden Abrechnungsprofilen zugeordnet. Informieren Sie sich darüber, wie Sie [die Standardzahlungsmethode für ein Abrechnungsprofil ändern](#change-payment-method-for-a-billing-profile). Nur der Benutzer, der sich für Azure registriert hat, kann die Zahlungsmethode aktualisieren.
+Für Microsoft Azure werden Kreditkarten und Scheck/Überweisung als Zahlungsmethode unterstützt. Informationen zum Beantragen der Zahlung per Scheck/Überweisung finden Sie unter [Zahlen für Ihr Azure-Abonnement auf Rechnung](pay-by-invoice.md).
 
-**Möchten Sie die Umstellung auf die Bezahlung per Rechnung (Scheck/Überweisung) durchführen?** Informationen dazu finden Sie unter [Zahlen für Azure-Abonnements auf Rechnung](pay-by-invoice.md).
+Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, sind Ihre Zahlungsmethoden mit Abrechnungsprofilen verknüpft. Informationen zum Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung finden Sie [hier](#check-the-type-of-your-account). Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, fahren Sie mit [Verwalten von Kreditkarten für eine Microsoft-Kundenvereinbarung](#manage-credit-cards-for-a-microsoft-customer-agreement) fort.
 
 <a id="addcard"></a>
 
-## <a name="add-a-new-credit-card-to-an-azure-subscription"></a>Hinzufügen einer neuen Kreditkarte zu einem Azure-Abonnement
+## <a name="manage-credit-cards-for-an-azure-subscription"></a>Verwalten von Kreditkarten für ein Azure-Abonnement
+
+Die folgenden Abschnitte gelten für Kunden, die über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Wenn es sich bei Ihrem Abrechnungskonto um ein Konto vom Typ „Microsoft Online Services-Programm“ handelt, sind Zahlungsmethoden mit einzelnen Azure-Abonnements verknüpft.
+
+### <a name="change-credit-card-for-a-subscription"></a>Ändern der Kreditkarte für ein Abonnement
+
+Sie können die Standardkreditkarte Ihres Azure-Abonnements im Azure-Portal auf eine neue oder zuvor gespeicherte Kreditkarte festlegen. Sie müssen der Kontoadministrator sein, um die Kreditkarte ändern zu können. Falls mehr als eines Ihrer Abonnements über die gleiche aktive Zahlungsmethode verfügt, wird durch die Änderung der aktiven Zahlungsmethode für eines dieser Abonnements auch die aktive Zahlungsmethode für die anderen Abonnements aktualisiert.
+
+
+Wenn Sie die Standardkreditkarte Ihres Abonnements auf eine neue Kreditkarte festlegen möchten, gehen Sie wie folgt vor:
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
@@ -53,7 +62,23 @@ Wenn Sie über eine [Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-
 
 Wenn nach dem Hinzufügen der Kreditkarte eine Fehlermeldung ausgegeben wird, befolgen Sie die Anleitung unter [Ablehnung der Kreditkarte bei der Azure-Registrierung](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
-## <a name="update-existing-credit-card"></a>Aktualisieren einer vorhandenen Kreditkarte
+Die Standardkreditkarte Ihres Abonnements kann auch in eine Kreditkarte geändert werden, die bereits in Ihrem Konto gespeichert ist:
+
+1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+
+    ![Screenshot: Suche](./media/change-credit-card/search.png)
+
+1. Wählen Sie das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten.
+1. Wählen Sie die Option **Zahlungsmethoden**.
+
+    ![Screenshot mit ausgewählter Option „Zahlungsmethoden verwalten“.](./media/change-credit-card/payment-methods-blade-x.png)
+
+1. Aktivieren Sie das Kontrollkästchen neben der Karte, die Sie als aktive Zahlungsmethode festlegen möchten.
+1. Klicken Sie auf **Als aktiv festlegen**.
+    ![Screenshot: Ausgewählte Kreditkarte und Auswahl von „Als aktiv festlegen“](./media/change-credit-card/sub-change-active-x.png)
+
+### <a name="edit-credit-card-details"></a>Bearbeiten von Kreditkartendetails
 
 Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt, können Sie die bereits vorhandenen Kreditkartendetails (z. B. das Ablaufdatum) aktualisieren. Wenn sich die Kreditkartennummer aufgrund von Verlust, Diebstahl oder Ablauf ändert, führen Sie die Schritte im Abschnitt [Hinzufügen einer Kreditkarte als Zahlungsmethode](#addcard) aus. Die Kartenprüfnummer müssen Sie nicht aktualisieren.
 
@@ -73,25 +98,7 @@ Wenn Ihre Kreditkarte verlängert wird und die Kreditkartennummer gleich bleibt,
 1. Aktualisieren Sie die Kreditkartendetails.
 1. Wählen Sie **Speichern** aus.
 
-## <a name="use-a-different-credit-card"></a>Verwenden einer anderen Kreditkarte
-
-Falls mehr als eines Ihrer Abonnements über die gleiche aktive Zahlungsmethode verfügt, wird durch die Änderung der aktiven Zahlungsmethode für eines dieser Abonnements auch die aktive Zahlungsmethode für die anderen Abonnements aktualisiert.
-
-1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-
-    ![Screenshot: Suche](./media/change-credit-card/search.png)
-
-1. Wählen Sie das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten.
-1. Wählen Sie die Option **Zahlungsmethoden**.
-
-    ![Screenshot mit ausgewählter Option „Zahlungsmethoden verwalten“.](./media/change-credit-card/payment-methods-blade-x.png)
-
-1. Aktivieren Sie das Kontrollkästchen neben der Karte, die Sie als aktive Zahlungsmethode festlegen möchten.
-1. Klicken Sie auf **Als aktiv festlegen**.
-    ![Screenshot: Ausgewählte Kreditkarte und Auswahl von „Als aktiv festlegen“](./media/change-credit-card/sub-change-active-x.png)
-
-## <a name="remove-a-credit-card-from-the-account"></a>Entfernen einer Kreditkarte aus dem Konto
+### <a name="delete-a-credit-card-from-the-account"></a>Löschen einer Kreditkarte aus dem Konto
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie links auf der Seite die Option **Kostenverwaltung + Abrechnung**.
@@ -107,28 +114,52 @@ Falls mehr als eines Ihrer Abonnements über die gleiche aktive Zahlungsmethode 
 
 Wenn Ihre Kreditkarte die aktive Zahlungsmethode für eines Ihrer Microsoft-Abonnements ist, können Sie sie nicht aus Ihrem Azure-Konto entfernen. Ändern Sie die aktive Zahlungsmethode für alle Abonnements, die mit dieser Kreditkarte verknüpft sind, und versuchen Sie es noch einmal.
 
-## <a name="change-payment-method-for-a-billing-profile"></a>Ändern der Zahlungsmethode für ein Abrechnungsprofil
+## <a name="manage-credit-cards-for-a-microsoft-customer-agreement"></a>Verwalten von Kreditkarten für eine Microsoft-Kundenvereinbarung
 
-Um die Zahlungsmethode für ein Abrechnungsprofil ändern zu können, müssen Sie die Person sein, die sich für Azure registriert hat.
+Die folgenden Abschnitte gelten für Kunden, die über eine Microsoft-Kundenvereinbarung verfügen und sich online mit einer Kreditkarte für Azure registriert haben. Informationen zum Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung finden Sie [hier](#check-the-type-of-your-account).
 
-Wenn Sie die Standardzahlungsmethode auf „Scheck/Überweisung“ umstellen möchten, helfen Ihnen die Informationen zum [Umstellen eines Abrechnungsprofils auf Scheck/Überweisung](pay-by-invoice.md) weiter.
+### <a name="change-default-credit-card"></a>Ändern der Standardkreditkarte 
+Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, ist Ihre Zahlungsmethoden mit einem Abrechnungsprofil verknüpft. Die Zahlungsmethode für ein Abrechnungsprofil kann nur von der Person geändert werden, die sich für Azure registriert und das Abrechnungskonto erstellt hat.
+
+Wenn Sie die Standardzahlungsmethode Ihres Abrechnungsprofils in „Scheck/Überweisung“ ändern möchten, lesen Sie [Zahlen für Ihr Azure-Abonnement auf Rechnung](pay-by-invoice.md).
+
+Führen Sie zum Ändern Ihrer Kreditkarte die folgenden Schritte aus:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 1. Klicken Sie im Menü auf der linken Seite auf **Abrechnungsprofile**.
-
-    ![Screenshot: Abrechnungsprofil im Menü](./media/change-credit-card/billing-profile.png)
-
 1. Wählen Sie ein Abrechnungsprofil aus.
 1. Wählen Sie im Menü links die Option **Zahlungsmethoden**.
 
-   ![Screenshot: Zahlungsmethoden im Menü](./media/change-credit-card/billing-profile-payment-methods.png)
+   ![Screenshot: Zahlungsmethoden im Menü](./media/change-credit-card/payment-methods-tab-mca.png)
 
-1. Klicken Sie oberhalb der Standardzahlungsmethode auf **Ändern**.
+1. Klicken Sie im Abschnitt **Standardzahlungsmethode** auf **Ändern**.
 
-    ![Screenshot: Schaltfläche „Ändern“](./media/change-credit-card/customer-led-switch-credit-card.png)
+    ![Screenshot: Schaltfläche „Ändern“](./media/change-credit-card/change-payment-method-mca.png)
 
-1. Wählen Sie eine vorhandene Karte aus, oder fügen Sie eine neue hinzu.
+1. Wählen Sie auf dem neuen Blatt auf der rechten Seite entweder eine bereits vorhandene Karte aus der Dropdownliste aus, oder klicken Sie auf den blauen Link „Neue Zahlungsmethode hinzufügen“, um eine neue Karte hinzuzufügen.
+
+### <a name="edit-or-delete-a-credit-card"></a>Bearbeiten oder Löschen einer Kreditkarte
+
+Sie können Kreditkartendetails bearbeiten, um beispielsweise das Ablaufdatum zu aktualisieren, und Kreditkarten aus Ihrem Konto im Azure-Portal löschen. Eine Kreditkarte kann nur gelöscht werden, wenn sie mit keinem Azure-Abonnement oder Abrechnungsprofil verknüpft ist. Sollte sie mit einem deaktivierten Azure-Abonnement verknüpft sein, kann sie erst gelöscht werden, nachdem das Abonnement gelöscht wurde (30 bis 90 Tage nach der Kündigung).
+
+Gehen Sie zum Bearbeiten oder Löschen einer Kreditkarte wie folgt vor:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
+1. Klicken Sie im Menü auf der linken Seite auf **Abrechnungsprofile**.
+1. Wählen Sie ein Abrechnungsprofil aus.
+1. Wählen Sie im Menü links die Option **Zahlungsmethoden**.
+
+   ![Screenshot: Zahlungsmethoden im Menü](./media/change-credit-card/payment-methods-tab-mca.png)
+
+1. Suchen Sie im Abschnitt **Ihre Kreditkarten** nach der Kreditkarte, die Sie bearbeiten oder löschen möchten.
+1. Wählen Sie die Auslassungspunkte (`...`) am Ende der Zeile aus.
+
+    ![Screenshot: Auslassungspunkte](./media/change-credit-card/edit-delete-credit-card-mca.png)
+
+1. Wenn Sie Ihre Kreditkartendetails bearbeiten möchten, wählen Sie im Kontextmenü **Bearbeiten** aus.
+1. Wenn Sie Ihre Kreditkarte löschen möchten, wählen Sie im Kontextmenü **Löschen** aus.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Virtuelle Karten oder Prepaidkarten werden nicht unterstützt. Wenn beim Hinzufügen oder Aktualisieren einer gültigen Kreditkarte Fehler auftreten, versuchen Sie, den Browser im privaten Modus zu öffnen.
@@ -160,8 +191,8 @@ Wenn Sie [auf Rechnung zahlen](pay-by-invoice.md), senden Sie Ihre Zahlung an de
 
 Aktualisieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer Ihr Profil im [Azure-Kontocenter](https://account.azure.com/Profile), und wählen Sie anschließend die Option **Steuereintrag**. Diese Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
-[!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]
+## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
+[!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

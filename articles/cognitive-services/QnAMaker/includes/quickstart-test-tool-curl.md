@@ -8,69 +8,477 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 11/20/2019
+ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 0677a361e853f778894b6a62a054636e3276b364
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: fdbabc6620aaf7458350492cf3922ff910e66b89
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424172"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77112277"
 ---
 In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie Sie eine Antwort aus einer Wissensdatenbank abrufen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Neueste Version von [**cURL**](https://curl.haxx.se/).
-* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md) und eine [Wissensdatenbank mit Fragen und Antworten](../Tutorials/create-publish-query-in-portal.md).
+* Sie benötigen Folgendes:
+    * Einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md).
+    * Eine trainierte und veröffentlichte Wissensdatenbank mit Fragen und Antworten, die in der [vorherigen Schnellstartanleitung](../Quickstarts/add-question-metadata-portal.md) erstellt und mit Metadaten und Smalltalk konfiguriert wurde.
 
-## <a name="publish-to-get-endpoint"></a>Veröffentlichen zum Abrufen des Endpunkts
+> [!NOTE]
+> Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu generieren, müssen Sie Ihre Wissensdatenbank [trainieren](../Quickstarts/create-publish-knowledge-base.md#save-and-train) und [veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base). Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Die Registerkarte **cURL** enthält die Einstellungen, die zum Generieren einer Antwort über das Befehlszeilentool erforderlich sind.
 
-Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu generieren, [veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) Sie Ihre Wissensdatenbank.
+## <a name="use-metadata-to-filter-answer"></a>Filtern von Antworten mithilfe von Metadaten
 
-## <a name="use-production-endpoint-with-curl"></a>Verwenden des Produktionsendpunkts mit cURL
+Verwenden Sie die Wissensdatenbank aus der vorherigen Schnellstartanleitung, um eine Antwort auf der Grundlage von Metadaten abzufragen.
 
-Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Die Registerkarte **CURL** zeigt die Einstellungen, die zum Generieren einer Antwort über das Befehlszeilentool [cURL](https://www.getpostman.com) erforderlich sind.
-
-[![Veröffentlichen der Ergebnisse](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
-
-Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
-
-1. Kopieren Sie den Text auf der Registerkarte „CURL“. 
-1. Öffnen Sie eine Befehlszeile oder ein Terminal, und fügen Sie den Text ein.
-1. Bearbeiten Sie die Frage, um sie für Ihre Wissensdatenbank relevant zu machen. Achten Sie darauf, nicht den JSON-Code um die Frage zu entfernen.
-1. Geben Sie den Befehl ein. 
-1. Die Antwort enthält die relevanten Informationen über die Antwort. 
+1. Wählen Sie auf der Seite **Einstellungen** der Wissensdatenbank die Registerkarte **cURL** aus, um einen cURL-Beispielbefehl anzuzeigen, mit dem eine Antwort auf der Grundlage der Wissensdatenbank generiert wird.
+1. Kopieren Sie den Befehl in eine Bearbeitungsumgebung (beispielsweise eine Textdatei), um ihn zu bearbeiten. Bearbeiten Sie den Fragewert so, dass die Metadaten von `service:qna_maker` als Filter für die QnA-Sätze verwendet werden.
 
     ```bash
-    > curl -X POST https://qnamaker-f0.azurewebsites.net/qnamaker/knowledgebases/1111f8c-d01b-4698-a2de-85b0dbf3358c/generateAnswer -H "Authorization: EndpointKey 111841fb-c208-4a72-9412-03b6f3e55ca1" -H "Content-type: application/json" -d "{'question':'How do I programmatically update my Knowledge Base?'}"
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
+    ```
+
+    Die Frage ist nur ein einzelnes Wort (`size`), wodurch jeder der beiden QnA-Sätze zurückgegeben werden kann. Das Array `strictFilters` gibt die Antwort aus und reduziert sie ausschließlich auf die `qna_maker`-Antworten.
+
+1. Die Ausgabe enthält nur die Antwort, die den Filterkriterien entspricht. Die folgende cURL-Antwort wurde aus Gründen der Lesbarkeit formatiert:
+
+    ```JSON
     {
-      "answers": [
-        {
-          "questions": [
-            "How do I programmatically update my Knowledge Base?"
-          ],
-          "answer": "You can use our REST APIs to manage your Knowledge Base. See here for details: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update",
-          "score": 100.0,
-          "id": 18,
-          "source": "Custom Editorial",
-          "metadata": [
+        "answers": [
             {
-              "name": "category",
-              "value": "api"
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "score": 68.76,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "service",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
             }
-          ]
-        }
-      ]
+        ],
+        "debugInfo": null
     }
     ```
 
-## <a name="use-staging-endpoint-with-curl"></a>Verwenden des Stagingendpunkts mit cURL
+    Wenn ein Frage-Antwort-Satz nicht mit dem Suchbegriff, dafür aber mit dem Filter übereinstimmt, wird er nicht ausgegeben. Stattdessen wird die allgemeine Antwort `No good match found in KB.` zurückgegeben.
 
-Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie die `isTest`-Texteigenschaft.
+## <a name="use-debug-query-property"></a>Verwenden der Abfrageeigenschaft „debug“
+
+Anhand von Debuginformationen können Sie besser nachvollziehen, wie die zurückgegebene Antwort ermittelt wurde. Dies ist zwar hilfreich, aber nicht unbedingt erforderlich. Wenn Sie eine Antwort mit Debuginformationen generieren möchten, fügen Sie die Eigenschaft `debug` hinzu:
+
+```json
+Debug: {Enable:true}
+```
+
+1. Bearbeiten Sie den cURL-Befehl, um die debug-Eigenschaft einzuschließen und weitere Informationen anzuzeigen.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'Debug':{'Enable':true}}"
+    ```
+
+1. Die Antwort enthält die relevanten Informationen über die Antwort. In der folgenden JSON-Ausgabe wurden einige Debugdetails durch Auslassungspunkte ersetzt, um die Ausgabe zu verkürzen.
+
+    ```console
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How do I share a knowledge base with others?"
+                ],
+                "answer": "Sharing works at the level of a QnA Maker service, that is, all knowledge bases in the service will be shared. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/collaborate-knowledge-base) to learn how to collaborate on a knowledge base.",
+                "score": 56.07,
+                "id": 5,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": {
+            "userQuery": {
+                "question": "How do I programmatically update my Knowledge Base?",
+                "top": 1,
+                "userId": null,
+                "strictFilters": [],
+                "isTest": false,
+                "debug": {
+                    "enable": true,
+                    "recordL1SearchLatency": false,
+                    "mockQnaL1Content": null
+                },
+                "rankerType": 0,
+                "context": null,
+                "qnaId": 0,
+                "scoreThreshold": 0.0
+            },
+            "rankerInfo": {
+                "specialFuzzyQuery": "how do i programmatically~6 update my knowledge base",
+                "synonyms": "what s...",
+                "rankerLanguage": "English",
+                "rankerFileName": "https://qnamakerstore.blob.core.windows.net/qnamakerdata/rankers/ranker-English.ini",
+                "rankersDirectory": "D:\\home\\site\\wwwroot\\Data\\QnAMaker\\rd0003ffa60fc45.24.0\\RankerData\\Rankers",
+                "allQnAsfeatureValues": {
+                    "WordnetSimilarity": {
+                        "5": 0.54706300120043716,...
+                    },
+                    ...
+                },
+                "rankerVersion": "V2",
+                "rankerModelType": "TreeEnsemble",
+                "rankerType": 0,
+                "indexResultsCount": 25,
+                "reRankerResultsCount": 1
+            },
+            "runtimeVersion": "5.24.0",
+            "indexDebugInfo": {
+                "indexDefinition": {
+                    "name": "064a4112-bd65-42e8-b01d-141c4c9cd09e",
+                    "fields": [...
+                    ],
+                    "scoringProfiles": [],
+                    "defaultScoringProfile": null,
+                    "corsOptions": null,
+                    "suggesters": [],
+                    "analyzers": [],
+                    "tokenizers": [],
+                    "tokenFilters": [],
+                    "charFilters": [],
+                    "@odata.etag": "\"0x8D7A920EA5EE6FE\""
+                },
+                "qnaCount": 117,
+                "parameters": {},
+                "azureSearchResult": {
+                    "continuationToken": null,
+                    "@odata.count": null,
+                    "@search.coverage": null,
+                    "@search.facets": null,
+                    "@search.nextPageParameters": null,
+                    "value": [...],
+                    "@odata.nextLink": null
+                }
+            },
+            "l1SearchLatencyInMs": 0,
+            "qnaL1Results": {...}
+        },
+        "activeLearningEnabled": true
+    }
+    ```
+
+## <a name="use-test-knowledge-base"></a>Verwenden der Testversion der Wissensdatenbank
+
+Wenn Sie eine Antwort von der Testversion der Wissensdatenbank erhalten möchten, verwenden Sie die Texteigenschaft `isTest`.
+
+Die Eigenschaft ist ein boolescher Wert.
 
 ```json
 isTest:true
 ```
 
+Der cURL-Befehl sieht wie folgt aus:
 
+```bash
+curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'IsTest':true}"
+```
+
+In der JSON-Antwort wird das gleiche Schema verwendet wie in der Abfrage der veröffentlichten Wissensdatenbank.
+
+> [!NOTE]
+> Da der Testindex von allen Wissensdatenbanken in der Ressource genutzt wird, kann es zu geringfügigen Abweichungen kommen, selbst wenn die Testversion und die veröffentlichte Version der Wissensdatenbank exakt gleich sind.
+
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Abfragen einer Smalltalk-Antwort mithilfe von cURL
+
+1. Verwenden Sie im cURL-fähigen Terminal eine Benutzeraussage zur Beendigung der Bot-Konversation (etwa `Thank you` als Frage). Es müssen keine weiteren Eigenschaften festgelegt werden.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'thank you'}"
+    ```
+
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Smalltalk zurückgegeben.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>Verwenden von cURL mit Schwellenwert und Standardantwort
+
+Sie können einen Mindestschwellenwert für die Antwort anfordern. Sollte der Schwellenwert nicht erreicht werden, wird die Standardantwort zurückgegeben.
+
+1. Verwenden Sie den folgenden cURL-Befehl mit Ihren eigenen Werten für Ressourcenname, Wissensdatenbank-ID und Endpunktschlüssel, um für `size` eine Antwort mit einem Schwellenwert von mindestens 80 Prozent anzufordern. Diese Antwort sollte von der Wissensdatenbank nicht gefunden werden, da die Frage mit 71 Prozent bewertet wurde. Stattdessen sollte die Standardantwort zurückgeben werden, die Sie beim Erstellen der Wissensdatenbank angegeben haben.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker hat als Bewertung den Wert `0` (nicht überzeugt) zurückgegeben. Darüber hinaus wurde die Standardantwort zurückgegeben.
+
+    ```json
+    {
+      "answers": [
+          {
+              "questions": [
+                  "I thank you",
+                  "Oh, thank you",
+                  "My sincere thanks",
+                  "My humblest thanks to you",
+                  "Marvelous, thanks",
+                  "Marvelous, thank you kindly",
+                  "Marvelous, thank you",
+                  "Many thanks to you",
+                  "Many thanks",
+                  "Kthx",
+                  "I'm grateful, thanks",
+                  "Ahh, thanks",
+                  "I'm grateful for that, thank you",
+                  "Perfecto, thanks",
+                  "I appreciate you",
+                  "I appreciate that",
+                  "I appreciate it",
+                  "I am very thankful for that",
+                  "How kind, thank you",
+                  "Great, thanks",
+                  "Great, thank you",
+                  "Gracias",
+                  "Gotcha, thanks",
+                  "Gotcha, thank you",
+                  "Awesome thanks!",
+                  "I'm grateful for that, thank you kindly",
+                  "thank you pal",
+                  "Wonderful, thank you!",
+                  "Wonderful, thank you very much",
+                  "Why thank you",
+                  "Thx",
+                  "Thnx",
+                  "That's very kind",
+                  "That's great, thanks",
+                  "That is lovely, thanks",
+                  "That is awesome, thanks!",
+                  "Thanks bot",
+                  "Thanks a lot",
+                  "Okay, thanks!",
+                  "Thank you so much",
+                  "Perfect, thanks",
+                  "Thank you my friend",
+                  "Thank you kindly",
+                  "Thank you for that",
+                  "Thank you bot",
+                  "Thank you",
+                  "Right on, thanks very much",
+                  "Right on, thanks a lot",
+                  "Radical, thanks",
+                  "Rad, thanks",
+                  "Rad thank you",
+                  "Wonderful, thanks!",
+                  "Thanks"
+              ],
+              "answer": "You're welcome.",
+              "score": 100.0,
+              "id": 75,
+              "source": "qna_chitchat_Professional.tsv",
+              "metadata": [
+                  {
+                      "name": "editorial",
+                      "value": "chitchat"
+                  }
+              ],
+              "context": {
+                  "isContextOnly": false,
+                  "prompts": []
+              }
+          }
+      ],
+      "debugInfo": null,
+      "activeLearningEnabled": true
+    }
+    ```
+
+    Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Smalltalk zurückgegeben.
+
+## <a name="use-curl-with-threshold-and-default-answer"></a>Verwenden von cURL mit Schwellenwert und Standardantwort
+
+Sie können einen Mindestschwellenwert für die Antwort anfordern. Sollte der Schwellenwert nicht erreicht werden, wird die Standardantwort zurückgegeben.
+
+1. Fügen Sie die Eigenschaft `threshold` hinzu, um für `size` eine Antwort mit einem Schwellenwert von mindestens 80 Prozent anzufordern. Diese Antwort sollte von der Wissensdatenbank nicht gefunden werden, da die Frage mit 71 Prozent bewertet wurde. Stattdessen wird die Standardantwort zurückgeben, die Sie beim Erstellen der Wissensdatenbank angegeben haben.
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':80.00}"
+    ```
+
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort zu erhalten.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [],
+                "answer": "No good match found in KB.",
+                "score": 0.0,
+                "id": -1,
+                "source": null,
+                "metadata": []
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```
+
+    QnA Maker hat als Bewertung den Wert `0` (nicht überzeugt) zurückgegeben. Darüber hinaus wurde die Standardantwort zurückgegeben.
+
+1. Ändern Sie den Schwellenwert in 60 Prozent, und wiederholen Sie die Abfrage:
+
+    ```bash
+    curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'question':'size', 'scoreThreshold':60.00}"
+    ```
+    ```
+
+    The returned JSON found the answer.
+
+    ```json
+    {
+        "answers": [
+            {
+                "questions": [
+                    "How large a knowledge base can I create?",
+                    "What is the max size of a knowledge base?",
+                    "How many GB of data can a knowledge base hold?"
+                ],
+                "answer": "The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.",
+                "score": 71.1,
+                "id": 3,
+                "source": "https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting",
+                "metadata": [
+                    {
+                        "name": "link_in_answer",
+                        "value": "true"
+                    },
+                    {
+                        "name": "server",
+                        "value": "qna_maker"
+                    }
+                ],
+                "context": {
+                    "isContextOnly": false,
+                    "prompts": []
+                }
+            }
+        ],
+        "debugInfo": null,
+        "activeLearningEnabled": true
+    }
+    ```

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 08/26/2019
+ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 071a8dd40d87e5df6fc5c65b789bb63b515dc60a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122082"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116505"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Container Instances ist eine hervorragende Lösung für das Testen und Verstehen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Schließen Sie zum Ausführen des Notebooks zuerst das Modelltraining in [Tutorial (Teil 1): Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md).   Öffnen Sie dann das Notebook **img-classification-part2-deploy.ipynb** in dem geklonten Ordner **Tutorials**.
+Schließen Sie zum Ausführen des Notebooks zuerst das Modelltraining in [Tutorial (Teil 1): Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md).   Öffnen Sie anschließend das Notebook *img-classification-part2-deploy.ipynb* in Ihrem geklonten Ordner *tutorials/image-classification-mnist-data*.
 
 Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) verwenden möchten.  Stellen Sie sicher, dass `matplotlib` und `scikit-learn` in Ihrer Umgebung installiert sind. 
 

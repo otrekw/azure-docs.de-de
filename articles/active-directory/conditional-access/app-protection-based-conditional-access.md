@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964088"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186633"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
 
@@ -36,7 +36,7 @@ In der Terminologie des bedingten Zugriffs sind diese Client-Apps bekanntermaße
 
 ![Bedingter Zugriff](./media/app-protection-based-conditional-access/05.png)
 
-Eine Liste der durch Richtlinien geschützten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#approved-client-app-requirement).
+Eine Liste der durch Richtlinien geschützten Client-Apps finden Sie unter [App-Schutzrichtlinie als Voraussetzung](concept-conditional-access-grant.md).
 
 Sie können Richtlinien für auf App-Schutz basierenden bedingten Zugriff mit anderen Richtlinien wie etwa [gerätebasierten Richtlinien für bedingten Zugriff](require-managed-devices.md) kombinieren. Auf diese Weise können Sie die Flexibilität beim Schutz von Daten für private und Unternehmensgeräte bereitstellen.
 
@@ -55,8 +55,8 @@ Sie können Richtlinien für auf App-Schutz basierenden bedingten Zugriff mit an
 
 In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
-- Der technischen Referenz [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#app-protection-policy-requirement)
-- Der technischen Referenz [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement)
+- Der Anforderung [App-Schutzrichtlinie erforderlich](concept-conditional-access-grant.md)
+- Der Anforderung [Genehmigte Client-App erforderlich](concept-conditional-access-grant.md)
 - Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md)
 - Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md)
 

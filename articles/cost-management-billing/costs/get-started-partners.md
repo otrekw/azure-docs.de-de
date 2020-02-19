@@ -1,25 +1,28 @@
 ---
 title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842417"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117591"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
-Azure Cost Management ist für Partner, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und [einen Azure-Plan erworben](/partner-center/purchase-azure-plan) haben, nativ verfügbar. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Azure Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan einsehen. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management ermöglichen. Kunden können Cost Management-Funktionen verwenden, wenn sie von ihrem CSP-Partner aktiviert werden.
+Azure Cost Management ist für direkte Partner, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und [einen Azure-Plan erworben](/partner-center/purchase-azure-plan) haben, nativ verfügbar. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Azure Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan einsehen. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management ermöglichen.
+
+Bei direkten Partnern und indirekten Anbietern können der globale Administrator und die Administrator-Agents des indirekten Anbieters im Partnermandanten auf Cost Management zugreifen. Handelspartner und Kunden können im Kundenmandanten auf Cost Management zugreifen und Kosten für die Abonnements anzeigen. Die Kosten werden in dieser Ansicht zu Einzelhandelspreisen berechnet und angezeigt. Allerdings müssen sie über RBAC-Zugriff auf das Abonnement im Kundenmandanten verfügen, um Kosten anzeigen zu können. Die Richtlinie für die Sichtbarkeit von Kosten muss vom Anbieter für den Kundenmandanten aktiviert werden.
+
+Kunden können Cost Management-Funktionen verwenden, wenn sie von ihrem CSP-Partner aktiviert werden.
 
 CSP-Partner verwenden Cost Management für folgende Zwecke:
 

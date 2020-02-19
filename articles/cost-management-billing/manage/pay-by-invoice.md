@@ -2,28 +2,28 @@
 title: Zahlen für Azure-Abonnements auf Rechnung
 description: Es wird beschrieben, wie Azure-Abonnements auf Rechnung bezahlt werden.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986378"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133621"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
 Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnung innerhalb von 30 Tagen nach dem Rechnungsdatum per Scheck bzw. Überweisung bezahlen. Um Ihr Azure-Abonnement auf Rechnung bezahlen zu können, senden Sie einen entsprechenden Antrag an den Azure-Support. Nachdem Ihr Antrag genehmigt wurde, können Sie im [Azure-Portal](https://portal.azure.com) zur Zahlung per Rechnung (Scheck/Überweisung) wechseln.
 
 > [!IMPORTANT]
-> * Die Zahlung per Rechnung (Scheck/Überweisung) ist nur für Geschäftskonten verfügbar.
+> * Die Zahlung per Rechnung (Scheck/Überweisung) ist nur für Kunden verfügbar, die Azure im Auftrag eines Unternehmens verwenden.
 > * Bezahlen Sie alle ausstehenden Gebühren, bevor Sie zur Zahlung per Rechnung wechseln.
 > * Derzeit wird die Zahlung per Rechnung für globales Azure in China nicht unterstützt.
 

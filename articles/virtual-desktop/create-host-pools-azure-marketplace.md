@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40659414848adb9be86b6163cf456809e9cb750f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020028"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134592"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
 
@@ -55,7 +55,7 @@ Gehen Sie auf dem Blatt **Grundlagen** wie folgt vor:
 3. Geben Sie eine kommagetrennte Liste mit Benutzern ein, die sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anmelden und auf einen Desktop zugreifen können sollen. Geben Sie also beispielsweise „user1@contoso.com,user2@contoso.com“ ein, um user1@contoso.com und user2@contoso.com Zugriff zu gewähren.
 4. Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
 5. Wählen Sie unter **Standort** den Standort des virtuellen Netzwerks aus, das mit dem Active Directory-Server verbunden ist.
-6. Wählen Sie **Next: Configure virtual machines** (Weiter: Virtuelle Computer konfigurieren) aus.
+6. Wählen Sie **Weiter: Configure virtual machines** (Weiter: Virtuelle Computer konfigurieren) aus.
 
 >[!IMPORTANT]
 >Wenn Sie eine reine Azure Active Directory Domain Services- und Azure Active Directory-Lösung verwenden, stellen Sie sicher, dass Sie Ihren Hostpool in derselben Region wie Azure Active Directory Domain Services bereitstellen, um Fehler beim Domänenbeitritt und mit Anmeldeinformationen zu vermeiden.
@@ -65,8 +65,12 @@ Gehen Sie auf dem Blatt **Grundlagen** wie folgt vor:
 Gehen Sie auf dem Blatt zum **Konfigurieren virtueller Computer** wie folgt vor:
 
 1. Übernehmen Sie die Standardeinstellungen, oder passen Sie Anzahl und Größe der virtuellen Computer an.
+    
+    >[!NOTE]
+    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+    
 2. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise „prefix“ eingeben, heißen die virtuellen Computer „prefix-0“, „prefix-1“ usw.
-3. Wählen Sie **Next: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
+3. Wählen Sie **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
 
 ### <a name="virtual-machine-settings"></a>Einstellungen des virtuellen Computers
 
@@ -80,7 +84,7 @@ Gehen Sie auf dem Blatt mit den **VM-Einstellungen** wie folgt vor:
 1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der VHD-Datei aus.
 2. Geben Sie den Benutzerprinzipalnamen und das Kennwort für das Domänenkonto ein, über das die virtuellen Computer mit der Active Directory-Domäne verknüpft werden. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.
 3. Wählen Sie das virtuelle Netzwerk aus, das mit dem Active Directory-Server verbunden ist, und wählen Sie anschließend ein Subnetz als Host für die virtuellen Computer aus.
-4. Wählen Sie **Next: Windows Virtual Desktop information** (Weiter: Informationen zu Windows Virtual Desktop) aus.
+4. Klicken Sie auf **Weiter: Windows Virtual Desktop information** (Weiter: Informationen zu Windows Virtual Desktop) aus.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Informationen zum Windows Virtual Desktop-Mandanten
 

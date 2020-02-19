@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379430"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118544"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -51,17 +51,9 @@ Die Formularerkennung umfasst auch ein Modell zum Lesen englischsprachiger Verka
 
 Die Formularerkennung kann auch Text- und Tabellenstruktur (die Zeilen- und Spaltennummern, die dem Text zugeordnet sind) mithilfe hochauflösender optischer Zeichenerkennung (Optical Character Recognition, OCR) extrahieren. 
 
-## <a name="where-do-i-start"></a>Wo beginne ich?
+## <a name="get-started"></a>Erste Schritte
 
-**Schritt 1:** Zugriff anfordern:
-
-Die Formularerkennung ist als Vorschauversion mit eingeschränktem Zugriff verfügbar. Um Zugriff auf die Vorschauversion zu erhalten, füllen Sie das [Formular zum Anfordern des Zugriffs auf die Formularerkennung](https://aka.ms/FormRecognizerRequestAccess) aus, und übermitteln Sie es. Das Formular fordert Informationen über Sie, Ihr Unternehmen und das Szenario an, in dem Sie die Formularerkennung verwenden werden.
-
-**Schritt 2:** Erstellen Sie eine Formularerkennungsressource im Azure-Portal:
-
-Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Willkommens-E-Mail mit mehreren Links und Ressourcen. Verwenden Sie den Link „Azure-Portal“ in dieser Nachricht, um das Azure-Portal zu öffnen und eine Formularerkennungsressource zu erstellen.
-
-**Schritt 3:** Extrahieren von Daten aus Formularen:
+Befolgen Sie einen Schnellstart zum Extrahieren von Daten aus Ihren Formularen. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
 * Benutzerdefiniert – Trainieren eines Modells für Ihre Formulare
   * Trainieren ohne Beschriftungen
@@ -76,9 +68,7 @@ Wenn Ihnen Zugriff auf die Formularerkennung gewährt wird, erhalten Sie eine Wi
 * Layout: Extrahieren von Text- und Tabellenstruktur aus Formularen
   * [Schnellstart: Extrahieren von Layoutdaten mithilfe von Python](quickstarts/python-layout.md)
 
-Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
-
-**Schritt 4:** Überprüfen der REST-APIs:
+### <a name="review-the-rest-apis"></a>Überprüfen der REST-APIs
 
 Verwenden Sie die folgenden APIs zum Trainieren von Modellen und Extrahieren strukturierter Daten aus Formularen.
 

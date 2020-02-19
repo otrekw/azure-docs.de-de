@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: f2acb89597ef877543a2c4cc46f395aede41034b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 5b7d9cd7e7d438cf2beac76d5d8bcc78d377a8f4
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964497"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083108"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -30,7 +30,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 
 * Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Eine Data Share-Einladung: Eine Einladung von Microsoft Azure mit dem Betreff „Azure Data Share-Einladung von **<yourdataprovider@domain.com>** “.
-* Registrieren Sie den Ressourcenanbieter „Microsoft.DataShare“. Gehen Sie wie unter [Behandeln allgemeiner Probleme in Azure Data Share](data-share-troubleshoot.md) vor, um den Ressourcenanbieter für die Datenfreigabe zu registrieren.
+* Registrieren Sie den [Ressourcenanbieter „Microsoft.DataShare“](concepts-roles-permissions.md#resource-provider-registration) in dem Azure-Abonnement, in dem Sie eine Data Share-Ressource erstellen möchten, und in dem Azure-Abonnement, in dem sich die Azure-Zieldatenspeicher befinden.
 
 ### <a name="receive-data-into-a-storage-account"></a>Empfangen von Daten in einem Speicherkonto: 
 
@@ -57,7 +57,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einla
 * Client-IP-SQL Server-Firewallzugriff. Die Berechtigung kann mit folgenden Schritten gewährt werden: 
     1. Navigieren Sie in SQL Server im Azure-Portal zu *Firewalls und virtuelle Netzwerke*.
     1. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen.
-    1. Klicken Sie auf **+ Client-IP-Adresse hinzufügen** und anschließend auf **Speichern**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen bei der nächsten Freigabe von SQL-Daten über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen. 
+    1. Klicken Sie auf **+ Client-IP-Adresse hinzufügen** und anschließend auf **Speichern**. Die IP-Adresse kann sich ggf. ändern. Dieser Prozess muss unter Umständen beim nächsten Dateneingang im SQL-Ziel über das Azure-Portal wiederholt werden. Sie können auch einen IP-Adressbereich hinzufügen. 
 
 
 ### <a name="receive-data-into-an-azure-data-explorer-cluster"></a>Empfangen von Daten in einem Azure Data Explorer-Cluster: 

@@ -2,20 +2,20 @@
 author: trrwilson
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 5/23/2019
+ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 5c0b6400c6dc346597329c82e82801403a888a4d
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: a7ce6bc2b6fa272c8dd3c4bf95bc06a37d1fe28f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72675567"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119758"
 ---
 1. Starten Sie Android Studio, und wählen Sie im **Begrüßungsfenster** die Option **Neues Android Studio-Projekt starten** aus.
 
     ![Screenshot des Begrüßungsfensters von Android Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Der **Assistent für die Projektauswahl** wird angezeigt. Wählen Sie **Phone and Tablet** (Telefon und Tablet) und im Feld für die Aktivitätsauswahl die Option **Empty Activity** (Leere Aktivität) aus. Klicken Sie auf **Weiter**.
+1. Der **Assistent für die Projektauswahl** wird angezeigt. Wählen Sie **Phone and Tablet** (Telefon und Tablet) und im Feld für die Aktivitätsauswahl die Option **Empty Activity** (Leere Aktivität) aus. Wählen Sie **Weiter** aus.
 
    ![Screenshot: Assistent für die Projektauswahl](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
@@ -27,7 +27,7 @@ Android Studio benötigt einen Moment, um Ihr neues Android-Projekt vorzubereite
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist 1.7.0.
+Die aktuelle Version des Cognitive Services Speech SDK ist 1.9.0.
 
 Das Speech SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen.
 Es wird in einem Maven-Repository unter „https:\//csspeechstorage.blob.core.windows.net/maven/“ gehosted.
@@ -42,12 +42,12 @@ Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie da
 
    ![Screenshot der Bibliotheksabhängigkeit](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: *com.microsoft.cognitiveservices.speech:client-sdk:1.7.0*. Wählen Sie dann **OK**aus.
+1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: *com.microsoft.cognitiveservices.speech:client-sdk:1.9.0*. Klicken Sie anschließend auf **OK**.
    Das Speech SDK sollte nun der Liste der Abhängigkeiten hinzugefügt werden, wie hier dargestellt:
 
    ![Screenshot des Speech SDK in der Liste der Abhängigkeiten](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
 
-1. Wählen Sie die Registerkarte **Eigenschaften** aus. Wählen Sie **1.8** für **Quellkompatibilität** und **Zielkompatibilität** aus.
+1. Wählen Sie die Registerkarte **Eigenschaften** aus. Wählen Sie **1.9** für **Quellkompatibilität** und **Zielkompatibilität** aus.
 
    ![Screenshot der Quellkompatibilität und Zielkompatibilität](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-09-dependency-added.png)
 

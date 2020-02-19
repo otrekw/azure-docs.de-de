@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407257"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123202"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Erstellen der Zertifikatsignieranforderungsdatei
 
@@ -26,6 +26,9 @@ Erstellen Sie die Zertifikatsignieranforderungsdatei (CSR-Datei), die von Apple 
 1. Wählen Sie die Option **Schlüsselbundverwaltung** aus, erweitern Sie **Zertifikatsassistent**, und wählen Sie dann **Zertifikat einer Zertifizierungsinstanz anfordern** aus.
 
     ![Anfordern eines neuen Zertifikats mithilfe der Schlüsselbundverwaltung](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
+
+   > [!NOTE]
+   > Die Schlüsselbundverwaltung wählt standardmäßig das erste Element in der Liste aus. Dies kann ein Problem darstellen, wenn Sie sich in der Kategorie **Zertifikate** befinden und **Zertifizierungsstelle der Apple Worldwide Developer Relations** nicht das erste Element in der Liste ist. Stellen Sie sicher, dass Sie über ein Element verfügen, das kein Schlüssel ist, bzw. dass der Schlüssel **Zertifizierungsstelle der Apple Worldwide Developer Relations** ausgewählt ist, bevor Sie die Zertifikatsignieranforderung (Certificate Signing Request, CSR) generieren.
 
 1. Wählen Sie Ihre **E-Mail-Adresse des Benutzers** aus, und geben Sie den Wert für **Allgemeiner Name** ein. Vergewissern Sie sich, dass **Saved to disk** (Auf Datenträger gespeichert) aktiviert ist, und wählen Sie dann **Weiter** aus. Lassen Sie das Feld **CA Email Address** (E-Mail der Zertifizierungsstelle) leer, da dieser Wert nicht erforderlich ist.
 
@@ -53,7 +56,7 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
 3. Aktualisieren Sie die folgenden drei Werte für Ihre neue App, und wählen Sie dann **Weiter** aus:
 
-   * **Beschreibung:** Geben Sie einen aussagekräftigen Namen für Ihre App ein.
+   * **Beschreibung**: Geben Sie einen aussagekräftigen Namen für Ihre App ein.
 
    * **Paket-ID**: Geben Sie eine Paket-ID im Format **Organisationsbezeichner.Produktname** ein, wie im [Leitfaden zur App-Verteilung](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) erwähnt. Die unter *Organization Identifier* (Organisationskennung) und *Product Name* (Produktname) eingegebenen Werte müssen der Organisationskennung und dem Produktnamen entsprechen, die Sie beim Erstellen des Xcode-Projekts verwenden. Im folgenden Screenshot wird der Wert **NotificationHubs** als Organisationskennung und **GetStarted** als Produktname verwendet. Stellen Sie sicher, dass der Wert für den **Paketbezeichner** mit dem Wert in Ihrem Xcode-Projekt übereinstimmt, sodass Xcode das richtige Veröffentlichungsprofil verwendet.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984490"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048206"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
@@ -120,7 +120,7 @@ Sie können für die unten angegebenen Abonnementtypen den Abrechnungsbesitz anf
 - [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Das Enterprise Dev/Test-Abonnement wird nach der Übertragung mit dem Satz für nutzungsbasierte Bezahlung abgerechnet. Rabatte, die im Rahmen des Enterprise Dev/Test-Angebots über den Konzernvertrag des Kunden angeboten wurden, stehen für den CSP-Partner nicht zur Verfügung.
+\* Ein Dev/Test-Abonnement muss zunächst über ein Supportticket in ein EA-Unternehmensangebot konvertiert werden. Das Enterprise Dev/Test-Abonnement wird nach der Übertragung gemäß dem Satz für nutzungsbasierte Bezahlung abgerechnet. Rabatte, die im Rahmen des Enterprise Dev/Test-Angebots über den Konzernvertrag des Kunden angeboten wurden, stehen für den CSP-Partner nicht zur Verfügung.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 

@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a647f4a5f051ec89bb82b6e7f89dcb677c95371
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027736"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046336"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen
 
@@ -31,7 +31,7 @@ Dieser Artikel enthält für Azure AD-Administratoren eine Einführung in die Be
 
 ## <a name="assign-users-to-groups"></a>Zuweisen von Benutzern zu Gruppen
 
-Sie können Gruppen in Azure AD verwenden, um Lizenzen einer großen Zahl von Benutzern zuzuweisen oder den Benutzerzugriff auf bereitgestellte Unternehmens-Apps zuzuweisen. Sie können Gruppen verwenden, um Administratorrollen in Azure zuzuweisen, oder Sie können den Zugriff auf externe Ressourcen gewähren, z.B. SaaS-Anwendungen oder SharePoint-Websites.
+Sie können Gruppen in Azure AD verwenden, um Lizenzen einer großen Zahl von Benutzern zuzuweisen oder den Benutzerzugriff auf bereitgestellte Unternehmens-Apps zuzuweisen. Sie können Gruppen verwenden, um alle Administratorrollen mit Ausnahme der Rolle „Globaler Administrator“ in Azure AD zuzuweisen, oder Sie können den Zugriff auf externe Ressourcen gewähren, z. B. SaaS-Anwendungen oder SharePoint-Websites.
 
 Wenn Sie für zusätzliche Flexibilität sorgen und den Aufwand für die Verwaltung der Gruppenmitgliedschaft reduzieren möchten, können Sie in Azure AD [dynamische Gruppen](groups-create-rule.md) nutzen, um die Gruppenmitgliedschaft automatisch zu verlängern und zu begrenzen. Sie benötigen für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz.
 

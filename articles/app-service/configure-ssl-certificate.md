@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: acf7fd91eff6a868074c61d557effa076033e799
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845928"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046412"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -21,7 +21,7 @@ Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-Ap
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |-|-|
 | Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
@@ -37,6 +37,9 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 - Nur kostenloses Zertifikat: Ordnen Sie App Service eine Unterdomäne (z. B. `www.contoso.com`) mit einem [CNAME-Eintrag](app-service-web-tutorial-custom-domain.md#map-a-cname-record) zu.
 
 ## <a name="private-certificate-requirements"></a>Anforderungen an private Zertifikate
+
+> [!NOTE]
+> AES256 wird von Azure Web Apps **nicht** unterstützt, und alle PFX-Dateien müssen mit TrippleDES verschlüsselt werden.
 
 Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-certificate-preview) bzw. das [App Service-Zertifikat](#import-an-app-service-certificate) erfüllt bereits die Anforderungen von App Service. Wenn Sie ein privates Zertifikat in App Service hochladen oder importieren möchten, muss Ihr Zertifikat die folgenden Anforderungen erfüllen:
 
@@ -110,7 +113,7 @@ Starten Sie eine App Service-Zertifikatreihenfolge auf der <a href="https://port
 
 Die folgende Tabelle unterstützt Sie bei der Konfiguration des Zertifikats. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Name | Ein Anzeigename für Ihr App Service-Zertifikat. |
 | Reiner Domänenhostname | Geben Sie hier die Stammdomäne an. Das ausgestellte Zertifikat sichert *sowohl* die Stamm Domäne als auch die Unterdomäne `www`. Im ausgestellten Zertifikat enthält das Feld „Allgemeiner Name“ die Stammdomäne, und das Feld „Alternativer Antragstellername“ enthält die Domäne `www`. Um eine beliebige Unterdomäne zu sichern, geben Sie den vollqualifizierten Domänennamen der Unterdomäne hier an (z.B. `mysubdomain.contoso.com`).|
@@ -131,7 +134,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |

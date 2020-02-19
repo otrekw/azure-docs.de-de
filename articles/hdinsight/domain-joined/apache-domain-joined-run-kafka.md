@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a0ffa6e20b42ed8ac145b50c062f5c0a8998add0
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435854"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77061640"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -147,6 +147,8 @@ Basierend auf den konfigurierten Ranger-Richtlinien kann **sales_user** für das
 
 4. Führen Sie Schritt 3 im Abschnitt **Erstellen und Bereitstellen des Beispiels** unter [Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) aus, um sicherzustellen, dass `kafka-producer-consumer.jar` auch für **sales_user** verfügbar ist.
 
+**Hinweis:  Verwenden Sie in diesem Tutorial die Datei „kafka-producer-consumer.jar“ im Projekt „DomainJoined-Producer-Consumer“ (und nicht die Datei im Projekt „Producer-Consumer“, die für Szenarien ohne Domäneneinbindung vorgesehen ist).**
+
 5. Überprüfen Sie, ob **sales_user1** für das Thema `salesevents` produzieren kann. Führen Sie dazu den folgenden Befehl aus:
 
    ```bash
@@ -194,6 +196,9 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ). 
 1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
+
+## <a name="troubleshooting"></a>Problembehandlung
+Funktioniert die Datei „kafka-producer-consumer.jar“ nicht in einem in die Domäne eingebundenen Cluster, vergewissern Sie sich, dass Sie die Datei „kafka-producer-consumer.jar“ im Projekt „DomainJoined-Producer-Consumer“ verwenden (und nicht die Datei im Projekt „Producer-Consumer“, die für Szenarien ohne Domäneneinbindung vorgesehen ist).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

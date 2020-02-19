@@ -4,12 +4,12 @@ description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur 
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750256"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186983"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -23,7 +23,7 @@ Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbau
 
 ![Beispiel für eine Hierarchiestruktur einer Verwaltungsgruppe](./media/tree.png)
 
-Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an alle EA-Abonnements vererbt, die Nachfolger dieser Verwaltungsgruppe sind, und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
+Sie können eine Hierarchie erstellen, die eine Richtlinie anwendet, z. B. die VM-Standorte auf die Region „USA, Westen“ in der Gruppe „Produktion“ begrenzt. Diese Richtlinie wird an alle EA-Abonnements (Enterprise Agreement) vererbt, die Nachfolger dieser Verwaltungsgruppe sind, und gilt für alle virtuellen Computer dieser Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 
 Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [RBAC](../../role-based-access-control/overview.md)-Zuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.
 Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript RBAC für verschiedene Abonnements eingerichtet werden muss.
@@ -102,7 +102,7 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
 
-Benutzerdefinierte RBAC-Rollen für Verwaltungsgruppen werden zurzeit mit einigen [Einschränkungen](#limitations) unterstützt.  Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren.  Diese benutzerdefinierte RBAC-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.    
+Die Unterstützung benutzerdefinierter RBAC-Rollen für Verwaltungsgruppen befindet sich derzeit in der Vorschauphase und weist einige [Einschränkungen](#limitations) auf.  Sie können den Verwaltungsgruppenbereich im zuweisbaren Bereich der Rollendefinition definieren.  Diese benutzerdefinierte RBAC-Rolle steht dann für die Zuweisung zu dieser Verwaltungsgruppe und allen ihr untergeordneten Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen zur Verfügung. Diese benutzerdefinierte Rolle wird wie jede andere integrierte Rolle an die untergeordneten Ressourcen in der Hierarchie vererbt.    
 
 ### <a name="example-definition"></a>Beispieldefinition
 Das [Definieren und Erstellen einer benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) ändert sich mit dem Einbeziehen von Verwaltungsgruppen nicht. Verwenden Sie den vollständigen Pfad, um die Verwaltungsgruppe **/providers/Microsoft.Management/managementgroups/{Gruppen-ID}** zu definieren. 
@@ -143,7 +143,7 @@ Verwenden Sie die ID der Verwaltungsgruppe und nicht ihren Anzeigenamen. Dieser 
 ### <a name="issues-with-breaking-the-role-definition-and-assignment-hierarchy-path"></a>Probleme mit Unterbrechen des Rollendefinitions- und Zuweisungshierarchiepfads
 Rollendefinitionen können an beliebiger Stelle innerhalb der Verwaltungsgruppenhierarchie zugewiesen werden. Eine Rollendefinition kann für eine übergeordnete Verwaltungsgruppe definiert werden, während die tatsächliche Rollenzuweisung im untergeordneten Abonnement vorhanden ist. Da es eine Beziehung zwischen den beiden Elementen gibt, erhalten Sie eine Fehlermeldung, wenn Sie versuchen, die Zuweisung von ihrer Definition zu trennen. 
 
-Beispiel:  Wir betrachten nun einen kleinen Abschnitt einer Hierarchie für ein visuelles Element. 
+Beispiel: Wir betrachten nun einen kleinen Abschnitt einer Hierarchie für ein visuelles Element. 
 
 ![Unterstruktur](./media/subtree.png)
 

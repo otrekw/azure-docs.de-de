@@ -16,18 +16,18 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779111"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185498"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
 ## <a name="what-is-azure-active-directory-pass-through-authentication"></a>Was ist die Azure Active Directory-Passthrough-Authentifizierung?
 
-Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können sich Benutzer mit denselben Kennwörtern sowohl bei lokalen als auch bei cloudbasierten Anwendungen anmelden. Diese Funktion stellt eine benutzerfreundlichere Oberfläche für Ihre Benutzer bereit, weil ein Kennwort wegfällt, und reduziert die Kosten des IT-Helpdesks, da Benutzer seltener vergessen, wie sie sich anmelden. Wenn Benutzer sich mithilfe von Azure AD anmelden, überprüft dieses Feature die Benutzerkennwörter direkt anhand Ihres lokalen Active Directory.
+Mit der Azure AD-Passthrough-Authentifizierung (Azure Active Directory) können sich Benutzer mit denselben Kennwörtern sowohl an lokalen als auch an cloudbasierten Anwendungen anmelden. Diese Funktion stellt eine benutzerfreundlichere Oberfläche für Ihre Benutzer bereit, weil ein Kennwort wegfällt, und reduziert die Kosten des IT-Helpdesks, da Benutzer seltener vergessen, wie sie sich anmelden. Wenn Benutzer sich mithilfe von Azure AD anmelden, überprüft dieses Feature die Benutzerkennwörter direkt anhand Ihres lokalen Active Directory.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
@@ -41,7 +41,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 - *Große Benutzerfreundlichkeit*
   - Benutzer verwenden für die Anmeldung bei lokalen und cloudbasierten Anwendungen das gleiche Kennwort.
-  - Benutzer verbringen Zeit weniger mit dem Lösen von Kennwortproblemen mit dem IT-Helpdesk.
+  - Benutzer verbringen weniger Zeit mit dem gemeinsamen Lösen von Kennwortproblemen mit dem IT-Helpdesk
   - Benutzer können die [Self-Service-Kennwortverwaltung](../authentication/active-directory-passwords-overview.md) selbst in der Cloud durchführen.
 - *Einfache Bereitstellung und Verwaltung*
   - Bereitstellungen oder Netzwerkkonfigurationen müssen nicht mehr komplex und lokal sein.
@@ -49,7 +49,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
   - Es gibt keinen zusätzlichen Verwaltungsaufwand. Der Agent empfängt Verbesserungen und Fehlerbehebungen automatisch.
 - *Schützen*
   - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
-  - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
+  - Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
   - Die Kommunikation zwischen einem Agent und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese Zertifikate werden alle paar Monate automatisch von Azure AD verlängert.
 - *Hoch verfügbar*
@@ -70,7 +70,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schnellstart](how-to-connect-pta-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD
+- [Schnellstart](how-to-connect-pta-quick-start.md): Einrichten und Ausführen der Passthrough-Authentifizierung mit Azure AD.
 - [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
 - [Smart Lockout](../authentication/howto-password-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten zum Schutz der Benutzerkonten
 - [Aktuelle Einschränkungen](how-to-connect-pta-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien

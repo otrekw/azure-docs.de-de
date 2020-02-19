@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381119"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186450"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs 
 
@@ -36,7 +36,7 @@ Im Kontext des bedingten Zugriffs werden diese Client-Apps als **genehmigte Clie
 
 ![Bedingter Zugriff](./media/app-based-conditional-access/05.png)
 
-Eine Liste der genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement).
+Eine Liste der genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](concept-conditional-access-grant.md).
 
 App-basierte bedingte Zugriffsrichtlinien lassen sich mit anderen Richtlinien wie etwa [gerätebasierten Richtlinien zum bedingten Zugriff](require-managed-devices.md) kombinieren und sorgen so für Flexibilität beim Schutz von Daten für Privat- und Unternehmensgeräte.
 
@@ -44,7 +44,7 @@ App-basierte bedingte Zugriffsrichtlinien lassen sich mit anderen Richtlinien wi
 
 In diesem Thema wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
-- Der technischen Referenz [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement)
+- Der Anforderung [Genehmigte Client-App erforderlich](concept-conditional-access-grant.md)
 - Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md)
 - Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md)
 - Der [Migration von Richtlinien für bedingten Zugriff](best-practices.md#policy-migration)

@@ -1,31 +1,31 @@
 ---
-title: Client-Apps in der Richtlinie für bedingten Zugriff – Azure Active Directory
-description: ''
+title: Cloud-Apps oder -aktionen in Richtlinien für bedingten Zugriff – Azure Active Directory
+description: Was sind Cloud-Apps oder -aktionen in einer Richtlinie für bedingten Zugriff in Azure AD?
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544054"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186379"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
+# <a name="conditional-access-cloud-apps-or-actions"></a>Bedingter Zugriff: Cloud-Apps oder -aktionen
 
-Cloud-Apps oder -Aktionen sind ein wichtiger Bestandteil einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen oder Aktionen. 
+Cloud-Apps oder -aktionen sind ein wichtiger Bestandteil einer Richtlinie für bedingten Zugriff. Richtlinien für bedingten Zugriff ermöglichen Administratoren das Zuweisen von Steuerelementen zu bestimmten Anwendungen oder Aktionen.
 
 - Administratoren stehen eine Reihe von Anwendungen zur Auswahl. Dazu zählen integrierte Microsoft-Anwendungen und alle [in Azure AD integrierten Anwendungen](../manage-apps/what-is-application-management.md) (Katalog- und Nicht-Kataloganwendungen) sowie über den [Anwendungsproxy](../manage-apps/what-is-application-proxy.md) veröffentlichte Anwendungen.
 - Administratoren haben die Wahl, die Richtlinie nicht auf Basis einer Cloudanwendung, sondern basierend auf einer Benutzeraktion zu definieren. Als einzige Aktion wird „Sicherheitsinformationen registrieren (Vorschauversion)“ unterstützt. Hierbei können durch den bedingten Zugriff Steuerelemente rund um die Funktion [Kombinierte Registrierung von Sicherheitsinformationen](../authentication/howto-registration-mfa-sspr-combined.md) erzwungen werden.
 
-![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Cloud-Apps](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Definieren einer Richtlinie für bedingten Zugriff und Angeben von Cloud-Apps](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Microsoft Cloud-Anwendungen
 
@@ -124,6 +124,7 @@ Benutzeraktionen sind Aufgaben, die von einem Benutzer ausgeführt werden könne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Komponenten der Richtlinie für bedingten Zugriff](concept-conditional-access-policies.md)
+- [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md)
+
+- [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md)
 - [Abhängigkeiten von Clientanwendungen](service-dependencies.md)
-- [Microsoft Intune: MFA für Geräteregistrierung erforderlich](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

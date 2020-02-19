@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892446"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162700"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Tutorial: Simulieren eines Fehlers beim Lesen von Daten aus der primären Region
 
-Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Teil erfahren Sie, welchen Nutzen ein [georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (Read-Access Geographically Redundant Storage, RA-GRS) bietet, indem Sie einen Fehler simulieren.
+Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Teil erfahren Sie, welchen Nutzen ein [georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md) (Read-Access Geographically Redundant Storage, RA-GRS) bietet, indem Sie einen Fehler simulieren.
 
-Zum Simulieren eines Fehlers können Sie [statisches Routing](#simulate-a-failure-with-an-invalid-static-route) oder [Fiddler](#simulate-a-failure-with-fiddler) verwenden. Beide Methoden ermöglichen es Ihnen, einen Fehler für Anforderungen an den primären Endpunkt Ihres RA-GRS-Speicherkontos ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) zu simulieren, sodass die Anwendung stattdessen vom sekundären Endpunkt liest.
+Zum Simulieren eines Fehlers können Sie [statisches Routing](#simulate-a-failure-with-an-invalid-static-route) oder [Fiddler](#simulate-a-failure-with-fiddler) verwenden. Beide Methoden ermöglichen es Ihnen, einen Fehler für Anforderungen an den primären Endpunkt Ihres RA-GRS-Speicherkontos ([georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md)) zu simulieren, sodass die Anwendung stattdessen vom sekundären Endpunkt liest.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -41,7 +41,7 @@ Führen Sie den Download und die [Installation von Fiddler](https://www.telerik.
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Simulieren eines Fehlers mit einer ungültigen statischen Route
 
-Sie können eine ungültige statische Route für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) erstellen. In diesem Tutorial wird der lokale Host als Gateway für das Weiterleiten von Anforderungen an das Speicherkonto verwendet. Die Nutzung des lokalen Hosts als Gateway bewirkt, dass für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos eine Schleife zurück zum Host erfolgt. Dies führt schließlich zu einem Fehler. Führen Sie die folgenden Schritte aus, um einen Fehler zu simulieren und die Wiederherstellung des primären Endpunkts mit einer ungültigen statischen Route durchzuführen.
+Sie können eine ungültige statische Route für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos vom Typ [Georedundanter Speicher mit Lesezugriff](../common/storage-redundancy.md) (RA-GRS) erstellen. In diesem Tutorial wird der lokale Host als Gateway für das Weiterleiten von Anforderungen an das Speicherkonto verwendet. Die Nutzung des lokalen Hosts als Gateway bewirkt, dass für alle Anforderungen an den primären Endpunkt Ihres Speicherkontos eine Schleife zurück zum Host erfolgt. Dies führt schließlich zu einem Fehler. Führen Sie die folgenden Schritte aus, um einen Fehler zu simulieren und die Wiederherstellung des primären Endpunkts mit einer ungültigen statischen Route durchzuführen.
 
 ### <a name="start-and-pause-the-application"></a>Starten und Anhalten der Anwendung
 

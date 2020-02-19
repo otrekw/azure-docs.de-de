@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 11/13/2019
+ms.date: 02/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 3b33015b3a69372f6783d59b28a111ec279dd860
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 9ac70252ce7c818ccbdecfd996b9970f011aa967
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048473"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77056341"
 ---
 # <a name="about-azure-virtual-wan"></a>Informationen zu Azure Virtual WAN
 
@@ -37,6 +37,13 @@ Es gibt zwei Arten virtueller WANs: Basic und Standard. Die folgende Tabelle zei
 
 Anweisungen für ein Upgrade eines virtuellen WAN finden Sie unter [Upgrade eines virtuellen WAN von Basic auf Standard](upgrade-virtual-wan.md).
 
+## <a name="architecture"></a>Architektur
+
+Informationen zur Virtual WAN-Architektur sowie zum Migrieren zu Virtual WAN finden Sie in den folgenden Artikeln:
+
+* [Migrieren zu Azure Virtual WAN](migrate-from-hub-spoke-topology.md)
+* [Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN](virtual-wan-global-transit-network-architecture.md)
+
 ## <a name="resources"></a>Virtual WAN-Ressourcen
 
 Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konfigurieren:
@@ -57,7 +64,7 @@ Sie erstellen die folgenden Ressourcen, um ein virtuelles End-to-End-WAN zu konf
 
   * **Site:** Diese Ressource wird ausschließlich für Site-to-Site-Verbindungen verwendet. Die Ressource „site“ ist **vpnsite**. Sie stellt Ihr lokales VPN-Gerät und die zugehörigen Einstellungen dar. Durch die Zusammenarbeit mit einem Virtual WAN-Partner verfügen Sie über eine integrierte Lösung zum automatischen Exportieren dieser Informationen nach Azure.
 
-## <a name="connectivity"></a>Konnektivität
+## <a name="connectivity"></a>Konnektivitätstypen
 
 Virtual WAN lässt die folgenden Konnektivitätstypen zu: Site-to-Site-VPN, Benutzer-VPN (Point-to-Site) und ExpressRoute.
 

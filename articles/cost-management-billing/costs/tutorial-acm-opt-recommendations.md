@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985134"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168764"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -79,7 +79,7 @@ Klicken Sie in der Liste der Empfehlungen auf **Größe eines nicht ausgelastete
 
 Beachten Sie die aktuelle VM-Größe. Nachdem Sie überprüft haben, ob die Größe des virtuellen Computers geändert werden soll, schließen Sie die VM-Details, sodass wieder die Liste der virtuellen Computer angezeigt wird.
 
-Wählen Sie in der Liste der Kandidaten, die heruntergefahren sollen oder deren Größe geändert werden soll, **Von *&lt;FromVirtualMachineSKU&gt;* auf *&lt;ToVirtualMachineSKU&gt; ändern*** aus.
+Wählen Sie in der Liste der Kandidaten, die heruntergefahren werden sollen oder deren Größe geändert werden soll, die Option **Von _&lt;FromVirtualMachineSKU&gt;_ auf _&lt;ToVirtualMachineSKU&gt;_ ändern** aus.
 ![Beispielempfehlung mit Option zum Ändern der Größe des virtuellen Computers](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Als Nächstes wird eine Liste der verfügbaren Optionen für die Größenänderung angezeigt. Wählen Sie diejenige, die für Ihr Szenario die beste Leistung und Kosteneffizienz bietet. Im folgenden Beispiel ändert die gewählte Option die Größe von **Standard_D8s_v3** auf **Standard_D2s_v3**.

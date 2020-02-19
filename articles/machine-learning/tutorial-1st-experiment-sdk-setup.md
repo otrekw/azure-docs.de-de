@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/25/2019
-ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/10/2020
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982533"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165975"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,7 +84,7 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
     > [!IMPORTANT]
     > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden.  Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.
     
-1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **Tutorials** aus.
+1. Wählen Sie die Datei **tutorial-1st-experiment-sdk-train.ipynb** im Ordner **tutorials/create-first-ml-experiment** aus.
 
 1. Wählen Sie auf der oberen Leiste eine Computeinstanz aus, die zum Ausführen des Notebooks verwendet werden soll. Diese VMs werden [mit allen Komponenten vorkonfiguriert, die Sie zum Ausführen von Azure Machine Learning benötigen](concept-compute-instance.md#contents). Sie können einen virtuellen Computer auswählen, der von einem beliebigen Benutzer Ihres Arbeitsbereichs erstellt wurde. 
 
@@ -99,10 +99,6 @@ Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte
 1. Sobald der virtuelle Computer verfügbar ist, wird er auf der oberen Symbolleiste angezeigt.  Sie können das Notebook jetzt entweder über **Alle ausführen** auf der Symbolleiste oder unter Verwendung von **UMSCHALT+EINGABE** in den Codezellen des Notebooks ausführen.
 
 Wenn Sie über benutzerdefinierte Widgets verfügen oder die Verwendung von Jupyter/JupyterLab bevorzugen, wählen Sie ganz rechts das Dropdownmenü **Jupyter** und dann **Jupyter** oder **JupyterLab** aus. Das neue Browserfenster wird geöffnet.
-
-> [!NOTE]
-> Compute-Instanzen (Vorschau) sind zurzeit nur für Arbeitsbereiche in den Regionen **USA, Norden-Mitte**, **USA, Osten 2**, **Europa, Norden** und **Vereinigtes Königreich, Süden** verfügbar. Unterstützung für andere Regionen folgt in Kürze.
->Wenn sich Ihr Arbeitsbereich in einer anderen Region befindet, können Sie stattdessen weiterhin eine [Notebook-VM](concept-compute-instance.md#notebookvm) erstellen und verwenden.  Sie können entweder eine Notebook-VM oder eine Computeinstanz für die Ausführung Ihres Notebooks verwenden. Ein virtueller Computer wird weiterhin ausgeführt und verursacht weiter Kosten, wenn Sie ihn nicht beenden. Sie können ihn manuell in Studio auf der Registerkarte **Compute** beenden. Lesen Sie alternativ [diesen Blogbeitrag](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) zum Aktivieren des geplanten automatischen Herunterfahrens für Azure-VMs.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

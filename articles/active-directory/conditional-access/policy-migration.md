@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Richtlinien für bedingten Zugriff – Azure Active Directory
+title: 'Migrieren von Richtlinien für bedingten Zugriff: Azure Active Directory'
 description: Wichtige Informationen zum Migrieren klassischer Richtlinien in das Azure-Portal.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846169"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185905"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migration der klassischen Richtlinie für bedingten Zugriff
 
@@ -89,7 +89,7 @@ Wenn Sie über eine neue Richtlinie verfügen, in der **Exchange Active Sync** a
 
 ![Bedingungen für bedingten Zugriff](./media/policy-migration/16.png)
  
-[App-basierte](technical-reference.md#approved-client-app-requirement) klassische Richtlinien für Office 365 Exchange Online, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, lassen **unterstützte** und **nicht unterstützte** [Geräteplattformen](technical-reference.md#device-platform-condition) zu. Zwar können in einer zugeordneten neuen Richtlinie keine einzelnen Geräteplattformen konfiguriert werden, jedoch können Sie die Unterstützung auf [unterstützte Geräteplattformen](technical-reference.md#device-platform-condition) einschränken. 
+App-basierte klassische Richtlinien für Office 365 Exchange Online, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, lassen **unterstützte** und **nicht unterstützte** Geräteplattformen zu. Zwar können in einer zugeordneten neuen Richtlinie keine einzelnen Geräteplattformen konfiguriert werden, jedoch können Sie die Unterstützung auf [unterstützte Geräteplattformen](concept-conditional-access-conditions.md#device-platforms) einschränken. 
 
 ![Bedingter Zugriff: Auswählen von Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,14 +109,14 @@ In diesem Fall können Sie Ihre klassischen Richtlinien in einer neuen Richtlini
 
 ### <a name="device-platforms"></a>Geräteplattformen
 
-Klassische Richtlinien mit [App-basierten Steuerelementen](technical-reference.md#approved-client-app-requirement) sind bereits mit iOS und Android als [Bedingung für die Geräteplattform](technical-reference.md#device-platform-condition) konfiguriert. 
+Klassische Richtlinien mit App-basierten Steuerelementen sind bereits mit iOS und Android als Bedingung für die Geräteplattform konfiguriert. 
 
-In einer neuen Richtlinie müssen Sie die zu unterstützenden [Geräteplattformen](technical-reference.md#device-platform-condition) einzeln auswählen.
+In einer neuen Richtlinie müssen Sie die zu unterstützenden [Geräteplattformen](concept-conditional-access-conditions.md#device-platforms) einzeln auswählen.
 
 ![Bedingter Zugriff: Auswahl der Geräteplattformen](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwenden des Modus „Nur Bericht“ für bedingten Zugriff zum Ermitteln der Auswirkungen neuer Richtlinienentscheidungen.](concept-conditional-access-report-only.md)
+- [Verwenden des Modus „Nur Bericht“ für bedingten Zugriff zum Ermitteln der Auswirkungen neuer Richtlinienentscheidungen](concept-conditional-access-report-only.md)
 - Wenn Sie wissen möchten, wie Sie eine Richtlinie für bedingten Zugriff konfigurieren, finden Sie weitere Informationen unter [Allgemeine Richtlinien für bedingten Zugriff](concept-conditional-access-policy-common.md).
 - Wenn Sie bereit sind, Richtlinien für bedingten Zugriff für Ihre Umgebung zu konfigurieren, lesen Sie den Artikel [Vorgehensweise: Planen Ihrer Bereitstellung für bedingten Zugriff in Azure Active Directory](plan-conditional-access.md). 

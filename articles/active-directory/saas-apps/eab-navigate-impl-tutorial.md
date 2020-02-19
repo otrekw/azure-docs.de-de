@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d02a9dbc5b89c4156b7ff8b6a49adb7f00fef83
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 465b41aaf3c3b16dcba489d1ea9ba951a3108c8e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969742"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eab-navigate-impl"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EAB Navigate IMPL
 
@@ -83,12 +83,15 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
-
+1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:  Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** exakt den folgenden Wert ein: `https://impl.bouncer.eab.com`.
+    
+    Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** die beiden folgenden Werte als separate Zeilen ein: `https://impl.bouncer.eab.com/sso/saml2/acs`.
+    `https://impl.bouncer.eab.com/sso/saml2/acs/`
+    
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.navigate.impl.eab.com/`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den EAB Navigate IMPL-Client](mailto:jmahoney@eab.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Den Wert erhalten Sie vom [Supportteam für den EAB Navigate IMPL-Client](mailto:EABTechSupport@eab.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -104,7 +107,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -126,11 +129,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-eab-navigate-impl-sso"></a>Konfigurieren des einmaligen Anmeldens für EAB Navigate IMPL
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB Navigate IMPL** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EAB Navigate IMPL](mailto:jmahoney@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **EAB Navigate IMPL** müssen Sie die **App-Verbundmetadaten-URL** an das [Supportteam von EAB Navigate IMPL](mailto:EABTechSupport@eab.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-eab-navigate-impl-test-user"></a>Erstellen eines EAB Navigate IMPL-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in EAB Navigate IMPL einen Benutzer namens B. Simon. Wenden Sie sich an das  [Supportteam von EAB Navigate IMPL](mailto:jmahoney@eab.com), um die Benutzer auf der EAB Navigate IMPL-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in EAB Navigate IMPL einen Benutzer namens B. Simon. Wenden Sie sich an das  [Supportteam von EAB Navigate IMPL](mailto:EABTechSupport@eab.com), um die Benutzer auf der EAB Navigate IMPL-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

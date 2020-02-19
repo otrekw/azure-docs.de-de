@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 846abb61511ae1d5aedf77059ed2f1e9f4e5dbfb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911741"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190260"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
-Bei der Visualisierung vieler Datenpunkte auf der Karte überlappen sich die Punkte. Die Karte wirkt überladen, und es wird schwierig, die Karte zu überblicken und zu verwenden. Das Clustering von Punktdaten kann dazu verwendet werden, die Benutzerfreundlichkeit zu erhöhen. Das Clustering von Punktdaten ist der Prozess, bei dem benachbarte Punktdaten kombiniert und auf der Karte als ein einzelner gruppierter Datenpunkt dargestellt werden. Wenn der Benutzer in die Karte zoomt, werden die Cluster in ihre einzelnen Datenpunkte unterteilt.
+Wenn auf der Karte viele Datenpunkte visualisiert werden, kann es bei diesen Datenpunkten zu gegenseitigen Überlappungen kommen. Die Überlappungen können dazu führen, dass die Karte unlesbar und schwer zu verwenden ist. Das Clustering von Punktdaten ist der Prozess, bei dem benachbarte Punktdaten kombiniert und auf der Karte als ein einzelner gruppierter Datenpunkt dargestellt werden. Wenn der Benutzer in die Karte zoomt, werden die Cluster in ihre einzelnen Datenpunkte unterteilt. Wenn Sie mit einer großen Anzahl von Datenpunkten arbeiten, verwenden Sie die Clusteringprozesse, um die Erfahrung Ihrer Benutzer zu verbessern.
 
 <br/>
 
@@ -26,7 +26,7 @@ Bei der Visualisierung vieler Datenpunkte auf der Karte überlappen sich die Pun
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Aktivieren des Clusterings für eine Datenquelle
 
-Das Clustering kann für die Klasse `DataSource` einfach aktiviert werden, indem die Option `cluster` auf „true“ festgelegt wird. Zusätzlich kann der Pixelradius zum Auswählen von nahegelegenen Punkten, die zu einem Cluster kombiniert werden sollen, mithilfe von `clusterRadius` festgelegt werden. Des Weiteren kann ein Zoomfaktor angegeben werden, bei dem die Logik für das Clustering mit der Option `clusterMaxZoom` deaktiviert werden soll. Hier folgt ein Beispiel, wie Sie das Clustering in einer Datenquelle aktivieren können.
+Clustering aktivieren Sie in der `DataSource`-Klasse, indem Sie die Option `cluster` auf „true“ festlegen. Durch Festlegen von `ClusterRadius` werden nahe gelegene Punkte ausgewählt und zu einem Cluster kombiniert. Der Wert von `ClusterRadius` wird in Pixel angegeben. Verwenden Sie `clusterMaxZoom`, um eine Zoomfaktor anzugeben, ab dem die Clusteringlogik deaktiviert werden soll. Hier folgt ein Beispiel, wie Sie das Clustering in einer Datenquelle aktivieren können.
 
 ```javascript
 //Create a data source and enable clustering.
@@ -44,11 +44,11 @@ var datasource = new atlas.source.DataSource(null, {
 ```
 
 > [!TIP]
-> Wenn zwei Datenpunkte vor Ort dicht beieinander liegen, ist es möglich, dass der Cluster nie unterteilt wird, unabhängig davon, wie stark der Benutzer zoomt. Um dies zu berücksichtigen, können Sie die Option `clusterMaxZoom` der Datenquelle festlegen, die für den Zoomfaktor angibt, dass die Clustering-Logik deaktiviert und somit einfach alles angezeigt wird.
+> Wenn zwei Datenpunkte im Gelände dicht beieinander liegen, ist es möglich, dass der Cluster nie aufgelöst wird, unabhängig davon, wie stark der Benutzer vergrößert. Um dies zu umgehen, können Sie die Option `clusterMaxZoom` so festlegen, dass die Clusteringlogik deaktiviert und somit einfach alles angezeigt wird.
 
-Die Klasse `DataSource` verfügt im Hinblick auf das Clustering auch über die folgenden Methoden:
+Im Folgenden finden Sie weitere Methoden, die die `DataSource`-Klasse für das Clustering bereitstellt:
 
-| Methode | Rückgabetyp | Beschreibung |
+| Methode | Rückgabetyp | BESCHREIBUNG |
 |--------|-------------|-------------|
 | getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | Ruft die untergeordneten Elemente des angegebenen Clusters für den nächsten Zoomfaktor ab. Diese untergeordneten Elemente können eine Kombination aus Formen und untergeordneten Clustern sein. Die untergeordneten Cluster sind Features mit Eigenschaften, die ClusteredProperties entsprechen. |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | Berechnet einen Zoomfaktor, bei dem der Cluster mit der Erweiterung oder Unterteilung beginnt. |
@@ -56,7 +56,9 @@ Die Klasse `DataSource` verfügt im Hinblick auf das Clustering auch über die f
 
 ## <a name="display-clusters-using-a-bubble-layer"></a>Anzeigen von Clustern mithilfe einer Blasenebene
 
-Eine Blasenebene ist eine hervorragende Möglichkeit, um gruppierte Punkte darzustellen, da Sie den Radius leicht skalieren und die Farbe basierend auf der Anzahl der Punkte im Cluster mithilfe eines Ausdrucks ändern können. Bei der Darstellung von Clustern mit einer Blasenebene sollten Sie auch eine separate Ebene für das Rendering von nicht gruppierten Datenpunkten verwenden. Es ist oftmals hilfreich, auch die Größe des Clusters über den Blasen anzeigen zu können. Eine Symbolebene mit Text und ohne Symbol kann verwendet werden, um dieses Verhalten zu erreichen. 
+Eine Blasenebene ist eine hervorragende Möglichkeit, um geclusterte Datenpunkte zu rendern. Verwenden Sie Ausdrücke zum Skalieren des Radius, und ändern Sie die Farbe basierend auf der Anzahl der Punkte im Cluster. Bei der Darstellung von Clustern mit einer Blasenebene sollten Sie eine separate Ebene für das Rendering nicht geclusterter Datenpunkte verwenden.
+
+Um die Größe des Clusters auf der Blase anzuzeigen, verwenden Sie eine Symbolebene mit Text und verwenden kein Symbol.
 
 <br/>
 
@@ -66,7 +68,9 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>Anzeigen von Clustern mithilfe einer Symbolebene
 
-Bei der Visualisierung der Punktdaten mithilfe der Symbolebene werden standardmäßig automatisch sich überlappende Symbole ausgeblendet, um einen übersichtlicheren Eindruck zu vermitteln. Wenn Sie die Dichte der Datenpunkte auf der Karte anzeigen möchten, entspricht dies jedoch möglicherweise nicht dem, was Sie anzeigen möchten. Wenn Sie die Option `allowOverlap` der Eigenschaft `iconOptions` der Symbolebene auf `true` festlegen, wird dieses Verhalten deaktiviert. Es führt jedoch dazu, dass alle Symbole angezeigt werden. Mithilfe von Clustering können Sie die Dichte aller Daten erkennen und gleichzeitig eine angenehme, übersichtliche Benutzeroberfläche erzeugen. In diesem Beispiel werden benutzerdefinierte Symbole verwendet, um Cluster und einzelne Datenpunkte darzustellen.
+Beim Visualisieren von Datenpunkten blendet die Symbolebene automatisch Symbole aus, die einander überlappen, um eine klarere Benutzeroberfläche sicherzustellen. Dieses Standardverhalten ist möglicherweise unerwünscht, wenn Sie die Datenpunktdichte auf der Karte anzeigen möchten. Diese Einstellungen können jedoch geändert werden. Um alle Symbole anzuzeigen, legen Sie die Option `allowOverlap` der `iconOptions`-Eigenschaft der Symbolebenen auf `true` fest. 
+
+Verwenden Sie Clustering, um die Datenpunktdichte anzuzeigen und gleichzeitig eine aufgeräumte Benutzeroberfläche zu erhalten. Im Folgenden Beispiel wird gezeigt, wie Sie mithilfe der Symbolebene benutzerdefinierte Symbole hinzufügen sowie Cluster und einzelne Datenpunkte darstellen.
 
 <br/>
 
@@ -76,7 +80,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>Clustering und Wärmebildebene
 
-Wärmebilder sind eine hervorragende Möglichkeit, die Dichte der Daten auf der Karte anzuzeigen. Diese Visualisierung kann bereits eine große Anzahl von Datenpunkten verarbeiten, aber sie kann noch mehr Daten verarbeiten, wenn die Datenpunkte gruppiert werden und die Clustergröße als Gewichtung des Wärmebilds verwendet wird. Legen Sie dazu die Option `weight` der Wärmebildebene auf `['get', 'point_count']` fest. Bei einem kleinen Clusterradius sieht das Wärmebild nahezu identisch zu einem Wärmebild aus, das die nicht gruppierten Datenpunkte verwendet. Es wird aber viel besser funktionieren. Je kleiner der Clusterradius, desto genauer ist das Wärmebild, jedoch mit geringerem Leistungsvorteil.
+Wärmebilder sind eine hervorragende Möglichkeit, die Dichte der Daten auf der Karte anzuzeigen. Diese Visualisierungsmethode kann eigenständig eine große Anzahl von Datenpunkten verarbeiten. Wenn die Datenpunkte geclustert werden und die Clustergröße als Gewichtung des Wärmebilds verwendet wird, kann das Wärmebild sogar noch mehr Daten handhaben. Um diese Option zu realisieren, legen Sie die `weight`-Option der Wärmebildebene auf `['get', 'point_count']` fest. Bei einem kleinen Clusterradius sieht das Wärmebild nahezu identisch zu einem Wärmebild aus, das die nicht gruppierten Datenpunkte verwendet. Es wird aber viel besser funktionieren. Je kleiner der Clusterradius, desto genauer ist das Wärmebild, jedoch mit geringerem Leistungsvorteil.
 
 <br/>
 
@@ -88,14 +92,14 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Wenn Mausereignisse auf einer Ebene auftreten, die gruppierte Datenpunkte enthält, wird der gruppierte Datenpunkt als GeoJSON-Punktfeatureobjekt an das Ereignis zurückgegeben. Dieses Punktfeature weist die folgenden Eigenschaften auf:
 
-| Eigenschaftenname             | type    | Beschreibung   |
+| Eigenschaftenname             | type    | BESCHREIBUNG   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Gibt an, ob das Feature einen Cluster darstellt. |
 | `cluster_id`              | string  | Eine eindeutige ID für den Cluster, die mit den DataSource-Methoden `getClusterExpansionZoom`, `getClusterChildren` und `getClusterLeaves` verwendet werden kann. |
 | `point_count`             | number  | Die Anzahl der Punkte, die der Cluster enthält.  |
-| `point_count_abbreviated` | string  | Eine Zeichenfolge, die den `point_count`-Wert kürzt, falls zu lang. (Beispiel: 4.000 wird zu 4K)  |
+| `point_count_abbreviated` | string  | Eine Zeichenfolge, die den `point_count`-Wert abkürzt, falls er zu lang ist. (Beispiel: 4.000 wird zu 4K)  |
 
-Dieses Beispiel nimmt eine Blasenebene, die Clusterpunkte rendert, und fügt ein Click-Ereignis hinzu, das beim Auslösen den nächsten Zoomfaktor berechnet und die Karte entsprechend zoomt. Daraufhin wird der Cluster mithilfe der `getClusterExpansionZoom`-Methode der Klasse `DataSource` und der `cluster_id`-Eigenschaft des angeklickten gruppierten Datenpunkts unterteilt. 
+Dieses Beispiel nutzt eine Blasenebene, die Clusterpunkte rendert und ein Klickereignis hinzufügt. Wenn das Klickereignis ausgelöst wird, berechnet der Code die Karte und zoomt Sie auf die nächste Zoomstufe, bei der der Cluster aufgelöst wird. Diese Funktion wird mit der `getClusterExpansionZoom`-Methode der `DataSource`-Klasse und der `cluster_id`-Eigenschaft des angeklickten geclusterten Datenpunkts implementiert.
 
 <br/>
 
@@ -105,7 +109,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="display-cluster-area"></a>Anzeigen des Clusterbereichs 
 
-Die Punktdaten, die ein Cluster darstellt, sind über einen Bereich verteilt. Wenn Sie den Mauszeiger über einen Cluster bewegen, werden in diesem Beispiel die darin enthaltenen einzelnen Datenpunkte (Blätter) zur Berechnung einer konvexen Hülle verwendet und auf der Karte angezeigt, um das Gebiet zu veranschaulichen. Alle in einem Cluster enthaltenen Punkte können mit der Methode `getClusterLeaves` aus der Datenquelle abgerufen werden. Eine konvexe Hülle ist ein Polygon, das einen Satz von Punkten wie ein elastisches Band umhüllt und mit der `atlas.math.getConvexHull`-Methode berechnet werden kann.
+Die Punktdaten, die ein Cluster darstellt, sind über einen Bereich verteilt. In diesem Beispiel treten zwei Hauptverhaltensweisen auf, wenn mit der Maus auf einen Cluster gezeigt wird. Zuerst werden die einzelnen Datenpunkte, die im Cluster enthalten sind, verwendet, um eine konvexe Hülle zu berechnen. Anschließend wird die konvexe Hülle auf der Karte angezeigt, um einen Bereich darzustellen.  Eine konvexe Hülle ist ein Polygon, das einen Satz von Punkten wie ein elastisches Band umhüllt und mit der `atlas.math.getConvexHull`-Methode berechnet werden kann. Alle in einem Cluster enthaltenen Punkte können mit der Methode `getClusterLeaves` aus der Datenquelle abgerufen werden.
 
 <br/>
 
@@ -115,9 +119,9 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="aggregating-data-in-clusters"></a>Aggregieren von Daten in Clustern
 
-Cluster werden oft mithilfe eines Symbols mit der Anzahl der Punkte innerhalb des Clusters dargestellt. Manchmal ist es jedoch wünschenswert, den Clusterstil auf der Grundlage einer Metrik weiter anzupassen, wie z.B. dem Gesamtumsatz aller Punkte innerhalb eines Clusters. Mit Clusteraggregaten können benutzerdefinierte Eigenschaften erstellt und dann mithilfe einer Berechnung vom Typ [Aggregatausdruck](data-driven-style-expressions-web-sdk.md#aggregate-expression) aufgefüllt werden.  Clusteraggregate können in der Option `clusterProperties` von `DataSource` definiert werden.
+Cluster werden oft mithilfe eines Symbols mit der Anzahl der im Cluster enthaltenen Punkte dargestellt. Manchmal ist es jedoch wünschenswert, den Clusterstil mit zusätzlichen Metriken anzupassen. Mit Clusteraggregaten können benutzerdefinierte Eigenschaften erstellt und dann mithilfe einer Berechnung vom Typ [Aggregatausdruck](data-driven-style-expressions-web-sdk.md#aggregate-expression) aufgefüllt werden.  Clusteraggregate können in der Option `clusterProperties` von `DataSource` definiert werden.
 
-Im folgenden Beispiel wird ein Aggregatausdruck verwendet, um eine Anzahl basierend auf der Eigenschaft „Entitätstyp“ der einzelnen Datenpunkte in einem Cluster zu berechnen.
+Im folgenden Beispiel wird ein Aggregatausdruck verwendet. Der Code berechnet eine Anzahl basierend auf der Eigenschaft „Entitätstyp“ der einzelnen Datenpunkte in einem Cluster. Wenn ein Benutzer auf einen Cluster klickt, wird ein Popup mit zusätzlichen Informationen über den Cluster angezeigt.
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregate" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> (Clusteraggregate) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>Code Pen</a>.
