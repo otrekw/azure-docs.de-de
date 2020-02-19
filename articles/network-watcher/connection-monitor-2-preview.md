@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: c993a08a4163d50a9632055da355e39b5bdde004
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026450"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169319"
 ---
-# <a name="overview"></a>Übersicht
+# <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Vereinheitlichte Konnektivitätsüberwachung mit dem Verbindungsmonitor (Vorschauversion)
 
 Der Verbindungsmonitor (Vorschauversion) im Azure-Dienst „Network Watcher“ bietet einheitliche End-to-End-Funktionen zur Verbindungsüberwachung in Hybrid- und Azure-Cloudbereitstellungen. Network Watcher stellt Tools für das Überwachen, Diagnostizieren und Anzeigen von Verbindungsmetriken für Ihre Azure-Bereitstellungen zur Verfügung.
 
@@ -78,8 +78,8 @@ Der _Verbindungsmonitor_ überwacht die Kommunikation in regelmäßigen Abständ
 
 ### <a name="accessing-connection-monitor-preview"></a>Zugreifen auf den Verbindungsmonitor (Vorschauversion)
 
-1. Greifen Sie über den folgenden Link auf Network Watcher zu:[https://ms.portal.azure.com/?Microsoft\_Azure\_Network\_connectionmonitorpreview=true#blade/Microsoft\_Azure\_Network/NetworkWatcherMenuBlade/connectionMonitorPreview](https://ms.portal.azure.com/?Microsoft_Azure_Network_connectionmonitorpreview=true#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/connectionMonitorPreview)
-2. Klicken Sie links in Network Watcher im Bereich „Überwachung“ auf die Registerkarte „Verbindungsmonitor (Vorschau)“. Diese Registerkarte wird nur angezeigt, wenn Sie Network Watcher über den Link in Schritt 1 öffnen.
+1. Besuchen Sie auf der Azure-Portal-Startseite Network Watcher.
+2. Klicken Sie links in Network Watcher im Bereich „Überwachung“ auf die Registerkarte „Verbindungsmonitor (Vorschau)“.
 3. Dort sind alle Verbindungsmonitore aufgeführt, die mit der Vorschauversion des Verbindungsmonitors erstellt wurden. Alle Verbindungsmonitore, die mit dem klassischen Verbindungsmonitor erstellt wurden, werden auf der Registerkarte „Verbindungsmonitor“ angezeigt.
 
     ![Erstellen eines Verbindungsmonitors](./media/connection-monitor-2-preview/cm-resource-view.png)
@@ -403,7 +403,7 @@ Geben Sie zum Erstellen einer Testgruppe in einem Verbindungsmonitor in die folg
 
       ![Ziele hinzufügen 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Klicken Sie auf die Registerkarte „Endpunkte“, um Azure-VMs als Ziele auszuwählen. Die Endpunktliste wird mit den O365- und D365-Test-URLs befüllt, die nach Namen gruppiert sind.  Sie können auch einen Endpunkt auswählen, der in einer anderen Testgruppe im selben Verbindungsmonitor erstellt wurde. Zum Hinzufügen eines neuen Endpunkts klicken Sie in der oberen rechten Ecke des Bildschirms auf „+ Endpoint“ (+ Endpunkt), und geben Sie die Endpunkt-URL/die IP-Adresse/den FQDN und den Namen ein.
+   2. Klicken Sie auf die Registerkarte „Endpunkte“, um Endpunkte als Ziele auszuwählen. Die Endpunktliste wird mit den O365- und D365-Test-URLs befüllt, die nach Namen gruppiert sind.  Sie können auch einen Endpunkt auswählen, der in einer anderen Testgruppe im selben Verbindungsmonitor erstellt wurde. Zum Hinzufügen eines neuen Endpunkts klicken Sie in der oberen rechten Ecke des Bildschirms auf „+ Endpoint“ (+ Endpunkt), und geben Sie die Endpunkt-URL/die IP-Adresse/den FQDN und den Namen ein.
 
       ![Endpunkte hinzufügen](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -574,12 +574,12 @@ Bei Verbindungsmonitoren, die vor dem Verbindungsmonitor (Vorschauversion) erste
 
 Ressourcentyp: Microsoft.Network/networkWatchers/connectionMonitors
 
-| Metrik | Metrikanzeigename | Einheit | Aggregationstyp | Beschreibung | Dimensionen |
+| Metrik | Metrikanzeigename | Einheit | Aggregationstyp | BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | Fehlerhafte Tests in Prozent | Percent | Average | Fehlerhafte Tests bei Konnektivitätsüberwachung in Prozent | Keine Dimensionen |
 | AverageRoundtripMs | Durchschn. Roundtripzeit (ms) | Millisekunden | Average | Durchschnittliche Netzwerk-Roundtripzeit (ms) für die Konnektivitätsüberwachung von Testdatenverkehr, der zwischen Quelle und Ziel gesendet wurde. |             Keine Dimensionen |
-| ChecksFailedPercent (Preview) | % der Überprüfungen mit Fehlern (Vorschau) | Percent | Average | Prozentanteil der Überprüfungen, die bei einem Test fehlgeschlagen sind |Liste: – ConnectionMonitorResourceId – SourceAddress – SourceName – SourceResourceId – SourceType – Protocol – DestinationAddress – DestinationName – DestinationResourceId – DestinationType – DestinationPort – TestGroupName – TestConfigurationName – Region |
-| RoundTripTimeMs (Vorschau) | Roundtripzeit (ms) (Vorschau) | Millisekunden | Average | Roundtripzeit (ms) von Überprüfungen, die zwischen der Quelle und dem Ziel gesendet werden. Es wird kein Durchschnittswert gebildet. | Liste: – ConnectionMonitorResourceId – SourceAddress – SourceName – SourceResourceId – SourceType – Protocol – DestinationAddress – DestinationName – DestinationResourceId – DestinationType – DestinationPort – TestGroupName – TestConfigurationName – Region |
+| ChecksFailedPercent (Preview) | % der Überprüfungen mit Fehlern (Vorschau) | Percent | Average | Prozentanteil der Überprüfungen, die bei einem Test fehlgeschlagen sind | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * SourceResourceId <br> * SourceType <br> * Protocol <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> *  TestGroupName <br> *  TestConfigurationName <br> * Region |
+| RoundTripTimeMs (Vorschau) | Roundtripzeit (ms) (Vorschau) | Millisekunden | Average | Roundtripzeit (ms) von Überprüfungen, die zwischen der Quelle und dem Ziel gesendet werden. Es wird kein Durchschnittswert gebildet. | * ConnectionMonitorResourceId <br> * SourceAddress <br> * SourceName <br> * SourceResourceId <br> * SourceType <br> * Protocol <br> * DestinationAddress <br> * DestinationName <br> * DestinationResourceId <br> * DestinationType <br> * DestinationPort <br> *  TestGroupName <br> *  TestConfigurationName <br> * Region |
 
  ![Monitormetriken](./media/connection-monitor-2-preview/monitor-metrics.png)
 

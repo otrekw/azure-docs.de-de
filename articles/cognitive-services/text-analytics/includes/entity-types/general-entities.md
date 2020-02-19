@@ -6,48 +6,99 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/18/2019
+ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: a4c911fa077c2ec332974fb2f0c5abcdef21307c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284113"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086895"
 ---
 ## <a name="general-entity-types"></a>Allgemeine Entitätstypen:
 
 ### <a name="person"></a>Person
-Erkannte Namen und weitere Personen im Text.
+
+Erkennen von Personennamen in Text.
+
 Sprachen:
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG             |
-|--------------|-------------------------|
-| –          | Erkannte Namen, z.B. `Bill Gates`, `Marie Curie` |
+| Name des Untertyps | Beschreibung                                                      | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------------------------|---------------------------------------|
+| –          | Erkannte Personennamen, beispielsweise `Bill Gates`, `Marie Curie` | `2019-10-01`                          | 
+
+### <a name="persontype"></a>PersonType
+Von einer Person eingenommene Position oder Rolle.
+
+Sprachen:
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                                                                                | Erst ab dieser Modellversion verfügbar |
+|--------------|--------------------------------------------------------------------------------------------|----------------------------------------|
+| –          | Berufe, z. B. `civil engineer`, `salesperson`, `chef`, `librarian`, `nursing aide` | `2020-02-01`                           |
 
 ### <a name="location"></a>Location
 
-Natürliche und von Menschen hergestellte Wahrzeichen, Strukturen und geografische Merkmale.
+Natürliche und von Menschen hergestellte Wahrzeichen, Strukturen, geografische Merkmale und geopolitische Entitäten.
 
 Sprachen:
 
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps              | Beschreibung                                                                              | Erst ab dieser Modellversion verfügbar |
+|---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
+| –                       | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
+| Geopolitische Entität (GPE) | Städte, Länder, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+
+### <a name="organization"></a>Organization  
+
+Erkannte Organisationen, Unternehmen, Agenturen und andere Personengruppen. Beispiel: Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen. Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. 
+
+Sprachen: 
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| –          | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty` |
+| Name des Untertyps | Beschreibung                                                                                             | Erst ab dieser Modellversion verfügbar |
+|--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
+| –          | Organisationen, z. B. `Microsoft`, `NASA`, `National Oceanic and Atmospheric Administration`, `VOA` | `2019-10-01`                           |
 
-### <a name="organization"></a>Organisation  
+### <a name="event"></a>Ereignis  
 
-Erkannte Organisationen, Unternehmen, Agenturen und andere Personengruppen. Beispiel: Firmen, politische Gruppen, Musikgruppen, Sportvereine, Regierungsstellen und öffentliche Organisationen. Nationalitäten und Religionen werden in diesem Entitätstyp nicht berücksichtigt. Sprachen: 
+Historische Ereignisse, gesellschaftliche Ereignisse und Naturereignisse.  
+
+Sprachen: 
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                                                                      |
-|--------------|--------------------------------------------------------------------------------------------------|
-| –          | Organisationen, z.B. `Microsoft`, `NASA` `National Oceanic and Atmospheric Administration` |
+| Name des Untertyps | BESCHREIBUNG                                                            | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------------------------------|----------------------------------------|
+| –          | Ereignisse wie `wedding`, `hurricane`, `car accident`, `solar eclipse`, `American Revolution` | `2020-02-01`                           |
+
+### <a name="product"></a>Produkt  
+
+Physische Objekte verschiedener Kategorien.  
+
+Sprachen: 
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | BESCHREIBUNG                                                                        | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------------------------------------------|----------------------------------------|
+| –          | Beispiel: `Microsoft Surface laptop`, `sunglasses`, `motorcycle`, `bag`, `Xbox`. | `2020-02-01`                           |
+| Computing    | `Azure Cosmos DB`, `Azure Kubernetes Service`                                     | `2020-02-01`                           |
+
+### <a name="skill"></a>Skill  
+
+Eine Entität, die eine Funktion oder ein Fachwissen beschreibt.  
+
+Sprachen: 
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | BESCHREIBUNG                                                                 | Erst ab dieser Modellversion verfügbar |
+|--------------|-----------------------------------------------------------------------------|----------------------------------------|
+| –          | `nursing`, `data mining`, `linguistics`, `critical thinking`, `photography` | `2020-02-01`                           |
 
 ### <a name="phone-number"></a>Rufnummer
 
@@ -55,12 +106,11 @@ Telefonnummern (nur US-Telefonnummern)
 
 Sprachen:
 
-
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                  |
-|----------|----------------------------------------------|
-| –         | US-Telefonnummern, z. B. `(312) 555-0176` |
+| Name des Untertyps | BESCHREIBUNG                                    | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------|----------------------------------------|
+| –          | US-Telefonnummern, z. B. `(312) 555-0176` | `2019-10-01`                           |
 
 ### <a name="email"></a>Email
 
@@ -68,12 +118,11 @@ E-Mail-Adresse.
 
 Sprachen:
 
-
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                  |
-|----------|----------------------------------------------|
-| –         | E-Mail-Adresse, z. B. `support@contoso.com` |
+| Name des Untertyps | BESCHREIBUNG                                      | Erst ab dieser Modellversion verfügbar |
+|--------------|--------------------------------------------------|----------------------------------------|
+| –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2019-10-01`                           |
 
 ### <a name="url"></a>URL
 
@@ -81,27 +130,60 @@ Internet-URLs.
 
 Sprachen:
 
-
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                           |
-|----------|-------------------------------------------------------|
-| –         | URLs zu Websites, z.B. `https://www.bing.com`. |
+| Name des Untertyps | BESCHREIBUNG                                          | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------------------|----------------------------------------|
+| –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2019-10-01`                           |
 
-###  <a name="number"></a>Number
+### <a name="ip-address"></a>IP-Adresse
 
-Zahlen und numerische Mengen. 
+Internetprotokolladresse
 
 Sprachen:
 
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps | Beschreibung                              | Erst ab dieser Modellversion verfügbar |
+|--------------|------------------------------------------|----------------------------------------|
+| –          | Netzwerkadresse, z. B. `10.0.0.101` | `2019-10-01`                           |
+
+###  <a name="datetime"></a>Datetime
+
+Datums- und Uhrzeitentitäten 
+
+* Erst ab dieser Modellversion verfügbar `2019-10-01`
+
+Sprachen:
 
 * Öffentliche Vorschau: `English`
 
 | Name des Untertyps    | Beispiele                     |
 |-------------|------------------------------|
-| –         | `6`, `six`                   |
-| Prozentsatz  | `50%`, `fifty percent`       |
+| –         | `6:30PM February 4, 2012`, `4/1/2011 2:45`                   |
+| Date  | `May 2nd, 2017`, `05/02/2017`       |
+| Time     | `8:15`, `6AM`              |
+| DateRange    | `August 2nd to August 5th`         |
+| TimeRange   | `4-6PM`, `10:00AM to Noon`          |
+| Duration | `2.5 minutes`, `one and a half hours`         |
+| Set | `every Saturday`         |
+
+###  <a name="quantity"></a>Menge
+
+Zahlen und numerische Mengen. 
+
+* Erst ab dieser Modellversion verfügbar `2019-10-01`
+
+Sprachen:
+
+* Öffentliche Vorschau: `English`
+
+| Name des Untertyps    | Beispiele                     |
+|-------------|------------------------------|
+| Number         | `6`, `six`                   |
+| Prozentwert  | `50%`, `fifty percent`       |
 | Ordinal     | `2nd`, `second`              |
-| Currency    | `$10.99`, `€30.00`           |
+| Age         | `90 day old`, `30 years old` |
+| Währung    | `$10.99`, `€30.00`           |
 | Dimension   | `10 miles`, `40 cm`          |
 | Temperatur | `32 degrees`, `10°C`         |
