@@ -36,7 +36,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 
 Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Rollen zu genehmigen oder abzulehnen.
 
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+# <a name="new-version"></a>[Neue Version](#tab/new)
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 
@@ -121,7 +121,7 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 1. Wenn Sie alle gewünschten Rolleneinstellungen angegeben haben, klicken Sie auf **Aktualisieren**, um Ihre Änderungen zu speichern.
 
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 

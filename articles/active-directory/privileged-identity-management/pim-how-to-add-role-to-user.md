@@ -35,7 +35,7 @@ Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management a
 
     ![Azure AD-Rollen der neuen Version](./media/pim-how-to-add-role-to-user/pim-new-version.png)
 
-# <a name="new-versiontabnew"></a>[Neue Version](#tab/new)
+# <a name="new-version"></a>[Neue Version](#tab/new)
 
 ## <a name="assign-a-role"></a>Zuweisen einer Rolle
 
@@ -103,7 +103,7 @@ Befolgen Sie diese Anweisungen zum Aktualisieren oder Entfernen einer vorhandene
 
     Informationen zum Erweitern einer Rollenzuweisung finden Sie unter [Verlängern oder Erneuern von Azure-Ressourcenrollen in Privileged Identity Management](pim-resource-roles-renew-extend.md).
 
-# <a name="previous-versiontabprevious"></a>[Vorherige Version](#tab/previous)
+# <a name="previous-version"></a>[Vorherige Version](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Festlegen eines Benutzers als „berechtigt“ für eine Rolle
 

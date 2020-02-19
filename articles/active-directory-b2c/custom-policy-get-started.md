@@ -75,7 +75,7 @@ Sie müssen diese beiden Anwendungen nur ein Mal in Ihrem Azure AD B2C-Mandanten
 
 Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie die Benutzeroberfläche für **App-Registrierungen (Legacy)** oder unsere neue einheitliche Benutzeroberfläche **App-Registrierungen (Vorschau)** verwenden. [Weitere Informationen zur neuen Oberfläche](https://aka.ms/b2cappregintro)
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
@@ -86,7 +86,7 @@ Zum Registrieren einer Anwendung in Ihrem Azure AD B2C-Mandanten können Sie di
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Anmelde-URL** ein, wobei `your-tenant-name` für den Domänennamen Ihres Azure AD B2C-Mandanten steht. Alle URLs sollten jetzt [b2clogin.com](b2clogin.md) verwenden.
 1. Klicken Sie auf **Erstellen**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
 1. Geben Sie unter **Name**`IdentityExperienceFramework` ein.
@@ -110,7 +110,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrieren der ProxyIdentityExperienceFramework-Anwendung
 
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
+#### <a name="applications"></a>[Anwendungen](#tab/applications/)
 
 1. Wählen Sie unter **App-Registrierungen (Legacy)** die Option **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.
@@ -122,7 +122,7 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 1. Aktivieren Sie das Kontrollkästchen neben **Access IdentityExperienceFramework** (Auf IdentityExperienceFramework zugreifen), und klicken Sie erst auf **Auswählen** und dann auf **Done** (Fertig).
 1. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie dies anschließend durch Auswahl von **Ja**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
 
 1. Wählen Sie **App-Registrierungen (Vorschau)** und dann **Neue Registrierung** aus.
 1. Geben Sie unter **Name**`ProxyIdentityExperienceFramework` ein.

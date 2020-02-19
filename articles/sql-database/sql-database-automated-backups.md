@@ -169,13 +169,13 @@ Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit 
 
 Um die Aufbewahrungsdauer der PITR-Sicherung über das Azure-Portal zu ändern, navigieren Sie zu dem Serverobjekt, dessen Aufbewahrungsdauer Sie innerhalb des Portals ändern möchten, und wählen Sie dann die entsprechende Option basierend auf dem Serverobjekt aus, das Sie ändern.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Einzeldatenbank und Pools für elastische Datenbanken](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Einzeldatenbank und Pools für elastische Datenbanken](#tab/single-database)
 
 Das Ändern der Aufbewahrungsdauer für PITR-Sicherungen für einzelne Azure SQL-Datenbanken erfolgt auf Serverebene. Die auf Serverebene vorgenommene Änderung betrifft die Datenbanken auf dem jeweiligen Server. Um PITR für Azure SQL-Datenbank-Server im Azure-Portal zu ändern, navigieren Sie zum Server-Übersichtsblatt, klicken Sie im Navigationsmenü auf „Sicherungen verwalten“, und klicken Sie dann in der Navigationsleiste auf „Aufbewahrung konfigurieren“.
 
 ![Ändern von PITR im Azure-Portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Verwaltete Instanz](#tab/managed-instance)
 
 Die Änderung der Aufbewahrung von PITR-Sicherungen für verwaltete SQL-Datenbank-Instanzen erfolgt auf der Ebene der einzelnen Datenbanken. Um die Aufbewahrung von PITR-Sicherungen für eine Instanzdatenbank im Azure-Portal zu ändern, navigieren Sie zum Übersichtsblatt der einzelnen Datenbank, und klicken Sie dann in der Navigationsleiste auf „Aufbewahrungsdauer für Sicherungen konfigurieren“.
 
