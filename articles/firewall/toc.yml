@@ -35,8 +35,14 @@
       href: rule-processing.md
     - name: Diensttags
       href: service-tags.md
+    - name: IP-Adressgruppen
+      href: ip-groups.md
+    - name: Tunnelerzwingung
+      href: forced-tunneling.md
     - name: Compliancezertifizierungen
       href: compliance-certifications.md
+    - name: Zentrale Verwaltung
+      href: central-management.md
 - name: Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
@@ -55,6 +61,10 @@
       href: integrate-lb.md
     - name: Anwendungsregeln mit SQL-FQDNs
       href: sql-fqdn-filtering.md
+    - name: Private SNAT-Bereiche
+      href: snat-private-range.md
+    - name: Erstellen von IP-Adressgruppen
+      href: create-ip-group.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

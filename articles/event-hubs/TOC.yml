@@ -50,7 +50,7 @@
           href: event-hubs-python-get-started-send.md
         - name: "JavaScript (Version\_2 von „azure/event-hubs“)"
           href: event-hubs-node-get-started-send.md
-        - name: .NET Framework (Microsoft.Azure.EventHubs)
+        - name: .NET Framework (Microsoft.ServiceBus)
           href: event-hubs-dotnet-framework-getstarted-send.md
     - name: Erfassen von Ereignissen
       items:

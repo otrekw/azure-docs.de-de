@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: b53fc3af71ce872c9ca9f513139c8179fd4165ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bc6859d29a574cea0d97989977ba9a333b20f6c4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031391"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157131"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Interagieren mit Apache Kafka-Clustern in Azure HDInsight mithilfe eines REST-Proxys
 
@@ -24,6 +24,8 @@ Mithilfe des Kafka-REST-Proxys können Sie über eine REST-API über HTTP mit Ih
 
 Ohne REST-Proxy müssen sich Kafka-Clients im gleichen VNET wie der Kafka-Cluster oder in einem mittels Peering verbundenen VNET befinden. Durch den REST-Proxy können Sie Datenproduzenten oder Datenconsumer an beliebigen Standorten verbinden. Durch Bereitstellung des REST-Proxys wird ein neuer öffentlicher Endpunkt für Ihren Cluster geschaffen, der in den Portaleinstellungen zu finden ist.
 
+![Kafka-REST-Proxyarchitektur](./media/rest-proxy/rest-proxy-architecture.png)
+
 Eine vollständige Spezifikation der Vorgänge, die von der API unterstützt werden, finden Sie unter [Apache Kafka-REST-Proxy-API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy).
 
 ### <a name="security"></a>Sicherheit
@@ -32,7 +34,7 @@ Der Zugriff auf den Kafka-REST-Proxy wird mit Azure Active Directory-Sicherheits
 
 Wenn Sie den Kafka-Cluster mit aktiviertem REST-Proxy erstellen, geben Sie die AAD-Sicherheitsgruppe an, die Zugriff auf den REST-Endpunkt haben soll. Die Kafka-Clients (Anwendungen), die Zugriff auf den REST-Proxy benötigen, sollten für diese Gruppe vom Gruppenbesitzer registriert werden. Der Gruppenbesitzer kann dies über das Portal oder über PowerShell vornehmen.
 
-Bevor Anforderungen an den REST-Proxyendpunkt übertragen werden, sollte die Clientanwendung ein OAuth-Token zum Überprüfen der Mitgliedschaft in der richtigen Sicherheitsgruppe erhalten. Weitere Informationen zur Funktionsweise von OAuth-Token finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](../../active-directory/develop/v1-protocols-oauth-code.md). Ein Beispiel für das Abrufen eines OAuth-Tokens in Python finden Sie unter [Beispiel für eine Clientanwendung](#client-application-sample).
+Bevor Anforderungen an den REST-Proxyendpunkt übertragen werden, sollte die Clientanwendung ein OAuth-Token zum Überprüfen der Mitgliedschaft in der richtigen Sicherheitsgruppe erhalten. Weitere Informationen zur Funktionsweise von OAuth-Token finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](../../active-directory/azuread-dev/v1-protocols-oauth-code.md). Ein Beispiel für das Abrufen eines OAuth-Tokens in Python finden Sie unter [Beispiel für eine Clientanwendung](#client-application-sample).
 
 Sobald die Clientanwendung über das OAuth-Token verfügt, muss dieses Token in der HTTP-Anforderung an den REST-Proxy übergeben werden.
 

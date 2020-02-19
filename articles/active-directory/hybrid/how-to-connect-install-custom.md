@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888975"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159827"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -37,7 +37,7 @@ Bei der Installation der Synchronisierungsdienste können Sie den optionalen Kon
 
 ![Erforderliche Komponenten](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
-| Optionale Konfiguration | Beschreibung |
+| Optionale Konfiguration | BESCHREIBUNG |
 | --- | --- |
 | Verwenden eines vorhandenen SQL Servers |Ermöglicht Ihnen die Angabe des SQL-Servernamens und des Instanznamens. Wählen Sie diese Option aus, wenn Sie bereits über einen Datenbankserver verfügen, den Sie verwenden möchten. Geben Sie unter **Instanzname** den Instanznamen, ein Komma und die Portnummer ein, falls das Browsen für SQL Server nicht aktiviert ist.  Geben Sie dann den Namen der Azure AD Connect-Datenbank an.  Ihre SQL-Berechtigungen bestimmen, ob eine neue Datenbank erstellt wird oder Ihr SQL-Administrator die Datenbank im Voraus erstellen muss.  Ob Sie über SQL SA-Berechtigungen verfügen, erfahren Sie unter [Installieren mithilfe einer vorhandenen Datenbank](how-to-connect-install-existing-database.md).  Ob Sie delegierte Berechtigungen (DBO) erhalten haben, erfahren Sie unter [Installieren von Azure AD Connect mit delegierten SQL-Administratorrechten](how-to-connect-install-sql-delegation.md). |
 | Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann.  Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators).|
@@ -97,7 +97,7 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 ![Nicht überprüfte Domänen](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 Überprüfen Sie alle Domänen, die als **Nicht hinzugefügt** und **Nicht überprüft** markiert sind. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-domains-add-azure-portal.md).
 
-**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann mit Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Für weitere Informationen zur alternativen ID [klicken Sie hier.](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)
+**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann mit Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat. Weitere Informationen zur alternativen ID finden Sie unter dem Thema [Häufig gestellte Fragen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
 
 >[!NOTE]
 > Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um im Assistenten fortfahren zu können.
@@ -163,9 +163,9 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 >[!WARNING]
 >Für Azure AD Connect Version **1.0.8641.0** und früher wird der Azure Access Control Service für das Kennwortrückschreiben verwendet.  Dieser Dienst wird am **7. November 2018** außer Betrieb genommen.  Wenn Sie eine dieser Versionen von Azure AD Connect nutzen und das Kennwortrückschreiben aktiviert haben, können Benutzer unter Umständen ihre Kennwörter nicht mehr ändern oder zurücksetzen, nachdem der Dienst außer Betrieb genommen wurde. Das Kennwortrückschreiben mit diesen Versionen von Azure AD Connect wird nicht unterstützt.
 >
->Weitere Informationen zu Azure Access Control Service finden Sie unter [Gewusst wie: Migrieren aus dem Azure Access Control Service](../develop/active-directory-acs-migration.md).
+>Weitere Informationen zu Azure Access Control Service finden Sie unter [Gewusst wie: Migrieren aus dem Azure Access Control Service](../azuread-dev/active-directory-acs-migration.md).
 >
->[Klicken Sie hier](https://www.microsoft.com/en-us/download/details.aspx?id=47594), um die aktuelle Version von Azure AD Connect herunterzuladen.
+>[Klicken Sie hier](https://www.microsoft.com/download/details.aspx?id=47594), um die aktuelle Version von Azure AD Connect herunterzuladen.
 
 ![Optionale Features](./media/how-to-connect-install-custom/optional2.png)
 
@@ -174,7 +174,7 @@ In einer Produktionsbereitstellung wird es schwer, eine einzelne Gruppe mit alle
 
 
 
-| Optionale Features | Beschreibung |
+| Optionale Features | BESCHREIBUNG |
 | --- | --- |
 | Exchange-Hybridbereitstellung |Das Exchange-Hybridbereitstellungsfeature ermöglicht die Koexistenz lokaler und Office 365-basierter Exchange-Postfächer. Azure AD Connect synchronisiert eine bestimmte Gruppe von [Attributen](reference-connect-sync-attributes-synchronized.md#exchange-hybrid-writeback) aus Azure AD mit Ihrem lokalen Verzeichnis. |
 | Öffentliche Exchange-E-Mail-Ordner | Mit dem Feature „Öffentliche Exchange-E-Mail-Ordner“ können Sie Objekte für E-Mail-aktivierte öffentliche Ordner von Ihrer lokalen Active Directory-Instanz nach Azure AD synchronisieren. |

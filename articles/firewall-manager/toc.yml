@@ -4,13 +4,17 @@
   items:
     - name: Was ist Azure Firewall Manager?
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
-    - name: "Schützen Ihres Cloudnetzwerks\_– Portal"
+    - name: 'Schützen Ihres virtuellen WAN: Portal'
       href: secure-cloud-network.md
+    - name: 'Schützen Ihres virtuellen Hubnetzwerks: Portal'
+      href: secure-hybrid-network.md
 - name: Konzepte
   items:
+    - name: Übersicht über Policy
+      href: policy-overview.md
     - name: Was ist ein geschützter virtueller Hub?
       href: secured-virtual-hub.md
     - name: Allgemeiner Bereitstellungsprozess
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: Regelverarbeitungslogik
       href: rule-processing.md
-- name: Gewusst-wie-Anleitungen
+    - name: Architekturoptionen
+      href: vhubs-and-vnets.md
+- name: Anleitungen
   items:
     - name: Bereitstellen vertrauenswürdiger Sicherheitspartner
       href: deploy-trusted-security-partner.md
-    - name: Migrieren zur Firewallrichtlinie
+    - name: 'Migrieren zur Firewallrichtlinie: PowerShell'
       href: migrate-to-policy.md
 - name: Verweis
   items:

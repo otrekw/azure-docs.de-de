@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174436"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185554"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -45,7 +45,7 @@ Dies sind die wichtigsten Sicherheitsaspekte des Features:
   - Die vollständige Liste der Netzwerkanforderungen finden Sie unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Kennwörter, die Benutzer während einer Anmeldung angeben, werden in der Cloud verschlüsselt, bevor sie von den lokalen Authentifizierungs-Agents zur Validierung für Active Directory akzeptiert werden.
 - Der HTTPS-Kanal zwischen Azure AD und dem lokalen Authentifizierungs-Agent wird durch Verwenden von gegenseitiger Authentifizierung geschützt.
-- Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
+- Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
 
 ## <a name="components-involved"></a>Beteiligte Komponenten
 

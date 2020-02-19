@@ -68,6 +68,8 @@
               href: ./ag/tutorial-restrict-web-traffic-powershell.md
             - name: Azure-Befehlszeilenschnittstelle
               href: ./ag/tutorial-restrict-web-traffic-cli.md
+        - name: Richtlinien pro Website
+          href: ./ag/per-site-policies.md
         - name: Migrieren der WAF-Richtlinie
           href: ./ag/migrate-policy.md
         - name: Anpassen von WAF-Regeln

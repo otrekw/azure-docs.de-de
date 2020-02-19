@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481307"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132201"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD Domain Services-Domäne
 
@@ -97,7 +97,7 @@ In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Gruppenob
 
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronisierung aus einer lokalen AD DS-Umgebung mit Azure AD und Azure AD DS
 
-Mithilfe von Azure AD Connect werden Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes aus einer lokalen AD DS-Umgebung mit Azure AD synchronisiert. Die Attribute von Benutzerkonten wie der UPN und die lokale Sicherheits-ID (SID) werden synchronisiert. Für die Anmeldung mithilfe von Azure AD Domain Services werden Legacykennworthashes, die für die NTLM- und Kerberos-Authentifizierung erforderlich sind, auch mit Azure AD synchronisiert.
+Mithilfe von Azure AD Connect werden Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes aus einer lokalen AD DS-Umgebung mit Azure AD synchronisiert. Die Attribute von Benutzerkonten wie der UPN und die lokale Sicherheits-ID (SID) werden synchronisiert. Für die Anmeldung mithilfe von Azure AD DS werden Legacykennworthashes, die für die NTLM- und Kerberos-Authentifizierung erforderlich sind, auch mit Azure AD synchronisiert.
 
 > [!IMPORTANT]
 > Azure AD Connect sollte nur für die Synchronisierung mit lokalen AD DS-Umgebungen installiert und konfiguriert werden. Die Installation von Azure AD Connect in einer verwalteten Azure AD DS-Domäne zur erneuten Synchronisierung von Objekten mit Azure AD wird nicht unterstützt.
@@ -113,7 +113,7 @@ Viele Organisationen verfügen über eine relativ komplexe lokale AD DS-Umgebun
 
 Azure AD umfasst einen viel einfacheren und flachen Namespace. Damit Benutzer verlässlich auf durch Azure AD gesicherte Anwendungen zugreifen können, müssen UPN-Konflikte in den Benutzerkonten in den unterschiedlichen Gesamtstrukturen behoben werden. Verwaltete Azure AD DS-Domänen weisen ähnlich wie Azure AD eine flache OE-Struktur auf. Alle Benutzerkonten und -gruppen werden ungeachtet der Synchronisierung aus verschiedenen lokalen Domänen oder Gesamtstrukturen im Container *AADDC Users* gespeichert, auch wenn Sie lokal eine hierarchische OE-Struktur konfiguriert haben. In der verwalteten Azure AD DS-Domäne werden alle hierarchischen OE-Strukturen vereinfacht.
 
-Wie zuvor erläutert, erfolgt keine Synchronisierung aus Azure AD DS mit Azure AD. Sie können [benutzerdefinierte Organisationseinheiten (OE)](create-ou.md) in Azure AD DS und dann Benutzer, Gruppen oder Dienstkonten innerhalb dieser benutzerdefinierten Organisationseinheiten erstellen. Keines der in benutzerdefinierten Organisationseinheiten erstellten Objekte wird wieder mit Azure AD synchronisiert. Diese Objekte sind nur innerhalb der verwalteten Azure AD DS-Domäne verfügbar und über Azure AD-PowerShell-Cmdlets, die Azure AD-Graph-API und die Azure AD-Verwaltungsoberfläche nicht sichtbar.
+Wie zuvor erläutert, erfolgt keine Synchronisierung aus Azure AD DS mit Azure AD. Sie können [benutzerdefinierte Organisationseinheiten (OE)](create-ou.md) in Azure AD DS und dann Benutzer, Gruppen oder Dienstkonten innerhalb dieser benutzerdefinierten Organisationseinheiten erstellen. Keines der in benutzerdefinierten Organisationseinheiten erstellten Objekte wird wieder mit Azure AD synchronisiert. Diese Objekte sind nur innerhalb der verwalteten Azure AD DS-Domäne verfügbar und über Azure AD-PowerShell-Cmdlets, die Microsoft Graph-API und die Azure AD-Verwaltungsoberfläche nicht sichtbar.
 
 ## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Objekte oder Attribute, die nicht mit Azure AD DS synchronisiert werden
 
@@ -128,7 +128,11 @@ Die folgenden Objekte oder Attribute werden nicht aus einer lokalen AD DS-Umgebu
 
 ## <a name="password-hash-synchronization-and-security-considerations"></a>Kennworthashsynchronisierung und Sicherheitsüberlegungen
 
-Wenn Sie Azure AD DS aktivieren, sind Legacykennworthashes für die NTLM- und Kerberos-Authentifizierung erforderlich. In Azure AD werden keine Klartextkennwörter gespeichert, sodass diese Hashes für vorhandene Benutzerkonten nicht automatisch generiert werden können. Nach dem Generieren und Speichern werden NTLM- und Kerberos-kompatible Kennworthashes immer verschlüsselt in Azure AD gespeichert. Die Verschlüsselungsschlüssel sind für jeden Azure AD-Mandanten eindeutig. Die Hashes werden so verschlüsselt, dass nur Azure AD DS Zugriff auf die Entschlüsselungsschlüssel hat. Andere Dienste oder Komponenten in Azure AD können nicht auf die Entschlüsselungsschlüssel zugreifen. Legacykennworthashes werden dann aus Azure AD mit den Domänencontrollern für eine verwaltete Azure AD DS-Domäne synchronisiert. Die Datenträger für diese verwalteten Domänencontroller in Azure AD DS werden im Ruhezustand verschlüsselt. Die Kennworthashes werden auf diesen Domänencontrollern in ähnlicher Weise gespeichert und geschützt wie Kennwörter in einer lokalen AD DS-Umgebung.
+Wenn Sie Azure AD DS aktivieren, sind Legacykennworthashes für die NTLM- und Kerberos-Authentifizierung erforderlich. In Azure AD werden keine Klartextkennwörter gespeichert, sodass diese Hashes für vorhandene Benutzerkonten nicht automatisch generiert werden können. Nach dem Generieren und Speichern werden NTLM- und Kerberos-kompatible Kennworthashes immer verschlüsselt in Azure AD gespeichert.
+
+Die Verschlüsselungsschlüssel sind für jeden Azure AD-Mandanten eindeutig. Die Hashes werden so verschlüsselt, dass nur Azure AD DS Zugriff auf die Entschlüsselungsschlüssel hat. Andere Dienste oder Komponenten in Azure AD können nicht auf die Entschlüsselungsschlüssel zugreifen.
+
+Legacykennworthashes werden dann aus Azure AD mit den Domänencontrollern für eine verwaltete Azure AD DS-Domäne synchronisiert. Die Datenträger für diese verwalteten Domänencontroller in Azure AD DS werden im Ruhezustand verschlüsselt. Die Kennworthashes werden auf diesen Domänencontrollern in ähnlicher Weise gespeichert und geschützt wie Kennwörter in einer lokalen AD DS-Umgebung.
 
 Für reine Azure AD-Cloudumgebungen [müssen Benutzer ihr Kennwort zurücksetzen oder ändern](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit die erforderlichen Kennworthashes in Azure AD generiert und gespeichert werden können. Für alle Cloudbenutzerkonten, die nach dem Aktivieren von Azure AD Domain Services in Azure AD erstellt werden, werden die Kennworthashes in den NTLM- und Kerberos-kompatiblen Formaten generiert und gespeichert. Bei diesen neuen Konten muss das Kennwort nicht zurückgesetzt oder geändert werden, um die Legacykennworthashes zu generieren.
 

@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: Verwenden von GPU-Ressourcen (Vorschauversion)
           href: container-instances-gpu.md
-        - name: Aktivieren eines SSL-Endpunkts
+        - name: Aktivieren eines SSL-Endpunkts in Sidecar
           href: container-instances-container-group-ssl.md
     - name: Einbinden von Datenvolumes
       items:

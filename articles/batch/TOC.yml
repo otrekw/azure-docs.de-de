@@ -15,7 +15,7 @@
       href: quick-run-dotnet.md
     - name: Ausführen eines Batch-Auftrags – Python
       href: quick-run-python.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Parallele Dateiverarbeitung – .NET
       href: tutorial-parallel-dotnet.md
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Azure AD mit Batch Management
           href: batch-aad-auth-management.md
+        - name: Sicherer Zugriff auf Key Vault mit Batch
+          href: credential-access-key-vault.md
     - name: Verwenden von Anwendungspaketen
       href: batch-application-packages.md
     - name: Erstellen und Verwalten von Pools

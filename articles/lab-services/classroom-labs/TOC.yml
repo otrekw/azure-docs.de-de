@@ -52,16 +52,20 @@
           href: how-to-manage-lab-accounts.md
         - name: Konfigurieren von Labkonten
           href: how-to-configure-lab-accounts.md
+        - name: Hinzufügen eines Lab-Erstellers
+          href: add-lab-creator.md
         - name: Zulassen der Auswahl des Labstandorts durch den Lab-Ersteller
           href: allow-lab-creator-pick-lab-location.md
-        - name: Herstellen einer Verbindung zwischen Ihren Labs und einem virtuellen Peernetzwerk
+        - name: Herstellen einer Verbindung mit einem virtuellen Peernetzwerk
           href: how-to-connect-peer-virtual-network.md
         - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
           href: how-to-attach-detach-shared-image-gallery.md
-        - name: Hinzufügen eines Benutzers als Besitzer zu einem Classroom-Lab
+        - name: Hinzufügen zusätzlicher Besitzer zu einem Classroom-Lab
           href: how-to-add-user-lab-owner.md
-        - name: Firewalleinstellungen für Azure Lab Services
+        - name: Konfigurieren der Firewalleinstellungen
           href: how-to-configure-firewall-settings.md
+        - name: Angeben von Marketplace-Images für Labs
+          href: specify-marketplace-images.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Kursleiter)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs

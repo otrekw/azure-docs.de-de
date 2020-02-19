@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979942"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132249"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
-Sicherheitsüberwachungen für Azure Active Directory Domain Services (Azure AD DS) ermöglichen Azure das Streamen von Sicherheitsereignissen an Zielressourcen. Zu diesen Ressourcen zählen Azure Storage, Azure Log Analytics-Arbeitsbereiche oder Azure Event Hub. Nach dem Aktivieren von Sicherheitsüberwachungsereignissen sendet Azure AD DS alle überwachten Ereignisse für die ausgewählte Kategorie an die Zielressource. Sie können Ereignisse in Azure Storage archivieren und mit Azure Event Hubs Ereignisse an SIEM-Software (Security Information & Event Management) oder eine vergleichbare Lösung streamen oder über das Azure-Portal mithilfe von Azure Log Analytics-Arbeitsbereichen eigene Analysen durchführen.
+Sicherheitsüberwachungen für Azure Active Directory Domain Services (Azure AD DS) ermöglichen Azure das Streamen von Sicherheitsereignissen an Zielressourcen. Zu diesen Ressourcen zählen Azure Storage, Azure Log Analytics-Arbeitsbereiche oder Azure Event Hub. Nach dem Aktivieren von Sicherheitsüberwachungsereignissen sendet Azure AD DS alle überwachten Ereignisse für die ausgewählte Kategorie an die Zielressource.
+
+Sie können Ereignisse in Azure Storage archivieren und mit Azure Event Hubs Ereignisse an SIEM-Software (Security Information & Event Management) oder eine vergleichbare Lösung streamen oder über das Azure-Portal mithilfe von Azure Log Analytics-Arbeitsbereichen eigene Analysen durchführen.
 
 > [!IMPORTANT]
 > Azure AD DS-Sicherheitsüberwachungen sind nur für Instanzen verfügbar, die auf Azure Resource Manager basieren. Informationen zur Migration finden Sie unter [Migrieren von Azure AD DS vom klassischen VNET-Modell zu Resource Manager][migrate-azure-adds].
@@ -31,7 +33,7 @@ Azure AD DS-Sicherheitsüberwachungen sind auf die herkömmliche Überwachung f�
 
 Die folgenden Überwachungsereigniskategorien sind verfügbar:
 
-| Name der Überwachungskategorie | Beschreibung |
+| Name der Überwachungskategorie | BESCHREIBUNG |
 |:---|:---|
 | Kontoanmeldung|Dient zur Überwachung von Versuchen, Kontodaten auf einem Domänencontroller oder in einer lokalen Sicherheitskontenverwaltung (Security Accounts Manager, SAM) zu authentifizieren.</p>Versuche, auf einen bestimmten Computer zuzugreifen, werden anhand von An- und Abmelderichtlinieneinstellungen und entsprechenden Ereignissen nachverfolgt. Bei den Einstellungen und Ereignissen in dieser Kategorie steht die verwendete Kontodatenbank im Mittelpunkt. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Überprüfung der Anmeldeinformationen überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Kerberos-Authentifizierungsdienst überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Ticketvorgänge des Kerberos-Diensts überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Andere Anmelde-/Abmeldeereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Kontoverwaltung|Dient zur Überwachung von Änderungen an Benutzer- und Computerkonten/-gruppen. Diese Kategorie umfasst folgende Unterkategorien:<ul><li>[Anwendungsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Computerkontoverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Verteilergruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Andere Kontoverwaltungsereignisse überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Sicherheitsgruppenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Benutzerkontenverwaltung überwachen](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -61,25 +63,25 @@ Die folgenden Überwachungsereigniskategorien sind verfügbar:
 
 ## <a name="security-audit-destinations"></a>Ziele der Sicherheitsüberwachung
 
-Für die Azure AD DS-Sicherheitsüberwachungen können Sie eine beliebige Kombination aus Azure Storage, Azure Event Hubs oder Azure Log Analytics-Arbeitsbereichen als Zielressource verwenden. Sie können Azure Storage zum Archivieren von Sicherheitsüberwachungsereignissen, einen Azure Log Analytics-Arbeitsbereich jedoch zum kurzfristigen Analysieren und Melden der Informationen verwenden.
+Für die Azure AD DS-Sicherheitsüberwachungen können Sie Azure Storage, Azure Event Hubs oder Azure Log Analytics-Arbeitsbereiche als Zielressource verwenden. Diese Ziele können kombiniert werden. Sie können z. B. Azure Storage zum Archivieren von Sicherheitsüberwachungsereignissen, einen Azure Log Analytics-Arbeitsbereich jedoch zum kurzfristigen Analysieren und Melden der Informationen verwenden.
 
 In der folgenden Tabelle sind die Szenarien für die einzelnen Zielressourcentypen dargestellt.
 
 > [!IMPORTANT]
-> Die Zielressource muss vor der Aktivierung der Sicherheitsüberwachungen von Azure AD Domain Services erstellt werden. Sie können diese Ressourcen über das Azure-Portal, mit Azure PowerShell oder mithilfe der Azure CLI erstellen.
+> Die Zielressource muss vor der Aktivierung der Sicherheitsüberwachungen von Azure AD DS erstellt werden. Sie können diese Ressourcen über das Azure-Portal, mit Azure PowerShell oder mithilfe der Azure CLI erstellen.
 
 | Zielressource | Szenario |
 |:---|:---|
-|Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie zunächst ein [Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).|
-|Azure Event Hubs| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware (z.B. SIEM-Software (Security Information & Event Management) oder Datenanalysesoftware) weitergeben möchten. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure Portal einen Event Hub erstellen](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).|
-|Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten. Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).|
+|Azure Storage| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse zu Archivierungszwecken speichern möchten. Andere Ziele können zwar ebenfalls zu Archivierungszwecken verwendet werden, doch bieten diese Ziele Funktionen, die über die reine Archivierung hinausgehen. <br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie zunächst ein [Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungsereignisse an Zusatzsoftware (z.B. SIEM-Software (Security Information & Event Management) oder Datenanalysesoftware) weitergeben möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure Portal einen Event Hub erstellen](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).|
+|Azure Log Analytics-Arbeitsbereich| Dieses Ziel sollte verwendet werden, wenn Sie in erster Linie Sicherheitsüberwachungen direkt über das Azure-Portal analysieren und überprüfen möchten.<br /><br />Bevor Sie Azure AD DS-Sicherheitsüberwachungsereignisse aktivieren, müssen Sie [im Azure-Portal einen Log Analytics-Arbeitsbereich erstellen](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Aktivieren von Sicherheitsüberwachungsereignissen über das Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungsereignisse über das Azure-Portal zu aktivieren.
 
 > [!IMPORTANT]
-> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Sie können also keine Ereignisse aus der Vergangenheit abrufen oder wiedergeben. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung auftreten.
+> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Ereignisse aus der Vergangenheit können nicht abgerufen oder wiedergegeben werden. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung von Sicherheitsüberwachungen auftreten.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
@@ -116,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungsereignisse mit Azure PowerShell zu aktivieren. Führen Sie bei Bedarf zuerst die unter [Installieren des Azure PowerShell-Moduls und Verbinden mit Ihrem Azure-Abonnement](/powershell/azure/install-az-ps) beschriebenen Schritte aus.
 
 > [!IMPORTANT]
-> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Sie können also keine Ereignisse aus der Vergangenheit abrufen oder wiedergeben. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung auftreten.
+> Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Ereignisse aus der Vergangenheit können nicht abgerufen oder wiedergegeben werden. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung von Sicherheitsüberwachungen auftreten.
 
 1. Authentifizieren Sie sich mit dem Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) bei Ihrem Azure-Abonnement. Geben Sie Ihre Azure-Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden.
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Beispielabfrage 2
 
-Alle Kontosperrungsereignisse (*4740*) zwischen dem 26. Juni 2019, 9 Uhr, und Mitternacht am 1. Juli 2019 aufsteigend sortiert nach Datum und Uhrzeit anzeigen:
+Alle Kontosperrungsereignisse (*4740*) zwischen dem 3. Februar 2020, 9 Uhr, und Mitternacht am 10. Februar 2019 aufsteigend sortiert nach Datum und Uhrzeit anzeigen:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

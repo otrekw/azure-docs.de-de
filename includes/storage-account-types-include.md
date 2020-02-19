@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6e8c0e1c7fef884844b8aaae9dc4c7e3eaa220a2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5672334ab42ab474d862ae4c9649b94b58bb6af4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274548"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157267"
 ---
 Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
 
@@ -39,7 +39,7 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 
 <div id="archive"><sup>3</sup>Die Ebene „Archiv“ ist nur auf Ebene der einzelnen Blobs verfügbar, nicht auf Ebene des Speicherkontos. Nur Blockblobs und Anfügeblobs können archiviert werden. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“</a>.</div>
 
-<div id="zone-redundant-storage"><sup>4</sup>Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS) (Vorschau) sind in bestimmten Regionen nur für Standardkonten des Typs „General Purpose V2“ sowie für Konten des Typs „BlockBlobStorage“ und „FileStorage“ verfügbar. Weitere Informationen zu ZRS finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen</a>. Weitere Informationen zu GZRS/RA-GZRS finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">Geozonenredundante Speicher für Hochverfügbarkeit und maximale Dauerhaftigkeit (Vorschau)</a>. Weitere Informationen zu weiteren Replikationsoptionen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage-Replikation</a>.</div>
+<div id="zone-redundant-storage"><sup>4</sup>Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS/RA-GZRS) (Vorschau) sind in bestimmten Regionen nur für Standardkonten des Typs „General Purpose V2“ sowie für Konten des Typs „BlockBlobStorage“ und „FileStorage“ verfügbar. Weitere Informationen zu den Azure Storage-Redundanzoptionen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage-Redundanz</a>.</div>
 
 <div id="premium-performance"><sup>5</sup>Premium-Leistung für Konten vom Typ „Allgemein v2“ und „Allgemein v1“ ist nur für Datenträger und Seitenblob verfügbar. Premium-Leistung für Block- oder Anfügeblobs ist nur für BlockBlobStorage-Konten verfügbar. Premium-Leistung für Dateien ist nur für FileStorage-Konten verfügbar.</div>
 

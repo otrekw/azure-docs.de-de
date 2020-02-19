@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063041"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166007"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Sicherer Zugriff auf lokale APIs mit dem Azure AD-Anwendungsproxy
 
@@ -47,25 +47,25 @@ Für diese exemplarische Vorgehensweise benötigen Sie Folgendes:
 
 ## <a name="publish-the-api-through-application-proxy"></a>Veröffentlichen der API über den Anwendungsproxy
 
-Um eine API außerhalb Ihres Intranets über den Anwendungsproxy zu veröffentlichen, folgen Sie dem gleichen Muster wie bei der Veröffentlichung von Web-Apps. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
+Um eine API außerhalb Ihres Intranets über den Anwendungsproxy zu veröffentlichen, folgen Sie dem gleichen Muster wie bei der Veröffentlichung von Web-Apps. Weitere Informationen finden Sie im [Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md).
 
 Um die SecretAPI-Web-API über den Anwendungsproxy zu veröffentlichen:
 
 1. Erstellen und veröffentlichen Sie das SecretAPI-Projekt als ASP.NET-Web-App auf Ihrem lokalen Computer oder im Intranet. Stellen Sie sicher, dass Sie auf die Web-App lokal zugreifen können. 
    
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Azure Active Directory** aus. Wählen Sie dann auf der Seite **Übersicht** die Option **Unternehmensanwendungen** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Azure Active Directory** aus. Wählen Sie dann **Unternehmensanwendungen** aus.
    
 1. Wählen Sie oben auf der Seite **Unternehmensanwendungen – Alle Anwendungen** die Option **Neue Anwendung** aus.
    
-1. Wählen Sie auf der Seite **Azure AD-Katalog durchsuchen** unter **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus. Die Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** wird angezeigt.
+1. Wählen Sie auf der Seite **Anwendung hinzufügen** die Option **Lokale Anwendungen** aus. Die Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** wird angezeigt.
    
 1. Wenn kein Anwendungsproxyconnector installiert ist, werden Sie zur Installation aufgefordert. Wählen Sie **Anwendungsproxyconnector herunterladen** aus, um den Connector herunterzuladen und zu installieren. 
    
 1. Nachdem Sie den Anwendungsproxyconnector installiert haben, gehen Sie auf der Seite **Fügen Sie Ihre eigene lokale Anwendung hinzu** folgendermaßen vor:
    
-   1. Geben Sie *SecretAPI* neben **Name** ein.
+   1. Geben Sie neben **Name** *SecretAPI* ein.
       
-   1. Geben Sie die URL neben **Interne URL** ein, die Sie verwenden, um auf die API über Ihr Intranet zuzugreifen. 
+   1. Geben Sie die URL neben **Interne URL** ein, die Sie verwenden, um auf die API über Ihr Intranet zuzugreifen.
       
    1. Stellen Sie sicher, dass **Vorauthentifizierung** auf **Azure Active Directory** festgelegt ist. 
       
@@ -169,7 +169,7 @@ Um die native App so zu konfigurieren, dass sie eine Verbindung mit Azure Active
 
 Nachdem Sie die Parameter konfiguriert haben, erstellen Sie die native App, und führen Sie sie aus. Wenn Sie die Schaltfläche **Anmelden** auswählen, können Sie sich anmelden. Die App zeigt dann einen Erfolgsbildschirm an, um zu bestätigen, dass Sie erfolgreich eine Verbindung mit SecretAPI hergestellt haben.
 
-![Erfolgreich](./media/application-proxy-secure-api-access/success.png)
+![Erfolg](./media/application-proxy-secure-api-access/success.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

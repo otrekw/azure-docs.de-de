@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162882"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162207"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Apache Hadoop-Architektur in HDInsight
 
@@ -46,6 +46,27 @@ Die NodeManager-Instanzen führen die Aufgaben aus, die die Anwendung bilden, un
 YARN wird von allen HDInsight-Clustertypen bereitgestellt. Der ResourceManager-Dienst wird für hohe Verfügbarkeit mit einer primären und sekundären Instanz bereitgestellt, die auf dem ersten bzw. zweiten Hauptknoten im Cluster ausgeführt werden. Es ist immer nur eine einzelne Instanz des ResourceManager-Diensts aktiv. Die NodeManager-Instanzen werden auf den verfügbaren Workerknoten im Cluster ausgeführt.
 
 ![Apache YARN in Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Vorläufiges Löschen
+
+Informationen zum Wiederherstellen einer Datei von Ihrem Storage-Konto finden Sie unter:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Vorläufiges Löschen für Azure Storage-Blobs](../storage/blobs/storage-blob-soft-delete.md)
+* [Wiederherstellen von Blobs](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[Restore-AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Bekannte Probleme mit Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Leeren des Papierkorbs
+
+Die Eigenschaft `fs.trash.interval` von **HDFS** > **Advanced core-site** (core-site (erweitert)) sollte auf dem Standardwert `0` bleiben, da Sie keine Daten auf dem lokalen Dateisystem speichern sollten. Dieser Wert hat keine Auswirkungen auf Remotespeicherkonten (WASB, ADLS GEN1, ABFS).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839285"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162394"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern
 
@@ -70,7 +70,7 @@ Um Data Lake Storage Gen1 als Standardspeicher verwenden zu können, müssen Sie
 * Den Ordner für alle Clusterordner.  Beispiel: adl://mydatalakestore/clusters.
 * Den Ordner für den Cluster.  Beispiel: adl://mydatalakestore/clusters/cluster1storage.
 
-Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter „Konfigurieren des Zugriffs auf Data Lake Storage“.
+Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter „Konfigurieren des Data Lake Storage-Zugriffs“.
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Extrahieren eines Zertifikats aus Azure Key Vault für die Verwendung in der Clustererstellung
 
@@ -130,6 +130,8 @@ Um den Zugriff auf Data Lake Storage von Ihrem HDInsight-Cluster aus zu konfigur
 
 > [!NOTE]  
 > Wenn Sie Azure Data Lake Storage Gen1 als zusätzlichen Speicher für HDInsight-Cluster verwenden, wird dringend empfohlen, diesen Vorgang beim Erstellen des Clusters auszuführen, wie in diesem Artikel beschrieben. Das Hinzufügen von Azure Data Lake Storage Gen1 zu einem vorhandenen HDInsight-Cluster als zusätzlicher Speicher wird nicht unterstützt.
+
+Weitere Informationen zu den Grundlagen des Zugriffssteuerungsmodells für Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="access-files-from-the-cluster"></a>Zugreifen auf Dateien aus dem Cluster
 
@@ -210,7 +212,7 @@ LOCATION 'adl:///example/data/';
 LOCATION '/example/data/';
 ```
 
-## <a name="identify-storage-path-from-abmari"></a>Identifizieren des Speicherpfads von Abmari
+## <a name="identify-storage-path-from-ambari"></a>Bestimmen des Speicherpfads aus Ambari
 
 Um den vollständigen Pfad zum konfigurierten Standardspeicher zu ermitteln, navigieren Sie zu **HDFS** > **Konfigurationen**, und geben Sie `fs.defaultFS` in das Filtereingabefeld ein.
 

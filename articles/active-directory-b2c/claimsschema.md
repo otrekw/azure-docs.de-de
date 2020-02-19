@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983043"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185584"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,10 +48,10 @@ Das **ClaimType**-Element enthält die folgenden Attribute:
 
 Das **ClaimType**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
-| DataType | 1:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“ und „stringCollection“ können verwendet werden. Der primitive Datentyp ist die Entsprechung des C#-Datentyps „Variable“. stringCollection stellt eine Auflistung von Zeichenfolgen dar. Weitere Informationen finden Sie unter [C#-Typen und Variablen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Das Datum entspricht der Konvention ISO 8601. |
+| DataType | 1:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“, „stringCollection“ und „phoneNumber“ können verwendet werden. Der primitive Datentyp ist die Entsprechung des C#-Datentyps „Variable“. stringCollection stellt eine Auflistung von Zeichenfolgen dar. Weitere Informationen finden Sie unter [C#-Typen und Variablen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Das Datum entspricht der Konvention ISO 8601. |
 | DefaultPartnerClaimTypes | 0:1 | Die Partneranspruchstypen, die standardmäßig für ein angegebenes Protokoll verwendet werden sollen. Der Wert kann mit dem in den Elementen **InputClaim** oder **OutputClaim** angegebenen **PartnerClaimType** überschrieben werden. Verwenden Sie dieses Element, um den Standardnamen für ein Protokoll anzugeben.  |
 | Mask | 0:1 | Eine optionale Zeichenfolge von Maskierungszeichen, die bei der Anzeige des Anspruchs angewendet werden kann. Beispielsweise kann die Telefonnummer 324-232-4343 als XXX-XXX-4343 maskiert werden. |
 | UserHelpText | 0:1 | Eine Beschreibung des Anspruchstyps, der Benutzern helfen kann, dessen Zweck zu verstehen. Der Wert kann [lokalisiert](localization.md) sein. |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Ein Verweis auf ein **PredicateValidationsIn
 
 Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Protocol | 1:n | Liste von Protokollen mit deren Standardnamen für den Partneranspruchstyp. |
 
@@ -104,7 +104,7 @@ Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` ans
 
 Das **Mask**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Anspruchsmaske. Mögliche Werte: `Simple` oder `Regex`. Der Wert `Simple` gibt an, dass auf den vorderen Teil eines Zeichenfolgenanspruchs eine einfache Textmaske angewandt wird. Der Wert `Regex` gibt an, dass ein regulärer Ausdruck auf den Zeichenfolgenausdruck als Ganzes angewandt wird.  Wenn der Wert `Regex` angegeben wird, muss mit dem zu verwendenden regulären Ausdruck auch ein optionales Attribut definiert werden. |
 | `Regex` | Nein | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
@@ -144,13 +144,13 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
 Das **Restriction**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Enumeration | 1:n | Die verfügbaren Optionen auf der Benutzeroberfläche, über die ein Benutzer einen Anspruch, z.B. einen Wert in einer Dropdownliste, auswählen kann. |
 | Muster | 1:1 | Der zu verwendende reguläre Ausdruck. |
@@ -188,7 +188,7 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
 
 Das **Pattern**-Element kann die folgenden Attribute enthalten:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
 | HelpText | Nein | Das Muster oder der reguläre Ausdruck für diesen Anspruch. |

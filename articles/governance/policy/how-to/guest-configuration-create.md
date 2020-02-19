@@ -3,12 +3,12 @@ title: 'Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen'
 description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs mit Azure PowerShell erstellen.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8bd769b61ed87c9ded45ceca11586cfe105740c9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278470"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167185"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
@@ -374,7 +374,7 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Eine gute Referenz zur Erstellung von GPG-Schlüsseln für die Nutzung mit Linux-Computern ist der Artikel [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key) (Generieren eines neuen GPG-Schlüssels) auf GitHub.
 
-Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Dieses Tag kann mit Azure Policy bedarfsabhängig bereitgestellt werden. Informationen hierzu finden Sie im Beispiel unter [Anwenden von Tags und den zugehörigen Standardwerten](../samples/apply-tag-default-value.md). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
+Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Informationen darüber, wie Tags mithilfe von Azure Policy im großen Stil bereitgestellt werden können, finden Sie in den [Tagbeispielen](../samples/built-in-policies.md#tags). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
 
 ## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration (Vorschauversion)
 

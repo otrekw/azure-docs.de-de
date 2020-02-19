@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474441"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132284"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Gängige Anwendungsfälle und Szenarien für Azure Active Directory Domain Services
 
@@ -65,7 +65,7 @@ Beachten Sie die folgenden Bereitstellungsaspekte für diesen Beispielanwendungs
 
 Wie im vorherigen Beispielszenario gehen wir davon aus, dass Contoso über eine lokale Branchenanwendung verfügt, die vor fast zehn Jahren entwickelt wurde. Diese Anwendung ist verzeichnisfähig und wurde für die Verwendung von LDAP zum Lesen von Informationen/Attributen der Benutzer aus AD DS konzipiert. Die Anwendung ändert keine Attribute und schreibt auch nicht in das Verzeichnis.
 
-Contoso möchte diese Anwendung zu Azure migrieren und die ältere lokale Hardware außer Betrieb nehmen, auf der diese Anwendung aktuell gehostet wird. Die Anwendung kann nicht zur Verwendung moderner Verzeichnis-APIs (wie der REST-basierten Azure AD Graph-API) umgeschrieben werden. Eine Option zum Migrieren per Lift & Shift ist erwünscht, bei der die Anwendung zur Ausführung in der Cloud migriert werden kann, ohne dass Code geändert oder die Anwendung umgeschrieben wird.
+Contoso möchte diese Anwendung zu Azure migrieren und die ältere lokale Hardware außer Betrieb nehmen, auf der diese Anwendung aktuell gehostet wird. Die Anwendung kann nicht zur Verwendung moderner Verzeichnis-APIs (wie der REST-basierten Microsoft Graph-API) umgeschrieben werden. Eine Option zum Migrieren per Lift & Shift ist erwünscht, bei der die Anwendung zur Ausführung in der Cloud migriert werden kann, ohne dass Code geändert oder die Anwendung umgeschrieben wird.
 
 Zur Unterstützung dieses Szenarios ermöglicht Azure AD DS Anwendungen die Ausführung von LDAP-Lesevorgängen für die verwaltete Domäne, um die erforderlichen Attributinformationen zu erhalten. Die Anwendung muss nicht umgeschrieben werden, sodass Benutzer durch eine Migration per Lift & Shift zu Azure die App weiterhin verwenden können, ohne zu merken, dass sich der Ort der Ausführung ändert.
 

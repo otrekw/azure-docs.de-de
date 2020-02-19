@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264293"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186852"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -35,7 +35,7 @@ Auf der Seite **HDInsight-Cluster** werden Ihre vorhandenen Cluster aufgeführt.
 1. Wählen Sie im Menü links **Alle Dienste** aus.
 2. Wählen Sie unter **ANALYSEN** die Option **HDInsight-Cluster** aus.
 
-## <a name="homePage"></a>Cluster-Homepage 
+## <a name="homePage"></a>Cluster-Homepage
 
 Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres Clusters aus.  Dadurch wird die Ansicht **Übersicht** geöffnet, die dem folgenden Screenshot ähnelt:
 
@@ -43,17 +43,17 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
 **Obere Menüleiste:**  
 
-| Item| BESCHREIBUNG |
+| Element| BESCHREIBUNG |
 |---|---|
 |Move|Verschiebt den Cluster in eine andere Ressourcengruppe oder ein anderes Abonnement.|
 |Löschen|Löscht den Cluster. |
-|Aktualisieren|Aktualisiert die Ansicht.|
+|Aktualisieren|Aktualisiert die Sicht.|
 
 **Menü auf der linken Seite:**  
 
   - **Obere linke Menüleiste:**
 
-    | Item| BESCHREIBUNG |
+    | Element| Beschreibung |
     |---|---|
     |Übersicht|Gibt allgemeine Informationen zu Ihrem Cluster an.|
     |Aktivitätsprotokoll|Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.|
@@ -65,33 +65,33 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
   - **Menü „Einstellungen“**  
 
-    | Item| BESCHREIBUNG |
+    | Element| Beschreibung |
     |---|---|
     |Clustergröße|Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kontingentgrenzen|Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.|
     |SSH + Clusteranmeldung|Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).|
     |Data Lake Storage Gen1|Dient zum Konfigurieren des Data Lake Storage Gen1-Zugriffs.  Weitere Informationen finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Speicherkonten|Dient zum Anzeigen der Speicherkonten und Schlüssel. Die Speicherkonten werden während der Clustererstellung konfiguriert.|
-    |ANWENDUNGEN|Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).|
+    |Anwendungen|Dient zum Hinzufügen und Entfernen von HDInsight-Anwendungen.  Weitere Informationen finden Sie unter [Installieren benutzerdefinierter HDInsight-Anwendungen](hdinsight-apps-install-custom-applications.md).|
     |Skriptaktionen|Dienst zum Anwenden von Bashskripts auf den Cluster. Weitere Informationen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).|
     |Externe Metastores|Anzeigen der Metastores für [Apache Hive](https://hive.apache.org/) und [Apache Oozie](https://oozie.apache.org/). Die Metastores können nur während der Clustererstellung konfiguriert werden.|
     |HDInsight-Partner|Dient zum Hinzufügen/Entfernen des aktuellen HDInsight-Partners.|
-    |Properties|Dient zum Anzeigen der [Clustereigenschaften](#properties).|
-    |Sperren|Dient zum Hinzufügen einer Sperre, um zu verhindern, dass der Cluster geändert oder gelöscht wird.|
+    |Eigenschaften|Dient zum Anzeigen der [Clustereigenschaften](#properties).|
+    |Locks|Dient zum Hinzufügen einer Sperre, um zu verhindern, dass der Cluster geändert oder gelöscht wird.|
     |Exportieren der Vorlage|Dient zum Anzeigen und Exportieren der Azure Resource Manager-Vorlage für den Cluster. Derzeit können Sie nur das abhängige Azure-Speicherkonto exportieren. Weitere Informationen finden Sie unter [Erstellen Linux-basierter Apache Hadoop-Cluster in HDInsight mithilfe von Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
 
   - **Menü „Überwachung“**
 
-    | Item| BESCHREIBUNG |
+    | Element| BESCHREIBUNG |
     |---|---|
     |Alerts|Dient zum Verwalten der Warnungen und Aktionen.|
-    |metrics|Überwacht die Clustermetriken in Azure Monitor-Protokollen.|
+    |Metriken|Überwacht die Clustermetriken in Azure Monitor-Protokollen.|
     |Diagnoseeinstellungen|Einstellungen zum Speicherort der Diagnosemetriken.|
     |Azure Monitor|Überwacht Ihre Cluster in Azure Monitor.|
 
   - **Menü „Support und Problembehandlung“**
 
-    | Item| BESCHREIBUNG |
+    | Element| Beschreibung |
     |---|---|
     |Ressourcenintegrität|Weitere Informationen finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).|
     |Neue Supportanfrage|Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.|
@@ -100,18 +100,19 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
 Wählen Sie auf der [Cluster-Homepage](#homePage) unter **Einstellungen** die Option **Eigenschaften** aus.
 
-|Item | BESCHREIBUNG |
+|Element | Beschreibung |
 |---|---|
-|HOSTNAME|Clustername|
+|HOSTNAME|Clustername.|
 |CLUSTER URL|Dies ist die URL für die Ambari-Weboberfläche.|
 |Privater Endpunkt|Der private Endpunkt für den Cluster.|
 |Secure Shell (SSH)|Der Benutzername und der Hostname für den Zugriff auf den Cluster über SSH.|
-|STATUS|Eine der folgenden Optionen: Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization.|
+|STATUS|Enthält einen der folgenden Werte: Aborted, Accepted, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Deleting, Deleted, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued, ClusterCustomization.|
 |REGION|Azure-Standort. Eine Liste der unterstützten Azure-Standorte finden Sie im Dropdownlistenfeld **Region** unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATE CREATED|Das Datum der Clusterbereitstellung.|
 |OPERATING SYSTEM|Entweder **Windows** oder **Linux**.|
 |TYPE|Hadoop, HBase, Storm, Spark.|
 |Version|Siehe [HDInsight-Versionen](hdinsight-component-versioning.md).|
+|TLS-Mindestversion|Die TLS-Version.|
 |SUBSCRIPTION|Abonnementname.|
 |DEFAULT DATA SOURCE|Das Standardcluster-Dateisystem.|
 |Workerknotengrößen|Die ausgewählte VM-Größe des Workerknotens.|
@@ -218,12 +219,12 @@ Das Kennwort wird auf allen Knoten im Cluster geändert.
 4. Wählen Sie auf der Seite **Skriptaktionen** die Option **+ Neue übermitteln** aus.
 5. Geben Sie auf der Seite **Skriptaktion übermitteln** die folgenden Informationen ein:
 
-   | Feld | Wert |
+   | Feld | value |
    | --- | --- |
    | Skripttyp | Wählen Sie in der Dropdownliste **– Benutzerdefiniert** aus.|
-   | NAME |„Change ssh password“ (SSH-Kennwort ändern) |
+   | Name |„Change ssh password“ (SSH-Kennwort ändern) |
    | Bash-Skript-URI |Der URI zur Datei „changepassword.sh“ |
-   | Knotentyp(en): (Hauptknoten, Worker, Nimbus, Supervisor, Zookeeper usw.) |✓ für alle aufgeführten Knotentypen |
+   | Knotentyp(en): (Hauptknoten, Worker, Nimbus, Supervisor oder Zookeeper.) |✓ für alle aufgeführten Knotentypen |
    | Parameter |Geben Sie den SSH-Benutzernamen und dann das neue Kennwort ein. Es muss ein Leerzeichen zwischen den Benutzernamen und das Kennwort eingefügt werden. |
    | Speichern Sie diese Skriptaktion ... |Lassen Sie dieses Feld deaktiviert. |
 
@@ -271,7 +272,7 @@ Die Kachel **Clustergröße** auf der [Startseite des Clusters](#homePage) zeigt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einige grundlegende administrative Funktionen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie einige grundlegende administrative Funktionen kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 - [Verwalten von HDInsight mit Azure PowerShell](hdinsight-administer-use-powershell.md)
 - [Verwalten von HDInsight mit der Azure-CLI](hdinsight-administer-use-command-line.md)
