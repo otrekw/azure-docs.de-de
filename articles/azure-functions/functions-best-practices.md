@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963654"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210258"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -112,7 +112,7 @@ Bei C#-Funktionen können Sie den Typ in ein stark typisiertes Array ändern.  B
 
 Die Datei `host.json` in der Funktionen-App ermöglicht die Konfiguration der Host-Laufzeit und des Triggerverhaltens.  Zusätzlich zur Batchverarbeitung von Verhalten können Sie die Parallelität für mehrere Trigger verwalten. Eine häufige Anpassung der Werte in diesen Optionen kann die Skalierung der Instanz an die Anforderungen der aufgerufenen Funktionen vereinfachen.
 
-Die Einstellungen in der Datei „host.json“ gelten für alle Funktionen innerhalb der App in einer *Einzelinstanz* der Funktion. Wenn Sie eine Funktionen-App mit zwei HTTP-Funktionen und [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings)-Anforderungen auf 25 festlegen, zählt eine Anforderung für einen der HTTP-Trigger zu den 25 gemeinsamen parallelen Anforderungen.  Beim Skalieren dieser Funktions-App auf 10 Instanzen erlauben die beiden Funktionen effektiv 250 parallele Anforderungen (10 Instanzen * 25 gleichzeitige Anforderungen pro Instanz). 
+Die Einstellungen in der Datei „host.json“ gelten für alle Funktionen innerhalb der App in einer *Einzelinstanz* der Funktion. Wenn Sie eine Funktionen-App mit zwei HTTP-Funktionen und [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)-Anforderungen auf 25 festlegen, zählt eine Anforderung für einen der HTTP-Trigger zu den 25 gemeinsamen parallelen Anforderungen.  Beim Skalieren dieser Funktions-App auf 10 Instanzen erlauben die beiden Funktionen effektiv 250 parallele Anforderungen (10 Instanzen * 25 gleichzeitige Anforderungen pro Instanz). 
 
 Weitere Hostkonfigurationsoptionen finden Sie [im Artikel zur host.json-Konfiguration](functions-host-json.md).
 

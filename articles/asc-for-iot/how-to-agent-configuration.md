@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664840"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461248"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
 
@@ -120,14 +120,14 @@ Die folgende Tabelle enthält die steuerbaren Eigenschaften von Azure Security C
 
 Standardwerte sind im entsprechenden Schema auf [GitHub](https\://aka.ms/iot-security-module-default) verfügbar.
 
-| NAME| Status | Gültige Werte| Standardwerte| BESCHREIBUNG |
+| Name| Status | Gültige Werte| Standardwerte| BESCHREIBUNG |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Erforderlich: „false“ |Gültige Werte:  Dauer im ISO 8601-Format |Standardwert: PT7M |Maximales Zeitintervall, bevor Nachrichten mit hoher Priorität gesendet werden|
-|lowPriorityMessageFrequency |Erforderlich: „false“|Gültige Werte:  Dauer im ISO 8601-Format |Standardwert: PT5H |Maximale Zeit, bevor Nachrichten mit niedriger Priorität gesendet werden| 
-|snapshotFrequency |Erforderlich: „false“|Gültige Werte:  Dauer im ISO 8601-Format |Standardwert PT13H |Zeitintervall für die Erstellung von Momentaufnahmen des Gerätstatus.| 
+|highPriorityMessageFrequency|Erforderlich: „false“ |Gültige Werte: Dauer im ISO 8601-Format |Standardwert: PT7M |Maximales Zeitintervall, bevor Nachrichten mit hoher Priorität gesendet werden|
+|lowPriorityMessageFrequency |Erforderlich: „false“|Gültige Werte: Dauer im ISO 8601-Format |Standardwert: PT5H |Maximale Zeit, bevor Nachrichten mit niedriger Priorität gesendet werden| 
+|snapshotFrequency |Erforderlich: „false“|Gültige Werte: Dauer im ISO 8601-Format |Standardwert PT13H |Zeitintervall für die Erstellung von Momentaufnahmen des Gerätstatus.| 
 |maxLocalCacheSizeInBytes |Erforderlich: „false“ |Gültige Werte: |Standardwert: 2560000, größer als 8192 | Maximaler, für den Nachrichtencache eines Agents zulässiger Speicher (in Byte). Maximale Größe des zum Speichern von Nachrichten auf dem Gerät verwendeten Speicherplatzes, bevor Nachrichten gesendet werden.| 
-|maxMessageSizeInBytes |Erforderlich: „false“ |Gültige Werte:  Eine positive Zahl, größer als 8192 und kleiner als 262144 |Standardwert: 204800 |Maximal zulässige Größe einer Agent-an-Cloud-Nachricht. Diese Einstellung steuert die maximal gesendete Datenmenge in den einzelnen Nachrichten. |
-|eventPriority${EventName} |Erforderlich: „false“ |Gültige Werte:  Hoch, Niedrig, Aus |Standardwerte: |Priorität jedes von einem Agent generierten Ereignisses | 
+|maxMessageSizeInBytes |Erforderlich: „false“ |Gültige Werte: Eine positive Zahl, größer als 8192 und kleiner als 262144 |Standardwert: 204800 |Maximal zulässige Größe einer Agent-an-Cloud-Nachricht. Diese Einstellung steuert die maximal gesendete Datenmenge in den einzelnen Nachrichten. |
+|eventPriority${EventName} |Erforderlich: „false“ |Gültige Werte: Hoch, Niedrig, Aus |Standardwerte: |Priorität jedes von einem Agent generierten Ereignisses | 
 
 ### <a name="supported-security-events"></a>Unterstützte Sicherheitsereignisse
 
@@ -136,16 +136,15 @@ Standardwerte sind im entsprechenden Schema auf [GitHub](https\://aka.ms/iot-sec
 |Diagnoseereignis|eventPriorityDiagnostic| Aus| False| Diagnoseereignisse im Zusammenhang mit dem Agent. Verwenden Sie dieses Ereignis für die ausführliche Protokollierung.| 
 |Konfigurationsfehler |eventPriorityConfigurationError |Niedrig |False |Der Agent konnte die Konfiguration nicht analysieren. Überprüfen Sie die Übereinstimmung der Konfiguration mit dem Schema.| 
 |Statistik der gelöschten Ereignisse |eventPriorityDroppedEventsStatistics |Niedrig |True|Statistiken zu Ereignissen im Zusammenhang mit dem Agent. |
-|Nachrichtenstatistiken|eventPriorityMessageStatistics |Niedrig |True |Statistiken zu Ereignissen im Zusammenhang mit der Nachricht. |
 |Angeschlossene Hardware|eventPriorityConnectedHardware |Niedrig |True |Momentaufnahme der gesamten mit dem Gerät verbundenen Hardware.|
-|Überwachungsports|eventPriorityListeningPorts |Hoch |True |Momentaufnahme aller offenen Überwachungsports auf dem Gerät.|
+|Überwachungsports|eventPriorityListeningPorts |High |True |Momentaufnahme aller offenen Überwachungsports auf dem Gerät.|
 |Prozesserstellung |eventPriorityProcessCreate |Niedrig |False |Überwachung der Prozesserstellung auf dem Gerät.|
 |Prozessbeendigung|eventPriorityProcessTerminate |Niedrig |False |Überwachung der Prozessbeendigung auf dem Gerät.| 
 |Systeminformationen |eventPrioritySystemInformation |Niedrig |True |Momentaufnahme von Systeminformationen (Beispiel: Betriebssystem oder CPU).| 
-|Lokale Benutzer| eventPriorityLocalUsers |Hoch |True|Momentaufnahme der registrierten lokalen Benutzer innerhalb des Systems. |
-|Anmeldung|  eventPriorityLogin |Hoch|False|Überwachung der Anmeldeereignisse beim Gerät (lokale und Remoteanmeldungen).|
+|Lokale Benutzer| eventPriorityLocalUsers |High |True|Momentaufnahme der registrierten lokalen Benutzer innerhalb des Systems. |
+|Anmeldename|  eventPriorityLogin |High|False|Überwachung der Anmeldeereignisse beim Gerät (lokale und Remoteanmeldungen).|
 |Verbindungserstellung |eventPriorityConnectionCreate|Niedrig|False|Überwachung der zum und vom Gerät hergestellten TCP-Verbindungen. |
-|Firewall-Konfiguration| eventPriorityFirewallConfiguration|Niedrig|True|Momentaufnahme der Gerätefirewallkonfiguration (Firewallregeln). |
+|Firewallkonfiguration| eventPriorityFirewallConfiguration|Niedrig|True|Momentaufnahme der Gerätefirewallkonfiguration (Firewallregeln). |
 |Betriebssystembaseline| eventPriorityOSBaseline| Niedrig|True|Momentaufnahme der Überprüfung der Betriebssystembaseline des Geräts.|
 |
  

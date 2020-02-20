@@ -3,12 +3,12 @@ title: Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Fun
 description: Es wird beschrieben, wie Sie eine Azure Storage-Warteschlange per Ausgabebindung in eine Python-Funktion integrieren.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715374"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198478"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
@@ -156,7 +156,7 @@ Beachten Sie, dass Sie den Code für das Durchführen der Authentifizierung, das
 1. Beenden Sie den Host nach Abschluss des Vorgangs mit **STRG**+**C**.
 
 > [!TIP]
-> Beim Starten führt der Host den Download und die Installation der [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) und anderer Microsoft-Bindungserweiterungen durch. Diese Installation erfolgt, weil Bindungserweiterungen in der Datei *host.json* mit den folgenden Eigenschaften standardmäßig aktiviert sind:
+> Beim Starten führt der Host den Download und die Installation der [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#add-to-your-functions-app) und anderer Microsoft-Bindungserweiterungen durch. Diese Installation erfolgt, weil Bindungserweiterungen in der Datei *host.json* mit den folgenden Eigenschaften standardmäßig aktiviert sind:
 >
 > ```json
 > {
@@ -176,19 +176,19 @@ Wenn Ihre Funktion eine HTTP-Antwort für den Webbrowser generiert, ruft sie auc
 
 1. Öffnen Sie die Datei *local.setting.json* des Funktionsprojekts, und kopieren Sie den Wert der Verbindungszeichenfolge. Führen Sie in einem Terminal oder Befehlsfenster den folgenden Befehl aus, um eine Umgebungsvariable mit dem Namen `AZURE_STORAGE_CONNECTION_STRING` zu erstellen, und fügen Sie anstelle von `<connection_string>` Ihre spezifische Verbindungszeichenfolge ein. (Die Verwendung dieser Umgebungsvariablen bewirkt, dass Sie die Verbindungszeichenfolge nicht für jeden weiteren Befehl per `--connection-string`-Argument angeben müssen.)
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Wenn Ihre Funktion eine HTTP-Antwort für den Webbrowser generiert, ruft sie auc
     
 1. (Optional) Verwenden Sie den Befehl [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list), um die Storage-Warteschlangen in Ihrem Konto anzuzeigen. Die Ausgabe dieses Befehls sollte eine Warteschlange mit dem Namen `outqueue` enthalten. Sie wurde erstellt, als die Funktion ihre erste Nachricht in diese Warteschlange geschrieben hat.
     
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -221,19 +221,19 @@ Wenn Ihre Funktion eine HTTP-Antwort für den Webbrowser generiert, ruft sie auc
 
 1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Da Sie die Nachrichtenauflistung dereferenzieren und die Decodierung aus Base64 durchführen müssen, sollten Sie PowerShell ausführen und den PowerShell-Befehl verwenden.
 
@@ -251,13 +251,13 @@ Nachdem Sie nun die Funktion lokal getestet und sichergestellt haben, dass eine 
     
 1. Verwenden Sie wie in der vorherigen Schnellstartanleitung einen Browser oder curl, um die erneut bereitgestellte Funktion zu testen.
 
-    # <a name="browsertabbrowser"></a>[Browser](#tab/browser)
+    # <a name="browser"></a>[Browser](#tab/browser)
     
     Kopieren Sie die vollständige **Aufruf-URL**, die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Azure` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
 
     ![Ausgabe der in Azure ausgeführten Funktion in einem Browser](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[curl](#tab/curl)
+    # <a name="curl"></a>[curl](#tab/curl)
     
     Führen Sie [curl](https://curl.haxx.se/) mit der **Aufruf-URL** aus, und fügen Sie den Parameter `&name=Azure` an. Die Ausgabe des Befehls sollte der Text „Hello Azure“ sein.
     

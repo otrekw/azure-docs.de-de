@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679954"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207024"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivität „Azure Function“ in Azure Data Factory
 
@@ -28,24 +28,24 @@ Das folgende Video enthält eine achtminütige Einführung und Demonstration die
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
 
-Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) *kein* `JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
+Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
-| type   | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFunction** | Ja |
-| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL**, wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | Ja |
-| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel**. Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | Ja |
+| type   | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFunction** | ja |
+| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL**, wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | ja |
+| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel**. Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Aktivität „Azure Function“
 
 | **Eigenschaft**  | **Beschreibung** | **Zulässige Werte** | **Erforderlich** |
 | --- | --- | --- | --- |
-| name  | Name der Aktivität in der Pipeline  | Zeichenfolge | Ja |
-| type  | Typ der Aktivität ist „AzureFunctionActivity“ | Zeichenfolge | Ja |
-| Verknüpfter Dienst | Der mit der Azure-Funktion verknüpfte Dienst für die entsprechende Azure-Funktions-App  | Verweis auf den verknüpften Dienst | Ja |
-| Funktionsname  | Name der Funktion in der Azure-Funktions-App, die diese Aktivität aufruft. | Zeichenfolge | Ja |
-| method  | REST-API-Methode für den Funktionsaufruf | Unterstützte Zeichenfolgentypen: „GET“, „POST“, „PUT“   | Ja |
+| name  | Name der Aktivität in der Pipeline  | String | ja |
+| type  | Typ der Aktivität ist „AzureFunctionActivity“ | String | ja |
+| Verknüpfter Dienst | Der mit der Azure-Funktion verknüpfte Dienst für die entsprechende Azure-Funktions-App  | Verweis auf den verknüpften Dienst | ja |
+| Funktionsname  | Name der Funktion in der Azure-Funktions-App, die diese Aktivität aufruft. | String | ja |
+| method  | REST-API-Methode für den Funktionsaufruf | Unterstützte Zeichenfolgentypen: „GET“, „POST“, „PUT“   | ja |
 | Header  | Header, die in der Anforderung gesendet werden. So legen Sie beispielsweise die Sprache und den Typ für eine Anforderung fest: "headers": { "Accept-Language": "en-us", "Content-Type": "application/json" } | Zeichenfolge (oder ein Ausdruck mit resultType der Zeichenfolge) | Nein |
 | body  | Text, der zusammen mit der Anforderung an die API-Methode der Funktion gesendet wird  | Zeichenfolge (oder Ausdruck mit resultType der Zeichenfolge) oder Objekt.   | Erforderlich für PUT/POST-Methoden |
 |   |   |   | |

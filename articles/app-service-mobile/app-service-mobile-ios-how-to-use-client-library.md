@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 8f6307e37ff24d2a3f10bcf39ed989acdf3611f9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 1bf8f8e198f6c4a4a0af308262cd830685698a80
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157991"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458918"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>Verwenden der iOS-Clientbibliothek für Azure Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt gängige Szenarien für die Verwendung des aktuellsten [Azure Mobile Apps-iOS-SDK][1]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen und ein vorgefertigtes iOS-Xcode-Projekt herunterzuladen. In diesem Handbuch konzentrieren wir uns auf das clientseitige iOS-SDK. Weitere Informationen zum serverseitigen SDK für das Back-End finden Sie in den Anleitungen zum jeweiligen Server-SDK.

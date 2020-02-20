@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 29c91cf14413a11804de82eeaf08d628b125d76a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116737"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471940"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure Functions (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -111,7 +111,7 @@ print(blob.location)
 Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nach Abschluss des Prozesses wurde das Image in der Azure Container Registry-Instanz für Ihren Arbeitsbereich erstellt. Nachdem das Image erstellt wurde, wird der Speicherort in Ihrer Instanz von Azure Container Registry angezeigt. Der zurückgegebene Speicherort weist das Format `<acrinstance>.azurecr.io/package@sha256:<hash>` auf.
 
 > [!NOTE]
-> Pakete für Functions unterstützen derzeit HTTP-Trigger, Blob-Trigger und Service Bus-Trigger. Weitere Informationen zu Triggern finden Sie unter [Azure Functions-Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob?tabs=csharp#trigger---blob-name-patterns).
+> Pakete für Functions unterstützen derzeit HTTP-Trigger, Blob-Trigger und Service Bus-Trigger. Weitere Informationen zu Triggern finden Sie unter [Azure Functions-Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger#blob-name-patterns).
 
 > [!IMPORTANT]
 > Speichern Sie die Speicherortinformationen, da sie beim Bereitstellen des Images verwendet werden.

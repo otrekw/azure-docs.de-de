@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861386"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368621"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
@@ -145,7 +145,7 @@ Die Clientschnittstelle der Demoumgebung [Contoso Wind Farm](https://insights.ti
 
 Hierarchien werden durch **id**, **name** und **source** der Hierarchie definiert.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | ---| ---|
 | id | Der eindeutige Bezeichner für die Hierarchie, der z. B. beim Definieren einer Instanz verwendet wird. |
 | name | Eine Zeichenfolge zum Angeben eines Namens für die Hierarchie. |
@@ -330,7 +330,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 
 #### <a name="categorical-variables"></a>Kategorische Variablen
 
-| Variableneigenschaft | Beschreibung |
+| Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen. Kategorische Variablen müssen entweder den Typ *Long* oder den Typ *String* aufweisen. |
@@ -370,7 +370,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 
 #### <a name="aggregate-variables"></a>Aggregieren von Variablen
 
-| Variableneigenschaft | Beschreibung |
+| Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenaggregation | Unterstützt Berechnungen mit *Avg*, *Min*, *Max*, *Sum*, *Count*, *First*, *Last*. |

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0351721283df68fde910ae16b16d567954c3e6fb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707890"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471991"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der Azure-Befehlszeilenschnittstelle
 
@@ -27,10 +27,10 @@ ms.locfileid: "74707890"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über Folgendes verfügen, um Rollenzuweisungen hinzufügen oder entfernen zu können:
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
-- [Bash in Azure Cloud Shell](/azure/cloud-shell/overview) oder der [Azure-Befehlszeilenschnittstelle](/cli/azure)
+- [Bash in der Azure Cloud Shell](/azure/cloud-shell/overview) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
 ## <a name="get-object-ids"></a>Abrufen von Objekt-IDs
 
@@ -52,7 +52,7 @@ Zum Abrufen der Objekt-ID für eine Azure AD-Gruppe können Sie [az ad group sho
 az ad group show --group "{name}" --query objectId --output tsv
 ```
 
-### <a name="application"></a>Anwendung
+### <a name="application"></a>Application
 
 Zum Abrufen der Objekt-ID für einen Azure AD-Dienstprinzipal (eine von einer Anwendung verwendete Identität) können Sie [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
 
@@ -62,9 +62,9 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-In RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
+In der RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
 
-### <a name="user-at-a-resource-group-scope"></a>Benutzer im Ressourcengruppenbereich
+### <a name="user-at-a-resource-group-scope"></a>Benutzer in einem Ressourcengruppenbereich
 
 Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um für einen Benutzer im Ressourcengruppenbereich eine Rollenzuweisung hinzuzufügen.
 
@@ -117,7 +117,7 @@ Im folgenden Beispiel wird der Gruppe *Ann Mack Team* mit der ID 22222222-2222-2
 az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="group-at-a-resource-scope"></a>Gruppe im Ressourcenbereich
+### <a name="group-at-a-resource-scope"></a>Gruppe in einem Ressourcenbereich
 
 Sie verwenden [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um eine Rollenzuweisung für eine Gruppe hinzuzufügen. Informationen zum Abrufen der Objekt-ID für die Gruppe finden Sie unter [Abrufen von Objekt-IDs](#get-object-ids).
 
@@ -155,9 +155,9 @@ Im folgenden Beispiel wird dem Benutzer *annm\@example.com* im Abonnementbereich
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-### <a name="user-at-a-management-group-scope"></a>Benutzer im Verwaltungsgruppenbereich
+### <a name="user-at-a-management-group-scope"></a>Benutzer in einem Verwaltungsgruppenbereich
 
-Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um für einen Benutzer im Verwaltungsgruppenbereich eine Rollenzuweisung hinzuzufügen. Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) verwenden.
+Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um für einen Benutzer im Verwaltungsgruppenbereich eine Rollenzuweisung hinzuzufügen. Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -205,7 +205,7 @@ Im folgenden Beispiel wird die Rolle *Reader* von der Gruppe *Ann Mack Team* mit
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) verwenden.
+Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/account/management-group#az-account-management-group-list) verwenden.
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

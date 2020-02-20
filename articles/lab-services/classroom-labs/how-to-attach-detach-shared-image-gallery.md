@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 98a21e9fa846d5a91ed1242701484afaa641cddc
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1267487e44556a468db26a2ffaaa163dce540571
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718045"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443481"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Lehrer/Labadministratoren können ein Vorlagen-VM-Image in einem [Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md) in Azure speichern, damit es von anderen Benutzern wiederverwendet werden kann. Als Erstes fügt der Labadministrator einen vorhandenen Katalog mit freigegebenen Images an das Labkonto an. Nachdem der Katalog mit freigegebenen Images angefügt wurde, können in Labs, die unter dem Labkonto erstellt wurden, Images in dem Katalog mit freigegebenen Images gespeichert werden. Andere Lehrkräfte können dieses Image im Katalog mit freigegebenen Images auswählen, um eine Vorlage für ihre Klassen zu erstellen. 

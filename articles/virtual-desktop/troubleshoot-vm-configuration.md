@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980219"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367163"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -26,7 +26,7 @@ In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.
 
 Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Computer zur Domäne auftreten.
 
-- Fügen Sie die VM manuell über den unter [Hinzufügen eines virtuellen Windows Server-Computers zu einer verwalteten Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) beschriebenen Prozess hinzu, oder verwenden Sie die [Vorlage für den Domänenbeitritt](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Fügen Sie die VM manuell über den unter [Hinzufügen eines virtuellen Windows Server-Computers zu einer verwalteten Domäne](../active-directory-domain-services/join-windows-vm.md) beschriebenen Prozess hinzu, oder verwenden Sie die [Vorlage für den Domänenbeitritt](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 - Versuchen Sie, den Domänennamen über die Befehlszeile auf dem virtuellen Computer zu pingen.
 - Überprüfen Sie die Liste der Fehlermeldungen zum Domänenbeitritt unter [Fehlermeldungen bei der Problembehandlung von Domänenbeitritten](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
@@ -37,7 +37,7 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 **Behebung:** Führen Sie eine der folgenden Aktionen aus, um dieses Problem zu beheben.
 
 - Fügen Sie die virtuellen Computer einer Domäne manuell hinzu.
-- Stellen Sie die Vorlage erneut bereit, nachdem die Anmeldeinformationen bestätigt wurden. Siehe [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Stellen Sie die Vorlage erneut bereit, nachdem die Anmeldeinformationen bestätigt wurden. Siehe [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
 - Fügen Sie einer Domäne VMs mithilfe einer Vorlage zum [Hinzufügen eines vorhandenen virtuellen Windows-Computers zu einer AD-Domäne](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/) hinzu.
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Error: Timeout beim Warten auf eine Benutzereingabe.
@@ -62,17 +62,17 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 
 **Ursache 1:** VMs befinden sich in einem virtuellen Netzwerk, das nicht dem virtuellen Netzwerk (VNET) zugeordnet ist, in dem sich die Domäne befindet.
 
-**Behebung 1:** Erstellen Sie VNET-Peering zwischen dem VNET, in dem VMs bereitgestellt wurden, und dem VNET, in dem der Domänencontroller (DC) ausgeführt wird. Siehe [Erstellen eines Peerings in virtuellen Netzwerken: Resource Manager, verschiedene Abonnements](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**Behebung 1:** Erstellen Sie VNET-Peering zwischen dem VNET, in dem VMs bereitgestellt wurden, und dem VNET, in dem der Domänencontroller (DC) ausgeführt wird. Siehe [Erstellen eines Peerings in virtuellen Netzwerken: Resource Manager, verschiedene Abonnements](../virtual-network/create-peering-different-subscriptions.md).
 
 **Ursache 2:** Bei Verwendung von Azure Active Directory Domain Services (Azure AD DS) werden die DNS-Servereinstellungen für das virtuelle Netzwerk nicht so aktualisiert, dass sie auf die verwalteten Domänencontroller verweisen.
 
-**Behebung 2:** Informationen zum Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk mit Azure AD DS finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+**Behebung 2:** Informationen zum Aktualisieren der DNS-Einstellungen für das virtuelle Netzwerk mit Azure AD DS finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
 
 **Ursache 3:** Die DNS-Servereinstellungen der Netzwerkschnittstelle zeigen nicht auf den entsprechenden DNS-Server im virtuellen Netzwerk.
 
 **Behebung 3:** Führen Sie eine der folgenden Aktionen aus, um das Problem zu beheben, und befolgen Sie dabei die Schritte unter [Ändern von DNS-Servern].
-- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle anhand der Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) in **Benutzerdefiniert**, und geben Sie die privaten IP-Adressen der DNS-Server im virtuellen Netzwerk an.
-- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle über die Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) so, dass sie **vom virtuellen Netzwerk geerbt werden**, und ändern Sie dann die DNS-Servereinstellungen des virtuellen Netzwerks anhand der Schritte unter [Ändern von DNS-Servern](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
+- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle anhand der Schritte unter [Ändern von DNS-Servern](../virtual-network/virtual-network-network-interface.md#change-dns-servers) in **Benutzerdefiniert**, und geben Sie die privaten IP-Adressen der DNS-Server im virtuellen Netzwerk an.
+- Ändern Sie die DNS-Servereinstellungen der Netzwerkschnittstelle über die Schritte unter [Ändern von DNS-Servern](../virtual-network/virtual-network-network-interface.md#change-dns-servers) so, dass sie **vom virtuellen Netzwerk geerbt werden**, und ändern Sie dann die DNS-Servereinstellungen des virtuellen Netzwerks anhand der Schritte unter [Ändern von DNS-Servern](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Startladeprogramm sind nicht installiert.
 
@@ -88,7 +88,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 
 **Ursache 1:** Die bei der Eingabe für die Azure Resource Manager-Vorlage angegebenen Anmeldeinformationen waren falsch, oder die Berechtigungen waren unzureichend.
 
-**Behebung 1:** Fügen Sie den VMs die fehlenden Komponenten manuell mithilfe von [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) hinzu.
+**Behebung 1:** Fügen Sie den VMs die fehlenden Komponenten manuell mithilfe von [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) hinzu.
 
 **Ursache 2:** Die PowerShell-DSC konnte gestartet und ausgeführt, aber nicht abgeschlossen werden, da sie sich nicht bei Windows Virtual Desktop anmelden und die erforderlichen Informationen abrufen kann.
 
@@ -147,7 +147,7 @@ Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs insta
 
 **Behebung 2:** Befolgen Sie diese Anweisungen, um Port 443 zu öffnen.
 
-1. Bestätigen Sie, dass Port 443 geöffnet ist, indem Sie das PSPing-Tool von [Sysinternal Tools](https://docs.microsoft.com/sysinternals/downloads/psping) herunterladen.
+1. Bestätigen Sie, dass Port 443 geöffnet ist, indem Sie das PSPing-Tool von [Sysinternal Tools](/sysinternals/downloads/psping/) herunterladen.
 2. Installieren Sie PSPing auf der Sitzungshost-VM, auf der der Agent ausgeführt wird.
 3. Öffnen Sie die Eingabeaufforderung als Administrator, und geben Sie den unten gezeigten Befehl aus:
 
@@ -189,7 +189,7 @@ Die Ausgabe von **qwinsta** listet **rdp-sxs** in der Ausgabe auf, wenn der para
 
 ![Paralleler Stapel installiert oder aktiviert, qwinsta-Ausgabe mit rdp-sxs.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen Sie, dass ihre Werte übereinstimmen. Wenn Registrierungsschlüssel fehlen oder Werte nicht übereinstimmen, befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) zum erneuten Installieren des parallelen Stapels.
+Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen Sie, dass ihre Werte übereinstimmen. Wenn Registrierungsschlüssel fehlen oder Werte nicht übereinstimmen, befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md) zum erneuten Installieren des parallelen Stapels.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
 **Behebung:** Befolgen Sie diese Anweisungen, um den parallelen Stapel auf der Sitzungshost-VM zu installieren.
 
 1. Verwenden Sie RDP (Remote Desktop Protocol), um als lokaler Administrator direkt in die Sitzungshost-VM zu gelangen.
-2. Laden Sie bei Bedarf das [Windows Virtual Desktop-PowerShell-Modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) herunter, und importieren Sie es, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+2. Laden Sie bei Bedarf das [Windows Virtual Desktop-PowerShell-Modul](/powershell/windows-virtual-desktop/overview/) herunter, und importieren Sie es, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. Installieren Sie den parallelen Stapel mithilfe von [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+3. Installieren Sie den parallelen Stapel mithilfe von [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Beheben der Fehlfunktion eines parallelen Stapels für Windows Virtual Desktop
 
@@ -226,7 +226,7 @@ Es sind Umstände bekannt, die zu einer Fehlfunktion des parallelen Stapels füh
 - Mehrmaliges Ausführen von Enablesxsstackrc.ps1
 - Ausführen von Enablesxsstackrc.ps1 in einem Konto, das nicht über lokale Administratorrechte verfügt
 
-Die Anweisungen in diesem Abschnitt können Ihnen helfen, den parallelen Stapel für Windows Virtual Desktop zu deinstallieren. Sobald Sie den parallelen Stapel deinstalliert haben, navigieren Sie zu „Registrieren der VM beim Windows Virtual Desktop-Hostpool“ in [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell), um den parallelen Stapel erneut zu installieren.
+Die Anweisungen in diesem Abschnitt können Ihnen helfen, den parallelen Stapel für Windows Virtual Desktop zu deinstallieren. Sobald Sie den parallelen Stapel deinstalliert haben, navigieren Sie zu „Registrieren der VM beim Windows Virtual Desktop-Hostpool“ in [Erstellen eines Hostpools mit PowerShell](create-host-pools-powershell.md), um den parallelen Stapel erneut zu installieren.
 
 Die VM, mit der die Wiederherstellung durchgeführt wird, muss sich im gleichen Subnetz und in derselben Domäne befinden wie die VM mit dem fehlerhaften parallelen Stapel.
 
@@ -305,7 +305,7 @@ Wenn das Zeitlimit abgelaufen ist, wird die folgende Fehlermeldung angezeigt: �
 Wenn eine dieser Meldungen angezeigt wird, bedeutet dies, dass für das Image nicht die neuesten Windows-Updates installiert sind oder Sie den Remotedesktop-Lizenzierungsmodus über Gruppenrichtlinien festlegen. Führen Sie die Schritte in den nächsten Abschnitten aus, um die Gruppenrichtlinieneinstellung zu überprüfen, die Version von Windows 10 Enterprise Multisession zu ermitteln und das entsprechende Update zu installieren.  
 
 >[!NOTE]
->Windows Virtual Desktop erfordert nur dann eine RDS-Clientzugriffslizenz (Client Access License, CAL), wenn Ihr Hostpool Windows Server-Sitzungshosts enthält. Informationen zum Konfigurieren einer RDS-CAL finden Sie unter [Lizenzieren deiner RDS-Bereitstellung mit Clientzugriffslizenzen (CALs)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+>Windows Virtual Desktop erfordert nur dann eine RDS-Clientzugriffslizenz (Client Access License, CAL), wenn Ihr Hostpool Windows Server-Sitzungshosts enthält. Informationen zum Konfigurieren einer RDS-CAL finden Sie unter [Lizenzieren deiner RDS-Bereitstellung mit Clientzugriffslizenzen (CALs)](/windows-server/remote/remote-desktop-services/rds-client-access-license/).
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Deaktivieren der Gruppenrichtlinieneinstellung für den Remotedesktop-Lizenzierungsmodus
 

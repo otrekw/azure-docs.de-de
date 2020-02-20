@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer Azure-VM-Skalierungsgruppe auf der Grundlage e
 description: Verwenden Sie Terraform, um eine Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image zu konfigurieren und mit einer Version zu versehen – einschließlich eines virtuellen Netzwerks und verwalteter angefügter Datenträger.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159291"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472202"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Tutorial: Erstellen einer Azure-VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten Packer-Images unter Verwendung von Terraform
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Terraform**: [Installieren Sie Terraform, und konfigurieren Sie den Zugriff auf Azure.](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform**: [Installieren Sie Terraform, und konfigurieren Sie den Zugriff auf Azure.](terraform-install-configure.md)
 - **SSH-Schlüsselpaar:** [Erstellen Sie ein SSH-Schlüsselpaar.](/azure/virtual-machines/linux/mac-create-ssh-keys)
 - **Packer:**  [Installieren Sie Packer.](https://www.packer.io/docs/install/index.html)
 

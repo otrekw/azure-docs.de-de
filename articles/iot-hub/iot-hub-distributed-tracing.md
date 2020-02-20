@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911897"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212483"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -130,6 +130,9 @@ Diese Anweisungen betreffen die Erstellung des Beispiels unter Windows. Informat
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Bearbeiten des Beispiels zum Senden von Telemetriedaten zur Aktivierung der verteilten Ablaufverfolgung
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Beispiel in GitHub abrufen</a>
+
 1. Öffnen Sie die Quelldatei `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c` in einem Editor.
 
 1. Suchen Sie die Deklaration der Konstanten `connectionString`:
@@ -241,7 +244,7 @@ Verwenden Sie zum Aktualisieren der Samplingkonfiguration der verteilten Ablaufv
 }
 ```
 
-| Elementname | Erforderlich | type | Beschreibung |
+| Elementname | Erforderlich | type | BESCHREIBUNG |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Ja | Integer | Derzeit werden zum Aktivieren und Deaktivieren des Samplings zwei Moduswerte unterstützt. `1` steht für „Aktiviert“ und `2` für „Deaktiviert“. |
 | `sampling_rate` | Ja | Integer | Dieser Wert ist ein Prozentsatz. Es sind nur Werte von `0` bis (einschließlich) `100` zulässig.  |

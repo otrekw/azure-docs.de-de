@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform mithilfe der M
 description: Erfahren Sie, wie Sie mit Terraform Modulen einen Cluster mit virtuellen Windows-Computern in Azure erstellen
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185560"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472201"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform mithilfe der Modulregistrierung
 
@@ -25,9 +25,9 @@ Weitere Informationen zu Terraform finden Sie in der [Terraform-Dokumentation](h
 ## <a name="set-up-authentication-with-azure"></a>Einrichten der Authentifizierung mit Azure
 
 > [!TIP]
-> Wenn Sie [Terraform-Umgebungsvariablen verwenden](/azure/virtual-machines/linux/terraform-install-configure) oder dieses Tutorial in der [Azure Cloud Shell](/azure/cloud-shell/overview) ausführen, überspringen Sie diesen Schritt.
+> Wenn Sie [Terraform-Umgebungsvariablen verwenden](terraform-install-configure.md) oder dieses Tutorial in der [Azure Cloud Shell](/azure/cloud-shell/overview) ausführen, überspringen Sie diesen Schritt.
 
- Unter [Installieren von Terraform und Konfigurieren des Zugriffs auf Azure](/azure/virtual-machines/linux/terraform-install-configure) finden Sie Informationen zum Erstellen eines Azure-Dienstprinzipals. Verwenden Sie diesen Dienstprinzipal, um folgenden Code in die neue Datei `azureProviderAndCreds.tf` in einem leeren Verzeichnis einzufügen:
+ Unter [Installieren von Terraform und Konfigurieren des Zugriffs auf Azure](terraform-install-configure.md) finden Sie Informationen zum Erstellen eines Azure-Dienstprinzipals. Verwenden Sie diesen Dienstprinzipal, um folgenden Code in die neue Datei `azureProviderAndCreds.tf` in einem leeren Verzeichnis einzufügen:
 
 ```hcl
 variable subscription_id {}

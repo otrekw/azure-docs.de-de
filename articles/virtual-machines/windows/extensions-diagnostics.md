@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: 3fcdcd4565ed0512b3efcf9b23ca349a3bbf3a6c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033478"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471617"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Azure-Diagnoseerweiterung für virtuelle Windows-Computer
 
@@ -37,7 +37,7 @@ Um die Azure-Diagnoseerweiterung verwenden zu können, muss der virtuelle Zielco
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/platform/diagnostics-extension-schema-1dot3.md)
+[Die Schema- und Eigenschaftswerte der Azure-Diagnoseerweiterung werden in diesem Dokument beschrieben.](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
@@ -92,4 +92,4 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zur Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md)
-* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/platform/diagnostics-extension-schema.md)
+* [Informationen zum Schema und zu den Versionen der Erweiterung](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)

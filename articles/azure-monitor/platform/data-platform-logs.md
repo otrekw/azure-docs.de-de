@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 2772535ff5eb7cf1e50c40b8ff075f67e71e1326
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 319d43b4096c638eee74031e5b506b5cec3ffd5d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751016"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467282"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
 
@@ -76,23 +76,23 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="azure-tenant-and-subscription"></a>Azure-Mandant und -Abonnement
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 | Azure Active Directory-Überwachungsprotokolle | Über Diagnoseeinstellungen für jedes Verzeichnis konfiguriert. Informationen finden Sie unter [Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).  |
 | Aktivitätsprotokolle | Standardmäßig separat gespeichert und können für Warnungen nahezu in Echtzeit verwendet werden. Installieren Sie die Lösung für die Aktivitätsprotokollanalyse, um in den Log Analytics-Arbeitsbereich zu schreiben. Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics](activity-log-collect.md). |
 
 ### <a name="azure-resources"></a>Azure-Ressourcen
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 | Ressourcendiagnose | Konfigurieren von Diagnoseeinstellungen zum Schreiben in Diagnosedaten, einschließlich Metriken in einen Log Analytics-Arbeitsbereich. Informationen finden Sie unter [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](resource-logs-collect-storage.md). |
 | Überwachungslösungen | Überwachungslösungen schreiben gesammelte Daten in ihren Log Analytics-Arbeitsbereich. Eine Liste der Lösungen finden Sie unter [Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure](../insights/solutions-inventory.md). Ausführliche Informationen zum Installieren und Verwenden von Lösungen finden Sie unter [Überwachungslösungen in Azure Monitor](../insights/solutions.md). |
 | Metriken | Senden von Plattformmetriken für Azure Monitor-Ressourcen an einen Log Analytics-Arbeitsbereich, um Protokolldaten über längere Zeiträume aufzubewahren und um mithilfe der [Abfragesprache Kusto](/azure/kusto/query/) komplexe Analysen mit anderen Datentypen durchzuführen. Informationen finden Sie unter [Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto](resource-logs-collect-storage.md). |
-| Azure Table Storage | Sammeln von Daten aus Azure Storage, wohin einige Azure-Ressourcen Überwachungsdaten schreiben. Informationen finden Sie unter [Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Log Analytics](azure-storage-iis-table.md). |
+| Azure Table Storage | Sammeln von Daten aus Azure Storage, wohin einige Azure-Ressourcen Überwachungsdaten schreiben. Informationen finden Sie unter [Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Log Analytics](diagnostics-extension-logs.md). |
 
 ### <a name="virtual-machines"></a>Virtual Machines
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 |  Agent-Datenquellen | Datenquellen, die von [Windows](agent-windows.md)- und [Linux](../learn/quick-collect-linux-computer.md)-Agents erfasst werden, enthalten Ereignisse, Leistungsdaten und benutzerdefinierte Protokolle. Eine Liste der Datenquellen und Details zur Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](data-sources.md). |
 | Überwachungslösungen | Überwachungslösungen schreiben von Agents gesammelte Daten in ihren Log Analytics-Arbeitsbereich. Eine Liste der Lösungen finden Sie unter [Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure](../insights/solutions-inventory.md). Ausführliche Informationen zum Installieren und Verwenden von Lösungen finden Sie unter [Überwachungslösungen in Azure Monitor](../insights/solutions.md). |
@@ -101,7 +101,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="applications"></a>Anwendungen
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 | Anforderungen und Ausnahmen | Ausführliche Daten zu Anwendungsanforderungen und -ausnahmen sind in den Tabellen _requests_, _pageViews_ und _exceptions_ enthalten. Aufrufe von [externen Komponenten](../app/asp-net-dependencies.md) sind in der Tabelle _dependencies_ enthalten. |
 | Nutzung und Leistung | Leistungsdaten für die Anwendung finden Sie in den Tabellen _requests_, _browserTimings_ und _performanceCounters_. Daten für [benutzerdefinierte Metriken](../app/api-custom-events-metrics.md#trackevent) sind in der Tabelle _customMetrics_ enthalten.|
@@ -110,7 +110,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 ### <a name="insights"></a>Einblicke
 
-| Daten | Beschreibung |
+| Daten | BESCHREIBUNG |
 |:---|:---|
 | Azure Monitor für Container | Von [Azure Monitor für Container](../insights/container-insights-overview.md) gesammelte Bestands-und Leistungsdaten. Eine Liste der Tabellen finden Sie unter [Details zur Datensammlung in Containern](../insights/container-insights-log-search.md#container-records). |
 | Azure Monitor für VMs | Von [Azure Monitor für VMs](../insights/vminsights-overview.md) gesammelte Zuordnungs-und Leistungsdaten. Ausführliche Informationen zum Abfragen dieser Daten finden Sie unter [Abfragen von Protokollen aus Azure Monitor für VMs](../insights/vminsights-log-search.md). |

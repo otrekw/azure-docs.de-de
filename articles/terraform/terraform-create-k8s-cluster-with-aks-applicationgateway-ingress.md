@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Az
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Application Gateway als Eingangscontroller veranschaulicht wird
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772872"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472263"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Tutorial: Erstellen eines Application Gateway-Eingangscontrollers in Azure Kubernetes Service
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](terraform-install-configure.md).
 
 - **Azure-Ressourcengruppe**: Sollten Sie über keine Azure-Ressourcengruppe für die Demo verfügen, [erstellen Sie eine Azure-Ressourcengruppe](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Notieren Sie sich Name und Standort der Ressourcengruppe, da diese Werte in der Demo verwendet werden.
 

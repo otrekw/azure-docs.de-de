@@ -3,19 +3,14 @@ title: Authentifizierung und Autorisierung
 description: Hier finden Sie eine grundlegende Übersicht über die Authentifizierungs-/Autorisierungsfunktion für Azure App Service mit dem Schwerpunkt auf mobilen Apps.
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668526"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459462"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Authentifizierung und Autorisierung in Azure App Service für mobile Apps
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 In diesem Artikel wird beschrieben, wie die Authentifizierung und Autorisierung funktioniert, wenn Sie native mobile Apps mit einem App Service-Back-End entwickeln. App Service umfasst eine integrierte Authentifizierung und Autorisierung, und Ihre mobilen Apps können die Anmeldung für Benutzer durchführen, ohne dass in App Service hierfür Code geändert werden muss. Es stellt eine einfache Möglichkeit zum Schutz Ihrer Anwendung und für die Arbeit mit benutzerspezifischen Daten bereit. 
 

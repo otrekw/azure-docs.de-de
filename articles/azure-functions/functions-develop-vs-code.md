@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964011"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210241"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -71,7 +71,7 @@ Mithilfe der Functions-Erweiterung können Sie zugleich mit Ihrer ersten Funktio
 
     ![Auswählen der Vorlage für den HTTP-Trigger](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Geben Sie **HttpExample** als Funktionsnamen ein und drücken Sie die EINGABETASTE, und wählen Sie dann die Autorisierung **Funktion** aus. Für diese Autorisierungsebene müssen Sie beim Aufrufen des Funktionsendpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys) angeben.
+1. Geben Sie **HttpExample** als Funktionsnamen ein und drücken Sie die EINGABETASTE, und wählen Sie dann die Autorisierung **Funktion** aus. Für diese Autorisierungsebene müssen Sie beim Aufrufen des Funktionsendpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys) angeben.
 
     ![Auswählen von Funktionsautorisierung](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -92,11 +92,11 @@ Die Projektvorlage erstellt ein Projekt in Ihrer gewählten Sprache und installi
 
 Abhängig von Ihrer Sprache werden diese anderen Dateien erstellt:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * [Klassenbibliotheksdatei „HttpExample.cs“](functions-dotnet-class-library.md#functions-class-library-project) zur Implementierung der Funktion.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 * Eine Datei „package.json“ im Stammordner.
 
@@ -122,7 +122,7 @@ Ferner können Sie [Ihrem Projekt eine neue Funktion hinzufügen](#add-a-functio
 
 Mit Ausnahme von HTTP- und Timertriggern werden Bindungen in Erweiterungspaketen implementiert. Sie müssen die Erweiterungspakete für die Trigger und Bindungen installieren, die sie benötigen. Der Vorgang der Installation der Bindungserweiterungen hängt von der Sprache Ihres Projekts ab.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Führen Sie den Befehl [dotnet add package](/dotnet/core/tools/dotnet-add-package) im Terminalfenster aus, um die Erweiterungspakete zu installieren, die Sie in Ihrem Projekt benötigen. Der folgende Befehl installiert die Azure Storage-Erweiterung, die Bindungen für Blob, Queue und Table Storage implementiert.
 
@@ -130,7 +130,7 @@ Führen Sie den Befehl [dotnet add package](/dotnet/core/tools/dotnet-add-packag
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
@@ -142,11 +142,11 @@ Sie können einem Projekt eine neue Funktion hinzufügen, indem Sie eine der vor
 
 Die Ergebnisse dieser Aktion hängen von Ihrer Projektsprache ab:
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Eine neue C#-Klassenbibliotheksdatei (CS) wird Ihrem Projekt hinzugefügt.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 Im Projekt wird ein neuer Ordner erstellt. Er enthält eine neue Datei „function.json“ und die neue JavaScript-Codedatei.
 
@@ -158,7 +158,7 @@ Sie können Ihre Funktion erweitern, indem Sie Eingabe- und Ausgabebindungen hin
 
 Stellen Sie in den folgenden Beispielen eine Verbindung mit einer Speicherwarteschlange mit dem Namen `outqueue` her, wobei die Verbindungszeichenfolge für das Speicherkonto in der Anwendungseinstellung `MyStorageConnection` in „local.settings.json“ festgelegt wird.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Aktualisieren Sie die Funktionsmethode, um der `Run`-Methodendefinition den folgenden Parameter hinzuzufügen:
 
@@ -176,7 +176,7 @@ Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nac
 
 Weitere Informationen finden Sie in der Dokumentation zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output).
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+# <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
 In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufügen, indem Sie auf eine Folge komfortabler Aufforderungen reagieren. Klicken Sie zum Erstellen einer Bindung mit der rechten Maustaste (STRG+Mausklick unter macOS) auf die Datei **function.json** in Ihrem Funktionsordner, und wählen Sie dann **Bindung hinzufügen** aus:
 
@@ -184,7 +184,7 @@ In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufüge
 
 Im Folgenden finden Sie Beispieleingabeaufforderungen zum Definieren einer neuen Ausgabebindung für den Speicher:
 
-| Prompt | value | Beschreibung |
+| Prompt | value | BESCHREIBUNG |
 | -------- | ----- | ----------- |
 | **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
 | **Select binding with direction** (Bindung mit Richtung auswählen) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
@@ -248,7 +248,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | value | Beschreibung |
+    | Prompt | value | BESCHREIBUNG |
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |
@@ -277,7 +277,7 @@ Das Projekt wird neu erstellt, neu verpackt und in Azure hochgeladen. Das vorhan
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Abrufen der URL der bereitgestellten Funktion
 
-Um eine über HTTP ausgelöste Funktion aufzurufen, benötigen Sie die URL der Funktion, wenn sie in Ihrer Funktions-App bereitgestellt ist. Diese URL beinhaltet alle erforderlichen [Funktionstasten](functions-bindings-http-webhook.md#authorization-keys). Sie können die Erweiterung verwenden, um diese URLs für Ihre bereitgestellten Funktionen abzurufen.
+Um eine über HTTP ausgelöste Funktion aufzurufen, benötigen Sie die URL der Funktion, wenn sie in Ihrer Funktions-App bereitgestellt ist. Diese URL beinhaltet alle erforderlichen [Funktionstasten](functions-bindings-http-webhook-trigger.md#authorization-keys). Sie können die Erweiterung verwenden, um diese URLs für Ihre bereitgestellten Funktionen abzurufen.
 
 1. Drücken Sie die F1-Taste, um die Befehlspalette zu öffnen. Suchen Sie dann den Befehl **Azure Functions: Funktions-URL kopieren**, und führen Sie ihn aus.
 
@@ -413,7 +413,7 @@ Nachdem Sie diese Schritte ausgeführt haben, enthalten Aufrufe an die zugrunde 
 
 Die Azure Functions-Erweiterung bietet eine nützliche grafische Benutzeroberfläche im Bereich für die Interaktion mit Ihren Funktions-Apps in Azure. Die gleiche Funktionalität steht auch in Form von Befehlen in der Befehlspalette (F1) zur Verfügung. Diese Azure Functions Befehle sind verfügbar:
 
-|Azure Functions-Befehl  | Beschreibung  |
+|Azure Functions-Befehl  | BESCHREIBUNG  |
 |---------|---------|
 |**Neue Einstellungen hinzufügen**  |  Erstellt eine neue Anwendungseinstellung in Azure. Weitere Informationen finden Sie unter [Veröffentlichen von Anwendungseinstellungen](#publish-application-settings). Möglicherweise müssen Sie [diese Einstellung in Ihre lokalen Einstellungen herunterladen](#download-settings-from-azure). |
 | **Bereitstellungsquelle konfigurieren** | Verbindet Ihre Funktions-App in Azure mit einem lokalen Git-Repository. Weitere Informationen finden Sie unter [Continuous Deployment für Azure Functions](functions-continuous-deployment.md). |

@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Y
 description: Hier erfahren Sie, wie Sie eine Terraform-Basisvorlage in Azure mithilfe von Yeoman erstellen.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159168"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472144"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Tutorial: Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Yeoman
 
@@ -25,7 +25,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - **Visual Studio Code**: Laden Sie [hier](https://code.visualstudio.com/download) Visual Studio Code für Ihre Plattform herunter.
-- **Terraform**: [Installieren Sie Terraform](/azure/virtual-machines/linux/terraform-install-configure ), um das von Yeoman erstellte Modul auszuführen.
+- **Terraform**: [Installieren Sie Terraform](terraform-install-configure.md), um das von Yeoman erstellte Modul auszuführen.
 - **Docker**: [Installieren Sie Docker](https://www.docker.com/get-started), um das vom Yeoman-Generator erstellte Modul auszuführen.
 - **Programmiersprache Go**: [Installieren Sie Go](https://golang.org/), da es sich bei den von Yeoman generierten Testfällen um Code in der Sprache Go handelt.
 
@@ -204,7 +204,7 @@ Um zu bestätigen, dass Docker wirklich ausgeführt wird, geben Sie `docker info
 
 1. Nach einigen Augenblicken wird die Meldung **ERFOLGREICH** angezeigt.
 
-    ![ERFOLGREICH](media/terraform-vscode-module-generator/ymg-pass.png)
+    ![PASS](media/terraform-vscode-module-generator/ymg-pass.png)
 
 1. Geben Sie `exit` ein, um den Test abzuschließen und die Docker-Umgebung zu beenden.
 

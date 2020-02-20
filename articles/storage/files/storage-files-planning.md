@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157215"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368619"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -177,8 +177,6 @@ Dieser Abschnitt gilt nur für Standard-Dateifreigaben. Alle Premium-Dateifreiga
 Standarddateifreigaben mit einer Kapazitätsgrenze von 100 TiB sind in allen Azure-Regionen allgemein verfügbar.
 
 - LRS: Alle Regionen außer „Südafrika, Norden“ und „Südafrika, Westen“.
-   - „USA, Osten“ und „Europa, Westen“: Alle neuen Konten werden unterstützt. Für eine kleine Anzahl von vorhandenen Konten wurde der Upgradevorgang noch nicht abgeschlossen. Sie können überprüfen, ob der Upgradevorgang für Ihre vorhandenen Speicherkonten abgeschlossen ist, indem Sie versuchen, [große Dateifreigaben zu aktivieren](storage-files-how-to-create-large-file-share.md).
-
 - ZRS: Alle Regionen außer „Japan, Osten“, „Europa, Norden“ und „Südafrika, Norden“.
 - GRS/GZRS: Wird nicht unterstützt.
 

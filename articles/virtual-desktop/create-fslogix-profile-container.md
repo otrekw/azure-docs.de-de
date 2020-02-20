@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483647"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368913"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
@@ -38,7 +38,7 @@ Bevor Sie einen FSLogix-Profilcontainer für einen Hostpool erstellen können, m
 
 - Einrichten und Konfigurieren von Windows Virtual Desktop
 - Bereitstellen eines Windows Virtual Desktop-Hostpools
-- [Registrieren für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [Registrieren für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>Einrichten Ihres Azure NetApp Files-Kontos
 

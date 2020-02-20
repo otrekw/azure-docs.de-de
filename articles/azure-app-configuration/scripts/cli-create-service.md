@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898718"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468353"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
@@ -24,10 +24,6 @@ In diesem Beispielskript wird eine neue Instanz von Azure App Configuration in e
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
-
-Führen Sie zunächst den folgenden Befehl aus, um die CLI-Erweiterung für Azure App Configuration zu installieren:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -71,8 +67,8 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine neue Ressourcen
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Erstellt eine App Configuration-Speicherressource. |
-| [az appconfig credential list](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Listet die Zugriffsschlüssel für einen App Configuration-Speicher auf. |
+| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | Erstellt eine App Configuration-Speicherressource. |
+| [az appconfig credential list](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Listet die Zugriffsschlüssel für einen App Configuration-Speicher auf. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,26 +1,20 @@
 ---
 title: Registrieren für Office 365 mit einem Azure-Konto | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit einem Azure-Konto ein Office 365-Abonnement erstellen
-services: ''
-documentationcenter: ''
 author: JiangChen79
-manager: adpick
-editor: ''
+ms.reviewer: adwise
 tags: billing,top-support-issue
-ms.assetid: ''
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/21/2020
 ms.author: banders
-ms.openlocfilehash: 034df0de027a50c61e5a7cab3d1e829446002c86
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b38800a990056d7de0b6978573ddc19c80503a1d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986150"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199924"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Registrieren für ein Office 365-Abonnement mit Ihrem Azure-Konto
 Wenn Sie Azure-Abonnent sind, können Sie zum Registrieren für ein Office 365-Abonnement Ihr Azure-Konto verwenden. Wenn Sie Mitglied einer Organisation sind, die über ein Azure-Abonnement verfügt, können Sie Office 365-Abonnements für Benutzer in der vorhandenen Azure Active Directory-Instanz (Azure AD) erstellen. Registrieren Sie sich für Office 365 mit einem Konto mit der Berechtigung „Globaler Administrator“ oder „Abrechnungsadministrator“ in Ihrem Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Überprüfen meiner Kontoberechtigungen in Azure AD](#RoleInAzureAD) und [Zuweisen von Administratorrollen in Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md).

@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Servi
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform veranschaulicht wird
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708273"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472246"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Tutorial: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service unter Verwendung von Terraform
 
@@ -25,7 +25,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](terraform-install-configure.md).
 
 - **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Notieren Sie sich die Werte für „appId“, „displayName“, „password“ und „tenant“.
 

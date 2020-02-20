@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115900"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368834"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Bereitstellen eines Verwaltungstools mit PowerShell
 
@@ -36,7 +36,7 @@ Die folgenden Browser sind mit dem Verwaltungstool kompatibel:
 Bevor Sie das Verwaltungstool bereitstellen, benötigen Sie einen Azure Active Directory (Azure AD)-Benutzer, um eine App-Registrierung zu erstellen und die Verwaltungsbenutzeroberfläche bereitzustellen. Für diesen Benutzer gilt Folgendes:
 
 - Er muss über die Berechtigung zum Erstellen von Ressourcen in Ihrem Azure-Abonnement verfügen.
-- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) befolgen.
+- Er muss über die Berechtigung zum Erstellen einer Azure AD-Anwendung verfügen. Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Benutzer über die erforderlichen Berechtigungen verfügt, indem Sie die Anweisungen unter [Erforderliche Berechtigungen](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) befolgen.
 
 Um das Verwaltungstool erfolgreich bereitzustellen und zu konfigurieren, müssen Sie zunächst die folgenden PowerShell-Skripts aus dem [GitHub-Repository „RDS-Templates“](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) herunterladen und im selben Ordner auf dem lokalen Computer speichern.
 

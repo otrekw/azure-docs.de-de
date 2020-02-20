@@ -7,16 +7,16 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 03150ef3a8799cd0f84fb1bc03f2fd712cddd541
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889798"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471651"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure SQL-Datenbank und SQL Server
 
@@ -27,13 +27,13 @@ Laden Sie zunächst den Spark-Connector für SQL DB aus dem GitHub-Repository [a
 
 ## <a name="official-supported-versions"></a>Offiziell unterstützte Versionen
 
-| Komponente                            |Version                  |
-| :----------------------------------- | :---------------------- |
-| Apache Spark                         |2.0.2 oder höher           |
-| Scala                                |2.10 oder höher            |
-| Microsoft JDBC-Treiber für SQL Server |6.2 oder höher             |
-| Microsoft SQL Server                 |SQL Server 2008 oder höher |
-| Azure SQL-Datenbank                   |Unterstützt                |
+| Komponente                            | Version                  |
+| :----------------------------------- | :----------------------- |
+| Apache Spark                         | 2.0.2 oder höher           |
+| Scala                                | 2.10 oder höher            |
+| Microsoft JDBC-Treiber für SQL Server | 6.2 oder höher             |
+| Microsoft SQL Server                 | SQL Server 2008 oder höher |
+| Azure SQL-Datenbank                   | Unterstützt                |
 
 Der Spark-Connector für Azure SQL-Datenbank und SQL Server verwendet den Microsoft JDBC-Treiber für SQL Server, um Daten zwischen Spark-Workerknoten und SQL-Datenbanken zu verschieben:
  
@@ -89,7 +89,7 @@ val config = Config(Map(
 ))
 
 //Read all data in table dbo.Clients
-val collection = sqlContext.read.sqlDb(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -118,7 +118,7 @@ import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
 val query = """
               |UPDATE Customers
-              |SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+              |SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
               |WHERE CustomerID = 1;
             """.stripMargin
 
@@ -134,7 +134,7 @@ sqlContext.sqlDBQuery(config)
 ```
 
 ## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>Herstellen einer Verbindung zwischen Spark und Azure SQL-Datenbank per AAD-Authentifizierung
-Sie können unter Verwendung der Azure Active Directory-Authentifizierung (AAD) eine Verbindung mit Azure SQL-Datenbank herstellen. Verwenden Sie die AAD-Authentifizierung für eine zentrale Verwaltung der Identitäten der Datenbankbenutzer und als Alternative zur SQL Server-Authentifizierung.
+Sie können unter Verwendung der Azure Active Directory-Authentifizierung (AAD) eine Verbindung mit Azure SQL-Datenbank herstellen. Verwenden Sie AAD-Authentifizierung zur zentralen Verwaltung von Identitäten von Datenbankbenutzern und als Alternative zur SQL Server-Authentifizierung.
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>Verbindungsherstellung im Authentifizierungsmodus „ActiveDirectoryPassword“
 #### <a name="setup-requirement"></a>Anforderungen für die Einrichtung
 Wenn Sie den Authentifizierungsmodus „ActiveDirectoryPassword“ verwenden, müssen Sie [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) und zugehörige Abhängigkeiten herunterladen und in den Java-Buildpfad einschließen.
@@ -146,13 +146,13 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.windows.net",
   "databaseName"   -> "MyDatabase",
-  "user"           -> "username ",
+  "user"           -> "username",
   "password"       -> "*********",
   "authentication" -> "ActiveDirectoryPassword",
   "encrypt"        -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -169,12 +169,12 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"                   -> "mysqlserver.database.windows.net",
   "databaseName"          -> "MyDatabase",
-  "accessToken"           -> "access_token ",
+  "accessToken"           -> "access_token",
   "hostNameInCertificate" -> "*.database.windows.net",
   "encrypt"               -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -214,7 +214,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ## <a name="next-steps"></a>Nächste Schritte
 Laden Sie – sofern noch nicht geschehen – den Spark-Connector für Azure SQL-Datenbank und SQL Server aus dem GitHub-Repository [azure-sqldb-spark](https://github.com/Azure/azure-sqldb-spark) herunter, und sehen Sie sich die zusätzlichen Ressourcen im Repository an:
 
--   [Azure Databricks-Beispielnotebooks](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Azure Databricks-Beispielnotebooks](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Beispielskripts (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 Es kann auch nützlich sein, den [Leitfaden zu Apache Spark SQL, DataFrames und Datasets Guide](https://spark.apache.org/docs/latest/sql-programming-guide.html) (in englischer Sprache) und die [Azure Databricks-Dokumentation](https://docs.microsoft.com/azure/azure-databricks/) zu lesen.

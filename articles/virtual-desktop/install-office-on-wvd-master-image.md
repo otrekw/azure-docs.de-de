@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539136"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368819"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Installieren von Office für ein VHD-Masterimage
 
@@ -20,20 +20,20 @@ In diesem Artikel erfahren Sie, wie Sie Office 365 ProPlus, OneDrive und andere 
 
 In diesem Artikel wird vorausgesetzt, dass Sie bereits eine VM (virtueller Computer) erstellt haben. Wenn Sie das noch nicht getan haben, führen Sie die Anweisungen unter [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md#create-a-vm) aus.
 
-In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rechte für die VM verfügen, unabhängig davon, ob diese in Azure oder Hyper-V-Manager bereitgestellt wird. Wenn das nicht der Fall ist, führen Sie die Anweisungen unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) aus.
+In diesem Artikel wird außerdem davon ausgegangen, dass Sie über erhöhte Rechte für die VM verfügen, unabhängig davon, ob diese in Azure oder Hyper-V-Manager bereitgestellt wird. Wenn das nicht der Fall ist, führen Sie die Anweisungen unter [Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen](../role-based-access-control/elevate-access-global-admin.md) aus.
 
 >[!NOTE]
 >Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Installieren von Office im Modus „Aktivierung gemeinsam genutzter Computer“
 
-Mit der Aktivierung gemeinsam genutzter Computer können Sie Office 365 ProPlus auf einem Computer in Ihrem Unternehmen bereitstellen, auf den mehrere Benutzer zugreifen. Weitere Informationen zur Aktivierung gemeinsam genutzter Computer finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
+Mit der Aktivierung gemeinsam genutzter Computer können Sie Office 365 ProPlus auf einem Computer in Ihrem Unternehmen bereitstellen, auf den mehrere Benutzer zugreifen. Weitere Informationen zur Aktivierung gemeinsam genutzter Computer finden Sie im [Überblick über die Aktivierung gemeinsam genutzter Computer für Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
 
 Verwenden Sie das [Office-Bereitstellungstool](https://www.microsoft.com/download/details.aspx?id=49117), um Office zu installieren. Windows 10 Enterprise (mehrere Sitzungen) unterstützt nur die folgenden Versionen von Office:
 - Office 365 ProPlus
 - Office 365-Business, das ein Microsoft 365 Business-Abonnement enthält
 
-Für das Office-Bereitstellungstool wird eine XML-Konfigurationsdatei benötigt. Informationen zum Anpassen des folgenden Beispiels finden Sie unter [Konfigurationsoptionen für das Office-Bereitstellungstool](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Für das Office-Bereitstellungstool wird eine XML-Konfigurationsdatei benötigt. Informationen zum Anpassen des folgenden Beispiels finden Sie unter [Konfigurationsoptionen für das Office-Bereitstellungstool](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Mit dieser von uns bereitgestellten XML-Beispieldatei für die Konfiguration wird Folgendes durchgeführt:
 
@@ -54,7 +54,7 @@ Folgendes wird dagegen von dieser XML-Beispielkonfigurationsdatei nicht erledigt
 >[!NOTE]
 >Die Aktivierung gemeinsam genutzter Computer kann über Gruppenrichtlinienobjekte (GPOs) oder Registrierungseinstellungen eingerichtet werden. Das Gruppenrichtlinienobjekt befindet sich unter **Computerkonfiguration\\Richtlinien\\Administrative Vorlagen\\Microsoft Office 2016 (Computer)\\Lizenzierungseinstellungen**.
 
-Das Office-Bereitstellungstool enthält die Datei „setup.exe“. Führen Sie den folgenden Befehl an einer Befehlszeile aus, um Office zu installieren:
+Das Office-Bereitstellungstool enthält die Datei „setup.exe“. Führen Sie den folgenden Befehl auf einer Befehlszeile aus, um Office zu installieren:
 
 ```batch
 Setup.exe /configure configuration.xml

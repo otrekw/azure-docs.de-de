@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/16/2019
-ms.openlocfilehash: ba632a98c21926ec28606def128cc068abf47f53
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646624"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460023"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Entwickeln von Apache Storm-Topologien mit Python in HDInsight
 
@@ -26,7 +26,7 @@ Erfahren Sie, wie Sie eine [Apache Storm](https://storm.apache.org/)-Topologie e
 
 * Ein Apache Storm-Cluster in HDInsight. Siehe [Erstellen von Apache Hadoop-Clustern im Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md), und wählen Sie **Storm** für **Clustertyp** aus.
 
-* Eine lokale Storm-Entwicklungsumgebung (optional). Eine lokale Storm-Umgebung ist nur erforderlich, wenn die Topologie lokal ausgeführt werden soll. Weitere Informationen finden Sie unter [Setting up a development environment](http://storm.apache.org/releases/current/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
+* Eine lokale Storm-Entwicklungsumgebung (optional). Eine lokale Storm-Umgebung ist nur erforderlich, wenn die Topologie lokal ausgeführt werden soll. Weitere Informationen finden Sie unter [Setting up a development environment](https://storm.apache.org/releases/current/Setting-up-development-environment.html) (Einrichten einer Entwicklungsumgebung).
 
 * [Python 2.7 oder höher](https://www.python.org/downloads/)
 
@@ -38,7 +38,7 @@ Erfahren Sie, wie Sie eine [Apache Storm](https://storm.apache.org/)-Topologie e
 
 Apache Storm wurde für den Einsatz mit Komponenten entwickelt, die in einer beliebigen Programmiersprache geschrieben wurden. Die Komponenten müssen die Thrift-Definition für Storm verarbeiten können. Für Python wird ein Modul als Teil des Apache Storm-Projekts bereitgestellt, das Ihnen eine problemlose Verknüpfung mit Storm ermöglicht. Sie finden dieses Modul unter [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
 
-Storm ist ein Java-Prozess, der auf der Java Virtual Machine (JVM) ausgeführt wird. In anderen Sprachen geschriebene Komponenten werden als Unterprozesse ausgeführt. Storm kommuniziert mit diesen Unterprozessen über JSON-Meldungen, die über „stdin/stdout“ gesendet werden. Weitere Informationen zur Kommunikation zwischen Komponenten finden Sie in der Dokumentation zum [Multi-Lang Protocol](https://storm.apache.org/documentation/Multilang-protocol.html) .
+Storm ist ein Java-Prozess, der auf der Java Virtual Machine (JVM) ausgeführt wird. In anderen Sprachen geschriebene Komponenten werden als Unterprozesse ausgeführt. Storm kommuniziert mit diesen Unterprozessen über JSON-Meldungen, die über „stdin/stdout“ gesendet werden. Weitere Informationen zur Kommunikation zwischen Komponenten finden Sie in der Dokumentation zum [Multi-Lang Protocol](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
 ## <a name="python-with-the-flux-framework"></a>Python mit dem Flux-Framework
 

@@ -6,23 +6,18 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668548"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459387"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
-
 ## <a name="summary"></a>Zusammenfassung
-In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit Mobile Apps] auf, das Sie zuerst abschließen müssen.
+In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit mobilen Apps] auf, das Sie zuerst abschließen müssen.
 
 ## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
@@ -34,7 +29,7 @@ In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apach
 
 Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktiviert wurde. In Visual Studio:
 
-* Öffnen Sie das Projekt, das Sie im Tutorial [Erste Schritte mit Mobile Apps] erstellt haben.
+* Öffnen Sie das Projekt, das Sie im Tutorial [Erste Schritte mit mobilen Apps] erstellt haben.
 * Führen Sie Ihre Anwendung im **Google Android-Emulator** aus.
 * Vergewissern Sie sich, dass nach dem Start der App ein unerwarteter Verbindungsfehler angezeigt wird.
 
@@ -47,7 +42,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
    | Anbieter | Name des SDK-Anbieters | OAuth-Host |
    |:--- |:--- |:--- |
    | Azure Active Directory | aad | https://login.microsoftonline.com |
-   | Facebook | Facebook | https://www.facebook.com |
+   | Facebook | facebook | https://www.facebook.com |
    | Google | Google | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
    | Twitter | Twitter | https://api.twitter.com |
@@ -88,7 +83,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
     Die Login()-Methode startet die Authentifizierung mit dem Anbieter. Die login()-Methode ist eine asynchrone Funktion, die eine JavaScript-Zusage zurückgibt.  Der Rest der Initialisierung wird in der Zusagenantwort platziert, sodass sie erst ausgeführt wird, wenn die login()-Methode abgeschlossen ist.
 
 4. Ersetzen Sie in dem gerade hinzugefügten Code `SDK_Provider_Name` durch den Namen des Login-Anbieters. Verwenden Sie für Azure Active Directory beispielsweise `client.login('aad')`.
-5. Führen Sie das Projekt aus.  Wenn die Initialisierung des Projekts abgeschlossen ist, zeigt Ihre Anwendung die OAuth-Anmeldeseite für den ausgewählten Authentifizierungsanbieter an.
+5. Führen Sie Ihr Projekt aus.  Wenn die Initialisierung des Projekts abgeschlossen ist, zeigt Ihre Anwendung die OAuth-Anmeldeseite für den ausgewählten Authentifizierungsanbieter an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über die [Authentifizierung] mit Azure App Service.
@@ -101,7 +96,7 @@ Erfahren Sie, wie Sie die SDKs nutzen,
 * [Node.js Server-SDK]
 
 <!-- URLs. -->
-[Erste Schritte mit Mobile Apps]: app-service-mobile-cordova-get-started.md
+[Erste Schritte mit mobilen Apps]: app-service-mobile-cordova-get-started.md
 [Whitelist Guide]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
 [Pushbenachrichtigungen]: app-service-mobile-cordova-get-started-push.md
 [Authentifizierung]: app-service-mobile-auth.md

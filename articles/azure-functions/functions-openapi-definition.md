@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 05/08/2019
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 56e2182b408b4e8b1f89eee7458a27c5dd54bb55
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 9465209467c83f7de075d16e724459c307d55bd3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562012"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210207"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Erstellen einer OpenAPI-Definition für eine serverlose API mithilfe von Azure API Management
 
@@ -45,7 +45,7 @@ Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der
 
 1. Wählen Sie **Weitere Vorlagen...** und dann **Vorlagen fertigstellen und anzeigen** aus.
 
-1. Zum Auswählen des HTTP-Triggers geben Sie `TurbineRepair` als **Namen** der Funktion ein, wählen Sie `Function` als **[Authentifizierungsebene](functions-bindings-http-webhook.md#http-auth)** aus, und wählen Sie dann **Erstellen** aus.  
+1. Zum Auswählen des HTTP-Triggers geben Sie `TurbineRepair` als **Namen** der Funktion ein, wählen Sie `Function` als **[Authentifizierungsebene](functions-bindings-http-webhook-trigger.md#http-auth)** aus, und wählen Sie dann **Erstellen** aus.  
 
     ![Erstellen der HTTP-Funktion für OpenAPI](media/functions-openapi-definition/select-http-trigger-openapi.png)
 
@@ -135,7 +135,7 @@ Jetzt können Sie die OpenAPI-Definition generieren.
 
     ![Erstellen eines neuen API Management-Diensts](media/functions-openapi-definition/new-apim-service-openapi.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | Global eindeutiger Name | Es wird ein Name auf der Grundlage des Namens Ihrer Funktions-App generiert. |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Ressource erstellt wird. |  

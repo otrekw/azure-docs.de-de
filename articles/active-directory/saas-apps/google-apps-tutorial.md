@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 02/14/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf148ec64ceed28577224741033258bad0e62372
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d5ef5816759074073c57ef0f616ddea4a159956f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047970"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370350"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit G Suite
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie G Suite in Azure Active Directory (Azu
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei G Suite anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -136,6 +136,14 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
 
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: 
+
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
+
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Konfiguration für **Google Cloud Platform** vornehmen möchten:
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com`.
@@ -149,6 +157,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | `https://google.com` |
     | `https://google.com/a/<yourdomain.com>` |
     
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: 
+    
+    | |
+    |--|
+    | `https://google.com` |
+    | `https://google.com/a/<yourdomain.com>` |
+
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. G Suite stellt bei der SSO-Konfiguration keinen Wert für die Entitäts-ID bereit. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) deaktivieren, lautet der ID-Wert daher `google.com`. Wenn Sie die Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) aktivieren, lautet er `google.com/a/<yourdomainname.com>`. Zum Aktivieren/Deaktivieren der Option **Use a domain specific issuer** (Domänenspezifischen Aussteller verwenden) müssen Sie zum Abschnitt **Konfigurieren des einmaligen Anmeldens für G Suite** (weiter unten in diesem Tutorial) wechseln. Weitere Informationen erhalten Sie vom [Supportteam für den G Suite-Client](https://www.google.com/contact/).
 
@@ -247,14 +262,18 @@ Wenn Sie im Zugriffsbereich auf die Kachel „G Suite“ klicken, sollten Sie au
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
 - [Konfigurieren der Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)
+
 - [G Suite mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+
 - [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/protect-gsuite)
+
 <!--Image references-->
 
 [10]: ./media/google-apps-tutorial/gapps-security.png

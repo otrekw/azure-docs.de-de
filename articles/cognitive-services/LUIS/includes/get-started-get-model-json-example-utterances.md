@@ -5,19 +5,19 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.date: 10/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba400beb13d0bd4b29eee0c60617ec7ad128dd77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e879afdbd4c34e9d74405644de86421fb2cbab46
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505827"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279443"
 ---
-Die Beispieläußerungen folgen einem bestimmten Format. 
+Die Beispieläußerungen folgen einem bestimmten Format.
 
 Das Feld `text` enthält den Text der Beispieläußerung. Das Feld `intentName` muss dem Namen einer vorhandenen Absicht in der LUIS-App entsprechen. `entityLabels` ist ein Pflichtfeld. Wenn Sie keine Bezeichnungen für Entitäten angeben möchten, geben Sie ein leeres Array an.
 

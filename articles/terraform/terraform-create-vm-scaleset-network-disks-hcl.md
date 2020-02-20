@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer Azure-VM-Skalierungsgruppe unter Verwendung vo
 description: Hier erfahren Sie, wie Sie mithilfe von Terraform eine Azure-VM-Skalierungsgruppe konfigurieren und mit einer Version versehen.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369472"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472229"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Tutorial: Erstellen einer Azure-VM-Skalierungsgruppe unter Verwendung von Terraform
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie [Azure Cloud Shell](/azure/cloud-shell/
 
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **Installieren von Terraform**: Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Installieren von Terraform**: Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](terraform-install-configure.md).
 
 - **Erstellen eines SSH-Schlüsselpaars**: Weitere Informationen finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
 

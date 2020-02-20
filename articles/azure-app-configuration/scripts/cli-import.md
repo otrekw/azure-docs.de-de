@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: bb661e6d4497a85cf2ef445fc39774e93a04cc99
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b0704c6262451cef615355e871ce7f26005b3132
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899421"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467666"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importieren in einen Azure-App-Konfigurationsspeicher
 
@@ -31,10 +31,6 @@ Dieses Beispielskript importiert Schlüssel-Wert-Einstellungen in einen Azure Ap
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
-
-Führen Sie zunächst den folgenden Befehl aus, um die CLI-Erweiterung für Azure App Configuration zu installieren:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -53,7 +49,7 @@ Dieses Skript verwendet die folgenden Befehle, um in einen App Configuration-Spe
 
 | Get-Help | Notizen |
 |---|---|
-| [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | Importiert in eine App Configuration-Speicherressource. |
+| [az appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Importiert in eine App Configuration-Speicherressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

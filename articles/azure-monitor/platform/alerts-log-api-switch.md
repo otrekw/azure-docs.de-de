@@ -8,17 +8,20 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680748"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425150"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Wechseln der API-Einstellung für Protokollwarnungen
 
 > [!NOTE]
 > Der angegebene Inhalt gilt nur für Benutzer der öffentlichen Azure-Cloud und **nicht** für Azure Government oder Azure China-Cloud.  
+
+> [!NOTE]
+> Sobald sich ein Benutzer dafür entscheidet, zur neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur Verwendung der älteren [Legacywarnungs-API von Log Analytics](api-alerts.md) mehr möglich.
 
 Bis vor kurzem haben Sie Warnungsregeln im Microsoft Operations Management Suite-Portal verwaltet. Die neue Warnungsfunktion wurde in verschiedene Dienste in Microsoft Azure integriert (darunter Log Analytics), und wir haben Sie gebeten, [Ihre Warnungsregeln aus dem OMS-Portal auf Azure](alerts-extend.md) zu erweitern. Um aber eine minimale Beeinträchtigung für Kunden zu gewährleisten, hat der Prozess die befehlsorientierte Benutzerschnittstellen für ihre Nutzung nicht verändert: die [Warnungs-API von Log Analytics](api-alerts.md), basierend auf SavedSearch.
 
@@ -50,9 +53,6 @@ Der Prozess des Verschiebens von Warnungsregeln aus der [Warnungsregel-API von L
 
 - Eine Änderung der API-Einstellung und des Zugriffs auf Ihre Regeln über eine neue API.
 - Ein geänderter Ressourcen-URI für Warnungsregeln, der die IDs, die in der [Legacywarnungs-API von Log Analytics](api-alerts.md) verwendet werden, anstelle des Warnungsregelnamens in dieser Struktur `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` enthält. Der Anzeigename der Warnungsregel bleibt unverändert.
-
-> [!NOTE]
-> Sobald sich ein Benutzer dafür entscheidet, zur neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) zu wechseln, ist keine Rückkehr zur Verwendung der älteren [Legacywarnungs-API von Log Analytics](api-alerts.md) mehr möglich.
 
 Jeder Kunde, der freiwillig auf die neuen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) umsteigen und die Nutzung der [Legacywarnungs-API von Log Analytics](api-alerts.md) blockieren möchte, kann dies tun, indem er einen PUT-Aufruf für die unten genannte API ausführt, um alle Warnungsregeln, die dem spezifischen Log Analytics-Arbeitsbereich zugeordnet sind, zu wechseln.
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 056b2d2b1951b6630b61bbd6fd8a8c38b272900a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: bbb2ae0b10af795d71f0a78c045bec0c216ee378
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966841"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368417"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,8 +30,6 @@ ms.locfileid: "76966841"
 
 
 ## <a name="change-model-programmatically"></a>Programmgesteuertes Ändern des Modells
-
-Verwenden Sie Go, um der Anwendung eine [API](https://aka.ms/luis-apim-v3-authoring) für eine durch maschinelles Lernen erworbene Entität hinzuzufügen.
 
 1. Erstellen Sie eine neue Datei mit dem Namen `model.js`. Fügen Sie den folgenden Code hinzu:
 

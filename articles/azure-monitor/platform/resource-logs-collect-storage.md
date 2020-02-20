@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980071"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467180"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivieren von Azure-Ressourcenprotokollen in einem Speicherkonto
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen.  In diesem Artikel wird beschrieben, wie Plattformprotokolle in einem Azure-Speicherkonto erfasst werden, um Daten für die Archivierung beizubehalten.
@@ -33,7 +33,7 @@ Senden Sie Plattformprotokolle an den Speicher und andere Ziele, indem Sie eine 
 
 
 ## <a name="collect-data-from-compute-resources"></a>Erfassen von Daten von Computeressourcen
-Mit den Diagnoseeinstellungen werden Ressourcenprotokolle für Azure-Computeressourcen wie alle anderen Ressourcen erfasst, jedoch nicht deren Gastbetriebssystem oder die Workloads. Um diese Daten zu erfassen, installieren Sie den [Windows Azure-Diagnoseagenten](diagnostics-extension-overview.md). Weitere Informationen finden Sie unter [Speichern und Anzeigen von Diagnosedaten in Azure Storage](diagnostics-extension-to-storage.md).
+Mit den Diagnoseeinstellungen werden Ressourcenprotokolle für Azure-Computeressourcen wie alle anderen Ressourcen erfasst, jedoch nicht deren Gastbetriebssystem oder die Workloads. Um diese Daten zu erfassen, installieren Sie den [Windows Azure-Diagnoseagenten](diagnostics-extension-overview.md). 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>Schema der Plattformprotokolle im Speicherkonto

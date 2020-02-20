@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452430"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368851"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -36,8 +36,8 @@ Sie müssen eine Azure Active Directory-App-Registrierung und einen Log Analytic
 
 Außerdem müssen Sie diese beiden PowerShell-Module installieren, bevor Sie beginnen:
 
-- [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Azure AD-Modul](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Azure PowerShell-Modul](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Azure AD-Modul](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Stellen Sie sicher, dass Ihre Abonnement-ID zur Hand haben, wenn Sie sich anmelden.
 
@@ -253,7 +253,7 @@ Sie können auch mit Benutzern auf dem Sitzungshost interagieren:
 
     - Schwellenwert: Mehr als 80 % werden als fehlerhaft markiert.
 
-- [Benutzereingabeverzögerung pro Sitzung(\*)\\Maximale Eingabeverzögerung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Benutzereingabeverzögerung pro Sitzung(\*)\\Maximale Eingabeverzögerung](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Schwellenwert: Mehr als 2000 ms werden als fehlerhaft markiert.
 

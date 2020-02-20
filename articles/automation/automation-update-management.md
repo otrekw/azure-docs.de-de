@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513319"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443838"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -67,12 +67,12 @@ Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Ana
 
 ### <a name="supported-client-types"></a>Unterstützte Clienttypen
 
-Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen. Patchen erfordert einen Hybrid Runbook Worker. Informationen zu den Anforderungen für Hybrid Runbook Worker finden Sie in den Installationsleitfäden für [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) und [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
+Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen. Patchen erfordert einen Hybrid Runbook Worker. Informationen zu den Anforderungen für Hybrid Runbook Worker finden Sie in den Installationsleitfäden für [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) und [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt nur das Ausführen von Bewertungen für dieses Betriebssystem. Patchen wird nicht unterstützt, da der [Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) für Windows Server 2008 R2 nicht unterstützt wird. |
+|Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt nur das Ausführen von Bewertungen für dieses Betriebssystem. Patchen wird nicht unterstützt, da der [Hybrid Runbook Worker](automation-windows-hrw-install.md) für Windows Server 2008 R2 nicht unterstützt wird. |
 |CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
@@ -155,7 +155,7 @@ Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von dieser Lösung unterstützt werden:
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
@@ -214,7 +214,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="windows"></a>Windows
 
-|Klassifizierung  |Beschreibung  |
+|Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
 |Kritische Updates     | Ein Update für ein bestimmtes Problem, mit dem ein entscheidender, nicht sicherheitsrelevanter Fehler behoben wird.        |
 |Sicherheitsupdates     | Ein Update für ein produktspezifisches, sicherheitsrelevantes Problem.        |
@@ -227,7 +227,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="linux-2"></a>Linux
 
-|Klassifizierung  |Beschreibung  |
+|Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |

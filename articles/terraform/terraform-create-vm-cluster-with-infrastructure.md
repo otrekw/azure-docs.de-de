@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL'
 description: Hier erfahren Sie, wie Sie Terraform und HCL verwenden, um einen Cluster mit virtuellen Linux-Computern mit Lastenausgleich in Azure zu erstellen.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665370"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470869"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL
 
@@ -28,11 +28,11 @@ Dabei lernen Sie Folgendes:
 ## <a name="1-set-up-azure-authentication"></a>1. Einrichten der Azure-Authentifizierung
 
 > [!NOTE]
-> Wenn Sie [Terraform-Umgebungsvariablen verwenden](/azure/virtual-machines/linux/terraform-install-configure) oder dieses Tutorial in der [Azure Cloud Shell](terraform-cloud-shell.md) ausführen, überspringen Sie diesen Abschnitt.
+> Wenn Sie [Terraform-Umgebungsvariablen verwenden](terraform-install-configure.md) oder dieses Tutorial in der [Azure Cloud Shell](terraform-cloud-shell.md) ausführen, überspringen Sie diesen Abschnitt.
 
 In diesem Abschnitt generieren Sie einen Azure-Dienstprinzipal und zwei Terraform-Konfigurationsdateien mit den Anmeldeinformationen aus dem Sicherheitsprinzipal.
 
-1. [Richten Sie einen Azure AD-Dienstprinzipal ein](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure), damit Terraform Ressourcen in Azure bereitstellen kann. Notieren Sie sich beim Erstellen des Prinzipals die Werte für die Abonnement-ID, den Mandanten, die appID und das Kennwort.
+1. [Richten Sie einen Azure AD-Dienstprinzipal ein](terraform-install-configure.md#set-up-terraform-access-to-azure), damit Terraform Ressourcen in Azure bereitstellen kann. Notieren Sie sich beim Erstellen des Prinzipals die Werte für die Abonnement-ID, den Mandanten, die appID und das Kennwort.
 
 2. Öffnen Sie eine Eingabeaufforderung.
 

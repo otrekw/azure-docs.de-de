@@ -1,20 +1,20 @@
 ---
 title: Reagieren auf Kartenereignisse mithilfe von Event Grid | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Event Grid auf Microsoft Azure Maps-Ereignisse reagieren.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ca77d4704fb71972090ce0b96dfdb888ef7d1d2c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f7e5be8d4aca85c9574db18ec9df8a7f30850d06
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190330"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210105"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reagieren auf Azure Maps-Ereignisse mithilfe von Event Grid 
 
@@ -30,7 +30,7 @@ Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein
 
 Event Grid verwendet [Ereignisabonnements](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) zum Weiterleiten von Ereignisnachrichten an Abonnenten. Ein Azure Maps-Konto gibt die folgenden Ereignistypen aus: 
 
-| Ereignistyp | BESCHREIBUNG |
+| Ereignistyp | Beschreibung |
 | ---------- | ----------- |
 | Microsoft.Maps.GeofenceEntered | Wird ausgelöst, wenn empfangene Koordinaten sich von außerhalb eines bestimmten Geofence nach innerhalb bewegt haben. |
 | Microsoft.Maps.GeofenceExited | Wird ausgelöst, wenn empfangene Koordinaten sich von innerhalb eines bestimmten Geofence nach außerhalb bewegt haben. |

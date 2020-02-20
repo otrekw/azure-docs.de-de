@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d0491a5178331c53248d9c764d9ff1c6a6970683
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806778"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425781"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -66,16 +66,16 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 01.07.2019 | date |
-| publisher | Microsoft.Azure.KeyVault | Zeichenfolge |
-| type | KeyVaultForWindows | Zeichenfolge |
-| typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | Zeichenfolge |
-| certificateStoreName | MY | Zeichenfolge |
+| publisher | Microsoft.Azure.KeyVault | string |
+| type | KeyVaultForWindows | string |
+| typeHandlerVersion | 1.0 | INT |
+| pollingIntervalInS | 3600 | string |
+| certificateStoreName | MY | string |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | Zeichenfolge |
+| certificateStoreLocation  | LocalMachine | string |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
 
@@ -169,7 +169,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
          az vm extension set -n "KeyVaultForWindows" `
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
-         --vmss-name "<vmName>" `
+         --vm-name "<vmName>" `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\ <observedCerts>\"] }}'
     ```
 

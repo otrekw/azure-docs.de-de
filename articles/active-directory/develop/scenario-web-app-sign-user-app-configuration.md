@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f15006f9c7f2778c986d1977123e1a396c4317f3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d54103cad8a3550bdc300cba2308397dd1ce3d6c
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701602"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425577"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie den Code für Ihre Web-App zur Benutzeranmeldung konfiguri
 <!-- This section can be in an include for Web App and Web APIs -->
 Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API) verwendet:
 
-| Plattform | Bibliothek | Beschreibung |
+| Plattform | Bibliothek | BESCHREIBUNG |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identitätsmodellerweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | Die Microsoft Identity-Modellerweiterung für .NET schlägt bei der direkten Verwendung durch ASP.NET und ASP.NET Core eine Reihe von DLLs vor, die unter .NET Framework und .NET Core ausgeführt werden. Über eine ASP.NET-/ASP.NET Core-Web-App können Sie mithilfe der **TokenValidationParameters**-Klasse die Tokenvalidierung steuern (insbesondere in einigen Partnerszenarien). |
 | ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | Unterstützung für Java-Webanwendungen |
@@ -38,25 +38,25 @@ Die folgenden Bibliotheken werden zum Schützen einer Web-App (und einer Web-API
 
 Wählen Sie die Registerkarte aus, die der gewünschten Plattform entspricht:
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus [Kapitel 1 des inkrementellen Tutorials zu ASP.NET Core-Web-Apps](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg).
 
 In diesem Tutorial finden Sie auch ausführliche Informationen zur Implementierung.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus dem [ASP.NET-Web-App-Beispiel](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect).
 
 Dieses Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus dem MSAL-Java-Beispiel [Java-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp).
 
 Dieses Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Die Codeausschnitte in diesem und den folgenden Artikeln stammen aus dem MSAL-Python-Beispiel [Python-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-python-webapp).
 
@@ -74,7 +74,7 @@ Webanwendungen, die Benutzer mithilfe der Microsoft Identity Platform anmelden, 
 
 Mitunter können Anwendungen durch `Authority`, eine Verkettung von `Instance` und `TenantId`, parametrisiert werden.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 In ASP.NET Core befinden sich diese Einstellungen in der Datei [appsettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) im Abschnitt „AzureAd“.
 
@@ -93,7 +93,7 @@ In ASP.NET Core befinden sich diese Einstellungen in der Datei [appsettings.json
     // - "organizations" to sign in users in any work or school account
     // - "common" to sign in users with any work or school account or Microsoft personal account
     // - "consumers" to sign in users with a Microsoft personal account only
-    "TenantId": "[Enter the tenantId here]]",
+    "TenantId": "[Enter the tenantId here]",
 
     // Client ID (application ID) obtained from the Azure portal
     "ClientId": "[Enter the Client Id]",
@@ -139,7 +139,7 @@ Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizier
 
 Auf die gleiche Weise wird der Abmelde-URI auf `https://localhost:44321/signout-callback-oidc` festgelegt.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET wird die Anwendung über die Zeilen 12 bis 15 der Datei [Web.config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) konfiguriert.
 
@@ -165,7 +165,7 @@ In ASP.NET wird die Anwendung über die Zeilen 12 bis 15 der Datei [Web.config]
 
 Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, mit diesen URLs übereinstimmen. Das heißt, sie sollten `https://localhost:44326/` sein.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In Java befindet sich die Konfiguration in der Datei [application.properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) unter `src/main/resources`.
 
@@ -179,7 +179,7 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 Im Azure-Portal müssen die Antwort-URIs, die Sie auf der Seite **Authentifizierung** für Ihre Anwendung registrieren müssen, mit den `redirectUri`-Instanzen übereinstimmen, die von der Anwendung definiert werden. Das heißt, sie sollten `http://localhost:8080/msal4jsample/secure/aad` und `http://localhost:8080/msal4jsample/graph/me` sein.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Hier finden Sie die Python-Konfigurationsdatei in [app_config.py](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py):
 
@@ -207,7 +207,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 Der Initialisierungscode ist je nach Plattform unterschiedlich. Für ASP.NET Core und ASP.NET wird die Anmeldung von Benutzern an die OpenID Connect-Middleware delegiert. Die ASP.NET-/ASP.NET Core-Vorlage generiert Webanwendungen für den Azure AD v1.0-Endpunkt (Azure Active Directory). Es müssen Konfigurationsänderungen vorgenommen werden, um diese an den Microsoft Identity Platform-Endpunkt (v2.0) anzupassen. Bei Java erfolgt dies von Spring in Zusammenarbeit mit der Anwendung.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 In ASP.NET Core-Web-Apps (und Web-APIs) ist die Anwendung geschützt, da es das Attribut `[Authorize]` für die Controller bzw. Controlleraktionen gibt. Mit diesem Attribut wird geprüft, ob der Benutzer authentifiziert ist. Der Code für die Anwendungsinitialisierung befindet sich in der Datei „Startup.cs“.
 
@@ -316,7 +316,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 Mithilfe der `AadIssuerValidator`-Klasse kann der Aussteller des Tokens in vielen Fällen überprüft werden. Diese Klasse funktioniert mit v1.0- oder v2.0-Token, Anwendungen mit einem oder mehreren Mandanten oder Anwendungen, die Benutzer mit ihren persönlichen Microsoft-Konten bei der öffentlichen Azure Cloud oder nationalen Clouds anmelden. Sie ist unter [Microsoft.Identity.Web/Resource/AadIssuerValidator.cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs) verfügbar.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Der Code für die Authentifizierung in ASP.NET-Web-Apps und -Web-APIs befindet sich in der Datei [App_Start/Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61).
 
@@ -342,7 +342,7 @@ Der Code für die Authentifizierung in ASP.NET-Web-Apps und -Web-APIs befindet s
  }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Das Java-Beispiel verwendet das Spring-Framework. Die Anwendung ist geschützt, da Sie einen Filter implementieren, der jede HTTP-Antwort abfängt. Im Schnellstart für Java-Web-Apps handelt es sich dabei um den Filter `AuthFilter` in `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
 
@@ -357,7 +357,7 @@ Weitere Informationen finden Sie unter der `doFilter()`-Methode in [AuthFilter.j
 
 Unter [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) finden Sie Einzelheiten zu dem durch diese Methode ausgelösten Autorisierungscodeflow.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Das Python-Beispiel verwendet Flask. Die Initialisierung von Flask und MSAL für Python erfolgt in [app.py#L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
 
@@ -381,22 +381,22 @@ Session(app)
 
 Im nächsten Artikel erfahren Sie, wie An- und Abmeldung ausgelöst werden.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [An- und Abmelden](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [An- und Abmelden](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [An- und Abmelden](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [An- und Abmelden](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)

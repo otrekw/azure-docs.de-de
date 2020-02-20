@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676451"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368769"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Tutorial: Einrichten von Dienstwarnungen
 
@@ -27,9 +27,9 @@ Weitere Informationen zu Azure Service Health finden Sie in der [Azure Service H
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+- [Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](create-service-principal-role-powershell.md)
+- [Tutorial: Erstellen eines Hostpools mit Azure Marketplace](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>Erstellen von Dienstwarnungen
 

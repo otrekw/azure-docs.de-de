@@ -1,20 +1,20 @@
 ---
 title: Übersicht | Microsoft Azure Maps
 description: Hier finden Sie Informationen zu Diensten und Funktionen in Microsoft Azure Maps sowie zur Verwendung in Ihren Anwendungen.
-author: walsehgal
-ms.author: v-musehg
-ms.date: 02/11/2020
+author: farah-alyasari
+ms.author: v-faalya
+ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190356"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443704"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -45,13 +45,13 @@ Im folgenden Video wird Azure Maps ausführlich beschrieben:
 
 Mit dem Azure Maps Web SDK können Sie interaktive Karten mit eigenen Inhalten und Bildern anpassen. Diese interaktive Karte können Sie sowohl für Ihre Webanwendungen als auch für Ihre mobilen Anwendungen verwenden. Das Kartensteuerelement nutzt WebGL, sodass Sie umfangreiche Datasets mit hoher Leistung rendern können. Verwenden Sie für die Entwicklung mit dem SDK JavaScript oder TypeScript.
 
-![Beispielkarte zur Bevölkerungsveränderung](media/about-azure-maps/Introduction_WebMapControl.png)
+![Beispielkarte zur Bevölkerungsveränderung](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android-SDK
 
 Mit dem Azure Maps Android SDK können Sie mobile Kartenanwendungen erstellen. 
 
-![Kartenbeispiele auf einem mobilen Gerät](media/about-azure-maps/AndroidSDK.png)
+![Kartenbeispiele auf einem mobilen Gerät](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Dienste in Azure Maps
 
@@ -73,7 +73,7 @@ Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zur Mobi
 
 Mit dem Renderingdienst können Entwickler webbasierte und mobile Anwendungen mit Kartenfeatures erstellen. Für den Dienst werden entweder qualitativ hochwertige Rastergrafikbilder, die in 19 Zoomebenen verfügbar sind, oder vollständig anpassbare Vektorformat-Kartenbilder verwendet.
 
-![Beispiel für eine Karte vom Renderingdienst](media/about-azure-maps/Introduction_Map.png)
+![Beispiel für eine Karte vom Renderingdienst](media/about-azure-maps/intro_map.png)
 
 Über den Renderingdienst werden jetzt Vorschau-APIs bereitgestellt, um Entwicklern die Verwendung von Satellitenbildern zu ermöglichen. Weitere Informationen finden Sie in der [Dokumentation zu den Render-APIs](https://docs.microsoft.com/rest/api/maps/render).
 
@@ -81,7 +81,7 @@ Mit dem Renderingdienst können Entwickler webbasierte und mobile Anwendungen mi
 
 Der Routendienst umfasst stabile Geometrieberechnungen für reale Infrastruktur und Wegbeschreibungen für verschiedene Transportmodi. Entwickler können mithilfe des Diensts Wegbeschreibungen für eine Reihe von Fortbewegungsmitteln (z. B. PKW, LKW, Fahrrad oder zu Fuß) generieren. Darüber hinaus berücksichtigt der Dienst Faktoren wie Verkehrslage, Gewichtsbeschränkungen oder Transport von Gefahrgütern.
 
-![Beispiel für eine Karte vom Routendienst](media/about-azure-maps/Introduction_Route.png)
+![Beispiel für eine Karte vom Routendienst](media/about-azure-maps/intro_route.png)
 
 Der Routendienst ermöglicht eine Vorschau für erweiterte Funktionen, beispielsweise: 
 
@@ -95,7 +95,7 @@ Ausführliche Informationen zu den Routingfunktionen finden Sie in der [Dokument
 
 Mit dem Suchdienst können Entwickler nach Adressen, Orten, Geschäftseinträgen nach Name oder Kategorie und anderen geografischen Informationen suchen. Mit dem Suchdienst kann eine [inverse Geocodierung](https://en.wikipedia.org/wiki/Reverse_geocoding) für Adressen und Querstraßen basierend auf Breiten- und Längengraden durchgeführt werden.
 
-![Beispiel für eine Suche in einer Karte](media/about-azure-maps/Introduction_Search.png)
+![Beispiel für eine Suche in einer Karte](media/about-azure-maps/intro_search.png)
 
 Der Suchdienst umfasst außerdem erweiterte Funktionen, beispielsweise:
 
@@ -149,7 +149,7 @@ Der Verkehrsinfodienst ist eine Suite von Webdiensten, mit denen Entwickler webb
 * Verkehrsfluss: In Echtzeit ermittelte Geschwindigkeiten und Reisezeiten für alle wichtigen Straßen des Verkehrsnetzes
 * Verkehrsmeldungen: Aktuelle Übersicht über die Staus und Störungen bzw. Unfälle im Straßennetz
 
-![Beispiel für eine Karte mit Verkehrsinformationen](media/about-azure-maps/Introduction_Traffic.png)
+![Beispiel für eine Karte mit Verkehrsinformationen](media/about-azure-maps/intro_traffic.png)
 
 Weitere Informationen finden Sie in der [Dokumentation zu den Verkehrsinfo-APIs](https://docs.microsoft.com/rest/api/maps/traffic).
 

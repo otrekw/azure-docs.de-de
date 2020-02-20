@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991030"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462665"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -105,8 +105,7 @@ Es sind mehrere unterschiedliche DNS-Cachingpakete verfügbar (z.B. dnsmasq). So
 
 > [!NOTE]
 > Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie dessen Eignung für Ihre besonderen Bedürfnisse und außerdem, ob kein anderer Cache installiert ist.
->
->
+
     
 ### <a name="client-side-retries"></a>Clientseitige Wiederholungsversuche
 
@@ -169,8 +168,7 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, so
 * Schutz vor einem Zugriff aus dem Internet, um mögliche Bedrohungen durch externe Agents zu minimieren.
 
 > [!NOTE]
-> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein. Eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) sollte jedem virtuellen DNS-Servercomputer zugewiesen werden. Zusätzliche Informationen zur Leistungsanalyse und zu Optimierungsmöglichkeiten bei Verwendung von Windows Server als DNS-Server finden Sie unter [Leistung der Namensauflösung bei einem rekursiven Windows DNS-Server 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
-> 
+> Wenn Sie virtuelle Azure-Computer als DNS-Server verwenden, sollte IPv6 für optimale Leistung deaktiviert sein. Eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) sollte jedem virtuellen DNS-Servercomputer zugewiesen werden. 
 > 
 
 ### <a name="web-apps"></a>Web-Apps

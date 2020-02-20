@@ -1,21 +1,20 @@
 ---
 title: Optimieren der Cloudinvestitionen mit Azure Cost Management | Microsoft-Dokumentation
 description: Dieser Artikel bietet Informationen dazu, wie Sie Ihre Cloudinvestitionen optimal ausschöpfen, Ihre Kosten senken und auswerten, wofür genau Ihr Geld ausgegeben wird.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: vitavor
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 47a53136a8f299e5c8654d122d8e319be4ae29db
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6d13bf4b2a3abd3a1552ac656a6a15fed8c7cb60
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984546"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201066"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Optimieren der Cloudinvestitionen mit Azure Cost Management
 
@@ -85,20 +84,20 @@ Der erste Schritt bei der optimalen Nutzung von Cost Management besteht darin, d
 
 Weitere Informationen zu den verschiedenen Optionen finden Sie unter [Azure erwerben](https://azure.microsoft.com/pricing/purchase-options/). Im Folgenden werden einige der gängigsten Abrechnungsmodelle erläutert.
 
-#### <a name="freehttpsazuremicrosoftcomfree"></a>[Free](https://azure.microsoft.com/free/)
+#### <a name="free"></a>[Free](https://azure.microsoft.com/free/)
 
 - 12 Monate kostenlose Nutzung beliebter Dienste
 - Guthaben über 200 USD zum Erkunden von Diensten – 30 Tage lang
 - Über 25 Dienste jederzeit kostenlos
 
-#### <a name="pay-as-you-gohttpsazuremicrosoftcomoffersms-azr-0003p"></a>[Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p)
+#### <a name="pay-as-you-go"></a>[Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p)
 
 - Keine Mindestgebühren oder Verpflichtungen
 - Wettbewerbsfähige Preise
 - Zahlen nur für wirklich genutzte Ressourcen
 - Jederzeit kündbar
 
-#### <a name="enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement"></a>[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
+#### <a name="enterprise-agreement"></a>[Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
 - Optionen für vorab vereinbarte Mindestabnahmen
 - Zugang zu reduzierten Azure-Preisen

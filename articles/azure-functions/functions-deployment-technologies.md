@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029859"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210156"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -51,7 +51,7 @@ Einige Schlüsselkonzepte sind wichtig, um zu verstehen, wie Bereitstellungen in
 Wenn Sie einen Trigger ändern, muss die Infrastruktur von Functions über die vorgenommenen Änderungen informiert werden. Die Synchronisierung erfolgt bei vielen Bereitstellungstechnologien automatisch. Manchmal müssen die Trigger jedoch manuell synchronisiert werden. Eine manuelle Synchronisierung der Trigger ist erforderlich, wenn Sie Ihre Aktualisierungen über einen Verweis auf eine externe Paket-URL oder einen lokalen Git-Speicherort oder über Cloudsynchronisierung bzw. FTP bereitstellen. Trigger können auf drei Arten synchronisiert werden:
 
 * Neustarten der Funktions-App über das Azure-Portal
-* Senden einer HTTP POST-Anforderung an `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` unter Verwendung des [Hauptschlüssels](functions-bindings-http-webhook.md#authorization-keys)
+* Senden einer HTTP POST-Anforderung an `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` unter Verwendung des [Hauptschlüssels](functions-bindings-http-webhook-trigger.md#authorization-keys)
 * Senden einer HTTP POST-Anforderung an `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01` Ersetzen Sie die Platzhalter durch Ihre Abonnement-ID, den Namen Ihrer Ressourcengruppe und den Namen Ihrer Funktions-App.
 
 ### <a name="remote-build"></a>Remotebuild

@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen einer hybriden Hub-and-Spoke-Netzwerktopologie in Az
 description: Das Tutorial veranschaulicht die Erstellung einer vollständigen Referenzarchitektur für ein Hybridnetzwerk in Azure mit Terraform.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159033"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472178"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Tutorial: Erstellen einer hybriden Hub-and-Spoke-Netzwerktopologie in Azure mit Terraform
 
@@ -20,7 +20,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Verwenden von HCL (HashiCorp Language) zum Implementieren von Ressourcen für die Referenzarchitektur für das Hub-Spoke-Hybridnetzwerk
-> * Verwenden von Terraform zum Erstellen von Ressourcen für Hubnetzwerkgerät
+> * Erstellen von Ressourcen für Hub-Netzwerkappliances mithilfe von Terraform
 > * Verwenden von Terraform zum Erstellen eines Hubnetzwerks in Azure als gemeinsamer Ausgangspunkt für alle Ressourcen
 > * Verwenden von Terraform zum Erstellen einzelner Workloads als Spoke-VNets in Azure
 > * Verwenden von Terraform zum Erstellen von Gateways und Verbindungen zwischen dem Standort und Azure-Netzwerken
@@ -30,7 +30,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 - **Azure-Abonnement**: Falls Sie noch kein Azure-Abonnement haben, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **Installieren und konfigurieren Sie Terraform**: Um VMs und anderen Infrastrukturen in Azure bereitzustellen, müssen Sie [Terraform installieren und konfigurieren](/azure/virtual-machines/linux/terraform-install-configure).
+- **Installieren und konfigurieren Sie Terraform**: Um VMs und anderen Infrastrukturen in Azure bereitzustellen, müssen Sie [Terraform installieren und konfigurieren](terraform-install-configure.md).
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architektur für Hub-Spoke-Topologie
 

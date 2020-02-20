@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18c53a53a57b3ddca1168fc1075ae09bcd86f000
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765085"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462495"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 
@@ -28,7 +28,7 @@ Verwenden Sie bei Migrationsszenarien den [Azure Database Migration Service](htt
 ## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
 
 ### <a name="data-not-replicated"></a>Nicht replizierte Daten
-Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) auf dem Masterserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Masterserver werden nicht repliziert. Wenn Sie ein Konto auf dem Masterserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+Die [*mysql-Systemdatenbank*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) auf dem Masterserver wird nicht repliziert. Änderungen an Konten und Berechtigungen auf dem Masterserver werden nicht repliziert. Wenn Sie ein Konto auf dem Masterserver erstellen und dieses Konto über Zugriff auf den Replikatserver verfügen muss, erstellen Sie dasselbe Konto manuell auf dem Replikatserver. Einen Überblick über die Tabellen, die in der Systemdatenbank enthalten sind, finden Sie im [Leitfaden zu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
 ### <a name="requirements"></a>Requirements (Anforderungen)
 - Der Masterserver muss mindestens die MySQL-Version 5.6 aufweisen. 

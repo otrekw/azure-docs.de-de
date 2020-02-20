@@ -6,18 +6,18 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: 39bfa5b6800c65112850faa8842b915ceedb9312
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5b1b361778de145a5e32a07bb0164ff2293d9a1a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648065"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279670"
 ---
-Kopieren Sie im Abschnitt **Verwalten** (Menü oben rechts) auf der Seite **Azure-Ressourcen** (Menü auf der linken Seite) die **Beispielabfrage**-URL, und fügen Sie sie in eine neue Browserregisterkarte ein. 
+Kopieren Sie im Abschnitt **Verwalten** (Menü oben rechts) auf der Seite **Azure-Ressourcen** (Menü auf der linken Seite) die **Beispielabfrage**-URL, und fügen Sie sie in eine neue Browserregisterkarte ein.
 
 Die Endpunkt-URL sieht wie folgt aus, wobei Ihre eigene App-ID und Ihr eigener Endpunktschlüssel APP-ID und KEY-ID ersetzen:
 

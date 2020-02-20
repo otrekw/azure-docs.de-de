@@ -6,19 +6,14 @@ ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
-ms.openlocfilehash: 9238ebd06a4aa532d20a2a98499963a75780f025
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668418"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458748"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Synchronisierung von Offlinedaten in Azure Mobile Apps
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="what-is-offline-data-sync"></a>Was ist die Synchronisierung von Offlinedaten?
 Die Synchronisierung von Offlinedaten ist ein Client- und SDK-Feature von Azure Mobile Apps, die Entwicklern das Erstellen von Apps erleichtert, die ohne Netzwerkverbindung funktionsfähig sind.

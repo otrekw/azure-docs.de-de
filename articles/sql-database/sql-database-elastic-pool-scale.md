@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823812"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462597"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Skalieren von Ressourcen für Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -62,7 +62,7 @@ Die geschätzte Latenz beim Ändern der Dienstebene oder beim erneuten Skalieren
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Weitere Überlegungen zum Ändern der Dienstebene oder Skalieren der Computegröße
 
 - Beim Verkleinern von virtuellen Kernen oder eDTUs für einen Pool für elastische Datenbanken muss die verwendete Poolspeichermenge kleiner als die maximal zulässige Größe der gewünschten Dienstebene und Pool-eDTUs sein.
-- Beim Skalieren von virtuellen Kernen oder eDTUs für einen Pool für elastische Datenbanken fallen zusätzliche Speicherkosten an, wenn (1) die maximale Speichergröße des Pools vom Zielpool unterstützt wird und (2) die maximale Speichergröße die enthaltene Speichermenge für den Zielpool überschreitet. Wenn z.B. ein 100-eDTU-Standard-Pool mit einer maximalen Größe von 100 GB zu einem 50-eDTU-Standard-Pool herabgestuft wird, fallen zusätzliche Speicherkosten an, da der Zielpool eine maximale Größe von 100 GB unterstützt, und die enthaltene Speichermenge nur 50 GB beträgt. Daher beträgt die zusätzliche Speichermenge 100 GB – 50 GB = 50 GB. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten vermeiden, indem Sie die maximale Datenbankgröße auf die enthaltene Menge reduzieren.
+- Beim erneuten Skalieren von eDTUs für einen Pool für elastische Datenbanken fallen zusätzliche Speicherkosten an, wenn (1) die maximale Speichergröße des Pools vom Zielpool unterstützt wird und (2) die maximale Speichergröße die enthaltene Speichermenge für den Zielpool überschreitet. Wenn z.B. ein 100-eDTU-Standard-Pool mit einer maximalen Größe von 100 GB zu einem 50-eDTU-Standard-Pool herabgestuft wird, fallen zusätzliche Speicherkosten an, da der Zielpool eine maximale Größe von 100 GB unterstützt, und die enthaltene Speichermenge nur 50 GB beträgt. Daher beträgt die zusätzliche Speichermenge 100 GB – 50 GB = 50 GB. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Wenn die tatsächlich verwendete Speichermenge kleiner als die enthaltene Speichermenge ist, können Sie diese zusätzlichen Kosten vermeiden, indem Sie die maximale Datenbankgröße auf die enthaltene Menge reduzieren.
 
 ### <a name="billing-during-rescaling"></a>Abrechnung während der Skalierung
 

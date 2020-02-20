@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie mit dem Jenkins-Azure Functions-Plug
 keywords: Jenkins, Azure, DevOps, Java, Azure Functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158777"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470665"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Bereitstellen in Azure Functions mit dem Jenkins-Azure Functions-Plug-In
 
@@ -131,7 +131,7 @@ In diesem Abschnitt erstellen Sie die [Jenkins-Pipeline](https://jenkins.io/doc/
 
 Nun kann der Jenkins-Auftrag ausgeführt werden.
 
-1. Rufen Sie zuerst den Autorisierungsschlüssel ab, indem Sie die Anleitung im Artikel [HTTP-Trigger und -Bindungen in Azure Functions](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) verwenden.
+1. Rufen Sie zuerst den Autorisierungsschlüssel ab, indem Sie die Anleitung im Artikel [HTTP-Trigger und -Bindungen in Azure Functions](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys) verwenden.
 
 1. Geben Sie in Ihrem Browser die URL der App ein. Ersetzen Sie die Platzhalter durch die entsprechenden Werte, und geben Sie einen numerischen Wert für **&lt;input_number>** als Eingabe für die Java-Funktion an.
 

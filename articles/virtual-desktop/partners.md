@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906873"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201780"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -46,6 +46,8 @@ Als genehmigter Anbieter werden die Vorteile von Windows Virtual Desktop für Mi
 10ZiG Technology, ein Anbieter von hochmoderner Thin- und Zero-Client-Hardware und -Software, ist ein langjähriges Partnerunternehmen von Microsoft und ein dedizierter Partner für Microsoft Azure und Windows Virtual Desktop. IoT-basierte Thin Clients für Windows 10 von 10ZiG sind leistungsstarke, zuverlässige und kostengünstige Endpunkte für alle Mehrbenutzerinstanzen von Windows Virtual Desktop. 10ZiG Manager Software verfügt über außergewöhnliche Verwaltungs- und Bereitstellungsfunktionen ohne Lizenzbeschränkungen und zusätzliche Kosten. Dank des technischen Teams von 10ZiG, des Programms für die erweiterte Garantie und benutzerfreundlicher Demos erhalten Kunden eine Windows Virtual Desktop-Gesamtlösung, für die mehrere gleichzeitige Sitzungen in der Cloud unterstützt werden.
 
 10ZiG ist Weltmarktführer im Bereich der Thin- und Zero-Client-Endpunktgeräte und Verwaltungssoftware für virtuelle Desktops. Dies wird auch durch die Arbeit des Unternehmens für seine Kunden verdeutlicht. Die Thin-Client-Hardware verfügt über sorgfältig durchdachte Features und Optionen, mit denen sichergestellt wird, dass Kunden die richtigen Clientgeräte für ihre Anforderungen erhalten. 10ZiG passt seine Geräte so an, dass sie genau zu Kundenumgebungen mit Windows- und Linux-basierten Clients passen, um die bestmögliche Leistung auf virtuellen Desktops zu erzielen – sowohl innerhalb als auch außerhalb der Cloud.
+
+- [Zur Partnerwebsite](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -148,6 +150,8 @@ Liquidware Essentials steigert den Nutzen von Windows Virtual Desktop, indem es 
 Mit der Liquit-Software für die Anwendungsaggregation und -bereitstellung können Unternehmen und Dienstanbieter eine Verbindung mit allen Arbeitsbereichs-Back-Ends (Citrix, VMWare, Windows Virtual Desktop, RDP und Legacy) sowie entsprechende Kombinationen herstellen, um eine maßgeschneiderte und einheitliche Kundenerfahrung zu erzielen – unabhängig davon, wo sich die Anwendungen der Kunden befinden. Wenn ein Kunde das intelligente Symbol veröffentlicht, trifft Liquit die Entscheidung, wo die Anwendung basierend auf Standort, Gerät und Profilrechten des Kunden gestartet wird.
 
 Als zertifizierter Integrationspartner unterstützt Liquit die Umstellung auf die Cloud, ohne dass umfangreiche Austauschvorgänge durchgeführt werden müssen. Für Windows Virtual Desktop ist das Herstellen einer Verbindung mit einer vorhandenen Umgebung, das Erstellen eines Arbeitsbereichs und das Bereitstellen des Desktops problemlos möglich. Sie können sich dann Zeit mit dem Durchführen der Migration von alten Plattformen lassen und Änderungen auf dem Back-End vornehmen, ohne dass Ihre Benutzer dies bemerken. Ermöglichen Sie eine einheitliche Endbenutzererfahrung und eine flexible Infrastruktur, und behalten Sie unabhängig vom Standort immer die Kontrolle über Ihre Anwendungen.
+
+- [Zur Partnerwebsite](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Login VSI
 

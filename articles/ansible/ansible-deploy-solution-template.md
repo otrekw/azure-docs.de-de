@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Ansible-L
 keywords: Ansible, Azure, DevOps, Lösungsvorlage, virtueller Computer, verwaltete Identitäten für Azure-Ressourcen, CentOS, Red Hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156330"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193785"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS
 
@@ -85,4 +85,4 @@ Die Ansible-Lösungsvorlage für Azure dient dazu, eine Ansible-Instanz auf eine
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
-> [Schnellstart: Konfigurieren eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Schnellstart: Konfigurieren eines virtuellen Linux-Computers in Azure mithilfe von Ansible](./ansible-create-vm.md)

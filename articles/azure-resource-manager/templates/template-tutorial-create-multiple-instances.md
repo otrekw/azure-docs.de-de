@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75471365"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209476"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
 
@@ -108,7 +108,7 @@ Die fertige Vorlage sieht folgendermaßen aus:
 }
 ```
 
-Weitere Informationen zum Erstellen mehrerer Instanzen finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen](./create-multiple-instances.md).
+Weitere Informationen zum Erstellen mehrerer Instanzen finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen](./copy-resources.md).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -118,14 +118,14 @@ Informationen zum Bereitstellungsverfahren finden Sie in der Visual Studio Code-
 
 Lassen Sie zum Auflisten aller drei Speicherkonten den --name-Parameter aus:
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
 az storage account list --resource-group $resourceGroupName
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

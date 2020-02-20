@@ -3,19 +3,19 @@ title: Informationen zum Speech SDK – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Das Speech SDK (Software Development Kit) gewährt Ihren Anwendungen nativen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung von Software erleichtert wird. Dieser Artikel enthält weitere Informationen zum SDK für Windows, Linux und Android.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.author: wolfma
-ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/13/2020
+ms.author: dapine
+ms.openlocfilehash: 04546883e6742086fa05fc450920b1026702bd08
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759874"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212519"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -31,7 +31,7 @@ Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen f
 
 ## <a name="get-the-sdk"></a>Abrufen des SDK
 
-### <a name="windows"></a>Windows
+# <a name="windows"></a>[Windows](#tab/windows)
 
 > [!WARNING]
 > Das Speech SDK unterstützt Windows 10 oder höhere Versionen. Frühere Windows-Versionen werden **nicht unterstützt**.
@@ -42,7 +42,7 @@ Für Windows werden die folgenden Sprachen unterstützt:
 
 * Java: Sie können die neueste Version des Speech-SDK-Maven-Pakets, das nur Windows x64 unterstützt, referenzieren und verwenden. Fügen Sie in Ihrem Maven-Projekt `https://csspeechstorage.blob.core.windows.net/maven/` als zusätzliches Repository hinzu, und verweisen Sie auf `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` als Abhängigkeit.
 
-### <a name="linux"></a>Linux
+# <a name="linux"></a>[Linux](#tab/linux)
 
 > [!NOTE]
 > Derzeit werden auf den folgenden Zielarchitekturen nur Ubuntu 16.04, Ubuntu 18.04 und Debian 9 unterstützt:
@@ -76,7 +76,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
 * C++: Laden Sie das SDK als [TAR-Paket](https://aka.ms/csspeech/linuxbinary) herunter, und entpacken Sie die Dateien in einem Verzeichnis Ihrer Wahl. In der folgenden Tabelle wird die Ordnerstruktur des SDK gezeigt:
 
-  |`Path`|Beschreibung|
+  |`Path`|BESCHREIBUNG|
   |-|-|
   |`license.md`|Lizenz|
   |`ThirdPartyNotices.md`|Hinweise zu Drittanbietern|
@@ -86,7 +86,7 @@ sudo apt-get install libssl1.0.2 libasound2
 
   Wenn Sie eine Anwendung erstellen möchten, kopieren oder verschieben Sie die erforderlichen Binärdateien (und Bibliotheken) in Ihre Entwicklungsumgebung. Fügen Sie sie nach Bedarf in Ihren Buildprozess ein.
 
-### <a name="android"></a>Android
+# <a name="android"></a>[Android](#tab/android)
 
 Das Java SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen. Es wird in einem Maven-Repository unter `https://csspeechstorage.blob.core.windows.net/maven/` als Paket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` gehostet.
 
@@ -105,6 +105,8 @@ Um das Paket im Android Studio-Projekt zu nutzen, nehmen Sie die folgenden Ände
   ```
 
 Das Java SDK ist auch Teil des [Speech-Geräte-SDK](speech-devices-sdk.md).
+
+---
 
 [!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 

@@ -4,18 +4,18 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 09/24/2019
+ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b79a27526054f76d9d44e277c401e93214ec3c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a0576a70b1b345d31ffc11c55f7fa5cbd288acd5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018702"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425509"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -114,7 +114,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der fol
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom System zugewiesen | Verfügbar | Verfügbar | Nicht verfügbar | Verfügbar |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):

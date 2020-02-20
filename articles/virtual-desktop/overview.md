@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772785"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471770"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -72,7 +72,7 @@ Da wir planen, die Unterstützung auf die folgenden Betriebssysteme zu erweitern
 
 In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop verwenden zu können:
 
-* Eine [Azure Active Directory-Instanz](https://docs.microsoft.com/azure/active-directory/).
+* Eine [Azure Active Directory-Instanz](/azure/active-directory/).
 * Eine mit Azure Active Directory synchronisierte Windows Server Active Directory-Instanz. Sie können diese dann mit einer der folgenden Komponenten konfigurieren:
   * Azure AD Connect (für Hybridorganisationen)
   * Azure Active Directory Domain Services (für Hybrid- oder Cloudorganisationen)
@@ -80,7 +80,7 @@ In Ihrer Infrastruktur muss Folgendes vorhanden sein, um Windows Virtual Desktop
   
 Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, müssen folgende Anforderungen erfüllen:
 
-* Sie müssen in eine [Standard-Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) oder in [Hybrid AD](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan) eingebunden sein. Virtuelle Computer dürfen nicht in Azure AD eingebunden sein.
+* Sie müssen in eine [Standard-Domäne](../active-directory-domain-services/active-directory-ds-comparison.md) oder in [Hybrid AD](../active-directory/devices/hybrid-azuread-join-plan.md) eingebunden sein. Virtuelle Computer dürfen nicht in Azure AD eingebunden sein.
 * Auf ihnen muss eines der folgenden [unterstützten Betriebssystemimages](#supported-virtual-machine-os-images) ausgeführt werden:
 
 >[!NOTE]
