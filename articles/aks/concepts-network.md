@@ -1,18 +1,18 @@
 ---
 title: Konzepte – Netzwerke in Azure Kubernetes Service (AKS)
 description: Lernen Sie Netzwerke in Azure Kubernetes Service (AKS) kennen, einschließlich kubenet- und Azure CNI-Netzwerke, Eingangscontroller, Lastenausgleichsmodule und statische IP-Adressen.
-services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
+ms.custom: fasttrack-edit
 ms.author: mlearned
-ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547964"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77084278"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -108,6 +108,8 @@ Folgende Unterschiede treten im Verhalten von kubenet und Azure CNI auf:
 | Verfügbarmachen von Kubernetes-Diensten über einen Lastenausgleichsdienst, App Gateway oder einen Eingangscontroller | Unterstützt | Unterstützt |
 | Standard: Azure DNS und private Zonen                                                          | Unterstützt | Unterstützt |
 
+DNS wird sowohl bei kubenet- als auch bei Azure-CNI-Plug-Ins von CoreDNS bereitgestellt, einem in AKS ausgeführten Deamonset. Weitere Informationen zu CoreDNS in Kubernetes finden Sie unter [Anpassen des DNS-Dienst](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). CoreDNS ist standardmäßig so konfiguriert, dass unbekannte Domänen an die Knoten-DNS-Server weitergeleitet werden, also an die DNS-Funktionalität der Azure Virtual Network-Instanz, in der der AKS-Cluster bereitgestellt wird. Daher können Azure DNS und private Zonen für Pods verwendet werden, die in AKS ausgeführt werden.
+
 ### <a name="support-scope-between-network-models"></a>Supportumfang der Netzwerkmodelle
 
 Unabhängig vom verwendeten Netzwerkmodell können kubenet und Azure CNI mit einer der folgenden Methoden bereitgestellt werden:
@@ -132,7 +134,7 @@ In AKS können Sie mit NGINX (oder ähnlich) eine Dateneingangsressource erstell
 
 Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung. Bei großen Webanwendungen, auf die über HTTPS zugegriffen wird, kann die TLS-Terminierung durch die Eingangsressource erfolgen und braucht nicht innerhalb der Anwendung verarbeitet zu werden. Um die automatische Generierung und Konfiguration der TLS-Zertifizierung bereitzustellen, können Sie die Eingangsressource für die Verwendung von Anbietern wie Let's Encrypt konfigurieren. Weitere Informationen zum Konfigurieren eines NGINX-Eingangscontrollers mit Let's Encrypt finden Sie unter [Eingang und TLS][aks-ingress-tls].
 
-Sie können den Eingangscontroller auch so konfigurieren, dass die Quell-IP des Clients bei Anforderungen an Container im AKS-Cluster beibehalten wird. Wenn die Anforderung eines Clients über den Eingangscontroller an einen Container im AKS-Cluster weitergeleitet wird, ist die ursprüngliche Quell-IP dieser Anforderung für den Zielcontainer nicht verfügbar. Wenn Sie die *Beibehaltung der Clientquell-IP* aktivieren, ist die Quell-IP für den Client im Anforderungsheader unter *X-Forwarded-For* verfügbar. Wenn Sie die Beibehaltung der Clientquell-ID auf dem Eingangscontroller verwenden, können Sie kein SSL-Pass-Through verwenden. Die Beibehaltung der Clientquell-ID und SSL-Pass-Through-können mit anderen Diensten verwendet werden, z. B. dem *LoadBalancer*-Typ.
+Sie können den Eingangscontroller auch so konfigurieren, dass die Quell-IP des Clients bei Anforderungen an Container im AKS-Cluster beibehalten wird. Wenn die Anforderung eines Clients über den Eingangscontroller an einen Container im AKS-Cluster weitergeleitet wird, ist die ursprüngliche Quell-IP dieser Anforderung für den Zielcontainer nicht verfügbar. Wenn Sie die *Beibehaltung der Clientquell-IP* aktivieren, ist die Quell-IP für den Client im Anforderungsheader unter *X-Forwarded-For* verfügbar. Wenn Sie die Beibehaltung der Clientquell-IP auf dem Eingangscontroller verwenden, können Sie kein SSL-Pass-Through verwenden. Die Beibehaltung der Clientquell-ID und SSL-Pass-Through-können mit anderen Diensten verwendet werden, z. B. dem *LoadBalancer*-Typ.
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 

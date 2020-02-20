@@ -1,5 +1,5 @@
 ---
-title: Verwalten der Anmeldeinformationen Ihres StorSimple-Speicherkontos für Geräte der Microsoft Azure StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Verwalten von Anmeldeinformationen für Speicherkonten, Gerät der StorSimple 8000-Serie
 description: Beschreibt, wie Sie die Seite „Konfigurieren“ des StorSimple-Geräte-Manager-Diensts zum Hinzufügen, Bearbeiten oder Löschen von Speicherkonten verwenden oder wie Sie die Sicherheitsschlüssel für ein Speicherkonto rotieren.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 53aa442b86f5c82ded2f212a64f43852e6b3d2c5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11bc97be7ff8d924f7ccd0b4672a8f4cb0a178ff
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632696"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116338"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Verwalten von Anmeldeinformationen für Speicherkonten mithilfe des StorSimple-Geräte-Manager-Diensts
 

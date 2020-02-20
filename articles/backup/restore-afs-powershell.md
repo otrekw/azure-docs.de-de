@@ -3,18 +3,21 @@ title: Wiederherstellen von Azure Files mit PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell wiederherstellen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: c1c116033dbf44e6e1f332195a18c7dfdbcd6c71
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776083"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086830"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Wiederherstellen von Azure Files mit PowerShell
 
 In diesem Artikel wird erläutert, wie Sie eine vollständige Dateifreigabe oder bestimmte Dateien von einem vom [Azure Backup](backup-overview.md)-Dienst erstellten Wiederherstellungspunkt mithilfe von Azure PowerShell wiederherstellten.
 
 Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
+
+> [!WARNING]
+> Stellen Sie sicher, dass die PS-Version auf die Mindestversion für „Az.RecoveryServices 2.6.0“ für AFS-Sicherungen aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) zur Anforderung für diese Änderung.
 
 ## <a name="fetch-recovery-points"></a>Abrufen von Wiederherstellungspunkten
 

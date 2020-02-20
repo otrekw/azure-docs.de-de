@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fff92057bc9812a5ef1488a46ed469382ad3ace3
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85b59c6549a62f7d9945f5739d1d0fde8c0fa3b8
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806880"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158909"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Verwenden privater Endpunkte für Azure Storage (Vorschau)
 
@@ -50,7 +50,7 @@ Beim Erstellen des privaten Endpunkts müssen Sie das Speicherkonto und den Spei
 > [!TIP]
 > Erstellen Sie einen separaten privaten Endpunkt für die sekundäre Instanz des Speicherdiensts, um die Leseleistung für RA-GRS-Konten zu verbessern.
 
-Für Leseverfügbarkeit in einem [georedundanten Speicherkonto mit Lesezugriff](storage-redundancy-grs.md#read-access-geo-redundant-storage) benötigen Sie separate private Endpunkte sowohl für die primäre als auch die sekundäre Instanz des Diensts. Sie müssen für ein **Failover** keinen privaten Endpunkt für die sekundäre Instanz erstellen. Der private Endpunkt stellt nach einem Failover automatisch eine Verbindung mit der neuen primären Instanz her.
+Für Lesezugriff auf die sekundäre Region mit einem Speicherkonto, das für georedundanten Speicher konfiguriert ist, benötigen Sie separate private Endpunkte sowohl für die primäre als auch die sekundäre Instanz des Diensts. Sie müssen für ein **Failover** keinen privaten Endpunkt für die sekundäre Instanz erstellen. Der private Endpunkt stellt nach einem Failover automatisch eine Verbindung mit der neuen primären Instanz her. Weitere Informationen zu den Speicherredundanzoptionen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
 #### <a name="resources"></a>Ressourcen
 
@@ -78,20 +78,20 @@ Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpu
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speicherkonto „StorageAccountA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| NAME                                                  | type  | Wert                                                 |
+| Name                                                  | type  | value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Öffentlicher Endpunkt des Speicherdiensts\>                   |
-| \<Öffentlicher Endpunkt des Speicherdiensts\>                   | A     | \<Öffentliche IP-Adresse des Speicherdiensts\>                 |
+| \<Öffentlicher Endpunkt des Speicherdiensts\>                   | Ein     | \<Öffentliche IP-Adresse des Speicherdiensts\>                 |
 
 Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET über den öffentlichen Endpunkt mithilfe der Speicherfirewall verweigern oder steuern.
 
 Die DNS-Ressourceneinträge für „StorageAccountA“ lauten nach dem Auflösen durch einen Client im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| NAME                                                  | type  | Wert                                                 |
+| Name                                                  | type  | value                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | Ein     | 10.1.1.5                                              |
 
 Diese Vorgehensweise ermöglicht den Zugriff auf das Speicherkonto **mithilfe derselben Verbindungszeichenfolge** für Clients in dem VNET, das die privaten Endpunkte hostet, als auch Clients außerhalb des VNET.
 

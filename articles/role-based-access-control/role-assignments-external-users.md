@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal
+title: Hinzufügen oder Entfernen von Rollenzuweisungen für externe Benutzer über RBAC und das Azure-Portal
 description: Hier erfahren Sie, wie Sie organisationsexternen Benutzern mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) Zugriff auf Azure-Ressourcen erteilen.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707884"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138378"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal
 
@@ -29,7 +29,7 @@ Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie Folgendes:
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
 
 - `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 

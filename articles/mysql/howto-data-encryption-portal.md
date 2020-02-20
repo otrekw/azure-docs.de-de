@@ -1,27 +1,27 @@
 ---
-title: Datenverschlüsselung für Azure Database for MySQL über das Portal
+title: Datenverschlüsselung für Azure Database for MySQL über das Azure-Portal
 description: Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azure Database for MySQL einrichten und verwalten.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5bd100a5858660d80f3704844ed974f2bc9257b4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ba1ad7c533ea1dc9e88c8337373e607db653ac24
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028936"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048548"
 ---
-# <a name="data-encryption-for-azure-database-for-mysql-server-using-azure-portal"></a>Datenverschlüsselung für Azure Database for MySQL-Server über das Azure-Portal
+# <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Datenverschlüsselung für Azure Database for MySQL über das Azure-Portal
 
-In diesem Artikel erfahren Sie, wie Sie die Datenverschlüsselung für Azure Database for MySQL über das Azure-Portal einrichten und verwalten.
+Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azure Database for MySQL einrichten und verwalten.
 
-## <a name="prerequisites-for-cli"></a>Voraussetzungen für CLI
+## <a name="prerequisites-for-azure-cli"></a>Voraussetzungen für die Azure-Befehlszeilenschnittstelle
 
 * Sie müssen über ein Azure-Abonnement verfügen und ein Administrator für dieses Abonnement sein.
-* Erstellen Sie einen Azure-Schlüsseltresor und einen Schlüssel, der als vom Kunden verwalteter Schlüssel verwendet werden soll.
-* Der Schlüsseltresor muss die folgende Eigenschaft aufweisen, damit er für vom Kunden verwaltete Schlüssel verwendet werden kann:
+* Erstellen Sie in Azure Key Vault einen Schlüsseltresor und einen Schlüssel, der als vom Kunden verwalteter Schlüssel verwendet werden soll.
+* Der Schlüsseltresor muss die folgenden Eigenschaften aufweisen, damit er für vom Kunden verwaltete Schlüssel verwendet werden kann:
   * [Vorläufiges Löschen](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
@@ -34,66 +34,66 @@ In diesem Artikel erfahren Sie, wie Sie die Datenverschlüsselung für Azure Dat
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
 
-* Der Schlüssel muss die folgenden Attribute aufweisen, um als vom Kunden verwalteter Schlüssel verwendet werden zu können.
+* Der Schlüssel muss die folgenden Attribute aufweisen, damit er als vom Kunden verwalteter Schlüssel verwendet werden kann:
   * Kein Ablaufdatum
   * Nicht deaktiviert
-  * Fähigkeit zum Ausführen des _get_-, _wrap key_- und _unwrap key_-Vorgangs
+  * Fähigkeit zum Ausführen der Vorgänge zum Abrufen, Packen und Entpacken von Schlüsseln
 
-## <a name="setting-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
+## <a name="set-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
 
-1. Wählen Sie im Azure Key Vault **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen** aus:
+1. Wählen Sie in Key Vault **Zugriffsrichtlinien** > **Zugriffsrichtlinie hinzufügen** aus.
 
-   ![Azure Policy – Übersicht](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
+   ![Screenshot von Key Vault mit hervorgehobenen Optionen „Zugriffsrichtlinien“ und „Zugriffsrichtlinie hinzufügen“](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. Wählen Sie die **Schlüsselberechtigungen** sowie anschließend **Get**, **Wrap**, **Unwrap** und den **Prinzipal** (der Name des MySQL-Servers) aus. Wenn der Serverprinzipal nicht in der Liste der vorhandenen Prinzipale gefunden werden kann, müssen Sie ihn registrieren, indem Sie versuchen, die Datenverschlüsselung zum ersten Mal einzurichten, was fehlschlägt.
+2. Wählen Sie **Schlüsselberechtigungen** und anschließend **Abrufen**, **Packen** und **Entpacken** aus. Wählen Sie dann den **Prinzipal** aus (der Name des MySQL-Servers). Wenn Ihr Serverprinzipal nicht in der Liste der vorhandenen Prinzipale enthalten ist, müssen Sie ihn registrieren. Wenn Sie erstmalig versuchen, die Datenverschlüsselung einzurichten, und der Vorgang mit einem Fehler abgebrochen wird, werden Sie aufgefordert, Ihren Serverprinzipal zu registrieren.
 
-   ![Azure Policy – Übersicht](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
+   ![Zugriffsrichtlinienübersicht](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. **Speichern** Sie die Einstellungen.
+3. Wählen Sie **Speichern** aus.
 
-## <a name="setting-data-encryption-for-azure-database-for-mysql"></a>Festlegen der Datenverschlüsselung für Azure Database for MySQL
+## <a name="set-data-encryption-for-azure-database-for-mysql"></a>Festlegen der Datenverschlüsselung für Azure Database for MySQL
 
-1. Wählen Sie in **Azure Database for MySQL** die Option **Datenverschlüsselung** aus, um den eingerichteten, vom Kunden verwalteten Schlüssel festzulegen.
+1. Wählen Sie in Azure Database for MySQL die Option **Datenverschlüsselung** aus, um den vom Kunden verwalteten Schlüssel einzurichten.
 
-   ![Einstellen der Datenverschlüsselung](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobener Option „Datenverschlüsselung“](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
-2. Sie können entweder einen **Schlüsseltresor** und ein **Schlüssel**-Paar auswählen oder einen **Schlüsselbezeichner** übergeben.
+2. Sie können entweder einen Schlüsseltresor und ein Schlüsselpaar auswählen oder einen Schlüsselbezeichner eingeben.
 
-   ![Einstellen des Schlüsseltresors](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobenen Optionen zur Datenverschlüsselung](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. **Speichern** Sie die Einstellungen.
+3. Wählen Sie **Speichern** aus.
 
-4. Um sicherzustellen, dass alle Dateien (einschließlich **temporärer Dateien**) vollständig verschlüsselt werden, ist ein **Neustart** des Servers **erforderlich**.
+4. Starten Sie den Server neu, um sicherzustellen, dass alle Dateien (einschließlich temporäre Dateien) vollständig verschlüsselt werden.
 
-## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>Wiederherstellen oder Erstellen eines Replikats des Servers, für das die Datenverschlüsselung aktiviert ist
+## <a name="restore-or-create-a-replica-of-the-server"></a>Wiederherstellen oder Erstellen eines Serverreplikats
 
-Nachdem Azure Database for MySQL mit dem vom Kunden verwalteten Schlüssel verschlüsselt wurde, der im Schlüsseltresor gespeichert ist, werden alle neu erstellten Kopien des Servers – über lokale oder Geowiederherstellungsvorgänge oder ein Replikat (lokal/regionsübergreifend) – ebenfalls mit diesem Schlüssel verschlüsselt. Daher können Sie für einen verschlüsselten MySQL-Server mit den folgenden Schritten einen verschlüsselten wiederhergestellten Server erstellen.
+Nachdem Azure Database for MySQL mit einem vom Kunden verwalteten Schlüssel verschlüsselt wurde, der in Key Vault gespeichert ist, wird jede neu erstellte Kopie des Servers ebenfalls verschlüsselt. Sie können diese neue Kopie entweder durch einen lokalen Wiederherstellungsvorgang, einen Geowiederherstellungsvorgang oder durch einen Replikationsvorgang (lokal/regionsübergreifend) erstellen. Sie können für einen verschlüsselten MySQL-Server also die folgenden Schritte ausführen, um einen verschlüsselten wiederhergestellten Server zu erstellen.
 
-1. Wählen Sie auf dem Server **Übersicht** und dann **Wiederherstellung** aus.
+1. Wählen Sie auf Ihrem Server **Übersicht** > **Wiederherstellung** aus.
 
-   ![Wiederherstellung initiieren](media/concepts-data-access-and-security-data-encryption/show-restore.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobenen Optionen „Übersicht“ und „Wiederherstellung“](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Wählen Sie alternativ für einen replikationsfähigen Server unter **Einstellungen** die Option **Replikation** aus (siehe Abbildung):
+   Wählen Sie alternativ für einen replikationsfähigen Server unter **Einstellungen** die Option **Replikation** aus.
 
-   ![Replikation initiieren](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobener Option „Replikation“](media/concepts-data-access-and-security-data-encryption/mysql-replica.png)
 
-2. Nachdem der Wiederherstellungsvorgang abgeschlossen wurde, ist der neu erstellte Server mit dem Schlüssel verschlüsselt, der zum Verschlüsseln des primären Servers verwendet wurde. Allerdings sind die Features und Optionen auf dem Server deaktiviert, und der Server ist als **nicht zugänglich** markiert. Durch dieses Verhalten soll jegliche Datenbearbeitung verhindert werden, da der Identität des neuen Servers noch keine Berechtigung für den Zugriff auf den Schlüsseltresor gewährt wurde.
+2. Nachdem der Wiederherstellungsvorgang abgeschlossen wurde, ist der neu erstellte Server mit dem Schlüssel des primären Servers verschlüsselt. Allerdings sind die Features und Optionen auf dem Server deaktiviert, und auf den Server kann nicht zugegriffen werden. Da der Identität des neuen Servers noch keine Berechtigung für den Zugriff auf den Schlüsseltresor erteilt wurde, wird auf diese Weise jegliche Datenbearbeitung verhindert.
 
-   ![Markierung des Servers als nicht zugänglich](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobenem Status „Kein Zugriff“](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Damit wieder ein Zugriff möglich ist, müssen Sie den Schlüssel auf dem wiederhergestellten Server erneut validieren. Wählen Sie den Bereich **Datenverschlüsselung** aus, und klicken Sie dann auf die Schaltfläche **Schlüssel erneut validieren**.
+3. Um den Server zugänglich zu machen, überprüfen Sie den Schlüssel auf dem wiederhergestellten Server erneut. Wählen Sie dazu **Datenverschlüsselung** > **Schlüssel erneut überprüfen** aus.
 
    > [!NOTE]
-   > Der erste Neuvalidierungsversuch schlägt fehl, da dem Dienstprinzipal des neuen Servers Zugriff auf den Schlüsseltresor gewährt werden muss. Um den Dienstprinzipal zu generieren, wählen Sie **Schlüssel erneut validieren** aus. Dies führt zwar zu einem Fehler, aber der Dienstprinzipal wird generiert. Lesen Sie danach die Schritte [in Abschnitt 2](#setting-the-right-permissions-for-key-operations) oben durch.
+   > Beim ersten Versuch, den Schlüssel erneut zu überprüfen, tritt ein Fehler auf, da dem Dienstprinzipal des neuen Servers Zugriff auf den Schlüsseltresor gewährt werden muss. Um den Dienstprinzipal zu generieren, wählen Sie **Schlüssel erneut überprüfen** aus. Dies führt zwar zu einem Fehler, doch der Dienstprinzipal wird generiert. Führen Sie anschließend [diese Schritte](#set-the-right-permissions-for-key-operations) weiter oben in diesem Artikel aus.
 
-   ![Server erneut validieren](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
+   ![Screenshot von Azure Database for MySQL mit hervorgehobenem Schritt zur erneuten Überprüfung des Schlüssels](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Sie müssen dem neuen Server Zugriff auf den Schlüsseltresor gewähren.
+   Sie müssen dem Schlüsseltresor Zugriff auf den neuen Server gewähren.
 
-4. Nachdem Sie den Dienstprinzipal registriert haben, müssen Sie den Schlüssel erneut validieren, damit der Server wieder normal funktioniert.
+4. Nachdem Sie den Dienstprinzipal registriert haben, müssen Sie den Schlüssel erneut überprüfen, damit der Server wieder normal funktioniert.
 
-   ![Normaler Server wiederhergestellt](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
+   ![Screenshot von Azure Database for MySQL mit wiederhergestellter Funktionalität](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- Weitere Informationen zur Datenverschlüsselung finden Sie unter [Was ist die Azure-Datenverschlüsselung](concepts-data-encryption-mysql.md).
+ Weitere Informationen zur Datenverschlüsselung finden Sie unter [Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel](concepts-data-encryption-mysql.md).

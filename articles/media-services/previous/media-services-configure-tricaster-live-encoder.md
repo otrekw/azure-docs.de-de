@@ -15,19 +15,18 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016735"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152498"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des NewTek TriCaster-Encoders zum Senden eines Single-Bitrate-Livedatenstroms  
 > [!div class="op_single_selector"]
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
@@ -35,10 +34,10 @@ In diesem Artikel wird beschrieben, wie Sie den [NewTek TriCaster](https://newte
 
 In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool Azure Media Services Explorer (AMSE) verwalten. Dieses Tool kann nur auf Windows-PCs ausgeführt werden. Verwenden Sie unter Mac OS oder Linux das Azure-Portal, um [Kanäle](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) und [Programme](media-services-portal-creating-live-encoder-enabled-channel.md) zu erstellen.
 
+Bei der Verwendung von TriCaster zum Senden eines Beitragsfeeds an AMS-Kanäle, die für Live Encoding aktiviert sind, können Video- oder Audiostörungen im Liveereignis auftreten, wenn Sie bestimmte Funktionen von TriCaster nutzen, z. B. schnelle Schnitte zwischen Feeds oder Wechseln zwischen Slates. Das AMS-Team arbeitet an einer Lösung zur Behebung dieser Probleme. Derzeit wird jedoch davon abgeraten, diese Features zu verwenden.
+
 > [!NOTE]
-> Bei der Verwendung von TriCaster zum Senden eines Beitragsfeeds an AMS-Kanäle, die für Live Encoding aktiviert sind, können Video- oder Audiostörungen im Liveereignis auftreten, wenn Sie bestimmte Funktionen von TriCaster nutzen, z. B. schnelle Schnitte zwischen Feeds oder Wechseln zwischen Slates. Das AMS-Team arbeitet an einer Lösung zur Behebung dieser Probleme. Derzeit wird jedoch davon abgeraten, diese Features zu verwenden.
->
->
+>  Erwägen Sie die Umstellung auf TLS 1.2, die bevorzugte Version von TLS.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

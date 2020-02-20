@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768657"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116196"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -242,7 +242,7 @@ Da jede Instanz in einem eigenen VNET isoliert ist, muss der bidirektionale Date
 Sie können eine Failovergruppe zwischen verwalteten Instanzen in zwei verschiedenen Abonnements erstellen. Wenn Sie die PowerShell-API verwenden, können Sie dazu den Parameter `PartnerSubscriptionId` für die sekundäre Instanz angeben. Wenn Sie die REST-API verwenden, kann jede im Parameter `properties.managedInstancePairs` enthaltene Instanz-ID eine eigene Abonnement-ID haben.
   
 > [!IMPORTANT]
-> Das Azure-Portal unterstützt keine Failovergruppen über verschiedene Abonnements hinweg.
+> Das Erstellen von Failovergruppen über verschiedene Abonnements hinweg wird im Azure-Portal nicht unterstützt. Für vorhandene Failovergruppen, die verschiedene Abonnements und/oder Ressourcengruppen umfassen, kann das Failover zudem nicht von der primären Instanz aus manuell über das Portal initiiert werden. Initiieren Sie das Failover stattdessen über die sekundäre Geoinstanz.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Verwalten des Failovers auf der sekundären Instanz
 
@@ -390,11 +390,11 @@ Bedenken Sie dabei folgende Einschränkungen:
 
 Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
-| Cmdlet | Beschreibung |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Servern.|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Entfernt eine Failovergruppe vom Server. |
@@ -405,7 +405,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Verwalten von SQL-Datenbank-Failovergruppen mit verwalteten Instanzen
 
-| Cmdlet | Beschreibung |
+| Cmdlet | BESCHREIBUNG |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Dieser Befehl erstellt eine Failovergruppe und registriert sie auf primären und sekundären Instanzen.|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Ändert die Konfiguration einer Failovergruppe.|
@@ -413,7 +413,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Löst das Failover einer Failovergruppe auf der sekundären Instanz aus.|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Entfernt eine Failovergruppe.|
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Verwalten eines Failovers von SQL-Datenbanken mit einzelnen Datenbanken und Pools für elastische Datenbanken
 
@@ -442,7 +442,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST-API: Verwalten von SQL-Datenbank-Failovergruppen mit Einzel- und Pooldatenbanken
 
-| API | Beschreibung |
+| API | BESCHREIBUNG |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Erstellt oder aktualisiert eine Failovergruppe. |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Entfernt eine Failovergruppe vom Server. |
@@ -454,7 +454,7 @@ Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und akti
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST-API: Verwalten von Failovergruppen mit verwalteten Instanzen
 
-| API | Beschreibung |
+| API | BESCHREIBUNG |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Erstellt oder aktualisiert die Konfiguration einer Failovergruppe. |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Entfernt eine Failovergruppe von der Instanz. |

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/24/2020
-ms.openlocfilehash: 3877632565c1ca2c9a16681e03f8931a94af0599
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 01/31/2020
+ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765765"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047844"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 
@@ -37,7 +37,9 @@ Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und L
 
 
 ## <a name="how-do-i-upgrade"></a>Wie führe ich ein Upgrade aus?
-Jede VM, die ein Upgrade erfordert, wird auf der Registerkarte **Erste Schritte** in Azure Monitor für VMs im Azure-Portal angegeben. Sie können ein Upgrade für eine einzelne VM durchführen oder mehrere VMs für ein gemeinsames Upgrade auswählen. Verwenden Sie den folgenden Befehl um ein Upgrade mit PowerShell durchzuführen:
+Wenn ein Log Analytics-Arbeitsbereich auf die neueste Version von Azure Monitor für VMs aktualisiert wird, wird der Dependency-Agent auf allen VMs aktualisiert, die mit diesem Arbeitsbereich verbunden sind. Jede VM, die ein Upgrade erfordert, wird auf der Registerkarte **Erste Schritte** in Azure Monitor für VMs im Azure-Portal angegeben. Wenn Sie eine VM aktualisieren, werden der Arbeitsbereich für diese VM sowie alle anderen VMs aktualisiert, die mit diesem Arbeitsbereich verbunden sind. Sie können eine einzelne VM oder mehrere VMs, Ressourcengruppen oder Abonnements auswählen. 
+
+Verwenden Sie den folgenden Befehl, um einen Arbeitsbereich mit PowerShell zu aktualisieren:
 
 ```PowerShell
 Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-group-name> -WorkspaceName <workspace-name> -IntelligencePackName "VMInsights" -Enabled $True

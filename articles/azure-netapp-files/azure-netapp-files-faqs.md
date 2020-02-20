@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2020
+ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: aaa7e5e65ced2a9899bef5a811ee74be42a8548f
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046155"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048809"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -131,7 +131,9 @@ Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Vo
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Wie viele Active Directory-Verbindungen werden unterstützt?
 
-Azure NetApp Files unterstützt zurzeit nur eine Active Directory-Verbindung pro NetApp-Konto, pro Abonnement und in jeder Region. Die Verbindung wird nicht über NetApp-Konten hinweg geteilt.
+Azure NetApp Files bietet keine Unterstützung für mehrere Active Directory-Verbindungen in einer einzelnen *Region*. Dies gilt auch dann, wenn die AD-Verbindungen zu unterschiedlichen NetApp-Konten gehören. Sie können jedoch über mehrere AD-Verbindungen in einem einzelnen *Abonnement* verfügen, sofern sich die AD-Verbindungen in unterschiedlichen Regionen befinden. Wenn Sie mehrere AD-Verbindungen in einer einzelnen Region benötigen, können Sie hierfür separate Abonnements verwenden. 
+
+AD-Verbindungen werden für jeweils ein NetApp-Konto konfiguriert. Die AD-Verbindung ist ausschließlich über das NetApp-Konto sichtbar, in dem sie erstellt wurde.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Unterstützt Azure NetApp Files Azure Active Directory? 
 

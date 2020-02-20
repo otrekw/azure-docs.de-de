@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 887c10097187f193f55c6e301be3e739a16d6bf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b5a6b62e423b982cd7a852de844cd561997ba1e7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906908"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048417"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -221,12 +221,12 @@ Möglicherweise protokolliert ein Serverendpunkt aufgrund eines Fehlers oder unz
 Dieses Problem ist zu erwarten, wenn Sie einen Cloudendpunkt erstellen und eine Azure-Dateifreigabe verwenden, die Daten enthält. Der Änderungsenumerationsauftrag, der auf Änderungen in der Azure-Dateifreigabe prüft, muss abgeschlossen sein, bevor Dateien zwischen der Cloud und den Serverendpunkten synchronisiert werden können. Der Zeitaufwand für die Auftragsausführung hängt von der Größe des Namespace in der Azure-Dateifreigabe ab. Sobald der Änderungsenumerationsauftrag abgeschlossen ist, sollte die Serverendpunktintegrität aktualisiert werden.
 
 ### <a id="broken-sync"></a>Wie überwache ich die Integrität der Synchronisierung?
-# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 In den einzelnen Synchronisierungsgruppen können Sie ein Drilldown auf die jeweiligen Serverendpunkte ausführen, um den Status der zuletzt abgeschlossenen Synchronisierungssitzungen anzuzeigen. Ein grünes Symbol in der Spalte „Integrität“ und der Wert „0“ unter „Dateien ohne Synchronisierung“ geben an, dass die Synchronisierung wie erwartet funktioniert. Wenn dies nicht der Fall sein sollte, sehen Sie sich nachfolgend die Liste mit allgemeinen Synchronisierungsfehlern und die Informationen an, wie Sie Dateien, die nicht synchronisiert wurden, behandeln. 
 
 ![Ein Screenshot des Azure-Portals](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 Navigieren Sie zu den Telemetrieprotokollen des Servers, die Sie in der Ereignisanzeige unter `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` finden. Das Ereignis 9102 entspricht einer abgeschlossenen Synchronisierungssitzung. Um den aktuellen Status einer Synchronisierung anzuzeigen, suchen Sie das aktuelle Ereignis mit der ID 9102. Über SyncDirection erfahren Sie, ob es sich bei dieser Sitzung um einen Upload oder Download gehandelt hat. Wenn HResult „0“ lautet, war eine Synchronisierungssitzung erfolgreich. Ein HResult ungleich „0“ bedeutet, dass während der Synchronisierung ein Fehler aufgetreten ist. Eine Liste von häufigen Fehlern finden Sie unten. Wenn die PerItemErrorCount größer als 0 ist, bedeutet dies, dass bestimmte Dateien oder Ordner nicht ordnungsgemäß synchronisiert wurden. Es kann vorkommen, dass ein HResult von „0“ angibt, aber eine PerItemErrorCount angegeben wird, die größer als 0 ist.
 
 Im Folgenden wird ein Beispiel für einen erfolgreichen Upload vorgestellt. Der Übersichtlichkeit halber werden nachfolgend nur einige der Werte aufgeführt, die in den einzelnen 9102-Ereignissen enthalten sind. 
@@ -258,10 +258,10 @@ Gelegentlich tritt bei allen Synchronisierungssitzungen ein Fehler auf, oder Per
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?
-# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 Navigieren Sie in Ihrer Synchronisierungsgruppe zum betreffenden Serverendpunkt und dann zum Abschnitt „Synchronisierungsaktivität“. Dort wird die Anzahl der Dateien angezeigt, die Sie in der aktuellen Synchronisierungssitzung hoch- oder heruntergeladen haben. Beachten Sie, dass dieser Status mit einer Verzögerung von ca. 5 Minuten angezeigt wird. Wenn Ihre Synchronisierungssitzung so kurz ist, dass sie innerhalb dieses Zeitraums abgeschlossen wird, wird sie eventuell nicht im Portal gemeldet. 
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 Suchen Sie das aktuelle Ereignis 9302 im Telemetrieprotokoll auf dem Server (in der Ereignisanzeige unter „Anwendungs- und Dienstprotokolle\Microsoft\FileSync\Agent\Telemetry“). Dieses Ereignis gibt den Zustand der aktuellen Synchronisierungssitzung an. TotalItemCount gibt die Anzahl der zu synchronisierenden Dateien, AppliedItemCount die Anzahl der bisher synchronisierten Dateien und PerItemErrorCount die Anzahl der Dateien an, bei denen die Synchronisierung zu einem Fehler führte (weitere Informationen diesbezüglich finden Sie unten).
 
 ```
@@ -276,14 +276,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>Wie erkenne ich, ob meine Server miteinander synchronisiert sind?
-# <a name="portaltabportal1"></a>[Portal](#tab/portal1)
+# <a name="portal"></a>[Portal](#tab/portal1)
 Stellen Sie bei jedem Server in einer bestimmten Synchronisierungsgruppe Folgendes sicher:
 - Die Zeitstempel für „Letzter Synchronisierungsversuch“ für Uploads und Downloads sind aktuell.
 - Der Status ist sowohl für Uploads als auch für Downloads grün.
 - Das Feld „Synchronisierungsaktivität“ zeigt, dass nur sehr wenige oder keine Dateien mehr synchronisiert werden müssen.
 - Das Feld „Dateien ohne Synchronisierung“ ist für Uploads und Downloads „0“.
 
-# <a name="servertabserver"></a>[Server](#tab/server)
+# <a name="server"></a>[Server](#tab/server)
 Sehen Sie sich die durchgeführten Synchronisierungssitzungen an, die von 9102-Ereignissen im Telemetrieereignisprotokoll für die einzelnen Server gekennzeichnet sind (in der Ereignisanzeige unter `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`). 
 
 1. Auf dem betreffenden Server sollten Sie sicherstellen, dass die neuesten Upload- und Downloadsitzungen erfolgreich abgeschlossen wurden. Überprüfen Sie hierfür, ob das HResult und die PerItemErrorCount für Uploads und Downloads „0“ lauten (das Feld „SyncDirection“ gibt an, ob es sich bei einer Sitzung um eine Upload- oder eine Downloadsitzung handelt). Hinweis: Wenn eine kürzlich abgeschlossene Synchronisierungssitzung nicht angezeigt wird, wird aller Wahrscheinlichkeit nach momentan eine Synchronisierungssitzung ausgeführt. Dies ist normal, wenn Sie gerade eine große Menge von Daten hinzugefügt oder geändert haben.
@@ -314,7 +314,7 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | HRESULT | HRESULT (dezimal) | Fehlerzeichenfolge | Problem | Wiederherstellung |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Auf die mehrstufige Datei auf dem Server kann nicht zugegriffen werden. Dieses Problem tritt auf, wenn die mehrstufige Datei vor dem Löschen eines Serverendpunkts nicht zurückgerufen wurde. | Informationen zur Behebung dieses Problems finden Sie unter [Auf Tieringdateien kann nach dem Löschen eines Serverendpunkts nicht zugegriffen werden](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint). |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler mehrere Tage auftritt, ermitteln Sie mithilfe des PowerShell-Skripts „FileSyncErrorsReport.ps1“, weshalb der abhängige Ordner noch nicht synchronisiert wurde. |
 | 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Die Datei- oder Verzeichnisänderung kann noch nicht synchronisiert werden, da ein abhängiger Ordner noch nicht synchronisiert ist und ein Fehler bei der Synchronisierungssitzung auftrat. Dieses Element wird synchronisiert, sobald die abhängigen Änderungen synchronisiert wurden. | Keine weiteren Maßnahmen erforderlich. Wenn der Fehler weiterhin auftritt, untersuchen Sie den Fehler in der Synchronisierungssitzung. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
@@ -887,14 +887,14 @@ Dieser Fehler tritt auf, wenn ein Datenerfassungsvorgang das Timeout überschrei
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Navigieren Sie zu der Synchronisierungsgruppe im Speichersynchronisierungsdienst.
 2. Wählen Sie den Cloudendpunkt innerhalb der Synchronisierungsgruppe aus.
 3. Beachten Sie den Namen der Azure-Dateifreigabe im geöffneten Bereich.
 4. Wählen Sie das verknüpfte Speicherkonto aus. Wenn bei dieser Verknüpfung ein Fehler auftritt, wurde das Speicherkonto, auf das verwiesen wurde, entfernt.
     ![Ein Screenshot, das den Bereich mit Details zum Cloudendpunkt und einem Link zum Speicherkonto zeigt](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -970,12 +970,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**Stellen Sie sicher, dass die Azure-Dateifreigabe vorhanden ist.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie auf der linken Seite im Inhaltsverzeichnis auf **Übersicht**, um zur Hauptseite des Speicherkontos zurückzukehren.
 2. Wählen Sie **Dateien** zum Anzeigen der Liste von Dateifreigaben aus.
 3. Vergewissern Sie sich, dass die Dateifreigabe, auf die durch den Cloudendpunkt verwiesen wird, in der Liste der Dateifreigaben angezeigt wird (Sie sollten diese bei Schritt 1 notiert haben).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -989,7 +989,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**Stellen Sie sicher, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt.**  
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Klicken Sie links im Inhaltsverzeichnis auf **Zugriffssteuerung (IAM)** .
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Liste der Benutzer und Anwendungen (*Dienstprinzipale*) anzuzeigen, die Zugriff auf Ihr Speicherkonto besitzen.
 1. Stellen Sie sicher, dass der **hybride Dateisynchronisierungsdienst** in der Liste mit der Rolle **Lese- und Datenzugriff** angezeigt wird. 
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - Wählen Sie im Feld **Rolle** die Option **Lese- und Datenzugriff** aus.
     - Geben Sie im Feld **Auswählen** die Zeichenfolge **Hybrid-Dateisynchronisierungsdienst** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Hybrid File Sync Service" }
 

@@ -15,24 +15,20 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844342"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069624"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics auf der Media Services-Plattform 
 
 ## <a name="retirement-plans"></a>Deaktivierungspläne
 
 > [!IMPORTANT]
-> Der folgende Legacy-Medienprozessor wird 2020 deaktiviert. Weitere Informationen finden Sie in der folgenden Tabelle: 
+> Einige Medienprozessoren werden eingestellt. Informationen zu den Deaktivierungsdaten und weitere Einzelheiten finden Sie im Thema [Legacy-Komponenten](legacy-components.md). 
 
-|Medienprozessorname|Deaktivierungstermin|Zusätzliche Hinweise|
-|---|---|
-|[Azure Media Indexer](media-services-index-content.md)|1\. Oktober 2020|Dieser Medienprozessor wird vom [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ersetzt. Weitere Informationen finden Sie unter [Migration von Azure Media Indexer zu Azure Media Services Video Indexer](migrate-indexer-v1-v2.md).
- 
 ## <a name="overview"></a>Übersicht
 
 Immer mehr Organisationen sehen im Video das bevorzugte Medium zum Schulen ihrer Mitarbeiter, Binden ihrer Kunden und Dokumentieren von Geschäftsfunktionen. Cloud Computing bietet eine Möglichkeit zum Speichern und Streamen großer Mediendateien sowie zum Zugreifen auf diese. Wenn die Videothek des Unternehmens jedoch wächst, benötigt sie ein ebenso effektives Verfahren zum Extrahieren von Erkenntnissen aus dem Inhalt. 

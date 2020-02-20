@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4c0467039cf4fefd7625f1146c4bade99b49304d
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046007"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048725"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 Business Central
 
@@ -108,19 +108,9 @@ Wählen Sie mindestens eine und höchstens drei Kategorien aus, die zum Platzier
 
 Geben Sie die Versionsnummer Ihres Angebots ein. Für Kunden wird diese Version auf der Detailseite des Angebots aufgeführt.
 
-### <a name="standard-contract"></a>Standardvertrag
+### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern.
-
-Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Sie Ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen.
-
-Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aktivieren Sie das Kontrollkästchen **Standardvertrag verwenden?** , um den Standardvertrag zu verwenden.
-
-#### <a name="terms-of-use"></a>Nutzungsbedingungen
-
-Wenn Sie das Kontrollkästchen **Standardvertrag verwenden?** nicht aktivieren, müssen Sie Ihre eigenen rechtlichen Bedingungen im Feld **Nutzungsbedingungen** angeben. Geben Sie bis zu 10.000 Textzeichen oder, wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, eine URL ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
+Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bedingungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
@@ -158,9 +148,9 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, formatieren Sie die Bes
 
 ![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
 
-Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
+Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
 
-- Um das Format der Inhalte zu ändern, heben Sie den zu formatierenden Text hervor und wählen ein Textformat aus, wie unten dargestellt:
+- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text und wählen ein Textformat aus, wie unten dargestellt:
 
      ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
 
@@ -170,7 +160,7 @@ Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
 
 - Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
 
-     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Einzügen](./media/text-editor5.png)
+     ![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Suchbegriffe
 

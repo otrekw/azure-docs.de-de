@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 3ef584c48ab44fd3616b5c7897d589bddbe45dc0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549256"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063814"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes eines Linux-NFS-Servers (Network File System) mit Azure Kubernetes Service (AKS)
 Die Datenfreigabe zwischen Containern ist häufig eine notwendige Komponente containerbasierter Dienste und Anwendungen. Sie haben in der Regel verschiedene Pods, die Zugriff auf die gleichen Informationen auf einem externen permanenten Datenträger benötigen.    
@@ -27,7 +27,7 @@ Ihr AKS-Cluster muss sich in dem gleichen Netzwerk wie der NFS-Server oder in ei
 
 Die Schritte zum Konfigurieren mit einem vorhandenen VNET werden in der Dokumentation beschrieben: [Erstellen eines AKS-Clusters im virtuellen Netzwerk][aks-virtual-network] und [Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal][peer-virtual-networks].
 
-Außerdem wird davon ausgegangen, dass Sie eine Ubuntu-Linux-VM (z.B. 18.04 LTS) erstellt haben. Einstellungen und Größe Ihrer Wahl können über Azure bereitgestellt werden. Informationen zum Linux-Schnellstart finden Sie unter [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure CLI][linux-create].
+Außerdem wird davon ausgegangen, dass Sie eine Ubuntu-Linux-VM (z.B. 18.04 LTS) erstellt haben. Einstellungen und Größe Ihrer Wahl können über Azure bereitgestellt werden. Informationen zum Linux-Schnellstart finden Sie unter [Tutorial: Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle][linux-create].
 
 Wenn Sie zuerst Ihren AKS-Cluster bereitstellen, füllt Azure bei der Bereitstellung Ihres Ubuntu-Computers automatisch das Feld „Virtuelles Netzwerk“ aus, sodass beide sich in demselben VNET befinden. Aber wenn Sie stattdessen mit mittels Peering verknüpften Netzwerken arbeiten möchten, nutzen Sie die obige Dokumentation.
 
@@ -93,8 +93,9 @@ chmod +x ~/nfs-server-setup.sh
 ```
 
 ## <a name="connecting-aks-cluster-to-nfs-server"></a>Herstellen einer Verbindung des AKS-Clusters mit dem NFS-Server
-Wir können durch Bereitstellung eines permanenten Volumes und des Anspruchs auf ein permanentes Volume, der angibt, wie auf das Volume zugegriffen wird, eine Verbindung des NFS-Servers mit unserem Cluster herstellen.  
-Das Verbinden der beiden Dienste im gleichen Netzwerk oder in mittels Peering verknüpften virtuellen Netzwerken ist erforderlich. Anweisungen zum Einrichten des Clusters im gleichen VNET finden Sie hier: [Erstellen eines AKS-Clusters im virtuellen Netzwerk][aks-virtual-network].
+Wir können durch Bereitstellung eines permanenten Volumes und des Anspruchs auf ein permanentes Volume, der angibt, wie auf das Volume zugegriffen wird, eine Verbindung des NFS-Servers mit unserem Cluster herstellen.
+
+Das Verbinden der beiden Dienste im gleichen Netzwerk oder in mittels Peering verknüpften virtuellen Netzwerken ist erforderlich. Anweisungen zum Einrichten des Clusters im gleichen VNET finden Sie hier: [Erstellen eines AKS-Clusters im virtuellen Netzwerk][aks-virtual-network]
 
 Sobald sie sich im gleichen virtuellen Netzwerk (oder in mittels Peering miteinander verknüpften virtuellen Netzwerken) befinden, müssen Sie ein permanentes Volume und einen Anspruch auf ein permanentes Volume in Ihrem AKS-Cluster bereitstellen. Die Container können dann das NFS-Laufwerk in ihr lokales Verzeichnis einbinden.
 

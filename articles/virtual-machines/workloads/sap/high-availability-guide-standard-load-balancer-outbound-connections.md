@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/28/2019
+ms.date: 02/07/2020
 ms.author: radeltch
-ms.openlocfilehash: 179df26eb0cc75899c9b509ebe00410ffa916dc8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 52179f15829981d59ff060784a49eccef89bb186
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935193"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083707"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -106,7 +106,7 @@ Die Konfiguration würde wie folgt aussehen:
     az network lb outbound-rule create --address-pool MyBackendPoolOfPublicILB --frontend-ip-configs MyPublicILBFrondEndIP --idle-timeout 30 --lb-name MyPublicILB --name MyOutBoundRules  --outbound-ports 10000 --enable-tcp-reset true --protocol All --resource-group MyResourceGroup
    ```
 
-4. Erstellen Sie Regeln für Netzwerksicherheitsgruppen, um den Zugriff auf bestimmte öffentliche Endpunkte einzuschränken. Wenn es eine vorhandene Netzwerksicherheitsgruppe gibt, können Sie diese anpassen. Das folgende Beispiel zeigt, wie Sie nur den Zugriff auf die Azure-Verwaltungs-API zulassen können: 
+4. Erstellen Sie Regeln für Netzwerksicherheitsgruppen, um den Zugriff auf bestimmte öffentliche Endpunkte einzuschränken. Wenn es eine vorhandene Netzwerksicherheitsgruppe gibt, können Sie diese anpassen. Das folgende Beispiel zeigt, wie Sie den Zugriff auf die Azure-Verwaltungs-API zulassen: 
    1. Navigieren Sie zur Netzwerksicherheitsgruppe.
    1. Klicken Sie auf „Ausgangssicherheitsregeln“.
    1. Fügen Sie eine Regel für **Gesamten ausgehenden Zugriff verweigern** zu **Internet** hinzu.

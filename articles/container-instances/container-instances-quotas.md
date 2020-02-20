@@ -3,18 +3,18 @@ title: Dienstkontingente und regionale Verfügbarkeit
 description: Kontingente, Limits und Regionsverfügbarkeit des Azure Container Instances-Diensts.
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 91681130e32cf8a76829b8bfc3e2a1e97a59ff6b
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: b3e7f2f67d806bd2fca74f58d446b0de9a4b8f44
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533511"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117902"
 ---
 # <a name="quotas-and-limits-for-azure-container-instances"></a>Kontingente und Limits für Azure Container Instances
 
 Für die Ressourcen und Funktionen aller Azure-Dienste gelten bestimmte Standardlimits und Kontingente. In diesem Artikel werden die Standardkontingente und Limits für Azure Container Instances erläutert.
 
-Informationen zur Verfügbarkeit der Features und Ressourcen von Azure Container Instances in Azure-Regionen finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen](container-instances-region-availability.md).
+Die Verfügbarkeit von Compute-, Arbeitsspeicher- und Speicherressourcen für Azure Container Instances variiert abhängig von der Region und vom Betriebssystem. Einzelheiten finden Sie unter [Ressourcenverfügbarkeit für Azure Container Instances](container-instances-region-availability.md).
 
 ## <a name="service-quotas-and-limits"></a>Dienstkontingente und Limits
 

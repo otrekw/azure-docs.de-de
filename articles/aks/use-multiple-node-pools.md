@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: 62be78df28d65c2ed16a9f45295edec8c5c360c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901525"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157973"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -31,13 +31,12 @@ Azure CLI-Version 2.0.76 oder höher muss installiert und konfiguriert sein. Fü
 
 Die folgenden Einschränkungen gelten für die Erstellung und Verwaltung von AKS-Clustern, die mehrere Knotenpools unterstützen:
 
+* Siehe [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
 * Der Standardknotenpool (der erste) kann nicht gelöscht werden.
 * Das Add-On für das HTTP-Anwendungsrouting kann nicht verwendet werden.
 * Der AKS-Cluster muss den Lastenausgleich mit der SKU „Standard“ nutzen, um mehrere Knotenpools verwenden zu können. Das Feature wird für Lastenausgleichsmodule der SKU „Basic“ nicht unterstützt.
 * Der AKS-Cluster muss VM-Skalierungsgruppen für die Knoten verwenden.
 * Der Name eines Knotenpools darf nur Kleinbuchstaben und Ziffern enthalten und muss mit einem Kleinbuchstaben beginnen. Bei Linux-Knotenpools muss die Länge zwischen einem und zwölf Zeichen liegen. Bei Windows-Knotenpools muss die Länge zwischen einem und sechs Zeichen betragen.
-* Der AKS-Cluster kann maximal 10 Knotenpools umfassen.
-* Der AKS-Cluster kann maximal 1.000 Knoten in diesen 10 Knotenpools enthalten.
 * Alle Knotenpools müssen sich im selben VNET und Subnetz befinden.
 * Beim Erstellen mehrerer Knotenpools während der Clustererstellung muss die Kubernetes-Version für alle Knotenpools der für die Steuerungsebene festgelegten Version entsprechen. Dies kann nach dem Bereitstellen des Clusters mithilfe von Poolvorgängen pro Knoten aktualisiert werden.
 
@@ -565,7 +564,7 @@ Es kann ein paar Minuten dauern, bis Ihr AKS-Cluster aktualisiert wird, abhängi
 ## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Zuweisen einer öffentlichen IP-Adresse pro Knoten in einem Knotenpool
 
 > [!WARNING]
-> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. In der Vorschauversion müssen Sie die *Load-Balancer-SKU „Basic“* verwenden, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
+> Während sich die Funktion zur Zuweisung einer öffentlichen IP-Adresse pro Knoten in der Vorschau befindet, kann sie nicht mit *Load Balancern der Standard-SKU in AKS* verwendet werden, weil Load Balancer-Regeln möglicherweise mit der VM-Bereitstellung in Konflikt stehen. Aufgrund dieser Einschränkung werden Windows-Agentpools bei dieser Previewfunktion nicht unterstützt. In der Vorschauversion müssen Sie die *Load-Balancer-SKU „Basic“* verwenden, wenn Sie eine öffentliche IP-Adresse pro Knoten zuweisen müssen.
 
 AKS-Knoten benötigen keine eigene öffentliche IP-Adresse für die Kommunikation. In einigen Szenarien müssen Knoten in einem Knotenpool jedoch möglicherweise jeweils über eine eigene öffentliche IP-Adresse verfügen. Ein Beispiel hierfür ist Gaming, bei dem eine Konsole eine direkte Verbindung mit einem virtuellen Cloudcomputer herstellen muss, um Hops zu minimieren. Dies kann erreicht werden, indem Sie sich für eine separate Previewfunktion für öffentliche IP-Adressen für Knoten (Node Public IP) (Vorschauversion) registrieren.
 
@@ -604,6 +603,7 @@ Informationen zum Erstellen und Verwenden von Windows Server-Containerknotenpool
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
+[quotas-skus-regions]: quotas-skus-regions.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create

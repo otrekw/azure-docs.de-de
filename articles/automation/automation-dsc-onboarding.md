@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 89e86a6702be7314b99975cac90818252eb07df7
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834108"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046231"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -310,7 +310,7 @@ Für eine verbesserte Sicherheit können die primären und sekundären Zugriffss
 
 Nach der Registrierung eines Computers als DSC-Knoten in Azure Automation DSC gibt es eine Reihe von Gründen, warum Sie diesen Knoten in Zukunft erneut registrieren müssen:
 
-- Für Versionen von Windows Server vor Windows Server 2019 handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, das nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.  Eine Lösung für dieses Problem ist in Windows Server 2019 und höher enthalten.
+- Für Versionen von Windows Server vor Windows Server 2019 handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, das nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor dem Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.  Eine Lösung für dieses Problem ist in Windows Server 2019 und höher enthalten.
 - Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
 
 Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrieren des Knotens mithilfe einer der in diesem Dokument beschriebenen Methoden für die Integration erfolgen. Sie müssen die Registrierung eines Knotens in Azure Automation DSC nicht aufheben, bevor Sie ihn erneut registrieren.

@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 79b223de7a0a0cfdaf799b1f80e585a2a55f7e82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851321"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086679"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Überwachen von Themen und Ereignisabonnements
 
@@ -40,7 +40,7 @@ Konfigurieren Sie das Modul so, dass es Metriken ausgibt, indem Sie die Umgebung
         }
  ```    
 
-Die Metriken sind dann unter `5888/metrics` im Modul für HTTP und unter `4438/metrics` für HTTPS verfügbar. Beispiel: `http://<modulename>:4438/metrics?api-version=2019-01-01-preview` für HTTP. An diesem Punkt kann ein Metrikmodul den Endpunkt abrufen, um Metriken zu sammeln, wie in dieser [Beispielarchitektur](https://github.com/veyalla/ehm).
+Die Metriken sind dann unter `5888/metrics` im Modul für HTTP und unter `4438/metrics` für HTTPS verfügbar. Beispiel: `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` für HTTP. An diesem Punkt kann ein Metrikmodul den Endpunkt abrufen, um Metriken zu sammeln, wie in dieser [Beispielarchitektur](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Verfügbare Metriken
 
@@ -48,7 +48,7 @@ Sowohl Themen als auch Ereignisabonnements geben Metriken aus, die Ihnen Erkennt
 
 ### <a name="topic-metrics"></a>Metriken für Themen
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | ------ | ----------- |
 | EventsReceived | Anzahl der zu diesem Thema veröffentlichten Ereignisse
 | UnmatchedEvents | Anzahl der für das Thema veröffentlichten Ereignisse, die keinem Ereignisabonnement entsprechen und verworfen werden
@@ -60,12 +60,12 @@ Sowohl Themen als auch Ereignisabonnements geben Metriken aus, die Ihnen Erkennt
 
 ### <a name="event-subscription-metrics"></a>Metriken für Ereignisabonnements
 
-| Metrik | Beschreibung |
+| Metrik | BESCHREIBUNG |
 | ------ | ----------- |
-| deliverySuccessCounts | Anzahl der erfolgreich an den konfigurierten Endpunkt übermittelten Ereignisse
-| deliveryFailureCounts | Anzahl der Fehler bei der Ereignisübermittlung an den konfigurierten Endpunkt
-| deliverySuccessLatencyMs | Latenz der erfolgreich übermittelten Ereignisse in Millisekunden
-| deliveryFailureLatencyMs | Latenz der fehlerhaften Ereignisübermittlungen in Millisekunden
-| systemDelayForFirstAttemptMs | Systemverzögerung vor dem ersten Zustellungsversuch von Ereignissen in Millisekunden
-| deliveryAttemptsCount | Anzahl der Versuche zur Ereignisübermittlung – Erfolg und Fehler
-| expiredCounts | Anzahl von Ereignissen, die nicht zugestellt werden konnten 
+| DeliverySuccessCounts | Anzahl der erfolgreich an den konfigurierten Endpunkt übermittelten Ereignisse
+| DeliveryFailureCounts | Anzahl von Ereignissen, die nicht an den konfigurierten Endpunkt übermittelt werden konnten
+| DeliverySuccessLatencyMs | Latenz der erfolgreich übermittelten Ereignisse in Millisekunden
+| DeliveryFailureLatencyMs | Latenz der fehlerhaften Ereignisübermittlungen in Millisekunden
+| SystemDelayForFirstAttemptMs | Systemverzögerung vor dem ersten Zustellungsversuch von Ereignissen in Millisekunden
+| DeliveryAttemptsCount | Anzahl der Versuche zur Ereignisübermittlung – Erfolg und Fehler
+| ExpiredCounts | Anzahl von Ereignissen, die abgelaufen sind und nicht an den konfigurierten Endpunkt übermittelt werden konnten

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 9a2237c0cea5fcc67e093709a0b42193b7326d1d
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 498cbd982b565f498ddade2dbc9afafe17a2c4ab
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045986"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048718"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines neuen Angebots für Dynamics 365 for Customer Engagement und PowerApps
 
@@ -24,7 +24,7 @@ Um mit dem Erstellen von Angeboten für Dynamics 365 for Customer Engagement und
 ![Dashboard „Kommerzieller Marketplace“ im Partner Center](./media/new-offer-overview.png)
 
 >[!Note]
-> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Sie müssen das Angebot für die Veröffentlichung einreichen, nachdem Sie Änderungen vorgenommen haben.
+> Nach der Veröffentlichung eines Angebots werden in Partner Center am Angebot vorgenommene Änderungen erst nach einer erneuten Veröffentlichung im System und den Store Fronts aktualisiert. Stellen Sie sicher, dass Sie das Angebot für die Veröffentlichung einreichen, nachdem Sie Änderungen vorgenommen haben.
 
 ## <a name="create-a-new-offer"></a>Erstellen eines neuen Angebots
 
@@ -112,19 +112,9 @@ Wählen Sie alle Dynamics 365-Produkte aus, für die dieses Angebot gilt.
 
 Geben Sie die Versionsnummer Ihres Angebots ein. Für Kunden wird diese Version auf der Detailseite des Angebots aufgeführt. Wenn Sie die Versionsnummer nur aufgrund von Änderungen bei Marketing/Beschreibungen aktualisieren, aktivieren Sie das Kontrollkästchen **Ausschließliche Marketingänderung**. Durch diese Option kann das Angebot die Zertifizierungs- und Bereitstellungsphase umgehen.
 
-### <a name="standard-contract"></a>Standardvertrag
+### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Verringerung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft die Vorlage „Standardvertrag“ bereit, um eine Transaktion im Marketplace zu erleichtern.
-
-Statt benutzerdefinierte Geschäftsbedingungen zu erstellen, können Sie Ihre Software wahlweise unter dem Standardvertrag anbieten, den Kunden nur einmal überprüfen und akzeptieren müssen.
-
-Der Standardvertrag ist hier zu finden: https://go.microsoft.com/fwlink/?linkid=2041178
-
-Aktivieren Sie das Kontrollkästchen **Standardvertrag verwenden?** , um den Standardvertrag zu verwenden.
-
-#### <a name="terms-of-use"></a>Nutzungsbedingungen
-
-Wenn Sie das Kontrollkästchen **Standardvertrag verwenden?** nicht aktivieren, müssen Sie Ihre eigenen rechtlichen Bedingungen im Feld **Nutzungsbedingungen** angeben. Geben Sie bis zu 10.000 Textzeichen oder, wenn Ihre Nutzungsbedingungen eine längere Beschreibung erfordern, eine URL ein, über den Ihre zusätzlichen Lizenzbedingungen aufgerufen werden können. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihre App testen können.
+Geben Sie im Feld **Geschäftsbedingungen** Ihre eigenen rechtlichen Bedingungen an. Sie können auch die URL angeben, unter der Ihre Geschäftsbedingungen zu finden sind. Kunden müssen diese Bedingungen akzeptieren, bevor sie Ihr Angebot testen können.
 
 ## <a name="offer-listing"></a>Angebotsliste
 
@@ -153,13 +143,13 @@ Geben Sie eine kurze Beschreibung Ihres Angebots an (bis zu 100 Zeichen). Diese 
 
 
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein.
 
 Einige Tipps zum Verfassen Ihrer Beschreibung:  
 
-- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Schließen Sie folgende Informationen in ihr Nutzenversprechen ein:
+- Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Schließen Sie folgende Informationen in Ihr Nutzenversprechen ein:
   - Beschreibung des Produkts
   - Benutzertyp, der von dem Produkt profitiert
   - Anforderungen oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt
@@ -172,9 +162,9 @@ Um Ihre Angebotsbeschreibung ansprechender zu gestalten, formatieren Sie die Bes
 
 ![Verwenden des Rich-Text-Editors](./media/text-editor2.png)
 
-Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
+Gehen Sie bei der Verwendung des Rich-Text-Editors folgendermaßen vor:
 
-- Um das Format der Inhalte zu ändern, heben Sie den zu formatierenden Text hervor und wählen ein Textformat aus, wie unten dargestellt:
+- Um das Format der Inhalte zu ändern, markieren Sie den zu formatierenden Text und wählen ein Textformat aus, wie unten dargestellt:
 
      ![Verwenden des Rich-Text-Editors zum Ändern des Textformats](./media/text-editor3.png)
 
@@ -184,7 +174,7 @@ Nutzen Sie die folgenden Anweisungen, um den Rich-Text-Editor zu verwenden:
 
 - Verwenden Sie zum Hinzufügen oder Entfernen von Texteinzügen die folgenden Optionen:
 
-     ![Verwenden des Rich-Text-Editors zum Hinzufügen von Einzügen](./media/text-editor5.png)
+     ![Verwenden des Rich-Text-Editors für Einzüge](./media/text-editor5.png)
 
 
 
@@ -322,7 +312,7 @@ Eine Bereitstellungsvorlage, die alle Azure-Ressourcen enthält, aus denen Ihre 
 
 - **Test drive Azure Resource Manager template** (Vorlage für Azure Resource Manager-Testversion): Laden Sie die ZIP-Datei hoch, die die Azure Resource Manager-Vorlage enthält.  Im Schnellstartartikel [Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) erhalten Sie weitere Informationen zum Erstellen einer Azure Resource Manager-Vorlage.
 
-- **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum, in dem die Testversion aktiv bleibt, als Anzahl von Stunden ein. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet. Diese Dauer kann nur als ganze Anzahl von Stunden festgelegt werden (z. B. „2“ Stunden, die Angabe „1,5“ ist nicht zulässig).
+- **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum, in dem die Testversion aktiv bleibt, als Anzahl von Stunden ein. Nach Ablauf dieses Zeitraums wird die Testversion automatisch beendet. Die Dauer kann nur als ganze Anzahl von Stunden festgelegt werden (z. B. „2“ Stunden, die Angabe „1,5“ ist nicht zulässig).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technical configuration for Dynamics 365 test drive (Technische Konfiguration für Dynamics 365-Testversion)
 
@@ -330,7 +320,7 @@ Microsoft kann mit diesem Typ von Testversion die Dienstbereitstellung hosten un
 
 - **Maximale Anzahl gleichzeitiger Testversionen** (erforderlich): Legen Sie die maximale Anzahl von Kunden fest, die Ihre Testversion gleichzeitig verwenden können. Jeder gleichzeitige Benutzer nutzt eine Dynamics 365-Lizenz, während die Testversion aktiv ist. Daher müssen Sie sicherstellen, dass genügend Lizenzen für die festgelegte maximale Anzahl verfügbar sind. Empfohlener Wert liegt zwischen 3 und 5.
 
-- **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum ein, in dem die Testversion aktiv bleibt, indem Sie die Anzahl der Stunden festlegen. Nach Ablauf dieser Anzahl von Stunden wird die Sitzung beendet, und sie belegt nicht mehr eine Ihrer Lizenzen. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Diese Dauer kann nur als ganze Anzahl von Stunden festgelegt werden (z. B. „2“ Stunden, die Angabe „1,5“ ist nicht zulässig). Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
+- **Dauer der Testversion** (erforderlich): Geben Sie den Zeitraum ein, in dem die Testversion aktiv bleibt, indem Sie die Anzahl der Stunden festlegen. Nach Ablauf dieser Anzahl von Stunden wird die Sitzung beendet, und sie belegt nicht mehr eine Ihrer Lizenzen. Der empfohlene Wert beträgt 2 bis 24 Stunden, abhängig von der Komplexität Ihres Angebots. Die Dauer kann nur als ganze Anzahl von Stunden festgelegt werden (z. B. „2“ Stunden, die Angabe „1,5“ ist nicht zulässig). Der Benutzer kann eine neue Sitzung anfordern, wenn die Zeit abgelaufen ist und er erneut auf die Testversion zugreifen möchte.
 
 - **Instanz-URL** (erforderlich): Die URL, über die der Kunde die Testversion startet. Dies ist in der Regel die URL Ihrer Dynamics 365-Instanz, auf der Ihre App mit installierten Beispieldaten ausgeführt wird (z. B. https://testdrive.crm.dynamics.com).
 
@@ -340,7 +330,7 @@ Microsoft kann mit diesem Typ von Testversion die Dienstbereitstellung hosten un
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>Technical configuration for Logic app test drive (Technische Konfiguration für Logik-App-Testversion)
 
-Für alle benutzerdefinierten Produkte sollte dieser Typ von Testversionsbereitstellungsvorlage verwendet werden, der vielfältige komplexe Lösungsarchitekturen umfasst. Um weitere Informationen über das Einrichten von Logik-App-Testversionen zu erhalten, besuchen Sie [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) und [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) auf GitHub (in englischer Sprache).
+Für alle benutzerdefinierten Produkte sollte für die Bereitstellung der Testversion dieser Vorlagentyp verwendet werden, der vielfältige komplexe Lösungsarchitekturen umfasst. Um weitere Informationen über das Einrichten von Logik-App-Testversionen zu erhalten, besuchen Sie [Operations](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) und [Customer Engagement](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) auf GitHub (in englischer Sprache).
 
 - **Region** (erforderlich, Dropdownliste für Einfachauswahl): Es gibt derzeit 26 von Azure unterstützte Regionen, in denen Ihre Testversion zur Verfügung gestellt werden kann. Die Ressourcen für Ihre Logik-App werden in der von Ihnen gewählten Region bereitgestellt. Wenn die Logik-App benutzerdefinierte Ressourcen umfasst, die in einer bestimmten Region gespeichert sind, müssen Sie diese Region hier auswählen. Dazu empfiehlt es sich, die Logik-App lokal in Ihrem Azure-Abonnement im Portal vollständig bereitzustellen und zu überprüfen, ob sie ordnungsgemäß ausgeführt wird, bevor Sie diese Auswahl vornehmen.
 
@@ -364,7 +354,7 @@ Um die Testversion in Ihrem Auftrag bereitzustellen, erstellen Sie ein separates
 
 - **Azure-Abonnement-ID** (erforderlich für Azure Resource Manager und Logik-Apps): Geben Sie die Abonnement-ID ein, um für Ressourcennutzungsberichte und Abrechnungszwecke Zugriff auf die Dienste Ihres Azure-Kontos zu gewähren. Es wird empfohlen, [ein eigenes Azure-Abonnement zu erstellen](https://docs.microsoft.com/azure/billing/billing-create-subscription), das für Testversionen verwendet wird, falls Sie es noch nicht getan haben. Sie finden die Azure-Abonnement-IDs, indem Sie sich beim [Azure-Portal](https://portal.azure.com/) anmelden und im Menü auf der linken Seite zu den **Abonnements** navigieren. Durch Auswahl der Registerkarte wird Ihre Abonnement-ID angezeigt (z. B. a83645ac-1234-5ab6-6789-1h234g764ghty).
 
-- **ID des Azure AD-Mandanten** (erforderlich): Geben Sie Ihre [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) von Azure Active Directory (AD) ein. Um die ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen im linken Menü die Registerkarte „Active Directory“ und dann **Eigenschaften** aus und suchen dann die Nummer, die unter **Verzeichnis-ID** aufgeführt ist (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
+- **ID des Azure AD-Mandanten** (erforderlich): Geben Sie Ihre [Mandanten-ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) von Azure Active Directory (AD) ein. Um diese ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen im linken Menü die Registerkarte „Active Directory“ und dann **Eigenschaften** aus und suchen die unter **Verzeichnis-ID** aufgeführte Nummer (z. B. 50c464d3-4930-494c-963c-1e951d15360e). Sie können auch unter [https://www.whatismytenantid.com](https://www.whatismytenantid.com) die Mandanten-ID Ihrer Organisation mithilfe einer Domänennamen-URL nachschlagen.
 
 - **Name des Azure AD-Mandanten** (erforderlich für Dynamics 365): Geben Sie den Namen Ihres Azure Active Directory (AD) ein. Um diesen Namen zu suchen, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Oben rechts wird der Mandantenname unter Ihrem Kontonamen angegeben.
 
@@ -374,7 +364,7 @@ Um die Testversion in Ihrem Auftrag bereitzustellen, erstellen Sie ein separates
 
 ### <a name="test-drive-marketplace-listings"></a>Testversionen für Marketplace-Auflistungen
 
-Die Option **Marketplace-Auflistungen** auf der Registerkarte **Testversion** zeigt die Sprachen an, in denen Ihre Testversion verfügbar ist. Derzeit ist **Englisch (Vereinigte Staaten)** der einzige verfügbare Standort. Wählen Sie den Namen der Sprache aus, um Informationen zur Beschreibung der Testversion einzugeben.
+Die Option **Marketplace-Auflistungen** auf der Registerkarte **Testversion** zeigt die Sprachen an, in denen Ihre Testversion verfügbar ist. Derzeit ist **Englisch (USA)** der einzige verfügbare Standort. Wählen Sie den Namen der Sprache aus, um Informationen zur Beschreibung der Testversion einzugeben.
 
 - **Beschreibung:** (erforderlich): Beschreiben Sie Ihre Testversion. Geben Sie an, was vorgeführt wird, nennen Sie die Ziele, mit denen der Benutzer experimentieren soll, sowie die zu erkundenden Funktionen, und geben Sie relevante Informationen an, die dem Benutzer helfen zu entscheiden, ob er Ihr Angebot erwerben soll. In diesem Feld können bis zu 3.000 Zeichen Text eingegeben werden. 
 
@@ -404,7 +394,7 @@ Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, kli
 Wenn Sie das Angebot zum ersten Mal veröffentlichen, haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots.
-    - *Nicht gestartet:* Der Abschnitt wurde nicht bearbeitet und sollte abgeschlossen werden.
+    - *Nicht gestartet*: Der Abschnitt wurde nicht bearbeitet und sollte abgeschlossen werden.
     - *Unvollständig:* Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Kehren Sie zu den Abschnitten zurück, und nehmen Sie eine Aktualisierung vor.
     - *Abgeschlossen:* Der Abschnitt ist abgeschlossen. Alle erforderlichen Daten wurden angegeben, und es sind keine Fehler vorhanden. Alle Abschnitte des Angebots müssen abgeschlossen sein, bevor Sie das Angebot einreichen können.
 - Geben Sie dem Zertifizierungsteam im Abschnitt **Hinweise zur Zertifizierung** Testanweisungen, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird, sowie ergänzende Hinweise, die das Verständnis Ihrer App erleichtern.

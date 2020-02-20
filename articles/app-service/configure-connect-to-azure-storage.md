@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866977"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120672"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurieren von Azure Files in einem Windows-Container in App Service
 
@@ -38,6 +38,7 @@ Dieser Leitfaden zeigt den Zugriff auf Azure Storage in Windows-Containern. Nur 
 - Azure Storage in Windows-Containern wird zurzeit für BYOC-Szenarien (Bring Your Own Code) in App Service-Plänen unter Windows **nicht unterstützt**.
 - Azure Storage in Windows-Containern **unterstützt nicht** die Verwendung der **Storage-Frewall**-Konfiguration aufgrund von Infrastrukturbeschränkungen.
 - Mit Azure Storage in Windows-Containern können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
+- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 - Azure Storage wird unabhängig abgerechnet und ist **nicht** in Ihrer Web-App enthalten. Weitere Informationen zu [Azure Storage-Preisen](https://azure.microsoft.com/pricing/details/storage).
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Verknüpfen des Speichers mit Ihrer Web-App (Vorschau)

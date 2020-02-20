@@ -10,23 +10,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/03/2020
-ms.openlocfilehash: 108c9c1112327a3fcadeff4c4074f31f976a4e3d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026410"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121381"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
-Verwenden Sie Azure Monitor, um Aktivitätsereignisse der Azure AD B2C-Nutzung (Azure Active Directory B2C) an verschiedene Überwachungslösungen zu leiten. Sie können die Protokolle entweder zur langfristigen Verwendung speichern oder in SIEM-Drittanbietertools (Security Information & Event Management) integrieren, um Einblicke in Ihre Umgebung zu gewinnen.
+Verwenden Sie Azure Monitor, um Azure AD B2C-Protokolle (Azure Active Directory B2C) zur Anmeldung und [Überwachung](view-audit-logs.md) an verschiedene Überwachungslösungen zu leiten. Sie können die Protokolle entweder zur langfristigen Verwendung speichern oder in SIEM-Drittanbietertools (Security Information & Event Management) integrieren, um Einblicke in Ihre Umgebung zu gewinnen.
 
 Sie können Protokollereignisse an folgende Komponenten weiterleiten:
 
-* Ein Azure-Speicherkonto.
-* Einen Azure Event Hub (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
-* Einen Azure Log Analytics-Arbeitsbereich (zum Analysieren von Daten, Erstellen von Dashboards und Warnen vor bestimmten Ereignissen).
+* Ein Azure-[Speicherkonto](../storage/blobs/storage-blobs-introduction.md).
+* Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
+* Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ Sie können auch die [Azure Cloud Shell](https://shell.azure.com) nutzen, die di
 
 Für Azure AD B2C wird die [Azure Active Directory-Überwachung](../active-directory/reports-monitoring/overview-monitoring.md) genutzt. Zum Aktivieren der *Diagnoseeinstellungen* in Azure Active Directory auf Ihrem Azure AD B2C-Mandanten nutzen Sie die [delegierte Ressourcenverwaltung](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-Sie autorisieren einen Benutzer in Ihrem Azure AD B2C-Verzeichnis (**Dienstanbieter**), um die Azure Monitor-Instanz auf dem Mandanten zu konfigurieren, der Ihr Azure-Abonnement (**Kunde**) enthält. Zum Erstellen der Autorisierung stellen Sie eine [Azure Resource Manager](../azure-resource-manager/index.yml)-Vorlage auf Ihrem Azure AD-Mandanten bereit, der das Abonnement enthält. In den folgenden Abschnitten wird der Prozess Schritt für Schritt beschrieben.
+Sie autorisieren einen Benutzer oder eine Gruppe in Ihrem Azure AD B2C-Verzeichnis (**Dienstanbieter**), um die Azure Monitor-Instanz in dem Mandanten zu konfigurieren, der Ihr Azure-Abonnement (**Kunde**) enthält. Zum Erstellen der Autorisierung stellen Sie eine [Azure Resource Manager](../azure-resource-manager/index.yml)-Vorlage auf Ihrem Azure AD-Mandanten bereit, der das Abonnement enthält. In den folgenden Abschnitten wird der Prozess Schritt für Schritt beschrieben.
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+## <a name="create-or-choose-resource-group"></a>Erstellen oder Auswählen einer Ressourcengruppe
 
-Führen Sie auf dem Azure AD-Mandanten (Azure Active Directory), der Ihr Azure-Abonnement enthält (*nicht* das Verzeichnis mit Ihrem Azure AD B2C-Mandanten), die [Erstellung einer Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) durch. Verwenden Sie die folgenden Werte:
+Dies ist die Ressourcengruppe mit dem Ziel, in dem Daten aus Azure Monitor empfangen werden sollen: ein Azure-Zielspeicherkonto, ein Azure Event Hub oder ein Log Analytics-Arbeitsbereich. Sie geben den Namen der Ressourcengruppe an, wenn Sie die Azure Resource Manager-Vorlage bereitstellen.
 
-* **Abonnement**: Wählen Sie Ihr Azure-Abonnement.
-* **Ressourcengruppe**: Geben Sie einen Namen für die Ressourcengruppe ein. Beispiel: *azure-ad-b2c-monitor*.
-* **Region**: Wählen Sie einen Azure-Standort aus. Beispiel: *USA, Mitte*.
+[Erstellen Sie eine Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) in dem Azure AD-Mandanten, der Ihr Azure-Abonnement enthält (*nicht* das Verzeichnis mit Ihrem Azure AD B2C-Mandanten) oder wählen Sie eine vorhandene Ressourcengruppe aus.
+
+Dieses Beispiel verwendet eine Ressourcengruppe namens *azure-ad-b2c-monitor* in der Region*Central US* (USA, Mitte).
 
 ## <a name="delegate-resource-management"></a>Delegieren der Ressourcenverwaltung
 
@@ -209,7 +209,17 @@ Nachdem Sie die Vorlage bereitgestellt und einige Minuten auf den Abschluss der 
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-Nachdem Sie die Ressourcenverwaltung delegiert und Ihr Abonnement ausgewählt haben, können Sie im Azure-Portal die [Diagnoseeinstellungen erstellen](../active-directory/reports-monitoring/overview-monitoring.md).
+Diagnoseeinstellungen definieren, wohin Protokolle und Metriken für eine Ressource gesendet werden sollen. Mögliche Ziele:
+
+- [Azure-Speicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)-Lösungen
+- [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+Falls Sie dies noch nicht getan haben, erstellen Sie eine Instanz Ihres ausgewählten Zieltyps in der Ressourcengruppen, die Sie in der [Azure Resource Manager-Vorlage](#create-an-azure-resource-manager-template) angegeben haben.
+
+### <a name="create-diagnostic-settings"></a>Erstellen von Diagnoseeinstellungen
+
+Jetzt können Sie im Azure-Portal [Diagnoseeinstellungen erstellen](../active-directory/reports-monitoring/overview-monitoring.md).
 
 Konfigurieren Sie die Überwachungseinstellungen für Azure AD B2C-Aktivitätsprotokolle wie folgt:
 
@@ -217,12 +227,24 @@ Konfigurieren Sie die Überwachungseinstellungen für Azure AD B2C-Aktivitätspr
 1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
-1. Wählen Sie **+Diagnoseeinstellung hinzufügen**  aus.
+1. Wenn Einstellungen für die Ressource vorhanden sind, sehen Sie eine Liste der bereits konfigurierten Einstellungen. Klicken Sie entweder auf **Diagnoseeinstellung hinzufügen**, um eine neue Einstellung hinzuzufügen, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann jeweils höchstens einen der Zieltypen aufweisen.
 
     ![Bereich „Diagnoseeinstellungen“ im Azure-Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. Wenn noch kein Name für die Einstellung vorhanden ist, geben Sie ihr einen Namen.
+1. Aktivieren Sie das Kontrollkästchen für jedes Ziel, um die Protokolle zu senden. Klicken Sie auf **Konfigurieren**, um die jeweiligen Einstellungen anzugeben, wie in der folgenden Tabelle beschrieben.
+
+    | Einstellung | BESCHREIBUNG |
+    |:---|:---|
+    | In einem Speicherkonto archivieren | Name des Speicherkontos. |
+    | An einen Event Hub streamen | Der Namespace für die Event Hub-Erstellung (falls Sie erstmals Protokolle streamen) oder für das Streaming (falls bereits Ressourcen vorhanden sind, die diese Protokollkategorie an diesen Namespace streamen).
+    | An Log Analytics senden | Name des Arbeitsbereichs. |
+
+1. Wählen Sie **AuditLogs** und **SignInLogs** aus.
+1. Wählen Sie **Speichern** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Hinzufügen und Konfigurieren von Diagnoseeinstellungen in Azure Monitor finden Sie im folgenden Tutorial in der Azure Monitor-Dokumentation:
+Weitere Informationen zum Hinzufügen und Konfigurieren von Diagnoseeinstellungen in Azure Monitor finden Sie im [Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](../azure-monitor/insights/monitor-azure-resource.md).
 
-[Tutorial: Sammeln und Analysieren von Ressourcenprotokollen von einer Azure-Ressource](/azure-monitor/learn/tutorial-resource-logs.md)
+Informationen zum Streamen von Azure AD-Protokollen an einen Event Hub finden Sie im [Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

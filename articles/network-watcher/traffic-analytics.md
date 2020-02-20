@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840586"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426223"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -151,7 +151,7 @@ Um Datenverkehr analysieren zu können, benötigen Sie eine Instanz von Network 
 
 Vor der Aktivierung der NSG-Flussprotokollierung benötigen Sie eine Netzwerksicherheitsgruppe, deren Datenflüsse Sie protokollieren möchten. Falls Sie noch nicht über eine Netzwerksicherheitsgruppe verfügen, erstellen Sie eine anhand der Informationen in [Erstellen von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md#create-a-network-security-group).
 
-Wählen Sie auf der linken Seite des Azure-Portals **Monitor**, anschließend **Network Watcher** und dann **NSG-Flussprotokolle** aus. Wählen Sie die Netzwerksicherheitsgruppe aus, für die Sie ein NSG-Flussprotokoll aktivieren möchten, wie in der folgenden Abbildung gezeigt:
+Wechseln Sie im Azure-Portal zu **Network Watcher**, und wählen Sie **NSG-Flussprotokolle** aus. Wählen Sie die Netzwerksicherheitsgruppe aus, für die Sie ein NSG-Flussprotokoll aktivieren möchten, wie in der folgenden Abbildung gezeigt:
 
 ![Auswählen von Netzwerksicherheitsgruppen für die Aktivierung der NSG-Flussprotokolle](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -182,11 +182,8 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 
 1. Wählen Sie *Ein* als **Status** aus.
 2. Wählen Sie *Version 2* für **Datenflussprotokollversion** aus. Version 2 enthält Statistiken zur Flowsitzung (Bytes und Pakete).
-3. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet. Stellen Sie sicher, dass „Data Lake Storage Gen2 Hierarchical Namespace Enabled“ für den Speicher nicht auf TRUE festgelegt ist. Außerdem können NSG-Datenflussprotokolle nicht in einem Speicherkonto mit einer Firewall gespeichert werden. 
+3. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet. Stellen Sie sicher, dass „Data Lake Storage Gen2 Hierarchical Namespace Enabled“ für den Speicher nicht auf TRUE festgelegt ist.
 4. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
-> [!IMPORTANT]
-> Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus Blob Storage gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Delete network security group flow log storage blobs in Network Watcher](network-watcher-delete-nsg-flow-log-blobs.md) (Löschen von Speicherblobs mit NSG-Flowprotokollen in Network Watcher).
-
 5. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
 6. Wählen Sie das Verarbeitungsintervall aus. Basierend auf Ihrer Auswahl werden Datenflussprotokolle aus dem Speicherkonto erfasst und von Traffic Analytics verarbeitet. Sie können das Verarbeitungsintervall auf jede Stunde oder alle 10 Minuten festlegen. 
 7. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#supported-regions-log-analytics-workspaces) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

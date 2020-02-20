@@ -1,18 +1,18 @@
 ---
 title: Apache Ambari-Heartbeatprobleme in Azure HDInsight
 description: Bewertung verschiedene Gründe für Apache Ambari-Heartbeatprobleme in Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 09/11/2019
-ms.openlocfilehash: ae05a0d0866c38c2414bacb638fa90936bb6dc15
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 02/06/2020
+ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964616"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77057072"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Apache Ambari-Heartbeatprobleme in Azure HDInsight
 
@@ -22,7 +22,7 @@ In diesem Artikel werden Schritte zur Problembehandlung und mögliche Lösungen 
 
 ### <a name="issue"></a>Problem
 
-Beim Ambari-Agent gibt es eine hohe CPU-Auslastung. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen. Die Warnung zum Verlust des Heartbeats ist normalerweise vorübergehend. 
+Beim Ambari-Agent gibt es eine hohe CPU-Auslastung. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen. Die Warnung zum Verlust des Heartbeats ist normalerweise vorübergehend.
 
 ### <a name="cause"></a>Ursache
 
@@ -61,7 +61,7 @@ In seltenen Fällen kann es aufgrund verschiedener Ambari-Agent-Fehler bei Ihrem
 
 ### <a name="issue"></a>Problem
 
-Ambari-Agent wurde nicht gestartet. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen.
+Der Ambari-Agent wurde nicht gestartet. Dies führt zu Warnungen von der Ambari-Benutzeroberfläche, dass einige Knoten keinen Heartbeat des Ambari-Agents mehr empfangen.
 
 ### <a name="cause"></a>Ursache
 
@@ -95,7 +95,7 @@ Die OMS-Protokolle führen zu einer hohen CPU-Auslastung.
 
 ### <a name="resolution"></a>Lösung
 
-* Deaktivieren Sie die OMS-Protokollierung mithilfe des PowerShell-Moduls [Disable-AzHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightoperationsmanagementsuite?view=azps-2.8.0). 
+* Deaktivieren Sie die Azure Monitor-Protokollierung über das PowerShell-Cmdlet [Disable-AzHDInsightMonitoring](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring).
 * Löschen Sie die Protokolldatei `mdsd.warn`.
 
 ---

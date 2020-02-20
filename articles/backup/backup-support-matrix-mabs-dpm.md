@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841166"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111469"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -48,7 +48,7 @@ Weitere Informationen finden Sie unter:
 - Weitere Informationen zur [MABS-Architektur](backup-architecture.md#architecture-back-up-to-dpmmabs)
 - [Unterstützungsmatrix](backup-support-matrix-mars-agent.md) für den MARS-Agent
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 **Szenario** | **Agent** | **Location**
 --- | --- | ---
@@ -75,13 +75,16 @@ Mit Azure Backup können MABS- und DPM-Instanzen bei Ausführung unter den folge
 **MABS auf einem lokalen Computer** | Unterstützte 64-Bit-Betriebssysteme<br/><br/> MABS V3 und höher: Windows Server 2019 (Standard, Datacenter, Essentials) <br/><br/> MABS V2 und höher: Windows Server 2016 (Standard, Datacenter, Essentials)<br/><br/> Alle MABS-Versionen:  Windows Server 2012 R2<br/><br/>Alle MABS-Versionen: Windows Storage Server 2012 R2
 **DPM auf einem lokalen Computer** | Physischer Server und virtueller Hyper-V-Computer: System Center 2012 SP1 oder höher<br/><br/> Virtueller VMware-Computer: System Center 2012 R2 mit Update 5 oder höher
 
+>[!NOTE]
+>Bei Verwendung von Windows Server Core oder Microsoft Hyper-V Server wird die Installation von Azure Backup Server nicht unterstützt.
+
 ## <a name="management-support"></a>Verwaltungsunterstützung
 
 **Problem** | **Details**
 --- | ---
 **Installation** | Installieren Sie DPM oder MABS auf einem zweckgebundenen Computer.<br/><br/> Installieren Sie DPM oder MABS nicht auf einem Domänencontroller, auf einem Computer mit installierter Anwendungsserverrolle, auf einem Computer mit Exchange Server oder System Center Operations Manager oder auf einem Clusterknoten.<br/><br/> [Hier](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server) finden Sie alle Anforderungen für das DPM-System.
 **Domäne** | DPM- bzw. MABS-Instanzen müssen mit einer Domäne verknüpft werden. Führen Sie zunächst die Installation durch, und verknüpfen Sie DPM oder MABS dann mit einer Domäne. Nach der Bereitstellung kann DPM oder MABS nicht in eine neue Domäne verschoben werden.
-**Speicher** | Modern Backup Storage (MBS) wird ab DPM 2016 und MABS v2 und höher unterstützt. In MABS v1 ist die Funktion dagegen nicht verfügbar.
+**Storage** | Modern Backup Storage (MBS) wird ab DPM 2016 und MABS v2 und höher unterstützt. In MABS v1 ist die Funktion dagegen nicht verfügbar.
 **Upgrade von MABS** | Sie können MABS v3 direkt installieren oder ein Upgrade von MABS v2 auf MABS v3 durchführen. [Weitere Informationen](backup-azure-microsoft-azure-backup.md#upgrade-mabs)
 **Verschieben von MABS** | Bei Verwendung von MBS kann MABS unter Beibehaltung des Speichers auf einen neuen Server verschoben werden.<br/><br/> Der neue und der ursprüngliche Server müssen den gleichen Namen haben. Sie können den Namen nicht ändern, wenn der Speicherpool beibehalten werden soll und Sie dieselbe MABS-Datenbank zum Speichern von Datenwiederherstellungspunkten verwenden möchten.<br/><br/> Sie benötigen eine Sicherungskopie der MABS-Datenbank, da Sie sie wiederherstellen müssen.
 
@@ -131,7 +134,7 @@ Keine Verbindung für mehr als 15 Tage | Abgelaufen oder Bereitstellung aufgehob
 
 Die in DPM oder MABS gesicherten Daten werden im lokalen Datenträgerspeicher gespeichert.
 
-**Speicher** | **Details**
+**Storage** | **Details**
 --- | ---
 **MBS** | Modern Backup Storage (MBS) wird ab DPM 2016 und MABS v2 und höher unterstützt. In MABS v1 ist die Funktion dagegen nicht verfügbar.
 **MABS-Speicher auf virtuellem Azure-Computer** | Daten werden auf Azure-Datenträgern gespeichert, die der DPM/MABS-VM zugeordnet sind und die in DPM/MABS verwaltet werden. Die Anzahl der Datenträger, die für DPM/MABS-Speicherpools verwendet werden kann, ist durch die Größe der VM beschränkt.<br/><br/> VM A2: 4 Datenträger, VM A3: 8 Datenträger, VM A4: 16 Datenträger mit einer maximalen Größe von 1 TB für jeden Datenträger. Dies bestimmt den gesamten verfügbaren Sicherungsspeicherpool.<br/><br/> Die Menge der Daten, die gesichert werden können, hängt von der Anzahl und Größe der angefügten Datenträger ab.

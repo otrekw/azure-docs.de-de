@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 5/8/2019
+ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 338977c236ebb8f1b800eb6c28747a010e708300
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 947dc6eb8060d2d229ee7984f719cb837e638490
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244209"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77045927"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 
@@ -48,7 +48,7 @@ Kunden können HSMs in bestimmten Regionen über PowerShell oder die Befehlszeil
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>F: Welche Software wird mit dem Dedicated HSM-Dienst bereitgestellt?
 
-Gemalto ist Lieferant der gesamten Software für das HSM-Gerät nach der Bereitstellung durch Microsoft. Die Software ist über das [Gemalto-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Gemalto-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download von relevanter Software ermöglicht. Die unterstützte Clientsoftware ist Version 7.2, die mit der von FIPS 140-2 Level 3 validierten Firmwareversion 7.0.3 kompatibel ist. 
+Gemalto ist Lieferant der gesamten Software für das HSM-Gerät nach der Bereitstellung durch Microsoft. Die Software ist über das [Gemalto-Kundensupportportal](https://supportportal.gemalto.com/csm/) verfügbar. Kunden, die den Dedicated HSM-Dienst nutzen, müssen für den Gemalto-Support registriert sein und über eine Kunden-ID verfügen, die den Zugriff auf Software und den Download relevanter Software ermöglicht. Die unterstützte Clientsoftware ist Version 7.2, die mit der von FIPS 140-2 Level 3 validierten Firmwareversion 7.0.3 kompatibel ist. 
 
 ### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>F: Bietet Azure Dedicated HSM kennwortbasierte und PED-basierte Authentifizierung?
 
@@ -60,7 +60,7 @@ Microsoft bietet nur das Gemalto SafeNet Luna Network HSM über den Dedicated HS
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>F: Unterstützt Azure Dedicated HSM Zahlungsfunktionen (PIN/EFT)?
 
-Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Modell A790). Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder EFT) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, geben Sie das entsprechende Feedback an Ihren zuständigen Microsoft-Kontobeauftragten weiter.
+Der Azure Dedicated HSM-Dienst verwendet SafeNet Luna Network HSM 7-Geräte (Modell A790). Diese Geräte unterstützen keine für Bezahl-HSM spezifischen Funktionen (z. B. PIN oder EFT) oder Zertifizierungen. Wenn Sie möchten, dass der Azure Dedicated HSM-Dienst in Zukunft Bezahl-HSMs unterstützt, informieren Sie bitte Ihren zuständigen Microsoft-Kontobeauftragten über diesen Wunsch.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>F: In welchen Azure-Regionen ist Dedicated HSM verfügbar?
 
@@ -72,6 +72,10 @@ Seit Ende März 2019 ist Dedicated HSM in den 14 unten aufgeführten Regionen ve
 * USA Süd Mitte
 * Asien, Südosten
 * Asien, Osten
+* Indien, Mitte
+* Indien, Süden
+* Japan, Osten
+* Japan, Westen
 * Nordeuropa
 * Europa, Westen
 * UK, Süden
@@ -153,7 +157,7 @@ Ja. Jede HSM-Appliance ist vollständig auf einen einzelnen Kunden ausgerichtet,
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>F: Über welche Art von Zugriff auf mein HSM verfügt Microsoft?
 
-Microsoft hat keine administrative oder kryptografische Kontrolle über das HSM. Microsoft besitzt über eine serielle Schnittstellenverbindung Zugriff auf die Überwachungsebene, um grundlegende Telemetriedaten wie Temperatur und Komponentenintegrität abzurufen. Dies ermöglicht Microsoft das Bereitstellen von proaktiven Benachrichtigungen bei Problemen mit der Ressourcenintegrität. Wenn erforderlich, kann der Kunde dieses Konto deaktivieren.
+Microsoft hat keine administrative oder kryptografische Kontrolle über das HSM. Microsoft besitzt über eine serielle Schnittstellenverbindung Zugriff auf die Überwachungsebene, um grundlegende Telemetriedaten wie Temperatur und Komponentenintegrität abzurufen. Dies ermöglicht Microsoft das Bereitstellen von proaktiven Benachrichtigungen bei Problemen mit der Ressourcenintegrität. Falls erforderlich, kann der Kunde dieses Konto deaktivieren.
 
 ### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>F: Was ist das Konto „tenantadmin“, das von Microsoft verwendet wird? Ich bin daran gewöhnt, dass der Administratorbenutzer bei SafeNet HSMs „Administrator“ ist.
 
@@ -165,7 +169,7 @@ Nein. Microsoft besitzt keinerlei Zugriff auf die im dem Kunden zugeordneten Ded
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>F: Kann ich ein Upgrade der Software/Firmware für mir zugeordnete HSMs vornehmen?
 
-Um den besten Support zu erhalten, empfiehlt Microsoft dringend, keine Software/Firmware auf dem HSM zu aktualisieren. Der Kunde hat jedoch die volle administrative Kontrolle, einschließlich eines Upgrades der Software/Firmware, wenn spezifische Funktionen von verschiedenen Firmwareversionen erforderlich sind. Bevor Änderungen vorgenommen werden, müssen die Auswirkungen verstanden werden, da dies z.B. den Status der FIPS-Validierung beeinflussen kann. 
+Um den besten Support zu erhalten, empfiehlt Microsoft dringend, keine Software/Firmware auf dem HSM zu aktualisieren. Der Kunde hat jedoch die volle administrative Kontrolle, einschließlich eines Upgrades der Software/Firmware, wenn spezifische Funktionen von verschiedenen Firmwareversionen erforderlich sind. Bevor Änderungen vorgenommen werden, müssen Sie die Auswirkungen kennen und verstehen, da diese z.B. den Status der FIPS-Validierung beeinflussen können. 
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>F: Wie verwalte ich Dedicated HSM?
 
@@ -199,7 +203,7 @@ Nein.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>F: Wie viele HSMs kann ich der gleichen Hochverfügbarkeitskonfiguration aus einer einzelnen Anwendung hinzufügen?
 
-Für 16 Mitglieder einer Hochverfügbarkeitsgruppe wurde ein vollständiger Test mit hervorragenden Ergebnissen durchgeführt.
+Für 16 Mitglieder einer Hochverfügbarkeitsgruppe wurde ein vollständiger Test mit hervorragenden Ergebnissen durchgeführt.
 
 ## <a name="support"></a>Support
 
@@ -221,7 +225,7 @@ Es wird dringend empfohlen, ein lokales HSM-Sicherungsmedium zu verwenden, um ei
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>F: Wie erhalte ich Support für Dedicated HSM?
 
-Der Support wird sowohl von Microsoft als auch von Gemalto bereitgestellt.  Falls bei Ihnen ein Problem mit der Hardware oder dem Netzwerkzugriff besteht, können Sie eine Supportanfrage für Microsoft erstellen. Erstellen Sie bei einem Problem mit der HSM-Konfiguration, -Software und -Anwendungsentwicklung eine Supportanfrage für Gemalto. Erstellen Sie bei einem nicht eindeutigen Problem eine Supportanfrage für Microsoft. Falls erforderlich, kann Gemalto dann eingebunden werden. 
+Der Support wird sowohl von Microsoft als auch von Gemalto bereitgestellt.  Falls bei Ihnen ein Problem mit der Hardware oder dem Netzwerkzugriff besteht, können Sie eine Supportanfrage für Microsoft erstellen. Bei einem Problem mit der HSM-Konfiguration, -Software und -Anwendungsentwicklung erstellen Sie eine Supportanfrage für Gemalto. Erstellen Sie bei einem nicht eindeutigen Problem eine Supportanfrage für Microsoft. Falls erforderlich, kann Gemalto dann eingebunden werden. 
 
 ### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>F: Wie erhalte ich die Clientsoftware, Dokumentation und Zugriff auf die Integrationsanleitung für das SafeNet Luna 7 HSM?
 

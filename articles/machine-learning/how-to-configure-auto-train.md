@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b4396c82851969b39841ba77fb8aba9679363474
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986494"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048581"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,12 +189,18 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 ### <a name="data-featurization"></a>Merkmalerstellung für Daten
 
-In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#preprocess).
+In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automatisch skaliert und normalisiert](concept-automated-ml.md#preprocess), um *bestimmte* Algorithmen zu unterstützen, die auf Funktionen mit unterschiedlichen Skalierungen sensibel reagieren.  Sie können jedoch zusätzliche Merkmalerstellung wie z. B. Zuschreibung fehlender Werte, Codierung und Transformationen aktivieren. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#featurization).
 
-Legen Sie zum Aktivieren dieser Featurebereitstellung `"featurization": 'auto'` für die [`AutoMLConfig`-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py) fest.
+Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `featurization` aktivieren. In der folgenden Tabelle sind die akzeptierten Einstellungen für die Featurebereitstellung in der [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)-Klasse aufgeführt.
+
+|Konfiguration der Featurebereitstellung | Beschreibung |
+| ------------- | ------------- |
+|`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
+|`"featurization": 'off'`| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|
+|`"featurization": 'auto'`| Gibt an, dass im Rahmen der Vorverarbeitung die folgenden [Schritte für Datenschutzmaßnahmen und Featurebereitstellung](how-to-create-portal-experiments.md#advanced-featurization-options) automatisch durchgeführt werden.|
 
 > [!NOTE]
-> Die Schritte zur Vorverarbeitung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Vorverarbeitungsschritte automatisch auf Ihre Eingabedaten angewendet.
+> Die Schritte zur Featurebereitstellung bei automatisiertem maschinellen Lernen (Featurenormalisierung, Behandlung fehlender Daten, Umwandlung von Text in numerische Daten usw.) werden Teil des zugrunde liegenden Modells. Bei Verwendung des Modells für Vorhersagen werden die während des Trainings angewendeten Schritte zur Featurebereitstellung automatisch auf Ihre Eingabedaten angewendet.
 
 ### <a name="time-series-forecasting"></a>Zeitreihe und Vorhersage
 Der `forecasting`-Zeitreihentask erfordert zusätzliche Parameter im Konfigurationsobjekt:
@@ -408,7 +414,7 @@ Verwenden Sie diese 2 APIs im ersten Schritt des angepassten Modells, um mehr zu
    |Transformationen|Liste der Transformationen, die zum Generieren entwickelter Features auf Eingabefeatures angewendet wurden.|
    
 ### <a name="customize-feature-engineering"></a>Anpassen von Featureentwicklung
-Wenn Sie Featureentwicklung anpassen möchten, geben Sie  `"feauturization":FeaturizationConfig` an.
+Wenn Sie Featureentwicklung anpassen möchten, geben Sie  `"featurization": FeaturizationConfig` an.
 
 Die unterstützte Anpassung umfasst Folgendes:
 

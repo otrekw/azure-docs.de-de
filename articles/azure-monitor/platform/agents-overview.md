@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ae799e9a852b8700399ef695c54b3348174b560c
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150025"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069403"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Übersicht über die Azure Monitor-Agents 
 Computeressourcen (z.B. virtuelle Computer) generieren Daten zum Überwachen ihrer Leistung und Verfügbarkeit genau wie [andere Cloudressourcen](../insights/monitor-azure-resource.md). Computeressourcen verfügen aber auch über ein Gastbetriebssystem und Workloads, die überwacht werden müssen. Zum Erfassen dieser Überwachungsdaten aus der Ressource ist ein Agent erforderlich. In diesem Artikel werden die von Azure Monitor verwendeten Agents beschrieben. Außerdem bietet er Hilfe bei der Entscheidung, welche Agents Sie zum Erfüllen der Anforderungen für Ihre bestimmte Umgebung benötigen.
@@ -63,7 +63,7 @@ Folgende Szenarien werden von der Azure-Diagnoseerweiterung unterstützt:
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
 Der [Log Analytics-Agent](log-analytics-agent.md) erfasst Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Computern in Azure, anderen Cloudanbietern und lokal. Die Daten werden in einem Log Analytics-Arbeitsbereich gesammelt.
 
-Der Log Analytics-Agent ist derselbe Agent, der von System Center Operations Manager verwendet wird, und Sie verwenden ein Multihoming von Agent-Computern, um mit Ihrer Verwaltungsgruppe und Azure Monitor gleichzeitig zu kommunizieren. Dieser Agent ist auch für bestimmte Lösungen in Azure Monitor erforderlich.
+Der Log Analytics-Agent ist derselbe Agent, der von System Center Operations Manager und Multihoming-Agent-Computern verwendet wird, um gleichzeitig mit Ihrer Verwaltungsgruppe und Azure Monitor zu kommunizieren. Dieser Agent ist auch für bestimmte Lösungen in Azure Monitor erforderlich.
 
 Der Log Analytics-Agent für Windows wird häufig als Microsoft-Verwaltungs-Agent (Microsoft Management Agent, MMA) bezeichnet. Der Log Analytics-Agent für Linux wird häufig als OMS-Agent bezeichnet.
 

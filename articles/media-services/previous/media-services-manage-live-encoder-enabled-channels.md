@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895914"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162530"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -31,7 +31,7 @@ ms.locfileid: "74895914"
 In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarbeitung von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von **Kanälen** empfangen werden können:
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Live-Codierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -71,7 +71,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Kanalstatus | Portal-UI-Indikatoren | Werden Gebühren berechnet? |
 | --- | --- | --- |
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
-| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
+| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |YES |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
 | Beendet |Beendet |Nein |
 
@@ -146,7 +146,7 @@ Wenn der **Encodertyp** die Einstellung **Standard** aufweist, gibt es folgende 
 * 44,1 kHz-Samplingrate
 * ADTS Paketerstellung im MPEG-2-Format
 * Zu den empfohlenen Encodern gehören:
-* Telestream Wirecast
+* [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)
 * Flash Media Live Encoder
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Fragmentiertes Single-Bitrate-MP4 (Smooth Streaming)
@@ -219,12 +219,12 @@ Mit **Default720p** wird das Video in die folgenden 6 Ebenen codiert.
 
 | BitRate | Breite | Höhe | Max. Bilder/s | Profil | Name des Ausgabedatenstroms |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Hoch |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Hoch |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Hoch |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Hoch |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Hoch |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Hoch |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |High |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |High |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |High |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |High |Video_512x288_850kbps |
+| 550 |384 |216 |30 |High |Video_384x216_550kbps |
+| 200 |340 |192 |30 |High |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Ausgabe-Audiodatenstrom
 
@@ -256,7 +256,7 @@ Dem Liveencoder im Kanal kann signalisiert werden, zu einem Slatebild zu wechsel
 
 Der Liveencoder kann so konfiguriert werden, dass in bestimmten Situationen, z. B. bei Werbepausen, zu einem Slatebild gewechselt und das eingehende Videosignal ausgeblendet wird. Wird kein solches Slate konfiguriert, so wird das eingehende Videosignal während dieser Werbepause nicht maskiert.
 
-### <a name="duration"></a>Duration (Dauer)
+### <a name="duration"></a>Duration
 Dies ist die Dauer des Slates in Sekunden. Es muss sich um einen positiven Wert ungleich null handeln, damit das Slate gestartet werden kann. Wird ein Slate ausgeführt und eine Dauer von null angegeben, so wird das aktuelle Slate beendet.
 
 ### <a name="insert-slate-on-ad-marker"></a>Insert slate on ad marker (Slate bei AD-Marker einfügen)
@@ -313,7 +313,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 | Kanalstatus | Portal-UI-Indikatoren | In Rechnung gestellt? |
 | --- | --- | --- |
 | Wird gestartet |Wird gestartet |Nein (Übergangsstatus) |
-| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |JA |
+| Wird ausgeführt |Bereit (keine ausgeführten Programme)<br/>oder<br/>Streaming (mindestens ein ausgeführtes Programm) |Ja |
 | Wird beendet |Wird beendet |Nein (Übergangsstatus) |
 | Beendet |Beendet |Nein |
 
@@ -342,7 +342,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 
 ## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 
 ## <a name="next-step"></a>Nächster Schritt
 

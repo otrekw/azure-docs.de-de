@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 02/07/2020
+ms.openlocfilehash: c228f3d6591cd72845101c00188f3fc4a55be644
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861335"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087346"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -189,10 +189,13 @@ Um beispielsweise alle Ergebnisse aus derselben Auftragsausführung zusammen zu 
 
 Im folgenden Beispiel wird ein neuer Auftrag zum Sammeln von Leistungsdaten von mehreren Datenbanken erstellt.
 
-Standardmäßig versucht der Auftrags-Agent, die Tabelle zum Speichern der zurückgegebenen Ergebnisse zu erstellen. Daher muss die Anmeldung, die den Anmeldeinformationen zugeordnet ist, die für die Anmeldeinformationen für die Ausgabe verwendet werden, über ausreichende Berechtigungen zum Ausführen dieses Vorgangs verfügen. Wenn Sie die Tabelle vorher manuell erstellen möchten, muss sie die folgenden Eigenschaften aufweisen:
+Der Auftrags-Agent erstellt die Ausgabetabelle standardmäßig zum Speichern der zurückgegebenen Ergebnisse. Aus diesem Grund muss der Datenbankprinzipal, der mit den Anmeldeinformationen für die Ausgabe verknüpft ist, mindestens über die folgenden Berechtigungen verfügen: `CREATE TABLE` für die Datenbank, `ALTER`, `SELECT`, `INSERT` und `DELETE` für die Ausgabetabelle oder ihr Schema und `SELECT` für die [sys.indexes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-indexes-transact-sql)-Katalogsicht.
+
+Wenn Sie die Tabelle vorher manuell erstellen möchten, muss sie die folgenden Eigenschaften aufweisen:
 1. Spalten mit den richtigen Namen und Datentypen für das Resultset.
 2. Zusätzliche Spalte für „internal_execution_id“ mit dem Datentyp „uniqueidentifier“.
 3. Ein nicht gruppierter Index mit dem Namen „`IX_<TableName>_Internal_Execution_ID`“ für die Spalte „internal_execution_id“.
+4. Alle oben aufgeführten Berechtigungen mit Ausnahme von `CREATE TABLE` für die Datenbank.
 
 Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](sql-database-job-automation-overview.md#job-database) her, und führen Sie die folgenden Befehle aus:
 
@@ -405,7 +408,7 @@ Die folgenden gespeicherten Prozeduren sind in der [Auftragsdatenbank](sql-datab
 
 
 
-|Gespeicherte Prozedur  |Beschreibung  |
+|Gespeicherte Prozedur  |BESCHREIBUNG  |
 |---------|---------|
 |[sp_add_job](#sp_add_job)     |     Fügt einen neuen Auftrag hinzu.    |
 |[sp_update_job](#sp_update_job)    |      Aktualisiert einen vorhandenen Auftrag.   |
@@ -1192,7 +1195,7 @@ GO
 Die folgenden Ansichten sind in der [Auftragsdatenbank](sql-database-job-automation-overview.md#job-database) verfügbar.
 
 
-|Sicht  |Beschreibung  |
+|Sicht  |BESCHREIBUNG  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  Zeigt den Auftragsausführungsverlauf an.      |
 |[jobs](#jobs-view)     |   Zeigt alle Aufträge an.      |
@@ -1256,7 +1259,7 @@ Zeigt alle Aufträge an.
 
 Zeigt alle Auftragsversionen an.
 
-|Spaltenname|   Datentyp|  Beschreibung|
+|Spaltenname|   Datentyp|  BESCHREIBUNG|
 |------|------|-------|
 |**job_name**|  nvarchar(128)   |Der Name des Auftrags.|
 |**job_id**|    UNIQUEIDENTIFIER    |Eindeutige ID des Auftrags.|
@@ -1310,7 +1313,7 @@ Zeigt alle Schritte in allen Versionen des jeweiligen Auftrags an. Das Schema is
 
 Listet alle Zielgruppen auf.
 
-|Spaltenname|Datentyp| Beschreibung|
+|Spaltenname|Datentyp| BESCHREIBUNG|
 |-----|-----|-----|
 |**target_group_name**| nvarchar(128)   |Der Name der Zielgruppe, eine Sammlung von Datenbanken. 
 |**target_group_id**    |UNIQUEIDENTIFIER   |Eindeutige ID der Zielgruppe.
@@ -1321,7 +1324,7 @@ Listet alle Zielgruppen auf.
 
 Zeigt alle Mitglieder sämtlicher Zielgruppen an.
 
-|Spaltenname|Datentyp| Beschreibung|
+|Spaltenname|Datentyp| BESCHREIBUNG|
 |-----|-----|-----|
 |**target_group_name**  |nvarchar(128|Der Name der Zielgruppe, eine Sammlung von Datenbanken. |
 |**target_group_id**    |UNIQUEIDENTIFIER   |Eindeutige ID der Zielgruppe.|

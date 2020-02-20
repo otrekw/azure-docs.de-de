@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024278"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120231"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -28,6 +28,11 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Allgemeine Problembehandlung
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Fehler beim Ausführen von AzureAD-Cmdlets in PowerShell
+
+- **Details**: Beim Ausführen von AzureAD-Cmdlets wie `Get-AzureADUser` in Cloud Shell wird möglicherweise folgender Fehler angezeigt: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Lösung:** Führen Sie das `Connect-AzureAD`-Cmdlet aus. In der Vergangenheit wurde dieses Cmdlet beim PowerShell-Start automatisch in Cloud Shell ausgeführt. Für eine verkürzte Startzeit wird das Cmdlet nun nicht mehr automatisch ausgeführt. Sie können das frühere Verhalten wiederherstellen, indem Sie `Connect-AzureAD` zur $PROFILE-Datei in PowerShell hinzufügen.
 
 ### <a name="early-timeouts-in-firefox"></a>Frühe Timeouts in Firefox
 

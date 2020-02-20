@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie automatische Skalierungsvorgänge in Azure Mo
 ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: autoscale
-ms.openlocfilehash: fd5aeadd72123b58801ce038b0cc99d17dcfd200
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c82b170bb3801bdc701ed84230db57f5691523ea
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364202"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120686"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie Trigger einrichten, damit Sie basierend auf Skalierungsvorgängen in Azure bestimmte Web-URLs aufrufen oder E-Mails senden können.  
@@ -20,8 +20,8 @@ Mithilfe von Webhooks können Sie die Azure-Warnbenachrichtigungen für die Nach
 ## <a name="email"></a>Email
 E-Mails können an eine beliebige gültige E-Mail-Adresse gesendet werden. Administratoren und Co-Administratoren des Abonnements, in der die Regel ausgeführt wird, werden ebenfalls benachrichtigt.
 
-## <a name="cloud-services-and-web-apps"></a>Clouddienste und Web-Apps
-Sie können über das Azure-Portal für Cloud-Dienste und Serverfarmen (Web-Apps) teilnehmen.
+## <a name="cloud-services-and-app-services"></a>Cloud Services und App Services
+Sie können diese Optionen über das Azure-Portal für Cloud Services und Serverfarmen (App Services) aktivieren.
 
 * Wählen Sie die Metrik **skalieren nach** .
 
@@ -56,7 +56,7 @@ Wenn Sie die REST-API oder die Resource Manager-Vorlage verwenden, fügen Sie da
     ]
 ```
 
-| Feld | Erforderlich? | BESCHREIBUNG |
+| Feld | Erforderlich? | Beschreibung |
 | --- | --- | --- |
 | operation |ja |Als Wert muss „Scale“ angegeben werden. |
 | sendToSubscriptionAdministrator |ja |Als Wert muss „true“ oder „false“ festgelegt werden. |
@@ -99,7 +99,7 @@ Beim Generieren der Benachrichtigung über automatische Skalierung werden die fo
 ```
 
 
-| Feld | Erforderlich? | BESCHREIBUNG |
+| Feld | Erforderlich? | Beschreibung |
 | --- | --- | --- |
 | status |ja |Status, der angibt, dass ein automatischer Skalierungsvorgang generiert wurde |
 | operation |ja |Der Vorgang zum Erhöhen der Anzahl der Instanzen ist „Horizontal hochskalieren“ und „Horizontal herunterskalieren“ zum Verringern der Anzahl der Instanzen. |

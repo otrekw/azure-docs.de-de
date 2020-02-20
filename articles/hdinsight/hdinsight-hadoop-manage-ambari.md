@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 81b57191a02dd3214928ac90e2761f5f8dfb2cfc
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 02/05/2020
+ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311663"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77063797"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -32,7 +32,7 @@ In diesem Dokument erfahren Sie, wie Sie die Webbenutzeroberfläche Ambari mit e
 Die Ambari-Webbenutzeroberfläche ist in Ihrem HDInsight-Cluster unter `https://CLUSTERNAME.azurehdinsight.net` verfügbar, wobei `CLUSTERNAME` dem Namen Ihres Clusters entspricht.
 
 > [!IMPORTANT]  
-> Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Namen und das Kennwort des Administratorkontos, die Sie bereitgestellt haben, als der Cluster erstellt wurde.
+> Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Wenn Sie aufgefordert werden, sich zu authentifizieren, verwenden Sie den Namen und das Kennwort des Administratorkontos, die Sie bereitgestellt haben, als der Cluster erstellt wurde. Wenn Sie nicht zur Eingabe von Anmeldeinformationen aufgefordert werden, überprüfen Sie Ihre Netzwerkeinstellungen, um zu bestätigen, dass zwischen dem Client und den Azure HDInsight-Clustern kein Verbindungsproblem vorliegt.
 
 ## <a name="ssh-tunnel-proxy"></a>SSH-Tunnel (Proxy)
 
@@ -49,16 +49,16 @@ Beachten Sie beim Öffnen der Seite die Leiste im oberen Bereich. Diese Leiste e
 
 ![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
-|Item |BESCHREIBUNG |
+|Element |BESCHREIBUNG |
 |---|---|
 |Ambari-Logo|Öffnet das Dashboard, mit dem der Cluster überwacht werden kann.|
 |Clustername # ops|Zeigt die Anzahl der laufenden Ambari-Vorgänge an. Wenn Sie den Clusternamen oder die **(Anzahl) ops** auswählen, wird eine Liste der Hintergrundvorgänge angezeigt.|
 |# alerts|Zeigt Warnungen oder kritische Warnungen für den Cluster an (falls vorhanden).|
 |Dashboard|Zeigt das Dashboard an.|
 |Dienste|Informationen und Konfigurationseinstellungen für die Dienste im Cluster.|
-|Host|Informationen und Konfigurationseinstellungen für die Knoten im Cluster.|
+|Hosts|Informationen und Konfigurationseinstellungen für die Knoten im Cluster.|
 |Alerts|Ein Protokoll von Informationen, Warnungen und kritischen Warnungen.|
-|Administrator|Softwarestapel/Dienste, die im Cluster installiert sind, Dienstkontoinformationen sowie die Kerberos-Sicherheit.|
+|Admin|Softwarestapel/Dienste, die im Cluster installiert sind, Dienstkontoinformationen sowie die Kerberos-Sicherheit.|
 |Schaltfläche „Admin“|Ambari-Verwaltung, Benutzereinstellungen und Abmeldung.|
 
 ## <a name="monitoring"></a>Überwachung
@@ -138,7 +138,7 @@ Das Arbeiten mit Benutzern, Gruppen und Berechtigungen wird bei Verwendung eines
 > [!WARNING]  
 > Ändern Sie nicht das Kennwort für den Ambari-Watchdog (hdinsightwatchdog) in Ihrem Linux-basierten HDInsight-Cluster. Durch eine Kennwortänderung wird die Möglichkeit zum Verwenden von Skriptaktionen oder zum Durchführen von Skalierungsvorgängen mit Ihren Cluster deaktiviert.
 
-### <a name="hosts"></a>Host
+### <a name="hosts"></a>Hosts
 
 Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen vor, um Hosts zu verwalten.
 
@@ -151,12 +151,12 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
 
 2. Verwenden Sie das Menü **Actions** , um die Aktion auswählen, die Sie durchführen möchten:
 
-    |Item |BESCHREIBUNG |
+    |Element |Beschreibung |
     |---|---|
     |Start all components|Startet alle Komponenten auf dem Host.|
     |Stop all components|Beendet alle Komponenten auf dem Host.|
     |Restart all components|Beendet und startet alle Komponenten auf dem Host.|
-    |Turn on maintenance mode|Unterdrückt Warnungen für den Host. Dieser Modus muss aktiviert sein, wenn Sie Vorgänge ausführen, die Fehler generieren. Zum Beispiel das Anhalten und Starten eines Diensts.|
+    |Turn on maintenance mode|Unterdrückt Warnungen für den Host. Dieser Modus muss aktiviert sein, wenn Sie Vorgänge ausführen, die Warnungen generieren. Zum Beispiel das Anhalten und Starten eines Diensts.|
     |Turn off maintenance mode|Versetzt den Host in den normalen Warnmodus zurück.|
     |Beenden|Beendet DataNode oder NodeManagers auf dem Host.|
     |Start|Startet DataNode oder NodeManagers auf dem Host.|

@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 4bdf842ae24d90850280a5a19038dbd00168ff2c
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/07/2020
+ms.openlocfilehash: c6c3e9462b26b44857eea6b53092baeeb5034364
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053366"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087087"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB
 
@@ -57,9 +57,9 @@ Wie aus der folgenden Tabelle hervorgeht, können Sie je nach API-Auswahl Durchs
 |----|----|----|
 |SQL-API|Datenbank|Container|
 |Azure Cosmos DB-API für MongoDB|Datenbank|Collection|
-|Cassandra-API|Keyspace|Table|
+|Cassandra-API|Keyspace|Tabelle|
 |Gremlin-API|Datenbankkonto|Graph|
-|Tabelle-API|Datenbankkonto|Table|
+|Tabelle-API|Datenbankkonto|Tabelle|
 
 Durch Bereitstellen des Durchsatzes auf verschiedenen Ebenen können Sie Ihre Kosten anhand der Merkmale Ihrer Workload optimieren. Wie bereits erwähnt, können Sie programmgesteuert und jederzeit den bereitgestellten Durchsatz erhöhen oder reduzieren – entweder für einzelne Container oder kollektiv für eine Gruppe von Containern. Durch das elastische Skalieren des Durchsatzes entsprechend der Workloadveränderungen bezahlen Sie nur den Durchsatz, den Sie konfiguriert haben. Wenn Ihr Container oder Ihre Containergruppe über mehrere Regionen verteilt ist, wird der für den Container oder die Containergruppe konfigurierte Durchsatz für alle Regionen garantiert.
 
@@ -123,7 +123,7 @@ Sie können auch Warnungen festlegen, um zu überprüfen, ob die Menge der raten
 
 ## <a name="scale-your-throughput-elastically-and-on-demand"></a>Elastische Skalierung des Durchsatzes nach Bedarf 
 
-Da Ihnen der bereitgestellte Durchsatz in Rechnung gestellt wird, können Sie durch Anpassen des bereitgestellten Durchsatzes an Ihre Anforderungen die Gebühren für nicht genutzten Durchsatz vermeiden. Sie können den bereitgestellten Durchsatz jederzeit und nach Bedarf zentral hoch- oder herunterskalieren.  
+Da Ihnen der bereitgestellte Durchsatz in Rechnung gestellt wird, können Sie durch Anpassen des bereitgestellten Durchsatzes an Ihre Anforderungen die Gebühren für nicht genutzten Durchsatz vermeiden. Sie können den bereitgestellten Durchsatz jederzeit und nach Bedarf zentral hoch- oder herunterskalieren. Wenn Ihre Durchsatzanforderungen sehr vorhersagbar sind, können Sie Azure Functions und einen Trigger mit Timer verwenden, um den [Durchsatz nach einem bestimmten Zeitplan zu erhöhen oder zu verringern](scale-on-schedule.md). 
 
 * Die Überwachung des Verbrauchs Ihrer Anforderungseinheiten (RUs) und der Anteil der ratenbegrenzten Anforderung lässt möglicherweise erkennen, dass Sie den bereitgestellten Durchsatz im Verlauf des Tages oder der Woche nicht konstant zu halten brauchen. Sie erhalten möglicherweise weniger Datenverkehr bei Nacht oder am Wochenende. Im Azure-Portal, mit den nativen SDKs oder der REST-API von Azure Cosmos DB können Sie jederzeit den bereitgestellten Durchsatz skalieren. Die REST-API von Azure Cosmos DB stellt Endpunkte für die programmgesteuerte Aktualisierung der Leistungsstufe für Ihre Container bereit und macht es somit einfach, den Durchsatz von Ihrem Code je nach Tageszeit oder Wochentag anzupassen. Der Vorgang erfolgt ohne Ausfallzeit und wird in der Regel in weniger als einer Minute wirksam. 
 

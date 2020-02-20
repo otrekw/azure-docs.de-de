@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
+ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044907"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77111569"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -21,7 +21,7 @@ ms.locfileid: "76044907"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Lösungsaktualisierung
-> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 30. März 2020 weiterhin verwendet werden.
+> Diese Lösung wurde durch die [Office 365](../../sentinel/connect-office-365.md)-Lösung für allgemeine Verfügbarkeit in [Azure Sentinel](../../sentinel/overview.md) und die [Azure AD-Lösung für Berichterstellung und Überwachung](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) ersetzt. Gemeinsam bieten diese eine aktualisierte Version der bisherigen Office 365-Lösung in Azure Monitor mit einer verbesserten Konfigurationsumgebung. Die vorhandene Lösung kann bis zum 30. April 2020 weiterhin verwendet werden.
 > 
 > Azure Sentinel ist eine cloudnative SIEM-Lösung (Security Information & Event Management), die Protokolle erfasst und zusätzliche SIEM-Funktionalität bereitstellt, einschließlich Erkennungen, Untersuchungen, Hunting und Einblicke auf Grundlage von Machine Learning. Mit Azure Sentinel können Sie nun Office 365 SharePoint-Aktivitäts- und Exchange-Verwaltungsprotokolle erfassen.
 > 
@@ -37,8 +37,8 @@ ms.locfileid: "76044907"
 >
 > ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-march-30th"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 30. März durchzuführen?
-> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 30. März entfernt.
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>F: Ist es möglich, ein Onboarding der Office 365-Lösung in Azure Monitor vom jetzigen Zeitpunkt bis zum 30. April durchzuführen?
+> Nein, die Onboardingskripts für die Office 365-Lösung in Azure Monitor sind nicht mehr verfügbar. Die Lösung wird am 30. April entfernt.
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>F: Werden die Tabellen und Schemas geändert?
 > Der Name und das Schema der Tabelle **OfficeActivity** bleiben gegenüber der aktuellen Lösung unverändert. Sie können in der neuen Lösung weiterhin die gleichen Abfragen verwenden, mit Ausnahme von Abfragen, die auf Azure AD-Daten verweisen.
@@ -97,18 +97,18 @@ ms.locfileid: "76044907"
 > - [Standardmäßig verfügbare Erkennung von Bedrohungen](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von verdächtigen Bedrohungen](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Überwachen Ihrer Daten](../../sentinel/tutorial-monitor-your-data.md)
-> - [Untersuchen von Vorfällen mit Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
-> - [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
+> - Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](../../sentinel/tutorial-investigate-cases.md).
+> - Machen Sie sich mit dem [Einrichten automatisierter Reaktionen auf Bedrohungen in Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md) vertraut.
 > - [Azure Sentinel-GitHub-Community](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>F: Stellt Azure Sentinel zusätzliche Connectors als Teil der Lösung bereit?
 > Ja. Informationen dazu finden Sie unter [Herstellen einer Verbindung mit Datenquellen in Azure Sentinel](../../sentinel/connect-data-sources.md).
 > 
-> ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. März? Muss ich vorab ein Offboarding durchführen?
+> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>F: Was geschieht am 30. April? Muss ich vorab ein Offboarding durchführen?
 > 
 > - Sie können keine Daten mehr von der **Office 365**-Lösung empfangen. Die Lösung ist nicht mehr im Marketplace verfügbar.
 > - Für Azure Sentinel-Kunden wird die Log Analytics-Arbeitsbereichslösung **Office365** in die Azure Sentinel-Lösung **SecurityInsights** eingeschlossen.
-> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. März automatisch getrennt.
+> - Wenn Sie kein manuelles Offboarding für die Lösung durchführen, werden Ihre Daten am 30. April automatisch getrennt.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>F: Werden meine Daten in die neue Lösung übertragen?
 > Ja. Wenn Sie die **Office 365**-Lösung aus Ihrem Arbeitsbereich entfernen, sind die Daten vorübergehend nicht verfügbar, da das Schema entfernt wird. Sobald Sie den neuen **Office 365**-Connector in Sentinel aktivieren, wird das Schema im Arbeitsbereich wiederhergestellt, und alle bereits erfassten Daten sind wieder verfügbar. 
@@ -263,7 +263,7 @@ Alle im Log Analytics-Arbeitsbereich in Azure Monitor von der Office 365-Lösung
 
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
@@ -281,7 +281,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
 Die folgenden Eigenschaften gelten für alle Azure Active Directory-Datensätze.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -293,7 +293,7 @@ Die folgenden Eigenschaften gelten für alle Azure Active Directory-Datensätze.
 
 Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, sich anzumelden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -307,7 +307,7 @@ Diese Datensätze werden erstellt, wenn ein Active Directory-Benutzer versucht, 
 
 Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Azure Active Directory-Objekten vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -341,7 +341,7 @@ Diese Datensätze werden aus Überwachungsdaten für die Sicherheit von Rechenze
 
 Diese Datensätze werden erstellt, wenn Änderungen an der Exchange-Konfiguration vorgenommen werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -379,7 +379,7 @@ Diese Datensätze werden erstellt, wenn Änderungen oder Erweiterungen an Exchan
 
 Diese Datensätze werden erstellt, wenn ein Eintrag zur Postfachüberwachung erstellt wird.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -443,7 +443,7 @@ Diese Datensätze werden erstellt, wenn Konfigurationsänderungen an SharePoint 
 
 Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |

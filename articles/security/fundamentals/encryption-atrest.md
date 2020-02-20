@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/25/2019
+ms.date: 02/07/2020
 ms.author: barclayn
-ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 682f0b66f7632bce16ae134e71ea27c4df976f43
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497299"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087098"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -262,36 +262,48 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Schlüssel**             | **Clientseitig mit vom Client verwaltetem Schlüssel**      |
 | **KI und Machine Learning**      |                    |                    |                    |
-| Azure Cognitive Search                     | Ja                | Vorschau            | -                  |
-| Azure Machine Learning   | Ja                | -                  | -                  |
+| Azure Cognitive Search           | Ja                | Ja                | -                  |
+| Azure Machine Learning           | Ja                | Ja                | -                  |
 | Azure Machine Learning Studio    | Ja                | RSA 2048 Bit, Vorschauversion | -               |
 | Power BI                         | Ja                | RSA 2048 Bit, Vorschauversion | -                  |
 | **Analyse**                    |                    |                    |                    |
 | Azure Stream Analytics           | Ja                | -                  | -                  |
-| Event Hubs                       | Ja                | Vorschau, alle RSA-Längen. | -                  |
+| Event Hubs                       | Ja                | Ja, alle RSA-Längen. | -                  |
+| Functions                        | Ja                | Ja, alle RSA-Längen. | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
 | Azure Data Catalog               | Ja                | -                  | -                  |
 | Apache Kafka in Azure HDInsight  | Ja                | Alle RSA-Längen   | -                  |
-| Azure-Daten-Explorer              | Ja                | -                  | -                  |
+| Azure Monitor Application Insights | Ja                | Ja                | -                  |
+| Azure Monitor Log Analytics | Ja                | Ja                | -                  |
+| Azure-Daten-Explorer              | Ja                | Ja                | -                  |
 | Azure Data Factory               | Ja                | Ja                | -                  |
 | Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  |
 | **Container**                   |                    |                    |                    |
-| Azure Kubernetes Service         | Ja                | -                  | -                  |
-| Containerregistrierung               | Ja                | -                  | -                  |
+| Azure Kubernetes Service         | Ja                | Ja                | -                  |
+| Container Instances              | Ja                | Ja                | -                  |
+| Containerregistrierung               | Ja                | Ja                | -                  |
 | **Compute**                      |                    |                    |                    |
 | Virtual Machines                 | Ja                | Ja, RSA 2048 Bit  | -                  |
 | VM-Skalierungsgruppe        | Ja                | Ja, RSA 2048 Bit  | -                  |
 | SAP HANA                         | Ja                | Ja, RSA 2048 Bit  | -                  |
+| App Service                      | Ja                | Ja                | -                  |
+| Automation                       | Ja                | Ja                | -                  |
+| Azure-Portal                     | Ja                | Ja                | -                  |
+| Logic Apps                       | Ja                | Ja                | -                  |
+| Azure Managed Applications       | Ja                | Ja                | -                  |
+| Service Bus                      | Ja                | Ja                | -                  |
+| Site Recovery                    | Ja                | Ja                | -                  |
 | **Datenbanken**                    |                    |                    |                    |
 | SQL Server auf virtuellen Computern   | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure SQL-Datenbank               | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure SQL-Datenbank for MariaDB   | Ja                | -                  | -                  |
-| Azure SQL-Datenbank for MySQL     | Ja                | -                  | -                  |
-| Azure SQL-Datenbank for PostgreSQL | Ja                | -                  | -                  |
-| Azure SQL Data Warehouse         | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure SQL-Datenbank for MySQL     | Ja                | Ja                | -                  |
+| Azure SQL-Datenbank for PostgreSQL | Ja               | Ja                | -                  |
+| Azure Synapse Analytics          | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | SQL Server Stretch Database      | Ja                | Ja, RSA 2048 Bit  | Ja                |
-| Table Storage                    | Ja                | -                  | Ja                |
-| Azure Cosmos DB                  | Ja                | -                  | -                  |
+| Table Storage                    | Ja                | Ja                | Ja                |
+| Azure Cosmos DB                  | Ja                | Ja                | -                  |
+| Azure Databricks                 | Ja                | Ja                | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | Ja                | -                  | Ja                |
 | Azure Repos                      | Ja                | -                  | Ja                |
@@ -299,27 +311,28 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Azure Active Directory           | Ja                | -                  | -                  |
 | Azure Active Directory Domain Services | Ja          | Ja, RSA 2048 Bit  | -                  |
 | **Integration**                  |                    |                    |                    |
-| Service Bus                      | Ja                | -                  | Ja                |
+| Service Bus                      | Ja                | Ja                | Ja                |
 | Event Grid                       | Ja                | -                  | -                  |
 | API Management                   | Ja                | -                  | -                  |
 | **IoT-Dienste**                 |                    |                    |                    |
-| IoT Hub                          | Ja                | -                  | Ja                |
+| IoT Hub                          | Ja                | Ja                | Ja                |
 | **Verwaltung und Governance**    |                    |                    |                    |
 | Azure Site Recovery              | Ja                | -                  | -                  |
 | **Medien**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
 | **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ja                | Ja, RSA 2048 Bit  | Ja                |
-| Disk Storage                     | Ja                | -                  | -                  |
-| Speicher für verwaltete Datenträger             | Ja                | -                  | -                  |
+| Disk Storage                     | Ja                | Ja                | -                  |
+| Speicher für verwaltete Datenträger             | Ja                | Ja                | -                  |
 | File Storage                     | Ja                | Ja, RSA 2048 Bit  | -                  |
-| Queue Storage                    | Ja                | -                  | Ja                |
+| Queue Storage                    | Ja                | Ja                | Ja                |
 | Avere vFXT                       | Ja                | -                  | -                  |
 | Azure NetApp Files               | Ja                | -                  | -                  |
 | Archivspeicher                  | Ja                | Ja, RSA 2048 Bit  | -                  |
 | StorSimple                       | Ja                | Ja, RSA 2048 Bit  | Ja                |
-| Azure Backup                     | Ja                | -                  | Ja                |
+| Azure Backup                     | Ja                | Ja                | Ja                |
 | Data Box                         | Ja                | -                  | Ja                |
+| Data Box Edge                    | Ja                | Ja                | -                  |
 
 ## <a name="conclusion"></a>Zusammenfassung
 

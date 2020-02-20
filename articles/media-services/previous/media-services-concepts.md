@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978831"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162904"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
 
@@ -39,7 +39,7 @@ Bei der Entscheidung, welche Medieninhalte in einem Medienobjekt hochgeladen und
 * Ein Medienobjekt sollte nicht mehrere Varianten oder Bearbeitungen einer audiovisuellen Datei enthalten. Ein Beispiel für eine nicht ordnungsgemäße Verwendung eines Medienobjekts wäre der Versuch, mehrere TV-Folgen, Werbungen oder mehrere Kameraeinstellungen aus einer einzigen Produktion in einem Medienobjekt zu speichern. Das Speichern mehrerer Varianten oder Bearbeitungen einer audiovisuellen Datei in einem Medienobjekt kann zu Schwierigkeiten beim Übermitteln von Codierungsaufträgen, beim Streamen und beim Sichern der Übermittlung des Medienobjekts zu einem späteren Zeitpunkt im Workflow führen.  
 
 ### <a name="asset-file"></a>Medienobjektdatei
-Die [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) -Entität stellt eine tatsächliche Video- oder Audiodatei dar, die in einem Blob-Container gespeichert ist. Eine Medienobjektdatei ist immer mit einem Medienobjekt verknüpft, wobei ein Medienobjekt eine oder mehrere Dateien enthalten kann. Der Media Services Encoder-Task schlägt fehl, wenn ein Medienobjektdatei-Objekt keiner digitalen Datei in einem BLOB-Container zugeordnet ist.
+Die [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) -Entität stellt eine tatsächliche Video- oder Audiodatei dar, die in einem Blob-Container gespeichert ist. Eine Medienobjektdatei ist immer mit einem Medienobjekt verknüpft, wobei ein Medienobjekt eine oder mehrere Dateien enthalten kann. Der Media Services Encoder-Task kann nicht ausgeführt werden, wenn ein Medienobjektdatei-Objekt keiner digitalen Datei in einem Blobcontainer zugeordnet ist.
 
 Die **AssetFile** -Instanz und die eigentliche Mediendatei sind zwei verschiedene Objekte. Die AssetFile-Instanz enthält Metadaten zur Mediendatei, während die Mediendatei die tatsächlichen Medieninhalte enthält.
 
@@ -68,7 +68,7 @@ Eine [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accessp
 >Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
 
 ### <a name="blob-container"></a>BLOB-Container
-Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container werden in Media Services als Grenzpunkt für die Zugriffssteuerung und SAS-Locators (Shared Access Signature) für Medienobjekte verwendet. Ein Azure Storage-Konto kann eine unbegrenzte Anzahl von BLOB-Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein.
+Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container werden in Media Services als Grenzpunkt für die Zugriffssteuerung und SAS-Locators (Shared Access Signature) für Medienobjekte verwendet. Ein Azure Storage-Konto kann eine unbegrenzte Anzahl von BLOB-Containern enthalten. In einem Container kann eine unbegrenzte Anzahl von BLOBs gespeichert werden.
 
 >[!NOTE]
 > Sie sollten nicht versuchen, den Inhalt von BLOB-Containern, die mit Media Services generiert wurden, ohne die Verwendung von Media Service-APIs zu ändern.
@@ -111,10 +111,10 @@ Informationen zu unterstützten Encodern finden Sie unter [Encoder](media-servic
 ## <a name="live-streaming"></a>Livestreaming
 In Azure Media Services repräsentiert ein Kanal eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:
 
-* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 * Ein Datenstrom mit nur einer Bitrate (in einem der folgenden Formate: RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
-### <a name="channel"></a>Kanal
+### <a name="channel"></a>Channel
 In Media Services sind [Kanäle](https://docs.microsoft.com/rest/api/media/operations/channel)für die Verarbeitung von Livestreaminginhalten zuständig. Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem Live-Transcoder vorlegen. Der Kanal empfängt Live-Eingabestreams aus dem Live-Transcoder und stellt diese zum Streamen durch einen oder mehrere StreamingEndpoints zur Verfügung. Zudem bieten Kanäle einen Vorschauendpunkt (Vorschau-URL), mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln.
 
 Beim Erstellen des Kanals können Sie die Erfassungs-URL und die Vorschau-URL erhalten. Zum Abfragen dieser URLs muss sich der Kanal nicht im gestarteten Zustand befinden. Wenn Sie zum Übermitteln von Daten aus einem Live-Transcoder an den Kanal bereit sind, muss der Kanal gestartet werden. Sobald der Live-Transcoder mit dem Erfassen von Daten beginnt, können Sie eine Vorschau des Streams anzeigen.

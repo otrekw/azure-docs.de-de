@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 75a9e3e8422c0c59e00c290f1f360d61fce1eceb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901578"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048163"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -223,13 +223,14 @@ Zusätzlich zu den obigen Kennzeichnungen versieht Microsoft Präfixe auch basie
 | Exchange Online** | 12076:5010 |
 | SharePoint Online** | 12076:5020 |
 | Skype For Business Online** | 12076:5030 |
-| CRM Online |12076:5040 |
+| CRM Online*** |12076:5040 |
 | Azure Global Services* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Andere Office 365 Online-Dienste** | 12076:5100 |
 
 *Azure Global Services enthält zurzeit nur Azure DevOps.
-** Autorisierung von Microsoft erforderlich, siehe [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-portal.md) 
+** Autorisierung von Microsoft erforderlich, siehe [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-portal.md)\
+*** CRM Online unterstützt Dynamics v8.2 und niedriger. Wählen Sie für höhere Versionen die regionale Community für Ihre Dynamics-Bereitstellungen aus.
 
 > [!NOTE]
 > Microsoft berücksichtigt keine BGP-Communitywerte, die von Ihnen für die gegenüber Microsoft angekündigten Routen festgelegt werden.

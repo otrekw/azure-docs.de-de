@@ -3,12 +3,12 @@ title: Verpacken einer Azure Service Fabric-App
 description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-Anwendung und die Vorbereitung für die Bereitstellung in einem Cluster.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 16bd48963040a8e30ff81f40c01134014eaccf48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639682"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77083617"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 
@@ -56,9 +56,9 @@ Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Erstellen eines Pakets mit Visual Studio
 
-Wenn Sie Ihre Anwendung mithilfe von Visual Studio 2015 erstellen, können Sie über den Befehl "Paket" automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
+Wenn Sie Ihre Anwendung mithilfe von Visual Studio erstellt haben, können Sie über die Option *Paket* automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
 
-Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie wie unten gezeigt den Befehl „Paket“ aus:
+Klicken Sie zum Erstellen eines Pakets im *Projektmappen-Explorer* mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Paket** aus:
 
 ![Paketieren einer Anwendung mit Visual Studio][vs-package-command]
 

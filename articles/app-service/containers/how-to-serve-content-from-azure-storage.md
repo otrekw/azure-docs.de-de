@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930013"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121418"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
 
@@ -34,6 +34,7 @@ Der vorliegende Leitfaden zeigt, wie Sie Azure Storage an App Service für Linux
 - Azure Storage mit App Service unterstützt das Bereitstellen von **Azure Files-Containern** (Lese-/Schreibzugriff) und **Azure-Blobcontainern** (schreibgeschützt).
 - Aufgrund von Infrastruktureinschränkungen bietet Azure Storage mit App Service **keine Unterstützung** für die Verwendung der **Storage-Firewall**-Konfiguration.
 - Mit Azure Storage mit App Service können Sie **bis zu fünf** Bereitstellungspunkte pro App angeben.
+- Auf Azure-Speicher, der für eine App bereitgestellt wurde, kann nicht über App Service-FTP/FTPs-Endpunkte zugegriffen werden. Verwenden Sie stattdessen den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 - Azure Storage wird separat abgerechnet und ist **nicht** in Ihrer Web-App enthalten. Erfahren Sie mehr über die [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]

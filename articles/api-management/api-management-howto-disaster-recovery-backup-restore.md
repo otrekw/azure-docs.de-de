@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: e3d8821fc36a9ba570893ec861b949921d9fabf5
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029944"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77047473"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -169,7 +169,7 @@ Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json`
 
 Die Sicherung ist ein länger anhaltender Vorgang, der bis zum Abschluss mehrere Minuten dauern kann. Falls die Anforderung erfolgreich war und der Sicherungsvorgang eingeleitet wurde, erhalten Sie den `202 Accepted` Antwortstatuscode mit einem `Location`-Header. Senden Sie GET-Anforderungen der URL im `Location` -Header, um den Status des Vorgangs zu ermitteln. Während der Sicherung erhalten Sie weiterhin den Statuscode „202 Accepted“. Mit dem Antwortcode `200 OK` wird der erfolgreiche Abschluss des Sicherungsvorgangs angezeigt.
 
-Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
+Beachten Sie bei Sicherungs- oder Wiederherstellungsanforderungen die folgenden Einschränkungen:
 
 -   Der im Hauptteil der Anforderung angegebene **Container** **muss vorhanden sein**.
 -   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
@@ -178,10 +178,10 @@ Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
 -   Darüber hinaus sind die folgenden Elemente nicht Bestandteil der Sicherungsdaten: benutzerdefinierte SSL-Zertifikate für Domänen und alle vom Kunden hochgeladenen Zwischen- oder Stammzertifikate, Inhalte des Entwicklerportals und Integrationseinstellungen für virtuelle Netzwerke.
 -   Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
--   Sie müssen den Zugriff von der Steuerungsebene auf das Azure Storage-Konto **zulassen**. Der Kunde sollte die [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] auf seinem Speicherkonto für die Sicherung öffnen. 
+-   Sie müssen den Zugriff von der Steuerungsebene auf ein Azure Storage-Konto **zulassen**, wenn die [Firewall][azure-storage-ip-firewall] für das Konto aktiviert ist. Kunden sollte die [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in ihren Speicherkonten für Sicherungen oder Wiederherstellungen öffnen. 
 
 > [!NOTE]
-> Wenn für das Speicherkonto eine Firewall aktiviert ist und versucht wird, eine Sicherung/Wiederherstellung von einem API Management-Dienst in derselben Region durchzuführen, funktioniert dies nicht, da die Anforderungen an Azure Storage nicht per SNAT in die öffentliche IP-Adresse der Compute übersetzt wurden, die in derselben Region bereitgestellt wird.
+> Beim Versuch, eine Sicherung/Wiederherstellung über einen API Management-Dienst unter Verwendung eines Speicherkontos mit aktivierter [Firewall][azure-storage-ip-firewall] in derselben Azure-Region durchzuführen, wird dieser Vorgang nicht durchgeführt. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ > (Azure API Management-Steuerungsebene) erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die Quellnetzwerkadresse durchgeführt.
 
 ### <a name="step2"> </a>Wiederherstellen eines API Management-Diensts
 
@@ -244,3 +244,4 @@ Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für d
 [api-management-arm-token]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-arm-token.png
 [api-management-endpoint]: ./media/api-management-howto-disaster-recovery-backup-restore/api-management-endpoint.png
 [control-plane-ip-address]: api-management-using-with-vnet.md#control-plane-ips
+[azure-storage-ip-firewall]: ../storage/common/storage-network-security.md#grant-access-from-an-internet-ip-range

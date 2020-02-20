@@ -1,20 +1,19 @@
 ---
 title: 'Überwachung: Apache Ambari- und Azure Monitor-Protokolle – Azure HDInsight'
 description: Erfahren Sie, wie Sie mit Ambari und Azure Monitor-Protokollen die Integrität und Verfügbarkeit des Clusters überwachen können.
-keywords: Überwachung, Ambari, Überwachen, Protokollanalyse, Warnung, Verfügbarkeit, Integrität
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/25/2019
-ms.openlocfilehash: a21610fefcfe1632dffbfd8e055497476f7e59c1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 02/06/2020
+ms.openlocfilehash: 383366fa3e436c79bed28a7c47f1e9daa5f0d9de
+ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687829"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77060172"
 ---
 # <a name="how-to-monitor-cluster-availability-with-apache-ambari-and-azure-monitor-logs"></a>Überwachen der Clusterverfügbarkeit mit Apache Ambari und Azure Monitor-Protokollen
 
@@ -96,9 +95,9 @@ Als Voraussetzung benötigen Sie einen Log Analytics-Arbeitsbereich, um die gesa
 
 ### <a name="enable-hdinsight-azure-monitor-logs-integration"></a>Aktivieren der Integration von Azure Monitor-Protokollen in HDInsight
 
-Wählen Sie im Portal auf der Seite mit HDInsight-Clusterressourcen **Operations Management Suite** aus. Wählen Sie dann **Aktivieren** und Ihren Log Analytics-Arbeitsbereich aus der Dropdownliste aus.
+Wählen Sie im Portal auf der Seite mit den HDInsight-Clusterressourcen **Azure Monitor** aus. Wählen Sie dann **Aktivieren** und Ihren Log Analytics-Arbeitsbereich aus der Dropdownliste aus.
 
-![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
+![HDInsight Operations Management Suite](media/hdinsight-cluster-availability/azure-portal-monitoring.png)
 
 ### <a name="query-metrics-and-logs-tables"></a>Abfragemetriken und Protokolltabellen
 

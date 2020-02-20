@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9519aaf7b57f5f4fbafa7248d3d524aea5d22c46
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922403"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048915"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Mobilitätsabdeckung in Azure Maps
 
-Der [Mobility Service](https://aka.ms/AzureMapsMobilityService) (Mobilitätsdienst) von Azure Maps ermöglicht die Nutzung von Funktionen für öffentliche Verkehrsmittel, Leihfahrräder und Leih-Scooter mit multimodalen Optionen für die Planung von Fahrten. Für öffentliche Verkehrsmittel ermöglicht der Dienst das Suchen nach Stationen in der Nähe, Haltestellen und Linien und stellt Informationen bereit, z. B. geplante und Echtzeitankunftszeiten von öffentlichen Verkehrsmitteln, Haltestellenlisten und Routenplaner sowie detaillierte und multimodale Schritt-für-Schritt-Routen und Statusmeldungen zum Betrieb. Darüber hinaus gibt der Mobility Service auch Echtzeit- und statische Verfügbarkeitsinformationen für Carsharing-Fahrzeuge und Leihfahrräder und -Scooter zurück.
+Azure Maps bietet einen [Mobilitätsdienst](https://aka.ms/AzureMapsMobilityService). Mit dem Mobilitätsdienst wird die Entwicklungszeit bei Anwendungen verbessert, die über Features für den öffentlichen Nahverkehr oder für Bike-Sharing und Scooter-Sharing verfügen. Er bietet eine Wegbeschreibungsoption mit Optionen für eine multimodale Routenplanung. Funktionen für den öffentlichen Nahverkehr umfassen die Suche nach Haltestellen und Bahnhöfen in der Nähe, nach bestimmten Haltestellen und Bahnhöfen sowie nach Straßenbahnverbindungen. Außerdem können Fahrplaninformationen sowie die aktuellen Ankunftszeiten öffentlicher Verkehrsmittel in Echtzeit abgerufen werden. Darüber hinaus werden Haltestellen und die Streckenführung angezeigt. Der Mobility Service gibt Echtzeit- und statische Verfügbarkeitsinformationen für Carsharing-Fahrzeuge, Leihfahrräder, Leih-Scooter usw. zurück. Die API gibt detaillierte und multimodale Schritt-für-Schritt-Anweisungen und Benachrichtigungen zurück.
 
-Azure Maps verfügt nicht für alle Städte und Länder bzw. Regionen über das gleiche Maß an Informationen und Genauigkeit. Die Möglichkeit zum Abrufen von Daten zu den Verkehrsmitteln hängt von der jeweiligen Stadt ab, und die Daten enthalten unter Umständen nicht alle Optionen für öffentliche Verkehrsmittel und Dienste, die in der Stadt angeboten werden.
+Azure Maps verfügt nicht für alle Städte und Länder bzw. Regionen über den gleichen Umfang an Informationen und die gleiche Genauigkeit. Die Möglichkeit, Daten zum öffentlichen Nahverkehr abzurufen, hängt von der Stadt ab. Die Daten umfassen möglicherweise nicht alle öffentlichen Nahverkehrsoptionen und relevanten Stellen.
 
 In der folgenden Tabelle finden Sie Informationen zum Mobility Service von Azure Maps.
 

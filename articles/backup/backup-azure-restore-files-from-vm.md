@@ -3,12 +3,12 @@ title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294081"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114324"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -57,13 +57,15 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
+8. Für Linux-Computer wird ein Python-Skript generiert. Das Skript muss heruntergeladen und auf den relevanten/kompatiblen Linux-Server kopiert werden. Für die Ausführung mit ```chmod +x <python file name>``` müssen möglicherweise die Berechtigungen geändert werden. Führen Sie die Python-Datei anschließend mit ```./<python file name>``` aus.
+
 Lesen Sie den Abschnitt [Zugriffsanforderungen](#access-requirements), um sicherzustellen, dass das Skript erfolgreich ausgeführt wird.
 
 ### <a name="identifying-volumes"></a>Bestimmen von Volumes
 
 #### <a name="for-windows"></a>Für Windows
 
-Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen ggf. nicht den Buchstaben des ursprünglichen virtuellen Computers, doch der Volumename wird beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
+Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen gegebenenfalls nicht den Buchstaben der ursprünglichen VM. Der Volumename wird jedoch beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien oder Ordner gefunden haben.  
 
    ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 

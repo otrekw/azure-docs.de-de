@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f6ba5c240a9ad74d9a2fab41496ce519f25fc4dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 02/06/2020
+ms.openlocfilehash: 2e5ae90cf6ee8bccc9919c88bc695bf944f58a67
+ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812058"
+ms.lasthandoff: 02/07/2020
+ms.locfileid: "77069437"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>Übersicht über das Portal des kommerziellen Marketplace in Partner Center
 
@@ -29,11 +29,12 @@ Partner Center ist der zentrale Ort für Microsoft-Partner. Für Organisationen,
 
 ## <a name="migration-from-cloud-partner-portal"></a>Migration vom Cloud-Partnerportal
 
-Partner Center wird ständig weiterentwickelt, um alle Aspekte der Beziehung zwischen Microsoft und Softwareherstellern besser zu integrieren. Im Rahmen dieser Weiterentwicklung werden die Funktionen des [Cloud-Partnerportals](https://cloudpartner.azure.com/) zu Partner Center migriert. 
+Partner Center wird ständig weiterentwickelt, um alle Aspekte der Beziehung zwischen Microsoft und Softwareherstellern besser zu integrieren. Im Rahmen dieser Weiterentwicklung werden die Funktionen des [Cloud-Partnerportals](https://cloudpartner.azure.com/) zu Partner Center migriert.
 
-**Derzeit wird in Partner Center nur die Erstellung und Verwaltung von Software-as-a-Service-Angeboten (SaaS) unterstützt.**
+>[!NOTE]
+>Derzeit unterstützt Partner Center das Erstellen und Verwalten von SaaS-Angeboten (Software-as-a-Service), Azure-Anwendungsangeboten, Dynamics 365 for Customer-Angeboten, Engagement- und PowerApps-Angeboten, Dynamics 365 for Operations-Angeboten und Dynamics 365 for Business Central-Angeboten. Weitere Angebote werden in Kürze unterstützt.
 
-Bestehende Marketplace-Herausgeber erwartet eine vertraute, jedoch verbesserte Umgebung mit intuitiver Benutzeroberfläche. Herausgeber werden durch Benachrichtigungen im Portal und per E-Mail über die Migration informiert. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung wirkt sich nicht auf die Kunden aus. 
+Bestehende Marketplace-Herausgeber erwartet eine vertraute, jedoch verbesserte Umgebung mit intuitiver Benutzeroberfläche. Herausgeber werden durch Benachrichtigungen im Portal und per E-Mail über die Migration informiert. Benutzer werden nahtlos an die entsprechende Stelle weitergeleitet. Diese Aktualisierung der Partnerumgebung wirkt sich nicht auf die Kunden aus.
 
 ### <a name="improvements-on-user-experience-and-billing"></a>Verbesserungen der Benutzeroberfläche und Abrechnung
 

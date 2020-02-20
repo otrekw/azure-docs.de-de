@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 719686cb123355359391c5cb1e517ff9cfd88371
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231732"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77046193"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -98,11 +98,11 @@ So führen Sie das Skript aus
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [Zeichenfolge]:  Erforderlich** – Dies ist der IP-Adressraum, den Sie einem neuen Subnetz, das Ihr neues v2-Gateway enthält, zugewiesen haben (oder zuweisen wollen). Diese Angabe muss in der CIDR-Notation erfolgen. Beispiel:  10.0.0.0/24. Sie müssen dieses Subnetz nicht im Voraus anlegen. Das Skript erstellt es für Sie, wenn es nicht vorhanden ist.
+   * **subnetAddressRange: [Zeichenfolge]:  Erforderlich** – Dies ist der IP-Adressraum, den Sie einem neuen Subnetz, das Ihr neues v2-Gateway enthält, zugewiesen haben (oder zuweisen wollen). Diese Angabe muss in der CIDR-Notation erfolgen. Beispiel: 10.0.0.0/24. Sie müssen dieses Subnetz nicht im Voraus anlegen. Das Skript erstellt es für Sie, wenn es nicht vorhanden ist.
    * **appgwName: [Zeichenfolge]: Optional**. Dies ist eine Zeichenfolge, die als der Name des neuen Standard_v2- oder WAF_v2-Gateways verwendet werden soll. Ist dieser Parameter nicht angegeben, wird der Name Ihres vorhandenen v1-Gateways verwendet, an den das Suffix *_v2* angefügt wird.
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  Eine Liste aus PSApplicationGatewaySslCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die SSL-Zertifikate aus Ihrem v1-Gateway aufgeführt sind, muss in das neue v2-Gateway hochgeladen werden. Für jedes Ihrer SSL-Zertifikate, die für Ihr Standard-v1- oder -WAF-v1-Gateway konfiguriert sind, können Sie über den hier gezeigten `New-AzApplicationGatewaySslCertificate`-Befehl ein neues PSApplicationGatewaySslCertificate-Objekt erstellen. Sie benötigen den Pfad zu Ihrer SSL-Zertifikatsdatei und das Kennwort.
 
-       Dieser Parameter ist nur optional, wenn Sie für das v1-Gateway oder die v1-WAF keine HTTPS-Listener konfiguriert haben. Sobald Sie mindestens einen HTTPS-Listener eingerichtet haben, müssen Sie diesen Parameter angeben.
+     Dieser Parameter ist nur optional, wenn Sie für das v1-Gateway oder die v1-WAF keine HTTPS-Listener konfiguriert haben. Sobald Sie mindestens einen HTTPS-Listener eingerichtet haben, müssen Sie diesen Parameter angeben.
 
       ```azurepowershell  
       $password = ConvertTo-SecureString <cert-password> -AsPlainText -Force
@@ -114,12 +114,17 @@ So führen Sie das Skript aus
         -Password $password
       ```
 
-      Sie können `$mySslCert1, $mySslCert2` (durch Komma getrennt) aus dem vorherigen Beispiel als Werte für diesen Parameter im Skript übergeben.
-   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optional**. Eine Liste aus PSApplicationGatewayTrustedRootCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die [vertrauenswürdigen Stammzertifikate](ssl-overview.md) aufgeführt sind, die zur Authentifizierung Ihrer Back-End-Instanzen aus Ihrem v2-Gateway verwendet werden.  
+     Sie können `$mySslCert1, $mySslCert2` (durch Komma getrennt) aus dem vorherigen Beispiel als Werte für diesen Parameter im Skript übergeben.
+   * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: Optional**. Eine Liste aus PSApplicationGatewayTrustedRootCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die [vertrauenswürdigen Stammzertifikate](ssl-overview.md) aufgeführt sind, die zur Authentifizierung Ihrer Back-End-Instanzen aus Ihrem v2-Gateway verwendet werden.
+   
+      ```azurepowershell
+      $certFilePath = ".\rootCA.cer"
+      $trustedCert = New-AzApplicationGatewayTrustedRootCertificate -Name "trustedCert1" -CertificateFile $certFilePath
+      ```
 
       Informationen, wie eine Liste aus PSApplicationGatewayTrustedRootCertificate-Objekten erstellt wird, finden Sie unter [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [Zeichenfolge]: Optional**. Eine bestimmte private IP-Adresse, die Sie Ihrem neuen v2-Gateway zuordnen möchten.  Diese Adresse muss aus dem VNet stammen, das Sie für Ihr neues v2-Gateway zuordnen. Ist dieser Parameter nicht angegeben, weist das Skript eine private IP-Adresse für Ihr v2-Gateway zu.
-    * **publicIpResourceId: [Zeichenfolge]: Optional**. Die Ressourcen-ID einer öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP-* angefügt ist.
+   * **publicIpResourceId: [Zeichenfolge]: Optional**. Die Ressourcen-ID einer vorhandenen öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP-* angefügt ist.
    * **validateMigration: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript nach der Erstellung des v2-Gateways und dem Kopieren der Konfiguration einige grundlegende Vergleichsprüfungen der Konfiguration durchführen soll. Standardmäßig erfolgt keine Prüfung.
    * **enableAutoScale: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript die automatische Skalierung auf dem neuen v2-Gateway nach der Erstellung aktivieren soll. Standardmäßig ist automatische Skalierung deaktiviert. Sie können automatische Skalierung später für das neu erstellte v2-Gateway jederzeit manuell aktivieren.
 
@@ -132,10 +137,10 @@ So führen Sie das Skript aus
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
-      -sslCertificates $Certs `
+      -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `
-      -publicIpResourceId "MyPublicIP" `
+      -publicIpResourceId "/subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/publicIPAddresses/MyPublicIP" `
       -validateMigration -enableAutoScale
    ```
 
