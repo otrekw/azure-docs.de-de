@@ -2,14 +2,14 @@
 title: Was ist Blockchain Data Manager für Azure Blockchain Service?
 description: Blockchain Data Manager erfasst, transformiert und stellt Blockchaindaten für Event Grid-Themen bereit.
 ms.date: 11/04/2019
-ms.topic: overview
+ms.topic: conceptual
 ms.reviewer: chroyal
-ms.openlocfilehash: 6583a99ef6efaefa732178d0228708cea82365b1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78c93880007259267b26cf53e93de722be1c7323
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326202"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209442"
 ---
 # <a name="what-is-blockchain-data-manager-for-azure-blockchain-service"></a>Was ist Blockchain Data Manager für Azure Blockchain Service?
 
@@ -21,7 +21,7 @@ Blockchain Data Manager führt drei Hauptfunktionen aus: Erfassung, Transformati
 
 ![Blockchain Data Manager-Funktionen](./media/data-manager/functions.png)
 
-## <a name="capture"></a>Erfassen
+## <a name="capture"></a>Erfassung
 
 Jede Blockchain Data Manager-Instanz stellt eine Verbindung mit dem Transaktionsknoten eines Azure Blockchain Service-Mitglieds her. Nur Benutzer, die Zugriff auf den Transaktionsknoten haben, können eine Verbindung herstellen. So wird die korrekte Zugriffssteuerung für Kundendaten sichergestellt. Eine Blockchain Data Manager-Instanz erfasst zuverlässig alle Block- und Transaktionsrohdaten aus dem Transaktionsknoten und kann skaliert werden, um Unternehmensworkloads zu unterstützen.
 

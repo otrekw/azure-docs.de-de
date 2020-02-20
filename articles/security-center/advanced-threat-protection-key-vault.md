@@ -1,5 +1,5 @@
 ---
-title: Einrichten von Advanced Threat Protection für Azure Key Vault | Microsoft-Dokumentation
+title: Einrichten von Advanced Threat Protection für Azure Key Vault
 description: In diesem Artikel wird erläutert, wie Sie Advanced Threat Protection für Azure Key Vault in Azure Security Center einrichten.
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f7f716734875d652de575991a4dc1b7bfe948ae3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 07924201d4208a502aa979dda476c57cf6edd749
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773535"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430549"
 ---
 # <a name="set-up-advanced-threat-protection-for-azure-key-vault-preview"></a>Einrichten von Advanced Threat Protection für Azure Key Vault (Vorschau)
 

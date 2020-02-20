@@ -1,19 +1,19 @@
 ---
 title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Suchdiensts von Microsoft Azure Maps einen Ort für die Geocodierung und inverse Geocodierung suchen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899230"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209884"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 

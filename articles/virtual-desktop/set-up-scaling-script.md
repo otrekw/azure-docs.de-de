@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061500"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367252"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
@@ -35,7 +35,7 @@ Das Skalierungstool nutzt eine Kombination aus Azure Automation-PowerShell-Runbo
 Während der Spitzenauslastung überprüft der Auftrag die aktuelle Anzahl von Sitzungen und die VM-Kapazität der derzeit ausgeführten Sitzungshosts für jeden Hostpool. Es berechnet anhand dieser Informationen, ob die ausgeführten Sitzungshost-VMs die vorhandenen Sitzungen ausreichend unterstützen können. Die Berechnung basiert auf dem Parameter *SessionThresholdPerCPU*, der in der Datei **createazurelogicapp.ps1** definiert ist. Wenn die Sitzungshost-VMs die aktiven Sitzungen nicht unterstützen können, startet der Auftrag zusätzliche Sitzungshost-VMs im Hostpool.
 
 >[!NOTE]
->*SessionThresholdPerCPU* schränkt die Anzahl der Sitzungen auf dem virtuellen Computer nicht ein. Dieser Parameter legt nur fest, wann neue VMs gestartet werden müssen, um einen Lastenausgleich für die Verbindungen auszuführen. Wenn Sie die Anzahl der Sitzungen einschränken möchten, müssen Sie die Anweisungen zu [Set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) befolgen, um den Parameter *MaxSessionLimit* entsprechend zu konfigurieren.
+>*SessionThresholdPerCPU* schränkt die Anzahl der Sitzungen auf dem virtuellen Computer nicht ein. Dieser Parameter legt nur fest, wann neue VMs gestartet werden müssen, um einen Lastenausgleich für die Verbindungen auszuführen. Wenn Sie die Anzahl der Sitzungen einschränken möchten, müssen Sie die Anweisungen zu [Set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) befolgen, um den Parameter *MaxSessionLimit* entsprechend zu konfigurieren.
 
 Außerhalb der Spitzenauslastungszeiten ermittelt der Auftrag, welche Sitzungshost-VMs heruntergefahren werden sollten. Dies wird basierend auf dem Parameter *MinimumNumberOfRDSH* durchgeführt. Mit dem Auftrag werden die Sitzungshost-VMs auf den Ausgleichsmodus festgelegt, um zu verhindern, dass neue Sitzungen eine Verbindung mit den Hosts herstellen. Wenn Sie den Parameter *LimitSecondsToForceLogOffUser* auf einen positiven Wert (nicht null) festlegen, fordert das Skript alle derzeit angemeldeten Benutzer per Benachrichtigung auf, ihre Änderungen zu speichern. Anschließend wird so lange gewartet, wie dies in der Konfiguration angegeben ist, und anschließend wird für die Benutzer das Abmelden erzwungen. Nachdem alle Benutzersitzungen einer Sitzungshost-VM abgemeldet wurden, wird die VM über das Skript heruntergefahren.
 
@@ -126,7 +126,7 @@ So erstellen Sie ein ausführendes Konto in Ihrem Azure-Konto
 
 Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit AzureRunAsConnection mit Windows Virtual Desktop interagieren kann. Achten Sie darauf, dass Sie PowerShell verwenden und sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen:
+Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul](/powershell/windows-virtual-desktop/overview/) herunterladen und importieren, um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

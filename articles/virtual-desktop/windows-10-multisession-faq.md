@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515104"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470571"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -28,7 +28,7 @@ Wie viele interaktive Sitzungen gleichzeitig aktiv sein können, hängt von den 
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>Warum meldet meine Anwendung Windows 10 Enterprise (mehrere Sitzungen) als Serverbetriebssystem?
 
-Windows 10 Enterprise (mehrere Sitzungen) ist eine virtuelle Edition von Windows 10 Enterprise. Einer der Unterschiede ist, dass dieses Betriebssystem für [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) den Wert „3“ meldet. Dies ist der gleiche Wert wie für Windows Server. Mit dieser Eigenschaft wird die Kompatibilität des Betriebssystems mit vorhandenen RDSH-Verwaltungstools, RDSH-Multisession-fähigen Anwendungen und vorwiegend auf Low-Level-Basis vorgenommenen Systemleistungsoptimierungen für RDSH-Umgebungen sichergestellt. Bei einigen Anwendungsinstallationsprogrammen kann es sein, dass die Installation unter Windows 10 Enterprise (mehrere Sitzungen) blockiert wird. Dies hängt davon ab, ob erkannt wird, dass „ProductType“ auf „Client“ festgelegt ist. Wenn Ihre App nicht installiert werden kann, sollten Sie sich an den Anbieter Ihrer Anwendung wenden, um eine aktualisierte Version zu erhalten. 
+Windows 10 Enterprise (mehrere Sitzungen) ist eine virtuelle Edition von Windows 10 Enterprise. Einer der Unterschiede ist, dass dieses Betriebssystem für [ProductType](/windows/win32/cimwin32prov/win32-operatingsystem) den Wert „3“ meldet. Dies ist der gleiche Wert wie für Windows Server. Mit dieser Eigenschaft wird die Kompatibilität des Betriebssystems mit vorhandenen RDSH-Verwaltungstools, RDSH-Multisession-fähigen Anwendungen und vorwiegend auf Low-Level-Basis vorgenommenen Systemleistungsoptimierungen für RDSH-Umgebungen sichergestellt. Bei einigen Anwendungsinstallationsprogrammen kann es sein, dass die Installation unter Windows 10 Enterprise (mehrere Sitzungen) blockiert wird. Dies hängt davon ab, ob erkannt wird, dass „ProductType“ auf „Client“ festgelegt ist. Wenn Ihre App nicht installiert werden kann, sollten Sie sich an den Anbieter Ihrer Anwendung wenden, um eine aktualisierte Version zu erhalten. 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Kann ich Windows 10 Enterprise (mehrere Sitzungen) lokal ausführen?
 
@@ -48,7 +48,7 @@ Sie können ein beliebiges unterstütztes Konfigurationstool verwenden. Wir empf
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Kann Windows 10 Enterprise (mehrere Sitzungen) in Azure AD (Azure Active Directory) eingebunden werden?
 
-Für Windows 10 Enterprise (mehrere Sitzungen) wird derzeit die Hybrideinbindung in Azure AD unterstützt. Nachdem Windows 10 Enterprise (mehrere Sitzungen) in die Domäne eingebunden wurde, können Sie das vorhandene Gruppenrichtlinienobjekt verwenden, um die Azure AD-Registrierung zu aktivieren. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan).
+Für Windows 10 Enterprise (mehrere Sitzungen) wird derzeit die Hybrideinbindung in Azure AD unterstützt. Nachdem Windows 10 Enterprise (mehrere Sitzungen) in die Domäne eingebunden wurde, können Sie das vorhandene Gruppenrichtlinienobjekt verwenden, um die Azure AD-Registrierung zu aktivieren. Weitere Informationen finden Sie unter [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](../active-directory/devices/hybrid-azuread-join-plan.md).
  
 ## <a name="where-can-i-find-the-windows-10-enterprise-multi-session-image"></a>Wo finde ich das Image für Windows 10 Enterprise (mehrere Sitzungen)?
 

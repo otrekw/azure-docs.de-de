@@ -10,12 +10,12 @@ ms.date: 10/10/2019
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: af4f069e9021a301a77ccefa300ad86afb955fcf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927030"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208759"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -96,7 +96,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 >
 > 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft                     | BESCHREIBUNG                              | Erforderlich |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand**fest. | Ja      |
@@ -157,7 +157,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
-| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
+| Eigenschaft               | Beschreibung                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
 | hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
@@ -284,8 +284,8 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
   }
 ```
 
-### <a name="properties"></a>Properties
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
+### <a name="properties"></a>Eigenschaften
+| Eigenschaft          | Beschreibung                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
@@ -344,7 +344,7 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 ```
 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch**fest. | Ja      |
@@ -380,7 +380,7 @@ Sie können einen mit Azure Machine Learning Studio verknüpften Dienst erstelle
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureML** fest. | Ja                                      |
@@ -424,7 +424,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 | Eigenschaft               | BESCHREIBUNG                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                   | Legen Sie die type-Eigenschaft auf **AzureMLService**. | Ja                                      |
@@ -466,12 +466,12 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
+| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
-| accountName          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
+| .<Name der Region          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
 | dataLakeAnalyticsUri | URI des Azure Data Lake Analytics-Kontos.           | Nein                                       |
 | subscriptionId       | Azure-Abonnement-ID                    | Nein                                       |
 | resourceGroupName    | Azure-Ressourcengruppenname                | Nein                                       |
@@ -528,7 +528,7 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 | Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
@@ -555,13 +555,13 @@ Sie erstellen einen mit Azure SQL Data Warehouse verknüpften Dienst und verwend
 Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) zum Aufrufen einer gespeicherten Prozedur in einer Data Factory-Pipeline. Im Artikel [SQL Server-Connector](connector-sql-server.md#linked-service-properties) finden Sie weitere Informationen zu diesem verknüpften Dienst.
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
-Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) *kein* `JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
+Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
-| type   | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFunction** | Ja |
-| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL**, wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | Ja |
-| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel**. Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) | Ja |
+| type   | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFunction** | ja |
+| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL**, wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | ja |
+| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel**. Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
 ## <a name="next-steps"></a>Nächste Schritte

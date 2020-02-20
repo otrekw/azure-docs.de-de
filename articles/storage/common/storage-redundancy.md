@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162921"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471345"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 |    FileStorage    | Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
 
 <sup>1</sup> Die Archivspeicherebene wird derzeit nicht für ZRS-Konten unterstützt.<br />
-<sup>2</sup> Azure-Datenträger für virtuelle Computer (sowohl verwaltete als auch nicht verwaltete Datenträger) unterstützen nur LRS. ZRS oder GZRS werden nicht unterstützt. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](/pricing/details/managed-disks/).
+<sup>2</sup> Azure-Datenträger für virtuelle Computer (sowohl verwaltete als auch nicht verwaltete Datenträger) unterstützen nur LRS. ZRS oder GZRS werden nicht unterstützt. Weitere Informationen zu verwalteten Datenträgern finden Sie unter [Azure Managed Disks – Preise](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 Informationen zu den Regionen, in denen ZRS unterstützt wird, finden Sie unter **Unterstützung der Dienste nach Region** in [Was sind Azure-Verfügbarkeitszonen?](../../availability-zones/az-overview.md).
 

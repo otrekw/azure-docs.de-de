@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935203"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201593"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -53,7 +53,7 @@ Eine verwaltete Instanz kombiniert die besten Features, die sowohl in Azure SQL-
 
 Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle angegeben:
 
-|Funktion | Beschreibung|
+|Funktion | BESCHREIBUNG|
 |---|---|
 | SQL Server-Version/-Build | SQL Server-Datenbank-Engine (letzte stabile Version) |
 | Verwaltete automatisierte Sicherungen | Ja |
@@ -80,9 +80,6 @@ Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 - **Gen5**: Logische CPUs basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz und Intel-Prozessoren vom Typ SP-8160 (Skylake), schnellem NVMe-SSD, einem logischem Kern mit Hyperthreading und Computegrößen zwischen vier und 80 Kernen.
 
 Weitere Informationen zu den Unterschieden zwischen Hardwaregenerationen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
-
-> [!IMPORTANT]
-> Neue Gen4-Datenbanken werden in den Regionen „Australien, Osten“ und „Brasilien, Süden“ nicht mehr unterstützt.
 
 ## <a name="managed-instance-service-tiers"></a>Dienstebenen für eine verwaltete Instanz
 

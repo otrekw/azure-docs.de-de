@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908933"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373161"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Sie konfigurieren die Anpassung der Benutzeroberfläche für Benutzerflows im [A
 
 Wenn Sie [benutzerdefinierte Richtlinien](custom-policy-overview.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](custom-policy-ui-customization.md).
 
-Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie benutzerdefinierte Richtlinien, [die Seiteninhalte dynamisch ändern können](custom-policy-ui-customization-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. Sie können z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben.
+Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie benutzerdefinierte Richtlinien, [die Seiteninhalte dynamisch ändern können](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. Sie können z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben.
 
 ### <a name="javascript"></a>JavaScript
 

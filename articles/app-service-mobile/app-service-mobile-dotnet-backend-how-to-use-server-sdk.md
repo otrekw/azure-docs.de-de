@@ -8,20 +8,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668857"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461537"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 In diesem Thema wird das Verwenden des .NET-Back-End-Server-SDKs in Azure App Service Mobile Apps-Szenarien veranschaulicht. Das Azure-SDK für Mobile Apps erleichtert Ihnen die Arbeit mit mobilen Clients aus der ASP.NET-Anwendung.
 
@@ -33,8 +28,8 @@ In diesem Thema wird das Verwenden des .NET-Back-End-Server-SDKs in Azure App Se
 ## <a name="reference-documentation"></a>Referenzdokumentation
 Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile Apps – .NET-Referenz][1].
 
-## <a name="create-app"></a>Gewusst wie: Erstellen eines .NET Mobile App-Back-Ends
-Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure-Portal] oder mit Visual Studio eine App Service-Anwendung erstellen. Sie können die App Service-Anwendung lokal ausführen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
+## <a name="create-app"></a>Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends
+Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure portal] oder mit Visual Studio eine App Service-Anwendung erstellen. Sie können die App Service-Anwendung lokal ausführen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
 
 Wenn Sie einem vorhandenen Projekt mobile Funktionen hinzufügen, helfen Ihnen die Informationen im Abschnitt [Herunterladen und Initialisieren des SDK](#install-sdk) weiter.
 
@@ -118,11 +113,11 @@ Beim Serverschnellstart aus dem Azure-Portal wird **UseDefaultConfiguration()** 
 
 Die verwendeten Erweiterungsmethoden lauten:
 
-* Mit `AddMobileAppHomeController()` wird die Azure Mobile Apps-Standardstartseite bereitgestellt.
+* `AddMobileAppHomeController()` wird die Azure Mobile Apps-Standardstartseite bereitgestellt.
 * Mit `MapApiControllers()` werden benutzerdefinierte API-Funktionen für WebAPI-Controller bereitgestellt, die mit dem Attribut `[MobileAppController]` versehen sind.
 * Mit `AddTables()` wird eine Zuordnung der `/tables`-Endpunkte für die Tabellencontroller bereitgestellt.
 * `AddTablesWithEntityFramework()` ist eine Kurznotation zum Zuordnen der `/tables`-Endpunkte mit Entity Framework-basierten Controllern.
-* Mit `AddPushNotifications()` wird eine einfache Methode zum Registrieren von Geräten für Notification Hubs bereitgestellt.
+* `AddPushNotifications()` wird eine einfache Methode zum Registrieren von Geräten für Notification Hubs bereitgestellt.
 * `MapLegacyCrossDomainController()` werden CORS-Standardheader für die lokale Entwicklung bereitgestellt.
 
 ### <a name="sdk-extensions"></a>SDK-Erweiterungen
@@ -263,7 +258,7 @@ Informationen zum Authentifizieren von Clients bei Ihrem Mobile Apps-Back-End fi
 > 
 > Sie können auch eigene Anmeldesysteme implementieren, wenn Sie keinen der Authentifizierungs-/Autorisierungsanbieter von App Service nutzen möchten. Installieren Sie das [Microsoft.Azure.Mobile.Server.Login]-Paket als Unterstützung bei der Generierung des Authentifizierungstokens.  Geben Sie eigenen Code zum Überprüfen der Benutzeranmeldeinformationen an. Sie können beispielsweise eine Datenbank auf Kennwörter mit Salt und Hash überprüfen. Im folgenden Beispiel übernimmt die `isValidAssertion()`-Methode diese Überprüfungen. Sie wird an anderer Stelle definiert.
 
-Die benutzerdefinierte Authentifizierung wird verfügbar gemacht, indem ein ApiController-Element erstellt und die Aktionen `register` und `login` verfügbar gemacht werden. Der Client sollte eine benutzerdefinierte Benutzeroberfläche verwenden, um die Informationen vom Benutzer zu sammeln.  Die Informationen werden dann per HTTP POST-Standardaufruf an die API übermittelt. Wenn der Server die Assertion überprüft, wird mit der `AppServiceLoginHandler.CreateToken()` -Methode ein Token ausgegeben.  Für das ApiController-Element sollte das Attribut `[MobileAppController]` **nicht** verwendet werden.
+Die benutzerdefinierte Authentifizierung wird verfügbar gemacht, indem ein ApiController-Element erstellt und die Aktionen `register` und `login` verfügbar gemacht werden. Der Client sollte eine benutzerdefinierte Benutzeroberfläche verwenden, um die Informationen vom Benutzer zu sammeln.  Die Informationen werden dann per HTTP POST-Standardaufruf an die API übermittelt. Wenn der Server die Assertion überprüft, wird mit der `AppServiceLoginHandler.CreateToken()` -Methode ein Token ausgegeben.  Für das ApiController-Element sollte das Attribut `[MobileAppController]`**nicht** verwendet werden.
 
 `login` -Beispielaktion:
 
@@ -410,7 +405,7 @@ Alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen 
 
 Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
 
-## <a name="push-user"></a>Gewusst wie: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
+## <a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird, wird der Registrierung automatisch ein Tag mit der Benutzer-ID hinzugefügt. Mit diesem Tag können Sie Pushbenachrichtigungen an alle Geräte senden, die von dieser Person registriert wurden. Mit dem folgenden Code wird die SID des Benutzers abgerufen, der die Anforderung stellt, und an jede Geräteregistrierung für diese Person wird eine Pushbenachrichtigungsvorlage gesendet:
 
     // Get the current user SID and create a tag for the current user.
@@ -467,7 +462,7 @@ Stellen Sie sicher, dass für Ihr mobiles Back-End [Microsoft.Azure.Mobile.Serve
 Im obigen Beispiel müssen die Anwendungseinstellungen *authAudience* und *authIssuer* in der Datei „Web.config“ so konfiguriert werden, dass beide die URL des Anwendungsstammverzeichnisses darstellen. Verwenden Sie hierzu das HTTPS-Schema. Für *authSigningKey* muss der Wert des Signaturschlüssels Ihrer Anwendung festgelegt werden.
 Gehen Sie wie folgt vor, um den Signaturschlüssel zu erhalten:
 
-1. Navigieren Sie im [Azure-Portal]
+1. Navigieren Sie im [Azure portal]
 2. Klicken Sie auf **Tools**, **Kudu**, **Los**.
 3. Klicken Sie auf der Kudu-Verwaltungswebsite auf **Umgebung**.
 4. Suchen Sie nach dem Wert für *WEBSITE\_AUTH\_SIGNING\_KEY*.
@@ -480,7 +475,7 @@ Verwenden Sie den Signaturschlüssel für den Parameter *authSigningKey* in Ihre
 [4]: https://azure.microsoft.com/downloads/
 [5]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#client-added-push-notification-tags
 [6]: https://github.com/Azure-Samples/app-service-mobile-dotnet-backend-quickstart/blob/master/README.md#push-to-users
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [NuGet.org]: https://www.nuget.org/
 [Microsoft.Azure.Mobile.Server]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/
 [Microsoft.Azure.Mobile.Server.Quickstart]: https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Quickstart/

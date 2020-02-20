@@ -6,20 +6,15 @@ ms.tgt_pltfrm: html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 0f70523b5b27a4f3db86bacf39469e233e43f807
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 029b01f3aacc928ebdae0e8fe90871437afccea5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668827"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461520"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Verwenden der JavaScript-Clientbibliothek für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt gängige Szenarien für die Verwendung des neuesten [JavaScript-SDKs für Azure Mobile Apps]. Wenn Sie mit Azure Mobile Apps noch nicht vertraut sind, führen Sie zunächst den [Schnellstart von Azure Mobile Apps] durch, um ein Back-End und eine Tabelle zu erstellen. In diesem Leitfaden liegt der Schwerpunkt auf der Verwendung des mobilen Back-Ends in HTML/JavaScript-Webanwendungen.
@@ -55,14 +50,14 @@ Sie können auch eine vorab erstellte Version des SDK verwenden, die Sie direkt 
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Gewusst wie: Authentifizieren von Benutzern
+## <a name="auth"></a>Vorgehensweise: Authentifizieren von Benutzern
 App Service unterstützt die Authentifizierung und Autorisierung von App-Benutzern mithilfe verschiedener externer Identitätsanbieter: Facebook, Google, Microsoft-Konto und Twitter. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Erste Schritte mit der Authentifizierung] .
 
 Insgesamt werden zwei Authentifizierungsflüsse unterstützt: ein Serverfluss und ein Clientfluss.  Der Serverfluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der Clientfluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten wie z. B. einmalige Anmeldung, da in diesem Fall anbieterspezifische SDKs verwendet werden.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Gewusst wie: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
+### <a name="configure-external-redirect-urls"></a>Vorgehensweise: Konfigurieren Ihres Mobile App Service für externe Umleitungs-URLs
 Mehrere JavaScript-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in der OAuth-Benutzeroberfläche zu verarbeiten.  Diese Funktionen umfassen:
 
 * Lokale Ausführung Ihres Dienstes
@@ -71,7 +66,7 @@ Mehrere JavaScript-Anwendungen verwenden eine Loopback-Funktion, um Abläufe in 
 
 Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung in der Standardkonfiguration nur Zugriffe von Ihrem Back-End für mobile Apps zulässt. Führen Sie die folgenden Schritte aus, um die App Service-Einstellungen zu ändern und die Authentifizierung bei lokaler Serverausführung zu ermöglichen:
 
-1. Melden Sie sich beim [Azure-Portal]
+1. Melden Sie sich beim [Azure portal]
 2. Navigieren Sie zum Back-End für mobile Apps.
 3. Wählen Sie **Ressourcen-Explorer** im Menü **ENTWICKLUNGSTOOLS**.
 4. Klicken Sie auf **Gehe zu** , um den Ressourcen-Explorer für Ihr Back-End für mobile Apps in einer neuen Registerkarte oder einem neuen Fenster zu öffnen.
@@ -89,7 +84,7 @@ Lokale Ausführung kann problematisch sein, da die App Service-Authentifizierung
 
 Nun müssen auch die gleichen Loopback-URLs den CORS-Positivlisteneinstellungen hinzugefügt werden:
 
-1. Navigieren Sie zurück zum [Azure-Portal].
+1. Navigieren Sie zurück zum [Azure portal].
 2. Navigieren Sie zum Back-End für mobile Apps.
 3. Klicken Sie im **API**-Menü auf **CORS**.
 4. Geben Sie jede URL in das leere Textfeld **Zulässige Ursprünge** ein.  Es wird ein neues Textfeld erstellt.
@@ -102,6 +97,6 @@ Nach der Aktualisierung des Back-Ends können Sie die neuen Loopback-URLs in Ihr
 [Erste Schritte mit der Authentifizierung]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [JavaScript-SDKs für Azure Mobile Apps]: https://www.npmjs.com/package/azure-mobile-apps-client
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

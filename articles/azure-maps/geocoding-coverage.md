@@ -1,19 +1,19 @@
 ---
 title: Geocodierungsabdeckung | Microsoft Azure Maps
 description: Der Vorgang zum Konvertieren einer Standortadresse in Breiten- und Längenkoordinaten wird als „Geocodierung“ bezeichnet. In diesem Artikel erfahren Sie mehr über Regionen mit Geocodierungsabdeckung in Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 12/31/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 149dd0a3e709bbf4660aaae176f76f560de873e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911633"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210054"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 

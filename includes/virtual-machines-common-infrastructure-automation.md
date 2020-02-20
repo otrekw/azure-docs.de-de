@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260741"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474272"
 ---
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
 
@@ -29,9 +29,9 @@ Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Com
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Installieren und Konfigurieren von Ansible unter Linux für die Verwendung mit Azure](../articles/virtual-machines/linux/ansible-install-configure.md)
-- [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/linux/ansible-create-vm.md)
-- [Verwalten eines virtuellen Linux-Computers](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)
+- [Installieren und Konfigurieren von Ansible unter Linux für die Verwendung mit Azure](../articles/ansible/ansible-install-configure.md)
+- [Erstellen eines virtuellen Linux-Computers](../articles/ansible/ansible-create-vm.md)
+- [Verwalten eines virtuellen Linux-Computers](../articles/ansible/ansible-manage-linux-vm.md)
 
 
 ## <a name="chef"></a>Chef
@@ -48,7 +48,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Bereitstellen von Puppet über den Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)
+- [Bereitstellen von Puppet über den Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview)
 
 
 ## <a name="cloud-init"></a>cloud-init
@@ -99,8 +99,8 @@ In diesem Artikel werden folgende Themen erläutert:
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Installieren und Konfigurieren von Terraform mit Azure](../articles/virtual-machines/linux/terraform-install-configure.md)
-- [Erstellen einer Azure-Infrastruktur mit Terraform](../articles/virtual-machines/linux/terraform-create-complete-vm.md)
+- [Installieren und Konfigurieren von Terraform mit Azure](../articles/terraform/terraform-install-configure.md)
+- [Erstellen einer Azure-Infrastruktur mit Terraform](../articles/terraform/terraform-create-complete-vm.md)
 
 
 ## <a name="azure-automation"></a>Azure-Automatisierung

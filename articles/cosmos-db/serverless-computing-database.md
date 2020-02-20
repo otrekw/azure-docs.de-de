@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 4ae2cc33275702a0d549f4e994a597614191b3e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444878"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462444"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -148,10 +148,4 @@ Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functio
 
 * [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](https://aka.ms/cosmosdbinputbind)
-* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb.md)
-
-
- 
-
-
-
+* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb-v2.md)

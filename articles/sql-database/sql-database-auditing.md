@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161952"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212901"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -90,7 +90,7 @@ Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurie
 
    ![Speicherkonto](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-Zum Konfigurieren eines Speicherkontos in einem virtuellen Netzwerk oder mit einer Firewall benötigen Sie einen [Active Directory-Administrator](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) auf dem Server. Aktivieren Sie **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** für das Speicherkonto. Außerdem müssen Sie über die Berechtigung "Microsoft.Authorization/roleAssignments/write" für das ausgewählte Speicherkonto verfügen.
+Zum Konfigurieren eines Speicherkontos in einem virtuellen Netzwerk oder mit einer Firewall benötigen Sie einen [Active Directory-Administrator](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance) auf dem Server. Aktivieren Sie **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** für das Speicherkonto. Außerdem müssen Sie über die Berechtigung "Microsoft.Authorization/roleAssignments/write" für das ausgewählte Speicherkonto verfügen.
 
 Wir empfehlen, dass Sie als [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) agieren, um der verwalteten Identität die Rolle „Mitwirkender an Storage-Blobdaten “ zu gewähren. Weitere Informationen zu Berechtigungen und zur rollenbasierten Zugriffssteuerung finden Sie unter [Was ist rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](../role-based-access-control/overview.md) und [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md).
 

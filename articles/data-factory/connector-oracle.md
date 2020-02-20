@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 736cf03b58ec09b291c91857177a32c7dad89c6a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892059"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423809"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -44,7 +44,6 @@ Dieser Oracle-Connector unterstützt insbesondere Folgendes:
     - Oracle 9i R2 (9.2) und höher
     - Oracle 8i R3 (8.1.7) und höher
     - Oracle Database Cloud Exadata Service
-- Kopieren von Dateien unter Verwendung der Standard- oder OID-Authentifizierung.
 - Paralleles Kopieren aus einer Oracle-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle).
 
 > [!Note]
@@ -77,7 +76,7 @@ Der verknüpfte Oracle-Dienst unterstützt folgende Eigenschaften:
 
 Weitere Verbindungseigenschaften, die Sie abhängig von Ihrem Anwendungsfall in der Verbindungszeichenfolge festlegen können:
 
-| Eigenschaft | Beschreibung | Zulässige Werte |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte |
 |:--- |:--- |:--- |
 | ArraySize |Die Anzahl von Bytes, die der Connector in einem einzelnen Netzwerkroundtrip abrufen kann. Beispiel: `ArraySize=‭10485760‬`.<br/><br/>Größere Werte erhöhen den Durchsatz, indem seltener Daten über das Netzwerk abgerufen werden. Kleinere Werte erhöhen die Reaktionszeit, da weniger lange auf die Übertragung von Daten durch den Server gewartet werden muss. | Eine ganze Zahl zwischen 1 und 4.294.967.296 (4 GB). Der Standardwert ist `60000`. Der Wert 1 definiert nicht die Anzahl von Bytes, sondern gibt die Zuordnung von Speicherplatz für genau eine Datenzeile an. |
 
@@ -210,7 +209,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Oracle-Quell
 
 Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität auf `OracleSource` fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `OracleSource` festgelegt werden. | Ja |
 | oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |

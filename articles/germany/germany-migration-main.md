@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 11/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d7a6e7323c57833860d7274937f60469c4ef4416
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc45e7f53b80c8ec42d86a726ddc4942d9c342bc
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436658"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462012"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
@@ -58,7 +58,7 @@ Am Ende dieser Phase sind Ihnen die folgenden Informationen bekannt:
 In der Planungsphase führen Sie die folgenden Aufgaben aus:
 
 - Verwenden Sie die Ausgabe der Abhängigkeitsanalyse, die in der Bewertungsphase ausgeführt wurde, um zusammengehörige Komponenten zu definieren. Erwägen Sie ein gemeinsames Migrieren zusammengehöriger Komponenten in einem *Migrationspaket*.
-- [Optional] Nutzen Sie die Migration als Gelegenheit, [Gartner 5-R-Kriterien](https://www.gartner.com/newsroom/id/1684114) anzuwenden und Ihre Workload zu optimieren.
+- [Optional] Nutzen Sie die Migration als Gelegenheit, [Gartner 5-R-Kriterien](https://www.gartner.com/en/documents/3873016/evaluation-criteria-for-cloud-management-platforms-and-t) anzuwenden und Ihre Workload zu optimieren.
 - Bestimmen Sie die Zielumgebung in Azure weltweit:
   1. Bestimmen Sie den Zielmandanten in Azure weltweit (ggf müssen Sie diesen erstellen).
   1. Erstellen Sie Abonnements.

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 0c04e7812d023cd394b54cf03bcca11a5589b18a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564804"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474165"
 ---
 In Azure Functions auftretende Fehler können einen der folgenden Ursprünge haben:
 
@@ -37,6 +37,6 @@ Die folgenden Trigger bieten eine integrierte Unterstützung der Wiederholung:
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Warteschlange/Thema)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Standardmäßig wiederholen diese Trigger Anforderungen bis zu fünfmal. Nach dem fünften Wiederholungsversuch schreiben sowohl die Azure Queue Storage- als auch die Azure Service Bus-Trigger eine Nachricht in die [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
+Standardmäßig wiederholen diese Trigger Anforderungen bis zu fünfmal. Nach dem fünften Wiederholungsversuch schreiben sowohl die Azure Queue Storage- als auch die Azure Service Bus-Trigger eine Nachricht in die [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
 
-Sie müssen Wiederholungsrichtlinien für alle anderen Trigger- oder Bindungstypen manuell implementieren. Manuelle Implementierungen können das Schreiben von Fehlerinformationen in eine [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs) umfassen. Durch das Schreiben in eine Warteschlange für nicht verarbeitbare Nachrichten erhalten Sie die Möglichkeit, Vorgänge zu einem späteren Zeitpunkt zu wiederholen. Dieser Ansatz ist mit dem vom Blob Storage-Trigger verwendeten identisch.
+Sie müssen Wiederholungsrichtlinien für alle anderen Trigger- oder Bindungstypen manuell implementieren. Manuelle Implementierungen können das Schreiben von Fehlerinformationen in eine [Warteschlange für nicht verarbeitbare Nachrichten](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs) umfassen. Durch das Schreiben in eine Warteschlange für nicht verarbeitbare Nachrichten erhalten Sie die Möglichkeit, Vorgänge zu einem späteren Zeitpunkt zu wiederholen. Dieser Ansatz ist mit dem vom Blob Storage-Trigger verwendeten identisch.

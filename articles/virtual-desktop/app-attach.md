@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5db60160540fc59465e13bd2e68680f49ee0aa2b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772549"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470886"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -38,7 +38,7 @@ Zunächst müssen Sie das Betriebssystemimage abrufen, das Sie für die MSIX-App
 1. Öffnen Sie das [Windows-Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0), und melden Sie sich an.
 
      >[!NOTE]
-     >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](https://docs.microsoft.com/windows-insider/at-home/).
+     >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](/windows-insider/at-home/).
 
 2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19035** aus.
 
@@ -79,7 +79,7 @@ Nachdem Sie die VHD in Azure hochgeladen haben, erstellen Sie einen Hostpool, de
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Vorbereiten der Anwendung für das MSIX-Feature zum Anfügen von Apps 
 
-Wenn Sie bereits über ein MSIX-Paket verfügen, fahren Sie mit [Konfigurieren der Windows Virtual Desktop-Infrastruktur](#configure-windows-virtual-desktop-infrastructure) fort. Wenn Sie Legacyanwendungen testen möchten, befolgen Sie die Anweisungen unter [Erstellen eines MSIX-Pakets aus einem Desktopinstaller auf einem virtuellen Computer](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm), um die Legacyanwendung in ein MSIX-Paket zu konvertieren.
+Wenn Sie bereits über ein MSIX-Paket verfügen, fahren Sie mit [Konfigurieren der Windows Virtual Desktop-Infrastruktur](#configure-windows-virtual-desktop-infrastructure) fort. Wenn Sie Legacyanwendungen testen möchten, befolgen Sie die Anweisungen unter [Erstellen eines MSIX-Pakets aus einem Desktopinstaller auf einem virtuellen Computer](/windows/msix/packaging-tool/create-app-package-msi-vm/), um die Legacyanwendung in ein MSIX-Paket zu konvertieren.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generieren eines VHD- oder VHDX-Pakets für MSIX
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Einrichten von Simulationsskripts für den Agent für das Feature zum Anfügen von Apps
 
-Nachdem Sie die Skripts erstellt haben, können Benutzer diese manuell ausführen oder sie so einrichten, dass sie automatisch als Skripts zum Starten, Anmelden, Abmelden und Herunterfahren ausgeführt werden. Weitere Informationen zu diesen Arten von Skripts finden Sie unter [Verwenden von Skripts zum Starten, Herunterfahren, Anmelden und Abmelden in der Gruppenrichtlinie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+Nachdem Sie die Skripts erstellt haben, können Benutzer diese manuell ausführen oder sie so einrichten, dass sie automatisch als Skripts zum Starten, Anmelden, Abmelden und Herunterfahren ausgeführt werden. Weitere Informationen zu diesen Arten von Skripts finden Sie unter [Verwenden von Skripts zum Starten, Herunterfahren, Anmelden und Abmelden in der Gruppenrichtlinie](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
 Jedes dieser automatischen Skripts führt eine Phase der Skripts zum Anfügen von Apps aus:
 
@@ -407,7 +407,7 @@ Um die Lizenzdateien zu installieren, müssen Sie ein PowerShell-Skript verwende
 
 So richten Sie die Lizenzen für die Offlineverwendung ein: 
 
-1. Laden Sie das App-Paket, die Lizenzen und die erforderlichen Frameworks aus Microsoft Store for Business herunter. Sie benötigen sowohl die codierten als auch die nicht codierten Lizenzdateien. Ausführliche Downloadanweisungen finden Sie [hier](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+1. Laden Sie das App-Paket, die Lizenzen und die erforderlichen Frameworks aus Microsoft Store for Business herunter. Sie benötigen sowohl die codierten als auch die nicht codierten Lizenzdateien. Ausführliche Downloadanweisungen finden Sie [hier](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
 2. Aktualisieren Sie die folgenden Variablen im Skript für Schritt 3:
       1. `$contentID` ist der ContentID-Wert aus der nicht codierten Lizenzdatei (XML-Datei). Sie können die Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen.
       2. `$licenseBlob` ist die vollständige Zeichenfolge für das Lizenzierungsblob in der codierten Lizenzdatei (BIN-Datei). Sie können die codierte Lizenzdatei in einem Text-Editor Ihrer Wahl öffnen. 

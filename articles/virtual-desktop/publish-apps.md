@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769658"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367269"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Veröffentlichen von integrierten Apps in Windows Virtual Desktop
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Apps in Ihrer Windows Virtual Desktop-Um
 So veröffentlichen Sie eine integrierte App:
 
 1. Stellen Sie eine Verbindung mit einem der virtuellen Computer in Ihrem Hostpool her.
-2. Rufen Sie den **PackageFamilyName** der zu veröffentlichenden App ab. Befolgen Sie dazu die Anweisungen in [diesem Artikel](https://docs.microsoft.com/powershell/module/appx/get-appxpackage?view=win10-ps).
+2. Rufen Sie den **PackageFamilyName** der zu veröffentlichenden App ab. Befolgen Sie dazu die Anweisungen in [diesem Artikel](/powershell/module/appx/get-appxpackage?view=win10-ps/).
 3. Führen Sie schließlich das folgende Cmdlet aus; ersetzen Sie dabei `<PackageFamilyName>` durch den **PackageFamilyName** aus dem vorherigen Schritt:
    
    ```powershell

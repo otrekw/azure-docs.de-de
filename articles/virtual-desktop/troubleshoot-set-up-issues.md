@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: 12b5b6ce84ad36d14a393b54745e530779d4ca95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 438c391febc28a716c681aa81b3f42c155b720eb
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965739"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367214"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -53,7 +53,7 @@ Beispiel für unformatierten Fehler:
 
 **Ursache:** Dem angemeldeten Benutzer wurde in seinem Azure Active Directory-Mandanten nicht die TenantCreator-Rolle zugewiesen.
 
-**Behebung:** Befolgen Sie die Anweisungen unter [Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role). Nachdem Sie die entsprechenden Schritte ausgeführt haben, ist der TenantCreator-Rolle ein Benutzer zugewiesen.
+**Behebung:** Befolgen Sie die Anweisungen unter [Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role). Nachdem Sie die entsprechenden Schritte ausgeführt haben, ist der TenantCreator-Rolle ein Benutzer zugewiesen.
 
 ![Screenshot: Zugewiesene Rolle „TenantCreator“](media/TenantCreatorRoleAssigned.png)
 
@@ -113,9 +113,9 @@ Wenn die Vorgangsvorlage das Kontingentlimit überschreitet, können Sie eine de
 
 Führen Sie die folgenden Schritte aus, um eine Problembehandlung bei nicht erfolgreichen Bereitstellungen von Azure Resource Manager-Vorlagen und PowerShell DSC durchzuführen.
 
-1. Suchen Sie mithilfe der Informationen im Artikel [Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations) nach möglichen Fehlern in der Bereitstellung.
-2. Wenn keine Fehler in der Bereitstellung vorliegen, sehen Sie sich das Aktivitätsprotokoll an. Nutzen Sie dazu die Informationen unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors), um den Fehler zu beheben.
+1. Suchen Sie mithilfe der Informationen im Artikel [Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager](../azure-resource-manager/resource-manager-deployment-operations.md) nach möglichen Fehlern in der Bereitstellung.
+2. Wenn keine Fehler in der Bereitstellung vorliegen, sehen Sie sich das Aktivitätsprotokoll an. Nutzen Sie dazu die Informationen unter [Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen](../azure-resource-manager/resource-group-audit.md).
+3. Sobald der Fehler identifiziert ist, nutzen Sie die Informationen zur Fehlermeldung und zu den Ressourcen im Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../azure-resource-manager/resource-manager-common-deployment-errors.md), um den Fehler zu beheben.
 4. Löschen Sie alle Ressourcen, die während der vorherigen Bereitstellung erstellt wurden, und versuchen Sie erneut, die Vorlage bereitzustellen.
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Error: Fehler bei der Bereitstellung….\<Hostname >/JoinDomain

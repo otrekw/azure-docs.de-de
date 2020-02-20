@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 03/12/2019
-ms.openlocfilehash: ba591872f4f8af93e5f7e13e0fb69d0679fd1a0c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/12/2020
+ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965748"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201661"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Entfernen einer Transparent Data Encryption (TDE)-Schutzvorrichtung mithilfe von PowerShell
 
@@ -26,14 +26,14 @@ ms.locfileid: "75965748"
 - Azure PowerShell muss installiert sein und ausgeführt werden.
 - In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Schlüssel aus Azure Key Vault als TDE-Schutzvorrichtung für eine Azure SQL-Datenbank- oder Data Warehouse-Instanz verwenden. Weitere Informationen finden Sie unter [Transparent Data Encryption mit BYOK-Unterstützung](transparent-data-encryption-byok-azure-sql.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
  Anweisungen zur Installation des Az-Moduls finden Sie unter [Install Azure PowerShell](/powershell/azure/install-az-ps) (Installieren von Azure PowerShell). Spezifische Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > Das Azure Resource Manager-Modul von PowerShell wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Informationen zur Installation finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
@@ -66,11 +66,11 @@ Die folgende Abfrage gibt die verwendeten VLFs und die der Verschlüsselung ents
 SELECT * FROM sys.dm_db_log_info (database_id)
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Der PowerShell-Befehl **Get-AzureRmSqlServerKeyVaultKey**  stellt den Fingerabdruck der in der Abfrage verwendeten TDE-Schutzvorrichtung bereit, damit Sie sehen können, welche Schlüssel in AKV beibehalten und welche gelöscht werden müssen. Nur die von der Datenbank nicht mehr verwendeten Schlüssel können aus Azure Key Vault sicher gelöscht werden.
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Der PowerShell-Befehl **az sql server key show**  stellt den Fingerabdruck der in der Abfrage verwendeten TDE-Schutzvorrichtung bereit, damit Sie sehen können, welche Schlüssel in AKV beibehalten und welche gelöscht werden müssen. Nur die von der Datenbank nicht mehr verwendeten Schlüssel können aus Azure Key Vault sicher gelöscht werden.
 
@@ -83,7 +83,7 @@ In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zugriff auf die verschlüsselten Ressourcen weiterhin ermöglichen
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Erstellen Sie einen [neuen Schlüssel in Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Stellen Sie sicher, dass der neue Schlüssel in einem anderen Schlüsseltresor als der möglicherweise kompromittierten TDE-Schutzvorrichtung erstellt wird, da die Zugriffskontrolle auf Tresorebene bereitgestellt wird.
 
@@ -126,7 +126,7 @@ In diesem Leitfaden werden zwei Ansätze behandelt, die jeweils vom gewünschten
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Eine Befehlsreferenz finden Sie unter [Azure CLI: keyvault](/cli/azure/keyvault/key).
 
@@ -180,6 +180,8 @@ Eine Befehlsreferenz finden Sie unter [Azure CLI: keyvault](/cli/azure/keyvault/
 
 2. Sichern Sie das Schlüsselmaterial der TDE-Schutzvorrichtung in Key Vault.
 3. Entfernen Sie den möglicherweise kompromittierten Schlüssel aus Key Vault.
+
+[!INCLUDE [sql-database-akv-permission-delay](includes/sql-database-akv-permission-delay.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

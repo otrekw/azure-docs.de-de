@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Terraform-Konfiguration für Azure'
 description: Lernen Sie Terraform in Azure kennen, indem Sie eine Azure Cosmos DB-Instanz und Azure Container Instances bereitstellen.
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159317"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470020"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Schnellstart: Erstellen einer Terraform-Konfiguration für Azure
 
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen](../virtual-machines/linux/terraform-install-configure.md)
+> [Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen](terraform-install-configure.md)

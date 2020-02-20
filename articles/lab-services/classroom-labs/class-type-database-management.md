@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: 92152652ca264cace12d3f780ebec0f80bb2048a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c375487b30595251753021033c98cf0ca1e8dd7
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74234443"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469917"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>Einrichten eines Labs zum Vermitteln von Kenntnissen zur Verwaltung von relationalen Datenbanken
 
@@ -32,9 +32,9 @@ Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein
 
 ### <a name="lab-account-settings"></a>Lab-Kontoeinstellungen
 
-Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Tabelle beschrieben werden. Weitere Informationen zum Aktivieren von Marketplace-Images finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#specify-marketplace-images-available-to-lab-creators).
+Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Tabelle beschrieben werden. Weitere Informationen zum Aktivieren von Marketplace-Images finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images).
 
-| Lab-Kontoeinstellungen | Anleitung |
+| Lab-Kontoeinstellungen | Instructions |
 | ------------------- | ------------ |
 |Marketplace-Image| Aktivieren Sie das Image „SQL Server 2019 Standard on Windows Server 2019“ für die Verwendung in Ihrem Lab-Konto.|
 
@@ -45,7 +45,7 @@ Verwenden Sie beim Einrichten eines Classroom-Labs die Einstellungen in der unte
 | Lab-Einstellungen | Wert/Anweisungen |
 | ------------ | ------------------ |
 |VM-Größe| Mittel. Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.|
-|VM-Image| SQL Server 2019 Standard on Windows Server 2019|
+|VM-Image| SQL Server 2019 Standard unter Windows Server 2019|
 
 ## <a name="template-machine-configuration"></a>Konfiguration des Vorlagencomputers
 
@@ -75,4 +75,4 @@ Die nächsten Einrichtungsschritte sind für alle Labs gleich.
 - [Hinzufügen von Benutzern](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kontingent festlegen](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zeitplan festlegen](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Registrierungslinks an Kursteilnehmer senden](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Registrierungslinks per E-Mail an Kursteilnehmer senden](how-to-configure-student-usage.md#send-invitations-to-users)

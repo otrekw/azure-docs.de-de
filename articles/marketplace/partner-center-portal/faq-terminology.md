@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 559c0e2a56bfb452f1faf10f68c19d4f406427e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/17/2020
+ms.openlocfilehash: 081109c2208e2006eb1628fbf0cfb99b1e6bd8f9
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475160"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462138"
 ---
 # <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Häufig gestellte Fragen und Terminologie zu Analysen für den kommerziellen Marketplace
 
@@ -29,7 +29,6 @@ Dieser Abschnitt enthält Antworten auf häufig gestellte Fragen zu Meldungen vo
 
 Diese Meldung kann folgende Ursachen haben:
 
-- Ihre im Marketplace gelisteten Angebote sind keine SaaS-Angebote. Von Partner Center werden aktuell nur Analysen für SaaS-Angebote gemeldet. Dynamics 365-Angebote können zwar in Partner Center veröffentlicht werden, Analysen für diese Angebote sind in Partner Center jedoch noch nicht aktiviert.
 - Für Ihre im Marketplace veröffentlichten Angebote sind aktuell keine Käufe vorhanden. Dies kann der Fall sein, wenn Ihre Angebote zwar im Marketplace aktiv sind und von Kunden auf den Produktanzeigeseiten betrachtet werden, aber noch nicht gekauft und bereitgestellt wurden.
 - Die Veröffentlichung Ihres Angebots ist möglicherweise noch nicht abgeschlossen, und Ihr Angebot wurde noch nicht aktiviert. Nur aktive Angebote können von Kunden erworben werden. Den Status Ihrer Angebote können Sie in der [Übersicht des Dashboards „Analyse“](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary) überprüfen. Weitere Informationen finden Sie unter [Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace](./summary-dashboard.md).
 - Ihre Angebote werden möglicherweise als Angebote vom Typ **Kontakt mit mir aufnehmen** gelistet. Hierbei handelt es sich um reine Listenangebote, die von Kunden nicht über den Marketplace erworben werden können. Diese Angebote generieren zwar Leads und werden für Sie freigegeben, da die Angebote aber nicht gekauft werden können, werden auch keine Bestellungen für sie erstellt. Navigieren Sie zur Einrichtungsseite, um die Art Ihrer Angebotslistung zu überprüfen.

@@ -1,19 +1,19 @@
 ---
 title: GeoJSON-Datenformat für Geofence | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie die Geofencedaten vorbereitet werden, die in der GET- und POST-Geofence-API von Microsoft Azure Maps verwendet werden können.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f853962bba7302affd78d5ef267460893ea80a33
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 7d1c9a1587771a020f5c9f89e2497a25eb1bba70
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911598"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210020"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing von GeoJSON-Daten
 

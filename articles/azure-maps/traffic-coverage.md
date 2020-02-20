@@ -1,19 +1,19 @@
 ---
 title: Verkehrsinformationen | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über Verkehrsinformationen in Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/22/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 083f659f9392faff8f381e1552db23c291ffa8ca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 02d57f39f2a911864ebe16d05456409d0119b495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988144"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209527"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Verkehrsinformationen in Azure Maps
 
