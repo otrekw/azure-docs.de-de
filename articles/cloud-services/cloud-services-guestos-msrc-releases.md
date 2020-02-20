@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/24/2020
+ms.date: 02/07/2020
 ms.author: raiye
-ms.openlocfilehash: 89fd16b6afadee75678b76381739c12a31dc1a07
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: cca79946c0537b75335eb2e64ae1fa429f2c8d18
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765362"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77087234"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
@@ -42,9 +42,9 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 |  Rel 20-01  |  [4494174]  |  Microcode v4  | [6.15] | 29. August 2019 |
 |  Rel 20-01  |  [4532947]  |  Windows-Sicherheit  | [6.15] | 14. Januar 2020 |
 |  Rel 20-01  |  [4534273]  |  LCU  | [6.15] | 14. Januar 2020 |
-|  Rel 20-01  |  [4530734]  |  Nicht sicherheitsrelevant  | [2.94] | 10. Dezember 2019 |
-|  Rel 20-01  |  [4530691]  |  Nicht sicherheitsrelevant   | [3.81] | 10. Dezember 2019 |
-|  Rel 20-01  |  [4530702]  |  Nicht sicherheitsrelevant  | [4.74] | 10. Dezember 2019 |
+|  Rel 20-01  |  [4530734]  |  Monatlicher Rollup  | [2.94] | 10. Dezember 2019 |
+|  Rel 20-01  |  [4530691]  |  Monatlicher Rollup   | [3.81] | 10. Dezember 2019 |
+|  Rel 20-01  |  [4530702]  |  Monatlicher Rollup  | [4.74] | 10. Dezember 2019 |
 
 [4532960]: https://support.microsoft.com/kb/4532960
 [4534251]: https://support.microsoft.com/kb/4534251
