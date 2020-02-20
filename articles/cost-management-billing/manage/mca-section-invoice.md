@@ -2,24 +2,21 @@
 title: Organisieren Ihrer Rechnung basierend auf Ihren Anforderungen – Azure
 description: Erfahren Sie, wie Sie die Kosten in Ihrer Rechnung organisieren können.
 author: amberbhargava
-manager: amberb
-editor: banders
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7f3a5232f8c5bfbf3f2e81ba52607406f8a038b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c9cb1d7d1dcc6e7872b22d8c58fe44b9bce25f13
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76843887"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200743"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 
-Ihr Abrechnungskonto für die Microsoft-Kundenvereinbarung bietet Ihnen die Flexibilität, Ihre Kosten basierend auf Ihren Anforderungen zu organisieren. Dies kann nach Abteilung oder Projekt ebenso wie nach Entwicklungsumgebung erfolgen. 
+Ihr Abrechnungskonto für die Microsoft-Kundenvereinbarung bietet Ihnen die Flexibilität, Ihre Kosten basierend auf Ihren Anforderungen zu organisieren. Dies kann nach Abteilung oder Projekt ebenso wie nach Entwicklungsumgebung erfolgen.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Kosten im Azure-Portal organisieren können. Er bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. [Überprüfen Sie, ob Sie Zugriff auf eine Microsoft-Kundenvereinbarung haben.](#check-access-to-a-microsoft-customer-agreement)
 
@@ -33,7 +30,7 @@ Im Abrechnungskonto für eine Microsoft-Kundenvereinbarung verwenden Sie Abrechn
 
 Ein Abrechnungsprofil stellt eine Rechnung und die zugehörigen Abrechnungsinformationen wie Zahlungsmethoden und Abrechnungsadresse dar. Am Anfang jedes Kalendermonats wird in Ihrem Konto eine monatliche Rechnung für jedes Abrechnungsprofil erstellt. Die Rechnung enthält Gebühren für die Azure-Nutzung und andere Käufe aus dem Vormonat.
 
-Ein Abrechnungsprofil wird automatisch zusammen mit Ihrem Abrechnungskonto erstellt, wenn Sie sich für Azure registrieren. Sie können zusätzliche Abrechnungsprofile erstellen, um Ihre Kosten in mehreren monatlichen Rechnungen zu organisieren. 
+Ein Abrechnungsprofil wird automatisch zusammen mit Ihrem Abrechnungskonto erstellt, wenn Sie sich für Azure registrieren. Sie können zusätzliche Abrechnungsprofile erstellen, um Ihre Kosten in mehreren monatlichen Rechnungen zu organisieren.
 
 > [!IMPORTANT]
 >
@@ -41,9 +38,9 @@ Ein Abrechnungsprofil wird automatisch zusammen mit Ihrem Abrechnungskonto erste
 
 ### <a name="invoice-section"></a>Rechnungsabschnitt
 
-Ein Rechnungsabschnitt stellt eine Gruppierung von Kosten in Ihrer Rechnung dar. Für jedes Abrechnungsprofil in Ihrem Konto wird automatisch ein Rechnungsabschnitt erstellt. Sie können zusätzliche Abschnitte erstellen, um Ihre Kosten basierend auf Ihren Anforderungen zu organisieren. Jeder Rechnungsabschnitt wird auf der Rechnung mit den anfallenden Gebühren für diesen Monat angezeigt. 
+Ein Rechnungsabschnitt stellt eine Gruppierung von Kosten in Ihrer Rechnung dar. Für jedes Abrechnungsprofil in Ihrem Konto wird automatisch ein Rechnungsabschnitt erstellt. Sie können zusätzliche Abschnitte erstellen, um Ihre Kosten basierend auf Ihren Anforderungen zu organisieren. Jeder Rechnungsabschnitt wird auf der Rechnung mit den anfallenden Gebühren für diesen Monat angezeigt.
 
-Die Abbildung unten zeigt eine Rechnung mit zwei Rechnungsabschnitten: Engineering und Marketing. Die Zusammenfassung und die Kostendetails für jeden Abschnitt werden in der Rechnung angezeigt. Die in der Abbildung aufgeführten Preise dienen nur zu Beispielzwecken und stellen nicht die tatsächlichen Preise der Azure-Dienste dar. 
+Die Abbildung unten zeigt eine Rechnung mit zwei Rechnungsabschnitten: Engineering und Marketing. Die Zusammenfassung und die Kostendetails für jeden Abschnitt werden in der Rechnung angezeigt. Die in der Abbildung aufgeführten Preise dienen nur zu Beispielzwecken und stellen nicht die tatsächlichen Preise der Azure-Dienste dar.
 
 ![Bild einer Rechnung mit Abschnitten](./media/mca-section-invoice/mca-invoice-with-sections.png)
 
@@ -79,7 +76,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
    ![Screenshot: Suche nach „Kostenverwaltung + Abrechnung“ im Azure-Portal](./media/mca-section-invoice/search-cmb.png)
 
-3. Wählen Sie im linken Bereich die Option **Abrechnungsprofile** aus. Wählen Sie in der Liste ein Abrechnungsprofil aus. Der neue Abschnitt wird auf der Rechnung des ausgewählten Abrechnungsprofils angezeigt. 
+3. Wählen Sie im linken Bereich die Option **Abrechnungsprofile** aus. Wählen Sie in der Liste ein Abrechnungsprofil aus. Der neue Abschnitt wird auf der Rechnung des ausgewählten Abrechnungsprofils angezeigt.
 
    [![Screenshot der Liste von Abrechnungsprofilen](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
@@ -87,7 +84,7 @@ Um einen Rechnungsabschnitt erstellen zu können, müssen Sie ein **Besitzer des
 
    [![Screenshot des Hinzufügens von Rechnungsabschnitten](./media/mca-section-invoice/mca-list-invoice-sections.png)](./media/mca-section-invoice/mca-list-invoice-sections-zoomed-in.png#lightbox)
 
-5. Geben Sie einen Namen für den Rechnungsabschnitt ein. 
+5. Geben Sie einen Namen für den Rechnungsabschnitt ein.
 
    [![Screenshot der Seite zum Erstellen eines Rechnungsabschnitts](./media/mca-section-invoice/mca-create-invoice-section.png)](./media/mca-section-invoice/mca-create-invoice-section-zoomed-in.png#lightbox)
 
@@ -152,13 +149,13 @@ Nachdem Sie Ihr Abrechnungskonto entsprechend Ihren Anforderungen angepasst habe
 
 6. Wählen Sie den Rechnungsabschnitt aus, mit dem die Gebühren des Abonnements verknüpft werden sollen. Die Gebühren werden in diesem Abschnitt auf der Rechnung des Abrechnungsprofils angezeigt.
 
-7. Wählen Sie einen Azure-Plan aus, und geben Sie einen Anzeigenamen für das Abonnement ein. 
+7. Wählen Sie einen Azure-Plan aus, und geben Sie einen Anzeigenamen für das Abonnement ein.
 
 9. Klicken Sie auf **Erstellen**.  
 
 ### <a name="link-existing-subscriptions-and-products"></a>Verknüpfen vorhandener Abonnements und Produkte
 
-Wenn Sie bereits über Azure-Abonnements oder andere Produkte wie Azure Marketplace- und AppSource-Ressourcen verfügen, können Sie diese aus ihrem bisherigen Rechnungsabschnitt in einen anderen verschieben, um Ihre Kosten neu zu organisieren. 
+Wenn Sie bereits über Azure-Abonnements oder andere Produkte wie Azure Marketplace- und AppSource-Ressourcen verfügen, können Sie diese aus ihrem bisherigen Rechnungsabschnitt in einen anderen verschieben, um Ihre Kosten neu zu organisieren.
 
 > [!IMPORTANT]
 >
@@ -212,7 +209,7 @@ Gehen Sie nun davon aus, dass Sie ein weiteres Abrechnungsprofil erstellt und 50
 |---------|---------|---------|
 |1,84 pro TB für die ersten 50 TB/Monat    | 50 TB        | 92,0  |
 |1,77 pro TB für die nächsten 450 TB/Monat    |  0 TB         | 0,0  |
-|Gesamt     |     50 TB  | 92,0 
+|Gesamt     |     50 TB  | 92,0
 
 `Charges for the second billing profile`
 
@@ -220,17 +217,17 @@ Gehen Sie nun davon aus, dass Sie ein weiteres Abrechnungsprofil erstellt und 50
 |---------|---------|---------|
 |1,84 pro TB für die ersten 50 TB/Monat    | 50 TB        | 92,0  |
 |1,77 pro TB für die nächsten 450 TB/Monat    |  0 TB         | 0,0  |
-|Gesamt     |     50 TB  | 92,0 
+|Gesamt     |     50 TB  | 92,0
 
 Die Gesamtkosten für die Nutzung von 100 TB Daten in diesem Szenario betragen **184,0** (92,0 × 2).
 
 ### <a name="azure-reservation-benefits-might-not-apply-to-all-subscriptions"></a>Azure-Reservierungsvorteile gelten möglicherweise nicht für alle Abonnements.
 
-Azure-Reservierungen mit gemeinsamem Bereich werden auf Abonnements in einem einzelnen Abrechnungsprofil angewandt und nicht über Abrechnungsprofile hinweg gemeinsam genutzt. 
+Azure-Reservierungen mit gemeinsamem Bereich werden auf Abonnements in einem einzelnen Abrechnungsprofil angewandt und nicht über Abrechnungsprofile hinweg gemeinsam genutzt.
 
 ![Infografik für Reservierungsanwendung für differenzierte Abrechnungskontostruktur](./media/mca-section-invoice/mca-reservations-benefits-by-bg.png)
 
-In der obigen Abbildung verfügt Contoso über zwei Abonnements. Der Azure-Reservierungsvorteil wird unterschiedlich angewandt, je nachdem, wie das Abrechnungskonto strukturiert ist. Im linken Szenario wird der Reservierungsvorteil auf beide Abonnements angewandt, die dem Engineering-Abrechnungsprofil angerechnet werden. Im rechten Szenario wird der Reservierungsvorteil nur auf Abonnement 1 angewandt, da nur dieses Abonnement dem Engineering-Abrechnungsprofil angerechnet wird. 
+In der obigen Abbildung verfügt Contoso über zwei Abonnements. Der Azure-Reservierungsvorteil wird unterschiedlich angewandt, je nachdem, wie das Abrechnungskonto strukturiert ist. Im linken Szenario wird der Reservierungsvorteil auf beide Abonnements angewandt, die dem Engineering-Abrechnungsprofil angerechnet werden. Im rechten Szenario wird der Reservierungsvorteil nur auf Abonnement 1 angewandt, da nur dieses Abonnement dem Engineering-Abrechnungsprofil angerechnet wird.
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

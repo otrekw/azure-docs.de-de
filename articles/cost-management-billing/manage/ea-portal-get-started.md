@@ -1,19 +1,18 @@
 ---
 title: Erste Schritte mit dem Azure Enterprise Portal
 description: In diesem Artikel wird erläutert, wie Azure EA-Kunden (Azure Enterprise Agreement) das Azure Enterprise Portal verwenden.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023343"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200828"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Erste Schritte mit dem Azure Enterprise Portal
 
@@ -235,7 +234,7 @@ Beachten Sie beim Übertragen von Konten die folgenden wichtigen Informationen:
   - Von einem Geschäfts-, Schul- oder Unikonto zu einem anderen Geschäfts-, Schul- oder Unikonto.
   - Von einem Microsoft-Konto zu einem Geschäfts-, Schul- oder Unikonto.
   - Von einem Microsoft-Konto zu einem anderen Microsoft-Konto.
-  
+
     Das Zielkonto muss ein gültiges Azure Commerce-Konto sein, damit es ein gültiges Ziel für Übertragungen darstellt. Bei neuen Konten werden Sie bei der Anmeldung beim Azure Enterprise Portal aufgefordert, ein Azure Commerce-Konto zu erstellen. Bei vorhandenen Konten müssen Sie zuerst ein neues Azure-Abonnement erstellen, bevor das Konto berechtigt ist.
 
 - Übertragungen von einem Geschäfts-, Schul- oder Unikonto zu einem Microsoft-Konto werden nicht unterstützt.
@@ -285,7 +284,7 @@ Kontobesitzer können Abonnements anzeigen und verwalten. Sie können Abonnement
 
 Wenn Sie verschiedene Abonnements für jede Anwendungsumgebung erstellen, trägt dies zur Sicherheit der Umgebungen bei.
 
-- Es ist auch möglich, dass Sie jedem Abonnement ein anderes Dienstadministratorkonto zuweisen. 
+- Es ist auch möglich, dass Sie jedem Abonnement ein anderes Dienstadministratorkonto zuweisen.
 - Sie können Abonnements beliebig viele Dienste zuordnen.
 - Der Kontobesitzer erstellt Abonnements und weist jedem Abonnement in seinem Konto ein Dienstadministratorkonto zu.
 
@@ -309,7 +308,7 @@ So fügen Sie ein Abonnement hinzu:
 1. Wählen Sie **Abonnements** und dann das von Ihnen erstellte Abonnement aus.
 1. Wählen Sie **Abonnementdetails bearbeiten** aus.
 1. Bearbeiten Sie den **Abonnementnamen** und den **Dienstadministrator**, und aktivieren Sie das Kontrollkästchen.
-  
+
    Der Abonnementname wird in Berichten angezeigt. Dies ist der Name des Projekts, das dem Abonnement im Entwicklungsportal zugeordnet ist.
 
 Es kann bis zu 24 Stunden dauern, bis neue Abonnements in der Liste der Abonnements angezeigt werden. Nachdem Sie ein Abonnement erstellt haben, können Sie folgende Aktionen ausführen:
@@ -509,14 +508,14 @@ Im Azure Enterprise Portal stehen für Unternehmenskunden zwei Arten von Abonnem
 - Microsoft Azure Enterprise. Ideal für:
   - Jegliche Verwendung in der Produktion
   - Beste Preise basierend auf Infrastrukturausgaben
-  
+
   [Wenden Sie sich an den Azure-Vertrieb](https://azure.microsoft.com/pricing/enterprise-agreement/), um weitere Informationen zu erhalten.
 
 - Enterprise Dev/Test. Ideal für:
   - Sämtliche Team-Dev/Test-Workloads
   - Einzelne Dev/Test-Workloads mit mittlerem bis hohem Umfang
   - Zugriff auf spezielle MSDN-Images und Vorzugstarife für Dienste
-  
+
   Weitere Informationen finden Sie im [Enterprise Dev/Test-Angebot](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Kann der Abonnementbesitz auf ein anderes Konto übertragen werden?

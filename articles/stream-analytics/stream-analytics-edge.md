@@ -6,14 +6,14 @@ author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff2a7e571c771a73c46959f35e341d861533bb55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e4a1cf43931b56cfdb3c31ffe870a07dbaa75af
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426331"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201754"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
  
@@ -206,19 +206,19 @@ Es gibt zwei Möglichkeiten, die Verweisdaten zu aktualisieren:
 
 Diese Versionsinformationen wurden zuletzt am 27.06.2019 aktualisiert:
 
-- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-amd64`
+- Image: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
    - Basisimage: microsoft/dotnet:2.1.6-runtime-alpine3.7
    - Plattform:
       - Architektur: amd64
       - Betriebssystem: Linux
   
-- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-linux-arm32v7`
+- Image: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
    - Basisimage: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
    - Plattform:
       - Architektur: ARM
       - Betriebssystem: Linux
   
-- Image: `asaedge.azurecr.io/public/azure-stream-analytics/azureiotedge:1.0.3-windows-amd64`
+- Image: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
    - Basisimage: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
    - Plattform:
       - Architektur: amd64

@@ -8,17 +8,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
-ms.openlocfilehash: 2f1843690861a463c634f523e82facffc72b6743
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/13/2020
+ms.openlocfilehash: e0dc7780ee570ce2d731bedf9ef56be606088a1f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986738"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199295"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-postgresql-single-server"></a>Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver
 
-Nachdem Sie eine reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver erworben haben, wird der Reservierungsrabatt automatisch auf Instanzen von PostgreSQL-Einzelservern angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihres Azure Database for PostgreSQL-Einzelservers ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. 
+Nachdem Sie eine reservierte Kapazität für einen Azure Database for PostgreSQL-Einzelserver erworben haben, wird der Reservierungsrabatt automatisch auf Instanzen von PostgreSQL-Einzelservern angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihres Azure Database for PostgreSQL-Einzelservers ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet.
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 

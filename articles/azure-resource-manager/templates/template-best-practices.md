@@ -3,12 +3,12 @@ title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476296"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207484"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -156,7 +156,7 @@ Die folgenden Informationen können bei der Arbeit mit [Variablen](template-vari
 
 * Beziehen Sie Variablen für Ressourcennamen ein, die eindeutig sein müssen.
 
-* Verwenden Sie eine [copy-Schleife in Variablen](create-multiple-instances.md#variable-iteration), um ein wiederholtes Muster von JSON-Objekten zu erstellen.
+* Verwenden Sie eine [copy-Schleife in Variablen](copy-variables.md), um ein wiederholtes Muster von JSON-Objekten zu erstellen.
 
 * Entfernen Sie nicht verwendete Variablen.
 

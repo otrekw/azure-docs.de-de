@@ -1,24 +1,17 @@
 ---
 title: Überprüfen der Azure-Dienstressourcennutzung mit der REST-API | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit Azure-REST-APIs die Azure-Dienstressourcennutzung überprüfen.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984830"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200570"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Überprüfen der Azure-Ressourcennutzung mithilfe der REST-API
 
@@ -41,9 +34,9 @@ Authorization: Bearer
 
 Der Parameter `{subscriptionGuid}` ist erforderlich und sollte eine Abonnement-ID enthalten, die mithilfe der im API-Token bereitgestellten Anmeldeinformationen gelesen werden kann. Das `{reportName}`
 
-Die folgenden Header sind erforderlich: 
+Die folgenden Header sind erforderlich:
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*| Erforderlich. Legen Sie diese Option auf `application/json` fest. |  
 |*Authorization:*| Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Token fest. |
@@ -93,7 +86,7 @@ Das
 
 ## <a name="filtering-reports"></a>Filtern von Berichten
 
-Mithilfe der Abschnitte `filter` und `dimensions` des Anforderungstexts können Sie beim Erstellen eines Berichts den Schwerpunkt auf die Kosten für bestimmte Ressourcentypen legen. Der vorherige Anforderungstext zeigt, wie nach allen Ressourcen in einer Region gefiltert wird. 
+Mithilfe der Abschnitte `filter` und `dimensions` des Anforderungstexts können Sie beim Erstellen eines Berichts den Schwerpunkt auf die Kosten für bestimmte Ressourcentypen legen. Der vorherige Anforderungstext zeigt, wie nach allen Ressourcen in einer Region gefiltert wird.
 
 ### <a name="get-all-compute-usage"></a>Abrufen der gesamten Computenutzung
 
@@ -105,9 +98,9 @@ Mithilfe der `ResourceType`-Dimension können Sie einen Bericht zu den Kosten vi
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ Mithilfe der `ResourceType`-Dimension können Sie einen Bericht zu den Kosten de
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

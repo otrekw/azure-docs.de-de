@@ -1,21 +1,19 @@
 ---
 title: 'Schnellstart: Ermitteln von Azure-Kosten mithilfe der Kostenanalyse | Microsoft-Dokumentation'
 description: In diesem Schnellstart wird beschrieben, wie Sie sich mit der Kostenanalyse einen Überblick über Azure-Kosten für Ihre Organisation verschaffen und wie Sie diese Kosten analysieren.
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
-manager: micflan
+ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188651"
+ms.locfileid: "77201049"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -64,9 +62,9 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 
 ### <a name="understand-forecast"></a>Grundlegendes zur Vorhersage
 
-Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausgewählten Zeitraum. Das Modell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich. 
+Die Kostenvorhersage zeigt eine Projektion der geschätzten Kosten für den ausgewählten Zeitraum. Das Modell basiert auf einem Zeitreihen-Regressionsmodell. Für eine präzise Kostenvorhersage sind mindestens zehn Tage an aktuellen Kosten- und Nutzungsdaten erforderlich. Für einen bestimmten Zeitraum erfordert das Vorhersagemodell den gleichen Anteil von Trainingsdaten für den Vorhersagezeitraum. Für eine Projektion von drei Monaten sind beispielsweise mindestens drei Monate an aktuellen Kosten- und Nutzungsdaten erforderlich.
 
-Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD. 
+Das Modell verwendet Trainingsdaten aus maximal sechs Monaten, um Kosten für ein Jahr zu projizieren. Zum Ändern der Vorhersage sind mindestens sieben Tage an Trainingsdaten erforderlich. Die Vorhersage basiert auf tiefgreifenden Änderungen (etwa Spitzen und Abfällen) bei Kosten- und Nutzungsmustern. Die Vorhersage generiert keine einzelnen Projektionen für jedes Element in den Eigenschaften vom Typ **Gruppieren nach**. Es wird nur eine Vorhersage für die kumulierten Gesamtkosten abgegeben. Bei der Verwendung mehrerer Währungen bietet das Modell nur Vorhersagen für Kosten in USD.
 
 
 ## <a name="customize-cost-views"></a>Anpassen von Kostenansichten

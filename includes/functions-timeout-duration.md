@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: 3501ff3f92ae045019df2766bbcf7fc2c3fec5b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768916"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198325"
 ---
 ## <a name="timeout"></a>Funktions-App-Timeoutdauer 
 
@@ -24,6 +24,9 @@ Die Timeoutdauer einer Funktions-App wird durch die `functionTimeout`-Eigenschaf
 | Nutzung | 1.x | 5 | 10 |
 | Nutzung | 2.x | 5 | 10 |
 | Nutzung | 3.x | 5 | 10 |
+| Premium | 1.x | 30 | Unbegrenzt |
+| Premium | 2.x | 30 | Unbegrenzt |
+| Premium | 3.x | 30 | Unbegrenzt |
 | App Service | 1.x | Unbegrenzt | Unbegrenzt |
 | App Service | 2.x | 30 | Unbegrenzt |
 | App Service | 3.x | 30 | Unbegrenzt |

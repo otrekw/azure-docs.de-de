@@ -3,12 +3,12 @@ title: Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storag
 description: Hier erfahren Sie, wie Sie eine per HTTP ausgelöste Java-Funktion mithilfe einer Queue Storage-Ausgabebindung mit Azure Storage verbinden.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926896"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198546"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Herstellen einer Verbindung zwischen Ihrer Java-Funktion und Azure Storage
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Da Sie Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
+> Da Sie Erweiterungsbündel in der Datei „host.json“ aktiviert haben, wurde die [Storage-Bindungserweiterung](functions-bindings-storage-blob.md#add-to-your-functions-app) zusammen mit den übrigen Microsoft-Bindungserweiterungen während des Starts für Sie heruntergeladen und installiert.
 
 Lösen Sie die Funktion wie zuvor über die Befehlszeile aus. Verwenden Sie dazu cURL in einem neuen Terminalfenster:
 

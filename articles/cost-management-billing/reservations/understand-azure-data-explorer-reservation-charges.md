@@ -1,19 +1,18 @@
 ---
 title: Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Data Explorer
 description: Hier erfahren Sie, wie der Rabatt für Reservierungen auf die Verbrauchseinheit vom Typ Azure Data Explorer-Aufschlag angewendet wird.
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986774"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199329"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Data Explorer
 
@@ -36,23 +35,23 @@ Reservierungsrabatte werden auf Stundenbasis auf den Azure Data Explorer-Aufsc
 ## <a name="examples"></a>Beispiele
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Data Explorer-Kapazität angewendet wird – abhängig davon, wie viele Aufschlagseinheiten Sie erworben haben und wann sie ausgeführt werden.
-Bei einem Engine-Cluster mit **zwei virtuellen Computern vom Typ „D11_v2“** werden Ihnen beispielsweise pro Stunde On-Demand-Gebühren für vier Einheiten der Verbrauchseinheit vom Typ Azure Data Explorer-Aufschlag in Rechnung gestellt. 
+Bei einem Engine-Cluster mit **zwei virtuellen Computern vom Typ „D11_v2“** werden Ihnen beispielsweise pro Stunde On-Demand-Gebühren für vier Einheiten der Verbrauchseinheit vom Typ Azure Data Explorer-Aufschlag in Rechnung gestellt.
 
-**Szenario 1** 
+**Szenario 1**
 
 Sie erwerben reservierte Azure Data Explorer-Kapazität für acht Azure Data Explorer-Aufschlagseinheiten. Sie führen einen Engine-Cluster mit zwei virtuellen Computern vom Typ „D13_v2“ mit insgesamt 16 Kernen aus, für den pro Stunde 16 Azure Data Explorer-Aufschlagseinheiten abgerechnet werden und der den restlichen Attributen der Reservierung entspricht. Acht Kerne der Azure Data Explorer-Computenutzung werden Ihnen zum Preis für die nutzungsbasierte Bezahlung in Rechnung gestellt, und Sie erhalten den Reservierungsrabatt für eine Stunde der Nutzung von acht Kernen der Azure Data Explorer-Aufschlagseinheit.
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte Azure Data Explorer-Kapazität, die Sie erwerben, für einen Azure Data Explorer-Cluster mit 16 Kernen gilt und die restlichen Reservierungsattribute dem ausgeführten Azure Data Explorer-Cluster entsprechen.
 
-**Szenario 2** 
+**Szenario 2**
 
 Sie führen eine Stunde lang zwei Azure Data Explorer-Engine-Cluster mit acht Kernen in zwei verschiedenen Regionen aus. Der Reservierungsrabatt für 16 Kerne wird auf beide Cluster und die 16 verbrauchten Azure Data Explorer-Aufschlagseinheiten angewendet.
 
-**Szenario 3** 
+**Szenario 3**
 
 Sie führen einen Azure Data Explorer-Engine-Cluster mit 16 Kernen von 13 Uhr bis 13:30 Uhr aus. Sie führen einen weiteren Azure Data Explorer-Engine-Cluster mit 16 Kernen von 13:30 Uhr bis 14 Uhr aus. Beide Instanzen sind durch den Reservierungsrabatt abgedeckt.
 
-**Szenario 4** 
+**Szenario 4**
 
 Sie führen einen Azure Data Explorer-Engine-Cluster mit 16 Kernen von 13 Uhr bis 13:45 Uhr aus. Sie führen einen weiteren Azure Data Explorer-Engine-Cluster mit 16 Kernen von 13:30 Uhr bis 14 Uhr aus. Die 15-minütige Überschneidung wird zum Preis der nutzungsbasierten Bezahlung abgerechnet. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Azure Data Explorer-Aufschlagsnutzung angewendet.
 

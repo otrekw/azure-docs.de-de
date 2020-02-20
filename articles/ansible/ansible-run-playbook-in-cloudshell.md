@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie verschied
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook, Bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155975"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193649"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Schnellstart: Ausführen von Ansible-Playbooks per Bash in Azure Cloud Shell
 
@@ -47,4 +47,4 @@ Erstellen Sie mit Ansible eine Azure-Ressourcengruppe, um zu überprüfen, ob di
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
-> [Schnellstart: Konfigurieren eines virtuellen Computers in Azure mit Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Schnellstart: Konfigurieren eines virtuellen Computers in Azure mit Ansible](./ansible-create-vm.md)

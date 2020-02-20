@@ -2,20 +2,16 @@
 title: Abrechnungsrollen für Microsoft-Kundenvereinbarungen – Azure
 description: Hier erhalten Sie Informationen zu Abrechnungsrollen für Abrechnungskonten für Microsoft-Kundenvereinbarungen in Azure.
 author: amberbhargava
-manager: amberbhargava
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: eaec828abe83164d18796cfb2e795a363353fab4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1003e26fa670a804328d5e34def7c9d78eced9c0
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984410"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199499"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure
 
@@ -27,7 +23,7 @@ Dieser Artikel bezieht sich auf ein Abrechnungskonto für eine Microsoft-Kundenv
 
 In der folgenden Tabelle werden die Abrechnungsrollen beschrieben, die Sie zum Verwalten Ihres Abrechnungskontos, Ihrer Abrechnungsprofile und Rechnungsabschnitte verwenden.
 
-|Role|Beschreibung|
+|Role|BESCHREIBUNG|
 |---|---|
 |Besitzer des Abrechnungskontos|Verwalten aller Einstellungen für ein Abrechnungskonto|
 |Mitwirkender am Abrechnungskonto|Verwalten aller Einstellungen außer den Berechtigungen für das Abrechnungskonto|
