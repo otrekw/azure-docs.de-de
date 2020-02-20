@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210190"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482359"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -919,7 +919,7 @@ Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quicks
     
     ---
 
-1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
+1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue-trigger.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
 
     # <a name="bash"></a>[Bash](#tab/bash)
     

@@ -3,12 +3,12 @@ title: Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Fun
 description: Es wird beschrieben, wie Sie eine Azure Storage-Warteschlange per Ausgabebindung in eine Python-Funktion integrieren.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198478"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485164"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Hinzufügen einer Azure Storage-Warteschlangenbindung zu Ihrer Python-Funktion
 
@@ -100,7 +100,7 @@ Fügen Sie zum Schreiben in eine Azure Storage-Warteschlange aus dieser Funktion
 
 In diesem Fall wird `msg` als Ausgabeargument für die Funktion bereitgestellt. Für einen `queue`-Typ müssen Sie auch den Namen der Warteschlange in `queueName` und den Namen (*name*) der Azure Storage-Verbindung (aus *local.settings.json*) in `connection` angeben.
 
-Weitere Informationen zu den Details von Bindungen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md) und [Ausgabe: Konfiguration](functions-bindings-storage-queue.md#output---configuration).
+Weitere Informationen zu den Details von Bindungen finden Sie unter [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md) und [Ausgabe: Konfiguration](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Hinzufügen von Code für die Verwendung der Ausgabebindung
 
@@ -219,7 +219,7 @@ Wenn Ihre Funktion eine HTTP-Antwort für den Webbrowser generiert, ruft sie auc
     ---
 
 
-1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
+1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue-trigger.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
 
     # <a name="bash"></a>[Bash](#tab/bash)
     

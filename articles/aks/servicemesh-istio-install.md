@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Istio installieren und zum Erstellen eines Se
 author: paulbouwer
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 15b73380269c568977b524a63ca709e352485433
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561737"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485215"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)
 
@@ -99,7 +99,6 @@ Der [Helm][helm]-Installationsansatz für Istio wird in Zukunft als veraltet bet
 
 > [!CAUTION]
 > Die Istio-Features [SDS (Secret Discovery Service)][istio-feature-sds] und [Istio CNI][istio-feature-cni] befinden sich derzeit in der [Alpha-Phase][istio-feature-stages] und müssen daher mit Bedacht verwendet werden. Darüber hinaus ist das Kubernetes-Feature [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] (Dienstkontotoken-Volumenprojektion; eine Voraussetzung für SDS) in aktuellen AKS-Versionen nicht aktiviert.
-
 Erstellen Sie eine Datei namens `istio.aks.yaml` mit dem folgenden Inhalt. Diese Datei enthält die Details der [Istio-Steuerungsebenenspezifikation][istio-control-plane] zum Konfigurieren von Istio.
 
 ```yaml

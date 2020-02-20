@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775224"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484785"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Was sind die Standard- und die empfohlenen Knotenkonfigurationen für Azure HDInsight?
 
@@ -30,7 +30,7 @@ Die einzigen Clustertypen, die Datenträger haben, sind Kafka- und HBase-Cluster
 
 In dieser Tabelle finden Sie die in diesem Dokument verwendeten Spezifikationen aller mindestens erforderlichen empfohlenen VM-Typen.
 
-| Size              | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+| Size              | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16/16 x 500           | 4/3000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32/32 x 500           | 8/6000                                       |
@@ -44,9 +44,9 @@ In dieser Tabelle finden Sie die in diesem Dokument verwendeten Spezifikationen 
 
 Weitere Informationen zu Spezifikationen jedes VM-Typs finden Sie in den folgenden Dokumenten:
 
-* [Universelle VM-Größen: Dv2-Serie 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [Arbeitsspeicheroptimierte Größen virtueller Computer: Dv2-Serie 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [Universelle VM-Größen: Av2-Serie 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [Universelle VM-Größen: Dv2-Serie 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [Arbeitsspeicheroptimierte Größen virtueller Computer: Dv2-Serie 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [Universelle VM-Größen: Av2-Serie 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Alle unterstützten Regionen, mit Ausnahme von „Brasilien, Süden“ und „Japan, Westen“
 

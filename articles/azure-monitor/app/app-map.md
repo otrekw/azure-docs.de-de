@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407697"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485147"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -276,6 +276,6 @@ Verwenden Sie für Feedback die Feedbackoption.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Funktionsweise der Korrelation in Application Insights finden Sie im [Artikel zur Telemetriekorrelation](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Weitere Informationen zur Funktionsweise der Korrelation in Application Insights finden Sie im [Artikel zur Telemetriekorrelation](correlation.md).
 * Die [umfassende Benutzeroberfläche zur Transaktionsdiagnose](transaction-diagnostics.md) setzt die serverseitigen Telemetriedaten von allen Ihren mithilfe von Application Insights überwachten Komponenten automatisch in einer einzelnen Ansicht in Beziehung.
 * Informationen zu Szenarien mit erweiterter Korrelation in ASP.NET Core und ASP.NET finden Sie im Artikel zum [Nachverfolgen von benutzerdefinierten Vorgängen](custom-operations-tracking.md).

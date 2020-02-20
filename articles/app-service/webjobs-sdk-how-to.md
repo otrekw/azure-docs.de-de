@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549086"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486341"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-Weitere Informationen finden Sie im Artikel [Queue Storage-Bindung](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings).
+Weitere Informationen finden Sie im Artikel [Queue Storage-Bindung](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties).
 
 #### <a name="version-2x"></a>Version 2.*x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-Weitere Informationen finden Sie im Artikel [Service Bus-Bindung](../azure-functions/functions-bindings-service-bus.md#hostjson-settings).
+Weitere Informationen finden Sie im Artikel [Service Bus-Bindung](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings).
 
 ### <a name="configuration-for-other-bindings"></a>Konfiguration für andere Bindungen
 
@@ -680,11 +680,11 @@ Weitere Informationen finden Sie unter [Binden zur Laufzeit](../azure-functions/
 
 Die Azure Functions-Dokumentation enthält Referenzinformationen zu den einzelnen Bindungstypen. In jedem Bindungsreferenzartikel finden Sie die folgenden Informationen. (Dieses Beispiel basiert auf der Speicherwarteschlange.)
 
-* [Pakete](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Das Paket, das Sie installieren müssen, um Unterstützung für die Bindung in ein WebJobs SDK-Projekt zu integrieren.
-* [Beispiele](../azure-functions/functions-bindings-storage-queue.md#trigger). Codebeispiele. Das Beispiel für die C#-Klassenbibliothek bezieht sich auf das WebJobs SDK. Lassen Sie nur das `FunctionName`Attribut weg.
-* [Attribute](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Die für den Bindungstyp zu verwendenden Attribute.
-* [Konfiguration](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Erläuterungen der Attributeigenschaften und Konstruktorparameter.
-* [Verwendung:](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) Die Typen, die Sie binden können, und Informationen zur Funktionsweise der Bindung. Beispiele: Abrufalgorithmus, Verarbeitung der Warteschlange für nicht verarbeitete Nachrichten.
+* [Pakete](../azure-functions/functions-bindings-storage-queue.md). Das Paket, das Sie installieren müssen, um Unterstützung für die Bindung in ein WebJobs SDK-Projekt zu integrieren.
+* [Beispiele](../azure-functions/functions-bindings-storage-queue-trigger.md). Codebeispiele. Das Beispiel für die C#-Klassenbibliothek bezieht sich auf das WebJobs SDK. Lassen Sie nur das `FunctionName`Attribut weg.
+* [Attribute](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). Die für den Bindungstyp zu verwendenden Attribute.
+* [Konfiguration](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Erläuterungen der Attributeigenschaften und Konstruktorparameter.
+* [Verwendung:](../azure-functions/functions-bindings-storage-queue-trigger.md#usage) Die Typen, die Sie binden können, und Informationen zur Funktionsweise der Bindung. Beispiele: Abrufalgorithmus, Verarbeitung der Warteschlange für nicht verarbeitete Nachrichten.
   
 Eine Liste der Bindungsreferenzartikel finden Sie im Artikel [Trigger und Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) für Azure Functions unter „Unterstützte Bindungen“. Die in dieser Liste aufgeführten Bindungen „HTTP“, „Webhook“ und „Event Grid“ werden nur von Azure Functions und nicht vom WebJobs SDK unterstützt.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974239"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485130"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -73,13 +73,13 @@ Der `TriggerMetadata`-Parameter wird verwendet, um zusätzliche Informationen zu
 $TriggerMetadata.sys
 ```
 
-| Eigenschaft   | Description                                     | type     |
+| Eigenschaft   | Beschreibung                                     | type     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | Zeitpunkt der Auslösung der Funktion in UTC        | Datetime |
-| MethodName | Der Name der Funktion, die ausgelöst wurde     | Zeichenfolge   |
-| RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | Zeichenfolge   |
+| MethodName | Der Name der Funktion, die ausgelöst wurde     | string   |
+| RandGuid   | Eine eindeutige GUID für diese Ausführung der Funktion | string   |
 
-Jeder Triggertyp verfügt über einen anderen Satz von Metadaten. Die `$TriggerMetadata` für `QueueTrigger` enthalten neben anderen Informationen z. B. Werte für `InsertionTime`, `Id` und `DequeueCount`. Weitere Informationen zu den Metadaten von Warteschlangentriggern finden Sie in der [offiziellen Dokumentation zu Warteschlangentriggern](functions-bindings-storage-queue.md#trigger---message-metadata). Sehen Sie in der Dokumentation zu den von Ihnen verwendeten [Triggern](functions-triggers-bindings.md) nach, welche Informationen in den Metadaten der Trigger enthalten sind.
+Jeder Triggertyp verfügt über einen anderen Satz von Metadaten. Die `$TriggerMetadata` für `QueueTrigger` enthalten neben anderen Informationen z. B. Werte für `InsertionTime`, `Id` und `DequeueCount`. Weitere Informationen zu den Metadaten von Warteschlangentriggern finden Sie in der [offiziellen Dokumentation zu Warteschlangentriggern](functions-bindings-storage-queue-trigger.md#message-metadata). Sehen Sie in der Dokumentation zu den von Ihnen verwendeten [Triggern](functions-triggers-bindings.md) nach, welche Informationen in den Metadaten der Trigger enthalten sind.
 
 ## <a name="bindings"></a>Bindungen
 
@@ -125,9 +125,9 @@ Das Verhalten von `Push-OutputBinding` hängt vom Wert für `-Name` ab:
 
 Im Folgenden sind gültige Parameter für den Aufruf von `Push-OutputBinding` angegeben:
 
-| NAME | type | Position | BESCHREIBUNG |
+| Name | type | Position | BESCHREIBUNG |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Zeichenfolge | 1 | Der Name der Ausgabebindung, die Sie festlegen möchten |
+| **`-Name`** | String | 1 | Der Name der Ausgabebindung, die Sie festlegen möchten |
 | **`-Value`** | Object | 2 | Der Wert der festzulegenden Ausgabebindung, der vom ByValue-Wert der Pipeline akzeptiert wird. |
 | **`-Clobber`** | SwitchParameter | benannt | (Optional:) Durch die Angabe wird erzwungen, dass der Wert für eine angegebene Ausgabebindung festgelegt werden muss. | 
 
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Beispiel für „Push-OutputBinding“: Einreihen von Ausgabebindungen in Warteschlangen
 
-`Push-OutputBinding` dient zum Senden von Daten an Ausgabebindungen, z. B. eine [Azure Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output). Im folgenden Beispiel hat die in die Warteschlange geschriebene Nachricht den Wert „output #1“:
+`Push-OutputBinding` dient zum Senden von Daten an Ausgabebindungen, z. B. eine [Azure Queue Storage-Ausgabebindung](functions-bindings-storage-queue-output.md). Im folgenden Beispiel hat die in die Warteschlange geschriebene Nachricht den Wert „output #1“:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -232,7 +232,7 @@ Die Protokollierung funktioniert bei PowerShell-Funktionen wie die reguläre Pow
 
 | Protokollierungsebene von Functions | Protokollierungs-Cmdlet |
 | ------------- | -------------- |
-| Error | **`Write-Error`** |
+| Fehler | **`Write-Error`** |
 | Warnung | **`Write-Warning`**  | 
 | Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Schreibt in die Protokollierung auf _Informationsebene_ |
 | Debuggen | **`Write-Debug`** |
@@ -275,9 +275,9 @@ Sie können für Ihre Funktions-Apps eine Reihe unterschiedlicher Trigger und Bi
 Alle Trigger und Bindungen werden im Code als echte Datentypen dargestellt:
 
 * Hashtable
-* Zeichenfolge
-* Byte[]
-* int
+* string
+* byte[]
+* INT
 * double
 * HttpRequestContext
 * HttpResponseContext
@@ -294,14 +294,14 @@ HTTP- und Webhooktrigger und HTTP-Ausgabebindungen verwenden Request- und Respon
 
 Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequestContext`, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft  | Description                                                    | type                      |
+| Eigenschaft  | BESCHREIBUNG                                                    | type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | object |
+| **`Body`**    | Ein Objekt, das den Hauptteil der Anforderung enthält. `Body` wird basierend auf den Daten in den am besten geeigneten Typ serialisiert. Bei JSON-Daten wird z. B. eine Hashtabelle übergeben. Wenn es sich bei den Daten um eine Zeichenfolge handelt, erfolgt die Übergabe auch als Zeichenfolge. | Objekt (object) |
 | **`Headers`** | Ein Wörterbuch mit den Headern der Anforderung.                | Dictionary<string,string><sup>*</sup> |
-| **`Method`** | Die HTTP-Methode der Anforderung.                                | Zeichenfolge                    |
+| **`Method`** | Die HTTP-Methode der Anforderung.                                | string                    |
 | **`Params`**  | Ein Objekt, das die Routingparameter der Anforderung enthält. | Dictionary<string,string><sup>*</sup> |
 | **`Query`** | Ein Objekt, das die Abfrageparameter enthält.                  | Dictionary<string,string><sup>*</sup> |
-| **`Url`** | Die URL der Anforderung.                                        | Zeichenfolge                    |
+| **`Url`** | Die URL der Anforderung.                                        | string                    |
 
 <sup>*</sup> Bei `Dictionary<string,string>`-Schlüsseln wird nicht zwischen Groß- und Kleinschreibung unterschieden.
 
@@ -309,10 +309,10 @@ Das Anforderungsobjekt, das an das Skript übergeben wird, ist vom Typ `HttpRequ
 
 Das Antwortobjekt, das Sie zurücksenden sollten, weist den Typ `HttpResponseContext` auf, der über die folgenden Eigenschaften verfügt:
 
-| Eigenschaft      | Description                                                 | type                      |
+| Eigenschaft      | BESCHREIBUNG                                                 | type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | object                    |
-| **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | Zeichenfolge                    |
+| **`Body`**  | Ein Objekt, das den Hauptteil der Antwort enthält.           | Objekt (object)                    |
+| **`ContentType`** | Einstellungsmöglichkeit für den Inhaltstyp der Antwort | string                    |
 | **`Headers`** | Ein Objekt, das die Header der Antwort enthält.               | Wörterbuch oder Hashtabelle   |
 | **`StatusCode`**  | Der HTTP-Statuscode der Antwort.                       | Zeichenfolge oder ganze Zahl             |
 

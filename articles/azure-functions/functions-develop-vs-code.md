@@ -3,12 +3,12 @@ title: Entwickeln von Azure Functions mithilfe von Visual Studio Code
 description: In diesem Artikel erhalten Sie Informationen über das Entwickeln und Testen von Azure Functions mithilfe der Azure Functions-Erweiterung für Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 41a1a64be4823769f6bf23b251fec94fd68eb0f0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210241"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484773"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -174,7 +174,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 Der Parameter `msg` ist ein `ICollector<T>`-Typ und stellt eine Sammlung von Nachrichten dar, die in eine Ausgabebindung geschrieben werden, wenn die Funktion abgeschlossen wird. Sie fügen der Sammlung mindestens eine Nachricht hinzu. Diese Nachrichten werden an die Warteschlange gesendet, wenn die Funktion abgeschlossen ist.
 
-Weitere Informationen finden Sie in der Dokumentation zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output).
+Weitere Informationen finden Sie in der Dokumentation zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue-output.md).
 
 # <a name="javascript"></a>[JavaScript](#tab/nodejs)
 
@@ -184,7 +184,7 @@ In Visual Studio Code können Sie Ihrer function.json-Datei Bindungen hinzufüge
 
 Im Folgenden finden Sie Beispieleingabeaufforderungen zum Definieren einer neuen Ausgabebindung für den Speicher:
 
-| Prompt | value | BESCHREIBUNG |
+| Prompt | value | Beschreibung |
 | -------- | ----- | ----------- |
 | **Select binding direction** (Wählen Sie die Bindungsrichtung aus) | `out` | Die Bindung ist eine Ausgabebindung. |
 | **Select binding with direction** (Bindung mit Richtung auswählen) | `Azure Queue Storage` | Die Bindung ist eine Azure Storage-Warteschlangenbindung. |
@@ -212,7 +212,7 @@ In Ihrem Funktionscode erfolgt der Zugriff auf die `msg`-Bindung über den `cont
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue.md#output).
+Weitere Informationen finden Sie in der Referenz zur [Queue Storage-Ausgabebindung](functions-bindings-storage-queue-output.md).
 
 ---
 
@@ -248,7 +248,7 @@ Mit den folgenden Schritten wird Ihr Projekt in einer neuen Funktions-App veröf
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen ein:
 
-    | Prompt | value | BESCHREIBUNG |
+    | Prompt | value | Beschreibung |
     | ------ | ----- | ----------- |
     | Funktions-App in Azure auswählen | Neue Funktions-App in Azure erstellen | Geben Sie an der nächsten Eingabeaufforderung einen eindeutigen Namen ein, der Ihre neue Funktions-App identifiziert, und drücken Sie dann die EINGABETASTE. Gültige Zeichen für den Namen einer Funktions-App sind `a-z`, `0-9` und `-`. |
     | Betriebssystem auswählen | Windows | Die Funktions-App wird unter Windows ausgeführt. |

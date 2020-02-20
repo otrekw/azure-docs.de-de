@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640833"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483040"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -177,7 +177,7 @@ Ab Version 3.x müssen Sie explizit die Storage-Bindungserweiterung installieren
 
    Das `QueueTrigger`-Attribut weist die Runtime an, diese Funktion aufzurufen, wenn eine neue Nachricht in die Azure Storage-Warteschlange namens `queue` geschrieben wird. Der Inhalt der Warteschlangennachricht wird für den Methodencode im `message`-Parameter bereitgestellt. Die Triggerdaten werden im Text der Methode verarbeitet. In diesem Beispiel protokolliert der Code nur die Nachricht.
 
-   Der `message`-Parameter muss keine Zeichenfolge sein. Sie können auch eine Bindung an ein JSON-Objekt, Bytearray oder [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Objekt erstellen. Weitere Informationen finden Sie unter [Verwendung des Warteschlangentriggers](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Jeder Bindungstyp (z. B. Warteschlangen, Blobs oder Tabellen) weist einen anderen Satz von Parametertypen auf, an die Sie binden können.
+   Der `message`-Parameter muss keine Zeichenfolge sein. Sie können auch eine Bindung an ein JSON-Objekt, Bytearray oder [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)-Objekt erstellen. Weitere Informationen finden Sie unter [Verwendung des Warteschlangentriggers](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Jeder Bindungstyp (z. B. Warteschlangen, Blobs oder Tabellen) weist einen anderen Satz von Parametertypen auf, an die Sie binden können.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -273,7 +273,7 @@ In diesem Abschnitt wird das Projekt lokal erstellt und ausgeführt, und die Fun
 
    Weil Sie in der `ProcessQueueMessage`-Funktion das `QueueTrigger`-Attribut verwendet haben, überwacht die Runtime des WeJobs SDK Warteschlangennachrichten beim Starten. Sie findet in der Warteschlange mit dem Namen *queue* eine neue Warteschlangennachricht und ruft die Funktion auf.
 
-   Aufgrund des [exponentiellen Backoffs des Warteschlangenabrufs](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm) kann es bis zu zwei Minuten dauern, bis die Runtime die Nachricht findet und die Funktion aufruft. Diese Wartezeit kann durch die Ausführung im [Entwicklungsmodus](webjobs-sdk-how-to.md#host-development-settings) verkürzt werden.
+   Aufgrund des [exponentiellen Backoffs des Warteschlangenabrufs](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm) kann es bis zu zwei Minuten dauern, bis die Runtime die Nachricht findet und die Funktion aufruft. Diese Wartezeit kann durch die Ausführung im [Entwicklungsmodus](webjobs-sdk-how-to.md#host-development-settings) verkürzt werden.
 
    Die Konsolenausgabe sieht wie folgt aus:
 
@@ -436,7 +436,7 @@ Während der Bereitstellung erstellen Sie eine App Service-Instanz, in der Ihre 
 1. Aktualisieren Sie die Seite **Warteschlange**. Daraufhin verschwindet die neue Nachricht, da sie von der in Azure ausgeführten Funktion verarbeitet wurde.
 
    > [!TIP]
-   > Verwenden Sie beim Testen in Azure den [Entwicklungsmodus](webjobs-sdk-how-to.md#host-development-settings), um sicherzustellen, dass eine Warteschlangen-Triggerfunktion sofort aufgerufen wird, und vermeiden Sie Verzögerungen aufgrund des [exponentiellen Backoffs des Warteschlangenabrufs](../azure-functions/functions-bindings-storage-queue.md#trigger---polling-algorithm).
+   > Verwenden Sie beim Testen in Azure den [Entwicklungsmodus](webjobs-sdk-how-to.md#host-development-settings), um sicherzustellen, dass eine Warteschlangen-Triggerfunktion sofort aufgerufen wird, und vermeiden Sie Verzögerungen aufgrund des [exponentiellen Backoffs des Warteschlangenabrufs](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm).
 
 ### <a name="view-logs-in-application-insights"></a>Anzeigen von Protokollen in Application Insights
 

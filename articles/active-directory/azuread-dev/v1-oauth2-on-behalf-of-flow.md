@@ -17,12 +17,12 @@ ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: fbef4d84e86c3d35e35a8bbeb04a399ad87a1b89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 084c15c7ac3ec782dc48a55e65bf4d7aa43b58a1
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163379"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484178"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -142,7 +142,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | grant_type |required | Typ der Tokenanforderung Da eine OBO-Anforderung ein JWT-Zugriffstoken verwendet, muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
 | assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
@@ -267,7 +267,7 @@ Die Antwort enthält ein UTF8- und Base64url-codiertes SAML-Token.
 - **SubjectConfirmationData für eine SAML-Assertion von einem OBO-Aufruf:** Wenn die Zielanwendung einen Empfängerwert in **SubjectConfirmationData** erfordert, muss als Wert in der Konfiguration der Ressourcenanwendung die Antwort-URL ohne Platzhalter festgelegt werden.
 - **Der SubjectConfirmationData-Knoten:** Der Knoten darf kein **InResponseTo**-Attribut enthalten, da er nicht Teil einer SAML-Antwort ist. Die Anwendung, die das SAML-Token empfängt, muss die SAML-Assertion ohne **InResponseTo**-Attribut akzeptieren können.
 
-- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent).
+- **Zustimmung:** Um ein SAML-Token zu empfangen, das Benutzerdaten zu einem OAuth-Flow enthält, muss Zustimmung erteilt worden sein. Informationen zu Berechtigungen und zum Erhalt der Zustimmung des Administrators finden Sie unter [Berechtigungen und Zustimmung im Azure Active Directory v1.0-Endpunkt](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent).
 
 ### <a name="response-with-saml-assertion"></a>Antwort mit SAML-Assertion
 

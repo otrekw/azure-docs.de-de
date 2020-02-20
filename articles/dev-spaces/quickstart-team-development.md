@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Team Kubernetes-Entwicklung mit Containern und Microservices mit Azure Dev Spaces durchführen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: d2b31cce6604cef31de6f034566ebd46a4e92750
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1b36cf30574c0c9892a0383bee7e2f914bc9feac
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721590"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482393"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces
 
@@ -86,7 +86,7 @@ Verwenden Sie den Befehl `helm install`, um die Beispielanwendung in Ihrem Clust
 
 ```cmd
 cd charts/
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleappsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 Der Befehl `helm install` kann mehrere Minuten in Anspruch nehmen. Nachdem die Beispielanwendung in Ihrem Cluster installiert ist und Sie Dev Spaces in Ihrem Cluster aktiviert haben, verwenden Sie den Befehl `azds list-uris`, um die URLs für die Beispielanwendung in *dev* anzuzeigen, die aktuell ausgewählt ist.

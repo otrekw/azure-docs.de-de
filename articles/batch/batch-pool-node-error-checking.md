@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: dea45cec29101c3b085ab8098c3b05906e1049cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449783"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484127"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
 
@@ -104,7 +104,7 @@ Einige weitere Beispiele für Ursachen für **nicht verwendbare** Knoten sind u.
 
 - Eine VM wird aufgrund eines Infrastrukturausfalls oder eines niedrigstufigen Upgrades verschoben. Azure Batch stellt den Knoten wieder her.
 
-- Ein VM-Image wurde auf Hardware bereitgestellt, von der es nicht unterstützt wird. Beispiel: Der Versuch, ein CentOS-HPC-Image auf einem virtuellen [Standard_D1_v2](../virtual-machines/linux/sizes-general.md#dv2-series)-Computer auszuführen.
+- Ein VM-Image wurde auf Hardware bereitgestellt, von der es nicht unterstützt wird. Beispiel: Der Versuch, ein CentOS-HPC-Image auf einem virtuellen [Standard_D1_v2](../virtual-machines/dv2-dsv2-series.md)-Computer auszuführen.
 
 - Die VMs befinden sich in einem [virtuellen Azure-Netzwerk](batch-virtual-network.md), und der Datenverkehr zu den Schlüsselports wurde blockiert.
 

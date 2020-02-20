@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/22/2019
-ms.openlocfilehash: b71818d5d840a0466b5ff6f271df117043341f7b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7dab80f901304a727b75c7861c5d865fee03bec3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899108"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482989"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -26,7 +26,7 @@ Die Lösung zeigt, welche Container, welches Containerimage und wo Container aus
 
 - Docker Swarm
 - DC/OS
-- kubernetes
+- Kubernetes
 - Service Fabric
 - Red Hat OpenShift
 
@@ -46,9 +46,9 @@ Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen
 
 Die folgende Tabelle zeigt die Docker-Orchestrierung und die Unterstützung der Betriebssystemüberwachung von Containerbestand, Leistung und Protokollen mit Azure Monitor:   
 
-| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Knoten<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Protokoll | Container<br>Protokoll |
+| | ACS | Linux | Windows | Container<br>Inventory | Image<br>Inventory | Node<br>Inventory | Container<br>Leistung | Container<br>Ereignis | Ereignis<br>Log | Container<br>Log |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Dienst<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
@@ -253,19 +253,18 @@ Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um
     Die Ausgabe sollte in etwa wie folgt aussehen:  
 
     ```
-    [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
-    Name:           oms  
-    Image(s):       microsoft/oms  
-    Selector:       name=omsagent  
-    Node-Selector:  zone=default  
-    Labels:         agentVersion=1.4.0-12  
-                    dockerProviderVersion=10.0.0-25  
-                    name=omsagent  
-    Desired Number of Nodes Scheduled: 3  
-    Current Number of Nodes Scheduled: 3  
-    Number of Nodes Misscheduled: 0  
-    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
-    No events.  
+    [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
+    Name:           omsagent-secret  
+    Namespace:      omslogging  
+    Labels:         <none>  
+    Annotations:    <none>  
+
+    Type:   Opaque  
+
+    Data  
+    ====  
+    KEY:    89 bytes  
+    WSID:   37 bytes  
     ```
 
 5. Stellen Sie die YAML-Datei für die Log Analytics-Agent-Daemongruppe bereit, indem Sie Folgendes ausführen:
@@ -279,18 +278,19 @@ Führen Sie die folgenden Schritte aus, wenn Sie Geheimnisse nutzen möchten, um
     Die Ausgabe sollte in etwa wie folgt aussehen:
 
     ```
-    [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
-    Name:           omsagent-secret  
-    Namespace:      omslogging  
-    Labels:         <none>  
-    Annotations:    <none>  
-
-    Type:   Opaque  
-
-     Data  
-     ====  
-     KEY:    89 bytes  
-     WSID:   37 bytes  
+    [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
+    Name:           oms  
+    Image(s):       microsoft/oms  
+    Selector:       name=omsagent  
+    Node-Selector:  zone=default  
+    Labels:         agentVersion=1.4.0-12  
+                    dockerProviderVersion=10.0.0-25  
+                    name=omsagent  
+    Desired Number of Nodes Scheduled: 3  
+    Current Number of Nodes Scheduled: 3  
+    Number of Nodes Misscheduled: 0  
+    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
+    No events.  
     ```
 
 #### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Konfigurieren eines Log Analytics-Linux-Agents für Kubernetes

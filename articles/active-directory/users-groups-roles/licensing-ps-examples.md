@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a741fd0616fc17ed133309ea6200dca43a83b7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74025582"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484858"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell- und Microsoft Graph-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
@@ -82,11 +82,11 @@ HTTP/1.1 200 OK
 
 Sie finden alle Gruppen mit den zugewiesenen Lizenzen, indem Sie den folgenden Befehl ausführen:
 ```powershell
-Get-MsolGroup | Where {$_.Licenses}
+Get-MsolGroup -All | Where {$_.Licenses}
 ```
 Weitere Details zu den zugewiesenen Produkten können angezeigt werden:
 ```powershell
-Get-MsolGroup | Where {$_.Licenses} | Select `
+Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
     DisplayName, `
     @{Name="Licenses";Expression={$_.Licenses | Select -ExpandProperty SkuPartNumber}}
@@ -163,7 +163,7 @@ Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK             
 ## <a name="get-all-groups-with-license-errors"></a>Abrufen aller Gruppen mit Lizenzfehlern
 So finden Sie Gruppen mit Benutzern, denen keine Lizenzen zugewiesen werden konnten
 ```powershell
-Get-MsolGroup -HasLicenseErrorsOnly $true
+Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
 Ausgabe:
 ```
@@ -285,7 +285,7 @@ Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-12
 Hier sehen Sie eine andere Version des Skripts, die nur Gruppen mit Lizenzfehlern durchsucht. Dies ist möglicherweise optimaler für Szenarien, in denen erwartungsgemäß nur wenige Gruppen Probleme aufweisen.
 
 ```powershell
-$groupIds = Get-MsolGroup -HasLicenseErrorsOnly $true
+$groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     foreach ($groupId in $groupIds) {
     Get-MsolGroupMember -All -GroupObjectId $groupId.ObjectID |
         Get-MsolUser -ObjectId {$_.ObjectId} |

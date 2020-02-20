@@ -8,12 +8,12 @@ metadata:
   ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: f72b43fe60676011819dc3aafe026017af6c62c0
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75437878"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77471379"
 landingContent:
 - title: Informationen zu Azure Database Migration Service
   linkLists:
@@ -69,9 +69,9 @@ landingContent:
     links:
     - text: 'Bekannte Probleme: Onlinemigration zu einer Einzeldatenbank in SQL-Datenbank'
       url: known-issues-azure-sql-online.md
-    - text: 'Bekannte Probleme: Onlinemigration zu einer verwalteten Instanz in SQL-Datenbank'
+    - text: 'Bekannte Probleme: Onlinemigration zu einer verwalteten SQL-Datenbank-Instanz'
       url: known-issues-azure-sql-db-managed-instance-online.md
-    - text: Netzwerktopologien für Migrationen vom Typ „Verwaltete SQL-Datenbank-Instanz“
+    - text: Netzwerktopologien für die Migration verwalteter SQL-Datenbank-Instanzen
       url: resource-network-topologies.md
     - text: Benutzerdefinierte Rollen für Onlinemigrationen von SQL Server zur verwalteten SQL-Datenbank-Instanz
       url: resource-custom-roles-sql-db-managed-instance.md
@@ -83,13 +83,15 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Onlinemigration zu Azure Database for PostgreSQL (Einzelserver)
+    - text: Onlinemigration zu Azure DB for PostgreSQL über das Portal
+      url: tutorial-postgresql-azure-postgresql-online-portal.md
+    - text: Onlinemigration zu Azure DB for PostgreSQL über die CLI
       url: tutorial-postgresql-azure-postgresql-online.md
-    - text: Onlinemigration von RDS PostgreSQL zu Azure Database for PostgreSQL (Einzelserver)
+    - text: Migration von RDS PostgreSQL zu Azure DB for PostgreSQL
       url: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
-    - text: Onlinemigration zu Azure Database for MySQL
+    - text: Onlinemigration zu Azure DB for MySQL
       url: tutorial-mysql-azure-mysql-online.md
-    - text: Onlinemigration von RDS MySQL zu Azure Database for MySQL
+    - text: Onlinemigration von RDS MySQL zu Azure DB for MySQL
       url: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
     - text: Onlinemigration zur Mongo-API von Azure Cosmos DB
       url: tutorial-mongodb-cosmos-db-online.md
@@ -97,13 +99,13 @@ landingContent:
       url: tutorial-mongodb-cosmos-db.md
   - linkListType: reference
     links:
-    - text: 'Bekannte Probleme: Onlinemigration zu Azure Database for PostgreSQL (Einzelserver)'
+    - text: 'Bekannte Probleme: Onlinemigration zu Azure DB for PostgreSQL (Einzelserver)'
       url: known-issues-azure-postgresql-online.md
     - text: 'Bekannte Probleme: Onlinemigration zu Azure Database for MySQL'
       url: known-issues-azure-mysql-online.md
   - linkListType: video
     links:
-    - text: Migration von PostgreSQL zu Azure Database for PostgreSQL (Einzelserver)
+    - text: Migration von PostgreSQL zu Azure DB for PostgreSQL (Einzelserver)
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/
     - text: Migration zur Mongo-API von Azure Cosmos DB
       url: https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/

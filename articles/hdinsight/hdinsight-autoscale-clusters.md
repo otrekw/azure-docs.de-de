@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/11/2020
-ms.openlocfilehash: 172753f6bbcc47ed8ae9061b71ca3291e95b7a33
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: a093eea8b1961482722211017174018a649e2c4f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162853"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484841"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
 
@@ -78,7 +78,7 @@ Basierend auf der Anzahl der AM-Container pro Knoten und der aktuellen CPU- und 
 
 ### <a name="create-a-cluster-with-load-based-autoscaling"></a>Erstellen eines Clusters mit lastbasierter Autoskalierung
 
-Wenn Sie die automatische Skalierung in einem Cluster verwenden möchten, müssen Sie die Option **Automatische Skalierung aktivieren** beim Erstellen des Clusters aktivieren. Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, führen Sie als Teil des normalen Clustererstellungsvorgangs folgende Schritte aus:
+Um das Feature „Autoskalierung“ mit lastbasierter Skalierung zu aktivieren, führen Sie als Teil des normalen Clustererstellungsvorgangs folgende Schritte aus:
 
 1. Aktivieren Sie auf der Registerkarte **Konfiguration + Preise** das Kontrollkästchen **Automatische Skalierung aktivieren**.
 1. Wählen Sie **Lastbasiert** unter **Autoskalierungstyp** aus.

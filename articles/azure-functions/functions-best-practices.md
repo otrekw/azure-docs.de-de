@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210258"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486324"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -62,7 +62,7 @@ Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine
 
 Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sein, dass die Funktion eine No-Op-Funktion ist.
 
-Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue.md#trigger---poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**. 
+Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue-trigger.md#poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**. 
 
 ## <a name="scalability-best-practices"></a>Skalierbarkeit: Bewährte Methoden
 

@@ -10,7 +10,7 @@
       href: quickstart-create-data-migration-service-portal.md
     - name: 'Erstellen eines Diensts im Hybridmodus: Portal'
       href: quickstart-create-data-migration-service-hybrid-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Offlinemigration von SQL Server zu einer Einzeldatenbank in Azure SQL-Datenbank
       href: tutorial-sql-server-to-azure-sql.md
@@ -26,17 +26,19 @@
       href: tutorial-mysql-azure-mysql-online.md
     - name: Onlinemigration von RDS MySQL zu Azure Database for MySQL
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL (Einzelserver)
+    - name: Onlinemigration von PostgreSQL zu Azure DB for PostgreSQL über das Portal
+      href: tutorial-postgresql-azure-postgresql-online-portal.md
+    - name: Onlinemigration von PostgreSQL zu Azure DB for PostgreSQL über die CLI
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: "Onlinemigration von RDS\_PostgreSQL zu Azure Database for PostgreSQL (Einzelserver)"
+    - name: Onlinemigration von RDS PostgreSQL zu Azure Database for PostgreSQL
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: Offlinemigration von MongoDB zur Mongo-API von Azure Cosmos DB
       href: tutorial-mongodb-cosmos-db.md
     - name: Onlinemigration von MongoDB zur Mongo-API von Azure Cosmos DB
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: Onlinemigration von Oracle zu Azure Database for PostgreSQL (Einzelserver)
+    - name: Onlinemigration von Oracle zu Azure DB for PostgreSQL (Einzelserver)
       href: tutorial-oracle-azure-postgresql-online.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Migrieren von SQL Server zu einer Einzeldatenbank in Azure SQL-Datenbank mithilfe von PowerShell
       href: howto-sql-server-to-azure-sql-powershell.md
@@ -44,9 +46,9 @@
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: Überwachen der Migrationsaktivität
       href: how-to-monitor-migration-activity.md
-    - name: Erneutes Bereitstellen von SSIS-Paketen in einer Einzeldatenbank in Azure SQL-Datenbank
+    - name: "Erneutes Bereitstellen von SSIS-Paketen in einer Einzeldatenbank in Azure\_SQL-Datenbank"
       href: how-to-migrate-ssis-packages.md
-    - name: Erneutes Bereitstellen von SSIS-Paketen in einer verwalteten Azure SQL-Datenbank-Instanz
+    - name: "Erneutes Bereitstellen von SSIS-Paketen in einer verwalteten Azure\_SQL-Datenbank-Instanz"
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Ressourcen
   expanded: true
@@ -85,13 +87,13 @@
           href: 'https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/'
         - name: Adressanforderungen und Erstellen einer DMS-Instanz
           href: 'https://azure.microsoft.com/resources/videos/how-to-address-prerequisites-and-create-a-dms-instance/'
-        - name: Migrieren von SQL Server 2008 zu „Verwaltete Azure SQL-Datenbank-Instanz“
+        - name: "Migration von SQL Server 2008 zu einer verwalteten Azure\_SQL-Datenbank-Instanz"
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-sql-server-2008-or-r2-to-azure-sqldbmi/'
-        - name: Migrieren von PostgreSQL zu Azure Database for PostgreSQL
+        - name: Migration von PostgreSQL zu Azure DB for PostgreSQL
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-postgresql-to-azure-postgresql-online-dms-and-cli/'
         - name: Überwachen einer Onlinemigration und Ausführen der Umstellung
           href: 'https://azure.microsoft.com/resources/videos/how-to-monitor-online-migration-and-perform-cutover/'
-        - name: Migrieren von Oracle zu Azure SQL-Datenbank
+        - name: Migration von Oracle zu Azure SQL-Datenbank
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-oracle-to-sqldb-online/'
         - name: Migrieren von MongoDB zu Azure Cosmos DB
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'

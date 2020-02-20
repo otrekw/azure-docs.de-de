@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932392"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484416"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -35,11 +35,11 @@ Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wi
 
 Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen für die Verwendung keine kostenpflichtigen Editionen von Azure AD.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Ist die Passthrough-Authentifizierung in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Ist die Passthrough-Authentifizierung in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?
 
 Nein. Die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
 
 Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
@@ -54,7 +54,7 @@ Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover a
 
 Wenn Sie Azure AD Connect verwenden, um die Anmeldemethode von Kennworthashsynchronisierung in Passthrough-Authentifizierung zu ändern, wird die Passthrough-Authentifizierung die primäre Anmeldemethode für Ihre Benutzer in verwalteten Domänen. Beachten Sie, dass die Kennworthashes aller Benutzer, die zuvor per Kennworthashsynchronisierung synchronisiert wurden, in Azure AD gespeichert bleiben.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
 
 Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Versionen 1.5.193.0 oder höher) unterstützen diese Konfiguration.
 
@@ -107,7 +107,7 @@ Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einze
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Muss ich Zertifikate, die von Passthrough-Authentifizierungs-Agents verwendet werden, manuell verlängern?
 
-Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese [Zertifikate werden alle paar Monate automatisch von Azure AD verlängert](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Sie müssen diese Zertifikate nicht manuell verlängern. Abgelaufene Zertifikate können Sie bei Bedarf entfernen.
+Die Kommunikation zwischen den einzelnen Passthrough-Authentifizierungs-Agents und Azure AD wird per zertifikatbasierter Authentifizierung geschützt. Diese [Zertifikate werden alle paar Monate automatisch von Azure AD verlängert](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Sie müssen diese Zertifikate nicht manuell verlängern. Abgelaufene Zertifikate können Sie bei Bedarf entfernen.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Gewusst wie: Entfernen eines Passthrough-Authentifizierungs-Agents
 

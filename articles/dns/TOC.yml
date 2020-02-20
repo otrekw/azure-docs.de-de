@@ -25,7 +25,7 @@
           href: private-dns-getstarted-cli.md
         - name: 'Erstellen einer privaten Zone: PowerShell'
           href: private-dns-getstarted-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Öffentliche DNS
       items:
@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Benutzerdefinierte Domänen für Azure-Ressourcen
           href: dns-custom-domain.md
+    - name: Privates DNS
+      items:
+        - name: Schützen von privaten DNS-Zonen und -Einträgen
+          href: dns-protect-private-zones-recordsets.md
     - name: Problembehandlung
       items:
         - name: Handbuch zur Problembehandlung
@@ -163,7 +167,7 @@
       href: /azure/virtual-network/
     - name: Virtual Machine
       href: /azure/virtual-machines/
-    - name: Lastenausgleichsmodul
+    - name: Load Balancer
       href: /azure/load-balancer/
     - name: Traffic Manager
       href: /azure/traffic-manager/

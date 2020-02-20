@@ -1,4 +1,4 @@
-- name: Dokumentation zu Azure App Configuration (Vorschauversion)
+- name: Dokumentation zu Azure App Configuration
   href: index.yml
 - name: Übersicht
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Schlüssel-Wert-Speicherung
       href: concept-key-value.md
+    - name: Verschlüsseln mithilfe von kundenseitig verwalteten Schlüsseln
+      href: concept-customer-managed-keys.md
     - name: Point-in-Time-Momentaufnahme
       href: concept-point-time-snapshot.md
     - name: Funktionsverwaltung
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Behandlung von Ereignissen
       href: concept-app-configuration-event.md
+    - name: Authentifizierung
+      items:
+        - name: Integrieren mit verwalteter Azure-Identität
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Aktivieren des Zugriffs mit Azure Active Directory Access
+          href: concept-enable-rbac.md
     - name: Hochverfügbarkeit
       items:
         - name: Resilienz und Notfallwiederherstellung
           href: concept-disaster-recovery.md
 - name: Anleitungen
   items:
-    - name: Integrieren mit verwalteter Azure-Identität
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Importieren oder Exportieren von Konfigurationsdaten
       href: howto-import-export-data.md
     - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
@@ -86,12 +92,12 @@
     - name: Konfiguration
       items:
         - name: Azure-Befehlszeilenschnittstelle
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: .NET Core-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework-Generator
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Azure SDK für .Net
+        - name: Azure SDK für .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
