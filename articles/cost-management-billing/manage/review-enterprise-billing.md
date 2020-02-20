@@ -1,31 +1,23 @@
 ---
 title: Überprüfen von Abrechnungsdaten der Azure Enterprise-Registrierung mit REST-API | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure-REST-APIs zum Überprüfen von Abrechnungsinformationen der Enterprise-Registrierung verwenden.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
-ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 222b0358f027e0a6687ca0710e3cf5b80f292c4e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 24c4d9b74d68a05a253f05521ee62a0881a90988
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986110"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199567"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Überprüfen von Abrechnungsdaten der Enterprise-Registrierung mit REST-APIs
 
 Mit Azure-Berichterstellungs-APIs können Sie Ihre Azure-Kosten überprüfen und verwalten.
 
-In diesem Artikel erfahren Sie, wie Sie die Abrechnungsinformationen zu Abrechnungskonten, Abteilungs- oder Enterprise Agreement-Registrierungskonten (EA) mithilfe der Azure-REST-APIs abrufen. 
+In diesem Artikel erfahren Sie, wie Sie die Abrechnungsinformationen zu Abrechnungskonten, Abteilungs- oder Enterprise Agreement-Registrierungskonten (EA) mithilfe der Azure-REST-APIs abrufen.
 
 ## <a name="individual-account-billing"></a>Einzelkontoabrechnung
 
@@ -39,9 +31,9 @@ Authorization: Bearer
 
 Der Parameter `{billingAccountId}` ist erforderlich und sollte die ID für das Konto enthalten.
 
-Die folgenden Header sind erforderlich: 
+Die folgenden Header sind erforderlich:
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
@@ -80,9 +72,9 @@ Bei einer erfolgreichen Antwort wird der Statuscode 200 (OK) zurückgegeben, der
 
 Dieses Beispiel ist abgekürzt. Eine vollständige Beschreibung der einzelnen Antwortfelder sowie der Fehlerbehandlung finden Sie unter [Abrufen von Nutzungsdetails für ein Abrechnungskonto](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslist-legacy).
 
-## <a name="department-billing"></a>Abteilungsabrechnung 
+## <a name="department-billing"></a>Abteilungsabrechnung
 
-Rufen Sie Nutzungsdetails in aggregierter Form für alle Konten in einer Abteilung ab. 
+Rufen Sie Nutzungsdetails in aggregierter Form für alle Konten in einer Abteilung ab.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Billing/departments/{departmentId}/providers/Microsoft.Consumption/usageDetails?api-version=2018-06-30
@@ -92,9 +84,9 @@ Authorization: Bearer
 
 Der Parameter `{departmentId}` ist erforderlich und sollte die ID für die Abteilung im Registrierungskonto enthalten.
 
-Die folgenden Header sind erforderlich: 
+Die folgenden Header sind erforderlich:
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
@@ -148,9 +140,9 @@ Authorization: Bearer
 
 Der Parameter `{enrollmentAccountId}` ist erforderlich und sollte die ID für das Registrierungskonto enthalten.
 
-Die folgenden Header sind erforderlich: 
+Die folgenden Header sind erforderlich:
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Authorization:*|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
@@ -185,11 +177,11 @@ Das folgende Beispiel zeigt die Ausgabe der REST-API für die Unternehmensregist
     }
   ]
 }
-``` 
+```
 
 Dieses Beispiel ist abgekürzt. Eine vollständige Beschreibung der einzelnen Antwortfelder sowie der Fehlerbehandlung finden Sie unter [Abrufen von Nutzungsdetails für ein Registrierungskonto](/rest/api/consumption/usagedetails/list#enrollmentaccountusagedetailslist-legacy).
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 - Sehen Sie sich die [Übersicht über Unternehmensberichte](https://docs.microsoft.com/azure/billing/billing-enterprise-api) an.
 - Erkunden Sie die [Enterprise-Abrechnungs-REST-API](https://docs.microsoft.com/rest/api/billing/).   
 - [Erste Schritte mit der Azure-REST-API](https://docs.microsoft.com/rest/api/azure/)   

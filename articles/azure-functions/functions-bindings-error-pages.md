@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: 06dc4c5c1713ee10f263e573a698e9ea36ca2662
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 920b887382ca55d84c66fabb8f1464fd05041094
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227320"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198451"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions – Fehlerbehandlung
 
@@ -18,7 +18,7 @@ Das Behandeln von Fehlern in Azure Functions ist wichtig, um verlorene Daten und
 
 Dieser Artikel beschreibt allgemeine Strategien für die Fehlerbehandlung zusammen mit Links zu bindungsspezifischen Fehlern.
 
-## <a name="handling-errors"></a>Behandeln von Fehlern
+## <a name="handling-errors"></a>Behandlung von Fehlern
 
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
@@ -28,7 +28,7 @@ Bei der Integration in Azure-Dienste können Fehler auftreten, deren Ursache in 
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 
-+ [Blob Storage](functions-bindings-storage-blob.md#exceptions-and-return-codes)
++ [Blob Storage](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
 + [Event Hubs](functions-bindings-event-hubs.md#exceptions-and-return-codes)
 

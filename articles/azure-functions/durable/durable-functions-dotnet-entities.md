@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120640"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198495"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Entwicklerhandbuch für dauerhafte Entitäten in .NET
 
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 Im Gegensatz zu regulären Funktionen haben Entitätsklassenmethoden keinen direkten Zugriff auf Eingabe- und Ausgabebindungen. Stattdessen müssen Bindungsdaten in der Einstiegspunkt-Funktionsdeklaration erfasst und anschließend an die Methode `DispatchAsync<T>` übergeben werden. Alle an `DispatchAsync<T>` übergebenen Objekte werden automatisch als Argument an den Entitätsklassenkonstruktor übergeben.
 
-Im folgenden Beispiel wird gezeigt, wie ein Verweis vom Typ `CloudBlobContainer` aus der [Blobeingabebindung](../functions-bindings-storage-blob.md#input) für eine klassenbasierte Entität verfügbar gemacht werden kann.
+Im folgenden Beispiel wird gezeigt, wie ein Verweis vom Typ `CloudBlobContainer` aus der [Blobeingabebindung](../functions-bindings-storage-blob-input.md) für eine klassenbasierte Entität verfügbar gemacht werden kann.
 
 ```csharp
 public class BlobBackedEntity

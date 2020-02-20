@@ -4,12 +4,12 @@ description: Enthält eine Einführung in die Verwendung von Ansible zum Automat
 keywords: Ansible, Azure, DevOps, Übersicht, Cloudbereitstellung, Konfigurationsverwaltung, Anwendungsbereitstellung, Ansible-Module, Ansible-Playbooks
 ms.topic: overview
 ms.date: 04/30/2019
-ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: e9d5b8858f052083b157c7d4809fe21018518bcd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155783"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193564"
 ---
 # <a name="using-ansible-with-azure"></a>Verwenden von Ansible mit Azure
 
@@ -57,4 +57,4 @@ Ansible umfasst eine Suite von Modulen für die Verwendung bei der Bereitstellun
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Bereitstellen der Ansible-Lösungsvorlage für Azure in CentOS](./ansible-deploy-solution-template.md)
-- [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fazure%2Fansible%2Ftoc.json&bc=%2Fazure%2Fbread%2Ftoc.json)
+- [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](./ansible-install-configure.md)

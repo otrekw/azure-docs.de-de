@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687594"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443855"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -32,8 +32,8 @@ Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service
 
 | Stapel           | Erwarteter Wert                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | der Befehl, mit dem Ihre JAR-App gestartet wird (z. B. `java -jar my-app.jar --server.port=80`) |
-| Tomcat, Wildfly | der Speicherort eines Skripts zum Ausführen aller erforderlichen Konfigurationen (z. B. `/home/site/deployments/tools/startup_script.sh`)          |
+| Java SE         | der Befehl, mit dem Ihre JAR-App gestartet wird (z. B. `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
+| Tomcat          | der Speicherort eines Skripts zum Ausführen aller erforderlichen Konfigurationen (z. B. `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | die PM2-Konfigurationsdatei oder Ihre Skriptdatei                                |
 | .NET Core       | der Name der kompilierten DLL-Datei als `dotnet <myapp>.dll`                                 |
 | Ruby            | das Ruby-Skript, mit dem Sie Ihre App initialisieren möchten                     |
@@ -110,7 +110,7 @@ Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung berei
 
 **Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte, dass die Plattform eine SMB-Freigabe im Verzeichnis `/home/` bereitstellt.**
 
-Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE` **nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben** und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
+Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben** und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
 
 **Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.**
 
@@ -122,7 +122,7 @@ Geben Sie die vollständige Registrierungs-URL samt `http://` oder `https://` ei
 
 **Welches Format hat der Imagename in der Option zur privaten Registrierung?**
 
-Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) `az`, um `docker-custom-image-name` festzulegen.
+Fügen Sie den vollständigen Namen hinzu, einschließlich der URL der privaten Registrierung (Beispiel: myacr.azurecr.io/dotnet:latest). Namen von Images, die einen benutzerdefinierten Port verwenden, [können nicht über das Portal eingegeben werden](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Verwenden Sie das [Befehlszeilentool](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)`az`, um `docker-custom-image-name` festzulegen.
 
 **Kann ich mehr als einen Port in meinem benutzerdefinierten Containerimage verfügbar machen?**
 
@@ -179,7 +179,7 @@ Anhand dieser Regeln können Sie bestimmen, auf welchen Container zugegriffen we
 
 Ihnen wird der normale Azure App Service-Preis für die Stunden berechnet, die Ihre App ausgeführt wird.
 
-## <a name="other-questions"></a>Weitere Fragen
+## <a name="other-questions"></a>Andere Fragen
 
 **Welche Zeichen werden in den Namen von Anwendungseinstellungen unterstützt?**
 

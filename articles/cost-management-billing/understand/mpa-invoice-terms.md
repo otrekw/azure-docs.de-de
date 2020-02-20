@@ -2,21 +2,18 @@
 title: Grundlegendes zur Rechnung für eine Microsoft-Partnervereinbarung in Azure
 description: Erfahren Sie, wie Sie die Rechnung für Ihre Microsoft-Partnervereinbarung erfassen und verstehen.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: fcebe02d62beba1e48759c0298a18b26f3a61cbf
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 2aca67b5e73bf7f02ac6bca27569265339b0eae6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133308"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200162"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Bestimmungen auf der Rechnung Ihrer Microsoft-Partnervereinbarung
 
@@ -36,7 +33,7 @@ Den Abschnitt **Rechnungszusammenfassung** finden Sie oben auf der ersten Seite.
 
 <!-- add screenshot -->
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Sold To |Adresse des Rechtsträgers gemäß den Angaben im Abrechnungskonto|
 | Bill to |Rechnungsadresse des Abrechnungsprofils, das die Rechnung erhält, gemäß den Angaben im Abrechnungsprofil|
@@ -52,7 +49,7 @@ Im Abschnitt **Billing summary** (Abrechnungsübersicht) werden alle in Rechnung
 
 <!-- add screenshot -->
 
-| Begriff | BESCHREIBUNG |
+| Begriff | Beschreibung |
 | --- | --- |
 | Charges|Microsoft-Gesamtgebühren für dieses Abrechnungsprofil seit dem letzten Abrechnungszeitraum |
 | Guthaben |Gutschriften durch Rückgaben |

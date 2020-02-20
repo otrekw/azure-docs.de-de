@@ -2,21 +2,18 @@
 title: Aufgaben für Kontoadministratoren im Azure-Portal
 description: Hier erfahren Sie, wie Sie Zahlungsvorgänge im Azure-Portal ausführen.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132136"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200998"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Aufgaben für Kontoadministratoren im Azure-Portal
 
@@ -25,35 +22,35 @@ In diesem Artikel erfahren Sie, wie Sie folgende Aufgaben im Azure-Portal ausfü
 - Entfernen des Ausgabenlimits Ihres Abonnements
 - Hinzufügen von Guthaben zu Ihrem Azure in Open-Abonnement
 
-Diese Aufgaben können nur vom Kontoadministrator ausgeführt werden. 
+Diese Aufgaben können nur vom Kontoadministrator ausgeführt werden.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Navigieren zu den Zahlungsmethoden Ihres Abonnements
 
-1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an. 
+1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-    
+
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten. 
-   
+1. Wählen Sie in der Liste **Meine Abonnements** das Abonnement aus, dem Sie die Kreditkarte hinzufügen möchten.
+
    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Wenn einige Ihrer Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie das Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2. 
+   > Wenn einige Ihrer Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie das Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
 
 1. Wählen Sie die Option **Zahlungsmethoden**.
 
     ![Screenshot: Ausgewähltes Blatt „Zahlungsmethoden“](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-Hier können Sie eine neue Kreditkarte hinzufügen, die aktive Zahlungsmethode ändern, Kreditkartendetails bearbeiten und Kreditkarten löschen. 
+Hier können Sie eine neue Kreditkarte hinzufügen, die aktive Zahlungsmethode ändern, Kreditkartendetails bearbeiten und Kreditkarten löschen.
 
 ### <a name="change-active-payment-method"></a>Ändern der aktiven Zahlungsmethode
 
 Sie können die aktive Zahlungsmethode ändern, indem Sie eine neue Kreditkarte hinzufügen oder eine bereits gespeicherte Kreditkarte auswählen. So legen Sie eine neue Kreditkarte als aktive Zahlungsmethode fest:
 
 1. Wählen Sie links oben das Pluszeichen (+) aus, um eine Kreditkarte hinzuzufügen.
-    
+
     ![Screenshot: Pluszeichen](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Geben Sie im Formular auf der rechten Seite Kreditkartendetails ein.
@@ -111,7 +108,7 @@ Informationen zum Beantragen der Zahlung per Rechnung finden Sie unter [Zahlen f
 
 ### <a name="edit-invoice-payment-address"></a>Bearbeiten der Adresse für die Zahlung per Rechnung
 
-Wenn Sie die Adresse für die Zahlungsmethode „Rechnung“ bearbeiten möchten, klicken Sie in der Liste mit den Zahlungsmethoden für Ihr Abonnement auf **Rechnung**. Daraufhin wird auf der rechten Seite das Adressformular geöffnet. 
+Wenn Sie die Adresse für die Zahlungsmethode „Rechnung“ bearbeiten möchten, klicken Sie in der Liste mit den Zahlungsmethoden für Ihr Abonnement auf **Rechnung**. Daraufhin wird auf der rechten Seite das Adressformular geöffnet.
 
 ## <a name="remove-spending-limit"></a>Entfernen des Ausgabenlimits
 
@@ -124,15 +121,15 @@ Für Abonnements mit Verpflichtungsplänen oder mit nutzungsbasierter Bezahlung 
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Visual Studio Enterprise-Abonnement aus. 
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Visual Studio Enterprise-Abonnement aus.
 
    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Wenn einige Ihrer Visual Studio-Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie ein Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
-    
+
 1. Klicken Sie in der Abonnementübersicht auf das orangefarbene Banner, um das Ausgabenlimit zu entfernen.
-    
+
     ![Screenshot: Banner zum Entfernen des Ausgabenlimits](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Wählen Sie aus, ob Sie das Ausgabenlimit dauerhaft oder nur für den aktuellen Abrechnungszeitraum entfernen möchten.
@@ -152,15 +149,15 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/account-admin-tasks/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Azure in Open-Abonnement aus. 
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Azure in Open-Abonnement aus.
 
     ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Wenn Ihr Abonnement hier nicht angezeigt wird, liegt dies möglicherweise daran, dass Sie das zugehörige Verzeichnis zu irgendeinem Zeitpunkt geändert haben. Sie müssen das Verzeichnis dieses Abonnements in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
-    
+
 1. Wählen Sie **Bonitätsgeschichte** aus.
-    
+
     ![Screenshot: Bonitätsgeschichte](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. Wählen Sie links oben das Pluszeichen (+) aus, um Guthaben hinzuzufügen.
@@ -168,7 +165,7 @@ Wenn Sie über ein Azure in Open License-Abonnement verfügen, können Sie Ih
     ![Screenshot: Schaltfläche zum Hinzufügen von Guthaben](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. Wählen Sie im Dropdownfeld einen Zahlungsmethodentyp aus. Sie können entweder einen Product Key hinzufügen oder Guthaben mit einer Kreditkarte erwerben.
-    
+
     ![Screenshot: Dropdownfeld für die Zahlungsmethode auf dem Blatt „Guthaben hinzufügen“](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. Wenn Sie „Product Key“ ausgewählt haben, gehen Sie wie folgt vor:

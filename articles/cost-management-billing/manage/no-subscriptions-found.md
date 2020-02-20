@@ -1,27 +1,20 @@
 ---
 title: Fehler „Keine Abonnements gefunden“ – Anmeldung beim Azure-Portal | Microsoft-Dokumentation
 description: Bietet die Lösung für das Problem, das beim Anmelden bei Azure-Portal oder Azure-Kontocenter die Fehlermeldung „Keine Abonnements gefunden“ angezeigt wird.
-services: ''
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
+ms.reviewer: dcscontentpm
 tags: billing
-ms.assetid: d1545298-99db-4941-8e97-f24a06bb7cb6
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 1573a5d5d9b537b208b2f6d6aea29b9738ddad3e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5011f0a09e33221650cf050578db5ab1d6b0a033
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984462"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200621"
 ---
 # <a name="no-subscriptions-found-sign-in-error-for-azure-portal-or-azure-account-center"></a>Anmeldefehler „Keine Abonnements gefunden“ für das Azure-Portal oder das Azure-Kontocenter
 
@@ -33,11 +26,11 @@ Wenn Sie versuchen, sich beim [Azure-Portal](https://portal.azure.com/) oder bei
 
 ## <a name="cause"></a>Ursache
 
-Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben oder Ihr Konto nicht über ausreichende Berechtigungen verfügt. 
+Dieses Problem tritt auf, wenn Sie das falsche Verzeichnis ausgewählt haben oder Ihr Konto nicht über ausreichende Berechtigungen verfügt.
 
 ## <a name="solution"></a>Lösung
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Szenario 1: Die Fehlermeldung wird im [Azure-Portal](https://portal.azure.com) angezeigt.
+### <a name="scenario-1-error-message-is-received-in-the-azure-portal"></a>Szenario 1: Die Fehlermeldung wird im [Azure-Portal](https://portal.azure.com) angezeigt.
 
 So beheben Sie dieses Problem:
 
@@ -46,7 +39,7 @@ So beheben Sie dieses Problem:
   ![Auswählen des Verzeichnisses oben rechts im Azure-Portal](./media/no-subscriptions-found/directory-switch.png)
 * Wenn das richtige Azure-Verzeichnis ausgewählt ist, die Fehlermeldung jedoch immer noch ausgegeben wird, [weisen Sie Ihrem Konto die Besitzerrolle zu](../../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Szenario 2: Die Fehlermeldung wird im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) angezeigt.
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-center"></a>Szenario 2: Die Fehlermeldung wird im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) angezeigt.
 
 Überprüfen Sie, ob das Konto, das Sie verwendet haben, das des Kontoadministrators ist. Gehen Sie folgendermaßen vor, um zu überprüfen, wer der Kontoadministrator ist:
 

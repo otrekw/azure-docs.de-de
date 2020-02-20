@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934097"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193152"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 
@@ -108,7 +108,7 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;

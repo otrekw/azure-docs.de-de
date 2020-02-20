@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Zeichenfolge
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können.
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 7a55a6108c9bf1e87dba0b3ccbba5d9b0bd217b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8d19179461693331a6091ec7a3562f536b959e4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476220"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207060"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -121,7 +121,7 @@ Konvertiert eine base64-Darstellung in ein JSON-Objekt.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | base64Value |Ja |string |Die in ein JSON-Objekt zu konvertierende base64-Darstellung. |
 
@@ -477,7 +477,7 @@ Konvertiert einen als Daten-URI formatierten Wert in eine Zeichenfolge.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |Ja |string |Der zu konvertierende Daten-URI-Wert. |
 
@@ -663,7 +663,7 @@ Gibt das erste Zeichen der Zeichenfolge oder das erste Element des Arrays zurüc
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen erstes Element oder Zeichen abgerufen wird. |
 
@@ -904,7 +904,7 @@ Gibt das letzte Zeichen der Zeichenfolge bzw. das letzte Element des Arrays zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array oder Zeichenfolge |Der Wert, dessen letztes Element oder Zeichen abgerufen wird. |
 
@@ -1017,7 +1017,7 @@ Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -1190,7 +1190,7 @@ Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen 
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | valueToPad |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der rechtsbündig ausgerichtet werden soll. |
 | totalLength |Ja |INT |Die Gesamtzahl der Zeichen in der zurückgegebenen Zeichenfolge. |
@@ -1240,7 +1240,7 @@ Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge du
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | originalString |Ja |string |Der Wert, für den alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden. |
 | oldString |Ja |string |Die Zeichenfolge, die aus der ursprünglichen Zeichenfolge entfernt werden soll. |
@@ -1420,7 +1420,7 @@ Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Ver
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |string |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |string |Der zu suchende Wert. |
@@ -1557,7 +1557,7 @@ Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition begin
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | stringToParse |Ja |string |Die ursprüngliche Zeichenfolge, aus der die Teilzeichenfolge extrahiert wird. |
 | startIndex |Nein |INT |Die nullbasierte Anfangsposition für die Teilzeichenfolge. |
@@ -1686,7 +1686,7 @@ Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | stringToChange |Ja |string |Der Wert, der in Kleinbuchstaben konvertiert werden soll. |
 
@@ -1834,7 +1834,7 @@ Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministi
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | baseString |Ja |string |Der Wert, der in der Hashfunktion verwendet wird, um eine eindeutige Zeichenfolge zu erstellen. |
 | Zusätzliche Parameter nach Bedarf. |Nein |string |Sie können beliebig viele Zeichenfolgen hinzufügen, ganz wie sie zum Erstellen des Werts benötigt werden, der die Ebene der Eindeutigkeit angibt. |
@@ -1912,7 +1912,7 @@ Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | baseUri |Ja |string |Die Zeichenfolge mit dem Basis-URI. Achten Sie darauf, das Verhalten bezüglich der Behandlung des nachgestellten Schrägstrichs („/“) zu beobachten, wie im Anschluss auf die folgende Tabelle beschrieben.  |
 | relativeUri |Ja |string |Der Zeichenfolge mit dem relativen URI, die der Zeichenfolge mit dem Basis-URI hinzugefügt werden soll. |
@@ -2047,7 +2047,7 @@ Gibt eine Zeichenfolge des als URI codierten Werts zurück.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |Ja |string |Der als URI codierte Wert, der in eine Zeichenfolge konvertiert werden soll. |
 
@@ -2206,6 +2206,6 @@ Im folgenden Beispiel wird gezeigt, wie ein Wert der Funktion beim Festlegen ein
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](create-multiple-instances.md).
+* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
 

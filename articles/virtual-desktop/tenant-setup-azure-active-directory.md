@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459507"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368777"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop
 
@@ -34,7 +34,7 @@ Bevor Sie mit der Einrichtung Ihres Windows Virtual Desktop-Mandanten beginnen, 
    * Dies gilt auch für CSP-Organisationen (Cloud Solution Provider), die einen Windows Virtual Desktop-Mandanten für ihre Kunden erstellen. Wenn Sie einer CSP-Organisation angehören, müssen Sie sich als globaler Administrator der Azure Active Directory-Instanz des Kunden anmelden können.
    * Das Administratorkonto muss aus dem Azure Active Directory-Mandanten stammen, in dem Sie den Windows Virtual Desktop-Mandanten erstellen möchten. Azure Active Directory B2B-Konten (Gastkonten) werden bei diesem Prozess nicht unterstützt.
    * Das Administratorkonto muss ein Geschäfts-, Schul- oder Unikonto sein.
-* ein Azure-Abonnement
+* Ein Azure-Abonnement.
 
 Sie müssen die Mandanten-ID, das globale Administratorkonto und das Azure-Abonnement bereithalten, damit das in diesem Tutorial beschriebene Verfahren ordnungsgemäß funktioniert.
 
@@ -121,7 +121,7 @@ So ermitteln Sie Ihre Azure-Abonnement-ID:
 
 Nachdem Sie nun die Windows Virtual Desktop-Dienstberechtigungen zum Abfragen der Azure Active Directory-Instanz gewährt und die Rolle „TenantCreator“ einem Benutzerkonto zugewiesen haben, können Sie einen Windows Virtual Desktop-Mandanten erstellen.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+Zunächst müssen Sie das [Windows Virtual Desktop-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können.
 
 Melden Sie sich mit dem TenantCreator-Benutzerkonto bei Windows Virtual Desktop an, indem Sie dieses Cmdlet verwenden:
 

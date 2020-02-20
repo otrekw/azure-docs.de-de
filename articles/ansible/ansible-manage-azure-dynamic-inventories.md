@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilf
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442786"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193598"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Tutorial: Konfigurieren von dynamischen Beständen Ihrer Azure-Ressourcen mit Ansible
 
@@ -47,7 +47,7 @@ Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließ
 
 1. Erstellen Sie mithilfe eines der folgenden Verfahren zwei virtuelle Linux-Computer in Azure:
 
-    - **Ansible-Playbook:** Wie Sie einen virtuellen Computer auf der Grundlage eines Ansible-Playbooks erstellen, erfahren Sie im Artikel [Erstellen eines einfachen virtuellen Computers in Azure mit Ansible](/azure/virtual-machines/linux/ansible-create-vm). Wenn Sie einen der virtuellen Computer (oder beide) mit einem Playbook definieren, verwenden Sie anstelle eines Kennworts die SSH-Verbindung.
+    - **Ansible-Playbook:** Wie Sie einen virtuellen Computer auf der Grundlage eines Ansible-Playbooks erstellen, erfahren Sie im Artikel [Erstellen eines einfachen virtuellen Computers in Azure mit Ansible](./ansible-create-vm.md). Wenn Sie einen der virtuellen Computer (oder beide) mit einem Playbook definieren, verwenden Sie anstelle eines Kennworts die SSH-Verbindung.
 
     - **Azure-Befehlszeilenschnittstelle:** Führen Sie die folgenden Befehle in Cloud Shell aus, um die beiden virtuellen Computer zu erstellen:
 
@@ -316,4 +316,4 @@ Dieser Abschnitt beschreibt ein Verfahren, mit dem Sie sich vergewissern können
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
-> [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Schnellstart: Erstellen eines virtuellen Linux-Computers in Azure mithilfe von Ansible](./ansible-create-vm.md)

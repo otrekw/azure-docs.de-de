@@ -3,12 +3,12 @@ title: Untergeordnete Ressourcen in Vorlagen
 description: Beschreibt, wie Sie den Namen und Typ für untergeordnete Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122014"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207892"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Festlegen von Name und Typ für untergeordnete Ressourcen
 
@@ -27,7 +27,7 @@ In einer Resource Manager-Vorlage können Sie die untergeordnete Ressource entwe
 ]
 ```
 
-Im nächsten Beispiel ist die untergeordnete Ressource außerhalb der übergeordneten Ressource angegeben. So können Sie vorgehen, wenn die übergeordnete Ressource nicht in derselben Vorlage bereitgestellt wird oder wenn Sie mithilfe von [copy](create-multiple-instances.md) mehrere untergeordnete Ressourcen erstellen möchten.
+Im nächsten Beispiel ist die untergeordnete Ressource außerhalb der übergeordneten Ressource angegeben. So können Sie vorgehen, wenn die übergeordnete Ressource nicht in derselben Vorlage bereitgestellt wird oder wenn Sie mithilfe von [copy](copy-resources.md) mehrere untergeordnete Ressourcen erstellen möchten.
 
 ```json
 "resources": [

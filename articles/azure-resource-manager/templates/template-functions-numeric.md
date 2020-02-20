@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – numerisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 1a611277bb473d605c76d131a18f9ccb550fab29
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476204"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207234"
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -118,7 +118,7 @@ Diese Funktion wird immer mit einem **copy** -Objekt verwendet. Wenn kein Wert f
 
 Mit der Eigenschaft **loopName** können Sie angeben, ob sich „copyIndex“ auf eine Ressourceniteration oder eine Eigenschafteniteration bezieht. Wenn kein Wert für **loopName** angegeben wird, wird die Iteration des aktuellen Ressourcentyps verwendet. Geben Sie einen Wert für **loopName** an, wenn eine Iteration für eine Eigenschaft ausgeführt wird. 
  
-Eine vollständige Beschreibung der Nutzung von **copyIndex**finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](create-multiple-instances.md).
+Eine vollständige Beschreibung der Nutzung von **copyIndex**finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 
 Ein Beispiel für die Verwendung von **copyIndex** beim Festlegen einer Variablen finden Sie unter [Variables](template-syntax.md#variables).
 
@@ -224,7 +224,7 @@ Konvertiert den Wert in eine Gleitkommazahl. Diese Funktion wird nur beim Überg
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der in eine Gleitkommazahl zu konvertierende Wert. |
 
@@ -258,7 +258,7 @@ Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in eine ganze Zahl (Integer) konvertiert werden soll. |
 
@@ -382,7 +382,7 @@ Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
 
@@ -446,7 +446,7 @@ Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
@@ -651,6 +651,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](create-multiple-instances.md).
+* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
 

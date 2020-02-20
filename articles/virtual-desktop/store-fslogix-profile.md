@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: e9410ce93d9e11d3023f4f461f3ba90a7bf74507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb473ec55ec6a5e93ba4ad22bf500414d54e4a5d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451314"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367207"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Windows Virtual Desktop
 
@@ -53,6 +53,6 @@ Wenn Sie zum Erstellen Ihrer eigenen FSLogix-Profilcontainer bereit sind, beginn
 
 - [Erste Schritte mit FSLogix-Profilcontainern für Azure Files in Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
 - [Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files](create-fslogix-profile-container.md)
-- Die Anweisungen unter [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) gelten auch, wenn Sie anstelle eines Benutzerprofil-Datenträgers einen FSLogix-Profilcontainer verwenden.
+- Die Anweisungen unter [Bereitstellen eines Scale-Out-Dateiservers mit direkten Speicherplätzen und zwei Knoten für die Speicherung von Benutzerprofil-Datenträgern](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gelten auch, wenn Sie anstelle eines Benutzerprofil-Datenträgers einen FSLogix-Profilcontainer verwenden.
 
 Sie können auch ganz von vorn beginnen und Ihre eigene Windows Virtual Desktop-Lösung einrichten, wie unter [Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop](tenant-setup-azure-active-directory.md) beschrieben.

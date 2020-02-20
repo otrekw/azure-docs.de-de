@@ -1,19 +1,18 @@
 ---
 title: Speichern für Azure App Service mit reservierter Kapazität
 description: Hier erfahren Sie, wie Sie die Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität senken können.
-services: billing
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8161b169e8801fae4a9aa81290cf29ec28abf858
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75986854"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199414"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Senken der Kosten für die Stempelgebühr für Azure App Service (isoliert) mit Reservekapazität
 

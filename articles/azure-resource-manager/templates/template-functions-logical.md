@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – logisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 48c6a05c5a449626c66f9d75c8578b217906d8e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476208"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207212"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -311,7 +311,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | type | Beschreibung |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
@@ -359,6 +359,6 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](create-multiple-instances.md).
+* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen ](deploy-powershell.md).
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122424"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210464"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Beispiel: Erstellen einer benutzerdefinierten Qualifikation mit Python
 
@@ -52,7 +52,7 @@ Mit der Azure Functions-Projektvorlage in Visual Studio Code wird ein Projekt er
 1. Wählen Sie die Python-Version aus (Version 3.7.5 wird von Azure Functions unterstützt).
 1. Wählen Sie die Vorlage für die erste Funktion Ihres Projekts aus. Wählen Sie **HTTP-Trigger** aus, um eine durch HTTP ausgelöste Funktion in der neuen Funktions-App zu erstellen.
 1. Angeben eines Funktionsnamens. Verwenden Sie in diesem Fall **Concatenator**. 
-1. Wählen Sie **Funktion** als Autorisierungsstufe aus. Das bedeutet, dass wir einen [Funktionsschlüssel](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) bereitstellen, um den HTTP-Endpunkt der Funktion aufzurufen. 
+1. Wählen Sie **Funktion** als Autorisierungsstufe aus. Das bedeutet, dass wir einen [Funktionsschlüssel](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) bereitstellen, um den HTTP-Endpunkt der Funktion aufzurufen. 
 1. Auswählen, wie Sie Ihr Projekt öffnen möchten. Wählen Sie für diesen Schritt **Zu Arbeitsbereich hinzufügen** aus, um die Funktions-App im aktuellen Arbeitsbereich zu erstellen.
 
 Visual Studio Code erstellt das Funktions-App-Projekt in einem neuen Arbeitsbereich. Dieses Projekt enthält die Konfigurationsdateien [host.json](../azure-functions/functions-host-json.md) und [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) sowie sprachspezifische Projektdateien. 

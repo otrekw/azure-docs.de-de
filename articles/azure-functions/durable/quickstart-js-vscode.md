@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 431bd45763cbe24e44d47342b32c5c452a27b0f6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845724"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210292"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Erstellen Ihrer ersten dauerhaften Funktion in JavaScript
 
@@ -51,13 +51,13 @@ In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Func
 
 1. Geben Sie gemäß der Eingabeaufforderungen die folgenden Informationen für die gewünschte Sprache ein:
 
-    | Eingabeaufforderung | Wert | Beschreibung |
+    | Prompt | value | Beschreibung |
     | ------ | ----- | ----------- |
     | Auswählen einer Sprache für Ihr Funktions-App-Projekt | JavaScript | Erstellen Sie ein lokales Node.js-Functions-Projekt. |
     | „Select a version“ (Wählen Sie eine Version aus.) | Azure Functions v2 | Diese Option wird nur angezeigt, wenn die Core Tools noch nicht installiert sind. In diesem Fall werden die Core Tools beim erstmaligen Ausführen der App installiert. |
     | Auswählen einer Vorlage für die erste Funktion Ihres Projekts | HTTP-Trigger | Erstellen Sie eine durch HTTP ausgelöste Funktion in der neuen Funktions-App. |
     | Angeben eines Funktionsnamens | HTTPTrigger | Drücken Sie die EINGABETASTE, um den Standardnamen zu verwenden. |
-    | Autorisierungsstufe | Funktion | Die Autorisierungsstufe `function` erfordert die Angabe eines Zugriffsschlüssels beim Aufrufen des HTTP-Endpunkts Ihrer Funktion. Dies erschwert den Zugriff auf einen ungeschützten Endpunkt. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Autorisierungsstufe | Funktion | Die Autorisierungsstufe `function` erfordert die Angabe eines Zugriffsschlüssels beim Aufrufen des HTTP-Endpunkts Ihrer Funktion. Dies erschwert den Zugriff auf einen ungeschützten Endpunkt. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](../functions-bindings-http-webhook-trigger.md#authorization-keys).  |
     | Auswählen, wie Sie Ihr Projekt öffnen möchten | Hinzufügen zum Arbeitsbereich | Erstellt die Funktions-App im aktuellen Arbeitsbereich. |
 
 Von Visual Studio Code werden bei Bedarf die Azure Functions Core Tools installiert. Außerdem wird ein Funktions-App-Projekt in einem neuen Arbeitsbereich erstellt. Dieses Projekt enthält die Konfigurationsdateien [host.json](../functions-host-json.md) und [local.settings.json](../functions-run-local.md#local-settings-file). Darüber hinaus wird der Ordner „HttpExample“ mit der [Definitionsdatei „function.json“](../functions-reference-node.md#folder-structure) und der [Datei „index.js“](../functions-reference-node.md#exporting-a-function) (Node.js-Datei mit dem Funktionscode) erstellt.

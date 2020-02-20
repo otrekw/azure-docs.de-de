@@ -6,21 +6,21 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.date: 02/14/2020
+ms.subservice: language-understanding
 ms.topic: include
-ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 3064211fe44a416a6288b86c977ed7e2337a7ccd
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8fd7f23235dbd94ee8d20aa693ec5b659cb6d64d
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451542"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279451"
 ---
 Die Verwaltung von Beiträgen von Projektmitarbeitern ist abhängig vom aktuellen Status der App.
 
-**Zum [Erstellen von durch Ressourcen migrierte](../luis-migration-authoring.md) Apps**: _Mitwirkende_ werden im Azure-Portal für die Dokumenterstellungsressource über die Seite **Zugriffssteuerung (IAM)** verwaltet. Fügen Sie einen Benutzer mit der E-Mail-Adresse des Mitarbeiters und der Rolle _Mitwirkender_ hinzu. 
+**Für Apps, die zur [Erstellungsressource migriert](../luis-migration-authoring.md) wurden**: _Mitwirkende_ werden im Azure-Portal für die Erstellungsressource über die Seite **Zugriffssteuerung (IAM)** verwaltet. Fügen Sie einen Benutzer mit der E-Mail-Adresse des Mitarbeiters und der Rolle _Mitwirkender_ hinzu.
 
-**Bei Apps, die noch nicht migriert wurden**: Alle _Projektmitarbeiter_ werden im LUIS-Portal über die Seite **Verwalten –> Projektmitarbeiter** der jeweiligen App verwaltet. Auf dieser Seite [fügen Sie die E-Mail-Adresse eines Benutzers](../luis-how-to-collaborate.md) hinzu. Dies bietet Dokumenterstellungszugriff nur für diese App. 
+**Bei Apps, die noch nicht migriert wurden**: Alle _Projektmitarbeiter_ werden im LUIS-Portal über die Seite **Verwalten –> Projektmitarbeiter** der jeweiligen App verwaltet. Auf dieser Seite [fügen Sie die E-Mail-Adresse eines Benutzers](../luis-how-to-collaborate.md) hinzu. Dies bietet Dokumenterstellungszugriff nur für diese App.
 
 

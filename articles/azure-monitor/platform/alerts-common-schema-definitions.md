@@ -4,15 +4,15 @@ description: Informationen zu Definitionen des allgemeinen Warnungsschemas für 
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
+author: ofirmanor
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765674"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425169"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
@@ -73,7 +73,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 
 ## <a name="essentials"></a>Essentials
 
-| Feld | Beschreibung|
+| Feld | BESCHREIBUNG|
 |:---|:---|
 | alertId | Die GUID, die diese Warnungsinstanz eindeutig identifiziert. |
 | alertRule | Der Name der Warnungsregel, die die Warnungsinstanz generiert hat. |
@@ -151,7 +151,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
 ### <a name="log-alerts"></a>Protokollwarnungen
 
 > [!NOTE]
-> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludedSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
+> Für Protokollwarnungen mit benutzerdefiniertem E-Mail-Betreff und/oder benutzerdefinierter JSON-Nutzlast wird das E-Mail-Betreff- und/oder Nutzlastschema durch die Aktivierung des allgemeinen Schemas wie unten beschrieben zurückgesetzt. Für Warnungen mit aktiviertem allgemeinem Schema gilt für die Größe ein oberer Grenzwert von 256 KB pro Warnung. Suchergebnisse werden nicht in die Nutzlast der Protokollwarnungen eingebettet, wenn sie bewirken, dass die Warnungsgröße diesen Schwellenwert überschreitet. Sie können dies feststellen, indem Sie das Flag `IncludeSearchResults` überprüfen. Wenn die Suchergebnisse nicht enthalten sind, sollten Sie die Suchabfrage in Verbindung mit der [Log Analytics-API](https://docs.microsoft.com/rest/api/loganalytics/query/get) verwenden. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
@@ -214,7 +214,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }
@@ -277,7 +277,7 @@ Jede Warnungsinstanz beschreibt die betroffene Ressource und die Ursache der War
         }
       ]
     },
-    "IncludedSearchResults": "True",
+    "IncludeSearchResults": "True",
     "AlertType": "Number of results"
   }
 }

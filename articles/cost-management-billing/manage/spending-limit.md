@@ -2,21 +2,18 @@
 title: Azure-Ausgabenlimit | Microsoft-Dokumentation
 description: In diesem Artikel werden die Funktionsweise und das Entfernen des Azure-Ausgabenlimits beschrieben.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188269"
+ms.locfileid: "77200553"
 ---
 # <a name="azure-spending-limit"></a>Azure-Ausgabenlimit
 
@@ -47,21 +44,21 @@ Falls Sie über ein kostenloses Azure-Konto verfügen, erfahren Sie unter [Durch
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/spending-limit/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Abonnement aus. Beispielsweise *Visual Studio Enterprise*. 
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Abonnement aus. Beispielsweise *Visual Studio Enterprise*.
 
    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Wenn einige Ihrer Visual Studio-Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie ein Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
-    
+
 1. Klicken Sie in der Abonnementübersicht auf das orangefarbene Banner, um das Ausgabenlimit zu entfernen.
-    
+
     ![Screenshot: Banner zum Entfernen des Ausgabenlimits](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. Wählen Sie aus, ob Sie das Ausgabenlimit dauerhaft oder nur für den aktuellen Abrechnungszeitraum entfernen möchten.
-    
+
       ![Screenshot: Blatt zum Entfernen des Ausgabenlimits](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | Option | Wirkung |
       | --- | --- |
       | Ausgabenlimit auf unbestimmte Zeit deaktivieren | Das Ausgabenlimit wird zu Beginn des nächsten Abrechnungszeitraums nicht automatisch wieder aktiviert. Sie können es aber jederzeit selbst wieder aktivieren. |
@@ -91,13 +88,13 @@ Dieses Feature ist nur verfügbar, wenn das Ausgabenlimit für Abonnementtypen, 
 
     ![Screenshot: Suchen nach „Kostenverwaltung + Abrechnung“ ](./media/spending-limit/search-bar.png)
 
-1. Wählen Sie in der Liste **Meine Abonnements** Ihr Abonnement aus. Beispielsweise *Visual Studio Enterprise*. 
+1. Wählen Sie in der Liste **Meine Abonnements** Ihr Abonnement aus. Beispielsweise *Visual Studio Enterprise*.
 
    ![Screenshot: Raster „Meine Abonnements“ in der Übersicht](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Wenn einige Ihrer Visual Studio-Abonnements hier nicht angezeigt werden, liegt dies möglicherweise daran, dass Sie ein Abonnementverzeichnis zu irgendeinem Zeitpunkt geändert haben. Für diese Abonnements müssen Sie das Verzeichnis in das ursprüngliche Verzeichnis ändern (das Verzeichnis, in dem Sie sich anfänglich registriert haben). Wiederholen Sie anschließend Schritt 2.
-    
+
 1. Klicken Sie in der Abonnementübersicht auf das Banner am oberen Seitenrand, um das Ausgabenlimit wieder zu aktivieren.
 
 ## <a name="custom-spending-limit"></a>Benutzerdefiniertes Ausgabenlimit

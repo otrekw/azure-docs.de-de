@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846488"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210190"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Container
 
@@ -256,7 +256,7 @@ Sie können dieses Tutorial auf allen Computern durcharbeiten, auf denen Windows
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Wenn das Image in einem lokalen Container ausgeführt wird, können Sie in einem Browser auf `http://localhost:8080` zugreifen, damit das unten angegebene Platzhalterbild angezeigt wird. Das Bild wird hier angezeigt, weil Ihre Funktion im lokalen Container so ausgeführt wird, wie dies auch in Azure der Fall wäre. Dies bedeutet, dass sie durch einen Zugriffsschlüssel geschützt ist, der in *function.json* mit der `"authLevel": "function"`-Eigenschaft definiert wird. Da der Container aber noch nicht in einer Funktions-App in Azure veröffentlicht wurde, ist der Schlüssel noch nicht verfügbar. Gehen Sie wie folgt vor, wenn Sie einen lokalen Test durchführen möchten: Beenden Sie Docker, ändern Sie die Autorisierungseigenschaft in `"authLevel": "anonymous"`, erstellen Sie das Image neu, und starten Sie Docker anschließend wieder. Setzen Sie dann `"authLevel": "function"` in *function.json* zurück. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](functions-bindings-http-webhook.md#authorization-keys).
+1. Wenn das Image in einem lokalen Container ausgeführt wird, können Sie in einem Browser auf `http://localhost:8080` zugreifen, damit das unten angegebene Platzhalterbild angezeigt wird. Das Bild wird hier angezeigt, weil Ihre Funktion im lokalen Container so ausgeführt wird, wie dies auch in Azure der Fall wäre. Dies bedeutet, dass sie durch einen Zugriffsschlüssel geschützt ist, der in *function.json* mit der `"authLevel": "function"`-Eigenschaft definiert wird. Da der Container aber noch nicht in einer Funktions-App in Azure veröffentlicht wurde, ist der Schlüssel noch nicht verfügbar. Gehen Sie wie folgt vor, wenn Sie einen lokalen Test durchführen möchten: Beenden Sie Docker, ändern Sie die Autorisierungseigenschaft in `"authLevel": "anonymous"`, erstellen Sie das Image neu, und starten Sie Docker anschließend wieder. Setzen Sie dann `"authLevel": "function"` in *function.json* zurück. Weitere Informationen finden Sie unter [Autorisierungsschlüssel](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     ![Platzhalterbild mit dem Hinweis, dass der Container lokal ausgeführt wird](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
@@ -370,7 +370,7 @@ Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können S
 
 1. Rufen Sie die Funktions-URL mit dem Zugriffsschlüssel (Funktionsschlüssel) ab, indem Sie das Azure-Portal oder die Azure CLI mit dem Befehl `az rest` verwenden.)
 
-    # <a name="portaltabportal"></a>[Portal](#tab/portal)
+    # <a name="portal"></a>[Portal](#tab/portal)
 
     1. Melden Sie sich am Azure-Portal an, und suchen Sie nach Ihrer Funktions-App, indem Sie im Feld **Suchen** oben auf der Seite den Namen Ihrer Funktions-App eingeben. Wählen Sie in den Ergebnissen die Ressource **App Service** aus.
 
@@ -387,7 +387,7 @@ Da das Image nun für die Funktions-App in Azure bereitgestellt wurde, können S
     > [!NOTE]  
     > Da Ihre Funktions-App als Container bereitgestellt ist, können Sie im Portal keine Änderungen an Ihrem Funktionscode vornehmen. Stattdessen müssen Sie das Projekt im lokalen Image aktualisieren und wieder per Pushvorgang an die Registrierung übertragen und anschließend erneut in Azure bereitstellen. Sie können Continuous Deployment in einem späteren Abschnitt einrichten.
     
-    # <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
     1. Erstellen Sie eine URL-Zeichenfolge im folgenden Format, und ersetzen Sie `<subscription_id>`, `<resource_group>` und `<app_name>` durch die ID Ihres Azure-Abonnements, die Ressourcengruppe Ihrer Funktions-App bzw. den Namen Ihrer Funktions-App:
 
@@ -877,19 +877,19 @@ Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quicks
 
 1. Öffnen Sie die Datei *local.setting.json* des Funktionsprojekts, und kopieren Sie den Wert der Verbindungszeichenfolge. Führen Sie in einem Terminal oder Befehlsfenster den folgenden Befehl aus, um eine Umgebungsvariable mit dem Namen `AZURE_STORAGE_CONNECTION_STRING` zu erstellen, und fügen Sie anstelle von `<connection_string>` Ihre spezifische Verbindungszeichenfolge ein. (Die Verwendung dieser Umgebungsvariablen bewirkt, dass Sie die Verbindungszeichenfolge nicht für jeden weiteren Befehl per `--connection-string`-Argument angeben müssen.)
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quicks
     
 1. (Optional) Verwenden Sie den Befehl [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list), um die Storage-Warteschlangen in Ihrem Konto anzuzeigen. Die Ausgabe dieses Befehls sollte eine Warteschlange mit dem Namen `outqueue` enthalten. Sie wurde erstellt, als die Funktion ihre erste Nachricht in diese Warteschlange geschrieben hat.
     
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -921,19 +921,19 @@ Sie können die Warteschlange im [Azure-Portal](../storage/queues/storage-quicks
 
 1. Verwenden Sie den Befehl [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek), um die Nachrichten in dieser Warteschlange anzuzeigen. Dies sollte der erste Name sein, den Sie beim zuvor durchgeführten Testen der Funktion genutzt haben. Mit dem Befehl wird die erste Nachricht in der Warteschlange in [Base64-Codierung](functions-bindings-storage-queue.md#encoding) abgerufen. Sie müssen die Nachricht also auch decodieren, um sie als Text anzeigen zu können.
 
-    # <a name="bashtabbash"></a>[Bash](#tab/bash)
+    # <a name="bash"></a>[Bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Cmd](#tab/cmd)
+    # <a name="cmd"></a>[Cmd](#tab/cmd)
     
     Da Sie die Nachrichtenauflistung dereferenzieren und die Decodierung aus Base64 durchführen müssen, sollten Sie PowerShell ausführen und den PowerShell-Befehl verwenden.
 

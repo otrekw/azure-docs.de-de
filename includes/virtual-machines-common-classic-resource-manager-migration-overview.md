@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: aa03560160795e33a5d26a88d421894c6e20c61f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 4e07334e859f2c1401547cc3f88988830b71c5e1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77089104"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192538"
 ---
 Dieser Artikel beschreibt, wie Sie IaaS-Ressourcen (Infrastructure-as-a-Service) vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell migrieren. Der Artikel enthält zudem Informationen dazu, wie Sie Ressourcen aus den beiden Bereitstellungsmodellen, die in Ihrem Abonnement nebeneinander existieren, mithilfe von Standort-zu-Standort-Gateways miteinander verbinden. Informieren Sie sich weiter über [Features und Vorteile von Azure Resource Manager](../articles/azure-resource-manager/management/overview.md). 
 
@@ -122,7 +122,7 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt. |
 | Compute | Clouddienste mit mehreren Verfügbarkeitsgruppen. |Dies wird derzeit nicht unterstützt. Verschieben Sie die virtuellen Computer vor der Migration in dieselbe Verfügbarkeitsgruppe. |
 | Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, in dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
-| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
+| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
 | Compute | VM mit Azure Site Recovery-Erweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Site Recovery-Dienst konfigurierten wurde. Während die Migration des mit Site Recovery verwendeten Speichers funktioniert, wird die aktuelle Replikation beeinträchtigt. Sie müssen die VM-Replikation nach der Speichermigration deaktivieren und dann erneut aktivieren. |
 | Netzwerk |Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten |Dies wird derzeit nicht unterstützt. Verschieben Sie die Web-/Workerrollen vor der Migration in ein eigenes virtuelles Netzwerk. Nach der Migration des klassischen virtuellen Netzwerks kann ein Peering des migrierten virtuellen Azure Resource Manager-Netzwerks mit dem klassischen virtuellen Netzwerk eingerichtet werden, um eine ähnliche Konfiguration wie zuvor zu erhalten.|
 | Netzwerk | Klassische ExpressRoute-Verbindungen |Dies wird derzeit nicht unterstützt. Diese Verbindungen müssen vor dem Beginn der IaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../articles/expressroute/expressroute-move.md).|

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013145"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368796"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -22,13 +22,13 @@ In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Di
 
 Windows 10 Enterprise (mehrere Sitzungen) ist im Azure-Imagekatalog verfügbar. Es gibt zwei Möglichkeiten, dieses Image anzupassen.
 
-Die erste Möglichkeit ist die Bereitstellung eines virtuellen Computers (VM) in Azure, indem Sie die Anleitung unter [Erstellen eines virtuellen Computers aus einem verwalteten Image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed) befolgen und dann mit [Software: Vorbereitung und Installation](set-up-customize-master-image.md#software-preparation-and-installation) fortfahren.
+Die erste Möglichkeit ist die Bereitstellung eines virtuellen Computers (VM) in Azure, indem Sie die Anleitung unter [Erstellen eines virtuellen Computers aus einem verwalteten Image](../virtual-machines/windows/create-vm-generalized-managed.md) befolgen und dann mit [Software: Vorbereitung und Installation](set-up-customize-master-image.md#software-preparation-and-installation) fortfahren.
 
 Die zweite Möglichkeit ist die lokale Erstellung des Images, indem das Image heruntergeladen wird und eine Hyper-V-VM bereitgestellt und dann an Ihre Anforderungen angepasst wird. Dies wird im folgenden Abschnitt beschrieben.
 
 ### <a name="local-image-creation"></a>Lokales Erstellen des Images
 
-Nachdem Sie das Image an einen lokalen Speicherort heruntergeladen haben, öffnen Sie **Hyper-V-Manager**, um eine VM mit der kopierten VHD zu erstellen. Die folgenden Anleitungen gelten für eine einfache Version. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines virtuellen Computers in Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Nachdem Sie das Image an einen lokalen Speicherort heruntergeladen haben, öffnen Sie **Hyper-V-Manager**, um eine VM mit der kopierten VHD zu erstellen. Die folgenden Anleitungen gelten für eine einfache Version. Eine ausführlichere Anleitung finden Sie unter [Erstellen eines virtuellen Computers in Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
 Erstellen Sie wie folgt eine VM mit der kopierten VHD:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Datenträger mit fester Größe
 
-Wenn Sie eine VM aus einer vorhandenen VHD erstellen, wird standardmäßig ein dynamischer Datenträger erstellt. Sie können dies in einen Datenträger mit fester Größe ändern, indem Sie wie in der folgenden Abbildung die Option **Datenträger bearbeiten...** wählen. Eine ausführlichere Anleitung finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Wenn Sie eine VM aus einer vorhandenen VHD erstellen, wird standardmäßig ein dynamischer Datenträger erstellt. Sie können stattdessen einen Datenträger mit fester Größe erstellen, indem Sie wie in der folgenden Abbildung gezeigt die Option **Datenträger bearbeiten...** wählen. Eine ausführlichere Anleitung finden Sie unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
 ![Screenshot: Option „Datenträger bearbeiten“](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Wenn Ihre Benutzer auf bestimmte Branchenanwendungen zugreifen müssen, empfehle
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Einrichten des Benutzerprofilcontainers (FSLogix)
 
-Befolgen Sie die Anleitung unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md#configure-the-fslogix-profile-container), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial) verwenden.
+Befolgen Sie die Anleitung unter [Erstellen eines Profilcontainers für einen Hostpool unter Verwendung einer Dateifreigabe](create-host-pools-user-profile.md#configure-the-fslogix-profile-container), um den FSLogix-Container als Teil des Images einzubeziehen. Sie können die Funktionalität des FSLogix-Containers testen, indem Sie [diese Schnellstartanleitung](/fslogix/configure-cloud-cache-tutorial/) verwenden.
 
 ### <a name="configure-windows-defender"></a>Konfigurieren von Windows Defender
 
@@ -78,9 +78,9 @@ Wenn Windows Defender auf dem virtuellen Computer konfiguriert ist, sollten Sie 
 
 Bei dieser Konfiguration wird nur das Scannen von VHD- und VHDX-Dateien während des Anfügens entfernt, aber es ergibt sich keine Auswirkung auf die Echtzeitüberprüfung.
 
-Eine ausführlichere Anleitung zur Konfiguration von Windows Defender unter Windows Server finden Sie unter [Konfigurieren von Windows Defender Antivirus-Ausschlüssen auf Windows Server](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Eine ausführlichere Anleitung zur Konfiguration von Windows Defender unter Windows Server finden Sie unter [Konfigurieren von Windows Defender Antivirus-Ausschlüssen auf Windows Server](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
 
-Weitere Informationen zum Konfigurieren von Windows Defender, um bestimmte Dateien vom Scannen auszuschließen, finden Sie unter [Konfigurieren und Validieren von Ausschlüssen basierend auf Dateierweiterung und Speicherort des Ordners](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Weitere Informationen zum Konfigurieren von Windows Defender, um bestimmte Dateien vom Scannen auszuschließen, finden Sie unter [Konfigurieren und Validieren von Ausschlüssen basierend auf Dateierweiterung und Speicherort des Ordners](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/).
 
 ### <a name="disable-automatic-updates"></a>Deaktivieren automatischer Updates
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 In diesem Artikel wird nicht beschrieben, wie Sie die Unterstützung von Sprachen und Regionen konfigurieren. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows) (Hinzufügen von Sprachen zu Windows-Images)
-- [Features on demand](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities) (On-Demand-Features)
-- [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod) (Sprachen und Regionen: On-Demand-Features)
+- [Add languages to Windows images](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/) (Hinzufügen von Sprachen zu Windows-Images)
+- [Features on demand](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/) (On-Demand-Features)
+- [Language and region Features on Demand (FOD)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/) (Sprachen und Regionen: On-Demand-Features)
 
 ### <a name="other-applications-and-registry-configuration"></a>Konfiguration anderer Anwendungen und der Registrierung
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Vorbereiten des Images für den Upload in Azure
 
-Nachdem Sie die Konfiguration abgeschlossen und alle Anwendungen installiert haben, können Sie die Anleitung unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) befolgen, um das Image vorzubereiten.
+Nachdem Sie die Konfiguration abgeschlossen und alle Anwendungen installiert haben, können Sie die Anleitung unter [Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) befolgen, um das Image vorzubereiten.
 
 Stellen Sie nach dem Vorbereiten des Images für den Upload sicher, dass die VM im Zustand „Aus“ oder „Zuordnung aufgehoben“ verbleibt.
 

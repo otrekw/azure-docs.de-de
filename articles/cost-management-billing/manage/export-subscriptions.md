@@ -2,25 +2,19 @@
 title: Exportieren von Informationen zu Ihrem Azure-Abonnement auf oberster Ebene | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie alle mit Ihrem Konto verknüpften Azure-Abonnement-IDs anzeigen können.
 keywords: ''
-services: billing
-documentationcenter: ''
-author: adpick
-manager: adpick
-editor: ''
+author: bandersmsft
+ms.reviewer: matrive
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 553cc7fd27571ebc925e33f824060c023664a369
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 83b6a9db0107cb35448aec491c81c2630e87ddd7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75985590"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199720"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Exportieren und Anzeigen von Informationen zu Ihrem Abonnement auf oberster Ebene
 Wenn Sie den Satz der Abonnement-IDs anzeigen müssen, die Ihren Benutzeranmeldeinformationen zugeordnet sind, [laden Sie eine JSON-Datei mit Informationen zu Ihrem Abonnement aus dem Azure-Kontocenter herunter](https://account.azure.com/subscriptions/download).

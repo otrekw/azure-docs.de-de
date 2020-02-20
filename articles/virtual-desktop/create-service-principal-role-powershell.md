@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606934"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367421"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -38,7 +38,7 @@ Bevor Sie Dienstprinzipale und Rollenzuweisungen erstellen können, müssen Sie 
     Install-Module AzureAD
     ```
 
-2. [Laden Sie das Windows Virtual Desktop-PowerShell-Modul herunter, und importieren Sie es.](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
+2. [Laden Sie das Windows Virtual Desktop-PowerShell-Modul herunter, und importieren Sie es.](/powershell/windows-virtual-desktop/overview/)
 
 3. Befolgen Sie alle Anweisungen in diesem Artikel in ein und derselben PowerShell-Sitzung. Der Prozess funktioniert möglicherweise nicht, wenn Sie Ihre PowerShell-Sitzung unterbrechen, indem Sie das Fenster schließen und es später erneut öffnen.
 
@@ -80,7 +80,7 @@ Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die 
 
 Als Nächstes müssen Sie eine Rollenzuweisung erstellen, damit sich der Dienstprinzipal bei Windows Virtual Desktop anmelden kann. Achten Sie darauf, dass Sie sich mit einem Konto anmelden, das über Berechtigungen zum Erstellen von Rollenzuweisungen verfügt.
 
-Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), um es in Ihrer PowerShell-Sitzung verwenden zu können.
+Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können.
 
 Führen Sie die folgenden PowerShell-Cmdlets aus, um eine Verbindung mit Windows Virtual Desktop herzustellen und Ihre Mandanten anzuzeigen:
 

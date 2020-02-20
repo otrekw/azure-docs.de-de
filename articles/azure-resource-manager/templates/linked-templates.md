@@ -3,12 +3,12 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 5d278ba05fd8230a3573983a631e4e347ff31e4f
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6a5dced0f8607e760422bebd114a08ca0a238e3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119828"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207603"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -766,7 +766,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorlagen.
 
-|Hauptvorlage  |Verknüpfte Vorlage |Beschreibung  |
+|Hauptvorlage  |Verknüpfte Vorlage |BESCHREIBUNG  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Verknüpfte Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Gibt eine Zeichenfolge aus der verknüpften Vorlage zurück. |
 |[Lastenausgleich mit öffentlicher IP-Adresse](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Verknüpfte Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Gibt die öffentliche IP-Adresse aus der verknüpften Vorlage zurück und legt diesen Wert im Lastenausgleichsmodul fest. |
@@ -776,5 +776,5 @@ Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorl
 
 * Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](template-tutorial-create-linked-templates.md).
 * Informationen zum Definieren der Bereitstellungsreihenfolge Ihrer Ressourcen finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](define-resource-dependency.md).
-* Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](create-multiple-instances.md).
+* Informationen, wie Sie eine Ressource definieren und von dieser viele Instanzen erstellen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](copy-resources.md).
 * Schritte zum Einrichten einer Vorlage in einem Speicherkonto und zum Generieren eines SAS-Tokens finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](deploy-powershell.md) oder [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure-CLI](deploy-cli.md).

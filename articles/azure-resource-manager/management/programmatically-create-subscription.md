@@ -1,16 +1,16 @@
 ---
 title: Programmgesteuertes Erstellen von Azure-Abonnements
 description: Es wird beschrieben, wie Sie programmgesteuert zusätzliche Azure-Abonnements erstellen.
-author: amberb
+author: amberbhargava
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981222"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198682"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure-Abonnements (Vorschau)
 
@@ -37,7 +37,7 @@ Nachdem Sie einem Registrierungskonto hinzugefügt wurden, das einem Kontobesitz
 
 Um die folgenden Befehle ausführen zu können, müssen Sie im *Basisverzeichnis* des Kontobesitzers angemeldet sein. Dies ist das Verzeichnis, in dem Abonnements standardmäßig erstellt werden.
 
-### <a name="resttabrest"></a>[REST](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Fordern Sie eine Liste aller Registrierungskonten an, auf die Sie zugreifen können:
 
@@ -72,7 +72,7 @@ In der API-Antwort sind alle Registrierungskonten aufgelistet, auf die Sie Zugri
 
 Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in dem Abonnements abgerechnet werden sollen. Kopieren Sie den `name`-Wert dieses Kontos. Wenn Sie beispielsweise Abonnements unter dem Registrierungskonto SignUpEngineering@contoso.com erstellen wollten, müssten Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Dieser Bezeichner ist die Objekt-ID des Registrierungskontos. Kopieren Sie diesen Wert, um ihn im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Öffnen Sie [Azure Cloud Shell](https://shell.azure.com/), und wählen Sie PowerShell aus.
 
@@ -91,7 +91,7 @@ ObjectId                               | PrincipalName
 ```
 Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in dem Abonnements abgerechnet werden sollen. Kopieren Sie den `ObjectId`-Wert dieses Kontos. Wenn Sie beispielsweise Abonnements unter dem Registrierungskonto SignUpEngineering@contoso.com erstellen wollten, müssten Sie ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` kopieren. Kopieren Sie diese Objekt-ID, um sie im nächsten Schritt als `enrollmentAccountObjectId`-Wert zu verwenden.
 
-### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Verwenden Sie den Befehl [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können.
 
@@ -126,7 +126,7 @@ Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in 
 
 Im folgenden Beispiel wird ein Abonnement namens *Dev Team Subscription* in Registrierungskonto erstellt, das im vorherigen Schritt ausgewählt wurde. Bei dem Abonnementangebot handelt es sich um *MS-AZR-0017P* (reguläres Microsoft Enterprise Agreement). Es werden optional auch zwei Benutzer als RBAC-Besitzer für das Abonnement hinzugefügt.
 
-### <a name="resttabrest"></a>[REST](#tab/rest)
+### <a name="rest"></a>[REST](#tab/rest)
 
 Führen Sie die folgende Anforderung aus, und ersetzen Sie dabei `<enrollmentAccountObjectId>` durch den `name`-Wert, den Sie im ersten Schritt (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) kopiert haben. Wie Sie Besitzer festlegen, erfahren Sie [hier](grant-access-to-create-subscription.md#userObjectId).
 
@@ -147,7 +147,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| Elementname  | Erforderlich | type   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | type   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `offerType`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -155,7 +155,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 In der Antwort wird ein `subscriptionOperation`-Objekt für die Überwachung zurückgegeben. Nach Abschluss der Erstellung des Abonnements gibt das `subscriptionOperation`-Objekt ein `subscriptionLink`-Objekt zurück, das die Abonnement-ID enthält.
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Installieren Sie zunächst das Vorschaumodul, indem Sie `Install-Module Az.Subscription -AllowPrerelease` ausführen. Um sicherzustellen, dass `-AllowPrerelease` funktioniert, installieren Sie eine aktuelle Version von PowerShellGet aus [PowerShellGet-Modul abrufen](/powershell/scripting/gallery/installing-psget).
 
@@ -176,7 +176,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [New-AzSubscription](/powershell/module/az.subscription).
 
-### <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installieren Sie zunächst die Vorschauerweiterung, indem Sie `az extension add --name subscription` ausführen.
 
@@ -186,7 +186,7 @@ Führen Sie den folgenden [az account create](/cli/azure/ext/subscription/accoun
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| Elementname  | Erforderlich | type   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | type   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `offer-type`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -337,7 +337,7 @@ POST https://management.azure.com<invoiceSectionId>/providers/Microsoft.Subscrip
 
 ```
 
-| Elementname  | Erforderlich | type   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | type   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | String | Der Anzeigename des Abonnements.|
 | `billingProfileId`   | Ja      | String | Die ID des Abrechnungsprofils, dem die Gebühren für das Abonnement berechnet werden.  |
@@ -502,7 +502,7 @@ POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/c
 }'
 ```
 
-| Elementname  | Erforderlich | type   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | type   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | Ja      | String | Der Anzeigename des Abonnements.|
 | `skuId` | Ja      | String | Die SKU-ID des Azure-Plans. Verwenden Sie für Abonnements vom Typ „Microsoft Azure-Plan“ die ID *0001*. |

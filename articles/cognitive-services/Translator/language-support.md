@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118815"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206122"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -141,7 +141,7 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 | Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
 | Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
 | Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
-| Thailändisch | `th` | Thailändisch `Thai` | <--> | Latein `Latn` |
+| Thailändisch | `th` | Thailändisch `Thai` | --> | Latein `Latn` |
 
 ## <a name="dictionary"></a>Wörterbuch
 
