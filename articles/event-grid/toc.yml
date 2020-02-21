@@ -105,8 +105,10 @@
     - name: Ereignisdomänen
       href: event-domains.md
     - name: Ereignisquellen
+      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
       href: event-sources.md
     - name: Ereignishandler
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
     - name: Notfallwiederherstellung mit Georeplikation
       href: geo-disaster-recovery.md
