@@ -305,46 +305,50 @@
       items:
         - name: Was ist ein Sprachassistent?
           href: voice-assistants.md
-    - name: Erstellen Ihres Assistenten
+    - name: Benutzerdefinierte Befehle (Vorschau)
       items:
-        - name: Benutzerdefinierte Befehle (Vorschau)
+        - name: Was sind benutzerdefinierte Befehle?
           href: custom-commands.md
-        - name: Direct Line Speech
+        - name: Schnellstarts
+          items:
+            - name: Erstellen eines benutzerdefinierten Befehls (Vorschau)
+              href: quickstart-custom-speech-commands-create-new.md
+            - name: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
+              href: quickstart-custom-speech-commands-create-parameters.md
+            - name: Verwenden benutzerdefinierter Befehle mit Custom Voice (Vorschau)
+              href: quickstart-custom-speech-commands-select-custom-voice.md
+            - name: "Verwenden benutzerdefinierter Befehle mit dem Speech\_SDK (Vorschau)"
+              href: quickstart-custom-speech-commands-speech-sdk.md
+        - name: Anleitungen
+          items:
+            - name: "Ausführen benutzerdefinierter Befehle mit dem Speech\_SDK"
+              href: how-to-custom-speech-commands-fulfill-sdk.md
+            - name: Hinzufügen einer Parameterüberprüfung zu einem benutzerdefinierten Befehl
+              href: how-to-custom-speech-commands-validations.md
+            - name: Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl
+              href: how-to-custom-speech-commands-confirmations.md
+            - name: Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl
+              href: how-to-custom-speech-commands-one-step-correction.md
+    - name: Direct Line Speech
+      items:
+        - name: Was ist Direct Line Speech?
           href: direct-line-speech.md
-    - name: Schnellstarts
-      items:
-        - name: 'C# (UWP)'
-          href: quickstart-voice-assistant-csharp-uwp.md
-        - name: 'Java (Windows, macOS, Linux)'
-          href: quickstart-voice-assistant-java-jre.md
-        - name: Java (Android)
-          href: quickstart-voice-assistant-java-android.md
-        - name: Erstellen eines benutzerdefinierten Befehls (Vorschau)
-          href: quickstart-custom-speech-commands-create-new.md
-        - name: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
-          href: quickstart-custom-speech-commands-create-parameters.md
-        - name: Verwenden benutzerdefinierter Befehle mit Custom Voice (Vorschau)
-          href: quickstart-custom-speech-commands-select-custom-voice.md
-        - name: "Verwenden benutzerdefinierter Befehle mit dem Speech\_SDK (Vorschau)"
-          href: quickstart-custom-speech-commands-speech-sdk.md
-    - name: Anleitungen
-      items:
-        - name: "Ausführen benutzerdefinierter Befehle mit dem Speech\_SDK"
-          href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Hinzufügen einer Parameterüberprüfung zu einem benutzerdefinierten Befehl
-          href: how-to-custom-speech-commands-validations.md
-        - name: Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl
-          href: how-to-custom-speech-commands-confirmations.md
-        - name: Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl
-          href: how-to-custom-speech-commands-one-step-correction.md
-    - name: Tutorials
-      items:
-        - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
-          href: tutorial-voice-enable-your-bot-speech-sdk.md
-    - name: Ressourcen
-      items:
-        - name: Häufig gestellte Fragen zu Sprachassistenten
-          href: faq-voice-assistants.md
+        - name: Schnellstarts
+          items:
+            - name: 'C# (UWP)'
+              href: quickstart-voice-assistant-csharp-uwp.md
+            - name: 'Java (Windows, macOS, Linux)'
+              href: quickstart-voice-assistant-java-jre.md
+            - name: Java (Android)
+              href: quickstart-voice-assistant-java-android.md
+        - name: Tutorials
+          items:
+            - name: "Ermöglichen der Verwendung von Sprache mit dem Speech\_SDK"
+              href: tutorial-voice-enable-your-bot-speech-sdk.md
+        - name: Ressourcen
+          items:
+            - name: Häufig gestellte Fragen zu Sprachassistenten
+              href: faq-voice-assistants.md
 - name: Anpassung
   expanded: false
   items:

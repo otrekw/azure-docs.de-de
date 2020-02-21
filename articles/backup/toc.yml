@@ -281,23 +281,23 @@
         - name: Konfigurieren von Azure Backup-Berichten
           items:
             - name: Konfigurieren von Azure Backup-Berichten
-              href: backup-azure-configure-reports.md
-            - name: Datenmodell für Azure Backup-Berichte
-              href: backup-azure-reports-data-model.md
-            - name: Log Analytics-Datenmodell für Azure Backup
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Konfigurieren von Diagnoseereignissen für Recovery Services-Tresore
           items:
             - name: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
               href: backup-azure-diagnostic-events.md
             - name: Log Analytics-Datenmodell für ressourcenspezifische Diagnoseereignisse
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: "Log\_Analytics-Datenmodell für Azure Backup (Modus „Azure-Diagnose“)"
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
         - name: Integrierte Azure Policy-Instanz für Azure Backup
           items:
             - name: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
               href: backup-azure-auto-enable-backup.md
+            - name: Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Virtuelle Azure-Computer im Azure-Portal

@@ -130,10 +130,14 @@
       items:
         - name: Bereitstellen kennwortloser Elemente
           href: howto-authentication-passwordless-deployment.md
-        - name: Kennwortlose Sicherheitsschlüssel
-          href: howto-authentication-passwordless-security-key.md
-        - name: 'Kennwortlos: Windows 10'
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Kennwortlose FIDO2-Sicherheitsschlüssel
+          items:
+            - name: Aktivieren von FIDO2-Sicherheitsschlüsseln für Ihren Mandanten
+              href: howto-authentication-passwordless-security-key.md
+            - name: "Anmelden bei Windows\_10-Geräten"
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Einmaliges Anmelden bei lokalen Ressourcen
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Kennwortlose Anmeldung per Telefon
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business

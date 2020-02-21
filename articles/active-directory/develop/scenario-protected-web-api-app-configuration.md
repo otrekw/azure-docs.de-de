@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 975117ad5c58bed77002a33f0dc5370d0f1c17e2
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b05eefb2a0e516772390f898c22e723b08973338
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931466"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484450"
 ---
 # <a name="protected-web-api-code-configuration"></a>Geschützte Web-API: Codekonfiguration
 
@@ -108,7 +108,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 Die Middleware wird der Web-API durch die folgende Anweisung hinzugefügt:
 
 ```csharp
- services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
+ services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
+         .AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  Aktuell erstellen die ASP.NET Core-Vorlagen Azure Active Directory-Web-APIs, die Benutzer innerhalb Ihrer Organisation oder einer anderen Organisation anmelden. Benutzer werden nicht mit persönlichen Konten angemeldet. Sie können die Vorlagen jedoch so ändern, dass sie den Microsoft Identity Platform-Endpunkt verwenden, indem Sie „Startup.cs“ den folgenden Code hinzufügen:

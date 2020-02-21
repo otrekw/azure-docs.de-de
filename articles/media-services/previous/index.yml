@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Media Services v2 (Vorgängerversion)
+summary: Für Media Services v2 werden derzeit keine neuen Features hinzugefügt. Sehen Sie sich Media Services v3 (aktuelle Version) an.
+metadata:
+  title: Dokumentation zu Azure Media Services v2
+  description: Hier erfahren Sie, wie Sie mithilfe von Media Services v2 sicheres On-Demand- oder Livevideostreaming in Broadcastqualität verwenden.
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500772"
+landingContent:
+- title: Informationen zu Azure Media Services v2
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Übersicht über Azure Media Services v2
+      url: media-services-overview.md
+    - text: Migrieren zu Media Services v3
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: Neues in Media Services v2
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: Legacy-Komponenten
+      url: legacy-components.md
+- title: Livestreaming
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Übersicht
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines Media Services-Kontos über das Portal
+      url: media-services-portal-create-account.md
+    - text: Programmgesteuerter Verbindung
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: Livestreaming über das Azure-Portal
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: Livestreaming mit .NET
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: Übertragen von Videos on Demand
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verwenden des Azure-Portals
+      url: media-services-portal-vod-get-started.md
+    - text: Verwenden von .NET
+      url: media-services-dotnet-get-started.md
+    - text: Verwenden von REST
+      url: media-services-rest-get-started.md
