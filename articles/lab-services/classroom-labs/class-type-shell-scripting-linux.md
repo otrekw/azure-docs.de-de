@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133677"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443549"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Einrichten eines Labs zur Schulung in Shellskripts unter Linux
 Erfahren Sie, wie Sie unter Linux ein Lab für Schulungen zum Erstellen von Shellskripts einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können. 
@@ -32,7 +32,7 @@ Nachdem Sie das Lab-Konto erstellt haben, aktivieren Sie die folgenden Einstellu
 
 | Lab-Kontoeinstellungen | Instructions |
 | ----------- | ------------ |  
-| Marketplace-Bilder | Aktivieren Sie das Image [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) zur Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) | 
+| Marketplace-Bilder | Aktivieren Sie das Image [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) zur Verwendung in Ihrem Lab-Konto. Weitere Informationen finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](specify-marketplace-images.md). | 
 
 Folgen Sie [diesem Tutorial](tutorial-setup-classroom-lab.md), um ein neues Lab mit den folgenden Einstellungen zu erstellen:
 

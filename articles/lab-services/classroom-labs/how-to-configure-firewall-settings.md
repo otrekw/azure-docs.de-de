@@ -3,15 +3,15 @@ title: Firewalleinstellungen für Azure Lab Services
 description: Erfahren Sie, wie Sie die öffentliche IP-Adresse und den Portnummernbereich von virtuellen Computern in einem Lab ermitteln, damit den Firewallregeln Informationen hinzugefügt werden können.
 author: emaher
 ms.author: enewman
-ms.date: 12/12/2019
+ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: da1614e4a3e02ed91ef2d3c59ac4eb3eac0dcc7c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692638"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443453"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Firewalleinstellungen für Azure Lab Services
 
@@ -24,10 +24,10 @@ Jedes Lab verwendet eine einzelne öffentliche IP-Adresse und mehrere Ports.  Di
 
 ## <a name="find-public-ip-for-a-lab"></a>Ermitteln der öffentlichen IP-Adresse für ein Lab
 
-Die öffentlichen IP-Adressen für die einzelnen Labs werden im Labkonto des Lab-Diensts auf dem Blatt **Alle Labs** aufgeführt.  Anweisungen zum Finden des Blatts **Alle Labs** finden Sie unter [Verwalten der Labs in einem Labkonto](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Die öffentlichen IP-Adressen für die einzelnen Labs werden im Labkonto der Lab-Dienste auf der Seite **Alle Labs** aufgeführt.  Anweisungen zum Auffinden der Seite **Alle Labs** finden Sie unter [Verwalten der Labs in einem Labkonto](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
 
 > [!div class="mx-imgBorder"]
-> ![Blatt „Alle Labs“](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> ![Seite „Alle Labs“](../media/how-to-configure-firewall-settings/all-labs-properties.png)
 
 >[!NOTE]
 >Die öffentliche IP-Adresse wird nicht angezeigt, wenn der Vorlagencomputer für Ihr Lab noch nicht veröffentlicht wurde.
@@ -35,3 +35,13 @@ Die öffentlichen IP-Adressen für die einzelnen Labs werden im Labkonto des Lab
 ## <a name="conclusion"></a>Zusammenfassung
 
 Sie kennen nun die öffentliche IP-Adresse für das Lab.  Eingangs- und Ausgangsregeln können in der Firewall der Organisation für die öffentliche IP-Adresse und den Portbereich 49152 – 65535 erstellt werden.  Nachdem die Regeln aktualisiert wurden, können Kursteilnehmer auf ihre VMs zugreifen, ohne dass die Netzwerkfirewall den Zugriff blockiert.
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen finden Sie in folgenden Artikeln:
+
+- [Zulassen der Auswahl des Labstandorts durch den Lab-Ersteller](allow-lab-creator-pick-lab-location.md)
+- [Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk](how-to-connect-peer-virtual-network.md)
+- [Anfügen eines Katalogs mit freigegebenen Images an ein Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Hinzufügen eines Benutzers als Labbesitzer](how-to-add-user-lab-owner.md)
+- [Anzeigen von Firewalleinstellungen für ein Lab](how-to-configure-firewall-settings.md)
+- [Konfigurieren von anderen Einstellungen für ein Lab](how-to-configure-lab-accounts.md)

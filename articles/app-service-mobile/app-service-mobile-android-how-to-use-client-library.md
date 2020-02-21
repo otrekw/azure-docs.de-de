@@ -6,19 +6,14 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 32e0584478031226ed52d6ed5f6849f7ad6d3cfe
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 52e91d900ce0f22862904695ba8adf463219c469
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461588"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 Diese Anleitung beschreibt die Verwendung des Android-Client-SDK für Mobile Apps, um häufige Szenarien, wie z.B. die Folgenden zu implementieren:
 
@@ -290,9 +285,9 @@ MobileServiceTable<ToDoItem> mToDoTable = mClient.getTable("ToDoItemBackup", ToD
 
 Rufen Sie zunächst einen Tabellenverweis ab.  Wenden Sie dann eine Abfrage auf den Tabellenverweis an.  Eine Abfrage ist eine beliebige Kombination aus Folgendem:
 
-* Einer [Filterklausel](#filtering) `.where()`.
-* Einer [Sortierungsklausel](#sorting) `.orderBy()`.
-* Einer [Feldauswahlklausel](#selection) `.select()`.
+* Einer `.where()`-[Filterklausel](#filtering).
+* Einer `.orderBy()`-[Sortierungsklausel](#sorting).
+* Einer `.select()`-[Feldauswahlklausel](#selection).
 * Von `.skip()` und `.top()` für [Ergebnisseiten](#paging).
 
 Die Klauseln müssen in der obigen Reihenfolge angegeben werden.
@@ -452,7 +447,7 @@ Bei einer Anforderung aller Datensätze mit dieser Methode werden mindestens zwe
 > [!TIP]
 > Das Auswählen der richtigen Seitengröße verlangt eine Balance zwischen der Arbeitsspeicherbelegung, während die Anforderung gestellt wird, der Bandbreitenbelegung und der Verzögerung beim vollständigen Empfang der Daten.  Die Standardeinstellung (50 Datensätze) eignet sich für alle Geräte.  Wenn Sie ausschließlich Geräte mit großem Arbeitsspeicher einsetzen, erhöhen Sie den Wert auf bis zu 500.  Wir haben herausgefunden, dass das Erhöhen der Seitengröße auf über 500 Datensätze zu nicht akzeptablen Verzögerungen und großen Arbeitsspeicherproblemen führt.
 
-### <a name="chaining"></a>Gewusst wie: Verketten von Abfragemethoden
+### <a name="chaining"></a>Vorgehensweise: Verketten von Abfragemethoden
 
 Die beim Abfragen von Back-End-Tabellen verwendeten Methoden können verkettet werden. Durch die Verkettung von Abfragemethoden können Sie spezielle Spalten gefilterter Zeilen mit Sortierung und Paging abfragen. Sie können komplexe logische Filter erstellen.  Jede Abfragemethode gibt ein Query-Objekt zurück. Um die Methodenserie zu beenden und die Abfrage auszuführen, rufen Sie die **execute** -Methode auf. Beispiel:
 
@@ -678,7 +673,7 @@ ToDoItem result = mToDoTable
     .get();
 ```
 
-## <a name="untyped"></a>Gewusst wie: Arbeiten mit nicht typisierten Daten
+## <a name="untyped"></a>Vorgehensweise: Arbeiten mit nicht typisierten Daten
 
 Das Programmiermodell ohne Typisierung ermöglicht Ihnen eine genaue Steuerung der JSON-Serialisierung.  Es gibt einige häufige Szenarien, in denen der Einsatz eines nicht typisierten Programmiermodells wünschenswert ist. Beispiel: Ihre Back-End-Tabelle enthält viele Spalten, und Sie müssen nur auf eine Teilmenge der Spalten verweisen.  Im typisierten Modell müssen Sie alle Spalten definieren, die im Mobile Apps-Back-End in Ihrer Datenklasse definiert sind.  Die meisten API-Aufrufe für den Datenzugriff sind gleich wie beim typisierten Programmiermodell. Im untypisierten Modell rufen Sie Methoden des **MobileServiceJsonTable**-Objekts anstelle des **MobileServiceTable**-Objekts auf.
 

@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von Benutzern als Labbesitzer in Azure Lab Services
-description: In diesem Artikel erfahren Sie, wie ein Administrator einen Benutzer als Besitzer eines Labs hinzufügen kann.
+title: Hinzufügen zusätzlicher Benutzer zu einem Lab in Azure Lab Services
+description: In diesem Artikel erfahren Sie, wie ein Administrator einen Benutzer als Besitzer eines Labs in Azure Lab Services hinzufügen kann.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,19 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475252"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443515"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Hinzufügen eines Benutzers als Besitzer eines Classroom-Labs in Azure Lab Services
-In diesem Artikel erfahren Sie, wie Sie einen Benutzer in Azure Lab Services als Besitzer eines Labs hinzufügen.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Hinzufügen zusätzlicher Benutzer zu einem vorhandenen Lab in Azure Lab Services
+In diesem Artikel erfahren Sie, wie ein Administrator zusätzliche Besitzer zu einem vorhandenen Lab hinzufügen kann.
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Hinzufügen von Benutzern zur Leserrolle für das Labkonto
+Wenn Sie einem vorhandenen Lab einen Benutzer als zusätzlichen Besitzer hinzufügen möchten, müssen Sie dem Benutzer zunächst **Lese**-Berechtigung für das Lab-Konto erteilen.
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü links **Alle Dienste** aus. Suchen Sie nach **Lab-Dienste**, und klicken Sie auf das Suchergebnis.
 3. Wählen Sie Ihr **Labkonto** aus der Liste aus. 

@@ -2,13 +2,13 @@
 title: Vorlagensyntax und -ausdrücke
 description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/13/2020
+ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120602"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207399"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax und Ausdrücke in Azure Resource Manager-Vorlagen
 
@@ -16,11 +16,9 @@ Die grundlegende Syntax der Vorlage ist JSON. Allerdings können Sie Ausdrücke 
 
 Ein Vorlagenausdruck darf aus maximal 24.576 Zeichen bestehen.
 
-Für Ausdrücke wird „json('null')“ und für Eigenschaften ein Literalwert von „null“ unterstützt. In beiden Fällen wird dies von Resource Manager-Vorlagen so behandelt, als ob die Eigenschaft nicht vorhanden ist.
-
 ## <a name="use-functions"></a>Verwenden von Funktionen
 
-Das folgende Beispiel zeigt einen Ausdruck im Standardwert eines Parameters:
+Azure Resource Manager bietet [Funktionen](template-functions.md), die Sie in einer Vorlage verwenden können. Das folgende Beispiel zeigt einen Ausdruck, der eine Funktion im Standardwert eines Parameters verwendet:
 
 ```json
 "parameters": {
@@ -40,6 +38,12 @@ Verwenden Sie einfache Anführungszeichen, um einen Zeichenfolgenwert als Parame
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
+
+Die meisten Funktionen funktionieren identisch, unabhängig davon, ob sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Die folgenden Funktionen haben Einschränkungen auf der Grundlage des Bereichs:
+
+* [resourceGroup](template-functions-resource.md#resourcegroup): Kann nur in Bereitstellungen in einer Ressourcengruppe verwendet werden.
+* [resourceId](template-functions-resource.md#resourceid): Kann in jedem Bereich verwendet werden, aber die gültigen Parameter ändern sich je nach Bereich.
+* [subscription](template-functions-resource.md#subscription): Kann nur in Bereitstellungen in einer Ressourcengruppe oder einem Abonnement verwendet werden.
 
 ## <a name="escape-characters"></a>Escape-Zeichen
 
@@ -65,6 +69,15 @@ Verwenden Sie den umgekehrten Schrägstrich, um doppelte Anführungszeichen in e
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+## <a name="null-values"></a>NULL-Werte
+
+Um eine Eigenschaft auf Null festzulegen, können Sie **null** oder **[json('null')]** verwenden. Die [json-Funktion](template-functions-array.md#json) gibt ein leeres Objekt zurück, wenn Sie `null` als Parameter angeben. In beiden Fällen wird dies von Resource Manager-Vorlagen so behandelt, als ob die Eigenschaft nicht vorhanden ist.
+
+```json
+"stringValue": null,
+"objectValue": "[json('null')]"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

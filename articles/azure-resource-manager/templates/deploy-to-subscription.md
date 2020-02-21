@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120617"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207654"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -135,7 +135,7 @@ Mit der folgenden Vorlage wird eine leere Ressourcengruppe erstellt.
 }
 ```
 
-Verwenden Sie das [copy-Element](create-multiple-instances.md) mit Ressourcengruppen, um mehrere Ressourcengruppen erstellen zu können.
+Verwenden Sie das [copy-Element](copy-resources.md) mit Ressourcengruppen, um mehrere Ressourcengruppen erstellen zu können.
 
 ```json
 {
@@ -170,7 +170,7 @@ Verwenden Sie das [copy-Element](create-multiple-instances.md) mit Ressourcengru
 }
 ```
 
-Weitere Informationen zur Ressourceniteration finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen](./create-multiple-instances.md) sowie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./template-tutorial-create-multiple-instances.md).
+Weitere Informationen zur Ressourceniteration finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource in Azure Resource Manager-Vorlagen](./copy-resources.md) sowie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](./template-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-group-and-resources"></a>Ressourcengruppen und Ressourcen
 

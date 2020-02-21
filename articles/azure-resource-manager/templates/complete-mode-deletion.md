@@ -2,13 +2,13 @@
 title: Löschung des vollständigen Modus
 description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/13/2020
+ms.openlocfilehash: 80d2ee356e3bc15a178862c453bf7f1ab8d66c77
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715594"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207807"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 
@@ -121,6 +121,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Notebooks](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
 > - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
@@ -153,6 +154,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft.SoftwarePlan](#microsoftsoftwareplan)
 > - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.SpoolService](#microsoftspoolservice)
 > - [Microsoft.SQL](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.Storage](#microsoftstorage)
@@ -372,6 +374,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | billingAccounts/billingProfiles/instructions | Nein |
 > | billingAccounts/billingProfiles/invoices | Nein |
 > | billingAccounts/billingProfiles/invoices/pricesheet | Nein |
+> | billingAccounts/billingProfiles/invoices/transactions | Nein |
 > | billingAccounts/billingProfiles/invoiceSections | Nein |
 > | billingAccounts/billingProfiles/invoiceSections/billingPermissions | Nein |
 > | billingAccounts/billingProfiles/invoiceSections/billingRoleAssignments | Nein |
@@ -489,7 +492,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | Redis | Ja |
-> | RedisConfigDefinition | Nein |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -712,6 +714,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | registries/getBuildSourceUploadUrl | Nein |
 > | registries/GetCredentials | Nein |
 > | registries/importImage | Nein |
+> | registries/privateEndpointConnectionProxies | Nein |
+> | registries/privateEndpointConnectionProxies/validate | Nein |
+> | registries/privateLinkResources | Nein |
 > | registries/queueBuild | Nein |
 > | registries/regenerateCredential | Nein |
 > | registries/regenerateCredentials | Nein |
@@ -1397,6 +1402,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | netappaccounts/capacitypools/volumes | Ja |
 > | netappaccounts/capacitypools/volumes/mounttargets | Ja |
 > | netappaccounts/capacitypools/volumes/snapshots | Ja |
+
+## <a name="microsoftnotebooks"></a>Microsoft.Notebooks
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | NotebookProxies | Nein |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1512,7 +1524,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Löschung des vollständigen Modus |
 > | ------------- | ----------- |
 > | clusters | Ja |
-> | devices | Nein |
 > | linkTargets | Nein |
 > | storageInsightConfigs | Nein |
 > | workspaces | Ja |
@@ -1523,6 +1534,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | workspaces/privateEndpointConnections | Nein |
 > | workspaces/privateLinkResources | Nein |
 > | workspaces/query | Nein |
+> | workspaces/scopedPrivateLinkProxies | Nein |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1745,8 +1757,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | bookmarks | Nein |
 > | cases | Nein |
 > | dataConnectors | Nein |
+> | dataConnectorsCheckRequirements | Nein |
 > | entities | Nein |
 > | entityQueries | Nein |
+> | incidents | Nein |
 > | officeConsents | Nein |
 > | settings | Nein |
 
@@ -1780,6 +1794,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | containerGroupSets | Ja |
 > | edgeclusters | Ja |
 > | edgeclusters/applications | Nein |
+> | managedclusters | Ja |
+> | managedclusters/nodetypes | Nein |
 > | networks | Ja |
 > | secretstores | Ja |
 > | secretstores/certificates | Nein |
@@ -1837,6 +1853,14 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | applicationDefinitions | Ja |
 > | applications | Ja |
 > | jitRequests | Ja |
+
+## <a name="microsoftspoolservice"></a>Microsoft.SpoolService
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Löschung des vollständigen Modus |
+> | ------------- | ----------- |
+> | registeredSubscriptions | Nein |
+> | spools | Ja |
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 
@@ -1993,6 +2017,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | devices | Ja |
 > | vendors | Nein |
 > | vendors/skus | Nein |
+> | vendors/vnfs | Nein |
 > | vnfs | Ja |
 
 ## <a name="microsoftweb"></a>Microsoft.Web

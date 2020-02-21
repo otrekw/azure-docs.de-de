@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668482"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459173"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird die Offlinesynchronisierung mit der Mobile Apps-Funktion von Azure App Service für iOS behandelt. Durch die Offlinesynchronisierung können Endbenutzer mit einer mobilen App interagieren, um Daten anzuzeigen, hinzuzufügen oder zu ändern, auch wenn keine Verbindung mit dem Netzwerk besteht. Änderungen werden in einer lokalen Datenbank gespeichert. Sobald das Gerät wieder online ist, werden die Änderungen mit dem Remote-Back-End synchronisiert.
@@ -156,12 +151,12 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
 ![MS_TableOperations-Tabellenattribute][defining-core-data-tableoperations-entity]
 
-| Attribut | type |
+| attribute | type |
 | --- | --- |
 | id | Integer 64 |
-| itemId | Zeichenfolge |
+| itemId | String |
 | properties | Binary Data |
-| table | Zeichenfolge |
+| table | String |
 | tableKind | Integer 16 |
 
 
@@ -169,9 +164,9 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
  ![MS_TableOperationErrors-Tabellenattribute][defining-core-data-tableoperationerrors-entity]
 
-| Attribut | type |
+| attribute | type |
 | --- | --- |
-| id |Zeichenfolge |
+| id |String |
 | operationId |Integer 64 |
 | properties |Binary Data |
 | tableKind |Integer 16 |
@@ -180,26 +175,26 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribut | type |
+| attribute | type |
 | --- | --- |
-| id |Zeichenfolge |
-| key |Zeichenfolge |
+| id |String |
+| Schlüssel |String |
 | keyType |Integer 64 |
-| table |Zeichenfolge |
-| value |Zeichenfolge |
+| table |String |
+| value |String |
 
 ### <a name="data-table"></a>Datentabelle
 
 **TodoItem**
 
-| Attribut | type | Hinweis |
+| attribute | type | Hinweis |
 | --- | --- | --- |
 | id | Zeichenfolge, als erforderlich gekennzeichnet |Primärschlüssel im Remotespeicher |
 | complete | Boolean | To-do-Elementfeld |
-| text |string |To-do-Elementfeld |
+| text |String |To-do-Elementfeld |
 | createdAt | Date | (optional) Zuordnung zur **createdAt**-Systemeigenschaft |
 | updatedAt | Date | (optional) Zuordnung zur **updatedAt**-Systemeigenschaft |
-| version | Zeichenfolge | (optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
+| version | String | (optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
 
 ## <a name="setup-sync"></a>Ändern des Synchronisierungsverhaltens der App
 In diesem Abschnitt ändern Sie die App, sodass beim App-Start oder beim Einfügen und Aktualisieren von Elementen keine Synchronisierung erfolgt. Es wird nur synchronisiert, wenn die Aktualisierungsschaltfläche betätigt wird.
@@ -269,7 +264,7 @@ Beim Synchronisieren des lokalen Speichers mit dem Server haben wir die Methode 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Offlinedatensynchronisierung in Mobile Apps]
-* [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services]\(Im Video geht es zwar um Mobile Services, aber die Mobile Apps-Offlinesynchronisierung funktioniert auf ähnliche Weise.\)
+* [Cloud Cover: Offlinesynchronisierung in Azure Mobile Services] \(Im Video geht es zwar um Mobile Services, aber die Mobile Apps-Offlinesynchronisierung funktioniert auf ähnliche Weise.\)
 
 <!-- URLs. -->
 

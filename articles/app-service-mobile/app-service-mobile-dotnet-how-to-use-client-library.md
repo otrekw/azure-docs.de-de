@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668468"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459190"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="overview"></a>Übersicht
 In dieser Anleitung wird die Ausführung gängiger Aufgaben mithilfe der verwalteten Clientbibliothek für Mobile App Service-Apps unter Azure in Windows- und Xamarin-Apps beschrieben. Wenn Sie keine Erfahrungen mit Mobile Apps haben, sollten Sie eventuell zunächst das Tutorial [Erstellen einer Windows-App][1] absolvieren. In diesem Handbuch konzentrieren wir uns auf das clientseitige verwaltete SDK. Weitere Informationen zu den serverseitigen SDKs für Mobile Apps finden Sie in der Dokumentation zum [.NET Server SDK][2] oder [Node.js Server SDK][3].
@@ -59,7 +54,7 @@ public class TodoItem
 
 Das [JsonPropertyAttribute][6] wird verwendet, um die *PropertyName*-Zuordnung zwischen dem Clientfeld und dem Tabellenfeld zu definieren.
 
-Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Sie im Thema zum [.NET Server SDK][7] oder zum [Node.js Server SDK][8]. Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure-Portal]verwenden.
+Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Sie im Thema zum [.NET Server SDK][7] oder zum [Node.js Server SDK][8]. Wenn Sie Ihr Mobile App-Back-End im Azure-Portal mithilfe des Schnellstarts erstellt haben, können Sie auch die Einstellung **Einfache Tabellen** im [Azure portal]verwenden.
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>Gewusst wie: Installieren des SDK-Pakets für verwaltete Clients
 Verwenden Sie eine der folgenden Methoden, um das SDK-Paket für verwaltete Clients für Mobile Apps von [NuGet][9]zu installieren:
@@ -86,10 +81,10 @@ Der folgende Code erstellt das [MobileServiceClient][12] -Objekt, das für den Z
 var client = new MobileServiceClient("MOBILE_APP_URL");
 ```
 
-Ersetzen Sie im obigen Code `MOBILE_APP_URL` durch die URL des Mobile App-Back-Ends. Sie finden die URL auf dem Blatt für das Mobile App-Back-End im [Azure-Portal]. Beim MobileServiceClient-Objekt muss es sich um ein Singleton-Objekt handeln.
+Ersetzen Sie im obigen Code `MOBILE_APP_URL` durch die URL des Mobile App-Back-Ends. Sie finden die URL auf dem Blatt für das Mobile App-Back-End im [Azure portal]. Beim MobileServiceClient-Objekt muss es sich um ein Singleton-Objekt handeln.
 
 ## <a name="work-with-tables"></a>Arbeiten mit Tabellen
-Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datensätzen sowie Ändern der Daten in der Tabelle.  Die folgenden Themen werden behandelt:
+Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datensätzen sowie Ändern der Daten in der Tabelle.  Die folgenden Themen werden erörtert:
 
 * [Erstellen eines Tabellenverweises](#instantiating)
 * [Abfragen von Daten](#querying)
@@ -246,7 +241,7 @@ In tatsächlichen Apps können Sie ähnliche Abfragen wie im vorherigen Beispiel
 
 
 ### <a name="selecting"></a>Vorgehensweise: Auswählen bestimmter Spalten
-Sie können angeben, welche Eigenschaften im Ergebnis enthalten sein sollen, indem Sie eine [Select] -Klausel zu Ihrer Abfrage hinzufügen. Der folgende Code zeigt, wie Sie nur ein Feld auswählen oder auch mehrere Felder auswählen und formatieren können:
+Sie können angeben, welche Eigenschaften im Ergebnis enthalten sein sollen, indem Sie eine [Auswählen] -Klausel zu Ihrer Abfrage hinzufügen. Der folgende Code zeigt, wie Sie nur ein Feld auswählen oder auch mehrere Felder auswählen und formatieren können:
 
 ```csharp
 // Select one field -- just the Text
@@ -651,7 +646,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.Clients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 3. Fügen Sie je nach verwendeter Plattform den folgenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
-   * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, in dem Sie Ihre Anwendung bereitgestellt haben. Das Format muss https://login.microsoftonline.com/contoso.onmicrosoft.com sein. Sie können diesen Wert im [Azure-Portal] in Ihrer Azure Active Directory-Instanz auf der Registerkarte „Domäne“ kopieren.
+   * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, in dem Sie Ihre Anwendung bereitgestellt haben. Das Format muss https://login.microsoftonline.com/contoso.onmicrosoft.com sein. Sie können diesen Wert im [Azure portal] in Ihrer Azure Active Directory-Instanz auf der Registerkarte „Domäne“ kopieren.
    * Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr mobiles App-Back-End. Sie können die Client-ID im Portal auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen** abrufen.
    * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
    * Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt */.auth/login/done* Ihrer Website. Dieser Wert sollte *https://contoso.azurewebsites.net/.auth/login/done* ähnlich sein.
@@ -826,7 +821,7 @@ Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie 
 
 In einem Serverfluss verwaltet Azure App Service den OAuth-Authentifizierungsfluss durch Anzeigen der Anmeldeseite des ausgewählten Anbieters.  Sobald der Identitätsanbieter eine Antwort zurückgibt, generiert Azure App Service ein App Service-Authentifizierungstoken. Die [LoginAsync]-Methode gibt einen [MobileServiceUser] zurück, der sowohl die [UserId] des authentifizierten Benutzers als auch das [MobileServiceAuthenticationToken] in Form eines JSON-Webtokens (JWT) bereitstellt. Dieses Token kann zwischengespeichert und wiederverwendet werden, bis es abläuft. Weitere Informationen finden Sie unter [Zwischenspeichern des Authentifizierungstokens](#caching).
 
-### <a name="caching"></a>Zwischenspeichern des Authentifizierungstokens
+### <a name="caching"></a>Zwischenspeichern von Authentifizierungstoken
 In einigen Fällen kann der Aufruf der Anmeldemethode nach der ersten erfolgreichen Authentifizierung vermieden werden, indem das Authentifizierungstoken des Anbieters gespeichert wird.  Microsoft Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [Kennworttresor] zum Zwischenspeichern des aktuellen Authentifizierungstokens verwenden:
 
 ```csharp
@@ -901,7 +896,7 @@ Für Pushvorgänge an den WNS MÜSSEN Sie [eine Microsoft Store-Paket-SID abrufe
 Die Anforderung von Tags vom Client wird nicht unterstützt.  Tag-Anforderungen werden automatisch aus der Registrierung gelöscht.
 Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen.  Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die benutzerdefinierte API auf.
 
-### <a name="package-sid"></a>Gewusst wie: Abrufen einer Microsoft Store-Paket-SID
+### <a name="package-sid"></a>Vorgehensweise: Abrufen einer Microsoft Store-Paket-SID
 Für Pushbenachrichtigungen in Microsoft Store-Apps ist eine Paket-SID erforderlich.  Registrieren Sie Ihre Anwendung beim Microsoft Store, um eine Paket-SID zu erhalten.
 
 Dieser Wert wird wie folgt abgerufen:
@@ -1060,12 +1055,12 @@ public class MyHandler : DelegatingHandler
 [OrderByDescending]: https://msdn.microsoft.com/library/azure/dn250568(v=azure.10).aspx
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
-[Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
+[Auswählen]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx

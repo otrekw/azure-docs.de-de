@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583489"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443226"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -96,6 +96,9 @@ Der Ersteller des Labs (Instruktor/Professor) kann eine Verbindung mit einer Kur
  Um eine Verbindung mit dem virtuellen Kursteilnehmercomputer herzustellen, zeigen Sie mit der Maus auf den virtuellen Computer in der Liste, und wählen Sie dann die Schaltfläche „Computer“ aus.  
 
 ![Schaltfläche „Herstellen einer Verbindung mit Kursteilnehmer-VM“](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+> [!NOTE]
+> Wenn der Professor den virtuellen Computer startet und eine Verbindung mit ihm herstellt, ist das Kontingent für Schüler und Studenten davon nicht betroffen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen Verwendungsoptionen für Kursteilnehmer, die Sie (als Lab-Besitzer) konfigurieren können, finden Sie im folgenden Artikel: [Konfigurieren von Nutzungseinstellungen und Richtlinien](how-to-configure-student-usage.md).

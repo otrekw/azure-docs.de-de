@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898709"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425220"
 ---
 # <a name="keys-and-values"></a>Schlüssel und Werte
 
@@ -25,7 +25,7 @@ Bei Verwendung von Konfigurationsdaten in Anwendungsframeworks sind möglicherwe
 
 Für in App Configuration gespeicherte Schlüssel wird die Groß-/Kleinschreibung beachtet, und es handelt sich um Unicode-basierte Zeichenfolgen. *app1* und *App1* sind in einem App Configuration-Speicher zwei unterschiedliche Schlüssel. Beachten Sie dies, wenn Sie in einer Anwendung Konfigurationseinstellungen verwenden, da für Konfigurationsschlüssel in einigen Frameworks die Groß-/Kleinschreibung nicht beachtet wird. Vom ASP.NET Core-Konfigurationssystem werden Schlüssel beispielsweise als Zeichenfolgen ohne Berücksichtigung der Groß-/Kleinschreibung behandelt. Um beim Abfragen von App Configuration in einer ASP.NET Core-Anwendung unvorhersehbares Verhalten zu vermeiden, verwenden Sie keine Schlüssel, die sich nur anhand der Groß-/Kleinschreibung unterscheiden.
 
-Sie können in Schlüsselnamen, die in App Configuration eingegeben werden, beliebige Unicode-Zeichen verwenden, mit Ausnahme von `*`, `,` und `\`. Diese Zeichen sind reserviert. Wenn Sie ein reserviertes Zeichen einfügen möchten, müssen Sie es wie folgt mit Escapezeichen versehen: `\{Reserved Character}`. Für ein Schlüssel-Wert-Paar gilt ein kombiniertes Größenlimit von 10.000 Zeichen. Dieses Limit umfasst alle Zeichen des Schlüssels, seinen Wert sowie alle zugeordneten optionalen Attribute. Innerhalb dieses Limits können Sie für Schlüssel viele hierarchische Ebenen verwenden.
+Sie können in Schlüsselnamen, die in App Configuration eingegeben werden, beliebige Unicode-Zeichen verwenden, mit Ausnahme von `*`, `,` und `\`. Diese Zeichen sind reserviert. Wenn Sie ein reserviertes Zeichen einfügen möchten, müssen Sie es wie folgt mit Escapezeichen versehen: `\{Reserved Character}`. Für ein Schlüssel-Wert-Paar gilt ein kombiniertes Größenlimit von 10 KB. Dieses Limit umfasst alle Zeichen des Schlüssels, seinen Wert sowie alle zugeordneten optionalen Attribute. Innerhalb dieses Limits können Sie für Schlüssel viele hierarchische Ebenen verwenden.
 
 ### <a name="design-key-namespaces"></a>Entwerfen von Schlüsselnamespaces
 
@@ -51,7 +51,7 @@ Hier sind einige Beispiele dafür angegeben, wie Sie Ihre Schlüsselnamen in ein
 
 ### <a name="label-keys"></a>Bezeichnen von Schlüsseln
 
-Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *A* und *B* steht in einem App Configuration-Speicher für zwei separate Schlüssel. Standardmäßig ist die Bezeichnung für einen Schlüsselwert leer oder `null`.
+Schlüsselwerte in App Configuration können optional über das Attribut „label“ (Bezeichnung) verfügen. Bezeichnungen werden genutzt, um zwischen Schlüsselwerten mit demselben Schlüssel zu unterscheiden. Ein Schlüssel *app1* mit den Bezeichnungen *A* und *B* steht in einem App Configuration-Speicher für zwei separate Schlüssel. Standardmäßig weist ein Schlüsselwert keine Bezeichnung auf. Um explizit auf einen Schlüsselwert ohne eine Bezeichnung zu verweisen, verwenden Sie `\0` (URL-codiert als `%00`).
 
 Eine Bezeichnung ist praktisch zum Erstellen von Varianten eines Schlüssels. Mit Bezeichnungen werden häufig mehrere Umgebungen für den gleichen Schlüssel angegeben:
 
@@ -74,8 +74,6 @@ Jeder Schlüsselwert wird anhand seines Schlüssels und einer Bezeichnung, die a
 | `key` wird weggelassen oder lautet `key=*` | Übereinstimmung mit allen Schlüsseln |
 | `key=abc` | Exakte Übereinstimmung mit dem Schlüsselnamen **abc** |
 | `key=abc*` | Übereinstimmung mit Schlüsselnamen, die mit **abc** beginnen |
-| `key=*abc` | Übereinstimmung mit Schlüsselnamen, die auf **abc** enden |
-| `key=*abc*` | Übereinstimmung mit Schlüsselnamen, die **abc** enthalten |
 | `key=abc,xyz` | Übereinstimmung mit Schlüsselnamen mit **abc** oder **xyz**, auf fünf CSVs beschränkt |
 
 Sie können auch die folgenden Bezeichnungsmuster verwenden:
@@ -86,8 +84,6 @@ Sie können auch die folgenden Bezeichnungsmuster verwenden:
 | `label=%00` | Übereinstimmung mit der Bezeichnung `null` |
 | `label=1.0.0` | Exakte Übereinstimmung mit der Bezeichnung **1.0.0** |
 | `label=1.0.*` | Übereinstimmung mit Bezeichnungen, die mit **1.0.** beginnen |
-| `label=*.0.0` | Übereinstimmung mit Bezeichnungen, die auf **.0.0** enden |
-| `label=*.0.*` | Übereinstimmung mit Bezeichnungen, die **.0.** enthalten |
 | `label=%00,1.0.0` | Übereinstimmung mit den Bezeichnungen `null` oder **1.0.0**, auf fünf CSVs beschränkt |
 
 ## <a name="values"></a>Werte

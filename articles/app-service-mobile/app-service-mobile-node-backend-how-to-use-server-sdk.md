@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668763"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461452"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
->  Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 Dieser Artikel enthält ausführliche Informationen und Beispiele, die veranschaulichen, wie Sie im Mobile Apps-Feature von Azure App Service ein Node.js-Back-End verwenden.
 
@@ -136,7 +131,7 @@ Für Visual Studio 2015 ist eine Erweiterung zum Entwickeln der Node.js-Anwendu
 
 ### <a name="create-node-backend-portal"></a>Erstellen eines Node.js-Back-Ends mithilfe des Azure-Portals
 
-Sie können ein Mobile Apps-Back-End direkt im [Azure-Portal] erstellen. Sie können entweder die folgenden Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen Client und einen Server erstellen. Das Tutorial enthält eine vereinfachte Version dieser Anweisungen und eignet sich am besten für Proof of Concept-Projekte.
+Sie können ein Mobile Apps-Back-End direkt im [Azure portal] erstellen. Sie können entweder die folgenden Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen Client und einen Server erstellen. Das Tutorial enthält eine vereinfachte Version dieser Anweisungen und eignet sich am besten für Proof of Concept-Projekte.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -333,7 +328,7 @@ Greifen Sie über eine TCP/IP-Verbindung auf die Datenbank zu. Geben Sie einen B
 
 ### <a name="howto-config-localdev"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
-Mobile Apps liest eine JavaScript-Datei mit dem Namen *azureMobile.js* aus dem lokalen Dateisystem. Verwenden Sie diese Datei nicht, um das Mobile Apps SDK in einer Produktionsumgebung zu konfigurieren. Verwenden Sie stattdessen **App-Einstellungen** im [Azure-Portal].
+Mobile Apps liest eine JavaScript-Datei mit dem Namen *azureMobile.js* aus dem lokalen Dateisystem. Verwenden Sie diese Datei nicht, um das Mobile Apps SDK in einer Produktionsumgebung zu konfigurieren. Verwenden Sie stattdessen **App-Einstellungen** im [Azure portal].
 
 Die Datei „azureMobile.js“ muss ein Konfigurationsobjekt exportieren. Die am häufigsten verwendeten Einstellungen lauten:
 
@@ -361,15 +356,15 @@ module.exports = {
 };
 ```
 
-Es ist ratsam, dass Sie **azureMobile.js** Ihrer **.gitignore**-Datei hinzufügen (oder eine andere Datei zum Ignorieren der Quellcodeverwaltung), um zu verhindern, dass Kennwörter in der Cloud gespeichert werden. Konfigurieren Sie die Produktionseinstellungen immer in den **App-Einstellungen** im [Azure-Portal].
+Es ist ratsam, dass Sie **azureMobile.js** Ihrer **.gitignore**-Datei hinzufügen (oder eine andere Datei zum Ignorieren der Quellcodeverwaltung), um zu verhindern, dass Kennwörter in der Cloud gespeichert werden. Konfigurieren Sie die Produktionseinstellungen immer in den **App-Einstellungen** im [Azure portal].
 
 ### <a name="howto-appsettings"></a>Konfigurieren von App-Einstellungen für Ihre mobile App
 
-Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azure-Portal] eine entsprechende App-Einstellung. Verwenden Sie die folgende Liste, um Ihre App unter **App-Einstellungen** zu konfigurieren:
+Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azure portal] eine entsprechende App-Einstellung. Verwenden Sie die folgende Liste, um Ihre App unter **App-Einstellungen** zu konfigurieren:
 
 | App-Einstellung | azureMobile.js-Einstellung | BESCHREIBUNG | Gültige Werte |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Name der App |Zeichenfolge |
+| **MS_MobileAppName** |name |Name der App |string |
 | **MS_MobileLoggingLevel** |logging.level |Mindestprotokolliergrad für die zu protokollierenden Meldungen. |error, warning, info, verbose, debug, silly |
 | **MS_DebugMode** |debug |Aktiviert oder deaktiviert den Debugmodus. |true, false |
 | **MS_TableSchema** |data.schema |Name des Standardschemas für SQL-Tabellen |string (default: dbo) |
@@ -379,7 +374,7 @@ Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azu
 
 So legen Sie eine App-Einstellung fest:
 
-1. Melden Sie sich beim [Azure-Portal] an.
+1. Melden Sie sich beim [Azure portal] an.
 1. Wählen Sie **Alle Ressourcen** oder **App Services** aus, und klicken Sie dann auf den Namen Ihrer mobilen App.
 1. Der Bereich **Einstellungen** wird standardmäßig geöffnet. Wenn dies nicht der Fall ist, klicken Sie auf **Einstellungen**.
 1. Wählen Sie im Menü **Allgemein** die Option **Anwendungseinstellungen** aus.
@@ -396,7 +391,7 @@ Nach dem Ändern der meisten App-Einstellungen ist ein Neustart des Diensts erfo
 
 Das Verwenden von Azure SQL-Datenbank als Datenspeicher ist über alle Azure App Service-Anwendungstypen hinweg identisch. Führen Sie diese Schritte zum Erstellen eines Mobile Apps-Back-Ends aus, falls Sie dies noch nicht getan haben:
 
-1. Melden Sie sich beim [Azure-Portal] an.
+1. Melden Sie sich beim [Azure portal] an.
 1. Klicken Sie oben links im Fenster auf **+NEU** > **Web + Mobil** > **Mobile App**, und geben Sie dann einen Namen für Ihr Mobile Apps-Back-End an.
 1. Geben Sie im Feld **Ressourcengruppe** den gleichen Namen wie für Ihre App ein.
 1. Der App Service-Plan „Standard“ wird ausgewählt. Wenn Sie den App Service-Plan ändern möchten, gehen Sie folgendermaßen von:
@@ -434,7 +429,7 @@ Das Erstellen der Datenbank kann einige Minuten dauern. Im Bereich **Benachricht
 
 ### <a name="howto-tables-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf Tabellen
 
-Wenn Sie die App Service-Authentifizierung mit dem `tables`-Endpunkt verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure-Portal] konfigurieren. Weitere Informationen finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
+Wenn Sie die App Service-Authentifizierung mit dem `tables`-Endpunkt verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure portal] konfigurieren. Weitere Informationen finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
 
 * [Konfigurieren der Azure Active Directory-Authentifizierung]
 * [Konfigurieren der Facebook-Authentifizierung]
@@ -745,7 +740,7 @@ Bevor Sie sich für Pushbenachrichtigungen von einem authentifizierten Client re
 
 Zusätzlich zur Datenzugriff-API über den `/tables`-Endpunkt unterstützt Mobile Apps auch benutzerdefinierte APIs. Benutzerdefinierte APIs werden auf ähnliche Weise wie Tabellendefinitionen definiert und können auf die gleichen Funktionen zugreifen, einschließlich der Authentifizierung.
 
-Wenn Sie die App Service-Authentifizierung mit einer benutzerdefinierten API verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure-Portal] konfigurieren. Weitere Informationen finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
+Wenn Sie die App Service-Authentifizierung mit einer benutzerdefinierten API verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure portal] konfigurieren. Weitere Informationen finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
 
 * [Konfigurieren der Azure Active Directory-Authentifizierung]
 * [Konfigurieren der Facebook-Authentifizierung]
@@ -899,7 +894,7 @@ Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.
 * [Aktivieren der Diagnoseprotokollierung in Azure App Service]
 * [Problembehandlung für Azure App Service in Visual Studio]
 
-Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung. Intern nutzt das Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung. Die Protokollierung wird automatisch aktiviert, wenn Sie den Debugmodus aktivieren oder die App-Einstellung `MS_DebugMode` im [Azure-Portal] auf „true“ festlegen. Generierte Protokolle werden im [Azure-Portal] in den Diagnoseprotokollen angezeigt.
+Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollierung. Intern nutzt das Mobile Apps Node.js SDK [Winston] für die Diagnoseprotokollierung. Die Protokollierung wird automatisch aktiviert, wenn Sie den Debugmodus aktivieren oder die App-Einstellung `MS_DebugMode` im [Azure portal] auf „true“ festlegen. Generierte Protokolle werden im [Azure portal] in den Diagnoseprotokollen angezeigt.
 
 <!-- Images -->
 [0]: ./media/app-service-mobile-node-backend-how-to-use-server-sdk/npm-init.png
@@ -935,7 +930,7 @@ Node.js-Anwendungen haben Zugriff auf viele Tools für die Diagnoseprotokollieru
 [Express]: https://expressjs.com/
 [Swagger]: https://swagger.io/
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 [OData]: https://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp-Beispiel auf GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
