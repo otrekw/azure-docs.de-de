@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Bearbeiten von Azure Policy-Sicherheitsrichtlinien über die REST-API | Microsoft-Dokumentation
+title: Erstellen und Bearbeiten von Azure Policy-Sicherheitsrichtlinien über die REST-API
 description: Erfahren Sie mehr über die Azure Policy-Richtlinienverwaltung über eine REST-API.
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521500"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430940"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurieren einer Sicherheitsrichtlinie in Azure Policy über die REST-API
 

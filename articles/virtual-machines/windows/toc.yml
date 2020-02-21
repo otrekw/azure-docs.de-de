@@ -710,7 +710,7 @@
             - name: Häufig gestellte Fragen
               href: migration-classic-resource-manager-faq.md
 - name: Problembehandlung
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

@@ -6,12 +6,14 @@
       href: overview.md
 - name: Schnellstarts
   items:
-    - name: Vorschreiben der Verwendung der MFA für bestimmte Apps
-      href: app-based-mfa.md
     - name: 'Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen'
       href: require-tou.md
     - name: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
       href: app-sign-in-risk.md
+- name: Tutorials
+  items:
+    - name: Anfordern von Azure Multi-Factor Authentication
+      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
 - name: Konzepte
   expanded: false
   items:

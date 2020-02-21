@@ -11,32 +11,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553000"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430631"
 ---
 # <a name="protect-your-machines-and-applications"></a>Schützen Ihrer Computer und Anwendungen
 Werden potenzielle Sicherheitslücken erkannt, erstellt Azure Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
 
 In diesem Artikel wird die Seite **Compute und Apps** des Abschnitts „Ressourcensicherheit“ von Azure Security Center erläutert.
 
-Eine vollständige Liste der Empfehlungen, die auf dieser Seite angezeigt werden können, finden Sie unter [Daten- und Speicherempfehlungen](recommendations-reference.md#recs-computeapp).
+Eine vollständige Liste der Empfehlungen, die auf dieser Seite angezeigt werden können, finden Sie unter [Compute- und App-Empfehlungen](recommendations-reference.md#recs-computeapp).
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>Anzeigen der Sicherheit Ihrer Compute- und App-Ressourcen
 
-[![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
+[![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-Wenn Sie den Status Ihrer Compute- und App-Ressourcen anzeigen möchten, wählen Sie **Compute und Apps** unter **Ressourcen** in der Randleiste von Security Center aus. Die folgenden Registerkarten sind verfügbar:
+Um den Status Ihrer Compute- und App-Ressourcen anzuzeigen, wählen Sie im linken Bereich von Security Center **Compute und Apps** aus. Die folgenden Registerkarten sind verfügbar:
 
 * **Übersicht**: Listet die Empfehlungen für alle Compute- und App-Ressourcen sowie deren aktuellen Sicherheitsstatus auf. 
 
-* [**VMs und Computer**](#vms-and-computers): Listet die Empfehlungen für Ihre VMs und Computer sowie deren aktuellen Sicherheitsstatus auf.
+* [**VMs und Server**](#vms-and-computers): Listet die Empfehlungen für Ihre VMs und Computer sowie deren aktuellen Sicherheitsstatus auf.
 
 * [**VM-Skalierungsgruppen**](#vmscale-sets): Listet die Empfehlungen für Ihre Skalierungsgruppen auf. 
 
@@ -44,7 +44,7 @@ Wenn Sie den Status Ihrer Compute- und App-Ressourcen anzeigen möchten, wählen
 
 * [**App Services**](#app-services): Listet die Empfehlungen für Ihre App Service-Umgebungen und deren jeweiligen Sicherheitsstatus auf.
 
-* **Container**: Listet die Empfehlungen für Ihre Container und die Sicherheitsbewertung ihrer Konfigurationen auf.
+* [**Container**](#containers): Listet die Empfehlungen für Ihre Container und die Sicherheitsbewertung ihrer Konfigurationen auf.
 
 * **Computeressourcen**: Listet die Empfehlungen für Ihre Computeressourcen wie Service Fabric-Cluster und Event Hubs auf.
 
@@ -60,7 +60,10 @@ Jeder Empfehlung ist eine Reihe von Aktionen zugeordnet, die ausgeführt werden 
 > Die Sicherheitsempfehlungen sind identisch mit denen auf der Seite **Empfehlungen**, aber hier werden sie nach dem von Ihnen ausgewählten Ressourcentyp gefiltert. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 >
 
-### <a name="vms-and-computers"></a>VMs und Computer
+
+
+
+### <a name="vms-and-computers"></a>VMs und Server
 Der Abschnitt „VMs und Computer“ enthält eine Übersicht über alle Sicherheitsempfehlungen für Ihre VMs und Computer. Es sind vier Arten von Computern enthalten:
 
 ![Nicht-Azure-Computer](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Azure-fremder Computer
@@ -78,6 +81,35 @@ Hier finden Sie die Sicherheitsdetails für den virtuellen oder physischen Compu
 
 [![Clouddienste](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
+
+
+
+### <a name="vmscale-sets"></a>VM-Skalierungsgruppen
+Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und empfiehlt, Microsoft Monitoring Agent auf diesen installieren.
+
+So installieren Sie den Microsoft Monitoring Agent: 
+
+1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
+
+1. Wählen Sie eine Skalierungsgruppe in fehlerhaftem Zustand aus. Führen Sie die Anweisungen zum Installieren des Überwachungs-Agents mit einem vorhandenen aufgefüllten Arbeitsbereich aus, oder erstellen Sie einen neuen. Stellen Sie unbedingt den [Tarif](security-center-pricing.md) des Arbeitsbereichs ein, wenn er nicht festgelegt ist.
+
+   ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Festlegen einer neuen Skalierungsgruppen, um automatisch Microsoft Monitoring Agent zu installieren:
+1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
+
+1. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
+
+1. Klicken Sie auf **Zuweisen**.
+
+1. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
+
+Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
+
+
+
+
+
 ### <a name="cloud-services"></a>Clouddienste
 Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist.
 
@@ -85,9 +117,13 @@ Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion 
 
 In einem Szenario, in dem eine Empfehlung vorliegt, befolgen Sie die Schritte in der Empfehlung zum Aktualisieren des Betriebssystems. Ist ein Update verfügbar, erhalten Sie eine Warnung (rot oder orange, je nach Schweregrad des Problems). Eine vollständige Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREIBUNG** auf **Betriebssystemversion aktualisieren** klicken.
 
+
+
+
+
+
 ### <a name="app-services"></a>App Services
 Um die App Service-Informationen anzuzeigen, müssen Sie den Tarif „Standard“ von Security Center verwenden und App Service in Ihrem Abonnement aktivieren. Anweisungen zum Aktivieren dieses Features finden Sie unter [Schützen von App Services in Azure Security Center](security-center-app-services.md).
-
 
 Unter **App Services** wird eine Liste Ihrer App Service-Umgebungen und die Integritätszusammenfassung basierend auf der von Security Center ausgeführten Bewertung angezeigt.
 
@@ -117,27 +153,49 @@ Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung und eine Li
 
    - Wählen Sie eine bestandene Bewertung in der Liste aus, um eine Beschreibung der Bewertung, eine Liste von fehlerhaften und fehlerfreien Ressourcen und eine Liste von nicht überprüften Ressourcen anzuzeigen. Zwar ist eine Registerkarte für fehlerhafte Ressourcen vorhanden, diese Liste ist aber immer leer, da die Bewertung bestanden wurde.
 
-### <a name="vmscale-sets"></a>VM-Skalierungsgruppen
-Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und empfiehlt, Microsoft Monitoring Agent auf diesen installieren.
 
-So installieren Sie den Microsoft Monitoring Agent: 
 
-1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
 
-1. Wählen Sie eine Skalierungsgruppe in fehlerhaftem Zustand aus. Führen Sie die Anweisungen zum Installieren des Überwachungs-Agents mit einem vorhandenen aufgefüllten Arbeitsbereich aus, oder erstellen Sie einen neuen. Stellen Sie unbedingt den [Tarif](security-center-pricing.md) des Arbeitsbereichs ein, wenn er nicht festgelegt ist.
 
-   ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+### <a name="containers"></a>Container
 
-Festlegen einer neuen Skalierungsgruppen, um automatisch Microsoft Monitoring Agent zu installieren:
-1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
+Wenn Sie die Registerkarte **Container** öffnen, wird je nach Ihrer Umgebung möglicherweise einer von drei Ressourcentypen angezeigt:
 
-1. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
+![Containerhost](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Containerhosts – VMs auf denen Docker ausgeführt wird 
 
-1. Klicken Sie auf **Zuweisen**.
+![Kubernetes-Dienst](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) AKS-Cluster (Azure Kubernetes Service)
 
-1. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
+![Containerregistrierung](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) ACR-Registrierungen (Azure Container Registry) – Wird nur in der Standardpreisstufe angezeigt und wenn das Azure Container Registry-Paket aktiviert ist.
 
-Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
+Anweisungen zur Verwendung der Containersicherheitsfeatures finden Sie unter [Überwachung der Sicherheit Ihrer Container](monitor-container-security.md).
+
+Die Vorteile des Azure Container Registry-Pakets werden [hier](azure-container-registry-integration.md) erklärt.
+
+Die Vorteile des Kubernetes Services-Pakets werden [hier](azure-kubernetes-service-integration.md) erklärt.
+
+[![Container-Registerkarte](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
+
+Um die Empfehlungen für eine bestimmte Ressource in der Liste anzuzeigen, klicken Sie auf diese Ressource.
+
+#### <a name="visibility-into-container-registries"></a>Einblick in Containerregistrierungen
+
+Wenn Sie beispielsweise in der Liste, die in der obigen Grafik dargestellt ist, auf das ACR-Register „asc-demo“ klicken, gelangen Sie zu dieser Detailseite:
+
+[![Empfehlungen für eine bestimmte ACR-Registrierung](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
+
+
+#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>Einblick in die Container, die auf IaaS-Linux-Computern gehostet werden
+
+Wenn Sie auf einen der virtuellen Computer klicken, auf denen Docker ausgeführt wird, wird die Detailseite mit Informationen zu den Containern auf dem Computer angezeigt, wie z. B. die Dockerversion und die Anzahl der auf dem Host ausgeführten Images.
+
+![Empfehlungen für einen virtuellen Computer, auf dem Docker ausgeführt wird](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+
+
+#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>Empfehlungen zur Sicherheit basierend auf der CIS-Benchmark für Docker
+
+Security Center scannt Ihre Docker-Konfigurationen und bietet Ihnen durch die Bereitstellung einer Liste aller festgestellten Regelverstöße Einblick in die Fehlkonfigurationen. Security Center bietet Richtlinien, mit denen Sie diese Probleme schnell beheben und Zeit sparen können. Security Center bewertet fortlaufend die Docker-Konfigurationen und unterrichtet Sie über deren aktuellen Zustand.
+
+![Registerkarte „Container“](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

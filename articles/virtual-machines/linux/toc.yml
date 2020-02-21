@@ -381,7 +381,7 @@
         - name: Updates und Patches
           items:
             - name: Red Hat-Updateinfrastruktur
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Azure-VM-Agent
           items:
             - name: Übersicht
@@ -771,4 +771,4 @@
     - name: Häufig gestellte Fragen
       href: faq.md
 - name: Problembehandlung
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
