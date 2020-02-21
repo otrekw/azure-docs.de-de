@@ -17,7 +17,7 @@
     - name: Ausführen Ihrer ersten Abfrage – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Freigeben einer Abfrage im Azure-Portal
       displayName: 'query, portal'
@@ -78,6 +78,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Graph-Tabellen und -Ressourcentypen
+      href: ./reference/supported-tables-resources.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

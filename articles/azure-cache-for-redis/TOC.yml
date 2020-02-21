@@ -19,7 +19,7 @@
       href: cache-nodejs-get-started.md
     - name: Python-App
       href: cache-python-get-started.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden von Caching mit Bestenlisten
       href: cache-web-app-cache-aside-leaderboard.md
@@ -39,7 +39,7 @@
       href: cache-best-practices.md
     - name: 'Architektur: bewährte Methoden für die Zwischenspeicherung'
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Planen
       items:
@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Einrichten der Georeplikation
           href: cache-how-to-geo-replication.md
+        - name: Sparen mit reservierter Kapazität
+          href: cache-reserved-pricing.md
         - name: Migrieren von Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatisieren

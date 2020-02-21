@@ -6,20 +6,20 @@
   items:
     - name: Worum handelt es sich bei Data Science Virtual Machine (DSVM)?
       href: overview.md
-    - name: Worum handelt es sich bei der DSVM-Instanz für geografische KI?
+    - name: Was ist Data Science Virtual Machine für geografische KI?
       href: geo-ai-dsvm-overview.md
-    - name: Auf der DSVM-Instanz enthaltene Tools
+    - name: In Data Science Virtual Machine enthaltene Tools
       href: tools-included.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer DSVM-Instanz für Windows
+    - name: Erstellen einer Windows-Data Science Virtual Machine
       href: provision-vm.md
-    - name: Erstellen einer DSVM-Instanz für Ubuntu
+    - name: Erstellen einer Data Science Virtual Machine-Instanz für Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Erstellen einer DSVM-Instanz für CentOS
+    - name: Erstellen einer Data Science VM-Instanz unter CentOS
       href: linux-dsvm-intro.md
-    - name: Erstellen einer DSVM-Instanz für geografische KI
+    - name: Erstellen einer Data Science Virtual Machine-Instanz für geografische KI
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
   items:
@@ -41,15 +41,15 @@
       href: dsvm-enterprise-overview.md
 - name: Beispiele
   href: dsvm-samples-and-walkthroughs.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
-    - name: Verwenden einer DSVM-Instanz für Windows
+    - name: Verwenden einer Data Science Virtual Machine-Instanz für Windows
       href: vm-do-ten-things.md
-    - name: Verwenden einer DSVM-Instanz für Linux
+    - name: Verwenden einer Data Science Virtual Machine-Instanz für Linux
       href: linux-dsvm-walkthrough.md
-    - name: Verwenden einer DSVM-Instanz für geografische KI
+    - name: Verwenden einer Data Science Virtual Machine-Instanz für geografische KI
       href: use-geo-ai-dsvm.md
-    - name: Erstellen eines automatisch skalierten DSVM-Pools
+    - name: Erstellen eines automatisch skalierten Data Science Virtual Machine-Pools
       href: dsvm-pools.md
     - name: Integration in Active Directory.
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Verweis
   items:
-    - name: DSVM unter Ubuntu
+    - name: Data Science Virtual Machine für Ubuntu
       href: reference-ubuntu-vm.md
-    - name: DSVM unter CentOS
+    - name: Data Science Virtual Machine für CentOS
       href: reference-centos-vm.md
     - name: Versionshinweise
       href: release-notes.md
