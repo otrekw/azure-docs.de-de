@@ -1,22 +1,22 @@
 ### YamlMime:Hub
 title: Dokumentation zu Azure Cognitive Services
 summary: Hier erfahren Sie, wie Sie intelligente, unterstützte Algorithmen in Apps, Websites und Bots integrieren, um sehen, hören und sprechen sowie Benutzeranforderungen verstehen und interpretieren zu können.
+brand: azure
 metadata:
   title: Dokumentation zu Azure Cognitive Services
   description: Hier erfahren Sie, wie Sie intelligente, unterstützte Algorithmen in Apps, Websites und Bots integrieren, um sehen, hören und sprechen sowie Benutzeranforderungen verstehen und interpretieren zu können.
   ms.service: cognitive-services
   ms.topic: hub-page
-  brand: azure
   author: nitinme
   ms.author: nitinme
   manager: nitinme
-  ms.date: 11/04/2019
-  ms.openlocfilehash: e0fc6aaaedc5eff98017eb62187575ab9afbba59
-  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+  ms.date: 01/21/2020
+  ms.openlocfilehash: f39f2a6360363131eb346f613cf0f7a25910404a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/14/2020
-  ms.locfileid: "75945195"
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77560761"
 highlightedContent:
   items:
   - title: Was ist Cognitive Services?
@@ -71,7 +71,7 @@ conceptualContent:
     links:
     - url: ./immersive-reader/index.yml
       itemType: overview
-      text: Plastischer Reader
+      text: Plastischer Reader (Vorschauversion)
     - url: ./luis/index.yml
       itemType: overview
       text: Language Understanding (LUIS)
@@ -87,7 +87,7 @@ conceptualContent:
   - title: Spracheingabe
     summary: Konvertieren Sie Sprache in Text und Text in natürlich klingende Sprache. Übersetzen Sie von einer Sprache in eine andere, und aktivieren Sie Sprecherüberprüfung und -erkennung.
     links:
-    - url: ./speech-service/index.md
+    - url: ./speech-service/index.yml
       itemType: overview
       text: Speech-Dienst
     - url: ./speaker-recognition/home.md
