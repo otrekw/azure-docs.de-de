@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 990e97274d9e35201dfb7930167dc4f9da975d83
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988123"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468999"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -65,7 +65,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme für die Sicher
 
 **Szenario** | **Betriebssystemunterstützung**
 --- | ---
-Sicherung mit der Azure-VM-Agent-Erweiterung | - Windows 10-Client (nur 64-Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)
+Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
 Sicherung mit dem MARS-Agent | [Unterstützte](backup-support-matrix-mars-agent.md#support-for-direct-backups) Betriebssysteme
 Sicherung mit DPM/MABS | Unterstützte Betriebssysteme für die Sicherung mit [MABS](backup-mabs-protection-matrix.md) und [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)
 
@@ -171,6 +171,7 @@ Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
+[Freigegebene Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Wird nicht unterstützt.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

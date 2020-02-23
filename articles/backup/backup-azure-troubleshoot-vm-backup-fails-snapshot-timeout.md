@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513846"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469135"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -64,6 +64,7 @@ Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der
 
 - Dieses Problem kann auftreten, wenn eine Sperre für den Wiederherstellungspunkt der Ressourcengruppe besteht, die eine automatische Bereinigung von Wiederherstellungspunkten verhindert.
 - Dieses Problem kann auch auftreten, wenn mehrere Sicherungen pro Tag ausgelöst werden. Zurzeit wird nur eine Sicherung pro Tag empfohlen, da die Wiederherstellungspunkte zur sofortigen Wiederherstellung ein bis fünf Tage lang entsprechend der konfigurierten Aufbewahrung von Momentaufnahmen beibehalten werden. Außerdem können nur 18 Wiederherstellungspunkte zur sofortigen Wiederherstellung gleichzeitig mit einem virtuellen Computer verknüpft werden. <br>
+- Die Anzahl der Wiederherstellungspunkte über Wiederherstellungspunktsammlungen und Ressourcengruppen für einen virtuellen Computer darf 18 nicht überschreiten. Löschen Sie vorhandene Wiederherstellungspunkte, um einen neuen Wiederherstellungspunkt zu erstellen.
 
 Empfohlene Maßnahme:<br>
 Um dieses Problem zu beheben, entfernen Sie die Sperre für die Ressourcengruppe der VM, und wiederholen Sie den Vorgang, um die Bereinigung auszulösen.

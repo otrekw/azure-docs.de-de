@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988072"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425016"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -132,6 +132,7 @@ Verschlüsselt und geringe Dichte |Wird nicht unterstützt. Übersprungen.
 Komprimierter Stream| Wird nicht unterstützt. Übersprungen.
 Platzsparender Stream| Wird nicht unterstützt. Übersprungen.
 OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Wird nicht unterstützt.
+Ordner mit aktivierter DFS-Replikation | Wird nicht unterstützt.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714861"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485079"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -210,7 +210,7 @@ Fügen Sie für eine pfadbasierte Regel mehrere Back-End-HTTP-Einstellungen hinz
 
 Wenn die Umleitung für eine grundlegende Regel konfiguriert ist, werden alle Anforderungen auf dem zugeordneten Listener an das Ziel umgeleitet. Dies ist eine *globale Umleitung*. Wenn die Umleitung für eine pfadbasierte Regel konfiguriert ist, werden nur Anforderungen in einem bestimmten Websitebereich umgeleitet. Ein Beispiel ist ein Warenkorbbereich, der durch */cart/\** gekennzeichnet ist. Dies ist eine *pfadbasierte Umleitung*.
 
-Weitere Informationen zu Umleitungen finden Sie unter [Übersicht über die Umleitung in Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Weitere Informationen zu Umleitungen finden Sie unter [Übersicht über die Umleitung in Application Gateway](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Umleitungstyp
 
@@ -227,24 +227,24 @@ Wählen Sie einen Listener als Umleitungsziel aus, um Datenverkehr von einem Lis
 ![Dialogfeld mit Application Gateway-Komponenten](./media/configuration-overview/configure-redirection.png)
 
 Weitere Informationen zur HTTP-zu-HTTPS-Umleitung finden Sie unter:
-- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal](redirect-http-to-https-portal.md)
+- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS mithilfe von Azure PowerShell](redirect-http-to-https-powershell.md)
+- [Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über die Azure-Befehlszeilenschnittstelle](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Externe Website
 
 Wählen Sie „Externe Website“ aus, wenn Sie den Datenverkehr am Listener, der dieser Regel zugeordnet ist, auf eine externe Website umleiten möchten. Sie können wählen, die Abfragezeichenfolge der ursprünglichen Anforderung in die Anforderung einzubeziehen, die an das Umleitungsziel weitergeleitet wird. Sie können den Pfad zu der externen Website in der ursprünglichen Anforderung nicht weiterleiten.
 
 Weitere Informationen zur Umleitung finden Sie unter:
-- [Erstellen eines Anwendungsgateways mit externer Umleitung durch Azure PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [Erstellen eines Anwendungsgateways mit externer Umleitung durch Azure PowerShell](redirect-external-site-powershell.md)
+- [Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>Umschreiben der HTTP-Headereinstellung
 
 Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Weitere Informationen finden Sie unter
 
- - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](rewrite-http-headers.md)
+ - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 
@@ -252,7 +252,18 @@ Das Application Gateway leitet Datenverkehr mithilfe der Konfiguration, die Sie 
 
 ### <a name="cookie-based-affinity"></a>Cookiebasierte Affinität
 
-Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server bleiben soll. Durch das Gateway verwaltete Cookies ermöglichen dem Application Gateway, weiteren Datenverkehr einer Benutzersitzung zur Verarbeitung an den gleichen Server weiterzuleiten. Dies ist wichtig, wenn der Sitzungsstatus für eine Benutzersitzung lokal auf dem Server gespeichert wird. Wenn die Anwendung cookiebasierte Affinität nicht verarbeiten kann, können Sie diese Funktion nicht verwenden. Um sie zu verwenden, stellen Sie sicher, dass die Clients Cookies unterstützen.
+Azure Application Gateway verwendet vom Gateway verwaltete Cookies zum Aufrechterhalten von Benutzersitzungen. Wenn ein Benutzer die erste Anforderung an Application Gateway sendet, setzt dieses in der Antwort ein Affinitätscookie mit einem Hashwert, der die Sitzungsdetails enthält, sodass die nachfolgenden Anfragen, die das Affinitätscookie enthalten, zum selben Back-End-Server geleitet werden, um die Bindung aufrechtzuerhalten. 
+
+Diese Funktion ist hilfreich, wenn eine Benutzersitzung auf demselben Server bleiben soll und der Sitzungszustand lokal auf dem Server für eine Benutzersitzung gespeichert wird. Wenn die Anwendung cookiebasierte Affinität nicht verarbeiten kann, können Sie diese Funktion nicht verwenden. Um sie zu verwenden, stellen Sie sicher, dass die Clients Cookies unterstützen.
+
+Ab dem **17. Februar 2020** enthält das [Chromium](https://www.chromium.org/Home) [v80-Update](https://chromiumdash.appspot.com/schedule) ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Im Falle von CORS-Anforderungen (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen), wenn das Cookie in einem Drittanbieterkontext gesendet werden muss, muss es „SameSite=None; Secure“-Attribute verwenden und sollte nur über HTTPS gesendet werden. Andernfalls sendet der Browser in einem reinen HTTTP-Szenario die Cookies nicht im Drittanbieterkontext. Das Ziel dieses Updates von Chrome besteht darin, die Sicherheit zu erhöhen und CSRF-Angriffe (Cross-Site Request Forgery, siteübergreifende Anforderungsfälschung) zu vermeiden. 
+
+Um diese Änderung zu unterstützen, fügt Application Gateway (alle SKU-Typen) ein anderes, identisches Cookie namens **ApplicationGatewayAffinityCORS** zusätzlich zum vorhandenen **ApplicationGatewayAffinity**-Cookie ein, das ähnlich ist. Aber diesem Cookie werden nun zwei weitere Attribute **"SameSite=None; Secure"** hinzugefügt, damit die beständige Sitzung aufrechterhalten werden kann, auch bei Anforderungen von verschiedenen Ursprüngen.
+
+Beachten Sie, dass der Standardname des Affinitätscookies **ApplicationGatewayAffinity** lautet, was aber von den Benutzern geändert werden kann. Für den Fall, dass Sie einen benutzerdefinierten Affinitätscookienamen verwenden, wird ein zusätzliches Cookie mit CORS als Suffix hinzugefügt, z. B. **CustomCookieNameCORS**.
+
+> [!NOTE]
+> Es ist obligatorisch, dass, wenn das Attribut **SameSite=None** festgelegt ist, das Cookie auch das Flag **Secure** enthalten und über **HTTPS** gesendet werden sollte. Wenn also Sitzungsaffinität über CORS erforderlich ist, müssen Sie Ihre Workload zu HTTPS migrieren. Die Dokumentation zu SSL-Auslagerung und End-to-End-SSL für Application Gateway finden Sie hier: [Übersicht](ssl-overview.md), [Konfigurieren von SSL-Auslagerung](create-ssl-portal.md), [Konfigurieren von End-to-End-SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
@@ -262,7 +273,7 @@ Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplant
 
 Application Gateway unterstützt sowohl HTTP als auch HTTPS für das Routing von Anforderungen an die Back-End-Server. Bei Auswahl von HTTP ist Datenverkehr an die Back-End-Server unverschlüsselt. Wenn unverschlüsselte Kommunikation nicht akzeptabel ist, wählen Sie HTTPS.
 
-Diese Einstellung unterstützt zusammen mit HTTPS im Listener [End-to-End-SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Damit können Sie vertrauliche Daten sicher verschlüsselt an das Back-End übertragen. Jeder Back-End-Server im Back-End-Pool mit aktiviertem End-to-End-SSL muss mit einem Zertifikat konfiguriert sein, um die sichere Kommunikation zu erlauben.
+Diese Einstellung unterstützt zusammen mit HTTPS im Listener [End-to-End-SSL](ssl-overview.md). Damit können Sie vertrauliche Daten sicher verschlüsselt an das Back-End übertragen. Jeder Back-End-Server im Back-End-Pool mit aktiviertem End-to-End-SSL muss mit einem Zertifikat konfiguriert sein, um die sichere Kommunikation zu erlauben.
 
 ### <a name="port"></a>Port
 
@@ -301,7 +312,7 @@ Dies ist eine reine Benutzeroberflächenverknüpfung, die die zwei erforderliche
 
 ### <a name="use-custom-probe"></a>Benutzerdefinierten Test verwenden
 
-Diese Einstellung ordnet einen [benutzerdefinierten Test](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) einer HTTP-Einstellung zu. Einer HTTP-Einstellung kann nur ein benutzerdefinierter Test zugeordnet werden. Wenn Sie nicht explizit einen benutzerdefinierten Test zuordnen, wird der [Standardtest](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) zur Überwachung der Integrität des Back-Ends verwendet. Sie sollten einen benutzerdefinierten Test erstellen, um größere Kontrolle über die Integritätsüberwachung Ihrer Back-Ends zu haben.
+Diese Einstellung ordnet einen [benutzerdefinierten Test](application-gateway-probe-overview.md#custom-health-probe) einer HTTP-Einstellung zu. Einer HTTP-Einstellung kann nur ein benutzerdefinierter Test zugeordnet werden. Wenn Sie nicht explizit einen benutzerdefinierten Test zuordnen, wird der [Standardtest](application-gateway-probe-overview.md#default-health-probe-settings) zur Überwachung der Integrität des Back-Ends verwendet. Sie sollten einen benutzerdefinierten Test erstellen, um größere Kontrolle über die Integritätsüberwachung Ihrer Back-Ends zu haben.
 
 > [!NOTE]
 > Der benutzerdefinierte Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
@@ -335,7 +346,7 @@ Nachdem Sie einen Back-End-Pool erstellt haben, müssen Sie ihn einer oder mehre
 
 ## <a name="health-probes"></a>Integritätstests
 
-Ein Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End. Sie sollten aber unbedingt für jede Back-End-HTTP-Einstellung einen benutzerdefinierten Test erstellen, um größere Kontrolle über die Überwachung der Integrität zu erhalten. Informationen zum Konfigurieren eines benutzerdefinierten Tests finden Sie unter [Einstellungen für die benutzerdefinierte Integritätsüberprüfung](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Ein Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End. Sie sollten aber unbedingt für jede Back-End-HTTP-Einstellung einen benutzerdefinierten Test erstellen, um größere Kontrolle über die Überwachung der Integrität zu erhalten. Informationen zum Konfigurieren eines benutzerdefinierten Tests finden Sie unter [Einstellungen für die benutzerdefinierte Integritätsüberprüfung](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
 > Nachdem Sie einen benutzerdefinierten Integritätstest erstellt haben, müssen Sie ihn einer Back-End-HTTP-Einstellung zuordnen. Ein benutzerdefinierter Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit mithilfe einer Regel einem Listener zugeordnet ist.
