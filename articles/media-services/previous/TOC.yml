@@ -397,8 +397,6 @@
       items:
         - name: Wiedergeben von Medien mit vorhandenen Playern
           href: media-services-playback-content-with-existing-players.md
-        - name: Wiedergeben von Medien mit Media Player
-          href: media-services-develop-video-players.md
         - name: Weitere Wiedergabeoptionen
           items:
             - name: Windows Store-Anwendung mit Smooth Streaming
