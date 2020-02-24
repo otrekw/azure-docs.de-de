@@ -2,18 +2,18 @@
 title: Vorbereiten von Computern für die Migration mit Azure Migrate
 description: Es wird beschrieben, wie Sie lokale Computer für die Migration mit Azure Migrate vorbereiten.
 ms.topic: tutorial
-ms.date: 12/10/2019
+ms.date: 02/17/2020
 ms.custom: MVC
-ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: adbe9e4b30bf57e8a2038b970306c126035abbe1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028754"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426247"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
-In diesem Artikel wird beschrieben, wie Sie lokale Computer vorbereiten, bevor Sie diese per [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) zu Azure migrieren.
+In diesem Artikel wird beschrieben, wie Sie lokale Computer vorbereiten, bevor Sie diese per [Azure Migrate: Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) zu Azure migrieren.
 
 
 In diesem Artikel führen Sie folgende Schritte aus:
@@ -40,7 +40,7 @@ In diesem Artikel führen Sie folgende Schritte aus:
 
 ## <a name="check-whats-supported"></a>Überprüfen der Unterstützung
 
-- Für VMware-VMs wird bei der Azure Migrate-Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt. Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware-migration.md) für virtuelle VMware-Computer.
+- Für VMware-VMs wird bei der Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt. Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware-migration.md) für virtuelle VMware-Computer.
 - Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v-migration.md) für virtuelle Hyper-V-Computer.
 - Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical-migration.md) für lokale physische Computer oder andere virtualisierte Server. 
 

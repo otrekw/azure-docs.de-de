@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688825"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425271"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Tutorial: Erstellen einer Java Spring Boot-Web-App mit Azure App Service für Linux und Azure Cosmos DB
 
@@ -173,7 +173,7 @@ Wenn Ausnahmen anstelle der Meldung „Started TodoApplication“ angezeigt werd
 
 ## <a name="configure-azure-deployment"></a>Konfigurieren der Azure-Bereitstellung
 
-Öffnen Sie die Datei `pom.xml` im Verzeichnis `initial/spring-boot-todo` und fügen Sie die folgende Konfiguration [Maven-Plug-In für Azure App Service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) hinzu.
+Öffnen Sie die Datei `pom.xml` im Verzeichnis `initial/spring-boot-todo`, und fügen Sie die folgende Konfiguration [Azure-Web-App-Plug-In für Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) hinzu.
 
 ```xml    
 <plugins> 

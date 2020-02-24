@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026333"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423709"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gatewaygerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -40,17 +40,17 @@ In diesem Tutorial werden Gerätevorlagen für ein Gerät vom Typ **S1 Sensor** 
 
 So erstellen sie eine Gerätevorlage für ein Gerät vom Typ **S1 Sensor**:
 
-1. Wählen Sie im linken Navigationsbereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
-1. Scrollen Sie nach unten zur Kachel für das Gerät **S1 Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen** aus.
+1. Scrollen Sie nach unten zur Kachel für das Gerät **S1 Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen**.
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus, um die Gerätevorlage Ihrer Anwendung hinzuzufügen. 
 
 So erstellen sie eine Gerätevorlage für ein Gerät vom Typ **RS40 Occupancy Sensor**:
 
-1. Wählen Sie im linken Navigationsbereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
-1. Scrollen Sie nach unten zur Kachel für das Gerät **RS40 Occupancy Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen** aus.
+1. Scrollen Sie nach unten zur Kachel für das Gerät **RS40 Occupancy Sensor**. Wählen Sie die Kachel und anschließend **Weiter: Anpassen**.
 
 1. Wählen Sie auf der Seite **Überprüfen** die Option **Erstellen** aus, um die Gerätevorlage Ihrer Anwendung hinzuzufügen. 
 
@@ -65,9 +65,9 @@ In diesem Tutorial erstellen Sie von Grund auf eine Gerätevorlage für ein Gate
 
 So fügen Sie Ihrer Anwendung eine neue Gatewaygerätevorlage hinzu:
 
-1. Wählen Sie im linken Navigationsbereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
+1. Wählen Sie im linken Bereich **Gerätevorlagen** aus. Wählen Sie anschließend **+** aus, um mit dem Hinzufügen der Vorlage zu beginnen.
 
-1. Wählen Sie auf der Seite **Vorlagentyp auswählen** die Kachel **IoT-Gerät** und anschließend **Weiter: Anpassen** aus.
+1. Wählen Sie auf der Seite **Vorlagentyp auswählen** die Kachel **IoT-Gerät** und anschließend **Weiter: Anpassen**.
 
 1. Aktivieren Sie auf der Seite **Gerät anpassen** das Kontrollkästchen **Gatewaygerät**.
 

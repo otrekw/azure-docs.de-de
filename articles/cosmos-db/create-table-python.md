@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-python-october2019
-ms.openlocfilehash: d4cfba26192eb097d06f82e18acb41c1f9640e66
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 9de9739efce13fc96bf550759eb0ef68d732af1e
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437353"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212670"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Tabellen-API-App mit Python und Azure Cosmos DB
 
@@ -25,19 +25,13 @@ ms.locfileid: "72437353"
 > * [Python](create-table-python.md)
 > 
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Python und der [Tabellen-API](table-introduction.md) von Azure Cosmos DB eine App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung gezeigt, wie Sie ein Azure Cosmos DB-Konto erstellen und mithilfe des Daten-Explorers Tabellen und Entitäten im webbasierten Azure-Portal erstellen.
-
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Datenbanken mit Dokumenten, Schlüsseln/Werten, breiten Spalten und Graphen erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-Tabellen-API-Konto im Azure-Portal und über Visual Studio mit einer über GitHub geklonten Python-App. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-Außerdem haben Sie folgende Möglichkeiten:
-
-* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Stellen Sie sicher, dass Sie während des Visual Studio-Setups die Workloads **Azure-Entwicklung** und **Python-Entwicklung** auswählen.
-* Wählen Sie ebenso die Option „Python 2“ in der **Python-Entwicklungsworkload**, oder laden Sie Python 2.7 von [python.org](https://www.python.org/downloads/release/python-2712/) herunter.
+- Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement. Sie können auch den [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) mit dem URI `https://localhost:8081` und dem Schlüssel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` verwenden.
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/). Wählen Sie bei der Einrichtung die Workloads **Azure-Entwicklung** und **Python-Entwicklung** aus. 
+- [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -83,29 +77,31 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto die Option **Verbindungszeichenfolge** aus. 
 
     ![Anzeigen und Kopieren der Verbindungszeichenfolge in den Einstellungen für die Verbindungszeichenfolge](./media/create-table-python/view-and-copy-connection-string-in-connection-string-settings.png)
 
 2. Kopieren Sie den Kontonamen mithilfe der Schaltfläche auf der rechten Seite.
 
-3. Öffnen Sie die Datei „config.py“, und fügen Sie den Kontonamen aus dem Portal in den STORAGE_ACCOUNT_NAME-Wert in Zeile 19 ein.
+3. Öffnen Sie die Datei *config.py*, und fügen Sie den Wert unter „KONTONAME“ aus dem Portal in den Wert „STORAGE_ACCOUNT_NAME“ in Zeile 19 ein.
 
 4. Kehren Sie zum Portal zurück, und kopieren Sie den Primärschlüssel.
 
 5. Fügen Sie den Primärschlüssel aus dem Portal in den STORAGE_ACCOUNT_KEY-Wert in Zeile 20 ein.
 
-6. Speichern Sie die Datei „config.py“.
+6. Speichern Sie die Datei *config.py*.
 
 ## <a name="run-the-app"></a>Ausführen der App
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt im **Projektmappen-Explorer**, wählen Sie die aktuelle Python-Umgebung aus, und klicken Sie anschließend mit der rechten Maustaste.
+1. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt.
 
-2. Wählen Sie „Python-Paket installieren“ aus, und geben Sie anschließend **azure-storage-table** ein.
+2. Wählen Sie die aktuelle Python-Umgebung aus, und klicken Sie mit der rechten Maustaste darauf.
 
-3. Drücken Sie F5, um die Anwendung auszuführen. Ihre App wird im Browser angezeigt. 
+2. Wählen Sie **Python-Paket installieren** aus, und geben Sie anschließend *azure-storage-table* ein.
 
-Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
+3. Drücken Sie die Taste F5, um die Anwendung auszuführen. Ihre App wird im Browser angezeigt. 
+
+Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neuen Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
@@ -117,7 +113,7 @@ Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine App ausführen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine Python-App in Visual Studio Code ausführen, um Tabellendaten hinzuzufügen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
 
 > [!div class="nextstepaction"]
 > [Importieren von Daten in die Table-API](table-import.md)

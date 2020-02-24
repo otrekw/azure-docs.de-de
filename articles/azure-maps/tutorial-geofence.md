@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Erstellen eines Geofence und Nachverfolgen von Geräten auf einer Karte | Microsoft Azure Maps'
 description: Es wird beschrieben, wie Sie mit dem räumlichen Dienst von Microsoft Azure Maps einen Geofence einrichten und Geräte in Relation zum Geofence nachverfolgen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899212"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370171"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -176,7 +176,7 @@ In diesem Abschnitt erstellen wir einen Ereignishandler, der Benachrichtigungen 
 
 Wir erstellen zwei [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps)-Dienste für die Behandlung von enter- und exit-Ereignissen. Wenn die Ereignisse in der Logik-App ausgelöst werden, werden nacheinander weitere Ereignisse ausgelöst. Das Ziel ist, dass Warnungen (in diesem Fall in Form von E-Mails) an den Betriebsleiter gesendet werden. In der folgenden Abbildung ist die Erstellung einer Logik-App für das Geofence-Ereignis „enter“ dargestellt. Auf ähnliche Weise können Sie auch eine Logik-App für das Ereignis „exit“ erstellen. Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anzeigen](https://docs.microsoft.com/azure/event-grid/event-handlers).
 
-1. Erstellen einer Logik-App im Azure-Portal
+1. Erstellen Sie eine Logik-App im Azure-Portal. Wählen Sie die Logik-App im Azure Marketplace aus. Wählen Sie dann die Schaltfläche **Erstellen** aus.
 
    ![Erstellen einer Azure Logic Apps-Instanz zum Verarbeiten von Geofence-Ereignissen](./media/tutorial-geofence/logic-app.png)
 

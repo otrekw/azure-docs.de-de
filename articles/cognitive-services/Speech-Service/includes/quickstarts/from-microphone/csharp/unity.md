@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 531e9dbec55c5a6a305b321df7a11067c0ade92a
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155959"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445763"
 ---
 > [!NOTE]
 > Das Speech SDK für Unity unterstützt Windows Desktop (x86 und x64) oder die universelle Windows-Plattform (x86, x64, ARM/ARM64) sowie Android (x86, ARM32/64) und iOS (x64-Simulator, ARM32 und ARM64).
@@ -90,7 +90,7 @@ Gehen Sie wie folgt vor, um den Code des Beispielskripts für das Unity-Projekt 
 
 1. Suchen Sie nach der Zeichenfolge `YourSubscriptionKey`, und ersetzen Sie sie durch Ihren Abonnementschlüssel für den Speech-Dienst.
 
-1. Suchen Sie nach der Zeichenfolge `YourServiceRegion`, und ersetzen Sie sie durch den Speech SDK-Parameter der [Region](https://aka.ms/speech/sdkregion), die mit Ihrem Abonnement verknüpft ist. Bei Verwendung der kostenlosen Testversion ist die Region beispielsweise `westus`.
+1. Suchen Sie die Zeichenfolge `YourServiceRegion`, und ersetzen Sie sie durch den **Regionsbezeichner** der [Region](https://aka.ms/speech/sdkregion), die mit Ihrem Abonnement verknüpft ist. Bei Verwendung der kostenlosen Testversion ist die Region beispielsweise `westus`.
 
 1. Speichern Sie die vorgenommenen Skriptänderungen.
 

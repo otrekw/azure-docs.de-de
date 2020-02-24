@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: e6ee75f4a7e00e8c21079e1336756db20221750f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6d75e48443fd8622ca2ae7ff05fe81184c4b2b16
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838002"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472433"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Einführung in die KI in Azure Cognitive Search
 
@@ -131,7 +131,7 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 + [Tutorial (HTTP-Anforderungen)](cognitive-search-tutorial-blob.md)
 + [Beispiel: Erstellen einer benutzerdefinierten Fähigkeit für die KI-Anreicherung (C#)](cognitive-search-create-custom-skill-example.md)
 
-Wir empfehlen, den kostenlosen Dienst zu Lernzwecken zu verwenden. Jedoch ist die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente), damit Sie beide Übungen ausführen können, oder löschen Sie den im Schnellstart oder Tutorial verwendeten Indexer, um den Zähler auf Null zu setzen.
+Wir empfehlen, den kostenlosen Dienst zu Lernzwecken zu verwenden. Jedoch ist die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt. Wenn Sie Lektionen mehrmals ausführen möchten, müssen Sie den Indexer löschen und neu erstellen, um den Zähler auf null zurückzusetzen.
 
 **Schritt 3: Überprüfen der API**
 
@@ -139,7 +139,7 @@ Sie können in REST `api-version=2019-05-06` in Anforderungen oder dem .NET SDK 
 
 Bei diesem Schritt werden die REST-APIs zum Erstellen einer Lösung für die KI-Anreicherung verwendet. Es werden nur zwei APIs für die KI-Anreicherung hinzugefügt oder erweitert. Andere APIs haben die gleiche Syntax wie die allgemein verfügbaren Versionen.
 
-| REST-API | Beschreibung |
+| REST-API | BESCHREIBUNG |
 |-----|-------------|
 | [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
 | [Erstellen einer Qualifikationsgruppe (API-Version 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Diese API ist spezifisch für die KI-Anreicherung. Es handelt sich hierbei um eine Ressource, die die Verwendung von [integrierten Qualifikationen](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Qualifikationen](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |

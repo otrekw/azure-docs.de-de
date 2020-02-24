@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8ef24630d255876c45d9cbc072fc989288f2ac5f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdbd002ac946f3ac3a1a67980905d4ed6f5510c5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837227"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470342"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer mit der Azure CLI
 
@@ -58,7 +58,10 @@ Verwenden Sie Folgendes, um in Zone 1 eine zonale öffentliche IP-Adresse zu er
   az network public-ip create --resource-group myResourceGroupSLB --name myPublicIP --sku standard --zone 1
 ```
 
- Verwenden Sie ```--sku basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Von „Basic“ werden keine Verfügbarkeitszonen unterstützt. Microsoft empfiehlt für Produktionsworkloads die Standard-SKU.
+Verwenden Sie ```-SKU Basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Öffentliche IP-Adressen des Typs „Basic“ sind nicht mit einem Lastenausgleich des Typs **Standard** kompatibel. Microsoft empfiehlt für Produktionsworkloads die Option **Standard**.
+
+> [!IMPORTANT]
+> Im weiteren Verlauf dieser Schnellstartanleitung wird davon ausgegangen, dass bei der SKU-Auswahl oben die SKU **Standard** ausgewählt wurde.
 
 ## <a name="create-azure-load-balancer"></a>Erstellen einer Azure Load Balancer-Instanz
 
@@ -81,6 +84,9 @@ Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/ne
     --frontend-ip-name myFrontEnd \
     --backend-pool-name myBackEndPool       
   ```
+
+> [!IMPORTANT]
+> Im weiteren Verlauf dieser Schnellstartanleitung wird davon ausgegangen, dass bei der SKU-Auswahl oben die SKU **Standard** ausgewählt wurde.
 
 ### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
 

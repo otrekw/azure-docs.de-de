@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195792"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371337"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -102,7 +102,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 2. Wählen Sie **Compute**, und wählen Sie dann in der Liste der ausgewählten Elemente die Option **Windows Server 2016 Datacenter**.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |Resource group     |**Test-FW-RG**|
    |Name des virtuellen Computers     |**Srv-Jump**|
@@ -113,7 +113,7 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 4. Wählen Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus.
 5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
 
-6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.
+6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Datenträger**.
 7. Übernehmen Sie die Standardeinstellungen für Datenträger, und wählen Sie **Weiter: Netzwerk** aus.
 8. Stellen Sie sicher, dass als virtuelles Netzwerk **Test-FW-VN** und als Subnetz **Jump-SN** ausgewählt ist.
 9. Übernehmen Sie für **Öffentliche IP** den Standardnamen der neuen öffentlichen IP-Adresse (Srv-Jump-Ip).
@@ -123,11 +123,11 @@ Erstellen Sie nun die virtuellen Sprung- und Workloadcomputer, und platzieren Si
 
 Konfigurieren Sie anhand der Angaben in der folgenden Tabelle eine weitere VM mit dem Namen **Srv-Work**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
-|Einstellung  |Wert  |
+|Einstellung  |value  |
 |---------|---------|
 |Subnet|**Workload-SN**|
-|Öffentliche IP-Adresse|**Keine**|
-|Öffentliche Eingangsports|**Keine**|
+|Öffentliche IP-Adresse|**None**|
+|Öffentliche Eingangsports|**None**|
 
 ## <a name="deploy-the-firewall"></a>Bereitstellen der Firewall
 
@@ -138,14 +138,14 @@ Stellen Sie die Firewall im VNET bereit.
 3. Wählen Sie **Firewall** aus, und klicken Sie anschließend auf **Erstellen**.
 4. Konfigurieren Sie die Firewall auf der Seite **Firewall erstellen** anhand der folgenden Tabelle:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |Subscription     |\<Ihr Abonnement\>|
    |Resource group     |**Test-FW-RG** |
-   |NAME     |**Test-FW01**|
+   |Name     |**Test-FW01**|
    |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|
-   |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
+   |Öffentliche IP-Adresse     |**Neu hinzufügen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
 6. Überprüfen Sie die Zusammenfassung, und wählen Sie dann **Erstellen** aus, um die Firewall zu erstellen.

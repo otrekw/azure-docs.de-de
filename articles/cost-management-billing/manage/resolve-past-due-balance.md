@@ -2,43 +2,44 @@
 title: E-Mail zu überfälligen Zahlungen von Azure
 description: Informationen zur Zahlung, wenn das Azure-Abonnement einen überfälligen Saldo aufweist.
 author: genlin
-manager: dcscontentpm
+ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75984398"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200604"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement
 
-Dieser Artikel gilt für Kunden mit einem Microsoft Online Services-Programmkonto.
+Dieser Artikel gilt für Kunden, die sich online mit einer Kreditkarte für Azure registriert haben und über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Falls Sie über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung verfügen, lesen Sie stattdessen den Artikel [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md).
 
-Wenn Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie ggf. eine E-Mail, oder im Azure-Portal oder Kontocenter wird eine Benachrichtigung angezeigt.
-Als [Kontoadministrator](billing-subscription-transfer.md#whoisaa) können Sie die ausstehenden Gebühren im [Azure-Portal](https://portal.azure.com) begleichen. Wenn Sie per Rechnung zahlen, senden Sie Ihre Zahlung an den Empfänger, der unten auf der Rechnung aufgeführt ist.
+Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie eine E-Mail mit der Information, dass die Zahlung für Ihr Abonnement überfällig ist, und im Azure-Portal wird eine entsprechende Warnung angezeigt. Wenn Sie standardmäßig per Kreditkarte bezahlen, kann der [Kontoadministrator](billing-subscription-transfer.md#whoisaa) die ausstehenden Gebühren über das Azure-Portal begleichen. Bei Zahlung auf Rechnung (Scheck/Überweisung) muss die Zahlung an den Empfänger gesendet werden, der unten auf der Rechnung angegeben ist.
 
 > [!IMPORTANT]
 > * Wenn Sie über mehrere Abonnements verfügen, für die dieselbe Kreditkarte genutzt wird und die alle überfällige Zahlungen aufweisen, müssen Sie die gesamte ausstehende Summe auf einmal begleichen.
-> * Das Zahlungsmittel, das Sie zum Begleichen der ausstehenden Gebühren verwenden, wird zur neuen aktiven Zahlungsmethode für alle Abonnements, für die die fehlgeschlagene Zahlungsmethode genutzt wurde.
+> * Die Kreditkarte, die Sie zum Begleichen der ausstehenden Gebühren verwenden, wird zur neuen Standardzahlungsmethode für alle Abonnements, für die die nicht erfolgreiche Zahlungsmethode verwendet wurde.
 
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Begleichen überfälliger Zahlungen im Azure-Portal
 
 1. Melden Sie sich als Kontoadministrator am [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
-1. Auf der Seite „Übersicht“ wird eine Liste mit Ihren Abonnements angezeigt. Klicken Sie auf den Link **Saldo ausgleichen** , wenn der Abonnementstatus „Überfällig“ lautet.
-    ![Screenshot: Link „Saldo ausgleichen“](./media/resolve-past-due-balance/settle-balance-entry-point.png)
-1. Die Gesamtsumme umfasst die ausstehenden Beträge aller Microsoft-Dienste, für die die fehlgeschlagene Zahlungsmethode genutzt wurde.
-1. Wählen Sie eine Zahlungsmethode aus, um den Saldo auszugleichen. Diese Zahlungsmethode wird zur aktiven Methode für alle Abonnements, für die derzeit die fehlgeschlagene Zahlungsmethode verwendet wird.
+1. Wählen Sie auf der Seite **Übersicht** das Abonnement mit der überfälligen Zahlung aus.
+1. Klicken Sie auf der Seite **Abonnementübersicht** auf das rote Überfälligkeitsbanner, um den Saldo auszugleichen.
+    > [!NOTE]
+    > Der Saldo kann nur vom Kontoadministrator ausgeglichen werden.
+1. Klicken Sie auf der neuen Seite **Saldo ausgleichen** auf **Zahlungsmethode auswählen**.
     ![Screenshot: Link zum Auswählen der Zahlungsmethode](./media/resolve-past-due-balance/settle-balance-screen.png)
-1. Falls die ausgewählte Zahlungsmethode ebenfalls ausstehende Gebühren für Microsoft-Dienste aufweist, wird dies für die Summe der ausstehenden Beträge berücksichtigt. Sie müssen auch diese ausstehenden Gebühren begleichen.
+
+1. Wählen Sie auf dem neuen Blatt auf der rechten Seite eine Kreditkarte aus der Dropdownliste aus, oder klicken Sie auf den blauen Link **Neue Zahlungsmethode hinzufügen**, um eine neue Karte hinzuzufügen. Diese Kreditkarte wird zur aktiven Methode für alle Abonnements, für die derzeit die nicht erfolgreiche Zahlungsmethode verwendet wird.
+     > [!NOTE]
+     > * Die Gesamtsumme umfasst die ausstehenden Beträge aller Microsoft-Dienste, für die die fehlgeschlagene Zahlungsmethode genutzt wurde.
+     > * Falls die ausgewählte Zahlungsmethode ebenfalls ausstehende Gebühren für Microsoft-Dienste aufweist, wird dies für die Summe der ausstehenden Beträge berücksichtigt. Sie müssen auch diese ausstehenden Gebühren begleichen.
 1. Klicken Sie auf **Bezahlen**.
 
 ## <a name="troubleshoot-declined-credit-card"></a>Problembehandlung bei Ablehnung der Kreditkarte
@@ -58,6 +59,8 @@ Der Dienst wird gekündigt, und Ihre Ressourcen sind nicht mehr verfügbar. Alle
 
 Wenn Sie sicher sind, dass Ihre Zahlung verarbeitet wurde, Ihr Abonnement jedoch immer noch deaktiviert ist, wenden Sie sich an den [Azure-Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
+## <a name="check-the-type-of-your-account"></a>Überprüfen Sie den Typ Ihres Abrechnungskontos.
+[!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494494"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198887"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight
 
@@ -36,7 +36,7 @@ Jupyter Notebook ist eine interaktive Notebook-Umgebung, die verschiedene Progra
 
 2. Wählen Sie auf der Jupyter-Webseite **Neu** > **PySpark** aus, um ein Notebook zu erstellen.
 
-   ![Erstellen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen eines Jupyter Notebook zum Ausführen interaktiver Spark SQL-Abfragen")
+   ![Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Erstellen einer Jupyter Notebook-Instanz zum Ausführen einer interaktiven Spark SQL-Abfrage")
 
    Es wird ein neues Notebook erstellt und geöffnet, das den Namen „Untitled(`Untitled.ipynb`)“ hat.
 
@@ -60,7 +60,9 @@ Anwendungen können Dataframes direkt auf der Grundlage von Dateien oder Ordnern
 
     ![Status einer interaktiven Spark SQL-Abfrage](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Status einer interaktiven Spark SQL-Abfrage")
 
-2. Führen Sie den folgenden Code aus, um einen Dataframe und eine temporäre Tabelle (**hvac**) zu erstellen.
+1. Beachten Sie die zurückgegebene Sitzungs-ID. In der obigen Abbildung lautet die Sitzungs-ID 0. Sie können die Sitzungsdetails bei Bedarf auch abrufen, indem Sie zu `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements` navigieren. Dabei steht „CLUSTERNAME“ für den Namen Ihres Spark-Clusters und „ID“ für Ihre Sitzungs-ID.
+
+1. Führen Sie den folgenden Code aus, um einen Dataframe und eine temporäre Tabelle (**hvac**) zu erstellen.
 
     ```python
     # Create a dataframe and table from sample data

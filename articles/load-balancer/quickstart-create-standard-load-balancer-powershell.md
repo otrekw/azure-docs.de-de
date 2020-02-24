@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846516"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470427"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Schnellstart: Erstellen einer Load Balancer-Instanz mithilfe von Azure PowerShell
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-Verwenden Sie ```-SKU Basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.
+Verwenden Sie ```-SKU Basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Öffentliche IP-Adressen des Typs „Basic“ sind nicht mit einem Lastenausgleich des Typs **Standard** kompatibel. Microsoft empfiehlt für Produktionsworkloads die Option **Standard**.
+
+> [!IMPORTANT]
+> Im weiteren Verlauf dieser Schnellstartanleitung wird davon ausgegangen, dass bei der SKU-Auswahl oben die SKU **Standard** ausgewählt wurde.
 
 ## <a name="create-load-balancer"></a>Erstellen oder Aktualisieren eines Lastenausgleichs
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 Verwenden Sie ```-SKU Basic```, um eine Load Balancer Basic-Instanz zu erstellen. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.
+
+> [!IMPORTANT]
+> Im weiteren Verlauf dieser Schnellstartanleitung wird davon ausgegangen, dass bei der SKU-Auswahl oben die SKU **Standard** ausgewählt wurde.
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 Bevor Sie einige VMs bereitstellen und Ihren Load Balancer testen können, müssen Sie unterstützende Netzwerkressourcen erstellen: ein virtuelles Netzwerk und virtuelle NICs. 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086303"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209731"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrieren von Android-Apps aus Google Maps
 
@@ -338,7 +338,7 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr“.
 
 **Nachher: Azure Maps**
 
-Azure Maps bietet drei verschiedene Möglichkeiten, um die Sprache und die regionale Ansicht der Karte festzulegen. Die erste Option besteht darin, die Informationen zur Sprache und zur regionalen Ansicht an die Klasse `AzureMaps` zu übergeben. Bei dieser Option werden die statischen Methoden `setLanguage` und `setView` global verwendet. Das bedeutet, dass die Standardsprache und die regionale Ansicht für alle Azure Maps-Steuerelemente in Ihrer App geladen werden. In diesem Beispiel wird mithilfe des Sprachcodes „fr-FR“ Französisch festgelegt.
+Azure Maps bietet drei verschiedene Möglichkeiten, um die Sprache und die regionale Ansicht der Karte festzulegen. Die erste Option besteht darin, die Informationen zur Sprache und zur regionalen Ansicht an die Klasse `AzureMaps` zu übergeben. Bei dieser Option werden die statischen Methoden `setLanguage` und `setView` global verwendet. Das bedeutet, dass die Standardsprache und die regionale Ansicht für alle in Ihrer App geladenen Azure Maps-Steuerelemente festgelegt werden. In diesem Beispiel wird mithilfe des Sprachcodes „fr-FR“ Französisch festgelegt.
 
 ```java
 static {
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Eine Kachelebene kann der Karte auf ähnliche Weise hinzugefügt werden wie andere Ebenen. Eine formatierte URL, die x, y und Zoomplatzhalter bzw. `{x}`, `{y}`, `{z}` aufweist, wird dazu verwendet, die Ebene anzuweisen, an welcher Position sie auf die Kacheln zugreifen soll. Kachelebenen in Azure Maps unterstützen außerdem die Platzhalter `{quadkey}`, `{bbox-epsg-3857}` und `{subdomain}`. Die Kachelebene wird halbtransparent angezeigt, wenn der Wert 0,8 für die Deckkraft verwendet wird. Deckkraft und Transparenz ähneln sich zwar, verwenden aber umgekehrte Werte. Wenn Sie die Werte zwischen den beiden Optionen konvertieren möchten, subtrahieren Sie sie von der Zahl 1.
 
 > [!TIP]
-> In Azure Maps können Ebenen praktischerweise unter anderen Ebenen gerendert werden. Das gilt auch für Basiskartenebenen. Es ist häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, "labels");`
+> In Azure Maps können Ebenen praktischerweise unter anderen Ebenen gerendert werden. Das gilt auch für Basiskartenebenen. Es ist auch häufig wünschenswert, Kachelebenen unterhalb der Kartenbezeichnungen zu rendern, damit sie leicht zu lesen sind. Die Methode `map.layers.add` nimmt einen zweiten Parameter an, bei dem es sich um die ID der Ebene handelt, unter der die neue Ebene eingefügt werden soll. Mithilfe des folgenden Codes können Sie eine Kachelebene unterhalb der Kartenbezeichnungen einfügen: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

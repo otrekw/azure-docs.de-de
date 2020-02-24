@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Erstellen einer Shopsuche mit Azure Maps | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Webanwendung für die Shopsuche erstellen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987004"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209561"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -381,7 +381,7 @@ Wenn Sie die Anwendung jetzt ausführen, werden die Kopfzeile, das Suchfeld und 
 
 Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js*, und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
 
-1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie die Variablen für die Karte, das Popupfenster, die Datenquelle, eine Symbolebene, einen HTML-Marker zum Anzeigen des Mittelpunkts eines Suchbereichs und eine Instanz des Azure Maps-Suchdienstclients.
+1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie die Variablen für die Karte, das Popupfenster, die Datenquelle, die Symbolebene und den HTML-Marker. Legen Sie den HTML-Marker fest, um den Mittelpunkt eines Suchbereichs anzugeben. Definieren Sie eine Instanz des Azure Maps-Suchdienstclients.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings n
 
 1. Fügen Sie der Datei *index.js* Code hinzu. Der folgende Code dient zum Initialisieren der Karte. Wir haben einen [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, um zu warten, bis die Seite geladen wurde. Anschließend haben wir Ereignisse zur Überwachung des Kartenladevorgangs eingebunden und die Suchschaltfläche sowie die Schaltfläche zum Anzeigen des eigenen Standorts mit entsprechenden Funktionen verknüpft.
 
-   Wenn der Benutzer die Suchschaltfläche wählt oder nach dem Eingeben eines Standorts im Suchfeld die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länderwerten an die Option `countrySet`, um die Suchergebnisse auf diese Länder/Regionen zu begrenzen. Durch das Begrenzen der zu durchsuchenden Länder/Regionen kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
+   Wenn der Benutzer die Suchschaltfläche wählt oder im Suchfeld einen Standort eingibt und danach die EINGABETASTE drückt, wird für die Abfrage des Benutzers eine Fuzzysuche initiiert. Übergeben Sie ein Array mit ISO 2-Länderwerten an die Option `countrySet`, um die Suchergebnisse auf diese Länder/Regionen zu begrenzen. Durch das Begrenzen der zu durchsuchenden Länder/Regionen kann die Genauigkeit der zurückgegebenen Ergebnisse erhöht werden. 
   
-   Verwenden Sie nach Abschluss der Suche das erste Ergebnis, und legen Sie die Kartenkamera auf diesen Bereich fest. Wenn der Benutzer die Schaltfläche zum Anzeigen des eigenen Standorts wählt, sollte die in den Browser integrierte HTML5 Geolocation API verwendet werden, um den Standort des Benutzers abzurufen und ihn als Mittelpunkt der Karte festzulegen.  
+   Verwenden Sie nach Abschluss der Suche das erste Ergebnis, und legen Sie die Kartenkamera auf diesen Bereich fest. Wenn der Benutzer die Schaltfläche zum Anzeigen des eigenen Standorts auswählt, sollte der Benutzerstandort mithilfe der HTML5-Geolocation-API abgerufen werden. Diese API ist in den Browser integriert. Anschließend wird die Karte über dem Standort zentriert.  
 
    > [!Tip]
    > Beim Verwenden von Popupfenstern ist es am besten, eine einzelne `Popup`-Instanz zu erstellen und diese wiederzuverwenden, indem Inhalt und Position aktualisiert werden. Für jede `Popup`-Instanz, die Sie Ihrem Code hinzufügen, werden der Seite mehrere DOM-Elemente hinzugefügt. Je mehr DOM-Elemente sich auf einer Seite befinden, desto mehr Elemente muss der Browser nachverfolgen. Wenn zu viele Elemente vorhanden sind, kann es sein, dass der Browser langsam wird.
@@ -527,7 +527,7 @@ Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings n
     map.markers.add(centerMarker);
     ```
 
-1. Fügen Sie im Ereignislistener `ready` der Karte eine Datenquelle hinzu. Führen Sie anschließend einen Aufruf durch, und analysieren Sie das Dataset. Aktivieren Sie das Clustering für die Datenquelle. Beim Clustering auf der Datenquelle werden sich überlappende Punkte in einem Cluster gruppiert. Die Cluster werden in einzelne Punkte unterteilt, wenn der Benutzer die Ansicht vergrößert. Dies ermöglicht eine flüssigere Benutzererfahrung und sorgt für eine Leistungssteigerung.
+1. Fügen Sie im Ereignislistener `ready` der Karte eine Datenquelle hinzu. Führen Sie anschließend einen Aufruf durch, und analysieren Sie das Dataset. Aktivieren Sie das Clustering für die Datenquelle. Beim Clustering auf der Datenquelle werden sich überlappende Punkte in einem Cluster gruppiert. Die Cluster werden in einzelne Punkte unterteilt, wenn der Benutzer die Ansicht vergrößert. Dieses Verhalten ermöglicht eine höhere Benutzerfreundlichkeit und verbessert die Leistung.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ Bei der ersten Verwendung der Schaltfläche zum Anzeigen des eigenen Standorts d
 
 ![Screenshot: Anforderung des Zugriffs auf den Benutzerstandort im Browser](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Wenn Sie einen Bereich stark genug vergrößern, der Coffee-Shop-Standorte enthält, werden die Cluster in einzelne Standorte aufgeteilt. Wählen Sie eines der Symbole in der Karte aus, oder wählen Sie ein Element in der Seitenleiste aus, um ein Popupfenster anzuzeigen, in dem Informationen zum Standort angezeigt werden.
+Wenn Sie einen Bereich stark genug vergrößern, der Coffee-Shop-Standorte enthält, werden die Cluster in einzelne Standorte aufgeteilt. Wählen Sie eines der Symbole in der Karte aus, oder wählen Sie ein Element auf der Seitenleiste aus, um ein Popupfenster anzuzeigen. Im Popupfenster werden Informationen zum ausgewählten Standort angezeigt.
 
 <center>
 

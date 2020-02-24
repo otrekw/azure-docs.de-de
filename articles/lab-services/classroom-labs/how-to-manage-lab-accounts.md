@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64780bca13bf497793dc90ad22d3eaf91949a6
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: c82b5d02ab3928eb0472f2a047cdca2238bf0b63
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606327"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443306"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Verwalten von Lab-Konten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.
@@ -30,22 +30,34 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
 2. Wählen Sie im Menü links **Alle Dienste** aus. Wählen Sie im Abschnitt **DevOps** die Option **Labkonten** aus. Wenn Sie das Sternchen (`*`) neben **Labkonten** auswählen, wird die Option im linken Menü dem Abschnitt **FAVORITEN** hinzugefügt. Beim nächsten Mal wählen Sie **Labkonten** unter **FAVORITEN** aus.
 
     ![Alle Dienste -> Labkonten](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Klicken Sie auf der Seite **Labkonten** auf der Symbolleiste auf **Hinzufügen**. 
+3. Wählen Sie auf der Seite **Labkonten** auf der Symbolleiste **Hinzufügen** aus, oder wählen Sie auf der Seite **Labkonto erstellen** aus. 
 
     ![Auswählen von „Hinzufügen“ auf der Seite „Labkonten“](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. Führen Sie auf der Seite **Labkonto** die folgenden Aktionen aus: 
+4. Führen Sie auf der Seite **Labkonto erstellen** auf der Registerkarte **Grundlagen** die folgenden Schritte aus: 
     1. Geben Sie einen **Lab-Kontonamen** ein. 
     2. Wählen Sie das **Azure-Abonnement** aus, in dem Sie das Lab-Konto erstellen möchten.
     3. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
-    4. Wählen Sie als **Standort** einen Standort oder eine Region aus, in dem bzw. der das Lab-Konto erstellt werden soll. 
-    5. Wählen Sie einen vorhandenen **Katalog mit freigegebenen Images** aus, oder erstellen Sie einen solchen. Sie können die Vorlagen-VM im Katalog mit den freigegebenen Images speichern, damit sie von anderen Benutzern wiederverwendet werden kann. Ausführliche Informationen zu Katalogen mit freigegebenen Images finden Sie unter [Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services](how-to-use-shared-image-gallery.md).
-    6. Wählen Sie als **Virtuelles Peernetzwerk** ein virtuelles Peernetzwerk (VNET) für das Lab-Netzwerk aus. In diesem Konto erstellte Labs sind mit dem ausgewählten VNET verbunden und haben Zugriff auf die Ressourcen im ausgewählten VNET. 
-    7. Geben Sie einen **Adressbereich** für VMs im Lab an. Der Adressbereich muss in der CIDR-Notation (Classless Inter-Domain Routing) angegeben werden (Beispiel: 10.20.0.0/23). Virtuelle Computer im Lab werden in diesem Adressbereich erstellt. Weitere Informationen finden Sie unter [Angeben eines Adressbereichs für VMs im Lab](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).    
-    8. Geben Sie im Feld **Auswahl des Labstandorts** an, ob Sie es Laberstellern ermöglichen möchten, einen Standort für das Lab auszuwählen. Standardmäßig ist die Option deaktiviert. Wenn die Option deaktiviert ist, können Labersteller keinen Standort für das Lab angeben, das sie erstellen. Die Labs werden am nächstgelegenen geografischen Standort (relativ zum Labkonto) erstellt. Wenn die Option aktiviert ist, kann ein Labersteller bei der Laberstellung einen Standort auswählen.      
-    9. Klicken Sie auf **Erstellen**. 
+    4. Wählen Sie als **Standort** einen Standort oder eine Region aus, in dem bzw. der das Lab-Konto erstellt werden soll.
+    5. Geben Sie im Feld **Auswahl des Labstandorts** an, ob Sie es Laberstellern ermöglichen möchten, einen Standort für das Lab auszuwählen. Standardmäßig ist die Option deaktiviert. Wenn die Option deaktiviert ist, können Labersteller keinen Standort für das Lab angeben, das sie erstellen. Die Labs werden am nächstgelegenen geografischen Standort (relativ zum Labkonto) erstellt. Wenn die Option aktiviert ist, kann ein Labersteller bei der Laberstellung einen Standort auswählen. Weitere Informationen finden Sie unter [Zulassen der Auswahl des Labstandorts durch den Lab-Ersteller](allow-lab-creator-pick-lab-location.md). 
 
-        ![Fenster zum Erstellen eines Lab-Kontos](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Wählen Sie auf der Symbolleiste das **Glockensymbol** (**Benachrichtigungen**), überprüfen Sie, ob die Bereitstellung erfolgreich war, und wählen Sie dann **Zu Ressource wechseln**. 
+        ![Labkonto erstellen -> Grundlagen](../media/how-to-manage-lab-accounts/create-lab-account-basics.png)
+5. Klicken Sie auf **Weiter: Erweitert** unten auf der Seite, um zur Registerkarte **Erweitert** zu navigieren, und führen Sie dann die folgenden Schritte aus: 
+    1. Wählen Sie einen vorhandenen **Katalog mit freigegebenen Images** aus, oder erstellen Sie einen solchen. Sie können die Vorlagen-VM im Katalog mit den freigegebenen Images speichern, damit sie von anderen Benutzern wiederverwendet werden kann. Ausführliche Informationen zu Katalogen mit freigegebenen Images finden Sie unter [Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services](how-to-use-shared-image-gallery.md).
+    2. Geben Sie an, ob Sie **virtuelle Windows-Computer automatisch herunterfahren**  möchten, wenn Benutzer ihre Verbindung damit trennen. Geben Sie an, wie lange die virtuellen Computer warten sollen, bis die Verbindung des Benutzers wieder hergestellt wird, bevor sie automatisch heruntergefahren werden. 
+    3. Wählen Sie als **Virtuelles Peernetzwerk** ein virtuelles Peernetzwerk (VNET) für das Lab-Netzwerk aus. In diesem Konto erstellte Labs sind mit dem ausgewählten VNET verbunden und haben Zugriff auf die Ressourcen im ausgewählten VNET. Weitere Informationen finden Sie unter [Verbinden des virtuellen Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk](how-to-connect-peer-virtual-network.md).    
+    8. Geben Sie einen **Adressbereich** für VMs im Lab an. Der Adressbereich muss in der CIDR-Notation (Classless Inter-Domain Routing) angegeben werden (Beispiel: 10.20.0.0/23). Virtuelle Computer im Lab werden in diesem Adressbereich erstellt. Weitere Informationen finden Sie unter [Angeben eines Adressbereichs für VMs im Lab](how-to-configure-lab-accounts.md#specify-an-address-range-for-vms-in-the-lab).  
+
+        ![Labkonto erstellen -> Erweitert](../media/how-to-manage-lab-accounts/create-lab-account-advanced.png)  
+6. Klicken Sie auf **Weiter: Tags** unten auf der Seite, um zur Registerkarte **Tags** zu wechseln. Wählen Sie alle Tags aus, die Sie mit dem Labkonto verknüpfen möchten. Tags sind Name/Wert-Paare, die Ihnen das Kategorisieren von Ressourcen und die Anzeige einer konsolidierten Abrechnung ermöglichen, indem Sie dasselbe Tag auf mehrere Ressourcen und Ressourcengruppen anwenden. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../../azure-resource-manager/management/tag-resources.md).
+
+    ![Labkonto erstellen -> Tags](../media/how-to-manage-lab-accounts/create-lab-account-tags.png)
+7. Wählen Sie am unteren Rand dieser Seite **Überprüfen + erstellen** aus, um zur Registerkarte **Überprüfen + erstellen** zu wechseln. 
+4. Überprüfen Sie die Zusammenfassungsinformationen auf dieser Seite, und wählen Sie **Erstellen** aus. 
+
+    ![Labkonto erstellen -> Tags](../media/how-to-manage-lab-accounts/create-lab-account-review-create.png)
+5. Warten Sie, bis die Bereitstellung abgeschlossen ist, erweitern Sie die Option **Nächste Schritte**, und wählen Sie **Zu Ressource wechseln** aus, wie in der folgenden Abbildung gezeigt: 
+
+    Sie können auch auf der Symbolleiste das **Glockensymbol** (**Benachrichtigungen**) auswählen, überprüfen, ob die Bereitstellung erfolgreich war, und dann **Zu Ressource wechseln** auswählen. 
 
     Wählen Sie alternativ auf der Seite **Labkonten** die Option **Aktualisieren**, und wählen Sie anschließend das von Ihnen erstellte Labkonto aus. 
 
@@ -64,7 +76,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Anzeigen und Verwalten von Labs im Labkonto
 
-1. Wählen Sie auf der Seite **Labkonto** im Menü auf der linken Seite die Option **Labs**.
+1. Wählen Sie auf der Seite **Labkonto** im linken Menü **Alle Labs** aus.
 
     ![Labs im Konto](../media/how-to-manage-lab-accounts/labs-in-account.png)
 1. Im Konto wird eine **Liste mit Labs** mit den folgenden Informationen angezeigt: 
@@ -73,6 +85,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
     3. E-Mail-Adresse des Benutzers, der das Lab erstellt hat 
     4. Maximale Anzahl von Benutzern, die für das Lab zulässig ist 
     5. Status des Labs 
+    6. Rollenzuweisungen. 
 
 ## <a name="delete-a-lab-in-the-lab-account"></a>Löschen eines Labs im Labkonto
 Befolgen Sie die Anleitung im vorherigen Abschnitt, um im Labkonto eine Liste mit den Labs anzuzeigen.
@@ -100,4 +113,11 @@ Befolgen Sie die Anleitung im vorherigen Abschnitt, um Lab-Konten in einer Liste
 > Sie können auch das PowerShell-Modul Az.LabServices (Vorschauversion) verwenden, um Labkonten zu verwalten. Weitere Informationen finden Sie auf der [Az.LabServices-Startseite auf GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den folgenden Artikel: [Konfigurieren von Lab-Konten](how-to-configure-lab-accounts.md).
+Weitere Informationen finden Sie in folgenden Artikeln:
+
+- [Zulassen der Auswahl des Labstandorts durch den Lab-Ersteller](allow-lab-creator-pick-lab-location.md)
+- [Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk](how-to-connect-peer-virtual-network.md)
+- [Anfügen eines Katalogs mit freigegebenen Images an ein Lab](how-to-attach-detach-shared-image-gallery.md)
+- [Hinzufügen eines Benutzers als Labbesitzer](how-to-add-user-lab-owner.md)
+- [Anzeigen von Firewalleinstellungen für ein Lab](how-to-configure-firewall-settings.md)
+- [Konfigurieren von anderen Einstellungen für ein Lab](how-to-configure-lab-accounts.md)

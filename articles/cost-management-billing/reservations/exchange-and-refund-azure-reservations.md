@@ -2,20 +2,16 @@
 title: Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 description: Es wird beschrieben, wie Sie für Azure-Reservierungen einen Umtausch durchführen oder Rückerstattungen erhalten können.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773881"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200434"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
@@ -72,12 +68,10 @@ In Azure gelten folgende Richtlinien für Stornierungen, Umtausch und Rückersta
 - Für den Umtausch gibt es keine Strafzahlungen oder jährlichen Grenzwerte.
 
 **Rückerstattungsrichtlinien**
-- Wenn Sie eine Reservierung stornieren, wird für die vorzeitige Kündigung unter Umständen eine Gebühr in Höhe von 12 Prozent berechnet.
-- Die Rückerstattung, die Sie für eine Stornierung erhalten, entspricht dem verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12 Prozent. Navigieren Sie zum Stornieren im Azure-Portal zur entsprechenden Reservierung, und wählen Sie **Erstattung** aus.
+- Möglicherweise fällt in Zukunft für die vorzeitige Beendigung eine Gebühr in Höhe von zwölf Prozent an. Diese Gebühr wird derzeit nicht berechnet.
 - Ihr Gesamtbetrag für Erstattungen darf innerhalb eines rollierenden Zeitfensters von 12 Monaten den Wert von 50.000 US-Dollar nicht überschreiten.
 - Rückerstattungen werden auf der Grundlage des niedrigsten Preises (Ihr Kaufpreis oder der aktuelle Preis für die Reservierung) berechnet.
-- Nur Besitzer von Reservierungen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft behält sich das Recht vor, für alle Rückgaben eine Strafzahlung in Höhe von 12 % zu berechnen. Derzeit wird diese Strafzahlung nicht angewendet, wird aber künftig berechnet werden.
+- Nur Besitzer von Reservierungsaufträgen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
 

@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 10/18/2019
+ms.date: 02/14/2020
 ms.author: diberry
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 81e3003db9baa4c5df646241d77e01840bcdf21d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a3f8013804a2c3f4864719861eea1510c9d849d3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505867"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368441"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Schnellstart: Abrufen der Absicht mit REST-APIs
+# <a name="quickstart-change-model-with-rest-apis"></a>Schnellstart: Ändern des Modells mit Rest-APIs
 
 In dieser Schnellstartanleitung fügen Sie einer Reise-App Beispieläußerungen hinzu und trainieren die App. Bei Beispieläußerungen handelt es sich um Konversationstext von Benutzern, der einer Absicht zugeordnet ist. Indem Sie Beispieläußerungen für Absichten bereitstellen, teilen Sie LUIS mit, welche Arten des vom Benutzer angegebenen Texts zu welcher Absicht gehören.
 

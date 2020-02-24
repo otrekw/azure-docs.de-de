@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Importieren von VHD-Daten auf verwaltete Datenträger mithilfe von Microsoft Azure Data Box Heavy | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren von VHDs auf verwaltete Datenträger'
+titleSuffix: Azure Data Box Heavy
 description: Hier erfahren Sie, wie Sie Daten von VHDs aus lokalen VM-Workloads auf Azure Data Box Heavy kopieren.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a29cd142b3322c958f70aad8d5cad2bc30b87d76
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670836"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471328"
 ---
 # <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Tutorial: Verwenden von Data Box Heavy, um Daten als verwaltete Datenträger in Azure zu importieren
 
@@ -138,7 +139,7 @@ Beachten Sie Folgendes, bevor Sie mit dem Kopieren der Daten beginnen:
 
 - Kopieren Sie die VHDs immer in einen der vorab erstellten Ordner. Wenn Sie die VHDs an einen Ort außerhalb dieser Ordner oder in einen selbst erstellten Ordner kopieren, werden sie nicht als verwaltete Datenträger, sondern als Seitenblobs in das Azure Storage-Konto hochgeladen.
 - Zur Erstellung von verwalteten Datenträgern können nur feste VHDs hochgeladen werden. VHDX-Dateien oder differenzierende VHDs werden nicht unterstützt.
-- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen besitzen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
+- Der Name eines verwalteten Datenträgers muss in einer Ressourcengruppe über alle vorab erstellten Ordner hinweg eindeutig sein. Die VHDs, die in die vorab erstellten Ordner hochgeladen werden, müssen also jeweils einen eindeutigen Namen aufweisen. Achten Sie darauf, dass der Name nicht mit dem Namen eines bereits vorhandenen verwalteten Datenträgers in einer Ressourcengruppe identisch ist.
 - Informationen zu Grenzwerten für verwaltete Datenträger finden Sie unter [Größenbeschränkungen für das Azure-Objekt](data-box-heavy-limits.md#azure-object-size-limits).
 
 Sie können Folgendes verwenden (abhängig davon, ob Sie die Verbindung über SMB oder über NFS herstellen):

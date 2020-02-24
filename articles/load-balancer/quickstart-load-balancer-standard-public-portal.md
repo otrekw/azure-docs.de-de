@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843870"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470189"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen einer Load Balancer-Instanz für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -46,10 +46,14 @@ In diesem Abschnitt erstellen Sie eine Load Balancer-Instanz für den Lastenaus
     | Name                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
     | type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Standard** oder **Basic** aus. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“.  |
+    | SKU           | Wählen Sie **Standard** oder **Basic** aus. Microsoft empfiehlt für Produktionsworkloads die Option „Standard“. |
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus. |
-    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   Verwenden Sie ```-SKU Basic```, um eine öffentliche IP-Adresse vom Typ „Basic“ zu erstellen. Öffentliche IP-Adressen des Typs „Basic“ sind nicht mit einem Lastenausgleich des Typs **Standard** kompatibel. Microsoft empfiehlt für Produktionsworkloads die Option **Standard**.|
     | Verfügbarkeitszone | Geben Sie *Zonenredundant* ein, um eine resiliente Load Balancer-Instanz zu erstellen. Wählen Sie zum Erstellen einer zonalen Load Balancer-Instanz eine bestimmte Zone aus 1, 2 oder 3 aus. |
+
+> [!IMPORTANT]
+> Im weiteren Verlauf dieser Schnellstartanleitung wird davon ausgegangen, dass bei der SKU-Auswahl oben die SKU **Standard** ausgewählt wurde.
+
 
 3. Wählen Sie auf der Registerkarte **Bewerten + erstellen** die Option **Erstellen** aus.   
 
@@ -222,4 +226,4 @@ Löschen Sie die Ressourcengruppe, den Load Balancer und alle zugehörigen Resso
 
 In diesem Schnellstart haben Sie eine Load Balancer Standard-Instanz erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Load Balancer sowie einen Integritätstest konfiguriert und den Load Balancer getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den [Tutorials zu Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-Erfahren Sie mehr über [Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+Weitere Informationen zu Load Balancer und Verfügbarkeitszonen finden Sie [hier](load-balancer-standard-availability-zones.md).

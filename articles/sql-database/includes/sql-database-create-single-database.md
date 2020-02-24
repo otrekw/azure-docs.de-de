@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496138"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252122"
 ---
 In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank. 
 
@@ -19,24 +20,24 @@ In diesem Schritt erstellen Sie eine Azure SQL-Einzeldatenbank.
 >
 > Weitere Informationen finden Sie unter [Erstellen einer Firewallregel auf Datenbankebene](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). Eine Beschreibung, wie Sie die IP-Adresse für die Firewallregel auf Serverebene für Ihren Computer ermitteln, finden Sie unter [Erstellen einer Firewall auf Serverebene](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Portal.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Menü die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
-2. Wählen Sie **+ Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel **Datenbanken** die Option **Details anzeigen** auswählen.
+1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* ins Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
+2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu den verschiedenen Datenbanken anzeigen, indem Sie auf der Kachel **Datenbanken** die Option **Details anzeigen** auswählen.
 3. Wählen Sie **Erstellen** aus:
 
    ![Erstellen einer Einzeldatenbank](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. Geben Sie auf der Registerkarte **Grundlagen** im Abschnitt **Projektdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
+4. Geben Sie auf der Registerkarte **Grundlagen** im Abschnitt **Projektdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
 
    - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.
    - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie `myResourceGroup` ein, und wählen Sie **OK**.
 
      ![Neue SQL-Datenbank: Registerkarte „Grundlagen“](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. Geben Sie im Abschnitt **Datenbankdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
+5. Geben Sie im Abschnitt **Datenbankdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
 
    - **Datenbankname**: Geben Sie `mySampleDatabase` ein.
    - **Server**: Wählen Sie **Neu erstellen**, geben Sie die folgenden Werte ein, und wählen Sie anschließend die Option **Auswählen** aus.
@@ -63,20 +64,24 @@ Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken über das Azure-Por
      - Optional können Sie auch **Konfiguration ändern** auswählen, um die Hardwaregeneration zu ändern.
    - Wählen Sie **Übernehmen**.
 
-5. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
-6. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`.
+6. Wählen Sie die Registerkarte **Netzwerk** aus, und entscheiden Sie, ob Sie [**anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten**](../sql-database-networkaccess-overview.md) oder einen [privaten Endpunkt](../../private-link/private-endpoint-overview.md) hinzufügen möchten.
+
+   ![Registerkarte „Netzwerk“](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
+8. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`.
 
    ![Weitere Einstellungen der SQL-Datenbank](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
 
-7. Behalten Sie die restlichen Standardwerte bei, und wählen Sie unten im Formular die Option **Bewerten + erstellen**.
-8. Überprüfen Sie die endgültigen Einstellungen, und wählen Sie **Erstellen**.
+9. Behalten Sie die restlichen Standardwerte bei, und wählen Sie unten im Formular die Option **Bewerten + erstellen**.
+10. Überprüfen Sie die endgültigen Einstellungen, und wählen Sie **Erstellen**.
 
-9. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
+11. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -151,7 +156,7 @@ In diesem Teil des Artikels werden die folgenden PowerShell-Cmdlets verwendet:
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen logischen Server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine neue Azure SQL-Einzeldatenbank. | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Erstellen Sie Ihre Ressourcengruppe und einzelne Datenbanken mit der Azure CLI.
 

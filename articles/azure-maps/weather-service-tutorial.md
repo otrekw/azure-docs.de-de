@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python) | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie Sensordaten unter Verwendung von Azure Notebooks (Python) mit Wettervorhersagedaten des Microsoft Azure Maps-Wetterdiensts verknüpfen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989619"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208028"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Anfordern täglicher Vorhersagedaten
 
-In unserem Szenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Das folgende Skript ruft die [API für tägliche Vorhersagen](https://aka.ms/AzureMapsWeatherDailyForecast) des Azure Maps-Wetterdiensts auf, um für jede Windkraftanlage tägliche Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zu erhalten:
+In unserem Szenario möchten wir eine tägliche Vorhersage für jeden Sensorstandort anfordern. Mit dem folgenden Skript wird die [API für tägliche Vorhersagen](https://aka.ms/AzureMapsWeatherDailyForecast) des Azure Maps-Wetterdiensts aufgerufen. Diese API gibt für jede Windkraftanlage Wettervorhersagen für die nächsten 15 Tage ab dem aktuellen Datum zurück.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Anlagenstandorte](./media/weather-service-tutorial/location-map.png)
 
 
-Wir gruppieren die Vorhersagedaten basierend auf der Stationskennung des Wetterdatenzentrums mit den Demodaten. Mit dieser Gruppierung werden die Demodaten um die Vorhersagedaten erweitert. 
+Wir gruppieren die Vorhersagedaten basierend auf der Stationskennung mit den Demodaten. Die Stationskennung gilt für das Wetterrechenzentrum. Mit dieser Gruppierung werden die Demodaten um die Vorhersagedaten erweitert.
 
 ```python
 # Group forecasted data for all locations

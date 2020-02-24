@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272102"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195792"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Self-Service-Registrierung für Azure AD B2B Collaboration
 
-Kunden können mit den integrierten Features, die über das [Azure-Portal](https://portal.azure.com) und den [Anwendungszugriffsbereich](https://myapps.microsoft.com) für Endbenutzer verfügbar gemacht werden, viele Aufgaben erledigen. Unter Umständen müssen Sie jedoch den Onboarding-Workflow für B2B-Benutzer an die Bedürfnisse ihrer Organisation anpassen. Hierzu können Sie die [Einladungs-API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) verwenden.
+Kunden können mit den integrierten Features, die über das [Azure-Portal](https://portal.azure.com) und den [Anwendungszugriffsbereich](https://myapps.microsoft.com) für Endbenutzer verfügbar gemacht werden, viele Aufgaben erledigen. Unter Umständen müssen Sie jedoch den Onboarding-Workflow für B2B-Benutzer an die Bedürfnisse ihrer Organisation anpassen.
 
-Als einladende Organisation wissen Sie möglicherweise im Vorfeld nicht, welche externen Mitarbeiter Zugriff auf ihre Ressourcen benötigen. Benutzer von Partnerunternehmen müssen sich selbstständig registrieren können – mit einer Reihe von Richtlinien, die von der einladenden Organisation (sprich: von Ihnen) gesteuert werden. Dieses Szenario lässt sich über die APIs realisieren. Auf GitHub steht ein [entsprechendes Beispielprojekt](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) zur Verfügung.
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>Azure AD-Berechtigungsverwaltung für die B2B-Gastbenutzerregistrierung
 
-Dieses GitHub-Projekt zeigt, wie Organisationen mithilfe der APIs eine richtlinienbasierte Self-Service-Registrierungsfunktion für ihre vertrauenswürdigen Partner bereitstellen und Regeln definieren, die bestimmen, auf welche Apps die Partner Zugriff haben. Partnerbenutzer können auf Ressourcen zugreifen, wenn Sie sie benötigen. Der Zugriff ist sicher, und es ist kein manuelles Onboarding durch die einladende Organisation erforderlich. Sie können das Projekt ganz einfach in einem Azure-Abonnement Ihrer Wahl bereitstellen.
+Als einladende Organisation wissen Sie möglicherweise im Vorfeld nicht, welche externen Mitarbeiter Zugriff auf Ihre Ressourcen benötigen. Benutzer von Partnerunternehmen müssen sich selbstständig registrieren können, und die Registrierung muss Richtlinien unterliegen, die von Ihnen gesteuert werden. Konfigurieren Sie mithilfe der [Azure AD-Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) Richtlinien zum [Verwalten des Zugriffs für externe Benutzer](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users), damit Benutzer aus anderen Organisationen Zugriff anfordern und nach erfolgter Genehmigung Gastkonten erhalten und Gruppen, Apps und SharePoint Online-Websites zugewiesen werden können.
 
-## <a name="as-is-code"></a>Unveränderter Code
+## <a name="azure-active-directory-b2b-invitation-api"></a>Einladungs-API von Azure Active Directory B2B
 
-Dieser Code wird als Beispiel zur Veranschaulichung der Verwendung der Einladungs-API von Azure Active Directory B2B zur Verfügung gestellt. Er muss von Ihrem Entwicklungsteam oder von einem Partner angepasst und überprüft werden, bevor Sie ihn in einem Produktionsszenario bereitstellen.
+Organisationen können die [Einladungs-Manager-API von Microsoft Graph](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) verwenden, um ihre eigenen Onboardingumgebungen für B2B-Gastbenutzer zu erstellen. Wenn Sie eine Self-Service-B2B-Gastbenutzerregistrierung anbieten möchten, empfehlen wir die Verwendung der [Azure AD-Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Wenn Sie dagegen eine eigene Umgebung erstellen möchten, können Sie die [API zum Erstellen von Einladungen](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) verwenden, um beispielsweise Ihre angepasste Einladungs-E-Mail automatisch direkt an den B2B-Benutzer zu senden. Alternativ kann Ihre App die in der Erstellungsantwort zurückgegebene URL vom Typ „inviteRedeemUrl“ verwenden, um Ihre eigene Einladung (über den von Ihnen bevorzugten Kommunikationsweg) für den eingeladenen Benutzer zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

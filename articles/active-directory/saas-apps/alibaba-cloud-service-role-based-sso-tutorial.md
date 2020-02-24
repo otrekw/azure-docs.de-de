@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99b9173c817cc3ecf4b9a34ec6906af0b4de70e6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e22bec224d185d0306f2b0032aef929f627c910e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71120773"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367926"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Alibaba Cloud Service (rollenbasiertes SSO)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -158,14 +158,14 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 5. Nachdem der IdP erfolgreich erstellt wurde, klicken Sie auf **RAM-Rolle erstellen**.
 
-6. Geben Sie im Feld **Name der RAM Rolle** `AADrole` ein, wählen Sie `AAD` aus der Dropdownliste **IdP auswählen** aus, und klicken Sie auf „OK“.
+6. Geben Sie im Feld **Name der RAM Rolle**`AADrole` ein, wählen Sie `AAD` aus der Dropdownliste **IdP auswählen** aus, und klicken Sie auf „OK“.
 
     >[!NOTE]
     >Sie können der Rolle bei Bedarf die Berechtigung erteilen. Nach dem Erstellen des IdPs und der entsprechenden Rolle empfehlen wir, die ARNs des IdPs und der Rolle zur späteren Verwendung zu speichern. Die ARNs finden Sie auf der Seite mit den IdP-Informationen und auf der Seite mit den Rolleninformationen.
 
 7. Ordnen Sie die Alibaba Cloud RAM-Rolle (AADrole) dem Azure AD-Benutzer (u2) zu: Um die RAM-Rolle dem Azure AD-Benutzer zuzuordnen, müssen Sie eine Rolle in Azure AD erstellen, indem Sie diesen Schritten folgen:
 
-    a. Melden Sie sich beim [Azure AD Graph-Tester](https://developer.microsoft.com/graph/graph-explorer?spm=a2c63.p38356.879954.9.7d904e167h6Yg9) an.
+    a. Melden Sie sich beim [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) an.
 
     b. Klicken Sie auf **Berechtigungen ändern** , um die erforderlichen Berechtigungen zum Erstellen einer Rolle zu erhalten.
 

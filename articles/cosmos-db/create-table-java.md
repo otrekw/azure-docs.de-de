@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 14742984fb993679abc87e279f3ad9882ec77ce3
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266039"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212853"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-Tabellen-API-Daten
 
@@ -25,23 +25,14 @@ ms.locfileid: "71266039"
 > * [Python](create-table-python.md)
 > 
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Java und der [Table-API](table-introduction.md) von Azure Cosmos DB eine App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird gezeigt, wie Sie ein Azure Cosmos DB-Konto erstellen und mithilfe des Daten-Explorers Tabellen und Entitäten im webbasierten Azure-Portal erstellen.
-
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+In dieser Schnellstartanleitung erstellen Sie ein Azure Cosmos DB-Tabellen-API-Konto und verwenden den Daten-Explorer und eine über GitHub geklonte Java-App, um Tabellen und Entitäten zu erstellen. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-Außerdem haben Sie folgende Möglichkeiten: 
-
-* [Java Development Kit (JDK) 8](https://aka.ms/azure-jdks)
-    * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
-* Ein binäres [Maven](https://maven.apache.org/)-Archiv ([Download](https://maven.apache.org/download.cgi)/[Installationsanleitung](https://maven.apache.org/install.html))
-    * Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren.
-* [Git-Client](https://www.git-scm.com/)
-    * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
+- Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Oder [testen Sie Azure Cosmos DB kostenlos](https://azure.microsoft.com/try/cosmosdb/) ohne ein Azure-Abonnement. Sie können auch den [Azure Cosmos DB-Emulator](https://aka.ms/cosmosdb-emulator) mit dem URI `https://localhost:8081` und dem Schlüssel `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==` verwenden.
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk) Die Umgebungsvariable `JAVA_HOME` muss auf den Ordner verweisen, in dem das JDK installiert ist.
+- Ein [binäres Maven-Archiv](https://maven.apache.org/download.cgi) 
+- [Git](https://www.git-scm.com/downloads). 
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -85,13 +76,13 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Verbindungszeichenfolge** aus. 
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) in Ihrem Azure Cosmos DB-Konto die Option **Verbindungszeichenfolge** aus. 
 
    ![Anzeigen der Informationen zur Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. Kopieren Sie die primäre Verbindungszeichenfolge mithilfe der Kopierschaltfläche auf der rechten Seite.
 
-3. Öffnen Sie „config.properties“ aus dem Ordner „C:\git-samples\storage-table-java-getting-started\src\main\resources“. 
+3. Öffnen Sie *config.properties* aus dem Ordner *C:\git-samples\storage-table-java-getting-started\src\main\resources*. 
 
 5. Kommentieren Sie die erste Zeile aus, und heben Sie die Auskommentierung in der zweiten Zeile auf. Die beiden ersten Zeilen sollten nun wie folgt aussehen.
 
@@ -106,7 +97,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten.
     >
 
-7. Speichern Sie die Datei „config.properties“.
+7. Speichern Sie die Datei *config.properties*.
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
@@ -118,7 +109,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
     cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
-2. Führen Sie im Terminalfenster von Git die folgenden Befehle aus, um die Java-Anwendung zu starten.
+2. Führen Sie im Terminalfenster von Git die folgenden Befehle aus, um die Java-Anwendung auszuführen.
 
     ```git
     mvn compile exec:java 
@@ -126,7 +117,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
     Im Konsolenfenster werden die Tabellendaten angezeigt, die der neuen Tabellendatenbank in Azure Cosmos DB hinzugefügt werden.
 
-    Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neue Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
+    Jetzt können Sie zum Daten-Explorer zurückkehren, um diese neuen Daten anzuzeigen, abzufragen, anzupassen und mit ihnen zu arbeiten. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 
@@ -138,7 +129,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine App ausführen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
+In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine Java-App ausführen, um Tabellendaten hinzuzufügen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
 
 > [!div class="nextstepaction"]
 > [Importieren von Daten in die Table-API](table-import.md)

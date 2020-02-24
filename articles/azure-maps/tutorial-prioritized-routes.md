@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Ermitteln mehrerer Routen nach Fortbewegungsmittel | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Azure Maps Routen für verschiedene Fortbewegungsmittel finden.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989653"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209493"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -200,7 +200,11 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: e
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Rendern von Routen je nach Fortbewegungsart
 
-In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verwenden, um basierend auf der Fortbewegungsart mehrere Routen von einem bestimmten Startpunkt zu einem Endpunkt zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten in Abhängigkeit der aktuellen Verkehrslage bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Route - Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Route: Abrufen von Wegbeschreibungen). Alle folgenden Codeblöcke sollten **innerhalb des eventListener-Elements für das Laden der Karte** hinzugefügt werden, um sicherzustellen, dass sie erst nach dem vollständigen Laden der Karte geladen werden.
+In diesem Abschnitt wird die Verwendung der Routendienst-API von Azure Maps veranschaulicht. Die Routen-API wird verwendet, um basierend auf der Fortbewegungsart mehrere Routen von einem bestimmten Startpunkt zum Endpunkt zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route bereit. Von den APIs werden nicht nur Routen zwischen zwei Orten geplant, sondern auch die aktuellen Verkehrsbedingungen berücksichtigt. 
+
+Darüber hinaus ermöglicht die Routen-API die Planung zukünftiger Routen unter Verwendung der umfangreichen Azure-Datenbank mit historischen Verkehrsdaten. Die API kann die Routendauer für einen bestimmten Tag und eine bestimmte Uhrzeit prognostizieren. Weitere Informationen finden Sie unter [Route - Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Route: Abrufen von Wegbeschreibungen). 
+
+Alle folgenden Codeblöcke sollten **innerhalb des eventListener-Elements für das Laden der Karte** hinzugefügt werden, um sicherzustellen, dass sie nach dem vollständigen Laden der Karte geladen werden.
 
 1. Fügen Sie in der GetMap-Funktion den folgenden JavaScript-Code hinzu.
 
@@ -244,7 +248,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verw
     });
     ```
 
-    Mit dem obigen Codeausschnitt wird der Azure Maps-Routingdienst über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest)-Methode abgefragt. Die Routenlinie wird dann aus der GeoJSON-Funktionssammlung der Antwort extrahiert, die mit der `geojson.getFeatures()`-Methode extrahiert wird. Anschließend wird die Routenlinie der Datenquelle hinzugefügt. Ein Index von 0 stellt sicher, dass sie vor allen anderen Linien in der Datenquelle gerendert wird. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route, und wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel).
+    Mit dem obigen Codeausschnitt wird der Azure Maps-Routingdienst über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest)-Methode abgefragt. Die Routenlinie wird dann aus der GeoJSON-Funktionssammlung der Antwort extrahiert, die mit der `geojson.getFeatures()`-Methode extrahiert wird. Anschließend wird die Routenlinie der Datenquelle hinzugefügt. Ein Index von 0 stellt sicher, dass sie vor allen anderen Linien in der Datenquelle gerendert wird. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route. Wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel).
 
 3. Fügen Sie den folgenden JavaScript-Code hinzu, um eine Route für ein Auto zu erstellen und die Ergebnisse anzuzeigen.
 
@@ -270,7 +274,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verw
 
     ![Priorisierte Routen mit dem Azure-Routendienst](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    Die LKW-Route wird in Blau und als stärkere Linie angezeigt, wohingegen die Autoroute eine violette, dünnere Linie ist. Die Autostrecke führt über den Lake Washington über die I-90, die durch Tunnel unter Wohngebieten führt und so die Gefahrgutfracht einschränkt. Die LKW-Route für den Frachttyp „USHazmatClass2“ verläuft daher ordnungsgemäß über eine andere Autobahn.
+    Die LKW-Route ist die dicke blaue Linie. Die PWK-Route ist die dünne violette Linie. Die PKW-Route verläuft über den Lake Washington auf der I-90, die durch Tunnel unter Wohngebieten hindurch führt. Da sich die Tunnel nahe an Wohngebieten befinden, ist diese Strecke nicht für Gefahrguttransporte geeignet. Die LKW-Route für den Frachttyp „USHazmatClass2“ verläuft daher über eine andere Autobahn.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718017"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443498"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Classroom-Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)
 Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Classroom-Labs in Azure Lab Services. 
@@ -27,6 +27,9 @@ Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu C
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Gilt das Kontingent pro Benutzer oder pro Woche oder für die gesamte Dauer des Labs? 
 Das Kontingent, das Sie für ein Lab festlegen, gilt für jeden Kursteilnehmer für die gesamte Dauer des Labs. Und die [geplante Ausführungszeit von virtuellen Computern](how-to-create-schedules.md) wird nicht mit dem Kontingent eines Benutzers verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt.  Weitere Informationen zu Kontingenten finden Sie unter [Festlegen von Kontingenten für Benutzer](how-to-configure-student-usage.md#set-quotas-for-users).
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Wenn ein Professor einen virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies auf das Kursteilnehmerkontingent aus? 
+Nein. Tut es nicht. Wenn der Professor den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus. 
 
 ## <a name="schedules"></a>Zeitpläne
 
@@ -42,10 +45,18 @@ Wenn Sie beispielsweise den Block „/19 - 10.0.0.0/19“ verwenden, umfasst die
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welche Portbereiche sollte ich in der Firewalleinstellung meiner Organisation öffnen, um über RDP/SSH eine Verbindung mit virtuellen Labcomputern herzustellen?
 
-Die Ports lauten: 49152–65535. Classroom-Labs sitzen hinter einem Lastenausgleich, sodass alle virtuellen Computer in einem Lab eine einzelne IP-Adresse aufweisen und jeder virtuelle Computer im Lab über einen eindeutigen Port verfügt. Die Portnummern und die öffentliche IP-Adresse können sich bei jeder erneuten Veröffentlichung des Labs ändern.
+Die Ports lauten: 49152–65535. Classroom-Labs befinden sich hinter einem Lastenausgleichsmodul. Jedes Lab verfügt über eine einzige öffentliche IP-Adresse, und jeder virtuelle Computer im Lab verfügt über einen eindeutigen Port. 
+
+Sie können die private IP-Adresse jedes virtuellen Computers auf der Registerkarte **Virtueller Computerpool** der Startseite für das jeweilige Lab im Azure-Portal anzeigen. Wenn Sie ein Lab erneut veröffentlichen, ändert sich die öffentliche IP-Adresse des Labs nicht, aber die private IP-Adresse und die Portnummer aller einzelnen virtuellen Computer im Lab können sich ändern. Weitere Informationen finden Sie im folgenden Artikel: [Firewalleinstellungen für Azure Lab Services](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Welchen öffentlichen IP-Adressbereich sollte ich in der Firewalleinstellung meiner Organisation öffnen, um über RDP/SSH eine Verbindung mit virtuellen Labcomputern herzustellen?
 Weitere Informationen finden Sie unter [Azure-IP-Adressbereiche und Diensttags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519). Dort finden Sie den öffentlichen IP-Adressbereich für Rechenzentren in Azure. Sie können die IP-Adressen für die Regionen öffnen, in denen sich die Labkonten befinden.
+
+## <a name="virtual-machine-images"></a>VM-Images
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Warum kann ich als Lab-Ersteller bei der Erstellung eines neuen Labs keine zusätzlichen Imageoptionen in der Dropdownliste mit den virtuellen Computerimages aktivieren?
+
+Wenn ein Administrator Sie einem Labkonto als Lab-Ersteller hinzufügt, erhalten Sie die Berechtigungen zum Erstellen von Labs. Sie verfügen jedoch nicht über die Berechtigungen zum Bearbeiten jeglicher Einstellungen innerhalb des Labkontos, einschließlich der Liste der aktivierten Images virtueller Computer. Um zusätzliche Images zu aktivieren, wenden Sie sich an Ihren Labkontoadministrator, damit dieser dies für Sie erledigt, oder bitten Sie den Administrator, Sie mit der Rolle „Mitwirkender“ zum Labkonto hinzuzufügen. Die Rolle „Mitwirkender“ erteilt Ihnen die Berechtigungen zum Bearbeiten der Liste der Images für virtuelle Computer im Labkonto.
 
 ## <a name="users"></a>Benutzer
 

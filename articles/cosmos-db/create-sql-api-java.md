@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134494"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469040"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-SQL-API-Daten
 
@@ -69,15 +69,17 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressourcen im Code erstellt werden, können Sie sich die folgenden Codeausschnitte ansehen. Andernfalls können Sie mit [Ausführen der App](#run-the-app) fortfahren. 
 
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Verwalten von Datenbankressourcen mithilfe der synchronen API (sync)
+
 * `CosmosClient`-Initialisierung `CosmosClient` bietet die clientseitige logische Darstellung für den Azure Cosmos-Datenbankdienst. Mit diesem Client werden Anforderungen für den Dienst konfiguriert und ausgeführt.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* Erstellung einer Cosmos-Datenbank:
+* Erstellung von `CosmosDatabase`:
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* Erstellung eines Cosmos-Containers:
+* Erstellung von `CosmosContainer`:
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Punktlesevorgänge werden mithilfe der Methoden `getItem` und `read` ausgeführt:
+* Punktlesevorgänge werden mithilfe der Methode `readItem` ausgeführt.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * SQL-Abfragen über JSON erfolgen mithilfe der `queryItems`-Methode:
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Verwalten von Datenbankressourcen mithilfe der asynchronen API (async)
+
+* Aufrufe der asynchronen API werden sofort abgeschlossen, ohne auf eine Antwort vom Server zu warten. Die folgenden Codeausschnitte enthalten geeignete Entwurfsmuster, um die obigen Verwaltungsaufgaben unter Verwendung der asynchronen API durchzuführen.
+
+* `CosmosAsyncClient`-Initialisierung `CosmosAsyncClient` bietet die clientseitige logische Darstellung für den Azure Cosmos-Datenbankdienst. Mit diesem Client werden asynchrone Anforderungen für den Dienst konfiguriert und ausgeführt.
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* Erstellung von `CosmosAsyncDatabase`:
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* Erstellung von `CosmosAsyncContainer`:
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* Für die Erstellung wird genau wie bei der synchronen API die Methode `createItem` verwendet. Dieses Beispiel zeigt, wie Sie zahlreiche asynchrone Anforderungen vom Typ `createItem` effizient ausgeben können. Hierzu wird ein reaktiver Stream abonniert, der die Anforderungen sowie Benachrichtigungen ausgibt. Da dieses einfache Beispiel bis zum Abschluss ausgeführt und dann beendet wird, werden Instanzen vom Typ `CountDownLatch` verwendet, um sicherzustellen, dass das Programm nicht während der Elementerstellung beendet wird. **Bei der asynchronen Programmierung dürfen asynchrone Vorgänge nicht zu einer Blockierung führen. In der Praxis werden Anforderungen im Rahmen einer main()-Schleife generiert, die unbegrenzt ausgeführt wird, sodass kein Latch für asynchrone Aufrufe benötigt wird.**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* Punktlesevorgänge werden genau wie bei der synchronen API mithilfe der Methode `readItem` ausgeführt.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* SQL-Abfragen über JSON werden genau wie bei der synchronen API mithilfe der Methode `queryItems` ausgeführt.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>Ausführen der App
 
@@ -109,10 +139,10 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen zur Verbindungsz
     mvn package
     ```
 
-3. Starten Sie im Git-Terminalfenster die Java-Anwendung mithilfe des folgenden Befehls. (Ersetzen Sie YOUR_COSMOS_DB_HOSTNAME durch den in Anführungszeichen gesetzten URI-Wert aus dem Portal und YOUR_COSMOS_DB_MASTER_KEY durch den in Anführungszeichen gesetzten Primärschlüssel aus dem Portal.)
+3. Starten Sie im Git-Terminalfenster die Java-Anwendung mithilfe des folgenden Befehls. Ersetzen Sie „SYNCASYNCMODE“ durch `sync` oder `async` (je nachdem, welchen Beispielcode Sie ausführen möchten), ersetzen Sie „YOUR_COSMOS_DB_HOSTNAME“ durch den in Anführungszeichen gesetzten URI-Wert aus dem Portal und „YOUR_COSMOS_DB_MASTER_KEY“ durch den in Anführungszeichen gesetzten Primärschlüssel aus dem Portal.
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

@@ -6,12 +6,12 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 292eba09b151d8de50fc379051091a4d2990a105
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1c5411778bf2e8ab25ce3e71dba92227b2653c3d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156324"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445898"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -47,7 +47,7 @@ Bevor Sie ein `IntentRecognizer`-Objekt initialisieren können, müssen Sie eine
 Fügen Sie diesen Code in die Methode `recognizeIntent()` ein. Stellen Sie sicher, dass Sie folgende Werte aktualisieren:
 
 * Ersetzen Sie `"YourLanguageUnderstandingSubscriptionKey"` durch Ihren LUIS-Vorhersageschlüssel.
-* Ersetzen Sie `"YourLanguageUnderstandingServiceRegion"` durch Ihren LUIS-Speicherort.  Verwenden Sie den entsprechenden Speech SDK-Parameter für die [Region](https://aka.ms/speech/sdkregion).
+* Ersetzen Sie `"YourLanguageUnderstandingServiceRegion"` durch Ihren LUIS-Speicherort.  Verwenden Sie den **Regionsbezeichner** der [Region](https://aka.ms/speech/sdkregion).
 
 >[!TIP]
 > Informationen dazu, wie Sie diese Werte ermitteln, finden Sie unter [Erstellen einer LUIS-App für die Absichtserkennung](#create-a-luis-app-for-intent-recognition).

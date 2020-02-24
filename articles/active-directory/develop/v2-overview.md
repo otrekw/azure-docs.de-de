@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700293"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194499"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Übersicht über Microsoft Identity Platform (v2.0)
 
@@ -42,7 +42,11 @@ Mit Microsoft Identity Platform müssen Sie Code nur einmal schreiben, um alle B
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Die Verwendung von Identitäten muss nicht kompliziert sein. Wählen Sie ein auf Sie zutreffendes [Szenario](authentication-flows-app-scenarios.md) aus. In jedem Szenariopfad stehen ein Schnellstart sowie eine Übersichtsseite zur Verfügung, sodass Sie in wenigen Minuten einsatzbereit sind:
+Die Verwendung von Identitäten muss nicht kompliziert sein. 
+
+Im [Video zu Microsoft Identity Platform](identity-videos.md) erfahren Sie mehr über die Grundlagen. 
+
+Wählen Sie ein auf Sie zutreffendes [Szenario](authentication-flows-app-scenarios.md) aus. In jedem Szenariopfad stehen ein Schnellstart sowie eine Übersichtsseite zur Verfügung, sodass Sie in wenigen Minuten einsatzbereit sind:
 
 - [Erstellen einer Einzelseiten-App](scenario-spa-overview.md)
 - [Erstellen einer Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md)

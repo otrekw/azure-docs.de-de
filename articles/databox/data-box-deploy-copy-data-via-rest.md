@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren in Blobspeicher mithilfe von REST-APIs'
+titleSuffix: Azure Data Box
 description: Hier erfahren Sie, wie Sie Daten über REST-APIs in Ihren Azure Data Box-Blobspeicher kopieren.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: fcd6fc95adc892885fd8471e622ce3b04258d8b5
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65800534"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471838"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -127,12 +128,12 @@ Die Methode zum Importieren eines Zertifikats hängt von der Distribution ab.
 Mehrere Distribution, wie etwa Ubuntu und Debian, verwenden den Befehl `update-ca-certificates`.  
 
 - Benennen Sie die Base64-codierte Zertifikatdatei so um, dass sie die Erweiterung `.crt` aufweist, und kopieren Sie sie in das Verzeichnis `/usr/local/share/ca-certificates directory`.
-- Führen Sie den Befehl `update-ca-certificates`aus.
+- Führen Sie den Befehl `update-ca-certificates` aus.
 
 Neuere Versionen von RHEL, Fedora und CentOS verwenden den Befehl `update-ca-trust`.
 
 - Kopieren Sie die Zertifikatdatei in das Verzeichnis `/etc/pki/ca-trust/source/anchors`.
-- Führen Sie `update-ca-trust`aus.
+- Führen Sie `update-ca-trust` aus.
 
 Spezifische Einzelheiten für Ihre Distribution finden Sie in der Dokumentation.
 

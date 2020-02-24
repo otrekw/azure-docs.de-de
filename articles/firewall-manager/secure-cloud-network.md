@@ -1,41 +1,38 @@
 ---
-title: 'Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager (Vorschauversion) unter Verwendung des Azure-Portals'
-description: In diesem Tutorial erfahren Sie, wie Sie Ihr Cloudnetzwerk mithilfe von Azure Firewall Manager unter Verwendung des Azure-Portals schützen.
+title: 'Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion)'
+description: In diesem Tutorial erfahren Sie, wie Sie Ihr virtuelles WAN mithilfe von Azure Firewall Manager unter Verwendung des Azure-Portals schützen.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510034"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443056"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Tutorial: Schützen Ihres Cloudnetzwerks mithilfe von Azure Firewall Manager (Vorschauversion) unter Verwendung des Azure-Portals
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Tutorial: Schützen Ihres virtuellen WAN mithilfe von Azure Firewall Manager (Vorschauversion) 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Mithilfe von Azure Firewall Manager (Vorschauversion) können Sie geschützte Hubs erstellen, um für private IP-Adressen, für Azure-PaaS und für das Internet bestimmten Datenverkehr Ihres Cloudnetzwerks zu schützen. Das Datenverkehrsrouting an die Firewall ist automatisiert, sodass keine benutzerdefinierten Routen (User Defined Routes, UDRs) erstellt werden müssen.
+Mithilfe von Azure Firewall Manager (Vorschauversion) können Sie geschützte virtuelle Hubs erstellen, um für private IP-Adressen, für Azure-PaaS und für das Internet bestimmten Datenverkehr Ihres Cloudnetzwerks zu schützen. Das Datenverkehrsrouting an die Firewall ist automatisiert, sodass keine benutzerdefinierten Routen (User Defined Routes, UDRs) erstellt werden müssen.
 
 ![Schützen des Cloudnetzwerks](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Voraussetzungen
+Firewall Manager unterstützt außerdem die Architektur für virtuelle Hubnetzwerke. Einen Vergleich der Architekturtypen für geschützte virtuelle Hubs und virtuelle Hubnetzwerke finden Sie unter [Welche Architekturoptionen gibt es für Azure Firewall Manager?](vhubs-and-vnets.md).
 
-> [!IMPORTANT]
-> Azure Firewall Manager (Vorschauversion) muss explizit mithilfe des PowerShell-Befehls `Register-AzProviderFeature` aktiviert werden.
+In diesem Tutorial lernen Sie Folgendes:
 
-Führen Sie an einer PowerShell-Eingabeaufforderung die folgenden Befehle aus:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Führen Sie den folgenden Befehl aus, um den Registrierungsstatus zu überprüfen:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * Erstellen des virtuellen Spoke-Netzwerks
+> * Erstellen eines geschützten virtuellen Hubs
+> * Herstellen einer Verbindung für die Hub-and-Spoke-VNETs
+> * Erstellen einer Firewallrichtlinie und Schützen Ihres Hubs
+> * Weiterleiten von Datenverkehr an Ihren Hub
+> * Testen der Firewall
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Erstellen einer Hub-Spoke-Architektur
 
@@ -145,18 +142,18 @@ Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstelle
 2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus.
 3. Geben Sie die folgenden Werte für den virtuellen Computer ein:
 
-   |Einstellung  |Wert  |
+   |Einstellung  |value  |
    |---------|---------|
    |Resource group     |**FW-Manager**|
    |Name des virtuellen Computers     |**Jump-Srv**|
    |Region     |**(USA) USA, Osten**|
    |Benutzername des Administrators     |**azureuser**|
-   |Kennwort     |**Azure123456!**|
+   |Kennwort     |Geben Sie Ihr Kennwort ein.|
 
 4. Wählen Sie unter **Regeln für eingehende Ports** für **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus.
 5. Wählen Sie unter **Eingangsports auswählen** die Option **RDP (3389)** aus.
 
-6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.
+6. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und wählen Sie **Weiter: Datenträger**.
 7. Übernehmen Sie die Standardeinstellungen für Datenträger, und wählen Sie **Weiter: Netzwerk** aus.
 8. Vergewissern Sie sich, dass als virtuelles Netzwerk **Spoke-01** und als Subnetz **Jump-SN** ausgewählt ist.
 9. Übernehmen Sie unter **Öffentliche IP** den Standardnamen der neuen öffentlichen IP-Adresse (Jump-Srv-ip).
@@ -166,11 +163,11 @@ Um Ihre Firewallregeln testen zu können, müssen Sie einige Server bereitstelle
 
 Konfigurieren Sie anhand der Angaben in der folgenden Tabelle einen weiteren virtuellen Computer mit dem Namen **Workload-Srv**. Die restliche Konfiguration ist mit der Konfiguration des virtuellen Computers „Srv-Jump“ identisch.
 
-|Einstellung  |Wert  |
+|Einstellung  |value  |
 |---------|---------|
 |Subnet|**Workload-SN**|
-|Öffentliche IP-Adresse|**Keine**|
-|Öffentliche Eingangsports|**Keine**|
+|Öffentliche IP-Adresse|**None**|
+|Öffentliche Eingangsports|**None**|
 
 ### <a name="add-a-route-table-and-default-route"></a>Hinzufügen einer Routingtabelle und einer Standardroute
 

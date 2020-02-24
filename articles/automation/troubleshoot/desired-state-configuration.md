@@ -9,41 +9,48 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834270"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430532"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Behandeln von Problemen mit der Azure Automation-Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
 Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC).
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Schritte zum Behandeln von Problemen mit der DSC-Konfiguration (Desired State Configuration)
+## <a name="diagnosing-an-issue"></a>Diagnostizieren eines Problems
 
 Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State Configuration zu Fehlern kommt, finden Sie hier einige Schritte, um das Problem zu diagnostizieren.
 
-1. **Stellen Sie sicher, dass die Konfiguration auf Ihrem lokalen Computer erfolgreich kompiliert wird:**  Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. Sicherstellen, dass Ihre Konfiguration auf dem lokalen Computer erfolgreich kompiliert wird
 
-   Durch das Kompilieren der DSC-Konfiguration auf Ihrem lokalen Computer können Sie unter anderem die folgenden allgemeinen Fehler ermitteln und beheben:
+Azure State Configuration ist in PowerShell DSC integriert. Die Dokumentation zur DSC-Sprache und -Syntax finden Sie in der [PowerShell DSC-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
 
-   - **Fehlende Module**
-   - **Syntaxfehler**
-   - **Logikfehler**
+Durch das Kompilieren der DSC-Konfiguration auf Ihrem lokalen Computer können Sie unter anderem die folgenden allgemeinen Fehler ermitteln und beheben:
 
-2. **Zeigen Sie die DSC-Protokolle auf Ihrem Knoten an:** Wenn Ihre Konfiguration erfolgreich kompiliert wird, aber nicht auf einen Knoten angewendet werden kann, finden Sie in den Protokollen ausführliche Informationen. Informationen zum Speicherort der DSC-Protokolle finden Sie unter [Wo befinden sich die DSC-Ereignisprotokolle?](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+   - Fehlende Module
+   - Syntaxfehler
+   - Logikfehler
 
-   Darüber hinaus können Sie mithilfe von [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) die Informationen in den DSC-Protokollen analysieren. Wenn Sie sich an den Support wenden, werden diese Protokolle zur Diagnose des Problems benötigt.
+### <a name="2-view-dsc-logs-on-your-node"></a>2. Anzeigen der DSC-Protokolle auf Ihrem Knoten
 
-   Sie können **xDscDiagnostics** auf Ihrem lokalen Computer installieren. Folgen Sie hierzu den Anweisungen zur [Installation der stabilen Modulversion](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+Wenn Ihre Konfiguration erfolgreich kompiliert wird, aber nicht auf einen Knoten angewendet werden kann, finden Sie in den DSC-Protokollen ausführliche Informationen. Informationen zum Speicherort dieser Protokolle finden Sie unter [Wo befinden sich die DSC-Ereignisprotokolle?](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Um **xDscDiagnostics** auf Ihrem Azure-Computer zu installieren, können Sie [az vm run-command](/cli/azure/vm/run-command) oder [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) verwenden. Es ist auch möglich, die Option **Befehl ausführen** aus dem Portal zu verwenden. Folgen Sie hierzu den Schritten unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md).
+Das [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics)-Modul kann Ihnen helfen, die Informationen in den DSC-Protokollen analysieren. Wenn Sie sich an den Support wenden, fordert der diese Protokolle zur Diagnose des Problems an.
 
-   Informationen zur Verwendung von **xDscDiagnostics** finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs) sowie im Abschnitt zu den [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Stellen Sie sicher, dass Ihre Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen:** DSC hängt von den Modulen ab, die auf dem Knoten installiert sind.  Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen.  Weitere Informationen finden Sie unter [Beheben von Fehlern bei freigegebenen Ressourcen](shared-resources.md#modules).
+Sie können das „xDscDiagnostics“-Modul auf Ihrem lokalen Computer installieren. Folgen Sie hierzu den Anweisungen unter [Installation der stabilen Modulversion](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Häufige Fehler beim Verwenden der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
+Um das „xDscDiagnostics“-Modul auf Ihrem Azure-Computer zu installieren, können Sie [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) verwenden. Es ist auch möglich, die Option **Befehl ausführen** aus dem Portal zu verwenden. Folgen Sie hierzu den Schritten unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md).
+
+Informationen zur Verwendung von „xDscDiagnostics“ finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Siehe auch [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Sicherstellen, dass Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen
+
+DSC ist von den Modulen abhängig, die auf dem Knoten installiert sind. Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen. Weitere Informationen finden Sie unter [Problembehandlung von Modulen](shared-resources.md#modules).
+
+## <a name="common-errors-when-working-with-dsc"></a>Häufige Fehler beim Arbeiten mit DSC
 
 ### <a name="unsupported-characters"></a>Szenario: Eine Konfiguration mit speziellen Zeichen kann nicht aus dem Portal gelöscht werden
 
@@ -97,7 +104,7 @@ Stellen Sie sicher, dass Ihr Computer Zugriff auf die richtigen Endpunkte für A
 Wenn Sie einen Knoten mit State Configuration (DSC) registrieren, erhalten Sie eine der folgenden Fehlermeldungen:
 
 ```error
-The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
 ```
 
 ```error
@@ -114,7 +121,7 @@ Führen Sie folgenden Schritte aus, um den fehlerhaften DSC-Knoten neu zu regist
 
 Heben Sie zunächst die Registrierung des Knotens auf:
 
-1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** > {Ihr Automation-Konto} > **State Configuration (DSC)** .
+1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** -> {Ihr Automation-Konto} -> **State Configuration (DSC)** .
 2. Klicken Sie auf „Knoten“ und anschließend auf den fehlerhaften Knoten.
 3. Klicken Sie auf „Registrierung aufheben“, um die Registrierung des Knotens aufzuheben.
 
@@ -146,7 +153,7 @@ If (($certs.Count) -gt 0)
 
 Registrieren Sie abschließend den fehlerhaften Knoten wieder:
 
-1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** > {Ihr Automation-Konto} > **State Configuration (DSC)** .
+1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** -> {Ihr Automation-Konto} -> **State Configuration (DSC)** .
 2. Klicken Sie auf „Knoten“.
 3. Klicken Sie auf die Schaltfläche „Hinzufügen“.
 4. Wählen Sie den fehlerhaften Knoten aus.
@@ -229,7 +236,7 @@ Sie haben Anmeldeinformationen in einer Konfiguration verwendet, aber keine ordn
 
 #### <a name="resolution"></a>Lösung
 
-* Stellen Sie sicher, dass Sie die ordnungsgemäßen **ConfigurationData** übergeben, über die **PSDscAllowPlainTextPassword** für jede Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Assets in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
+* Stellen Sie sicher, dass Sie die ordnungsgemäßen **ConfigurationData** übergeben, über die **PSDscAllowPlainTextPassword** für jede Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](../automation-dsc-compile.md).
 
 ### <a name="failure-processing-extension"></a>Szenario: Onboarding über DSC-Erweiterung, Fehler beim Verarbeiten der Erweiterung
 

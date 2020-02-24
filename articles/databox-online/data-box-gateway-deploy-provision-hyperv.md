@@ -8,26 +8,27 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517911"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365310"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial erfahren Sie, wie Sie ein Data Box Gateway auf einem Hostsystem mit Hyper-V unter Windows Server 2016, Windows Server 2012 R2 oder Windows Server 2012 bereitstellen. 
+In diesem Tutorial erfahren Sie, wie Sie ein Data Box Gateway auf einem Hostsystem mit Hyper-V unter Windows Server 2016, Windows Server 2012 R2 oder Windows Server 2012 bereitstellen.
 
 Sie benötigen Administratorrechte, um ein virtuelles Gerät bereitzustellen und zu konfigurieren. Die Bereitstellung und die anfängliche Einrichtung dauern ca. 10 Minuten.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Sicherstellen, dass der Host die Mindestanforderungen für Geräte erfüllt
-> * Bereitstellen eines virtuellen Geräts in Hypervisor
+> * Bereitstellen eines virtuellen Geräts in VMware
 > * Starten des virtuellen Geräts und Abrufen der IP-Adresse
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -45,7 +46,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
   > [!IMPORTANT]
   > Die auf dem Data Box Gateway ausgeführte Software kann nur mit der Data Box Gateway-Ressource verwendet werden.
- 
+
 ### <a name="for-the-data-box-gateway-virtual-device"></a>Für das virtuelle Data Box Gateway-Gerät
 
 Stellen Sie Folgendes sicher, bevor Sie ein Gerät bereitstellen:
@@ -54,7 +55,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein Gerät bereitstellen:
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Geräts über die folgenden Ressourcen:
 
   * Mindestens 4 Kerne
-  * Mindestens 8 GB RAM 
+  * Mindestens 8 GB RAM
   * Eine Netzwerkschnittstelle
   * Einen Betriebssystemdatenträger mit 250 GB
   * Einen virtuellen Datenträger mit 2 TB für Daten
@@ -65,7 +66,6 @@ Vorbereitungen
 
 - Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um die optimale Nutzung des Geräts zu ermöglichen.
-
 
 ## <a name="check-the-host-system"></a>Überprüfen des Hostsystems
 
@@ -86,7 +86,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustellen.
 
 1. Kopieren Sie das Image des virtuellen Geräts auf den lokalen Datenträger Ihres Windows Server-Hosts. Dies ist das VHDX-Image, das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
-2. Öffnen Sie den **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager** aus.
+2. Öffnen Sie **Server-Manager**. Klicken Sie in der oberen rechten Ecke auf **Extras**, und wählen Sie **Hyper-V-Manager** aus.
 
     ![Auswählen von Hyper-V Manager im Server-Manager](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
@@ -127,18 +127,17 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 14. Wählen Sie auf der Seite **Festplatte** die Option **Virtuelle Festplatte**, und klicken Sie auf **Neu**. Der **Assistent für neue virtuelle Festplatten** wird gestartet.
 
     ![Assistent für neue virtuelle Festplatten](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
-1. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Festplatten auf **Weiter**.
-2. Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**.
-   
-17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**. 
+15. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Festplatten auf **Weiter**.
+16. Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**.
+17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**.
 
     ![Seite zum Auswählen des Datenträgertyps](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
 18. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z.B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
 
     ![Seite „Namen und Speicherort angeben“](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an. 
+19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen** aus, und geben Sie als Größe **2 TB** (oder mehr) an.
     
-    2 TB sind die Mindestanforderung, Sie können aber auch einen größeren Datenträger bereitstellen. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. Sie können den Datenträger jedoch erweitern, indem Sie einen Datenträger für Daten hinzufügen. Klicken Sie auf **Weiter**.
+    2 TB sind die Mindestanforderung, Sie können aber auch einen größeren Datenträger bereitstellen. Beachten Sie, dass Sie den Datenträger nach der Bereitstellung nicht mehr verkleinern können. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. Die Erweiterung des Datenträgers wird nicht unterstützt. Klicken Sie auf **Weiter**.
 
     ![Seite zum Konfigurieren des Datenträgers](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Überprüfen Sie auf der Seite **Zusammenfassung** die Details Ihres virtuellen Datenträgers, und klicken Sie zum Erstellen des Datenträgers auf **Fertig stellen**, wenn alles korrekt ist. Der Assistent wird geschlossen, und Ihrem Computer wird eine virtuelle Festplatte hinzugefügt.
@@ -165,7 +164,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
     
 7. Verwenden Sie zum Konfigurieren des Netzwerks den Befehl `Get-HcsIpAddress`, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet`zugewiesen.
 
-8. Verwenden Sie das `Set-HcsIpAddress` -Cmdlet, um das Netzwerk zu konfigurieren. Siehe folgendes Beispiel:
+8. Verwenden Sie das `Set-HcsIpAddress` -Cmdlet, um das Netzwerk zu konfigurieren. Sehen Sie sich folgendes Beispiel an:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
     
@@ -187,12 +186,10 @@ In diesem Tutorial haben Sie sich mit den folgenden Themen zu Data Box Gateway b
 
 > [!div class="checklist"]
 > * Sicherstellen, dass der Host die Mindestanforderungen für Geräte erfüllt
-> * Bereitstellen eines virtuellen Geräts in Hypervisor
+> * Bereitstellen eines virtuellen Geräts in VMware
 > * Starten des virtuellen Geräts und Abrufen der IP-Adresse
 
 Im nächsten Tutorial erfahren Sie, wie Sie Ihr virtuelles Gerät verbinden, einrichten und aktivieren.
 
 > [!div class="nextstepaction"]
 > [Verbinden und Einrichten des Data Box Gateway](./data-box-gateway-deploy-connect-setup-activate.md)
-
-

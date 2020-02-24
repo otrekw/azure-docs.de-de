@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488256"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443124"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Übersicht über die Bereitstellung von Azure Firewall Manager (Vorschau)
 
@@ -20,23 +20,32 @@ ms.locfileid: "73488256"
 
 Es gibt mehrere Möglichkeiten, die Vorschauversion von Azure Firewall Manager bereitzustellen, jedoch sollten Sie den folgenden allgemeinen Prozess nutzen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-> [!IMPORTANT]
-> Azure Firewall Manager (Vorschauversion) muss explizit mithilfe des PowerShell-Befehls `Register-AzProviderFeature` aktiviert werden.
->Führen Sie an einer PowerShell-Eingabeaufforderung die folgenden Befehle aus:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. Führen Sie den folgenden Befehl aus, um den Registrierungsstatus zu überprüfen:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>Allgemeiner Bereitstellungsprozess
+
+### <a name="hub-virtual-networks"></a>Virtuelle Hubnetzwerke
+
+1.  Erstellen einer Firewallrichtlinie
+
+    - Erstellen einer neuen Richtlinie
+<br>*or*<br>
+    - Leiten Sie eine Basisrichtlinie ab, und passen Sie eine lokale Richtlinie an.
+<br>*or*<br>
+    - Importieren Sie Regeln aus einer vorhandenen Azure Firewall-Instanz. Entfernen Sie unbedingt die NAT-Regeln aus Richtlinien, die auf mehrere Firewalls angewendet werden sollen.
+1. Erstellen Ihrer Hub-and-Spoke-Architektur
+   - Erstellen Sie mit Azure Firewall Manager ein virtuelles Hubnutzwerk, und verknüpfen Sie unter Verwendung des Peerings virtueller Netzwerke virtuelle Spoke-Netzwerke damit.
+<br>*or*<br>
+    - Erstellen Sie ein virtuelles Netzwerk, fügen Sie virtuelle Netzwerkverbindungen hinzu, und verknüpfen Sie unter Verwendung des Peerings virtueller Netzwerke virtuelle Spoke-Netzwerke damit.
+
+3. Auswählen von Sicherheitsanbietern und Zuweisen der Firewallrichtlinie. Derzeit wird nur Azure Firewall als Anbieter unterstützt.
+
+   - Dieser Schritt wird während der Erstellung eines virtuellen Hubnetzwerks ausgeführt.
+<br>*or*<br>
+    - Konvertieren Sie ein vorhandenes virtuelles Netzwerk in ein virtuelles Hubnetzwerk. Es können auch mehrere virtuelle Netzwerke konvertiert werden.
+
+4. Konfigurieren benutzerdefinierter Routen zum Weiterleiten von Datenverkehr an die Firewall Ihres virtuellen Hubnetzwerks
+
+
+### <a name="secured-virtual-hubs"></a>Geschützte virtuelle Hubs
 
 1. Erstellen Ihrer Hub-and-Spoke-Architektur
 

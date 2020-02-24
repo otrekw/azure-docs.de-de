@@ -4,14 +4,14 @@ description: In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Port
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137757"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431322"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Schnellstart: Starten einer vorhandenen Azure Spring Cloud-Anwendung über das Azure-Portal
 
@@ -54,17 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Bereitstellen einer Dienstinstanz im Azure-Portal
 
-1. Öffnen Sie in einem Webbrowser [diesen Link zur Azure Spring Cloud im Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/) in einem neuen Tab. 
 
-1. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
-    - Servicename: Geben Sie den Namen Ihrer Dienstinstanz an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
-    - Abonnement: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.  Stellen Sie sicher, dass dieses Abonnement der Zulassungsliste für Azure Spring Cloud hinzugefügt wurde.
-    - Ressourcengruppe: Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode.
-    - Standort: Wählen Sie den Speicherort für Ihre Dienstinstanz aus. Derzeit werden die Standorte „USA, Osten“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ unterstützt.
+2. Suchen Sie im oberen Suchfeld nach **Azure Spring Cloud**.
 
-1. Klicken Sie auf **Überprüfen und erstellen**.
+3. Wählen Sie in den Ergebnissen **Azure Spring Cloud** aus.
 
-1. Überprüfen Sie Ihre Spezifikationen, und klicken Sie auf **Erstellen**.
+ ![ASC-Symbol](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
+
+4. Klicken Sie auf der Azure Spring Cloud-Seite auf **+ Hinzufügen**.
+
+ ![ASC-Symbol](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Füllen Sie das Formular auf der Azure Spring Cloud-Seite **Erstellen** aus.  Berücksichtigen Sie die folgenden Richtlinien:
+    - **Abonnement**: Wählen Sie das Abonnement aus, unter dem diese Ressource abgerechnet werden soll.  Stellen Sie sicher, dass dieses Abonnement der Zulassungsliste für Azure Spring Cloud hinzugefügt wurde.
+    - **Ressourcengruppe**: Die Erstellung neuer Ressourcengruppen für neue Ressourcen ist eine bewährte Methode.
+    - **Dienstdetails/Name**: Geben Sie den Namen Ihrer Dienstinstanz an.  Der Name muss zwischen 4 und 32 Zeichen lang sein und darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.  Das erste Zeichen des Dienstnamens muss ein Buchstabe und das letzte Zeichen entweder ein Buchstabe oder eine Ziffer sein.
+    - **Standort**: Wählen Sie den Speicherort für Ihre Dienstinstanz aus. Derzeit werden die Standorte „USA, Osten“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ unterstützt.
+
+    ![Startseite des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Klicken Sie auf die Registerkarte **Diagnoseeinstellung**, um das folgende Dialogfeld zu öffnen.
+
+7. Sie können **Protokolle aktivieren** gemäß Ihren Anforderungen auf *Ja* oder *Nein* festlegen.
+
+    ![Aktivieren von Protokollen](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. Klicken Sie auf die Registerkarte **Ablaufverfolgung**.
+
+9. Sie können **Ablaufverfolgung aktivieren** gemäß Ihren Anforderungen auf *Ja* oder *Nein* festlegen.  Wenn Sie **Ablaufverfolgung aktivieren** auf „Ja“ festgelegt haben, wählen Sie zudem eine vorhandene Application Insights-Instanz aus, oder erstellen Sie eine neue Instanz. Ohne die Angabe von **Application Insights** tritt ein Validierungsfehler auf.
+
+
+    ![Ablaufverfolgung](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. Klicken Sie auf **Überprüfen und erstellen**.
+
+11. Überprüfen Sie Ihre Spezifikationen, und klicken Sie auf **Erstellen**.
 
 Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstellung wird die Seite **Übersicht** für die Dienstinstanz angezeigt.
 
@@ -76,11 +101,9 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
 
 1. Navigieren Sie zur Seite **Übersicht**, und wählen Sie **Konfigurationsserver** aus.
 
-1. Legen Sie im Abschnitt **Standardrepository** den Wert für **URI** auf „https\://github.com/Azure-Samples/piggymetrics“ fest.
+2. Geben Sie im Abschnitt **Standardrepository** für **URI** den Wert „https://github.com/Azure-Samples/piggymetrics-config“ ein.
 
-1. Legen Sie die **BEZEICHNUNG** auf „config“ fest.
-
-1. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern.
+3. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern.
 
     ![Screenshot des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -97,27 +120,27 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Erstellen Sie das geklonte Paket.
+2. Erstellen Sie das geklonte Paket.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Weisen Sie Ihrer Ressourcengruppe und Ihrem Dienst Namen zu. Ersetzen Sie die unten angegebenen Platzhalter durch den Ressourcengruppennamen und den Dienstnamen, die Sie weiter oben in diesem Tutorial bereitgestellt haben.
+3. Weisen Sie Ihrer Ressourcengruppe und Ihrem Dienst Namen zu. Ersetzen Sie die unten angegebenen Platzhalter durch den Ressourcengruppennamen und den Dienstnamen, die Sie weiter oben in diesem Tutorial bereitgestellt haben.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Erstellen Sie die Anwendung `gateway`, und stellen Sie die JAR-Datei bereit:
+4. Erstellen Sie die Anwendung `gateway`, und stellen Sie die JAR-Datei bereit:
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Erstellen Sie nach dem gleichen Muster die Anwendungen `account-service` und `auth-service`, und stellen Sie ihre JAR-Dateien bereit:
+5. Erstellen Sie nach dem gleichen Muster die Anwendungen `account-service` und `auth-service`, und stellen Sie ihre JAR-Dateien bereit:
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -126,7 +149,7 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Es dauert einige Minuten, bis die Bereitstellung der Anwendungen abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendungen bereitgestellt wurden. Für die drei Anwendungen sollte jeweils eine Zeile angezeigt werden.
+6. Es dauert einige Minuten, bis die Bereitstellung der Anwendungen abgeschlossen ist. Navigieren Sie im Azure-Portal zum Blatt **Apps**, um zu überprüfen, ob die Anwendungen bereitgestellt wurden. Für die drei Anwendungen sollte jeweils eine Zeile angezeigt werden.
 
 > [!div class="nextstepaction"]
 > [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -135,13 +158,13 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten.  Nach der Bereitstell
 
 1. Öffnen Sie im Menü auf der linken Seite die Registerkarte **Apps**.
 
-1. Wählen Sie die `gateway`-Anwendung aus, um die Seite **Übersicht** anzuzeigen.
+2. Wählen Sie die `gateway`-Anwendung aus, um die Seite **Übersicht** anzuzeigen.
 
-1. Wählen Sie **Domäne zuweisen** aus, um dem Gateway einen öffentlichen Endpunkt zuzuweisen. Dies kann einige Minuten dauern.
+3. Wählen Sie **Endpunkt zuweisen** aus, um dem Gateway einen öffentlichen Endpunkt zuzuweisen. Dies kann einige Minuten dauern.
 
     ![Screenshot des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. Geben Sie in Ihrem Browser den zugewiesenen öffentlichen Endpunkt (mit der Bezeichnung **URL**) ein, um die laufende Anwendung anzuzeigen.
+4. Geben Sie in Ihrem Browser den zugewiesenen öffentlichen Endpunkt (mit der Bezeichnung **URL**) ein, um die laufende Anwendung anzuzeigen.
 
     ![Screenshot des ASC-Portals](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

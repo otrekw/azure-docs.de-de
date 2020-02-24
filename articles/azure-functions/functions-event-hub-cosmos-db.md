@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849835"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425322"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Tutorial: Erstellen einer Funktion in Java mit einem Event Hub-Trigger und einer Azure Cosmos DB-Ausgabebindung
 
@@ -36,6 +36,8 @@ Für dieses Tutorial muss Folgendes installiert sein:
 
 > [!IMPORTANT]
 > Damit Sie dieses Tutorial durchführen können, muss die Umgebungsvariable `JAVA_HOME` auf den Installationsspeicherort des JDK festgelegt sein.
+
+Wenn Sie es vorziehen, den Code für dieses Tutorial direkt zu verwenden, finden Sie die entsprechenden Informationen im Beispielrepository [java-functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -201,7 +203,7 @@ Ihre Azure-Ressourcen wurden jetzt erstellt und konfiguriert, um ordnungsgemäß
 
 ## <a name="create-and-test-your-functions"></a>Erstellen und Testen Ihrer Funktionen
 
-Als nächstes erstellen Sie ein Projekt auf Ihrem lokalen Computer, fügen Java-Code hinzu und testen ihn. Sie verwenden Befehle, die mit dem Maven-Plug-In für Azure Functions und den Azure Functions Core Tools funktionieren. Ihre Funktionen werden lokal ausgeführt, verwenden aber die von Ihnen erstellten cloudbasierten Ressourcen. Nachdem Sie die Funktionen lokal ausgeführt haben, können Sie sie mit Maven in der Cloud bereitstellen und die Ansammlung Ihrer Daten und Analysen beobachten.
+Als nächstes erstellen Sie ein Projekt auf Ihrem lokalen Computer, fügen Java-Code hinzu und testen ihn. Sie verwenden Befehle, die mit dem Azure Functions-Plug-In für Maven und den Azure Functions Core Tools funktionieren. Ihre Funktionen werden lokal ausgeführt, verwenden aber die von Ihnen erstellten cloudbasierten Ressourcen. Nachdem Sie die Funktionen lokal ausgeführt haben, können Sie sie mit Maven in der Cloud bereitstellen und die Ansammlung Ihrer Daten und Analysen beobachten.
 
 Wenn Sie Cloud Shell zur Erstellung Ihrer Ressourcen verwendet haben, werden Sie nicht lokal mit Azure verbunden. Verwenden Sie in diesem Fall den Befehl `az login`, um den browserbasierten Anmeldevorgang zu starten. Legen Sie dann bei Bedarf das Standardabonnement mit `az account set --subscription` fest, gefolgt von der Abonnement-ID. Führen Sie abschließend die folgenden Befehle aus, um einige Umgebungsvariablen auf Ihrem lokalen Computer neu zu erstellen. Ersetzen Sie die `<value>`-Platzhalter durch dieselben Werte, die Sie zuvor verwendet haben.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.author: aahi
-ms.openlocfilehash: d67075fad719b1780682c705f0e17f15c5801559
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4f4b6bad38992a9e0146d6324bc3a3fc7632ded2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136144"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201253"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem Python SDK 
 
@@ -47,17 +47,17 @@ from msrest.authentication import CognitiveServicesCredentials
 
 ## <a name="create-a-search-client-and-send-a-request"></a>Erstellen eines Clients für die Suche und Senden einer Anforderung
 
-1. Erstellen Sie eine Variable für Ihren Abonnementschlüssel.
+1. Erstellen Sie eine Variable für Ihren Abonnementschlüssel und den Endpunkt.
 
     ```python
     subscription_key = 'your-subscription-key'
-    endpoint = 'your-custom-endpoint'
+    endpoint = 'your-endpoint'
     ```
 
 2. Erstellen Sie eine Instanz von `CustomSearchClient`. Verwenden Sie dabei ein Objekt vom Typ `CognitiveServicesCredentials` mit dem Abonnementschlüssel. 
 
     ```python
-    client = CustomSearchClient(endpoint, CognitiveServicesCredentials(subscription_key))
+    client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
 3. Senden Sie eine Suchanforderung mit `client.custom_instance.search()`. Fügen Sie Ihren Suchbegriff an den Parameter `query` an, und legen Sie `custom_config` auf Ihre benutzerdefinierte Konfigurations-ID fest, um Ihre Suchinstanz zu verwenden. Die ID finden Sie im [Portal für die benutzerdefinierte Bing-Suche](https://www.customsearch.ai/) auf der Registerkarte **Produktion**.

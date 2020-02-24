@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Kopieren von Daten auf Ihr Azure Data Box-Gerät mithilfe des Datenkopierdiensts | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren auf Ihr Gerät mithilfe des Datenkopierdiensts'
+titleSuffix: Azure Data Box
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Datenkopierdienst Daten auf Ihr Azure Data Box-Gerät kopieren.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 579c1984ee1906519980bbed154921a20ed40b79
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206059"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466976"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -36,7 +37,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 1. Sie haben das folgende Tutorial abgeschlossen: [Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box](data-box-deploy-set-up.md).
 2. Sie haben Ihr Data Box-Gerät erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt.
 3. Sie verfügen über die Anmeldeinformationen des NAS-Quellgeräts, mit dem Sie eine Verbindung für den Datenkopiervorgang herstellen.
-4. Sie verfügen über eine Verbindung mit einem Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung (Gigabit Ethernet) wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, können Sie eine 1-GbE-Datenverbindung verwenden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
+4. Sie verfügen über eine Verbindung mit einem Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung (10-Gigabit Ethernet) wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, können Sie eine 1-GbE-Datenverbindung verwenden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
 
 ## <a name="copy-data-to-data-box"></a>Kopieren von Daten auf die Data Box
 
@@ -55,7 +56,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 3. Füllen Sie im Dialogfeld **Auftrag konfigurieren und starten** die folgenden Felder aus:
     
-    |Feld                          |Wert    |
+    |Feld                          |value    |
     |-------------------------------|---------|
     |**Auftragsname**                       |Eindeutiger Name für den Auftrag (weniger als 230 Zeichen). Auftragsnamen dürfen keines der folgenden Zeichen enthalten: \<, \>, \|, \?, \*, \\, \:, \/ und \\\.         |
     |**Quellpfad**                |Geben Sie den SMB-Pfad der Datenquelle im Format `\\<ServerIPAddress>\<ShareName>` oder `\\<ServerName>\<ShareName>` an.        |
@@ -111,7 +112,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 6. Während der Auftragsausführung gilt für die Seite **Daten kopieren** Folgendes:
 
-    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Mögliche Statuswerte:
+    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Der Status kann Folgendes sein:
         - **Wird ausgeführt**
         - **Fehler**
         - **Erfolgreich**

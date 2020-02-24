@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046412"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425306"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Hinzufügen eines SSL-Zertifikats in Azure App Service
 
@@ -21,7 +21,7 @@ Nach dem Hinzufügen eines Zertifikats zu Ihrer App Service- oder [Funktions-Ap
 
 In der folgenden Tabelle sind die Optionen zum Hinzufügen von Zertifikaten in App Service aufgeführt:
 
-|Option|BESCHREIBUNG|
+|Option|Beschreibung|
 |-|-|
 | Erstellen eines von App Service verwalteten Zertifikats (Vorschau) | Ein privates Zertifikat, das einfach zu verwenden ist, wenn Sie nur Ihre [benutzerdefinierte `www`-Domäne](app-service-web-tutorial-custom-domain.md) oder eine nicht „nackte“ Domäne in App Service schützen müssen. |
 | Erwerben eines App Service-Zertifikats | Ein von Azure verwaltetes privates Zertifikat. Es ermöglicht eine einfache automatisierte Zertifikatverwaltung und bietet flexible Verlängerungs- und Exportoptionen. |
@@ -39,7 +39,7 @@ Im Rahmen dieser Schrittanleitung müssen Sie folgende Schritte durchführen:
 ## <a name="private-certificate-requirements"></a>Anforderungen an private Zertifikate
 
 > [!NOTE]
-> AES256 wird von Azure Web Apps **nicht** unterstützt, und alle PFX-Dateien müssen mit TrippleDES verschlüsselt werden.
+> AES256 wird von Azure Web Apps **nicht** unterstützt, und alle PFX-Dateien müssen mit TripleDES verschlüsselt werden.
 
 Das [von App Service verwaltete kostenlose Zertifikat](#create-a-free-certificate-preview) bzw. das [App Service-Zertifikat](#import-an-app-service-certificate) erfüllt bereits die Anforderungen von App Service. Wenn Sie ein privates Zertifikat in App Service hochladen oder importieren möchten, muss Ihr Zertifikat die folgenden Anforderungen erfüllen:
 
@@ -134,7 +134,7 @@ Wählen Sie das Zertifikat auf der Seite [App Service-Zertifikate](https://porta
 
 Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um einen neuen Tresor zu erstellen oder einen vorhandenen Tresor auszuwählen. Wenn Sie einen neuen Tresor erstellen möchten, konfigurieren Sie mithilfe der folgende Tabelle den Tresor, und klicken Sie auf „Erstellen“. Erstellen Sie die neue Key Vault-Instanz im gleichen Abonnement und in der gleichen Ressourcengruppe wie Ihre App Service-App.
 
-| Einstellung | BESCHREIBUNG |
+| Einstellung | Beschreibung |
 |-|-|
 | Name | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Resource group | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |

@@ -2,23 +2,23 @@
 title: Was sind Azure-Reservierungen?
 description: Erfahren Sie mehr über Azure-Reservierungen und -Preise, um Kosten für virtuelle Computer, SQL-Datenbank-Instanzen, Azure Cosmos DB-Instanzen und andere Ressourcen zu sparen.
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841879"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443634"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
 Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei virtuellen Computern, Azure Blob Storage oder Azure Data Lake Storage Gen2, SQL-Datenbank-Computekapazität, Azure Disk Storage, Azure Cosmos DB-Durchsatz oder anderen Azure-Ressourcen für Pläne mit einer Laufzeit von einem Jahr oder mit einer Laufzeit von drei Jahren entscheiden. Dadurch können Sie einen Rabatt für die von Ihnen genutzten Ressourcen in Anspruch nehmen. Reservierungen ermöglichen Kostensenkungen von bis zu 72 Prozent im Vergleich zur nutzungsbasierten Bezahlung. Reservierungen bieten einen Abrechnungsrabatt und wirken sich nicht auf den Laufzeitstatus Ihrer Ressourcen aus.
 
-Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen und nicht für Produkte von Drittanbietern verfügbar.
+Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen verfügbar, nicht für Produkte von Drittanbietern.
 
 Sie können eine Reservierung im [Azure-Portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben.
 
@@ -37,11 +37,19 @@ Servicepläne:
 - **Reservierte virtuelle Kerne für SQL-Datenbank**: In einer Reservierung sind nur die Computekosten enthalten. Die Lizenz wird separat abgerechnet.
 - **SQL Data Warehouse**: Eine Reservierung deckt die cDWU-Nutzung ab. Sie deckt keine mit der SQL Data Warehouse-Nutzung verbundenen Speicher- oder Netzwerkgebühren ab.
 - **App Service-Stempelgebühr**: Eine Reservierung deckt die Stempelnutzung ab. Sie gilt nicht für Worker. Jede andere dem Stempel zugeordnete Ressource wird also separat abgerechnet.
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Azure-Daten-Explorer
+- **Azure Databricks**: Eine Reservierung deckt nur die DBU-Nutzung ab. Andere Gebühren (etwa Compute-, Speicher- und Netzwerkgebühren) werden separat angewendet.
+- **Azure Database for MySQL**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den MySQL-Datenbankserver ab.
+- **Azure Database for PostgreSQL**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für PostgreSQL-Datenbankserver ab.
+- **Azure Database for MariaDB**: In einer Reservierung sind nur die Computekosten enthalten. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den MariaDB-Datenbankserver ab.
+- **Azure Data Explorer**: Eine Reservierung beinhaltet die Markupgebühren. Sie deckt keine mit den Clustern verbundenen Compute-, Netzwerk- oder Speichergebühren ab.
+- **Verwaltete SSD Premium-Datenträger**: Eine Reservierung gilt für eine angegebene Datenträger-SKU. 
 
+Softwarepläne:
+
+- **SUSE Linux**: Eine Reservierung deckt die Kosten für den Softwareplan ab. Die Rabatte gelten nur für SUSE-Verbrauchseinheiten und nicht für die Nutzung virtueller Computer.
+- **Red Hat-Pläne**: Eine Reservierung deckt die Kosten für den Softwareplan ab. Die Rabatte gelten nur für RedHat-Verbrauchseinheiten und nicht für die Nutzung virtueller Computer.
+- **Azure VMware Solution by CloudSimple**: Eine Reservierung deckt die VMWare CloudSimple-Knoten ab. Kosten für zusätzliche Softwarekosten fallen weiterhin an.
+- **Azure Red Hat OpenShift**: Eine Reservierung gilt für die OpenShift-Kosten, nicht für die Azure-Infrastrukturkosten.
 
 Für virtuelle Windows-Computer und SQL-Datenbank können Sie die Lizenzierungskosten mit dem [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) decken.
 
@@ -132,7 +140,7 @@ Der Rabatt auf Reservierungen gilt nur für Ressourcen, denen Enterprise, eine M
 
 ## <a name="when-the-reservation-term-expires"></a>Wann das Ende des Reservierungszeitraums erreicht ist
 
-Am Ende der Reservierungslaufzeit läuft der Abrechnungsrabatt ab, und die Ressourcen werden zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet. Die Reservierungen werden standardmäßig nicht automatisch verlängert. Sie können die automatische Verlängerung einer Reservierung aktivieren, indem Sie die Option in den Verlängerungseinstellungen auswählen. Bei aktivierter automatischer Verlängerung wird nach Ablauf der vorhandenen Reservierung eine Ersatzreservierung erworben. Die Ersatzreservierung hat standardmäßig die gleichen Attribute wie die ablaufende Reservierung. Fakturierungsintervall, Laufzeit und Menge können jedoch optional in den Verlängerungseinstellungen geändert werden. Alle Benutzer mit Besitzerzugriff auf die Reservierung und das Abonnement, das für die Abrechnung verwendet wird, können eine Verlängerung einrichten.  
+Am Ende der Reservierungslaufzeit läuft der Abrechnungsrabatt ab, und die Ressourcen werden zu den Preisen für die nutzungsbasierte Bezahlung abgerechnet. Die Reservierungen werden standardmäßig nicht automatisch verlängert. Sie können die automatische Verlängerung einer Reservierung aktivieren, indem Sie die Option in den Verlängerungseinstellungen auswählen. Bei aktivierter automatischer Verlängerung wird nach Ablauf der vorhandenen Reservierung eine Ersatzreservierung erworben. Die Ersatzreservierung hat standardmäßig die gleichen Attribute wie die ablaufende Reservierung. Fakturierungsintervall, Laufzeit und Menge können jedoch optional in den Verlängerungseinstellungen geändert werden. Jeder Benutzer mit Besitzerzugriff auf die Reservierung und das Abonnement, das für die Abrechnung verwendet wird, kann eine Verlängerung einrichten.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Rabatt gilt für verschiedene Größen
 

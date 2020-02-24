@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f015b1568098b506abc847608a1fca91ef72b6e9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761289"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194628"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Coda
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Für die ersten Schritte benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
-* Coda-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
+* Coda-Abonnement (Enterprise), für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert und die GDrive-Integration deaktiviert ist. Wenden Sie sich an das [Coda-Supportteam](mailto:support@coda.io), um die GDrive-Integration für Ihre Organisation zu deaktivieren, sollte sie derzeit aktiviert sein.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -67,12 +67,33 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Coda mithi
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Coda die folgenden Schritte aus:
 
+1. **[Beginnen mit der Konfiguration des einmaligen Anmeldens für Coda](#begin-configuration-of-coda-sso)** , um einmaliges Anmelden in Coda zu konfigurieren
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
-1. **[Konfigurieren des einmaligen Anmeldens für Coda](#configure-coda-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Coda-Testbenutzers](#create-coda-test-user)** , um eine Entsprechung von B. Simon in Coda zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+   * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+   * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens für Coda](#configure-coda-sso)** , um die Konfiguration der Einstellungen für einmaliges Anmelden in Coda abzuschließen
+   * **[Erstellen eines Coda-Testbenutzers](#create-coda-test-user)** , um eine Entsprechung von B. Simon in Coda zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
+
+## <a name="begin-configuration-of-coda-sso"></a>Beginnen mit der Konfiguration des einmaligen Anmeldens für Coda
+
+Führen Sie zunächst die folgenden Schritte in Coda aus:
+
+1. Öffnen Sie in Coda das Panel **Organization settings** (Organisationseinstellungen).
+
+   ![Öffnen von „Organization settings“ (Organisationseinstellungen)](media/coda-tutorial/org-settings.png)
+
+1. Vergewissern Sie sich, dass die GDrive-Integration in Ihrer Organisation deaktiviert ist. Wenn sie derzeit aktiviert ist, wenden Sie sich an das [Coda-Supportteam](mailto:support@coda.io), um Unterstützung bei der Migration von GDrive zu einer anderen Lösung zu erhalten.
+
+   ![Deaktivierte GDrive-Integration](media/coda-tutorial/gdrive-off.png)
+
+1. Aktivieren Sie unter **Authenticate with SSO (SAML)** (Authentifizieren mit SSO (SAML)) die Option **Configure SAML** (SAML konfigurieren).
+
+   ![SAML-Einstellungen](media/coda-tutorial/saml-settings-link.png)
+
+1. Notieren Sie sich die Werte für **Entity ID** (Entitäts-ID) und **SAML Response URL** (SAML-Antwort-URL) zur späteren Verwendung.
+
+   ![Entitäts-ID und SAML-Antwort-URL für die Verwendung in Azure](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -86,20 +107,20 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://coda.io/samlId/<CUSTOMID>`
+   a. Geben Sie im Textfeld **Bezeichner** die Entitäts-ID ein, die Sie sich oben notiert haben. Sie muss folgendes Format haben: `https://coda.io/samlId/<CUSTOMID>`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://coda.io/samlId/<CUSTOMID>/consume`
+   b. Geben Sie im Textfeld **Antwort-URL** die SAML-Antwort-URL ein, die Sie sich oben notiert haben. Sie muss folgendes Format haben: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`.
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Coda-Client](mailto:support@coda.io). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+   > [!NOTE]
+   > Ihre Werte unterscheiden sich von den obigen Werten. Sie finden Ihre Werte in der Coda-Konsole „Configure SAML“ (SAML konfigurieren). Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL.
 
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zum Eintrag **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 
-    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+   ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
 1. Kopieren Sie im Abschnitt **Coda einrichten** die entsprechenden URLs basierend auf Ihren Anforderungen.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+   ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -108,7 +129,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+   1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
@@ -125,7 +146,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
+   ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
@@ -133,13 +154,23 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-coda-sso"></a>Konfigurieren des einmaligen Anmeldens für Coda
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Coda** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Coda](mailto:support@coda.io) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Geben Sie zum Abschließen des Setups Werte von Azure Active Directory im Coda-Panel **Configure Saml** (SAML konfigurieren) ein.
+
+1. Öffnen Sie in Coda das Panel **Organization settings** (Organisationseinstellungen).
+1. Aktivieren Sie unter **Authenticate with SSO (SAML)** (Authentifizieren mit SSO (SAML)) die Option **Configure SAML** (SAML konfigurieren).
+1. Legen Sie **SAML Provider** (SAML-Anbieter) auf **Azure Active Directory** fest.
+1. Fügen Sie unter **Identity Provider Login URL** (Anmelde-URL des Identitätsanbieters) die **Anmelde-URL** aus der Azure-Konsole ein.
+1. Fügen Sie unter **Identity Provider Issuer** (Aussteller des Identitätsanbieters) den **Azure AD-Bezeichner** aus der Azure-Konsole ein.
+1. Wählen Sie unter **Identity Provider Public Certificate** (Öffentliches Zertifikat des Identitätsanbieters) die Option **Upload Certificate** (Zertifikat hochladen) und dann die zuvor heruntergeladene Zertifikatdatei aus.
+1. Wählen Sie **Speichern** aus.
+
+Damit ist das Setup der SAML-SSO-Verbindung abgeschlossen.
 
 ### <a name="create-coda-test-user"></a>Erstellen eines Coda-Testbenutzers
 
 In diesem Abschnitt wird in Coda ein Benutzer mit dem Namen Britta Simon erstellt. Coda unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Coda vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 

@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016492"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426359"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Tutorial: Erstellen einer Anwendung für die vernetzte Abfallwirtschaft in IoT Central
 
@@ -129,7 +129,7 @@ Die Anwendung **Vernetzte Abfallwirtschaft** verfügt über eine Beispielgeräte
 
 Zeigen Sie die Gerätevorlage wie folgt an:
 
-1. Klicken Sie in IoT Central im linken Navigationsbereich Ihrer Anwendung auf **Gerätevorlagen**. 
+1. Klicken Sie in IoT Central im linken Bereich Ihrer Anwendung auf **Gerätevorlagen**. 
 
     ![Gerätevorlage](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ Die Anwendung **Vernetzte Abfallwirtschaft** verfügt über zwei simulierte Ger�
 
 ### <a name="to-view-the-devices"></a>Zeigen Sie die Geräte wie folgt an:
 
-1. Navigieren Sie im linken Navigationsbereich von IoT Central zu **Gerät**. 
+1. Navigieren Sie im linken Bereich von IoT Central zu **Gerät**. 
 
    ![Geräte](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ In Azure IoT Central können Sie Regeln zum automatischen Überwachen der Gerät
 Die Anwendung **Vernetzte Abfallwirtschaft** verfügt über vier Beispielregeln.
 
 ### <a name="to-view-rules"></a>Zeigen Sie die Regeln wie folgt an:
-1. Navigieren Sie im linken Navigationsbereich von IoT Central zu **Regeln**.
+1. Navigieren Sie im linken Bereich von IoT Central zu **Regeln**.
 
    ![Regeln](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Sie sollten eine E-Mail mit dem Hinweis erhalten, dass die konfigurierte **Bedin
 > Von der Anwendung wird jedes Mal eine E-Mail gesendet, wenn eine Bedingung erfüllt ist. **Deaktivieren** Sie die Regel, um den Empfang von E-Mails über die automatisierte Regel zu beenden. 
   
 Erstellen Sie wie folgt eine neue Regel: 
-1. Wählen Sie im Navigationsbereich auf der linken Seite unter **Regeln** die Option **+ Neu** aus.
+1. Wählen Sie im linken Bereich unter **Regeln** die Option **+ Neu** aus.
 
 ## <a name="configure-jobs"></a>Konfigurieren von Aufträgen
 
 In IoT Central können Sie über Aufträge für mehrere Geräte Updates für Geräte- oder Cloudeigenschaften auslösen. Sie können Aufträge nicht nur für Eigenschaften verwenden, sondern auch zum Auslösen von Gerätebefehlen auf mehreren Geräten. Der Workflow wird von IoT Central für Sie automatisiert. 
 
-1. Navigieren Sie im Navigationsbereich auf der linken Seite zu **Aufträge**. 
+1. Wechseln Sie im linken Bereich zu **Aufträge**. 
 2. Klicken Sie auf **+ Neu**, und konfigurieren Sie einen oder mehrere Aufträge. 
 
 

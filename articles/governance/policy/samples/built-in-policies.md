@@ -1,20 +1,20 @@
 ---
 title: Liste der integrierten Richtliniendefinitionen
 description: Hier finden Sie eine Liste der integrierten Richtliniendefinitionen für Azure Policy. Zu den Kategorien zählen Tags, Einhaltung gesetzlicher Bestimmungen, Key Vault, Kubernetes, Gastkonfiguration und vieles mehr.
-ms.date: 01/31/2020
+ms.date: 02/15/2020
 ms.topic: sample
-ms.openlocfilehash: a672089dd45169b59bfb87ff3b612bc029c02448
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 06c913bdccd8b35970a195f6ee658ce7b1d97a7b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77170038"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370844"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Integrierte Azure Policy-Richtliniendefinitionen
 
 Diese Seite enthält einen Index der integrierten Azure Policy-Richtliniendefinitionen.
 
-Die Namen der einzelnen Integrationen sind Links zur Quelle der Richtliniendefinitionen im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy). Die Integrationen sind basierend auf der Eigenschaft **category** in den **Metadaten** gruppiert. Verwenden Sie das Menü auf der rechten Seite, um zu einer bestimmten **Kategorie** zu wechseln. Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des Browsers zu nutzen.
+Die Namen der einzelnen Integrationen sind Links zur entsprechenden Richtliniendefinition im Azure-Portal. Verwenden Sie den Link in der Spalte **Quelle**, um die Quelle im [Azure Policy-GitHub-Repository](https://github.com/Azure/azure-policy) anzuzeigen Die Integrationen sind basierend auf der Eigenschaft **category** in den **Metadaten** gruppiert. Verwenden Sie das Menü auf der rechten Seite, um zu einer bestimmten **Kategorie** zu wechseln. Verwenden Sie andernfalls <kbd>STRG</kbd>-<kbd>F</kbd>, um die Suchfunktion des Browsers zu nutzen.
 
 [!INCLUDE [azure-policy-samples-policies-index](../../../../includes/azure-policy-samples-policies-index.md)]
 

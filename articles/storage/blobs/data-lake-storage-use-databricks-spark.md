@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462573"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471872"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Tutorial: Azure Data Lake Storage Gen2, Azure Databricks und Spark
 
@@ -129,7 +129,7 @@ Kopieren Sie mithilfe von AzCopy Daten aus Ihrer *CSV*-Datei in Ihr Data Lake St
 
    * Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
 
-   * Ersetzen Sie den Platzhalter `<container-name>` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
+   * Ersetzen Sie den Platzhalter `<container-name>` durch den Namen eines Containers in Ihrem Speicherkonto.
 
 ## <a name="create-a-container-and-mount-it"></a>Erstellen und Einbinden eines Containers
 
@@ -161,20 +161,7 @@ In diesem Abschnitt erstellen Sie einen Container und einen Ordner in Ihrem Spei
     extra_configs = configs)
     ```
 
-18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `password`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `container-name` durch den Namen, den Sie dem Container im vorherigen Schritt gegeben haben.
-
-Verwenden Sie die nachstehenden Werte zum Ersetzen der genannten Platzhalter.
-
-   * `appId` und `password` stammen aus der App, die Sie im Rahmen der Dienstprinzipalerstellung bei Active Directory registriert haben.
-
-   * `tenant-id` stammt aus Ihrem Abonnement.
-
-   * `storage-account-name` ist der Name Ihres Azure Data Lake Storage Gen2-Speicherkontos.
-
-   * Ersetzen Sie den Platzhalter `container-name` durch einen beliebigen Namen, den Sie für Ihren Container verwenden möchten.
-
-   > [!NOTE]
-   > In einer Produktionsumgebung empfiehlt es sich, Ihr Kennwort in Azure Databricks zu speichern. Fügen Sie dem Codeblock dann einen Suchschlüssel anstelle des Kennworts hinzu. Sehen Sie sich nach Abschluss dieses Schnellstarts die Beispiele für diesen Ansatz im Artikel [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) auf der Azure Databricks-Website an.
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `appId`, `password`, `tenant` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `container-name` durch den Namen des Containers.
 
 19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 

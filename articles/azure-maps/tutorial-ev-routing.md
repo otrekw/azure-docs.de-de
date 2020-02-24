@@ -1,24 +1,24 @@
 ---
 title: 'Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python) | Microsoft Azure Maps'
 description: Enthält Informationen zur Routenplanung für Elektrofahrzeuge mit Microsoft Azure Maps-Routenplanungs-APIs und Azure Notebooks.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22a8561d69dd0eeb22f9fe025f5b792422db2c17
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844750"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208164"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Tutorial: Routenplanung für Elektrofahrzeuge mit Azure Notebooks (Python)
 
-Azure Maps ist ein Portfolio mit Geodienst-APIs, die nativ in Azure integriert sind. Mit diesen APIs können Entwickler, Unternehmen und unabhängige Softwarehersteller (Independent Software Vendors, ISVs) standortbezogene Apps sowie Lösungen für die Bereiche IoT, Mobilität, Logistik und Assetnachverfolgung erstellen. 
+Azure Maps ist ein Portfolio mit Geodienst-APIs, die nativ in Azure integriert sind. Mit diesen APIs können Entwickler, Unternehmen und unabhängige Softwarehersteller (Independent Software Vendors, ISVs) standortbezogene Apps sowie Lösungen für die Bereiche IoT, Mobilität, Logistik und Assetnachverfolgung entwickeln. 
 
 Die Rest-APIs von Azure Maps können in Programmiersprachen wie Python und R aufgerufen werden, um Szenarien mit Geodatenanalyse und maschinellem Lernen zu ermöglichen. Azure Maps verfügt über stabile [APIs für die Routenplanung](https://docs.microsoft.com/rest/api/maps/route), mit denen Benutzer Routen zwischen mehreren Datenpunkten berechnen können. Die Berechnungen basieren auf unterschiedlichen Bedingungen, z. B. Fahrzeugtyp oder erreichbarer Bereich. 
 
@@ -74,7 +74,7 @@ Um die Schritte in diesem Tutorial ausführen zu können, müssen Sie ein Azure-
 
 1. Nachdem der Upload erfolgreich abgeschlossen wurde, wird die Datei auf Ihrer Projektseite angezeigt. Doppelklicken Sie auf die Datei, um sie als Jupyter-Notebook zu öffnen.
 
-Führen Sie den Code im Notebook Zelle für Zelle aus, damit Sie die in der Notebookdatei implementierten Funktionen besser nachvollziehen können. Sie können den Code in jeder Zelle ausführen, indem Sie oben in der Notebook-App die Schaltfläche **Ausführen** auswählen.
+Versuchen Sie, die in der Notebook-Datei implementierten Funktionen nachzuvollziehen. Führen Sie den Code in der Notebook-Datei Zelle für Zelle aus. Sie können den Code in jeder Zelle ausführen, indem Sie oben in der Notebook-App die Schaltfläche **Ausführen** auswählen.
 
   ![Schaltfläche „Ausführen“](./media/tutorial-ev-routing/run.png)
 
@@ -156,7 +156,7 @@ boundsData = {
 
 Nachdem Sie den erreichbaren Bereich (Isochrone) für das Elektrofahrzeug ermittelt haben, können Sie innerhalb dieses Bereichs nach Ladestationen suchen. 
 
-Mit dem folgenden Skript wird die [Post Search Inside Geometry-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) von Azure Maps aufgerufen. Hiermit wird innerhalb der Grenzen des maximal erreichbaren Bereichs eines Elektrofahrzeugs nach Ladestationen gesucht und anschließend die Antwort analysiert, um ein Array mit erreichbaren Standorten zu erhalten.
+Mit dem folgenden Skript wird die [Post Search Inside Geometry-API](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry) von Azure Maps aufgerufen. Hiermit wird innerhalb der Grenzen des maximal erreichbaren Bereichs eines Elektrofahrzeugs nach Ladestationen gesucht. Anschließend analysiert das Skript die Antwort, um ein Array mit erreichbaren Standorten zu erhalten.
 
 Führen Sie das folgende Skript aus, um im erreichbaren Bereich nach Ladestationen für Elektrofahrzeuge zu suchen:
 

@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278927"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201429"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Schnellstart: Starten einer Azure Spring Cloud-App mithilfe des Maven-Plug-Ins
 
@@ -63,7 +63,7 @@ Die Bereitstellung des Diensts dauert etwa fünf Minuten. Wählen Sie nach der 
 ## <a name="set-up-your-configuration-server"></a>Einrichten Ihres Konfigurationsservers
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Konfigurationsserver** aus.
-1. Legen Sie im Abschnitt **Standardrepository** den Wert für **URI** auf **https://github.com/Azure-Samples/piggymetrics** und **Bezeichnung** auf **Konfiguration** fest, und wählen Sie **Anwenden** aus, um Ihre Änderungen zu speichern.
+1. Legen Sie im Abschnitt **Standardrepository** den Wert für **URI** auf **https://github.com/Azure-Samples/piggymetrics-config** fest, und wählen Sie **Anwenden** aus, um Ihre Änderungen zu speichern.
 
     > [!div class="mx-imgBorder"]
     > ![Definieren und Anwenden von Konfigurationseinstellungen](media/maven-qs-apply-config.jpg)

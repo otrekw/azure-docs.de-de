@@ -11,12 +11,12 @@ ms.date: 07/31/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4d32522ef88504b96d262c654dac7c08c292761
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897458"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368032"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 
@@ -63,7 +63,7 @@ Weitere Informationen zum Zuordnen eines Azure-Abonnements zu Azure AD finden Si
 
 Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation sollten Sie sich mit den folgenden Begriffen vertraut machen:
 
-|Begriff oder Konzept|Beschreibung|
+|Begriff oder Konzept|BESCHREIBUNG|
 |---------------|-----------|
 |Identity| Etwas, das authentifiziert werden kann. Eine Identität kann ein Benutzer mit Benutzername und Kennwort sein. Zu Identitäten gehören auch Anwendungen oder andere Server, die eine Authentifizierung durch geheime Schlüssel oder Zertifikate erfordern können.|
 |Konto| Eine Identität, der Daten zugeordnet sind. Ohne Identität können Sie nicht über ein Konto verfügen.|
@@ -77,14 +77,14 @@ Zum besseren Verständnis von Azure AD und der dazugehörigen Dokumentation soll
 |Kontoadministrator|Diese klassische Abonnementadministratorrolle ist konzeptionell der Abrechnungsbesitzer eines Abonnements. Sie hat Zugriff auf das [Azure-Kontocenter](https://account.azure.com/Subscriptions) und ermöglicht die Verwaltung sämtlicher Abonnements in einem Konto. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Dienstadministrator|Diese klassische Abonnementadministratorrolle ermöglicht die Verwaltung sämtlicher Azure-Ressourcen (einschließlich Zugriff). Sie hat den gleichen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
 |Besitzer|Diese Rolle hilft Ihnen bei der Verwaltung aller Azure-Ressourcen (einschließlich Zugriff). Sie basiert auf einem neueren Autorisierungssystem namens „rollenbasierte Zugriffssteuerung“ (Role-Based Access Control, RBAC), das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Weitere Informationen finden Sie unter [Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globaler Azure AD-Administrator|Diese Administratorrolle wird automatisch dem Ersteller des Azure AD-Mandanten zugewiesen. Globale Administratoren können sämtliche administrativen Funktionen für Azure AD sowie für jeden beliebigen Azure AD-Verbunddienst ausführen. Hierzu zählen etwa Exchange Online, SharePoint Online und Skype for Business Online. Es können mehrere globale Administratoren vorhanden sein, aber nur globale Administratoren können Benutzern Administratorrollen zuweisen (einschließlich der globalen Administratorrolle).<br><br>**Hinweis**<br>Diese Administratorrolle wird im Azure-Portal als globaler Administrator bezeichnet, in der Microsoft Graph-API und der Azure AD Graph-API sowie in Azure AD PowerShell heißt sie dagegen **Unternehmensadministrator**.<br><br>Weitere Informationen zu den unterschiedlichen Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
+|Globaler Azure AD-Administrator|Diese Administratorrolle wird automatisch dem Ersteller des Azure AD-Mandanten zugewiesen. Globale Administratoren können sämtliche administrativen Funktionen für Azure AD sowie für jeden beliebigen Azure AD-Verbunddienst ausführen. Hierzu zählen etwa Exchange Online, SharePoint Online und Skype for Business Online. Es können mehrere globale Administratoren vorhanden sein, aber nur globale Administratoren können Benutzern Administratorrollen zuweisen (einschließlich der globalen Administratorrolle).<br><br>**Hinweis**<br>Diese Administratorrolle wird im Azure-Portal als globaler Administrator bezeichnet, in der Microsoft Graph-API und in Azure AD PowerShell heißt sie dagegen **Unternehmensadministrator**.<br><br>Weitere Informationen zu den unterschiedlichen Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
 |Microsoft-Konto (auch MSA genannt)|Persönliche Microsoft-Konten, die Zugriff auf Ihre endbenutzerorientierten Microsoft-Produkte und -Clouddienste wie Outlook, OneDrive, MSN, Xbox LIVE oder Office 365 bieten. Ihr Microsoft-Konto wird im von Microsoft betriebenen Microsoft-Kontosystem für Endbenutzeridentitäten erstellt und gespeichert.|
 
 ## <a name="which-features-work-in-azure-ad"></a>Welche Features können in Azure AD verwendet werden?
 
 Nachdem Sie Ihre Azure AD-Lizenz gewählt haben, erhalten Sie Zugriff auf einige oder alle der folgenden Features für Ihre Organisation:
 
-|Category|Beschreibung|
+|Category|BESCHREIBUNG|
 |-------|-----------|
 |Anwendungsverwaltung|Verwalten Sie Ihre cloudbasierten und lokalen Apps, und verwenden Sie den Anwendungsproxy, einmaliges Anmelden, das Portal „Meine Apps“ (auch „Zugriffsbereich“ genannt) sowie SaaS-Apps (Software as-a-Service). Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen](../manage-apps/application-proxy.md) sowie in der [Dokumentation zur Anwendungsverwaltung](../manage-apps/index.yml).|
 |Authentifizierung|Verwalten Sie die Self-Service-Kennwortzurücksetzung von Azure Active Directory, die Multi-Factor Authentication, eine benutzerdefinierte Liste gesperrter Kennwörter und Smart Lockout. Weitere Informationen finden Sie in der [Dokumentation zur Azure AD-Authentifizierung](../authentication/index.yml).|
