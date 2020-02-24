@@ -15,7 +15,7 @@
       href: get-started-create-service-instance.md
     - name: Erstellen einer Instanz – PowerShell
       href: powershell-create-service-instance.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Importieren Ihrer ersten API'
       href: import-and-publish.md
@@ -65,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: Übersicht über das selbstgehostete Gateway
       href: self-hosted-gateway-overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Definieren von APIs
       items:
@@ -123,6 +123,8 @@
       items:
         - name: Schützen Ihrer API mit Azure AD
           href: api-management-howto-protect-backend-with-aad.md
+        - name: Schützen Ihrer SPA-Back-End-API mit Azure AD B2C
+          href: howto-protect-backend-frontend-azure-ad-b2c.md
         - name: Herstellen einer Verbindung mit einem virtuellen Netzwerk
           href: api-management-using-with-vnet.md
         - name: Herstellen einer Verbindung mit einem internen virtuellen Netzwerk

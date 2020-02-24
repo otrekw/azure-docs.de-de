@@ -64,6 +64,8 @@
   items:
     - name: Aktualisieren einer öffentlichen Load Balancer-Instanz im Tarif „Basic“ auf eine öffentliche Load Balancer-Instanz im Tarif „Standard“
       href: upgrade-basic-standard.md
+    - name: Aktualisieren einer internen Load Balancer-Instanz im Tarif „Basic“ auf eine interne Load Balancer-Instanz im Tarif „Standard“
+      href: upgrade-basicInternal-standard.md
     - name: Konfigurieren von Regeln für ausgehenden Datenverkehr
       items:
         - name: Azure-Befehlszeilenschnittstelle

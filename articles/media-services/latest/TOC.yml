@@ -99,6 +99,8 @@
         - name: Streamingendpunkte
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: Skalieren des Streamings mit CDN
+          href: scale-streaming-cdn.md
         - name: Streaminglocators
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: 'Erstellen von Aufträgen: CLI'
           href: cli-create-jobs.md
+        - name: Aufträge mit mehreren Transformationsausgaben
+          href: job-multiple-transform-outputs.md
     - name: Codieren von Inhalten
       items:
         - name: 'HTTPS als Auftragseingabe: .NET'
