@@ -39,7 +39,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
   - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt
   - Unterstützung für den Google Chrome-Übersetzer
 - Einheitliche und selbstbestätigte Seiten
-  - Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
+  - Die Felder für Benutzername/E-Mail-Adresse und Kennwort verwenden jetzt das HTML-Element `form`, damit Microsoft Edge und Internet Explorer (IE) diese Informationen ordnungsgemäß speichern können.
 
 ## <a name="110"></a>1.1.0
 

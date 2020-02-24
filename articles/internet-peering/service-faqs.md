@@ -33,11 +33,11 @@ Einer der wichtigsten Zwecke des Peering Service liegt darin, mithilfe eines gut
 
 **Wie lauten die Diversitätsanforderungen für Direct Peering zur Unterstützung von Peering Service?**
 
-Ein PNI muss lokale Redundanz und Georedundanz unterstützen. Lokale Redundanz ist als zwei verschiedene Sets von Pfaden an einer bestimmten Peeringsite definiert. Für Georedundanz muss der Netzbetreiber über zusätzliche Konnektivität an einem anderen Microsoft-Edge-Standort verfügen, falls der Hauptstandort ausfällt. Für die kurze Dauer von Ausfällen kann der Netzbetreiber den Datenverkehr über den Backupstandort weiterleiten.
+Ein PNI muss lokale Redundanz und Georedundanz unterstützen. Lokale Redundanz ist als zwei verschiedene Sets von Pfaden an einer bestimmten Peeringsite definiert. Für Georedundanz muss der Netzbetreiber über zusätzliche Konnektivität an einem anderen Microsoft Edge-Standort verfügen, falls der Hauptstandort ausfällt. Für die kurze Dauer von Ausfällen kann der Netzbetreiber den Datenverkehr über den Backupstandort weiterleiten.
 
 **Der Netzbetreiber bietet bereits SLA und Internet auf Unternehmensniveau an, wie unterscheidet sich dieses Angebot?**
 
-Einige Netzbetreiber bieten SLA und Internet auf Unternehmensniveau in ihrem Teil des Netzwerks. Beim Peering Service bietet Microsoft Datenverkehr mit SLA-Angebot im Microsoft-Netzwerk an. Durch die Wahl von Peering Service erhält der Kunde ein End-to-End-SLA. Die SLA vom eigenen Standort zum Microsoft Edge im ISP-Netzwerk kann vom ISP abgedeckt werden. Die SLA im globalen Netzwerk von Microsoft vom Microsoft-Edge zur Endbenutzeranwendung wird jetzt von Microsoft abgedeckt.
+Einige Netzbetreiber bieten SLA und Internet auf Unternehmensniveau in ihrem Teil des Netzwerks. Beim Peering Service bietet Microsoft Datenverkehr mit SLA-Angebot im Microsoft-Netzwerk an. Durch die Wahl von Peering Service erhält der Kunde ein End-to-End-SLA. Die SLA vom eigenen Standort zum Microsoft Edge im ISP-Netzwerk kann vom ISP abgedeckt werden. Die SLA im globalen Netzwerk von Microsoft von Microsoft Edge zur Endbenutzeranwendung wird jetzt von Microsoft abgedeckt.
 
 **Wenn ein Dienstanbieter bereits mithilfe von PNI Microsoft-Peer ist, welche Änderungen sind dann erforderlich, um Peering Service zu unterstützen?**
 

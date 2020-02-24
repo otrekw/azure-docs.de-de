@@ -90,7 +90,7 @@ Sie können sie bei Bedarf erneut aktivieren oder PowerShell-Cmdlets ausführen,
 > 
 
 ## <a name="routing-session-configuration-state"></a>Konfigurationszustand der Routingsitzung
-Durch den BGP-Bereitstellungszustand wird gemeldet, ob die BGP-Sitzung auf dem Microsoft-Edge aktiviert wurde. Der Zustand muss aktiviert sein, um privates oder Microsoft-Peering zu verwenden.
+Durch den BGP-Bereitstellungszustand wird gemeldet, ob die BGP-Sitzung in Microsoft Edge aktiviert wurde. Der Zustand muss aktiviert sein, um privates oder Microsoft-Peering zu verwenden.
 
 Insbesondere beim Microsoft-Peering sollte der BGP-Sitzungszustand überprüft werden. Zusätzlich zum BGP-Bereitstellungszustand gibt es einen weiteren Zustand: *advertised public prefixes state*. Der Zustand der angekündigten öffentlichen Präfixe muss *configured* lauten, damit die BGP-Sitzung aktiv ist und das Routing durchgängig funktioniert. 
 

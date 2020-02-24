@@ -156,7 +156,7 @@ Mit dieser Option können Sie jede Einnahmeposition, die auf der Seite „Transa
 | externalReferenceId            | Eindeutige ID für das Programm                                                                                                        |
 | externalReferenceIdLabel       | Beschriftung der eindeutigen ID                                                                                                                  |
 | transactionCountryCode       | Code des Lands, in dem die Transaktion erfolgt ist                                                                                                                  |
-| taxCountry       | Land des Käufers                                                                                                                  |
+| taxCountry       | Land/Region des Käufers                                                                                                                  |
 | taxState       | Bundesland/Kanton des Käufers                                                                                                                  |
 | taxCity       | Stadt des Käufers                                                                                                                  |
 | taxzipcode       | Postleitzahl des Käufers                                                                                                                  |

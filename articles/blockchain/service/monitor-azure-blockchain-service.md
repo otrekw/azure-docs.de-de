@@ -89,7 +89,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Proxyproto
 | NodeLocation  | Die Azure-Region, in der das Blockchainmitglied bereitgestellt wird.  |
 | BlockchainNodeName  | Der Name des Knotens des Azure Blockchain Service-Mitglieds, für den der Vorgang ausgeführt wurde.   |
 | EthMethod  | Die-Methode, die vom zugrunde liegenden Blockchainprotokoll aufgerufen wird. In Quorum kann dies „eth_sendTransactions“, „eth_getBlockByNumber“ usw. sein.  |
-| Agent  | Der Benutzer-Agent, der im Auftrag eines Benutzers agiert (z. B. ein Webbrowser wie Mozilla, Edge usw.). Ein Beispiel mit entsprechenden Werten sieht wie folgt aus: „Mozilla/5.0 (Linux x64) node.js/8.16.0 v8/6.2.414.77“  |
+| Agent  | Der Benutzer-Agent, der im Auftrag eines Benutzers agiert (z. B. ein Webbrowser wie Mozilla, Microsoft Edge usw.). Ein Beispiel mit entsprechenden Werten sieht wie folgt aus: „Mozilla/5.0 (Linux x64) node.js/8.16.0 v8/6.2.414.77“  |
 | Code   | HTTP-Fehlercodes. Normalerweise sind 4XX und 5XX Fehlerbedingungen.  |
 | NodeHost  | Der DNS-Name des Knotens.   |
 | RequestMethodName | Die aufgerufene HTTP-Methode. Hier sind folgende Werte möglich: PUT für Erstellen eines Mitglieds, GET für Abrufen von Details eines vorhandenen Mitglieds, DELETE für Löschen eines Mitglieds, PATCH für Aktualisieren eines Mitglieds.   |

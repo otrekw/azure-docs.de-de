@@ -76,7 +76,7 @@ Wählen Sie das Bild aus, auf das Sie eine Bezeichnung anwenden möchten, und w�
 
 ![Animation mit dem Flow für mehrere Bezeichnungen](./media/how-to-label-images/multilabel.gif)
 
-Wenn Sie einen Fehler korrigieren möchten, klicken Sie auf das Symbol **X**, um ein einzelnes Tag zu löschen, oder wählen Sie die Bilder und anschließend das Tag aus, um es aus allen ausgewählten Bildern zu löschen. Dieses Szenario wird hier gezeigt. Durch Klicken auf „Land“ wird dieses Tag aus den beiden ausgewählten Bildern gelöscht.
+Wenn Sie einen Fehler korrigieren möchten, klicken Sie auf das Symbol **X**, um ein einzelnes Tag zu löschen, oder wählen Sie die Bilder und anschließend das Tag aus, um es aus allen ausgewählten Bildern zu löschen. Dieses Szenario wird hier gezeigt. Durch Klicken auf „Land/Region“ wird dieses Tag aus den beiden ausgewählten Bildern gelöscht.
 
 ![Screenshot: Mehrere Markierungsaufhebungen](./media/how-to-label-images/multiple-deselection.png)
 

@@ -93,7 +93,7 @@ In der **Tabelle „Nutzungsdetails“** wird eine nummerierte Liste der 1000 T
 - Jede Spalte im Raster ist sortierbar.
 - Die Daten können in eine CSV-Datei extrahiert werden, wenn die Anzahl weniger als 1000 Einträge beträgt.
 - Liegt die Anzahl der Einträge über 1000, werden die exportierten Daten asynchron auf einer Downloadseite abgelegt und sind für die nächsten 30 Tage verfügbar.
-- Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
+- Sie können auf die **detaillierten Nutzungsdaten** Filter anwenden, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Daten können nach Land/Region, Vertriebskanal, Marketplace-Lizenztyp, Nutzungstyp, Angebotsname, Angebotstyp, kostenlosen Testversionen, Marketplace-Abonnement-ID, Kunden-ID und Firmenname gefiltert werden.
 
 > [!NOTE]
 > Wählen Sie im Seitenfilter den **Nutzungstyp** aus, um die Diagramme auf der Seite entweder in der „Normalisierten Ansicht“ oder in der „Rohdatenansicht“ anzuzeigen. Die „Normalisierte Ansicht“ ist die Standardansicht für diese Diagramme.
