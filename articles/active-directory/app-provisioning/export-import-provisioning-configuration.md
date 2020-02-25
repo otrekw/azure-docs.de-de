@@ -1,6 +1,6 @@
 ---
-title: Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Graph-API | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Bereitstellungskonfiguration mithilfe von Graph-API exportieren und importieren.
+title: Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Microsoft Graph-API | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Bereitstellungskonfiguration mithilfe von Microsoft Graph-API exportieren und importieren.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065761"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367794"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Graph-API
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Microsoft Graph-API
 
-Mit Microsoft Graph-API und Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren. Sie können die hier aufgeführten Schritte auch verwenden, um eine Sicherung Ihrer Bereitstellungskonfiguration zu erstellen. 
+Mit Microsoft Graph-API und dem Microsoft Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren. Sie können die hier aufgeführten Schritte auch verwenden, um eine Sicherung Ihrer Bereitstellungskonfiguration zu erstellen. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen der Dienstprinzipal-ID der Bereitstellungs-App (Objekt-ID)
 
 1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Bereitstellungsanwendung. Wenn Sie z. B. die Zuordnung Ihrer *Anwendung für die Benutzerbereitstellung von Workday in AD* exportieren möchten, navigieren Sie zum Abschnitt „Eigenschaften“ dieser App. 
-1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet, und wird in Graph-Tester-Vorgängen verwendet.
+1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet und in Microsoft Graph-Tester-Vorgängen verwendet.
 
    ![Dienstprinzipal-ID der Workday-App](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ Mit Microsoft Graph-API und Graph-Tester können Sie die Attributzuordnungen und
 1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
 
-    ![Graph-Anmeldung](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Microsoft Graph-Anmeldung](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
 

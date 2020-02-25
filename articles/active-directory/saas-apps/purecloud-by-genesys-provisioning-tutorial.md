@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77088934"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370686"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von PureCloud by Genesys für die automatische Benutzerbereitstellung
 
@@ -90,7 +90,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie unter dem Abschnitt **Administratoranmeldeinformationen** die URL Ihrer PureCloud by Genesys-API und das OAuth-Token in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit PureCloud by Genesys herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr PureCloud by Genesys-Konto über Administratorberechtigungen verfügt, und versuchen Sie es erneut.
+5. Geben Sie unter dem Abschnitt **Administratoranmeldeinformationen** die URL Ihrer PureCloud by Genesys-API und das OAuth-Token in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Die API-URL wird als `{{API Url}}/api/v2/scim/v2` strukturiert, wobei die API-URL für Ihre PureCloud-Region aus dem [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html) verwendet wird. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit PureCloud by Genesys herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr PureCloud by Genesys-Konto über Administratorberechtigungen verfügt, und versuchen Sie es erneut.
 
     ![Bereitstellung](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 

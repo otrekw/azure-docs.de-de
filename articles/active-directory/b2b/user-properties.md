@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608855"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368118"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -73,7 +73,7 @@ Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.
 
 - Eingeladener Benutzer: Dieser Benutzer wurde eingeladen, hat die Einladung aber noch nicht eingelöst.
 
-- Externes Active Directory: Dieser Benutzer befindet sich in einer externen Organisation und authentifiziert sich mit einem Azure AD-Konto, das zur anderen Organisation gehört. Diese Art der Anmeldung entspricht Zustand 1.
+- Externes Azure Active Directory: Dieser Benutzer befindet sich in einer externen Organisation und authentifiziert sich mit einem Azure AD-Konto, das zur anderen Organisation gehört. Diese Art der Anmeldung entspricht Zustand 1.
 
 - Microsoft-Konto: Dieser Benutzer befindet sich in einem Microsoft-Konto und authentifiziert sich mit einem Microsoft-Konto. Diese Art der Anmeldung entspricht Zustand 2.
 

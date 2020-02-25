@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8cd951f0b4d2f4887630e29cbd3b0ae429b9f6f7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159181"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367865"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer nicht im Katalog enthaltenen Anwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -164,7 +164,7 @@ Der Anwendungshersteller sollte bestätigen, dass er die SAML-Implementierung in
 
 ## <a name="misconfigured-application"></a>Falsch konfigurierte Anwendung
 
-*Fehler AADSTS650056: Falsch konfigurierte Anwendung. Dies kann einen der folgenden Gründe haben: Für den Client werden in der Anwendungsregistrierung des Clients in den angeforderten Berechtigungen keine Berechtigungen für „AAD Graph“ aufgeführt. Ebenfalls möglich ist, dass der Administrator auf dem Mandanten nicht eingewilligt hat. Sie sollten auch den Anwendungsbezeichner in der Anforderung überprüfen, um sicherzustellen, dass er mit dem konfigurierten Clientanwendungsbezeichner übereinstimmt. Wenden Sie sich an Ihren Administrator, um die Konfiguration zu beheben oder im Auftrag des Mandanten einzuwilligen.*
+*Fehler AADSTS650056: Falsch konfigurierte Anwendung. Dies kann einen der folgenden Gründe haben: Für den Client werden in der Anwendungsregistrierung des Clients in den angeforderten Berechtigungen keine Berechtigungen aufgeführt. Ebenfalls möglich ist, dass der Administrator auf dem Mandanten nicht eingewilligt hat. Sie sollten auch den Anwendungsbezeichner in der Anforderung überprüfen, um sicherzustellen, dass er mit dem konfigurierten Clientanwendungsbezeichner übereinstimmt. Wenden Sie sich an Ihren Administrator, um die Konfiguration zu beheben oder im Auftrag des Mandanten einzuwilligen.*
 
 **Mögliche Ursache**
 

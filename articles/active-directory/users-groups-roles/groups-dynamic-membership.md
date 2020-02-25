@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841028"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206258"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Erweiterungseigenschaften und benutzerdefinierte Erweiterungseigenschaften
 
-Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Zeichenfolgeneigenschaften in den Regeln für eine dynamische Mitgliedschaft unterstützt. Erweiterungsattribute werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten folgendes Format: ExtensionAttributeX. Dabei entspricht X 1 bis 15. Dies ist ein Beispiel für eine Regel, die ein Erweiterungsattribut als Eigenschaft verwendet:
+Erweiterungsattribute und benutzerdefinierte Erweiterungsattribute werden als Zeichenfolgeneigenschaften in den Regeln für eine dynamische Mitgliedschaft unterstützt. [Erweiterungsattribute](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) werden von einer lokalen Windows Server AD-Instanz synchronisiert und erhalten das Format „ExtensionAttributeX“, wobei X den Zahlen 1 bis 15 entspricht. Dies ist ein Beispiel für eine Regel, die ein Erweiterungsattribut als Eigenschaft verwendet:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Benutzerdefinierte Erweiterungseigenschaften werden mit einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt:
+[Benutzerdefinierte Erweiterungseigenschaften](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) werden von einer lokalen Windows Server AD-Instanz oder einer verbundenen SaaS-Anwendung synchronisiert und weisen das Format `user.extension_[GUID]_[Attribute]` auf. Dabei gilt Folgendes:
 
 * [GUID] ist der eindeutige Bezeichner in Azure AD für die Anwendung, die die Eigenschaft in Azure AD erstellt hat.
 * [Attribute] ist der Name der Eigenschaft bei ihrer Erstellung.

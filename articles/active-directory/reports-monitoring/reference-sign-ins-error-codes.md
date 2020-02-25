@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898890"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468846"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -57,7 +57,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 ## <a name="error-codes"></a>Fehlercodes
 
 
-|Fehler|Beschreibung|
+|Fehler|BESCHREIBUNG|
 |---|---|
 |16000|Dies ist ein internes Implementierungsdetail und keine Fehlerbedingung. Sie können diesen Verweis ignorieren.|
 |20001|Es besteht ein Problem mit Ihrem Verbundidentitätsanbieter. Wenden Sie sich an Ihren Identitätsanbieter, um das Problem zu beheben.|
@@ -133,6 +133,7 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |50178|Die Sitzungssteuerung wird für Passthroughbenutzer nicht unterstützt.|
 |50180|Integrierte Windows-Authentifizierung ist erforderlich. Aktivieren Sie den Mandanten für das nahtlose einmalige Anmelden.|
 |50181|OTP-bezogener Fehler bei der Anmeldung. |
+|50194|Die Anwendung „{appId}“({appName}) ist nicht als mehrinstanzenfähige Anwendung konfiguriert. Die Verwendung des Endpunkts „/common“ wird für Anwendungen, die nach „{time}“ erstellt wurden, nicht unterstützt. Verwenden Sie einen mandantenspezifischen Endpunkt, oder konfigurieren Sie die Anwendung als mehrinstanzenfähige Anwendung.|
 |50201|Diese Meldung wird dem Benutzer während der Anmeldung angezeigt, wenn dem Benutzer zusätzliche Informationen bereitgestellt werden müssen.|
 |51001|Domänenhinweis ist für lokale Sicherheits-ID nicht vorhanden – Lokaler UPN.|
 |51004|Benutzerkonto ist nicht im Verzeichnis vorhanden.|
@@ -188,13 +189,19 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
 |90094| Die App hat Berechtigungen angefordert, denen der angemeldete Benutzer nicht zustimmen darf, und der Benutzer wurde gesperrt. |
 |90095| Die App hat Berechtigungen angefordert, denen der angemeldete Benutzer nicht zustimmen darf, und dem Benutzer wurde das Formular [Anforderung zur Administratoreinwilligung](../manage-apps/configure-admin-consent-workflow.md) angezeigt. |
+|130500|Die Anmeldung per Telefon wurde aufgrund der Richtlinie für Benutzeranmeldeinformationen blockiert.|
 |500011| Der Ressourcenprinzipal namens <site address> wurde im Mandanten namens <tenant ID> nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet.|
+|500014|Die Ressource „{identifier}“ ist deaktiviert.|
 |500021| Mandant wird durch den Unternehmensproxy eingeschränkt. Ressourcenzugriff wird verweigert.|
 |500121| Fehler bei der Authentifizierung während starker Authentifizierungsanforderung.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
+|500172|Das von „{issuer}“ ausgestellte Zertifikat „{name}“ ist ungültig. Aktuelle Uhrzeit: „{curTime}“. NotBefore-Uhrzeit des Zertifikats: „{startTime}“. NotAfter-Uhrzeit des Zertifikats: „{endTime}“.|
+|501291|Die Client-App ist eine MAM-App, das Gerät ist nicht registriert, und die Anforderung wird mithilfe eines Brokers gesendet. Der Arbeitsplatzbeitritt muss erfolgen, um das Gerät zu registrieren, bevor auf die App zugegriffen werden kann.|
+|530003|Ihr Gerät muss verwaltet werden, um auf diese Ressource zugreifen zu können.|
 |530021|Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.|
 |530032|Blockiert durch eine Sicherheitsrichtlinie.| 
 |700016|Die Anwendung mit dem Bezeichner „{appIdentifier}“ wurde im Verzeichnis „{tenantName}“ nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierungsanforderung an den falschen Mandanten gesendet.|
+|700051|Der response_type „token“ ist für die Anwendung nicht aktiviert. Die Anwendung hat aus den folgenden Gründen einen nicht unterstützten Antworttyp angefordert: Der response_type „token“ ist für die Anwendung nicht aktiviert. Der Anwendungsbesitzer sollte zum Azure-Portal wechseln oder Microsoft Graph aufrufen, um die implizite Zugriffstokengenehmigung zu aktivieren.|
 |900432|Vertrauliche Clients werden in einer cloudübergreifenden Anforderung nicht unterstützt.|
 |5000811|Die SAML-Tokensignatur kann nicht überprüft werden. Der Signaturschlüsselbezeichner stimmt mit keinem gültigen registrierten Schlüssel überein.|
 |7000215|Es wurde ein ungültiger geheimer Clientschlüssel bereitgestellt.|

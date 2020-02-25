@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186047"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368086"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Häufig gestellte Fragen zum bedingten Zugriff mit Azure Active Directory
 
@@ -40,7 +40,7 @@ Mit einer Richtlinie für bedingten Zugriff werden die Anforderungen für den Zu
 
 Richtlinien für bedingten Zugriff gelten für alle Benutzerkonten. Dies schließt auch Benutzerkonten ein, die als Dienstkonten verwendet werden. Häufig kann ein Dienstkonto, das unbeaufsichtigt ausgeführt wird, die Anforderungen einer Richtlinie für bedingten Zugriff nicht erfüllen. Beispielsweise ist unter Umständen die mehrstufige Authentifizierung erforderlich. Dienstkonten können über die Verwaltungseinstellungen der Richtlinie für bedingten Zugriff von einer Richtlinie ausgeschlossen werden. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Sind Graph-APIs zum Konfigurieren von Richtlinien für bedingten Zugriff verfügbar?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Sind Microsoft Graph-APIs zum Konfigurieren von Richtlinien für bedingten Zugriff verfügbar?
 
 Derzeit nicht. 
 

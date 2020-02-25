@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085380"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194994"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
 ## <a name="what-is-authentication"></a>Was ist die Authentifizierung?
 
-In diesem Artikel werden viele Authentifizierungskonzepte behandelt, mit denen Sie vertraut sein müssen, um geschützte Web-Apps, Web-APIs oder Apps, die geschützte Web-APIs aufrufen, zu erstellen. Wenn Sie einen Begriff sehen, mit dem Sie nicht vertraut sind, probieren Sie es mit unserem [Glossar](developer-glossary.md).
+In diesem Artikel werden viele Authentifizierungskonzepte behandelt, mit denen Sie vertraut sein müssen, um geschützte Web-Apps, Web-APIs oder Apps, die geschützte Web-APIs aufrufen, zu erstellen. Wenn Sie auf einen Begriff stoßen, mit dem Sie nicht vertraut sind, werfen Sie einen Blick in unser [Glossar](developer-glossary.md), oder sehen Sie sich unsere [Videos zu Microsoft Identity Platform](identity-videos.md) an, in denen grundlegende Konzepte behandelt werden.
 
 Bei der **Authentifizierung** weisen Sie nach, dass Sie die Person sind, als die Sie sich ausgeben. Authentifizierung wird manchmal verkürzt als AuthN bezeichnet.
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0511f008a3d5bc39a0fb2d9406d33b72dbede6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 854fb4649f8c1113f20abe5807dd0ce473ba6ee3
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532944"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368067"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Was ist die Azure Active Directory-Architektur?
 
@@ -79,7 +79,7 @@ Für Lesevorgänge (deren Zahl die Schreibvorgänge weit übersteigt) werden nur
 
 Bevor ein Schreibvorgang bestätigt wird, erfolgt dafür ein dauerhafter Commit in mindestens zwei Datencentern. Hierfür wird für den Schreibvorgang zuerst ein Commit im primären Datencenter ausgeführt, und anschließend wird er sofort in mindestens einem anderen Datencenter repliziert. Mit dieser Schreibaktion wird sichergestellt, dass in einer Notfallsituation ein potenzieller Ausfall des Datencenters, in dem das primäre Replikat gehostet wird, nicht zu Datenverlusten führt.
 
-In Azure AD wird ein RTO-Wert ([Recovery Time Objective](https://en.wikipedia.org/wiki/Recovery_time_objective)) von null verwendet, damit bei Failovern keine Daten verloren gehen. Dies umfasst:
+In Azure AD wird ein RTO-Wert ([Recovery Time Objective](https://en.wikipedia.org/wiki/Recovery_time_objective)) von null verwendet, damit bei Failovern keine Daten verloren gehen. Dies schließt Folgendes ein:
 
 * Tokenausstellung und Verzeichnislesevorgänge
 * Nur RTO-Wert von 5 Minuten für Verzeichnisschreibvorgänge
@@ -100,7 +100,7 @@ Das Verzeichnismodell lautet „Letztliche Konsistenz“. Ein typisches Problem 
 
 Azure AD bietet Lese-/Schreibkonsistenz für Anwendungen, die auf ein sekundäres Replikat abzielen, indem die zugehörigen Schreibvorgänge an das primäre Replikat weitergeleitet und synchron dazu die Schreibvorgänge zurück auf das sekundäre Replikat verschoben werden.
 
-Anwendungsschreibvorgänge, für die die Graph-API von Azure AD verwendet wird, werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Graph-Dienst von Azure AD verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Diagrammdienst mithilfe eines verteilten Cache im sekundären Replikatdatencenter zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. Um weiterhin dieselbe logische Sitzung zu verwenden, müssen nachfolgende Anforderungen an das gleiche Azure AD-Datencenter geroutet werden. Es ist nicht möglich, eine logische Sitzung fortzusetzen, wenn die Verzeichnisclientanforderungen an mehrere Azure AD-Datenzentren geroutet werden. Falls dies passiert, verfügt der Client über mehrere logische Sitzungen mit unabhängigen Lese-/Schreibkonsistenzen.
+Mithilfe der Microsoft Graph-API von Azure AD ausgeführte Anwendungsschreibvorgänge werden in Bezug auf die Beibehaltung der Affinität mit einem Verzeichnisreplikat für Schreib-/Lesekonsistenz abstrahiert. Der Microsoft Graph-API-Dienst verfügt über eine logische Sitzung mit einer Affinität mit einem sekundären Replikat, das für Lesevorgänge verwendet wird. Die Affinität wird in einem „Replikattoken“ erfasst, das vom Dienst mithilfe eines verteilten Cache im sekundären Replikatrechenzentrum zwischengespeichert wird. Dieses Token wird dann für nachfolgende Vorgänge in derselben logischen Sitzung verwendet. Um weiterhin dieselbe logische Sitzung zu verwenden, müssen nachfolgende Anforderungen an das gleiche Azure AD-Datencenter geroutet werden. Es ist nicht möglich, eine logische Sitzung fortzusetzen, wenn die Verzeichnisclientanforderungen an mehrere Azure AD-Datenzentren geroutet werden. Falls dies passiert, verfügt der Client über mehrere logische Sitzungen mit unabhängigen Lese-/Schreibkonsistenzen.
 
  >[!NOTE]
  >Schreibvorgänge werden sofort auf dem sekundären Replikat repliziert, für das die Lesevorgänge der logischen Sitzung ausgestellt wurden.

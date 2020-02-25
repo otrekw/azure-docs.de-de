@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Verbindungsmonitor (Vorschau)
-      href: connection-monitor-2-preview.md
+      href: connection-monitor-preview.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – Portal
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostizieren eines Problems mit dem Filter für VM-Datenverkehr – PowerShell

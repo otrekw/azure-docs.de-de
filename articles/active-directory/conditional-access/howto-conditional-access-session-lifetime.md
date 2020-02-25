@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483458"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195061"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -50,6 +50,23 @@ Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardko
 - Teams-Webclient
 - Dynamics CRM Online
 - Azure-Portal
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>Anmeldehäufigkeit von Benutzern und Geräteidentitäten
+
+Wenn Sie über in Azure AD eingebundene, in Hybrid-Azure AD eingebundene oder bei Azure AD registrierte Geräte verfügen, erfüllt dieses Ereignis auch die Richtlinie für die Anmeldehäufigkeit, wenn ein Benutzer sein Gerät entsperrt oder sich interaktiv anmeldet. In den folgenden zwei Beispielen ist die Anmeldehäufigkeit von Benutzern auf 1 Stunde festgelegt:
+
+Beispiel 1:
+
+- Um 00:00 Uhr meldet sich ein Benutzer bei seinem in Azure AD eingebundenen Windows 10-Gerät an und beginnt mit der Bearbeitung eines in SharePoint Online gespeicherten Dokuments.
+- Der Benutzer arbeitet auf seinem Gerät eine Stunde an diesem Dokument.
+- Um 01:00 Uhr wird der Benutzer basierend auf der vom Administrator in der Richtlinie für bedingten Zugriff konfigurierten Anmeldehäufigkeitsanforderung zur erneuten Anmeldung aufgefordert.
+
+Beispiel 2:
+
+- Um 00:00 Uhr meldet sich ein Benutzer bei seinem in Azure AD eingebundenen Windows 10-Gerät an und beginnt mit der Bearbeitung eines in SharePoint Online gespeicherten Dokuments.
+- Um 00:30 Uhr steht der Benutzer auf und macht eine Pause, wobei er sein Gerät sperrt.
+- Um 00:45 Uhr kehrt der Benutzer aus seiner Pause zurück und entsperrt das Gerät.
+- Um 01:45 Uhr wird der Benutzer basierend auf der vom Administrator in der Richtlinie für bedingten Zugriff konfigurierten Anmeldehäufigkeitsanforderung zur erneuten Anmeldung aufgefordert, weil die letzte Anmeldung um 00:45 Uhr erfolgte.
 
 ## <a name="persistence-of-browsing-sessions"></a>Persistenz von Browsersitzungen
 

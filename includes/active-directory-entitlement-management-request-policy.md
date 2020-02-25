@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981221"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193117"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -25,7 +25,7 @@ Gehen Sie folgendermaßen vor, wenn Sie möchten, dass Benutzer in Ihrem Verzeic
 
     ![Zugriffspaket – Anforderungen – Für in Ihrem Verzeichnis befindliche Benutzer](./media/active-directory-entitlement-management-request-policy/for-users-in-your-directory.png)
 
-1. Wählen Sie eine der folgenden Optionen:
+1. Wählen Sie eine der folgenden Optionen aus:
 
     |  |  |
     | --- | --- |
@@ -60,7 +60,7 @@ Gehen Sie folgendermaßen vor, wenn Sie Benutzern, die sich nicht in Ihrem Verze
 
     ![Zugriffspaket – Anforderungen – Für nicht in Ihrem Verzeichnis befindliche Benutzer](./media/active-directory-entitlement-management-request-policy/for-users-not-in-your-directory.png)
 
-1. Wählen Sie eine der folgenden Optionen:
+1. Wählen Sie eine der folgenden Optionen aus:
 
     |  |  |
     | --- | --- |
@@ -198,7 +198,7 @@ Wenn Sie beispielsweise Alice und Bob als erste genehmigende Personen aufgeliste
 
 ## <a name="enable-requests"></a>Ermöglichen von Anforderungen
 
-1. Wenn das Zugriffspaket Benutzern sofort in der Anforderungsrichtlinie zur Verfügung gestellt werden soll, klicken Sie auf **Ja**, um dies zu aktivieren.
+1. Wenn das Zugriffspaket Benutzern in der Anforderungsrichtlinie sofort zum Anfordern zur Verfügung gestellt werden soll, legen Sie den Umschalter auf **Ja** fest.
 
     Sie können sie in der Zukunft immer aktivieren, nachdem Sie das Erstellen des Zugriffspakets abgeschlossen haben.
 

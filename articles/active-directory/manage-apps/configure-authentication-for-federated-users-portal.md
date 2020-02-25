@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159164"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367877"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -100,9 +100,7 @@ Richtlinien treten für eine bestimmte Anwendung nur in Kraft, wenn sie an einen
 
 Es kann immer nur eine Richtlinie zur Startbereichsermittlung auf einem Dienstprinzipal aktiv sein.  
 
-Sie können entweder direkt die Microsoft Azure Active Directory Graph-API oder die Azure Active Directory PowerShell-Cmdlets verwenden, um eine Richtlinie zur Startbereichsermittlung zu erstellen und zu verwalten.
-
-Die Graph-API, die die Richtlinie manipuliert, wird im Artikel [Vorgänge für die Richtlinie](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) auf MSDN beschrieben.
+Sie können eine Richtlinie zur Startbereichsermittlung mit den Azure Active Directory PowerShell-Cmdlets erstellen und verwalten.
 
 Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereichsermittlung:
     
@@ -209,7 +207,7 @@ Um die Richtlinie zur Startbereichsermittlung nach ihrer Erstellung anzuwenden, 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Schritt 2: Ermitteln des Dienstprinzipals, dem die Richtlinie zugewiesen werden soll  
 Sie benötigen die **ObjectID** der Dienstprinzipale, denen Sie die Richtlinie zuweisen möchten. Es gibt mehrere Möglichkeiten, die **ObjectID** von Dienstprinzipalen zu ermitteln.    
 
-Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. 
+Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. 
 
 Da Sie PowerShell verwenden, können Sie das folgende Cmdlet verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063882"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443617"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -52,6 +52,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 | Warum erhalte ich Benachrichtigungen über meine Kontoaktivität? | Damit Sie besser über die Aktivitäten mit Ihrem persönlichen Microsoft-Konto informiert sind, senden wir Aktivitätsbenachrichtigungen an Ihre Microsoft Authenticator-App. Diese Benachrichtigungen werden sofort angezeigt, wenn sich etwas geändert hat, und sollen zu Ihrem Schutz beitragen. Diese Benachrichtigungen wurden bisher per E-Mail und SMS gesendet. Jetzt haben wir die Benachrichtigungswege um die App erweitert. Weitere Informationen zu diesen Aktivitätsbenachrichtigungen finden Sie unter [Was passiert bei einer ungewöhnlichen Anmeldung bei Ihrem Konto?](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Wenn Sie Ihre Benachrichtigungen auf andere Weise erhalten möchten, melden Sie sich bei der Seite [Wie können wir Ihnen nicht kritische Kontobenachrichtigungen zukommen lassen?](https://account.live.com/SecurityNotifications/Update) Ihres Kontos an. |
 | Wenn ich mich mit der Standard-E-Mail-App, die in iOS verfügbar ist, bei meinem Geschäfts-, Schul-oder Unikonto anmelde, erhalte ich von der Microsoft Authenticator-App eine Aufforderung zur Eingabe meiner Informationen für die Sicherheitsüberprüfung. Wenn ich diese Informationen eingegeben habe und zur E-Mail-App zurückkehre, erhalte ich eine Fehlermeldung. Was kann ich tun? | Dies liegt sehr wahrscheinlich daran, dass Sie für Ihre Anmeldung und Ihre E-Mail-App zwei verschiedene Apps nutzen, sodass der anfängliche Anmeldevorgang im Hintergrund nicht mehr funktioniert und fehlschlägt. Um dieses Problem zu beheben, empfehlen wir, das Symbol **Safari** unten rechts auf dem Bildschirm auszuwählen, wenn Sie sich bei Ihrer E-Mail-App anmelden. Durch den Wechsel zu Safari erfolgt der gesamte Anmeldevorgang in einer einzigen App, sodass Sie sich erfolgreich bei der App anmelden können. |
 | Meine Einmalkennwortcodes (One-Time Password, OTP-Codes) funktionieren nicht. Wie sollte ich vorgehen? | Stellen Sie sicher, dass die Datums- und Uhrzeitangaben auf Ihrem Gerät richtig sind und automatisch synchronisiert werden. Wenn Datum und Uhrzeit falsch oder nicht synchronisiert sind, funktioniert der Code nicht. |
+| Das Betriebssystem Windows 10 Mobile wurde im Dezember 2019 eingestellt. Wird auch die Microsoft Authenticator-App unter Windows Mobile-Betriebssystemen eingestellt? | Die Microsoft Authenticator-App wird nach dem 28. Februar 2020 auf allen Windows Mobile-Betriebssystemen nicht mehr unterstützt. Nach dem zuvor genannten Datum sind die Benutzer nicht mehr berechtigt, neue Updates für die App zu erhalten. Nach dem 28. Februar 2020 stellen Microsoft-Dienste, die derzeit Authentifizierungen mithilfe der Microsoft Authenticator-App unter allen Windows Mobile-Betriebssystemen unterstützen, ihre Unterstützung ein. Wir empfehlen unseren Benutzern dringend, vor diesem Datum eine Umstellung auf einen alternativen Authentifizierungsmechanismus vorzunehmen, damit sie sich bei Microsoft-Diensten authentifizieren können. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
