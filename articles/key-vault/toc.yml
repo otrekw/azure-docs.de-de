@@ -72,12 +72,12 @@
       items:
         - name: Sicherheitsübersicht
           href: overview-security.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
         - name: Sicherheitsumgebungen (Security Worlds)
           href: key-vault-ovw-security-worlds.md
         - name: Schützen einer Key Vault-Instanz
           href: key-vault-secure-your-key-vault.md
-        - name: Integrierte Sicherheitskontrollen
-          href: key-vault-security-controls.md
     - name: Vorläufiges Löschen
       href: key-vault-ovw-soft-delete.md
     - name: Überwachen von Key Vault-Ereignissen

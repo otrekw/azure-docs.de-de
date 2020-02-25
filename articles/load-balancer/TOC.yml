@@ -68,6 +68,8 @@
       href: upgrade-basicInternal-standard.md
     - name: Konfigurieren von Regeln für ausgehenden Datenverkehr
       items:
+        - name: Azure-Portal
+          href: configure-load-balancer-outbound-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: configure-load-balancer-outbound-cli.md
         - name: Azure PowerShell

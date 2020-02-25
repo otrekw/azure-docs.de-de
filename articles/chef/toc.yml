@@ -16,12 +16,12 @@
       items:
         - name: Installieren von Chef mit dem Azure-Portal
           href: ./chef-extension-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Chef
       items:
         - name: Erstellen eines virtuellen Windows-Computers
-          href: /azure/virtual-machines/windows/chef-automation
+          href: ./chef-automation.md
 - name: Verweis
   items:
     - name: Chef-Erweiterung für Azure

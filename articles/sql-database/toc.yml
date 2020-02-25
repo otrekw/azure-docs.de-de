@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Überwachung verwalteter Instanzen
               href: sql-database-managed-instance-auditing.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Herstellen einer Verbindung und Ausführen von Abfragen
       href: sql-database-connect-query.md
       items:
