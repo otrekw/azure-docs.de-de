@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845777"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460466"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -125,11 +125,13 @@ Ja. Die Konfiguration der UDRs zur Umleitung des Datenverkehrs zwischen Subnetze
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Übermittelt Azure Firewall SNAT bei privaten Netzwerken?
 
-Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter.
+Azure Firewall bietet kein SNAT, wenn die Ziel-IP-Adresse ein privater IP-Bereich gemäß [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) ist. Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwerke verwendet, leitet Azure Firewall den Datenverkehr per SNAT an eine der privaten IP-Adressen der Firewall in AzureFirewallSubnet weiter. Sie können Azure Firewall so konfigurieren, dass Ihr öffentlicher IP-Adressbereich **nicht** per SNAT weitergeleitet wird. Weitere Informationen finden Sie unter [Azure Firewall SNAT private IP address ranges](snat-private-range.md) (Azure Firewall SNAT – private Adressbereiche).
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Wird erzwungenes Tunneling bzw. die erzwungene Verkettung mit einem virtuellen Netzwerkgerät unterstützt?
 
-Erzwungenes Tunneling wird derzeit nicht unterstützt. Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
+Erzwungenes Tunneling wird unterstützt. Weitere Informationen finden Sie unter [Azure Firewall-Tunnelerzwingung (Vorschau)](forced-tunneling.md). 
+
+Azure Firewall muss über eine direkte Internetverbindung verfügen. Wenn Ihr Subnetz „AzureFirewallSubnet“ eine Standardroute zu Ihrem lokalen Netzwerk über BGP erfasst, müssen Sie diese mit der benutzerdefinierten Route 0.0.0.0/0 überschreiben. Legen Sie dabei den Wert **NextHopType** auf **Internet** fest, um die direkte Internetkonnektivität beizubehalten.
 
 Wenn für Ihre Konfiguration die Erzwingung eines Tunnels zu einem lokalen Netzwerk erforderlich ist und Sie die Ziel-IP-Präfixe für Ihre Internetziele ermitteln können, können Sie diese Bereiche mit dem lokalen Netzwerk als nächsten Hop über eine benutzerdefinierte Route im Subnetz „AzureFirewallSubnet“ konfigurieren. Oder Sie können BGP verwenden, um diese Routen zu definieren.
 
@@ -166,7 +168,7 @@ Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Wie kann ich meinen Firewalldurchsatz erhöhen?
 
-Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s. Das horizontale Hochskalieren basiert aktuell nur auf der CPU-Auslastung. Es kann also vorkommen, dass eine Firewall, die nur über Netzwerkregeln verfügt, nicht horizontal hochskaliert wird, um den Durchsatz zu erhöhen, da die Netzwerkregeln keine signifikanten Auswirkungen auf die CPU-Auslastung haben. Sollten Sie einen höheren Durchsatz für Ihre Firewall benötigen, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
+Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s. Das horizontale Hochskalieren basiert derzeit auf der CPU-Auslastung und dem Durchsatz. Es kann also vorkommen, dass eine Firewall, die nur über Netzwerkregeln verfügt, nicht horizontal hochskaliert wird, um den Durchsatz zu erhöhen, da die Netzwerkregeln keine signifikanten Auswirkungen auf die CPU-Auslastung haben. Sollten Sie einen höheren Durchsatz für Ihre Firewall benötigen, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall horizontal hochskaliert wird?
 

@@ -122,6 +122,8 @@
       maintainContext: true
 - name: Anleitungen
   items:
+    - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Entwickeln
       items:
         - name: Abrufen der Event Hubs-Verbindungszeichenfolge

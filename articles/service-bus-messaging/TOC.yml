@@ -65,7 +65,7 @@
               href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Bestand aktualisieren – PowerShell
       href: service-bus-tutorial-topics-subscriptions-powershell.md
@@ -112,8 +112,10 @@
                   href: authenticate-application.md
         - name: Integrierte Sicherheitskontrollen
           href: service-bus-messaging-security-controls.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
+    - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
+      href: deprecate-service-bus-management.md
     - name: Erstellen eines Namespace
       href: service-bus-create-namespace-portal.md
     - name: Entwickeln

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 6e9e1d54599ab88092638762ccd7974e44c82cbf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025808"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460959"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
@@ -58,7 +58,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die Sie zum Definie
 
 Folgende Eigenschaften werden für den verknüpften Azure Cosmos DB-Dienst (SQL-API) unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **CosmosDb** festgelegt werden. | Ja |
 | connectionString |Geben Sie die zum Herstellen einer Verbinden mit der Azure Cosmos DB-Datenbank erforderlichen Informationen an.<br />**Hinweis**: Sie müssen Datenbankinformationen in der Verbindungszeichenfolge angeben, wie in den folgenden Beispielen gezeigt. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -114,7 +114,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für das Azure Cosmos DB (SQL-API)-Dataset unterstützt: 
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** des Datasets muss auf **CosmosDbSqlApiCollection** festgelegt werden. |Ja |
 | collectionName |Der Name der Azure Cosmos DB-Dokumentsammlung. |Ja |
@@ -150,7 +150,7 @@ Legen Sie zum Kopieren von Daten aus Azure Cosmos DB (SQL-API) den **Quelltyp** 
 
 Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type** der Quelle für die Kopieraktivität muss auf **CosmosDbSqlApiSource** festgelegt werden. |Ja |
 | Abfrage |Geben Sie die Azure Cosmos DB-Abfrage an, um Daten zu lesen.<br/><br/>Beispiel:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nein <br/><br/>Falls nicht angegeben, wird die folgende SQL-Anweisung ausgeführt: `select <columns defined in structure> from mycollection` |
@@ -318,7 +318,7 @@ So erhalten Sie eine vom Schema unabhängige Kopie:
 
 ## <a name="migrate-from-relational-database-to-cosmos-db"></a>Migrieren aus relationalen Datenbanken in Cosmos DB
 
-Beim Migrieren aus einer relationalen Datenbank, z. B. von SQL Server zu Azure Cosmos DB, kann die Kopieraktivität Tabellendaten aus der Quelle einfach zuordnen, um JSON-Dokumente in Cosmos DB zu vereinfachen. In manchen Fällen sollten Sie das Datenmodell umgestalten, um es für Anwendungsfälle außerhalb von SQL zu optimieren. Weitere Informationen dazu finden Sie im Artikel [Datenmodellierung in Azure Cosmos DB](../cosmos-db/modeling-data.md). Sie können die Daten beispielsweise denormalisieren, indem Sie alle verbundenen untergeordneten Elemente innerhalb eines JSON-Dokuments einbetten. [In diesem Blogbeitrag](https://medium.com/@ArsenVlad/denormalizing-via-embedding-when-copying-data-from-sql-to-cosmos-db-649a649ae0fb) finden Sie weitere Informationen für so einen Fall sowie eine exemplarische Vorgehensweise, wie Sie dieses Szenario mithilfe der Azure Data Factory-Kopieraktivität umsetzen.
+Beim Migrieren aus einer relationalen Datenbank, z. B. von SQL Server zu Azure Cosmos DB, kann die Kopieraktivität Tabellendaten aus der Quelle einfach zuordnen, um JSON-Dokumente in Cosmos DB zu vereinfachen. In manchen Fällen sollten Sie das Datenmodell umgestalten, um es für Anwendungsfälle außerhalb von SQL zu optimieren. Weitere Informationen dazu finden Sie im Artikel [Datenmodellierung in Azure Cosmos DB](../cosmos-db/modeling-data.md). Sie können die Daten beispielsweise denormalisieren, indem Sie alle verbundenen untergeordneten Elemente innerhalb eines JSON-Dokuments einbetten. [In diesem Artikel](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) finden Sie weitere Informationen für so einen Fall sowie eine exemplarische Vorgehensweise, wie Sie dieses Szenario mithilfe der Azure Data Factory-Kopieraktivität umsetzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

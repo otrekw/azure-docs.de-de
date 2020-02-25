@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118375"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485351"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -28,10 +28,14 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 - Einen Satz mit mindestens sechs Formularen desselben Typs. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Für diesen Schnellstart können Sie ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden. Laden Sie die Trainingsdateien in das Stammverzeichnis eines Blobspeichercontainers in einem Azure Storage-Konto hoch.
 
+## <a name="create-a-form-recognizer-resource"></a>Erstellen einer Formularerkennungsressource
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
+
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
 
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
-1. Installieren Sie zunächst Docker auf einem Hostcomputer. Bei dem Hostcomputer kann es sich um Ihren lokalen Computer ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/) oder [Linux](https://docs.docker.com/install/)) handeln. Alternativ dazu können Sie auch einen Docker-Hostingdienst in Azure verwenden, z. B. [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index) oder einen auf einer [Azure Stack-Instanz bereitgestellten](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes-Cluster. Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
+1. Installieren Sie zunächst Docker auf einem Hostcomputer. Bei dem Hostcomputer kann es sich um Ihren lokalen Computer ([Windows](https://docs.docker.com/docker-for-windows/), [macOS](https://docs.docker.com/docker-for-mac/) oder [Linux](https://docs.docker.com/install/)) handeln. Alternativ dazu können Sie auch einen Docker-Hostingdienst in Azure verwenden, z. B. [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index) oder einen auf einer [Azure Stack-Instanz bereitgestellten](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910) Kubernetes-Cluster. Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
 
     | Container | Minimum | Empfohlen|
     |:--|:--|:--|
@@ -70,7 +74,7 @@ Aktivieren Sie CORS in Ihrem Speicherkonto. Wählen Sie im Azure-Portal Ihr Spei
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Herstellen einer Verbindung mit dem Tool für die Beschriftung von Beispielen
 
-Das Tool für die Beschriftung von Beispielen stellt eine Verbindung mit einer Quelle (in der sich Ihre Originalformulare befinden) und einem Ziel (dem Speicherort, an den die erstellten Beschriftungen und Ausgabedaten exportiert werden) her.
+Das Tool für die Beschriftung von Beispielen stellt eine Verbindung mit einer Quelle (in der sich Ihre Originalformulare befinden) und einem Ziel (in das die erstellten Beschriftungen und Ausgabedaten exportiert werden) her.
 
 Verbindungen können projektübergreifend eingerichtet und freigegeben werden. Dabei wird ein erweiterbares Anbietermodell verwendet, sodass Sie ganz einfach neue Anbieter von Quellen und Zielen hinzufügen können.
 
@@ -89,7 +93,7 @@ Geben Sie die folgenden Werte in die Felder ein:
 Im Tool für die Beschriftung von Beispielen werden Ihre Konfigurationen und Einstellungen in Projekten gespeichert. Erstellen Sie ein neues Projekt, und geben Sie die folgenden Werte in die Felder ein:
 
 * **Anzeigename**: der Anzeigename des Projekts.
-* **Sicherheitstoken**: Einige Projekteinstellungen können vertrauliche Werte wie z. B. API-Schlüssel oder andere gemeinsam genutzte Geheimnisse enthalten. Jedes Projekt generiert ein Sicherheitstoken, das zum Verschlüsseln und Entschlüsseln von vertraulichen Projekteinstellungen verwendet werden kann. Die Sicherheitstoken finden Sie, indem Sie in den Anwendungseinstellungen auf das Zahnradsymbol in der unteren Ecke der linken Navigationsleiste klicken.
+* **Sicherheitstoken**: Einige Projekteinstellungen können vertrauliche Werte wie z. B. API-Schlüssel oder andere gemeinsam genutzte Geheimnisse enthalten. Jedes Projekt generiert ein Sicherheitstoken, das zum Verschlüsseln und Entschlüsseln von vertraulichen Projekteinstellungen verwendet werden kann. Sie finden die Sicherheitstoken in den Anwendungseinstellungen, indem Sie auf das Zahnradsymbol in der unteren Ecke der linken Navigationsleiste klicken.
 * **Quellverbindung**: Die von Ihnen im vorherigen Schritt erstellte Azure Blob Storage-Verbindung, die Sie für dieses Projekt verwenden möchten.
 * **Ordnerpfad** (optional): Wenn Ihre Quellformulare in einem Ordner im Blobcontainer gespeichert sind, geben Sie hier den Ordnernamen an.
 * **URI des Formularerkennungsdiensts**: Die URL Ihres Formularerkennungs-Endpunkts.
@@ -155,7 +159,7 @@ Klicken Sie links auf das Symbol für die Vorhersage (Rechtecke), um Ihr Modell 
 
 Je nach gemeldeter Genauigkeit können Sie weitere Trainingsiterationen durchführen, um das Modell zu verbessern. Untersuchen Sie nach jeder Vorhersage die Konfidenzwerte für jede angewendete Beschriftung. Wenn der durchschnittliche Genauigkeitswert im Training hoch war, aber die Konfidenzscores niedrig sind (oder die Ergebnisse ungenau sind), sollten Sie die für die Vorhersage verwendete Datei zum Trainingssatz hinzufügen, sie beschriften, und das Training erneut durchführen.
 
-Die gemeldete durchschnittliche Genauigkeit, die Konfidenzscores und die tatsächliche Genauigkeit können inkonsistent sein, wenn die analysierten Dokumente sich von den im Training verwendeten Dokumenten unterscheiden. Denken Sie daran, dass Dokumente für das menschliche Auge gleich aussehen können, für das KI-Modell aber unterschiedlich sind. Ein Beispiel: Sie führen das Training mit einem Formulartyp durch, der zwei Variationen aufweist. Der Trainingssatz besteht zu 20 % aus Variation A und zu 80 % aus Variation B. In diesem Fall ist es wahrscheinlich, dass die Konfidenzscores für Variation A bei der Vorhersage niedriger sind.
+Die gemeldete durchschnittliche Genauigkeit, die Konfidenzscores und die tatsächliche Genauigkeit können inkonsistent sein, wenn sich die analysierten Dokumente von den im Training verwendeten Dokumenten unterscheiden. Denken Sie daran, dass Dokumente für das menschliche Auge gleich aussehen können, für das KI-Modell aber unterschiedlich sind. Ein Beispiel: Sie führen das Training mit einem Formulartyp durch, der zwei Variationen aufweist. Der Trainingssatz besteht zu 20 % aus Variation A und zu 80 % aus Variation B. In diesem Fall ist es wahrscheinlich, dass die Konfidenzscores für Variation A bei der Vorhersage niedriger sind.
 
 ## <a name="save-a-project-and-resume-later"></a>Speichern und späteres Fortsetzen eines Projekts
 
@@ -165,7 +169,7 @@ Um Ihr Projekt zu einem anderen Zeitpunkt oder in einem anderen Browser fortzuse
 Wechseln Sie zur Seite mit den Projekteinstellungen (Schiebereglersymbol), und merken Sie sich den Namen des Sicherheitstokens. Wechseln Sie dann zu Ihren Anwendungseinstellungen (Zahnradsymbol), in denen alle Sicherheitstoken in Ihrer aktuellen Browserinstanz angezeigt werden. Suchen Sie nach dem Sicherheitstoken Ihres Projekts, und kopieren Sie den Namen und Schlüsselwert an einen sicheren Speicherort.
 
 ### <a name="restore-project-credentials"></a>Wiederherstellen der Projektanmeldeinformationen
-Wenn Sie Ihr Projekt fortsetzen möchten, müssen Sie zunächst eine Verbindung mit demselben Blobspeichercontainer herstellen. Führen Sie dazu die oben genannten Schritte aus. Wechseln Sie zur Seite mit den Anwendungseinstellungen (Zahnradsymbol), und überprüfen Sie, ob sich das Sicherheitstoken Ihres Projekts dort befindet. Wenn dies nicht der Fall ist, fügen Sie ein neues Sicherheitstoken hinzu, und fügen Sie den Namen und Schlüssel des Tokens aus dem vorherigen Schritt ein. Klicken Sie dann auf „Einstellungen speichern“. 
+Wenn Sie Ihr Projekt fortsetzen möchten, müssen Sie zunächst eine Verbindung mit demselben Blobspeichercontainer herstellen. Wiederholen Sie dazu die oben genannten Schritte. Wechseln Sie zur Seite mit den Anwendungseinstellungen (Zahnradsymbol), und überprüfen Sie, ob sich das Sicherheitstoken Ihres Projekts dort befindet. Wenn dies nicht der Fall ist, fügen Sie ein neues Sicherheitstoken hinzu, und fügen Sie den Namen und Schlüssel des Tokens aus dem vorherigen Schritt ein. Klicken Sie dann auf „Einstellungen speichern“. 
 
 ### <a name="resume-a-project"></a>Fortsetzen eines Projekts
 Wechseln Sie abschließend auf die Hauptseite (Haussymbol), und klicken Sie auf „Cloudprojekt öffnen“. Wählen Sie die Verbindung mit dem Blobspeicher aus, und wählen Sie dann die *.vott*-Datei Ihres Projekts aus. Die Anwendung lädt sämtliche Projekteinstellungen, weil das Sicherheitstoken vorliegt.

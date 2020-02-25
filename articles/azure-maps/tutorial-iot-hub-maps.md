@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a49f641561aa7a293628e914c964020145e0ae62
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208368"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486422"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -114,11 +114,11 @@ Um Geschäftslogik auf der Grundlage der räumlichen Azure Maps-Analyse impleme
 
 
 
-### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Zur Protokollierung von Ereignisdaten erstellen wir das universelle Konto **v2storage** in der Ressourcengruppe „ContosoRental“, um Daten als Blobs zu speichern. Befolgen Sie zum Erstellen eines Speicherkontos die Anleitung unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Als Nächstes müssen wir einen Container zum Speichern von Blobs erstellen. Führen Sie hierzu die folgenden Schritte aus:
+Sie erstellen zum Protokollieren von Ereignisdaten das universelle Konto **v2storage**, das Zugriff auf sämtliche Azure Storage-Dienste bietet: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger.  Sie müssen dieses Speicherkonto in der Ressourcengruppe „ContosoRental“ platzieren, um Daten als Blobs speichern zu können. Befolgen Sie zum Erstellen eines Speicherkontos die Anleitung unter [Speicherkonto erstellen](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Als Nächstes müssen wir einen Container zum Speichern von Blobs erstellen. Führen Sie hierzu die folgenden Schritte aus:
 
-1. Navigieren Sie in Ihrem Speicherkonto zu „Container“.
+1. Navigieren Sie in Ihrem Speicherkonto (Blob, Datei, Tabelle, Warteschlange) zu „Container“.
 
     ![Blobs](./media/tutorial-iot-hub-maps/blobs.png)
 
@@ -133,7 +133,7 @@ Zur Protokollierung von Ereignisdaten erstellen wir das universelle Konto **v2st
 
 Wir verfügen nun über ein Speicherkonto und einen Container zum Protokollieren von Ereignisdaten. Als Nächstes erstellen wir einen IoT-Hub.
 
-### <a name="create-an-iot-hub"></a>Erstellen einer IoT Hub-Instanz
+### <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 IoT Hub ist ein verwalteter Dienst in der Cloud. Die IoT Hub-Instanz fungiert als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen einer IoT-Anwendung und den Geräten, die von der Anwendung verwaltet werden. Erstellen Sie eine IoT Hub-Instanz in der Ressourcengruppe „ContosoRental“, um Gerätetelemetrienachrichten an eine Event Grid-Instanz weiterzuleiten. Richten Sie eine Nachrichtenroutenintegration ein, um Nachrichten basierend auf dem Motorstatus des Fahrzeugs zu filtern. Darüber hinaus senden wir Gerätetelemetrienachrichten jeweils an die Event Grid-Instanz, wenn das Fahrzeug bewegt wird.
 
@@ -155,6 +155,9 @@ Zum Herstellen einer Verbindung mit der IoT Hub-Instanz muss ein Gerät registri
     
     ![register-device](./media/tutorial-iot-hub-maps/register-device.png)
 
+3. Speichern Sie den Wert für **Primäre Verbindungszeichenfolge** Ihres Geräts zur Verwendung in einem späteren Schritt, in dem Sie einen Platzhalter durch diese Verbindungszeichenfolge ersetzen müssen.
+
+    ![add-device](./media/tutorial-iot-hub-maps/connectionString.png)
 
 ## <a name="upload-geofence"></a>Hochladen der Geofencedaten
 
@@ -188,7 +191,7 @@ Wir nutzen die [Postman-Anwendung](https://www.getpostman.com) zum [Hochladen de
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Kopieren Sie Ihren Status-URI, und fügen Sie den Parameter `subscription-key` an, der als Wert den Abonnementschlüssel Ihres Azure Maps-Kontos enthält. Das Format des Status-URI sollte wie folgt aussehen:
+6. Kopieren Sie Ihren Status-URI, und fügen Sie an ihn den Parameter `subscription-key` an. Weisen Sie den Wert Ihres Azure Maps Konto-Kontoabonnementschlüssel dem Parameter `subscription-key` zu. Der Status-URI sollte das folgende Format haben, und `{Subscription-key}` muss durch Ihren Abonnementschlüssel ersetzt werden:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -214,11 +217,11 @@ Für die Logik, die wir in der Funktion implementieren, werden die Standortdaten
 
 Alle relevanten Ereignisinformationen werden dann im Blobspeicher gespeichert. In Schritt 5 unten wird auf den ausführbaren Code verwiesen, mit dem diese Logik implementiert wird. Führen Sie die unten angegebenen Schritte aus, um eine Azure-Funktion zu erstellen, mit der Datenprotokolle an den Blobcontainer im Blobspeicherkonto gesendet werden, und fügen Sie ein Event Grid-Abonnement hinzu.
 
-1. Wählen Sie im Dashboard des Azure-Portals die Option zum Erstellen einer Ressource aus. Wählen Sie in der Liste mit den verfügbaren Ressourcentypen die Option **Compute** und dann **Funktions-App**.
+1. Wählen Sie im Dashboard des Azure-Portals die Option zum Erstellen einer Ressource aus. Wählen Sie in der Liste mit den verfügbaren Ressourcentypen die Option **Compute** und dann **Funktions-App** aus.
 
     ![create-resource](./media/tutorial-iot-hub-maps/create-resource.png)
 
-2. Geben Sie Ihrer Funktions-App auf der Erstellungsseite **Funktions-App** einen Namen. Wählen Sie unter **Ressourcengruppe** die Option **Use existing** (Vorhandene verwenden) und anschließend in der Dropdownliste die Option „ContosoRental“ aus. Wählen Sie „.NET Core“ als Runtimestapel aus. Wählen Sie unter **Speicher** die Option **Use existing** (Vorhandenen verwenden), in der Dropdownliste die Option „contosorentaldata“ und anschließend **Überprüfen + erstellen** aus.
+2. Geben Sie Ihrer Funktions-App auf der Erstellungsseite **Funktions-App** einen Namen. Wählen Sie unter **Ressourcengruppe** die Option **Use existing** (Vorhandene verwenden) und anschließend in der Dropdownliste die Option „ContosoRental“ aus. Wählen Sie „.NET Core“ als Runtimestapel aus. Wählen Sie unter **Hosting** für **Speicherkonto** den Speicherkontonamen aus einem vorherigen Schritt aus. In diesem vorherigen Schritt haben wir dem Speicherkonto den Namen **v2storage** gegeben.  Wählen Sie dann **Bewerten + erstellen** aus.
     
     ![create-app](./media/tutorial-iot-hub-maps/rental-app.png)
 
@@ -233,10 +236,12 @@ Alle relevanten Ereignisinformationen werden dann im Blobspeicher gespeichert. I
 5. Wählen Sie die Vorlage mit einem **Azure Event Grid-Trigger** aus. Installieren Sie die Erweiterungen, wenn Sie dazu aufgefordert werden, geben Sie der Funktion einen Namen, und wählen Sie **Erstellen** aus.
 
     ![function-template](./media/tutorial-iot-hub-maps/eventgrid-funct.png)
+    
+    Der **Azure Event Hub-Trigger** und der **Azure Event Grid-Trigger** haben ähnliche Symbole. Stellen Sie sicher, dass Sie den **Azure Event Grid-Trigger** auswählen.
 
-6. Kopieren Sie den [C#-Code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in Ihre Funktion, und klicken Sie auf **Speichern**.
+6. Kopieren Sie den [C#-Code](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) in Ihre Funktion.
  
-7. Ersetzen Sie im C#-Skript die folgenden Parameter:
+7. Ersetzen Sie im C#-Skript die folgenden Parameter. Klicken Sie auf **Speichern**. Klicken Sie noch nicht auf **Ausführen**.
     * Ersetzen Sie **SUBSCRIPTION_KEY** durch den primären Abonnementschlüssel Ihres Azure Maps-Kontos.
     * Ersetzen Sie **UDID** durch die udId des hochgeladenen Geofencebereichs. 
     * Mit der Funktion **CreateBlobAsync** im Skript wird im Datenspeicherkonto ein Blob pro Ereignis erstellt. Ersetzen Sie **ACCESS_KEY**, **ACCOUNT_NAME** und **STORAGE_CONTAINER_NAME** durch den Zugriffsschlüssel, den Kontonamen und den Datenspeichercontainer Ihres Speicherkontos.
@@ -245,7 +250,7 @@ Alle relevanten Ereignisinformationen werden dann im Blobspeicher gespeichert. I
     
     ![add-event-grid](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Geben Sie die Abonnementdetails unter dem Namen **DETAILS ZUM EREIGNISABONNEMENT** Ihres Abonnements ein, und wählen Sie als Ereignisschema die Option „Event Grid-Schema“. Wählen Sie unter **THEMENDETAILS** den Thementyp „Azure IoT Hub-Konten“ aus. Wählen Sie das gleiche Abonnement aus, das Sie auch beim Erstellen der Ressourcengruppe verwendet haben, und wählen Sie „ContosoRental“ als Ressourcengruppe aus. Wählen Sie die von Ihnen erstellte IoT Hub-Instanz als Ressource aus. Wählen Sie **Gerätetelemetrie** als Ereignistyp aus. Nachdem Sie diese Optionen ausgewählt haben, sehen Sie, dass der Thementyp automatisch in „IoT Hub“ geändert wurde.
+11. Füllen Sie die Abonnementdetails aus. Geben Sie unter **DETAILS ZUM EREIGNISABONNEMENT** einen Namen für Ihr Ereignisabonnement ein. Wählen Sie als Ereignisschema die Option „Event Grid-Schema“ aus. Wählen Sie unter **THEMENDETAILS** den Thementyp „Azure IoT Hub-Konten“ aus. Wählen Sie das gleiche Abonnement aus, das Sie auch beim Erstellen der Ressourcengruppe verwendet haben, und wählen Sie „ContosoRental“ als Ressourcengruppe aus. Wählen Sie die von Ihnen erstellte IoT Hub-Instanz als Ressource aus. Wählen Sie **Gerätetelemetrie** als Ereignistyp aus. Nachdem Sie diese Optionen ausgewählt haben, sehen Sie, dass der Thementyp automatisch in „IoT Hub“ geändert wurde.
 
     ![event-grid-subscription](./media/tutorial-iot-hub-maps/af-egs.png)
  

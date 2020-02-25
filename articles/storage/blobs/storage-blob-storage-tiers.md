@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c402d47f40a351d70f688aa93c5e1501c93b39dd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779869"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368707"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“
 
@@ -26,7 +26,7 @@ Azure Storage bietet unterschiedliche Zugriffsebenen, die Ihnen das Speichern vo
 Die folgenden Überlegungen gelten für die unterschiedlichen Zugriffsebenen:
 
 - Nur die heißen und kalten Zugriffsebenen können auf Kontoebene festgelegt werden. Die Archivspeicherebene ist auf der Kontoebene nicht verfügbar.
-- Die Ebenen „Heiß“, „Kalt“ und „Archiv“ können auf der Blobebene festgelegt werden.
+- Die heiße und kalte Zugriffsebene und die Archivspeicherebene können während des Uploads oder danach auf Blobebene festgelegt werden.
 - Bei den Daten der kalten Zugriffsebene können geringfügige Abstriche bei der Verfügbarkeit gemacht werden, Dauerhaftigkeit, Abrufwartezeit und Durchsatz müssen sich jedoch auf einem ähnlich hohen Niveau befinden wie bei Daten der heißen Ebene. Daher kann bei Daten der kalten Ebene eine Kombination aus einer Servicelevelvereinbarung (Service-Level Agreement, SLA) mit etwas niedrigerer Verfügbarkeit und höheren Zugriffskosten im Vergleich zu Daten der heißen Ebene in Kauf genommen werden, um im Gegenzug die Speicherkosten zu verringern.
 - Der Archivspeicher speichert Daten offline und zeichnet sich durch die niedrigsten Speicherkosten aus, verursacht aber gleichzeitig die höchsten Kosten für Datenaktivierung und Datenzugriff.
 
@@ -77,7 +77,7 @@ Die Änderung der Kontozugriffsebene gilt für alle im Konto gespeicherten Objek
 
 ## <a name="blob-level-tiering"></a>Blobebenentiering
 
-Mit dem Blobebenentiering können Sie mithilfe eines einzelnen Vorgangs namens [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (Blobebene festlegen) die Ebene Ihrer Daten auf der Objektebene ändern. So können Sie flexibel auf Nutzungsänderungen reagieren und problemlos zwischen den Blobzugriffsebenen „Hot“, „Cool“ und „Archiv“ wechseln, ohne Daten zwischen Konten zu verschieben. Alle Anforderungen für Ebenenänderungen werden sofort durchgeführt. Auch Änderungen zwischen der heißen und kalten Ebene erfolgen sofort. Die Aktivierung eines BLOBs aus dem Archiv kann jedoch mehrere Stunden dauern.
+Blobebenentiering ermöglicht es Ihnen, Daten mit den Vorgängen [Put Blob](/rest/api/storageservices/put-blob) oder [Put Blob List](/rest/api/storageservices/put-block-list) auf die Zugriffsebene Ihrer Wahl hochzuladen und die Ebene Ihrer Daten mit dem Vorgang [Set Blob Tier](/rest/api/storageservices/set-blob-tier) oder dem Feature [Lebenszyklusverwaltung](#blob-lifecycle-management) auf Objektebene zu ändern. Sie können Daten in Ihre erforderliche Zugriffsebene hochladen und dann die Blobzugriffsebene bei einer Änderung der Nutzungsmuster auf einfache Weise zwischen den Ebenen „Heiß“, „Kalt“ oder „Archiv“ ändern, ohne Daten zwischen Konten verschieben zu müssen. Alle Anforderungen für Ebenenänderungen werden sofort durchgeführt. Auch Änderungen zwischen der heißen und kalten Ebene erfolgen sofort. Die Aktivierung eines BLOBs aus dem Archiv kann jedoch mehrere Stunden dauern.
 
 Der Zeitpunkt der letzten Änderung der Blobebene wird über die Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) verfügbar gemacht. Beim Überschreiben eines Blobs auf der heißen oder kalten Ebene erbt das neu erstellte Blob den Tarif des Blobs, das überschrieben wurde, sofern nicht bei der Erstellung die neue Blobzugriffsebene explizit festgelegt wird. Wenn sich ein Blob auf der Archivspeicherebene befindet, kann es nicht überschrieben werden. Das Hochladen desselben Blobs ist daher in diesem Szenario nicht zulässig. 
 
@@ -95,9 +95,11 @@ Die Blob Storage-Lebenszyklusverwaltung bietet eine umfassende regelbasierte Ric
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
+Wenn ein Blob hochgeladen oder aber in die Ebene „Heiß“, „Kalt“ oder „Archiv“ verschoben wird, wird dies sofort nach einer Ebenenänderung zur entsprechenden Gebühr in Rechnung gestellt.
+
 Wenn ein Blob in eine „kältere“ Ebene verschoben wird (von „Heiß“ zu „Kalt“, von „Heiß“ zu „Archiv“ oder von „Kalt“ zu „Archiv“), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Zielebenengebühren für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB).
 
-Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB). Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen. Die folgende Tabelle gibt Aufschluss darüber, wie Ebenenänderungen abgerechnet werden.
+Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu „Kalt“, von „Archiv“ zu „Heiß“ oder von „Kalt“ zu „Heiß“), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Quellebenengebühren für Lesevorgänge (pro 10.000) und Datenabruf (pro GB). Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen. [Die Aktivierung von Daten aus einem Archiv](storage-blob-rehydration.md) nimmt einige Zeit in Anspruch, und für die Daten werden so lange Archivpreise in Rechnung gestellt, bis sie online wiederhergestellt werden und sich die Blobebene in „Heiß“ oder „Kalt“ ändert. Die folgende Tabelle gibt Aufschluss darüber, wie Ebenenänderungen abgerechnet werden:
 
 | | **Schreibgebühren (Vorgang + Zugriff)** | **Lesegebühren (Vorgang + Zugriff)**
 | ---- | ----- | ----- |
@@ -138,7 +140,7 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals und von PowerShell
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
@@ -153,7 +155,7 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals und von PowerShell
 
 ![Ändern der Speicherkontoebene](media/storage-tiers/account-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Das folgende PowerShell-Skript kann zum Ändern der Kontoebene verwendet werden. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -166,14 +168,14 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Ändern der Ebene eines Blobs in einem GPv2- oder Blobspeicherkonto
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 1. Suchen Sie im Azure-Portal nach **Alle Ressourcen**, und wählen Sie den Eintrag aus.
 
 1. Wählen Sie dann Ihr Speicherkonto aus.
 
-1. Wählen Sie den Container und dann das Blob aus.
+1. Wählen Sie Ihren Container und dann Ihr Blob aus.
 
 1. Wählen Sie unter **Blob-Eigenschaften** die Option **Ebene ändern** aus.
 
@@ -183,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Ändern der Speicherkontoebene](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Das folgende PowerShell-Skript kann zum Ändern der Blobebene verwendet werden. Die Variable `$rgName` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden. Die Variable `$containerName` muss mit Ihrem Containernamen initialisiert werden. Die Variable `$blobName` muss mit Ihrem Blobnamen initialisiert werden. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names

@@ -4,7 +4,7 @@
   items:
     - name: Was ist ein Relay?
       href: relay-what-is-it.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hybridverbindungen
       items:
@@ -40,8 +40,10 @@
           href: service-bus-relay-security-controls.md
     - name: Hybridverbindungsprotokoll
       href: relay-hybrid-connections-protocol.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
+    - name: "Migrieren von Azure Service Manager-APIs (klassisch) zu Resource\_Manager-APIs"
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Planen und Entwerfen
       items:
         - name: Migrieren von ACS zu SAS
@@ -55,7 +57,7 @@
           items:
             - name: .NET
               href: relay-hybrid-connections-dotnet-api-overview.md
-            - name: Knoten
+            - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Verwalten
       items:

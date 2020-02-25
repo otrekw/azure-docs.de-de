@@ -1,24 +1,19 @@
 ---
-title: 'Tutorial: Verwenden der dynamischen Konfiguration von Azure App Configuration in einer .NET Framework-App | Microsoft-Dokumentation'
-description: In diesem Tutorial wird beschrieben, wie Sie die Konfigurationsdaten für .NET Framework-Apps dynamisch aktualisieren.
+title: '.NET Framework-Tutorial: dynamische Konfiguration in Azure App Configuration'
+description: In diesem Tutorial wird beschrieben, wie Sie die Konfigurationsdaten für .NET Framework-Apps mithilfe von Azure App Configuration dynamisch aktualisieren.
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185249"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484875"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App
 
@@ -45,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
@@ -57,7 +52,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Klicken Sie auf **Weiter**.
 
-1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Create**.
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
 
 ## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
 1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** nach dem NuGet-Paket *Microsoft.Extensions.Configuration.AzureAppConfiguration*, und fügen Sie es Ihrem Projekt hinzu. Wenn Sie es nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
@@ -138,7 +133,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie die Werte der folgenden Schlüssel:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration: Aktualisiert |
 

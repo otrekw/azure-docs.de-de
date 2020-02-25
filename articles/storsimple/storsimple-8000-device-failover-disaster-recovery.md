@@ -1,5 +1,5 @@
 ---
-title: 'StorSimple: Failover und Notfallwiederherstellung für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation'
+title: Ausführen eines Failovers und einer Notfallwiederherstellung für Geräte der StorSimple 8000-Serie
 description: Erfahren Sie, wie Sie ein Failover des StorSimple-Geräts auf sich selbst, auf ein anderes physisches Gerät oder auf ein Cloudgerät durchführen.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c1acc084d5abe3385fe311873dfd64c9009e83f2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576371"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468591"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>Ausführen eines Failovers und einer Notfallwiederherstellung für Geräte der StorSimple 8000-Serie
 
@@ -106,19 +106,19 @@ Wenn Sie Testfailover oder Testfailbacks planen, wird empfohlen, Volumecontainer
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-F: **Was geschieht, wenn die Notfallwiederherstellung misslingt oder nur teilweise erfolgreich war?**
+Q. **Was geschieht, wenn die Notfallwiederherstellung misslingt oder nur teilweise erfolgreich war?**
 
 A. Wenn die Notfallwiederherstellung misslingt, sollten Sie sie wiederholen. Der zweite Failoverauftrag für ein Gerät erkennt den Status des ersten Auftrags und fährt an der entsprechenden Stelle fort.
 
-F: **Kann ich ein Gerät löschen, während das Gerätefailover erfolgt?**
+Q. **Kann ich ein Gerät löschen, während das Gerätefailover erfolgt?**
 
 A. Ein Gerät kann nicht gelöscht werden, während eine Notfallwiederherstellung ausgeführt wird. Sie können Ihr Gerät erst nach erfolgter Notfallwiederherstellung löschen. Sie können den Status des Failoverauftrags eines Geräts auf dem Blatt **Aufträge** überwachen.
 
-F: **Wann wird die Garbage Collection auf dem Quellgerät gestartet, damit die lokalen Daten auf dem Quellgerät gelöscht werden?**
+Q. **Wann wird die Garbage Collection auf dem Quellgerät gestartet, damit die lokalen Daten auf dem Quellgerät gelöscht werden?**
 
 A. Die automatische Speicherbereinigung wird auf dem Quellgerät erst aktiviert, nachdem das Gerät vollständig bereinigt wurde. Die Bereinigung enthält bereinigte Objekte, für die ein Failover vom Quellgerät erfolgt ist, z.B. Volumes, Sicherungsobjekte (keine Daten), Volumecontainer und Richtlinien.
 
-F: **Was geschieht, wenn der den Volumecontainern zugeordnete Löschauftrag auf dem Quellgerät misslingt?**
+Q. **Was geschieht, wenn der den Volumecontainern zugeordnete Löschauftrag auf dem Quellgerät misslingt?**
 
 A.  Wenn der Löschauftrag misslingt, können Sie die Volumecontainer manuell löschen. Wählen Sie auf dem Blatt **Geräte** Ihr Quellgerät aus, und klicken Sie auf **Volumecontainer**. Wählen Sie die Volumecontainer aus, für die Sie ein Failover ausgeführt haben, und klicken Sie unten auf dem Blatt auf **Löschen**. Sobald Sie alle Volumecontainer mit erfolgtem Failover vom Quellgerät gelöscht haben, können Sie das Failback starten. Weitere Informationen finden Sie unter [Löschen eines Volumecontainers](storsimple-8000-manage-volume-containers.md#delete-a-volume-container).
 

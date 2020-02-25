@@ -8,12 +8,12 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 02/04/2020
-ms.openlocfilehash: 901868da8ed859a846a507557d383db760f297c9
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029519"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472127"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
 
@@ -29,8 +29,8 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 ### <a name="error-code-df-executor-systemimplicitcartesian"></a>Fehlercode: DF-Executor-SystemImplicitCartesian
 
 - **Meldung**: Implicit cartesian product for INNER join is not supported, use CROSS JOIN instead. (Implizites kartesisches Produkt wird für INNER JOIN nicht unterstützt. Verwenden Sie stattdessen CROSS JOIN.) Die im Join verwendeten Spalten müssen einen eindeutigen Schlüssel für Zeilen erstellen.
-- **Ursachen**: Implizites kartesisches Produkt für INNER JOIN zwischen logischen Plänen wird nicht unterstützt. Dies ist der Fall, wenn die im Join verwendeten Spalten den eindeutigen Schlüssel erstellen.
-- **Empfehlung**: Bei nicht gleichheitsbasierten Joins müssen Sie CROSS JOIN verwenden.
+- **Ursachen**: Implizites kartesisches Produkt für INNER JOIN zwischen logischen Plänen wird nicht unterstützt. Wenn die im Join verwendeten Spalten den eindeutigen Schlüssel erstellen, ist mindestens eine Spalte von beiden Seiten der Beziehung erforderlich.
+- **Empfehlung**: Bei nicht gleichheitsbasierten Joins müssen Sie CUSTOM CROSS JOIN verwenden.
 
 ### <a name="error-code-df-executor-systeminvalidjson"></a>Fehlercode: DF-Executor-SystemInvalidJson
 

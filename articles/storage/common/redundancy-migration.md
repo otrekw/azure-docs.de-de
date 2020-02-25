@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 78a7f3eb920d2f656b91cff187ca22b1e15973b7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163787"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212571"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -38,10 +38,10 @@ Die folgende Tabelle bietet eine Übersicht über die Möglichkeiten zum Wechsel
 
 | Wechsel | … zu LRS | … zu GRS/RA-GRS | … zu ZRS | … zu GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>… von LRS</b> | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration |
-| <b>… von GRS/RA-GRS</b> | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration |
-| <b>… von ZRS</b> | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung |
-| <b>… von GZRS/RA-GZRS</b> | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – |
+| <b>… von LRS</b> | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung<sup>1</sup> | Ausführen einer manuellen Migration <br /><br />Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu GRS/RA-GRS und dann Anfordern einer Livemigration<sup>1</sup> |
+| <b>… von GRS/RA-GRS</b> | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – | Ausführen einer manuellen Migration <br /><br /> oder <br /><br /> Zuerst Wechseln zu LRS und dann Anfordern einer Livemigration | Ausführen einer manuellen Migration <br /><br /> Anfordern einer Livemigration |
+| <b>… von ZRS</b> | Ausführen einer manuellen Migration | Ausführen einer manuellen Migration | – | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung<sup>1</sup> |
+| <b>… von GZRS/RA-GZRS</b> | Ausführen einer manuellen Migration | Ausführen einer manuellen Migration | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – |
 
 <sup>1</sup> Hierbei fällt eine einmalige Gebühr für ausgehende Daten an.
 

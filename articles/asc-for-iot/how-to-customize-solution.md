@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c189ece9763e484b969b91f9c1ab9120e5665261
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: c385be0c21e7a61f66eb274ec293f4aabd4208ba
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71305905"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458884"
 ---
 # <a name="customize-your-azure-security-center-for-iot-solution"></a>Anpassung Ihrer Microsoft Azure Security Center für IoT-Lösung 
 
@@ -32,7 +32,7 @@ Lernen Sie in diesem Leitfaden, wie Sie verschiedene Einstellungen in Azure Secu
 
 ## <a name="change-settings"></a>Änderung der Einstellungen
 
-Verwalten Sie Ihre Azure Security Center für IoT-Einstellung:
+Verwalten Ihres Azure Security Centers für IoT-Einstellungen:
 
 Wechseln Sie links oben in Ihrer IoT Hub-Instanz zum Blatt „Sicherheitsübersicht“, und wählen Sie „Einstellungen“ aus. Gehen Sie wie folgt vor, um Ihr Azure Security Center für IoT-Einstellungen zu konfigurieren:
 
