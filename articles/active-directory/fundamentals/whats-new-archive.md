@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185870"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484484"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -1426,7 +1426,7 @@ Weitere Informationen zur Verwendung von benutzerdefinierten Erweiterungseigensc
 **Dienstkategorie:** Bedingter Zugriff  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
-Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement) hinzugefügt:
+Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) hinzugefügt:
 
 - Microsoft To-Do
 
@@ -1698,7 +1698,7 @@ Dieses Update zeigt Ihnen, welche Richtlinien ausgewertet werden, wenn ein Benut
 **Dienstkategorie:** Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
-Dank der Einführung des Felds **Client-App** in den Protokollen zur Anmeldeaktivität können Kunden jetzt Benutzer anzeigen, die Authentifizierungen einer Vorgängerversion nutzen. Kunden können auf diese Informationen zugreifen, indem sie die Microsoft Graph-API für Anmeldungen oder die Protokolle zur Anmeldeaktivität im Azure AD-Portal verwenden. Hier können Sie das Steuerelement **Client-App** nutzen, um nach Legacyauthentifizierungen zu filtern. Weitere Informationen finden Sie in der Dokumentation.
+Dank der Einführung des Felds **Client-App** in den Protokollen zur Anmeldeaktivität können Kunden jetzt Benutzer anzeigen, die Authentifizierungen einer Vorgängerversion nutzen. Kunden können auf diese Informationen zugreifen, indem sie die Microsoft Graph-API für Anmeldungen oder die Protokolle zur Anmeldeaktivität im Azure AD-Portal verwenden. Hier können Sie das Steuerelement **Client-App** nutzen, um nach Legacyauthentifizierungen zu filtern. Weitere Informationen finden Sie in der Dokumentation.
 
 ---
 
@@ -2092,7 +2092,7 @@ Die Zugriffsüberprüfung von Gruppen und Apps ist für Azure AD Premium P2 jetz
 **Dienstkategorie:** Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
-Azure AD-Aktivitätsprotokolle, die auch Anmeldungen und Überwachungsprotokolle umfassen, sind jetzt über MS Graph verfügbar. Wir haben zwei Endpunkte über MS Graph verfügbar gemacht, um auf diese Protokolle zuzugreifen. Sehen Sie sich zum Einstieg unsere [Dokumente](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) zum programmgesteuerten Zugriff auf Azure AD-Berichterstellungs-APIs an. 
+Azure AD-Aktivitätsprotokolle, die Anmeldungen und Überwachungsprotokolle umfassen, sind jetzt über die Microsoft Graph-API verfügbar. Wir haben zwei Endpunkte über die Microsoft Graph-API verfügbar gemacht, um auf diese Protokolle zuzugreifen. Sehen Sie sich zum Einstieg unsere [Dokumente](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) zum programmgesteuerten Zugriff auf Azure AD-Berichterstellungs-APIs an. 
 
 ---
  
@@ -2596,7 +2596,7 @@ Weitere Informationen zum Verwenden dieser Berichte finden Sie unter [Azure Acti
 **Dienstkategorie:** Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
 
-Als Teil des Kundenfeedbacks, Nicht-Administratorrollen den Zugriff auf die Azure AD-Aktivitätsprotokolle zu ermöglichen, haben wir eine Möglichkeit geschaffen, dass Benutzer, die die Rolle „Berichtsleser“ ausüben, auf die Anmelde- und Überwachungsaktivitäten im Azure-Portal sowie auf unsere Graph-APIs zugreifen können. 
+Als Teil des Kundenfeedbacks, Nicht-Administratorrollen den Zugriff auf die Azure AD-Aktivitätsprotokolle zu ermöglichen, haben wir eine Möglichkeit geschaffen, dass Benutzer, die die Rolle „Berichtsleser“ ausüben, auf die Anmelde- und Überwachungsaktivitäten im Azure-Portal sowie über die Microsoft Graph-API zugreifen können. 
 
 Weitere Informationen zum Verwenden dieser Berichte finden Sie unter [Azure Active Directory-Berichterstellung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
 
@@ -2753,7 +2753,7 @@ Die folgenden Anwendungen werden bis Ende Februar hinzugefügt:
 
 Weitere Informationen finden Sie unter
 
-- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Weitere Informationen finden Sie unter [Bedingter Zugriff in Azure Active Direct
 **Dienstkategorie:** Bedingter Zugriff  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
-Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) hinzugefügt:
+Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) hinzugefügt:
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 Weitere Informationen finden Sie unter
 
-- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Weitere Informationen finden Sie unter [Lokale Integration](https://docs.microso
 **Dienstkategorie:** Azure AD  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
-Sie können jetzt über den [App-basierten bedingten Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) den Zugriff auf Office 365 und weitere mit Azure AD verbundene Cloud-Apps auf [genehmigte Client-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) beschränken, die Intune-App-Schutzrichtlinien unterstützen. Intune-App-Schutzrichtlinien werden verwendet, um Unternehmensdaten in diesen Clientanwendungen zu konfigurieren und zu schützen.
+Sie können jetzt über den [App-basierten bedingten Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) den Zugriff auf Office 365 und weitere mit Azure AD verbundene Cloud-Apps auf [genehmigte Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) beschränken, die Intune-App-Schutzrichtlinien unterstützen. Intune-App-Schutzrichtlinien werden verwendet, um Unternehmensdaten in diesen Clientanwendungen zu konfigurieren und zu schützen.
 
 Durch das Kombinieren von [app-basierten](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) und [gerätebasierten](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) Richtlinien für den bedingten Zugriff können Sie Daten für private Geräte und Unternehmensgeräte flexibel schützen.
 
@@ -3189,14 +3189,14 @@ Im Azure AD Admin Center haben Sie jetzt folgende Möglichkeiten:
 **Dienstkategorie:** Bedingter Zugriff  
 **Produktfunktion:** Identitätssicherheit und -schutz
 
-Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) hinzugefügt:
+Die folgenden Apps wurden der Liste der [genehmigten Client-Apps](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) hinzugefügt:
 
 - Microsoft Planner
 - Azure Information Protection 
 
 Weitere Informationen finden Sie unter
 
-- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Genehmigte Client-App als Voraussetzung](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [App-basierter bedingter Zugriff mit Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

@@ -2,19 +2,21 @@
 title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: aef813595df96449d5dd59ad1e95e77c4c198d0f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a9d10ad4899f35acd45069cb3d351a60632fed3a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476212"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207041"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
 
 In diesem Artikel werden alle Funktionen beschrieben, die Sie in einer Azure Resource Manager-Vorlage verwenden können. Informationen zur Verwendung von Funktionen in Ihrer Vorlage finden Sie unter [Vorlagensyntax](template-expressions.md).
 
 Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerdefinierte Funktionen](template-syntax.md#functions).
+
+Die meisten Funktionen funktionieren auf die gleiche Weise, wenn sie in einer Ressourcengruppe, einem Abonnement, einer Verwaltungsgruppe oder einem Mandanten bereitgestellt werden. Einige Funktionen können nicht in allen Bereichen verwendet werden. Diese sind in den folgenden Listen aufgeführt.
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,6 +37,7 @@ Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerd
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Array- und Objektfunktionen
+
 Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten bereit.
 
 * [array](template-functions-array.md#array)
@@ -62,6 +65,7 @@ Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten 
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Vergleichsfunktionen
+
 Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Vorlagen bereit.
 
 * [equals](template-functions-comparison.md#equals)
@@ -75,6 +79,7 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 <a id="variables" aria-hidden="true" />
 
 ## <a name="deployment-value-functions"></a>Funktionen für Bereitstellungswerte
+
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
 
 * [deployment](template-functions-deployment.md#deployment)
@@ -89,6 +94,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten au
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logische Funktionen
+
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit logischen Bedingungen bereit:
 
 * [and](template-functions-logical.md#and)
@@ -109,6 +115,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit log
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerische Funktionen
+
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen bereit:
 
 * [add](template-functions-numeric.md#add)
@@ -134,6 +141,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Ressourcenfunktionen
+
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressourcenwerten bereit:
 
 * [extensionResourceId](template-functions-resource.md#extensionresourceid)
@@ -143,9 +151,9 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [list*](template-functions-resource.md#list)
 * [providers](template-functions-resource.md#providers)
 * [Referenz](template-functions-resource.md#reference)
-* [Ressourcengruppe](template-functions-resource.md#resourcegroup)
-* [Ressourcen-ID](template-functions-resource.md#resourceid)
-* [Abonnement](template-functions-resource.md#subscription)
+* [resourceGroup](template-functions-resource.md#resourcegroup): Kann nur in Bereitstellungen in einer Ressourcengruppe verwendet werden.
+* [resourceId](template-functions-resource.md#resourceid): Kann in jedem Bereich verwendet werden, aber die gültigen Parameter ändern sich je nach Bereich.
+* [subscription](template-functions-resource.md#subscription): Kann nur in Bereitstellungen in einer Ressourcengruppe oder einem Abonnement verwendet werden.
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
@@ -181,6 +189,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Zeichenfolgenfunktionen
+
 Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zeichenfolgen bereit:
 
 * [base64](template-functions-string.md#base64)
@@ -221,5 +230,5 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 
 * Eine Beschreibung der Abschnitte in einer Azure-Ressourcen-Manager-Vorlage finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](template-syntax.md)
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure-Ressourcen-Manager](linked-templates.md)
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](create-multiple-instances.md)
+* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 * Informationen zum Bereitstellen der erstellten Vorlage finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen](deploy-powershell.md).

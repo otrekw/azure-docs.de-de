@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882639"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484892"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -88,7 +88,7 @@ Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Aufl
 
  In der folgenden Tabelle werden alle Attribute im Protokollnamen beschrieben:
 
-|Attribut|BESCHREIBUNG|
+|attribute|Beschreibung|
 |---------------|-----------------|
 |`<service-name>`|Der Name des Speicherdiensts. Beispiel: `blob`, `table` oder `queue`|
 |`YYYY`|Die vierstellige Jahresangabe für das Protokoll. Beispiel: `2011`|
@@ -112,7 +112,7 @@ Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Aufl
 
  Alle Protokoll-BLOBs werden mit Metadaten gespeichert, mit deren Hilfe die im BLOB enthaltenen Protokollierungsdaten ermittelt werden können. In der folgenden Tabelle werden die einzelnen Metadatenattribute beschrieben:
 
-|Attribut|BESCHREIBUNG|
+|attribute|BESCHREIBUNG|
 |---------------|-----------------|
 |`LogType`|Gibt an, ob das Protokoll Informationen über Lese-, Schreib- oder Löschvorgänge enthält. Dieser Wert kann einen Typ oder eine durch Kommas getrennte Kombination aller drei Typen enthalten.<br /><br /> Beispiel 1: `write`<br /><br /> Beispiel 2: `read,write`<br /><br /> Beispiel 3: `read,write,delete`|
 |`StartTime`|Der erste Zeitpunkt eines Eintrags im Protokoll, im Format `YYYY-MM-DDThh:mm:ssZ`. Beispiel: `2011-07-31T18:21:46Z`|
@@ -180,6 +180,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>Herunterladen von Protokolldaten der Speicherprotokollierung
 
  Zum Anzeigen und Analysieren der Protokolldaten sollten Sie die Blobs, die die gewünschten Protokolldaten enthalten, auf einen lokalen Computer herunterladen. Mit vielen Tools zum Durchsuchen des Speichers können Sie Blobs von Ihrem Speicherkonto herunterladen. Außerdem können Sie das vom Azure Storage-Team bereitgestellte Befehlszeilentool Azure Copy ([AzCopy](storage-use-azcopy-v10.md)) zum Herunterladen der Protokolldaten verwenden.  
+ 
+>[!NOTE]
+> Der Container `$logs` ist nicht in Event Grid integriert. Sie erhalten daher keine Benachrichtigungen, wenn Protokolldateien geschrieben werden. 
 
  So stellen Sie sicher, dass Sie die gewünschten Protokolldaten herunterladen und dieselben Protokolldaten nicht mehrmals herunterladen  
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479748"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472331"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
@@ -22,7 +22,7 @@ Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Si
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie [eine kostenpflichtige Cognitive Services-Ressource anfügen](cognitive-search-attach-cognitive-services.md). Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für die kognitive Azure-Suche](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion sind in der [Preisübersicht für Azure Cognitive Search](https://go.microsoft.com/fwlink/?linkid=2042400) angegeben.
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -35,17 +35,17 @@ Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch 
 
 Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beachtet.
 
-| Parametername     | BESCHREIBUNG |
+| Parametername     | Beschreibung |
 |--------------------|-------------|
 | categories    | Array von zu extrahierenden Kategorien.  Mögliche Kategorietypen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Wenn keine Kategorie angegeben ist, werden alle Typen zurückgegeben.|
-|defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `de, en, es, fr, it`|
-|minimumPrecision | Ein Wert zwischen 0 und 1 ein. Wenn die Zuverlässigkeitsbewertung (in der `namedEntities`-Ausgabe) unter diesem Wert liegt, wird die Entität nicht zurückgegeben. Der Standardwert ist 0. |
-|includeTypelessEntities | Legen Sie diese Option auf `true` fest, wenn Sie bekannte Entitäten erkennen möchten, die nicht in die aktuellen Kategorien passen. Erkannte Entitäten werden im komplexen Ausgabefeld `entities` zurückgegeben. „Windows 10“ ist z.B. eine bekannte Entität (ein Produkt), aber da „Produkte“ keine unterstützte Kategorie ist, wäre diese Entität im Entitäten-Ausgabefeld enthalten. Der Standardwert ist `false`. |
+|defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nicht alle Entitätskategorien werden für alle Sprachen unterstützt (siehe Anmerkung unten).|
+|minimumPrecision | Ein Wert zwischen 0 und 1 ein. Wenn die Zuverlässigkeitsbewertung (in der `namedEntities`-Ausgabe) unter diesem Wert liegt, wird die Entität nicht zurückgegeben. Die Standardeinstellung ist 0. |
+|includeTypelessEntities | Legen Sie diese Option auf `true` fest, wenn Sie bekannte Entitäten erkennen möchten, die nicht in die aktuellen Kategorien passen. Erkannte Entitäten werden im komplexen Ausgabefeld `entities` zurückgegeben. „Windows 10“ ist z.B. eine bekannte Entität (ein Produkt), aber da „Produkte“ keine unterstützte Kategorie ist, wäre diese Entität im Entitäten-Ausgabefeld enthalten. Die Standardeinstellung ist `false`. |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | BESCHREIBUNG                   |
+| Eingabename      | Beschreibung                   |
 |---------------|-------------------------------|
 | languageCode  | Optional. Der Standardwert ist `"en"`.  |
 | text          | Der zu analysierende Text          |
@@ -53,7 +53,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 ## <a name="skill-outputs"></a>Skillausgaben
 
 > [!NOTE]
-> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"` wird nur für _en_ und _es_ unterstützt.
+> Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Entitätskategorietypen `"Person"`, `"Location"` und `"Organization"` werden für die vollständige Liste der oben genannten Sprachen unterstützt. Nur _de_, _en_, _es_, _fr_ und _zh-hans_ unterstützen die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
 | Ausgabename     | BESCHREIBUNG                   |
 |---------------|-------------------------------|

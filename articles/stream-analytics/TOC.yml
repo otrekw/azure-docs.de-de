@@ -195,6 +195,8 @@
           href: setup-cicd-vs-code.md
         - name: Untersuchen von Aufträgen
           href: visual-studio-code-explore-jobs.md
+        - name: Felder in „JobConfig.json“
+          href: job-config-json.md
     - name: Problembehandlung
       items:
         - name: Eingabe

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312412"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486392"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Unternehmenssicherheit für Azure Machine Learning
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Az
 
 Azure Machine Learning unterstützt zwei Authentifizierungsarten für Webdienste: Schlüssel und Token. Die einzelnen Webdienste können jeweils nur eine Authentifizierungsart verwenden.
 
-|Authentifizierungsmethode|Beschreibung|Azure Container Instances|AKS|
+|Authentifizierungsmethode|BESCHREIBUNG|Azure Container Instances|AKS|
 |---|---|---|---|
 |Key|Schlüssel sind statisch und müssen nicht aktualisiert werden. Schlüssel können manuell erneut generiert werden.|Standardmäßig deaktiviert| Standardmäßig aktiviert|
 |Token|Token laufen nach einem bestimmten Zeitraum ab und müssen aktualisiert werden.| Nicht verfügbar| Standardmäßig deaktiviert |
@@ -112,6 +112,7 @@ Weitere Informationen finden Sie unter [Sicheres Ausführen von Experimenten und
 > [!IMPORTANT]
 > Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Dadurch wird die Menge der von Microsoft zu Diagnosezwecken gesammelten Daten kontrolliert und eine zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen ermöglicht.
 
+Weitere Informationen zur Verschlüsselung ruhender Daten in Azure finden Sie unter [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
 #### <a name="azure-blob-storage"></a>Azure Blob Storage
 
@@ -189,7 +190,9 @@ Der Betriebssystem-Datenträger für jeden in Azure Storage gespeicherten Comput
 
 Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Wenn Sie möchten, können Sie den Datenträger zum Bereitstellen von Trainingsdaten verwenden. Der Datenträger wird standardmäßig für Arbeitsbereiche mit dem Parameter `hbi_workspace` verschlüsselt, der auf `TRUE` festgelegt ist. Diese Umgebung ist auf die Dauer Ihrer Ausführung befristet, und die Unterstützung für die Verschlüsselung beschränkt sich auf vom System verwaltete Schlüssel.
 
-Weitere Informationen zur Verschlüsselung ruhender Daten in Azure finden Sie unter [Azure-Datenverschlüsselung ruhender Daten](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
+#### <a name="azure-databricks"></a>Azure Databricks
+
+Azure Databricks kann in Azure Machine Learning-Pipelines verwendet werden. Das von Azure Databricks verwendete Databricks-Dateisystem (Databricks File System, DBFS) wird standardmäßig mithilfe eines von Microsoft verwalteten Schlüssels verschlüsselt. Informationen zum Konfigurieren von Azure Databricks für die Verwendung von kundenseitig verwalteten Schlüsseln finden Sie unter [Konfigurieren der kundenseitig verwalteten Schlüsseln im Standard-DBFS (Stamm)](/azure/databricks/security/customer-managed-keys-dbfs).
 
 ### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 
@@ -215,7 +218,7 @@ Jedem Arbeitsbereich ist eine vom System zugewiesene verwaltete Identität zugeo
 
 Microsoft sammelt möglicherweise Informationen, z. B. Ressourcennamen (wie den Datasetnamen oder den Namen des Machine Learning-Experiments) oder Variablen von Auftragsumgebungen zu Diagnosezwecken, die nicht den Benutzer identifizieren. Alle diese Daten werden mit von Microsoft verwalteten Schlüsseln in einem Speicher gespeichert, der in Microsoft-eigenen Abonnements gehostet wird, und folgen den [Standarddatenschutzrichtlinien und Datenverarbeitungsstandards von Microsoft](https://privacy.microsoft.com/privacystatement).
 
-Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert.
+Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert. Vermeiden Sie beim Benennen von [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py) daher vertrauliche Informationen wie Benutzernamen oder geheime Projektnamen. Diese Informationen können in Telemetrieprotokollen enthalten sein, auf die Microsoft-Supporttechniker zugreifen können.
 
 Sie können sich von der Erfassung von Diagnosedaten abmelden, indem Sie den Parameter `hbi_workspace` während der Bereitstellung des Arbeitsbereichs auf `TRUE` festlegen. Diese Funktionalität wird unterstützt, wenn AzureML Python-SDK-, CLI-, REST-APIs oder Azure Resource Manager-Vorlagen verwendet werden.
 

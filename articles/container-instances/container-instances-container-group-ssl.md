@@ -1,16 +1,16 @@
 ---
-title: Aktivieren von SSL in einer Containergruppe
-description: Erstellen eines SSL- oder TLS-Endpunkts für eine Containergruppe, die in Azure Container Instances ausgeführt wird
+title: Aktivieren von SSL mit Sidecar-Container
+description: Erstellen eines SSL- oder TLS-Endpunkts für eine in Azure Container Instances ausgeführte Containergruppe durch Ausführen von Nginx in einem Sidecar-Container
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773072"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460551"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Aktivieren eines SSL-Endpunkts in einer Containergruppe
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Aktivieren eines SSL-Endpunkts in einem Sidecar-Container
 
 Dieser Artikel zeigt, wie Sie eine [Containergruppe](container-instances-container-groups.md) mit einem Anwendungscontainer und einem Sidecar-Container mit einem SSL-Anbieter erstellen. Durch die Einrichtung einer Containergruppe mit einem separaten SSL-Endpunkt aktivieren Sie SSL-Verbindungen für Ihre Anwendung, ohne Ihren Anwendungscode zu ändern.
 
@@ -18,7 +18,9 @@ Sie richten eine Beispielcontainergruppe mit zwei Containern ein:
 * Ein Anwendungscontainer, der eine einfache Web-App mit dem öffentlichen Microsoft [aci-helloworld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld)-Image ausführt. 
 * Ein Sidecar-Container, der das öffentliche [Nginx](https://hub.docker.com/_/nginx)-Image ausführt und für die Verwendung von SSL konfiguriert ist. 
 
-In diesem Beispiel stellt die Containergruppe nur den Port 443 für Nginx mit seiner öffentlichen IP-Adresse zur Verfügung. Nginx leitet HTTPS-Anforderungen an die begleitende Web-App weiter, die intern an Port 80 lauscht. Sie können das Beispiel für Container-Apps anpassen, die an anderen Ports lauschen. Weitere Ansätze zum Aktivieren von SSL in einer Containergruppe finden Sie unter [Nächste Schritte](#next-steps).
+In diesem Beispiel stellt die Containergruppe nur den Port 443 für Nginx mit seiner öffentlichen IP-Adresse zur Verfügung. Nginx leitet HTTPS-Anforderungen an die begleitende Web-App weiter, die intern an Port 80 lauscht. Sie können das Beispiel für Container-Apps anpassen, die an anderen Ports lauschen. 
+
+Weitere Ansätze zum Aktivieren von SSL in einer Containergruppe finden Sie unter [Nächste Schritte](#next-steps).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Base64-Codierung der Nginx-Konfigurationsdatei, des SSL-Zertifikats und des SSL-Schlüssels. Im nächsten Abschnitt geben Sie den codierten Inhalt in eine YAML-Datei ein, die für die Bereitstellung der Containergruppe verwendet wird.
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>Bereitstellen einer Containergruppe
@@ -216,17 +218,18 @@ Ist die Bereitstellung erfolgreich, sieht die Ausgabe etwa wie folgt aus:
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>Überprüfen der SSL-Verbindung
 
-Um die laufende Anwendung anzuzeigen, navigieren Sie zu ihrer IP-Adresse in Ihrem Browser. Die in diesem Beispiel angezeigte IP-Adresse lautet `52.157.22.76`. Sie müssen `https://<IP-ADDRESS>` verwenden, um die laufende Anwendung zu sehen, da der Nginx-Server konfiguriert ist. Bei dem Versuch, einen Verbindung mit `http://<IP-ADDRESS>` aufzubauen, tritt ein Fehler auf.
+Navigieren Sie in Ihrem Browser zur öffentlichen IP-Adresse der Containergruppe. Die in diesem Beispiel angezeigte IP-Adresse lautet `52.157.22.76`, die URL lautet daher **https://52.157.22.76** . Aufgrund der Konfiguration des Nginx-Servers müssen Sie HTTPS verwenden, um die laufende Anwendung zu sehen. Beim Versuch, eine Verbindung über HTTP herzustellen, tritt ein Fehler auf.
 
 ![Screenshot eines Browsers mit ausgeführter Anwendung in einer Azure-Containerinstanz](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Da in diesem Beispiel ein selbstsigniertes Zertifikat und nicht eines von einer Zertifizierungsstelle verwendet wird, zeigt der Browser eine Sicherheitswarnung an, wenn er sich über HTTPS mit der Website verbindet. Dies ist das erwartete Verhalten.
+> Da in diesem Beispiel ein selbstsigniertes Zertifikat und nicht eines von einer Zertifizierungsstelle verwendet wird, zeigt der Browser eine Sicherheitswarnung an, wenn er sich über HTTPS mit der Website verbindet. Sie müssen möglicherweise die Warnung akzeptieren oder die Browser- bzw. Zertifikateinstellungen anpassen, um zu der Seite zu gelangen. Dies ist das erwartete Verhalten.
+
 >
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -239,6 +242,4 @@ Wenn Sie die Containergruppe in einem [virtuellen Azure-Netzwerk](container-inst
 
 * [Azure Functions-Proxys](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md)
-
-Informationen zum Verwenden eines Anwendungsgateways finden Sie im Beispiel für eine [Bereitstellungsvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).
+* [Azure Application Gateway:](../application-gateway/overview.md) Sehen Sie sich ein Beispiel für eine [Bereitstellungsvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) an.

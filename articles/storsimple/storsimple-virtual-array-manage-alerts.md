@@ -1,5 +1,5 @@
 ---
-title: Anzeigen und Verwalten von Microsoft Azure StorSimple Virtual Array-Warnungen | Microsoft Docs
+title: Anzeigen und Verwalten von Warnungen für StorSimple Virtual Array
 description: Es werden die Warnungsbedingungen und -schweregrade für StorSimple Virtual Array beschrieben, und Sie erfahren, wie Sie den StorSimple Manager-Dienst zum Verwalten von Warnungen verwenden.
 services: storsimple
 documentationcenter: NA
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb6ef5a87c5610d90188471db961ef20dfb18835
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60302730"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466942"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Warnungen für StorSimple Virtual Array
 

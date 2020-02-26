@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 254f64c6405fb214bfbc61b3e45747d9e119565d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509324"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212278"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell
 
@@ -28,7 +28,7 @@ Folgendes wird vermittelt:
 > - Erstellen Sie Speicherkonten zum Replizieren der virtuellen Computer.
 > - Replizieren virtueller Azure-Computer in eine Wiederherstellungsregion für die Notfallwiederherstellung
 > - Führen Sie ein Testfailover aus, und überprüfen und bereinigen Sie das Testfailover.
-> - Failover zur Wiederherstellungsregion
+> - Führen Sie ein Failover auf die Wiederherstellungsregion aus.
 
 > [!NOTE]
 > Möglicherweise stehen nicht alle Szenariofunktionen, die über das Portal verfügbar sind, über Azure PowerShell bereit. Unter anderem werden die folgenden Szenariofunktionen derzeit nicht über Azure PowerShell unterstützt:
@@ -43,9 +43,9 @@ Vorbereitungen:
 - Überprüfen Sie die [Supportanforderungen](azure-to-azure-support-matrix.md) für alle Komponenten.
 - Sie verfügen über das Azure PowerShell-Modul `Az`. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="log-in-to-your-microsoft-azure-subscription"></a>Anmelden bei Ihrem Microsoft Azure-Abonnement
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Anmelden bei Ihrem Microsoft Azure-Abonnement
 
-Melden Sie sich mithilfe des Cmdlets `Connect-AzAccount` bei Ihrem Azure-Abonnement an.
+Melden Sie sich mit dem Cmdlet `Connect-AzAccount` bei Ihrem Azure-Abonnement an.
 
 ```azurepowershell
 Connect-AzAccount
@@ -57,9 +57,9 @@ Wählen Sie Ihr Azure-Abonnement. Verwenden Sie das Cmdlet `Get-AzSubscription` 
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Abrufen von Details der zu replizierenden virtuellen Computer
+## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>Abrufen von Details des zu replizierenden virtuellen Computers
 
-In dem Beispiel in diesem Artikel wird ein virtueller Computer in der Region „USA, Osten“ in der Region „USA, Westen 2“ repliziert und wiederhergestellt. Der zu replizierende virtuelle Computer umfasst einen Betriebssystemdatenträger und einen einzelnen Datenträger für Daten. Der Name des virtuellen Computers im Beispiel lautet `AzureDemoVM`.
+In diesem Artikel wird ein virtueller Computer in der Region „USA, Osten“ in der Region „USA, Westen 2“ repliziert und wiederhergestellt. Der zu replizierende virtuelle Computer enthält einen Betriebssystemdatenträger und einen einzelnen Datenträger für Daten. Der Name des virtuellen Computers im Beispiel lautet `AzureDemoVM`.
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -68,7 +68,7 @@ $VM = Get-AzVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
 Write-Output $VM
 ```
 
-```
+```Output
 ResourceGroupName  : A2AdemoRG
 Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/A2AdemoRG/providers/Microsoft.Compute/virtualMachines/AzureDemoVM
 VmId               : 1b864902-c7ea-499a-ad0f-65da2930b81b
@@ -107,7 +107,7 @@ In dem Beispiel in diesem Artikel befindet sich der zu schützende virtuelle Com
 New-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ```
 
-```
+```Output
 ResourceGroupName : a2ademorecoveryrg
 Location          : westus2
 ProvisioningState : Succeeded
@@ -115,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Erstellen Sie einen Recovery Services-Tresor. In dem folgenden Beispiel wird ein Recovery Services-Tresor mit dem Namen `a2aDemoRecoveryVault` in der Region „USA, Westen 2“ erstellt.
+Erstellen Sie einen Recovery Services-Tresor. In diesem Beispiel wird ein Recovery Services-Tresor mit dem Namen `a2aDemoRecoveryVault` in der Region „USA, Westen 2“ erstellt.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -124,7 +124,7 @@ $vault = New-AzRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroup
 Write-Output $vault
 ```
 
-```
+```Output
 Name              : a2aDemoRecoveryVault
 ID                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoRecoveryVault
 Type              : Microsoft.RecoveryServices/vaults
@@ -136,14 +136,14 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="set-the-vault-context"></a>Festlegen des Tresorkontexts
 
-Legen Sie den Tresorkontext zur Verwendung in der PowerShell-Sitzung fest. Nach dem Festlegen werden nachfolgende Azure Site Recovery-Vorgänge in der PowerShell-Sitzung im Kontext des ausgewählten Tresors ausgeführt.
+Legen Sie den Tresorkontext zur Verwendung in der PowerShell-Sitzung fest. Nach dem Festlegen des Tresorkontexts werden Azure Site Recovery-Vorgänge in der PowerShell-Sitzung im Kontext des ausgewählten Tresors ausgeführt.
 
 ```azurepowershell
 #Setting the vault context.
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-```
+```Output
 ResourceName         ResourceGroupName ResourceNamespace          ResourceType
 ------------         ----------------- -----------------          -----------
 a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
@@ -170,7 +170,7 @@ Das Fabricobjekt im Tresor stellt eine Azure-Region dar. Das primäre Fabricobje
 - Pro Region kann nur ein Fabricobjekt erstellt werden.
 - Wenn Sie zuvor im Azure-Portal die Site Recovery-Replikation für einen virtuellen Computer aktiviert haben, erstellt Site Recovery automatisch ein Fabricobjekt. Ist für eine Region bereits ein Fabricobjekt vorhanden, können Sie kein neues erstellen.
 
-Bevor Sie beginnen, beachten Sie Folgendes: Azure Site Recovery-Vorgänge werden asynchron ausgeführt. Wenn Sie einen Vorgang einleiten, wird ein Azure Site Recovery-Auftrag übermittelt und ein Auftragsverfolgungsobjekt zurückgegeben. Verwenden Sie das Auftragsverfolgungsobjekt, um den aktuellen Status des Auftrags (`Get-AzRecoveryServicesAsrJob`) abzurufen und den Status des Vorgangs zu überwachen.
+Bevor Sie beginnen, beachten Sie Folgendes: Site Recovery-Vorgänge werden asynchron ausgeführt. Wenn Sie einen Vorgang einleiten, wird ein Azure Site Recovery-Auftrag übermittelt und ein Auftragsverfolgungsobjekt zurückgegeben. Verwenden Sie das Auftragsverfolgungsobjekt, um den aktuellen Status des Auftrags (`Get-AzRecoveryServicesAsrJob`) abzurufen und den Status des Vorgangs zu überwachen.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -193,7 +193,7 @@ Wenn virtuelle Computer aus mehreren Azure-Regionen im gleichen Tresor geschütz
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Erstellen eines Site Recovery-Fabricobjekts zur Darstellung der Wiederherstellungsregion
 
-Dieses Fabricobjekt stellt den Azure-Standort für die Wiederherstellung dar. Virtuelle Computer werden in der durch das Wiederherstellungsfabric dargestellten Wiederherstellungsregion repliziert und (im Falle eines Failovers) wiederhergestellt. Die in diesem Beispiel verwendete Azure-Wiederherstellungsregion ist „USA, Westen 2“.
+Dieses Fabricobjekt stellt den Azure-Standort für die Wiederherstellung dar. Bei einem Failover werden virtuelle Computer in der durch das Wiederherstellungsfabric dargestellten Wiederherstellungsregion repliziert und wiederhergestellt. Die in diesem Beispiel verwendete Azure-Wiederherstellungsregion ist „USA, Westen 2“.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -292,7 +292,7 @@ $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 Wenn ein virtueller Computer nach dem Failover wieder in die ursprüngliche Azure-Region zurückgeführt werden kann, führen Sie ein Failback aus. Bei einem Failback wird eine umgekehrte Replikation des virtuellen Computers, für den ein Failover erfolgte, aus der Failoverregion in die ursprüngliche Region ausgeführt. Bei einer umgekehrten Replikation werden die Rollen der ursprünglichen Region und der Wiederherstellungsregion getauscht. Die ursprüngliche Region wird nun zur neuen Wiederherstellungsregion, und die bisherige Wiederherstellungsregion wird nun zur primären Region. Die Schutzcontainerzuordnung für eine umgekehrte Replikation entspricht den getauschten Rollen der ursprünglichen Region und der Wiederherstellungsregion.
 
 ```azurepowershell
-#Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
+#Create Protection container mapping (for fail back) between the Recovery and Primary Protection Containers with the Replication policy
 $TempASRJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
 
 #Track Job status to check for completion
@@ -303,9 +303,11 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
+
+$WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryProtContainer -Name "A2ARecoveryToPrimary"
 ```
 
-## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Erstellen von Cachespeicherkonten und Zielspeicherkonten
+## <a name="create-cache-storage-account-and-target-storage-account"></a>Erstellen eines Cachespeicherkontos und Zielspeicherkontos
 
 Ein Cachespeicherkonto ist ein Standard-Speicherkonto in derselben Azure-Region wie der zu replizierende virtuelle Computer. Das Cachespeicherkonto wird zum vorübergehenden Speichern von Replikationsänderungen verwendet, bevor die Änderungen in die Azure-Wiederherstellungsregion verschoben werden. Sie können (müssen aber nicht) unterschiedliche Cachespeicherkonten für verschiedene Datenträger eines virtuellen Computers festlegen.
 
@@ -323,7 +325,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ## <a name="create-network-mappings"></a>Erstellen von Netzwerkzuordnungen
 
-Eine Netzwerkzuordnung ordnet virtuelle Netzwerke in der primären Region virtuellen Netzwerken in der Wiederherstellungsregion zu. Die Netzwerkzuordnung gibt das virtuelle Azure-Netzwerk in der Wiederherstellungsregion an, in das ein Failover eines virtuellen Computers im primären virtuellen Netzwerk ausgeführt werden soll. Ein virtuelles Azure-Netzwerk kann nur einem einzelnen virtuellen Azure-Netzwerk in einer Wiederherstellungsregion zugeordnet werden.
+Eine Netzwerkzuordnung ordnet virtuelle Netzwerke in der primären Region virtuellen Netzwerken in der Wiederherstellungsregion zu. Die Netzwerkzuordnung gibt das virtuelle Azure-Netzwerk in der Wiederherstellungsregion an, auf das ein Failover eines virtuellen Computers im primären virtuellen Netzwerk ausgeführt werden soll. Ein virtuelles Azure-Netzwerk kann nur einem einzelnen virtuellen Azure-Netzwerk in einer Wiederherstellungsregion zugeordnet werden.
 
 - Erstellen eines virtuellen Azure-Netzwerks in der Wiederherstellungsregion für ein Failover:
 
@@ -336,7 +338,7 @@ Eine Netzwerkzuordnung ordnet virtuelle Netzwerke in der primären Region virtue
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
 
-- Abrufen des primären virtuellen Netzwerks (VNET, mit dem der virtuelle Computer verbunden ist):
+- Rufen Sie das primäre virtuelle Netzwerk ab. Das VNET, mit dem der virtuelle Computer verbunden ist:
 
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
@@ -379,7 +381,7 @@ Eine Netzwerkzuordnung ordnet virtuelle Netzwerke in der primären Region virtue
 - Erstellen einer Netzwerkzuordnung für die umgekehrte Richtung (Failback):
 
     ```azurepowershell
-    #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
+    #Create an ASR network mapping for fail back between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
 
     #Track Job status to check for completion
@@ -477,9 +479,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Ausführen eines Testfailovers, Überprüfen und Bereinigen des Testfailovers
+## <a name="do-a-test-failover-validate-and-cleanup-test-failover"></a>Ausführen eines Testfailovers, Überprüfen und Bereinigen des Testfailovers
 
-Sobald die Replikation für den virtuellen Computer den Status „Geschützt“ erreicht hat, kann ein Testfailover für den virtuellen Computer (für das replikationsgeschützte Element des virtuellen Computers) ausgeführt werden.
+Wenn die Replikation für den virtuellen Computer den Status „Geschützt“ erreicht hat, kann ein Testfailover für den virtuellen Computer (für das replikationsgeschützte Element des virtuellen Computers) ausgeführt werden.
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -504,7 +506,7 @@ Warten Sie, bis das Testfailover abgeschlossen wurde.
 Get-AzRecoveryServicesAsrJob -Job $TFOJob
 ```
 
-```
+```Output
 Name             : 3dcb043e-3c6d-4e0e-a42e-8d4245668547
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/3dcb043e-3c6d-4e0e-a42e-8d4245668547
@@ -524,7 +526,7 @@ Tasks            : {Prerequisites check for test failover, Create test virtual m
 Errors           : {}
 ```
 
-Sobald das Testfailover erfolgreich angeschlossen wurde, können Sie eine Verbindung mit dem virtuellen Testfailover-Computer herstellen und das Testfailover überprüfen.
+Wenn das Testfailover erfolgreich angeschlossen wurde, können Sie eine Verbindung mit dem virtuellen Testfailover-Computer herstellen und das Testfailover überprüfen.
 
 Nachdem Sie den Test für den virtuellen Testfailover-Computer abgeschlossen haben, bereinigen Sie die Testkopie, indem Sie den Vorgang zum Bereinigen des Testfailovers starten. Dieser Vorgang löscht die Testkopie des virtuellen Computers, die vom Testfailover erstellt wurde.
 
@@ -534,15 +536,15 @@ $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -Replication
 Get-AzRecoveryServicesAsrJob -Job $Job_TFOCleanup | Select State
 ```
 
-```
+```Output
 State
 -----
 Succeeded
 ```
 
-## <a name="failover-to-azure"></a>Failover zu Azure
+## <a name="fail-over-to-azure"></a>Failover in Azure
 
-Führen Sie ein Failover des virtuellen Computers auf einem bestimmten Wiederherstellungspunkt aus.
+Führen Sie ein Failover des virtuellen Computers auf einen bestimmten Wiederherstellungspunkt aus.
 
 ```azurepowershell
 $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
@@ -551,12 +553,12 @@ $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedIt
 "{0} {1}" -f $RecoveryPoints[0].RecoveryPointType, $RecoveryPoints[-1].RecoveryPointTime
 ```
 
-```
+```Output
 CrashConsistent 4/24/2018 11:10:25 PM
 ```
 
 ```azurepowershell
-#Start the failover job
+#Start the fail over job
 $Job_Failover = Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[-1]
 
 do {
@@ -567,11 +569,11 @@ do {
 $Job_Failover.State
 ```
 
-```
+```Output
 Succeeded
 ```
 
-Sobald das Failover erfolgreich ausgeführt wurde, können Sie ein Commit für das Failover ausführen.
+Wenn der Failoverauftrag erfolgreich war, können Sie ein Commit für das Failover ausführen.
 
 ```azurepowershell
 $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -579,7 +581,7 @@ $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationPr
 Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJOb
 ```
 
-```
+```Output
 Name             : 58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
@@ -599,7 +601,7 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-failback-to-source-region"></a>Erneuter Schutz und Failback auf die Quellregion
+## <a name="reprotect-and-fail-back-to-the-source-region"></a>Erneuter Schutz und Failback auf die Quellregion
 
 Wenn Sie nach einem Failover zur ursprünglichen Region zurückkehren möchten, starten Sie eine umgekehrte Replikation für das replikationsgeschützte Element mit dem Cmdlet `Update-AzRecoveryServicesAsrProtectionDirection`.
 
@@ -609,12 +611,12 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 ```
 
 ```azurepowershell
-#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+#Use the recovery protection container, new cache storage account in West US and the source region VM resource group
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
--ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+-ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId
 ```
 
-Nachdem der erneute Schutz abgeschlossen ist, können Sie ein Failover in umgekehrter Richtung (USA, Westen nach USA, Osten) und ein Failback auf die Quellregion initiieren.
+Nachdem der erneute Schutz abgeschlossen ist, können Sie ein Failover in umgekehrter Richtung („USA, Westen“ auf „USA, Osten“) und ein Failback auf die Quellregion ausführen.
 
 ## <a name="disable-replication"></a>Deaktivieren der Replikation
 

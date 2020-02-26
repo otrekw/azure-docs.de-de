@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112252"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251990"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Cognitive Search
 
@@ -31,7 +31,7 @@ In diesem Tutorial verwenden Sie die [Azure Cognitive Search-REST-APIs](https://
 
 In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet. 
 
-[Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden. 
+[Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden. 
 
 [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten.
 
@@ -126,7 +126,7 @@ Die Antwort sollte in etwa wie folgt aussehen:
 
 ## <a name="create-an-index"></a>Erstellen eines Index
     
-Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.microsoft.com/rest/api/searchservice/create-indexer) aufgerufen, die einen Azure Cognitive Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
+Beim zweiten Aufruf wird die [API zum Erstellen eines Index](https://docs.microsoft.com/rest/api/searchservice/create-index) aufgerufen, die einen Azure Cognitive Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
 
 Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
@@ -292,4 +292,4 @@ Die schnellste Möglichkeit zur Bereinigung des Systems nach einem Tutorial best
 Es gibt verschiedene Ansätze und mehrere Optionen für die Indizierung von JSON-Blobs. Überprüfen und testen Sie im nächsten Schritt die unterschiedlichen Optionen, um zu ermitteln, was für Ihr Szenario am besten funktioniert.
 
 > [!div class="nextstepaction"]
-> [Indizieren von JSON-Blobs mit dem Azure Cognitive Search-Blobindexer](search-howto-index-json-blobs.md)
+> [Indizieren von JSON-Blobs mit dem Azure Cognitive Search-Blobindexer](search-howto-index-json-blobs.md)

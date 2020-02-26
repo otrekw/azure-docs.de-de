@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec115e0fa76e695809ba140202d5f13a319d33dd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: f3fb94629262519f8cfa5da72ee343726aa7d1c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062704"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367985"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -57,7 +57,7 @@ Der Anwendungsproxyconnector ist ein Windows Server-Dienst, der den Datenverkehr
 
    ![Download des Anwendungsproxyconnectors](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-connector-download.png)
 
-1. Folgen Sie den Installationsanweisungen.
+1. Befolgen Sie die Installationsanweisungen.
 
 Nach Herunterladen des Connectors sollte der Anwendungsproxy automatisch für Ihr Verzeichnis aktiviert sein. Falls nicht, können Sie **Anwendungsproxy aktivieren** auswählen.
 
@@ -161,21 +161,7 @@ So erfassen Sie diese Informationen
 1. Wählen Sie **Hinzufügen**. Der PingAccess-Schlüssel wird in der Tabelle der geheimen Clientschlüssel mit einer Zufallszeichenfolge angezeigt, die automatisch in das Feld **VALUE** eingetragen wird.
 1. Klicken Sie neben dem Feld **VALUE** des PingAccess-Schlüssels auf das Symbol **In die Zwischenablage kopieren**. Kopieren und speichern Sie den Wert. Sie geben diesen Wert später als geheimen Clientschlüssel von PingAccess an.
 
-### <a name="update-graphapi-to-send-custom-fields-optional"></a>Aktualisieren von GraphAPI zum Senden von benutzerdefinierten Feldern (optional)
-
-Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token innerhalb des von PingAccess genutzten „access_token“ sendet, legen Sie für das Anwendungsfeld `acceptMappedClaims` `True` fest. Sie können Graph-Tester oder das Anwendungsmanifest des Azure AD-Portals nutzen, um diese Änderung vornehmen.
-
-**In diesem Beispiel wird der Graph-Tester verwendet:**
-
-```
-PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application>
-
-{
-  "acceptMappedClaims":true
-}
-```
-
-**In diesem Beispiel wird das `acceptMappedClaims`Feld** im [Azure Active Directory-Portal](https://aad.portal.azure.com/) aktualisiert:
+**Aktualisieren Sie das Feld `acceptMappedClaims`:**
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com/) als Anwendungsadministrator an.
 1. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**. Eine Liste mit Anwendungen wird eingeblendet.
@@ -213,7 +199,7 @@ Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzlic
 > [!NOTE]
 > Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie. Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
 >
-> Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph-Tester oder Microsoft Graph erfolgen. Wenn diese Aufgaben über PowerShell erfolgen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Add-AzureADServicePrincipalPolicy` zuweisen. Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+> Richtliniendefinition und Zuweisung können über PowerShell oder Microsoft Graph erfolgen. Wenn diese Aufgaben über PowerShell erfolgen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Add-AzureADServicePrincipalPolicy` zuweisen. Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 Beispiel:
 ```powershell

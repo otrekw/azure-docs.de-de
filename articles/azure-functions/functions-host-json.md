@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024669"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484433"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -21,9 +21,9 @@ Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich
 > [!NOTE]
 > Dieser Artikel gilt für Azure Functions 2.x oder höher.  Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
 
-Weitere Konfigurationsoptionen Ihrer Funktions-App werden in den [Anwendungseinstellungen](functions-app-settings.md) verwaltet.
+Andere Konfigurationsoptionen für Funktions-Apps werden in den [App-Einstellungen](functions-app-settings.md) (für bereitgestellte Apps) oder in der Datei [local.settings.json](functions-run-local.md#local-settings-file) (für die lokale Entwicklung) verwaltet.
 
-Einige Einstellungen in host.json werden nur bei lokaler Ausführung in der [local.settings.json](functions-run-local.md#local-settings-file)-Datei verwendet.
+Konfigurationen in „host.json“, die mit Bindungen im Zusammenhang stehen, werden gleichmäßig auf alle Funktionen in der Funktions-App angewendet. 
 
 ## <a name="sample-hostjson-file"></a>host.json-Beispieldatei
 
@@ -69,11 +69,11 @@ In der folgenden Beispieldatei *host.json* für Version 2.x und höher sind all
               "isEnabled": true,
               "maxTelemetryItemsPerSecond" : 20,
               "evaluationInterval": "01:00:00",
-              "initialSamplingPercentage": 1.0, 
+              "initialSamplingPercentage": 100.0, 
               "samplingPercentageIncreaseTimeout" : "00:00:01",
               "samplingPercentageDecreaseTimeout" : "00:00:01",
               "minSamplingPercentage": 0.1,
-              "maxSamplingPercentage": 0.1,
+              "maxSamplingPercentage": 100.0,
               "movingAverageRatio": 1.0,
               "excludedTypes" : "Dependency;Event",
               "includedTypes" : "PageView;Trace"
@@ -143,7 +143,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 > [!NOTE]
 > Protokollsampling kann dazu führen, dass einige Ausführungen möglicherweise nicht auf dem Application Insights-Blatt für Überwachen angezeigt werden. Fügen Sie `samplingExcludedTypes: "Request"` zum Wert `applicationInsights` hinzu, um die Protokollstichprobenentnahme zu vermeiden.
 
-| Eigenschaft | Standard | Beschreibung |
+| Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | samplingSettings | – | Siehe [applicationInsights.samplingSettings](#applicationinsightssamplingsettings). |
 | samplingExcludedTypes | NULL | Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
@@ -157,7 +157,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
 
-|Eigenschaft | Standard | Beschreibung |
+|Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | isEnabled | true | Aktiviert oder deaktiviert die Stichprobenentnahme. | 
 | maxTelemetryItemsPerSecond | 20 | Die Zielanzahl der Telemetrieelemente, die pro Sekunde auf den einzelnen Serverhosts protokolliert werden. Reduzieren Sie diesen Wert, wenn Ihre App auf vielen Hosts ausgeführt wird, um Ihre Zielgeschwindigkeit für den gesamten Datenverkehr einzuhalten. | 
@@ -278,7 +278,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 
 ## <a name="http"></a>http
 
-Die Konfigurationseinstellung finden Sie in [HTTP-Trigger und -Bindungen](functions-bindings-http-webhook.md#hostjson-settings).
+Die Konfigurationseinstellung finden Sie in [HTTP-Trigger und -Bindungen](functions-bindings-http-webhook-output.md#hostjson-settings).
 
 ## <a name="logging"></a>logging
 
@@ -323,7 +323,7 @@ Diese Einstellung ist ein untergeordnetes Element von [logging](#logging). Sie s
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |isEnabled|false|Aktiviert oder deaktiviert die Konsolenprotokollierung.| 
 
@@ -341,7 +341,7 @@ Verwaltete Abhängigkeit ist ein Vorschaufeature, das derzeit nur mit PowerShell
 
 ## <a name="queues"></a>queues
 
-Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue.md#host-json).  
+Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue-output.md#host-json).  
 
 ## <a name="sendgrid"></a>sendGrid
 
@@ -349,7 +349,7 @@ Die Konfigurationseinstellung finden Sie in [SendGrid-Trigger und -Bindungen](fu
 
 ## <a name="servicebus"></a>serviceBus
 
-Die Konfigurationseinstellung finden Sie in [Service Bus-Trigger und -Bindungen](functions-bindings-service-bus.md#host-json).
+Die Konfigurationseinstellung finden Sie in [Service Bus-Trigger und -Bindungen](functions-bindings-service-bus-output.md#host-json).
 
 ## <a name="singleton"></a>singleton
 

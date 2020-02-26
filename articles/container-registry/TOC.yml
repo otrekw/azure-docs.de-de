@@ -141,15 +141,17 @@
       items:
         - name: Automatisieren von Containerimage-Buildvorgängen
           items:
-            - name: Erstellen auf der Grundlage des Quellkontexts
+            - name: 1. Erstellen auf der Grundlage des Quellkontexts
               href: container-registry-tutorial-quick-task.md
-            - name: Erstellen nach dem Codecommit
+            - name: 2a. Erstellen nach dem Codecommit
               href: container-registry-tutorial-build-task.md
-            - name: Aufgabe mit mehreren Schritten nach dem Codecommit
+            - name: '2b: Aufgabe mit mehreren Schritten nach dem Codecommit'
               href: container-registry-tutorial-multistep-task.md
-            - name: Erstellen bei Aktualisierung des Basisimages
+            - name: 3a. Erstellen bei Aktualisierung des Basisimages
               href: container-registry-tutorial-base-image-update.md
-            - name: Planen eines Tasks
+            - name: 3b. Erstellen bei Aktualisierung des privaten Basisimages
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4. Erstellen nach einem Zeitplan
               href: container-registry-tasks-scheduled.md
     - name: Beispiele
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Mehrstufige Aufgaben
           href: container-registry-tasks-multi-step.md
+        - name: Basisimageaktualisierungen
+          href: container-registry-tasks-base-images.md
     - name: Anleitungen
       expanded: false
       items:

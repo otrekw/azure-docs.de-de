@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025706"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212414"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -57,7 +57,10 @@ Wenn Sie AKS-Cluster erstellen und verwalten, die einen Lastenausgleich mit der 
 
 ## <a name="use-the-standard-sku-load-balancer"></a>Verwenden eines Lastenausgleichs mit *Standard*-SKU
 
-Wenn Sie einen AKS-Cluster erstellen, wird standardmäßig ein Lastenausgleich mit *Standard*-SKU verwendet, wenn Sie Dienste in diesem Cluster ausführen. So wird beispielsweise im [Schnellstart mit der Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] eine Beispielanwendung bereitgestellt, die einen Lastenausgleich mit *Standard*-SKU verwendet. 
+Wenn Sie einen AKS-Cluster erstellen, wird standardmäßig ein Lastenausgleich mit *Standard*-SKU verwendet, wenn Sie Dienste in diesem Cluster ausführen. So wird beispielsweise im [Schnellstart mit der Azure-Befehlszeilenschnittstelle][aks-quickstart-cli] eine Beispielanwendung bereitgestellt, die einen Lastenausgleich mit *Standard*-SKU verwendet.
+
+> [!IMPORTANT]
+> Öffentliche IP-Adressen können durch Anpassen einer benutzerdefinierten Route (User-Defined Route, UDR) vermieden werden. Wenn Sie den ausgehenden Typ eines AKS-Clusters als UDR angeben, können die IP-Bereitstellung und die Back-End-Pool-Einrichtung für den per AKS erstellten Azure-Lastenausgleich übersprungen werden. Informationen finden Sie im Artikel zum [Festlegen des `outboundType`-Elements eines Clusters auf „userDefinedRouting“](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurieren des Load Balancers als internen Lastenausgleich
 

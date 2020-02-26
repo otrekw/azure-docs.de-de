@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/14/2020
+ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 463a389116cd58e50839d717b700b604f545e5f2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190113"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444008"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -107,8 +107,8 @@ Speichern Sie den JSON-Code unten als „simplestaticmetricalert.json“ für di
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -1510,7 +1510,7 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Vorlage für eine Metrikwarnung, mit der mehrere Ressourcen überwacht werden
 
-In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt jetzt die Überwachung von mehreren Ressourcen mit nur einer Metrikwarnungsregel. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer, SQL-Datenbanken, Pools für elastische SQL-Datenbanken und Databox Edge-Geräte unterstützt.
+In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt nun die Überwachung mehrerer Ressourcen (des gleichen Typs) mit einer einzelnen Metrikwarnregel für Ressourcen, die in der gleichen Azure-Region vorhanden sind. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer, SQL Server-Datenbanken, Pools für elastische SQL Server-Datenbanken und Data Box Edge-Geräte unterstützt. Außerdem ist dieses Feature nur für Plattformmetriken verfügbar und wird nicht für benutzerdefinierte Metriken unterstützt.
 
 Warnungsregeln mit dynamischem Schwellenwert können auch dazu beitragen, angepasste Schwellenwerte für Hunderte von Metrikreihen (selbst mit verschiedenen Typen) gleichzeitig zu erstellen, sodass weniger Warnungsregeln zu verwalten sind.
 
@@ -1657,8 +1657,8 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2304,8 +2304,8 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }
@@ -2946,8 +2946,8 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             }
         },
         "threshold": {
-            "type": "double",
-            "defaultValue": 0,
+            "type": "string",
+            "defaultValue": "0",
             "metadata": {
                 "description": "The threshold value at which the alert is activated."
             }

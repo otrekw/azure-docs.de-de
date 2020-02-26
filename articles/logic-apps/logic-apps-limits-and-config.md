@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: 348c393a623f0059eec011faf823f9b5131508f3
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122130"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485045"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -89,7 +89,7 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 | Foreach-Arrayelemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](logic-apps-perform-data-operations.md#filter-array-action) verwenden, um größere Arrays zu filtern. |
 | Foreach-Parallelität | Wenn die Parallelitätssteuerung deaktiviert ist, beträgt der standardmäßige Grenzwert 20. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert entspricht der maximalen Anzahl von Foreach-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
 | SplitOn-Elemente | - 100.000 ohne Triggerparallelität <p><p>- 100 mit Triggerparallelität | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente reduziert. |
-| Until-Iterationen | 5\.000 | |
+| Until-Iterationen | - Standardwert: 60 <p><p>- Maximum: 5.000 | |
 ||||
 
 <a name="throughput-limits"></a>
@@ -155,7 +155,7 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 |------|--------------------|---------------------------------------|-------|
 | Nachrichtengröße | 100 MB | 200 MB | Informationen, wie Sie diese Beschränkung umgehen können, finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung in Logic Apps](../logic-apps/logic-apps-handle-large-messages.md). Es kann aber sein, dass einige Connectors und APIs Blockerstellung (Segmentierung) oder sogar den Standardgrenzwert nicht unterstützen. |
 | Nachrichtengröße mit Blockerstellung (Segmentierung) | 1 GB | 5 GB | Dieser Grenzwert gilt für Aktionen, die Blockerstellung automatisch unterstützen, oder für die Sie die Blockerstellung in der Laufzeitkonfiguration aktivieren können. <p>Für die Integrationsdienstumgebung unterstützt die Logic Apps-Engine diesen Grenzwert. Connectors verfügen jedoch über eigene Blockerstellungsgrenzwerte bis zum Grenzwert der Engine. Beachten Sie hierzu z. B. die Informationen in der [Referenz zur API des Azure Blob Storage-Connectors](https://docs.microsoft.com/connectors/azureblob/). Weitere Informationen zur Blockerstellung finden Sie unter [Verarbeiten von großen Nachrichten durch Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md). |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>Zeichengrenzwerte
 
@@ -248,12 +248,16 @@ Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.micr
 | Schema | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
-| Endpunkt zur Laufzeit | Begrenzung | Notizen |
-|------------------|-------|-------|
-| Leseaufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
-| Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
-| Nachverfolgungsaufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
-| Gleichzeitige Blockierungsaufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>Durchsatzlimits
+
+| Endpunkt zur Laufzeit | Kostenlos | Basic | Standard | Notizen |
+|------------------|------|-------|----------|-------|
+| Leseaufrufe pro 5 Minuten | 3,000 | 30.000 | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
+| Aufrufe pro 5 Minuten | 3,000 | 30.000 | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
+| Nachverfolgungsaufrufe pro 5 Minuten | 3,000 | 30.000 | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. |
+| Gleichzeitige Blockierungsaufrufe | ca. 1.000 | ca. 1.000 | ca. 1.000 | Identisch für alle SKUs. Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
 ||||
 
 <a name="b2b-protocol-limits"></a>

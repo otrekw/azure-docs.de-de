@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022493"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484535"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Grundlegendes zum Azure AD-Schema
 Ein Objekt in Azure Active Directory (Azure AD) ist wie jedes Verzeichnis ein programmgesteuertes allgemeines Datenkonstrukt, das Elemente wie Benutzer, Gruppen und Kontakte darstellt. Wenn Sie einen neuen Benutzer oder Kontakt in Azure AD erstellen, erstellen Sie eine neue Instanz dieses Objekts. Diese Instanzen können anhand ihrer Eigenschaften unterschieden werden.
@@ -67,6 +67,9 @@ In der folgenden Tabelle sind einige allgemeine Attribute und ihre Synchronisier
 |ProxyAdress|Direkt|ProxyAddress|
 
 ## <a name="view-the-schema"></a>Anzeigen des Schemas
+> [!WARNING]
+> Bei der Konfiguration der Cloudbereitstellung wird ein Dienstprinzipal erstellt. Der Dienstprinzipal ist im Azure-Portal sichtbar. Die Attributzuordnungen dürfen nicht mithilfe des Dienstprinzipals im Azure-Portal geändert werden.  Dieser Vorgang wird nicht unterstützt.
+
 Führen Sie die folgenden Schritte aus, um das Schema anzuzeigen und zu überprüfen.
 
 1.  Wechseln Sie zum [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer).

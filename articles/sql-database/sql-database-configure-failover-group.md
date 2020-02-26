@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553068"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461804"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 
 ### <a name="create-failover-group"></a>Erstellen einer Failovergruppe
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des Azure-Portals zu dieser Gruppe hinzu.
 
 
@@ -53,7 +53,7 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des A
         
     ![Hinzufügen von SQL DB zur Failovergruppe](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe von PowerShell zu dieser Gruppe hinzu. 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe von P
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
 
@@ -129,7 +129,7 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals.
 1. Überprüfen Sie, welcher Server jetzt der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben. 
 1. Wählen Sie erneut **Failover** aus, um die Server auf ihre ursprünglichen Rollen zurückzusetzen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe von PowerShell.  
 
@@ -200,7 +200,7 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 
 Erstellen Sie die Failovergruppe für Ihren Pool für elastische Datenbanken mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische Datenbanken mithilfe des Azure-Portals hinzu.
 
 1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
@@ -221,7 +221,7 @@ Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische
         
 1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische Datenbanken mithilfe von PowerShell hinzu. 
 
@@ -271,7 +271,7 @@ Erstellen Sie Ihre Failovergruppe, und fügen Sie ihr Ihren Pool für elastische
 
 Testen Sie das Failover Ihres Pool für elastische Datenbanken mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Führen Sie ein Failover für Ihre Failovergruppe auf den sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
@@ -293,7 +293,7 @@ Führen Sie ein Failover für Ihre Failovergruppe auf den sekundären Server und
 1. Überprüfen Sie, welcher Server der primäre und welcher der sekundäre ist. Wenn das Failover erfolgreich ausgeführt wurde, sollten die beiden Server die Rollen getauscht haben. 
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe von PowerShell.
 
@@ -353,7 +353,7 @@ Beachten Sie die folgenden erforderlichen Voraussetzungen:
 
 Wenn Sie [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) nicht konfiguriert haben, können Sie das Gateway für das primäre virtuelle Netzwerk über das Azure-Portal oder mit PowerShell erstellen. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azure-Portals. 
 
@@ -390,7 +390,7 @@ Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azur
 
 1. Wählen Sie **Erstellen** aus, um das neue Gateway für Ihr virtuelles Netzwerk zu erstellen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe von PowerShell. 
 
@@ -426,7 +426,7 @@ Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe von Powe
 
 Erstellen Sie das Gateway für das sekundäre virtuelle Netzwerk mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Wiederholen Sie die Schritte im vorherigen Abschnitt, um das Subnetz des virtuellen Netzwerks und das Gateway für die sekundäre verwaltete Instanz zu erstellen. Füllen Sie die Pflichtfelder aus, um das Gateway für die sekundäre verwaltete Instanz zu konfigurieren. 
 
    Die folgende Tabelle enthält die erforderlichen Werte für das Gateway für die sekundäre verwaltete Instanz:
@@ -447,7 +447,7 @@ Wiederholen Sie die Schritte im vorherigen Abschnitt, um das Subnetz des virtuel
 
    ![Sekundäre Gatewayeinstellungen](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie das Gateway für das sekundäre virtuelle Netzwerk mithilfe von PowerShell. 
 
@@ -488,7 +488,7 @@ Es müssen zwei Verbindungen hergestellt werden – die Verbindung vom primären
 
 Der gemeinsam verwendete Schlüssel für beide Verbindungen sollte übereinstimmen. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe des Azure-Portals. 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** aus.
@@ -510,7 +510,7 @@ Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe des Azure-Porta
 
 1. Überprüfen Sie auf der Registerkarte **Zusammenfassung** die Einstellungen für die bidirektionale Verbindung, und wählen Sie dann **OK** aus, um die Verbindung zu erstellen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe von PowerShell. 
 
@@ -546,7 +546,7 @@ Erstellen Sie Verbindungen zwischen den beiden Gateways mithilfe von PowerShell.
 ### <a name="create-the-failover-group"></a>Erstellen der Failovergruppe 
 Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe des Azure-Portals. 
 
@@ -562,7 +562,7 @@ Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe des Az
 
 1. Nachdem die Bereitstellung der Failovergruppe abgeschlossen wurde, gelangen Sie erneut auf die Seite **Failovergruppe**. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe von PowerShell. 
 
@@ -588,11 +588,11 @@ Erstellen Sie die Failovergruppe für Ihre verwalteten Instanzen mithilfe von Po
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals oder PowerShell. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer verwalteten Instanz, und wählen Sie unter „Einstellungen“ die Option **Instanzfailovergruppen** aus. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer _sekundären_ verwalteten Instanz, und wählen Sie unter „Einstellungen“ die Option **Instanzfailovergruppen** aus. 
 1. Überprüfen Sie, welche verwaltete Instanz die primäre Instanz ist und welche verwaltete Instanz die sekundäre Instanz ist. 
 1. Wählen Sie **Failover** aus, und klicken Sie dann in der Warnung zu TDS-Sitzungen, die getrennt werden, auf **Ja**. 
 
@@ -602,9 +602,9 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals.
 
    ![Verwaltete Instanzen haben nach einem Failover die Rollen getauscht](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Wählen Sie erneut **Failover** aus, um ein Failback der primären Instanz in die primäre Rolle durchzuführen. 
+1. Navigieren Sie zur neuen _sekundären_ verwalteten Instanz, und wählen Sie erneut **Failover** aus, um ein Failback der primären Instanz auf die primäre Rolle durchzuführen. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe von PowerShell. 
 

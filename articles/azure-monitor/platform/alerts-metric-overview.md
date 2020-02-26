@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850056"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444161"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -29,7 +29,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache statische Metrikwarnung mit Sch
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: statischen
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Durchschnitt
+- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -46,11 +46,11 @@ Nehmen wir an, Sie haben wie folgt eine einfache dynamische Metrikwarnung mit Sc
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: Dynamisch
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Durchschnitt
+- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. Unterstützte Zeitaggregationen sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
-- Empfindlichkeit: Mittel
+- Empfindlichkeit: Medium
 - Zurückliegende Zeiträume: 4
 - Anzahl von Verstößen: 4
 
@@ -79,7 +79,7 @@ Angenommen, Sie verfügen über einen App Service-Plan für Ihre Website. Sie m�
 - Bedingungstyp: statischen
 - Dimensionen
   - Instanz = InstanceName1, InstanceName2
-- Zeitaggregation: Durchschnitt
+- Zeitaggregation: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
@@ -94,7 +94,7 @@ Nehmen wir an, Sie verfügen über eine Web-App, die eine massive Nachfrage verz
 - Bedingungstyp: statischen
 - Dimensionen
   - Instanz = *
-- Zeitaggregation: Durchschnitt
+- Zeitaggregation: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
@@ -111,11 +111,11 @@ Nehmen wir an, Sie haben eine Web-App mit vielen Instanzen, und Sie wissen nicht
 - Bedingungstyp: Dynamisch
 - Dimensionen
   - Instanz = *
-- Zeitaggregation: Durchschnitt
+- Zeitaggregation: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
-- Empfindlichkeit: Mittel
+- Empfindlichkeit: Medium
 - Zurückliegende Zeiträume: 1
 - Anzahl von Verstößen: 1
 
@@ -125,15 +125,15 @@ Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, kö
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 
-Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt auch die Überwachung von mehreren Ressourcen mit einer Metrikwarnungsregel. Dieses Feature wird derzeit nur für virtuelle Computer, SQL-Datenbanken, Pools für elastische SQL-Datenbanken und Data Box Edge-Geräte unterstützt. Mit nur einer Metrikwarnung können die Ressourcen einer Azure-Region überwacht werden.
+Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt darüber hinaus die Überwachung mehrerer Ressourcen (des gleichen Typs) mit einer Metrikwarnregel für Ressourcen, die in der gleichen Azure-Region vorhanden sind. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer, SQL Server-Datenbanken, Pools für elastische SQL Server-Datenbanken und Data Box Edge-Geräte unterstützt. Außerdem ist dieses Feature nur für Plattformmetriken verfügbar und wird nicht für benutzerdefinierte Metriken unterstützt.
 
-Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnung auf drei Arten angeben:
+Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben:
 
 - Als Liste mit virtuellen Computern einer Azure-Region unter einem Abonnement
 - Alle virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen eines Abonnements
 - Alle virtuellen Computer (in einer Azure-Region) unter einem Abonnement
 
-Das Erstellen von Metrikwarnungsregeln, mit denen mehrere Ressourcen überwacht werden, ähnelt dem [Erstellen einer Metrikwarnung](alerts-metric.md), mit der eine einzelne Ressource überwacht wird. Der einzige Unterschied ist, dass Sie alle Ressourcen auswählen, die überwacht werden sollen. Sie können diese Regeln auch mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jeden virtuellen Computer gesonderte Benachrichtigungen.
+Das Erstellen von Metrikwarnungsregeln, mit denen mehrere Ressourcen überwacht werden, ähnelt dem [Erstellen einer Metrikwarnung](alerts-metric.md), mit der eine einzelne Ressource überwacht wird. Der einzige Unterschied ist, dass Sie alle Ressourcen auswählen, die überwacht werden sollen. Sie können diese Regeln auch mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jede überwachte Ressource gesonderte Benachrichtigungen.
 
 ## <a name="typical-latency"></a>Typische Wartezeit
 

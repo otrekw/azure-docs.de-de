@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d278f96acf8d8efc57a9ae7fb57f9a758339162a
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863926"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444076"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -98,14 +98,15 @@ Windows 7 (x64) mit SP1 und höher | Ab Version [9.30](https://support.microsof
 
 **Betriebssystem** | **Details**
 --- | ---
-Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6,[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8.0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)
-CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 8.0
+Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6,[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8.0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1
+CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 8.0, 8.1
 Ubuntu 14.04 LTS Server | [Unterstützte Kernel-Versionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Ubuntu 16.04 LTS Server | [Unterstützte Kernel-Version](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
 Ubuntu 18.04 LTS Server | [Unterstützte Kernel-Version](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Unterstützte Kernel-Versionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 15 | 15 und 15 SP1 [(Unterstützte Kernel-Versionen)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Ein Upgrade von replizierenden Computern von SP3 auf SP4 wird nicht unterstützt. Wenn ein replizierter Computer aktualisiert wurde, müssen Sie die Replikation deaktivieren und nach dem Upgrade dann wieder aktivieren.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) <br/><br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5) 
@@ -115,16 +116,17 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+14.04 LTS | 9.32| 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 14.04 LTS | 9,31 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 14.04 LTS | 9.30 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 14.04 LTS | 9.29 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
-14.04 LTS | 9.28 | 3.13.0-24-generic bis 3.13.0-170-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-148-generic,<br/>4.15.0-1023-azure bis 4.15.0-1045-azure |
 |||
+16.04 LTS | 9.32 | 4.4.0-21-generic bis 4.4.0-171-generic<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-74-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1066-azure|
 16.04 LTS | 9,31 | 4.4.0-21-generic bis 4.4.0-170-generic<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-72-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1063-azure|
 16.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-generic bis 4.4.0-166-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-66-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1061-azure|
 16.04 LTS | 9.29 | 4.4.0-21-generic bis 4.4.0-164-generic<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-64-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1059-azure|
-16.04 LTS | 9.28 | 4.4.0-21-generic bis 4.4.0-159-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-58-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1055-azure|
 |||
+18.04 LTS | 9.32| 4.15.0-20-generic bis 4.15.0-74-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-37-generic </br> 5.3.0-19-generic bis 5.3.0-24-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1028-azure </br> 5.3.0-1007-azure bis 5.3.0-1009-azure|
 18.04 LTS | 9,31| 4.15.0-20-generic bis 4.15.0-72-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-37-generic </br> 5.3.0-19-generic bis 5.3.0-24-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1025-azure </br> 5.3.0-1007-azure|
 18.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-66-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-32-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1023-azure|
 18.04 LTS | [9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-generic bis 4.15.0-64-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-29-generic </br> 4.15.0-1009-azure bis 4.15.0-1037-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1020-azure|
@@ -143,10 +145,16 @@ Debian 8 | 9.28 | 3.16.0-4-amd64 bis 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 bis 4.
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.32 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.34-azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.29-azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.30 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.29-azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.29 | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_12) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.23-azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.28 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.118-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.117-default</br></br>SP3 4.4.73-5-default bis 4.4.180-94.100-default</br></br>SP3 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.29-default</br>SP4 4.12.14-6.3-azure bis 4.12.14-6.23-azure |
+
+#### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 15-Kernelversionen für Azure-VMs
+
+**Release** | **Mobility Service-Version** | **Kernelversion** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 15 und 15 SP1 | 9.32 | Alle [SUSE 15- und 15-Stock-Kernel](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) werden unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
 

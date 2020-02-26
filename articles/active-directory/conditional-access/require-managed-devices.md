@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 66e94393bef942d7bfad41a7dccc8b651696d4af
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512588"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484518"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -30,6 +30,10 @@ Wenn Sie für Cloud-Apps die Verwendung verwalteter Geräte vorschreiben, wird d
 
 - **[Bedingter Zugriff in Azure Active Directory:](../active-directory-conditional-access-azure-portal.md)** Dieser Artikel enthält eine konzeptionelle Übersicht über den bedingten Zugriff und die entsprechende Terminologie.
 - **[Einführung in die Geräteverwaltung in Azure Active Directory:](../devices/overview.md)** Dieser Artikel enthält eine Übersicht über die verschiedenen Optionen, mit denen Sie Geräte unter die Kontrolle der Organisation bringen können. 
+
+>[!NOTE] 
+> Wir empfehlen die Verwendung einer auf einem Azure AD-Gerät basierenden Richtlinie für bedingten Zugriff, um nach der ersten Geräteauthentifizierung die beste Erzwingung zu erzielen. Dies schließt das Schließen von Sitzungen ein, wenn das Gerät nicht mehr kompatibel und nicht mehr Teil des Gerätecodeflows ist.
+
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 

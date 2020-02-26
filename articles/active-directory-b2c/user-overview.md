@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f34fe324f22be41d8cdff0df67777bc254bbc290
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840059"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484263"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -27,7 +27,7 @@ Die folgenden Arten von Konten sind verfügbar:
 - **Gastkonto**: Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure Active Directory-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
 - **Consumerkonto**: Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
   - Durch den Benutzer, der einen Benutzeranmeldeflow in einer Azure AD B2C-Anwendung durchläuft
-  - Mithilfe der Azure AD Graph-API
+  - Verwenden der Microsoft Graph-API
   - Verwenden des Azure-Portals
 
 ## <a name="work-account"></a>Geschäftskonto
@@ -76,12 +76,12 @@ Sie können auch mit der [Microsoft Graph-API](https://docs.microsoft.com/graph/
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 
-Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Benutzeranmeldeflows](user-flow-overview.md), mithilfe der Azure AD Graph-API oder im Azure-Portal erstellt.
+Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Registrierungs- oder Anmeldebenutzerflows](user-flow-overview.md), mithilfe der Microsoft Graph-API oder im Azure-Portal erstellt.
 
 Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
 
-Sie können die Angaben im Abschnitt **Erstellen von Consumerbenutzerkonten** in [Verwenden der Azure AD Graph-API](manage-user-accounts-graph-api.md) befolgen, um ein Azure AD B2C-Consumerkonto zu erstellen. Sie können auch die Angaben im Abschnitt **Aktualisieren von Consumerbenutzerkonten** im selben Artikel befolgen, um die Eigenschaften des Kontos zu verwalten.
+Weitere Informationen zum Verwalten von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
 
 ### <a name="migrate-consumer-user-accounts"></a>Migrieren von Benutzerkonten für Consumer
 
-Möglicherweise müssen Sie bestehende Benutzerkonten von Consumern von Identitätsanbietern in Azure AD B2C migrieren. Weitere Informationen finden Sie unter [Benutzermigration](user-migration.md) oder [Migrieren von Benutzern mit Identitäten in sozialen Netzwerken](migrate-social-identities.md).
+Möglicherweise müssen Sie bestehende Benutzerkonten von Consumern von Identitätsanbietern in Azure AD B2C migrieren. Weitere Informationen finden Sie unter [Migrieren von Benutzern zu Azure Active Directory B2C](user-migration.md).

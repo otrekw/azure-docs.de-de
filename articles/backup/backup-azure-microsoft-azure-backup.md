@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111598"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425186"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -163,14 +163,15 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 2. Klicken Sie auf der Willkommensseite auf die Schaltfläche **Weiter**. Sie gelangen zum Abschnitt *Voraussetzungsüberprüfungen* . Klicken Sie auf diesem Bildschirm auf **Überprüfen**, um zu ermitteln, ob die Hardware- und Softwarevoraussetzungen für Azure Backup Server erfüllt sind. Wenn alle Voraussetzungen erfolgreich erfüllt wurden, sehen Sie eine Meldung, die darauf hinweist, dass der Computer die Anforderungen erfüllt. Klicken Sie auf die Schaltfläche **Weiter** .
 
     ![Azure Backup Server – Willkommen und Voraussetzungsüberprüfung](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Für Microsoft Azure Backup Server ist SQL Server Enterprise erforderlich. Außerdem sind dem Azure Backup Server-Installationspaket die passenden SQL Server-Binärdateien beigefügt, die Sie benötigen, falls Sie keine eigene SQL-Instanz nutzen möchten. Beim Starten einer neuen Azure Backup Server-Installation sollten Sie die Option **Neue Instanz von SQL Server bei diesem Setup installieren** auswählen und auf die Schaltfläche **Prüfen und installieren** klicken. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, klicken Sie auf **Weiter**.
+3. Zum Azure Backup Server-Installationspaket gehören die erforderlichen SQL Server-Binärdateien. Wählen Sie beim Starten einer neuen Azure Backup Server-Installation die Option **Neue Instanz von SQL Server bei diesem Setup installieren** aus, und klicken Sie auf die Schaltfläche **Prüfen und installieren**. Nachdem die erforderlichen Komponenten erfolgreich installiert wurden, klicken Sie auf **Weiter**.
+
+    >[!NOTE]
+    >Die folgenden SQL Server-Versionen werden unterstützt: SQL Server 2014 SP1 oder höher, 2016 und 2017.  Alle SQL Server-Versionen müssen Standard- oder Enterprise-Versionen (64-Bit) sein.
+    >Azure Backup Server funktioniert nicht mit einer Remoteinstanz von SQL Server. Die von Azure Backup Server verwendete Instanz muss lokal vorliegen. Falls Sie eine vorhandene SQL Server-Instanz für MABS verwenden, unterstützt das MABS-Setup nur die Verwendung von *benannten Instanzen* von SQL Server.
 
     ![Azure Backup Server – SQL-Überprüfung](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Tritt ein Fehler mit der Empfehlung auf, den Computer neu zu starten, tun Sie dies, und klicken Sie auf **Erneut prüfen**. Konfigurieren Sie SQL bei Problemen mit der SQL-Konfiguration gemäß den SQL-Richtlinien neu, und versuchen Sie, MABS mithilfe der vorhandenen SQL-Instanz zu installieren bzw. ein Upgrade für diese durchzuführen.
-
-   > [!NOTE]
-   > Azure Backup Server funktioniert nicht mit einer Remoteinstanz von SQL Server. Die von Azure Backup Server verwendete Instanz muss lokal vorliegen. Für den Fall, dass Sie eine vorhandene SQL Server-Instanz für MABS verwenden, unterstützt das MABS-Setup nur die Verwendung von *benannten Instanzen* von SQL Server.
 
    **Manuelle Konfiguration**
 

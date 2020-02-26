@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 0e7a814c1607b15e3af0e76a5ae6dfad1594a3b3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833932"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474143"
 ---
 ## <a name="limitations"></a>Einschränkungen
 
 - VM-Skalierungsgruppen werden zurzeit auf dedizierten Hosts nicht unterstützt.
-- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3 und ESv3. 
+- Das erste Vorschaurelease unterstützt die folgenden VM-Serien: DSv3, ESv3, FSv2, LSv2 und MSv2. 
 
 ## <a name="create-a-host-group"></a>Erstellen einer Hostgruppe
 
@@ -54,7 +54,7 @@ Die Erstellung der Hostgruppe sollte nur wenige Sekunden dauern.
 
 ## <a name="create-a-dedicated-host"></a>Erstellen eines dedizierten Hosts
 
-Erstellen Sie nun einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host. Die folgenden SKU-Werte für Hosts werden unterstützt: „DSv3_Type1“ und „ESv3_Type1“.
+Erstellen Sie nun einen dedizierten Host in der Hostgruppe. Zusätzlich zu einem Namen müssen Sie die SKU für den Host angeben. Die Host-SKU erfasst die unterstützte VM-Serie sowie die Hardwaregenerierung für Ihren dedizierten Host.
 
 Weitere Informationen zu den Host-SKUs und Preisen finden Sie unter [Azure Dedicated Host – Preise](https://aka.ms/ADHPricing).
 

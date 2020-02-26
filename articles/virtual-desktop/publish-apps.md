@@ -1,18 +1,18 @@
 ---
 title: Veröffentlichen von integrierten Apps in Windows Virtual Desktop – Azure
-description: Erfahren Sie, wie Sie moderne Apps in Windows Virtual Desktop veröffentlichen.
+description: Hier erfahren Sie, wie Sie integrierte Apps in Windows Virtual Desktop veröffentlichen.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 37fc089ab68bfb3cd26e1656ba84610fe8a47bc6
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e8e8512fa9f6a64fb0db688b7badcb699f6ccaa5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367269"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484620"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Veröffentlichen von integrierten Apps in Windows Virtual Desktop
 

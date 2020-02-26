@@ -7,26 +7,28 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355936"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442002"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet zwei Clientbibliotheken für Python: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen (laden) und Daten abfragen. In diesem Artikel erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Cluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
+In diesem Artikel erfassen Sie Daten mithilfe der Azure Data Explorer-Bibliothek für Python. Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet zwei Clientbibliotheken für Python: eine [Erfassungsbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) und eine [Datenbibliothek](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit diesen Bibliotheken können Sie über Ihren Code Daten in einem Cluster erfassen bzw. laden und Daten abfragen.
+
+Erstellen Sie zunächst eine Tabelle und eine Datenzuordnung in einem Cluster. Anschließend stellen Sie die Erfassung im Cluster in eine Warteschlange und überprüfen die Ergebnisse.
 
 Dieser Artikel ist auch als [Azure-Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md)
+* [Python 3.4 oder höher](https://www.python.org/downloads/)
 
-* [Python](https://www.python.org/downloads/) auf dem Entwicklungscomputer
+* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Installieren der Daten- und der Erfassungsbibliothek
 

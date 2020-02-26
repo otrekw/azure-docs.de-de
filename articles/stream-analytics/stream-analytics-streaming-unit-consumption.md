@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369846"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201491"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -59,6 +59,8 @@ Temporale (zeitlich orientierte) Abfrageelemente sind die Kerngruppe der zustand
 Beachten Sie, dass ein Auftrag mit komplexer Abfragelogik eine hohe prozentuelle Auslastung der SUs aufweisen kann, wenn er nicht kontinuierlich Eingabeereignisse empfängt. Dies kann nach einer plötzlichen Spitze bei den Eingabe- und Ausgabeereignissen auftreten. Möglicherweise wird der Zustand des Auftrags im Arbeitsspeicher weiterhin beibehalten, wenn die Abfrage komplex ist.
 
 Die Speichereinheitnutzung in % kann für einen kurzen Zeitraum plötzlich auf 0 fallen, bevor wieder die erwartete Ebene erreicht wird. Dies geschieht aufgrund von vorübergehenden Fehlern oder durch vom System initiierte Upgrades. Wenn Sie die Anzahl der Streamingeinheiten für einen Auftrag erhöhen, wird die Speichereinheitennutzung in Prozent möglicherweise nicht verringert, wenn Ihre Abfrage nicht [vollständig parallel](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization) verläuft.
+
+Verwenden Sie zum Vergleichen der Auslastung über einen bestimmten Zeitraum [Metriken zu Ereignisraten](stream-analytics-monitoring.md). Die Metriken „InputEvents“ und „OutputEvents“ zeigen die Anzahl der gelesenen und verarbeiteten Ereignisse. Es gibt auch Metriken, die die Anzahl von Fehlerereignissen (etwa von Deserialisierungsfehlern) angeben. Wenn die Anzahl von Ereignissen pro Zeiteinheit zunimmt, steigt in den meisten Fällen die Auslastung der Speichereinheiten (in Prozent).
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Zustandsbehaftete Abfragelogik in temporalen Elementen
 Eine einzigartige Funktion eines Azure Stream Analytics-Auftrags besteht darin, eine zustandsbehaftete Verarbeitung wie etwa Aggregate, temporale Verknüpfungen und temporale Analysefunktionen im Fenstermodus auszuführen. Die einzelnen Operatoren enthalten Zustandsinformationen. Die maximale Fenstergröße für diese Abfrageelemente beträgt sieben Tage. 

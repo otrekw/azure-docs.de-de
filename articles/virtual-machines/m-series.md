@@ -1,0 +1,67 @@
+---
+title: 'M-Serie: Azure Virtual Machines'
+description: Hier finden Sie Spezifikationen für die virtuellen Computer der M-Serie.
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: article
+ms.date: 02/05/2019
+ms.author: lahugh
+ms.openlocfilehash: 49b12341e5ca119ee20c7e509d9bbef64d4d5b37
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77492587"
+---
+# <a name="m-series"></a>M-Serie
+
+Die M-Serie verfügt über eine hohe vCPU-Anzahl (bis zu 128 vCPUs) und eine große Menge von Arbeitsspeicher (bis zu 3,8 TiB). Dies ist auch ideal für extrem große Datenbanken oder andere Anwendungen, für die eine hohe vCPU-Anzahl und große Mengen an Arbeitsspeicher benötigt werden. Die Größen der M-Serie basieren auf der Intel® Xeon® CPU E7-8890 v3 mit 2,50 GHz.
+
+Virtuelle Computer der M-Serie verfügen über Hyperthreading-Technologie von Intel®.
+
+ACU: 160-180
+
+Storage Premium  Unterstützt
+
+Storage Premium-Zwischenspeicherung:  Unterstützt
+
+Schreibbeschleunigung:  [Unterstützt](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
+
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+|---|---|---|---|---|---|---|---|
+| Standard_M8ms <sup>2</sup>       | 8   | 218,75 | 256   | 8  | 10.000/100 (793)     | 5000/125   | 4/2.000  |
+| Standard_M16ms <sup>2</sup>      | 16  | 437,5  | 512   | 16 | 20.000/200 (1587)    | 10.000/250  | 8/4.000  |
+| Standard_M32ts                   | 32  | 192    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8.000  |
+| Standard_M32ls                   | 32  | 256    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8.000  |
+| Standard_M32ms <sup>2</sup>      | 32  | 875    | 1024  | 32 | 40.000/400 (3174)    | 20.000/500  | 8/8.000  |
+| Standard_M64s                    | 64  | 1024   | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16.000 |
+| Standard_M64ls                   | 64  | 512    | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16.000 |
+| Standard_M64ms <sup>3</sup>      | 64  | 1792   | 2048  | 64 | 80.000/800 (6348)    | 40.000/1.000 | 8/16.000 |
+| Standard_M128s <sup>1</sup>      | 128 | 2048   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8/30.000 |
+| Standard_M128ms <sup>1,2,3</sup> | 128 | 3\.892   | 4096  | 64 | 160.000/1.600 (12696) | 80.000/2.000 | 8/30.000 |
+| Standard_M64                     | 64  | 1024   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8/16.000 |
+| Standard_M64m                    | 64  | 1792   | 7168  | 64 | 80.000/800 (1228)    | 40.000/1.000 | 8/16.000 |
+| Standard_M128 <sup>1</sup>       | 128 | 2048   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8/32000 |
+| Standard_M128m <sup>1</sup>      | 128 | 3\.892   | 14336 | 64 | 250.000/1.600 (2456)  | 80.000/2.000 | 8/32.000 |
+
+<sup>1</sup> Bei mehr als 64 vCPUs ist eines der folgenden Gastbetriebssysteme erforderlich: Windows Server 2016, Ubuntu 16.04 LTS, SLES 12 SP2 und Red Hat Enterprise Linux, CentOS 7.3 oder Oracle Linux 7.3 mit LIS 4.2.1.
+
+<sup>2</sup> Eingeschränkte Kerngrößen verfügbar.
+
+<sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+
+## <a name="other-sizes"></a>Andere Größen
+
+- [Allgemeiner Zweck](sizes-general.md)
+- [Arbeitsspeicheroptimiert](sizes-memory.md)
+- [Speicheroptimiert](sizes-storage.md)
+- [GPU-optimiert](sizes-gpu.md)
+- [High Performance Computing](sizes-hpc.md)
+- [Vorherige Generationen](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

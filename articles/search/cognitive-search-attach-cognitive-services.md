@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461144"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472450"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Anfügen einer Cognitive Services-Ressource an ein Skillset in der kognitiven Azure-Suche 
 
@@ -48,7 +48,7 @@ Es gibt keine Möglichkeit, einen Dienst zwischen Regionen zu verschieben. Wenn 
 
 Sie können eine eingeschränkte, kostenlose Verarbeitungsoption verwenden, um das Tutorial zur KI-Anreicherung und die Schnellstartübungen abzuschließen.
 
-Kostenlose Ressourcen (begrenzte Anreicherung) sind auf 20 Dokumente pro Tag pro Abonnement begrenzt.
+Kostenlose Ressourcen (begrenzte Anreicherung) sind auf 20 Dokumente pro Tag pro Indexer begrenzt. Zum Zurücksetzen des Zählers können Sie den Indexer löschen und neu erstellen.
 
 1. Öffnen Sie den Assistenten „Daten importieren“:
 

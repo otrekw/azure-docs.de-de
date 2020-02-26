@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: facd52ea1fdaa2ad30d6b1544cb1f2d6d5833bfa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450560"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467912"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -51,7 +51,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt
-Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind.
+Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind, und um sicherzustellen, dass der [Ressourcenanbieter](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) „Microsoft.Insights“ registriert ist.
 
 Hier ist der **PartitionKey** der Tabelle die Ressourcen-ID, der virtuelle Computer oder die VM-Skalierungsgruppe. **RowKey** ist der Metrikname (auch als Leistungsindikatorname bezeichnet).
 
@@ -229,7 +229,7 @@ Wenn Sie bei der Clouddienstrolle die Konfiguration vom Datenträger auswählen,
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure-Diagnose-Plug-In – Exitcodes
 Das Plug-In gibt die folgenden Exitcodes zurück:
 
-| Exitcode | BESCHREIBUNG |
+| Exitcode | Beschreibung |
 | --- | --- |
 | 0 |Erfolg. |
 | -1 |Allgemeiner Fehler. |
@@ -297,5 +297,5 @@ Auf der Portaloberfläche auf den virtuellen Computern werden bestimmte Leistung
 
 - Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden. **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird.
 
-- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Lösung**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die [„Azure Monitor“-Senke](diagnostics-extension-schema.md#diagnostics-extension-111) weiter.
+- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Lösung**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die Azure Monitor-Senke weiter.
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988280"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208504"
 ---
 # <a name="show-directions-from-a-to-b"></a>Anzeigen einer Wegbeschreibung von A nach B
 
@@ -43,7 +43,7 @@ Mit dem sechsten Codeblock wird der Azure Maps-Routingdienst abgefragt, der Teil
 
 Mit dem letzten Codeblock werden die Grenzen der Karte mithilfe der [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)-Eigenschaft der Karte festgelegt.
 
-Die Routenabfrage, die Datenquelle, das Symbol, die Linienebenen und die Kameragrenzen werden innerhalb des [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt und festgelegt. Diese Codestruktur stellt sicher, dass die Ergebnisse erst nach dem vollständigen Laden der Karte angezeigt werden.
+Die Routenabfrage, die Datenquelle, das Symbol, die Linienebenen und die Kameragrenzen werden innerhalb des [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) erstellt. Diese Codestruktur stellt sicher, dass die Ergebnisse erst nach dem vollständigen Laden der Karte angezeigt werden.
 
 ## <a name="query-the-route-via-fetch-api"></a>Abfragen der Route über die Fetch-API
 
@@ -54,7 +54,7 @@ Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authen
 
 Mit dem zweiten Codeblock wird ein [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Objekt erstellt und der Karte hinzugefügt.
 
-Mit dem dritten Codeblock werden die Start- und Zielpunkte für die Route erstellt und der Datenquelle hinzugefügt. Eine Anleitung zum Verwenden von [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) finden Sie unter [Hinzufügen von Stecknadeln zur Karte](map-add-pin.md).
+Mit dem dritten Codeblock werden die Start- und Zielpunkte für die Route erstellt. Anschließend werden sie der Datenquelle hinzugefügt. Eine Anleitung zum Verwenden von [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) finden Sie unter [Hinzufügen von Stecknadeln zur Karte](map-add-pin.md).
 
 Ein [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt rendert Linienobjekte, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind, als Linien in der Karte. Mit dem letzten Codeblock wird eine Linienebene erstellt und der Karte hinzugefügt. Die Eigenschaften einer Linienebene finden Sie unter [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
@@ -64,7 +64,7 @@ Mit dem nächsten Codeblock werden die Punkte `SouthWest` und `NorthEast` für d
 
 Der letzte Codeblock verwendet die [Fetch-API](https://fetch.spec.whatwg.org/) für eine Suchanforderung an die [Routen-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Die Antwort wird dann analysiert. Bei einer erfolgreichen Antwort wird anhand der Breiten- und Längengradinformationen ein Array mit Linien erstellt, indem diese Punkte verbunden werden. Die Liniendaten werden dann der Datenquelle hinzugefügt, um die Route in der Karte zu rendern. Eine Anleitung finden Sie unter [Hinzufügen einer Linie zur Karte](map-add-line-layer.md).
 
-Die Routenabfrage, die Datenquelle, das Symbol, die Linienebenen und die Kameragrenzen werden innerhalb des [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt und festgelegt. Auch hier möchten wir sicherstellen, dass die Ergebnisse nach dem vollständigen Laden der Karte angezeigt werden.
+Die Routenabfrage, die Datenquelle, das Symbol, die Linienebenen und die Kameragrenzen werden innerhalb des [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) erstellt. Auch hier möchten wir sicherstellen, dass die Ergebnisse nach dem vollständigen Laden der Karte angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

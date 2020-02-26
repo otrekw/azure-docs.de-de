@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: mimart
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97954123b6fc31dce09282c08c702438cd64c476
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159249"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367897"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -162,7 +162,7 @@ Der Anwendungshersteller sollte bestätigen, dass er die SAML-Implementierung in
 
 ## <a name="misconfigured-application"></a>Falsch konfigurierte Anwendung
 
-*Fehler AADSTS650056: Falsch konfigurierte Anwendung. Dies kann einen der folgenden Gründe haben: Für den Client werden in der Anwendungsregistrierung des Clients in den angeforderten Berechtigungen keine Berechtigungen für „AAD Graph“ aufgeführt. Ebenfalls möglich ist, dass der Administrator auf dem Mandanten nicht eingewilligt hat. Sie sollten auch den Anwendungsbezeichner in der Anforderung überprüfen, um sicherzustellen, dass er mit dem konfigurierten Clientanwendungsbezeichner übereinstimmt. Wenden Sie sich an Ihren Administrator, um die Konfiguration zu beheben oder im Auftrag des Mandanten einzuwilligen.*
+*Fehler AADSTS650056: Falsch konfigurierte Anwendung. Dies kann einen der folgenden Gründe haben: Für den Client werden in der Anwendungsregistrierung des Clients in den angeforderten Berechtigungen keine Berechtigungen aufgeführt. Ebenfalls möglich ist, dass der Administrator auf dem Mandanten nicht eingewilligt hat. Sie sollten auch den Anwendungsbezeichner in der Anforderung überprüfen, um sicherzustellen, dass er mit dem konfigurierten Clientanwendungsbezeichner übereinstimmt. Wenden Sie sich an Ihren Administrator, um die Konfiguration zu beheben oder im Auftrag des Mandanten einzuwilligen.*
 
 **Mögliche Ursache**
 

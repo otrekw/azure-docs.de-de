@@ -12,35 +12,32 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/06/2019
+ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: c16ff8fed19340811578ccb39cbac7242b7c5861
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 21351654f01127acb5fe712021ceebb31b020bdc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905740"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484943"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Größen für virtuelle Linux-Computer in Azure
-Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Linux-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Dieser Artikel ist auch für [virtuelle Windows-Computer](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)verfügbar.
 
+Dieser Artikel beschreibt die verfügbaren Größen und Optionen für die virtuellen Azure-Computer, die Sie zum Ausführen Ihrer Linux-Apps und Workloads verwenden können. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Dieser Artikel ist auch für [virtuelle Windows-Computer](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)verfügbar.
 
-| type                     | Größen           |    Beschreibung       |
-|--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Allgemeiner Zweck](sizes-general.md)          | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC  | Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. |
-| [Computeoptimiert](sizes-compute.md)        | Fsv2           | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung.        |
-| [Arbeitsspeicheroptimiert](sizes-memory.md)         | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, Dv2  | Hohes Verhältnis von Speicher zu CPU. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
-| [Speicheroptimiert](sizes-storage.md)        | Lsv2                | Hoher Datenträgerdurchsatz und E/A, ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  |
-| [GPU](sizes-gpu.md)            | NC, NCv2, NCv3, ND, NDv2 (Vorschau), NV, NVv3  | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar.       |
-| [High Performance Computing](sizes-hpc.md) | HB, HC, H | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
-
-<br>
+| type | Größen | BESCHREIBUNG |
+|------|-------|-------------|
+| [Allgemeiner Zweck](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC  | Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. |
+| [Computeoptimiert](../sizes-compute.md) | Fsv2 | Hohes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Webserver, Network Appliances, Stapelverarbeitungsvorgänge und Anwendungsserver mit mittlerer Auslastung. |
+| [Arbeitsspeicheroptimiert](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, Dv2 | Hohes Verhältnis von Speicher zu CPU. Hervorragend geeignet für relationale Datenbankserver, mittlere bis große Caches und In-Memory-Analysen.                 |
+| [Speicheroptimiert](../sizes-storage.md) | Lsv2 | Hoher Datenträgerdurchsatz und E/A, ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  |
+| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Vorschau), NV, NVv3, NVv4 | Spezielle virtuelle Computer als Ziel für aufwendiges Grafikrendering und Videobearbeitung sowie für Modelltraining und Rückschlüsse (ND) mit Deep Learning. Mit einem oder mehreren GPUs verfügbar. |
+| [High Performance Computing](../sizes-hpc.md) | HB, HC, H | Unsere virtuellen Computer mit den schnellsten und leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
 - Informationen zu den Preisen der unterschiedlichen Größen finden Sie unter [Virtual Machines – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
 - Informationen zur Verfügbarkeit von VM-Größen in Azure-Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
-- Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
-- Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
-
+- Informationen zu den allgemeinen Einschränkungen von virtuellen Azure-Computern finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).
+- Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](../acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
 ## <a name="rest-api"></a>REST-API
 
@@ -52,7 +49,7 @@ Informationen zur Verwendung der REST-API, um VM-Größen abzufragen, finden Sie
 
 ## <a name="acu"></a>ACU
 
-Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](../acu.md) die Computeleistung von Azure-SKUs vergleichen können.
 
 ## <a name="benchmark-scores"></a>Benchmarkergebnisse
 
@@ -61,13 +58,11 @@ Weitere Informationen zur Computeleistung für virtuelle Linux-Computer unter Ve
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu den verschiedenen verfügbaren Größen von virtuellen Computern:
-- [Allgemeiner Zweck](sizes-general.md)
-- [Computeoptimiert](sizes-compute.md)
-- [Arbeitsspeicheroptimiert](sizes-memory.md)
-- [Speicheroptimiert](sizes-storage.md)
-- [GPU](sizes-gpu.md)
-- [High Performance Computing](sizes-hpc.md)
-- Überprüfen Sie die Seite [Vorherige Generation](sizes-previous-gen.md) auf die Serien A Basic und Standard, High Performance A8-A11, D/DSv1 (D1-4 und D11-14 v1), F/Fsv1, G/GS, Lsv1 und NVv2.
 
-
-
+- [Allgemeiner Zweck](../sizes-general.md)
+- [Computeoptimiert](../sizes-compute.md)
+- [Arbeitsspeicheroptimiert](../sizes-memory.md)
+- [Speicheroptimiert](../sizes-storage.md)
+- [GPU](../sizes-gpu.md)
+- [High Performance Computing](../sizes-hpc.md)
+- Auf der Seite [Vorherige Generation](../sizes-previous-gen.md) finden Sie die Serien A Standard, Dv1 (D1–4 und D11–14 v1) sowie A8–A11.

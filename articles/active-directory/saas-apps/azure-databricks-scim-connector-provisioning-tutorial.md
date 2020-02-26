@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050360"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370521"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Azure Databricks SCIM Connector für die automatische Benutzerbereitstellung
 
@@ -96,7 +96,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernamen für den Azure Databricks SCIM Connector-Administrator ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Azure Databricks SCIM Connector herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Azure Databricks SCIM Connector-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** den Wert des SCIM-Endpunkts ein. Die Mandanten-URL sollte das Format `https://<region>.azuredatabricks.net/api/2.0/preview/scim` haben. Der Wert für **region** ist in der URL der Azure Databricks-Homepage enthalten. Der SCIM-Endpunkt für die Region **westus** lautet beispielsweise `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Geben Sie den Tokenwert ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Azure Databricks SCIM Connector herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Azure Databricks SCIM Connector-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Bereitstellung](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 

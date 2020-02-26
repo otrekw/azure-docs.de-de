@@ -1,17 +1,17 @@
 ---
-title: Verwalten von StorSimple-Geräten mit Azure Resource Manager-Skripts
+title: Verwalten von StorSimple-Geräten mit AzureRM PowerShell-Skripts
 description: Erfahren Sie, wie mit Azure Resource Manager-Skripts StorSimple-Aufträge automatisiert werden.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276646"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471957"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts
 
@@ -25,7 +25,7 @@ Zum Automatisieren verschiedener StorSimple-Aufträge stehen folgende Beispielsk
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabelle mit SDK-basierten Azure Resource Manager-Beispielskripts
 
-| Azure Resource Manager-Skript                    | Beschreibung                                                                                                                                                                                                       |
+| Azure Resource Manager-Skript                    | BESCHREIBUNG                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Mit diesem Skript können Sie Ihr StorSimple-Gerät autorisieren, um den Datenverschlüsselungsschlüssel für den Dienst zu ändern.                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Dieses Skript erstellt ein Gerät der Serie StorSimple Cloud Appliance 8010 oder 8020. Das Cloudgerät kann dann konfiguriert und bei Ihrem StorSimple-Daten-Manager-Dienst registriert werden.                                                       |

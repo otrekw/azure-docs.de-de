@@ -1,5 +1,5 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Konfigurieren von virtuellen IPv6-Netzwerkendpunkten (Vorschau)'
+title: 'Azure CLI-Skriptbeispiel: Konfigurieren eines IPv6-Front-Ends'
 titlesuffix: Azure Virtual Network
 description: Aktivieren von IPv6-Endpunkten mithilfe der Azure CLI in Azure Virtual Network
 services: virtual-network
@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
-ms.openlocfilehash: 3df475ce89a3b1f5a1acfb20dc427fdb7a9b7d16
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0661c5231e2fce4d6a675c07be6b0ae914c99997
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248898"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201360"
 ---
 # <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>Konfigurieren von IPv6-Endpunkten im virtuellen Netzwerk: Skriptbeispiel (Vorschau)
 

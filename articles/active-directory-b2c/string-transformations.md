@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 69091fbcc2b6789abc7825632a56197427d34e4c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: d2ef446e10620895fff77e8160adc4a566929650
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045368"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484365"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -122,7 +122,7 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
-Erstellt einen Zeichenfolgen-Anspruch aus dem angegebenen Eingabeparameter in der Richtlinie.
+Erstellt einen Zeichenfolgenanspruch aus dem angegebenen Eingabeparameter in der Transformation.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 |----- | ----------------------- | --------- | ----- |
@@ -523,9 +523,9 @@ Bereinigt den Wert eines angegebenen Anspruchs.
 
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| OutputClaim | claim_to_null | string | Der Anspruch, dass der zugehörige Wert gleich NULL ist. |
+| OutputClaim | claim_to_null | string | Der Wert des Anspruchs ist auf NULL festgelegt. |
 
-Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eigenschaftensammlung eines Anspruchs entfernen. Folglich wird das Sitzungscookie kleiner. Im folgenden Beispiel wird der Wert des Anspruchstyps `TermsOfService` entfernt.
+Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eigenschaftensammlung eines Anspruchs entfernen, sodass das Sitzungscookie kleiner wird. Im folgenden Beispiel wird der Wert des Anspruchstyps `TermsOfService` entfernt.
 
 ```XML
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">

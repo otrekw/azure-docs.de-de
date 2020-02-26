@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975634"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462410"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – Leistungsoptionen für Hyperscale (Citus)
 
@@ -33,20 +33,23 @@ Sie können die Compute- und Speichereinstellungen für Workerknoten und den Koo
 Hyperscale (Citus)-Servergruppen sind in den folgenden Azure-Regionen verfügbar:
 
 * Amerika:
-    * Kanada, Mitte*
+    * Kanada, Mitte
+    * USA (Mitte)
     * East US
     * USA (Ost) 2
-    * USA, Norden-Mitte*
+    * USA Nord Mitte
     * USA, Westen 2
 * Asien-Pazifik:
-    * Australien, Osten*
+    * Australien (Osten)
+    * Japan, Osten
+    * Korea, Mitte
     * Asien, Südosten
 * Europa:
     * Nordeuropa
     * UK, Süden
     * Europa, Westen
 
-Regionen mit einem Sternchen (\*) unterstützen noch keine [Hochverfügbarkeit](concepts-hyperscale-high-availability.md).
+Einige dieser Regionen sind anfangs möglicherweise nicht für alle Azure-Abonnements aktiviert. Öffnen Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), wenn Sie eine Region aus der oben genannten Liste verwenden möchten, sie aber nicht in Ihrem Abonnement angezeigt wird, oder wenn Sie eine nicht in dieser Liste enthaltene Region verwenden möchten.
 
 ## <a name="pricing"></a>Preise
 Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/).

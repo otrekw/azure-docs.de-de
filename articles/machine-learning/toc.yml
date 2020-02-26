@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Problembehandlung und Debuggen
           href: how-to-troubleshoot-deployment.md
-    - name: Nutzen von Webdiensten
-      items:
-        - name: Nutzen in Echtzeit
+        - name: Erstellen von Clients
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Designer-Batchvorhersagen
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Überwachen von Modellen
-      items:
-        - name: Sammeln und Bewerten von Modelldaten
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Erkennen von Datenabweichungen
-          href: how-to-monitor-data-drift.md
-        - name: Überwachen mit Application Insights
-          href: how-to-enable-app-insights.md
+        - name: Überwachen von Modellen
+          items:
+            - name: Sammeln und Bewerten von Modelldaten
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Erkennen von Datenabweichungen
+              href: how-to-monitor-data-drift.md
+            - name: Überwachen mit Application Insights
+              href: how-to-enable-app-insights.md
     - name: Erstellen und Verwenden von ML-Pipelines
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Debuggen und Problembehandlung für den Schritt zur parallelen Ausführung
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Designer-Batchvorhersagen
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Verwalten von Ressourcenkontingenten
       displayName: limits
       href: how-to-manage-quotas.md

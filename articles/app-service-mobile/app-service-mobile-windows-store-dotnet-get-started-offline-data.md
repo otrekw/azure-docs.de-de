@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66ae11fb0532ae2a138eb8590eb92de15e997dfa
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 236d4c199a13b02bcd82ae02657bbd35e45f729b
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668405"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77458816"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Aktivieren der Offlinesynchronisierung für Ihre Windows-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center unterstützt End-to-End- und integrierte Dienste, die für die Entwicklung mobiler Apps von zentraler Bedeutung sind. Entwickler können **Build**-, **Test**- und **Verteilungs**dienste nutzen, um eine Pipeline für Continuous Integration und Delivery einzurichten. Nach der Bereitstellung der App können Entwickler den Status und die Nutzung ihrer App mithilfe der **Analyse**- und **Diagnose**dienste überwachen und mit Benutzern über den **Push**dienst interagieren. Entwickler können auch den **Authentifizierung**sdienst nutzen, um ihre Benutzer zu authentifizieren, und den **Daten**dienst, um App-Daten dauerhaft in der Cloud zu speichern und zu synchronisieren.
->
-> Falls Sie Clouddienste in Ihre mobile Anwendung integrieren möchten, sollten Sie sich noch heute für [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) registrieren.
 
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird das Hinzufügen der Offlineunterstützung zu einer App für die universelle Windows-Plattform (UWP) mithilfe eines Azure Mobile App-Back-Ends erläutert. Die Offlinesynchronisierung ermöglicht Endbenutzern die Interaktion mit einer mobilen App (Anzeigen, Hinzufügen und Ändern von Daten) auch ohne Netzwerkverbindung. Änderungen werden in einer lokalen Datenbank gespeichert. Sobald das Gerät wieder online ist, werden diese Änderungen mit dem Remote-Back-End synchronisiert.
@@ -37,12 +32,12 @@ Für dieses Tutorial gelten die folgenden Voraussetzungen:
 * [SQLite for Universal Windows Platform Development](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Aktualisieren der Client-App für die Unterstützung von Offlinefunktionen
-Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit einer lokalen Datenbank, wenn Sie sich in einem Offlineszenario befinden. Um diese Funktionen in der App zu verwenden, initialisieren Sie [SyncContext][synccontext] to a local store. Then reference your table through the [IMobileServiceSyncTable][IMobileServiceSyncTable]-Schnittstelle. Als lokaler Speicher auf dem Gerät wird SQLite verwendet.
+Offlinefunktionen der mobilen Azure-App ermöglichen Ihnen die Interaktion mit einer lokalen Datenbank, wenn Sie sich in einem Offlineszenario befinden. Um diese Funktionen in der App zu verwenden, initialisieren Sie [SyncContext][synccontext] Schnittstelle to a local store. Then reference your table through the [IMobileServiceSyncTable][IMobileServiceSyncTable]. Als lokaler Speicher auf dem Gerät wird SQLite verwendet.
 
 1. Installieren Sie die [SQLite-Laufzeit für die Universelle Windows-Plattform](https://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 2. Öffnen Sie in Visual Studio den NuGet-Paket-Manager für das UWP-App-Projekt, das Sie im Tutorial [Erstellen einer Windows-App] abgeschlossen haben.
     Suchen und installieren Sie das NuGet-Paket **Microsoft.Azure.Mobile.Client.SQLiteStore**.
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** > **Verweis hinzufügen...** >**Universal Windows**>**Erweiterungen**, und aktivieren Sie dann sowohl **SQLite for Universal Windows Platform** (SQLite für die universelle Windows-Plattform) als auch **Visual C++ 2015 Runtime for Universal Windows Platform apps** (Visual C++ 2015-Laufzeit für Apps der universellen Windows-Plattform).
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** > **Verweis hinzufügen...** > **Universal Windows** > **Erweiterungen**, und aktivieren Sie dann sowohl **SQLite for Universal Windows Platform** (SQLite für die universelle Windows-Plattform) als auch **Visual C++ 2015 Runtime for Universal Windows Platform apps** (Visual C++ 2015-Laufzeit für Apps der universellen Windows-Plattform).
 
     ![Referenz zum Hinzufügen von SQLite für UWP][1]
 4. Öffnen Sie die Datei „MainPage.xaml.cs“, und heben Sie die Auskommentierung der Definition `#define OFFLINE_SYNC_ENABLED` auf.
@@ -74,7 +69,7 @@ Beim ersten Ausführen der Anwendung ruft der `OnNavigatedTo`-Ereignishandler `I
 
    `UpdateCheckedTodoItem` ruft `SyncAsync` auf, um jedes abgeschlossene Element mit dem Mobile App-Back-End zu synchronisieren. `SyncAsync` ruft sowohl Push- als auch Pullvorgänge auf. **Bei jeder Ausführung eines Pullvorgangs für eine Tabelle, die der Client geändert hat, wird aber immer automatisch ein Pushvorgang ausgeführt**. Durch dieses Verhalten wird sichergestellt, dass alle Tabellen im lokalen Speicher und die Beziehungen konsistent bleiben. Dieses Verhalten kann zu einem unerwarteten Pushvorgang führen.  Weitere Informationen zu diesem Verhalten finden Sie unter [Offlinedatensynchronisierung in Azure Mobile Apps].
 
-## <a name="api-summary"></a>Zusammenfassung für die API
+## <a name="api-summary"></a>API-Zusammenfassung
 Zur Unterstützung der Offlinefunktionen mobiler Dienste haben Sie die Schnittstelle [IMobileServiceSyncTable] verwendet und [MobileServiceClient.SyncContext][synccontext] mit einer lokalen SQLite-Datenbank initialisiert. In einer Offlinesituation funktionieren die normalen CRUD-Operationen für Mobile Apps so, als ob die App immer noch verbunden wäre. Alle Operationen werden jedoch nur im lokalen Speicher ausgeführt. Zur Synchronisierung des lokalen Speichers mit dem Server werden die folgenden Methoden verwendet:
 
 * **[PushAsync]** Da diese Methode [IMobileServicesSyncContext] angehört, werden Änderungen an allen Tabellen per Pushvorgang an das Back-End übertragen. Nur Datensätze mit lokalen Änderungen werden an den Server gesendet.

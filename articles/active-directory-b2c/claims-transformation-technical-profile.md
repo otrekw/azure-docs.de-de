@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf06fe7d4e529eb04b156a2d61011198a6fe0978
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: fbc1d59ac401adedcf897d0c16edb6904c89acc3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949422"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193435"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils zur Anspruchstransformation in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -99,6 +99,12 @@ Sie können mit dem technischen Profil für die Anspruchstransformation eine Ans
   </OrchestrationSteps>
 </UserJourney>
 ```
+
+## <a name="metadata"></a>Metadaten
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 ## <a name="use-a-validation-technical-profile"></a>Verwenden eines technischen Validierungsprofils
 

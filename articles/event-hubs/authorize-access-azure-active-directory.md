@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169185"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368492"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory
 Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Hubs-Ressourcen. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -54,17 +54,23 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 - **Abonnement**: Die Rollenzuweisung gilt für alle Event Hubs-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
-> Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann. 
+> - Denken Sie daran, dass die Rollenzuweisung für die rollenbasierte Zugriffssteuerung bis zu fünf Minuten dauern kann. 
+> - Dieser Inhalt gilt für Event Hubs und Event Hubs für Apache Kafka. Weitere Informationen zur Unterstützung für Event Hubs für Kafka finden Sie unter [Verwenden von Azure Event Hubs aus Apache Kafka-Anwendungen – Sicherheit und Authentifizierung](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication).
+
 
 Weitere Informationen dazu, wie integrierte Rollen definiert sind, finden Sie unter [Grundlegendes zu Rollendefinitionen](../role-based-access-control/role-definitions.md#management-and-data-operations). Weitere Informationen zum Erstellen benutzerdefinierter RBAC-Rollen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/custom-roles.md).
+
+
 
 ## <a name="samples"></a>Beispiele
 - [Microsoft.Azure.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Für diese Beispiele wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet. Sie können jedoch problemlos ein Update auf die aktuelle **Azure.Messaging.EventHubs**-Bibliothek durchführen. Informationen dazu, wie sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
+    In diesen Beispielen wird die alte **Microsoft.Azure.EventHubs**-Bibliothek verwendet, aber Sie können sie problemlos so aktualisieren, dass die neueste **Azure.Messaging.EventHubs**-Bibliothek verwendet wird. Informationen dazu, wie Sie das Beispiel nicht mit der alten, sondern mit der neuen Bibliothek verwenden, finden Sie in der [Anleitung für die Migration von Microsoft.Azure.EventHubs zu Azure.Messaging.EventHubs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md).
 - [Azure.Messaging.EventHubs-Beispiele](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Dieses Beispiel wurde so aktualisiert, dass die aktuelle **Azure.Messaging.EventHubs**-Bibliothek verwendet wird.
+- [Event Hubs für Kafka – OAuth-Beispiele](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zum Zuweisen einer integrierten RBAC-Rolle zu einem Sicherheitsprinzipal finden Sie unter [Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mithilfe von Azure Active Directory](authenticate-application.md).

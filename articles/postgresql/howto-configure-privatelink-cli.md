@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281307"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425526"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver (Vorschau) mit Befehlszeilenschnittstelle
 
@@ -131,7 +131,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
 
-1. Öffnen Sie die heruntergeladene RDP*-Datei.
+1. Öffnen Sie die Datei *downloaded.rdp*.
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
@@ -159,30 +159,31 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. Testen Sie die Verbindung über den privaten Link für den PostgreSQL-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) verwendet.
 
-4. In **New connection**, enter or select this information:
+4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Setting | Value |
+    | Einstellung | value |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | Servertyp| Wählen Sie **PostgreSQL** aus.|
+    | Servername| Wählen Sie *mydemopostgresserver.privatelink.postgres.database.azure.com* aus. |
+    | Benutzername | Geben Sie einen Benutzernamen als username@servername ein, der während der Erstellung des PostgreSQL-Servers angegeben wird. |
+    |Kennwort |Geben Sie ein während der Erstellung des PostgreSQL-Servers angegebenes Kennwort ein. |
+    |SSL|Wählen Sie **Erforderlich** aus.|
     ||
 
-5. Select Connect.
+5. Wählen Sie „Verbinden“ aus.
 
-6. Browse databases from left menu.
+6. Durchsuchen Sie Datenbanken im linken Menü.
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. (Optional:) Erstellen Sie die PostgreSQL-Datenbank, oder fragen Sie sie ab.
 
-8. Close the remote desktop connection to myVm.
+8. Schließen Sie die Remotedesktopverbindung mit „myVm“.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit „az group delete“ entfernen: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

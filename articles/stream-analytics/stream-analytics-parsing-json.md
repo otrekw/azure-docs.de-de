@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905452"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484586"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analysieren von JSON- und AVRO-Daten in Azure Stream Analytics
 
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>Analysieren des JSON-Datensatzes in SQL-Verweisdaten
+Bei der Verwendung von Azure SQL-Datenbank als Referenzdaten in Ihrem Auftrag können Sie eine Spalte mit Daten im JSON-Format nutzen. Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+
+|DeviceID|Daten|
+|-|-|
+|12345|{"key" : "value1"}|
+|54321|{"key" : "value2"}|
+
+Sie können den JSON-Datensatz in der Spalte *Data* analysieren, indem Sie eine einfache benutzerdefinierte JavaScript-Funktion schreiben.
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+Sie können dann in Ihrer Stream Analytics-Abfrage wie nachfolgend gezeigt einen Schritt erstellen, um auf die Felder Ihrer JSON-Einträge zuzugreifen:
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>Arraydatentypen

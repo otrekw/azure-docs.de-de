@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505811"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484399"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure
 
@@ -79,15 +79,17 @@ Wenn Sie Verfügbarkeitszonen verwenden, versuchen Sie es mit einer anderen Zone
 
 Wenn Ihre Zuordnungsanforderung groß ist (mehr als 500 Kerne umfasst), lesen Sie die Anweisungen in den folgenden Abschnitten, um die Anforderung in kleinere Bereitstellungen aufzuteilen.
 
+Versuchen Sie, [den virtuellen Computer erneut bereitzustellen](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows). Durch die erneute Bereitstellung des virtuellen Computers wird er einem neuen Cluster in der Region zugeordnet.
+
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Zuordnungsfehler bei älteren VM-Größen (Av1, Dv1, DSv1, D15v2, DS15v2 usw.)
 
 Im Zuge der Erweiterung der Azure-Infrastruktur stellen wir Hardware einer neueren Generation bereit, die zur Unterstützung der neuesten VM-Typen entwickelt wurde. Einige VMs der älteren Serien können nicht in unserer Infrastruktur der neuesten Generation ausgeführt werden. Aus diesem Grund können bei Kunden gelegentlich Zuordnungsfehler bei diesen älteren SKUs auftreten. Um dieses Problem zu vermeiden, empfehlen wir Kunden, die VMs älterer Serien verwenden, zu den entsprechenden neueren VMs zu wechseln: Diese VMs sind für die aktuelle Hardware optimiert und bieten Ihnen bessere Preise und höhere Leistung. 
 
 |Ältere VM-Serie/-Größe|Empfohlene neuere VM-Serie/-Größe|Weitere Informationen|
 |----------------------|----------------------------|--------------------|
-|Av1-Serie|[Av2-Serie](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1- oder DSv1-Serie (D1 bis D5)|[Dv3- oder DSv3-Serie](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1- oder DSv1-Serie (D11 bis D14)|[Ev3- oder ESv3-Serie](../windows/sizes-memory.md#ev3-series)|
+|Av1-Serie|[Av2-Serie](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1- oder DSv1-Serie (D1 bis D5)|[Dv3- oder DSv3-Serie](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1- oder DSv1-Serie (D11 bis D14)|[Ev3- oder ESv3-Serie](../ev3-esv3-series.md)|
 |D15v2 oder DS15v2|Wenn Sie das Ressourcen-Manager-Bereitstellungsmodell verwenden, um die Vorteile der größeren VM-Größen zu nutzen, sollten Sie den Umstieg auf D16v3/DS16v3 oder D32v3/DS32v3 in Erwägung ziehen. Diese sind für die Ausführung auf Hardware der neuesten Generation konzipiert. Wenn Sie das Ressourcen-Manager-Bereitstellungsmodell verwenden, um sicherzustellen, dass Ihre VM-Instanz auf für einen einzelnen Kunden dedizierte Hardware isoliert ist, sollten Sie in Erwägung ziehen, auf die neuen isolierten VM-Größen E64i_v3 oder E64is_v3 umzusteigen, die für die Ausführung auf Hardware der neuesten Generation konzipiert sind. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Zuordnungsfehler bei großen Bereitstellungen (mehr als 500 Kerne)

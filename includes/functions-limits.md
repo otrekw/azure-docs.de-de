@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4643bb7f95e4fd1249d3ab6699c1f835c77f18fe
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75658524"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198342"
 ---
 | Resource | [Verbrauchstarif](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontales Skalieren | Ereignisgesteuert | Ereignisgesteuert | [Manuelle Skalierung/Autoskalierung](../articles/app-service/manage-scale-up.md) | 
 | Maximale Anzahl Instanzen | 200 | 100 | 10 – 20 |
 |Standardmäßige [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |5 | 30 |30<sup>2</sup> |
-|Maximale [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | 60 | unbegrenzt<sup>3</sup> |
+|Maximale [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | unbegrenzt<sup>8</sup> | unbegrenzt<sup>3</sup> |
 | Maximale Anzahl ausgehender Verbindungen (pro Instanz) | 600 aktive (insgesamt 1.200) | unbounded | unbounded |
 | Maximale Anforderungsgröße (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximale Länge der Abfragezeichenfolge<sup>4</sup> | 4096 | 4096 | 4096 |
@@ -35,4 +35,5 @@ ms.locfileid: "75658524"
 <sup>4</sup>Diese Grenzwerte werden [auf dem Host festgelegt](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  
 <sup>5</sup>Die tatsächliche Anzahl der Funktions-Apps, die Sie hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.  
 <sup>6</sup> Der Speichergrenzwert entspricht der gesamten Inhaltsgröße aller Apps im gleichen App Service-Plan im temporären Speicher. Der Verbrauchsplan verwendet Azure Files zur temporären Speicherung.  
-<sup>7</sup> Wenn Ihre Funktions-App unter einem [Verbrauchsplan](../articles/azure-functions/functions-scale.md#consumption-plan) gehostet wird, wird nur die CNAME-Option unterstützt. Für Funktions-Apps unter einem [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) oder einem [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan) können Sie eine benutzerdefinierte Domäne entweder mit einem CNAME- oder einem A-Eintrag zuordnen.
+<sup>7</sup> Wenn Ihre Funktions-App unter einem [Verbrauchsplan](../articles/azure-functions/functions-scale.md#consumption-plan) gehostet wird, wird nur die CNAME-Option unterstützt. Für Funktions-Apps unter einem [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) oder einem [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan) können Sie eine benutzerdefinierte Domäne entweder mit einem CNAME- oder einem A-Eintrag zuordnen.  
+<sup>8</sup> Garantiert für bis zu 60 Minuten

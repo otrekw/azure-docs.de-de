@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 125f92b64ee745a595d15ccacafb6a62414955a9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157532"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198699"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
 > [!NOTE]
 > Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an AskAzureDBforPostgreSQL@service.microsoft.com.
 
-Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
+Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
 
 Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver wird auf Serverebene festgelegt. Bei einem bestimmten Server wird ein vom Kunden verwalteter Schlüssel verwendet, der als Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) bezeichnet wird, um den vom Dienst verwendeten Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) zu verschlüsseln. Der KEK ist ein asymmetrischer Schlüssel, der in einer vom Kunden verwalteten [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md)-Instanz im Besitz des Kunden gespeichert wird. Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) und der Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) werden weiter unten in diesem Artikel ausführlicher beschrieben.
 

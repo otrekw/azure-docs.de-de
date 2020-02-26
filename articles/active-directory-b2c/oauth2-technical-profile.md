@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 53190eda66347c23b981c5d6e0631630e9989deb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840365"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198019"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -77,7 +77,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ## <a name="metadata"></a>Metadaten
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob das Token in einem Anspruch, der vom Identitätsanbieter zurückgegeben wurde, enthalten und mit dem angegebenen Token identisch ist. |
@@ -96,12 +96,13 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ResponseErrorCodeParamName | Nein | Der Name des Parameters mit der Fehlermeldung, die über HTTP 200 (OK) zurückgegeben wurde. |
 | ExtraParamsInAccessTokenEndpointResponse | Nein | Enthält die zusätzlichen Parameter, die in der Antwort auf **AccessTokenEndpoint** von einigen Identitätsanbietern zurückgegeben werden können. Beispielsweise enthält die Antwort von **AccessTokenEndpoint** einen zusätzlichen Parameter wie `openid`, der neben access_token in der Abfragezeichenfolge einer **ClaimsEndpoint**-Anforderung ein erforderlicher Parameter ist. Mehrere Parameternamen sollten mit einem Escapezeichen versehen und durch ein Komma (,) voneinander getrennt werden. |
 | ExtraParamsInClaimsEndpointRequest | Nein | Enthält die zusätzlichen Parameter, die in der **ClaimsEndpoint**-Anforderung von einigen Identitätsanbietern zurückgegeben werden können. Mehrere Parameternamen sollten mit einem Escapezeichen versehen und durch ein Komma (,) voneinander getrennt werden. |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen. |
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: e534754e46e6f2ad9b99b67d24d9f7da63a51a4f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: cd30803735c5453c286788b8669a3d2f02c418a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258375"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468047"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
@@ -37,7 +37,7 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Met
 | Visualisieren | Heften Sie ein Diagramm aus dem Metrik-Explorer an ein [Azure-Dashboard](../learn/tutorial-app-dashboards.md) an.<br>Erstellen Sie eine [Arbeitsmappe](../app/usage-workbooks.md) zum Kombinieren mehrerer Datasets in einem interaktiven Bericht. Exportieren Sie die Ergebnisse einer Abfrage für [Grafana](grafana-plugin.md), um die Dashboardfunktionen zu nutzen und die Daten mit anderen Datenquellen zu kombinieren. |
 | Warnung | Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet. |
 | Automatisieren |  Verwenden von [Autoskalierung](autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einem Metrikwert über- oder unterschritten wird, herauf- oder herabzusetzen. |
-| Export | [Weiterleiten von Metriken an Protokolle](resource-logs-collect-storage.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
+| Exportieren | [Weiterleiten von Metriken an Protokolle](resource-logs-collect-storage.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
 | Gerätehandle | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/cli/azure/monitor/metrics). |
 | Archivieren | [Archivieren](..//learn/tutorial-archive-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung. |
 
@@ -102,7 +102,7 @@ Für die meisten Ressourcen in Azure werden Metriken für 93 Tage gespeichert. E
 
 **Gastbetriebssystemmetriken**
 -   **Klassische Gastbetriebssystemmetriken:** Dies ist Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](../platform/diagnostics-extension-overview.md) oder der [Diagnose-Erweiterung für Linux (LAD)](../../virtual-machines/extensions/diagnostics-linux.md) erfasst und an ein Azure Storage-Konto weitergeleitet werden. Die Vermerkdauer für diese Metriken beträgt 14 Tage.
--   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der Diagnose-Erweiterung für Windows (WAD) erfasst und an die [Azure Monitor-Senke](diagnostics-extension-overview.md#data-storage) gesendet werden. Alternativ können Sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
+-   **An Azure Monitor-Metriken gesendete Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die von der [Diagnose-Erweiterung für Windows (WAD)](diagnostics-extension-overview.md) erfasst und an die [Azure Monitor-Datensenke](diagnostics-extension-overview.md#data-destinations) gesendet werden. Alternativ können sie auch über den [InfluxData Telegraf-Agent](https://www.influxdata.com/time-series-platform/telegraf/) auf Linux-Computern gesendet werden. Die Vermerkdauer für diese Metriken beträgt 93 Tage.
 -   **Vom Log Analytics-Agent erfasste Gastbetriebssystemmetriken:** Dies sind Leistungsindikatoren, die vom Log Analytics-Agent erfasst und an einen Log Analytics-Arbeitsbereich gesendet werden. Die Vermerkdauer für diese Metriken beträgt 31 Tage. Sie kann auf bis zu 2 Jahre verlängert werden.
 
 **Auf Application Insights-Protokollen basierende Metriken**. 

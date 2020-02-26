@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047844"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482883"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 
@@ -24,7 +24,9 @@ Wir haben eine neue Version von Azure Monitor für VMs veröffentlicht. Kunden, 
 
 Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
-In den nächsten ein bis zwei Wochen werden die Leistungsansichten ebenfalls für die Verwendung dieser neuen Tabelle aktualisiert.
+In den Leistungsansichten werden nun die in der Tabelle *InsightsMetrics* gespeicherten Daten verwendet.  Wenn Sie noch kein Upgrade zur Nutzung der aktuellen VMInsights-Lösung in Ihrem Arbeitsbereich durchgeführt haben, werden in Ihren Diagrammen keine Informationen mehr angezeigt.  Sie können wie weiter unten beschrieben ein Upgrade über die Seite **Erste Schritte** ausführen.
+
+Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
 Uns ist bewusst, dass die Aufforderung zum Upgrade für bestehende Kunden eine Unterbrechung ihres Workflows bedeutet. Deshalb haben wir uns entschieden, dies zum jetzigen Zeitpunkt in der Public Preview und nicht erst später nach der allgemeinen Verfügbarkeit durchzuführen.
 
@@ -34,6 +36,8 @@ Uns ist bewusst, dass die Aufforderung zum Upgrade für bestehende Kunden eine U
 Wir haben eine neue Lösung mit dem Namen VMInsights veröffentlicht, die zusätzliche Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst. 
 
 Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich eingerichtet, um die Daten an die Tabelle *Perf* zu senden. Bei dieser neuen Lösung werden die Daten an die Tabelle *InsightsMetrics* gesendet, die auch von Azure Monitor für Container verwendet wird. Aufgrund dieses Tabellenschemas können wir zusätzliche Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle *Perf* kompatibel sind.
+
+Die Leistungsdiagramme wurden so aktualisiert, dass sie die in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden. Sie können wie nachfolgend beschrieben über die Seite **Erste Schritte** ein Update zur Verwendung der Tabelle *InsightsMetrics* ausführen.
 
 
 ## <a name="how-do-i-upgrade"></a>Wie führe ich ein Upgrade aus?

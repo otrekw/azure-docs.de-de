@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: efd4a9333b5fb02c18b2f6a6d0f8ce58bfb8f220
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185688"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472382"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Tutorial: Erstellen einer Pipeline für die KI-Anreicherung mit C# und dem .NET SDK
 
@@ -30,7 +30,7 @@ In diesem Tutorial verwenden Sie das .NET SDK für die folgenden Aufgaben:
 
 Die Ausgabe ist ein für die Volltextsuche geeigneter Suchindex in Azure Cognitive Search. Sie können den Index mit weiteren Standardfunktionen erweitern, wie etwa [Synonymen](search-synonyms.md), [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [Analysetools](search-analyzers.md) und [Filtern](search-filters.md).
 
-In diesem Tutorial wird der kostenlose Dienst verwendet. Die Anzahl kostenloser Transaktionen ist allerdings auf 20 Dokumente pro Tag beschränkt. Falls Sie dieses Tutorial mehrmals am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz, um mehr Ausführungen zu ermöglichen.
+In diesem Tutorial wird der kostenlose Dienst verwendet. Die Anzahl kostenloser Transaktionen ist allerdings auf 20 Dokumente pro Tag beschränkt. Wenn Sie dieses Tutorial mehrmals am selben Tag ausführen möchten, löschen Sie den Indexer, um den Zähler zurückzusetzen.
 
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie eine kostenpflichtige Cognitive Services-Ressource verwenden. Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumententschlüsselungsphase in Azure Cognitive Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
@@ -49,7 +49,7 @@ In diesem Tutorial werden die folgenden Dienste, Tools und Daten verwendet.
 
 + [Installieren Sie Visual Studio](https://visualstudio.microsoft.com/) für die Verwendung als IDE.
 
-+ [Erstellen Sie einen Azure Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
++ [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
 ## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
@@ -85,7 +85,7 @@ Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelld
 
 Es gibt andere Möglichkeiten zum Angeben der Verbindungszeichenfolge, etwa das Bereitstellen einer Shared Access Signature (SAS). Weitere Informationen über Anmeldeinformationen für Datenquellen finden Sie unter [Indizieren von Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
 
-## <a name="set-up-your-environment"></a>Einrichten der Umgebung
+## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
 Öffnen Sie zunächst Visual Studio, und erstellen Sie ein neues Konsolen-App-Projekt, das mit .NET Core ausgeführt werden kann.
 
@@ -677,7 +677,7 @@ In diesem Tutorial wurde überprüft, ob Indexer oder Indizes vorhanden waren. W
 
 Sie können auch das Portal verwenden, um Indizes, Indexer und Qualifikationsgruppen zu löschen.
 
-In dem Maß, da Ihr Code reift, kann es sinnvoll sein, die Neuerstellungsstrategie neu zu definieren. Weitere Informationen finden  Sie unter [Neuerstellen eines Indexes](search-howto-reindex.md).
+In dem Maß, da Ihr Code reift, kann es sinnvoll sein, die Neuerstellungsstrategie neu zu definieren. Weitere Informationen finden Sie unter [Neuerstellen eines Indexes](search-howto-reindex.md).
 
 ## <a name="takeaways"></a>Wesentliche Punkte
 

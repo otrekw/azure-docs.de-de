@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850725"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484314"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
 
@@ -81,10 +81,8 @@ Eine E-Mail-Adresse kann als Teil eines Benutzerflows erforderlich sein. Wenn si
 
 Es ist in diesen Fällen nicht garantiert, dass die E-Mail-Adresse überprüft wird. Ein Mandantenadministrator kann die E-Mail-Überprüfung in den grundlegenden Richtlinien für lokale Konten deaktivieren. Selbst wenn die Überprüfung der E-Mail-Adresse aktiviert ist, werden die Adressen nicht überprüft, wenn sie von einem sozialen Netzwerk als Identitätsanbieter stammen und nicht geändert wurden.
 
-Nur die Eigenschaften **otherMails** und **signInNames** werden über die Active Directory Graph-API verfügbar gemacht. Die E-Mail-Adresse in der Eigenschaft für die sichere Authentifizierung ist nicht verfügbar.
+Nur die Eigenschaften **otherMails** und **signInNames** werden über die Microsoft Graph-API verfügbar gemacht. Die E-Mail-Adresse in der Eigenschaft für die sichere Authentifizierung ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-user-flows.md).
-
-

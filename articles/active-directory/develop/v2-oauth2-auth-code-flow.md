@@ -17,12 +17,12 @@ ms.date: 01/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8a847afa2253223ebe9450d350cd18f5f659e0e3
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686a9681394a2d23dafbc03cb533d80ca0f8723b
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159776"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484467"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -90,7 +90,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| Parameter | BESCHREIBUNG  |
+| Parameter | Beschreibung  |
 |-----------|--------------|
 | `code` | Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. Autorisierungscodes sind kurzlebig und laufen in der Regel nach etwa zehn Minuten ab. |
 | `state` | Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
@@ -114,7 +114,7 @@ error=access_denied
 
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
-| Fehlercode  | Beschreibung    | Clientaktion   |
+| Fehlercode  | BESCHREIBUNG    | Clientaktion   |
 |-------------|----------------|-----------------|
 | `invalid_request` | Protokollfehler, z.B. ein fehlender erforderlicher Parameter. | Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstest entdeckt wird. |
 | `unauthorized_client` | Die Clientanwendung darf keinen Autorisierungscode anfordern. | Dieser Fehler tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
@@ -142,7 +142,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
 > [!TIP]
@@ -156,7 +156,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | required   | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ersten Abschnitt angefordert wurden. Die Bereiche müssen alle von einer einzelnen Ressource stammen, zusammen mit den OIDC-Bereichen (`profile`, `openid`, `email`). Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
 | `code`          | required  | Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
 | `redirect_uri`  | required  | Derselbe Wert für den Umleitungs-URI, der zum Abrufen des Autorisierungscodes verwendet wurde |
-| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer systemeigenen App verwenden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden.  |
+| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Sie sollten den geheimen Anwendungsschlüssel nicht in einer systemeigenen App verwenden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern.  Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. Weitere Informationen finden Sie [hier](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | optional  | Derselbe code_verifier-Parameter, der auch zum Abrufen von „authorization_code“ verwendet wurde. Erforderlich, wenn PKCE bei der Anforderung für die Gewährung des Autorisierungscodes verwendet wurde. Weitere Informationen finden Sie unter [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
@@ -200,7 +200,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter         | BESCHREIBUNG    |
+| Parameter         | Beschreibung    |
 |-------------------|----------------|
 | `error`       | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -254,21 +254,21 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &refresh_token=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq...
 &grant_type=refresh_token
-&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps
+&client_secret=JqQX2PNo9bpM0uEihUPzyrh      // NOTE: Only required for web apps. This secret needs to be URL-Encoded
 ```
 
 > [!TIP]
 > Führen Sie diese Anforderung in Postman aus. (Vergessen Sie nicht, `refresh_token` zu ersetzen) [![Diese Anforderung in Postman ausführen](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 > 
 
-| Parameter     |                | Beschreibung        |
+| Parameter     |                | BESCHREIBUNG        |
 |---------------|----------------|--------------------|
 | `tenant`        | required     | Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Grundlagen zu Protokollen](active-directory-v2-protocols.md#endpoints).   |
 | `client_id`     | required    | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `grant_type`    | required    | Muss der `refresh_token` für diesen Abschnitt des Autorisierungscodeflusses sein. |
 | `scope`         | required    | Eine durch Leerzeichen getrennte Liste von Bereichen. Die in diesem Abschnitt angeforderten Bereiche müssen den Bereichen entsprechen oder eine Teilmenge der Bereiche sein, die im ursprünglichen Autorisierungscode-Abschnitt angefordert wurden. Wenn die in dieser Anforderung angegebenen Bereiche mehrere Ressourcenserver umfassen, gibt der Microsoft Identity Platform-Endpunkt ein Token für die im ersten Bereich angegebene Ressource zurück. Eine ausführlichere Erläuterung von Bereichen finden Sie in [Berechtigungen, Zustimmung und Bereiche](v2-permissions-and-consent.md). |
 | `refresh_token` | required    | Das Aktualisierungstoken, das Sie im zweiten Abschnitt des Vorgangs erhalten haben. |
-| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern. |
+| `client_secret` | erforderlich für Web-Apps | Der geheime App-Schlüssel, den Sie im App-Registrierungsportal für Ihre App erstellt haben. Er sollte nicht in einer systemeigenen App verwendet werden, da geheime Client-Schlüssel nicht zuverlässig auf Geräten gespeichert werden können. Er ist erforderlich für Web-Apps und Web-APIs, die die Möglichkeit haben, den geheimen Client-Schlüssel sicher auf dem Server zu speichern. Dieses Geheimnis muss URL-codiert sein. Weitere Informationen finden Sie [hier](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Erfolgreiche Antwort
 
@@ -284,7 +284,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| Parameter     | BESCHREIBUNG         |
+| Parameter     | Beschreibung         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | Das angeforderte Zugriffstoken. Die App kann dieses Token zur Authentifizierung bei geschützten Ressourcen verwenden, wie z.B. eine Web-API. |
 | `token_type`    | Gibt den Wert des Tokentyps an. Der Bearertyp ist der einzige Typ, den Azure AD unterstützt. |
@@ -308,7 +308,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter         | BESCHREIBUNG                                                                                        |
+| Parameter         | Beschreibung                                                                                        |
 |-------------------|----------------------------------------------------------------------------------------------------|
 | `error`           | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können.           |

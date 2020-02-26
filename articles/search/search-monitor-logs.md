@@ -1,0 +1,164 @@
+---
+title: Erfassen von Protokolldaten
+titleSuffix: Azure Cognitive Search
+description: Erfassen und analysieren Sie Protokolldaten, indem Sie eine Diagnoseeinstellung aktivieren, und verwenden Sie dann die Kusto Query Language, um die Ergebnisse zu untersuchen.
+manager: nitinme
+author: HeidiSteen
+ms.author: heidist
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 02/18/2020
+ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462355"
+---
+# <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
+
+Diagnose- oder Betriebsprotokolle bieten Einblicke in die detaillierten Vorgänge von Azure Cognitive Search und sind für die Überwachung von Dienst- und Workloadprozessen nützlich. Intern werden Protokolle für einen kurzen Zeitraum im Back-End gespeichert, der für den Fall, dass Sie ein Supportticket erstellen, für die Untersuchung und Analyse ausreicht. Wenn Sie jedoch eine Selbststeuerung der Betriebsdaten wünschen, sollten Sie eine Diagnoseeinstellung konfigurieren, um anzugeben, wo die Protokollinformationen gesammelt werden.
+
+Das Einrichten von Protokollen ist hilfreich für die Diagnose und die Beibehaltung des Verwendungsverlaufs. Nachdem Sie die Protokollierung aktiviert haben, können Sie Abfragen ausführen oder Berichte für die strukturierte Analyse erstellen.
+
+In der folgenden Tabelle werden Optionen zum Erfassen und Beibehalten von Daten aufgelistet.
+
+| Resource | Syntaxelemente |
+|----------|----------|
+| [Senden an den Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Ereignisse und Metriken werden an einen Log Analytics-Arbeitsbereich gesendet, der im Portal abgefragt werden kann, um ausführliche Informationen zurückzugeben. Eine Einführung finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata). |
+| [Archivieren mit Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Ereignisse und Metriken werden in einem Blobcontainer archiviert und in JSON-Dateien gespeichert. Protokolle können sehr präzise sein (nach Stunde/Minute), was für die Untersuchung eines bestimmten Vorfalls nützlich ist, aber nicht für eine Untersuchung mit offenem Ende. Mit einem JSON-Editor können Sie eine unformatierte Protokolldatei oder Power BI anzeigen, um Protokolldaten zu aggregieren und zu visualisieren.|
+| [Streamen an Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Ereignisse und Metriken werden an einen Azure Event Hubs-Dienst gestreamt. Wählen Sie diese Lösung als alternativen Datensammlungsdienst für sehr große Ereignisprotokolle aus. |
+
+Azure Monitor-Protokolle und Blob Storage sind als kostenlose Dienste verfügbar, sodass Sie sie während der Gültigkeitsdauer Ihres Azure-Abonnements kostenlos testen können. Application Insights kann kostenlos registriert und verwendet werden, sofern die Größe der Anwendungsdaten bestimmte Grenzwerte nicht überschreitet. (Details finden Sie unter [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/monitor/).)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie Log Analytics oder Azure Storage verwenden, können Sie im Voraus Ressourcen erstellen.
+
++ [Erstellen eines Log Analytics-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+
++ [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+
+## <a name="enable-data-collection"></a>Aktivieren der Datensammlung
+
+Diagnoseeinstellungen geben an, wie protokollierte Ereignisse und Metriken erfasst werden.
+
+1. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
+
+   ![Diagnoseeinstellungen](./media/search-monitor-usage/diagnostic-settings.png "Diagnoseeinstellungen")
+
+1. Wählen Sie **+ Diagnoseeinstellung hinzufügen**  aus.
+
+1. Aktivieren Sie **Log Analytics**, wählen Sie den Arbeitsbereich und dann **OperationLogs** und **AllMetrics** aus.
+
+   ![Konfigurieren der Datensammlung](./media/search-monitor-usage/configure-storage.png "Konfigurieren der Datensammlung")
+
+1. Speichern Sie die Einstellung.
+
+1. Verwenden Sie nach dem Aktivieren der Protokollierung ihren Suchdienst, um mit dem Generieren von Protokollen und Metriken zu beginnen. Es dauert eine Weile, bis protokollierte Ereignisse und Metriken verfügbar werden.
+
+Log Analytics: Es dauert mehrere Minuten, bis die Daten verfügbar sind. Anschließend können Sie Kusto-Abfragen ausführen, um Daten zurückzugeben. Weitere Informationen finden Sie unter [Überwachen von Abfrageanforderungen](search-monitor-logs.md).
+
+Blobspeicher: Die Container werden nach einer Stunde im Blobspeicher angezeigt. Es gibt einen Blob pro Stunde pro Container. Container werden nur erstellt, wenn eine Aktivität zum Protokollieren oder Messen vorhanden ist. Beim Kopieren der Daten in ein Speicherkonto werden sie im JSON-Format formatiert und in zwei Containern platziert:
+
++ „insights-logs-operationlogs“: für Suchdatenverkehrsprotokolle
++ „insights-metrics-pt1m“: für Metriken
+
+## <a name="query-log-information"></a>Abfragen von Protokollinformationen
+
+In Diagnoseprotokollen enthalten zwei Tabellen Protokolle und Metriken für Azure Cognitive Search: **AzureDiagnostics** und **AzureMetrics**.
+
+1. Wählen Sie unter **Überwachung** die Option **Protokolle** aus.
+
+1. Geben Sie im Abfragefenster **AzureMetrics** ein. Führen Sie diese einfache Abfrage aus, um sich mit den in dieser Tabelle gesammelten Daten vertraut zu machen. Scrollen Sie in der Tabelle, um Metriken und Werte anzuzeigen. Beachten Sie den Datensatzzähler am oberen Rand. Wenn Ihr Dienst eine Weile lang Metriken gesammelt hat, können Sie das Zeitintervall anpassen, um ein verwaltbares Dataset zu erhalten.
+
+   ![AzureMetrics-Tabelle](./media/search-monitor-usage/azuremetrics-table.png "AzureMetrics-Tabelle")
+
+1. Geben Sie die folgende Abfrage ein, um ein tabellarisches Resultset zurückzugeben.
+
+   ```
+   AzureMetrics
+    | project MetricName, Total, Count, Maximum, Minimum, Average
+   ```
+
+1. Wiederholen Sie die vorherigen Schritte, beginnend mit **AzureDiagnostics**, um alle Spalten zu Informationszwecken zurückzugeben, gefolgt von einer selektiveren Abfrage, mit der interessantere Informationen extrahiert werden.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search" 
+   ```
+
+   ![AzureDiagnostics-Tabelle](./media/search-monitor-usage/azurediagnostics-table.png "AzureDiagnostics-Tabelle")
+
+## <a name="log-schema"></a>Protokollschema
+
+Datenstrukturen, die Azure Cognitive Search-Protokolldaten enthalten, entsprechen dem folgenden Schema. 
+
+Blobspeicher: Jedes Blob hat ein Stammobjekt mit dem Namen **records**, das ein Array von Protokollobjekten enthält. Jedes Blob enthält Einträge zu allen Vorgängen, die während einer bestimmten Stunde erfolgt sind.
+
+Die folgende Tabelle ist eine partielle Liste häufiger Felder für die Diagnoseprotokollierung.
+
+| Name | type | Beispiel | Notizen |
+| --- | --- | --- | --- |
+| timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| operationName |string |„Query.Search“ |Name des Vorgangs |
+| operationVersion |string |"2019-05-06" |Die verwendete API-Version |
+| category |string |„OperationLogs“ |Konstante |
+| resultType |string |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
+| resultSignature |INT |200 |HTTP-Ergebniscode |
+| durationMS |INT |50 |Dauer des Vorgangs in Millisekunden. |
+| properties |Objekt (object) |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
+
+### <a name="properties-schema"></a>Eigenschaftsschema
+
+Die folgenden Eigenschaften gelten speziell für Azure Cognitive Search.
+
+| Name | type | Beispiel | Notizen |
+| --- | --- | --- | --- |
+| Description_s |string |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
+| Documents_d |INT |42 |Anzahl von verarbeiteten Dokumenten |
+| IndexName_s |string |„test-index“ |Name des Indexes, der dem Vorgang zugeordnet ist |
+| Query_s |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
+
+## <a name="metrics-schema"></a>Metrikenschema
+
+Metriken werden für Abfrageanforderungen erfasst und in Intervallen von einer Minute gemessen. Jede Metrik macht Mindest-, Höchst- und Durchschnittswerte pro Minute verfügbar. Weitere Informationen finden Sie unter [Überwachen von Abfrageanforderungen](search-monitor-queries.md).
+
+| Name | type | Beispiel | Notizen |
+| --- | --- | --- | --- |
+| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| metricName |string |„Latency“ |Der Name der Metrik |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
+| average |INT |64 |Der Durchschnittswert der unformatierten Stichproben im Metrikzeitintervall, Einheiten in Sekunden oder Prozentsatz, abhängig von der Metrik. |
+| minimum |INT |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden. |
+| maximum |INT |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden.  |
+| total |INT |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden.  |
+| count |INT |4 |Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls von einem Knoten an das Protokoll ausgegeben werden.  |
+| timegrain |string |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601. |
+
+Es ist üblich, dass Abfragen in Millisekunden ausgeführt werden, sodass nur Abfragen, die als Sekunden gemessen werden, in Metriken wie QPS angezeigt werden.
+
+Bei der Metrik **Suchabfragen pro Sekunde** ist der Mindestwert der niedrigste Wert für Suchabfragen pro Sekunde, der während dieser Minute registriert wurde. Dasselbe gilt für den Höchstwert. Der Durchschnittswert ist das Aggregat der gesamten Minute. Innerhalb einer Minute kann beispielsweise folgendes Muster vorliegen: Für eine Sekunde tritt eine sehr hohe Last auf (dies ist der Höchstwert für „SearchQueriesPerSecond“), gefolgt von 58 Sekunden mit mittlerer Last sowie einer Sekunde mit nur einer Abfrage, was der Mindestwert ist.
+
+Für **Gedrosselte Suchabfragen in Prozent** entsprechen der Mindest-, Höchst-, Durchschnitts- und Gesamtwert demselben Wert, nämlich dem Prozentsatz von Suchabfragen, die gedrosselt wurden, basierend auf der Gesamtanzahl von Suchabfragen während einer Minute.
+
+## <a name="view-raw-log-files"></a>Anzeigen unformatierter Protokolldateien
+
+Der Blobspeicher wird für die Archivierung von Protokolldateien verwendet. Sie können die Protokolldatei mit einem beliebigen JSON-Editor anzeigen. Wenn Sie über keinen verfügen, empfiehlt sich die Verwendung von [Visual Studio Code](https://code.visualstudio.com/download).
+
+1. Öffnen Sie Ihr Speicherkonto im Azure-Portal. 
+
+2. Klicken Sie im linken Navigationsbereich auf **Blobs**. **insights-logs-operationlogs** und **insights-metrics-pt1m** sollten angezeigt werden. Diese Container werden in der kognitiven Azure-Suche erstellt, wenn die Protokolldaten in Blob Storage exportiert werden.
+
+3. Klicken Sie in der Ordnerhierarchie nach unten bis zur JSON-Datei.  Verwenden Sie das Kontextmenü, um die Datei herunterzuladen.
+
+Nach dem Herunterladen der Datei können Sie sie in einem JSON-Editor öffnen und die Inhalte anzeigen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Fall noch nicht geschehen, überprüfen Sie die Grundlagen der Überwachung von Suchdiensten, um mehr über die gesamte Palette an Überwachungsfunktionen zu erfahren.
+
+> [!div class="nextstepaction"]
+> [Überwachen von Vorgängen und Aktivitäten von Azure Cognitive Search](search-monitor-usage.md)
