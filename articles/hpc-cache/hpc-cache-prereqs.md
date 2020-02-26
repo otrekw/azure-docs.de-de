@@ -4,14 +4,14 @@ description: Voraussetzungen für die Verwendung von Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/12/2020
 ms.author: rohogue
-ms.openlocfilehash: 90b84d936bda4e3a974e60934e82ac6c3389d85a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 135c231f84d95ea2418fab4647d715473378e41c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645768"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251956"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Voraussetzungen für Azure HPC Cache
 
@@ -70,12 +70,6 @@ Der Cache unterstützt Azure-Blobcontainer oder NFS-Hardwarespeicherexporte. Fü
 
 Für jeden Speichertyp gelten bestimmte Voraussetzungen.
 
-### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
-
-Beim Verwenden von lokalem Hardwarespeicher benötigt der Cache Netzwerkzugriff aus seinem Subnetz auf das Rechenzentrum mit hoher Bandbreite. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder ein ähnliches Zugriffsverfahren wird empfohlen.
-
-Der NFS-Back-End-Speicher muss eine kompatible Hardware-/Softwareplattform aufweisen. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
-
 ### <a name="blob-storage-requirements"></a>Blobspeicheranforderungen
 
 Wenn Sie Azure-Blobspeicher in Kombination mit Ihrem Cache verwenden möchten, benötigen Sie ein kompatibles Speicherkonto und entweder einen leeren Blobcontainer oder einen Container, der mit Daten im Format von Azure HPC Cache aufgefüllt ist, wie unter [Verschieben von Daten in Azure Blob Storage](hpc-cache-ingest.md) beschrieben.
@@ -93,6 +87,52 @@ Es wird empfohlen, ein Speicherkonto am Standort Ihres Caches zu verwenden.
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
 Außerdem müssen Sie der Cacheanwendung Zugriff auf Ihr Azure-Speicherkonto erteilt haben (wie weiter oben unter [Berechtigungen](#permissions) beschrieben). Befolgen Sie das Verfahren unter [Hinzufügen von Speicherzielen](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account), um dem Cache die erforderlichen Zugriffsrollen zuzuweisen. Wenn Sie nicht der Besitzer des Speicherkontos sind, lassen Sie den Besitzer diesen Schritt ausführen.
+
+### <a name="nfs-storage-requirements"></a>NFS-Speicheranforderungen
+
+Vergewissern Sie sich bei Verwendung eines NFS-Speichersystems (beispielsweise eines lokalen hardwarebasierten NAS-Systems), dass es die folgenden Anforderungen erfüllt. Arbeiten Sie bei der Überprüfung dieser Einstellungen ggf. mit den Netzwerkadministratoren oder den Firewall-Managern Ihres Speichersystems (oder Rechenzentrums) zusammen.
+
+> [!NOTE]
+> Wenn der Cache nicht im erforderlichen Umfang auf das NFS-Speichersystem zugreifen kann, ist die Speicherzielerstellung nicht erfolgreich.
+
+* **Netzwerkkonnektivität:** Azure HPC Cache benötigt Netzwerkzugriff mit hoher Bandbreite zwischen dem Cachesubnetz und dem Rechenzentrum des NFS-Systems. [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) oder ein ähnliches Zugriffsverfahren wird empfohlen. Bei Verwendung eines VPN muss TCP MSS ggf. mit 1350 verknüpft werden, um die Blockierung großer Pakete zu vermeiden.
+
+* **Portzugriff:** Der Cache benötigt Zugriff auf bestimmte TCP/UDP-Ports Ihres Speichersystems. Verschiedene Speichertypen haben unterschiedliche Portanforderungen.
+
+  Gehen Sie wie folgt vor, um die Einstellungen Ihres Speichersystems zu überprüfen:
+
+  * Führen Sie den Befehl `rpcinfo` für Ihr Speichersystem aus, um die erforderlichen Ports zu überprüfen. Der folgende Befehl führt die Ports auf und formatiert die relevanten Ergebnisse in einer Tabelle. (Ersetzen Sie den Platzhalter *<storage_IP>* durch die IP-Adresse Ihres Systems.)
+
+    Dieser Befehl kann über einen beliebigen Linux-Client mit installierter NFS-Infrastruktur ausgeführt werden. Wenn Sie einen Client innerhalb des Clustersubnetzes verwenden, können Sie damit auch die Konnektivität zwischen dem Subnetz und dem Speichersystem überprüfen.
+
+    ```bash
+    rpcinfo -p <storage_IP> |egrep "100000\s+4\s+tcp|100005\s+3\s+tcp|100003\s+3\s+tcp|100024\s+1\s+tcp|100021\s+4\s+tcp"| awk '{print $4 "/" $3 " " $5}'|column -t
+    ```
+
+  * Vergewissern Sie sich zusätzlich zur Überprüfung der vom Befehl `rpcinfo` zurückgegebenen Ports, dass an den folgenden häufig verwendeten Ports eingehender und ausgehender Datenverkehr zugelassen wird:
+
+    | Protokoll | Port  | Dienst  |
+    |----------|-------|----------|
+    | TCP/UDP  | 111   | rpcbind  |
+    | TCP/UDP  | 2049  | NFS      |
+    | TCP/UDP  | 4045  | nlockmgr |
+    | TCP/UDP  | 4046  | mountd   |
+    | TCP/UDP  | 4047  | status   |
+
+  * Vergewissern Sie sich, dass die Firewalleinstellungen Datenverkehr an allen diesen erforderlichen Ports zulassen. Überprüfen Sie sowohl in Azure verwendete Firewalls als auch lokale Firewalls in Ihrem Rechenzentrum.
+
+* **Verzeichniszugriff:** Aktivieren Sie den Befehl `showmount` im Speichersystem. Mit diesem Befehl wird von Azure HPC Cache überprüft, ob Ihre Speicherzielkonfiguration auf einen gültigen Export verweist, und es wird sichergestellt, dass nicht von mehreren Einbindungen auf die gleichen Unterverzeichnisse zugegriffen wird, um Dateikonflikte zu vermeiden.
+
+  > [!NOTE]
+  > **Aktivieren Sie `showmount` nicht**, wenn Ihr NFS-Speichersystem das ONTAP 9.2-Betriebssystem von NetApp verwendet. Erstellen Sie in diesem Fall ein Supportticket. Weitere Informationen finden Sie [hier](hpc-cache-support-ticket.md).
+
+* **Root-Zugriff:** Der Cache stellt als Benutzer mit der ID 0 eine Verbindung mit dem Back-End-System her. Überprüfen Sie die folgenden Einstellungen für Ihr Speichersystem:
+  
+  * Aktivieren Sie `no_root_squash`. Diese Option sorgt dafür, dass der Root-Remotebenutzer auf Dateien zugreifen kann, die sich im Besitz von Root befinden.
+
+  * Vergewissern Sie sich, dass die Exportrichtlinien keine Einschränkungen für den Root-Zugriff aus dem Subnetz des Caches enthalten.
+
+* Der NFS-Back-End-Speicher muss eine kompatible Hardware-/Softwareplattform aufweisen. Ausführliche Informationen erhalten Sie vom Azure HPC Cache-Team.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

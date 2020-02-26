@@ -1,7 +1,7 @@
 ---
 title: Debuggen und Problembehandlung für Machine Learning-Pipelines
 titleSuffix: Azure Machine Learning
-description: Debuggen und Problembehandlung für Machine Learning-Pipelines im Azure Machine Learning SDK für Python. Lernen Sie häufige Fallstricke bei der Entwicklung von Pipelines kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen.
+description: Debuggen und Problembehandlung für Machine Learning-Pipelines im Azure Machine Learning SDK für Python. Lernen Sie häufige Fallstricke bei der Entwicklung von Pipelines kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen. Erfahren Sie, wie Sie Ihre Machine Learning-Pipelines mithilfe von Visual Studio Code interaktiv debuggen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,22 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769128"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485368"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie das Debuggen und die Problembehandlung für [Machine Learning-Pipelines](concept-ml-pipelines.md) im [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und im [Azure Machine Learning Designer (Vorschau)](https://docs.microsoft.com/azure/machine-learning/concept-designer) durchführen.
+In diesem Artikel erfahren Sie, wie Sie das Debuggen und die Problembehandlung für [Machine Learning-Pipelines](concept-ml-pipelines.md) im [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) und im [Azure Machine Learning Designer (Vorschau)](https://docs.microsoft.com/azure/machine-learning/concept-designer) durchführen. Folgendes wird vermittelt:
+
+* Debuggen mithilfe des Azure Machine Learning SDK
+* Debuggen mithilfe des Azure Machine Learning-Designers
+* Debuggen mithilfe von Application Insights
+* Interaktives Debuggen mithilfe von Visual Studio Code (VS Code) und Python Tools für Visual Studio (PTVSD)
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Debuggen und Problembehandlung im Azure Machine Learning SDK
 Die folgenden Abschnitte bieten einen Überblick über häufige Fallstricke beim Erstellen von Pipelines und verschiedene Strategien zum Debuggen von Code, der in einer Pipeline ausgeführt wird. Verwenden Sie die folgenden Tipps, wenn Sie Schwierigkeiten haben, eine Pipeline wie erwartet auszuführen.
@@ -148,6 +153,239 @@ Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseit
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Debuggen und Problembehandlung in Application Insights
 Weitere Informationen zur Verwendung der OpenCensus-Python-Bibliothek in diesem Zusammenhang finden Sie in diesem Handbuch: [Debugging und Problembehandlung für Pipelines des maschinellen Lernens in Application Insights](how-to-debug-pipelines-application-insights.md)
+
+## <a name="debug-and-troubleshoot-in-visual-studio-code"></a>Debuggen und Behandeln von Problemen in Visual Studio Code
+
+In einigen Fällen muss der in Ihrer ML-Pipeline verwendete Python-Code ggf. interaktiv debugged werden. Mit Visual Studio Code (VS Code) und Python Tools für Visual Studio (PTVSD) können Sie den Code debuggen, während er in der Trainingsumgebung ausgeführt wird.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+* __Azure Machine Learning-Arbeitsbereich__, die für die Verwendung eines __virtuellen Azure-Netzwerks__ konfiguriert ist.
+* __Azure Machine Learning-Pipeline__, deren Schritte Python-Skripts enthalten (Beispiel: PythonScriptStep).
+* Azure Machine Learning Compute-Cluster, der sich __im virtuellen Netzwerk__ befindet und __von der Pipeline zum Trainieren verwendet wird__.
+* __Entwicklungsumgebung__, die sich __im virtuellen Netzwerk__ befindet. Mögliche Entwicklungsumgebung wären etwa:
+
+    * Ein virtueller Azure-Computer im virtuellen Netzwerk
+    * Eine Compute-Instanz einer Notebook-VM im virtuellen Netzwerk
+    * Ein Clientcomputer, der über ein virtuelles privates Netzwerk (VPN) mit dem virtuellen Netzwerk verbunden ist
+
+Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks mit Azure Machine Learning finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
+
+### <a name="how-it-works"></a>Funktionsweise
+
+Von Ihren ML-Pipelineschritten werden Python-Skripts ausgeführt. Diese Skripts werden geändert, um folgende Aktionen auszuführen:
+    
+1. Protokollieren der IP-Adresse des Hosts, auf dem sie ausgeführt werden. Die IP-Adresse wird verwendet, um den Debugger mit dem Skript zu verbinden.
+
+2. Starten der PTVSD-Debugkomponente und Warten, bis von einem Debugger eine Verbindung hergestellt wird
+
+3. Von Ihrer Entwicklungsumgebung aus überwachen Sie die Protokolle, die durch den Trainingsprozess erstellt wurden, um die IP-Adresse zu ermitteln, unter der das Skript ausgeführt wird.
+
+4. Sie geben die IP-Adresse, mit der der Debugger verbunden werden soll, an VS Code weiter (unter Verwendung einer Datei vom Typ `launch.json`).
+
+5. Sie fügen den Debugger an, und durchlaufen interaktiv die Schritte des Skripts.
+
+### <a name="configure-python-scripts"></a>Konfigurieren von Python-Skripts
+
+Ändern Sie die von Schritten in Ihrer ML-Pipeline verwendeten Python-Skripts wie folgt, um das Debuggen zu ermöglichen:
+
+1. Fügen Sie die folgenden import-Anweisungen hinzu:
+
+    ```python
+    import ptvsd
+    import socket
+    from azureml.core import Run
+    ```
+
+1. Fügen Sie die folgenden Argumente hinzu. Diese Argumente ermöglichen die bedarfsgerechte Aktivierung des Debuggers sowie die Festlegung des Timeouts für das Anfügen des Debuggers:
+
+    ```python
+    parser.add_argument('--remote_debug', action='store_true')
+    parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the Azure ML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+    ```
+
+1. Fügen Sie die folgenden Anweisungen hinzu. Diese Anweisungen dienen zum Laden des aktuellen Ausführungskontexts, um die IP-Adresse des Knotens protokollieren zu können, auf dem der Code ausgeführt wird:
+
+    ```python
+    global run
+    run = Run.get_context()
+    ```
+
+1. Fügen Sie eine `if`-Anweisung hinzu, die PTVSD startet und auf das Anfügen eines Debuggers wartet. Wenn innerhalb des Timeouts kein Debugger angefügt wird, wird das Skript normal fortgesetzt.
+
+    ```python
+    if args.remote_debug:
+        print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+        # Log the IP and port
+        ip = socket.gethostbyname(socket.gethostname())
+        print(f'ip_address: {ip}')
+        ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                            redirect_output=True)
+        # Wait for the timeout for debugger to attach
+        ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+        print(f'Debugger attached = {ptvsd.is_attached()}')
+    ```
+
+Das folgende Python-Beispiel zeigt eine einfache Datei vom Typ `train.py`, die Debuggen ermöglicht:
+
+```python
+# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license.
+
+import argparse
+import os
+import ptvsd
+import socket
+from azureml.core import Run
+
+print("In train.py")
+print("As a data scientist, this is where I use my training code.")
+
+parser = argparse.ArgumentParser("train")
+
+parser.add_argument("--input_data", type=str, help="input data")
+parser.add_argument("--output_train", type=str, help="output_train directory")
+
+# Argument check for remote debugging
+parser.add_argument('--remote_debug', action='store_true')
+parser.add_argument('--remote_debug_connection_timeout', type=int,
+                    default=300,
+                    help=f'Defines how much time the AML compute target '
+                    f'will await a connection from a debugger client (VSCODE).')
+# Get run object, so we can find and log the IP of the host instance
+global run
+run = Run.get_context()
+
+args = parser.parse_args()
+
+# Start debugger if remote_debug is enabled
+if args.remote_debug:
+    print(f'Timeout for debug connection: {args.remote_debug_connection_timeout}')
+    # Log the IP and port
+    ip = socket.gethostbyname(socket.gethostname())
+    print(f'ip_address: {ip}')
+    ptvsd.enable_attach(address=('0.0.0.0', 5678),
+                        redirect_output=True)
+    # Wait for the timeout for debugger to attach
+    ptvsd.wait_for_attach(timeout=args.remote_debug_connection_timeout)
+    print(f'Debugger attached = {ptvsd.is_attached()}')
+
+print("Argument 1: %s" % args.input_data)
+print("Argument 2: %s" % args.output_train)
+
+if not (args.output_train is None):
+    os.makedirs(args.output_train, exist_ok=True)
+    print("%s created" % args.output_train)
+```
+
+### <a name="configure-ml-pipeline"></a>Konfigurieren der ML-Pipeline
+
+Erstellen Sie eine [Umgebung](), und legen Sie `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` fest, um die zum Starten von PTVSD erforderlichen Python-Pakete bereitzustellen und den Ausführungskontext abzurufen. Legen Sie die SDK-Version auf die von Ihnen verwendete Version fest. Im folgenden Codeausschnitt wird die Vorgehensweise zum Erstellen einer Umgebung veranschaulicht:
+
+```python
+# Use a RunConfiguration to specify some additional requirements for this step.
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_CPU_IMAGE
+
+# create a new runconfig object
+run_config = RunConfiguration()
+
+# enable Docker 
+run_config.environment.docker.enabled = True
+
+# set Docker base image to the default CPU-based image
+run_config.environment.docker.base_image = DEFAULT_CPU_IMAGE
+
+# use conda_dependencies.yml to create a conda environment in the Docker image for execution
+run_config.environment.python.user_managed_dependencies = False
+
+# specify CondaDependencies obj
+run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'],
+                                                                           pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
+```
+
+Im Abschnitt [Konfigurieren von Python-Skripts](#configure-python-scripts) wurden den von Ihren ML-Pipelineschritten verwendeten Skripts zwei neue Argumente hinzugefügt. Der folgende Codeausschnitt zeigt, wie diese Argumente verwendet werden, um das Debuggen für die Komponente zu aktivieren und ein Timeout festzulegen. Außerdem wird gezeigt, wie Sie die zuvor erstellte Umgebung verwenden, indem Sie `runconfig=run_config` festlegen:
+
+```python
+# Use RunConfig from a pipeline step
+step1 = PythonScriptStep(name="train_step",
+                         script_name="train.py",
+                         arguments=['--remote_debug', '--remote_debug_connection_timeout', 300],
+                         compute_target=aml_compute, 
+                         source_directory=source_directory,
+                         runconfig=run_config,
+                         allow_reuse=False)
+```
+
+Wenn die Pipeline ausgeführt wird, wird durch jeden Schritt eine untergeordnete Ausführung erstellt. Ist das Debuggen aktiviert, protokolliert das geänderte Skript Informationen wie die folgenden in der Datei `70_driver_log.txt` für die untergeordnete Ausführung:
+
+```text
+Timeout for debug connection: 300
+ip_address: 10.3.0.5
+```
+
+Speichern Sie den Wert von `ip_address`. Sie wird im nächsten Abschnitt verwendet.
+
+> [!TIP]
+> Die IP-Adresse finden Sie auch in den Ausführungsprotokollen für die untergeordnete Ausführung dieses Pipelineschritts. Weitere Informationen zum Anzeigen dieser Informationen finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md).
+
+### <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
+
+1. Verwenden Sie den folgenden Befehl, um Python Tools für Visual Studio (PTVSD) in Ihrer VS Code-Entwicklungsumgebung zu installieren:
+
+    ```
+    python -m pip install --upgrade ptvsd
+    ```
+
+    Weitere Informationen zur Verwendung von PTVSD mit VS Code finden Sie unter [Remotedebuggen](https://code.visualstudio.com/docs/python/debugging#_remote-debugging).
+
+1. Erstellen Sie eine neue Debugkonfiguration, um VS Code für die Kommunikation mit der Azure Machine Learning Compute-Instanz zu konfigurieren, von der der Debugger ausgeführt wird:
+
+    1. Wählen Sie aus VS Code das Menü __Debuggen__ aus, und wählen Sie dann __Konfigurationen öffnen__ aus. Eine Datei namens __launch.json__ wird geöffnet.
+
+    1. Suchen Sie in der Datei __launch.json__ nach der Zeile, die `"configurations": [` enthält, und fügen Sie danach den folgenden Text ein. Ändern Sie den Eintrag `"host": "10.3.0.5"` in die IP-Adresse, die in Ihren Protokollen aus dem vorherigen Abschnitt zurückgegeben wurde. Ändern Sie den Eintrag `"localRoot": "${workspaceFolder}/code/step"` in ein lokales Verzeichnis, das eine Kopie des zu debuggenden Skripts enthält:
+
+        ```json
+        {
+            "name": "Azure Machine Learning Compute: remote debug",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "10.3.0.5",
+            "redirectOutput": true,
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/code/step1",
+                    "remoteRoot": "."
+                }
+            ]
+        }
+        ```
+
+        > [!IMPORTANT]
+        > Wenn es bereits andere Einträge im Konfigurationsabschnitt gibt, fügen Sie ein Komma (,) nach dem von Ihnen eingegebenen Code ein.
+
+        > [!TIP]
+        > Es empfiehlt sich, die Ressourcen für Skripts in separaten Verzeichnissen zu platzieren. Aus diesem Grund wird vom Beispielwert `localRoot` auf `/code/step1` verwiesen.
+        >
+        > Wenn Sie mehrere Skripts in unterschiedlichen Verzeichnissen debuggen, muss für jedes Skript ein separater Konfigurationsabschnitt erstellt werden.
+
+    1. Speichern Sie die Datei __launch.json__.
+
+### <a name="connect-the-debugger"></a>Herstellen einer Verbindung für den Debugger
+
+1. Öffnen Sie in VS Code eine lokale Kopie des Skripts.
+2. Legen Sie Breakpoints an den Stellen fest, an denen das Skript nach dem Anfügen angehalten werden soll.
+3. Drücken Sie F5, oder wählen Sie __Debuggen__ aus, während der untergeordnete Prozess das Skript ausführt und das Timeout für die Debugverbindung (`Timeout for debug connection`) in den Protokollen angezeigt wird. Wählen Sie die Konfiguration __Azure Machine Learning Compute: remote debug__ aus, wenn Sie dazu aufgefordert werden. Sie können auch das Debugsymbol auf der Seitenleiste, den Eintrag __Azure Machine Learning: remote debug__ aus dem Dropdownmenü „Debuggen“ und anschließend den grünen Pfeil auswählen, um den Debugger anzufügen.
+
+    An diesem Punkt stellt VS Code eine Verbindung mit PTVSD auf dem Computeknoten her und hält den Vorgang an dem Breakpoint an, den Sie zuvor festgelegt haben. Sie können den Code jetzt während der Ausführung schrittweise durchlaufen, Variablen anzeigen usw.
+
+    > [!NOTE]
+    > Wenn das Protokoll einen Eintrag mit der Angabe `Debugger attached = False` enthält, ist das Timeout abgelaufen, und das Skript wurde ohne den Debugger fortgesetzt. Übermitteln Sie die Pipeline erneut, und verbinden Sie den Debugger nach der Nachricht `Timeout for debug connection`, aber noch vor Ablauf des Timeouts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

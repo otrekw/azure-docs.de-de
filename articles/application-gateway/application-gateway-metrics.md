@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046319"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485181"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -22,7 +22,7 @@ Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die L
 
 ### <a name="timing-metrics"></a>Zeitmetriken
 
-Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich auf die Anforderung und die Antwort beziehen und die alle in Millisekunden gemessen werden. 
+Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich auf die Anforderung und die Antwort beziehen und jeweils in Millisekunden gemessen werden. 
 
 ![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
@@ -86,7 +86,7 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
 - **Aktuelle Kapazitätseinheiten**
 
-   Anzahl der verbrauchten Kapazitätseinheiten. Kapazitätseinheiten geben die verbrauchsbasierten Kosten an, die zusätzlich zu den Fixkosten berechnet werden. Die Kapazitätseinheit setzt sich aus drei Größen zusammen: Compute-Einheit, permanente Verbindungen und Durchsatz. Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit oder 2500 permanente Verbindungen oder 2,22 MBit/s Durchsatz.
+   Anzahl von Kapazitätseinheiten, die für den Lastenausgleich des Datenverkehrs genutzt werden. Die Kapazitätseinheit setzt sich aus drei Größen zusammen: Compute-Einheit, permanente Verbindungen und Durchsatz. Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit oder 2500 permanente Verbindungen oder 2,22 MBit/s Durchsatz.
 
 - **Aktuelle Compute-Einheiten**
 
@@ -95,10 +95,22 @@ Für Application Gateway werden folgende Metriken unterstützt:
 - **Aktuelle Verbindungen**
 
    Die Gesamtanzahl der von Clients gleichzeitig aktiven Verbindungen mit dem Application Gateway
+   
+- **Geschätzte abgerechnete Kapazitätseinheiten**
+
+  Bei der V2-SKU wird ein verbrauchsbasiertes Preismodell verwendet. Kapazitätseinheiten geben die verbrauchsbasierten Kosten an, die zusätzlich zu den Fixkosten berechnet werden. *Geschätzte abgerechnete Kapazitätseinheiten* geben die Anzahl von Kapazitätseinheiten an, für die die Abrechnung geschätzt wird. Hierzu wird der größere Wert zwischen *Aktuelle Kapazitätseinheiten* (Kapazitätseinheiten, die für den Lastenausgleich des Datenverkehrs erforderlich sind) und *Feste abrechenbare Kapazitätseinheiten* (Mindestanzahl von Kapazitätseinheiten, die bereitgestellt bleiben) berechnet.
 
 - **Anforderungsfehler**
 
-   Anzahl von fehlerhaften Anforderungen über Application Gateway. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
+  Anzahl von fehlerhaften Anforderungen über Application Gateway. Die Anzahl der Anforderungen kann weiter gefiltert werden, um die Anzahl für die einzelnen/spezifischen Kombinationen aus Back-End-Pools und HTTP-Einstellungen anzuzeigen.
+   
+- **Feste abrechenbare Kapazitätseinheiten**
+
+  Die Mindestanzahl von Kapazitätseinheiten, die gemäß der Einstellung *Mindesteinheiten für Skalierung* (in der Application Gateway-Konfiguration) bereitgestellt bleiben. Eine Instanz entspricht hierbei zehn Kapazitätseinheiten.
+   
+ - **Neue Verbindungen pro Sekunde**
+
+   Die durchschnittliche Anzahl neuer TCP-Verbindungen pro Sekunde, die von Clients mit Application Gateway und von Application Gateway mit den Back-End-Mitgliedern hergestellt werden.
 
 
 - **Antwortstatus**
@@ -133,7 +145,9 @@ Für Application Gateway werden folgende Metriken unterstützt:
 
   Die Anzahl der Back-Ends, die im Integritätstest als fehlerhaft ermittelt wurden. Sie können auf Back-End-Pool-Basis filtern, um die Anzahl fehlerhafter Hosts in einem bestimmten Back-End-Pool anzuzeigen.
   
-- **Anforderungen pro Minute pro fehlerfreiem Host** Die durchschnittliche Anzahl von Anforderungen, die von jedem fehlerfreien Mitglied in einem Back-End-Pool pro Minute empfangen wurden. Der Back-End-Pool muss über die Dimension *BackendPool HttpSettings* angegeben werden.  
+- **Anforderungen pro Minute pro fehlerfreiem Host**
+
+  Die durchschnittliche Anzahl von Anforderungen, die von jedem fehlerfreien Mitglied in einem Back-End-Pool pro Minute empfangen werden. Der Back-End-Pool muss über die Dimension *BackendPool HttpSettings* angegeben werden.  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Von der Application Gateway V1-SKU unterstützte Metriken

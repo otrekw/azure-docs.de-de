@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889355"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461265"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 
@@ -24,11 +24,12 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java-Ent
 
 ## <a name="deploying-your-app"></a>Bereitstellen Ihrer App
 
-Sie können das [Maven-Plug-In für Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) zum Bereitstellen Ihrer WAR-Dateien verwenden. Die Bereitstellung mit beliebten IDEs wird außerdem mit [Azure Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) oder [Azure Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) unterstützt.
+Sie können das [Azure-Web-App-Plug-In für Maven](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) verwenden, um Ihre WAR-Dateien bereitzustellen. Die Bereitstellung mit beliebten IDEs wird außerdem mit [Azure Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) oder [Azure Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) unterstützt.
 
 In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
 
 - Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/zipdeploy/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Stellen Sie Ihre WAR-Dateien nicht über FTP bereit. Der FTP-Tool dient zum Hochladen von Startskripts, Abhängigkeiten oder anderen Laufzeitdateien. Es ist nicht die optimale Wahl für die Bereitstellung von Web-Apps.
 
@@ -128,9 +129,9 @@ Für in App Service ausgeführte Java-Anwendungen gelten dieselben [bewährten S
 
 Richten Sie die App-Authentifizierung im Azure-Portal über die Option **Authentifizierung und Autorisierung** ein. Von dort aus können Sie die Authentifizierung über Azure Active Directory oder soziale Netzwerke wie Facebook, Google oder GitHub aktivieren. Die Konfiguration des Azure-Portals funktioniert nur, wenn Sie einen einzelnen Authentifizierungsanbieter konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](configure-authentication-provider-aad.md) und in den entsprechenden Artikeln für andere Identitätsanbieter. Wenn Sie mehrere Anmeldungsanbieter aktivieren müssen, befolgen Sie die Anweisungen im Artikel [Anpassen der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md).
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat und WildFly
+#### <a name="tomcat"></a>Tomcat
 
-Ihre Tomcat- oder WildFly-Anwendung kann direkt aus dem Servlet auf die Ansprüche des Benutzers zugreifen, indem sie das Principal-Objekt in ein Map-Objekt umwandelt. Das Map-Objekt ordnet jeden Anspruchstyp einer Sammlung der Ansprüche für diesen Typ zu. Im folgenden Code ist `request` eine Instanz von `HttpServletRequest`.
+Ihre Tomcat-Anwendung kann direkt aus dem Servlet auf die Ansprüche des Benutzers zugreifen, indem sie das Principal-Objekt in ein Map-Objekt umwandelt. Das Map-Objekt ordnet jeden Anspruchstyp einer Sammlung der Ansprüche für diesen Typ zu. Im folgenden Code ist `request` eine Instanz von `HttpServletRequest`.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -287,6 +288,10 @@ Um die Datei `server.xml` oder andere Konfigurationsdateien von Tomcat zu bearbe
 
 Starten Sie dann Ihre App Service-Instanz neu. Ihre Bereitstellungen sollten wie vorher in `D:\home\site\wwwroot\webapps` ausgeführt werden.
 
+## <a name="configure-java-se"></a>Konfigurieren von Java SE
+
+Wenn Sie eine JAR-Anwendung in Java SE unter Windows ausführen, wird `server.port` beim Start der Anwendung als Befehlszeilenoption übergeben. Der HTTP-Port kann manuell anhand der Umgebungsvariablen `HTTP_PLATFORM_PORT` aufgelöst werden. Der Wert dieser Umgebungsvariablen ist der HTTP-Port, an dem Ihre Anwendung lauschen muss. 
+
 ## <a name="java-runtime-statement-of-support"></a>Unterstützungserklärung für die Java-Runtime
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-Versionen und -Wartung
@@ -300,6 +305,8 @@ Unterstützte JDKs werden jedes Vierteljahr im Januar, April, Juli und Oktober a
 ### <a name="security-updates"></a>Sicherheitsupdates
 
 Patches und Fixes für größere Sicherheitsrisiken werden veröffentlicht, sobald sie von Azul Systems zur Verfügung gestellt werden. Ein „größeres“ Sicherheitsrisiko wird durch eine Gesamtbewertung von 9.0 oder höher im [NIST Common Vulnerability Scoring System, Version 2](https://nvd.nist.gov/cvss.cfm), definiert.
+
+Tomcat 8.0 hat [am 30. September 2018 das Ende der Lebensdauer (End Of Life, EOL) erreicht](https://tomcat.apache.org/tomcat-80-eol.html). Die Runtime ist zwar noch in Azure App Service verfügbar, von Azure werden jedoch keine Sicherheitsupdates mehr auf Tomcat 8.0 angewendet. Migrieren Sie Ihre Anwendungen nach Möglichkeit zu Tomcat 8.5 oder 9.0. Sowohl Tomcat 8.5 als auch Tomcat 9.0 steht in Azure App Service zur Verfügung. Weitere Informationen finden Sie auf der [offiziellen Tomcat-Website](https://tomcat.apache.org/whichversion.html). 
 
 ### <a name="deprecation-and-retirement"></a>Einstellung und Außerbetriebnahme
 

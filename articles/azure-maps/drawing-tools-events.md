@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911669"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198308"
 ---
 # <a name="drawing-tool-events"></a>Ereignisse von Zeichentools
 
-Wenn Sie auf einer Karte Zeichentools verwenden, ist es häufig sinnvoll, auf bestimmte Ereignisse zu reagieren, während der Benutzer auf der Karte zeichnet. In der folgenden Tabelle sind alle von der `DrawingManager`-Klasse unterstützten Ereignisse aufgelistet.
+Wenn Sie auf einer Karte Zeichentools verwenden, ist es sinnvoll, auf bestimmte Ereignisse zu reagieren, während der Benutzer auf der Karte zeichnet. Die folgende Tabelle enthält alle Ereignisse, die von der Klasse `DrawingManager` unterstützt werden:
 
 | Ereignis | Beschreibung |
 |-------|-------------|
 | `drawingchanged` | Wird ausgelöst, wenn in einer Form eine Koordinate hinzugefügt oder geändert wurde. | 
-| `drawingchanging` | Wird ausgelöst, wenn eine Vorschaukoordinate für eine Form angezeigt wird. Beispielsweise erfolgt eine mehrmalige Auslösung, wenn eine Koordinate gezogen wird. | 
+| `drawingchanging` | Wird ausgelöst, wenn eine Vorschaukoordinate für eine Form angezeigt wird. Dieses Ereignis wird beispielsweise mehrmals ausgelöst, wenn eine Koordinate gezogen wird. | 
 | `drawingcomplete` | Wird ausgelöst, wenn eine Form fertig gezeichnet oder aus dem Bearbeitungsmodus entfernt wurde. |
 | `drawingmodechanged` | Wird ausgelöst, wenn sich der Zeichnungsmodus ändert. Der neue Zeichnungsmodus wird an den Ereignishandler übergeben. |
 | `drawingstarted` | Wird ausgelöst, wenn der Benutzer mit dem Zeichnen einer Form beginnt oder eine Form in den Bearbeitungsmodus versetzt.  |
@@ -39,11 +39,11 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="examples"></a>Beispiele
 
-Im Folgenden finden Sie Beispiele für einige gängige Szenarien, in denen die Ereignisse von Zeichentools verwendet werden.
+Hier finden Sie einige gängige Szenarien, in denen die Ereignisse von Zeichentools verwendet werden.
 
 ### <a name="select-points-in-polygon-area"></a>Auswählen von Punkten in Polygonbereichen
 
-Der folgende Code zeigt, wie Sie das Zeichnen von Formen überwachen, die Polygonbereiche (Polygone, Rechtecke und Kreise) darstellen, und wie Sie ermitteln, welche Datenpunkte auf der Karte innerhalb des gezeichneten Bereichs liegen. Mithilfe des `drawingcomplete`-Ereignisses wird die Auswahllogik ausgelöst. In der Auswahllogik werden alle Datenpunkte auf der Karte durchlaufen und auf eine Überschneidung mit dem Polygonbereich der gezeichneten Form überprüft. In diesem Beispiel wird die Open-Source-Bibliothek [Turf.js](https://turfjs.org/) verwendet, um die Berechnung der räumlichen Überschneidung durchzuführen.
+Dieser Code veranschaulicht die Überwachung eines Ereignisses, bei dem ein Benutzer Formen zeichnet. In diesem Beispiel werden durch den Code Formen von Polygonen, Rechtecken und Kreisen überwacht. Anschließend wird ermittelt, welche Datenpunkte auf der Karte innerhalb des gezeichneten Bereichs liegen. Mithilfe des `drawingcomplete`-Ereignisses wird die Auswahllogik ausgelöst. In der Auswahllogik durchläuft der Code alle Datenpunkte auf der Karte. Dabei wird überprüft, ob es eine Überschneidung zwischen dem Punkt und dem Bereich der gezeichneten Form gibt. In diesem Beispiel wird die Open-Source-Bibliothek [Turf.js](https://turfjs.org/) verwendet, um die Berechnung der räumlichen Überschneidung durchzuführen.
 
 <br/>
 
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ### <a name="draw-and-search-in-polygon-area"></a>Zeichnen und Suchen in einem Polygonbereich
 
-Der folgende Code zeigt, wie eine Suche nach Points of Interest (POI) innerhalb eines Formbereichs durchgeführt wird, nachdem der Benutzer das Zeichnen der Form abgeschlossen hat. Mithilfe des `drawingcomplete`-Ereignisses wird die Suchlogik ausgelöst. Wenn der Benutzer ein Rechteck oder Polygon zeichnet, wird innerhalb der Geometrie eine Suche durchgeführt. Wenn ein Kreis gezeichnet wird, werden der Radius und der Mittelpunkt verwendet, um eine Point of Interest-Suche auszuführen. Mithilfe des `drawingmodechanged`-Ereignisses wird bestimmt, wann der Benutzer in den Zeichnungsmodus wechselt. Der Zeichenbereich wird dann geleert.
+Dieser Code sucht innerhalb des Bereichs einer Form nach POIs, nachdem der Benutzer die Form fertig gezeichnet hat. Sie können den Code ändern und ausführen, indem Sie in der rechten oberen Ecke des Frames auf „Auf CodePen bearbeiten“ klicken. Mithilfe des `drawingcomplete`-Ereignisses wird die Suchlogik ausgelöst. Wenn der Benutzer ein Rechteck oder Polygon zeichnet, wird innerhalb der Geometrie eine Suche durchgeführt. Wenn ein Kreis gezeichnet wird, werden der Radius und der Mittelpunkt verwendet, um eine Point of Interest-Suche auszuführen. Mithilfe des `drawingmodechanged`-Ereignisses wird bestimmt, wann der Benutzer in den Zeichnungsmodus wechselt, und der Zeichenbereich wird geleert.
 
 <br/>
 
@@ -67,7 +67,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ### <a name="create-a-measuring-tool"></a>Erstellen eines Messtools
 
-Der folgende Code veranschaulicht, wie mithilfe von Zeichenereignissen ein Messtool erstellt werden kann. Zum Überwachen der Form während des Zeichnens wird `drawingchanging` verwendet. Wenn der Benutzer den Mauszeiger bewegt, werden die Abmessungen der Form berechnet. Das `drawingcomplete`-Ereignis wird für die abschließende Berechnung der Form nach Fertigstellung der Zeichnung verwendet. Mithilfe des `drawingmodechanged`-Ereignisses wird bestimmt, wann der Benutzer in den Zeichnungsmodus wechselt. Der Zeichenbereich wird dann geleert, und alte Messdaten werden gelöscht.
+Der folgende Code veranschaulicht, wie mithilfe von Zeichenereignissen ein Messtool erstellt werden kann. Zum Überwachen der Form während des Zeichnens wird `drawingchanging` verwendet. Wenn der Benutzer den Mauszeiger bewegt, werden die Abmessungen der Form berechnet. Das `drawingcomplete`-Ereignis wird für die abschließende Berechnung der Form nach Fertigstellung der Zeichnung verwendet. Mithilfe des `drawingmodechanged`-Ereignisses wird bestimmt, wann der Benutzer in den Zeichnungsmodus wechselt. Außerdem wird durch das `drawingmodechanged`-Ereignis der Zeichenbereich geleert, und alte Messdaten werden gelöscht.
 
 <br/>
 

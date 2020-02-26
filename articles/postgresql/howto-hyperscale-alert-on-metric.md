@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977606"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462427"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure Database for PostgreSQL-Warnungen einrichten können. Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services eine Warnung empfangen.
+In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure Database for PostgreSQL-Warnungen einrichten können. Sie können eine Warnung erhalten, die auf [Überwachungsmetriken](concepts-hyperscale-monitoring.md) für Ihre Azure-Dienste basiert.
 
 Wir richten eine Warnung ein, die ausgelöst wird, wenn der Wert für eine bestimmte Metrik einen Schwellenwert überschreitet. Die Warnung wird ausgelöst, wenn die Bedingung erstmals erfüllt ist. Anschließend wird sie weiterhin ausgelöst.
 
@@ -25,7 +25,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -81,13 +81,31 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
     Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
-## <a name="manage-your-alerts"></a>Verwalten Ihrer Warnungen
+### <a name="managing-alerts"></a>Verwalten von Warnungen
 
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende Aktionen ausführen:
 
 * Ein Diagramm anzeigen, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt, die für diese Warnung relevant sind.
 * Die Warnungsregel **bearbeiten** oder **löschen**.
 * Die Warnung **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
+
+## <a name="suggested-alerts"></a>Warnungsvorschläge
+
+### <a name="disk-space"></a>Speicherplatz
+
+Überwachung und Warnungen sind für jede Produktionsservergruppe vom Typ „Hyperscale (Citus)“ wichtig. Die zugrunde liegende PostgreSQL-Datenbank benötigt freien Speicherplatz, damit sie ordnungsgemäß funktioniert. Wenn auf dem Datenträger zu wenig Speicherplatz zur Verfügung steht, wird der Datenbankserverknoten offline geschaltet und lässt sich erst wieder starten, wenn genügend Speicherplatz verfügbar ist. An diesem Punkt ist zur Behebung des Problems eine Microsoft-Supportanfrage erforderlich.
+
+Es empfiehlt sich, Speicherplatzwarnungen für jeden Knoten in jeder Servergruppe festzulegen. Das gilt auch für Knoten, die nicht in der Produktion verwendet werden. Speicherplatzwarnungen ermöglichen es, frühzeitig einzugreifen und die Fehlerfreiheit der Knoten zu gewährleisten. Verwenden Sie am besten eine Reihe von Warnungen, die beispielsweise bei einer Auslastung von 75 Prozent, 85 Prozent und 95 Prozent ausgelöst werden. Die Wahl der Prozentwerte hängt von der Datenerfassungsgeschwindigkeit ab, da der Datenträger bei einer schnellen Datenerfassung schneller voll wird.
+
+Wenn auf dem Datenträger nur noch wenig Speicherplatz zur Verfügung steht, versuchen Sie Folgendes, um mehr Speicherplatz freizugeben:
+
+* Überprüfen Sie die Datenaufbewahrungsrichtlinie. Verschieben Sie ältere Daten nach Möglichkeit in Cold Storage.
+* Erwägen Sie das [Hinzufügen von Knoten](howto-hyperscale-scaling.md#add-worker-nodes) zur Servergruppe sowie eine Neuverteilung von Shards. Durch die Neuverteilung werden die Daten auf mehr Computer verteilt.
+* Erwägen Sie das [Erhöhen der Kapazität](howto-hyperscale-scaling.md#increase-vcores) von Workerknoten. Jeder Worker kann über bis zu 2 TiB Speicher verfügen. Vor dem Anpassen der Knotengröße sollten Sie jedoch zunächst versuchen, Knoten hinzuzufügen, da das Hinzufügen von Knoten weniger Zeit beansprucht.
+
+### <a name="cpu-usage"></a>CPU-Auslastung
+
+Die Überwachung der CPU-Auslastung ist hilfreich, um eine Baseline für die Leistung zu etablieren. Nehmen wir beispielsweise an, die CPU-Auslastung liegt in der Regel zwischen 40 und 60 Prozent. Wenn sich die CPU-Auslastung nun plötzlich im Bereich von 95 Prozent bewegt, können Sie eine Anomalie erkennen. Die CPU-Auslastung kann mit natürlichem Wachstum zusammenhängen, aber auch auf eine verirrte Abfrage hindeuten. Legen Sie beim Erstellen einer CPU-Warnung eine hohe Aggregationsgranularität fest, um längerfristige Zunahmen zu erfassen und kurzfristige Spitzen zu ignorieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).

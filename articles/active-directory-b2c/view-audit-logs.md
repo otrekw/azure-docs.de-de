@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3f30e3957d51617726e95574df416d1438b1fd2a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850713"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484331"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die 
 
 Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
-|Aktivitätstyp |Beschreibung  |
+|Aktivitätstyp |BESCHREIBUNG  |
 |---------|---------|
 |Authorization |Aktivitäten, die sich auf die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen beziehen (z. B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
@@ -51,7 +51,7 @@ Im folgenden Beispiel aus dem Azure-Portal sehen Sie die Daten, die erfasst werd
 
 Das Panel „Aktivitätsbereich“ enthält die folgenden wichtigen Informationen:
 
-|`Section`|Feld|Beschreibung|
+|`Section`|Feld|BESCHREIBUNG|
 |-------|-----|-----------|
 | Aktivität | Name | Die ausgeführte Aktivität. Dies kann beispielsweise *Issue an id_token to the application* (ID-Token für die Anwendung ausstellen) sein, wodurch die Benutzeranmeldung abgeschlossen wird. |
 | Initiiert von (Akteur) | ObjectID | Die **Objekt-ID** der B2C-Anwendung, bei der sich der Benutzer anmeldet. Dieser Bezeichner ist im Azure-Portal nicht sichtbar, kann aber über die Microsoft Graph-API aufgerufen werden. |
@@ -88,51 +88,15 @@ Zum Herunterladen der Liste der Aktivitätsereignisse in einer CSV-Datei wählen
 
 ### <a name="enable-reporting-api-access"></a>Aktivieren des Zugriffs auf die Berichterstellungs-API
 
-Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstellungs-API zu ermöglichen, benötigen Sie eine Azure Active Directory-Anwendung, die in Ihrem Azure AD B2C-Mandanten mit den folgenden API-Berechtigungen registriert ist:
+Um den skript- oder anwendungsbasierten Zugriff auf die Azure AD-Berichterstellungs-API zu ermöglichen, benötigen Sie eine Anwendung, die in Ihrem Azure AD B2C-Mandanten mit den folgenden API-Berechtigungen registriert ist. Sie können diese Berechtigungen für eine vorhandene Anwendungsregistrierung in Ihrem B2C-Mandanten aktivieren oder eine neue Anwendung erstellen, die speziell für die Verwendung mit der Überwachungsprotokollautomatisierung verwendet wird.
 
-* Microsoft Graph > Anwendungsberechtigungen > AuditLog.Read.All
+* „Microsoft Graph“ > „Anwendungsberechtigungen“ > „AuditLog“ > „AuditLog.Read.All“
 
-Sie können diese Berechtigungen für eine vorhandene Azure Active Directory-Anwendungsregistrierung in Ihrem B2C-Mandanten aktivieren oder eine neue Anwendung erstellen, die speziell für die Verwendung mit der Überwachungsprotokollautomatisierung verwendet wird.
+Führen Sie die Schritte des folgenden Artikels aus, um eine Anwendung mit den erforderlichen Berechtigungen zu registrieren:
 
-Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteilen Sie ihr die erforderlichen Microsoft Graph-API-Berechtigungen, und erstellen Sie dann einen geheimen Clientschlüssel.
+[Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Registrieren einer Anwendung in Azure Active Directory
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>Zuweisen von API-Zugriffsberechtigungen
-
-#### <a name="applicationstabapplications"></a>[Anwendungen](#tab/applications/)
-
-1. Wählen Sie auf der Übersichtsseite **Registrierte App** die Option **Einstellungen** aus.
-1. Wählen Sie unter **API-ZUGRIFF** die Option **Erforderliche Berechtigungen** aus.
-1. Wählen Sie **Hinzufügen** aus, und wählen Sie dann **Hiermit wählen Sie eine API aus** aus.
-1. Wählen Sie **Microsoft Graph** aus, und wählen Sie dann **Auswählen** aus.
-1. Wählen Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Alle Überwachungsprotokolldaten lesen** aus.
-1. Wählen Sie die Schaltfläche **Auswählen** aus, und wählen Sie dann **Fertig** aus.
-1. Wählen Sie **Berechtigungen erteilen** und dann **Ja** aus.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[App-Registrierungen (Vorschau)](#tab/app-reg-preview/)
-
-1. Wählen Sie unter **Verwalten** die Option **API-Berechtigungen**.
-1. Wählen Sie unter **Konfigurierte Berechtigungen** die Option **Berechtigung hinzufügen** aus.
-1. Wählen Sie die Registerkarte **Microsoft-APIs** aus.
-1. Wählen Sie **Microsoft Graph**.
-1. Wählen Sie **Anwendungsberechtigungen**.
-1. Erweitern Sie **AuditLog**, und aktivieren Sie dann das Kontrollkästchen **AuditLog.Read.All**.
-1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
-1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
-1. Wählen Sie Ihr aktuell angemeldetes Konto aus, wenn ihm die Rolle *Globaler Administrator* zugewiesen wurde, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem die Rolle *Globaler Administrator* zugewiesen wurde.
-1. Wählen Sie **Akzeptieren** aus.
-1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Berechtigung *AuditLog.Read.All* unter **Status** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
-
-* * *
-
-### <a name="create-client-secret"></a>Erstellen eines geheimen Clientschlüssels
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-Sie verfügen jetzt über eine Anwendung mit dem erforderlichen API-Zugriff, eine Anwendungs-ID und einen Schlüssel, die/den Sie in Ihren Automatisierungsskripts verwenden können. Ein Beispiel dafür, wie Sie Aktivitätsereignisse mit einem Skript abrufen, finden Sie im Abschnitt „PowerShell-Skript“ weiter unten in diesem Artikel.
+Sehen Sie sich anschließend den Abschnitt „PowerShell-Skript“ weiter unten in diesem Artikel an. Dort wird anhand eines Beispiels gezeigt, wie Aktivitätsereignisse mit einem Skript abgerufen werden können.
 
 ### <a name="access-the-api"></a>Zugreifen auf die API
 
@@ -258,4 +222,4 @@ Nachfolgend sehen Sie die JSON-Darstellung des Beispielsaktivitätsereignisses, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können weitere Verwaltungsaufgaben automatisieren, z. B. das [Verwalten von Benutzern mit .NET](manage-user-accounts-graph-api.md).
+Sie können weitere Verwaltungsaufgaben automatisieren, etwa das [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).

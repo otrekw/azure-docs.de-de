@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470571"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484603"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
-In diesem Artikel werden häufig gestellte Fragen beantwortet, und Sie erhalten Informationen zu den bewährten Methoden für Windows 10 Enterprise mit mehreren Sitzungen.
+In diesem Artikel werden häufig gestellte Fragen beantwortet und bewährte Methoden für Windows 10 Enterprise mit mehreren Sitzungen behandelt.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Was ist Windows 10 Enterprise (mehrere Sitzungen)? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Was ist Windows 10 Enterprise (mehrere Sitzungen)?
 
-Windows 10 Enterprise (mehrere Sitzungen) (bisher als Windows 10 Enterprise for Virtual Desktops (EVD) bezeichnet) ist ein neuer Remotedesktop-Sitzungshost, der mehrere gleichzeitige interaktive Sitzungen ermöglicht. Zuvor war dies nur mit Windows Server möglich. Mit dieser Funktion erhalten Benutzer eine vertraute Windows 10-Benutzeroberfläche. Die IT-Abteilung kann von den Kostenvorteilen profitieren, die sich durch die Ausführung mehrerer Sitzungen ergeben, und anstelle von RDS-Clientzugriffslizenzen (Client Access Licenses, CALs) die vorhandene Windows-Lizenzierung pro Benutzer verwenden. Weitere Informationen zu Lizenzen und Preisen finden Sie unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+Windows 10 Enterprise mit mehreren Sitzungen (ehemals Windows 10 Enterprise for Virtual Desktops (EVD)) ist ein neuer Remotedesktop-Sitzungshost, der mehrere gleichzeitige interaktive Sitzungen ermöglicht. Zuvor war dies nur mit Windows Server möglich. Mit dieser Funktion erhalten Benutzer eine vertraute Windows 10-Benutzeroberfläche. Die IT-Abteilung kann von den Kostenvorteilen profitieren, die sich durch die Ausführung mehrerer Sitzungen ergeben, und anstelle von RDS-Clientzugriffslizenzen (Client Access Licenses, CALs) die vorhandene Windows-Lizenzierung pro Benutzer verwenden. Weitere Informationen zu Lizenzen und Preisen finden Sie unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Wie viele Benutzer können unter Windows 10 Enterprise (mehrere Sitzungen) gleichzeitig eine interaktive Sitzung ausführen?
 
@@ -40,7 +40,7 @@ Sie können in Azure einen virtuellen Computer (VM) mit Windows 10 Enterprise (
  
 Erstellen Sie zunächst in Azure mit Windows 10 Enterprise (mehrere Sitzungen) einen virtuellen Computer. Anstatt die VM in Azure zu starten, können Sie die VHD direkt herunterladen. Anschließend können Sie die heruntergeladene VHD verwenden, um auf einem Windows 10-PC eine neue VM der ersten Generation mit Hyper-V-Aktivierung zu erstellen.
 
-Passen Sie das Image an Ihre Anforderungen an, indem Sie Branchenanwendungen installieren und Sysprep für das Image ausführen. Laden Sie das Image nach erfolgter Anpassung mit der enthaltenen VHD in Azure hoch. Beschaffen Sie anschließend Windows Virtual Desktop über den Azure Marketplace, und nutzen Sie den Dienst, um einen neuen Hostpool mit dem angepassten Image bereitzustellen.
+Passen Sie das Image an Ihre Anforderungen an, indem Sie Branchenanwendungen installieren und Sysprep für das Image ausführen. Laden Sie das Image nach erfolgter Anpassung mit der enthaltenen VHD in Azure hoch. Laden Sie anschließend Windows Virtual Desktop aus dem Azure Marketplace herunter, und stellen Sie damit einen neuen Hostpool mit dem angepassten Image bereit.
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Wie verwalte ich Windows 10 Enterprise (mehrere Sitzungen) nach der Bereitstellung?
 
@@ -71,6 +71,31 @@ Weitere Informationen zum Konfigurieren eines FSLogix-Profilcontainers finden Si
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Welche Lizenz benötige ich für den Zugriff auf Windows 10 Enterprise (mehrere Sitzungen)?
 
 Eine vollständige Liste mit den passenden Lizenzen finden Sie unter [Windows Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Warum verschwinden meine Apps nach der Abmeldung?
+
+Das passiert, weil Sie Windows 10 Enterprise mit mehreren Sitzungen mit einer Profilverwaltungslösung wie FSLogix verwenden. Ihr System wurde durch den Administrator oder durch die Profillösung so konfiguriert, dass Benutzerprofile bei der Benutzerabmeldung gelöscht werden. Dadurch werden nach der Abmeldung neben Ihrem Benutzerprofil auch alle Apps gelöscht, die Sie im Rahmen Ihrer Sitzung installiert haben. Sollen die installierten Apps erhalten bleiben, bitten Sie Ihren Administrator, diese Apps für alle Benutzer in Ihrer Windows Virtual Desktop-Umgebung bereitzustellen.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Wie kann ich sicherstellen, dass Apps nach der Benutzerabmeldung nicht verschwinden?
+
+Die meisten virtualisierten Umgebungen sind standardmäßig so konfiguriert, dass Benutzer keine zusätzlichen Apps in ihren Profilen installieren können. Wenn Sie sicherstellen möchten, dass eine App nicht verschwindet, wenn sich der Benutzer von Windows Virtual Desktop abmeldet, müssen Sie diese App für alle Benutzerprofile in Ihrer Umgebung bereitstellen. Weitere Informationen zur App-Bereitstellung finden Sie in den folgenden Ressourcen:
+
+- [Veröffentlichen von integrierten Apps in Windows Virtual Desktop](publish-apps.md)
+- [Befehlszeilenoptionen für die Wartung von DISM-App-Paketen (APPX- oder APPXBUNDLE-Dateien)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Wie kann ich sicherstellen, dass Benutzer keine Apps aus dem Microsoft Store herunterladen und installieren?
+
+Sie können die Microsoft Store-App deaktivieren, um sicherzustellen, dass Benutzer neben den Apps, die Sie bereits für die Benutzer bereitgestellt haben, keine weiteren Apps herunterladen.
+
+So deaktivieren Sie die Store-App:
+
+1. Erstellen Sie eine neue Gruppenrichtlinie.
+2. Wählen Sie **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** aus.
+3. Wählen Sie **Store**.
+4. Wählen Sie **Store-App** aus.
+5. Wählen Sie **Deaktiviert** und anschließend **OK** aus.
+6. Wählen Sie **Übernehmen**.
  
 ## <a name="next-steps"></a>Nächste Schritte
 
