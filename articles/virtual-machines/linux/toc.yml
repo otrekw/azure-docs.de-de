@@ -534,7 +534,7 @@
             - name: Skalierung mit VM-Agents
               href: ../../jenkins/jenkins-azure-vm-agents.md
             - name: Veröffentlichen von Artefakten in Storage
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
             - name: Schützen von Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Ausführen von Containern

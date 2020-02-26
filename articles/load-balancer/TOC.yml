@@ -12,8 +12,9 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Vorlage
+    - name: Azure Resource Manager-Vorlage
       href: quickstart-load-balancer-standard-public-template.md
+      displayName: ARM
 - name: Tutorials
   items:
     - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
@@ -84,16 +85,18 @@
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli'
         - name: Azure PowerShell
           href: 'https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell'
-        - name: Vorlage
+        - name: Azure Resource Manager-Vorlage
           href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-configure-standard-load-balancer-template-json'
+          displayName: ARM
     - name: Konfigurieren des internen Lastenausgleichs
       items:
         - name: Azure-Befehlszeilenschnittstelle
           href: load-balancer-get-started-ilb-arm-cli.md
         - name: Azure PowerShell
           href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Vorlage
+        - name: Azure Resource Manager-Vorlage
           href: load-balancer-get-started-ilb-arm-template.md
+          displayName: ARM
     - name: Konfigurieren des TCP-Leerlauftimeouts für den Lastenausgleich
       href: load-balancer-tcp-idle-timeout.md
     - name: Konfigurieren des Verteilungsmodus für den Lastenausgleich
@@ -141,6 +144,9 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
+    - name: Resource Manager-Vorlage
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers'
+      displayName: ARM
 - name: Ressourcen
   items:
     - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
