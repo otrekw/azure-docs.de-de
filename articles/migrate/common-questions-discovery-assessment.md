@@ -2,21 +2,22 @@
 title: 'Häufig gestellte Fragen: Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate'
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059486"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426291"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
-In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum). Wenn Sie weitere Fragen haben, lesen Sie die folgenden Artikel:
+In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse in Azure Migrate. Wenn Sie weitere Fragen haben, lesen Sie die folgenden Artikel:
 
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate.
 - [Fragen](common-questions-appliance.md) zur Azure Migrate-Appliance.
 - [Fragen](common-questions-server-migration.md) zur Servermigration.
+- Veröffentlichen von Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum)
 
 
 

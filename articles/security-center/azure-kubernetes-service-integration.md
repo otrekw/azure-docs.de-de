@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center und Azure Kubernetes Service | Microsoft-Dokumentation
+title: Azure Security Center und Azure Kubernetes Service
 description: Erfahren Sie mehr über die Integration von Azure Security Center in Azure Kubernetes Service.
 services: security-center
 documentationcenter: na
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a5d01978d8a4883d760e7ecf84afa381dfd563d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9d8c5f98cfd8b4b3831bcbd7e65285f93e6c323f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868557"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441951"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integration von Security Center in Azure Kubernetes Service (Vorschau)
 Azure Kubernetes Service (AKS) ist der verwaltete Dienst von Microsoft für Entwicklung, Bereitstellung und Verwaltung von Anwendungen in Containern. 
@@ -34,21 +34,26 @@ Diese beiden Tools gemeinsam bilden das beste cloudnative Kubernetes-Sicherheits
 
 Die gemeinsame Verwendung der beiden Dienste bietet Folgendes:
 
-* **Sicherheitsempfehlungen** – Security Center identifiziert und kategorisiert Ihre AKS-Ressourcen: von Clustern zu einzelnen virtuellen Computern. Anschließend können Sie die Sicherheitsempfehlungen pro Ressource anzeigen. Weitere Informationen finden Sie unter [Implementieren von Sicherheitsempfehlungen](security-center-recommendations.md). 
+* **Sicherheitsempfehlungen** – Security Center identifiziert und kategorisiert Ihre AKS-Ressourcen: von Clustern zu einzelnen virtuellen Computern. Anschließend können Sie die Sicherheitsempfehlungen pro Ressource anzeigen. Weitere Informationen finden Sie in den Containerempfehlungen in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-computeapp). 
 
     > [!NOTE]
-    > Wenn der Name einer Security Center-Empfehlung mit dem Tag „(Vorschau)“ endet, bezieht sich dies darauf, dass es sich bei der Empfehlung und nicht beim Feature um eine Vorschau handelt.
+    > Wenn der Name einer Security Center-Empfehlung mit dem Tag „(Vorschau)“ endet, bezieht sich dies auf die Empfehlung und bedeutet nicht, dass sich das Feature in der Vorschauphase befindet.
 
-* **Umgebungshärtung** – Security Center überwacht ständig die Konfiguration Ihrer Kubernetes-Cluster und generiert den Branchenstandards entsprechende Sicherheitsempfehlungen.
+* **Umgebungshärtung:** Security Center überwacht ständig die Konfiguration Ihrer Kubernetes-Cluster und Docker-Konfigurationen. Anschließend werden den Branchenstandards entsprechende Sicherheitsempfehlungen generiert.
 
-* **Laufzeitschutz** – Durch fortlaufende Analyse der folgenden AKS-Quellen warnt Security Center Sie über auf Host- *und* AKS-Clusterebene erkannte Bedrohungen und schädlichen Aktivitäten (weitere Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)):
+* **Laufzeitschutz:** Durch fortlaufende Analyse der folgenden AKS-Quellen warnt Security Center Sie über auf Host- *und* AKS-Clusterebene erkannte Bedrohungen und schädliche Aktivitäten:
     * Sicherheitsrohereignisse, z.B. Erstellung von Netzwerkdaten und -prozessen
     * Das Kubernetes-Überwachungsprotokoll
+
+    Weitere Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](security-center-alerts-compute.md#azure-containers-).
+
+    Die Liste der möglichen Warnungen finden Sie in den folgenden Abschnitten in der Referenztabelle zu Warnungen: [Warnungen auf AKS-Cluster Ebene](alerts-reference.md#alerts-akscluster) und [Warnungen auf Containerhostebene](alerts-reference.md#alerts-containerhost).  
 
 ![Weitere Details zu Azure Security Center und Azure Kubernetes Service (AKS)](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
 > Einige der Daten, die von Azure Security Center in Ihrer Kubernetes-Umgebung gescannt werden, können vertrauliche Informationen enthalten.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -57,7 +62,5 @@ Weitere Informationen zu den Containersicherheitsfeatures von Security Center fi
 * [Containersicherheit in Security Center](container-security.md)
 
 * [Integration mit Azure Container Registry](azure-container-registry-integration.md)
-
-* [Schützen von Computern und Anwendungen in Azure Security Center](security-center-virtual-machine-protection.md) – Beschreibt Empfehlungen des Security Center.
 
 * [Datenverwaltung bei Microsoft](https://www.microsoft.com/trust-center/privacy/data-management) – Beschreibt die Datenrichtlinien von Microsoft-Diensten (z.B. Azure, Intune und Office 365), Details zur Microsoft-Datenverwaltung und Aufbewahrungsrichtlinien, die sich auf Ihre Daten auswirken.

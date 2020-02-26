@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986239"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208538"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
@@ -79,10 +79,10 @@ Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die 
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |   
 
 - `opacity`: Gibt an, wie undurchsichtig oder transparent die Wärmebildebene ist.
-- `intensity`: Wendet einen Multiplikator auf die Gewichtung jedes Datenpunkts an, um die Gesamtintensität des Wärmebilds zu erhöhen. Dies trägt dazu bei, die Gewichtung der Datenpunkte zu verändern, was die Visualisierung erleichtert.
+- `intensity`: Wendet einen Multiplikator auf die Gewichtung jedes Datenpunkts an, um die Gesamtintensität des Wärmebilds zu erhöhen. Dies verändert die Gewichtung der Datenpunkte, was die Visualisierung erleichtert.
 - `weight`: Standardmäßig weisen alle Datenpunkte eine Gewichtung von 1 auf, sodass alle Datenpunkte gleichmäßig gewichtet werden. Die Option „weight“ fungiert als Multiplikator und kann als Zahl oder als Ausdruck festgelegt werden. Wenn eine Zahl als Gewichtung festgelegt wird, entspricht das der zweifachen Platzierung jedes Datenpunkts auf der Karte. Wenn die Gewichtung z. B. 2 beträgt, dann verdoppelt sich die Dichte. Wenn Sie die Option „weight“ auf eine Zahl festlegen, wird das Wärmebild ähnlich wie mit der Option „intensity“ gerendert. 
 
-  Wenn Sie jedoch einen Ausdruck verwenden, kann die Gewichtung der einzelnen Datenpunkte auf den Eigenschaften der einzelnen Datenpunkte basieren. Gehen Sie beispielsweise davon aus, dass jeder Datenpunkt ein Erdbeben darstellt. Eine wichtige Metrik, die jeder Erdbeben-Datenpunkt aufweist, ist der Magnitudenwert. Es kommt ständig zu Erdbeben. Die meisten weisen jedoch eine so geringe Stärke auf, dass sie nicht bemerkt werden. Das Verwenden des Magnitudenwerts in einem Ausdruck, mit dem jedem Datenpunkt eine Gewichtung zugewiesen wird, ermöglicht eine bessere Darstellung der Bedeutung von Erdbeben im Wärmebild.
+  Wenn Sie jedoch einen Ausdruck verwenden, kann die Gewichtung der einzelnen Datenpunkte auf den Eigenschaften der einzelnen Datenpunkte basieren. Gehen Sie beispielsweise davon aus, dass jeder Datenpunkt ein Erdbeben darstellt. Der Magnitudenwert ist für jeden Erdbeben-Datenpunkt eine wichtige Metrik gewesen. Es kommt ständig zu Erdbeben. Die meisten weisen jedoch eine so geringe Stärke auf, dass sie nicht bemerkt werden. Verwenden Sie den Magnitudenwert in einem Ausdruck, um jedem Datenpunkt die Gewichtung zuzuweisen. Das Verwenden des Magnitudenwerts, um die Gewichtung zuzuweisen, ermöglicht eine bessere Darstellung der Bedeutung von Erdbeben im Wärmebild.
 - `source` und `source-layer`: Ermöglicht Ihnen das Aktualisieren der Datenquelle.
 
 Mit diesem Tool können Sie die verschiedenen Optionen für Wärmebildebenen testen.

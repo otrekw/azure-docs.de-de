@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung eines benutzerdefinierten NGINX-Eingangscontrollers und HTTPS mithilfe dieses Eingangscontrollers konfigurieren.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: a6fcc6bfd7f3bd682cd67b58312a83c23e2a3b1b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39f17636779c4160867311af67ebc621b685f2d3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475964"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486201"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten NGINX-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -18,11 +18,11 @@ In diesem Artikel wird erläutert, wie Sie Azure Dev Spaces für die Verwendung 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie über keins verfügen, können Sie ein [kostenloses Konto][azure-account-create] erstellen.
-* [Azure-CLI installiert][az-cli].
+* Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto][azure-account-create] erstellen.
+* Die [Azure CLI][az-cli] muss installiert sein.
 * Ein [Azure Kubernetes Service-Cluster (AKS-Cluster) mit aktiviertem Azure Dev Spaces-Dienst][qs-cli].
 * [kubectl][kubectl] muss installiert sein.
-* [Helm 3][helm-installed] muss installiert sein.
+* [Helm 3 muss installiert sein.][helm-installed]
 * [Eine benutzerdefinierte Domäne][custom-domain] mit einer [DNS-Zone][dns-zone], die sich in derselben Ressourcengruppe befindet wie Ihr AKS-Cluster.
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>Konfigurieren eines benutzerdefinierten NGINX-Eingangscontrollers
@@ -53,6 +53,13 @@ Erstellen Sie einen Kubernetes-Namespace für den NGINX-Eingangscontroller, und 
 kubectl create ns nginx
 helm install nginx stable/nginx-ingress --namespace nginx --version 1.27.0
 ```
+
+> [!NOTE]
+> Im obigen Beispiel wird ein öffentlicher Endpunkt für den Eingangscontroller erstellt. Wenn Sie stattdessen einen privaten Endpunkt für Ihren Eingangscontroller verwenden müssen, fügen Sie den Parameter *--set controller.service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* für den Befehl *helm install* hinzu. Beispiel:
+> ```console
+> helm install nginx stable/nginx-ingress --namespace nginx --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.27.0
+> ```
+> Dieser private Endpunkt wird innerhalb des virtuellen Netzwerks verfügbar gemacht, in dem Ihr AKS-Cluster bereitgestellt wird.
 
 Rufen Sie die IP-Adresse des NGINX-Eingangscontrollerdiensts mithilfe von [kubectl get][kubectl-get] ab.
 
@@ -121,7 +128,7 @@ azds space select -n dev -y
 Stellen Sie die Beispielanwendung mithilfe von `helm install` bereit.
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 Im obigen Beispiel wird die Beispielanwendung für den *dev*-Namespace bereitgestellt.
@@ -232,7 +239,7 @@ gateway:
       secretName: dev-gateway-secret
 ```
 
-Aktualisieren Sie die Beispielanwendung mithilfe von `helm`:
+Führen Sie für die Beispielanwendung mithilfe von `helm` ein Upgrade durch:
 
 ```console
 helm upgrade bikesharing . --namespace dev --atomic
@@ -305,7 +312,7 @@ Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-development-qs]
+> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-development-qs]
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

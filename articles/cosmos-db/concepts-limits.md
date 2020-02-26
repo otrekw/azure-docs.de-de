@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2cce9cbe20121376ad77692773df1d58fcf5257f
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759771"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460210"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -77,7 +77,8 @@ Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ihrer Da
 | Resource | Standardlimit |
 | --- | --- |
 | Maximale Anzahl von Datenbanken | Unbegrenzt |
-| Maximale Anzahl von Containern pro Datenbank (oder Konto) | Unbegrenzt |
+| Maximale Anzahl von Containern pro Datenbank mit freigegebenem Durchsatz |25 |
+| Maximale Anzahl von Containern pro Datenbank oder Konto mit dediziertem Durchsatz  |Unbegrenzt |
 | Maximale Anzahl von Regionen | Keine Einschränkung (alle Azure-Regionen) |
 
 ## <a name="per-container-limits"></a>Grenzwerte pro Container
@@ -103,7 +104,7 @@ Abhängig von der API, die Sie verwenden, kann ein Azure Cosmos-Element ein Doku
 | --- | --- |
 | Maximale Größe eines Elements | 2MB (UTF-8-Länge von JSON-Darstellung) |
 | Maximale Länge des Partitionsschlüsselwerts | 2\.048 Bytes |
-| Maximale Länge des ID-Werts | 1\.024 Bytes |
+| Maximale Länge des ID-Werts | 1\.023 Bytes |
 | Maximale Anzahl der Eigenschaften pro Element | Praktisch unbegrenzt |
 | Maximale Schachtelungstiefe | Praktisch unbegrenzt |
 | Maximale Länge des Eigenschaftsnamens | Praktisch unbegrenzt |

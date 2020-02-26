@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121371"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367774"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -91,7 +91,7 @@ Beachten Sie, dass der Benutzerprinzipalname (userPrincipalName) für einen Gast
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Bereitstellungszyklen: Startzyklus und Inkrementell
 
-Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das [Feature „Differenzielle Abfragen“ der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt einen ersten Zyklus für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Zyklen.
+Wenn Azure AD das Quellsystem ist, verwendet der Bereitstellungsdienst das[Nachverfolgen von Änderungen bei Microsoft Graph-Daten mithilfe einer Deltaabfrage](https://docs.microsoft.com/graph/delta-query-overview), um Benutzer und Gruppen zu überwachen. Der Bereitstellungsdienst führt einen ersten Zyklus für das Quellsystem und das Zielsystem aus, gefolgt von regelmäßigen inkrementellen Zyklen.
 
 ### <a name="initial-cycle"></a>Erster Zyklus
 
@@ -142,8 +142,8 @@ Nach dem ersten Zyklus führen alle anderen Zyklen folgende Aktionen aus:
 
 Der Bereitstellungsdienst führt aufeinander folgende inkrementelle Zyklen in bestimmten (im [jeweiligen Anwendungstutorial](../saas-apps/tutorial-list.md) angegebenen) Intervallen aus. Die inkrementellen Zyklen werden ausgeführt, bis eines der folgenden Ereignisse auftritt:
 
-- Der Dienst wird mit dem Azure-Portal oder mit dem entsprechenden Graph-API-Befehl manuell beendet. 
-- Ein neuer erster Zyklus wird ausgelöst, indem im Azure-Portal die Option **Clear state and restart** (Status löschen und neu starten) oder der entsprechende Graph-API-Befehl verwendet wird. Durch diese Aktion werden alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
+- Der Dienst wird mit dem Azure-Portal oder mit dem entsprechenden Microsoft Graph-API-Befehl manuell beendet.
+- Ein neuer erster Zyklus wird ausgelöst, indem im Azure-Portal die Option **Clear state and restart** (Status löschen und neu starten) oder der entsprechende Microsoft Graph-API-Befehl verwendet wird. Durch diese Aktion werden alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
 - Ein neuer erster Zyklus wird aufgrund einer Änderung in den Attributzuordnungen oder Bereichsfiltern ausgelöst. Durch diese Aktion werden auch alle gespeicherten Grenzwerte gelöscht und alle Quellobjekte erneut ausgewertet.
 - Der Bereitstellungsprozess wird aufgrund einer hohen Fehlerrate in Quarantäne versetzt (siehe unten) und bleibt mehr als vier Wochen lang in Quarantäne. In diesem Fall wird der Dienst automatisch deaktiviert.
 

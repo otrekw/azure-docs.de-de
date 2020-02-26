@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231344"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486259"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -246,12 +246,12 @@ Bei der Planung der Verwendung von Durable Functions für eine Produktionsanwend
 * **Parallele Aktivitätsausführung:** Dieses Szenario beschreibt eine Orchestratorfunktion, mit der mithilfe des Musters [Auffächern nach außen/innen](durable-functions-cloud-backup.md) viele Aktivitätsfunktionen parallel ausgeführt werden.
 * **Parallele Antwortverarbeitung:** Dieses Szenario stellt die zweite Hälfte des Musters [Auffächern nach außen/innen](durable-functions-cloud-backup.md) dar. Es konzentriert sich auf die Leistung der Auffächerung nach innen. Es muss beachtet werden, dass im Unterschied zur Auffächerung nach außen die Auffächerung nach innen durch eine einzelne Orchestratorfunktionsinstanz erfolgt und daher nur auf einem einzelnen virtuellen Computer ausgeführt werden kann.
 * **Externe Ereignisverarbeitung:** Dieses Szenario stellt eine einzelne Orchestratorfunktionsinstanz dar, die nacheinander auf [externe Ereignisse](durable-functions-external-events.md) wartet.
-* **Verarbeitung von Entitätsvorgängen**: In diesem Szenario wird getestet, wie schnell eine _einzelne_ [Leistungsindikatorentität](durable-functions-entities.md) einen konstanten Stream von Vorgängen verarbeiten kann.
+* **Verarbeitung von Entitätsvorgängen**: In diesem Szenario wird getestet, wie schnell eine _einzelne_ [Indikatorentität](durable-functions-entities.md) einen konstanten Stream von Vorgängen verarbeiten kann.
 
 > [!TIP]
 > Im Gegensatz zur Auffächerung nach außen sind Vorgänge zur Auffächerung nach innen auf einen einzelnen virtuellen Computer beschränkt. Wenn in Ihrer Anwendung das Muster „Auffächern nach außen/innen“ verwendet wird und Sie die Leistung im Hinblick auf die Auffächerung nach innen optimieren möchten, können Sie die Auffächerung der Aktivitätsfunktionen nach außen in mehrere [untergeordnete Orchestrierungen](durable-functions-sub-orchestrations.md) unterteilen.
 
-In der folgenden Tabelle sind die erwarteten *maximalen* Durchsatzzahlen für die zuvor beschriebenen Szenarien aufgeführt. „Instanz“ bezieht sich auf eine einzelne Instanz einer Orchestratorfunktion, die auf einem einzelnen kleinen ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) virtuellen Computer in Azure App Service ausgeführt wird. In allen Fällen wird angenommen, dass [erweiterte Sitzungen](#orchestrator-function-replay) aktiviert sind. Die tatsächlichen Ergebnisse können je nach den durch den Funktionscode ausgeführten CPU- oder E/A-Vorgängen variieren.
+In der folgenden Tabelle sind die erwarteten *maximalen* Durchsatzzahlen für die zuvor beschriebenen Szenarien aufgeführt. „Instanz“ bezieht sich auf eine einzelne Instanz einer Orchestratorfunktion, die auf einem einzelnen kleinen ([A1](../../virtual-machines/sizes-previous-gen.md)) virtuellen Computer in Azure App Service ausgeführt wird. In allen Fällen wird angenommen, dass [erweiterte Sitzungen](#orchestrator-function-replay) aktiviert sind. Die tatsächlichen Ergebnisse können je nach den durch den Funktionscode ausgeführten CPU- oder E/A-Vorgängen variieren.
 
 | Szenario | Maximaler Durchsatz |
 |-|-|

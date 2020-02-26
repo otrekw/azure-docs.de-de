@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850497"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482767"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
 
@@ -34,7 +34,7 @@ Ihr Azure AD B2C-Verzeichnis verfügt über mehrere integrierte Attribute. Beisp
 * Ein Identitätsanbieter verfügt über eine eindeutige Benutzer-ID, die gespeichert werden muss, z.B. **uniqueUserGUID**.
 * Für eine benutzerdefinierte User Journey muss der Status eines Benutzers beibehalten werden, z.B. **migrationStatus**.
 
-Azure AD B2C erweitert die für die einzelnen Benutzerkonten gespeicherten Attribute. Außerdem können Sie diese Attribute mit der [Azure AD Graph-API](manage-user-accounts-graph-api.md)lesen und schreiben.
+Azure AD B2C erweitert die für die einzelnen Benutzerkonten gespeicherten Attribute. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](manage-user-accounts-graph-api.md) lesen und schreiben.
 
 Mit Erweiterungseigenschaften wird das Schema der Benutzerobjekte im Verzeichnis erweitert. Die Begriffe *Erweiterungseigenschaft*, *benutzerdefiniertes Attribut* und *benutzerdefinierter Anspruch* beziehen sich im Kontext dieses Artikels auf die gleiche Sache. Der Name variiert je nach Kontext (Anwendung, Objekt, Richtlinie).
 
@@ -297,7 +297,7 @@ Das ID-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 ## <a name="reference"></a>Verweis
 
-Weitere Informationen zur umfassenden Behandlung von Erweiterungseigenschaften finden Sie im Artikel [Verzeichnisschemaerweiterungen | Graph-API-Konzepte](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Weitere Informationen zu Erweiterungseigenschaften finden Sie im Artikel [Hinzufügen benutzerdefinierter Daten zu Ressourcen mithilfe von Erweiterungen](https://docs.microsoft.com/graph/extensibility-overview).
 
 > [!NOTE]
 > * Ein **TechnicalProfile** ist ein Elementtyp oder eine Funktion, die den Namen eines Endpunkts, Metadaten und das Protokoll definiert. Das **TechnicalProfile** beschreibt die Austausch von Ansprüchen, die das Identity Experience Framework ausführt. Wenn diese Funktion in einem Orchestrierungsschritt oder über ein anderes **TechnicalProfile** aufgerufen wird, werden die **InputClaims** und **OutputClaims** vom Aufrufer als Parameter bereitgestellt.

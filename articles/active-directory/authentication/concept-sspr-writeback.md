@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161578"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368174"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -158,13 +158,13 @@ Kennwörter werden in den folgenden Situationen zurückgeschrieben:
 Kennwörter werden in folgenden Situationen *nicht* zurückgeschrieben:
 
 * **Nicht unterstützte Vorgänge für Endbenutzer**
-   * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Azure AD-Graph-API
+   * Jegliches Zurücksetzen des eigenen Kennworts durch einen Endbenutzer über PowerShell Version 1, Version 2 oder die Microsoft Graph-API
 * **Nicht unterstützte Vorgänge für Administratoren**
-   * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Azure AD-Graph-API
+   * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung mithilfe von PowerShell Version 1, Version 2 oder der Microsoft-Graph-API
    * Jegliche durch einen Administrator initiierte Endbenutzer-Kennwortzurücksetzung über das [Microsoft 365 Admin Center](https://admin.microsoft.com)
 
 > [!WARNING]
-> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie Active Directory-Benutzer und -Computer oder dem Active Directory-Verwaltungscenter wird als Previewfunktion von Azure AD Connect unterstützt. Weitere Informationen finden Sie im Artikel [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon).
+> Die Verwendung des Kontrollkästchens „Benutzer muss Kennwort bei der nächsten Anmeldung ändern“ in lokalen Active Directory-Verwaltungstools wie Active Directory-Benutzer und -Computer oder dem Active Directory-Verwaltungscenter wird als Previewfunktion von Azure AD Connect unterstützt. Weitere Informationen finden Sie im Artikel [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,21 +5,20 @@ description: Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlege
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699018"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461197"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -33,9 +32,8 @@ In Azure AD steht ein Richtlinienobjekt für eine Reihe von Regeln, die für ein
 Sie können eine Richtlinie als Standardrichtlinie für Ihre Organisation festlegen. Die Richtlinie wird auf alle Anwendungen der Organisation angewendet, sofern sie nicht von einer Richtlinie mit einer höheren Priorität außer Kraft gesetzt wird. Sie können eine Richtlinie auch bestimmten Anwendungen zuweisen. Die Reihenfolge der Priorität variiert je nach Richtlinientyp.
 
 > [!NOTE]
-> Die Richtlinie für konfigurierbare Tokengültigkeitsdauer wird für SharePoint Online nicht unterstützt.  Sie haben zwar die Möglichkeit, diese Richtlinie über PowerShell zu erstellen, sie wird von SharePoint Online aber nicht akzeptiert. Im [SharePoint Online-Blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) finden Sie weitere Informationen zum Konfigurieren von Timeouts für Leerlaufsitzungen.
->* Die Standardlebensdauer für das SharePoint Online-Zugriffstoken beträgt eine Stunde. 
->* Die standardmäßige maximale Inaktivitätsdauer für das SharePoint Online-Aktualisierungstoken beträgt 90 Tage.
+> Die konfigurierbare Richtlinie für die Tokengültigkeitsdauer gilt nur für mobile und Desktopclients, die auf SharePoint Online- und OneDrive for Business-Ressourcen zugreifen, und nicht für Webbrowsersitzungen.
+> Zum Verwalten der Gültigkeitsdauer von Webbrowsersitzungen für SharePoint Online und OneDrive for Business verwenden Sie das Feature [Sitzungsdauer für bedingten Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md). Im [SharePoint Online-Blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) finden Sie weitere Informationen zum Konfigurieren von Timeouts für Leerlaufsitzungen.
 
 ## <a name="token-types"></a>Tokentypen
 
@@ -389,7 +387,7 @@ Erstellt eine neue Richtlinie.
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |JSON-Array, dargestellt als Zeichenfolge, das alle Regeln der Richtlinie enthält. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |Zeichenfolge mit dem Namen der Richtlinie. |`-DisplayName "MyTokenPolicy"` |
@@ -406,7 +404,7 @@ Ruft alle Azure AD-Richtlinien oder eine angegebene Richtlinie ab.
 Get-AzureADPolicy
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [Optional] |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -419,7 +417,7 @@ Ruft alle Apps und Dienstprinzipale ab, die mit einer Richtlinie verknüpft sind
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (ID)** der gewünschten Richtlinie. |`-Id <ObjectId of Policy>` |
 
@@ -466,7 +464,7 @@ Verknüpft die angegebene Richtlinie mit einer Anwendung.
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -480,7 +478,7 @@ Ruft die Richtlinie ab, die einer Anwendung zugewiesen ist.
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -493,7 +491,7 @@ Entfernt eine Richtlinie aus einer Anwendung.
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |
@@ -510,7 +508,7 @@ Verknüpft die angegebene Richtlinie mit einem Dienstprinzipal.
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |Die **ObjectId** der Richtlinie. | `-RefObjectId <ObjectId of Policy>` |
@@ -524,7 +522,7 @@ Ruft alle Richtlinien ab, die mit dem angegebenen Dienstprinzipal verknüpft sin
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 
@@ -537,7 +535,7 @@ Entfernt die Richtlinie aus dem angegebenen Dienstprinzipal.
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| Parameter | Beschreibung | Beispiel |
+| Parameter | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |Die **ObjectId (Id)** der Anwendung. | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |Die **ObjectId** der Richtlinie. | `-PolicyId <ObjectId of Policy>` |

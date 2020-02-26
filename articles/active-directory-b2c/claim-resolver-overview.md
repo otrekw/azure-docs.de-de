@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836047"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425645"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -64,7 +64,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |Der Abfragezeichenfolgen-Parameter `acr_values`. | – |
 | {OIDC:ClientId} |Der Abfragezeichenfolgen-Parameter `client_id`. | 00000000-0000-0000-0000-000000000000 |
@@ -78,7 +78,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="context"></a>Kontext
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | Die Version des Frameworks für die Identitätsfunktion (Buildnummer).  | 1.0.507.0 |
 | {Context:CorrelationId} | Die Korrelations-ID.  | 00000000-0000-0000-0000-000000000000 |
@@ -91,7 +91,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung eingeschlossen wird, kann einem Anspruch in der User Journey zugeordnet werden. Beispielsweise kann die Anforderung von der Anwendung einen Abfragezeichenfolgen-Parameter mit einem der Namen `app_session` oder `loyalty_number` oder eine beliebige benutzerdefinierte Abfragezeichenfolge enthalten.
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | Ein Abfragezeichenfolgen-Parameter. | hawaii |
 | {OAUTH-KV:app_session} | Ein Abfragezeichenfolgen-Parameter. | A3C5R |
@@ -100,17 +100,51 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 
 ### <a name="oauth2"></a>OAuth2
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | Zugriffstoken | – |
 
-## <a name="how-to-use-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern
+
+### <a name="saml"></a>SAML
+
+| Anspruch | BESCHREIBUNG | Beispiel |
+| ----- | ----------- | --------|
+| {SAML:AuthnContextClassReferences} | Der Wert des `AuthnContextClassRef`-Elements aus der SAML-Anforderung. | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
+| {SAML:NameIdPolicyFormat} | Das `Format`-Attribut aus dem `NameIDPolicy`-Element der SAML-Anforderung. | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
+| {SAML:Issuer} |  Der Wert des SAML-`Issuer`-Elements aus der SAML-Anforderung.| https://contoso.com |
+| {SAML:AllowCreate} | Der Wert des `AllowCreate`-Attributs aus dem `NameIDPolicy`-Element der SAML-Anforderung. | True |
+| {SAML:ForceAuthn} | Der Wert des `ForceAuthN`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung. | True |
+| {SAML:ProviderName} | Der Wert des `ProviderName`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung.| Contoso.com |
+
+## <a name="using-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern 
+
+Sie können Anspruchskonfliktlöser mit den folgenden Elementen verwenden: 
+
+| Element | Element | Einstellungen |
+| ----- | ----------------------- | --------|
+|Technisches Profil „Application Insights“ |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[Anspruchstransformation](claims-transformation-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[RESTful-Anbieter](restful-technical-profile.md): technisches Profil| `InputClaim`| 1, 2|
+|[SAML2](saml-technical-profile.md): technisches Profil| `OutputClaim`| 1, 2|
+|[Selbstbestätigt](self-asserted-technical-profile.md): technisches Profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile): technisches Profil| `OutputClaim`| 2 |
+
+Einstellungen: 
+1. Die `IncludeClaimResolvingInClaimsHandling`-Metadaten müssen auf `true` festgelegt werden.
+1. Das Eingabe- oder Ausgabeanspruchsattribut `AlwaysUseDefaultValue` muss auf `true` festgelegt werden.
+
+## <a name="claim-resolvers-samples"></a>Beispiele für Anspruchskonfliktlöser
 
 ### <a name="restful-technical-profile"></a>Technisches Profil „RESTful“
 
 In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie die Sprache des Benutzers, den Richtliniennamen, den Bereich und die Client-ID senden. Basierend auf diesen Ansprüchen kann die REST-API eine benutzerdefinierte Geschäftslogik ausführen und bei Bedarf eine lokalisierte Fehlermeldung auslösen.
 
-Das folgende Beispiel zeigt ein technisches RESTful-Profil:
+Das folgende Beispiel zeigt ein technisches RESTful-Profil mit diesem Szenario:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -120,12 +154,13 @@ Das folgende Beispiel zeigt ein technisches RESTful-Profil:
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -137,9 +172,9 @@ Bei der Verwendung von Anspruchskonfliktlösern können Sie den Anmeldenamen auf
 
 ### <a name="dynamic-ui-customization"></a>Dynamische Benutzeroberflächenanpassung
 
-Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, sodass Sie den Seiteninhalt dynamisch rendern können. Sie können z.B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
+Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. So können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization.md). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
 
-Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `hawaii`, einem **language**-Code (Sprache) von `en-US` und **app**, das die Client-ID darstellt, übergeben:
+Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
 
 ```XML
 <UserJourneyBehaviors>
@@ -155,6 +190,17 @@ Als Resultat sendet Azure AD B2C die oben genannten Parameter an die HTML-Inhalt
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>Inhaltsdefinition
+
+In einer [ContentDefinition](contentdefinitions.md) `LoadUri` können Sie Anspruchskonfliktlöser senden, um Inhalt von verschiedenen Speicherorten basierend auf den verwendeten Parametern abzurufen. 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Technisches Profil „Application Insights“
@@ -173,4 +219,29 @@ Mit Azure Application Insights und Anspruchskonfliktlösern können Sie Einblick
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>Richtlinie für die vertrauende Seite
+
+In einem technischen Profil der Richtlinie für die [vertrauende Seite](relyingparty.md) können Sie die Mandanten-ID oder die Korrelations-ID an die Anwendung der vertrauenden Seite innerhalb des JWT senden. 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

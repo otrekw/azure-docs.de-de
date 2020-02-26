@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910004"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251837"
 ---
 # <a name="url-path-based-routing-overview"></a>Routing auf URL-Pfadbasis – Übersicht
 
@@ -27,7 +27,7 @@ Im folgenden Beispiel verarbeitet Application Gateway Datenverkehr für contoso.
 Anforderungen für http\://contoso.com/video/* werden an VideoServerPool und Anforderungen für http\://contoso.com/images/* an ImageServerPool weitergeleitet. DefaultServerPool wird ausgewählt, wenn keines der Pfadmuster zutrifft.
 
 > [!IMPORTANT]
-> Regeln werden in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Es wird dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zuerst Listener für mehrere Standorte zu konfigurieren.  So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt.
+> Regeln werden bei der v1-SKU in der Reihenfolge verarbeitet, in der sie im Portal aufgeführt sind. Wenn ein einfacher Listener zuerst aufgeführt wird und sich dafür eine Übereinstimmung mit einer eingehenden Anforderung ergibt, wird die Verarbeitung von diesem Listener durchgeführt. Bei der v2-SKU haben genaue Übereinstimmungen eine höhere Rangfolge. Es wird jedoch dringend empfohlen, vor dem Konfigurieren eines einfachen Listeners zunächst Listener für mehrere Standorte zu konfigurieren. So wird sichergestellt, dass der Datenverkehr an das richtige Back-End geleitet wird.
 
 ## <a name="urlpathmap-configuration-element"></a>urlPathMap-Konfigurationselement
 
@@ -74,12 +74,12 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 
 |v1-Pfadmuster  |Unterstützt?  |
 |---------|---------|
-|`/images/*`     |Ja|
-|`/images*`     |no|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
-|`/CurrentUser/Comments/*`     |Ja|
+|`/images/*`     |ja|
+|`/images*`     |nein|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
+|`/CurrentUser/Comments/*`     |ja|
 
 #### <a name="v2"></a>V2
 
@@ -87,12 +87,12 @@ Bei den Pfadregeln wird die Groß-/Kleinschreibung nicht beachtet.
 
 |v2-Pfadmuster  |Unterstützt?  |
 |---------|---------|
-|`/images/*`     |Ja|
-|`/images*`     |Ja|
-|`/images/*.jpg`     |no|
-|`/*.jpg`     |no|
-|`/Repos/*/Comments/*`     |no|
-|`/CurrentUser/Comments/*`     |Ja|
+|`/images/*`     |ja|
+|`/images*`     |ja|
+|`/images/*.jpg`     |nein|
+|`/*.jpg`     |nein|
+|`/Repos/*/Comments/*`     |nein|
+|`/CurrentUser/Comments/*`     |ja|
 
 Weitere Informationen erhalten Sie in einer [Resource Manager-Vorlage mit URL-basiertem Routing](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing) .
 

@@ -15,18 +15,18 @@ ms.date: 05/13/2019
 ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f49fce985484e85bcba2883a66ec0b1e6d032a8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12d8e60d3bfeb2e72d52b30dffcec4ad6e6c3f08
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065585"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368187"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synchronisieren eines Attributs aus lokalen Active Directory Domain Services mit Azure AD für die Bereitstellung einer Anwendung
 
 Beim Anpassen von Attributzuordnungen für die Benutzerbereitstellung wird das Attribut, das Sie zuordnen möchten, möglicherweise nicht in der **Quellattribut**-Liste angezeigt. In diesem Artikel wird veranschaulicht, wie Sie das fehlende Attribut hinzufügen, indem Sie es aus Ihren lokalen Active Directory Domain Services mit Azure Active Directory synchronisieren.
 
-Azure AD muss bei der Bereitstellung eines Benutzerkontos aus Azure AD in eine SaaS-App alle erforderlichen Daten zum Erstellen eines Benutzerprofils enthalten. In einigen Fällen müssen Sie möglicherweise Attribute aus Ihren lokalen AD-Instanzen mit Azure AD synchronisieren, um die Daten verfügbar zu machen. Azure AD Connect synchronisiert zwar automatisch bestimmte Attribute mit Azure AD, allerdings nicht alle. Darüber hinaus werden einige standardmäßig synchronisierte Attribute (z. B. SAMAccountName) nicht über die Azure AD Graph-API verfügbar gemacht. In diesen Fällen können Sie die Verzeichniserweiterungsfunktion von Azure AD Connect verwenden, um das Attribut mit Azure AD zu synchronisieren. Auf diese Weise wird das Attribut über die Azure AD Graph-API und den Azure AD-Bereitstellungsdienst angezeigt.
+Azure AD muss bei der Bereitstellung eines Benutzerkontos aus Azure AD in eine SaaS-App alle erforderlichen Daten zum Erstellen eines Benutzerprofils enthalten. In einigen Fällen müssen Sie möglicherweise Attribute aus Ihren lokalen AD-Instanzen mit Azure AD synchronisieren, um die Daten verfügbar zu machen. Azure AD Connect synchronisiert zwar automatisch bestimmte Attribute mit Azure AD, allerdings nicht alle. Darüber hinaus werden einige standardmäßig synchronisierte Attribute (z. B. SAMAccountName) nicht über die Microsoft Graph-API verfügbar gemacht. In diesen Fällen können Sie die Verzeichniserweiterungsfunktion von Azure AD Connect verwenden, um das Attribut mit Azure AD zu synchronisieren. Auf diese Weise wird das Attribut über die Microsoft Graph-API und den Azure AD-Bereitstellungsdienst angezeigt.
 
 Führen Sie die folgenden Schritte aus, wenn sich die für die Bereitstellung benötigten Daten in Active Directory Domain Services befinden, aus den zuvor genannten Gründen aber nicht für die Bereitstellung zur Verfügung stehen.
  

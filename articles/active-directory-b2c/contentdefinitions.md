@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157872"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425628"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Das **ContentDefinition**-Element enthält die folgenden Elemente:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Eine Zeichenfolge, die die URL der HTML5-Seite für die Inhaltsdefinition enthält. |
-| RecoveryUri | 0:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. |
+| RecoveryUri | 1:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. |
 | DataUri | 1:1 | Eine Zeichenfolge mit der relativen URL einer HTML-Datei, die die Benutzeroberfläche, die für den Schritt aufgerufen werden soll, bereitstellt. |
 | Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die Metadaten enthält, die von der Inhaltsdefinition genutzt werden. |
 | LocalizedResourcesReferences | 0:1 | Eine Sammlung von Verweisen auf lokalisierte Ressourcen. Verwenden Sie dieses Element, um die Lokalisierung einer Benutzeroberfläche und eines Anspruchsattributs anzupassen. |
@@ -82,11 +82,11 @@ Das **DataUri**-Element wird verwendet, um den Seitenbezeichner anzugeben. Azure
 | Seitenbezeichner | BESCHREIBUNG |
 | ----- | ----------- |
 | `globalexception` | Zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
-| `providerselection` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können. |
+| `providerselection`, `idpselection` | Listet die Identitätsanbieter auf, unter denen Benutzer bei der Registrierung auswählen können.  |
 | `unifiedssp` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. Dieser Wert stellt auch die Funktion „Angemeldet bleiben“ und die Verknüpfung „Kennwort vergessen?“ bereit . |
 | `unifiedssd` | Zeigt ein Formular für die Anmeldung mit einem lokalen Konto, das auf einer E-Mail-Adresse oder einem Benutzernamen basiert, an. |
 | `multifactor` | Überprüft während der Registrierung oder Anmeldung (per SMS oder Sprachnachricht) die Telefonnummern. |
-| `selfasserted` | Zeigt ein Formular an, mit dem Benutzer ihr Profil erstellen oder aktualisieren können. |
+| `selfasserted` | Zeigt ein Formular zum Sammeln von Daten eines Benutzers an. Hier können Benutzer beispielsweise ihr Profil erstellen oder aktualisieren. |
 
 ### <a name="select-a-page-layout"></a>Auswählen eines Seitenlayouts
 
@@ -131,13 +131,13 @@ Das Format des Werts muss das Wort `contract` enthalten: _urn:com:microsoft:aad:
 
 Das **Metadata**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | BESCHREIBUNG |
+| Element | Vorkommen | Beschreibung |
 | ------- | ----------- | ----------- |
 | Element | 0:n | Die Metadaten zu der Inhaltsdefinition. |
 
 Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Key | Ja | Der Metadatenschlüssel.  |
 
@@ -145,7 +145,7 @@ Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 Die Inhaltsdefinition unterstützt die folgenden Metadatenelemente: 
 
-| Key | Erforderlich | Beschreibung |
+| Key | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | DisplayName | Nein | Eine Zeichenfolge, die den Namen der Inhaltsdefinition enthält. |
 
@@ -159,7 +159,7 @@ Das **LocalizedResourcesReferences**-Element enthält die folgenden Elemente:
 
 Das **LocalizedResourcesReference**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
 | LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |

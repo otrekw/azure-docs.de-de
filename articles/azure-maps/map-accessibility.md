@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933301"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209782"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -61,7 +61,7 @@ Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neige
 - Verwenden Sie bei fokussierter Karte die Tastenkombination UMSCHALTTASTE und NACH-OBEN- oder NACH-UNTEN-TASTE. 
 - Verwenden Sie das Neigungssteuerelement mit einer Maus, der Berührungssteuerung oder auf einer Tastatur der TAB- oder EINGABETASTE.
 
-**Ändern des Kartenstils** Nicht alle Entwickler stellen sämtliche mögliche Kartenstile in ihrer Anwendung zur Verfügung. Der Entwickler kann den Kartenstil programmgesteuert festlegen und nach Wunsch ändern. Wenn ein Entwickler das Steuerelement für die Auswahl des Kartenstils anzeigt, kann der Benutzer den Kartenstil mithilfe der Maus, der Berührungssteuerung oder der Tastatur (mit der TAB- oder EINGABETASTE) ändern. Der Entwickler kann angeben, welche Kartenstile über das Auswahlsteuerelement für den Kartenstil verfügbar gemacht werden. 
+**Ändern des Kartenstils:** Nicht alle Entwickler stellen sämtliche mögliche Kartenstile in ihrer Anwendung zur Verfügung. Der Entwickler kann den Kartenstil programmgesteuert festlegen und ändern. Wenn ein Entwickler das Steuerelement für die Auswahl des Kartenstils anzeigt, kann der Benutzer den Kartenstil mithilfe der Maus, der Berührungssteuerung oder der Tastatur (mit der TAB- oder EINGABETASTE) ändern. Der Entwickler kann angeben, welche Kartenstile über das Auswahlsteuerelement für den Kartenstil verfügbar gemacht werden. 
 
 ## <a name="keyboard-shortcuts"></a>Tastenkombinationen
 
@@ -94,7 +94,7 @@ Zusätzliche Informationen, die auf die allgemeine Karte platziert werden, sollt
 
 ## <a name="make-popups-keyboard-accessible"></a>Verfügbarmachen von Popups für die Tastatursteuerung
 
-Häufig wird ein Marker oder Symbol verwendet, um einen Standort auf der Karte darzustellen. Weitere Informationen zu diesem Standort werden in der Regel in einem Popup angezeigt, wenn der Benutzer mit dem Marker interagiert. Bei den meisten Anwendungen werden Popups angezeigt, wenn ein Benutzer auf einen Marker klickt oder tippt. Dieses Ereignis erfordert jedoch die Verwendung der Maus oder des Touchscreens durch den Benutzer. Es empfiehlt sich, Popups auch bei Verwendung der Tastatur zugänglich zu machen. Diese Funktionalität können Sie erreichen, indem Sie für jeden Datenpunkt ein Popup erstellen und der Karte hinzufügen. 
+Häufig wird ein Marker oder Symbol verwendet, um einen Standort auf der Karte darzustellen. Weitere Informationen zu diesem Standort werden in der Regel in einem Popup angezeigt, wenn der Benutzer mit dem Marker interagiert. In den meisten Anwendungen werden Popups angezeigt, wenn ein Benutzer auf einen Marker klickt oder tippt. Für das Klicken oder Tippen muss der Benutzer jedoch eine Maus bzw. einen Touchbildschirm verwenden. Es empfiehlt sich, Popups auch bei Verwendung der Tastatur zugänglich zu machen. Diese Funktionalität können Sie erreichen, indem Sie für jeden Datenpunkt ein Popup erstellen und der Karte hinzufügen. 
 
 Im folgenden Beispiel werden Points of Interest (POI) auf der Karte mithilfe einer Symbolebene geladen. Außerdem wird der Karte für jeden Point of Interest ein Popup hinzugefügt. Ein Verweis auf die einzelnen Popups wird in den Eigenschaften der einzelnen Datenpunkte gespeichert. Er kann auch für einen Marker abgerufen werden, z. B. beim Klicken auf einen Marker. Wenn die Karte den Fokus hat, kann der Benutzer die einzelnen Popups auf der Karte durch Drücken der TAB-TASTE einzeln durchlaufen.
 
@@ -116,12 +116,12 @@ Im Folgenden finden Sie einige zusätzliche Tipps, wie Sie Ihre Webkartenanwendu
     - Geben Sie Aktualisierungen nur alle paar Sekunden aus. 
     - Kombinieren Sie die Meldungen auf logische Weise. 
 - Vermeiden Sie die Verwendung von Farben als einzige Methode zum Übermitteln von Informationen. Verwenden Sie Text, Symbole oder Muster, um die Farben zu ergänzen oder zu ersetzen. Einige Überlegungen:
-    - Wenn Sie eine Blasenebene verwenden, um den relativen Wert zwischen Datenpunkten anzuzeigen, sollten Sie den Radius der einzelnen Blasen zusätzlich oder als Alternative zur Farbgebung skalieren. 
+    - Wenn Sie eine Blasenebene verwenden, um den relativen Wert zwischen Datenpunkten anzuzeigen, sollten Sie den Radius oder die Farbgebung der einzelnen Blasen skalieren. 
     - Verwenden Sie ggf. eine Symbolebene mit verschiedenen Symbolen für unterschiedliche Metrikkategorien, wie z. B. Dreiecke, Sterne und Quadrate. Die Symbolebene unterstützt auch das Skalieren der Größe von Symbolen. Sie können auch eine Beschriftung anzeigen.
     - Wenn Liniendaten angezeigt werden, kann die Gewichtung oder Größe über die Breite dargestellt werden. Mit einem Strichmuster können verschiedene Linienkategorien dargestellt werden. Eine Symbolebene kann auch zusammen mit einer Linie verwendet werden, um Symbole entlang der Linie zu überlagern. Die Verwendung eines Pfeilsymbols ist hilfreich, um die Richtung der Linie anzuzeigen.
     - Wenn Polygondaten angezeigt werden, kann als Alternative zur Farbe ein Muster (z. B. Streifen) verwendet werden. 
 - Einige Visualisierungen wie Wärmebilder, Kachelebenen und Bildebenen sind für Benutzer mit Sehbehinderungen nicht zugänglich. Einige Überlegungen:
-    - Lassen Sie über die Sprachausgabe beschreiben, was auf einer Ebene angezeigt wird, wenn sie der Karte hinzugefügt wird. Wenn z. B. eine Kachelebene mit einem Wetterradar angezeigt wird, können Sie über die Sprachausgabe beispielsweise „Die Karte wird mit Wetterradardaten überlagert“ ausgeben.
+    - Lassen Sie über die Sprachausgabe beschreiben, was auf einer Ebene angezeigt wird, wenn sie der Karte hinzugefügt wird. Wenn z. B. eine Kachelebene mit einem Wetterradar angezeigt wird, können Sie über die Sprachausgabe „Die Karte wird mit Wetterradardaten überlagert“ ausgeben.
 - Schränken Sie die Menge an Funktionen ein, für die ein Mauszeiger erforderlich ist. Diese Funktionen sind für Benutzer unzugänglich, die eine Tastatur oder ein Touchgerät für die Interaktion mit Ihrer Anwendung verwenden. Beachten Sie, dass dennoch empfohlen wird, für interaktive Inhalte wie klickbare Symbole, Links und Schaltflächen einen Stil für die Maussteuerung bereitzustellen.
 - Versuchen Sie selbst, mit der Tastatur in Ihrer Anwendung zu navigieren. Sorgen Sie für eine logische Aktivierreihenfolge.
 - Wenn Sie Tastenkombinationen erstellen, versuchen Sie, diese auf zwei Tasten oder weniger zu beschränken. 

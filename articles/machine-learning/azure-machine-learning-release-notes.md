@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 33b3f9292a2fd185ea5487c0111dc294a6f163cf
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 11b8ade765a2b1c1ee25421073983b96c34e5d15
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030811"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462172"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -23,10 +23,53 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2020-02-18"></a>2020-02-18
+
+### <a name="azure-machine-learning-sdk-for-python-v111rc0"></a>Azure Machine Learning-SDK für Python v1.1.1rc0
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azure-cli-ml**
+    + Die Profilerstellung für einzelne Instanzen wurde korrigiert, um eine Empfehlung abzugeben, und im Core SDK zur Verfügung gestellt.
+  + **azureml-automl-core**
+    + Die Fehlerprotokollierung wurde verbessert.
+  + **azureml-automl-runtime**
+    + Es wurde das Problem bei der Vorhersage behoben, wenn das Dataset eine kurze Körnung mit langen Zeitlücken enthält.
+    + Es wurde ein Problem behoben, wenn der automatische maximale Horizont aktiviert ist und die Datumsspalte Datumsangaben in Form von Zeichenfolgen enthält. Es wurden eine ordnungsgemäße Konvertierung und ein empfindlicher Fehler für den Fall, dass keine Konvertierung möglich ist, hinzugefügt.
+    + Verwendung von NumPy und SciPy nativ zum Serialisieren und Deserialisieren von Zwischendaten für FileCacheStore (für lokale AutoML-Ausführungen)
+    + Es wurde ein Fehler behoben, bei dem fehlerhafte untergeordnete Ausführungen im Ausführungsstatus hängen bleiben konnten.
+  + **azureml-cli-common**
+    + Die Profilerstellung für einzelne Instanzen wurde korrigiert, um eine Empfehlung abzugeben, und im Core SDK zur Verfügung gestellt.
+  + **azureml-core**
+    + `--grant-workspace-msi-access` wurde als zusätzlicher Parameter für die Datenspeicher-CLI zum Registrieren eines Azure-Blobcontainers hinzugefügt, sodass Sie nun einen Blobcontainer hinter einem VNET registrieren können.
+    + Die Profilerstellung für einzelne Instanzen wurde korrigiert, um eine Empfehlung abzugeben, und im Core SDK zur Verfügung gestellt.
+    + Es wurde das Problem in _deploy in „aks.py“ behoben.
+    + Überprüft die Integrität von Modellen beim Upload, um Speicherausfälle ohne Fehlermeldung zu vermeiden.
+  + **azureml-interpret**
+    + azureml-interpret wurden Ausnahmen im azureml-Stil hinzugefügt.
+    + Die DeepScoringExplainer-Serialisierung für Keras-Modelle wurde korrigiert.
+  + **azureml-pipeline-core**
+    + Das Notebook für die Pipeline-Batchbewertung verwendet nun ParallelRunStep.
+  + **azureml-pipeline-steps**
+    + `AutoMLStep` wurde in das Paket `azureml-pipeline-steps` verschoben. `AutoMLStep` in `azureml-train-automl-runtime` wurde als veraltet markiert.
+  + **azureml-contrib-pipeline-steps**
+    + ParallelRunStep wurde der optionale Parameter side_inputs hinzugefügt. Dieser Parameter kann zum Einbinden von Ordnern im Container verwendet werden. Die derzeit unterstützten Typen sind DataReference und PipelineData.
+  + **azureml-tensorboard**
+    + azureml-tensorboard wurde um die Unterstützung von tensorflow 2.0 aktualisiert.
+  + **azureml-train-automl-client**
+    + Ein Problem von FeaturizationConfig beim Überschreiben, das die benutzerdefinierte Featureerstellungskonfiguration filtert, wurde behoben.
+  + **azureml-train-automl-runtime**
+    + `AutoMLStep` wurde in das Paket `azureml-pipeline-steps` verschoben. `AutoMLStep` in `azureml-train-automl-runtime` wurde als veraltet markiert.
+  + **azureml-train-core**
+    + Unterstützung von PyTorch-Version 1.4 bei der PyTorch-Schätzung
+  
 ## <a name="2020-02-04"></a>4\.2.2020
 
 ### <a name="azure-machine-learning-sdk-for-python-v110rc0"></a>Azure Machine Learning-SDK für Python v1.1.0rc0
 
++ **Wichtige Änderungen**
+  + **Semantic Versioning 2.0.0**
+    + Ab Version 1.1 führt das Azure ML-Python-SDK Semantic Versioning 2.0.0 ein. Weitere Informationen finden Sie [hier](https://semver.org/). Alle nachfolgenden Versionen folgen dem neuen Nummerierungsschema und dem Vertrag von Semantic Versioning. 
+  
 + **Fehlerbehebungen und Verbesserungen**
   + **azureml-automl-runtime**
     + Schnellere Featurebereitstellung
@@ -118,8 +161,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Modell- und Dienstobjekten wurden CreatedBy-Informationen hinzugefügt. Der Zugriff kann über <var>.created_by erfolgen
     + Behobenes Problem bei ContainerImage.run(), das zu einer nicht ordnungsgemäßen Einrichtung des HTTP-Ports des Docker-Containers führte.
     + `azureml-dataprep` wurde für den CLI-Befehl `az ml dataset register` optional
-  + **azureml-dataprep**
-    + Es wurde ein Fehler behoben, bei dem TabularDataset.to_pandas_dataframe fälschlicherweise auf einen alternativen Reader zurückgriff und eine Warnung ausgab.
+    + Es wurde ein Fehler behoben, bei dem `TabularDataset.to_pandas_dataframe` fälschlicherweise auf einen alternativen Reader zurückgriff und eine Warnung ausgab.
   + **azureml-explain-model**
     + Aufschieben der Shap-Abhängigkeit aus „azureml-interpret“ auf „interpret-community“
   + **azureml-pipeline-core**
@@ -255,7 +297,7 @@ In Studio können Sie Azure Machine Learning-Ressoucen wie Datasets, Pipelines, 
 
 Greifen Sie von Studio aus auf die folgenden webbasierten Erstellungstools zu:
 
-| Webbasiertes Tool | Beschreibung | Edition |
+| Webbasiertes Tool | BESCHREIBUNG | Edition |
 |-|-|-|
 | Notebook-VM (Vorschau) | Vollständig verwaltete, cloudbasierte Arbeitsstation | Basic und Enterprise |
 | [Automatisiertes maschinelles Lernen](tutorial-first-experiment-automated-ml.md) (Vorschauversion) | Codefreie Umgebung für die Automatisierung der Machine Learning-Modellentwicklung | Enterprise |

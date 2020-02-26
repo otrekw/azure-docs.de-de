@@ -1,25 +1,25 @@
 ---
 title: Hinzufügen einer Kachelebene zu Android-Karten | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK eine Kachelebene auf einer Karte rendern.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8e1a77ae83783b2841a2600654a9775e9ceb6ada
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911528"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209935"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Hinzufügen einer Kachelebene zu einer Karte mithilfe des Android SDK für Azure Maps
 
 In diesem Artikel wird veranschaulicht, wie Sie mit dem Android SDK für Azure Maps eine Kachelebene auf einer Karte rendern können. Mithilfe von Kachelebenen lassen sich Bilder über die Azure Maps-Basiskartenkacheln legen. Weitere Informationen zum Azure Maps-Kachelsystem finden Sie in der Dokumentation [Zoomfaktoren und Linienraster](zoom-levels-and-tile-grid.md).
 
-Eine Kachelebene wird in Kacheln von einem Server geladen. Diese Bilder können wie jedes andere Bild auf einem Server vorab gerendert und gespeichert werden. Dabei muss eine für die Kachelebene verständliche Namenskonvention verwendet werden. Alternativ wird ein dynamischer Dienst genutzt, der die Bilder im laufenden Betrieb generiert. Es gibt drei verschiedene Namenskonventionen für Kacheldienste, die von der Azure Maps-Klasse TileLayer unterstützt werden: 
+Eine Kachelebene wird in Kacheln von einem Server geladen. Diese Bilder können wie jedes andere Bild vorab gerendert und auf einem Server gespeichert werden, wobei eine Namenskonvention verwendet wird, die von der Kachelebene verstanden wird. Sie können diese Bilder aber auch mit einem dynamischen Dienst rendern, der die Bilder nahezu in Echtzeit generiert. Es gibt drei verschiedene Namenskonventionen für Kacheldienste, die von der Azure Maps-Klasse TileLayer unterstützt werden:
 
 * Notation von X, Y, Zoomfaktor: Basierend auf dem Zoomfaktor ist X die Spalten- und Y die Zeilenposition der Kachel im Kachelraster.
 * Quadkey-Notation: Kombination der Informationen X, Y und Zoomfaktor in einem einzelnen Zeichenfolgenwert, der ein eindeutiger Bezeichner für eine Kachel ist.
@@ -35,7 +35,7 @@ Die in eine Kachelebene übergebene Kachel-URL muss eine HTTP/HTTPS-URL zu einer
 * `{z}`: Zoomfaktor der Kachel. Benötigt auch `{x}` und `{y}`.
 * `{quadkey}`: Kachel-Quadkey-Bezeichner basierend auf der Namenskonvention des Bing Maps-Kachelsystems.
 * `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
-* `{subdomain}`: Ein Platzhalter, bei dem die Unterdomänenwerte, falls angegeben, hinzugefügt werden.
+* `{subdomain}`: Ein Platzhalter für die Unterdomänenwerte, sofern angegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +44,7 @@ Um den Vorgang in diesem Artikel abzuschließen, müssen Sie das [Android SDK f�
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Hinzufügen einer Kachelebene zur Karte
 
- In diesem Beispiel wird das Erstellen einer Kachelebene veranschaulicht, die auf mehrere Kacheln verweisen, die das Kachelsystem „X, Y, Zoomfaktor“ verwenden. Die Quelle dieser Kachelebene ist eine Wetterradarüberlagerung aus dem [Iowa Environmental Mesonet der Iowa State University in den USA](https://mesonet.agron.iastate.edu/ogc/). 
+ In diesem Beispiel wird das Erstellen einer Kachelebene veranschaulicht, die auf mehrere Kacheln verweisen. Diese Kacheln verwenden das Kachelsystem „X, Y, Zoom“. Die Quelle dieser Kachelebene ist eine Wetterradarüberlagerung aus dem [Iowa Environmental Mesonet der Iowa State University in den USA](https://mesonet.agron.iastate.edu/ogc/). 
 
 Sie können mithilfe der folgenden Schritte der Karte eine Kachelebene hinzufügen.
 

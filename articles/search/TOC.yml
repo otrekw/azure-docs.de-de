@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Skalieren zur Verbesserung der Leistung
           href: search-performance-optimization.md
+        - name: Regionsübergreifendes Verschieben eines Diensts
+          href: search-howto-move-across-regions.md
         - name: Mehrinstanzenfähige Architektur
           href: search-modeling-multitenant-saas-applications.md
     - name: Sicherheit

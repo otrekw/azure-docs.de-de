@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762510"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373413"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor
 
@@ -92,11 +92,11 @@ Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erke
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
-Wenn eine Warnung zum ersten Mal erstellt wird, werden die im Diagramm angezeigten Schwellenwerte basierend auf genügend Verlaufsdaten berechnet, um stündliche oder tägliche Saisonmuster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten Verlaufsdaten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
+Wenn eine Warnungsregel zum ersten Mal erstellt wird, werden die im Diagramm angezeigten Schwellenwerte basierend auf genügend Verlaufsdaten berechnet, um stündliche oder tägliche Saisonmuster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten Verlaufsdaten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
 
-Wenn Sie über eine neue Ressource verfügen oder metrische Daten fehlen, lösen dynamische Schwellwerte keine Warnungen aus, bevor die Daten für drei Tage verfügbar sind, um genaue Schwellenwerte sicherzustellen.
+Wenn Sie über eine neue Ressource verfügen oder metrische Daten fehlen, lösen dynamische Schwellwerte keine Warnungen aus, bevor die Daten für drei Tage oder 30 Beispiele metrischer Daten verfügbar sind, um genaue Schwellenwerte sicherzustellen.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Bewährte Methoden für dynamische Schwellenwerte
 

@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169962"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444348"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Wenn Sie eine Azure Machine Learning-Compute-Instanz oder einen Computecluster i
 > * Wenn Sie mehrere Compute-Instanzen oder -cluster in einem einzelnen virtuellen Netzwerk platzieren möchten, müssen Sie möglicherweise eine Kontingenterhöhung für eine oder mehrere Ihrer Ressourcen anfordern.
 > * Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz oder der Cluster. 
 
-Die Machine Learning-Compute-Instanz oder der Cluster ordnet in der Ressourcengruppe mit dem virtuellen Netzwerk automatisch zusätzliche Netzwerkressourcen zu. Für alle Compute-Instanzen und -cluster ordnet der Dienst folgende Ressourcen zu:
-
-* Eine Netzwerksicherheitsgruppe
-* Eine öffentliche IP-Adresse
-* Ein Lastenausgleichsmodul
-
-Diese Ressourcen werden durch die [Ressourcenkontingente](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) des Abonnements beschränkt.
+> [!TIP]
+> Die Machine Learning-Compute-Instanz oder der Cluster ordnet in der Ressourcengruppe mit dem virtuellen Netzwerk automatisch zusätzliche Netzwerkressourcen zu. Für alle Compute-Instanzen und -cluster ordnet der Dienst folgende Ressourcen zu:
+> 
+> * Eine Netzwerksicherheitsgruppe
+> * Eine öffentliche IP-Adresse
+> * Ein Lastenausgleichsmodul
+> 
+> Diese Ressourcen werden durch die [Ressourcenkontingente](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) des Abonnements beschränkt.
 
 
 ### <a id="mlcports"></a>Erforderliche Ports
@@ -500,6 +501,10 @@ Bei Verwendung von Azure Firewall müssen Sie eine Netzwerkregel konfigurieren, 
 Legen Sie beim Hinzufügen der Regel das __Protokoll__ auf „Beliebig“ und die Ports auf `*` fest.
 
 Weitere Informationen zum Konfigurieren einer Netzwerkregel finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+
+## <a name="use-azure-container-registry"></a>Verwenden von Azure Container Registry
+
+Wenn Sie ein virtuelles Netzwerk mit Azure Machine Learning verwenden, speichern Sie Azure Container Registry für den Arbeitsbereich __nicht__ im virtuellen Netzwerk. Diese Konfiguration wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

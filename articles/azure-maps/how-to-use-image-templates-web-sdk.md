@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911574"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198223"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
@@ -24,7 +24,7 @@ Bilder können mit HTML-Markern und verschiedenen Ebenen innerhalb des Azure Map
  - Polygon Ebenen können mit einem Füllmusterbild gerendert werden. 
  - HTML-Marker können Punkte mithilfe von Bildern und anderen HTML-Elementen rendern.
 
-Um eine gute Leistung bei Ebenen zu gewährleisten, müssen diese Bilder vor dem Rendern in die Sprite-Ressource des Kartenbilds geladen werden. Die [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) der SymbolLayers laden standardmäßig ein paar Markerbilder in einigen wenigen Farben in das Kartenbild-Sprite vor. Diese und weitere Markerbilder sind als SVG-Vorlagen verfügbar und können verwendet werden, um Bilder mit benutzerdefinierten Skalen sowie einer kundenspezifischen Primär- und Sekundärfarbe zu erstellen. Insgesamt stehen 42 Bildvorlagen, 27 Symbole und 15 Polygonfüllmuster zur Verfügung.
+Um eine gute Leistung bei Ebenen zu gewährleisten, laden Sie die Bilder vor dem Rendern in die Sprite-Ressource des Kartenbilds. Die [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) des SymbolLayers laden standardmäßig ein paar Markerbilder in einigen wenigen Farben in das Kartenbild-Sprite vor. Diese und weitere Markerbilder sind als SVG-Vorlagen verfügbar. Sie können zum Erstellen von Images mit benutzerdefinierten Skalen verwendet oder als primäre und sekundäre Farbe des Kunden verwendet werden. Insgesamt werden 42 Bildvorlagen bereitgestellt: 27 Zeichensymbole und 15 Füllmuster für Polygone.
 
 Mithilfe der `map.imageSprite.createFromTemplate` -Funktion können Bildvorlagen zu den Sprite-Ressourcen des Kartenbilds hinzugefügt werden. Diese Funktion ermöglicht die Übergabe von bis zu fünf Parametern.
 
@@ -32,11 +32,11 @@ Mithilfe der `map.imageSprite.createFromTemplate` -Funktion können Bildvorlagen
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-Dabei ist `id` ein von Ihnen erstellter eindeutiger Bezeichner, der dem Bild zugeordnet wird, wenn es dem Kartenbild-Sprite hinzugefügt wird. Verwenden Sie diesen Bezeichner in den Ebenen, um anzugeben, welche Bildressource gerendert werden soll. Der `templateName` gibt an, welche Bildvorlage verwendet werden soll. Die Option `color` legt die Primärfarbe des Bildes und die Optionen `secondaryColor` die Sekundärfarbe fest. Die Option `scale` skaliert die Bildvorlage, bevor sie auf den Bild-Sprite angewendet wird. Wenn das Bild auf den Bild-Sprite angewendet wird, wird es in ein PNG umgewandelt. Um ein gestochen scharfes Rendering zu gewährleisten, ist es besser, die Bildvorlage vor dem Hinzufügen zum Sprite zu vergrößern, als sie in einer Ebene zu vergrößern.
+Die `id` ist ein eindeutiger Bezeichner, den Sie erstellen. Die `id` wird dem Bild zugewiesen, wenn es dem Kartenbild-Sprite hinzugefügt wird. Verwenden Sie diesen Bezeichner in den Ebenen, um anzugeben, welche Bildressource gerendert werden soll. Der `templateName` gibt an, welche Bildvorlage verwendet werden soll. Die Option `color` legt die Primärfarbe des Bildes und die Optionen `secondaryColor` die Sekundärfarbe fest. Die Option `scale` skaliert die Bildvorlage, bevor sie auf den Bild-Sprite angewendet wird. Wenn das Bild auf den Bild-Sprite angewendet wird, wird es in ein PNG umgewandelt. Um ein gestochen scharfes Rendering zu gewährleisten, ist es besser, die Bildvorlage vor dem Hinzufügen zum Sprite zu vergrößern, als sie in einer Ebene zu vergrößern.
 
-Diese Funktion lädt das Bild asynchron in den Bild-Sprite und gibt damit eine Zusage zurück, dass Sie warten können, bis diese Funktion abgeschlossen ist.
+Diese Funktion lädt das Bild asynchron in den Bild-Sprite. Daher wird eine Zusage zurückgegeben, dass Sie auf den Abschluss dieser Funktion warten können.
 
-Der folgende Code zeigt, wie Sie ein Bild aus einer der integrierten Vorlagen erstellen und es mit einer Symbolebene verwenden können.
+Der folgende Code zeigt, wie Sie ein Bild aus einer der integrierten Vorlagen erstellen und mit einer Symbolebene verwenden können.
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -106,7 +106,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="create-custom-reusable-templates"></a>Erstellen benutzerdefinierter wiederverwendbarer Vorlagen
 
-Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen, indem Sie die folgenden statischen Funktionen im `atlas`-Namespace verwenden.
+Wenn Ihre Anwendung das gleiche Symbol mit unterschiedlichen Symbolen verwendet, oder wenn Sie ein Modul erstellen, das zusätzliche Bildvorlagen hinzufügt, können Sie diese Symbole ganz einfach aus dem Azure Maps Web SDK hinzufügen und abrufen. Verwenden Sie die folgenden statischen Funktionen für den `atlas`-Namespace.
 
 | Name | Rückgabetyp | Beschreibung | 
 |-|-|-|
@@ -123,7 +123,7 @@ SVG-Bildvorlagen unterstützen die folgenden Platzhalterwerte:
 | `{scale}` | Das SVG-Bild wird in ein PNG-Bild konvertiert, wenn es dem Kartenbild-Sprite hinzugefügt wird. Dieser Platzhalter kann verwendet werden, um eine Vorlage vor der Konvertierung zu skalieren, um sicherzustellen, dass sie deutlich gerendert wird. | 
 | `{text}` | Die Position, an der Text gerendert werden soll, wenn er mit einem HTML-Marker verwendet wird. |
 
-Das folgende Beispiel zeigt, wie Sie eine SVG-Vorlage als wiederverwendbare Symbolvorlage in das Azure Maps Web SDK hinzufügen können. 
+Das folgende Beispiel zeigt, wie Sie eine SVG-Vorlage als wiederverwendbare Symbolvorlage dem Azure Maps Web SDK hinzufügen können. 
 
 <br/>
 
@@ -133,7 +133,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="list-of-image-templates"></a>Liste der Bildvorlagen
 
-Die folgende Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen mit dem Vorlagennamen über jedem Bild auf. Standardmäßig ist die Primärfarbe Blau und die Sekundärfarbe Weiß. Um die Sekundärfarbe auf weißem Hintergrund besser sichtbar zu machen, sind die folgenden Bilder mit der Sekundärfarbe Schwarz versehen.
+Die Tabelle listet alle derzeit im Azure Maps Web SDK verfügbaren Bildvorlagen auf. Der Vorlagenname steht oberhalb jedes Bilds. Standardmäßig ist die Primärfarbe Blau und die Sekundärfarbe Weiß. Um die Sekundärfarbe auf weißem Hintergrund besser sichtbar zu machen, sind die folgenden Bilder mit der Sekundärfarbe Schwarz versehen.
 
 **Symbolvorlagen**
 

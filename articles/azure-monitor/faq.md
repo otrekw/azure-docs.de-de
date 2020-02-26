@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986817"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485334"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -697,7 +697,10 @@ Die Schwellenwerte für die folgenden Linux-Integritätskriterien sind nicht ver
 Die für jedes Integritätskriterium definierten Warnregeln werden im Azure-Portal nicht angezeigt. Sie können eine Integritätswarnregel nur über die [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) aktivieren oder zu deaktivieren. Die Zuweisung einer [Azure Monitor-Aktionsgruppe](platform/action-groups.md) für Integritätswarnungen ist außerdem nicht vom Azure-Portal aus möglich. Sie können die API nur für die Benachrichtigungseinstellungs-API verwenden, um eine Aktionsgruppe zu konfigurieren, die bei jeder Auslösung einer Integritätswarnung ausgelöst wird. Derzeit können Aktionsgruppen einer VM zugewiesen werden, sodass alle *Integritätswarnungen*, die für die VM ausgelöst wurden, die gleichen Aktionsgruppen auslösen. Anders als bei herkömmlichen Azure-Warnungen gibt es kein Konzept einer separaten Aktionsgruppe für jede Integritätswarnregel. Darüber hinaus werden nur Aktionsgruppen unterstützt, die so konfiguriert sind, dass Sie durch Senden einer E-Mail oder SMS benachrichtigt werden, wenn Integritätswarnungen ausgelöst werden. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
+Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](insights/vminsights-ga-release-faq.md).
+
 Wenn Sie in der Datenträgertabelle oder in einigen der Leistungsdiagramme keine Leistungsdaten sehen, wurden Ihre Leistungsindikatoren im Arbeitsbereich möglicherweise nicht konfiguriert. Führen Sie das folgende [PowerShell-Skript](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell) aus, um das Problem zu beheben.
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Wie unterscheidet sich das Zuordnungsfeature von Azure Monitor for VMs von der Dienstzuordnung?
 Das Zuordnungsfeature von Azure Monitor for VMs basiert auf der Dienstzuordnung, weist aber die folgenden Unterschiede auf:

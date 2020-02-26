@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933138"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209697"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Hinzufügen einer Symbolebene zu einer Karte
 
-Ein Symbol, das mit einer Datenquelle verbunden und dazu verwendet wird, ein Symbol und/oder einen Text an einem bestimmten Punkt darzustellen. Symbolebenen werden mit WebGL gerendert und können verwendet werden, um große Sammlungen von Punkten auf der Karte zu rendern. Im Vergleich zu HTML-Markern stellt die Symbolebene eine große Anzahl von Punktdaten auf der Karte dar, wobei eine bessere Leistung erzielt wird. Die Symbolebene unterstützt jedoch keine traditionellen CSS- und HTML-Elemente für die Gestaltung.  
+Verbinden Sie ein Symbol mit einer Datenquelle, und verwenden Sie es, um ein Symbol oder einen Text an einem bestimmten Punkt zu rendern. 
+
+Symbolebenen werden mit WebGL gerendert. Verwenden Sie eine Symbolebene, um große Sammlungen von Punkten auf der Karte zu rendern. Im Vergleich zu HTML-Markern stellt die Symbolebene eine große Anzahl von Punktdaten auf der Karte dar, wobei eine bessere Leistung erzielt wird. Die Symbolebene unterstützt jedoch keine traditionellen CSS- und HTML-Elemente für die Gestaltung.  
 
 > [!TIP]
 > Symbolebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahin gehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden. Bei Bedarf können Sie auch MultiPoint-Funktionen einbeziehen.
@@ -33,7 +35,9 @@ Der Kartenbild-Sprite-Manager lädt benutzerdefinierte Bilder, die von der Symbo
 
 ## <a name="add-a-symbol-layer"></a>Hinzufügen einer Symbolebene
 
-Bevor Sie der Karte eine Symbolebene hinzufügen können, müssen Sie einige Schritte ausführen. Erstellen Sie zunächst eine Datenquelle, und fügen Sie sie der Karte hinzu. Anschließend kann eine Symbolebene erstellt und in der Datenquelle übergeben werden, um die Daten von der Datenquelle abzurufen. Abschließend müssen Daten in die Datenquelle eingefügt werden, damit diese gerendert werden können. Der folgende Code zeigt den Code, der der Karte hinzugefügt werden soll, nachdem sie geladen wurde. Der Code rendert einen einzelnen Punkt auf der Karte mithilfe einer Symbolebene. 
+Bevor Sie der Karte eine Symbolebene hinzufügen können, müssen Sie einige Schritte ausführen. Erstellen Sie zunächst eine Datenquelle, und fügen Sie sie der Karte hinzu. Erstellen Sie eine Symbolebene. Übergeben Sie dann die Datenquelle an die Symbolebene, um die Daten aus der Datenquelle abzurufen. Abschließend fügen Sie Daten in die Datenquelle ein, damit diese gerendert werden können. 
+
+Der folgende Code zeigt, was der Karte hinzugefügt werden soll, nachdem sie geladen wurde. Dieses Beispiel rendert einen einzelnen Punkt auf der Karte mithilfe einer Symbolebene. 
 
 ```javascript
 //Create a data source and add it to the map.

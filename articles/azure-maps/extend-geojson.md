@@ -8,17 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 75ad83411edfdfe7545e8f80df17fea56e317ee0
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911632"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198274"
 ---
 # <a name="extended-geojson-geometries"></a>Erweiterte GeoJSON-Geometrien
 
-Azure Maps stellt eine Liste leistungsstarker APIs zum Suchen in und entlang geografischer Merkmale bereit.
-Diese APIs verwenden standardmäßig die [GeoJSON-Spezifikation][1] zur Darstellung der geografischen Features (z. B. Landesgrenzen, Routen usw.).  
+Azure Maps stellt eine Liste leistungsstarker APIs zum Suchen in und entlang geografischer Merkmale bereit. Diese APIs entsprechen den standardmäßigen [GeoJSON-Spezifikationen][1], die geografische Features darstellen.  
 
 Die [GeoJSON-Spezifikation][1] unterstützt nur die folgenden Geometrien:
 
@@ -30,7 +29,7 @@ Die [GeoJSON-Spezifikation][1] unterstützt nur die folgenden Geometrien:
 * Point
 * Polygon
 
-Einige Azure Maps-APIs (z. B. [Search Inside Geometry (Suche innerhalb der Geometrie)](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) akzeptieren Geometrien wie „Circle“ (Kreis), die nicht Teil der [GeoJSON-Spezifikation][1] sind.
+Einige Azure Maps-APIs akzeptieren Geometrien, die nicht Teil der [GeoJSON-Spezifikation][1] sind. Beispielsweise akzeptiert die [Suche in Geometrie](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)-API Kreis und Polygone.
 
 In diesem Artikel wird ausführlich beschrieben, wie Azure Maps die [GeoJSON-Spezifikation][1] erweitert, um bestimmte Geometrien darzustellen.
 
@@ -38,7 +37,7 @@ In diesem Artikel wird ausführlich beschrieben, wie Azure Maps die [GeoJSON-Spe
 
 Die `Circle`-Geometrie wird von der [GeoJSON-Spezifikation][1] nicht unterstützt. Wir verwenden ein `GeoJSON Point Feature`-Objekt, um einen Kreis darzustellen.
 
-Eine `Circle`-Geometrie, die mithilfe eines `GeoJSON Feature`-Objekts dargestellt ist, __muss__ Folgendes enthalten:
+Eine `Circle`-Geometrie, die mithilfe des `GeoJSON Feature`-Objekts dargestellt wird, __muss__ folgende Koordinaten und Eigenschaften enthalten:
 
 - Zentrum
 
@@ -54,7 +53,7 @@ Eine `Circle`-Geometrie, die mithilfe eines `GeoJSON Feature`-Objekts dargestell
 
 #### <a name="example"></a>Beispiel
 
-So stellen Sie einen Kreis dar, der sich auf dem Breitengrad 47.639754 und dem Längengrad -122.126986 befindet und dessen Radius gleich 100 Meter ist. Dazu verwenden Sie ein `GeoJSON Feature`-Objekt:
+So stellen Sie einen Kreis mit einem `GeoJSON Feature`-Objekt dar. Zentrieren Sie den Kreis auf dem Breitengrad: 47,639754 und Längengrad: -122,126986, und weisen Sie einen Radius von 100 Metern zu:
 
 ```json            
 {
@@ -74,15 +73,15 @@ So stellen Sie einen Kreis dar, der sich auf dem Breitengrad 47.639754 und dem L
 
 Die `Rectangle`-Geometrie wird von der [GeoJSON-Spezifikation][1] nicht unterstützt. Wir verwenden ein `GeoJSON Polygon Feature`-Objekt, um ein Rechteck darzustellen. Die Rechteckerweiterung wird hauptsächlich vom Zeichentoolmodul des Web SDK genutzt.
 
-Eine `Rectangle`-Geometrie, die mithilfe eines `GeoJSON Polygon Feature`-Objekts dargestellt ist, __muss__ Folgendes enthalten:
+Eine `Rectangle`-Geometrie, die mithilfe des `GeoJSON Polygon Feature`-Objekts dargestellt wird, __muss__ folgende Koordinaten und Eigenschaften enthalten:
 
 - Ecken
 
-    Die Ecken des Rechtecks werden mit den Koordinaten eines `GeoJSON Polygon`-Objekts dargestellt. Es sollten fünf Koordinaten vorhanden sein: eine für jede Ecke und eine fünfte Koordinate, die identisch mit der ersten ist, um den Polygonring zu schließen. Es wird davon ausgegangen, dass diese Koordinaten je nach Bedarf vom Entwickler ausgerichtet und gedreht werden.
+    Die Ecken des Rechtecks werden mit den Koordinaten eines `GeoJSON Polygon`-Objekts dargestellt. Es sollten fünf Koordinaten vorhanden sein, eine für jede Ecke. Eine fünfte Koordinate, die mit der ersten Koordinate identisch ist, schließt den Polygonring. Es wird davon ausgegangen, dass diese Koordinaten ausgerichtet sind und der Entwickler sie wie gewünscht drehen kann.
 
 - SubType
 
-    Die Geometrie des Rechtecks muss auch die `subType`-Eigenschaft enthalten. Diese Eigenschaft muss Teil der Eigenschaften von `GeoJSON Feature` sein, und der Wert sollte _Rectangle_ lauten.
+    Die Geometrie des Rechtecks muss auch die `subType`-Eigenschaft enthalten. Diese Eigenschaft muss ein Teil der Eigenschaften von `GeoJSON Feature` sein, und der Wert sollte _Rectangle_ lauten.
 
 ### <a name="example"></a>Beispiel
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122489"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201627"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrieren von virtuellen SQL Server-Computern in Azure mit dem SQL-VM-Ressourcenanbieter
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Verwaltungsmodus „Lightweight“
 
-Wenn die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht auf der VM installiert wurde, wird empfohlen, die Registrierung beim SQL-VM-Ressourcenanbieter im Modus „Lightweight“ auszuführen. Dadurch wird die SQL-IaaS-Erweiterung im [Modus „Lightweight“](#management-modes) installiert. Darüber hinaus wird verhindert, dass der SQL Server-Dienst neu gestartet wird. Sie können dann jederzeit ein Upgrade auf den Modus „Vollständig“ ausführen. Da hierdurch jedoch der SQL Server-Dienst neu gestartet wird, wird empfohlen, auf ein Fenster für die geplante Wartung zu warten. Sie müssen den Typ der SQL Server-Lizenz entweder als „Nutzungsbasierte Bezahlung“ (`PAYG`) angeben, um nutzungsbasiert zu bezahlen, oder als „Azure-Hybridvorteil“ (`AHUB`), um Ihre eigene Lizenz zu verwenden.
+Wenn die [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) nicht auf der VM installiert wurde, wird empfohlen, die Registrierung beim SQL-VM-Ressourcenanbieter im Modus „Lightweight“ auszuführen. Dadurch wird die SQL-IaaS-Erweiterung im [Modus „Lightweight“](#management-modes) installiert. Darüber hinaus wird verhindert, dass der SQL Server-Dienst neu gestartet wird. Sie können dann jederzeit ein Upgrade auf den Modus „Vollständig“ ausführen. Da hierdurch jedoch der SQL Server-Dienst neu gestartet wird, wird empfohlen, auf ein Fenster für die geplante Wartung zu warten. 
+
+Den SQL Server-Lizenztyp können Sie als nutzungsbasierte Bezahlung (`PAYG`), Azure-Hybridvorteil (`AHUB`), um Ihre eigene Lizenz zu verwenden, oder Notfallwiederherstellung (`DR`), um das [kostenlose DR-Replikat in Azure](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) zu aktivieren, angeben.
 
 Failoverclusterinstanzen und Bereitstellungen mit mehreren Instanzen können nur im Modus „Lightweight“ beim SQL-VM-Ressourcenanbieter registriert werden. 
 
@@ -176,7 +178,7 @@ Verwenden Sie den folgenden PowerShell-Befehl, um Ihre SQL Server-VM direkt im v
 
 Installationen von SQL Server 2008 und 2008 R2 unter Windows Server 2008 (_nicht R2_) können beim SQL-VM-Ressourcenanbieter im [NoAgent-Modus](#management-modes) registriert werden. Diese Option stellt die Konformität sicher und ermöglicht die Überwachung der SQL Server-VM im Azure-Portal mit eingeschränktem Funktionsumfang.
 
-Geben Sie entweder `AHUB` oder `PAYG` als **sqlLicenseType** und entweder `SQL2008-WS2008` oder `SQL2008R2-WS2008` als **sqlImageOffer** an. 
+Geben Sie entweder `AHUB`, `PAYG` oder `DR` als **sqlLicenseType** und entweder `SQL2008-WS2008` oder `SQL2008R2-WS2008` als **sqlImageOffer** an. 
 
 Verwenden Sie für die Registrierung Ihrer SQL Server 2008- oder 2008 R2-Instanz bei einer Windows Server 2008-Instanz den folgenden Codeausschnitt für die Azure-Befehlszeilenschnittstelle oder PowerShell: 
 

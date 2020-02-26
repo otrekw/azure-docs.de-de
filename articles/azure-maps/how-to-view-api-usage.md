@@ -1,23 +1,23 @@
 ---
 title: Anzeigen der Azure Maps-API-Nutzungsmetriken | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie die Metriken für Ihre Microsoft Azure Maps-API-Aufrufe im Azure-Portal anzeigen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cc9834f4e1df1a68f78230ec587254c72aeabbcf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911334"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208684"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Anzeigen der Azure Maps-API-Nutzungsmetriken
 
-In diesem Artikel erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure Maps-Konto im [Portal](https://portal.azure.com) anzeigen. Die Metriken werden in einem benutzerfreundlichen Diagrammformat für einen anpassbaren Zeitraum angezeigt.
+In diesem Artikel erfahren Sie, wie Sie die API-Nutzungsmetriken für Ihr Azure Maps-Konto im [Azure-Portal](https://portal.azure.com) anzeigen. Die Metriken werden in einem benutzerfreundlichen Diagrammformat für einen anpassbaren Zeitraum angezeigt.
 
 ## <a name="view-metric-snapshot"></a>Anzeigen der Metrikenmomentaufnahme
 
@@ -42,15 +42,15 @@ Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie diese Diagramme für Ihre 
 
       ![Bereich für Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Als Nächstes können Sie den *Zeitbereich* wählen, indem Sie auf **Letzte 24 Stunden (automatisch)** klicken. Standardmäßig ist der Zeitraum auf 24 Stunden festgelegt. Nach dem Klicken sehen Sie alle auswählbaren Zeitbereiche. Sie können auch die *Zeitgranularität* auswählen und in der gleichen Dropdownliste wählen, ob Sie die *lokale* oder *GMT*-Uhrzeit anzeigen möchten. Klicken Sie auf **Anwenden**.
+5. Als Nächstes können Sie den *Zeitbereich* wählen, indem Sie auf **Letzte 24 Stunden (automatisch)** klicken. Standardmäßig ist der Zeitraum auf 24 Stunden festgelegt. Nach dem Klicken werden alle auswählbaren Zeitbereiche angezeigt. Sie können auch die *Zeitgranularität* auswählen und in der gleichen Dropdownliste wählen, ob Sie die *lokale* oder *GMT*-Uhrzeit anzeigen möchten. Klicken Sie auf **Anwenden**.
 
     ![Zeitbereich für Metriken von Azure Maps](media/how-to-view-api-usage/time-range.png)
 
-6. Sobald Sie Ihre Metrik hinzufügen, können Sie aus den für die Metrik relevanten Eigenschaften einen **Filter hinzufügen** und dann den Wert der Eigenschaft auswählen, für den Sie das Diagramm anzeigen möchten.
+6. Nachdem Sie die Metrik hinzugefügt haben, können Sie **Filter** für die Eigenschaften dieser Metrik hinzufügen. Wählen Sie dann den Wert der Eigenschaft aus, die im Diagramm angezeigt werden soll.
 
     ![Filter für Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/filter.png)
 
-7. Sie können auch basierend auf Ihrer ausgewählten Metrikeigenschaft die **Aufteilung für Ihre Metrik anwenden**. Dadurch wird das Diagramm in mehrere Diagramme aufgeteilt, jeweils eins für jeden Wert dieser Eigenschaft. In der folgenden Abbildung entspricht die Farbe jedes Diagramms dem am unteren Rand des Diagramms angezeigten Eigenschaftswert.
+7. Sie können auch basierend auf Ihrer ausgewählten Metrikeigenschaft die **Aufteilung für Ihre Metrik anwenden**. Damit kann das Diagramm in mehrere Diagramme aufgeteilt werden – jeweils eines für jeden Wert dieser Eigenschaft. In der folgenden Abbildung entspricht die Farbe jedes Diagramms dem am unteren Rand des Diagramms angezeigten Eigenschaftswert.
 
     ![Aufteilung der Nutzungsmetriken von Azure Maps](media/how-to-view-api-usage/splitting.png)
 

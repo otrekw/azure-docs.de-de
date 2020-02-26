@@ -4,12 +4,12 @@ description: Enthält Informationen zu Problembehandlungsschritten, mit denen Si
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172582"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198614"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Problembehandlung bei langsamer Sicherung von Dateien und Ordnern in Azure Backup
 
@@ -26,6 +26,18 @@ Wir empfehlen Ihnen auch dringend den Artikel [Azure Backup-Dienst – FAQ](back
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Ursache: Ausführen des Sicherungsauftrags im nicht optimierten Modus
+
+* Der MARS-Agent kann den Sicherungsauftrag mithilfe des USN-Änderungsjournals (Update Sequence Number, Updatesequenznummer) im **optimierten Modus** oder durch Überprüfen auf Änderungen in Verzeichnissen oder Dateien durch Scannen des gesamten Volumes im **nicht optimiertem Modus** ausführen.
+* Der nicht optimierte Modus ist langsam, da der Agent alle Dateien auf dem Volume scannen und mit den Metadaten vergleichen muss, um die geänderten Dateien zu bestimmen.
+* Um dies zu überprüfen, öffnen Sie **Auftragsdetails** von der MARS-Agent-Konsole aus, und überprüfen Sie, ob wie unten angezeigt der Status **Übertragen von Daten (nicht optimiert, kann mehr Zeit in Anspruch nehmen)** vorliegt:
+
+    ![Ausführen im nicht optimierten Modus](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* Die folgenden Bedingungen können bewirken, dass der Sicherungsauftrag im nicht optimierten Modus ausgeführt wird:
+  * Die erste Sicherung (auch als erste Replikation bezeichnet) wird immer im nicht optimierten Modus ausgeführt.
+  * Wenn beim vorherigen Sicherungsauftrag ein Fehler auftritt, wird der nächste geplante Sicherungsauftrag als nicht optimiert ausgeführt.
+
 <a id="cause1"></a>
 
 ## <a name="cause-performance-bottlenecks-on-the-computer"></a>Ursache: Leistungsengpässe auf dem Computer
@@ -36,7 +48,7 @@ Zum Erkennen dieser Engpässe bietet Windows ein integriertes Tool, den [Systemm
 
 Hier sind einige Leistungsindikatoren und Bereiche angegeben, die bei der Diagnose von Engpässen, um optimale Sicherungen zu erzielen, hilfreich sein können.
 
-| Indikator | Status |
+| Leistungsindikator | Status |
 | --- | --- |
 | Logical Disk(Physical Disk)--%idle |• 100% Leerlauf bis 50% Leerlauf = fehlerfrei</br>• 49 % Leerlauf bis 20 % Leerlauf = Warnung oder Überwachung</br>• 19% Leerlauf bis 0% Leerlauf = kritisch oder außerhalb der Spezifikation |
 | Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write |• 0,001 ms bis 0,015 ms = fehlerfrei</br>• 0,015 ms bis 0,025 ms = Warnung oder Überwachung</br>• 0,026ms oder mehr = kritisch oder außerhalb der Spezifikation |

@@ -1,5 +1,5 @@
 ---
-title: 'StorSimple: Failover und Notfallwiederherstellung für ein physisches Gerät der StorSimple 8000-Serie | Microsoft-Dokumentation'
+title: Failover, Notfallwiederherstellung auf ein anderes StorSimple 8000-Gerät
 description: Erfahren Sie, wie für Ihr physisches Gerät der StorSimple 8000-Serie ein Failover auf ein anderes physisches Gerät erfolgt.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9e4e890ab5491e46ffe5ea0e1c168d168f9cc729
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577242"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468608"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Failover auf ein physisches Gerät der StorSimple 8000-Serie
 

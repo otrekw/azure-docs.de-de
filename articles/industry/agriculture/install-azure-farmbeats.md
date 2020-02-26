@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131878"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198853"
 ---
 # <a name="install-azure-farmbeats"></a>Installieren von Azure FarmBeats
 
@@ -83,7 +83,9 @@ Sie benötigen die folgenden Berechtigungen im Azure-Mandanten, um Azure FarmBea
 - Abonnement – Besitzer
 - Ressourcengruppe, in der FarmBeats installiert wird – Besitzer
 
-Die ersten beiden Berechtigungen sind zum [Erstellen der AAD-Anwendung](#create-an-aad-application) erforderlich. Falls erforderlich, können Sie jemanden mit den entsprechenden Berechtigungen zum Erstellen der AAD-Anwendung beauftragen. Die Person, die FarmBeats installiert, muss Besitzer der Ressourcengruppe sein, in der FarmBeats installiert wird.
+Die ersten beiden Berechtigungen sind zum [Erstellen der AAD-Anwendung](#create-an-aad-application) erforderlich. Falls erforderlich, können Sie jemanden mit den entsprechenden Berechtigungen zum Erstellen der AAD-Anwendung beauftragen.
+
+Die Person, die die FarmBeats-Installation vom Marketplace aus ausführt, muss ein Besitzer der Ressourcengruppe sein, in der FarmBeats installiert wird. Bei Abonnementbesitzern erfolgt dies automatisch, wenn die Ressourcengruppe erstellt wird. Erstellen Sie die Ressourcengruppe vorab für andere, und bitten Sie den Besitzer des Abonnements, Sie zu einem Besitzer der Ressourcengruppe zu machen.
 
 Sie können Ihre Zugriffsberechtigungen im Azure-Portal überprüfen, indem Sie die Anweisungen zur [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/check-access) befolgen.
 
@@ -120,7 +122,15 @@ Führen Sie die folgenden Schritte in einer Cloud Shell-Instanz unter Verwendung
         ./create_aad_script.ps1
     ```
 
-4. Die Ausführung des AAD-Skripts dauert etwa 2 Minuten und gibt die Werte sowohl auf dem Bildschirm als auch in eine JSON-Datei im gleichen Verzeichnis aus. Wenn Sie das Skript von jemand anderem haben ausführen lassen, bitten Sie diese Person, die Ausgabe mit Ihnen zu teilen.
+4. Das Skript fragt nach den folgenden drei Eingaben:
+
+    - Name der FarmBeats-Website: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-Websitename>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden, und die Swagger-APIs befinden sich unter „https://\<FarmBeats-Websitename>-api.azurewebsites.net“.
+
+    - Azure-Anmelde-ID: Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
+
+    - Subscription ID (Abonnement-ID): Dies ist die ID des Abonnements, in dem Sie Azure-FarmBeats installieren möchten.
+
+5. Die Ausführung des AAD-Skripts dauert etwa 2 Minuten und gibt die Werte sowohl auf dem Bildschirm als auch in eine JSON-Datei im gleichen Verzeichnis aus. Wenn Sie das Skript von jemand anderem haben ausführen lassen, bitten Sie diese Person, die Ausgabe mit Ihnen zu teilen.
 
 ### <a name="create-sentinel-account"></a>Erstellen eines Sentinel-Kontos
 

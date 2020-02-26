@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0ea9da894b9738fff634937294a07cc4b10624f0
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048859"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430407"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von Azure Managed Disks
 
@@ -38,7 +38,7 @@ Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eige
 
 Das folgende Diagramm zeigt, wie verwaltete Datenträger Azure Active Directory und Azure Key Vault verwenden, um Anforderungen mit dem vom Kunden verwalteten Schlüssel zu senden:
 
-![Workflow für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Workflow für verwaltete Datenträger und vom Kunden verwaltete Schlüssel. Ein Administrator erstellt eine Azure Key Vault-Instanz, dann einen Datenträgerverschlüsselungssatz und richtet den Datenträgerverschlüsselungssatz ein. Der Satz ist einem virtuellen Computer zugeordnet, der dem Datenträger ermöglicht, Azure AD zur Authentifizierung zu verwenden.](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 In der folgenden Liste wird das Diagramm ausführlicher erläutert:
@@ -58,7 +58,7 @@ Informationen zum Widerrufen von Kunden verwalteter Schlüsseln finden Sie in de
 
 Derzeit werden nur die folgenden Regionen unterstützt:
 
-- Verfügbar als GA-Angebot in den Regionen "USA, Osten", "USA, Westen 2" und "USA, Süden-Mitte".
+- Verfügbar als GA-Angebot in den Regionen „USA, Osten“, „USA, Westen 2“, „USA, Süden-Mitte“ und „Vereinigtes Königreich, Süden“.
 - Verfügbar als öffentliche Vorschauversion in den Regionen "USA, Westen-Mitte", "USA, Osten 2", "Kanada, Mitte" und "Europa, Norden".
 
 ### <a name="restrictions"></a>Beschränkungen

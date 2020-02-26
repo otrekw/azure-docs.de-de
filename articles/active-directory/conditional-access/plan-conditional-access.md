@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185899"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468436"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Anleitung: Planen Ihrer Bereitstellung für bedingten Zugriff in Azure Active Directory
 
@@ -31,6 +31,9 @@ Sollten zusätzliche Features erforderlich sein, benötigen Sie ggf. auch entspr
 Es gibt zwei Arten von Richtlinien für bedingten Zugriff: Basisrichtlinien und Standardrichtlinien. Eine [Basisrichtlinie](baseline-protection.md) ist eine vordefinierte Richtlinie für bedingten Zugriff. Mit diesen Richtlinien soll ein Mindestmaß an Sicherheit gewährleistet werden. Basisrichtlinien stehen in allen Editionen von Azure AD zur Verfügung und sind nur bedingt anpassbar. Sollten Sie mehr Flexibilität benötigen, deaktivieren Sie die Basisrichtlinie, und implementieren Sie eine benutzerdefinierte Standardrichtlinie, die Ihre Anforderungen erfüllt.
 
 In einer Standardrichtlinie für bedingten Zugriff können Sie sämtliche Einstellungen anpassen, um die Richtlinie auf Ihre geschäftlichen Anforderungen abzustimmen. Für Standardrichtlinien wird eine Azure AD Premium P1-Lizenz benötigt.
+
+>[!NOTE]
+> Wir empfehlen die Verwendung einer auf einem Azure AD-Gerät basierenden Richtlinie für bedingten Zugriff, um nach der ersten Geräteauthentifizierung die beste Erzwingung zu erzielen. Dies schließt das Schließen von Sitzungen ein, wenn Kompatibilität und Gerätecodeflow des Geräts nicht mehr vorliegen.
 
 ## <a name="draft-policies"></a>Entwerfen von Richtlinien
 

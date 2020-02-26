@@ -1,5 +1,5 @@
 ---
-title: 'StorSimple: Failover und Notfallwiederherstellung für Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation'
+title: Ausführen eines Failovers und einer Notfallwiederherstellung für dasselbe Gerät der StorSimple 8000-Serie
 description: Erfahren Sie, wie für Ihr StorSimple-Gerät ein Failover auf dasselbe Gerät erfolgt.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577378"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471804"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Failover Ihres physischen StorSimple-Geräts auf dasselbe Gerät
 

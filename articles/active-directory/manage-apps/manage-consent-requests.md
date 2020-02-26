@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0451fe18629a572c9b49f14924bfa50293f42a2b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290698"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367852"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen
 
@@ -100,7 +100,7 @@ Unter [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwend
 
 ### <a name="granting-consent-on-behalf-of-a-specific-user"></a>Erteilen einer Einwilligung im Namen eines bestimmten Benutzers
 
-Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Azure AD Graph-API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Senden Sie hierzu eine `POST`-Anforderung zum Erstellen einer [OAuth2PermissionGrant](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#oauth2permissiongrant-entity)-Entität, in der `consentType` auf „Principal“ und `principalId` auf die Objekt-ID des Benutzers festgelegt ist, in dessen Namen die Einwilligung erteilt wird.
+Anstatt die Einwilligung für die gesamte Organisation zu erteilen, kann ein Administrator auch die [Microsft Graph-API](https://docs.microsoft.com/graph/use-the-api) verwenden, um eine Einwilligung für delegierte Berechtigungen im Namen eines einzelnen Benutzers zu erteilen. Weitere Informationen finden Sie unter [Zugreifen im Namen eines Benutzers](https://docs.microsoft.com/graph/auth-v2-user).
 
 ## <a name="limiting-user-access-to-applications"></a>Beschränken des Benutzerzugriffs auf Anwendungen
 

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989517"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368272"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung (Vorschau)
 
@@ -38,7 +38,7 @@ Zuerst müssen Sie eine Application Insights-Ressource in Azure Monitor erstelle
 
 1. Ein Konfigurationsfeld wird angezeigt. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus.
 
-   | Einstellung        | value           | Beschreibung  |
+   | Einstellung        | value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
@@ -107,7 +107,7 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, aber wir möchten eigentlich `SpanData` für Azure Monitor ausgeben. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
+3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, aber wir möchten eigentlich `SpanData` für Azure Monitor ausgeben. Übergeben Sie die Verbindungszeichenfolge direkt an das Exportprogramm, oder geben Sie sie in einer `APPLICATIONINSIGHTS_CONNECTION_STRING`-Umgebungsvariablen an. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -193,7 +193,7 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, aber wir möchten eigentlich die Metrikdaten für Azure Monitor ausgeben. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
+3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, aber wir möchten eigentlich die Metrikdaten für Azure Monitor ausgeben. Übergeben Sie die Verbindungszeichenfolge direkt an das Exportprogramm, oder geben Sie sie in einer `APPLICATIONINSIGHTS_CONNECTION_STRING`-Umgebungsvariablen an. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
 
     ```python
     from datetime import datetime
@@ -277,7 +277,7 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
     90
     ```
 
-3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, wir möchten jedoch eigentlich die Protokolldaten für Azure Monitor ausgeben. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
+3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, wir möchten jedoch eigentlich die Protokolldaten für Azure Monitor ausgeben. Übergeben Sie die Verbindungszeichenfolge direkt an das Exportprogramm, oder geben Sie sie in einer `APPLICATIONINSIGHTS_CONNECTION_STRING`-Umgebungsvariablen an. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
 
     ```python
     import logging

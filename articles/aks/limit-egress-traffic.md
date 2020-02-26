@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/21/2020
 ms.author: mlearned
-ms.openlocfilehash: df8b4d7ea44f885ee0fed0479ba87a4bc9ba1a29
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1206c20ec4f547dd591ac711d546d1dad0b7a19a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310168"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251599"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -59,14 +59,16 @@ Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster e
 * UDP-Port *53* für DNS ist ebenfalls erforderlich, wenn Sie über Pods verfügen, die direkt auf den API-Server zugreifen.
 
 Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforderlich:
+
+> [!IMPORTANT]
+> * **.blob.core.windows.net und aksrepos.azurecr.io** sind nicht mehr als FQDN-Regeln für die ausgehende Sperrung erforderlich.  Bei vorhandenen Clustern müssen Sie mit dem Befehl `az aks upgrade` [ein Clusterupgrade ausführen][aks-upgrade], um diese Regeln zu entfernen.
+
 - Azure Global
 
 | FQDN                       | Port      | Zweck      |
 |----------------------------|-----------|----------|
 | *.hcp.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
 | *.tun.\<location\>.azmk8s.io | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
-| aksrepos.azurecr.io        | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. Diese Registrierung enthält Images/Diagramme von Drittanbietern (z. B. metrics server, core dns usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind.|
-| *.blob.core.windows.net    | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
 | mcr.microsoft.com          | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. Diese Registrierung enthält Images/Diagramme von Erstanbietern (z. B. moby usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind. |
 | *.cdn.mscr.io              | HTTPS: 443 | Diese Adresse ist für den von Azure CDN (Content Delivery Network) unterstützten MCR-Speicher erforderlich. |
 | management.azure.com       | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
@@ -74,6 +76,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
 | packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | acs-mirror.azureedge.net   | HTTPS: 443 | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
+
 - Azure China 21Vianet
 
 | FQDN                       | Port      | Zweck      |
@@ -87,14 +90,13 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | login.chinacloudapi.cn  | HTTPS: 443 | Diese Adresse ist für die Azure Active Directory-Authentifizierung erforderlich. |
 | ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
 | packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
+
 - Azure Government
 
 | FQDN                       | Port      | Zweck      |
 |----------------------------|-----------|----------|
 | *.hcp.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
 | *.tun.\<location\>.cx.aks.containerservice.azure.us | HTTPS:443, TCP:22, TCP:9000 | Diese Adresse ist der Endpunkt des API-Servers. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wurde. |
-| aksrepos.azurecr.io        | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Azure Container Registry (ACR) erforderlich. Diese Registrierung enthält Images/Diagramme von Drittanbietern (z. B. metrics server, core dns usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind.|
-| *.blob.core.windows.net    | HTTPS: 443 | Diese Adresse ist der Back-End-Speicher für in ACR gespeicherte Images. |
 | mcr.microsoft.com          | HTTPS: 443 | Diese Adresse ist für den Zugriff auf Images in Microsoft Container Registry (MCR) erforderlich. Diese Registrierung enthält Images/Diagramme von Erstanbietern (z. B. moby usw.), die für die Funktion des Clusters während des Upgrades und der Skalierung des Clusters erforderlich sind. |
 | *.cdn.mscr.io              | HTTPS: 443 | Diese Adresse ist für den von Azure CDN (Content Delivery Network) unterstützten MCR-Speicher erforderlich. |
 | management.usgovcloudapi.net       | HTTPS: 443 | Diese Adresse ist für GET/PUT-Vorgänge in Kubernetes erforderlich. |
@@ -102,6 +104,7 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | ntp.ubuntu.com             | UDP:123   | Diese Adresse ist für die NTP-Zeitsynchronisierung auf Linux-Knoten erforderlich. |
 | packages.microsoft.com     | HTTPS: 443 | Diese Adresse ist das Microsoft-Paketrepository, das für zwischengespeicherte *apt-get*-Vorgänge verwendet wird.  Beispielpakete sind Moby, PowerShell und Azure CLI. |
 | acs-mirror.azureedge.net   | HTTPS: 443 | Diese Adresse ist für das Repository, das zum Installieren erforderlicher Binärdateien wie kubenet und Azure CNI benötigt wird. |
+
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Optionale empfohlene Adressen und Ports für AKS-Cluster
 
 Die folgenden ausgehenden Ports und Netzwerkregeln sind für einen AKS-Cluster optional:

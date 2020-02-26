@@ -3,30 +3,27 @@ title: Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 description: Verwenden Sie die Fusion-Technologie in Azure Sentinel, um die „Alarmmüdigkeit“ zu reduzieren und verwertbare Incidents zu erstellen, die auf der erweiterten Erkennung von mehrstufigen Angriffen basieren.
 services: sentinel
 documentationcenter: na
-author: cabailey
-manager: rkarlin
+author: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/24/2019
-ms.author: cabailey
-ms.openlocfilehash: e6ddb1b01b705d2a7857682bd84e9482e064a8db
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.date: 02/12/2020
+ms.author: rkarlin
+ms.openlocfilehash: ada2ad67bc3634d8e6a31d3c8a69fc0c8b08a93a
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241206"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369692"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel
 
 Durch die Verwendung der auf maschinellem Lernen basierenden Fusion-Technologie kann Azure Sentinel mehrstufige Angriffe automatisch erkennen. Hierzu werden anomale Verhaltensweisen und verdächtige Aktivitäten kombiniert, die an verschiedenen Stellen der Kill Chain beobachtet werden. Azure Sentinel generiert dann Incidents, die auf andere Weise nur sehr schwer abgefangen werden können. Diese Incidents umfassen mindestens zwei Warnungen oder Aktivitäten. Standardmäßig weisen diese Incidents ein geringes Volumen, eine hohe Qualität und einen hohen Schweregrad auf.
 
 Diese Erkennung ist für Ihre Umgebung angepasst und bewirkt nicht nur eine Reduzierung der False Positive-Rate, sondern kann auch Angriffe mit eingeschränkten oder fehlenden Informationen erkennen.
-
-Ausführliche Informationen zu den Warnungen, die für die einzelnen Szenarien unterstützt werden, finden Sie im Abschnitt [Für die erweiterte Erkennung von mehrstufigen Angriffen unterstützte Szenarien](#scenarios-supported-for-advanced-multistage-attack-detection) auf dieser Seite.
 
 ## <a name="configuration-for-advanced-multistage-attack-detection"></a>Konfiguration für die erweiterte Erkennung von mehrstufigen Angriffen
 
@@ -44,7 +41,17 @@ Diese Erkennung ist in Azure Sentinel standardmäßig aktiviert. Befolgen Sie di
 
 Regelvorlagen können für die erweiterte Erkennung von mehrstufigen Angriffen nicht genutzt werden.
 
-## <a name="scenarios-supported-for-advanced-multistage-attack-detection"></a>Für die erweiterte Erkennung von mehrstufigen Angriffen unterstützte Szenarien
+## <a name="fusion-using-palo-alto-networks-and-microsoft-defender-atp"></a>Fusion mithilfe von Palo Alto Networks und Microsoft Defender ATP
+
+- Netzwerkanforderung an den TOR-Anonymisierungsdienst gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
+
+- PowerShell hat eine verdächtige Netzwerkverbindung hergestellt, auf die anomaler, durch die Palo Alto Networks-Firewall gekennzeichneter Datenverkehr folgte.
+
+- Ausgehende Verbindung mit IP mit einem Verlauf nicht autorisierter Zugriffsversuche, gefolgt von anomalem, durch die Palo Alto Networks-Firewall gekennzeichnetem Datenverkehr
+
+
+
+## <a name="fusion-using-identity-protection-and-microsoft-cloud-app-security"></a>Fusion mithilfe von Identity Protection und Microsoft Cloud App Security
 
 Per erweiterter Erkennung von mehrstufigen Angriffen unterstützt Azure Sentinel die folgenden Szenarien, in denen Anomalieereignisse aus Azure Active Directory Identity Protection und Microsoft Cloud App Security kombiniert werden:
 

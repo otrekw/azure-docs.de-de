@@ -1,19 +1,19 @@
 ---
 title: Unterstützte Sprachen | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, welche Sprachen für die Dienste in Microsoft Azure Maps unterstützt werden.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025434"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208147"
 ---
 # <a name="localization-support-in-azure-maps"></a>Unterstützte Sprachen in Azure Maps
 
@@ -109,7 +109,7 @@ Azure Maps wurde in verschiedene Sprachen für die unterschiedlichen Dienste üb
 >
 > Nach dem 1. August 2019 wird mit dem Parameter**View** der zurückgegebene Karteninhalt für die oben aufgeführten neuen Regionen/Länder definiert. Der **View**-Parameter von Azure Maps (auch „Benutzerregionsparameter“ genannt) ist ein zweistelliger ISO-3166-Ländercode, der die richtigen Karten für dieses Land/diese Region anzeigt und angibt, welcher Satz von geopolitisch umstrittenen Inhalten über die Dienste von Azure Maps zurückgegeben wird, einschließlich der auf der Karte angezeigten Grenzen und Bezeichnungen. 
 
-Stellen Sie sicher, dass Sie den Parameter **View** gemäß den Anforderungen für die REST-APIs und SDKs, die von Ihren Diensten verwendet werden, eingerichtet haben.
+Stellen Sie sicher, dass Sie den Parameter **View** gemäß den Anforderungen für die von Ihren Diensten verwendeten REST-APIs und SDKs eingerichtet haben.
 >  
 >
 >  **REST-APIs:**
@@ -142,12 +142,12 @@ Stellen Sie sicher, dass Sie den Parameter **View** gemäß den Anforderungen f�
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-Standardmäßig ist der Parameter „View“ auf **Unified** festgelegt – auch wenn Sie ihn in der Anforderung nicht definiert haben. Ermitteln Sie den Standort Ihrer Benutzer, und legen Sie den Parameter **View** dann für diesen Standort entsprechend fest. Alternativ können Sie auch „View=Auto“ festlegen. Hierbei werden die Kartendaten basierend auf der IP-Adresse der Anforderung zurückgegeben.  Der Parameter **View** in Azure Maps muss in Übereinstimmung mit geltenden Gesetzen verwendet werden. Dies gilt auch für die Gesetze in Bezug auf die Kartierung des Landes, über die Karten, Bilder und andere Daten und Inhalte von Drittanbietern, auf die Sie über Azure Maps zugreifen dürfen, bereitgestellt werden.
+Standardmäßig ist der Parameter „View“ auf **Unified** festgelegt – auch wenn Sie ihn in der Anforderung nicht definiert haben. Bestimmen Sie den Standort Ihrer Benutzer. Legen Sie anschließend den Parameter **View** ordnungsgemäß für diesen Standort fest. Alternativ können Sie auch „View=Auto“ festlegen. Hierbei werden die Kartendaten basierend auf der IP-Adresse der Anforderung zurückgegeben.  Der Parameter **View** in Azure Maps muss in Übereinstimmung mit geltenden Gesetzen verwendet werden. Dies gilt auch für die Gesetze in Bezug auf die Kartierung des Landes, über die Karten, Bilder und andere Daten und Inhalte von Drittanbietern, auf die Sie über Azure Maps zugreifen dürfen, bereitgestellt werden.
 
 
 Die folgende Tabelle enthält einige unterstützte Ansichten.
 
-| Sicht         | Beschreibung                            |  Karten | Suchen, | JS-Kartensteuerelement |
+| Sicht         | BESCHREIBUNG                            |  Karten | Suchen, | JS-Kartensteuerelement |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Vereinigte Arabische Emirate (arabische Ansicht)    |   ✓   |        |     ✓          |
 | AR           | Argentinien (argentinische Ansicht)           |   ✓   |    ✓   |     ✓          |

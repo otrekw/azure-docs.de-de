@@ -18,7 +18,7 @@
     - name: 2. Konfigurieren
       items:
         - name: Skalieren mit Azure Container Instances
-          href: /azure/container-instances/container-instances-jenkins
+          href: container-instances-jenkins.md
           maintainContext: true
         - name: Skalierung mit Azure-VM-Agents
           href: jenkins-azure-vm-agents.md

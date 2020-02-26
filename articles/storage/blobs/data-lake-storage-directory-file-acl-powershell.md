@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153348"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471209"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
@@ -339,7 +339,7 @@ In diesem Beispiel verfügen der zuständige Benutzer und die zuständige Gruppe
 
 Verwenden Sie das Cmdlet `Get-AzDataLakeGen2Item`, um die Zugriffssteuerungsliste eines Verzeichnisses oder einer Datei abzurufen. Verwenden Sie dann das Cmdlet `New-AzDataLakeGen2ItemAclObject`, um einen neuen Eintrag in der Zugriffssteuerungsliste zu erstellen. Verwenden Sie das Cmdlet `Update-AzDataLakeGen2Item`, um die neue Zugriffssteuerungsliste anzuwenden.
 
-In diesem Beispiel erhält ein Benutzer Berechtigungen zum Schreiben und Ausführen für ein Verzeichnis.
+In diesem Beispiel erhält eine Gruppe Berechtigungen zum Schreiben und Ausführen für ein Verzeichnis.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-In diesem Beispiel erhält ein Benutzer Berechtigungen zum Schreiben und Ausführen für eine Datei.
+In diesem Beispiel erhält eine Gruppe Berechtigungen zum Schreiben und Ausführen für eine Datei.
 
 ```powershell
 $filesystemName = "my-file-system"

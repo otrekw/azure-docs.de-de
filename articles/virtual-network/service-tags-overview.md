@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 270b3f0fe7c654d2bf059784e872b7dbe97a6068
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c93460797fc1cf953d467e2739d71c5a2a9b74ed
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190488"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486167"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
@@ -52,7 +52,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureBackup** |Azure Backup.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
 | **AzureBotService** | Azure Bot Service | Ausgehend | Nein | Nein |
 | **AzureCloud** | Alle [öffentlichen IP-Adressen im Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=56519). | Ausgehend | Ja | Ja |
-| **AzureCognitiveSearch** | Azure Cognitive Search (bei Verwendung von Indexern mit einem Skillset) | Beide | Nein | Nein |
+| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um Indexern einen sicheren Zugriff auf Datenquellen zu gewähren. Weitere Informationen finden Sie in der [Dokumentation zur Indexerverbindung](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors). | Eingehend | Nein | Nein |
 | **AzureConnectors** | Azure Logic Apps-Connectors für Test- oder Back-End-Verbindungen. | Eingehend | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Ausgehend | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos DB. | Ausgehend | Ja | Ja |

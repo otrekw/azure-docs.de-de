@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511891"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368044"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -105,7 +105,7 @@ Weitere Informationen zu den verfügbaren Authentifizierungsoptionen finden Sie 
 
 ### <a name="programmatic-usage-of-credentials"></a>Programmgesteuerte Nutzung von Anmeldeinformationen
 
-Azure AD-Skripts mit PowerShell oder Anwendungen, die die Graph-API nutzen, erfordern sichere Authentifizierung. Bei unzureichender Verwaltung von Anmeldeinformationen kann die Ausführung dieser Skripts und Tools das Risiko des Diebstahls von Anmeldeinformationen erhöhen. Wenn Sie Skripts oder Anwendungen verwenden, die auf hartcodierten Kennwörtern oder Kennworteingabeaufforderungen basieren, sollten Sie zunächst die Kennwörter in den Konfigurationsdateien oder im Quellcode überprüfen. Ersetzen Sie diese Abhängigkeiten anschließend, und verwenden Sie nach Möglichkeit verwaltete Azure-Identitäten, die integrierte Windows-Authentifizierung oder [Zertifikate](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates). Bei Anwendungen, für die die genannten Lösungen nicht möglich sind, sollten Sie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) in Betracht ziehen.
+Azure AD-Skripts mit PowerShell oder Anwendungen, die die Microsoft Graph-API nutzen, erfordern sichere Authentifizierung. Bei unzureichender Verwaltung von Anmeldeinformationen kann die Ausführung dieser Skripts und Tools das Risiko des Diebstahls von Anmeldeinformationen erhöhen. Wenn Sie Skripts oder Anwendungen verwenden, die auf hartcodierten Kennwörtern oder Kennworteingabeaufforderungen basieren, sollten Sie zunächst die Kennwörter in den Konfigurationsdateien oder im Quellcode überprüfen. Ersetzen Sie diese Abhängigkeiten anschließend, und verwenden Sie nach Möglichkeit verwaltete Azure-Identitäten, die integrierte Windows-Authentifizierung oder [Zertifikate](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates). Bei Anwendungen, für die die genannten Lösungen nicht möglich sind, sollten Sie [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) in Betracht ziehen.
 
 Wenn Sie feststellen, dass es Dienstprinzipale mit Kennwortanmeldeinformationen vorliegen, und Sie sich nicht sicher sind, wie diese Kennwortanmeldeinformationen durch Skripts oder Anwendungen geschützt werden, wenden Sie sich an den Besitzer der Anwendung, um weitere Informationen zu den Nutzungsmustern in Erfahrung zu bringen.
 
@@ -305,7 +305,7 @@ Im Anschluss sind Apps mit Berechtigungen aufgeführt, die Sie für Microsoft Cl
 | Microsoft Office 365 Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
-| Microsoft Graph | Mail.Read |
+| Microsoft Graph-API | Mail.Read |
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
@@ -313,15 +313,14 @@ Im Anschluss sind Apps mit Berechtigungen aufgeführt, die Sie für Microsoft Cl
 
 |Resource | Berechtigung |
 | :- | :- |
-| Azure AD Graph | Directory.AccessAsUser.All |
-| Microsoft Graph | Directory.AccessAsUser.All |
+| Microsoft Graph-API| Directory.AccessAsUser.All |
 | Azure-REST-API | user_impersonation |
 
 Informationen zur Vermeidung dieses Szenarios sowie zur Identifizierung und Behandlung von Anwendungen mit unrechtmäßigen Einwilligungen oder Anwendungen mit mehr Einwilligungen als nötig finden Sie unter [Ermitteln und Beheben unrechtmäßiger Gewährungen von Einwilligungen in Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants). Als Nächstes sollten Sie [Self-Service vollständig entfernen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) und [Governanceverfahren einrichten](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Planen Sie abschließend regelmäßige Überprüfungen der App-Berechtigungen, und entfernen Sie sie, wenn sie nicht erforderlich sind.
 
 #### <a name="consent-grants-recommended-reading"></a>Empfohlene Artikel zu Einwilligungsgewährungen
 
-- [Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph-API-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Einstellungen für Benutzer und Gruppen
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169835"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252075"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -141,11 +141,11 @@ Compute-Instanzen können als [Trainingscomputeziele](concept-compute-target.md#
 
 ## <a name="notebookvm"></a>Was ist mit der Notebook-VM passiert?
 
-Compute-Instanzen ersetzen die Notebook-VM.  In Regionen, in denen noch keine Compute-Instanzen verfügbar sind, können Sie Notebook-VMs mit vollem Funktionsumfang weiter nutzen und neue Notebook-VMs erstellen.
+Compute-Instanzen ersetzen die Notebook-VM.  
 
 Alle Notebookdateien, die in der Dateifreigabe des Arbeitsbereichs gespeichert sind, und Daten in den Datenspeichern des Arbeitsbereichs sind auf einer Compute-Instanz zugänglich. Allerdings müssen alle benutzerdefinierten Pakete, die zuvor auf einer Notebook-VM installiert waren, auf der Compute-Instanz neu installiert werden. Kontingentbeschränkungen, die für die Erstellung von Compute-Clustern gelten, gelten ebenso für die Erstellung von Compute-Instanzen. 
 
-In Regionen, in denen Compute-Instanzen verfügbar sind, können keine neuen Notebook-VMs erstellt werden. Sie können jedoch weiterhin auf die von Ihnen erstellten Notebook-VMs bei voller Funktionalität zugreifen und diese nutzen. Compute-Instanzen können im gleichen Arbeitsbereich wie die vorhandenen Notebook-VMs erstellt werden. 
+Neue Notebook-VMs können nicht erstellt werden. Sie können jedoch weiterhin auf die von Ihnen erstellten Notebook-VMs bei voller Funktionalität zugreifen und diese nutzen. Compute-Instanzen können im gleichen Arbeitsbereich wie die vorhandenen Notebook-VMs erstellt werden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

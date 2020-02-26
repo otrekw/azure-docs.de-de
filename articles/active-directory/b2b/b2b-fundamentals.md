@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475024"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368152"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best Practices für B2B-Funktionen in Azure Active Directory
 Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarbeit (Business-to-Business) in Azure Active Directory (Azure AD).
@@ -33,7 +33,7 @@ Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarb
 | Erzwingen Sie Richtlinien für bedingten Zugriff für die Multi-Factor Authentication (MFA). | Es wird empfohlen, MFA-Richtlinien in den Apps zu erzwingen, die Sie für B2B-Benutzer von Partnern freigeben möchten. Auf diese Weise wird die MFA in allen Apps in Ihrem Mandanten erzwungen, unabhängig davon, ob die Partnerorganisation die MFA verwendet. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer von B2B Collaboration](conditional-access.md). |
 | Wenn Sie gerätebasierte Richtlinien für bedingten Zugriff erzwingen, verwenden Sie Ausschlusslisten, um B2B-Benutzern Zugriff zu gewähren. | Wenn in Ihrer Organisation gerätebasierte Richtlinien für bedingten Zugriff aktiviert sind, werden Geräte von B2B-Gastbenutzern blockiert, weil sie nicht von Ihrer Organisation verwaltet werden. Sie können jedoch Ausschlusslisten mit bestimmten Partnerbenutzern erstellen, die von der gerätebasierten Richtlinie für bedingten Zugriff ausgeschlossen werden sollen. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer von B2B Collaboration](conditional-access.md). |
 | Verwenden Sie beim Bereitstellen von direkten Links für Ihre B2B-Gastbenutzer eine mandantenspezifische URL. | Alternativ zur Einladungs-E-Mail können Sie einem Gast einen direkten Link zu Ihrer App oder Ihrem Portal zur Verfügung stellen. Dieser direkte Link muss mandantenspezifisch sein, also eine Mandanten-ID oder eine überprüfte Domäne enthalten, damit der Gast in Ihrem Mandanten, in dem sich die freigegebene App befindet, authentifiziert werden kann. Weitere Informationen finden Sie unter [Einlösung von Einladungen](redemption-experience.md). |
-| Verwenden Sie beim Entwickeln einer App die UserType-Eigenschaft, um die Funktionalität für Gastbenutzer festzulegen.  | Wenn Sie eine Anwendung entwickeln und für Mandantenbenutzer und Gastbenutzer unterschiedliche Funktionalitäten bereitstellen möchten, verwenden Sie die Eigenschaft „UserType“. Der UserType-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten die Graph-API verwenden, um zum Abrufen der UserType-Eigenschaft eines Benutzers das Verzeichnis abzufragen. |
+| Verwenden Sie beim Entwickeln einer App die UserType-Eigenschaft, um die Funktionalität für Gastbenutzer festzulegen.  | Wenn Sie eine Anwendung entwickeln und für Mandantenbenutzer und Gastbenutzer unterschiedliche Funktionalitäten bereitstellen möchten, verwenden Sie die Eigenschaft „UserType“. Der UserType-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten die Microsoft Graph-API verwenden, um zum Abrufen der UserType-Eigenschaft eines Benutzers das Verzeichnis abzufragen. |
 | Ändern Sie die Eigenschaft „UserType“ *nur*, wenn sich die Beziehung eines Benutzers zur Organisation ändert. | Sie können zwar die UserType-Eigenschaft eines Benutzers in PowerShell von „Mitglied“ zu „Gast“ (und umgekehrt) konvertieren, aber Sie sollten diese Eigenschaft nur ändern, wenn sich die Beziehung des Benutzers zu Ihrer Organisation ändert. Weitere Informationen finden Sie unter [Eigenschaften eines B2B-Gastbenutzers](user-properties.md).|
 
 ## <a name="next-steps"></a>Nächste Schritte

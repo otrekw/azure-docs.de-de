@@ -417,6 +417,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Virtuelle Hyper-V-Computer
           items:
+            - name: Aussonderung des Site-to-Site-Szenarios für Hyper-V-VMs
+              href: site-to-site-deprecation.md
             - name: 'Exemplarische Vorgehensweise: Notfallwiederherstellung von virtuellen Hyper-V-Computern in VMM-Clouds an einem sekundären Standort'
               href: hyper-v-vmm-disaster-recovery.md
             - name: Ausführen eines Notfallwiederherstellungsverfahrens für virtuelle Hyper-V-Computer an einem sekundären Standort

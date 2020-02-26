@@ -1,18 +1,18 @@
 ---
 title: Reservierte Kapazität in Azure Cosmos DB zum Optimieren der Kosten
 description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure Cosmos DB kaufen, um Computekosten einzusparen.
-author: bandersmsft
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/29/2019
-ms.author: banders
+ms.date: 02/14/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969353"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367709"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -30,13 +30,29 @@ Sie können die reservierte Azure Cosmos DB-Kapazität über das [Azure-Portal](
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Bestimmen des erforderlichen Durchsatzes vor dem Kauf
 
-Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den die vorhandenen oder in Kürze bereitzustellenden Ressourcen von Azure Cosmos DB verwenden. Sie können den erforderlichen Durchsatz auf folgende Weise ermitteln:
+Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den die vorhandenen oder in Kürze bereitzustellenden Ressourcen von Azure Cosmos DB verwenden. Mithilfe der folgenden Schritte können Sie die empfohlenen Reservierungsgrößen im Azure-Portal anzeigen:
 
-* Rufen Sie die historischen Daten für den gesamten bereitgestellten Durchsatz für Ihre Azure Cosmos DB-Konten, -Datenbanken und -Sammlungen in allen Regionen ab. Sie können beispielsweise den täglich durchschnittlichen bereitgestellten Durchsatz auswerten, indem Sie Ihre tägliche Nutzungsübersicht von `https://account.azure.com` herunterladen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 
-* Wenn Sie ein EA-Kunde (Enterprise Agreement) sind, können Sie Ihre Nutzungsdatei herunterladen, um die Durchsatzdetails von Azure Cosmos DB zu erhalten. Beachten Sie den Wert **Service Type** im Abschnitt **Additional info** der Nutzungsdatei.
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen** > **Hinzufügen**.
 
-* Sie können den durchschnittlichen Durchsatz für alle Workloads für Ihre Azure Cosmos DB-Konten addieren, den Sie für die nächsten ein bis drei Jahre erwarten. Sie können diesen Wert dann für die Reservierung verwenden.
+3. Wählen Sie im Bereich **Reservierungen erwerben** die Option **Azure Cosmos DB** aus.
+
+4. Wählen Sie die Registerkarte **Empfohlen** aus, um empfohlene Reservierungen anzuzeigen:
+
+Sie können Empfehlungen nach den folgenden Attributen filtern:
+
+- **Laufzeit** (1 Jahr oder 3 Jahre)
+- **Fakturierungsintervall** (monatlich oder Vorauszahlung)
+- **Durchsatztyp** (RUs oder Multimaster-RUs)
+
+Darüber hinaus können Sie Empfehlungen für den Gültigkeitsbereich einer einzelnen Ressourcengruppe, eines einzelnen Abonnements oder ihrer gesamten Azure-Registrierung festlegen. Sie können Empfehlungen auf der Grundlage der Nutzung in den letzten 7 Tagen, 30 Tagen oder 60 Tagen anzeigen.
+
+Im Folgenden finden Sie eine Beispielempfehlung:
+
+![Empfehlungen für reservierte Kapazität](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
+
+Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin, dass im Rahmen einer Laufzeit von drei Jahren eine Reservierung in der Größenordnung von 30.000 RU/s zu maximalen Einsparungen führt. In diesem Fall wird die Empfehlung auf den letzten 30 Tagen der Nutzung von Azure Cosmos DB basierend berechnet. Wenn dieser Kunde davon ausgeht, dass die letzten 30 Tage der Nutzung von Azure Cosmos DB für den zukünftigen Gebrauch repräsentativ sind, werden die Einsparungen durch Erwerb einer Reservierung von 30.000 RU/s maximiert.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Kaufen von reservierter Azure Cosmos DB-Kapazität
 
@@ -57,7 +73,7 @@ Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den di
    | Ressourcengruppe | Ressourcengruppe, auf die der Rabatt für reservierte Kapazitäten angewendet wird. |
    |Begriff  |   Ein Jahr oder drei Jahre   |
    |Durchsatztyp   |  Der Durchsatz wird in Form von Anforderungseinheiten bereitgestellt. Sie können eine Reservierung für den bereitgestellten Durchsatz für beide Setups erwerben – Schreibanforderungen für eine Region sowie Schreibanforderungen für mehre Regionen. Beim Durchsatztyp können Sie zwischen zwei Werten wählen: 100 RU/s pro Stunde und 100 Multimaster-RU/s pro Stunde.|
-   | Reservierte Kapazitätseinheiten| Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos-Datenbank verknüpfen. Beispiel:  Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus. |
+   | Reservierte Kapazitätseinheiten| Die Menge an Durchsatz, die Sie reservieren möchten. Sie können diesen Wert berechnen, indem Sie den Durchsatz für alle Ihre Cosmos DB-Ressourcen (z.B. Datenbanken oder Container) pro Region ermitteln. Sie multiplizieren diesen Wert dann mit der Anzahl der Regionen, die Sie mit Ihrer Cosmos-Datenbank verknüpfen. Beispiel: Wenn Sie fünf Regionen mit 1 Million RU/Sek. in jeder Region verwenden, wählen Sie 5 Millionen RU/Sek. für den Kauf von reservierten Kapazitäten aus. |
 
 
 5. Nach dem Ausfüllen des Formulars wird der Preis berechnet, der für den Erwerb der reservierten Kapazität gilt. In der Ausgabe wird auch der Rabattprozentsatz angezeigt, den Sie für die gewählten Optionen erhalten. Klicken Sie als Nächstes auf **Auswählen**.
@@ -73,8 +89,6 @@ Nachdem Sie eine Reservierung gekauft haben, wird sie sofort auf alle vorhandene
 Wenn Ihre Reservierung abläuft, werden Ihre Azure Cosmos DB-Instanzen weiter ausgeführt und zu den regulären nutzungsbasierten Gebühren abgerechnet.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
-
-Hilfe zum Identifizieren der richtigen reservierten Kapazität finden Sie unter [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
 Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 

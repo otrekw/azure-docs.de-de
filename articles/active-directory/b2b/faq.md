@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d51359896b7a0d03626ead6843d3666f3ad3ef57
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608607"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368099"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -97,7 +97,7 @@ Azure AD verfügt über einen festen Satz von Anforderungen an Zeichen, Kennwort
 Bei Verbundkonten richtet sich die Kennwortrichtlinie nach der Richtlinie, die im lokalen Mandanten und den Einstellungen des Microsoft-Kontos des Benutzers angewendet wird.
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>Eine Organisation möchte ggf. verschiedene Funktionen in ihren Anwendungen für Mandanten- und Gastbenutzer bereitstellen. Gibt es dafür eine Standardanleitung? Ist das Vorhandensein des Identitätsanbieteranspruchs das richtige Modell dafür?
-Ein Gastbenutzer kann einem beliebigen Identitätsanbieter zur Authentifizierung verwenden. Weitere Informationen finden Sie unter [Eigenschaften eines B2B-Zusammenarbeitsbenutzers](user-properties.md). Verwenden Sie die **UserType**-Eigenschaft, um die Benutzerfreundlichkeit zu bestimmen. Der **UserType**-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten zur Abfrage des Verzeichnisses nach dem Benutzer und zum Abrufen seiner UserType-Eigenschaft die Graph-API verwenden.
+Ein Gastbenutzer kann einem beliebigen Identitätsanbieter zur Authentifizierung verwenden. Weitere Informationen finden Sie unter [Eigenschaften eines B2B-Zusammenarbeitsbenutzers](user-properties.md). Verwenden Sie die **UserType**-Eigenschaft, um die Benutzerfreundlichkeit zu bestimmen. Der **UserType**-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten zur Abfrage des Verzeichnisses nach dem Benutzer und zum Abrufen seiner UserType-Eigenschaft die Microsoft Graph-API verwenden.
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Wo finde ich eine Community für die B2B-Zusammenarbeit, um dort Lösungen und Ideen zu teilen?
 Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Teilen Sie uns Ihre Benutzerszenarien und bewährten Methoden mit, und lassen Sie uns wissen, was Ihnen an der Azure AD B2B-Zusammenarbeit gefällt. Werden Sie Teil der [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) und posten Sie Diskussionsbeiträge.

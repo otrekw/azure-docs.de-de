@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121978"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198665"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -34,7 +34,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 
 
 > [!div class="mx-tableFixed"]
-> | Integrierte Rolle | Beschreibung | Id |
+> | Integrierte Rolle | BESCHREIBUNG | Id |
 > | --- | --- | --- |
 > | [Besitzer](#owner) | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Optionen mit Ausnahme des Gewährens von Zugriff auf Ressourcen. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -422,7 +422,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **Id** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
+> | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von klassischen Netzwerkregeln |
+> | Microsoft.Insights/metricAlerts/* | Erstellen und Verwalten von neuen Netzwerkregeln |
 > | Microsoft.Insights/components/* | Erstellen und Verwalten von Insights-Komponenten |
 > | Microsoft.Insights/webtests/* | Erstellen und Verwalten von Webtests |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848679"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484059"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>So funktioniert's: Azure Multi-Factor Authentication
 
@@ -38,14 +38,14 @@ Multi-Factor Authentication ist Teil der folgenden Angebote:
 
 * **Azure Active Directory Premium** oder **Microsoft 365 Business** – Nutzung der Azure Multi-Factor Authentication in vollem Umfang, einschließlich Richtlinien für bedingten Zugriff, die die Multi-Factor Authentication erforderlich machen.
 
-* **Azure AD Free**- oder eigenständige **Office 365**-Lizenzen – Nutzung vorab erstellter [Richtlinien für bedingten Zugriff für den Baselineschutz](../conditional-access/concept-baseline-protection.md), die die Multi-Factor Authentication für Benutzer und Administratoren erforderlich machen
+* **Azure AD Free**- oder eigenständige **Office 365**-Lizenzen: Verwenden Sie [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md), die die mehrstufige Authentifizierung für Benutzer und Administratoren erforderlich machen.
 
 * **Azure Active Directory – Globale Administratoren**: Eine Teilmenge der Azure Multi-Factor Authentication-Funktionen ist als Mittel zum Schutz globaler Administratorkonten verfügbar.
 
 > [!NOTE]
 > Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
 
-## <a name="supportability"></a>Unterstützungsmöglichkeiten
+## <a name="supportability"></a>Unterstützbarkeit
 
 Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass Ihre Organisation das Bewusstsein für diesen Prozess bei sämtlichen Benutzern fördert. So lassen sich Anrufe beim Helpdesk aufgrund kleinerer Probleme im Zusammenhang mit MFA reduzieren. In einigen Szenarien muss MFA jedoch vorübergehend deaktiviert werden. Befolgen Sie die unten stehenden Richtlinien für den Umgang mit diesen Szenarien:
 

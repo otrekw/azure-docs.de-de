@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168362"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431161"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -44,7 +44,7 @@ Wenn Sie das [Speech SDK](speech-sdk.md) verwenden, werden die Regionen durch de
 
 Verfügbare Regionen für **Absichtserkennung** über das Speech SDK sind die folgenden:
 
-| Globale Region | Region           | Speech SDK-Parameter |
+| Globale Region | Region           | Regionsbezeichner |
 | ------------- | ---------------- | -------------------- |
 | Asia          | Asien, Osten        | `eastasia`           |
 | Asia          | Asien, Südosten   | `southeastasia`      |
@@ -65,7 +65,7 @@ Dies ist eine Teilmenge der Veröffentlichungsregionen, die vom [Language Unders
 
 Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprachassistenten** in den folgenden Regionen:
 
-| Region         | Speech SDK-Parameter |
+| Region         | Regionsbezeichner |
 | -------------- | -------------------- |
 | USA (Westen)        | `westus`             |
 | USA, Westen 2      | `westus2`            |

@@ -1,18 +1,18 @@
 ---
 title: Erfassen von Azure-Blobs in Azure Data Explorer
 description: In diesem Artikel erfahren Sie, wie Sie Speicherkontodaten unter Verwendung eines Event Grid-Abonnements an Azure Data Explorer senden.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667481"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424982"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen
 
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie ein [Azure Event Grid](/azure/event-
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | NAME | *test-grid-connection* | Der Name der zu erstellenden Event Grid-Instanz.|
+    | Name | *test-grid-connection* | Der Name der zu erstellenden Event Grid-Instanz.|
     | Ereignisschema | *Event Grid-Schema* | Das gewünschte Schema für die Event Grid-Instanz. |
     | Thementyp | *Speicherkonto* | Die Art des Event Grid-Themas. |
     | Themenressource | *gridteststorage* | Der Name Ihres Speicherkontos. |
@@ -117,7 +117,7 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Table | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
+    | Tabelle | *TestTable* | Die Tabelle, die Sie unter **TestDatabase** erstellt haben. |
     | Datenformat | *JSON* | Folgende Formate werden unterstützt: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV und TXT. Unterstützte Komprimierungsoptionen: Zip und gzip |
     | Spaltenzuordnung | *TestMapping* | Die Zuordnung, die Sie in **TestDatabase** erstellt haben, um eingehende JSON-Daten den Spaltennamen und Datentypen von **TestTable** zuzuordnen.|
     | | |
@@ -157,6 +157,11 @@ Speichern Sie die Daten in einer Datei, und laden Sie sie mit diesem Skript hoch
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Azure Data Explorer löscht die Blobs nach der Erfassung nicht.
+> Behalten Sie die Blobs für drei bis fünf Tage bei.
+> Informationen zum Löschen von Blobs finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal). 
 
 ## <a name="review-the-data-flow"></a>Überprüfen des Datenflusses
 

@@ -4,15 +4,15 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922292"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461656"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -23,7 +23,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 |Datenquelle  |In-Memory  |DirectQuery  |Notizen |
 |---------|---------|---------|---------|
 |Azure SQL-Datenbank      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup>[3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   Ja      |   Ja       |<sup>[2](#azprovider)</sup>|
+|Azure Synapse Analytics (SQL Data Warehouse)      |   Ja      |   Ja       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   Ja       |    Nein      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   Ja       |    Nein      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Ja        |  Nein        |<sup>[1](#tab1400a)</sup> |
@@ -120,7 +120,7 @@ Für Clouddatenquellen:
 
 ## <a name="oauth-credentials"></a>OAuth-Anmeldeinformationen
 
-Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher, die den In-Memory-Modus verwenden, bieten Azure SQL-Datenbank, Azure SQL Data Warehouse, Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
+Für tabellarische Modelle mit einem Kompatibilitätsgrad von 1.400 und höher, die den In-Memory-Modus verwenden, bieten Azure SQL-Datenbank, Azure Synapse Analytics (SQL Data Warehouse), Dynamics 365 und SharePoint-Liste Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von SSMS fest, um gültige Token zu generieren.
 
 Der Direktabfragemodus wird mit OAuth-Anmeldeinformationen nicht unterstützt.
 

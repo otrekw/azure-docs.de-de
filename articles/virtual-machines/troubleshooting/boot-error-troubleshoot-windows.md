@@ -1,5 +1,5 @@
 ---
-title: Der Neustart von virtuellen Azure-Computern bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen | Microsoft-Dokumentation
+title: Das Herunterfahren von virtuellen Azure-Computern bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen | Microsoft-Dokumentation
 description: Dieser Artikel hilft Ihnen beim Beheben von Dienstfehlern in virtuellen Azure Windows-Computern.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474192"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371353"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Der Neustart einer Azure Windows-VM bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Das Herunterfahren einer Azure-Windows-VM bleibt bei „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“ hängen.
 
-Dieser Artikel beschreibt die Schritte zum Beheben von Problemen bei den Meldungen „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“, die vorkommen können, wenn Sie einen virtuellen Windows-Computer in Microsoft Azure neu starten.
+In diesem Artikel werden die Schritte zum Beheben von Problemen bei den Meldungen „Wird neu gestartet“, „Wird herunterfahren“ oder „Dienste werden beendet“, beschrieben die beim Neustarten eines virtuellen Windows-Computers in Microsoft Azure auftreten können.
 
 ## <a name="symptoms"></a>Symptome
 

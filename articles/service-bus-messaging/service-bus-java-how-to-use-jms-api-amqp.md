@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/22/2019
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c0c7e8b6066626966e2a72d474306bae4ead14c2
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: cd06838abbb69af5684fdea18c42f6a8f95ffe2f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027226"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371257"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>Verwenden von Java Message Service (JMS) mit Azure Service Bus und AMQP 1.0
 In diesem Artikel wird beschrieben, wie die Messagingfunktionen von Azure Service Bus (Warteschlange und Veröffentlichen/Abonnieren von Themen) aus Java-Anwendungen mit dem beliebten API-Standard Java Message Service (JMS) verwendet werden. In einer [separaten Anleitung](service-bus-amqp-dotnet.md) wird erklärt, wie Sie dieselbe Aufgabe mithilfe der .NET-API für Azure Service Bus durchführen. Sie können diese beiden Anleitungen verwenden, um weitere Informationen zur plattformübergreifenden Nachrichtenübermittlung unter Verwendung von AMQP 1.0 zu erhalten.
@@ -29,7 +29,7 @@ AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges
 Unterstützung für AMQP 1.0 in Azure Service Bus bedeutet, dass Sie die gebrokerten Messagingfunktionen für Warteschlangen und Veröffentlichen/Abonnieren mithilfe eines effizienten binären Protokolls auf unterschiedlichen Plattformen nutzen können. Zudem können Sie Anwendungen erstellen, deren Komponenten mit einer Mischung aus Sprachen, Frameworks und Betriebssystemen erstellt wurden.
 
 ## <a name="get-started-with-service-bus"></a>Erste Schritte mit Service Bus
-In diesem Leitfaden wird davon ausgegangen, dass Sie bereits über einen Service Bus-Namespace verfügen, der eine Warteschlange mit dem Namen **basicqueue** enthält. Falls nicht, können Sie [den Namespace und die Warteschlange](service-bus-create-namespace-portal.md) im [Azure-Portal](https://portal.azure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
+In diesem Leitfaden wird davon ausgegangen, dass Sie bereits einen Service Bus-Namespace haben, der eine Warteschlange mit dem Namen `basicqueue` enthält. Falls nicht, können Sie [den Namespace und die Warteschlange](service-bus-create-namespace-portal.md) im [Azure-Portal](https://portal.azure.com) erstellen. Weitere Informationen zum Erstellen von Namespaces und Warteschlangen für Service Bus finden Sie unter [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
 
 > [!NOTE]
 > Partitionierte Warteschlangen und Themen unterstützen zudem AMQP. Weitere Informationen finden Sie unter [Partitionierte Messagingentitäten](service-bus-partitioning.md) und [AMQP 1.0-Unterstützung für partitionierte Warteschlangen und Themen von Service Bus](service-bus-partitioned-queues-and-topics-amqp-overview.md).
@@ -49,7 +49,7 @@ Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsar
 
 ## <a name="coding-java-applications"></a>Programmieren von Java-Anwendungen
 ### <a name="java-naming-and-directory-interface-jndi"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)
-JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung zwischen logischen und physischen Namen umzusetzen. Mit JNDI werden zwei Arten von JMS-Objekten aufgelöst: „ConnectionFactory“ und „Destination“. JNDI verwendet ein Anbietermodell, das Sie mit verschiedenen Verzeichnisdiensten verbinden können, um Namensauflösungsfunktionen zu implementieren. Die Apache Qpid JMS AMQP 1.0-Bibliothek enthält einen einfachen JNDI-Anbieter, der mithilfe von properties-Dateien im folgenden Format konfiguriert wird:
+JMS verwendet die Java Naming and Directory Interface (JNDI), um eine Trennung zwischen logischen und physischen Namen umzusetzen. Mit JNDI werden zwei Arten von JMS-Objekten aufgelöst: „ConnectionFactory“ und „Destination“. JNDI verwendet ein Anbietermodell, das Sie mit verschiedenen Verzeichnisdiensten verbinden können, um Namensauflösungsfunktionen zu implementieren. Die Apache Qpid JMS AMQP 1.0-Bibliothek enthält einen einfachen JNDI-Anbieter auf Eigenschaftendateibasis, der mithilfe einer Eigenschaftendateien im folgenden Format konfiguriert wird:
 
 ```TEXT
 # servicebus.properties - sample JNDI configuration
@@ -348,9 +348,9 @@ Azure Service Bus-Themen leiten Nachrichten in benannte, freigegebene, dauerhaft
 
 Ein Empfangen von Nachrichten aus Abonnements ist identisch mit einem Empfangen von Nachrichten aus Warteschlangen. Jedes Abonnement hat eine Warteschlange für unzustellbare Nachrichten sowie die Möglichkeit, Nachrichten automatisch an eine andere Warteschlange oder andere Themen weiterzuleiten. 
 
-JMS-Themen ermöglichen es Clients, dynamisch nicht dauerhafte und dauerhafte Abonnenten zu erstellen, die optional ein Filtern von Nachrichten mit Nachrichtenselektoren ermöglichen. Diese nicht freigegebenen Elemente werden von Service Bus nicht unterstützt. Die Syntax von SQL-Filterregeln für Service Bus ist aber der von JMS unterstützten Nachrichtenselektorsyntax sehr ähnlich. 
+JMS-Themen ermöglichen es Clients, dynamisch nicht dauerhafte und dauerhafte Abonnenten zu erstellen, die optional ein Filtern von Nachrichten mit Nachrichtenselektoren ermöglichen. Diese nicht freigegebenen Elemente werden von Service Bus nicht unterstützt. Die Syntax von SQL-Filterregeln für Service Bus ist aber der von JMS unterstützten Nachrichtenselektorsyntax ähnlich. 
 
-Die Verlegerseite eines JMS-Themas ist mit Service Bus kompatibel, wie in diesem Beispiel gezeigt, dynamische Abonnenten sind dies aber nicht. Die folgenden topologiebezogenen JMS-APIs werden mit Service Bus nicht unterstützt. 
+Die Herausgeberseite eines JMS-Themas ist mit Service Bus kompatibel, wie in diesem Beispiel gezeigt, dynamische Abonnenten sind dies aber nicht. Die folgenden topologiebezogenen JMS-APIs werden mit Service Bus nicht unterstützt. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nicht unterstützte Funktionen und Einschränkungen
 Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden Einschränkungen:
@@ -358,7 +358,7 @@ Bei der Verwendung von JMS über AMQP 1.0 mit Service Bus gelten die folgenden E
 * Pro **Sitzung** ist nur ein **MessageConsumer** oder **MessageProducer** erlaubt. Falls Sie mehrere **MessageProducer** oder **MessageConsumer** in einer Anwendung benötigen, müssen Sie für diese jeweils eine eigene **Sitzung** erstellen.
 * Flüchtige Themenabonnements werden momentan nicht unterstützt.
 * **MessageSelectors** werden momentan nicht unterstützt.
-* Durchgeführte Sitzungen und verteilte Transaktionen werden nicht unterstützt.
+* Verteilte Transaktionen werden nicht unterstützt (aber durchgeführte Sitzungen werden unterstützt).
 
 Darüber hinaus trennt Azure Service Bus die Steuerungsebene von der Datenebene und unterstützt daher viele der dynamischen Topologiefunktionen von JMS nicht:
 
@@ -374,7 +374,7 @@ Darüber hinaus trennt Azure Service Bus die Steuerungsebene von der Datenebene 
 | createBrowser               | Nicht unterstützt. Verwenden Sie die Peek()-Funktion der Service Bus-API.                         |
 | createQueue                 | Erstellen Sie eine Warteschlange per Verwaltungs-API/-tools/-portal.                                           | 
 | createTemporaryQueue        | Erstellen Sie per Verwaltungs-API/-tools/-portal eine Warteschlange, bei der *AutoDeleteOnIdle* auf einen Ablaufzeitraum festgelegt ist. |
-| receiveNoWait               | Verwenden Sie die vom Service Bus SDK bereitgestellte Methode „receive()“, und legen Sie das Timeout auf einen niedrigen Wert (oder auf Null) fest. |
+| receiveNoWait               | Verwenden Sie die vom Service Bus-SDK bereitgestellte Methode „receive()“, und legen Sie das Timeout auf einen sehr niedrigen Wert (oder auf 0 (null)) fest. |
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Leitfaden wurde gezeigt, wie die gebrokerten Messagingfunktionen von Service Bus (Warteschlange und Themen veröffentlichen/abonnieren) aus Java-Anwendungen mit der beliebten Standard-Programmierschnittstelle JMS und AMQP 1.0 verwendet werden.

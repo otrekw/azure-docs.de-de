@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548899"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483855"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -96,6 +96,23 @@ Führen Sie die folgenden Schritte aus, um ein externes Azure AD-Verzeichnis ode
 1. Überprüfen Sie Ihre Organisationseinstellungen auf der Registerkarte **Überprüfen und erstellen**, und klicken Sie dann auf **Erstellen**.
 
     ![Zugriffspaket – Richtlinie – Verbundene Organisation hinzufügen – Registerkarte „Überprüfen und erstellen“](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Aktualisieren einer verbundenen Organisation 
+
+Wenn die verbundene Organisation in eine andere Domäne wechselt und Sie einen neuen Namen für diese Organisation verwenden oder die Sponsoren ändern möchten, können Sie die verbundene Organisation aktualisieren.
+
+**Erforderliche Rolle:** „Globaler Administrator“, „Benutzeradministrator“ oder „Gasteinladender“
+
+1. Klicken Sie im Azure-Portal auf **Azure Active Directory** und dann auf **Identity Governance**.
+
+1. Klicken Sie im Menü links auf **Verbundene Organisationen** und anschließend auf die verbundene Organisation, um sie zu öffnen.
+
+1. Klicken Sie in der Übersicht auf **Bearbeiten**, um den Organisationsnamen oder die Beschreibung zu ändern.  
+
+1. Klicken Sie auf der Seite „Verzeichnis und Domäne“ auf **Verzeichnis und Domäne aktualisieren**, um in ein anderes Verzeichnis oder eine andere Domäne zu wechseln.
+
+1. Klicken Sie auf der Seite „Sponsoren“ auf **Interne Sponsoren hinzufügen** oder **Externe Sponsoren hinzufügen**, um einen Benutzer als Sponsor hinzuzufügen.  Um einen Sponsor zu entfernen, klicken Sie auf den Sponsor und dann im Menü auf der rechten Seite auf **Löschen**.
+
 
 ## <a name="delete-a-connected-organization"></a>Löschen einer verbundenen Organisation
 

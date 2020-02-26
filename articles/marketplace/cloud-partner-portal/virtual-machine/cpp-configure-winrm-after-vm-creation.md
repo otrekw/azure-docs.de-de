@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817956"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481373"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurieren von WinRM nach Erstellung eines virtuellen Computers
 
@@ -25,7 +25,7 @@ In diesem Artikel wird erläutert, wie ein vorhandener in Azure gehosteter virtu
 
 ## <a name="enabling-port-traffic"></a>Aktivieren des Portsatenverkehrs
 
-Für das WinRM-über-HTTPS-Protokoll wird der Port 5896 verwendet. Dieser Port ist auf vorkonfigurierten virtuellen Windows-Computern, die im Azure Marketplace angeboten werden, nicht standardmäßig aktiviert. Um dieses Protokoll zu aktivieren, führen Sie die folgenden Schritte aus, um der Netzwerksicherheitsgruppe (NSG) über das [Azure-Portal](https://portal.azure.com) eine neue Regel hinzuzufügen.  Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Für das WinRM-über-HTTPS-Protokoll wird Port 5986 verwendet. Dieser Port ist auf den im Azure Marketplace angebotenen vorkonfigurierten virtuellen Windows-Computern standardmäßig nicht aktiviert. Um dieses Protokoll zu aktivieren, führen Sie die folgenden Schritte aus, um der Netzwerksicherheitsgruppe (NSG) über das [Azure-Portal](https://portal.azure.com) eine neue Regel hinzuzufügen.  Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.  Navigieren Sie zu dem Blatt **Virtuelle Computer >**   <*Name des virtuellen Computers*>   **> Einstellungen/Netzwerk**.
 2.  Klicken Sie auf den NSG-Namen (in diesem Beispiel **testvm11002**), um die zugehörigen Eigenschaften anzuzeigen:

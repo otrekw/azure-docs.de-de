@@ -1,22 +1,22 @@
 ---
-title: Azure Firewall-Konformitätszertifizierungen
-description: Eine Liste der Azure-Firewall-Konformitätszertifizierungen für PCI, SOC und ISO
+title: Azure Firewall-Zertifizierungen
+description: Eine Liste der Azure Firewall-Zertifizierungen für PCI, SOC, ISO und ICSA Labs
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 01/17/2020
+ms.date: 02/19/2020
 ms.author: victorh
-ms.openlocfilehash: f7e235a4212cf14f851c0c58eb087970c8f8d137
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b1e7dce6f652d8c9e0fcf5974c3e72be9e1e7844
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157779"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482178"
 ---
-# <a name="azure-firewall-compliance-certifications"></a>Azure Firewall-Konformitätszertifizierungen
+# <a name="azure-firewall-certifications"></a>Azure Firewall-Zertifizierungen
 
-Azure Firewall ist mit PCI (Payment Card Industry), SOC (Service Organization Controls), ISO (International Organization for Standardization) und HITRUST konform.
+Azure Firewall ist mit PCI (Payment Card Industry), SOC (Service Organization Controls), ISO (International Organization for Standardization), ICSA Labs und HITRUST konform.
 
 Die folgenden Zertifizierungen gelten für globales Azure und Azure Government.
 
@@ -103,6 +103,14 @@ Die folgenden Azure Firewall-Zertifizierungen gelten für Azure Government:
 - SOC 3
 - SOX (USA)
 - Section 508 VPATs
+
+## <a name="icsa-labs-corporate-firewall-certification"></a>ICSA Labs Corporate Firewall-Zertifizierung
+
+![ICSA-Zertifizierung](media/overview/icsa-cert-firewall-small.png)
+
+ICSA Labs ist ein führender Anbieter von Drittanbietertests und -zertifizierungen von Sicherheits- und Integritäts-IT-Produkten sowie von Geräten, die mit dem Netzwerk verbunden sind. Er misst die Produktkonformität, Zuverlässigkeit und Leistung für die meisten der weltweit führenden Technologieanbieter.
+
+Azure Firewall ist der erste Cloudfirewalldienst, der die ICSA Labs Corporate Firewall-Zertifizierung erlangt hat. Informationen zum Azure Firewall-Zertifizierungsbericht finden Sie im [Test- und Überwachungsbericht zur ICSA Labs-Zertifizierung](https://aka.ms/ICSALabsCertification). Weitere Informationen finden Sie auf der Seite des [ICSA Labs-Firewallzertifizierungsprogramms](https://www.icsalabs.com/technology-program/firewalls).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

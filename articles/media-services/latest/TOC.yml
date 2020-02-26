@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Latency
           href: live-event-latency.md
+        - name: Fehlercodes für Liveereignisse
+          href: live-event-error-codes.md
     - name: Überwachung
       items:
         - name: Ereignisse mit Event Grid
@@ -175,6 +177,8 @@
           items:
             - name: Fehlercodes für Streamingendpunkte
               href: streaming-endpoint-error-codes.md
+            - name: Fehlercodes für Liveereignisse
+              href: live-event-error-codes.md
             - name: Auftragsfehlercodes
               href: job-error-codes.md
     - name: Hinweise zur Migration von v2 zu v3
@@ -325,6 +329,8 @@
       items:
         - name: Fehlercodes für Streamingendpunkte
           href: streaming-endpoint-error-codes.md
+        - name: Fehlercodes für Liveereignisse
+          href: live-event-error-codes.md
         - name: Auftragsfehlercodes
           href: job-error-codes.md
 - name: Ressourcen

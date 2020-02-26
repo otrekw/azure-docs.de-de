@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185584"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372977"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
@@ -51,13 +51,31 @@ Das **ClaimType**-Element enthält die folgenden Elemente:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Der Titel, der Benutzern auf unterschiedlichen Bildschirmen angezeigt wird. Der Wert kann [lokalisiert](localization.md) sein. |
-| DataType | 1:1 | Der Typ des Anspruchs. Die Datentypen „boolean“, „date“, „dateTime“, „int“, „long“, „string“, „stringCollection“ und „phoneNumber“ können verwendet werden. Der primitive Datentyp ist die Entsprechung des C#-Datentyps „Variable“. stringCollection stellt eine Auflistung von Zeichenfolgen dar. Weitere Informationen finden Sie unter [C#-Typen und Variablen](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Das Datum entspricht der Konvention ISO 8601. |
+| DataType | 1:1 | Der Typ des Anspruchs. |
 | DefaultPartnerClaimTypes | 0:1 | Die Partneranspruchstypen, die standardmäßig für ein angegebenes Protokoll verwendet werden sollen. Der Wert kann mit dem in den Elementen **InputClaim** oder **OutputClaim** angegebenen **PartnerClaimType** überschrieben werden. Verwenden Sie dieses Element, um den Standardnamen für ein Protokoll anzugeben.  |
 | Mask | 0:1 | Eine optionale Zeichenfolge von Maskierungszeichen, die bei der Anzeige des Anspruchs angewendet werden kann. Beispielsweise kann die Telefonnummer 324-232-4343 als XXX-XXX-4343 maskiert werden. |
 | UserHelpText | 0:1 | Eine Beschreibung des Anspruchstyps, der Benutzern helfen kann, dessen Zweck zu verstehen. Der Wert kann [lokalisiert](localization.md) sein. |
 | UserInputType | 0:1 | Der Typ des Eingabesteuerelements, der dem Benutzer zur Verfügung stehen sollte, wenn die Anspruchsdaten für den Anspruchstypen manuell eingegeben werden. Weitere Informationen hierzu finden Sie weiter unten in den Definitionen der Benutzereingabetypen. |
 | Einschränkung | 0:1 | Die Werteinschränkungen für diesen Anspruch, z.B. ein regulärer Ausdruck (RegEx) oder eine Liste der zulässigen Werte. Der Wert kann [lokalisiert](localization.md) sein. |
 PredicateValidationReference| 0:1 | Ein Verweis auf ein **PredicateValidationsInput**-Element. Die **PredicateValidationReference**-Elemente ermöglichen Ihnen einen Überprüfungsprozess, mithilfe dessen Sie sicherstellen können, dass nur ordnungsgemäß formatierte Daten eingegeben werden. Weitere Informationen finden Sie im Artikel zu [Prädikaten](predicates.md). |
+
+### <a name="datatype"></a>DataType
+
+Das Element **DataType** unterstützt die folgenden Werte:
+
+| type | BESCHREIBUNG |
+| ------- | ----------- | 
+|boolean|Stellt einen booleschen Wert (`true` oder `false`) dar.|
+|date| Stellt einen Zeitpunkt dar, der in der Regel als Tagesdatum ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
+|dateTime|Stellt einen Zeitpunkt dar, der üblicherweise als Datum und Uhrzeit ausgedrückt wird. Der Datumswert entspricht der Konvention ISO 8601.|
+|duration|Stellt ein Zeitintervall in Jahren, Monaten, Tagen, Stunden, Minuten und Sekunden dar. Das Format ist `PnYnMnDTnHnMnS`, wobei `P` einen positiven und `N` einen negativen Wert angibt. `nY` ist die Anzahl von Jahren, gefolgt von einem Literal `Y`. `nMo` ist die Anzahl von Monaten, gefolgt von einem Literal `Mo`. `nD` ist die Anzahl von Tagen, gefolgt von einem Literal `D`. Beispiele: `P21Y` steht für 21 Jahre. `P1Y2Mo` steht für 1 Jahr und 2 Monate. `P1Y2Mo5D` steht für 1 Jahr, 2 Monate und 5 Tage.  `P1Y2M5DT8H5M620S` steht für 1 Jahr, 2 Monate, 5 Tage, 8 Stunden, 5 Minuten und 20 Sekunden.  |
+|phoneNumber|Stellt eine Telefonnummer dar. |
+|INT| Stellt eine Zahl zwischen -2.147.483.648 und 2.147.483.647 dar|
+|long| Stellt eine Zahl zwischen -9.223.372.036.854.775.808 und 9.223.372.036.854.775.807 dar |
+|string| Stellt Text als Sequenz von UTF-16-Codeeinheiten dar.|
+|stringCollection|Stellt eine `string`-Auflistung dar.|
+|userIdentity| Stellt eine Benutzeridentität dar.|
+|userIdentityCollection|Stellt eine `userIdentity`-Auflistung dar.|
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
@@ -69,7 +87,7 @@ Die **DefaultPartnerClaimTypes** können das folgende Element enthalten:
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name eines von Azure AD B2C unterstützten gültigen Protokolls. Mögliche Werte:  OAuth1, OAuth2, SAML2, OpenIdConnect. |
 | PartnerClaimType | Ja | Der zu verwendende Anspruchstypname. |
@@ -155,7 +173,7 @@ Das **Restriction**-Element enthält die folgenden Elemente:
 | Enumeration | 1:n | Die verfügbaren Optionen auf der Benutzeroberfläche, über die ein Benutzer einen Anspruch, z.B. einen Wert in einer Dropdownliste, auswählen kann. |
 | Muster | 1:1 | Der zu verwendende reguläre Ausdruck. |
 
-### <a name="enumeration"></a>Enumeration
+#### <a name="enumeration"></a>Enumeration
 
 Das **Enumeration**-Element enthält die folgenden Attribute:
 
@@ -214,11 +232,26 @@ Das Identity Experience Framework rendert den E-Mail-Adressenanspruch mit Eingab
 
 ![Textfeld mit einer Fehlermeldung, die von RegEx-Einschränkung ausgelöst wird](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie Informationen vom Benutzer sammeln, indem Sie ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwenden.
+Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie mit einem [selbstbestätigten technischen Profil ](self-asserted-technical-profile.md) und [Anzeigesteuerelementen](display-controls.md) Informationen vom Benutzer sammeln.
 
-### <a name="textbox"></a>TextBox
+Das Element **UserInputType** verfügt über folgende Benutzereingabetypen:
+
+| UserInputType | ClaimType wird unterstützt | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |Dropdownfeld mit Mehrfachauswahl. Der Anspruchswert wird durch eine Zeichenfolge der ausgewählten Werte mit Kommatrennzeichen dargestellt. |
+|DateTimeDropdown | `date`, `dateTime` |Dropdownfeld zur Auswahl von Tag, Monat und Jahr. |
+|DropdownSingleSelect |`string` |Dropdownfeld mit Einfachauswahl. Der Anspruchswert ist der ausgewählte Wert.|
+|EmailBox | `string` |E-Mail-Eingabefeld. |
+|Paragraph | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Feld, in dem Text nur in einem Absatztag angezeigt wird. |
+|Kennwort | `string` |Kennworttextfeld.|
+|RadioSingleSelect |`string` | Auflistung von Optionsfeldern. Der Anspruchswert ist der ausgewählte Wert.|
+|Readonly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Schreibgeschütztes Textfeld. |
+|TextBox |`boolean`, `int`, `string` |Einzeiliges Textfeld. |
+
+
+#### <a name="textbox"></a>TextBox
 
 Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeiligen Textfelds verwendet.
 
@@ -233,7 +266,7 @@ Der Benutzereingabetyp **TextBox** wird für die Bereitstellung eines einzeilige
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 Der Benutzereingabetyp **EmailBox** wird für die Bereitstellung eines einfachen E-Mail-Eingabefelds verwendet.
 
@@ -251,7 +284,7 @@ Der Benutzereingabetyp **EmailBox** wird für die Bereitstellung eines einfachen
 </ClaimType>
 ```
 
-### <a name="password"></a>Kennwort
+#### <a name="password"></a>Kennwort
 
 Der Benutzereingabetyp **Password** wird für die Aufzeichnung eines vom Benutzer eingegebenen Kennworts verwendet.
 
@@ -266,7 +299,7 @@ Der Benutzereingabetyp **Password** wird für die Aufzeichnung eines vom Benutze
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 Der Benutzereingabetyp **DateTimeDropdown** wird für die Bereitstellung von Dropdownlisten verwendet, über die ein Tag, Monat und Jahr ausgewählt werden können. Sie können Prädikate und „PredicateValidations“-Elemente verwenden, um die minimalen und maximalen Datumswerte zu kontrollieren. Weitere Informationen finden Sie im Abschnitt **Configure a date range (Konfigurieren eines Datumsbereichs)** im Artikel [Predicates and PredicateValidations (Prädikate und PredicateValidations)](predicates.md).
 
@@ -281,7 +314,7 @@ Der Benutzereingabetyp **DateTimeDropdown** wird für die Bereitstellung von Dro
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 Der Benutzereingabetyp **RadioSingleSelect** wird für die Bereitstellung einer Sammlung von Optionsfeldern verwendet, mithilfe derer Benutzer eine Option auswählen können.
 
@@ -300,7 +333,7 @@ Der Benutzereingabetyp **RadioSingleSelect** wird für die Bereitstellung einer 
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 Der Benutzereingabetyp **DropdownSingleSelect** wird für die Bereitstellung einer Dropdownliste verwendet, mithilfe derer Benutzer eine Option auswählen können.
 
@@ -319,7 +352,7 @@ Der Benutzereingabetyp **DropdownSingleSelect** wird für die Bereitstellung ein
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 Der Benutzereingabetyp **CheckboxMultiSelect** wird für die Bereitstellung einer Sammlung von Kontrollkästchen verwendet, mithilfe derer Benutzer mehrere Optionen auswählen können.
 
@@ -338,7 +371,7 @@ Der Benutzereingabetyp **CheckboxMultiSelect** wird für die Bereitstellung eine
 </ClaimType>
 ```
 
-### <a name="readonly"></a>Readonly
+#### <a name="readonly"></a>Readonly
 
 Der Benutzereingabetyp **Readonly** wird für die Bereitstellung eines schreibgeschützten Felds zum Anzeigen des Anspruchs und des Werts verwendet.
 
@@ -354,9 +387,9 @@ Der Benutzereingabetyp **Readonly** wird für die Bereitstellung eines schreibge
 ```
 
 
-### <a name="paragraph"></a>Paragraph
+#### <a name="paragraph"></a>Paragraph
 
-Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds verwendet, das Text nur in einem Absatztag anzeigt. Zum Beispiel: &lt;p&gt;Text&lt;/p&gt;.
+Der Benutzereingabetyp **Paragraph** wird für die Bereitstellung eines Felds verwendet, das Text nur in einem Absatztag anzeigt.  Zum Beispiel: &lt;p&gt;Text&lt;/p&gt;. Für einen Benutzereingabetyp **Paragraph** vom Typ `OutputClaim` des selbstbestätigten technischen Profils muss das Attribut `Required` auf `false` (Standardwert) eingestellt sein.
 
 ![Verwenden des Anspruchstyps mit „paragraph“](./media/claimsschema/paragraph.png)
 

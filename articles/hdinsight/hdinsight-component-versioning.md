@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop-Komponenten und -Versionen – Azure HDInsight
 description: Lernen Sie die Apache Hadoop-Komponenten und -Versionen in Azure HDInsight kennen.
-keywords: Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/21/2019
-ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/02/2020
+ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764469"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198955"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -75,7 +74,7 @@ Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDI
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 31. Dezember 2020 |31. Dezember 2020 |Ja |Ja |
 
-Die Unterstützung für Spark 2.1, 2.2 und Kafka 1.0 läuft am 30. Juni 2020 ab.
+Die Unterstützung für Spark 2.1 und 2.2 und Kafka 1.0 läuft am 30. Juni 2020 ab.
 
 > [!NOTE]  
 > Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
@@ -131,6 +130,8 @@ Derzeit wird das Enterprise Security Package nur durch die folgenden Clustertype
 
 - Hadoop (nur HDInsight 3.6)
 - Spark
+- Kafka
+- hbase
 - Interactive Query
 
 ### <a name="support-for-azure-data-lake-storage"></a>Unterstützung für Azure Data Lake Storage
@@ -148,10 +149,7 @@ Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Suppor
 - Formel 1: Addieren Sie 180 Tage zum Releasedatum von HDInsight-Clusterversion X.
 - Formel 2: Addieren Sie 90 Tage zum Releasedatum von HDInsight-Clusterversion X+1 im Azure-Portal.
 
-Das _Deaktivierungsdatum_ ist das Datum, nach dem die Clusterversion nicht mehr in HDInsight erstellt werden kann. Ab dem 31. Juli 2017 kann die Größe eines HDInsight-Clusters nicht mehr geändert werden.
-
-> [!NOTE]  
-> Windows-basierte HDInsight-Cluster (einschließlich Version 2.1, 3.0, 3.1, 3.2 und 3.3) laufen unter der Azure-Gast-BS-Familie Version 4, die die 64-Bit-Version von Windows Server 2012 R2 verwendet. Die Azure-Gast-BS-Familie Version 4 unterstützt die .NET Framework-Versionen 4.0, 4.5, 4.5.1 und 4.5.2.
+Das _Deaktivierungsdatum_ ist das Datum, nach dem die Clusterversion nicht mehr in HDInsight erstellt werden kann. Ab dem 31. Juli 2017 kann die Größe eines HDInsight-Clusters nach dessen Deaktivierungsdatum nicht mehr geändert werden.
 
 ## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen
 

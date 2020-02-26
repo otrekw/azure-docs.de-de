@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025703"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483753"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Nahtlose einmalige Anmeldung mit Azure Active Directory
 
@@ -36,11 +36,11 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 ![Nahtloses einmaliges Anmelden](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Für das nahtlose einmalige Anmeldung muss das Gerät des Benutzers in eine **Domäne eingebunden**, aber nicht [In Azure AD eingebunden](../active-directory-azureadjoin-overview.md) sein.
+>Für das nahtlose einmalige Anmelden darf das Gerät des Benutzers ausschließlich **in die Domäne eingebunden** sein, für in [Azure AD eingebundene](../devices/concept-azure-ad-join.md) oder [In Hybrid-Azure AD eingebundene](../devices/concept-azure-ad-join-hybrid.md) Geräte kann diese Funktion nicht verwendet werden. Das einmalige Anmelden (SSO) für in Azure AD und in Hybrid-Azure AD eingebundene Geräte funktioniert basierend auf dem [primären Aktualisierungstoken](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Hauptvorteile
 
-- *Die Benutzeroberfläche*
+- *Große Benutzerfreundlichkeit*
   - Benutzer werden automatisch sowohl bei lokalen als auch bei cloudbasierten Anwendungen angemeldet.
   - Benutzer müssen nicht ständig ihr Kennwort eingeben.
 - *Einfache Bereitstellung und Verwaltung*
@@ -65,7 +65,7 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|–
 |Windows 8.1|Ja\*|–|Ja|Ja\*\*\*|–
-|Windows 8|Ja\*|–|Ja|Ja\*\*\*|–
+|Windows 8|Ja\*|–|Ja|Ja\*\*\*|–
 |Windows 7|Ja\*|–|Ja|Ja\*\*\*|–
 |Windows Server 2012 R2 oder höher|Ja\*\*|–|Ja|Ja\*\*\*|–
 |Mac OS X|–|–|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
@@ -78,14 +78,14 @@ Die nahtlose SSO kann mit den Anmeldemethoden [Kennworthashsynchronisierung](how
 \*\*\*Erfordert eine [zusätzliche Konfiguration](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
->Bei Windows 10 wird empfohlen, [Azure AD Join](../active-directory-azureadjoin-overview.md) zu verwenden, um eine optimale Funktionsweise der nahtlosen SSO mit Azure AD sicherzustellen.
+>Bei Windows 10 wird empfohlen, [Azure AD Join](../devices/concept-azure-ad-join.md) zu verwenden, um eine optimale Funktionsweise der nahtlosen SSO mit Azure AD sicherzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
 - [**Bereitstellungsplan**](https://aka.ms/deploymentplans/sso) – Plan für die Bereitstellung in einzelnen Schritten
 - [**Technische Einzelheiten**](how-to-connect-sso-how-it-works.md) – Funktionsweise dieses Features verstehen
-- [**Häufig gestellte Fragen**](how-to-connect-sso-faq.md) – Antworten auf häufig gestellte Fragen
+- [**Häufig gestellte Fragen:** ](how-to-connect-sso-faq.md) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
 - [**UserVoice:** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
 

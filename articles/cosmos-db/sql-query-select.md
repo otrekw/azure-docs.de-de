@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326785"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469934"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT-Klausel in Azure Cosmos DB
 
@@ -58,7 +58,7 @@ SELECT <select_specification>
 
   Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](sql-query-scalar-expressions.md).  
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 Die `SELECT *`-Syntax ist nur gültig, wenn die FROM-Klausel genau einen Alias deklariert hat. `SELECT *` bietet eine Identitätsprojektion, die hilfreich sein kann, wenn keine Projektion erforderlich ist. SELECT * ist nur gültig, wenn die FROM-Klausel angegeben und nur eine einzelne Eingabequelle eingeführt ist.  
   
@@ -86,7 +86,7 @@ Das folgende Beispiel für eine SELECT-Abfrage gibt `address` aus `Families` zur
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -117,7 +117,7 @@ Im folgenden Beispiel werden zwei verschachtelte Eigenschaften (`f.address.state
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -135,7 +135,7 @@ Die Projektion unterstützt auch JSON-Ausdrücke wie im folgenden Beispiel gezei
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -156,7 +156,7 @@ Im vorherigen Beispiel muss die SELECT-Klausel ein JSON-Objekt erstellen, und da
     WHERE f.id = "AndersenFamily"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -168,6 +168,50 @@ Die Ergebnisse sind wie folgt:
         "name": "AndersenFamily"
       }
     }]
+```
+## <a name="reserved-keywords-and-special-characters"></a>Reservierte Schlüsselwörter und Sonderzeichen
+
+Wenn die Daten Eigenschaften enthalten, deren Namen mit denen reservierter Schlüsselwörter wie „order“ oder „Group“ identisch sind, führen die Abfragen für diese Dokumente zu Syntaxfehlern. Sie sollten die Eigenschaft explizit in `[]`-Zeichen einschließen, um die Abfrage erfolgreich auszuführen.
+
+Hier ist beispielsweise ein Dokument mit einer Eigenschaft namens `order` und einer Eigenschaft `price($)`, die Sonderzeichen enthält:
+
+```json
+{
+  "id": "AndersenFamily",
+  "order": [
+     {
+         "orderId": "12345",
+         "productId": "A17849",
+         "price($)": 59.33
+     }
+  ],
+  "creationDate": 1431620472,
+  "isRegistered": true
+}
+```
+
+Wenn Sie Abfragen ausführen, die die Eigenschaften `order` oder `price($)` enthalten, erhalten Sie eine Syntaxfehlermeldung.
+
+```sql
+SELECT * FROM c where c.order.orderid = "12345"
+```
+```sql
+SELECT * FROM c where c.order.price($) > 50
+```
+Es wird folgendes Ergebnis ausgegeben:
+
+`
+Syntax error, incorrect syntax near 'order'
+`
+
+Sie sollten dieselben Abfragen wie unten beschrieben neu schreiben:
+
+```sql
+SELECT * FROM c WHERE c["order"].orderId = "12345"
+```
+
+```sql
+SELECT * FROM c WHERE c["order"]["price($)"] > 50
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

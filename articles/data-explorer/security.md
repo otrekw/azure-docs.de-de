@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271593"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373352"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Schützen von Azure Data Explorer-Clustern in Azure
 
@@ -34,10 +34,10 @@ Das Feature für verwaltete Identitäten für Azure-Ressourcen in Azure Active D
 
 Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie kundenseitig verwaltete Schlüssel für die Datenverschlüsselung bereitstellen. Sie können die Verschlüsselung Ihrer Daten auf der Speicherebene mit Ihren eigenen Schlüsseln verwalten. Ein kundenseitig verwalteter Schlüssel wird verwendet, um den Zugriff auf den Stammverschlüsselungsschlüssel zu schützen, der wiederum zur Ver- und Entschlüsselung sämtlicher Daten verwendet wird. Vom Kunden verwaltete Schlüssel bieten größere Flexibilität beim Erstellen, Rotieren, Deaktivieren und Widerrufen von Zugriffssteuerungen. Außerdem können Sie die zum Schutz Ihrer Daten verwendeten Verschlüsselungsschlüssel überwachen.
 
-Verwenden Sie Azure Key Vault, um Ihre kundenseitig verwalteten Schlüssel zu speichern. Sie können Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder eine Azure Key Vault-API verwenden, um Schlüssel zu generieren. Der Azure Data Explorer-Cluster und die Azure Key Vault-Instanz müssen sich in der gleichen Region befinden, können aber zu verschiedenen Abonnements gehören. Weitere Informationen zum Azure Key Vault finden Sie unter [What is Azure Key Vault? (Was ist der Azure Key Vault?)](/azure/key-vault/key-vault-overview). Eine ausführliche Erläuterung zu kundenseitig verwalteten Schlüsseln finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](/azure/storage/common/storage-service-encryption).
+Verwenden Sie Azure Key Vault, um Ihre kundenseitig verwalteten Schlüssel zu speichern. Sie können Ihre eigenen Schlüssel erstellen und in einem Schlüsseltresor speichern oder eine Azure Key Vault-API verwenden, um Schlüssel zu generieren. Der Azure Data Explorer-Cluster und die Azure Key Vault-Instanz müssen sich in der gleichen Region befinden, können aber zu verschiedenen Abonnements gehören. Weitere Informationen zum Azure Key Vault finden Sie unter [What is Azure Key Vault? (Was ist der Azure Key Vault?)](/azure/key-vault/key-vault-overview). Eine ausführliche Erläuterung zu kundenseitig verwalteten Schlüsseln finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](/azure/storage/common/storage-service-encryption). Konfigurieren von kundenseitig verwalteten Schlüsseln in Ihrem Azure Data Explorer-Cluster mithilfe von [C#](/azure/data-explorer/customer-managed-keys-csharp) oder der [Azure Resource Manager-Vorlage](/azure/data-explorer/customer-managed-keys-resource-manager)
 
 > [!Note]
-> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie kundenseitig verwaltete Schlüssel im Azure-Portal konfigurieren möchten, müssen Sie für Ihren Cluster eine verwaltete Identität vom Typ **SystemAssigned** konfigurieren.
+> Von Kunden verwaltete Schlüssel basieren auf verwalteten Identitäten für Azure-Ressourcen, einem Feature von Azure Active Directory (Azure AD). Wenn Sie kundenseitig verwaltete Schlüssel im Azure-Portal konfigurieren möchten, müssen Sie für Ihren Cluster eine verwaltete Identität vom Typ **SystemAssigned** konfigurieren, wie in [Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster](/azure/data-explorer/managed-identities) beschrieben.
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Speichern von kundenseitig verwalteten Schlüsseln in Azure Key Vault
 
@@ -60,8 +60,8 @@ Mithilfe der [rollenbasierten Zugriffssteuerung](/azure/role-based-access-contro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster](managed-identities.md)
 * [Sichern von Clustern in Azure Data Explorer](manage-cluster-security.md) durch Aktivieren der Verschlüsselung ruhender Daten
-* [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
+* [Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster](managed-identities.md)
+* [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der Azure Resource Manager-Vorlage](customer-managed-keys-resource-manager.md)
 * [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe von C#](customer-managed-keys-csharp.md)
 

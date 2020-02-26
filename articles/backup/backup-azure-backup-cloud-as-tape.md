@@ -3,19 +3,19 @@ title: Ersetzen Ihrer Bandinfrastruktur
 description: Hier erfahren Sie, wie Azure Backup eine Semantik bereitstellt, die derjenigen von Bandsicherungen ähnelt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können.
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173311"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425101"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 
 Kunden von Azure Backup und System Center Data Protection Manager haben folgende Möglichkeiten:
 
 * Sichern von Daten gemäß Zeitplänen, die den Anforderungen ihrer Organisation am besten entsprechen
-* Beibehalten der Sicherungsdaten für längere Zeiträume
+* Beibehalten der Sicherungsdaten für längere Zeiträume.
 * Integrieren von Azure in ihre Anforderungen an die langfristige Aufbewahrung (anstelle von Bändern)
 
 In diesem Artikel wird erläutert, wie Kunden Sicherungs- und Aufbewahrungsrichtlinien aktivieren können. Kunden, die für ihre Anforderungen an eine langfristige Aufbewahrung Bänder verwenden, steht jetzt dank dieses Features eine leistungsstarke und geeignete Alternative zur Verfügung. Das Feature ist in der neuesten Version von Azure Backup aktiviert (die [hier](https://aka.ms/azurebackup_agent)erhältlich ist). System Center DPM-Kunden müssen mindestens auf DPM 2012 R2 UR5 aktualisieren, bevor sie DPM mit dem Azure Backup-Dienst verwenden können.
@@ -43,9 +43,9 @@ Die Gesamtanzahl der in dieser Richtlinie angegebenen "Aufbewahrungspunkte" ist 
 ![Beispielbildschirm](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Tägliche Aufbewahrungsrichtlinie**: Täglich erstellte Sicherungen werden sieben Tage lang gespeichert.
-2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Tag um Mitternacht und jeden Samstag um 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
-3. **Monatliche Aufbewahrungsrichtlinie**: Sicherungen, die um Mitternacht und am letzten Samstag im Monat um 18:00 Uhr erstellt werden, werden zwölf Monate lang aufbewahrt.
-4. **Jährliche Aufbewahrungsrichtlinie**: Sicherungen, die jedes Jahr am letzten Samstag im März um Mitternacht erstellt werden, werden zehn Jahre lang aufbewahrt.
+2. **Wöchentliche Aufbewahrungsrichtlinie**: Sicherungen, die jeden Samstag um Mitternacht und 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
+3. **Monatliche Aufbewahrungsrichtlinie**: Sicherungen, die am letzten Samstag im Monat um Mitternacht und 18 Uhr erstellt werden, werden zwölf Monate lang aufbewahrt.
+4. **Jährliche Aufbewahrungsrichtlinie**: Sicherungen, die am letzten Samstag im März um Mitternacht erstellt werden, werden zehn Jahre lang aufbewahrt.
 
 Die Gesamtanzahl der „Aufbewahrungspunkte“ (Punkte, von denen ein Kunde Daten wiederherstellen kann) in der obigen Abbildung wird wie folgt berechnet:
 

@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 97c277eadbd1b425c50b10d15172c13e17e20eb3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/17/2020
+ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926201"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431096"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopieren von Daten aus SAP HANA mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-sap-hana-connector.md)
 > * [Aktuelle Version](connector-sap-hana.md)
 
@@ -42,6 +42,7 @@ Dieser SAP HANA-Connector unterstützt insbesondere Folgendes:
 - Kopieren von Daten von einer SAP HANA-Datenbank mit einer beliebigen Version
 - Kopieren von Daten aus **HANA-Informationsmodellen** (z.B. Analyse- und Berechnungsansichten) und aus **Zeile/Spalte-Tabellen**.
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
+- Paralleles Kopieren von einer SAP HANA-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).
 
 > [!TIP]
 > Verwenden Sie zum Kopieren von Daten **in** SAP HANA-Datenspeicher einen generischen ODBC-Connector. Einzelheiten finden Sie unter [SAP HANA-Senke](connector-odbc.md#sap-hana-sink). Beachten Sie, dass die verknüpften Dienste für SAP HANA-Connectors und ODBC-Connectors unterschiedlichen Typs sind und daher nicht wiederverwendet werden können.
@@ -144,7 +145,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten aus SAP HANA werden die folgenden Eigenschaften unterstützt.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **SapHanaTable** | Ja |
 | schema | Der Name des Schemas in der SAP HANA-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -178,12 +179,18 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 ### <a name="sap-hana-as-source"></a>SAP HANA als Quelle
 
+>[!TIP]
+>Weitere Informationen zum effizienten Erfassen von Daten von SAP HANA mithilfe der Datenpartitionierung finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).
+
 Wenn Sie Daten aus SAP HANA kopieren möchten, werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapHanaSource** | Ja |
-| query | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | Ja |
+| Abfrage | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | Ja |
+| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten von SAP HANA erfasst werden. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).<br>Zulässige Werte sind:  **None** (Standard),  **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana). `PhysicalPartitionsOfTable` kann nur beim Kopieren von Daten aus einer Tabelle, jedoch nicht bei Abfragen verwendet werden. <br>Wenn eine Partitionsoption aktiviert ist (nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten von SAP HANA durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität gesteuert. | False |
+| partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an.<br>Verwenden Sie ihn, wenn die Partitionsoption `SapHanaDynamicRange` lautet. | False |
+| partitionColumnName | Geben Sie den Namen der Quellspalte an, die von der Partitionierung für den parallelen Kopiervorgang verwendet wird. Ohne Angabe wird der Index oder der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet.<br>Verwenden Sie diese Option, wenn die Partitionsoption `SapHanaDynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie  `?AdfHanaDynamicRangePartitionCondition` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana). | Ja, wenn die Partitionierung `SapHanaDynamicRange` verwendet wird. |
 | packetSize | Gibt die Netzwerkpaketgröße (in KB) an, mit der Daten auf mehrere Blöcke aufgeteilt werden. Wenn Sie über eine große Datenmenge verfügen, die kopiert werden soll, kann das Erhöhen der Paketgröße in den meisten Fällen die Lesegeschwindigkeit aus SAP Hana erhöhen. Leistungstests werden empfohlen, wenn die Paketgröße angepasst wird. | Nein.<br>Der Standardwert ist 2.048 (2MB). |
 
 **Beispiel:**
@@ -220,6 +227,43 @@ Wenn Sie Daten aus SAP HANA kopieren möchten, werden die folgenden Eigenschafte
 
 Wenn Sie die Kopierquelle vom Typ `RelationalSource` verwenden, wird sie weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig die neue Version zu verwenden.
 
+## <a name="parallel-copy-from-sap-hana"></a>Paralleles Kopieren von SAP HANA
+
+Der Data Factory-Connector für SAP HANA bietet eine integrierte Datenpartitionierung zum parallelen Kopieren von Daten von SAP HANA. Die Datenpartitionierungsoptionen befinden sich auf der Registerkarte **Quelle** der Kopieraktivität.
+
+![Screenshot der Partitionierungsoptionen](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
+
+Wenn Sie partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre SAP HANA-Quelle aus, um Daten anhand von Partitionen abzurufen. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, generiert Data Factory vier Abfragen gleichzeitig und führt diese gemäß den angegebenen Partitionsoptionen und -einstellungen aus. Jede dieser Abfragen ruft einen Teil der Daten von Ihrer SAP HANA-Instanz ab.
+
+Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren. Das gilt insbesondere, wenn Sie große Datenmengen von Ihrer SAP HANA-Instanz erfassen. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben (nur den Ordnernamen anzugeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
+
+| Szenario                                           | Empfohlene Einstellungen                                           |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| Vollständiges Laden aus großer Tabelle                        | **Partitionsoption:** Physische Partitionen der Tabelle. <br><br/>Bei der Ausführung erkennt Data Factory automatisch den physischen Partitionstyp der angegebenen SAP HANA-Tabelle und wählt die entsprechende Partitionierungsstrategie aus:<br>- **Bereichspartitionierung:** Ruft die für die Tabelle definierte Partitionsspalte und die Partitionsbereiche ab und kopiert dann die Daten nach Bereich. <br>- **Hashpartitionierung:** Verwendet einen Hashpartitionsschlüssel als Partitionsspalte und partitioniert und kopiert die Daten dann basierend auf den von ADF berechneten Bereichen. <br>- **Roundrobinpartitionierung** oder **Keine Partitionierung**: Verwendet den Primärschlüssel als Partitionsspalte und partitioniert und kopiert die Daten dann basierend auf den von ADF berechneten Bereichen. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage | **Partitionsoption:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`<br>**Partitionsspalte:** Gibt die Spalte an, die zum Anwenden der dynamischen Bereichspartitionierung verwendet wird. <br><br>Bei der Ausführung berechnet Data Factory zuerst die Wertebereiche der angegebenen Partitionsspalte, indem die Zeilen in mehreren Buckets entsprechend der Anzahl der unterschiedlichen Partitionsspaltenwerte und der ADF-Einstellung für paralleles Kopieren gleichmäßig verteilt werden. Anschließend wird `?AdfHanaDynamicRangePartitionCondition` ersetzt, indem der Wertebereich der Partitionsspalte für jede Partition gefiltert wird, und das Ergebnis wird an SAP HANA gesendet.<br><br>Wenn Sie mehrere Spalten als Partitionsspalten verwenden möchten, können Sie die Werte jeder Spalte in der Abfrage in einer Spalte verketten und als Partitionsspalte in ADF angeben, z. B. `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`. |
+
+**Beispiel: Abfrage mit physischen Partitionen einer Tabelle**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "partitionOption": "PhysicalPartitionsOfTable"
+}
+```
+
+**Beispiel: Abfrage mit dynamischer Bereichspartition**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>",
+    "partitionOption": "SapHanaDynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<Partition_column_name>"
+    }
+}
+```
+
 ## <a name="data-type-mapping-for-sap-hana"></a>Datentypzuordnung für SAP HANA
 
 Beim Kopieren von Daten aus SAP HANA werden die folgenden Zuordnungen von SAP HANA-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
@@ -227,31 +271,31 @@ Beim Kopieren von Daten aus SAP HANA werden die folgenden Zuordnungen von SAP HA
 | SAP HANA-Datentyp | Data Factory-Zwischendatentyp |
 | ------------------ | ------------------------------ |
 | ALPHANUM           | String                         |
-| BIGINT             | Int64                          |
+| bigint             | Int64                          |
 | BINARY             | Byte[]                         |
-| BINTEXT            | Zeichenfolge                         |
+| BINTEXT            | String                         |
 | BLOB               | Byte[]                         |
 | BOOL               | Byte                           |
 | CLOB               | String                         |
-| DATE               | DateTime                       |
+| DATE               | Datetime                       |
 | DECIMAL            | Decimal                        |
 | Double             | Double                         |
-| FLOAT              | Double                         |
+| GLEITKOMMAZAHL              | Double                         |
 | INTEGER            | Int32                          |
-| NCLOB              | Zeichenfolge                         |
+| NCLOB              | String                         |
 | NVARCHAR           | String                         |
-| REAL               | Single                         |
+| real               | Single                         |
 | SECONDDATE         | Datetime                       |
-| SHORTTEXT          | Zeichenfolge                         |
+| SHORTTEXT          | String                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Byte[]                         |
 | STPOINTTYPE        | Byte[]                         |
-| TEXT               | Zeichenfolge                         |
+| TEXT               | String                         |
 | TIME               | TimeSpan                       |
 | TINYINT            | Byte                           |
-| VARCHAR            | Zeichenfolge                         |
-| TIMESTAMP          | Datetime                       |
+| VARCHAR            | String                         |
+| timestamp          | Datetime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

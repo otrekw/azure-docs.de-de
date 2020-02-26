@@ -7,16 +7,16 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3b0bb62de4a96a45d607e05b32a87feec692e4d4
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: e76ae2e072bb780ac9788902e9157db871e4f09d
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75722203"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373377"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Konfigurieren verwalteter Identitäten für Ihren Azure Data Explorer-Cluster
 
-Durch eine [verwaltete Entität aus Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) kann Ihr Cluster problemlos auf andere durch AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität für Azure Data Explorer-Cluster erstellen. 
+Durch eine [verwaltete Entität aus Azure Active Directory](/azure/active-directory/managed-identities-azure-resources/overview) kann Ihr Cluster problemlos auf andere durch AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. In diesem Artikel erfahren Sie, wie Sie eine verwaltete Identität für Azure Data Explorer-Cluster erstellen. Die Konfiguration der verwalteten Identität wird zurzeit nur für die [Aktivierung von kundenseitig verwalteten Schlüsseln für Ihren Cluster](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) unterstützt.
 
 > [!Note]
 > Verwaltete Identitäten für Azure Data Explorer verhalten sich nicht wie erwartet, wenn Ihre App abonnement- oder mandantenübergreifend migriert wird. Die App benötigt in diesem Fall eine neue Identität. Zu diesem Zweck kann das Feature wie unter [Entfernen einer Identität](#remove-an-identity) beschrieben deaktiviert und anschließend erneut aktiviert werden. Darüber hinaus müssen auch Zugriffsrichtlinien nachgeschalteter Ressourcen aktualisiert werden, um die neue Identität zu verwenden.

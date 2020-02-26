@@ -1,21 +1,21 @@
 ---
 title: Bereitstellen eines Containerimages aus Azure Container Registry
-description: Erfahren Sie, wie Container in Azure Container Instances mithilfe von Containerimages in einer Azure Container Registry bereitgestellt werden.
+description: Erfahren Sie, wie Container in Azure Container Instances durch Pullen von Containerimages aus einer Azure Container Registry-Instanz bereitgestellt werden.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981686"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468914"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) ist ein verwalteter Containerregistrierungsdienst auf Azure-Basis zum Speichern privater Docker-Containerimages. In diesem Artikel wird beschrieben, wie Containerimages, die in einer Azure-Containerregistrierung gespeichert sind, in Azure Container Instances bereitgestellt werden können.
+[Azure Container Registry](../container-registry/container-registry-intro.md) ist ein verwalteter Containerregistrierungsdienst auf Azure-Basis zum Speichern privater Docker-Containerimages. In diesem Artikel wird beschrieben, wie Containerimages, die in einer Azure Container Registry-Instanz gespeichert sind, beim Bereitstellen in Azure Container Instances gepullt werden. Eine empfohlene Vorgehensweise zum Konfigurieren des Registrierungszugriffs besteht darin, einen Azure Active Directory-Dienstprinzipal und ein Kennwort zu erstellen und die Anmeldeinformationen in einem Azure-Schlüsseltresor zu speichern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981686"
 In einem Produktionsszenario, in dem Sie den Zugriff auf „monitorlose“ Dienste und Anwendungen bereitstellen, wird empfohlen, den Registrierungszugriff mithilfe eines [Dienstprinzipals](../container-registry/container-registry-auth-service-principal.md) zu konfigurieren. Ein Dienstprinzipal ermöglicht es Ihnen, eine [rollenbasierte Zugriffssteuerung](../container-registry/container-registry-roles.md) auf Ihre Containerimages bereitzustellen. Beispielsweise können Sie einen Dienstprinzipal mit ausschließlichem Pullzugriff auf eine Registrierung konfigurieren.
 
 Azure Container Registry stellt zusätzliche [Authentifizierungsoptionen](../container-registry/container-registry-authentication.md) bereit.
+
+> [!NOTE]
+> Sie können sich nicht bei Azure Container Registry authentifizieren, um während der Containergruppenbereitstellung Images mithilfe einer [verwalteten Identität](container-instances-managed-identity.md) zu pullen, die in derselben Containergruppe konfiguriert ist.
 
 Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor. 
 

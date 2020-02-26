@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 01/17/2020
 ms.author: tagore
-ms.openlocfilehash: c4cbe2a99de97b2938d494e80d410a44c4143629
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 85fb87e23fa11781587572e836d1439dd813170e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026434"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425033"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problembehandlung für Anwendungen, die TLS 1.2 nicht unterstützen
 In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen. 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.
 Obwohl TLS 1.0 und TLS 1.1 als veraltet eingestuft werden, müssen Kunden die älteren Protokolle und Verschlüsselungssammlungen möglicherweise unterstützen, bis sie ihre Veraltung selbst planen können.  Das Aktivieren dieser Legacyprotokolle wird zwar nicht empfohlen, es werden aber dennoch Anleitungen für Kunden bereitgestellt. Es wird empfohlen, dass Kunden das Risiko dieser Regression abwägen, bevor sie die in diesem Artikel beschriebenen Änderungen vornehmen. 
 
 > [!NOTE]
-> Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2, indem 1.0/1.0-Verschlüsselungen deaktiviert werden. 
+> Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2, indem 1.0/1.1-Verschlüsselungen deaktiviert werden. 
 
   
 ## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>Einstellen der Unterstützung für TLS 1.0, TLS 1.1 und ältere Verschlüsselungssammlungen 

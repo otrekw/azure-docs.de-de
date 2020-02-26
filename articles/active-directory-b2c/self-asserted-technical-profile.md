@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/04/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b6c70e1a5c7e5b81157c09a794ff75e276a20d1f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982737"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425594"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -55,7 +55,7 @@ In einem selbstbestätigten technischen Profil können Sie die Elemente **InputC
 
 Diese Funktion „Anzeigeansprüche“ steht derzeit als **Vorschau** zur Verfügung.
 
-Das **DisplayClaims**-Element enthält eine Liste mit anzuzeigenden Ansprüchen zum Erfassen von Daten vom Benutzer. Um die Ausgabeansprüche mit einigen Werten vorab aufzufüllen, verwenden Sie die weiter oben beschriebenen Eingabeansprüche. Das Element kann darüber hinaus auch einen Standardwert enthalten.
+Das **DisplayClaims**-Element enthält eine Liste mit anzuzeigenden Ansprüchen zum Erfassen von Daten vom Benutzer. Um Anzeigeansprüche vorab mit Werten aufzufüllen, verwenden Sie die zuvor beschriebenen Eingabeansprüche. Das Element kann darüber hinaus auch einen Standardwert enthalten.
 
 Die Reihenfolge der Ansprüche in **DisplayClaims** bestimmt die Reihenfolge, in der Azure AD B2C die Ansprüche auf dem Bildschirm rendert. Um den Benutzer zur Eingabe eines Werts für einen bestimmten Anspruch zu zwingen, legen Sie das Attribut **Required** des **DisplayClaim**-Elements auf `true` fest.
 
@@ -189,16 +189,22 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 
 | attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
-| setting.operatingMode | Nein | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`. |
+| setting.operatingMode <sup>1</sup>| Nein | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`.  |
 | AllowGenerationOfClaimsWithNullValues| Nein| Ermöglicht das Generieren eines Anspruchs mit Nullwert. Beispielsweise für den Fall, dass ein Benutzer ein Kontrollkästchen nicht aktiviert.|
 | ContentDefinitionReferenceId | Ja | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
 | EnforceEmailVerification | Nein | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. |
 | setting.retryLimit | Nein | Legt fest, wie oft ein Benutzer die Daten eingeben kann, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
-| SignUpTarget | Nein | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
+| SignUpTarget <sup>1</sup>| Nein | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
 | setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.showSignupLink | Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.forgotPasswordLinkLocation| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.| 
+| setting.showSignupLink <sup>2</sup>| Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
+| setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.| 
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+
+Hinweise:
+1. Verfügbar für die Inhaltsdefinition: [DataUri](contentdefinitions.md#datauri), Typ `unifiedssp` oder `unifiedssd`.
+1. Verfügbar für die Inhaltsdefinition: [DataUri](contentdefinitions.md#datauri), Typ `unifiedssp` oder `unifiedssd`. [Seitenlayoutversion](page-layout.md) 1.1.0 und höher.
+
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
 Das Element **CryptographicKeys** wird nicht verwendet.

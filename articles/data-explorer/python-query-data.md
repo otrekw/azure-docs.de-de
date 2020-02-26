@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827535"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443974"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Abfragen von Daten mit der Azure Data Explorer-Bibliothek für Python
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Der Azure-Daten-Explorer bietet eine [Datenclientbibliothek für Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit dieser Bibliothek können Sie Daten aus Ihrem Code abfragen. In diesem Artikel stellen Sie eine Verbindung mit einer Tabelle im *Hilfecluster* her, den wir zur Hilfestellung beim Lernen eingerichtet haben. Sie fragen dann eine Tabelle in diesem Cluster ab und geben die Ergebnisse zurück.
+In diesem Artikel fragen Sie Daten mithilfe des Azure Data Explorer ab. Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten).
+
+Der Azure-Daten-Explorer bietet eine [Datenclientbibliothek für Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Mit dieser Bibliothek können Sie Daten aus Ihrem Code abfragen. Stellen Sie eine Verbindung mit einer Tabelle im *Hilfecluster* her, den wir als Lernhilfe eingerichtet haben. Sie können dann eine Tabelle in diesem Cluster abfragen und die Ergebnisse zurückgeben lassen.
 
 Dieser Artikel ist auch als [Azure-Notebook](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Organisations-E-Mail-Konto, das Mitglied von Azure Active Directory (AAD) ist
+* [Python 3.4+](https://www.python.org/downloads/)
 
-* [Python](https://www.python.org/downloads/) auf dem Entwicklungscomputer
+* Ein Organisations-E-Mail-Konto, das Mitglied von Azure Active Directory (AAD) ist
 
 ## <a name="install-the-data-library"></a>Installieren der Datenbibliothek
 

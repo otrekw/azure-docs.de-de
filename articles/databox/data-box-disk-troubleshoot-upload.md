@@ -1,5 +1,6 @@
 ---
-title: Behandeln von Problemen beim Hochladen von Daten in Azure Data Box Disk mithilfe von Protokollen | Microsoft-Dokumentation
+title: Problembehandlung bei Datenuploads mithilfe von Protokollen
+titleSuffix: Azure Data Box Disk
 description: Erfahren Sie, wie Sie die Protokolle verwenden und Probleme beim Hochladen von Daten in Azure Data Box Disk beheben.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: deaa9a220ee4d765650779b40742225e300ffdb7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807494"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471974"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Grundlegendes zu Protokollen für die Behandlung von Problemen beim Hochladen von Daten in Azure Data Box Disk
 
@@ -155,7 +156,7 @@ Die Status der Dateiebenen sind im Abschnitt `BlobStatus` enthalten, in dem alle
 
 Die Fehler, die beim Hochladen von Daten in Azure generiert werden, sind in der folgenden Tabelle zusammengefasst.
 
-| Fehlercode | BESCHREIBUNG                   |
+| Fehlercode | Beschreibung                   |
 |-------------|------------------------------|
 |`None` |  Erfolgreich abgeschlossen.           |
 |`Renamed` | Das Blob wurde erfolgreich umbenannt.   |

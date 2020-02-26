@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705342"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367143"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -54,7 +54,7 @@ Wenn Sie benutzerdefinierte Organisationseinheiten in einer von Azure AD DS verw
 * Es wird eine Standardorganisationseinheit für *AADDC-Benutzer* erstellt, die alle synchronisierten Benutzerkonten Ihres Azure AD-Mandanten enthält.
     * Sie können keine Benutzer oder Gruppen der Organisationseinheit *AADDC-Benutzer* in benutzerdefinierte Organisationseinheiten verschieben, die Sie erstellen. Nur Benutzerkonten oder Ressourcen, die in der von Azure AD DS verwalteten Domäne erstellt wurden, können in benutzerdefinierte Organisationseinheiten verschoben werden.
 * Benutzerkonten, Gruppen, Dienstkonten und Computerobjekte, die Sie in benutzerdefinierten Organisationseinheiten erstellen, stehen in Ihrem Azure AD-Mandanten nicht zur Verfügung.
-    * Diese Objekte werden nicht über die Azure AD Graph-API oder auf der Azure AD-Benutzeroberfläche angezeigt. Sie sind nur in Ihrer von Azure AD DS verwalteten Domäne verfügbar.
+    * Diese Objekte werden nicht über die Microsoft Graph-API oder auf der Azure AD-Benutzeroberfläche angezeigt. Sie sind nur in Ihrer von Azure AD DS verwalteten Domäne verfügbar.
 
 ## <a name="create-a-custom-ou"></a>Erstellen einer benutzerdefinierten Organisationseinheit
 

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086895"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211421"
 ---
 ## <a name="general-entity-types"></a>Allgemeine Entitätstypen:
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086895"
 Erkennen von Personennamen in Text.
 
 Sprachen:
-* Öffentliche Vorschau: `English`
+* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
 | Name des Untertyps | Beschreibung                                                      | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ Natürliche und von Menschen hergestellte Wahrzeichen, Strukturen, geografische 
 
 Sprachen:
 
-* Öffentliche Vorschau: `English`
+* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
 | Name des Untertyps              | Beschreibung                                                                              | Erst ab dieser Modellversion verfügbar |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | –                       | Orte, z.B. `Atlantic Ocean`, `library`, `Eiffel Tower`, `Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitische Entität (GPE) | Städte, Länder, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
+| Geopolitische Entität (GPE) – nur Englisch| Städte, Länder, Staaten, beispielsweise `Seattle`, `Pennsylvania`, `South Africa`, `Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organization  
 
@@ -57,7 +57,7 @@ Erkannte Organisationen, Unternehmen, Agenturen und andere Personengruppen. Beis
 
 Sprachen: 
 
-* Öffentliche Vorschau: `English`
+* Öffentliche Vorschau: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` und `Turkish`
 
 | Name des Untertyps | Beschreibung                                                                                             | Erst ab dieser Modellversion verfügbar |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -120,7 +120,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                      | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | Beschreibung                                      | Erst ab dieser Modellversion verfügbar |
 |--------------|--------------------------------------------------|----------------------------------------|
 | –          | E-Mail-Adresse, z. B. `support@contoso.com` | `2019-10-01`                           |
 
@@ -132,7 +132,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | BESCHREIBUNG                                          | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | Beschreibung                                          | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------------------|----------------------------------------|
 | –          | URLs zu Websites, z. B. `https://www.bing.com`. | `2019-10-01`                           |
 
@@ -144,7 +144,7 @@ Sprachen:
 
 * Öffentliche Vorschau: `English`
 
-| Name des Untertyps | Beschreibung                              | Erst ab dieser Modellversion verfügbar |
+| Name des Untertyps | BESCHREIBUNG                              | Erst ab dieser Modellversion verfügbar |
 |--------------|------------------------------------------|----------------------------------------|
 | –          | Netzwerkadresse, z. B. `10.0.0.101` | `2019-10-01`                           |
 
@@ -156,7 +156,7 @@ Datums- und Uhrzeitentitäten
 
 Sprachen:
 
-* Öffentliche Vorschau: `English`
+* Öffentliche Vorschau: `Chinese-Simplified`, `English`, `French`, `German` und `Spanish`
 
 | Name des Untertyps    | Beispiele                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Zahlen und numerische Mengen.
 
 Sprachen:
 
-* Öffentliche Vorschau: `English`
+* Öffentliche Vorschau: `Chinese-Simplified`, `English`, `French`, `German` und `Spanish`
 
 | Name des Untertyps    | Beispiele                     |
 |-------------|------------------------------|

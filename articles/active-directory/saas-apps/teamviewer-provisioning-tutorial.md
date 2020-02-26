@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150696"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366433"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TeamViewer für die automatische Benutzerbereitstellung
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernamen für den TeamViewer-Administrator ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit TeamViewer herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr TeamViewer-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** `ttps://webapi.teamviewer.com/scim/v2` im Feld **Mandanten-URL** ein, und geben Sie das zuvor erstellte Skripttoken in das **Geheime Token**ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit TeamViewer herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr TeamViewer-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Bereitstellung](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

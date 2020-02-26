@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767439"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251701"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vorschauversion – Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit der Azure-Befehlszeilenschnittstelle
 
@@ -148,6 +148,10 @@ az aks create \
 > [!Note]
 > Falls Sie für das Kennwort einen Überprüfungsfehler erhalten, sollten Sie versuchen, Ihre Ressourcengruppe in einer anderen Region zu erstellen.
 > Versuchen Sie anschließend, den Cluster mit der neuen Ressourcengruppe zu erstellen.
+
+> [!Note]
+> Wenn Sie den AKS-Cluster nicht erstellen können, weil die Version in dieser Region nicht unterstützt wird, können Sie den Befehl [az aks get-versions --location eastus] verwenden, um die Liste der unterstützten Versionen für diese Region zu ermitteln.
+
 
 Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben. Gelegentlich kann die Bereitstellung des Clusters länger als ein paar Minuten dauern. Warten Sie in diesen Fällen bis zu 10 Minuten. 
 
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Beispielanwendung in Aktion zu sehen.
 
 ![Abbildung der Navigation zur ASP.NET-Beispielanwendung](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> Wenn beim Versuch, die Seite zu laden, ein Verbindungstimeout auftritt, sollten Sie mit dem folgenden Befehl überprüfen, ob die Beispiel-App bereit ist: [kubectl get pods --watch]. Manchmal wird der Windows-Container nicht gestartet, wenn Ihre externe IP-Adresse verfügbar ist.
 
 ## <a name="delete-cluster"></a>Löschen von Clustern
 

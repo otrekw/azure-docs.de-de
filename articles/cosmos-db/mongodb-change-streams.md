@@ -7,16 +7,19 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ec1ec1a8a80953f8988355341ee7128bd29b982d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184736"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467776"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Änderungsdatenströme in der API für MongoDB von Azure Cosmos-DB
 
 Die Unterstützung von [Änderungsfeeds](change-feed.md) in der API für MongoDB von Azure Cosmos DB ist über die API für Änderungsdatenströme verfügbar. Mithilfe der API für Änderungsdatenströme können Ihre Anwendungen die Änderungen an der Sammlung oder an den Elementen in einem einzelnen Shard abrufen. Später können Sie auf der Grundlage der Ergebnisse weitere Maßnahmen ergreifen. Änderungen an den Elementen in der Sammlung werden in der Reihenfolge ihres Änderungszeitpunkts erfasst und die Sortierreihenfolge ist für die einzelnen Shardschlüssel sichergestellt.
+
+> [!NOTE]
+> Um Änderungsdatenströme zu verwenden, erstellen Sie das Konto mit Version 3.6 der API für MongoDB von Azure Cosmos DB oder einer höheren Version. Wenn Sie die Änderungsdatenstrom-Beispiele für eine frühere Version ausführen, wird möglicherweise die Fehlermeldung `Unrecognized pipeline stage name: $changeStream` angezeigt. 
 
 Das folgende Beispiel zeigt, wie Sie Änderungsdatenströme für alle Elemente der Sammlung abrufen können. In diesem Beispiel wird ein Cursor erstellt, um Elemente zu überwachen, wenn sie eingefügt, aktualisiert oder ersetzt werden. Die Phase „$match“, „$project“ und die Option „fullDocument“ sind erforderlich, um die Änderungsdatenströme abzurufen. Die Überwachung auf Löschvorgänge mit Änderungsdatenströmen wird derzeit nicht unterstützt. Als Problemumgehung können Sie den zu löschenden Elementen eine schwache Markierung hinzufügen. Sie können z. B. ein Attribut zum Element „deleted“ (Gelöscht) hinzufügen und es auf „true“ festlegen sowie eine Gültigkeitsdauer (TTL) für das Element einstellen, damit Sie es sowohl automatisch löschen als auch nachverfolgen können.
 

@@ -3,16 +3,16 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720360"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425067"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
-Dieser Artikel enthält Antworten auf häufige Fragen zur Sicherung von Dateien und Ordnern mit dem Microsoft Azure Recovery Services (MARS)-Agent im [Azure Backup](backup-overview.md)-Dienst.
+Dieser Artikel beantwortet häufige Fragen zur Sicherung von Dateien und Ordnern mit dem Microsoft Azure Recovery Services-Agent (MARS) im [Azure Backup](backup-overview.md)-Dienst.
 
 ## <a name="configure-backups"></a>Konfigurieren von Sicherungen
 
@@ -90,7 +90,7 @@ Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherung
 Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 
 * Die Cacheordnervolumes sollten freien Speicherplatz haben, der mindestens 5-10 % der Gesamtgröße der Sicherungsdaten ausmacht.
-* Wenn weniger als 5-10 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder verschieben Sie den Cacheordner auf ein Volume mit ausreichend freiem Speicherplatz.
+* Wenn weniger als 5 % Speicherplatz zur Verfügung stehen, vergrößern Sie das Volume, oder verschieben Sie den Cacheordner mit [diesen Schritten](#how-do-i-change-the-cache-location-for-the-mars-agent) auf ein Volume mit ausreichend freiem Speicherplatz.
 * Wenn Sie den Windows-Systemstatus sichern, benötigen Sie zusätzlich 30 bis 35 GB freien Speicherplatz auf dem Volume, das den Cacheordner enthält.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Wie überprüfe ich, ob der Ordner „scratch“ gültig ist und darauf zugegriffen werden kann?
@@ -98,35 +98,35 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 1. Standardmäßig befindet sich der Ordner „scratch“ unter `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
 2. Stellen Sie sicher, dass der Pfad des Speicherorts für den Ordner „scatch“ mit den Werten der folgenden Registrierungsschlüsseleinträge übereinstimmt:
 
-  | Registrierungspfad | Registrierungsschlüssel | value |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+    | Registrierungspfad | Registrierungsschlüssel | value |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Wie ändere ich den Cachespeicherort für den MARS-Agent?
 
 1. Führen Sie diesen Befehl in der Eingabeaufforderung mit erhöhten Rechten aus, um die Sicherungs-Engine anzuhalten:
 
     ```Net stop obengine```
-
 2. Wenn Sie die Systemstatussicherung konfiguriert haben, öffnen Sie die Datenträgerverwaltung, und heben Sie die Einbindung der Datenträger mit Namen im Format `"CBSSBVol_<ID>"` auf.
-3. Verschieben Sie nicht die Dateien! Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz.
-4. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.
+3. Standardmäßig befindet sich der Ablageordner unter `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
+4. Kopieren Sie den gesamten `\Scratch`-Ordner auf ein anderes Laufwerk mit ausreichend Speicherplatz. Stellen Sie sicher, dass die Inhalte kopiert, nicht verschoben werden.
+5. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neu verschobenen Ablageordner.
 
     | Registrierungspfad | Registrierungsschlüssel | value |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort für den Ablageordner* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort für den Ablageordner* |
 
-5. Starten Sie die Sicherungs-Engine in einer Eingabeaufforderung mit erhöhten Rechten neu:
+6. Starten Sie die Sicherungs-Engine in einer Eingabeaufforderung mit erhöhten Rechten neu:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. Ausführen einer bedarfsgesteuerten Sicherung Nachdem die Sicherung am neuen Speicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
+7. Ausführen einer bedarfsgesteuerten Sicherung Nachdem die Sicherung am neuen Speicherort erfolgreich abgeschlossen wurde, können Sie den ursprünglichen Cacheordner entfernen.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Wo sollte der Cacheordner gespeichert werden?
 

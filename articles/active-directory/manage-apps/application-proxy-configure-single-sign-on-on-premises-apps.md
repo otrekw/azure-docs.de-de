@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275590"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461282"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -41,17 +41,15 @@ In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanb
 
 1. Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen**, und wählen Sie die Option **Neue Anwendung**.
 
-2. Wählen Sie im Abschnitt **Lokale Anwendungen** die Option **Lokale Anwendung hinzufügen** aus.
+2. Geben Sie den Anzeigenamen für die neue Anwendung ein, wählen Sie **Beliebige andere, nicht im Katalog zu findende Anwendung integrieren** und dann **Erstellen** aus.
 
-3. Geben Sie den Anzeigenamen für Ihre neue Anwendung ein, und wählen Sie **Hinzufügen**.
+3. Wählen Sie auf der **Übersichtsseite** der App die Option **Einmaliges Anmelden**.
 
-4. Wählen Sie auf der **Übersichtsseite** der App die Option **Einmaliges Anmelden**.
+4. Wählen Sie als SSO-Methode die Option **SAML** aus.
 
-5. Wählen Sie als SSO-Methode die Option **SAML** aus.
+5. Richten Sie zuerst SAML-SSO so ein, dass es bei Nutzung des Unternehmensnetzwerks funktioniert. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Führen Sie die Schritte unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
 
-6. Richten Sie zuerst SAML-SSO so ein, dass es bei Nutzung des Unternehmensnetzwerks funktioniert. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Führen Sie die Schritte unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) aus, um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
-
-7. Fügen Sie der Anwendung mindestens einen Benutzer hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die Anwendung hat. Verwenden Sie bei bestehender Verbindung mit dem Unternehmensnetzwerk das Testkonto, um zu ermitteln, ob Sie über einmaliges Anmelden für die Anwendung verfügen. 
+6. Fügen Sie der Anwendung mindestens einen Benutzer hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die Anwendung hat. Verwenden Sie bei bestehender Verbindung mit dem Unternehmensnetzwerk das Testkonto, um zu ermitteln, ob Sie über einmaliges Anmelden für die Anwendung verfügen. 
 
    > [!NOTE]
    > Nachdem Sie den Anwendungsproxy eingerichtet haben, wechseln Sie zurück und aktualisieren die **Antwort-URL** für SAML.
@@ -74,9 +72,9 @@ Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anw
 
 1. Wählen Sie bei geöffneter Anwendung im Azure-Portal die Option **Einmaliges Anmelden**. 
 
-2. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Über die **externe URL**, die Sie im Anwendungsproxy konfiguriert haben, werden die Felder **Bezeichner**, **Antwort-URL** und **Abmelde-URL** automatisch gefüllt. Bearbeiten Sie diese URLs nicht, da sie erforderlich sind, damit der Anwendungsproxy richtig funktioniert.
+2. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Stellen Sie sicher, dass die **Externe URL**, die Sie im Anwendungsproxy konfiguriert haben, in die Felder **Bezeichner**, **Antwort-URL** und **Abmelde-URL** eingetragen wird. Diese URLs sind erforderlich, damit der Anwendungsproxy richtig funktioniert. 
 
-3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL**, damit die zugehörige Domäne für den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL** `https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren. 
+3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL**, damit die zugehörige Domäne für den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL**`https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren. 
 
     ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 

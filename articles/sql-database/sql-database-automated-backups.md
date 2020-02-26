@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157498"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461770"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -81,10 +81,14 @@ Sicherungen, deren Alter den Aufbewahrungszeitraum überschreitet, werden basier
 
 Azure SQL-Datenbank berechnet den gesamten Sicherungsspeicher in der Aufbewahrung als kumulativen Wert. Jede Stunde wird dieser Wert an die Azure-Abrechnungspipeline gemeldet, die für die Aggregierung dieser stündlichen Nutzung verantwortlich ist, um den Verbrauch am Ende jedes Monats zu berechnen. Nach dem Löschen der Datenbank sinkt der Verbrauch mit zunehmendem Alter der Sicherungen. Sobald das Alter der Sicherungen den Aufbewahrungszeitraum überschreitet, wird die Abrechnung beendet. 
 
+   > [!IMPORTANT]
+   > Sicherungen einer Datenbank werden für die angegebene Beibehaltungsdauer beibehalten, auch wenn die Datenbank gelöscht wurde. Mit häufigem Löschen und Neuerstellen einer Datenbank können zwar Speicher- und Computekosten eingespart werden, aber die Sicherungsspeicherkosten können steigen, da wir für jede gelöschte Datenbank bei jeder Löschung eine Sicherung für die angegebene Beibehaltungsdauer (mindestens 7 Tage) beibehalten. 
 
-### <a name="monitoring-consumption"></a>Überwachen des Verbrauchs
 
-Jeder Sicherungstyp (vollständig, differenziell und Protokoll) wird auf dem Blatt für die Datenbanküberwachung als separate Metrik angezeigt. Im folgenden Diagramm wird gezeigt, wie Sie den Speicherverbrauch der Sicherungen überwachen.  
+
+### <a name="monitor-consumption"></a>Überwachen des Verbrauchs
+
+Jeder Sicherungstyp (vollständig, differenziell und Protokoll) wird auf dem Blatt für die Datenbanküberwachung als separate Metrik angezeigt. Im folgenden Diagramm wird gezeigt, wie Sie den Speicherverbrauch der Sicherungen für eine einzelne Datenbank überwachen. Dieses Feature ist derzeit für verwaltete Instanzen nicht verfügbar.
 
 ![Überwachen des Verbrauchs der Datenbanksicherung auf dem Blatt für die Datenbanküberwachung des Azure-Portals](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Der zusätzliche Sicherungsspeicherverbrauch hängt von der Workload und der Gr�
 
 ## <a name="storage-costs"></a>Speicherkosten
 
+Der Preis für den Speicher variiert, wenn Sie das DTU-Modell oder das V-Kern-Modell verwenden. 
 
 ### <a name="dtu-model"></a>DTU-Modell
 
@@ -120,11 +125,14 @@ Nehmen wir an, die Datenbank hat 744 GB Sicherungsspeicher angesammelt, und die
 
 Jetzt folgt ein komplexeres Beispiel. Angenommen, der Aufbewahrungszeitraum der Datenbank wird in der Mitte des Monats auf 14 Tage verlängert, und dies führt (hypothetisch) zu einer Verdoppelung des gesamten Sicherungsspeichers auf 1.488 GB. Die SQL-Datenbank meldet dann 1 GB Nutzung für die Stunden 1-372 und dann 2 GB Nutzung für die Stunden 373-744. Dies würde zu einer abschließenden Rechnung von 1.116 GB/Monat aggregiert. 
 
-Sie können die Kostenanalyse von Azure-Abonnements verwenden, um die aktuellen Ausgaben für den Sicherungsspeicher zu ermitteln.
+### <a name="monitor-costs"></a>Überwachen der Kosten
+
+Um die Kosten für den Sicherungsspeicher zu verstehen, wechseln Sie zu **Kostenverwaltung + Abrechnung** im Azure-Portal, wählen Sie **Kostenverwaltung** aus, und wählen Sie **Kostenanalyse** aus. Wählen Sie das gewünschte Abonnement als **Bereich** aus, und filtern Sie dann nach dem Zeitraum und dem Dienst, woran Sie interessiert sind. 
+
+Fügen Sie einen Filter für **Dienstname** hinzu, und wählen Sie dann **Datenbank** in der Dropdownliste aus. Verwenden Sie den Filter **Unterkategorie der Verbrauchseinheit**, um den Abrechnungszähler für Ihren Dienst auszuwählen. Wählen Sie für eine einzelne Datenbank oder einen Pool für elastische Datenbanken den **PITR-Sicherungsspeicher für eine einzelne Datenbank/einen Pool für elastische Datenbanken** aus. Wählen Sie für eine verwaltete Instanz **MI-PITR-Sicherungsspeicher** aus. Die Unterkategorien **Speicher** und **Compute** können für Sie auch von Interesse sein, obwohl sie nicht mit den Sicherungsspeicherkosten verknüpft sind. 
 
 ![Analyse der Kosten für Sicherungsspeicher](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Wenn Sie sich z. B. über die Sicherungsspeicherkosten für eine verwaltete Instanz informieren möchten, wechseln Sie in Azure-Portal zu Ihrem Abonnement, und öffnen Sie das Blatt „Kostenanalyse“. Wählen Sie die Unterkategorie **mi pitr backup storage** der Verbrauchseinheit aus, um die aktuellen Sicherungskosten und eine Gebührenvorhersage anzuzeigen. Sie können auch andere Unterkategorien der Verbrauchseinheit einbeziehen, wie etwa **managed instance general purpose - storage** oder **managed instance general purpose - compute gen5**, um die Kosten für Sicherungsspeicher mit anderen Kostenkategorien zu vergleichen.
 
 ## <a name="backup-retention"></a>Sicherungsaufbewahrung
 
