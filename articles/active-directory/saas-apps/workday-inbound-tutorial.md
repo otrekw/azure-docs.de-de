@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121742"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365641"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -378,7 +378,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
 
@@ -603,7 +603,7 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -700,7 +700,7 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -801,7 +801,7 @@ Nein, in der Lösung werden keine Benutzerprofile zwischengespeichert. Der Azure
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Unterstützt die Lösung die Zuweisung von lokalen AD-Gruppen an den Benutzer?
 
-Diese Funktion wird derzeit nicht unterstützt. Eine empfohlene Problemumgehung besteht darin, ein PowerShell-Skript bereitzustellen, das im Azure AD-Graph-API-Endpunkt Überwachungsprotokolldaten abfragt und diese verwendet, um Szenarien wie die Gruppenzuweisung auszulösen. Dieses PowerShell-Skript kann an einen Taskplaner angefügt und auf demselben Computer mit dem Bereitstellungs-Agent bereitgestellt werden.  
+Diese Funktion wird derzeit nicht unterstützt. Eine empfohlene Problemumgehung besteht darin, ein PowerShell-Skript bereitzustellen, das den Microsoft Graph-API-Endpunkt auf [Überwachungsprotokolldaten](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) abfragt und diese verwendet, um Szenarien wie eine Gruppenzuweisung auszulösen. Dieses PowerShell-Skript kann an einen Taskplaner angefügt und auf demselben Computer mit dem Bereitstellungs-Agent bereitgestellt werden.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Welche Workday-APIs verwendet die Lösung, um Workday-Workerprofile abzufragen und zu aktualisieren?
 
