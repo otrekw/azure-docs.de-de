@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: b2a1bcedcc459a21bbc8a461ba9c8d9a8d65aebe
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132201"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612920"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD Domain Services-Domäne
 
@@ -47,9 +47,9 @@ In der folgenden Tabelle sind einige allgemeine Attribute und ihre Synchronisier
 | SID-Verlauf für Benutzer und Gruppen | Lokale primäre Benutzer- und Gruppen-SID | Das *SidHistory*-Attribut für Benutzer und Gruppen in Azure AD DS ist so festgelegt, dass es mit der entsprechenden primären Benutzer- oder Gruppen-SID in einer lokalen AD DS-Umgebung übereinstimmt. Diese Funktion erleichtert die Verlagerung lokaler Anwendungen in Azure AD DS, da Sie keine neuen Zugriffssteuerungslisten für Ressourcen einrichten müssen. |
 
 > [!TIP]
-> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das *SAMAccountName*-Attribut, z. B. `CONTOSO\driley`, wird für einige Benutzerkonten in einer verwalteten Azure AD DS-Domäne möglicherweise automatisch generiert. Das automatisch generierte *SAMAccountName*-Attribut von Benutzern kann sich von ihrem UPN-Präfix unterscheiden, sodass dies nicht immer eine zuverlässige Möglichkeit der Anmeldung ist.
+> **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das *SAMAccountName*-Attribut, z. B. `AADDSCONTOSO\driley`, wird für einige Benutzerkonten in einer verwalteten Azure AD DS-Domäne möglicherweise automatisch generiert. Das automatisch generierte *SAMAccountName*-Attribut von Benutzern kann sich von ihrem UPN-Präfix unterscheiden, sodass dies nicht immer eine zuverlässige Möglichkeit der Anmeldung ist.
 >
-> Wenn beispielsweise mehrere Benutzer dasselbe *mailNickname*-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das *SAMAccountName*-Attribut für diese Benutzer möglicherweise automatisch generiert. Verwenden Sie das UPN-Format, z. B. `driley@contoso.com`, für die zuverlässige Anmeldung bei einer verwalteten Azure AD DS-Domäne.
+> Wenn beispielsweise mehrere Benutzer dasselbe *mailNickname*-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das *SAMAccountName*-Attribut für diese Benutzer möglicherweise automatisch generiert. Verwenden Sie das UPN-Format, z. B. `driley@aaddscontoso.com`, für die zuverlässige Anmeldung bei einer verwalteten Azure AD DS-Domäne.
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Attributzuordnung für Benutzerkonten
 

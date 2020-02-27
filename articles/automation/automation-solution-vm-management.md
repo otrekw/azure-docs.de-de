@@ -3,14 +3,14 @@ title: Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten
 description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Azure Resource Manager-Computer nach einem Zeitplan gestartet und beendet und mit Azure Monitor-Protokolle proaktiv überwacht.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/04/2019
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: cbf181b9a6d3860854c7b61cca0e6c50810cced9
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030156"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616060"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -200,36 +200,6 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
 1. Zeigen Sie für die Aktion eine Vorschau an, und nehmen Sie alle erforderlichen Änderungen vor, bevor Sie die Implementierung für Produktions-VMs durchführen. Nach Abschluss des Vorgangs können Sie das monitoring-and-diagnostics/monitoring-action-groups-Runbook manuell ausführen, wobei Sie den Parameter auf **False** festlegen, oder Sie können die Automation-Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** entsprechend Ihrem vorgegebenen Zeitplan automatisch ausführen.
 
-### <a name="scenario-3-startstop-automatically-based-on-cpu-utilization"></a>Szenario 3: Automatisches Starten/Beenden basierend auf der CPU-Auslastung
-
-Diese Lösung kann einen Beitrag zur Verwaltung der Kosten für die Ausführung von VMs in Ihrem Abonnement leisten, indem Azure-VMs, die außerhalb der Spitzenzeiten (z.B. nach Geschäftsschluss) nicht verwendet werden, ausgewertet und automatisch beendet werden, wenn die Prozessorauslastung unter x% liegt.
-
-Standardmäßig ist die Lösung so vorkonfiguriert, dass die Metrik zur CPU-Auslastung in Prozent ausgewertet wird, um zu ermitteln, ob die durchschnittliche Auslastung kleiner oder gleich 5% ist. Dieses Szenario wird mit den folgenden Variablen gesteuert und kann geändert werden, wenn die Standardwerte nicht Ihren Anforderungen entsprechen:
-
-- External_AutoStop_MetricName
-- External_AutoStop_Threshold
-- External_AutoStop_TimeAggregationOperator
-- External_AutoStop_TimeWindow
-
-Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe oder für eine spezifische Liste von VMs aktivieren, aber nicht für beides.
-
-#### <a name="target-the-stop-action-against-a-subscription-and-resource-group"></a>Festlegen der Beendigungsaktion für ein Abonnement und eine Ressourcengruppe
-
-1. Konfigurieren Sie die Variablen **External_Stop_ResourceGroupNames** und **External_ExcludeVMNames**, um die Ziel-VMs anzugeben.
-1. Aktivieren und aktualisieren Sie den Zeitplan **Schedule_AutoStop_CreateAlert_Parent**.
-1. Führen Sie das Runbook **AutoStop_CreateAlert_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** und den Parameter WHATIF auf **True** fest, um für die Änderungen eine Vorschau anzuzeigen.
-
-#### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
-
-1. Führen Sie das Runbook **AutoStop_CreateAlert_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
-1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1, VM2, VM3).
-1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
-
-Nachdem Sie einen Zeitplan zum Beenden von VMs basierend auf der CPU-Auslastung erstellt haben, müssen Sie nun einen der folgenden Zeitpläne aktivieren, um sie zu starten.
-
-- Festlegen der Startaktion nach Abonnement und Ressourcengruppe. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Scheduled-StartVM** finden Sie in den im [Szenario 1](#scenario-1-startstop-vms-on-a-schedule) beschriebenen Schritten.
-- Festlegen der Startaktion nach Abonnement, Ressourcengruppe und Tag. Informationen zum Testen und Aktivieren von Zeitplänen vom Typ **Sequenced-StartVM** finden Sie in den im [Szenario 2](#scenario-2-startstop-vms-in-sequence-by-using-tags) beschriebenen Schritten.
-
 ## <a name="solution-components"></a>Lösungskomponenten
 
 Diese Lösung umfasst vorkonfigurierte Runbooks, Zeitpläne und die Integration in Azure Monitor-Protokolle, sodass Sie das Starten und Beenden der virtuellen Computer gemäß Ihren Geschäftsanforderungen anpassen können.
@@ -243,7 +213,7 @@ In der folgenden Tabelle sind die mit dieser Lösung in Ihrem Automation-Konto b
 
 Alle übergeordneten Runbooks enthalten den Parameter _WhatIf_. Bei der Festlegung auf **True** unterstützt _WhatIf_ die Beschreibung des exakten Verhaltens des Runbooks, wenn es ohne den Parameter _WhatIf_ ausgeführt wird, und es wird überprüft, ob die richtigen VMs als Ziel verwendet werden. Ein Runbook führt seine zugehörigen definierten Aktionen nur aus, wenn der Parameter _WhatIf_ auf **False** festgelegt ist.
 
-|Runbook | Parameter | Beschreibung|
+|Runbook | Parameter | BESCHREIBUNG|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Wird über das übergeordnete Runbook aufgerufen. Dieses Runbook erstellt für das AutoStop-Szenario Warnungen pro Ressource.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: „true“ oder „false“  | Erstellt oder aktualisiert Azure-Warnungsregeln auf VMs im Zielabonnement oder den Zielressourcengruppen. <br> VMList: Durch Kommas getrennte Liste mit VMs. Beispiel: _vm1, vm2, vm3_.<br> *WhatIf* überprüft die Runbooklogik ohne Ausführung.|
@@ -283,7 +253,7 @@ In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten
 
 Es ist nicht ratsam, alle Zeitpläne zu aktivieren, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
-|Zeitplanname | Häufigkeit | Beschreibung|
+|Zeitplanname | Häufigkeit | BESCHREIBUNG|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook „AutoStop_CreateAlert_Parent“ alle acht Stunden aus. Hiermit werden dann die VM-basierten Werte unter „External_Start_ResourceGroupNames“, „External_Stop_ResourceGroupNames“ und „External_ExcludeVMNames“ in Azure Automation-Variablen beendet. Alternativ hierzu können Sie mithilfe des Parameters „VMList“ eine durch Kommas getrennte Liste mit VMs angeben.|
 |Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook „Scheduled_Parent“ mit dem Parameter _Stop_ jeden Tag zum angegebenen Zeitpunkt aus. Beendet automatisch alle VMs, für die die Regeln der Ressourcenvariablen erfüllt werden. Aktivieren Sie den dazugehörigen Zeitplan (**Scheduled-StartVM**).|
@@ -297,7 +267,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 ### <a name="job-logs"></a>Auftragsprotokolle
 
-|Eigenschaft | Beschreibung|
+|Eigenschaft | BESCHREIBUNG|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
@@ -318,7 +288,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 ### <a name="job-streams"></a>Auftragsdatenströme
 
-|Eigenschaft | Beschreibung|
+|Eigenschaft | BESCHREIBUNG|
 |----------|----------|
 |Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
@@ -341,7 +311,7 @@ Wenn Sie Protokollsuchen durchführen, bei denen Kategoriedatensätze für **Job
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Auftragsdatensätze, die mit dieser Lösung erfasst wurden.
 
-|Abfrage | Beschreibung|
+|Abfrage | BESCHREIBUNG|
 |----------|----------|
 |Suchen nach Aufträgen für das Runbook „ScheduledStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |Suchen nach Aufträgen für das Runbook „SequencedStartStop_Parent“, die erfolgreich abgeschlossen wurden | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|

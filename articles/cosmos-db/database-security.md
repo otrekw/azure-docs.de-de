@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4f9f801ccf4c2236bfb2ccec8061adc893237256
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 145473dfce3d9036b2262ccf3f65f570a2939ef3
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615474"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524579"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Sicherheit bei Azure Cosmos DB – Übersicht
 
@@ -73,7 +73,7 @@ Betrachten wir die Anforderungen nun im Detail.
 |Reagieren auf Angriffe|Nachdem Sie den Azure-Support kontaktiert haben, um einen möglichen Angriff zu melden, wird ein aus fünf Schritten bestehender Prozess zur Reaktion auf den Incident angestoßen. Ziel dieses Prozesses ist es, die normale Dienstsicherheit und den normalen Betrieb so schnell wie möglich wiederherzustellen, nachdem ein Problem erkannt und eine Untersuchung gestartet wurde.<br><br>Weitere Informationen erhalten Sie unter [Microsoft Azure Security Response in the Cloud](https://aka.ms/securityresponsepaper) (Sicherheitsreaktion von Microsoft Azure in der Cloud).|
 |Geofencing (geografische Eingrenzung)|Azure Cosmos DB stellt die Datengovernance und -compliance für unabhängige Regionen sicher (z.B. Deutschland, China, US Government).|
 |Geschützte Einrichtungen|Die Daten in Azure Cosmos DB sind auf SSDs in den geschützten Rechenzentren von Azure gespeichert.<br><br>Weitere Informationen erhalten Sie unter [Globale Rechenzentren von Microsoft](https://www.microsoft.com/en-us/cloud-platform/global-datacenters).|
-|HTTPS-/SSL-/TLS-Verschlüsselung|Alle Azure Cosmos DB-Interaktionen zwischen Client und Dienst erfolgen über SSL/TLS 1.2. Auch alle Replikationen innerhalb eines und zwischen verschiedenen Rechenzentren erfolgen über SSL/TLS 1.2.|
+|HTTPS-/SSL-/TLS-Verschlüsselung|Alle Verbindungen mit Azure Cosmos DB unterstützen HTTPS. Azure Cosmos DB unterstützt auch TLS 1.2.<br>Es ist möglich, eine serverseitige TLS-Mindestversion zu erzwingen. Wenden Sie sich zu diesem Zweck an [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com).|
 |Verschlüsselung ruhender Daten|Alle in Azure Cosmos DB gespeicherte Daten werden im Ruhezustand verschlüsselt. Weitere Informationen finden Sie unter [Azure Cosmos DB-Verschlüsselung ruhender Daten](./database-encryption-at-rest.md).|
 |Gepatchte Server|Da Azure Cosmos DB eine verwaltete Datenbank ist, müssen Sie keine Server verwalten oder patchen – das wird automatisch für Sie erledigt.|
 |Administratorkonten mit sicheren Kennwörtern|Es ist kaum zu glauben, dass diese Anforderung überhaupt erwähnt werden muss, aber im Gegensatz zu einigen unserer Wettbewerber ist es in Azure Cosmos DB unmöglich, ein Administratorkonto ohne Kennwort einzurichten.<br><br> Die Sicherheit über SSL und die auf HMAC-Geheimnissen basierende Authentifizierung sind standardmäßig integriert.|

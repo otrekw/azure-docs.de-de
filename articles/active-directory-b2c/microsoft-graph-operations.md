@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f23d3ffa14deccae9825568dee2f3c8b9ac7e7e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77492367"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522967"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph-Vorgänge, die für Azure AD B2C verfügbar sind
 
@@ -57,7 +57,7 @@ Konfigurieren Sie vordefinierte Richtlinien für Registrierung, Anmeldung, kombi
 
 Mit den folgenden Vorgängen können Sie Ihre Azure AD B2C-Vertrauensframeworkrichtlinien verwalten, die als [benutzerdefinierte Richtlinien](custom-policy-overview.md) bezeichnet werden.
 
-- [Auflisten aller Vertrauensframeworkrichtlinien, die in einem Mandanten konfiguriert sind](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies.md)
+- [Auflisten aller Vertrauensframeworkrichtlinien, die in einem Mandanten konfiguriert sind](https://docs.microsoft.com/graph/api/trustframework-list-trustframeworkpolicies)
 - [Erstellen einer Vertrauensframeworkrichtlinie](https://docs.microsoft.com/graph/api/trustframework-post-trustframeworkpolicy)
 - [Lesen der Eigenschaften einer vorhandenen Vertrauensframeworkrichtlinie](https://docs.microsoft.com/graph/api/trustframeworkpolicy-get)
 - [Aktualisieren oder Erstellen einer Vertrauensframeworkrichtlinie](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)

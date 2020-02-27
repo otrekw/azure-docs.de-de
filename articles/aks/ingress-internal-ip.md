@@ -2,17 +2,14 @@
 title: Erstellen eines Eingangscontrollers für ein internes Netzwerk in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller für ein internes privates Netzwerk in einem Azure Kubernetes Service-Cluster (AKS) installieren und konfigurieren.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 935b96bd553c9ae73b55086483baa0ea7c4aeaa4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8c3eeaf2f9a92f1be9c691091d8e33d09a60b22d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615465"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595653"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers für ein internes virtuelles Netzwerk in Azure Kubernetes Service (AKS)
 
@@ -20,7 +17,7 @@ Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konf
 
 Dieser Artikel beschreibt, wie Sie den [NGINX-Eingangscontroller][nginx-ingress] in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. Der Eingangscontroller wurde für ein internes privates virtuelles Netzwerk und eine IP-Adresse konfiguriert. Externer Zugriff ist nicht zulässig. Es werden zwei Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne IP-Adresse zugänglich sind.
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
@@ -259,7 +256,7 @@ In diesem Artikel werden einige externe Komponenten in AKS berücksichtigt. Weit
 - [Helm-Befehlszeilenschnittstelle][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Erstellen eines einfachen Eingangscontrollers mit Konnektivität mit einem externen Netzwerk][aks-ingress-basic]
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]

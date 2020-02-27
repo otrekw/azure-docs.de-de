@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Microsoft Azure Backup-Recovery Services-Tresors (MARS) aufheben und diesen dann löschen.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173173"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586460"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -28,7 +28,7 @@ Sie können keinen Recovery Services-Tresor löschen, der über Abhängigkeiten 
 
   ![Serverfehler beim Löschen eines geschützten Elements](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Wenn sich Sicherungselemente im vorläufig gelöschten Zustand befinden, wird die Warnmeldung unten angezeigt, und Sie müssen warten, bis sie dauerhaft gelöscht werden. Weitere Informationen finden Sie in [diesem Artikel](https://aka.ms/SoftDeleteCloudWorkloads).
+- Wenn sich Sicherungselemente im vorläufig gelöschten Zustand befinden, wird die Warnmeldung unten angezeigt, und Sie müssen warten, bis sie dauerhaft gelöscht werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
    ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -94,7 +94,7 @@ Lesen Sie zuerst den Abschnitt **[Vorbereitung](#before-you-start)** , um sich m
 
 4. Aktivieren Sie das Kontrollkästchen für die Zustimmung, und klicken Sie dann auf **Löschen**.
 
-5. Überprüfen Sie das Symbol **Benachrichtigung** ![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png). Nach Abschluss des Vorgangs zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „Sicherungselement“ löschen.* *Der Vorgang wurde erfolgreich abgeschlossen.*
+5. Überprüfen Sie das Symbol **Benachrichtigung**![Sicherungsdaten löschen](./media/backup-azure-delete-vault/messages.png). Nach Abschluss des Vorgangs zeigt der Dienst die folgende Meldung an: *Sicherung beenden und Sicherungsdaten für „Sicherungselement“ löschen.* *Der Vorgang wurde erfolgreich abgeschlossen.*
 6. Wählen Sie im Menü **Sicherungselemente** die Option **Aktualisieren** aus, um sich zu vergewissern, dass das Sicherungselement gelöscht wurde.
 
 Nach Abschluss dieses Vorgangs können Sie die Sicherungselemente über die Verwaltungskonsole löschen:

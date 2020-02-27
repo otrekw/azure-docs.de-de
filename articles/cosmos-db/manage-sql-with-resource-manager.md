@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978727"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588786"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die SQL-API (Core) von Azure Cosmos DB mit Azure Resource Manager-Vorlagen
 
@@ -39,7 +39,7 @@ Zum Erstellen der Azure Cosmos DB Ressourcen kopieren Sie die folgende Beispielv
 > * Die Länge von Kontonamen ist auf 44 Zeichen (ausschließlich Kleinbuchstaben) beschränkt.
 > * Um die Durchsatzwerte zu ändern, müssen Sie die Vorlage mit aktualisierter Angabe der RU/s erneut übermitteln.
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > Um einen Container mit großem Partitionsschlüssel zu erstellen, ändern Sie die vorherige Vorlage, um die Eigenschaft `"version":2` in das `partitionKey`-Objekt einzubeziehen.
@@ -136,7 +136,7 @@ Kopieren Sie die folgende Beispielvorlage, und stellen Sie sie wie beschrieben e
 * Optional können Sie den [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) besuchen und die Bereitstellung über das Azure-Portal durchführen.
 * Sie können die Vorlage auch auf Ihren lokalen Computer herunterladen oder eine neue Vorlage erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
 ### <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 

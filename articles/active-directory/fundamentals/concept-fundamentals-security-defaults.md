@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149829"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585984"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -95,7 +95,8 @@ Nach Aktivierung der Sicherheitsstandards in Ihrem Mandanten muss jeder Benutzer
 
 Wenn der Benutzer nicht für die MFA registriert ist, muss er sich mithilfe der Microsoft Authenticator-App registrieren, um den Vorgang fortzusetzen. Es wird keine 14-tägige Frist für die MFA-Registrierung eingeräumt.
 
-Bei Mandanten vor Exchange Online 2017 ist die moderne Authentifizierung standardmäßig deaktiviert. Sie müssen die [moderne Authentifizierung aktivieren](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online), um eine mögliche Anmeldeschleife bei der Authentifizierung über diese Mandanten zu vermeiden.
+> [!NOTE]
+> Bei Mandanten vor Exchange Online 2017 ist die moderne Authentifizierung standardmäßig deaktiviert. Sie müssen die [moderne Authentifizierung aktivieren](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online), um eine mögliche Anmeldeschleife bei der Authentifizierung über diese Mandanten zu vermeiden.
 
 > [!NOTE]
 > Das Azure AD Connect-Synchronisierungskonto ist von den Sicherheitsstandards ausgenommen. Sie werden nicht aufgefordert, sich für die mehrstufige Authentifizierung zu registrieren bzw. diese auszuführen. Organisationen sollten dieses Konto nicht für andere Zwecke verwenden.

@@ -3,17 +3,16 @@ title: Hochverfügbarkeit und Notfallwiederherstellung in Azure Kubernetes Servi
 description: Lernen Sie die Best Practices für Clusteroperator kennen, mit denen Sie die Betriebsbereitschaft Ihrer Anwendungen maximieren und so für Hochverfügbarkeit sorgen und sich auf die Notfallwiederherstellung in Azure Kubernetes Service (AKS) vorbereiten können.
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549154"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594740"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 

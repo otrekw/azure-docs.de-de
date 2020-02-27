@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425016"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582635"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -66,6 +66,29 @@ Und auf diese IP-Adressen:
 - 40.126.0.0/18
 
 Beim Zugriff auf alle oben aufgeführten URLs und IP-Adressen wird das HTTPS-Protokoll auf Port 443 verwendet.
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
+
+Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Sicherung über privates Peering wird nicht unterstützt.
+
+Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
+
+- Azure Active Directory (12076:5060)
+- Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
+- Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
+
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Öffentliches Peering gilt für neue Leitungen als veraltet.
 
 ### <a name="throttling-support"></a>Unterstützung für Drosselung
 

@@ -2,17 +2,14 @@
 title: Best Practices für Operator – Identität in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices für Clusteroperator zum Verwalten der Authentifizierung und Autorisierung für Cluster in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: mlearned
-ms.openlocfilehash: 35cded14977988c80455a9c28a0e01e7913d58f4
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5ff5bdaced46a20dec3e7c5d7fb029f9428a12f2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069505"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594769"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Best Practices für die Authentifizierung und Autorisierung in Azure Kubernetes Service (AKS)
 

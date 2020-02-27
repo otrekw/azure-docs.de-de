@@ -3,12 +3,12 @@ title: Installieren von Azure Backup Server in Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172389"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583434"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -91,7 +91,7 @@ Die Azure Backup Server-VM muss einer Domäne angehören. Ein Domänenbenutzer m
 
 Beim Wählen eines Servers für Azure Backup Server starten Sie mit einem Katalogimage von Windows Server 2012 R2 Datacenter oder Windows Server 2016 Datacenter. Der Artikel [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) enthält ein Tutorial zu den ersten Schritten mit dem empfohlenen virtuellen Computer. Die empfohlenen Mindestanforderungen für den virtuellen Servercomputer (VM) lauten: A2-Standard mit zwei Kernen und 3,5 GB RAM.
 
-Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Dies wird im Artikel [Installieren von DPM als virtuellen Azure-Computer](https://technet.microsoft.com/library/jj852163.aspx)beschrieben. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
+Beim Schützen von Workloads mit Azure Backup Server sind viele Feinheiten zu beachten. Dies wird im Artikel [Installieren von DPM als virtuellen Azure-Computer](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12))beschrieben. Lesen Sie sich den Artikel ganz durch, bevor Sie den Computer bereitstellen.
 
 > [!NOTE]
 > Azure Backup Server ist für die Ausführung auf einer dedizierten VM konzipiert, die nur zu diesem Zweck verwendet wird. Azure Backup Server kann nicht auf folgenden Computern installiert werden:
@@ -121,7 +121,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 Es gibt zwei Möglichkeiten zum Herunterladen des Azure Backup Server-Installationsprogramms. Sie können es aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55269) herunterladen. Sie können das Installationsprogramm auch beim Konfigurieren eines Recovery Services-Tresors herunterladen. Die folgenden Schritte begleiten Sie beim Herunterladen des Installationsprogramms aus dem Azure-Portal, während Sie einen Recovery Services-Tresor konfigurieren.
 
 1. [Melden Sie sich auf Ihrer Azure Stack-VM im Azure-Portal bei Ihrem Azure-Abonnement an](https://portal.azure.com/).
-2. Klicken Sie im linken Menü auf **Alle Dienste**.
+2. Wählen Sie im linken Menü **Alle Dienste** aus.
 
     ![Auswählen der Option „Alle Dienste“ im Hauptmenü](./media/backup-mabs-install-azure-stack/click-all-services.png)
 
@@ -133,7 +133,7 @@ Es gibt zwei Möglichkeiten zum Herunterladen des Azure Backup Server-Installati
 
 4. Wählen Sie in der Liste mit den Recovery Services-Tresoren Ihren Tresor aus, um dessen Dashboard zu öffnen.
 
-    ![Eingeben von „Recovery Services“ im Dialogfeld „Alle Dienste“](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
+    ![Eingeben von Recovery Services im Dialogfeld „Alle Dienste“](./media/backup-mabs-install-azure-stack/rs-vault-dashboard.png)
 
 5. Klicken Sie im Menü „Erste Schritte“ des Tresors auf **Sicherung**, um den Assistenten für erste Schritte zu öffnen.
 
@@ -243,7 +243,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
     ![Voraussetzungen 2 für Microsoft Azure Backup](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://technet.microsoft.com/library/hh758075.aspx).
+    Das Scratchverzeichnis ist eine Anforderung für die Sicherung in Azure. Stellen Sie sicher, dass die Größe des Scratchverzeichnisses mindestens 5 % der Datenmenge entspricht, die in Azure gesichert werden soll. Für den Datenträgerschutz müssen separate Datenträger nach Abschluss der Installation konfiguriert werden. Weitere Informationen zu Speicherpools finden Sie unter [Konfigurieren von Speicherpools und Datenträgerspeicher](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 
 6. Geben Sie auf dem Bildschirm **Sicherheitseinstellungen** ein sicheres Kennwort für eingeschränkte lokale Benutzerkonten an, und klicken Sie auf **Weiter**.
 
@@ -316,7 +316,7 @@ Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azu
 >
 >
 
-## <a name="network-connectivity"></a>Netzwerkverbindung
+## <a name="network-connectivity"></a>Netzwerkkonnektivität
 
 Azure Backup Server muss mit dem Azure Backup-Dienst verbunden sein, um erfolgreich ausgeführt werden zu können. Verwenden Sie zum Überprüfen, ob der Computer über eine Verbindung mit Azure verfügt, das Cmdlet ```Get-DPMCloudConnection``` in der Azure Backup Server-PowerShell-Konsole. Wenn die Ausgabe des Cmdlets „TRUE“ lautet, besteht eine Verbindung, andernfalls nicht.
 

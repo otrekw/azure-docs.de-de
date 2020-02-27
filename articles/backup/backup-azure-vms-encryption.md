@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513778"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583173"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -30,7 +30,7 @@ Wie in der nachstehenden Tabelle zusammengefasst, kann Azure Backup Azure-VMs mi
 **Nicht verwaltet** | Ja | Ja
 **Verwaltet**  | Ja | Ja
 
-- Weitere Informationen zu [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md) und [KEKs](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
+- Weitere Informationen zu [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md) und [KEKs](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/).
 - Lesen Sie [Häufig gestellte Fragen](../security/azure-security-disk-encryption-faq.md) zur Datenträgerverschlüsselung für virtuelle Azure-Computer.
 
 ### <a name="limitations"></a>Einschränkungen

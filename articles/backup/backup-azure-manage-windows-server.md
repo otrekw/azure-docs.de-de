@@ -3,12 +3,12 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173047"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586443"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -81,7 +81,7 @@ Die Liste „Sicherungswarnungen“ enthält die ausgewählten Informationen fü
 | ----------- | ----------- |
 | Kritisch | Sie erhalten kritische Warnungen, wenn: Sicherungsaufträge fehlschlagen, wenn Wiederherstellungsaufträge fehlschlagen und wenn Sie den Schutz auf einem Server beenden, aber die Daten beibehalten.|
 | Warnung | Allgemeine Warnmeldungen werden angezeigt, wenn: Sicherungsaufträge mit Warnungen abgeschlossen werden, z.B. wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden oder wenn mehr als 1.000.000 Dateien erfolgreich gesichert wurden). |
-| Information | Derzeit werden keine Informationsmeldungen verwendet. |
+| Informational | Derzeit werden keine Informationsmeldungen verwendet. |
 
 ### <a name="viewing-alert-details"></a>Anzeigen von Warnungsdetails
 
@@ -272,4 +272,4 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 * Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
-* Besuchen Sie das [Azure Backup-Forum](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

@@ -3,16 +3,15 @@ title: Anpassen von CoreDNS für Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie CoreDNS anpassen, um mit Azure Kubernetes Service (AKS) Unterdomänen hinzuzufügen oder benutzerdefinierte DNS-Endpunkte zu erweitern
 services: container-service
 author: jnoller
-ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 7dd22a6803f5248298afddffaee9c4b83891f5f1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547913"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595823"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 

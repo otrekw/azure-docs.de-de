@@ -2,17 +2,14 @@
 title: Statische IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie eine statische öffentliche IP-Adresse für ausgehenden Datenverkehr in einem AKS-Cluster erstellen und verwenden
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 67471d688e64244067a7537bc87c379da4a69c03
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68696361"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595755"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Verwenden einer statischen öffentlichen IP-Adresse für ausgehenden Datenverkehr in Azure Kubernetes Service (AKS)
 

@@ -2,17 +2,14 @@
 title: Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 description: Erfahren Sie, wie Sie ein Upgrade für einen AKS-Cluster (Azure Kubernetes Service) vornehmen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889399"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621976"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -25,7 +22,7 @@ Informationen zu AKS-Clustern, für die mehrere Knotenpools oder Windows Server-
 Der Artikel setzt voraus, dass Sie mindestens Version 2.0.65 der Azure-Befehlszeilenschnittstelle (Azure CLI) ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 > [!WARNING]
-> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden.  Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289).
+> Durch ein AKS-Clusterupgrade werden Ihre Knoten als nicht planbar markiert und entleert (cordon/drain). Wenn Sie nur über ein geringes Computekontingent verfügen, kann das Upgrade möglicherweise nicht durchgeführt werden. Weitere Informationen finden Sie unter [Anfordern einer Kontingenterhöhung](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 > Wenn Sie Ihre eigene Bereitstellung der automatischen Clusterskalierung ausführen, deaktivieren Sie diese während des Upgrades (Sie können sie auf null Replikate skalieren), da die Möglichkeit besteht, dass sie den Upgradevorgang beeinträchtigt. Die verwaltete automatische Skalierung regelt dies automatisch. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Suchen nach verfügbaren AKS-Clusterupgrades

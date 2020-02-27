@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3a76b06c08d670cfb3ab0757e8c46dac0988c5f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025179"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585950"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -99,14 +99,15 @@ Wenn*EnforceCloudPasswordPolicyForPasswordSyncedUsers* deaktiviert ist (Standard
 
 
 Führen Sie den folgenden Befehl mit dem MSOnline PowerShell-Modul aus, um das EnforceCloudPasswordPolicyForPasswordSyncedUsers-Feature wie nachstehend gezeigt zu aktivieren. Geben Sie „Yes“ für den Parameter „Enable“ ein, wie unten dargestellt:
+
 ```
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
-`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
-`Supply values for the following parameters:`
-`Enable: yes`
-`Confirm`
-`Continue with this operation?`
-`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers
+cmdlet Set-MsolDirSyncFeature at command pipeline position 1
+Supply values for the following parameters:
+Enable: yes
+Confirm
+Continue with this operation?
+[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y
 ```
 
 Nach der Aktivierung des Features wechselt Azure AD nicht zu jedem synchronisierten Benutzer, um den `DisablePasswordExpiration`-Wert aus dem „PasswordPolicies“-Attribut zu entfernen. Stattdessen wird der Wert während der nächsten Kennwortsynchronisierung für jeden Benutzer auf `None` festgelegt, wenn das Kennwort beim nächsten Mal in der lokalen AD-Instanz geändert wird.  

@@ -2,17 +2,14 @@
 title: Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie ein persistentes Volume mit Azure-Datenträgern in Azure Kubernetes Service (AKS) dynamisches erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: 1c7a406f0b06b94aaa6d8b4af63b1416b11c7c56
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847327"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596962"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -88,7 +85,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>Verwenden des persistenten Volumes
 
-Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen grundlegenden NGINX-Pod, der den Anspruch auf das persistente Volume *azure-managed-disk* verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z.B. *D:* .
+Nachdem der Anspruch auf ein persistentes Volumes erstellt und der Datenträger erfolgreich bereitgestellt wurde, kann ein Pod mit Zugriff auf den Datenträger erstellt werden. Das folgende Manifest erstellt einen grundlegenden NGINX-Pod, der den Anspruch auf das persistente Volume *azure-managed-disk* verwendet, um den Azure-Datenträger im Pfad `/mnt/azure` einzubinden. Geben Sie für Windows Server-Container (derzeit in der Vorschau in AKS) einen *mountPath* gemäß Windows-Pfadkonvention an, z. B. *D:* .
 
 Erstellen Sie eine Datei namens `azure-pvc-disk.yaml`, und fügen Sie das folgende Manifest ein.
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a01ebde09517cbe7f093dd56a8a4116e76e64e38
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736770"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565501"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Freigeben von Konten in Azure AD
 
@@ -51,7 +51,7 @@ Benutzer melden sich einmalig mit ihrem Organisationskonto an. Dieses Konto ist 
 
 Gemeinsam genutzte Konten verbessern nicht nur den Überblick, sondern auch die Sicherheit. Benutzer mit Berechtigungen zur Verwendung der Anmeldeinformationen sehen das gemeinsame Kennwort nicht, sondern erhalten vielmehr die Berechtigung, es als Teil des orchestrierten Authentifizierungsablaufs nutzen zu dürfen. Bei einigen Kennwort-SSO-Anwendungen haben Sie die Möglichkeit, Azure AD zum Durchführen eines regelmäßigen Rollovers (Aktualisierung) von Kennwörtern zu verwenden. Für das System werden lange, komplexe Kennwörter genutzt, um die Kontosicherheit zu erhöhen. Der Administrator kann Zugriffsrechte für bestimmte Anwendungen mühelos gewähren oder widerrufen. Er weiß, wer Zugriff auf das Konto hat und wer bereits darauf zugegriffen hat.
 
-Azure AD unterstützt freigegebene Konten für alle Lizenzpläne vom Typ Enterprise Mobility Suite (EMS) oder Azure AD Premium für alle Arten des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](../manage-apps/configure-single-sign-on-portal.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
+Azure AD unterstützt freigegebene Konten für alle Lizenzpläne vom Typ Enterprise Mobility Suite (EMS) oder Azure AD Premium für alle Arten des einmaligen Anmeldens per Kennwort. Sie können Konten für Tausende im Katalog befindliche, bereits integrierte Anwendungen gemeinsam nutzen und mithilfe [benutzerdefinierter SSO-Apps](../manage-apps/configure-single-sign-on-non-gallery-applications.md)eigene Anwendungen mit Kennwortauthentifizierung hinzufügen.
 
 Zu den Azure AD-Features zur gemeinsamen Nutzung von Konten gehören folgende Funktionen:
 

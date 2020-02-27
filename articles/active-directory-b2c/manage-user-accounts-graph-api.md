@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483226"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585627"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -61,9 +61,9 @@ In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im 
 
 | Eigenschaft   | type |Beschreibung|
 |:---------------|:--------|:----------|
-|signInType|string| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
-|Issuer (Aussteller)|string|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|
-|issuerAssignedId|string|Gibt den dem Benutzer vom Aussteller zugewiesenen eindeutigen Bezeichner an. Die Kombination aus **issuer** und **issuerAssignedId** muss innerhalb Ihres Mandanten eindeutig sein. Wenn für das lokale Konto **signInType** auf `emailAddress` oder `userName` festgelegt ist, stellt dies den Anmeldenamen für den Benutzer dar.<br>Wenn **signInType** auf <ul><li>`emailAddress` festgelegt ist (oder mit `emailAddress` beginnt wie bei `emailAddress1`), muss die **issuerAssignedId** eine gültige E-Mail-Adresse sein.</li><li>`userName` festgelegt (oder einen beliebigen anderen Wert) ist, muss die **issuerAssignedId** ein gültiger [lokaler Teil einer E-Mail-Adresse](https://tools.ietf.org/html/rfc3696#section-3) sein.</li><li>`federated` festgelegt ist, stellt die **issuerAssignedId** den eindeutigen Bezeichner des Verbundkontos dar.</li></ul>|
+|signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
+|Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|
+|issuerAssignedId|Zeichenfolge|Gibt den dem Benutzer vom Aussteller zugewiesenen eindeutigen Bezeichner an. Die Kombination aus **issuer** und **issuerAssignedId** muss innerhalb Ihres Mandanten eindeutig sein. Wenn für das lokale Konto **signInType** auf `emailAddress` oder `userName` festgelegt ist, stellt dies den Anmeldenamen für den Benutzer dar.<br>Wenn **signInType** auf <ul><li>`emailAddress` festgelegt ist (oder mit `emailAddress` beginnt wie bei `emailAddress1`), muss die **issuerAssignedId** eine gültige E-Mail-Adresse sein.</li><li>`userName` festgelegt (oder einen beliebigen anderen Wert) ist, muss die **issuerAssignedId** ein gültiger [lokaler Teil einer E-Mail-Adresse](https://tools.ietf.org/html/rfc3696#section-3) sein.</li><li>`federated` festgelegt ist, stellt die **issuerAssignedId** den eindeutigen Bezeichner des Verbundkontos dar.</li></ul>|
 
 Bei Verbundidentitäten handelt es sich abhängig vom Identitätsanbieter bei der **issuerAssignedId** um einen eindeutigen Wert für einen bestimmten Benutzer pro Anwendung oder ein Entwicklungskonto. Konfigurieren Sie die Azure AD B2C-Richtlinie mit der gleichen Anwendungs-ID, die zuvor vom Anbieter des sozialen Netzwerks zugewiesen wurde, oder mit der einer anderen Anwendung im selben Entwicklungskonto.
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-Das [Ausführen von API-Aufrufen mithilfe der Microsoft Graph-SDKs](https://docs.microsoft.comgraph/sdks/create-requests) umfasst Informationen zum Lesen und Schreiben von Informationen aus Microsoft Graph. Verwenden Sie `$select`, um die zurückgegebenen Eigenschaften zu steuern, benutzerdefinierte Abfrageparameter bereitzustellen und die Abfrageparameter `$filter` und `$orderBy` zu verwenden.
+Das [Ausführen von API-Aufrufen mithilfe der Microsoft Graph-SDKs](https://docs.microsoft.com/graph/sdks/create-requests) umfasst Informationen zum Lesen und Schreiben von Informationen aus Microsoft Graph. Verwenden Sie `$select`, um die zurückgegebenen Eigenschaften zu steuern, benutzerdefinierte Abfrageparameter bereitzustellen und die Abfrageparameter `$filter` und `$orderBy` zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

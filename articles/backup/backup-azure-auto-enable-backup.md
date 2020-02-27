@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450132"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584267"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -16,9 +16,9 @@ Eine der Hauptaufgaben eines Sicherungs- oder Kompatibilitätsadministrators in 
 
 Heute bietet Azure Backup eine integrierte Richtlinie (unter Verwendung von Azure Policy), die **allen Azure-VMS an einem bestimmten Standort innerhalb eines Abonnements oder einer Ressourcengruppe** zugewiesen werden kann. Wird diese Richtlinie einem bestimmten Bereich zugewiesen, werden alle in diesem Bereich erstellten neuen virtuellen Computer automatisch für die Sicherung in einem **vorhandenen Tresor am gleichen Speicherort und im gleichen Abonnement** konfiguriert. Der Benutzer kann den Tresor und die Aufbewahrungsrichtlinie angeben, die den gesicherten VMs zugeordnet werden sollen.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien 
+## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-* Die integrierte Richtlinie wird derzeit nur für Azure-VMs unterstützt. Benutzer müssen darauf achten, dass die bei der Zuweisung angegebene Aufbewahrungsrichtlinie eine VM-Aufbewahrungsrichtlinie ist. In [diesem](https://aka.ms/PolicySupportedSKUs) Dokument finden Sie alle von dieser Richtlinie unterstützten VM-SKUs.
+* Die integrierte Richtlinie wird derzeit nur für Azure-VMs unterstützt. Benutzer müssen darauf achten, dass die bei der Zuweisung angegebene Aufbewahrungsrichtlinie eine VM-Aufbewahrungsrichtlinie ist. In [diesem](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) Dokument finden Sie alle von dieser Richtlinie unterstützten VM-SKUs.
 
 * Die Richtlinie kann immer nur einem einzelnen Standort und Abonnement zugewiesen werden. Zum Aktivieren der Sicherung für standort- und abonnementübergreifende virtuelle Computer müssen mehrere Instanzen der Richtlinienzuweisung erstellt werden, eine für jede Kombination aus Standort und Abonnement.
 

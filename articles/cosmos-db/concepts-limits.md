@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 5681efc202df511745532e4a314e88b319e9880a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460210"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623407"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -26,7 +26,7 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 | Maximale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Maximale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | Standardmäßig 1.000.000. Sie können die Anzahl erhöhen, indem Sie [ein Azure-Supportticket senden](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). |
 | Maximale Anzahl RUs pro (logischem) Partitionsschlüssel | 10.000 |
-| Maximale Speicherkapazität aller Elemente pro (logischem) Partitionsschlüssel| 10 GB |
+| Maximale Speicherkapazität aller Elemente pro (logischem) Partitionsschlüssel| 20 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
 | Maximale Speicherkapazität pro Container | Unbegrenzt |
 | Maximale Speicherkapazität pro Datenbank | Unbegrenzt |

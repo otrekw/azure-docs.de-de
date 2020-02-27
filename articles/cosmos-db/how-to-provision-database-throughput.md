@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8b64d933057b3ddb07f5f99889c7d7c23c74f545
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 6b7ceca196831484e8f49482b8a18ac8648cac6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873657"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585474"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB
 
@@ -48,7 +48,7 @@ Weitere Informationen zum Erstellen einer Datenbank mit gemeinsamem Durchsatz fi
 
 ### <a id="dotnet-all"></a>Alle APIs
 
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET V2 SDK
 
 ```csharp
 //set the throughput for the database
@@ -63,9 +63,9 @@ await client.CreateDatabaseIfNotExistsAsync(
     options);
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.NET V3 SDK
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs" id="DatabaseCreateWithThroughput":::
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
 Ein ähnlicher Befehl kann über einen beliebigen CQL-kompatiblen Treiber ausgeführt werden. 

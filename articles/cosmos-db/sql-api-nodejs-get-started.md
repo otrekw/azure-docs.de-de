@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754825"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587429"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Tutorial: Erstellen einer Node.js-Konsolen-App mit dem JavaScript SDK zum Verwalten von Daten der Azure Cosmos DB-SQL-API
 
@@ -95,7 +95,7 @@ Ihre App ist erstellt. Stellen Sie nun sicher, dass sie mit Azure Cosmos DB komm
 
 1. Fügen Sie die kopierten Daten für ```database```, ```container```, und ```items``` an der Stelle in Ihr ```config```-Objekt ein, an der die Eigenschaften ```config.endpoint``` und ```config.key``` festgelegt werden. Wenn Sie bereits über Daten verfügen, die Sie in der Datenbank speichern möchten, können Sie das Datenmigrationstool in Azure Cosmos DB verwenden, anstatt die Daten hier zu definieren. Die Datei „config.js“ muss den folgenden Code enthalten:
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    Das JavaScript SDK verwendet die generischen Begriffe *Container* und *Element*. Ein Container kann eine Sammlung, ein Graph oder eine Tabelle sein. Ein Element kann ein Dokument, ein Edge/Vertex oder eine Zeile sein und stellt den Inhalt eines Containers dar. 
    
@@ -602,7 +602,7 @@ Das Löschen der erstellten Datenbank entfernt die Datenbank und alle untergeord
 
 Der Code sollte insgesamt wie folgt aussehen:
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 Suchen Sie in Ihrem Terminal nach der Datei ```app.js```, und führen Sie den folgenden Befehl aus: 
 

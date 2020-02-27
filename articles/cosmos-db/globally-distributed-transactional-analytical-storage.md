@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 18cf43ba137c92fc00d5f8e82e13501d03b4b6a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c2b79f8d0641b1a1386329a2add14ded766bf5a
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445401"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623392"
 ---
 # <a name="globally-distributed-transactional-and-analytical-storage-for-azure-cosmos-containers"></a>Global verteilter transaktionaler und analytischer Speicher für Azure Cosmos-Container
 
@@ -30,7 +30,7 @@ Die transaktionale Speicher-Engine wird durch lokale SSDs unterstützt, während
 |Funktion  |Transaktionaler Speicher  |Analytischer Speicher |
 |---------|---------|---------|
 |Maximaler Speicher pro Azure Cosmos-Container |   Unbegrenzt      |    Unbegrenzt     |
-|Maximaler Speicher pro logischem Partitionsschlüssel   |   10 GB      |   Unbegrenzt      |
+|Maximaler Speicher pro logischem Partitionsschlüssel   |   20 GB      |   Unbegrenzt      |
 |Speichercodierung  |   Zeilenorientiert, verwendet ein internes Format   |   Spaltenorientiert, verwendet das Apache Parquet-Format |
 |Ort der Speicherung |   Replizierter Speicher, der durch lokale/clusterinterne SSDs unterstützt wird |  Replizierter Speicher, der durch kostengünstige Remote-SSDs bzw. clusterexterne SSDs unterstützt wird       |
 |Beständigkeit  |    99,99999 (7–9 s)     |  99,99999 (7–9 s)       |

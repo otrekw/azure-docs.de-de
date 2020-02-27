@@ -2,17 +2,14 @@
 title: Vom API-Server autorisierte IP-Adressbereiche in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie Ihre Cluster durch Verwendung von IP-Adressbereichen für den Zugriff auf den API-Server in Azure Kubernetes Service (AKS) schützen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 5f3e6cf8c5de8d5f3de17ad0b5d4bb4c004c06df
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 80a8504e42eda966554d0151f54668015cf7ee83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442993"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596708"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Sicherer Zugriff auf den API-Server mit autorisierten IP-Adressbereichen in Azure Kubernetes Service (AKS)
 

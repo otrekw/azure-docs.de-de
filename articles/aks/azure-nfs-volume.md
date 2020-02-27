@@ -3,16 +3,15 @@ title: Erstellen eines NFS-Ubuntu-Servers (Network File System) für die Verwend
 description: Erfahren Sie, wie Sie manuell ein Volume eines NFS-Ubuntu Linux-Servers für die Verwendung mit Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
 author: ozboms
-ms.service: container-service
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: 9b9c4b326596887774d9dfc0dd792052ec672be2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063814"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596622"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes eines Linux-NFS-Servers (Network File System) mit Azure Kubernetes Service (AKS)
 Die Datenfreigabe zwischen Containern ist häufig eine notwendige Komponente containerbasierter Dienste und Anwendungen. Sie haben in der Regel verschiedene Pods, die Zugriff auf die gleichen Informationen auf einem externen permanenten Datenträger benötigen.    

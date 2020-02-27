@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698763"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585848"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
@@ -49,7 +49,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 
 **Tabelle 2: Gruppe optionaler Ansprüche in v1.0 und v2.0**
 
-| Name                       |  Beschreibung   | Tokentyp | Benutzertyp | Notizen  |
+| Name                       |  BESCHREIBUNG   | Tokentyp | Benutzertyp | Notizen  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Zeitpunkt der letzten Authentifizierung des Benutzers. Siehe OpenID Connect-Spezifikation.| JWT        |           |  |
 | `tenant_region_scope`      | Region des Ressourcenmandanten | JWT        |           | |
@@ -96,7 +96,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 
 **Tabelle 4: Werte zum Konfigurieren optionaler Ansprüche**
 
-| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | Beschreibung |
+| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | BESCHREIBUNG |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |             
@@ -186,7 +186,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name        | type                       | Beschreibung                                           |
+| Name        | type                       | BESCHREIBUNG                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -199,7 +199,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| Name                 | type                    | Beschreibung                                                                                                                                                                                                                                                                                                   |
+| Name                 | type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |
@@ -207,7 +207,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 | `additionalProperties` | Sammlung (Edm.String) | Zusätzliche Eigenschaften des Anspruchs. Wenn eine Eigenschaft in dieser Sammlung vorhanden ist, ändert sie das Verhalten des optionalen Anspruchs, der in der „name“-Eigenschaft angegeben ist.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurieren von optionalen Ansprüchen für die Verzeichniserweiterung
 
-Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Weitere Informationen finden Sie unter [Hinzufügen von benutzerdefinierten Daten zu Ressourcen mithilfe von Erweiterungen](https://docs.microsoft.com/graph/extensibility-overview). Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
+Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
 
 > [!NOTE]
 > - Verzeichnisschemaerweiterungen sind eine auf Azure AD beschränkte Funktion, d. h., wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.

@@ -2,16 +2,15 @@
 title: Übersicht über Consul
 description: Hier finden Sie eine Übersicht über Consul.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 7ffbd2386cd0e50cec8976e6bdd6c5778aa014d7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928426"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594208"
 ---
 # <a name="consul"></a>Consul
 
@@ -19,9 +18,9 @@ ms.locfileid: "73928426"
 
 [Consul][consul] ist eine Dienstnetzwerklösung für mehreren Rechenzentren, mit der Sie Dienste über Runtimeplattformen hinweg verbinden und schützen können. [Connect][consul-features] ist die Komponente, die Dienstmesh-Funktionen bereitstellt.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
-Consul stellt eine Datenebene bereit, die standardmäßig aus [Envoy][envoy-proxy]-basierten [Sidecars][consul-sidecar] besteht. Consul besitzt eine austauschbare Proxyarchitektur. Diese intelligenten Proxys steuern den gesamten ein- und ausgehenden Netzwerkdatenverkehr Ihrer Apps und Workloads.
+Consul stellt eine Datenebene bereit, die standardmäßig aus [Envoy][envoy-proxy]-basierten [Sidecars][consul-sidecar] besteht. Consul besitzt eine austauschbare Proxyarchitektur. Diese intelligenten Proxys steuern den gesamten ein- und ausgehenden Netzwerkdatenverkehr Ihrer Mesh-Apps und -Workloads.
 
 Die Steuerungsebene verwaltet die Konfiguration und die Richtlinie über die folgenden [Komponenten][consul-architecture]:
 
@@ -29,7 +28,7 @@ Die Steuerungsebene verwaltet die Konfiguration und die Richtlinie über die fol
 
 - **Client:** Ein im einfachen Clientmodus ausgeführter Consul-Agent. Auf jedem Computeknoten muss ein Client-Agent ausgeführt werden. Dieser Client handelt die Konfiguration und die Richtlinie zwischen den Workloads und der Consul-Konfiguration aus. 
 
-Das folgende Architekturdiagramm veranschaulicht, wie die verschiedenen Komponenten auf der Daten- und Steuerungsebene interagieren:
+Das folgende Architekturdiagramm veranschaulicht, wie die verschiedenen Komponenten auf der Daten- und Steuerungsebene interagieren.
 
 ![Übersicht über die Consul-Komponenten und die Architektur](media/servicemesh/consul/about-architecture.png)
 

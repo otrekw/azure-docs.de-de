@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092949"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585287"
 ---
 # <a name="use-the-change-feed-estimator"></a>Verwenden des Änderungsfeed-Estimators
 
@@ -33,11 +33,11 @@ Wie der [Änderungsfeedprozessor](./change-feed-processor.md) funktioniert auch 
 
 Hier sehen Sie ein Beispiel für die Definition eines Änderungsfeedprozessors:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
 Die richtige Methode zum Initialisieren eines Estimators zum Messen dieses Prozessors wäre die Verwendung von `GetChangeFeedEstimatorBuilder` wie folgt:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
 Hier stimmen sowohl `leaseContainer` als auch die Namen von Prozessor und Estimator überein.
 
@@ -45,7 +45,7 @@ Die anderen beiden Parameter sind der Delegat. Dieser erhält eine Zahl, die ang
 
 Hier sehen Sie ein Beispiel für einen Delegat, der die Schätzung empfängt:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 Sie können diese Schätzung an Ihre Überwachungslösung senden, um Ihren Fortschritt im Laufe der Zeit zu prüfen.
 

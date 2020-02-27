@@ -2,17 +2,16 @@
 title: Installieren von Linkerd in Azure Kubernetes Service (AKS)
 description: Hier erfahren Sie, wie Sie Linkerd installieren und zum Erstellen eines Dienstmeshs in einem AKS-Cluster (Azure Kubernetes Service) verwenden.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f70052a62152a20f808c1e491a663d1406fbd407
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 419b61527b68299c82dec4f2f5da6b0220859cc1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747708"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593719"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Installieren von Linkerd in Azure Kubernetes Service (AKS)
 
@@ -28,7 +27,7 @@ Dieser Artikel beschreibt, wie Sie Linkerd installieren. Die Linkerd-Clientbinä
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * Herunterladen und Installieren der Linkerd-Clientbinärdatei
+> * Herunterladen und Installieren der Linkerd-Clientbinärdatei „linkerd“
 > * Installieren von Linkerd in AKS
 > * Überprüfen der Linkerd-Installation
 > * Zugreifen auf das Dashboard
@@ -137,7 +136,7 @@ kubectl get svc --namespace linkerd --output wide
 kubectl get pod --namespace linkerd --output wide
 ```
 
-Die folgende Beispielausgabe zeigt die Dienste und Pods (die auf Linux-Knoten geplant sind), die jetzt ausgeführt werden sollten:
+Die folgende Beispielausgabe zeigt die Dienste und (für Linux-Knoten geplanten) Pods, die nun ausgeführt werden sollten:
 
 ```console
 NAME                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)             AGE  SELECTOR
@@ -263,7 +262,7 @@ Informationen zu weiteren Installations- und Konfigurationsoptionen für Linkerd
 - [Linkerd – Helm-Installation][linkerd-install-with-helm]
 - [Linkerd – mehrstufige Installation für Rollenberechtigungen][linkerd-multi-stage-installation]
 
-Mithilfe von Folgendem können Sie weitere Szenarien ansehen:
+Weitere Szenarien finden Sie hier:
 
 - [Demo zu Linkerd emojivoto][linkerd-demo-emojivoto]
 - [Demo zu Linkerd books][linkerd-demo-books]

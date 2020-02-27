@@ -4,12 +4,12 @@ description: Dieser Artikel enthält eine Übersicht über den DPM-/Azure Backup
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173333"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586477"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Sichern einer SharePoint-Farm in Azure mit DPM
 
@@ -33,7 +33,7 @@ Vergewissern Sie sich zunächst, dass alle [Voraussetzungen für die Verwendung 
 
 ### <a name="dpm-agent"></a>DPM-Agent
 
-Der DPM-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. DPM benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
+Der DPM-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. DPM benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
 
 ### <a name="sharepoint-farm"></a>SharePoint-Farm
 
@@ -102,7 +102,7 @@ Wenn Sie DPM und die SharePoint-Farm wie oben beschrieben konfiguriert haben, ka
     ![Datenschutzmethode auswählen](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > Die Datenträgerschutz-Methode erleichtert das Einhalten kurzer Wiederherstellungszeit-Ziele. Im Gegensatz zu Bändern stellt Azure eine kostengünstige, langfristige Schutzlösung dar. Weitere Informationen finden Sie unter [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/)
+   > Die Datenträgerschutz-Methode erleichtert das Einhalten kurzer Wiederherstellungszeit-Ziele. Im Gegensatz zu Bändern stellt Azure eine kostengünstige, langfristige Schutzlösung dar. Weitere Informationen finden Sie unter [Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur](./backup-azure-backup-cloud-as-tape.md)
    >
    >
 5. Wählen Sie auf der Seite **Kurzfristige Ziele angeben** Ihre bevorzugte **Beibehaltungsdauer** aus, und geben Sie an, wann die Sicherungen durchgeführt werden sollen.
@@ -243,5 +243,5 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zum DPM-Schutz von SharePoint finden Sie in der dazugehörigen [Videoreihe](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* [Versionsanmerkungen für System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
-* [Versionsanmerkungen für Data Protection Manager in System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)
+* [Versionsanmerkungen für System Center 2012 – Data Protection Manager](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)
+* [Versionsanmerkungen für Data Protection Manager in System Center 2012 SP1](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN)

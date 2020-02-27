@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b9c57378df1510179c5a45b6aa669bab804aca5e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484433"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605137"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -181,7 +181,7 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 
 Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen von Ausnahmen in .NET-Apps](/azure/azure-monitor/app/snapshot-debugger) und [Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen](/azure/azure-monitor/app/snapshot-debugger-troubleshoot).
 
-|Eigenschaft | Standard | Beschreibung |
+|Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | agentEndpoint | NULL | Der Endpunkt wird zum Herstellen einer Verbindung mit dem Application Insights-Momentaufnahmedebuggerdienst verwendet. Wenn der Wert NULL vorliegt, wird ein Standardendpunkt verwendet. |
 | captureSnapshotMemoryWeight | 0.5 | Die Gewichtung der Größe des aktuellen Prozessarbeitsspeichers für die Überprüfung, ob ausreichend Arbeitsspeicher zum Erstellen einer Momentaufnahme verfügbar ist. Es wird ein Wert erwartet, der größer als 0 (null) und ein echter Bruch ist (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -208,7 +208,7 @@ Weitere Informationen zu Momentaufnahmen finden Sie unter [Debugmomentaufnahmen 
 
 ## <a name="cosmosdb"></a>cosmosDb
 
-Die Konfigurationseinstellung finden Sie in [Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb-v2.md#host-json).
+Die Konfigurationseinstellung finden Sie in [Cosmos DB-Trigger und -Bindungen](functions-bindings-cosmosdb-v2-output.md#host-json).
 
 ## <a name="durabletask"></a>durableTask
 
@@ -216,7 +216,7 @@ Die Konfigurationseinstellung finden Sie in [Bindungen für Durable Functions](d
 
 ## <a name="eventhub"></a>eventHub
 
-Die Konfigurationseinstellung finden Sie in [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md#host-json). 
+Die Konfigurationseinstellung finden Sie in [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs-output.md#host-json). 
 
 ## <a name="extensions"></a>Erweiterungen
 
@@ -268,7 +268,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |enabled|true|Gibt an, ob die Funktion aktiviert ist. | 
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
@@ -300,7 +300,7 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definiert, welche Stufe der Dateiprotokollierung aktiviert ist.  Optionen sind `never`, `always`, `debugOnly`. |
 |logLevel|–|Objekt, das das Filtern der Protokollkategorie nach Funktionen in der App definiert. Version 2.x oder höher entspricht bei der Filterung der Protokollkategorie dem Layout von ASP.NET Core. Mit dieser Einstellung können Sie die Protokollierung nach bestimmten Funktionen filtern. Weitere Informationen finden Sie unter [Protokollfilterung](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) in der Dokumentation zu ASP.NET Core. |
@@ -367,7 +367,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Der Zeitraum, für den Sperren auf Funktionsebene gelten. Die Sperren werden automatisch verlängert.| 
 |listenerLockPeriod|00:01:00|Der Zeitraum, für den Listenersperren gelten.| 

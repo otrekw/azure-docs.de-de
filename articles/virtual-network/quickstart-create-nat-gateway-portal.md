@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 8913c956554fa7bf1d0362b44dc6f8031ffd74f9
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429131"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588738"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
@@ -30,11 +30,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-> [!IMPORTANT]
-> Greifen Sie nach dem [Aktivieren der Vorschauversion](./nat-overview.md#enable-preview) von Virtual Network NAT für Ihr Abonnement über https://aka.ms/natportal auf das Portal zu.
-
-Melden Sie sich beim [Azure-Portal](https://aka.ms/natportal) an.
-
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -49,7 +45,7 @@ Sie müssen zunächst die Ressourcengruppe und das virtuelle Netzwerk erstellen,
     | Name | Geben Sie **myVNet** ein. |
     | Adressraum | Geben Sie **192.168.0.0/16** ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
-    | Resource group | Wählen Sie „Neu erstellen“ aus: **myResourceGroupNAT**. |
+    | Resource group | Wählen Sie „Neu erstellen“ und dann **myResourceGroupNAT** aus. |
     | Location | Wählen Sie **USA, Osten 2** aus.|
     | Subnetzname | Geben Sie **mySubnet** ein. |
     | Subnetzadressbereich | Geben Sie **192.168.0.0/24** ein. |
@@ -121,7 +117,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
    - **Instanzendetails** > **Region**: Wählen Sie **USA, Osten 2** aus.
    - **Instanzendetails** > **Präfixgröße**: Wählen Sie **/31 (2 addresses)** (/31 (2 Adressen)) aus.
 
-3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Bewerten + erstellen** aus.
+3. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Überprüfen + erstellen** aus.
 
 4. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
    
@@ -186,6 +182,6 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
-- [Senden Sie Feedback zur Public Preview.](https://aka.ms/natfeedback)
+- [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 > [!div class="nextstepaction"]
 

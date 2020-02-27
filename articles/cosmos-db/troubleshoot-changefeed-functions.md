@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441116"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605076"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für Cosmos DB
 
@@ -66,7 +66,7 @@ Dieses Szenario kann mehrere Ursachen haben, und alle von ihnen sollten überpr�
 
 1. Ist Ihre Azure-Funktion in derselben Region wie Ihr Azure Cosmos-Konto bereitgestellt? Für optimale Netzwerklatenz müssen sich die Azure-Funktion und Ihr Azure Cosmos-Konto in derselben Azure-Region befinden.
 2. Treten die Änderungen in Ihrem Azure Cosmos-Container laufend oder sporadisch auf?
-Wenn Letzteres der Fall ist, kann zwischen dem Speichern der Änderungen und dem Übernehmen durch die Azure-Funktion eine gewisse Verzögerung auftreten. Dies hat folgende Ursache: Wenn der Trigger intern eine Überprüfung auf Änderungen in Ihrem Azure Cosmos-Container durchführt und keine für Lesevorgänge anstehenden Änderungen findet, wechselt er für einen konfigurierbaren Zeitraum (standardmäßig 5 Sekunden) in den Ruhezustand, ehe er auf neue Änderungen prüft (um einen hohen RU-Verbrauch zu vermeiden). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
+Wenn Letzteres der Fall ist, kann zwischen dem Speichern der Änderungen und dem Übernehmen durch die Azure-Funktion eine gewisse Verzögerung auftreten. Dies hat folgende Ursache: Wenn der Trigger intern eine Überprüfung auf Änderungen in Ihrem Azure Cosmos-Container durchführt und keine für Lesevorgänge anstehenden Änderungen findet, wechselt er für einen konfigurierbaren Zeitraum (standardmäßig 5 Sekunden) in den Ruhezustand, ehe er auf neue Änderungen prüft (um einen hohen RU-Verbrauch zu vermeiden). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
 3. Für Ihren Azure Cosmos-Container gilt möglicherweise eine [Ratenbegrenzung](./request-units.md).
 4. Sie können mit dem `PreferredLocations`-Attribut im Trigger eine durch Trennzeichen getrennte Liste von Azure-Regionen angeben, um eine Verbindungsreihenfolge mit benutzerdefinierten Präferenzen festzulegen.
 
@@ -93,10 +93,10 @@ Eine einfache Möglichkeit, diese Situation zu umgehen, besteht darin, ein `Leas
 So verarbeiten Sie alle Elemente in einem Container von Anfang an erneut:
 1. Beenden Sie Ihre Azure-Funktion, wenn sie gerade ausgeführt wird. 
 1. Löschen Sie die Dokumente in der Lease-Sammlung (oder löschen Sie die Lease-Sammlung, und erstellen Sie sie erneut, damit sie leer ist).
-1. Legen Sie das CosmosDBTrigger-Attribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) in der Funktion auf „true“ fest. 
+1. Legen Sie das CosmosDBTrigger-Attribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) in der Funktion auf „true“ fest. 
 1. Starten Sie die Azure-Funktion neu. Jetzt werden alle Änderungen von Anfang an gelesen und verarbeitet. 
 
-Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) auf „true“ wird die Azure-Funktion angewiesen, damit zu beginnen, Änderungen ab dem Anfang des Verlaufs der Sammlung statt ab der aktuellen Uhrzeit zu lesen. Dies funktioniert nur, wenn es keine bereits erstellten Leases (d.h. Dokumente in der Leases-Sammlung) gibt. Wird diese Eigenschaft auf „true“ festgelegt, wenn es bereits Leases gibt, hat dies keine Auswirkungen. Wenn in diesem Szenario eine Funktion beendet und neu gestartet wird, beginnt sie mit dem Lesen ab dem letzten Prüfpunkt, wie es in der Leases-Sammlung definiert wurde. Führen Sie die vorstehenden Schritte 1–4 aus, um die erneute Verarbeitung von Anfang an auszuführen.  
+Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) auf „true“ wird die Azure-Funktion angewiesen, damit zu beginnen, Änderungen ab dem Anfang des Verlaufs der Sammlung statt ab der aktuellen Uhrzeit zu lesen. Dies funktioniert nur, wenn es keine bereits erstellten Leases (d.h. Dokumente in der Leases-Sammlung) gibt. Wird diese Eigenschaft auf „true“ festgelegt, wenn es bereits Leases gibt, hat dies keine Auswirkungen. Wenn in diesem Szenario eine Funktion beendet und neu gestartet wird, beginnt sie mit dem Lesen ab dem letzten Prüfpunkt, wie es in der Leases-Sammlung definiert wurde. Führen Sie die vorstehenden Schritte 1–4 aus, um die erneute Verarbeitung von Anfang an auszuführen.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList\<Dokument> oder JArray erfolgen
 
@@ -106,7 +106,7 @@ Zum Umgehen dieses Problems entfernen Sie den hinzugefügten manuellen NuGet-Ver
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Ändern des Abrufintervalls der Azure-Funktion für die erkannten Änderungen
 
-Wie bereits zuvor für [Der Empfang meiner Änderungen dauert zu lange](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received) erläutert, befindet sich die Azure-Funktion für einen konfigurierbaren Zeitraum im Ruhezustand (in der Standardeinstellung für 5 Sekunden), bevor auf neue Änderungen überprüft wird (um einen hohen RU-Verbrauch zu verhindern). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
+Wie bereits zuvor für [Der Empfang meiner Änderungen dauert zu lange](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received) erläutert, befindet sich die Azure-Funktion für einen konfigurierbaren Zeitraum im Ruhezustand (in der Standardeinstellung für 5 Sekunden), bevor auf neue Änderungen überprüft wird (um einen hohen RU-Verbrauch zu verhindern). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

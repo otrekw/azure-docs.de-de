@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445576"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588906"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Änderungsfeedprozessor in Azure Cosmos DB 
 
@@ -41,13 +41,13 @@ Um besser zu verstehen, wie diese vier Elemente von Change Feed Processor zusamm
 
 Der Einstiegspunkt ist immer der überwachte Container. Von einer `Container`-Instanz aus wird `GetChangeFeedProcessorBuilder` aufgerufen:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
 
 Der erste Parameter ist hierbei ein eindeutiger Name, der das Ziel dieses Prozessors beschreibt. Der zweite Name ist die Delegatimplementierung zur Behandlung von Änderungen. 
 
 Ein Beispiel für einen Delegaten wäre etwa:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
 
 Abschließend wird mit `WithInstanceName` ein Name für diese Prozessorinstanz und mit `WithLeaseContainer` der Container für die Verwaltung des Leasezustands definiert.
 

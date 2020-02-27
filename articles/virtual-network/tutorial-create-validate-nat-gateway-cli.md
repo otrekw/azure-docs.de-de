@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: bc815281a005f750072176015a937547ff6d4670
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 26a427baddc99fa702b638c36b5378750364c849
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429071"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587021"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts
 
@@ -34,8 +34,6 @@ Sie können dieses Tutorial mithilfe von Azure Cloud Shell absolvieren oder die 
 
 Wenn Sie diese Befehle lokal ausführen möchten, müssen Sie die CLI installieren.  Für dieses Tutorial müssen Sie mindestens Version 2.0.71 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
-> [!IMPORTANT]
-> Greifen Sie nach dem [Aktivieren der Vorschauversion](./nat-overview.md#enable-preview) von Virtual Network NAT für Ihr Abonnement unter https://aka.ms/natportal auf das Portal zu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -411,7 +409,7 @@ Mit diesem Befehl werden 100 Anforderungen (jeweils zehn) mit einem Timeout von
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) entfernen.
+Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) entfernen.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupNAT
@@ -424,9 +422,9 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 
 - Informieren Sie sich über [Virtual Network NAT](./nat-overview.md).
 - Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
 - [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]

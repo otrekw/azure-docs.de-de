@@ -1,16 +1,16 @@
 ---
 title: Kontinuierliches Aktualisieren von Funktions-App-Code mithilfe von Azure DevOps
 description: Erfahren Sie, wie Sie eine Azure DevOps-Pipeline mit Azure Functions als Ziel einrichten.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/18/2019
-ms.author: aelnably
-ms.openlocfilehash: e6ea7edb16aa28428754cbe920e1d350aded0cff
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.author: cshoe
+ms.openlocfilehash: 1d627329a6d5f4c283a4480c1b0b1077a8e856cf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834023"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649941"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 
@@ -29,7 +29,7 @@ Zum Erstellen einer YAML-basierten Pipeline erstellen Sie die App zunächst und 
 
 Wie Sie Ihre App in Azure Pipelines erstellen, hängt von der Programmiersprache Ihrer App ab. Jede Sprache verfügt über bestimmte Buildschritte, mit denen ein Bereitstellungsartefakt erstellt wird. Ein Bereitstellungsartefakt wird zum Bereitstellen Ihrer Funktions-App in Azure verwendet.
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Sie können die YAML-Datei zum Erstellen einer .NET-App mithilfe des folgenden Beispiels erstellen:
 
@@ -60,7 +60,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine JavaScript-App zu erstellen:
 
@@ -88,7 +88,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Sie können eins der folgenden Beispiele zum Erstellen einer YAML-Datei verwenden, um eine App für eine bestimmte Python-Version zu erstellen. Python wird nur für Funktions-Apps unterstützt, die unter Linux ausgeführt werden.
 
@@ -150,7 +150,7 @@ steps:
     artifactName: 'drop'
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Sie können das folgende Beispiel zum Erstellen einer YAML-Datei verwenden, um eine PowerShell-App zu verpacken. PowerShell wird nur für Windows Azure Functions unterstützt.
 

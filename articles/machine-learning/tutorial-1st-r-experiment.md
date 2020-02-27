@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 09c976f3076ea41a0441ea62a14ba4d45395a1d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191250"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648290"
 ---
 # <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Tutorial: Erstellen eines logistischen Regressionsmodells in R mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 
 ## <a name="azure"></a>Klonen eines Notebook-Ordners
 
-In diesem Beispiel wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](how-to-configure-environment.md#local), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
+In diesem Beispiel wird der cloudbasierte Notebook-Server in Ihrem Arbeitsbereich für eine vorkonfigurierte Umgebung ohne Installationsaufwand verwendet. Verwenden Sie [Ihre eigene Umgebung](https://azure.github.io/azureml-sdk-for-r/articles/installation.html), wenn Sie Ihre Umgebung, Pakete und Abhängigkeiten lieber selbst gestalten möchten.
 
 Sie schließen die Einrichtung des folgenden Experiments ab und führen Schritte im Azure Machine Learning-Studio aus. Diese konsolidierte Oberfläche enthält Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler aller Qualifikationen.
 

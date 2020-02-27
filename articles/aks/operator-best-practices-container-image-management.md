@@ -2,17 +2,14 @@
 title: Best Practices für Entwickler – Containerimageverwaltung in Azure Kubernetes Service (AKS)
 description: Lernen Sie die bewährten Methoden für den Clusteroperator zum Verwalten und Absichern von Containerimages in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: cd859a4009782ca39732ec004a3d3e05edd377b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442901"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594742"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Containerimageverwaltung und Sicherheit in Azure Kubernetes Service (AKS)
 

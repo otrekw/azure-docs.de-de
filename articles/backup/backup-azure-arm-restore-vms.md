@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: d83c7dae65c214e546cf309bbefe507d3d591a2d
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 05ad6c4eab61ccf5bc0884da63ebda7ba76ac583
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371304"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597557"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -217,7 +217,7 @@ Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicheru
 Nach dem Wiederherstellen einer VM gibt es eine Reihe von Dingen zu beachten:
 
 - Erweiterungen, die während der Konfiguration der Sicherung installiert, aber nicht aktiviert sind. Falls ein Problem auftritt, installieren Sie die Erweiterungen neu.
-- Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](/previous-versions/azure/virtual-network/virtual-networks-reserved-private-ip#how-to-add-a-static-internal-ip-to-an-existing-vm).
+- Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
 - Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
 - Bei Verwendung einer Cloud-Init-basierten Linux-Verteilung wie etwa Ubuntu wird das Kennwort aus Sicherheitsgründen nach der Wiederherstellung blockiert. Verwenden Sie zum [Zurücksetzen des Kennworts](../virtual-machines/linux/reset-password.md) die VMAccess-Erweiterung auf dem wiederhergestellten virtuellen Computer. Wir empfehlen, bei diesen Verteilungen SSH-Schlüssel zu verwenden, sodass Sie das Kennwort nach der Wiederherstellung nicht zurücksetzen müssen.
 - Wenn Sie nach der Wiederherstellung nicht auf die VM zugreifen können, weil die Beziehung zwischen ihr und einem Domänencontroller getrennt wurde, führen Sie die folgenden Schritte aus, um die VM aufzurufen:

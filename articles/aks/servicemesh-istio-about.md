@@ -2,16 +2,15 @@
 title: Übersicht über Istio
 description: Verschaffen Sie sich einen Überblick über Istio.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 3db2a3d75df08e7c668b1983ad9b4493446475df
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529866"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593899"
 ---
 # <a name="istio"></a>Istio
 
@@ -19,7 +18,7 @@ ms.locfileid: "72529866"
 
 [Istio][istio] ist ein anpassbares und erweiterbares Dienstmesh mit vollem Funktionsumfang.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Istio stellt eine Datenebene bereit, die aus [Envoy][envoy-proxy]-basierten Sidecars besteht. Diese intelligenten Proxys steuern den gesamten ein- und ausgehenden Netzwerkdatenverkehr Ihrer Mesh-Apps und -Workloads.
 

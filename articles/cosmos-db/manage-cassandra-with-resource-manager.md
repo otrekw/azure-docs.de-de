@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e3dd086108ba8c518bf7caf027f149de2ab70e57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980615"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588806"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Cassandra-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
@@ -25,7 +25,7 @@ Erstellen Sie Azure Cosmos DB-Ressourcen mithilfe einer Azure Resource Manager-V
 > Kontonamen müssen Kleinbuchstaben enthalten; ihre Länge darf maximal 44 Zeichen betragen.
 > Zum Aktualisieren der RU/s müssen Sie die Vorlage mit den aktualisierten Eigenschaftswerten für den Durchsatz erneut übermitteln.
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>Bereitstellen mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
 

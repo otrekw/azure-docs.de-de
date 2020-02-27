@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: aa03e388019bf696324ea7af6062ec98386df5fa
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827046"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612749"
 ---
 # <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Troubleshooting für Probleme bei der Anmeldung bei einer mit Azure AD Domain Services verwalteten Domäne
 
@@ -59,7 +59,7 @@ Mit Azure AD DS verwaltete Domänen ohne lokale Synchronisierung, nur mit Konten
     * [Ändern Sie das Kennwort für das Konto][enable-user-accounts], um die erforderlichen Kennworthashes zu generieren, und warten Sie 15 Minuten, bevor Sie versuchen, sich erneut anzumelden.
     * Wenn Sie Azure AD DS deaktivieren und dann erneut aktivieren, muss jedes Konto die Schritte erneut ausführen, um sein Kennwort zu ändern und die erforderlichen Kennworthashes zu generieren.
 * **Ja, das Kennwort wurde geändert.**
-    * Versuchen Sie, sich mit dem Format *UPN* anzumelden, z. B. `driley@contoso.com`, anstelle des Formats *SAMAccountName*, z. B. `CONTOSO\deeriley`.
+    * Versuchen Sie, sich mit dem Format *UPN* anzumelden, z. B. `driley@aaddscontoso.com`, anstelle des Formats *SAMAccountName*, z. B. `AADDSCONTOSO\deeriley`.
     * Der *SAMAccountName* wird möglicherweise automatisch für Benutzer generiert, deren UPN-Präfix übermäßig lang ist oder deren Präfix mit dem eines anderen Benutzers in der verwalteten Domäne übereinstimmt. Das Format *UPN* ist innerhalb eines Azure AD-Mandanten garantiert eindeutig.
 
 ## <a name="the-account-is-locked-out"></a>Das Konto ist gesperrt
@@ -72,7 +72,7 @@ Weitere Informationen zum Beheben von Problemen bezüglich Kontosperrungen finde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sollten beim Verknüpfen Ihres VM mit der durch Azure AD DS verwalteten Domäne weitere Probleme auftreten, [öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support].
+Sollten beim Einbinden Ihrer VM in die von Azure AD DS verwaltete Domäne weiterhin Probleme auftreten, [suchen Sie Hilfe, und öffnen Sie ein Supportticket für Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md

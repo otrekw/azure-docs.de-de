@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f32ea2ae0be66259ff153c24bfd10e179fddbbe5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671806"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559027"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 
-[GitHub-Aktionen](https://help.github.com/en/articles/about-github-actions) bieten Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Mit der [Azure App Service-Aktion für Container](https://github.com/Azure/webapps-container-deploy) können Sie Ihren Workflow automatisieren, um Apps mithilfe von GitHub-Aktionen als [benutzerdefinierte Container in App Service](https://azure.microsoft.com/services/app-service/containers/) bereitzustellen.
+[GitHub Actions](https://help.github.com/en/articles/about-github-actions) bietet Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Mit der [Azure App Service-Aktion für Container](https://github.com/Azure/webapps-container-deploy) können Sie Ihren Workflow automatisieren, um Apps mithilfe von GitHub-Aktionen als [benutzerdefinierte Container in App Service](https://azure.microsoft.com/services/app-service/containers/) bereitzustellen.
 
 > [!IMPORTANT]
 > GitHub Actions liegt zurzeit in einer Betaversion vor. Sie müssen sich zunächst mit Ihrem GitHub-Konto [registrieren, um die Vorschau nutzen zu können](https://github.com/features/actions).
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
@@ -143,7 +143,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'

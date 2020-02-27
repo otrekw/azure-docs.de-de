@@ -1,21 +1,21 @@
 ---
 title: Durchführen einer Ursachenanalyse für eine Warnung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Time Series Insights eine Ursachenanalyse für eine Warnung durchführen.
-author: aditidugar
-ms.author: adugar
+author: Philmea
+ms.author: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 70d29359d4a4bcf9f5badbbf0c553d7bed88a02b
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: c3cb940583677d813873c07fbfa679fdcc1dff59
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284561"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565467"
 ---
-# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Tutorial: Durchführen einer Ursachenanalyse für eine Warnung
+# <a name="tutorial-conduct-a-root-cause-analysis-on-an-alert"></a>Tutorial: Ausführen einer Analyse der Grundursache für eine Warnung
 
 In diesem Tutorial erfahren Sie, wie Sie den Solution Accelerator für die Remoteüberwachung verwenden, um die Ursache einer Warnung zu diagnostizieren. Sie stellen im Dashboard der Remoteüberwachungslösung fest, dass eine Warnung ausgelöst wurde, und verwenden den Explorer von Azure Time Series Insights, um die Ursache zu untersuchen.
 

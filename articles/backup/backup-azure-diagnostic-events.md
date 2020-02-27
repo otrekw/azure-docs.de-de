@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280992"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583944"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -21,14 +21,15 @@ Sie können Diagnoseereignisse für einen Recovery Services-Tresor über das Azu
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Diagnoseereignisse für Azure Backup-Benutzer verfügbar
 
 Azure Backup bietet die folgenden Diagnoseereignisse, die jeweils ausführliche Daten zu einer bestimmten Reihe von sicherungsbezogenen Artefakten bereitstellen:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Datenmodell für Azure Backup-Diagnoseereignisse](https://aka.ms/diagnosticsdatamodel)
+[Datenmodell für Azure Backup-Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Daten für diese Ereignisse können an ein Speicherkonto, einen Log Analytics-Arbeitsbereich oder einen Event Hub gesendet werden. Wenn Sie diese Daten an einen Log Analytics-Arbeitsbereich senden, müssen Sie auf den Umschalter **Resource Specific** (Ressourcenspezifisch) auf dem Bildschirm **Diagnoseeinstellungen** klicken (weitere Informationen in den folgenden Abschnitten).
 
@@ -37,6 +38,7 @@ Daten für diese Ereignisse können an ein Speicherkonto, einen Log Analytics-Ar
 Mit der Ausrichtung auf die Azure Log Analytics-Roadmap ermöglicht Azure Backup für die Sicherung jetzt das Senden von Tresordiagnosedaten an dedizierte Log Analytics-Tabellen. Diese werden als [ressourcenspezifische Tabellen](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific) bezeichnet.
 
 So senden Sie Tresordiagnosedaten an Log Analytics:
+
 1.  Navigieren Sie zum Tresor, und klicken Sie auf **Diagnoseeinstellungen**. Klicken Sie auf **+ Add Diagnostic Setting** (Diagnoseeinstellung hinzufügen).
 2.  Geben Sie einen Namen für die Diagnoseeinstellung ein.
 3.  Aktivieren Sie das Kontrollkästchen **Send to Log Analytics** (An Log Analytics senden), und wählen Sie einen Log Analytics-Arbeitsbereich aus.
@@ -84,4 +86,4 @@ Die folgende Abbildung zeigt ein Beispiel für einen Benutzer, der über drei Di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Informationen zum Log Analytics-Datenmodell für Diagnoseereignisse](https://aka.ms/diagnosticsdatamodel)
+[Informationen zum Log Analytics-Datenmodell für Diagnoseereignisse](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268853"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565416"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -105,7 +105,7 @@ Für die Self-Service-App-Verwaltung ist ein anfängliches Setup durch einen glo
 2. Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 3. Klicken Sie unter **Verwalten** auf **Unternehmensanwendungen** > **Alle Anwendungen**.
 4. Suchen Sie in der Anwendungsliste nach der App, und öffnen Sie diese.
-5. Wählen Sie unter **Verwalten** die Option **Einmaliges Anmelden** aus, und konfigurieren Sie die Anwendung für einmaliges Anmelden. (Details finden Sie unter [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+5. Wählen Sie unter **Verwalten** die Option **Einmaliges Anmelden** aus, und konfigurieren Sie die Anwendung für einmaliges Anmelden. (Details finden Sie unter [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
 6. Wählen Sie unter **Verwalten** die Option **Self-Service** aus, und richten Sie den Self-Service-App-Zugriff ein. (Details finden Sie unter [Verwenden des Self-Service-App-Zugriffs](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]

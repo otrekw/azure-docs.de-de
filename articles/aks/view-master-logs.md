@@ -2,17 +2,14 @@
 title: Anzeigen von Azure Kubernetes Service-Controllerprotokollen (AKS)
 description: Erfahren Sie, wie die Protokolle für den Kubernetes-Masterknoten in Azure Kubernetes Service (AKS) aktiviert und angezeigt werden.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: mlearned
-ms.openlocfilehash: dc72a8d448a189918def35da0250d83c81da7fa0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f759f15cf98546cb95ba0adb5890885f85ca6aa1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812815"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592787"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
@@ -107,7 +104,7 @@ Weitere Informationen zum Abfragen und Filtern Ihrer Protokolldaten finden Sie u
 
 Als Unterstützung beim Analysieren der Protokolldaten wird in der folgenden Tabelle das für die einzelnen Ereignisse verwendete Schema erläutert:
 
-| Feldname               | Beschreibung |
+| Feldname               | BESCHREIBUNG |
 |--------------------------|-------------|
 | *Ressourcen-ID*             | Azure-Ressource, die das Protokoll erstellt hat |
 | *time*                   | Zeitstempel des Hochladens des Protokolls |
@@ -120,7 +117,7 @@ Als Unterstützung beim Analysieren der Protokolldaten wird in der folgenden Tab
 
 ## <a name="log-roles"></a>Protokollrollen
 
-| Role                     | Beschreibung |
+| Role                     | BESCHREIBUNG |
 |--------------------------|-------------|
 | *aksService*             | Der Anzeigename im Überwachungsprotokoll für den Vorgang auf der Steuerungsebene (aus „hcpService“). |
 | *masterclient*           | Der Anzeigename im Überwachungsprotokoll für „MasterClientCertificate“ (das Zertifikat, das von „az aks get-credentials“ zurückgegeben wird). |
