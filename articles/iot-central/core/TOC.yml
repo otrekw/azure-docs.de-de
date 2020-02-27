@@ -21,6 +21,8 @@
   items:
     - name: Herstellen einer Verbindung
       items:
+        - name: Herstellen einer Verbindung mit einem Gerät
+          href: tutorial-connect-device.md
         - name: Herstellen einer Verbindung mit einem Plug & Play-Gerät (Vorschauversion)
           href: tutorial-connect-pnp-device.md
         - name: Erstellen einer Gatewaygerätevorlage

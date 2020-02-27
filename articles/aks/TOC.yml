@@ -105,8 +105,8 @@
               href: developer-best-practices-pod-security.md
     - name: Kontingente und regionale Grenzwerte
       href: quotas-skus-regions.md
-    - name: Migrieren von ACS zu AKS
-      href: acs-aks-migration.md
+    - name: Migrieren zu ARM
+      href: aks-migration.md
     - name: Unterstützte Kubernetes-Version
       href: supported-kubernetes-versions.md
     - name: Sicherheitshärtung im Hostbetriebssystem

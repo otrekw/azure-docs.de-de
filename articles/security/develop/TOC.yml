@@ -54,24 +54,26 @@
         - name: Releases
           href: threat-modeling-tool-releases.md
           items:
-            - name: 'Threat Modeling Tool, allgemein verfügbares Release 7.1.5091.2: 12.9.2018'
+            - name: 'Threat Modeling Tool, allgemein verfügbares Release 7.1.5091.2: 12. September 2018'
               href: threat-modeling-tool-releases-71509112.md
-            - name: 'Threat Modeling Tool, Updaterelease 7.1.51023.1: 1.11.2018'
+            - name: 'Threat Modeling Tool, Updaterelease 7.1.51023.1: 1. November 2018'
               href: threat-modeling-tool-releases-71510231.md
-            - name: 'Threat Modeling Tool, Updaterelease 7.1.60126.1: 29.1.2019'
+            - name: 'Threat Modeling Tool, Updaterelease 7.1.60126.1: 29. Januar 2019'
               href: threat-modeling-tool-releases-71601261.md
-            - name: 'Threat Modeling Tool, Updaterelease 7.1.60408.1: 9.4.2019'
+            - name: 'Threat Modeling Tool, Updaterelease 7.1.60408.1: 9. April 2019'
               href: threat-modeling-tool-releases-71604081.md
-            - name: 'Threat Modeling Tool, Updaterelease 7.1.60702.1: 02.07.2019'
+            - name: 'Threat Modeling Tool, Updaterelease 7.1.60702.1: 2. Juli 2019'
               href: threat-modeling-tool-releases-71607021.md
-            - name: 'Threat Modeling Tool, Updaterelease 7.1.61015.1: 16.10.2019'
+            - name: 'Threat Modeling Tool, Updaterelease 7.1.61015.1: 16. Oktober 2019'
               href: threat-modeling-tool-releases-71610151.md
+            - name: 'Threat Modeling Tool, Updaterelease 7.3.00206.1: 11. Februar 2020'
+              href: threat-modeling-tool-releases-73002061.md
         - name: Gegenmaßnahmen
           href: threat-modeling-tool-mitigations.md
           items:
             - name: Überwachung und Protokollierung
               href: threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
+            - name: Authentifizierung
               href: threat-modeling-tool-authentication.md
             - name: Authorization
               href: threat-modeling-tool-authorization.md
