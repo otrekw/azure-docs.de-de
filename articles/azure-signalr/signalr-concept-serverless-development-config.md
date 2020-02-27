@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786774"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523169"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -40,7 +40,7 @@ Eine Clientanwendung benötigt ein gültiges Zugriffstoken, um eine Verbindung m
 
 Verwenden Sie eine Azure-Funktion mit HTTP-Trigger sowie die Eingabebindung *SignalRConnectionInfo*, um das Verbindungsinformationenobjekt zu generieren. Die Funktion muss über eine HTTP-Route verfügen, die mit `/negotiate` endet.
 
-Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service.md#input).
+Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Informationen zum Erstellen eines authentifizierten Tokens finden Sie unter [Verwenden der App Service-Authentifizierung](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Verwenden Sie die Ausgabebindung *SignalR*, um Nachrichten an Clients zu senden,
 
 Benutzer können einer einzelnen Gruppe oder mehreren Gruppen hinzugefügt werden. Mit der Ausgabebindung *SignalR* können Benutzer auch zu Gruppen hinzugefügt oder aus Gruppen entfernt werden.
 
-Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service.md#output).
+Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>SignalR-Hubs
 

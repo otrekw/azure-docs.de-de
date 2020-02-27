@@ -2,16 +2,15 @@
 title: Informationen zu Dienstnetzen
 description: Enthält eine Übersicht über Dienstnetze, ihre Architektur und Funktionen sowie die Kriterien, die Sie bei der Auswahl für die Bereitstellung berücksichtigen sollten.
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 226a4e5cf97be2e23ef13a95b80be07b7fbf5d7a
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529926"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594310"
 ---
 # <a name="about-service-meshes"></a>Informationen zu Dienstnetzen
 
@@ -29,7 +28,7 @@ Hier sind einige Szenarien angegeben, die Sie bei Verwendung eines Dienstnetzes 
 
 - **Einblick**: Verschaffen Sie sich einen Einblick in der Verbindung Ihrer Dienste mit dem Datenverkehr, der zwischen den Diensten ausgetauscht wird. Rufen Sie Metriken, Protokolle und Ablaufverfolgungen für den gesamten Datenverkehr im Cluster und für den Ein- und Ausgang ab. Fügen Sie Ihren Anwendungen Funktionen für die verteilte Ablaufverfolgung hinzu.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Ein Dienstnetz besteht normalerweise aus einer Steuerungsebene und der Datenebene.
 

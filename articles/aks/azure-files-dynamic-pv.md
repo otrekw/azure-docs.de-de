@@ -2,17 +2,14 @@
 title: Dynamisches Erstellen eines Files-Volumes für mehrere Pods in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie dynamisch ein persistentes Volume mit Azure Files für die Verwendung mit mehreren gleichzeitigen Pods in Azure Kubernetes Service (AKS) erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: mlearned
-ms.openlocfilehash: 999e106240a8a1d95c35d098062d474a0b57228d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a6e46433354be0d9d958ec69da4529e94a4edd75
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231754"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596419"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 

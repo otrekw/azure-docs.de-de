@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978785"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602321"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -43,7 +43,7 @@ Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im n
 
 ### <a name="backup-type-unsupported"></a>Nicht unterstützter Sicherungstyp
 
-| severity | Beschreibung | Mögliche Ursachen | Empfohlene Maßnahme |
+| severity | BESCHREIBUNG | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|---|
 | Warnung | Die aktuellen Einstellungen für diese Datenbank unterstützen bestimmte Sicherungstypen nicht, die in der zugehörigen Richtlinie enthalten sind. | <li>Für die Masterdatenbank kann nur eine vollständige Datenbanksicherung ausgeführt werden. Weder die differenzielle Sicherung noch die Sicherung des Transaktionsprotokolls ist möglich. </li> <li>Datenbanken im einfachen Wiederherstellungsmodell erlauben die Sicherung von Transaktionsprotokollen nicht.</li> | Ändern Sie die Datenbankeinstellungen so, dass alle Sicherungstypen in der Richtlinie unterstützt werden. Sie können die aktuelle Richtlinie auch so ändern, dass nur die unterstützten Sicherungstypen berücksichtigt werden. Andernfalls werden die nicht unterstützten Sicherungstypen bei der geplanten Sicherung übersprungen oder der Sicherungsauftrag schlägt bei einer bedarfsgesteuerten Sicherung fehl.
 
@@ -70,7 +70,7 @@ Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im n
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Azure Backup kann keine Verbindung mit der SQL Server-Instanz herstellen. | Verwenden Sie im Azure-Portal im Fehlermenü die Option „Zusätzliche Details“, um die Grundursache einzugrenzen. Lesen Sie [Problembehandlung bei SQL-Sicherung](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine), um den Fehler zu beheben.<br/><ul><li>Wenn die SQL-Standardeinstellungen Remoteverbindungen nicht zulassen, ändern Sie die Einstellungen. Informationen zum Ändern der Einstellungen finden Sie in den folgenden Artikeln:<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Wenn bei der Anmeldung Probleme auftreten, verwenden Sie diese Links zur Problembehebung:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Azure Backup kann keine Verbindung mit der SQL Server-Instanz herstellen. | Verwenden Sie im Azure-Portal im Fehlermenü die Option „Zusätzliche Details“, um die Grundursache einzugrenzen. Lesen Sie [Problembehandlung bei SQL-Sicherung](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine), um den Fehler zu beheben.<br/><ul><li>Wenn die SQL-Standardeinstellungen Remoteverbindungen nicht zulassen, ändern Sie die Einstellungen. Informationen zum Ändern der Einstellungen finden Sie in den folgenden Artikeln:<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Wenn bei der Anmeldung Probleme auftreten, verwenden Sie diese Links zur Problembehebung:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -106,7 +106,7 @@ Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im n
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+| Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15)
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 
@@ -136,13 +136,13 @@ Die SQL-VM muss zunächst aus dem alten Tresor abgemeldet werden, bevor sie im n
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-Der Vorgang ist blockiert, da Sie den Höchstwert für die Anzahl der innerhalb von 24 Stunden durchführbaren Vorgänge erreicht haben. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. <br> Beispiel:  Wenn Sie den Grenzwert für die Anzahl der Aufträge zum Konfigurieren der Sicherung, die pro Tag ausgelöst werden können, erreicht haben und versuchen, die Sicherung für ein neues Element zu konfigurieren, wird diese Fehlermeldung angezeigt. | In der Regel wird dieses Problem durch Wiederholen des Vorgangs nach 24 Stunden behoben. Wenn das Problem jedoch weiterhin besteht, können Sie sich an den Microsoft-Support wenden, um Unterstützung zu erhalten.
+Der Vorgang ist blockiert, da Sie den Höchstwert für die Anzahl der innerhalb von 24 Stunden durchführbaren Vorgänge erreicht haben. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. <br> Beispiel: Wenn Sie den Grenzwert für die Anzahl der Aufträge zum Konfigurieren der Sicherung, die pro Tag ausgelöst werden können, erreicht haben und versuchen, die Sicherung für ein neues Element zu konfigurieren, wird diese Fehlermeldung angezeigt. | In der Regel wird dieses Problem durch Wiederholen des Vorgangs nach 24 Stunden behoben. Wenn das Problem jedoch weiterhin besteht, können Sie sich an den Microsoft-Support wenden, um Unterstützung zu erhalten.
 
 ### <a name="clouddosabsolutelimitreachedwithretry"></a>CloudDosAbsoluteLimitReachedWithRetry
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden maximal zulässige Anzahl von Vorgängen erreicht hat. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. Dieser Fehler tritt in der Regel bei skalierten Vorgängen auf, z. B. beim Ändern von Richtlinien oder beim automatischen Schutz. Anders als bei CloudDosAbsoluteLimitReached lässt sich dieses Problem nicht beheben. Der Azure Backup-Dienst wiederholt die Vorgänge für alle betroffenen Elemente intern.<br> Beispiel:  Wenn eine große Anzahl von Datenquellen durch eine Richtlinie geschützt wird und Sie versuchen, diese Richtlinie zu ändern, werden Aufträge zum Konfigurieren des Schutzes für alle geschützten Elemente ausgelöst, sodass manchmal der pro Tag maximal zulässige Grenzwert für diese Vorgänge erreicht wird.| Der Azure Backup-Dienst wiederholt diesen Vorgang automatisch nach 24 Stunden.
+Der Vorgang wird blockiert, da der Tresor die in einem Zeitraum von 24 Stunden maximal zulässige Anzahl von Vorgängen erreicht hat. | Dieser Fehler tritt auf, wenn Sie den maximal zulässigen Grenzwert für einen Vorgang im Zeitraum von 24 Stunden erreicht haben. Dieser Fehler tritt in der Regel bei skalierten Vorgängen auf, z. B. beim Ändern von Richtlinien oder beim automatischen Schutz. Anders als bei CloudDosAbsoluteLimitReached lässt sich dieses Problem nicht beheben. Der Azure Backup-Dienst wiederholt die Vorgänge für alle betroffenen Elemente intern.<br> Beispiel: Wenn eine große Anzahl von Datenquellen durch eine Richtlinie geschützt wird und Sie versuchen, diese Richtlinie zu ändern, werden Aufträge zum Konfigurieren des Schutzes für alle geschützten Elemente ausgelöst, sodass manchmal der pro Tag maximal zulässige Grenzwert für diese Vorgänge erreicht wird.| Der Azure Backup-Dienst wiederholt diesen Vorgang automatisch nach 24 Stunden.
 
 ### <a name="usererrorvminternetconnectivityissue"></a>UserErrorVMInternetConnectivityIssue
 

@@ -2,17 +2,14 @@
 title: Verwenden eines kundenseitig verwalteten Schlüssels zum Verschlüsseln von Azure-Datenträgern in Azure Kubernetes Service (AKS)
 description: Bring Your Own Key(BYOK) zum Verschlüsseln von AKS-Datenträgern für Betriebssystem und Daten.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.author: mlearned
-ms.openlocfilehash: 1852ba059d13a8886b739cac439798b4d031a531
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932621"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596503"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Bring Your Own Key (BYOK) mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 

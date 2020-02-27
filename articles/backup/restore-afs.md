@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um eine vollständige Dateifreigabe oder bestimmte Dateien von einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930956"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586868"
 ---
 # <a name="restore-azure-file-shares"></a>Wiederherstellen von Azure-Dateifreigaben
 
@@ -21,6 +21,7 @@ In diesem Artikel lernen Sie Folgendes:
 * Nachverfolgen des Status des Wiederherstellungsvorgangs.
 
 ## <a name="steps-to-perform-a-restore-operation"></a>Schritte zum Ausführen eines Wiederherstellungsvorgangs
+
 Führen Sie die folgenden Schritte aus, um einen Wiederherstellungsvorgang auszuführen.
 
 ### <a name="select-the-file-share-to-restore"></a>Auswählen der Dateifreigabe, die wiederhergestellt werden soll
@@ -110,7 +111,7 @@ Sie können diese Wiederherstellungsoption verwenden, um einzelne Dateien oder O
 
     ![Ursprünglicher Speicherort für Wiederherstellung auf Elementebene](./media/restore-afs/original-location-item-level.png)
 
-2. Wählen Sie **Datei auswählen** aus, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten.
+1. Wählen Sie **Datei auswählen** aus, um die Dateien oder Ordner auszuwählen, die Sie wiederherstellen möchten.
 
     ![„Datei auswählen“ auswählen](./media/restore-afs/select-file.png)
 

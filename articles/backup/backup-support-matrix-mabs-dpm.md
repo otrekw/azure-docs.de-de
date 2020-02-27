@@ -3,12 +3,12 @@ title: MABS & System Center DPM-Unterstützungsmatrix
 description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444025"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582652"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -113,11 +113,34 @@ Sie können MABS auf einem virtuellen Azure Stack-Computer bereitstellen, sodass
 
 Der DPM-Server oder MABS benötigt Zugriff auf diese URLs:
 
-- http://www.msftncsi.com/ncsi.txt
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.microsoftonline.com
 - *.windows.net
+
+### <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
+
+Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Sicherung über privates Peering wird nicht unterstützt.
+
+Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
+* Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
+
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Öffentliches Peering gilt für neue Leitungen als veraltet.
 
 ### <a name="dpmmabs-connectivity-to-azure-backup"></a>DPM- und MABS-Verbindung mit Azure Backup
 

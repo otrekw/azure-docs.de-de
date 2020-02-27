@@ -2,17 +2,14 @@
 title: Best Practices für Operator – Grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices des Clusteroperators für die Verwendung grundlegender Schedulerfunktionen wie Ressourcenkontingente und Budgets für die Unterbrechung von Pods im Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293605"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594650"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)
 

@@ -1,19 +1,19 @@
 ---
 title: Durchführen der Massenverwaltung von Geräten mit Remoteüberwachungsverbindung – Azure | Microsoft-Dokumentation
 description: In diesem Tutorial wird beschrieben, wie Sie die Massenverwaltung für Geräte durchführen, die mit einer Remoteüberwachungslösung verbunden sind.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980543"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565577"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 

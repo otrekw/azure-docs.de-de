@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548882"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604939"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Erstellen mehrerer Azure Functions-Trigger für Cosmos DB
 
@@ -38,7 +38,7 @@ Dieser Artikel soll Sie durch die Realisierung der zweiten Option führen.
 
 ## <a name="configuring-a-shared-leases-container"></a>Konfigurieren eines gemeinsam genutzten Leasescontainers
 
-Um den gemeinsam genutzten Leasescontainer zu konfigurieren, müssen Sie Ihren Triggern nur das `LeaseCollectionPrefix`-[Attribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) hinzufügen, wenn Sie C# verwenden, oder das `leaseCollectionPrefix`-[Attribut](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) bei Verwendung von JavaScript. Der Wert des Attributs sollte ein logischer Deskriptor der Funktion des jeweiligen Triggers sein.
+Um den gemeinsam genutzten Leasescontainer zu konfigurieren, müssen Sie Ihren Triggern nur das `LeaseCollectionPrefix`-[Attribut](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#attributes-and-annotations) hinzufügen, wenn Sie C# verwenden, oder das `leaseCollectionPrefix`-[Attribut](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) bei Verwendung von JavaScript. Der Wert des Attributs sollte ein logischer Deskriptor der Funktion des jeweiligen Triggers sein.
 
 Angenommen, Sie haben drei Trigger: einen, der E-Mails sendet, einen, der eine Aggregation zum Erstellen einer materialisierten Sicht durchführt, und einen, der die Änderungen für eine spätere Analyse an einen anderen Speicher sendet. Sie könnten dann das `LeaseCollectionPrefix` „emails“ dem ersten zuweisen, „materialized“ dem zweiten und „analytics“ dem dritten.
 
@@ -108,6 +108,6 @@ Für JavaScript können Sie die Konfiguration mit dem `leaseCollectionPrefix`-At
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Hier](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) finden Sie Informationen zur vollständigen Konfiguration des Azure Functions-Triggers für Cosmos DB.
-* Ziehen Sie die erweiterte [Liste von Beispielen](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) für alle Sprachen zu Rate.
+* [Hier](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) finden Sie Informationen zur vollständigen Konfiguration des Azure Functions-Triggers für Cosmos DB.
+* Ziehen Sie die erweiterte [Liste von Beispielen](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) für alle Sprachen zu Rate.
 * Im [GitHub-Repository](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) finden Sie weitere Beispiele mit „serverlosen“ Anleitungen für Azure Cosmos DB und Azure Functions.

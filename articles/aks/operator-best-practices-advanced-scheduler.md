@@ -2,17 +2,14 @@
 title: Best Practices für Operator – Erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 description: Lernen Sie die Best Practices des Clusteroperators für die Verwendung erweiterter Schedulerfunktionen kennen, wie z.B. Taints und Toleranzen, Knotenselektoren und Affinität oder Pod-interne Affinität und Antiaffinität in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: mlearned
-ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 546c1d6ae25a33c6df93469ccf8c230b4b1c474b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293656"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594990"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Best Practices für erweiterte Schedulerfunktionen in Azure Kubernetes Service (AKS)
 

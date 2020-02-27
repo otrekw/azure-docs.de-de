@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212471"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615680"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -107,28 +107,29 @@ Nachstehend werden die derzeit unterstützten Regionen für jedes Betriebssystem
 |--| -- | -- |
 |Australien, Mitte| ✔<sup>1</sup> | |
 |Australien, Mitte 2| ✔<sup>1</sup> | |
-|Australien (Osten)| ✔ | |
+|Australien (Osten)| ✔ | ✔<sup>1</sup> |
 |Australien, Südosten | ✔ | ✔<sup>1</sup> |
 |Brasilien Süd| ✔<sup>2</sup> |  |
-|Kanada, Mitte| ✔ |  |
+|Kanada, Mitte| ✔ | ✔<sup>1</sup> |
 |USA (Mitte)| ✔ |  |
 |Asien, Osten| ✔ |  |
 |East US | ✔ | ✔<sup>1</sup> |
-|USA (Ost) 2| ✔ |  |
+|USA (Ost) 2| ✔ | ✔<sup>1</sup> |
 |Frankreich, Mitte| ✔ |  |
 |Deutschland, Westen-Mitte| ✔ | |
 |Japan, Osten| ✔ | ✔<sup>1</sup> |
-|Japan, Westen| ✔ | |
-|Korea, Mitte| ✔ |  |
+|Japan, Westen| ✔ | ✔<sup>1</sup> |
+|Korea, Mitte| ✔ | ✔<sup>1</sup> |
 |USA Nord Mitte| ✔ |  |
 |Nordeuropa| ✔ | ✔<sup>1</sup> |
 |USA Süd Mitte| ✔ | ✔<sup>1</sup> |
 |Indien (Süden) | ✔ | |
 |Asien, Südosten| ✔ | ✔<sup>1</sup> |
-|UK, Süden| ✔ | |
+|UK, Süden| ✔ | ✔<sup>1</sup> |
 |UK, Westen| ✔ |  |
 |Europa, Westen| ✔ | ✔<sup>1</sup> |
 |Indien, Westen| ✔ |  |
+|USA, Westen-Mitte| | ✔<sup>1</sup> |
 |USA (Westen)| ✔ | ✔<sup>1</sup> |
 |USA, Westen 2| ✔ |  |
 

@@ -3,12 +3,12 @@ title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444059"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586511"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -145,7 +145,7 @@ So richten Sie den Schutz für die Livemigration ein:
 
 3. Weisen Sie das MABSMachineName$-Konto als schreibgeschütztes Administratorkonto auf dem VMM-Verwaltungsserver zu.
 
-4. Verbinden Sie alle Hyper-V-Hostserver mithilfe des PowerShell-Cmdlets `Set-DPMGlobalProperty` mit allen MABS-Servern. Das Cmdlet akzeptiert mehrere MABS-Servernamen. Verwenden Sie das folgende Format: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Weitere Informationen finden Sie unter [Set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx).
+4. Verbinden Sie alle Hyper-V-Hostserver mithilfe des PowerShell-Cmdlets `Set-DPMGlobalProperty` mit allen MABS-Servern. Das Cmdlet akzeptiert mehrere MABS-Servernamen. Verwenden Sie das folgende Format: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Weitere Informationen finden Sie unter [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
 5. Wenn alle virtuellen Computer, die auf den Hyper-V-Hosts in den VMM-Clouds ausgeführt werden, in VMM erkannt werden, richten Sie eine Schutzgruppe ein, und fügen Sie die virtuellen Computer hinzu, die Sie schützen möchten. Für den Schutz im Rahmen von Mobilitätsszenarien für virtuelle Computer sollten automatische Konsistenzprüfungen auf der Ebene der Schutzgruppen aktiviert werden.
 

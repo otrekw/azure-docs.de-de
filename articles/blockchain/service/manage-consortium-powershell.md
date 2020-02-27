@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die Mitglieder des Azure Blockchain Serv
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: zeyadr
-ms.openlocfilehash: 4eb35838394d3324f460b5e83cfbcb47b8114221
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455549"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505982"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Verwalten der Konsortiumsmitglieder in Azure Blockchain mithilfe von PowerShell
 
@@ -100,7 +100,7 @@ Verwenden Sie dieses Cmdlet, um ein Objekt zu erstellen, das die Informationen f
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| Parameter | BESCHREIBUNG | Erforderlich |
+| Parameter | Beschreibung | Erforderlich |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | Adresse des Blockchainmitgliedskontos | Ja |
 | ManagedAccountPassword | Kennwort der Kontoadresse | Ja |
@@ -257,7 +257,7 @@ Verwenden Sie dieses Cmdlet, um den Einladungsstatus eines Konsortiumsmitglieds 
 [Richten Sie eine Web3-Verbindung ein](#establish-a-web3-connection), um die Variable „$ContractConnection“ festzulegen.
 
 ```powershell-interactive
-$ContractConnection | Get-BlockchainMemberInvitation – SubscriptionId <Azure subscription ID>
+$ContractConnection | Get-BlockchainMemberInvitation –SubscriptionId <Azure subscription ID>
 ```
 
 #### <a name="example-output"></a>Beispielausgabe

@@ -2,17 +2,14 @@
 title: Integrieren von Azure Active Directory in Azure Kubernetes Service
 description: In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Azure Active Directory-fähigen AKS (Azure Kubernetes Service)-Cluster erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: mlearned
-ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fef22b1b2d81f76e95a15c0e3a746440b95df8ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158144"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596605"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service mit der Azure CLI
 
@@ -123,7 +120,7 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 Fügen Sie mit dem Befehl [az ad app permission add][az-ad-app-permission-add] die Berechtigungen für die Client- und Serveranwendungskomponenten hinzu, um den Kommunikationsfluss oAuth2 zu verwenden: Gewähren Sie anschließend mit dem Befehl [az ad app permission grant][az-ad-app-permission-grant] Berechtigungen für die Clientanwendung zur Kommunikation mit der Serveranwendung:
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 

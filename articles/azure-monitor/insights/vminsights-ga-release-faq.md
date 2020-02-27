@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 883f24e529f9479f0c6ee6597c1324a0089ece7b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482883"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620376"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 
@@ -25,8 +25,6 @@ Wir haben eine neue Version von Azure Monitor für VMs veröffentlicht. Kunden, 
 Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
 In den Leistungsansichten werden nun die in der Tabelle *InsightsMetrics* gespeicherten Daten verwendet.  Wenn Sie noch kein Upgrade zur Nutzung der aktuellen VMInsights-Lösung in Ihrem Arbeitsbereich durchgeführt haben, werden in Ihren Diagrammen keine Informationen mehr angezeigt.  Sie können wie weiter unten beschrieben ein Upgrade über die Seite **Erste Schritte** ausführen.
-
-Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
 Uns ist bewusst, dass die Aufforderung zum Upgrade für bestehende Kunden eine Unterbrechung ihres Workflows bedeutet. Deshalb haben wir uns entschieden, dies zum jetzigen Zeitpunkt in der Public Preview und nicht erst später nach der allgemeinen Verfügbarkeit durchzuführen.
 
