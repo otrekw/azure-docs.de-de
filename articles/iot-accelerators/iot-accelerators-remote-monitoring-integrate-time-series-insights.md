@@ -1,19 +1,19 @@
 ---
 title: Integrieren von Time Series Insights mit Remoteüberwachung – Azure | Microsoft-Dokumentation
 description: In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Remoteüberwachungslösung konfigurieren, die nicht bereits über Time Series Insights verfügt.
-author: aditidugar
+author: Philmea
 manager: timlt
-ms.author: adugar
+ms.author: philmea
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 752529454a5b6293d9cbfdf8378b46947aed5a0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61442928"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564643"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -57,18 +57,18 @@ Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihr
 
 1. Verwenden Sie zur Erstellung Ihrer Time Series Insights-Umgebung die Werte in der folgenden Tabelle:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Umgebungsname | Im folgenden Screenshot wird der Name **contorosrmtsi** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
-    | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
-    | Ressourcengruppe | **Vorhandene verwenden**: Wählen Sie den Namen Ihrer vorhandenen Ressourcengruppe für die Remoteüberwachung aus. |
+    | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
+    | Resource group | **Vorhandene verwenden**: Wählen Sie den Namen Ihrer vorhandenen Ressourcengruppe für die Remoteüberwachung aus. |
     | Location | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung nach Möglichkeit in derselben Region wie Ihre Remoteüberwachungslösung. |
     | Sku |**S1** |
     | Capacity | **1** |
 
     ![Time Series Insights erstellen](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/new-time-series-insights-create.png)
 
-1. Klicken Sie auf **Create**. Die Erstellung der Umgebung kann einen Moment dauern.
+1. Klicken Sie auf **Erstellen**. Die Erstellung der Umgebung kann einen Moment dauern.
 
 ## <a name="create-event-source"></a>Erstellen der Ereignisquelle
 
@@ -86,7 +86,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
 
 1. Verwenden Sie die Werte in der folgenden Tabelle, um Ihren IoT Hub als eine neue Ereignisquelle zu konfigurieren:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Name der Ereignisquelle | Im folgenden Screenshot wird der Name **contosorm-iot-hub** verwendet. Verwenden Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | `Source` | **IoT Hub** |
@@ -101,7 +101,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
 
     ![Erstellen der Ereignisquelle](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 
-1. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="configure-the-data-access-policy"></a>Konfigurieren der Datenzugriffsrichtlinie
 

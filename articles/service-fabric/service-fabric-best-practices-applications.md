@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551844"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586086"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Bewährte Methoden für den Azure Service Fabric-Anwendungsentwurf
 
@@ -30,7 +30,7 @@ Machen Sie sich mit der [allgemeinen Architektur](https://docs.microsoft.com/azu
 Verwenden Sie einen API-Gatewaydienst, der mit Back-End-Diensten kommuniziert, die dann horizontal hochskaliert werden können. Die folgenden API-Gatewaydienste werden am häufigsten verwendet:
 
 - [Azure API Management](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview). Dieser Dienst ist [in Service Fabric integriert](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-api-management).
-- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) mit [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) zum Lesen aus Event Hub-Partitionen.
+- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) mit [ServiceFabricProcessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor) zum Lesen aus Event Hub-Partitionen.
 - [Træfik-Reverseproxy](https://blogs.msdn.microsoft.com/azureservicefabric/2018/04/05/intelligent-routing-on-service-fabric-with-traefik/) mit dem [Azure Service Fabric-Anbieter](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
 - [Azure Application Gateway:](https://docs.microsoft.com/azure/application-gateway/)
 

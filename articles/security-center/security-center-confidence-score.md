@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355643"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604386"
 ---
 # <a name="alert-confidence-score-preview"></a>Zuverlässigkeitsbewertung für Warnungen (Vorschau)
 
@@ -47,14 +47,6 @@ So zeigen Sie die Daten an, die zur Zuverlässigkeitsbewertung von Security Cent
   ![Zuverlässigkeitsbewertung einer verdächtigen Aktivität][2]
 
 Anhand der Zuverlässigkeitsbewertung von Security Center können Sie die Aussortierung von Warnungen in Ihrer Umgebung priorisieren. Die Zuverlässigkeitsbewertung spart Ihnen Zeit und Mühe, da Warnungen automatisch untersucht, bewährte Methoden der Branche und intelligente Algorithmen angewandt werden und nach Art eines virtuellen Analysten bestimmt wird, welche Bedrohungen real sind und auf welche Warnungen Sie Ihr Augenmerk richten müssen.
-
-
-## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde erläutert, wie die Untersuchung von Warnungen anhand der Zuverlässigkeitsbewertung priorisiert wird. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
-
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-
 
 
 <!--Image references-->

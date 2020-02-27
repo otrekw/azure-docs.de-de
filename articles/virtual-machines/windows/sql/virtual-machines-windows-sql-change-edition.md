@@ -14,12 +14,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bd9622d3e34198402bc45e5d855d05b0c8e35eb8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772568"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605459"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Direkte Änderung der SQL Server-Edition auf der Azure-VM
 
@@ -35,7 +35,7 @@ Für eine direkte Änderung der Edition von SQL Server benötigen Sie Folgendes:
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine [SQL Server-VM unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), die beim [SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-register-with-resource-provider.md) registriert ist.
-- Setupmedien mit der **gewünschten Edition** von SQL Server. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Azure Marketplace mit der gewünschten Edition verwenden (in der Regel unter `c:\SQLInstalls` gespeichert). 
+- Setupmedien mit der **gewünschten Edition** von SQL Server. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Azure Marketplace mit der gewünschten Edition verwenden (in der Regel unter `C:\SQLServerFull` gespeichert). 
 
 
 ## <a name="upgrade-an-edition"></a>Upgrade einer Edition

@@ -1,5 +1,5 @@
 ---
-title: Produktivitätstools in der DSVM
+title: Produktivitätstools
 titleSuffix: Azure Data Science Virtual Machine
 description: Erfahren Sie mehr über die Produktivitätstools in den Data Science-Virtual Machines.
 keywords: Deep Learning, KI, Data Science-Tools, virtueller Data Science-Computer, räumliche Analysen, Data Science-Teamprozess
@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: df415ce06afa8be80c0e0ed4375950e20474bcbb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cfafd680e4f4907248d3d79a504aa04696988021
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615317"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526075"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Entwicklungstools auf der Data Science Virtual Machine
 

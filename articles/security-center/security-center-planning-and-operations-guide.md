@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 039a30d23c45471d88132f544c11df813fb4b8e6
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281001"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603742"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -33,8 +33,7 @@ Im nächsten Abschnitt erfahren Sie, wie Sie jeden dieser Aspekte bei Ihrer Plan
 
 
 > [!NOTE]
-> Unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) finden Sie eine Liste mit häufig gestellten Fragen, die in der Entwurfs- und Planungsphase ebenfalls nützlich sein können.
->
+> Unter [Azure Security Center – Häufig gestellte Fragen](faq-general.md) finden Sie eine Liste mit häufig gestellten Fragen, die in der Entwurfs- und Planungsphase ebenfalls nützlich sein können.
 
 ## <a name="security-roles-and-access-controls"></a>Sicherheitsrollen und Zugriffsteuerungen
 Je nach Größe und Struktur Ihrer Organisation wird Azure Security Center unter Umständen von mehreren Einzelpersonen und Teams zur Durchführung unterschiedlicher sicherheitsbezogener Aufgaben verwenden. Das folgende Diagramm zeigt ein Beispiel für fiktive Personae und deren jeweilige Rollen und Sicherheitsaufgaben:
@@ -143,8 +142,7 @@ Der Microsoft Monitoring Agent für Windows erfordert TCP-Port 443. Weitere Info
 Die Datensammlung kann bei Bedarf in der Sicherheitsrichtlinie deaktiviert werden. Da der Microsoft Monitoring Agent möglicherweise durch andere Azure-Dienste zur Verwaltung und Überwachung verwendet wird, wird der Agent jedoch nicht automatisch deinstalliert, wenn Sie die Datensammlung in Security Center deaktivieren. Sie können den Agent bei Bedarf manuell deinstallieren.
 
 > [!NOTE]
-> Eine Liste mit unterstützten virtuellen Computern finden Sie unter [Azure Security Center – Häufig gestellte Fragen (FAQ)](security-center-faq.md).
->
+> Eine Liste mit unterstützten virtuellen Computern finden Sie unter [Azure Security Center – Häufig gestellte Fragen (FAQ)](faq-vms.md).
 
 ### <a name="workspace"></a>Arbeitsbereich
 
@@ -254,5 +252,5 @@ In diesem Dokument haben Sie erfahren, wie Sie die Einführung von Security Cent
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Center – Häufig gestellte Fragen:](faq-general.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

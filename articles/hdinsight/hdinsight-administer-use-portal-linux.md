@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186852"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561781"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -53,7 +53,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
   - **Obere linke Menüleiste:**
 
-    | Element| Beschreibung |
+    | Element| BESCHREIBUNG |
     |---|---|
     |Übersicht|Gibt allgemeine Informationen zu Ihrem Cluster an.|
     |Aktivitätsprotokoll|Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.|
@@ -65,7 +65,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
   - **Menü „Einstellungen“**  
 
-    | Element| Beschreibung |
+    | Element| BESCHREIBUNG |
     |---|---|
     |Clustergröße|Dient zum Überprüfen, Erhöhen und Verringern der Anzahl von Workerknoten im Cluster. Weitere Informationen finden Sie unter [Skalieren von Clustern](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kontingentgrenzen|Dient zum Anzeigen der verwendeten und verfügbaren Kernspeicher für Ihr Abonnement.|
@@ -91,7 +91,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
   - **Menü „Support und Problembehandlung“**
 
-    | Element| Beschreibung |
+    | Element| BESCHREIBUNG |
     |---|---|
     |Ressourcenintegrität|Weitere Informationen finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).|
     |Neue Supportanfrage|Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.|
@@ -100,7 +100,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
 
 Wählen Sie auf der [Cluster-Homepage](#homePage) unter **Einstellungen** die Option **Eigenschaften** aus.
 
-|Element | Beschreibung |
+|Element | BESCHREIBUNG |
 |---|---|
 |HOSTNAME|Clustername.|
 |CLUSTER URL|Dies ist die URL für die Ambari-Weboberfläche.|
@@ -229,18 +229,6 @@ Das Kennwort wird auf allen Knoten im Cluster geändert.
    | Speichern Sie diese Skriptaktion ... |Lassen Sie dieses Feld deaktiviert. |
 
 6. Wählen Sie **Erstellen** aus, um das Skript anzuwenden. Nachdem das Skript ausgeführt wurde, können Sie per SSH mit dem neuen Kennwort eine Verbindung mit dem Cluster herstellen.
-
-## <a name="grantrevoke-access"></a>Gewähren/Entziehen des Zugriffs
-
-In HDInsight-Clustern stehen die folgenden HTTP-Webdienste zur Verfügung (alle mit RESTful-Endpunkten):
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-Der Zugriff auf diese Dienste wird standardmäßig gewährt. Sie können den Zugriff mit [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access) widerrufen/gewähren.
 
 ## <a name="find-the-subscription-id"></a>Ermitteln der Abonnement-ID
 

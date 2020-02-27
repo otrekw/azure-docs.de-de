@@ -3,7 +3,7 @@ title: Untersuchen von Warnungen mit Azure Sentinel | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Warnungen mit Azure Sentinel untersucht werden.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6d61b94a50716966ac0b3c75551ddd9d8e291965
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: df855aa768fdeb279482b8407259be1a644322d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024457"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585202"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen
 
 
 > [!IMPORTANT]
 > Die standardmäßig verfügbare Erkennung von Bedrohungen befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Funktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Zu diesem Zweck verfügt Azure Sentinel über integrierte Vorlagen, die bereits standardmäßig verfügbar sind. Diese Vorlagen wurden von den Sicherheitsexperten und Analysten von Microsoft basierend auf bekannten Bedrohungen, häufig verwendeten Angriffsvektoren und Eskalationsketten verdächtiger Aktivitäten entworfen. Nachdem diese Vorlagen aktiviert wurden, wird damit in Ihrer gesamten Umgebung automatisch nach allen Aktivitäten gesucht, die verdächtig erscheinen. Viele Vorlagen können so angepasst werden, dass gemäß Ihren besonderen Anforderungen nach Aktivitäten gesucht oder gefiltert werden kann. Mit den von diesen Vorlagen generierten Warnungen werden Incidents erstellt, die Sie in Ihrer Umgebung zuweisen und untersuchen können.

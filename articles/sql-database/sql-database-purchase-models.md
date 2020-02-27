@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964769"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587293"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
@@ -77,7 +77,7 @@ Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen e
 
 > [!IMPORTANT]
 > Computeressourcen, E/A sowie Daten- und Protokollspeicher werden pro Datenbank oder Pool für elastische Datenbanken berechnet. Sicherungsspeicher wird pro Datenbank berechnet. Weitere Informationen zu den Kosten für verwaltete Instanzen finden Sie unter [Verwaltete Instanzen](sql-database-managed-instance.md).
-> **Regionseinschränkungen:** Die aktuelle Liste der unterstützten Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, [senden Sie eine Supportanfrage über das Azure-Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Regionseinschränkungen:** Die aktuelle Liste der unterstützten Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, [senden Sie eine Supportanfrage über das Azure-Portal](quota-increase-request.md).
 
 Wenn Ihre Einzeldatenbank oder Ihr Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie Ihre Kosten durch eine Umstellung auf das vCore-basierte Kaufmodell möglicherweise senken. Sie können für die Umstellung die von Ihnen bevorzugte API oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeit kommt. Allerdings ist eine Umstellung nicht erforderlich und erfolgt nicht automatisch. Wenn das DTU-basierte Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen.
 

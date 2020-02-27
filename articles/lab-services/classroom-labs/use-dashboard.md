@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d1e34a493b747383ce479bcad638098b41e59d2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587055"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538939"
 ---
 # <a name="dashboard-for-classroom-labs"></a>Dashboard für Classroom-Labs
 Dieser Artikel beschreibt die Dashboardansicht eines Classroom-Labs in Azure Lab Services. 
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt die Dashboardansicht eines Classroom-Labs in Azure Lab
 ## <a name="costs-and-billing-tile"></a>Kachel „Kosten und Abrechnung“
 Diese Kachel bietet die folgenden Details zur Kostenschätzung:
 
-| Einstellung | Wert | 
+| Einstellung | value | 
 | ------- | ----- | 
 | Kontingentstunden | Die maximale Anzahl von Stunden, die ein Benutzer die VM außerhalb der geplanten Stunden verwenden kann. |
 | Geplante Stunden | Die Stunden, die auf der Grundlage des im Lab festgelegten Zeitplans anfallen. Dieser Wert ist nur verfügbar, wenn für alle Zeitplanereignisse Von-bis-Datum festgelegt ist. |

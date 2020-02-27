@@ -1,19 +1,19 @@
 ---
 title: Kunden-Lockbox für Microsoft Azure
 description: Technische Übersicht über Kunden-Lockbox für Microsoft Azure, ein Feature, das Kontrolle über den Cloudanbieterzugriff für Fälle bietet, in denen Microsoft Zugriff auf Kundendaten benötigt.
-author: cabailey
+author: TerryLanfear
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.author: cabailey
-manager: barbkess
+ms.author: terrylan
+manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c0409d48876a0f830366381c2a46821c4aa03a0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466403"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561968"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Kunden-Lockbox für Microsoft Azure
 
@@ -42,37 +42,37 @@ Die folgenden Schritte beschreiben einen typischen Workflow für eine Kunden-Loc
     - Bereich der Ressource
     - Ob die anfordernde Person eine isolierte Identität aufweist oder mehrstufige Authentifizierung ausführt
     - Berechtigungsebenen
-    
+
     Basierend auf der JIT-Regel kann diese Anforderung auch eine Genehmigung von internen genehmigenden Personen bei Microsoft enthalten. Die genehmigende Person kann z. B. der Kundensupportleiter oder der DevOps-Manager sein.
 
 6. Wenn für die Anforderung direkter Zugriff auf Kundendaten erforderlich ist, wird eine Kunden-Lockbox-Anforderung initiiert. Beispiel: Remotedesktopzugriff auf einen virtuellen Computer des Kunden.
-    
+
     Die Anforderung befindet sich nun im Zustand **Kunde benachrichtigt** und wartet auf die Zustimmung des Kunden, bevor Zugriff gewährt wird.
 
 7. Auf der Seite der Kundenorganisation erhält der Benutzer mit der [Rolle „Besitzer“](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles) für das Azure Abonnement eine E-Mail von Microsoft, in der er über die ausstehende Anforderung benachrichtigt wird. Für Kunden-Lockbox-Anforderungen ist diese Person die festgelegte genehmigende Person.
-    
+
     Beispiel-E-Mail:
-    
+
     ![Azure Kunden-Lockbox – E-Mail-Benachrichtigung](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
 8. Die E-Mail-Benachrichtigung enthält einen Link zum Blatt **Kunden-Lockbox** im Azure-Portal. Über diesen Link meldet sich die festgelegte genehmigende Person beim Azure-Portal an, um ausstehende Anforderungen anzuzeigen, die bei ihrer Organisation für Kunden-Lockbox vorliegen:
-    
+
     ![Azure Kunden-Lockbox – Startseite](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
-    
+
    Die Anforderung verbleibt vier Tage lang in der Kundenwarteschlange. Anschließend läuft die Zugriffsanforderung automatisch ab, und den Microsoft-Technikern wird kein Zugriff gewährt.
 
 9. Um die Details der ausstehenden Anforderung abzurufen, kann die festgelegte genehmigende Person die Lockbox-Anforderung unter **Ausstehende Anforderungen** auswählen:
-    
+
     ![Azure Kunden-Lockbox – Anzeigen der ausstehenden Anforderung](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
 10. Der festgelegte genehmigende Person kann auch die **DIENSTANFORDERUNGS-ID** auswählen, um die vom ursprünglichen Benutzer erstellte Supportticketanforderung anzuzeigen. Diese Informationen bieten einen Kontext für den Grund der Beteiligung des Microsoft-Supports und den Hintergrund des gemeldeten Problems. Beispiel:
-    
+
     ![Azure Kunden-Lockbox – Anzeigen der Supportticketanforderung](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
 11. Nach dem Überprüfen der Anforderung wählt die festgelegte genehmigende Person **Genehmigen** oder **Verweigern** aus:
-    
+
     ![Azure Kunden-Lockbox – Auswählen von „Genehmigen“ oder „Verweigern“](./media/customer-lockbox-overview/customer-lockbox-approval.png)
-    
+
     Ergebnis der Auswahl:
     - **Genehmigen:**  Dem Microsoft-Techniker wird Zugriff gewährt. Der Zugriff gilt für eine Dauer von acht Stunden.
     - **Verweigern:** Die Anforderung nach erhöhten Zugriffsrechten durch den Microsoft-Techniker wird abgelehnt, und es wird keine weitere Aktion ausgeführt.
@@ -113,13 +113,13 @@ In Szenarien mit Remotedesktopzugriff können Sie die vom Microsoft-Techniker au
 
 Die folgenden Dienste sind derzeit für Kunden-Lockbox als Vorschauversion verfügbar:
 
-- Azure Storage 
+- Azure Storage
 
-- Azure SQL-Datenbank 
+- Azure SQL-Datenbank
 
-- Azure-Daten-Explorer 
+- Azure-Daten-Explorer
 
-- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger) 
+- Virtuelle Computer (jetzt auch mit Zugriff auf Speicherabbilder und verwaltete Datenträger)
 
 - Azure-Abonnementübertragung
 

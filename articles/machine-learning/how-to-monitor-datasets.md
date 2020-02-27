@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264762"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617630"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,7 +129,7 @@ Die verschiedenen Einstellungen für einen Datasetmonitor lassen sich in drei Gr
 
 Diese Tabelle enthält grundlegende Einstellungen, die für den Datasetmonitor verwendet werden.
 
-| Einstellung | Beschreibung | Tipps | Veränderlich | 
+| Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
 | ------- | ----------- | ---- | ------- | 
 | Name | Name des Datasetmonitors. | | Nein |
 | Baselinedataset | Tabellarisches Dataset, das als Baseline für den Vergleich mit dem Zieldataset im Lauf der Zeit verwendet wird. | Das Baselinedataset muss gemeinsame Features mit dem Zieldataset aufweisen. Im Allgemeinen sollte die Baseline auf ein Trainingsdataset des Modells oder auf einen Slice des Zieldatasets festgelegt werden. | Nein |
@@ -153,7 +153,7 @@ Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstel
 
 Diese Einstellungen gelten für die Durchführung eines Abgleichs von Vergangenheitsdaten für Datendriftmetriken.
 
-| Einstellung | Beschreibung | Tipps |
+| Einstellung | BESCHREIBUNG | Tipps |
 | ------- | ----------- | ---- |
 | Startdatum | Startdatum des Abgleichsauftrags. | | 
 | Enddatum | Enddatum des Abgleichsauftrags. | Das Enddatum darf nicht mehr als 31 Zeiteinheiten für die Häufigkeit vom Startdatum abweichen. In einem vorhandenen Datasetmonitor kann ein Metrikabgleich durchgeführt werden, um Daten der Vergangenheit zu analysieren oder Metriken durch aktualisierte Einstellungen zu ersetzen. |
@@ -239,7 +239,7 @@ Der Datenmonitor erzeugt zwei Gruppen von Ergebnissen: Driftübersicht und Featu
 
 Der Abschnitt **Driftübersicht** enthält allgemeine Erkenntnisse zur Größenordnung der Datendrift und zu den Features, die genauer untersucht werden sollten. 
 
-| Metrik | Beschreibung | Tipps | 
+| Metrik | BESCHREIBUNG | Tipps | 
 | ------ | ----------- | ---- | 
 | Größenordnung der Datendrift | Wird als Prozentsatz zwischen Baseline- und Zieldataset im Lauf der Zeit angegeben. Werte liegen zwischen 0 und 100, wobei 0 auf identische Datasets hinweist und 100 bedeutet, dass die Datendriftfunktion von Azure Machine Learning die beiden Datasets vollkommen voneinander unterscheiden kann. | Aufgrund der Machine Learning-Techniken, die zum Generieren dieser Größenordnung verwenden werden, ist ein gewisses Maß an Ungenauigkeit beim gemessenen Prozentsatz zu erwarten. | 
 | Driftbeitrag nach Feature | Der Beitrag jedes Features im Zieldataset zur gemessenen Größenordnung der Drift. |  Aufgrund von Kovariantenabweichungen muss sich die zugrunde liegende Verteilung eines Features nicht notwendigerweise ändern, um eine relativ hohe Featurerelevanz aufzuweisen. | 
@@ -262,7 +262,7 @@ Diese Metriken können auch im Python SDK mithilfe der `get_metrics()`-Methode i
 
 Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profil erstellt. Folgendes wird im Azure Machine Learning-Studio verfügbar gemacht. Für die Verteilung wird die Wahrscheinlichkeitsdichte angezeigt.
 
-| Metrik | Beschreibung |  
+| Metrik | BESCHREIBUNG |  
 | ------ | ----------- |  
 | Wasserstein-Distanz | Der Mindestarbeitsaufwand, der für die Transformation der Baselineverteilung in die Zielverteilung erforderlich ist. |
 | Mittelwert | Durchschnittlicher Wert des Features. |
@@ -326,6 +326,6 @@ Spalten bzw. Features im Dataset werden basierend auf den Bedingungen in der unt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Fahren Sie mit dem [Azure Machine Learning-Studio](https://ml.azure.com) oder dem [Python-Notebook](https://aka.ms/datadrift-notebook) fort, um einen Datasetmonitor zu erstellen.
+* Fahren Sie mit dem [Azure Machine Learning-Studio](https://ml.azure.com) oder dem [Python-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb) fort, um einen Datasetmonitor zu erstellen.
 * Informieren Sie sich, wie Sie die Datendrift für [in Azure Kubernetes Service bereitgestellte Modelle](how-to-monitor-data-drift.md) einrichten.
 * Richten Sie Datendriftüberwachungen mit [Ereignisraster](how-to-use-event-grid.md) ein. 

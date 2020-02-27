@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 03171e395bb23da05ee5420f60abca9a16ffb774
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 395210c582ba7f5e8170a96a46e2816336e33b2d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599912"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624031"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Verwalten von Blobeigenschaften und Metadaten mit .NET
 
@@ -163,4 +163,4 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 - [Vorgang zum Festlegen von Blob-Eigenschaften](/rest/api/storageservices/set-blob-properties)
 - [Vorgang zum Abrufen von Blob-Eigenschaften](/rest/api/storageservices/get-blob-properties)
 - [Vorgang zum Festlegen von Blobmetadaten](/rest/api/storageservices/set-blob-metadata)
-- [Vorgang zum Abrufen von Blobmetadaten](/rest/api/storageservices/set-blob-metadata)
+- [Vorgang zum Abrufen von Blobmetadaten](/rest/api/storageservices/get-blob-metadata)

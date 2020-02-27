@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776127"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538463"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud: CI/CD mit GitHub Actions
 
@@ -79,6 +79,7 @@ Erstellen Sie die Datei `.github/workflow/main.yml` im Repository:
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ Der az-Befehl `run` verwendet die aktuelle Version der Azure-Befehlszeilenschnit
 Erstellen Sie die Datei „.github/workflow/main.yml“ im Repository:
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ Eine weitere Option ist die Verwendung des [Maven-Plug-Ins](https://docs.microso
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:

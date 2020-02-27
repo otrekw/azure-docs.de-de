@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: d376aca45778060c8913924fd2a44031109390d2
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720366"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538788"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
@@ -134,11 +134,11 @@ Navigieren Sie zum Verzeichnis `webfrontend`, und führen Sie Ihre Linux-Anwendu
 
 ```console
 cd ../../webfrontend-linux/
-azds prep --public
+azds prep --enable-ingress
 azds up
 ```
 
-Der Befehl `azds prep --public` generiert das Helm-Diagramm und die Dockerfile-Dateien für Ihre Anwendung.
+Der Befehl `azds prep --enable-ingress` generiert das Helm-Diagramm und die Dockerfile-Dateien für Ihre Anwendung.
 
 > [!TIP]
 > Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](../how-dev-spaces-works.md#prepare-your-code) zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.

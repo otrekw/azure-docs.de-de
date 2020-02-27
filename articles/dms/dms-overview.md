@@ -3,19 +3,19 @@ title: Was ist Azure Database Migration Service?
 description: Übersicht über Azure Database Migration Service, ein Dienst, der die nahtlose Migration von vielen Datenbankquellen zu Azure-Datenplattformen ermöglicht.
 services: database-migration
 author: pochiraju
-ms.author: jtoland
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 06/01/2019
-ms.openlocfilehash: d573378bc5e729eb75b6c3b51d3671492f7f98f1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/20/2020
+ms.openlocfilehash: 8607f1a687f2979c37c67099874288c6c5ead164
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209374"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647501"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Was ist Azure Database Migration Service?
 

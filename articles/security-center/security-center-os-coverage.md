@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294251"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603756"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
@@ -127,5 +127,3 @@ Der Schutz für virtuelle Computer, die sich in Azure Stack befinden, wird ebenf
 - Hier erfahren Sie, wie Sie [die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen](security-center-planning-and-operations-guide.md).
 - Erfahren Sie mehr über die [für die verschiedenen Cloudumgebungen verfügbaren Features](security-center-services.md).
 - Erfahren Sie mehr über die [Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center](security-center-alerts-iaas.md).
-- Lesen Sie [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
-- Lesen Sie [Blogbeiträge zur Sicherheit und Compliance von Azure](https://blogs.msdn.com/b/azuresecurity/).

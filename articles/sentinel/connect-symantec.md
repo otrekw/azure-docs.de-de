@@ -3,7 +3,7 @@ title: Verknüpfen von Symantec ICDx-Daten mit Azure Sentinel | Microsoft-Dokume
 description: Erfahren Sie, wie Sie Symantec ICDx-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: d068223f-395e-46d6-bb94-7ca1afd3503c
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 111bc7cd0439eee2026a6a980e9e126b63ac58c6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: cac63aee5f9ebf3859b138e6444e40b1e2dd30f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610487"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588092"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>Herstellen einer Verbindung mit Ihrer Symantec ICDx-Appliance 
 
@@ -42,7 +42,7 @@ Symantec ICDx kann mit Azure Sentinel integriert werden und Protokolle dann dire
 4. Klicken Sie unter **Forwarders** (Weiterleitungen) neben Microsoft Azure Sentinel (Log Analytics) auf **Add** (Hinzufügen). 
 4. Klicken Sie im Fenster **Microsoft Azure Sentinel (Log Analytics)** auf **Show Advanced** (Erweiterte anzeigen). 
 5. Gehen Sie am oberen Rand des erweiterten Fensters „Microsoft Azure Sentinel (Log Analytics)“ folgendermaßen vor:
-    -   **Name**: Geben Sie einen Namen für die Weiterleitung ein, der nicht mehr als 30 Zeichen lang ist. Wählen Sie einen eindeutigen, aussagekräftigen Namen. Dieser Name wird in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) und in den Dashboards auf dem Bildschirm **Dashboard** angezeigt. Beispiel:  Microsoft Azure Log Analytics East. Dies ist ein Pflichtfeld.
+    -   **Name**: Geben Sie einen Namen für die Weiterleitung ein, der nicht mehr als 30 Zeichen lang ist. Wählen Sie einen eindeutigen, aussagekräftigen Namen. Dieser Name wird in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) und in den Dashboards auf dem Bildschirm **Dashboard** angezeigt. Beispiel: Microsoft Azure Log Analytics East. Dies ist ein Pflichtfeld.
     -   **Beschreibung**: Geben Sie eine Beschreibung für die Weiterleitung ein. Diese Beschreibung wird auch in der Liste der Weiterleitungen auf dem Bildschirm **Configuration** (Konfiguration) angezeigt. Beziehen Sie Details wie z.B. den weitergeleiteten Ereignistyp und die Gruppe ein, die benötigt wird, um die Daten zu überprüfen.
     -   **Startup Type** (Starttyp): Wählen Sie die Startmethode für die Weiterleitungskonfiguration aus. Sie können zwischen manuell und automatisch wählen.<br>Der Standard ist „Automatic“ (Automatisch). 
 6. Führen Sie unter **Events** (Ereignisse) folgende Schritte aus: 
