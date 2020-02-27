@@ -2,17 +2,14 @@
 title: Sichere Pods mit Richtlinien für Netzwerke in Azure Kubernetes Service (AKS)
 description: Es wird beschrieben, wie Sie ein- und ausgehenden Datenverkehr bei Pods mittels Kubernetes-Netzwerkrichtlinien in Azure Kubernetes Service (AKS) schützen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928492"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592865"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -22,7 +19,7 @@ In diesem Artikel wird veranschaulicht, wie Sie das Modul für Netzwerkrichtlini
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 > [!TIP]
 > Wenn Sie die Funktion für Netzwerkrichtlinien während der Vorschauphase verwendet haben, empfehlen wir, dass Sie [einen neuen Cluster](#create-an-aks-cluster-and-enable-network-policy) erstellen.
@@ -48,7 +45,7 @@ Azure stellt zwei Verfahren zum Implementieren von Netzwerkrichtlinien bereit. S
 * Die eigene Richtlinienimplementierung von Azure, die als *Azure-Netzwerkrichtlinien* bezeichnet wird.
 * *Calico-Netzwerkrichtlinien*, eine von [Tigera][tigera] gegründete Open-Source-Netzwerk- und -Netzwerkrichtlinienlösung.
 
-Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Richtlinien werden in Mengen von zulässigen und unzulässigen IP-Paaren übersetzt. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
+Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Aus den Richtlinien werden zulässige und unzulässige IP-Adresspaare gebildet. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
 
 ### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und zwischen ihren Funktionen
 
@@ -57,7 +54,7 @@ Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlini
 | Unterstützte Plattformen                      | Linux                      | Linux                       |
 | Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI und kubenet       |
 | Compliance mit Kubernetes-Spezifikation | Alle Richtlinientypen werden unterstützt |  Alle Richtlinientypen werden unterstützt |
-| Zusätzliche Funktionen                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl`-Befehlszeilenschnittstelle zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
+| Zusätzliche Features                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl`-Befehlszeilenschnittstelle zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
 | Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen zu zusätzlichem kostenpflichtigem Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Project „Calico“). |
 | Protokollierung                                  | In IPTables hinzugefügte/gelöschte Regeln werden auf jedem Host unter */var/log/azure-npm.log* protokolliert. | Weitere Informationen finden Sie unter [Calico-Komponentenprotokolle][calico-logs]. |
 
@@ -69,7 +66,7 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
 * Lassen Sie Datenverkehr basierend auf dem Namespace zu.
 
-Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. 
+Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinien unterstützt. 
 
 > [!IMPORTANT]
 >

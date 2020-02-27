@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: bf0710ebef21226d8d8582a920d64027bb015d34
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846211"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622721"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -63,7 +63,7 @@ Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services
 
 Verwenden Sie die Personalisierung, wenn für Ihren Inhalt Folgendes gilt:
 
-* Verfügt über eine begrenzte Anzahl von Elementen (max. 50), die ausgewählt werden können. Bei einer längeren Liste sollten Sie eine [Empfehlungs-Engine verwenden](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines), um die Liste auf 50 Elemente zu reduzieren.
+* Verfügt über eine begrenzte Anzahl von Elementen (max. 50), die ausgewählt werden können. Bei einer längeren Liste sollten Sie eine [Empfehlungs-Engine verwenden](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution), um die Liste auf 50 Elemente zu reduzieren.
 * Enthält Informationen zur Beschreibung des Inhalts, für den die Rangfolge nach Relevanz erstellt werden soll: _Aktionen mit Features_ und _Kontextfeatures_.
 * Verfügt über mindestens 1.000 inhaltsbezogene Ereignisse pro Tag, damit die Personalisierung effektiv ist. Wenn die Personalisierung nicht den mindestens benötigten Datenverkehr erhält, dauert es länger, bis der Dienst das beste Inhaltselement ermittelt hat.
 

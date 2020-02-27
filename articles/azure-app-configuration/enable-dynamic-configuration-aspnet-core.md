@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8032a9b206be4a5eb70a1f40fd33667a1dbdfaa7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 3c461e543e3b01501ec47589a9eab3d74820491a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714718"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500230"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App
 
@@ -53,12 +53,12 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Azure.AppConfiguration.AspNetCore` hinzu, indem Sie den folgenden Befehl ausführen:
 
     ```CLI
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `CreateWebHostBuilder`-Methode, um die `config.AddAzureAppConfiguration()`-Methode hinzuzufügen.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -81,7 +81,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -124,7 +124,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
 
 3. Öffnen Sie die Datei *Startup.cs*, und verwenden Sie `IServiceCollection.Configure<T>` in der `ConfigureServices`-Methode, um Konfigurationsdaten an die `Settings`-Klasse zu binden.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -134,7 +134,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -148,7 +148,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
 4. Aktualisieren Sie die `Configure`-Methode so, dass `UseAzureAppConfiguration`-Middleware hinzugefügt wird, mit der die für die Aktualisierung registrierten Konfigurationseinstellungen aktualisiert werden können, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -165,7 +165,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -217,7 +217,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
 
 2. Aktualisieren Sie die `HomeController`-Klasse, um `Settings` per Abhängigkeitsinjektion zu erhalten, und verwenden Sie die darin enthaltenen Werte.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -240,7 +240,7 @@ Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer ASP.NET Co
     }
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller

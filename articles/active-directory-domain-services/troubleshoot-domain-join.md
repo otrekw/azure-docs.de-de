@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 286e2ad460e98cfeceab52a3ac21bcba8da2cc7f
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703659"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612803"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Behandeln von Problemen beim Einbinden in eine von Azure AD Domain Services verwaltete Domäne
 
@@ -32,7 +32,7 @@ Wenn die VM die von Azure AD DS verwaltete Domäne nicht finden kann, liegt norm
 
 1. Stellen Sie sicher, dass die VM mit demselben virtuellen Netzwerk (oder einem virtuellen Peernetzwerk) verbunden ist, das für Azure AD DS aktiviert wurde. Andernfalls kann die VM die Domäne nicht finden und eine Verbindung mit ihr herstellen, um sich darin einzubinden.
     * Wenn die VM nicht mit demselben virtuellen Netzwerk verbunden ist, vergewissern Sie sich, dass der Status für das Peering virtueller Netzwerke oder die VPN-Verbindung *Aktiv* oder *Verbunden* lautet, damit der Datenverkehr ordnungsgemäß weitergeleitet werden kann.
-1. Versuchen Sie, die Domäne unter Angabe des Domänennamens der von Azure AD DS verwaltete Domäne, z.B. `ping aadds.contoso.com`, zu pingen.
+1. Versuchen Sie, die Domäne unter Angabe des Domänennamens der von Azure AD DS verwaltete Domäne, z.B. `ping aaddscontoso.com`, zu pingen.
     * Wenn die Ping-Antwort fehlschlägt, versuchen Sie, die IP-Adressen für die Domäne zu pingen, die auf der Übersichtsseite im Portal für Ihre von Azure AD DS verwaltete Domäne angezeigt werden, z.B. `ping 10.0.0.4`.
     * Wenn Sie die IP-Adresse erfolgreich pingen können, aber nicht die Domäne, ist der DNS möglicherweise falsch konfiguriert. Stellen Sie sicher, dass Sie die DNS-Server der von Azure AD DS verwalteten Domäne für das virtuelle Netzwerk konfiguriert haben.
 1. Versuchen Sie, den DNS-Resolvercache auf dem virtuellen Computer zu leeren, z.B. `ipconfig /flushdns`.
@@ -53,7 +53,7 @@ Wenn ein Dialogfeld angezeigt wird, das Anmeldeinformationen zum Einbinden in di
 
 Sehen Sie sich die folgenden Schritte zur Problembehandlung an, um Probleme im Zusammenhang mit Anmeldeinformationen zu beheben:
 
-1. Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `dee@contoso.onmicrosoft.com`. Stellen Sie sicher, dass dieser UPN in Azure AD ordnungsgemäß konfiguriert wird.
+1. Geben Sie die Anmeldeinformationen im UPN-Format an, z. B. als `dee@aaddscontoso.onmicrosoft.com`. Stellen Sie sicher, dass dieser UPN in Azure AD ordnungsgemäß konfiguriert wird.
     * Der *SAMAccountName* für Ihr Konto wird möglicherweise automatisch generiert, wenn mehrere Benutzer in Ihrem Mandanten das gleiche UPN-Präfix verwenden oder wenn Ihr UPN-Präfix übermäßig lang ist. Das Format *SAMAccountName* für Ihr Konto ist möglicherweise anders als Sie erwarten bzw. unterscheidet sich von dem, was Sie in Ihrer lokalen Domäne verwenden.
 1. Verwenden Sie die Anmeldeinformationen für ein Benutzerkonto, das zur Gruppe *AAD DC-Administratoren* gehört, um VMs in die von Azure AD DS verwaltete Domäne einzubinden.
 1. Stellen Sie sicher, dass Sie die [Kennwortsynchronisierung aktiviert][enable-password-sync] und so lange gewartet haben, bis die erste Kennwortsynchronisierung abgeschlossen war.

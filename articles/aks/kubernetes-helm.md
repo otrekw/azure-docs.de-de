@@ -3,16 +3,15 @@ title: Bereitstellen von Containern mit Helm in Kubernetes in Azure
 description: Erfahren Sie, wie Sie das Helm-Paketerstellungstool verwenden, um Container in einem AKS-Cluster (Azure Kubernetes Service) bereitzustellen.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 849f4e182d4bd9255ca8e60b69b6ad6c8a8e0fc7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869373"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595177"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Installieren von Anwendungen mit Helm in Azure Kubernetes Service (AKS)
 

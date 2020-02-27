@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backu
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: c3c62f8ea7813c14fa6e19d825a5253de18f6639
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7213f26493a118c2cb32f8f9935b4954176b99a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172679"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586392"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -112,13 +112,13 @@ Die in diesem Artikel genannten Sicherheitsfeatures bieten Abwehrmechanismen geg
 
 | Vorgang | Fehlerdetails | Lösung |
 | --- | --- | --- |
-| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Fehler Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die optional bevorzugte Vorgehensweise ist das Aktualisieren des Backup-Agents, von Azure Backup Server und/oder DPM-Updaterollups (UR), um in den Genuss aller Sicherheitsupdates zu kommen. |
+| Richtlinienänderung |Die Sicherungsrichtlinie konnte nicht geändert werden. Error: Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x29834] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Beibehaltungsdauer unter die oben angegebenen Mindestwerte zu verkürzen, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben). <br/>**Empfohlene Maßnahme:**<br/> In diesem Fall müssen Sie die Beibehaltungsdauer höher als den angegebenen Mindestzeitraum festlegen (sieben Tage für „Täglich“, vier Wochen für „Wöchentlich“, drei Wochen für „Monatlich“ oder ein Jahr für „Jährlich“), um mit richtlinienbezogenen Aktualisierungen fortzufahren. Die optional bevorzugte Vorgehensweise ist das Aktualisieren des Backup-Agents, von Azure Backup Server und/oder DPM-Updaterollups (UR), um in den Genuss aller Sicherheitsupdates zu kommen. |
 | Ändern der Passphrase |Die eingegebene Sicherheits-PIN ist nicht korrekt. (ID: 100130) Geben Sie die richtige Sicherheits-PIN an, um diesen Vorgang abzuschließen. |**Ursache:**<br/> Dieser Fehler tritt bei der Eingabe einer ungültigen oder abgelaufenen Sicherheits-PIN beim Ausführen eines kritischen Vorgangs (z.B. Ändern der Passphrase) auf. <br/>**Empfohlene Maßnahme:**<br/> Um den Vorgang abzuschließen, müssen Sie die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
-| Ändern der Passphrase |Fehler beim Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben).<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf Mindestversion 2.0.9052, Azure Backup-Server auf mindestens Update 1 und/oder DPM auf mindestens DPM 2012 R2 UR12 oder DPM 2016 UR2 (Downloadlinks siehe unten) aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
+| Ändern der Passphrase |Fehler bei dem Vorgang. ID: 120002 |**Ursache:**<br/>Dieser Fehler tritt auf, wenn Sicherheitseinstellungen aktiviert sind, Sie versuchen, die Passphrase zu ändern, und eine nicht unterstützte Version verwenden (unterstützte Versionen sind im ersten Hinweis in diesem Artikel angegeben).<br/>**Empfohlene Maßnahme:**<br/> Um die Passphrase zu ändern, müssen Sie zuerst den Backup-Agent auf Mindestversion 2.0.9052, Azure Backup-Server auf mindestens Update 1 und/oder DPM auf mindestens DPM 2012 R2 UR12 oder DPM 2016 UR2 (Downloadlinks siehe unten) aktualisieren und dann die gültige Sicherheits-PIN eingeben. Um die PIN abzurufen, melden Sie sich beim Azure-Portal an und navigieren zu „Recovery Services-Tresor > Einstellungen > Eigenschaften > Sicherheits-PIN generieren“. Verwenden Sie diese PIN, um die Passphrase zu ändern. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erste Schritte mit Azure Recovery Services-Tresor](backup-azure-vms-first-look-arm.md), um diese Features zu aktivieren.
 - [Laden Sie den neuesten Azure Recovery Services-Agent herunter](https://aka.ms/azurebackup_agent), um Ihre Windows-Computer und Ihre Sicherungsdaten gegen Angriffe zu schützen.
-- [Laden Sie die neueste Version von Azure Backup Server herunter](https://aka.ms/latest_azurebackupserver), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
+- [Laden Sie die neueste Version von Azure Backup Server herunter](https://support.microsoft.com/help/4457852/microsoft-azure-backup-server-v3), um Ihre Workloads und Sicherungsdaten gegen Angriffe zu schützen.
 - Laden Sie [UR12 für System Center 2012 R2 Data Protection Manager](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) oder [UR2 für System Center 2016 Data Protection Manager](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager) herunter, um Workloads und Ihre Sicherungsdaten vor Angriffen zu schützen.

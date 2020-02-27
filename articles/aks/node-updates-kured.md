@@ -2,17 +2,14 @@
 title: Aktualisieren und Neustarten von Linux-Knoten mit kured in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Linux-Knoten mit kured in Azure Kubernetes Service (AKS) aktualisiert und automatisch neu gestartet werden
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.author: mlearned
-ms.openlocfilehash: c9e7c23806d4a0a0e2c0b36122d9eb087c986556
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549171"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594939"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)
 

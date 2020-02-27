@@ -2,17 +2,16 @@
 title: Intelligentes Routing und Canary-Releases mit Istio in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie mit Istio intelligentes Routing und Canary-Releases in einem Cluster von Azure Kubernetes Service (AKS) bereitstellen
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529798"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594125"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Verwenden von intelligentem Routing und Canary-Releases mit Istio in Azure Kubernetes Service (AKS)
 
@@ -425,7 +424,7 @@ Da es nun keinen Datenverkehr mehr zu den älteren Versionen der Komponenten gib
 
 Sie haben nun erfolgreich das Rollout einer neuen Version der AKS-Abstimmungs-App durchgeführt.
 
-## <a name="clean-up"></a>Bereinigen 
+## <a name="clean-up"></a>Bereinigung 
 
 Sie können die AKS-Abstimmungs-App, die wir in diesem Szenario verwendet haben, aus Ihrem AKS-Cluster entfernen, indem Sie den Namespace `voting` wie folgt löschen:
 

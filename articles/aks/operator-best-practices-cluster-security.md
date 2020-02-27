@@ -2,17 +2,14 @@
 title: 'Best Practices für Operator: Clustersicherheit in Azure Kubernetes Services (AKS)'
 description: Lernen Sie die Best Practices für den Clusteroperator zum Verwalten der Clustersicherheit und von Upgrades in Azure Kubernetes Service (AKS) kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: mlearned
-ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: f02f6588946e2b63a1a092aba15603d1685e8207
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549205"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594803"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)
 

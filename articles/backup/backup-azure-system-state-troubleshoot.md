@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme bei der Systemstat
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665041"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583298"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -20,11 +20,11 @@ In diesem Artikel werden Lösungen für Probleme beschrieben, die beim Verwenden
 Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit der Problembehandlung der Systemstatussicherung beginnen:
 
 - [Sicherstellen, dass der Microsoft Azure Recovery Services-Agent (MARS) auf dem neuesten Stand ist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](https://aka.ms/AB-A4dp50)
+- [Sicherstellen, dass zwischen dem MARS-Agent und Azure Netzwerkkonnektivität besteht](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Vergewissern Sie sich, dass Microsoft Azure Recovery Services ausgeführt wird (auf der Dienstkonsole). Führen Sie bei Bedarf einen Neustart durch, und wiederholen Sie den Vorgang.
-- [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](https://aka.ms/AB-AA4dwtt)
-- [Überprüfen, ob ein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://aka.ms/AB-AA4dwtk)
-- [Geplante Sicherung nicht erfolgreich, manuelle Sicherung erfolgreich](https://aka.ms/ScheduledBackupFailManualWorks)
+- [Sicherstellen, dass am Speicherort des Ablageordners 5 - 10% freier Volumespeicherplatz vorhanden ist](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Überprüfen, ob ein anderer Prozess oder Antivirensoftware in Azure Backup eingreift](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Geplante Sicherung nicht erfolgreich, manuelle Sicherung erfolgreich](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
 - Sicherstellen, dass Ihr Betriebssystem über die neuesten Updates verfügt
 - [Sicherstellen, dass nicht unterstützte Laufwerke und Dateien mit nicht unterstützten Attributen aus der Sicherung ausgeschlossen werden](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Vergewissern Sie sich, dass die **Systemuhr** des geschützten Systems auf die richtige Zeitzone festgelegt ist. <br>
@@ -33,7 +33,7 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
   - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wird. <br>
   - Verwenden Sie dieselbe Passphrase, die ursprünglich zum Registrieren des Servers verwendet wurde. <br>
 - Wenn es sich um eine Offlinesicherung handelt, sorgen Sie dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
-- [Aspekte, wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird](https://aka.ms/AB-AA4dwtr)
+- [Aspekte, wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>Einschränkung
 

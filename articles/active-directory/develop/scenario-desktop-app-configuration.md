@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b2a5a66f2801804b354dd8945ea7d8eb565e82cb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2ba69e6447c686230412c33e74196c4bb594e0de
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702214"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77611828"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktop-App, die Web-APIs aufruft: Codekonfiguration
 
@@ -29,7 +29,7 @@ Nachdem Sie Ihre Anwendung nun erstellt haben, erfahren Sie, wie Sie den Code mi
 
 Die folgenden Microsoft-Authentifizierungsbibliotheken (MSALs) unterstützen Desktopanwendungen.
 
-  Microsoft Authentication Library (MSAL) | Beschreibung
+  Microsoft Authentication Library (MSAL) | BESCHREIBUNG
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützt das Erstellen einer Desktopanwendung auf mehreren Plattformen – Linux, Windows und macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Unterstützt das Erstellen einer Desktopanwendung unter mehreren Plattformen.
@@ -40,7 +40,7 @@ Die folgenden Microsoft-Authentifizierungsbibliotheken (MSALs) unterstützen Des
 
 Aus Codesicht sind Desktopanwendungen öffentliche Clientanwendungen. Die Konfiguration weicht ein wenig ab, je nachdem, ob Sie die interaktive Authentifizierung verwenden oder nicht.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 Sie müssen MSAL.NET `IPublicClientApplication` erstellen und bearbeiten.
 
@@ -185,17 +185,17 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 Vor dem Aufruf der `.Build()`-Methode können Sie Ihre Konfiguration wie zuvor dargestellt durch Aufrufe von `.WithXXX`-Methoden überschreiben.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Dies ist die Klasse, mit der die Beispiele in den MSAL Java-Entwicklungsbeispielen konfiguriert werden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
-PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
-        .authority(TestData.AUTHORITY_COMMON)
+PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
+        .authority(AUTHORITY)
         .build();
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 config = json.load(open(sys.argv[1]))
@@ -208,7 +208,7 @@ app = msal.PublicClientApplication(
     )
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 Mit dem folgenden Code wird eine öffentliche Clientanwendung instanziiert, und Benutzer werden mit einem Geschäfts-, Schul- oder Unikonto oder einem persönlichen Microsoft-Konto bei der öffentlichen Microsoft Azure-Cloud angemeldet.
 

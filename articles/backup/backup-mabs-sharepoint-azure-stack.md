@@ -3,12 +3,12 @@ title: Sichern einer SharePoint-Farm in Azure Stack
 description: Verwenden Sie Azure Backup Server zum Sichern und Wiederherstellen Ihrer SharePoint-Daten auf Azure Stack. Dieser Artikel stellt die benötigten Informationen bereit, um Ihre SharePoint-Farm so zu konfigurieren, dass Sie die gewünschten Daten in Azure speichern können. Sie können geschützte SharePoint-Daten vom Datenträger oder aus Azure wiederherstellen.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 06d64be4f09c6fb6ed9dee34a0c7ba0b1bd785e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172489"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583213"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Sichern einer SharePoint-Farm in Azure Stack
 
@@ -32,7 +32,7 @@ Bevor Sie fortfahren, stellen Sie sicher, [dass Azure Backup Server installiert 
 
 ### <a name="protection-agent"></a>Schutz-Agent
 
-Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. Azure Backup Server benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
+Der Azure Backup-Agent muss auf dem Server, auf dem SharePoint ausgeführt wird, auf den Servern, auf denen SQL Server ausgeführt wird, sowie allen anderen Servern installiert werden, die der SharePoint-Farm angehören. Weitere Informationen zum Einrichten des Schutz-Agents finden Sie unter [Einrichten des Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Einzige Ausnahme: Der Agent wird nur auf einem einzelnen Web-Front-End-Server (WFE) installiert. Azure Backup Server benötigt den Agent auf einem WFE-Server nur als Einstiegspunkt für den Schutz.
 
 ### <a name="sharepoint-farm"></a>SharePoint-Farm
 
@@ -214,7 +214,7 @@ Im folgenden Beispiel wurde *Recovering SharePoint item* versehentlich gelöscht
    > Da die SharePoint-Farm mit langfristiger Aufbewahrung in Azure geschützt ist, sind auf MABS keine Kataloginformationen (Metadaten) verfügbar. Wenn also eine Zeitpunktwiederherstellung einer SharePoint-Inhaltsdatenbank erforderlich ist, muss die SharePoint-Farm neu katalogisiert werden.
    >
    >
-3. Klicken Sie auf **die entsprechende** Option .
+3. Klicken Sie auf **die entsprechende** Option.
 
     ![MABS SharePoint Protection10](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection12.png)
 

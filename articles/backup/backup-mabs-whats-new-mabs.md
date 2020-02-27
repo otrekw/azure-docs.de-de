@@ -3,12 +3,12 @@ title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads. Erfahren Sie, wie Sie Azure Backup Server V3 installieren oder ein Upgrade auf diese Version ausführen.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172222"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582805"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Neuerungen in Microsoft Azure Backup Server
 
@@ -18,7 +18,7 @@ Die folgenden Features sind in MABS V3 enthalten:
 
 ## <a name="volume-to-volume-migration"></a>Volume-zu-Volume-Migration
 
-Mit Modern Backup Storage (MBS) in MABS V2 wurde ein workloadbewusster Speicher veröffentlicht. Bestimmte Workloads lassen sich so konfigurieren, dass sie auf einem bestimmten Speicher gesichert werden, basierend auf den Speichereigenschaften. Nach der Konfiguration ist es jedoch ggf. erforderlich, Sicherungen bestimmter Datenquellen auf einen anderen Speicher zu verschieben, um die Ressourcenverwendung zu optimieren. MABS V3 bietet Ihnen die Möglichkeit, Ihre Sicherungen zu migrieren und so zu konfigurieren, dass sie in [3 Schritten](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/) auf einem anderen Volume gespeichert werden.
+Mit Modern Backup Storage (MBS) in MABS V2 wurde ein workloadbewusster Speicher veröffentlicht. Bestimmte Workloads lassen sich so konfigurieren, dass sie auf einem bestimmten Speicher gesichert werden, basierend auf den Speichereigenschaften. Nach der Konfiguration ist es jedoch ggf. erforderlich, Sicherungen bestimmter Datenquellen auf einen anderen Speicher zu verschieben, um die Ressourcenverwendung zu optimieren. MABS V3 bietet Ihnen die Möglichkeit, Ihre Sicherungen zu migrieren und so zu konfigurieren, dass sie in [3 Schritten](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842) auf einem anderen Volume gespeichert werden.
 
 ## <a name="prevent-unexpected-data-loss"></a>Vermeidung unerwarteter Kosten
 

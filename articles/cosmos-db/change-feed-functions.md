@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 215ecc1e392f8e7051173fb6f589fb940c26f17d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872246"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604999"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Serverlose, ereignisbasierte Architekturen mit Azure Cosmos DB und Azure Functions
 
@@ -20,7 +20,7 @@ Azure Functions bietet die einfachste Möglichkeit zum Herstellen einer Verbindu
 
 ![Serverlose ereignisbasierte Funktionen, die mit dem Azure Functions-Trigger für Cosmos DB arbeiten](./media/change-feed-functions/functions.png)
 
-Mit dem [Azure Functions-Trigger für Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) können Sie die Skalierung des [Änderungsfeedprozessors](./change-feed-processor.md) sowie die Funktionen zur zuverlässigen Erkennung nutzen, ohne eine [Workerinfrastruktur](./change-feed-processor.md) verwalten zu müssen. Sie können sich ganz auf die Logik Ihrer Azure-Funktion konzentrieren, ohne sich um die Pipeline für die Ereignisquellen kümmern zu müssen. Sie können den Trigger auch mit anderen [Azure Functions-Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) kombinieren.
+Mit dem [Azure Functions-Trigger für Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md) können Sie die Skalierung des [Änderungsfeedprozessors](./change-feed-processor.md) sowie die Funktionen zur zuverlässigen Erkennung nutzen, ohne eine [Workerinfrastruktur](./change-feed-processor.md) verwalten zu müssen. Sie können sich ganz auf die Logik Ihrer Azure-Funktion konzentrieren, ohne sich um die Pipeline für die Ereignisquellen kümmern zu müssen. Sie können den Trigger auch mit anderen [Azure Functions-Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) kombinieren.
 
 > [!NOTE]
 > Derzeit wird der Azure Functions-Trigger für Cosmos DB nur für die Verwendung mit der Kern-API (SQL) unterstützt.
@@ -30,7 +30,7 @@ Mit dem [Azure Functions-Trigger für Cosmos DB](../azure-functions/functions-bi
 Um einen serverlosen, ereignisbasierten Flow zu implementieren, ist Folgendes erforderlich:
 
 * **Überwachter Container:** Dies ist der überwachte Azure Cosmos-Container, der die Daten enthält, aus denen der Änderungsfeed generiert wird. Alle Einfügungen und Aktualisierungen für den überwachten Container werden im Änderungsfeed des Containers berücksichtigt.
-* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Dieser Leasecontainer kann manuell oder automatisch vom Azure Functions-Trigger für Cosmos DB erstellt werden. Legen Sie das Flag *CreateLeaseCollectionIfNotExists* in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) fest, um den Leasecontainer automatisch zu erstellen. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
+* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Dieser Leasecontainer kann manuell oder automatisch vom Azure Functions-Trigger für Cosmos DB erstellt werden. Legen Sie das Flag *CreateLeaseCollectionIfNotExists* in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) fest, um den Leasecontainer automatisch zu erstellen. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Erstellen eines Azure Functions-Triggers für Cosmos DB
 
@@ -51,7 +51,7 @@ Wenn Sie Liveszenarien in der Cloud testen möchten, können Sie [Cosmos DB kos
 In den folgenden Artikeln erfahren Sie mehr über den Änderungsfeed:
 
 * [Übersicht über Änderungsfeeds](change-feed.md)
-* [Möglichkeiten zum Lesen von Änderungsfeeds](read-change-feed.md)
+* [Ways to read change feed](read-change-feed.md) (Möglichkeiten zum Lesen von Änderungsfeeds)
 * [Verwenden der Änderungsfeed-Verarbeitungsbibliothek](change-feed-processor.md)
 * [Arbeiten mit der Änderungsfeed-Verarbeitungsbibliothek](change-feed-processor.md)
 * [Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions](serverless-computing-database.md)

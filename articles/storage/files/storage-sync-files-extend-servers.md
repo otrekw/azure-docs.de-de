@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031508"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597897"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
 
@@ -27,8 +27,6 @@ In diesem Artikel werden die grundlegenden Schritte zum Erweitern der Speicherka
 > * Erstellen eines Serverendpunkts
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -217,7 +215,7 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
 
    Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
-   | value | Beschreibung |
+   | value | BESCHREIBUNG |
    | ----- | ----- |
    | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |
@@ -263,7 +261,7 @@ Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen,
 
    | | |
    | ----- | ----- |
-   | value | Beschreibung |
+   | value | BESCHREIBUNG |
    | **Azure-Abonnement** | Das Abonnement, das den Speichersynchronisierungsdienst für dieses Tutorial enthält. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält. Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
    | **Speichersynchronisierungsdienst** | Der Name des Speichersynchronisierungsdiensts. Verwenden Sie für dieses Tutorial _afssyncservice02_. |
@@ -282,7 +280,7 @@ Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen
 
 1. Geben Sie die folgenden Informationen ein, um eine Synchronisierungsgruppe mit einem Cloudendpunkt zu erstellen:
 
-   | value | Beschreibung |
+   | value | BESCHREIBUNG |
    | ----- | ----- |
    | **Name der Synchronisierungsgruppe** | Dieser Name muss innerhalb des Speichersynchronisierungsdiensts eindeutig sein, es kann jedoch ein beliebiger Name sein, der für Sie Sinn ergibt. Verwenden Sie *afssyncgroup* für dieses Tutorial.|
    | **Abonnement** | Das Abonnement, unter dem Sie den Speichersynchronisierungsdienst für dieses Tutorial bereitgestellt haben. |
