@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f3a9265c1f9a5c6c63931798718e4d0679cd126b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136253"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505656"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -39,7 +39,7 @@ Ein technisches Profil ermöglicht die folgenden Szenarien:
 - [SAML2](saml-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
 - [Sitzungsverwaltung](custom-policy-reference-sso.md) – Verarbeiten verschiedener Typen von Sitzungen.
-- **Application Insights**
+- [Application Insights](../azure-monitor/app/usage-overview.md)
 - [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern. 
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile

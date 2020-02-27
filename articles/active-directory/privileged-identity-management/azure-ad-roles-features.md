@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896429"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499040"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Verwaltungsfunktionen für Azure AD-Rollen in Privileged Identity Management
 
 Die Verwaltungsfunktionen für Azure AD Rollen in Privileged Identity Management wurden aktualisiert, um die Verwaltung von Azure AD-Rollen und Azure-Ressourcenrollen zu vereinheitlichen. Zuvor umfasste Privileged Identity Management für Azure-Ressourcenrollen einige wichtige Features, die für Azure AD-Rollen nicht verfügbar waren.
 
 Mit dem aktuell eingeführten Update führen wir beide Funktionen in einer einzigen Verwaltungsumgebung zusammen, in der Sie die gleichen Funktionen für Azure AD-Rollen wie für Azure-Ressourcenrollen finden. In diesem Artikel erhalten Sie Informationen zu den aktualisierten Features und sämtlichen Anforderungen.
+
 
 ## <a name="time-bound-assignments"></a>Zeitgebundene Zuweisungen
 

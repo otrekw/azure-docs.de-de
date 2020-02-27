@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f30e3957d51617726e95574df416d1438b1fd2a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484331"
+ms.locfileid: "77505624"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -32,7 +32,7 @@ Azure Active Directory B2C (Azure AD B2C) gibt Überwachungsprotokolle aus, die 
 
 Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivitätstypen:
 
-|Aktivitätstyp |BESCHREIBUNG  |
+|Aktivitätstyp |Beschreibung  |
 |---------|---------|
 |Authorization |Aktivitäten, die sich auf die Autorisierung eines Benutzers für den Zugriff auf B2C-Ressourcen beziehen (z. B. ein Administrator, der auf eine Liste von B2C-Richtlinien zugreift).         |
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
@@ -113,13 +113,14 @@ Im folgenden PowerShell-Skript sehen Sie ein Beispiel für das Abfragen der Azur
 Sie können dieses Skript in der [Azure Cloud Shell](overview.md) ausprobieren. Sie müssen es dann mit Ihrer Anwendungs-ID, dem Clientgeheimnis und dem Namen Ihres Azure AD B2C-Mandanten aktualisieren.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example

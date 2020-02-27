@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7f444ad9b32ca5da923ce5ac711c9947971c4d1e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28dc5131366c54db30e9233ea1061cc9bc7a54ce
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672012"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500073"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service
 
@@ -403,7 +403,7 @@ Um die von Ihnen erstellte App anzuzeigen, suchen Sie im [Azure-Portal](https://
 
 ![Auswählen von „App Services“ im Azure-Portal](./media/app-service-web-tutorial-dotnetcore-sqldb/app-services.png)
 
-Wählen Sie auf der Seite **App Services** und den Namen Ihrer Azure-App aus.
+Wählen Sie auf der Seite **App Services** den Namen Ihrer Azure-App aus.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-dotnetcore-sqldb/access-portal.png)
 

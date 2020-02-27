@@ -12,28 +12,25 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429061"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587004"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit dem Azure-Portal und Testen des NAT-Diensts
 
 In diesem Tutorial erstellen Sie ein NAT-Gateway, um ausgehende Konnektivität für virtuelle Computer in Azure bereitzustellen. Sie stellen einen virtuellen Quell- und Zielcomputer bereit, um das NAT-Gateway zu testen. Sie testen das NAT-Gateway, indem Sie über eine öffentliche IP-Adresse vom virtuellen Quell- zum Zielcomputer Verbindungen in ausgehender Richtung herstellen.  In diesem Tutorial werden die Quelle und das Ziel der Einfachheit halber in zwei unterschiedlichen virtuellen Netzwerken jeweils in derselben Ressourcengruppe bereitgestellt.
 
 >[!NOTE] 
->Azure Virtual Network NAT ist derzeit als öffentliche Vorschauversion erhältlich und nur in bestimmten [Regionen](./nat-overview.md#region-availability) verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
+>Azure Virtual Network NAT ist zurzeit als öffentliche Vorschauversion erhältlich und nur in bestimmten [Regionen](./nat-overview.md#region-availability) verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-> [!IMPORTANT]
-> Greifen Sie nach dem [Aktivieren der Vorschauversion](./nat-overview.md#enable-preview) von Virtual Network NAT für Ihr Abonnement unter https://aka.ms/natportal auf das Portal zu.
-
-Melden Sie sich beim [Azure-Portal](https://aka.ms/natportal) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Vorbereiten der Quelle für ausgehenden Datenverkehr
 
@@ -107,7 +104,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
 
 2. Geben Sie unter **Öffentliche IP-Adresse erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | IP-Version | Wählen Sie **IPv4** aus.
     | SKU | Wählen Sie **Standard** aus.
@@ -162,7 +159,7 @@ Der gesamte ausgehende Datenverkehr an Ziele im Internet verwendet jetzt den NAT
 
 ## <a name="prepare-destination-for-outbound-traffic"></a>Vorbereiten des Ziels für ausgehenden Datenverkehr
 
-Sie erstellen jetzt ein Ziel für den ausgehenden Datenverkehr, der vom NAT-Dienst übersetzt wird, damit Sie einen Test durchführen können.
+Wir erstellen jetzt ein Ziel für den ausgehenden Datenverkehr, der vom NAT-Dienst übersetzt wird, damit Sie einen Test durchführen können.
 
 ### <a name="configure-virtual-network-for-destination"></a>Konfigurieren des virtuellen Netzwerks für das Ziel
 
@@ -318,9 +315,9 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 
 - Informieren Sie sich über [Virtual Network NAT](./nat-overview.md).
 - Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
-- Schnellstart für die Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
+- Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
 - [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 
 > [!div class="nextstepaction"]

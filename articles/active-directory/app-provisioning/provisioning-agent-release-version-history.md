@@ -13,15 +13,15 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/04/2020
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac9eac2d17fa0a4f1db487d4c7f8beb67de24a9
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 164d156be030aa4a177ea77ed61782780338abb0
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77065677"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522372"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlichungen
 In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. Der Bereitstellungs-Agent wird automatisch aktualisiert, wenn eine neue Version veröffentlicht wird. 

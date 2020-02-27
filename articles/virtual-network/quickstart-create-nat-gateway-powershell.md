@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429121"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588772"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Schnellstart: Erstellen eines NAT-Gateways mithilfe von Azure PowerShell
 
@@ -34,9 +34,6 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie den Azure Virtual Network 
 Sie können dieses Tutorial mithilfe von Azure Cloud Shell absolvieren oder die Befehle lokal ausführen.  Falls Sie nicht Azure Cloud Shell verwendet haben, [melden Sie sich jetzt an](https://shell.azure.com).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> Greifen Sie nach dem [Aktivieren der Vorschauversion](./nat-overview.md#enable-preview) von Virtual Network NAT für Ihr Abonnement über https://aka.ms/natportal auf das Portal zu.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -296,7 +293,7 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe der Azure CLI](./quickstart-create-nat-gateway-cli.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
-- [Senden Sie Feedback zur Public Preview.](https://aka.ms/natfeedback)
+- [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
 > [!div class="nextstepaction"]
 
 
