@@ -1,5 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer DSVM-Instanz für geografische KI'
+title: 'Schnellstart: Erstellen einer Data Science Virtual Machine-Instanz für geografische KI'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurieren und erstellen Sie für räumliche Analysen und maschinelles Lernen eine DSVM-Instanz für geografische KI.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170724"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525888"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Schnellstart: Einrichten eines virtuellen Computers für geografische KI in Azure 
 

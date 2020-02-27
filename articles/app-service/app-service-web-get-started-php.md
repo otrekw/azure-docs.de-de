@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 59e59fdf7fc6207a77bbe9923899570eeaa06a87
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672094"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500139"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Erstellen einer PHP-Web-App in Azure
 
@@ -30,7 +30,7 @@ Die folgenden Schritte können unter Mac, Windows oder Linux ausgeführt werden.
 
 So führen Sie diesen Schnellstart durch:
 
-* <a href="https://git-scm.com/" target="_blank">Installieren Sie Git.</a>
+* <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
 * <a href="https://php.net/manual/install.php" target="_blank">Installieren Sie PHP.</a>
 
 ## <a name="download-the-sample-locally"></a>Lokales Herunterladen des Beispiels

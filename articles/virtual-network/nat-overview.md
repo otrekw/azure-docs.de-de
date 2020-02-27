@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 1bdd6552c3d418d761ffaf1df4ebb769421693f5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484994"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589435"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Was ist Virtual Network NAT (Public Preview)?
 
@@ -140,9 +140,6 @@ NAT ist derzeit in den folgenden Regionen verfügbar:
 
 Abonnements müssen registriert werden, um die Teilnahme an der öffentlichen Vorschauversion zu ermöglichen.  Für die Teilnahme ist ein zweistufiger Prozess erforderlich. Unten sind die Schritte für Azure CLI und Azure PowerShell angegeben.  Die Aktivierung kann mehrere Minuten dauern.
 
-> [!IMPORTANT]
-> Greifen Sie nach dem [Aktivieren der Vorschauversion](./nat-overview.md#enable-preview) von Virtual Network NAT für Ihr Abonnement unter https://aka.ms/natportal auf das Portal zu.
-
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 1. Registrieren Sie das Abonnement für Public Preview.
@@ -168,7 +165,7 @@ Abonnements müssen registriert werden, um die Teilnahme an der öffentlichen Vo
 2. Aktivieren Sie die Registrierung.
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Preise
@@ -197,7 +194,6 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feed
 
 - NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
 - Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.
-- NSGs in Subnetzen oder NICs werden für ausgehende Datenflüsse zu öffentlichen Endpunkten per NAT nicht berücksichtigt.
 - Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
 - NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 

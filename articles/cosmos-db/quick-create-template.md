@@ -7,12 +7,12 @@ tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 01/21/2020
-ms.openlocfilehash: 12c2b0b089702b9e56ae099abbefd85769bc1d21
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549543"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587888"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Azure Cosmos DB-Instanz und eines Containers mit einer Azure Resource Manager-Vorlage
 
@@ -34,7 +34,7 @@ Azure-Abonnement oder kostenloses Azure Cosmos DB-Testkonto
 
 Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
 
-[!code-json[<Resource Manager template create Azure Cosmos DB>](~/quickstart-templates/101-cosmosdb-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
 In der Vorlage sind drei Azure-Ressourcen definiert:
 
@@ -78,7 +78,7 @@ Zum Bereitstellen der Vorlage wird das Azure-Portal verwendet. Neben dem Azure-P
 
 Zur Überprüfung des Azure Cosmos-Kontos, der Datenbank und des Containers können Sie entweder das Azure-Portal verwenden oder mithilfe des im Anschluss bereitgestellten Skripts für die Azure-Befehlszeilenschnittstelle bzw. für Azure PowerShell das erstellte Geheimnis auflisten.
 
-# <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -88,7 +88,7 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
@@ -103,7 +103,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, empfiehlt es sich ggf., die Ressourcen nicht zu bereinigen.
 Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe. Dadurch werden das Azure Cosmos-Konto und die dazugehörigen Ressourcen gelöscht. Löschen Sie die Ressourcengruppe wie folgt mit der Azure CLI oder mit Azure Powershell:
 
-# <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
+# <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -112,7 +112,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -127,5 +127,5 @@ Write-Host "Press [ENTER] to continue..."
 In dieser Schnellstartanleitung haben Sie mithilfe einer Azure Resource Manager-Vorlage ein Azure Cosmos-Konto, eine Datenbank und einen Container erstellt und die Bereitstellung überprüft. Weitere Informationen zu Azure Cosmos DB und Azure Resource Manager finden Sie in den folgenden Artikeln:
 
 - [Willkommen bei Azure Cosmos DB](introduction.md)
-- [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/management/overview.md)
+- Lesen Sie weitere Informationen zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - [Azure Resource Manager-Vorlagen für Azure Cosmos DB](resource-manager-samples.md)

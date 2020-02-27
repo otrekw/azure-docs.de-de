@@ -1,5 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen einer DSVM-Instanz für Ubuntu'
+title: 'Schnellstart: Erstellen einer Data Science Virtual Machine-Instanz für Ubuntu'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurieren und erstellen Sie eine Data Science Virtual Machine für Linux (Ubuntu), um Analysen und Machine Learning-Vorgänge durchzuführen.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612086"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526109"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Schnellstart: Einrichten von Data Science Virtual Machine für Linux (Ubuntu)
 

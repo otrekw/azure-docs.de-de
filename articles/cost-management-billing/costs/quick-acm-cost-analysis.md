@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201049"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649295"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -50,7 +50,7 @@ Die Kostenanalyseansicht umfasst anfänglich die folgenden Bereiche.
 
 **Ist-Kosten**: Zeigt die Gesamtkosten für den Verbrauch und die Einkäufe für den aktuellen Monat so an, wie sie anfallen und wie sie in Ihrer Rechnung aufgeführt werden.
 
-**Prognose**: Gibt die prognostizierten Gesamtkosten für den von Ihnen gewählten Zeitraum an. (Prognose befindet sich in der Vorschauphase.)
+**Prognose**: Gibt die prognostizierten Gesamtkosten für den von Ihnen gewählten Zeitraum an.
 
 **Budget**: Zeigt das geplante Ausgabenlimit für den ausgewählten Bereich (falls verfügbar).
 

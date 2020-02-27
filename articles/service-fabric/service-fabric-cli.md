@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904817"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587616"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -41,7 +41,7 @@ Die Service Fabric-Befehlszeilenschnittstelle ist zur Unterstützung der neueste
 
 Sie können optional eine zu installierende Zielversion der Befehlszeilenschnittstelle angeben, indem Sie den Befehl `pip install` mit dem Suffix `==<version>` versehen. Die Syntax für Version 1.1.0 lautet beispielsweise wie folgt:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ Verwenden Sie für Windows 10, Windows Server 2016 und Windows Server 2012 R2 di
 
 Sie können nun ein neues Befehlsfenster öffnen und die Version von Python und PIP abrufen.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Führen Sie dann den folgenden Befehl aus, um die Azure Service Fabric-CLI (sfctl) zu installieren und die CLI-Hilfeseite anzuzeigen:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -103,7 +103,7 @@ Vergewissern Sie sich in diesem Fall, dass über `$PATH` auf `~/.local/bin` zuge
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Sollte die Installation im Windows-Subsystem für Linux aufgrund falscher Ordnerberechtigungen nicht erfolgreich sein, muss der Vorgang unter Umständen mit erhöhten Berechtigungen wiederholt werden:
@@ -148,7 +148,7 @@ Die Befehle verfügen immer über das Präfix `sfctl`. Allgemeine Informationen 
 
 Befehle folgen einer wiederholbaren Struktur. Dabei steht das Ziel des Befehls vor dem Verb oder der Aktion.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -161,7 +161,7 @@ Bevor Sie Vorgänge durchführen, müssen Sie einen Cluster auswählen, mit dem 
 > [!WARNING]
 > Vermeiden Sie die Verwendung von ungeschützten Service Fabric-Clustern in einer Produktionsumgebung.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ Der Clusterendpunkt muss das Präfix `http` oder `https` aufweisen. Er muss den 
 
 Für Cluster, die mit einem Zertifikat gesichert sind, können Sie ein PEM-codiertes Zertifikat angeben. Das Zertifikat kann als eine einzelne Datei oder als Zertifikat und Schlüsselpaar angegeben werden. Handelt es sich um ein selbstsigniertes Zertifikat, das nicht von einer Zertifizierungsstelle signiert wurde, können Sie die Option `--no-verify` übergeben, um die Überprüfung der Zertifizierungsstelle zu umgehen.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ Informationen zur Clusterverbindung werden über mehrere Service Fabric CLI-Sitz
 
 Verwenden Sie beispielsweise den folgenden Befehl, um den Integritätsstatus des Service Fabric-Clusters abzurufen:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Hier sind einige Vorschläge und Tipps zum Beheben von allgemeinen Problemen ang
 
 Die Service Fabric-Befehlszeilenschnittstelle unterstützt clientseitige Zertifikate als PEM-Dateien (Erweiterung „.pem“). Bei Verwendung von PFX-Dateien in Windows müssen Sie diese Zertifikate in das PEM-Format konvertieren. Mit dem folgenden Befehl konvertieren Sie eine PFX-Datei in eine PEM-Datei:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Wenn Sie eine PFX-Datei in eine PEM-Datei konvertieren möchten, können Sie den folgenden Befehl verwenden. (Hier wird kein Kennwort angegeben.)
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ Detaillierte Protokolle sind häufig hilfreich, wenn Sie das Debuggen durchführ
 
 Verwenden Sie das `-h`-Flag, um Hilfe zu einem bestimmten Befehl oder einer Gruppe von Befehlen zu erhalten.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Hier ist ein weiteres Beispiel angegeben:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 Führen Sie zum Aktualisieren der Service Fabric-Befehlszeilenschnittstelle die folgenden Befehle aus, und ersetzen Sie dabei `pip` durch `pip3` (abhängig von der getroffenen Auswahl bei der ursprünglichen Installation):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

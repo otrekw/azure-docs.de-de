@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 87450fa130f05777befc966a8fcb757ede7c8fe2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 82481bbdbfb1b20886865e3f71ec4dc9ebdd0465
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977291"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647467"
 ---
 # <a name="available-services-in-azure-germany"></a>Verfügbare Dienste in Azure Deutschland
 
@@ -39,7 +39,7 @@ Azure Deutschland aktualisiert und erweitert seine Dienste fortlaufend nach dem 
 
 Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dienste verfügen über Ressourcenanbieter und können mithilfe von PowerShell verwaltet werden. Ausführliche Informationen zu Resource Manager-Anbietern, API-Versionen und Schemas finden Sie unter [Unterstützte Resource Manager-Dienste](../azure-resource-manager/management/resource-providers-and-types.md). Die als im Portal verfügbar angegebenen Dienste können im [Azure Deutschland-Portal](https://portal.microsoftazure.de/) verwaltet werden. 
 
-## <a name="computegermany-services-computemd"></a>[Compute](./germany-services-compute.md)
+## <a name="compute"></a>[Compute](./germany-services-compute.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -48,7 +48,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Service Fabric | Ja | Ja |
 
 
-## <a name="networkinggermany-services-networkingmd"></a>[Netzwerk](./germany-services-networking.md)
+## <a name="networking"></a>[Netzwerk](./germany-services-networking.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="storagegermany-services-storagemd"></a>[Storage](./germany-services-storage.md)
+## <a name="storage"></a>[Storage](./germany-services-storage.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="web-and-mobilegermany-services-webandmobilemd"></a>[Web und Mobil](./germany-services-webandmobile.md)
+## <a name="web-and-mobile"></a>[Web und Mobil](./germany-services-webandmobile.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Media Services | Ja | Ja |
 
 
-## <a name="databasesgermany-services-databasemd"></a>[Datenbanken](./germany-services-database.md)
+## <a name="databases"></a>[Datenbanken](./germany-services-database.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -101,7 +101,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Machine Learning | Ja | Nein |
 
 
-## <a name="internet-of-things-iotgermany-services-iotmd"></a>[Internet der Dinge (IoT)](./germany-services-iot.md)
+## <a name="internet-of-things-iot"></a>[Internet der Dinge (IoT)](./germany-services-iot.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -121,7 +121,7 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 
 
 
-## <a name="security-and-identitygermany-services-securityandidentitymd"></a>[Sicherheit und Identität](./germany-services-securityandidentity.md)
+## <a name="security-and-identity"></a>[Sicherheit und Identität](./germany-services-securityandidentity.md)
 
 | Dienst | Ressourcen-Manager | Portal |
 | --- | --- | --- |
@@ -139,7 +139,6 @@ Die in den folgenden Tabellen als Azure Resource Manager-fähig angegebenen Dien
 | Backup | Ja | Ja |
 | Azure Monitor-Protokolle | Nein | Nein |
 | Site Recovery | Ja | Ja |
-| Scheduler | Ja | Ja |
 
 
 

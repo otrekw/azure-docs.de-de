@@ -4,12 +4,12 @@ ms.service: azure-cdn
 ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
-ms.openlocfilehash: f21a768733456a6c00e5a87612f3055dd76d416c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594148"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608738"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie CDN-Verwaltungscode schreiben können, müssen Sie einige Vorbereitungsschritte ausführen, damit der Code mit Azure Resource Manager interagieren kann. Dies umfasst die folgenden Vorbereitungsmaßnahmen:
@@ -41,7 +41,7 @@ Die Erstellung eines Dienstprinzipals umfasst mehrere Schritte, einschließlich 
 >
 > Wenn Sie zum Schritt „Mehrinstanzenfähige Anwendung konfigurieren“ gelangen, wählen Sie **Nein** aus.
 >
-> Im Schritt [Zuweisen einer Anwendung zur Rolle](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role) verwenden Sie die zuvor erstellte Ressourcengruppe *CdnConsoleTutorial*, weisen Sie ihr aber nicht die Rolle **Leser**, sondern die Rolle **Mitwirkender für das CDN-Profil** zu.  Nachdem Sie die Anwendung in Ihrer Ressourcengruppe der Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, kehren Sie zu diesem Tutorial zurück. 
+> Im Schritt [Zuweisen einer Anwendung zur Rolle](../articles/active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) verwenden Sie die zuvor erstellte Ressourcengruppe *CdnConsoleTutorial*, weisen Sie ihr aber nicht die Rolle **Leser**, sondern die Rolle **Mitwirkender für das CDN-Profil** zu.  Nachdem Sie die Anwendung in Ihrer Ressourcengruppe der Rolle **Mitwirkender von CDN-Profil** zugewiesen haben, kehren Sie zu diesem Tutorial zurück. 
 >
 >
 

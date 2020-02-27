@@ -1,5 +1,6 @@
 ---
 title: Worum handelt es sich bei Azure Data Science Virtual Machine?
+titleSuffix: Azure Data Science Virtual Machine
 description: Wichtige Analyseszenarien und -komponenten für Windows und Linux Data Science Virtual Machines.
 keywords: Data Science-Tools, virtuelle Computer für Data Science, Tools für Data Science, Linux Data Science
 services: machine-learning
@@ -9,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 12/31/2019
-ms.openlocfilehash: a63087620d50336c67472348da3b7f37fb380635
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: ea53ee3f3c1d39652982b6343b1e634dac1fbc75
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611967"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525922"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Was ist Azure Data Science Virtual Machine für Linux und Windows?
 

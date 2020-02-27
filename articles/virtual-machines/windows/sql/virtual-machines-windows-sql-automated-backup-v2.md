@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790578"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651429"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 
@@ -118,11 +118,7 @@ Am Dienstag wird dann ab 10 Uhr erneut für sechs Stunden eine vollständige Sic
 > [!IMPORTANT]
 > Bei der Planung täglicher Sicherungen empfiehlt sich die Verwendung eines großzügigen Zeitfensters, um sicherzustellen, dass alle Datenbanken gesichert werden können. Dies ist besonders wichtig, wenn große Datenmengen gesichert werden müssen.
 
-## <a name="configure-in-the-portal"></a>Konfigurieren im Portal
-
-Mit dem Azure-Portal können Sie die automatisierte Sicherung v2 während der Bereitstellung oder für vorhandene virtuelle Computer mit SQL Server 2016/2017 konfigurieren.
-
-## <a name="configure-for-new-vms"></a>Konfigurieren für neue VMs
+## <a name="configure-new-vms"></a>Konfigurieren neuer VMs
 
 Verwenden Sie das Azure-Portal zum Konfigurieren der automatisierten Sicherung v2, wenn Sie einen neuen virtuellen Computer mit SQL Server 2016 oder 2017 im Resource Manager-Bereitstellungsmodell erstellen.
 
@@ -146,7 +142,7 @@ Klicken Sie abschließend auf die Schaltfläche **Übernehmen** am unteren Rand 
 
 Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert Azure den SQL Server-IaaS-Agent im Hintergrund. Im Azure-Portal wird währenddessen u.U. nicht angezeigt, dass die automatisierte Sicherung konfiguriert wird. Warten Sie einige Minuten, bis der Agent installiert und konfiguriert wurde. Danach werden die neuen Einstellungen im Azure-Portal angezeigt.
 
-## <a name="configure-with-powershell"></a>Konfigurieren mit PowerShell
+## <a name="configure-with-powershell"></a>Konfigurieren mithilfe von PowerShell
 
 Die automatisierte Sicherung v2 kann mithilfe von PowerShell konfiguriert werden. Führen Sie zur Vorbereitung folgende Schritte aus:
 

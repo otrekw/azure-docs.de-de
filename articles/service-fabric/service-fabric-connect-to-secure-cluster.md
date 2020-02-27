@@ -3,12 +3,12 @@ title: Herstellen einer sicheren Verbindung mit einem Azure Service Fabric-Clust
 description: Beschreibt das Authentifizieren des Clientzugriffs auf einen Service Fabric-Cluster und das Sichern der Kommunikation zwischen Clients und einem Cluster
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458277"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587055"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -24,7 +24,7 @@ Verwenden Sie den Befehl `sfctl cluster select`, um eine Verbindung mit einem Cl
 
 Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne PFX-Datei. Für kennwortgeschützte PEM-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert. Wenn Sie das Clientzertifikat als PFX-Datei erhalten, müssen Sie sie zuerst mit dem folgenden Befehl in eine PEM-Datei konvertieren. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ Wenn Ihre PFX-Datei nicht kennwortgeschützt ist, verwenden Sie „-passin pass:
 
 Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ Kennwortgeschützte PEM-Dateien fordern zuerst das Kennwort an, bevor die Ausfü
 
 Um ein Zertifikat anzugeben, verwenden Schlüsselpaare die Argumente `--cert` und `--key`, um die Dateipfade auf jeder entsprechenden Datei anzugeben.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Si
 > [!WARNING]
 > Verwenden Sie die `no-verify`-Option nicht, wenn Sie sich zur Produktion von Service Fabric-Clustern verbinden.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 Darüber hinaus können Sie Pfade zu den Verzeichnissen der Zertifikate von vertrauenswürdigen Zertifizierungsstellen oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

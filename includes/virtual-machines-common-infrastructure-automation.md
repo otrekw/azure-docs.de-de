@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474272"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608733"
 ---
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
 
@@ -40,7 +40,7 @@ In diesem Artikel werden folgende Themen erläutert:
 In diesem Artikel werden folgende Themen erläutert:
 
 - [Bereitstellen von Chef Automate über den Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)
-- [Installieren von Chef unter Windows und Erstellen virtueller Azure-Computer](../articles/virtual-machines/windows/chef-automation.md)
+- [Installieren von Chef unter Windows und Erstellen virtueller Azure-Computer](../articles/chef/chef-automation.md)
 
 
 ## <a name="puppet"></a>Puppet
@@ -128,7 +128,7 @@ Weitere Informationen:
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md)
+- [Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

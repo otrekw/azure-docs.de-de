@@ -4,20 +4,20 @@ description: Für SAP HANA auf virtuellen Azure-Computern stehen grundsätzlich 
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: 8bcfdefa2ea9de12ca6029839a41c91111a5c61c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: hermannd
+ms.openlocfilehash: c977bc7db5608e5718e98a26ed594e5ebf2be998
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078601"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617416"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>SAP HANA-Sicherung auf der Grundlage von Speichermomentaufnahmen
 
@@ -147,6 +147,6 @@ Für eine Azure-VM können auch nur die Datenträger für Daten wiederhergestell
 Wenn es möglich wäre, SAP HANA vor der Erstellung der Blob-Momentaufnahmen herunterzufahren, wäre das Verfahren weniger komplex. In diesem Fall könnte die HANA-Momentaufnahme übersprungen werden, und falls im System keine anderen Vorgänge ablaufen, könnte auch das Einfrieren des Dateisystems entfallen. Die Komplexität erhöht sich, wenn Momentaufnahmen bei vollem Onlinebetrieb erstellt werden müssen. Informationen hierzu finden Sie unter _Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen_ im Artikel [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md) dieser Reihe.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Backup guide for SAP HANA on Azure Virtual Machines](sap-hana-backup-guide.md) (Sicherungshandbuch für SAP HANA in Azure Virtual Machines) enthält eine Übersicht und Informationen zu den ersten Schritten.
+* [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md) enthält eine Übersicht und Informationen zu den ersten Schritten.
 * Unter [SAP HANA-Sicherung mit Azure Backup auf Dateiebene](sap-hana-backup-file-level.md) wird die dateibasierte Sicherung behandelt.
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).

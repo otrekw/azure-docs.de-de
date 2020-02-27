@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805908"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560897"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrieren von der Sprachübersetzungs-API zum Speech-Dienst
 
-Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-API von Microsoft zum [Speech-Dienst](index.md) zu migrieren. Diese Anleitung beschreibt die Unterschiede zwischen der Sprachübersetzungs-API von Microsoft und dem Speech-Dienst und schlägt Strategien für die Migration Ihrer Anwendungen vor.
+Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-API von Microsoft zum [Speech-Dienst](index.yml) zu migrieren. Diese Anleitung beschreibt die Unterschiede zwischen der Sprachübersetzungs-API von Microsoft und dem Speech-Dienst und schlägt Strategien für die Migration Ihrer Anwendungen vor.
 
 > [!NOTE]
 > Ihr Abonnementschlüssel für die Sprachübersetzungs-API wird nicht vom Speech-Dienst akzeptiert. Sie müssen ein neues Abonnement für den Speech-Dienst erstellen.
 
 ## <a name="comparison-of-features"></a>Vergleich der Features
 
-| Feature                                           | Sprachübersetzungs-API                                  | Speech-Dienst | Details                                                                                                                                                                                                                                                                            |
+| Funktion                                           | Sprachübersetzungs-API                                  | Speech-Dienst | Details                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Übersetzung in Text                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Übersetzung in Sprache                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 | Verbindungszeitlimit                             | 90 Minuten                                               | Mit SDK unbegrenzt 10 Minuten mit einer WebSockets-Verbindung.                                                                                                                                                                                                                                                                                   |
 | Authentifizierungsschlüssel im Header                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Mehrere Sprachen in einer einzelnen Anforderung übersetzt | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| SDKs verfügbar                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Informationen zu verfügbaren SDKs finden Sie in der [Dokumentation zum Speech-Dienst](index.md).                                                                                                                                                    |
+| SDKs verfügbar                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Informationen zu verfügbaren SDKs finden Sie in der [Dokumentation zum Speech-Dienst](index.yml).                                                                                                                                                    |
 | WebSockets-Verbindungen                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Sprachen-API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Der Speech-Dienst unterstützt denselben Sprachumfang, der im Artikel [Sprachenreferenz für Sprachübersetzungs-API](../translator-speech/languages-reference.md) beschrieben wird. |
 | Filter und Markierung für Obszönitäten                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Verwenden Sie diesen Artikel, um Ihre Anwendungen von der Sprachübersetzungs-AP
 
 ## <a name="migration-strategies"></a>Migrationsstrategien
 
-Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung nutzen, die die Sprachübersetzungs-API verwenden, sollten Sie diese aktualisieren, um den Speech-Dienst nutzen zu können. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Speech-Dienst](index.md). Berücksichtigen Sie bei der Migration Folgendes:
+Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung nutzen, die die Sprachübersetzungs-API verwenden, sollten Sie diese aktualisieren, um den Speech-Dienst nutzen zu können. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der Dokumentation zum [Speech-Dienst](index.yml). Berücksichtigen Sie bei der Migration Folgendes:
 
 * Der Speech-Dienst bietet keinen globalen Endpunkt. Ermitteln Sie, ob Ihre Anwendung effizient funktioniert, wenn sie einen einzigen regionalen Endpunkt für den gesamten Datenverkehr verwendet. Wenn nicht, verwenden Sie die Geolokalisierung, um den effizientesten Endpunkt zu bestimmen.
 
@@ -67,4 +67,4 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Worum handelt es sich beim Spracherkennungsdienst?](overview.md)
-* [Dokumentation zum Speech-Dienst und Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)
+* [Dokumentation zum Speech-Dienst und dem Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805942"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560932"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Speech-Dienst
 
@@ -37,7 +37,7 @@ Das [Sprach-SDK](speech-sdk.md) ist ein funktionaler Ersatz für die Clientbibli
 
 Der Speech-Dienst ähnelt weitgehend der Bing-Spracheingabe, wobei die folgenden Unterschiede bestehen.
 
-Feature | Bing-Spracheingabe | Speech-Dienst | Details
+Funktion | Bing-Spracheingabe | Speech-Dienst | Details
 -|-|-|-
 C++ SDK | :heavy_minus_sign: | :heavy_check_mark: | Der Speech-Dienst unterstützt Windows und Linux.
 Java-SDK | :heavy_check_mark: | :heavy_check_mark: | Der Speech-Dienst unterstützt Android- und Speech-Geräte.
@@ -50,7 +50,7 @@ Benutzerdefinierte Voicefonts | :heavy_check_mark: | :heavy_check_mark: | Die Bi
 Erkennung der Absicht bei gesprochenen Inhalten | Erfordert separaten LUIS-API-Aufruf | Integriert (mit SDK) |  Sie können einen LUIS-Schlüssel mit dem Speech-Dienst verwenden.
 Einfache Absichtserkennung | :heavy_minus_sign: | :heavy_check_mark:
 Batch-Transkription bei langen Audiodateien | :heavy_minus_sign: | :heavy_check_mark:
-Erkennungsmodus | Manuell über den Endpunkt-URI | Automatisch | Der Erkennungsmodus ist im Speech-Dienst nicht verfügbar.
+Erkennungsmodus | Manuell über den Endpunkt-URI | Automatic | Der Erkennungsmodus ist im Speech-Dienst nicht verfügbar.
 Endpunktregion | Global | Länderspezifisch | Regionale Endpunkte verbessern die Latenz.
 REST-APIs | :heavy_check_mark: | :heavy_check_mark: | Die REST-APIs des Speech-Diensts sind kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). REST-APIs unterstützen Sprachsynthese- und eingeschränkte Spracherkennungsfunktionen.
 WebSockets-Protokolle | :heavy_check_mark: | :heavy_check_mark: | Die WebSockets-API des Speech-Diensts ist kompatibel mit der Bing-Spracheingabe (unterschiedlicher Endpunkt). Migrieren Sie nach Möglichkeit zum Spracherkennungs-SDK, um Ihren Code zu vereinfachen.
@@ -61,7 +61,7 @@ Der Speech-Dienst verwendet ein zeitbasiertes Preismodell (anstelle eines transa
 
 ## <a name="migration-strategies"></a>Migrationsstrategien
 
-Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung nutzen, die eine Bing-Spracheingabe-API verwenden, sollten Sie diese aktualisieren, um den Speech-Dienst so schnell wie möglich zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der [Dokumentation zum Speech-Dienst](index.md).
+Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsumgebung nutzen, die eine Bing-Spracheingabe-API verwenden, sollten Sie diese aktualisieren, um den Speech-Dienst so schnell wie möglich zu nutzen. Informationen zu verfügbaren SDKs, Codebeispielen und Tutorials finden Sie in der [Dokumentation zum Speech-Dienst](index.yml).
 
 Die [REST-APIs](rest-apis.md) des Speech-Diensts sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die Bing-Spracheingabe-REST-APIs verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Speech-Diensts wechseln.
 
