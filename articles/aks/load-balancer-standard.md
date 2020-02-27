@@ -3,16 +3,15 @@ title: Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernet
 description: Hier erfahren Sie, wie Sie einen Lastenausgleich mit einer Standard-SKU verwenden, um Ihre Dienste mit Azure Kubernetes Service (AKS) verfügbar zu machen.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 9c414572e1c3b2f046ae9a14139885e9927ab3bb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212414"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622185"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden eines Lastenausgleichs mit einer Standard-SKU in Azure Kubernetes Service (AKS)
 
@@ -40,7 +39,7 @@ Wenn Sie bereits über einen Cluster mit einem Lastenausgleich mit einer Basic-S
 
 Beispielsweise ist das Erstellen von Blau/Grün-Bereitstellungen zum Migrieren von Clustern eine gängige Vorgehensweise, da der `load-balancer-sku`-Typ eines Clusters nur zum Zeitpunkt der Clustererstellung definiert werden kann. Allerdings verwendet ein Lastenausgleich mit einer *Basic-SKU* IP-Adressen der *Basic-SKU*, die nicht mit einem Lastenausgleich mit einer *Standard-SKU* kompatibel sind, da diese IP-Adressen der *Standard-SKU* benötigen. Beim Migrieren von Clustern zum Upgraden von Load Balancer-SKUs ist eine neue IP-Adresse mit einer kompatiblen IP-Adressen-SKU erforderlich.
 
-Weitere Informationen zum Migrieren von Clustern finden Sie in der [Dokumentation mit Überlegungen zur Migration](acs-aks-migration.md), die eine Liste wichtiger Themen enthält, die bei der Migration zu berücksichtigen sind. Die folgenden Einschränkungen sind ebenfalls wichtige Verhaltensunterschiede, die bei der Verwendung eines Lastenausgleichs mit einer Standard-SKU in AKS zu beachten sind.
+Weitere Informationen zum Migrieren von Clustern finden Sie in der [Dokumentation mit Überlegungen zur Migration](aks-migration.md), die eine Liste wichtiger Themen enthält, die bei der Migration zu berücksichtigen sind. Die folgenden Einschränkungen sind ebenfalls wichtige Verhaltensunterschiede, die bei der Verwendung eines Lastenausgleichs mit einer Standard-SKU in AKS zu beachten sind.
 
 ### <a name="limitations"></a>Einschränkungen
 

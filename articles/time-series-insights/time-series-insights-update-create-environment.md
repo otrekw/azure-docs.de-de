@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861811"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526812"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Tutorial: Einrichten einer Azure Time Series Insights Preview-Umgebung
 
@@ -51,7 +51,7 @@ In diesem Abschnitt werden Sie drei simulierte Geräte erstellen, die Daten an e
 
 1. Wählen Sie auf der nächsten Seite die Option **Jetzt testen** aus. Geben Sie dann auf der Seite **Create Device Simulation solution** (Gerätesimulationslösung erstellen) die erforderlichen Parameter ein:
 
-   Parameter|Beschreibung
+   Parameter|BESCHREIBUNG
    ---|---
    **Bereitstellungsname** | Mit diesem eindeutigen Wert wird eine neue Ressourcengruppe erstellt. Die aufgelisteten Azure-Ressourcen werden erstellt und der Ressourcengruppe zugewiesen.
    **Azure-Abonnement** | Geben Sie dasselbe Abonnement an, das Sie auch bei der Erstellung Ihrer Time Series Insights-Umgebung im vorherigen Abschnitt verwendet haben.
@@ -85,7 +85,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Pr
 
 1. Legen Sie im Bereich **Time Series Insights-Umgebung erstellen** auf der Registerkarte **Grundlagen** die folgenden Parameter fest:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | ---|
     | **Umgebungsname** | Geben Sie einen eindeutigen Namen für die Azure Time Series Insights-Umgebung (Vorschauversion) ein. |
     | **Abonnement** | Geben Sie das Abonnement ein, in dem Sie die Azure Time Series Insights-Umgebung (Vorschauversion) erstellen möchten. Eine bewährte Methode ist die Verwendung des Abonnements, das Sie auch für die anderen vom Gerätesimulator erstellten IoT-Ressourcen verwenden. |
@@ -105,7 +105,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Azure Time Series Insights Pr
 
 1. Legen Sie auf der Registerkarte **Ereignisquelle** die folgenden Parameter fest:
 
-   | Parameter | Action |
+   | Parameter | Aktion |
    | --- | --- |
    | **Ereignisquelle erstellen?** | Wählen Sie **Ja** aus.|
    | **Name** | Geben Sie einen eindeutigen Wert für den Namen der Ereignisquelle ein. |
@@ -157,7 +157,7 @@ Sie haben Ihre Time Series Insights-Umgebung bereitgestellt und können jetzt mi
 
 1. Wählen Sie **+ Neue Simulation** aus. Geben Sie die erforderlichen Parameter ein, nachdem die Seite mit dem **Simulationssetup** geladen wurde.
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Name** | Geben Sie einen eindeutigen Namen für einen Simulator ein. |
     | **Beschreibung** | Geben Sie eine Definition ein. |
@@ -215,7 +215,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
 1. Legen Sie die folgenden Parameter fest:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | ---|
     | **Name** | Geben Sie **Elevator** (Aufzug) ein. |
     | **Beschreibung** | Geben Sie **Dies ist eine Typdefinition für Aufzug** ein. |
@@ -224,7 +224,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
    Wählen Sie **+ Add Variable** (Variable hinzufügen) aus, und geben Sie die folgenden Werte für die erste Variable vom Typ „Elevator“ (Aufzug) ein. Sie werden insgesamt drei Variablen erstellen.
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Name** | Geben Sie **Avg Temperature** ein. |
     | **Kind** | Wählen Sie **Numeric** (Numerisch) aus. |
@@ -233,7 +233,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     Wählen Sie **Übernehmen**. Wählen Sie erneut **+ Variable hinzufügen** aus, und legen Sie die folgenden Werte fest:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Name** | Geben Sie **Avg Vibration** (Durchschnittliche Vibration) ein. |
     | **Kind** | Wählen Sie **Numeric** (Numerisch) aus. |
@@ -242,7 +242,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     Wählen Sie **Übernehmen**. Wählen Sie erneut **+ Variable hinzufügen** aus, und legen Sie die folgenden Werte für die dritte und letzte Variable fest:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Name** | Geben Sie **Floor** (Etage) ein. |
     | **Kind** | Wählen Sie **Categorical** (Kategorisch) aus. |
@@ -262,7 +262,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
    
    Legen Sie im Bereich **Hierarchie bearbeiten** die folgenden Parameter fest:
 
-   | Parameter | Action |
+   | Parameter | Aktion |
    | --- | ---|
    | **Name** | Geben Sie **Location Hierarchy** ein. |
    |**Ebenen**| Geben Sie **Country** (Land/Region) als Namen der ersten Ebene ein. <br> Wählen Sie **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **City** (Ort) für die zweite Ebene ein, und wählen Sie dann **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **Building** (Gebäude) als Namen der dritten und letzten Ebene ein. |
@@ -273,7 +273,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
 1. Navigieren Sie zu **Instanzen**. Wählen Sie ganz rechts unter den **Aktionen** das Stiftsymbol aus, um die erste Instanz mit den folgenden Werten zu bearbeiten:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Typ** | Wählen Sie **Elevator** (Aufzug) aus. |
     | **Name** | Geben Sie **Elevator 1** (Aufzug 1) ein.|
@@ -281,7 +281,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     Navigieren Sie zu **Instance Fields** (Instanzfelder), und geben Sie folgende Werte ein:
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Hierarchien** | Wählen Sie **Location Hierarchy** (Standorthierarchie) aus. |
     | **Country** | Geben Sie **USA** ein. |
@@ -294,7 +294,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     **Elevator 2** (Aufzug 2):
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Typ** | Wählen Sie **Elevator** (Aufzug) aus. |
     | **Name** | Geben Sie **Elevator 2** (Aufzug 2) ein.|
@@ -306,7 +306,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
 
     **Elevator 3** (Aufzug 3):
 
-    | Parameter | Action |
+    | Parameter | Aktion |
     | --- | --- |
     | **Typ** | Wählen Sie **Elevator** (Aufzug) aus. |
     | **Name** | Geben Sie **Elevator 3** (Aufzug 3) ein.|

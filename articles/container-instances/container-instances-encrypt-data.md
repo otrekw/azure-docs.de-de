@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934303"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544316"
 ---
 # <a name="encrypt-deployment-data"></a>Verschlüsseln von Bereitstellungsdaten
 
@@ -89,7 +89,7 @@ Die Zugriffsrichtlinie sollte nun in den Zugriffsrichtlinien Ihres Schlüsseltre
 > Das Verschlüsseln von Bereitstellungsdaten mit einem kundenseitig verwalteten Schlüssel ist in der neuesten API-Version (2019-12-01) verfügbar, deren Rollout momentan durchgeführt wird. Geben Sie diese API-Version in Ihrer Bereitstellungsvorlage an. Sollten dabei Probleme auftreten, wenden Sie sich an den Azure-Support.
 
 Fügen Sie Ihrer ACI-Bereitstellungsvorlage nach dem Einrichten des Schlüsseltresorschlüssels und der Zugriffsrichtlinie die folgenden Eigenschaften hinzu. Weitere Informationen zum Bereitstellen von ACI-Ressourcen mit einer Vorlage finden Sie im [Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* Legen Sie unter `resources` `apiVersion` auf `2012-12-01` fest.
+* Legen Sie unter `resources` `apiVersion` auf `2019-12-01` fest.
 * Fügen Sie im Abschnitt mit den Containergruppeneigenschaften der Bereitstellungsvorlage eine `encryptionProperties` mit folgenden Werten hinzu:
   * `vaultBaseUrl`: Der DNS-Name Ihres Schlüsseltresors. Diesen finden Sie auf dem Übersichtsblatt der Schlüsseltresorressource im Portal.
   * `keyName`: Der Name des zuvor generierten Schlüssels.
