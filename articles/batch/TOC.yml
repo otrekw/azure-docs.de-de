@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: Ermitteln von Auftrags- und Aufgabenfehlern
           href: batch-job-task-error-checking.md
+        - name: Erkennen und Behandeln von Batch-Dienstfehlern
+          href: batch-retry-after-errors.md
     - name: Erstellen von Ressourcendateien
       href: resource-files.md
     - name: Persistente Aufträge und Aufgabenausgabe

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961606"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205714"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -160,6 +160,44 @@ Azure-Datenträgerreservierungen werden für eine bestimmte Region und SKU erwor
 
 **Was geschieht beim Ablauf meiner Azure-Datenträgerreservierung?**    
 Sie erhalten 30 Tage vor dem Ablauf und am Ablaufdatum eine E-Mail-Benachrichtigung. Nach dem Ablauf der Reservierung werden bereitgestellte Datenträger weiterhin ausgeführt und mit dem aktuellen [Satz für die nutzungsbasierte Bezahlung](https://azure.microsoft.com/pricing/details/managed-disks/) in Rechnung gestellt.
+
+### <a name="azure-shared-disks"></a>Freigegebene Azure-Datenträger
+
+**Wird das Feature Freigegebene Datenträger für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
+
+Nein, es wird nur für verwaltete SSD-Premium-Datenträger unterstützt.
+
+**Welche Regionen unterstützen freigegebene Datenträger?**
+
+Zurzeit nur USA, Westen-Mitte.
+
+**Können freigegebene Datenträger als Betriebssystemdatenträger verwendet werden?**
+
+Nein, freigegebene Datenträger werden nur für Datenträger mit Daten unterstützt.
+
+**Welche Datenträgergrößen werden als freigegebene Datenträger unterstützt?**
+
+Nur Premium-SSDs der Kategorie P15 oder höher unterstützen freigegebene Datenträger.
+
+**Wenn ich über eine vorhandene Premium-SSD verfüge, kann ich darauf freigegebene Datenträger aktivieren?**
+
+Alle verwalteten Datenträger, die mit API-Version 2019-07-01 oder höher erstellt wurden, können freigegebene Datenträger aktivieren. Zu diesem Zweck müssen Sie die Einbindung des Datenträgers in allen VMs aufheben, an die er angefügt ist. Bearbeiten Sie als nächstes die `maxShares`-Eigenschaft des Datenträgers.
+
+**Wenn ich einen Datenträger nicht mehr im freigegebenen Modus verwenden möchte, wie kann ich die Funktion deaktivieren?**
+
+Heben Sie die Einbindung des Datenträgers in allen VMs auf, an die er angefügt ist. Legen Sie anschließend die maxShare-Eigenschaft des Datenträgers auf 1 fest.
+
+**Lässt sich die Größe eines freigegebenen Datenträgers ändern?**
+
+Ja.
+
+**Kann ich die Schreibbeschleunigung für einen Datenträger aktivieren, auf dem auch freigegebene Datenträger aktiviert sind?**
+
+Nein.
+
+**Kann ich die Hostzwischenspeicherung für einen Datenträger aktivieren, auf dem auch freigegebene Datenträger aktiviert sind?**
+
+Die einzige unterstützte Option für die Hostzwischenspeicherung ist „Ohne“.
 
 ## <a name="ultra-disks"></a>Ultra-Datenträger
 

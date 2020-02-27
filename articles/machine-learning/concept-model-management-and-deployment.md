@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122337"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486375"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
@@ -138,6 +138,19 @@ Die Überwachung ermöglicht Ihnen zu verstehen, welche Daten an Ihr Modell gese
 Diese Informationen helfen Ihnen zu verstehen, wie Ihr Modell genutzt wird. Die gesammelten Eingabedaten können auch zum Trainieren künftiger Versionen des Modells nützlich sein.
 
 Weitere Informationen finden Sie unter [Gewusst wie: Aktivieren der Modelldatensammlung](how-to-enable-data-collection.md).
+
+## <a name="retrain-your-model-on-new-data"></a>Erneutes Trainieren des Modells nach neuen Daten
+
+Oftmals möchten Sie Ihr Modell aktualisieren oder sogar von Grund auf neu trainieren, wenn Sie neue Informationen erhalten. Manchmal ist das Empfangen neuer Daten ein erwarteter Teil der Domäne. Zu anderen Zeiten, wie in [Erkennen von Datenabweichungen (Vorschau) in Datasets](how-to-monitor-datasets.md) erläutert, kann die Modellleistung angesichts von Faktoren wie Änderungen an einem bestimmten Sensor, natürlichen Datenänderungen wie saisonalen Effekten oder Verschiebung von Features in ihrer Beziehung zu anderen Features abnehmen. 
+
+Es gibt keine allgemeingültige Antwort auf die Frage „Woher weiß ich, ob ich erneut trainieren soll?“, aber die zuvor besprochenen Ereignis- und Überwachungstools von Azure Machine Learning sind gute Ausgangspunkte für die Automatisierung. Wenn Sie sich für ein erneutes Training entschieden haben, sollten Sie wie folgt vorgehen: 
+
+- Vorverarbeiten Ihrer Daten durch einen wiederholbaren, automatisierten Prozess
+- Trainieren Ihres neuen Modells
+- Vergleichen der Ergebnisse des neuen Modells mit denen des alten Modells
+- Verwenden von vordefinierten Kriterien, um zu entscheiden, ob das alte Modell ersetzt werden soll 
+
+Ein Thema der oben genannten Schritte ist, dass das erneute Trainieren automatisch und nicht ad hoc erfolgen sollte. [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) sind eine gute Antwort für die Erstellung von Workflows in Bezug auf Datenvorbereitung, Training, Überprüfung und Bereitstellung. Lesen Sie [Erneutes Trainieren von Modellen mit dem Azure Machine Learning-Designer (Vorschau)](how-to-retrain-designer.md), um zu sehen, wie Pipelines und der Azure Machine Learning-Designer in ein Szenario für erneutes Trainieren passen. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatisieren des ML-Lebenszyklus 
 

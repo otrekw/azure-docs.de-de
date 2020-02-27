@@ -42,6 +42,8 @@
       href: hpc-cache-support-ticket.md
     - name: Umgehen der Firewalleinstellungen für Blobspeicherkonten
       href: hpc-cache-blob-firewall-fix.md
+    - name: Behandeln von Problemen bei der Erstellung von NFS-Speicherzielen
+      href: troubleshoot-nas.md
     - name: Durchführen einer Wiederherstellung nach einem regionalen Ausfall
       href: hpc-region-recovery.md
     - name: Verwenden von Azure NetApp Files mit Azure HPC Cache

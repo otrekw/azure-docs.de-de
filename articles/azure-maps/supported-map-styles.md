@@ -1,19 +1,19 @@
 ---
 title: Unterstützte Kartenstile | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über die verschiedenen Kartenrenderingstile, die von Microsoft Azure Maps unterstützt werden.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910640"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208283"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -31,7 +31,7 @@ Der Kartenstil **Straße** ist eine Standardkarte, die Straßen, natürliche und
 
 ## <a name="blank-and-blank_accessible"></a>„blank“ und „blank_accessible“
 
-Die Kartenstile **blank** und **blank_accessible** stellen einen leeren Zeichenbereich bereit, in dem Daten visualisiert werden können. Der Stil **blank_accessible** wird weiterhin Updates für die Sprachausgabe mit Details zu dem Standort bereitstellen, an dem sich die Karte befindet, obwohl die Basiskarte nicht angezeigt wird.
+Die Kartenstile **blank** und **blank_accessible** stellen einen leeren Zeichenbereich bereit, in dem Daten visualisiert werden können. Der Stil **blank_accessible** wird weiterhin Updates für die Sprachausgabe mit Details zum Standort der Karte bereitstellen, obwohl die Basiskarte nicht angezeigt wird.
 
 > [!Note]
 > Im Web-SDK können Sie die Hintergrundfarbe der Karte ändern, indem Sie den CSS-Stil `background-color` des DIV-Kartenelements festlegen.

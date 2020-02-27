@@ -23,8 +23,8 @@
       href: quick-create-net.md
     - name: ".NET (SDK\_v3)"
       href: quick-create-net-v3.md
-    - name: Azure Resource Manager-Vorlage
-      displayName: 'resource manager, resource manager template, arm'
+    - name: Resource Manager-Vorlage
+      displayName: ARM
       href: quick-create-template.md
 - name: Tutorials
   items:
@@ -58,6 +58,7 @@
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager-Vorlage
       href: ../azure-resource-manager/templates/key-vault-parameter.md
+      displayName: ARM
     - name: Einrichten von Schlüsselrotation und Überwachung
       href: key-vault-key-rotation-log-monitoring.md
 - name: Beispiele
@@ -170,6 +171,7 @@
       href: key-vault-best-practices.md
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
     - name: 'Authentifizierung, Anforderungen und Antworten'
       href: authentication-requests-and-responses.md
     - name: Allgemeine Parameter und Header

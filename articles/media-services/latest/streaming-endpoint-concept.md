@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186013"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206105"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Streamingendpunkte (Ursprung) in Azure Media Services
 
@@ -59,7 +59,7 @@ SLA-Informationen finden Sie unter [Preise und SLA](https://azure.microsoft.com/
 
 ## <a name="comparing-streaming-types"></a>Vergleichen von Streamingtypen
 
-Feature|Standard|Premium
+Funktion|Standard|Premium
 ---|---|---
 Throughput |Bis zu 600 MBit/s; kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.|200 Mbit/s pro Streamingeinheit. Kann einen deutlich höheren effektiven Durchsatz bereitstellen, wenn ein CDN verwendet wird.
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
@@ -73,7 +73,7 @@ Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Prof
 
 <sup>1</sup> Wird nur direkt für den Streamingendpunkt verwendet, wenn das CDN nicht für den Endpunkt aktiviert ist.<br/>
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>Eigenschaften
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
@@ -147,16 +147,21 @@ Sie müssen zudem die Funktionsweise des adaptiven Streamings berücksichtigen. 
 
 ### <a name="enable-azure-cdn-integration"></a>Aktivieren der Azure CDN-Integration
 
+> [!IMPORTANT]
+> CDN kann nicht für Konten von Azure-Testversionen oder Studentenversionen aktiviert werden.
+>
+> Die CDN-Integration ist in allen Azure-Rechenzentren mit Ausnahme der Regionen US-Regierung und China aktiviert.
+
 Nachdem ein Streamingendpunkt mit aktiviertem CDN bereitgestellt wurde, gibt es eine definierte Wartezeit auf Media Services, bevor das DNS-Update durchgeführt wird, um den Streamingendpunkt dem CDN-Endpunkt zuzuordnen.
 
 Wenn Sie das CDN später deaktivieren bzw. aktivieren möchten, muss Ihr Streamingendpunkt den Zustand **Beendet** haben. Es kann bis zu zwei Stunden dauern, bis die Azure CDN-Integration aktiviert ist und die Änderungen auf allen CDN-POPs aktiv sind. Sie können jedoch Ihren Streamingendpunkt starten und von ihm aus unterbrechungsfrei streamen. Sobald die Integration abgeschlossen ist, wird der Stream vom CDN übermittelt. Während der Bereitstellungsphase hat Ihr Streamingendpunkt den Zustand **Wird gestartet**, und seine Leistung ist eventuell eingeschränkt.
 
 Wenn der standardmäßige Streamingendpunkt erstellt wird, ist er standardmäßig mit Verizon Standard konfiguriert. Sie können Verizon Premium- oder Akamai Standard-Anbieter über REST-APIs konfigurieren.
 
-Die CDN-Integration ist in allen Azure-Rechenzentren mit Ausnahme der Regionen China und US-Regierung aktiviert.
+Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon**für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. 
 
-> [!IMPORTANT]
-> Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon**für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md).
+> [!NOTE]
+> Ausführliche Informationen zu Azure CDN finden Sie in der [CDN-Übersicht](../../cdn/cdn-overview.md).
 
 ### <a name="determine-if-dns-change-was-made"></a>Bestimmen, ob eine DNS-Änderung vorgenommen wurde
 
@@ -165,6 +170,10 @@ Sie können mit https://www.digwebinterface.com feststellen, ob eine DNS-Änderu
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 
 Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
+
+## <a name="see-also"></a>Weitere Informationen
+
+[CDN-Übersicht](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

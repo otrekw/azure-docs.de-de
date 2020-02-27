@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 8c144fb0c9818e21c2ca5bd61525067b485531bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 625b44ae3f8a1d5d474d980693d92840b1317f09
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026114"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425764"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -99,7 +99,7 @@ New Supported Version List
   * Kunden haben ab dem Datum der öffentlichen Benachrichtigung **30 Tage** Zeit, ein Upgrade auf ein unterstütztes Release der Nebenversion durchzuführen.
 * Bei neuen **Patchversionen** von Kubernetes:
   * Alle Benutzer werden über die neue Patchversion benachrichtigt. Außerdem werden sie aufgefordert, ein Upgrade auf das neueste Patchrelease vorzunehmen.
-  * Benutzer haben **30 Tage** Zeit, ein Upgrade auf ein neueres, unterstütztes Patchrelease durchzuführen, bevor das älteste Patchrelease entfernt wird.
+  * Benutzern verbleiben **30 Tage** für das Upgrade auf eine neuere, unterstützte Patchversion, bevor die älteste entfernt wird.
 
 In AKS ist eine „veröffentlichte Version“ als allgemein verfügbare Version definiert, die in allen SLO/QoS-Messungen (Quality of Service/Service Level Objective) aktiviert und in allen Regionen verfügbar ist. AKS unterstützt möglicherweise auch Vorschauversionen, die explizit bezeichnet werden und den Nutzungsbedingungen für Vorschauversionen unterliegen.
 
@@ -142,7 +142,7 @@ az aks get-versions --location eastus --output table
 Wenn Sie die Version *N-3* verwenden, erhalten Sie keinen Support mehr und werden zu einem Upgrade aufgefordert. Wenn das Upgrade von Version N-3 auf N-2 erfolgreich ist, können Sie den Support entsprechend den Supportrichtlinien wieder nutzen. Beispiel:
 
 - Wenn die älteste unterstützte AKS-Version *1.13.a* ist und Sie *1.12.b* oder eine ältere Version verwenden, steht Ihnen kein Support zur Verfügung.
-- Wenn das Upgrade von *1.12.b* auf *1.13.a* oder höher erfolgreich ist, befindet es sich wieder im Rahmen unserer Supportrichtlinien.
+- Wenn das Upgrade von *1.12.b* auf *1.13.a* oder höher erfolgreich ist, befinden Sie sich wieder im Rahmen unserer Supportrichtlinien.
 
 Upgrades auf ältere Versionen als das unterstützte Fenster von *N-2* werden nicht unterstützt. In solchen Fällen wird Kunden empfohlen, neue AKS-Cluster zu erstellen und ihre Workloads unter Versionen innerhalb des unterstützten Fensters erneut bereitzustellen.
 

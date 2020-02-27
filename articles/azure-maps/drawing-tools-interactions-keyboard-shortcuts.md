@@ -8,26 +8,28 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 267579f7b4bbfe026f3aa01b00f01f3b872cf4a6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: fb8a1e1a8c29086553500bdad2e4604d1e1ef471
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911653"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198291"
 ---
 # <a name="interaction-types-and-keyboard-shortcuts-in-the-drawing-tools-module"></a>Interaktionsarten und Tastenkombinationen für Zeichentools im Zeichentools-Modul
 
-In diesem Artikel werden die verschiedenen Möglichkeiten zum Zeichnen und Bearbeiten von Formen auf einer Karte mithilfe einer Maus, eines Touchscreens oder von Tastenkombinationen beschrieben.
+In diesem Artikel werden die verschiedenen Möglichkeiten zum Zeichnen und Bearbeiten von Formen mithilfe einer Maus, eines Touchscreens oder von Tastenkombinationen beschrieben.
 
 Der Zeichnungs-Manager unterstützt drei verschiedene Arten der Interaktion mit der Karte zum Zeichnen von Formen.
 
 * `click`: Koordinaten werden hinzugefügt, wenn mit der Maus oder per Toucheingabe geklickt wird.
-* `freehand `: Koordinaten werden hinzugefügt, wenn die Maus auf die Karte gezogen bzw. die gleiche Geste per Toucheingabe vollzogen wird. 
+* `freehand `: Koordinaten werden hinzugefügt, wenn die Maus auf die Karte gezogen bzw. die gleiche Geste per Toucheingabe vollzogen wird.
 * `hybrid`: Koordinaten werden hinzugefügt, wenn mit der Maus oder per Toucheingabe geklickt oder gezogen wird.
 
 ## <a name="how-to-draw-shapes"></a>Zeichnen von Formen
 
-Nachfolgend werden alle verschiedenen Weisen behandelt, wie Formen auf die Karte gezeichnet werden können. Bevor eine Form gezeichnet werden kann, muss die `drawingMode`-Option des Zeichnungs-Managers auf eine unterstützte Zeicheneinstellung festgelegt werden. Dies kann programmgesteuert oder durch Drücken einer der Zeichenschaltflächen auf der Symbolleiste erfolgen. Der Zeichenmodus bleibt auch nach dem Zeichnen einer Form aktiviert, sodass es einfach ist, zusätzliche Formen desselben Typs zu zeichnen. Der Zeichenmodus kann programmgesteuert oder durch Klicken auf die Schaltfläche für die aktuellen Zeichenmodi in einen Leerlaufzustand versetzt werden. 
+ Bevor eine Form gezeichnet werden kann, legen Sie die `drawingMode`-Option des Zeichnungs-Managers auf eine unterstützte Zeicheneinstellung fest. Diese Einstellung kann programmiert oder durch Drücken einer der Zeichenschaltflächen auf der Symbolleiste aufgerufen werden. Der Zeichenmodus bleibt auch nach dem Zeichnen einer Form aktiviert, sodass es einfach ist, zusätzliche Formen desselben Typs zu zeichnen. Legen Sie den Zeichenmodus programmgesteuert auf einen Leerlaufzustand fest. Sie können auch in einen Leerlaufzustand wechseln, indem Sie auf der Symbolleiste auf die Schaltfläche für die aktuellen Zeichenmodi klicken.
+
+In den folgenden Abschnitten werden alle verschiedenen Weisen behandelt, wie Formen auf die Karte gezeichnet werden können.
 
 ### <a name="how-to-draw-a-point"></a>Zeichnen eines Punkts
 
@@ -35,7 +37,7 @@ Wenn sich der Zeichnungs-Manager im `draw-point`-Zeichenmodus befindet, können 
 
 **Zeichnen beginnen**
  - Klicken Sie mit der linken Maustaste, oder tippen Sie auf die Karte, um der Karte einen Punkt hinzuzufügen. 
- - Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-Taste, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Dadurch steht für das Hinzufügen eines Punkts zur Karte eine Methode mit höherer Genauigkeit zur Verfügung, da weniger Bewegung der Maus aufgrund der Druckbewegung der linken Maustaste auftritt.
+ - Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-TASTE, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Diese Methode bietet höhere Genauigkeit beim Hinzufügen eines Punkts zur Karte. Es findet eine geringere Bewegung der Maus als beim Drücken der linken Maustaste statt.
  - Fahren Sie mit dem Klicken, Tippen oder Drücken von `F` fort, um der Karte weitere Punkte hinzuzufügen.
  
 **Zeichnen beenden**
@@ -48,12 +50,12 @@ Wenn sich der Zeichnungs-Manager im `draw-point`-Zeichenmodus befindet, können 
 
 ### <a name="how-to-draw-a-line"></a>Zeichnen einer Linie
 
-Wenn sich der Zeichnungs-Manager im `draw-line`-Modus befindet, können abhängig von der Einstellung des Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen.
+Wenn sich der Zeichnungs-Manager im `draw-line`-Modus befindet, können abhängig vom Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen.
 
 **Zeichnen beginnen**
  - Klickmodus
-   * Klicken Sie mit der linken Maustaste, oder tippen Sie auf die Karte, um der Karte jeden Punkt einer Linie hinzuzufügen. Für jeden Klick/Tipp wird der Linie eine Koordinate hinzugefügt. 
-   * Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-Taste, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Dadurch steht für das Hinzufügen eines Punkts zur Karte eine Methode mit höherer Genauigkeit zur Verfügung, da weniger Bewegung der Maus aufgrund der Druckbewegung der linken Maustaste auftritt.
+   * Klicken Sie mit der linken Maustaste, oder tippen Sie auf die Karte, um der Karte jeden Punkt einer Linie hinzuzufügen. Bei jedem Klicken oder Tippen wird der Linie eine Koordinate hinzugefügt. 
+   * Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-TASTE, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Diese Methode bietet höhere Genauigkeit beim Hinzufügen eines Punkts zur Karte. Es findet eine geringere Bewegung der Maus als beim Drücken der linken Maustaste statt.
    * Klicken Sie weiter, bis der Linie alle gewünschten Punkte hinzugefügt wurden.
  - Freihandmodus
    * Drücken Sie die linke Maustaste, oder tippen Sie auf die Karte, und ziehen Sie die Maus, oder ziehen Sie mit Fingereingabe. Der Linie werden Koordinaten hinzugefügt, während sich der Mauszeiger oder Berührungspunkt auf der Karte bewegt. Sobald das Maus- oder Berührungsereignis ausgelöst wird, ist das Zeichnen abgeschlossen. Die Häufigkeit, mit der Koordinaten hinzugefügt werden, wird durch die Option `freehandInterval` des Zeichnungs-Managers bestimmt.
@@ -74,15 +76,15 @@ Wenn sich der Zeichnungs-Manager im `draw-line`-Modus befindet, können abhängi
 
 ### <a name="how-to-draw-a-polygon"></a>Zeichnen eines Polygons
 
-Wenn sich der Zeichnungs-Manager im `draw-polygon`-Modus befindet, können abhängig von der Einstellung des Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen.
+Wenn sich der Zeichnungs-Manager im `draw-polygon`-Modus befindet, können abhängig vom Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen.
 
 **Zeichnen beginnen**
  - Klickmodus
-   * Klicken Sie mit der linken Maustaste, oder tippen Sie auf die Karte, um der Karte jeden Punkt eines Polygons hinzuzufügen. Für jeden Klick/Tipp wird dem Polygon eine Koordinate hinzugefügt. 
-   * Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-Taste, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Dadurch steht für das Hinzufügen eines Punkts zur Karte eine Methode mit höherer Genauigkeit zur Verfügung, da weniger Bewegung der Maus aufgrund der Druckbewegung der linken Maustaste auftritt.
+   * Klicken Sie mit der linken Maustaste, oder tippen Sie auf die Karte, um der Karte jeden Punkt eines Polygons hinzuzufügen. Bei jedem Klicken oder Tippen wird dem Polygon eine Koordinate hinzugefügt. 
+   * Wenn sich die Maus über der Karte befindet, drücken Sie die `F`-TASTE, dann wird ein Punkt an der Koordinate des Mauszeigers hinzugefügt. Diese Methode bietet höhere Genauigkeit beim Hinzufügen eines Punkts zur Karte. Es findet eine geringere Bewegung der Maus als beim Drücken der linken Maustaste statt.
    * Klicken Sie weiter, bis dem Polygon alle gewünschten Punkte hinzugefügt wurden.
  - Freihandmodus
-   * Drücken Sie die linke Maustaste, oder tippen Sie auf die Karte, und ziehen Sie die Maus, oder ziehen Sie mit Fingereingabe. Dem Polygon werden Koordinaten hinzugefügt, während sich der Mauszeiger oder Berührungspunkt auf der Karte bewegt. Sobald das Maus- oder Berührungsereignis ausgelöst wird, ist das Zeichnen abgeschlossen. Beachten Sie, dass die Häufigkeit, mit der Koordinaten hinzugefügt werden, durch die Option `freehandInterval` des Zeichnungs-Managers bestimmt wird.
+   * Drücken Sie die linke Maustaste, oder tippen Sie auf die Karte, und ziehen Sie die Maus, oder ziehen Sie mit Fingereingabe. Dem Polygon werden Koordinaten hinzugefügt, während sich der Mauszeiger oder Berührungspunkt auf der Karte bewegt. Sobald das Maus- oder Berührungsereignis ausgelöst wird, ist das Zeichnen abgeschlossen. Die Häufigkeit, mit der Koordinaten hinzugefügt werden, wird durch die Option `freehandInterval` des Zeichnungs-Managers bestimmt.
  - Hybridmodus
    * Wechseln Sie beim Zeichnen eines einzelnen Polygons nach Belieben zwischen Klick- und Freihandmodus. Klicken Sie beispielsweise auf einige Punkte, halten und ziehen Sie die Maus, um eine Reihe von Punkten hinzuzufügen, und klicken Sie dann auf einige weitere Punkte. 
 
@@ -101,7 +103,7 @@ Wenn sich der Zeichnungs-Manager im `draw-polygon`-Modus befindet, können abhä
 
 ### <a name="how-to-draw-a-rectangle"></a>Zeichnen eines Rechtecks
 
-Wenn sich der Zeichnungs-Manager im `draw-rectangle`-Modus befindet, können abhängig von der Einstellung des Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen. Die generierte Form folgt der [erweiterten GeoJSON-Spezifikation für Rechtecke](extend-geojson.md#rectangle).
+Wenn sich der Zeichnungs-Manager im `draw-rectangle`-Modus befindet, können abhängig vom Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen. Die generierte Form folgt der [erweiterten GeoJSON-Spezifikation für Rechtecke](extend-geojson.md#rectangle).
 
 **Zeichnen beginnen**
  - Drücken Sie die linke Maustaste, oder tippen Sie auf die Karte, um die erste Ecke des Rechtecks hinzuzufügen, und ziehen Sie, um das Rechteck zu erstellen. 
@@ -116,7 +118,7 @@ Wenn sich der Zeichnungs-Manager im `draw-rectangle`-Modus befindet, können abh
 
 ### <a name="how-to-draw-a-circle"></a>Zeichnen eines Kreises
 
-Wenn sich der Zeichnungs-Manager im `draw-circle`-Modus befindet, können abhängig von der Einstellung des Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen. Die generierte Form folgt der [erweiterten GeoJSON-Spezifikation für Kreise](extend-geojson.md#circle).
+Wenn sich der Zeichnungs-Manager im `draw-circle`-Modus befindet, können abhängig vom Interaktionsmodus die folgenden Aktionen ausgeführt werden, um Punkte auf der Karte zu zeichnen. Die generierte Form folgt der [erweiterten GeoJSON-Spezifikation für Kreise](extend-geojson.md#circle).
 
 **Zeichnen beginnen**
  - Drücken Sie die linke Maustaste, oder tippen Sie auf die Karte, um den Mittelpunkt des Kreises hinzuzufügen, und ziehen Sie dann, um dem Kreis einen Radius zu geben. 
@@ -131,13 +133,13 @@ Wenn sich der Zeichnungs-Manager im `draw-circle`-Modus befindet, können abhän
 
 ## <a name="keyboard-shortcuts"></a>Tastenkombinationen
 
-Die Zeichentools unterstützen Tastenkombinationen, die das Zeichnen und Bearbeiten von Formen auf der Karte vereinfachen. Diese Tastenkombinationen sind funktionsfähig, wenn die Karte den Fokus hat.
+Die Zeichnungstools unterstützen Tastenkombinationen. Diese Tastenkombinationen sind funktionsfähig, wenn die Karte den Fokus besitzt.
 
-| Key      | Action                            |
+| Key      | Aktion                            |
 |----------|-----------------------------------|
 | `C` | Beendet alle aktuell ausgeführten Zeichenvorgänge und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |
 | `Escape` | Bricht alle aktuell ausgeführten Zeichenvorgänge ab und legt den Zeichenmodus auf „Leerlauf“ fest. Der Fokus wird auf das Kartenelement der obersten Ebene verschoben.  |
-| `F` | Fügt einem Punkt, einer Linie oder einem Polygon eine Koordinate hinzu, wenn sich der Mauszeiger über der Karte befindet. Äquivalente Aktion zum Klicken auf die Karte im Klick- oder Hybridmodus. Diese Verknüpfung ermöglicht präziseres und schnelleres Zeichnen, da Sie eine Hand zum Positionieren der Maus verwenden können, und die andere zum Drücken der Taste, ohne dass die Maus durch die Drückgeste bewegt wird. |
+| `F` | Fügt einem Punkt, einer Linie oder einem Polygon eine Koordinate hinzu, wenn sich der Mauszeiger über der Karte befindet. Äquivalente Aktion zum Klicken auf die Karte im Klick- oder Hybridmodus. Diese Tastenkombination ermöglicht präziseres und schnelleres Zeichnen. Sie können eine Hand zum Positionieren der Maus verwenden und mit der anderen die Taste drücken, ohne dass die Maus durch das Drücken bewegt wird. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

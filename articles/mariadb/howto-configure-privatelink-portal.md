@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 76e9526ab39cbccd45a48d2cd24e05867c953774
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 67b045ff0661e8d0f8e20656a012e85d01e83d7b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280831"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425917"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB (Vorschau) über das Portal
 
@@ -210,34 +210,35 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     Non-authoritative answer:
     Name:    mydemoMariaDBserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Testen Sie die Verbindung über den privaten Link für den MariaDB-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
 
-4. In **New connection**, enter or select this information:
+4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Setting | Value |
+    | Einstellung | value |
     | ------- | ----- |
-    | Server type| Select **MariaDB**.|
-    | Server name| Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MariaDB server creation. |
-    |Password |Enter a password provided during the MariaDB server creation. |
-    |SSL|Select **Required**.|
+    | Servertyp| Wählen Sie **MariaDB** aus.|
+    | Servername| Wählen Sie *mydemoserver.privateLink.mariadb.database.azure.com* aus. |
+    | Benutzername | Geben Sie einen Benutzernamen als username@servername ein, der während der Erstellung des MariaDB-Servers angegeben wird. |
+    |Kennwort |Geben Sie ein während der Erstellung des MariaDB-Servers angegebenes Kennwort ein. |
+    |SSL|Wählen Sie **Erforderlich** aus.|
     ||
 
-5. Select **Test Connection** or **OK**.
+5. Wählen Sie **Verbindung testen** oder **OK** aus.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. (Optional) Durchsuchen von Datenbanken im linken Menü und Erstellen von Informationen in der MariaDB-Datenbank oder Abfragen von Informationen darin
 
-7. Close the remote desktop connection to myVm.
+7. Schließen Sie die Remotedesktopverbindung mit myVm.
 
-## Clean up resources
-When you're done using the private endpoint, MariaDB server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MariaDB-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MariaDB, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MariaDB server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+In dieser Anleitung haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, eine Azure Database for MariaDB und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem MariaDB-Server kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).

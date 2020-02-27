@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 00ab3e9c7902e253d39a38eb0e98ee166244bca2
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048581"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198768"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -174,6 +174,8 @@ Beispiele hierfür sind:
 
 Die drei unterschiedlichen `task`-Parameterwerte (der dritte Tasktyp ist `forecasting` und verwendet einen ähnlichen Algorithmuspool wie die `regression`-Tasks) bestimmen die Liste der anzuwendenden Modelle. Verwenden Sie die Parameter `whitelist` oder `blacklist`, um Iterationen mit den verfügbaren Modellen, die eingeschlossen oder ausgeschlossen werden sollen, weiter zu ändern. Die Liste der unterstützten Modelle finden Sie unter [SupportedModels-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels) für [Klassifizierung](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.classification), [Vorhersagen](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.forecasting) und [Regression](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.constants.supportedmodels.regression).
 
+Der automatisierte Überprüfungsdienst von ML erfordert, dass `experiment_timeout_minutes` auf eine Mindestzeit von 15 Minuten festgelegt wird, um Fehler bezüglich des Zeitlimits von Experimenten zu vermeiden.
+
 ### <a name="primary-metric"></a>Primäre Metrik
 Die primäre Metrik bestimmt die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die verfügbaren Metriken, die Sie auswählen können, werden vom ausgewählten Tasktyp bestimmt. In der folgenden Tabelle werden gültige primäre Metriken für jeden Tasktyp aufgeführt.
 
@@ -193,7 +195,7 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten [automati
 
 Bei der Konfiguration Ihrer Experimente können Sie die erweiterte Einstellung `featurization` aktivieren. In der folgenden Tabelle sind die akzeptierten Einstellungen für die Featurebereitstellung in der [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)-Klasse aufgeführt.
 
-|Konfiguration der Featurebereitstellung | Beschreibung |
+|Konfiguration der Featurebereitstellung | BESCHREIBUNG |
 | ------------- | ------------- |
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Gibt an, dass ein angepasster Featurebereitstellungsschritt verwendet werden soll. [Erfahren Sie, wie Sie die Featurebereitstellung anpassen](how-to-configure-auto-train.md#customize-feature-engineering).|
 |`"featurization": 'off'`| Gibt an, dass die Featurebereitstellung nicht automatisch erfolgen soll.|

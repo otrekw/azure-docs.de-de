@@ -1,18 +1,18 @@
 ---
 Description: In den folgenden Tabellen finden Sie Informationen zu Ihren Vertriebsländern bzw. -regionen, um die steuerlichen Aspekte der Preisauswahl, die Auswirkungen auf die Auszahlung und die Steuerverantwortung besser verstehen zu können.
 title: Steuerliche Aspekte | Azure Marketplace
-ms.date: 12/10/2019
+ms.date: 2/13/2020
 ms.topic: article
 author: MaggiePucciEvans
 manager: evansma
 ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cd580c43aa25dd4cc33ceb7138785a94a021b771
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933560"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210447"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Steuerliche Aspekte für kommerzielle Marketplace-Herausgeber
 
@@ -22,7 +22,7 @@ Für ein besseres Verständnis der steuerlichen Aspekte bei der Preisauswahl und
 > Die Regulierung zur Markterweiterung (Commerce Expansion Adjustment) hat in einigen wenigen Ländern/Regionen möglicherweise Auswirkungen auf die Auszahlung. Weitere Einzelheiten zur Regulierung zur Markterweiterung (Commerce Expansion Adjustment) und die betroffenen Märkte finden Sie in der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) und in der Liste der betroffenen Länder/Regionen.
 
 > [!IMPORTANT]
-> Die Steuerverantwortung in Händlerländern/-regionen und die Gegebenheiten (wie [weiter unten](#reseller-countriesregions) beschrieben) werden ungeachtet der Informationen in der folgenden Tabelle in Anhang C der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) behandelt.
+> Die Steuerverantwortung in Händlerländern/-regionen und die Gegebenheiten (wie [weiter unten](#reseller-countriesregions) beschrieben) werden ungeachtet der Informationen in der folgenden Tabelle in Anhang A der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/p/?LinkID=699560) behandelt.
 > Beachten Sie, dass die Spalte **Auszahlungsauswirkungen** nur für Herausgeber gilt. Die in dieser Spalte aufgeführten Steuersätze können jederzeit geändert werden, und Microsoft kann nicht garantieren, dass die Sätze in den folgenden Tabellen stets genau sind.
 
 

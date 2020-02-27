@@ -3,21 +3,22 @@ title: Übersicht zu Azure Monitor für Container | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt Azure Monitor für Container, das die AKS Container Insights-Lösung überwacht, und den Wert, den es durch die Überwachung der Integrität Ihrer AKS-Cluster und Containerinstanzen in Azure bietet.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 341dd28f6c1523e4b4c06da30a0a8ffc61b1c6f4
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75730735"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198036"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor für Container – Übersicht
 
 Azure Monitor für Container ist ein Feature zum Überwachen der Leistung von Containerworkloads,
 
-- die in Managed Kubernetes-Clustern bereitgestellt und in Azure Kubernetes Service (AKS) gehostet sind.
-- Azure Container Instances
-- Selbstverwaltete Kubernetes-Cluster, die in Azure Stack oder lokal gehostet werden
-- Azure Red Hat OpenShift
+- die in Managed Kubernetes-Clustern bereitgestellt und in [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) gehostet sind.
+- Selbstverwaltete Kubernetes-Cluster, die in Azure mit der [AKS-Engine](https://github.com/Azure/aks-engine) gehostet werden
+- [Azure Container Instances](../../container-instances/container-instances-overview.md)
+- Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) oder lokal gehostet werden
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
 
 Azure Monitor für Container unterstützt Cluster, auf denen das Betriebssystem Linux und Windows Server 2019 ausgeführt wird. 
 
@@ -38,7 +39,7 @@ Azure Monitor für Container stellt eine umfassende Überwachungsumgebung auf Gr
 * Sie bekommen Einblicke in das Verhalten des Clusters bei durchschnittlichen und schwersten Lasten. So können Sie benötigte Kapazitäten ermitteln und die maximale Last bestimmen, die der Cluster toleriert. 
 * Konfigurieren Sie Warnungen so, dass Sie proaktiv benachrichtigt werden oder aufgezeichnet wird, wenn die CPU- und Arbeitsspeicherauslastung auf Knoten oder in Containern die Schwellenwerte überschreitet oder wenn eine Änderung des Integritätszustands im Cluster beim Integritätsrollup für Infrastruktur oder Knoten erfolgt.
 * Über die Integration mit [Prometheus](https://prometheus.io/docs/introduction/overview/) können Sie Anwendungs- und Workloadmetriken anzeigen, die von Knoten und Kubernetes mithilfe von [Abfragen](container-insights-log-search.md) gesammelt werden, um benutzerdefinierte Warnungen und Dashboards zu erstellen und ausführliche Analysen durchzuführen.
-* Überwachen Sie Containerworkloads, [die auf der AKS-Engine](https://github.com/microsoft/OMS-docker/tree/aks-engine) lokal und der [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) bereitgestellt werden.
+* Überwachen Sie Containerworkloads, [die auf der AKS-Engine](https://github.com/Azure/aks-engine) lokal und der [AKS-Engine in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) bereitgestellt werden.
 * Überwachen von Containerworkloads, [die in Azure Red Hat OpenShift](../../openshift/intro-openshift.md) bereitgestellt sind.
 
     >[!NOTE]

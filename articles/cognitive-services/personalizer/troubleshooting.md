@@ -1,21 +1,15 @@
 ---
 title: 'Problembehandlung: Personalisierung'
-titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Antworten auf Fragen zur Behandlung von Problemen mit Personalizer.
-author: diberry
-manager: nitinme
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/18/2020
 ms.author: diberry
-ms.openlocfilehash: 5aeda9abcebda50cf97e1473b458d8f1f9d15970
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832172"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469543"
 ---
 # <a name="personalizer-troubleshooting"></a>Troubleshooting für Personalizer
 
@@ -23,69 +17,92 @@ Dieser Artikel enthält Antworten auf Fragen zur Behandlung von Problemen mit Pe
 
 ## <a name="transaction-errors"></a>Transaktionsfehler
 
-### <a name="i-get-an-http-429-too-many-requests-response-from-the-service-what-can-i-do"></a>Ich erhalte die Antwort „HTTP 429 (Zu viele Anforderungen) vom Dienst. Was kann ich tun?
+<details>
+<summary><b>Ich erhalte eine HTTP 429-Antwort (Zu viele Anforderungen) vom Dienst. Was kann ich tun?</b></summary>
 
-Wenn Sie beim Erstellen der Personalisierungsinstanz einen kostenlosen Tarif ausgewählt haben, besteht ein Kontingentlimit für die Anzahl von zulässigen Ranganforderungen. Überprüfen Sie die API-Aufrufquote für die Rang-API (im Azure-Portal für Ihre Personalisierungsressource im Bereich „Metriken“), und passen Sie den Tarif an (im Bereich „Tarif“), wenn Sie damit rechnen, dass das Aufrufvolumen über den Schwellenwert für den ausgewählten Tarif hinaus anwächst.
+**Antwort:** Wenn Sie beim Erstellen der Personalisierungsinstanz einen kostenlosen Tarif ausgewählt haben, besteht ein Kontingentlimit für die Anzahl von zulässigen Ranganforderungen. Überprüfen Sie die API-Aufrufquote für die Rang-API (im Azure-Portal für Ihre Personalisierungsressource im Bereich „Metriken“), und passen Sie den Tarif an (im Bereich „Tarif“), wenn Sie damit rechnen, dass das Aufrufvolumen über den Schwellenwert für den ausgewählten Tarif hinaus anwächst.
 
-### <a name="im-getting-a-5xx-error-on-rank-or-reward-apis-what-should-i-do"></a>Ich erhalte einen 5xx-Fehler bei Rang- oder Belohnungs-APIs. Wie sollte ich vorgehen?
+</details>
 
-Diese Probleme sollten vorübergehend sein. Falls sie weiterhin auftreten, wenden Sie sich an den Support, indem Sie im Azure-Portal für Ihre Personalisierungsressource im Abschnitt **Support und Problembehandlung** die Option **Neue Supportanfrage** auswählen.
+<details>
+<summary><b>Ich erhalte einen 5xx-Fehler bei Rang- oder Belohnungs-APIs. Wie soll ich vorgehen?</b></summary>
 
+**Antwort:** Diese Probleme sollten vorübergehend sein. Falls sie weiterhin auftreten, wenden Sie sich an den Support, indem Sie im Azure-Portal für Ihre Personalisierungsressource im Abschnitt **Support und Problembehandlung** die Option **Neue Supportanfrage** auswählen.
+
+</details>
 
 ## <a name="learning-loop"></a>Lernschleife
 
-<!--
+<details>
+<summary>
+<b>Die Lernschleife funktioniert anscheinend nicht. Wie kann ich dies korrigieren?</b></summary>
 
-### How do I import a learning policy?
-
-
--->
-
-### <a name="the-learning-loop-doesnt-seem-to-learn-how-do-i-fix-this"></a>Die Lernschleife funktioniert anscheinend nicht. Wie kann ich dies korrigieren?
-
-Die Lernschleife benötigt einige Tausend Belohnungsaufrufe, bevor Priorisierungsaufrufe effektiv priorisiert werden.
+**Antwort:** Die Lernschleife benötigt einige Tausend Belohnungsaufrufe, bevor Priorisierungsaufrufe effektiv priorisiert werden.
 
 Wenn Sie sich nicht sicher sind, wie Ihre Lernschleife sich derzeit verhält, führen Sie eine [Offlineauswertung](concepts-offline-evaluation.md) aus, und wenden Sie die korrigierte Lernrichtlinie an.
 
-### <a name="i-keep-getting-rank-results-with-all-the-same-probabilities-for-all-items-how-do-i-know-personalizer-is-learning"></a>Ich erhalte immer wieder Rangergebnisse mit der gleichen Wahrscheinlichkeit für alle Elemente. Woher weiß ich, ob die Personalisierung lernt?
+</details>
 
-Die Personalisierung gibt die gleichen Wahrscheinlichkeiten in einem Rang-API-Ergebnis zurück, wenn die API gerade gestartet wurde und mit einem _leeren_ Modell arbeitet. Dies ist auch der Fall, wenn Sie die Personalisierungsschleife zurücksetzen und das Modell sich noch im Zeitraum **Aktualisierungshäufigkeit des Modells** befindet.
+<details>
+<summary><b>Ich erhalte immer wieder Rangergebnisse mit der gleichen Wahrscheinlichkeit für alle Elemente. Woher weiß ich, ob die Personalisierung lernt?</b></summary>
+
+**Antwort:** Die Personalisierung gibt die gleichen Wahrscheinlichkeiten in einem Rang-API-Ergebnis zurück, wenn die API gerade gestartet wurde und mit einem _leeren_ Modell arbeitet. Dies ist auch der Fall, wenn Sie die Personalisierungsschleife zurücksetzen und das Modell sich noch im Zeitraum **Aktualisierungshäufigkeit des Modells** befindet.
 
 Wenn ein neuer Aktualisierungszeitraum beginnt, wird das aktualisierte Modell verwenden, und Sie werden feststellen, dass sich die Wahrscheinlichkeiten ändern.
 
-### <a name="the-learning-loop-was-learning-but-seems-to-not-learn-anymore-and-the-quality-of-the-rank-results-isnt-that-good-what-should-i-do"></a>In der Lernschleife fand ein Lernprozess statt, dies scheint aber nicht mehr der Fall zu sein, und die Qualität der Rangergebnisse ist nicht besonders gut. Wie sollte ich vorgehen?
+</details>
 
+<details>
+<summary><b>In der Lernschleife fand ein Lernprozess statt, dies scheint aber nicht mehr der Fall zu sein, und die Qualität der Rangergebnisse ist nicht besonders gut. Wie soll ich vorgehen?</b></summary>
+
+**Antwort:**
 * Stellen Sie sicher, dass Sie im Azure-Portal eine vollständige Auswertung für diese Personalisierungsressource abgeschlossen und angewendet haben (Lernschleife).
 * Stellen Sie sicher, dass alle Belohnungen über die Belohnungs-API gesendet und verarbeitet wurden.
 
-### <a name="how-do-i-know-that-the-learning-loop-is-getting-updated-regularly-and-is-used-to-score-my-data"></a>Woher weiß ich, ob die Lernschleife regelmäßig aktualisiert und zum Bewerten meiner Daten verwendet wird?
+</details>
 
-Sie finden den Zeitpunkt der letzten Aktualisierung des Modells auf der Seite **Modell- und Lerneinstellungen** im Azure-Portal. Wenn dort ein älterer Zeitstempel angezeigt wird, ist es wahrscheinlich, dass die Rang- und Belohnungsaufrufe nicht gesendet werden. Wenn der Dienst keine eingehenden Daten feststellt, aktualisiert er den Lernvorgang nicht. Wenn Sie der Ansicht sind, dass die Lernschleife nicht häufig genug aktualisiert wird, können Sie die **Aktualisierungshäufigkeit des Modells** bearbeiten.
 
+<details>
+<summary><b>Woher weiß ich, ob die Lernschleife regelmäßig aktualisiert und zum Bewerten meiner Daten verwendet wird?</b></summary>
+
+**Antwort:** Sie finden den Zeitpunkt der letzten Aktualisierung des Modells auf der Seite **Modell- und Lerneinstellungen** im Azure-Portal. Wenn dort ein älterer Zeitstempel angezeigt wird, ist es wahrscheinlich, dass die Rang- und Belohnungsaufrufe nicht gesendet werden. Wenn der Dienst keine eingehenden Daten feststellt, aktualisiert er den Lernvorgang nicht. Wenn Sie der Ansicht sind, dass die Lernschleife nicht häufig genug aktualisiert wird, können Sie die **Aktualisierungshäufigkeit des Modells** bearbeiten.
+
+</details>
 
 ## <a name="offline-evaluations"></a>Offlineauswertungen
 
-### <a name="an-offline-evaluations-feature-importance-returns-a-long-list-with-hundreds-or-thousands-of-items-what-happened"></a>Die Featurerelevanz einer Offlineauswertung gibt eine lange Liste mit Hunderttausenden von Elementen zurück. Was ist passiert?
+<details>
+<summary><b>Die Featurerelevanz einer Offlineauswertung gibt eine lange Liste mit Hunderttausenden von Elementen zurück. Was ist passiert?</b></summary>
 
-Dies liegt in der Regel an Zeitstempeln, Benutzer-IDs oder anderen differenzierten Merkmalen, die gesendet wurden.
+**Antwort:** Dies liegt in der Regel an Zeitstempeln, Benutzer-IDs oder anderen differenzierten Merkmalen, die gesendet wurden.
 
-### <a name="i-created-an-offline-evaluation-and-it-succeeded-almost-instantly-why-is-that-i-dont-see-any-results"></a>Ich habe eine Offlineauswertung erstellt, und sie wurde fast sofort erfolgreich ausgeführt. Warum? Es werden keine Ergebnisse angezeigt.
+</details>
 
-Die Offlineauswertung verwendet die trainierten Modelldaten aus den Ereignissen in diesem Zeitraum. Wenn Sie zwischen dem Start- und Endzeitpunkt der Auswertung keine Daten gesendet haben, wird die Auswertung ohne Ergebnisse abgeschlossen. Starten Sie eine neue Offlineauswertung, indem Sie einen Zeitbereich mit Ereignissen auswählen, von denen Sie wissen, dass sie an die Personalisierung gesendet wurden.
+<details>
+<summary><b>Ich habe eine Offlineauswertung erstellt, und sie wurde fast sofort erfolgreich ausgeführt. Warum? Es werden keine Ergebnisse angezeigt.</b></summary>
+
+**Antwort:** Die Offlineauswertung verwendet die trainierten Modelldaten aus den Ereignissen in diesem Zeitraum. Wenn Sie zwischen dem Start- und Endzeitpunkt der Auswertung keine Daten gesendet haben, wird die Auswertung ohne Ergebnisse abgeschlossen. Starten Sie eine neue Offlineauswertung, indem Sie einen Zeitbereich mit Ereignissen auswählen, von denen Sie wissen, dass sie an die Personalisierung gesendet wurden.
+
+</details>
+
 
 ## <a name="learning-policy"></a>Lernrichtlinie
 
-### <a name="how-do-i-import-a-learning-policy"></a>Wie importiere ich eine Lernrichtlinie?
+<details>
+<summary><b>Wie importiere ich eine Lernrichtlinie?</b></summary>
 
-Informieren Sie sich über [Konzepte von Lernrichtlinien](concept-active-learning.md#understand-learning-policy-settings) und die [Anwendung](how-to-learning-policy.md) einer neuen Lernrichtlinie. Wenn Sie keine Lernrichtlinie auswählen möchten, können Sie eine [Offlineauswertung](how-to-offline-evaluation.md) verwenden, um basierend auf Ihren aktuellen Ereignissen eine Lernrichtlinie vorzuschlagen.
+**Antwort:** Informieren Sie sich über [Konzepte von Lernrichtlinien](concept-active-learning.md#understand-learning-policy-settings) und die [Anwendung](how-to-learning-policy.md) einer neuen Lernrichtlinie. Wenn Sie keine Lernrichtlinie auswählen möchten, können Sie eine [Offlineauswertung](how-to-offline-evaluation.md) verwenden, um basierend auf Ihren aktuellen Ereignissen eine Lernrichtlinie vorzuschlagen.
 
+</details>
 
 ## <a name="security"></a>Sicherheit
 
-### <a name="the-api-key-for-my-loop-has-been-compromised-what-can-i-do"></a>Der API-Schlüssel für meine Schleife wurde kompromittiert. Was kann ich tun?
+<details>
+<summary><b>Der API-Schlüssel für meine Schleife wurde kompromittiert. Was kann ich tun?</b></summary>
 
-Sie können einen Schlüssel erneut generieren, nachdem Sie die Schlüsselverwendung durch die Clients getauscht haben. Wenn Sie über zwei Schlüssel verfügen, können Sie den Schlüssel verzögert weitergeben, ohne dass Ausfallzeiten auftreten. Wir empfehlen einen regelmäßigen Tausch als Sicherheitsmaßnahme.
+**Antwort:** Sie können einen Schlüssel erneut generieren, nachdem Sie die Schlüsselverwendung durch die Clients getauscht haben. Wenn Sie über zwei Schlüssel verfügen, können Sie den Schlüssel verzögert weitergeben, ohne dass Ausfallzeiten auftreten. Wir empfehlen einen regelmäßigen Tausch als Sicherheitsmaßnahme.
 
+</details>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

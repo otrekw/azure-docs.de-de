@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 08d9245201a8e0899d47847eb10dcdff3c0d8d16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984675"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209646"
 ---
 # <a name="show-search-results-on-the-map"></a>Anzeigen von Suchergebnissen auf der Karte
 
@@ -37,7 +37,7 @@ Der vierte Codeblock verwendet die [SearchFuzzy](/javascript/api/azure-maps-rest
 
 Im letzten Codeblock werden mithilfe der Maps-Eigenschaft [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) die Kameragrenzen für die Karte angepasst.
 
-Die Suchanforderung, die Datenquelle, die Symbolebene und die Kameragrenzen befinden sich innerhalb des bereiten [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte. Wir möchten sicherstellen, dass die Ergebnisse nach dem vollständigen Laden der Karte angezeigt werden.
+Die Suchanforderung, die Datenquelle, die Symbolebene und die Kameragrenzen befinden sich innerhalb des [Ereignislisteners](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte. Wir möchten sicherstellen, dass die Ergebnisse nach dem vollständigen Laden der Karte angezeigt werden.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Durchführen einer Suchanforderung über die Fetch-API

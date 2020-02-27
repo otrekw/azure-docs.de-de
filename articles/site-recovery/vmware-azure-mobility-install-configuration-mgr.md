@@ -3,14 +3,14 @@ title: Automatisieren der Mobility Service-Installation für die Notfallwiederhe
 description: Vorgehensweise zur automatischen Installation des Mobility Service für die Notfallwiederherstellung von VMware-VMs/physischen Servern mit Azure Site Recovery
 author: Rajeswari-Mamilla
 ms.topic: how-to
-ms.date: 12/22/2019
+ms.date: 2/5/2020
 ms.author: ramamill
-ms.openlocfilehash: 235b96cfd2da0c097bc576c63f5bd1c8ed224781
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896013"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252226"
 ---
 # <a name="automate-mobility-service-installation"></a>Automatisieren der Mobility Service-Installation
 
@@ -20,7 +20,7 @@ Wenn Sie Site Recovery für die Notfallwiederherstellung von lokalen VMware-VMs 
 
 - **Pushinstallation**: Der Mobility Service-Agent wird von Site Recovery installiert, wenn Sie die Replikation für einen Computer im Azure-Portal aktivieren.
 - **Manuelle Installation**: Der Mobility Service wird manuell auf den einzelnen Computern installiert. Weitere Informationen zur Pushinstallation und manuellen Installation finden Sie [hier](vmware-physical-mobility-service-overview.md).
-- **Automatisierte Bereitstellung**: Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie Microsoft Endpoint Configuration Manager oder Tools von Drittanbietern wie Intigua JetPatch.
+- **Automatisierte Bereitstellung**: Automatisieren Sie die Installation mithilfe von Softwarebereitstellungstools wie Microsoft Endpoint Configuration Manager oder Tools von Drittanbietern wie JetPatch.
 
 Die automatisierte Installation und Aktualisierung kommen in folgenden Fällen als Lösung infrage:
 

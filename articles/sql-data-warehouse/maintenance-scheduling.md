@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839788"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471787"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Verwenden von Wartungszeitplänen zum Verwalten der Updates und Wartung von Diensten
 
@@ -73,7 +73,7 @@ Primäre und sekundäre Fenster müssen jeweils separate Tagesbereiche besitzen.
 Führen Sie die folgenden Schritte aus, um den Wartungszeitplan für Ihr Data Warehouse zu ändern:
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2.  Wählen Sie das Data Warehouse aus, das Sie aktualisieren möchten. Die Seite wird auf dem Blatt „Übersicht“ geöffnet. 
-3.  Klicken Sie auf dem Übersichtsblatt auf den Link **Maintenance Schedule (preview) summary** (Wartungszeitplan (Vorschauversion) – Zusammenfassung), um die Seite mit den Wartungszeitplaneinstellungen zu öffnen. Alternativ können Sie auch im Ressourcenmenü auf der linken Seite auf **Wartungszeitplan** klicken.  
+3.  Klicken Sie auf dem Übersichtsblatt auf den Link **Wartungszeitplan – Zusammenfassung**, um die Seite mit den Wartungszeitplaneinstellungen zu öffnen. Alternativ können Sie auch im Ressourcenmenü auf der linken Seite auf **Wartungszeitplan** klicken.  
 
     ![Optionen auf dem Blatt „Übersicht“](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 

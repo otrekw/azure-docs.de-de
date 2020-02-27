@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Barrierefreiheitsfunktionen im Designer
+title: Verwenden von Barrierefreiheitsfunktionen im Designer (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie mehr über die im Designer verfügbaren Tastenkombinationen und Barrierefreiheitsfunktionen für die Sprachausgabe.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314231"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366197"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Verwenden einer Tastatur zur Verwendung von Azure Machine Learning-Designer
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Verwenden einer Tastatur zur Verwendung von Azure Machine Learning-Designer (Vorschau)
 
 Erfahren Sie, wie Sie den Azure Machine Learning-Designer mithilfe einer Tastatur und der Sprachausgabe verwenden können. Eine Liste der Tastenkombinationen, die überall im Azure-Portal funktionieren, finden Sie unter [Tastenkombinationen im Azure-Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -24,7 +24,7 @@ Dieser Workflow wurde mit [Sprachausgabe](https://support.microsoft.com/help/227
 
 ## <a name="navigate-the-pipeline-graph"></a>Navigieren im Pipelinegraph
 
-Der Pipelinegraph ist als eine Liste von Listen organisiert. Die oberste Modulliste enthält alle in der Pipeline befindlichen Module. Jedes Element in der Modulliste enthält eine Verbindungsliste, in der alle seine Verbindungen beschrieben sind. 
+Der Pipelinegraph ist als geschachtelte Liste organisiert. Die äußere Liste ist eine Modulliste, die alle Module im Pipelinegraph beschreibt. Die innere Liste ist eine Verbindungsliste, die alle Verbindungen eines bestimmten Moduls beschreibt.  
 
 1. In der Modulliste können Sie mit der Pfeiltaste zwischen den Modulen wechseln.
 1. Verwenden Sie die Registerkarte, um die Verbindungsliste für das Zielmodul zu öffnen.

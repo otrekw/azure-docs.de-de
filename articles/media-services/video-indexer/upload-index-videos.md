@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169374"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468761"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -47,7 +47,7 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Videos mit den folgenden Optionen h
 
     Wenn es sich um eine private URL handelt, muss das Zugriffstoken in der Anforderung bereitgestellt werden.
 - Die URL muss auf eine gültige Mediendatei und nicht auf eine Webseite verweisen, z. B. als Link auf die Seite `www.youtube.com`.
-- Sie können bis zu 60 Filme pro Minute hochladen.
+- In einem kostenpflichtigen Konto können Sie bis zu 50 Filme pro Minute und in einem Testkonto bis zu 5 Filme pro Minute hochladen.
 
 > [!Tip]
 > Es wird empfohlen, .NET Framework-Version 4.6.2 oder höher zu verwenden, da für frühere .NET Frameworks nicht standardmäßig TLS 1.2 genutzt wird.
@@ -93,7 +93,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
 - Änderung des Indizierungszustands: 
     - Eigenschaften:    
     
-        |Name|Beschreibung|
+        |Name|BESCHREIBUNG|
         |---|---|
         |id|Video-ID|
         |state|Videozustand|  
@@ -101,7 +101,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
 - Im Video identifizierte Person:
   - Eigenschaften
     
-      |Name|Beschreibung|
+      |Name|BESCHREIBUNG|
       |---|---|
       |id| Video-ID|
       |faceId|Die Gesichts-ID, die im Videoindex angezeigt wird|
@@ -123,6 +123,10 @@ Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen H
 - `VideoOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Videodaten (Audiodaten werden ignoriert)
 - `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
 - `DefaultWithNoiseReduction`: Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
+
+> [!NOTE]
+> Video Indexer deckt bis zu zwei Audiospuren ab. Wenn sich in der Datei mehr Audiospuren befinden, werden sie als eine Spur behandelt.<br/>
+Wenn Sie die Spuren separat indizieren möchten, müssen Sie die relevante Audiodatei extrahieren und als `AudioOnly` indizieren.
 
 Der Preis richtet sich nach der gewählten Indizierungsoption.  
 
@@ -344,10 +348,11 @@ public class AccountContractSlim
 
 Die in der folgenden Tabelle aufgeführten Statuscodes können über den Uploadvorgang zurückgegeben werden.
 
-|Statuscode|ErrorType (im Antworttext)|Beschreibung|
+|Statuscode|ErrorType (im Antworttext)|BESCHREIBUNG|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Dasselbe Video wird unter dem angegebenen Konto bereits verarbeitet.|
 |400|VIDEO_ALREADY_FAILED|Dasselbe Video konnte unter dem angegebenen Konto vor weniger als zwei Stunden nicht verarbeitet werden. API-Clients sollten mindestens zwei Stunden warten, bevor ein Video erneut hochgeladen wird.|
+|429||Für Testkonten sind 5 Uploads pro Minute zulässig. Für kostenpflichtige Konten sind 50 Uploads pro Minute zulässig.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

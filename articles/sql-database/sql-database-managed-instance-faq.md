@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835017"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201678"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -82,21 +82,11 @@ Eine Option ist das [Exportieren der Datenbank in eine BACPAC-Datei](sql-databas
 
 Dieser Ansatz wird empfohlen, wenn die Datenbank kleiner als 100 GB ist. Transaktionsreplikation kann verwendet werden, wenn alle Tabellen in der Datenbank Primärschlüssel aufweisen.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 im Vergleich zu Gen 5 
-
-**Wie wähle ich zwischen der Hardwaregeneration Gen 4 und Gen 5 für die verwaltete Instanz?**
-
-Das hängt von der Workload ab, da einige Hardwaregenerationen für bestimmte Arten von Workloads besser als andere geeignet sind. Der Themenbereich Leistung ist komplex, jedoch weisen die Hardwaregenerationen die folgenden Unterschiede auf, die sich auf die Workloadleistung auswirken:
-- Gen 4 bietet eine bessere Computeunterstützung, da sie auf physischen Prozessoren basiert, während Gen 5 auf vCore-Prozessoren basiert. Das kann für rechenintensive Workloads von Vorteil sein.
-- Gen 5 unterstützt den beschleunigten Netzwerkbetrieb. Dies führt zu einer besseren E/A-Bandbreite für den Remotespeicher. Das kann für E/A-intensive Workloads auf universellen Dienstebenen vorteilhaft sein. In Gen 5 werden schnellere lokale SSD-Datenträger als in Gen 4 verwendet. Das kann für E/A-intensive Workloads auf unternehmenskritischen Dienstebenen vorteilhaft sein.
-
-Es wird dringend empfohlen, vor der Liveschaltung die Leistung der tatsächlichen für die Produktion vorgesehenen Workloads zu testen, um zu bestimmen, welche Hardwaregeneration in einem bestimmten Fall besser geeignet ist.
-
 ## <a name="switch-hardware-generation"></a>Wechseln der Hardwaregeneration 
 
 **Kann ich für meine verwaltete Instanz online zwischen der Hardwaregeneration Gen 4 und Gen 5 wechseln?**
 
-Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall können Sie das [Skript aus dem Blogbeitrag](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) verwenden, in dem erläutert wird, wie Sie zwischen Hardwaregenerationen wechseln.
+Der automatische Onlinewechsel zwischen Hardwaregenerationen ist möglich, wenn beide Hardwaregenerationen in der Region verfügbar sind, in der Ihre verwaltete Instanz bereitgestellt wurde. In diesem Fall können Sie auf der [Seite mit der Übersicht über das V-Kern-Modell](sql-database-service-tiers-vcore.md) nachsehen, wie Sie zwischen den Hardwaregenerationen wechseln können.
 
 Dabei handelt es sich um einen Vorgang mit langer Ausführungszeit, da eine neue verwaltete Instanz im Hintergrund bereitgestellt wird und Datenbanken automatisch zwischen der alten und neuen Instanz mit einem schnellen Failover am Ende des Prozesses übertragen werden. 
 
@@ -108,8 +98,6 @@ Wenn nicht beide Hardwaregenerationen in der gleichen Region unterstützt werden
 **Wie optimiere ich die Leistung meiner verwalteten Instanz?**
 
 Da eine universelle verwaltete Instanz Remotespeicher verwendet, wirkt sich die Größe der Daten-und Protokolldateien auf die Leistung aus. Weitere Informationen finden Sie unter [Auswirkung der Protokolldateigröße auf die Leistung einer universell verwalteten Instanz](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
-
-Für E/A-intensive Workloads empfiehlt sich möglicherweise die Verwendung von Gen 5-Hardware und für rechenintensive Workloads die Verwendung von Gen 4. Weitere Informationen finden Sie unter [Gewusst wie: Auswählen zwischen Gen 4 und Gen5](#gen-4-vs-gen-5).
 
 Wenn Ihre Workload aus vielen kleinen Transaktionen besteht, sollten Sie den Verbindungstyp von Proxymodus in Umleitungsmodus ändern.
 

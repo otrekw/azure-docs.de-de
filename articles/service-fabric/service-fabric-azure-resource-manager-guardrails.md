@@ -5,14 +5,14 @@ services: service-fabric
 documentationcenter: .net
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426736"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368581"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric-Sicherungsmaßnahmen 
 Wenn Sie einen Service Fabric-Cluster bereitstellen, werden Sicherungsmaßnahmen angewendet, durch die eine Azure Resource Manager-Bereitstellung bei einer ungültigen Clusterkonfiguration fehlschlägt. Die folgenden Abschnitte bieten einen Überblick über häufige Probleme bei der Clusterkonfiguration und die erforderlichen Schritte, um diese Probleme zu beheben. 
@@ -60,11 +60,26 @@ Der folgende Abschnitt enthält ein Beispiel für einen Dauerhaftigkeitskonflikt
 * Virtual Machine Scale Set durability does not match the target Service Fabric Node Type durability level (Die Dauerhaftigkeit der VM-Skalierungsgruppe stimmt nicht mit der Dauerhaftigkeitsstufe für das Service Fabric-Knotentypziel überein)
 * Virtual Machine Scale Set durability does match the current Service Fabric durability level or the target Service Fabric Node Type durability level (Die Dauerhaftigkeit der VM-Skalierungsgruppe stimmt nicht mit der aktuellen Service Fabric-Dauerhaftigkeitsstufe oder der Dauerhaftigkeitsstufe des Service Fabric-Zielknotentyps überein) 
 
-
 ### <a name="mitigation"></a>Minderung
 So beheben Sie einen Dauerhaftigkeitskonflikt, der durch eine der oben genannten Fehlermeldungen angegeben wird:
 1. Aktualisieren Sie die Dauerhaftigkeitsstufe entweder im Abschnitt zur Erweiterung der VM-Skalierungsgruppe oder im Abschnitt zum Service Fabric-Knotentyp der Azure Resource Manager-Vorlage, um sicherzustellen, dass die Werte übereinstimmen.
 2. Stellen Sie die Azure Resource Manager-Vorlage mit den aktualisierten Werten erneut bereit.
+
+
+## <a name="seed-node-deletion"></a>Löschung von Startknoten 
+### <a name="overview"></a>Übersicht
+Ein Service Fabric-Cluster weist eine [Zuverlässigkeitsebene](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)-Eigenschaft auf, die verwendet wird, um die Anzahl der Systemdienste zu bestimmen, die auf dem primären Knotentyp des Clusters ausgeführt werden. Die Anzahl der erforderlichen Replikate bestimmt die Mindestanzahl der Knoten, die vom primären Knotentyp des Clusters betrieben werden müssen. Wenn die Anzahl der Knoten vom primären Knotentyp unter das erforderliche Minimum für die Zuverlässigkeitsebene fällt, wird der Cluster instabil.  
+
+### <a name="error-messages"></a>Fehlermeldungen 
+Ein Vorgang zum Entfernen des Startknotens wurde erkannt und wird abgelehnt. 
+* Dieser Vorgang würde dazu führen, dass nur {0} potenzielle Startknoten im Cluster verbleiben, während mindestens {1} benötigt werden.
+* Das Entfernen von {0} Startknoten von {1} würde aufgrund des Verlusts des Startknotenquorums zum Ausfall des Clusters führen. Die maximale Anzahl Startknoten, die in einem Durchgang entfernt werden können, ist {2}.
+ 
+### <a name="mitigation"></a>Minderung 
+Stellen Sie sicher, dass Ihr primärer Knotentyp über genügend virtuelle Computer für die für Ihren Cluster angegebene Zuverlässigkeit verfügt. Sie können keinen virtuellen Computer entfernen, wenn dies die VM-Skalierungsgruppe unter die Mindestanzahl Knoten für die bestimmte Zuverlässigkeitsebene bringen würde.
+* Wenn die Zuverlässigkeitsebene ordnungsgemäß angegeben ist, stellen Sie sicher, dass genügend Knoten vom primären Knotentyp vorhanden sind, wie es für die Zuverlässigkeitsebene erforderlich ist. 
+* Wenn die Zuverlässigkeitsebene falsch ist, leiten Sie eine Änderung der Service Fabric-Ressource ein, um zuerst die Zuverlässigkeitsebene herabzusetzen, bevor Sie Vorgänge für die VM-Skalierungsgruppe einleiten, und warten Sie, bis diese abgeschlossen ist.
+* Wenn die Zuverlässigkeitsebene Bronze ist, führen Sie bitte diese [Schritte](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) aus, um Ihren Cluster ordnungsgemäß herunter zu skalieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erstellen eines Clusters auf virtuellen Computern oder Computern mit Windows Server: [Erstellen eines Service Fabric-Clusters für Windows Server](service-fabric-cluster-creation-for-windows-server.md)

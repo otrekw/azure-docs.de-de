@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841181"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210600"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Serverseitige Verschlüsselung von Azure Managed Disks
 
@@ -38,7 +38,7 @@ Sie können die Verschlüsselung auf der Ebene verwalteter Datenträger mit eige
 
 Das folgende Diagramm zeigt, wie verwaltete Datenträger Azure Active Directory und Azure Key Vault verwenden, um Anforderungen mit dem vom Kunden verwalteten Schlüssel zu senden:
 
-![Workflow für verwaltete Datenträger mit vom Kunden verwalteten Schlüsseln](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Workflow für verwaltete Datenträger und vom Kunden verwaltete Schlüssel. Ein Administrator erstellt eine Azure Key Vault-Instanz, dann einen Datenträgerverschlüsselungssatz und richtet den Datenträgerverschlüsselungssatz ein. Der Satz ist einem virtuellen Computer zugeordnet, der dem Datenträger ermöglicht, Azure AD zur Authentifizierung zu verwenden.](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 In der folgenden Liste wird das Diagramm ausführlicher erläutert:

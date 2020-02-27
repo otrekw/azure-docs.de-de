@@ -1,22 +1,14 @@
 ---
 title: Konversationen mit mehreren Turns – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Verwalten Sie für Ihren Bot von einer Frage zur nächsten die verschiedenen Durchläufe (Multi-Turn) mit Eingabeaufforderungen und Kontext. Mehrfachdurchläufe sind die Fähigkeit, eine wechselseitige Konversation zu führen, wobei der Kontext der vorherigen Frage die nächste Frage und die nächste Antwort beeinflusst.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843259"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210413"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Erstellen von Mehrfachdurchläufen einer Konversation mit Folgeaufforderungen
 
@@ -31,6 +23,9 @@ Wenn Sie erfahren möchten, wie ein Mehrfachdurchlauf funktioniert, sehen Sie si
 Einige Fragen können nicht in einem Zug beantwortet werden. Wenn Sie Ihre Clientanwendung (Chatbot) für Konversationen entwerfen, könnte ein Benutzer eine Frage stellen, die gefiltert oder verfeinert werden muss, um die richtige Antwort zu bestimmen. Sie ermöglichen diesen Ablauf durch die Fragen, indem Sie dem Benutzer *Folgeaufforderungen* anzeigen.
 
 Wenn ein Benutzer eine Frage stellt, gibt QnA Maker die Antwort _und_ alle Folgeaufforderungen zurück. Diese Antwort ermöglicht es Ihnen, Folgefragen als Auswahlmöglichkeiten zu präsentieren.
+
+> [!CAUTION]
+> Mehrfachdurchlauf-Eingabeaufforderungen werden nicht aus FAQ-Dokumenten extrahiert. Wenn Sie eine Mehrfachdurchlauf-Extrahierung benötigen, entfernen Sie die Fragezeichen, die die Paare aus Fragen und Antworten als FAQs (häufig gestellte Fragen) kennzeichnen.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Beispiel für Konversation mit Mehrfachdurchläufen mit Chatbot
 

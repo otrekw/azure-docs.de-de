@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 893e1c3a58f4a62a1e0e9b734cc156b3d75d8779
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 861e8fc115165214db5d01cb142a2980ba08bf53
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933063"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467368"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetriekontext: Application Insights-Datenmodell
 
@@ -117,7 +117,7 @@ Max. Länge: 256
 
 ## <a name="internal-sdk-version"></a>Intern: SDK-Version
 
-SDK-Version. Weitere Informationen finden Sie unter https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification.
+SDK-Version. Informationen hierzu finden Sie in [diesem Artikel](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md).
 
 Max. Länge: 64
 

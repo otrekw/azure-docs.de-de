@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137968"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367637"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -28,7 +28,9 @@ Die Entitätsverknüpfung ist die Möglichkeit, die Identität einer im Text gef
 
 ### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-Die NER ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen oder Typen zu kategorisieren. Beispiel: Personen, Orte und Organisationen.
+Die NER ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen oder Typen zu kategorisieren, z. B. Person, Standort, Ereignis, Produkt und Organisation.  
+
+Ab Version 3 kann dieses Feature der Textanalyse-API auch persönliche und vertrauliche Datentypen identifizieren, z. B.: Telefonnummer, Sozialversicherungsnummer, E-Mail-Adresse und Bankkontonummer.  Die Identifizierung dieser Entitäten kann bei der Klassifizierung vertraulicher Dokumente und bei der Bearbeitung persönlicher Informationen helfen.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Versionen und Features der Erkennung benannter Entitäten
 

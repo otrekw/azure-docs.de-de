@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152362"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425798"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
@@ -74,7 +74,7 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Ausnahmemeldungen|
 |------------------------|
 |One or more of inputs are null or empty. (Mindestens eine Eingabe ist null oder leer.)|
-|Input "{0}" is null or empty. (Eingabe „{0}“ ist null oder leer.)|
+|Die Eingabe „{name}“ ist NULL oder leer.|
 
 
 ## <a name="error-0004"></a>Fehler 0004  
@@ -87,8 +87,8 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Ausnahmemeldungen|
 |------------------------|
 |Der Parameter muss größer als der Grenzwert sein|
-|Der Wert des Parameters „{0}“ muss größer als {1} sein|
-|Parameter "{0}" has value "{1}" which should be greater than {2}. (Der Parameter „{0}“ besitzt den Wert „{1}“, der größer als {2} sein muss.)|
+|Der Wert des Parameters „{arg_name}“ sollte größer als {lower_boundary} sein.|
+|Der Parameter „{arg_name}“ besitzt den Wert „{actual_value}“, der größer als {lower_boundary} sein sollte.|
 
 
 ## <a name="error-0005"></a>Fehler 0005  
@@ -101,8 +101,8 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Ausnahmemeldungen|
 |------------------------|
 |Der Parameter muss größer als oder gleich dem Grenzwert sein|
-|Parameter "{arg_name}" value should be greater than or equal to {target_val}. (Der Parameter „{arg_name}“ sollte größer als oder gleich „{target_val}“ sein.)|
-|Parameter "{arg_name}" has value "{true_val}" which should be greater than or equal to {target_val}. (Der Parameter „{arg_name}“ hat den Wert „{true_val}“, der größer als oder gleich „{target_val}“ sein sollte.)|
+|Der Wert des Parameters „{arg_name}“ sollte größer als oder gleich {lower_boundary} sein.|
+|Der Parameter „{arg_name}“ besitzt den Wert „{value}“, der größer als oder gleich {lower_boundary} sein sollte.|
 
 
 ## <a name="error-0006"></a>Fehler 0006  
@@ -115,8 +115,8 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Ausnahmemeldungen|
 |------------------------|
 |Parameterkonflikt Einer der Parameter muss kleiner als ein anderer sein|
-|Der Wert des Parameters „{0}“ muss kleiner sein als der Wert des Parameters „{1}“|
-|Der Parameter „{0}“ besitzt den Wert „{1}“, der kleiner als {2} sein muss|
+|Der Wert des Parameters „{arg_name}“ sollte kleiner als der Wert von Parameter „{upper_boundary_parameter_name}“ sein.|
+|Der Parameter „{arg_name}“ besitzt den Wert „{value}“, der kleiner als {upper_boundary_parameter_name} sein sollte.|
 
 
 ## <a name="error-0007"></a>Fehler 0007  
@@ -137,8 +137,9 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Ausnahmemeldungen|
 |------------------------|
 |Parameterkonflikt Einer der Parameter muss kleiner als oder gleich einem anderen Parameter sein|
-|Der Wert des Parameters „{0}“ muss kleiner als oder gleich dem Wert des Parameters „{1}“ sein|
-|Der Parameter „{0}“ besitzt den Wert „{1}“, der kleiner als oder gleich {2} sein muss|
+|Der Wert des Parameters „{arg_name}“ sollte kleiner als oder gleich dem Wert von Parameter „{upper_boundary_parameter_name}“ sein.|
+|Der Parameter „{arg_name}“ besitzt den Wert „{actual_value}“, der kleiner als oder gleich {upper_boundary} sein sollte.|
+|Der Wert {actual_value} des Parameters „{arg_name}“ sollte kleiner als oder gleich dem Wert {upper_boundary} von Parameter „{upper_boundary_parameter_name}“ sein.|
 
 
 ## <a name="error-0008"></a>Fehler 0008  
@@ -154,8 +155,8 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |------------------------|
 |Der Parameterwert liegt nicht im angegebenen Bereich|
 |Parameter "{arg_name}" value is not in range.|
-|Parameter "{arg_name}" value should be in the range of [{a}, {b}].|
-|Parameter "{arg_name}" value is not in range.{reason}|
+|Der Wert des Parameters „{arg_name}“ sollte sich im Bereich von [{lower_boundary}, {upper_boundary}] befinden.|
+|Parameter "{arg_name}" value is not in range. {reason}|
 
 
 ## <a name="error-0009"></a>Fehler 0009  
@@ -187,7 +188,7 @@ Wenn der vollständige Pfad zu einem Blob angegeben wurde, vergewissern Sie sich
 |Ausnahmemeldungen|
 |------------------------|
 |Der Name des Azure-Speicherkontos oder des Containers ist falsch.|
-|Der Name des Azure-Speicherkontos „{0}“oder des Containers „{1}“ ist falsch. Es wird ein Containername im Format „Container/Blob“ erwartet.|
+|Der Name des Azure-Speicherkontos „{account_name}“oder des Containers „{container_name}“ ist falsch. Es wird ein Containername im Format „Container/Blob“ erwartet.|
 
 
 ## <a name="error-0010"></a>Fehler 0010  
@@ -200,7 +201,7 @@ Wenn der vollständige Pfad zu einem Blob angegeben wurde, vergewissern Sie sich
 |Ausnahmemeldungen|
 |------------------------|
 |Spalten mit entsprechendem Index in Eingabedatasets weisen unterschiedliche Namen auf.|
-|Die Spaltennamen sind für die Spalte {0} (nullbasiert) der Eingabedatasets ({1} und {2}) nicht identisch.|
+|Die Spaltennamen sind für die Spalte {col_index} (nullbasiert) der Eingabedatasets ({dataset1} und {dataset2}) nicht identisch.|
 
 
 ## <a name="error-0011"></a>Fehler 0011  
@@ -219,7 +220,7 @@ Wenn der vollständige Pfad zu einem Blob angegeben wurde, vergewissern Sie sich
 |Ausnahmemeldungen|
 |------------------------|
 |Der angegebene Spaltensatz gilt für keine der Datasetspalten.|
-|Der angegebene Spaltensatz „{0}“ gilt für keine der Datasetspalten.|
+|Der angegebene Spaltensatz „{column_set}“ gilt für keine der Datasetspalten.|
 
 
 ## <a name="error-0012"></a>Fehler 0012  
@@ -301,7 +302,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |Ausnahmemeldungen|
 |------------------------|
 |Fehler beim Herstellen der Datenbankverbindung.|
-|Fehler beim Herstellen der Datenbankverbindung: {0}.|
+|Fehler beim Herstellen der Datenbankverbindung: {connection_str}.|
 
 
 ## <a name="error-0016"></a>Fehler 0016  
@@ -384,8 +385,8 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |Ausnahmemeldungen|
 |------------------------|
 |Die Werte in der Spalte sind nicht sortiert.|
-|Die Werte in der Spalte „{0}“ sind nicht sortiert.|
-|Die Werte in der Spalte „{0}“ von Dataset „{1}“ sind nicht sortiert.|
+|Die Werte in der Spalte „{col_index}“ sind nicht sortiert.|
+|Die Werte in der Spalte „{col_index}“ von Dataset „{dataset}“ sind nicht sortiert.|
 
 
 ## <a name="error-0020"></a>Fehler 0020  
@@ -398,6 +399,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |Ausnahmemeldungen|
 |------------------------|
 |Die Anzahl der Spalten im Eingabedataset ist kleiner als der zulässige Mindestwert.|
+|Die Anzahl der Spalten im Eingabedataset „{arg_name}“ ist kleiner als der zulässige Mindestwert.|
 |Number of columns in input dataset is less than allowed minimum of {required_columns_count} column(s).|
 |Number of columns in input dataset "{arg_name}" is less than allowed minimum of {required_columns_count} column(s).|
 
@@ -450,9 +452,9 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |Ausnahmemeldungen|
 |------------------------|
 |Die Anzahl der ausgewählten Spalten im Eingabedataset stimmt nicht mit der erwarteten Anzahl überein.|
-|Die Anzahl der ausgewählten Spalten im Eingabedataset entspricht nicht {0}.|
-|Das Spaltenauswahlmuster „{0}“ liefert die Anzahl der ausgewählten Spalten im Eingabedataset, die nicht {1} entspricht.|
-|Das Spaltenauswahlmuster „{0}“ sollte {1} Spalten bereitstellen, die im Eingabedataset ausgewählt wurden, aber {2} Spalte(n) wird/werden tatsächlich bereitgestellt.|
+|Die Anzahl der ausgewählten Spalten im Eingabedataset stimmt nicht {expected_col_count} überein.|
+|Das Spaltenauswahlmuster „{selection_pattern_friendly_name}“ liefert die Anzahl der ausgewählten Spalten im Eingabedataset, die nicht {expected_col_count} entspricht.|
+|Für das Spaltenauswahlmuster „{selection_pattern_friendly_name}“ sollte(n) {expected_col_count} Spalte(n) im Eingabedataset ausgewählt sein, aber es wird/werden {selected_col_count} Spalte(n) bereitgestellt.|
 
 
 ## <a name="error-0023"></a>Fehler 0023  
@@ -466,8 +468,8 @@ Dieser Fehler in Azure Machine Learning tritt auf, wenn die Zielspalte (gemäß 
 |Ausnahmemeldungen|
 |------------------------|
 |Das Eingabedataset enthält eine nicht unterstützte Zielspalte.|
-|Das Eingabedataset enthält die nicht unterstützte Zielspalte „{0}“.|
-|Das Eingabedataset enthält die nicht unterstützte Zielspalte „{0}“ für Learner des Typs {1}.|
+|Das Eingabedataset enthält die nicht unterstützte Zielspalte „{column_index}“.|
+|Das Eingabedataset enthält die nicht unterstützte Zielspalte „{column_index}“ für Learner des Typs {learner_type}.|
 
 
 ## <a name="error-0024"></a>Fehler 0024  
@@ -500,8 +502,8 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Es befindet sich keine Bewertungsspalte im Dataset.|
-|Es befindet sich keine Bewertungsspalte in „{0}“.|
-|Es gibt keine Bewertungsspalte in „{0}“, die von „{1}“ erzeugt wurde. Bewerten Sie das Dataset mit dem richtigen Learnertyp.|
+|Es befindet sich keine Bewertungsspalte in „{dataset_name}“.|
+|Es gibt keine Bewertungsspalte in „{dataset_name}“, die von „{learner_type}“ erzeugt wurde. Bewerten Sie das Dataset mit dem richtigen Learnertyp.|
 
 
 ## <a name="error-0026"></a>Fehler 0026  
@@ -514,7 +516,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Gleiche Spaltennamen werden in Argumenten angegeben. Gleiche Spaltennamen sind im Modul nicht zulässig.|
-|Gleiche Spaltennamen in den Argumenten „{0}“ und „{1}“ sind nicht zulässig. Geben Sie unterschiedliche Namen an.|
+|Gleiche Spaltennamen in den Argumenten „{arg_name_1}“ und „{arg_name_2}“ sind nicht zulässig. Geben Sie unterschiedliche Namen an.|
 
 
 ## <a name="error-0027"></a>Fehler 0027  
@@ -533,7 +535,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Die Größe der übergebenen Objekte ist inkonsistent.|
-|Die Größe von „{0}“ stimmt nicht mit der Größe von „{1}“ überein.|
+|Die Größe von „{friendly_name1}“ ist inkonsistent mit der Größe von „{friendly_name2}“.|
 
 
 ## <a name="error-0028"></a>Fehler 0028  
@@ -571,7 +573,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Es wird ein ungültiger URI übergeben.|
-|Der URI „{0}“ ist ungültig.|
+|Der URI „{invalid_url}“ ist ungültig.|
 
 
 ## <a name="error-0030"></a>Fehler 0030  
@@ -584,7 +586,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Eine Datei konnte nicht heruntergeladen werden.|
-|Fehler beim Herunterladen der Datei: {0}.|
+|Fehler beim Herunterladen der Datei: {file_url}.|
 
 
 ## <a name="error-0031"></a>Fehler 0031  
@@ -597,7 +599,8 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Die Anzahl der Spalten im Spaltensatz ist kleiner als erforderlich.|
-|Mindestens {0} Spalte(n) muss (müssen) angegeben werden. Die tatsächliche Anzahl der angegebenen Spalten ist {1}.|
+|Für das Eingabeargument „{arg_name}“ sollten mindestens {required_columns_count} Spalte(n) angegeben werden.|
+|Für das Eingabeargument „{arg_name}“ sollten mindestens {required_columns_count} Spalte(n) angegeben werden. Die tatsächliche Anzahl der angegebenen Spalten ist {input_columns_count}.|
 
 
 ## <a name="error-0032"></a>Fehler 0032  
@@ -610,7 +613,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Das Argument ist keine Zahl.|
-|„{0}“ ist keine Zahl.|
+|„{arg_name}“ ist keine Zahl.|
 
 
 ## <a name="error-0033"></a>Fehler 0033  
@@ -623,7 +626,7 @@ Es kann auch vorkommen, dass eine Bezeichnungsspalte im Dataset vorhanden ist, a
 |Ausnahmemeldungen|
 |------------------------|
 |Das Argument muss endlich sein.|
-|„{0}“ ist nicht endlich.|
+|„{arg_name}“ ist nicht endlich.|
 
 
 ## <a name="error-0034"></a>Fehler 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Ausnahmemeldungen|
 |------------------------|
 |Für einen erforderlichen Benutzer oder ein erforderliches Element wurden keine Features bereitgestellt.|
-|Für {0} sind Features erforderlich, aber sie wurden bereitgestellt.|
+|Für {required_feature_name} sind Features erforderlich, aber sie wurden nicht bereitgestellt.|
 
 
 ## <a name="error-0036"></a>Fehler 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Ausnahmemeldungen|
 |------------------------|
 |Doppelte Featuredefinition für einen Benutzer oder ein Element.|
-|Doppelte Featuredefinition für {0}.|
 
 
 ## <a name="error-0037"></a>Fehler 0037  
@@ -742,9 +744,9 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Nicht zulässige Konvertierung.|
-|Die Spalte vom Typ {0} konnte nicht in eine Spalte vom Typ {1} konvertiert werden.|
-|Die Spalte „{2}“ vom Typ {0} konnte nicht in eine Spalte vom Typ {1} konvertiert werden.|
-|Die Spalte „{2}“ vom Typ {0} konnte nicht in eine Spalte „{3}“ vom Typ {1} konvertiert werden.|
+|Es konnte die Spalte vom Typ {type1} nicht in die Spalte vom Typ {type2} konvertiert werden.|
+|Es konnte die Spalte „{col_name1}“ vom Typ {type1} nicht in die Spalte vom Typ {type2} konvertiert werden.|
+|Es konnte die Spalte „{col_name1}“ vom Typ {type1} nicht in die Spalte „{col_name2}“ vom Typ {type2} konvertiert werden.|
 
 
 ## <a name="error-0044"></a>Fehler 0044  
@@ -757,8 +759,8 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Der Elementtyp der Spalte kann nicht abgeleitet werden.|
-|Der Elementtyp für die Spalte „{0}“ kann nicht abgeleitet werden – alle Elemente sind Nullverweise.|
-|Der Elementtyp für die Spalte „{0}“ von Dataset „{1}“ kann nicht abgeleitet werden – alle Elemente sind Nullverweise.|
+|Der Elementtyp für die Spalte „{column_name}“ kann nicht abgeleitet werden – alle Elemente sind Nullverweise.|
+|Der Elementtyp für die Spalte „{column_name}“ von Dataset „{dataset_name}“ kann nicht abgeleitet werden – alle Elemente sind Nullverweise.|
 
 
 ## <a name="error-0045"></a>Fehler 0045  
@@ -771,8 +773,8 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Es kann keine Spalte mit gemischten Elementtypen erstellt werden.|
-|Cannot create column with id "{column_id}" of mixed element types:\n\tType of data[{row_1}, {column_id}] is "{type_1}". Type of data[{row_2}, {column_id}] is "{type_2}".|
-|Cannot create column with id "{column_id}" of mixed element types:\n\tType in chunk {chunk_id_1} is "{type_1}". Type in chunk {chunk_id_2} is "{type_2}" with chunk size: {chunk_size}.|
+|Es kann keine Spalte mit der ID „{column_id}“ aus gemischten Elementtypen erstellt werden:<br />Der Typ von data[{row_1}, {column_id}] ist „{type_1}“. <br />Type of data[{row_2}, {column_id}] is "{type_2}".|
+|Es kann keine Spalte mit der ID „{column_id}“ aus gemischten Elementtypen erstellt werden:<br />Der Typ in Chunk {chunk_id_1} ist „{type_1}“. <br />Type in chunk {chunk_id_2} is "{type_2}" with chunk size: {chunk_size}.|
 
 
 ## <a name="error-0046"></a>Fehler 0046  
@@ -785,7 +787,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Geben Sie ein gültiges Ausgabeverzeichnis an.|
-|Verzeichnis: {0} kann nicht erstellt werden. Geben Sie einen gültigen Pfad an.|
+|Verzeichnis: {path} kann nicht erstellt werden. Geben Sie einen gültigen Pfad an.|
 
 
 ## <a name="error-0047"></a>Fehler 0047  
@@ -824,8 +826,8 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Eine Datei kann nicht geöffnet werden.|
-|Fehler beim Öffnen der Datei: {0}.|
-|Fehler beim Öffnen der Datei: {0}. Speicherausnahmemeldung: {1}.|
+|Fehler beim Öffnen der Datei: {file_name}.|
+|Fehler beim Öffnen der Datei: {file_name}. Speicherausnahmemeldung: {exception}.|
 
 
 ## <a name="error-0049"></a>Fehler 0049  
@@ -910,7 +912,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Datei oder Blob ist bereits vorhanden.|
-|Datei oder Blob „{0}“ ist bereits vorhanden.|
+|Datei oder Blob „{file_path}“ ist bereits vorhanden.|
 
 
 ## <a name="error-0058"></a>Fehler 0058  
@@ -945,7 +947,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Mindestens ein angegebener Spaltenindex oder Indexbereich konnte nicht analysiert werden.|
-|Der Spaltenindex oder der Bereich „{0}“ konnte nicht analysiert werden.|
+|Der Spaltenindex oder der Bereich „{column_index_or_range}“ konnte nicht analysiert werden.|
 
 
 ## <a name="error-0060"></a>Fehler 0060  
@@ -958,7 +960,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Es wurde ein ungültiger oder außerhalb des Bereichs liegender Spaltenindexbereich angegeben.|
-|Der Spaltenbereich „{0}“ ist ungültig oder außerhalb des Bereichs.|
+|Der Spaltenbereich „{column_range}“ ist ungültig oder außerhalb des Bereichs.|
 
 
 ## <a name="error-0061"></a>Fehler 0061  
@@ -1035,7 +1037,7 @@ Ein weiterer Grund für diesen Fehler ist der Versuch, eine Spalte mit Gleitkomm
 |Ausnahmemeldungen|
 |------------------------|
 |Die Ressource konnte nicht in den Azure-Speicher hochgeladen werden.|
-|Die Datei „{0}“ konnte nicht als „{1}“ in den Azure-Speicher hochgeladen werden.|
+|Die Datei „{source_path}“ konnte nicht als „{dest_path}“ in den Azure-Speicher hochgeladen werden.|
 
 
 ## <a name="error-0067"></a>Fehler 0067  
@@ -1079,7 +1081,6 @@ In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles L
 |Ausnahmemeldungen|
 |------------------------|
 |Das Hive-Skript ist falsch.|
-|Das Hive-Skript {0} ist falsch.|
 
 
 ## <a name="error-0069"></a>Fehler 0069  
@@ -1101,8 +1102,8 @@ In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles L
 |Ausnahmemeldungen|
 |------------------------|
 |Das SQL-Skript ist falsch.|
-|Die SQL-Abfrage „{0}“ ist falsch.|
-|Die SQL-Abfrage „{0}“ ist falsch: {1}.|
+|Die SQL-Abfrage „{sql_query}“ ist falsch.|
+|Die SQL-Abfrage „{sql_query}“ ist falsch. Ausnahmemeldung: {exception}.|
 
 
 ## <a name="error-0070"></a>Fehler 0070  
@@ -1115,7 +1116,7 @@ In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles L
 |Ausnahmemeldungen|
 |------------------------|
 |Die Azure-Tabelle ist nicht vorhanden.|
-|Die Azure-Tabelle „{0}“ ist nicht vorhanden.|
+|Die Azure-Tabelle „{table_name}“ ist nicht vorhanden.|
 
 
 ## <a name="error-0072"></a>Fehler 0072  
@@ -1140,7 +1141,7 @@ In den folgenden Artikeln finden Sie Hilfe bei Hive-Abfragen für maschinelles L
 |Ausnahmemeldungen|
 |------------------------|
 |Fehler beim Konvertieren der Spalte.|
-|Fehler beim Konvertieren der Spalte in {0}.|
+|Fehler beim Konvertieren der Spalte in {target_type}.|
 
 
 ## <a name="error-0075"></a>Fehler 0075  
@@ -1169,7 +1170,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Unsupported blob write mode.|
-|Unsupported blob write mode: {0}.|
+|Nicht unterstützter Blobschreibmodus: {blob_write_mode}.|
 
 
 ## <a name="error-0078"></a>Fehler 0078  
@@ -1194,7 +1195,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Der Azure-Speichercontainername ist falsch.|
-|Der Azure-Speichercontainername „{0}“ ist falsch. Es wurde ein Containername im Format „Container/Blob“ erwartet.|
+|Der Azure-Speichercontainername „{container_name}“ ist falsch. Es wurde ein Containername im Format „Container/Blob“ erwartet.|
 
 
 ## <a name="error-0080"></a>Fehler 0080  
@@ -1207,7 +1208,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Spalten, denen alle Werte fehlen, sind nicht zulässig.|
-|In der Spalte {0} fehlen alle Werte.|
+|In der Spalte {col_index_or_name} fehlen alle Werte.|
 
 
 ## <a name="error-0081"></a>Fehler 0081  
@@ -1244,9 +1245,9 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Das für das Training verwendete Dataset ist ungültig.|
-|{0} enthält ungültige Daten für das Training.|
-|{0} enthält ungültige Daten für das Training. Learnertyp: {1}.|
-|{0} enthält ungültige Daten für das Training. Learnertyp: {1}. Grund: {2}.|
+|{data_name} enthält ungültige Daten für das Training.|
+|{data_name} enthält ungültige Daten für das Training. Learnertyp: {learner_type}.|
+|{data_name} enthält ungültige Daten für das Training. Learnertyp: {learner_type}. Reason: {Grund}.|
 
 
 ## <a name="error-0084"></a>Fehler 0084  
@@ -1271,7 +1272,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Fehler bei der Auswertung des Skripts.|
-|The following error occurred during script evaluation, please view the output log for more information:---------- Start of error message from {script_language} interpreter ----------{message}---------- End of error message from {script_language} interpreter  ----------|
+|Der folgende Fehler ist während der Skriptauswertung aufgetreten. Weitere Informationen finden Sie im Ausgabeprotokoll:<br />---------- Start der Fehlermeldung vom {script_language}-Interpreter ----------<br />{message}<br />---------- Ende der Fehlermeldung vom {script_language}-Interpreter ----------|
 
 
 ## <a name="error-0090"></a>Fehler 0090  
@@ -1284,8 +1285,8 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Die Hive-Tabelle konnte nicht erstellt werden. Stellen Sie für einen HDInsight-Cluster sicher, dass der dem Cluster zugeordnete Azure-Speicherkontoname mit dem identisch ist, der über den Modulparameter übergeben wird.|
-|Die Hive-Tabelle „{0}“ konnte nicht erstellt werden. Stellen Sie für einen HDInsight-Cluster sicher, dass der dem Cluster zugeordnete Azure-Speicherkontoname mit dem identisch ist, der über den Modulparameter übergeben wird.|
-|Die Hive-Tabelle „{0}“ konnte nicht erstellt werden. Stellen Sie für einen HDInsight-Cluster sicher, dass der dem Cluster zugeordnete Azure-Speicherkontoname „{1}“ lautet.|
+|Die Hive-Tabelle „{table_name}“ konnte nicht erstellt werden. Stellen Sie für einen HDInsight-Cluster sicher, dass der dem Cluster zugeordnete Azure-Speicherkontoname mit dem identisch ist, der über den Modulparameter übergeben wird.|
+|Die Hive-Tabelle „{table_name}“ konnte nicht erstellt werden. Stellen Sie für einen HDInsight-Cluster sicher, dass der dem Cluster zugeordnete Azure-Speicherkontoname „{cluster_name}“ lautet.|
 
 
 ## <a name="error-0102"></a>Fehler 0102  
@@ -1317,6 +1318,19 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Es wurde der nicht unterstützte Parametertyp „{0}“ angegeben.|  
 
 
+## <a name="error-0107"></a>Fehler 0107  
+ Wird ausgelöst, wenn eine Moduldefinitionsdatei einen nicht unterstützten Ausgabetyp definiert.  
+  
+ Dieser Fehler in Azure Machine Learning tritt auf, wenn der Typ eines Ausgangsports in einer XML-Definition eines benutzerdefinierten Moduls nicht mit einem unterstützten Typ übereinstimmt.  
+  
+**Lösung:** Stellen Sie sicher, dass die Typeigenschaft eines Ausgabeelements in der XML-Definitionsdatei des benutzerdefinierten Moduls ein unterstützter Typ ist.  
+  
+|Ausnahmemeldungen|  
+|------------------------|  
+|Nicht unterstützter Ausgabetyp.|  
+|Es wurde ein nicht unterstützter Ausgabetyp „{output_type}“ angegeben.|  
+
+
 ## <a name="error-0125"></a>Fehler 0125  
  Wird ausgelöst, wenn das Schema für mehrere Datasets nicht übereinstimmt.  
 
@@ -1342,7 +1356,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Die Bildpixelgröße überschreitet den zulässigen Grenzwert.|
-|Die Bildpixelgröße in der Datei „{0}“ überschreitet den zulässigen Grenzwert: {1}.|
+|Die Bildpixelgröße in der Datei „{file_path}“ überschreitet den zulässigen Grenzwert: {size_limit}.|
 
 
 ## <a name="error-0128"></a>Fehler 0128  
@@ -1353,7 +1367,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |Ausnahmemeldungen|
 |------------------------|
 |Die Anzahl der bedingten Wahrscheinlichkeiten für kategorische Spalten überschreitet den Grenzwert.|
-|Die Anzahl der bedingten Wahrscheinlichkeiten für kategorische Spalten überschreitet den Grenzwert. Die Spalten „{0}“ und „{1}“ sind das problembehaftete Paar.|
+|Die Anzahl der bedingten Wahrscheinlichkeiten für kategorische Spalten überschreitet den Grenzwert. Die Spalten „{column_name_or_index_1}“ und „{column_name_or_index_2}“ sind das problembehaftete Paar.|
 
 
 ## <a name="error-0129"></a>Fehler 0129  
@@ -1424,7 +1438,7 @@ Lösung:
 |Ausnahmemeldungen|
 |------------------------|
 |Die Anzahl der ausgewählten numerischen Spalten und eindeutigen Werte in den kategorischen und Zeichenfolgenspalten ist zu klein.|
-|Die Gesamtzahl der ausgewählten numerischen Spalten und eindeutigen Werte in den kategorischen und Zeichenfolgenspalten (aktuell {0}) muss mindestens {1} sein.|
+|Die Gesamtzahl der ausgewählten numerischen Spalten und eindeutigen Werte in den kategorischen und Zeichenfolgenspalten (aktuell {actual_num}) muss mindestens {lower_boundary} sein.|
 
 
 ## <a name="error-0154"></a>Fehler 0154  
@@ -1473,6 +1487,6 @@ Um weitere Hilfe zu erhalten, wird empfohlen, die ausführliche Meldung, die dem
 |Ausnahmemeldungen|
 |------------------------|
 |Bibliotheksausnahme.|
-|Bibliotheksausnahme: {0}.|
-|Ausnahme für unbekannte Bibliothek: {0}. {1}.|
+|Bibliotheksausnahme: {exception}.|
+|Ausnahme für unbekannte Bibliothek: {exception}. {customer_support_guidance}.|
 

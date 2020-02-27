@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.date: 12/23/2019
-ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552269"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471022"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters
 
@@ -33,7 +33,7 @@ Mithilfe der Skriptaktion in diesem Artikel werden die Bibliotheken zur Verfügu
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**Anforderungen**
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 * Die Skripts müssen sowohl auf die **Hauptknoten** als auch die **Workerknoten** angewendet werden.
 
@@ -50,7 +50,7 @@ Mithilfe der Skriptaktion in diesem Artikel werden die Bibliotheken zur Verfügu
 
 ## <a name="create-a-cluster-using-the-script"></a>Erstellen eines Clusters mithilfe des Skripts
 
-1. Beginnen Sie die Bereitstellung eines Clusters anhand der Schritte in [Bereitstellen von HDInsight-Clustern unter Linux](hdinsight-hadoop-provision-linux-clusters.md), schließen Sie sie jedoch nicht ab. Sie können auch Azure PowerShell oder das HDInsight .NET SDK zum Erstellen eines Clusters mit diesem Skript verwenden. Weitere Informationen zur Verwendung dieser Methoden finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md). Für das Azure-Portal müssen Sie die Option **Zur klassischen Benutzeroberfläche für die Erstellung wechseln** und dann **Benutzerdefiniert (Größe, Einstellungen, Apps)** auswählen.
+1. Beginnen Sie die Bereitstellung eines Clusters anhand der Schritte in [Bereitstellen von HDInsight-Clustern unter Linux](hdinsight-hadoop-provision-linux-clusters.md), schließen Sie sie jedoch nicht ab. Sie können auch Azure PowerShell oder das HDInsight .NET SDK zum Erstellen eines Clusters mit diesem Skript verwenden. Weitere Informationen zur Verwendung dieser Methoden finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md). Wählen Sie für das Azure-Portal auf der Registerkarte **Konfiguration + Preise** die Option **+ Skriptaktion hinzufügen** aus.
 
 1. Wenn sich für **Storage** das Speicherkonto, das die Bibliothek der JAR-Dateien enthält, von dem für den Cluster verwendeten Konto unterscheidet, füllen Sie **Zusätzliche Speicherkonten** aus.
 
@@ -63,6 +63,9 @@ Mithilfe der Skriptaktion in diesem Artikel werden die Bibliotheken zur Verfügu
     |Bash-Skript-URI|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Knotentyp(en)|Hauptknoten, Workerknoten|
     |Parameter|Geben Sie die WASB-Adresse des Containers und Speicherkontos an, das die JAR-Dateien enthält. Beispiel: `wasbs://libs@mystorage.blob.core.windows.net/`.|
+
+    > [!NOTE]
+    > Verwenden Sie für Apache Spark 2.1 den folgenden Bash-Skript-URI: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
 1. Setzen Sie die Bereitstellung des Clusters entsprechend der Beschreibung unter [Bereitstellen von HDInsight-Clustern unter Linux](hdinsight-hadoop-provision-linux-clusters.md) fort.
 

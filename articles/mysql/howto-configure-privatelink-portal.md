@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: fa8bc56376704b96f5ddee09db7b09e28f10a936
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 6ad8726e61f4f8e79cfa9c437b3f0ea876b55e27
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281239"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425475"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-portal"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL (Vorschauversion) über das Portal
 
@@ -212,35 +212,36 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     Non-authoritative answer:
     Name:    myServer.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Testen Sie die Verbindung über den privaten Link für den MySQL-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
-4. In **New connection**, enter or select this information:
+4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Setting | Value |
+    | Einstellung | value |
     | ------- | ----- |
-    | Server type| Select **MySQL**.|
-    | Server name| Select *myServer.privatelink.mysql.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the MySQL server creation. |
-    |Password |Enter a password provided during the MySQL server creation. |
-    |SSL|Select **Required**.|
+    | Servertyp| Wählen Sie **MySQL** aus.|
+    | Servername| Wählen Sie *myServer.privatelink.mysql.database.azure.com* aus. |
+    | Benutzername | Geben Sie einen Benutzernamen als username@servername ein, der während der Erstellung des MySQL-Servers angegeben wurde. |
+    |Kennwort |Geben Sie ein während der Erstellung des MySQL-Servers angegebenes Kennwort ein. |
+    |SSL|Wählen Sie **Erforderlich** aus.|
     ||
 
-5. Select Connect.
+5. Wählen Sie „Verbinden“ aus.
 
-6. Browse databases from left menu.
+6. Durchsuchen Sie Datenbanken im linken Menü.
 
-7. (Optionally) Create or query information from the MySQL server.
+7. (Optional) Erstellen Sie Informationen, oder fragen Sie sie vom MySQL-Server ab.
 
-8. Close the remote desktop connection to myVm.
+8. Schließen Sie die Remotedesktopverbindung mit myVm.
 
-## Clean up resources
-When you're done using the private endpoint, MySQL server, and the VM, delete the resource group and all of the resources it contains:
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem MySQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen:
 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results.
-2. Select **Delete resource group**.
-3. Enter myResourceGroup for **TYPE THE RESOURCE GROUP NAME** and select **Delete**.
+1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
-## Next steps
+## <a name="next-steps"></a>Nächste Schritte
 
-In this how-to, you created a VM on a virtual network, an Azure Database for MySQL, and a private endpoint for private access. You connected to one VM from the internet and securely communicated to the MySQL server using Private Link. To learn more about private endpoints, see [What is Azure private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+In dieser Anleitung haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, eine Azure Database for MySQL und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem MySQL-Server kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).

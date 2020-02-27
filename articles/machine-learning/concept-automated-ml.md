@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191205"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526126"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -211,22 +211,71 @@ Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglic
 
 Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Python-Modell zu erstellen und in das ONNX-Format zu konvertieren. Die ONNX-Runtime unterstützt C#, sodass Sie das erstellte Modell automatisch in Ihren C#-Apps verwenden können, ohne dass Sie es neu codieren oder die Netzwerklatenzen in Kauf nehmen müssen, die REST-Endpunkte mit sich bringen. Testen Sie ein Beispiel für diese Vorgehensweise [in diesem Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
 
-## <a name="automated-ml-across-microsoft"></a>Automatisiertes ML bei Microsoft
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatisiertes maschinelles Lernen in Azure Machine Learning
 
-Automatisiertes ML ist auch in anderen Lösungen von Microsoft verfügbar:
+Azure Machine Learning bietet zwei Möglichkeiten für die Arbeit mit automatisiertem maschinellen Lernen
 
-|Integrationen|BESCHREIBUNG|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatische Modellauswahl und Training in .NET-Apps mithilfe von Visual Studio und Visual Studio Code mit Machine Learning mit Automatisierung per ML.NET.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Sie können Ihre automatisierten ML-Trainingsaufträge in Spark in HDInsight-Clustern parallel horizontal hochskalieren.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Sie können Machine Learning-Modelle direkt in Power BI aufrufen.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Erstellen Sie neue Modelle für das maschinelle Lernen über Ihre Daten in Big Data-Clustern von SQL Server 2019.|
+* Für Kunden mit Codierungserfahrung, [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
+
+* Für Kunden mit begrenzten oder keinen Codierungserfahrungen, Azure Machine Learning Studio unter [https://ml.azure.com](https://ml.azure.com/)  
+
+Im Folgenden werden die allgemeinen automatisierten Funktionen für maschinelles Lernen zusammengefasst, die in der jeweiligen Option unterstützt werden.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Einstellungen für das Experiment 
+
+Mit den folgenden Einstellungen können Sie Ihr Experiment für automatisiertes maschinelles Lernen konfigurieren. 
+
+| | Python SDK| Studio
+----|:----:|:----:
+Aufteilen der Daten in Trainings-/Validierungssätze| ✓|✓
+Unterstützt Aufgaben für maschinelles Lernen: Klassifizierung, Regression und Vorhersage| ✓| ✓
+Optimiert auf Grundlage der primären Metrik| ✓| ✓
+Unterstützt AML-Compute als Computeziel | ✓|✓
+Konfigurieren des Vorhersagehorizonts, der Zielverzögerungen und des rollierenden Fensters|✓|✓
+Festlegen der Beendigungskriterien |✓|✓ 
+Festlegen gleichzeitiger Iterationen| ✓|✓
+Löschen von Spalten (drop_columns)| ✓|✓
+Blockieren von Algorithmen|✓|✓
+Kreuzvalidierung im Vergleich |✓|✓
+Unterstützt das Training für Azure Databricks-Cluster| ✓|
+Anzeigen der Namen der technischen Features|✓|
+Featurezusammenfassung| ✓|
+Feiertagsfeaturearisierung|✓|
+Ausführlichkeitsgrad für Protokolldateien| ✓|
+
+### <a name="model-settings"></a>Modelleinstellungen
+
+Diese Einstellungen können auf das beste Modell als Ergebnis Ihres Experiments für das automatisierte maschinelle Lernen angewendet werden.
+
+||Python SDK|Studio
+----|:----:|:----:
+Beste Modellregistrierung| ✓|✓
+Beste Modellimplementierung| ✓| ✓
+Beste Modellerklärung| ✓|✓
+Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen| ✓|✓
+Anzeigen des besten Modells auf der Basis von nicht primärer Metrik|✓|Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells|✓|
+Testen des Modells | ✓| |
+
+### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
+
+Mit diesen Einstellungen können Sie Ihre Experimentausführungen und die Ausführungen der ihnen untergeordneten Elemente überprüfen und steuern. 
+
+||Python SDK| Studio
+----|:----:|:----:
+Ausführen der Zusammenfassungstabelle| ✓|✓
+Abbrechen der Ausführung| ✓|✓
+Abbrechen der Ausführung des untergeordneten Elements| ✓| ✓
+Abrufen von Schutzmaßnahmen| ✓|✓
+Anhalten der Ausführung| ✓| 
+Fortsetzen der Ausführung| ✓| 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erstellt werden, und sehen Sie sich Beispiele dazu an:
 
-+ [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
++ [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
   + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-create-portal-experiments.md).
@@ -235,3 +284,5 @@ Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erst
 + Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).
 
 + Testen Sie [Jupyter Notebook-Beispiele für automatisiertes maschinelles Lernen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* Automatisiertes ML ist auch in anderen Lösungen von Microsoft verfügbar: [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) und [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

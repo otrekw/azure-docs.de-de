@@ -1,22 +1,14 @@
 ---
 title: 'Bewährte Methoden: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 2fd85e43fb2aa53299b4e37eca5163b7da8fc6ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/15/2020
+ms.openlocfilehash: fb935aeed7b492a3a0c213d6d7166bd5d80144c1
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843802"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370098"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -31,8 +23,6 @@ Ganz allgemein sollten die Seiten mit häufig gestellten Fragen eigenständig be
 ### <a name="configuring-multi-turn"></a>Konfigurieren von mehreren Durchläufen
 
 [Erstellen Sie Ihre Wissensdatenbank](../how-to/multiturn-conversation.md#create-a-multi-turn-conversation-from-a-documents-structure) mit aktivierter Mehrfachdurchlauf-Extrahierung. Wenn Ihre Wissensdatenbank eine Fragenhierarchie unterstützt bzw. unterstützen sollte, kann diese Hierarchie aus dem Dokument extrahiert oder nach der Extraktion des Dokuments erstellt werden.
-
-<!--is this a global setting that can only be configured at kb creation time? -->
 
 ## <a name="creating-good-questions-and-answers"></a>Formulieren guter Fragen und Antworten
 
@@ -104,7 +94,7 @@ Nutzen Sie unbedingt auch die von QnA Maker unterstützten Rangfolgefeatures. Da
 
 ### <a name="choosing-a-threshold"></a>Auswählen eines Schwellenwerts
 
-Die standardmäßige [Zuverlässigkeitsbewertung](confidence-score.md), die als Schwellenwert verwendet wird, ist 50. Sie können den [Schwellenwert aber für Ihre Wissensdatenbank gemäß Ihren Bedürfnissen ändern](confidence-score.md#set-threshold). Da jede Wissensdatenbank anders ist, sollten Sie den Schwellenwert testen und einen Wert auswählen, der für Ihre Wissensdatenbank am besten geeignet ist.
+Die standardmäßige [Zuverlässigkeitsbewertung](confidence-score.md), die als Schwellenwert verwendet wird, ist 0. Sie können den [Schwellenwert aber für Ihre Wissensdatenbank gemäß Ihren Bedürfnissen ändern](confidence-score.md#set-threshold). Da jede Wissensdatenbank anders ist, sollten Sie den Schwellenwert testen und einen Wert auswählen, der für Ihre Wissensdatenbank am besten geeignet ist.
 
 ### <a name="choosing-ranker-type"></a>Auswählen des Typs der Rangfolgefunktion
 Standardmäßig durchsucht QnA Maker Fragen und Antworten. Wenn Sie nur Fragen durchsuchen möchten, um eine Antwort zu generieren, verwenden Sie `RankerType=QuestionOnly` im POST-Text der GenerateAnswer-Anforderung.

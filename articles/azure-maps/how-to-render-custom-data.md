@@ -1,20 +1,20 @@
 ---
 title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Daten mithilfe des statischen Bilddiensts von Microsoft Azure Maps auf einer Rasterkarte rendern.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 78068a8deda68434daaeb18cc994099d74d9ccdf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766036"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209952"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um Ortsmarken mit Bezeichnungen und eine
 
 1. Erstellen Sie eine Sammlung, in der die Anforderungen gespeichert werden. Klicken Sie in der Postman-App auf **New** (Neu). Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus. Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). 
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus, und wählen Sie anschließend **Save** (Speichern) aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) für die Ortsmarken ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung als Speicherort für die Anforderung aus. Wählen Sie anschließend **Speichern** aus.
     
     ![Erstellen einer Anforderung in Postman](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Sie können den Pfad und die Standortinformationen einer Ortsmarke auch mithilfe
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Um den Wert von „udId“ abzurufen, öffnen Sie in der Postman-App eine neue Registerkarte, wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode „GET“ aus, und führen Sie eine GET-Anforderung für den Status-URI aus. Wenn der Datenupload erfolgreich ausgeführt wurde, wird im Antworttext ein Wert für „udId“ ausgegeben. Kopieren Sie den Wert für „udId“.
+6. Zum Abrufen des Werts für „udId“ öffnen Sie eine neue Registerkarte in der Postman-App. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-GET-Methode aus. Senden Sie eine GET-Anforderung an den Status-URI. Wenn der Datenupload erfolgreich ausgeführt wurde, erhalten Sie im Antworttext einen Wert für „udId“. Kopieren Sie den Wert für „udId“.
 
    ```JSON
    {

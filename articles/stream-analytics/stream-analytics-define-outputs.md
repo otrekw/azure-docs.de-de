@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/18/2010
-ms.openlocfilehash: 9fae39f8c03206a7a63338890101b820a585595b
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: cfd4c113391f2ead238f5288c255b599e91b7e3a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190618"
+ms.locfileid: "77201457"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -107,7 +107,7 @@ Der Dienst [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) 
 
 Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu konfigurieren.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Event Hub weiterzuleiten. |
 | Event Hub-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Sie haben bei der Erstellung eines neuen Event Hubs auch einen Event Hub-Namespace erstellt. |
@@ -180,7 +180,7 @@ Datetime | String | String |  Datetime | String
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Tabellenspeicher weiterzuleiten. |
 | Speicherkonto |Der Name des Speicherkontos, an das Sie die Ausgabe senden. |
@@ -194,9 +194,11 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 
 [Service Bus-Warteschlangen](../service-bus-messaging/service-bus-queues-topics-subscriptions.md) bieten eine FIFO-Nachrichtenzustellung (First In, First Out) an einen Consumer oder an mehrere konkurrierende Consumer. In der Regel werden Nachrichten von den Empfängern in der zeitlichen Reihenfolge empfangen und verarbeitet, in der sie zur Warteschlange hinzugefügt wurden. Jede Nachricht wird von nur einem Nachrichtenconsumer empfangen und verarbeitet.
 
+Auf [Kompatibilitätsebene 1.2](stream-analytics-compatibility-level.md) verwendet Azure Stream Analytics das Nachrichtenprotokoll [Advanced Message Queueing Protocol (AMQP)](../service-bus-messaging/service-bus-amqp-overview.md), um in Service Bus-Warteschlangen und -Themen zu schreiben. AMQP gibt Ihnen die Möglichkeit, plattformübergreifende Hybridanwendungen mit einem offenen Standard zu erstellen.
+
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Warteschlangenausgabe.
 
-| Eigenschaftenname | BESCHREIBUNG |
+| Eigenschaftenname | Beschreibung |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Service Bus-Warteschlange weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. |

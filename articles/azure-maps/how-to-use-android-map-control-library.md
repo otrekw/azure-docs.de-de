@@ -1,20 +1,20 @@
 ---
 title: Erste Schritte mit dem Android-Kartensteuerelement | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Android SDK erste Schritte mit dem Android-Kartensteuerelement ausführen.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 57ad9992bec3f070366134d8dfbcdafa8f2e16d4
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911401"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209850"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -26,7 +26,7 @@ Das Android SDK in Azure Maps ist eine Vektorenzuordnungsbibliothek für Android
 
 Zunächst müssen Sie im S1-Tarif [ein Azure Maps-Konto erstellen](quick-demo-map-app.md#create-an-account-with-azure-maps) und für das Konto den [Primärschlüssel abrufen](quick-demo-map-app.md#get-the-primary-key-for-your-account), damit Sie die in diesem Artikel beschriebenen Schritte ausführen können.
 
-Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
+Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 ### <a name="download-android-studio"></a>Herunterladen von Android Studio
 
@@ -84,7 +84,7 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
         ```
     
     4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie dann auf **Projekt mit Gradle-Dateien synchronisieren**.
-3. Fügen Sie der Hauptaktivität ein Kartenfragment hinzu (res \> layout \> activity\_main.xml):
+3. Fügen Sie der Hauptaktivität ein Kartenfragment hinzu (res \> Layout \> activity\_main.xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -103,7 +103,7 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
     </FrameLayout>
     ```
 
-4. In der Datei **MainActivity.java** müssen Sie Folgendes ausführen:
+4. In der Datei **MainActivity.java** müssen folgende Schritte ausgeführt werden:
     
     * Hinzufügen von Importen für das Azure Maps SDK
     * Festlegen Ihrer Azure Maps-Authentifizierungsinformationen
@@ -111,7 +111,7 @@ Als nächstes müssen Sie zur Erstellung Ihrer Anwendung das Android SDK für Az
 
     Indem Sie die Authentifizierungsinformationen für die `AzureMaps`-Klasse global mit der Methode `setSubscriptionKey` oder `setAadProperties` festlegen, wird es möglich, dass Sie nicht in jeder Ansicht Ihre Authentifizierungsinformationen hinzufügen müssen. 
 
-    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android, die direkt aus der enthaltenen Activity aufgerufen werden müssen. Damit Ihre App ordnungsgemäß funktioniert, rufen Sie die Lebenszyklusmethoden des Kartensteuerelements auf. Sie müssen die folgenden Lebenszyklusmethoden in der Aktivität, die das Kartensteuerelement enthält, überschreiben und die entsprechende Kartensteuerelementmethode aufrufen. 
+    Das Kartensteuerelement enthält eigene Lebenszyklusmethoden zur Verwaltung des OpenGL-Lebenszyklus von Android. Diese Lebenszyklusmethoden müssen direkt über die enthaltende Aktivität aufgerufen werden. Damit in Ihrer App die Lebenszyklusmethoden des Kartensteuerelements ordnungsgemäß aufgerufen werden, müssen in der Aktivität, die das Kartensteuerelement enthält, die folgenden Lebenszyklusmethoden überschrieben werden. Außerdem müssen Sie die entsprechende Kartensteuerelementmethode aufrufen. 
 
     * onCreate(Bundle) 
     * onStart() 

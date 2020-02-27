@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905729"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366222"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -40,11 +40,12 @@ Erfahren Sie, wie Sie [Ihre erste Pipeline erstellen](how-to-create-your-first-p
 
 Die Azure-Cloud bietet mehrere andere Pipelines, die jeweils einem anderen Zweck dienen. Die folgende Tabelle listet die verschiedenen Pipelines und ihren Verwendungszweck auf:
 
-| Pipeline | Funktionsbeschreibung | Kanonische Pipe |
-| ---- | ---- | ---- |
-| Azure Machine Learning-Pipelines | Definiert wiederverwendbare Machine Learning-Workflows, die als Vorlage für Ihre Machine Learning-Szenarien verwendet werden können. | Daten -> Modell |
-| [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Gruppieren Datenverschiebungs-, Transformations- und Steuerungsaktivitäten, die für das Ausführen einer Aufgabe erforderlich sind.  | Daten -> Daten |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Continuous Integration und Delivery Ihrer Anwendung auf jeder Plattform und in jeder Cloud  | Code -> App/Dienst |
+| Szenario | Primäre Persona | Angebot von Azure | OSS-Angebot | Kanonische Pipe | Stärken | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| Modellorchestrierung (maschinelles Lernen) | Data Scientist | Azure Machine Learning-Pipelines | Kubeflow-Pipelines | Daten -> Modell | Verteilung, Caching, Code-First, Wiederverwendung | 
+| Datenorchestrierung (Datenvorbereitung) | Datentechniker | [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache Airflow | Daten -> Daten | Stark typisierte Verschiebung Datenorientierte Aktivitäten |
+| Code- und App-Orchestrierung (CI/CD) | App-Entwickler/Vorgänge | [Azure DevOps Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Modell -> App/Dienst | Offenste und flexibelste Aktivitätsunterstützung, Genehmigungswarteschlangen, Phasen mit Beschränkung | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Wozu sind Azure ML-Pipelines imstande?
 
@@ -52,7 +53,7 @@ Eine Azure Machine Learning-Pipeline ist ein unabhängig ausführbarer Workflow 
 
 + Datenvorbereitung einschließlich Import, Validierung und Bereinigung, Verfremdung und Transformation, Normalisierung und Staging
 + Trainingskonfiguration einschließlich Parametrisierungsargumenten, Dateipfaden und Protokollierungs-/Berichtskonfigurationen
-+ Effizientes und wiederholtes Trainieren und Validieren von Daten, einschließlich der Angabe spezifischer Datenteilmengen, verschiedener Hardware-Computeressourcen, verteilter Verarbeitung und Fortschrittsüberwachung
++ Effizienz und Wiederholung bei Training und Überprüfung. Effizienz ergibt sich möglicherweise durch die Angabe von bestimmten Datenteilmengen, verschiedenen Hardware-Computeressourcen sowie durch verteilte Verarbeitung und Fortschrittsüberwachung
 + Bereitstellung, einschließlich Versionierung, Skalierung, Bereitstellung und Zugriffssteuerung 
 
 Durch unabhängige Schritte können mehrere Datenanalysten gleichzeitig an derselben Pipeline arbeiten, ohne die Computeressourcen zu überlasten. Außerdem ist es bei einzelnen Schritten einfacher, für jeden Schritt verschiedene Computetypen/-größen zu verwenden.
@@ -69,7 +70,7 @@ Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mi
 
 Eine Azure ML-Pipeline führt einen vollständigen logischen Workflow mit einer geordneten Abfolge von Schritten aus. Jeder Schritt stellt eine diskrete Verarbeitungsaktion dar. Pipelines werden im Kontext eines Azure Machine Learning-[Experiments](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) ausgeführt.
 
-In den sehr frühen Phasen eines ML-Projekts ist nichts dagegen einzuwenden, dass ein einzelnes Jupyter-Notebook oder Python-Skript sämtliche Aufgaben der Azure-Arbeitsbereichs- und -Ressourcenkonfiguration durchführt und für Datenvorbereitung, Laufzeitkonfiguration, Training und Überprüfung zuständig ist. Aber genau wie Funktionen und Klassen schnell den Vorzug vor einem einzelnen, gebieterischen Codeblock erhalten, werden ML-Workflows schnell zur bevorzugten Option im Vergleich mit einem monolithischen Notebook oder Skript. 
+In den frühen Phasen eines ML-Projekts ist nichts dagegen einzuwenden, dass ein einzelnes Jupyter Notebook oder Python-Skript sämtliche Aufgaben der Azure-Arbeitsbereichs- und -Ressourcenkonfiguration durchführt und für Datenvorbereitung, Laufzeitkonfiguration, Training und Überprüfung zuständig ist. Aber genau wie Funktionen und Klassen schnell den Vorzug vor einem einzelnen, gebieterischen Codeblock erhalten, werden ML-Workflows schnell zur bevorzugten Option im Vergleich mit einem monolithischen Notebook oder Skript. 
 
 Durch Modularisierung von ML-Aufgaben unterstützen Pipelines den Imperativ der Informatik, dass eine Komponente „(nur) eine Sache gut machen“ sollte. Modularität ist eindeutig kritisch für den Erfolg eines Projekts, wenn die Programmierung in Teams erfolgt, aber selbst bei der Arbeit ohne Mitstreiter umfassen auch kleine ML-Projekte verschiedene Aufgaben, von denen jede einen erheblichen Grad an Komplexität aufweist. Zu den Aufgaben gehören: Workspacekonfiguration und Datenzugriff, Datenvorbereitung, Modelldefinition und -konfiguration und Bereitstellung. Während die Ausgaben einer oder mehrerer Aufgaben jeweils die Eingaben weiterer Aufgaben bilden, stellen die Implementierungsdetails jeder einzelnen Aufgabe für die nächste bestenfalls eine irrelevante Ablenkung dar. Im schlimmsten Fall kann der Berechnungszustand einer Aufgabe einen Fehler in einer anderen verursachen. 
 
@@ -195,7 +196,7 @@ Bis zu dem Punkt, dass ein Projekt groß wird oder sich der Bereitstellung nähe
 
 Die wichtigsten Argumente für das Verwenden von Pipelines für Ihre Workflows mit maschinellem Lernen sind die folgenden:
 
-|Vorteil|Beschreibung|
+|Vorteil|BESCHREIBUNG|
 |:-------:|-----------|
 |**Unbeaufsichtigte&nbsp;Ausführung**|Planen Sie Schritte, die zuverlässig und unbeaufsichtigt parallel oder nacheinander ausgeführt werden können. Die Datenvorbereitung und -modellierung kann Tage oder Wochen in Anspruch nehmen, und mit Pipelines können Sie sich auf andere Aufgaben konzentrieren, während der Prozess ausgeführt wird. |
 |**Heterogenes Compute**|Verwenden Sie mehrere Pipelines, die zuverlässig über heterogene und skalierbare Computeressourcen und Speicherorte koordiniert werden. Um die verfügbaren Computeoptionen effizient zu nutzen, können einzelne Pipelineschritte auf verschiedenen Computezielen ausgeführt werden, z. B. HDInsight, Data Science-VMs mit GPU und Databricks.|

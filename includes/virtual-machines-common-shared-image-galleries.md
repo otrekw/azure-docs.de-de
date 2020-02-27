@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a028a0b5d79b2c79f1da336f033d3e8cac21a2e2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021142"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474159"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -31,7 +31,7 @@ Wenn Sie eine große Anzahl verwalteter Images haben, die Sie verwalten müssen 
 
 Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
 
-| Resource | Beschreibung|
+| Resource | BESCHREIBUNG|
 |----------|------------|
 | **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus [generalisierten](#generalized-and-specialized-images) virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
 | **Momentaufnahme** | Eine Kopie einer VHD, die zum Erstellen einer **Imageversion** verwendet werden kann. Momentaufnahmen können von einem [spezialisierten](#generalized-and-specialized-images) virtuellen Computer (einem virtuellen Computer, der nicht generalisiert wurde) erstellt und dann allein oder mit Momentaufnahmen von Datenträgern verwendet werden, um eine spezialisierte Imageversion zu erstellen.
@@ -159,7 +159,7 @@ Images können auch, maßstäblich, freigegeben werden, sogar über eine mehrins
 
 ## <a name="billing"></a>Abrechnung
 Für die Verwendung des Katalogs mit geteilten Images fällt keine zusätzliche Gebühren an. Für folgende Ressourcen werden Gebühren berechnet:
-- Speicherkosten für die Speicherung der Versionen freigegebener Images. Die Kosten hängen von der Anzahl der Replikate der Imageversion sowie von der Anzahl der Regionen ab, in denen die Version repliziert wird. Wenn Sie z. B. 2 Images haben und beide in 3 Regionen repliziert werden, dann werden Ihnen 6 verwaltete Datenträger anhand von deren Größen berechnet. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise ](https://azure.microsoft.com/pricing/details/managed-disks/).
+- Speicherkosten für die Speicherung der Versionen freigegebener Images. Die Kosten hängen von der Anzahl der Replikate der Imageversion sowie von der Anzahl der Regionen ab, in denen die Version repliziert wird. Wenn Sie z. B. 2 Images haben und beide in 3 Regionen repliziert werden, dann werden Ihnen 6 verwaltete Datenträger auf der Grundlage ihrer Größe berechnet. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise ](https://azure.microsoft.com/pricing/details/managed-disks/).
 - Ausgehender Netzwerkdatenverkehr wird für die Replikation der ersten Imageversion aus der Quellregion in die replizierten Regionen berechnet. Weitere Replikate werden in der Region verarbeitet, sodass keine zusätzlichen Gebühren anfallen. 
 
 ## <a name="updating-resources"></a>Aktualisieren von Ressourcen
@@ -172,7 +172,7 @@ Katalog mit geteilten Images:
 Imagedefinition:
 - Empfohlene vCPUs
 - Empfohlener Arbeitsspeicher
-- Beschreibung
+- BESCHREIBUNG
 - Datum für Ende des Lebenszyklus
 
 Imageversion:

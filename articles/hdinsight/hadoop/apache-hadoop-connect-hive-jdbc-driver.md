@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 02/17/2020
+ms.openlocfilehash: 016107248399e84b7a82a656c9d590c3cbe0cdbe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053811"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466925"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Abfragen von Apache Hive über den JDBC-Treiber in HDInsight
 
@@ -25,7 +25,7 @@ Weitere Informationen zur Hive-JDBC-Schnittstelle finden Sie unter [HiveJDBCInte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* einen HDInsight Hadoop-Cluster. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* einen HDInsight Hadoop-Cluster. Hinweise zum Erstellen finden Sie unter [Erste Schritte mit Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md). Stellen Sie sicher, dass der Dienst HiveServer2 ausgeführt wird.
 * [Java Developer Kit (JDK) Version 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) oder höher.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL ist eine JDBC-Clientanwendung.
 
@@ -37,7 +37,7 @@ JDBC-Verbindungen mit einem HDInsight-Cluster unter Azure werden über Port 443 
 
 Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Beim Herstellen der Verbindung müssen Sie den Administratornamen und das Kennwort für den HDInsight-Cluster verwenden, um sich beim Clustergateway zu authentifizieren. Beim Herstellen der Verbindung in JDBC-Clients wie SQuirreL SQL müssen Sie den Administratornamen und das Kennwort in den Clienteinstellungen eingeben.
 
@@ -71,9 +71,9 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 5. Fügen Sie im Dialogfeld „Add Driver“ die folgenden Informationen hinzu:
 
-    |Eigenschaft | Wert |
+    |Eigenschaft | value |
     |---|---|
-    |NAME|Hive|
+    |Name|Hive|
     |Beispiel-URL|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
     |Zusätzlicher Klassenpfad|Fügen Sie mit der Schaltfläche **Add** alle JAR-Dateien hinzu, die Sie zuvor heruntergeladen haben.|
     |Klassenname|org.apache.hive.jdbc.HiveDriver|
@@ -88,9 +88,9 @@ SQuirreL SQL ist ein JDBC-Client, der für die Remoteausführung von Hive-Abfrag
 
 7. Verwenden Sie für das Dialogfeld **Add Alias** die folgenden Werte:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
-    |NAME|Hive in HDInsight|
+    |Name|Hive in HDInsight|
     |Treiber|Wählen Sie in der Dropdownliste den **Hive**-Treiber aus.|
     |URL|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.|
     |Benutzername|Der Name des Clusteranmeldekontos für den HDInsight-Cluster. Der Standardname lautet **admin**.|
@@ -123,7 +123,7 @@ Ein Beispiel der Verwendung eines Java-Clients zur Hive-Abfrage in HDInsight fin
 
 ### <a name="unexpected-error-occurred-attempting-to-open-an-sql-connection"></a>Unerwarteter Fehler beim Versuch, eine SQL-Verbindung zu öffnen
 
-**Symptome**: Beim Herstellen einer Verbindung mit einem HDInsight-Cluster der Version 3.3 oder höher erhalten Sie möglicherweise die Meldung, dass ein unerwarteter Fehler aufgetreten ist. Die Stapelüberwachung für diesen Fehler beginnt mit folgenden Zeilen:
+**Symptome:** Beim Herstellen einer Verbindung mit einem HDInsight-Cluster der Version 3.3 oder höher erhalten Sie möglicherweise die Meldung, dass ein unerwarteter Fehler aufgetreten ist. Die Stapelüberwachung für diesen Fehler beginnt mit folgenden Zeilen:
 
 ```java
 java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.NoSuchMethodError: org.apache.commons.codec.binary.Base64.<init>(I)V
@@ -131,9 +131,9 @@ at java.util.concurrent.FutureTas...(FutureTask.java:122)
 at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 ```
 
-**Ursache**: Dieser Fehler wird durch eine ältere Version der in SQuirreL enthaltenen commons-codec.jar-Datei verursacht.
+**Ursache:** Dieser Fehler wird durch eine ältere Version der in SQuirreL enthaltenen commons-codec.jar-Datei verursacht.
 
-**Lösung**: Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus:
+**Lösung:** Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus:
 
 1. Beenden Sie SQuirreL, und wechseln Sie zu dem Verzeichnis, in dem SQuirreL in Ihrem System installiert ist, beispielsweise `C:\Program Files\squirrel-sql-4.0.0\lib`. Ersetzen Sie im SquirreL-Verzeichnis, unterhalb des `lib` -Verzeichnisses, die vorhandene commons-codec.jar-Datei durch die Datei, die Sie aus dem HDInsight-Cluster heruntergeladen haben.
 

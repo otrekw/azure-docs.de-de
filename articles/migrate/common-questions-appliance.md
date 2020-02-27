@@ -2,45 +2,50 @@
 title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: de9583b7983dda904e06ea258ecb0d202644586b
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 3bb066b08447a951665e629da5ebcb75714b9f1e
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064698"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425354"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
-In diesem Artikel werden häufig gestellte Fragen zur Azure Migrate-Appliance beantwortet. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum). Wenn Sie weitere Fragen haben, lesen Sie die folgenden Artikel:
+In diesem Artikel werden häufig gestellte Fragen zur Azure Migrate-Appliance beantwortet. Wenn Sie weitere Fragen haben, lesen Sie die folgenden Artikel:
 
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate.
 - [Fragen](common-questions-discovery-assessment.md) zur Ermittlung, Bewertung und Abhängigkeitsvisualisierung.
 - [Fragen](common-questions-server-migration.md) zur Servermigration.
+- Erhalten Sie Antworten auf Fragen im [Azure Migrate-Forum](https://aka.ms/AzureMigrateForum). 
 
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Was ist die Azure Migrate-Appliance?
 
-Die Azure Migrate-Appliance ist eine einfache Appliance, die von Azure Migrate verwendet wird: Serverbewertungstool zum Ermitteln und Bewerten von lokalen Servern, das von Azure Migrate verwendet wird: Servermigrationstool für die Migration ohne Agent für lokale VMware-VMs. 
+Die Azure Migrate-Appliance ist eine einfache Appliance, die von der Azure Migrate-Serverbewertung für folgende Aufgaben verwendet wird, um Server lokal zu ermitteln und zu bewerten. Die Appliance wird auch vom Azure Migrate-Servermigrationstool für die Migration ohne Agent für lokale VMware-VMs verwendet. 
 
-Die Appliance wird lokal als VM oder physischer Computer bereitgestellt. Die Appliance ermittelt lokale Computer und sendet kontinuierlich Computermetadaten und Leistungsdaten an Azure Migrate. Die Applianceermittlung erfolgt ohne Agent. Auf ermittelten Computern wird nichts installiert. [Weitere Informationen](migrate-appliance.md) zur Appliance.
+- Die Appliance wird lokal als VM oder physischer Computer bereitgestellt.
+- Die Appliance ermittelt lokale Computer und sendet kontinuierlich Computermetadaten und Leistungsdaten an Azure Migrate.
+- Die Applianceermittlung erfolgt ohne Agent. Auf ermittelten Computern wird nichts installiert.
+
+[Weitere Informationen](migrate-appliance.md) zur Appliance.
 
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Wie stellt die Appliance eine Verbindung mit Azure her?
 
-Die Verbindung kann über das Internet erfolgen. Sie können auch Azure ExpressRoute mit öffentlichem/Microsoft-Peering verwenden.
+Die Verbindung der Appliance kann über das Internet oder über ExpressRoute mit öffentlichem/Microsoft-Peering erfolgen.
 
 ## <a name="does-appliance-analysis-impact-performance"></a>Wirkt sich die Applianceanalyse auf die Leistung aus?
 
-Die Azure Migrate-Appliance erstellt fortlaufend Profile von lokalen Computern zur Messung von VM-Leistungsdaten. Diese Profilerstellung besitzt fast keine Auswirkungen auf die Leistung der Hyper-V-/ESXi-Hosts oder VMware vCenter Server.
+Die Azure Migrate-Appliance erstellt fortlaufend Profile von lokalen Computern zur Messung von Leistungsdaten. Diese Profilerstellung hat fast keinen Einfluss auf die Leistung der Profilerstellungscomputer.
 
 ### <a name="can-i-harden-the-appliance-vm"></a>Kann ich die Appliance-VM härten?
 
-Wenn Sie die Appliance-VM mithilfe der heruntergeladenen Vorlage erstellen, können Sie der Vorlage zusätzliche Komponenten (z. B. Antivirensoftware) hinzufügen, solange die für die Azure Migrate-Appliance erforderlichen Kommunikations- und Firewallregeln unverändert bleiben.
+Wenn Sie die Appliance-VM mithilfe der heruntergeladenen Vorlage erstellen, können Sie der Vorlage zusätzliche Komponenten (z. B. Antivirensoftware) hinzufügen, solange die für die Azure Migrate-Appliance erforderlichen Kommunikations- und Firewallregeln vorhanden bleiben.
 
 
 ## <a name="what-network-connectivity-is-needed"></a>Welche Netzwerkkonnektivität ist erforderlich?
 
-Lesen Sie Folgendes:
+Überprüfen Sie Informationen zur Netzwerkkonnektivität:
 - VMware-Bewertung mithilfe der Azure Migrate-Appliance: Zugriffsanforderungen für [URL](migrate-appliance.md#url-access) und [Port](migrate-support-matrix-vmware.md#port-access).
 - VMware-Bewertung ohne Agent mithilfe der Azure Migrate-Appliance: Zugriffsanforderungen für [URL](migrate-appliance.md#url-access) und [Port](migrate-support-matrix-vmware-migration.md#agentless-ports).
 - Hyper-V-Bewertung mithilfe der Azure Migrate-Appliance: Zugriffsanforderungen für [URL](migrate-appliance.md#url-access) und [Port](migrate-support-matrix-hyper-v.md#port-access).
@@ -56,7 +61,7 @@ Informieren Sie sich über die erfassten Daten:
 
 ## <a name="how-is-data-stored"></a>Wie werden die Daten gespeichert?
 
-Die von der Azure Migrate-Appliance erfassten Daten werden an dem Azure-Speicherort gespeichert, den Sie beim Erstellen des Migrationsprojekts auswählen. 
+Die von der Azure Migrate-Appliance erfassten Daten werden an dem Azure-Speicherort gespeichert, an dem Sie das Azure Migrate-Projekt erstellt haben. 
 
 - Die Daten werden sicher in einem Microsoft-Abonnement gespeichert und gelöscht, wenn Sie das Azure Migrate-Projekt löschen.
 - Wenn Sie Für die [Visualisierung von Abhängigkeiten](concepts-dependency-visualization.md) verwenden, werden die erfassten Daten in den USA in einem Log Analytics-Arbeitsbereich gespeichert, der im Azure-Abonnement erstellt wurde. Diese Daten werden gelöscht, wenn Sie den Log Analytics-Arbeitsbereich in Ihrem Abonnement löschen.
@@ -84,13 +89,13 @@ Ja, für beides.
 
 Nein. Zwischen einer Appliance und vCenter Server besteht eine 1: 1-Zuordnung. Wenn Sie VMs in mehreren vCenter Server-Instanzen ermitteln möchten, müssen Sie mehrere Appliances bereitstellen.
 
-### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Wie viele VMs oder Server können mit einer Appliance ermittelt werden?
+## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Wie viele VMs oder Server können mit einer Appliance ermittelt werden?
 
-Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 250 Server mit einer einzigen Appliance ermitteln. Wenn Sie mehr Computer in Ihrer lokalen Umgebung haben, informieren Sie sich über die Skalierung der [Hyper-V](scale-hyper-v-assessment.md)-, [VMware](scale-vmware-assessment.md)- und [physischen](scale-physical-assessment.md) Bewertung.
+Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu 250 physische Server mit einer einzigen Appliance ermitteln. Wenn Sie mehr Computer in Ihrer lokalen Umgebung haben, informieren Sie sich über die Skalierung der [Hyper-V](scale-hyper-v-assessment.md)-, [VMware](scale-vmware-assessment.md)- und [physischen](scale-physical-assessment.md) Bewertung.
 
 ## <a name="can-i-delete-an-appliance"></a>Kann ich eine Appliance löschen?
 
-Das Löschen der Appliance aus dem Projekt wird derzeit nicht unterstützt.
+Das Löschen einer Appliance aus dem Projekt wird derzeit nicht unterstützt.
 
 - Die einzige Möglichkeit zum Löschen der Appliance besteht darin, die Ressourcengruppe zu löschen, die das Azure Migrate-Projekt enthält, das mit der Appliance verknüpft ist.
 - Beim Löschen der Ressourcengruppe werden jedoch auch andere registrierte Appliances, der ermittelte Bestand, Bewertungen und alle anderen Azure-Komponenten, die dem Projekt in der Ressourcengruppe zugeordnet sind, gelöscht.
@@ -98,17 +103,17 @@ Das Löschen der Appliance aus dem Projekt wird derzeit nicht unterstützt.
 
 ## <a name="can-i-use-the-appliance-with-a-different-subscriptionproject"></a>Kann ich die Appliance mit einem anderen Abonnement oder Projekt verwenden?
 
-Nach der Verwendung der Appliance zum Initiieren der Ermittlung können Sie sie nicht mit einem anderen Azure-Abonnement oder in einem anderen Azure Migrate-Projekt neu konfigurieren. Es ist auch nicht möglich, virtuelle Computer in einer anderen vCenter Server-Instanz zu ermitteln. Richten Sie für diese Aufgaben eine neue Appliance ein.
+Nach der Verwendung der Appliance zum Initiieren der Ermittlung können Sie sie nicht mit einem anderen Azure-Abonnement neu konfigurieren oder in einem anderen Azure Migrate-Projekt verwenden. Es ist auch nicht möglich, virtuelle Computer in einer anderen vCenter Server-Instanz zu ermitteln. Richten Sie für diese Aufgaben eine neue Appliance ein.
 
 ## <a name="can-i-set-up-the-appliance-on-an-azure-vm"></a>Kann ich die Appliance auf einem virtuellen Azure-Computer einrichten?
-Derzeit nicht unterstützt. 
+Nein. Dies wird derzeit nicht unterstützt. 
 
 ## <a name="can-i-discover-on-an-esxi-host"></a>Kann die Ermittlung auf einem ESXi-Host durchgeführt werden?
-Nein, zum Ermitteln von virtuellen VMware-Computern benötigen Sie eine vCenter Server-Instanz.
+Nein. Zum Ermitteln von virtuellen VMware-Computern benötigen Sie eine vCenter Server-Instanz.
 
 ## <a name="how-do-i-update-the-appliance"></a>Wie aktualisiere ich die Appliance?
 
-Standardmäßig werden die Appliance und die zugehörigen installierten Agents automatisch aktualisiert. Die Appliance prüft alle 24 Stunden, ob Updates verfügbar sind. Wenn beim Updateprozess Fehler auftreten, wird die Aktualisierung wiederholt. Automatische Updates werden nur für die Appliance und die Appliance-Agents durchgeführt. Das Betriebssystem wird nicht aktualisiert. Verwenden Sie Microsoft Updates, um das Betriebssystem auf dem neuesten Stand zu halten.
+Standardmäßig werden die Appliance und die zugehörigen installierten Agents automatisch aktualisiert. Die Appliance prüft alle 24 Stunden, ob Updates verfügbar sind. Wenn beim Aktualisierungsprozess ein Fehler auftritt, wird der Vorgang wiederholt. Automatische Updates werden nur für die Appliance und die Appliance-Agents durchgeführt. Das Betriebssystem wird nicht aktualisiert. Verwenden Sie Microsoft Updates, um das Betriebssystem auf dem neuesten Stand zu halten.
 
 ## <a name="can-i-check-agent-health"></a>Kann ich die Agent-Integrität überprüfen?
 

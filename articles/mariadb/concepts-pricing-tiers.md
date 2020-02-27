@@ -6,24 +6,23 @@ ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 36563e11d7a5fb7cfd5878294c3b83977f6bb619
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 084c1b4163ac7f0f595fadba93a7905ea7f96dd0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772396"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485453"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB – Tarife
 
 Sie können eine Azure Database for MariaDB-Serverinstanz basierend auf drei unterschiedlichen Tarifen erstellen: „Basic“, „Allgemein“ und „Arbeitsspeicheroptimiert“. Die Tarife unterscheiden sich anhand der bereitstellbaren Menge an Rechenleistung in V-Kernen, des Arbeitsspeichers pro V-Kern und der zum Speichern der Daten verwendeten Speichertechnologie. Alle Ressourcen werden auf der MariaDB-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
-|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 5 |Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
+| Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
-| Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
 
 Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunkt.
@@ -31,7 +30,7 @@ Um einen Tarif auszuwählen, verwenden Sie die folgende Tabelle als Ausgangspunk
 | Tarif | Zielworkloads |
 |:-------------|:-----------------|
 | Basic | Workloads mit geringen Anforderungen an Rechen- und E/A-Leistung. Beispiele hierfür sind Server, die für die Entwicklung, für Tests oder für kleine, selten verwendete Anwendungen verwendet werden. |
-| Allgemeiner Zweck | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
+| Universell | Geeignet für die meisten Unternehmensworkloads mit gängigen Compute- und Arbeitsspeicheranforderungen und skalierbarem E/A-Durchsatz. Hierzu zählen beispielsweise zum Hosten von Web- und mobilen Apps verwendete Server und andere Unternehmensanwendungen.|
 | Arbeitsspeicheroptimiert | Geeignet für Hochleistungs-Datenbankworkloads, für die In-Memory-Leistung erforderlich ist, um eine schnellere Transaktionsverarbeitung und höhere Parallelität zu erzielen. Hierzu zählen beispielsweise Server für die Verarbeitung von Echtzeitdaten und leistungsstarke Transaktions- oder Analyse-Apps.|
 
 Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen und den Tarif (mit Ausnahme eines Wechsels zu oder von Basic) innerhalb weniger Sekunden ändern. Außerdem haben Sie die Möglichkeit, die Speichermenge einzeln zu erhöhen und den Aufbewahrungszeitraum für Sicherungen zu erhöhen oder zu verringern, ohne dass bei der Anwendung Ausfallzeiten auftreten. Der Sicherungsspeichertyp kann nach der Servererstellung nicht mehr geändert werden. Weitere Informationen finden Sie im Abschnitt [Skalieren von Ressourcen](#scale-resources).
@@ -44,9 +43,9 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die für Ihren Azure Database for MariaDB-Server zur Verfügung steht. Der Speicher wird für die Datenbankdateien, temporären Dateien, Transaktionsprotokolle und MariaDB-Serverprotokolle verwendet. Außerdem wird durch die Gesamtmenge an bereitgestelltem Speicher die E/A-Kapazität Ihres Servers definiert.
 
-|    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
+|    | **Grundlegend** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
-| Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
+| Speichertyp | Storage Basic | Allgemeiner Speicher | Allgemeiner Speicher |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |

@@ -3,16 +3,16 @@ title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Contai
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6d03716b988b1139e01d41120f48ea9a9bf34be1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759891"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198053"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
-Azure Monitor für Container bietet umfassende Überwachungsfunktionen für die in Azure gehosteten Azure Kubernetes Service- (AKS) und AKS-Engine-Cluster. In diesem Artikel wird beschrieben, wie Sie die Überwachung von Kubernetes-Clustern, die außerhalb von Azure gehostet werden, aktivieren und eine ähnliche Überwachung erreichen können.
+Azure Monitor für Container bietet umfassende Überwachungsfunktionen für Azure Kubernetes Service (AKS) und die [AKS-Engine in Azure](https://github.com/Azure/aks-engine), bei der es sich um einen selbstverwalteten Kubernetes-Cluster handelt, der in Azure gehostet wird. In diesem Artikel wird beschrieben, wie Sie die Überwachung von Kubernetes-Clustern, die außerhalb von Azure gehostet werden, aktivieren und eine ähnliche Überwachung erreichen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -285,8 +285,8 @@ Tritt beim Aktivieren der Überwachung für Ihren Kubernetes-Hybridcluster ein F
 
 * Der angegebene Log Analytics-Arbeitsbereich ist gültig.
 * Der Log Analytics-Arbeitsbereich ist mit der Lösung „Azure Monitor für Container“ konfiguriert. Ist das nicht der Fall, konfigurieren Sie den Arbeitsbereich.
-* Der ReplicaSet-Pod des OMS-Agents wird ausgeführt.
-* Der DaemonSet-Pod des OMS-Agents wird ausgeführt.
+* ReplicaSet-Pods des OMS-Agents werden ausgeführt.
+* DaemonSet-Pods des OMS-Agents werden ausgeführt.
 * Der Integritätsdienst des OMS-Agents wird ausgeführt.
 * Die ID und der Schlüssel des Log Analytics-Arbeitsbereichs, die für den Container-Agent konfiguriert wurden, entsprechen dem Arbeitsbereich, mit dem Insight konfiguriert ist.
 * Überprüfen Sie, ob alle Linux-Workerknoten über die Bezeichnung `kubernetes.io/role=agent` verfügen, um den RS-Pod zu planen. Fügen Sie sie anderenfalls hinzu.

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902439"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198093"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
 
@@ -55,10 +55,13 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass Sie über Folgendes ver
 
 * Kompatible VPN-Hardware für jeden lokalen Standort. Lesen Sie unter [Informationen zu VPN-Geräten und Gateways für virtuelle Netzwerkverbindungen](vpn-gateway-about-vpn-devices.md) nach, ob das Gerät, das Sie verwenden möchten, bekanntermaßen kompatibel ist.
 * Eine externe öffentliche IPv4-Adresse für jedes VPN-Gerät. Die IP-Adresse darf sich nicht hinter einer NAT befinden. Dies ist eine Voraussetzung
-* Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Vergewissern Sie sich, dass Sie zusätzlich zur Resource Manager-Version die Dienstverwaltungsversion installieren. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 * Eine Person, die sich mit der Konfiguration Ihrer VPN-Hardware auskennt. Sie müssen über profunde Kenntnisse der Konfiguration des VPN-Geräts verfügen oder jemanden mit entsprechenden Fachkenntnissen hinzuziehen.
 * Die IP-Adressbereiche, die Sie für Ihr virtuelles Netzwerk verwenden möchten (sofern Sie sie noch nicht erstellt haben).
 * Die IP-Adressbereiche für alle lokalen Netzwerkstandorte, mit denen Sie eine Verbindung herstellen. Sie müssen sicherstellen, dass sich die IP-Adressbereiche der lokalen Netzwerkstandorte nicht überlappen. Andernfalls wird das Hochladen der Konfiguration vom Portal oder der REST-API abgelehnt.<br>Wenn Sie z. B. zwei lokale Netzwerkstandorte haben, die beide den IP-Adressbereich 10.2.3.0/24 enthalten, und ein Paket die Zieladresse 10.2.3.3 aufweist, würde Azure nicht wissen, an welchen Standort Sie das Paket senden möchten, weil sich die Adressbereiche überlappen. Zur Vermeidung von Routingproblemen lässt Azure das Hochladen von Konfigurationsdateien mit überlappenden Bereichen nicht zu.
+
+### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. Erstellen eines Standort-zu-Standort-VPN
 Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit dynamischem Routing. In diesem Fall können Sie direkt mit dem [Exportieren der Konfigurationseinstellungen für das virtuelle Netzwerk](#export)fortfahren. Andernfalls führen Sie die folgenden Schritte aus:
@@ -72,6 +75,19 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
 ## <a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+
+Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
+
+```powershell
+azure config mode asm
+```
+
+Stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+
+```powershell
+Add-AzureAccount
+```
+
 Exportieren Sie Ihre Azure-Netzwerkkonfigurationsdatei, indem Sie den folgenden Befehl ausführen. Sie können den Speicherort der zu exportierenden Datei bei Bedarf ändern.
 
 ```powershell

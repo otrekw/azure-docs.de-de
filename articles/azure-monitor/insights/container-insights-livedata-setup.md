@@ -2,22 +2,23 @@
 title: Einrichten von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Azure Monitor für Container einrichten.
 ms.topic: conceptual
-ms.date: 10/16/2019
-ms.openlocfilehash: cf42eea99e437a76bb437b23f6eaffae1f1f3bc6
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/14/2019
+ms.openlocfilehash: f19071ca642cd229cbd7d49b4eab90c970672eee
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063763"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459921"
 ---
-# <a name="how-to-setup-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
+# <a name="how-to-set-up-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
 Zum Anzeigen von Livedaten (Vorschau) von AKS-Clustern (Azure Kubernetes Service) mit Azure Monitor für Container müssen Sie die Authentifizierung mit Berechtigung für den Zugriff auf Ihre Kubernetes-Daten konfigurieren. Diese Sicherheitskonfiguration ermöglicht den Echtzeitzugriff auf Ihre Daten über die Kubernetes-API direkt im Azure-Portal.
 
-Diese Funktion unterstützt drei verschiedene Methoden, um den Zugriff auf die Protokolle, Ereignisse und Metriken zu steuern:
+Diese Funktion unterstützt die folgenden Methoden, um den Zugriff auf die Protokolle, Ereignisse und Metriken zu steuern:
 
 - AKS ohne aktivierte Kubernetes RBAC-Autorisierung
 - Mit Kubernetes RBAC-Autorisierung aktivierter AKS
+    - Mit Clusterrollenbindung **[clusterMonitoringUser](https://docs.microsoft.com/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0)** konfigurierter AKS
 - Mit auf SAML basiertem SSO in Azure Active Directory (AD) aktivierter AKS
 
 Für diese Anweisungen ist sowohl Administratorzugriff auf den Kubernetes-Cluster als auch Administratorzugriff auf Azure AD (wenn Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert wird) erforderlich.  
@@ -45,11 +46,19 @@ Im Azure-Portal werden Sie aufgefordert, Ihre Anmeldeinformationen für einen Az
 >[!IMPORTANT]
 >Benutzer dieser Funktion müssen für den Cluster über die [Benutzerrolle für Azure Kubernetes Service-Cluster](../../azure/role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role permissions) verfügen, um `kubeconfig` herunterladen und diese Funktion verwenden zu können. Benutzer müssen **nicht** über den Zugriff für Mitwirkende auf den Cluster verfügen, um diese Funktion zu nutzen. 
 
+## <a name="using-clustermonitoringuser-with-rbac-enabled-clusters"></a>Verwenden von „clusterMonitoringUser“ bei RBAC-fähigen Clustern
+
+Um zu vermeiden, dass zusätzliche Konfigurationsänderungen erforderlich sind, damit die Kubernetes-Benutzerrollenbindung **clusterUser** nach [Aktivierung der RBAC](#configure-kubernetes-rbac-authorization)-Autorisierung auf die Funktion für Livedaten (Vorschau) zugreifen kann, hat AKS eine neue Kubernetes-Clusterrollenbindung mit Namen **clusterMonitoringUser** hinzugefügt. Diese Clusterrollenbindung verfügt standardmäßig über alle erforderlichen Berechtigungen für den Zugriff auf die Kubernetes-API und die Endpunkte, um die Funktion für Livedaten (Vorschau) zu nutzen.
+
+Damit die Funktion für Livedaten (Vorschau) mit diesem neuen Benutzer verwendet werden kann, müssen Sie Mitglied der Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) für die AKS-Clusterressource sein. Azure Monitor für Container ist bei Aktivierung standardmäßig für die Authentifizierung mit diesem Benutzer konfiguriert. Ist die Rollenbindung „clusterMonitoringUser“ in einem Cluster nicht vorhanden, wird stattdessen **clusterUser** für die Authentifizierung verwendet.
+
+AKS hat diese neue Rollenbindung im Januar 2020 veröffentlicht, sodass Cluster, die vor Januar 2020 erstellt wurden, nicht darüber verfügen. Wenn Sie einen Cluster haben, der vor Januar 2020 erstellt wurde, kann die neue Rollenbindung **clusterMonitoringUser** einem vorhandenen Cluster hinzugefügt werden, indem Sie einen PUT-Vorgang für den Cluster ausführen oder einen anderen Vorgang, mit dem ein PUT-Vorgang für den Cluster ausgeführt wird, wie z. B. das Aktualisieren der Clusterversion.
+
 ## <a name="kubernetes-cluster-without-rbac-enabled"></a>Kubernetes-Cluster ohne aktiviertes RBAC
 
 Wenn Sie über einen Kubernetes-Cluster verfügen, der nicht mit der Kubernetes RBAC-Autorisierung konfiguriert oder mit einmaligem Anmelden von Azure AD integriert ist, brauchen Sie diese Schritte nicht auszuführen. Der Grund dafür ist, dass Sie in einer Nicht-RBAC-Konfiguration standardmäßig über Administratorberechtigungen verfügen.
 
-## <a name="configure-kubernetes-rbac-authentication"></a>Konfigurieren der Kubernetes RBAC-Authentifizierung
+## <a name="configure-kubernetes-rbac-authorization"></a>Konfigurieren der Kubernetes RBAC-Autorisierung
 
 Wenn Sie die Kubernetes RBAC-Autorisierung aktivieren, werden zwei Benutzer, **clusterUser** und **clusterAdmin**, für den Zugriff auf die Kubernetes-API verwendet. Dies ähnelt dem Ausführen von `az aks get-credentials -n {cluster_name} -g {rg_name}` ohne die Verwaltungsoption. Das bedeutet, dass **clusterUser** Zugriff auf die Endpunkte in der Kubernetes-API erteilt werden muss.
 
@@ -92,7 +101,7 @@ Die folgenden Beispielschritte zeigen, wie Sie über diese yaml-Konfigurationsvo
 >[!NOTE] 
 > Wenn Sie eine frühere Version der Datei `LogReaderRBAC.yaml` auf Ihren Cluster angewendet haben, aktualisieren Sie sie. Dazu kopieren Sie den in Schritt 1 oben gezeigten neuen Code, fügen ihn ein, und führen dann den in Schritt 2 gezeigten Befehl aus, um den Code auf den Cluster anzuwenden.
 
-## <a name="configure-ad-integrated-authentication"></a>Konfigurieren der integrierten AD-Authentifizierung 
+## <a name="configure-ad-integrated-authentication"></a>Konfigurieren der AD-integrierten Authentifizierung 
 
 Ein AKS-Cluster, der zur Verwendung von Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert ist, verwendet die Anmeldeinformationen der Person, die auf diese Funktion zugreift. Bei dieser Konfiguration können Sie sich mit Ihrem Azure AD-Authentifizierungstoken bei einem AKS-Cluster anmelden.
 
@@ -124,7 +133,7 @@ Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes f
 
 ## <a name="grant-permission"></a>Erteilen einer Berechtigung
 
-Jedem Azure AD-Konto muss die Berechtigung für die entsprechenden APIs in Kubernetes erteilt werden, um auf die Funktion für Livedaten (Vorschau) zugreifen zu können. Die entsprechenden Schritte für das Azure Active Directory-Konto ähneln den Schritten, die im Abschnitt [Kubernetes RBAC-Authentifizierung](#configure-kubernetes-rbac-authentication) beschrieben sind. Bevor Sie die YAML-Konfigurationsvorlage auf Ihren Cluster anwenden, ersetzen Sie **clusterUser** unter **ClusterRoleBinding** durch den gewünschten Benutzer. 
+Jedem Azure AD-Konto muss die Berechtigung für die entsprechenden APIs in Kubernetes erteilt werden, um auf die Funktion für Livedaten (Vorschau) zugreifen zu können. Die entsprechenden Schritte für das Azure Active Directory-Konto ähneln den Schritten, die im Abschnitt [Kubernetes RBAC-Authentifizierung](#configure-kubernetes-rbac-authorization) beschrieben sind. Bevor Sie die YAML-Konfigurationsvorlage auf Ihren Cluster anwenden, ersetzen Sie **clusterUser** unter **ClusterRoleBinding** durch den gewünschten Benutzer. 
 
 >[!IMPORTANT]
 >Wenn sich der Benutzer, für den die RBAC-Bindung gewährt wird, im selben Azure AD-Mandanten befindet, weisen Sie Berechtigungen entsprechend „userPrincipalName“ zu. Befindet sich der Benutzer in einem anderen Azure AD-Mandanten, müssen Sie die Eigenschaft „objectId“ abfragen und verwenden.

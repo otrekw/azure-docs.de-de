@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020848"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77465954"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -51,10 +51,13 @@ ms.locfileid: "76020848"
 #### <a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Öffentliche IP-Adressen – dynamisch | 1\.000 für Basic. |Wenden Sie sich an den Support. |
-| Öffentliche IP-Adressen – statisch | 1\.000 für Basic. |Wenden Sie sich an den Support. |
-| Öffentliche IP-Adressen – statisch | 1\.000 für Standard.|Wenden Sie sich an den Support. |
+| Öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
+| Statische öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
+| Öffentliche Standard-IP-Adressen<sup>1</sup> | 10 | Wenden Sie sich an den Support. |
+| Präfixe von öffentlichen IP-Adressen | begrenzt durch die Anzahl der öffentlichen Standard-IPs in einem Abonnement | Wenden Sie sich an den Support. |
 | Präfixlänge für öffentliche IP-Adressen | /28 | Wenden Sie sich an den Support. |
+
+<sup>1</sup>Die Standardgrenzwerte für öffentliche IP-Adressen unterscheiden sich je nach Typ der Angebotskategorie, z. B. kostenlose Testversion, nutzungsbasierte Bezahlung, CSP. Beispielsweise ist der Standardwert für Enterprise Agreement-Abonnements 1000.
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).

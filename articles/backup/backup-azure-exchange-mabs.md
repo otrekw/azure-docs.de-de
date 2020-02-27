@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server mit Azure Backup Server
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dbd37bbb7418560a0426ed47d7869bf9d949d2e2
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173125"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617566"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Sichern eines Exchange-Servers in Azure mit Azure Backup Server
 
@@ -23,8 +23,8 @@ Bevor Sie fortfahren, stellen Sie sicher, dass Azure Backup Server [installiert 
 
 Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchange-Server zu installieren:
 
-1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der MABS-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des MABS-Schutz-Agents](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396).
+1. Stellen Sie sicher, dass die Firewalls richtig konfiguriert sind. Weitere Informationen finden Sie unter [Konfigurieren von Firewallausnahmen für den Agent](h https://docs.microsoft.com/system-center/dpm/configure-firewall-settings-for-dpm?view=sc-dpm-2019).
+2. Installieren Sie den Agent auf dem Exchange-Server, indem Sie in der MABS-Verwaltungskonsole auf **Verwaltung > Agents > Installieren** klicken. Ausführliche Schritte finden Sie unter [Installieren des MABS-Schutz-Agents](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Erstellen einer Schutzgruppe für den Exchange-Server
 
@@ -34,7 +34,7 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
 4. Wählen Sie die Datenbank des Exchange Servers aus, die Sie schützen möchten, und klicken Sie auf **Weiter**.
 
    > [!NOTE]
-   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](https://technet.microsoft.com/library/dn751029.aspx).
+   > Wenn Sie Exchange 2013 schützen, aktivieren Sie die [Exchange 2013-Voraussetzungen](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
    >
    >
 

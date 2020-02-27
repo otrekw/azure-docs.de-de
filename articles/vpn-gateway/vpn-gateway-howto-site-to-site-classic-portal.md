@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863722"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201559"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Erstellen einer Site-to-Site-Verbindung über das Azure-Portal (klassisch)
 
@@ -39,7 +39,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Achten Sie darauf, dass Sie ein kompatibles VPN-Gerät nutzen (und über eine Person verfügen, die es konfigurieren kann). Weitere Informationen zu kompatiblen VPN-Geräten und zur Gerätekonfiguration finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
 * Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen.
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
-* Derzeit muss in PowerShell der gemeinsam verwendete Schlüssel angegeben und die VPN Gateway-Verbindung erstellt werden. Installieren Sie die aktuelle Version der PowerShell-Cmdlets der Azure-Dienstverwaltung. Informationen zum Installieren der Cmdlets finden Sie unter [Dienstverwaltung](/powershell/azure/servicemanagement/install-azure-ps). Weitere Informationen zu PowerShell-Installationen im Allgemeinen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Bei der Verwendung von PowerShell für diese Konfiguration müssen Sie PowerShell als Administrator ausführen.
+* PowerShell ist erforderlich, um den gemeinsam verwendeten Schlüssel anzugeben und die VPN Gateway-Verbindung zu erstellen. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>Beispielkonfigurationswerte für diese Übung
 
@@ -72,7 +72,7 @@ Wenn Sie ein virtuelles Netzwerk für eine S2S-Verbindung erstellen, müssen Sie
 1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Klicken Sie auf * *+Ressource erstellen*. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtual Network“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtual Network**, um die Seite **Virtual Network** zu öffnen.
 3. Klicken Sie auf **In klassische Darstellung ändern**, und klicken Sie dann auf **Erstellen**.
-4. Konfigurieren Sie auf der Seite **Virtuelles Netzwerk erstellen (klassisch)** die VNET-Einstellungen. Auf dieser Seite fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nachdem Sie die Erstellung des VNet abgeschlossen haben, können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen.
+4. Konfigurieren Sie auf der Seite **Virtuelles Netzwerk erstellen (klassisch)** die VNET-Einstellungen. Auf dieser Seite fügen Sie Ihren ersten Adressraum und einen Adressbereich des Subnetzes hinzu. Nach dem Erstellen des VNet können Sie zurückgehen und weitere Subnetze und Adressräume hinzufügen.
 
    ![Seite „Virtuelles Netzwerk erstellen“](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Seite „Virtuelles Netzwerk erstellen“")
 5. Überprüfen Sie, ob es sich um das richtige **Abonnement** handelt. Das Abonnement kann über die Dropdownliste geändert werden.
@@ -159,23 +159,24 @@ In diesem Schritt legen Sie den gemeinsam verwendeten Schlüssel fest und erstel
 
 ### <a name="step-1-connect-to-your-azure-account"></a>Schritt 1: Herstellen einer Verbindung mit Ihrem Azure-Konto
 
-Sie müssen diese Befehle lokal mit dem PowerShell-Dienstverwaltungsmodul ausführen. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
+Sie müssen diese Befehle lokal mit dem PowerShell-Dienstverwaltungsmodul ausführen. 
 
-```powershell
-azure config mode asm
-```
+1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
 
-1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+   ```powershell
+   azure config mode asm
+   ```
+2. Stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
    ```powershell
    Add-AzureAccount
    ```
-2. Überprüfen Sie die Abonnements für das Konto.
+3. Überprüfen Sie die Abonnements für das Konto.
 
    ```powershell
    Get-AzureSubscription
    ```
-3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
+4. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

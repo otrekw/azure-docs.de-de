@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 32865b84de2dc1c1f8a3fd6beca80a2659f1e3d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74c8c7dfc2beda2d242bc21e12293dc6f3c1cffe
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370764"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470835"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -60,6 +60,9 @@ Führen Sie auf allen **virtuellen Computern des iSCSI-Ziels** folgende Befehle 
 
    <pre><code>sudo zypper update
    </code></pre>
+
+   > [!NOTE]
+   > Möglicherweise müssen Sie das Betriebssystem nach einem Update oder Upgrade neu starten. 
 
 1. Entfernen Sie Pakete.
 

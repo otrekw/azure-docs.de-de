@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Informationen zum Konfigurieren von Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers und zum Konfigurieren von HTTPS mithilfe dieses Eingangscontrollers
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: db9afc3a5e33d1a12246c2af80428137043aa242
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc9dfbb4c437210de3ab9a88aafca2680dd363c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438487"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486184"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten Traefik-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -18,8 +18,8 @@ In diesem Artikel erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung ein
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie über keins verfügen, können Sie ein [kostenloses Konto][azure-account-create] erstellen.
-* [Azure-CLI installiert][az-cli].
+* Ein Azure-Abonnement. Falls Sie über keins verfügen, können Sie ein [kostenloses Konto][azure-account-create] erstellen.
+* Die [Azure CLI][az-cli] muss installiert sein.
 * Ein [Azure Kubernetes Service-Cluster (AKS-Cluster) mit aktiviertem Azure Dev Spaces-Dienst][qs-cli].
 * [kubectl][kubectl] muss installiert sein.
 * [Helm 3 muss installiert sein.][helm-installed]
@@ -53,6 +53,13 @@ Erstellen Sie einen Kubernetes-Namespace für den Traefik-Eingangscontroller, un
 kubectl create ns traefik
 helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0
 ```
+
+> [!NOTE]
+> Im obigen Beispiel wird ein öffentlicher Endpunkt für den Eingangscontroller erstellt. Wenn Sie stattdessen einen privaten Endpunkt für Ihren Eingangscontroller verwenden müssen, fügen Sie den Parameter *--set service.annotations."service\\.beta\\.kubernetes\\.io/azure-load-balancer-internal"=true* für den Befehl *helm install* hinzu.
+> ```console
+> helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
+> ```
+> Dieser private Endpunkt wird innerhalb des virtuellen Netzwerks verfügbar gemacht, in dem Ihr AKS-Cluster bereitgestellt wird.
 
 Rufen Sie die IP-Adresse des Traefik-Eingangscontrollerdiensts mithilfe von [kubectl get][kubectl-get] ab.
 
@@ -120,7 +127,7 @@ azds space select -n dev -y
 Stellen Sie die Beispielanwendung mithilfe von `helm install` bereit.
 
 ```console
-helm install bikesharing . --dependency-update --namespace dev --atomic
+helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
 Im obigen Beispiel wird die Beispielanwendung für den *dev*-Namespace bereitgestellt.
@@ -305,7 +312,7 @@ Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-development-qs]
+> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-development-qs]
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457869"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251633"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -69,7 +69,7 @@ Die Service Fabric Reliable Services-Erweiterung für VS Code bietet viele Befeh
 
 Der Befehl **Service Fabric: Anwendung erstellen** erstellt eine neue Service Fabric-Anwendung in Ihrem aktuellen Arbeitsbereich. Je nachdem, welche Yeoman-Generatoren auf dem Entwicklungscomputer installiert sind, können Sie mehrere Typen von Service Fabric-Anwendungen erstellen, darunter Java-, C#-, Container- und Gastprojekte. 
 
-1.  Wählen Sie den Befehl **Service Fabric: Dienst hinzufügen** aus.
+1.  Wählen Sie den Befehl **Service Fabric: Anwendung erstellen**-Befehl.
 2.  Wählen Sie den Typ für die neue Service Fabric-Anwendung aus. 
 3.  Geben Sie den Namen der Anwendung ein, die Sie erstellen möchten
 3.  Wählen Sie den Typ des Diensts aus, den Sie der Service Fabric-Anwendung hinzufügen möchten. 

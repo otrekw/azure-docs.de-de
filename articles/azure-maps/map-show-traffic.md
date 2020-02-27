@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910893"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208419"
 ---
 # <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
 In Azure Maps sind zwei Arten von Verkehrsdaten verfügbar:
 
 - Vorfallsdaten: Punkt- und linienbasierte Daten, z. B. für Baustellen, Straßensperrungen und Unfälle.
-- Flussdaten: Stellt Metriken zum Verkehrsfluss auf Straßen bereit. Daten zum Verkehrsfluss werden häufig verwendet, um Straßen basierend auf dem Verkehrsaufkommen, das aufgrund einer Geschwindigkeitsbeschränkung oder anderen Metrik zu einer Verlangsamung des Verkehrsflusses führt, farbig zu markieren. Die Daten zum Verkehrsfluss in Azure Maps verfügen über drei unterschiedliche Metriken für Messungen:
+- Flussdaten: Stellt Metriken zum Verkehrsfluss auf Straßen bereit. Daten zum Verkehrsfluss werden häufig verwendet, um Straßen farbig zu markieren. Die Farben basieren auf dem Verkehrsaufkommen, das aufgrund einer Geschwindigkeitsbeschränkung oder anderen Metrik zu einer Verlangsamung des Verkehrsflusses führt. Die Daten zum Verkehrsfluss in Azure Maps verfügen über drei unterschiedliche Metriken für Messungen:
     - `relative`: Geschwindigkeit relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße.
     - `absolute`: Absolute Geschwindigkeit aller Fahrzeuge auf der Straße.
     - `relative-delay`: Zeigt Bereiche mit einer langsameren Geschwindigkeit als der durchschnittlichen erwarteten Verzögerung an.

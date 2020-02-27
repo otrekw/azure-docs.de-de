@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775012"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198733"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>VM-Images im Azure Marketplace werden in verwalteten Datenträgerspeicher verschoben
 
@@ -61,6 +61,6 @@ Aktualisierungen für die VM-Images können während der Verschiebung nicht durc
 
 Nein, der Veröffentlichungsvorgang bleibt unverändert. 
 
-## <a name="next-steps"></a>Nächste Schritte
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Kann der Herausgeber seine Angebote auf verwaltete Datenträger verschieben?
 
-Besuchen Sie die Seite [Leitfaden für die Veröffentlichung von VM-Angeboten](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
+Nein, die Herausgeber können ihre Angebote nicht auf verwaltete Datenträger verschieben. Sie müssen warten und ihre Images werden automatisch verschoben. Wir werden den Herausgeber benachrichtigen, bevor wir Änderungen vornehmen.

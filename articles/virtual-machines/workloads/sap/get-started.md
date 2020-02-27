@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e5ea4bba693a6785dae4075da7b13154593bb4c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 83144738124b223e305b6c0d3ad1065f5dae408e
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087371"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212608"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -121,6 +121,8 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 13.2.2020: Änderung an [Hochverfügbarkeit von Azure VMs für SAP NetWeaver unter RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel) und [Hochverfügbarkeit von Azure VMs für SAP NetWeaver unter RHEL mit Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files), um die Timeoutwerte der Clusterressourcen an die Red Hat-Timeoutempfehlungen anzupassen
+- 11.2.2020: Veröffentlichung von [SAP HANA in Azure (große Instanzen) – Migration zu Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-large-instance-virtual-machine-migration)
 - 7\.2.2020: Änderung in [Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) zum Aktualisieren des NSG-Beispielscreenshots
 - 3\.2.2020: Änderung an der [Hochverfügbarkeit für SAP NW auf virtuellen Azure-Computern in SLES für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) und [Hochverfügbarkeit für SAP NW auf virtuellen Azure-Computern in SLES mit ANF für SAP-Anwendungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), um die Warnung zur Verwendung von Gedankenstrichen in den Hostnamen von Clusterknoten in SLES zu entfernen.
 - 28.1.2020: Änderung in [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel), um die SAP HANA-Clusterressourcentimeouts an den Empfehlungen für Red Hat-Timeouts auszurichten.

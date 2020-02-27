@@ -27,15 +27,9 @@
           href: quickstarts/ruby.md
     - name: SDKs
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
-- name: Lernprogramme
+        - name: Clientbibliotheken für die Bing-Websuche
+          href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-web-search-single-page-app.md
@@ -105,7 +99,7 @@
       href: language-support.md
     - name: Analyse für die Bing-Websuche-API
       href: bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Support
       items:

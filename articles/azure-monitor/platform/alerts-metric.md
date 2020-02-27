@@ -1,18 +1,18 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von Metrikwarnungen in Azure Monitor
+title: Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 description: Erfahren Sie, wie Sie mit dem Azure-Portal oder der CLI Metrikwarnungsregeln erstellen, anzeigen und verwalten können.
 author: harelbr
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/16/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 00f5f37591ed2ed250cb756c686ea15136921512
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ef712c38303de27214ce75c9ca2b8022a5410efc
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705529"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372755"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -39,21 +39,30 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 
 6. Es wird eine Liste der für die Ressource unterstützten Signale angezeigt. Wählen Sie die Metrik aus, für die Sie eine Warnung erstellen möchten.
 
-7. Optimieren Sie die Metrik optional durch Anpassen von **Zeitraum** und **Aggregation**. Wenn die Metrik über Dimensionen verfügt, wird die Tabelle **Dimensionen** angezeigt. Wählen Sie mindestens einen Wert pro Dimension aus. Der Metrikwarnung wird ausgeführt, um die Bedingung für alle ausgewählten Wertekombinationen auszuwerten. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](alerts-metric-overview.md). Sie können für jede der Dimensionen auch **\* auswählen** verwenden. Mithilfe von **\* auswählen** wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
+7. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Verwenden Sie die Dropdownliste **Diagrammzeitraum**, um einen längeren Verlauf für die Metrik anzuzeigen.
 
-8. Es wird ein Diagramm für die Metrik für die letzten sechs Stunden angezeigt. Definieren Sie die Warnungsparameter: **Bedingungstyp**, **Häufigkeit**, **Operator** und **Schwellenwert** oder **Empfindlichkeit**. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll. [Erfahren Sie mehr über den Bedingungstyp „Dynamische Schwellenwerte“ und Empfindlichkeitsoptionen.](alerts-dynamic-thresholds.md)
+8. Wenn die Metrik über Dimensionen verfügt, wird eine Dimensionstabelle angezeigt. Wählen Sie mindestens einen Wert pro Dimension aus.
+    - Die angezeigten Dimensionswerte basieren auf Metrikdaten der letzten drei Tagen.
+    - Wenn der gesuchte Dimensionswert nicht angezeigt wird, klicken Sie auf „+“, um einen benutzerdefinierten Wert hinzuzufügen.
+    - Sie können für jede der Dimensionen auch **\* auswählen** verwenden. Mithilfe von **\* auswählen** wird die Auswahl auf alle aktuellen und zukünftigen Werte für eine Dimension skaliert.
 
-9. Wenn Sie einen statischen Schwellenwert verwenden, kann das Metrikdiagramm Ihnen das Bestimmen eines sinnvollen Schwellenwerts erleichtern. Wenn Sie dynamische Schwellenwerte verwenden, zeigt das Metrikdiagramm die berechneten Schwellenwerte basierend auf aktuellen Daten an.
+    Die Metrikwarnungsregel wertet die Bedingung für alle ausgewählten Wertekombinationen aus. [Erfahren Sie mehr über die Funktionsweise von Warnungen für mehrdimensionale Metriken](alerts-metric-overview.md).
 
-10. Klicken Sie auf **Fertig**.
+9. Wählen Sie den Typ für **Schwellenwert**, den **Operator** und den **Aggregationstyp** aus. Dadurch wird die Logik bestimmt, die die Metrikwarnungsregel auswerten soll.
+    - Wenn Sie einen Schwellenwert vom Typ **Statisch** verwenden, legen Sie auch einen **Schwellenwert** fest. Anhand des Metrikdiagramms können Sie einen angemessenen Schwellenwert ermitteln.
+    - Wenn Sie einen Schwellenwert vom Typ **Dynamisch** verwenden, legen Sie auch die **Schwellenwertempfindlichkeit** fest. Das Metrikdiagramm zeigt die berechneten Schwellenwerte basierend auf aktuellen Daten an. [Erfahren Sie mehr über den Bedingungstyp „Dynamische Schwellenwerte“ und Empfindlichkeitsoptionen.](alerts-dynamic-thresholds.md)
 
-11. Optional können Sie weitere Kriterien hinzufügen, wenn Sie eine komplexe Warnungsregel überwachen möchten. Derzeit stehen Benutzern Warnungsregeln mit dynamischen Schwellenwertkriterien als einzigem Kriterium zur Verfügung.
+10. Sie können die Bedingung optional noch verfeinern, indem Sie die **Aggregationsgranularität** und die **Häufigkeit der Auswertung** anpassen. 
 
-12. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+11. Klicken Sie auf **Fertig**.
 
-13. Fügen Sie der Warnung eine Aktionsgruppe hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+12. Optional können Sie weitere Kriterien hinzufügen, wenn Sie eine komplexe Warnungsregel überwachen möchten. Derzeit stehen Benutzern Warnungsregeln mit dynamischen Schwellenwertkriterien als einzigem Kriterium zur Verfügung.
 
-14. Klicken Sie auf **Fertig**, um die Metrikwarnungsregel zu speichern.
+13. Geben Sie **Warnungsdetails** wie **Warnungsregelname**, **Beschreibung** und **Schweregrad** ein.
+
+14. Fügen Sie der Warnung eine Aktionsgruppe hinzu, indem Sie entweder eine bestehende Aktionsgruppe auswählen oder eine neue Aktionsgruppe erstellen.
+
+15. Klicken Sie auf **Fertig**, um die Metrikwarnungsregel zu speichern.
 
 > [!NOTE]
 > Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.
@@ -82,11 +91,11 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
-In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). Für diesen Artikel werden wir die Cloud Shell verwenden.
+In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest). In diesem Artikel verwendeten wir Cloud Shell.
 
 1. Wechseln Sie zum Azure-Portal, und klicken Sie auf **Cloud Shell**.
 
-2. An der Eingabeaufforderung können Sie Befehle mit der Option ``--help`` verwenden, um mehr über den Befehl und seine Verwendung zu erfahren. Der folgende Befehl zeigt Ihnen z. B. die Liste der verfügbaren Befehle zum Erstellen, Anzeigen und Verwalten von Metrikwarnungsmeldungen an.
+2. An der Eingabeaufforderung können Sie Befehle mit der Option ``--help`` verwenden, um mehr über den Befehl und seine Verwendung zu erfahren. Der folgende Befehl zeigt Ihnen z. B. die Liste der verfügbaren Befehle zum Erstellen, Anzeigen und Verwalten von Metrikwarnungsmeldungen an.
 
     ```azurecli
     az monitor metrics alert --help

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3361f4723c5a9776cb156417e57d609175d11621
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752170"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446057"
 ---
 Inkrementelle Momentaufnahmen (Vorschau) sind Sicherungen zu einem bestimmten Zeitpunkt für verwaltete Datenträger, die im Erfassungszustand nur aus allen Änderungen seit der letzten Momentaufnahme bestehen. Wenn Sie versuchen, eine inkrementelle Momentaufnahme herunterzuladen oder anderweitig zu verwenden, wird die vollständige VHD verwendet. Diese neue Funktion für Momentaufnahmen verwalteter Datenträger kann es potenziell ermöglichen, dass diese kostengünstiger sind, da Sie nicht mehr den gesamten Datenträger mit jeder einzelnen Momentaufnahme speichern müssen, es sei denn, Sie entscheiden sich dazu. Ebenso wie reguläre Momentaufnahmen können inkrementelle Momentaufnahmen verwendet werden, um einen vollständigen verwalteten Datenträger oder eine reguläre Momentaufnahme zu erstellen.
 
@@ -23,7 +23,7 @@ Inkrementelle Momentaufnahmen bieten außerdem eine differenzielle Funktion, die
 
 ## <a name="restrictions"></a>Beschränkungen
 
-- Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen-Mitte“, „Kanada, Osten“, „Kanada, Mitte“ und „Europa, Norden“ verfügbar.
+- Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen-Mitte“, „Kanada, Osten“, „Kanada, Mitte“ „Europa, Norden“ und „Asien, Südosten“ verfügbar.
 - Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde.
 - Inkrementelle Momentaufnahmen können derzeit nicht zwischen Abonnements verschoben werden.
 - Sie können zurzeit nur SAS-URIs mit jeweils bis zu fünf Momentaufnahmen einer bestimmten Momentaufnahmefamilie generieren.

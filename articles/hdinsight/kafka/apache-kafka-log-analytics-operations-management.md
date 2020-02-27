@@ -7,19 +7,31 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 02/17/2020
+ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894261"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471179"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
 Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen in Apache Kafka generierte Protokolle in HDInsight analysieren.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="logs-location"></a>Protokollspeicherort
+
+Apache Kafka-Protokolle im Cluster befinden sich unter `/var/log/kafka`. Kafka-Protokolle werden unabhängig davon, ob verwaltete Datenträger verwendet werden, nicht über Clusterlebenszyklen hinweg gespeichert oder beibehalten. Die verfügbaren Protokolle sind in der nachfolgenden Tabelle aufgeführt.
+
+|Protokoll |BESCHREIBUNG |
+|---|---|
+|kafka.out|„stdout“ und „stderr“ des Kafka-Prozesses. In dieser Datei finden Sie die Protokolle zum Starten und Herunterfahren von Kafka.|
+|server.log|Das Hauptprotokoll des Kafka-Servers. Alle Kafka-Brokerprotokolle werden hierin aufgenommen.|
+|controller.log|Controllerprotokolle, wenn der Broker als Controller fungiert.|
+|statechange.log|Alle Statusänderungsereignisse für Broker werden in dieser Datei protokolliert.|
+|kafka-gc.log|Statistiken zur Kafka-Garbage Collection.|
 
 ## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Azure Monitor-Protokolle für Apache Kafka aktivieren
 

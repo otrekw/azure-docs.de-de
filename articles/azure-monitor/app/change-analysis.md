@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 9d55d91dbb2e62e87c34dc8ea8a23fb375eb9a53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f2602dbee12f82c32ab3a3c2ec0566d8dfbeaa83
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665356"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211814"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -31,7 +31,7 @@ Das folgende Diagramm zeigt die Architektur der Änderungsanalyse:
 
 ![Architekturdiagramm zum Abrufen von Änderungsdaten und Bereitstellung dieser Daten für Clienttools durch die Änderungsanalyse](./media/change-analysis/overview.png)
 
-Derzeit ist die Änderungsanalyse sowohl in die **Diagnose und Problembehandlung** für App Service-Web-Apps integriert, als auch als eigenständiges Blatt im Azure-Portal verfügbar.
+Derzeit ist die Änderungsanalyse sowohl in die **Diagnose und Problembehandlung** für App Service-Web-Apps integriert, als auch als eigenständige Registerkarte im Azure-Portal verfügbar.
 Weitere Informationen zum Zugreifen auf das Blatt „Änderungsanalyse“ finden Sie im Abschnitt *Anzeigen von Änderungen für alle Ressourcen in Azure*, und Informationen zum Verwenden der Änderungsanalyse im Web-App-Portal finden Sie im Abschnitt *Änderungsanalyse für die Web-Apps-Funktion* im weiteren Verlauf dieses Artikels.
 
 ### <a name="azure-resource-manager-tracked-properties-changes"></a>Verfolgte Eigenschaftsänderungen in Azure Resource Manager
@@ -56,8 +56,9 @@ Derzeit werden die folgenden Abhängigkeiten unterstützt:
 - Azure SQL
 
 ### <a name="enablement"></a>Aktivierung
-Der Ressourcenanbieter „Microsoft.ChangeAnalysis“ muss bei einem Abonnement registriert werden, damit die Daten zu nachverfolgten Änderungen und per Proxy übermittelten Einstellungsänderungen von Azure Resource Manager verfügbar sind. Wenn Sie die Diagnose und Problembehandlung in der Web-App öffnen oder das eigenständige Blatt „Änderungsanalyse“ aufrufen, wird dieser Ressourcenanbieter automatisch registriert. Es gibt keine Leistungs- und Kostenimplementierungen für Ihr Abonnement.
-Bei Web-App-Änderungen, die das Gastbetriebssystem betreffen, ist eine separate Aktivierung erforderlich, um Codedateien in einer Web-App zu überprüfen. Weitere Informationen finden Sie unter *Aktivieren der Änderungsanalyse im Tool „Diagnose und Problembehandlung“* weiter unten in diesem Artikel.
+Der Ressourcenanbieter „Microsoft.ChangeAnalysis“ muss bei einem Abonnement registriert werden, damit die Daten zu nachverfolgten Änderungen und per Proxy übermittelten Einstellungsänderungen von Azure Resource Manager verfügbar sind. Wenn Sie das Diagnose- und Problembehandlungstool in der Web-App öffnen oder die eigenständige Registerkarte „Änderungsanalyse“ aufrufen, wird dieser Ressourcenanbieter automatisch registriert. Es gibt keine Leistungs- und Kostenimplementierungen für Ihr Abonnement. Wenn Sie die Änderungsanalyse für Web-Apps aktivieren (oder die Aktivierung im Diagnose- und Problembehandlungstool vornehmen) hat dies nur geringfügige Auswirkungen auf die Leistung der Web-App und bewirkt keinerlei Abrechnungskosten.
+Bei Web-App-Änderungen, die das Gastbetriebssystem betreffen, ist eine separate Aktivierung erforderlich, um Codedateien in einer Web-App zu überprüfen. Weitere Informationen finden Sie unter [Aktivieren der Änderungsanalyse im Tool „Diagnose und Problembehandlung“](https://docs.microsoft.com/azure/azure-monitor/app/change-analysis#enable-change-analysis-in-the-diagnose-and-solve-problems-tool) weiter unten in diesem Artikel.
+
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Anzeigen von Änderungen für alle Ressourcen in Azure
 In Azure Monitor gibt es ein eigenständiges Blatt für die Änderungsanalyse, auf dem alle Änderungen mit Ressourcen für Einblicke und Anwendungsabhängigkeiten angezeigt werden.
@@ -119,7 +120,7 @@ Wenn Ihr Abonnement zahlreiche Web-Apps enthält, wäre das Aktivieren des Diens
 Voraussetzungen:
 * PowerShell Az-Modul. Folgen Sie den Anweisungen unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.6.0).
 
-Führen Sie das folgende Skript aus:
+Führen Sie folgendes Skript aus:
 
 ```PowerShell
 # Log in to your Azure subscription

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086994"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367751"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
@@ -261,7 +261,16 @@ Dieser Befehl:
 
 # <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
-Der Container für *benutzerdefinierte Spracherkennung* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Speech-Portal](https://speech.microsoft.com/customspeech)[trainiert](how-to-custom-speech-train-model.md) worden sein. Die **Modell-ID** für Custom Speech ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Speech-Portals. Navigieren Sie im Custom Speech-Portal zur Seite **Training**, und wählen Sie das Modell aus.
+Der Container für *benutzerdefinierte Spracherkennung* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Speech-Portal](https://speech.microsoft.com/customspeech)[trainiert](how-to-custom-speech-train-model.md) worden sein.
+
+> [!IMPORTANT]
+> Das benutzerdefinierte Sprachmodell muss von einer der folgenden Modellversionen trainiert werden:
+> * **20181201 (v3.3 Einheitlich)**
+> * **20190520 (v4.14 Einheitlich)**
+> * **20190701 (v4.17 Einheitlich)**<br>
+> ![Custom Speech-Containermodell für das Training](media/custom-speech/custom-speech-train-model-container-scoped.png)
+
+Die **Modell-ID** für Custom Speech ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Speech-Portals. Navigieren Sie im Custom Speech-Portal zur Seite **Training**, und wählen Sie das Modell aus.
 <br>
 
 ![Seite „Training“ im Custom Speech-Portal](media/custom-speech/custom-speech-model-training.png)
@@ -273,7 +282,7 @@ Rufen Sie die **Modell-ID** ab, um diese als Argument für den `ModelId`-Paramet
 
 Die folgende Tabelle zeigt die verschiedenen `docker run`-Parameter und die entsprechenden Beschreibungen:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |---------|---------|
 | `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech*, wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
 | `{MODEL_ID}` | Die **Modell-ID** für Custom Speech von der Seite **Training** des Custom Speech-Portals. |

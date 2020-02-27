@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664609"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484807"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 
@@ -21,9 +21,8 @@ HDInsight Spark-Cluster enthalten [Apache Zeppelin](https://zeppelin.apache.org/
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Das URI-Schema für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Blob Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Blob Storage aktiviert ist, lautet der URI `wasbs://`.  Weitere Informationen finden Sie auch unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
+* Das URI-Schema für Ihren primären Clusterspeicher. Dies ist `wasb://` für Azure Blob Storage, `abfs://` für Azure Data Lake Storage Gen2 oder `adl://` für Azure Data Lake Storage Gen1. Wenn die sichere Übertragung für Blob Storage aktiviert ist, lautet der URI `wasbs://`.  Weitere Informationen finden Sie unter [Vorschreiben einer sicheren Übertragung in Azure Storage](../../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Starten des Apache Zeppelin Notebooks
 
@@ -168,9 +167,44 @@ In diesem Fall müssen Sie die folgenden Schritte ausführen, bevor Sie mit dem 
 
 3. Führen Sie eine Codezelle über ein vorhandenes Zeppelin Notebook aus. Im HDInsight-Cluster wird eine neue Livy-Sitzung erstellt.
 
-## <a name="seealso"></a>Weitere Informationen
+## <a name="general-information"></a>Allgemeine Informationen
 
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+### <a name="validate-service"></a>Überprüfen des Diensts
+
+Zum Überprüfen des Diensts über Ambari navigieren Sie zu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, wobei CLUSTERNAME der Name Ihres Clusters ist.
+
+Zum Überprüfen des Diensts über eine Befehlszeile stellen Sie eine SSH-Verbindung zum Hauptknoten her. Ändern Sie mit dem Befehl `sudo su zeppelin` den Benutzer in Zeppelin. Statusbefehle:
+
+|Befehl |Beschreibung |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Dienststatus|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Dienstversion|
+|`ps -aux | grep zeppelin`|Identifizieren der PID|
+
+### <a name="log-locations"></a>Protokollspeicherorte
+
+|Dienst |Pfad |
+|---|---|
+|Zeppelin-Server|/usr/hdp/current/zeppelin-server/|
+|Serverprotokolle|/var/log/zeppelin|
+|Configuration Interpreter, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf or /etc/zeppelin/conf|
+|PID-Verzeichnis|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>Debugprotokollierung aktivieren
+
+1. Navigieren Sie zu `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, wobei CLUSTERNAME der Name Ihres Clusters ist.
+
+1. Navigieren Sie zu **CONFIGS** > **Advanced zeppelin-log4j-properties** > **log4j_properties_content**.
+
+1. Ändern Sie `log4j.appender.dailyfile.Threshold = INFO` in `log4j.appender.dailyfile.Threshold = DEBUG`.
+
+1. Fügen Sie `log4j.logger.org.apache.zeppelin.realm=DEBUG`hinzu.
+
+1. Speichern Sie die Änderungen, und starten Sie den Dienst neu.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 
@@ -192,7 +226,7 @@ In diesem Fall müssen Sie die folgenden Schritte ausführen, bevor Sie mit dem 
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

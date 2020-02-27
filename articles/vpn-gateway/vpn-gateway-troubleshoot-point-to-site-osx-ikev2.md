@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: f88053c93884e10e46a0f7d70106bda67b057562
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780180"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425719"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problembehandlung bei Point-to-Site-VPN-Verbindungen von Mac OS X-VPN-Clients
 
@@ -48,7 +48,7 @@ Dieser Artikel hilft Ihnen beim Beheben von Point-to-Site-Konnektivitätsproblem
 4. Die **Local ID (lokale ID)** kann leer sein.
 5. Klicken Sie auf die Schaltfläche **Authentication Setting (Authentifizierungseinstellung)** , und stellen Sie sicher, dass „Username“ (Benutzername) in der Dropdownliste ausgewählt ist.
 
-   ![Authentifizierungseinstellungen](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.jpg)
+   ![Authentifizierungseinstellungen](./media/vpn-gateway-troubleshoot-point-to-site-osx-ikev2/ikev2auth4.png)
 6. Stellen Sie sicher, dass die richtigen Anmeldeinformationen eingegeben sind.
 
 ## <a name="additional"></a>Zusätzliche Schritte

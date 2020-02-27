@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL'
+title: 'Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL über die Azure-Befehlszeilenschnittstelle'
 titleSuffix: Azure Database Migration Service
-description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen PostgreSQL-Instanz zu Azure Database for PostgreSQL durchführen.
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service über die Befehlszeilenschnittstelle eine Onlinemigration von einer lokalen PostgreSQL-Instanz zu Azure Database for PostgreSQL durchführen.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -11,15 +11,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: ee5863497ce067d2ff056c3fc1c64b00d3004cd8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/17/2020
+ms.openlocfilehash: c9cea6041c7f4d91295072121c62ba028e5ad937
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903924"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470937"
 ---
-# <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Tutorial: Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS
+# <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL mit Database Migration Service über die Azure-Befehlszeilenschnittstelle
 
 Mit Azure Database Migration Service können Sie die Datenbanken mit minimaler Ausfallzeit von einer lokalen PostgreSQL-Instanz zu [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) migrieren. Somit kommt es bei der Migration nur zu einer geringen Ausfallzeit für die Anwendung. In diesem Tutorial migrieren Sie die Beispieldatenbank **DVD Rental** von einer lokalen Instanz von PostgreSQL 9.6 zu Azure Database for PostgreSQL. Zu diesem Zweck verwenden Sie die Onlinemigrationsaktivität in Azure Database Migration Service.
 
@@ -46,8 +46,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     Darüber hinaus muss die lokale PostgreSQL-Version mit der Azure Database for PostgreSQL-Version übereinstimmen. Beispiel: PostgreSQL 9.5.11.5 kann nur zu Azure Database for PostgreSQL 9.5.11 migriert, aber nicht auf Version 9.6.7 aktualisiert werden.
 
-* [Erstellen einer Instanz in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
-* Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
+* [Erstellen einer Instanz in Azure Database for PostgreSQL-Server](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) oder [Erstellen eines Azure Database for PostgreSQL-Servers – Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
+* Erstellen Sie ein virtuelles Microsoft Azure-Netzwerk für Azure Database Migration Service mithilfe des Azure Resource Manager-Bereitstellungsmodells, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
     > [!NOTE]
     > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des Setups des virtuellen Netzwerks die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
@@ -100,7 +100,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 2. Erstellen Sie eine leere Datenbank in der Zielumgebung, Azure Database for PostgreSQL.
 
-    Ausführliche Anleitungen zum Verbinden und Erstellen einer Datenbank finden Sie im Artikel [Schnellstartanleitung: Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
+    Ausführliche Anleitungen zum Erstellen und Verbinden einer Datenbank finden Sie unter [Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) und unter [Erstellen eines Azure Database for PostgreSQL-Servers – Hyperscale (Citus) über das Azure-Portal](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal).
 
 3. Importieren Sie das Schema in die Zieldatenbank, die Sie erstellt haben, indem Sie die Schemasicherungsdatei wiederherstellen.
 
@@ -189,6 +189,9 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
        ---------------  ------
        whl              dms
        ```
+
+      > [!IMPORTANT]
+      > Stellen Sie sicher, dass Ihre Erweiterungsversion höher als 0.11.0 ist.
 
    * Jederzeit können Sie alle in DMS unterstützten Befehle anzeigen, indem Sie Folgendes ausführen:
 
@@ -374,7 +377,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 In der Ausgabedatei gibt es mehrere Parameter, die den Status der Migration angeben. Betrachten Sie z.B. die folgende Ausgabedatei:
 
-    ```
+  ```
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -449,7 +452,7 @@ In der Ausgabedatei gibt es mehrere Parameter, die den Status der Migration ange
       },
       "resourceGroup": "PostgresDemo",
       "type": "Microsoft.DataMigration/services/projects/tasks"
-    ```
+  ```
 
 ## <a name="cutover-migration-task"></a>Übernahmemigrationsaufgabe
 

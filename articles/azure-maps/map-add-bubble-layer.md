@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933661"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208555"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Hinzufügen einer Blasenebene zu einer Karte
 
-In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Blasenebene auf einer Karte rendern können. Blasenebenen rendern Punkte als Kreise mit festem Pixelradius auf der Karte. 
+In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Blasenebene auf einer Karte rendern können. Blasenebenen rendern Punkte als Kreise mit einem festen Pixelradius auf der Karte. 
 
 > [!TIP]
 > Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahin gehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden, wenn auch MultiPoint-Funktionen berücksichtigt werden sollen.
 
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
-Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen. Anschließend werden die Datenpunkte mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) verbunden. Der Blasenebene rendert den Radius jeder Blase mit fünf Pixeln, einer weißen Füllfarbe, einer blauen Strichfarbe und eine Strichbreite von sechs Pixeln. 
+Mit dem folgenden Code wird ein Array von Punkten in eine Datenquelle geladen. Anschließend werden die Datenpunkte mit einer [Blasenebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest) verbunden. Die Blasenebene rendert den Radius jeder Blase mit fünf Pixeln und einer weißen Füllfarbe sowie einer blauen Strichfarbe und einer Strichbreite von sechs Pixeln. 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Anzeigen von Bezeichnungen bei einer Blasenebene
 
-Der folgende Code veranschaulicht, wie Sie eine Blasenebene verwenden, um einen Punkt auf der Karte zu rendern, und eine Symbolebene, um eine Bezeichnung zu rendern. Um das Symbol der Symbolebene auszublenden, legen Sie die `image`-Eigenschaft der Symboloptionen auf `'none'` fest.
+Dieser Code zeigt, wie Sie eine Blasenebene zum Rendern eines Punkts auf der Karte verwenden. Außerdem wird gezeigt, wie Sie eine Symbolebene verwenden, um eine Bezeichnung zu rendern. Um das Symbol der Symbolebene auszublenden, legen Sie die `image`-Eigenschaft der Symboloptionen auf `'none'` fest.
 
 <br/>
 
