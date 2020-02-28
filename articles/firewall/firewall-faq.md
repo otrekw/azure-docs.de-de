@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460466"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621960"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -50,11 +50,11 @@ Es gibt drei Arten von Regelsammlungen:
 
 * *Anwendungsregeln*: Konfigurieren vollqualifizierter Domänennamen (Fully Qualified Domain Names, FQDNs), auf die von einem Subnetz aus zugegriffen werden kann.
 * *Netzwerkregeln*: Konfigurieren von Regeln mit Quelladressen, Protokollen, Zielports und Zieladressen.
-* *NAT-Regeln*: Konfigurieren von DNAT-Regeln, um eingehende Verbindungen zuzulassen.
+* *NAT-Regeln*: Konfigurieren von DNAT-Regeln, um eingehende Internetverbindungen zuzulassen.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Unterstützt Azure Firewall das Filtern des eingehenden Datenverkehrs?
 
-Azure Firewall unterstützt Filter für eingehenden und ausgehenden Datenverkehr. Der Schutz des eingehenden Datenverkehrs ist typischerweise für Nicht-HTTP/S-Protokolle bestimmt, z. B. RDP-, SSH- und FTP-Protokolle. Verwenden Sie für den optimalen Schutz eingehenden HTTP/S-Datenverkehrs eine Webanwendungsfirewall z. B. [Azure Web Application Firewall in Azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
+Azure Firewall unterstützt Filter für eingehenden und ausgehenden Datenverkehr. Der Schutz des eingehenden Datenverkehrs ist typischerweise für Nicht-HTTP/S-Protokolle bestimmt, z. B. RDP-, SSH- und FTP-Protokolle. Verwenden Sie für den optimalen Schutz eingehenden HTTP/S-Datenverkehrs eine Webanwendungsfirewall z. B. [Azure Web Application Firewall (WAF)](../web-application-firewall/overview.md).
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welche Protokollierungs- und Analysedienste werden von Azure Firewall unterstützt?
 
@@ -137,9 +137,9 @@ Wenn für Ihre Konfiguration die Erzwingung eines Tunnels zu einem lokalen Netzw
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Gibt es Einschränkungen bei Ressourcengruppen?
 
-Ja. Firewall, Subnetz, VNET und die öffentliche IP-Adresse müssen sich in der gleichen Ressourcengruppe befinden.
+Ja. Firewall, VNET und die öffentliche IP-Adresse müssen sich in der gleichen Ressourcengruppe befinden.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Muss ich bei der Konfiguration von DNAT für den eingehenden Netzwerkverkehr auch eine entsprechende Netzwerkregel konfigurieren, um diesen Verkehr zu ermöglichen?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Muss ich bei der Konfiguration von DNAT für den eingehenden Internet-Netzwerkdatenverkehr auch eine entsprechende Netzwerkregel konfigurieren, um diesen Verkehr zu ermöglichen?
 
 Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt, um den übersetzten Datenverkehr zuzulassen. Sie können dieses Verhalten außer Kraft setzen, indem Sie explizit eine Netzwerkregelsammlung mit Ablehnungsregeln hinzufügen, die für den übersetzten Datenverkehr geeignet sind. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
 
@@ -168,11 +168,11 @@ Nein. Azure Firewall benötigt kein Subnetz, das größer als /26 ist.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Wie kann ich meinen Firewalldurchsatz erhöhen?
 
-Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s. Das horizontale Hochskalieren basiert derzeit auf der CPU-Auslastung und dem Durchsatz. Es kann also vorkommen, dass eine Firewall, die nur über Netzwerkregeln verfügt, nicht horizontal hochskaliert wird, um den Durchsatz zu erhöhen, da die Netzwerkregeln keine signifikanten Auswirkungen auf die CPU-Auslastung haben. Sollten Sie einen höheren Durchsatz für Ihre Firewall benötigen, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
+Die anfängliche Durchsatzkapazität von Azure Firewall liegt zwischen 2,5 und 3 GBit/s und kann bis 30 GBit/s skaliert werden. Das horizontale Hochskalieren erfolgt basierend auf der CPU-Auslastung und dem Durchsatz. Wenden Sie sich an den Support, um die Durchsatzkapazität Ihrer Firewall zu erhöhen, wenn Ihre Firewall nicht Ihren Anforderungen entsprechend horizontal hochskaliert wird und Sie eine höhere Durchsatzkapazität benötigen.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Wie lange dauert es, bis Azure Firewall horizontal hochskaliert wird?
 
-Aktuell dauert es zwischen fünf und sieben Minuten, bis Azure Firewall horizontal hochskaliert wird. Wenn bei Ihnen Bursts auftreten, die eine schnellere automatische Skalierung erfordern, wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen.
+Es dauert zwischen fünf und sieben Minuten, bis Azure Firewall horizontal hochskaliert wird. Wenden Sie sich an den Support, um die anfängliche Durchsatzkapazität Ihrer Firewall zu erhöhen, wenn bei Ihnen Bursts auftreten, die eine schnellere automatische Skalierung erfordern.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Lässt Azure Firewall standardmäßig den Zugriff auf Active Directory zu?
 

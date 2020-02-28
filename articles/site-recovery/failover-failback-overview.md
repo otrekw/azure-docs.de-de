@@ -3,12 +3,12 @@ title: Informationen zu Failover und Failback in Azure Site Recovery
 description: Erfahren Sie mehr über Failover und Failback in Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/24/2019
-ms.openlocfilehash: 3c461d2de4f9ef8e8159c7b9c86f23a846421c5e
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: d9b54f3c452212e12419a5ffd67b116c8660308d
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498386"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539517"
 ---
 # <a name="about-on-premises-disaster-recovery-failoverfailback"></a>Informationen zum lokalen Failover und Failback bei der Notfallwiederherstellung
 
@@ -37,8 +37,8 @@ Ein Failover erfolgt in zwei Phasen:
 - **Commit**: Nach dem Failover überprüfen Sie die VM in Azure:
     - Dann können Sie das Failover auf den ausgewählten Wiederherstellungspunkt committen oder einen anderen Punkt für den Commit auswählen.
     - Nach dem Committen des Failovers kann der Wiederherstellungspunkt nicht mehr geändert werden.
-    
-    
+
+
 ## <a name="connect-to-azure-after-failover"></a>Herstellen einer Verbindung mit Azure nach einem Failover
 
 Um nach einem Failover über RDP/SSH eine Verbindung mit den Azure-VMs herzustellen, muss eine Reihe von Anforderungen erfüllt werden.
@@ -59,7 +59,7 @@ Site Recovery stellt verschiedene Failoveroptionen bereit.
 **Test-Failover** | Wird zum Ausführen einer Übung verwendet, mit der Ihre BCDR-Strategie überprüft wird – ohne Datenverluste oder Ausfallzeiten.| Erstellt eine Kopie der VM in Azure, ohne dass sich dies auf laufende Replikationsprozesse oder Ihre Produktionsumgebung auswirkt. | 1. Führen Sie ein Testfailover für eine einzelne VM oder mehrere VMs in einem Wiederherstellungsplan aus.<br/><br/> 2. Wählen Sie einen Wiederherstellungspunkt für das Testfailover aus.<br/><br/> 3. Wählen Sie ein Azure-Netzwerk aus, in dem die Azure-VM platziert wird, wenn sie nach dem Failover erstellt wird. Das Netzwerk wird nur für das Testfailover verwendet.<br/><br/> 4. Überprüfen Sie, ob die Übung wie erwartet funktioniert hat. Site Recovery bereinigt automatisch alle VMs, die während der Übung in Azure erstellt wurden.
 **Geplantes Failover – Hyper-V**  | Wird in der Regel für geplante Ausfälle verwendet.<br/><br/> Die Quell-VMs werden heruntergefahren. Die neuesten Daten werden synchronisiert, bevor das Failover initiiert wird. | Für den geplanten Workflow tritt kein Datenverlust auf. | 1. Planen Sie ein Wartungsfenster für die Ausfallzeit, und benachrichtigen Sie die Benutzer.<br/><br/> 2. Schalten Sie Apps für Benutzer offline.<br/><br/> 3. Initiieren Sie ein geplantes Failover mit dem neuesten Wiederherstellungspunkt. Das Failover wird nicht ausgeführt, wenn der Computer nicht heruntergefahren wird oder wenn Fehler auftreten.<br/><br/> 4. Überprüfen Sie nach dem Failover, ob die Azure-Replikat-VM in Azure aktiv ist.<br/><br/> 5. Führen Sie ein Commit für das Failover aus, um den Vorgang abzuschließen. Die Commitaktion löscht alle Wiederherstellungspunkte.
 **Failover – Hyper-V** | Wird in der Regel ausgeführt, wenn ein ungeplanter Ausfall auftritt oder der primäre Standort nicht verfügbar ist.<br/><br/> Optional können Sie die VM herunterfahren und letzte Änderungen synchronisieren, bevor Sie das Failover initiieren.  | Minimaler Datenverlust für Apps. | 1. Initiieren Sie Ihren BCDR-Plan. <br/><br/> 2. Initiieren Sie ein Failover. Legen Sie fest, ob Site Recovery die VM herunterfahren und die letzten Änderungen synchronisieren/replizieren soll, bevor das Failover ausgelöst wird.<br/><br/> 3. Sie können ein Failover auf eine Reihe unterschiedlicher Wiederherstellungspunkte ausführen. Eine Zusammenfassung finden Sie in der folgenden Tabelle.<br/><br/> Wenn Sie die Option zum Herunterfahren der VM nicht aktivieren oder Site Recovery die VM nicht herunterfahren kann, wird der letzte Wiederherstellungspunkt verwendet.<br/>Das Failover wird auch dann ausgeführt, wenn der Computer nicht heruntergefahren werden kann.<br/><br/> 4. Überprüfen Sie nach dem Failover, ob die Azure-Replikat-VM in Azure aktiv ist.<br/> Ggf. können Sie aus dem Aufbewahrungszeitraum, der 24 Stunden umfasst, einen anderen Wiederherstellungspunkt auswählen.<br/><br/> 5. Führen Sie ein Commit für das Failover aus, um den Vorgang abzuschließen. Die Commitaktion löscht alle verfügbaren Wiederherstellungspunkte.
-**Failover – VMware** | Wird in der Regel ausgeführt, wenn ein ungeplanter Ausfall auftritt oder der primäre Standort nicht verfügbar ist.<br/><br/> Optional können Sie angeben, dass Site Recovery versuchen soll, das Herunterfahren der VM auszulösen und letzte Änderungen zu synchronisieren und zu replizieren, bevor das Failover initiiert wird.  | Minimaler Datenverlust für Apps. | 1. Initiieren Sie Ihren BCDR-Plan. <br/><br/> 2. Initiieren Sie ein Failover aus Site Recovery. Geben Sie an, ob Site Recovery versuchen soll, das Herunterfahren der VM auszulösen und eine Synchronisierung durchzuführen, bevor das Failover ausgeführt wird.<br/> Das Failover wird auch dann ausgeführt, wenn die Computer nicht heruntergefahren werden können.<br/><br/> 3. Überprüfen Sie nach dem Failover, ob die Azure-Replikat-VM in Azure aktiv ist. <br/>Ggf. können Sie aus dem Aufbewahrungszeitraum, der 72 Stunden umfasst, einen anderen Wiederherstellungspunkt auswählen.<br/><br/> 5. Führen Sie ein Commit für das Failover aus, um den Vorgang abzuschließen. Die Commitaktion löscht alle Wiederherstellungspunkte.<br/> Bei Windows-VMs deaktiviert Site Recovery die VMware-Tools während des Failovers. 
+**Failover – VMware** | Wird in der Regel ausgeführt, wenn ein ungeplanter Ausfall auftritt oder der primäre Standort nicht verfügbar ist.<br/><br/> Optional können Sie angeben, dass Site Recovery versuchen soll, das Herunterfahren der VM auszulösen und letzte Änderungen zu synchronisieren und zu replizieren, bevor das Failover initiiert wird.  | Minimaler Datenverlust für Apps. | 1. Initiieren Sie Ihren BCDR-Plan. <br/><br/> 2. Initiieren Sie ein Failover aus Site Recovery. Geben Sie an, ob Site Recovery versuchen soll, das Herunterfahren der VM auszulösen und eine Synchronisierung durchzuführen, bevor das Failover ausgeführt wird.<br/> Das Failover wird auch dann ausgeführt, wenn die Computer nicht heruntergefahren werden können.<br/><br/> 3. Überprüfen Sie nach dem Failover, ob die Azure-Replikat-VM in Azure aktiv ist. <br/>Ggf. können Sie aus dem Aufbewahrungszeitraum, der 72 Stunden umfasst, einen anderen Wiederherstellungspunkt auswählen.<br/><br/> 5. Führen Sie ein Commit für das Failover aus, um den Vorgang abzuschließen. Die Commitaktion löscht alle Wiederherstellungspunkte.<br/> Bei Windows-VMs deaktiviert Site Recovery die VMware-Tools während des Failovers.
 
 ## <a name="failover-processing"></a>Failoververarbeitung
 
@@ -85,6 +85,8 @@ Während eines Failovers können Sie verschiedene Optionen für Wiederherstellun
 **Letzte App-Konsistenz mit mehreren VMs** |  Diese Option steht nur für Wiederherstellungspläne mit einer oder mehreren VMs zur Verfügung, bei denen Multi-VM-Konsistenz aktiviert ist. VMs, die Teil einer Replikationsgruppe sind, führen ein Failover auf den letzten allgemeinen Wiederherstellungspunkt mit Multi-VM-Anwendungskonsistenz durch. Andere VMs führen ein Failover auf ihren letzten anwendungskonsistenten Wiederherstellungspunkt durch.
 **Benutzerdefiniert** | Verwenden Sie diese Option für ein Failover einer bestimmten VM auf einen bestimmten Wiederherstellungszeitpunkt. Diese Option ist für Wiederherstellungspläne nicht verfügbar.
 
+> [!NOTE]
+> Wiederherstellungspunkte können nicht zu einem anderen Recovery Services-Tresor migriert werden.
 
 ## <a name="reprotectionfailback"></a>Erneuter Schutz/Failback
 
@@ -136,17 +138,17 @@ So schützen Sie Hyper-V-VMs erneut und führen ein Failback von Azure zum lokal
 - Sie führen ein geplantes Failback von Azure zum lokalen Standort aus.
 - Für das Failback der Hyper-V-VMs müssen keine speziellen Komponenten eingerichtet werden.
 - Während des geplanten Failovers können Sie Optionen auswählen, um Daten vor dem Failback zu synchronisieren:
-    - **Daten vor dem Failover synchronisieren**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da die Computer synchronisiert werden, ohne dass sie heruntergefahren werden. 
+    - **Daten vor dem Failover synchronisieren**: Diese Option minimiert die Ausfallzeiten der virtuellen Computer, da die Computer synchronisiert werden, ohne dass sie heruntergefahren werden.
         - Phase 1: Eine Momentaufnahme der Azure-VM wird erstellt und auf den lokalen Hyper-V-Host kopiert. Der Computer wird weiterhin in Azure ausgeführt.
         - Phase 2: Die Azure-VM wird heruntergefahren, sodass dort keine neuen Änderungen auftreten. Die letzten Deltaänderungen werden an den lokalen Server übertragen, und die lokale VM wird gestartet.
-    - **Daten nur während des Failovers synchronisieren**: Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und daher keine Prüfsummenberechnungen durchgeführt werden. Mit der Option wird ein Download des Datenträgers durchgeführt. Die Option wird empfohlen, wenn die VM bereits seit einer Weile in Azure ausgeführt wurde (mindestens einen Monat) oder wenn die lokale VM gelöscht wurde.  
+    - **Daten nur während des Failovers synchronisieren**: Diese Option ist schneller, da erwartet wird, dass die meisten Daten auf dem Datenträger geändert wurden, und daher keine Prüfsummenberechnungen durchgeführt werden. Mit der Option wird ein Download des Datenträgers durchgeführt. Die Option wird empfohlen, wenn die VM bereits seit einer Weile in Azure ausgeführt wurde (mindestens einen Monat) oder wenn die lokale VM gelöscht wurde.
 
 [Erfahren Sie mehr](hyper-v-azure-failback.md) über den erneuten Schutz und das Failback für Hyper-V.
 
 Wenn Sie Azure-VMs im lokalen Speicherort erneut schützen, können Sie angeben, ob ein Failback zum ursprünglichen oder einem anderen Speicherort erfolgen soll.
 
 - **Wiederherstellung am ursprünglichen Speicherort**: Damit wird ein Failback von Azure zum selben lokalen Quellcomputer ausgeführt, sofern dieser vorhanden ist. In diesem Szenario wählen Sie eine der im vorherigen Verfahren beschriebenen Synchronisierungsoptionen aus.
-- **Wiederherstellung an einem anderen Speicherort**: Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Bei dieser Option empfiehlt sich die Synchronisierung der Daten vor dem Failover. 
+- **Wiederherstellung an einem anderen Speicherort**: Wenn der lokale Computer nicht vorhanden ist, können Sie ein Failback von Azure zu einem anderen Speicherort durchführen. Wenn Sie die Azure-VM im lokalen Speicherort erneut schützen, wird der lokale Computer erstellt. Bei dieser Option empfiehlt sich die Synchronisierung der Daten vor dem Failover.
 - [Informieren](hyper-v-azure-failback.md) Sie sich über die Anforderungen und Einschränkungen für das Failback.
 
 
@@ -156,7 +158,7 @@ Nach dem Failback zum lokalen Standort aktivieren Sie die Option **Umgekehrt rep
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Führen Sie ein Failover von [bestimmten VMware-VMs](vmware-azure-tutorial-failover-failback.md) aus. 
+- Führen Sie ein Failover von [bestimmten VMware-VMs](vmware-azure-tutorial-failover-failback.md) aus.
 - Führen Sie ein Failover von [bestimmten Hyper-V-VMs](hyper-v-azure-failover-failback-tutorial.md) aus.
 - [Erstellen](site-recovery-create-recovery-plans.md) Sie einen Wiederherstellungsplan.
 - Führen Sie ein Failover von [VMs in einem Wiederherstellungsplan](site-recovery-failover.md) aus.
