@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: Schnellstarts
   items:
-    - name: Erstellen eines privaten Endpunkts
-      items:
-        - name: Azure-Portal
-          href: create-private-endpoint-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Erstellen eines Private Link-Diensts
-      items:
-        - name: Azure-Portal
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: create-private-link-service-cli.md
+    - name: 'Erstellen eines privaten Endpunkts: Portal'
+      href: create-private-endpoint-portal.md
+    - name: 'Erstellen eines privaten Endpunkts: PowerShell'
+      href: create-private-endpoint-powershell.md
+    - name: 'Erstellen eines privaten Endpunkts: Azure CLI'
+      href: create-private-endpoint-cli.md
+    - name: 'Erstellen eines Private Link-Diensts: Portal'
+      href: create-private-link-service-portal.md
+    - name: 'Erstellen eines Private Link-Diensts: PowerShell'
+      href: create-private-link-service-powershell.md
+    - name: 'Erstellen eines Private Link-Diensts: Azure CLI'
+      href: create-private-link-service-cli.md
 - name: Konzepte
   items:
     - name: Privater Endpunkt

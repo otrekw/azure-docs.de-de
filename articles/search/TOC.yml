@@ -35,7 +35,7 @@
       href: search-get-started-python.md
 - name: Tutorials
   items:
-    - name: 'Erstellen Ihrer ersten C#-App'
+    - name: 'Erstellen einer C#-App'
       items:
         - name: 1. Seite für die Standardsuche
           href: tutorial-csharp-create-first-app.md
@@ -47,13 +47,15 @@
           href: tutorial-csharp-facets.md
         - name: 5. Hinzufügen der Ergebnissortierung
           href: tutorial-csharp-orders.md
-    - name: Indizieren von Azure SQL-Datenbank
-      href: search-indexer-tutorial.md
-    - name: Indizieren von Azure-JSON-Blobs
-      href: search-semi-structured-data.md
-    - name: Indizieren mehrerer Azure-Datenquellen
-      href: tutorial-multiple-data-sources.md
-    - name: Erweitern um KI (Cognitive Search)
+    - name: Indizieren von Azure-Daten
+      items:
+        - name: Indizieren von Azure SQL-Datenbank
+          href: search-indexer-tutorial.md
+        - name: Indizieren von Azure-JSON-Blobs
+          href: search-semi-structured-data.md
+        - name: Indizieren mehrerer Azure-Datenquellen
+          href: tutorial-multiple-data-sources.md
+    - name: Erstellen von Inhalten mithilfe von KI
       items:
         - name: 'C#'
           href: cognitive-search-tutorial-blob-dotnet.md

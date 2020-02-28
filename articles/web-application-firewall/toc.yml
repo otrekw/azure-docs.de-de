@@ -50,6 +50,8 @@
       items:
         - name: Benutzerdefinierte Regeln
           href: ./afds/waf-front-door-custom-rules.md
+        - name: Ausschlusslisten
+          href: ./afds/waf-front-door-exclusion.md
         - name: Richtlinieneinstellungen
           href: ./afds/waf-front-door-policy-settings.md
         - name: Geofilterung

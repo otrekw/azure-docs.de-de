@@ -366,6 +366,24 @@
           href: hybrid-use-benefit-licensing.md
         - name: Verwenden der Rechte für das Hosten mehrerer Mandanten für Windows 10
           href: windows-desktop-multitenant-hosting-deployment.md
+    - name: Migrieren von einem klassischen Speicherkonto zum Azure Resource Manager
+      items:
+        - name: Deaktivierung ab dem 1. März 2023
+          href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Übersicht
+          href: migration-classic-resource-manager-overview.md
+        - name: Ausführliche Informationen zur Migration
+          href: migration-classic-resource-manager-deep-dive.md
+        - name: Planen der Migration
+          href: migration-classic-resource-manager-plan.md
+        - name: Migrieren mit PowerShell
+          href: migration-classic-resource-manager-ps.md
+        - name: Häufige Fehler bei der Migration
+          href: migration-classic-resource-manager-errors.md
+        - name: Communitytools für die Migration
+          href: migration-classic-resource-manager-community-tools.md
+        - name: Häufig gestellte Fragen
+          href: migration-classic-resource-manager-faq.md
     - name: Schützen von virtuellen Computern
       items:
         - name: Empfehlungen
@@ -677,7 +695,7 @@
           href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
     - name: Verwenden von VM-Erweiterungen
       href: ../extensions/overview.md
-    - name: Verschieben und Migrieren virtueller Computer
+    - name: Verschieben von VMs
       items:
         - name: Ändern des Abonnements oder der Ressourcengruppe
           href: move-vm.md
@@ -694,21 +712,6 @@
               href: aws-to-azure.md
             - name: Von Azure Site Recovery
               href: ../../site-recovery/site-recovery-migrate-to-azure.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Migrieren von der klassischen Bereitstellung zum Azure Resource Manager
-          href: migration-classic-resource-manager-overview.md
-          items:
-            - name: Ausführliche Informationen zur Migration
-              href: migration-classic-resource-manager-deep-dive.md
-            - name: Planen der Migration
-              href: migration-classic-resource-manager-plan.md
-            - name: Migrieren mit PowerShell
-              href: migration-classic-resource-manager-ps.md
-            - name: Häufige Fehler bei der Migration
-              href: migration-classic-resource-manager-errors.md
-            - name: Communitytools für die Migration
-              href: migration-classic-resource-manager-community-tools.md
-            - name: Häufig gestellte Fragen
-              href: migration-classic-resource-manager-faq.md
 - name: Problembehandlung
   href: ../troubleshooting/index.yml
 - name: Verweis
