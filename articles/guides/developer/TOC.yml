@@ -3,7 +3,7 @@
     - name: Entwicklerhandbuch
       href: azure-developer-guide.md
     - name: SDKs und Tools
-      href: 'https://docs.microsoft.com/azure/index#pivot=sdkstools'
+      href: 'https://aka.ms/azsdkpackages'
 - name: Schnellstart
   items:
     - name: Web-Apps
@@ -22,7 +22,7 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-create-your-first-application-in-visual-studio'
         - name: Container Service
           href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-deployment'
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen und Bereitstellen einer Web-App
       items:
