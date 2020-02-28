@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666702"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650560"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
+
+> [!IMPORTANT]
+> Der ursprüngliche AS2-Connector wird als veraltet markiert, stellen Sie also sicher, dass Sie stattdessen den **AS2 (v2)** -Connector verwenden. Diese Version bietet die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Durchsatz und Nachrichtengröße. Außerdem erfordert der native v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
 
 Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Connector verwenden, der Auslöser und Aktionen für die Verwaltung der AS2-Kommunikation bereitstellt. Um z. B. Sicherheit und Zuverlässigkeit bei der Übertragung von Nachrichten zu gewährleisten, können Sie die folgenden Aktionen verwenden:
 
@@ -46,12 +49,9 @@ Um mit AS2-Nachrichten in Azure Logic Apps zu arbeiten, können Sie den AS2-Conn
 
 In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und Decodierung zu einer bestehenden Logik-App hinzufügen können.
 
-> [!IMPORTANT]
-> Der ursprüngliche AS2-Connector wird als veraltet markiert, stellen Sie also sicher, dass Sie stattdessen den **AS2 (v2)** -Connector verwenden. Diese Version bietet die gleichen Funktionen wie die ursprüngliche Version, ist in der Logic Apps-Runtime nativ und sorgt für erhebliche Leistungsverbesserungen in Bezug auf Durchsatz und Nachrichtengröße. Außerdem erfordert der native v2-Connector keine Verbindung mit Ihrem Integrationskonto. Stellen Sie stattdessen sicher, dass Sie, wie in den Voraussetzungen beschrieben, Ihr Integrationskonto mit der Logik-App verbinden, in der Sie den Connector verwenden möchten.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Wenn Sie noch kein Azure-Abonnement haben, [melden Sie sich für ein kostenloses Azure-Konto an](https://azure.microsoft.com/free/).
 
 * Die Logik-App, von der aus Sie auf den AS2-Connector zugreifen möchten, und einen Trigger, der den Workflow Ihre Logik-App startet. Der AS2-Connector stellt nur Aktionen und keine Trigger bereit. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -63,9 +63,9 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
 * Wenn Sie [Azure Key Vault](../key-vault/key-vault-overview.md) für die Zertifikatsverwaltung verwenden, überprüfen Sie, ob Ihre Tresorschlüssel die Vorgänge **Verschlüsseln** und **Entschlüsseln** zulassen. Andernfalls treten beim Codieren und Decodieren Fehler auf.
 
-  Wechseln Sie im Azure-Portal zu Ihrem Schlüsseltresor, sehen Sie sich die **zulässigen Vorgänge** für den Tresorschlüssel an und bestätigen Sie, dass die Vorgänge **Verschlüsseln** und **Entschlüsseln** ausgewählt sind.
+  Wechseln Sie im Azure-Portal zu dem Schlüssel in Ihrem Schlüsseltresor, prüfen Sie die **Zulässigen Vorgänge** für Ihren Schlüssel, und bestätigen Sie, dass die Vorgänge **Verschlüsseln** und **Entschlüsseln** ausgewählt sind, z. B.:
 
-  ![Überprüfen der Tresorschlüsselvorgänge](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Überprüfen der Tresorschlüsselvorgänge](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -92,6 +92,9 @@ In diesem Artikel wird gezeigt, wie Sie die AS2-Aktionen für die Codierung und 
 
    ![Eigenschaften für die Nachrichtencodierung](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
+> [!TIP]
+> Wenn beim Senden von signierten oder verschlüsselten Nachrichten Probleme auftreten, sollten Sie andere SHA256-Algorithmusformate ausprobieren. Die AS2-Spezifikation stellt keine Informationen zu SHA256-Formaten bereit, sodass jeder Anbieter seine eigene Implementierung bzw. sein eigenes Format verwendet.
+
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>Decodieren von AS2-Nachrichten
@@ -116,8 +119,11 @@ Wenn Sie eine uneingeschränkt funktionsfähige Logik-App und ein AS2-Beispielsz
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details wie Trigger, Aktionen und Limits, wie sie in der OpenAPI-Datei (ehemals Swagger) des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/as2/).
+Weitere technische Details zu diesem Connector, z. B. Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/as2/). 
+
+> [!NOTE]
+> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Originalversion dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

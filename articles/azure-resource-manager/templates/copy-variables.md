@@ -3,18 +3,18 @@ title: Definieren mehrerer Instanzen einer Variablen
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage, um sie beim Erstellen einer Variablen mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 9e252a0b9721ffec99535c5d30e609e12e9e67eb
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210655"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622886"
 ---
 # <a name="variable-iteration-in-azure-resource-manager-templates"></a>Variableniteration in Azure Resource Manager-Vorlagen
 
-In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Variable in Ihrer Azure Resource Manager-Vorlage erstellen können. Durch das Hinzufügen des **copy**-Elements zum Variablenabschnitt Ihrer Vorlage können Sie die Anzahl der Elemente für eine Variable während der Bereitstellung dynamisch festlegen. Sie vermeiden außerdem die Wiederholung von Vorlagensyntax.
+In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Variable in Ihrer Azure Resource Manager-Vorlage erstellen können. Durch das Hinzufügen des **copy**-Elements zum Variablenabschnitt Ihrer Vorlage können Sie die Anzahl der Elemente für eine Variable während der Bereitstellung dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
-Sie können „copy“ auch mit [Ressourcen](copy-resources.md) und [Eigenschaften in einer Ressource](copy-properties.md) verwenden.
+Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Ausgaben](copy-outputs.md) verwenden.
 
 ## <a name="variable-iteration"></a>Variableniteration
 
@@ -305,7 +305,7 @@ Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azur
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Werte für eine Variable.
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Veranschaulicht die verschiedenen Methoden zum Durchlaufen von Variablen |
 |[Mehrere Sicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Stellt mehrere Sicherheitsregeln in einer Netzwerksicherheitsgruppe bereit. Die Sicherheitsregeln werden aus einem Parameter generiert. Informationen zum Parameter finden Sie im Artikel zur [Datei mit mehreren NSG-Parametern](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
@@ -313,7 +313,10 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
-* Informationen zu anderen Verwendungsmöglichkeiten für das „copy“-Element finden Sie unter [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md) und [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md).
+* Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
+  * [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md)
+  * [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md)
+  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
 

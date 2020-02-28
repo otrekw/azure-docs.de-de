@@ -1,23 +1,18 @@
 ---
-title: Häufig gestellte Fragen zu Azure App Configuration | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Azure App Configuration
 description: Häufig gestellte Fragen zu Azure App Configuration
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467588"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523491"
 ---
 # <a name="azure-app-configuration-faq"></a>Häufig gestellte Fragen zu Azure App Configuration
 
@@ -25,7 +20,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure App Configuration bea
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Wie unterscheidet sich App Configuration von Azure Key Vault?
 
-App Configuration ist auf einen bestimmten Satz von Anwendungsfällen ausgelegt: Es hilft Entwicklern dabei, Anwendungseinstellungen zu verwalten und die Verfügbarkeit von Funktionen zu steuern. Es zielt darauf ab, viele der Aufgaben, aus denen die Arbeit mit komplexen Konfigurationsdaten besteht, zu vereinfachen.
+App Configuration hilft Entwicklern dabei, Anwendungseinstellungen zu verwalten und die Verfügbarkeit von Funktionen zu steuern. Es zielt darauf ab, viele der Aufgaben, aus denen die Arbeit mit komplexen Konfigurationsdaten besteht, zu vereinfachen.
 
 App Configuration unterstützt Folgendes:
 
@@ -36,7 +31,7 @@ App Configuration unterstützt Folgendes:
 - Spezielle Verwaltungsvorgänge
 - Eine Benutzeroberfläche zur Featureverwaltung
 
-App Configuration stellt eine Ergänzung zu Key Vault dar, und die beiden sollten in den meisten Anwendungsbereitstellungen nebeneinander verwendet werden.
+App Configuration ergänzt Key Vault, und die beiden sollten in den meisten Anwendungsbereitstellungen nebeneinander verwendet werden.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Sollte ich Geheimnisse in App Configuration speichern?
 
@@ -62,7 +57,7 @@ Für ein einzelnes Schlüssel-Wert-Element gilt eine Beschränkung von 10 KB.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Wie sollte ich Konfigurationen für mehrere Umgebungen (Test, Staging, Produktion usw.) speichern?
 
-Zurzeit kontrollieren Sie auf Speicherebene (also pro Speicher), wer Zugriff auf App Configuration hat. Verwenden Sie für jede Umgebung, die andere Berechtigungen erfordert, einen separaten Speicher. Dieser Ansatz bietet Ihnen die beste Sicherheitsisolierung.
+Sie kontrollieren auf Speicherebene (also pro Speicher), wer Zugriff auf App Configuration hat. Verwenden Sie für jede Umgebung, die andere Berechtigungen erfordert, einen separaten Speicher. Dieser Ansatz bietet Ihnen die beste Sicherheitsisolierung.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Welche Methoden werden für die Verwendung von App Configuration empfohlen?
 
@@ -70,9 +65,14 @@ Siehe unter [Bewährte Methoden](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Wie viel kostet App Configuration?
 
-Es gibt zwei Tarife: 1) einen Free-Tarif, und 2) einen Standard-Tarif.
+Es gibt zwei Tarife: 
 
-Wenn Sie vor der Einführung des Standard-Tarifs einen Speicher erstellt haben, wird er bei allgemeiner Verfügbarkeit automatisch in den Free-Tarif verschoben. Sie können ein Upgrade auf den Standard-Tarif durchführen, oder im Free-Tarif verbleiben, wenn dies Ihren Anforderungen entspricht.
+- Free-Tarif
+- Standard-Tarif.
+
+Wenn Sie vor der Einführung des Standard-Tarifs einen Speicher erstellt haben, wird er bei allgemeiner Verfügbarkeit automatisch in den Free-Tarif verschoben. Sie können ein Upgrade auf den Standard-Tarif durchführen, oder im Free-Tarif verbleiben.
+
+Ein Downgrade vom Standard-Tarif in den Free-Tarif ist nicht möglich. Sie können einen neuen Speicher im Free-Tarif erstellen und dann Konfigurationsdaten in diesen Speicher importieren.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Welchen App Configuration-Tarif sollte ich verwenden?
 

@@ -4,18 +4,16 @@ description: In diesem Artikel wird beschrieben, wie ein Auffächerungsszenario 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a87a4edd544c2f7d8ff9c6415df2f2dda125f2bf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232995"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562189"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
 *Auffächern/Auffächern nach innen* bezieht sich auf das Muster, bei dem mehrere Funktionen gleichzeitig ausgeführt werden und die Ergebnisse im Anschluss zusammengefasst werden. In diesem Artikel wird ein Beispiel beschrieben, in dem [Durable Functions](durable-functions-overview.md) zum Implementieren eines Auffächerungsszenarios (nach innen und außen) verwendet wird. Das Beispiel stellt eine langlebige Funktion dar, die alle oder einige der Websiteinhalte in Azure Storage sichert.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -33,27 +31,11 @@ Ein Durable Functions-Ansatz bietet Ihnen alle genannten Vorteile mit sehr gerin
 
 In diesem Artikel werden die folgenden Funktionen in der Beispiel-App beschrieben:
 
-* `E2_BackupSiteContent`
-* `E2_GetFileList`
-* `E2_CopyFileToBlob`
+* `E2_BackupSiteContent`: Eine [Orchestratorfunktion](durable-functions-bindings.md#orchestration-trigger), die `E2_GetFileList` aufruft, um eine Liste der zu sichernden Dateien abzurufen, und dann `E2_CopyFileToBlob` aufruft, um die einzelnen Dateien zu sichern.
+* `E2_GetFileList`: Eine [Aktivitäts Funktion](durable-functions-bindings.md#activity-trigger), die eine Liste der Dateien in einem Verzeichnis zurückgibt.
+* `E2_CopyFileToBlob`: Eine Aktivitätsfunktion, die eine einzelne Datei in Azure Blob Storage sichert.
 
-In den folgenden Abschnitten werden die Konfiguration und der Code beschrieben, die für C#-Skripts verwendet werden. Der Code für die Visual Studio-Entwicklung ist am Ende des Artikels angegeben.
-
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Die Orchestrierung der Cloudsicherung (Visual Studio Code und Azure-Portal-Beispielcode)
-
-Die Funktion `E2_BackupSiteContent` verwendet die Standarddatei *function.json* für Orchestratorfunktionen.
-
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
-
-Im Folgenden wird der Code dargestellt, der die Orchestratorfunktion implementiert:
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
-
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+### <a name="e2_backupsitecontent-orchestrator-function"></a>Orchestratorfunktion „E2_BackupSiteContent“
 
 Diese Orchestratorfunktion führt im Wesentlichen Folgendes aus:
 
@@ -63,49 +45,84 @@ Diese Orchestratorfunktion führt im Wesentlichen Folgendes aus:
 4. Sie wartet, bis alle Uploads abgeschlossen wurden.
 5. Sie gibt die Gesamtzahl der Bytes zurück, die in Azure Blob Storage hochgeladen wurden.
 
-Beachten Sie die Zeilen `await Task.WhenAll(tasks);` (C#) und `yield context.df.Task.all(tasks);` (JavaScript). Sämtliche einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* erwartet, sodass sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `Task.WhenAll` (C#) oder `context.df.Task.all` (JavaScript) übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit der Task Parallel Library (TPL) in .NET oder [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Function-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
+# <a name="c"></a>[C#](#tab/csharp)
+
+Im Folgenden wird der Code dargestellt, der die Orchestratorfunktion implementiert:
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=16-42)]
+
+Beachten Sie die Zeile `await Task.WhenAll(tasks);`. Sämtliche einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* erwartet, sodass sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `Task.WhenAll` übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit der Task Parallel Library (TPL) in .NET vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Functions-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
+
+Nach dem Warten von `Task.WhenAll` aus wissen wir, dass alle Funktionsaufrufe abgeschlossen wurden und Werte an uns zurückgegeben haben. Jeder Aufruf von `E2_CopyFileToBlob` gibt die Anzahl von hochgeladenen Bytes zurück. Die Summe der Gesamtbytezahl wird folglich berechnet, indem alle diese Rückgabewerte addiert werden.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Die Funktion verwendet die Standarddatei *function.json* für Orchestratorfunktionen.
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/function.json)]
+
+Im Folgenden wird der Code dargestellt, der die Orchestratorfunktion implementiert:
+
+[!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
+
+Beachten Sie die Zeile `yield context.df.Task.all(tasks);`. Sämtliche einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* ausgegeben, sodass sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `context.df.Task.all` übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in JavaScript vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Functions-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
 
 > [!NOTE]
 > Obwohl Aufgaben ein ähnliches Konzept zugrunde liegt wie JavaScript-Zusagen, sollten für Orchestratorfunktionen `context.df.Task.all` und `context.df.Task.any` anstelle von `Promise.all` und `Promise.race` verwendet werden, um die Parallelisierung von Aufgaben zu verwalten.
 
-Nach dem Warten in `Task.WhenAll` (oder der Rückgabe über `context.df.Task.all`) wissen wir, dass alle Funktionsaufrufe abgeschlossen wurden und Werte zurückgegeben haben. Jeder Aufruf von `E2_CopyFileToBlob` gibt die Anzahl von hochgeladenen Bytes zurück. Die Summe der Gesamtbytezahl wird folglich berechnet, indem alle diese Rückgabewerte addiert werden.
+Nach der Rückgabe von `context.df.Task.all` wissen wir, dass alle Funktionsaufrufe abgeschlossen wurden und Werte an uns zurückgegeben haben. Jeder Aufruf von `E2_CopyFileToBlob` gibt die Anzahl von hochgeladenen Bytes zurück. Die Summe der Gesamtbytezahl wird folglich berechnet, indem alle diese Rückgabewerte addiert werden.
 
-## <a name="helper-activity-functions"></a>Hilfsaktivitätsfunktionen
+---
 
-Bei den Hilfsaktivitätsfunktionen handelt es sich, wie bei anderen Beispielen, um normale Funktionen, die die Triggerbindung `activityTrigger` verwenden. Die Datei *function.json* für `E2_GetFileList` sieht wie folgt aus:
+### <a name="helper-activity-functions"></a>Hilfsaktivitätsfunktionen
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
+Bei den Hilfsaktivitätsfunktionen handelt es sich, wie bei anderen Beispielen, um normale Funktionen, die die Triggerbindung `activityTrigger` verwenden.
+
+#### <a name="e2_getfilelist-activity-function"></a>Aktivitätsfunktion „E2_GetFileList“
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=44-54)]
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Die Datei *function.json* für `E2_GetFileList` sieht wie folgt aus:
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/function.json)]
 
 Und hier ist die Implementierung:
 
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-Bei der JavaScript-Implementierung von `E2_GetFileList` wird das Modul `readdirp` verwendet, um die Verzeichnisstruktur rekursiv zu lesen.
+Die Funktion verwendet das `readdirp`-Modul (Version 2.x), um die Verzeichnisstruktur rekursiv zu lesen.
+
+---
 
 > [!NOTE]
-> Sie wundern sich vielleicht, weshalb Sie diesen Code nicht einfach direkt in die Orchestratorfunktion einfügen konnten. Das können Sie, aber damit würden Sie eine der Grundregeln der Orchestratorfunktionen brechen. Diese besagt, dass die Funktionen niemals eine Eingabe/Ausgabe vornehmen dürfen, den lokalen Dateisystemzugriff inbegriffen.
+> Sie wundern sich vielleicht, weshalb Sie diesen Code nicht einfach direkt in die Orchestratorfunktion einfügen konnten. Das können Sie, aber damit würden Sie eine der Grundregeln der Orchestratorfunktionen brechen. Diese besagt, dass die Funktionen niemals eine Eingabe/Ausgabe vornehmen dürfen, den lokalen Dateisystemzugriff inbegriffen. Weitere Informationen finden Sie unter [Codeeinschränkungen für Orchestratorfunktionen](durable-functions-code-constraints.md).
+
+#### <a name="e2_copyfiletoblob-activity-function"></a>Aktivitätsfunktion „E2_CopyFileToBlob“
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs?range=56-81)]
+
+> [!NOTE]
+> Sie müssen das NuGet-Paket `Microsoft.Azure.WebJobs.Extensions.Storage` installieren, um den Beispielcode auszuführen.
+
+Die Funktion verwendet einige erweiterte Features von Azure Functions-Bindungen (d. h. die Verwendung des [Parameters `Binder`](../functions-dotnet-class-library.md#binding-at-runtime)). Sie müssen sich zum Zwecke dieser ausführlichen Anleitung jedoch nicht um diese Details kümmern.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Die Datei *function.json* für `E2_CopyFileToBlob` ist ebenso einfach:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/function.json)]
 
-Auch die C#-Implementierung ist unkompliziert. Es werden einige erweiterte Features von Azure Functions-Bindungen verwendet (d.h. die Verwendung des Parameters `Binder`). Sie müssen sich zum Zwecke dieser ausführlichen Anleitung jedoch nicht um diese Details kümmern.
-
-### <a name="c"></a>C#
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
-
-Die JavaScript-Implementierung hat keinen Zugriff auf das `Binder`-Feature von Azure Functions, daher wird sie durch [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) ersetzt.
+Die JavaScript-Implementierung verwendet das [Azure Storage SDK für Node](https://github.com/Azure/azure-storage-node), um die Dateien in Azure Blob Storage hochzuladen.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
+
+---
 
 Bei der Implementierung wird die Datei vom Datenträger geladen, und die Inhalte werden asynchron in ein Blob mit dem gleichen Namen im Container „backups“ gestreamt. Der Rückgabewert ist die Anzahl der Bytes, die in den Speicher kopiert und anschließend von der Orchestratorfunktion für die Berechnung der Summe verwendet werden.
 
@@ -164,15 +181,6 @@ Content-Type: application/json; charset=utf-8
 ```
 
 Jetzt können Sie sehen, dass die Orchestrierung abgeschlossen ist und wie viel Zeit für den Abschluss benötigt wurde. Zudem wird Ihnen ein Wert für das Feld `output` angezeigt, der angibt, dass etwa 450 KB Protokolle hochgeladen wurden.
-
-## <a name="visual-studio-sample-code"></a>Visual Studio-Beispielcode
-
-So sieht die Orchestrierung als einzelne C#-Datei in einem Visual Studio-Projekt aus:
-
-> [!NOTE]
-> Sie müssen das NuGet-Paket `Microsoft.Azure.WebJobs.Extensions.Storage` installieren, um den unten stehenden Beispielcode auszuführen.
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -2,13 +2,13 @@
 title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
-ms.date: 09/05/2019
-ms.openlocfilehash: f8ab3c3bd259f83a61d0b030a49e158ccd6e2a69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/22/2020
+ms.openlocfilehash: cb5f0a71c31c26d679efd8a17b360dab2ad0862b
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938876"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615950"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -70,26 +70,12 @@ Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode
 
 ## <a name="automate-os-and-framework-patching"></a>Automatisierung von Betriebssystem- und Frameworkpatching
 
-Durch die Möglichkeit zur Erkennung von Basisimageaktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht oder ein Basisimage in einem öffentlichen Repository. wie Docker Hub, aktualisiert wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
+Durch die Möglichkeit zur Erkennung von *Basisimage*aktualisierungen bietet ACR Tasks einen echten Mehrwert für Ihren Containererstellungsworkflow. Ein Basisimage, das ein Feature der meisten Containerimages ist, ist ein übergeordnetes Image, auf dem ein oder mehrere Anwendungsimages basieren. Basisimages enthalten in der Regel das Betriebssystem und manchmal auch Anwendungsframeworks. 
 
-Containerimages lassen sich grob in *Basisimages* und *Anwendungsimages* unterteilen. Basisimages enthalten neben anderen Anpassungen in der Regel das Betriebssystem und die Anwendungsframeworks, auf denen Ihre Anwendung basiert. Diese Basisimages basieren üblicherweise auf öffentlichen Upstreamimages, beispielsweise [Alpine Linux][base-alpine], [Windows][base-windows], [.NET][base-dotnet] oder [Node.js][base-node]. Ein Basisimage kann mehreren Anwendungsimages zugrunde liegen.
+Sie können einen ACR Task einrichten, um eine Abhängigkeit von einem Basisimage zu verfolgen, wenn es ein Anwendungsimage erstellt. Wenn das aktualisierte Basisimage in Ihre Registrierung gepusht oder ein Basisimage in einem öffentlichen Repository. wie Docker Hub, aktualisiert wird, kann ACR Tasks automatisch alle darauf basierenden Anwendungsimages erstellen.
+Die automatische Erkennung und Neuerstellung von ACR Tasks spart Zeit, die ansonsten für die manuelle Nachverfolgung und Aktualisierung der einzelnen Anwendungsimages aufgewendet werden müsste, die auf Ihr aktualisiertes Basisimage verweisen.
 
-Wenn ein Betriebssystem- oder App-Framework-Image durch die zuständige Upstream-Instanz aktualisiert wird (etwa mit einem wichtigen Sicherheitspatch für das Betriebssystem), müssen Sie auch Ihre Basisimages aktualisieren, um die Korrektur zu integrieren. Daraufhin müssen auch alle Anwendungsimages neu erstellt werden, um die Upstreamkorrekturen aus Ihrem Basisimage zu integrieren.
-
-Da Basisimageabhängigkeiten bei der Erstellung eines Containerimages von ACR Tasks dynamisch erkannt werden, kann ACR Tasks auch erkennen, dass das Basisimage eines Anwendungsimages aktualisiert wurde. Mit einer einzelnen vorkonfigurierten [Buildaufgabe](container-registry-tutorial-base-image-update.md#create-a-task) kann ACR Tasks dann **automatisch alle Anwendungsimages neu erstellen**. Die automatische Erkennung und Neuerstellung von ACR Tasks spart Zeit, die ansonsten für die manuelle Nachverfolgung und Aktualisierung der einzelnen Anwendungsimages aufgewendet werden müsste, die auf Ihr aktualisiertes Basisimage verweisen.
-
-Für Imageerstellungen aus einer Dockerfile-Datei verfolgt ein ACR Task ein Basisimageupdate, wenn sich das Basisimage an einem der folgenden Speicherorte befindet:
-
-* Dieselbe Azure-Containerregistrierung, in der der Task ausgeführt wird
-* Eine andere Azure-Containerregistrierung in derselben Region 
-* Ein öffentliches Repository in Docker Hub
-* Ein öffentliches Repository in Microsoft Container Registry
-
-> [!NOTE]
-> * Der Basisimageupdate-Trigger ist standardmäßig in einer ACR Tasks-Instanz aktiviert. 
-> * Derzeit verfolgt ACR Tasks nur Basisimageupdates für Anwendungsimages (*Runtime*) nach. ACR Tasks verfolgt keine Basisimageupdates für Zwischenimages (*Buildzeit*) nach, die in mehrstufigen Dockerfile-Dateien verwendet werden. 
-
-Weitere Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages mit Azure Container Registry Tasks](container-registry-tutorial-base-image-update.md).
+Erfahren Sie mehr über die [Basisimageaktualisierungs-Trigger](container-registry-tasks-base-images.md) für ACR Tasks. Und erfahren Sie, wie Sie einen Imagebuild auslösen, wenn ein Basisimage per Pushvorgang in eine Containerregistrierung übertragen wird, im Tutorial [Automatisieren von Containerimagebuilds, wenn ein Basisimage in einer Azure Container Registry aktualisiert wird](container-registry-tutorial-base-image-update.md).
 
 ## <a name="schedule-a-task"></a>Planen eines Tasks
 
@@ -116,7 +102,7 @@ Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von 
 
 Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
 
-| Kontextspeicherort | Beschreibung | Beispiel |
+| Kontextspeicherort | BESCHREIBUNG | Beispiel |
 | ---------------- | ----------- | ------- |
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
 | GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |

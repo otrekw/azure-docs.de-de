@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: 0da8322a57d925608f7b52054c7a52e6cb3e5d06
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: befdb4a8cceaef18961c1e9297e23ed5d405ff50
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484654"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586188"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions – Fehlerbehandlung
 
@@ -30,7 +30,9 @@ Bei der Integration in Azure-Dienste können Fehler auftreten, deren Ursache in 
 
 + [Blob Storage](functions-bindings-storage-blob-output.md#exceptions-and-return-codes)
 
-+ [Event Hubs](functions-bindings-event-hubs.md#exceptions-and-return-codes)
++ [Event Hubs](functions-bindings-event-hubs-output.md#exceptions-and-return-codes)
+
++ [IoT Hubs](functions-bindings-event-iot-output.md#exceptions-and-return-codes)
 
 + [Notification Hubs](functions-bindings-notification-hubs.md#exceptions-and-return-codes)
 

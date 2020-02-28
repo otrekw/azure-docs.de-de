@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049882"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586603"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -70,7 +70,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
 * Das delegierte Azure NetApp Files-Subnetz muss in der Lage sein, alle Active Directory Domain Services-Domänencontroller (ADDS) in der Domäne zu erreichen, einschließlich aller lokalen und Remotedomänencontroller. Andernfalls kann es zu Dienstunterbrechungen kommen.  
 
-    Wenn Sie über Domänencontroller verfügen, die über das delegierte Azure NetApp Files-Subnetz nicht erreichbar sind, können Sie eine Azure-Supportanfrage übermitteln, um den Bereich von **global** (Standard) in **Standort** zu ändern.  Azure NetApp Files muss nur mit Domänencontrollern an dem Standort kommunizieren, an dem sich der Adressraum des delegierten Azure NetApp Files-Subnetzes befindet.
+    Wenn Sie über Domänencontroller verfügen, die über das delegierte Azure NetApp Files-Subnetz nicht erreichbar sind, können Sie während der Erstellung der Active Directory-Verbindung einen Active Directory-Standort angeben.  Azure NetApp Files muss nur mit Domänencontrollern an dem Standort kommunizieren, an dem sich der Adressraum des delegierten Azure NetApp Files-Subnetzes befindet.
 
     Weitere Informationen zu AD-Standorten und -Diensten finden Sie unter [Entwerfen der Standorttopologie](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology). 
     
@@ -88,8 +88,10 @@ Weitere Informationen zu zusätzlichen AD-Informationen finden Sie in den [häuf
         Das DNS, das für den Active Directory-Domänenbeitritt und SMB-Authentifizierungsvorgänge erforderlich ist 
     * **Sekundäres DNS**   
         Der sekundäre DNS-Server für das Sicherstellen redundanter Namensdienste 
-    * **Domäne**  
+    * **AD-DNS-Domänenname**  
         Dies ist der Domänenname Ihrer Active Directory Domain Services, denen Sie beitreten möchten.
+    * **AD-Standortname**  
+        Dies ist der Name des Standorts, auf den die Domänencontrollerermittlung beschränkt wird.
     * **Präfix des SMB-Servers (Computerkonto)**  
         Dies ist das Namenspräfix für das Computerkonto in Active Directory, das Azure NetApp Files für die Erstellung von neuen Konten verwendet.
 

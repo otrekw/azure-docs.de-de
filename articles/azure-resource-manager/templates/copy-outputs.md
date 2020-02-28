@@ -1,0 +1,163 @@
+---
+title: Definieren mehrerer Instanzen eines Ausgabewerts
+description: Verwenden des „copy“-Vorgangs in einer Azure Resource Manager-Vorlage, um das Zurückgeben eines Werts aus einer Bereitstellung mehrere Male zu durchlaufen.
+ms.topic: conceptual
+ms.date: 02/25/2020
+ms.openlocfilehash: db5c548c7bd4c60357d3656b1273b0192c497459
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77624513"
+---
+# <a name="output-iteration-in-azure-resource-manager-templates"></a>Ausgabeniteration in Azure Resource Manager-Vorlagen
+
+In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Ausgabe in Ihrer Azure Resource Manager-Vorlage erstellen können. Durch das Hinzufügen des **copy**-Elements zum Variablenabschnitt Ihrer Vorlage können Sie eine Anzahl von Elementen während der Bereitstellung dynamisch zurückgeben.
+
+Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Variablen](copy-variables.md) verwenden.
+
+## <a name="outputs-iteration"></a>Ausgabeniteration
+
+Das copy-Element hat das folgende allgemeine Format:
+
+```json
+"copy": [
+  {
+    "count": <number-of-iterations>,
+    "input": <values-for-the-variable>
+  }
+]
+```
+
+Die Eigenschaft **count** gibt die gewünschte Anzahl von Iterationen für den Ausgabewert an.
+
+Die Eigenschaft **input** gibt die Eigenschaften an, die Sie wiederholen möchten. Sie erstellen ein Array von Elementen, das aus dem Wert in der **input**-Eigenschaft erstellt wird. Es kann sich um eine einzelne Eigenschaft handeln (z. B. eine Zeichenfolge) oder um ein Objekt mit mehreren Eigenschaften.
+
+Im folgenden Beispiel wird eine Variable Anzahl von Speicherkonten erstellt und für jedes Speicherkonto ein Endpunkt zurückgegeben:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageCount": {
+            "type": "int",
+            "defaultValue": 2
+        }
+    },
+    "variables": {
+        "baseName": "[concat('storage', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(copyIndex(), variables('baseName'))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": "[parameters('storageCount')]"
+            }
+        }
+    ],
+    "outputs": {
+        "storageEndpoints": {
+            "type": "array",
+            "copy": {
+                "count": "[parameters('storageCount')]",
+                "input": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]"
+            }
+        }
+    }
+}
+```
+
+Die vorangehende Vorlage gibt ein Array mit den folgenden Werten zurück:
+
+```json
+[
+    "https://0storagecfrbqnnmpeudi.blob.core.windows.net/",
+    "https://1storagecfrbqnnmpeudi.blob.core.windows.net/"
+]
+```
+
+Im nächsten Beispiel werden drei Eigenschaften aus den neuen Speicherkonten zurückgegeben.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageCount": {
+            "type": "int",
+            "defaultValue": 2
+        }
+    },
+    "variables": {
+        "baseName": "[concat('storage', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(copyIndex(), variables('baseName'))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": "[parameters('storageCount')]"
+            }
+        }
+    ],
+    "outputs": {
+        "storageInfo": {
+            "type": "array",
+            "copy": {
+                "count": "[parameters('storageCount')]",
+                "input": {
+                    "id": "[reference(concat(copyIndex(), variables('baseName')), '2019-04-01', 'Full').resourceId]",
+                    "blobEndpoint": "[reference(concat(copyIndex(), variables('baseName'))).primaryEndpoints.blob]",
+                    "status": "[reference(concat(copyIndex(), variables('baseName'))).statusOfPrimary]"
+                }
+            }
+        }
+    }
+}
+```
+
+Das vorangehende Beispiel gibt ein Array mit den folgenden Werten zurück:
+
+```json
+[
+    {
+        "id": "Microsoft.Storage/storageAccounts/0storagecfrbqnnmpeudi",
+        "blobEndpoint": "https://0storagecfrbqnnmpeudi.blob.core.windows.net/",
+        "status": "available"
+    },
+    {
+        "id": "Microsoft.Storage/storageAccounts/1storagecfrbqnnmpeudi",
+        "blobEndpoint": "https://1storagecfrbqnnmpeudi.blob.core.windows.net/",
+        "status": "available"
+    }
+]
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
+* Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
+  * [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md)
+  * [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md)
+  * [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md)
+* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
+

@@ -3,18 +3,18 @@ title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Hier erfahren Sie, wie Sie den Kopiervorgang in einer Azure Resource Manager-Vorlage verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b1e31f981f361b4cfbe7e7930f2c70bfce8b8656
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210671"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622856"
 ---
 # <a name="property-iteration-in-azure-resource-manager-templates"></a>Eigenschafteniteration in Azure Resource Manager-Vorlagen
 
 In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements **copy** zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
-„copy“ kann auch mit [Ressourcen](copy-resources.md) und [Variablen](copy-variables.md) verwendet werden.
+„copy“ kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
 ## <a name="property-iteration"></a>Iteration von Eigenschaften
 
@@ -192,7 +192,10 @@ Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
-* Informationen zu anderen Verwendungsmöglichkeiten für das copy-Element finden Sie unter [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md) und [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md).
+* Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
+  * [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md)
+  * [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md)
+  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
 

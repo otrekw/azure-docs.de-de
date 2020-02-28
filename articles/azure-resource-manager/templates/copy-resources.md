@@ -3,18 +3,18 @@ title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden des copy-Vorgangs und von Arrays in einer Azure Resource Manager-Vorlage, um einen Ressourcentyp mehrere Male bereitzustellen.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 38b5bcd38e0dc8ba8c758e9aa8371857541ba55e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210659"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620220"
 ---
 # <a name="resource-iteration-in-azure-resource-manager-templates"></a>Ressourceniteration in Azure Resource Manager-Vorlagen
 
-In diesem Artikel erfahren Sie, wie mehr als eine Instanz einer Ressource in Ihrer Azure Resource Manager-Vorlage erstellen. Durch das Hinzufügen des **copy**-Elements zum Ressourcenabschnitt Ihrer Vorlage können Sie die Anzahl der bereitzustellenden Ressourcen dynamisch festlegen. Sie vermeiden außerdem die Wiederholung von Vorlagensyntax.
+In diesem Artikel erfahren Sie, wie mehr als eine Instanz einer Ressource in Ihrer Azure Resource Manager-Vorlage erstellen. Durch das Hinzufügen des **copy**-Elements zum Ressourcenabschnitt Ihrer Vorlage können Sie die Anzahl der bereitzustellenden Ressourcen dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
-Sie können „copy“ auch mit [Eigenschaften](copy-properties.md) und [Variablen](copy-variables.md) verwenden.
+„copy“ kann auch mit [Eigenschaften](copy-properties.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
 Wenn Sie angeben müssen, ob eine Ressource überhaupt bereitgestellt wird, finden Sie die erforderlichen Informationen unter [Element „condition“](conditional-resource-deployment.md).
 
@@ -130,6 +130,8 @@ Im folgenden Beispiel wird ein Speicherkonto für jeden im Parameter angegebenen
   "outputs": {}
 }
 ```
+
+Wenn Sie Werte von den bereitgestellten Ressourcen zurückgeben möchten, können Sie [„copy“ im Ausgabenabschnitt](copy-outputs.md) verwenden.
 
 ## <a name="serial-or-parallel"></a>Seriell oder parallel
 
@@ -279,7 +281,10 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
-* Informationen zu anderen Verwendungsmöglichkeiten für das „copy“-Element finden Sie unter [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md) und [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md).
+* Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
+  * [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md)
+  * [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md)
+  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
 * Informationen zur Verwendung des „copy“-Elementes mit geschachtelten Vorlagen finden Sie unter [Verwenden des „copy“-Elements](linked-templates.md#using-copy).
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
 * Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).

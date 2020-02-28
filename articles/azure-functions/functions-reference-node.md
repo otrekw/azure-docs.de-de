@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714795"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584488"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -232,7 +232,7 @@ Sie können die Ausgabebindungsdaten mit der `context.done`-Methode anstelle des
 context.bindingData
 ```
 
-Gibt ein benanntes Objekt zurück, das Triggermetadaten und Funktionsaufrufdaten (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) enthält. Ein Beispiel für Triggermetadaten finden Sie in diesem [Event Hubs-Beispiel](functions-bindings-event-hubs.md#trigger).
+Gibt ein benanntes Objekt zurück, das Triggermetadaten und Funktionsaufrufdaten (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`) enthält. Ein Beispiel für Triggermetadaten finden Sie in diesem [Event Hubs-Beispiel](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>context.Done-Methode
 
@@ -265,7 +265,7 @@ context.log(message)
 Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablaufverfolgungsebene. Es sind zusätzliche Protokollierungsmethoden in `context.log` verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in das Funktionsprotokoll schreiben können:
 
 
-| Methode                 | Beschreibung                                |
+| Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_message_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
@@ -357,7 +357,7 @@ Das `context.req`-Objekt (Anforderungsobjekt) weist die folgenden Eigenschaften 
 
 Das `context.res`-Objekt (Antwortobjekt) weist die folgenden Eigenschaften auf:
 
-| Eigenschaft  | Beschreibung                                               |
+| Eigenschaft  | BESCHREIBUNG                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | Ein Objekt, das den Hauptteil der Antwort enthält.         |
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
@@ -418,14 +418,17 @@ Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erste
 
 ## <a name="node-version"></a>Node-Version
 
-Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Runtime verwendete Node.js-Version:
+Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Functions Runtime unterstützte Node.js-Version nach Betriebssystem:
 
-| Functions-Version | Node.js-Version | 
-|---|---|
-| 1.x | 6.11.2 (durch die Laufzeit gesperrt) |
-| 2.x  | _Active LTS_- und _Maintenance LTS_-Node.js-Versionen (~10 empfohlen). Legen Sie die Zielversion in Azure fest, indem Sie die [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ auf `~10` festlegen.|
+| Functions-Version | Node-Version (Windows) | Node-Version (Linux) |
+|---|---| --- |
+| 1.x | 6.11.2 (durch die Laufzeit gesperrt) | – |
+| 2.x  | ~8<br/>~10 (empfohlen)<br/>~12<sup>*</sup> | ~8 (empfohlen)<br/>~10  |
+| 3.x | ~10<br/>~12 (empfohlen)  | ~10<br/>~12 (empfohlen) |
 
-Sie können die aktuelle Version anzeigen, die die Laufzeit verwendet, indem Sie die oben gezeigte App-Einstellung überprüfen oder `process.version` aus einer beliebigen Funktion ausgeben.
+<sup>*</sup>Node ~12 ist zurzeit in Version 2.x der Functions Runtime zulässig. Um die bestmögliche Leistung zu erzielen, empfehlen wir jedoch die Verwendung der Functions Runtime, Version 3. x, mit Node ~12. 
+
+Sie können die aktuelle Version anzeigen, die die Laufzeit verwendet, indem Sie die oben gezeigte App-Einstellung überprüfen oder `process.version` aus einer beliebigen Funktion ausgeben. Legen Sie die Zielversion in Azure fest, indem Sie die [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ auf eine unterstützte LTS-Version wie `~10` festlegen.
 
 ## <a name="dependency-management"></a>Verwaltung von Abhängigkeiten
 Um Communitybibliotheken in Ihrem JavaScript-Code zu verwenden (wie im folgenden Beispiel gezeigt), müssen Sie sicherstellen, dass alle Abhängigkeiten für Ihre Funktions-App in Azure installiert sind.
