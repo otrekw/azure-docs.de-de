@@ -140,6 +140,17 @@
         - name: Schritte zum Bereitstellen
           displayName: 'standards, iso, 27001'
           href: ./samples/iso27001-ase-sql-workload/deploy.md
+    - name: Medien
+      items:
+        - name: Übersicht
+          displayName: 'standards, Media MPAA'
+          href: ./samples/media/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, Media'
+          href: ./samples/media/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, Media'
+          href: ./samples/media/deploy.md
     - name: NIST SP 800-53 Rev4
       items:
         - name: Übersicht
