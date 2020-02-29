@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642164"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498631"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
@@ -29,13 +29,13 @@ In diesem Artikel erfahren Sie, wie Sie einen Azure Cosmos DB-[Indexer](search-
 
 Da die Begrifflichkeiten etwas verwirrend sind, soll hier darauf hingewiesen werden, dass die [Indizierung in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) und die [Indizierung in der kognitiven Azure-Suche](search-what-is-an-index.md) zwei verschiedene Vorgänge sind, die jedem Dienst eigen sind. Wenn Sie mit der Indizierung in der kognitiven Azure-Suche beginnen, muss Ihre Azure Cosmos DB-Datenbank bereits vorhanden sein und Daten enthalten.
 
-Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos DB-Elemente](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) durchforsten, auf die über verschiedene Protokolle zugegriffen wird.
+Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos DB-Elemente](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) durchforsten, auf die über verschiedene Protokolle zugegriffen wird. 
 
-+ Für die allgemein verfügbare [SQL-API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) können Sie das [Portal](#cosmos-indexer-portal), die [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) oder das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) verwenden.
++ Für die allgemein verfügbare [SQL-API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) können Sie das [Portal](#cosmos-indexer-portal), die [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) oder das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
-+ Für die [MongoDB-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) und die [Gremlin-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) können Sie entweder das [Portal](#cosmos-indexer-portal) oder die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) in einem Aufruf vom Typ [Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) verwenden, um den Indexer zu erstellen.
++ Für die [MongoDB-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) können Sie entweder das [Portal](#cosmos-indexer-portal) oder die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
-+ Für die [Cassandra-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) kann nur die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) in einem Aufruf vom Typ [Create Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) verwendet werden.
++ Für die [Cassandra-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) und die [Gremlin-API (Vorschauversion)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction) können Sie nur die [REST-API-Version 2019-05-06-Preview](search-api-preview.md) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
 
 > [!Note]

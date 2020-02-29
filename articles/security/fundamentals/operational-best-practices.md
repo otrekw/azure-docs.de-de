@@ -1,5 +1,6 @@
 ---
-title: Bewährte Sicherheitsmethoden für den Schutz Ihrer Ressourcen – Microsoft Azure
+title: Bewährte Methoden für die Sicherheit Ihrer Azure-Ressourcen
+titleSuffix: Azure security
 description: Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219509"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500304"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.

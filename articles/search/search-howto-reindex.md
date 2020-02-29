@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212297"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498379"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Neuerstellen eines Index in Azure Cognitive Search.
 
@@ -33,7 +33,7 @@ Wenn eine der folgenden Bedingungen erfüllt ist, löschen Sie den Index, und er
 | Zuweisen eines Analysetools zu einem Feld | [Analysetools](search-analyzers.md) werden in einem Index definiert und dann Feldern zugewiesen. Sie können einem Index jederzeit eine neue Analysetooldefinition hinzufügen, aber Sie können ein Analysetool nur *zuweisen*, wenn das Feld erstellt wird. Dies gilt sowohl für das **Analysetool** als auch die **indexAnalyzer**-Eigenschaften. Die **searchAnalyzer**-Eigenschaft ist eine Ausnahme (Sie können diese Eigenschaft einem vorhandenen Feld zuweisen). |
 | Aktualisieren oder Löschen einer Analysetooldefinition in einem Index | Sie können eine bestehende Analysetoolkonfiguration (Analysetool, Tokenizer, Tokenfilter oder Zeichenfilter) im Index nicht löschen oder ändern, es sei denn, Sie erstellen den gesamten Index neu. |
 | Hinzufügen eines Felds zu einer Vorschlagsfunktion | Wenn ein Feld bereits vorhanden ist, und Sie es einer [Vorschlagsfunktion](index-add-suggesters.md) hinzufügen möchten, müssen Sie den Index neu erstellen. |
-| Löschen eines Felds | Um alle Spuren eines Felds physisch entfernen zu können, müssen Sie den Index neu erstellen. Wenn eine sofortige Wiederherstellung nicht sinnvoll ist, können Sie den Anwendungscode so ändern, dass der Zugriff auf das Feld „gelöscht“ deaktiviert wird. Die Felddefinition und die Inhalte bleiben physisch bis zur nächsten Neuerstellung im Index, wenn Sie ein Schema verwenden, bei dem das betreffende Feld ausgelassen wird. |
+| Löschen eines Felds | Um alle Spuren eines Felds physisch entfernen zu können, müssen Sie den Index neu erstellen. Wenn eine sofortige Neuerstellung nicht praktikabel ist, können Sie den Anwendungscode so ändern, dass der Zugriff auf das "gelöschte" Feld deaktiviert wird, oder den [$select-Abfrageparameter](search-query-odata-select.md) verwenden, um auszuwählen, welche Felder im Resultset angezeigt werden. Die Felddefinition und die Inhalte bleiben physisch bis zur nächsten Neuerstellung im Index, wenn Sie ein Schema verwenden, bei dem das betreffende Feld ausgelassen wird. |
 | Wechseln zwischen Ebenen | Wenn Sie mehr Kapazität benötigen, gibt es kein direktes Upgrade im Azure-Portal. Es muss ein neuer Dienst erstellt werden, und Indizes müssen von Grund auf für den neuen Dienst erstellt werden. Um diesen Prozess zu automatisieren, können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden. Diese App sichert Ihren Index in einer Reihe von JSON-Dateien und erstellt ihn dann in einem Suchdienst, den Sie angeben, neu.|
 
 ## <a name="update-conditions"></a>Aktualisieren von Bedingungen
@@ -52,9 +52,11 @@ Wenn Sie ein neues Feld hinzufügen, erhalten vorhandene indizierte Dokumente ei
 
 ## <a name="how-to-rebuild-an-index"></a>Neuerstellen eines Indexes
 
-Während der Entwicklung ändert sich das Indexschema häufig. Sie können dies einplanen, indem Sie Indizes mit einem kleinen repräsentativen Datensatz erstellen, die schnell gelöscht, neu erstellt und wieder geladen werden können. 
+Während der Entwicklung ändert sich das Indexschema häufig. Sie können dies einplanen, indem Sie Indizes mit einem kleinen repräsentativen Datensatz erstellen, die schnell gelöscht, neu erstellt und wieder geladen werden können.
 
 Für Anwendungen, die bereits in der Produktion eingesetzt werden, empfiehlt sich die Erstellung eines neuen Indexes, der parallel zu einem vorhandenen Index ausgeführt wird, um eine Downtime von Abfragen zu vermeiden. Ihr Anwendungscode ermöglicht die Umleitung auf den neuen Index.
+
+Die Indizierung wird nicht im Hintergrund ausgeführt, und der Dienst gleicht die zusätzliche Indizierung mit laufenden Abfragen aus. Während der Indizierung können Sie [Abfrageanforderungen im Portal überwachen](search-monitor-queries.md), um sicherzustellen, dass die Abfragen innerhalb eines angemessenen Zeitraums abgeschlossen werden.
 
 1. Bestimmen Sie, ob eine Neuerstellung erforderlich ist. Wenn Sie nur Felder hinzufügen oder einen Teil des Indexes ändern, der nicht mit Feldern zusammenhängt, können Sie die [Definition möglicherweise einfach aktualisieren](https://docs.microsoft.com/rest/api/searchservice/update-index), ohne sie zu löschen, neu zu erstellen und vollständig neu zu laden.
 
@@ -78,6 +80,10 @@ Wenn Sie den Index laden, wird der invertierte Index der einzelnen Felder mit al
 ## <a name="check-for-updates"></a>Suchen nach Updates
 
 Sie können mit der Abfrage eines Indexes beginnen, sobald das erste Dokument geladen wurde. Wenn Sie die ID eines Dokuments kennen, gibt die [REST-API zur Dokumentsuche](https://docs.microsoft.com/rest/api/searchservice/lookup-document) das jeweilige Dokument zurück. Für umfangreichere Testvorgänge sollten Sie warten, bis der Index vollständig geladen wurde, und anschließend den erwarteten Kontext anhand von Abfragen überprüfen.
+
+Sie können den [Suchexplorer](search-explorer.md) oder ein Webtesttool wie [Postman](search-get-started-postman.md) verwenden, um nach aktualisierten Inhalten zu suchen.
+
+Wenn Sie ein Feld hinzugefügt oder umbenannt haben, verwenden Sie [$select](search-query-odata-select.md), um dieses Feld zurückzugeben: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 
 ## <a name="see-also"></a>Weitere Informationen
 

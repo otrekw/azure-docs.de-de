@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651337"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
@@ -36,7 +36,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | entitiesDefinitionUri | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
 |inlineEntitiesDefinition | Inline-JSON-Entitätsdefinitionen. Dieser Parameter ersetzt den entitiesDefinitionUri-Parameter, falls vorhanden. Es können nicht mehr als 10 KB der Konfiguration inline bereitgestellt werden. Weitere Informationen zum erwarteten JSON-Schema finden Sie unter [Benutzerdefinierte Entitätsdefinition](#custom-entity-definition-format) weiter unten. |
@@ -45,7 +45,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | Beschreibung                   |
+| Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | text          | Der zu analysierende Text          |
 | languageCode  | Optional. Der Standardwert ist `"en"`.  |
@@ -54,7 +54,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 ## <a name="skill-outputs"></a>Skillausgaben
 
 
-| Ausgabename     | Beschreibung                   |
+| Ausgabename     | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | entities | Ein Array von Objekten, die Informationen über die gefundenen Übereinstimmungen enthalten, sowie zugehörige Metadaten. Jede der identifizierten Entitäten kann die folgenden Felder enthalten:  <ul> <li> *name:* Identifizierte Entität der obersten Ebene. Die Entität stellt die „normalisierte“ Form dar. </li> <li> *id:*  Ein eindeutiger Bezeichner für die Entität, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *description*: Entitätsbeschreibung, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert. </li> <li> *type:* Entitätstyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *subtype:* Entitätsuntertyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li>  <li> *matches*: Sammlung, die die einzelnen Übereinstimmungen für diese Entität im Quelltext beschreibt. Jede Übereinstimmung verfügt über die folgenden Elemente: </li> <ul> <li> *text*: Die unformatierte Textübereinstimmung aus dem Quelldokument. </li> <li> *offset*: Die Fundstelle der Übereinstimmung im Text. </li> <li> *length*:  Die Länge des übereinstimmenden Texts. </li> <li> *matchDistance*: Die Anzahl der Zeichen, in denen sich diese Übereinstimmung vom ursprünglichen Entitätsnamen oder -alias unterscheidet.  </li> </ul> </ul>
   |
@@ -63,7 +63,7 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 Es gibt drei verschiedene Möglichkeiten, die Liste der benutzerdefinierten Entitäten für die Qualifikation „Benutzerdefinierte Entitätssuche“ bereitzustellen. Sie können die Liste in einer CSV-Datei, einer JSON-Datei oder als Inlinedefinition als Teil der Qualifikationsdefinition zur Verfügung stellen.  
 
-Wenn es sich bei der Definitionsdatei um eine CSV- oder JSON-Datei handelt, muss der Pfad der Datei als Teil des *entitiesDefitionUri*-Parameters bereitgestellt werden. In diesem Fall wird die Datei einmal am Anfang jeder Indexerausführung heruntergeladen. Die Datei muss verfügbar sein, solange der Indexer ausgeführt werden soll.
+Wenn es sich bei der Definitionsdatei um eine CSV- oder JSON-Datei handelt, muss der Pfad der Datei als Teil des *entitiesDefitionUri*-Parameters bereitgestellt werden. In diesem Fall wird die Datei einmal am Anfang jeder Indexerausführung heruntergeladen. Die Datei muss verfügbar sein, solange der Indexer ausgeführt werden soll. Außerdem muss die Datei UTF-8-codiert sein.
 
 Wenn die Definition inline bereitgestellt wird, sollte Sie inline als Inhalt des *inlineEntitiesDefinition*-Skillparameters bereitgestellt werden. 
 
@@ -143,7 +143,7 @@ Ein komplexeres Beispiel einer JSON-Definition kann optional die ID, die Beschre
 
 In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausführlicher beschrieben, die Sie bei der Definition der Entitäten festlegen können, die übereinstimmen sollen:
 
-|  Feldname  |        Beschreibung  |
+|  Feldname  |        BESCHREIBUNG  |
 |--------------|----------------------|
 | name | Entitätsdeskriptor der obersten Ebene. Übereinstimmungen in der Ausgabe der Qualifikation werden nach diesem Namen gruppiert; er sollte die „normalisierte“ Form des gefundenen Texts darstellen.  |
 | description  | (Optional) Dieses Feld kann als Pass-Through-Feld für benutzerdefinierte Metadaten über die übereinstimmenden Texte verwendet werden. Der Wert dieses Felds wird mit jeder Übereinstimmung zur Entität in der Ausgabe der Qualifikation angezeigt. |
@@ -156,7 +156,7 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 | defaultFuzzyEditDistance | (Optional) Ändert den Standardwert für die Fuzzybearbeitungsdistanz dieser Entität. Es kann verwendet werden, um die Standardeinstellung für den fuzzyEditDistance-Wert aller Aliase zu ändern. |
 | aliases | (Optional) Ein Array komplexer Objekte, die verwendet werden können, um alternative Schreibweisen oder Synonyme für den Stammnamen der Entität anzugeben. |
 
-| Aliaseigenschaften | Beschreibung |
+| Aliaseigenschaften | BESCHREIBUNG |
 |------------------|-------------|
 | text  | Die alternative Schreibweise oder Darstellung eines bestimmten Zielentitätsnamens.  |
 | caseSensitive | (Optional) Funktioniert wie der oben beschriebene Parameter „CaseSensitive“ der Stammentität, gilt aber nur für diesen einen Alias. |

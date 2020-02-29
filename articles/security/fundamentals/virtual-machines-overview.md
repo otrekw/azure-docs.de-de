@@ -1,5 +1,6 @@
 ---
-title: Sicherheitsfeatures, die für virtuelle Azure-Computer verwendet werden – Azure-Sicherheit | Microsoft-Dokumentation
+title: Mit Azure-VMs verwendete Sicherheitsfeatures
+titleSuffix: Azure security
 description: Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit Azure Virtual Machines verwendet werden können.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792615"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500383"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -146,7 +147,7 @@ Weitere Informationen:
 * [Azure Security Center – Häufig gestellte Fragen](/azure/security-center/security-center-faq)
 * [Planungs- und Betriebshandbuch für Azure Security Center](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>Compliance
+## <a name="compliance"></a>Kompatibilität
 
 Azure Virtual Machines ist für FISMA, FedRAMP, HIPAA, PCI DSS Level 1 und andere Complianceprogramme zertifiziert. So können Sie auch mit Ihren eigenen Azure-Anwendungen die verschiedenen Complianceanforderungen besser erfüllen, und Ihr Unternehmen kann sicherstellen, dass diverse nationale und internationale rechtliche Vorgaben eingehalten werden.
 
