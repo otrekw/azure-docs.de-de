@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: a2970ea3f5ad360deaedd7efc82154cd3bc50337
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907047"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77617108"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Erweiterte Datensicherheit für SQL Server-Instanzen in Azure Virtual Machines (Vorschau)
 Advanced Data Security für SQL Server-Instanzen auf Azure Virtual Machines ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Zu dieser Previewfunktion zählen aktuell die Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die Bedrohungen für Ihre Datenbank darstellen können. 
@@ -61,7 +61,7 @@ Um einen neuen Arbeitsbereich zu erstellen, befolgen Sie die Anweisungen unter [
 Um den SQL Server-Host mit einem Arbeitsbereich zu verbinden, befolgen Sie die Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows).
 
 
-## <a name="set-up-email-notification-for-atp-alerts"></a>Einrichten einer E-Mail-Benachrichtigung für ATP-Warnungen 
+## <a name="set-up-email-notification-for-security-alerts"></a>Einrichten einer E-Mail-Benachrichtigung für Sicherheitswarnungen 
 
 Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigung erhalten sollen, wenn Security Center-Warnungen generiert werden. Die E-Mail enthält einen direkten Link zur Warnung in Azure Security Center mit allen relevanten Details. 
 

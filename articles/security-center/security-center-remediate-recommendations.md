@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981906"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603500"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -26,7 +26,7 @@ Empfehlungen enthalten Vorschläge dazu, wie Sie Ihre Ressourcen besser schütze
 
 ## Schritte zur Bereinigung<a name="remediation-steps"></a>
 
-Nach der Überprüfung aller Empfehlungen müssen Sie entscheiden, welche zuerst umgesetzt werden soll. Zur Priorisierung empfiehlt sich die Verwendung der [Secure Score-Auswirkung](security-center-recommendations.md#monitor-recommendations).
+Nach der Überprüfung aller Empfehlungen müssen Sie entscheiden, welche zuerst umgesetzt werden soll. Zur Priorisierung Ihrer Aktionen empfiehlt sich die Verwendung der [Auswirkung auf die Sicherheitsbewertung](security-center-recommendations.md#monitor-recommendations).
 
 1. Klicken Sie in der Liste auf die gewünschte Empfehlung.
 

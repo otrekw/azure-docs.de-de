@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7ffab200b50a7c4d1af60a230f237b18e8afc621
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754226"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616383"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Verfügbare unterstützte Features in Azure Security Center
 
@@ -33,15 +33,15 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 
 ## Virtuelle Computer/Server – unterstützte Features <a name="vm-server-features"></a>
 
-### <a name="windowstabfeatures-windows"></a>[Windows](#tab/features-windows)
+### <a name="windows"></a>[Windows](#tab/features-windows)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Dokumentation zu virtuellen Computern**|**Azure Virtual Machine Scale Sets**|**Azure-fremde Computer**|**Preise**
 |[Microsoft Defender ATP-Integration](security-center-wdatp.md)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Standard|
-|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](security-center-alerts-iaas.md)|✔|✔|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
+|[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](threat-protection.md)|✔|✔|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
 |[Warnungen der Erkennung von Fileless-Bedrohungen](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
-|[Warnungen der netzwerkbasierten Bedrohungserkennung](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Warnungen der netzwerkbasierten Bedrohungserkennung](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Native Sicherheitsrisikobewertung](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -59,7 +59,7 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 |[Netzwerksicherheitsbewertung](security-center-network-recommendations.md)|✔|✔|-|Kostenlos|
 
 
-### <a name="linuxtabfeatures-linux"></a>[Linux](#tab/features-linux)
+### <a name="linux"></a>[Linux](#tab/features-linux)
 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
@@ -67,7 +67,7 @@ Die folgenden Abschnitte enthalten Security Center-Features, die für die [unter
 |[Microsoft Defender ATP-Integration](security-center-wdatp.md)|-|-|-|Standard|
 |[Warnungen zur Bedrohungserkennung für Virtual Machine-Verhaltensanalysen](security-center-alerts-iaas.md)|✔ (für unterstützte Versionen)|✔ (für unterstützte Versionen)|✔|Empfehlungen (kostenlos) Bedrohungserkennung (Standard)|
 |[Warnungen der Erkennung von Fileless-Bedrohungen](alerts-reference.md#alerts-windows)|-|-|-|Standard|
-|[Warnungen der netzwerkbasierten Bedrohungserkennung](security-center-alerts-service-layer.md#azure-network-layer)|✔|✔|-|Standard|
+|[Warnungen der netzwerkbasierten Bedrohungserkennung](threat-protection.md#network-layer)|✔|✔|-|Standard|
 |[Just-in-Time-VM-Zugriff](security-center-just-in-time.md)|✔|-|-|Standard|
 |[Native Sicherheitsrisikobewertung](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
 |[Dateiintegritätsüberwachung](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
@@ -159,5 +159,5 @@ Die folgenden PaaS-Ressourcen werden von Azure Security Center unterstützt:
 - Hier erfahren Sie, wie Sie [die Entwurfsaspekte in Bezug auf die Einführung von Azure Security Center planen und verstehen](security-center-planning-and-operations-guide.md).
 - Informieren Sie sich über die [Plattformen, die Security Center unterstützen](security-center-os-coverage.md).
 - Erfahren Sie mehr über die [Bedrohungserkennung für virtuelle Computer und Server in Azure Security Center](security-center-alerts-iaas.md).
-- Lesen Sie [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
+- Lesen Sie [Häufig gestellte Fragen zu Azure Security Center](faq-general.md).
 - Lesen Sie [Blogbeiträge zur Sicherheit und Compliance von Azure](https://blogs.msdn.com/b/azuresecurity/).

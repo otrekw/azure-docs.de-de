@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200729"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603364"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center und Azure Virtual Machines
 Mit [Azure Security Center](https://azure.microsoft.com/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
@@ -47,7 +47,7 @@ Für die ersten Schritte mit Azure Security Center müssen Sie Folgendes wissen 
 
 * Sie benötigen ein Microsoft Azure-Abonnement. Weitere Informationen zum Free- und Standard-Tarif von Security Center finden Sie unter [Security Center Preise](https://azure.microsoft.com/pricing/details/security-center/).
 * Weitere Informationen zur Planung und zum Betrieb in Bezug auf die Einführung von Security Center finden Sie unter [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md).
-* Informationen zu Unterstützungsmöglichkeiten für Betriebssysteme finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md). 
+* Informationen zu unterstützten Betriebssystemen finden Sie unter [Azure Security Center – Häufig gestellte Fragen](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Sicherheitsrichtlinie festlegen
 Die Datensammlung muss aktiviert sein, damit Azure Security Center die erforderlichen Informationen sammeln kann, um Empfehlungen und Warnungen bereitstellen zu können, die basierend auf der von Ihnen konfigurierten Sicherheitsrichtlinie generiert werden. In der Abbildung unten sehen Sie, dass **Datensammlung** auf **Ein** festgelegt ist.
@@ -97,6 +97,5 @@ Wählen Sie eine Sicherheitswarnung aus, um weitere Informationen zu den Ereigni
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
-
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
+* [Häufig gestellte Fragen – virtuelle Computer](faq-vms.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.

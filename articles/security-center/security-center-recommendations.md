@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4f41f4996f230a373245633b9449e93c403a1dfc
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 408b0f020be72b8e6b10dd6c97298afda1b91360
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430294"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603591"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
@@ -38,7 +38,7 @@ Jede Empfehlung beinhaltet Folgendes:
 - Eine kurze Beschreibung der empfohlenen Aktion
 - Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen <!-- In some cases, Quick Fix remediation is available. -->
 - Angaben zu den Ressourcen, für die die empfohlene Aktion ausgeführt werden sollte
-- Die **Secure Score-Auswirkung**, d. h. die Punkte, um die Ihre Sicherheitsbewertung erhöht wird, wenn Sie die Empfehlung implementieren
+- Die **Auswirkung auf die Sicherheitsbewertung**, d. h. die Punkte, um die Ihre Sicherheitsbewertung erhöht wird, wenn Sie die Empfehlung implementieren.
 
 ## Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
 
@@ -53,7 +53,7 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
     Sie können Empfehlungen filtern. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter**, um die Empfehlungen zu filtern. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
 
    * **EMPFEHLUNGEN:** Die Empfehlung
-   * **SECURE SCORE-AUSWIRKUNG:** Eine Bewertung, die von Security Center anhand Ihrer Sicherheitsempfehlungen generiert wurde, samt Anwendung von komplexen Algorithmen, mit denen bestimmt wird, wie wichtig jede Empfehlung ist. Weitere Informationen finden Sie unter [Secure Score-Berechnung](security-center-secure-score.md#secure-score-calculation).
+   * **SECURE SCORE-AUSWIRKUNG:** Eine Bewertung, die von Security Center anhand Ihrer Sicherheitsempfehlungen generiert wurde, samt Anwendung von komplexen Algorithmen, mit denen bestimmt wird, wie wichtig jede Empfehlung ist. Weitere Informationen finden Sie unter [Berechnung der Sicherheitsbewertung](security-center-secure-score.md#secure-score-calculation).
    * **RESSOURCE**: Eine Liste mit den Ressourcen, für die diese Empfehlung gilt.
    * **STATUSLEISTEN:**  Beschreibt den Schweregrad der jeweiligen Empfehlung:
        * **Hoch (rot):** Ein Sicherheitsrisiko betrifft eine wichtige Ressource (z. B. eine Anwendung, eine VM oder eine Netzwerksicherheitsgruppe) und erfordert einen Eingriff.

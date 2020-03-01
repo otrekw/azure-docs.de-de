@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355280"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603281"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Befolgen von Azure Security Center-Empfehlungen zum Erhöhen der Sicherheit
 Sie können die Wahrscheinlichkeit eines Sicherheitsvorfalls verringern, indem Sie eine Sicherheitsrichtlinie und die Azure Security Center-Empfehlungen umsetzen. In diesem Artikel wird erläutert, wie mithilfe von Sicherheitsrichtlinien und Empfehlungen in Security Center Sicherheitsangriffe abgewehrt werden können. 
@@ -61,11 +61,11 @@ Im Rahmen seiner täglichen Überwachungsaktivitäten meldet sich Jeff bei Azure
 
 4. Da Jeff über viele verbundene virtuelle Computer und Server verfügt, entscheidet er, dass er sich auf **Compute und Apps** konzentriert.
 
-5. Als Jeff auf **Compute und Apps** klickt, wird ihm eine Liste mit Empfehlungen angezeigt, und er arbeitet diese gemäß ihrer Auswirkungen auf die Sicherheitsbewertung ab.
+5. Als Jeff auf **Compute und Apps** klickt, wird ihm eine Liste mit Empfehlungen angezeigt, und er arbeitet diese gemäß ihrer Auswirkung auf die Sicherheitsbewertung ab.
 
 6. Jeff verfügt über zahlreiche virtuelle Computer mit Internetzugriff, und da deren Ports verfügbar sind, macht er sich Sorgen, dass ein Angreifer die Kontrolle über die Server erlangen könnte. Jeff entscheidet sich daher für [**Just-in-Time-VM-Zugriff**](security-center-just-in-time.md).
 
-Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkungen auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
+Jeff geht die Empfehlungen mit hoher und mittlerer Priorität weiter durch und trifft Entscheidungen zu ihrer Umsetzung. Bei jeder Empfehlung sieht sich Jeff die ausführlichen Informationen an, die vom Security Center bereitgestellt werden, um zu verstehen, welche Ressourcen betroffen sind, wie die Auswirkung auf die Sicherheitsbewertung sind, und was jede Empfehlung bedeutet, sowie die Korrekturschritte dafür, wie jedes Problem korrigiert werden kann.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Die Überwachungsempfehlungen im Security Center helfen Ihnen dabei, Sicherheitsrisiken zu beseitigen, ehe ein Angriff erfolgt. Wenn Sie Korrekturen gemäß den Empfehlungen vornehmen, verbessern Sie Ihre Sicherheitsbewertung sowie den Sicherheitsstatus Ihrer Workloads. Security Center ermittelt automatisch neue Ressourcen, die Sie bereitstellen, bewertet diese anhand Ihrer Sicherheitsrichtlinie und stellt neue Empfehlungen zu deren Schutz bereit.

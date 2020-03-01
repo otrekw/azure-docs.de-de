@@ -1,5 +1,5 @@
 ---
-title: Secure Score in Azure Security Center | Microsoft-Dokumentation
+title: Sicherheitsbewertung in Azure Security Center | Microsoft-Dokumentation
 description: " Priorisieren Sie Sicherheitsempfehlungen mithilfe von Secure Score in Azure Security Center. "
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 79154a13722654ef5cbbe7ac99bb67d4b761fe60
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76903445"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603481"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
@@ -29,64 +29,60 @@ ms.locfileid: "76903445"
 >
 > Um an der Vorschau teilzunehmen, öffnen Sie das Azure-Portal, starten Sie Azure Security Center, und wählen Sie Secure Score aus. Dort sehen Sie ein Banner am oberen Rand der Seite, in dem der neue Secure Score angeboten wird. Alternativ können Sie [hier](https://aka.ms/ascnewscore) klicken.
 
-Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Der Azure Secure Score überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Secure Score ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
+Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Sicherheitsbewertung überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Sicherheitsbewertung ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
 
-## <a name="secure-score-calculation"></a>Secure Score-Berechnung
+## <a name="secure-score-calculation"></a>Berechnung der Sicherheitsbewertung
 
 Security Center ahmt die Arbeit des Sicherheitsanalysten nach, überprüft die Sicherheitsempfehlungen und wendet erweiterte Algorithmen an, um zu bestimmen, wie wichtig die jeweiligen Empfehlungen sind.
-Azure Security Center überprüft ständig die aktiven Empfehlungen und berechnet auf dieser Grundlage Ihren Secure Score. Die jeweilige Bewertung einer Empfehlung ergibt sich aus deren Schweregrad und bewährten Methoden für die Sicherheit, die sich am stärksten auf die Sicherheit Ihrer Workload auswirken.
+Azure Security Center überprüft ständig die aktiven Empfehlungen und berechnet auf dieser Grundlage Ihre Sicherheitsbewertung. Die jeweilige Bewertung einer Empfehlung ergibt sich aus deren Schweregrad und bewährten Methoden für die Sicherheit, die sich am stärksten auf die Sicherheit Ihrer Workload auswirken.
 
-Security Center bietet Ihnen auch einen **Secure Score-Gesamtwert**. 
+Security Center bietet Ihnen auch einen **Gesamtwert der Sicherheitsbewertung**. 
 
-Beim **Secure Score-Gesamtwert** handelt es sich um eine Ansammlung aller Ihrer Empfehlungen. Sie können den Secure Score-Gesamtwert je nach Auswahl für alle Abonnements oder Verwaltungsgruppen anzeigen. Die Bewertung variiert je nach ausgewähltem Abonnement und aktiven Empfehlungen für diese Abonnements.
+Beim **Gesamtwert der Sicherheitsbewertung** handelt es sich um eine Ansammlung aller Ihrer Empfehlungen. Sie können den Gesamtwert der Sicherheitsbewertung je nach Auswahl für alle Abonnements oder Verwaltungsgruppen anzeigen. Die Bewertung variiert je nach ausgewähltem Abonnement und aktiven Empfehlungen für diese Abonnements.
 
-Um zu überprüfen, welche Empfehlungen die größte Auswirkung auf den Secure Score haben, können Sie die drei Empfehlungen mit den größten Auswirkungen im Security Center-Dashboard anzeigen, oder Sie können die Empfehlungen auf dem Listenblatt mithilfe der Spalte **Secure Score-Auswirkung** sortieren.
+Um zu überprüfen, welche Empfehlungen die größte Auswirkung auf die Sicherheitsbewertung haben, können Sie die drei Empfehlungen mit den größten Auswirkungen im Security Center-Dashboard anzeigen, oder Sie können die Empfehlungen auf dem Listenblatt mithilfe der Spalte **Auswirkung auf die Sicherheitsbewertung** sortieren.
 
-So zeigen Sie den Secure Score-Gesamtwert an:
+So zeigen Sie den Gesamtwert der Sicherheitsbewertung an:
 
 1. Klicken Sie auf dem Azure-Dashboard auf **Security Center** und dann auf **Sicherheitsbewertung**.
 
 2. Oben sehen Sie Hervorhebungen der Sicherheitsbewertung:
-   - **Gesamte Sicherheitsbewertung** stellt die Bewertung nach Richtlinien und ausgewähltem Abonnement dar.
-   - **Sicherheitsbewertung nach Kategorie** zeigt Ihnen, welche Ressourcen, die meiste Aufmerksamkeit benötigen.
-   - **Beste Empfehlungen gemäß Auswirkung auf die Sicherheitsbewertung** enthält eine Liste mit Empfehlungen, deren Umsetzung Ihre Sicherheitsbewertung am stärksten verbessert.
+   - **Sicherheitsbewertung gesamt** stellt die Bewertung nach Richtlinien und ausgewähltem Abonnement dar.
+   - **Sicherheitsbewertung nach Kategorie** zeigt Ihnen, welche Ressourcen die meiste Aufmerksamkeit benötigen.
+   - Über **Top-Empfehlungen gemäß Auswirkung auf die Sicherheitsbewertung** wird eine Liste mit Empfehlungen bereitgestellt, deren Umsetzung Ihre Sicherheitsbewertung am stärksten verbessert.
  
-   ![Secure Score](./media/security-center-secure-score/secure-score-dashboard.png)
+   ![Sicherheitsbewertung](./media/security-center-secure-score/secure-score-dashboard.png)
 
 3. In der folgenden Tabelle sehen Sie alle Ihre Abonnements und die jeweilige gesamte Sicherheitsbewertung.
 
    > [!NOTE]
-   > Das Sicherheitsbewertungsergebnis einzelner Abonnements entspricht nicht der gesamten Sicherheitsbewertung. Die Sicherheitsbewertung ist eine Berechnung, die auf dem Verhältnis zwischen Ihren fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen gemäß Empfehlung basiert, nicht ein Ergebnis der Ihre Abonnements übergreifenden Sicherheitsbewertungen. 
+   > Die Summe der Sicherheitsbewertungen der einzelnen Abonnements entspricht nicht dem Gesamtwert der Sicherheitsbewertung. Die Sicherheitsbewertung wird basierend auf dem Verhältnis zwischen Ihren fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen gemäß Empfehlung berechnet und ist nicht die Summe der Sicherheitsbewertungen Ihrer Abonnements. 
    >
 4. Klicken Sie auf **Empfehlungen anzeigen**, um die Empfehlungen für dieses Abonnement anzuzeigen, die Sie durchführen können, um Ihre Sicherheitsbewertung zu verbessern.
-4. In der Liste der Empfehlungen können Sie sehen, dass für jede Empfehlung eine Spalte mit der **Auswirkung auf die Sicherheitsbewertung** enthalten ist. Dieser Wert gibt an, um wie viel sich der Secure Score-Gesamtwert verbessert, wenn Sie den Empfehlungen folgen. Wenn Sie im folgenden Bildschirm beispielsweise **Sicherheitsrisiken in Containersicherheitskonfigurationen beseitigen**, erhöht sich Ihr Secure Score um 35 Punkte.
+4. In der Liste der Empfehlungen können Sie sehen, dass für jede Empfehlung eine Spalte mit der **Auswirkung auf die Sicherheitsbewertung** enthalten ist. Dieser Wert gibt an, um wie viel sich der Gesamtwert der Sicherheitsbewertung verbessert, wenn Sie den Empfehlungen folgen. Wenn Sie im folgenden Bildschirm beispielsweise **Sicherheitsrisiken in Containersicherheitskonfigurationen beseitigen**, erhöht sich Ihre Sicherheitsbewertung um 35 Punkte.
 
-   ![Secure Score](./media/security-center-secure-score/security-center-secure-score1.png)
+   ![Sicherheitsbewertung](./media/security-center-secure-score/security-center-secure-score1.png)
 
 
 
-## <a name="individual-secure-score"></a>Einzelner Secure Score
+## <a name="individual-secure-score"></a>Individuelle Sicherheitsbewertung
 
-Sie können auch einzelne Secure Scores anzeigen. Diese sind auf dem Blatt mit einzelnen Empfehlungen enthalten.  
+Sie können auch einzelne Sicherheitsbewertungen anzeigen. Diese sind auf dem Blatt mit einzelnen Empfehlungen enthalten.  
 
-Der **Secure Score für Empfehlungen** ist eine Berechnung, die auf dem Verhältnis zwischen fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen basiert. Wenn die Anzahl der fehlerfreien Ressourcen der Gesamtzahl der Ressourcen entspricht, erhalten Sie den maximalen Secure Score von 50 für die Empfehlung. Um Ihren Secure Score dem maximalen Wert anzunähern, beheben Sie die fehlerhaften Ressourcen, indem Sie den Empfehlungen folgen.
+**Sicherheitsbewertung für einzelne Empfehlung** ist eine Berechnung, die auf dem Verhältnis zwischen fehlerfreien Ressourcen und der Gesamtzahl Ihrer Ressourcen basiert. Wenn die Anzahl der fehlerfreien Ressourcen der Gesamtzahl der Ressourcen entspricht, erhalten Sie die maximale Sicherheitsbewertung von 50 für die Empfehlung. Um Ihre Sicherheitsbewertung dem maximalen Wert anzunähern, beheben Sie die fehlerhaften Ressourcen, indem Sie den Empfehlungen folgen.
 
-Anhand der **Auswirkungen der Empfehlung** können Sie sehen, um wie viel sich der Secure Score verbessert, wenn Sie die empfohlenen Schritte ausführen. Wenn Ihr Secure Score beispielsweise 42 beträgt und für **Auswirkungen der Empfehlung** der Wert +3 angegeben ist, verbessert sich der Secure Score bei Ausführung der in der Empfehlung angegebenen Schritte auf 45.
+Anhand der **Auswirkungen der Empfehlung** können Sie sehen, um wie viel sich die Sicherheitsbewertung verbessert, wenn Sie die empfohlenen Schritte ausführen. Wenn Ihre Sicherheitsbewertung beispielsweise 42 beträgt und für **Auswirkungen der Empfehlung** der Wert +3 angegeben ist, verbessert sich die Sicherheitsbewertung bei Ausführung der in der Empfehlung angegebenen Schritte auf 45.
 
 Die Empfehlung zeigt, welche Bedrohungen für Ihre Workload bestehen, falls die Schritte zur Behebung nicht ausgeführt werden.
 
-![Secure Score für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
-
-
-
+![Sicherheitsbewertung für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Secure Score** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie unter folgendem Link:
+In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Sicherheitsbewertung** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie unter folgendem Link:
 
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
+* [Azure Security Center – häufig gestellte Fragen](faq-general.md): Hier finden Sie Antworten auf häufig gestellte Fragen zum Dienst und zur Sicherheitsbewertung.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-
-
+* [Erweiterte Sicherheitsbewertung](secure-score-security-controls.md): Erfahren Sie mehr über die Vorteile der erweiterten Sicherheitsbewertung (derzeit in der Vorschauphase).

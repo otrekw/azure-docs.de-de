@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 514de1435519282335124bfd67bac82669240b78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920756"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616515"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Sicherheitswarnungen in Azure Security Center
 
@@ -72,15 +72,15 @@ Azure Security Center nutzt auch die Anomalieerkennung, um Bedrohungen zu identi
 Security Center weist Warnungen einen Schweregrad zu, um Ihnen zu helfen, die Reihenfolge zu priorisieren, in der Sie sich um Warnungen kümmern. So können Sie, sobald eine Ressource gefährdet ist, sofort zu ihr gelangen. Der Schweregrad basiert darauf, wie zuversichtlich Security Center in Bezug auf den Befund oder die Analyse ist, die zum Auslösen der Warnung verwendet wird, sowie auf dem Zuverlässigkeitsgrad, dass hinter der Aktivität, die zu der Warnung führte, eine böswillige Absicht stand.
 
 > [!NOTE]
-> Der Schweregrad der Warnung wird im Portal und in der REST-API unterschiedlich angezeigt. Die Unterschiede sind in der Liste unten angegeben.
+> Der Schweregrad der Warnung wird im Portal und in Versionen der REST-API vor dem 1.1.2019 unterschiedlich angezeigt. Wenn Sie eine ältere Version der API verwenden, führen Sie ein Upgrade aus, um die unten beschriebene konsistente Erfahrung zu erhalten.
 
-* **Hoch:** Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird.
-* **Mittel („Niedrig“ in REST-API):** Eine potenziell verdächtige Aktivität, die möglicherweise auf die Kompromittierung einer Ressource hindeutet.
+- **Hoch:** Ihre Ressource wurde mit hoher Wahrscheinlichkeit kompromittiert. Sie sollten dies sofort überprüfen. Von Security Center werden sowohl die böswillige Absicht als auch die ermittelten Ergebnisse zur Ausgabe der Warnung als hoch eingestuft. Ein Beispiel hierfür ist eine Warnung, bei der die Ausführung eines bekannten schädlichen Tools wie Mimikatz erkannt wird, das häufig für den Diebstahl von Anmeldeinformationen verwendet wird.
+- **Mittel:** Eine potenziell verdächtige Aktivität, die möglicherweise auf die Kompromittierung einer Ressource hindeutet.
 Security Center stuft die Analyse oder die ermittelten Ergebnisse als „Mittel“ und die schädliche Absicht als „Mittel“ bis „Hoch“ ein. Hierbei handelt es sich normalerweise um Erkennungen, die auf maschinellem Lernen oder Anomalien basieren. Ein Beispiel hierfür ist ein Anmeldeversuch, der von einem ungewöhnlichen Standort aus durchgeführt wird.
-* **Niedrig („Information“ in der REST-API):** Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln.
+- **Niedrig:** Hierbei kann es sich um ein unschädliches positives Ergebnis oder um einen blockierten Angriff handeln.
    * Security Center stuft die Absicht nicht als schädlich ein, und die Aktivität ist vermutlich harmlos. Das Löschen eines Protokolls ist beispielsweise eine Aktion, die ggf. von einem Angreifer durchgeführt wird, um Spuren zu verwischen. Häufig handelt es sich aber um einen Routinevorgang eines Administrators.
    * Security Center teilt Ihnen normalerweise nicht mit, wenn Angriffe blockiert wurden. Eine Ausnahme sind interessante Fälle, bei denen wir Ihnen raten, dass Sie sich diese ansehen. 
-* **Information („Im Hintergrund“ in der REST-API):** Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht normalerweise aus mehreren Warnungen, von denen einige gesondert als „Information“ angezeigt werden, die aber im Zusammenhang mit anderen Warnungen durchaus interessant sein können und untersucht werden sollten. 
+- **Information:** Warnungen vom Typ „Information“ werden nur angezeigt, wenn Sie für einen Sicherheitsincident einen Drilldown ausführen oder die REST-API mit einer bestimmten Warnungs-ID verwenden. Ein Incident besteht normalerweise aus mehreren Warnungen, von denen einige gesondert als „Information“ angezeigt werden, die aber im Zusammenhang mit anderen Warnungen durchaus interessant sein können und untersucht werden sollten. 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>Kontinuierliche Überwachung und Bewertungen
@@ -98,14 +98,20 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen für bestimmte Ressourcentypen:
 
-* [Warnungen für IaaS-VMs und -Server](security-center-alerts-iaas.md)
-* [Warnungen für Native Compute](security-center-alerts-compute.md)
-* [Warnungen für Datendienste](security-center-alerts-data-services.md)
+* [Warnungen für IaaS Windows-Computer](threat-protection.md#windows-machines)
+* [Warnungen für IaaS Linux-Computer](threat-protection.md#linux-machines)
+* [Warnungen für Azure App Service](threat-protection.md#app-services)
+* [Warnungen für Azure Container](threat-protection.md#azure-containers)
+* [Warnungen für SQL-Datenbank und SQL Data Warehouse](threat-protection.md#data-sql)
+* [Warnungen für Azure Storage](threat-protection.md#azure-storage)
+* [Warnungen für Cosmos DB](threat-protection.md#cosmos-db)
 
 In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitstellte Ressourcen zu implementieren:
 
-* [Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center](security-center-alerts-service-layer.md)
-* [Bedrohungserkennung für Azure WAF und Azure DDoS Protection](security-center-alerts-integration.md)
+* [Warnungen für die Azure-Verwaltungsebene (Azure Resource Manager) (Vorschau)](threat-protection.md#management-layer)
+* [Warnungen für Azure Key Vault (Vorschau)](threat-protection.md#azure-keyvault)
+* [Warnungen auf Azure-Netzwerkebene](threat-protection.md#network-layer)
+* [Warnungen von anderen Diensten](threat-protection.md#alerts-other)
 
 ## <a name="what-are-security-incidents"></a>Was sind Sicherheitsincidents?
 

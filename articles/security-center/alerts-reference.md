@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f7d8d28299b662774a8cc0a7d4a28b052a551eab
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 01397ad078bc741977c4928f67d1834f05e1db8d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906327"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623967"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -33,9 +33,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-windows"></a>Warnungen für Windows-Computer
 
-[Weitere Details und Hinweise](security-center-alerts-iaas.md#windows-)
+[Weitere Details und Hinweise](threat-protection.md#windows-machines)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Es wurde eine Anmeldung von einer schädlichen IP erkannt**|Es ist eine erfolgreiche Remoteauthentifizierung für das Konto „tristan.schleining“ und den Prozess „Advapi“ aufgetreten, jedoch wurde die Anmelde-IP-Adresse [IP-Adresse] zuvor als schädlich oder höchst ungewöhnlich gemeldet. Wahrscheinlich ist ein erfolgreicher Angriff erfolgt.|-|
 |**Es wurde eine Anmeldung von einer schädlichen IP erkannt. [mehrfach aufgetreten]**|Es ist eine erfolgreiche Remoteauthentifizierung für das Konto „IUSR_10001“ und den Prozess „Advapi“ aufgetreten, jedoch wurde die Anmelde-IP-Adresse [IP-Adresse] zuvor als schädlich oder höchst ungewöhnlich gemeldet. Wahrscheinlich ist ein erfolgreicher Angriff erfolgt. Dateien mit der Erweiterung SCR sind Bildschirmschonerdateien und werden normalerweise im Windows-Systemverzeichnis gespeichert und ausgeführt.|-|
@@ -124,9 +124,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-linux"></a>Warnungen für Linux-Computer
 
-[Weitere Details und Hinweise](security-center-alerts-iaas.md#linux-)
+[Weitere Details und Hinweise](threat-protection.md#linux-machines)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Process seen accessing the SSH authorized keys file in an unusual way** (Ein Prozess hat auf ungewöhnliche Weise auf eine Datei mit autorisierten SSH-Schlüsseln zugegriffen.)|Auf eine Datei mit autorisierten SSH-Schlüsseln wurde mit einer Methode zugegriffen, die so ähnlich auch in bekannten Schadsoftwareszenarien zum Einsatz kommt. Dieser Zugriff deutet möglicherweise darauf hin, dass ein Angreifer versucht, sich dauerhaft Zugang zu einem Computer zu verschaffen.|-|
 |**Detected Persistence Attempt** (Persistenzversuch erkannt)|Bei der Hostdatenanalyse wurde festgestellt, dass ein Startskript für den Einzelbenutzermodus installiert wurde.<br>Da legitime Prozesse nur selten in diesem Modus ausgeführt werden müssen, kann dies darauf hindeuten, dass ein Angreifer jeder Ausführungsebene einen schädlichen Prozess hinzugefügt hat, um Persistenz zu erreichen. |Persistenz|
@@ -213,33 +213,34 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azureappserv"></a>Warnungen für Azure App Service
 
-[Weitere Details und Hinweise](security-center-alerts-compute.md#azure-app-service-)
+[Weitere Details und Hinweise](threat-protection.md#app-services)
 
 |Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
-|**Suspicious WordPress theme invocation detected** (Verdächtigen Aufruf eines WordPress-Designs erkannt)|Das App Service-Aktivitätsprotokoll von enthält einen Hinweis auf eine mögliche Codeinjektionsaktivität für Ihre App Service-Ressource.<br>Diese verdächtige Aktivität ähnelt einer Aktivität, die dazu dient, ein WordPress-Design zu verändern, sodass die serverseitige Ausführung von Code möglich wird – gefolgt von einer direkten Webanforderung zum Aufrufen der veränderten Designdatei. Diese Art von Aktivität kann Teil eines Angriffs über WordPress sein.|-|
-|**Web fingerprinting detected** (Erstellung eines digitalen Webfingerabdrucks erkannt)<br>(NMAP/Blind Elephant)|Das App Service-Aktivitätsprotokoll enthält einen Hinweis auf eine mögliche Aktivität zur Erstellung eines digitalen Webfingerabdrucks für Ihre App Service-Ressource.<br>Diese verdächtige Aktivität hängt mit einem Tool namens Blind Elephant zusammen. Das Tool erstellt einen digitalen Fingerabdruck von Webservern und versucht, die installierten Anwendungen und deren Versionen zu ermitteln. Angreifer verwenden dieses Tool häufig, um die Webanwendungen auf Schwachstellen zu testen. |-|
-|**Suspicious access to possibly vulnerable web page detected** (Verdächtigen Zugriff auf möglicherweise anfällige Webseite erkannt)|Das App Service-Aktivitätsprotokoll enthält einen Hinweis auf einen Zugriff auf eine möglicherweise sensible Webseite.<br>Diese verdächtige Aktivität geht von einer Quelladresse aus, deren Zugriffsmuster dem Zugriffsmuster eines Webscanners ähnelt. Diese Art von Aktivität ist häufig auf einen Angriffsversuch zurückzuführen, bei dem der Angreifer Ihr Netzwerk scannt und versucht, auf sensible oder anfällige Webseiten zuzugreifen. |-|
-|**An IP that connected to your Azure App Service FTP Interface was found in Threat Intelligence** (Eine IP-Adresse, über die eine Verbindung mit Ihrer FTP-Schnittstelle von Azure App Service hergestellt wurde, wurde in Threat Intelligence gefunden.)|Bei der Analyse der App Service-FTP-Protokolle wurde eine Verbindung mit einer Quelladresse aus dem Threat Intelligence-Feed erkannt. Im Rahmen dieser Verbindung hat ein Benutzer auf die aufgeführten Seiten zugegriffen.|-|
 |**An attempt to run Linux commands on a Windows App Service** (Versuchte Ausführung von Linux-Befehlen für eine App Service-Instanz unter Windows)|Bei der Analyse von App Service-Prozessen wurde festgestellt, dass versucht wurde, einen Linux-Befehl für eine App Service-Instanz unter Windows auszuführen. Diese Aktion wurde von der Webanwendung ausgeführt. Ein solches Verhalten ist häufig bei Angriffen zu beobachten, die sich eine Sicherheitslücke in einer gängigen Webanwendung zunutze machen.|-|
-|**Suspicious PHP execution detected** (Verdächtige PHP-Ausführung erkannt)|Computerprotokolle enthalten einen Hinweis auf die Ausführung eines verdächtigen PHP-Prozesses. Bei der Aktion wurde versucht, mithilfe des PHP-Prozesses Betriebssystembefehle oder PHP-Code über die Befehlszeile auszuführen. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten – etwa bei Versuchen, Websites mit Webshells zu infizieren.|Ausführung|
-|**Attempt to run high privilege command detected** (Versuchte Ausführung eines Befehls mit hohen Berechtigungen erkannt)|Bei der Analyse von App Service-Prozessen wurde die versuchte Ausführung eines Befehls erkannt, für den hohe Berechtigungen erforderlich sind. Der Befehl wurde im Kontext der Webanwendung ausgeführt. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten.|-|
-|**Speichern der CURL-Ausgabe auf Datenträger erkannt**|Bei der Analyse von App Service-Prozessen wurde die Ausführung eines CURL-Befehls erkannt, bei dem die Ausgabe auf dem Datenträger gespeichert wurde. Dieses Verhalten kann zwar legitim sein, in Webanwendungen ist es jedoch auch im Zusammenhang mit schädlichen Aktivitäten zu beobachten – etwa bei Versuchen, Websites mit Webshells zu infizieren.|-|
-|**Download von Rohdaten erkannt**|Bei der Analyse von App Service-Prozessen wurde ein Versuch erkannt, Code von Rohdaten enthaltenden Websites wie Pastebin herunterzuladen. Diese Aktion wurde von einem PHP-Prozess ausgeführt. Dieses Verhalten wird mit Versuchen assoziiert, Webshells oder andere schädliche Komponenten in App Service herunterzuladen.|-|
-|**Überprüfung auf Sicherheitsrisiken erkannt**<br>(Joomla/WordPress/CMS)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf eine mögliche Überprüfung auf Sicherheitsrisiken für Ihre App Service-Ressource. Die erkannte verdächtige Aktivität ähnelt der von Tools, die auf Joomla- oder WordPress-Anwendungen bzw. auf ein Content-Management-System (CMS) ausgerichtet sind.|-|
-|**Referrer für Spam-Ordner erkannt**|Das Aktivitätsprotokoll von Azure App Service zeigt Webaktivitäten an, die als von einer mit SPAM-Aktivitäten verbundenen Website stammend identifiziert wurden. Dies könnte auftreten, wenn Ihre Website kompromittiert und für Spam-Aktivitäten genutzt wurde.|-|
-|**Connection to web page from anomalous IP address detected** (Verbindung mit einer Webseite über eine anomale IP-Adresse erkannt)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf eine Verbindung mit einer sensiblen Webseite von einer IP-Quelladresse (%{Source IP Address}), von der aus noch nie eine Verbindung mit dieser Seite hergestellt wurde. Dies deutet möglicherweise auf einen Brute-Force-Angriff auf Ihre Web-App-Verwaltungsseiten hin. Es ist aber auch denkbar, dass ein berechtigter Benutzer lediglich eine neue IP-Adresse verwendet.|-|
-|**Verdächtiger Benutzer-Agent erkannt**|Das Aktivitätsprotokoll von Azure App Service weist auf Anforderungen mit verdächtigem Benutzer-Agent hin. Dieses Verhalten kann auf Versuche hinweisen, ein Sicherheitsrisiko in Ihrer App Service-Anwendung auszunutzen.|-|
-|**PHP file in upload folder** (PHP-Datei im Uploadordner)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf einen Zugriff auf eine verdächtige PHP-Seite im Uploadordner. Diese Art von Ordner enthält normalerweise keine PHP-Dateien. Ist ein solcher Dateityp vorhanden, kann dies auf die Ausnutzung von Sicherheitslücken beim Dateiupload hindeuten.|-|
+|**An IP that connected to your Azure App Service FTP Interface was found in Threat Intelligence** (Eine IP-Adresse, über die eine Verbindung mit Ihrer FTP-Schnittstelle von Azure App Service hergestellt wurde, wurde in Threat Intelligence gefunden.)|Bei der Analyse der App Service-FTP-Protokolle wurde eine Verbindung mit einer Quelladresse aus dem Threat Intelligence-Feed erkannt. Im Rahmen dieser Verbindung hat ein Benutzer auf die aufgeführten Seiten zugegriffen.|-|
 |**Anomales Anforderungsmuster erkannt**|Das Aktivitätsprotokoll von Azure App Service weist auf eine anomale HTTP-Aktivität zum App Service von %{Source IP} hin. Diese Aktivität ähnelt einem Muster der Fuzzing-\Brute-Force-Aktivität.|-|
+|**Attempt to run high privilege command detected** (Versuchte Ausführung eines Befehls mit hohen Berechtigungen erkannt)|Bei der Analyse von App Service-Prozessen wurde die versuchte Ausführung eines Befehls erkannt, für den hohe Berechtigungen erforderlich sind. Der Befehl wurde im Kontext der Webanwendung ausgeführt. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten.|-|
+|**Connection to web page from anomalous IP address detected** (Verbindung mit einer Webseite über eine anomale IP-Adresse erkannt)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf eine Verbindung mit einer sensiblen Webseite von einer IP-Quelladresse (%{Source IP Address}), von der aus noch nie eine Verbindung mit dieser Seite hergestellt wurde. Dies deutet möglicherweise auf einen Brute-Force-Angriff auf Ihre Web-App-Verwaltungsseiten hin. Es ist aber auch denkbar, dass ein berechtigter Benutzer lediglich eine neue IP-Adresse verwendet.|-|
+|**Download von Rohdaten erkannt**|Bei der Analyse von App Service-Prozessen wurde ein Versuch erkannt, Code von Rohdaten enthaltenden Websites wie Pastebin herunterzuladen. Diese Aktion wurde von einem PHP-Prozess ausgeführt. Dieses Verhalten wird mit Versuchen assoziiert, Webshells oder andere schädliche Komponenten in App Service herunterzuladen.|-|
+|**In Azure-Web-Apps gehostete Phishinginhalte**|Die URL, die für den auf der Azure AppServices-Website gefundenen Phishingangriff verwendet wird. Diese URL war Teil eines Phishingangriffs, der an O365-Kunden gesendet wurde. Der Inhalt spioniert typischerweise Unternehmensanmeldeinformationen oder Finanzdaten aus, die von Besuchern in eine legitime aussehende Website eingegeben werden.|Collection|
+|**PHP file in upload folder** (PHP-Datei im Uploadordner)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf einen Zugriff auf eine verdächtige PHP-Seite im Uploadordner. Diese Art von Ordner enthält normalerweise keine PHP-Dateien. Ist ein solcher Dateityp vorhanden, kann dies auf die Ausnutzung von Sicherheitslücken beim Dateiupload hindeuten.|-|
+|**Speichern der CURL-Ausgabe auf Datenträger erkannt**|Bei der Analyse von App Service-Prozessen wurde die Ausführung eines CURL-Befehls erkannt, bei dem die Ausgabe auf dem Datenträger gespeichert wurde. Dieses Verhalten kann zwar legitim sein, in Webanwendungen ist es jedoch auch im Zusammenhang mit schädlichen Aktivitäten zu beobachten – etwa bei Versuchen, Websites mit Webshells zu infizieren.|-|
+|**Referrer für Spam-Ordner erkannt**|Das Aktivitätsprotokoll von Azure App Service zeigt Webaktivitäten an, die als von einer mit SPAM-Aktivitäten verbundenen Website stammend identifiziert wurden. Dies könnte auftreten, wenn Ihre Website kompromittiert und für Spam-Aktivitäten genutzt wurde.|-|
+|**Suspicious access to possibly vulnerable web page detected** (Verdächtigen Zugriff auf möglicherweise anfällige Webseite erkannt)|Das App Service-Aktivitätsprotokoll enthält einen Hinweis auf einen Zugriff auf eine möglicherweise sensible Webseite.<br>Diese verdächtige Aktivität geht von einer Quelladresse aus, deren Zugriffsmuster dem Zugriffsmuster eines Webscanners ähnelt. Diese Art von Aktivität ist häufig auf einen Angriffsversuch zurückzuführen, bei dem der Angreifer Ihr Netzwerk scannt und versucht, auf sensible oder anfällige Webseiten zuzugreifen. |-|
+|**Suspicious PHP execution detected** (Verdächtige PHP-Ausführung erkannt)|Computerprotokolle enthalten einen Hinweis auf die Ausführung eines verdächtigen PHP-Prozesses. Bei der Aktion wurde versucht, mithilfe des PHP-Prozesses Betriebssystembefehle oder PHP-Code über die Befehlszeile auszuführen. Dieses Verhalten kann zwar legitim sein, in Webanwendungen kann es jedoch auch auf schädliche Aktivitäten hindeuten – etwa bei Versuchen, Websites mit Webshells zu infizieren.|Ausführung|
+|**Verdächtiger Benutzer-Agent erkannt**|Das Aktivitätsprotokoll von Azure App Service weist auf Anforderungen mit verdächtigem Benutzer-Agent hin. Dieses Verhalten kann auf Versuche hinweisen, ein Sicherheitsrisiko in Ihrer App Service-Anwendung auszunutzen.|-|
+|**Suspicious WordPress theme invocation detected** (Verdächtigen Aufruf eines WordPress-Designs erkannt)|Das App Service-Aktivitätsprotokoll von enthält einen Hinweis auf eine mögliche Codeinjektionsaktivität für Ihre App Service-Ressource.<br>Diese verdächtige Aktivität ähnelt einer Aktivität, die dazu dient, ein WordPress-Design zu verändern, sodass die serverseitige Ausführung von Code möglich wird – gefolgt von einer direkten Webanforderung zum Aufrufen der veränderten Designdatei. Diese Art von Aktivität kann Teil eines Angriffs über WordPress sein.|-|
+|**Überprüfung auf Sicherheitsrisiken erkannt**<br>(Joomla/WordPress/CMS)|Das Aktivitätsprotokoll von Azure App Service enthält einen Hinweis auf eine mögliche Überprüfung auf Sicherheitsrisiken für Ihre App Service-Ressource. Die erkannte verdächtige Aktivität ähnelt der von Tools, die auf Joomla- oder WordPress-Anwendungen bzw. auf ein Content-Management-System (CMS) ausgerichtet sind.|-|
+|**Web fingerprinting detected** (Erstellung eines digitalen Webfingerabdrucks erkannt)<br>(NMAP/Blind Elephant)|Das App Service-Aktivitätsprotokoll enthält einen Hinweis auf eine mögliche Aktivität zur Erstellung eines digitalen Webfingerabdrucks für Ihre App Service-Ressource.<br>Diese verdächtige Aktivität hängt mit einem Tool namens Blind Elephant zusammen. Das Tool erstellt einen digitalen Fingerabdruck von Webservern und versucht, die installierten Anwendungen und deren Versionen zu ermitteln. Angreifer verwenden dieses Tool häufig, um die Webanwendungen auf Schwachstellen zu testen. |-|
 ||||
 
 
 ## <a name="alerts-akscluster"></a>Warnungen für Container: Azure Kubernetes Service-Clusters
 
-[Weitere Details und Hinweise](security-center-alerts-compute.md#azure-containers-)
+[Weitere Details und Hinweise](threat-protection.md#azure-containers)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**PREVIEW - Role binding to the cluster-admin role detected** (VORSCHAU: Rollenbindung an Clusteradministratorrolle erkannt)|Bei der Analyse des Kubernetes-Überwachungsprotokolls wurde eine neue Bindung an die Clusteradministratorrolle erkannt, die zu Administratorrechten führt. Die unnötige Gewährung von Administratorrechten kann im Cluster zu Problemen aufgrund von Rechteausweitung führen.|Persistenz|
 |**PREVIEW - Exposed Kubernetes dashboard detected** (VORSCHAU: Verfügbar gemachtes Kubernetes-Dashboard erkannt)|Bei der Analyse des Kubernetes-Überwachungsprotokolls wurde erkannt, dass das Kubernetes-Dashboard von einem LoadBalancer-Dienst verfügbar gemacht wurde. Verfügbar gemachte Dashboards ermöglichen den nicht authentifizierten Zugriff auf die Clusterverwaltung und stellen eine Sicherheitsbedrohung dar.|Persistenz|
@@ -252,9 +253,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-containerhost"></a>Warnungen für Container: Hostebene
 
-[Weitere Details und Hinweise](security-center-alerts-compute.md#azure-containers-)
+[Weitere Details und Hinweise](threat-protection.md#azure-containers)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Privileged Container Detected** (Privilegierten Container erkannt)|Computerprotokolle weisen darauf hin, dass ein privilegierter Docker-Container ausgeführt wird. Ein privilegierter Container hat Vollzugriff auf die Ressourcen des Hosts. Im Falle einer Kompromittierung kann ein Angreifer den privilegierten Container verwenden, um Zugriff auf den Hostcomputer zu erhalten.|PrivilegeEscalation/Ausführung|
 |**Privileged command run in container** (Ausführung eines privilegierten Befehls im Container)|Die Computerprotokolle enthalten einen Hinweis darauf, dass in einem Docker-Container ein privilegierter Befehl ausgeführt wurde. Ein privilegierter Befehl verfügt auf dem Hostcomputer über erweiterte Berechtigungen.|PrivilegeEscalation|
@@ -268,9 +269,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-sql-db-and-warehouse"></a>Warnungen für SQL-Datenbank und SQL Data Warehouse
 
-[Weitere Details und Hinweise](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[Weitere Details und Hinweise](threat-protection.md#data-sql)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Mögliche Anfälligkeit für die Einschleusung von SQL-Befehlen**|Eine Anwendung hat eine fehlerhafte SQL-Anweisung in der Datenbank generiert. Dies kann ein Hinweis auf ein mögliches Sicherheitsrisiko in Bezug auf Angriffe mit Einschleusung von SQL-Befehlen sein. Es gibt zwei mögliche Gründe für eine fehlerhafte Anweisung. Ein Fehler im Anwendungscode, der zu der fehlerhaften SQL-Anweisung geführt hat. Oder: Anwendungscode oder gespeicherte Prozeduren, die bei der Erstellung der fehlerhaften SQL-Anweisung keine Bereinigung der Benutzereingabe durchgeführt haben, was zur Einschleusung von SQL-Befehlen ausgenutzt werden kann.|-|
 |**Versuchte Anmeldung über eine potenziell schädliche Anwendung**|Für den Zugriff auf die Datenbank wurde eine potenziell schädliche Anwendung verwendet. In einigen Fällen erkennt die Warnung aktive Eindringversuche. In anderen Fällen erkennt die Warnung einen Angriff mit gängigen Tools.|Probing|
@@ -286,9 +287,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azurestorage"></a>Warnungen für Azure Storage
 
-[Weitere Details und Hinweise](security-center-alerts-data-services.md#azure-storage-)
+[Weitere Details und Hinweise](threat-protection.md#azure-storage)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**VORSCHAU: Potenzielle Schadsoftware, die in ein Speicherkonto hochgeladen wurde**|Gibt an, dass ein Blob mit potenzieller Schadsoftware in ein Speicherkonto hochgeladen wurde. Zu den möglichen Gründen zählen der absichtliche Upload von Schadsoftware durch einen Angreifer und der unabsichtliche Upload eines potenziell schädlichen Blobs durch einen berechtigten Benutzer.|LateralMovement|
 |**Zugriff von einem Tor-Beendigungsknoten auf ein Speicherkonto**|Gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt. Mögliche Ursachen: Ein Angreifer hat mit Tor auf Ihr Speicherkonto zugegriffen, oder ein berechtigter Benutzer hat unter Verwendung von Tor auf Ihr Speicherkonto zugegriffen.|Probing/Ausnutzung|
@@ -307,9 +308,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azurecosmos"></a>Warnungen für Azure Cosmos DB (Vorschau)
 
-[Weitere Details und Hinweise](security-center-alerts-data-services.md#azure-cosmos-db)
+[Weitere Details und Hinweise](threat-protection.md#cosmos-db)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Zugriff auf ein Cosmos DB-Konto von einem ungewöhnlichen Ort aus**|Gibt an, dass sich das Zugriffsmuster für ein Azure Cosmos DB-Konto geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand von einer unbekannten IP-Adresse aus auf dieses Konto zugegriffen. Entweder hat ein Angreifer auf das Konto zugegriffen, oder ein berechtigter Benutzer hat von einem neuen, ungewöhnlichen geografischen Standort aus darauf zugegriffen. Ein Beispiel für Letzteres wäre etwa eine Remotewartung durch eine neue Anwendung oder einen neuen Entwickler.|Ausnutzung|
 |**Ungewöhnliche Menge von Daten, die aus einem Cosmos DB-Konto extrahiert wurden**|Gibt an, dass sich das Datenextraktionsmuster eines Azure Cosmos DB-Kontos geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand eine ungewöhnliche Datenmenge extrahiert. Ein Angreifer hat möglicherweise eine große Datenmenge aus einer Azure Cosmos DB-Datenbank extrahiert (beispielsweise Datenexfiltration/-leck oder eine nicht autorisierte Datenübertragung). Oder: Ein berechtigter Benutzer oder eine berechtigte Anwendung hat eine ungewöhnliche Datenmenge aus einem Container extrahiert (beispielsweise für eine Sicherung bei einer Wartungsaktivität).|Exfiltration|
@@ -318,7 +319,7 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azurenetlayer"></a>Warnungen auf Azure-Netzwerkebene
 
-[Weitere Details und Hinweise](security-center-alerts-service-layer.md#azure-network-layer)
+[Weitere Details und Hinweise](threat-protection.md#network-layer)
 
 |Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
@@ -343,12 +344,13 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azureresourceman"></a>Warnungen für Azure Resource Manager (Vorschau)
 
-[Weitere Details und Hinweise](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[Weitere Details und Hinweise](threat-protection.md#management-layer)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**VORSCHAU: Ausführung von Azurit-Toolkit erkannt**|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool [Azurite](https://github.com/mwrlabs/Azurite) kann von einem Angreifer (oder Penetrationstester) verwendet werden, um Ihre Abonnementressourcen zu erfassen und unsichere Konfigurationen zu ermitteln.|-|
-|**VORSCHAU – Ausführung der MicroBurst-Toolkitfunktion „Get-AzureDomainInfo“ erkannt**|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool „MicroBurst“ (siehe https://github.com/NetSPI/MicroBurst) kann von einem Angreifer (oder Penetrationtester) verwendet werden, um Ihre Abonnementressourcen zu erfassen, unsichere Konfigurationen ausfindig zu machen und vertrauliche Informationen offenzulegen.|-||**VORSCHAU – Verdächtige Verwaltungssitzung mit einem inaktiven Konto erkannt**|Bei der Analyse der Abonnementaktivitätsprotokolle wurde verdächtiges Verhalten erkannt. Ein Prinzipal, der längere Zeit nicht verwendet wurde, führt nun Aktionen aus, mit denen sich ein Angreifer dauerhaft Zugriff verschaffen kann.|Persistenz|
+|**VORSCHAU – Ausführung der MicroBurst-Toolkitfunktion „Get-AzureDomainInfo“ erkannt**|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool „MicroBurst“ (siehe https://github.com/NetSPI/MicroBurst) kann von einem Angreifer (oder Penetrationtester) verwendet werden, um Ihre Abonnementressourcen zu erfassen, unsichere Konfigurationen ausfindig zu machen und vertrauliche Informationen offenzulegen.|-|
+|**VORSCHAU – Verdächtige Verwaltungssitzung mit einem inaktiven Konto erkannt**|Bei der Analyse der Abonnementaktivitätsprotokolle wurde verdächtiges Verhalten erkannt. Ein Prinzipal, der längere Zeit nicht verwendet wurde, führt nun Aktionen aus, mit denen sich ein Angreifer dauerhaft Zugriff verschaffen kann.|Persistenz|
 |**VORSCHAU – MicroBurst-Toolkitfunktion „Get-AzurePasswords“ erkannt**|In Ihrer Umgebung wurde die Ausführung eines bekannten Reconnaissance-Toolkits für Cloudumgebungen erkannt. Das Tool „MicroBurst“ (siehe https://github.com/NetSPI/MicroBurst) kann von einem Angreifer (oder Penetrationtester) verwendet werden, um Ihre Abonnementressourcen zu erfassen, unsichere Konfigurationen ausfindig zu machen und vertrauliche Informationen offenzulegen.|-|
 |**VORSCHAU – Verdächtige Verwaltungssitzung mit dem Azure-Portal erkannt**|Bei der Analyse Ihrer Abonnementaktivitätsprotokolle wurde ein verdächtiges Verhalten erkannt. Ein Prinzipal, der das Azure-Portal (Ibiza) nicht regelmäßig zur Verwaltung der Abonnementumgebung verwendet (er hat in den letzten 45 Tagen weder das Azure-Portal zur Verwaltung verwendet noch ein Abonnement, das er aktiv verwaltet), verwendet jetzt das Azure-Portal und führt Aktionen durch, die einem Angreifer eine gewisse Persistenz sichern können.|-|
 |**VORSCHAU – Verdächtige Verwaltungssitzung mit PowerShell erkannt**|Bei der Analyse der Abonnementaktivitätsprotokolle wurde verdächtiges Verhalten erkannt. Ein Prinzipal, der nicht regelmäßig PowerShell verwendet, um die Abonnementumgebung zu verwalten, verwendet nun PowerShell und führt Aktionen aus, mit denen sich ein Angreifer dauerhaft Zugriff verschaffen kann.|Persistenz|
@@ -361,9 +363,9 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azurekv"></a>Warnungen für Azure Key Vault (Vorschau)
 
-[Weitere Details und Hinweise](security-center-alerts-service-layer.md#azure-keyvault)
+[Weitere Details und Hinweise](threat-protection.md#azure-keyvault)
 
-|Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
+|Warnung|BESCHREIBUNG|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
 |**Access from a TOR exit node to a Key Vault** (Zugriff über einen TOR-Exitknoten auf einen Schlüsseltresor)|Jemand hat auf den Schlüsseltresor mithilfe eines TOR-IP-Anonymisierungssystems zugegriffen, um den Standort zu verbergen. Böswillige Akteure versuchen häufig, ihren Standort zu verbergen, wenn sie nicht autorisierten Zugriff auf Ressourcen mit Internetzugriff erlangen möchten.|-|
 |**High volume of operations in a Key Vault** (Hohe Anzahl von Vorgängen in einem Schlüsseltresor)|Im Vergleich zu Verlaufsdaten wurden sehr viele Schlüsseltresorvorgänge durchgeführt. Die Schlüsseltresoraktivität verändert sich im Laufe der Zeit normalerweise nicht. Es kann sich hierbei also um eine legitime Änderung der Aktivität handeln. Andererseits kann auch Ihre Infrastruktur kompromittiert sein, und es sind weitere Untersuchungen dazu nötig.|-|
@@ -379,7 +381,7 @@ Unter den Warnungstabellen finden Sie eine Tabelle, in der die Azure Security Ce
 
 ## <a name="alerts-azureddos"></a>Warnungen für Azure DDoS Protection
 
-[Weitere Details und Hinweise](security-center-alerts-integration.md#azure-ddos)
+[Weitere Details und Hinweise](threat-protection.md#azure-ddos)
 
 |Warnung|Beschreibung|Absicht ([Weitere Informationen](#intentions))|
 |----|----|:----:|
@@ -395,7 +397,7 @@ Die Reihe der Schritte, die den Fortschritt eines Cyberangriffs von der Erkennun
 
 Die vom Security Center unterstützten Kill Chain-Absichten basieren auf dem [MITRE ATT&CK™ Framework](https://attack.mitre.org/matrices/enterprise) und werden in der folgenden Tabelle beschrieben.
 
-|Intent|Beschreibung|
+|Intent|BESCHREIBUNG|
 |------|-------|
 |**Probing**|Beim „Probing“ kann es sich entweder um einen Versuch handeln, unabhängig von böswilligen Absichten auf eine bestimmte Ressource zuzugreifen, oder um einen fehlgeschlagenen Versuch, Zugriff auf ein Zielsystem zu erlangen, um Informationen vor deren Ausnutzung zu sammeln. Dieser Schritt wird normalerweise als Versuch von außerhalb des Netzwerks erkannt, das Zielsystem zu scannen und einen Einstiegspunkt zu identifizieren.|
 |**Ausnutzung**|Als „Ausnutzung“ wird die Phase bezeichnet, in der es einem Angreifer gelingt, auf der angegriffenen Ressource Fuß zu fassen. Diese Phase ist für Computehosts und Ressourcen wie Benutzerkonten, Zertifikate usw. relevant. Bedrohungsakteure können die Ressource nach dieser Phase oft steuern.|
@@ -416,6 +418,7 @@ Die vom Security Center unterstützten Kill Chain-Absichten basieren auf dem [MI
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Warnungen finden Sie in folgenden Abschnitten:
 
+* [Bedrohungsschutz in Azure Security Center](threat-protection.md)
 * [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md)

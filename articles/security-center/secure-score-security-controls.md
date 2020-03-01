@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: ffe9ea5f46571f6a22717c376c97055f6f1759e4
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443583"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604729"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Erweiterte Sicherheitsbewertung (Vorschau) 
 
@@ -65,15 +65,15 @@ Beispielsweise wird die Sicherheitskontrolle namens „Systemupdates anwenden“
 
 Als Verbesserungspotenzial für die Sicherheitskontrolle „Systemupdates anwenden“ ist im Screenshot oben „2% (1 Punkt)“ angegeben. Das bedeutet, dass sich bei Umsetzung aller Empfehlungen in diesem Kontrollelement die Bewertung um 2 % erhöht (in diesem Fall um einen Punkt). Der Einfachheit halber werden Werte in der Spalte mit der potenziellen Steigerung in der Empfehlungsliste auf ganze Zahlen gerundet. In den QuickInfos sind die genauen Werte angegeben:
 
+* **Maximale Bewertung**: Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an. Verwenden Sie die maximale Bewertung für die Selektierung der Probleme, die zuerst behandelt werden müssen. 
 * **Potenzielle Steigerung**: Die Anzahl der noch verfügbaren Punkte innerhalb des Kontrollelements. Damit diese Punkte Ihrer Sicherheitsbewertung hinzugefügt werden, setzen Sie alle Empfehlungen des Kontrollelements um. Im Beispiel oben liegt der eine angezeigte Punkt für das Kontrollelement tatsächlich bei 0,96 Punkten.
 * **Aktuelle Bewertung**: Die aktuelle Bewertung für dieses Kontrollelement. Jedes Kontrollelement trägt zur Gesamtbewertung bei. In diesem Beispiel trägt das Kontrollelement 5,04 Punkte zum Gesamtergebnis bei. 
-* **Maximale Bewertung**: Die Summe der beiden vorherigen Werte.
 
 ### <a name="calculations---understanding-your-score"></a>Berechnungen – Verstehen der Bewertung
 
 |Metrik|Formel und Beispiel|
 |-|-|
-|**Aktuelle Bewertung der Sicherheitskontrolle**|<br>![Gleichung zum Berechnen der aktuellen Bewertung einer Sicherheitskontrolle](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Jede einzelne Sicherheitskontrolle trägt zur Sicherheitsbewertung bei. Jede Ressource, die von einer Empfehlung innerhalb des Kontrollelements betroffen ist, trägt zur aktuellen Bewertung des Kontrollelements bei. Die aktuelle Bewertung für jedes Kontrollelement ist ein Maß für den Status der Ressourcen *innerhalb* des Kontrollelements.<br>![QuickInfos mit den Werten, die beim Berechnen der aktuellen Bewertung des Kontrollelements verwendet werden](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In diesem Beispiel wird die maximale Bewertung von 6 durch 78 dividiert, da dies die Summe aus fehlerfreien und fehlerhaften Ressourcen ist.<br>6 / 78 = 0,0769<br>Die Multiplikation dieses Ergebnisses mit der Anzahl der fehlerfreien Ressourcen (74) ergibt die aktuelle Bewertung:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Aktuelle Bewertung der Sicherheitskontrolle**|<br>![Gleichung zum Berechnen der aktuellen Bewertung einer Sicherheitskontrolle](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Jede einzelne Sicherheitskontrolle trägt zur Sicherheitsbewertung bei. Jede Ressource, die von einer Empfehlung innerhalb des Kontrollelements betroffen ist, trägt zur aktuellen Bewertung des Kontrollelements bei. Die aktuelle Bewertung für jedes Kontrollelement ist ein Maß für den Status der Ressourcen *innerhalb* des Kontrollelements.<br>![QuickInfos mit den Werten, die beim Berechnen der aktuellen Bewertung des Kontrollelements verwendet werden](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In diesem Beispiel wird die maximale Bewertung von 6 durch 78 dividiert, da dies die Summe aus fehlerfreien und fehlerhaften Ressourcen ist.<br>6 / 78 = 0,0769<br>Die Multiplikation dieses Ergebnisses mit der Anzahl der fehlerfreien Ressourcen (4) ergibt die aktuelle Bewertung:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Verbessern des Secure Score in Azure Security Center**<br>Ein Abonnement|<br>![Gleichung zum Berechnen der aktuellen Sicherheitsbewertung](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Sicherheitsbewertung eines einzelnen Abonnements, wenn alle Kontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In diesem Beispiel gibt es ein einzelnes Abonnement, für das alle Sicherheitskontrollen verfügbar sind (potenzielle Höchstbewertung sind 60 Punkte). Die Bewertung gibt 28 Punkte der möglichen 60 Punkte an. Die verbleibenden 32 Punkte sind in den Zahlen für die potenzielle Bewertungssteigerung der Sicherheitskontrollen enthalten.<br>![Liste der Kontrollen und potenziellen Bewertungssteigerung](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Verbessern des Secure Score in Azure Security Center**<br>Mehrere Abonnements|<br>Die aktuellen Bewertungen für alle Ressourcen in allen Abonnements werden addiert. Die anschließende Berechnung entspricht der für ein einzelnes Abonnement.<br><br>Beim Anzeigen mehrerer Abonnements werden bei der Sicherheitsbewertung alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Kontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
 ||||

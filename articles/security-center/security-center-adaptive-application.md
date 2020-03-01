@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353438"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604673"
 ---
 # <a name="adaptive-application-controls"></a>Adaptive Anwendungssteuerungen
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -180,5 +180,4 @@ In diesem Dokument haben Sie erfahren, wie Sie Anwendungen, die auf virtuellen A
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md). Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
 * [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
-* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Enthält häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/). Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
