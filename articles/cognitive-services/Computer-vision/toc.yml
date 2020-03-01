@@ -5,6 +5,8 @@
   items:
     - name: Worum handelt es sich bei maschinellem Sehen?
       href: Home.md
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Verwenden des Client-SDK

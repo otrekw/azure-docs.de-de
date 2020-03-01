@@ -1,9 +1,12 @@
 - name: Dokumentation zu Custom Vision Service
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist Custom Vision?
       href: home.md
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Verwenden des Webportals

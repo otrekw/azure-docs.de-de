@@ -1,6 +1,7 @@
 - name: Content Moderator-Dokumentation
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist Content Moderator?
       href: overview.md
@@ -17,7 +18,7 @@
           href: python-sdk-quickstart.md
         - name: Verwenden des Java SDK
           href: java-sdk-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Moderieren von E-Commerce-Bildern
       href: ecommerce-retail-catalog-moderation.md
@@ -131,5 +132,5 @@
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
