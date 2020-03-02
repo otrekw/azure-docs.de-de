@@ -19,7 +19,7 @@ ms.locfileid: "77062556"
 ---
 # <a name="what-is-the-additional-verification-page"></a>Worum handelt es sich bei der Seite „Zusätzliche Sicherheitsüberprüfung“?
 
-Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen mitgeteilt, dass Ihr Unternehmen Ihrem Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt hat. Was bedeutet das? Das bedeutet, dass Ihre Organisation zusätzliche Maßnahmen ergreifen, um Ihre Identität bei der Anmeldung sicherzustellen. Diese zusätzlichen Überprüfung – auch als zweistufige Überprüfung bekannt – erfolgt über eine Kombination aus Ihrem Benutzernamen, Ihrem Kennwort und einem Mobilgerät oder Telefon.
+Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen mitgeteilt, dass Ihr Unternehmen Ihrem Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt hat. Was bedeutet das? Das bedeutet, dass Ihre Organisation zusätzliche Maßnahmen ergreift, um Ihre Identität bei der Anmeldung sicherzustellen. Diese zusätzliche Überprüfung – auch als zweistufige Authentifizierung bekannt – erfolgt über eine Kombination aus Ihrem Benutzernamen, Ihrem Kennwort und einem Mobilgerät oder Telefon.
 
 Die zweistufige Überprüfung ist sicherer als die einfache Verwendung eines Kennworts, da sie auf zwei Authentifizierungsfaktoren basiert: Sie müssen etwas wissen, und Sie müssen etwas haben. Was Sie wissen, ist Ihr Kennwort. Was Sie bei sich tragen, ist ein Smartphone oder ein anderes Gerät, das Sie häufig mit sich führen. Die zweistufige Überprüfung trägt dazu bei, Angriffe durch Hacker zu verhindern, die sich für Sie ausgeben, denn auch wenn ein Hacker Ihr Kennwort weiß, ist die Wahrscheinlichkeit gering, dass er auch über Ihr Gerät verfügt.
 
@@ -51,7 +51,7 @@ Nachdem Ihre Organisation die zweistufige Überprüfung aktiviert und eingericht
 
 2. Auf der Seite **Zusätzliche Sicherheitsüberprüfung** müssen Sie die Methode zur zweistufigen Überprüfung festlegen, mit der Sie nach der Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto Ihre Identität bestätigen. Sie können Folgendes auswählen:
 
-    | Kontaktmethode | BESCHREIBUNG |
+    | Kontaktmethode | Beschreibung |
     | --- | --- |
     | Mobile App | <ul><li>**Benachrichtigungen zur Überprüfung empfangen**: Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.</li><li>**Prüfcode verwenden**: In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie auf dem Anmeldebildschirm den aktuellen Prüfcode ein.<br>Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594) und [iOS](https://go.microsoft.com/fwlink/?linkid=866594) verfügbar.</li></ul> |
     | Authentifizierungstelefon | <ul><li>**Telefonanruf**: Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die Rautetaste (#) auf der Telefontastatur, um sich zu authentifizieren.</li><li>**SMS**: Es wird eine SMS gesendet, die einen Prüfcode enthält. Je nachdem, wozu Sie in der SMS aufgefordert werden, antworten Sie auf die SMS, oder geben Sie im Anmeldungsfenster den angegebenen Überprüfungscode ein.</li></ul> |

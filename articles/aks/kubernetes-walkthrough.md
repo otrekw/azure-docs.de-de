@@ -202,7 +202,7 @@ Stellen Sie die Anwendung über den Befehl [kubectl apply][kubectl-apply] bereit
 kubectl apply -f azure-vote.yaml
 ```
 
-In der folgende Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
+In der folgenden Beispielausgabe sind die erfolgreich erstellten Bereitstellungen und Dienste aufgeführt:
 
 ```output
 deployment "azure-vote-back" created
@@ -234,7 +234,7 @@ Sobald die externe IP-Adresse (*EXTERNAL-IP*) von *ausstehend* in eine tatsächl
 azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Azure Vote-App in Aktion zu sehen.
+Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Azure-Abstimmungs-App in Aktion zu sehen.
 
 ![In Azure Kubernetes Service bereitgestellte Abstimmungs-App](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 
