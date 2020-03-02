@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 60832f9438a602945c63910a436d7638f15a201d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 20ac4fabdc5f0e70191d6886d43a5376bcf4cad5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969433"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586290"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -57,7 +57,7 @@ PowerShell in Cloud Shell enthält einen privaten Build des Exchange Online-Modu
 
 ![](media/features-powershell/exchangeonline.png)
 
- Führen Sie `Get-Command -Module tmp_*` aus.
+ Ausführen von `Get-Command -Module tmp_*`
 > [!NOTE]
 > Der Modelname sollte mit `tmp_` beginnen, wenn Sie Module mit demselben Präfix installiert haben, werden auch deren Cmdlets ausgegeben. 
 
@@ -69,11 +69,11 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 
 ## <a name="tools"></a>Tools
 
-|Category   |NAME   |
+|Category   |Name   |
 |---|---|
 |Linux-Tools            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
 |Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions-Befehlszeilenschnittstelle](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Text-Editoren           |code (Cloud Shell-Editor)<br> Vim<br> Nano<br> Emacs    |
+|Text-Editoren           |code (Cloud Shell-Editor)<br> vim<br> Nano<br> Emacs    |
 |Quellcodeverwaltung         |Git                    |
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
 |Container             |[Docker-Computer](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS-CLI](https://github.com/dcos/dcos-cli)         |
@@ -88,7 +88,7 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.16.0      |
-|PowerShell |[6.2.3](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[7.0.0-rc.2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 und 3.5 (Standard)|
 
 ## <a name="next-steps"></a>Nächste Schritte
