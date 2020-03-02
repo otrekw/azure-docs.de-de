@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: Migration
           items:
+            - name: Übersicht
+              href: msal-migration.md
             - name: Migrieren zu MSAL.NET
               href: msal-net-migration.md
             - name: Migrieren zu MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
             - name: Migrieren zu MSAL.Android
               href: migrate-android-adal-msal.md
-            - name: Migrieren zu MSAL.iOS/MacOS
+            - name: Migrieren zu MSAL.iOS/macOS
               href: migrate-objc-adal-msal.md
             - name: Migrieren zu MSAL Python
               href: migrate-python-adal-msal.md

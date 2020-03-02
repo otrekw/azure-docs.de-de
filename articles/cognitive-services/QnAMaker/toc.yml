@@ -11,53 +11,17 @@
     - name: "Mit QnA\_Maker-Portal"
       items:
         - name: 1. Erstellen einer Wissensdatenbank
-          href: quickstarts/create-publish-knowledge-base.md
+          href: Quickstarts/create-publish-knowledge-base.md
         - name: 2. Hinzufügen von Fragen mit Metadaten
-          href: quickstarts/add-question-metadata-portal.md
+          href: Quickstarts/add-question-metadata-portal.md
         - name: 3. Abrufen einer Antwort mit Postman oder cURL
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: Mit Batchdatei testen
       href: Quickstarts/batch-testing.md
-    - name: Verwenden von REST-APIs
-      items:
-        - name: Erstellen einer neuen Wissensdatenbank
-          items:
-            - name: 'C#'
-              href: Quickstarts/create-new-kb-csharp.md
-            - name: Go
-              href: Quickstarts/create-new-kb-go.md
-            - name: Java
-              href: Quickstarts/create-new-kb-java.md
-            - name: Node.js
-              href: Quickstarts/publish-kb-nodejs.md
-            - name: Python
-              href: Quickstarts/create-new-kb-python.md
-        - name: Veröffentlichen einer Wissensdatenbank
-          items:
-            - name: 'C#'
-              href: Quickstarts/publish-kb-csharp.md
-            - name: Go
-              href: Quickstarts/publish-kb-go.md
-            - name: Java
-              href: Quickstarts/publish-kb-java.md
-            - name: Node.js
-              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
-            - name: Python
-              href: Quickstarts/publish-kb-python.md
-        - name: Abrufen der Antwort
-          items:
-            - name: 'C#'
-              href: Quickstarts/get-answer-from-knowledge-base-csharp.md
-            - name: Go
-              href: Quickstarts/get-answer-from-knowledge-base-go.md
-            - name: Java
-              href: Quickstarts/get-answer-from-knowledge-base-java.md
-            - name: Node.js
-              href: Quickstarts/get-answer-from-knowledge-base-nodejs.md
-            - name: Python
-              href: Quickstarts/get-answer-from-knowledge-base-python.md
+    - name: Verwenden von REST
+      href: Quickstarts/quickstart-rest-curl.md
     - name: Verwenden des SDK
-      href: ./Quickstarts/quickstart-sdk.md
+      href: Quickstarts/quickstart-sdk.md
 - name: Tutorials
   items:
     - name: Erstellen und Beantworten über die Wissensdatenbank
