@@ -2,17 +2,14 @@
 title: Best Practices für Operatoren – Speicherung in Azure Kubernetes Service (AKS)
 description: Lernen Sie die bewährten Methoden für Speicherung, Datenverschlüsselung und Sicherungen in Azure Kubernetes Service (AKS) für Clusteroperatoren kennen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: mlearned
-ms.openlocfilehash: 8e5f394987de06feaeb9a635face643eecc97cb9
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: a58a42f65472a9c4b495e0cb964eefa40bf82041
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174222"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649618"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -38,7 +35,7 @@ In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeit
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | Freigegebene Konfiguration       | Azure Files   | Ja | Ja | Ja | Ja |
 | Strukturierte App-Daten        | Azure Disks   | Ja | Nein  | Nein  | Ja |
-| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse (Vorschau)][blobfuse] | Ja | Ja | Ja | Nein |
+| Unstrukturierte Daten, Dateisystemvorgänge | [BlobFuse][blobfuse] | Ja | Ja | Ja | Nein |
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
