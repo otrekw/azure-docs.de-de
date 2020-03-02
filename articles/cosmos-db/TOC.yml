@@ -619,6 +619,7 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Verwalten mithilfe von Resource Manager-Vorlagen
               href: manage-cassandra-with-resource-manager.md
+              displayName: ARM
             - name: Verwalten mit PowerShell
               href: powershell-samples-cassandra.md
             - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -706,6 +707,7 @@
               displayName: custom commands
             - name: Verwalten mithilfe von Resource Manager-Vorlagen
               href: manage-mongodb-with-resource-manager.md
+              displayName: ARM
             - name: Verwalten mit PowerShell
               href: powershell-samples-mongodb.md
             - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -767,6 +769,7 @@
               href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Verwalten mithilfe von Resource Manager-Vorlagen
               href: manage-gremlin-with-resource-manager.md
+              displayName: ARM
             - name: Verwalten mit PowerShell
               href: powershell-samples-gremlin.md
             - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -823,6 +826,7 @@
               href: table-storage-design-guide.md
             - name: Verwalten mithilfe von Resource Manager-Vorlagen
               href: manage-table-with-resource-manager.md
+              displayName: ARM
             - name: Verwalten mit PowerShell
               href: powershell-samples-table.md
             - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
@@ -859,6 +863,7 @@
           href: manage-with-cli.md
         - name: Verwenden von Resource Manager-Vorlagen
           href: manage-sql-with-resource-manager.md
+          displayName: ARM
     - name: Globale Verteilung
       items:
         - name: Konfigurieren von Multimaster
@@ -1110,6 +1115,7 @@
       href: /rest/api/cosmos-db-resource-provider/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.documentdb/allversions
+      displayName: ARM
     - name: 'Emulator: Versionshinweise'
       href: local-emulator-release-notes.md
 - name: Ressourcen
