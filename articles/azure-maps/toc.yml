@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: Hinzufügen einer Kachelebene
           href: how-to-add-tile-layer-android-map.md
+        - name: Anzeigen von Datenverkehrsdaten
+          href: how-to-show-traffic-android.md
     - name: Bereitstellen von Datenfeedback
       href: how-to-use-feedback-tool.md
 - name: Verweis

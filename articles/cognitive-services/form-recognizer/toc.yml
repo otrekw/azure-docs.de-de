@@ -1,6 +1,7 @@
 - name: Dokumentation zur Formularerkennung
   href: index.yml
 - name: Übersicht
+  expanded: true
   items:
     - name: Was ist die Formularerkennung?
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: Erstellen eines Trainingsdatasets
       href: build-training-data-set.md
+    - name: Bereitstellen des Samplebezeichnungstools
+      href: deploy-label-tool.md
     - name: Verwenden von Containern
       items:
         - name: Installieren und Ausführen von Containern

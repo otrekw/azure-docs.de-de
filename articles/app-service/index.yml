@@ -1,154 +1,150 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: App Service-Dokumentation
+summary: Azure App Service ermöglicht das Erstellen und Hosten von Web-Apps, mobilen Back-Ends und RESTful-APIs in der Programmiersprache Ihrer Wahl, ohne eine Infrastruktur verwalten zu müssen. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.
 metadata:
   title: Azure App Service-Dokumentation
-  meta.description: 'Host websites, web apps, RESTful APIs, and mobile back ends in Azure App Service. Find quickstarts, tutorials, and samples to help you succeed with App Service.'
+  description: Hosten von Websites, Web-Apps, RESTful-APIs und mobilen Back-Ends in Azure App Service. Hier finden Sie Schnellstarts, Tutorials und Beispiele, die Ihnen bei der erfolgreichen Ausführung von App Service helfen.
   ms.topic: landing-page
-  ms.date: 01/23/2017
-abstract:
-  description: 'Azure App Service ermöglicht das Erstellen und Hosten von Web-Apps, mobilen Back-Ends und RESTful-APIs in der Programmiersprache Ihrer Wahl, ohne eine Infrastruktur verwalten zu müssen. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure App Service verwenden.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png'
-      width: 250
-    title: 'Erstellen Sie eine App mit Node.js und Azure App Service. (2:41)'
-    href: 'https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/'
-    width: 250
-sections:
-  - title: Fünfminütige Schnellstarts
-    items:
-      - type: paragraph
-        text: 'Hier erfahren Sie, wie Sie mit App Service Ihre erste Anwendung in der Cloud bereitstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_net.svg'
-            text: .NET
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-dotnet'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_nodejs.svg'
-            text: Node.js
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_php.svg'
-            text: PHP
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_java.svg'
-            text: Java
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-java'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_python.svg'
-            text: Python (unter Linux)
-            href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-python'
-          - image:
-              src: 'https://docs.microsoft.com/azure/app-service/media/index/logo_html5.svg'
-            text: HTML
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-            text: Benutzerdefinierter Windows-Container (Vorschauversion)
-            href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-windows-container'
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie Ihren Code bereitstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/zip.svg
-            text: ZIP/WAR
-            href: deploy-zip.md
-          - image:
-              src: media/index/ftp.svg
-            text: FTP
-            href: deploy-ftp.md
-          - image:
-              src: media/index/git-icon.svg
-            text: Lokales Git
-            href: deploy-local-git.md
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg'
-            text: Azure DevOps
-            href: 'https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json'
-          - image:
-              src: media/index/github-octicons.svg
-            text: GitHub
-            href: deploy-continuous-deployment.md
-          - image:
-              src: media/index/bitbucket.svg
-            text: Bitbucket
-            href: deploy-continuous-deployment.md
-          - image:
-              src: media/index/dropbox.svg
-            text: DropBox-Synchronisierung
-            href: deploy-content-sync.md
-          - image:
-              src: media/index/onedrive.svg
-            text: OneDrive-Synchronisierung
-            href: deploy-content-sync.md
-  - title: Schritt-für-Schritt-Tutorials
-    items:
-      - type: paragraph
-        text: 'Informationen zum Bereitstellen, Verwalten und Überwachen von sicheren Webanwendungen in Azure'
-      - type: list
-        style: ordered
-        items:
-          - html: Erstellen einer Anwendung mithilfe von <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET mit Azure SQL-Datenbank</a> oder <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js mit MongoDB</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Zuordnen einer vorhandenen benutzerdefinierten Domäne zu Ihrer Anwendung</a>
-          - html: <a href="/azure/app-service/configure-ssl-certificate">Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service</a>
-          - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Hinzufügen eines CDN zur Anwendung</a>
-  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Hosten einer Webanwendung mit Azure App Service
-            href: /learn/modules/host-a-web-app-with-azure-app-service/
-            image:
-              src: /learn/achievements/host-a-web-app-with-azure-app-service.svg
-              href: /learn/modules/host-a-web-app-with-azure-app-service/
-      - type: paragraph
-        text: <a href="/learn/browse/">Mehr interaktives Lernen...</a>
-  - title: Kostenloses PluralSight-Videotraining
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Entwickeln mit .NET
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-          - title: Entwickeln mit Node.js
-            href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02'
-  - title: Beispiele
-    items:
-      - type: paragraph
-        text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a>
-          - html: <a href="/cli/azure/appservice">Azure-Befehlszeilenschnittstelle</a>
-  - title: Verweis
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/appservice">REST-API-Referenz</a></p>
+  ms.service: app-service
+  ms.date: 02/26/2020
+  ms.openlocfilehash: 0480bd65f8a7d22f8732cd0ffde7fd3835334d69
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78191179"
+landingContent:
+- title: Informationen zu App Service
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist App Service?
+      url: overview.md
+    - text: App Service unter Linux
+      url: /azure/app-service/containers/
+    - text: App Service-Umgebungen
+      url: environment/intro.md
+    - text: Vergleich von Hostingoptionen
+      url: /azure/architecture/guide/technology-choices/compute-decision-tree
+  - linkListType: whats-new
+    links:
+    - text: Dienstupdates
+      url: https://azure.microsoft.com/updates/?product=app-service
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erste ASP.NET Core-App
+      url: app-service-web-get-started-dotnet.md
+    - text: Erste ASP.NET-App
+      url: app-service-web-get-started-dotnet-framework.md
+    - text: Erste Node.js-App
+      url: app-service-web-get-started-nodejs.md
+    - text: Erste PHP-App
+      url: app-service-web-get-started-php.md
+- title: Häufige Aufgaben
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Zuordnen einer benutzerdefinierten Domäne zu Ihrer App
+      url: app-service-web-tutorial-custom-domain.md
+    - text: Schützen einer benutzerdefinierten Domäne mit einer SSL-Bindung
+      url: configure-ssl-bindings.md
+    - text: Ausführen der App in bereitgestellten Umgebungen
+      url: deploy-staging-slots.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivieren von Diagnoseprotokollen
+      url: troubleshoot-diagnostic-logs.md
+    - text: Migrieren einer aktiven Domain zu App Service
+      url: manage-custom-dns-migrate-domain.md
+- title: CRUD-App mit Datenbank
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET-App mit SQL-Datenbank
+      url: app-service-web-tutorial-dotnet-sqldatabase.md
+    - text: ASP.NET Core-App mit SQL-Datenbank
+      url: app-service-web-tutorial-dotnetcore-sqldb.md
+    - text: PHP-App (Laravel) mit Azure MySQL
+      url: app-service-web-tutorial-php-mysql.md
+    - text: Node.js-App (MEAN.js) mit MongoDB
+      url: app-service-web-tutorial-nodejs-mongodb-app.md
+- title: Hochladen von Code oder Inhalt
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Hochladen von Inhalt mit FTP
+      url: deploy-ftp.md
+    - text: Hochladen von Inhalt als ZIP-Pakete
+      url: deploy-zip.md
+    - text: Git-Push von lokalem Computer
+      url: deploy-local-git.md
+    - text: Synchronisieren von Inhalt mit OneDrive oder Dropbox
+      url: deploy-content-sync.md
+    - text: CI/CD mit GitHub, BitBucket usw.
+      url: deploy-continuous-deployment.md
+- title: Ausführen von Windows-Apps in Containern
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ausführen eines benutzerdefinierten Windows-Containers
+      url: app-service-web-get-started-windows-container.md
+  - linkListType: tutorial
+    links:
+    - text: Migrieren einer Legacy-App zu Azure in einem Windows-Container
+      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herstellen einer Verbindung zwischen einem Container und Storage-Dateien
+      url: configure-connect-to-azure-storage.md
+- title: Verwalten und Integrieren
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verwalten von App Service-Plänen
+      url: overview-hosting-plans.md
+  - linkListType: tutorial
+    links:
+    - text: Sichern des Zugriffs auf Ressourcen mit verwalteten Identitäten
+      url: app-service-web-tutorial-connect-msi.md
+    - text: Authentifizieren von Benutzern
+      url: app-service-web-tutorial-auth-aad.md
+    - text: Hosten einer RESTful-API mit CORS
+      url: app-service-web-tutorial-rest-api.md
+    - text: Hinzufügen eines CDN zur Anwendung
+      url: ../cdn/cdn-add-to-web-app.md
+  - linkListType: how-to-guide
+    links:
+    - text: Integrieren in eine Virtual Network-Instanz
+      url: web-sites-integrate-with-vnet.md
+    - text: Erstellen von Hybridverbindungen mit lokalen Anwendungen
+      url: app-service-hybrid-connections.md
+    - text: Vornehmen eines Lastenausgleichs mit Traffic Manager
+      url: web-sites-traffic-manager-custom-domain-name.md
+    - text: Sichern Ihrer App in Storage-Blobs
+      url: manage-backup.md
+- title: Weitere Ressourcen
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Videobibliothek zu App Service
+      url: https://azure.microsoft.com/resources/videos/index/?services=app-service
+    - text: Pluralsight-Videotraining
+      url: https://www.pluralsight.com/search?q=azure%20app%20service
+  - linkListType: sample
+    links:
+    - text: Azure CLI-Beispiele
+      url: samples-cli.md
+    - text: Azure PowerShell-Beispiele
+      url: samples-powershell.md
+  - linkListType: reference
+    links:
+    - text: Azure-Befehlszeilenschnittstelle
+      url: /cli/azure/appservice
+    - text: Azure PowerShell
+      url: /powershell/module/az.websites/#app_service
+    - text: REST-API
+      url: /rest/api/appservice/
+    - text: Ressourcen-Manager
+      url: /azure/templates/microsoft.web/allversions

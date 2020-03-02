@@ -48,7 +48,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     ![Geben Sie Ihren Benutzernamen und Ihr Kennwort ein.](./media/quick-create-portal/administrator-account.png)
 
-1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **RDP (3389)** und **HTTP(80)** aus der Dropdownliste aus.
+1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **RDP (3389)** und **HTTP (80)** aus der Dropdownliste aus.
 
     ![Öffnen von Ports für RDP und HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -59,7 +59,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
-Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In dieser Anleitung wird erläutert, wie Sie über einen Windows-Computer eine Verbindung mit Ihrem virtuellen Computer herstellen. Auf einem Macintosh benötigen Sie einen RDP-Client, z.B. diesen [Remotedesktopclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) aus dem Mac App Store.
+Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In dieser Anleitung wird erläutert, wie Sie über einen Windows-Computer eine Verbindung mit Ihrem virtuellen Computer herstellen. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)t aus dem Mac App Store.
 
 1. Klicken Sie auf der Seite „Übersicht“ des virtuellen Computers auf die Schaltfläche **Verbinden**. 
 

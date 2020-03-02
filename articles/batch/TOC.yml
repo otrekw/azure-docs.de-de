@@ -29,6 +29,8 @@
       href: tutorial-r-doazureparallel.md
     - name: OCR mit Batch und Functions
       href: tutorial-batch-functions.md
+    - name: Python-Skripts mit Data Factory
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: Beispiele
   items:
     - name: Codebeispiele

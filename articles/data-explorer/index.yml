@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure-Daten-Explorer – Dokumentation
 metadata:
-  title: 'Schnellstarts, Tutorials und Dokumentationen zu Sprachen und APIs: Azure Data Explorer'
+  title: 'Azure Data Explorer: Schnellstarts, Tutorials und Dokumentationen zu Abfragesprachen und APIs'
   description: 'Azure Data Explorer ist eine Log Analytics-Cloudplattform, die für Ad-hoc-Datenabfragen im Big Data-Bereich optimiert ist.'
   author: orspod
   ms.author: orspodek
