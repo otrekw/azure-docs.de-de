@@ -193,6 +193,10 @@
           items:
             - name: Text-to-Speech-REST-API
               href: rest-text-to-speech.md
+        - name: Phongruppennutzung
+          items:
+            - name: Nutzung der Phongruppe für Spracheingabe-API (SAPI)
+              href: sapi-phoneset-usage.md
     - name: Ressourcen
       items:
         - name: Häufig gestellte Fragen zur Sprachsynthese
